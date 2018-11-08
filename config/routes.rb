@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'pages/page'
-  get 'home/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'home#index'
+  get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
+  get '/register', to: 'pages#page', as: :register, defaults: { page_slug: 'register' }
+  get '/dashboard', to: 'pages#page', as: :dashboard, defaults: { page_slug: 'dashboard' }
 end
