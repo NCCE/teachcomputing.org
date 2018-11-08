@@ -1,5 +1,7 @@
 {
-  "name": "project",
+  "name": "ncce-project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "govuk-frontend": "^2.3.0"
+  }
 }
