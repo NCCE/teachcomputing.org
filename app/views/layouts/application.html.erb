@@ -1,15 +1,80 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Project</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en" class="govuk-template ">
+<head>
+  <meta charset="utf-8" />
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/assets/images/apple-touch-icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="govuk-template__body ">
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+  <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+  <header class="govuk-header " role="banner" data-module="header">
+    <div class="govuk-header__container govuk-width-container">
+
+      <div class="govuk-header__logo">
+        <a href="#" class="govuk-header__link govuk-header__link--homepage">
+          <span class="govuk-header__logotype">
+            <span class="govuk-header__logotype-text">
+              NCCE
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="govuk-header__content">
+        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+        <nav>
+          <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+            <li class="govuk-header__navigation-item govuk-header__navigation-item">
+              <%= link_to 'Register', register_url, {:class => 'govuk-header__link'} %>
+            </li>
+            <li class="govuk-header__navigation-item govuk-header__navigation-item">
+              <%= link_to 'Dashboard', dashboard_url, {:class => 'govuk-header__link'} %>
+            </li>
+            <li class="govuk-header__navigation-item govuk-header__navigation-item">
+              <%= link_to 'About', about_url, {:class => 'govuk-header__link'} %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <%= yield %>
+    </main>
+  </div>
+
+  <footer class="govuk-footer " role="contentinfo">
+    <div class="govuk-width-container ">
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <span class="govuk-footer__licence-description">
+            All content is available under the
+            <a
+              class="govuk-footer__link"
+              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+              rel="license"
+            >Open Government Licence v3.0</a>, except where otherwise stated
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
