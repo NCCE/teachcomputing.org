@@ -1,24 +1,60 @@
-# README
+# NCCE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+### Dependencies:
 
-* Ruby version
+- Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox)
 
-* System dependencies
+### Setup
+```
+cp .env-example .env
+```
 
-* Configuration
+Build the containers:
+```
+docker-compose build
+```
 
-* Database creation
+Start up all of the containers:
+```
+docker-compose up
+```
 
-* Database initialization
+Visit http://localhost:3000
 
-* How to run the test suite
+### Install new Dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
+Add the dependency to the Gemfile and run:
+```
+docker-compose run web bundle
+```
 
-* Deployment instructions
+Followed by:
+```
+docker-compose build
+```
 
-* ...
+### Create Database
+```
+docker-compose run web bin/rails db:create
+```
+
+### Run migrations
+
+After adding any new migrations they need to be run inside docker:
+```
+docker-compose run web bin/rails db:migrate
+```
+
+## Testing
+
+Uses [rspec](https://github.com/rspec/rspec)
+```
+docker-compose run web bin/rspec
+```
+
+To use [guard](https://github.com/guard/guard) to watch the tests:
+```
+docker-compose run web bin/guard
+```
