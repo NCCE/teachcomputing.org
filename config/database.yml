@@ -17,23 +17,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch("DB_HOST", 'localhost') %>
-
-  username: postgres
-  password:
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
+  host: <%= ENV.fetch("DB_HOST", 'db') %>
+  username: postgres
+  password:
   database: ncce_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: union
+  #username:
 
   # The password associated with the postgres role (username).
   #password:
@@ -61,6 +60,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: <%= ENV.fetch("DB_HOST", 'db') %>
+  username: postgres
+  password:
   database: ncce_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -84,6 +86,4 @@ test:
 #
 production:
   <<: *default
-  database: ncce_production
-  username: production
-  password: <%= ENV['NCCE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
