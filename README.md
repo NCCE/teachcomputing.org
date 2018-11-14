@@ -16,45 +16,44 @@ Build the containers:
 docker-compose build
 ```
 
-Start up all of the containers:
+Start the web container:
 ```
-docker-compose up
+docker-compose up web
 ```
 
 Visit http://localhost:3000
 
-### Install new Dependencies
+If it's your first time running you'll need to create the database first before use. You'll also need to do this if you've removed your database volume.
 
-Add the dependency to the Gemfile and run:
-```
-docker-compose run web bundle
-```
-
-Followed by:
-```
-docker-compose build
-```
 
 ### Create Database
 ```
-docker-compose run web bin/rails db:create
+docker-compose run --rm web bin/rails db:create
 ```
 
 ### Run migrations
 
 After adding any new migrations they need to be run inside docker:
 ```
-docker-compose run web bin/rails db:migrate
+docker-compose run --rm web bin/rails db:migrate
+```
+
+### Install new Dependencies
+
+Add the dependency to the Gemfile or package.json and run:
+```
+docker-compose down
+docker-compose build
 ```
 
 ## Testing
 
 Uses [rspec](https://github.com/rspec/rspec)
 ```
-docker-compose run web bin/rspec
+docker-compose run --rm web bin/rspec
 ```
 
 To use [guard](https://github.com/guard/guard) to watch the tests:
 ```
-docker-compose run web bin/guard
+docker-compose run --rm web bin/guard
 ```
