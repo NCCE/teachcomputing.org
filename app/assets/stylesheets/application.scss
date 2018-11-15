@@ -1,5 +1,25 @@
 @import "govuk-frontend/all";
 
+// import NCCE settings
+@import 'settings/_colors.scss';
+@import 'settings/_fonts.scss';
+@import 'settings/_links.scss';
+@import 'settings/_section-breaks.scss';
+@import 'settings/_typography.scss';
+
+// import NCCE components
+@import 'components/_cookie-notice.scss';
+@import 'components/_footer.scss';
+@import 'components/_header.scss';
+@import 'components/_jobs.scss';
+@import 'components/_hero.scss';
+@import 'components/_training.scss';
+@import 'components/_offering.scss';
+@import 'components/_mailing-list.scss';
+@import 'components/_partners.scss';
+@import 'components/_table.scss';
+@import 'components/_confirmation.scss';
+
 // import components
 // @import 'components/box';
 // @import 'components/button';

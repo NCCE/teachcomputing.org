@@ -1,0 +1,39 @@
+.ncce-link__on-light {
+  &:link {
+    color: $ncce-blue-link;
+  }
+  &:visited {
+    color: $ncce-purple;
+  }
+  &:hover {
+    color: $ncce-pink;
+  }
+  &:focus {
+    background-color: $ncce-grey-x-light;
+    color: $ncce-pink;
+    outline-color: $ncce-grey-x-light;
+  }
+  &:active {
+    color: $ncce-grey-x-light;
+  }
+}
+
+.ncce-link__on-dark {
+  &:link {
+    color: $ncce-grey-x-light;
+  }
+  &:visited {
+    color: $ncce-grey;
+  }
+  &:hover {
+    color: $ncce-white;
+  }
+  &:focus {
+    background-color: $ncce-black;
+    color: $ncce-white;
+    outline-color: $ncce-black;
+  }
+  &:active {
+    color: $ncce-black;
+  }
+}

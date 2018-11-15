@@ -1,0 +1,73 @@
+.ncce-training {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+    margin-top: 3rem;
+  }
+}
+
+.ncce-training__body {
+  margin-bottom: 2rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 3rem;
+  }
+}
+
+.ncce-training__heading {
+  margin-bottom: 1rem;
+}
+
+.ncce-training__google {
+  margin-bottom: 10px;
+  margin-top: 40px;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+}
+
+.ncce-training__google-body {
+  font-size: 14px;
+  display: inline;
+  vertical-align: middle;
+}
+
+.ncce-training__google-logo {
+  display: block;
+  height: 38px;
+  margin-right: 5px;
+  padding: 5px 0;
+  vertical-align: middle;
+  width: 90px;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.ncce-training__link {
+  color: $ncce-dark-blue;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 1rem;
+  }
+}
+
+.ncce-training__list {
+  margin: 1rem 0;
+}
+
+.ncce-training__list-item {
+  margin-bottom: 1.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 3rem;
+  }
+}

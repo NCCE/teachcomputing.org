@@ -1,0 +1,8 @@
+$font-family-body: 'Roboto', sans-serif !default;
+$font-family-heading: 'Objectivity Bold', sans-serif !default;
+
+@font-face {
+  font-family: 'Objectivity Bold';
+  src: url('/assets/fonts/Objectivity-Bold.otf') format('opentype'),
+    url('/assets/fonts/Objectivity-Bold.woff2') format('woff2');
+}
