@@ -1,0 +1,19 @@
+.ncce-footer {
+  background-color: $ncce-dark-grey;
+  padding: 2rem 0;
+}
+
+.ncce-footer__heading {
+  color: $ncce-white;
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    margin: 0;
+  }
+}
+
+.ncce-footer__list {
+  @include govuk-media-query($from: tablet) {
+    float: right;
+  }
+}
