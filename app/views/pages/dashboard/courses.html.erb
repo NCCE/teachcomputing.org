@@ -1,0 +1,24 @@
+<h1 class="govuk-heading-xl">Dashboard</h1>
+<h2 class="govuk-heading-l">Courses</h2>
+<p class="govuk-body">The online courses are available on FutureLearn.</p>
+<p class="govuk-body">The face to face courses are at hubs/universities.</p>
+<p class="govuk-body">After you complete the course, come back here to the NCCE to track your progress towards certification.</p>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">Course Name</th>
+      <th class="govuk-table__header" scope="col">Course Type</th>
+      <th class="govuk-table__header" scope="col">Completion Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <% @courses.each do |course| %>
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="row"><%= course.activity_title %></th>
+      <td class="govuk-table__cell">Face To Face</td>
+      <td class="govuk-table__cell"><input id="" name="" type="checkbox" value=""></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
