@@ -20,6 +20,9 @@ class Achiever
           xml.Identity {
             xml.DbConnectionId @DB_CONNECTION_ID
           }
+          xml.Parameters {
+            xml.Programme 'NCCE'
+          }
         }
       }
     end
