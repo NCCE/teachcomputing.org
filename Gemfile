@@ -56,3 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "pg", "~> 1.1"
+
+gem "htmlentities", "~> 4.3"
+gem "nokogiri", "~> 1.8"

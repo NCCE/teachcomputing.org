@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
   get '/login', to: 'pages#page', as: :login, defaults: { page_slug: 'login' }
   get '/dashboard', to: 'pages#page', as: :dashboard, defaults: { page_slug: 'dashboard' }
-  get '/dashboard/courses', to: 'pages#page', as: :courses, defaults: { page_slug: 'dashboard/courses' }
+  get '/dashboard/courses', to: 'courses#courses', as: :courses, defaults: { page_slug: 'dashboard/courses' }
 end
