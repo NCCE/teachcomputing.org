@@ -16,6 +16,8 @@ services:
       - '3000:3000'
     depends_on:
       - db
+    environment:
+      - HTTP_PROXY=http://host.docker.internal:8081
 volumes:
   pg-data:
   node_modules:

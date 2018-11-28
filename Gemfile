@@ -59,4 +59,3 @@ gem "pg", "~> 1.1"
 
 gem "htmlentities", "~> 4.3"
 gem "nokogiri", "~> 1.8"
-gem "socksify", "~> 1.7"
