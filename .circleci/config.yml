@@ -11,12 +11,10 @@ jobs:
     steps:
       - checkout
 
-      # Which version of bundler?
       - run:
           name: Which bundler?
           command: bundle -v
 
-      # Restore bundle cache
       - restore_cache:
           keys:
             - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -25,26 +23,14 @@ jobs:
           name: Bundle Install
           command: bundle check || bundle install
 
-      # Store bundle cache
       - save_cache:
           key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
-      # Only necessary if app uses webpacker or npm in some other way
-      - restore_cache:
-          keys:
-            - ncce-npm-{{ checksum "package-lock.json" }}
-
       - run:
           name: Npm Install
-          command: npm install --cache-folder ~/.cache/npm
-
-      # Store npm / webpacker cache
-      - save_cache:
-          key: ncce-npm-{{ checksum "package-lock.json" }}
-          paths:
-            - ~/.cache/npm
+          command: npm install
 
       - run:
           name: Wait for DB
@@ -54,7 +40,6 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
 
-      # Run rspec
       - run:
           name: Run rspec
           command: |
