@@ -54,11 +54,6 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
 
-      # Run brakeman
-      # - run:
-      #     name: Run brakeman
-      #     command: |
-      #       bin/brakeman
       # Run rspec
       - run:
           name: Run rspec
