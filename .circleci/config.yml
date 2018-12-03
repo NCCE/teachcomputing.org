@@ -34,7 +34,7 @@ jobs:
       # Only necessary if app uses webpacker or npm in some other way
       - restore_cache:
           keys:
-            - ncce-npm-{{ checksum "npm.lock" }}
+            - ncce-npm-{{ checksum "package-lock.json" }}
 
       - run:
           name: Npm Install
