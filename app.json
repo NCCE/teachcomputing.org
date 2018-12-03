@@ -1,0 +1,27 @@
+{
+  "name": "teachcomputing",
+  "scripts": {
+    "postdeploy": "bin/rails db:migrate"
+  },
+  "env": {
+    "RAILS_ENV": {
+      "required": true
+    },
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-basic"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
