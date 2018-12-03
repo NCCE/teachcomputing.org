@@ -31,16 +31,16 @@ jobs:
           paths:
             - vendor/bundle
 
-      # Only necessary if app uses webpacker or yarn in some other way
+      # Only necessary if app uses webpacker or npm in some other way
       - restore_cache:
           keys:
-            - ncce-yarn-{{ checksum "yarn.lock" }}
+            - ncce-npm-{{ checksum "npm.lock" }}
 
       - run:
           name: Npm Install
           command: npm install --cache-folder ~/.cache/npm
 
-      # Store yarn / webpacker cache
+      # Store npm / webpacker cache
       - save_cache:
           key: ncce-npm-{{ checksum "package-lock.json" }}
           paths:
