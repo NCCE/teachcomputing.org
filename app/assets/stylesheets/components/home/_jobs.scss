@@ -1,0 +1,24 @@
+.c-jobs__heading {
+  margin-bottom: 1rem;
+}
+
+.c-jobs__image {
+  margin-bottom: 1.5rem;
+  width: 50%;
+
+  @include govuk-media-query($from: tablet) {
+    width: 75%;
+  }
+}
+
+.c-jobs__list {
+  margin-bottom: 25px;
+}
+
+.c-jobs__list-item {
+  margin: 0.8rem 0;
+}
+
+.c-jobs--link {
+    color: $ncce-black !important;
+}
