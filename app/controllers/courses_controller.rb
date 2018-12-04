@@ -1,10 +1,11 @@
 require_relative('../lib/achiever')
 
 class CoursesController < ApplicationController
-  def courses
+  def index
     achiever = Achiever.new
-    @courses = achiever.fetchFutureCourses
+    @face_to_face_courses = achiever.fetchFutureCourses
+    @future_learn = FutureLearn.new
 
-    render template: "pages/#{params[:page_slug]}"
+    render :index
   end
 end
