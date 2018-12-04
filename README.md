@@ -25,6 +25,7 @@ Visit http://localhost:3000
 
 If it's your first time running you'll need to create the database first before use. You'll also need to do this if you've removed your database volume.
 
+In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 ### Create Database
 ```
