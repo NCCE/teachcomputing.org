@@ -7,7 +7,7 @@ RSpec.describe CoursesController, type: :controller do
     end
 
     xit 'assigns @future_learn' do
-      expect(assigns(:future_learn)).to be_a(FutureLearn)
+      expect(assigns(:online_courses)).to be_a(FutureLearn)
     end
 
     xit 'renders the correct template' do

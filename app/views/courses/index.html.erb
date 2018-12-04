@@ -18,7 +18,7 @@
       <td class="govuk-table__cell">Face To Face</td>
     </tr>
     <% end %>
-    <% @future_learn.courses.each do |course| %>
+    <% @online_courses.courses.each do |course| %>
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="row"><%= link_to course[:title], course[:link] %></th>
       <td class="govuk-table__cell">Online</td>
