@@ -36,3 +36,6 @@
 # test files
 coverage
 spec/examples.txt
+
+# DS_Store
+.DS_Store
