@@ -2,14 +2,10 @@ require_relative('../lib/achiever')
 require_relative('../lib/course_occurrence')
 
 class CoursesController < ApplicationController
-<<<<<<< HEAD
-  def initialize
-    @achiever = Achiever.new
-    super()
-  end
+  before_action :create_achiever, only: [:index]
+
   def index
-    achiever = Achiever.new
-    @face_to_face_courses = achiever.fetchFutureCourses
+    @face_to_face_courses = @achiever.fetchFutureCourses
     @online_courses = FutureLearn.new
 
     render :index
@@ -18,5 +14,11 @@ class CoursesController < ApplicationController
   def show
     @course = CourseOccurrence.new(params[:id])
     render :show
+  end
+
+  private
+
+  def create_achiever
+    @achiever = Achiever.new
   end
 end

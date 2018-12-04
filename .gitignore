@@ -37,5 +37,5 @@
 coverage
 spec/examples.txt
 
-# DS_Store
+# OS Files
 .DS_Store
