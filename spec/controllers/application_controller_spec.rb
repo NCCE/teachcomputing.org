@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationController, :type => :controller do
+RSpec.describe ApplicationController, type: :controller do
   before(:each) do
     allow(controller).to receive(:authenticate_or_request_with_http_basic)
   end
