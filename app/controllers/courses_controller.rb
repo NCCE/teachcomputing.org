@@ -2,19 +2,21 @@ require_relative('../lib/achiever')
 require_relative('../lib/course_occurrence')
 
 class CoursesController < ApplicationController
+<<<<<<< HEAD
   def initialize
     @achiever = Achiever.new
     super()
   end
+  def index
+    achiever = Achiever.new
+    @face_to_face_courses = achiever.fetchFutureCourses
+    @online_courses = FutureLearn.new
 
-  def courses
-    @courses = @achiever.fetchFutureCourses
-
-    render template: "pages/#{params[:page_slug]}"
+    render :index
   end
 
-  def course
+  def show
     @course = CourseOccurrence.new(params[:id])
-    render template: "pages/dashboard/course"
+    render :show
   end
 end

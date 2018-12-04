@@ -12,10 +12,16 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <% @courses.each do |course| %>
+    <% @face_to_face_courses.each do |course| %>
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="row"><%= link_to course.activity_title, course_url({:id => course.course_occurrence_no}), {:class => 'govuk-link'} %></th>
       <td class="govuk-table__cell">Face To Face</td>
+    </tr>
+    <% end %>
+    <% @online_courses.courses.each do |course| %>
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="row"><%= link_to course[:title], course[:link] %></th>
+      <td class="govuk-table__cell">Online</td>
     </tr>
     <% end %>
   </tbody>
