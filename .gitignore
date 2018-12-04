@@ -36,3 +36,7 @@
 # test files
 coverage
 spec/examples.txt
+
+# Mac
+.DS_Store
+app/.DS_Store
