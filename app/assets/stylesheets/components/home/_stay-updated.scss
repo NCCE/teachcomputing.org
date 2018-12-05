@@ -1,4 +1,4 @@
-.ncce-stay_updated {
+.ncce-stay-updated {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
 
@@ -12,11 +12,11 @@
 	}
 }
 
-.ncce-stay_updated__body {
+.ncce-stay-updated__body {
 	font-size: 16px;
 }
 
-.ncce-stay_updated__panel {
+.ncce-stay-updated__panel {
 	margin-bottom: 15px;
 
 	&:last-child {
@@ -28,6 +28,6 @@
 	}
 }
 
-.ncce-stay_updated__heading {
+.ncce-stay-updated__heading {
 	margin-bottom: 10px;
 }
