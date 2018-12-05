@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope '/dashboard' do
     root to: 'dashboard#show'
-    resources :courses, only: %i[index]
+    resources :courses, only: [:index, :show]
   end
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }

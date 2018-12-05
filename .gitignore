@@ -37,6 +37,5 @@
 coverage
 spec/examples.txt
 
-# Mac
+# OS Files
 .DS_Store
-app/.DS_Store

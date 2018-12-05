@@ -31,7 +31,7 @@ class Course
     @changed_date = xml.xpath('.//Activity.Changed_Date/text()')
     @everest_occurrence_changed_date = xml.xpath('.//Activity.Everest_Occurrence_Changed_Date/text()')
     @imported_to_itk = xml.xpath('.//Activity.Imported_to_ITK/text()')
-    @course_occurence_no = xml.xpath('.//Activity.COURSEOCCURRENCENO/text()')
+    @course_occurrence_no = xml.xpath('.//Activity.COURSEOCCURRENCENO/text()')
     @course_template_no = xml.xpath('.//Template.COURSETEMPLATENO/text()')
   end
 
@@ -151,8 +151,8 @@ class Course
     @imported_to_itk
   end
 
-  def course_occurence_no
-    @course_occurence_no
+  def course_occurrence_no
+    @course_occurrence_no
   end
 
   def course_template_no
@@ -189,7 +189,7 @@ class Course
     puts @changed_date
     puts @everest_occurrence_changed_date
     puts @imported_to_itk
-    puts @course_occurence_no
+    puts @course_occurrence_no
     puts @course_template_no
   end
 end
