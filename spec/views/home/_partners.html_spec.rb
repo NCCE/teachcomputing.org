@@ -5,10 +5,6 @@ RSpec.describe('home/_partners', type: :view) do
     render
   end
 
-  it 'has a description' do
-    expect(rendered).to have_css('.partners__notice')
-  end
-
   it('renders the correct number of logos') do
     expect(rendered).to(have_css('.c-partners__link', count: 3))
   end
