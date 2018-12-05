@@ -1,4 +1,4 @@
-.c-sign-up {
+.ncce-sign-up {
 	margin: 5px 0;
 	@include govuk-media-query($from: tablet) {
 		margin: 15px;
@@ -13,31 +13,31 @@
 	}
 }
 
-.c-sign-up--button {
+.ncce-sign-up--button {
 	background-color: $ncce-dark-grey;
 	font-weight: bold;
 }
 
-.c-sign-up--link {
+.ncce-sign-up--link {
 	color: $ncce-white;
 }
 
-.c-sign-up__aside {
+.ncce-sign-up__aside {
 	background-color: $ncce-grey-light;
 	padding-bottom: 1.5rem;
 }
 
-.c-sign-up__aside--button,
-.c-sign-up__aside--button:visited {
+.ncce-sign-up__aside--button,
+.ncce-sign-up__aside--button:visited {
 	background-color: none;
 	color: $ncce-black !important;
 }
 
-.c-sign-up__list {
+.ncce-sign-up__list {
 	list-style: none;
 }
 
-.c-sign-up__list--item {
+.ncce-sign-up__list--item {
 	list-style: none;
 	margin-bottom: 1rem;
 	padding-left: 2rem;

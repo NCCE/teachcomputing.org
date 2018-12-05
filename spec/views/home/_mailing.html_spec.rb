@@ -6,7 +6,7 @@ RSpec.describe('home/_mailing', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.c-mailing', text: 'Stay up to date')
+    expect(rendered).to have_css('.ncce-mailing', text: 'Stay up to date')
   end
 
   it 'links to the Facebook page' do
@@ -18,7 +18,7 @@ RSpec.describe('home/_mailing', type: :view) do
   end
 
   it('renders the correct button') do
-    expect(rendered).to(have_css('.c-mailing__button', text: 'Get updates'))
+    expect(rendered).to(have_css('.ncce-mailing__button', text: 'Get updates'))
   end
 
 end

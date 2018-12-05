@@ -1,4 +1,4 @@
-.c-hero {
+.ncce-hero {
 	margin: 5px 0;
 	@include govuk-media-query($from: tablet) {
 		margin: 15px;
@@ -13,7 +13,7 @@
 	}
 }
 
-.c-hero--button {
+.ncce-hero--button {
 	background-color: $ncce-dark-grey;
 	font-weight: bold;
 }

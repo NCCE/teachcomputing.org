@@ -6,7 +6,7 @@ RSpec.describe('home/_sign-up', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.c-sign-up', text: 'Sign up to the NCCE')
+    expect(rendered).to have_css('.ncce-sign-up', text: 'Sign up to the NCCE')
   end
 
   it 'links to the Sign up section' do
@@ -14,7 +14,7 @@ RSpec.describe('home/_sign-up', type: :view) do
   end
 
   it('renders the correct number of bullets') do
-    expect(rendered).to(have_css('.c-sign-up__list--item', count: 3))
+    expect(rendered).to(have_css('.ncce-sign-up__list--item', count: 3))
   end
 
 end
