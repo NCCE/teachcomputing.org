@@ -12,7 +12,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.script_src  :self, :https, 'www.google-analytics.com', 'www.googletagmanager.com'
   policy.style_src   :self, :https
 
-  policy.report_uri 'https://raspberrypi.report-uri.com/r/d/csp/reportOnly'
+  policy.report_uri 'https://raspberrypi.report-uri.com/r/d/csp/enforce'
 end
 
 # If you are using UJS then enable automatic nonce generation
