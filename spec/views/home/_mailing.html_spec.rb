@@ -10,11 +10,11 @@ RSpec.describe('home/_mailing', type: :view) do
   end
 
   it 'links to the Facebook page' do
-    expect(rendered).to have_link('Like NCCE on Facebook', href: '#'))
+    expect(rendered).to have_link('Like NCCE on Facebook', href: '#')
   end
 
   it 'links to the Twitter account' do
-    expect(rendered).to have_link('Follow @WeAreComputing on Twitter', href: '#'))
+    expect(rendered).to have_link('Follow @WeAreComputing on Twitter', href: '#')
   end
 
   it('renders the correct button') do
