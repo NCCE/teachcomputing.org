@@ -11,6 +11,8 @@
 cp .env-example .env
 ```
 
+You'll need to set up the DB Connection ID and the relevant Workflow IDs. A list of env vars for Workflow IDs can be found [here](https://github.com/NCCE/private-documentation/blob/master/APIs/stem-achiever.md).
+
 Build the containers:
 ```
 docker-compose build
