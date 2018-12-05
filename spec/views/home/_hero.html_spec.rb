@@ -14,6 +14,6 @@ RSpec.describe('home/_hero', type: :view) do
   end
 
   it 'links to the About section' do
-    expect(rendered).to have_link('About the NCCE', href: '#'))
+    expect(rendered).to have_link('About the NCCE', href: '#')
   end
 end
