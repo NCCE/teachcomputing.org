@@ -17,8 +17,4 @@ RSpec.describe('home/_mailing', type: :view) do
     expect(rendered).to have_link('Follow @WeAreComputing on Twitter', href: '#')
   end
 
-  it('renders the correct button') do
-    expect(rendered).to(have_css('.ncce-mailing__button', text: 'Get updates'))
-  end
-
 end
