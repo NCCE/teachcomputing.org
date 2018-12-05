@@ -1,4 +1,4 @@
-@import "govuk-frontend/all";
+@import 'govuk-frontend/all';
 
 // import NCCE settings
 @import 'settings/_colors.scss';
@@ -12,7 +12,12 @@
 @import 'components/_footer.scss';
 @import 'components/_header.scss';
 @import 'components/_jobs.scss';
-@import 'components/_hero.scss';
+@import 'components/home/_hero.scss';
+@import 'components/home/_jobs.scss';
+@import 'components/home/_mailing.scss';
+@import 'components/home/_partners.scss';
+@import 'components/home/_sign-up.scss';
+@import 'components/home/_stay_updated.scss';
 @import 'components/_training.scss';
 @import 'components/_offering.scss';
 @import 'components/_mailing-list.scss';

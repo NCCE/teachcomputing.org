@@ -1,0 +1,33 @@
+.ncce-stay_updated {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+
+	@include govuk-media-query($from: tablet) {
+		grid-gap: 15px;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include govuk-media-query($from: desktop) {
+		grid-gap: 25px;
+		grid-template-columns: repeat(3, 20rem);
+	}
+}
+
+.ncce-stay_updated__body {
+	font-size: 16px;
+}
+
+.ncce-stay_updated__panel {
+	margin-bottom: 15px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	@include govuk-media-query($from: tablet) {
+		margin-bottom: 0;
+	}
+}
+
+.ncce-stay_updated__heading {
+	margin-bottom: 10px;
+}
