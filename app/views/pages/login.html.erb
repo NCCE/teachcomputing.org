@@ -1,12 +1,40 @@
-<h1 class="govuk-heading-xl">Register</h1>
-<h2 class="govuk-heading-l">Don’t have a STEM account?</h2>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Sign up</h2>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">
+          Sign up with NCCE and you'll get access to online and face to face training, including upcoming courses so you can plan ahead,
+          as well as a tool to log and measure your progress towards certification.
+          </p>
+          <ul class="govuk-list">
+            <li>See and book CPD courses</li>
+            <li>See upcoming courses so you can plan ahead</li>
+            <li>Track progress towards certification</li>
+            <li>Sign up to get updates from NCCE</li>
+            <li>Provide feedback and help us develop</li>
+         </ul>
+         <%= link_to 'Sign up', 'https://stem.org.uk/user/register', :class => 'govuk-button' %>
+         <h3 class="govuk-heading-s">Already have an account with STEM learning?</h3>
+         <p>You can log in straight in!</p>
 
-<p class="govuk-body">Registration is free and takes 2 minutes. Apart from tracking your NCCE progress, a STEM account allows you to:</p>
-<ul class="govuk-list">
-  <li>See and book CPD courses</li>
-  <li>Track your progress</li>
-  <li>Sign up to eNewsletters</li>
-  <li>Provide feedback</li>
-</ul>
+         <%= link_to 'Log in', 'https://stem.org.uk/user', :class => 'govuk-button' %>
+        </div>
 
-<%= link_to 'Create a STEM account', 'https://stem.org.uk/user/register', {:class => 'govuk-button'} %>
+        <div class="govuk-grid-column-one-quarter ncce-login__aside">
+          <h4>You will create an account with STEM learning.</h4>
+          <p>STEM is part of the NCCE consortium and is providing the
+          booking and registration systems for the NCCE site.
+          Using this existing system enables us to get up and running
+          quickly in order to provide you with access to training right away.
+          At some point in the future we hope to have a more integrated single
+          sign-on system across all our partners' platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
