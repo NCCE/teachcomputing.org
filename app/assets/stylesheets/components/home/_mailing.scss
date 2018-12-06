@@ -43,11 +43,13 @@
 
 .ncce-mailing__footnote {
 	font-size: 14px;
-	a {
-	}
 }
 
 .ncce-mailing--link {
 	color: $ncce-black !important;
 	line-height: 3rem;
+}
+
+.ncce-mailing--link-privacy {
+	color: $ncce-black !important;
 }
