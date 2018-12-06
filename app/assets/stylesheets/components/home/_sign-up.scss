@@ -33,6 +33,12 @@
 	color: $ncce-black !important;
 }
 
+.ncce-sign-up--link-white,
+.ncce-sign-up--link-white:visited {
+	color: $ncce-white !important;
+	text-decoration: none;
+}
+
 .ncce-sign-up__list {
 	list-style: none;
 }
