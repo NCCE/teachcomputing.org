@@ -1,5 +1,10 @@
 .ncce-login__aside {
 	background-color: $ncce-grey-light;
+	padding: 1rem;
+
+	@include govuk-media-query($from: tablet) {
+		padding: 0;
+	}
 }
 .ncce-login-button {
 	background-color: $ncce-dark-grey;
