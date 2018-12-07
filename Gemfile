@@ -9,11 +9,12 @@ gem 'htmlentities', '~> 4.3'
 gem 'nokogiri', '~> 1.8'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.11'
+gem 'rack-attack', '~> 5.4.2'
 gem 'rails', '~> 5.2.1'
+gem 'rest-client', '~> 2.0.2'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'rack-attack', '~> 5.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
