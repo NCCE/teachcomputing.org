@@ -1,4 +1,4 @@
-<header class="govuk-header " role="banner" data-module="header">
+<header class="govuk-header" role="banner" data-module="header">
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
       <a href="/" class="govuk-header__link govuk-header__link--homepage">
@@ -14,19 +14,10 @@
       <nav>
         <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'About', about_url, {:class => 'govuk-header__link'} %>
+            <%= link_to 'Sign up', login_url, :class => 'govuk-header__link' %>
           </li>
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Bursary Information', bursary_url, {:class => 'govuk-header__link'} %>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'News', news_url, {:class => 'govuk-header__link'} %>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Contact', contact_url, {:class => 'govuk-header__link'} %>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Login', login_url, {:class => 'govuk-header__link'} %>
+            <%= link_to 'Login', login_url, :class => 'govuk-header__link' %>
           </li>
         </ul>
       </nav>

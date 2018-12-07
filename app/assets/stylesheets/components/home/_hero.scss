@@ -1,0 +1,19 @@
+.ncce-hero {
+	margin: 5px 0;
+	@include govuk-media-query($from: tablet) {
+		margin: 15px;
+	}
+
+	br {
+		display: none;
+
+		@include govuk-media-query($from: tablet) {
+			display: block;
+		}
+	}
+}
+
+.ncce-hero--button {
+	background-color: $ncce-dark-grey;
+	font-weight: bold;
+}
