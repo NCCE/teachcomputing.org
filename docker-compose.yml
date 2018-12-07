@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     environment:
-      - QUOTAGUARDSTATIC_URL=http://host.docker.internal:8888
+      - PROXY_URL=http://host.docker.internal:8888
 volumes:
   pg-data:
   node_modules:

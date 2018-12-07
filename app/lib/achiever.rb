@@ -8,7 +8,7 @@ class Achiever
   def initialize
     @DB_CONNECTION_ID = ENV['ACHIEVER_DB_CONNECTION_ID']
     @uri = URI(ENV['ACHIEVER_API_ENDPOINT'])
-    RestClient.proxy = ENV['QUOTAGUARDSTATIC_URL']
+    RestClient.proxy = ENV['PROXY_URL']
   end
 
   def runWorkflow(workflowId, params = [])
