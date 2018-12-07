@@ -10,7 +10,7 @@ RSpec.describe('home/_hero', type: :view) do
   end
 
   it 'button to find out more about NCCE' do
-    expect(rendered).to have_css('.ncce-hero--button', text: 'About the NCCE')
+    expect(rendered).to have_css('.ncce-hero__button--link', text: 'About the NCCE')
   end
 
   it 'links to the About section' do

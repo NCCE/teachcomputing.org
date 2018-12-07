@@ -11,7 +11,7 @@
 
 .ncce-mailing__button {
 	background-color: $ncce-dark-grey;
-	box-shadow: 0 4px 0 $ncce-grey;
+	box-shadow: 0 4px 0 $ncce-dark-grey;
 	font-size: 19px;
 	font-weight: bold;
 	margin: 0;
@@ -43,11 +43,13 @@
 
 .ncce-mailing__footnote {
 	font-size: 14px;
-	a {
-	}
 }
 
 .ncce-mailing--link {
 	color: $ncce-black !important;
 	line-height: 3rem;
+}
+
+.ncce-mailing--link-privacy {
+	color: $ncce-black !important;
 }
