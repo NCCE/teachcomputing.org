@@ -13,7 +13,13 @@
 	}
 }
 
-.ncce-hero--button {
+.ncce-hero__button {
 	background-color: $ncce-dark-grey;
+}
+
+.ncce-hero__button--link,
+.ncce-hero__button--link:visited {
+	color: $ncce-white !important;
 	font-weight: bold;
+	text-decoration: none;
 }
