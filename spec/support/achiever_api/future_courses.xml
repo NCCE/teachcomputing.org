@@ -1,6 +1,3 @@
-HTTP/1.0 200 Connection established
-Proxy-agent: tinyproxy/1.8.4
-
 HTTP/1.1 200 OK
 Cache-Control: private, max-age=0
 Content-Type: text/xml; charset=utf-8
@@ -66,7 +63,7 @@ Content-Length: 25158
 &amp;lt;p&amp;gt;With entries to GCSE Computer Science growing year-on-year, teachers are required to develop their specialism and provide improved learning through excellent teaching.&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;This course is aimed at those who are new to teaching Computer Science at GCSE level, or who wish to develop their existing GCSE teaching further. It focuses on the themes that are common to all exam boards and that run through from earlier school stages, such as algorithms, programming, computer systems, networking and data. There will be opportunities to develop your leadership of practical assessed tasks; to make effective use of out-of-school learning; and to gain experience of a range of tools that can be used in teaching.&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;em&amp;gt;
-&amp;lt;blockquote&amp;gt;"I have big concerns about my ability to teach the theory, this gave me the confidence to try an alternative approach."&amp;lt;/em&amp;gt; 
+&amp;lt;blockquote&amp;gt;"I have big concerns about my ability to teach the theory, this gave me the confidence to try an alternative approach."&amp;lt;/em&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;em&amp;gt;"All sessions were useful as they showed innovative and alternative ways of looking at the material"&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;em&amp;gt;"useful - lots of ideas and resources to use in my curriculum"&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
@@ -109,13 +106,13 @@ Content-Length: 25158
 &amp;lt;p&amp;gt;Aim to extend your programming understanding and skill, and to provide teaching ideas and guidance suitable for higher GCSE and A level. This course is suitable for teachers with a solid grounding in Python fundamentals. &amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;You will learn to:&amp;lt;/p&amp;gt;
 &amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;write modular Python code 
-&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types 
-&amp;lt;li&amp;gt;use Python for game programming 
-&amp;lt;li&amp;gt;create a Graphical User Interface (GUI) 
-&amp;lt;li&amp;gt;design and run program tests 
-&amp;lt;li&amp;gt;write database-driven applications 
-&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s) 
+&amp;lt;li&amp;gt;write modular Python code
+&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types
+&amp;lt;li&amp;gt;use Python for game programming
+&amp;lt;li&amp;gt;create a Graphical User Interface (GUI)
+&amp;lt;li&amp;gt;design and run program tests
+&amp;lt;li&amp;gt;write database-driven applications
+&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s)
 &amp;lt;li&amp;gt;use Python for object-oriented programming&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;br&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="mailto:enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
@@ -155,13 +152,13 @@ Content-Length: 25158
 &amp;lt;p&amp;gt;Aim to extend your programming understanding and skill, and to provide teaching ideas and guidance suitable for higher GCSE and A level. This course is suitable for teachers with a solid grounding in Python fundamentals. &amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;You will learn to:&amp;lt;/p&amp;gt;
 &amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;write modular Python code 
-&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types 
-&amp;lt;li&amp;gt;use Python for game programming 
-&amp;lt;li&amp;gt;create a Graphical User Interface (GUI) 
-&amp;lt;li&amp;gt;design and run program tests 
-&amp;lt;li&amp;gt;write database-driven applications 
-&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s) 
+&amp;lt;li&amp;gt;write modular Python code
+&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types
+&amp;lt;li&amp;gt;use Python for game programming
+&amp;lt;li&amp;gt;create a Graphical User Interface (GUI)
+&amp;lt;li&amp;gt;design and run program tests
+&amp;lt;li&amp;gt;write database-driven applications
+&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s)
 &amp;lt;li&amp;gt;use Python for object-oriented programming&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;br&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="mailto:enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
