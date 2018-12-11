@@ -17,10 +17,14 @@ module CoursesHelper
   end
 
   def activity_dates(start_date, end_date)
+    return if start_date.blank? || end_date.blank?
+
     "#{Date.parse(start_date).strftime('%d %b')} - #{Date.parse(end_date).strftime('%d %b %Y')}"
   end
 
   def activity_times(start_time, end_time)
+    return if start_time.blank? || end_time.blank?
+
     "#{Time.zone.parse(start_time).strftime('%H:%M')} - #{Time.zone.parse(end_time).strftime('%H:%M')}"
   end
 end
