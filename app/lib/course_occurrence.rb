@@ -11,6 +11,10 @@ class CourseOccurrence
     @doc.xpath('.//Activity.Activity_Title/text()')
   end
 
+  def booking_url
+    @doc.xpath('.//Activity.Booking_URL/text()')
+  end
+
   def start_date
     @doc.xpath('.//Activity.Start_Date__x0028_Portal_x0029_/text()')
   end
@@ -101,6 +105,18 @@ class CourseOccurrence
 
   def address_line_1
     @doc.xpath('.//Activity_Venue_Address.Line_1/text()')
+  end
+
+  def address_line_2
+    @doc.xpath('.//Activity_Venue_Address.Line_2/text()')
+  end
+
+  def address_line_3
+    @doc.xpath('.//Activity_Venue_Address.Line_3/text()')
+  end
+
+  def address_line_4
+    @doc.xpath('.//Activity_Venue_Address.Line_4/text()')
   end
 
   def address_no

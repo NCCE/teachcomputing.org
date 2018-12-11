@@ -23,6 +23,7 @@ group :development, :test do
   gem 'guard-rspec', '~> 4.7.3', :require => false
   gem 'rubocop'
   gem 'rubocop-rspec'
+  gem 'rspec-mocks'
   gem 'rspec-rails', '~> 3.8'
   gem 'webmock'
 end

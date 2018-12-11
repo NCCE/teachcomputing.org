@@ -14,7 +14,7 @@
   <tbody class="govuk-table__body">
     <% @face_to_face_courses.each do |course| %>
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="row"><%= link_to course.activity_title, course_path(course.course_occurrence_no), {:class => 'govuk-link'} %></th>
+      <th class="govuk-table__header" scope="row"><%= link_to course.activity_title, course_path(course.course_occurrence_no), :class => 'govuk-link' %></th>
       <td class="govuk-table__cell">Face To Face</td>
     </tr>
     <% end %>
