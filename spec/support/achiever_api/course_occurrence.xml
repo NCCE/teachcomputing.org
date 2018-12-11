@@ -1,6 +1,3 @@
-HTTP/1.0 200 Connection established
-Proxy-agent: tinyproxy/1.8.4
-
 HTTP/1.1 200 OK
 Cache-Control: private, max-age=0
 Content-Type: text/xml; charset=utf-8
@@ -28,10 +25,10 @@ Content-Length: 15254
 &amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body id=Email &amp;gt;
 &amp;lt;p&amp;gt;You will gain the required knowledge to help your students:&amp;lt;/p&amp;gt;
 &amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;recognise the benefits and drawbacks of networked computers in a variety of wired and wireless configurations, and understand the technologies that make this possible 
-&amp;lt;li&amp;gt;understand how data moves around networks designed around different topologies, and the factors that affect network performance 
-&amp;lt;li&amp;gt;know the purpose of data transfer protocols including : Ethernet; Wi-Fi; TCP; IP; HTTP / HTTPS; FTP and email protocols including SMTP; IMAP and POP 
-&amp;lt;li&amp;gt;confidently describe cyber-security threats and the vulnerabilities they aim to exploit 
+&amp;lt;li&amp;gt;recognise the benefits and drawbacks of networked computers in a variety of wired and wireless configurations, and understand the technologies that make this possible
+&amp;lt;li&amp;gt;understand how data moves around networks designed around different topologies, and the factors that affect network performance
+&amp;lt;li&amp;gt;know the purpose of data transfer protocols including : Ethernet; Wi-Fi; TCP; IP; HTTP / HTTPS; FTP and email protocols including SMTP; IMAP and POP
+&amp;lt;li&amp;gt;confidently describe cyber-security threats and the vulnerabilities they aim to exploit
 &amp;lt;li&amp;gt;be able to apply security measures to a range of contexts, and know what can happen when these fail&amp;lt;br&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Outcomes&gt;
     &lt;Activity.Places_Remaining&gt;23&lt;/Activity.Places_Remaining&gt;
     &lt;Activity.Topic&gt;Computing&lt;/Activity.Topic&gt;
