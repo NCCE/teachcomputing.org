@@ -1,4 +1,4 @@
-require('net/http')
+require('rest-client')
 require('nokogiri')
 require('htmlentities')
 require_relative('course')
@@ -8,6 +8,7 @@ class Achiever
   def initialize
     @DB_CONNECTION_ID = ENV['ACHIEVER_DB_CONNECTION_ID']
     @uri = URI(ENV['ACHIEVER_API_ENDPOINT'])
+    RestClient.proxy = ENV['PROXY_URL']
   end
 
   def runWorkflow(workflowId, params = [])
@@ -33,7 +34,7 @@ class Achiever
 
     @uri.query = URI.encode_www_form({ :sXmlParams => builder.to_xml })
 
-    res = Net::HTTP.get_response(@uri)
+    res = RestClient.get(@uri.to_s)
     doc = parseStringFromXml(Nokogiri::XML(res.body))
     doc.xpath('//AchieverDataResult_1/Detail')
   end
