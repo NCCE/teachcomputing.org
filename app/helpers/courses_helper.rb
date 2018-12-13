@@ -27,4 +27,11 @@ module CoursesHelper
 
     "#{Time.zone.parse(start_time).strftime('%H:%M')} - #{Time.zone.parse(end_time).strftime('%H:%M')}"
   end
+
+  def max_fee(fees)
+    return if fees.blank?
+    sorted_fees = fees.sort { |x,y| y.fee.to_f <=> x.fee.to_f }
+
+    "£#{sorted_fees[0].fee}"
+  end
 end

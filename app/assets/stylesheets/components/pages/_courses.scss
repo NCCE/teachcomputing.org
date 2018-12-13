@@ -1,0 +1,20 @@
+.ncce-courses {
+  &__course {
+    border-top: 1px solid #979797;
+    padding: 20px 0;
+
+    &:last-of-type {
+      border-bottom: 1px solid #979797;
+    }
+  }
+
+  &__meta {
+    background: #eee;
+    padding: 10px;
+
+    span {
+      display: block;
+      margin: 10px;
+    }
+  }
+}
