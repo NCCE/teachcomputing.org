@@ -46,4 +46,16 @@ describe CoursesHelper, type: :helper do
       expect(helper.activity_times(start_time, end_time)).to eq '09:00 - 16:00'
     end
   end
+
+  describe('#max_fee') do
+    it 'returns the largest fee' do
+      fees = [
+        instance_double('CourseOccurrenceFee', 'fee': '0.00'),
+        instance_double('CourseOccurrenceFee', 'fee': '440.00'),
+        instance_double('CourseOccurrenceFee', 'fee': '150.00'),
+      ]
+
+      expect(helper.max_fee(fees)).to eq '£440.00'
+    end
+  end
 end
