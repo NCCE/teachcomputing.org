@@ -12,8 +12,22 @@
 	}
 }
 
-.ncce-footer__list {
+.ncce-footer__links {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
 	@include govuk-media-query($from: tablet) {
-		float: right;
+		justify-content: flex-end;
+		flex-direction: row;
+	}
+}
+
+.ncce-footer__list {
+	margin-bottom: 1rem;
+
+	@include govuk-media-query($from: tablet) {
+		margin-bottom: 0;
+		margin-left: 2rem;
 	}
 }
