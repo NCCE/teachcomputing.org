@@ -1,11 +1,11 @@
 .ncce-mailing {
 	background-color: $ncce-grey-y-light;
-	padding-bottom: 30px;
-	padding-top: 20px;
+	padding-bottom: 2rem;
+	padding-top: 2rem;
 
 	@include govuk-media-query($from: tablet) {
-		padding-bottom: 30px;
-		padding-top: 40px;
+		padding-bottom: 3rem;
+		padding-top: 3rem;
 	}
 }
 
@@ -29,7 +29,7 @@
 	}
 
 	@include govuk-media-query($from: desktop) {
-		margin-bottom: 20px;
+		margin-bottom: 2rem;
 	}
 }
 
@@ -38,7 +38,9 @@
 }
 
 .ncce-mailing__input {
-	border: none;
+	border-color: #979797;
+	border-width: 1px;
+	border-style: solid;
 }
 
 .ncce-mailing__footnote {

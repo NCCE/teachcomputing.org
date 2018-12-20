@@ -1,3 +1,13 @@
+.ncce-jobs-container {
+	padding-bottom: 2rem;
+	padding-top: 2rem;
+
+	@include govuk-media-query($from: tablet) {
+		padding-bottom: 3rem;
+		padding-top: 3rem;
+	}
+}
+
 .ncce-jobs__heading {
 	margin-bottom: 1rem;
 }
