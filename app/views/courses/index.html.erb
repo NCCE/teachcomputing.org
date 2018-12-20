@@ -1,28 +1,41 @@
-<h1 class="govuk-heading-xl">Dashboard</h1>
 <h2 class="govuk-heading-l">Courses</h2>
-<p class="govuk-body">The online courses are available on FutureLearn.</p>
-<p class="govuk-body">The face to face courses are at hubs/universities.</p>
-<p class="govuk-body">After you complete the course, come back here to the NCCE to track your progress towards certification.</p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">
+      The face to face courses are booked on STEM.<br />
+      The online courses are available on FutureLearn.<br />
+      After you complete the course, come back here to the NCCE to track your progress towards certification.
+    </p>
+  </div>
+</div>
 
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="col">Course Name</th>
-      <th class="govuk-table__header" scope="col">Course Type</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <% @face_to_face_courses.each do |course| %>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="row"><%= link_to course.activity_title, course_path(course.course_occurrence_no), :class => 'govuk-link' %></th>
-      <td class="govuk-table__cell">Face To Face</td>
-    </tr>
-    <% end %>
-    <% @online_courses.courses.each do |course| %>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="row"><%= link_to course[:title], course[:link] %></th>
-      <td class="govuk-table__cell">Online</td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @face_to_face_courses.each do |course| %>
+<div class="govuk-grid-row ncce-courses__course">
+  <div class="govuk-grid-column-two-thirds">
+    <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, course_path(course.course_occurrence_no), {:class => 'govuk-link'} %></a></h4>
+    <p class="govuk-body"><%= course.meta_description %></p>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
+      <span class="govuk-!-font-weight-bold"><%= course.address_town %></span>
+      <span><%= activity_dates(course.start_date, course.end_date) %></span>
+      <span class="govuk-!-font-weight-bold">Maximum fee: <%= max_fee(course.fees) %></span>
+    </p>
+  </div>
+</div>
+<% end %>
+
+<% @online_courses.courses.each do |course| %>
+<div class="govuk-grid-row ncce-courses__course">
+  <div class="govuk-grid-column-two-thirds">
+    <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], {:class => 'govuk-link'} %></h4>
+    <p class="govuk-body"><%= course[:description] %></p>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
+      <span>Online</span>
+      <span class="govuk-!-font-weight-bold">Free</span>
+    </p>
+  </div>
+</div>
+<% end %>
