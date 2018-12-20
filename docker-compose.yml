@@ -17,6 +17,8 @@ services:
     depends_on:
       - db
     environment:
+      - http_proxy=http://host.docker.internal:8888
+      - https_proxy=http://host.docker.internal:8888
       - PROXY_URL=http://host.docker.internal:8888
 volumes:
   pg-data:
