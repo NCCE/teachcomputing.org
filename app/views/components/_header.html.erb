@@ -1,26 +1,32 @@
 <header class="govuk-header" role="banner" data-module="header">
   <div class="govuk-header__container govuk-width-container">
-    <div class="govuk-header__logo">
-      <a href="/" class="govuk-header__link govuk-header__link--homepage">
-        <span class="govuk-header__logotype">
-          <span class="govuk-header__logotype-text">
-            National Centre for Computing Education
-          </span>
-        </span>
-      </a>
-    </div>
-    <div class="govuk-header__content">
-      <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
-      <nav>
-        <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Sign up', login_url, :class => 'govuk-header__link' %>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Login', login_url, :class => 'govuk-header__link' %>
-          </li>
-        </ul>
-      </nav>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-header__logo">
+          <a href="/" class="govuk-header__link govuk-header__link--homepage">
+            <span class="govuk-header__logotype">
+              <span class="govuk-header__logotype-text">
+                National Centre for Computing Education
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half ncce-header__login">
+        <div class="govuk-header__content">
+          <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+          <nav>
+            <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+              <li class="govuk-header__navigation-item govuk-header__navigation-item">
+                <%= link_to 'Sign up', login_url, :class => 'govuk-header__link' %>
+              </li>
+              <li class="govuk-header__navigation-item govuk-header__navigation-item">
+                <%= link_to 'Login', login_url, :class => 'govuk-header__link' %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
 </header>
