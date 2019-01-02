@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[5.2]
+class CreateUserDetails < ActiveRecord::Migration[5.2]
   def change
     create_table :user_details, id: :uuid do |t|
       t.datetime :last_sign_in_at
