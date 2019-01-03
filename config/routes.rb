@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   scope '/dashboard' do
-    root to: 'dashboard#index'
+    root to: 'dashboard#show'
     resources :courses, only: [:index, :show]
   end
 
