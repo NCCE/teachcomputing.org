@@ -23,7 +23,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
-      'http://localhost:3000/auth/callback'
+    ENV.fetch('STEM_OAUTH_CALLBACK_URL')
     end
   end
 end
