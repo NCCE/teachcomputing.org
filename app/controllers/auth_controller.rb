@@ -2,8 +2,9 @@ class AuthController < ApplicationController
   def callback
     auth = request.env['omniauth.auth']
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
-    user.update_last_sign_in_at!
+    user.set_user
     session[:current_user] = user
+
     redirect_to omniauth_params['returnTo'] || root_path
   end
 

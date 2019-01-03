@@ -1,5 +1,4 @@
 class User
-
   include UserDetailable
   attr_reader :id, :first_name, :last_name, :email, :stem_achiever_contact_no, :stem_credentials_access_token, :stem_credentials_refresh_token, :stem_credentials_expires_at
 
@@ -23,7 +22,11 @@ class User
     new(session['id'], session['first_name'], session['last_name'], session['email'], session['stem_achiever_contact_no'], session['stem_credentials_access_token'], session['stem_credentials_refresh_token'], session['stem_credentials_expires_at'])
   end
 
-  def update_last_sign_in_at!
-    details.update(last_sign_in_at: Time.current)
+  def set_user
+    details.update(stem_achiever_contact_no: @stem_achiever_contact_no,
+                   stem_credentials_access_token: @stem_credentials_access_token,
+                   stem_credentials_refresh_token: @stem_credentials_refresh_token,
+                   stem_credentials_expires_at: @stem_credentials_expires_at,
+                   last_sign_in_at: Time.current)
   end
 end
