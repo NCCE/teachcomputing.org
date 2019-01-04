@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_153932) do
+ActiveRecord::Schema.define(version: 2019_01_04_090138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 2019_01_02_153932) do
     t.string "stem_credentials_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_stem_credentials_access_token"
+    t.string "encrypted_stem_credentials_access_token_iv"
+    t.string "encrypted_stem_credentials_refresh_token"
+    t.string "encrypted_stem_credentials_refresh_token_iv"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
   end
 
