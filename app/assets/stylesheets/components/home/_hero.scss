@@ -14,7 +14,27 @@
 }
 
 .ncce-hero__button {
-	background-color: $ncce-dark-grey;
+	background-color: $ncce-pink;
+	box-shadow: 0 4px 0 $ncce-dark-pink;
+	font-size: 19px;
+	font-weight: bold;
+	margin: 0;
+	padding: 12px 25px;
+
+	&:hover {
+		background-color: $ncce-black;
+		box-shadow: 0 4px 0 $ncce-black;
+		outline-color: $ncce-black;
+	}
+	&:focus {
+		background-color: $ncce-black !important;
+		color: $ncce-white !important;
+		outline-color: $ncce-black !important;
+	}
+
+	@include govuk-media-query($from: desktop) {
+		margin-bottom: 20px;
+	}
 }
 
 .ncce-hero__button--link,
