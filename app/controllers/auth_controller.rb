@@ -2,7 +2,9 @@ class AuthController < ApplicationController
   def callback
     auth = request.env['omniauth.auth']
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
-    user.set_user
+    flash[:notice] = 'Welcome to NCCE' unless UserDetail.exists?(stem_user_id: auth.uid)
+    user.set_or_create_user
+
     session[:current_user] = user
 
     redirect_to omniauth_params['returnTo'] || root_path

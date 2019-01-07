@@ -26,6 +26,9 @@
   <%= render 'components/header' %>
 
   <div class="govuk-width-container">
+    <% flash.each do |key, value| %>
+      <%= value %>
+    <% end %>
     <main class="govuk-main-wrapper" id="main-content" role="main">
       <%= yield %>
     </main>
