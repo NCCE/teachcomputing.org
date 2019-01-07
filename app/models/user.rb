@@ -22,7 +22,7 @@ class User
     new(session['id'], session['first_name'], session['last_name'], session['email'], session['stem_achiever_contact_no'], session['stem_credentials_access_token'], session['stem_credentials_refresh_token'], session['stem_credentials_expires_at'])
   end
 
-  def set_user
+  def set_or_create_user
     details.update(stem_achiever_contact_no: @stem_achiever_contact_no,
                    stem_credentials_access_token: @stem_credentials_access_token,
                    stem_credentials_refresh_token: @stem_credentials_refresh_token,
