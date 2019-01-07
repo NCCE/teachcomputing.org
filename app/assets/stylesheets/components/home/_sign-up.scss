@@ -1,8 +1,5 @@
 .ncce-sign-up {
-	margin: 5px 0;
-	@include govuk-media-query($from: tablet) {
-		margin: 15px;
-	}
+	background-color: $ncce-lavender;
 
 	br {
 		display: none;
@@ -30,11 +27,6 @@
 .ncce-sign-up__aside p {
 	color: $ncce-white !important;
 }
-
-// .ncce-sign-up__aside--title {
-// 	color: $ncce-white;
-// 	font-weight: bold;
-// }
 
 .ncce-sign-up__aside--link,
 .ncce-sign-up__aside--link:visited {
@@ -68,7 +60,7 @@
 		line-height: 1.1;
 		position: absolute;
 		text-align: center;
-		bottom: 1rem;
+		top: -0.3rem;
 		width: 2rem;
 	}
 
