@@ -8,7 +8,7 @@ RSpec.describe AuthController do
         provider: 'stem',
         uid: '2074871c-eb73-4a2f-b9fd-c2fff15f97e7',
         credentials: {
-          expires_at: '1546601180',
+          expires_at: 1546601180,
           refresh_token: '27266366070255897068',
           token: '14849048797785647933'
 
@@ -25,9 +25,9 @@ RSpec.describe AuthController do
     end
 
     it 'sets current user to nil' do
-      expect(session[:current_user]).not_to be_nil
+      expect(session[:user_id]).not_to be_nil
       get logout_path
-      expect(session[:current_user]).to be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it 'redirects you to the root path' do

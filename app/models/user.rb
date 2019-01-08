@@ -1,32 +1,32 @@
-class User
-  include UserDetailable
-  attr_reader :id, :first_name, :last_name, :email, :stem_achiever_contact_no, :stem_credentials_access_token, :stem_credentials_refresh_token, :stem_credentials_expires_at
+class User < ApplicationRecord
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :stem_achiever_contact_no, presence: true
+  validates :stem_credentials_access_token, presence: true
+  validates :stem_credentials_refresh_token, presence: true
+  validates :stem_credentials_expires_at, presence: true
+  validates :stem_user_id, presence: true
+  validates :stem_user_id, uniqueness: true
 
-  def initialize(id, first_name, last_name, email, achiever_contact_no, access_token, refresh_token, expires_at)
-    @id = id
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @stem_achiever_contact_no = achiever_contact_no
-    @stem_credentials_access_token = access_token
-    @stem_credentials_refresh_token = refresh_token
-    @stem_credentials_expires_at = expires_at
-  end
+  attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
+  attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch('STEM_CREDENTIALS_REFRESH_TOKEN_KEY')
 
   def self.from_auth(id, credentials, info)
-    new(id, info.first_name, info.last_name, info.email, info.achiever_contact_no, credentials.token, credentials.refresh_token, credentials.expires_at)
+    where(stem_user_id: id).first_or_initialize.tap do |user|
+      user.stem_user_id = id
+      user.first_name = info.first_name
+      user.last_name = info.last_name
+      user.email = info.email
+      user.stem_achiever_contact_no = info.achiever_contact_no
+      user.stem_credentials_access_token = credentials.token
+      user.stem_credentials_refresh_token = credentials.refresh_token
+      user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
+      user.last_sign_in_at = Time.current
+      user.save!
+    end
   end
 
-  def self.from_session(session)
-    return nil unless session
-    new(session['id'], session['first_name'], session['last_name'], session['email'], session['stem_achiever_contact_no'], session['stem_credentials_access_token'], session['stem_credentials_refresh_token'], session['stem_credentials_expires_at'])
-  end
-
-  def set_or_create_user
-    details.update(stem_achiever_contact_no: @stem_achiever_contact_no,
-                   stem_credentials_access_token: @stem_credentials_access_token,
-                   stem_credentials_refresh_token: @stem_credentials_refresh_token,
-                   stem_credentials_expires_at: @stem_credentials_expires_at,
-                   last_sign_in_at: Time.current)
+  def self.from_session(user_id)
+    find_by(id: user_id)
   end
 end

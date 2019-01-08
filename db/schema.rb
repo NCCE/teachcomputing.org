@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 2019_01_04_090138) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "user_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
     t.datetime "last_sign_in_at"
     t.string "stem_user_id"
     t.string "stem_achiever_contact_no"
-    t.string "stem_credentials_access_token"
-    t.string "stem_credentials_refresh_token"
-    t.string "stem_credentials_expires_at"
+    t.datetime "stem_credentials_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_stem_credentials_access_token"
