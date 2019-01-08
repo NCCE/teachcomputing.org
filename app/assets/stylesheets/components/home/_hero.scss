@@ -3,11 +3,11 @@
 	background-position: calc(100% - -110px) 0%;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	margin: 5px 0;
+	margin: 0.5rem 0;
 	@include govuk-media-query($from: tablet) {
 		background-position: top right;
 		background-size: 500px;
-		margin: 15px;
+		margin: 1.5rem;
 	}
 
 	@include govuk-media-query($from: desktop) {
@@ -28,13 +28,13 @@
 	background-position: left bottom;
 	background-repeat: no-repeat;
 	background-size: 95%;
-	padding-bottom: 25px;
-	padding-top: 70px;
+	padding-bottom: 2.5rem;
+	padding-top: 7rem;
 	@include govuk-media-query($from: tablet) {
 		background-position: bottom left;
 		background-size: 72%;
 		font-size: 48px;
-		padding-top: 90px;
+		padding-top: 9rem;
 	}
 }
 

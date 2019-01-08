@@ -10,6 +10,13 @@
 	}
 }
 
+.ncce-signu-up__section {
+	margin: 1rem 0;
+	@include govuk-media-query($from: tablet) {
+		margin: 0;
+	}
+}
+
 .ncce-sign-up--button {
 	background-color: $ncce-dark-grey;
 	font-weight: bold;
@@ -20,7 +27,7 @@
 }
 
 .ncce-sign-up__aside {
-	background-color: $ncce-grey-dark;
+	background-color: $ncce-dark-x-grey;
 	padding: 1.5rem 1rem;
 }
 
