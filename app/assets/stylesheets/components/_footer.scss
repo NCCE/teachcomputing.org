@@ -13,17 +13,6 @@
 	}
 }
 
-.ncce-footer__links {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-
-	@include govuk-media-query($from: tablet) {
-		justify-content: flex-end;
-		flex-direction: row;
-	}
-}
-
 .ncce-footer__list {
 	margin-bottom: 1rem;
 
@@ -31,4 +20,8 @@
 		margin-bottom: 0;
 		margin-left: 2rem;
 	}
+}
+
+.ncce-footer__list--link {
+	color: $ncce-white !important;
 }
