@@ -1,17 +1,22 @@
-.ncce-mailing {
-	background-color: $ncce-grey-y-light;
-	padding-bottom: 2rem;
-	padding-top: 2rem;
+.ncce-stay-in-touch {
+	background-color: $ncce-dark-purple;
+	background-image: none;
+	padding-bottom: 30px;
+	padding-top: 20px;
 
 	@include govuk-media-query($from: tablet) {
-		padding-bottom: 3rem;
-		padding-top: 3rem;
+		background-image: url(/images/triangle-background.jpg);
+		background-position: top right;
+		background-repeat: no-repeat;
+		background-size: 50%;
+		padding-bottom: 30px;
+		padding-top: 40px;
 	}
 }
 
-.ncce-mailing__button {
-	background-color: $ncce-dark-grey;
-	box-shadow: 0 4px 0 $ncce-dark-grey;
+.ncce-stay-in-touch__button {
+	background-color: $ncce-pink;
+	box-shadow: 0 4px 0 $ncce-dark-pink;
 	font-size: 19px;
 	font-weight: bold;
 	margin: 0;
@@ -29,29 +34,29 @@
 	}
 
 	@include govuk-media-query($from: desktop) {
-		margin-bottom: 2rem;
+		margin-bottom: 20px;
 	}
 }
 
-.ncce-mailing__label {
+.ncce-stay-in-touch__label {
+	color: $ncce-white;
 	font-weight: bold;
 }
 
-.ncce-mailing__input {
-	border-color: #979797;
-	border-width: 1px;
-	border-style: solid;
+.ncce-stay-in-touch__input {
+	border: none;
 }
 
-.ncce-mailing__footnote {
+.ncce-stay-in-touch__heading,
+.ncce-stay-in-touch__body {
+	color: $ncce-white;
+}
+
+.ncce-stay-in-touch__footnote {
 	font-size: 14px;
-}
+	color: $ncce-white;
 
-.ncce-mailing--link {
-	color: $ncce-black !important;
-	line-height: 3rem;
-}
-
-.ncce-mailing--link-privacy {
-	color: $ncce-black !important;
+	a {
+		color: $ncce-white;
+	}
 }
