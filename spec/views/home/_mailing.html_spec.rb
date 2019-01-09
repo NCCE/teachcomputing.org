@@ -6,15 +6,15 @@ RSpec.describe('home/_mailing', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-mailing', text: 'Stay up to date')
+    expect(rendered).to have_css('.ncce-stay-in-touch__heading', text: 'Stay up to date')
   end
 
-  it 'links to the Facebook page' do
-    expect(rendered).to have_link('Like NCCE on Facebook', href: '#')
+  it 'has a correct number of labels' do
+    expect(rendered).to have_css('.ncce-stay-in-touch__label', count: 2)
   end
 
-  it 'links to the Twitter account' do
-    expect(rendered).to have_link('Follow @WeAreComputing on Twitter', href: '#')
+  it 'has a correct number of inputs' do
+    expect(rendered).to have_css('.ncce-stay-in-touch__input', count: 2)
   end
 
 end
