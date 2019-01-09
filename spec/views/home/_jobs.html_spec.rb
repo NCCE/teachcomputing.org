@@ -10,7 +10,7 @@ RSpec.describe('home/_jobs', type: :view) do
   end
 
   it('renders the correct number of links') do
-    expect(rendered).to(have_css('.ncce-jobs--link', count: 3))
+    expect(rendered).to(have_css('.govuk-link', count: 3))
   end
 
 end

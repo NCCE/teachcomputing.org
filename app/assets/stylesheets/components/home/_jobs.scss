@@ -1,4 +1,5 @@
 .ncce-jobs-container {
+	background-color: $ncce-grey-x-light;
 	padding-bottom: 2rem;
 	padding-top: 2rem;
 
@@ -27,8 +28,4 @@
 
 .ncce-jobs__list-item {
 	margin: 0.8rem 0;
-}
-
-.ncce-jobs--link {
-	color: $ncce-black !important;
 }

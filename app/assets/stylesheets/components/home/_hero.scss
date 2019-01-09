@@ -29,12 +29,12 @@
 	background-repeat: no-repeat;
 	background-size: 95%;
 	padding-bottom: 2.5rem;
-	padding-top: 7rem;
+	padding-top: 4rem;
 	@include govuk-media-query($from: tablet) {
 		background-position: bottom left;
 		background-size: 72%;
 		font-size: 48px;
-		padding-top: 9rem;
+		padding-top: 5rem;
 	}
 }
 

@@ -9,6 +9,12 @@
 	padding-top: 18px;
 	padding-bottom: 16px;
 }
+
+.ncce-header__content {
+	float: right;
+	width: 20% !important;
+}
+
 .govuk-header__logotype-text {
 	font-family: $font-family-heading;
 	font-size: 24px;
@@ -24,17 +30,5 @@
 		background-color: $ncce-pink;
 		color: $ncce-white;
 		outline-color: $ncce-pink;
-	}
-}
-
-.ncce-header__login {
-	display: flex;
-	flex-direction: column;
-	float: right;
-	justify-content: flex-start;
-
-	@include govuk-media-query($from: tablet) {
-		justify-content: flex-end;
-		flex-direction: row;
 	}
 }
