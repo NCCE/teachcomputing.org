@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/auth/callback', to: 'auth#callback', as: 'callback'
+
   root to: 'home#index'
 
   scope '/dashboard' do
@@ -11,5 +13,6 @@ Rails.application.routes.draw do
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
   get '/login', to: 'pages#page', as: :login, defaults: { page_slug: 'login' }
+  get '/logout', to: 'auth#logout', as: :logout
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
 end
