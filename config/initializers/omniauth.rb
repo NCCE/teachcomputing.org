@@ -23,7 +23,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
-    ENV.fetch('STEM_OAUTH_CALLBACK_URL')
+      ENV.fetch('STEM_OAUTH_CALLBACK_URL')
     end
   end
 end
@@ -34,3 +34,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     callback_path: '/auth/callback'
   )
 end
+
+OmniAuth.config.on_failure = AuthController.action(:failure)

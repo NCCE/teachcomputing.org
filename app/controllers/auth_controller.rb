@@ -8,6 +8,11 @@ class AuthController < ApplicationController
     redirect_to omniauth_params['returnTo'] || root_path
   end
 
+  def failure
+    flash[:alert] = 'Whoops something went wrong'
+    redirect_to root_path
+  end
+
   def logout
     reset_session
     redirect_to root_path
