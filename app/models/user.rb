@@ -25,8 +25,4 @@ class User < ApplicationRecord
       user.save!
     end
   end
-
-  def self.from_session(user_id)
-    find_by(id: user_id)
-  end
 end

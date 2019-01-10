@@ -69,14 +69,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#from_session' do
-    let(:user) { create(:user) }
-
-    it 'has the correct id' do
-      expect(User.from_session(user.id).id).to eq user.id
-    end
-  end
-
   describe 'encryption' do
     it 'encrypts stem_credentials_access_token' do
       expect(user.stem_credentials_access_token).not_to be_nil

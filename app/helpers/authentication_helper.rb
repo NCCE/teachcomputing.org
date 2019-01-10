@@ -1,5 +1,5 @@
 module AuthenticationHelper
   def current_user
-    User.from_session(session[:user_id])
+    @current_user ||= User.find_by(session[:user_id])
   end
 end
