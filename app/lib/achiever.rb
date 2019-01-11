@@ -63,12 +63,6 @@ class Achiever
     self.runWorkflow(ENV['ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID'], [courseOccurrenceNo])
   end
 
-  def fetchCourseOccurrenceFees(id)
-    courseOccurrenceNo = Parameter.new('CourseOccurrenceNo', id)
-
-    self.runWorkflow(ENV['ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID'], [courseOccurrenceNo])
-  end
-
   def parseStringFromXml(doc)
     doc.remove_namespaces!
     Nokogiri::XML(HTMLEntities.new.decode(doc.xpath('//string/text()')))
