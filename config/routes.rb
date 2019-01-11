@@ -3,10 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  scope '/dashboard' do
-    root to: 'dashboard#show'
-    resources :courses, only: [:index, :show]
-  end
+  get 'dashboard', action: :show, controller: 'dashboard'
+  resources :courses, path: '/dashboard/courses'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
