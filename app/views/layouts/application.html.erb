@@ -36,8 +36,6 @@
 
   <%= render 'components/footer' %>
 
-  <%= javascript_include_tag '/assets/govuk-frontend/all.js', nonce: true %>
-
   <%= javascript_tag nonce: true do -%>
       window.GOVUKFrontend.initAll()
   <% end -%>
