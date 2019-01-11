@@ -1,15 +1,21 @@
 .ncce-courses {
-  &__course {
-    padding: 20px 0;
-  }
+	&__course {
+		padding: 20px 0;
+	}
 
-  &__meta {
-    background: $ncce-grey-light;
-    padding: 10px;
+	&__meta {
+		background: $ncce-pink-light;
+		padding: 10px;
 
-    span {
-      display: block;
-      margin: 10px;
-    }
-  }
+		span {
+			display: block;
+			margin: 10px;
+		}
+	}
+}
+
+.ncce-courses__aside > p {
+	background-color: $ncce-dark-y-grey;
+	color: $ncce-white !important;
+	padding: 1rem;
 }
