@@ -11,7 +11,7 @@
       <div class="ncce-courses__course">
         <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, course_path(course.course_occurrence_no), {:class => 'govuk-link'} %></a></h4>
         <p class="govuk-body"><%= course.meta_description %></p>
-        <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
+        <p class="govuk-body-s ncce-courses__meta">
           <span class="govuk-!-font-weight-bold"><%= course.address_town %></span>
           <span><%= activity_dates(course.start_date, course.end_date) %></span>
         </p>
@@ -22,7 +22,7 @@
       <div class="ncce-courses__course">
         <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], {:class => 'govuk-link'} %></h4>
         <p class="govuk-body"><%= course[:description] %></p>
-        <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
+        <p class="govuk-body-s ncce-courses__meta">
           <span>Online</span>
         </p>
       </div>
