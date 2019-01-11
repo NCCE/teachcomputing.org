@@ -47,15 +47,4 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('#max_fee') do
-    it 'returns the largest fee' do
-      fees = [
-        instance_double('CourseOccurrenceFee', 'fee': '0.00'),
-        instance_double('CourseOccurrenceFee', 'fee': '440.00'),
-        instance_double('CourseOccurrenceFee', 'fee': '150.00'),
-      ]
-
-      expect(helper.max_fee(fees)).to eq '£440.00'
-    end
-  end
 end
