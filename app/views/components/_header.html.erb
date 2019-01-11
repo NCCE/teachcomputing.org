@@ -8,23 +8,39 @@
               National Centre for Computing Education
             </span>
           </span>
-        </a>
-      </div>
-
-      <div class="govuk-header__content ncce-header__content">
-        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
-
-        <nav>
-          <ul id="navigation" class="govuk-header__navigation" aria-label="Top Level Navigation">
-            <li class="govuk-header__navigation-item govuk-header__navigation-item">
-              <%= link_to 'Sign up', login_url, :class => 'govuk-header__link' %>
-            </li>
-            <li class="govuk-header__navigation-item govuk-header__navigation-item">
-              <%= link_to 'Login', login_url, :class => 'govuk-header__link' %>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        </span>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+      <% if current_user %>
+      <nav>
+        <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+          <li>
+          </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
+          </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
+          </li>
+        </ul>
+      </nav>
+      <% else %>
+      <nav>
+        <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+          <li>
+          </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <%= link_to 'Sign up', login_url, :class => 'govuk-header__link' %>
+          </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <%= link_to 'Login', login_url, :class => 'govuk-header__link' %>
+          </li>
+        </ul>
+      </nav>
+      <% end %>
+    </div>
   </div>
 </header>
 

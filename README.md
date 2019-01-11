@@ -13,6 +13,8 @@ cp .env-example .env
 
 You'll need to set up the DB Connection ID and the relevant Workflow IDs. A list of env vars for Workflow IDs can be found [here](https://github.com/NCCE/private-documentation/blob/master/APIs/stem-achiever.md).
 
+In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
+
 Build the containers:
 ```
 docker-compose build
