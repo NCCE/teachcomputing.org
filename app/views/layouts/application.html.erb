@@ -11,6 +11,8 @@
   <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
+  <link rel="icon" href='/favicon.png' />
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -35,8 +37,6 @@
   </div>
 
   <%= render 'components/footer' %>
-
-  <%= javascript_include_tag '/assets/govuk-frontend/all.js', nonce: true %>
 
   <%= javascript_tag nonce: true do -%>
       window.GOVUKFrontend.initAll()
