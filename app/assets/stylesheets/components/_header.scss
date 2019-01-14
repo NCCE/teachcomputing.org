@@ -26,3 +26,14 @@
     outline-color: $ncce-pink;
   }
 }
+
+.govuk-header__navigation {
+  float: none;
+  @include govuk-media-query($from: desktop) {
+		float: right;
+	}
+}
+
+.govuk-header__navigation-item {
+  border-color: $ncce-white;
+}
