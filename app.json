@@ -6,6 +6,9 @@
   "env": {
     "RAILS_ENV": {
       "required": true
+    },
+    "STEM_OAUTH_SITE": {
+      "required": true
     }
   },
   "formation": {
