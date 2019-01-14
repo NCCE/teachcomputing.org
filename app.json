@@ -17,7 +17,7 @@
       "required": true
     },
     "STEM_CREDENTIALS_ACCESS_TOKEN_KEY": {
-      "required": true,
+      "required": true
     },
     "STEM_OAUTH_CLIENT_ID": {
       "required": true
