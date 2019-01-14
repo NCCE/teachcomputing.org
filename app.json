@@ -21,6 +21,9 @@
     },
     "SENTRY_DSN": {
       "required": true
+    },
+    "STEM_OAUTH_CLIENT_SECRET": {
+      "required": true
     }
   },
   "formation": {
