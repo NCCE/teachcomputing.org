@@ -11,6 +11,9 @@ class User < ApplicationRecord
   attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
   attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch('STEM_CREDENTIALS_REFRESH_TOKEN_KEY')
 
+  has_many :achievements, dependent: :restrict_with_exception
+  has_many :activities, through: :achievements
+
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
       user.stem_user_id = id
