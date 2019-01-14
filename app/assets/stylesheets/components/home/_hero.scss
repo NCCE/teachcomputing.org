@@ -1,7 +1,17 @@
 .ncce-hero {
-	margin: 5px 0;
+	background-image: url(/images/dots.svg);
+	background-position: calc(100% - -110px) 0%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin: 0.5rem 0;
 	@include govuk-media-query($from: tablet) {
-		margin: 15px;
+		background-position: top right;
+		background-size: 500px;
+		margin: 1.5rem;
+	}
+
+	@include govuk-media-query($from: desktop) {
+		background-size: 800px;
 	}
 
 	br {
@@ -13,8 +23,19 @@
 	}
 }
 
-.ncce-hero__button {
-	background-color: $ncce-dark-grey;
+.ncce-hero__heading {
+	background-image: url(/images/line.png);
+	background-position: left bottom;
+	background-repeat: no-repeat;
+	background-size: 95%;
+	padding-bottom: 2.5rem;
+	padding-top: 4rem;
+	@include govuk-media-query($from: tablet) {
+		background-position: bottom left;
+		background-size: 72%;
+		font-size: 48px;
+		padding-top: 5rem;
+	}
 }
 
 .ncce-hero__button--link,
