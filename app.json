@@ -6,6 +6,24 @@
   "env": {
     "RAILS_ENV": {
       "required": true
+    },
+    "STEM_OAUTH_SITE": {
+      "required": true
+    },
+    "STEM_OAUTH_AUTH_URL": {
+      "required": true
+    },
+    "STEM_OAUTH_ACCESS_TOKEN_URL": {
+      "required": true
+    },
+    "STEM_OAUTH_CLIENT_ID": {
+      "required": true
+    },
+    "SENTRY_DSN": {
+      "required": true
+    },
+    "STEM_OAUTH_CLIENT_SECRET": {
+      "required": true
     }
   },
   "formation": {
