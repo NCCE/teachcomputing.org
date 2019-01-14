@@ -1,8 +1,5 @@
 .ncce-sign-up {
-	margin: 5px 0;
-	@include govuk-media-query($from: tablet) {
-		margin: 15px;
-	}
+	background-color: $ncce-lavender;
 
 	br {
 		display: none;
@@ -10,6 +7,13 @@
 		@include govuk-media-query($from: tablet) {
 			display: block;
 		}
+	}
+}
+
+.ncce-signu-up__section {
+	margin: 1rem 0;
+	@include govuk-media-query($from: tablet) {
+		margin: 0;
 	}
 }
 
@@ -23,14 +27,18 @@
 }
 
 .ncce-sign-up__aside {
-	background-color: $ncce-grey-light;
-	padding-bottom: 1.5rem;
+	background-color: $ncce-dark-x-grey;
+	padding: 1.5rem 1rem;
+}
+
+.ncce-sign-up__aside p {
+	color: $ncce-white !important;
 }
 
 .ncce-sign-up__aside--link,
 .ncce-sign-up__aside--link:visited {
 	background-color: none;
-	color: $ncce-black !important;
+	color: $ncce-white !important;
 }
 
 .ncce-sign-up--link-white,
@@ -45,7 +53,7 @@
 
 .ncce-sign-up__list--item {
 	list-style: none;
-	margin-bottom: 1rem;
+	padding-bottom: 1rem;
 	padding-left: 2rem;
 	position: relative;
 
@@ -59,7 +67,7 @@
 		line-height: 1.1;
 		position: absolute;
 		text-align: center;
-		bottom: 1rem;
+		top: -0.3rem;
 		width: 2rem;
 	}
 

@@ -1,5 +1,5 @@
 .ncce-partners {
-	background-color: $ncce-grey-y-light;
+	background-color: $ncce-dark-x-grey;
 }
 
 .ncce-partners__item {
@@ -56,7 +56,11 @@
 	}
 }
 
+.ncce-partners__notice {
+	color: $ncce-white;
+}
+
 .ncce-partners__notice-link,
 .ncce-partners__notice-link:visited {
-	color: $ncce-black !important;
+	color: $ncce-white;
 }

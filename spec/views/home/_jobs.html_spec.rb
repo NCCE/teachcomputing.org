@@ -6,11 +6,11 @@ RSpec.describe('home/_jobs', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-jobs-container', text: 'Get involved')
+    expect(rendered).to have_css('.ncce-jobs-container', text: 'Join our team')
   end
 
-  it('renders the correct number of subtitles') do
-    expect(rendered).to(have_css('.ncce-jobs__heading', count: 3))
+  it('renders the correct number of links') do
+    expect(rendered).to(have_css('.govuk-link', count: 3))
   end
 
 end
