@@ -5,17 +5,29 @@ RSpec.describe DashboardController do
   let(:achievements) { create(:achievements, user: user) }
 
   describe '#show' do
-    before do
-      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-      get dashboard_path
+    describe 'while logged in' do
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+        get dashboard_path
+      end
+
+      it 'assigns the users achievements' do
+        expect(assigns(:achievements)).to eq user.achievements
+      end
+
+      it 'renders the correct template' do
+        expect(response).to render_template('show')
+      end
     end
 
-    it 'assigns the users achievements' do
-      expect(assigns(:achievements)).to eq user.achievements
-    end
+    describe 'while logged out' do
+      before do
+        get dashboard_path
+      end
 
-    it 'renders the correct template' do
-      expect(response).to render_template('show')
+      it 'should redirect to login' do
+        expect(response).to redirect_to(login_path)
+      end
     end
   end
 end
