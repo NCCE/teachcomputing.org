@@ -6,6 +6,7 @@ ruby '2.5.3'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
+gem 'ddtrace', '~> 0.18.2'
 gem 'htmlentities', '~> 4.3'
 gem 'nokogiri', '~> 1.8'
 gem 'oauth2', '~> 1.4.1'
