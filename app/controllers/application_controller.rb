@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include AuthenticationHelper
   before_action :authenticate
 
   def authenticate
