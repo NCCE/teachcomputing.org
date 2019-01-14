@@ -6,11 +6,11 @@ RSpec.describe('home/_sign-up', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-sign-up', text: 'Sign up to the NCCE')
+    expect(rendered).to have_css('.ncce-sign-up', text: 'Sign up')
   end
 
   it 'links to the Sign up section' do
-    expect(rendered).to have_link('Sign up to the NCCE', href: '#')
+    expect(rendered).to have_link('Sign up', href: '#')
   end
 
   it('renders the correct number of bullets') do
