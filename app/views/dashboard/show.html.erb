@@ -1,2 +1,5 @@
 <h1 class="govuk-heading-xl">Dashboard</h1>
-<p class="govuk-body">Find me in app/views/dashboard/index.html.erb</p>
+<h2 class="govuk-heading-l">Your Activity</h2>
+<% @achievements.each do |achievement| %>
+  <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
+<% end %>
