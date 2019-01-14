@@ -31,6 +31,28 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:stem_user_id) }
   end
 
+  describe 'encryption' do
+    it 'encrypts stem_credentials_access_token' do
+      expect(user.stem_credentials_access_token).not_to be_nil
+      expect(user.encrypted_stem_credentials_access_token).not_to eq user.stem_credentials_access_token
+    end
+
+    it 'encrypts stem_credentials_refresh_token' do
+      expect(user.stem_credentials_refresh_token).not_to be_nil
+      expect(user.encrypted_stem_credentials_refresh_token).not_to eq user.stem_credentials_refresh_token
+    end
+  end
+
+  describe 'associations' do
+    it 'has_many achievements' do
+      expect(user).to have_many(:achievements)
+    end
+
+    it 'has_many activities through achievements' do
+      expect(user).to have_many(:activities).through(:achievements)
+    end
+  end
+
   describe '#from_auth' do
     it 'has the correct id' do
       expect(user.stem_user_id).to eq uid
@@ -66,18 +88,6 @@ RSpec.describe User, type: :model do
 
     it 'has the last sign in date set' do
       expect(user.last_sign_in_at.today?).to be_truthy
-    end
-  end
-
-  describe 'encryption' do
-    it 'encrypts stem_credentials_access_token' do
-      expect(user.stem_credentials_access_token).not_to be_nil
-      expect(user.encrypted_stem_credentials_access_token).not_to eq user.stem_credentials_access_token
-    end
-
-    it 'encrypts stem_credentials_refresh_token' do
-      expect(user.stem_credentials_refresh_token).not_to be_nil
-      expect(user.encrypted_stem_credentials_refresh_token).not_to eq user.stem_credentials_refresh_token
     end
   end
 end

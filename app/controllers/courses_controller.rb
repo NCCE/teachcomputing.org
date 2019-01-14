@@ -2,6 +2,7 @@ require_relative('../lib/achiever')
 require_relative('../lib/course_occurrence')
 
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :create_achiever, only: [:index]
 
   def index
