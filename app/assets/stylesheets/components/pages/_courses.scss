@@ -18,7 +18,17 @@
 .ncce-courses-aside {
 	background-color: $ncce-dark-y-grey;
 	padding: 1rem;
-<<<<<<< HEAD
+
+	&__text {
+		color: $ncce-white;
+	}
+
+	&__link {
+		color: $ncce-white;
+		&:hover {
+			color: $ncce-grey-x-light;
+		}
+	}
 }
 
 .ncce-courses__meta--icon {
@@ -39,17 +49,3 @@
 		width: 2rem;
 	}
 }
-=======
-
-	&__text {
-		color: $ncce-white;
-	}
-
-	&__link {
-		color: $ncce-white;
-		&:hover {
-			color: $ncce-grey-x-light;
-		}
-	}
-}
->>>>>>> cef90e41b0876302359275b54a51f0bf191e89ce
