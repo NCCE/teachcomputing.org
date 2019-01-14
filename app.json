@@ -16,6 +16,9 @@
     "STEM_OAUTH_ACCESS_TOKEN_URL": {
       "required": true
     },
+    "STEM_OAUTH_CLIENT_ID": {
+      "required": true
+    },
     "SENTRY_DSN": {
       "required": true
     }
