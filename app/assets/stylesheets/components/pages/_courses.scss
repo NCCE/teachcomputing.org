@@ -19,3 +19,22 @@
 	color: $ncce-white !important;
 	padding: 1rem;
 }
+
+.ncce-courses__meta--icon {
+	font-weight: bold;
+	padding-left: 2rem;
+	position: relative;
+
+	&:before {
+		background-image: url('/images/map-pin.png');
+		display: inline-block;
+		font-size: 2rem;
+		font-weight: 700;
+		left: 0;
+		line-height: 1.1;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: 2rem;
+	}
+}
