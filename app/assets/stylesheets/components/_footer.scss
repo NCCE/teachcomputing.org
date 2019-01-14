@@ -1,5 +1,6 @@
 .ncce-footer {
 	background-color: $ncce-dark-x-grey;
+	border-top: none;
 	padding: 2rem 0;
 }
 
@@ -13,7 +14,10 @@
 }
 
 .ncce-footer__list {
+	margin-bottom: 1rem;
+
 	@include govuk-media-query($from: tablet) {
-		float: right;
+		margin-bottom: 0;
+		margin-left: 2rem;
 	}
 }
