@@ -47,4 +47,9 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe('#stem_course_link') do
+    it 'returns the link to the course page on stem.org.uk' do
+      expect(helper.stem_course_link('01de2624')).to eq 'https://stem.org.uk/cpdredirect/01de2624'
+    end
+  end
 end

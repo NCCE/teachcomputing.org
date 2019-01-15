@@ -9,7 +9,7 @@
 
     <% @face_to_face_courses.each do |course| %>
       <div class="ncce-courses__course">
-        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, course_path(course.course_occurrence_no), {:class => 'govuk-link'} %></a></h4>
+        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
         <p class="govuk-body"><%= course.meta_description %></p>
         <p class="govuk-body-s ncce-courses__meta">
           <span class="ncce-courses__meta--icon"><%= course.address_town %></span>
@@ -20,7 +20,7 @@
 
     <% @online_courses.courses.each do |course| %>
       <div class="ncce-courses__course">
-        <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], {:class => 'govuk-link'} %></h4>
+        <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], class: 'govuk-link' %></h4>
         <p class="govuk-body"><%= course[:description] %></p>
         <p class="govuk-body-s ncce-courses__meta">
           <span class="ncce-courses__meta--icon">Online</span>
