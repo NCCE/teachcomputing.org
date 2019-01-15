@@ -1,6 +1,5 @@
 require('nokogiri')
 require_relative('./achiever')
-require_relative('./course_occurrence_fee')
 
 class CourseOccurrence
   def initialize(id)

@@ -47,15 +47,9 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('#max_fee') do
-    it 'returns the largest fee' do
-      fees = [
-        instance_double('CourseOccurrenceFee', 'fee': '0.00'),
-        instance_double('CourseOccurrenceFee', 'fee': '440.00'),
-        instance_double('CourseOccurrenceFee', 'fee': '150.00'),
-      ]
-
-      expect(helper.max_fee(fees)).to eq '£440.00'
+  describe('#stem_course_link') do
+    it 'returns the link to the course page on stem.org.uk' do
+      expect(helper.stem_course_link('01de2624')).to eq 'https://stem.org.uk/cpdredirect/01de2624'
     end
   end
 end

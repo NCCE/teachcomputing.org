@@ -3,12 +3,6 @@ require('nokogiri')
 class Course
   def initialize(doc)
     @doc = doc
-    @fees = CourseOccurrenceFeeArray.new
-    @fees.fetchCourseOccurrenceFees(self.course_occurrence_no)
-  end
-
-  def fees
-    @fees
   end
 
   def activity_code
