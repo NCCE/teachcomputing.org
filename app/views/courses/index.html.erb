@@ -12,7 +12,7 @@
 <% @face_to_face_courses.each do |course| %>
 <div class="govuk-grid-row ncce-courses__course">
   <div class="govuk-grid-column-two-thirds">
-    <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, course_path(course.course_occurrence_no), {:class => 'govuk-link'} %></a></h4>
+    <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
     <p class="govuk-body"><%= course.meta_description %></p>
   </div>
   <div class="govuk-grid-column-one-third">
@@ -28,7 +28,7 @@
 <% @online_courses.courses.each do |course| %>
 <div class="govuk-grid-row ncce-courses__course">
   <div class="govuk-grid-column-two-thirds">
-    <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], {:class => 'govuk-link'} %></h4>
+    <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], class: 'govuk-link' %></h4>
     <p class="govuk-body"><%= course[:description] %></p>
   </div>
   <div class="govuk-grid-column-one-third">
