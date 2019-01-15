@@ -1,8 +1,10 @@
+// Override Gov UK fonts
+@import 'settings/_fonts.scss';
+
 @import 'govuk-frontend/all';
 
 // import NCCE settings
 @import 'settings/_colors.scss';
-@import 'settings/_fonts.scss';
 @import 'settings/_links.scss';
 @import 'settings/_section-breaks.scss';
 @import 'settings/_typography.scss';
@@ -13,6 +15,7 @@
 @import 'components/_header.scss';
 @import 'components/_feedback.scss';
 @import 'components/_button.scss';
+@import 'components/_aside.scss';
 @import 'components/home/_hero.scss';
 @import 'components/home/_jobs.scss';
 @import 'components/home/_mailing.scss';
