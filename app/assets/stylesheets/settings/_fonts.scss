@@ -1,4 +1,9 @@
+// Use Roboto included from Google Fonts
 $font-family-body: 'Roboto', sans-serif !default;
+// Override Gov UK fonts (need to be set before the govuk code is imported - prevents 404's too)
+$govuk-font-family: $font-family-body;
+$govuk-font-family-tabular: $font-family-body;
+
 $font-family-heading: 'Objectivity Bold', sans-serif !default;
 
 @font-face {
