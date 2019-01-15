@@ -34,4 +34,8 @@ module CoursesHelper
 
     "£#{sorted_fees[0].fee}"
   end
+
+  def stem_course_link(template_no)
+    "https://stem.org.uk/cpdredirect/#{template_no}"
+  end
 end

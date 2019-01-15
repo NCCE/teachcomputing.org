@@ -12,11 +12,6 @@ class CoursesController < ApplicationController
     render :index
   end
 
-  def show
-    @course = CourseOccurrence.new(params[:id])
-    render :show
-  end
-
   private
 
   def create_achiever
