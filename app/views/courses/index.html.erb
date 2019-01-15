@@ -6,36 +6,38 @@
       The online courses are available on FutureLearn.<br />
       After you complete the course, come back here to the NCCE to track your progress towards certification.
     </p>
+
+    <% @face_to_face_courses.each do |course| %>
+      <div class="ncce-courses__course">
+        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
+        <p class="govuk-body"><%= course.meta_description %></p>
+        <p class="govuk-body-s ncce-courses__meta">
+          <span class="ncce-courses__meta--icon"><%= course.address_town %></span>
+          <span><%= activity_dates(course.start_date, course.end_date) %></span>
+        </p>
+      </div>
+    <% end %>
+
+    <% @online_courses.courses.each do |course| %>
+      <div class="ncce-courses__course">
+        <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], class: 'govuk-link' %></h4>
+        <p class="govuk-body"><%= course[:description] %></p>
+        <p class="govuk-body-s ncce-courses__meta">
+          <span class="ncce-courses__meta--icon">Online</span>
+        </p>
+      </div>
+    <% end %>
   </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="ncce-courses-aside">
+      <p class="govuk-body-s ncce-courses-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
+      knowledge where you need most support.</p>
+      <p class="govuk-body-s ncce-courses-aside__text"><a href="#" class="ncce-courses-aside__link">Download Diagnostic Tool PDF</a></p>
+    </aside>
+  </div>
+
 </div>
 
-<% @face_to_face_courses.each do |course| %>
-<div class="govuk-grid-row ncce-courses__course">
-  <div class="govuk-grid-column-two-thirds">
-    <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
-    <p class="govuk-body"><%= course.meta_description %></p>
-  </div>
-  <div class="govuk-grid-column-one-third">
-    <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
-      <span class="govuk-!-font-weight-bold"><%= course.address_town %></span>
-      <span><%= activity_dates(course.start_date, course.end_date) %></span>
-      <span class="govuk-!-font-weight-bold">Maximum fee: <%= max_fee(course.fees) %></span>
-    </p>
-  </div>
-</div>
-<% end %>
 
-<% @online_courses.courses.each do |course| %>
-<div class="govuk-grid-row ncce-courses__course">
-  <div class="govuk-grid-column-two-thirds">
-    <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], class: 'govuk-link' %></h4>
-    <p class="govuk-body"><%= course[:description] %></p>
-  </div>
-  <div class="govuk-grid-column-one-third">
-    <p class="govuk-body govuk-!-font-size-14 ncce-courses__meta">
-      <span>Online</span>
-      <span class="govuk-!-font-weight-bold">Free</span>
-    </p>
-  </div>
-</div>
-<% end %>
+
