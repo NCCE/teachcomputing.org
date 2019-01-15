@@ -1,7 +1,15 @@
 .ncce-login__aside {
-	background-color: $ncce-grey-light;
+	background-color: $ncce-dark-y-grey;
 	padding: 1rem;
-}
-.ncce-login-button {
-	background-color: $ncce-dark-grey;
+
+	&--text {
+		color: $ncce-white;
+	}
+
+	&--link {
+		color: $ncce-white;
+		&:hover {
+			color: $ncce-grey-x-light;
+		}
+	}
 }
