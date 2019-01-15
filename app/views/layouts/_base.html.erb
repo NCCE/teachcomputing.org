@@ -34,6 +34,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', nonce: true %>
 
@@ -62,6 +63,7 @@
   <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
   <%= render 'components/header' %>
+  <%= render 'components/feedback' %>
 
   <%= yield :content %>
 

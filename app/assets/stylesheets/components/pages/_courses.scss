@@ -15,23 +15,6 @@
 	}
 }
 
-// Shift up to generic component?
-.ncce-courses-aside {
-	background-color: $ncce-dark-y-grey;
-	padding: 1rem;
-
-	&__text {
-		color: $ncce-white;
-	}
-
-	&__link {
-		color: $ncce-white;
-		&:hover {
-			color: $ncce-grey-x-light;
-		}
-	}
-}
-
 .ncce-courses__meta--icon {
 	font-weight: bold;
 	padding-left: 1rem;
