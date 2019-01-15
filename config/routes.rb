@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get 'dashboard', action: :show, controller: 'dashboard'
-  resources :courses, path: '/dashboard/courses'
+  resources :courses, path: '/dashboard/courses', only: [:index]
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
