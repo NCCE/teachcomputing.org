@@ -3,12 +3,15 @@
 	background-color: $ncce-dark-y-grey;
 	padding: 1rem;
 
-	&__text {
+	&__text,
+	&__title {
 		color: $ncce-white;
 	}
 
-	&__link {
+	&__link,
+	&__link:visited {
 		color: $ncce-white;
+		text-decoration: underline;
 		&:hover {
 			color: $ncce-grey-x-light;
 		}
