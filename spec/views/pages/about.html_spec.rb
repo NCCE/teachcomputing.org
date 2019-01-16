@@ -6,14 +6,14 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-login__title', text: 'Sign up')
+    expect(rendered).to have_css('.ncce-about__title', text: 'About')
   end
 
-  it 'button to sign up' do
-    expect(rendered).to have_css('.ncce-login__button', text: 'Sign up')
+  it 'links to consortium' do
+    expect(rendered).to have_css('.govuk-link', count: 3)
   end
 
-  it 'links to the Stem account' do
-    expect(rendered).to have_link('Sign up', href: signup_stem_path)
+  it 'links to the About page' do
+    expect(rendered).to have_link('Find out more', href: '/about')
   end
 end
