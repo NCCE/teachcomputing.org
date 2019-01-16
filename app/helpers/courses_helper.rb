@@ -19,7 +19,7 @@ module CoursesHelper
   def activity_dates(start_date, end_date)
     return if start_date.blank? || end_date.blank?
 
-    "#{Date.parse(start_date).strftime('%d %b')} - #{Date.parse(end_date).strftime('%d %b %Y')}"
+    "#{Date.parse(start_date).strftime('%d %B')} - #{Date.parse(end_date).strftime('%d %B %Y')}"
   end
 
   def activity_times(start_time, end_time)
@@ -35,7 +35,12 @@ module CoursesHelper
     "£#{sorted_fees[0].fee}"
   end
 
-  def stem_course_link(template_no)
-    "https://stem.org.uk/cpdredirect/#{template_no}"
+  def stem_course_link(course_template_no)
+    "https://www.stem.org.uk/cpdredirect/#{course_template_no}"
+  end
+
+  def stripped_summary(string)
+    unescaped_str = CGI::unescapeHTML(string)
+    strip_tags(unescaped_str).truncate(256)
   end
 end
