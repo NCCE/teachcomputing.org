@@ -3,3 +3,6 @@
 <% @achievements.each do |achievement| %>
   <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
 <% end %>
+<% @contact_booking_list.each do |booking| %>
+  <%= booking.activity_title %> – <%= booking.enrolment_status %>
+<% end %>
