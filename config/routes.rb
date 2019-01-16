@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#page', as: :login, defaults: { page_slug: 'login' }
   get '/logout', to: 'auth#logout', as: :logout
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
+  get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
 end
