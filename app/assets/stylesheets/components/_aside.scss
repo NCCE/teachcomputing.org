@@ -3,9 +3,13 @@
 	background-color: $ncce-dark-y-grey;
 	padding: 1rem;
 
-	&__text,
+	&__text {
+		color: $ncce-white;
+	}
+
 	&__title {
 		color: $ncce-white;
+		font-weight: 700;
 	}
 
 	&__link,
