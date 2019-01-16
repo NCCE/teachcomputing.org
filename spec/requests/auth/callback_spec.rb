@@ -42,7 +42,7 @@ RSpec.describe AuthController do
             expires_at: 1_546_601_180,
             refresh_token: '27266366070255897068',
             token: '14849048797785647933'
-  
+
           },
           info: {
             achiever_contact_no: 'b44cb53f-c690-4535-bd79-89e893337ec6',
@@ -52,7 +52,7 @@ RSpec.describe AuthController do
           }
         )
       end
-      
+
       it 'redirects to the path stated in returnTo' do
         get callback_path
         expect(response).to redirect_to('/test')
@@ -69,7 +69,7 @@ RSpec.describe AuthController do
             expires_at: 1_546_601_180,
             refresh_token: '27266366070255897068',
             token: '14849048797785647933'
-  
+
           },
           info: {
             achiever_contact_no: 'b44cb53f-c690-4535-bd79-89e893337ec6',
@@ -82,7 +82,7 @@ RSpec.describe AuthController do
 
       it 'redirects to the dashboard path' do
         get callback_path
-        expect(response).to redirect_to('/')
+        expect(response).to redirect_to('/dashboard')
       end
     end
   end
