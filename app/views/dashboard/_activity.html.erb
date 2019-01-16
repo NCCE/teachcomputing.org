@@ -1,0 +1,23 @@
+
+<h3 class="govuk-heading-m">Your progress</h3>
+<p class="govuk-body">A short paragraph about your activities being logged here. 
+  Soon we will launch credits feature that will help you track your progress towards 
+  certification. <a href="#" class="govuk-link">Read more about certification</a></p>
+    
+<ul class="govuk-list ncce-activity-list">
+  <li class="ncce-activity-list__item">
+      <strong>Signed up</strong> to NCCE
+      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+  </li>
+  <li class="ncce-activity-list__item">
+      <strong>Completed online course</strong> Object-oriented Programming in Python
+      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+  </li>
+  <% @achievements.each do |achievement| %>
+      <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
+  <% end %>
+  <li class="ncce-activity-list__item">
+      <strong>Add a CPD Activity</strong>
+      <span class="ncce-activity-list__item-add-form"><select name="" id=""></select><button>Add</button></span>
+  </li>
+</ul>

@@ -1,5 +1,29 @@
-<h1 class="govuk-heading-xl">Dashboard</h1>
-<h2 class="govuk-heading-l">Your Activity</h2>
-<% @achievements.each do |achievement| %>
-  <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
-<% end %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <h2 class="govuk-heading-l">Your Dashboard</h2>
+    <p class="govuk-body">Welcome to your personal dashboard where you can discover and book
+      face-to-face and online training courses, and track your progress towards certification></p>
+    <%= render 'dashboard/activity' %>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Interested in teaching Computer Science at GCSE level?</h3>
+            <p class="govuk-body">If you don’t have a computing qualification, you may be eligible for a bursary towards your training.</p>
+            <p class="govuk-body"><a href="#" class="govuk-link">Check your bursary availability</a></p>
+            <p class="govuk-body">If you need help finding a course that’s suitable for you, use our diagnostic tool to identify the areas of subject knowledge where you need most support.
+</p>
+            <p class="govuk-body"><a href="#" class="govuk-link">Download Diagnostic Tool PDF</a></p>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <aside class="ncce-aside">
+              <p class="govuk-body-s ncce-aside__title">Find courses</p>
+              <p class="govuk-body-s ncce-aside__text">See the list of current face to face and online courses.
+</p>
+              <p class="govuk-body-s"><a href="/about" role="button" draggable="false" class="govuk-button ncce-button__pink ncce-aside__button">Find courses</a></p>
+            </aside>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
