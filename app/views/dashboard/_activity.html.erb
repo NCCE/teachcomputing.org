@@ -9,15 +9,24 @@
       <strong>Signed up</strong> to NCCE
       <span class="ncce-activity-list__item-check-mark">&#9745;</span>
   </li>
+  <%# Remove when we do dynamic data %>
   <li class="ncce-activity-list__item">
       <strong>Completed online course</strong> Object-oriented Programming in Python
       <span class="ncce-activity-list__item-check-mark">&#9745;</span>
   </li>
-  <% @achievements.each do |achievement| %>
-      <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
+  <% if false %>
+    <%# Reinstate when we do dynamic data %>
+    <% @achievements.each do |achievement| %>
+        <%= achievement.activity.title %>: <%= achievement.activity.credit %>
+    <% end %>
   <% end %>
   <li class="ncce-activity-list__item">
       <strong>Add a CPD Activity</strong>
-      <span class="ncce-activity-list__item-add-form"><select name="" id=""></select><button>Add</button></span>
+      <span class="govuk-form-group ncce-activity-form">
+        <%# The design doesn't have a label, but there should be one for accessibility? %>
+        <label class="govuk-label ncce-activity-form__label" for="choose-activity">Choose Activity</label>
+        <select name="" id="choose-activity" class="govuk-select ncce-activity-form__select"><option value="">Select an activity</option></select>
+        <button class="govuk-button ncce-button__pink ncce-activity-form__button">Add</button>
+      </span>
   </li>
 </ul>
