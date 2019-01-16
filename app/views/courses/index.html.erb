@@ -9,12 +9,17 @@
 
     <% @face_to_face_courses.each do |course| %>
       <div class="ncce-courses__course">
-        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.activity_title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
-        <p class="govuk-body"><%= course.meta_description %></p>
-        <p class="govuk-body-s ncce-courses__meta">
-          <span class="ncce-courses__meta--icon"><%= course.address_town %></span>
-          <span><%= activity_dates(course.start_date, course.end_date) %></span>
-        </p>
+        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.title, stem_course_link(course.course_template_no), class: 'govuk-link' %></a></h4>
+        <p class="govuk-body"><%= stripped_summary(course.summary) %></p>
+        <div class="govuk-body-s ncce-courses__meta">
+          <% @face_to_face_course_occurrences.each do |oc| %>
+            <% next unless oc.course_template_no == course.course_template_no %>
+            <div class="ncce-courses__meta-item">
+              <span class="ncce-courses__meta--icon"><%= oc.address_town %></span>
+              <span><%= activity_dates(oc.start_date, oc.end_date) %></span>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
