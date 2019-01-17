@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
-  root to: 'home#index'
+  root to: 'pages#home', action: :home
 
   get 'dashboard', action: :show, controller: 'dashboard'
   resources :courses, path: '/dashboard/courses', only: [:index]
@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout', as: :logout
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
+  get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
 end

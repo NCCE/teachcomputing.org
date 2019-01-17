@@ -1,0 +1,33 @@
+
+<h3 class="govuk-heading-m">Your progress</h3>
+<p class="govuk-body">A short paragraph about your activities being logged here. Soon we will launch credits feature that will help you track your progress towards certification. <a href="#" class="govuk-link">Read more about certification</a></p>
+
+<ul class="govuk-list ncce-activity-list">
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"><strong>Signed up</strong> to NCCE</span>
+    <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+  </li>
+  <%# Remove when we do dynamic data %>
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"><strong>Completed online course</strong> Object-oriented Programming in Python</span>
+    <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+  </li>
+  <% if false %>
+    <%# Reinstate when we do dynamic data %>
+    <% @achievements.each do |achievement| %>
+      <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
+    <% end %>
+    <% @delegate_course_list.each do |course| %>
+      <%= course.activity_title %> – <%= course.enrolment_status %>
+    <% end %>
+  <% end %>
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>
+    <span class="govuk-form-group ncce-activity-form">
+      <%# The design doesn't have a label, but there should be one for accessibility? %>
+      <label class="govuk-label ncce-activity-form__label" for="choose-activity">Choose Activity</label>
+      <select name="" id="choose-activity" class="govuk-select ncce-activity-form__select"><option value="">Select an activity</option></select>
+      <button class="govuk-button ncce-button__pink ncce-activity-form__button">Add</button>
+    </span>
+  </li>
+</ul>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('home/_hero', type: :view) do
+RSpec.describe('pages/home/_hero', type: :view) do
   before do
     render
   end
@@ -14,6 +14,6 @@ RSpec.describe('home/_hero', type: :view) do
   end
 
   it 'links to the About section' do
-    expect(rendered).to have_link('Explore our offer', href: '/about')
+    expect(rendered).to have_link('Explore our offer', href: '/offer')
   end
 end
