@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe('dashboard/_activity', type: :view) do
-  let(:user) { create(:user) }
-  let(:achievements) { create(:achievements, user: user) }
 
   before do
+    delegate_course = double(Object, activity_title: 'Test Course')
+    assign(:delegate_course_list, [delegate_course])
     render
   end
 
@@ -12,8 +12,8 @@ RSpec.describe('dashboard/_activity', type: :view) do
     expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to NCCE')
   end
 
-  it 'has the dummy activity' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Completed online course Object-oriented Programming in Python')
+  it 'has the mock course' do
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Test Course')
   end
 
   it 'has the form item' do

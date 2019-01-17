@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe('dashboard/show', type: :view) do
-  let(:user) { create(:user) }
-  let(:achievements) { create(:achievements, user: user) }
 
   before do
+    assign(:delegate_course_list, [])
     render
   end
 
