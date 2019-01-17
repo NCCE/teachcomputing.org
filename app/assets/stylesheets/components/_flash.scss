@@ -1,0 +1,21 @@
+.ncce-alert {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  margin: 20px 0;
+  padding-left: 14px;
+  align-items: center;
+  color: $ncce-dark-x-grey;
+}
+
+.ncce-alert {
+  font-size: 19px;
+
+  &__notice {
+		background-color: $ncce-blue-flash;
+  }
+
+  &__error {
+		background-color: $ncce-pink-flash;
+	}
+}

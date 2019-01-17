@@ -16,7 +16,7 @@
             </div>
             <p class="govuk-body ncce-stay-in-touch__footnote">From time to time the consortium will contact you with updates. We will only use your data in accordance with the terms of our <a href="/privacy.html" class="govuk-link ncce-link__on-dark">privacy policy</a>.</p>
             <input type="submit" class="govuk-button ncce-stay-in-touch__button" name="submit" id="submit" value="Get updates">
-            <script type="text/javascript" id="0.80171781796847">
+            <%= javascript_tag id: '0.80171781796847', nonce: true do -%>
               (function(){
                 var script			= document.getElementById('0.80171781796847');
                 var form			= script.parentNode;
@@ -43,7 +43,7 @@
                 });
 
               })();
-          </script>
+            <% end -%>
           </form>
         </div>
       </div>
