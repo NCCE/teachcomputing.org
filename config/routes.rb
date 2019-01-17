@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
-  root to: 'home#index'
+  root to: 'pages#home', action: :home
 
   get 'dashboard', action: :show, controller: 'dashboard'
   resources :courses, path: '/dashboard/courses', only: [:index]
