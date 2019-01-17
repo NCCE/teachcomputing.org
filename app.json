@@ -7,6 +7,9 @@
     "RAILS_ENV": {
       "required": true
     },
+    "ADESTRA_ENDPOINT": {
+      "required": true
+    },
     "STEM_OAUTH_SITE": {
       "required": true
     },
