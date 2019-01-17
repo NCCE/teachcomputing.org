@@ -5,11 +5,15 @@
 
 	&__meta {
 		background: $ncce-pink-light;
-		display: flex;
-		line-height: 1.6;
+		display: block;
+    line-height: 1.6;
+
+    &__meta-item {
+      display: inline-block;
+    }
 
 		span {
-			display: block;
+			display: inline-block;
 			margin: 1rem;
 		}
 	}
