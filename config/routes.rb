@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
+  get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
 end
