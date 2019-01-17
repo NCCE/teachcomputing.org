@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def exception
     render :exception, status: params[:status]
   end
+
+  def home
+    render template: "pages/home/index"
+  end
 end

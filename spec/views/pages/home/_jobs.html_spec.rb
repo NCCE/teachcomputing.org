@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('home/_jobs', type: :view) do
+RSpec.describe('pages/home/_jobs', type: :view) do
   before do
     render
   end
