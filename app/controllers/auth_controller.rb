@@ -15,7 +15,7 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to root_path
+    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE', 'https://www.stem.org.uk/user/logout')}/user/logout"
   end
 
   private
