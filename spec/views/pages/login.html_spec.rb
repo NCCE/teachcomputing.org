@@ -6,7 +6,7 @@ RSpec.describe('pages/login', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-login__title', text: 'Sign up')
+    expect(rendered).to have_css('.ncce-login__title', text: 'Create an account')
   end
 
   it 'button to sign up' do
