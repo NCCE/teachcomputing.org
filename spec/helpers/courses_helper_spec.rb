@@ -34,7 +34,7 @@ describe CoursesHelper, type: :helper do
       start_date = '10/11/2018'
       end_date = '11/11/2018'
 
-      expect(helper.activity_dates(start_date, end_date)).to eq '10 Nov - 11 Nov 2018'
+      expect(helper.activity_dates(start_date, end_date)).to eq '10 November - 11 November 2018'
     end
   end
 
@@ -49,7 +49,13 @@ describe CoursesHelper, type: :helper do
 
   describe('#stem_course_link') do
     it 'returns the link to the course page on stem.org.uk' do
-      expect(helper.stem_course_link('01de2624')).to eq 'https://stem.org.uk/cpdredirect/01de2624'
+      expect(helper.stem_course_link('01de2624')).to eq 'https://www.stem.org.uk/cpdredirect/01de2624'
+    end
+  end
+
+  describe('stripped_summary') do
+    it 'removes any html elements in the string' do
+      expect(helper.stripped_summary('<p>Hello</p>')).to eq 'Hello'
     end
   end
 end

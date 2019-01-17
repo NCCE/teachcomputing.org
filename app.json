@@ -13,6 +13,9 @@
     "STEM_OAUTH_AUTH_URL": {
       "required": true
     },
+    "STEM_OAUTH_CALLBACK_URL": {
+      "required": true
+    },
     "STEM_OAUTH_ACCESS_TOKEN_URL": {
       "required": true
     },

@@ -5,7 +5,7 @@
         <div class="govuk-grid-column-one-half">
           <p class="govuk-heading-l ncce-stay-in-touch__heading">Stay up to date</p>
           <p class="govuk-body ncce-stay-in-touch__body">Be first to know when we launch resources, training and events.</p>
-          <form action="{{ env.adestraEndpoint }}" method="post" accept-charset="UTF-8">
+          <form action="<%= ENV.fetch("ADESTRA_ENDPOINT") %>" method="post" accept-charset="UTF-8">
             <div class="govuk-form-group">
               <label class="govuk-label ncce-stay-in-touch__label" for="amf-input-first_name_11">First name</label>
               <input type="text" class="govuk-input ncce-stay-in-touch__input" name="first_name_11" id="amf-input-first_name_11" value="" maxlength="255" onkeyup="if (this.length>255) this.value=this.value.substr(0, 255)" onblur="this.value=this.value.substr(0, 255)">

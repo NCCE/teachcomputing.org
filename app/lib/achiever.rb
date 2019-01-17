@@ -2,6 +2,7 @@ require('rest-client')
 require('nokogiri')
 require('htmlentities')
 require_relative('course')
+require_relative('course_template')
 require_relative('parameter')
 
 class Achiever
@@ -37,6 +38,18 @@ class Achiever
     res = RestClient.get(@uri.to_s)
     doc = parseStringFromXml(Nokogiri::XML(res.body))
     doc.xpath('//AchieverDataResult_1/Detail')
+  end
+
+  def approvedCourseTemplates
+    programme = Parameter.new('Programme', 'NCCE')
+    hideFromWeb = Parameter.new('HideFromWeb', '1')
+
+    results = self.runWorkflow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [programme])
+    templates = Array.new
+    results.each do |result|
+      templates << CourseTemplate.new(result)
+    end
+    return templates
   end
 
   def fetchFutureCourses

@@ -5,7 +5,7 @@ class AuthController < ApplicationController
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
     session[:user_id] = user.id
-    redirect_to omniauth_params['returnTo'] || root_path
+    redirect_to omniauth_params['returnTo'] || dashboard_path
   end
 
   def failure

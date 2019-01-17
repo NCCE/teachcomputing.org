@@ -1,4 +1,8 @@
 <h1 class="govuk-heading-xl">Dashboard</h1>
+
+<h2 class="govuk-heading-l">Courses</h2>
+<a href="/dashboard/courses" class="govuk-button ncce-button__pink">View Courses</a>
+
 <h2 class="govuk-heading-l">Your Activity</h2>
 <% @achievements.each do |achievement| %>
   <%= achievement.activity.title %>: <%= achievement.activity.credit %><br>
