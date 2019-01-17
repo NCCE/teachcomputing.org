@@ -5,6 +5,17 @@ $border: 3px;
     &__item {
         background-color: $ncce-grey-x-light;
         padding: 1.25rem 1.125rem;
+        // needs to override .govuk-list > li
+        margin-bottom: 2px !important;
+    }
+    &__item:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    &__item-text {
+        float: left;
+        margin-bottom: 10px;
     }
     &__item-check-mark {
         position: relative;
@@ -30,20 +41,25 @@ $border: 3px;
     }
 }
 
+// TODO: More tidying when form is implemented fully
 .ncce-activity-form {
     float: right;
     margin-top: -5px;
+    margin-bottom: 0;
     &__label {
         float: left;
         line-height: 2.2rem;
         margin-right: 10px;
+        margin-bottom: 10px;
     }
     &__select {
         float: left;
         margin-right: 10px;
+        margin-bottom: 10px;
     }
     // Top & Bottom Reset back to govuk size - better way?
     &__button {
         padding: 9px 15px 6px;
+        margin-bottom: 0;
     }
 }
