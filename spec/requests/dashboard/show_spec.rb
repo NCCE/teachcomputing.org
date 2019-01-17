@@ -7,12 +7,18 @@ RSpec.describe DashboardController do
   describe '#show' do
     describe 'while logged in' do
       before do
+        stub_delegate_course_list
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end
 
       it 'assigns the users achievements' do
         expect(assigns(:achievements)).to eq user.achievements
+      end
+
+      it 'assigns the users course list' do
+        puts user
+        # expect(assigns(:delegate_course_list)).to eq user.achievements
       end
 
       it 'renders the correct template' do
