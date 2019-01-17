@@ -1,15 +1,14 @@
 require_relative('achiever')
 
-class ContactBookingList
+class DelegateCourseList
   def self.fromAchiever(contactNo)
     bookings = Array.new
     achiever = Achiever.new
-    results = achiever.fetchContactBookingsListings(contactNo)
-    puts '***************** results ****************'
+    results = achiever.fetchCoursesForDelegates(contactNo)
     puts results
 
     results.each do |result|
-      bookings << ContactBooking.new(result)
+      bookings << DelegateCourse.new(result)
     end
     bookings
   end
