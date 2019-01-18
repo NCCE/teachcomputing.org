@@ -2,6 +2,13 @@
 	background: $ncce-blue;
 	border: none;
 }
+
+// Fixes issue with wrapping the text weirdly.
+.govuk-header__logo {
+	@include govuk-media-query($from: desktop) {
+		width: auto !important;
+	}
+}
 .govuk-header__container {
 	border: none;
 	margin-bottom: 0;
@@ -12,12 +19,16 @@
 
 .ncce-header__content {
 	float: right;
-	width: 20% !important;
+	// Fixes issue with text crashing into rhs.
+	width: auto !important;
 }
 
 .govuk-header__logotype-text {
 	font-family: $font-family-heading;
 	font-size: 24px;
+	@include govuk-media-query($until: 380px) {
+		font-size: 20px;
+	}
 }
 
 .govuk-header__link--homepage {
