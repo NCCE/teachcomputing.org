@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
+  get '/404', to: 'pages#exception', defaults: { status: 404 }
+  get '/422', to: 'pages#exception', defaults: { status: 422 }
+  get '/500', to: 'pages#exception', defaults: { status: 500 }
 end
