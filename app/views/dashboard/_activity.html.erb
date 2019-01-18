@@ -7,16 +7,11 @@
     <span class="ncce-activity-list__item-text"><strong>Signed up</strong> to NCCE</span>
     <span class="ncce-activity-list__item-check-mark">&#9745;</span>
   </li>
-  <%# Remove when we do dynamic data %>
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"><strong>Completed online course</strong> Object-oriented Programming in Python</span>
-    <span class="ncce-activity-list__item-check-mark">&#9745;</span>
-  </li>
-  <% if false %>
-    <%# Reinstate when we do dynamic data %>
-    <% @achievements.each do |achievement| %>
-        <%= achievement.activity.title %>: <%= achievement.activity.credit %>
-    <% end %>
+  <% @achievements.each do |achievement| %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"><strong><%= achievement.activity.title %></strong></span>
+      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+    </li>
   <% end %>
   <li class="ncce-activity-list__item">
     <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>
