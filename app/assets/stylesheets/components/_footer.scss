@@ -20,6 +20,10 @@
 		margin-bottom: 0;
 		margin-left: 2rem;
 	}
+
+	&--item:last-child {
+		margin-right: 0;
+	}
 }
 
 .ncce-footer__nav {

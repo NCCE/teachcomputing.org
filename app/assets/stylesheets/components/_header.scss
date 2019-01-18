@@ -3,10 +3,9 @@
 	border: none;
 }
 
-// Fixes issue with wrapping the text weirdly.
 .govuk-header__logo {
 	@include govuk-media-query($from: desktop) {
-		width: auto !important;
+		width: auto;
 	}
 }
 .govuk-header__container {
@@ -19,8 +18,7 @@
 
 .ncce-header__content {
 	float: right;
-	// Fixes issue with text crashing into rhs.
-	width: auto !important;
+	width: auto;
 }
 
 .govuk-header__logotype-text {
