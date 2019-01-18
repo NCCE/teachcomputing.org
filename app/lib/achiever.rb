@@ -76,6 +76,12 @@ class Achiever
     self.runWorkflow(ENV['ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID'], [courseOccurrenceNo])
   end
 
+  def fetchCoursesForDelegates(contactNo)
+    contactNo = Parameter.new('ContactNo', contactNo)
+
+    self.runWorkflow(ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID'], [contactNo])
+  end
+
   def parseStringFromXml(doc)
     doc.remove_namespaces!
     Nokogiri::XML(HTMLEntities.new.decode(doc.xpath('//string/text()')))
