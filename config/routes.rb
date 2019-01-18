@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout', as: :logout
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
+  get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' }
