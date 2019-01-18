@@ -3,11 +3,16 @@ class DashboardController < ApplicationController
 
   def show
     @achievements = current_user.achievements
-    t = Time.now
-    current_date = t.iso8601
+    
     @delegate_course_list = DelegateCourseList.fromAchiever(current_user.stem_achiever_contact_no)
-      .select { |delegate_course| delegate_course.enrolment_status != 'Cancelled' && delegate_course.end_date < current_date }
+      .select { |delegate_course| delegate_course.enrolment_status != 'Cancelled' && delegate_course.end_date < current_iso_date }
 
     render :show
+  end
+
+  private
+  
+  def current_iso_date
+    Time.now.iso8601
   end
 end

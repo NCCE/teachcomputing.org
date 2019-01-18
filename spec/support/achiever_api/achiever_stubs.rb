@@ -14,7 +14,7 @@ module AchieverStubs
   def stub_delegate_course_list
     raw_delegate_course_list_xml = File.new('spec/support/achiever_api/delegate_course_list.xml')
     stub_request(:get, "https://bookingsystem-dev.stem.org.uk:8080/WorkflowAPI/Dev/_services/workflowservice.asmx/ExecuteWorkflow")
-      .with(query: hash_including({ "sXmlParams" => /873C556D-FF4B-43C5-8310-349EF8E5E5A1/ }))
+      .with(query: hash_including({ "sXmlParams" => /SOME_COURSES_FOR_DELEGATE_WORKFLOW_ID/ }))
       .to_return(raw_delegate_course_list_xml)
   end
 end

@@ -5,8 +5,7 @@ class DelegateCourseList
     bookings = Array.new
     achiever = Achiever.new
     results = achiever.fetchCoursesForDelegates(contactNo)
-    puts results
-
+    
     results.each do |result|
       bookings << DelegateCourse.new(result)
     end

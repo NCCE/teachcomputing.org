@@ -13,7 +13,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the mock course' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Test Course')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Completed course Test Course')
   end
 
   it 'has the form item' do
