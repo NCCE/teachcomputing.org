@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('home/_stay-updated', type: :view) do
+RSpec.describe('pages/home/_stay-updated', type: :view) do
   before do
     render
   end

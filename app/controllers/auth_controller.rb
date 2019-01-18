@@ -9,7 +9,7 @@ class AuthController < ApplicationController
   end
 
   def failure
-    flash[:alert] = 'Whoops something went wrong'
+    flash[:error] = 'Whoops something went wrong'
     redirect_to root_path
   end
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
-  root to: 'home#index'
+  root to: 'pages#home', action: :home
 
   get 'dashboard', action: :show, controller: 'dashboard'
   resources :courses, path: '/dashboard/courses', only: [:index]
@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
+  get '/404', to: 'pages#exception', defaults: { status: 404 }
+  get '/422', to: 'pages#exception', defaults: { status: 422 }
+  get '/500', to: 'pages#exception', defaults: { status: 500 }
 end
