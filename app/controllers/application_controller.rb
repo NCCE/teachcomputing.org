@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to(login_path) unless current_user
   end
+
+  def redirect_to_dashboard
+    redirect_to dashboard_path if current_user
+  end
 end
