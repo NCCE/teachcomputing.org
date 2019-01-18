@@ -17,7 +17,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has a link to certification' do
-    expect(rendered).to have_link("certification", href: "/certification")
+    expect(rendered).to have_link('certification', href: '/certification')
   end
 
   it 'has an aside' do
