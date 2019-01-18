@@ -16,6 +16,10 @@ RSpec.describe('dashboard/show', type: :view) do
     expect(rendered).to have_css('h3', text: 'Your progress')
   end
 
+  it 'has a link to certification' do
+    expect(rendered).to have_link("certification", href: "/certification")
+  end
+
   it 'has an aside' do
     expect(rendered).to have_css('.ncce-aside', count: 1)
   end
