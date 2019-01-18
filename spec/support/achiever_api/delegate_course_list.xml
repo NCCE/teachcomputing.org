@@ -1,0 +1,98 @@
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/8.5
+X-AspNet-Version: 4.0.30319
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Date: Tue, 04 Dec 2018 13:52:06 GMT
+Content-Length: 25158
+
+<?xml version="1.0" encoding="utf-8"?>
+<string xmlns="http://achiever.com/webservices/">&lt;AchieverResponse&gt;&lt;AchieverDataResults&gt;&lt;AchieverDataResult_1&gt;
+&lt;Detail&gt;
+  &lt;Productlines.COURSEOCCURRENCENO&gt;0d2ec039-c318-4b0b-acc9-683445f05ea0&lt;/Productlines.COURSEOCCURRENCENO&gt;
+  &lt;Activity.Activity_Title&gt;Test Course 1&lt;/Activity.Activity_Title&gt;
+  &lt;Application_x002F_Enrolment.ENQUIRYNO&gt;6ccad509-d992-4fed-837f-3ab23194e75d&lt;/Application_x002F_Enrolment.ENQUIRYNO&gt;
+  &lt;Application_x002F_Enrolment.Application_No&gt;APP0083924&lt;/Application_x002F_Enrolment.Application_No&gt;
+  &lt;Application_x002F_Enrolment.Status&gt;Cancelled&lt;/Application_x002F_Enrolment.Status&gt;
+  &lt;Productlines.PRODLINENO&gt;6a42f66a-30ce-4dd6-a896-25b86e45454f&lt;/Productlines.PRODLINENO&gt;
+  &lt;Productlines.Reference&gt;PDL0085605&lt;/Productlines.Reference&gt;
+  &lt;Productlines.Type&gt;Scheduled Course&lt;/Productlines.Type&gt;
+  &lt;Delegate.Booker_First_Name&gt;John&lt;/Delegate.Booker_First_Name&gt;
+  &lt;Delegate.Booker_Surname&gt;Doe&lt;/Delegate.Booker_Surname&gt;
+  &lt;Delegate.Booker_Company&gt;Abbey Meadows Primary School&lt;/Delegate.Booker_Company&gt;
+  &lt;Activity_Venue_Address.Line_1&gt;University of York&lt;/Activity_Venue_Address.Line_1&gt;
+  &lt;Activity_Venue_Address.Town_x002F_City&gt;York&lt;/Activity_Venue_Address.Town_x002F_City&gt;
+  &lt;Activity_Venue_Address.Postcode&gt;YO105DD&lt;/Activity_Venue_Address.Postcode&gt;
+  &lt;Activity.Start_Date&gt;2019-01-11T00:00:00+00:00&lt;/Activity.Start_Date&gt;
+  &lt;Activity.End_Date&gt;2019-01-11T00:00:00+00:00&lt;/Activity.End_Date&gt;
+  &lt;Delegate.First_Name&gt;John&lt;/Delegate.First_Name&gt;
+  &lt;Delegate.Calculated_Surname&gt;Doe&lt;/Delegate.Calculated_Surname&gt;
+  &lt;Delegate.Calculated_Email_Address&gt;johndoe@example.com&lt;/Delegate.Calculated_Email_Address&gt;
+  &lt;Delegate.Registration_Status&gt;Complete&lt;/Delegate.Registration_Status&gt;
+  &lt;Delegate.Progress&gt;Pending&lt;/Delegate.Progress&gt;
+  &lt;Productlines.Requested_Cancellation&gt;0&lt;/Productlines.Requested_Cancellation&gt;
+  &lt;Activity.Imported_to_ITK&gt;0&lt;/Activity.Imported_to_ITK&gt;
+  &lt;Delegate.COURSEPLACENO&gt;e66b327d-637d-4228-b9cf-4fec1a103bb8&lt;/Delegate.COURSEPLACENO&gt;
+  &lt;Activity.COURSEOCCURRENCENO&gt;0d2ec039-c318-4b0b-acc9-683445f05ea0&lt;/Activity.COURSEOCCURRENCENO&gt;
+  &lt;Activity_Venue_Address.ADDRESSNO&gt;7d8cd802-34a6-4400-a72e-c12481c168b6&lt;/Activity_Venue_Address.ADDRESSNO&gt;
+&lt;/Detail&gt;
+&lt;Detail&gt;
+  &lt;Productlines.COURSEOCCURRENCENO&gt;0d2ec139-c318-4b0b-acc9-683445f05ea0&lt;/Productlines.COURSEOCCURRENCENO&gt;
+  &lt;Activity.Activity_Title&gt;Test Course 2&lt;/Activity.Activity_Title&gt;
+  &lt;Application_x002F_Enrolment.ENQUIRYNO&gt;6ccad509-d992-4fed-837f-3ab23194e75d&lt;/Application_x002F_Enrolment.ENQUIRYNO&gt;
+  &lt;Application_x002F_Enrolment.Application_No&gt;APP0083924&lt;/Application_x002F_Enrolment.Application_No&gt;
+  &lt;Application_x002F_Enrolment.Status&gt;New&lt;/Application_x002F_Enrolment.Status&gt;
+  &lt;Productlines.PRODLINENO&gt;6a42f66a-30ce-4dd6-a896-25b86e45454f&lt;/Productlines.PRODLINENO&gt;
+  &lt;Productlines.Reference&gt;PDL0085606&lt;/Productlines.Reference&gt;
+  &lt;Productlines.Type&gt;Scheduled Course&lt;/Productlines.Type&gt;
+  &lt;Delegate.Booker_First_Name&gt;John&lt;/Delegate.Booker_First_Name&gt;
+  &lt;Delegate.Booker_Surname&gt;Doe&lt;/Delegate.Booker_Surname&gt;
+  &lt;Delegate.Booker_Company&gt;Abbey Meadows Primary School&lt;/Delegate.Booker_Company&gt;
+  &lt;Activity_Venue_Address.Line_1&gt;University of York&lt;/Activity_Venue_Address.Line_1&gt;
+  &lt;Activity_Venue_Address.Town_x002F_City&gt;York&lt;/Activity_Venue_Address.Town_x002F_City&gt;
+  &lt;Activity_Venue_Address.Postcode&gt;YO105DD&lt;/Activity_Venue_Address.Postcode&gt;
+  &lt;Activity.Start_Date&gt;2019-01-12T00:00:00+00:00&lt;/Activity.Start_Date&gt;
+  &lt;Activity.End_Date&gt;2019-01-12T00:00:00+00:00&lt;/Activity.End_Date&gt;
+  &lt;Delegate.First_Name&gt;John&lt;/Delegate.First_Name&gt;
+  &lt;Delegate.Calculated_Surname&gt;Doe&lt;/Delegate.Calculated_Surname&gt;
+  &lt;Delegate.Calculated_Email_Address&gt;johndoe@example.com&lt;/Delegate.Calculated_Email_Address&gt;
+  &lt;Delegate.Registration_Status&gt;Complete&lt;/Delegate.Registration_Status&gt;
+  &lt;Delegate.Progress&gt;Pending&lt;/Delegate.Progress&gt;
+  &lt;Productlines.Requested_Cancellation&gt;0&lt;/Productlines.Requested_Cancellation&gt;
+  &lt;Activity.Imported_to_ITK&gt;0&lt;/Activity.Imported_to_ITK&gt;
+  &lt;Delegate.COURSEPLACENO&gt;e66b327e-637d-4228-b9cf-4fec1a103bb8&lt;/Delegate.COURSEPLACENO&gt;
+  &lt;Activity.COURSEOCCURRENCENO&gt;0d2ec139-c318-4b0b-acc9-683445f05ea0&lt;/Activity.COURSEOCCURRENCENO&gt;
+  &lt;Activity_Venue_Address.ADDRESSNO&gt;7d8cd802-34a6-4400-a72e-c12481c168b6&lt;/Activity_Venue_Address.ADDRESSNO&gt;
+&lt;/Detail&gt;
+&lt;Detail&gt;
+  &lt;Productlines.COURSEOCCURRENCENO&gt;0d2ec239-c318-4b0b-acc9-683445f05ea0&lt;/Productlines.COURSEOCCURRENCENO&gt;
+  &lt;Activity.Activity_Title&gt;Test Course 3&lt;/Activity.Activity_Title&gt;
+  &lt;Application_x002F_Enrolment.ENQUIRYNO&gt;6ccad509-d992-4fed-837f-3ab23194e75d&lt;/Application_x002F_Enrolment.ENQUIRYNO&gt;
+  &lt;Application_x002F_Enrolment.Application_No&gt;APP0083924&lt;/Application_x002F_Enrolment.Application_No&gt;
+  &lt;Application_x002F_Enrolment.Status&gt;New&lt;/Application_x002F_Enrolment.Status&gt;
+  &lt;Productlines.PRODLINENO&gt;6a42f66a-30ce-4dd6-a896-25b86e45454f&lt;/Productlines.PRODLINENO&gt;
+  &lt;Productlines.Reference&gt;PDL0085607&lt;/Productlines.Reference&gt;
+  &lt;Productlines.Type&gt;Scheduled Course&lt;/Productlines.Type&gt;
+  &lt;Delegate.Booker_First_Name&gt;John&lt;/Delegate.Booker_First_Name&gt;
+  &lt;Delegate.Booker_Surname&gt;Doe&lt;/Delegate.Booker_Surname&gt;
+  &lt;Delegate.Booker_Company&gt;Abbey Meadows Primary School&lt;/Delegate.Booker_Company&gt;
+  &lt;Activity_Venue_Address.Line_1&gt;University of York&lt;/Activity_Venue_Address.Line_1&gt;
+  &lt;Activity_Venue_Address.Town_x002F_City&gt;York&lt;/Activity_Venue_Address.Town_x002F_City&gt;
+  &lt;Activity_Venue_Address.Postcode&gt;YO105DD&lt;/Activity_Venue_Address.Postcode&gt;
+  &lt;Activity.Start_Date&gt;2019-01-21T00:00:00+00:00&lt;/Activity.Start_Date&gt;
+  &lt;Activity.End_Date&gt;2019-01-21T00:00:00+00:00&lt;/Activity.End_Date&gt;
+  &lt;Delegate.First_Name&gt;John&lt;/Delegate.First_Name&gt;
+  &lt;Delegate.Calculated_Surname&gt;Doe&lt;/Delegate.Calculated_Surname&gt;
+  &lt;Delegate.Calculated_Email_Address&gt;johndoe@example.com&lt;/Delegate.Calculated_Email_Address&gt;
+  &lt;Delegate.Registration_Status&gt;Complete&lt;/Delegate.Registration_Status&gt;
+  &lt;Delegate.Progress&gt;Pending&lt;/Delegate.Progress&gt;
+  &lt;Productlines.Requested_Cancellation&gt;0&lt;/Productlines.Requested_Cancellation&gt;
+  &lt;Activity.Imported_to_ITK&gt;0&lt;/Activity.Imported_to_ITK&gt;
+  &lt;Delegate.COURSEPLACENO&gt;e66b327f-637d-4228-b9cf-4fec1a103bb8&lt;/Delegate.COURSEPLACENO&gt;
+  &lt;Activity.COURSEOCCURRENCENO&gt;0d2ec239-c318-4b0b-acc9-683445f05ea0&lt;/Activity.COURSEOCCURRENCENO&gt;
+  &lt;Activity_Venue_Address.ADDRESSNO&gt;7d8cd802-34a6-4400-a72e-c12481c168b6&lt;/Activity_Venue_Address.ADDRESSNO&gt;
+&lt;/Detail&gt;
+&lt;AchieverDataSchemaResult_1&gt;&lt;xs:schema id="AchieverDataResult_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;&lt;xs:element name="AchieverDataResult_1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;&lt;xs:complexType&gt;&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;&lt;xs:element name="Detail"&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&lt;xs:element name="Activity.Activity_Code" msdata:Caption="Activity.Activity Code" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Instance_Code" msdata:Caption="Activity.Instance Code" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Activity_Title" msdata:Caption="Activity.Activity Title" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Start_Date__x0028_Portal_x0029_" msdata:Caption="Activity.Start Date (Portal)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.End_Date__x0028_Portal_x0029_" msdata:Caption="Activity.End Date (Portal)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_Period_x0029_" msdata:Caption="Template.Duration (Period)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_No_x0029_" msdata:Caption="Template.Duration (No)" type="xs:int" minOccurs="0" /&gt;&lt;xs:element name="Activity.Duration__x0028_Period_x0029_" msdata:Caption="Activity.Duration (Period)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Duration__x0028_No_x0029_" msdata:Caption="Activity.Duration (No)" type="xs:decimal" minOccurs="0" /&gt;&lt;xs:element name="Activity.Summary" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Meta_Description" msdata:Caption="Template.Meta Description" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.PORTALCOURSEURL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Deliverer" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Region" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.ADDRESSNO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="Activity Venue Address.ADDRESSNO" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Venue_Name" msdata:Caption="Activity Venue Address.Venue Name" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Town_x002F_City" msdata:Caption="Activity Venue Address.Town/City" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Postcode" msdata:Caption="Activity Venue Address.Postcode" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Activity_Occurrence_ID" msdata:Caption="Activity.Activity Occurrence ID" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Hide_from_Web" msdata:Caption="Activity.Hide from Web" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Status" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Display_Programme" msdata:Caption="Activity.Display Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.ITK_CPD_Type" msdata:Caption="Activity.ITK CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Sub-Deliverer" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Places_Remaining" msdata:Caption="Activity.Places Remaining" type="xs:int" minOccurs="0" /&gt;&lt;xs:element name="Template.Hide_From_Web" msdata:Caption="Template.Hide From Web" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Pay_Later" msdata:Caption="Activity.Pay Later" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.ePayment" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Changed_Date" msdata:Caption="Activity.Changed Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.Everest_Occurrence_Changed_Date" msdata:Caption="Activity.Everest Occurrence Changed Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.Delete_Flag" msdata:Caption="Activity.Delete Flag" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Delete_Request_Date" msdata:Caption="Activity.Delete Request Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.CPD_Type" msdata:Caption="Activity.CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Booking_Options" msdata:Caption="Activity.Booking Options" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Booking_URL" msdata:Caption="Activity.Booking URL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Group_Required_x003F_" msdata:Caption="Template.Group Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Separate_Group_Required_x003F_" msdata:Caption="Activity.Separate Group Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Imported_to_ITK" msdata:Caption="Activity.Imported to ITK" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Online_CPD" msdata:Caption="Activity.Online CPD" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.COURSEOCCURRENCENO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.COURSETEMPLATENO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" /&gt;&lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:choice&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:schema&gt;&lt;/AchieverDataSchemaResult_1&gt;&lt;/AchieverDataResult_1&gt;&lt;/AchieverDataResults&gt;&lt;/AchieverResponse&gt;</string>
