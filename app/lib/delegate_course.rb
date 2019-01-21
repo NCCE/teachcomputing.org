@@ -112,4 +112,8 @@ class DelegateCourse
   def delegate_course_place_no
     @doc.xpath('.//Delegate.COURSEPLACENO/text()').to_s
   end
+
+  def delegate_is_fully_attended
+    @doc.xpath('.//Delegate.Is_Fully_Attended/text()').to_s
+  end
 end

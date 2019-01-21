@@ -9,7 +9,6 @@ RSpec.describe DashboardController do
       before do
         stub_delegate_course_list
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        allow_any_instance_of(DashboardController).to receive(:current_iso_date).and_return('2019-01-15T00:00:00+00:00')
         get dashboard_path
       end
 
