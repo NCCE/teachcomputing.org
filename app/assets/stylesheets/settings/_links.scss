@@ -37,3 +37,25 @@
     color: $ncce-black;
   }
 }
+
+.ncce-footer__link--homepage {
+  text-decoration: none;
+  line-height: 1em;
+  color: $ncce-white;
+  &:link,
+  &:visited {
+    color: $ncce-white;
+  }
+  &:hover {
+    color: $ncce-grey-x-light;
+  }
+  &:focus {
+    background-color: $ncce-pink;
+    color: $ncce-white;
+    outline-color: $ncce-pink;
+  }
+  &:active {
+    color: $ncce-grey;
+  }
+}
+
