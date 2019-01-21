@@ -15,6 +15,12 @@ RSpec.describe AuthController do
         get callback_path
         expect(response).to redirect_to(root_path)
       end
+
+      it 'displays a useful error message' do
+        get callback_path
+        expect(flash[:error]).to be_present
+        expect(flash[:error]).to match(/Sorry, we were unable to log you in. Please try again.*/)
+      end
     end
   end
 end
