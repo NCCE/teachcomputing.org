@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe('dashboard/show', type: :view) do
+  let(:user) { create(:user) }
 
   before do
+    create(:achievement, user: user)
     assign(:delegate_course_list, [])
+    @achievements = user.achievements
     render
   end
 
@@ -21,5 +24,9 @@ RSpec.describe('dashboard/show', type: :view) do
 
   it 'has an aside' do
     expect(rendered).to have_css('.ncce-aside', count: 1)
+  end
+
+  it 'has a link to download the diagnostic tool' do
+    expect(rendered).to have_css('a', text: 'Download Diagnostic Tool PDF')
   end
 end
