@@ -24,8 +24,7 @@ $border: 3px;
         float: right;
         margin-right: 20px;
         text-indent: 100%;
-        // white-space: nowrap;
-        // overflow: hidden;
+        overflow: hidden;
         border: $border solid $ncce-white;
         border-radius: 5px;
     }
