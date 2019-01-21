@@ -7,16 +7,20 @@
     <span class="ncce-activity-list__item-text"><strong>Signed up</strong> to NCCE</span>
     <span class="ncce-activity-list__item-check-mark">&#9745;</span>
   </li>
-  <%# Remove when we do dynamic data %>
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"><strong>Completed online course</strong> Object-oriented Programming in Python</span>
-    <span class="ncce-activity-list__item-check-mark">&#9745;</span>
-  </li>
   <% if false %>
-    <%# Reinstate when we do dynamic data %>
+    <%# Reinstate when we do achievements? %>
     <% @achievements.each do |achievement| %>
-        <%= achievement.activity.title %>: <%= achievement.activity.credit %>
+      <li class="ncce-activity-list__item">
+        <span class="ncce-activity-list__item-text"><strong>Completed course</strong> <%= achievement.activity.title %>: <%= achievement.activity.credit %></span>
+        <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+      </li>
     <% end %>
+  <% end %>
+  <% @delegate_course_list.each do |course| %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"><strong>Completed course</strong> <%= course.activity_title %></span>
+      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+    </li>
   <% end %>
   <li class="ncce-activity-list__item">
     <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>

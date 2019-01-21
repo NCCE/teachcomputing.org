@@ -10,6 +10,9 @@
     "ADESTRA_ENDPOINT": {
       "required": true
     },
+    "STATIC_FILE_PATH": {
+      "required": true
+    },
     "STEM_OAUTH_SITE": {
       "required": true
     },
