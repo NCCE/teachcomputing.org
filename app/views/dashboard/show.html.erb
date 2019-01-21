@@ -2,15 +2,15 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <h2 class="govuk-heading-l">Your Dashboard</h2>
-    <p class="govuk-body">Welcome to your personal dashboard where you can discover and book
-      face-to-face and online training courses, and track your progress towards <a href="/certification" class="govuk-link">certification</a></p>
+    <p class="govuk-body">Welcome to your personal dashboard where you can discover and book face-to-face and online training courses and view your progress.</p>
+    <p class="govuk-body">If you need help finding a course that’s suitable for you, use our <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), target: :_blank %> to identify the areas of subject knowledge where you need most support.</p>
     <%= render 'dashboard/activity' %>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column">
           <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m">Interested in teaching Computer Science at GCSE level?</h3>
             <p class="govuk-body">If you don’t have a computing qualification, you may be eligible for a bursary towards your training.</p>
-            <p class="govuk-body"><a href="#" class="govuk-link">Check your bursary availability</a></p>
+            <p class="govuk-body"><a href="/bursary" class="govuk-link">Check your bursary availability</a></p>
             <p class="govuk-body">If you need help finding a course that’s suitable for you, use our diagnostic tool to identify the areas of subject knowledge where you need most support.</p>
             <p class="govuk-body"><%= link_to 'Download Diagnostic Tool PDF', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), target: :_blank %></p>
           </div>

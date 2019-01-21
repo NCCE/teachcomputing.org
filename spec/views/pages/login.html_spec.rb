@@ -9,11 +9,19 @@ RSpec.describe('pages/login', type: :view) do
     expect(rendered).to have_css('.ncce-login__title', text: 'Create an account')
   end
 
-  it 'button to sign up' do
-    expect(rendered).to have_css('.ncce-login__button', text: 'Sign up')
+  it 'button to create an account' do
+    expect(rendered).to have_css('.ncce-signup__button', text: 'Create an account')
   end
 
-  it 'links to the Stem account' do
-    expect(rendered).to have_link('Sign up', href: signup_stem_path)
+  it 'links to create a STEM Learning account' do
+    expect(rendered).to have_link('Create an account', href: signup_stem_path)
+  end
+
+  it 'button to log in' do
+    expect(rendered).to have_css('.ncce-login__button', text: 'Log in')
+  end
+
+  it 'links to log in to a STEM Learning account' do
+    expect(rendered).to have_link('Log in', href: '/auth/stem')
   end
 end
