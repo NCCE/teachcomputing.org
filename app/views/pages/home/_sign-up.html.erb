@@ -4,22 +4,24 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
           <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-l">Sign up</h2>
+            <h2 class="govuk-heading-l">Create an account</h2>
           </div>
           <div class="govuk-grid-column-two-thirds ncce-signu-up__section">
+            <p class="govuk-body">
+              To book onto face-to-face or online training, you need to create an account on our website. This will also enable you to:
+            </p>
             <ul class="govuk-list ncce-sign-up__list">
-              <li class="ncce-sign-up__list--item"><span class="govuk-!-font-weight-bold">Discover and book</span> face-to face and online training courses (including upcoming courses so you can plan ahead)</li>
-              <li class="ncce-sign-up__list--item"><span class="govuk-!-font-weight-bold">Record your achievements</span> and progress towards certification.</li>
-              <li class="ncce-sign-up__list--item">Be first to find out about new developments and give feedback on new features as the NCCE grows.
-              Help us <span class="govuk-!-font-weight-bold">shape the future</span> of computing education!</li>
+              <li class="ncce-sign-up__list--item">be the first to access new features and resources</li>
+              <li class="ncce-sign-up__list--item">access our diagnostic tool to help you prioritise your CPD requirements</li>
+              <li class="ncce-sign-up__list--item">record your achievements and progress towards <%= link_to 'certification', certification_path, class: 'govuk-link' %></li>
             </ul>
-            <%= link_to 'Sign up', login_path, class: 'govuk-button ncce-button__pink govuk-link ncce-sign-up--link-white' %>
+            <%= link_to 'Create an acount', login_path, class: 'govuk-button ncce-button__pink govuk-link ncce-sign-up--link-white' %>
           </div>
           <aside class="govuk-grid-column-one-quarter ncce-aside">
             <p class="govuk-heading-s ncce-aside__title">Bursaries for training</p>
             <p class="govuk-body-s ncce-aside__text">Interested in teaching <span class="govuk-!-font-weight-bold">Computer Science at GCSE level</span> but don't have a computing qualifications?</p>
             <p class="govuk-body-s ncce-aside__text">You may be eligible for a bursary towards your training.</p>
-            <p class="govuk-body-s"><a href="/bursary" class="ncce-aside__link">Find out more</a></p>
+            <p class="govuk-body-s"><%= link_to 'find out more', bursary_path, class: 'ncce-aside__link' %></p>
           </aside>
         </div>
       </div>
