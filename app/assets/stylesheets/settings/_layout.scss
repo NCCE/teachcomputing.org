@@ -1,0 +1,10 @@
+.govuk-main-wrapper--xl {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+@include govuk-media-query($until: tablet) {
+  .ncce-aside {
+    margin-top: 50px;
+  }
+}
