@@ -2,67 +2,29 @@ class FutureLearn
   def courses
     [
       {
-        'title': 'Prepare to Run a Code Club',
-        'description': 'Build your confidence and get practical advice on launching and running a Code Club for young people.',
-        'duration': '3 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/code-club'
-      },
-      {
-        'title': 'Build a Makerspace for Young People',
-        'description': 'Find out how to create and run a makerspace for young people. Look at the pedagogy and approaches behind digital making.',
-        'duration': '3 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/build-a-makerspace'
-      },
-      {
-        'title': 'Scratch to Python: Moving from Block- to Text-based Programming',
-        'description': "Learn how to apply the thinking and programming skills you've learnt in Scratch to text-based programming languages like Python.",
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/block-to-text-based-programming'
-      },
-      {
-        'title': 'Start a CoderDojo Club',
-        'description': 'Get support and advice on how to grow your confidence in coding and start a CoderDojo for young people in your area.',
-        'duration': '3 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/start-a-coder-dojo'
-      },
-      {
-        'title': 'Object-oriented Programming in Python: Create Your Own Adventure Game',
-        'description': 'Learn object-oriented programming principles by creating your own text-based adventure game in Python.',
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/object-oriented-principles'
-      },
-      {
         'title': 'Teaching Physical Computing with Raspberry Pi and Python',
-        'description': 'Create simple systems that respond to and control the physical world using the Raspberry Pi and Python.',
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/physical-computing-raspberry-pi-python'
-      },
-      {
-        'title': 'Teaching Programming in Primary Schools',
-        'description': 'Understand key programming concepts and apply them using Scratch, with this introductory course for primary or K-5 teachers.',
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/teaching-programming-primary-school'
+        'description': ' Create simple systems that respond to and control the physical world using the Raspberry Pi and Python. Over four weeks, you’ll develop your knowledge of simple electronics and computing, setting up your Raspberry Pi and writing your first program using the Python programming language.',
+        'link': 'https://www.futurelearn.com/courses/physical-computing-raspberry-pi-python/9'
       },
       {
         'title': 'How Computers Work: Demystifying Computation',
         'description': 'Explore the fundamentals of computing - computer architecture, binary logic, data processing, circuits, and more.',
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/how-computers-work'
+        'link': 'https://www.futurelearn.com/courses/how-computers-work/2'
       },
       {
         'title': 'Programming 101: An Introduction to Python for Educators',
         'description': 'Explore the basics of Python. Guided by the Raspberry Pi Foundation, you’ll learn to code your first program.',
-        'duration': '4 weeks',
-        'hours_per_week': '2',
-        'link': 'https://www.futurelearn.com/courses/programming-101'
+        'link': 'https://www.futurelearn.com/courses/programming-101/2'
+      },
+      {
+        'title': 'Programming 102: Think like a Computer Scientist',
+        'description': 'Take your Python skills further. Guided by the Raspberry Pi Foundation, you’ll explore algorithms and list structures.',
+        'link': 'https://www.futurelearn.com/courses/programming-102-think-like-a-computer-scientist/1'
+      },
+      {
+        'title': 'Representing Data with Images and Sound: Bringing Data to Life',
+        'description': 'Learn how data is represented through media; audio, visual and text. This online course from the Raspberry Pi Foundation explores how computers do interesting things with data. You’ll discover how to represent and manipulate text, images and sound and compression and other algorithms.',
+        'link': 'https://www.futurelearn.com/courses/representing-data-with-images-and-sound/1'
       }
     ]
   end
