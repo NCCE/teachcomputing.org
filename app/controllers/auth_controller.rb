@@ -1,11 +1,15 @@
 class AuthController < ApplicationController
   def callback
     auth = omniauth_params
-    flash[:notice] = 'Welcome' unless User.exists?(stem_user_id: auth.uid)
+    userExists = User.exists?(stem_user_id: auth.uid)
+    flash[:notice] = 'Welcome' unless userExists
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
-
     session[:user_id] = user.id
-    redirect_to omniauth_params['returnTo'] || dashboard_path
+    if userExists
+      redirect_to omniauth_params['returnTo'] || dashboard_path
+    else
+      redirect_to omniauth_params['returnTo'] ? "#{omniauth_params['returnTo']}?firstLogin=true" : dashboard_path(firstLogin: true)
+    end
   end
 
   def failure
