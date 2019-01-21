@@ -20,4 +20,14 @@
 		margin-bottom: 0;
 		margin-left: 2rem;
 	}
+
+	&--item:last-child {
+		margin-right: 0;
+	}
+}
+
+.ncce-footer__nav {
+	@include govuk-media-query($from: tablet) {
+		text-align: right;
+	}
 }
