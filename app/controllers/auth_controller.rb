@@ -15,7 +15,7 @@ class AuthController < ApplicationController
   end
 
   def failure
-    flash[:error] = 'Whoops something went wrong'
+    flash[:error] = "Sorry, we were unable to log you in. Please try again or #{view_context.link_to "contact us", "mailto:info@teachcomputing.org"} for help"
     redirect_to root_path
   end
 
