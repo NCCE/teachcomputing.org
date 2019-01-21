@@ -78,8 +78,9 @@ class Achiever
 
   def fetchCoursesForDelegates(contactNo)
     contactNo = Parameter.new('ContactNo', contactNo)
+    programme = Parameter.new('Programme', 'NCCE')
 
-    self.runWorkflow(ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID'], [contactNo])
+    self.runWorkflow(ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID'], [contactNo, programme])
   end
 
   def parseStringFromXml(doc)
