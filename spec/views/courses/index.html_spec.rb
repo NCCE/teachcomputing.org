@@ -17,6 +17,10 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
+  it 'has a link to download the diagnostic tool' do
+    expect(rendered).to have_css('a', text: 'Download Diagnostic Tool PDF')
+  end
+
   describe 'face to face courses' do
     it 'renders each of the course template titles' do
       @face_to_face_courses.each do |course|

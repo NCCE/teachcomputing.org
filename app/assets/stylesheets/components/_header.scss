@@ -2,6 +2,12 @@
 	background: $ncce-blue;
 	border: none;
 }
+
+.govuk-header__logo {
+	@include govuk-media-query($from: desktop) {
+		width: auto;
+	}
+}
 .govuk-header__container {
 	border: none;
 	margin-bottom: 0;
@@ -12,12 +18,15 @@
 
 .ncce-header__content {
 	float: right;
-	width: 20% !important;
+	width: auto;
 }
 
 .govuk-header__logotype-text {
 	font-family: $font-family-heading;
 	font-size: 24px;
+	@include govuk-media-query($until: 380px) {
+		font-size: 20px;
+	}
 }
 
 .govuk-header__link--homepage {
