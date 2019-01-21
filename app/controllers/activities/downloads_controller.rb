@@ -2,13 +2,13 @@ class Activities::DownloadsController < ApplicationController
   before_action :track_download
 
   def show
-    send_file (file_path), type: params[:file][:type], disposition: 'inline'
+    redirect_to (file_path), type: params[:file][:type], disposition: 'inline'
   end
 
   private
 
   def file_path
-    "#{Rails.root}/public/files/#{params[:file][:name]}"
+    "#{ENV.fetch("STATIC_FILE_PATH")}/#{params[:file][:name]}"
   end
 
   def activity

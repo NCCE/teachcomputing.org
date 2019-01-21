@@ -13,6 +13,12 @@
       <span class="ncce-activity-list__item-check-mark">&#9745;</span>
     </li>
   <% end %>
+  <% @delegate_course_list.each do |course| %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"><strong>Completed course</strong> <%= course.activity_title %></span>
+      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+    </li>
+  <% end %>
   <li class="ncce-activity-list__item">
     <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>
     <span class="govuk-form-group ncce-activity-form">

@@ -5,6 +5,7 @@ RSpec.describe('dashboard/show', type: :view) do
 
   before do
     create(:achievement, user: user)
+    assign(:delegate_course_list, [])
     @achievements = user.achievements
     render
   end
