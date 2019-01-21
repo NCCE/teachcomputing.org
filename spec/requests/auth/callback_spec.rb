@@ -55,7 +55,7 @@ RSpec.describe AuthController do
 
       it 'redirects to the path stated in returnTo' do
         get callback_path
-        expect(response).to redirect_to('/test')
+        expect(response).to redirect_to('/test?firstLogin=true')
       end
     end
 
@@ -82,7 +82,7 @@ RSpec.describe AuthController do
 
       it 'redirects to the dashboard path' do
         get callback_path
-        expect(response).to redirect_to('/dashboard')
+        expect(response).to redirect_to('/dashboard?firstLogin=true')
       end
     end
   end
