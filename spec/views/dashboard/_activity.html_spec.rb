@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe('dashboard/_activity', type: :view) do
+  let(:user) { create(:user) }
 
   before do
+    create(:achievement, user: user)
+    @achievements = user.achievements
     delegate_course = double(Object, activity_title: 'Test Course')
     assign(:delegate_course_list, [delegate_course])
     render
@@ -21,7 +24,6 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the check marks' do
-    expect(rendered).to have_css('.ncce-activity-list__item-check-mark', count: 2)
+    expect(rendered).to have_css('.ncce-activity-list__item-check-mark', count: 3)
   end
-
 end
