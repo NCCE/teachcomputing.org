@@ -3,7 +3,7 @@
   <div class="govuk-main-wrapper">
     <h2 class="govuk-heading-l">Your Dashboard</h2>
     <p class="govuk-body">Welcome to your personal dashboard where you can discover and book
-      face-to-face and online training courses, and track your progress towards <a href="/certification" class="govuk-link">certification></a></p>
+      face-to-face and online training courses, and track your progress towards <a href="/certification" class="govuk-link">certification</a></p>
     <%= render 'dashboard/activity' %>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column">
@@ -12,7 +12,7 @@
             <p class="govuk-body">If you don’t have a computing qualification, you may be eligible for a bursary towards your training.</p>
             <p class="govuk-body"><a href="#" class="govuk-link">Check your bursary availability</a></p>
             <p class="govuk-body">If you need help finding a course that’s suitable for you, use our diagnostic tool to identify the areas of subject knowledge where you need most support.</p>
-            <p class="govuk-body"><a href="/files/NCCE.Diagnostic.pdf" target="_blank" class="govuk-link">Download Diagnostic Tool PDF</a></p>
+            <p class="govuk-body"><a href="<%= ENV.fetch("STATIC_FILE_PATH") %>/NCCE.Diagnostic.pdf" target="_blank" class="govuk-link">Download Diagnostic Tool PDF</a></p>
           </div>
           <div class="govuk-grid-column-one-third">
             <aside class="ncce-aside">
