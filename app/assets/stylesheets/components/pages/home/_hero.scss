@@ -3,11 +3,12 @@
 	background-position: calc(100% - -110px) 0%;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	margin: 0.5rem 0;
+	margin: 0.5rem auto;
+
 	@include govuk-media-query($from: tablet) {
 		background-position: top right;
 		background-size: 500px;
-		margin: 1.5rem;
+		margin: 1.5rem auto;
 	}
 
 	@include govuk-media-query($from: desktop) {
