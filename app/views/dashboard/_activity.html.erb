@@ -22,7 +22,6 @@
     <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>
     <span class="govuk-form-group ncce-activity-form">
       <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form"' } do |f| %>
-        <%= f.label 'Choose activity', class: 'govuk-label ncce-activity-form__label' %>
         <%= f.select :activity_id,
           options_for_select(Activity.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
           { include_blank: 'Select an activity' },
