@@ -21,10 +21,14 @@
   <li class="ncce-activity-list__item">
     <span class="ncce-activity-list__item-text"><strong>Add a CPD Activity</strong></span>
     <span class="govuk-form-group ncce-activity-form">
-      <%# The design doesn't have a label, but there should be one for accessibility? %>
-      <label class="govuk-label ncce-activity-form__label" for="choose-activity">Choose Activity</label>
-      <select name="" id="choose-activity" class="govuk-select ncce-activity-form__select"><option value="">Select an activity</option></select>
-      <button class="govuk-button ncce-button__pink ncce-activity-form__button">Add</button>
+      <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form"' } do |f| %>
+        <%= f.select :activity_id,
+          options_for_select(Activity.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+          { include_blank: 'Select an activity' },
+          { class: 'govuk-select ncce-activity-form__select' }
+        %>
+        <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button' %>
+      <% end %>
     </span>
   </li>
 </ul>
