@@ -12,7 +12,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the signed up item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the NCCE')
   end
 
   it 'has the mock course' do
