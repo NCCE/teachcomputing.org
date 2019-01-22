@@ -6,11 +6,6 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'What we offer')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'What We Offer')
   end
-
-  it 'has 5 sections' do
-    expect(rendered).to have_css('.govuk-heading-s', count: 6)
-  end
-
 end
