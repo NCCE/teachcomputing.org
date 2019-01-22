@@ -31,3 +31,24 @@
 		text-align: right;
 	}
 }
+
+.ncce-footer__link--homepage {
+  text-decoration: none;
+  line-height: 1em;
+  color: $ncce-white;
+  &:link,
+  &:visited {
+    color: $ncce-white;
+  }
+  &:hover {
+    color: $ncce-grey-x-light;
+  }
+  &:focus {
+    color: $ncce-white;
+    background-color: $ncce-pink;
+    outline-color: $ncce-pink;
+  }
+  &:active {
+    color: $ncce-grey;
+  }
+}
