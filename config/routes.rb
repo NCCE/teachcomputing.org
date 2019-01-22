@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :downloads, only: [:show]
   end
 
+  resources :achievements, only: [:create]
+
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }

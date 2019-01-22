@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Activity, type: :model do
   let(:activity) { create(:activity) }
+  let(:cpd_activity) { create(:activity, :cpd) }
+  let(:cpd_courses) { create_list(:activity, 5, :cpd) }
+  let(:user) { create(:user) }
+  let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
+
 
   describe 'associations' do
     it 'has_many achievements' do
@@ -10,6 +15,43 @@ RSpec.describe Activity, type: :model do
 
     it 'has_many users' do
       expect(activity).to have_many(:users).through(:achievements)
+    end
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:category) }
+    it { is_expected.to validate_presence_of(:slug) }
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_inclusion_of(:category).in_array(['action', 'cpd']) }
+  end
+
+  describe 'scopes' do
+    describe 'available_for' do
+      before do
+        [cpd_activity, cpd_courses, user, user_achievement]
+      end
+
+      it 'lists available cpd activities for a given user' do
+        expect(Activity.available_for(user)).to eq(cpd_courses)
+      end
+
+      it 'does not include activities if a user already has an existing achievement' do
+        expect(Activity.available_for(user)).not_to include(cpd_activity)
+      end
+    end
+
+    describe 'cpd' do
+      before do
+        [cpd_courses, activity]
+      end
+
+      it 'includes only cpd activities' do
+        expect(Activity.cpd).to eq(cpd_courses)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.cpd).not_to include(activity)
+      end
     end
   end
 
@@ -22,17 +64,6 @@ RSpec.describe Activity, type: :model do
 
       it 'creates a record if one is not found' do
         expect(Activity.downloaded_diagnostic_tool.title).to eq 'Downloaded diagnostic tool'
-      end
-    end
-
-    describe '#created_ncce_account' do
-      it 'returns a record if one is found' do
-        activity = create(:activity, :created_ncce_account)
-        expect(Activity.created_ncce_account).to eq activity
-      end
-
-      it 'creates a record if one is not found' do
-        expect(Activity.created_ncce_account.title).to eq 'Created NCCE account'
       end
     end
   end

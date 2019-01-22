@@ -15,7 +15,12 @@ $border: 3px;
     }
     &__item-text {
         float: left;
+        margin-top: 3px;
         margin-bottom: 10px;
+
+        @include govuk-media-query($from: tablet) {
+          margin-bottom: 0;
+        }
     }
     &__item-check-mark {
         position: relative;
@@ -27,6 +32,11 @@ $border: 3px;
         overflow: hidden;
         border: $border solid $ncce-white;
         border-radius: 5px;
+        margin-bottom: 10px;
+
+        @include govuk-media-query($from: tablet) {
+          margin-bottom: 0;
+        }
     }
     &__item-check-mark:after {
         position: absolute;
@@ -37,6 +47,11 @@ $border: 3px;
         content: '';
         background-image: image-url('tick.png');
         background-size: cover;
+        margin-bottom: 10px;
+
+        @include govuk-media-query($from: tablet) {
+          margin-bottom: 0;
+        }
     }
 }
 
@@ -49,12 +64,18 @@ $border: 3px;
         float: left;
         line-height: 2.2rem;
         margin-right: 10px;
-        margin-bottom: 10px;
     }
     &__select {
         float: left;
         margin-right: 10px;
+        font-size: 17px;
+        width: 100%;
         margin-bottom: 10px;
+
+        @include govuk-media-query($from: tablet) {
+          margin-bottom: 0;
+          max-width: 350px;
+        }
     }
     // Top & Bottom Reset back to govuk size - better way?
     &__button {
