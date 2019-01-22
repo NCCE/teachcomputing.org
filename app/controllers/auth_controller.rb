@@ -15,13 +15,17 @@ class AuthController < ApplicationController
   end
 
   def failure
-    flash[:error] = "Sorry, we were unable to log you in. Please try again or #{view_context.link_to "contact us", "mailto:info@teachcomputing.org"} for help"
+    flash[:error] = "Sorry, we were unable to log you in. Please try again or contact us for help."
     redirect_to root_path
   end
 
   def logout
     reset_session
-    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE', 'https://www.stem.org.uk/user/logout')}/user/logout"
+    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/logout"
+  end
+
+  def edit_profile
+    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit"
   end
 
   private

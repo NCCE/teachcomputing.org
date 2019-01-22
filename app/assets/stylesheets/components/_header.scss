@@ -29,17 +29,19 @@
 	}
 }
 
-.govuk-header__link--homepage {
-	line-height: 1;
-	&:hover {
-		border-color: transparent;
-		color: $ncce-grey-x-light;
-	}
-	&:focus {
-		background-color: $ncce-pink;
-		color: $ncce-white;
-		outline-color: $ncce-pink;
-	}
+.govuk-header__link {
+  &:focus {
+    color: $ncce-white;
+    background-color: $ncce-pink;
+    outline-color: $ncce-pink;
+  }
+  &--homepage {
+  	line-height: 1;
+  	&:hover {
+  		border-color: transparent;
+  		color: $ncce-grey-x-light;
+  	}
+  }
 }
 
 .govuk-header__navigation {
@@ -51,4 +53,11 @@
 
 .govuk-header__navigation-item {
   border-color: $ncce-white;
+}
+
+.govuk-skip-link:focus {
+  background-color: $ncce-pink;
+  color: $ncce-white;
+  outline: 3px solid $ncce-pink;
+  outline-offset: 0;
 }
