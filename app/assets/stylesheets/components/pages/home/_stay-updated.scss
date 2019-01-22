@@ -36,10 +36,5 @@
 }
 
 .ncce-stay-updated__image {
-	height: 15rem;
 	width: 100%;
-
-	@include govuk-media-query($from: tablet) {
-		height: 20rem;
-	}
 }
