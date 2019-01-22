@@ -4,7 +4,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
   let(:user) { create(:user) }
 
   before do
-    create(:achievement, user: user)
+    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @achievements = user.achievements
     delegate_course = double(Object, activity_title: 'Test Course')
     assign(:delegate_course_list, [delegate_course])
@@ -24,6 +24,6 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the check marks' do
-    expect(rendered).to have_css('.ncce-activity-list__item-check-mark', count: 3)
+    expect(rendered).to have_css('.ncce-activity-list__item-check-mark', count: 2)
   end
 end
