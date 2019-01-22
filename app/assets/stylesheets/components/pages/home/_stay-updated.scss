@@ -6,10 +6,6 @@
 		grid-gap: 15px;
 		grid-template-columns: repeat(2, 1fr);
 	}
-	@include govuk-media-query($from: desktop) {
-		grid-gap: 25px;
-		grid-template-columns: repeat(3, 20rem);
-	}
 }
 
 .ncce-stay-updated__body {
@@ -38,5 +34,10 @@
 }
 
 .ncce-stay-updated__image {
+	height: 15rem;
 	width: 100%;
+
+	@include govuk-media-query($from: tablet) {
+		height: 20rem;
+	}
 }
