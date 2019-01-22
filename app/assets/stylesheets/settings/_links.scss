@@ -1,4 +1,6 @@
-.ncce-link__on-light {
+.ncce-link {
+  font-family: $font-family-body;
+
 	&:link {
 		color: $ncce-blue-link;
 	}
@@ -9,54 +11,31 @@
 		color: $ncce-pink;
 	}
 	&:focus {
-		background-color: $ncce-grey-x-light;
-		color: $ncce-pink;
-		outline-color: $ncce-grey-x-light;
+		color: $ncce-white;
+		background-color: $ncce-pink;
+		outline-color: $ncce-pink;
 	}
 	&:active {
 		background-color: $ncce-pink;
 		color: $ncce-white;
 	}
-}
 
-.ncce-link__on-dark {
-	&:link {
-		color: $ncce-grey-x-light;
-	}
-	&:visited {
-		color: $ncce-grey;
-	}
-	&:hover {
-		color: $ncce-white;
-	}
-	&:focus {
-		background-color: $ncce-black;
-		color: $ncce-white;
-		outline-color: $ncce-black;
-	}
-	&:active {
-		color: $ncce-black;
-	}
-}
-
-.ncce-footer__link--homepage {
-  text-decoration: none;
-  line-height: 1em;
-  color: $ncce-white;
-  &:link,
-  &:visited {
-    color: $ncce-white;
-  }
-  &:hover {
-    color: $ncce-grey-x-light;
-  }
-  &:focus {
-    background-color: $ncce-pink;
-    color: $ncce-white;
-    outline-color: $ncce-pink;
-  }
-  &:active {
-    color: $ncce-grey;
+  &--on-dark {
+  	&:link {
+  		color: $ncce-grey-x-light;
+  	}
+  	&:visited {
+  		color: $ncce-grey;
+  	}
+  	&:hover {
+  		color: $ncce-white;
+  	}
+    &:focus {
+      color: $ncce-white;
+    }
+    &:active {
+      color: $ncce-black;
+    }
   }
 }
 
