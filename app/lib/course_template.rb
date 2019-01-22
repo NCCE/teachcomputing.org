@@ -6,6 +6,8 @@ class CourseTemplate
 
   def initialize(doc)
    @doc = doc
+   achiever = Achiever.new
+   @course_template_details = achiever.fetchCourseTemplate(course_template_no)
   end
 
   def course_template_no
@@ -18,5 +20,9 @@ class CourseTemplate
 
   def title
     @doc.xpath('.//Template.Template_Title/text()').to_s
+  end
+
+  def meta_description
+    @course_template_details.xpath('.//Template.Meta_Description/text()').to_s
   end
 end
