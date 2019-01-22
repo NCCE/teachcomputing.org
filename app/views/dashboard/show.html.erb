@@ -1,8 +1,14 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
-    <h2 class="govuk-heading-l">Your dashboard</h2>
-    <p class="govuk-body">Welcome to your personal dashboard where you can discover and book face-to-face and online training courses and view your progress.</p>
-    <p class="govuk-body">If you need help finding a course that’s suitable for you, use our <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), target: :_blank %> to identify the areas of subject knowledge where you need most support.</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Your dashboard</h2>
+          <p class="govuk-body">Welcome to your personal dashboard where you can discover and book face-to-face and online training courses and view your progress.</p>
+          <p class="govuk-body">If you need help finding a course that’s suitable for you, use our <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), target: :_blank %> to identify the areas of subject knowledge where you need most support.</p>
+        </div>
+      </div>
+    </div>
     <%= render 'dashboard/activity' %>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column">
