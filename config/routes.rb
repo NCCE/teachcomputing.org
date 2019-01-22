@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
+  get '/news/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/a-level' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
