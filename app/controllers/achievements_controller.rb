@@ -4,7 +4,7 @@ class AchievementsController < ApplicationController
     @achievement.user_id = current_user.id
 
     if @achievement.save
-      flash[:notice] = 'Your activity has been added'
+      flash[:notice] = 'Great! Your activity has now been added'
     else
       flash[:error] = 'Whoops something went wrong'
     end
