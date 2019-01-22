@@ -24,6 +24,10 @@ class AuthController < ApplicationController
     redirect_to "#{ENV.fetch('STEM_OAUTH_SITE', 'https://www.stem.org.uk/user/logout')}/user/logout"
   end
 
+  def edit_profile
+    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE', 'https://www.stem.org.uk')}/user/#{current_user.stem_user_id}/edit"
+  end
+
   private
 
   def omniauth_params

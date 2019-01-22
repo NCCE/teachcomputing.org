@@ -22,6 +22,9 @@
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
             <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
           </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+            <%= link_to 'Edit profile', edit_profile_url, class: 'govuk-header__link', target: '_blank' %>
+          </li>
         </ul>
       </nav>
       <% else %>
