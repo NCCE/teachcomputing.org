@@ -16,7 +16,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has progress section' do
-    expect(rendered).to have_css('h3', text: 'Your progress')
+    expect(rendered).to have_css('h3', text: 'Your Progress')
   end
 
   it 'has a link to certification' do
@@ -28,6 +28,6 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has a link to download the diagnostic tool' do
-    expect(rendered).to have_css('a', text: 'Download Diagnostic Tool PDF')
+    expect(rendered).to have_css('a', text: 'diagnostic tool')
   end
 end
