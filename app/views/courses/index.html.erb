@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <h2 class="govuk-heading-l">Courses</h2>
@@ -7,7 +6,7 @@
         <% @face_to_face_courses.each do |course| %>
           <div class="ncce-courses__course">
             <h4 class="govuk-heading-s"><%= link_to course.title, stem_course_link(course.course_template_no), class: 'ncce-link__on-light', target: :_blank %></h4>
-            <p class="govuk-body"><%= stripped_summary(course.summary) %></p>
+            <p class="govuk-body"><%= course.meta_description %></p>
             <div class="govuk-body-s ncce-courses__meta">
               <% @face_to_face_course_occurrences.each do |oc| %>
                 <% next unless oc.course_template_no == course.course_template_no %>
@@ -16,27 +15,6 @@
                   <span><%= activity_dates(oc.start_date, oc.end_date) %></span>
                 </div>
               <% end %>
-=======
-<h2 class="govuk-heading-l">Courses</h2>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body">
-      The face to face courses are booked on STEM.<br />
-      The online courses are available on FutureLearn.<br />
-      After you complete the course, come back here to the NCCE to track your progress towards certification.
-    </p>
-
-    <% @face_to_face_courses.each do |course| %>
-      <div class="ncce-courses__course">
-        <h4 class="govuk-heading-s"><a class="govuk-link" href="#"><%= link_to course.title, stem_course_link(course.course_template_no), class: 'govuk-link', target: :_blank %></a></h4>
-        <p class="govuk-body"><%= course.meta_description %></p>
-        <div class="govuk-body-s ncce-courses__meta">
-          <% @face_to_face_course_occurrences.each do |oc| %>
-            <% next unless oc.course_template_no == course.course_template_no %>
-            <div class="ncce-courses__meta-item">
-              <span class="ncce-courses__meta--icon"><%= oc.address_town %></span>
-              <span><%= activity_dates(oc.start_date, oc.end_date) %></span>
->>>>>>> Stashed changes
             </div>
           </div>
         <% end %>
