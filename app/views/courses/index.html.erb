@@ -5,7 +5,7 @@
       <div class="govuk-grid-column-two-thirds">
         <% @face_to_face_courses.each do |course| %>
           <div class="ncce-courses__course">
-            <h4 class="govuk-heading-s"><a class="ncce-link__on-light" href="#"><%= link_to course.title, stem_course_link(course.course_template_no), class: 'ncce-link__on-light', target: :_blank %></a></h4>
+            <h4 class="govuk-heading-s"><%= link_to course.title, stem_course_link(course.course_template_no), class: 'ncce-link__on-light', target: :_blank %></h4>
             <p class="govuk-body"><%= stripped_summary(course.summary) %></p>
             <div class="govuk-body-s ncce-courses__meta">
               <% @face_to_face_course_occurrences.each do |oc| %>
