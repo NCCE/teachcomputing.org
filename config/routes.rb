@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
+  get '/edit-profile', to: 'auth#edit_profile', as: :edit_profile
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
