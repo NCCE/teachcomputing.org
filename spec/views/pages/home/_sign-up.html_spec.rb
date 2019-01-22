@@ -10,7 +10,7 @@ RSpec.describe('pages/home/_sign-up', type: :view) do
   end
 
   it 'links to the Sign up section' do
-    expect(rendered).to have_link('Create an acount', href: '/login')
+    expect(rendered).to have_link('Create an account', href: '/login')
   end
 
   it('renders the correct number of bullets') do
