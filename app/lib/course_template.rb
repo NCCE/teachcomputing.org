@@ -19,4 +19,8 @@ class CourseTemplate
   def title
     @doc.xpath('.//Template.Template_Title/text()').to_s
   end
+
+  def meta_description
+    @doc.xpath('.//Template.Meta_Description/text()').to_s
+  end
 end

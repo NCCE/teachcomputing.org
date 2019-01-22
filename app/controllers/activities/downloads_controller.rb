@@ -2,7 +2,7 @@ class Activities::DownloadsController < ApplicationController
   before_action :track_download
 
   def show
-    redirect_to (file_path), type: params[:file][:type], disposition: 'inline'
+    redirect_to (file_path), disposition: 'inline'
   end
 
   private
