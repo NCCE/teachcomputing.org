@@ -1,6 +1,7 @@
 .ncce-stay-updated {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
+	margin-top: 1.5rem;
 
 	@include govuk-media-query($from: tablet) {
 		grid-gap: 15px;
