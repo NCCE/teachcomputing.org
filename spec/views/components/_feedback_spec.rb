@@ -10,7 +10,7 @@ RSpec.describe('components/_feedback', type: :view) do
   end
 
   it 'text to send feedback note' do
-    expect(rendered).to have_css('.ncce-link__on-light', text: 'feedback')
+    expect(rendered).to have_css('.ncce-link', text: 'feedback')
   end
 
   it 'links to the feedback mail' do
