@@ -33,7 +33,7 @@
         <p class="govuk-heading-s ncce-aside__title">Diagnostic Tool</p>
         <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
         knowledge where you need most support.</p>
-        <p class="govuk-body-s"><%= link_to 'Download Diagnostic Tool PDF', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-aside__link', target: :_blank %></p>
+        <p class="govuk-body-s"><%= link_to 'Download Diagnostic Tool PDF', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'ncce-aside__link', target: :_blank %></p>
       </aside>
     </div>
   </div>
