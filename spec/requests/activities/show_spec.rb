@@ -7,7 +7,7 @@ RSpec.describe Activities::DownloadsController do
   describe 'GET show' do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-      get activities_download_path(activity.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf'})
+      get activities_download_path(activity.id, :file => { name: 'NCCE.Diagnostic.pdf'})
     end
 
     it 'creates an Achievement if one does not exist already' do
