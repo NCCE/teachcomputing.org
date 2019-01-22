@@ -2,63 +2,63 @@ $check-mark-size: 24px;
 $border: 3px;
 
 .ncce-activity-list {
-    &__item {
-        background-color: $ncce-grey-x-light;
-        padding: 1.25rem 1.125rem;
-        // needs to override .govuk-list > li
-        margin-bottom: 2px !important;
-    }
-    &__item:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-    &__item-text {
-        float: left;
-        margin-bottom: 10px;
-    }
-    &__item-check-mark {
-        position: relative;
-        width: $check-mark-size;
-        height: $check-mark-size;
-        float: right;
-        margin-right: 20px;
-        text-indent: 100%;
-        overflow: hidden;
-        border: $border solid $ncce-white;
-        border-radius: 5px;
-    }
-    &__item-check-mark:after {
-        position: absolute;
-        width: $check-mark-size;
-        height: $check-mark-size;
-        left: $border;
-        top: -$border;
-        content: '';
-        background-image: image-url('tick.png');
-        background-size: cover;
-    }
+	&__item {
+		background-color: $ncce-grey-x-light;
+		padding: 1.25rem 1.125rem;
+		// needs to override .govuk-list > li
+		margin-bottom: 2px !important;
+	}
+	&__item:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+	&__item-text {
+		float: left;
+		margin-bottom: 10px;
+	}
+	&__item-check-mark {
+		position: relative;
+		width: $check-mark-size;
+		height: $check-mark-size;
+		float: right;
+		margin-right: 20px;
+		text-indent: 100%;
+		overflow: hidden;
+		border: $border solid $ncce-white;
+		border-radius: 5px;
+	}
+	&__item-check-mark:after {
+		position: absolute;
+		width: $check-mark-size;
+		height: $check-mark-size;
+		left: $border;
+		top: -$border;
+		content: '';
+		background-image: image-url('tick.png');
+		background-size: cover;
+	}
 }
 
 // TODO: More tidying when form is implemented fully
 .ncce-activity-form {
-    float: right;
-    margin-top: -5px;
-    margin-bottom: 0;
-    &__label {
-        float: left;
-        line-height: 2.2rem;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-    &__select {
-        float: left;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-    // Top & Bottom Reset back to govuk size - better way?
-    &__button {
-        padding: 9px 15px 6px;
-        margin-bottom: 0;
-    }
+	float: right;
+	margin-top: -5px;
+	margin-bottom: 0;
+	&__label {
+		float: left;
+		line-height: 2.2rem;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	&__select {
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	// Top & Bottom Reset back to govuk size - better way?
+	&__button {
+		padding: 9px 15px 6px;
+		margin-bottom: 0;
+	}
 }
