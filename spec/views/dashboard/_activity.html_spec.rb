@@ -20,7 +20,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the form item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a CPD Activity')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a completed CPD Activity')
   end
 
   it 'has the check marks' do
