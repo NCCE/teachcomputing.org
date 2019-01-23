@@ -60,3 +60,19 @@
 		color: $ncce-white;
 	}
 }
+
+.ncce-stay-in-touch__list {
+	margin-top: 40px;
+	@include govuk-media-query($from: tablet) {
+		margin-top: 19rem;
+		margin-left: 5rem;
+	}
+}
+
+.ncce-stay-in-touch__list > li {
+	margin-bottom: 20px;
+
+	.ncce-link {
+		padding: 5px 0;
+	}
+}
