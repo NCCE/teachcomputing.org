@@ -22,16 +22,6 @@
             </div>
           </div>
         <% end %>
-
-        <% @online_courses.courses.each do |course| %>
-          <div class="ncce-courses__course">
-            <h4 class="govuk-heading-s"><%= link_to course[:title], course[:link], class: 'ncce-link', target: :_blank %></h4>
-            <p class="govuk-body"><%= course[:description] %></p>
-            <p class="govuk-body-s ncce-courses__meta">
-              <span class="ncce-courses__meta--icon">Online - Future Learn</span>
-            </p>
-          </div>
-        <% end %>
       </div>
       <aside class="govuk-grid-column-one-third ncce-aside">
         <p class="govuk-heading-s ncce-aside__title">Diagnostic Tool</p>

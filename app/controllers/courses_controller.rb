@@ -7,7 +7,6 @@ class CoursesController < ApplicationController
   def index
     @face_to_face_courses = @achiever.approvedCourseTemplates
     @face_to_face_course_occurrences = @achiever.fetchFutureCourses
-    @online_courses = FutureLearn.new
 
     render :index
   end
