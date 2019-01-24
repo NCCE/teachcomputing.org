@@ -17,6 +17,10 @@ RSpec.describe('pages/home/_mailing', type: :view) do
     expect(rendered).to have_css('.ncce-stay-in-touch__input', count: 2)
   end
 
+  it 'has a privacy link' do
+    expect(rendered).to have_link('privacy policy', href: '/privacy')
+  end
+
   it 'has a twitter link' do
     expect(rendered).to have_link('Follow us on Twitter', href: /twitter.com\/WeAreComputing/)
   end
