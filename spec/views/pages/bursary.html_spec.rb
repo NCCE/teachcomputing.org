@@ -6,11 +6,6 @@ RSpec.describe('pages/bursary', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Bursary Information')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Bursary entitlement')
   end
-
-  it 'has Aside section' do
-    expect(rendered).to have_css('.ncce-aside', count: 1)
-  end
-
 end
