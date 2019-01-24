@@ -4,21 +4,21 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
           <p class="govuk-body ncce-partners__notice govuk-!-margin-top-3">
-            The National Centre for Computing Education is funded by the Department for Education and is run by a consortium of <a href='https://www.stem.org.uk/' class="ncce-link ncce-link--on-dark" >STEM Learning</a>,
-            the <a href='https://www.raspberrypi.org/' class="ncce-link ncce-link--on-dark"> Raspberry Pi Foundation</a> and <a href='https://www.bcs.org/' class="ncce-link ncce-link--on-dark">BCS, The Chartered Institute for IT</a>.
+            The National Centre for Computing Education is funded by the Department for Education and is run by a consortium of <%= link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link ncce-link--on-dark' %>,
+            the <%= link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link ncce-link--on-dark' %> and <%= link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link ncce-link--on-dark' %>.
           </p>
         </div>
         <div class="govuk-grid-column-one-half">
           <div class='ncce-partners__list'>
-            <a href='https://www.raspberrypi.org/' class="ncce-partners__link ncce-link ncce-link--on-dark">
+            <%= link_to('https://www.raspberrypi.org/', class: 'ncce-partners__link ncce-link ncce-link--on-dark') do %>
               <img src="/images/rpi.png" class="ncce-partners__link-raspberry-pi" alt="Raspberry Pi Foundation"/>
-            </a>
-            <a href='https://www.bcs.org/' class="ncce-partners__link ncce-link ncce-link--on-dark">
+            <% end %>
+            <%= link_to('https://www.bcs.org/', class: 'ncce-partners__link ncce-link ncce-link--on-dark') do %>
               <img src="/images/bcs.png" class="ncce-partners__link-bcs" alt="BCS"/>
-            </a>
-            <a href='https://www.stem.org.uk/' class="ncce-partners__link ncce-link ncce-link--on-dark">
+            <% end %>
+            <%= link_to('https://www.stem.org.uk/', class: 'ncce-partners__link ncce-link ncce-link--on-dark') do %>
               <img src="/images/stem.png" class="ncce-partners__link-stem-learning" alt="STEM Learning"/>
-            </a>
+            <% end %>
           </div>
         </div>
       </div>
