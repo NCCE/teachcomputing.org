@@ -8,6 +8,10 @@ class CourseTemplate
    @doc = doc
   end
 
+  def booking_url
+    @doc.xpath('.//Template.Booking_URL/text()').to_s
+  end
+
   def course_template_no
     @doc.xpath('.//Template.COURSETEMPLATENO/text()').to_s
   end

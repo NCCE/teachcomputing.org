@@ -52,4 +52,10 @@ describe CoursesHelper, type: :helper do
       expect(helper.stem_course_link('01de2624')).to eq 'https://www.stem.org.uk/cpdredirect/01de2624'
     end
   end
+
+  describe('stripped_summary') do
+    it 'removes any html elements in the string' do
+      expect(helper.stripped_summary('<p>Hello</p>')).to eq 'Hello'
+    end
+  end
 end
