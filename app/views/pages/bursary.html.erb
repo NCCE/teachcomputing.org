@@ -3,10 +3,10 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l ncce-bursary__title">Bursary Information</h2>
+          <h2 class="govuk-heading-l ncce-bursary__title">Bursary entitlement</h2>
         </div>
         <div class="govuk-grid-column-two-thirds ncce-bursary__content">
-          <p class="govuk-body-l">To make it as easy as possible to access and attend our high-quality professional development, we offer bursaries to eligible teachers.</p>
+          <p class="govuk-body">We recognise it can be difficult to get out of the classroom to attend face-to-face CPD, so we offer bursaries to schools and colleges across England to help.</p>
           <p class="govuk-body">These bursaries have been designed to maximise the reach of our CPD and can contribute towards the costs associated with attending professional development, including course fees, travel and supply cover.</p>
 
           <h3 class="govuk-heading-m">Types of bursary available</h3>
@@ -15,35 +15,40 @@
 
           <h4 class="govuk-heading-s">These courses are free to:</h4>
           <ul class="govuk-list govuk-list--bullet">
-            <li>the first teacher from each priority primary school to participate in face-to-face CPD and all computing teachers from priority secondary schools. Priority schools are those located in Local Authority Districts 5 and 6: see this <%= link_to 'map', 'https://www.stem.org.uk/sites/default/files/pages/downloads/Methodology_guidance_note_-_deing_achieving_excellence_areas%2013.pdf', class: 'ncce-link' %> to check eligibility or <%= mail_to 'info@teachcomputing.org', 'contact', class: 'ncce-link' %> us for details.</li>
-            <li>graduates of the Computer Science Accelerator Programme </li>
+            <li>the first teacher from each priority primary school to participate in face-to-face CPD</li>
+            <li>all computing teachers from priority secondary schools (courses coming soon)</li>
+            <li>graduates of the <%= link_to 'Computer Science Accelerator Programme', accelerator_path, class: 'ncce-link' %></li>
           </ul>
+
+          <p class="govuk-body">Priority schools are those located in Local Authority Districts 5 and 6: see <%= link_to 'this map', "https://www.stem.org.uk/sites/default/files/pages/downloads/Methodology_guidance_note_-_deing_achieving_excellence_areas%2013.pdf", class: 'ncce-link' %> to check eligibility, or
+          <a class="ncce-link" href="mailto:info@teachcomputing.org" target="_top"> Contact us</a> for details.</p>
+
           <p class="govuk-body">The fee for teachers from state-funded schools or colleges outside of priority areas 5 and 6 is £35 per day plus VAT.</p>
 
           <h3 class="govuk-heading-s">Can I get a bursary?</h3>
-          <p class="govuk-body">Bursaries are available of £100 per day for teachers from primary and secondary priority schools on successful completion of the CPD.</p>
+          <p class="govuk-body">Bursaries of £100 per day are available for teachers from primary and secondary priority schools on successful completion of the CPD.</p>
           <p class="govuk-body"><%= link_to 'Find out more about our CPD', offer_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
 
           <h3 class="govuk-heading-s">Computer Science Accelerator Programme CPD</h3>
-          <p class="govuk-body"><%= link_to 'The Computer Science Accelerator programme', accelerator_path, class: 'ncce-link' %> and its face-to-face CPD activities are free to secondary teachers of computing or computer science, in an English state-funded or state maintained school, without a post A level qualification in computer science or a related subject *. Online CPD is free to all teachers.</p>
+          <p class="govuk-body"><%= link_to 'The Computer Science Accelerator programme', accelerator_url, class: 'ncce-link' %> and its face-to-face CPD activities are free to secondary teachers of computing or computer science, in an English state-funded or state-maintained school, without a post A level qualification in computer science or a related subject.* Online CPD is free to all teachers.</p>
 
           <h3 class="govuk-heading-s">Can I get a bursary for the face-to-face CPD?</h3>
-          <p class="govuk-body">Anybody who meets the above criteria is eligible to receive a bursary. For all other participants, the course fee is £220 per day; £440 per two-day course.</p>
+          <p class="govuk-body">Anybody who meets the above criteria is eligible to receive a bursary. For all other participants, the course fee is £220 per day, or £440 per two-day course.</p>
           <p class="govuk-body">If you are eligible you will receive:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>£220 per day (£440 per course) up to a maximum of £880, payable after successful completion of each face-to-face CPD activity</li>
-            <li>an early adopter bursary of £870 for online CPD and sitting the final test by the 31 July 2019, payable on completion of the programme</li>
+            <li>£870 for participants who complete online CPD and sit the final test by 31 July 2019, payable on completion of the programme</li>
+          </ul>
+          <p class="govuk-body">To receive financial support, you will need to:</p>
+           <ul class="govuk-list govuk-list--bullet">
+            <li>book and attend at least two face-to-face courses. Eligible teachers will receive a bursary after completing the first two courses, and you’re welcome to attend the rest for free</li>
+            <li>participate in at least two online courses, around 16 hours in total</li>
+            <li>take a short subject knowledge test (after this, you will receive a bursary to compensate the time you’ve taken to complete the online components)</li>
           </ul>
           <p class="govuk-body">Bursaries exist to support you through 40 hours of CPD to complete the Computer Science Accelerator Programme. If you don’t complete the programme, we reserve the right to reclaim any bursaries paid.</p>
-          <p class="govuk-body">*Examples of ‘related subjects’ include Information Systems, Software Engineering, Artificial Intelligence and Health Informatics. Post A level qualifications in computing or ICT are not considered ‘related subjects’.</p>
           <p class="govuk-body"><%= link_to 'Find out more about the programme', accelerator_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
+          <p class="govuk-body">*Related subjects include Information Systems, Software Engineering, Artificial Intelligence and Health Informatics. Post A level qualifications in computing or ICT are not considered related subjects.</p>
         </div>
-
-        <aside class="govuk-grid-column-one-third ncce-aside">
-          <h4 class="govuk-heading-s ncce-aside__title">Our offer</h4>
-          <p class="govuk-body-s ncce-aside__text"> We provide high-quality support for the teaching of computing in schools and colleges, from Key Stage 1 through to A level. Our extensive range of training, resources and support covers elements of the curriculum at every Key Stage, catering for all levels of subject knowledge and experience.</p>
-          <p class="govuk-body-s"><%= link_to 'Find out more', offer_path, class: 'ncce-link ncce-link--on-dark' %></p>
-        </aside>
       </div>
     </div>
   </div>
