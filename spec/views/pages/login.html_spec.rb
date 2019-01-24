@@ -24,4 +24,8 @@ RSpec.describe('pages/login', type: :view) do
   it 'links to log in to a STEM Learning account' do
     expect(rendered).to have_link('Log in', href: '/auth/stem')
   end
+
+  it 'links to about' do
+    expect(rendered).to have_link('Read more about the consortium', href: '/about')
+  end
 end

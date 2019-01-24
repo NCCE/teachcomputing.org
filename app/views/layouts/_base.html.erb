@@ -57,9 +57,9 @@
   <!-- End Google Tag Manager (noscript) -->
   <% end %>
   <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
-
-  <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
-
+  
+  <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
+  
   <%= render 'components/header' %>
   <%= render 'components/feedback' %>
 

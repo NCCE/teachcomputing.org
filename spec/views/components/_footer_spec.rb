@@ -5,6 +5,22 @@ RSpec.describe('components/_footer', type: :view) do
     render
   end
 
+  it 'has a link to the home page ' do
+    expect(rendered).to have_link('National Centre forComputing Education', href: '/')
+  end
+
+  it 'has an about link' do
+    expect(rendered).to have_link('About', href: '/about')
+  end
+
+  it 'has a contact link' do
+    expect(rendered).to have_link('Contact', href: 'mailto:info@teachcomputing.org')
+  end
+
+  it 'has a privacy link' do
+    expect(rendered).to have_link('Privacy', href: '/privacy')
+  end
+
   it 'has a twitter link' do
     expect(rendered).to have_link('Twitter', href: /twitter.com\/WeAreComputing/)
   end

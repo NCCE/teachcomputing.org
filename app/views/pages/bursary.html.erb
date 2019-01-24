@@ -27,7 +27,7 @@
 
           <h3 class="govuk-heading-s">Can I get a bursary?</h3>
           <p class="govuk-body">Bursaries of £100 per day are available for teachers from primary and secondary priority schools on successful completion of the CPD.</p>
-          <p class="govuk-body"><a class="govuk-button ncce-button__pink ncce-bursary__button" href="/offer">Find out more about our CPD</a></p>
+          <p class="govuk-body"><%= link_to 'Find out more about our CPD', offer_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
 
           <h3 class="govuk-heading-s">Computer Science Accelerator Programme CPD</h3>
           <p class="govuk-body"><%= link_to 'The Computer Science Accelerator programme', accelerator_url, class: 'ncce-link' %> and its face-to-face CPD activities are free to secondary teachers of computing or computer science, in an English state-funded or state-maintained school, without a post A level qualification in computer science or a related subject.* Online CPD is free to all teachers.</p>
@@ -46,7 +46,7 @@
             <li>take a short subject knowledge test (after this, you will receive a bursary to compensate the time you’ve taken to complete the online components)</li>
           </ul>
           <p class="govuk-body">Bursaries exist to support you through 40 hours of CPD to complete the Computer Science Accelerator Programme. If you don’t complete the programme, we reserve the right to reclaim any bursaries paid.</p>
-          <p class="govuk-body"><%= link_to 'Find out more about the programme', accelerator_url, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
+          <p class="govuk-body"><%= link_to 'Find out more about the programme', accelerator_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
           <p class="govuk-body">*Related subjects include Information Systems, Software Engineering, Artificial Intelligence and Health Informatics. Post A level qualifications in computing or ICT are not considered related subjects.</p>
         </div>
       </div>
