@@ -42,9 +42,10 @@ class Achiever
 
   def approvedCourseTemplates
     programme = Parameter.new('Programme', 'NCCE')
-    hideFromWeb = Parameter.new('HideFromWeb', '1')
+    hideFromWeb = Parameter.new('HideFromWeb', '0')
 
-    results = self.runWorkflow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [programme])
+    results = self.runWorkflow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [programme, hideFromWeb])
+
     templates = Array.new
     results.each do |result|
       templates << CourseTemplate.new(result)
@@ -54,8 +55,9 @@ class Achiever
 
   def fetchFutureCourses
     programme = Parameter.new('Programme', 'NCCE')
+    hideFromWeb = Parameter.new('HideFromWeb', '0')
 
-    results = self.runWorkflow(ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID'], [programme])
+    results = self.runWorkflow(ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID'], [programme, hideFromWeb])
 
     courses = Array.new
     results.each do |result|
