@@ -20,10 +20,6 @@ RSpec.describe CoursesController do
         expect(assigns(:face_to_face_course_occurrences)).to be_a(Array)
       end
 
-      it 'assigns @future_learn' do
-        expect(assigns(:online_courses)).to be_a(FutureLearn)
-      end
-
       it 'renders the correct template' do
         expect(response).to render_template('index')
       end

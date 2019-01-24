@@ -38,4 +38,9 @@ module CoursesHelper
   def stem_course_link(course_template_no)
     "https://www.stem.org.uk/cpdredirect/#{course_template_no}"
   end
+
+  def stripped_summary(string)	
+    unescaped_str = CGI::unescapeHTML(string)	
+    strip_tags(unescaped_str)
+  end
 end
