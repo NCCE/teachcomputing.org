@@ -13,4 +13,22 @@ RSpec.describe('pages/bursary', type: :view) do
     expect(rendered).to have_css('.ncce-aside', count: 1)
   end
 
+  it 'has accelerator links' do
+    expect(rendered).to have_link('The Computer Science Accelerator programme', href: '/accelerator')
+    expect(rendered).to have_link('Find out more about the programme', href: '/accelerator')
+  end
+
+  it 'has a offer links' do
+    expect(rendered).to have_link('Find out more about our CPD', href: '/offer')
+    expect(rendered).to have_link('Find out more', href: '/offer')
+  end
+
+  it 'has a contact link' do
+    expect(rendered).to have_link('contact', href: 'mailto:info@teachcomputing.org')
+  end
+
+  it 'has a map link' do
+    expect(rendered).to have_css('.ncce-link', text: 'map')
+  end
+
 end
