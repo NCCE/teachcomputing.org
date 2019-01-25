@@ -10,8 +10,9 @@ RSpec.describe Achiever, type: :class do
       it 'runs the given workflow with the given params' do
         achiever = Achiever.new
         programme = Parameter.new('Programme', 'NCCE')
+        hideFromWeb = Parameter.new('HideFromWeb', '0')
 
-        res = achiever.runWorkflow('SOME_FUTURE_COURSES_WORKFLOW_ID', [programme])
+        res = achiever.runWorkflow('SOME_FUTURE_COURSES_WORKFLOW_ID', [programme, hideFromWeb])
 
         expect(res[0].xpath('.//Activity.Activity_Code')[0].content).to eq('CP202')
       end

@@ -13,4 +13,7 @@ RSpec.describe('pages/terms-conditions', type: :view) do
     expect(rendered).to have_css('.govuk-heading-m', count: 11)
   end
 
+  it 'has a contact link' do
+    expect(rendered).to have_link('finance@stem.org.uk', href: 'mailto:finance@stem.org.uk')
+  end
 end

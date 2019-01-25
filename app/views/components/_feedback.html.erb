@@ -6,7 +6,7 @@
   </strong>
       <span class="govuk-phase-banner__text">
         This is a new service – your
-        <a class="ncce-link" href="mailto:info@teachcomputing.org">feedback</a> will help us to improve it.
+        <%= mail_to 'info@teachcomputing.org', 'feedback', class: 'ncce-link' %> will help us to improve it.
       </span>
     </p>
   </div>
