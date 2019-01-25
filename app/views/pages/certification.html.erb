@@ -21,7 +21,7 @@
           <p class="govuk-body">If you are undertaking the GCSE Subject Knowledge Certificate, you will need to successfully complete a summative assessment.</p>
           <p class="govuk-body">Your progress will be tracked through your personal National Centre profile, so you will always be able to see how many credits you have recorded and the number you need to complete each component.</p>
           <p class="govuk-body">Certification features will become available on the website by June 2019.  Any activities you complete prior to all certification features becoming available, will be recorded and will count towards your credits.</p>
-          <p class="govuk-body">For further information contact <a href="mailto:info@teachcomputing.org" class="ncce-link">info@teachcomputing.org</a></p>
+          <p class="govuk-body">For further information contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %></p>
           <p class="govuk-body-s"><%= link_to 'Log in to browse available CPD courses from your dashboard', login_path, class: 'govuk-button ncce-button__pink' %></p>
         </div>
 
@@ -29,7 +29,7 @@
         <aside class="govuk-grid-column-one-third ncce-aside">
           <h4 class="govuk-heading-s ncce-aside__title">Start your journey</h4>
           <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
-          <p class="govuk-body-s"><a href="/login" class="ncce-link ncce-link--on-dark">Create an account</a></p>
+          <p class="govuk-body-s"><%= link_to 'Create an account', login_path, class: 'ncce-link ncce-link--on-dark' %></p>
         </aside>
         <% end %>
       </div>

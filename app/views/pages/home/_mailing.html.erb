@@ -14,7 +14,7 @@
               <label class="govuk-label ncce-stay-in-touch__label" for="amf-input-email_10">Email address</label>
               <input type="text" class="govuk-input ncce-stay-in-touch__input" name="email_10" id="amf-input-email_10" value="" maxlength="255" onkeyup="if (this.length>255) this.value=this.value.substr(0, 255)" onblur="this.value=this.value.substr(0, 255)">
             </div>
-            <p class="govuk-body ncce-stay-in-touch__footnote">From time to time the consortium will contact you with updates. We will only use your data in accordance with the terms of our <a href="/privacy.html" class="govuk-link ncce-link ncce-link--on-dark">privacy policy</a>.</p>
+            <p class="govuk-body ncce-stay-in-touch__footnote">From time to time the consortium will contact you with updates. We will only use your data in accordance with the terms of our <%= link_to 'privacy policy', privacy_path, class: 'govuk-link ncce-link ncce-link--on-dark' %>.</p>
             <input type="submit" class="govuk-button ncce-stay-in-touch__button" name="submit" id="submit" value="Get updates">
             <%= javascript_tag id: '0.80171781796847', nonce: true do -%>
               (function(){
@@ -49,14 +49,14 @@
         <div class="govuk-grid-column-one-half">
           <ul class="govuk-list ncce-stay-in-touch__list">
           <li>
-            <a class="govuk-link ncce-link ncce-link--on-dark" href="http://facebook.com/WeAreComputing">
+            <%= link_to 'http://facebook.com/WeAreComputing', class: 'govuk-link ncce-link ncce-link--on-dark' do %>
               <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon' %>Like us on Facebook
-            </a>
+            <% end %>
           </li>
           <li>
-            <a class="govuk-link ncce-link ncce-link--on-dark" href="https://twitter.com/WeAreComputing">
+            <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-link ncce-link ncce-link--on-dark' do %>
               <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon' %>Follow us on Twitter
-            </a>
+            <% end %>
           </li>
         </ul>
         </div>

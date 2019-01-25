@@ -14,6 +14,10 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'links to the Offer page' do
-    expect(rendered).to have_link('Find out more', href: '/offer')
+    expect(rendered).to have_link('Find out more', href: '/offer', count: 2)
+  end
+
+  it 'has a mailto link' do
+    expect(rendered).to have_link('Get in touch', href: 'mailto:supporters@teachcomputing.org')
   end
 end
