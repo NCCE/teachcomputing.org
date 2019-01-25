@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="National Centre for Computing Education" />
   <meta property="og:title" content="National Centre for Computing Education" />
   <meta property="og:url" content="https://teachcomputing.org" />
-  <meta property="og:image" content="https://teachcomputing.org/assets/images/social-image.jpg">
+  <meta property="og:image" content="<%= image_url('social-image.jpg') %>">
   <meta property="og:image:alt" content="Teaching Computing" />
   <meta property="og:type" content="website" />
 
@@ -20,7 +20,7 @@
   <meta name="twitter:url" content="https://teachcomputing.org">
   <meta name="twitter:title" content="National Centre for Computing Education">
   <meta name="twitter:description" content="Providing resources, training and support for teaching Computing in primary and secondary schools and colleges from Key Stage 1 through to A Level.">
-  <meta name="twitter:image" content="https://teachcomputing.org/assets/images/social-image.jpg">
+  <meta name="twitter:image" content="<%= image_url('social-image.jpg') %>">
   <meta name="twitter:image:alt" content="Teaching Computing">
 
   <%= favicon_link_tag 'favicon.ico', sizes: '16x16 32x32 48x48'%>
@@ -57,9 +57,9 @@
   <!-- End Google Tag Manager (noscript) -->
   <% end %>
   <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
-  
+
   <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
-  
+
   <%= render 'components/header' %>
   <%= render 'components/feedback' %>
 
