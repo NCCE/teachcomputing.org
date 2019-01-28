@@ -62,3 +62,7 @@ To use [guard](https://github.com/guard/guard) to watch the tests:
 ```
 docker-compose run --rm web bin/guard
 ```
+
+## Sitemaps
+
+Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled task on Heroku. They can be found in the `public` directory.
