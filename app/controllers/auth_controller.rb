@@ -24,10 +24,6 @@ class AuthController < ApplicationController
     redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/ncce/logout"
   end
 
-  def edit_profile
-    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit"
-  end
-
   private
 
   def omniauth_params
