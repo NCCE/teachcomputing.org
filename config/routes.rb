@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/edit-profile', to: 'auth#edit_profile', as: :edit_profile
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
+  get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
   get '/news/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/a-level' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
