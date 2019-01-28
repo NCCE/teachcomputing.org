@@ -21,7 +21,7 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/logout"
+    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/ncce/logout"
   end
 
   def edit_profile
