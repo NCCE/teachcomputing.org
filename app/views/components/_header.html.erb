@@ -20,7 +20,7 @@
             <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
           </li>
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
-            <%= link_to 'Edit profile', edit_profile_url, class: 'govuk-header__link' %>
+            <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
           </li>
           <li class="govuk-header__navigation-item govuk-header__navigation-item">
             <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
