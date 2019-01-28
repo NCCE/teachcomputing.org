@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Achiever, type: :class do
   describe 'Achiever' do
     before do
-      stub_approved_course_occurrences
+      stub_fetch_future_courses
     end
 
     describe 'runWorkflow' do
