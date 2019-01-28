@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe('courses/index', type: :view) do
   before do
-    stub_approved_course_occurrences
-    stub_future_course_occurrences
+    stub_fetch_future_courses
+    stub_approved_course_templates
 
     @achiever = Achiever.new
     @face_to_face_courses = @achiever.approvedCourseTemplates
