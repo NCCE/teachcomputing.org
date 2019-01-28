@@ -39,3 +39,7 @@ spec/examples.txt
 
 # OS Files
 .DS_Store
+
+# Sitemaps
+public/sitemap1.xml.gz
+public/sitemap.xml.gz

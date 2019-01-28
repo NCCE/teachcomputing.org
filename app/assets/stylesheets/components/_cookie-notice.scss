@@ -4,10 +4,10 @@
   width: 100%;
 
   .cookie-inner {
-    position: relative;
-    margin: auto;
-    padding: 5px 10px;
-    max-width: 920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
   }
 
   p {
@@ -21,11 +21,5 @@
 
   .govuk-button {
     display: inline;
-  }
-
-  .cc-dismiss {
-    position: absolute;
-    top: 8px;
-    right:10px;
   }
 }
