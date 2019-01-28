@@ -43,11 +43,12 @@ namespace :activities do
       activity.category = 'cpd'
     end
 
-    Activity.find_or_create_by(slug: 'object-oriented-programming-in-pythoin-create-your-own-adventure-game') do |activity|
+    Activity.find_or_create_by(slug: 'object-oriented-programming-in-python-create-your-own-adventure-game') do |activity|
       activity.title = 'Object-oriented Programming in Python: Create Your Own Adventure Game'
       activity.credit = 0
       activity.slug = activity.title.parameterize
       activity.category = 'cpd'
     end
+
   end
 end
