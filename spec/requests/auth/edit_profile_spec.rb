@@ -26,7 +26,7 @@ RSpec.describe AuthController do
 
     it 'redirects you to the edit_profile path' do
       get edit_profile_path
-      expect(response).to redirect_to("#{ENV.fetch('STEM_OAUTH_SITE')}/user/2074871c-eb73-4a2f-b9fd-c2fff15f97e7/edit")
+      expect(response).to redirect_to("#{ENV.fetch('STEM_OAUTH_SITE')}/user/2074871c-eb73-4a2f-b9fd-c2fff15f97e7/edit?from=NCCE")
     end
   end
 end
