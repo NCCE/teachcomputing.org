@@ -4,8 +4,8 @@ RSpec.describe('courses/index', type: :view) do
   let(:achiever) { Achiever.new }
 
   before do
-    stub_approved_course_occurrences
-    stub_future_course_occurrences
+    stub_fetch_future_courses
+    stub_approved_course_templates
 
     @courses = achiever.approvedCourseTemplates
     @course_occurrences = achiever.fetchFutureCourses

@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
-  get '/edit-profile', to: 'auth#edit_profile', as: :edit_profile
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
