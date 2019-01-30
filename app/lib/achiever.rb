@@ -34,9 +34,11 @@ class Achiever
     end
 
     @uri.query = URI.encode_www_form({ :sXmlParams => builder.to_xml })
+    res = Rails.cache.fetch("#{workflowId}-#{Date.today}", expires_in: 30.minutes) do
+      RestClient.get(@uri.to_s).body
+    end
 
-    res = RestClient.get(@uri.to_s)
-    doc = parseStringFromXml(Nokogiri::XML(res.body))
+    doc = parseStringFromXml(Nokogiri::XML(res))
     doc.xpath('//AchieverDataResult_1/Detail')
   end
 
