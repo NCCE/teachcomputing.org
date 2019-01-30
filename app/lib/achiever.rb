@@ -34,7 +34,7 @@ class Achiever
     end
 
     @uri.query = URI.encode_www_form({ :sXmlParams => builder.to_xml })
-    res = Rails.cache.fetch("#{workflowId}-#{Date.today}", expires_in: 30.minutes) do
+    res = Rails.cache.fetch("#{workflowId}-#{Date.today}", expires_in: 12.hours) do
       RestClient.get(@uri.to_s).body
     end
 
