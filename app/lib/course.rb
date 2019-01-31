@@ -57,7 +57,7 @@ class Course
     @doc.xpath('.//Activity.Deliverer/text()').to_s
   end
 
-  def activity_code
+  def region
     @doc.xpath('.//Activity.Region/text()').to_s
   end
 
