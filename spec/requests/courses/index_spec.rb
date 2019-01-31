@@ -12,12 +12,12 @@ RSpec.describe CoursesController do
         get courses_path()
       end
 
-      it 'assigns @face_to_face_courses' do
-        expect(assigns(:face_to_face_courses)).to be_a(Array)
+      it 'assigns @courses' do
+        expect(assigns(:courses)).to be_a(Array)
       end
 
-      it 'assigns @face_to_face_course_occurrences' do
-        expect(assigns(:face_to_face_course_occurrences)).to be_a(Array)
+      it 'assigns @course_occurrences' do
+        expect(assigns(:course_occurrences)).to be_a(Array)
       end
 
       it 'renders the correct template' do

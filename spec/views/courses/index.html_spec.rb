@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe('courses/index', type: :view) do
+  let(:achiever) { Achiever.new }
+
   before do
     stub_fetch_future_courses
     stub_approved_course_templates
 
-    @achiever = Achiever.new
-    @face_to_face_courses = @achiever.approvedCourseTemplates
-    @face_to_face_course_occurrences = @achiever.fetchFutureCourses
+    @courses = achiever.approvedCourseTemplates
+    @course_occurrences = achiever.fetchFutureCourses
 
     render
   end
@@ -20,9 +21,9 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('a', text: 'Download Diagnostic Tool PDF')
   end
 
-  describe 'face to face courses' do
+  describe 'courses' do
     it 'renders each of the course template titles' do
-      @face_to_face_courses.each do |course|
+      @courses.each do |course|
         expect(rendered).to have_css('govuk-heading-s', text: course.title)
       end
     end

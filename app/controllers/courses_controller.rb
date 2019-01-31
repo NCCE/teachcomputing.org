@@ -5,8 +5,8 @@ class CoursesController < ApplicationController
   before_action :create_achiever, only: [:index]
 
   def index
-    @face_to_face_courses = @achiever.approvedCourseTemplates
-    @face_to_face_course_occurrences = @achiever.fetchFutureCourses
+    @courses = @achiever.approvedCourseTemplates
+    @course_occurrences = @achiever.fetchFutureCourses
 
     render :index
   end
