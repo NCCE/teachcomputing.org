@@ -34,17 +34,20 @@ class Achiever
     end
 
     @uri.query = URI.encode_www_form({ :sXmlParams => builder.to_xml })
+    res = Rails.cache.fetch("#{workflowId}-#{Date.today}", expires_in: 30.minutes) do
+      RestClient.get(@uri.to_s).body
+    end
 
-    res = RestClient.get(@uri.to_s)
-    doc = parseStringFromXml(Nokogiri::XML(res.body))
+    doc = parseStringFromXml(Nokogiri::XML(res))
     doc.xpath('//AchieverDataResult_1/Detail')
   end
 
   def approvedCourseTemplates
     programme = Parameter.new('Programme', 'NCCE')
     hideFromWeb = Parameter.new('HideFromWeb', '0')
+    status = Parameter.new('Status', 'Approved')
 
-    results = self.runWorkflow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [programme, hideFromWeb])
+    results = self.runWorkflow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [programme, hideFromWeb, status])
 
     templates = Array.new
     results.each do |result|
@@ -56,8 +59,9 @@ class Achiever
   def fetchFutureCourses
     programme = Parameter.new('Programme', 'NCCE')
     hideFromWeb = Parameter.new('HideFromWeb', '0')
+    status = Parameter.new('Status', 'Approved')
 
-    results = self.runWorkflow(ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID'], [programme, hideFromWeb])
+    results = self.runWorkflow(ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID'], [programme, hideFromWeb, status])
 
     courses = Array.new
     results.each do |result|
