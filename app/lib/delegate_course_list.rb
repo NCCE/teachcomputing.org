@@ -4,7 +4,7 @@ class DelegateCourseList
   def self.fromAchiever(contactNo)
     bookings = Array.new
     achiever = Achiever.new
-    results = achiever.fetchCoursesForDelegates(contactNo)
+    results = achiever.fetch_courses_for_delegates(contactNo)
 
     results.each do |result|
       bookings << DelegateCourse.new(result)

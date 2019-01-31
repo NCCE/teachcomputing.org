@@ -6,55 +6,59 @@ RSpec.describe Achiever, type: :class do
       stub_fetch_future_courses
     end
 
-    describe 'runWorkflow' do
+    describe 'run_work_flow' do
       it 'runs the given workflow with the given params' do
         achiever = Achiever.new
         programme = Parameter.new('Programme', 'NCCE')
-        hideFromWeb = Parameter.new('HideFromWeb', '0')
+        hide_from_web = Parameter.new('HideFromWeb', '0')
 
-        res = achiever.runWorkflow('SOME_FUTURE_COURSES_WORKFLOW_ID', [programme, hideFromWeb])
+        res = achiever.run_work_flow('SOME_FUTURE_COURSES_WORKFLOW_ID', [programme, hide_from_web])
 
         expect(res[0].xpath('.//Activity.Activity_Code')[0].content).to eq('CP202')
       end
     end
 
-    describe 'fetchCourseTemplate' do
-      it 'runs the course occurrence workflow with the correct param' do
+    describe 'fetch_course_template' do
+      before do
         Parameter.stub(:new).with('CourseTemplateNo', 'foo') { 'bar' }
-        achiever = Achiever.new
-        achiever.stub(:runWorkflow)
-          .with('SOME_COURSE_TEMPLATE_WORKFLOW_ID', ['bar']) { 'baz' }
-
-        res = achiever.fetchCourseTemplate('foo')
-
-        expect(res).to eq('baz')
       end
-    end
 
-    describe 'fetchCourseOccurrence' do
       it 'runs the course occurrence workflow with the correct param' do
-        Parameter.stub(:new).with('CourseOccurrenceNo', 'foo') { 'bar' }
+        allow(Parameter).to receive(:new).and_return('bar')
         achiever = Achiever.new
-        achiever.stub(:runWorkflow)
-          .with('SOME_COURSE_OCCURRENCE_WORKFLOW_ID', ['bar']) { 'baz' }
+        achiever.stub(:run_work_flow)
+                .with('SOME_COURSE_TEMPLATE_WORKFLOW_ID', ['bar']) { 'baz' }
 
-        res = achiever.fetchCourseOccurrence('foo')
+        res = achiever.fetch_course_template('foo')
 
         expect(res).to eq('baz')
       end
     end
 
-    describe 'parseStringFromXml' do
+    describe 'fetch_course_template' do
+      it 'runs the course occurrence workflow with the correct param' do
+        allow(Parameter).to receive(:new).and_return('bar')
+        achiever = Achiever.new
+        achiever.stub(:run_work_flow)
+                .with('SOME_COURSE_OCCURRENCE_WORKFLOW_ID', ['bar']) { 'baz' }
+
+        res = achiever.fetch_course_occurrence('foo')
+
+        expect(res).to eq('baz')
+      end
+    end
+
+    describe 'parse_string_from_xml' do
       it 'extracts the HTML entities encoded string from an XML doc into a new doc' do
         achiever = Achiever.new
-        innerXml = '<SomeTag><SomeOtherTag>Some value</SomeOtherTag></SomeTag>'
-        outerXml = Nokogiri::XML::Builder.new do |xml|
-          xml.string innerXml
+        inner_xml = '<SomeTag><SomeOtherTag>Some value</SomeOtherTag></SomeTag>'
+        outer_xml = Nokogiri::XML::Builder.new do |xml|
+          xml.string inner_xml
         end
 
-        res = achiever.parseStringFromXml(outerXml.doc).to_xml
+        res = achiever.parse_string_from_xml(outer_xml.doc).to_xml
 
-        expect(res).to eq(Nokogiri::XML(innerXml).to_xml)
+        expect(res).to eq(Nokogiri::XML(inner_xml).to_xml)
       end
     end
   end
