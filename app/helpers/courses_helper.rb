@@ -19,7 +19,7 @@ module CoursesHelper
   def activity_dates(start_date, end_date)
     return if start_date.blank? || end_date.blank?
 
-    "#{Date.parse(start_date).strftime('%d %B')} - #{Date.parse(end_date).strftime('%d %B %Y')}"
+    "#{Date.parse(start_date).strftime('%-d %B')}—#{Date.parse(end_date).strftime('%-d %B %Y')}"
   end
 
   def activity_times(start_time, end_time)
@@ -42,5 +42,10 @@ module CoursesHelper
   def stripped_summary(string)	
     unescaped_str = CGI::unescapeHTML(string)	
     strip_tags(unescaped_str)
+  end
+
+  def course_meta_css_class(isOnlineCourse)
+    cssClass = "ncce-courses__meta-icon"
+    isOnlineCourse == 1 ? "#{cssClass} #{cssClass}--online" : "#{cssClass}"
   end
 end
