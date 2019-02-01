@@ -9,13 +9,13 @@
 
         <% @courses.each do |course| %>
           <div class="ncce-courses__course">
-            <h4 class="govuk-heading-s">
+            <h3 class="govuk-heading-s">
             <%=
               link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link', target: :_blank) do
                 link_to(course.title, course.booking_url, class: 'ncce-link', target: :_blank)
               end
             %>
-            </h4>
+            </h3>
             <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
             <ul class="govuk-list govuk-body-s ncce-courses__meta">
               <% @course_occurrences.each do |oc| %>
