@@ -5,62 +5,79 @@
 	@include govuk-media-query($from: tablet) {
 		padding-bottom: 2rem;
 	}
-	&__item {
-		background-color: $ncce-grey-x-light;
-		padding: 1.25rem 1.125rem;
-		// needs to override .govuk-list > li
-		margin-bottom: 2px !important;
-	}
+}
+
+.ncce-activity-list__item {
+	background-color: $ncce-grey-x-light;
+	padding: 1.25rem 1.125rem;
+	// needs to override .govuk-list > li
+	margin-bottom: 2px !important;
 	&__item:after {
 		content: '';
 		display: table;
 		clear: both;
 	}
-	&__item-text {
-		margin-top: 3px;
-		margin-bottom: 10px;
+}
 
-		background-image: image-url('tick2.png');
-		background-position: right center;
-		background-repeat: no-repeat;
-		background-size: 1.2rem;
-		display: block;
+.ncce-activity-list__item-text {
+	background-image: image-url('tick2.png');
+	background-position: right center;
+	background-repeat: no-repeat;
+	background-size: 1.2rem;
+	display: block;
+	margin-top: 3px;
+	margin-bottom: 10px;
 
+	@include govuk-media-query($from: tablet) {
+		margin-bottom: 0;
+		background-size: 1.5rem;
 
-		@include govuk-media-query($from: tablet) {
-			margin-bottom: 0;
-			background-size: 1.5rem;
-
-		}
 	}
 }
 
 
 // TODO: More tidying when form is implemented fully
 .ncce-activity-form {
-	float: right;
-	margin-top: -5px;
+	display: flex;
 	margin-bottom: 0;
-	&__label {
-		float: left;
-		line-height: 2.2rem;
-		margin-right: 10px;
-	}
-	&__select {
-		float: left;
-		margin-right: 10px;
-		font-size: 17px;
-		width: 100%;
-		margin-bottom: 10px;
+	padding-top: 5px;
 
-		@include govuk-media-query($from: tablet) {
-			margin-bottom: 0;
-			max-width: 350px;
-		}
+	@include govuk-media-query($from: tablet) {
+		padding-top: 0;
 	}
-	// Top & Bottom Reset back to govuk size - better way?
-	&__button {
-		padding: 9px 15px 6px;
-		margin-bottom: 0;
+}
+
+.ncce-activity-form__label {
+	float: left;
+	line-height: 2.2rem;
+	margin-right: 10px;
+}
+
+.ncce-activity-form__select {
+	border-radius: 6px;
+	font-size: 17px;
+	margin-right: 5px;
+
+	@include govuk-media-query($from: tablet) {
+		margin-right: 10px;
 	}
+
+}
+
+.ncce-activity-form__button {
+	padding: 9px 15px 6px;
+	margin-bottom: 0;
+}
+
+.ncce-activity-list__item--completed {
+	display: grid;
+	grid-template-columns: 1fr;
+
+	@include govuk-media-query($from: tablet) {
+		grid-template-columns: 3fr 1fr;
+	}
+}
+
+.ncce-activity-form--flex {
+	display: flex;
 }
