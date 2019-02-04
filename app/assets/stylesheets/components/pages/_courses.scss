@@ -4,34 +4,36 @@
 	}
 
 	&__meta {
-		background: $ncce-pink-light;
 		display: block;
 		line-height: 1.6;
 
-		&__meta-item {
-			display: inline-block;
+		& > li {
+			background: $ncce-pink-light;
+			padding: 0.45rem 1rem;
+			@include govuk-media-query($from: tablet) {
+				margin-bottom: 2px;
+			}
 		}
 
-		span {
+		&-date {
 			display: inline-block;
-			margin: 0.7rem 1rem;
+			padding: 0;
+			font-size: 14px;
 		}
-	}
-}
+		&-icon {
+			display: inline-block;
+			padding: 0;
+			font-size: 15px;
+			text-indent: 1.1rem;
+			background-image: image-url('map-pin.png');
+			background-position: left center;
+			background-repeat: no-repeat;
 
-.ncce-courses__meta--icon {
-	font-weight: bold;
-	padding-left: 1rem;
-	width: 40px;
-	background-image: image-url('map-pin.png');
+		}
+		&-icon--online {
+			background-image: image-url('laptop.png');
+			text-indent: 1.3rem;
 
-	background-position: left top;
-	background-repeat: no-repeat;
-	background-size: 14px;
-	padding-left: 1.8rem;
-
-	@include govuk-media-query($from: tablet) {
-		background-size: 16px;
-		width: 25%;
+		}
 	}
 }
