@@ -31,10 +31,10 @@ describe CoursesHelper, type: :helper do
 
   describe('#activity_dates') do
     it 'returns the dates in the correct format' do
-      start_date = '10/11/2018'
+      start_date = '01/11/2018'
       end_date = '11/11/2018'
 
-      expect(helper.activity_dates(start_date, end_date)).to eq '10 November - 11 November 2018'
+      expect(helper.activity_dates(start_date, end_date)).to eq '1 November—11 November 2018'
     end
   end
 
@@ -56,6 +56,16 @@ describe CoursesHelper, type: :helper do
   describe('stripped_summary') do
     it 'removes any html elements in the string' do
       expect(helper.stripped_summary('<p>Hello</p>')).to eq 'Hello'
+    end
+  end
+
+  describe('course_meta_css_class') do
+    it 'returns icon for offline courses' do
+      expect(helper.course_meta_css_class(0)).to eq 'ncce-courses__meta-icon'
+    end
+
+    it 'returns icon for online courses' do
+      expect(helper.course_meta_css_class(1)).to eq 'ncce-courses__meta-icon ncce-courses__meta-icon--online'
     end
   end
 end
