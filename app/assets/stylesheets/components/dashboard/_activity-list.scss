@@ -1,4 +1,3 @@
-
 .ncce-activity-list {
 	padding-bottom: 1rem;
 
@@ -7,20 +6,14 @@
 	}
 }
 
-.ncce-activity-list__item {
+.ncce-activity-list > .ncce-activity-list__item {
 	background-color: $ncce-grey-x-light;
 	padding: 1.25rem 1.125rem;
-	// needs to override .govuk-list > li
-	margin-bottom: 2px !important;
-	&__item:after {
-		content: '';
-		display: table;
-		clear: both;
-	}
+	margin-bottom: 2px;
 }
 
 .ncce-activity-list__item-text {
-	background-image: image-url('tick2.png');
+	background-image: image-url('tick.png');
 	background-position: right center;
 	background-repeat: no-repeat;
 	background-size: 1.2rem;
@@ -31,12 +24,9 @@
 	@include govuk-media-query($from: tablet) {
 		margin-bottom: 0;
 		background-size: 1.5rem;
-
 	}
 }
 
-
-// TODO: More tidying when form is implemented fully
 .ncce-activity-form {
 	display: flex;
 	margin-bottom: 0;
@@ -47,12 +37,6 @@
 	}
 }
 
-.ncce-activity-form__label {
-	float: left;
-	line-height: 2.2rem;
-	margin-right: 10px;
-}
-
 .ncce-activity-form__select {
 	border-radius: 6px;
 	font-size: 17px;
@@ -61,7 +45,6 @@
 	@include govuk-media-query($from: tablet) {
 		margin-right: 10px;
 	}
-
 }
 
 .ncce-activity-form__button {
