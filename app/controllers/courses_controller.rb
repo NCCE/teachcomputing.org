@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = @achiever.approved_course_templates
-    @course_occurrences = @achiever.fetch_future_courses
+    @course_occurrences = @achiever.future_courses
 
     render :index
   end

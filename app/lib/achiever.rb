@@ -15,12 +15,80 @@ class Achiever
     @status = Parameter.new('Status', 'Approved')
   end
 
-  def run_work_flow(workflowId, params = [])
-    builder = Nokogiri::XML::Builder.new do |xml|
+  def approved_course_templates
+    workflow_id = ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID']
+    workflow_params = [@programme, @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 30.minutes) do
+      RestClient.get(request).body
+    end
+
+    course_templates(parse_results(result))
+  end
+
+  def future_courses
+    workflow_id = ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID']
+    workflow_params = [@programme, @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 30.minutes) do
+      RestClient.get(request).body
+    end
+
+    courses(parse_results(result))
+  end
+
+  def course_occurrence(id)
+    workflow_id = ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID']
+    workflow_params = [Parameter.new('CourseOccurrenceNo', id), @programme]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{id}-#{Date.today}", expires_in: 12.hours) do
+      RestClient.get(request).body
+    end
+
+    parse_results(result)
+  end
+
+  def courses_for_delegates(contact_no)
+    workflow_id = ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID']
+    workflow_params = [Parameter.new('ContactNo', contact_no), @programme]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+
+    result = Rails.cache.fetch("#{workflow_id}-#{contact_no}-#{Date.today}", expires_in: 12.hours) do
+      RestClient.get(request).body
+    end
+    parse_results(result)
+  end
+
+  private
+
+  def build_request(params)
+    @uri.query = URI.encode_www_form(sXmlParams: params)
+    @uri.to_s
+  end
+
+  def build_params(work_flow_id, params)
+    query_xml = build_xml(work_flow_id)
+    parameters = query_xml.doc.xpath('//Parameters')
+    params.each do |param|
+      parameters[0].add_child(param.to_node)
+    end
+    query_xml.to_xml
+  end
+
+  def build_xml(work_flow_id)
+    Nokogiri::XML::Builder.new do |xml|
       xml.Achiever do
         xml.Command do
           xml.CommandType 'ExternalRunWorkflow'
-          xml.WorkflowId workflowId
+          xml.WorkflowId work_flow_id
           xml.ReturnSchemaWithXmlData 1
           xml.Identity do
             xml.DbConnectionId @db_connect_id
@@ -29,57 +97,19 @@ class Achiever
         end
       end
     end
+  end
 
-    parameters = builder.doc.xpath('//Parameters')
-    params.each do |param|
-      parameters[0].add_child(param.to_node)
-    end
+  def courses(courses)
+    courses.map { |course| Course.new(course) }
+  end
 
-    @uri.query = URI.encode_www_form(sXmlParams: builder.to_xml)
-    res = Rails.cache.fetch("#{workflowId}-#{Date.today}", expires_in: 30.minutes) do
-      RestClient.get(@uri.to_s).body
-    end
+  def course_templates(templates)
+    templates.map { |template| CourseTemplate.new(template) }
+  end
 
-    doc = parse_string_from_xml(Nokogiri::XML(res))
+  def parse_results(result)
+    doc = parse_string_from_xml(Nokogiri::XML(result))
     doc.xpath('//AchieverDataResult_1/Detail')
-  end
-
-  def approved_course_templates
-    results = run_work_flow(ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID'], [@programme, @hide_from_web, @status])
-
-    templates = []
-    results.each do |result|
-      templates << CourseTemplate.new(result)
-    end
-    templates
-  end
-
-  def fetch_future_courses
-    results = run_work_flow(ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID'], [@programme, @hide_from_web, @status])
-
-    courses = []
-    results.each do |result|
-      courses << Course.new(result)
-    end
-    courses
-  end
-
-  def fetch_course_template(id)
-    course_template_no = Parameter.new('CourseTemplateNo', id)
-
-    run_work_flow(ENV['ACHIEVER_COURSE_TEMPLATE_WORKFLOW_ID'], [course_template_no])
-  end
-
-  def fetch_course_occurrence(id)
-    course_occurrence_no = Parameter.new('CourseOccurrenceNo', id)
-
-    run_work_flow(ENV['ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID'], [course_occurrence_no])
-  end
-
-  def fetch_courses_for_delegates(contact_no)
-    contact_no = Parameter.new('ContactNo', contact_no)
-
-    run_work_flow(ENV['ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID'], [contact_no, @programme])
   end
 
   def parse_string_from_xml(doc)
