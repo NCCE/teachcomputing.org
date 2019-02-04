@@ -20,6 +20,7 @@
 	display: block;
 	margin-top: 3px;
 	margin-bottom: 10px;
+	padding-right: 1.5rem;
 
 	@include govuk-media-query($from: tablet) {
 		margin-bottom: 0;
@@ -47,7 +48,7 @@
 	}
 }
 
-.ncce-activity-form__button {
+.ncce-activity-form__button--pink {
 	padding: 9px 15px 6px;
 	margin-bottom: 0;
 }
