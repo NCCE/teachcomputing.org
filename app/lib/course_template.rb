@@ -2,10 +2,8 @@ require('nokogiri')
 require_relative('achiever')
 
 class CourseTemplate
-  include ActionView::Helpers::SanitizeHelper
-
   def initialize(doc)
-   @doc = doc
+    @doc = doc
   end
 
   def booking_url

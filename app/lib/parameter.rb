@@ -5,7 +5,7 @@ class Parameter
   end
 
   def to_node
-    doc = Nokogiri::HTML::DocumentFragment.parse ""
+    doc = Nokogiri::HTML::DocumentFragment.parse ''
     node = Nokogiri::XML::Node.new(@key, doc)
     node.content = @val
     node
