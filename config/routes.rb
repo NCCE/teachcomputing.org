@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
+  get '/sitemap.xml.gz', to: redirect("https://s3-#{ENV['AWS_S3_REGION']}.amazonaws.com/#{ENV['AWS_S3_BUCKET']}/sitemaps/sitemap.xml.gz")
 end
