@@ -3,11 +3,8 @@ require 'rails_helper'
 RSpec.describe('pages/home/_sign-up', type: :view) do
   let(:user) { create(:user) }
 
-  before do
-    render
-  end
-
   it('renders the correct number of bullets') do
+    render
     expect(rendered).to(have_css('.ncce-sign-up__list--item', count: 3))
   end
 
@@ -38,7 +35,6 @@ RSpec.describe('pages/home/_sign-up', type: :view) do
     it 'links to the Sign up section' do
       expect(rendered).to have_link('Create an account', href: '/login')
     end
-
   end
 
 end
