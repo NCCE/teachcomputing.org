@@ -4,7 +4,7 @@ require_relative('./achiever')
 class CourseOccurrence
   def initialize(id)
     achiever = Achiever.new
-    @doc = achiever.fetchCourseOccurrence(id)
+    @doc = achiever.course_occurrence(id)
   end
 
   def activity_title

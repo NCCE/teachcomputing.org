@@ -81,7 +81,7 @@ class DelegateCourse
     @doc.xpath('.//Delegate.Booker Surname/text()').to_s
   end
 
-  def delegate_Booker_company
+  def delegate_booker_company
     @doc.xpath('.//Delegate.Booker Company/text()').to_s
   end
 

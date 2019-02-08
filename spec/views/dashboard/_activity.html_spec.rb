@@ -12,18 +12,24 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the signed up item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the NCCE')
   end
 
   it 'has the mock course' do
     expect(rendered).to have_css('.ncce-activity-list__item', text: 'Completed course Test Course')
   end
 
-  it 'has the form item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a completed CPD Activity')
+  it 'has the mock course titles' do
+    expect(rendered).to have_css('.ncce-activity-list__item-text', count: 2)
   end
 
-  it 'has the check marks' do
-    expect(rendered).to have_css('.ncce-activity-list__item-check-mark', count: 2)
+  it 'check for every achievements title' do
+    @achievements.each do |achievement|
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: achievement.title)
+    end
+  end
+
+  it 'has the form item' do
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a completed CPD Activity')
   end
 end

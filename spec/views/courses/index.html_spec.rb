@@ -7,8 +7,8 @@ RSpec.describe('courses/index', type: :view) do
     stub_fetch_future_courses
     stub_approved_course_templates
 
-    @courses = achiever.approvedCourseTemplates
-    @course_occurrences = achiever.fetchFutureCourses
+    @courses = achiever.approved_course_templates
+    @course_occurrences = achiever.future_courses
 
     render
   end
