@@ -45,7 +45,7 @@
 
       <h3 class="govuk-heading-m">3. Bursaries</h3>
       <% if current_user %>
-      <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. Visit your dashboard on the <%= link_to 'National Centre for Computing Education website', dashboard_path, class: 'ncce-link' %></p>
+      <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please visit your dashboard on the <%= link_to 'National Centre for Computing Education website', dashboard_path, class: 'ncce-link' %></p>
       <% else %>
       <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please create an account and log-in on the <%= link_to 'National Centre for Computing Education website', login_path, class: 'ncce-link' %></p>
       <% end %>

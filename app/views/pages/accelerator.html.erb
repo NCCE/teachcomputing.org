@@ -13,7 +13,15 @@
           CPD requirements. It is made up of a combination of face-to face and online courses,
           covering topics across the whole GCSE computer science curriculum. Face-to-face courses are
           available across the country, allowing you to access CPD wherever you are.</p>
-          <% unless current_user %>
+          <% if current_user %>
+          <p class="govuk-body"><%= link_to 'Visit dashboard to see our face to face courses', dashboard_path, class: 'ncce-link' %> including:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Algorithms in GCSE computer science</li>
+            <li>Python programming essentials for GCSE computer science</li>
+            <li>Data and computer systems in GCSE computer science</li>
+            <li>Networks and cyber-security in GCSE computer science</li>
+          </ul>
+          <% end %>
           <p class="govuk-body"><%= link_to 'Log in or create an account to see our face to face courses', login_path, class: 'ncce-link' %> including:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>Algorithms in GCSE computer science</li>
