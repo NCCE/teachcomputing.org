@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
 
-  # sidekiq
   require 'sidekiq/web'
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
