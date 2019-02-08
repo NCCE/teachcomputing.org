@@ -1,11 +1,13 @@
 class AuthController < ApplicationController
+  before_action :set_raven_context, only: :callback
+
   def callback
     auth = omniauth_params
-    userExists = User.exists?(stem_user_id: auth.uid)
+    user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
     session[:user_id] = user.id
 
-    if userExists
+    if user_exists
       flash[:notice] = 'Welcome back, good to see you again!'
       redirect_to omniauth_params['returnTo'] || dashboard_path
     else
@@ -15,7 +17,7 @@ class AuthController < ApplicationController
   end
 
   def failure
-    flash[:error] = "Sorry, we were unable to log you in. Please try again or contact us for help."
+    flash[:error] = 'Sorry, we were unable to log you in. Please try again or contact us for help.'
     redirect_to root_path
   end
 
@@ -28,5 +30,14 @@ class AuthController < ApplicationController
 
   def omniauth_params
     request.env['omniauth.auth']
+  end
+
+  def set_raven_context
+    auth = omniauth_params
+    Raven.extra_context(
+      id: auth.uid,
+      credentials: auth.credentials,
+      info: auth.info
+    )
   end
 end
