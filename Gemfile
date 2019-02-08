@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'attr_encrypted', '~> 3.1.0'
+gem 'awesome_print'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
 gem 'connection_pool','~> 2.2.2'
@@ -20,9 +21,11 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.11'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rails', '~> 5.2.1'
+gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sentry-raven', '~> 2.7.4'
+gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'uglifier', '>= 1.3.0'
 

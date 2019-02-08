@@ -1,6 +1,5 @@
 namespace :activities do
   task seed: :environment do
-
     Activity.find_or_create_by(slug: 'downloaded-diagnostic-tool') do |activity|
       activity.title = 'Downloaded diagnostic tool'
       activity.credit = 0
@@ -50,5 +49,19 @@ namespace :activities do
       activity.category = 'cpd'
     end
 
+    Activity.find_or_create_by(slug: 'algorithms-in-gcse-computer-science') do |activity|
+      activity.title = 'Algorithms in GCSE computer science'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+    end
+
+    Activity.find_or_create_by(slug: 'ncce-facilitator-development-program-stage-one') do |activity|
+      activity.title = 'NCCE facilitator development program (stage one)'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.course_id = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
+      activity.category = 'cpd'
+    end
   end
 end

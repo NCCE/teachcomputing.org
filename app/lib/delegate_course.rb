@@ -29,6 +29,10 @@ class DelegateCourse
     @doc.xpath('.//Productlines.COURSEOCCURRENCENO/text()').to_s
   end
 
+  def course_template_no
+    @doc.xpath('.//Template.COURSETEMPLATENO/text()').to_s
+  end
+
   def product_line_type
     @doc.xpath('.//Productlines.Type/text()').to_s
   end
