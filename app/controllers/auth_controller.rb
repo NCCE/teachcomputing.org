@@ -36,7 +36,6 @@ class AuthController < ApplicationController
     auth = omniauth_params
     Raven.extra_context(
       id: auth.uid,
-      credentials: auth.credentials,
       info: auth.info
     )
   end
