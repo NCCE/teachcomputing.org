@@ -51,7 +51,36 @@
     },
     "AWS_S3_REGION": {
       "required": true
+    },
+    "BYPASS_OAUTH": {
+      "description": "OAuth doesn't work because of the unpredictable URLs",
+      "value": "true"
+    },
+    "ACHIEVER_API_ENDPOINT": {
+      "required": true
+    },
+    "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_DB_CONNECTION_ID": {
+      "required": true
+    },
+    "ACHIEVER_FUTURE_COURSES_WORKFLOW_ID": {
+      "required": true
     }
+
   },
   "formation": {
     "web": {
