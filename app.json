@@ -54,7 +54,7 @@
     },
     "BYPASS_OAUTH": {
       "description": "OAuth doesn't work because of the unpredictable URLs",
-      "value": true
+      "value": "true"
     }
   },
   "formation": {
