@@ -51,6 +51,10 @@
     },
     "AWS_S3_REGION": {
       "required": true
+    },
+    "BYPASS_OAUTH": {
+      "description": "OAuth doesn't work because of the unpredictable URLs",
+      "value": true
     }
   },
   "formation": {

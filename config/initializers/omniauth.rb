@@ -36,3 +36,23 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 OmniAuth.config.on_failure = AuthController.action(:failure)
+
+if ENV['BYPASS_OAUTH'].present?
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
+    provider: 'stem',
+    uid: '791f3d63-21e5-48a5-b4b2-dbf3838f320e',
+    credentials: {
+      expires_at: 1_546_601_180,
+      refresh_token: '27266366070255897068',
+      token: '14849048797785647933'
+
+    },
+    info: {
+      achiever_contact_no: '5676d7e5-cece-4a3d-95e2-884f38c82f57',
+      first_name: 'Test',
+      last_name: 'User',
+      email: 'test-user@example.com'
+    }
+  )
+end
