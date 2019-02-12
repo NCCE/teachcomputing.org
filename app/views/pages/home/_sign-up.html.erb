@@ -4,18 +4,32 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
           <div class="govuk-grid-column-two-thirds">
+            <% if current_user %>
+            <h2 class="govuk-heading-l">View your dashboard</h2>
+            <% else %>
             <h2 class="govuk-heading-l">Create an account</h2>
+            <% end %>
           </div>
           <div class="govuk-grid-column-two-thirds ncce-sign-up__section">
+            <% if current_user %>
+            <p class="govuk-body">
+              To book onto face-to-face or online training, visit your dashboard. This will also enable you to:
+            </p>
+            <% else %>
             <p class="govuk-body">
               To book onto face-to-face or online training, you need to create an account on our website. This will also enable you to:
             </p>
+            <% end %>
             <ul class="govuk-list ncce-sign-up__list">
               <li class="ncce-sign-up__list--item">be the first to access new features and resources</li>
               <li class="ncce-sign-up__list--item">access our diagnostic tool to help you prioritise your CPD requirements</li>
               <li class="ncce-sign-up__list--item">record your achievements and progress towards <%= link_to 'certification', certification_path, class: 'ncce-link' %></li>
             </ul>
+            <% if current_user %>
+            <%= link_to 'View your dashboard', dashboard_path, class: 'govuk-button ncce-button__pink ncce-link ncce-sign-up--link-white' %>
+            <% else %>
             <%= link_to 'Create an account', login_path, class: 'govuk-button ncce-button__pink ncce-link ncce-sign-up--link-white' %>
+            <% end %>
           </div>
           <aside class="govuk-grid-column-one-third ncce-aside">
             <h2 class="govuk-heading-s ncce-aside__title">Bursaries for training</h2>

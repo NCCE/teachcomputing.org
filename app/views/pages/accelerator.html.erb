@@ -8,7 +8,20 @@
         <div class="govuk-grid-column-two-thirds">
           <p class="govuk-body-l">The Computer Science Accelerator Programme is designed to support secondary teachers of computing or computer science without a post A level qualification in computer science or a related subject.</p>
           <p class="govuk-body">As well as enhancing your subject knowledge, this highly personalised professional development programme will give you confidence across the whole GCSE computer science curriculum. Whether you are already teaching at this level, or are planning to do so, the programme will help you fill any gaps in your knowledge.</p>
-          <p class="govuk-body">The programme is modularised to give you autonomy over your learning and begins with a diagnostic assessment to help you prioritise your CPD requirements. It is made up of a combination of face-to face and online courses, covering topics across the whole GCSE computer science curriculum. Face-to-face courses are available across the country, allowing you to access CPD wherever you are.</p>
+          <p class="govuk-body">The programme is modularised to give you autonomy over
+          your learning and begins with a diagnostic assessment to help you prioritise your
+          CPD requirements. It is made up of a combination of face-to face and online courses,
+          covering topics across the whole GCSE computer science curriculum. Face-to-face courses are
+          available across the country, allowing you to access CPD wherever you are.</p>
+          <% if current_user %>
+          <p class="govuk-body"><%= link_to 'Visit dashboard to see our face to face courses', dashboard_path, class: 'ncce-link' %> including:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Algorithms in GCSE computer science</li>
+            <li>Python programming essentials for GCSE computer science</li>
+            <li>Data and computer systems in GCSE computer science</li>
+            <li>Networks and cyber-security in GCSE computer science</li>
+          </ul>
+          <% else %>
           <p class="govuk-body"><%= link_to 'Log in or create an account to see our face to face courses', login_path, class: 'ncce-link' %> including:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>Algorithms in GCSE computer science</li>
@@ -16,16 +29,21 @@
             <li>Data and computer systems in GCSE computer science</li>
             <li>Networks and cyber-security in GCSE computer science</li>
           </ul>
+          <% end %>
           <h2 class="govuk-heading-s">How does it work?</h2>
           <p class="govuk-body">To gain a nationally recognised certificate demonstrating your subject knowledge, you will need to complete 40 hours of CPD, including at least two face-to-face courses. Following this, you will take a short GCSE-level test (which you will have the opportunity to re-take and access to additional CPD to enhance your subject knowledge).</p>
-          <p class="govuk-body">The programme offers a range of financial support, for which you will need to:</p>
+          <p class="govuk-body">The programme offers a range of bursaries for schools to help release staff to attend CPD, for which you will need to:
+          </p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>book and attend at least two face-to-face courses. Eligible teachers will receive a bursary after completing the first two courses, and you’re welcome to attend the rest for free</li>
+            <li>book and attend at least two face-to-face courses.
+            Eligible teachers will receive a bursary for their school to cover costs of release after completing the first two courses, and you’re welcome to attend the rest for free
+            </li>
             <li>participate in at least two online courses, around 16 hours in total</li>
-            <li>take a short subject knowledge test (after this, you will receive a bursary to compensate the time you’ve taken to complete the online components)</li>
+            <li>take a short subject knowledge test  after this, your school  will receive a bursary to compensate the time you’ve taken to complete the online components. (This is in
+            recognition that you may have been released from teaching to complete some learning during school hours)</li>
           </ul>
           <p class="govuk-body">We anticipate it will take up to six months to complete the programme. Elements of the programme are still being developed with the full offer available in due course.</p>
-          <p class="govuk-body">If you are eligible for a bursary, this will be paid in stages after completion of each of the two face-to-face CPD activities, with a third payment after sitting the final test.</p>
+          <p class="govuk-body">If you are eligible for a bursary, this will be paid in stages, to your school after completion of each of the two face-to-face CPD activities, with a third payment after sitting the final test.</p>
           <p class="govuk-body"><%= link_to 'Read about our bursaries', bursary_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></a></p>
         </div>
       </div>
