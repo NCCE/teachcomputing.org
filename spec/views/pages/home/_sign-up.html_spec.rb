@@ -15,7 +15,7 @@ RSpec.describe('pages/home/_sign-up', type: :view) do
     end
 
     it 'has a title' do
-      expect(rendered).to have_css('.ncce-sign-up', text: 'Viev your dashboard')
+      expect(rendered).to have_css('.ncce-sign-up', text: 'View your dashboard')
     end
 
     it 'links to the Sign up section' do
