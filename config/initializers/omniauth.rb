@@ -38,7 +38,6 @@ end
 OmniAuth.config.on_failure = AuthController.action(:failure)
 
 if ENV['BYPASS_OAUTH'].present?
-  puts "HEROKU_APP_NAME? #{HEROKU_APP_NAME} HEROKU_PARENT_APP_NAME #{HEROKU_PARENT_APP_NAME}"
   puts 'Faking OAuth login for review apps'
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
