@@ -55,6 +55,12 @@
     "BYPASS_OAUTH": {
       "description": "OAuth doesn't work because of the unpredictable URLs",
       "value": "true"
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
     }
   },
   "formation": {
