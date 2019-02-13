@@ -3,30 +3,22 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">Madzia</h1>
+          <h1 class="govuk-heading-l">Become a computing hub</h1>
         </div>
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">Certification is available for all teachers of computing from primary through to GCSE.</p>
-          <p class="govuk-body">Achieving the certificate will demonstrate that you have:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>the subject knowledge needed to teach the new knowledge-based computing curriculum, including programming</li>
-            <li>a commitment to improving and maintaining your subject knowledge and skills</li>
-            <li>an understanding of and application of pedagogical strategies suitable for teaching computing</li>
-          </ul>
-          <p class="govuk-body">There are two core certificates available, one for primary teachers and one for secondary teachers, and for secondary teachers who opt to, there’s an additional GCSE Subject Knowledge certificate.</p>
-          <p class="govuk-body">The certificates consist of three components.  There are a set number of credits required for each component which need to be completed to achieve the certificate.</p>
-          <p class="govuk-body"><strong>Commitment to your professional development (15 credits)</strong><br /> To achieve this you will need to demonstrate your commitment by collecting credits for the practical steps you have taken to improve your subject and pedagogical knowledge of computing. There are many ways you will be able to build your credits in this area. From signing up to the National Centre and your local computing hub, which will get you well on your way to gaining the credits you need to working through the online diagnostic tool, which is a great place to start.</p>
-          <p class="govuk-body"><strong>Developing your professional knowledge: (60 credits)</strong><br /> To achieve this you will demonstrate that you have acquired the necessary professional knowledge by collecting credits for successfully completing approved CPD courses. You will gain credits through the number of hours of eligible CPD that you undertake.  There will be a variety of online and face to face courses available covering areas of both subject knowledge and pedagogy.  You will need to complete 20 hours of eligible CPD for the core certificate or 40 hours of eligible CPD for the GCSE Subject Knowledge Certificate.</p>
-          <p class="govuk-body"><strong>Supporting your professional community (25 credits)</strong><br /> To achieve this component you will demonstrate that you have supported your professional community by actively participating in CAS communities of practice, sharing resources and contributing to professional dialogue. There are a wide range of ways to gain credits in this area.  You could register with and attend your local CAS Community of Practice, contribute to online discussions on the CAS Forum and submit resources to the CAS Community to name but a few.  You will be able to record these activities into your professional development log.</p>
-          <p class="govuk-body">If you are undertaking the GCSE Subject Knowledge Certificate, you will need to successfully complete a summative assessment.</p>
-          <p class="govuk-body">Your progress will be tracked through your personal National Centre profile, so you will always be able to see how many credits you have recorded and the number you need to complete each component.</p>
-          <p class="govuk-body">Certification features will become available on the website by June 2019.  Any activities you complete prior to all certification features becoming available, will be recorded and will count towards your credits.</p>
-          <p class="govuk-body">For further information contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %></p>
-          <% if current_user %>
-          <p class="govuk-body-s"><%= link_to 'Visit your dashboard to browse available CPD courses', dashboard_path, class: 'govuk-button ncce-button__pink' %></p>
-          <% else %>
-          <p class="govuk-body-s"><%= link_to 'Log in to browse available CPD courses from your dashboard', login_path, class: 'govuk-button ncce-button__pink' %></p>
-          <% end %>
+          <p class="govuk-body">A key component of the National Centre for Computing Education
+          is a network of 40 computing hubs. These will be led by great schools and colleges with an
+          exceptional track record in teaching computing. They will be resourced to ensure that
+          the CPD delivered through the network meets the real needs of computing teachers in their regions.</p>
+          <p class="govuk-body">Computing Hubs will provide local, responsive and appropriately tailored support
+          available to all computing teachers in state primary and secondary schools and colleges in their area,
+          collectively providing national coverage. Computing Hubs will be the focal point for local computing CPD,
+          and will draw upon local expertise to provide a range of CPD opportunities for all teachers
+          with a particular focus on teachers in schools in category 5 and 6 Local Authority Districts.</p>
+          <p class="govuk-body">The first 10 Hubs will be contracted from May 2019 to act as flag bearers
+          for the NCCE and working with us on the development of systems and processes. The
+            remaining 30 Hubs will be operational by
+          September 2019. To find out more about how your school can apply please click <%= link_to 'https://www.stem.org.uk/opportunities-tender', '/', class: 'ncce-link' %></p>
         </div>
         <% unless current_user %>
           <aside class="govuk-grid-column-one-third ncce-aside">
