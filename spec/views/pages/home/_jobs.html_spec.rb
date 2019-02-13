@@ -10,7 +10,7 @@ RSpec.describe('pages/home/_jobs', type: :view) do
   end
 
   it('renders the correct number of links') do
-    expect(rendered).to(have_css('.ncce-link', count: 3))
+    expect(rendered).to(have_css('.ncce-link', count: 4))
   end
 
   it('has hub link') do
