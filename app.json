@@ -55,6 +55,9 @@
     "BYPASS_OAUTH": {
       "description": "OAuth doesn't work because of the unpredictable URLs",
       "value": "true"
+    },
+    "ACHIEVER_API_ENDPOINT": {
+      "required": true
     }
   },
   "formation": {
