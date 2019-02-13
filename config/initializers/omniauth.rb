@@ -38,10 +38,12 @@ end
 OmniAuth.config.on_failure = AuthController.action(:failure)
 
 if ENV['BYPASS_OAUTH'].present?
+  puts "HEROKU_APP_NAME? #{HEROKU_APP_NAME} HEROKU_PARENT_APP_NAME #{HEROKU_PARENT_APP_NAME}"
+  puts 'Faking OAuth login for review apps'
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
     provider: 'stem',
-    uid: '791f3d63-21e5-48a5-b4b2-dbf3838f320e',
+    uid: '24675886-34f0-45be-a3f3-52d4970186ed',
     credentials: {
       expires_at: 1_546_601_180,
       refresh_token: '27266366070255897068',
@@ -49,9 +51,9 @@ if ENV['BYPASS_OAUTH'].present?
 
     },
     info: {
-      achiever_contact_no: '5676d7e5-cece-4a3d-95e2-884f38c82f57',
-      first_name: 'Test',
-      last_name: 'User',
+      achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
+      first_name: 'RPi App',
+      last_name: 'Reviewer',
       email: 'test-user@example.com'
     }
   )

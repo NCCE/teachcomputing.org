@@ -3,7 +3,6 @@ class AuthController < ApplicationController
 
   def callback
     auth = omniauth_params
-    puts "Auth: #{auth.inspect}"
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
     session[:user_id] = user.id
