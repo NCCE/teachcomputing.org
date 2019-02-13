@@ -79,6 +79,9 @@
     },
     "ACHIEVER_FUTURE_COURSES_WORKFLOW_ID": {
       "required": true
+    },
+    "PROXY_URL": {
+      "required": true
     }
 
   },
