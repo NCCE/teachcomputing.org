@@ -1,7 +1,7 @@
 {
   "name": "teachcomputing",
   "scripts": {
-    "postdeploy": "bundle exec rake review_app:setup"
+    "postdeploy": "bin/rails db:migrate"
   },
   "env": {
     "RAILS_ENV": {
@@ -55,12 +55,6 @@
     "BYPASS_OAUTH": {
       "description": "OAuth doesn't work because of the unpredictable URLs",
       "value": "true"
-    },
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
-    "HEROKU_PARENT_APP_NAME": {
-      "required": true
     }
   },
   "formation": {

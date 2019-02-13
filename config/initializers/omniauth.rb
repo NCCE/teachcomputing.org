@@ -22,9 +22,9 @@ module OmniAuth::Strategies
       @raw_info ||= access_token.get('/idp/module.php/oauth2/userinfo.php').parsed
     end
 
-    def callback_url
-      ENV.fetch('STEM_OAUTH_CALLBACK_URL')
-    end
+    # def callback_url
+    #   ENV.fetch('STEM_OAUTH_CALLBACK_URL')
+    # end
   end
 end
 
