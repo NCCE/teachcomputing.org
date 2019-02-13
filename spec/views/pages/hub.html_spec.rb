@@ -10,7 +10,7 @@ RSpec.describe('pages/hub', type: :view) do
 
   it 'has a STEAM link' do
     render
-    expect(rendered).to have_link('here', href: 'https://www.stem.org.uk/opportunities-tender')
+    expect(rendered).to have_link('visit STEM page', href: 'https://www.stem.org.uk/opportunities-tender')
   end
 
   context 'when a user is signed in' do
