@@ -23,6 +23,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
+      return super if ENV['BYPASS_OAUTH'].present?
       ENV.fetch('STEM_OAUTH_CALLBACK_URL')
     end
   end
