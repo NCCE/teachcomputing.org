@@ -83,7 +83,6 @@
     "PROXY_URL": {
       "required": true
     }
-
   },
   "formation": {
     "web": {
@@ -91,8 +90,7 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic",
-    "quotaguardstatic-flexible-18381"
+    "heroku-postgresql:hobby-basic"
   ],
   "buildpacks": [
     {
