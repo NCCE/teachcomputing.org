@@ -5,12 +5,12 @@ RSpec.describe('pages/hub', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Become a computing hub')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Network of Computing Hubs')
   end
 
   it 'has a STEAM link' do
     render
-    expect(rendered).to have_link('visit STEM page', href: 'https://www.stem.org.uk/opportunities-tender')
+    expect(rendered).to have_link('Find out how your school can apply', href: 'https://www.stem.org.uk/opportunities-tender')
   end
 
   context 'when a user is signed in' do
