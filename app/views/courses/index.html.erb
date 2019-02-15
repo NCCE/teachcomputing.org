@@ -17,6 +17,13 @@
             %>
             </h2>
             <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
+            <h3 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
+              <button aria-expanded="false">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 640 1024" height="20" width="20">
+                  <path d="M320 576L0 320l64 -64 256 256 256 -256 64 64L320 576z"/>
+                </svg>View dates & locations
+              </button>
+            </h3>
             <ul class="govuk-list govuk-body-s ncce-courses__meta">
               <% @course_occurrences.each do |oc| %>
                 <% next unless oc.course_template_no == course.course_template_no %>

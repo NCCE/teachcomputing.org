@@ -2,17 +2,53 @@
 	&__course {
 		padding: 1rem 0;
 	}
+  &__locations {
+    margin-bottom: 0;
+    & button {
+      all: inherit;
+      border: 0;
+      display: flex;
+      justify-content: start;
+      width: 100%;
+      background: $ncce-pink-light;
+      padding: 0.45rem 1rem;
+      @include govuk-media-query($from: tablet) {
+        margin-bottom: 2px;
+      }
 
+      & svg {
+        margin-right: 1em;
+      }
+      &:focus svg {
+        outline: 1px solid;
+      }
+      &[aria-expanded="true"] svg {
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        filter: FlipW;
+        -ms-filter: "FlipW";
+      }
+
+      & [aria-expanded] path {
+        fill: currentColor;
+      }
+    }
+  }
 	&__meta {
 		display: block;
 		line-height: 1.6;
 
 		& > li {
-			background: $ncce-pink-light;
-			padding: 0.45rem 1rem;
-			@include govuk-media-query($from: tablet) {
-				margin-bottom: 2px;
-			}
+      width: 100%;
+      background: $ncce-pink-light;
+      padding: 0.45rem 1rem;
+      margin-left: 0;
+      margin-right: 0;
+      @include govuk-media-query($from: tablet) {
+        margin-bottom: 2px;
+      }
 		}
 
 		&-date {
