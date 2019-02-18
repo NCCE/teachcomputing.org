@@ -52,9 +52,9 @@ if ENV['BYPASS_OAUTH'].present?
     },
     info: {
       achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
-      first_name: 'RPi App',
-      last_name: 'Reviewer',
-      email: 'test-user@example.com'
+      first_name: 'Web',
+      last_name: 'Raspberry Pi',
+      email: 'web@raspberrypi.org'
     }
   )
 end
