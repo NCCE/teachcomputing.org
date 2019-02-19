@@ -5,7 +5,7 @@ Rails.application.routes.draw do
    delete '/cache', to: 'cache#destroy'
   end
 
-  resources :achievements, only: [:create]
+  resources :achievements, only: [:create, :destroy]
 
   namespace :activities do
     resources :downloads, only: [:show]
