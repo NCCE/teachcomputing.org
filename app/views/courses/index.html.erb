@@ -34,7 +34,7 @@
         <h2 class="govuk-heading-s ncce-aside__title">Diagnostic Tool</h2>
         <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
         knowledge where you need most support.</p>
-        <p class="govuk-body-s"><%= link_to 'Download Diagnostic Tool PDF', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'ncce-link ncce-link--on-dark', target: :_blank %></p>
+        <p class="govuk-body-s"><%= link_to 'Use Diagnostic Tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
       </aside>
       <% else %>
       <aside class="govuk-grid-column-one-third ncce-aside">
@@ -43,7 +43,11 @@
           To book onto a CPD course, you'll need to create an account here on NCCE.
           It's free and takes two minutes!
         </p>
-        <p class="govuk-body-s"><%= link_to 'Create an account', '/login' %></p>
+        <p class="govuk-body-z">
+          <%= link_to 'Create an account', login_path,
+          class: 'govuk-button ncce-button__pink ncce-aside__button',
+            role: 'button', draggable: 'false' %>
+        </p>
       </aside>
       <% end %>
     </div>
