@@ -16,17 +16,6 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
-  context 'when a user is signed in' do
-    before do
-      allow(view).to receive(:current_user).and_return(user)
-      render
-    end
-
-    it 'has a link to download the diagnostic tool' do
-      expect(rendered).to have_css('a', text: 'Use Diagnostic Tool')
-    end
-  end
-
   context 'when there is not signed in user' do
     before do
       allow(view).to receive(:current_user).and_return(nil)
