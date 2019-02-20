@@ -8,7 +8,7 @@
 
         <% @courses.each do |course| %>
           <div class="ncce-courses__course">
-            <h2 class="govuk-heading-s">
+            <h2 class="govuk-heading-s ncce-courses__heading">
             <%=
               link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link', target: :_blank) do
                 link_to(course.title, course.booking_url, class: 'ncce-link', target: :_blank)
