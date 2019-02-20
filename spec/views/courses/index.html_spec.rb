@@ -23,7 +23,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'has a link to download the diagnostic tool' do
-      expect(rendered).to have_link('Use Diagnostic Tool', href: 'https://static.teachcomputing.org/NCCE.Diagnostic.pdf')
+      expect(rendered).to have_css('a', text: 'Use Diagnostic Tool')
     end
   end
 
