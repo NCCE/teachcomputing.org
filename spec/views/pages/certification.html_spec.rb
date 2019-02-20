@@ -13,7 +13,7 @@ RSpec.describe('pages/certification', type: :view) do
     expect(rendered).to have_link('info@teachcomputing.org', href: 'mailto:info@teachcomputing.org')
   end
 
-  it 'has a login link' do
+  it 'has a courses link' do
     expect(rendered).to have_link('Visit courses page to browse available CPD courses', href: '/courses')
   end
 
