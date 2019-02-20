@@ -13,14 +13,14 @@ RSpec.describe('pages/certification', type: :view) do
     expect(rendered).to have_link('info@teachcomputing.org', href: 'mailto:info@teachcomputing.org')
   end
 
+  it 'has a login link' do
+    expect(rendered).to have_link('Visit courses page to browse available CPD courses', href: '/courses')
+  end
+
   context 'when a user is signed in' do
     before do
       allow(view).to receive(:current_user).and_return(user)
       render
-    end
-
-    it 'has a login link' do
-      expect(rendered).to have_link('Visit your dashboard to browse available CPD courses', href: '/dashboard')
     end
 
     it 'has no aside panel' do
@@ -32,14 +32,6 @@ RSpec.describe('pages/certification', type: :view) do
     before do
       allow(view).to receive(:current_user).and_return(nil)
       render
-    end
-
-    it 'has a login link' do
-      expect(rendered).to have_link('Log in to browse available CPD courses from your dashboard', href: '/login')
-    end
-
-    it 'has a create account link' do
-      expect(rendered).to have_link('Create an account', href: '/login')
     end
 
     it 'has aside panel' do
