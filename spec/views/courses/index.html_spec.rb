@@ -9,11 +9,10 @@ RSpec.describe('courses/index', type: :view) do
 
     @courses = achiever.approved_course_templates
     @course_occurrences = achiever.future_courses
-
+  render
   end
 
   it 'has a title' do
-    render
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
@@ -40,7 +39,6 @@ RSpec.describe('courses/index', type: :view) do
   end
 
   describe 'courses' do
-    render
     it 'renders each of the course template titles' do
       @courses.each do |course|
         expect(rendered).to have_css('govuk-heading-s', text: course.title)
