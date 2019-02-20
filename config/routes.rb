@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
-  resources :courses, path: '/dashboard/courses', only: [:index]
+  resources :courses, path: '/courses', only: [:index]
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
