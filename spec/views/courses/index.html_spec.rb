@@ -10,18 +10,37 @@ RSpec.describe('courses/index', type: :view) do
     @courses = achiever.approved_course_templates
     @course_occurrences = achiever.future_courses
 
-    render
   end
 
   it 'has a title' do
+    render
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
-  it 'has a link to download the diagnostic tool' do
-    expect(rendered).to have_css('a', text: 'Use Diagnostic Tool')
+  context 'when a user is signed in' do
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'has a link to download the diagnostic tool' do
+      expect(rendered).to have_css('a', text: 'Use Diagnostic Tool')
+    end
+  end
+
+  context 'when there is not signed in user' do
+    before do
+      allow(view).to receive(:current_user).and_return(nil)
+      render
+    end
+
+    it 'has a courses link' do
+      expect(rendered).to have_link('Create an account', href: '/login')
+    end
   end
 
   describe 'courses' do
+    render
     it 'renders each of the course template titles' do
       @courses.each do |course|
         expect(rendered).to have_css('govuk-heading-s', text: course.title)
