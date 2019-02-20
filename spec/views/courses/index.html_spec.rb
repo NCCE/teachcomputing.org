@@ -16,6 +16,26 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
+  context 'when a user is signed in' do
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'has a link to download the diagnostic tool' do
+      expect(rendered).to have_link('Use Diagnostic Tool', href: 'https://static.teachcomputing.org/NCCE.Diagnostic.pdf')
+    end
+  end
+
+  context 'when there is not signed in user' do
+    before do
+      allow(view).to receive(:current_user).and_return(nil)
+    end
+
+    it 'has a courses link' do
+      expect(rendered).to have_link('Create an account', href: '/login')
+    end
+  end
 
   describe 'courses' do
     it 'renders each of the course template titles' do
