@@ -10,7 +10,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has login links' do
-    expect(rendered).to have_link('Browse list of all the courses', href: '/courses', count: 4)
+    expect(rendered).to have_link('Browse available courses', href: '/courses', count: 4)
   end
 
   it 'has an accelerator link' do
@@ -38,7 +38,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has links to anchors' do
-    expect(rendered).to have_xpath('//a[starts-with(@href, "#")]', count: 4)
+    expect(rendered).to have_xpath('//a[starts-with(@href, "#")]', count: 2)
   end
 
   it 'has anchors' do
