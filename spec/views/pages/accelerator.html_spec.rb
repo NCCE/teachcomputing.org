@@ -13,10 +13,8 @@ RSpec.describe('pages/accelerator', type: :view) do
     expect(rendered).to have_link('Read about our bursaries', href: '/bursary')
   end
 
-
   it 'has a link to the courses' do
-    expect(rendered).to have_text('Browse available courses', href: '/courses')
+    expect(rendered).to have_link('Browse available courses', href: '/courses')
   end
-
 
 end
