@@ -1,11 +1,12 @@
 .ncce-courses {
 	&__course {
-		padding: 1rem 0;
+		padding: 0.5rem 0;
 	}
 
 	&__meta {
 		display: block;
 		line-height: 1.6;
+		padding: 0 1rem;
 
 		& > li {
 			background: $ncce-pink-light;
@@ -21,6 +22,7 @@
 			font-size: 14px;
 		}
 		&-icon {
+			font-weight: 700;
 			display: inline-block;
 			padding: 0;
 			font-size: 15px;
@@ -36,4 +38,8 @@
 
 		}
 	}
+}
+
+.ncce-courses__heading {
+	margin-bottom: 10px;
 }

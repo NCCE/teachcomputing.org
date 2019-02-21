@@ -4,5 +4,34 @@
   "dependencies": {
     "cookieconsent": "^3.1.0",
     "govuk-frontend": "^2.3.0"
-  }
+  },
+  "devDependencies": {
+    "eslint": "5.6.1",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-prettier": "3.0.0",
+    "lint-staged": "7.3.0",
+    "prettier": "1.14.3",
+    "prettier-package-json": "2.0.1",
+    "prettier-stylelint": "0.4.2",
+    "stylelint": "9.6.0",
+    "stylelint-config-recommended-scss": "3.2.0",
+    "stylelint-order": "1.0.0",
+    "stylelint-scss": "3.3.1"
+  },
+  "lint-staged": {
+    "*.js": [
+    "eslint --fix",
+    "git add"
+    ],
+    "*.scss": [
+    "stylelint --fix --syntax=scss",
+    "git add"
+    ],
+    "package.json": [
+    "prettier-package-json --write",
+    "git add"
+    ]
+  },
+  "pre-commit": "lint:staged"
 }

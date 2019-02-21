@@ -10,7 +10,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has login links' do
-    expect(rendered).to have_link('Browse available CPD courses from your dashboard', href: '/login', count: 4)
+    expect(rendered).to have_link('Browse list of all the courses', href: '/courses', count: 4)
   end
 
   it 'has an accelerator link' do
