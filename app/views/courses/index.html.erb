@@ -17,7 +17,7 @@
                   end
                 %>
               <% else %>
-                <%= course.title %>
+                <%= link_to(course.title, login_path, class: 'ncce-link') %>
               <% end %>
               </h2>
               <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
@@ -48,7 +48,7 @@
           To book onto a course, you'll need to create an account. It's free and takes two minutes!
           </p>
           <p class="govuk-body-z">
-            <%= link_to 'Create an account', login_path,
+            <%= link_to 'Create an account/ log in', login_path,
             class: 'govuk-button ncce-button__pink ncce-aside__button',
               role: 'button', draggable: 'false' %>
           </p>
