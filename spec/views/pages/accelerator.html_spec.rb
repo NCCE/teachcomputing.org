@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe('pages/accelerator', type: :view) do
-  let(:user) { create(:user) }
+  before do
+    render
+  end
 
   it 'has a title' do
-    render
     expect(rendered).to have_css('.govuk-heading-l', text: 'The Computer Science Accelerator Programme')
   end
 
   it 'has a bursary link' do
-    render
     expect(rendered).to have_link('Read about our bursaries', href: '/bursary')
   end
 
