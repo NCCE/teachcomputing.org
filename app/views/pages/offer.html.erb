@@ -11,15 +11,14 @@
 
           <h2 class="govuk-heading-s">A one-stop shop for computing education</h2>
           <ul class="govuk-list govuk-list--bullet">
-            <li><%= link_to 'Face-to-face CPD', '#face-to-face-cpd' %></li>
-            <li><%= link_to 'Online CPD', '#online-cpd' %></li>
+            <li><%= link_to 'Face-to-face and online CPD', '/courses' %></li>
             <li><%= link_to 'Certification', '#certification' %></li>
             <li><%= link_to 'Resources, support and guidance', '#resources' %></a></li>
           </ul>
 
           <h2 class="govuk-heading-s"><%= content_tag :a, 'Face-to-face CPD', id: 'face-to-face-cpd' %></h2>
           <p class="govuk-body">Whether you are new to teaching computing and computer science, or are more experienced and want to help your students achieve their full potential, we have the CPD for you.</p>
-          <p class="govuk-body-s"><%= link_to 'Browse list of all the courses', courses_path, class: 'govuk-button ncce-button__pink ncce-about__link' %></p>
+          <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink ncce-about__link' %></p>
 
           <h3 class="govuk-heading-s">National Centre for Computing Education face-to-face CPD</h3>
           <p class="govuk-body">We have developed a selection of bursary-supported, face-to-face courses for teachers looking to gain confidence in teaching across the computing curriculum. There are currently a selection of primary courses available to book at venues across England, with more courses coming soon.</p>
@@ -28,7 +27,7 @@
             <li>Outstanding teaching of key stage 2 computing</li>
             <li>Primary programming and algorithms</li>
           </ul>
-          <p class="govuk-body-s"><%= link_to 'Browse list of all the courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
+          <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
 
           <h3 class="govuk-heading-s">The Computer Science Accelerator Programme</h3>
           <p class="govuk-body">If you’re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you. <%= link_to 'Find out more', accelerator_path, class: 'ncce-link' %></p>
@@ -39,7 +38,7 @@
             <li>Data and computer systems in GCSE computer science</li>
             <li>Networks and cyber-security in GCSE computer science</li>
           </ul>
-          <p class="govuk-body-s"><%= link_to 'Browse list of all the courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
+          <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
 
           <h3 class="govuk-heading-s">A Level CPD</h3>
           <p class="govuk-body">We are currently developing a comprehensive programme of support including face-to-face training for teachers and students in England for AS/A level computer science. You can read more about this in our <%= link_to 'recent article', a_level_path, class: 'ncce-link' %>.</p>
@@ -47,7 +46,7 @@
           <h2 class="govuk-heading-s"><%= content_tag :a, 'Online CPD', id: 'online-cpd' %></h2>
           <p class="govuk-body">We have created a number of free, online courses available on the FutureLearn Platform which you can access at a time and place that suits you. Interact with your peers and access the support of expert moderators, who are available to support you throughout your learning.</p>
           <p class="govuk-body">Some of the courses form part of the Computer Science Accelerator Programme, and can contribute towards the 40 hours of CPD required to complete the programme.</p>
-          <p class="govuk-body-s"><%= link_to 'Browse list of all the courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
+          <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
           <p class="govuk-body">More coming online in the next few months.</p>
           <h2 class="govuk-heading-s"><%= content_tag :a, 'Certification', id: 'certification' %></h2>
           <p class="govuk-body">We are working on a system of certification to provide a pathway to chartered status for teachers of computing education. More details will be available soon.</p>

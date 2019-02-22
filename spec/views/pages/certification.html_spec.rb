@@ -15,7 +15,7 @@ RSpec.describe('pages/certification', type: :view) do
 
   it 'has a courses link' do
     render
-    expect(rendered).to have_link('Visit courses page to browse available CPD courses', href: '/courses')
+    expect(rendered).to have_link('Browse available courses', href: '/courses')
   end
 
   context 'when a user is signed in' do

@@ -1,6 +1,6 @@
 .ncce-courses {
 	&__course {
-		padding: 0.5rem 0;
+		padding: 1rem 0;
 	}
 
 	&__meta {
@@ -42,4 +42,8 @@
 
 .ncce-courses__heading {
 	margin-bottom: 10px;
+}
+
+.ncce-courses__heading--link {
+	font-family: "Objectivity Bold", sans-serif;
 }
