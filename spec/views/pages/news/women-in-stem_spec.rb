@@ -14,6 +14,6 @@ RSpec.describe('pages/news/women-in-stem', type: :view) do
   end
 
   it 'has a mailto link' do
-    expect(rendered).to have_link('info@computing.org', href: 'mailto:info@computing.org')
+    expect(rendered).to have_link('info@teachcomputing.org', href: 'mailto:info@teachcomputing.org')
   end
 end
