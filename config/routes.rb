@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout', as: :logout
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
   get '/news/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/a-level' }
+  get '/news/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/women-in-stem' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
