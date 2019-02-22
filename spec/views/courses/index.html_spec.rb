@@ -22,7 +22,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'has a courses link' do
-      expect(rendered).to have_link('Create an account', href: '/login')
+      expect(rendered).to have_link('Create an account / log in', href: '/login')
     end
   end
 
