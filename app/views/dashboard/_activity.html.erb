@@ -25,7 +25,7 @@
     <span class="govuk-form-group ncce-activity-form">
       <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form ncce-activity-form--flex"' } do |f| %>
         <%= f.select :activity_id,
-          options_for_select(Activity.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+          options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
           { include_blank: 'Select an activity' },
           { class: 'govuk-select ncce-activity-form__select' }
         %>
