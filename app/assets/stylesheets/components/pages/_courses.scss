@@ -39,6 +39,7 @@
 	&__meta {
 		display: block;
 		line-height: 1.6;
+		padding: 0;
 
 		& > li {
       width: 100%;
@@ -57,6 +58,7 @@
 			font-size: 14px;
 		}
 		&-icon {
+			font-weight: 700;
 			display: inline-block;
 			padding: 0;
 			font-size: 15px;
@@ -72,4 +74,12 @@
 
 		}
 	}
+}
+
+.ncce-courses__heading {
+	margin-bottom: 10px;
+}
+
+.ncce-courses__heading--link {
+	font-family: "Objectivity Bold", sans-serif;
 }
