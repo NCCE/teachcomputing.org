@@ -23,6 +23,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
+      return super if ENV['BYPASS_OAUTH'].present?
       ENV.fetch('STEM_OAUTH_CALLBACK_URL')
     end
   end
@@ -36,3 +37,24 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 OmniAuth.config.on_failure = AuthController.action(:failure)
+
+if ENV['BYPASS_OAUTH'].present?
+  puts 'Faking OAuth login for review apps'
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
+    provider: 'stem',
+    uid: '24675886-34f0-45be-a3f3-52d4970186ed',
+    credentials: {
+      expires_at: 1_546_601_180,
+      refresh_token: '27266366070255897068',
+      token: '14849048797785647933'
+
+    },
+    info: {
+      achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
+      first_name: 'Web',
+      last_name: 'Raspberry Pi',
+      email: 'web@raspberrypi.org'
+    }
+  )
+end

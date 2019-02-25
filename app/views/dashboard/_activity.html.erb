@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column">
     <div class="govuk-grid-column-two-thirds">
-      <h3 class="govuk-heading-m">Your progress</h3>
+      <h2 class="govuk-heading-m">Your progress</h2>
       <p class="govuk-body">Your activities are logged here.
       Face-to-face course completion is updated automatically and online courses
       will be soon as well, but for now you can add them manually. We will also be
@@ -17,7 +17,7 @@
   </li>
   <% @achievements.each do |achievement| %>
     <li class="ncce-activity-list__item">
-      <span class="ncce-activity-list__item-text"><%= achievement.activity.title %></span>
+      <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
     </li>
   <% end %>
   <li class="ncce-activity-list__item ncce-activity-list__item--completed">

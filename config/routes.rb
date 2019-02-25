@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
-  resources :courses, path: '/dashboard/courses', only: [:index]
+  resources :courses, path: '/courses', only: [:index]
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout', as: :logout
   get '/news', to: 'pages#page', as: :news, defaults: { page_slug: 'news' }
   get '/news/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/a-level' }
+  get '/news/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/women-in-stem' }
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
+  get '/hub', to: 'pages#page', as: :hub, defaults: { page_slug: 'hub' }
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }

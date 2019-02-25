@@ -1,21 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe('pages/certification', type: :view) do
+RSpec.describe('pages/hub', type: :view) do
   let(:user) { create(:user) }
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Certification')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Network of Computing Hubs')
   end
 
-  it 'has a contact link' do
+  it 'has a STEAM link' do
     render
-    expect(rendered).to have_link('info@teachcomputing.org', href: 'mailto:info@teachcomputing.org')
-  end
-
-  it 'has a courses link' do
-    render
-    expect(rendered).to have_link('Browse available courses', href: '/courses')
+    expect(rendered).to have_link('Find out how your school can apply', href: 'https://www.stem.org.uk/opportunities-tender')
   end
 
   context 'when a user is signed in' do

@@ -3,7 +3,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l">Certification</h2>
+          <h1 class="govuk-heading-l">Certification</h1>
         </div>
         <div class="govuk-grid-column-two-thirds">
           <p class="govuk-body">Certification is available for all teachers of computing from primary through to GCSE.</p>
@@ -22,15 +22,14 @@
           <p class="govuk-body">Your progress will be tracked through your personal National Centre profile, so you will always be able to see how many credits you have recorded and the number you need to complete each component.</p>
           <p class="govuk-body">Certification features will become available on the website by June 2019.  Any activities you complete prior to all certification features becoming available, will be recorded and will count towards your credits.</p>
           <p class="govuk-body">For further information contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %></p>
-          <p class="govuk-body-s"><%= link_to 'Log in to browse available CPD courses from your dashboard', login_path, class: 'govuk-button ncce-button__pink' %></p>
+          <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
         </div>
-
-        <% unless @current_user %>
-        <aside class="govuk-grid-column-one-third ncce-aside">
-          <h4 class="govuk-heading-s ncce-aside__title">Start your journey</h4>
-          <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
-          <p class="govuk-body-s"><%= link_to 'Create an account', login_path, class: 'ncce-link ncce-link--on-dark' %></p>
-        </aside>
+        <% unless current_user %>
+          <aside class="govuk-grid-column-one-third ncce-aside">
+            <h2 class="govuk-heading-s ncce-aside__title">Start your journey</h2>
+            <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
+            <p class="govuk-body-s"><%= link_to 'Create an account', login_path, class: 'ncce-link ncce-link--on-dark' %></p>
+          </aside>
         <% end %>
       </div>
     </div>
