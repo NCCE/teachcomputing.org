@@ -9,6 +9,7 @@
       border: 0;
       display: flex;
       justify-content: start;
+      box-sizing:border-box;
       width: 100%;
       background: $ncce-pink-light;
       padding: 0.45rem 1rem;
@@ -17,7 +18,8 @@
       }
 
       & svg {
-        margin-right: 1em;
+        margin-right: 0.5em;
+        margin-top: 0.4em;
       }
       &:focus svg {
         outline: 1px solid;
@@ -42,6 +44,7 @@
 		padding: 0;
 
 		& > li {
+      box-sizing:border-box;
       width: 100%;
       background: $ncce-pink-light;
       padding: 0.45rem 1rem;

@@ -2,8 +2,10 @@ require('nokogiri')
 require_relative('achiever')
 
 class CourseTemplate
+  attr_accessor :course_occurrences
   def initialize(doc)
     @doc = doc
+    @course_occurrences = []
   end
 
   def booking_url
