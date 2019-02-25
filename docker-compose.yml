@@ -16,8 +16,13 @@ services:
       - '3000:3000'
     depends_on:
       - db
+      - redis
     environment:
       - PROXY_URL=http://host.docker.internal:8888
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
 volumes:
   pg-data:
   node_modules:
