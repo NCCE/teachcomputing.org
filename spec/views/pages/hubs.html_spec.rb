@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/hub', type: :view) do
+RSpec.describe('pages/hubs', type: :view) do
   let(:user) { create(:user) }
 
   it 'has a title' do
