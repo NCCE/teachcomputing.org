@@ -4,7 +4,7 @@ namespace :completed_course_jobs do
       puts "Processing batch: #{batch}"
       group.each do |user|
         puts "#{user.id} queued"
-        FetchUsersCompletedCoursesFromAchiever.perform_later(user)
+        FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
       end
     end
   end
