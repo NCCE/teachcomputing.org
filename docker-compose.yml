@@ -23,6 +23,11 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
 volumes:
   pg-data:
   node_modules:
