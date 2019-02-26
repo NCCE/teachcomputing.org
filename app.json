@@ -40,6 +40,12 @@
     "STEM_OAUTH_CLIENT_SECRET": {
       "required": true
     },
+    "SIDEKIQ_USER_NAME": {
+      "required": true
+    },
+    "SIDEKIQ_PASSWORD": {
+      "required": true
+    },
     "AWS_ACCESS_KEY_ID": {
       "required": true
     },
@@ -90,7 +96,8 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic"
+    "heroku-postgresql:hobby-basic",
+    "heroku-redis:hobby-dev"
   ],
   "buildpacks": [
     {

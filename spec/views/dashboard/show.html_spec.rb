@@ -6,7 +6,6 @@ RSpec.describe('dashboard/show', type: :view) do
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
-    assign(:delegate_course_list, [])
     @achievements = user.achievements
     render
   end
