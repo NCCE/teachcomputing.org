@@ -96,7 +96,8 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic"
+    "heroku-postgresql:hobby-basic",
+    "heroku-redis:hobby-dev"
   ],
   "buildpacks": [
     {
