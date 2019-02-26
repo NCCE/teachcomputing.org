@@ -40,7 +40,7 @@
     "STEM_OAUTH_CLIENT_SECRET": {
       "required": true
     },
-    "SIDEKIQ_USERNAME": {
+    "SIDEKIQ_USER_NAME": {
       "required": true
     },
     "SIDEKIQ_PASSWORD": {
