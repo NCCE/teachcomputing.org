@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home', action: :home
 
   namespace :achiever do
-   delete '/cache', to: 'cache#destroy'
+    delete '/cache', to: 'cache#destroy'
   end
 
   resources :achievements, only: [:create]
@@ -36,4 +36,13 @@ Rails.application.routes.draw do
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
+
+  require 'sidekiq/web'
+  if Rails.env.production?
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_USERNAME'])) &
+        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
+    end
+  end
+  mount Sidekiq::Web, at: 'admin/sidekiq'
 end
