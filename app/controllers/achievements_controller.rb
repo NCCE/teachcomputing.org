@@ -16,7 +16,7 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.find_by(id: params[:id])
 
     if @achievement.destroy
-      flash[:notice] = "Your activity has been removed #{@achievement.title}"
+      flash[:notice] = "Your activity has been removed"
     else
       flash[:error] = 'Whoops something went wrong'
     end
