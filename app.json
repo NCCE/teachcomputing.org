@@ -60,7 +60,7 @@
     },
     "BYPASS_OAUTH": {
       "description": "Allows login without using OAuth mechanism",
-      "required": true
+      "value": "true"
     },
     "ACHIEVER_API_ENDPOINT": {
       "required": true
