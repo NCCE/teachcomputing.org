@@ -29,6 +29,10 @@ class DelegateCourse
     @doc.xpath('.//Productlines.COURSEOCCURRENCENO/text()').to_s
   end
 
+  def course_template_no
+    @doc.xpath('.//Template.COURSETEMPLATENO/text()').to_s
+  end
+
   def product_line_type
     @doc.xpath('.//Productlines.Type/text()').to_s
   end
@@ -74,35 +78,35 @@ class DelegateCourse
   end
 
   def delegate_booker_first_name
-    @doc.xpath('.//Delegate.Booker First Name/text()').to_s
+    @doc.xpath('.//Delegate.Booker_First_Name/text()').to_s
   end
 
   def delegate_booker_surname
-    @doc.xpath('.//Delegate.Booker Surname/text()').to_s
+    @doc.xpath('.//Delegate.Booker_Surname/text()').to_s
   end
 
   def delegate_booker_company
-    @doc.xpath('.//Delegate.Booker Company/text()').to_s
+    @doc.xpath('.//Delegate.Booker_Company/text()').to_s
   end
 
   def delegate_first_name
-    @doc.xpath('.//Delegate.First Name/text()').to_s
+    @doc.xpath('.//Delegate.First_Name/text()').to_s
   end
 
   def delegate_calculated_surname
-    @doc.xpath('.//Delegate.Calculated Surname/text()').to_s
+    @doc.xpath('.//Delegate.Calculated_Surname/text()').to_s
   end
 
   def delegate_calculated_email_address
-    @doc.xpath('.//Delegate.Calculated Email Address/text()').to_s
+    @doc.xpath('.//Delegate.Calculated_Email_Address/text()').to_s
   end
 
   def delegate_registration_status
-    @doc.xpath('.//Delegate.Registration Status/text()').to_s
+    @doc.xpath('.//Delegate.Registration_Status/text()').to_s
   end
 
   def delegate_cancellation_requested
-    @doc.xpath('.//Delegate.Cancellation Requested/text()').to_s
+    @doc.xpath('.//Delegate.Cancellation_Requested/text()').to_s
   end
 
   def delegate_progress
