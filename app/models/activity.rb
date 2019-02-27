@@ -6,6 +6,7 @@ class Activity < ApplicationRecord
   validates :category, inclusion: { in: %w[action cpd] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
+  scope :self_certifiable, -> { where(self_certifiable: true) }
   scope :cpd, -> { where(category: 'cpd') }
 
   def self.downloaded_diagnostic_tool

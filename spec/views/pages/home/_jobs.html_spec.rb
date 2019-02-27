@@ -14,6 +14,6 @@ RSpec.describe('pages/home/_jobs', type: :view) do
   end
 
   it('has hub link') do
-    expect(rendered).to(have_link('Find out about becoming a computing hub', href: '/hub'))
+    expect(rendered).to(have_link('Find out about becoming a computing hub', href: '/hubs'))
   end
 end
