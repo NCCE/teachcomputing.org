@@ -14,7 +14,7 @@ RSpec.describe('pages/accelerator', type: :view) do
   end
 
   it 'has four lists' do
-    expect(rendered).to have_css('.govuk-list--bullet', count: 4)
+    expect(rendered).to have_css('.govuk-list--bullet', count: 3)
   end
 
   it 'has a bursary link' do
