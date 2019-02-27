@@ -13,7 +13,7 @@ RSpec.describe('pages/accelerator', type: :view) do
     expect(rendered).to have_css('.govuk-heading-s', count:5)
   end
 
-  it 'has four lists' do
+  it 'has three lists' do
     expect(rendered).to have_css('.govuk-list--bullet', count: 3)
   end
 
