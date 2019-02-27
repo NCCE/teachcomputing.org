@@ -29,7 +29,7 @@ RSpec.describe('courses/index', type: :view) do
   describe 'courses' do
     it 'renders each of the course template titles' do
       @courses.each do |course|
-        expect(rendered).to have_css('govuk-heading-s', text: course.title)
+        expect(rendered).to have_css('.govuk-heading-s', text: course.title)
       end
     end
   end
