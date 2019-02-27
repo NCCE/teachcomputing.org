@@ -33,6 +33,8 @@ If it's your first time running you'll need to create the database first before 
 
 In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
+Sidekiq is used to process background jobs. You can view the admin UI for this by visiting `/admin/sidekiq` and using the credentials `SIDEKIQ_USERNAME` and `SIDEKIQ_PASSWORD`. Values for these can be found in the terraform repository.
+
 ### Create Database
 ```
 docker-compose run --rm web bin/rails db:create
