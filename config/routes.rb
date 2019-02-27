@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home', action: :home
 
   namespace :achiever do
-   delete '/cache', to: 'cache#destroy'
+    delete '/cache', to: 'cache#destroy'
   end
 
   resources :achievements, only: [:create, :destroy]
@@ -32,8 +32,17 @@ Rails.application.routes.draw do
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
-  get '/hub', to: 'pages#page', as: :hub, defaults: { page_slug: 'hub' }
+  get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
+
+  require 'sidekiq/web'
+  if Rails.env.production?
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_USERNAME'])) &
+        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
+    end
+  end
+  mount Sidekiq::Web, at: 'admin/sidekiq'
 end
