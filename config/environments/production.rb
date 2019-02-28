@@ -58,9 +58,9 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :mem_cache_store,
-                       (ENV['MEMCACHIER_SERVERS'] || '').split(','),
-                       { username: ENV['MEMCACHIER_USERNAME'],
-                         password: ENV['MEMCACHIER_PASSWORD'],
+                       (ENV['MEMCACHEDCLOUD_SERVERS'] || '').split(','),
+                       { username: ENV['MEMCACHEDCLOUD_USERNAME'],
+                         password: ENV['MEMCACHEDCLOUD_PASSWORD'],
                          failover: true,
                          socket_timeout: 1.5,
                          socket_failure_delay: 0.2,
