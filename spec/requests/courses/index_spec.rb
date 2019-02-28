@@ -22,9 +22,9 @@ RSpec.describe CoursesController do
     it 'assigns course_occurrences correctly' do
       courses = assigns(:courses)
       courses.each do |course|
-        expect(course.course_occurrences).to be_a(Array)
+        expect(course.occurrences).to be_a(Array)
         if course.course_template_no == '0f9644e0-afda-4307-b195-82fb62f5f8ab'
-          expect(course.course_occurrences.length).to equal(1)
+          expect(course.occurrences.length).to equal(1)
         end
       end
     end

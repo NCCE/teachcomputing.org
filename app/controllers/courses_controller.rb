@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     @courses.each do |course|
       course_occurrences.each do |course_occurrence|
         if course_occurrence.course_template_no == course.course_template_no
-          course.course_occurrences.push(course_occurrence)
+          course.occurrences.push(course_occurrence)
         end
       end
     end
