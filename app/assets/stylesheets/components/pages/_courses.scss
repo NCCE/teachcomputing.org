@@ -44,6 +44,10 @@
       }
     }
   }
+  &__locations--closed {
+    margin-bottom: 20px;
+  }
+
 	&__meta {
 		display: block;
 		line-height: 1.6;
@@ -91,4 +95,11 @@
 
 .ncce-courses__heading--link {
 	font-family: "Objectivity Bold", sans-serif;
+}
+
+.ncce-courses__tag {
+  margin-bottom: 0.5rem;
+  padding-bottom: 5px;
+  text-transform: initial;
+  background-color: $ncce-dark-purple;
 }
