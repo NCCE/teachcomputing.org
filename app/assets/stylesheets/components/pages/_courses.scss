@@ -6,6 +6,7 @@
     margin-bottom: 0;
     & button {
       all: inherit;
+      cursor: pointer;
       border: 0;
       display: flex;
       justify-content: start;
@@ -16,14 +17,18 @@
       @include govuk-media-query($from: tablet) {
         margin-bottom: 2px;
       }
+      @include govuk-media-query($until: tablet) {
+        padding: 0.75em 1rem;
+      }
 
       & svg {
         margin-right: 0.5em;
-        margin-top: 0.4em;
+        margin-top: 0.3em;
+        @include govuk-media-query($until: tablet) {
+          margin-top: 0.2em;
+        }
       }
-      &:focus svg {
-        outline: 1px solid;
-      }
+
       &[aria-expanded="true"] svg {
         -moz-transform: scaleY(-1);
         -o-transform: scaleY(-1);
@@ -35,6 +40,9 @@
 
       & [aria-expanded] path {
         fill: currentColor;
+      }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
