@@ -15,8 +15,18 @@ RSpec.describe CoursesController do
       expect(assigns(:courses)).to be_a(Array)
     end
 
-    it 'assigns @course_occurrences' do
-      expect(assigns(:course_occurrences)).to be_a(Array)
+    it 'has at least one course' do
+      expect(assigns(:courses).length).to be >(0)
+    end
+
+    it 'assigns course_occurrences correctly' do
+      courses = assigns(:courses)
+      courses.each do |course|
+        expect(course.occurrences).to be_a(Array)
+        if course.course_template_no == '0f9644e0-afda-4307-b195-82fb62f5f8ab'
+          expect(course.occurrences.length).to equal(1)
+        end
+      end
     end
 
     it 'renders the correct template' do
