@@ -2,10 +2,12 @@ require('nokogiri')
 require_relative('achiever')
 
 class CourseTemplate
-  attr_accessor :occurrences
+  attr_accessor :occurrences, :subject_details, :age_range
   def initialize(doc)
     @doc = doc
     @occurrences = []
+    @subject_details = nil
+    @age_range = nil
   end
 
   def booking_url
@@ -26,5 +28,21 @@ class CourseTemplate
 
   def meta_description
     @doc.xpath('.//Template.Meta_Description/text()').to_s
+  end
+
+  def subjects
+    if @subject_details.nil?
+      []
+    else
+      @subject_details.subject_areas
+    end
+  end
+
+  def key_stages
+    if @age_range.nil?
+      []
+    else
+      @age_range.key_stages
+    end
   end
 end
