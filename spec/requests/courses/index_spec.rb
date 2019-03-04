@@ -29,8 +29,13 @@ RSpec.describe CoursesController do
       end
     end
 
+    it 'assigns locations' do
+      expect(assigns(:locations)).to eq({ 'York' => true })
+    end
+
     it 'renders the correct template' do
       expect(response).to render_template('index')
     end
+
   end
 end
