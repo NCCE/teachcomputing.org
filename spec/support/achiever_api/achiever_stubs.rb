@@ -6,11 +6,18 @@ module AchieverStubs
         .to_return(raw_future_course_occurrences_xml)
   end
 
-  def stub_approved_course_templates
-    raw_future_course_templates_xml = File.new('spec/support/achiever_api/future_course_templates.xml')
+  def stub_approved_face_to_face_course_templates
+    raw_future_face_to_face_course_templates_xml = File.new('spec/support/achiever_api/future_face_to_face_course_templates.xml')
     stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
       .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID/ }))
-      .to_return(raw_future_course_templates_xml)
+      .to_return(raw_future_face_to_face_course_templates_xml)
+  end
+
+  def stub_approved_online_course_templates
+    raw_future_online_course_templates_xml = File.new('spec/support/achiever_api/future_online_course_templates.xml')
+    stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
+      .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_ONLINE_COURSE_TEMPLATES_WORKFLOW_ID/ }))
+      .to_return(raw_future_online_course_templates_xml)
   end
 
   def stub_delegate_course_list

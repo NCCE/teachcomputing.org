@@ -6,7 +6,8 @@ RSpec.describe CoursesController do
   describe 'GET #index' do
     before do
       stub_fetch_future_courses
-      stub_approved_course_templates
+      stub_approved_face_to_face_course_templates
+      stub_approved_online_course_templates
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       get courses_path()
     end
