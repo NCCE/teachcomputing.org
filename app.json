@@ -77,6 +77,12 @@
     "ACHIEVER_FUTURE_COURSES_WORKFLOW_ID": {
       "required": true
     },
+    "ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID": {
+      "required": true
+    },
     "PROXY_URL": {
       "required": true
     }
