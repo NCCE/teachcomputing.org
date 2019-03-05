@@ -32,6 +32,18 @@ RSpec.describe CoursesController do
       end
     end
 
+    it 'assigns all locations' do
+      expect(assigns(:locations)).to eq(['York'])
+    end
+
+    it 'assigns all levels' do
+      expect(assigns(:levels)).to eq(['Key stage 3', 'Key stage 4'])
+    end
+
+    it 'assigns all topics' do
+      expect(assigns(:topics)).to eq(['Computing'])
+    end
+
     it 'can retrieve course tags correctly' do
       courses = assigns(:courses)
       courses.each do |course|
@@ -48,13 +60,8 @@ RSpec.describe CoursesController do
       end
     end
 
-    it 'assigns locations' do
-      expect(assigns(:locations)).to eq(["Any location", "York"])
-    end
-
     it 'renders the correct template' do
       expect(response).to render_template('index')
     end
-
   end
 end

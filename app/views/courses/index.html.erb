@@ -31,13 +31,29 @@
         <div class="govuk-grid-column-full ncce-courses__filter">
           <%= form_tag :courses, { method: :get } do %>
 
-            <span class="govuk-body-s govuk-!-width-one-quarter ncce-courses__filter-prompt">Find a course:</span>
+            <span class="govuk-body-s ncce-courses__filter-prompt">Find a course:</span>
+            <%= select_tag :level,
+              options_for_select(['Any level'] + @levels, @current_level),
+              {
+                # include_blank: 'Any level',
+                class: 'govuk-select ncce-courses__filter-select',
+                'aria-label': 'Filter by level' }
+            %>
             <%= select_tag :location,
-              options_for_select(@locations, @current_location),
-              { class: 'govuk-select govuk-!-width-one-quarter ncce-courses__filter-select',
+              options_for_select(['Any location'] + @locations, @current_location),
+              {
+                # include_blank: 'Any location',
+                class: 'govuk-select ncce-courses__filter-select',
                 'aria-label': 'Filter by location' }
             %>
-            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
+            <%= select_tag :topic,
+              options_for_select(['Any topic'] + @topics, @current_topic),
+              {
+                # include_blank: 'Any topic',
+                class: 'govuk-select ncce-courses__filter-select',
+                'aria-label': 'Filter by topic' }
+            %>
+            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink' %>
           <% end %>
         </div>
         <div class="govuk-grid-column-two-thirds">

@@ -110,6 +110,7 @@
   padding: 10px;
   &-prompt {
     color: $ncce-black;
+    margin-right: 20px;
   }
   &-select {
     appearance: none;
@@ -119,5 +120,7 @@
     background-image: url('chevron.svg');
     background-position: calc(100% - 10px) 50%;
     background-repeat: no-repeat;
+    margin-right: 20px;
+    padding-right: 30px;
   }
 }
