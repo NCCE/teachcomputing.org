@@ -78,6 +78,16 @@
                   <% end %>
                 </ul>
               <% end %>
+              <% unless course.subjects.nil? && course.key_stages.nil? %>
+                <p class="govuk-body">
+                  <% course.subjects.each do |subject| %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
+                  <% end %>
+                  <% course.key_stages.each do |stage| %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
+                  <% end %>
+                </p>
+              <% end %>
             </div>
           <% end %>
         </div>

@@ -7,6 +7,9 @@ RSpec.describe CoursesController do
     before do
       stub_fetch_future_courses
       stub_approved_course_templates
+      stub_course_template_subject_details
+      stub_course_template_age_range
+
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       get courses_path()
     end
@@ -26,6 +29,22 @@ RSpec.describe CoursesController do
         if course.course_template_no == '0f9644e0-afda-4307-b195-82fb62f5f8ab'
           expect(course.occurrences.length).to equal(1)
         end
+      end
+    end
+
+    it 'can retrieve course tags correctly' do
+      courses = assigns(:courses)
+      courses.each do |course|
+        expect(course.subjects).to be_a(Array)
+        expect(course.subjects.length).to be(1)
+        expect(course.subjects.first).to eq('Computing')
+      end
+    end
+
+    it 'can retrieve course key stage correctly' do
+      courses = assigns(:courses)
+      courses.each do |course|
+        expect(course.key_stages).to eq(['Key stage 3', 'Key stage 4'])
       end
     end
 
