@@ -36,7 +36,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
       RestClient.get(request).body
     end
 
@@ -50,7 +50,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
       RestClient.get(request).body
     end
 
