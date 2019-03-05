@@ -31,18 +31,10 @@ class CourseTemplate
   end
 
   def subjects
-    if @subject_details.nil?
-      []
-    else
-      @subject_details.subject_areas
-    end
+    @subject_details.try(:subject_areas)
   end
 
   def key_stages
-    if @age_range.nil?
-      []
-    else
-      @age_range.key_stages
-    end
+    @age_range.try(:key_stages)
   end
 end
