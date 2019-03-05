@@ -1,0 +1,34 @@
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/8.5
+X-AspNet-Version: 4.0.30319
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Date: Thu, 28 Feb 2019 16:10:31 GMT
+Content-Length: 2405
+
+<?xml version="1.0" encoding="utf-8"?>
+<string xmlns="http://achiever.com/webservices/">&lt;AchieverResponse&gt;&lt;AchieverDataResults&gt;&lt;AchieverDataResult_1&gt;
+  &lt;Detail&gt;
+    &lt;Portal_Age_Groups.Age_Range&gt;11-14 years&lt;/Portal_Age_Groups.Age_Range&gt;
+    &lt;Portal_Age_Groups.RECORDNO&gt;0c34ddfe-81b4-4f0c-83e8-12835ba37c53&lt;/Portal_Age_Groups.RECORDNO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Portal_Age_Groups.Age_Range&gt;14-16 years&lt;/Portal_Age_Groups.Age_Range&gt;
+    &lt;Portal_Age_Groups.RECORDNO&gt;c9dbee78-728c-4c13-ba74-1f53419a26c6&lt;/Portal_Age_Groups.RECORDNO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Portal_Age_Groups.Age_Range&gt;16-19 years&lt;/Portal_Age_Groups.Age_Range&gt;
+    &lt;Portal_Age_Groups.RECORDNO&gt;0f39416e-b8b8-4dba-b3f9-c27dffc9c597&lt;/Portal_Age_Groups.RECORDNO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Portal_Age_Groups.Age_Range&gt;Key stage 3&lt;/Portal_Age_Groups.Age_Range&gt;
+    &lt;Portal_Age_Groups.RECORDNO&gt;0cf3d400-6f0c-4778-930f-8e938144c427&lt;/Portal_Age_Groups.RECORDNO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Portal_Age_Groups.Age_Range&gt;Key stage 4&lt;/Portal_Age_Groups.Age_Range&gt;
+    &lt;Portal_Age_Groups.RECORDNO&gt;81610116-7699-4f0f-8deb-a8ef1df7041d&lt;/Portal_Age_Groups.RECORDNO&gt;
+  &lt;/Detail&gt;
+&lt;AchieverDataSchemaResult_1&gt;&lt;xs:schema id="AchieverDataResult_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;&lt;xs:element name="AchieverDataResult_1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;&lt;xs:complexType&gt;&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;&lt;xs:element name="Detail"&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&lt;xs:element name="Portal_Age_Groups.Age_Range" msdata:Caption="Portal Age Groups.Age Range" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Portal_Age_Groups.RECORDNO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="Portal Age Groups.RECORDNO" type="xs:string" minOccurs="0" /&gt;&lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:choice&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:schema&gt;&lt;/AchieverDataSchemaResult_1&gt;&lt;/AchieverDataResult_1&gt;&lt;/AchieverDataResults&gt;&lt;/AchieverResponse&gt;</string>

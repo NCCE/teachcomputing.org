@@ -3,6 +3,8 @@ require('nokogiri')
 require('htmlentities')
 require_relative('course')
 require_relative('course_template')
+require_relative('course_template_subject_details')
+require_relative('course_template_age_range')
 require_relative('parameter')
 
 class Achiever
@@ -26,6 +28,34 @@ class Achiever
     end
 
     course_templates(parse_results(result))
+  end
+
+  def course_template_subject_details(course)
+    workflow_id = ENV['ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID']
+    workflow_params = [Parameter.new('CourseTemplateNo', course.course_template_no), @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
+      RestClient.get(request).body
+    end
+
+    course.subject_details = CourseTemplateSubjectDetails.new(parse_results(result))
+    course
+  end
+
+  def course_template_age_range(course)
+    workflow_id = ENV['ACHIEVER_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID']
+    workflow_params = [Parameter.new('CourseTemplateNo', course.course_template_no), @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
+      RestClient.get(request).body
+    end
+
+    course.age_range = CourseTemplateAgeRange.new(parse_results(result))
+    course
   end
 
   def future_courses
