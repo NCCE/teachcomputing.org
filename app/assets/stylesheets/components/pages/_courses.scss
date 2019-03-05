@@ -92,3 +92,20 @@
 .ncce-courses__heading--link {
 	font-family: "Objectivity Bold", sans-serif;
 }
+
+.ncce-courses__filter {
+  background-color: $ncce-v-light-purple;
+  padding: 10px;
+  &-prompt {
+    color: $ncce-black;
+  }
+  &-select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    background-image: url('chevron.svg');
+    background-position: calc(100% - 10px) 50%;
+    background-repeat: no-repeat;
+  }
+}

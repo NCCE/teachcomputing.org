@@ -167,6 +167,10 @@ Content-Length: 25158
     &lt;Activity.Deliverer&gt;National Operator&lt;/Activity.Deliverer&gt;
     &lt;Activity.Activity_Occurrence_ID&gt;D7F81891-C36B-4F3A-9F0D-2EE2973A6E6A&lt;/Activity.Activity_Occurrence_ID&gt;
     &lt;Activity.Hide_from_Web&gt;1&lt;/Activity.Hide_from_Web&gt;
+    &lt;Activity_Venue_Address.ADDRESSNO&gt;7d8cd802-34a6-4400-a72e-c12481c168b6&lt;/Activity_Venue_Address.ADDRESSNO&gt;
+    &lt;Activity_Venue_Address.Venue_Name&gt;Test Organisation&lt;/Activity_Venue_Address.Venue_Name&gt;
+    &lt;Activity_Venue_Address.Town_x002F_City&gt;York&lt;/Activity_Venue_Address.Town_x002F_City&gt;
+    &lt;Activity_Venue_Address.Postcode&gt;YO105DD&lt;/Activity_Venue_Address.Postcode&gt;
     &lt;Activity.Status&gt;Planned&lt;/Activity.Status&gt;
     &lt;Activity.Display_Programme&gt;NCCE&lt;/Activity.Display_Programme&gt;
     &lt;Activity.ITK_CPD_Type&gt;NSLC multi day&lt;/Activity.ITK_CPD_Type&gt;

@@ -30,7 +30,7 @@ RSpec.describe CoursesController do
     end
 
     it 'assigns locations' do
-      expect(assigns(:locations)).to eq({ 'York' => true })
+      expect(assigns(:locations)).to eq(["Any location", "York"])
     end
 
     it 'renders the correct template' do

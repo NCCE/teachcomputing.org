@@ -4,18 +4,16 @@ class CoursesController < ApplicationController
   before_action :create_achiever, only: [:index]
 
   def index
+    location_filter = params[:location]
+
     @courses = @achiever.approved_course_templates
-    course_occurrences = @achiever.future_courses
-    @locations = {}
+    @course_occurrences = @achiever.future_courses
+    @locations = course_locations
+
     @courses.each do |course|
-      course_occurrences.each do |course_occurrence|
+      @course_occurrences.each do |course_occurrence|
         if course_occurrence.course_template_no == course.course_template_no
           course.occurrences.push(course_occurrence)
-          if course_occurrence.online_course == 1
-            @locations['Online'] = true
-          elsif !course_occurrence.address_town.empty?
-            @locations[course_occurrence.address_town] = true
-          end
         end
       end
     end
@@ -26,5 +24,9 @@ class CoursesController < ApplicationController
 
   def create_achiever
     @achiever = Achiever.new
+  end
+
+  def course_locations
+    ['Any location'] + @course_occurrences.map { |oc| oc.online_course == 1 ? 'Online' : oc.address_town }.uniq
   end
 end

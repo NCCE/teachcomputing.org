@@ -7,6 +7,19 @@
           <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book.</p>
           <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
           <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
+
+          <div class="ncce-courses__filter">
+            <%= form_tag :courses, { method: :get } do %>
+
+              <span class="govuk-body-s govuk-!-width-one-quarter ncce-courses__filter-prompt">Find a course:</span>
+              <%= select_tag :location,
+                options_for_select(@locations, @current_location),
+                { class: 'govuk-select govuk-!-width-one-quarter ncce-courses__filter-select',
+                  'aria-label': 'Filter by location' }
+              %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
+          </div>
           <% @courses.each do |course| %>
             <div class="ncce-courses__course">
               <h2 class="govuk-heading-s ncce-courses__heading">

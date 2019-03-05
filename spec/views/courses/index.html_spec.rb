@@ -9,6 +9,7 @@ RSpec.describe('courses/index', type: :view) do
 
     @courses = achiever.approved_course_templates
     @course_occurrences = achiever.future_courses
+    @locations = []
   render
   end
 
