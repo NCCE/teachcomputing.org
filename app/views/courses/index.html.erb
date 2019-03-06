@@ -4,34 +4,56 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book. Online courses are provided by our partners at FutureLearn, you will need a separate account to sign up for these.</p>
-          <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.
-          </p>
-
+          <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book.</p>
+          <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
+          <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
           <% @courses.each do |course| %>
             <div class="ncce-courses__course">
               <h2 class="govuk-heading-s ncce-courses__heading">
-              <% if current_user %>
-                <%=
-                  link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
-                    link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
-                  end
-                %>
-              <% else %>
-                <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
-              <% end %>
+                <% if current_user %>
+                  <%=
+                    link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
+                      link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
+                    end
+                  %>
+                <% else %>
+                  <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
+                <% end %>
               </h2>
               <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
-              <ul class="govuk-list govuk-body-s ncce-courses__meta">
-                <% @course_occurrences.each do |oc| %>
-                  <% next unless oc.course_template_no == course.course_template_no %>
-                  <li class="govuk-grid-row ncce-courses__meta-item">
-                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course) %>">
-                    <%= oc.address_town %></span>
-                    <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
-                  </li>
-                <% end %>
-              </ul>
+              <% if course.occurrences.length > 1 %>
+                <h3 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
+                  <button aria-expanded="false">
+                  <svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
+                    <g transform="translate(80, 100) rotate(-135.000000)">
+                        <rect width="100" height="27"></rect>
+                        <rect width="27" height="100"></rect>
+                    </g>
+                  </svg>View dates & locations
+                  </button>
+                </h3>
+              <% end %>
+              <% unless course.occurrences.empty? %>
+                <ul class="govuk-list govuk-body-s ncce-courses__meta">
+                  <% course.occurrences.each do |oc| %>
+                    <li class="govuk-grid-row ncce-courses__meta-item">
+                      <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course) %>">
+                      <%= oc.address_town %></span>
+                      <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+              <% unless course.subjects.nil? && course.key_stages.nil? %>
+                <p class="govuk-body">
+                  <% course.subjects.each do |subject| %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
+                  <% end %>
+                  <% course.key_stages.each do |stage| %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
+                  <% end %>
+                </p>
+              <% end %>
             </div>
           <% end %>
         </div>

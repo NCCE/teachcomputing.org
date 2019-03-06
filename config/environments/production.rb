@@ -23,7 +23,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -58,9 +58,9 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :mem_cache_store,
-                       (ENV['MEMCACHIER_SERVERS'] || '').split(','),
-                       { username: ENV['MEMCACHIER_USERNAME'],
-                         password: ENV['MEMCACHIER_PASSWORD'],
+                       (ENV['MEMCACHEDCLOUD_SERVERS'] || '').split(','),
+                       { username: ENV['MEMCACHEDCLOUD_USERNAME'],
+                         password: ENV['MEMCACHEDCLOUD_PASSWORD'],
                          failover: true,
                          socket_timeout: 1.5,
                          socket_failure_delay: 0.2,
