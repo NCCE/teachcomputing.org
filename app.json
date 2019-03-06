@@ -68,22 +68,19 @@
     "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
       "required": true
     },
-    "ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID": {
-      "required": true
-    },
     "ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_TEMPLATE_WORKFLOW_ID": {
       "required": true
     },
     "ACHIEVER_DB_CONNECTION_ID": {
       "required": true
     },
     "ACHIEVER_FUTURE_COURSES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID": {
       "required": true
     },
     "PROXY_URL": {
