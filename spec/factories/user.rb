@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     first_name { 'Jane' }
     last_name { 'Doe' }
-    email { 'user@example.com' }
+    sequence(:email, 1) { |n| "user#{n}@example.com" }
     sequence(:stem_achiever_contact_no, 1000) { |n| "achiever-#{n}" }
     sequence(:stem_user_id, 1000) { |n| "id-#{n}" }
     stem_credentials_access_token { 'CD355FC7DCCD9C7BB7E2C29F4BE3F' }

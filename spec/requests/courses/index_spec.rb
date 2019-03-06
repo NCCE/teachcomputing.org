@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
+  let(:activity) { create(:activity, :diagnostic_tool) }
 
   describe 'GET #index' do
     before do
+      activity
       stub_fetch_future_courses
       stub_approved_course_templates
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
