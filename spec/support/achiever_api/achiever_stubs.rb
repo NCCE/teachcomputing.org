@@ -22,15 +22,19 @@ module AchieverStubs
 
   def stub_course_template_subject_details
     raw_course_template_subject_details_xml = File.new('spec/support/achiever_api/course_template_subject_details.xml')
+    raw_course_template_subject_details_alt_xml = File.new('spec/support/achiever_api/course_template_subject_details_alt.xml')
     stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
       .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID/ }))
-      .to_return(raw_course_template_subject_details_xml)
+      .to_return(raw_course_template_subject_details_xml).times(4).then
+      .to_return(raw_course_template_subject_details_alt_xml)
   end
 
   def stub_course_template_age_range
     raw_course_template_age_range_xml = File.new('spec/support/achiever_api/course_template_age_range.xml')
+    raw_course_template_age_range_alt_xml = File.new('spec/support/achiever_api/course_template_age_range_alt.xml')
     stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
       .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID/ }))
-      .to_return(raw_course_template_age_range_xml)
+      .to_return(raw_course_template_age_range_xml).times(2).then
+      .to_return(raw_course_template_age_range_alt_xml)
   end
 end

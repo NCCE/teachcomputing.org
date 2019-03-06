@@ -4,28 +4,18 @@ class CoursesController < ApplicationController
   before_action :create_achiever, only: [:index]
 
   def index
-    # location_filter = params[:location]
+    @current_location = nil
+    @current_level = nil
+    @current_topic = nil
+    @course_occurrences = nil
 
-    @courses = @achiever.approved_course_templates
-    @course_occurrences = @achiever.future_courses
+    @courses = get_course_list
 
-    @courses.each do |course|
-      @achiever.course_template_subject_details(course)
-      @achiever.course_template_age_range(course)
-      @course_occurrences.each do |course_occurrence|
-        if course_occurrence.course_template_no == course.course_template_no
-          course.occurrences.push(course_occurrence)
-        end
-      end
-    end
+    @locations = course_locations(@course_occurrences)
+    @levels = course_levels(@courses)
+    @topics = course_tags(@courses)
 
-    @locations = course_locations
-    @levels = course_levels
-    @topics = course_tags
-
-    @current_location = params[:location] # xss?
-    @current_level = params[:level] # xss?
-    @current_topic = params[:topic] # xss?
+    @courses = filter_courses(@courses)
 
     puts "locations #{@locations}, topics #{@topics}, levels #{@levels}"
     puts "location #{@current_location}, topic #{@current_topic}, level #{@current_level}"
@@ -39,15 +29,57 @@ class CoursesController < ApplicationController
     @achiever = Achiever.new
   end
 
-  def course_tags
-    @courses.inject([]) { |tags, c| tags + c.subjects }.uniq
+  def get_course_list
+    courses = @achiever.approved_course_templates
+    @course_occurrences = @achiever.future_courses
+
+    courses.each do |course|
+      @achiever.course_template_subject_details(course)
+      @achiever.course_template_age_range(course)
+      @course_occurrences.each do |course_occurrence|
+        if course_occurrence.course_template_no == course.course_template_no
+          course.occurrences.push(course_occurrence)
+        end
+      end
+    end
+    courses
   end
 
-  def course_levels
-    @courses.inject([]) { |levels, c| levels + c.key_stages }.uniq
+  def is_param_set(key)
+    params[key].nil? || params[key].empty?
   end
 
-  def course_locations
-    @course_occurrences.map { |oc| oc.online_course == 1 ? 'Online' : oc.address_town }.uniq
+  def filter_courses(courses)
+    courses.select do |c|
+      has_level = true
+      has_location = true
+      has_topic = true
+
+      unless is_param_set(:level)
+        @current_level = params[:level]
+        has_level = c.key_stages.any?(@current_level)
+      end
+      unless is_param_set(:location)
+        @current_location = params[:location]
+        has_location = c.occurrences.any? { |oc| oc.address_town == @current_location }
+      end
+      unless is_param_set(:topic)
+        @current_topic = params[:topic]
+        has_topic = c.subjects.any?(@current_topic)
+      end
+      has_level && has_location && has_topic
+    end
+  end
+
+  def course_tags(courses)
+    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq
+  end
+
+  def course_levels(courses)
+    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq
+  end
+
+  def course_locations(course_occurrences)
+    course_occurrences.map { |oc| oc.online_course == 1 ? 'Online' : oc.address_town }.uniq
   end
 end
