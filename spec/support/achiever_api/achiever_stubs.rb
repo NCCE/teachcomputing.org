@@ -26,4 +26,18 @@ module AchieverStubs
       .with(query: hash_including({ "sXmlParams" => /SOME_COURSES_FOR_DELEGATE_WORKFLOW_ID/ }))
       .to_return(raw_delegate_course_list_xml)
   end
+
+  def stub_course_template_subject_details
+    raw_course_template_subject_details_xml = File.new('spec/support/achiever_api/course_template_subject_details.xml')
+    stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
+      .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID/ }))
+      .to_return(raw_course_template_subject_details_xml)
+  end
+
+  def stub_course_template_age_range
+    raw_course_template_age_range_xml = File.new('spec/support/achiever_api/course_template_age_range.xml')
+    stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
+      .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID/ }))
+      .to_return(raw_course_template_age_range_xml)
+  end
 end

@@ -7,10 +7,23 @@ RSpec.describe('courses/index', type: :view) do
     stub_fetch_future_courses
     stub_approved_face_to_face_course_templates
     stub_approved_online_course_templates
+    stub_course_template_subject_details
+    stub_course_template_age_range
     face_to_face_courses = achiever.approved_face_to_face_course_templates
     online_courses = achiever.approved_online_course_templates
     @courses = face_to_face_courses + online_courses
     @course_occurrences = achiever.future_courses
+    @course_occurrences = achiever.future_courses
+
+    @courses.each do |course|
+      achiever.course_template_subject_details(course)
+      achiever.course_template_age_range(course)
+      @course_occurrences.each do |course_occurrence|
+        if course_occurrence.course_template_no == course.course_template_no
+          course.occurrences.push(course_occurrence)
+        end
+      end
+    end
     render
   end
 
@@ -33,6 +46,14 @@ RSpec.describe('courses/index', type: :view) do
       @courses.each do |course|
         expect(rendered).to have_css('.govuk-heading-s', text: course.title)
       end
+    end
+
+    it 'renders course key stage tags' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
+    end
+
+    it 'renders course subject tags' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
   end
 end

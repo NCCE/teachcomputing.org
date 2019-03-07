@@ -9,6 +9,8 @@ class CoursesController < ApplicationController
     course_occurrences = @achiever.future_courses
     @courses = @face_to_face_courses + @online_courses
     @courses.each do |course|
+      @achiever.course_template_subject_details(course)
+      @achiever.course_template_age_range(course)
       course_occurrences.each do |course_occurrence|
         if course_occurrence.course_template_no == course.course_template_no
           course.occurrences.push(course_occurrence)
