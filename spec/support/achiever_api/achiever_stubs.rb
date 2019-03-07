@@ -30,8 +30,6 @@ module AchieverStubs
   end
 
   def stub_course_template_age_range
-    raw_course_template_age_range_xml = File.new('spec/support/achiever_api/course_template_age_range.xml')
-    raw_course_template_age_range_alt_xml = File.new('spec/support/achiever_api/course_template_age_range_alt.xml')
     stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
       .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID/ }))
       .to_return(File.new('spec/support/achiever_api/course_template_age_range.xml')).times(2).then

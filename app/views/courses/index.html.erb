@@ -28,35 +28,42 @@
           </p>
         </aside>
         <% end %>
+      </div>
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-full ncce-courses__filter">
-          <%= form_tag :courses, { method: :get } do %>
+          <%= form_tag :courses, { method: :get, class: 'js-course-filter-form' } do %>
 
             <span class="govuk-body-s ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
               options_for_select(@levels, @current_level),
               {
                 include_blank: 'Any level',
-                class: 'govuk-select ncce-courses__filter-select',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
                 'aria-label': 'Filter by level' }
             %>
             <%= select_tag :location,
               options_for_select(@locations, @current_location),
               {
                 include_blank: 'Any location',
-                class: 'govuk-select ncce-courses__filter-select',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
                 'aria-label': 'Filter by location' }
             %>
             <%= select_tag :topic,
               options_for_select(@topics, @current_topic),
               {
                 include_blank: 'Any topic',
-                class: 'govuk-select ncce-courses__filter-select',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
+            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button js-course-filter-button' %>
           <% end %>
         </div>
+      </div>
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+          <% if @courses.length == 0 %>
+            <p class="govuk-body">No courses found to match your selection.  Please try a different one.</p>
+          <% end %>
           <% @courses.each do |course| %>
             <div class="ncce-courses__course">
               <h2 class="govuk-heading-s ncce-courses__heading">

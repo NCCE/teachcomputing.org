@@ -44,4 +44,25 @@ function initialiseSections() {
     }
   })
 }
-ready(initialiseSections)
+
+
+function initialiseFilter() {
+  const applyButton = document.querySelector('.js-course-filter-button')
+  const filterSelects = document.querySelectorAll('.js-course-filter-select')
+  const filterForm = document.querySelector('.js-course-filter-form')
+
+  Array.prototype.forEach.call(filterSelects, filterSelect => {
+    filterSelect.onchange = (event) => {
+      console.log('change! ', event.target.value);
+      filterForm.submit();
+    }
+  })
+
+  applyButton.style.display = 'none'
+
+}
+
+ready(function() {
+  initialiseSections()
+  initialiseFilter()
+})
