@@ -5,9 +5,9 @@ RSpec.describe CoursesController do
 
   describe 'GET #index' do
     before do
-      stub_fetch_future_courses
-      stub_approved_face_to_face_course_templates
-      stub_approved_online_course_templates
+      stub_approved_course_templates
+      stub_fetch_future_face_to_face_courses
+      stub_fetch_future_online_courses
       stub_course_template_subject_details
       stub_course_template_age_range
       
