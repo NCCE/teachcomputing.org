@@ -107,10 +107,57 @@
 
 .ncce-courses__filter {
   background-color: $ncce-v-light-purple;
-  padding: 10px;
+  margin: 50px 0 32px;
+  @include govuk-media-query($from: tablet) {
+    margin: 0;
+  }
+  &-mobile-heading {
+    margin-bottom: 0;
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+    & button {
+      all: inherit;
+      cursor: pointer;
+      border: 0;
+      display: flex;
+      justify-content: start;
+      box-sizing:border-box;
+      width: 100%;
+      padding: 0.9rem 1rem;
+
+      & svg {
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+      }
+
+      &[aria-expanded="true"] svg {
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        filter: FlipW;
+        -ms-filter: "FlipW";
+      }
+
+      & [aria-expanded] path {
+        fill: currentColor;
+      }
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+  &-form {
+    padding: 10px;
+  }
   &-prompt {
     color: $ncce-black;
     margin-right: 20px;
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
   }
   &-select {
     appearance: none;
@@ -122,6 +169,13 @@
     background-repeat: no-repeat;
     margin-right: 20px;
     padding-right: 30px;
+    @include govuk-media-query($until: tablet) {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+    @include govuk-media-query($until: desktop) {
+      margin: 0 20px 10px;
+    }
   }
   &-button {
     margin-bottom: 0;

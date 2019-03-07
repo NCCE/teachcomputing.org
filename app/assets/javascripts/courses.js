@@ -6,10 +6,10 @@ function ready(fn) {
   }
 }
 
-function initialiseSections() {
-  const headingToggleClass = 'ncce-courses__locations--closed'
+function initialiseSections(className) {
+  const headingToggleClass = className + '--closed'
   // Get all the <h2> headings
-  const headings = document.querySelectorAll('.ncce-courses__locations')
+  const headings = document.querySelectorAll('.' + className)
   Array.prototype.forEach.call(headings, heading => {
     // We only have a single node to pull out here the next thing.
     let contents = heading.nextElementSibling
@@ -52,8 +52,7 @@ function initialiseFilter() {
   const filterForm = document.querySelector('.js-course-filter-form')
 
   Array.prototype.forEach.call(filterSelects, filterSelect => {
-    filterSelect.onchange = (event) => {
-      console.log('change! ', event.target.value);
+    filterSelect.onchange = () => {
       filterForm.submit();
     }
   })
@@ -63,6 +62,7 @@ function initialiseFilter() {
 }
 
 ready(function() {
-  initialiseSections()
+  initialiseSections('ncce-courses__locations')
+  initialiseSections('ncce-courses__filter-mobile-heading')
   initialiseFilter()
 })
