@@ -5,11 +5,14 @@ RSpec.describe('courses/index', type: :view) do
 
   before do
     stub_fetch_future_courses
-    stub_approved_course_templates
+    stub_approved_face_to_face_course_templates
+    stub_approved_online_course_templates
     stub_course_template_subject_details
     stub_course_template_age_range
-
-    @courses = achiever.approved_course_templates
+    face_to_face_courses = achiever.approved_face_to_face_course_templates
+    online_courses = achiever.approved_online_course_templates
+    @courses = face_to_face_courses + online_courses
+    @course_occurrences = achiever.future_courses
     @course_occurrences = achiever.future_courses
 
     @courses.each do |course|

@@ -1,0 +1,116 @@
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/8.5
+X-AspNet-Version: 4.0.30319
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Date: Wed, 16 Jan 2019 14:23:00 GMT
+Content-Length: 29845
+
+<?xml version="1.0" encoding="utf-8"?>
+<string xmlns="http://achiever.com/webservices/">&lt;AchieverResponse&gt;&lt;AchieverDataResults&gt;&lt;AchieverDataResult_1&gt;
+  &lt;Detail&gt;
+    &lt;Template.Template_Title&gt;Computing template &lt;/Template.Template_Title&gt;
+    &lt;Template.Activity_Code&gt;CP000&lt;/Template.Activity_Code&gt;
+    &lt;Template.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;Course Summary &amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Template.Summary&gt;
+    &lt;Template.TEMPLATEPORTALURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=EEB553FC-04DE-4F53-ADD9-88A35FDD21A1&amp;amp;COURSETEMPLATE_COURSETEMPLATENO=FAA23083-92A1-4CE1-ADE8-12D6B66EEA52&lt;/Template.TEMPLATEPORTALURL&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;2&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Template.Status&gt;Approved&lt;/Template.Status&gt;
+    &lt;Template.Template_ID&gt;FAA23083-92A1-4CE1-ADE8-12D6B66EEA52&lt;/Template.Template_ID&gt;
+    &lt;Template.Display_Programme&gt;NCCE&lt;/Template.Display_Programme&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Template.ITK_CPD_Type&gt;SLPN one day&lt;/Template.ITK_CPD_Type&gt;
+    &lt;Template.Deliverer&gt;National Computing York&lt;/Template.Deliverer&gt;
+    &lt;Template.Changed_Date&gt;2018-12-13T08:57:59.37+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.COURSETEMPLATENO&gt;faa23083-92a1-4ce1-ade8-12d6b66eea52&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Template.Template_Title&gt;Online Course 1&lt;/Template.Template_Title&gt;
+    &lt;Template.Activity_Code&gt;DP202&lt;/Template.Activity_Code&gt;
+    &lt;Template.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_themes/Standard/css/wp_body.css"&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;The step-up to A-level Computer Science is significant – for students and teachers alike. This course is aimed at teachers new or relatively new to teaching A-level Computer Science.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;It will improve subject knowledge; provide experience in practical and investigative activities including a range of programming challenges; and deepen understanding of underlying concepts that flow from earlier stages of learning as well as those that appear for the first time at A-level. The course will help you, too, to develop strong mental models of computer science concepts with your students, providing them with a basis for better attainment.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;
+&amp;lt;blockquote&amp;gt;"full explanation of procedural and object orientated programming. With useful resources that I will make use of in my lessons"
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"I gained a greater understanding of data types and structures and how to implement the delivery of teaching of this topic to A-Level students"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"Session was excellent and covered in a very accessible way the topic of hierarchy and structural program design"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"presenter's A-level knowledge was excellent and he delivered a lot of useful and practical information"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"delivered in an enthusiastic way and with clear expertise." &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;2016 participants&amp;lt;/p&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/blockquote&amp;gt;
+&amp;lt;p&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Template.Summary&gt;
+    &lt;Template.TEMPLATEPORTALURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=EEB553FC-04DE-4F53-ADD9-88A35FDD21A1&amp;amp;COURSETEMPLATE_COURSETEMPLATENO=46DDE9D2-3A19-4953-B6E0-86E3C355CABC&lt;/Template.TEMPLATEPORTALURL&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;1&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Template.Status&gt;Approved&lt;/Template.Status&gt;
+    &lt;Template.Template_ID&gt;46DDE9D2-3A19-4953-B6E0-86E3C355CABC&lt;/Template.Template_ID&gt;
+    &lt;Template.Display_Programme&gt;NCCE&lt;/Template.Display_Programme&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
+    &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
+    &lt;Template.Changed_Date&gt;2019-01-15T11:34:59.22+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.COURSETEMPLATENO&gt;46dde9d2-3a19-4953-b6e0-86e3c355cabc&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Template.Template_Title&gt;Online Course 2&lt;/Template.Template_Title&gt;
+    &lt;Template.Activity_Code&gt;DP203&lt;/Template.Activity_Code&gt;
+    &lt;Template.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_themes/Standard/css/wp_body.css"&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;The step-up to A-level Computer Science is significant – for students and teachers alike. This course is aimed at teachers new or relatively new to teaching A-level Computer Science.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;It will improve subject knowledge; provide experience in practical and investigative activities including a range of programming challenges; and deepen understanding of underlying concepts that flow from earlier stages of learning as well as those that appear for the first time at A-level. The course will help you, too, to develop strong mental models of computer science concepts with your students, providing them with a basis for better attainment.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;
+&amp;lt;blockquote&amp;gt;"full explanation of procedural and object orientated programming. With useful resources that I will make use of in my lessons"
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"I gained a greater understanding of data types and structures and how to implement the delivery of teaching of this topic to A-Level students"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"Session was excellent and covered in a very accessible way the topic of hierarchy and structural program design"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"presenter's A-level knowledge was excellent and he delivered a lot of useful and practical information"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"delivered in an enthusiastic way and with clear expertise." &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;2016 participants&amp;lt;/p&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/blockquote&amp;gt;
+&amp;lt;p&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Template.Summary&gt;
+    &lt;Template.TEMPLATEPORTALURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=EEB553FC-04DE-4F53-ADD9-88A35FDD21A1&amp;amp;COURSETEMPLATE_COURSETEMPLATENO=F8D798FF-F79B-4E6F-981C-5FAE966B2FB7&lt;/Template.TEMPLATEPORTALURL&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;1&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Template.Status&gt;Approved&lt;/Template.Status&gt;
+    &lt;Template.Template_ID&gt;F8D798FF-F79B-4E6F-981C-5FAE966B2FB7&lt;/Template.Template_ID&gt;
+    &lt;Template.Display_Programme&gt;NCCE&lt;/Template.Display_Programme&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
+    &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
+    &lt;Template.Changed_Date&gt;2019-01-15T11:38:35.737+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.COURSETEMPLATENO&gt;f8d798ff-f79b-4e6f-981c-5fae966b2fb7&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Template.Template_Title&gt;Online Course 3&lt;/Template.Template_Title&gt;
+    &lt;Template.Activity_Code&gt;DP204&lt;/Template.Activity_Code&gt;
+    &lt;Template.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_themes/Standard/css/wp_body.css"&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;The step-up to A-level Computer Science is significant – for students and teachers alike. This course is aimed at teachers new or relatively new to teaching A-level Computer Science.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;It will improve subject knowledge; provide experience in practical and investigative activities including a range of programming challenges; and deepen understanding of underlying concepts that flow from earlier stages of learning as well as those that appear for the first time at A-level. The course will help you, too, to develop strong mental models of computer science concepts with your students, providing them with a basis for better attainment.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;
+&amp;lt;blockquote&amp;gt;"full explanation of procedural and object orientated programming. With useful resources that I will make use of in my lessons"
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"I gained a greater understanding of data types and structures and how to implement the delivery of teaching of this topic to A-Level students"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"Session was excellent and covered in a very accessible way the topic of hierarchy and structural program design"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"presenter's A-level knowledge was excellent and he delivered a lot of useful and practical information"&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;"delivered in an enthusiastic way and with clear expertise." &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;2016 participants&amp;lt;/p&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/blockquote&amp;gt;
+&amp;lt;p&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Template.Summary&gt;
+    &lt;Template.TEMPLATEPORTALURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=EEB553FC-04DE-4F53-ADD9-88A35FDD21A1&amp;amp;COURSETEMPLATE_COURSETEMPLATENO=DC86DD92-DE09-40FC-986D-35AF00C0461C&lt;/Template.TEMPLATEPORTALURL&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;1&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Template.Status&gt;Approved&lt;/Template.Status&gt;
+    &lt;Template.Template_ID&gt;DC86DD92-DE09-40FC-986D-35AF00C0461C&lt;/Template.Template_ID&gt;
+    &lt;Template.Display_Programme&gt;NCCE&lt;/Template.Display_Programme&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
+    &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
+    &lt;Template.Changed_Date&gt;2019-01-15T11:40:58.86+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.COURSETEMPLATENO&gt;dc86dd92-de09-40fc-986d-35af00c0461c&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+&lt;AchieverDataSchemaResult_1&gt;&lt;xs:schema id="AchieverDataResult_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;&lt;xs:element name="AchieverDataResult_1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;&lt;xs:complexType&gt;&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;&lt;xs:element name="Detail"&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&lt;xs:element name="Template.Template_Title" msdata:Caption="Template.Template Title" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Activity_Code" msdata:Caption="Template.Activity Code" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Summary" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.TEMPLATEPORTALURL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_Period_x0029_" msdata:Caption="Template.Duration (Period)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_No_x0029_" msdata:Caption="Template.Duration (No)" type="xs:int" minOccurs="0" /&gt;&lt;xs:element name="Template.Hide_From_Web" msdata:Caption="Template.Hide From Web" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Template.Status" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Fee__x0028_ex_VAT_x0029_" msdata:Caption="Template.Fee (ex VAT)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Template_ID" msdata:Caption="Template.Template ID" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Display_Programme" msdata:Caption="Template.Display Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.ITK_CPD_Type" msdata:Caption="Template.ITK CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Deliverer" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Changed_Date" msdata:Caption="Template.Changed Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Template.Delete_Flag" msdata:Caption="Template.Delete Flag" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Template.Delete_Request_Date" msdata:Caption="Template.Delete Request Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Template.CPD_Type" msdata:Caption="Template.CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Booking_Options" msdata:Caption="Template.Booking Options" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Booking_URL" msdata:Caption="Template.Booking URL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Group_Required_x003F_" msdata:Caption="Template.Group Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Template.Separate_Groups_Required_x003F_" msdata:Caption="Template.Separate Groups Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Template.Online_CPD" msdata:Caption="Template.Online CPD" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Template.COURSETEMPLATENO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" /&gt;&lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:choice&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:schema&gt;&lt;/AchieverDataSchemaResult_1&gt;&lt;/AchieverDataResult_1&gt;&lt;/AchieverDataResults&gt;&lt;/AchieverResponse&gt;</string>

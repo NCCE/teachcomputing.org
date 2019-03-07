@@ -17,8 +17,21 @@ class Achiever
     @status = Parameter.new('Status', 'Approved')
   end
 
-  def approved_course_templates
-    workflow_id = ENV['ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID']
+  def approved_face_to_face_course_templates
+    workflow_id = ENV['ACHIEVER_APPROVED_FACE_TO_FACE_COURSE_TEMPLATES_WORKFLOW_ID']
+    workflow_params = [@programme, @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+      RestClient.get(request).body
+    end
+
+    course_templates(parse_results(result))
+  end
+
+  def approved_online_course_templates
+    workflow_id = ENV['ACHIEVER_APPROVED_ONLINE_COURSE_TEMPLATES_WORKFLOW_ID']
     workflow_params = [@programme, @hide_from_web, @status]
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
