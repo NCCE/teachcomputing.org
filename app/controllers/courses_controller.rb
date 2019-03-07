@@ -17,9 +17,6 @@ class CoursesController < ApplicationController
 
     @courses = filter_courses(@courses)
 
-    puts "locations #{@locations}, topics #{@topics}, levels #{@levels}"
-    puts "location #{@current_location}, topic #{@current_topic}, level #{@current_level}"
-
     render :index
   end
 

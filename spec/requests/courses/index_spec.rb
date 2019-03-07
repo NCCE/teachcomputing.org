@@ -14,7 +14,7 @@ RSpec.describe CoursesController do
 
     end
 
-    context 'without filtering' do
+    context 'when there is no filtering' do
       before do
         get courses_path()
       end
@@ -60,7 +60,7 @@ RSpec.describe CoursesController do
       it 'can retrieve course key stage correctly' do
         courses = assigns(:courses)
         courses.each.with_index do |course, index|
-          key_stages = index < 2 ? ['Key stage 3', 'Key stage 4'] : ['Key stage 2', 'Key stage 3']
+          key_stages = ((index / 2) % 2) == 0 ? ['Key stage 3', 'Key stage 4'] : ['Key stage 2', 'Key stage 3']
           expect(course.key_stages.sort).to eq(key_stages)
         end
       end
@@ -70,49 +70,134 @@ RSpec.describe CoursesController do
       end
     end
 
-    context 'with filtering' do
-      it 'can filter by subject' do
-        get courses_path, params: { topic: 'Mathematics' }
-        courses = assigns(:courses)
-        expect(courses.length).to be(4)
-        courses.each do |course|
-          expect(course.subjects).to eq(['Mathematics'])
+    context 'when using filtering' do
+      context 'when filtering by subject' do
+        before do
+          get courses_path, params: { topic: 'Mathematics' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(4)
+        end
+
+        it 'courses have correct subject' do
+          assigns(:courses).each do |course|
+            expect(course.subjects).to eq(['Mathematics'])
+          end
         end
       end
 
-      it 'can filter by location' do
-        get courses_path, params: { location: 'Southampton' }
-        courses = assigns(:courses)
-        expect(courses.length).to be(1)
-        courses.each do |course|
-          expect(course.occurrences.map { |oc | oc.address_town }).to eq(['Southampton'])
+      context 'when filtering by location' do
+        before do
+          get courses_path, params: { location: 'York' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(2)
+        end
+
+        it 'courses have correct location' do
+          assigns(:courses).each do |course|
+            expect(course.occurrences.map { |oc | oc.address_town }).to include('York')
+          end
+        end
+
+        it 'doesn\'t exclude other occurrence locations' do
+          towns = assigns(:courses).reduce([]) do |acc, course|
+            acc + course.occurrences.map { |oc | oc.address_town }
+          end
+          expect(towns).to include('Cambridge')
         end
       end
 
-      it 'can filter by location but doesn\'t exclude other occurrences' do
-        get courses_path, params: { location: 'Cambridge' }
-        courses = assigns(:courses)
-        expect(courses.length).to be(1)
-        courses.each do |course|
-          expect(course.occurrences.map { |oc | oc.address_town }).to eq(['Cambridge', 'York'])
+      context 'when filtering by level' do
+        before do
+          get courses_path, params: { level: 'Key stage 4' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(4)
+        end
+
+        it 'courses have correct key_stages' do
+          assigns(:courses).each do |course|
+            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 4'])
+          end
+        end
+
+      end
+
+      context 'when filtering by level and location' do
+        before do
+          get courses_path, params: { level: 'Key stage 4', location: 'York' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(1)
+        end
+
+        it 'has correct levels' do
+          expect(assigns(:courses).first.key_stages).to eq(['Key stage 3', 'Key stage 4'])
+        end
+
+        it 'has correct location' do
+          course = assigns(:courses).first
+          expect(course.occurrences.map { |oc| oc.address_town }).to include('York')
+        end
+
+      end
+
+      context 'when filtering by level and topic' do
+        before do
+          get courses_path, params: { level: 'Key stage 2', topic: 'Mathematics' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(2)
+        end
+
+        it 'has correct topic' do
+          assigns(:courses).each do |course|
+            expect(course.subjects).to eq(['Mathematics'])
+          end
+        end
+
+        it 'has correct level' do
+          assigns(:courses).each do |course|
+            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
+          end
         end
       end
 
-      it 'can filter by level' do
-        get courses_path, params: { level: 'Key stage 4' }
-        courses = assigns(:courses)
-        expect(courses.length).to be(2)
-        courses.each do |course|
-          expect(course.key_stages).to eq(['Key stage 3', 'Key stage 4'])
+      context 'filter by level, location and topic' do
+        before do
+          get courses_path, params: { level: 'Key stage 2', topic: 'Mathematics', location: 'York' }
         end
-      end
 
-      it 'can filter by level 2' do
-        get courses_path, params: { level: 'Key stage 3' }
-        courses = assigns(:courses)
-        expect(courses.length).to be(8)
-        courses.each do |course|
-          expect(course.key_stages).to include('Key stage 3')
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(1)
+        end
+
+        it 'has correct topic' do
+          assigns(:courses).each do |course|
+            expect(course.subjects).to eq(['Mathematics'])
+          end
+        end
+
+        it 'has correct level' do
+          assigns(:courses).each do |course|
+            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
+          end
+        end
+
+        it 'has filtered town' do
+          course = assigns(:courses).first
+          expect(course.occurrences.map { |oc | oc.address_town }).to include('York')
+        end
+
+        it 'doesn\'t exclude other occurrence locations' do
+          course = assigns(:courses).first
+          expect(course.occurrences.map { |oc | oc.address_town }).to include('Cambridge')
         end
       end
     end
