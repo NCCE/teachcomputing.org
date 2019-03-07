@@ -65,9 +65,6 @@
     "ACHIEVER_API_ENDPOINT": {
       "required": true
     },
-    "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
-      "required": true
-    },
     "ACHIEVER_APPROVED_FACE_TO_FACE_COURSE_TEMPLATES_WORKFLOW_ID": {
       "required": true
     },
