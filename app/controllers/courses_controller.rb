@@ -4,10 +4,8 @@ class CoursesController < ApplicationController
   before_action :create_achiever, only: [:index]
 
   def index
-    @face_to_face_courses = @achiever.approved_face_to_face_course_templates
-    @online_courses = @achiever.approved_online_course_templates
-    course_occurrences = @achiever.future_courses
-    @courses = @face_to_face_courses + @online_courses
+    @courses = @achiever.approved_course_templates
+    course_occurrences = @achiever.future_face_to_face_courses + @achiever.future_online_courses
     @courses.each do |course|
       @achiever.course_template_subject_details(course)
       @achiever.course_template_age_range(course)

@@ -65,10 +65,13 @@
     "ACHIEVER_API_ENDPOINT": {
       "required": true
     },
-    "ACHIEVER_APPROVED_FACE_TO_FACE_COURSE_TEMPLATES_WORKFLOW_ID": {
+    "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
       "required": true
     },
-    "ACHIEVER_APPROVED_ONLINE_COURSE_TEMPLATES_WORKFLOW_ID": {
+    "ACHIEVER_FACE_TO_FACE_FUTURE_COURSES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_ONLINE_FUTURE_COURSES_WORKFLOW_ID": {
       "required": true
     },
     "ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID": {
@@ -81,9 +84,6 @@
       "required": true
     },
     "ACHIEVER_DB_CONNECTION_ID": {
-      "required": true
-    },
-    "ACHIEVER_FUTURE_COURSES_WORKFLOW_ID": {
       "required": true
     },
     "ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID": {
