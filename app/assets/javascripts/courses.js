@@ -8,6 +8,7 @@ function ready(fn) {
 
 function initialiseSections(className) {
   const headingToggleClass = className + '--closed'
+  const sectionToggleClass = className + '-section--closed'
   // Get all the <h2> headings
   const headings = document.querySelectorAll('.' + className)
   Array.prototype.forEach.call(headings, heading => {
@@ -17,7 +18,7 @@ function initialiseSections(className) {
 
     // Create a wrapper element for `contents` and hide it
     let wrapper = document.createElement('div')
-    wrapper.hidden = true
+    wrapper.classList.add(sectionToggleClass)
 
     // Add each element of `contents` to `wrapper`
     wrapper.appendChild(contents)
@@ -40,7 +41,7 @@ function initialiseSections(className) {
       // Switch the state
       btn.setAttribute('aria-expanded', !expanded)
       // Switch the content's visibility
-      wrapper.hidden = expanded
+      wrapper.classList.toggle(sectionToggleClass)
     }
   })
 }
@@ -58,6 +59,26 @@ function initialiseFilter() {
   })
 
   applyButton.style.display = 'none'
+
+  const filterContainer = document.querySelector('.ncce-courses__filter')
+  let filterTop = filterContainer.offsetTop
+
+  let sticky = false;
+  document.onscroll = (e) => {
+    const top = e.target.scrollingElement.scrollTop
+    if (!sticky) {
+      filterTop = filterContainer.offsetTop
+      if (top > filterTop) {
+        console.log('sticking:', top)
+        filterContainer.classList.add('ncce-courses__filter--sticky')
+        sticky = true
+      }
+    } else if (top < filterTop) {
+      console.log('unsticking:', top)
+      filterContainer.classList.remove('ncce-courses__filter--sticky')
+      sticky = false
+    }
+  }
 
 }
 

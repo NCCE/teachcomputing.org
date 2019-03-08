@@ -48,6 +48,10 @@
     margin-bottom: 20px;
   }
 
+  &__locations-section--closed {
+    display: none;
+  }
+
 	&__meta {
 		display: block;
 		line-height: 1.6;
@@ -109,7 +113,12 @@
   background-color: $ncce-v-light-purple;
   margin: 50px 0 32px;
   @include govuk-media-query($from: tablet) {
-    margin: 0;
+    margin: 0 0 15px 0;
+  }
+  &--sticky {
+    position: fixed;
+    top: 0px;
+    margin-top: 0;
   }
   &-mobile-heading {
     margin-bottom: 0;
@@ -149,6 +158,11 @@
       }
     }
   }
+  &-mobile-heading-section--closed {
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
+  }
   &-form {
     padding: 10px;
   }
@@ -169,12 +183,12 @@
     background-repeat: no-repeat;
     margin-right: 20px;
     padding-right: 30px;
+    @include govuk-media-query($until: 900px) {
+      margin: 0 20px 20px 0;
+    }
     @include govuk-media-query($until: tablet) {
       width: 100%;
       margin: 0 0 20px;
-    }
-    @include govuk-media-query($until: desktop) {
-      margin: 0 20px 10px;
     }
   }
   &-button {
