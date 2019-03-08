@@ -62,19 +62,17 @@ function initialiseFilter() {
 
   const filterContainer = document.querySelector('.ncce-courses__filter')
   let filterTop = filterContainer.offsetTop
+  let sticky = false
 
-  let sticky = false;
   document.onscroll = (e) => {
     const top = e.target.scrollingElement.scrollTop
     if (!sticky) {
       filterTop = filterContainer.offsetTop
       if (top > filterTop) {
-        console.log('sticking:', top)
         filterContainer.classList.add('ncce-courses__filter--sticky')
         sticky = true
       }
     } else if (top < filterTop) {
-      console.log('unsticking:', top)
       filterContainer.classList.remove('ncce-courses__filter--sticky')
       sticky = false
     }
