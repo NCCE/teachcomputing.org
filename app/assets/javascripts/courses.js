@@ -46,7 +46,6 @@ function initialiseSections(className) {
   })
 }
 
-
 function initialiseFilter() {
   const applyButton = document.querySelector('.js-course-filter-button')
   const filterSelects = document.querySelectorAll('.js-course-filter-select')
@@ -59,8 +58,11 @@ function initialiseFilter() {
   })
 
   applyButton.style.display = 'none'
+}
 
-  const filterContainer = document.querySelector('.ncce-courses__filter')
+function initialiseStickyFilterBar() {
+  const className = 'ncce-courses__filter-container'
+  const filterContainer = document.querySelector('.' + className)
   let filterTop = filterContainer.offsetTop
   let sticky = false
 
@@ -69,11 +71,11 @@ function initialiseFilter() {
     if (!sticky) {
       filterTop = filterContainer.offsetTop
       if (top > filterTop) {
-        filterContainer.classList.add('ncce-courses__filter--sticky')
+        filterContainer.classList.add(className + '--sticky')
         sticky = true
       }
     } else if (top < filterTop) {
-      filterContainer.classList.remove('ncce-courses__filter--sticky')
+      filterContainer.classList.remove(className + '--sticky')
       sticky = false
     }
   }
@@ -84,4 +86,6 @@ ready(function() {
   initialiseSections('ncce-courses__locations')
   initialiseSections('ncce-courses__filter-mobile-heading')
   initialiseFilter()
+  // When we can reload and scroll, re-introduce
+  // initialiseStickyFilterBar()
 })

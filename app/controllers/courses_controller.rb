@@ -1,6 +1,7 @@
 require_relative('../lib/achiever')
 
 class CoursesController < ApplicationController
+  layout 'full-width'
   before_action :create_achiever, only: [:index]
 
   def index
