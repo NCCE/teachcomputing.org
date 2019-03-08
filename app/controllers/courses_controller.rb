@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     @current_topic = nil
     @course_occurrences = nil
 
-    @courses = get_course_list
+    @courses = fetch_course_list
 
     @locations = course_locations(@course_occurrences)
     @levels = course_levels(@courses)
@@ -26,9 +26,9 @@ class CoursesController < ApplicationController
     @achiever = Achiever.new
   end
 
-  def get_course_list
+  def fetch_course_list
     courses = @achiever.approved_course_templates
-    @course_occurrences = @achiever.future_courses
+    @course_occurrences = @achiever.future_face_to_face_courses + @achiever.future_online_courses
 
     courses.each do |course|
       @achiever.course_template_subject_details(course)
@@ -42,25 +42,21 @@ class CoursesController < ApplicationController
     courses
   end
 
-  def is_param_set(key)
-    params[key].nil? || params[key].empty?
-  end
-
   def filter_courses(courses)
     courses.select do |c|
       has_level = true
       has_location = true
       has_topic = true
 
-      unless is_param_set(:level)
+      if params[:level].present?
         @current_level = params[:level]
         has_level = c.key_stages.any?(@current_level)
       end
-      unless is_param_set(:location)
+      if params[:location].present?
         @current_location = params[:location]
         has_location = c.occurrences.any? { |oc| oc.address_town == @current_location }
       end
-      unless is_param_set(:topic)
+      if params[:topic].present?
         @current_topic = params[:topic]
         has_topic = c.subjects.any?(@current_topic)
       end

@@ -1,16 +1,23 @@
 module AchieverStubs
-  def stub_fetch_future_courses
-    raw_future_course_occurrences_xml = File.new('spec/support/achiever_api/future_course_occurrences.xml')
+  def stub_fetch_future_face_to_face_courses
+    raw_future_face_to_face_course_occurrences_xml = File.new('spec/support/achiever_api/future_face_to_face_course_occurrences.xml')
       stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
-        .with(query: hash_including({ "sXmlParams" => /SOME_FUTURE_COURSES_WORKFLOW_ID/ }))
-        .to_return(raw_future_course_occurrences_xml)
+        .with(query: hash_including({ "sXmlParams" => /SOME_FUTURE_FACE_TO_FACE_COURSES_WORKFLOW_ID/ }))
+        .to_return(raw_future_face_to_face_course_occurrences_xml)
+  end
+
+  def stub_fetch_future_online_courses
+    raw_future_online_course_occurrences_xml = File.new('spec/support/achiever_api/future_online_course_occurrences.xml')
+      stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
+        .with(query: hash_including({ "sXmlParams" => /SOME_FUTURE_ONLINE_COURSES_WORKFLOW_ID/ }))
+        .to_return(raw_future_online_course_occurrences_xml)
   end
 
   def stub_approved_course_templates
-    raw_future_course_templates_xml = File.new('spec/support/achiever_api/future_course_templates.xml')
+    future_course_template_xml = File.new('spec/support/achiever_api/future_course_templates.xml')
     stub_request(:get, ENV['ACHIEVER_API_ENDPOINT'])
       .with(query: hash_including({ "sXmlParams" => /SOME_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID/ }))
-      .to_return(raw_future_course_templates_xml)
+      .to_return(future_course_template_xml)
   end
 
   def stub_delegate_course_list

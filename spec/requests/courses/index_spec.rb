@@ -5,18 +5,19 @@ RSpec.describe CoursesController do
 
   describe 'GET #index' do
     before do
-      stub_fetch_future_courses
       stub_approved_course_templates
+      stub_fetch_future_face_to_face_courses
+      stub_fetch_future_online_courses
       stub_course_template_subject_details
       stub_course_template_age_range
 
-      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
+      allow_any_instance_of(AuthenticationHelper)
+        .to receive(:current_user).and_return(user)
     end
 
     context 'when there is no filtering' do
       before do
-        get courses_path()
+        get courses_path
       end
 
       it 'assigns @courses' do
@@ -24,7 +25,7 @@ RSpec.describe CoursesController do
       end
 
       it 'has at least one course' do
-        expect(assigns(:courses).length).to be >(0)
+        expect(assigns(:courses).length).to be > 0
       end
 
       it 'assigns course_occurrences correctly' do
@@ -38,15 +39,16 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns all locations' do
-        expect(assigns(:locations).sort).to eq([ 'Cambridge', 'Southampton', 'York'])
+        expect(assigns(:locations).sort).to eq(%w[Cambridge Online Southampton York])
       end
 
       it 'assigns all levels' do
-        expect(assigns(:levels).sort).to eq(['Key stage 2', 'Key stage 3', 'Key stage 4'])
+        expect(assigns(:levels).sort)
+          .to eq(['Key stage 2', 'Key stage 3', 'Key stage 4'])
       end
 
       it 'assigns all topics' do
-        expect(assigns(:topics).sort).to eq(['Computing', 'Mathematics'])
+        expect(assigns(:topics).sort).to eq(%w[Computing Mathematics])
       end
 
       it 'can retrieve course tags correctly' do
@@ -60,7 +62,7 @@ RSpec.describe CoursesController do
       it 'can retrieve course key stage correctly' do
         courses = assigns(:courses)
         courses.each.with_index do |course, index|
-          key_stages = ((index / 2) % 2) == 0 ? ['Key stage 3', 'Key stage 4'] : ['Key stage 2', 'Key stage 3']
+          key_stages = (index / 2).even? ? ['Key stage 3', 'Key stage 4'] : ['Key stage 2', 'Key stage 3']
           expect(course.key_stages.sort).to eq(key_stages)
         end
       end
@@ -98,13 +100,13 @@ RSpec.describe CoursesController do
 
         it 'courses have correct location' do
           assigns(:courses).each do |course|
-            expect(course.occurrences.map { |oc | oc.address_town }).to include('York')
+            expect(course.occurrences.map(&:address_town)).to include('York')
           end
         end
 
         it 'doesn\'t exclude other occurrence locations' do
           towns = assigns(:courses).reduce([]) do |acc, course|
-            acc + course.occurrences.map { |oc | oc.address_town }
+            acc + course.occurrences.map(&:address_town)
           end
           expect(towns).to include('Cambridge')
         end
@@ -142,7 +144,7 @@ RSpec.describe CoursesController do
 
         it 'has correct location' do
           course = assigns(:courses).first
-          expect(course.occurrences.map { |oc| oc.address_town }).to include('York')
+          expect(course.occurrences.map(&:address_town)).to include('York')
         end
 
       end
@@ -171,7 +173,11 @@ RSpec.describe CoursesController do
 
       context 'filter by level, location and topic' do
         before do
-          get courses_path, params: { level: 'Key stage 2', topic: 'Mathematics', location: 'York' }
+          get courses_path, params: {
+            level: 'Key stage 2',
+            topic: 'Mathematics',
+            location: 'York'
+          }
         end
 
         it 'has correct number of courses' do
@@ -192,12 +198,12 @@ RSpec.describe CoursesController do
 
         it 'has filtered town' do
           course = assigns(:courses).first
-          expect(course.occurrences.map { |oc | oc.address_town }).to include('York')
+          expect(course.occurrences.map(&:address_town)).to include('York')
         end
 
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
-          expect(course.occurrences.map { |oc | oc.address_town }).to include('Cambridge')
+          expect(course.occurrences.map(&:address_town)).to include('Cambridge')
         end
       end
     end
