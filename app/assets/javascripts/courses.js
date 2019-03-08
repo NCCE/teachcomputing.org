@@ -7,6 +7,7 @@ function ready(fn) {
 }
 
 function initialiseSections() {
+  const headingToggleClass = 'ncce-courses__locations--closed'
   // Get all the <h2> headings
   const headings = document.querySelectorAll('.ncce-courses__locations')
   Array.prototype.forEach.call(headings, heading => {
@@ -25,12 +26,16 @@ function initialiseSections() {
     // after the heading
     heading.parentNode.insertBefore(wrapper, heading.nextElementSibling)
 
+    heading.classList.add(headingToggleClass)
+
     // Assign the button
     let btn = heading.querySelector('button')
 
     btn.onclick = () => {
       // Cast the state as a boolean
       let expanded = btn.getAttribute('aria-expanded') === 'true' || false
+
+    heading.classList.toggle(headingToggleClass)
 
       // Switch the state
       btn.setAttribute('aria-expanded', !expanded)

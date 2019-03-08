@@ -7,7 +7,8 @@ RSpec.describe Achiever, type: :class do
 
   describe 'Achiever' do
     before do
-      stub_fetch_future_courses
+      stub_fetch_future_face_to_face_courses
+      stub_fetch_future_online_courses
     end
     
     describe '#build_request' do
