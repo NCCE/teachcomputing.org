@@ -6,10 +6,11 @@ function ready(fn) {
   }
 }
 
-function initialiseSections() {
-  const headingToggleClass = 'ncce-courses__locations--closed'
+function initialiseSections(className) {
+  const headingToggleClass = className + '--closed'
+  const sectionToggleClass = className + '-section--closed'
   // Get all the <h2> headings
-  const headings = document.querySelectorAll('.ncce-courses__locations')
+  const headings = document.querySelectorAll('.' + className)
   Array.prototype.forEach.call(headings, heading => {
     // We only have a single node to pull out here the next thing.
     let contents = heading.nextElementSibling
@@ -17,7 +18,7 @@ function initialiseSections() {
 
     // Create a wrapper element for `contents` and hide it
     let wrapper = document.createElement('div')
-    wrapper.hidden = true
+    wrapper.classList.add(sectionToggleClass)
 
     // Add each element of `contents` to `wrapper`
     wrapper.appendChild(contents)
@@ -40,8 +41,51 @@ function initialiseSections() {
       // Switch the state
       btn.setAttribute('aria-expanded', !expanded)
       // Switch the content's visibility
-      wrapper.hidden = expanded
+      wrapper.classList.toggle(sectionToggleClass)
     }
   })
 }
-ready(initialiseSections)
+
+function initialiseFilter() {
+  const applyButton = document.querySelector('.js-course-filter-button')
+  const filterSelects = document.querySelectorAll('.js-course-filter-select')
+  const filterForm = document.querySelector('.js-course-filter-form')
+
+  Array.prototype.forEach.call(filterSelects, filterSelect => {
+    filterSelect.onchange = () => {
+      filterForm.submit();
+    }
+  })
+
+  applyButton.style.display = 'none'
+}
+
+function initialiseStickyFilterBar() {
+  const className = 'ncce-courses__filter-container'
+  const filterContainer = document.querySelector('.' + className)
+  let filterTop = filterContainer.offsetTop
+  let sticky = false
+
+  document.onscroll = (e) => {
+    const top = e.target.scrollingElement.scrollTop
+    if (!sticky) {
+      filterTop = filterContainer.offsetTop
+      if (top > filterTop) {
+        filterContainer.classList.add(className + '--sticky')
+        sticky = true
+      }
+    } else if (top < filterTop) {
+      filterContainer.classList.remove(className + '--sticky')
+      sticky = false
+    }
+  }
+
+}
+
+ready(function() {
+  initialiseSections('ncce-courses__locations')
+  initialiseSections('ncce-courses__filter-mobile-heading')
+  initialiseFilter()
+  // When we can reload and scroll, re-introduce
+  // initialiseStickyFilterBar()
+})
