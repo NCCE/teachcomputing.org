@@ -3,25 +3,27 @@ require_relative('../lib/achiever')
 class CoursesController < ApplicationController
   layout 'full-width'
   before_action :create_achiever, only: [:index]
+  before_action :init_filters, only: [:index]
 
   def index
-    @current_location = nil
-    @current_level = nil
-    @current_topic = nil
-    @course_occurrences = nil
-
     @courses = fetch_course_list
 
     @locations = course_locations(@course_occurrences)
     @levels = course_levels(@courses)
     @topics = course_tags(@courses)
-
     @courses = filter_courses(@courses)
 
     render :index
   end
 
   private
+
+  def init_filters
+    @current_location = nil
+    @current_level = nil
+    @current_topic = nil
+    @course_occurrences = nil
+  end
 
   def create_achiever
     @achiever = Achiever.new

@@ -51,6 +51,19 @@ RSpec.describe CoursesController do
         expect(assigns(:topics).sort).to eq(%w[Computing Mathematics])
       end
 
+      it 'initalises current location' do
+        expect(assigns(:current_location)).to be(nil)
+      end
+
+      it 'initalises current level' do
+        expect(assigns(:current_level)).to be(nil)
+      end
+
+      it 'initalises current topic' do
+        expect(assigns(:current_topic)).to be(nil)
+      end
+
+
       it 'can retrieve course tags correctly' do
         courses = assigns(:courses)
         courses.each.with_index do |course, index|
@@ -87,6 +100,10 @@ RSpec.describe CoursesController do
             expect(course.subjects).to eq(['Mathematics'])
           end
         end
+
+        it 'initalises current topic' do
+          expect(assigns(:current_topic)).to eq('Mathematics')
+        end
       end
 
       context 'when filtering by location' do
@@ -110,6 +127,10 @@ RSpec.describe CoursesController do
           end
           expect(towns).to include('Cambridge')
         end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('York')
+        end
       end
 
       context 'when filtering by level' do
@@ -127,6 +148,9 @@ RSpec.describe CoursesController do
           end
         end
 
+        it 'initalises current level' do
+          expect(assigns(:current_level)).to eq('Key stage 4')
+        end
       end
 
       context 'when filtering by level and location' do
