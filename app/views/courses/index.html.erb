@@ -1,5 +1,5 @@
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__wrapper-less-padding">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__wrapper--less-padding">
     <h1 class="govuk-heading-l">Courses</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -80,7 +80,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <% if @courses.length == 0 %>
-          <p class="govuk-body">No courses found to match your selection.  Please try a different one.</p>
+          <p class="govuk-body">No courses found that match your selection.  Please try a different one.</p>
         <% end %>
         <% @courses.each do |course| %>
           <div class="ncce-courses__course">

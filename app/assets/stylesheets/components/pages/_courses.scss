@@ -1,4 +1,4 @@
-.ncce-courses__wrapper-less-padding {
+.ncce-courses__wrapper--less-padding {
   padding-bottom: 20px;
 }
 
@@ -172,7 +172,7 @@
     }
   }
   &-form {
-    padding: 10px;
+    padding: 10px 0;
   }
   &-prompt {
     color: $ncce-black;
@@ -186,7 +186,7 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     border-radius: 5px;
-    background-image: url('chevron.svg');
+    background-image: image-url('chevron.svg');
     background-position: calc(100% - 10px) 50%;
     background-repeat: no-repeat;
     margin-right: 20px;
