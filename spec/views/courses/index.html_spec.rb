@@ -21,6 +21,11 @@ RSpec.describe('courses/index', type: :view) do
         end
       end
     end
+
+    @locations = ['Cambridge']
+    @levels = ['Key stage 2']
+    @topics = ['Algorithms']
+
     render
   end
 
@@ -52,5 +57,26 @@ RSpec.describe('courses/index', type: :view) do
     it 'renders course subject tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
+
+    it 'renders filter selects' do
+      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+    end
+
+    it 'renders location select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Cambridge')
+    end
+
+    it 'renders level select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Key stage 2')
+    end
+
+    it 'renders topic select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Algorithms')
+    end
+
+    it 'renders filter submit' do
+      expect(rendered).to have_css('.ncce-button__pink[value="Apply"]', count: 1)
+    end
+
   end
 end
