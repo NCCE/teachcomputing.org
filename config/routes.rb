@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
 
-  namespace 'news' do
+  scope '/news' do
     get '/', to: 'pages#page', as: :news, defaults: { page_slug: 'news/index' }
     get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }
     get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }
