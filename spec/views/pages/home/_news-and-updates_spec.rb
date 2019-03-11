@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe('pages/home/_stay-updated', type: :view) do
+RSpec.describe('pages/home/_news-and-updates', type: :view) do
   before do
     render
   end
 
   it('renders the correct number of cards') do
-    expect(rendered).to(have_css('.ncce-stay-updated__panel', count: 2))
+    expect(rendered).to(have_css('.ncce-news-and-updates__panel', count: 2))
   end
 
   it 'has 2 news links' do
