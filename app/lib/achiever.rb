@@ -58,8 +58,21 @@ class Achiever
     course
   end
 
-  def future_courses
-    workflow_id = ENV['ACHIEVER_FUTURE_COURSES_WORKFLOW_ID']
+  def future_face_to_face_courses
+    workflow_id = ENV['ACHIEVER_FACE_TO_FACE_FUTURE_COURSES_WORKFLOW_ID']
+    workflow_params = [@programme, @hide_from_web, @status]
+    params = build_params(workflow_id, workflow_params)
+    request = build_request(params)
+
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+      RestClient.get(request).body
+    end
+
+    courses(parse_results(result))
+  end
+
+  def future_online_courses
+    workflow_id = ENV['ACHIEVER_ONLINE_FUTURE_COURSES_WORKFLOW_ID']
     workflow_params = [@programme, @hide_from_web, @status]
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)

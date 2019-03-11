@@ -5,11 +5,12 @@ RSpec.describe CoursesController do
 
   describe 'GET #index' do
     before do
-      stub_fetch_future_courses
       stub_approved_course_templates
+      stub_fetch_future_face_to_face_courses
+      stub_fetch_future_online_courses
       stub_course_template_subject_details
       stub_course_template_age_range
-
+      
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       get courses_path()
     end
