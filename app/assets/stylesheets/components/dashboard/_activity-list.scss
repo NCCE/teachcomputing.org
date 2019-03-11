@@ -66,6 +66,22 @@
 	display: flex;
 }
 
-.ncce-dashboard__course {
-	background-color: pink;
+.ncce-dashboard-courses {
+	background-color: $ncce-grey-x-light;
+	padding-bottom: 2rem;
+	padding-top: 2rem;
+
+	@include govuk-media-query($from: tablet) {
+		padding-bottom: 3rem;
+		padding-top: 3rem;
+	}
+}
+
+.ncce-dashboard__image {
+	margin-bottom: 1.5rem;
+	width: 50%;
+
+	@include govuk-media-query($from: tablet) {
+		width: 75%;
+	}
 }
