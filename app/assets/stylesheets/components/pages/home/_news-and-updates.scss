@@ -8,7 +8,11 @@
     margin-bottom: 0;
 		grid-gap: 15px;
 		grid-template-columns: repeat(2, 1fr);
-	}
+  }
+
+  .ncce-link {
+    font-family: "Objectivity Bold", sans-serif;
+  }
 }
 
 .ncce-news-and-updates__body {
