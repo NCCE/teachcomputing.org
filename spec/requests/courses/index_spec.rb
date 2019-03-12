@@ -136,9 +136,6 @@ RSpec.describe CoursesController do
       context 'when filtering by Online location' do
         before do
           get courses_path, params: { location: 'Online' }
-          assigns(:courses).each do |course|
-            puts "course: #{course.title}, #{course.occurrences.map(&:online_course)}"
-          end
         end
 
         it 'has correct number of courses' do
