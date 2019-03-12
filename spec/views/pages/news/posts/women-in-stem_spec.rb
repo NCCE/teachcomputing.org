@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/news/women-in-stem', type: :view) do
+RSpec.describe('pages/news/posts/women-in-stem', type: :view) do
   before do
     render
   end
