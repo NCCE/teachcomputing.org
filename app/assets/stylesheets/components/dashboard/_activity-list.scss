@@ -7,11 +7,24 @@
 }
 
 .ncce-activity-list__item {
-	background-color: $ncce-grey-x-light;
+	background-color: $ncce-white;
 	display: grid;
 	grid-template-columns: 2fr auto;
 	padding: 1.25rem 1.125rem;
-	margin-bottom: 2px;
+	border-bottom-width: 2px;
+	border-bottom-color: $ncce-light-lavender;
+	border-bottom-style: solid;
+	margin-bottom: 0 !important;
+
+	&:first-child {
+		border-top-right-radius: 1rem;
+		border-top-left-radius: 1rem;
+	}
+
+	&:last-child {
+		border-bottom-right-radius: 1rem;
+		border-bottom-left-radius: 1rem;
+	}
 }
 
 .ncce-activity-list__item-text {
