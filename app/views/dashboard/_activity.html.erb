@@ -3,15 +3,7 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
-          <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-m">Your progress</h2>
-            <p class="govuk-body">Your activities are logged here.
-            Face-to-face course completion is updated automatically and online courses
-            will be soon as well, but for now you can add them manually. We will also be
-            including the credits you’ve earned that will
-            help you track your progress towards <%= link_to 'certification', certification_path,
-            class: 'ncce-link' %>.</p>
-          </div>
+          <h2 class="govuk-heading-m ncce-dashboard__title">Your record of achievement</h2>
         </div>
       </div>
       <ul class="govuk-list ncce-activity-list">
@@ -39,6 +31,13 @@
           </span>
         </li>
       </ul>
+      <p class="govuk-body ncce-dashboard__activities">Your activities are logged here.
+      Face-to-face course completion is updated automatically and online courses
+      will be soon as well, but for now you can add them manually. We will also be
+      including the credits you’ve earned that will
+      help you track your progress towards <%= link_to 'certification', certification_path,
+      class: 'ncce-link ncce-dashboard__activities--link' %>.
+      </p>
     </div>
   </div>
 </div>

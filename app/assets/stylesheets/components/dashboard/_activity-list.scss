@@ -66,6 +66,45 @@
 	display: flex;
 }
 
+.ncce-dashboard-activity {
+	background-color: $ncce-dark-purple;
+	background-image: none;
+	padding-bottom: 30px;
+	padding-top: 20px;
+
+	@include govuk-media-query($from: tablet) {
+		background-image: url(/images/dashboard/triangle2.png);
+		background-position: top right;
+		background-repeat: no-repeat;
+		background-size: auto 100%;
+		padding-bottom: 30px;
+		padding-top: 40px;
+	}
+}
+
+.ncce-dashboard__title {
+	text-align: center;
+	background-image: url(/images/dashboard/line.png);
+	background-position: 50% 100%;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	color: $ncce-white;
+	padding: 1.5rem 0;
+	@include govuk-media-query($from: tablet) {
+		background-size: 35%;
+	}
+}
+
+.ncce-dashboard__activities {
+	color: $ncce-white;
+	margin: 0 auto;
+	width: 60%;
+}
+
+.ncce-dashboard__activities--link {
+	color: $ncce-white !important;
+}
+
 .ncce-dashboard-courses {
 	background-color: $ncce-grey-x-light;
 	padding-bottom: 2rem;
