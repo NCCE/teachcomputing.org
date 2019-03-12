@@ -1,0 +1,28 @@
+.ncce-press-archive {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 2rem;
+}
+
+.ncce-press-archive__title {
+  margin-bottom: 3rem;
+}
+
+.ncce-press-archive__item {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 1.5rem;
+}
+
+.ncce-press-archive__item-link {
+  font-family: "Objectivity Bold", sans-serif;
+}
+
+.ncce-press-archive__item-content {
+  display: block;
+}
+.ncce-press-archive__item-title {
+  .govuk-heading-s {
+    margin-bottom: 0.7rem;
+  }
+}

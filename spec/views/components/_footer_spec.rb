@@ -21,6 +21,10 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Privacy', href: '/privacy')
   end
 
+  it 'has a press link' do
+    expect(rendered).to have_link('Press', href: '/press')
+  end
+
   it 'has a twitter link' do
     expect(rendered).to have_link('Twitter', href: /twitter.com\/WeAreComputing/)
   end

@@ -40,6 +40,10 @@ Rails.application.routes.draw do
     get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }
   end
 
+  scope '/press' do
+    get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
+  end
+
   require 'sidekiq/web'
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
