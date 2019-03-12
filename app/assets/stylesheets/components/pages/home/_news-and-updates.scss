@@ -9,10 +9,6 @@
 		grid-gap: 15px;
 		grid-template-columns: repeat(2, 1fr);
   }
-
-  .ncce-link {
-    font-family: "Objectivity Bold", sans-serif;
-  }
 }
 
 .ncce-news-and-updates__body {
@@ -24,7 +20,11 @@
 
 	&:last-child {
 		margin-bottom: 0;
-	}
+  }
+
+  .ncce-link {
+    font-family: "Objectivity Bold", sans-serif;
+  }
 
 	@include govuk-media-query($from: tablet) {
 		margin-bottom: 0;
