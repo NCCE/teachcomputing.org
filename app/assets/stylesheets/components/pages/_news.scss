@@ -24,6 +24,10 @@
   }
 }
 
+.ncce-news-archive__item-link {
+  font-family: "Objectivity Bold", sans-serif;
+}
+
 .ncce-news-archive__item-image {
   width: 100%;
 }
@@ -34,8 +38,5 @@
 .ncce-news-archive__item-title {
   .govuk-heading-s {
     margin-bottom: 0.7rem;
-  }
-  .ncce-link {
-    font-family: "Objectivity Bold", sans-serif;
   }
 }
