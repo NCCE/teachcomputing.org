@@ -15,7 +15,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has progress section' do
-    expect(rendered).to have_css('h2', text: 'Your progress')
+    expect(rendered).to have_css('h2', text: 'Your record of achievement')
   end
 
   it 'has a link to certification' do
