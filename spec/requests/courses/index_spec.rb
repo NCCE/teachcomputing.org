@@ -133,6 +133,29 @@ RSpec.describe CoursesController do
         end
       end
 
+      context 'when filtering by Online location' do
+        before do
+          get courses_path, params: { location: 'Online' }
+          assigns(:courses).each do |course|
+            puts "course: #{course.title}, #{course.occurrences.map(&:online_course)}"
+          end
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(2)
+        end
+
+        it 'courses have correct location' do
+          assigns(:courses).each do |course|
+            expect(assigns(:courses).first.occurrences.map(&:online_course)).to include(1)
+          end
+        end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('Online')
+        end
+      end
+
       context 'when filtering by level' do
         before do
           get courses_path, params: { level: 'Key stage 4' }
