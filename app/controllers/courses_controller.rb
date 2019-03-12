@@ -57,7 +57,13 @@ class CoursesController < ApplicationController
       end
       if params[:location].present?
         @current_location = params[:location]
-        has_location = c.occurrences.any? { |oc| oc.address_town == @current_location }
+        has_location = c.occurrences.any? do |oc|
+          if @current_location == 'Online'
+            oc.online_course == 1
+          else
+            oc.address_town == @current_location
+          end
+        end
       end
       if params[:topic].present?
         @current_topic = params[:topic]
@@ -68,14 +74,15 @@ class CoursesController < ApplicationController
   end
 
   def course_tags(courses)
-    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq
+    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
   end
 
   def course_levels(courses)
-    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq
+    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq.sort
   end
 
   def course_locations(course_occurrences)
-    course_occurrences.map { |oc| oc.online_course == 1 ? 'Online' : oc.address_town }.uniq
+    towns = course_occurrences.reduce([]) { |acc, oc| oc.online_course == 0 ? acc.push(oc.address_town) : acc }
+    towns.uniq.sort.unshift('Online')
   end
 end

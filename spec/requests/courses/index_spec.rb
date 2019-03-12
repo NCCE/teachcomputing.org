@@ -39,16 +39,16 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns all locations' do
-        expect(assigns(:locations).sort).to eq(%w[Cambridge Online Southampton York])
+        expect(assigns(:locations)).to eq(%w[Online Cambridge Southampton York])
       end
 
       it 'assigns all levels' do
-        expect(assigns(:levels).sort)
+        expect(assigns(:levels))
           .to eq(['Key stage 2', 'Key stage 3', 'Key stage 4'])
       end
 
       it 'assigns all topics' do
-        expect(assigns(:topics).sort).to eq(%w[Computing Mathematics])
+        expect(assigns(:topics)).to eq(%w[Computing Mathematics])
       end
 
       it 'initalises current location' do
@@ -130,6 +130,26 @@ RSpec.describe CoursesController do
 
         it 'initalises current location' do
           expect(assigns(:current_location)).to eq('York')
+        end
+      end
+
+      context 'when filtering by Online location' do
+        before do
+          get courses_path, params: { location: 'Online' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(2)
+        end
+
+        it 'courses have correct location' do
+          assigns(:courses).each do |course|
+            expect(assigns(:courses).first.occurrences.map(&:online_course)).to include(1)
+          end
+        end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('Online')
         end
       end
 

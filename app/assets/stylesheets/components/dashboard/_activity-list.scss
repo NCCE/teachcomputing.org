@@ -6,21 +6,23 @@
 	}
 }
 
-.ncce-activity-list > .ncce-activity-list__item {
+.ncce-activity-list__item {
 	background-color: $ncce-grey-x-light;
+	display: grid;
+	grid-template-columns: 2fr auto;
 	padding: 1.25rem 1.125rem;
 	margin-bottom: 2px;
 }
 
 .ncce-activity-list__item-text {
 	background-image: image-url('tick.png');
-	background-position: right center;
+	background-position: left center;
 	background-repeat: no-repeat;
 	background-size: 1.2rem;
 	display: block;
 	margin-top: 3px;
 	margin-bottom: 10px;
-	padding-right: 1.5rem;
+	padding-left: 2rem;
 
 	@include govuk-media-query($from: tablet) {
 		margin-bottom: 0;
