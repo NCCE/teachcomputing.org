@@ -3,23 +3,12 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cpd) }
-  let(:achievement) { create(:achievement, :activity, :user) }
+  let(:achievement) { create(:achievement, activity_id: activity.id, user_id: user.id) }
 
   describe 'DELETE #destroy' do
     before do
-      puts "Acheivement: #{Achievement.count}"
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    end
-
-    subject do
-      post achievements_path,
-           params: {
-             achievement: { activity_id: activity.id }
-           }
-    end
-
-    before do
-      subject
+      delete achievement_path(id: achievement.id)
     end
 
     it 'redirects to the dashboard path' do
