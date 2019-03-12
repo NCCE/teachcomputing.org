@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
   <div class="ncce-alert ncce-alert__<%= key %> govuk-body" role="alert">
-    <%= value %>
+    <%= value.html_safe %>
   </div>
 <% end %>
