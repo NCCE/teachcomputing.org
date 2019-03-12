@@ -39,16 +39,16 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns all locations' do
-        expect(assigns(:locations).sort).to eq(%w[Cambridge Online Southampton York])
+        expect(assigns(:locations)).to eq(%w[Online Cambridge Southampton York])
       end
 
       it 'assigns all levels' do
-        expect(assigns(:levels).sort)
+        expect(assigns(:levels))
           .to eq(['Key stage 2', 'Key stage 3', 'Key stage 4'])
       end
 
       it 'assigns all topics' do
-        expect(assigns(:topics).sort).to eq(%w[Computing Mathematics])
+        expect(assigns(:topics)).to eq(%w[Computing Mathematics])
       end
 
       it 'initalises current location' do

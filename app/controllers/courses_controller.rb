@@ -68,14 +68,15 @@ class CoursesController < ApplicationController
   end
 
   def course_tags(courses)
-    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq
+    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
   end
 
   def course_levels(courses)
-    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq
+    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq.sort
   end
 
   def course_locations(course_occurrences)
-    course_occurrences.map { |oc| oc.online_course == 1 ? 'Online' : oc.address_town }.uniq
+    towns = course_occurrences.reduce([]) { |acc, oc| oc.online_course == 0 ? acc.push(oc.address_town) : acc }
+    towns.uniq.sort.unshift('Online')
   end
 end
