@@ -32,12 +32,19 @@
           </span>
         </li>
       </ul>
+      <div class="ncce-activity-links">
+        <p class="govuk-body-s">
+          <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-link--on-dark ncce-activity-links--search' %>
+          </p>
+        <p class="govuk-body-s ncce-activity-links--add">Add a course</p>
+      </div>
+
       <p class="govuk-body ncce-dashboard__activities">Your activities are logged here.
       Face-to-face course completion is updated automatically and online courses
       will be soon as well, but for now you can add them manually. We will also be
       including the credits you’ve earned that will
       help you track your progress towards <%= link_to 'certification', certification_path,
-      class: 'ncce-link ncce-dashboard__activities--link' %>.
+      class: 'ncce-link ncce-link--on-dark' %>.
       </p>
     </div>
   </div>
