@@ -57,7 +57,13 @@ class CoursesController < ApplicationController
       end
       if params[:location].present?
         @current_location = params[:location]
-        has_location = c.occurrences.any? { |oc| oc.address_town == @current_location }
+        has_location = c.occurrences.any? do |oc|
+          if @current_location == 'Online'
+            oc.online_course == 1
+          else
+            oc.address_town == @current_location
+          end
+        end
       end
       if params[:topic].present?
         @current_topic = params[:topic]
