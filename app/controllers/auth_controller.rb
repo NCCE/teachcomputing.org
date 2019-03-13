@@ -3,12 +3,11 @@ class AuthController < ApplicationController
 
   def callback
     auth = omniauth_params
-    course_booking_uri = request.env['omniauth.params']['source_uri']
+    course_booking_uri = course_redirect_params
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
     session[:user_id] = user.id
 
-    puts "course_booking_uri #{course_booking_uri} user_exists #{user_exists} (request.env['omniauth.params'] #{request.env['omniauth.params']})"
     if user_exists
       flash[:notice] = 'Welcome back, good to see you again!'
       redirect_to course_booking_uri || dashboard_path
@@ -32,6 +31,10 @@ class AuthController < ApplicationController
 
   def omniauth_params
     request.env['omniauth.auth']
+  end
+
+  def course_redirect_params
+    request.env['omniauth.params']['source_uri']
   end
 
   def set_raven_context
