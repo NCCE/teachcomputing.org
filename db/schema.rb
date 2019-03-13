@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_102244) do
+ActiveRecord::Schema.define(version: 2019_03_05_112648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -32,10 +32,21 @@ ActiveRecord::Schema.define(version: 2019_02_08_102244) do
     t.string "category"
     t.string "course_id"
     t.boolean "self_certifiable", default: false
+    t.string "provider"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["course_id"], name: "index_activities_on_course_id", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["slug"], name: "index_activities_on_slug", unique: true
+  end
+
+  create_table "imports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "provider"
+    t.string "triggered_by"
+    t.datetime "completed_at"
+    t.uuid "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_imports_on_activity_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

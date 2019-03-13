@@ -398,6 +398,7 @@ DEPENDENCIES
   fog-aws (~> 3.3)
   guard-rspec (~> 4.7.3)
   htmlentities (~> 4.3)
+  jwt (~> 2.1.0)
   listen (>= 3.0.5, < 3.2)
   lograge
   memcachier
