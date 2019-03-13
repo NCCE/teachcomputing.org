@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   scope '/news' do
     get '/', to: 'pages#page', as: :news, defaults: { page_slug: 'news/index' }
     get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }
+    get '/beta-launch', to: 'pages#page', as: :beta_launch, defaults: { page_slug: 'news/posts/beta-launch' }
     get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }
   end
 
