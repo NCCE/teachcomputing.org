@@ -15,6 +15,10 @@ class PagesController < ApplicationController
   end
 
   def login
-    render template: 'pages/login'
+    auth_uri = '/auth/stem'
+    if params[:source_uri].present?
+      auth_uri += "?source_uri=#{params[:source_uri]}"
+    end
+    render template: 'pages/login', locals: { auth_uri: auth_uri }
   end
 end

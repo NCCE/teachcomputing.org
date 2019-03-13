@@ -3,16 +3,18 @@ class AuthController < ApplicationController
 
   def callback
     auth = omniauth_params
+    course_booking_uri = request.env['omniauth.params']['source_uri']
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
     session[:user_id] = user.id
 
+    puts "course_booking_uri #{course_booking_uri} user_exists #{user_exists} (request.env['omniauth.params'] #{request.env['omniauth.params']})"
     if user_exists
       flash[:notice] = 'Welcome back, good to see you again!'
-      redirect_to omniauth_params['returnTo'] || dashboard_path
+      redirect_to course_booking_uri || dashboard_path
     else
       flash[:notice] = 'Hello and welcome to the National Centre for Computing Education'
-      redirect_to omniauth_params['returnTo'] ? "#{omniauth_params['returnTo']}?firstLogin=true" : dashboard_path(firstLogin: true)
+      redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : dashboard_path(firstLogin: true)
     end
   end
 

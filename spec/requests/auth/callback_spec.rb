@@ -22,6 +22,7 @@ RSpec.describe AuthController do
           email: 'user@example.com'
         }
       )
+
     end
 
     it 'sets the user session' do
@@ -31,11 +32,11 @@ RSpec.describe AuthController do
       expect(session['user_id']).to eq(user.id)
     end
 
-    context 'when returnTo is present' do
+    context 'when source_uri is present' do
       before do
         OmniAuth.config.test_mode = true
         OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
-          returnTo: '/test',
+          source_uri: '/test',
           provider: 'stem',
           uid: '2074871c-eb73-4a2f-b9fd-c2fff15f97e7',
           credentials: {
@@ -51,15 +52,19 @@ RSpec.describe AuthController do
             email: 'user@example.com'
           }
         )
+        # AuthController.any_instance.stub(:session).and_return({ 'omniauth.params' => { source_uri: '/test'}})
       end
 
-      it 'redirects to the path stated in returnTo' do
+      it 'redirects to the path stated in source_uri' do
+        # get callback_path, nil, { 'omniauth.params' => { source_uri: '/test'}}
+        byebug
         get callback_path
+
         expect(response).to redirect_to('/test?firstLogin=true')
       end
     end
 
-    context 'when returnTo is not present' do
+    context 'when source_uri is not present' do
       before do
         OmniAuth.config.test_mode = true
         OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
