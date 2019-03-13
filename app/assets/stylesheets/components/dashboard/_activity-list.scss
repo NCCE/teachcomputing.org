@@ -123,42 +123,37 @@
 		padding-top: 40px;
 	}
 }
-
-.ncce-dashboard__title {
-	text-align: center;
-	background-image: url(/images/dashboard/line.png);
-	background-position: 50% 100%;
-	background-repeat: no-repeat;
-	background-size: 70%;
-	color: $ncce-white;
-	padding: 1.5rem 0;
-	@include govuk-media-query($from: tablet) {
-		background-size: 35%;
+.kasia {
+	border-width: 2px 0;
+	border-style: solid;
+	max-width: 40rem;
+  margin: 0 auto;
+  padding: 1em;
+	h2 button {
+		all: inherit;
+		border: 0;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0.5em 0;
 	}
-}
 
-.ncce-dashboard__activities {
-	color: $ncce-white;
-	margin: 0 auto;
-	width: 60%;
-}
-
-.ncce-dashboard-courses {
-	background-color: $ncce-grey-x-light;
-	padding-bottom: 2rem;
-	padding-top: 2rem;
-
-	@include govuk-media-query($from: tablet) {
-		padding-bottom: 3rem;
-		padding-top: 3rem;
+	h2 button:focus svg {
+		outline: 2px solid;
 	}
-}
 
-.ncce-dashboard__image {
-	margin-bottom: 1.5rem;
-	width: 50%;
-
-	@include govuk-media-query($from: tablet) {
-		width: 75%;
+	button svg {
+		height: 1em;
+		margin-left: 0.5em;
 	}
+
+	[aria-expanded="true"] .vert {
+		display: none;
+	}
+
+	[aria-expanded] rect {
+		fill: currentColor;
+	}
+
 }
+
