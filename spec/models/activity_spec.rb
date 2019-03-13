@@ -4,9 +4,9 @@ RSpec.describe Activity, type: :model do
   let(:activity) { create(:activity) }
   let(:cpd_activity) { create(:activity, :cpd) }
   let(:cpd_courses) { create_list(:activity, 5, :cpd) }
+  let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
-
 
   describe 'associations' do
     it 'has_many achievements' do
@@ -15,6 +15,10 @@ RSpec.describe Activity, type: :model do
 
     it 'has_many users' do
       expect(activity).to have_many(:users).through(:achievements)
+    end
+
+    it 'has_many imports' do
+      expect(activity).to have_many(:imports)
     end
   end
 
@@ -51,6 +55,20 @@ RSpec.describe Activity, type: :model do
 
       it 'does not include actions' do
         expect(Activity.cpd).not_to include(activity)
+      end
+    end
+
+    describe 'future-learn' do
+      before do
+        [future_learn_courses, activity]
+      end
+
+      it 'includes only cpd activities' do
+        expect(Activity.future_learn).to eq(future_learn_courses)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.future_learn).not_to include(activity)
       end
     end
   end

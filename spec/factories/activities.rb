@@ -4,6 +4,7 @@ FactoryBot.define do
     sequence(:credit, 100) { |n| n }
     sequence(:slug, 100) { |n| "activity-#{n}" }
     category { 'action' }
+    provider { 'stem-learning' }
   end
 
   trait :created_ncce_account do
@@ -20,5 +21,9 @@ FactoryBot.define do
 
   trait :cpd do
     category { 'cpd' }
+  end
+
+  trait :future_learn do
+    provider { 'future-learn' }
   end
 end

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   namespace :achiever do
     delete '/cache', to: 'cache#destroy'
   end
+  
+  namespace 'admin' do
+    resources :imports
+  end
 
   resources :achievements, only: [:create, :destroy]
 

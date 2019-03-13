@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
+  let(:activity) { create(:activity, :diagnostic_tool) }
 
   describe 'GET #index' do
     before do
+      activity
       stub_approved_course_templates
       stub_fetch_future_face_to_face_courses
       stub_fetch_future_online_courses

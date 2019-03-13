@@ -1,0 +1,4 @@
+run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at
+2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,
+2019-01-07,3,user999@example.com,Name 3,https://www.futurelearn.com/profiles/3,99%,0,0%,

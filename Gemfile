@@ -12,6 +12,7 @@ gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
 gem "fog-aws", "~> 3.3"
 gem 'htmlentities', '~> 4.3'
+gem 'jwt', '~> 2.1.0'
 gem 'lograge'
 gem 'memcachier'
 gem 'nokogiri', '~> 1.8'
