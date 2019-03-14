@@ -29,8 +29,8 @@ module OmniAuth::Strategies
       ENV.fetch('STEM_OAUTH_CALLBACK_URL')
     end
 
-    def raven_context(info)
-      Raven.tags_context info: info
+    def raven_context(responose)
+      Raven.tags_context response: responose
     end
   end
 end
