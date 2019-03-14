@@ -20,11 +20,17 @@ module OmniAuth::Strategies
 
     def raw_info
       @raw_info ||= access_token.get('/idp/module.php/oauth2/userinfo.php').parsed
+      raven_context(@raw_info)
     end
 
     def callback_url
       return super if ENV['BYPASS_OAUTH'].present?
+
       ENV.fetch('STEM_OAUTH_CALLBACK_URL')
+    end
+
+    def raven_context(info)
+      Raven.tags_context info: info
     end
   end
 end
