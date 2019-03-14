@@ -8,7 +8,7 @@
       </div>
       <ul class="govuk-list ncce-activity-list">
         <li class="ncce-activity-list__item">
-          <span class="ncce-activity-list__item-text">Signed up to the NCCE</span>
+          <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Signed up</span> to the National Centre for Computing Education</span>
         </li>
         <% @achievements.each do |achievement| %>
           <li class="ncce-activity-list__item">
@@ -16,27 +16,30 @@
             <%= link_to_if(achievement.activity.self_certifiable?, 'UNDO', achievement_path(achievement.id), method: :delete) %>
           </li>
         <% end %>
-        <li class="ncce-activity-list__item ncce-activity-list__item--completed">
-          <span class="ncce-activity-list__item-text-completed">Add a completed CPD Activity</span>
-          <span class="govuk-form-group ncce-activity-form">
-            <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form ncce-activity-form--flex"' } do |f| %>
-              <%= f.select :activity_id,
-                options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
-                { include_blank: 'Select an activity' },
-                { class: 'govuk-select ncce-activity-form__select' }
-              %>
-          </span>
-          <span class="ncce-activity-form__button">
-              <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
-            <% end %>
-          </span>
-        </li>
       </ul>
       <div class="ncce-activity-links">
         <p class="govuk-body-s">
           <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-link--on-dark ncce-activity-links--search' %>
           </p>
-        <p class="govuk-body-s ncce-activity-links--add">Add a course you've completed</p>
+        <h2 class="add-course govuk-body-s ncce-activity-links--add ncce-activity-list__item-text-completed">
+          <button aria-expanded="false">
+          Add a course you've completed
+          </button>
+        </h2>
+        <div hidden>
+          <span class="govuk-form-group ncce-activity-form">
+          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form ncce-activity-form--flex"' } do |f| %>
+            <%= f.select :activity_id,
+              options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+              { include_blank: 'Select an activity' },
+              { class: 'govuk-select ncce-activity-form__select' }
+            %>
+          </span>
+          <span class="ncce-activity-form__button">
+              <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
+            <% end %>
+          </span>
+        </div>
       </div>
 
       <p class="govuk-body ncce-dashboard__activities">Your activities are logged here.
@@ -47,19 +50,5 @@
       class: 'ncce-link ncce-link--on-dark' %>.
       </p>
     </div>
-  </div>
-</div>
-<div class="kasia">
-  <h2 class="add-course">
-    <button aria-expanded="false">
-      Section 1
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 10">
-        <rect class="vert" height="8" width="2" y="1" x="4"/>
-        <rect height="2" width="8" y="4" x="1"/>
-      </svg>
-    </button>
-  </h2>
-  <div hidden>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo purus quis mi cursus hendrerit eu eu metus. Aliquam aliquam arcu eget aliquet scelerisque. Pellentesque sodales turpis vitae venenatis vehicula. Ut id porta velit. Ut eu dignissim dui, quis gravida est. Cras quis venenatis mauris, a bibendum enim. Sed at augue libero. Nullam tortor metus, tincidunt ut urna id, posuere placerat orci. Ut quis risus dictum risus facilisis imperdiet quis sed eros.</p>
   </div>
 </div>
