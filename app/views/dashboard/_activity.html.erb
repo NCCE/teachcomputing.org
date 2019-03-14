@@ -21,22 +21,23 @@
         <p class="govuk-body-s">
           <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-link--on-dark ncce-activity-links--search' %>
           </p>
-        <h2 class="add-course govuk-body-s ncce-activity-links--add ncce-activity-list__item-text-completed">
-          <button aria-expanded="false">
+        <p class="govuk-body-s ncce-activity-links--add ncce-activity-list__item-text-completed">
+          <button aria-expanded="false" class="ncce-activity-links--text">
           Add a course you've completed
           </button>
-        </h2>
-        <div hidden>
-          <span class="govuk-form-group ncce-activity-form">
-          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form ncce-activity-form--flex"' } do |f| %>
-            <%= f.select :activity_id,
-              options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
-              { include_blank: 'Select an activity' },
-              { class: 'govuk-select ncce-activity-form__select' }
-            %>
+        </p>
+        <div class="ncce-collapsible-activity" hidden>
+          <p class="govuk-body-s ncce-collapsible-activity__title">Add a course you've completed</p>
+          <span class="govuk-form-group">
+            <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
+              <%= f.select :activity_id,
+                options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+                { include_blank: 'Select an activity' },
+                { class: 'govuk-select ncce-activity-form__select' }
+              %>
           </span>
           <span class="ncce-activity-form__button">
-              <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
+              <%= f.submit 'Add course', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
             <% end %>
           </span>
         </div>
