@@ -58,7 +58,7 @@
 }
 
 .ncce-activity-form__button--pink {
-  margin-bottom: 0;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -109,17 +109,21 @@
 
 .ncce-collapsible-activity {
   background-color: $ncce-light-lavender;
+  box-shadow: 8px 8px 8px $nnce-dark-lavender;
   padding: 1rem;
+  position: absolute;
+  right: 15%;
   width: 30rem;
 }
 
 .ncce-collapsible-activity__title {
   color: $ncce-dark-z-grey;
-  background-image: image-url('add-dark.png');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.2rem;
+  background-image: image-url('add-dark.png'), image-url('close.png');
+  background-position: left center, right, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 1.2rem, 1.2rem;
   display: block;
   font-weight: 700;
+  margin: 0.5rem 0 2rem 0;
   padding-left: 1.5rem;
 }

@@ -1,41 +1,42 @@
 .ncce-dashboard__title {
-	text-align: center;
-	background-image: url(/images/dashboard/line.png);
-	background-position: 50% 100%;
-	background-repeat: no-repeat;
-	background-size: 70%;
-	color: $ncce-white;
-	padding: 1.5rem 0;
-	@include govuk-media-query($from: tablet) {
-		background-size: 35%;
-	}
+  text-align: center;
+  background-image: url(/images/dashboard/line.png);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  color: $ncce-white;
+  padding: 1.5rem 0;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 35%;
+  }
 }
 
 .ncce-dashboard__activities {
-	color: $ncce-white;
+  color: $ncce-white;
 
   @include govuk-media-query($from: tablet) {
-    margin: 0 auto;
+    margin: 3rem auto 0 auto;
     width: 60%;
-	}
+  }
 }
 
 .ncce-dashboard-courses {
-	background-color: $ncce-grey-x-light;
-	padding-bottom: 2rem;
-	padding-top: 2rem;
+  background-color: $ncce-grey-x-light;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 
-	@include govuk-media-query($from: tablet) {
-		padding-bottom: 3rem;
-		padding-top: 3rem;
-	}
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+  }
 }
 
 .ncce-dashboard__image {
-	margin-bottom: 1.5rem;
-	width: 50%;
+  margin-bottom: 1.5rem;
+  width: 50%;
 
-	@include govuk-media-query($from: tablet) {
-		width: 75%;
-	}
+  @include govuk-media-query($from: tablet) {
+    width: 75%;
+  }
 }
