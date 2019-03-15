@@ -1,5 +1,4 @@
 class AuthController < ApplicationController
-  before_action :set_raven_context, only: :callback
 
   def callback
     auth = omniauth_params
@@ -30,13 +29,5 @@ class AuthController < ApplicationController
 
   def omniauth_params
     request.env['omniauth.auth']
-  end
-
-  def set_raven_context
-    auth = omniauth_params
-    Raven.extra_context(
-      id: auth.uid,
-      info: auth.info
-    )
   end
 end
