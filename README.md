@@ -15,6 +15,8 @@ You'll need to set up the DB Connection ID and the relevant Workflow IDs. A list
 
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
 
+If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
+
 Build the containers:
 ```
 docker-compose build
@@ -30,6 +32,8 @@ Visit http://localhost:3000
 If it's your first time running you'll need to create the database first before use. You'll also need to do this if you've removed your database volume.
 
 In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
+
+Sidekiq is used to process background jobs. You can view the admin UI for this by visiting `/admin/sidekiq` and using the credentials `SIDEKIQ_USERNAME` and `SIDEKIQ_PASSWORD`. Values for these can be found in the terraform repository.
 
 ### Create Database
 ```

@@ -1,13 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe('courses/index', type: :view) do
-  before do
-    stub_fetch_future_courses
-    stub_approved_course_templates
+  let(:achiever) { Achiever.new }
 
-    @achiever = Achiever.new
-    @face_to_face_courses = @achiever.approvedCourseTemplates
-    @face_to_face_course_occurrences = @achiever.fetchFutureCourses
+  before do
+    stub_fetch_future_face_to_face_courses
+    stub_fetch_future_online_courses
+    stub_approved_course_templates
+    stub_course_template_subject_details
+    stub_course_template_age_range
+    @courses = achiever.approved_course_templates
+    @course_occurrences = achiever.future_face_to_face_courses + achiever.future_online_courses
+
+    @courses.each do |course|
+      achiever.course_template_subject_details(course)
+      achiever.course_template_age_range(course)
+      @course_occurrences.each do |course_occurrence|
+        if course_occurrence.course_template_no == course.course_template_no
+          course.occurrences.push(course_occurrence)
+        end
+      end
+    end
+
+    @locations = ['Cambridge']
+    @levels = ['Key stage 2']
+    @topics = ['Algorithms']
 
     render
   end
@@ -16,15 +33,50 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
-  it 'has a link to download the diagnostic tool' do
-    expect(rendered).to have_css('a', text: 'Download Diagnostic Tool PDF')
+  context 'when there is not signed in user' do
+    before do
+      allow(view).to receive(:current_user).and_return(nil)
+    end
+
+    it 'has a courses link' do
+      expect(rendered).to have_link('Create an account / log in', href: '/login')
+    end
   end
 
-  describe 'face to face courses' do
+  describe 'courses' do
     it 'renders each of the course template titles' do
-      @face_to_face_courses.each do |course|
-        expect(rendered).to have_css('govuk-heading-s', text: course.title)
+      @courses.each do |course|
+        expect(rendered).to have_css('.govuk-heading-s', text: course.title)
       end
     end
+
+    it 'renders course key stage tags' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
+    end
+
+    it 'renders course subject tags' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
+    end
+
+    it 'renders filter selects' do
+      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+    end
+
+    it 'renders location select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Cambridge')
+    end
+
+    it 'renders level select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Key stage 2')
+    end
+
+    it 'renders topic select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Algorithms')
+    end
+
+    it 'renders filter submit' do
+      expect(rendered).to have_css('.ncce-button__pink[value="Apply"]', count: 1)
+    end
+
   end
 end

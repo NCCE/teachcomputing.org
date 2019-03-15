@@ -2,21 +2,22 @@ require 'rails_helper'
 
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
+  let(:activity) { create(:activity, :diagnostic_tool) }
 
   before do
+    activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
-    assign(:delegate_course_list, [])
     @achievements = user.achievements
     render
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('h2', text: 'Your Dashboard')
+    expect(rendered).to have_css('h1', text: 'Your dashboard')
   end
 
   it 'has progress section' do
-    expect(rendered).to have_css('h3', text: 'Your Progress')
+    expect(rendered).to have_css('h2', text: 'Your progress')
   end
 
   it 'has a link to certification' do

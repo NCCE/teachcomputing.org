@@ -1,40 +1,137 @@
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <h2 class="govuk-heading-l">Courses</h2>
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__intro-wrapper">
+    <h1 class="govuk-heading-l">Courses</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">All of the currently available face-to-face and online courses are listed below.</p>
-        <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book. Online courses are provided by our partners at FutureLearn, you will need a separate account to sign up for these.</p>
-        <p class="govuk-body">After you complete the course, come back here to your dashboard to track your progress towards certification.</p>
-
-        <% @face_to_face_courses.each do |course| %>
-          <div class="ncce-courses__course">
-            <h4 class="govuk-heading-s">
-            <%=
-              link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link', target: :_blank) do
-                link_to(course.title, course.booking_url, class: 'ncce-link', target: :_blank)
-              end
+        <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book.</p>
+        <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
+        <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
+      </div>
+      <% if current_user %>
+      <aside class="govuk-grid-column-one-third ncce-aside">
+        <h2 class="govuk-heading-s ncce-aside__title">Diagnostic Tool</h2>
+        <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
+        knowledge where you need most support.</p>
+        <p class="govuk-body-s"><%= link_to 'Use Diagnostic Tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
+      </aside>
+      <% else %>
+      <aside class="govuk-grid-column-one-third ncce-aside">
+        <h2 class="govuk-heading-s ncce-aside__title">Book courses</h2>
+        <p class="govuk-body-s ncce-aside__text">
+        To book onto a course, you'll need to create an account. It's free and takes two minutes!
+        </p>
+        <p class="govuk-body-z">
+          <%= link_to 'Create an account / log in', login_path,
+          class: 'govuk-button ncce-button__pink ncce-aside__button',
+            role: 'button', draggable: 'false' %>
+        </p>
+      </aside>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="ncce-courses__filter-container">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper ncce-courses__filter-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full ncce-courses__filter">
+          <h3 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__filter-mobile-heading">
+            <button aria-expanded="false">
+            <svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
+              <g transform="translate(80, 100) rotate(-135.000000)">
+                  <rect width="100" height="27"></rect>
+                  <rect width="27" height="100"></rect>
+              </g>
+            </svg>Filter courses
+            </button>
+          </h3>
+          <%= form_tag :courses, { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
+            <span class="govuk-body-m ncce-courses__filter-prompt">Find a course:</span>
+            <%= select_tag :level,
+              options_for_select(@levels, @current_level),
+              {
+                include_blank: 'Any level',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
+                'aria-label': 'Filter by level' }
             %>
-            </h4>
-            <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
-            <div class="govuk-body-s ncce-courses__meta">
-              <% @face_to_face_course_occurrences.each do |oc| %>
-                <% next unless oc.course_template_no == course.course_template_no %>
-                <div class="ncce-courses__meta-item">
-                  <span class="ncce-courses__meta--icon"><%= oc.address_town %></span>
-                  <span><%= activity_dates(oc.start_date, oc.end_date) %></span>
-                </div>
+            <%= select_tag :location,
+              options_for_select(@locations, @current_location),
+              {
+                include_blank: 'Any location',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
+                'aria-label': 'Filter by location' }
+            %>
+            <%= select_tag :topic,
+              options_for_select(@topics, @current_topic),
+              {
+                include_blank: 'Any topic',
+                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
+                'aria-label': 'Filter by topic' }
+            %>
+            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button js-course-filter-button' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__results-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <% if @courses.length == 0 %>
+          <p class="govuk-body">No courses found that match your selection.  Please try a different one.</p>
+        <% end %>
+        <% @courses.each do |course| %>
+          <div class="ncce-courses__course">
+            <h2 class="govuk-heading-s ncce-courses__heading">
+              <% if current_user %>
+                <%=
+                  link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
+                    link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
+                  end
+                %>
+              <% else %>
+                <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
-            </div>
+            </h2>
+            <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
+            <% if course.occurrences.length > 1 %>
+              <h3 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
+                <button aria-expanded="false">
+                <svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
+                  <g transform="translate(80, 100) rotate(-135.000000)">
+                      <rect width="100" height="27"></rect>
+                      <rect width="27" height="100"></rect>
+                  </g>
+                </svg>View dates & locations
+                </button>
+              </h3>
+            <% end %>
+            <% unless course.occurrences.empty? %>
+              <ul class="govuk-list govuk-body-s ncce-courses__meta">
+                <% course.occurrences.each do |oc| %>
+                  <li class="govuk-grid-row ncce-courses__meta-item">
+                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course) %>">
+                    <%= oc.address_town %></span>
+                    <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+            <% unless course.subjects.nil? && course.key_stages.nil? %>
+              <p class="govuk-body">
+                <% course.subjects.each do |subject| %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
+                <% end %>
+                <% course.key_stages.each do |stage| %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
+                <% end %>
+              </p>
+            <% end %>
           </div>
         <% end %>
       </div>
-      <aside class="govuk-grid-column-one-third ncce-aside">
-        <p class="govuk-heading-s ncce-aside__title">Diagnostic Tool</p>
-        <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
-        knowledge where you need most support.</p>
-        <p class="govuk-body-s"><%= link_to 'Download Diagnostic Tool PDF', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'ncce-link ncce-link--on-dark', target: :_blank %></p>
-      </aside>
     </div>
   </div>
 </div>

@@ -1,33 +1,38 @@
-<h3 class="govuk-heading-m">Your Progress</h3>
-<p class="govuk-body">Your activities are logged here. Face-to-face course completion is updated automatically and online courses will be soon as well, but for now you can add them manually. We will also be including the credits you’ve earned that will help you track your progress towards <%= link_to 'certification', certification_path, class: 'ncce-link' %>.</p>
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Your progress</h2>
+      <p class="govuk-body">Your activities are logged here.
+      Face-to-face course completion is updated automatically and online courses
+      will be soon as well, but for now you can add them manually. We will also be
+      including the credits you’ve earned that will
+      help you track your progress towards <%= link_to 'certification', certification_path,
+      class: 'ncce-link' %>.</p>
+    </div>
+  </div>
+</div>
 <ul class="govuk-list ncce-activity-list">
   <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"><strong>Signed up</strong> to the National Centre for Computing Education</span>
-    <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+    <span class="ncce-activity-list__item-text">Signed up to the NCCE</span>
   </li>
   <% @achievements.each do |achievement| %>
     <li class="ncce-activity-list__item">
-      <span class="ncce-activity-list__item-text"><strong><%= achievement.activity.title %></strong></span>
-      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
+      <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
+      <%= link_to_if(achievement.activity.self_certifiable?, 'Undo', achievement_path(achievement.id), method: :delete, class: 'ncce-activity-list__link-undo') %>
     </li>
   <% end %>
-  <% @delegate_course_list.each do |course| %>
-    <li class="ncce-activity-list__item">
-      <span class="ncce-activity-list__item-text"><strong>Completed course</strong> <%= course.activity_title %></span>
-      <span class="ncce-activity-list__item-check-mark">&#9745;</span>
-    </li>
-  <% end %>
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"><strong>Add a completed CPD Activity</strong></span>
+  <li class="ncce-activity-list__item ncce-activity-list__item--completed">
+    <span class="ncce-activity-list__item-text-completed">Add a completed CPD Activity</span>
     <span class="govuk-form-group ncce-activity-form">
-      <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form"' } do |f| %>
+      <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: 'ncce-activity-form ncce-activity-form--flex"' } do |f| %>
         <%= f.select :activity_id,
-          options_for_select(Activity.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+          options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
           { include_blank: 'Select an activity' },
           { class: 'govuk-select ncce-activity-form__select' }
         %>
-        <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button' %>
+    </span>
+    <span class="ncce-activity-form__button">
+        <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
       <% end %>
     </span>
   </li>

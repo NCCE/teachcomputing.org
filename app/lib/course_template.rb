@@ -2,10 +2,12 @@ require('nokogiri')
 require_relative('achiever')
 
 class CourseTemplate
-  include ActionView::Helpers::SanitizeHelper
-
+  attr_accessor :occurrences, :subject_details, :age_range
   def initialize(doc)
-   @doc = doc
+    @doc = doc
+    @occurrences = []
+    @subject_details = nil
+    @age_range = nil
   end
 
   def booking_url
@@ -26,5 +28,13 @@ class CourseTemplate
 
   def meta_description
     @doc.xpath('.//Template.Meta_Description/text()').to_s
+  end
+
+  def subjects
+    @subject_details.try(:subject_areas)
+  end
+
+  def key_stages
+    @age_range.try(:key_stages)
   end
 end

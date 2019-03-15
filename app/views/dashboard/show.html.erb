@@ -1,20 +1,26 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
-    <h2 class="govuk-heading-l">Your Dashboard</h2>
-    <p class="govuk-body">Welcome to your personal dashboard where you can discover and book face-to-face and online training courses and view your progress.</p>
-    <p class="govuk-body">If you need help finding a course that’s suitable for you, use our <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), target: :_blank, class: 'ncce-link' %> to identify the areas of subject knowledge where you need most support.</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">Your dashboard</h1>
+          <p class="govuk-body">Welcome to your personal dashboard where you can discover and book face-to-face and online training courses and view your progress.</p>
+          <p class="govuk-body">If you need help finding a course that’s suitable for you, use our <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-link', target: :_blank %> to identify the areas of subject knowledge where you need most support.</p>
+        </div>
+      </div>
+    </div>
     <%= render 'dashboard/activity' %>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column">
           <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m">Interested in teaching Computer Science at GCSE level?</h3>
+            <h2 class="govuk-heading-m">Interested in teaching Computer Science at GCSE level?</h2>
             <p class="govuk-body">If you don’t have a computing qualification, you may be eligible for a bursary towards your training.</p>
             <p class="govuk-body"><%= link_to 'Check your bursary availability', bursary_path, class: 'ncce-link' %></p>
           </div>
           <aside class="govuk-grid-column-one-third ncce-aside">
-            <p class="govuk-heading-s ncce-aside__title">Find courses</p>
-            <p class="govuk-body-s ncce-aside__text">See the list of current face to face and online courses.</p>
-            <p class="govuk-body-s"><%= link_to 'Find courses', courses_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+            <h2 class="govuk-heading-m ncce-aside__title">Find courses</h2>
+            <p class="govuk-body ncce-aside__text">See the list of current face to face and online courses.</p>
+            <p class="govuk-body"><%= link_to 'Find courses', courses_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
           </aside>
         </div>
       </div>

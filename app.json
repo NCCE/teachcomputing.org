@@ -39,6 +39,61 @@
     },
     "STEM_OAUTH_CLIENT_SECRET": {
       "required": true
+    },
+    "SIDEKIQ_USERNAME": {
+      "required": true
+    },
+    "SIDEKIQ_PASSWORD": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_S3_BUCKET": {
+      "required": true
+    },
+    "AWS_S3_REGION": {
+      "required": true
+    },
+    "BYPASS_OAUTH": {
+      "description": "Allows login without using OAuth mechanism",
+      "value": "true"
+    },
+    "ACHIEVER_API_ENDPOINT": {
+      "required": true
+    },
+    "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_FACE_TO_FACE_FUTURE_COURSES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_ONLINE_FUTURE_COURSES_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_DB_CONNECTION_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID": {
+      "required": true
+    },
+    "ACHIEVER_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID": {
+      "required": true
+    },
+    "PROXY_URL": {
+      "required": true
     }
   },
   "formation": {
@@ -47,7 +102,8 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic"
+    "heroku-postgresql:hobby-basic",
+    "heroku-redis:hobby-dev"
   ],
   "buildpacks": [
     {

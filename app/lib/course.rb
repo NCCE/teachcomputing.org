@@ -57,7 +57,7 @@ class Course
     @doc.xpath('.//Activity.Deliverer/text()').to_s
   end
 
-  def activity_code
+  def region
     @doc.xpath('.//Activity.Region/text()').to_s
   end
 
@@ -127,5 +127,9 @@ class Course
 
   def course_template_no
     @doc.xpath('.//Template.COURSETEMPLATENO/text()').to_s
+  end
+
+  def online_course
+    @doc.xpath('.//Activity.Online_CPD/text()').to_s.to_i
   end
 end

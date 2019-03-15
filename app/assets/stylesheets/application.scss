@@ -1,10 +1,10 @@
-// Override Gov UK fonts
+// Override Gov UK fonts & colours
 @import 'settings/_fonts.scss';
+@import 'settings/_colors.scss';
 
 @import 'govuk-frontend/all';
 
 // import NCCE settings
-@import 'settings/_colors.scss';
 @import 'settings/_links.scss';
 @import 'settings/_section-breaks.scss';
 @import 'settings/_typography.scss';
@@ -23,9 +23,10 @@
 @import 'components/pages/home/_mailing.scss';
 @import 'components/pages/home/_partners.scss';
 @import 'components/pages/home/_sign-up.scss';
-@import 'components/pages/home/_stay-updated.scss';
-@import 'components/pages/_signup-stem.scss';
+@import 'components/pages/home/_news-and-updates.scss';
 @import 'components/pages/_courses.scss';
+@import 'components/pages/_news.scss';
+@import 'components/pages/_signup-stem.scss';
 @import 'components/dashboard/_activity-list.scss';
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
