@@ -18,6 +18,6 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'has a mailto link' do
-    expect(rendered).to have_link('Get in touch', href: 'mailto:supporters@teachcomputing.org')
+    expect(rendered).to have_link('Get involved', href: '/get-involved')
   end
 end
