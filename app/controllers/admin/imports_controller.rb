@@ -1,6 +1,6 @@
 class Admin::ImportsController < ApplicationController
   before_action :set_activity, only: %i[new create]
-  before_action :set_admin, only: %i[new create]
+  # before_action :set_admin, only: %i[new create]
 
   def index
     @activities = Activity.future_learn
@@ -12,9 +12,8 @@ class Admin::ImportsController < ApplicationController
     import = Import.new(activity_id: params[:activity_id],
                         provider: params[:provider],
                         triggered_by: params[:triggered_by])
-                        
     if import.save
-      ProcessFutureLearnCsvExportJob.perform_later(@activity, params[:csv_file].read.to_s, import)
+      ProcessFutureLearnCsvExportJob.perform_later(@activity, params[:csv_file].read.force_encoding(Encoding::UTF_8).to_s, import)
       flash[:notice] = "CSV Import for #{@activity.title} has been scheduled"
     else
       flash[:error] = 'Whoops something went wrong'
