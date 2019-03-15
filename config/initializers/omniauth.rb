@@ -7,24 +7,31 @@ module OmniAuth::Strategies
            authorize_url: ENV.fetch('STEM_OAUTH_AUTH_URL'),
            token_url: ENV.fetch('STEM_OAUTH_ACCESS_TOKEN_URL')
 
-    uid { raw_info['attributes']['uid'][0] }
+    uid { user_info['attributes']['uid'][0] }
 
     info do
       {
-        first_name: raw_info['attributes']['firstName'][0],
-        last_name: raw_info['attributes']['lastName'][0],
-        email: raw_info['attributes']['mail'][0],
-        achiever_contact_no: raw_info['attributes']['achieverContactNo'][0]
+        first_name: user_info['attributes']['firstName'][0],
+        last_name: user_info['attributes']['lastName'][0],
+        email: user_info['attributes']['mail'][0],
+        achiever_contact_no: user_info['attributes']['achieverContactNo'][0]
       }
     end
 
-    def raw_info
-      @raw_info ||= access_token.get('/idp/module.php/oauth2/userinfo.php').parsed
+    def user_info
+      response ||= access_token.get('/idp/module.php/oauth2/userinfo.php')
+      raven_context(response)
+      response.parsed
     end
 
     def callback_url
       return super if ENV['BYPASS_OAUTH'].present?
+
       ENV.fetch('STEM_OAUTH_CALLBACK_URL')
+    end
+
+    def raven_context(response)
+      Raven.tags_context(stem_uid: response.parsed['attributes']['uid'][0], status: response.status)
     end
   end
 end
