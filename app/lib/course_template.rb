@@ -30,6 +30,10 @@ class CourseTemplate
     @doc.xpath('.//Template.Meta_Description/text()').to_s
   end
 
+  def activity_code
+    @doc.xpath('.//Template.Activity_Code/text()').to_s
+  end
+
   def subjects
     @subject_details.try(:subject_areas)
   end
