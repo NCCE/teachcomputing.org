@@ -94,6 +94,7 @@
               <% else %>
                 <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
+              <span class="ncce-courses__heading-code"><%= course.activity_code %></span>
             </h2>
             <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
             <% if course.occurrences.length > 1 %>
