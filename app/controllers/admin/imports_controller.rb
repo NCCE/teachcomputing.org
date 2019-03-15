@@ -1,6 +1,6 @@
 class Admin::ImportsController < ApplicationController
   before_action :set_activity, only: %i[new create]
-  # before_action :set_admin, only: %i[new create]
+  before_action :set_admin, only: %i[new create]
 
   def index
     @activities = Activity.future_learn
