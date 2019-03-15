@@ -14,6 +14,8 @@
 
 .ncce-dashboard__activities {
   color: $ncce-white;
+  margin: 2rem auto 0 auto;
+
 
   @include govuk-media-query($from: tablet) {
     margin: 3rem auto 0 auto;
@@ -33,10 +35,10 @@
 }
 
 .ncce-dashboard__image {
-  margin-bottom: 1.5rem;
-  width: 50%;
+  display: none;
 
   @include govuk-media-query($from: tablet) {
+    display: block;
     width: 75%;
   }
 }

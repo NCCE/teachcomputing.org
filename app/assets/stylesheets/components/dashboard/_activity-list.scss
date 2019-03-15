@@ -18,7 +18,7 @@
   background-color: $ncce-white;
   display: grid;
   grid-template-columns: 2fr auto;
-  padding: 1.25rem 1.125rem;
+  padding: 0.5rem 1.125rem;
   border-bottom-width: 2px;
   border-bottom-color: $ncce-light-lavender;
   border-bottom-style: solid;
@@ -32,6 +32,10 @@
   &:last-child {
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding: 1.25rem 1.125rem;
   }
 }
 
@@ -73,9 +77,15 @@
 
 .ncce-activity-links {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
-  margin: 0 auto;
+  flex-direction: column;
+  text-align: center;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 
 .ncce-activity-links--search {
@@ -83,7 +93,8 @@
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 1.2rem;
-  display: block;
+  color: $ncce-light-purple;
+  font-size: 16px;
   padding-left: 1.5rem;
 }
 
@@ -93,15 +104,14 @@
   background-repeat: no-repeat;
   background-size: 1.2rem;
   color: $ncce-light-purple;
-  display: block;
+  display: inline-flex;
   padding-left: 1.5rem;
-  text-decoration: underline;
 }
 
 
 .ncce-activity-links--text {
   background: none;
-  color: $ncce-light-purple;
+  color: $ncce-lavender;
   text-decoration: underline;
   border: none;
   font-size: 16px;
@@ -111,19 +121,31 @@
   background-color: $ncce-light-lavender;
   box-shadow: 8px 8px 8px $nnce-dark-lavender;
   padding: 1rem;
-  position: absolute;
-  right: 15%;
-  width: 30rem;
+  text-align: left;
+
+  @include govuk-media-query($from: tablet) {
+    position: absolute;
+    right: 15%;
+    width: 30rem;
+  }
 }
 
 .ncce-collapsible-activity__title {
   color: $ncce-dark-z-grey;
-  background-image: image-url('add-dark.png'), image-url('close.png');
-  background-position: left center, right, center;
-  background-repeat: no-repeat, no-repeat;
-  background-size: 1.2rem, 1.2rem;
+  background-image: image-url('add-dark.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
   display: block;
+  font-size: 16px;
   font-weight: 700;
   margin: 0.5rem 0 2rem 0;
   padding-left: 1.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    background-image: image-url('add-dark.png'), image-url('close.png');
+    background-position: left center, right, center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 1.2rem, 1.2rem;
+  }
 }
