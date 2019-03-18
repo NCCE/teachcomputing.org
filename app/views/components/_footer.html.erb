@@ -1,39 +1,49 @@
 <footer class="govuk-footer ncce-footer" role="contentinfo">
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
+      <div class="govuk-grid-column-one-third">
         <h1 class="govuk-heading-s ncce-footer__heading">
           <%= link_to 'National Centre for<br>Computing Education'.html_safe, root_path, class: 'govuk-footer__link ncce-footer__link--homepage' %>
         </h1>
       </div>
-      <div class="govuk-grid-column-one-half ncce-footer__links">
-        <ul class="govuk-footer__inline-list ncce-footer__nav">
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to 'About Us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+      <nav class="govuk-grid-column-two-thirds ncce-footer__links" aria-label="Footer Navigation">
+        <ul class="govuk-footer__list ncce-footer__list">
+          <li class="govuk-footer__list-item">
+            <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
           </li>
-          <li class="govuk-footer__inline-list-item">
+          <li class="govuk-footer__list-item">
+            <%= link_to 'Our offer', offer_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          </li>
+          <li class="govuk-footer__list-item">
+            <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          </li>
+          <li class="govuk-footer__list-item">
+            <%= link_to 'News', news_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          </li>
+          <li class="govuk-footer__list-item">
             <%= link_to 'Press', press_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
           </li>
-          <li class="govuk-footer__inline-list-item">
+          <li class="govuk-footer__list-item">
+            <%= link_to 'About Us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          </li>
+          <li class="govuk-footer__list-item">
             <%= mail_to 'info@teachcomputing.org', 'Contact', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_top' %>
           </li>
-          <li class="govuk-footer__inline-list-item ncce-footer__list--item">
+          <li class="govuk-footer__list-item">
             <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
           </li>
-        </ul>
-        <ul class="govuk-footer__inline-list ncce-footer__nav">
-          <li class="govuk-footer__inline-list-item  ncce-footer__list--item">
+          <li class="govuk-footer__list-item">
             <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_blank' do %>
               <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
             <% end %>
           </li>
-          <li class="govuk-footer__inline-list-item  ncce-footer__list--item">
+          <li class="govuk-footer__list-item">
             <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_blank' do %>
               <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
             <% end %>
           </li>
         </ul>
-      </div>
+      </nav>
     </div>
   </div>
 </footer>

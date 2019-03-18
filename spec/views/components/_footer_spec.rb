@@ -13,8 +13,24 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('About', href: '/about')
   end
 
+  it 'has a bursaries link' do
+    expect(rendered).to have_link('Bursaries', href: '/bursary')
+  end
+
   it 'has a contact link' do
     expect(rendered).to have_link('Contact', href: 'mailto:info@teachcomputing.org')
+  end
+
+  it 'has a courses link' do
+    expect(rendered).to have_link('Courses', href: '/courses')
+  end
+
+  it 'has a news link' do
+    expect(rendered).to have_link('News', href: '/news')
+  end
+
+  it 'has an offer link' do
+    expect(rendered).to have_link('Our offer', href: '/offer')
   end
 
   it 'has a privacy link' do
