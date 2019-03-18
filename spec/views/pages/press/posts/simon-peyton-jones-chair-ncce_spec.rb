@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/press/posts/simon-peyton-jones', type: :view) do
+RSpec.describe('pages/press/posts/simon-peyton-jones-chair-ncce', type: :view) do
   before do
     render
   end

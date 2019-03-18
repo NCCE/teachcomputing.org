@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   scope '/press' do
     get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
-    get '/simon-peyton-jones', to: 'pages#page', as: :simon_peyton_jones, defaults: { page_slug: 'press/posts/simon-peyton-jones' }
+    get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }
 
   end
 

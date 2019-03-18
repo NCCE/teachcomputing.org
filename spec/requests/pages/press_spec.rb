@@ -18,7 +18,7 @@ RSpec.describe PagesController do
 
     context 'simon-peyton-jones' do
       before do
-        get '/press/simon-peyton-jones'
+        get '/press/simon-peyton-jones-chair-ncce'
       end
 
       it 'has a status code of 200' do
@@ -26,7 +26,7 @@ RSpec.describe PagesController do
       end
 
       it 'renders the view' do
-        expect(response).to render_template('press/posts/simon-peyton-jones')
+        expect(response).to render_template('press/posts/simon-peyton-jones-chair-ncce')
       end
     end
   end
