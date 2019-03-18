@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :achiever do
     delete '/cache', to: 'cache#destroy'
   end
-  
+
   namespace 'admin' do
     resources :imports
   end
@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }
     get '/beta-launch', to: 'pages#page', as: :beta_launch, defaults: { page_slug: 'news/posts/beta-launch' }
     get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }
+  end
+
+  scope '/press' do
+    get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
+    get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }
+
   end
 
   require 'sidekiq/web'
