@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('pages/login', type: :view) do
   before do
-    render
+    render template: 'pages/login', locals: { auth_uri: '/test/123' }
   end
 
   it 'has a title' do
@@ -22,7 +22,7 @@ RSpec.describe('pages/login', type: :view) do
   end
 
   it 'links to log in to a STEM Learning account' do
-    expect(rendered).to have_link('Log in', href: '/auth/stem')
+    expect(rendered).to have_link('Log in', href: '/test/123')
   end
 
   it 'links to about' do
