@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
+  let(:activity) { create(:activity, :diagnostic_tool) }
 
   before do
+    activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements

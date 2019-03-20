@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe DashboardController do
   let(:user) { create(:user) }
   let(:achievements) { create(:achievements, user: user) }
+  let(:activity) { create(:activity, :diagnostic_tool) }
 
   describe '#show' do
     describe 'while logged in' do
       before do
+        activity
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end

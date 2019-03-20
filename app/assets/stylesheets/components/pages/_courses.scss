@@ -99,10 +99,15 @@
 
 .ncce-courses__heading {
 	margin-bottom: 10px;
-}
-
-.ncce-courses__heading--link {
-	font-family: "Objectivity Bold", sans-serif;
+  &--link {
+    font-family: $font-family-heading;
+    margin-right: 1em;
+  }
+  &-code {
+    color: $ncce-storm-grey;
+    font-weight: 400;
+    font-size: 0.74em;
+  }
 }
 
 .ncce-courses__tag {

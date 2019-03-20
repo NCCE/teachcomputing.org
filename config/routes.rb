@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     delete '/cache', to: 'cache#destroy'
   end
 
+  namespace 'admin' do
+    resources :imports
+  end
+
   resources :achievements, only: [:create, :destroy]
 
   namespace :activities do
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
+  get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
@@ -37,7 +42,14 @@ Rails.application.routes.draw do
   scope '/news' do
     get '/', to: 'pages#page', as: :news, defaults: { page_slug: 'news/index' }
     get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }
+    get '/beta-launch', to: 'pages#page', as: :beta_launch, defaults: { page_slug: 'news/posts/beta-launch' }
     get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }
+  end
+
+  scope '/press' do
+    get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
+    get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }
+
   end
 
   require 'sidekiq/web'

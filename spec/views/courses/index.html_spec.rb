@@ -50,6 +50,12 @@ RSpec.describe('courses/index', type: :view) do
       end
     end
 
+    it 'renders each of the course template codes' do
+      @courses.each do |course|
+        expect(rendered).to have_css('.ncce-courses__heading-code', text: course.activity_code)
+      end
+    end
+
     it 'renders course key stage tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
     end
