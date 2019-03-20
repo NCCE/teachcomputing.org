@@ -55,6 +55,129 @@
   }
 }
 
+.ncce-activity-links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+
+  &--progressive {
+    @include govuk-media-query($from: tablet) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &-search {
+    background-image: image-url('search.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 1.2rem;
+    padding-left: 1.5rem;
+    margin-right: 1em;
+    font-size: 1rem;
+
+    @include govuk-media-query($until: tablet) {
+      line-height: 3rem;
+      background-size: 1rem;
+    }
+
+  }
+
+  &-add-button {
+    all: inherit;
+    cursor: pointer;
+    border: 0;
+    display: inline-flex;
+
+    background-image: image-url('add.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 1.2rem;
+
+    @include govuk-media-query($until: tablet) {
+      background-size: 1rem;
+    }
+
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    text-decoration: underline;
+
+    color: $ncce-grey-x-light;
+    &:hover {
+      color: $ncce-white;
+    }
+    &:focus {
+      color: $ncce-white;
+    }
+    &:active {
+      color: $ncce-black;
+    }
+  }
+}
+
+.ncce-collapsible-activity {
+  margin-top: -3.8rem;
+  &--progressive {
+    position: absolute;
+    margin-top: 3.5rem;
+    @include govuk-media-query($from: tablet) {
+      margin-top: auto;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      right: -12rem;
+      width: 30rem;
+    }
+  }
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 1rem;
+
+
+
+  background-color: $ncce-light-lavender;
+  box-shadow: 8px 8px 8px $nnce-dark-lavender;
+  text-align: left;
+
+  &__title-button {
+    all: inherit;
+
+    box-sizing:border-box;
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0 2rem 0;
+    padding-left: 1.5rem;
+
+    background-image: image-url('add-dark.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 1.2rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: $ncce-dark-z-grey;
+    text-align: left;
+    cursor: pointer;
+    border: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      background-image: image-url('add-dark.png'), image-url('close.png');
+      background-position: left center, right, center;
+      background-repeat: no-repeat, no-repeat;
+      background-size: 1.2rem, 1.2rem;
+    }
+  }
+}
+
 .ncce-activity-form__select {
   border-radius: 6px;
   font-size: 17px;
@@ -64,88 +187,4 @@
 .ncce-activity-form__button--pink {
   margin-top: 1rem;
   width: 100%;
-}
-
-.ncce-activity-list__item--completed {
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @include govuk-media-query($from: tablet) {
-    grid-template-columns: 3fr 1fr;
-  }
-}
-
-.ncce-activity-links {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  @include govuk-media-query($from: tablet) {
-    flex-direction: row;
-    justify-content: space-around;
-    width: 50%;
-    margin: 0 auto;
-  }
-}
-
-.ncce-activity-links--search {
-  background-image: image-url('search.png');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.2rem;
-  color: $ncce-light-purple;
-  font-size: 16px;
-  padding-left: 1.5rem;
-}
-
-.ncce-activity-links--add {
-  background-image: image-url('add.png');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.2rem;
-  color: $ncce-light-purple;
-  display: inline-flex;
-  padding-left: 1.5rem;
-}
-
-
-.ncce-activity-links--text {
-  background: none;
-  color: $ncce-lavender;
-  text-decoration: underline;
-  border: none;
-  font-size: 16px;
-}
-
-.ncce-collapsible-activity {
-  background-color: $ncce-light-lavender;
-  box-shadow: 8px 8px 8px $nnce-dark-lavender;
-  padding: 1rem;
-  text-align: left;
-
-  @include govuk-media-query($from: tablet) {
-    position: absolute;
-    right: 15%;
-    width: 30rem;
-  }
-}
-
-.ncce-collapsible-activity__title {
-  color: $ncce-dark-z-grey;
-  background-image: image-url('add-dark.png');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.2rem;
-  display: block;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0.5rem 0 2rem 0;
-  padding-left: 1.5rem;
-
-  @include govuk-media-query($from: tablet) {
-    background-image: image-url('add-dark.png'), image-url('close.png');
-    background-position: left center, right, center;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 1.2rem, 1.2rem;
-  }
 }
