@@ -10,6 +10,6 @@ RSpec.describe('pages/press/index', type: :view) do
   end
 
   it 'contains the correct number of posts' do
-    expect(rendered).to have_css('.ncce-link--heading', count: 1)
+    expect(rendered).to have_css('.ncce-link--heading', count: 2)
   end
 end
