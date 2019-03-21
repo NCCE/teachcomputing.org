@@ -1,0 +1,21 @@
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column">
+        <div class="govuk-grid-column-two-thirds">
+          <h1>Post Form</h1>
+          <form action="https://www.classmarker.com/online-test/start/" method="post">
+            <input type="hidden" name="quiz" value="fqf5c925d66b7b66"/>
+            <input type="hidden" name="cm_e" value="<%= current_user.email %>"/>
+            <input type="hidden" name="cm_user_id" value="<%= current_user.id %>"/>
+            <input type="submit" value="Take the assessment"/>
+          </form>
+          <br>
+          <h1 class="govuk-heading-l">Embedded Assessment</h1>
+          <iframe src="https://www.classmarker.com/online-test/start/?quiz=fqf5c925d66b7b66&iframe=1&cm_e=<%= current_user.email %>&cm_user_id=<%= current_user.id %>" frameborder="0" style="width:100%;max-width:700px;" height="800"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

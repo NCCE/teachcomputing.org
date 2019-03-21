@@ -6,4 +6,8 @@ class DashboardController < ApplicationController
 
     render :show
   end
+
+  def assessment
+    render :assessment
+  end
 end

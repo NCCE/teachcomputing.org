@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :courses, path: '/courses', only: [:index]
 
   get 'dashboard', action: :show, controller: 'dashboard'
+  get 'dashboard/assessment', action: :assessment, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' }
