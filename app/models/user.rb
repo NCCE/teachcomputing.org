@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :assessments
+  
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :stem_achiever_contact_no, presence: true
