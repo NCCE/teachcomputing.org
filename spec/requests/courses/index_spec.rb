@@ -175,6 +175,26 @@ RSpec.describe CoursesController do
         end
       end
 
+      context 'when filtering by workstream' do
+        before do
+          get courses_path, params: { workstream: 'National Centre - Non-Core' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(3)
+        end
+
+        it 'courses have correct workstream' do
+          assigns(:courses).each do |course|
+            expect(course.workstream).to eq('National Centre - Non-Core')
+          end
+        end
+
+        it 'initalises current level' do
+          expect(assigns(:current_workstream)).to eq('National Centre - Non-Core')
+        end
+      end
+
       context 'when filtering by level and location' do
         before do
           get courses_path, params: { level: 'Key stage 4', location: 'York' }
@@ -250,6 +270,49 @@ RSpec.describe CoursesController do
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
           expect(course.occurrences.map(&:address_town)).to include('Cambridge')
+        end
+      end
+
+      context 'filter by level, location, topic and workstream' do
+        before do
+          get courses_path, params: {
+            level: 'Key stage 2',
+            topic: 'Mathematics',
+            location: 'York',
+            workstream: 'National Centre - Core'
+          }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(1)
+        end
+
+        it 'has correct topic' do
+          assigns(:courses).each do |course|
+            expect(course.subjects).to eq(['Mathematics'])
+          end
+        end
+
+        it 'has correct level' do
+          assigns(:courses).each do |course|
+            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
+          end
+        end
+
+        it 'has filtered town' do
+          course = assigns(:courses).first
+          expect(course.occurrences.map(&:address_town)).to include('York')
+        end
+
+        it 'doesn\'t exclude other occurrence locations' do
+          course = assigns(:courses).first
+          expect(course.occurrences.map(&:address_town)).to include('Cambridge')
+        end
+
+        it 'has correct workstream' do
+          assigns(:courses).each do |course|
+            expect(course.workstream).to eq('National Centre - Core')
+          end
         end
       end
     end

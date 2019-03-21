@@ -34,6 +34,10 @@ class CourseTemplate
     @doc.xpath('.//Template.Activity_Code/text()').to_s
   end
 
+  def workstream
+    @doc.xpath('.//Template.Workstream/text()').to_s
+  end
+
   def subjects
     @subject_details.try(:subject_areas)
   end

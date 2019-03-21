@@ -25,6 +25,7 @@ RSpec.describe('courses/index', type: :view) do
     @locations = ['Cambridge']
     @levels = ['Key stage 2']
     @topics = ['Algorithms']
+    @workstreams = ['CS Accelerator']
 
     render
   end
@@ -64,8 +65,12 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
 
+    it 'renders course subject tags' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
+    end
+
     it 'renders filter selects' do
-      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+      expect(rendered).to have_css('.ncce-courses__filter-select', count: 4)
     end
 
     it 'renders location select' do
