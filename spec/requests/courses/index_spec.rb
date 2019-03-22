@@ -315,6 +315,21 @@ RSpec.describe CoursesController do
           end
         end
       end
+
+      context 'filter by level, location, topic and alternate workstream' do
+        before do
+          get courses_path, params: {
+            level: 'Key stage 2',
+            topic: 'Mathematics',
+            location: 'York',
+            workstream: 'National Centre - Non-Core'
+          }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(0)
+        end
+      end
     end
   end
 end
