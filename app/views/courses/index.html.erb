@@ -46,7 +46,7 @@
             </button>
           </h3>
           <%= form_tag :courses, { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
-            <span class="govuk-body-m ncce-courses__filter-prompt">Find a course:</span>
+            <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
               options_for_select(@levels, @current_level),
               {
