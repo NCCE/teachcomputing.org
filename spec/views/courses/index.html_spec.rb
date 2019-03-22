@@ -4,13 +4,13 @@ RSpec.describe('courses/index', type: :view) do
   let(:achiever) { Achiever.new }
 
   before do
-    stub_fetch_future_courses
+    stub_fetch_future_face_to_face_courses
+    stub_fetch_future_online_courses
     stub_approved_course_templates
     stub_course_template_subject_details
     stub_course_template_age_range
-
     @courses = achiever.approved_course_templates
-    @course_occurrences = achiever.future_courses
+    @course_occurrences = achiever.future_face_to_face_courses + achiever.future_online_courses
 
     @courses.each do |course|
       achiever.course_template_subject_details(course)
@@ -21,6 +21,11 @@ RSpec.describe('courses/index', type: :view) do
         end
       end
     end
+
+    @locations = ['Cambridge']
+    @levels = ['Key stage 2']
+    @topics = ['Algorithms']
+
     render
   end
 
@@ -45,6 +50,12 @@ RSpec.describe('courses/index', type: :view) do
       end
     end
 
+    it 'renders each of the course template codes' do
+      @courses.each do |course|
+        expect(rendered).to have_css('.ncce-courses__heading-code', text: course.activity_code)
+      end
+    end
+
     it 'renders course key stage tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
     end
@@ -52,5 +63,26 @@ RSpec.describe('courses/index', type: :view) do
     it 'renders course subject tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
+
+    it 'renders filter selects' do
+      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+    end
+
+    it 'renders location select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Cambridge')
+    end
+
+    it 'renders level select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Key stage 2')
+    end
+
+    it 'renders topic select' do
+      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Algorithms')
+    end
+
+    it 'renders filter submit' do
+      expect(rendered).to have_css('.ncce-button__pink[value="Apply"]', count: 1)
+    end
+
   end
 end

@@ -19,6 +19,12 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
   end
 
+  it 'check for every Undo link' do
+    @achievements.each do |achievement|
+      expect(rendered).to have_css('.ncce-activity-list__link-undo', text: 'Undo')
+    end
+  end
+
   it 'has the form item' do
     expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a completed CPD Activity')
   end

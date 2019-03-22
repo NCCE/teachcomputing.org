@@ -1,0 +1,175 @@
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/8.5
+X-AspNet-Version: 4.0.30319
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Date: Tue, 04 Dec 2018 13:52:06 GMT
+Content-Length: 25158
+
+<?xml version="1.0" encoding="utf-8"?>
+<string xmlns="http://achiever.com/webservices/">&lt;AchieverResponse&gt;&lt;AchieverDataResults&gt;&lt;AchieverDataResult_1&gt;
+  &lt;Detail&gt;
+    &lt;Activity.Activity_Code&gt;CP202&lt;/Activity.Activity_Code&gt;
+    &lt;Activity.Instance_Code&gt;A01&lt;/Activity.Instance_Code&gt;
+    &lt;Activity.Activity_Title&gt;Networks and cyber-security in GCSE Computer Science&lt;/Activity.Activity_Title&gt;
+    &lt;Activity.Start_Date__x0028_Portal_x0029_&gt;22/01/2019&lt;/Activity.Start_Date__x0028_Portal_x0029_&gt;
+    &lt;Activity.End_Date__x0028_Portal_x0029_&gt;19/02/2019&lt;/Activity.End_Date__x0028_Portal_x0029_&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;2&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Duration__x0028_Period_x0029_&gt;Days&lt;/Activity.Duration__x0028_Period_x0029_&gt;
+    &lt;Activity.Duration__x0028_No_x0029_&gt;2&lt;/Activity.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;Networked computers, and cyber-security issues, are the focus of this two-day professional development. Gain comprehensive knowledge of the hardware and software systems that comprise networks, including the globally connected systems forming the internet. We will demystify the numerous protocols, network topologies and key applications used for data transfer between computers, and help you make learning relevant and engaging to students.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Based in this knowledge of networks, you’ll also develop your knowledge of computer security including measures to guard against a range of threats, both technical and behavioural. You’ll learn about vulnerabilities – where they come from, how they are exploited, and what can be done about them; knowledge which helps inform your students and make them safer online citizens.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Mapped closely to the specifications of GCSE computer science, the course will provide you with deepened knowledge and confidence that your students are equipped for their exams.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
+    &lt;Template.Meta_Description&gt;Develop your knowledge of networks, computer security and guarding against threats to successfully teach your students&lt;/Template.Meta_Description&gt;
+    &lt;Activity.PORTALCOURSEURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=0FB5042F-71D8-402D-9F2A-D031E2613F44&amp;amp;COURSEOCCURRENCE_COURSEOCCURRENCENO=1F0F08A6-839B-4095-ACB7-2E44069A8EED&lt;/Activity.PORTALCOURSEURL&gt;
+    &lt;Activity.Deliverer&gt;Computing Operator&lt;/Activity.Deliverer&gt;
+    &lt;Activity.Activity_Occurrence_ID&gt;1F0F08A6-839B-4095-ACB7-2E44069A8EED&lt;/Activity.Activity_Occurrence_ID&gt;
+    &lt;Activity.Status&gt;Approved&lt;/Activity.Status&gt;
+    &lt;Activity.Display_Programme&gt;NCCE&lt;/Activity.Display_Programme&gt;
+    &lt;Activity.ITK_CPD_Type&gt;SLPN one day&lt;/Activity.ITK_CPD_Type&gt;
+    &lt;Activity.Online_CPD&gt;1&lt;/Activity.Online_CPD&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Activity.Places_Remaining&gt;24&lt;/Activity.Places_Remaining&gt;
+    &lt;Activity.Pay_Later&gt;1&lt;/Activity.Pay_Later&gt;
+    &lt;Activity.ePayment&gt;None&lt;/Activity.ePayment&gt;
+    &lt;Activity.Changed_Date&gt;2018-11-22T06:05:03.687+00:00&lt;/Activity.Changed_Date&gt;
+    &lt;Activity.Everest_Occurrence_Changed_Date&gt;2018-11-22T06:05:03.687+00:00&lt;/Activity.Everest_Occurrence_Changed_Date&gt;
+    &lt;Activity.CPD_Type&gt;Face-to-Face CPD&lt;/Activity.CPD_Type&gt;
+    &lt;Activity.Imported_to_ITK&gt;1&lt;/Activity.Imported_to_ITK&gt;
+    &lt;Activity.COURSEOCCURRENCENO&gt;1f0f08a6-839b-4095-acb7-2e44069a8eed&lt;/Activity.COURSEOCCURRENCENO&gt;
+    &lt;Template.COURSETEMPLATENO&gt;0f9644e0-afda-4307-b195-111111&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Activity.Activity_Code&gt;CT201&lt;/Activity.Activity_Code&gt;
+    &lt;Activity.Instance_Code&gt;T00&lt;/Activity.Instance_Code&gt;
+    &lt;Activity.Activity_Title&gt;New to teaching GCSE computer science&lt;/Activity.Activity_Title&gt;
+    &lt;Activity.Start_Date__x0028_Portal_x0029_&gt;07/01/2019&lt;/Activity.Start_Date__x0028_Portal_x0029_&gt;
+    &lt;Activity.End_Date__x0028_Portal_x0029_&gt;08/01/2019&lt;/Activity.End_Date__x0028_Portal_x0029_&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;2&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Duration__x0028_Period_x0029_&gt;Days&lt;/Activity.Duration__x0028_Period_x0029_&gt;
+    &lt;Activity.Duration__x0028_No_x0029_&gt;2&lt;/Activity.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;With entries to GCSE Computer Science growing year-on-year, teachers are required to develop their specialism and provide improved learning through excellent teaching.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;This course is aimed at those who are new to teaching Computer Science at GCSE level, or who wish to develop their existing GCSE teaching further. It focuses on the themes that are common to all exam boards and that run through from earlier school stages, such as algorithms, programming, computer systems, networking and data. There will be opportunities to develop your leadership of practical assessed tasks; to make effective use of out-of-school learning; and to gain experience of a range of tools that can be used in teaching.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;
+&amp;lt;blockquote&amp;gt;"I have big concerns about my ability to teach the theory, this gave me the confidence to try an alternative approach."&amp;lt;/em&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;"All sessions were useful as they showed innovative and alternative ways of looking at the material"&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;"useful - lots of ideas and resources to use in my curriculum"&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;"I have already enrolled on several more CPD sessions held at the STEM centre as a result of the positive impact this course has had on my teaching." &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;2016 participants&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/blockquote&amp;gt;
+&amp;lt;p&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="mailto:enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
+    &lt;Activity.PORTALCOURSEURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=0FB5042F-71D8-402D-9F2A-D031E2613F44&amp;amp;COURSEOCCURRENCE_COURSEOCCURRENCENO=44D3D391-394A-4784-97D5-35D0B9F4432E&lt;/Activity.PORTALCOURSEURL&gt;
+    &lt;Activity.Deliverer&gt;Computing Operator&lt;/Activity.Deliverer&gt;
+    &lt;Activity.Activity_Occurrence_ID&gt;44D3D391-394A-4784-97D5-35D0B9F4432E&lt;/Activity.Activity_Occurrence_ID&gt;
+    &lt;Activity.Status&gt;Approved&lt;/Activity.Status&gt;
+    &lt;Activity.Display_Programme&gt;NCCE&lt;/Activity.Display_Programme&gt;
+    &lt;Activity.ITK_CPD_Type&gt;NSLC multi day&lt;/Activity.ITK_CPD_Type&gt;
+    &lt;Activity.Online_CPD&gt;1&lt;/Activity.Online_CPD&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Activity.Places_Remaining&gt;21&lt;/Activity.Places_Remaining&gt;
+    &lt;Activity.Pay_Later&gt;1&lt;/Activity.Pay_Later&gt;
+    &lt;Activity.ePayment&gt;None&lt;/Activity.ePayment&gt;
+    &lt;Activity.Changed_Date&gt;2018-11-21T11:56:07.697+00:00&lt;/Activity.Changed_Date&gt;
+    &lt;Activity.Everest_Occurrence_Changed_Date&gt;2018-11-21T11:56:08.133+00:00&lt;/Activity.Everest_Occurrence_Changed_Date&gt;
+    &lt;Activity.CPD_Type&gt;Face-to-Face CPD&lt;/Activity.CPD_Type&gt;
+    &lt;Activity.Imported_to_ITK&gt;1&lt;/Activity.Imported_to_ITK&gt;
+    &lt;Activity.COURSEOCCURRENCENO&gt;44d3d391-394a-4784-97d5-35d0b9f4432e&lt;/Activity.COURSEOCCURRENCENO&gt;
+    &lt;Template.COURSETEMPLATENO&gt;218d01b3-506a-478b-9683-5367c6a1a312&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Activity.Activity_Code&gt;CT231&lt;/Activity.Activity_Code&gt;
+    &lt;Activity.Instance_Code&gt;T00&lt;/Activity.Instance_Code&gt;
+    &lt;Activity.Activity_Title&gt;Python - practical programming up to A level&lt;/Activity.Activity_Title&gt;
+    &lt;Activity.Start_Date__x0028_Portal_x0029_&gt;21/01/2019&lt;/Activity.Start_Date__x0028_Portal_x0029_&gt;
+    &lt;Activity.End_Date__x0028_Portal_x0029_&gt;21/01/2019&lt;/Activity.End_Date__x0028_Portal_x0029_&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;1&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Duration__x0028_Period_x0029_&gt;Days&lt;/Activity.Duration__x0028_Period_x0029_&gt;
+    &lt;Activity.Duration__x0028_No_x0029_&gt;1&lt;/Activity.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_css/wp_body.css"&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_css/wp_body.css"&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_themes/Standard/css/wp_body.css"&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;Aim to extend your programming understanding and skill, and to provide teaching ideas and guidance suitable for higher GCSE and A level. This course is suitable for teachers with a solid grounding in Python fundamentals. &amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;You will learn to:&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;write modular Python code
+&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types
+&amp;lt;li&amp;gt;use Python for game programming
+&amp;lt;li&amp;gt;create a Graphical User Interface (GUI)
+&amp;lt;li&amp;gt;design and run program tests
+&amp;lt;li&amp;gt;write database-driven applications
+&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s)
+&amp;lt;li&amp;gt;use Python for object-oriented programming&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="mailto:enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
+    &lt;Template.Meta_Description&gt;Extend your knowledge of programming and support GCSE and A level students with better programming projects.&lt;/Template.Meta_Description&gt;
+    &lt;Activity.PORTALCOURSEURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=0FB5042F-71D8-402D-9F2A-D031E2613F44&amp;amp;COURSEOCCURRENCE_COURSEOCCURRENCENO=0D2EC039-C318-4B0B-ACC9-683445F05EA0&lt;/Activity.PORTALCOURSEURL&gt;
+    &lt;Activity.Deliverer&gt;Computing Operator&lt;/Activity.Deliverer&gt;
+    &lt;Activity.Activity_Occurrence_ID&gt;0D2EC039-C318-4B0B-ACC9-683445F05EA0&lt;/Activity.Activity_Occurrence_ID&gt;
+    &lt;Activity.Status&gt;Approved&lt;/Activity.Status&gt;
+    &lt;Activity.Display_Programme&gt;NCCE&lt;/Activity.Display_Programme&gt;
+    &lt;Activity.ITK_CPD_Type&gt;NSLC multi day&lt;/Activity.ITK_CPD_Type&gt;
+    &lt;Activity.Online_CPD&gt;1&lt;/Activity.Online_CPD&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Activity.Places_Remaining&gt;21&lt;/Activity.Places_Remaining&gt;
+    &lt;Activity.Pay_Later&gt;1&lt;/Activity.Pay_Later&gt;
+    &lt;Activity.ePayment&gt;None&lt;/Activity.ePayment&gt;
+    &lt;Activity.Changed_Date&gt;2018-11-23T11:05:08.663+00:00&lt;/Activity.Changed_Date&gt;
+    &lt;Activity.Everest_Occurrence_Changed_Date&gt;2018-11-23T11:05:10.017+00:00&lt;/Activity.Everest_Occurrence_Changed_Date&gt;
+    &lt;Activity.Imported_to_ITK&gt;1&lt;/Activity.Imported_to_ITK&gt;
+    &lt;Activity.COURSEOCCURRENCENO&gt;0d2ec039-c318-4b0b-acc9-683445f05ea0&lt;/Activity.COURSEOCCURRENCENO&gt;
+    &lt;Template.COURSETEMPLATENO&gt;01de2624-cd6f-4ed1-a2d5-5d107b976938&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+  &lt;Detail&gt;
+    &lt;Activity.Activity_Code&gt;CY231&lt;/Activity.Activity_Code&gt;
+    &lt;Activity.Activity_Title&gt;Python - practical programming up to A level&lt;/Activity.Activity_Title&gt;
+    &lt;Activity.Start_Date__x0028_Portal_x0029_&gt;10/12/2018&lt;/Activity.Start_Date__x0028_Portal_x0029_&gt;
+    &lt;Activity.End_Date__x0028_Portal_x0029_&gt;10/12/2018&lt;/Activity.End_Date__x0028_Portal_x0029_&gt;
+    &lt;Template.Duration__x0028_Period_x0029_&gt;Days&lt;/Template.Duration__x0028_Period_x0029_&gt;
+    &lt;Template.Duration__x0028_No_x0029_&gt;1&lt;/Template.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Duration__x0028_Period_x0029_&gt;Days&lt;/Activity.Duration__x0028_Period_x0029_&gt;
+    &lt;Activity.Duration__x0028_No_x0029_&gt;1&lt;/Activity.Duration__x0028_No_x0029_&gt;
+    &lt;Activity.Summary&gt;&amp;lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_css/wp_body.css"&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_css/wp_body.css"&amp;gt;&amp;lt;link rel=stylesheet href="/backoffice/_themes/Standard/css/wp_body.css"&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body id=Email &amp;gt;
+&amp;lt;p&amp;gt;Aim to extend your programming understanding and skill, and to provide teaching ideas and guidance suitable for higher GCSE and A level. This course is suitable for teachers with a solid grounding in Python fundamentals. &amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;You will learn to:&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;write modular Python code
+&amp;lt;li&amp;gt;create and manipulate fundamental and compound data types
+&amp;lt;li&amp;gt;use Python for game programming
+&amp;lt;li&amp;gt;create a Graphical User Interface (GUI)
+&amp;lt;li&amp;gt;design and run program tests
+&amp;lt;li&amp;gt;write database-driven applications
+&amp;lt;li&amp;gt;add networked functionality to programming projects with Application Programming Interfaces (API’s)
+&amp;lt;li&amp;gt;use Python for object-oriented programming&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;This is a residential course, fees include meals and accommodation for the duration of the course. Course fees vary for participants outside the UK. Please contact &amp;lt;a href="mailto:enquiries@stem.org.uk"&amp;gt;enquiries@stem.org.uk&amp;lt;/a&amp;gt; for more information.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/Activity.Summary&gt;
+    &lt;Template.Meta_Description&gt;Extend your knowledge of programming and support GCSE and A level students with better programming projects.&lt;/Template.Meta_Description&gt;
+    &lt;Activity.PORTALCOURSEURL&gt;https://www.stem.org.uk/_forms/achiever.aspx?WebTemplateNo=DDBABD80-B27F-4A39-8D0D-37B4D026F2C2&amp;amp;BodyPage=9696DFDA-1F4F-43AC-8203-78F402AEB79C&amp;amp;ChildPage=0FB5042F-71D8-402D-9F2A-D031E2613F44&amp;amp;COURSEOCCURRENCE_COURSEOCCURRENCENO=D7F81891-C36B-4F3A-9F0D-2EE2973A6E6A&lt;/Activity.PORTALCOURSEURL&gt;
+    &lt;Activity.Deliverer&gt;National Operator&lt;/Activity.Deliverer&gt;
+    &lt;Activity.Activity_Occurrence_ID&gt;D7F81891-C36B-4F3A-9F0D-2EE2973A6E6A&lt;/Activity.Activity_Occurrence_ID&gt;
+    &lt;Activity.Hide_from_Web&gt;1&lt;/Activity.Hide_from_Web&gt;
+    &lt;Activity.Status&gt;Planned&lt;/Activity.Status&gt;
+    &lt;Activity.Display_Programme&gt;NCCE&lt;/Activity.Display_Programme&gt;
+    &lt;Activity.ITK_CPD_Type&gt;NSLC multi day&lt;/Activity.ITK_CPD_Type&gt;
+    &lt;Activity.Online_CPD&gt;1&lt;/Activity.Online_CPD&gt;
+    &lt;Template.Programme&gt;NCCE&lt;/Template.Programme&gt;
+    &lt;Activity.Places_Remaining&gt;24&lt;/Activity.Places_Remaining&gt;
+    &lt;Activity.Pay_Later&gt;1&lt;/Activity.Pay_Later&gt;
+    &lt;Activity.ePayment&gt;None&lt;/Activity.ePayment&gt;
+    &lt;Activity.Changed_Date&gt;2018-11-21T12:21:28.46+00:00&lt;/Activity.Changed_Date&gt;
+    &lt;Activity.Everest_Occurrence_Changed_Date&gt;2018-11-21T12:24:44.627+00:00&lt;/Activity.Everest_Occurrence_Changed_Date&gt;
+    &lt;Activity.Imported_to_ITK&gt;0&lt;/Activity.Imported_to_ITK&gt;
+    &lt;Activity.COURSEOCCURRENCENO&gt;d7f81891-c36b-4f3a-9f0d-2ee2973a6e6a&lt;/Activity.COURSEOCCURRENCENO&gt;
+    &lt;Template.COURSETEMPLATENO&gt;01de2624-cd6f-4ed1-a2d5-5d107b976938&lt;/Template.COURSETEMPLATENO&gt;
+  &lt;/Detail&gt;
+&lt;AchieverDataSchemaResult_1&gt;&lt;xs:schema id="AchieverDataResult_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;&lt;xs:element name="AchieverDataResult_1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;&lt;xs:complexType&gt;&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;&lt;xs:element name="Detail"&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&lt;xs:element name="Activity.Activity_Code" msdata:Caption="Activity.Activity Code" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Instance_Code" msdata:Caption="Activity.Instance Code" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Activity_Title" msdata:Caption="Activity.Activity Title" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Start_Date__x0028_Portal_x0029_" msdata:Caption="Activity.Start Date (Portal)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.End_Date__x0028_Portal_x0029_" msdata:Caption="Activity.End Date (Portal)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_Period_x0029_" msdata:Caption="Template.Duration (Period)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Duration__x0028_No_x0029_" msdata:Caption="Template.Duration (No)" type="xs:int" minOccurs="0" /&gt;&lt;xs:element name="Activity.Duration__x0028_Period_x0029_" msdata:Caption="Activity.Duration (Period)" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Duration__x0028_No_x0029_" msdata:Caption="Activity.Duration (No)" type="xs:decimal" minOccurs="0" /&gt;&lt;xs:element name="Activity.Summary" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Meta_Description" msdata:Caption="Template.Meta Description" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.PORTALCOURSEURL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Deliverer" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Region" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.ADDRESSNO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="Activity Venue Address.ADDRESSNO" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Venue_Name" msdata:Caption="Activity Venue Address.Venue Name" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Town_x002F_City" msdata:Caption="Activity Venue Address.Town/City" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity_Venue_Address.Postcode" msdata:Caption="Activity Venue Address.Postcode" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Activity_Occurrence_ID" msdata:Caption="Activity.Activity Occurrence ID" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Hide_from_Web" msdata:Caption="Activity.Hide from Web" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Status" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Display_Programme" msdata:Caption="Activity.Display Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.ITK_CPD_Type" msdata:Caption="Activity.ITK CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Programme" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Sub-Deliverer" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Places_Remaining" msdata:Caption="Activity.Places Remaining" type="xs:int" minOccurs="0" /&gt;&lt;xs:element name="Template.Hide_From_Web" msdata:Caption="Template.Hide From Web" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Pay_Later" msdata:Caption="Activity.Pay Later" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.ePayment" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Changed_Date" msdata:Caption="Activity.Changed Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.Everest_Occurrence_Changed_Date" msdata:Caption="Activity.Everest Occurrence Changed Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.Delete_Flag" msdata:Caption="Activity.Delete Flag" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Delete_Request_Date" msdata:Caption="Activity.Delete Request Date" type="xs:dateTime" minOccurs="0" /&gt;&lt;xs:element name="Activity.CPD_Type" msdata:Caption="Activity.CPD Type" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Booking_Options" msdata:Caption="Activity.Booking Options" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Activity.Booking_URL" msdata:Caption="Activity.Booking URL" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.Group_Required_x003F_" msdata:Caption="Template.Group Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Separate_Group_Required_x003F_" msdata:Caption="Activity.Separate Group Required?" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Imported_to_ITK" msdata:Caption="Activity.Imported to ITK" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.Online_CPD" msdata:Caption="Activity.Online CPD" type="xs:unsignedByte" minOccurs="0" /&gt;&lt;xs:element name="Activity.COURSEOCCURRENCENO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" /&gt;&lt;xs:element name="Template.COURSETEMPLATENO" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" /&gt;&lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:choice&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:schema&gt;&lt;/AchieverDataSchemaResult_1&gt;&lt;/AchieverDataResult_1&gt;&lt;/AchieverDataResults&gt;&lt;/AchieverResponse&gt;</string>
