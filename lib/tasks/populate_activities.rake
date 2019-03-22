@@ -62,6 +62,33 @@ namespace :activities do
       activity.provider = 'future-learn'
     end
 
+    Activity.find_or_create_by(slug: 'an-introduction-to-computer-networking-for-teachers') do |activity|
+      activity.title = 'An Introduction to Computer Networking for Teachers'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'understanding-maths-and-logic-in-computer-science') do |activity|
+      activity.title = 'Understanding Maths and Logic in Computer Science'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'understanding-computer-systems') do |activity|
+      activity.title = 'Understanding Computer Systems'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
     Activity.find_or_create_by(slug: 'algorithms-in-gcse-computer-science') do |activity|
       activity.title = 'Algorithms in GCSE computer science'
       activity.credit = 0
