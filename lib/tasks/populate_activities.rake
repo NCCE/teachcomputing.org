@@ -6,6 +6,7 @@ namespace :activities do
       activity.slug = activity.title.parameterize
       activity.category = 'action'
       activity.self_certifiable = true
+      activity.provider = 'stem-learning'
     end
 
     Activity.find_or_create_by(slug: 'teaching-physical-computing-with-raspberry-pi-and-python') do |activity|
@@ -55,6 +56,33 @@ namespace :activities do
 
     Activity.find_or_create_by(slug: 'object-oriented-programming-in-python-create-your-own-adventure-game') do |activity|
       activity.title = 'Object-oriented Programming in Python: Create Your Own Adventure Game'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'an-introduction-to-computer-networking-for-teachers') do |activity|
+      activity.title = 'An Introduction to Computer Networking for Teachers'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'understanding-maths-and-logic-in-computer-science') do |activity|
+      activity.title = 'Understanding Maths and Logic in Computer Science'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'understanding-computer-systems') do |activity|
+      activity.title = 'Understanding Computer Systems'
       activity.credit = 0
       activity.slug = activity.title.parameterize
       activity.category = 'cpd'
