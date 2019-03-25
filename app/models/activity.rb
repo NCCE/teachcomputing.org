@@ -18,6 +18,8 @@ class Activity < ApplicationRecord
       activity.credit = 0
       activity.slug = activity.title.parameterize
       activity.category = 'action'
+      activity.self_certifiable = true
+      activity.provider = 'stem-learning'
     end
   end
 end
