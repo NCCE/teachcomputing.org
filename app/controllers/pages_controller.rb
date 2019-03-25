@@ -21,4 +21,8 @@ class PagesController < ApplicationController
     end
     render template: 'pages/login', locals: { auth_uri: auth_uri }
   end
+
+  def css_endpoint
+    redirect_to "#{helpers.asset_path("application", type: :stylesheet)}"
+  end
 end

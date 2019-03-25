@@ -53,6 +53,8 @@ Rails.application.routes.draw do
 
   end
 
+  get '/external/assets/ncce.css', to: 'pages#css_endpoint', as: :css_endpoint
+
   require 'sidekiq/web'
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
