@@ -2,7 +2,7 @@
   background-color: $ncce-dark-purple;
   background-image: none;
   padding-bottom: 30px;
-  padding-top: 20px;
+  padding-top: 0;
 
   @include govuk-media-query($from: tablet) {
     background-image: url(/images/dashboard/triangle2.png);
@@ -10,7 +10,6 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     padding-bottom: 30px;
-    padding-top: 40px;
   }
 }
 
@@ -25,13 +24,14 @@
   margin-bottom: 0 !important;
 
   &:first-child {
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
 
   &:last-child {
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom: 0;
   }
 
   @include govuk-media-query($from: tablet) {
@@ -40,7 +40,7 @@
 }
 
 .ncce-activity-list__item-text {
-  background-image: image-url('tick.png');
+  background-image: image-url('tick.svg');
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 1.2rem;
@@ -64,23 +64,24 @@
   &--progressive {
     @include govuk-media-query($from: tablet) {
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: center;
     }
   }
 
   @include govuk-media-query($from: tablet) {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
   }
 
   &-search {
-    background-image: image-url('search.png');
+    background-image: image-url('search-dashboard.svg');
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 1.2rem;
     padding-left: 1.5rem;
     margin-right: 1em;
     font-size: 1rem;
+    font-weight: 700;
 
     @include govuk-media-query($until: tablet) {
       line-height: 3rem;
@@ -95,7 +96,7 @@
     border: 0;
     display: inline-flex;
 
-    background-image: image-url('add.png');
+    background-image: image-url('add-dashboard.svg');
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 1.2rem;
@@ -106,6 +107,7 @@
 
     padding-left: 1.5rem;
     font-size: 1rem;
+    font-weight: 700;
     text-decoration: underline;
 
     color: $ncce-grey-x-light;
@@ -131,7 +133,7 @@
     }
 
     @include govuk-media-query($from: desktop) {
-      right: -12rem;
+      right: 4rem;
       width: 30rem;
     }
   }

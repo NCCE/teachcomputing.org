@@ -3,6 +3,10 @@
   padding-bottom: 70px;
 }
 
+.ncce-main-wrapper--intro {
+  padding-bottom: 2rem;
+}
+
 @include govuk-media-query($until: tablet) {
   .ncce-aside {
     margin-top: 50px;
