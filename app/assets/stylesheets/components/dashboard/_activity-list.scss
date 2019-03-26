@@ -51,7 +51,9 @@
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
-    background-size: 1.5rem;
+    background-size: 1.9rem;
+    line-height: 1.9rem;
+    padding-left: 2.8rem;
   }
 }
 
