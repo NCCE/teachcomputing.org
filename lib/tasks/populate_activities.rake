@@ -90,6 +90,24 @@ namespace :activities do
       activity.provider = 'future-learn'
     end
 
+    Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |activity|
+      activity.title = 'Teaching Programming in Primary Schools'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
+    Activity.find_or_create_by(slug: 'scratch-to-python-moving-from-block-to-text-based-programming') do |activity|
+      activity.title = 'Scratch to Python: Moving from Block- to Text-based Programming'
+      activity.credit = 0
+      activity.slug = activity.title.parameterize
+      activity.category = 'cpd'
+      activity.self_certifiable = true
+      activity.provider = 'future-learn'
+    end
+
     Activity.find_or_create_by(slug: 'algorithms-in-gcse-computer-science') do |activity|
       activity.title = 'Algorithms in GCSE computer science'
       activity.credit = 0
