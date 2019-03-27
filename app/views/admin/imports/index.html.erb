@@ -18,7 +18,7 @@
               <% @activities.each do |activity| %>
                 <tr class="govuk-table__row">
                   <th class="govuk-table__header" scope="row"><%= activity.title %></th>
-                  <td class="govuk-table__cell"><%= activity.imports.any? ? activity.imports.by_completed_at.first.completed_at.to_formatted_s(:short) : 'No previous imports' %></td>
+                  <td class="govuk-table__cell"><%= activity.imports.any? ? completed_at?(activity.imports.by_completed_at.first) : 'No previous imports' %></td>
                   <td class="govuk-table__cell"><%= activity.imports.any? ? activity.imports.by_completed_at.first.triggered_by : 'No previous imports' %></td>
                   <td class="govuk-table__cell"><%= link_to 'Upload CSV', new_admin_import_path(activity_id: activity.id), class: 'govuk-button' %></td>
                 </tr>
