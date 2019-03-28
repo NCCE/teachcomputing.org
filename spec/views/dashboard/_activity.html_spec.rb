@@ -10,7 +10,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
   end
 
   it 'has the signed up item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the NCCE')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')
   end
 
   it 'check for every achievements title' do
@@ -25,7 +25,15 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
   end
 
-  it 'has the form item' do
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Add a completed CPD Activity')
+  it 'has the collapsible add form title' do
+    expect(rendered).to have_css('.ncce-collapsible-activity__title-button', text: /.*Add a course you've completed.*/)
+  end
+
+  it 'has the collapsible form select' do
+    expect(rendered).to have_css('.ncce-activity-form__select', count: 1)
+  end
+
+  it 'has the collapsible form button' do
+    expect(rendered).to have_css('.ncce-activity-form__button--pink', count: 1)
   end
 end
