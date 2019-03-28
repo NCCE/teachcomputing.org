@@ -1,7 +1,8 @@
 .ncce-alert {
   display: flex;
-  margin: 20px 0;
-  padding: 5px 14px;
+  justify-content: space-between;
+  margin: 20px 0 -20px 0;
+  padding: 1rem;
   align-items: center;
   color: $ncce-dark-x-grey;
 }

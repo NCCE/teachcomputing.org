@@ -1,5 +1,5 @@
 function ready(fn) {
-  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
     fn();
   } else {
     document.addEventListener('DOMContentLoaded', fn);
@@ -36,7 +36,7 @@ function initialiseSections(className) {
       // Cast the state as a boolean
       let expanded = btn.getAttribute('aria-expanded') === 'true' || false
 
-    heading.classList.toggle(headingToggleClass)
+      heading.classList.toggle(headingToggleClass)
 
       // Switch the state
       btn.setAttribute('aria-expanded', !expanded)
@@ -82,7 +82,7 @@ function initialiseStickyFilterBar() {
 
 }
 
-ready(function() {
+ready(function () {
   initialiseSections('ncce-courses__locations')
   initialiseSections('ncce-courses__filter-mobile-heading')
   initialiseFilter()
