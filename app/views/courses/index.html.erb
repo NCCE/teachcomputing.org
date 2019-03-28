@@ -68,13 +68,7 @@
                 class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= select_tag :workstream,
-              options_for_select(@workstreams, @current_workstream),
-              {
-                include_blank: 'Any workstream',
-                class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
-                'aria-label': 'Filter by workstream' }
-            %>
+            <%= hidden_field_tag :workstream, @current_workstream %>
             <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button js-course-filter-button' %>
           <% end %>
         </div>
@@ -135,7 +129,9 @@
                 <% course.key_stages.each do |stage| %>
                   <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
                 <% end %>
-                <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
+                <% if course.workstream == 'CS Accelerator' %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
+                <% end %>
               </p>
             <% end %>
           </div>

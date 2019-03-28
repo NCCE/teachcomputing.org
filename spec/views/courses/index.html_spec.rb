@@ -65,12 +65,20 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
 
-    it 'renders course subject tags' do
+    it 'renders CS Accelerator tag' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
+    end
+
+    it 'doesn\'t render non CS Accelerator tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
     end
 
     it 'renders filter selects' do
-      expect(rendered).to have_css('.ncce-courses__filter-select', count: 4)
+      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+    end
+
+    it 'renders hidden workstream field' do
+      expect(rendered).to have_selector(:xpath, '//input', :id => 'workstream', :visible => false)
     end
 
     it 'renders location select' do
