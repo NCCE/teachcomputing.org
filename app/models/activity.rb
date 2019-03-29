@@ -11,6 +11,12 @@ class Activity < ApplicationRecord
   scope :cpd, -> { where(category: 'cpd') }
   scope :future_learn, -> { where(provider: 'future-learn') }
   scope :self_certifiable, -> { where(self_certifiable: true) }
+  scope :non_action, -> { where.not(category: 'action') }
+  scope :user_removable, -> { self_certifiable.non_action }
+
+  def user_removable?
+    self_certifiable && category != 'action'
+  end
 
   def self.downloaded_diagnostic_tool
     Activity.find_or_create_by(slug: 'downloaded-diagnostic-tool') do |activity|

@@ -39,7 +39,9 @@ class Achiever
     result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
       RestClient.get(request).body
     end
-
+    if course.title == 'Networks and cyber-security in GCSE computer science'
+      puts "Networks #{result}"
+    end
     course.subject_details = CourseTemplateSubjectDetails.new(parse_results(result))
     course
   end
