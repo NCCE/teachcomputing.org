@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    @featured_posts = GhostContent.new.get_featured_posts
     render template: 'pages/home/index'
   end
 
