@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
     @locations = course_locations(@course_occurrences)
     @levels = course_levels(@courses)
     @topics = course_tags(@courses)
+    @workstreams = course_workstreams(@courses)
     @courses = filter_courses(@courses)
 
     render :index
@@ -22,6 +23,7 @@ class CoursesController < ApplicationController
     @current_location = nil
     @current_level = nil
     @current_topic = nil
+    @current_workstream = nil
     @course_occurrences = nil
   end
 
@@ -50,6 +52,7 @@ class CoursesController < ApplicationController
       has_level = true
       has_location = true
       has_topic = true
+      has_workstream = true
 
       if params[:level].present?
         @current_level = params[:level]
@@ -69,8 +72,16 @@ class CoursesController < ApplicationController
         @current_topic = params[:topic]
         has_topic = c.subjects.any?(@current_topic)
       end
-      has_level && has_location && has_topic
+      if params[:workstream].present?
+        @current_workstream = params[:workstream]
+        has_workstream = c.workstream == @current_workstream
+      end
+      has_level && has_location && has_topic && has_workstream
     end
+  end
+
+  def course_workstreams(courses)
+    courses.map(&:workstream).uniq.sort
   end
 
   def course_tags(courses)

@@ -1,0 +1,44 @@
+.ncce-dashboard__title {
+  text-align: center;
+  background-image: url(/images/dashboard/line.png);
+  background-position: 50% 80%;
+  background-repeat: no-repeat;
+  background-size: 17rem;
+  color: $ncce-white;
+  padding: 1.5rem 0;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 27rem;
+    font-size: 1.8rem;
+  }
+}
+
+.ncce-dashboard__activities {
+  color: $ncce-white;
+  margin: 1rem auto 0 auto;
+
+
+  @include govuk-media-query($from: tablet) {
+    width: 60%;
+  }
+}
+
+.ncce-dashboard-courses {
+  background-color: $ncce-grey-x-light;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+  }
+}
+
+.ncce-dashboard__image {
+  display: none;
+
+  @include govuk-media-query($from: tablet) {
+    display: block;
+    width: 75%;
+  }
+}
