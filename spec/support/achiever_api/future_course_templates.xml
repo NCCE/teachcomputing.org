@@ -27,6 +27,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;SLPN one day&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Computing York&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2018-12-13T08:57:59.37+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Non-Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;faa23083-92a1-4ce1-ade8-12d6b66eea52&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -47,6 +48,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;SLPN one day&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;Computing Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2018-12-13T08:46:40.947+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;0f9644e0-afda-4307-b195-82fb62f5f8ab&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -75,6 +77,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2019-01-15T11:34:59.22+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;CS Accelerator&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;46dde9d2-3a19-4953-b6e0-86e3c355cabc&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -103,6 +106,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2019-01-15T11:38:35.737+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Non-Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;f8d798ff-f79b-4e6f-981c-5fae966b2fb7&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -131,6 +135,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;Other&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2019-01-15T11:40:58.86+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;dc86dd92-de09-40fc-986d-35af00c0461c&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -158,6 +163,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;NSLC multi day&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2018-11-20T11:26:39.13+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;CS Accelerator&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;218d01b3-506a-478b-9683-5367c6a1a312&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -182,6 +188,7 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;SLPN one day&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Computing York&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2018-12-12T14:31:43.567+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Non-Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;08fa1b62-0fa1-47a0-ad22-b03d876b15ea&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
   &lt;Detail&gt;
@@ -213,5 +220,6 @@ Content-Length: 29845
     &lt;Template.ITK_CPD_Type&gt;NSLC multi day&lt;/Template.ITK_CPD_Type&gt;
     &lt;Template.Deliverer&gt;National Operator&lt;/Template.Deliverer&gt;
     &lt;Template.Changed_Date&gt;2018-11-21T12:18:23.127+00:00&lt;/Template.Changed_Date&gt;
+    &lt;Template.Workstream&gt;National Centre - Core&lt;/Template.Workstream&gt;
     &lt;Template.COURSETEMPLATENO&gt;01de2624-cd6f-4ed1-a2d5-5d107b976938&lt;/Template.COURSETEMPLATENO&gt;
   &lt;/Detail&gt;
