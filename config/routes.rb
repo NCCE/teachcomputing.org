@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   end
 
-  get '/external/assets/ncce.css', to: 'pages#css_endpoint', as: :css_endpoint
+  get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
 
   require 'sidekiq/web'
   if Rails.env.production?

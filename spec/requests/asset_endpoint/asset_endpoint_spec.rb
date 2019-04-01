@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PagesController do
+RSpec.describe AssetEndpointController do
   describe '#css_endpoint' do
     context 'css_redirect' do
       before do
