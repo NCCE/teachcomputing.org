@@ -46,7 +46,7 @@
             </button>
           </h3>
           <%= form_tag :courses, { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
-            <span class="govuk-body-m ncce-courses__filter-prompt">Find a course:</span>
+            <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
               options_for_select(@levels, @current_level),
               {
@@ -68,6 +68,7 @@
                 class: 'govuk-select ncce-courses__filter-select js-course-filter-select',
                 'aria-label': 'Filter by topic' }
             %>
+            <%= hidden_field_tag :workstream, @current_workstream %>
             <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button js-course-filter-button' %>
           <% end %>
         </div>
@@ -120,13 +121,16 @@
                 <% end %>
               </ul>
             <% end %>
-            <% unless course.subjects.nil? && course.key_stages.nil? %>
+            <% unless course.subjects.nil? && course.key_stages.nil? && course.workstream.nil?%>
               <p class="govuk-body">
                 <% course.subjects.each do |subject| %>
                   <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
                 <% end %>
                 <% course.key_stages.each do |stage| %>
                   <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
+                <% end %>
+                <% if course.workstream == 'CS Accelerator' %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
                 <% end %>
               </p>
             <% end %>
