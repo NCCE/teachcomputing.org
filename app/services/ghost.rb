@@ -22,10 +22,10 @@ class Ghost
       featured_posts = ActiveSupport::JSON.decode(result)
 
       return featured_posts['posts']
-    rescue RestClient::Exception => err
-      puts "Rest Error from Ghost API #{err.inspect}"
+    rescue RestClient::Exception => error
+      Raven.capture_exception(error)
     rescue ActiveSupport::JSON.parse_error
-      puts "JSON Parse error for string: #{result}"
+      Raven.capture_message("Ghost API JSON Parse error for string: #{result}")
     end
     []
   end
