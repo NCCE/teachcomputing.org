@@ -1,6 +1,8 @@
 <%= render 'pages/home/hero' %>
 <%= render 'pages/home/sign-up' %>
-<%= render 'pages/home/news-and-updates' %>
+<% unless @featured_posts.empty? %>
+  <%= render 'pages/home/news-and-updates' %>
+<% end %>
 <%= render 'pages/home/mailing' %>
 <%= render 'pages/home/jobs' %>
 <%= render 'pages/home/partners' %>
