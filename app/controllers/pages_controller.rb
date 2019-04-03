@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @featured_posts = Ghost.new.get_featured_posts
+    @featured_posts = Ghost.new.get_featured_posts(ENV['GHOST_LIMIT_FEATURED_POSTS'])
     render template: 'pages/home/index'
   end
 

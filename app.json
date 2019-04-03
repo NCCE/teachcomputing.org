@@ -100,6 +100,9 @@
     },
     "GHOST_CONTENT_API_KEY": {
       "required": true
+    },
+    "GHOST_LIMIT_FEATURED_POSTS": {
+      "required": true
     }
   },
   "formation": {
