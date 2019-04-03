@@ -15,7 +15,9 @@ class Ghost
     }
 
     begin
-      result = RestClient.get(request, params: params).body
+      result = Rails.cache.fetch("get_featured_posts-#{Date.today}", expires_in: 10.minutes) do
+        RestClient.get(request, params: params).body
+      end
 
       featured_posts = ActiveSupport::JSON.decode(result)
 
