@@ -4,7 +4,7 @@ class AchievementsController < ApplicationController
     @achievement.user_id = current_user.id
 
     if @achievement.save
-      flash[:notice] = "Great! Your activity has now been added #{view_context.link_to_if(@achievement.activity.self_certifiable?, 'Undo', achievement_path(@achievement.id), method: :delete)}"
+      flash[:notice] = "Great! Your activity has now been added #{view_context.link_to_if(@achievement.activity.self_certifiable?, 'Undo', achievement_path(@achievement.id), method: :delete){}}"
     else
       flash[:error] = 'Whoops something went wrong'
     end

@@ -24,6 +24,13 @@ FactoryBot.define do
   end
 
   trait :future_learn do
+    title { 'future learn' }
     provider { 'future-learn' }
+  end
+
+  trait :user_removable do
+    title { 'user removable' }
+    category { 'cpd' }
+    self_certifiable { 'true' }
   end
 end
