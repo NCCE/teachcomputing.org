@@ -7,6 +7,8 @@ RSpec.describe Activity, type: :model do
   let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
+  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool)}
+  let(:removable_activity) { create(:activity, :user_removable)}
 
   describe 'associations' do
     it 'has_many achievements' do
@@ -69,6 +71,24 @@ RSpec.describe Activity, type: :model do
 
       it 'does not include actions' do
         expect(Activity.future_learn).not_to include(activity)
+      end
+    end
+
+    describe 'user_removable' do
+      before do
+        [removable_activity, activity, diagnostic_tool_activity]
+      end
+
+      it 'include future-learn activities' do
+        expect(Activity.user_removable).to include(removable_activity)
+      end
+
+      it 'does not include stem' do
+        expect(Activity.user_removable).not_to include(activity)
+      end
+
+      it 'does not include diagnostic download' do
+        expect(Activity.user_removable).not_to include(diagnostic_tool_activity)
       end
     end
   end
