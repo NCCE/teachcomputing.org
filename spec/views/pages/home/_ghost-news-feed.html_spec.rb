@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe('pages/home/_ghost-news-feed', type: :view) do
-  before do
-    Rails.cache.clear
-  end
-
   context 'has featured posts' do
     before do
       stub_featured_posts
