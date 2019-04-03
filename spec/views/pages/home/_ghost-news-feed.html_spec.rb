@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/home/_news-and-updates', type: :view) do
+RSpec.describe('pages/home/_ghost-news-feed', type: :view) do
   context 'has featured posts' do
     before do
       stub_featured_posts

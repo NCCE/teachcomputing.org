@@ -2,8 +2,6 @@ require('rest-client')
 
 class Ghost
   def initialize
-    @ghost_api_endpoint = ENV['GHOST_API_ENDPOINT']
-    @ghost_api_path = '/ghost/api/v2/'
     @ghost_api_key = ENV['GHOST_CONTENT_API_KEY']
   end
 
@@ -31,6 +29,6 @@ class Ghost
   end
 
   def api_url_prefix(endpoint)
-    "#{@ghost_api_endpoint}/content/#{endpoint}/"
+    "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/#{endpoint}/"
   end
 end
