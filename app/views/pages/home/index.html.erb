@@ -1,7 +1,7 @@
 <%= render 'pages/home/hero' %>
 <%= render 'pages/home/sign-up' %>
 <% if @ghost_enabled %>
-  <% unless @featured_posts.empty? %>
+  <%= render 'pages/home/ghost-news-feed' unless @featured_posts.empty? %>
     <%= render 'pages/home/ghost-news-feed' %>
   <% end %>
 <% else %>
