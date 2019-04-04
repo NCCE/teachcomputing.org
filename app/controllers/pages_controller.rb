@@ -12,7 +12,6 @@ class PagesController < ApplicationController
 
   def home
     @ghost_enabled = ghost_enabled?
-    puts "Ghost enabled? #{@ghost_enabled}"
     @featured_posts = Ghost.new.get_featured_posts(ENV['GHOST_LIMIT_FEATURED_POSTS']) if @ghost_enabled
     render template: 'pages/home/index'
   end
