@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
   before_action :authenticate
+  before_action :ghost_enabled?
 
   def authenticate
     return unless ENV['BASIC_AUTH_PASSWORD']
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     redirect_to(login_path) unless current_user
+  end
+
+  def ghost_enabled?
+    ActiveModel::Type::Boolean.new.cast(ENV.fetch('GHOST_ENABLED'))
   end
 
   def redirect_to_dashboard
