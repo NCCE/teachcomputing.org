@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ghost_enabled?
-    ActiveModel::Type::Boolean.new.cast(ENV.fetch('GHOST_ENABLED'))
+    ActiveModel::Type::Boolean.new.cast(ENV.fetch('FEATURE_GHOST_ENABLED'))
   end
 
   def redirect_to_dashboard

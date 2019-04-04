@@ -95,7 +95,7 @@
     "PROXY_URL": {
       "required": true
     },
-    "GHOST_ENABLED": {
+    "FEATURE_GHOST_ENABLED": {
       "required": true
     }
   },
