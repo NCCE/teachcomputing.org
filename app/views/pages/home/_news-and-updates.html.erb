@@ -1,0 +1,28 @@
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="ncce-news-and-updates">
+      <div class='ncce-news-and-updates__heading'>
+        <h1 class='govuk-heading-l'>News & Updates</h1>
+      </div>
+      <div class='ncce-news-and-updates__archive-link'>
+        <p class='govuk-heading-s ncce-news-and-updates__heading'>
+          <%= link_to 'View all news & updates', news_path, class: 'ncce-link ncce-news-and-updates__archive-link' %>
+        </p>
+      </div>
+      <div class="ncce-news-and-updates__panel">
+        <img src="/images/computing-teacher-cropped.jpg" alt="Students with computers" class="ncce-news-and-updates__image"/>
+        <p class="govuk-body govuk-!-font-size-14 ncce-news-and-updates__date">4 April 2019</p>
+        <p class="govuk-heading-s ncce-news-and-updates__heading"><%= link_to 'Boost in computing support for local schools', first_regional_delivery_network_path, class: 'ncce-link ncce-news-and-updates__link' %></p>
+        <p class="govuk-body">We are delighted to announce our first regional delivery network, which has been established to support our vision of a world-leading computing education for every young person in England.</p>
+      </div>
+      <div class="ncce-news-and-updates__panel">
+        <img src="/images/women-in-stem.jpg" alt="" class="ncce-news-and-updates__image"/>
+        <p class="govuk-body govuk-!-font-size-14 ncce-news-and-updates__date">22 February 2019</p>
+        <p class="govuk-heading-s ncce-news-and-updates__heading"><%= link_to 'Raising awareness of women in STEM', women_in_stem_path, class: 'ncce-link ncce-news-and-updates__link' %></p>
+        <p class="govuk-body">"Last week we celebrated International Day of Women and Girls in
+        Science, which prompted me to reflect on the experiences and factors that led me to study
+        STEM subjects at A level" - blog post by Claire Arbery</p>
+      </div>
+    </div>
+  </div>
+</div>

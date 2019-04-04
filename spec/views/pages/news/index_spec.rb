@@ -10,6 +10,6 @@ RSpec.describe('pages/news/index', type: :view) do
   end
 
   it 'contains the correct number of posts' do
-    expect(rendered).to have_css('.ncce-news-archive__item', count: 3)
+    expect(rendered).to have_css('.ncce-news-archive__item', count: 4)
   end
 end

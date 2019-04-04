@@ -5,6 +5,7 @@ RSpec.describe('pages/home/index', type: :view) do
   context 'has featured posts' do
     before do
       stub_featured_posts
+      @ghost_enabled = true
       @featured_posts = Ghost.new.get_featured_posts
       render
     end
@@ -17,6 +18,7 @@ RSpec.describe('pages/home/index', type: :view) do
   context 'has 0 featured posts' do
     before do
       stub_featured_posts_error
+      @ghost_enabled = true
       @featured_posts = Ghost.new.get_featured_posts
       render
     end

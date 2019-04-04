@@ -36,7 +36,7 @@ module CoursesHelper
   end
 
   def stem_course_link(course_template_no)
-    "https://www.stem.org.uk/cpdredirect/#{course_template_no}"
+    "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{course_template_no}"
   end
 
   def stripped_summary(string)	
