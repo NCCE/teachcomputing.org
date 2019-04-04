@@ -94,6 +94,9 @@
     },
     "PROXY_URL": {
       "required": true
+    },
+    "GHOST_ENABLED": {
+      "required": true
     }
   },
   "formation": {
