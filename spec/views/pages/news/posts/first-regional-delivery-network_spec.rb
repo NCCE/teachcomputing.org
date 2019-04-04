@@ -10,6 +10,6 @@ RSpec.describe('pages/news/posts/first-regional-delivery-network', type: :view) 
   end
 
   it 'has a link to the courses page' do
-    expect(rendered).to have_link('https://teachcomputing.org/courses', href: courses_path )
+    expect(rendered).to have_link('https://teachcomputing.org/courses', href: 'https://teachcomputing.org/courses')
   end
 end
