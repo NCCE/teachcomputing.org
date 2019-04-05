@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   scope '/press' do
     get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
     get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }
-    get '/bt-rolls-royce-arm-back-ncce', to: 'pages#page', as: :bt_rolls_royce_arm_back_ncce, defaults: { page_slug: 'press/posts/bt-rolls-royce-arm-back-ncce' }, to: redirect('/wiki/%{article}')
+    get '/bt-rolls-royce-arm-back-ncce', to: 'pages#page', as: :bt_rolls_royce_arm_back_ncce, defaults: { page_slug: 'press/posts/bt-rolls-royce-arm-back-ncce' }
 
   end
 
