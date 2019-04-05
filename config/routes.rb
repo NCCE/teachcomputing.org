@@ -40,17 +40,17 @@ Rails.application.routes.draw do
   get '/500', to: 'pages#exception', defaults: { status: 500 }
 
   scope '/news' do
-    get '/', to: 'pages#page', as: :news, defaults: { page_slug: 'news/index' }
-    get '/a-level/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }, to: redirect('/tag/news/a-level')
-    get '/beta-launch', to: 'pages#page', as: :beta_launch, defaults: { page_slug: 'news/posts/beta-launch' }, to: redirect('/tag/news/beta-launch')
-    get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }, to: redirect('/tag/news/women-in-stem')
-    get '/first-regional-delivery-network', to: 'pages#page', as: :first_regional_delivery_network, defaults: { page_slug: 'news/posts/first-regional-delivery-network' }, to: redirect('/tag/news/first-regional-delivery-network')
+    get '/', to: 'pages#page', as: :news, defaults: { page_slug: 'news/index' }, to: redirect('https://blog.teachcomputing.org/tag/news')
+    get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'news/posts/a-level' }, to: redirect('https://blog.teachcomputing.org/a-level')
+    get '/beta-launch', to: 'pages#page', as: :beta_launch, defaults: { page_slug: 'news/posts/beta-launch' }, to: redirect('https://blog.teachcomputing.org/beta-launch')
+    get '/women-in-stem', to: 'pages#page', as: :women_in_stem, defaults: { page_slug: 'news/posts/women-in-stem' }, to: redirect('https://blog.teachcomputing.org/women-in-stem')
+    get '/first-regional-delivery-network', to: 'pages#page', as: :first_regional_delivery_network, defaults: { page_slug: 'news/posts/first-regional-delivery-network' }, to: redirect('https://blog.teachcomputing.org/first-regional-delivery-network')
   end
 
   scope '/press' do
-    get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }
-    get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }
-    get '/bt-rolls-royce-arm-back-ncce', to: 'pages#page', as: :bt_rolls_royce_arm_back_ncce, defaults: { page_slug: 'press/posts/bt-rolls-royce-arm-back-ncce' }
+    get '/', to: 'pages#page', as: :press, defaults: { page_slug: 'press/index' }, to: redirect('https://blog.teachcomputing.org/tag/press')
+    get '/simon-peyton-jones-chair-ncce', to: 'pages#page', as: :simon_peyton_jones_chair_ncce, defaults: { page_slug: 'press/posts/simon-peyton-jones-chair-ncce' }, to: redirect('https://blog.teachcomputing.org/simon-peyton-jones-chair-ncce')
+    get '/bt-rolls-royce-arm-back-ncce', to: 'pages#page', as: :bt_rolls_royce_arm_back_ncce, defaults: { page_slug: 'press/posts/bt-rolls-royce-arm-back-ncce' }, to: redirect('https://blog.teachcomputing.org/bt-rolls-royce-arm-back-ncce')
 
   end
 
