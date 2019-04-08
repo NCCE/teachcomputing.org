@@ -10,6 +10,11 @@
         <li class="ncce-activity-list__item">
           <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Signed up</span> to the National Centre for Computing Education</span>
         </li>
+        <% unless has_downloaded_diagnostic?(@achievements) %>
+          <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+            <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Download</span> the <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-link', target: :_blank %></span>
+          </li>
+        <% end %>
         <% @achievements.each do |achievement| %>
           <li class="ncce-activity-list__item">
             <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
