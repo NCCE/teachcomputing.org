@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('dashboard/_activity', type: :view) do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
   let(:activity) { create(:activity) }
   let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool)}
   let(:removable_activity) { create(:activity, :user_removable)}
@@ -16,6 +16,8 @@ RSpec.describe('dashboard/_activity', type: :view) do
   context 'when the user has downloaded the diagnostic' do
     before do
       @achievements = [action_achievement, diagnostic_achievement, removable_achievement]
+      user.achievements = @achievements
+      @current_user = user
       render
     end
 
@@ -58,6 +60,8 @@ RSpec.describe('dashboard/_activity', type: :view) do
   context 'when the user hasn\'t downloaded the diagnostic' do
     before do
       @achievements = [action_achievement, removable_achievement]
+      user.achievements = @achievements
+      @current_user = user
       render
     end
 
