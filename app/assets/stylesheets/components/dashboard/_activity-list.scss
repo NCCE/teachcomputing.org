@@ -57,6 +57,13 @@
   }
 }
 
+.ncce-activity-list__item--incomplete {
+  color: $ncce-grey-dark;
+  .ncce-activity-list__item-text {
+    background-image: image-url('incomplete-achievement.svg');
+  }
+}
+
 .ncce-activity-list__item-remove {
   font-size: 0.7em;
   margin-top: 0.6em;
