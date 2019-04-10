@@ -7,8 +7,8 @@ RSpec.describe Activity, type: :model do
   let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool)}
-  let(:removable_activity) { create(:activity, :user_removable)}
+  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:removable_activity) { create(:activity, :user_removable) }
 
   describe 'associations' do
     it 'has_many achievements' do
@@ -22,13 +22,17 @@ RSpec.describe Activity, type: :model do
     it 'has_many imports' do
       expect(activity).to have_many(:imports)
     end
+
+    it 'has_many programmes' do
+      expect(activity).to have_many(:programmes).through(:programme_activities)
+    end
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:category) }
     it { is_expected.to validate_presence_of(:slug) }
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_inclusion_of(:category).in_array(['action', 'cpd']) }
+    it { is_expected.to validate_inclusion_of(:category).in_array(%w[action cpd]) }
   end
 
   describe 'scopes' do
