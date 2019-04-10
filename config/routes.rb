@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get '/500', to: 'pages#exception', defaults: { status: 500 }
 
   scope '/news' do
-    get '/', as: :news, defaults: { page_slug: 'news/index' }, to: redirect('https://blog.teachcomputing.org/tag/news')
+    get '/', as: :news, to: redirect('https://blog.teachcomputing.org/tag/news')
     get '/a-level', to: redirect('https://blog.teachcomputing.org/a-level')
     get '/beta-launch', to: redirect('https://blog.teachcomputing.org/beta-launch')
     get '/women-in-stem', to: redirect('https://blog.teachcomputing.org/women-in-stem')
