@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PagesController do
-  describe '#press' do
+  describe '#news' do
     context 'index' do
       before do
-        get '/press'
+        get '/news'
       end
 
       it 'has a status code of 301 - redirected' do
@@ -12,13 +12,13 @@ RSpec.describe PagesController do
       end
 
       it 'renders the index' do
-        expect(response).to redirect_to('https://blog.teachcomputing.org/tag/press')
+        expect(response).to redirect_to('https://blog.teachcomputing.org/tag/news')
       end
     end
 
-    context 'simon-peyton-jones' do
+    context 'first regional delivery network' do
       before do
-        get '/press/simon-peyton-jones-chair-ncce'
+        get '/news/first-regional-delivery-network'
       end
 
       it 'has a status code of 301 - redirected' do
@@ -26,7 +26,7 @@ RSpec.describe PagesController do
       end
 
       it 'renders the view' do
-        expect(response).to redirect_to('https://blog.teachcomputing.org/simon-peyton-jones-chair-ncce')
+        expect(response).to redirect_to('https://blog.teachcomputing.org/first-regional-delivery-network')
       end
     end
   end
