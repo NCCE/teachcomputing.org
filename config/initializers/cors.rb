@@ -1,11 +1,11 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://blog.teachcomputing.org'
+    origins '*'
 
     resource(
       '*',
       headers: :any,
-      methods: [:get, :options]
+      methods: %i[get options]
     )
   end
 end
