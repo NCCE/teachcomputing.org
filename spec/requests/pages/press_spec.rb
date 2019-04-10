@@ -7,12 +7,12 @@ RSpec.describe PagesController do
         get '/press'
       end
 
-      it 'has a status code of 200' do
-        expect(response).to have_http_status(:ok)
+      it 'has a status code of 301 - redirected' do
+        expect(response).to have_http_status(:moved_permanently)
       end
 
       it 'renders the index' do
-        expect(response).to render_template('press/index')
+        expect(response).to redirect_to('https://blog.teachcomputing.org/tag/press')
       end
     end
 
@@ -21,12 +21,12 @@ RSpec.describe PagesController do
         get '/press/simon-peyton-jones-chair-ncce'
       end
 
-      it 'has a status code of 200' do
-        expect(response).to have_http_status(:ok)
+      it 'has a status code of 301 - redirected' do
+        expect(response).to have_http_status(:moved_permanently)
       end
 
       it 'renders the view' do
-        expect(response).to render_template('press/posts/simon-peyton-jones-chair-ncce')
+        expect(response).to redirect_to('https://blog.teachcomputing.org/simon-peyton-jones-chair-ncce')
       end
     end
   end
