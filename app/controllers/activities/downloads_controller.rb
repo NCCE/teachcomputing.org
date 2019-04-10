@@ -1,5 +1,6 @@
 class Activities::DownloadsController < ApplicationController
-  before_action :track_download
+  before_action :authenticate_user!, only: [:show]
+  before_action :track_download, only: [:show]
 
   def show
     redirect_to (file_path), disposition: 'inline'
