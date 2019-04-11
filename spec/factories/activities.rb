@@ -18,6 +18,7 @@ FactoryBot.define do
     title { 'Downloaded diagnostic tool' }
     slug { 'downloaded-diagnostic-tool' }
     category { 'action' }
+    provider { 'system' }
   end
 
   trait :cpd do

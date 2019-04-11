@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
 
       it 'creates the correct achievement' do
         user.save
-        expect(user.achievements.where(activity_id: registered_activity.id).count).to eq 1
+        expect(user.achievements.where(activity_id: registered_activity.id).exists?).to eq true
       end
     end
   end
