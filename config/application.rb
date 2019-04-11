@@ -21,5 +21,7 @@ module TeachComputing
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '**', '*.rb')]
   end
 end

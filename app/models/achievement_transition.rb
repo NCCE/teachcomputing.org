@@ -1,11 +1,5 @@
 class AchievementTransition < ApplicationRecord
-  # If your transition table doesn't have the default `updated_at` timestamp column,
-  # you'll need to configure the `updated_timestamp_column` option, setting it to
-  # another column name (e.g. `:updated_on`) or `nil`.
-  #
-  # self.updated_timestamp_column = :updated_on
-  # self.updated_timestamp_column = nil
-  validates :to_state, inclusion: { in: AchievementStateMachine.states }
+  validates :to_state, inclusion: { in: StateMachines::AchievementStateMachine.states }
 
   belongs_to :achievement, inverse_of: :achievement_transitions
 

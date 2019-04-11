@@ -1,4 +1,3 @@
-require_relative('../lib/achievement_state_machine')
 class Achievement < ApplicationRecord
   belongs_to :activity
   belongs_to :user
@@ -8,7 +7,7 @@ class Achievement < ApplicationRecord
   has_many :achievement_transitions, autosave: false
 
   def state_machine
-    @state_machine ||= AchievementStateMachine.new(self, transition_class: AchievementTransition)
+    @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
 
   def self.transition_class
