@@ -1,4 +1,6 @@
 class Achievement < ApplicationRecord
+  include Statesman::Adapters::ActiveRecordQueries
+
   belongs_to :activity
   belongs_to :user
 
@@ -16,7 +18,7 @@ class Achievement < ApplicationRecord
   private_class_method :transition_class
 
   def self.initial_state
-    :enrolled
+    StateMachines::AchievementStateMachine.initial_state
   end
   private_class_method :initial_state
 end
