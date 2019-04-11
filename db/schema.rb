@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_152820) do
+ActiveRecord::Schema.define(version: 2019_04_10_152324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "achievement_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.uuid "achievement_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id", "most_recent"], name: "index_achievement_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["achievement_id", "sort_key"], name: "index_achievement_transitions_parent_sort", unique: true
+  end
 
   create_table "achievements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -84,4 +96,5 @@ ActiveRecord::Schema.define(version: 2019_04_08_152820) do
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
   end
 
+  add_foreign_key "achievement_transitions", "achievements"
 end
