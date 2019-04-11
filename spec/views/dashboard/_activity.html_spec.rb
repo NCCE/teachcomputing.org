@@ -20,10 +20,6 @@ RSpec.describe('dashboard/_activity', type: :view) do
       render
     end
 
-    it 'has the signed up item' do
-      expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')
-    end
-
     it 'check for every achievements title' do
       @achievements.each do |achievement|
         expect(rendered).to have_css('.ncce-activity-list__item-text', text: achievement.activity.title)
