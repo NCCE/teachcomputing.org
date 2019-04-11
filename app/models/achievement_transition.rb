@@ -9,7 +9,8 @@ class AchievementTransition < ApplicationRecord
 
   def update_most_recent
     last_transition = achievement.achievement_transitions.order(:sort_key).last
-    return unless last_transition.present?
-    last_transition.update_column(:most_recent, true)
+    return if last_transition.blank?
+
+    last_transition.update(:most_recent, true)
   end
 end

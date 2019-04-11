@@ -22,13 +22,13 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe 'state' do
-    context 'default' do
+    context 'when default' do
       subject { Achievement.in_state(:commenced) }
 
       it { is_expected.to include achievement }
     end
 
-    context 'completed' do
+    context 'when completed' do
       subject { Achievement.in_state(:completed) }
 
       it { is_expected.not_to include achievement }
