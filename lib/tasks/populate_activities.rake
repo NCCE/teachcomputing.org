@@ -14,7 +14,7 @@ namespace :activities do
       activity.credit = 5
       activity.slug = activity.title.parameterize
       activity.category = 'action'
-      activity.self_certifiable = true
+      activity.self_certifiable = false
       activity.provider = 'system'
     end
 
