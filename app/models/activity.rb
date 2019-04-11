@@ -7,13 +7,14 @@ class Activity < ApplicationRecord
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: %w[action cpd] }
-  validates :provider, inclusion: { in: %w[future-learn stem-learning] }
+  validates :provider, inclusion: { in: %w[future-learn stem-learning system] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :cpd, -> { where(category: 'cpd') }
   scope :future_learn, -> { where(provider: 'future-learn') }
-  scope :self_certifiable, -> { where(self_certifiable: true) }
   scope :non_action, -> { where.not(category: 'action') }
+  scope :self_certifiable, -> { where(self_certifiable: true) }
+  scope :system, -> { where(provider: 'system') }
   scope :user_removable, -> { self_certifiable.non_action }
 
   def user_removable?
@@ -27,7 +28,18 @@ class Activity < ApplicationRecord
       activity.slug = activity.title.parameterize
       activity.category = 'action'
       activity.self_certifiable = true
-      activity.provider = 'stem-learning'
+      activity.provider = 'system'
+    end
+  end
+
+  def self.registered_with_the_national_centre
+    Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
+      activity.title = 'Registered with the National Centre'
+      activity.credit = 5
+      activity.slug = activity.title.parameterize
+      activity.category = 'action'
+      activity.self_certifiable = true
+      activity.provider = 'system'
     end
   end
 end

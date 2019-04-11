@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe DashboardHelper, type: :helper do
   let(:user) { create(:user) }
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool)}
-  let(:another_activity) { create(:activity, :created_ncce_account)}
+  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:another_activity) { create(:activity) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
 
   describe('#has_user_completed_activity?') do
@@ -22,14 +22,12 @@ describe DashboardHelper, type: :helper do
     it 'returns false if user hasn\'t achieved activity' do
       achievement = diagnostic_achievement
       user = achievement.user
-      user.achievements = [achievement]
       expect(helper.has_user_completed_activity?(user, another_activity)).to eq false
     end
 
     it 'returns true if user has achieved activity' do
       achievement = diagnostic_achievement
       user = achievement.user
-      user.achievements = [achievement]
       expect(helper.has_user_completed_activity?(user, achievement.activity)).to eq true
     end
   end

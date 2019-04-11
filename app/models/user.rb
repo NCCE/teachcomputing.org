@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :achievements, dependent: :restrict_with_exception
   has_many :activities, through: :achievements
 
+  after_commit :set_registered_with_ncce_achievement, on: :create
+
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
       user.stem_user_id = id
@@ -27,5 +29,10 @@ class User < ApplicationRecord
       user.last_sign_in_at = Time.current
       user.save!
     end
+  end
+
+  def set_registered_with_ncce_achievement
+    Achievement.create(user_id: id,
+                       activity_id: Activity.registered_with_the_national_centre.id)
   end
 end

@@ -26,7 +26,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'creates the Achievement' do
-        expect(Achievement.count).to eq 1
+        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'does not create an Achievement' do
-        expect(Achievement.count).to eq 0
+        expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
       end
     end
   end

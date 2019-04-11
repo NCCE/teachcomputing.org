@@ -17,18 +17,18 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
       end
 
       it 'creates an achievement that belongs to the right activity' do
-        expect(Achievement.first.activity_id).to eq activity.id
+        expect(Achievement.where(activity_id: activity.id).exists?).to eq true
       end
 
       it 'creates an achievement that belongs to the right user' do
-        expect(Achievement.first.user_id).to eq user.id
+        expect(Achievement.where(activity_id: activity.id, user_id: user.id).exists?).to eq true
       end
     end
-    
+
     context 'when an activity cannot be found' do
       it 'does not create an achievement' do
         FetchUsersCompletedCoursesFromAchieverJob.perform_now(user)
-        expect(Achievement.count).to eq 0
+        expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
       end
     end
   end

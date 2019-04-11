@@ -6,9 +6,11 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:user_two) { create(:user, email: 'user2@example.com') }
   let(:user_three) { create(:user, email: 'user3@example.com') }
   let(:import) { create(:import, activity: activity) }
-  let(:csv_contents) { 'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at
+  let(:csv_contents) do
+    'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at
     2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,
-    2019-01-07,3,user999@example.com,Name 3,https://www.futurelearn.com/profiles/3,99%,0,0%,' }
+    2019-01-07,3,user999@example.com,Name 3,https://www.futurelearn.com/profiles/3,99%,0,0%,'
+  end
 
   describe '#perform' do
     before do
@@ -19,15 +21,15 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     end
 
     it 'creates an achievement if a user is found and the steps completed is > 60' do
-      expect(user_one.achievements.count).to eq 1
+      expect(user_one.achievements.where(activity_id: activity.id).exists?).to eq true
     end
 
     it 'does not create an achievement if a user cannot be found' do
-      expect(Achievement.where(user_id: user_three.id).count).to eq 0
+      expect(user_three.achievements.where(activity_id: activity.id).exists?).to eq false
     end
 
     it 'does not create an achievement if steps completed is < 60' do
-      expect(user_two.achievements.count).to eq 0
+      expect(user_two.achievements.where(activity_id: activity.id).exists?).to eq false
     end
 
     it 'updates the the import record to have a completed_at timestamp' do
