@@ -34,4 +34,8 @@ RSpec.describe Achievement, type: :model do
       it { is_expected.not_to include achievement }
     end
   end
+
+  describe 'delegate methods' do
+    it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
+  end
 end
