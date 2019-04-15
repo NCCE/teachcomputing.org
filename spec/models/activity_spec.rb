@@ -5,6 +5,7 @@ RSpec.describe Activity, type: :model do
   let(:cpd_activity) { create(:activity, :cpd) }
   let(:cpd_courses) { create_list(:activity, 5, :cpd) }
   let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
+  let(:system_activity) { create_list(:activity, 3, :system) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
   let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
@@ -78,6 +79,20 @@ RSpec.describe Activity, type: :model do
       end
     end
 
+    describe 'system' do
+      before do
+        [system_activity, activity]
+      end
+
+      it 'includes only system activities' do
+        expect(Activity.system).to eq(system_activity)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.system).not_to include(activity)
+      end
+    end
+
     describe 'user_removable' do
       before do
         [removable_activity, activity, diagnostic_tool_activity]
@@ -98,7 +113,7 @@ RSpec.describe Activity, type: :model do
   end
 
   describe 'class methods' do
-    describe '#created_ncce_account' do
+    describe '#downloaded_diagnostic_tool' do
       it 'returns a record if one is found' do
         activity = create(:activity, :diagnostic_tool)
         expect(Activity.downloaded_diagnostic_tool).to eq activity
@@ -107,6 +122,21 @@ RSpec.describe Activity, type: :model do
       it 'creates a record if one is not found' do
         expect(Activity.downloaded_diagnostic_tool.title).to eq 'Downloaded diagnostic tool'
       end
+    end
+  end
+
+  describe 'registered_with_the_national_centre' do
+    it 'returns a record if one is found' do
+      activity = create(:activity, :registered_with_national_centre)
+      expect(Activity.registered_with_the_national_centre).to eq activity
+    end
+
+    it 'creates a record if one is not found' do
+      expect(Activity.registered_with_the_national_centre.title).to eq 'Registered with the National Centre'
+    end
+
+    it 'has a credit weighting of 5' do
+      expect(Activity.registered_with_the_national_centre.credit).to eq 5
     end
   end
 end

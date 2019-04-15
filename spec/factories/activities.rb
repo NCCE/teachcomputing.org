@@ -7,16 +7,18 @@ FactoryBot.define do
     provider { 'stem-learning' }
   end
 
-  trait :created_ncce_account do
-    title { 'Created NCCE account' }
-    slug { 'created-ncce-account' }
+  trait :registered_with_national_centre do
+    title { 'Registered with the National Centre' }
+    slug { 'registered-with-the-national-centre' }
     category { 'action' }
+    provider { 'system' }
   end
 
   trait :diagnostic_tool do
     title { 'Downloaded diagnostic tool' }
     slug { 'downloaded-diagnostic-tool' }
     category { 'action' }
+    provider { 'system' }
   end
 
   trait :cpd do
@@ -26,6 +28,12 @@ FactoryBot.define do
   trait :future_learn do
     title { 'future learn' }
     provider { 'future-learn' }
+  end
+
+  trait :system do
+    title { 'system' }
+    category { 'action' }
+    provider { 'system' }
   end
 
   trait :user_removable do
