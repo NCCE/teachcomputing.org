@@ -9,4 +9,14 @@ namespace :set_historic_achievement do
       end
     end
   end
+
+  task set_state_to_complete_for_existing_achievements: :environment do
+    achievements = Achievement.all
+    puts "Total Achievements: #{achievements.count}"
+
+    @achievements.each do |achievement|
+      achievement.transition_to(:complete, credit: achievement.activity.credit)
+      puts "Achievement: #{achievement.id} state: #{achievement.current_state}"
+    end
+  end
 end
