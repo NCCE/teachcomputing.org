@@ -14,6 +14,8 @@ class CoursesController < ApplicationController
     @workstreams = course_workstreams(@courses)
     @courses = filter_courses(@courses)
 
+    @achiever.future_booked_face_to_face_courses
+
     render :index
   end
 
