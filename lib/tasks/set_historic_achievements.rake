@@ -11,7 +11,7 @@ namespace :set_historic_achievement do
   end
 
   task set_state_to_complete_for_existing_achievements: :environment do
-    achievements = Achievement.all
+    achievements = Achievement.in_state(:commenced)
     puts "Total Achievements: #{achievements.count}"
 
     @achievements.each do |achievement|
