@@ -117,8 +117,8 @@
                     <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course) %>">
                     <%= oc.address_town %></span>
                     <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
-                    <%= oc.course_occurrence_no %>
                   </li>
+                  <li>Magda <%= oc.course_occurrence_no %></li>
                 <% end %>
               </ul>
             <% end %>

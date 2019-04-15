@@ -49,6 +49,13 @@ class CoursesController < ApplicationController
     courses
   end
 
+  def fetch_future_course_list
+    future_courses = @achiever.future_booked_face_to_face_courses
+    future_courses.each do |future_course|
+    end
+    future_courses
+  end
+
   def filter_courses(courses)
     courses.select do |c|
       has_level = true
