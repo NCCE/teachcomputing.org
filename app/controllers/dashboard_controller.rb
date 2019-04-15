@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @achievements = current_user.achievements
+    @achievements = current_user.achievements.order('created_at ASC')
     render :show
   end
 end
