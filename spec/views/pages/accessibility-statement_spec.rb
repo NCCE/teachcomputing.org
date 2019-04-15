@@ -15,7 +15,7 @@ RSpec.describe('pages/accessibility-statement', type: :view) do
   end
 
   it 'has a contact link' do
-    expect(rendered).to have_link('accessibility@teachcomputing.org', href: 'mailto:accessibility@teachcomputing.org)
+    expect(rendered).to have_link('accessibility@teachcomputing.org', href: 'mailto:accessibility@teachcomputing.org')
   end
 
 end
