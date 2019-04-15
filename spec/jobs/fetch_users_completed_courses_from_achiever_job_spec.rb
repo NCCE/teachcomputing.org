@@ -23,6 +23,11 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
       it 'creates an achievement that belongs to the right user' do
         expect(Achievement.where(activity_id: activity.id, user_id: user.id).exists?).to eq true
       end
+
+      it 'sets the correct complete state' do
+        achievement = Achievement.where(activity_id: activity.id, user_id: user.id).first
+        expect(achievement.current_state).to eq 'complete'
+      end
     end
 
     context 'when an activity cannot be found' do
