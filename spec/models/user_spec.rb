@@ -53,6 +53,29 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'after_commit' do
+    describe '#set_registered_with_ncce_achievement' do
+      let(:user) { build(:user) }
+      let(:registered_activity) { Activity.registered_with_the_national_centre }
+
+      it 'calls the method on create' do
+        expect(user).to receive(:set_registered_with_ncce_achievement)
+        user.save
+      end
+
+      it 'does not call the update on update' do
+        user.save
+        expect(user).not_to receive(:set_registered_with_ncce_achievement)
+        user.update(first_name: 'Firsty Name')
+      end
+
+      it 'creates the correct achievement' do
+        user.save
+        expect(user.achievements.where(activity_id: registered_activity.id).exists?).to eq true
+      end
+    end
+  end
+
   describe '#from_auth' do
     it 'has the correct id' do
       expect(user.stem_user_id).to eq uid
@@ -83,11 +106,11 @@ RSpec.describe User, type: :model do
     end
 
     it 'has the correct expires at' do
-      expect(user.stem_credentials_expires_at.today?).to be_truthy
+      expect(user.stem_credentials_expires_at).to be_today
     end
 
     it 'has the last sign in date set' do
-      expect(user.last_sign_in_at.today?).to be_truthy
+      expect(user.last_sign_in_at).to be_today
     end
   end
 end

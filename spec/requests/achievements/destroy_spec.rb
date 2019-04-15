@@ -16,8 +16,7 @@ RSpec.describe AchievementsController do
     end
 
     it 'removes the Achievement' do
-      expect(Achievement.count).to eq 0
+      expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
     end
-
   end
 end
