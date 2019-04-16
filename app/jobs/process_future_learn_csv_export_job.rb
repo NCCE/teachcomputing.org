@@ -7,10 +7,12 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
       user = User.find_by(email: record['learner_identifier'])
       next if user.nil? || record['steps_completed'].to_f < 60
 
-      Achievement.find_or_create_by(activity_id: activity.id, user_id: user.id) do |achievement|
+      record = Achievement.find_or_create_by(activity_id: activity.id, user_id: user.id) do |achievement|
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
+
+      record.set_to_complete
     end
 
     import_record.update(completed_at: DateTime.now.in_time_zone)
