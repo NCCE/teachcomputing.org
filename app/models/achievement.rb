@@ -12,6 +12,12 @@ class Achievement < ApplicationRecord
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
 
+  def set_to_complete
+    return false unless can_transition_to?(:complete)
+
+    transition_to(:complete, credit: activity.credit)
+  end
+
   def self.initial_state
     StateMachines::AchievementStateMachine.initial_state
   end
@@ -22,5 +28,5 @@ class Achievement < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :current_state, :transition_to, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, to: :state_machine
 end

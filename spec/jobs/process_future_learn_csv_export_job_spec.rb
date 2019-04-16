@@ -36,5 +36,9 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       import.reload
       expect(import.completed_at).not_to be_nil
     end
+
+    it 'sets the complete state for the achievement' do
+      expect(user_one.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
+    end
   end
 end

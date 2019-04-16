@@ -17,7 +17,7 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.user_id = user.id
       end
 
-      record.transition_to(:complete, credit: record.activity.credit)
+      record.set_to_complete
     end
   end
 end
