@@ -48,6 +48,8 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe 'delegate methods' do
+    it { is_expected.to delegate_method(:can_transition_to?).to(:state_machine).as(:can_transition_to?) }
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
+    it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
   end
 end

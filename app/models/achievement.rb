@@ -13,7 +13,7 @@ class Achievement < ApplicationRecord
   end
 
   def set_to_complete
-    return false if current_state == 'complete'
+    return false unless can_transition_to?(:complete)
 
     transition_to(:complete, credit: activity.credit)
   end
@@ -28,5 +28,5 @@ class Achievement < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :current_state, :transition_to, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, to: :state_machine
 end
