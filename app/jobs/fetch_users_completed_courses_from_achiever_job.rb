@@ -12,10 +12,12 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         Raven.capture_exception(e)
         next
       end
-      Achievement.find_or_create_by(activity_id: activity.id, user_id: user.id) do |achievement|
+      record = Achievement.find_or_create_by(activity_id: activity.id, user_id: user.id) do |achievement|
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
+
+      record.set_to_complete
     end
   end
 end
