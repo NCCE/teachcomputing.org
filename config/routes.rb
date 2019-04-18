@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
+  get '/accessibility-statement', to: 'pages#page', as: :accessibility_statement, defaults: { page_slug: 'accessibility-statement' }
 
   scope '/news' do
     get '/', as: :news, to: redirect('https://blog.teachcomputing.org/tag/news')
