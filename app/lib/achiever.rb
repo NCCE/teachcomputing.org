@@ -73,7 +73,7 @@ class Achiever
 
   def future_booked_face_to_face_courses
     workflow_id = ENV['ACHIEVER_ONLINE_FUTURE_COURSES_WORKFLOW_ID']
-    workflow_params = [Parameter.new('ContactNo', contact_no)]
+    workflow_params = [Parameter.new('ContactNo', contact_no), @status]
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
