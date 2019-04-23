@@ -103,10 +103,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-
-    result = Rails.cache.fetch("#{workflow_id}-#{contact_no}-#{Date.today}", expires_in: 12.hours) do
-      RestClient.get(request).body
-    end
+    result = RestClient.get(request).body
     parse_results(result)
   end
 
