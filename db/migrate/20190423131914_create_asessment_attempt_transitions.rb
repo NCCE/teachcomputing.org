@@ -2,7 +2,7 @@ class CreateAsessmentAttemptTransitions < ActiveRecord::Migration[5.2]
   def change
     create_table :asessment_attempt_transitions do |t|
       t.string :to_state, null: false
-      t.text :metadata, default: {}
+      t.json :metadata, default: {}
       t.integer :sort_key, null: false
       t.integer :assessment_attempt_id, null: false
       t.boolean :most_recent, null: false
