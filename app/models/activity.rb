@@ -4,6 +4,7 @@ class Activity < ApplicationRecord
   has_many :imports, dependent: :nullify
   has_many :programme_activities, dependent: :destroy
   has_many :programmes, through: :programme_activities
+  has_one  :assessment
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: %w[action cpd] }
