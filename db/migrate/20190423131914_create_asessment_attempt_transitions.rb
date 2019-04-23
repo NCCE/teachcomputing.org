@@ -4,7 +4,7 @@ class CreateAsessmentAttemptTransitions < ActiveRecord::Migration[5.2]
       t.string :to_state, null: false
       t.json :metadata, default: {}
       t.integer :sort_key, null: false
-      t.integer :assessment_attempt_id, null: false
+      t.uuid :assessment_attempt_id, null: false
       t.boolean :most_recent, null: false
       t.timestamps null: false
     end

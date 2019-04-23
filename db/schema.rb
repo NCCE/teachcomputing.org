@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_152324) do
+ActiveRecord::Schema.define(version: 2019_04_23_131914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,6 +49,37 @@ ActiveRecord::Schema.define(version: 2019_04_10_152324) do
     t.index ["course_id"], name: "index_activities_on_course_id", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["slug"], name: "index_activities_on_slug", unique: true
+  end
+
+  create_table "asessment_attempt_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.uuid "assessment_attempt_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_attempt_id", "most_recent"], name: "index_asessment_attempt_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["assessment_attempt_id", "sort_key"], name: "index_asessment_attempt_transitions_parent_sort", unique: true
+  end
+
+  create_table "assessment_attempts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "assessment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_attempts_on_assessment_id"
+    t.index ["user_id"], name: "index_assessment_attempts_on_user_id"
+  end
+
+  create_table "assessments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "link"
+    t.uuid "programme_id", null: false
+    t.uuid "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_assessments_on_activity_id"
+    t.index ["programme_id"], name: "index_assessments_on_programme_id"
   end
 
   create_table "imports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -97,4 +128,5 @@ ActiveRecord::Schema.define(version: 2019_04_10_152324) do
   end
 
   add_foreign_key "achievement_transitions", "achievements"
+  add_foreign_key "asessment_attempt_transitions", "assessment_attempts"
 end
