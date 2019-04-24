@@ -3,6 +3,8 @@ class StateMachines::AssessmentAttemptStateMachine
 
   state :commenced, initial: true
   state :passed
+  state :failed
 
   transition from: :commenced, to: :passed
+  transition from: :commenced, to: :failed
 end
