@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :imports
   end
 
-  resources :achievements, only: [:create, :destroy]
+  resources :achievements, only: %i[create destroy]
 
   namespace :activities do
     resources :downloads, only: [:show]
@@ -52,7 +52,6 @@ Rails.application.routes.draw do
     get '/', as: :press, to: redirect('https://blog.teachcomputing.org/tag/press')
     get '/simon-peyton-jones-chair-ncce', to: redirect('https://blog.teachcomputing.org/simon-peyton-jones-chair-ncce')
     get '/bt-rolls-royce-arm-back-ncce', to: redirect('https://blog.teachcomputing.org/bt-rolls-royce-arm-back-ncce')
-
   end
 
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
