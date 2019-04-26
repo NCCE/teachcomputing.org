@@ -28,8 +28,7 @@ namespace :programmes do
       activity = Activity.find_by(slug: slug)
       unless activity.programmes.include?(cs_accelerator)
         puts "Adding: #{activity.title} to programme: #{cs_accelerator.slug}"
-        activity.programmes.push(cs_accelerator)
-        activity.save
+        activity.programmes << cs_accelerator
       end
     end
   end
