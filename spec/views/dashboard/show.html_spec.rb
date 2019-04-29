@@ -31,4 +31,22 @@ RSpec.describe('dashboard/show', type: :view) do
   it 'has a link to download the diagnostic tool' do
     expect(rendered).to have_css('a', text: 'diagnostic tool')
   end
+
+  context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
+    before do
+      render
+    end
+
+    it 'shows the certificate progress section' do
+      expect(rendered).to have_css('p', text: 'Get your National Centre for Computing Education certificate in')
+    end
+
+    it 'shows the certificate name' do
+      expect(rendered).to have_css('h2', text: 'GCSE computer science subject knowledge')
+    end
+
+    it 'shows the enrollment button' do
+      expect(rendered).to have_link('Find out more & enroll', href: '#')
+    end
+  end
 end
