@@ -14,7 +14,7 @@ namespace :set_historic_achievement do
     achievements = Achievement.in_state(:commenced)
     puts "Total Achievements: #{achievements.count}"
 
-    @achievements.each do |achievement|
+    achievements.each do |achievement|
       achievement.transition_to(:complete, credit: achievement.activity.credit)
       puts "Achievement: #{achievement.id} state: #{achievement.current_state}"
     end
