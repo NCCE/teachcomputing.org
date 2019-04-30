@@ -8,7 +8,13 @@ RSpec.describe ProgrammesController do
   describe '#show' do
     describe 'while logged in' do
       before do
+        programme
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      end
+
+      it 'handles missing programmes' do
+        get programme_path('programme-missing')
+        expect(response.status).to eq 404
       end
 
       it 'redirects if not enrolled' do
@@ -18,7 +24,6 @@ RSpec.describe ProgrammesController do
 
       describe 'and enrolled' do
         before do
-          programme
           user_programme_enrolment
           get programme_path('programme-101')
         end

@@ -4,7 +4,9 @@ class ProgrammesController < ApplicationController
 
   def show
     @programme = Programme.find_by(slug: params[:slug])
-    unless current_user.programmes.exists?(slug: params[:slug])
+    if @programme.nil?
+      render template: 'pages/exception', status: 404
+    elsif !current_user.programmes.exists?(slug: params[:slug])
       redirect_to certification_path
     else
       render :show
