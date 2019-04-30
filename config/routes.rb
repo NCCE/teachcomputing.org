@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :courses, path: '/courses', only: [:index]
 
+  resources :programmes, path: '/certification', only: [:show]
+
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
