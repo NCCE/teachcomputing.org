@@ -3,7 +3,11 @@ class ProgrammesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    # @achievements = current_user.achievements.order('created_at ASC')
-    render :show
+    @programme = Programme.find_by(slug: params[:slug])
+    unless current_user.programmes.exists?(slug: params[:slug])
+      redirect_to certification_path
+    else
+      render :show
+    end
   end
 end
