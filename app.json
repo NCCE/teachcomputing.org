@@ -103,9 +103,6 @@
     },
     "GHOST_LIMIT_FEATURED_POSTS": {
       "required": true
-    },
-    "FEATURE_GHOST_ENABLED": {
-      "required": true
     }
   },
   "formation": {

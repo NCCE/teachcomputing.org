@@ -52,4 +52,15 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
     it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
   end
+
+  describe 'destroy' do
+    before do
+      achievement
+      achievement.transition_to(:complete)
+    end
+
+    it 'deletes transitions' do
+      expect { achievement.destroy }.to change { AchievementTransition.count }.by(-1)
+    end
+  end
 end
