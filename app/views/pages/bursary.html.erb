@@ -6,56 +6,41 @@
           <h1 class="govuk-heading-l ncce-bursary__title">Bursary entitlement</h1>
         </div>
         <div class="govuk-grid-column-two-thirds ncce-bursary__content">
-          <p class="govuk-body">We recognise it can be difficult to get out of the classroom to attend face-to-face CPD, so we offer bursaries to schools and colleges across England to help.</p>
-          <p class="govuk-body">These bursaries have been designed to maximise the reach of our CPD and can contribute towards the costs associated with attending professional development, including course fees, travel and supply cover.</p>
-          <h2 class="govuk-heading-m">Types of bursary available</h2>
-          <h3 class="govuk-heading-s">The National Centre for Computing Education face-to-face CPD</h3>
-          <p class="govuk-body">We have developed a range of face-to-face courses for teachers looking to gain confidence in teaching across the computing curriculum. (These are currently only available at primary level).</p>
+          <p class="govuk-body">We understand it can be difficult to get out of the classroom to study, so we offer bursaries to schools and colleges across England to help.</p>
+          <p class="govuk-body">These bursaries can contribute towards the costs associated with attending continuing professional development, including course fees, travel and supply cover.</p>
+          <h2 class="govuk-heading-m">For Primary Teachers</h2>
+          <h3 class="govuk-heading-s">What financial support is available to help you access CPD?</h3>
+          <p class="govuk-body">We offer <strong>one free place</strong> to each primary priority school, on each course. A further £100 per day bursary is payable to the school, on successful completion of the CPD.</p>
+          <p class="govuk-body">Priority schools are those located in Local Authority Districts 5 and 6: <%= link_to 'check this list', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> or <%= mail_to 'mailto:info@teachcomputing.org', 'Contact us', class: 'ncce-link' %> for details.</p>
+          <h3 class="govuk-heading-s">What is the standard fee?</h3>
+          <p class="govuk-body">For any teachers in non-priority schools, and for the second and subsequent teachers in priority primary schools, the fee is £35 per day of CPD</p>
 
-          <h4 class="govuk-heading-s">These courses are free to:</h4>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>the first teacher from each priority primary school to participate in face-to-face CPD</li>
-            <li>all computing teachers from priority secondary schools (courses coming soon)</li>
-            <li>graduates of the <%= link_to 'Computer Science Accelerator Programme', accelerator_path, class: 'ncce-link' %></li>
-          </ul>
-
-          <p class="govuk-body">Priority schools are those located in Local Authority Districts 5 and 6: see <%= link_to 'this map', "https://www.stem.org.uk/sites/default/files/pages/downloads/Methodology_guidance_note_-_deing_achieving_excellence_areas%2013.pdf", class: 'ncce-link', target: '_blank' %> to check eligibility, or
-          <a class="ncce-link" href="mailto:info@teachcomputing.org" target="_top"> Contact us</a> for details.</p>
-
-          <p class="govuk-body">The fee for teachers from state-funded schools or colleges outside of priority areas 5 and 6 is £35 per day plus VAT.</p>
-
-          <h3 class="govuk-heading-s">Can I get a bursary?</h3>
-          <p class="govuk-body">Bursaries of £100 per day are available for teachers from primary and secondary priority schools on successful completion of the CPD.</p>
-          <p class="govuk-body"><%= link_to 'Find out more about our CPD', offer_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
-
-          <h2 class="govuk-heading-s">Computer Science Accelerator Programme CPD</h2>
-          <p class="govuk-body"><%= link_to 'The Computer Science Accelerator programme', accelerator_url, class: 'ncce-link' %> and its face-to-face CPD activities
-          are free to secondary teachers of computing or computer science, in an English state-funded or state-maintained school, without a post A level
-          qualification in computer science or a related subject.* Online CPD is free to all teachers.</p>
-          <h3 class="govuk-heading-s">Can I get a bursary for the face-to-face CPD?</h3>
-          <p class="govuk-body">Anybody who meets the above criteria is eligible for their
-          school to receive a bursary. For all other participants, the course fee is £220 per day,
-          or £440 per two-day course.
-          </p>
+          <h2 class="govuk-heading-m">For Secondary Computing Teachers</h2>
+          <h3 class="govuk-heading-s">What kind of bursaries do we offer on face-to-face CPD?</h3>
+          <ol class="govuk-list govuk-list--number">
+            <li>The <%= link_to 'Computer Science Accelerator Programme Bursary', bursary_path, class: 'ncce-link' %> for teachers without a post A level computer science qualification.</li>
+            <li>a bursary to support any secondary teachers of computing in priority schools</li>
+          </ol>
+          <h3 class="govuk-heading-s">Am I eligible for support?*</h3>
+          <ol class="govuk-list govuk-list--number">
+            <li><%= link_to 'Computer Science Accelerator Programme Bursary', bursary_path, class: 'ncce-link' %></li>
+          </ol>
+          <h3 class="govuk-heading-s">How much will the school receive if I’m eligible?</h3>
+          <p class="govuk-body"><%= link_to 'The Computer Science Accelerator programme', accelerator_path, class: 'ncce-link' %> and its online CPD is free to all teachers and the face-to-face CPD activities are free to secondary teachers meeting the eligibility criteria.</p>
           <p class="govuk-body">If you are eligible your school will receive:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>£220 per day (£440 per course) up to a maximum of £880, payable after successful completion of each face-to-face CPD activity</li>
-            <li>£870 for participants who complete online CPD and sit the final test by 31 July 2019, payable on completion of the programme</li>
+            <li>up to a maximum of <strong>£880</strong>, payable after successful completion of each face-to-face CPD activity</li>
+            <li><strong>£870</strong> for participants who complete online CPD and sit the final test by 31 July 2019, payable on completion of the programme</li>
           </ul>
-          <p class="govuk-body">For your school to receive the financial support, you will need to:</p>
-           <ul class="govuk-list govuk-list--bullet">
-            <li>book and attend at least two face-to-face courses. Eligible
-            teachers will receive a bursary after completing the first two courses,
-            and you’re welcome to attend the rest for free</li>
-            <li>participate in at least two online courses, around 16 hours in total</li>
-            <li>take a short subject knowledge test (after this, your school will receive a bursary to
-            compensate the time you’ve taken to complete the online components. This is in
-            recognition that you may have been released from teaching to complete some learning during school hours)
-            </li>
-          </ul>
-          <p class="govuk-body">Bursaries exist to support you through 40 hours of CPD to complete the Computer Science Accelerator Programme. If you don’t complete the programme, we reserve the right to reclaim any bursaries paid.</p>
-          <p class="govuk-body"><%= link_to 'Find out more about the programme', accelerator_path, class: 'govuk-button ncce-button__pink ncce-bursary__button' %></p>
-          <p class="govuk-body">*Related subjects include Information Systems, Software Engineering, Artificial Intelligence and Health Informatics. Post A level qualifications in computing or ICT are not considered related subjects.</p>
+          <h3 class="govuk-heading-s">How much will I need to pay if I am NOT eligible?</h3>
+          <p class='govuk-body'>Teachers with a Post A level qualification can access any of our online CPD for free.</p>
+          <p class='govuk-body'>A fee of £220 per day is payable for face to face courses.</p>
+
+          <h2 class="govuk-heading-m">General Bursary</h2>
+          <p class='govuk-body'>This CPD is free for <strong>all teachers</strong> of computing in priority secondary schools.   A further  bursary of £100 per day following successful completion of the CPD is payable to schools.</p>
+          <p class="govuk-body">Priority schools are those located in Local Authority Districts 5 and 6: <%= link_to 'check this list', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> or <%= mail_to 'mailto:info@teachcomputing.org', 'Contact us', class: 'ncce-link' %> for details.</p>
+          <h3 class="govuk-heading-s">How much will I need to pay if I am NOT from a priority school?</h3>
+          <p class='govuk-body'>For any teachers in non-priority schools, the fee is £35 per day of CPD.</p>
         </div>
       </div>
     </div>
