@@ -1,22 +1,21 @@
 class ProgrammesController < ApplicationController
   layout 'full-width'
-  before_action :is_enabled?
+  before_action :enabled?
   before_action :authenticate_user!
   before_action :find_programme!, only: [:show]
 
   def show
-    unless @programme.is_user_enrolled?(current_user)
-      redirect_to certification_path
-    else
+    if @programme.user_enrolled?(current_user)
       render :show
+    else
+      redirect_to certification_path
     end
   end
 
   private
-    def is_enabled?
-      unless certification_enabled?
-        redirect_to root_path
-      end
+
+    def enabled?
+      redirect_to root_path unless certification_enabled?
     end
 
     def find_programme!

@@ -6,8 +6,9 @@ class Programme < ApplicationRecord
 
   validates :title, :description, :slug, presence: true
 
-  def is_user_enrolled?(user = nil)
+  def user_enrolled?(user = nil)
     return false if user.nil?
-    user.programmes.exists?(self.id)
+
+    user.programmes.exists?(id)
   end
 end

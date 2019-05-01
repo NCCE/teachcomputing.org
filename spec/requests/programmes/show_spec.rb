@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
   let(:programme) { create(:programme) }
-  let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)}
+  let(:user_programme_enrolment) {
+                                    create( :user_programme_enrolment,
+                                            user_id: user.id,
+                                            programme_id: programme.id)
+                                  }
 
   describe '#show' do
     describe 'while certification is not enabled' do
@@ -15,13 +19,15 @@ RSpec.describe ProgrammesController do
 
     describe 'while certification is enabled' do
       before do
-        allow_any_instance_of(ProgrammesController).to receive(:certification_enabled?).and_return(true)
+        allow_any_instance_of(ProgrammesController)
+          .to receive(:certification_enabled?).and_return(true)
       end
 
       describe 'while logged in' do
         before do
           programme
-          allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+          allow_any_instance_of(AuthenticationHelper)
+            .to receive(:current_user).and_return(user)
         end
 
         it 'handles missing programmes' do
@@ -56,7 +62,7 @@ RSpec.describe ProgrammesController do
           get programme_path('programme-101')
         end
 
-        it 'should redirect to login' do
+        it 'redirects to login' do
           expect(response).to redirect_to(login_path)
         end
       end

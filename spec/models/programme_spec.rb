@@ -15,18 +15,18 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#is_user_enrolled?' do
+  describe '#user_enrolled?' do
     it 'returns true if user is enrolled on the programme' do
       user_programme_enrolment
-      expect(programme.is_user_enrolled?(user)).to eq(true)
+      expect(programme.user_enrolled?(user)).to eq(true)
     end
 
     it 'returns false if user is not enrolled on the programme' do
-      expect(programme.is_user_enrolled?(user)).to eq(false)
+      expect(programme.user_enrolled?(user)).to eq(false)
     end
 
     it 'returns false if user not defined' do
-      expect(programme.is_user_enrolled?(nil)).to eq(false)
+      expect(programme.user_enrolled?(nil)).to eq(false)
     end
   end
 end
