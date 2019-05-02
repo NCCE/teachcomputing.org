@@ -18,6 +18,6 @@ RSpec.describe('programmes/_activity', type: :view) do
   end
 
   it 'incomplete activities have buttons' do
-    expect(rendered).to have_css('.ncce-button__pink--rounded', count: 6)
+    expect(rendered).to have_css('.ncce-button__pink--rounded', count: 5)
   end
 end
