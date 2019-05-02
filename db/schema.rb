@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_131914) do
     t.index ["slug"], name: "index_activities_on_slug", unique: true
   end
 
-  create_table "asessment_attempt_transitions", force: :cascade do |t|
+  create_table "assessment_attempt_transitions", force: :cascade do |t|
     t.string "to_state", null: false
     t.json "metadata", default: {}
     t.integer "sort_key", null: false
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_131914) do
     t.boolean "most_recent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assessment_attempt_id", "most_recent"], name: "index_asessment_attempt_transitions_parent_most_recent", unique: true, where: "most_recent"
-    t.index ["assessment_attempt_id", "sort_key"], name: "index_asessment_attempt_transitions_parent_sort", unique: true
+    t.index ["assessment_attempt_id", "most_recent"], name: "index_assessment_attempt_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["assessment_attempt_id", "sort_key"], name: "index_assessment_attempt_transitions_parent_sort", unique: true
   end
 
   create_table "assessment_attempts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -128,5 +128,5 @@ ActiveRecord::Schema.define(version: 2019_04_23_131914) do
   end
 
   add_foreign_key "achievement_transitions", "achievements"
-  add_foreign_key "asessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
 end

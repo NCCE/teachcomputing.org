@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :activities, through: :achievements
-  has_many :assessment_attempts
+  has_many :assessment_attempts, dependent: :destroy
 
   after_commit :set_registered_with_ncce_achievement, on: :create
 
