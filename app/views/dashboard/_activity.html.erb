@@ -41,7 +41,7 @@
           <span class="govuk-form-group">
             <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
               <%= f.select :activity_id,
-                options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+                options_for_select(Activity.user_removable.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
                 { include_blank: 'Select an activity' },
                 { class: 'govuk-select ncce-activity-form__select',
                   'aria-label': 'Select an activity' }

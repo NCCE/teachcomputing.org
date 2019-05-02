@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :cpd) }
+  let(:activity) { create(:activity, :stem_learning) }
 
   describe 'POST #create' do
     before do
