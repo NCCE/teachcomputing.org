@@ -6,7 +6,7 @@ class Achievement < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
-  has_many :achievement_transitions, autosave: false
+  has_many :achievement_transitions, autosave: false, dependent: :destroy
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)

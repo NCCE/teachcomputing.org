@@ -2,19 +2,24 @@ require 'rails_helper'
 
 RSpec.describe DashboardController do
   let(:user) { create(:user) }
-  let(:achievements) { create(:achievements, user: user) }
+  let(:complete_achievements) { create_list(:completed_achievement, 3, user: user) }
+  let(:commenced_achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
 
   describe '#show' do
     describe 'while logged in' do
       before do
-        activity
+        [activity, complete_achievements, commenced_achievement]
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end
 
-      it 'assigns the users achievements' do
-        expect(assigns(:achievements)).to eq user.achievements
+      it 'assigns the users complete achievements' do
+        expect(assigns(:achievements)).to eq complete_achievements
+      end
+
+      it 'does not assign achievements in the state of commenced' do
+        expect(assigns(:achievements)).not_to include commenced_achievement
       end
 
       it 'renders the correct template' do
@@ -27,7 +32,7 @@ RSpec.describe DashboardController do
         get dashboard_path
       end
 
-      it 'should redirect to login' do
+      it 'redirects to login' do
         expect(response).to redirect_to(login_path)
       end
     end

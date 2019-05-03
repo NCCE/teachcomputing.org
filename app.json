@@ -104,7 +104,7 @@
     "GHOST_LIMIT_FEATURED_POSTS": {
       "required": true
     },
-    "FEATURE_GHOST_ENABLED": {
+    "CERTIFICATION_ENABLED": {
       "required": true
     }
   },

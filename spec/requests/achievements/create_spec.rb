@@ -28,6 +28,10 @@ RSpec.describe AchievementsController do
       it 'creates the Achievement' do
         expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
       end
+
+      it 'creates an achievement with the correct complete state' do
+        expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
+      end
     end
 
     context 'with invalid params' do
