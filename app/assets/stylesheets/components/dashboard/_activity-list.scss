@@ -1,16 +1,7 @@
 .ncce-dashboard-activity {
-  background-color: $ncce-dark-purple;
-  background-image: none;
+  background-color: $ncce-grey-x-light;
   padding-bottom: 30px;
   padding-top: 0;
-
-  @include govuk-media-query($from: tablet) {
-    background-image: url(/images/dashboard/triangle2.png);
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    padding-bottom: 30px;
-  }
 }
 
 .ncce-activity-list__item {

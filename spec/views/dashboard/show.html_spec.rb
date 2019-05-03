@@ -3,8 +3,14 @@ require 'rails_helper'
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:user_programme_enrolment) { create( :user_programme_enrolment,
+                                            user_id: user.id,
+                                            programme_id: programme.id)
+                                  }
 
   before do
+    @programme = programme
     activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
@@ -32,21 +38,40 @@ RSpec.describe('dashboard/show', type: :view) do
     expect(rendered).to have_css('a', text: 'diagnostic tool')
   end
 
-  context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
+  # context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
+  #   before do
+  #     render
+  #   end
+
+  #   it 'shows the certificate progress section' do
+  #     expect(rendered).to have_css('p', text: 'Get your National Centre for Computing Education certificate in')
+  #   end
+
+  #   it 'shows the certificate name' do
+  #     expect(rendered).to have_css('h2', text: 'GCSE computer science subject knowledge')
+  #   end
+
+  #   it 'shows the enrollment button' do
+  #     expect(rendered).to have_link('Find out more & enroll', href: '#')
+  #   end
+  # end
+
+  context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
+      user_programme_enrolment
       render
     end
 
     it 'shows the certificate progress section' do
-      expect(rendered).to have_css('p', text: 'Get your National Centre for Computing Education certificate in')
+      expect(rendered).to have_css('.certification__title', text: 'Your certificate')
     end
 
     it 'shows the certificate name' do
-      expect(rendered).to have_css('h2', text: 'GCSE computer science subject knowledge')
+      expect(rendered).to have_css('h3', text: 'GCSE computer science subject knowledge')
     end
 
-    it 'shows the enrollment button' do
-      expect(rendered).to have_link('Find out more & enroll', href: '#')
+    it 'shows the progress bar' do
+      expect(rendered).to have_css('.certification-progress__bar', count: 1)
     end
   end
 end

@@ -5,10 +5,12 @@ RSpec.describe DashboardController do
   let(:complete_achievements) { create_list(:completed_achievement, 3, user: user) }
   let(:commenced_achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   describe '#show' do
     describe 'while logged in' do
       before do
+        programme
         [activity, complete_achievements, commenced_achievement]
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path

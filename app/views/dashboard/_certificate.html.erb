@@ -1,0 +1,24 @@
+<% if @programme.user_enrolled?(current_user) %>
+  <div class="certification">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column">
+              <h2 class="govuk-heading-m certification__title">Your certificate</h2>
+            </div>
+          </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column certification-progress">
+            <p class="govuk-body-s">The National Centre for Computing Education certificate in</h2>
+            <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', '#', class: 'ncce-link' %></h3>
+            <progress class="certification-progress__bar" aria-label="Progress towards certificate: 20/130 credits" value="20" max="130"></progress>
+            <span class="certification-progress__bar-target"></span>
+            <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h1>CS Accelerator Hero / Partial will go in here with variables to show the 'enroll' features </h1>
+<% end %>

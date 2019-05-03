@@ -9,17 +9,6 @@
 
 .ncce-dashboard__title {
   text-align: center;
-  background-image: url(/images/dashboard/line.png);
-  background-position: 50% 80%;
-  background-repeat: no-repeat;
-  background-size: 17rem;
-  color: $ncce-white;
-  padding: 1.5rem 0;
-
-  @include govuk-media-query($from: tablet) {
-    background-size: 27rem;
-    font-size: 1.8rem;
-  }
 }
 
 .ncce-dashboard__activities {
