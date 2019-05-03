@@ -4,10 +4,10 @@
     <title>Combined Shape</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="2-Register,-choose-course" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Dashboard---3" transform="translate(-507.000000, -926.000000)" fill="#E3E2F3">
-            <g id="Group" transform="translate(350.000000, 921.000000)">
-                <path d="M165.653846,11.3461538 L172,11.3461538 L172,13.6538462 L165.653846,13.6538462 L165.653846,20 L163.346154,20 L163.346154,13.6538462 L157,13.6538462 L157,11.3461538 L163.346154,11.3461538 L163.346154,5 L165.653846,5 L165.653846,11.3461538 Z" id="Combined-Shape"></path>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard-(enrolled)" transform="translate(-507.000000, -1153.000000)" fill="#2012CD">
+            <g id="Group" transform="translate(349.000000, 1148.000000)">
+                <path d="M166.653846,11.3461538 L173,11.3461538 L173,13.6538462 L166.653846,13.6538462 L166.653846,20 L164.346154,20 L164.346154,13.6538462 L158,13.6538462 L158,11.3461538 L164.346154,11.3461538 L164.346154,5 L166.653846,5 L166.653846,11.3461538 Z" id="Combined-Shape"></path>
             </g>
         </g>
     </g>

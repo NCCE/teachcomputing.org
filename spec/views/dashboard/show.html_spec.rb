@@ -71,7 +71,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the progress bar' do
-      expect(rendered).to have_css('.certification-progress__bar', count: 1)
+      expect(rendered).to have_css('.certification-progress__fudge-bar', count: 1)
     end
   end
 end

@@ -31,31 +31,42 @@
   border-radius: 10px;
   padding: 1.25rem 1.9rem;
 
-  &__bar {
-    background-color: $ncce-grey-x-light;
-    color: $ncce-pink;
-    width: 100%;
-    height: 20px;
-    &::-moz-progress-bar,
-    &::-webkit-progress-value {
-      background: $ncce-pink;
-    }
-
-    &-target {
-      position: absolute;
-      z-index: 10;
-      bottom: 17px;
-      right: 39%;
-      width: 6px;
-      height: 30px;
-      border: 2px solid $ncce-white;
-      background-color: $ncce-dark-purple;
-    }
-  }
-
   &__image {
     position: absolute;
     right: 20px;
     bottom: 10px;
+  }
+}
+.certification-progress__fudge {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &-bar {
+    float: left;
+    width: 80%;
+    height: 16px;
+    background-color: $ncce-grey-x-light;
+    color: $ncce-pink;
+
+    color: $ncce-pink;
+    &::-moz-progress-bar,
+    &::-webkit-progress-value {
+      background: $ncce-pink;
+    }
+  }
+  &-bar-target {
+    display: inline-block;
+    width: 1%;
+    height: 30px;
+    border: 2px solid $ncce-white;
+    background-color: $ncce-butterfly-bush;
+  }
+
+  &-bar-dummy {
+    display: inline-block;
+    width: 18%;
+    height: 16px;
+    background-color: $ncce-grey-x-light;
   }
 }

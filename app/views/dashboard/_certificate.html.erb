@@ -11,8 +11,11 @@
           <div class="govuk-grid-column certification-progress">
             <p class="govuk-body-s">The National Centre for Computing Education certificate in</h2>
             <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', '#', class: 'ncce-link' %></h3>
-            <progress class="certification-progress__bar" aria-label="Progress towards certificate: 20/130 credits" value="20" max="130"></progress>
-            <span class="certification-progress__bar-target"></span>
+            <div class="certification-progress__fudge">
+              <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: 20/80 credits" value="20" max="80"></progress>
+              <span class="certification-progress__fudge-bar-target"></span>
+              <span class="certification-progress__fudge-bar-dummy"></span>
+            </div>
             <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
           </div>
         </div>

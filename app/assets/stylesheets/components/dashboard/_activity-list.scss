@@ -115,15 +115,18 @@
     font-weight: 700;
     text-decoration: underline;
 
-    color: $ncce-grey-x-light;
+    color: $ncce-blue-link;
     &:hover {
-      color: $ncce-white;
+      color: $ncce-pink;
     }
     &:focus {
       color: $ncce-white;
+      background-color: $ncce-pink;
+      outline-color: $ncce-pink;
     }
     &:active {
-      color: $ncce-black;
+      background-color: $ncce-pink;
+      color: $ncce-white;
     }
   }
 }
@@ -148,7 +151,7 @@
 
 
 
-  background-color: $ncce-light-lavender;
+  background-color: $ncce-white;
   box-shadow: 5px 5px 0 $ncce-box-shadow;
   text-align: left;
 
