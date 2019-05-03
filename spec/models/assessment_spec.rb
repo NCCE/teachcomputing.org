@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Assessment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:assessment) { create(:assessment) }
+
+  describe 'associations' do
+    it 'belongs to programme' do
+      expect(assessment).to belong_to(:programme)
+    end
+
+    it 'belongs to activity' do
+      expect(assessment).to belong_to(:activity)
+    end
+  end
 end
