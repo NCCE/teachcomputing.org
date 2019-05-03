@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/certification/hero', type: :view) do
+RSpec.describe('pages/certification/_hero', type: :view) do
   before do
     render
   end
