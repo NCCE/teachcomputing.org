@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('programmes/show', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
     @programme = programme

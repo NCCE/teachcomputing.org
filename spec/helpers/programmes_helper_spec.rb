@@ -10,11 +10,19 @@ describe ProgrammesHelper, type: :helper do
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }
 
   describe('#can_take_accelerator_test?') do
+    it 'throws exception without the programme' do
+      expect {
+        helper.can_take_accelerator_test?(nil)
+      }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
     it 'returns false with no parameters' do
+      programme
       expect(helper.can_take_accelerator_test?(nil)).to eq false
     end
 
     it 'returns false when user is not enrolled' do
+      programme
       expect(helper.can_take_accelerator_test?(user)).to eq false
     end
 
