@@ -10,7 +10,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
   end
 
   it 'has two subheadings' do
-    expect(rendered).to have_css('.govuk-heading-s', count: 2)
+    expect(rendered).to have_css('.govuk-heading-s', count: 1)
   end
 
   it 'has icon' do
