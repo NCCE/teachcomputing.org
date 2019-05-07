@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence(:title, 100) { |n| "activity#{n}" }
     sequence(:credit, 100) { |n| n }
     sequence(:slug, 100) { |n| "activity-#{n}" }
-    category { 'action' }
+    category { 'face-to-face' }
     provider { 'stem-learning' }
   end
 
@@ -21,13 +21,16 @@ FactoryBot.define do
     provider { 'system' }
   end
 
-  trait :cpd do
-    category { 'cpd' }
+  trait :stem_learning do
+    title { 'STEM' }
+    provider { 'stem-learning' }
+    category { 'face-to-face' }
   end
 
   trait :future_learn do
     title { 'future learn' }
     provider { 'future-learn' }
+    category { 'online' }
   end
 
   trait :system do
@@ -38,7 +41,7 @@ FactoryBot.define do
 
   trait :user_removable do
     title { 'user removable' }
-    category { 'cpd' }
+    category { 'online' }
     self_certifiable { 'true' }
   end
 end
