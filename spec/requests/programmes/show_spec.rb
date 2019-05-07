@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:user_programme_enrolment) {
                                     create( :user_programme_enrolment,
                                             user_id: user.id,
@@ -12,7 +12,7 @@ RSpec.describe ProgrammesController do
   describe '#show' do
     describe 'while certification is not enabled' do
       it 'redirects to home page' do
-        get programme_path('programme-101')
+        get programme_path('cs-accelerator')
         expect(response).to redirect_to(root_path)
       end
     end
@@ -37,14 +37,14 @@ RSpec.describe ProgrammesController do
         end
 
         it 'redirects if not enrolled' do
-          get programme_path('programme-101')
+          get programme_path('cs-accelerator')
           expect(response).to redirect_to(certification_path)
         end
 
         describe 'and enrolled' do
           before do
             user_programme_enrolment
-            get programme_path('programme-101')
+            get programme_path('cs-accelerator')
           end
 
           it 'renders the correct template' do
@@ -59,7 +59,7 @@ RSpec.describe ProgrammesController do
 
       describe 'while logged out' do
         before do
-          get programme_path('programme-101')
+          get programme_path('cs-accelerator')
         end
 
         it 'redirects to login' do
