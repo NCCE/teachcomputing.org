@@ -13,8 +13,12 @@
               <p class="govuk-body-s">The National Centre for Computing Education certificate in</h2>
               <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', '#', class: 'ncce-link' %></h3>
               <div class="certification-progress__fudge">
-                <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: 20/80 credits" value="20" max="80"></progress>
-                <span class="certification-progress__fudge-bar-target" aria-label="Not eligible for test"></span>
+                <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= credits_for_accelerator(current_user, @programme) %>/80 credits" value="<%= credits_for_accelerator(current_user, @programme) %>" max="80"></progress>
+                <% if can_take_accelerator_test?(current_user, @programme) %>
+                  <span class="certification-progress__fudge-bar-target certification-progress__fudge-bar-target--ready" aria-label="Eligible for test"></span>
+                <% else %>
+                  <span class="certification-progress__fudge-bar-target" aria-label="Not eligible for test"></span>
+                <% end %>
                 <span class="certification-progress__fudge-bar-dummy"></span>
               </div>
               <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
@@ -25,5 +29,23 @@
     </div>
   </div>
 <% else %>
-  <h1>CS Accelerator Hero / Partial will go in here with variables to show the 'enroll' features </h1>
+  <div class="certification-hero">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <img src="/images/notepad.svg" alt="" class="certification-hero__image"/>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-s certification-hero__text"><%= link_to 'Enrol', '#', class: 'ncce-link ncce-link-pink-on-dark' %> on the National Centre for Computing Education certificate in</h1>
+              <h2 class="govuk-heading-m certification-hero__text">GCSE computer science subject knowledge</h2>
+              <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and acredited by Royal Academy of Engineering.</h2>
+              <p class="govuk-body">
+                <%= link_to 'Find out more & enrol', '#', class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
+              </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

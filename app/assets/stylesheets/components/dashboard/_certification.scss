@@ -84,6 +84,9 @@
   &-bar-target--ready:after {
     content: 'Test ready';
     left: -35px;
+    @include govuk-media-query($from: tablet) {
+      left: -25px;
+    }
     width: 4rem
   }
 

@@ -10,20 +10,20 @@ describe ProgrammesHelper, type: :helper do
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }
 
   describe('#can_take_accelerator_test?') do
-    it 'throws exception without the programme' do
+    it 'throws exception without the user' do
       expect {
-        helper.can_take_accelerator_test?(nil)
-      }.to raise_error(ActiveRecord::RecordNotFound)
+        helper.can_take_accelerator_test?(nil, nil)
+      }.to raise_error(NoMethodError)
     end
 
-    it 'returns false with no parameters' do
-      programme
-      expect(helper.can_take_accelerator_test?(nil)).to eq false
+    it 'throws exception without the programme' do
+      expect {
+        helper.can_take_accelerator_test?(user, nil)
+      }.to raise_error(NoMethodError)
     end
 
     it 'returns false when user is not enrolled' do
-      programme
-      expect(helper.can_take_accelerator_test?(user)).to eq false
+      expect(helper.can_take_accelerator_test?(user, programme)).to eq false
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -39,7 +39,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns false' do
-        expect(helper.can_take_accelerator_test?(user)).to eq false
+        expect(helper.can_take_accelerator_test?(user, programme)).to eq false
       end
     end
 
@@ -54,7 +54,7 @@ describe ProgrammesHelper, type: :helper do
           achievement = create(:achievement, user_id: user.id, activity_id: activity.id)
           achievement.set_to_complete
         end
-        expect(helper.can_take_accelerator_test?(user)).to eq true
+        expect(helper.can_take_accelerator_test?(user, programme)).to eq true
       end
     end
   end
