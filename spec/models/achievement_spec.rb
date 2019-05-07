@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
   let(:achievement) { create(:achievement) }
+  let(:achievement2) { create(:achievement) }
+  let(:programme) { create(:programme) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
+
 
   describe 'associations' do
     it 'belongs to activity' do
@@ -19,6 +23,20 @@ RSpec.describe Achievement, type: :model do
     end
 
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:activity_id) }
+  end
+
+  describe '#for_programme' do
+    before do
+      programme_activity
+    end
+
+    it 'when programme has matching activity it returns the achievement' do
+      expect(Achievement.for_programme(programme)).to include(achievement)
+    end
+
+    it 'when programme doesn\'t have matching activity it doesn\'t return the achievement' do
+      expect(Achievement.for_programme(programme)).not_to include(achievement2)
+    end
   end
 
   describe '#set_to_complete' do
