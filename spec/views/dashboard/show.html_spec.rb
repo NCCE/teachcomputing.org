@@ -37,9 +37,24 @@ RSpec.describe('dashboard/show', type: :view) do
   it 'has a link to download the diagnostic tool' do
     expect(rendered).to have_css('a', text: 'diagnostic tool')
   end
+  context 'when certification flag is disabled' do
+    before do
+      @certification_enabled = false
+      render
+    end
+
+    it 'doesn\'t show the certificate progress section' do
+      expect(rendered).to have_css('h1', text: 'on the National Centre for Computing Education certificate in', count: 0)
+    end
+
+    it 'doesn\'t show the certificate progress section' do
+      expect(rendered).to have_css('.certification__title', text: 'Your certificate', count: 0)
+    end
+  end
 
   context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
     before do
+      @certification_enabled = true
       render
     end
 
@@ -58,6 +73,7 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
+      @certification_enabled = true
       user_programme_enrolment
       render
     end
