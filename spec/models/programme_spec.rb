@@ -3,15 +3,19 @@ require 'rails_helper'
 RSpec.describe Programme, type: :model do
   let(:programme) { create(:programme) }
   let(:user) { create(:user) }
-  let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)}
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
 
   describe 'associations' do
-    it 'has_many programmes' do
+    it 'has_many activities' do
       expect(programme).to have_many(:activities).through(:programme_activities)
     end
 
     it 'has_many users' do
       expect(programme).to have_many(:users).through(:user_programme_enrolments)
+    end
+
+    it 'has_one assessment' do
+      expect(programme).to have_one(:assessment)
     end
   end
 
