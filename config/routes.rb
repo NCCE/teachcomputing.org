@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  if @certification_enabled
+  if ENV.fetch('CERTIFICATION_ENABLED') == 'true'
     get '/cs-accelerator', to: 'pages#page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
   else
     get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' }
