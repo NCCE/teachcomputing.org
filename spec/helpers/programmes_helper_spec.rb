@@ -9,7 +9,7 @@ describe ProgrammesHelper, type: :helper do
   let(:online_courses) { create_list(:activity, 2, :future_learn, credit: 20) }
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }
   
-  let(:partially_complete_certificate) do 
+  let(:setup_partially_complete_certificate) do 
     user_programme_enrolment
     activities = [diagnostic_tool_activity].concat(online_courses, face_to_face_courses)
 
@@ -23,7 +23,7 @@ describe ProgrammesHelper, type: :helper do
     diagnostic_achievement
   end
 
-  let(:complete_certificate) do
+  let(:setup_complete_certificate) do
     user_programme_enrolment
 
     activities = [diagnostic_tool_activity].concat(online_courses, face_to_face_courses)
@@ -54,7 +54,7 @@ describe ProgrammesHelper, type: :helper do
 
     context 'when user hasn\'t done enough activities' do
       before do
-        partially_complete_certificate
+        setup_partially_complete_certificate
       end
 
       it 'returns correct score for credits' do
@@ -63,8 +63,11 @@ describe ProgrammesHelper, type: :helper do
     end
 
     context 'when user has done enough activities' do
+      before do
+        setup_complete_certificate
+      end
+
       it 'returns true' do
-        complete_certificate
         expect(helper.credits_for_accelerator(user, programme)).to eq 80.0
       end
     end
@@ -73,7 +76,7 @@ describe ProgrammesHelper, type: :helper do
   describe('#can_take_accelerator_test?') do
     context 'when user hasn\'t done enough activities' do
       before do
-        partially_complete_certificate
+        setup_partially_complete_certificate
       end
 
       it 'returns false' do
@@ -82,8 +85,11 @@ describe ProgrammesHelper, type: :helper do
     end
 
     context 'when user has done enough activities' do
+      before do
+        setup_complete_certificate
+      end
+
       it 'returns true' do
-        complete_certificate
         expect(helper.can_take_accelerator_test?(user, programme)).to eq true
       end
     end

@@ -5,8 +5,7 @@ RSpec.describe('programmes/_activity', type: :view) do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
-    # allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    @current_user = user
+    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @programme = programme
     render
   end
