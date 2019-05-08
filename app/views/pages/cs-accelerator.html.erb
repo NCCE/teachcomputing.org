@@ -1,0 +1,52 @@
+<%= render 'pages/certification/hero' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l">Clear, concise statement about the offer highlighting benefits including <a class="ncce-link" href="/bursaries">bursaries</a> and <a class="ncce-link" href="/">FAQ</a>. Use images</p>
+          <img src="https://via.placeholder.com/600x300" class="cs-accelerator__image">
+          <p class="govuk-body">There will probably be a lot of text. If it could be less text, the better. Also bullet points, diagrams, photography - things to break up the flow.</p>
+          <p class="govuk-body">Please excuse the latin:</p>
+          <p class="govuk-body"> Minions ipsum tatata bala tu jiji potatoooo potatoooo uuuhhh jiji hahaha tulaliloo. Hana dul sae tulaliloo bee do bee do bee do butt la bodaaa butt wiiiii poopayee. Ti aamoo! chasy baboiii ti aamoo! Poopayee wiiiii para tú baboiii jiji belloo! Jeje. Aaaaaah gelatooo pepete chasy belloo! Tulaliloo. Chasy baboiii baboiii hana dul sae hahaha gelatooo pepete wiiiii hana dul sae belloo! Poulet tikka masala aaaaaah ti aamoo! Wiiiii ti aamoo! Tank yuuu! Bee do bee do bee do daa me want bananaaa! Gelatooo tank yuuu! Bee do bee do bee do wiiiii jiji.</p>
+          <p class="govuk-body">  Gelatooo aaaaaah tatata bala tu poulet tikka masala. Hahaha jiji bee do bee do bee do daa hahaha hana dul sae po kass gelatooo. Butt bappleees jiji tank yuuu! Underweaaar po kass daa hahaha. Hahaha potatoooo la bodaaa chasy hahaha uuuhhh underweaaar poopayee butt. Poulet tikka masala bee do bee do bee do chasy poopayee wiiiii uuuhhh belloo! Tank yuuu! Tank yuuu! Underweaaar. Para tú para tú me want bananaaa! Tulaliloo poopayee poulet tikka masala. Poulet tikka masala wiiiii para tú pepete.</p>
+          <p class="govuk-body">Aaaaaah tulaliloo hana dul sae hahaha daa poopayee. Bappleees belloo! La bodaaa bananaaaa tank yuuu! Hahaha. Jiji butt poulet tikka masala potatoooo poopayee bee do bee do bee do hahaha jeje daa hahaha. Bee do bee do bee do gelatooo poopayee tulaliloo po kass. Tank yuuu! bananaaaa tatata bala tu daa hana dul sae ti aamoo! Para tú uuuhhh. Jiji daa tulaliloo bee do bee do bee do poopayee la bodaaa. Bananaaaa underweaaar la bodaaa poopayee bee do bee do bee do poulet tikka masala.</p>
+        </div>
+        <div class="govuk-grid-column-one-third ncce-aside">
+          <% if current_user %>
+          <h2 class="govuk-heading-m ncce-aside__title">Enroll</h2>
+          <% else%>
+          <h2 class="govuk-heading-m ncce-aside__title">How to enroll</h2>
+          <% end %>
+          <P class="govuk-body-s ncce-aside__text">Begin your journey towards being a fully qualified GCSE computer science teacher!</p>
+          <ol class="govuk-list govuk-list--number ncce-aside__text govuk-body-s">
+            <li>Create your account with STEM Learning, and log in</li>
+            <li>Enroll with the click of the button</li>
+            <li>Use your personal dashboard to track your progress towards certification</li>
+            <li>Find and book onto coursed until you have enough credits to take the final test</li>
+            <li>Pass the test and receive your qualification</li>
+          </ol>
+          <% if current_user %>
+          <p class="govuk-body"><a class="govuk-button ncce-button__pink ncce-aside__button" role="button" draggable="false" href="/">Entroll on this certificate</a></p>
+          <% else %>
+          <p class="govuk-body"><a class="govuk-button ncce-button__pink ncce-aside__button" role="button" draggable="false" href="/">Create an account</a></p>
+          <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply<a class="ncce-link ncce-link--on-dark" href="/login"> log in</a></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cs-accelerator">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">Relationship to other certificates and links to their pages</p>
+          <p class="govuk-body">Other certificate landing pages - Information about what's coming</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
