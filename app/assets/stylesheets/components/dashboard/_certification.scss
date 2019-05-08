@@ -83,7 +83,7 @@
   }
   &-bar-target--ready:after {
     content: 'Test ready';
-    left: -35px;
+    left: -30px;
     @include govuk-media-query($from: tablet) {
       left: -25px;
     }

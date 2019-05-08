@@ -15,9 +15,9 @@
               <div class="certification-progress__fudge">
                 <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= credits_for_accelerator(current_user, @programme) %>/80 credits" value="<%= credits_for_accelerator(current_user, @programme) %>" max="80"></progress>
                 <% if can_take_accelerator_test?(current_user, @programme) %>
-                  <span class="certification-progress__fudge-bar-target certification-progress__fudge-bar-target--ready" aria-label="Eligible for test"></span>
+                  <span class="certification-progress__fudge-bar-target certification-progress__fudge-bar-target--ready" aria-label="You are eligible for the test"></span>
                 <% else %>
-                  <span class="certification-progress__fudge-bar-target" aria-label="Not eligible for test"></span>
+                  <span class="certification-progress__fudge-bar-target" aria-label="You are not eligible for the test yet"></span>
                 <% end %>
                 <span class="certification-progress__fudge-bar-dummy"></span>
               </div>
