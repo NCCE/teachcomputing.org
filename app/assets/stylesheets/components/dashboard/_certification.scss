@@ -57,9 +57,13 @@
     background-color: $ncce-grey-x-light;
     color: $ncce-pink;
 
-    color: $ncce-pink;
-    &::-moz-progress-bar,
+    &::-webkit-progress-bar {
+      background-color: $ncce-grey-x-light;
+    }
     &::-webkit-progress-value {
+      background: $ncce-pink;
+    }
+    &::-moz-progress-bar {
       background: $ncce-pink;
     }
   }
