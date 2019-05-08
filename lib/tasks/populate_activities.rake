@@ -22,7 +22,7 @@ namespace :activities do
       activity.title = 'Teaching Physical Computing with Raspberry Pi and Python'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -31,7 +31,7 @@ namespace :activities do
       activity.title = 'How Computers Work: Demystifying Computation'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -40,7 +40,7 @@ namespace :activities do
       activity.title = 'Programming 101: An Introduction to Python for Educators'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -49,7 +49,7 @@ namespace :activities do
       activity.title = 'Programming 102: Think like a Computer Scientist'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -58,7 +58,7 @@ namespace :activities do
       activity.title = 'Representing Data with Images and Sound: Bringing Data to Life'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -67,7 +67,7 @@ namespace :activities do
       activity.title = 'Object-oriented Programming in Python: Create Your Own Adventure Game'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -76,7 +76,7 @@ namespace :activities do
       activity.title = 'An Introduction to Computer Networking for Teachers'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -85,7 +85,7 @@ namespace :activities do
       activity.title = 'Understanding Maths and Logic in Computer Science'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -94,7 +94,7 @@ namespace :activities do
       activity.title = 'Understanding Computer Systems'
       activity.credit = 20
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -103,7 +103,7 @@ namespace :activities do
       activity.title = 'Teaching Programming in Primary Schools'
       activity.credit = 10
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -112,7 +112,7 @@ namespace :activities do
       activity.title = 'Scratch to Python: Moving from Block- to Text-based Programming'
       activity.credit = 10
       activity.slug = activity.title.parameterize
-      activity.category = 'cpd'
+      activity.category = 'online'
       activity.self_certifiable = true
       activity.provider = 'future-learn'
     end
@@ -122,7 +122,7 @@ namespace :activities do
       activity.credit = 20
       activity.slug = activity.title.parameterize
       activity.course_id = 'a6b10502-6788-4ebc-b465-41eafb1e2a18'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -131,7 +131,7 @@ namespace :activities do
       activity.credit = 20
       activity.slug = activity.title.parameterize
       activity.course_id = '7159562d-4b1a-44f3-b4d7-3e677b9898f2'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -140,7 +140,7 @@ namespace :activities do
       activity.credit = 0
       activity.slug = activity.title.parameterize
       activity.course_id = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -149,7 +149,7 @@ namespace :activities do
       activity.credit = 0
       activity.slug = activity.title.parameterize
       activity.course_id = '88715914-72ee-4b26-a22b-4f2d610ed267'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -158,7 +158,7 @@ namespace :activities do
       activity.credit = 20
       activity.slug = activity.title.parameterize
       activity.course_id = '0650b45c-e4b3-4c8b-bd90-7a1428fe2986'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -167,7 +167,7 @@ namespace :activities do
       activity.credit = 40
       activity.slug = activity.title.parameterize
       activity.course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -176,7 +176,7 @@ namespace :activities do
       activity.credit = 40
       activity.slug = activity.title.parameterize
       activity.course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -185,7 +185,7 @@ namespace :activities do
       activity.credit = 40
       activity.slug = activity.title.parameterize
       activity.course_id = '68f5b6c5-556d-4b66-8159-7cd6019da6f3'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
 
@@ -194,8 +194,13 @@ namespace :activities do
       activity.credit = 20
       activity.slug = activity.title.parameterize
       activity.course_id = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
-      activity.category = 'cpd'
+      activity.category = 'face-to-face'
       activity.provider = 'stem-learning'
     end
+  end
+
+  task category_change: :environment do
+    Activity.future_learn.update_all(category: 'online')
+    Activity.stem_learning.update_all(category: 'face-to-face')
   end
 end
