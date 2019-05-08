@@ -11,7 +11,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
 
     it 'cannot transition from state complete to state commenced' do
       achievement.state_machine.transition_to!(:complete)
-      expect{ achievement.state_machine.transition_to!(:commenced) }
+      expect { achievement.state_machine.transition_to!(:commenced) }
         .to raise_error(Statesman::TransitionFailedError)
     end
   end
