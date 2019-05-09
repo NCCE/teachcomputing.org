@@ -19,16 +19,16 @@ Rails.application.routes.draw do
 
   resources :courses, path: '/courses', only: [:index]
 
-
-  resources :programmes, path: '/certificate', param: :slug, only: [:show]
+  get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
+  post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/cs-accelerator', to: 'pages#page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' },
-    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
+                         constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
-    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
+                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
