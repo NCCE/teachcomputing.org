@@ -17,6 +17,8 @@
           <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
             <span class="ncce-activity-list__item-text"> Complete your first face to face course </span>
             <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+            Completed <%= achievements_completed_by_the_user?(current_user) %>
+          </li>
           </li>
           <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
             <span class="ncce-activity-list__item-text"> Complete your second face to face course </span>

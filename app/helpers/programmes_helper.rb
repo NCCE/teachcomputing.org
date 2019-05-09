@@ -9,4 +9,12 @@ module ProgrammesHelper
 
     online_total >= 40 && face_to_face_total >= 40
   end
+
+  def achievements_completed_by_the_user?(user)
+    programme = Programme.find_by!(slug: 'cs-accelerator')
+    activities = user.achievements.for_programme(programme).joins(:activity).first.activity.title
+
+    return activities
+  end
+
 end
