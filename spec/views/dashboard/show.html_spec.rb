@@ -4,10 +4,11 @@ RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
-  let(:user_programme_enrolment) { create( :user_programme_enrolment,
-                                            user_id: user.id,
-                                            programme_id: programme.id)
-                                  }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment,
+           user_id: user.id,
+           programme_id: programme.id)
+  end
 
   before do
     @programme = programme
@@ -83,7 +84,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the certificate link' do
-      expect(rendered).to have_link('GCSE computer science subject knowledge', href: cs_accelerator_path)
+      expect(rendered).to have_link('GCSE computer science subject knowledge', href: programme_path(slug: programme.slug))
     end
 
     it 'shows the progress bar' do
