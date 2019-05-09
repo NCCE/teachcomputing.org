@@ -106,6 +106,9 @@
     },
     "CERTIFICATION_ENABLED": {
       "required": true
+    },
+    "CLASS_MARKER_DIAGNOSTIC_URL": {
+      "required": true
     }
   },
   "formation": {

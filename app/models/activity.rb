@@ -24,10 +24,10 @@ class Activity < ApplicationRecord
   end
 
   def self.downloaded_diagnostic_tool
-    Activity.find_or_create_by(slug: 'downloaded-diagnostic-tool') do |activity|
-      activity.title = 'Downloaded diagnostic tool'
+    Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
+      activity.title = 'Taken diagnostic tool'
       activity.credit = 0
-      activity.slug = activity.title.parameterize
+      activity.slug = 'diagnostic-tool'
       activity.category = 'action'
       activity.self_certifiable = true
       activity.provider = 'system'

@@ -60,7 +60,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
 
     it 'shows the download diagnostic item' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', text: /.*Download the diagnostic tool*/, count: 1)
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', text: /.*Take the diagnostic tool*/, count: 1)
     end
   end
 end

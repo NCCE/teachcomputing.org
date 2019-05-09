@@ -149,7 +149,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'creates a record if one is not found' do
-        expect(Activity.downloaded_diagnostic_tool.title).to eq 'Downloaded diagnostic tool'
+        expect(Activity.downloaded_diagnostic_tool.title).to eq 'Taken diagnostic tool'
       end
     end
   end

@@ -12,13 +12,12 @@ Rails.application.routes.draw do
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
-    resources :downloads, only: [:show]
+    resources :redirects, only: [:show]
   end
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
   resources :courses, path: '/courses', only: [:index]
-
 
   resources :programmes, path: '/certificate', param: :slug, only: [:show]
 

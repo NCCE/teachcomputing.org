@@ -1,9 +1,9 @@
 namespace :activities do
   task seed: :environment do
-    Activity.find_or_create_by(slug: 'downloaded-diagnostic-tool') do |activity|
-      activity.title = 'Downloaded diagnostic tool'
+    Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
+      activity.title = 'Taken diagnostic tool'
       activity.credit = 10
-      activity.slug = activity.title.parameterize
+      activity.slug = 'diagnostic-tool'
       activity.category = 'action'
       activity.self_certifiable = true
       activity.provider = 'system'
