@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="91px" viewBox="0 0 74 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard-(enrolled)" transform="translate(-935.000000, -711.000000)">
+            <g id="Group" transform="translate(972.120219, 756.756089) rotate(5.000000) translate(-972.120219, -756.756089) translate(938.620219, 713.756089)">
+                <rect id="Rectangle" stroke="#9F9F9F" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="64.7452969" height="83.4339801" rx="7"></rect>
+                <path d="M10.1245606,30.2578679 L58.400611,30.2578679" id="Line-2" stroke="#979797" stroke-linecap="square"></path>
+                <path d="M16.3546967,47.1666765 L51.2805376,47.1666765" id="Line-3" stroke="#979797" stroke-linecap="square"></path>
+                <rect id="Rectangle-2" stroke="#979797" fill="#D8D8D8" x="16.5188713" y="62.7956105" width="6.11949834" height="6.11949834"></rect>
+                <rect id="Rectangle-3" stroke="#979797" fill="#D8D8D8" x="34.3176171" y="62.7956105" width="14.128934" height="6.11949834"></rect>
+                <path d="M16.3546967,18.6886831 L51.2805376,18.6886831" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,16 +1,7 @@
 .ncce-dashboard-activity {
-  background-color: $ncce-dark-purple;
-  background-image: none;
+  background-color: $ncce-grey-x-light;
   padding-bottom: 30px;
   padding-top: 0;
-
-  @include govuk-media-query($from: tablet) {
-    background-image: url(/images/dashboard/triangle2.png);
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    padding-bottom: 30px;
-  }
 }
 
 .ncce-activity-list__item {
@@ -124,15 +115,18 @@
     font-weight: 700;
     text-decoration: underline;
 
-    color: $ncce-grey-x-light;
+    color: $ncce-blue-link;
     &:hover {
-      color: $ncce-white;
+      color: $ncce-pink;
     }
     &:focus {
       color: $ncce-white;
+      background-color: $ncce-pink;
+      outline-color: $ncce-pink;
     }
     &:active {
-      color: $ncce-black;
+      background-color: $ncce-pink;
+      color: $ncce-white;
     }
   }
 }
@@ -157,7 +151,7 @@
 
 
 
-  background-color: $ncce-light-lavender;
+  background-color: $ncce-white;
   box-shadow: 5px 5px 0 $ncce-box-shadow;
   text-align: left;
 
