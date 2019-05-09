@@ -8,12 +8,11 @@ module ProgrammesHelper
     face_to_face_total = [_credits_for_courses(user, programme, 'face-to-face'), 40].min
     yield online_total + face_to_face_total
   end
-  
-  def achievements_completed_by_the_user?(user)
-    programme = Programme.find_by!(slug: 'cs-accelerator')
-    activities = user.achievements.for_programme(programme).joins(:activity).first.activity.title
 
-    return activities
+  def achievements_completed_by_the_user?(user, category = 'online')
+    programme = Programme.find_by!(slug: 'cs-accelerator')
+    activities = user.achievements.for_programme(programme).joins(:activity).where(activities: { category: category})
+    yield activities
   end
 
   private
