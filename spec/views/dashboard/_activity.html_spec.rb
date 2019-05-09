@@ -13,7 +13,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
   end
 
-  context 'when the user has downloaded the diagnostic' do
+  context 'when the user has taken the diagnostic' do
     before do
       @achievements = [action_achievement, diagnostic_achievement, removable_achievement]
       @current_user = user
@@ -52,7 +52,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
   end
 
-  context 'when the user hasn\'t downloaded the diagnostic' do
+  context 'when the user hasn\'t taken the diagnostic' do
     before do
       @achievements = [action_achievement, removable_achievement]
       @current_user = user
@@ -60,7 +60,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
 
     it 'shows the download diagnostic item' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', text: /.*Download the diagnostic tool*/, count: 1)
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', text: /.*Take the diagnostic tool*/, count: 1)
     end
   end
 end

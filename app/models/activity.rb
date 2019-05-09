@@ -21,11 +21,11 @@ class Activity < ApplicationRecord
     self_certifiable && category != 'action'
   end
 
-  def self.downloaded_diagnostic_tool
-    Activity.find_or_create_by(slug: 'downloaded-diagnostic-tool') do |activity|
-      activity.title = 'Downloaded diagnostic tool'
-      activity.credit = 0
-      activity.slug = activity.title.parameterize
+  def self.diagnostic_tool
+    Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
+      activity.title = 'Taken diagnostic tool'
+      activity.credit = 10
+      activity.slug = 'diagnostic-tool'
       activity.category = 'action'
       activity.self_certifiable = true
       activity.provider = 'system'

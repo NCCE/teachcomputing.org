@@ -12,7 +12,7 @@
         <h2 class="govuk-heading-s ncce-aside__title">Diagnostic Tool</h2>
         <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
         knowledge where you need most support.</p>
-        <p class="govuk-body-s"><%= link_to 'Use Diagnostic Tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
+        <p class="govuk-body-s"><%= link_to 'Take the Diagnostic Tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
       </aside>
       <% else %>
       <aside class="govuk-grid-column-one-third ncce-aside">

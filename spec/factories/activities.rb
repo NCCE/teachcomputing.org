@@ -15,8 +15,8 @@ FactoryBot.define do
   end
 
   trait :diagnostic_tool do
-    title { 'Downloaded diagnostic tool' }
-    slug { 'downloaded-diagnostic-tool' }
+    title { 'Taken diagnostic tool' }
+    slug { 'diagnostic-tool' }
     category { 'action' }
     provider { 'system' }
   end
