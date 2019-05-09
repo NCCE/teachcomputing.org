@@ -11,7 +11,7 @@
           <div class="govuk-grid-column-full">
             <div class="certification-progress">
               <p class="govuk-body-s">The National Centre for Computing Education certificate in</h2>
-              <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', cs_accelerator_path, class: 'ncce-link' %></h3>
+              <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', programme_path(@programme.slug), class: 'ncce-link' %></h3>
               <div class="certification-progress__fudge">
                 <% credits_for_accelerator(current_user, @programme) do |total_credits| %>
                   <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= total_credits %>/80 credits" value="<%= total_credits %>" max="80"></progress>
@@ -39,7 +39,7 @@
               <img src="/images/notepad.svg" alt="" class="certification-hero__image"/>
             </div>
             <div class="govuk-grid-column-two-thirds">
-              <h1 class="govuk-heading-s certification-hero__text"><%= link_to 'Enroll', cs_accelerator_path, class: 'ncce-link ncce-link-pink-on-dark' %> on the National Centre for Computing Education certificate in</h1>
+              <h1 class="govuk-heading-s certification-hero__text"><%= link_to 'Enroll', user_programme_enrolment_path(slug: @programme.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: @programme.id }), method: :post, class: 'ncce-link ncce-link-pink-on-dark' %> on the National Centre for Computing Education certificate in</h1>
               <h2 class="govuk-heading-m certification-hero__text">GCSE computer science subject knowledge</h2>
               <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and acredited by Royal Academy of Engineering.</h2>
               <p class="govuk-body">
