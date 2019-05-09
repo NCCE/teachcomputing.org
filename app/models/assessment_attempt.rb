@@ -1,0 +1,21 @@
+class AssessmentAttempt < ApplicationRecord
+  belongs_to :user
+  belongs_to :assessment
+
+  has_many :assessment_attempt_transitions, autosave: false
+
+  def state_machine
+    @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)
+  end
+
+  def self.transition_class
+    AssessmentAttemptTransition
+  end
+
+  def self.initial_state
+    :commenced
+  end
+  private_class_method :initial_state
+
+  delegate :can_transition_to?, :current_state, :transition_to, to: :state_machine
+end

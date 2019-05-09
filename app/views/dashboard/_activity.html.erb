@@ -25,10 +25,10 @@
       </ul>
       <div class="ncce-activity-links">
         <p class="govuk-body-s">
-          <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-link--on-dark ncce-activity-links-search' %>
+          <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-activity-links-search' %>
           </p>
         <p class="govuk-body-s ncce-activity-links--add">
-          <button aria-expanded="true" class="ncce-link ncce-link--on-dark ncce-activity-links-add-button">
+          <button aria-expanded="true" class="ncce-link ncce-activity-links-add-button">
             Add a course you've completed
           </button>
         </p>
@@ -41,7 +41,7 @@
           <span class="govuk-form-group">
             <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
               <%= f.select :activity_id,
-                options_for_select(Activity.self_certifiable.cpd.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
+                options_for_select(Activity.user_removable.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
                 { include_blank: 'Select an activity' },
                 { class: 'govuk-select ncce-activity-form__select',
                   'aria-label': 'Select an activity' }

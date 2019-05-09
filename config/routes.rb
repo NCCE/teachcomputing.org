@@ -24,7 +24,10 @@ Rails.application.routes.draw do
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' }
+  get '/cs-accelerator', to: 'pages#page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' },
+    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
+  get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
+    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }

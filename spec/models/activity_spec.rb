@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Activity, type: :model do
   let(:activity) { create(:activity) }
-  let(:cpd_activity) { create(:activity, :cpd) }
-  let(:cpd_courses) { create_list(:activity, 5, :cpd) }
-  let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
+  let(:online_activity) { create(:activity, :future_learn) }
+  let(:face_to_face_activity) { create(:activity, :face_to_face) }
+  let(:online_courses) { create_list(:activity, 3, :future_learn) }
+  let(:face_to_face_courses) { create_list(:activity, 3, :stem_learning) }
   let(:system_activity) { create_list(:activity, 3, :system) }
   let(:user) { create(:user) }
-  let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: cpd_activity.id) }
+  let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
   let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
   let(:removable_activity) { create(:activity, :user_removable) }
 
@@ -33,49 +34,77 @@ RSpec.describe Activity, type: :model do
     it { is_expected.to validate_presence_of(:category) }
     it { is_expected.to validate_presence_of(:slug) }
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_inclusion_of(:category).in_array(%w[action cpd]) }
+    it { is_expected.to validate_inclusion_of(:category).in_array(%w[action online face-to-face]) }
   end
 
   describe 'scopes' do
     describe 'available_for' do
       before do
-        [cpd_activity, cpd_courses, user, user_achievement]
+        [online_activity, online_courses, user, user_achievement]
       end
 
-      it 'lists available cpd activities for a given user' do
-        expect(Activity.available_for(user)).to eq(cpd_courses)
+      it 'lists available online activities for a given user' do
+        expect(Activity.available_for(user)).to eq(online_courses)
       end
 
       it 'does not include activities if a user already has an existing achievement' do
-        expect(Activity.available_for(user)).not_to include(cpd_activity)
+        expect(Activity.available_for(user)).not_to include(online_activity)
       end
     end
 
-    describe 'cpd' do
+    describe 'online' do
       before do
-        [cpd_courses, activity]
+        [online_courses, face_to_face_courses]
       end
 
-      it 'includes only cpd activities' do
-        expect(Activity.cpd).to eq(cpd_courses)
+      it 'includes only online activities' do
+        expect(Activity.online).to eq(online_courses)
       end
 
       it 'does not include actions' do
-        expect(Activity.cpd).not_to include(activity)
+        expect(Activity.online).not_to include(face_to_face_courses.first)
+      end
+    end
+
+    describe 'face_to_face' do
+      before do
+        [face_to_face_courses, online_courses]
+      end
+
+      it 'includes only face-to-face activities' do
+        expect(Activity.face_to_face).to eq(face_to_face_courses)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.face_to_face).not_to include(online_courses.first)
       end
     end
 
     describe 'future-learn' do
       before do
-        [future_learn_courses, activity]
+        [online_courses, activity]
       end
 
-      it 'includes only cpd activities' do
-        expect(Activity.future_learn).to eq(future_learn_courses)
+      it 'includes only future-learn activities' do
+        expect(Activity.future_learn).to eq(online_courses)
       end
 
       it 'does not include actions' do
         expect(Activity.future_learn).not_to include(activity)
+      end
+    end
+
+    describe 'stem-learning' do
+      before do
+        [face_to_face_courses, online_courses]
+      end
+
+      it 'includes only stem-learning activities' do
+        expect(Activity.stem_learning.to_a).to eq(face_to_face_courses)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.stem_learning).not_to include(online_courses.first)
       end
     end
 

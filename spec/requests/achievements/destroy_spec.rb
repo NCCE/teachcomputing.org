@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :cpd) }
+  let(:activity) { create(:activity, :stem_learning) }
   let(:achievement) { create(:achievement, activity_id: activity.id, user_id: user.id) }
 
   describe 'DELETE #destroy' do

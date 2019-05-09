@@ -4,14 +4,17 @@ class Activity < ApplicationRecord
   has_many :imports, dependent: :nullify
   has_many :programme_activities, dependent: :destroy
   has_many :programmes, through: :programme_activities
+  has_one  :assessment
 
   validates :title, :slug, :category, presence: true
-  validates :category, inclusion: { in: %w[action cpd] }
+  validates :category, inclusion: { in: %w[action online face-to-face] }
   validates :provider, inclusion: { in: %w[future-learn stem-learning system] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
-  scope :cpd, -> { where(category: 'cpd') }
+  scope :online, -> { where(category: 'online') }
+  scope :face_to_face, -> { where(category: 'face-to-face') }
   scope :future_learn, -> { where(provider: 'future-learn') }
+  scope :stem_learning, -> { where(provider: 'stem-learning') }
   scope :non_action, -> { where.not(category: 'action') }
   scope :self_certifiable, -> { where(self_certifiable: true) }
   scope :system, -> { where(provider: 'system') }

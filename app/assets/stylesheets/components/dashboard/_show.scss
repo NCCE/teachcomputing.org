@@ -1,22 +1,18 @@
-.ncce-dashboard__title {
-  text-align: center;
-  background-image: url(/images/dashboard/line.png);
-  background-position: 50% 80%;
-  background-repeat: no-repeat;
-  background-size: 17rem;
-  color: $ncce-white;
-  padding: 1.5rem 0;
-
-  @include govuk-media-query($from: tablet) {
-    background-size: 27rem;
-    font-size: 1.8rem;
+.ncce-dashboard-enroll {
+  background-color: $ncce-grey-alto;
+  &__icon {
+    background-image: image-url('certificate-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 150px;
   }
 }
 
-.ncce-dashboard__activities {
-  color: $ncce-white;
-  margin: 1rem auto 0 auto;
+.ncce-dashboard__title {
+  text-align: center;
+}
 
+.ncce-dashboard__activities {
+  margin: 1rem auto 0 auto;
 
   @include govuk-media-query($from: tablet) {
     width: 60%;
