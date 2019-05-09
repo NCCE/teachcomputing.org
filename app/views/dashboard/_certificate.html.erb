@@ -11,7 +11,7 @@
           <div class="govuk-grid-column-full">
             <div class="certification-progress">
               <p class="govuk-body-s">The National Centre for Computing Education certificate in</h2>
-              <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', '#', class: 'ncce-link' %></h3>
+              <h3 class="govuk-body-l"><%= link_to 'GCSE computer science subject knowledge', cs_accelerator_path, class: 'ncce-link' %></h3>
               <div class="certification-progress__fudge">
                 <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= credits_for_accelerator(current_user, @programme) %>/80 credits" value="<%= credits_for_accelerator(current_user, @programme) %>" max="80"></progress>
                 <% if can_take_accelerator_test?(current_user, @programme) %>
@@ -37,11 +37,11 @@
               <img src="/images/notepad.svg" alt="" class="certification-hero__image"/>
             </div>
             <div class="govuk-grid-column-two-thirds">
-              <h1 class="govuk-heading-s certification-hero__text"><%= link_to 'Enroll', '#', class: 'ncce-link ncce-link-pink-on-dark' %> on the National Centre for Computing Education certificate in</h1>
+              <h1 class="govuk-heading-s certification-hero__text"><%= link_to 'Enroll', cs_accelerator_path, class: 'ncce-link ncce-link-pink-on-dark' %> on the National Centre for Computing Education certificate in</h1>
               <h2 class="govuk-heading-m certification-hero__text">GCSE computer science subject knowledge</h2>
               <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and acredited by Royal Academy of Engineering.</h2>
               <p class="govuk-body">
-                <%= link_to 'Find out more & enroll', '#', class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
+                <%= link_to 'Find out more & enroll', cs_accelerator_path, class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
               </p>
             </div>
         </div>

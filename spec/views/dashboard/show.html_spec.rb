@@ -67,7 +67,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the enrollment button' do
-      expect(rendered).to have_link('Find out more & enroll', href: '#')
+      expect(rendered).to have_link('Find out more & enroll', href: cs_accelerator_path)
     end
   end
 
@@ -82,8 +82,8 @@ RSpec.describe('dashboard/show', type: :view) do
       expect(rendered).to have_css('.certification__title', text: 'Your certificate')
     end
 
-    it 'shows the certificate name' do
-      expect(rendered).to have_css('h3', text: 'GCSE computer science subject knowledge')
+    it 'shows the certificate link' do
+      expect(rendered).to have_link('GCSE computer science subject knowledge', href: cs_accelerator_path)
     end
 
     it 'shows the progress bar' do
