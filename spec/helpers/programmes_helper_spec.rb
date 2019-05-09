@@ -48,8 +48,8 @@ describe ProgrammesHelper, type: :helper do
       }.to raise_error(NoMethodError)
     end
 
-    it 'returns zero when user is not enrolled' do
-      expect(helper.credits_for_accelerator(user, programme)).to eq 0.0
+    it 'yields zero when user is not enrolled' do
+      expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(0.0)
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -58,7 +58,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns correct score for credits' do
-        expect(helper.credits_for_accelerator(user, programme)).to eq 40.0
+        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(40.0)
       end
     end
 
@@ -68,7 +68,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns true' do
-        expect(helper.credits_for_accelerator(user, programme)).to eq 80.0
+        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(80.0)
       end
     end
   end
