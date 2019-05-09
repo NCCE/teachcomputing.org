@@ -10,15 +10,36 @@
   }
 }
 
+.certification-hero__wrapper {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  @include govuk-media-query($from: tablet) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+}
+
 .certification-hero__text {
   color: $ncce-white;
 }
 
 .certification-hero__image {
-  margin-bottom: 1.5rem;
-  width: 30%;
+  width: 130px;
+}
 
+.certification-hero__image--mobile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
   @include govuk-media-query($from: tablet) {
-    width: 60%;
+    display: none;
+  }
+}
+
+.certification-hero__image--tablet {
+  @include govuk-media-query($until: tablet) {
+    display: none;
   }
 }
