@@ -12,7 +12,7 @@
               use our diagnostic tool to identify the areas of subject knowledge
               where you need most support.
               </p>
-              <p class="govuk-body-s"><%= link_to 'Take the Diagnostic Tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
+              <p class="govuk-body-s"><%= link_to 'Take the Diagnostic Tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
             </div>
             <div class="govuk-grid-column-one-third">
               <img src="/images/dashboard/questions.png" alt="Three question marks" class="ncce-dashboard__image"/>

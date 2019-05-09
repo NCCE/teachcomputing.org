@@ -19,7 +19,7 @@
         <% end %>
         <% unless has_user_completed_activity?(@current_user, Activity.diagnostic_tool) %>
           <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-            <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Take</span> the <%= link_to 'diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }), class: 'ncce-link', target: :_blank %></span>
+            <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Take</span> the <%= link_to 'diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %></span>
           </li>
         <% end %>
       </ul>

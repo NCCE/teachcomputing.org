@@ -11,7 +11,7 @@
             your progress.</p>
           <p class="govuk-body">If you need help finding a course that’s
             suitable for you, use our
-            <%= link_to 'diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }), class: 'ncce-link', target: :_blank %>
+            <%= link_to 'diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %>
             to identify the areas of subject knowledge where you need most
             support.</p>
         </div>
