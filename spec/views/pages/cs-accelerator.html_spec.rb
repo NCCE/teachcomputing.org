@@ -36,6 +36,10 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     it 'has Enroll button' do
       expect(rendered).to have_css('.ncce-aside__button', text: "Entroll on this certificate")
     end
+
+    it 'shows the create account step as complete' do
+      expect(rendered).to have_css('.ncce-aside__check-mark', count: 1)
+    end
   end
 
   context 'when there is not signed in user' do
@@ -53,11 +57,11 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     end
 
     it 'has a Log in link' do
-      render
       expect(rendered).to have_link('log in', href: '/login')
     end
+
+    it 'doesn\'t show the create account step as complete' do
+      expect(rendered).to have_css('.ncce-aside__check-mark', count: 0)
+    end
   end
-
-
-
 end
