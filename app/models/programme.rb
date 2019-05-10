@@ -12,4 +12,8 @@ class Programme < ApplicationRecord
 
     user.programmes.exists?(id)
   end
+
+  def self.cs_accelerator
+    Programme.find_by(slug: 'cs-accelerator')
+  end
 end
