@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Programme, type: :model do
-  let(:programme) { create(:programme) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
 
@@ -31,6 +31,16 @@ RSpec.describe Programme, type: :model do
 
     it 'returns false if user not defined' do
       expect(programme.user_enrolled?(nil)).to eq(false)
+    end
+  end
+
+  describe '#cs_accelerator' do
+    before do
+      programme
+    end
+
+    it 'returns the cs-accelerator record' do
+      expect(Programme.cs_accelerator).to eq programme
     end
   end
 end
