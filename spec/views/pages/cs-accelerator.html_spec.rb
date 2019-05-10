@@ -31,12 +31,12 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       render
     end
 
-    it 'has Enroll title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: 'Enroll')
+    it 'has Enrol title' do
+      expect(rendered).to have_css('.ncce-aside__title', text: 'Enrol')
     end
 
-    it 'has Enroll button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Enroll on this certificate')
+    it 'has Enrol button' do
+      expect(rendered).to have_css('.ncce-aside__button', text: 'Enrol on this certificate')
     end
 
     it 'shows the create account step as complete' do
@@ -50,8 +50,8 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       render
     end
 
-    it 'has How to enroll title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: 'How to enroll')
+    it 'has How to enrol title' do
+      expect(rendered).to have_css('.ncce-aside__title', text: 'How to enrol')
     end
 
     it 'has Account button' do

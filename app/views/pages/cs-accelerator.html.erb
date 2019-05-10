@@ -14,21 +14,21 @@
         </div>
         <div class="govuk-grid-column-one-third ncce-aside">
           <% if current_user %>
-          <h2 class="govuk-heading-m ncce-aside__title">Enroll</h2>
+          <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
           <% else%>
-          <h2 class="govuk-heading-m ncce-aside__title">How to enroll</h2>
+          <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
           <% end %>
           <P class="govuk-body-s ncce-aside__text">Begin your journey towards being a fully qualified GCSE computer science teacher!</p>
           <ol class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
             <% if current_user %>
               <li class="ncce-aside__text--dark"><%= image_tag("/images/favicon.png", size: '', alt: 'Completed icon', class: 'ncce-aside__check-mark') %><% else %><li><% end %>Create your account with STEM Learning, and log in</li>
-            <li>Enroll with the click of the button</li>
+            <li>Enrol with the click of the button</li>
             <li>Use your personal dashboard to track your progress towards certification</li>
             <li>Find and book onto coursed until you have enough credits to take the final test</li>
             <li>Pass the test and receive your qualification</li>
           </ol>
           <% if current_user %>
-          <p class="govuk-body"><%= link_to 'Enroll on this certificate', user_programme_enrolment_path(slug: Programme.cs_accelerator.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+          <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.cs_accelerator.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
           <% else %>
           <p class="govuk-body"><%= link_to 'Create an account', signup_stem_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
           <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', login_url, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
