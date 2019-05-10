@@ -17,7 +17,7 @@ RSpec.describe DashboardController do
       end
 
       it 'assigns the users complete achievements' do
-        expect(assigns(:achievements)).to eq complete_achievements
+        expect(assigns(:achievements).count).to eq 4
       end
 
       it 'does not assign achievements in the state of commenced' do

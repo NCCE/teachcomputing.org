@@ -77,6 +77,11 @@ RSpec.describe User, type: :model do
         user.save
         expect(user.achievements.where(activity_id: registered_activity.id).exists?).to eq true
       end
+
+      it 'creates the achievement in a state of complete' do
+        user.save
+        expect(user.achievements.where(activity_id: registered_activity.id).first.current_state).to eq 'complete'
+      end
     end
   end
 
