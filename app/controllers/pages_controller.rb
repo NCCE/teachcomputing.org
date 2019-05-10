@@ -24,7 +24,6 @@ class PagesController < ApplicationController
   end
 
   def static_programme_page
-    puts "page_slug: #{params[:page_slug]}"
     if Programme.find_by!(slug: params[:page_slug]).user_enrolled?(current_user)
       redirect_to programme_path(params[:page_slug])
     else
