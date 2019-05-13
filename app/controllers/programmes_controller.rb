@@ -15,9 +15,8 @@ class ProgrammesController < ApplicationController
   def complete
     if !@programme.user_enrolled?(current_user)
       redirect_to certification_path
-    # TODO
-    # elsif !@programme.complete(current_user)
-    #   redirect_to programme_path(@programme.slug)
+    elsif !passed_programme_assessment?(current_user, @programme)
+      redirect_to programme_path(@programme.slug)
     else
       render :complete
     end
@@ -31,5 +30,10 @@ class ProgrammesController < ApplicationController
 
     def find_programme!
       @programme = Programme.find_by!(slug: params[:slug])
+    end
+
+    def passed_programme_assessment?(user, programme)
+      activities = user.achievements.for_programme(programme).in_state('complete').joins(:activity)
+      activities.where(activities: { category: 'assessment'}).any?
     end
 end

@@ -8,6 +8,9 @@ RSpec.describe ProgrammesController do
                                             user_id: user.id,
                                             programme_id: programme.id)
                                   }
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
+  let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   describe '#complete' do
     describe 'while certification is not enabled' do
@@ -41,26 +44,31 @@ RSpec.describe ProgrammesController do
           expect(response).to redirect_to(certification_path)
         end
 
-        # TODO
-        # describe 'and enrolled' do
-        #   before do
-        #     user_programme_enrolment
-        #     get programme_complete_path('cs-accelerator')
-        #   end
-
-        #   it 'redirects if not complete' do
-        #     expect(response).to redirect_to(programme_path('cs-accelerator'))
-        #   end
-        # end
-
-        describe 'and complete' do
+        describe 'and enrolled' do
           before do
             user_programme_enrolment
             get programme_complete_path('cs-accelerator')
           end
 
+          it 'redirects if not complete' do
+            expect(response).to redirect_to(programme_path('cs-accelerator'))
+          end
+        end
+
+        describe 'and complete' do
+          before do
+            programme_activity
+            user_programme_enrolment
+            passed_exam
+            get programme_complete_path('cs-accelerator')
+          end
+
           it 'shows the page if complete' do
             expect(response.status).to eq(200)
+          end
+
+          it 'renders the correct template' do
+            expect(response).to render_template('complete')
           end
 
           it 'assigns the programme' do
