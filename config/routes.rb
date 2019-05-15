@@ -5,15 +5,17 @@ Rails.application.routes.draw do
     delete '/cache', to: 'cache#destroy'
   end
 
-  namespace 'admin' do
-    resources :imports
-  end
-
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
     resources :downloads, only: [:show]
   end
+
+  namespace 'admin' do
+    resources :imports
+  end
+
+  resources :assessment_attempts
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
