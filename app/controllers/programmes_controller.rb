@@ -26,9 +26,9 @@ class ProgrammesController < ApplicationController
 
     def list_achievements_by_category
       @online_achievements = current_user.achievements.for_programme(@programme)
-        .with_category('online')
+        .with_category('online').take(2)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
-        .with_category('face-to-face')
+        .with_category('face-to-face').take(2)
       @downloaded_diagnostic = current_user.achievements.for_programme(@programme)
         .with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
     end
