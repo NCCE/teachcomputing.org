@@ -10,26 +10,26 @@
   <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
 </li>
 <% elsif @online_achievements.count == 1 %>
-  <% if @online_achievements.first.current_state == 'complete' %>
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"> Completed your first
-      online course <%= @online_achievements.first.activity.title %>
-    </span>
-    <span>Completed</span>
-  </li>
-  <% else %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your first
-      online course <%= @online_achievements.first.activity.title %>
-    </span>
-    <span>Upcoming</span>
-  </li>
-  <% end %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your second face
-      to face course </span>
-    <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-  </li>
+<% if @online_achievements.first.current_state == 'complete' %>
+<li class="ncce-activity-list__item">
+  <span class="ncce-activity-list__item-text"> Completed your first
+    online course <%= @online_achievements.first.activity.title %>
+  </span>
+  <span>Completed</span>
+</li>
+<% else %>
+<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+  <span class="ncce-activity-list__item-text"> Complete your first
+    online course <%= @online_achievements.first.activity.title %>
+  </span>
+  <span>Upcoming</span>
+</li>
+<% end %>
+<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+  <span class="ncce-activity-list__item-text"> Complete your second face
+    to face course </span>
+  <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+</li>
 <% else %>
 <% @online_achievements.each_with_index do |online, index| %>
 <% if online.current_state == 'complete' %>
