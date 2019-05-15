@@ -31,24 +31,24 @@
   <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
 </li>
 <% else %>
-<% @face_to_face_achievements.each_with_index do |f2f, index| %>
-  <% if f2f.current_state == 'complete' %>
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"> Completed your
-      <%= index == 0 ? 'first': 'second' %>
-      face to face course
-    </span>
-    <span class="govuk-tag ncce-courses__tag">Completed</span>
-    <span><%= f2f.activity.title %></span>
-  </li>
-  <% else %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your
-      <%= index == 0 ? 'first': 'second' %> face to face course
-      <%= f2f.activity.title %>
-    </span>
-    <span>Upcoming</span>
-  </li>
+  <% @face_to_face_achievements.each_with_index do |f2f, index| %>
+    <% if f2f.current_state == 'complete' %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"> Completed your
+        <%= index == 0 ? 'first': 'second' %>
+        face to face course
+      </span>
+      <span class="govuk-tag ncce-courses__tag">Completed</span>
+      <span><%= f2f.activity.title %></span>
+    </li>
+    <% else %>
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text"> Complete your
+        <%= index == 0 ? 'first': 'second' %> face to face course
+        <%= f2f.activity.title %>
+      </span>
+      <span>Upcoming</span>
+    </li>
+    <% end %>
   <% end %>
-<% end %>
 <% end %>
