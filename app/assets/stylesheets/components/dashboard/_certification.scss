@@ -102,3 +102,17 @@
     background-color: $ncce-grey-x-light;
   }
 }
+
+.pink-text {
+  color: $ncce-pink;
+}
+
+.certification-hero__image--dashboard {
+  float: left;
+  width: 40px;
+  margin: -10px 15px 20px 0;
+  @include govuk-media-query($from: tablet) {
+    width: 100px;
+    margin-top: 0;
+  }
+}

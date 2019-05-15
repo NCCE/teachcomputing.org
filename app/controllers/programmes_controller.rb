@@ -29,7 +29,6 @@ class ProgrammesController < ApplicationController
     end
 
     def passed_programme_assessment?
-      activities = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
-      redirect_to programme_path(@programme.slug) unless activities.where(activities: { category: 'assessment'}).any?
+      redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
     end
 end
