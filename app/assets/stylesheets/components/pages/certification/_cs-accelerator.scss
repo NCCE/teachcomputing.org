@@ -6,6 +6,20 @@
   max-width: 80%;
 }
 
-.cs-accelerator-aside__list > li {
+.cs-accelerator-aside__list>li {
   margin-bottom: 10px;
+}
+
+.ncce-programmes-activity {
+  background-color: $ncce-lavender;
+}
+
+.ncce-programmes-activity__title {
+  text-align: center;
+  background-image: image-url('squiggly.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  padding-bottom: 1rem;
+  ;
 }
