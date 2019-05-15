@@ -1,0 +1,58 @@
+.pathway-wrapper {
+  border-radius: 10px;
+  background-color: $ncce-lavender;
+  padding: 15px;
+  font-family: $font-family-body;
+  margin-bottom: 15px;
+}
+.pathway {
+  margin: 0;
+  padding: 0;
+
+  &__step {
+    position: relative;
+    padding-left: 45px;
+    list-style: none;
+  
+    &-title {
+
+    }
+
+    &-circle {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      color: $ncce-butterfly-bush;
+      background: $ncce-white;
+      border-radius: 100px;
+      border: solid 3px $ncce-wakaiwa-grey;
+      text-align: center;
+    }
+  }
+
+  &__step:after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 22px;
+    width: 0;
+    height: 100%;
+    margin-left: 12px;
+    border-left: dotted 3px $ncce-canon-pink;
+  }
+
+  &__step:last-child:after {
+    border-left: none;
+  }
+
+  &__text--lighter {
+    color: $ncce-grey-dark;
+  }
+}
