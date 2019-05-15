@@ -1,54 +1,22 @@
-<% if @action_achievements.empty? %>
-<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-  <span class="ncce-activity-list__item-text"> Complete your first face
-    to face course </span>
-  <%= link_to 'Find a action course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-</li>
-<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-  <span class="ncce-activity-list__item-text"> Complete your second face
-    to face course </span>
-  <%= link_to 'Find a action course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-</li>
-<% elsif @action_achievements.count == 1 %>
-  <% if @action_achievements.first.current_state == 'complete' %>
+<% if @action_achievements.count == 1 %>
   <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text"> Completed your first
-      action course <%= @action_achievements.first.activity.title %>
-    </span>
-    <span>Completed</span>
+    <span class="ncce-activity-list__item-text"> Registered with the
+      National Centre </span>
   </li>
-  <% else %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your first
-      action course <%= @action_achievements.first.activity.title %>
-    </span>
-    <span>Upcoming</span>
-  </li>
-  <% end %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your second face
-      to face course </span>
-    <%= link_to 'Find a action course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+  <li
+    class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete the diagnostic
+      test </span>
+    <%= link_to 'Do the diagnostic', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% else %>
-<% @action_achievements.each_with_index do |action, index| %>
-<% if action.current_state == 'complete' %>
-<li class="ncce-activity-list__item">
-  <span class="ncce-activity-list__item-text"> Completed your
-    <%= index == 0 ? 'first': 'second' %>
-    action course
-  </span>
-  <span class="govuk-tag ncce-courses__tag">Completed</span>
-  <span><%= action.activity.title %></span>
-</li>
-<% else %>
-<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-  <span class="ncce-activity-list__item-text"> Complete your
-    <%= index == 0 ? 'first': 'second' %> action course
-    <%= action.activity.title %>
-  </span>
-  <span>Upcoming</span>
-</li>
-<% end %>
-<% end %>
+  <li class="ncce-activity-list__item">
+  <span class="ncce-activity-list__item-text"> Registered with the
+    National Centre </span>
+  </li>
+  <li
+  class="ncce-activity-list__item">
+  <span class="ncce-activity-list__item-text"> Completed the diagnostic
+    test </span>
+  </li>
 <% end %>
