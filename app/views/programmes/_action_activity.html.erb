@@ -1,20 +1,16 @@
-<% if @action_achievements.count == 1 %>
 <li class="ncce-activity-list__item">
   <span class="ncce-activity-list__item-text"> Registered with the
     National Centre </span>
 </li>
-<li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-  <span class="ncce-activity-list__item-text"> Complete the diagnostic
-    test </span>
-  <%= link_to 'Do the diagnostic', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-</li>
+<% if @downloaded_diagnostic %>
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"> Completed the diagnostic
+      test </span>
+  </li>
 <% else %>
-<li class="ncce-activity-list__item">
-  <span class="ncce-activity-list__item-text"> Registered with the
-    National Centre </span>
-</li>
-<li class="ncce-activity-list__item">
-  <span class="ncce-activity-list__item-text"> Completed the diagnostic
-    test </span>
-</li>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete the diagnostic
+      test </span>
+    <%= link_to 'Do the diagnostic', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+  </li>
 <% end %>
