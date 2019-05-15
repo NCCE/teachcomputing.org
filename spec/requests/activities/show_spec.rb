@@ -14,6 +14,10 @@ RSpec.describe Activities::DownloadsController do
       it 'creates an Achievement if one does not exist already' do
         expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
       end
+
+      it 'creates an achievement in a state of complete' do
+        expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
+      end
     end
 
     describe 'while logged out' do

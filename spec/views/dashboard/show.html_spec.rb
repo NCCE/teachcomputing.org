@@ -11,8 +11,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   before do
-    @programme = programme
-    activity
+    [programme, @programmes = Programme.all, activity]
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements
@@ -68,7 +67,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the enrollment button' do
-      expect(rendered).to have_link('Find out more & enroll', href: cs_accelerator_path)
+      expect(rendered).to have_link('Find out more & enrol', href: cs_accelerator_path)
     end
   end
 
