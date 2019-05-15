@@ -23,19 +23,6 @@
             available when all the above is complete</span>
           <% end %>
         </li>
-
-        <p>List all to compare the results</p>
-        <% @online_achievements.each do |online| %>
-          <li> Online 1 <%= online.activity.title %> </li>
-        <% end %>
-
-        <% @action_achievements.each do |action| %>
-          <li> Action 2 <%= action.activity.title %> </li>
-        <% end %>
-
-        <% @face_to_face_achievements.each do |f2f| %>
-          <li> Face 3 <%= f2f.activity.title %> </li>
-        <% end %>
       </ul>
     </div>
   </div>
