@@ -38,7 +38,7 @@ RSpec.describe ProgrammesController do
 
         it 'redirects if not enrolled' do
           get programme_path('cs-accelerator')
-          expect(response).to redirect_to(certification_path)
+          expect(response).to redirect_to(cs_accelerator_path)
         end
 
         describe 'and enrolled' do

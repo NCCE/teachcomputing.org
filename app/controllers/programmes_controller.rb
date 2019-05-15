@@ -3,23 +3,15 @@ class ProgrammesController < ApplicationController
   before_action :enabled?
   before_action :authenticate_user!
   before_action :find_programme!, only: [:show, :complete]
+  before_action :user_enrolled?, only: [:show, :complete]
+  before_action :passed_programme_assessment?, only: [:complete]
 
   def show
-    if @programme.user_enrolled?(current_user)
-      render :show
-    else
-      redirect_to certification_path
-    end
+    render :show
   end
   
   def complete
-    if !@programme.user_enrolled?(current_user)
-      redirect_to certification_path
-    elsif !passed_programme_assessment?(current_user, @programme)
-      redirect_to programme_path(@programme.slug)
-    else
-      render :complete
-    end
+    render :complete
   end
 
   private
@@ -32,8 +24,12 @@ class ProgrammesController < ApplicationController
       @programme = Programme.find_by!(slug: params[:slug])
     end
 
-    def passed_programme_assessment?(user, programme)
-      activities = user.achievements.for_programme(programme).in_state('complete').joins(:activity)
-      activities.where(activities: { category: 'assessment'}).any?
+    def user_enrolled?
+      redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
+    end
+
+    def passed_programme_assessment?
+      activities = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
+      redirect_to programme_path(@programme.slug) unless activities.where(activities: { category: 'assessment'}).any?
     end
 end
