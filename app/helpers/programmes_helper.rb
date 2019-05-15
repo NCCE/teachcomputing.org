@@ -11,7 +11,7 @@ module ProgrammesHelper
 
   private
     def _credits_for_courses(user, programme, category = 'online')
-      activities = user.achievements.for_programme(programme).joins(:activity)
+      activities = user.achievements.for_programme(programme).in_state('complete').joins(:activity)
       activities.where(activities: { category: category}).sum(:credit)
     end
 end
