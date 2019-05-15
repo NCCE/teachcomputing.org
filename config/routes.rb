@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
-
+  get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
+  
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }

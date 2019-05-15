@@ -79,7 +79,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the certificate progress section' do
-      expect(rendered).to have_css('.certification__title', text: 'Your certificate')
+      expect(rendered).to have_css('.underlined__title', text: 'Your certificate')
     end
 
     it 'shows the certificate link' do
