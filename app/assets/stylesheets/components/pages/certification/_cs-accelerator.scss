@@ -15,14 +15,5 @@
 }
 
 .ncce-programmes-activity__title {
-  text-align: center;
-  background-image: image-url('squiggly.png');
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: 45%;
-  padding-bottom: 1rem;
-
-  @include govuk-media-query($from: tablet) {
-    background-size: 27%;
-  }
+  color: unset;
 }
