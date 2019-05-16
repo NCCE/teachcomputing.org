@@ -1,0 +1,15 @@
+<li class="ncce-activity-list__item">
+  <span class="ncce-activity-list__item-text"> Signed up to the National Centre for Computing Education </span>
+</li>
+<% if @downloaded_diagnostic %>
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"> Completed the diagnostic
+      test </span>
+  </li>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete the diagnostic
+      test </span>
+    <%= link_to 'Do the diagnostic', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank  %>
+  </li>
+<% end %>
