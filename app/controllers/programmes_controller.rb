@@ -11,7 +11,7 @@ class ProgrammesController < ApplicationController
   def show
     render :show
   end
-  
+
   def complete
     render :complete
   end
@@ -27,13 +27,12 @@ class ProgrammesController < ApplicationController
     end
 
     def list_achievements_by_category
-      @online_achievements = current_user.achievements.for_programme(@programme)
-        .with_category('online').take(2)
-      @face_to_face_achievements = current_user.achievements.for_programme(@programme)
-        .with_category('face-to-face').take(2)
-      @downloaded_diagnostic = current_user.achievements.for_programme(@programme)
-        .with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
-      
+      achievements = current_user.achievements.for_programme(@programme)
+      @online_achievements = achievements.with_category('online').take(2)
+      @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
+      @downloaded_diagnostic = achievements.with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
+    end
+
     def user_enrolled?
       redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
     end
