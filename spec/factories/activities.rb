@@ -33,6 +33,13 @@ FactoryBot.define do
     category { 'online' }
   end
 
+  trait :cs_accelerator_exam do
+    slug { 'cs-accelerator-assessment' }
+    title { 'CSA exam' }
+    provider { 'classmarker' }
+    category { 'assessment' }
+  end
+
   trait :system do
     title { 'system' }
     category { 'action' }
