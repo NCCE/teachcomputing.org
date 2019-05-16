@@ -19,7 +19,10 @@
   background-image: image-url('squiggly.png');
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-size: 25%;
+  background-size: 45%;
   padding-bottom: 1rem;
-  ;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 27%;
+  }
 }
