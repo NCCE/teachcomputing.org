@@ -1,0 +1,31 @@
+<div class="certification">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column">
+              <h2 class="govuk-heading-m underlined__title">Your certificate</h2>
+            </div>
+          </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <div class="certification-progress">
+              <p class="govuk-body-s govuk-!-font-weight-bold">The National Centre for Computing Education certificate in</h2>
+              <h3 class="govuk-body-l govuk-!-font-weight-bold"><%= link_to programme.title, programme_path(programme.slug), class: 'ncce-link' %></h3>
+              <div class="certification-progress__fudge">
+                <% credits_for_accelerator(current_user, programme) do |total_credits| %>
+                  <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= total_credits %>/80 credits" value="<%= total_credits %>" max="80"></progress>
+                <% end %>
+                <% if can_take_accelerator_test?(current_user, programme) %>
+                  <span class="certification-progress__fudge-bar-target certification-progress__fudge-bar-target--ready" aria-label="You are eligible for the test"></span>
+                <% else %>
+                  <span class="certification-progress__fudge-bar-target" aria-label="You are not eligible for the test yet"></span>
+                <% end %>
+                <span class="certification-progress__fudge-bar-dummy"></span>
+              </div>
+              <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

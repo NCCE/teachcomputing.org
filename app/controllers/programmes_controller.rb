@@ -2,16 +2,18 @@ class ProgrammesController < ApplicationController
   layout 'full-width'
   before_action :enabled?
   before_action :authenticate_user!
-
-  before_action :find_programme!, :list_achievements_by_category, only: [:show]
+  before_action :find_programme!, only: [:show, :complete]
+  before_action :user_enrolled?, only: [:show, :complete]
+  before_action :list_achievements_by_category, only: [:show]
+  before_action :passed_programme_assessment?, only: [:complete]
 
 
   def show
-    if @programme.user_enrolled?(current_user)
-      render :show
-    else
-      redirect_to certification_path
-    end
+    render :show
+  end
+  
+  def complete
+    render :complete
   end
 
   private
@@ -31,5 +33,12 @@ class ProgrammesController < ApplicationController
         .with_category('face-to-face').take(2)
       @downloaded_diagnostic = current_user.achievements.for_programme(@programme)
         .with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
+      
+    def user_enrolled?
+      redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
+    end
+
+    def passed_programme_assessment?
+      redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
     end
 end

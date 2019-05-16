@@ -5,15 +5,17 @@ Rails.application.routes.draw do
     delete '/cache', to: 'cache#destroy'
   end
 
-  namespace 'admin' do
-    resources :imports
-  end
-
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
     resources :downloads, only: [:show]
   end
+
+  namespace 'admin' do
+    resources :imports
+  end
+
+  resources :assessment_attempts
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
@@ -21,7 +23,8 @@ Rails.application.routes.draw do
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
-
+  get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
+  
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }

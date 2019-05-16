@@ -8,11 +8,14 @@ RSpec.describe ProgrammesController do
                                             user_id: user.id,
                                             programme_id: programme.id)
                                   }
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
+  let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
-  describe '#show' do
+  describe '#complete' do
     describe 'while certification is not enabled' do
       it 'redirects to home page' do
-        get programme_path('cs-accelerator')
+        get programme_complete_path('cs-accelerator')
         expect(response).to redirect_to(root_path)
       end
     end
@@ -32,34 +35,51 @@ RSpec.describe ProgrammesController do
 
         it 'handles missing programmes' do
           expect {
-            get programme_path('programme-missing')
+            get programme_complete_path('programme-missing')
           }.to raise_error(ActiveRecord::RecordNotFound)
         end
 
         it 'redirects if not enrolled' do
-          get programme_path('cs-accelerator')
+          get programme_complete_path('cs-accelerator')
           expect(response).to redirect_to(cs_accelerator_path)
         end
 
         describe 'and enrolled' do
           before do
             user_programme_enrolment
-            get programme_path('cs-accelerator')
+            get programme_complete_path('cs-accelerator')
+          end
+
+          it 'redirects if not complete' do
+            expect(response).to redirect_to(programme_path('cs-accelerator'))
+          end
+        end
+
+        describe 'and complete' do
+          before do
+            programme_activity
+            user_programme_enrolment
+            passed_exam
+            get programme_complete_path('cs-accelerator')
+          end
+
+          it 'shows the page if complete' do
+            expect(response.status).to eq(200)
           end
 
           it 'renders the correct template' do
-            expect(response).to render_template('show')
+            expect(response).to render_template('complete')
           end
 
-          it 'assigns the correct programme' do
-            expect(assigns(:programme)).to eq programme
+          it 'assigns the programme' do
+            expect(assigns(:programme)).to eq(programme)
           end
         end
       end
 
       describe 'while logged out' do
         before do
-          get programme_path('cs-accelerator')
+          get programme_complete_path('cs-accelerator')
         end
 
         it 'redirects to login' do
