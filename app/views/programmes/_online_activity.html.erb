@@ -1,13 +1,4 @@
-<% if @online_achievements.empty? %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your first online course </span>
-    <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-  </li>
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your second online course </span>
-    <%= link_to 'Find an online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
-  </li>
-<% elsif @online_achievements.count == 1 %>
+<% if @online_achievements.try(:first) %>
   <% if @online_achievements.first.current_state == 'complete' %>
     <li class="ncce-activity-list__item">
       <span class="ncce-activity-list__item-text"> Completed your first
@@ -23,29 +14,34 @@
       <span>Upcoming</span>
     </li>
   <% end %>
+<% else%>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text"> Complete your second online course </span>
-    <%= link_to 'Find an online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <span class="ncce-activity-list__item-text"> Complete your first
+      online course </span>
+    <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
-<% else %>
-  <% @online_achievements.each_with_index do |online, index| %>
-    <% if online.current_state == 'complete' %>
-      <li class="ncce-activity-list__item">
-        <span class="ncce-activity-list__item-text"> Completed your
-          <%= index == 0 ? 'first': 'second' %>
-          online course
-        </span>
-        <span class="govuk-tag ncce-courses__tag">Completed</span>
-        <span><%= online.activity.title %></span>
-      </li>
-    <% else %>
-      <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-        <span class="ncce-activity-list__item-text"> Complete your
-          <%= index == 0 ? 'first': 'second' %> online course
-          <%= online.activity.title %>
-        </span>
-        <span>Upcoming</span>
-      </li>
-    <% end %>
+<% end %>
+
+<% if @online_achievements.try(:second) %>
+  <% if @online_achievements.second.current_state == 'complete' %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"> Completed your second
+        online course <%= @online_achievements.first.activity.title %>
+      </span>
+      <span>Completed</span>
+    </li>
+  <% else %>
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text"> Complete your second
+        online course <%= @online_achievements.second.activity.title %>
+      </span>
+      <span>Upcoming</span>
+    </li>
   <% end %>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete your second
+    online course </span>
+    <%= link_to 'Find a online course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+  </li>
 <% end %>
