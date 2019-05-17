@@ -106,6 +106,9 @@
     },
     "CERTIFICATION_ENABLED": {
       "required": true
+    },
+    "CLASS_MARKER_WEBHOOK_SECRET_PHRASE": {
+      "required": true
     }
   },
   "formation": {
