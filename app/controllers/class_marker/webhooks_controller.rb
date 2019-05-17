@@ -1,5 +1,5 @@
 class ClassMarker::WebhooksController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, :authenticate
 
   before_action :verify_hmac_signature
 
