@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_online_activity', type: :view) do
+RSpec.describe('programmes/_face_to_face_activity', type: :view) do
   let(:user) { create(:user) }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
@@ -17,21 +17,21 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has a find courses buttons' do
-      expect(rendered).to have_link('Find an online course', count: 2)
+      expect(rendered).to have_link('Find a face to face course', count: 2)
     end
 
-    it 'links to online courses' do
-      expect(rendered).to have_link('Find an online course', href: '/courses?location=Online')
+    it 'links to face to face courses' do
+      expect(rendered).to have_link('Find a face to face course', href: '/courses')
     end
 
     it 'has prompt text' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your (first|second).+online course.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your (first|second).+face.+to.+face course.*/m)
     end
   end
 
   context 'when user has started one achievement' do
     before do
-      @online_achievements = [commenced_achievement]
+      @face_to_face_achievements = [commenced_achievement]
       render
     end
 
@@ -40,17 +40,17 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has one find courses button' do
-      expect(rendered).to have_link('Find an online course', count: 1)
+      expect(rendered).to have_link('Find a face to face course', count: 1)
     end
 
     it 'has the activity title' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+first.+online course #{commenced_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)
     end
   end
 
   context 'when user has started two achievements' do
     before do
-      @online_achievements = two_commenced_achievements
+      @face_to_face_achievements = two_commenced_achievements
       render
     end
 
@@ -59,19 +59,19 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find an online course', count: 0)
+      expect(rendered).to have_link('Find a face to face course', count: 0)
     end
 
     it 'has the 2nd activity title' do
       two_commenced_achievements.second do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+online course #{achievement.activity.title}/)
+        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+face.+to face course #{achievement.activity.title}/)
       end
     end
   end
 
   context 'when user has finished one achievement' do
     before do
-      @online_achievements = [complete_achievement, commenced_achievement]
+      @face_to_face_achievements = [complete_achievement, commenced_achievement]
       render
     end
 
@@ -80,21 +80,21 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find an online course', count: 0)
+      expect(rendered).to have_link('Find a face to face course', count: 0)
     end
 
     it 'has the first activity as complete' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your first.+online course #{complete_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your first.+face.+to face course #{complete_achievement.activity.title}.*/m)
     end
 
     it 'has the second activity as in progress' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your second.+online course #{commenced_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your second.+face.+to face course #{commenced_achievement.activity.title}.*/m)
     end
   end
 
   context 'when user has finished both achievements' do
     before do
-      @online_achievements = two_complete_achievements
+      @face_to_face_achievements = two_complete_achievements
       render
     end
 
@@ -103,12 +103,12 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find an online course', count: 0)
+      expect(rendered).to have_link('Find a face to face course', count: 0)
     end
 
     it 'has both activities as complete' do
       two_complete_achievements.each do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your (first|second).+online course #{achievement.activity.title}.*/m)
+        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your (first|second).+face.+to face course #{achievement.activity.title}.*/m)
       end
     end
   end

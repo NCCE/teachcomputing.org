@@ -18,7 +18,7 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your first face
       to face course </span>
-    <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
 
@@ -26,7 +26,7 @@
   <% if @face_to_face_achievements.second.current_state == 'complete' %>
     <li class="ncce-activity-list__item">
       <span class="ncce-activity-list__item-text"> Completed your second
-        face to face course <%= @face_to_face_achievements.first.activity.title %>
+        face to face course <%= @face_to_face_achievements.second.activity.title %>
       </span>
       <span>Completed</span>
     </li>
@@ -42,6 +42,6 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your second face
     to face course </span>
-    <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
