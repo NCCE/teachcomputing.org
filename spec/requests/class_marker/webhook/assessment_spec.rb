@@ -29,7 +29,7 @@ RSpec.describe ClassMarker::WebhooksController do
 
         allow_any_instance_of(described_class)
           .to receive(:verify_hmac_signature).and_return(true)
-        post class_marker_assessment_webhook_path, params: JSON.parse(failing_json_body)
+        post class_marker_assessment_webhook_path, params: JSON.parse(failed_json_body)
       end
 
       it 'transitions to failed' do
