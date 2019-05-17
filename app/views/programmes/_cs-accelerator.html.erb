@@ -15,15 +15,12 @@
       </ul>
 
       <ul class="govuk-list ncce-activity-list">
-        <li
-          class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-          <span class="ncce-activity-list__item-text"> Pass the final exam
-          </span>
-          <%= link_to_if(can_take_accelerator_test?(current_user, @programme), 'Take the final exam', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded') do %>
-          <span class="ncce-activity-list__item-sub-text">The exam will be
-            available when all the above is complete</span>
-          <% end %>
-        </li>
+          <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+            <span class="ncce-activity-list__item-text"> Pass the final exam </span>
+            <%= link_to_if(can_take_accelerator_test?(current_user, @programme), 'Take the final exam', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded') do %>
+              <span class="ncce-activity-list__item-sub-text">The exam will be available when all the above is complete</span>
+            <% end %>
+          </li>
       </ul>
     </div>
   </div>

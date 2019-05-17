@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
-  let(:user_programme_enrolment) {
-                                    create( :user_programme_enrolment,
-                                            user_id: user.id,
-                                            programme_id: programme.id)
-                                  }
+  let(:assessment) { create(:assessment, programme_id: programme.id) }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment,
+           user_id: user.id,
+           programme_id: programme.id)
+  end
 
   describe '#show' do
     describe 'while certification is not enabled' do
@@ -19,7 +20,7 @@ RSpec.describe ProgrammesController do
 
     describe 'while certification is enabled' do
       before do
-        allow_any_instance_of(ProgrammesController)
+        allow_any_instance_of(described_class)
           .to receive(:certification_enabled?).and_return(true)
       end
 
@@ -31,9 +32,9 @@ RSpec.describe ProgrammesController do
         end
 
         it 'handles missing programmes' do
-          expect {
+          expect do
             get programme_path('programme-missing')
-          }.to raise_error(ActiveRecord::RecordNotFound)
+          end.to raise_error(ActiveRecord::RecordNotFound)
         end
 
         it 'redirects if not enrolled' do
@@ -43,6 +44,7 @@ RSpec.describe ProgrammesController do
 
         describe 'and enrolled' do
           before do
+            assessment
             user_programme_enrolment
             get programme_path('cs-accelerator')
           end
