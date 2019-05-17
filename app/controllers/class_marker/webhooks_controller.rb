@@ -17,7 +17,6 @@ class ClassMarker::WebhooksController < ApplicationController
         latest_attempt.transition_to(:failed)
       end
     rescue StandardError => e
-      byebug
       Raven.capture_exception(e)
       head :ok
     end
