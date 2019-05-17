@@ -4,6 +4,7 @@ class AssessmentAttemptsController < ApplicationController
   def create
     assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
     if assessment_attempt.save
+      Achievement.create(activity_id: @assessment.activity.id, user_id: params[:assessment_attempt][:user_id])
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to @assessment.link
     else
