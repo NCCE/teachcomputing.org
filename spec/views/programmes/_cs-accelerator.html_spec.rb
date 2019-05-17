@@ -16,11 +16,4 @@ RSpec.describe('programmes/_cs-accelerator', type: :view) do
     expect(rendered).to have_css('.ncce-activity-list__item', count: 7)
   end
 
-  it 'some of the activities are incomplete' do
-    expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 6)
-  end
-
-  it 'incomplete activities have buttons' do
-    expect(rendered).to have_css('.ncce-button__pink--rounded', count: 5)
-  end
 end

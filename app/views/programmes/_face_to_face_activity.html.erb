@@ -1,0 +1,47 @@
+<% if @face_to_face_achievements.try(:first) %>
+  <% if @face_to_face_achievements.first.current_state == 'complete' %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"> Completed your first
+        face to face course <%= @face_to_face_achievements.first.activity.title %>
+      </span>
+      <span>Completed</span>
+    </li>
+  <% else %>
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text"> Complete your first
+        face to face course <%= @face_to_face_achievements.first.activity.title %>
+      </span>
+      <span>Upcoming</span>
+    </li>
+  <% end %>
+<% else%>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete your first face
+      to face course </span>
+    <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+  </li>
+<% end %>
+
+<% if @face_to_face_achievements.try(:second) %>
+  <% if @face_to_face_achievements.second.current_state == 'complete' %>
+    <li class="ncce-activity-list__item">
+      <span class="ncce-activity-list__item-text"> Completed your second
+        face to face course <%= @face_to_face_achievements.first.activity.title %>
+      </span>
+      <span>Completed</span>
+    </li>
+  <% else %>
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text"> Complete your second
+        face to face course <%= @face_to_face_achievements.second.activity.title %>
+      </span>
+      <span>Upcoming</span>
+    </li>
+  <% end %>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text"> Complete your second face
+    to face course </span>
+    <%= link_to 'Find a face to face course', '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+  </li>
+<% end %>
