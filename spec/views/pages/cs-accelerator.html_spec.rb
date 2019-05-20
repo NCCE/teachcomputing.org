@@ -16,8 +16,8 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     expect(rendered).to have_link('FAQ', href: '/')
   end
 
-  it 'has diagram image' do
-    expect(rendered).to have_css('.cs-accelerator__image', count: 1)
+  it 'has diagram' do
+    expect(rendered).to have_css('.pathway-wrapper', count: 1)
   end
 
   it 'has aside section' do
