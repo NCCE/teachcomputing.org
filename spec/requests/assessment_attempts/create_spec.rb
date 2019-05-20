@@ -18,8 +18,9 @@ RSpec.describe AssessmentAttemptsController do
 
       it 'redirects to the assessment link path' do
         post assessment_attempts_path(assessment_attempt: { assessment_id: assessment.id, user_id: user.id })
-        expect(response).to redirect_to(assessment.link)
+        expect(response).to redirect_to(/#{assessment.link}\?cm_e=#{user.email}&cm_user_id=#{user.id}/)
       end
+
 
       it 'queues ExpireAssessmentAttemptJob job' do
         expect do

@@ -5,7 +5,7 @@ class AssessmentAttemptsController < ApplicationController
     assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
     if assessment_attempt.save
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
-      redirect_to @assessment.link
+      redirect_to assessment_url(assessment_attempt.user)
     else
       flash[:error] = 'Whoops something went wrong'
       redirect_to programme_path(@assessment.programme.id)
@@ -20,5 +20,9 @@ class AssessmentAttemptsController < ApplicationController
 
     def assessment_attempts_params
       params.require(:assessment_attempt).permit(:assessment_id, :user_id)
+    end
+
+    def assessment_url(user)
+      "#{@assessment.link}?cm_e=#{user.email}&cm_user_id=#{user.id}"
     end
 end
