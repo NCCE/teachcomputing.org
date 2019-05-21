@@ -7,7 +7,7 @@
 .ncce-activity-list__item {
   background-color: $ncce-white;
   display: grid;
-  grid-template-columns: 2fr auto;
+  grid-template-rows: 2fr auto;
   padding: 0.5rem 1.125rem;
   border-bottom-width: 2px;
   border-bottom-color: $ncce-light-lavender;
@@ -49,7 +49,8 @@
 }
 
 .ncce-activity-list__item--incomplete {
-  color: $ncce-grey-dark;
+  grid-template-columns: 2fr auto;
+
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }
@@ -116,14 +117,17 @@
     text-decoration: underline;
 
     color: $ncce-blue-link;
+
     &:hover {
       color: $ncce-pink;
     }
+
     &:focus {
       color: $ncce-white;
       background-color: $ncce-pink;
       outline-color: $ncce-pink;
     }
+
     &:active {
       background-color: $ncce-pink;
       color: $ncce-white;
@@ -133,9 +137,11 @@
 
 .ncce-collapsible-activity {
   margin-top: -3.8rem;
+
   &--progressive {
     position: absolute;
     margin-top: 3.5rem;
+
     @include govuk-media-query($from: tablet) {
       margin-top: auto;
     }
@@ -145,6 +151,7 @@
       width: 30rem;
     }
   }
+
   box-sizing: border-box;
   max-width: 100%;
   padding: 1rem;
@@ -158,7 +165,7 @@
   &__title-button {
     all: inherit;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
     display: block;
     width: 100%;
     margin: 0.5rem 0 2rem 0;
@@ -197,4 +204,8 @@
 .ncce-activity-form__button--pink {
   margin-top: 1rem;
   width: 100%;
+}
+
+.ncce-activity-list__tag {
+  text-transform: none;
 }

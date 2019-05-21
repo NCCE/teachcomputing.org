@@ -2,9 +2,10 @@
   <% if @online_achievements.first.current_state == 'complete' %>
     <li class="ncce-activity-list__item">
       <span class="ncce-activity-list__item-text"> Completed your first
-        online course <%= @online_achievements.first.activity.title %>
+        online course
       </span>
-      <span>Completed</span>
+      <span class="ncce-courses__tag">Complete</span>
+      <span><%= @online_achievements.first.activity.title %></span>
     </li>
   <% else %>
     <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
@@ -28,7 +29,7 @@
       <span class="ncce-activity-list__item-text"> Completed your second
         online course <%= @online_achievements.second.activity.title %>
       </span>
-      <span>Completed</span>
+      <span>Complete</span>
     </li>
   <% else %>
     <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
