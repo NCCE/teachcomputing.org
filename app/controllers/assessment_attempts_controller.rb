@@ -24,6 +24,6 @@ class AssessmentAttemptsController < ApplicationController
     end
 
     def assessment_url(user)
-      "#{@assessment.link}?cm_e=#{user.email}&cm_user_id=#{user.id}"
+      "#{@assessment.link}&cm_e=#{user.email}&cm_user_id=#{user.id}"
     end
 end
