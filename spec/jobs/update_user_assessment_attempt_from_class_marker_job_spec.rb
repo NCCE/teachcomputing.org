@@ -15,7 +15,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         [user, activity, achievement, assessment, assessment_attempt]
         result = JSON.parse(passing_json_body, {:symbolize_names => true})
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
 
       it 'transitions assessment_attempt to complete' do
@@ -31,7 +31,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         [user, activity, achievement, assessment, assessment_attempt]
         result = JSON.parse(failed_json_body, {:symbolize_names => true})
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
 
       it 'transitions assessment_attempt to failed' do
@@ -47,7 +47,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         allow(Raven).to receive(:capture_exception)
         result = JSON.parse(passing_json_body, {:symbolize_names => true})
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
 
       it 'raises an error' do
@@ -60,7 +60,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         user
         allow(Raven).to receive(:capture_exception)
         result = JSON.parse(passing_json_body, {:symbolize_names => true})
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
 
       it 'raises an error' do
@@ -74,7 +74,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         assessment
         allow(Raven).to receive(:capture_exception)
         result = JSON.parse(passing_json_body, {:symbolize_names => true})
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
 
       it 'raises an error' do

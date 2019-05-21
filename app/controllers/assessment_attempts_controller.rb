@@ -3,13 +3,15 @@ class AssessmentAttemptsController < ApplicationController
 
   def create
     assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
-    if assessment_attempt.save
-      Achievement.create(activity_id: @assessment.activity.id, user_id: params[:assessment_attempt][:user_id])
+    achievement = @assessment.activity.achievements.find_or_initialize_by(user_id: params[:assessment_attempt][:user_id])
+    if assessment_attempt.valid? && achievement.valid?
+      assessment_attempt.save
+      achievement.save
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to assessment_url(assessment_attempt.user)
     else
       flash[:error] = 'Whoops something went wrong'
-      redirect_to programme_path(@assessment.programme.id)
+      redirect_to programme_path(@assessment.programme.slug)
     end
   end
 
