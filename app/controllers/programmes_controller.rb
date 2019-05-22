@@ -6,6 +6,7 @@ class ProgrammesController < ApplicationController
   before_action :user_enrolled?, only: [:show, :complete]
   before_action :list_achievements_by_category, only: [:show]
   before_action :passed_programme_assessment?, only: [:complete]
+  before_action :get_assessment_state_details, only: [:show]
 
 
   def show
@@ -31,6 +32,25 @@ class ProgrammesController < ApplicationController
       @online_achievements = achievements.with_category('online').take(2)
       @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
       @downloaded_diagnostic = achievements.with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
+    end
+
+    def get_assessment_state_details
+      @passed_assessment = @programme.passed_programme_assessment?(current_user)
+      @enough_credits_for_test = helpers.can_take_accelerator_test?(current_user, @programme)
+      return if !@enough_credits_for_test || @passed_assessment
+
+      attempts = @programme.assessment.assessment_attempts.where(user_id: current_user.id).order(:created_at)
+      num_attempts = attempts.count
+      @can_take_test_at = 0
+      if num_attempts > 0
+        last_attempt = attempts.last
+        if last_attempt.current_state == 'failed' && num_attempts >= 2
+          @can_take_test_at = [last_attempt.state_machine.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
+        elsif last_attempt.current_state == 'commenced'
+          # They are currently taking a test - what do we do? (webhook may have failed, but should it?)
+          puts "Currently taking test!"
+        end
+      end
     end
 
     def user_enrolled?
