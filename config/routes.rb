@@ -19,12 +19,16 @@ Rails.application.routes.draw do
 
   get '/auth/callback', to: 'auth#callback', as: 'callback'
 
+  namespace 'class_marker' do
+    post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
+  end
+
   resources :courses, path: '/courses', only: [:index]
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
-  
+
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }

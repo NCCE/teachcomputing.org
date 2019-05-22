@@ -1,4 +1,5 @@
 class AssessmentAttempt < ApplicationRecord
+  include Statesman::Adapters::ActiveRecordQueries
   belongs_to :user
   belongs_to :assessment
 
