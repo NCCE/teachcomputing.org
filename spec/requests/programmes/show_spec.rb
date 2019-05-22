@@ -44,6 +44,11 @@ RSpec.describe ProgrammesController do
     end
   end
 
+  let(:one_commenced_test_attempt) do
+    setup_achievements_for_taking_test
+    create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id)
+  end
+
   let(:one_failed_test_attempt) do
     setup_achievements_for_taking_test
     create(:failed_assessment_attempt, user_id: user.id, assessment_id: assessment.id)
@@ -134,6 +139,10 @@ RSpec.describe ProgrammesController do
             expect(assigns(:can_take_test_at)).to eq (nil)
           end
 
+          it 'doesn\'t assign if user is currently doing a test' do
+            expect(assigns(:currently_taking_test)).to eq (nil)
+          end
+
           context 'when diagnostic has been downloaded' do
             before do
               diagnostic_achievement.set_to_complete
@@ -158,6 +167,29 @@ RSpec.describe ProgrammesController do
             it 'assigns the time until user can take the test' do
               expect(assigns(:can_take_test_at)).to eq (0)
             end
+
+            it 'assigns that user is not currently doing a test' do
+              expect(assigns(:currently_taking_test)).to eq (false)
+            end
+          end
+
+          context 'when user started the test' do
+            before do
+              one_commenced_test_attempt
+              get programme_path('cs-accelerator')
+            end
+
+            it 'assigns the test gate correctly' do
+              expect(assigns(:enough_credits_for_test)).to eq (true)
+            end
+
+            it 'assigns the time until user can take the test' do
+              expect(assigns(:can_take_test_at)).to eq (0)
+            end
+
+            it 'assigns whether user is currently doing a test' do
+              expect(assigns(:currently_taking_test)).to eq (true)
+            end
           end
 
           context 'when user failed the test' do
@@ -172,6 +204,10 @@ RSpec.describe ProgrammesController do
 
             it 'assigns the time until user can take the test' do
               expect(assigns(:can_take_test_at)).to eq (0)
+            end
+
+            it 'assigns whether user is currently doing a test' do
+              expect(assigns(:currently_taking_test)).to eq (false)
             end
           end
 

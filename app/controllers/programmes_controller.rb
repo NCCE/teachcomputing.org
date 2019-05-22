@@ -42,13 +42,13 @@ class ProgrammesController < ApplicationController
       attempts = @programme.assessment.assessment_attempts.where(user_id: current_user.id).order(:created_at)
       num_attempts = attempts.count
       @can_take_test_at = 0
+      @currently_taking_test = false
       if num_attempts > 0
         last_attempt = attempts.last
         if last_attempt.current_state == 'failed' && num_attempts >= 2
           @can_take_test_at = [last_attempt.state_machine.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
         elsif last_attempt.current_state == 'commenced'
-          # They are currently taking a test - what do we do? (webhook may have failed, but should it?)
-          puts "Currently taking test!"
+          @currently_taking_test = true
         end
       end
     end
