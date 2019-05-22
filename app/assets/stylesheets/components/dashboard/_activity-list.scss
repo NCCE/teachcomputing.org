@@ -48,8 +48,26 @@
   }
 }
 
+.ncce-activity-list__item-activity {
+  background-color: $ncce-pink-light;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  margin-left: 2rem;
+  padding: 0.7rem;
+
+  @include govuk-media-query($from: tablet) {
+    display: block;
+    margin-left: 2.8rem;
+  }
+}
+
 .ncce-activity-list__item--incomplete {
-  grid-template-columns: 2fr auto;
+  grid-template-rows: 2fr auto;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr auto;
+  }
 
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
@@ -208,4 +226,11 @@
 
 .ncce-activity-list__tag {
   text-transform: none;
+  width: 25%;
+  margin-bottom: 0.7rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+    width: auto;
+  }
 }

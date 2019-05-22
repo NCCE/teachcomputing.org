@@ -26,5 +26,12 @@
 .ncce-button__pink--rounded {
   border-radius: 0.5rem;
   box-shadow: none;
+  margin-left: 2rem;
   padding: 0.5rem 1rem;
+  width: 70%;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 0;
+    width: auto;
+  }
 }
