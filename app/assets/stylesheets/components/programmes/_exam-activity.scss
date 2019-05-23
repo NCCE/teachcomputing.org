@@ -1,4 +1,5 @@
 .ncce-exam-activity__remarks  {
+  grid-column-end: span 3;
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
@@ -42,7 +43,7 @@
   }
 }
 
-.ncce-activity-list__item-text {
+.ncce-exam-activity__attempts-text {
   grid-column-end: span 3;
 }
 

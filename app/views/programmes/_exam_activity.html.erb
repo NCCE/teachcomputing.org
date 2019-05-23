@@ -21,15 +21,15 @@
   <li class="govuk-body-s ncce-activity-list__item ncce-activity-list__item--position ncce-exam-activity__attempts">
     <% if @enough_credits_for_test %>
       <% if @currently_taking_test %>
-        <span class="ncce-activity-list__item-sub-text">You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
+        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
       <% elsif @can_take_test_at != 0 %>
-        <span class="ncce-activity-list__item-sub-text">Your <%= to_word_ordinal(@num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @can_take_test_at).strftime('%l%P on %A')}" %></strong>, please come back then!</span>
+        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">Your <%= to_word_ordinal(@num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @can_take_test_at).strftime('%l%P on %A')}" %></strong>, please come back then!</span>
       <% else %>
-        <span class="ncce-activity-list__item-sub-text">You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</span>
+        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</span>
         <%= link_to 'Take the final test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
       <% end %>
     <% else %>
-      <span class="ncce-activity-list__item-sub-text">The test will be available when you have completed the necessary courses</span>
+      <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">The test will be available when you have completed the necessary courses</span>
     <% end %>
     <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--exam') %>
   </li>
