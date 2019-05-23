@@ -20,14 +20,75 @@ RSpec.describe('programmes/_exam_activity', type: :view) do
     expect(rendered).to have_css('ul>li', count: 6)
   end
 
-  # context 'when user has not downloaded the diagnostic' do
-  #   before do
-  #     render
-  #   end
+  it 'shows the certificate graphic' do
+    expect(rendered).to have_css('.certification-progress__image', count: 1)
+  end
 
-  #   it 'diagnostic achievement is  marked as incomplete' do
-  #     expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
-  #   end
-  # end
+  it 'tells the user to get more credits' do
+    expect(rendered).to have_css('span', text: 'The test will be available when you have completed the necessary courses')
+  end
 
+  context 'when user has enough credits to take the test' do
+    before do
+      @can_take_test_at = 0
+      @enough_credits_for_test = true
+      render
+    end
+
+    it 'tells the user they can take the test' do
+      expect(rendered).to have_css('span', text: 'You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!')
+    end
+
+    it 'has a link to the test' do
+      expect(rendered).to have_link('Take the final test')
+    end
+  end
+
+  context 'when user is taking the test' do
+    before do
+      @currently_taking_test = true
+      @enough_credits_for_test = true
+      render
+    end
+
+    it 'tells the user they can take the test' do
+      expect(rendered).to have_css('span', text: 'You are currently taking the test.  If you have recently failed, please come back in 2 hours.')
+    end
+
+    it 'has no link to the test' do
+      expect(rendered).to have_link('Take the final test', count: 0)
+    end
+  end
+
+  context 'when user has failed the test 3 times' do
+    before do
+      @enough_credits_for_test = true
+      @can_take_test_at = 48.hours.to_i
+      @num_attempts = 3
+      render
+    end
+
+    it 'tells the user they\'re on the 4th attempt' do
+      expect(rendered).to have_css('span', text: /Your fourth attempt at the test can be done/)
+    end
+
+    it 'tells the user to wait 48.hours' do
+      expect(rendered).to have_css('strong', text: /after #{(Time.zone.now + 48.hours.to_i).strftime('%l%P on %A')}/)
+    end
+
+    it 'has no link to the test' do
+      expect(rendered).to have_link('Take the final test', count: 0)
+    end
+  end
+
+  context 'when user has passed the test' do
+    before do
+      @passed_assessment = true
+      render
+    end
+
+    it 'has no link to the test' do
+      expect(rendered).to have_link('Take the final test', count: 0)
+    end
+  end
 end
