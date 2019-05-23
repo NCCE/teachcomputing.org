@@ -1,17 +1,24 @@
-<li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position">
-  <span class="ncce-activity-list__item-text">Pass the final test</span>
-  <ul class="govuk-!-width-full">
-    <li><%= image_tag 'question-mark.svg' %> 25 multiple-choice questions</li>
-    <li><%= image_tag 'time-30-minutes.svg' %> 30 minute time limit</li>
-    <li><%= image_tag 'tick-plain.svg' %> Pass mark of 65%</li>
-  </ul>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>You must finish in one sitting</li>
-    <li>You can't go back and change your answers</li>
-    <li>You can't skip a question</li>
-  </ul>
-  <hr>
-  <% unless @passed_assessment %>
+<% if @passed_assessment %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--position ">
+    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
+    <span class="ncce-activity-list__item-text">Passed the final test</span>
+  </li>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position ">
+    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
+    <span class="ncce-activity-list__item-text">Pass the final test</span>
+    <ul class="govuk-body-s ncce-exam-activity__remarks">
+      <li><%= image_tag 'question-mark.svg' %> 25 multiple-choice questions</li>
+      <li><%= image_tag 'time-30-minutes.svg' %> 30 minute time limit</li>
+      <li><%= image_tag 'tick-plain.svg' %> Pass mark of 65%</li>
+    </ul>
+    <ul class="govuk-list govuk-list--bullet govuk-body-s ncce-exam-activity__rules"">
+      <li>You must finish in one sitting</li>
+      <li>You can't go back and change your answers</li>
+      <li>You can't skip a question</li>
+    </ul>
+  </li>
+  <li class="govuk-body-s ncce-activity-list__item ncce-activity-list__item--position ncce-exam-activity__attempts">
     <% if @enough_credits_for_test %>
       <% if @currently_taking_test %>
         <span class="ncce-activity-list__item-sub-text">You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
@@ -24,6 +31,6 @@
     <% else %>
       <span class="ncce-activity-list__item-sub-text">The test will be available when you have completed the necessary courses</span>
     <% end %>
-  <% end %>
-  <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
-</li>
+    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--exam') %>
+  </li>
+<% end %>
