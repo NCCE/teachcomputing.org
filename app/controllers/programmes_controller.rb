@@ -2,10 +2,10 @@ class ProgrammesController < ApplicationController
   layout 'full-width'
   before_action :enabled?
   before_action :authenticate_user!
-  before_action :find_programme!, only: [:show, :complete]
-  before_action :user_enrolled?, only: [:show, :complete]
+  before_action :find_programme!, only: [:show, :complete, :certificate]
+  before_action :user_enrolled?, only: [:show, :complete, :certificate]
   before_action :list_achievements_by_category, only: [:show]
-  before_action :passed_programme_assessment?, only: [:complete]
+  before_action :passed_programme_assessment?, only: [:complete, :certificate]
   before_action :get_assessment_state_details, only: [:show]
 
 
@@ -15,6 +15,10 @@ class ProgrammesController < ApplicationController
 
   def complete
     render :complete
+  end
+
+  def certificate
+    render :certificate
   end
 
   private

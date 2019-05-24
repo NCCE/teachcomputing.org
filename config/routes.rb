@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
+  get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
 
   get 'dashboard', action: :show, controller: 'dashboard'
 

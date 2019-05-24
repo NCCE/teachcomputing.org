@@ -1,0 +1,62 @@
+.ncce-certificate {
+  background-image: url(/images/cert-bg.svg);
+  background-size: cover;
+  padding: 60px;
+
+  &__inner {
+    z-index: 10;
+    position: relative;
+    padding: 100px 60px 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    &:after {
+      content: "";
+    }
+  }
+
+  &__body {
+    margin: 60px;
+  }
+
+  &__logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    color: $ncce-white;
+    background-color: $ncce-wakaiwa-grey;
+    padding: 10px;
+    font-family: $font-family-heading;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  &__text--narrow {
+    font-weight: normal;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    &>p {
+      flex-basis: 45%;
+      line-height: 3rem;
+    }
+    &>p:first-child {
+      flex-basis: 20%;
+    }
+    &>ul {
+      align-self: flex-end;
+      flex-basis: 30%;
+    }
+  }
+  &__bcs-logo {
+    width: 80px;
+  }
+  &__rae-logo {
+    width: 150px;
+  }
+}

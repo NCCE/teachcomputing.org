@@ -1,0 +1,36 @@
+<div class="ncce-certificate">
+  <div class="ncce-certificate__inner">
+    <div class="ncce-certificate__logo">National Centre for Computing Education
+    </div>
+    <div class="ncce-certificate__body">
+      <p class="govuk-body"><em>This is to certify that</em></p>
+      <h1 class="govuk-heading-m ncce-certificate__name">
+        <%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+      <p class="govuk-body"><em>has been awarded</em></p>
+      <p class="govuk-heading-m ncce-certificate__text--narrow">The National
+        Centre for Computing Education Certificate in
+      </p>
+      <h1 class="govuk-heading-m ncce-certificate__title"><%= @programme.title%>
+      </h1>
+      <div class="ncce-certificate__signature">
+        <p class="govuk-body">[Signature]</p>
+        <p class="govuk-body">Simon Peyton Jones, Chair, NCCE</p>
+      </div>
+    </div>
+    <div class="ncce-certificate__footer">
+      <p class="govuk-body">
+        <strong>Awarded by:</strong><br>
+        <%= image_tag '/images/bcs-logo.png', alt: 'British Computer Society logo', class: 'ncce-certificate__bcs-logo'%>
+      </p>
+      <p class="govuk-body">
+        <strong>Accredited by:</strong><br>
+        <%= image_tag '/images/rae-logo.svg', alt: 'Royal Academy of Engineering logo', class: 'ncce-certificate__rae-logo'%>
+      </p>
+      <ul class="govuk-list">
+        <li>Teacher Ref n: 88888</li>
+        <li>Certificate Number: </li>
+        <li>Date awarded: </li>
+      </ul>
+    </div>
+  </div>
+</div>
