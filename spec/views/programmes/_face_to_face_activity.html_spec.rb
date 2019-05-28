@@ -44,7 +44,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'has the activity title' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
 
     it 'has the 2nd activity title' do
       two_commenced_achievements.second do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+face.+to face course #{achievement.activity.title}/)
+        expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{achievement.activity.title}/)
       end
     end
   end
@@ -84,11 +84,11 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'has the first activity as complete' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your first.+face.+to face course #{complete_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{complete_achievement.activity.title}.*/m)
     end
 
     it 'has the second activity as in progress' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your second.+face.+to face course #{commenced_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
     end
   end
 
@@ -108,7 +108,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
 
     it 'has both activities as complete' do
       two_complete_achievements.each do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your (first|second).+face.+to face course #{achievement.activity.title}.*/m)
+        expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{achievement.activity.title}.*/m)
       end
     end
   end
