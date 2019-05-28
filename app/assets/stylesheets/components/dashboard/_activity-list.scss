@@ -59,6 +59,7 @@
   @include govuk-media-query($from: tablet) {
     display: block;
     margin-left: 2.8rem;
+    margin-top: 0.5rem;
   }
 }
 
