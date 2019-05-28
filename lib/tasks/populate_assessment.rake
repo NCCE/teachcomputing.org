@@ -18,6 +18,7 @@ namespace :assessments do
       assessment.programme_id = programme.id
       assessment.activity_id = activity.id
       assessment.link = 'https://google.com/placeholder'
+      assessment.class_marker_test_id = 'test123'
     end
   end
 end
