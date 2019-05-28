@@ -238,7 +238,7 @@ RSpec.describe ProgrammesController do
             end
 
             it 'assigns the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (48.hours)
+              expect(assigns(:can_take_test_at)).to eq (172800)
             end
 
             it 'assigns the number of attempts at test correctly' do
