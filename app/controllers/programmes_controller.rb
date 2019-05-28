@@ -1,5 +1,6 @@
 class ProgrammesController < ApplicationController
-  layout 'full-width'
+  layout 'full-width', only: [:show, :complete]
+  layout 'certificate', only: [:certificate]
   before_action :enabled?
   before_action :authenticate_user!
   before_action :find_programme!, only: [:show, :complete, :certificate]
@@ -18,6 +19,7 @@ class ProgrammesController < ApplicationController
   end
 
   def certificate
+
     render :certificate
   end
 
