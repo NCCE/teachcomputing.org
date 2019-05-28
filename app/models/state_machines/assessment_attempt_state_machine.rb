@@ -1,10 +1,14 @@
 class StateMachines::AssessmentAttemptStateMachine
   include Statesman::Machine
 
-  state :commenced, initial: true
-  state :passed
-  state :failed
+  STATE_COMMENCED = :commenced
+  STATE_PASSED = :passed
+  STATE_FAILED = :failed
 
-  transition from: :commenced, to: :passed
-  transition from: :commenced, to: :failed
+  state STATE_COMMENCED, initial: true
+  state STATE_PASSED
+  state STATE_FAILED
+
+  transition from: STATE_COMMENCED, to: STATE_PASSED
+  transition from: STATE_COMMENCED, to: STATE_FAILED
 end
