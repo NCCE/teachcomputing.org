@@ -1,11 +1,19 @@
 .ncce-certificate {
-  background-image: url(/images/cert-bg.svg);
-  background-size: cover;
-  padding: 20px;
-  @include govuk-media-query($from: tablet) {
-    padding: 60px;
+  position: relative;
+
+  &__image {
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-height: 100%;
   }
 
+  &__wrapper {
+    padding: 20px;
+    @include govuk-media-query($from: tablet) {
+      padding: 60px;
+    }
+  }
   &__inner {
     z-index: 10;
     position: relative;
@@ -41,8 +49,18 @@
     text-align: left;
   }
 
+  &__name {
+    font-family: $font-family-body;
+  }
+
   &__text--narrow {
+    font-family: $font-family-body;
     font-weight: normal;
+  }
+
+  &__title {
+    font-family: $font-family-body;
+    margin-bottom: 100px;
   }
 
   &__footer {
@@ -79,5 +97,16 @@
   }
   &__rae-logo {
     width: 150px;
+  }
+}
+
+@media print {
+  html, body {
+    height:100%;
+    overflow: hidden;
+    background: $ncce-white;
+  }
+  @page {
+    margin: 0.5cm;
   }
 }
