@@ -14,7 +14,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('h1', text: 'Your dashboard')
+    expect(rendered).to have_css('h1', text: 'Welcome!')
   end
 
   it 'has progress section' do

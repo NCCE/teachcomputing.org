@@ -12,6 +12,9 @@ class DashboardController < ApplicationController
   private
 
     def set_programmes
-      @programmes = Programme.all if certification_enabled?
+      if certification_enabled?
+        @programmes = Programme.all
+        @user_enrolled = @programmes.any? { |p| p.user_enrolled?(current_user) }
+      end
     end
 end

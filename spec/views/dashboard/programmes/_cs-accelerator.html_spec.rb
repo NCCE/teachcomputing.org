@@ -74,7 +74,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
     end
 
     it 'shows the certificate link' do
-      expect(rendered).to have_link(programme.title, href: programme_path(slug: programme.slug))
+      expect(rendered).to have_link(programme.title, href: programme_complete_path(slug: programme.slug))
     end
 
     it 'shows the completed text' do

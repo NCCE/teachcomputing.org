@@ -3,17 +3,17 @@
     class="govuk-main-wrapper govuk-main-wrapper--xl ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">Your dashboard</h1>
+          <h1 class="govuk-heading-l">Welcome!</h1>
         </div>
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">Welcome to your personal dashboard where you can
-            discover and book face-to-face and online training courses and view
-            your progress.</p>
-          <p class="govuk-body">If you need help finding a course that’s
-            suitable for you, use our
+          <p class="govuk-body">We are delighted that you have decided to enrol on this professional development programme.</p>
+          <p class="govuk-body">This is your personal dashboard where you can track your progress and record your face-to-face and online learning. It’s only visible to you.</p>
+          <p class="govuk-body">Not sure where to begin? Use our
             <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-link', target: :_blank %>
-            to identify the areas of subject knowledge where you need most
-            support.</p>
+            to see which courses or topics might be a good place to start.</p>
+          <% if @user_enrolled %>
+            <p class="govuk-body">This progress bar shows how far you are along your learning journey, and will indicate when you are ready to complete the test to gain your subject knowledge certificate.
+</p>      <% end %>
         </div>
         <div class="govuk-grid-column-one-third">
           <aside class="ncce-aside">
