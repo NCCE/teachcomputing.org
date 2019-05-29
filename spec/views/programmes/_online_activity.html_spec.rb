@@ -48,7 +48,7 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has the activity title' do
-      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+online course #{commenced_achievement.activity.title}.*/m)}
     end
   end
 
@@ -88,11 +88,11 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'has the first activity as complete' do
-      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{complete_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your first.+online course #{complete_achievement.activity.title}.*/m)}
     end
 
     it 'has the second activity as in progress' do
-      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+online course #{commenced_achievement.activity.title}.*/m)}
     end
   end
 
@@ -112,7 +112,7 @@ RSpec.describe('programmes/_online_activity', type: :view) do
 
     it 'has both activities as complete' do
       two_complete_achievements.each do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{achievement.activity.title}.*/m)
+        within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your (first|second).+online course #{achievement.activity.title}.*/m)}
       end
     end
   end
