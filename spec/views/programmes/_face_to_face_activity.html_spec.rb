@@ -50,6 +50,11 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     it 'has the activity title' do
       expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
     end
+
+    it 'has a content within' do
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
+    end
+
   end
 
   context 'when user has started two achievements' do
