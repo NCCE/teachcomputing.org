@@ -35,8 +35,12 @@ RSpec.describe('programmes/_online_activity', type: :view) do
       render
     end
 
-    it 'both achievements are marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
+    it 'one achievement is marked as incomplete' do
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
+    end
+
+    it 'one achievement is marked as inprogress' do
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
     it 'has one find courses button' do
@@ -54,8 +58,8 @@ RSpec.describe('programmes/_online_activity', type: :view) do
       render
     end
 
-    it 'both achievements are marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
+    it 'both achievements are marked as inprogress' do
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 2)
     end
 
     it 'has no find courses buttons' do
@@ -75,8 +79,8 @@ RSpec.describe('programmes/_online_activity', type: :view) do
       render
     end
 
-    it 'one achievement is marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
+    it 'one achievement is marked as inprogress' do
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
     it 'has no find courses buttons' do
