@@ -75,6 +75,14 @@
   }
 }
 
+.ncce-activity-list__item--inprogess {
+  grid-template-rows: 2fr auto;
+
+  .ncce-activity-list__item-text {
+    background-image: image-url('incomplete-achievement.svg');
+  }
+}
+
 .ncce-activity-list__remove {
   grid-template-columns: 2fr auto;
 }
