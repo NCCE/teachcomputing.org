@@ -1,6 +1,6 @@
 class Activities::RedirectsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
-  before_action :track_visit, only: [:show]
+  before_action :track_visit!, only: [:show]
 
    def show
     redirect_to params[:redirect][:url].to_s
@@ -12,7 +12,7 @@ class Activities::RedirectsController < ApplicationController
       Activity.find_by(id: params[:id])
     end
 
-     def track_visit
+     def track_visit!
       achievement = Achievement.find_or_create_by!(user_id: current_user.id, activity_id: activity.id)
       achievement.set_to_complete
     end

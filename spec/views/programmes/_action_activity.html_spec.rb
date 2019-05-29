@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('programmes/_action_activity', type: :view) do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   before do
     @current_user = user
