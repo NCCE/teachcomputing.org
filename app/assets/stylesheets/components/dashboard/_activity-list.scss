@@ -75,6 +75,10 @@
   }
 }
 
+.ncce-activity-list__remove {
+  grid-template-columns: 2fr auto;
+}
+
 .ncce-activity-list__item--position {
   position: relative;
 }
