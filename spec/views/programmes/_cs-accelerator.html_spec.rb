@@ -13,7 +13,7 @@ RSpec.describe('programmes/_cs-accelerator', type: :view) do
   end
 
   it 'has activities in the list' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 7)
+    expect(rendered).to have_css('.ncce-activity-list__item', count: 8)
   end
 
 end

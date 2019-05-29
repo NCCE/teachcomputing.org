@@ -19,7 +19,7 @@ RSpec.describe ProgrammesController do
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
-                                
+
   let(:setup_achievements_for_programme) do
     assessment
     user_programme_enrolment
@@ -135,12 +135,16 @@ RSpec.describe ProgrammesController do
             expect(assigns(:enough_credits_for_test)).to eq (false)
           end
 
-          it 'doesn\'t assign the time until user can take the test' do
+          it 'assign the time until user can take the test correctly' do
             expect(assigns(:can_take_test_at)).to eq (nil)
           end
 
-          it 'doesn\'t assign if user is currently doing a test' do
+          it 'assign whether user is currently doing a test correctly' do
             expect(assigns(:currently_taking_test)).to eq (nil)
+          end
+
+          it 'assigns the number of attempts at test correctly' do
+            expect(assigns(:num_attempts)).to eq (0)
           end
 
           context 'when diagnostic has been downloaded' do
@@ -171,6 +175,10 @@ RSpec.describe ProgrammesController do
             it 'assigns that user is not currently doing a test' do
               expect(assigns(:currently_taking_test)).to eq (false)
             end
+
+            it 'assigns the number of attempts at test correctly' do
+              expect(assigns(:num_attempts)).to eq (0)
+            end
           end
 
           context 'when user started the test' do
@@ -189,6 +197,10 @@ RSpec.describe ProgrammesController do
 
             it 'assigns whether user is currently doing a test' do
               expect(assigns(:currently_taking_test)).to eq (true)
+            end
+
+            it 'assigns the number of attempts at test correctly' do
+              expect(assigns(:num_attempts)).to eq (1)
             end
           end
 
@@ -209,6 +221,10 @@ RSpec.describe ProgrammesController do
             it 'assigns whether user is currently doing a test' do
               expect(assigns(:currently_taking_test)).to eq (false)
             end
+
+            it 'assigns the number of attempts at test correctly' do
+              expect(assigns(:num_attempts)).to eq (1)
+            end
           end
 
           context 'when user failed the test twice' do
@@ -224,6 +240,10 @@ RSpec.describe ProgrammesController do
             it 'assigns the time until user can take the test' do
               expect(assigns(:can_take_test_at)).to eq (48.hours)
             end
+
+            it 'assigns the number of attempts at test correctly' do
+              expect(assigns(:num_attempts)).to eq (2)
+            end
           end
 
           context 'when user failed the test twice a while ago' do
@@ -234,6 +254,10 @@ RSpec.describe ProgrammesController do
 
             it 'assigns the time until user can take the test' do
               expect(assigns(:can_take_test_at)).to eq (0)
+            end
+
+            it 'assigns the number of attempts at test correctly' do
+              expect(assigns(:num_attempts)).to eq (2)
             end
           end
 

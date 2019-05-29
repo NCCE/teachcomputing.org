@@ -1,4 +1,12 @@
 module ProgrammesHelper
+
+  def to_word_ordinal(number)
+    index = number || 0;
+    ordinals = %w[none first second third fourth fifth sixth seventh eighth ninth tenth]
+    return ordinals[index] if index <= ordinals.length && index > 0
+    ActiveSupport::Inflector::ordinalize(index)
+  end
+
   def can_take_accelerator_test?(user, programme)
     credits_for_accelerator(user, programme) { |total| return total >= 80 }
   end

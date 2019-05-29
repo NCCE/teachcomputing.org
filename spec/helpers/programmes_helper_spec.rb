@@ -8,8 +8,8 @@ describe ProgrammesHelper, type: :helper do
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
   let(:online_courses) { create_list(:activity, 2, :future_learn, credit: 20) }
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }
-  
-  let(:setup_partially_complete_certificate) do 
+
+  let(:setup_partially_complete_certificate) do
     user_programme_enrolment
     activities = [diagnostic_tool_activity].concat(online_courses, face_to_face_courses)
 
@@ -32,6 +32,36 @@ describe ProgrammesHelper, type: :helper do
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
       achievement = create(:achievement, user_id: user.id, activity_id: activity.id)
       achievement.set_to_complete
+    end
+  end
+
+  describe('#to_word_ordinal') do
+    it 'returns "0th" when argument is nil' do
+      expect(to_word_ordinal(nil)).to eq('0th')
+    end
+
+    it 'returns "first" when argument is 1' do
+      expect(to_word_ordinal(1)).to eq('first')
+    end
+
+    it 'returns "0th" when argument is 0' do
+      expect(to_word_ordinal(0)).to eq('0th')
+    end
+
+    it 'returns "-10th" when argument is -10' do
+      expect(to_word_ordinal(-10)).to eq('-10th')
+    end
+
+    it 'returns "tenth" when argument is 10' do
+      expect(to_word_ordinal(10)).to eq('tenth')
+    end
+
+    it 'returns "third" when argument is 3' do
+      expect(to_word_ordinal(3)).to eq('third')
+    end
+
+    it 'returns "seventh" when argument is 7' do
+      expect(to_word_ordinal(7)).to eq('seventh')
     end
   end
 
