@@ -12,6 +12,10 @@ class Achievement < ApplicationRecord
     where("activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)", programme.id)
   }
 
+  scope :with_category, lambda { |category|
+    joins(:activity).where(activities: { category: category })
+  }
+
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end

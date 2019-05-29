@@ -5,29 +5,37 @@ Rails.application.routes.draw do
     delete '/cache', to: 'cache#destroy'
   end
 
-  namespace 'admin' do
-    resources :imports
-  end
-
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
     resources :redirects, only: [:show]
   end
 
+  namespace 'admin' do
+    resources :imports
+  end
+
+  resources :assessment_attempts
+
   get '/auth/callback', to: 'auth#callback', as: 'callback'
+
+  namespace 'class_marker' do
+    post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
+  end
 
   resources :courses, path: '/courses', only: [:index]
 
-  resources :programmes, path: '/certificate', param: :slug, only: [:show]
+  get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
+  post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
+  get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  get '/cs-accelerator', to: 'pages#page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' },
-    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
+  get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' },
+                         constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
-    constraints: lambda { |request| ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
+                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }

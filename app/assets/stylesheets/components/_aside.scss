@@ -7,6 +7,9 @@
 		color: $ncce-white;
 	}
 
+	&__text--dark {
+		color: $ncce-grey-manatee;
+	}
 	&__title {
 		color: $ncce-white;
 		font-weight: 700;
@@ -21,8 +24,13 @@
 	}
 
 	&__button {
-    margin-bottom: 0;
-    display: block;
-    padding: 0.75em;
+		margin-bottom: 0;
+		display: block;
+		padding: 0.75em;
+	}
+
+	&__check-mark {
+		width: 23px;
+		float: right;
 	}
 }

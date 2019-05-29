@@ -19,6 +19,10 @@ RSpec.describe Activities::RedirectsController do
       it 'redirects to the value of the CLASS_MARKER_DIAGNOSTIC_URL variable' do
         expect(response).to redirect_to(diagnostic_url)
       end
+
+      it 'creates an achievement in a state of complete' do
+        expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
+      end
     end
 
     describe 'while logged out' do

@@ -7,8 +7,8 @@ class Activity < ApplicationRecord
   has_one  :assessment
 
   validates :title, :slug, :category, presence: true
-  validates :category, inclusion: { in: %w[action online face-to-face] }
-  validates :provider, inclusion: { in: %w[future-learn stem-learning system] }
+  validates :category, inclusion: { in: %w[action online face-to-face assessment] }
+  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :online, -> { where(category: 'online') }

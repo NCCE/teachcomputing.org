@@ -29,7 +29,11 @@
   </div>
 </div>
 </div>
-<%= render 'dashboard/certificate' if @certification_enabled %>
+<% if @certification_enabled %>
+  <% @programmes.each do |programme| %>
+    <%= render "dashboard/programmes/#{programme.slug}", programme: programme %>
+  <% end %>
+<% end %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>
 

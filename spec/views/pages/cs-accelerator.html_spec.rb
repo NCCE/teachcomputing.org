@@ -2,39 +2,45 @@ require 'rails_helper'
 
 RSpec.describe('pages/cs-accelerator', type: :view) do
   let(:user) { create(:user) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+
+  before do
+    render
+  end
 
   it 'has a bursaries link' do
-    render
     expect(rendered).to have_link('bursaries', href: '/bursaries')
   end
 
   it 'has a FAQ link' do
-    render
     expect(rendered).to have_link('FAQ', href: '/')
   end
 
-  it 'has diagram image' do
-    render
-    expect(rendered).to have_css('.cs-accelerator__image', count: 1)
+  it 'has diagram' do
+    expect(rendered).to have_css('.pathway-wrapper', count: 1)
   end
 
   it 'has aside section' do
-    render
     expect(rendered).to have_css('.ncce-aside', count: 1)
   end
 
   context 'when a user is signed in' do
     before do
+      programme
       allow(view).to receive(:current_user).and_return(user)
       render
     end
 
-    it 'has Enroll title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: "Enroll")
+    it 'has Enrol title' do
+      expect(rendered).to have_css('.ncce-aside__title', text: 'Enrol')
     end
 
-    it 'has Enroll button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: "Entroll on this certificate")
+    it 'has Enrol button' do
+      expect(rendered).to have_css('.ncce-aside__button', text: 'Enrol on this certificate')
+    end
+
+    it 'shows the create account step as complete' do
+      expect(rendered).to have_css('.ncce-aside__check-mark', count: 1)
     end
   end
 
@@ -44,20 +50,20 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       render
     end
 
-    it 'has How to enroll title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: "How to enroll")
+    it 'has How to enrol title' do
+      expect(rendered).to have_css('.ncce-aside__title', text: 'How to enrol')
     end
 
     it 'has Account button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: "Create an account")
+      expect(rendered).to have_css('.ncce-aside__button', text: 'Create an account')
     end
 
     it 'has a Log in link' do
-      render
-      expect(rendered).to have_link('log in', href: '/login')
+      expect(rendered).to have_css('.ncce-link', text: 'Log in')
+    end
+
+    it 'doesn\'t show the create account step as complete' do
+      expect(rendered).to have_css('.ncce-aside__check-mark', count: 0)
     end
   end
-
-
-
 end

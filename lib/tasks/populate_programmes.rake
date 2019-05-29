@@ -24,6 +24,7 @@ namespace :programmes do
       an-introduction-to-computer-networking-for-teachers
       understanding-maths-and-logic-in-computer-science
       understanding-computer-systems
+      cs-accelerator-assessment
     ]
 
     slugs.each do |slug|

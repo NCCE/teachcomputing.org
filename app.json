@@ -109,6 +109,9 @@
     },
     "CLASS_MARKER_DIAGNOSTIC_URL": {
       "required": true
+    },
+    "CLASS_MARKER_WEBHOOK_SECRET_PHRASE": {
+      "required": true
     }
   },
   "formation": {

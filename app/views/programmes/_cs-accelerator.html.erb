@@ -1,0 +1,22 @@
+<%= render 'pages/certification/hero' %>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <h2 class="govuk-heading-l ncce-programmes-activity__title underlined__title">Your
+            progress</h2>
+        </div>
+      </div>
+      <ul class="govuk-list ncce-activity-list">
+      <%= render 'programmes/action_activity' %>
+      <%= render 'programmes/face_to_face_activity' %>
+      <%= render 'programmes/online_activity' %>
+      </ul>
+
+      <ul class="govuk-list ncce-activity-list">
+          <%= render 'programmes/exam_activity' %>
+      </ul>
+    </div>
+  </div>
+</div>

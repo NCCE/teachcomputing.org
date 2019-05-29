@@ -13,6 +13,7 @@ class Activities::RedirectsController < ApplicationController
     end
 
      def track_visit
-      Achievement.find_or_create_by!(user_id: current_user.id, activity_id: activity.id)
+      achievement = Achievement.find_or_create_by!(user_id: current_user.id, activity_id: activity.id)
+      achievement.set_to_complete
     end
 end

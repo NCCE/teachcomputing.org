@@ -1,8 +1,9 @@
 class AssessmentAttempt < ApplicationRecord
+  include Statesman::Adapters::ActiveRecordQueries
   belongs_to :user
   belongs_to :assessment
 
-  has_many :assessment_attempt_transitions, autosave: false
+  has_many :assessment_attempt_transitions, autosave: false, dependent: :destroy
 
   def state_machine
     @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)
@@ -13,7 +14,7 @@ class AssessmentAttempt < ApplicationRecord
   end
 
   def self.initial_state
-    :commenced
+    StateMachines::AssessmentAttemptStateMachine.initial_state
   end
   private_class_method :initial_state
 

@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   layout 'full-width'
   before_action :authenticate_user!
-  before_action :set_programme
+  before_action :set_programmes
 
   def show
     @achievements = current_user.achievements.in_state(:complete).order('created_at ASC')
@@ -10,7 +10,8 @@ class DashboardController < ApplicationController
   end
 
   private
-    def set_programme
-      @programme = Programme.find_by!(slug: 'cs-accelerator') if certification_enabled?
+
+    def set_programmes
+      @programmes = Programme.all if certification_enabled?
     end
 end
