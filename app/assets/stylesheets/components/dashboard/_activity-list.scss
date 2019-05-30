@@ -210,7 +210,7 @@
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 1.2rem;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     color: $ncce-dark-z-grey;
     text-align: left;
@@ -232,8 +232,9 @@
 
 .ncce-activity-form__select {
   border-radius: 6px;
-  font-size: 17px;
+  font-size: 1rem;
   margin-bottom: 1rem;
+  height: 2.5rem;
 }
 
 .ncce-activity-form__button--pink {
