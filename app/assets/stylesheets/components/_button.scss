@@ -37,7 +37,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: none;
+    box-shadow: 0 4px 0 $ncce-dark-pink;
     outline-color: $ncce-white !important;
   }
 
