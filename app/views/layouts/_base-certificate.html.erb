@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template ">
+<head>
+  <meta charset="utf-8" />
+  <title>National Centre for Computing Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+  <meta name="description" content="Providing resources, training and support for teaching Computing in primary and secondary schools and colleges from Key Stage 1 through to A Level" />
+
+  <meta property="og:description" content="Providing resources, training and support for teaching Computing in primary and secondary schools and colleges from Key Stage 1 through to A Level">
+  <meta property="og:site_name" content="National Centre for Computing Education" />
+  <meta property="og:title" content="National Centre for Computing Education" />
+  <meta property="og:url" content="https://teachcomputing.org" />
+  <meta property="og:image" content="<%= image_url('social-image.jpg', skip_pipeline: true) %>">
+  <meta property="og:image:alt" content="Teaching Computing" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://teachcomputing.org">
+  <meta name="twitter:title" content="National Centre for Computing Education">
+  <meta name="twitter:description" content="Providing resources, training and support for teaching Computing in primary and secondary schools and colleges from Key Stage 1 through to A Level.">
+  <meta name="twitter:image" content="<%= image_url('social-image.jpg', skip_pipeline: true) %>">
+  <meta name="twitter:image:alt" content="Teaching Computing">
+
+  <%= favicon_link_tag 'favicon.ico', sizes: '16x16 32x32 48x48', skip_pipeline: true %>
+  <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '120x120', skip_pipeline: true %>
+  <%= favicon_link_tag 'favicon-32x32.png', rel: 'icon', sizes: '32x32', skip_pipeline: true %>
+  <%= favicon_link_tag 'favicon-16x16.png', rel: 'icon', sizes: '16x16', skip_pipeline: true %>
+  <%= favicon_link_tag 'safari-pinned-tab.svg', rel: 'mask-icon', color: '#de01a5', skip_pipeline: true %>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', nonce: true %>
+
+  <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
+    <!-- Google Tag Manager -->
+    <%= javascript_tag nonce: true do -%>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>');
+    <% end -%>
+    <!-- End Google Tag Manager -->
+  <% end %>
+</head>
+
+<body class="govuk-template__body ncce-template__body">
+  <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <% end %>
+  <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
+
+  <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
+
+  <%= yield :content %>
+
+  <%= javascript_tag nonce: true do -%>
+      window.GOVUKFrontend.initAll()
+  <% end -%>
+</body>
+</html>
