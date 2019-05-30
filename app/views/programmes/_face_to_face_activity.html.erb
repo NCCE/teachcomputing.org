@@ -2,16 +2,23 @@
   <% if @face_to_face_achievements.first.current_state == 'complete' %>
     <li class="ncce-activity-list__item">
       <span class="ncce-activity-list__item-text"> Completed your first
-        face to face course <%= @face_to_face_achievements.first.activity.title %>
+        face to face course
       </span>
-      <span>Completed</span>
+      <span class="ncce-activity-list__item-activity">
+        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
+        </span>
+        <%= @face_to_face_achievements.first.activity.title %>
+      </span>
     </li>
   <% else %>
-    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
       <span class="ncce-activity-list__item-text"> Complete your first
-        face to face course <%= @face_to_face_achievements.first.activity.title %>
+        face to face course
       </span>
-      <span>Upcoming</span>
+      <span class="ncce-activity-list__item-activity">
+        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Upcoming</span>
+        <%= @face_to_face_achievements.first.activity.title %>
+      <span>
     </li>
   <% end %>
 <% else%>
@@ -24,18 +31,25 @@
 
 <% if @face_to_face_achievements.try(:second) %>
   <% if @face_to_face_achievements.second.current_state == 'complete' %>
-    <li class="ncce-activity-list__item">
-      <span class="ncce-activity-list__item-text"> Completed your second
-        face to face course <%= @face_to_face_achievements.second.activity.title %>
+  <li class="ncce-activity-list__item">
+    <span class="ncce-activity-list__item-text"> Completed your second
+      face to face course
+    </span>
+    <span class="ncce-activity-list__item-activity">
+      <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
       </span>
-      <span>Completed</span>
-    </li>
+      <%= @face_to_face_achievements.second.activity.title %>
+    </span>
+  </li>
   <% else %>
-    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
       <span class="ncce-activity-list__item-text"> Complete your second
-        face to face course <%= @face_to_face_achievements.second.activity.title %>
+        face to face course
       </span>
-      <span>Upcoming</span>
+      <span class="ncce-activity-list__item-activity">
+        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Upcoming</span>
+        <%= @face_to_face_achievements.second.activity.title %>
+      <span>
     </li>
   <% end %>
 <% else %>

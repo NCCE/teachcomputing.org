@@ -35,8 +35,12 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
       render
     end
 
-    it 'both achievements are marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
+    it 'one achievement is marked as incomplete' do
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
+    end
+
+    it 'one achievement is marked as inprogress' do
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
     it 'has one find courses button' do
@@ -44,8 +48,13 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'has the activity title' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
     end
+
+    it 'has a content within' do
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
+    end
+
   end
 
   context 'when user has started two achievements' do
@@ -55,7 +64,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'both achievements are marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 2)
     end
 
     it 'has no find courses buttons' do
@@ -64,7 +73,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
 
     it 'has the 2nd activity title' do
       two_commenced_achievements.second do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+face.+to face course #{achievement.activity.title}/)
+          within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+second.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
       end
     end
   end
@@ -76,7 +85,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'one achievement is marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
+      expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
     it 'has no find courses buttons' do
@@ -84,11 +93,11 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'has the first activity as complete' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your first.+face.+to face course #{complete_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your first.+face.+to face course #{complete_achievement.activity.title}.*/m)}
     end
 
     it 'has the second activity as in progress' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your second.+face.+to face course #{commenced_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
     end
   end
 
@@ -108,7 +117,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
 
     it 'has both activities as complete' do
       two_complete_achievements.each do |achievement|
-        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Completed your (first|second).+face.+to face course #{achievement.activity.title}.*/m)
+        within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your (first|second).+face.+to face course #{achievement.activity.title}.*/m)}
       end
     end
   end
