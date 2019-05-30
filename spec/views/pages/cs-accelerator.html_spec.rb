@@ -8,12 +8,8 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     render
   end
 
-  it 'has a bursaries link' do
-    expect(rendered).to have_link('bursaries', href: '/bursaries')
-  end
-
-  it 'has a FAQ link' do
-    expect(rendered).to have_link('FAQ', href: '/')
+  it 'has a heading' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator Programme')
   end
 
   it 'has diagram' do
