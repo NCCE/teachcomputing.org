@@ -14,8 +14,8 @@
         <h1 class="govuk-heading-m ncce-certificate__title">
           <%= @programme.title%>
         </h1>
-        <div class="ncce-certificate__signature">
-          <p class="govuk-body">[Signature]</p>
+        <div>
+          <p class="govuk-body"><%= image_tag '/images/certificate/signature.png', alt: 'Simon Peyton Jones signature', class: 'ncce-certificate__signature'%></p>
           <p class="govuk-body">Simon Peyton Jones, Chair, NCCE</p>
         </div>
       </div>
@@ -29,9 +29,7 @@
           <%= image_tag '/images/certificate/rae-logo.svg', alt: 'Royal Academy of Engineering', class: 'ncce-certificate__rae-logo'%>
         </p>
         <ul class="govuk-list">
-          <li>Teacher Ref n: <strong>88888</strong></li>
-          <li>Certificate Number: <strong>3333</strong></li>
-          <li>Date awarded: <strong>00/00/00</strong></li>
+          <li>Date awarded: <strong><%= @passed_test_at.strftime('%d/%m/%Y') %></strong></li>
         </ul>
       </div>
     </div>

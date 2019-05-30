@@ -74,6 +74,10 @@ RSpec.describe ProgrammesController do
           it 'assigns the programme' do
             expect(assigns(:programme)).to eq(programme)
           end
+
+          it 'assigns the passed_test_at date' do
+            expect(assigns(:passed_test_at)).to eq(passed_exam.state_machine.last_transition.created_at)
+          end
         end
       end
 
