@@ -6,11 +6,6 @@ RSpec.describe DashboardController do
   let(:commenced_achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:create_programme) { create(:programme, slug: 'cs-accelerator') }
-  let(:user_programme_enrolment) do
-    create(:user_programme_enrolment,
-           user_id: user.id,
-           programme_id: create_programme.id)
-  end
 
   describe '#show' do
     describe 'while logged in' do
@@ -29,25 +24,8 @@ RSpec.describe DashboardController do
         expect(assigns(:achievements)).not_to include commenced_achievement
       end
 
-      it 'does not assign user_enroled by default' do
-        expect(assigns(:user_enrolled)).to eq nil
-      end
-
       it 'renders the correct template' do
         expect(response).to render_template('show')
-      end
-
-      context 'when user is enrolled on programme' do
-        before do
-          allow_any_instance_of(described_class)
-            .to receive(:certification_enabled?).and_return(true)
-          user_programme_enrolment
-          get dashboard_path
-        end
-
-        it 'assigns the user_enroled flag correctly' do
-          expect(assigns(:user_enrolled)).to eq (true)
-        end
       end
     end
 

@@ -36,6 +36,8 @@ Rails.application.routes.draw do
                          constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
                       constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
+  get '/accelerator', to: redirect('/cs-accelerator'),
+                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
