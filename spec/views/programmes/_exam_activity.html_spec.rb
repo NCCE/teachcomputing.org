@@ -97,7 +97,6 @@ RSpec.describe('programmes/_exam_activity', type: :view) do
     end
 
     it 'marks as complete' do
-      puts "rendered #{rendered}"
       expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
     end
 
