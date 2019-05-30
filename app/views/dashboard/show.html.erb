@@ -3,14 +3,17 @@
     class="govuk-main-wrapper ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">Welcome!</h1>
+          <h1 class="govuk-heading-l">Your dashboard</h1>
         </div>
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">We are delighted that you have decided to enrol on this professional development programme.</p>
-          <p class="govuk-body">This is your personal dashboard where you can track your progress and record your face-to-face and online learning. It’s only visible to you.</p>
-          <p class="govuk-body">Not sure where to begin? Use our
+          <p class="govuk-body">Welcome to your personal dashboard where you can
+            discover and book face-to-face and online training courses and view
+            your progress.</p>
+          <p class="govuk-body">If you need help finding a course that’s
+            suitable for you, use our
             <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-link', target: :_blank %>
-            to see which courses or topics might be a good place to start.</p>
+            to identify the areas of subject knowledge where you need most
+            support.</p>
         </div>
         <div class="govuk-grid-column-one-third">
           <aside class="ncce-aside">
