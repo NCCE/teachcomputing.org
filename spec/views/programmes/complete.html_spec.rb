@@ -19,6 +19,6 @@ RSpec.describe('programmes/complete', type: :view) do
   end
 
   it 'has the download button' do
-    expect(rendered).to have_link('View your certificate', href: '#')
+    expect(rendered).to have_link('View your certificate', href: '/certificate/cs-accelerator/view-certificate')
   end
 end
