@@ -3,14 +3,45 @@ require 'rails_helper'
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) {
                                     create( :user_programme_enrolment,
                                             user_id: user.id,
                                             programme_id: programme.id)
                                   }
+  let(:online_course) { create(:activity, :future_learn, credit: 20) }
+  let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
+  let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
+  let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
+  let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
+
+  let(:setup_achievements_for_programme) do
+    assessment
+    user_programme_enrolment
+    activities = [online_course, face_to_face_course]
+
+    activities.each do |activity|
+      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+    end
+    online_achievement
+    face_to_face_achievement
+  end
+
+  let(:setup_achievements_for_completed_course) do
+    setup_achievements_for_programme
+    online_achievement.set_to_complete
+    face_to_face_achievement.set_to_complete
+    activities = [create(:activity, :future_learn, credit: 20), create(:activity, :stem_learning, credit: 20)]
+
+    activities.each do |activity|
+      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
+      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+    end
+    exam_programme_activity
+    passed_exam
+  end
 
   describe '#complete' do
     describe 'while certification is not enabled' do
@@ -57,9 +88,7 @@ RSpec.describe ProgrammesController do
 
         describe 'and complete' do
           before do
-            programme_activity
-            user_programme_enrolment
-            passed_exam
+            setup_achievements_for_completed_course
             get programme_complete_path('cs-accelerator')
           end
 
@@ -73,6 +102,22 @@ RSpec.describe ProgrammesController do
 
           it 'assigns the programme' do
             expect(assigns(:programme)).to eq(programme)
+          end
+
+          it 'assigns the online achievements' do
+            expect(assigns(:online_achievements)).to include(online_achievement)
+          end
+
+          it 'assigns the face_to_face achievements' do
+            expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+          end
+
+          it 'assigns the diagnostic achievement state correctly' do
+            expect(assigns(:downloaded_diagnostic)).to eq (false)
+          end
+
+          it 'assigns the assessment passed state correctly' do
+            expect(assigns(:passed_assessment)).to eq (true)
           end
         end
       end

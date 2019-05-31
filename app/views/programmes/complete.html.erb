@@ -30,3 +30,23 @@
     <p class="govuk-body">We hope that you have enjoyed learning with us and that this is having a positive impact on your teaching. To make this programme as useful as possible, we would love to hear <%= mail_to 'info@teachcomputing.org', 'your feedback' %>!</p>
   </div>
 </div>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <h2 class="govuk-heading-l ncce-programmes-activity__title underlined__title">Your learning journey</h2>
+        </div>
+      </div>
+      <ul class="govuk-list ncce-activity-list">
+      <%= render 'programmes/action_activity' %>
+      <%= render 'programmes/face_to_face_activity' %>
+      <%= render 'programmes/online_activity' %>
+      </ul>
+
+      <ul class="govuk-list ncce-activity-list">
+          <%= render 'programmes/exam_activity' %>
+      </ul>
+    </div>
+  </div>
+</div>
