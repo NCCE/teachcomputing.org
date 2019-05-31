@@ -4,6 +4,10 @@
   padding-top: 0;
 }
 
+.ncce-activity-list--programme {
+  margin-bottom: 60px;
+}
+
 .ncce-activity-list__item {
   background-color: $ncce-white;
   display: grid;
@@ -50,14 +54,11 @@
 
 .ncce-activity-list__item-activity {
   background-color: $ncce-pink-light;
-  display: flex;
-  flex-direction: column;
   font-weight: 700;
   margin-left: 2rem;
   padding: 0.7rem;
 
   @include govuk-media-query($from: tablet) {
-    display: block;
     margin-left: 2.8rem;
     margin-top: 0.5rem;
   }
@@ -244,11 +245,19 @@
 
 .ncce-activity-list__tag {
   text-transform: none;
-  width: 25%;
   margin-bottom: 0.7rem;
+  width: auto;
+  float: left;
 
   @include govuk-media-query($from: tablet) {
+    float: none;
     margin-bottom: 0;
-    width: auto;
+  }
+}
+
+.ncce-activity-list__course {
+  @include govuk-media-query($until: tablet) {
+    float: left;
+    clear: both;
   }
 }
