@@ -71,23 +71,33 @@
   right: -10px;
 }
 
-
-.ncce-exam-activity__attempts-text {
-  margin-right: 2rem;
+.ncce-activity-list__item-text--exam {
+  grid-column-end: span 3;
 }
 
 .ncce-exam-activity__attempts {
-  grid-template-columns: 2fr auto;
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr auto;
+  }
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 
-  &>span {
+  &-text {
+    margin-bottom: 20px;
     @include govuk-media-query($from: tablet) {
       margin-left: 40px;
+      margin-bottom: 0;
     }
   }
 
   &_button {
+    align-self: start;
     margin-right: 4rem;
+    margin-left: 2rem;
+    @include govuk-media-query($until: tablet) {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
   }
 }

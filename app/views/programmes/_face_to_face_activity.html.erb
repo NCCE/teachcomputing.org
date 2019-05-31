@@ -7,7 +7,7 @@
       <span class="ncce-activity-list__item-activity">
         <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
         </span>
-        <%= @face_to_face_achievements.first.activity.title %>
+        <span class="ncce-activity-list__course"><%= @face_to_face_achievements.first.activity.title %></span>
       </span>
     </li>
   <% else %>
@@ -17,7 +17,7 @@
       </span>
       <span class="ncce-activity-list__item-activity">
         <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Upcoming</span>
-        <%= @face_to_face_achievements.first.activity.title %>
+        <span class="ncce-activity-list__course"><%= @face_to_face_achievements.first.activity.title %></span>
       <span>
     </li>
   <% end %>
@@ -38,7 +38,7 @@
     <span class="ncce-activity-list__item-activity">
       <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
       </span>
-      <%= @face_to_face_achievements.second.activity.title %>
+      <span class="ncce-activity-list__course"><%= @face_to_face_achievements.second.activity.title %></span>
     </span>
   </li>
   <% else %>
@@ -48,7 +48,7 @@
       </span>
       <span class="ncce-activity-list__item-activity">
         <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Upcoming</span>
-        <%= @face_to_face_achievements.second.activity.title %>
+        <span class="ncce-activity-list__course"><%= @face_to_face_achievements.second.activity.title %></span>
       <span>
     </li>
   <% end %>
