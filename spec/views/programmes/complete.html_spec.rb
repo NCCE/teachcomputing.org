@@ -21,4 +21,12 @@ RSpec.describe('programmes/complete', type: :view) do
   it 'has the download button' do
     expect(rendered).to have_link('View your certificate', href: '/certificate/cs-accelerator/view-certificate')
   end
+
+  it 'has the journey section' do
+    expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your learning journey')
+  end
+
+  it 'has the roa' do
+    expect(rendered).to have_css('.ncce-activity-list', count: 2)
+  end
 end

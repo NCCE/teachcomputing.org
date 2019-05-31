@@ -4,7 +4,8 @@ class ProgrammesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_programme!, only: [:show, :complete, :certificate]
   before_action :user_enrolled?, only: [:show, :complete, :certificate]
-  before_action :list_achievements_by_category, only: [:show]
+  before_action :list_achievements_by_category, only: [:show, :complete]
+  before_action :get_passed_programme_assessment
   before_action :passed_programme_assessment?, only: [:complete, :certificate]
   before_action :get_assessment_state_details, only: [:show]
   before_action :get_certificate_details, only: [:certificate]
@@ -36,8 +37,11 @@ class ProgrammesController < ApplicationController
       @downloaded_diagnostic = achievements.with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
     end
 
-    def get_assessment_state_details
+    def get_passed_programme_assessment
       @passed_assessment = @programme.passed_programme_assessment?(current_user)
+    end
+
+    def get_assessment_state_details
       @enough_credits_for_test = helpers.can_take_accelerator_test?(current_user, @programme)
       @num_attempts = 0
       return if !@enough_credits_for_test || @passed_assessment
@@ -61,7 +65,7 @@ class ProgrammesController < ApplicationController
     end
 
     def passed_programme_assessment?
-      redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+      redirect_to programme_path(@programme.slug) unless @passed_assessment
     end
 
     def get_certificate_details
