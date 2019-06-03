@@ -10,9 +10,9 @@
             <p class="govuk-body-m govuk-!-font-weight-bold certification-hero__text">You have completed the National Centre for Computing Education certificate in</p>
             <h2 class="govuk-heading-m certification-hero__text"><%= @programme.title %></h2>
             <img src="/images/notepad.svg" alt="" class="certification-hero__image certification-hero__image--mobile"/>
-            <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and acredited by Royal Academy of Engineering.</h2>
+            <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and acredited by Royal Academy of Engineering</p>
             <p class="govuk-body">
-              <%= link_to 'Download your certificate', '#', class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
+              <%= link_to 'View your certificate', programme_certificate_path('cs-accelerator'), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
             </p>
           </div>
       </div>
@@ -21,11 +21,36 @@
 </div>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <p class="govuk-body">Some text here, explaining Alumni benefits, Alumni next steps</p>
-    <p class="govuk-body">NCCE next steps</p>
-    <p class="govuk-body">Please excuse the latin:</p>
-    <p class="govuk-body"> Minions ipsum tatata bala tu jiji potatoooo potatoooo uuuhhh jiji hahaha tulaliloo. Hana dul sae tulaliloo bee do bee do bee do butt la bodaaa butt wiiiii poopayee. Ti aamoo! chasy baboiii ti aamoo! Poopayee wiiiii para tú baboiii jiji belloo! Jeje. Aaaaaah gelatooo pepete chasy belloo! Tulaliloo. Chasy baboiii baboiii hana dul sae hahaha gelatooo pepete wiiiii hana dul sae belloo! Poulet tikka masala aaaaaah ti aamoo! Wiiiii ti aamoo! Tank yuuu! Bee do bee do bee do daa me want bananaaa! Gelatooo tank yuuu! Bee do bee do bee do wiiiii jiji.</p>
-    <p class="govuk-body">  Gelatooo aaaaaah tatata bala tu poulet tikka masala. Hahaha jiji bee do bee do bee do daa hahaha hana dul sae po kass gelatooo. Butt bappleees jiji tank yuuu! Underweaaar po kass daa hahaha. Hahaha potatoooo la bodaaa chasy hahaha uuuhhh underweaaar poopayee butt. Poulet tikka masala bee do bee do bee do chasy poopayee wiiiii uuuhhh belloo! Tank yuuu! Tank yuuu! Underweaaar. Para tú para tú me want bananaaa! Tulaliloo poopayee poulet tikka masala. Poulet tikka masala wiiiii para tú pepete.</p>
-    <p class="govuk-body">Aaaaaah tulaliloo hana dul sae hahaha daa poopayee. Bappleees belloo! La bodaaa bananaaaa tank yuuu! Hahaha. Jiji butt poulet tikka masala potatoooo poopayee bee do bee do bee do hahaha jeje daa hahaha. Bee do bee do bee do gelatooo poopayee tulaliloo po kass. Tank yuuu! bananaaaa tatata bala tu daa hana dul sae ti aamoo! Para tú uuuhhh. Jiji daa tulaliloo bee do bee do bee do poopayee la bodaaa. Bananaaaa underweaaar la bodaaa poopayee bee do bee do bee do poulet tikka masala.</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-m">Your next steps:</h1>
+        <h2 class="govuk-heading-s">Certification</h2>
+        <p class="govuk-body">You have the option to download your GCSE subject knowledge certificate, or, if you would like to receive a hard-copy version, please <%= mail_to 'info@teachcomputing.org', 'contact us' %> to arrange the awarding of your certificate at a local CAS Community of Practice meeting.</p>
+        <h2 class="govuk-heading-s">Next steps</h2>
+        <p class="govuk-body">Once you’ve successfully completed the Computer Science Accelerator Programme, you will be able to participate for free in our four day face-to-face course, Outstanding teaching of GCSE Computer Science. This course counts towards the National Centre for Computing Education secondary certificate, which is coming soon.</p>
+        <h2 class="govuk-heading-s">Tell us what you think</h2>
+        <p class="govuk-body">We hope that you have enjoyed learning with us and that this is having a positive impact on your teaching. To make this programme as useful as possible, we would love to hear <%= mail_to 'info@teachcomputing.org', 'your feedback' %>!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <h2 class="govuk-heading-l ncce-programmes-activity__title underlined__title">Your learning journey</h2>
+        </div>
+      </div>
+      <ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
+        <%= render 'programmes/action_activity' %>
+        <%= render 'programmes/face_to_face_activity' %>
+        <%= render 'programmes/online_activity' %>
+      </ul>
+
+      <ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
+        <%= render 'programmes/exam_activity' %>
+      </ul>
+    </div>
   </div>
 </div>

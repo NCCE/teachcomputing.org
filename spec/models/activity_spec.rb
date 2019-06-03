@@ -58,7 +58,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only online activities' do
-        expect(Activity.online).to eq(online_courses)
+        expect(Activity.online.to_a).to eq(online_courses)
       end
 
       it 'does not include actions' do
@@ -72,7 +72,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only face-to-face activities' do
-        expect(Activity.face_to_face).to eq(face_to_face_courses)
+        expect(Activity.face_to_face.to_a).to eq(face_to_face_courses)
       end
 
       it 'does not include actions' do
@@ -86,7 +86,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only future-learn activities' do
-        expect(Activity.future_learn).to eq(online_courses)
+        expect(Activity.future_learn.to_a).to eq(online_courses)
       end
 
       it 'does not include actions' do

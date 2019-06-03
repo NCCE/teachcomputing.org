@@ -9,6 +9,6 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text">Complete the diagnostic
       test</span>
-    <%= link_to 'Do the diagnostic', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank  %>
+    <%= link_to 'Do the diagnostic', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded', role: 'button', draggable: 'false', target: :_blank  %>
   </li>
 <% end %>

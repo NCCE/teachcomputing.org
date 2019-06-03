@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
+  get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
@@ -36,6 +37,8 @@ Rails.application.routes.draw do
                          constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
                       constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
+  get '/accelerator', to: redirect('/cs-accelerator'),
+                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }

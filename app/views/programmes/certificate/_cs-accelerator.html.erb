@@ -1,0 +1,37 @@
+<div class="ncce-certificate">
+  <%= image_tag '/images/certificate/cert-bg.svg', alt: '', class: 'ncce-certificate__image'%>
+  <div class="ncce-certificate__wrapper">
+    <div class="ncce-certificate__inner">
+      <%= image_tag '/images/certificate/ncce-logo-certificate.svg', alt: 'National Centre for Computing Education', class: 'ncce-certificate__logo'%>
+      <div class="ncce-certificate__body">
+        <p class="govuk-body"><em>This is to certify that</em></p>
+        <h1 class="govuk-heading-m ncce-certificate__name">
+          <%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+        <p class="govuk-body"><em>has been awarded</em></p>
+        <p class="govuk-heading-m ncce-certificate__text--narrow">The National
+          Centre for Computing Education Certificate in
+        </p>
+        <h1 class="govuk-heading-m ncce-certificate__title">
+          <%= @programme.title%>
+        </h1>
+        <div>
+          <p class="govuk-body"><%= image_tag '/images/certificate/signature.png', alt: 'Simon Peyton Jones signature', class: 'ncce-certificate__signature'%></p>
+          <p class="govuk-body">Simon Peyton Jones, Chair, NCCE</p>
+        </div>
+      </div>
+      <div class="ncce-certificate__footer">
+        <p class="govuk-body">
+          <strong>Awarded by:</strong><br>
+          <%= image_tag '/images/certificate/bcs-logo.svg', alt: 'British Computer Society (The Chartered Institute for IT)', class: 'ncce-certificate__bcs-logo'%>
+        </p>
+        <p class="govuk-body">
+          <strong>Accredited by:</strong><br>
+          <%= image_tag '/images/certificate/rae-logo.svg', alt: 'Royal Academy of Engineering', class: 'ncce-certificate__rae-logo'%>
+        </p>
+        <ul class="govuk-list">
+          <li>Date awarded: <strong><%= @passed_test_at.strftime('%d/%m/%Y') %></strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

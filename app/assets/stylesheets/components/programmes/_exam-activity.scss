@@ -1,58 +1,54 @@
-.ncce-exam-activity__remarks  {
+.ncce-exam-activity__remarks {
   grid-column-end: span 3;
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
+
   @include govuk-media-query($until: tablet) {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+
   list-style: none;
   margin: 10px 0 10px 0;
+
   @include govuk-media-query($from: tablet) {
     margin-left: 40px;
   }
+
   padding: 0;
   background-color: $ncce-grey-x-light;
   border-radius: 5px;
 
   &>li {
     height: 3em;
+
     @include govuk-media-query($until: tablet) {
       width: 100%;
     }
+
     padding: 0 10px;
     color: $ncce-black;
     display: flex;
     align-items: center;
+
     &>img {
       margin-right: 10px;
     }
   }
 }
+
 .ncce-exam-activity__rules {
   grid-column-end: span 3;
   margin: 10px 0 10px 0;
+
   @include govuk-media-query($from: tablet) {
     margin-left: 40px;
   }
+
   &>li {
     @include govuk-media-query($until: tablet) {
       line-height: 1.5rem;
-    }
-  }
-}
-
-.ncce-exam-activity__attempts-text {
-  grid-column-end: span 3;
-}
-
-.ncce-exam-activity__attempts {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  &>span {
-    @include govuk-media-query($from: tablet) {
-      margin-left: 40px;
     }
   }
 }
@@ -61,6 +57,7 @@
   top: -10px;
   right: -10px;
   bottom: auto;
+
   @include govuk-media-query($from: tablet) {
     display: none;
   }
@@ -70,5 +67,37 @@
   @include govuk-media-query($until: tablet) {
     display: none;
   }
+
   right: -10px;
+}
+
+.ncce-activity-list__item-text--exam {
+  grid-column-end: span 3;
+}
+
+.ncce-exam-activity__attempts {
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr auto;
+  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.ncce-exam-activity__attempts-text {
+  margin-bottom: 20px;
+  @include govuk-media-query($from: tablet) {
+    margin-left: 40px;
+    margin-bottom: 0;
+  }
+}
+
+.ncce-exam-activity__attempts-button {
+  align-self: start;
+  margin-right: 4rem;
+  margin-left: 2rem;
+  @include govuk-media-query($until: tablet) {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 }

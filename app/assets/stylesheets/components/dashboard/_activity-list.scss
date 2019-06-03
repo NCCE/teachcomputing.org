@@ -4,10 +4,14 @@
   padding-top: 0;
 }
 
+.ncce-activity-list--programme {
+  margin-bottom: 60px;
+}
+
 .ncce-activity-list__item {
   background-color: $ncce-white;
   display: grid;
-  grid-template-columns: 2fr auto;
+  grid-template-rows: 2fr auto;
   padding: 0.5rem 1.125rem;
   border-bottom-width: 2px;
   border-bottom-color: $ncce-light-lavender;
@@ -48,11 +52,40 @@
   }
 }
 
+.ncce-activity-list__item-activity {
+  background-color: $ncce-pink-light;
+  font-weight: 700;
+  margin-left: 2rem;
+  padding: 0.7rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 2.8rem;
+    margin-top: 0.5rem;
+  }
+}
+
 .ncce-activity-list__item--incomplete {
-  color: $ncce-grey-dark;
+  grid-template-rows: 2fr auto;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr auto;
+  }
+
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }
+}
+
+.ncce-activity-list__item--inprogress {
+  grid-template-rows: 2fr auto;
+
+  .ncce-activity-list__item-text {
+    background-image: image-url('incomplete-achievement.svg');
+  }
+}
+
+.ncce-activity-list__remove {
+  grid-template-columns: 2fr auto;
 }
 
 .ncce-activity-list__item--position {
@@ -120,14 +153,17 @@
     text-decoration: underline;
 
     color: $ncce-blue-link;
+
     &:hover {
       color: $ncce-pink;
     }
+
     &:focus {
       color: $ncce-white;
       background-color: $ncce-pink;
       outline-color: $ncce-pink;
     }
+
     &:active {
       background-color: $ncce-pink;
       color: $ncce-white;
@@ -137,9 +173,11 @@
 
 .ncce-collapsible-activity {
   margin-top: -3.8rem;
+
   &--progressive {
     position: absolute;
     margin-top: 3.5rem;
+
     @include govuk-media-query($from: tablet) {
       margin-top: auto;
     }
@@ -149,6 +187,7 @@
       width: 30rem;
     }
   }
+
   box-sizing: border-box;
   max-width: 100%;
   padding: 1rem;
@@ -162,7 +201,7 @@
   &__title-button {
     all: inherit;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
     display: block;
     width: 100%;
     margin: 0.5rem 0 2rem 0;
@@ -172,7 +211,7 @@
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 1.2rem;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     color: $ncce-dark-z-grey;
     text-align: left;
@@ -194,11 +233,31 @@
 
 .ncce-activity-form__select {
   border-radius: 6px;
-  font-size: 17px;
+  font-size: 1rem;
   margin-bottom: 1rem;
+  height: 2.5rem;
 }
 
 .ncce-activity-form__button--pink {
   margin-top: 1rem;
   width: 100%;
+}
+
+.ncce-activity-list__tag {
+  text-transform: none;
+  margin-bottom: 0.7rem;
+  width: auto;
+  float: left;
+
+  @include govuk-media-query($from: tablet) {
+    float: none;
+    margin-bottom: 0;
+  }
+}
+
+.ncce-activity-list__course {
+  @include govuk-media-query($until: tablet) {
+    float: left;
+    clear: both;
+  }
 }

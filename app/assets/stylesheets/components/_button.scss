@@ -1,23 +1,45 @@
 .ncce-button__pink {
 	background-color: $ncce-pink;
 	box-shadow: 0 4px 0 $ncce-dark-pink;
-	font-size: 19px;
+	font-size: 1.188rem;
 	font-weight: bold;
 	margin: 0;
 	padding: 12px 25px;
 
-	&:hover {
-		background-color: $ncce-black;
-		box-shadow: 0 4px 0 $ncce-black;
-		outline-color: $ncce-black;
-	}
-	&:focus {
-		background-color: $ncce-black !important;
-		color: $ncce-white !important;
-		outline-color: $ncce-black !important;
-	}
+  &:hover {
+    background-color: $ncce-black;
+    box-shadow: 0 4px 0 $ncce-black;
+    outline-color: $ncce-black;
+  }
 
-	@include govuk-media-query($from: desktop) {
-		margin-bottom: 20px;
-	}
+  &:focus {
+    background-color: $ncce-black !important;
+    color: $ncce-white !important;
+    outline-color: $ncce-black !important;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 20px;
+  }
+}
+
+.ncce-button__pink--rounded {
+  border-radius: 0.5rem;
+  box-shadow: none;
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
+  width: calc(100% - 2rem);
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 0;
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 4px 0 $ncce-dark-pink;
+    outline-color: $ncce-white !important;
+  }
+
 }
