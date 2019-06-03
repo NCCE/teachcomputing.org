@@ -17,8 +17,8 @@ namespace :assessments do
     Assessment.find_or_create_by(programme_id: programme.id) do |assessment|
       assessment.programme_id = programme.id
       assessment.activity_id = activity.id
-      assessment.link = 'https://google.com/placeholder'
-      assessment.class_marker_test_id = 'test123'
+      assessment.link = 'https://www.classmarker.com/online-test/start/?quiz=7jq5caf0e6ab8da3'
+      assessment.class_marker_test_id = '1071279'
     end
   end
 end
