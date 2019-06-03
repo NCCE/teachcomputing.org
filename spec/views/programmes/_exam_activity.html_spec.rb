@@ -82,7 +82,7 @@ RSpec.describe('programmes/_exam_activity', type: :view) do
     end
 
     it 'tells the user to wait 48.hours' do
-      expect(rendered).to have_css('strong', text: /after #{(Time.zone.now + 48.hours.to_i).strftime('%l%P on %A')}/)
+      expect(rendered).to have_css('strong', text: /after #{(Time.zone.now + 48.hours.to_i).in_time_zone('London').strftime('%l%P on %A')}/)
     end
 
     it 'has no link to the test' do
