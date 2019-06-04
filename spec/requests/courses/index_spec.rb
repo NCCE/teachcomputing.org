@@ -94,7 +94,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(4)
+          expect(assigns(:courses).length).to be(5)
         end
 
         it 'courses have correct subject' do
@@ -141,12 +141,21 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(2)
+          expect(assigns(:courses).length).to be(3)
         end
 
         it 'courses have correct location' do
           assigns(:courses).each do |course|
-            expect(assigns(:courses).first.occurrences.map(&:online_course)).to include(1)
+            online_course = course.occurrences.map(&:online_course)
+            if online_course.length > 0
+              expect(online_course).to include(1)
+            end
+          end
+        end
+
+        it 'course templates are marked as online' do
+          assigns(:courses).each do |course|
+            expect(course.online_course).to eq(1)
           end
         end
 
@@ -161,7 +170,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(4)
+          expect(assigns(:courses).length).to be(5)
         end
 
         it 'courses have correct key_stages' do

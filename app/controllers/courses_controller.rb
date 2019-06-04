@@ -60,13 +60,7 @@ class CoursesController < ApplicationController
       end
       if params[:location].present?
         @current_location = params[:location]
-        has_location = c.occurrences.any? do |oc|
-          if @current_location == 'Online'
-            oc.online_course == 1
-          else
-            oc.address_town == @current_location
-          end
-        end
+        has_location = compare_location(c, @current_location)
       end
       if params[:topic].present?
         @current_topic = params[:topic]
@@ -77,6 +71,22 @@ class CoursesController < ApplicationController
         has_workstream = c.workstream == @current_workstream
       end
       has_level && has_location && has_topic && has_workstream
+    end
+  end
+
+  def compare_location(course, location)
+    if course.occurrences.count.positive?
+      course.occurrences.any? do |oc|
+        if location == 'Online'
+          oc.online_course == 1
+        else
+          oc.address_town == location
+        end
+      end
+    elsif location == 'Online'
+      course.online_course == 1
+    else
+      false
     end
   end
 
