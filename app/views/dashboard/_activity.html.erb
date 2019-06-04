@@ -17,9 +17,9 @@
             %>
           </li>
         <% end %>
-        <% unless has_user_completed_activity?(@current_user, Activity.downloaded_diagnostic_tool) %>
+        <% unless has_user_completed_activity?(@current_user, Activity.diagnostic_tool) %>
           <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-            <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Download</span> the <%= link_to 'diagnostic tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf', type: 'application/pdf' }), class: 'ncce-link', target: :_blank %></span>
+            <span class="ncce-activity-list__item-text"><span class="govuk-!-font-weight-bold">Take</span> the <%= link_to 'diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %></span>
           </li>
         <% end %>
       </ul>

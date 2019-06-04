@@ -7,6 +7,7 @@ class ProgrammesController < ApplicationController
   before_action :list_achievements_by_category, only: [:show, :complete]
   before_action :get_passed_programme_assessment
   before_action :passed_programme_assessment?, only: [:complete, :certificate]
+  before_action :show_completed_page?, only: [:show]
   before_action :get_assessment_state_details, only: [:show]
   before_action :get_certificate_details, only: [:certificate]
 
@@ -34,7 +35,7 @@ class ProgrammesController < ApplicationController
       achievements = current_user.achievements.for_programme(@programme)
       @online_achievements = achievements.with_category('online').take(2)
       @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
-      @downloaded_diagnostic = achievements.with_category('action').where(activities: {slug: 'downloaded-diagnostic-tool'}).any?
+      @downloaded_diagnostic = achievements.with_category('action').where(activities: {slug: 'diagnostic-tool'}).any?
     end
 
     def get_passed_programme_assessment
@@ -66,6 +67,10 @@ class ProgrammesController < ApplicationController
 
     def passed_programme_assessment?
       redirect_to programme_path(@programme.slug) unless @passed_assessment
+    end
+
+    def show_completed_page?
+      redirect_to programme_complete_path(@programme.slug) if @passed_assessment
     end
 
     def get_certificate_details

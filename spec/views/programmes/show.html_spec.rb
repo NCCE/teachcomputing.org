@@ -7,6 +7,7 @@ RSpec.describe('programmes/show', type: :view) do
 
   before do
     assessment
+    @current_user = user
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     render
