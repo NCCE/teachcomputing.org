@@ -11,21 +11,25 @@
 }
 
 .certification-hero__wrapper {
-  padding-top: 25px;
-  padding-bottom: 25px;
+  align-items: center;
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
   @include govuk-media-query($from: tablet) {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
-  
 }
 
 .certification-hero__text {
   color: $ncce-white;
 }
 
-.certification-hero__image {
-  width: 130px;
+.certification-hero__image-box {
+  @include govuk-media-query($from: tablet) {
+    margin-right: 2rem;
+  }
 }
 
 .certification-hero__image--mobile {
@@ -33,6 +37,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+
   @include govuk-media-query($from: tablet) {
     display: none;
   }
