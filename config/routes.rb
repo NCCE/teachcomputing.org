@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
-    resources :downloads, only: [:show]
+    resources :redirects, only: [:show]
   end
 
   namespace 'admin' do

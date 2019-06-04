@@ -142,14 +142,14 @@ RSpec.describe Activity, type: :model do
   end
 
   describe 'class methods' do
-    describe '#downloaded_diagnostic_tool' do
+    describe '#diagnostic_tool' do
       it 'returns a record if one is found' do
         activity = create(:activity, :diagnostic_tool)
-        expect(Activity.downloaded_diagnostic_tool).to eq activity
+        expect(Activity.diagnostic_tool).to eq activity
       end
 
       it 'creates a record if one is not found' do
-        expect(Activity.downloaded_diagnostic_tool.title).to eq 'Downloaded diagnostic tool'
+        expect(Activity.diagnostic_tool.title).to eq 'Taken diagnostic tool'
       end
     end
   end

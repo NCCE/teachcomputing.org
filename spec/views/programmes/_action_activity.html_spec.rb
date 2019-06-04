@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe('programmes/_action_activity', type: :view) do
+  let(:user) { create(:user) }
+
+  before do
+    @current_user = user
+  end
+
   it 'shows the registered activity' do
     render
     expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')

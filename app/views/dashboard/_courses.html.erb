@@ -11,8 +11,8 @@
               <p class="govuk-body">If you need help finding a course tha t's suitable for you,
               use our diagnostic tool to identify the areas of subject knowledge
               where you need most support.
-              </p
-              <p class="govuk-body-s"><%= link_to 'Download Diagnostic Tool', activities_download_path(Activity.downloaded_diagnostic_tool.id, :file => { name: 'NCCE.Diagnostic.pdf' }), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false', target: :_blank %></p>
+              </p>
+              <p class="govuk-body-s"><%= link_to 'Take the Diagnostic Tool', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
             </div>
             <div class="govuk-grid-column-one-third">
               <img src="/images/dashboard/questions.png" alt="Three question marks" class="ncce-dashboard__image"/>
