@@ -7,6 +7,7 @@ class ProgrammesController < ApplicationController
   before_action :list_achievements_by_category, only: [:show, :complete]
   before_action :get_passed_programme_assessment
   before_action :passed_programme_assessment?, only: [:complete, :certificate]
+  before_action :show_completed_page?, only: [:show]
   before_action :get_assessment_state_details, only: [:show]
   before_action :get_certificate_details, only: [:certificate]
 
@@ -66,6 +67,10 @@ class ProgrammesController < ApplicationController
 
     def passed_programme_assessment?
       redirect_to programme_path(@programme.slug) unless @passed_assessment
+    end
+
+    def show_completed_page?
+      redirect_to programme_complete_path(@programme.slug) if @passed_assessment
     end
 
     def get_certificate_details

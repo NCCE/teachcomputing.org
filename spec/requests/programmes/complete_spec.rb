@@ -119,6 +119,11 @@ RSpec.describe ProgrammesController do
           it 'assigns the assessment passed state correctly' do
             expect(assigns(:passed_assessment)).to eq (true)
           end
+
+          it 'redirects show to complete' do
+            get programme_path('cs-accelerator')
+            expect(response).to redirect_to(programme_complete_path('cs-accelerator'))
+          end
         end
       end
 
