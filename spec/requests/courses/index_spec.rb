@@ -146,9 +146,8 @@ RSpec.describe CoursesController do
 
         it 'courses have correct location' do
           assigns(:courses).each do |course|
-            online_course = course.occurrences.map(&:online_course)
-            if online_course.length > 0
-              expect(online_course).to include(1)
+            unless course.occurrences.empty?
+              expect(course.occurrences.map(&:online_course)).to include(1)
             end
           end
         end
