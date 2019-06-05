@@ -25,11 +25,13 @@
     }
   }
 }
+
 .certification-progress {
   position: relative;
   background-color: $ncce-white;
   border-radius: 10px;
   padding: 1.25rem 0.9rem;
+
   @include govuk-media-query($from: tablet) {
     padding: 1.25rem 1.9rem;
   }
@@ -39,6 +41,7 @@
     right: 10px;
     bottom: 20px;
     width: 43px;
+
     @include govuk-media-query($from: tablet) {
       right: 20px;
       bottom: 10px;
@@ -46,6 +49,7 @@
     }
   }
 }
+
 .certification-progress__fudge {
   width: 100%;
   display: flex;
@@ -60,13 +64,16 @@
     &::-webkit-progress-bar {
       background-color: $ncce-grey-x-light;
     }
+
     &::-webkit-progress-value {
       background: $ncce-pink;
     }
+
     &::-moz-progress-bar {
       background: $ncce-pink;
     }
   }
+
   &-bar-target {
     position: relative;
     display: inline-block;
@@ -74,7 +81,7 @@
     height: 30px;
     border: 2px solid $ncce-white;
     background-color: $ncce-butterfly-bush;
-    
+
     &:after {
       content: 'Test';
       position: absolute;
@@ -85,12 +92,15 @@
       color: $ncce-butterfly-bush;
     }
   }
+
   &-bar-target--ready:after {
     content: 'Test ready';
     left: -30px;
+
     @include govuk-media-query($from: tablet) {
       left: -25px;
     }
+
     width: 4rem
   }
 
@@ -105,14 +115,4 @@
 
 .pink-text {
   color: $ncce-pink;
-}
-
-.certification-hero__image--dashboard {
-  float: left;
-  width: 40px;
-  margin: -10px 15px 30px 0;
-  @include govuk-media-query($from: tablet) {
-    width: 100px;
-    margin-top: 0;
-  }
 }
