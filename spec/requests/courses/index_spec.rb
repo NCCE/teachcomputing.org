@@ -27,7 +27,7 @@ RSpec.describe CoursesController do
       end
 
       it 'has at least one course' do
-        expect(assigns(:courses).length).to be > 0
+        expect(assigns(:courses).length).to eq(9)
       end
 
       it 'assigns course_occurrences correctly' do
@@ -41,7 +41,7 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns all locations' do
-        expect(assigns(:locations)).to eq(%w[Online Cambridge Southampton York])
+        expect(assigns(:locations)).to eq(%w[Online Face\ to\ face Cambridge Southampton York])
       end
 
       it 'assigns all levels' do
@@ -160,6 +160,34 @@ RSpec.describe CoursesController do
 
         it 'initalises current location' do
           expect(assigns(:current_location)).to eq('Online')
+        end
+      end
+
+      context 'when filtering by Face to face location' do
+        before do
+          get courses_path, params: { location: 'Face to face' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).length).to be(6)
+        end
+
+        it 'courses have correct location' do
+          assigns(:courses).each do |course|
+            unless course.occurrences.empty?
+              expect(course.occurrences.map(&:online_course?)).to_not include(true)
+            end
+          end
+        end
+
+        it 'course templates are not marked as online' do
+          assigns(:courses).each do |course|
+            expect(course.online_course?).to be false
+          end
+        end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('Face to face')
         end
       end
 
