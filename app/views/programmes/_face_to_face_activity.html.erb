@@ -25,7 +25,7 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your first face
       to face course </span>
-    <%= link_to 'Find a face to face course', courses_path, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
 
@@ -56,6 +56,6 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your second face
     to face course </span>
-    <%= link_to 'Find a face to face course', courses_path, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
