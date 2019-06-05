@@ -129,7 +129,7 @@ class Course
     @doc.xpath('.//Template.COURSETEMPLATENO/text()').to_s
   end
 
-  def online_course
-    @doc.xpath('.//Activity.Online_CPD/text()').to_s.to_i
+  def online_course?
+    @doc.xpath('.//Activity.Online_CPD/text()').to_s == '1'
   end
 end

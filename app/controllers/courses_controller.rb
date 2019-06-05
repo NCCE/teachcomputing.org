@@ -60,13 +60,7 @@ class CoursesController < ApplicationController
       end
       if params[:location].present?
         @current_location = params[:location]
-        has_location = c.occurrences.any? do |oc|
-          if @current_location == 'Online'
-            oc.online_course == 1
-          else
-            oc.address_town == @current_location
-          end
-        end
+        has_location = compare_location(c, @current_location)
       end
       if params[:topic].present?
         @current_topic = params[:topic]
@@ -78,6 +72,12 @@ class CoursesController < ApplicationController
       end
       has_level && has_location && has_topic && has_workstream
     end
+  end
+
+  def compare_location(course, location)
+    return course.online_course? if location == 'Online'
+
+    course.occurrences.any? { |oc| oc.address_town == location }
   end
 
   def course_workstreams(courses)
@@ -93,7 +93,7 @@ class CoursesController < ApplicationController
   end
 
   def course_locations(course_occurrences)
-    towns = course_occurrences.reduce([]) { |acc, oc| oc.online_course == 0 ? acc.push(oc.address_town) : acc }
+    towns = course_occurrences.reduce([]) { |acc, oc| !oc.online_course? ? acc.push(oc.address_town) : acc }
     towns.uniq.sort.unshift('Online')
   end
 end
