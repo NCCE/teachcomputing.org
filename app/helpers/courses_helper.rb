@@ -39,13 +39,13 @@ module CoursesHelper
     "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{course_template_no}"
   end
 
-  def stripped_summary(string)	
-    unescaped_str = CGI::unescapeHTML(string)	
+  def stripped_summary(string)
+    unescaped_str = CGI::unescapeHTML(string)
     strip_tags(unescaped_str)
   end
 
   def course_meta_css_class(isOnlineCourse)
     cssClass = "ncce-courses__meta-icon"
-    isOnlineCourse == 1 ? "#{cssClass} #{cssClass}--online" : "#{cssClass}"
+    isOnlineCourse ? "#{cssClass} #{cssClass}--online" : "#{cssClass}"
   end
 end

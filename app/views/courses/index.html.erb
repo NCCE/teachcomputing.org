@@ -114,7 +114,7 @@
               <ul class="govuk-list govuk-body-s ncce-courses__meta">
                 <% course.occurrences.each do |oc| %>
                   <li class="govuk-grid-row ncce-courses__meta-item">
-                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course) %>">
+                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course?) %>">
                     <%= oc.address_town %></span>
                     <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
                   </li>

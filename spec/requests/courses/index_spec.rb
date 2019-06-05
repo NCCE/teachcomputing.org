@@ -147,14 +147,14 @@ RSpec.describe CoursesController do
         it 'courses have correct location' do
           assigns(:courses).each do |course|
             unless course.occurrences.empty?
-              expect(course.occurrences.map(&:online_course)).to include(1)
+              expect(course.occurrences.map(&:online_course?)).to include(true)
             end
           end
         end
 
         it 'course templates are marked as online' do
           assigns(:courses).each do |course|
-            expect(course.online_course).to eq(1)
+            expect(course.online_course?).to be true
           end
         end
 

@@ -75,19 +75,9 @@ class CoursesController < ApplicationController
   end
 
   def compare_location(course, location)
-    if course.occurrences.count.positive?
-      course.occurrences.any? do |oc|
-        if location == 'Online'
-          oc.online_course == 1
-        else
-          oc.address_town == location
-        end
-      end
-    elsif location == 'Online'
-      course.online_course == 1
-    else
-      false
-    end
+    return course.online_course? if location == 'Online'
+
+    course.occurrences.any? { |oc| oc.address_town == location }
   end
 
   def course_workstreams(courses)
@@ -103,7 +93,7 @@ class CoursesController < ApplicationController
   end
 
   def course_locations(course_occurrences)
-    towns = course_occurrences.reduce([]) { |acc, oc| oc.online_course == 0 ? acc.push(oc.address_town) : acc }
+    towns = course_occurrences.reduce([]) { |acc, oc| !oc.online_course? ? acc.push(oc.address_town) : acc }
     towns.uniq.sort.unshift('Online')
   end
 end
