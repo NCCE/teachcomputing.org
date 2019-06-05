@@ -13,10 +13,6 @@ RSpec.describe('pages/certification/_hero', type: :view) do
     expect(rendered).to have_css('p.govuk-body-m', text: 'The National Centre for Computing Education certificate in')
   end
 
-  it 'has two notepad images' do
-    expect(rendered).to have_css('.certification-hero__image', count: 2)
-  end
-
   it 'has one notepad image for mobile' do
     expect(rendered).to have_css('.certification-hero__image--mobile', count: 1)
   end
