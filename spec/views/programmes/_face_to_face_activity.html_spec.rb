@@ -21,7 +21,7 @@ RSpec.describe('programmes/_face_to_face_activity', type: :view) do
     end
 
     it 'links to face to face courses' do
-      expect(rendered).to have_link('Find a face to face course', href: '/courses')
+      expect(rendered).to have_link('Find a face to face course', href: '/courses?location=Face+to+face')
     end
 
     it 'has prompt text' do

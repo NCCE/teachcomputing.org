@@ -76,6 +76,7 @@ class CoursesController < ApplicationController
 
   def compare_location(course, location)
     return course.online_course? if location == 'Online'
+    return !course.online_course? if location == 'Face to face'
 
     course.occurrences.any? { |oc| oc.address_town == location }
   end
@@ -94,6 +95,6 @@ class CoursesController < ApplicationController
 
   def course_locations(course_occurrences)
     towns = course_occurrences.reduce([]) { |acc, oc| !oc.online_course? ? acc.push(oc.address_town) : acc }
-    towns.uniq.sort.unshift('Online')
+    towns.uniq.sort.unshift('Face to face').unshift('Online')
   end
 end
