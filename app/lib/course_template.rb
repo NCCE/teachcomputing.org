@@ -45,4 +45,8 @@ class CourseTemplate
   def key_stages
     @age_range.try(:key_stages)
   end
+
+  def online_course?
+    occurrences.any?(&:online_course?) || @doc.xpath('.//Template.Online_CPD/text()').to_s == '1'
+  end
 end
