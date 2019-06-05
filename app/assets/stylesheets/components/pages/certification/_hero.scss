@@ -26,7 +26,7 @@
   color: $ncce-white;
 }
 
-.certification-hero__image-box {
+.certification-hero__image {
   @include govuk-media-query($from: tablet) {
     margin-right: 2rem;
   }
