@@ -42,6 +42,7 @@ module AchieverStubs
       .to_return(File.new('spec/support/achiever_api/course_template_age_range.xml')).times(2).then
       .to_return(File.new('spec/support/achiever_api/course_template_age_range_alt.xml')).times(2).then
       .to_return(File.new('spec/support/achiever_api/course_template_age_range.xml')).times(2).then
-      .to_return(File.new('spec/support/achiever_api/course_template_age_range_alt.xml'))
+      .to_return(File.new('spec/support/achiever_api/course_template_age_range_alt.xml')).times(2).then
+      .to_return(File.new('spec/support/achiever_api/course_template_age_range.xml'))
   end
 end
