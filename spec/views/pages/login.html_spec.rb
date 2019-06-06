@@ -26,7 +26,7 @@ RSpec.describe('pages/login', type: :view) do
   end
 
   it 'login button uses POST' do
-    expect(rendered).to have_xpath('.//a[@href="/test/123"][@data-method="post"]', count: 1)
+    expect(rendered).to have_css('a[@href="/test/123"][@data-method="post"]', count: 1)
   end
 
   it 'links to about' do
