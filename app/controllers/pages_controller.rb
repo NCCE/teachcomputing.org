@@ -29,6 +29,5 @@ class PagesController < ApplicationController
     else
       render template: "pages/#{params[:page_slug]}"
     end
-    
   end
 end
