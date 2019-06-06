@@ -25,6 +25,10 @@ RSpec.describe('pages/login', type: :view) do
     expect(rendered).to have_link('Log in', href: '/test/123')
   end
 
+  it 'login button uses POST' do
+    expect(rendered).to have_xpath('.//a[@href="/test/123"][@data-method="post"]', count: 1)
+  end
+
   it 'links to about' do
     expect(rendered).to have_link('Read more about the consortium', href: '/about')
   end
