@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Objectivity Bold';
-  src: url(https://teachcomputing.org/assets/Objectivity-Bold.otf) format("opentype"), url(https://teachcomputing.org/assets/Objectivity-Bold.woff2) format("woff2");
+  src: url(Objectivity-Bold.otf) format("opentype"), url(Objectivity-Bold.woff2) format("woff2");
 }
 
 .govuk-template {
