@@ -26,10 +26,23 @@
     @include govuk-media-query($from: tablet) {
       padding: 100px 60px 60px;
     }
-    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     &:after {
       content: "";
+    }
+  }
+
+  &__translucent-bg {
+    position: absolute;
+    z-index: 5;
+    width: calc(100% - 40px);
+    @include govuk-media-query($until: tablet) {
+      min-height: calc(100% - 120px);
+      height: 95%;
+    }
+    @include govuk-media-query($from: tablet) {
+      width: calc(100% - 120px);
+      height: calc(100% - 160px);
     }
   }
 
@@ -47,11 +60,6 @@
     width: 100px;
     height: 100px;
     color: $ncce-white;
-    background-color: $ncce-wakaiwa-grey;
-    padding: 10px;
-    font-family: $font-family-heading;
-    font-weight: bold;
-    text-align: left;
   }
 
   &__name {
@@ -116,6 +124,12 @@
     background: $ncce-white;
   }
   @page {
-    margin: 0.5cm;
+    margin: 0.0cm;
+  }
+  .ncce-certificate__footer {
+    flex-wrap: initial;
+    & > ul {
+      flex-basis: 50%;
+    }
   }
 }
