@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
-  get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
+  get '/signup-stem', to: 'pages#signup_stem', as: :signup_stem
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
