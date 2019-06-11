@@ -31,6 +31,7 @@
         </p>
         <ul class="govuk-list">
           <li>Date awarded: <strong><%= @passed_test_at.strftime('%d/%m/%Y') %></strong></li>
+          <li>Certificate: <strong><%= certificate_number(@certificate_index, @passed_test_at) %></strong></li>
         </ul>
       </div>
     </div>

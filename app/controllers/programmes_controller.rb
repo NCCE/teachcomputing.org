@@ -78,6 +78,8 @@ class ProgrammesController < ApplicationController
         .where(activities: { category: 'assessment'})
       if passed_assessments.any?
         @passed_test_at = passed_assessments.last.state_machine.last_transition.created_at
+        all_passed_assessments = @programme.assessment.assessment_attempts.passed_attempts_with_user
+        @certificate_index = all_passed_assessments.map(&:user_id).index(current_user.id)
       end
     end
 end
