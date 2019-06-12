@@ -25,6 +25,10 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       it 'transitions achievement to complete' do
         expect(achievement.current_state).to eq('complete')
       end
+
+      it 'transition stores the certificate number' do
+        expect(achievement.last_transition.metadata['certificate_index']).to eq(0)
+      end
     end
 
     context 'when the user has failed the test' do

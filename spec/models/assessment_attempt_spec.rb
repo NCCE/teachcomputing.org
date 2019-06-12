@@ -41,4 +41,11 @@ RSpec.describe AssessmentAttempt, type: :model do
       end
     end
   end
+
+  describe 'delegate methods' do
+    it { is_expected.to delegate_method(:can_transition_to?).to(:state_machine).as(:can_transition_to?) }
+    it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
+    it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
+    it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
+  end
 end

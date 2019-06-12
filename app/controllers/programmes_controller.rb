@@ -54,7 +54,7 @@ class ProgrammesController < ApplicationController
       if @num_attempts > 0
         last_attempt = attempts.last
         if last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s && @num_attempts >= 2
-          @can_take_test_at = [last_attempt.state_machine.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
+          @can_take_test_at = [last_attempt.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
         elsif last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
           @currently_taking_test = true
         end
@@ -74,12 +74,19 @@ class ProgrammesController < ApplicationController
     end
 
     def get_certificate_details
-      passed_assessments = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
+      passed_achievements = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
         .where(activities: { category: 'assessment'})
-      if passed_assessments.any?
-        @passed_test_at = passed_assessments.last.state_machine.last_transition.created_at
-        all_passed_assessments = @programme.assessment.assessment_attempts.passed_attempts_with_user
-        @certificate_index = all_passed_assessments.map(&:user_id).index(current_user.id)
+      if passed_achievements.any?
+        transition = passed_achievements.last.last_transition
+        @passed_test_at = transition.created_at
+        @certificate_index = transition.metadata['certificate_index'] || heal_missing_certificate_index(transition)
       end
+    end
+
+    def heal_missing_certificate_index(transition)
+      certificate_index = @programme.assessment.assessment_attempts.passed_attempts_with_user
+                                        .map(&:user_id).index(current_user.id)
+      transition.fix_missing_metadata(certificate_index: certificate_index)
+      transition.metadata['certificate_index']
     end
 end

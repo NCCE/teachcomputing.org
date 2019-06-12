@@ -11,7 +11,7 @@ RSpec.describe ProgrammesController do
                                   }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
-  let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
+  let(:passed_exam) { create(:achievement, user_id: user.id, activity_id: exam_activity.id) }
   let(:passed_attempt) { create(:completed_assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
 
   describe '#certificate' do
@@ -61,7 +61,7 @@ RSpec.describe ProgrammesController do
           before do
             programme_activity
             user_programme_enrolment
-            passed_exam
+            passed_exam.set_to_complete(certificate_index: 20)
             passed_attempt
             get programme_certificate_path('cs-accelerator')
           end
@@ -79,11 +79,11 @@ RSpec.describe ProgrammesController do
           end
 
           it 'assigns the passed_test_at date' do
-            expect(assigns(:passed_test_at)).to eq(passed_exam.state_machine.last_transition.created_at)
+            expect(assigns(:passed_test_at)).to eq(passed_exam.last_transition.created_at)
           end
 
           it 'assigns the certificate_index' do
-            expect(assigns(:certificate_index)).to eq(0)
+            expect(assigns(:certificate_index)).to eq(20)
           end
         end
       end
