@@ -8,6 +8,7 @@ $font-family-heading: 'Objectivity Bold', sans-serif !default;
 
 @font-face {
   font-family: 'Objectivity Bold';
-  src:font-url('Objectivity-Bold.otf') format('opentype'),
-    font-url('Objectivity-Bold.woff2') format('woff2');
+  src: font-url('Objectivity-Bold.woff') format('woff'),
+    font-url('Objectivity-Bold.woff2') format('woff2'),
+    font-url('Objectivity-Bold.otf') format('opentype');
 }
