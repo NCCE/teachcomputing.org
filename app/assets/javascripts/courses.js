@@ -11,7 +11,7 @@ function initialiseSections(className) {
   const sectionToggleClass = className + '-section--closed'
   // Get all the <h2> headings
   const headings = document.querySelectorAll('.' + className)
-  Array.prototype.forEach.call(headings, heading => {
+  Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
     // We only have a single node to pull out here the next thing.
     let contents = heading.nextElementSibling
     contents.parentNode.removeChild(contents)
@@ -32,7 +32,7 @@ function initialiseSections(className) {
     // Assign the button
     let btn = heading.querySelector('button')
 
-    btn.onclick = () => {
+    btn.onclick = function btnOnClick() {
       // Cast the state as a boolean
       let expanded = btn.getAttribute('aria-expanded') === 'true' || false
 
@@ -48,11 +48,14 @@ function initialiseSections(className) {
 
 function initialiseFilter() {
   const applyButton = document.querySelector('.js-course-filter-button')
+  if (!applyButton) {
+    return
+  }
   const filterSelects = document.querySelectorAll('.js-course-filter-select')
   const filterForm = document.querySelector('.js-course-filter-form')
 
-  Array.prototype.forEach.call(filterSelects, filterSelect => {
-    filterSelect.onchange = () => {
+  Array.prototype.forEach.call(filterSelects, function addListeners(filterSelect) {
+    filterSelect.onchange = function filterSelectOnChange() {
       filterForm.submit();
     }
   })
@@ -66,7 +69,7 @@ function initialiseStickyFilterBar() {
   let filterTop = filterContainer.offsetTop
   let sticky = false
 
-  document.onscroll = (e) => {
+  document.onscroll = function documentOnScroll(e) {
     const top = e.target.scrollingElement.scrollTop
     if (!sticky) {
       filterTop = filterContainer.offsetTop

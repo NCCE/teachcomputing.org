@@ -24,7 +24,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     course_templates(parse_results(result))
@@ -37,7 +37,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     course.subject_details = CourseTemplateSubjectDetails.new(parse_results(result))
@@ -51,7 +51,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     course.age_range = CourseTemplateAgeRange.new(parse_results(result))
@@ -65,7 +65,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     courses(parse_results(result))
@@ -78,7 +78,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     courses(parse_results(result))
@@ -91,7 +91,7 @@ class Achiever
     request = build_request(params)
 
     result = Rails.cache.fetch("#{workflow_id}-#{id}-#{Date.today}", expires_in: 12.hours) do
-      RestClient.get(request).body
+      make_request(request)
     end
 
     parse_results(result)
@@ -103,11 +103,19 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = RestClient.get(request).body
+    result = make_request(request)
     parse_results(result)
   end
 
   private
+
+  def make_request(request)
+    beginning_time = Time.now
+    response = RestClient.get(request)
+    end_time = Time.now
+    Rails.logger.debug "make_request time: #{(end_time - beginning_time)*1000} ms.  Request:\n#{request}\n\n"
+    response.body
+  end
 
   def build_request(params)
     @uri.query = URI.encode_www_form(sXmlParams: params)
