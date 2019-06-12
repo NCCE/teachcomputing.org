@@ -4,10 +4,18 @@ RSpec.describe PagesController do
   let(:user) { create(:user) }
 
   describe '#signup_stem' do
+    before do
+      @stem_login_enabled = ENV['STEM_LOGIN_ENABLED']
+      ENV['STEM_LOGIN_ENABLED'] = 'true'
+    end
+
+    after do
+      ENV['STEM_LOGIN_ENABLED'] = @stem_login_enabled
+    end
     context 'with a current user' do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get signup_stem_path
+        get signup_stem_new_path
       end
 
       it 'should redirect to the dashboard' do
@@ -17,7 +25,7 @@ RSpec.describe PagesController do
 
     context 'without a current user' do
       before do
-        get signup_stem_path
+        get signup_stem_new_path
       end
 
       it 'should redirect to stem login' do
