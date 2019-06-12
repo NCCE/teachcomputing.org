@@ -22,7 +22,7 @@ Activity.find_or_create_by(slug: 'teaching-physical-computing-with-raspberry-pi-
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'ecf78d20-2966-4798-af5f-0f869c1818e2'
+  activity.future_learn_course_id = 'ecf78d20-2966-4798-af5f-0f869c1818e2'
   activity.provider = 'future-learn'
 end
 
@@ -32,7 +32,7 @@ Activity.find_or_create_by(slug: 'how-computers-work-demystifying-computation') 
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'c88099c0-8b44-42a5-aad3-0dd011fe3490'
+  activity.future_learn_course_id = 'c88099c0-8b44-42a5-aad3-0dd011fe3490'
   activity.provider = 'future-learn'
 end
 
@@ -42,7 +42,7 @@ Activity.find_or_create_by(slug: 'programming-101-an-introduction-to-python-for-
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'c9fb59cc-6393-4a29-8136-7020128ca879'
+  activity.future_learn_course_id = 'c9fb59cc-6393-4a29-8136-7020128ca879'
   activity.provider = 'future-learn'
 end
 
@@ -52,7 +52,7 @@ Activity.find_or_create_by(slug: 'programming-102-think-like-a-computer-scientis
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'd9fe6126-298f-48ed-8be3-b82e1c473566'
+  activity.future_learn_course_id = 'd9fe6126-298f-48ed-8be3-b82e1c473566'
   activity.provider = 'future-learn'
 end
 
@@ -62,7 +62,7 @@ Activity.find_or_create_by(slug: 'representing-data-with-images-and-sound-bringi
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'e290318f-ba23-4c95-8f18-584946233af9'
+  activity.future_learn_course_id = 'e290318f-ba23-4c95-8f18-584946233af9'
   activity.provider = 'future-learn'
 end
 
@@ -72,7 +72,7 @@ Activity.find_or_create_by(slug: 'object-oriented-programming-in-python-create-y
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = '2e1e3f69-b200-4fc7-a6bd-dff682bdd228'
+  activity.future_learn_course_id = '2e1e3f69-b200-4fc7-a6bd-dff682bdd228'
   activity.provider = 'future-learn'
 end
 
@@ -82,7 +82,7 @@ Activity.find_or_create_by(slug: 'an-introduction-to-computer-networking-for-tea
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
+  activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
   activity.provider = 'future-learn'
 end
 
@@ -92,7 +92,7 @@ Activity.find_or_create_by(slug: 'understanding-maths-and-logic-in-computer-scie
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'ffc6793d-5643-40c8-893a-0164844ca62f'
+  activity.future_learn_course_id = 'ffc6793d-5643-40c8-893a-0164844ca62f'
   activity.provider = 'future-learn'
 end
 
@@ -102,7 +102,7 @@ Activity.find_or_create_by(slug: 'understanding-computer-systems') do |activity|
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = '04953102-a4cf-485d-a34e-0c64621033be'
+  activity.future_learn_course_id = '04953102-a4cf-485d-a34e-0c64621033be'
   activity.provider = 'future-learn'
 end
 
@@ -112,7 +112,7 @@ Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = '4ec560a3-6435-46bc-90b7-75cfdcf7e72d'
+  activity.future_learn_course_id = '4ec560a3-6435-46bc-90b7-75cfdcf7e72d'
   activity.provider = 'future-learn'
 end
 
@@ -122,7 +122,7 @@ Activity.find_or_create_by(slug: 'scratch-to-python-moving-from-block-to-text-ba
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = '3ce9a624-6cc7-4d23-8f5f-95162e360178'
+  activity.future_learn_course_id = '3ce9a624-6cc7-4d23-8f5f-95162e360178'
   activity.provider = 'future-learn'
 end
 
@@ -132,7 +132,7 @@ Activity.find_or_create_by(slug: 'impact-of-technology-how-to-lead-classroom-dis
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
-  activity.future_learn_id = 'e4115d3c-53d0-4538-94c2-e2a9ba366178'
+  activity.future_learn_course_id = 'e4115d3c-53d0-4538-94c2-e2a9ba366178'
   activity.provider = 'future-learn'
 end
 
