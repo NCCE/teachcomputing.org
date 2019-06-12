@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_144040) do
     t.string "stem_course_id"
     t.boolean "self_certifiable", default: false
     t.string "provider"
-    t.string "future_learn_id"
+    t.string "future_learn_course_id"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["slug"], name: "index_activities_on_slug", unique: true
