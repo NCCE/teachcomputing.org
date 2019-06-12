@@ -1,7 +1,9 @@
 function initialiseCollapsibleActivity() {
   const activity = document.querySelector(
     '.ncce-activity-links--add')
-
+  if (!activity) {
+    return
+  }
   const button = activity.querySelector('button')
   const target = activity.nextElementSibling
   const hideButton = target.querySelector('.ncce-collapsible-activity__title-button')
@@ -12,7 +14,7 @@ function initialiseCollapsibleActivity() {
 
   target.classList.toggle('ncce-collapsible-activity--progressive')
 
-  const listener = () => {
+  const listener = function() {
     const expanded = button.getAttribute('aria-expanded') === 'true'
     button.setAttribute('aria-expanded', !expanded)
     target.hidden = expanded
