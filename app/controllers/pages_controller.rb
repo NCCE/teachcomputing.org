@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   layout 'full-width'
-  before_action :redirect_to_dashboard, only: [:login]
+  before_action :redirect_to_dashboard, only: [:login, :signup_stem]
 
   def page
     render template: "pages/#{params[:page_slug]}"
@@ -21,6 +21,14 @@ class PagesController < ApplicationController
       auth_uri += "?source_uri=#{params[:source_uri]}"
     end
     render template: 'pages/login', locals: { auth_uri: auth_uri }
+  end
+
+  def signup_stem
+    if stem_login_enabled?
+      redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
+    else
+      render template: 'pages/signup-stem'
+    end
   end
 
   def static_programme_page

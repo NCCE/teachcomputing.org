@@ -21,10 +21,6 @@ RSpec.describe Activity, type: :model do
       expect(activity).to have_many(:users).through(:achievements)
     end
 
-    it 'has_many imports' do
-      expect(activity).to have_many(:imports)
-    end
-
     it 'has_many programmes' do
       expect(activity).to have_many(:programmes).through(:programme_activities)
     end

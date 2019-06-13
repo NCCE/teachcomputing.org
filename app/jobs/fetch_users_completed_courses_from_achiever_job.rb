@@ -5,9 +5,9 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
     courses = DelegateCourseList.from_achiever(user.stem_achiever_contact_no)
     courses.each do |course|
       begin
-        activity = Activity.find_by!(course_id: course.course_template_no)
+        activity = Activity.find_by!(stem_course_id: course.course_template_no)
       rescue ActiveRecord::RecordNotFound => e
-        Raven.tags_context(course_id: course.course_template_no, user_id: user.id)
+        Raven.tags_context(stem_course_id: course.course_template_no, user_id: user.id)
         Raven.capture_exception(e)
         next
       end
