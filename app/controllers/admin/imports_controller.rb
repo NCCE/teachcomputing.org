@@ -1,20 +1,18 @@
 class Admin::ImportsController < ApplicationController
-  before_action :set_activity, only: %i[new create]
   before_action :set_admin, only: %i[new create]
 
   def index
-    @activities = Activity.future_learn
+    @imports = Import.all.order('created_at ASC')
   end
 
   def new; end
 
   def create
-    import = Import.new(activity_id: params[:activity_id],
-                        provider: params[:provider],
+    import = Import.new(provider: params[:provider],
                         triggered_by: params[:triggered_by])
     if import.save
-      ProcessFutureLearnCsvExportJob.perform_later(@activity, params[:csv_file].read.force_encoding(Encoding::UTF_8).to_s, import)
-      flash[:notice] = "CSV Import for #{@activity.title} has been scheduled"
+      ProcessFutureLearnCsvExportJob.perform_later(params[:csv_file].read.force_encoding(Encoding::UTF_8).to_s, import)
+      flash[:notice] = 'CSV Import has been scheduled'
     else
       flash[:error] = 'Whoops something went wrong'
     end
@@ -35,9 +33,5 @@ class Admin::ImportsController < ApplicationController
 
   def decode_cookie(token)
     JWT.decode token, nil, false
-  end
-
-  def set_activity
-    @activity = Activity.find_by(id: params[:activity_id])
   end
 end

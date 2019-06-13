@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Admin::ImportsController do
-  let(:activities) { create_list(:activity, 5, :future_learn) }
+  let(:imports) { create_list(:import, 5) }
 
   describe 'GET #index' do
     before do
-      activities
+      imports
       get admin_imports_path
     end
 
-    it 'assigns activities instance variable' do
-      expect(assigns(:activities)).to eq activities
+    it 'assigns imports instance variable' do
+      expect(assigns(:imports)).to eq imports
     end
   end
 end
