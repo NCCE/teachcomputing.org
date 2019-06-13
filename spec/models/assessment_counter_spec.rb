@@ -17,9 +17,5 @@ RSpec.describe AssessmentCounter, type: :model do
       count = assessment_counter.get_next_number
       expect(assessment_counter.get_next_number).to eq (count + 1)
     end
-
-    it 'can\'t set the counter directly' do
-
-    end
   end
 end

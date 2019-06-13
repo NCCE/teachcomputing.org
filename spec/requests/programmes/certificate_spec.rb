@@ -79,11 +79,11 @@ RSpec.describe ProgrammesController do
           end
 
           it 'assigns the passed_test_at date' do
-            expect(assigns(:passed_test_at)).to eq(passed_exam.last_transition.created_at)
+            expect(assigns(:transition).created_at).to eq(passed_exam.last_transition.created_at)
           end
 
           it 'assigns the certificate_number' do
-            expect(assigns(:certificate_number)).to eq(20)
+            expect(assigns(:transition).metadata['certificate_number']).to eq(20)
           end
         end
       end

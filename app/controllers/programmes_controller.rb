@@ -77,9 +77,7 @@ class ProgrammesController < ApplicationController
       passed_achievements = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
         .where(activities: { category: 'assessment'})
       if passed_achievements.any?
-        transition = passed_achievements.last.last_transition
-        @passed_test_at = transition.created_at
-        @certificate_number = transition.metadata['certificate_number'] || 0
+        @transition = passed_achievements.last.last_transition
       end
     end
 end

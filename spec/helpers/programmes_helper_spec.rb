@@ -36,6 +36,10 @@ describe ProgrammesHelper, type: :helper do
   end
 
   describe('#certificate_number') do
+    it 'defaults to 0 for missing param' do
+      expect(certificate_number(nil, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-000')
+    end
+
     it 'adds one to index correctly' do
       expect(certificate_number(1, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-001')
     end

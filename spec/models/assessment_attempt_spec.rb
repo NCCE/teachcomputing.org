@@ -20,28 +20,6 @@ RSpec.describe AssessmentAttempt, type: :model do
     end
   end
 
-  describe '#passed_attempts_with_user' do
-    before do
-      [passed_attempt, second_passed_attempt, failed_attempt]
-    end
-
-    it 'returns the passed assessments' do
-      [passed_attempt, second_passed_attempt].each do |attempt|
-        expect(AssessmentAttempt.passed_attempts_with_user).to include(attempt)
-      end
-    end
-
-    it 'doesn\'t include failed assessments' do
-      expect(AssessmentAttempt.passed_attempts_with_user).to_not include(failed_attempt)
-    end
-
-    it 'ordering is correct' do
-      [passing_user, second_passing_user].each_with_index do |user, index|
-        expect(AssessmentAttempt.passed_attempts_with_user[index].user_id).to eq(user.id)
-      end
-    end
-  end
-
   describe 'delegate methods' do
     it { is_expected.to delegate_method(:can_transition_to?).to(:state_machine).as(:can_transition_to?) }
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }

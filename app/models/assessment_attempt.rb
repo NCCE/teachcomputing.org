@@ -5,10 +5,6 @@ class AssessmentAttempt < ApplicationRecord
 
   has_many :assessment_attempt_transitions, autosave: false, dependent: :destroy
 
-  scope :passed_attempts_with_user, -> {
-    in_state(:passed).includes(:user).order('most_recent_assessment_attempt_transition.created_at ASC')
-  }
-
   def state_machine
     @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)
   end
