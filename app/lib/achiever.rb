@@ -114,7 +114,8 @@ class Achiever
 
     begin
       response = RestClient.get(request, timeout: 120)
-    rescue RestClient::ExceptionWithResponse => exception
+    rescue RestClient::ExceptionWithResponse, RestClient::Exceptions::Timeout => exception
+      Raven.tags_context request: request
       Raven.capture_exception(exception)
     end
 
