@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     ActiveModel::Type::Boolean.new.cast(ENV.fetch('CERTIFICATION_ENABLED'))
   end
 
+  def stem_login_enabled?
+    ActiveModel::Type::Boolean.new.cast(ENV.fetch('STEM_LOGIN_ENABLED'))
+  end
+
   def authenticate_user!
     redirect_to(login_path) unless current_user
   end
