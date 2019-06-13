@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
   let(:user) { create(:user) }
-  let(:activity_one) { create(:activity, course_id: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') }
-  let(:activity_two) { create(:activity, course_id: '7d8cd802-34a6-4400-a72e-c12481c168b6') }
-  let(:activity_three) { create(:activity, course_id: '0d2ec239-c318-4b0b-acc9-683445f05ea0') }
+  let(:activity_one) { create(:activity, stem_course_id: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') }
+  let(:activity_two) { create(:activity, stem_course_id: '7d8cd802-34a6-4400-a72e-c12481c168b6') }
+  let(:activity_three) { create(:activity, stem_course_id: '0d2ec239-c318-4b0b-acc9-683445f05ea0') }
   let(:achievement) { create(:achievement, activity_id: activity_three.id, user_id: user.id) }
 
   before do

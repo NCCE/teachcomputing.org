@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
-  let(:activity) { create(:activity) }
+  let(:activity) { create(:activity, future_learn_course_id: '1234') }
   let(:user_one) { create(:user, email: 'user1@example.com') }
   let(:user_two) { create(:user, email: 'user2@example.com') }
   let(:user_three) { create(:user, email: 'user3@example.com') }
@@ -9,20 +9,20 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:user_five) { create(:user, email: 'user5@example.com') }
   let(:commenced_achievement_one) { create(:achievement, user_id: user_four.id, activity_id: activity.id) }
   let(:commenced_achievement_two) { create(:achievement, user_id: user_five.id, activity_id: activity.id) }
-  let(:import) { create(:import, activity: activity) }
+  let(:import) { create(:import) }
   let(:csv_contents) do
-    'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,
-    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,nil,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,nil,
-    2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%,nil,
-    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,nil,
-    2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,59%,0,0%,nil,'
+    'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,course_uuid,
+    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,nil,1234,
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,nil,1234,
+    2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%,nil,1234,
+    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,nil,1234,
+    2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,59%,0,0%,nil,1234,'
   end
 
   describe '#perform' do
     before do
-      [user_one, user_two, user_three, user_four, user_five]
-      ProcessFutureLearnCsvExportJob.perform_now(activity, csv_contents, import)
+      [user_one, user_two, user_three, user_four, user_five, activity]
+      ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
     end
 
     context 'when a user exists and steps completed is >= 60%' do

@@ -3,27 +3,19 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <span class="govuk-form-group">
-            <%= form_tag('/admin/imports', multipart: true) do %>
+            <%= form_tag('/admin/imports') do %>
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                   <h1 class="govuk-fieldset__heading">Import</h1>
                 </legend>
                 <div class="govuk-form-group">
                   <%= label_tag(:csv_file, 'CSV File', class: 'govuk-label') %>
-                  <%= hidden_field_tag :activity_id, @activity.id %>
                   <%= hidden_field_tag :provider, 'future-learn' %>
                   <%= hidden_field_tag :triggered_by, @admin_email %>
                   <%= file_field_tag :csv_file, required: true, class: 'govuk-file-upload' %><br>
                 </div>
                 <div class="govuk-form-group">
-                  <div class="govuk-warning-text">
-                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                      <strong class="govuk-warning-text__text">
-                        <span class="govuk-warning-text__assistive">Warning</span>
-                        Please check to ensure you have the correct CSV export relating to <%= @activity.title %>
-                      </strong>
-                  </div>
-                  <%= submit_tag 'Import', class: 'govuk-button ncce-button__pink', data: {confirm: "Please make sure the CSV is for this course: #{@activity.title}"} %>
+                  <%= submit_tag 'Import', class: 'govuk-button ncce-button__pink' %>
                 </div>
               </fieldset>
             <% end %>
