@@ -79,14 +79,7 @@ class ProgrammesController < ApplicationController
       if passed_achievements.any?
         transition = passed_achievements.last.last_transition
         @passed_test_at = transition.created_at
-        @certificate_index = transition.metadata['certificate_index'] || heal_missing_certificate_index(transition)
+        @certificate_number = transition.metadata['certificate_number'] || 0
       end
-    end
-
-    def heal_missing_certificate_index(transition)
-      certificate_index = @programme.assessment.assessment_attempts.passed_attempts_with_user
-                                        .map(&:user_id).index(current_user.id)
-      transition.fix_missing_metadata(certificate_index: certificate_index)
-      transition.metadata['certificate_index']
     end
 end

@@ -1,7 +1,7 @@
 module ProgrammesHelper
 
-  def certificate_number(index, passed_date)
-    "#{passed_date.strftime('%Y%m')}-#{sprintf('%03d', index + 1)}"
+  def certificate_number(certificate_number, passed_date)
+    "#{passed_date.strftime('%Y%m')}-#{sprintf('%03d', certificate_number)}"
   end
 
   def to_word_ordinal(number)

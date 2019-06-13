@@ -61,7 +61,7 @@ RSpec.describe ProgrammesController do
           before do
             programme_activity
             user_programme_enrolment
-            passed_exam.set_to_complete(certificate_index: 20)
+            passed_exam.set_to_complete(certificate_number: 20)
             passed_attempt
             get programme_certificate_path('cs-accelerator')
           end
@@ -82,8 +82,8 @@ RSpec.describe ProgrammesController do
             expect(assigns(:passed_test_at)).to eq(passed_exam.last_transition.created_at)
           end
 
-          it 'assigns the certificate_index' do
-            expect(assigns(:certificate_index)).to eq(20)
+          it 'assigns the certificate_number' do
+            expect(assigns(:certificate_number)).to eq(20)
           end
         end
       end

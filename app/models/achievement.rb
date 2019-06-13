@@ -20,11 +20,11 @@ class Achievement < ApplicationRecord
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
 
-  def set_to_complete(extra_meta_data = {})
+  def set_to_complete(extra_metadata = {})
     return false unless can_transition_to?(:complete)
 
-    meta_data = extra_meta_data.merge(credit: activity.credit)
-    transition_to(:complete, meta_data)
+    metadata = extra_metadata.merge(credit: activity.credit)
+    transition_to(:complete, metadata)
   end
 
   def self.initial_state

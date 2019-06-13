@@ -5,6 +5,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     let(:activity) { create(:activity) }
     let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
     let(:assessment) { create(:assessment, class_marker_test_id: '100', activity_id: activity.id) }
+    let(:assessment_counter) { create(:assessment_counter, assessment_id: assessment.id) }
     let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
     let(:passing_json_body) { File.read('spec/support/class_marker/passing_webhook.json') }
     let(:failed_json_body) { File.read('spec/support/class_marker/failed_webhook.json') }
@@ -13,7 +14,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   describe '#perform' do
     context 'when the user has passed the test' do
       before do
-        [user, activity, achievement, assessment, assessment_attempt]
+        [user, activity, achievement, assessment, assessment_counter, assessment_attempt]
         result = JSON.parse(passing_json_body, {:symbolize_names => true})
         UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(result[:test][:test_id], result[:result][:email], result[:result][:percentage])
       end
@@ -27,7 +28,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       end
 
       it 'transition stores the certificate number' do
-        expect(achievement.last_transition.metadata['certificate_index']).to eq(0)
+        expect(achievement.last_transition.metadata['certificate_number']).to eq(1)
       end
     end
 
