@@ -23,7 +23,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 12.hours) do
       make_request(request)
     end
 
@@ -36,7 +36,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 12.hours) do
       make_request(request)
     end
 
@@ -50,7 +50,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{course.course_template_no}-#{Date.today}", expires_in: 12.hours) do
       make_request(request)
     end
 
@@ -64,7 +64,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 12.hours) do
       make_request(request)
     end
 
@@ -77,7 +77,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 6.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{Date.today}", expires_in: 12.hours) do
       make_request(request)
     end
 
@@ -90,7 +90,7 @@ class Achiever
     params = build_params(workflow_id, workflow_params)
     request = build_request(params)
 
-    result = Rails.cache.fetch("#{workflow_id}-#{id}-#{Date.today}", expires_in: 12.hours) do
+    result = Rails.cache.fetch("#{workflow_id}-#{id}-#{Date.today}", expires_in: 24.hours) do
       make_request(request)
     end
 
@@ -111,7 +111,14 @@ class Achiever
 
   def make_request(request)
     beginning_time = Time.now
-    response = RestClient.get(request)
+
+    begin
+      response = RestClient.get(request, timeout: 120)
+    rescue RestClient::ExceptionWithResponse, RestClient::Exceptions::Timeout => exception
+      Raven.tags_context request: request
+      Raven.capture_exception(exception)
+    end
+
     end_time = Time.now
     Rails.logger.debug "make_request time: #{(end_time - beginning_time)*1000} ms.  Request:\n#{request}\n\n"
     response.body
