@@ -11,13 +11,7 @@ RSpec.describe PagesController do
 
   describe 'GET #cs-accelerator' do
     before do
-      @certification_enabled = ENV['CERTIFICATION_ENABLED']
-      ENV['CERTIFICATION_ENABLED'] = 'true'
       programme
-    end
-
-    after do
-      ENV['CERTIFICATION_ENABLED'] = @certification_enabled
     end
 
     context 'when user is not logged in' do
