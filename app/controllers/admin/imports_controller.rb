@@ -2,7 +2,7 @@ class Admin::ImportsController < ApplicationController
   before_action :set_admin, only: %i[new create]
 
   def index
-    @imports = Import.all.order('created_at ASC')
+    @imports = Import.all
   end
 
   def new; end
