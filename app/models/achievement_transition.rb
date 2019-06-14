@@ -5,10 +5,6 @@ class AchievementTransition < ApplicationRecord
 
   after_destroy :update_most_recent, if: :most_recent?
 
-  def fix_missing_metadata(missing_data)
-    update(metadata: missing_data.merge(metadata))
-  end
-
   private
 
   def update_most_recent
