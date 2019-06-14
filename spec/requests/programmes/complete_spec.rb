@@ -44,97 +44,83 @@ RSpec.describe ProgrammesController do
   end
 
   describe '#complete' do
-    describe 'while certification is not enabled' do
-      it 'redirects to home page' do
+    describe 'while logged in' do
+      before do
+        programme
+        allow_any_instance_of(AuthenticationHelper)
+          .to receive(:current_user).and_return(user)
+      end
+
+      it 'handles missing programmes' do
+        expect {
+          get programme_complete_path('programme-missing')
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it 'redirects if not enrolled' do
         get programme_complete_path('cs-accelerator')
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(cs_accelerator_path)
+      end
+
+      describe 'and enrolled' do
+        before do
+          user_programme_enrolment
+          get programme_complete_path('cs-accelerator')
+        end
+
+        it 'redirects if not complete' do
+          expect(response).to redirect_to(programme_path('cs-accelerator'))
+        end
+      end
+
+      describe 'and complete' do
+        before do
+          setup_achievements_for_completed_course
+          get programme_complete_path('cs-accelerator')
+        end
+
+        it 'shows the page if complete' do
+          expect(response.status).to eq(200)
+        end
+
+        it 'renders the correct template' do
+          expect(response).to render_template('complete')
+        end
+
+        it 'assigns the programme' do
+          expect(assigns(:programme)).to eq(programme)
+        end
+
+        it 'assigns the online achievements' do
+          expect(assigns(:online_achievements)).to include(online_achievement)
+        end
+
+        it 'assigns the face_to_face achievements' do
+          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+        end
+
+        it 'assigns the diagnostic achievement state correctly' do
+          expect(assigns(:downloaded_diagnostic)).to eq (false)
+        end
+
+        it 'assigns the assessment passed state correctly' do
+          expect(assigns(:passed_assessment)).to eq (true)
+        end
+
+        it 'redirects show to complete' do
+          get programme_path('cs-accelerator')
+          expect(response).to redirect_to(programme_complete_path('cs-accelerator'))
+        end
       end
     end
 
-    describe 'while certification is enabled' do
+    describe 'while logged out' do
       before do
-        allow_any_instance_of(ProgrammesController)
-          .to receive(:certification_enabled?).and_return(true)
+        get programme_complete_path('cs-accelerator')
       end
 
-      describe 'while logged in' do
-        before do
-          programme
-          allow_any_instance_of(AuthenticationHelper)
-            .to receive(:current_user).and_return(user)
-        end
-
-        it 'handles missing programmes' do
-          expect {
-            get programme_complete_path('programme-missing')
-          }.to raise_error(ActiveRecord::RecordNotFound)
-        end
-
-        it 'redirects if not enrolled' do
-          get programme_complete_path('cs-accelerator')
-          expect(response).to redirect_to(cs_accelerator_path)
-        end
-
-        describe 'and enrolled' do
-          before do
-            user_programme_enrolment
-            get programme_complete_path('cs-accelerator')
-          end
-
-          it 'redirects if not complete' do
-            expect(response).to redirect_to(programme_path('cs-accelerator'))
-          end
-        end
-
-        describe 'and complete' do
-          before do
-            setup_achievements_for_completed_course
-            get programme_complete_path('cs-accelerator')
-          end
-
-          it 'shows the page if complete' do
-            expect(response.status).to eq(200)
-          end
-
-          it 'renders the correct template' do
-            expect(response).to render_template('complete')
-          end
-
-          it 'assigns the programme' do
-            expect(assigns(:programme)).to eq(programme)
-          end
-
-          it 'assigns the online achievements' do
-            expect(assigns(:online_achievements)).to include(online_achievement)
-          end
-
-          it 'assigns the face_to_face achievements' do
-            expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-          end
-
-          it 'assigns the diagnostic achievement state correctly' do
-            expect(assigns(:downloaded_diagnostic)).to eq (false)
-          end
-
-          it 'assigns the assessment passed state correctly' do
-            expect(assigns(:passed_assessment)).to eq (true)
-          end
-
-          it 'redirects show to complete' do
-            get programme_path('cs-accelerator')
-            expect(response).to redirect_to(programme_complete_path('cs-accelerator'))
-          end
-        end
-      end
-
-      describe 'while logged out' do
-        before do
-          get programme_complete_path('cs-accelerator')
-        end
-
-        it 'redirects to login' do
-          expect(response).to redirect_to(login_path)
-        end
+      it 'redirects to login' do
+        expect(response).to redirect_to(login_path)
       end
     end
   end

@@ -29,10 +29,8 @@
   </div>
 </div>
 </div>
-<% if @certification_enabled %>
-  <% @programmes.each do |programme| %>
-    <%= render "dashboard/programmes/#{programme.slug}", programme: programme %>
-  <% end %>
+<% @programmes.each do |programme| %>
+  <%= render "dashboard/programmes/#{programme.slug}", programme: programme %>
 <% end %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>
