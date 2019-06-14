@@ -104,9 +104,6 @@
     "GHOST_LIMIT_FEATURED_POSTS": {
       "required": true
     },
-    "CERTIFICATION_ENABLED": {
-      "required": true
-    },
     "CLASS_MARKER_DIAGNOSTIC_URL": {
       "required": true
     },

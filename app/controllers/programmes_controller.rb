@@ -1,6 +1,5 @@
 class ProgrammesController < ApplicationController
   layout 'full-width'
-  before_action :enabled?
   before_action :authenticate_user!
   before_action :find_programme!, only: [:show, :complete, :certificate]
   before_action :user_enrolled?, only: [:show, :complete, :certificate]
@@ -22,10 +21,6 @@ class ProgrammesController < ApplicationController
   end
 
   private
-
-    def enabled?
-      redirect_to root_path unless certification_enabled?
-    end
 
     def find_programme!
       @programme = Programme.find_by!(slug: params[:slug])
