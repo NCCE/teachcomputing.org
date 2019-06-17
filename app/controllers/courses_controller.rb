@@ -34,13 +34,15 @@ class CoursesController < ApplicationController
   def fetch_course_list
     courses = @achiever.approved_course_templates
     @course_occurrences = @achiever.future_face_to_face_courses + @achiever.future_online_courses
-
-    courses.each do |course|
-      @achiever.course_template_subject_details(course)
-      @achiever.course_template_age_range(course)
-      @course_occurrences.each do |course_occurrence|
-        if course_occurrence.course_template_no == course.course_template_no
-          course.occurrences.push(course_occurrence)
+    
+    Rails.cache.fetch("fetch_course_list-#{Date.today}", expires_in: 3.hours) do
+      courses.each do |course|
+        @achiever.course_template_subject_details(course)
+        @achiever.course_template_age_range(course)
+        @course_occurrences.each do |course_occurrence|
+          if course_occurrence.course_template_no == course.course_template_no
+            course.occurrences.push(course_occurrence)
+          end
         end
       end
     end
