@@ -8,6 +8,7 @@ namespace :cs_accelerator do
       { email: 'web@raspberrypi.org', percentage: 70.0 },
       { email: 'tor_deavall@yahoo.co.uk', percentage: 72.0 },
       { email: 'ntarrant@robertsbridge.org.uk', percentage: 72.0 },
+      { email: 'a.j.tomkins@gmail.com', percentage: 64.0 },
       { email: 'a.j.tomkins@gmail.com', percentage: 68.0 },
       { email: ' shelley.cadman@mybiddenham.com', percentage: 72.0 },
       { email: 'g2ewl@hotmail.co.uk', percentage: 24.0 },
@@ -32,6 +33,7 @@ namespace :cs_accelerator do
       email = test_taker[:email]
       user = User.find_by(email: email)
       next unless user
+
       puts "User #{email}..."
       achievement = assessment.activity.achievements.find_or_initialize_by(user_id: user.id)
       if achievement.current_state == 'complete'
