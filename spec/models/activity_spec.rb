@@ -54,7 +54,9 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only online activities' do
-        expect(Activity.online.to_a).to eq(online_courses)
+        online_courses.each do |online_course|
+          expect(Activity.online.to_a).to include(online_course)
+        end
       end
 
       it 'does not include actions' do
@@ -68,7 +70,9 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only face-to-face activities' do
-        expect(Activity.face_to_face.to_a).to eq(face_to_face_courses)
+        face_to_face_courses.each do |face_to_face_course|
+          expect(Activity.face_to_face.to_a).to include(face_to_face_course)
+        end
       end
 
       it 'does not include actions' do
@@ -82,7 +86,9 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only future-learn activities' do
-        expect(Activity.future_learn.to_a).to eq(online_courses)
+        online_courses.each do |online_course|
+          expect(Activity.future_learn.to_a).to include(online_course)
+        end
       end
 
       it 'does not include actions' do
@@ -96,7 +102,9 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only stem-learning activities' do
-        expect(Activity.stem_learning.to_a).to eq(face_to_face_courses)
+        face_to_face_courses.each do |face_to_face_course|
+          expect(Activity.stem_learning.to_a).to include(face_to_face_course)
+        end
       end
 
       it 'does not include actions' do

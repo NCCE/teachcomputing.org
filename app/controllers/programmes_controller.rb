@@ -49,7 +49,7 @@ class ProgrammesController < ApplicationController
       if @num_attempts > 0
         last_attempt = attempts.last
         if last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s && @num_attempts >= 2
-          @can_take_test_at = [last_attempt.state_machine.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
+          @can_take_test_at = [last_attempt.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
         elsif last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
           @currently_taking_test = true
         end
@@ -69,10 +69,9 @@ class ProgrammesController < ApplicationController
     end
 
     def get_certificate_details
-      passed_assessments = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
+      passed_achievements = current_user.achievements.for_programme(@programme).in_state('complete').joins(:activity)
         .where(activities: { category: 'assessment'})
-      if passed_assessments.any?
-        @passed_test_at = passed_assessments.last.state_machine.last_transition.created_at
-      end
+
+      @transition = passed_achievements.last.last_transition if passed_achievements.any?
     end
 end

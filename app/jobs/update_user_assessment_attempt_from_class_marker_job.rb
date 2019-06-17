@@ -10,7 +10,8 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
 
       if percentage.to_f >= 65.0
         latest_attempt.transition_to(:passed, percentage: percentage.to_f)
-        achievement.set_to_complete
+        certificate_number = assessment.assessment_counter.get_next_number
+        achievement.set_to_complete(certificate_number: certificate_number)
       else
         latest_attempt.transition_to(:failed, percentage: percentage.to_f)
       end
@@ -20,6 +21,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
   end
 
   private
+
     def find_achievement(user, assessment)
       user.achievements.where(activity_id: assessment.activity.id).first
     end
