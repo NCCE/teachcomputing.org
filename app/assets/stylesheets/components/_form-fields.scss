@@ -1,0 +1,39 @@
+.govuk-input:focus,
+.govuk-radios__input:focus,
+.govuk-textarea:focus {
+  outline-color: $ncce-pink;
+}
+
+.govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+  box-shadow: 0 0 0 3px $ncce-pink;
+}
+
+.govuk-select:focus {
+  box-shadow: 0 0 0 2px $ncce-pink;
+  outline-color: $ncce-white;
+  outline-offset: 2px;
+}
+
+.ncce-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: image-url('chevron.svg');
+  background-position: calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  font-size: 1rem;
+  height: 2.5rem;
+  margin-right: 20px;
+  padding-right: 30px;
+  @include govuk-media-query($until: 900px) {
+    margin: 0 20px 20px 0;
+  }
+  @include govuk-media-query($until: tablet) {
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  &:focus {
+    outline-color: rgba(255, 255, 255, 0);
+  }
+}

@@ -8,14 +8,12 @@
 
   &:hover {
     background-color: $ncce-black;
-    box-shadow: 0 4px 0 $ncce-black;
-    outline-color: $ncce-black;
   }
 
   &:focus {
-    background-color: $ncce-black !important;
-    color: $ncce-white !important;
-    outline-color: $ncce-black !important;
+    background-color: $ncce-black;
+    color: $ncce-white;
+    outline-color: $ncce-black;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -31,15 +29,13 @@
   width: calc(100% - 2rem);
 
   @include govuk-media-query($from: tablet) {
-    margin-left: 0;
+    margin: 0;
     width: auto;
-    margin-bottom: 0;
   }
 
-  &:hover,
   &:focus {
-    box-shadow: 0 4px 0 $ncce-dark-pink;
-    outline-color: $ncce-white !important;
+    box-shadow: 0 0 0 2px $ncce-black;
+    outline-color: rgba(255, 255, 255, 0);
   }
 
 }
