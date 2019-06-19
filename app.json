@@ -104,13 +104,13 @@
     "GHOST_LIMIT_FEATURED_POSTS": {
       "required": true
     },
-    "CERTIFICATION_ENABLED": {
-      "required": true
-    },
     "CLASS_MARKER_DIAGNOSTIC_URL": {
       "required": true
     },
     "CLASS_MARKER_WEBHOOK_SECRET_PHRASE": {
+      "required": true
+    },
+    "STEM_LOGIN_ENABLED": {
       "required": true
     }
   },

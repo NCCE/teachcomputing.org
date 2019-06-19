@@ -9,7 +9,7 @@ class Achievement < ApplicationRecord
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
   scope :for_programme, ->(programme) {
-    where("activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)", programme.id)
+    where('activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)', programme.id)
   }
 
   scope :with_category, lambda { |category|
@@ -20,10 +20,11 @@ class Achievement < ApplicationRecord
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
 
-  def set_to_complete
+  def set_to_complete(extra_metadata = {})
     return false unless can_transition_to?(:complete)
 
-    transition_to(:complete, credit: activity.credit)
+    metadata = extra_metadata.merge(credit: activity.credit)
+    transition_to(:complete, metadata)
   end
 
   def self.initial_state
@@ -36,5 +37,5 @@ class Achievement < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :can_transition_to?, :current_state, :transition_to, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine
 end

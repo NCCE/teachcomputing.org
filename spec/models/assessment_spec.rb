@@ -11,5 +11,9 @@ RSpec.describe Assessment, type: :model do
     it 'belongs to activity' do
       expect(assessment).to belong_to(:activity)
     end
+
+    it 'has_one assessment_counter' do
+      expect(assessment).to have_one(:assessment_counter)
+    end
   end
 end

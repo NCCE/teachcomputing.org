@@ -24,7 +24,11 @@ class PagesController < ApplicationController
   end
 
   def signup_stem
-    redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
+    if stem_login_enabled?
+      redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
+    else
+      render template: 'pages/signup-stem'
+    end
   end
 
   def static_programme_page

@@ -5,7 +5,7 @@ FactoryBot.define do
 
     factory :completed_achievement do
       after(:create) do |achievement|
-        achievement.transition_to(:complete)
+        achievement.transition_to(:complete, { credit: 100 })
       end
     end
   end

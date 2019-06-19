@@ -35,6 +35,26 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
+  describe('#certificate_number') do
+    it 'defaults to 0 for missing param' do
+      expect(certificate_number(nil, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-000')
+    end
+
+    it 'adds one to index correctly' do
+      expect(certificate_number(1, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-001')
+    end
+
+    it 'pads numbers < 100 correctly' do
+      expect(certificate_number(10, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-010')
+      expect(certificate_number(99, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-099')
+    end
+
+    it 'allows numbers > 100 correctly' do
+      expect(certificate_number(100, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-100')
+      expect(certificate_number(2845, DateTime.parse('2001-02-03T04:05:06+07'))).to eq('200102-2845')
+    end
+  end
+
   describe('#to_word_ordinal') do
     it 'returns "0th" when argument is nil' do
       expect(to_word_ordinal(nil)).to eq('0th')

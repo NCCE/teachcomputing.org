@@ -43,7 +43,7 @@
               <%= f.select :activity_id,
                 options_for_select(Activity.user_removable.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
                 { include_blank: 'Select an activity' },
-                { class: 'govuk-select ncce-activity-form__select',
+                { class: 'govuk-select ncce-select ncce-activity-form__select',
                   'aria-label': 'Select an activity' }
               %>
               <%= f.submit 'Add course', class: 'govuk-button ncce-button__pink ncce-activity-form__button--pink' %>
