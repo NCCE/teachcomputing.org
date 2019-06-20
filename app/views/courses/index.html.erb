@@ -122,7 +122,7 @@
               </ul>
             <% end %>
             <% unless course.subjects.nil? && course.key_stages.nil? && course.workstream.nil?%>
-              <p class="govuk-body">
+              <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
                 <% course.subjects.each do |subject| %>
                   <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
                 <% end %>

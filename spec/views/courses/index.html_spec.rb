@@ -61,6 +61,10 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
     end
 
+    it 'renders course subject tags area' do
+      expect(rendered).to have_css('h3.screen-reader-only', text: 'Tags for this course')
+    end
+
     it 'renders course subject tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
