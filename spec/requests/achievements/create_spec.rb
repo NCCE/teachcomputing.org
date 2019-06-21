@@ -32,6 +32,14 @@ RSpec.describe AchievementsController do
       it 'creates an achievement with the correct complete state' do
         expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
       end
+
+      it 'shows a flash notice' do
+        expect(flash[:notice]).to be_present
+      end
+
+      it 'flash notice has correct info' do
+        expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
+      end
     end
 
     context 'with invalid params' do
@@ -52,6 +60,14 @@ RSpec.describe AchievementsController do
 
       it 'does not create an Achievement' do
         expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+      end
+
+      it 'shows a flash error' do
+        expect(flash[:error]).to be_present
+      end
+
+      it 'flash error has correct info' do
+        expect(flash[:error]).to match(/something went wrong adding/)
       end
     end
   end
