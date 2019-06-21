@@ -8,15 +8,62 @@ RSpec.describe AchievementsController do
   describe 'DELETE #destroy' do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-      delete achievement_path(id: achievement.id)
     end
 
-    it 'redirects to the dashboard path' do
-      expect(response).to redirect_to(dashboard_path)
+    context 'with valid params' do
+      subject do
+        delete achievement_path(id: achievement.id)
+      end
+
+      before do
+        subject
+      end
+
+      it 'redirects to the dashboard path' do
+        expect(response).to redirect_to(dashboard_path)
+      end
+
+      it 'removes the Achievement' do
+        expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+      end
+
+      it 'shows a flash notice' do
+        expect(flash[:notice]).to be_present
+      end
+
+      it 'flash notice has correct info' do
+        expect(flash[:notice]).to match(/'#{activity.title}' has been removed/)
+      end
     end
 
-    it 'removes the Achievement' do
-      expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+    context 'with invalid params' do
+      subject do
+        post achievements_path,
+             params: {
+               achievement: { activity_id: activity.id }
+             }
+        delete achievement_path(id: 'invalid')
+      end
+
+      before do
+        subject
+      end
+
+      it 'redirects to the dashboard path' do
+        expect(response).to redirect_to(dashboard_path)
+      end
+
+      it 'does not delete an Achievement' do
+        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
+      end
+
+      it 'shows a flash error' do
+        expect(flash[:error]).to be_present
+      end
+
+      it 'flash error has correct info' do
+        expect(flash[:error]).to match(/something went wrong removing/)
+      end
     end
   end
 end

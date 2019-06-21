@@ -4,22 +4,21 @@ class AchievementsController < ApplicationController
     @achievement.user_id = current_user.id
 
     if @achievement.save
-      flash[:notice] = "Great! Your activity has now been added #{view_context.link_to_if(@achievement.activity.self_certifiable?, 'Undo', achievement_path(@achievement.id), method: :delete) {}}"
+      flash[:notice] = "Great! '#{@achievement.activity.title}' has been added to your Record of Achievement #{view_context.link_to_if(@achievement.activity.self_certifiable?, 'Undo', achievement_path(@achievement.id), method: :delete) {}}"
       @achievement.transition_to(:complete, credit: @achievement.activity.credit)
     else
-      flash[:error] = 'Whoops something went wrong'
+      flash[:error] = "Whoops something went wrong adding the activity to your Record of Achievement"
     end
 
     redirect_to dashboard_path
   end
 
   def destroy
-    @achievement = Achievement.find_by(id: params[:id])
-
-    if @achievement.destroy
-      flash[:notice] = 'Your activity has been removed'
-    else
-      flash[:error] = 'Whoops something went wrong'
+    begin
+      @achievement = Achievement.find_by!(id: params[:id])
+      flash[:notice] = "'#{@achievement.activity.title}' has been removed from your Record of Achievement" if @achievement.destroy!
+    rescue
+      flash[:error] = 'Whoops something went wrong removing the activity from your Record of Achievement'
     end
 
     redirect_to dashboard_path
