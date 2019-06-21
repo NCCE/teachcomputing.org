@@ -51,25 +51,25 @@
               options_for_select(@levels, @current_level),
               {
                 include_blank: 'Any level',
-                class: 'govuk-select ncce-select js-course-filter-select',
+                class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by level' }
             %>
             <%= select_tag :location,
               options_for_select(@locations, @current_location),
               {
                 include_blank: 'Any location',
-                class: 'govuk-select ncce-select js-course-filter-select',
+                class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by location' }
             %>
             <%= select_tag :topic,
               options_for_select(@topics, @current_topic),
               {
                 include_blank: 'Any topic',
-                class: 'govuk-select ncce-select js-course-filter-select',
+                class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
             %>
             <%= hidden_field_tag :workstream, @current_workstream %>
-            <%= submit_tag "Apply", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button js-course-filter-button' %>
+            <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
           <% end %>
         </div>
       </div>

@@ -98,7 +98,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders filter submit' do
-      expect(rendered).to have_css('.ncce-button__pink[value="Apply"]', count: 1)
+      expect(rendered).to have_css('.ncce-button__pink[value="Apply filter"]', count: 1)
     end
 
   end
