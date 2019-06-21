@@ -24,7 +24,7 @@ RSpec.describe('layouts/application', type: :view) do
   end
 
   it 'has correct number of Twitter meta tags' do
-    expect(rendered).to have_xpath('//meta[starts-with(@name, "twitter:")]', :visible => false, count: 6)
+    expect(rendered).to have_xpath('//meta[starts-with(@name, "twitter:")]', :visible => false, count: 7)
   end
 
   it 'has a skip to content link' do
