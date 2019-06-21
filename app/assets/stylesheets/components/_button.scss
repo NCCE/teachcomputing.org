@@ -6,7 +6,12 @@
 	margin: 0;
 	padding: 12px 25px;
 
-  &:hover {
+  &[disabled] {
+    background-color: $ncce-pink
+  }
+
+  &:hover,
+  &[disabled]:hover {
     background-color: $ncce-black;
   }
 
@@ -14,6 +19,10 @@
     background-color: $ncce-black;
     color: $ncce-white;
     outline-color: $ncce-black;
+  }
+
+  &[disabled]:active {
+    box-shadow: 0 4px 0 $ncce-dark-pink;
   }
 
   @include govuk-media-query($from: desktop) {
