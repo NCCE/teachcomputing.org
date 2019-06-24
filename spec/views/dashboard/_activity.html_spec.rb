@@ -27,8 +27,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
 
     it 'has a remove link for self removable courses' do
-      expect(rendered).to have_xpath("//a[@title='Remove #{removable_activity.title}']",
-                                     class: 'ncce-activity-list__item-remove', text: 'Remove')
+      expect(rendered).to have_css('.ncce-activity-list__item-remove', text: /Remove.+#{removable_activity.title}/)
     end
 
     it 'has a remove link for self removable courses only' do

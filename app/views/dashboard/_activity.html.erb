@@ -6,12 +6,12 @@
           <h2 class="govuk-heading-m ncce-dashboard__title">Your record of achievement</h2>
         </div>
       </div>
-      <ul class="govuk-list ncce-activity-list">
+      <ul class="govuk-list ncce-activity-list" role="list">
         <% @achievements.each do |achievement| %>
           <li class="ncce-activity-list__item ncce-activity-list__remove">
+            <span class="screen-reader-only">Completed:</span>
             <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
-            <%= link_to_if(achievement.activity.self_certifiable?, 'Remove', achievement_path(achievement.id),
-              title: "Remove #{achievement.activity.title}",
+            <%= link_to_if(achievement.activity.self_certifiable?, ("Remove <span class='screen-reader-only'>#{achievement.activity.title}</span>").html_safe, achievement_path(achievement.id),
               class: 'ncce-link ncce-activity-list__item-remove',
               method: :delete){}
             %>

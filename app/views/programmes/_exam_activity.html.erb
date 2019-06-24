@@ -7,7 +7,7 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position">
     <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
     <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Pass the final test</span>
-    <ul class="govuk-body-s ncce-exam-activity__remarks">
+    <ul class="govuk-body-s ncce-exam-activity__remarks" role="list" aria-label="Test information">
       <li><%= image_tag 'question-mark.svg', alt: '' %> 25 multiple-choice questions</li>
       <li><%= image_tag 'time-30-minutes.svg', alt: '' %> 30 minute time limit</li>
       <li><%= image_tag 'tick-plain.svg', alt: '' %> Pass mark of 65%</li>
