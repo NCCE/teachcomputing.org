@@ -1,14 +1,14 @@
 <li class="ncce-activity-list__item">
-  <span class="ncce-activity-list__item-text">Signed up to the National Centre for Computing Education</span>
+  <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
 </li>
 <% if @downloaded_diagnostic %>
   <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text">Completed the diagnostic test</span>
+    <span class="ncce-activity-list__item-text">Used the diagnostic tool</span>
   </li>
 <% else %>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text">Complete the diagnostic
-      test</span>
-    <%= link_to 'Do the diagnostic', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded', role: 'button', draggable: 'false', target: :_blank  %>
+    <span class="ncce-activity-list__item-text">Optionally, use the diagnostic
+      tool</span>
+    <%= link_to 'Use the diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded', role: 'button', draggable: 'false', target: :_blank  %>
   </li>
 <% end %>
