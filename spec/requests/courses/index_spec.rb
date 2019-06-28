@@ -285,6 +285,10 @@ RSpec.describe CoursesController do
         it 'flash notice has correct info' do
           expect(flash[:notice]).to match(/programme = National Centre - Non-Core/)
         end
+
+        it 'flash notice has correct courses count' do
+          expect(flash[:notice]).to match(/Showing 3 courses from a total/)
+        end
       end
 
       context 'when filtering by level and location' do
@@ -312,6 +316,10 @@ RSpec.describe CoursesController do
         it 'flash notice has correct info' do
           expect(flash[:notice]).to match(/location = York/)
           expect(flash[:notice]).to match(/level = Key stage 4/)
+        end
+
+        it 'flash notice has singularises "courses" correctly' do
+          expect(flash[:notice]).to match(/Showing 1 course from a total/)
         end
       end
 
