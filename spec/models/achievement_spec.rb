@@ -4,6 +4,8 @@ RSpec.describe Achievement, type: :model do
   let(:achievement) { create(:achievement) }
   let(:achievement2) { create(:achievement) }
   let(:completed_achievement) { create(:completed_achievement) }
+  let(:diagnostic_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
 
@@ -37,6 +39,36 @@ RSpec.describe Achievement, type: :model do
 
     it 'when programme doesn\'t have matching activity it doesn\'t return the achievement' do
       expect(Achievement.for_programme(programme)).not_to include(achievement2)
+    end
+  end
+
+  describe '#with_category' do
+    before do
+      diagnostic_achievement
+      achievement
+    end
+
+    it 'returns the achievements which match the category' do
+      expect(Achievement.with_category(achievement.activity.category)).to include(achievement)
+    end
+
+    it 'omits the achievements which don\'t match the category' do
+      expect(Achievement.with_category(achievement.activity.category)).to_not include(diagnostic_achievement)
+    end
+  end
+
+  describe '#without_category' do
+    before do
+      diagnostic_achievement
+      achievement
+    end
+
+    it 'returns the achievements which match the category' do
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to include(achievement)
+    end
+
+    it 'omits the achievements which don\'t match the category' do
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to_not include(diagnostic_achievement)
     end
   end
 

@@ -13,7 +13,7 @@
               <h3 class="govuk-body-l govuk-!-font-weight-bold"><%= link_to programme.title, programme_path(programme.slug), class: 'ncce-link' %></h3>
               <div class="certification-progress__fudge">
                 <% credits_for_accelerator(current_user, programme) do |total_credits| %>
-                  <progress class="certification-progress__fudge-bar" aria-label="Progress towards test: <%= total_credits %>/80 credits" value="<%= total_credits %>" max="80"></progress>
+                  <progress class="certification-progress__fudge-bar" aria-label="You have <%= total_credits.to_i %> out of 80 credits" value="<%= total_credits %>" max="80"></progress>
                 <% end %>
                 <% if can_take_accelerator_test?(current_user, programme) %>
                   <span class="certification-progress__fudge-bar-target certification-progress__fudge-bar-target--ready" aria-label="You are eligible for the test"></span>

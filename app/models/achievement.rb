@@ -16,6 +16,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: { category: category })
   }
 
+  scope :without_category, lambda { |category|
+    joins(:activity).where.not(activities: { category: category })
+  }
+
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end

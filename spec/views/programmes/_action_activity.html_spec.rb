@@ -9,7 +9,7 @@ RSpec.describe('programmes/_action_activity', type: :view) do
 
   it 'shows the registered activity' do
     render
-    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Signed up to the National Centre for Computing Education')
+    expect(rendered).to have_css('.ncce-activity-list__item', text: 'Created your account with the National Centre for Computing Education')
   end
 
   context 'when user has not downloaded the diagnostic' do
@@ -22,7 +22,7 @@ RSpec.describe('programmes/_action_activity', type: :view) do
     end
 
     it 'has a download diagnostic button' do
-      expect(rendered).to have_link('Do the diagnostic', count: 1)
+      expect(rendered).to have_link('Use the diagnostic tool', count: 1)
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe('programmes/_action_activity', type: :view) do
     end
 
     it 'has a completed text' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /Completed the diagnostic test/)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /Used the diagnostic tool/)
     end
   end
 
