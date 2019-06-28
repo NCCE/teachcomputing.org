@@ -10,7 +10,7 @@ end
 Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
   activity.title = 'Created your account with the National Centre for Computing Education'
   activity.credit = 5
-  activity.slug = activity.title.parameterize
+  activity.slug = 'registered-with-the-national-centre'
   activity.category = 'action'
   activity.self_certifiable = false
   activity.provider = 'system'
