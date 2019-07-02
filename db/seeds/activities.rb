@@ -217,6 +217,51 @@ Activity.find_or_create_by(slug: 'python-programming-essentials-for-gcse-compute
   activity.provider = 'stem-learning'
 end
 
+Activity.find_or_create_by(slug: 'creative-computing-for-key-stage-3') do |activity|
+  activity.title = 'Creative Computing for Key Stage 3'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '9239cb0d-3d45-4347-a212-2788ec9d0437'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'gcse-computer-science-developing-outstanding-teaching') do |activity|
+  activity.title = 'GCSE Computer Science - developing outstanding teaching'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '1dcba944-6ae9-4b68-af69-56df49495bd7'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'ks4-computing-for-all') do |activity|
+  activity.title = 'KS4 computing for all'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '258c93cc-69e2-46f6-bf39-fbce27cb8fc2'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
 Activity.find_or_create_by(slug: 'cs-accelerator-assessment') do |activity|
   activity.title = 'CS Accelerator Assessment'
   activity.credit = 30
