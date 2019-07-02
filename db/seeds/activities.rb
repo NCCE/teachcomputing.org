@@ -181,8 +181,8 @@ Activity.find_or_create_by(slug: 'networks-and-cyber-security-in-gcse-computer-s
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'outstanding-teaching-of-key-stage-1-computing') do |activity|
-  activity.title = 'Outstanding teaching of key stage 1 computing'
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing'
   activity.credit = 40
   activity.slug = activity.title.parameterize
   activity.stem_course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
@@ -190,8 +190,8 @@ Activity.find_or_create_by(slug: 'outstanding-teaching-of-key-stage-1-computing'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'outstanding-teaching-of-key-stage-2-computing') do |activity|
-  activity.title = 'Outstanding teaching of key stage 2 computing'
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing'
   activity.credit = 40
   activity.slug = activity.title.parameterize
   activity.stem_course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
@@ -240,24 +240,6 @@ Activity.find_or_create_by(slug: 'ks4-computing-for-all') do |activity|
   activity.credit = 20
   activity.slug = activity.title.parameterize
   activity.stem_course_id = '258c93cc-69e2-46f6-bf39-fbce27cb8fc2'
-  activity.category = 'face-to-face'
-  activity.provider = 'stem-learning'
-end
-
-Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing') do |activity|
-  activity.title = 'Teaching and leading key stage 1 computing'
-  activity.credit = 20
-  activity.slug = activity.title.parameterize
-  activity.stem_course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
-  activity.category = 'face-to-face'
-  activity.provider = 'stem-learning'
-end
-
-Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing') do |activity|
-  activity.title = 'Teaching and leading key stage 2 computing'
-  activity.credit = 20
-  activity.slug = activity.title.parameterize
-  activity.stem_course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
