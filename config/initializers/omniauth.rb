@@ -32,6 +32,7 @@ module OmniAuth::Strategies
 
     def raven_context(response)
       Raven.tags_context(stem_uid: response.parsed['attributes']['uid'][0], status: response.status)
+      Raven::Context.clear!
     end
   end
 end
