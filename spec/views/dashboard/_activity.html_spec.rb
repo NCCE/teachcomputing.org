@@ -13,6 +13,26 @@ RSpec.describe('dashboard/_activity', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
   end
 
+  context 'when the user has not taken the diagnostic' do
+    before do
+      @achievements = [action_achievement]
+      @current_user = user
+      render
+    end
+
+    it 'has two achievements' do
+      expect(rendered).to have_css('.ncce-activity-list__item-text', count: 2)
+    end
+
+    it 'has the register achievement' do
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /Created your account/)
+    end
+
+    it 'doesn\'t have the completed diagnostic achievement' do
+      expect(rendered).to_not have_css('.ncce-activity-list__item-text', text: /diagnostic/)
+    end
+  end
+
   context 'when the user has taken the diagnostic' do
     before do
       @achievements = [action_achievement, diagnostic_achievement, removable_achievement]
@@ -27,8 +47,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
 
     it 'has a remove link for self removable courses' do
-      expect(rendered).to have_xpath("//a[@title='Remove #{removable_activity.title}']",
-                                     class: 'ncce-activity-list__item-remove', text: 'Remove')
+      expect(rendered).to have_css('.ncce-activity-list__item-remove', text: /Remove.+#{removable_activity.title}/)
     end
 
     it 'has a remove link for self removable courses only' do
@@ -45,22 +64,6 @@ RSpec.describe('dashboard/_activity', type: :view) do
 
     it 'has the collapsible form button' do
       expect(rendered).to have_css('.ncce-activity-form__button--pink', count: 1)
-    end
-
-    it 'doesn\'t have the download diagnostic item' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
-    end
-  end
-
-  context 'when the user hasn\'t taken the diagnostic' do
-    before do
-      @achievements = [action_achievement, removable_achievement]
-      @current_user = user
-      render
-    end
-
-    it 'shows the download diagnostic item' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', text: /.*Take the diagnostic tool*/, count: 1)
     end
   end
 end

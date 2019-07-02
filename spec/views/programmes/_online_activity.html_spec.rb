@@ -21,7 +21,7 @@ RSpec.describe('programmes/_online_activity', type: :view) do
     end
 
     it 'links to online courses' do
-      expect(rendered).to have_link('Find an online course', href: '/courses?location=Online')
+      expect(rendered).to have_link('Find an online course', href: '/courses?location=Online&workstream=CS+Accelerator')
     end
 
     it 'has prompt text' do

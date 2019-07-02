@@ -4,7 +4,8 @@ class DashboardController < ApplicationController
   before_action :set_programmes
 
   def show
-    @achievements = current_user.achievements.in_state(:complete).order('created_at ASC')
+    @achievements = current_user.achievements.in_state(:complete)
+                                .without_category('action').order('created_at ASC')
     render :show
   end
 

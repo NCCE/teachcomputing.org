@@ -30,7 +30,8 @@
           <%= image_tag '/images/certificate/rae-logo.svg', alt: 'Royal Academy of Engineering', class: 'ncce-certificate__rae-logo'%>
         </p>
         <ul class="govuk-list">
-          <li>Date awarded: <strong><%= @passed_test_at.strftime('%d/%m/%Y') %></strong></li>
+          <li>Date awarded: <strong><%= @transition.created_at.strftime('%d/%m/%Y') %></strong></li>
+          <li>Certificate: <strong><%= certificate_number(@transition.metadata['certificate_number'], @transition.created_at) %></strong></li>
         </ul>
       </div>
     </div>

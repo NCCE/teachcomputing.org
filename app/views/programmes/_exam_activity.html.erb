@@ -1,4 +1,4 @@
-<% if @passed_assessment %>
+<% if @programme.passed_programme_assessment?(current_user) %>
   <li class="ncce-activity-list__item ncce-activity-list__item--position ">
     <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
     <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Passed the final test</span>
@@ -6,13 +6,13 @@
 <% else %>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position">
     <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
-    <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Pass the final test</span>
-    <ul class="govuk-body-s ncce-exam-activity__remarks">
+    <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam"><span class="screen-reader-only">Once you have completed two online courses and two face-to-face courses, </span> Pass the final test</span>
+    <ul class="govuk-body-s ncce-exam-activity__remarks" role="list" aria-label="Test information">
       <li><%= image_tag 'question-mark.svg', alt: '' %> 25 multiple-choice questions</li>
       <li><%= image_tag 'time-30-minutes.svg', alt: '' %> 30 minute time limit</li>
       <li><%= image_tag 'tick-plain.svg', alt: '' %> Pass mark of 65%</li>
     </ul>
-    <ul class="govuk-list govuk-list--bullet govuk-body-s ncce-exam-activity__rules"">
+    <ul class="govuk-list govuk-list--bullet govuk-body-s ncce-exam-activity__rules" aria-label="Test rules">
       <li>You must finish in one sitting</li>
       <li>You can go back and change your answers</li>
       <li>You can skip a question</li>

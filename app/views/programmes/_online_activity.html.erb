@@ -5,7 +5,7 @@
         online course
       </span>
       <span class="ncce-activity-list__item-activity">
-        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
+        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete
         </span>
         <span class="ncce-activity-list__course"><%= @online_achievements.first.activity.title %></span>
       </span>
@@ -24,7 +24,7 @@
 <% else%>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your first online course </span>
-    <%= link_to 'Find an online course', courses_path(location: 'Online'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find an online course', courses_path(location: 'Online', workstream: 'CS Accelerator'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
 
@@ -35,7 +35,7 @@
       online course
     </span>
     <span class="ncce-activity-list__item-activity">
-      <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
+      <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete
       </span>
       <span class="ncce-activity-list__course"><%= @online_achievements.second.activity.title %></span>
     </span>
@@ -54,6 +54,6 @@
 <% else %>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your second online course </span>
-    <%= link_to 'Find an online course', courses_path(location: 'Online'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find an online course', courses_path(location: 'Online', workstream: 'CS Accelerator'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>

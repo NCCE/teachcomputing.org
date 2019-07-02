@@ -5,7 +5,7 @@
         face to face course
       </span>
       <span class="ncce-activity-list__item-activity">
-        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
+        <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete
         </span>
         <span class="ncce-activity-list__course"><%= @face_to_face_achievements.first.activity.title %></span>
       </span>
@@ -25,7 +25,7 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your first face
       to face course </span>
-    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face', workstream: 'CS Accelerator'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>
 
@@ -36,7 +36,7 @@
       face to face course
     </span>
     <span class="ncce-activity-list__item-activity">
-      <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">Complete
+      <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete
       </span>
       <span class="ncce-activity-list__course"><%= @face_to_face_achievements.second.activity.title %></span>
     </span>
@@ -56,6 +56,6 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text"> Complete your second face
     to face course </span>
-    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <%= link_to 'Find a face to face course', courses_path(location: 'Face to face', workstream: 'CS Accelerator'), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
   </li>
 <% end %>

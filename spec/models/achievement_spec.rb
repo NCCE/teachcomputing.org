@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe Achievement, type: :model do
   let(:achievement) { create(:achievement) }
   let(:achievement2) { create(:achievement) }
+  let(:completed_achievement) { create(:completed_achievement) }
+  let(:diagnostic_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
 
@@ -39,10 +42,51 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe '#with_category' do
+    before do
+      diagnostic_achievement
+      achievement
+    end
+
+    it 'returns the achievements which match the category' do
+      expect(Achievement.with_category(achievement.activity.category)).to include(achievement)
+    end
+
+    it 'omits the achievements which don\'t match the category' do
+      expect(Achievement.with_category(achievement.activity.category)).to_not include(diagnostic_achievement)
+    end
+  end
+
+  describe '#without_category' do
+    before do
+      diagnostic_achievement
+      achievement
+    end
+
+    it 'returns the achievements which match the category' do
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to include(achievement)
+    end
+
+    it 'omits the achievements which don\'t match the category' do
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to_not include(diagnostic_achievement)
+    end
+  end
+
   describe '#set_to_complete' do
     it 'when state is not complete' do
       achievement.set_to_complete
       expect(achievement.current_state).to eq 'complete'
+    end
+
+    it 'will save activity credit to the transition' do
+      completed_achievement
+      expect(completed_achievement.last_transition.metadata['credit']).to eq 100
+    end
+
+    it 'will save extra meta_data to the transition' do
+      test_meta = '123'
+      achievement.set_to_complete(test: test_meta)
+      expect(achievement.last_transition.metadata['test']).to eq test_meta
     end
 
     it 'when state is complete' do
@@ -69,6 +113,7 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to delegate_method(:can_transition_to?).to(:state_machine).as(:can_transition_to?) }
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
     it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
+    it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
   end
 
   describe 'destroy' do

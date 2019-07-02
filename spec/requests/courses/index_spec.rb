@@ -85,6 +85,10 @@ RSpec.describe CoursesController do
       it 'renders the correct template' do
         expect(response).to render_template('index')
       end
+
+      it 'doesn\'t show a flash notice' do
+        expect(flash[:notice]).to_not be_present
+      end
     end
 
     context 'when using filtering' do
@@ -105,6 +109,18 @@ RSpec.describe CoursesController do
 
         it 'initalises current topic' do
           expect(assigns(:current_topic)).to eq('Mathematics')
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/topic = Mathematics/)
+        end
+
+        it 'flash notice has a link to remove filtering' do
+          expect(flash[:notice]).to match(/<a href="#{courses_path}">Remove filter<\/a>/)
         end
       end
 
@@ -132,6 +148,14 @@ RSpec.describe CoursesController do
 
         it 'initalises current location' do
           expect(assigns(:current_location)).to eq('York')
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/location = York/)
         end
       end
 
@@ -161,6 +185,14 @@ RSpec.describe CoursesController do
         it 'initalises current location' do
           expect(assigns(:current_location)).to eq('Online')
         end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/location = Online/)
+        end
       end
 
       context 'when filtering by Face to face location' do
@@ -189,6 +221,14 @@ RSpec.describe CoursesController do
         it 'initalises current location' do
           expect(assigns(:current_location)).to eq('Face to face')
         end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/location = Face to face/)
+        end
       end
 
       context 'when filtering by level' do
@@ -208,6 +248,14 @@ RSpec.describe CoursesController do
 
         it 'initalises current level' do
           expect(assigns(:current_level)).to eq('Key stage 4')
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/level = Key stage 4/)
         end
       end
 
@@ -229,6 +277,18 @@ RSpec.describe CoursesController do
         it 'initalises current level' do
           expect(assigns(:current_workstream)).to eq('National Centre - Non-Core')
         end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/programme = National Centre - Non-Core/)
+        end
+
+        it 'flash notice has correct courses count' do
+          expect(flash[:notice]).to match(/Showing 3 courses from a total/)
+        end
       end
 
       context 'when filtering by level and location' do
@@ -249,6 +309,18 @@ RSpec.describe CoursesController do
           expect(course.occurrences.map(&:address_town)).to include('York')
         end
 
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/location = York/)
+          expect(flash[:notice]).to match(/level = Key stage 4/)
+        end
+
+        it 'flash notice has singularises "courses" correctly' do
+          expect(flash[:notice]).to match(/Showing 1 course from a total/)
+        end
       end
 
       context 'when filtering by level and topic' do
@@ -270,6 +342,15 @@ RSpec.describe CoursesController do
           assigns(:courses).each do |course|
             expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
           end
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/topic = Mathematics/)
+          expect(flash[:notice]).to match(/level = Key stage 2/)
         end
       end
 
@@ -306,6 +387,16 @@ RSpec.describe CoursesController do
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
           expect(course.occurrences.map(&:address_town)).to include('Cambridge')
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/topic = Mathematics/)
+          expect(flash[:notice]).to match(/location = York/)
+          expect(flash[:notice]).to match(/level = Key stage 2/)
         end
       end
 
@@ -350,6 +441,17 @@ RSpec.describe CoursesController do
             expect(course.workstream).to eq('National Centre - Core')
           end
         end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/topic = Mathematics/)
+          expect(flash[:notice]).to match(/location = York/)
+          expect(flash[:notice]).to match(/level = Key stage 2/)
+          expect(flash[:notice]).to match(/programme = National Centre - Core/)
+        end
       end
 
       context 'filter by level, location, topic and alternate workstream' do
@@ -364,6 +466,17 @@ RSpec.describe CoursesController do
 
         it 'has correct number of courses' do
           expect(assigns(:courses).length).to be(0)
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/topic = Mathematics/)
+          expect(flash[:notice]).to match(/location = York/)
+          expect(flash[:notice]).to match(/level = Key stage 2/)
+          expect(flash[:notice]).to match(/programme = National Centre - Non-Core/)
         end
       end
     end
