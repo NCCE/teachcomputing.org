@@ -341,19 +341,22 @@
           <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Google Ads</th>
             <th class="govuk-table__header govuk-!-width-one-half" scope="col">Advertising cookie</th>
-            <th class="govuk-table__header" scope="col">Privacy Policy </br>Opt Out</th>
+            <th class="govuk-table__header" scope="col"><%= link_to 'Privacy Policy', 'https://policies.google.com/privacy?hl=en-GB&gl=uk', class: 'ncce-link', target: '_blank' %></th>
+            <th class="govuk-table__header" scope="col"><%= link_to 'Opt out', 'https://support.google.com/ads/answer/2662922?hl=en-GB', class: 'ncce-link', target: '_blank' %></th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <th class="govuk-table__header ncce-table__header" scope="row">Twitter</th>
             <td class="govuk-table__cell">These cookies are used by Twitter in order to integrate functionality into our website. The cookies are used for a variety of purposes including  targeted advertising and  campaign measurement. </td>
-            <td class="govuk-table__cell">Privacy Policy </br>Opt Out</td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://twitter.com/en/privacy#update', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'How to opt out', 'https://help.twitter.com/en/safety-and-security/privacy-controls-for-tailored-ads', class: 'ncce-link', target: '_blank' %></td>
           </tr>
           <tr class="govuk-table__row">
             <th class="govuk-table__header ncce-table__header" scope="row">Facebook</th>
             <td class="govuk-table__cell">This is a ‘web beacon’ that is used to serve you with advertisements that may be relevant to you and your interests. It may also be used to help measure the effectiveness of advertising campaigns. </td>
-            <td class="govuk-table__cell">Privacy Policy </br>Opt Out</td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://www.facebook.com/about/privacy/update?ref=old_policy', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'How to opt out', 'https://www.facebook.com/help/568137493302217', class: 'ncce-link', target: '_blank' %></td>
           </tr>
         </tbody>
       </table>
