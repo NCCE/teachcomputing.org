@@ -24,7 +24,7 @@ class User < ApplicationRecord
       user.stem_user_id = id
       user.first_name = info.first_name
       user.last_name = info.last_name
-      user.email = info.email
+      user.email = info.email.downcase
       user.stem_achiever_contact_no = info.achiever_contact_no
       user.stem_credentials_access_token = credentials.token
       user.stem_credentials_refresh_token = credentials.refresh_token
