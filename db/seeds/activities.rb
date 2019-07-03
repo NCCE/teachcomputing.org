@@ -138,7 +138,7 @@ end
 
 Activity.find_or_create_by(slug: 'introduction-to-cybersecurity-for-teachers') do |activity|
   activity.title = 'Introduction to Cybersecurity for Teachers'
-  activity.credit = 0
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
