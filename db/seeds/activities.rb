@@ -136,6 +136,16 @@ Activity.find_or_create_by(slug: 'impact-of-technology-how-to-lead-classroom-dis
   activity.provider = 'future-learn'
 end
 
+Activity.find_or_create_by(slug: 'introduction-to-cybersecurity-for-teachers') do |activity|
+  activity.title = 'Introduction to Cybersecurity for Teachers'
+  activity.credit = 10
+  activity.slug = 'introduction-to-cybersecurity-for-teachers'
+  activity.category = 'online'
+  activity.self_certifiable = true
+  activity.future_learn_course_id = '030261f8-1e96-4a70-a329-e3eb8b868915'
+  activity.provider = 'future-learn'
+end
+
 Activity.find_or_create_by(slug: 'algorithms-in-gcse-computer-science') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
   activity.credit = 20
