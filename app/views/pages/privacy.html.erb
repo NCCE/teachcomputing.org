@@ -294,6 +294,8 @@
             <th class="govuk-table__header" scope="col">Name</th>
             <th class="govuk-table__header" scope="col">Purpose</th>
             <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col">Privacy Policy</th>
+            <th class="govuk-table__header" scope="col">Opt Out</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -302,15 +304,17 @@
             analytics (Google)</th>
             <td class="govuk-table__cell">_ga, _gat, _gid</td>
             <td class="govuk-table__cell">These cookies are used to collect information about how visitors use the website. We use the information to compile reports and to help us improve the website. The cookies collect information in an anonymous form, including the number of visitors to the website, where visitors have come to the website from and the pages they visited. Read Google's overview of privacy and safeguarding data</td>
-            <td class="govuk-table__cell">Privacy Policy</br>
-            Opt Out</td>
+            <td class="govuk-table__cell"><%= link_to "Read Google's overview of privacy and safeguarding data", 'https://support.google.com/analytics/answer/6004245', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://policies.google.com/privacy?hl=en', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'Opt out', 'https://support.google.com/analytics/answer/181881?hl=en', class: 'ncce-link', target: '_blank' %></td>
           </tr>
           <tr class="govuk-table__row">
             <th class="govuk-table__header ncce-table__header" scope="row">Google Analytics - Doubleclick </th>
             <td class="govuk-table__cell">IDE </br>DSID</td>
             <td class="govuk-table__cell">This cookie is used to send data to Google Analytics about the visitor’s device and behaviour. It tracks visitors across devices and marketing channels. </td>
-            <td class="govuk-table__cell">Privacy Policy</br>
-            Opt Out</td>
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://policies.google.com/privacy?hl=en', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'Opt out', 'https://support.google.com/analytics/answer/181881?hl=en', class: 'ncce-link', target: '_blank' %></td>
           </tr>
           <tr class="govuk-table__row">
             <th class="govuk-table__header ncce-table__header" scope="row">Google Maps -
@@ -318,15 +322,17 @@
             <td class="govuk-table__cell">1P_JAR</br> APISID</br> HSID</br> NID</br> OGPC</br> SAPISID</br> SID</br> SIDCC</br> SSID</br>
             </td>
             <td class="govuk-table__cell">These cookies are added by Google Services which we use on the website to identify user/session and track it. </td>
-            <td class="govuk-table__cell">Privacy Policy</br>
-            Opt Out</td>
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://policies.google.com/privacy?hl=en', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'How to opt out', 'https://support.google.com/ads/answer/2662922?hl=en-GB', class: 'ncce-link', target: '_blank' %></td>
           </tr>
           <tr class="govuk-table__row">
             <th class="govuk-table__header ncce-table__header" scope="row">MessageFocus conversion tracking (Adestra) </th>
             <td class="govuk-table__cell">adestra_ctrk</td>
             <td class="govuk-table__cell">This cookie is used to track the website activity of a visitor who has clicked through to the website from an email. </td>
-            <td class="govuk-table__cell">Privacy Policy</br>
-            Opt Out</td>
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"><%= link_to 'Privacy Policy', 'https://www.adestra.com/privacy-policy/', class: 'ncce-link', target: '_blank' %></td>
+            <td class="govuk-table__cell"><%= link_to 'Opt out', 'https://www.adestra.com/cookies/#section3', class: 'ncce-link', target: '_blank' %></td>
           </tr>
         </tbody>
       </table>
