@@ -24,4 +24,12 @@ RSpec.describe('pages/privacy', type: :view) do
   it 'has the BCS text link' do
     expect(rendered).to have_link('www.bcs.org', href: /www\.bcs\.org/)
   end
+
+  it 'has the Google privacy link' do
+    expect(rendered).to have_link("Read Google's overview of privacy and safeguarding data", href: 'https://support.google.com/analytics/answer/6004245')
+  end
+
+  it 'has the Twitter opt-out link' do
+    expect(rendered).to have_link('How to opt out', href: 'https://help.twitter.com/en/safety-and-security/privacy-controls-for-tailored-ads')
+  end
 end
