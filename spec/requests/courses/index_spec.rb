@@ -116,11 +116,11 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/topic = Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
         end
 
         it 'flash notice has a link to remove filtering' do
-          expect(flash[:notice]).to match(/<a href="#{courses_path}">Remove filter<\/a>/)
+          expect(flash[:notice]).to match(/<a href="#{url_for(controller: 'courses', anchor: 'filter-results')}">Remove filter<\/a>/)
         end
       end
 
@@ -155,7 +155,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/location = York/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
         end
       end
 
@@ -191,7 +191,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/location = Online/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: Online/)
         end
       end
 
@@ -227,7 +227,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/location = Face to face/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: Face to face/)
         end
       end
 
@@ -255,7 +255,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/level = Key stage 4/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
         end
       end
 
@@ -283,11 +283,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/programme = National Centre - Non-Core/)
-        end
-
-        it 'flash notice has correct courses count' do
-          expect(flash[:notice]).to match(/Showing 3 courses from a total/)
+          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Non-Core/)
         end
       end
 
@@ -314,12 +310,8 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/location = York/)
-          expect(flash[:notice]).to match(/level = Key stage 4/)
-        end
-
-        it 'flash notice has singularises "courses" correctly' do
-          expect(flash[:notice]).to match(/Showing 1 course from a total/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
         end
       end
 
@@ -349,8 +341,8 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/topic = Mathematics/)
-          expect(flash[:notice]).to match(/level = Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
         end
       end
 
@@ -394,9 +386,9 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/topic = Mathematics/)
-          expect(flash[:notice]).to match(/location = York/)
-          expect(flash[:notice]).to match(/level = Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
         end
       end
 
@@ -447,10 +439,10 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/topic = Mathematics/)
-          expect(flash[:notice]).to match(/location = York/)
-          expect(flash[:notice]).to match(/level = Key stage 2/)
-          expect(flash[:notice]).to match(/programme = National Centre - Core/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Core/)
         end
       end
 
@@ -473,10 +465,10 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/topic = Mathematics/)
-          expect(flash[:notice]).to match(/location = York/)
-          expect(flash[:notice]).to match(/level = Key stage 2/)
-          expect(flash[:notice]).to match(/programme = National Centre - Non-Core/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Non-Core/)
         end
       end
     end
