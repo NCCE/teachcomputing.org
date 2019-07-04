@@ -42,6 +42,7 @@ slugs = %w[
   understanding-maths-and-logic-in-computer-science
   understanding-computer-systems
   cs-accelerator-assessment
+  introduction-to-cybersecurity-for-teachers
 ]
 
 slugs.each do |slug|
