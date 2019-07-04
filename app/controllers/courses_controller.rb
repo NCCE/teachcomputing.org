@@ -86,8 +86,7 @@ class CoursesController < ApplicationController
 
     return unless filter_strings.length.positive?
 
-    notice = "<span>You are filtering with #{filter_strings.join('; ')}."
-    notice += " Showing #{filtered_count} #{'course'.pluralize(filtered_count)} from a total of #{total_count}</span>"
+    notice = "<span>You are filtering with #{filter_strings.join('; ')}.</span>"
     notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
     flash.now[:notice] = notice
   end
