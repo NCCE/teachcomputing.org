@@ -7,12 +7,15 @@ class CoursesController < ApplicationController
 
   def index
     @courses = fetch_course_list
+    total_courses = @courses.length
 
     @locations = course_locations(@course_occurrences)
     @levels = course_levels(@courses)
     @topics = course_tags(@courses)
     @workstreams = course_workstreams(@courses)
     @courses = filter_courses(@courses)
+
+    alert_filter_params(total_courses, @courses.length)
 
     render :index
   end
@@ -72,6 +75,20 @@ class CoursesController < ApplicationController
       end
       has_level && has_location && has_topic && has_workstream
     end
+  end
+
+  def alert_filter_params(total_count, filtered_count)
+    filter_strings = []
+    filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
+    filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
+    filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
+    filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
+
+    return unless filter_strings.length.positive?
+
+    notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
+    notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
+    flash.now[:notice] = notice
   end
 
   def compare_location(course, location)

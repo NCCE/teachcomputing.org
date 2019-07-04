@@ -1,5 +1,5 @@
 Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
-  activity.title = 'Taken diagnostic tool'
+  activity.title = 'Used the diagnostic tool'
   activity.credit = 10
   activity.slug = 'diagnostic-tool'
   activity.category = 'action'
@@ -8,9 +8,9 @@ Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
 end
 
 Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
-  activity.title = 'Registered with the National Centre'
+  activity.title = 'Created your account with the National Centre for Computing Education'
   activity.credit = 5
-  activity.slug = activity.title.parameterize
+  activity.slug = 'registered-with-the-national-centre'
   activity.category = 'action'
   activity.self_certifiable = false
   activity.provider = 'system'
@@ -22,6 +22,7 @@ Activity.find_or_create_by(slug: 'teaching-physical-computing-with-raspberry-pi-
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'ecf78d20-2966-4798-af5f-0f869c1818e2'
   activity.provider = 'future-learn'
 end
 
@@ -31,6 +32,7 @@ Activity.find_or_create_by(slug: 'how-computers-work-demystifying-computation') 
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'c88099c0-8b44-42a5-aad3-0dd011fe3490'
   activity.provider = 'future-learn'
 end
 
@@ -40,6 +42,7 @@ Activity.find_or_create_by(slug: 'programming-101-an-introduction-to-python-for-
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'c9fb59cc-6393-4a29-8136-7020128ca879'
   activity.provider = 'future-learn'
 end
 
@@ -49,6 +52,7 @@ Activity.find_or_create_by(slug: 'programming-102-think-like-a-computer-scientis
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'd9fe6126-298f-48ed-8be3-b82e1c473566'
   activity.provider = 'future-learn'
 end
 
@@ -58,6 +62,7 @@ Activity.find_or_create_by(slug: 'representing-data-with-images-and-sound-bringi
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'e290318f-ba23-4c95-8f18-584946233af9'
   activity.provider = 'future-learn'
 end
 
@@ -67,6 +72,7 @@ Activity.find_or_create_by(slug: 'object-oriented-programming-in-python-create-y
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = '2e1e3f69-b200-4fc7-a6bd-dff682bdd228'
   activity.provider = 'future-learn'
 end
 
@@ -76,6 +82,7 @@ Activity.find_or_create_by(slug: 'an-introduction-to-computer-networking-for-tea
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
   activity.provider = 'future-learn'
 end
 
@@ -85,6 +92,7 @@ Activity.find_or_create_by(slug: 'understanding-maths-and-logic-in-computer-scie
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = 'ffc6793d-5643-40c8-893a-0164844ca62f'
   activity.provider = 'future-learn'
 end
 
@@ -94,6 +102,7 @@ Activity.find_or_create_by(slug: 'understanding-computer-systems') do |activity|
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = '04953102-a4cf-485d-a34e-0c64621033be'
   activity.provider = 'future-learn'
 end
 
@@ -103,6 +112,7 @@ Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = '4ec560a3-6435-46bc-90b7-75cfdcf7e72d'
   activity.provider = 'future-learn'
 end
 
@@ -112,6 +122,27 @@ Activity.find_or_create_by(slug: 'scratch-to-python-moving-from-block-to-text-ba
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
+  activity.future_learn_course_id = '3ce9a624-6cc7-4d23-8f5f-95162e360178'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'impact-of-technology-how-to-lead-classroom-discussions') do |activity|
+  activity.title = 'Impact of Technology: How To Lead Classroom Discussions'
+  activity.credit = 0
+  activity.slug = activity.title.parameterize
+  activity.category = 'online'
+  activity.self_certifiable = true
+  activity.future_learn_course_id = 'e4115d3c-53d0-4538-94c2-e2a9ba366178'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'introduction-to-cybersecurity-for-teachers') do |activity|
+  activity.title = 'Introduction to Cybersecurity for Teachers'
+  activity.credit = 10
+  activity.slug = 'introduction-to-cybersecurity-for-teachers'
+  activity.category = 'online'
+  activity.self_certifiable = true
+  activity.future_learn_course_id = '030261f8-1e96-4a70-a329-e3eb8b868915'
   activity.provider = 'future-learn'
 end
 
@@ -119,7 +150,7 @@ Activity.find_or_create_by(slug: 'algorithms-in-gcse-computer-science') do |acti
   activity.title = 'Algorithms in GCSE computer science'
   activity.credit = 20
   activity.slug = activity.title.parameterize
-  activity.course_id = 'a6b10502-6788-4ebc-b465-41eafb1e2a18'
+  activity.stem_course_id = 'a6b10502-6788-4ebc-b465-41eafb1e2a18'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -128,7 +159,7 @@ Activity.find_or_create_by(slug: 'data-and-computer-systems-in-gcse-computer-sci
   activity.title = 'Data and computer systems in GCSE computer science'
   activity.credit = 20
   activity.slug = activity.title.parameterize
-  activity.course_id = '7159562d-4b1a-44f3-b4d7-3e677b9898f2'
+  activity.stem_course_id = '7159562d-4b1a-44f3-b4d7-3e677b9898f2'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -137,7 +168,7 @@ Activity.find_or_create_by(slug: 'ncce-facilitator-development-program-stage-one
   activity.title = 'NCCE facilitator development program (stage one)'
   activity.credit = 0
   activity.slug = activity.title.parameterize
-  activity.course_id = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
+  activity.stem_course_id = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -146,7 +177,7 @@ Activity.find_or_create_by(slug: 'ncce-train-the-trainer') do |activity|
   activity.title = 'NCCE Train the Trainer'
   activity.credit = 0
   activity.slug = activity.title.parameterize
-  activity.course_id = '88715914-72ee-4b26-a22b-4f2d610ed267'
+  activity.stem_course_id = '88715914-72ee-4b26-a22b-4f2d610ed267'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -155,25 +186,25 @@ Activity.find_or_create_by(slug: 'networks-and-cyber-security-in-gcse-computer-s
   activity.title = 'Networks and Cyber Security in GCSE computer science'
   activity.credit = 20
   activity.slug = activity.title.parameterize
-  activity.course_id = '0650b45c-e4b3-4c8b-bd90-7a1428fe2986'
+  activity.stem_course_id = '0650b45c-e4b3-4c8b-bd90-7a1428fe2986'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'outstanding-teaching-of-key-stage-1-computing') do |activity|
-  activity.title = 'Outstanding teaching of key stage 1 computing'
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing'
   activity.credit = 40
   activity.slug = activity.title.parameterize
-  activity.course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
+  activity.stem_course_id = '488bed9b-515b-4295-a488-62b5bb6bf852'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'outstanding-teaching-of-key-stage-2-computing') do |activity|
-  activity.title = 'Outstanding teaching of key stage 2 computing'
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing'
   activity.credit = 40
   activity.slug = activity.title.parameterize
-  activity.course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
+  activity.stem_course_id = '16aeecbd-d202-4f42-bad3-f86c8f671547'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -182,7 +213,7 @@ Activity.find_or_create_by(slug: 'primary-programming-and-algorithms') do |activ
   activity.title = 'Primary programming and algorithms'
   activity.credit = 40
   activity.slug = activity.title.parameterize
-  activity.course_id = '68f5b6c5-556d-4b66-8159-7cd6019da6f3'
+  activity.stem_course_id = '68f5b6c5-556d-4b66-8159-7cd6019da6f3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -191,7 +222,34 @@ Activity.find_or_create_by(slug: 'python-programming-essentials-for-gcse-compute
   activity.title = 'Python programming essentials for GCSE computer science'
   activity.credit = 20
   activity.slug = activity.title.parameterize
-  activity.course_id = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
+  activity.stem_course_id = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'creative-computing-for-key-stage-3') do |activity|
+  activity.title = 'Creative Computing for Key Stage 3'
+  activity.credit = 0
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '9239cb0d-3d45-4347-a212-2788ec9d0437'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'gcse-computer-science-developing-outstanding-teaching') do |activity|
+  activity.title = 'GCSE Computer Science - developing outstanding teaching'
+  activity.credit = 0
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '1dcba944-6ae9-4b68-af69-56df49495bd7'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'ks4-computing-for-all') do |activity|
+  activity.title = 'KS4 computing for all'
+  activity.credit = 0
+  activity.slug = activity.title.parameterize
+  activity.stem_course_id = '258c93cc-69e2-46f6-bf39-fbce27cb8fc2'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end

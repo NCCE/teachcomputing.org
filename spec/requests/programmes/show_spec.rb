@@ -66,227 +66,194 @@ RSpec.describe ProgrammesController do
 
 
   describe '#show' do
-    describe 'while certification is not enabled' do
-      it 'redirects to home page' do
-        get programme_path('cs-accelerator')
-        expect(response).to redirect_to(root_path)
-      end
-    end
-
-    describe 'while certification is enabled' do
+    describe 'while logged in' do
       before do
-        allow_any_instance_of(described_class)
-          .to receive(:certification_enabled?).and_return(true)
+        programme
+        allow_any_instance_of(AuthenticationHelper)
+          .to receive(:current_user).and_return(user)
       end
 
-      describe 'while logged in' do
+      it 'handles missing programmes' do
+        expect do
+          get programme_path('programme-missing')
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it 'redirects if not enrolled' do
+        get programme_path('cs-accelerator')
+        expect(response).to redirect_to(cs_accelerator_path)
+      end
+
+      describe 'and enrolled' do
         before do
-          programme
-          allow_any_instance_of(AuthenticationHelper)
-            .to receive(:current_user).and_return(user)
-        end
-
-        it 'handles missing programmes' do
-          expect do
-            get programme_path('programme-missing')
-          end.to raise_error(ActiveRecord::RecordNotFound)
-        end
-
-        it 'redirects if not enrolled' do
+          setup_achievements_for_programme
           get programme_path('cs-accelerator')
-          expect(response).to redirect_to(cs_accelerator_path)
         end
 
-        describe 'and enrolled' do
+        it 'renders the correct template' do
+          expect(response).to render_template('show')
+        end
+
+        it 'assigns the correct programme' do
+          expect(assigns(:programme)).to eq programme
+        end
+
+        it 'assigns the online achievements' do
+          expect(assigns(:online_achievements)).to include(online_achievement)
+        end
+
+        it 'assigns the face_to_face achievements' do
+          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+        end
+
+        it 'assigns the diagnostic achievement' do
+          expect(assigns(:downloaded_diagnostic)).not_to eq nil
+        end
+
+        it 'assigns the test gate correctly' do
+          expect(assigns(:enough_credits_for_test)).to eq (false)
+        end
+
+        it 'assigns the test gate correctly' do
+          expect(assigns(:enough_credits_for_test)).to eq (false)
+        end
+
+        it 'assign the time until user can take the test correctly' do
+          expect(assigns(:can_take_test_at)).to eq (nil)
+        end
+
+        it 'assign whether user is currently doing a test correctly' do
+          expect(assigns(:currently_taking_test)).to eq (nil)
+        end
+
+        it 'assigns the number of attempts at test correctly' do
+          expect(assigns(:num_attempts)).to eq (0)
+        end
+
+        context 'when user can take the test' do
           before do
-            setup_achievements_for_programme
+            setup_achievements_for_taking_test
             get programme_path('cs-accelerator')
           end
 
-          it 'renders the correct template' do
-            expect(response).to render_template('show')
-          end
-
-          it 'assigns the correct programme' do
-            expect(assigns(:programme)).to eq programme
-          end
-
-          it 'assigns the online achievements' do
-            expect(assigns(:online_achievements)).to include(online_achievement)
-          end
-
-          it 'assigns the face_to_face achievements' do
-            expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-          end
-
-          it 'assigns the diagnostic achievement state correctly' do
-            expect(assigns(:downloaded_diagnostic)).to eq (false)
-          end
-
-          it 'assigns the assessment passed state correctly' do
-            expect(assigns(:passed_assessment)).to eq (false)
-          end
-
           it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (false)
+            expect(assigns(:enough_credits_for_test)).to eq (true)
           end
 
-          it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (false)
+          it 'assigns the time until user can take the test' do
+            expect(assigns(:can_take_test_at)).to eq (0)
           end
 
-          it 'assign the time until user can take the test correctly' do
-            expect(assigns(:can_take_test_at)).to eq (nil)
-          end
-
-          it 'assign whether user is currently doing a test correctly' do
-            expect(assigns(:currently_taking_test)).to eq (nil)
+          it 'assigns that user is not currently doing a test' do
+            expect(assigns(:currently_taking_test)).to eq (false)
           end
 
           it 'assigns the number of attempts at test correctly' do
             expect(assigns(:num_attempts)).to eq (0)
           end
+        end
 
-          context 'when diagnostic has been downloaded' do
-            before do
-              diagnostic_achievement.set_to_complete
-              get programme_path('cs-accelerator')
-            end
-
-            it 'assigns the diagnostic achievement state correctly' do
-              expect(assigns(:downloaded_diagnostic)).to eq (true)
-            end
+        context 'when user started the test' do
+          before do
+            one_commenced_test_attempt
+            get programme_path('cs-accelerator')
           end
 
-          context 'when user can take the test' do
-            before do
-              setup_achievements_for_taking_test
-              get programme_path('cs-accelerator')
-            end
-
-            it 'assigns the test gate correctly' do
-              expect(assigns(:enough_credits_for_test)).to eq (true)
-            end
-
-            it 'assigns the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (0)
-            end
-
-            it 'assigns that user is not currently doing a test' do
-              expect(assigns(:currently_taking_test)).to eq (false)
-            end
-
-            it 'assigns the number of attempts at test correctly' do
-              expect(assigns(:num_attempts)).to eq (0)
-            end
+          it 'assigns the test gate correctly' do
+            expect(assigns(:enough_credits_for_test)).to eq (true)
           end
 
-          context 'when user started the test' do
-            before do
-              one_commenced_test_attempt
-              get programme_path('cs-accelerator')
-            end
-
-            it 'assigns the test gate correctly' do
-              expect(assigns(:enough_credits_for_test)).to eq (true)
-            end
-
-            it 'assigns the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (0)
-            end
-
-            it 'assigns whether user is currently doing a test' do
-              expect(assigns(:currently_taking_test)).to eq (true)
-            end
-
-            it 'assigns the number of attempts at test correctly' do
-              expect(assigns(:num_attempts)).to eq (1)
-            end
+          it 'assigns the time until user can take the test' do
+            expect(assigns(:can_take_test_at)).to eq (0)
           end
 
-          context 'when user failed the test' do
-            before do
-              one_failed_test_attempt
-              get programme_path('cs-accelerator')
-            end
-
-            it 'assigns the test gate correctly' do
-              expect(assigns(:enough_credits_for_test)).to eq (true)
-            end
-
-            it 'assigns the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (0)
-            end
-
-            it 'assigns whether user is currently doing a test' do
-              expect(assigns(:currently_taking_test)).to eq (false)
-            end
-
-            it 'assigns the number of attempts at test correctly' do
-              expect(assigns(:num_attempts)).to eq (1)
-            end
+          it 'assigns whether user is currently doing a test' do
+            expect(assigns(:currently_taking_test)).to eq (true)
           end
 
-          context 'when user failed the test twice' do
-            before do
-              two_failed_test_attempts
-              get programme_path('cs-accelerator')
-            end
+          it 'assigns the number of attempts at test correctly' do
+            expect(assigns(:num_attempts)).to eq (1)
+          end
+        end
 
-            it 'assigns the test gate correctly' do
-              expect(assigns(:enough_credits_for_test)).to eq (true)
-            end
-
-            it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
-              expect(assigns(:can_take_test_at)).to eq (172800)
-            end
-
-            it 'assigns the number of attempts at test correctly' do
-              expect(assigns(:num_attempts)).to eq (2)
-            end
+        context 'when user failed the test' do
+          before do
+            one_failed_test_attempt
+            get programme_path('cs-accelerator')
           end
 
-          context 'when user failed the test twice a while ago' do
-            before do
-              two_old_failed_test_attempts
-              get programme_path('cs-accelerator')
-            end
-
-            it 'assigns the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (0)
-            end
-
-            it 'assigns the number of attempts at test correctly' do
-              expect(assigns(:num_attempts)).to eq (2)
-            end
+          it 'assigns the test gate correctly' do
+            expect(assigns(:enough_credits_for_test)).to eq (true)
           end
 
-          context 'when assessment has been completed' do
-            before do
-              exam_programme_activity
-              passed_exam
-              get programme_path('cs-accelerator')
-            end
+          it 'assigns the time until user can take the test' do
+            expect(assigns(:can_take_test_at)).to eq (0)
+          end
 
-            it 'assigns the diagnostic achievement state correctly' do
-              expect(assigns(:passed_assessment)).to eq (true)
-            end
+          it 'assigns whether user is currently doing a test' do
+            expect(assigns(:currently_taking_test)).to eq (false)
+          end
 
-            it 'doesn\'t set the time until user can take the test' do
-              expect(assigns(:can_take_test_at)).to eq (nil)
-            end
+          it 'assigns the number of attempts at test correctly' do
+            expect(assigns(:num_attempts)).to eq (1)
+          end
+        end
+
+        context 'when user failed the test twice' do
+          before do
+            two_failed_test_attempts
+            get programme_path('cs-accelerator')
+          end
+
+          it 'assigns the test gate correctly' do
+            expect(assigns(:enough_credits_for_test)).to eq (true)
+          end
+
+          it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
+            expect(assigns(:can_take_test_at)).to_not eq 0
+          end
+
+          it 'assigns the number of attempts at test correctly' do
+            expect(assigns(:num_attempts)).to eq (2)
+          end
+        end
+
+        context 'when user failed the test twice a while ago' do
+          before do
+            two_old_failed_test_attempts
+            get programme_path('cs-accelerator')
+          end
+
+          it 'assigns the time until user can take the test' do
+            expect(assigns(:can_take_test_at)).to eq (0)
+          end
+
+          it 'assigns the number of attempts at test correctly' do
+            expect(assigns(:num_attempts)).to eq (2)
+          end
+        end
+
+        context 'when assessment has been completed' do
+          before do
+            exam_programme_activity
+            passed_exam
+            get programme_path('cs-accelerator')
+          end
+
+          it 'doesn\'t set the time until user can take the test' do
+            expect(assigns(:can_take_test_at)).to eq (nil)
           end
         end
       end
+    end
 
-      describe 'while logged out' do
-        before do
-          get programme_path('cs-accelerator')
-        end
+    describe 'while logged out' do
+      before do
+        get programme_path('cs-accelerator')
+      end
 
-        it 'redirects to login' do
-          expect(response).to redirect_to(login_path)
-        end
+      it 'redirects to login' do
+        expect(response).to redirect_to(login_path)
       end
     end
   end

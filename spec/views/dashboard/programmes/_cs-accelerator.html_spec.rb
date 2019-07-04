@@ -4,6 +4,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programmes) { Programme.enrollable }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
@@ -14,7 +15,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   before do
-    [programme, @programmes = Programme.all, activity]
+    [programme, @programmes = programmes, activity]
     programme_activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
@@ -24,7 +25,6 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
 
   context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
     before do
-      @certification_enabled = true
       render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
     end
 
@@ -43,7 +43,6 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
-      @certification_enabled = true
       user_programme_enrolment
       render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
     end
@@ -63,7 +62,6 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
 
   context 'when the user has completed the CS Accelerator programme' do
     before do
-      @certification_enabled = true
       user_programme_enrolment
       passed_exam
       render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
@@ -83,6 +81,6 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
 
     it 'shows the image' do
         expect(rendered).to have_css('.certification-hero__image--dashboard', count: 1)
-      end
+    end
   end
 end

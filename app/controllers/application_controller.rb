@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
   before_action :authenticate
-  before_action :certification_enabled?
 
   def authenticate
     return unless ENV['BASIC_AUTH_PASSWORD']
@@ -12,8 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def certification_enabled?
-    ActiveModel::Type::Boolean.new.cast(ENV.fetch('CERTIFICATION_ENABLED'))
+  def stem_login_enabled?
+    ActiveModel::Type::Boolean.new.cast(ENV.fetch('STEM_LOGIN_ENABLED'))
   end
 
   def authenticate_user!

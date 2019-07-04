@@ -4,14 +4,14 @@ class DashboardController < ApplicationController
   before_action :set_programmes
 
   def show
-    @achievements = current_user.achievements.in_state(:complete).order('created_at ASC')
-    @certification_enabled = certification_enabled?
+    @achievements = current_user.achievements.in_state(:complete)
+                                .without_category('action').order('created_at ASC')
     render :show
   end
 
   private
 
     def set_programmes
-      @programmes = Programme.all if certification_enabled?
+      @programmes = Programme.enrollable
     end
 end

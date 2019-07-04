@@ -33,12 +33,8 @@ Rails.application.routes.draw do
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' },
-                         constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
-  get '/accelerator', to: 'pages#page', as: :accelerator, defaults: { page_slug: 'accelerator' },
-                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') != 'true' }
-  get '/accelerator', to: redirect('/cs-accelerator'),
-                      constraints: ->(_request) { ENV.fetch('CERTIFICATION_ENABLED') == 'true' }
+  get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
+  get '/accelerator', to: redirect('/cs-accelerator')
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
@@ -48,7 +44,7 @@ Rails.application.routes.draw do
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
-  get '/signup-stem', to: 'pages#page', as: :signup_stem, defaults: { page_slug: 'signup-stem' }
+  get '/signup-stem', to: 'pages#signup_stem', as: :signup_stem
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }

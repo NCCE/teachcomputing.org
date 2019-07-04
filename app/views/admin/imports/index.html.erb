@@ -1,31 +1,32 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h1 class='govuk-heading-l'>Import</h1>
+      <div class="govuk-grid-column-full">
+        <h1 class='govuk-heading-l'>Import</h1>
+          <p class='govuk-body'>Here you can upload the <strong>one</strong> CSV file from Future Learn.</p>
+          <p class='govuk-body'>Once uploaded, a job will be scheduled to iterate over the file and process each record</p>
+          <%= link_to 'Upload CSV', new_admin_import_path, class: 'govuk-button' %>
           <table class="govuk-table">
-            <caption class="govuk-table__caption">Future Learn Courses</caption>
+            <caption class="govuk-table__caption">Previous Imports</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="col">Course</th>
-                <th class="govuk-table__header" scope="col">Last Import</th>
+                <th class="govuk-table__header" scope="col">Date</th>
+                <th class="govuk-table__header" scope="col">Status</th>
                 <th class="govuk-table__header" scope="col">Triggered by</th>
-                <th class="govuk-table__header" scope="col">Upload CSV</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              <% @activities.each do |activity| %>
+              <% @imports.each do |import| %>
                 <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="row"><%= activity.title %></th>
-                  <td class="govuk-table__cell"><%= activity.imports.any? ? completed_at?(activity.imports.by_completed_at.first) : 'No previous imports' %></td>
-                  <td class="govuk-table__cell"><%= activity.imports.any? ? activity.imports.by_completed_at.first.triggered_by : 'No previous imports' %></td>
-                  <td class="govuk-table__cell"><%= link_to 'Upload CSV', new_admin_import_path(activity_id: activity.id), class: 'govuk-button' %></td>
+                  <th class="govuk-table__header" scope="row"><%= import.created_at.to_formatted_s(:short) %></th>
+                  <td class="govuk-table__cell"><%= completed_at?(import) %></td>
+                  <td class="govuk-table__cell"><%= import.triggered_by %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-         </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

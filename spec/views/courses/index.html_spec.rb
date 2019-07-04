@@ -61,6 +61,10 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
     end
 
+    it 'renders course subject tags area' do
+      expect(rendered).to have_css('h3.screen-reader-only', text: 'Tags for this course')
+    end
+
     it 'renders course subject tags' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
@@ -74,7 +78,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders filter selects' do
-      expect(rendered).to have_css('.ncce-courses__filter-select', count: 3)
+      expect(rendered).to have_css('.ncce-select', count: 3)
     end
 
     it 'renders hidden workstream field' do
@@ -82,19 +86,19 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders location select' do
-      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Cambridge')
+      expect(rendered).to have_css('.ncce-select option', text: 'Cambridge')
     end
 
     it 'renders level select' do
-      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Key stage 2')
+      expect(rendered).to have_css('.ncce-select option', text: 'Key stage 2')
     end
 
     it 'renders topic select' do
-      expect(rendered).to have_css('.ncce-courses__filter-select option', text: 'Algorithms')
+      expect(rendered).to have_css('.ncce-select option', text: 'Algorithms')
     end
 
     it 'renders filter submit' do
-      expect(rendered).to have_css('.ncce-button__pink[value="Apply"]', count: 1)
+      expect(rendered).to have_css('.ncce-button__pink[value="Apply filter"]', count: 1)
     end
 
   end

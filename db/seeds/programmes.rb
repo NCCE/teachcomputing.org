@@ -2,6 +2,7 @@ cs_accelerator = Programme.find_or_create_by(slug: 'cs-accelerator') do |program
   programme.title = 'GCSE computer science subject knowledge'
   programme.slug = 'cs-accelerator'
   programme.description = 'If you’re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
+  programme.enrollable = true
 end
 
 puts "Created Programme: #{cs_accelerator.title} (#{cs_accelerator})"
@@ -16,6 +17,13 @@ assessment = Assessment.find_or_create_by(programme_id: cs_accelerator.id) do |a
 end
 
 puts "Created assessment: #{assessment.activity.title} (#{assessment})"
+
+assessment_counter = AssessmentCounter.find_or_create_by(assessment_id: assessment.id) do |assessment_counter|
+  assessment_counter.assessment_id = assessment.id
+  assessment_counter.counter = 0
+end
+
+puts "Created assessment_counter: #{assessment_counter}"
 
 slugs = %w[
   registered-with-the-national-centre
@@ -34,6 +42,7 @@ slugs = %w[
   understanding-maths-and-logic-in-computer-science
   understanding-computer-systems
   cs-accelerator-assessment
+  introduction-to-cybersecurity-for-teachers
 ]
 
 slugs.each do |slug|

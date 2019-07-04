@@ -12,7 +12,7 @@ FactoryBot.define do
     factory :failed_assessment_attempt_from_before do
       after(:create) do |assessment_attempt|
         assessment_attempt.transition_to(:failed)
-        assessment_attempt.state_machine.last_transition.update(created_at: 50.hours.ago, updated_at: 50.hours.ago)
+        assessment_attempt.last_transition.update(created_at: 50.hours.ago, updated_at: 50.hours.ago)
       end
     end
 
