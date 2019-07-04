@@ -12,6 +12,6 @@ class DashboardController < ApplicationController
   private
 
     def set_programmes
-      @programmes = Programme.all
+      @programmes = Programme.enrollable
     end
 end

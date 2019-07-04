@@ -2,6 +2,7 @@ cs_accelerator = Programme.find_or_create_by(slug: 'cs-accelerator') do |program
   programme.title = 'GCSE computer science subject knowledge'
   programme.slug = 'cs-accelerator'
   programme.description = 'If you’re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
+  programme.enrollable = true
 end
 
 puts "Created Programme: #{cs_accelerator.title} (#{cs_accelerator})"

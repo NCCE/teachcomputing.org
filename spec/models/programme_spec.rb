@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Programme, type: :model do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programmes) { create_list(:programme, 3) }
+  let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
@@ -20,6 +22,20 @@ RSpec.describe Programme, type: :model do
 
     it 'has_one assessment' do
       expect(programme).to have_one(:assessment)
+    end
+  end
+
+  describe 'scopes' do
+    describe '#enrollable' do
+      before do
+        programmes
+        non_enrollable_programme
+      end
+      
+      it 'contains only programmes that are enrollable' do
+        expect(Programme.enrollable).to eq programmes
+        expect(Programme.enrollable).to_not include non_enrollable_programme
+      end
     end
   end
 
