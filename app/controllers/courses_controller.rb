@@ -79,14 +79,14 @@ class CoursesController < ApplicationController
 
   def alert_filter_params(total_count, filtered_count)
     filter_strings = []
-    filter_strings.push("<strong>Level</strong>, #{@current_level}") if @current_level
-    filter_strings.push("<strong>Topic</strong>, #{@current_topic}") if @current_topic
-    filter_strings.push("<strong>Location</strong>, #{@current_location}") if @current_location
-    filter_strings.push("<strong>Programme</strong>, #{@current_workstream}") if @current_workstream
+    filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
+    filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
+    filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
+    filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
 
     return unless filter_strings.length.positive?
 
-    notice = "<span>You are filtering with #{filter_strings.join('; ')}.</span>"
+    notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
     notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
     flash.now[:notice] = notice
   end
