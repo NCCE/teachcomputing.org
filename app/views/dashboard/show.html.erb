@@ -29,7 +29,7 @@
 </div>
 </div>
 <% @programmes.each do |programme| %>
-  <%= render "dashboard/programmes/#{programme.slug}", programme: programme %>
+  <%= render "dashboard/programmes/hero", programme: programme %>
 <% end %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>

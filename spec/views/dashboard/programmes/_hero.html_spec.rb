@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
+RSpec.describe('dashboard/programmes/_hero', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
@@ -20,12 +20,12 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements
-    render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
+    render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
   end
 
   context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
     before do
-      render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
+      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
     it 'shows the certificate progress section' do
@@ -44,7 +44,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
-      render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
+      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
     it 'shows the certificate progress section' do
@@ -64,7 +64,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
     before do
       user_programme_enrolment
       passed_exam
-      render :template => 'dashboard/programmes/_cs-accelerator', :locals => { programme: programme }
+      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
     it 'shows the certificate complete section' do
