@@ -1,0 +1,9 @@
+<% if programme.user_enrolled?(current_user) %>
+  <% if programme.passed_programme_assessment?(current_user) %>
+    <%= render "dashboard/programmes/#{programme.slug}/complete", programme: programme %>
+  <% else%>
+    <%= render "dashboard/programmes/#{programme.slug}/progress", programme: programme %>
+  <% end %>
+<% else %>
+  <%= render "dashboard/programmes/#{programme.slug}/enrol", programme: programme %>
+<% end %>
