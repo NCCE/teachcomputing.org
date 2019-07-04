@@ -4,6 +4,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programmes) { Programme.enrollable }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
@@ -14,7 +15,7 @@ RSpec.describe('dashboard/programmes/_cs-accelerator', type: :view) do
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   before do
-    [programme, @programmes = Programme.all, activity]
+    [programme, @programmes = programmes, activity]
     programme_activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)

@@ -25,7 +25,7 @@ class ProgrammesController < ApplicationController
   private
 
     def find_programme
-      @programme = Programme.find_by!(slug: params[:slug])
+      @programme = Programme.enrollable.find_by!(slug: params[:slug])
     end
 
     def achievements_by_category
