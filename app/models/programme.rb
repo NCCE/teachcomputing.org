@@ -7,6 +7,8 @@ class Programme < ApplicationRecord
 
   validates :title, :description, :slug, presence: true
 
+  scope :enrollable, -> { where(enrollable: true) }
+
   def user_enrolled?(user = nil)
     return false if user.nil?
 
