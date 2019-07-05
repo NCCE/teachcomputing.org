@@ -58,7 +58,7 @@ class ProgrammesController < ApplicationController
     end
 
     def user_enrolled?
-      redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
+      redirect_to "/#{@programme.slug}" unless @programme.user_enrolled?(current_user)
     end
 
     def get_certificate_details
