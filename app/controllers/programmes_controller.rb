@@ -18,8 +18,10 @@ class ProgrammesController < ApplicationController
   end
 
   def certificate
+    return redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+
     get_certificate_details
-    redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    render layout: 'certificate'
   end
 
   private
@@ -44,7 +46,7 @@ class ProgrammesController < ApplicationController
       @num_attempts = attempts.count
       @can_take_test_at = 0
       @currently_taking_test = false
-      
+
       if @num_attempts.positive?
         last_attempt = attempts.last
         if last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s && @num_attempts >= 2
