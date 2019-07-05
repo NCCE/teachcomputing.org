@@ -12,14 +12,16 @@ class ProgrammesController < ApplicationController
   end
 
   def complete
-    achievements_by_category
-
     redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
+
+    achievements_by_category
   end
 
   def certificate
+    return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
+
     get_certificate_details
-    redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
+    render layout: 'certificate'
   end
 
   private
