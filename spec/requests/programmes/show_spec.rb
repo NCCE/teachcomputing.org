@@ -44,6 +44,16 @@ RSpec.describe ProgrammesController do
     end
   end
 
+  let(:setup_mixed_achievements) do
+    setup_achievements_for_programme
+    activities = [create(:activity, :future_learn, credit: 20), create(:activity, :future_learn, credit: 20)]
+
+    activities.each do |activity|
+      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
+      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+    end
+  end
+
   let(:one_commenced_test_attempt) do
     setup_achievements_for_taking_test
     create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id)
@@ -128,6 +138,23 @@ RSpec.describe ProgrammesController do
 
         it 'assigns the number of attempts at test correctly' do
           expect(assigns(:num_attempts)).to eq (0)
+        end
+
+        context 'when the user has 1 in-progress and 2 complete courses' do
+          before do
+            setup_mixed_achievements
+            get programme_path('cs-accelerator')
+          end
+
+          it 'doesn\'t show in-progress courses' do
+            expect(assigns(:online_achievements)).to_not include(online_achievement)
+          end
+
+          it 'only shows complete courses' do
+            assigns(:online_achievements).each do |a|
+              expect(a.current_state).to eq('complete')
+            end
+          end
         end
 
         context 'when user can take the test' do

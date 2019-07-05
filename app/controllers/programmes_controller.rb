@@ -8,7 +8,7 @@ class ProgrammesController < ApplicationController
     redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
     achievements_by_category
-    assessment_state_details
+    assessment_state_details if @programme.assessment
   end
 
   def complete
@@ -31,9 +31,14 @@ class ProgrammesController < ApplicationController
     end
 
     def achievements_by_category
+      sort_by_state = lambda do |a, b|
+        return -1 if a.current_state == 'complete'
+        return 1 if b.current_state == 'complete'
+        0
+      end
       achievements = current_user.achievements.for_programme(@programme)
-      @online_achievements = achievements.with_category('online').take(2)
-      @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
+      @online_achievements = achievements.with_category('online').sort(&sort_by_state).take(2)
+      @face_to_face_achievements = achievements.with_category('face-to-face').sort(&sort_by_state).take(2)
       @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
     end
 
