@@ -5,7 +5,7 @@ class ProgrammesController < ApplicationController
   before_action :user_enrolled?, only: %i[show complete certificate]
 
   def show
-    redirect_to programme_complete_path(@programme.slug) if @programme.passed_programme_assessment?(current_user)
+    redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
     achievements_by_category
     assessment_state_details
@@ -14,12 +14,12 @@ class ProgrammesController < ApplicationController
   def complete
     achievements_by_category
 
-    redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
   end
 
   def certificate
     get_certificate_details
-    redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
   end
 
   private
@@ -38,13 +38,13 @@ class ProgrammesController < ApplicationController
     def assessment_state_details
       @enough_credits_for_test = helpers.can_take_accelerator_test?(current_user, @programme)
       @num_attempts = 0
-      return if !@enough_credits_for_test || @programme.passed_programme_assessment?(current_user)
+      return if !@enough_credits_for_test || @programme.user_completed?(current_user)
 
       attempts = @programme.assessment.assessment_attempts.where(user_id: current_user.id).order(:created_at)
       @num_attempts = attempts.count
       @can_take_test_at = 0
       @currently_taking_test = false
-      
+
       if @num_attempts.positive?
         last_attempt = attempts.last
         if last_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s && @num_attempts >= 2
