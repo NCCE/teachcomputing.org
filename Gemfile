@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
+gem 'axe-matchers'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
 gem 'connection_pool','~> 2.2.2'
@@ -57,11 +58,12 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
