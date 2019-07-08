@@ -16,11 +16,11 @@ RSpec.describe('Home page', type: :system) do
   end
 
   it 'main is accessible' do
-    expect(page).to be_accessible.within '#main-content'
+    expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
   end
 
   xit 'footer is accessible' do
-    expect(page).to be_accessible.within 'footer'
+    expect(page).to be_accessible.within('footer')
   end
 
 end
