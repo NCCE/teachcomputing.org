@@ -20,20 +20,10 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-require 'webdrivers/chromedriver'
-require 'selenium-webdriver'
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-end
-
+require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
+Capybara.default_driver = :selenium_chrome_headless
 
-Capybara.configure do |config|
-  config.default_max_wait_time = 10 # seconds
-  config.default_driver = :selenium
-  # config.always_include_port = true
-end
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
 
@@ -46,4 +36,16 @@ RSpec.configure do |config|
   config.include AchieverStubs
 
   config.include GhostStubs
+
+  config.before(:each, type: :system) do
+    if ENV["SELENIUM_DRIVER_URL"].present?
+      driven_by :selenium, using: :chrome,
+                           options: {
+                               browser: :remote,
+                               url: ENV.fetch("SELENIUM_DRIVER_URL"),
+                               desired_capabilities: :chrome}
+    else
+      driven_by :selenium_chrome_headless
+    end
+  end
 end
