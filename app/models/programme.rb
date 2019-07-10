@@ -19,9 +19,15 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'cs-accelerator')
   end
 
-  def passed_programme_assessment?(user = nil)
-    return false if user.nil?
-    results = user.achievements.for_programme(self).in_state('complete').joins(:activity)
-      .where(activities: { category: 'assessment'}).any?
+  def user_completed?(user = nil)
+    if slug == 'cs-accelerator'
+      return user.achievements
+                 .for_programme(self)
+                 .in_state('complete')
+                 .joins(:activity)
+                 .where(activities: { category: 'assessment' }).any?
+    end
+
+    false
   end
 end

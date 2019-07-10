@@ -20,6 +20,12 @@ class Achievement < ApplicationRecord
     joins(:activity).where.not(activities: { category: category })
   }
 
+  scope :sort_complete_first, -> {
+    select("achievements.*, COALESCE(#{@klass.send(:most_recent_transition_alias)}.to_state, '#{@klass.send(:initial_state)}') as current_state")
+    .joins(most_recent_transition_join)
+    .order('current_state DESC')
+  }
+
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
