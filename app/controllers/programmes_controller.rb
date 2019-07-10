@@ -31,7 +31,7 @@ class ProgrammesController < ApplicationController
     end
 
     def achievements_by_category
-      achievements = current_user.achievements.for_programme(@programme).sort_complete_first()
+      achievements = current_user.achievements.for_programme(@programme).sort_complete_first
       @online_achievements = achievements.with_category('online').take(2)
       @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
       @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
