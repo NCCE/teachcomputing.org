@@ -31,14 +31,9 @@ class ProgrammesController < ApplicationController
     end
 
     def achievements_by_category
-      completed_first = lambda do |a, b|
-        return -1 if a.current_state == 'complete'
-        return 1 if b.current_state == 'complete'
-        0
-      end
-      achievements = current_user.achievements.for_programme(@programme)
-      @online_achievements = achievements.with_category('online').sort(&completed_first).take(2)
-      @face_to_face_achievements = achievements.with_category('face-to-face').sort(&completed_first).take(2)
+      achievements = current_user.achievements.for_programme(@programme).sort_complete_first()
+      @online_achievements = achievements.with_category('online').take(2)
+      @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
       @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
     end
 
