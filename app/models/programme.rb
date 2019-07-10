@@ -20,8 +20,6 @@ class Programme < ApplicationRecord
   end
 
   def user_completed?(user = nil)
-    return false if user.nil?
-
     if slug == 'cs-accelerator'
       return user.achievements
                  .for_programme(self)

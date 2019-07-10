@@ -31,7 +31,7 @@ RSpec.describe Programme, type: :model do
         programmes
         non_enrollable_programme
       end
-      
+
       it 'contains only programmes that are enrollable' do
         expect(Programme.enrollable).to eq programmes
         expect(Programme.enrollable).to_not include non_enrollable_programme
@@ -66,8 +66,10 @@ RSpec.describe Programme, type: :model do
 
   describe '#user_completed?' do
     context 'when user is not passed in' do
-      it 'returns false' do
-        expect(programme.user_completed?(nil)).to eq false
+      it 'raises error if user is nil' do
+        expect {
+          programme.user_completed?(nil)
+        }.to raise_error(NoMethodError)
       end
     end
 
