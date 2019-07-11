@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/certificate/_cs-accelerator', type: :view) do
+RSpec.describe('programmes/cs-accelerator/certificate', type: :view) do
   let!(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:achievement) { create(:achievement) }
@@ -22,5 +22,4 @@ RSpec.describe('programmes/certificate/_cs-accelerator', type: :view) do
   it 'has the passed date correctly' do
     expect(rendered).to have_css('.govuk-list li strong', text: '03/02/2001')
   end
-
 end

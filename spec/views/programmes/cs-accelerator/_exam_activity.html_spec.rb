@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_exam_activity', type: :view) do
+RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
   let!(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:assessment) { create(:assessment, programme_id: programme.id) }

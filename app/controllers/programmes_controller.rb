@@ -5,23 +5,25 @@ class ProgrammesController < ApplicationController
   before_action :user_enrolled?, only: %i[show complete certificate]
 
   def show
-    redirect_to programme_complete_path(@programme.slug) if @programme.passed_programme_assessment?(current_user)
+    return redirect_to programme_complete_path(@programme.slug) if @programme.passed_programme_assessment?(current_user)
 
     achievements_by_category
     assessment_state_details
+    render "programmes/#{@programme.slug}/show"
   end
 
   def complete
+    return redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    
     achievements_by_category
-
-    redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    render "programmes/#{@programme.slug}/complete"
   end
 
   def certificate
     return redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
 
     get_certificate_details
-    render layout: 'certificate'
+    render "programmes/#{@programme.slug}/certificate", layout: 'certificate'
   end
 
   private
