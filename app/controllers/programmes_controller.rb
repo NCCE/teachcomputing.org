@@ -14,13 +14,13 @@ class ProgrammesController < ApplicationController
 
   def complete
     return redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
-    
+
     achievements_by_category
-    render "programmes/#{@programme.slug}/complete"
+    assessment_state_details if @programme.assessment
   end
 
   def certificate
-    return redirect_to programme_path(@programme.slug) unless @programme.passed_programme_assessment?(current_user)
+    return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
 
     get_certificate_details
     render "programmes/#{@programme.slug}/certificate", layout: 'certificate'
@@ -33,7 +33,7 @@ class ProgrammesController < ApplicationController
     end
 
     def achievements_by_category
-      achievements = current_user.achievements.for_programme(@programme)
+      achievements = current_user.achievements.for_programme(@programme).sort_complete_first
       @online_achievements = achievements.with_category('online').take(2)
       @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
       @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
@@ -42,7 +42,7 @@ class ProgrammesController < ApplicationController
     def assessment_state_details
       @enough_credits_for_test = helpers.can_take_accelerator_test?(current_user, @programme)
       @num_attempts = 0
-      return if !@enough_credits_for_test || @programme.passed_programme_assessment?(current_user)
+      return if !@enough_credits_for_test || @programme.user_completed?(current_user)
 
       attempts = @programme.assessment.assessment_attempts.where(user_id: current_user.id).order(:created_at)
       @num_attempts = attempts.count
@@ -60,7 +60,7 @@ class ProgrammesController < ApplicationController
     end
 
     def user_enrolled?
-      redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
+      redirect_to "/#{@programme.slug}" unless @programme.user_enrolled?(current_user)
     end
 
     def get_certificate_details

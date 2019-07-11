@@ -92,7 +92,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
 
   context 'when user has passed the test' do
     before do
-      allow_any_instance_of(Programme).to receive(:passed_programme_assessment?).and_return(true)
+      allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
       render
     end
 

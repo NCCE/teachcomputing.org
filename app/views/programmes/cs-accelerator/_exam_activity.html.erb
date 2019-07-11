@@ -1,4 +1,4 @@
-<% if @programme.passed_programme_assessment?(current_user) %>
+<% if @programme.user_completed?(current_user) %>
   <li class="ncce-activity-list__item ncce-activity-list__item--position ">
     <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
     <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Passed the final test</span>
