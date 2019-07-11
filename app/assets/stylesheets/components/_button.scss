@@ -1,13 +1,13 @@
-.ncce-button__pink {
-	background-color: $ncce-pink;
-	box-shadow: 0 4px 0 $ncce-dark-pink;
+@mixin ncce_button($background_color, $shadow_color) {
+	background-color: $background_color;
+	box-shadow: 0 4px 0 $shadow_color;
 	font-size: 1.188rem;
 	font-weight: bold;
 	margin: 0;
 	padding: 12px 25px;
 
   &[disabled] {
-    background-color: $ncce-pink
+    background-color: $background_color;
   }
 
   &:hover,
@@ -22,12 +22,20 @@
   }
 
   &[disabled]:active {
-    box-shadow: 0 4px 0 $ncce-dark-pink;
+    box-shadow: 0 4px 0 $shadow_color;
   }
 
   @include govuk-media-query($from: desktop) {
     margin-bottom: 20px;
   }
+}
+
+.ncce-button__pink {
+  @include ncce_button($ncce-pink, $ncce-dark-pink);
+}
+
+.ncce-button__blue {
+  @include ncce_button($ncce-blue, $ncce-dark-blue);
 }
 
 .ncce-button__pink--rounded {

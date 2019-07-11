@@ -1,22 +1,31 @@
-<div class="govuk-width-container">
-  <div class="ncce-hero">
-    <div class="govuk-main-wrapper">
+<div class="ncce-hero">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper ncce-hero__wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
-          <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl ncce-hero__heading">Helping you <br>teach computing</h1>
+          <div class="govuk-grid-column-one-half">
+            <div class="ncce-hero__long-shadow">
+              <h1 class="govuk-heading-xl ncce-hero__heading">Helping <span
+                  class="sparkle">you</span> <br>teach computing</h1>
+            </div>
+            <div class="ncce-hero__cta--desktop">
+              <p class="govuk-body ncce-hero__body">Discover
+                <strong>training</strong>, <strong>resources</strong> and
+                <strong>guidance</strong> to help you teach computing with
+                confidence.</p>
+              <%= link_to 'Get started!', offer_path, class: 'govuk-button ncce-button__blue' %>
+            </div>
+
           </div>
-          <div class="govuk-grid-column-full">
-            <p class="govuk-body ncce-hero__body">To meet the growing demand for digital skills, the National Centre for Computing Education has been set up to make a significant contribution to the teaching of computing education throughout England.</p>
-            <p class="govuk-body ncce-hero__body">We support the teaching of computing in schools and colleges across all key stages, giving teachers the subject knowledge and skills to establish computing as a core part of the curriculum.</p>
-            <p class="govuk-body ncce-hero__body">Whatever your needs, we’re here to guide you through our high-quality support, which includes:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li><%= link_to 'Face-to-face and online CPD', courses_path, class: 'ncce-link' %></li>
-              <li>Generous bursaries</li>
-              <li>Regional support</li>
-              <li>Free resources</li>
-            </ul>
-            <%= link_to 'Explore our offer', offer_path, class: 'govuk-button ncce-button__pink ncce-hero__button--link' %>
+          <div class="govuk-grid-column-one-half">
+            <%= image_tag '/images/home-hero.jpg', class: 'ncce-hero__image', alt: '' %>
+          </div>
+          <div class="govuk-grid-column-one-half ncce-hero__cta--mobile">
+            <p class="govuk-body ncce-hero__body">Discover
+              <strong>training</strong>, <strong>resources</strong> and
+              <strong>guidance</strong> to help you teach computing with
+              confidence.</p>
+            <%= link_to 'Get started!', offer_path, class: 'govuk-button ncce-button__blue' %>
           </div>
         </div>
       </div>

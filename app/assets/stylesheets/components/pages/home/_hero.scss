@@ -1,47 +1,79 @@
 .ncce-hero {
+  background-blend-mode: multiply;
+  background-color: #FAD160;
 	background-image: url(/images/dots.svg);
-	background-position: calc(100% - -110px) 0%;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	margin: 0.5rem auto;
+  overflow: hidden;
+}
 
-	@include govuk-media-query($from: tablet) {
-		background-position: top 0 right -48px;
-		background-size: 500px;
-		margin: 1.5rem auto;
-	}
+.ncce-hero__wrapper {
+  padding-bottom: 0;
+}
 
-	@include govuk-media-query($from: desktop) {
-		background-size: 800px;
-	}
+.ncce-hero__image {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
 
-	br {
-		display: none;
+.ncce-hero__long-shadow {
+  position: relative;
 
-		@include govuk-media-query($from: tablet) {
-			display: block;
-		}
-	}
+  &:before {
+    background-color: #E67D6E;
+    content: "";
+    height: 101%;
+    left: -400px;
+    position: absolute;
+    top: 400px;
+    transform: skewY(-45deg);
+    transform-origin: top left;
+    width: 400px;
+  }
+
+  &:after {
+    background-color: #E67D6E;
+    content: '';
+    height: 400px;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    transform: skewX(-45deg);
+    transform-origin: top left;
+    width: 100%;
+  }
 }
 
 .ncce-hero__heading {
-	background-image: url(/images/line.png);
-	background-position: left bottom;
-	background-repeat: no-repeat;
-	background-size: 95%;
-	padding-bottom: 2.5rem;
-	padding-top: 4rem;
-	@include govuk-media-query($from: tablet) {
-		background-position: bottom left;
-		background-size: 72%;
-		font-size: 48px;
-		padding-top: 5rem;
-	}
+  border: 6px solid black;
+  padding: 0.465em;
+  background-color: white;
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+
+
+	// @include govuk-media-query($from: tablet) {
+	// 	background-position: bottom left;
+	// 	background-size: 72%;
+	// 	font-size: 48px;
+	// 	padding-top: 5rem;
+  // }
 }
 
-.ncce-hero__button--link,
-.ncce-hero__button--link:visited {
-	color: $ncce-white !important;
-	font-weight: bold;
-	text-decoration: none;
+.ncce-hero__cta--desktop {
+  display: none;
+  @include govuk-media-query($from: tablet) {
+    display: initial;
+  }
+  position: relative;
+}
+
+.ncce-hero__cta--mobile {
+  @include govuk-media-query($from: tablet) {
+    display: none;
+  }
+  position: relative;
+}
+
+.ncce-hero__body {
+  font-size: 1.25rem;
 }

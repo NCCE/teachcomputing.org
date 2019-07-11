@@ -22,6 +22,8 @@ class Ghost
       featured_posts = ActiveSupport::JSON.decode(result)
 
       return featured_posts['posts']
+    rescue SocketError
+      return [];
     rescue RestClient::Exception => error
       Raven.capture_exception(error)
     rescue ActiveSupport::JSON.parse_error
