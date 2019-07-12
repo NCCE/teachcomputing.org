@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/complete', type: :view) do
+RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 

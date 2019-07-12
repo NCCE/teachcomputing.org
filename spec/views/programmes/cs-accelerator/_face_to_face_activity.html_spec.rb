@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_face_to_face_activity', type: :view) do
+RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) do
   let(:user) { create(:user) }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
