@@ -5,7 +5,6 @@ RSpec.describe('Dashboard page', type: :system) do
   let(:user) { create(:user) }
 
   before do
-    # visit login_path
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     visit dashboard_path
   end
