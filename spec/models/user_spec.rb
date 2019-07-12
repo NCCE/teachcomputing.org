@@ -28,7 +28,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:stem_credentials_refresh_token) }
     it { is_expected.to validate_presence_of(:stem_credentials_expires_at) }
     it { is_expected.to validate_presence_of(:stem_user_id) }
+    it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:stem_user_id) }
+    it { is_expected.to validate_uniqueness_of(:email) }
   end
 
   describe 'encryption' do
