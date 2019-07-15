@@ -14,34 +14,41 @@
 }
 
 .ncce-hero__image {
-  margin-bottom: 20px;
   mask-image: url('/images/home/squiggle-shape.svg');
   -webkit-mask-image: url('/images/home/squiggle-shape.svg');
   mask-size: cover;
   -webkit-mask-size: cover;
   position: relative;
   width: 100%;
+  @include govuk-media-query($from: tablet ) {
+    margin-left: -25%;
+    width: 120%;
+  }
+  z-index: 20;
 }
 
 .ncce-hero__long-shadow {
   position: relative;
+  @include govuk-media-query($from: tablet ) {
+    left: -20px;
+  }
 
   &:before {
     background-color: #E67D6E;
     content: "";
     height: 101%;
-    left: -400px;
+    left: -800px;
     position: absolute;
-    top: 400px;
+    top: 800px;
     transform: skewY(-45deg);
     transform-origin: top left;
-    width: 400px;
+    width: 800px;
   }
 
   &:after {
     background-color: #E67D6E;
     content: '';
-    height: 400px;
+    height: 800px;
     left: 0;
     position: absolute;
     top: 100%;
@@ -53,15 +60,26 @@
 
 .ncce-hero__heading {
   background-color: white;
-  background-image: url('/images/home/splash-pink.svg');
-  background-position: 125px 7px;
-  background-repeat: no-repeat;
-  background-size: 73px;
   border: 6px solid black;
-  font-size: 1.7rem;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  padding: 0.465em;
+  font-size: 8.4vw;
+  line-height: 1;
+  @include govuk-media-query($from: tablet) {
+    font-size: 4vw;
+  }
+  @include govuk-media-query($from: 1024px) {
+    background-image: url('/images/home/splash-pink.svg');
+    background-position: 187px 0;
+    @-moz-document url-prefix() {
+      background-position: 194px 0;
+    }
+    background-repeat: no-repeat;
+    background-size: 120px;
+    border: 9px solid black;
+    font-size: 2.8em;
+    line-height: 1.2;
+  }
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
 .ncce-hero__cta--desktop {
@@ -80,9 +98,17 @@
 }
 
 .ncce-hero__body {
+  color: $ncce-black;
   font-size: 1.25rem;
+  margin-bottom: 20px;
+  @include govuk-media-query($from: tablet) {
+    padding-right: 60px;
+  }
+  @include govuk-media-query($from: 1024px) {
+    font-size: 1.5rem;
+  }
 }
 
 .ncce-hero__button {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }

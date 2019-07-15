@@ -1,6 +1,6 @@
-@mixin ncce_button($background_color, $shadow_color) {
+@mixin ncce_button($background_color) {
 	background-color: $background_color;
-	box-shadow: 0 4px 0 $shadow_color;
+	box-shadow: none;
 	font-size: 1.188rem;
 	font-weight: bold;
 	margin: 0;
@@ -22,7 +22,7 @@
   }
 
   &[disabled]:active {
-    box-shadow: 0 4px 0 $shadow_color;
+    box-shadow: none;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -31,11 +31,11 @@
 }
 
 .ncce-button__pink {
-  @include ncce_button($ncce-pink, $ncce-dark-pink);
+  @include ncce_button($ncce-pink);
 }
 
 .ncce-button__blue {
-  @include ncce_button($ncce-blue, $ncce-dark-blue);
+  @include ncce_button($ncce-blue);
 }
 
 .ncce-button__pink--rounded {
