@@ -10,24 +10,19 @@ RSpec.describe('Static pages', type: :system) do
       visit root_path
     end
 
-    # it 'page is accessible' do
-    #   # Axe browser tool will check the entire page
-    #   expect(page).to be_accessible
-    # end
-
     it 'is the correct page' do
       expect(page).to have_content("Helping you\nteach computing")
     end
 
-    xit 'header is accessible' do
+    it 'header is accessible' do
       expect(page).to be_accessible.within('header')
     end
 
     it 'page is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
 
-    xit 'footer is accessible' do
+    it 'footer is accessible' do
       expect(page).to be_accessible.within('footer')
     end
   end
@@ -42,7 +37,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -56,7 +51,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -70,7 +65,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -84,7 +79,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -99,7 +94,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -113,7 +108,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -127,7 +122,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -141,7 +136,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -155,7 +150,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -169,7 +164,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -183,7 +178,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -197,7 +192,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 
@@ -211,7 +206,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').skipping('aria-allowed-role')
+      expect(page).to be_accessible.within('#main-content')
     end
   end
 end
