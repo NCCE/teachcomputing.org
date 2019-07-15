@@ -16,7 +16,9 @@
 .ncce-hero__image {
   margin-bottom: 20px;
   mask-image: url('/images/home/squiggle-shape.svg');
+  -webkit-mask-image: url('/images/home/squiggle-shape.svg');
   mask-size: cover;
+  -webkit-mask-size: cover;
   position: relative;
   width: 100%;
 }
@@ -60,14 +62,6 @@
   line-height: 1.2;
   margin-bottom: 20px;
   padding: 0.465em;
-
-
-	// @include govuk-media-query($from: tablet) {
-	// 	background-position: bottom left;
-	// 	background-size: 72%;
-	// 	font-size: 48px;
-	// 	padding-top: 5rem;
-  // }
 }
 
 .ncce-hero__cta--desktop {
