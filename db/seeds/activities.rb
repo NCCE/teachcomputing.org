@@ -254,6 +254,15 @@ Activity.find_or_create_by(slug: 'ks4-computing-for-all') do |activity|
   activity.provider = 'stem-learning'
 end
 
+Activity.find_or_create_by(slug: 'pre-january-2019-csa-face-to-face-cpd') do |activity|
+  activity.title = 'Pre January 2019 CSA Face to Face CPD'
+  activity.credit = 40
+  activity.slug = 'pre-january-2019-csa-face-to-face-cpd'
+  activity.stem_course_id = 'f7fefbae-53aa-4c28-bbd2-b3d3b1bf7bbd'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
 Activity.find_or_create_by(slug: 'cs-accelerator-assessment') do |activity|
   activity.title = 'CS Accelerator Assessment'
   activity.credit = 30

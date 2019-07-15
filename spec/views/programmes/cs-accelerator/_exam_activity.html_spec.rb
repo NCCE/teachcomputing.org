@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_exam_activity', type: :view) do
+RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
   let!(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -92,7 +92,7 @@ RSpec.describe('programmes/_exam_activity', type: :view) do
 
   context 'when user has passed the test' do
     before do
-      allow_any_instance_of(Programme).to receive(:passed_programme_assessment?).and_return(true)
+      allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
       render
     end
 
