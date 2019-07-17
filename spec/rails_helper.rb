@@ -20,7 +20,12 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
+Capybara.default_driver = :selenium_chrome_headless
+
+
+WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -31,4 +36,8 @@ RSpec.configure do |config|
   config.include AchieverStubs
 
   config.include GhostStubs
+
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
 end
