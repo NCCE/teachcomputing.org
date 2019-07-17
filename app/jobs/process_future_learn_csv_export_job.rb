@@ -4,7 +4,7 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
   def perform(csv_contents, import_record)
     csv = CSV.parse(csv_contents, headers: true)
     csv.each do |record|
-      user = User.find_by(email: record['learner_identifier'])
+      user = User.find_by(email: record['learner_identifier'].downcase)
       activity = Activity.find_by(future_learn_course_id: record['course_uuid'])
       next if user.nil? || activity.nil?
 
