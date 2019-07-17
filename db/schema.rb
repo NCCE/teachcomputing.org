@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_083822) do
+ActiveRecord::Schema.define(version: 2019_07_16_100608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -142,7 +142,9 @@ ActiveRecord::Schema.define(version: 2019_07_03_083822) do
     t.string "encrypted_stem_credentials_access_token_iv"
     t.string "encrypted_stem_credentials_refresh_token"
     t.string "encrypted_stem_credentials_refresh_token_iv"
+    t.string "teacher_reference_number"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
+    t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade

@@ -52,16 +52,19 @@
   }
 }
 
-.ncce-activity-list__item-activity {
-  background-color: $ncce-pink-light;
-  font-weight: 700;
+.ncce-activity-list__item-indent {
   margin-left: 2rem;
-  padding: 0.7rem;
-
   @include govuk-media-query($from: tablet) {
     margin-left: 2.8rem;
     margin-top: 0.5rem;
   }
+}
+
+.ncce-activity-list__item-activity {
+  @extend .ncce-activity-list__item-indent;
+  background-color: $ncce-pink-light;
+  font-weight: 700;
+  padding: 0.7rem;
 }
 
 .ncce-activity-list__item--incomplete {

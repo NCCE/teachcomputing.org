@@ -1,0 +1,26 @@
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+<% if current_user.teacher_reference_number.present? %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--trn">
+    <span class="ncce-activity-list__item-text">Provide us with your teacher reference number</span>
+    <span class="ncce-activity-list__item-activity ncce-activity-list__item-activity--trn"><%= current_user.teacher_reference_number %></span>
+    <%= link_to 'What is my teacher reference number?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'ncce-link ncce-activity-list__item-indent', target: '_blank' %>
+  </li>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+    <span class="ncce-activity-list__item-text">Provide us with your teacher reference number</span>
+    <%= form_for(current_user, url: user_teacher_reference_number_path(current_user),
+          html: {
+            class: 'ncce-activity-list__form'
+          }
+        ) do |f| %>
+      <%= f.text_field :teacher_reference_number,
+          class: 'govuk-input ncce-input',
+          'aria-label': 'Enter your teacher reference number'
+      %>
+      <%= hidden_field_tag 'redirect_path', programme_path(@programme.slug) %>
+      <%= f.submit 'Add', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded ncce-activity-list__form-button' %>
+    <% end %>
+    <%= link_to 'What is my teacher reference number?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'ncce-link ncce-activity-list__item-indent', target: '_blank' %>
+  </li>
+<% end %>
+</ul>

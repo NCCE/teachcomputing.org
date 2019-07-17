@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :stem_user_id, uniqueness: true
   validates :email, presence: true
   validates :email, uniqueness: true
+  validates :teacher_reference_number, uniqueness: true,
+    if: Proc.new { |u| u.teacher_reference_number.present? }
 
   attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
   attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch('STEM_CREDENTIALS_REFRESH_TOKEN_KEY')
