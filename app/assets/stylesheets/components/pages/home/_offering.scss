@@ -1,26 +1,26 @@
-.ncce-journey__container {
+.ncce-offering__container {
   background-image: url(/images/polka-teal-bg.svg);
   background-repeat: repeat-x;
   background-position: 0% 10%;
   background-color: $ncce-blue-light;
 
   @include govuk-media-query($from: tablet) {
-    background-position: 0% 6%;
+    background-position: 0% 25%;
   }
 }
 
-.ncce-journey {
+.ncce-offering {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-
-  @include govuk-media-query($from: tablet) {
+  margin-top: 20px;
+  @include govuk-media-query($from: 800px) {
 		grid-gap: 15px;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 4%;
+    grid-column-gap: 3%;
   }
 }
 
-.ncce-journey__aside {
+.ncce-offering__aside {
   grid-column-start: 1;
   grid-column-end: 1;
   background-color: $ncce-dark-purple;
@@ -28,13 +28,14 @@
   padding: 24px;
   margin-bottom: 40px;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: 800px) {
     grid-column-start: 1;
     grid-column-end: 3;
+    margin-left: -24px;
   }
 }
 
-.ncce-journey__aside-highlight {
+.ncce-offering__aside-highlight {
   color: $ncce-pink-highlight;
   font-weight: bold;
 
@@ -47,18 +48,18 @@
   }
 }
 
-.ncce-journey__aside-text {
+.ncce-offering__aside-text {
   color: $ncce-white;
   margin-bottom: 0;
 }
 
 
-.ncce-journey__arrow {
+.ncce-offering__arrow {
   margin-right: 13px;
   vertical-align: middle;
 }
 
-.ncce-journey__heading {
+.ncce-offering__heading {
   font-size: 19px;
 
   @include govuk-media-query($from: tablet) {
@@ -69,19 +70,19 @@
 	}
 }
 
-.ncce-journey__link {
+.ncce-offering__link {
   font-family: $font-family-heading;
   font-weight: bold;
 }
 
-.ncce-journey__panel {
+.ncce-offering__panel {
   margin-bottom: 30px;
 
 	&:last-child {
 		margin-bottom: 10px;
   }
 
-	@include govuk-media-query($from: tablet) {
+	@include govuk-media-query($from: 800px) {
     grid-area: auto;
     grid-row-start: 2;
 	}
