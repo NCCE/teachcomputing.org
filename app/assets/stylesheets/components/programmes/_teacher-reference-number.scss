@@ -16,18 +16,30 @@
 .ncce-activity-list__form {
   display: flex;
   justify-content: flex-start;
-  margin: 0.5rem 0 0.5rem 2rem;
+  margin: 0.5rem 0 1.5rem 0;
   @include govuk-media-query($from: tablet) {
     margin: 0;
+  }
+  & > .ncce-input {
+    @include govuk-media-query($until: tablet) {
+      width: 70%;
+    }
   }
 
   &-button {
     width: auto;
     max-height: 2.5rem;
-    @include govuk-media-query($from: tablet) {
-      margin-left: 2rem;
-      width: auto;
+    margin-left: 0.5rem;
+    @include govuk-media-query($until: tablet) {
+      width: 30%;
     }
+  }
+}
 
+.ncce-activity-list__item-link {
+  font-size: 0.9rem;
+  @include govuk-media-query($from: tablet) {
+    margin-left: 2.5rem;
+    margin-top: 0.5rem;
   }
 }

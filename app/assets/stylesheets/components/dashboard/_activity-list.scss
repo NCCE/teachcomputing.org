@@ -43,6 +43,7 @@
   margin-top: 3px;
   margin-bottom: 10px;
   padding-left: 2rem;
+  align-self: center;
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
