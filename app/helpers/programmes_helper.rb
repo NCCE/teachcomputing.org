@@ -12,7 +12,7 @@ module ProgrammesHelper
   end
 
   def can_take_accelerator_test?(user, programme)
-    credits_for_accelerator(user, programme) { |total| return total >= 80 && user.teacher_reference_number.present? }
+    credits_for_accelerator(user, programme) { |total| return total >= 80 }
   end
 
   def credits_for_accelerator(user, programme)

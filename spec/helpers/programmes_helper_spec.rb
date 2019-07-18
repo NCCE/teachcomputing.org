@@ -124,30 +124,9 @@ describe ProgrammesHelper, type: :helper do
   end
 
   describe('#can_take_accelerator_test?') do
-    context 'when user hasn\'t done enough activities or entered their teacher-reference-number' do
-      before do
-        setup_partially_complete_certificate
-      end
-
-      it 'returns false' do
-        expect(helper.can_take_accelerator_test?(user, programme)).to eq false
-      end
-    end
-
     context 'when user hasn\'t done enough activities' do
       before do
         setup_partially_complete_certificate
-        user.teacher_reference_number = 'testing'
-      end
-
-      it 'returns true' do
-        expect(helper.can_take_accelerator_test?(user, programme)).to eq false
-      end
-    end
-
-    context 'when user has done enough activities but hasn\'t entered there teacher-reference-number' do
-      before do
-        setup_complete_certificate
       end
 
       it 'returns true' do
@@ -158,7 +137,6 @@ describe ProgrammesHelper, type: :helper do
     context 'when user has done enough activities' do
       before do
         setup_complete_certificate
-        user.teacher_reference_number = 'testing'
       end
 
       it 'returns true' do

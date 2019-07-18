@@ -34,7 +34,6 @@ RSpec.describe ProgrammesController do
 
   let(:setup_achievements_for_taking_test) do
     setup_achievements_for_programme
-    user.update_attributes(teacher_reference_number: 'TRN456')
     online_achievement.set_to_complete
     face_to_face_achievement.set_to_complete
     activities = [create(:activity, :future_learn, credit: 20), create(:activity, :stem_learning, credit: 20)]
