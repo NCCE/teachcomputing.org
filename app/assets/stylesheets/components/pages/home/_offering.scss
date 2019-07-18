@@ -59,19 +59,13 @@
 }
 
 .ncce-journey__heading {
-  .govuk-heading-s {
-    font-size: 19px;
-  }
+  font-size: 19px;
 
   @include govuk-media-query($from: tablet) {
     display: flex;
     align-items: flex-end;
     min-height: 50px;
     margin-bottom: 15px;
-
-    .govuk-heading-s {
-      margin-bottom: 0;
-    }
 	}
 }
 
