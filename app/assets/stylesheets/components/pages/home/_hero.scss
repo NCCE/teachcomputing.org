@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   @include govuk-media-query($from: tablet ) {
-    margin-left: -25%;
+    margin-left: -18%;
     width: 120%;
   }
   z-index: 20;
@@ -24,6 +24,7 @@
 
 .ncce-hero__long-shadow {
   position: relative;
+  margin-top: 40px;
   @include govuk-media-query($from: tablet ) {
     left: -20px;
   }
@@ -80,7 +81,10 @@
 .ncce-hero__cta--desktop {
   display: none;
   @include govuk-media-query($from: tablet) {
-    display: initial;
+    display: block;
+  }
+  @include govuk-media-query($until: desktop) {
+    margin-bottom: 40px;
   }
   position: relative;
 }
