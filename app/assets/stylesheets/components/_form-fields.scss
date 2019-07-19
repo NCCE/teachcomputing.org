@@ -8,6 +8,7 @@
   box-shadow: 0 0 0 3px $ncce-pink;
 }
 
+.govuk-input:focus,
 .govuk-select:focus {
   box-shadow: 0 0 0 2px $ncce-pink;
   outline-color: $ncce-white;
@@ -36,4 +37,8 @@
   &:focus {
     outline-color: rgba(255, 255, 255, 0);
   }
+}
+
+.ncce-input {
+  border-radius: 5px;
 }
