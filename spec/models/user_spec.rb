@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
                                      first_name: 'Jane',
                                      last_name: 'Doe')
   end
-  let(:uid) { '987654321' }
+  let(:uid) { '987654321abcDEF' }
   let(:user) do
     User.from_auth(uid,
                    stem_credentials,
@@ -21,6 +21,10 @@ RSpec.describe User, type: :model do
   end
 
   describe 'validations' do
+    before do
+      user
+    end
+
     it { is_expected.to validate_presence_of(:first_name) }
     it { is_expected.to validate_presence_of(:last_name) }
     it { is_expected.to validate_presence_of(:stem_achiever_contact_no) }
@@ -31,6 +35,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:stem_user_id) }
     it { is_expected.to validate_uniqueness_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:teacher_reference_number) }
   end
 
   describe 'encryption' do
