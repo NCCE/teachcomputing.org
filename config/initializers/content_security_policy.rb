@@ -9,7 +9,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.font_src    :self, :https, :data, 'fonts.gstatic.com'
   policy.img_src     :self, :https, :data
   policy.object_src  :none
-  policy.script_src  :self, :https, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
+  policy.script_src  :self, :https, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com', :unsafe_inline
   policy.style_src   :self, :https, :unsafe_inline
 
   policy.report_uri 'https://sentry.io/api/1370995/security/?sentry_key=f6ac7f0efe2242db8a1439f5059fafad'
