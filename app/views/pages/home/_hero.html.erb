@@ -11,7 +11,11 @@
                 <strong>training</strong>, <strong>resources</strong> and
                 <strong>guidance</strong> to help you teach computing with
                 confidence.</p>
-              <%= link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue' %>
+              <%=
+                link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
+                  link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue'
+                end
+              %>
             </div>
 
           </div>
@@ -23,7 +27,11 @@
               <strong>training</strong>, <strong>resources</strong> and
               <strong>guidance</strong> to help you teach computing with
               confidence.</p>
-            <%= link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue ncce-hero__button' %>
+            <%=
+              link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
+                link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue'
+              end
+            %>
           </div>
 
       </div>
