@@ -35,6 +35,6 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 2)
+    expect(rendered).to have_css('.ncce-activity-list', count: 3)
   end
 end

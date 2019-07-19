@@ -129,7 +129,7 @@ describe ProgrammesHelper, type: :helper do
         setup_partially_complete_certificate
       end
 
-      it 'returns false' do
+      it 'returns true' do
         expect(helper.can_take_accelerator_test?(user, programme)).to eq false
       end
     end
