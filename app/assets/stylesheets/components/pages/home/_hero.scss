@@ -1,5 +1,5 @@
 .ncce-hero {
-  background-color: #FAD160;
+  background-color: $ncce-hero-goldenrod;
   background-image: url(/images/home/polka-yellow-bg.svg);
   overflow: hidden;
 }
@@ -30,7 +30,7 @@
   }
 
   &:before {
-    background-color: #E67D6E;
+    background-color: $ncce-hero-terracotta;
     content: "";
     height: 101%;
     left: -800px;
@@ -42,7 +42,7 @@
   }
 
   &:after {
-    background-color: #E67D6E;
+    background-color: $ncce-hero-terracotta;
     content: '';
     height: 800px;
     left: 0;
@@ -55,8 +55,8 @@
 }
 
 .ncce-hero__heading {
-  background-color: white;
-  border: 6px solid black;
+  background-color: $ncce-white;
+  border: 6px solid $ncce-black;
   font-size: 8.4vw;
   line-height: 1;
   @include govuk-media-query($from: tablet) {
@@ -70,7 +70,7 @@
     }
     background-repeat: no-repeat;
     background-size: 120px;
-    border: 9px solid black;
+    border: 9px solid $ncce-black;
     font-size: 2.8em;
     line-height: 1.2;
   }
