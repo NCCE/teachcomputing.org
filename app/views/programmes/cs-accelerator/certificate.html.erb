@@ -32,6 +32,9 @@
         <ul class="govuk-list">
           <li>Date awarded: <strong><%= @transition.created_at.strftime('%d/%m/%Y') %></strong></li>
           <li>Certificate: <strong><%= certificate_number(@transition.metadata['certificate_number'], @transition.created_at) %></strong></li>
+          <% if current_user.teacher_reference_number %>
+            <li>Teacher Reference Number: <strong><%= current_user.teacher_reference_number %></strong></li>
+          <% end %>
         </ul>
       </div>
     </div>
