@@ -7,6 +7,7 @@ RSpec.describe('programmes/cs-accelerator/certificate', type: :view) do
 
   before do
     # assessment
+    user.update(teacher_reference_number: 'TRNTEST')
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @programme = programme
     achievement.set_to_complete(certificate_number: 0)
@@ -19,7 +20,11 @@ RSpec.describe('programmes/cs-accelerator/certificate', type: :view) do
     expect(rendered).to have_css('h1', text: programme.title)
   end
 
-  it 'has the passed date correctly' do
+  it 'shows the passed date correctly' do
     expect(rendered).to have_css('.govuk-list li strong', text: '03/02/2001')
+  end
+
+  it 'shows the TRN correctly' do
+    expect(rendered).to have_css('.govuk-list li strong', text: user.teacher_reference_number)
   end
 end

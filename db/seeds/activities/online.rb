@@ -110,7 +110,7 @@ end
 
 Activity.find_or_create_by(slug: 'impact-of-technology-how-to-lead-classroom-discussions') do |activity|
   activity.title = 'Impact of Technology: How To Lead Classroom Discussions'
-  activity.credit = 0
+  activity.credit = 20
   activity.slug = activity.title.parameterize
   activity.category = 'online'
   activity.self_certifiable = true
