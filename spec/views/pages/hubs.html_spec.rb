@@ -10,7 +10,7 @@ RSpec.describe('pages/hubs', type: :view) do
 
   it 'has a contact link' do
     render
-    expect(rendered).to have_link('c.taylor@stem.org.uk', href: 'mailto:c.taylor@stem.org.uk')
+    expect(rendered).to have_link('C.taylor@stem.org.uk', href: 'mailto:C.taylor@stem.org.uk')
   end
 
   context 'when a user is signed in' do
