@@ -21,7 +21,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
     end
 
     it 'shows the exam activity points' do
-      expect(rendered).to have_css('ul>li', count: 6)
+      expect(rendered).to have_css('ul>li', count: 7)
     end
 
     it 'shows the certificate graphic' do
