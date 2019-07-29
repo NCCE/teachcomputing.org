@@ -36,7 +36,6 @@
 }
 
 .ncce-offering__aside-highlight {
-  color: $ncce-pink-highlight;
   font-weight: bold;
 
   @include govuk-media-query($from: tablet) {
@@ -53,12 +52,6 @@
   margin-bottom: 0;
 }
 
-
-.ncce-offering__arrow {
-  margin-right: 13px;
-  vertical-align: middle;
-}
-
 .ncce-offering__heading {
   font-size: 19px;
 
@@ -71,8 +64,12 @@
 }
 
 .ncce-offering__link {
-  font-family: $font-family-heading;
+  background-image: url(/images/arrow-pink.svg);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
   font-weight: bold;
+  padding-left: 40px;
 }
 
 .ncce-offering__panel {
