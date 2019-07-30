@@ -3,6 +3,7 @@ class Achiever::Course::Subject
 
   def self.all
     subjects = Achiever::Request.option_sets(RESOURCE_PATH)
-    JSON.parse(subjects)
+    parsed_response = JSON.parse(subjects)
+    parsed_response.reduce({}, :merge)
   end
 end
