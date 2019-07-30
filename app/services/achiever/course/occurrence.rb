@@ -20,7 +20,7 @@ class Achiever::Course::Occurrence
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
                     'Date': '2019-01-01',
-                    'ID': env.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
+                    'ID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
   
   def self.face_to_face
     occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS)

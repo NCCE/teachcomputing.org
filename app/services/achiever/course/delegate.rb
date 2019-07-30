@@ -5,7 +5,7 @@ class Achiever::Course::Delegate
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
     query_strings = {
-      'ProgrammeID': env.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID'),
+      'ProgrammeID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID'),
       'CONTACTNO': achiever_contact_no
     }
     delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings)

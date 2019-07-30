@@ -10,7 +10,7 @@ class Achiever::Course::Template
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListing'.freeze
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
-                    'ProgrammeID': env.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
+                    'ProgrammeID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
 
   def self.all
     templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
