@@ -11,6 +11,7 @@ gem 'cloudflare-rails', '~> 0.4.0'
 gem 'connection_pool','~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
+gem 'faraday', '~> 0.15.4'
 gem "fog-aws", "~> 3.3"
 gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'

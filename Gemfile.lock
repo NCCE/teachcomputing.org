@@ -417,6 +417,7 @@ DEPENDENCIES
   ddtrace (~> 0.18.2)
   dotenv-rails
   factory_bot_rails
+  faraday (~> 0.15.4)
   fog-aws (~> 3.3)
   guard-rspec (~> 4.7.3)
   htmlentities (~> 4.3)
