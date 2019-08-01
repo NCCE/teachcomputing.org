@@ -4,6 +4,7 @@ RSpec.describe Programme, type: :model do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:programmes) { create_list(:programme, 3) }
   let(:primary_programme) { create(:programme, slug: 'primary') }
+  let(:secondary_programme) { create(:programme, slug: 'secondary') }
   let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
@@ -72,6 +73,16 @@ RSpec.describe Programme, type: :model do
 
     it 'returns the primary record' do
       expect(Programme.primary).to eq primary_programme
+    end
+  end
+
+  describe '#secondary' do
+    before do
+      secondary_programme
+    end
+
+    it 'returns the secondary record' do
+      expect(Programme.secondary).to eq secondary_programme
     end
   end
 
