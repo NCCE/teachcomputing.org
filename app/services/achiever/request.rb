@@ -30,7 +30,7 @@ class Achiever::Request
     private
 
     def success?(response, parsed_response)
-      response.status != 200 || parsed_response.GetJsonResult.FailureReason.blank?
+      response.status == 200 || parsed_response.GetJsonResult.FailureReason.blank?
     end
 
     def query_strings(query)
