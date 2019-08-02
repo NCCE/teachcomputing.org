@@ -5,6 +5,8 @@ class Achiever::Course::AgeGroup
 
   def self.all
     age_groups = Achiever::Request.option_sets(RESOURCE_PATH, QUERY_STRINGS)
-    JSON.parse(age_groups)
+    parsed_response = JSON.parse(age_groups)
+    single_hash = parsed_response.reduce({}, :merge)
+    single_hash.reject { |k| !k.starts_with?('Key') }
   end
 end
