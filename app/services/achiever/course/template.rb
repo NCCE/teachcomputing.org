@@ -6,13 +6,16 @@ class Achiever::Course::Template
                 :activity_code,
                 :meta_description,
                 :activity_code,
-                :subjects,
                 :workstream,
+                :subjects,
+                :online_cpd,
+                :age_groups,
                 :occurrences
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
+                    'HideFromweb': '0',
                     'ProgrammeID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
 
   def self.all
@@ -27,8 +30,10 @@ class Achiever::Course::Template
     @booking_url = template.send('Template.Booking_URL')
     @meta_description = template.send('Template.MetaDescription')
     @activity_code = template.send('Template.ActivityCode')
-    @subjects = template.send('Template.Subject').split(';')
     @workstream = template.send('Template.Workstream')
+    @subjects = template.send('Template.AdditionalSubjects').split(';')
+    @age_groups = template.send('Template.AgeGroups').split(';')
+    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @occurrences = []
   end
 end
