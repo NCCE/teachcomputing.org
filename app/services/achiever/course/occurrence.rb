@@ -13,13 +13,14 @@ class Achiever::Course::Occurrence
                 :address_postcode,
                 :address_line_one,
                 :course_template_no,
-                :course_occurrence_no
+                :course_occurrence_no,
+                :online_cpd
 
   FACE_TO_FACE_RESOURCE_PATH = 'Get?cmd=CourseListingFutureByProgrammeId'.freeze
   ONLINE_RESOURCE_PATH = 'Get?cmd=FutureOnlineCoursesByProgrammeId'.freeze
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
-                    'Date': '2019-01-01',
+                    'Date': Time.zone.today.strftime('%F'),
                     'ID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
   
   def self.face_to_face
@@ -46,7 +47,8 @@ class Achiever::Course::Occurrence
     @address_town = occurrence.send('ActivityVenueAddress.City')
     @address_postcode = occurrence.send('ActivityVenueAddress.PostCode')
     @address_line_one = occurrence.send('ActivityVenueAddress.Address.Line1')
-    @course_template_no = occurrence.send('Activity.COURSETEMPLATENO')
+    @course_template_no = occurrence.send('Template.COURSETEMPLATENO')
     @course_occurrence_no = occurrence.send('Template.COURSEOCCURRENCENO')
+    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.OnlineCPD').downcase)
   end
 end
