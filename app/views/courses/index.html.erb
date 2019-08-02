@@ -49,6 +49,7 @@
             <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
               options_for_select(@levels, @current_level),
+              options_for_select(@levels.keys, @current_level),
               {
                 include_blank: 'Any level',
                 class: 'govuk-select ncce-select',
@@ -87,6 +88,7 @@
           <div class="ncce-courses__course">
             <h2 class="govuk-heading-s ncce-courses__heading">
               <% if current_user %>
+            <div class="ncce-courses__course">
                 <%=
                   link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
                     link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
