@@ -1,5 +1,3 @@
-require_relative('../lib/achiever')
-
 class CoursesController < ApplicationController
   layout 'full-width'
   before_action :init_filters, only: [:index]
