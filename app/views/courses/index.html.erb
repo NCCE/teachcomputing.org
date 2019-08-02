@@ -48,7 +48,6 @@
           <%= form_tag url_for(controller: 'courses', anchor: 'filter-results'), { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
             <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
-              options_for_select(@levels, @current_level),
               options_for_select(@levels.keys, @current_level),
               {
                 include_blank: 'Any level',
@@ -63,7 +62,7 @@
                 'aria-label': 'Filter by location' }
             %>
             <%= select_tag :topic,
-              options_for_select(@topics, @current_topic),
+              options_for_select(@topics.keys, @current_topic),
               {
                 include_blank: 'Any topic',
                 class: 'govuk-select ncce-select',
@@ -83,14 +82,13 @@
       <div class="govuk-grid-column-two-thirds">
         <% if @courses.length == 0 %>
           <p class="govuk-body">No courses found that match your selection.  Please try a different one.</p>
-        <% end %>
-        <% @courses.each do |course| %>
-          <div class="ncce-courses__course">
-            <h2 class="govuk-heading-s ncce-courses__heading">
-              <% if current_user %>
+        <% else %>
+          <% @courses.each do |course| %>
             <div class="ncce-courses__course">
+              <h2 class="govuk-heading-s ncce-courses__heading">
+                <% if current_user %>
                 <%=
-                  link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
+                  link_to_if(course.booking_url.nil?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
                     link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
                   end
                 %>
@@ -98,9 +96,10 @@
                 <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
               <span class="ncce-courses__heading-code"><%= course.activity_code %></span>
-            </h2>
-            <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
-            <% if course.occurrences.length > 1 %>
+            </div>
+          </h2>
+          <p class="govuk-body"><%= stripped_summary(course.meta_description) %></p>
+          <% if course.occurrences.length > 1 %>
               <h3 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
                 <button aria-expanded="false">
                 <svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
@@ -116,27 +115,29 @@
               <ul class="govuk-list govuk-body-s ncce-courses__meta">
                 <% course.occurrences.each do |oc| %>
                   <li class="govuk-grid-row ncce-courses__meta-item">
-                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_course?) %>">
+                    <span class="govuk-grid-column-one-third <%= course_meta_css_class(oc.online_cpd) %>">
                     <%= oc.address_town %></span>
                     <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
                   </li>
                 <% end %>
               </ul>
             <% end %>
-            <% unless course.subjects.nil? && course.key_stages.nil? && course.workstream.nil?%>
-              <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
-                <% course.subjects.each do |subject| %>
-                  <strong class="govuk-tag ncce-courses__tag"><%= subject %></strong>
+            <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
+              <% course.subjects.each do |subject| %>
+                <% if @subjects.has_value?(subject.to_i) %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= @subjects.key(subject.to_i) %></strong>
                 <% end %>
-                <% course.key_stages.each do |stage| %>
-                  <strong class="govuk-tag ncce-courses__tag"><%= stage %></strong>
-                <% end %>
-                <% if course.workstream == 'CS Accelerator' %>
-                  <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
-                <% end %>
-              </p>
-            <% end %>
-          </div>
+              <% end %>
+              <% course.age_groups.each do |group| %>
+                  <% if @age_groups.has_value?(group.to_i) %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
+                  <% end %>
+              <% end %>
+              <% if course.workstream == 'CS Accelerator' %>
+                <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
+              <% end %>
+            </p>
+          <% end %>
         <% end %>
       </div>
     </div>
