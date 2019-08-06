@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Programme, type: :model do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:programmes) { create_list(:programme, 3) }
+  let(:primary_programme) { create(:programme, slug: 'primary') }
   let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
@@ -61,6 +62,16 @@ RSpec.describe Programme, type: :model do
 
     it 'returns the cs-accelerator record' do
       expect(Programme.cs_accelerator).to eq programme
+    end
+  end
+
+  describe '#primary' do
+    before do
+      primary_programme
+    end
+
+    it 'returns the primary record' do
+      expect(Programme.primary).to eq primary_programme
     end
   end
 
