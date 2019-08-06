@@ -1,47 +1,114 @@
 .ncce-hero {
-	background-image: url(/images/dots.svg);
-	background-position: calc(100% - -110px) 0%;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	margin: 0.5rem auto;
+  background-color: $ncce-hero-goldenrod;
+  background-image: url(/images/home/polka-yellow-bg.svg);
+  overflow: hidden;
+}
 
-	@include govuk-media-query($from: tablet) {
-		background-position: top 0 right -48px;
-		background-size: 500px;
-		margin: 1.5rem auto;
-	}
+.ncce-hero__wrapper {
+  padding-bottom: 0;
+}
 
-	@include govuk-media-query($from: desktop) {
-		background-size: 800px;
-	}
+.ncce-hero__image {
+  mask-image: url('/images/home/squiggle-shape.svg');
+  -webkit-mask-image: url('/images/home/squiggle-shape.svg');
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  position: relative;
+  width: 100%;
+  @include govuk-media-query($from: tablet ) {
+    margin-left: -18%;
+    width: 120%;
+  }
+  z-index: 20;
+}
 
-	br {
-		display: none;
+.ncce-hero__long-shadow {
+  position: relative;
+  margin-top: 40px;
+  @include govuk-media-query($from: tablet ) {
+    left: -20px;
+  }
 
-		@include govuk-media-query($from: tablet) {
-			display: block;
-		}
-	}
+  &:before {
+    background-color: $ncce-hero-terracotta;
+    content: "";
+    height: 101%;
+    left: -800px;
+    position: absolute;
+    top: 800px;
+    transform: skewY(-45deg);
+    transform-origin: top left;
+    width: 800px;
+  }
+
+  &:after {
+    background-color: $ncce-hero-terracotta;
+    content: '';
+    height: 800px;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    transform: skewX(-45deg);
+    transform-origin: top left;
+    width: 100%;
+  }
 }
 
 .ncce-hero__heading {
-	background-image: url(/images/line.png);
-	background-position: left bottom;
-	background-repeat: no-repeat;
-	background-size: 95%;
-	padding-bottom: 2.5rem;
-	padding-top: 4rem;
-	@include govuk-media-query($from: tablet) {
-		background-position: bottom left;
-		background-size: 72%;
-		font-size: 48px;
-		padding-top: 5rem;
-	}
+  background-color: $ncce-white;
+  border: 6px solid $ncce-black;
+  font-size: 8.4vw;
+  line-height: 1;
+  @include govuk-media-query($from: tablet) {
+    font-size: 4vw;
+  }
+  @include govuk-media-query($from: 1024px) {
+    background-image: url('/images/home/splash-pink.svg');
+    background-position: 187px 0;
+    @-moz-document url-prefix() {
+      background-position: 194px 0;
+    }
+    background-repeat: no-repeat;
+    background-size: 120px;
+    border: 9px solid $ncce-black;
+    font-size: 2.8em;
+    line-height: 1.2;
+  }
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
-.ncce-hero__button--link,
-.ncce-hero__button--link:visited {
-	color: $ncce-white !important;
-	font-weight: bold;
-	text-decoration: none;
+.ncce-hero__cta--desktop {
+  display: none;
+  @include govuk-media-query($from: tablet) {
+    display: block;
+  }
+  @include govuk-media-query($until: desktop) {
+    margin-bottom: 40px;
+  }
+  position: relative;
+}
+
+.ncce-hero__cta--mobile {
+  margin-bottom: 25px;
+  @include govuk-media-query($from: tablet) {
+    display: none;
+  }
+  position: relative;
+}
+
+.ncce-hero__body {
+  color: $ncce-black;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  @include govuk-media-query($from: tablet) {
+    padding-right: 60px;
+  }
+  @include govuk-media-query($from: 1024px) {
+    font-size: 1.5rem;
+  }
+}
+
+.ncce-hero__button {
+  margin-bottom: 40px;
 }
