@@ -23,6 +23,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'primary')
   end
 
+  def self.secondary
+    Programme.find_by(slug: 'secondary')
+  end
+
   def user_completed?(user = nil)
     if slug == 'cs-accelerator'
       return user.achievements

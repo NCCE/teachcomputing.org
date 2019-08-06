@@ -4,10 +4,10 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-m">Welcome to the Primary Computing Programme</h1>
-          <p class="govuk-body">The Primary Computing Programme is a professional development programme... </p>
+          <h1 class="govuk-heading-m">Welcome to the Secondary Computing Programme</h1>
+          <p class="govuk-body">The Secondary Computing Programme is a professional development programme... </p>
           <%= render 'pages/certification/pathway'%>
-          <p class="govuk-body">The programme is suitable for those already teaching or planning to teach primary computer science and will help teachers to fill potential gaps in their knowledge. Generous financial support is available for schools, including bursaries to help cover the costs associated with CPD participation. </p>
+          <p class="govuk-body">The programme is suitable for those already teaching or planning to teach secondary computer science and will help teachers to fill potential gaps in their knowledge. Generous financial support is available for schools, including bursaries to help cover the costs associated with CPD participation. </p>
           <h2 class="govuk-heading-s">Benefits for you:</h2>
           <ul class="govuk-list govuk-list--bullet">
             <li>update your skills and be recognised for your subject knowledge</li>
@@ -25,7 +25,7 @@
             <% else%>
               <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
             <% end %>
-            <P class="govuk-body-s ncce-aside__text">Begin your journey towards being a fully qualified primary computer science teacher!</p>
+            <P class="govuk-body-s ncce-aside__text">Begin your journey towards being a fully qualified secondary computer science teacher!</p>
             <ol class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
               <li>
                  <%= image_tag("/images/favicon.png", size: '', alt: 'Completed icon', class: 'ncce-aside__check-mark') if current_user %>
@@ -37,7 +37,7 @@
               <li>Pass the test and receive your qualification</li>
             </ol>
             <% if current_user %>
-              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.primary.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.secondary.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.secondary.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
             <% else %>
               <p class="govuk-body"><%= link_to 'Create an account', signup_stem_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
               <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', login_url, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
