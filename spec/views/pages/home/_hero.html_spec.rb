@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('pages/home/_hero', type: :view) do
+  let(:user) { create(:user) }
   before do
     render
   end
@@ -10,10 +11,17 @@ RSpec.describe('pages/home/_hero', type: :view) do
   end
 
   it 'button to find out more about NCCE' do
-    expect(rendered).to have_css('.ncce-hero__button--link', text: 'Explore our offer')
+    expect(rendered).to have_link('Get started!', href: login_path)
   end
 
-  it 'links to the About section' do
-    expect(rendered).to have_link('Explore our offer', href: '/offer')
+  context 'when a user is signed in' do
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'button to find out more about NCCE' do
+      expect(rendered).to have_link('Get started!', href: dashboard_path)
+    end
   end
 end
