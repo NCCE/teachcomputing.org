@@ -1,6 +1,6 @@
 secondary = Programme.find_or_create_by(slug: 'secondary') do |programme|
   programme.title = 'Teach secondary computing'
-  programme.slug = 'secondary'
+  programme.slug = 'secondary-certificate'
   programme.description = 'Teach secondary computing'
   programme.enrollable = false
 end

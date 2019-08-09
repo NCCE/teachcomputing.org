@@ -36,10 +36,10 @@ Rails.application.routes.draw do
 
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
-  get '/primary', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary' },
-                  constraints: ->(_request) { Programme.primary.enrollable? }
-  get '/secondary', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary' },
-                  constraints: ->(_request) { Programme.secondary.enrollable? }
+  get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
+                  constraints: ->(_request) { Programme.primary_certificate.enrollable? }
+  get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
+                  constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
   get '/accelerator', to: redirect('/cs-accelerator')
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }

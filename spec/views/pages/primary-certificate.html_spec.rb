@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe('pages/secondary', type: :view) do
+RSpec.describe('pages/primary-certificate', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'secondary') }
+  let(:programme) { create(:programme, slug: 'primary-certificate') }
 
   before do
     render
   end
 
   it 'has a heading' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'Welcome to the Secondary Computing Programme')
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Welcome to the Primary Computing Programme')
   end
 
   it 'has diagram' do

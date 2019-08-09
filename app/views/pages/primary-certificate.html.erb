@@ -37,7 +37,7 @@
               <li>Pass the test and receive your qualification</li>
             </ol>
             <% if current_user %>
-              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.primary.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary_certificate.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.primary_certificate.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
             <% else %>
               <p class="govuk-body"><%= link_to 'Create an account', signup_stem_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
               <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', login_url, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
