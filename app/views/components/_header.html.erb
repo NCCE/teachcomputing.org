@@ -28,12 +28,16 @@
             <%= link_to 'Create an account / log in', login_url, :class => 'govuk-header__link' %>
           </li>
         <% end %>
-          <li class="ncce-header__navigation-item-cert">
-            <%= link_to 'Primary teachers', primary-certificate_path, class: 'govuk-header__link' %>
-          </li>
-          <li class="ncce-header__navigation-item-cert">
-            <%= link_to 'Secondary teachers', secondary-certificate_path, class: 'govuk-header__link' %>
-          </li>
+          <% if Programme.primary_certificate %>
+            <li class="ncce-header__navigation-item-cert">
+              <%= link_to 'Primary teachers', primary-certificate_path, class: 'govuk-header__link' %>
+            </li>
+          <% end %>
+          <% if Programme.secondary_certificate %>
+            <li class="ncce-header__navigation-item-cert">
+              <%= link_to 'Secondary teachers', secondary-certificate_path, class: 'govuk-header__link' %>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>
