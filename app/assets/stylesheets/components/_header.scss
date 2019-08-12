@@ -47,8 +47,10 @@
   float: none;
 
   @include govuk-media-query($from: desktop) {
+    display: grid !important;
     float: right;
-    text-align: right;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
   }
 }
 
@@ -56,11 +58,7 @@
   border-color: $ncce-white;
 
   @include govuk-media-query($from: desktop) {
-    display: block;
-
-    &:first-child {
-      margin-right: 0;
-    }
+    grid-row: 1/2;
   }
 }
 
@@ -69,7 +67,11 @@
   text-decoration: underline;
 
   @include govuk-media-query($from: desktop) {
+    grid-row: 2/2;
     display: inline-block;
+    margin-right: 15px;
+    padding: 5px 0;
+    border: 0;
   }
 }
 
