@@ -21,6 +21,7 @@ class Achiever::Course::Occurrence
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
                     'Date': Time.zone.today.strftime('%F'),
+                    'EndDate': Time.zone.today.strftime('%F'),
                     'ID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
   
   def self.face_to_face
