@@ -93,6 +93,9 @@
 
 .secondary-certificate {
   background-color: $ncce-hero-terracotta;
+  .certification-hero__text {
+    color: $ncce-nearly-black;
+  }
   .certification-hero__heading {
     @include govuk-media-query($from: tablet) {
       font-size: 3.5vw;
