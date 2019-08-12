@@ -28,16 +28,12 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
-    it 'shows the certificate progress section' do
-      expect(rendered).to have_css('h1', text: 'on the National Centre for Computing Education certificate in')
-    end
-
     it 'shows the certificate name' do
-      expect(rendered).to have_css('h2', text: programme.title)
+      expect(rendered).to have_css('h1', text: programme.title)
     end
 
     it 'shows the enrollment button' do
-      expect(rendered).to have_link('Find out more & enrol', href: cs_accelerator_path)
+      expect(rendered).to have_link('Find out more & enrol', href: "/#{programme.slug}")
     end
   end
 
