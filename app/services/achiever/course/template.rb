@@ -1,16 +1,15 @@
 class Achiever::Course::Template
-  attr_accessor :course_template_no,
-                :title,
-                :summary,
-                :booking_url,
-                :activity_code,
-                :meta_description,
-                :activity_code,
-                :workstream,
-                :subjects,
-                :online_cpd,
+  attr_accessor :activity_code,
                 :age_groups,
-                :occurrences
+                :booking_url,
+                :course_template_no,
+                :meta_description,
+                :occurrences,
+                :online_cpd,
+                :subjects,
+                :summary,
+                :title,
+                :workstream
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
   QUERY_STRINGS = { 'Page': '1',
@@ -24,16 +23,16 @@ class Achiever::Course::Template
   end
 
   def initialize(template)
-    @course_template_no = template.send('Template.COURSETEMPLATENO')
-    @title = template.send('Template.TemplateTitle')
-    @summary = template.send('Template.Summary')
-    @booking_url = template.send('Template.Booking_URL')
-    @meta_description = template.send('Template.MetaDescription')
     @activity_code = template.send('Template.ActivityCode')
-    @workstream = template.send('Template.Workstream')
-    @subjects = template.send('Template.AdditionalSubjects').split(';')
     @age_groups = template.send('Template.AgeGroups').split(';')
+    @booking_url = template.send('Template.Booking_URL')
+    @course_template_no = template.send('Template.COURSETEMPLATENO')
+    @meta_description = template.send('Template.MetaDescription')
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @occurrences = []
+    @subjects = template.send('Template.AdditionalSubjects').split(';')
+    @summary = template.send('Template.Summary')
+    @title = template.send('Template.TemplateTitle')
+    @workstream = template.send('Template.Workstream')
   end
 end
