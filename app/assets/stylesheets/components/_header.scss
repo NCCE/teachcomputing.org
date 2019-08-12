@@ -63,15 +63,18 @@
 }
 
 .ncce-header__navigation-item-cert {
+  padding: 10px 0;
+  border-bottom: 1px solid $ncce-white;
   font-weight: 400;
   text-decoration: underline;
 
   @include govuk-media-query($from: desktop) {
-    grid-row: 2/2;
+    border: 0;
     display: inline-block;
+    grid-row: 2/2;
     margin-right: 15px;
     padding: 5px 0;
-    border: 0;
+
   }
 }
 
