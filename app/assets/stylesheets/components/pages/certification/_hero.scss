@@ -13,16 +13,33 @@
   display: flex;
 }
 
+.certification-hero__enrolled,
 .certification-hero__heading,
-  .certification-hero__text {
-    color: $ncce-dark-x-grey;
-  }
+.certification-hero__text {
+  color: $ncce-dark-x-grey;
+}
+
+.certification-hero__enrolled {
+  background-color: $ncce-pink-highlight;
+  padding: 5px 12px;
+
+}
 
 .certification-hero__heading {
+  margin-bottom: 10px;
   @include govuk-media-query($from: tablet) {
     font-size: 3.7vw;
+    margin-bottom: 20px;
   }
 }
+
+.certification-hero__enrolled + .certification-hero__heading {
+  margin-top: 10px;
+  @include govuk-media-query($from: tablet) {
+    margin-top: 20px;
+  }
+}
+
 .certification-hero__image {
   align-self: flex-start;
   margin-right: 1rem;
@@ -53,6 +70,7 @@
     background-size: auto 100%;
   }
 
+  .certification-hero__enrolled,
   .certification-hero__heading,
   .certification-hero__text {
     color: $ncce-white;
@@ -68,4 +86,9 @@
 
 .secondary-certificate {
   background-color: $ncce-hero-terracotta;
+  .certification-hero__heading {
+    @include govuk-media-query($from: tablet) {
+      font-size: 3.5vw;
+    }
+  }
 }
