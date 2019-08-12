@@ -10,15 +10,15 @@ RSpec.describe Achiever::Request do
     describe '#option_sets' do
       it 'returns an String' do
         stub_age_groups
-        expect(described_class.option_sets('Get?cmd=Get?cmd=OptionsetAgeGroups', {} )).to be_a String
+        expect(described_class.option_sets('Get?cmd=Get?cmd=OptionsetAgeGroups', {})).to be_a String
       end
 
       context 'when unsuccessful' do
         it 'raises an Achiever::Error exception' do
           stub_a_failed_response('OptionsetAgeGroups')
-          expect {
-            described_class.option_sets('Get?cmd=Get?cmd=OptionsetAgeGroups', {} )
-          }.to raise_error(Achiever::Error)
+          expect do
+            described_class.option_sets('Get?cmd=Get?cmd=OptionsetAgeGroups', {})
+          end.to raise_error(Achiever::Error)
         end
       end
     end
@@ -26,15 +26,15 @@ RSpec.describe Achiever::Request do
     describe '#resource' do
       it 'returns an Array' do
         stub_course_templates
-        expect(described_class.resource('Get?cmd=Get?cmd=CourseTemplatesListingByProgramme', {} )).to be_a Array
+        expect(described_class.resource('Get?cmd=Get?cmd=CourseTemplatesListingByProgramme', {})).to be_a Array
       end
 
       context 'when unsuccessful' do
         it 'raises an Achiever::Error exception' do
           stub_a_failed_response('CourseTemplatesListingByProgramme')
-          expect {
-            described_class.resource('Get?cmd=Get?cmd=CourseTemplatesListingByProgramme', {} )
-          }.to raise_error(Achiever::Error)
+          expect do
+            described_class.resource('Get?cmd=Get?cmd=CourseTemplatesListingByProgramme', {})
+          end.to raise_error(Achiever::Error)
         end
       end
     end
