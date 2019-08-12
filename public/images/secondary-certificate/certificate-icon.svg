@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="137px" height="165px" viewBox="0 0 137 165" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-15.5%" y="-5.0%" width="121.8%" height="117.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="-10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.167685688 0" type="matrix" in="shadowOffsetOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="0" y="0" width="109.63984" height="140.338995"></rect>
+    </defs>
+    <g id="Teacher-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3" transform="translate(-250.000000, -560.000000)">
+            <g id="Group-Copy-3" filter="url(#filter-1)" transform="translate(323.935188, 638.025292) rotate(-5.000000) translate(-323.935188, -638.025292) translate(268.935188, 567.525292)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <rect fill="white" stroke="#333448" stroke-width="2" x="-1" y="-1" width="111.63984" height="142.338995"></rect>
+                <g id="masked" mask="url(#mask-3)">
+                    <rect id="Rectangle-2" fill="#FFCFC8" transform="translate(64.011416, 62.738533) rotate(12.000000) translate(-64.011416, -62.738533) " x="-40.9885841" y="27.7385328" width="210" height="70"></rect>
+                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                        <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
+                    </text>
+                    <text id="2" font-family="Objectivity-Bold, Objectivity" font-size="51" font-weight="bold" fill="#F062CD">
+                        <tspan x="38.7859017" y="74.0342477">2</tspan>
+                    </text>
+                    <text id="Secondary-computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                        <tspan x="14.8366695" y="115.109621">SECONDARY</tspan>
+                        <tspan x="16.2902828" y="131.109621">COMPUTING</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

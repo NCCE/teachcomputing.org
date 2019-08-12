@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="137px" height="165px" viewBox="0 0 137 165" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-15.5%" y="-5.0%" width="121.8%" height="117.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="-10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.167685688 0" type="matrix" in="shadowOffsetOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="0" y="0" width="109.63984" height="140.338995"></rect>
+    </defs>
+    <g id="Teacher-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3" transform="translate(-250.000000, -878.000000)">
+            <g id="Group-Copy-2" filter="url(#filter-1)" transform="translate(323.935188, 956.025292) rotate(-5.000000) translate(-323.935188, -956.025292) translate(268.935188, 885.525292)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <rect fill="white" stroke="#333448" stroke-width="2" x="-1" y="-1" width="111.63984" height="142.338995"></rect>
+                <g id="masked" mask="url(#mask-3)">
+                    <path d="M-1.75282368,42.8489266 C7.91384298,46.5155933 20.5805096,46.5155933 36.2471763,42.8489266 C59.7471763,37.3489266 90.7471763,18.9739266 108.747176,27.8489266 C126.747176,36.7239266 124.247176,69.3489266 124.247176,78.8489266 C124.247176,88.3489266 125.247176,98.8489266 108.747176,98.8489266 C92.2471763,98.8489266 65.7471763,90.3489266 43.2471763,98.8489266 C20.7471763,107.348927 -8.75282368,106.848927 -8.75282368,106.848927 C-8.75282368,106.848927 -6.41949035,85.5155933 -1.75282368,42.8489266 Z" id="Path-2" fill="#6E60AD" mask="url(#mask-3)"></path>
+                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                        <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
+                    </text>
+                    <text id="GCSE" font-family="Objectivity-Bold, Objectivity" font-size="29" font-weight="bold" fill="#F062CD">
+                        <tspan x="9.42411679" y="80.9204549">GCSE</tspan>
+                    </text>
+                    <text id="Computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                        <tspan x="15.4187254" y="125.071568">COMPUTING</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

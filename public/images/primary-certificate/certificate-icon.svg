@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="137px" height="165px" viewBox="0 0 137 165" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-15.5%" y="-5.0%" width="121.8%" height="117.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="-10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.167685688 0" type="matrix" in="shadowOffsetOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="0" y="0" width="109.63984" height="140.338995"></rect>
+    </defs>
+    <g id="Teacher-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3" transform="translate(-250.000000, -247.000000)">
+            <g id="Group-Copy" filter="url(#filter-1)" transform="translate(323.935188, 325.025292) rotate(-5.000000) translate(-323.935188, -325.025292) translate(268.935188, 254.525292)">
+                <rect fill="white" stroke="#333448" stroke-width="2" x="-1" y="-1" width="111.63984" height="142.338995"></rect>
+                <mask id="mask-3" fill="white">
+                  <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="masked" mask="url(#mask-3)">
+                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                        <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
+                    </text>
+                    <rect id="Rectangle-2" fill="#FFDD7A" transform="translate(67.000000, 63.000000) rotate(-15.000000) translate(-67.000000, -63.000000) " x="-38" y="28" width="210" height="70"></rect>
+                    <path d="M74.5648117,44.9747079 L92.5648117,38.9747079" id="Line-2" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <path d="M76.5648117,60.9747079 L99.5648117,60.9747079" id="Line-3" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <path d="M75.5648117,78.9747079 L94.5648117,88.9747079" id="Line-4" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <path d="M30.5648117,45.9747079 L13.5648117,38.9747079" id="Line-5" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <path d="M28.5648117,61.9747079 L12.5648117,61.9747079" id="Line-6" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <path d="M29.5648117,77.9747079 L14.5648117,87.9747079" id="Line-7" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
+                    <text id="1" font-family="Objectivity-Bold, Objectivity" font-size="59" font-weight="bold" fill="#F062CD">
+                        <tspan x="39.0648117" y="81.4747079">1</tspan>
+                    </text>
+                    <text id="Primary-computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                        <tspan x="25.7106983" y="112.992389">PRIMARY</tspan>
+                        <tspan x="15.6052295" y="128.992389">COMPUTING</tspan>
+                    </text>
+                  </g>
+            </g>
+        </g>
+    </g>
+</svg>

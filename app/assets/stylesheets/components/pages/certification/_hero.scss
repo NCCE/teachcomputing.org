@@ -1,25 +1,11 @@
 .certification-hero {
   background-color: $ncce-dark-purple;
   background-image: none;
-
-  @include govuk-media-query($from: tablet) {
-    background-image: url(/images/dashboard/triangle2.png);
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-  }
 }
 
 .certification-hero__wrapper {
   align-items: center;
   display: flex;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
 }
 
 .certification-hero__wrapper--complete {
@@ -27,30 +13,24 @@
   display: flex;
 }
 
-.certification-hero__text {
-  color: $ncce-white;
-}
+.certification-hero__heading,
+  .certification-hero__text {
+    color: $ncce-dark-x-grey;
+  }
 
+.certification-hero__heading {
+  @include govuk-media-query($from: tablet) {
+    font-size: 3.7vw;
+  }
+}
 .certification-hero__image {
+  align-self: flex-start;
+  margin-right: 1rem;
+  max-width: 140px;
+  min-width: 70px;
+  width: 20%;
   @include govuk-media-query($from: tablet) {
     margin-right: 2rem;
-  }
-}
-
-.certification-hero__image--mobile {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  @include govuk-media-query($from: tablet) {
-    display: none;
-  }
-}
-
-.certification-hero__image--tablet {
-  @include govuk-media-query($until: tablet) {
-    display: none;
   }
 }
 
@@ -63,4 +43,29 @@
     width: 100px;
     margin-top: 0;
   }
+}
+
+.cs-accelerator {
+  @include govuk-media-query($from: tablet) {
+    background-image: url(/images/dashboard/triangle2.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+
+  .certification-hero__heading,
+  .certification-hero__text {
+    color: $ncce-white;
+  }
+}
+.primary-certificate {
+  background-color: $ncce-hero-goldenrod;
+  background-image: url(/images/primary-certificate/hero-bg.svg);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.secondary-certificate {
+  background-color: $ncce-hero-terracotta;
 }
