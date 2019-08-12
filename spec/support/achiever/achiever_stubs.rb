@@ -14,6 +14,12 @@ module AchieverStubs
     json_response = File.new('spec/support/achiever/courses/templates.json')
     stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeID=f64aed56-c1b0-e911-a82c-002248008902&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
   end
+  
+  def stub_delegate
+    json_response = File.new('spec/support/achiever/courses/delegate.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO={contact_no}&Page=1&ProgrammeID=f64aed56-c1b0-e911-a82c-002248008902&RecordCount=1000&cmd=CoursesForCurrentDelegateByProgramme'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
 
   def stub_face_to_face_occurrences
     json_response = File.new('spec/support/achiever/courses/face_to_face_occurrences.json')
