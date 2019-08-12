@@ -1,3 +1,5 @@
+require 'faraday'
+
 class Achiever::Connection
   def self.api
     Faraday.new(url: ENV.fetch('ACHIEVER_V2_ENDPOINT')) do |conn|
