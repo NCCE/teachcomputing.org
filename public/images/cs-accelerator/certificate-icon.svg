@@ -20,13 +20,13 @@
                 <rect fill="white" stroke="#333448" stroke-width="2" x="-1" y="-1" width="111.63984" height="142.338995"></rect>
                 <g id="masked" mask="url(#mask-3)">
                     <path d="M-1.75282368,42.8489266 C7.91384298,46.5155933 20.5805096,46.5155933 36.2471763,42.8489266 C59.7471763,37.3489266 90.7471763,18.9739266 108.747176,27.8489266 C126.747176,36.7239266 124.247176,69.3489266 124.247176,78.8489266 C124.247176,88.3489266 125.247176,98.8489266 108.747176,98.8489266 C92.2471763,98.8489266 65.7471763,90.3489266 43.2471763,98.8489266 C20.7471763,107.348927 -8.75282368,106.848927 -8.75282368,106.848927 C-8.75282368,106.848927 -6.41949035,85.5155933 -1.75282368,42.8489266 Z" id="Path-2" fill="#6E60AD" mask="url(#mask-3)"></path>
-                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                    <text id="CERtifcate" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="8" font-weight="normal" fill="#333448">
                         <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
                     </text>
-                    <text id="GCSE" font-family="Objectivity-Bold, Objectivity" font-size="29" font-weight="bold" fill="#F062CD">
+                    <text id="GCSE" font-family="Objectivity-Bold, Objectivity,Helvetica,Arial,sans-serif" font-size="29" font-weight="bold" fill="#F062CD">
                         <tspan x="9.42411679" y="80.9204549">GCSE</tspan>
                     </text>
-                    <text id="Computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                    <text id="Computing" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="13" font-weight="normal" fill="#333448">
                         <tspan x="15.4187254" y="125.071568">COMPUTING</tspan>
                     </text>
                 </g>

@@ -20,13 +20,13 @@
                 <rect fill="white" stroke="#333448" stroke-width="2" x="-1" y="-1" width="111.63984" height="142.338995"></rect>
                 <g id="masked" mask="url(#mask-3)">
                     <rect id="Rectangle-2" fill="#FFCFC8" transform="translate(64.011416, 62.738533) rotate(12.000000) translate(-64.011416, -62.738533) " x="-40.9885841" y="27.7385328" width="210" height="70"></rect>
-                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                    <text id="CERtifcate" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="8" font-weight="normal" fill="#333448">
                         <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
                     </text>
-                    <text id="2" font-family="Objectivity-Bold, Objectivity" font-size="51" font-weight="bold" fill="#F062CD">
+                    <text id="2" font-family="Objectivity-Bold, Objectivity,Helvetica,Arial,sans-serif" font-size="51" font-weight="bold" fill="#F062CD">
                         <tspan x="38.7859017" y="74.0342477">2</tspan>
                     </text>
-                    <text id="Secondary-computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                    <text id="Secondary-computing" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="13" font-weight="normal" fill="#333448">
                         <tspan x="14.8366695" y="115.109621">SECONDARY</tspan>
                         <tspan x="16.2902828" y="131.109621">COMPUTING</tspan>
                     </text>

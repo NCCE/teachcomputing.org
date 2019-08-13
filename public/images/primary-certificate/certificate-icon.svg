@@ -19,7 +19,7 @@
                   <use xlink:href="#path-2"></use>
                 </mask>
                 <g id="masked" mask="url(#mask-3)">
-                    <text id="CERtifcate" font-family="Roboto" font-size="8" font-weight="normal" fill="#333448">
+                    <text id="CERtifcate" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="8" font-weight="normal" fill="#333448">
                         <tspan x="20.818718" y="17.4747079">C E R T I F C A T E</tspan>
                     </text>
                     <rect id="Rectangle-2" fill="#FFDD7A" transform="translate(67.000000, 63.000000) rotate(-15.000000) translate(-67.000000, -63.000000) " x="-38" y="28" width="210" height="70"></rect>
@@ -29,10 +29,10 @@
                     <path d="M30.5648117,45.9747079 L13.5648117,38.9747079" id="Line-5" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
                     <path d="M28.5648117,61.9747079 L12.5648117,61.9747079" id="Line-6" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
                     <path d="M29.5648117,77.9747079 L14.5648117,87.9747079" id="Line-7" stroke="#F062CD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-3)"></path>
-                    <text id="1" font-family="Objectivity-Bold, Objectivity" font-size="59" font-weight="bold" fill="#F062CD">
+                    <text id="1" font-family="Objectivity-Bold, Objectivity,Helvetica,Arial,sans-serif" font-size="59" font-weight="bold" fill="#F062CD">
                         <tspan x="39.0648117" y="81.4747079">1</tspan>
                     </text>
-                    <text id="Primary-computing" font-family="Roboto" font-size="13" font-weight="normal" fill="#333448">
+                    <text id="Primary-computing" font-family="Roboto,Helvetica,Arial,sans-serif" font-size="13" font-weight="normal" fill="#333448">
                         <tspan x="25.7106983" y="112.992389">PRIMARY</tspan>
                         <tspan x="15.6052295" y="128.992389">COMPUTING</tspan>
                     </text>
