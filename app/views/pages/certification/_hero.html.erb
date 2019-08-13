@@ -4,7 +4,7 @@
       <img src="/images/<%= @programme.slug %>/certificate-icon.svg" alt="" class="certification-hero__image"/>
       <div class="certification-hero__content">
         <% if current_user && @programme.user_enrolled?(current_user) %>
-          <span class="govuk-body-m certification-hero__enrolled"><strong>You are enrolled</strong></span>
+          <span class="govuk-body-m certification-hero__enrolled">You are enrolled</span>
         <% end %>
         <h1 class="govuk-heading-m certification-hero__heading"><%= @programme.title %></h1>
         <p class="govuk-body-s certification-hero__text">Certification awarded by BCS, The Chartered Institute for IT</h2>
