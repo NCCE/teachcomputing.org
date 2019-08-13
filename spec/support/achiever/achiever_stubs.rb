@@ -29,7 +29,7 @@ module AchieverStubs
 
   def stub_online_occurrences
     json_response = File.new('spec/support/achiever/courses/online_occurrences.json')
-    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date=2019-08-12&EndDate=2019-08-12&ID=f64aed56-c1b0-e911-a82c-002248008902&Page=1&RecordCount=1000&cmd=FutureOnlineCoursesByProgrammeId'
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&ID=f64aed56-c1b0-e911-a82c-002248008902&Page=1&RecordCount=1000&cmd=FutureOnlineCoursesByProgrammeId'
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
