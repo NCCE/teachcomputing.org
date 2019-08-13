@@ -15,17 +15,20 @@
   -webkit-mask-size: cover;
   position: relative;
   width: 100%;
-  @include govuk-media-query($from: tablet ) {
+
+  @include govuk-media-query($from: tablet) {
     margin-left: -18%;
     width: 120%;
   }
+
   z-index: 20;
 }
 
 .ncce-hero__long-shadow {
   position: relative;
   margin-top: 40px;
-  @include govuk-media-query($from: tablet ) {
+
+  @include govuk-media-query($from: tablet) {
     left: -20px;
   }
 
@@ -59,41 +62,51 @@
   border: 6px solid $ncce-black;
   font-size: 8.4vw;
   line-height: 1;
+
   @include govuk-media-query($from: tablet) {
     font-size: 4vw;
   }
+
   @include govuk-media-query($from: 1024px) {
     background-image: url('/images/home/splash-pink.svg');
     background-position: 187px 0;
+
     @-moz-document url-prefix() {
       background-position: 194px 0;
     }
+
     background-repeat: no-repeat;
     background-size: 120px;
     border: 9px solid $ncce-black;
     font-size: 2.8em;
     line-height: 1.2;
   }
+
   margin-bottom: 10px;
   padding: 10px;
 }
 
 .ncce-hero__cta--desktop {
   display: none;
+
   @include govuk-media-query($from: tablet) {
     display: block;
   }
+
   @include govuk-media-query($until: desktop) {
     margin-bottom: 40px;
   }
+
   position: relative;
 }
 
 .ncce-hero__cta--mobile {
   margin-bottom: 25px;
+
   @include govuk-media-query($from: tablet) {
     display: none;
   }
+
   position: relative;
 }
 
@@ -101,9 +114,11 @@
   color: $ncce-black;
   font-size: 1.25rem;
   margin-bottom: 20px;
+
   @include govuk-media-query($from: tablet) {
     padding-right: 60px;
   }
+
   @include govuk-media-query($from: 1024px) {
     font-size: 1.5rem;
   }
@@ -111,4 +126,21 @@
 
 .ncce-hero__button {
   margin-bottom: 40px;
+}
+
+.ncce-hero-maintenance {
+  background-image: url(https://teachcomputing.org/images/dots.svg);
+  background-position: calc(100% - -110px) 0%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
+
+  @include govuk-media-query($from: tablet) {
+    background-position: top 0 right -48px;
+    background-size: 800px;
+    margin: 1.5rem auto;
+  }
+
+
 }

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/contact', to: 'pages#page', as: :contact, defaults: { page_slug: 'contact' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
+  get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
