@@ -5,4 +5,6 @@ require File.expand_path('../seeds/activities/assessment', __FILE__)
 Activity.all.each do |a|
   puts "Created activity #{a.title} (#{a})"
 end
-require File.expand_path('../seeds/programmes', __FILE__)
+require File.expand_path('../seeds/programmes/cs_accelerator', __FILE__)
+require File.expand_path('../seeds/programmes/primary-certificate', __FILE__)
+require File.expand_path('../seeds/programmes/secondary-certificate', __FILE__)

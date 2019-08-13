@@ -19,6 +19,14 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'cs-accelerator')
   end
 
+  def self.primary_certificate
+    Programme.find_by(slug: 'primary-certificate')
+  end
+
+  def self.secondary_certificate
+    Programme.find_by(slug: 'secondary-certificate')
+  end
+
   def user_completed?(user = nil)
     if slug == 'cs-accelerator'
       return user.achievements
