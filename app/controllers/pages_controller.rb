@@ -33,10 +33,7 @@ class PagesController < ApplicationController
 
   def static_programme_page
     @programme = Programme.find_by!(slug: params[:page_slug])
-    if @programme.user_enrolled?(current_user)
-      redirect_to programme_path(params[:page_slug])
-    else
-      render template: "pages/#{params[:page_slug]}"
-    end
+    redirect_to programme_path(params[:page_slug]) and return if @programme.user_enrolled?(current_user)
+    render template: "pages/#{params[:page_slug]}"
   end
 end
