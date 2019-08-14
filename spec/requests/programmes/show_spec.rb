@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
+
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
@@ -92,6 +94,13 @@ RSpec.describe ProgrammesController do
       it 'redirects if not enrolled' do
         get programme_path('cs-accelerator')
         expect(response).to redirect_to(cs_accelerator_path)
+      end
+
+      it 'handles non-enrollable programme' do
+        non_enrollable_programme
+        expect do
+          get programme_path('non-enrollable')
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
 
       describe 'and enrolled' do
