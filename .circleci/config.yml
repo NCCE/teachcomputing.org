@@ -33,7 +33,7 @@ jobs:
           command: bundle check || bundle install
 
       - save_cache:
-          key: ncce-bundle-v555-{{ checksum "Gemfile.lock" }}
+          key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
