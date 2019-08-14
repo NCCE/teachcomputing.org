@@ -3,7 +3,7 @@ class Achiever::Request
     def option_sets(resource_path, query = {})
       query_string = query_strings(query)
 
-      response = Rails.cache.fetch(query_string, expires_in: 1.day) do
+      response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
         api.get("#{resource_path}&#{query_string}")
       end
 
@@ -20,7 +20,7 @@ class Achiever::Request
     def resource(resource_path, query = {})
       query_string = query_strings(query)
 
-      response = Rails.cache.fetch(query_string, expires_in: 1.day) do
+      response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
         api.get("#{resource_path}&#{query_string}")
       end
       
