@@ -120,21 +120,23 @@
                 <% end %>
               </ul>
             <% end %>
-            <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
-              <% course.subjects.each do |subject| %>
-                <% if @subjects.has_value?(subject.to_i) %>
-                  <strong class="govuk-tag ncce-courses__tag"><%= @subjects.key(subject.to_i) %></strong>
-                <% end %>
-              <% end %>
-              <% course.age_groups.each do |group| %>
-                  <% if @age_groups.has_value?(group.to_i) %>
-                    <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
+            <% unless course.subjects.nil? && course.key_stages.nil? && course.workstream.nil?%>
+              <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
+                <% course.subjects.each do |subject| %>
+                  <% if @subjects.has_value?(subject.to_i) %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= @subjects.key(subject.to_i) %></strong>
                   <% end %>
-              <% end %>
-              <% if course.workstream == 'CS Accelerator' %>
-                <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
-              <% end %>
-            </p>
+                <% end %>
+                <% course.age_groups.each do |group| %>
+                    <% if @age_groups.has_value?(group.to_i) %>
+                      <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
+                    <% end %>
+                <% end %>
+                <% if course.workstream == 'CS Accelerator' %>
+                  <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
+                <% end %>
+              </p>
+            <% end %>
           <% end %>
         <% end %>
       </div>
