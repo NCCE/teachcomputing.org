@@ -98,20 +98,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Contact page' do
-    before do
-      visit contact_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_content('Contact')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'Get involved page' do
     before do
       visit get_involved_path

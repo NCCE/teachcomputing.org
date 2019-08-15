@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="28px" viewBox="0 0 25 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="UX-&amp;-wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NCCE-resources-" transform="translate(-744.000000, -562.000000)">
+            <g id="Group" transform="translate(744.000000, 562.000000)">
+                <path d="M2.79069767,1 C1.8084924,1 1,1.8329156 1,2.875 L1,20.125 C1,21.1670844 1.8084924,22 2.79069767,22 L17.2093023,22 C18.1915076,22 19,21.1670844 19,20.125 L19,2.875 C19,1.8329156 18.1915076,1 17.2093023,1 L2.79069767,1 Z" id="Rectangle-13" stroke="#979797" stroke-width="2" fill="#FFFFFF"></path>
+                <path d="M7.72727273,6 C6.77601412,6 6,6.78532629 6,7.76 L6,25.24 C6,26.2146737 6.77601412,27 7.72727273,27 L22.2727273,27 C23.2239859,27 24,26.2146737 24,25.24 L24,7.76 C24,6.78532629 23.2239859,6 22.2727273,6 L7.72727273,6 Z" id="Rectangle-4" stroke="#979797" stroke-width="2" fill="#FFFFFF"></path>
+                <polygon id="Rectangle-14" fill="#979797" points="9 12 22 12 22 14 9 14"></polygon>
+                <polygon id="Rectangle-14" fill="#979797" points="9 16 22 16 22 18 9 18"></polygon>
+                <polygon id="Rectangle-14" fill="#979797" points="9 20 22 20 22 22 9 22"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
