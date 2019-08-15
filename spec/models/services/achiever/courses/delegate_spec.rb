@@ -8,7 +8,7 @@ RSpec.describe Achiever::Course::Delegate do
       stub_delegate
     end
 
-    it 'responds tp course_template_no' do
+    it 'responds to course_template_no' do
       expect(delegate).to respond_to(:course_template_no)
     end
 
