@@ -1,0 +1,10 @@
+<div class="resources-key-stage">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper resources-key-stage__wrapper">
+      <h2 id="<%= "key-stage-#{key_stage}" %>" class="govuk-heading-m resources-key-stage__heading">Key stage <%= "#{key_stage}" %></h2>
+      <% if current_user %>
+        <%= link_to "Key stage #{key_stage} guide", guide_url, class: 'govuk-button ncce-button__pink resources-key-stage__link', role: 'button', draggable: 'false' %>
+      <% end %>
+    </div>
+  </div>
+</div>
