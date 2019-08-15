@@ -6,13 +6,9 @@
     <li>Unit guide</li>
     <li>Assessment</li>
   </ul>
-  <% if current_user %>
   <p class="govuk-body">
-    <%= link_to "Access year #{year} resources", '#ß', class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
+  <%= link_to_if current_user, "Access year #{year} resources", '#ß', class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' do
+      link_to 'Login to access', login_path(source_uri: "#{request.original_fullpath}#year-#{year}"), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false'
+  end %>
   </p>
-  <% else %>
-  <p class="govuk-body">
-    <%= link_to 'Login to access', login_path(source_uri: "#{request.original_fullpath}#year-#{year}"), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
-  </p>
-  <% end %>
 </div>
