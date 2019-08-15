@@ -5,7 +5,6 @@ ruby '2.5.3'
 
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
-gem 'axe-matchers'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
 gem 'connection_pool','~> 2.2.2'
@@ -58,6 +57,7 @@ group :development do
 end
 
 group :test do
+  gem 'axe-matchers', :require => false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
