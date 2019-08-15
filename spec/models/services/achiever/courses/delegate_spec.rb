@@ -12,7 +12,7 @@ RSpec.describe Achiever::Course::Delegate do
       expect(delegate).to respond_to(:course_template_no)
     end
 
-    it 'responds tp is_fully_attended' do
+    it 'responds to is_fully_attended' do
       expect(delegate).to respond_to(:is_fully_attended)
     end
   end
