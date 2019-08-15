@@ -61,8 +61,8 @@ RSpec.describe Achiever::Request do
       end
 
       describe '#query_strings' do
-        it 'returns an ' do
-          expect(described_class.send(:query_strings, 'query': 'string')).to eq 'query=string'
+        it 'returns a String containing hash keys and values' do
+          expect(described_class.send(:query_strings, 'query1': 'string', 'query2': 'string2')).to eq 'query1=string1&query2=string2' 
         end
       end
 
