@@ -213,16 +213,6 @@ RSpec.describe CoursesController do
           expect(assigns(:courses).count).to eq(20)
         end
 
-        # it 'courses have correct workstream' do
-        #   assigns(:courses).each do |course|
-        #     expect(course.workstream).to eq('National Centre - Non-Core')
-        #   end
-        # end
-
-        # it 'initalises current level' do
-        #   expect(assigns(:current_workstream)).to eq('National Centre - Non-Core')
-        # end
-
         it 'shows a flash notice' do
           expect(flash[:notice]).to be_present
         end
