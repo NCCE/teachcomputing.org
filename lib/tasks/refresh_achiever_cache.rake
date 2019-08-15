@@ -1,11 +1,11 @@
 namespace :achiever do
   task get_course_info: :environment do
-    workflow_ids = [Achiever::Course::Template::RESOURCE_PATH,
+    methods = [Achiever::Course::Template::RESOURCE_PATH,
                     Achiever::Course::Template::FACE_TO_FACE_RESOURCE_PATH,
                     Achiever::Course::Template::ONLINE_RESOURCE_PATH,
                     Achiever::Course::AgeGroup::RESOURCE_PATH,
                     Achiever::Course::Subject::RESOURCE_PATH]
-    workflow_ids.each do |workflow_id|
+    methods.each do |workflow_id|
       puts Rails.cache.delete(workflow_id)
     end
 
