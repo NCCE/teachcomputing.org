@@ -21,16 +21,15 @@ class Achiever::Course::Occurrence
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
                     'Date': Time.zone.today.strftime('%F'),
-                    'EndDate': Time.zone.today.strftime('%F'),
                     'ID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
-  
+
   def self.face_to_face
     occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS)
     occurrences.map { |occurrence| Achiever::Course::Occurrence.new(occurrence) }
   end
 
   def self.online
-    occurrences = Achiever::Request.resource(ONLINE_RESOURCE_PATH, QUERY_STRINGS)
+    occurrences = Achiever::Request.resource(ONLINE_RESOURCE_PATH, QUERY_STRINGS.merge('EndDate': Time.zone.today.strftime('%F')))
     occurrences.map { |occurrence| Achiever::Course::Occurrence.new(occurrence) }
   end
 
