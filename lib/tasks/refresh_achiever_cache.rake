@@ -5,8 +5,8 @@ namespace :achiever do
                     Achiever::Course::Template::ONLINE_RESOURCE_PATH,
                     Achiever::Course::AgeGroup::RESOURCE_PATH,
                     Achiever::Course::Subject::RESOURCE_PATH]
-    methods.each do |workflow_id|
-      puts Rails.cache.delete(workflow_id)
+    methods.each do |method_id|
+      puts Rails.cache.delete(method_id)
     end
 
     beginning_time = Time.zone.now
