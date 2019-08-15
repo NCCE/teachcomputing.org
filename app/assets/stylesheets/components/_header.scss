@@ -3,12 +3,6 @@
   border: none;
 }
 
-.govuk-header__logo {
-  @include govuk-media-query($from: desktop) {
-    // width: auto;
-  }
-}
-
 .govuk-header__container {
   border: none;
   margin-bottom: 0;
