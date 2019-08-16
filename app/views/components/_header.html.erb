@@ -11,35 +11,37 @@
         </span>
       <% end %>
     </div>
-    <div class="govuk-header__content ncce-header__content">
+    <div class="govuk-header__content">
       <button type="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
-      <% if current_user %>
       <nav>
-        <ul id="navigation" class="govuk-header__navigation" aria-label="Top Level Navigation">
-          <li>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+        <ul id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
+        <% if current_user %>
+          <li class="govuk-header__navigation-item ncce-header__navigation-item">
             <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
           </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+          <li class="govuk-header__navigation-item ncce-header__navigation-item">
             <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
           </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+          <li class="govuk-header__navigation-item ncce-header__navigation-item">
             <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
           </li>
-        </ul>
-      </nav>
-      <% else %>
-      <nav>
-        <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
-          <li>
-          </li>
-          <li class="govuk-header__navigation-item govuk-header__navigation-item">
+        <% else %>
+          <li class="govuk-header__navigation-item ncce-header__navigation-item">
             <%= link_to 'Create an account / log in', login_url, :class => 'govuk-header__link' %>
           </li>
+        <% end %>
+          <% if Programme.primary_certificate && Programme.primary_certificate.enrollable %>
+            <li class="ncce-header__navigation-item-cert">
+              <%= link_to 'Primary teachers', primary_path, class: 'govuk-header__link' %>
+            </li>
+          <% end %>
+          <% if Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
+            <li class="ncce-header__navigation-item-cert">
+              <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
+            </li>
+          <% end %>
         </ul>
       </nav>
-      <% end %>
     </div>
   </div>
 </header>
