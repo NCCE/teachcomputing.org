@@ -26,6 +26,10 @@ RSpec.describe CoursesController do
         expect(assigns(:courses)).to be_a(Array)
       end
 
+      it 'has correct number of courses' do
+        expect(assigns(:courses).count).to eq(34)
+      end
+
       it 'assigns adds course_occurrences to their respective courses' do
         occurrence = assigns(:courses).select { |course| course.course_template_no == assigns(:course_occurrences).sample.course_template_no }
         expect(occurrence).not_to eq 0
