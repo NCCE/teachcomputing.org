@@ -21,11 +21,11 @@
           <p class="govuk-body">If you are interested in making an application, or wish to discuss your school/college’s eligibility please contact <%= mail_to 'C.taylor@stem.org.uk', 'C.taylor@stem.org.uk', class: 'ncce-link' %></p>
         </div>
         <% unless current_user %>
-          <aside class="govuk-grid-column-one-third ncce-aside">
+          <div class="govuk-grid-column-one-third ncce-aside">
             <h2 class="govuk-heading-s ncce-aside__title">Start your journey</h2>
             <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
             <p class="govuk-body-s"><%= link_to 'Create an account', login_path, class: 'ncce-link ncce-link--on-dark' %></p>
-          </aside>
+          </div>
         <% end %>
       </div>
     </div>
