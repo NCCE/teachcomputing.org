@@ -26,14 +26,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - v3-ncce-bundle-{{ checksum "Gemfile.lock" }}
+            - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Bundle Install
           command: bundle check || bundle install
 
       - save_cache:
-          key: v3-ncce-bundle-{{ checksum "Gemfile.lock" }}
+          key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
