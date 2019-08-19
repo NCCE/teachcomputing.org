@@ -60,12 +60,6 @@ RSpec.describe Achiever::Course::Template do
       end
     end
 
-    describe 'TYPE' do
-      it 'is not nil' do
-        expect(Achiever::Course::Template::TYPE).not_to eq nil
-      end
-    end
-
     describe 'QUERY_STRINGS' do
       it 'contains page' do
         expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:Page)
