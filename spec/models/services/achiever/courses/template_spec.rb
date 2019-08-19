@@ -8,47 +8,47 @@ RSpec.describe Achiever::Course::Template do
       stub_course_templates
     end
 
-    it 'responds tp activity_code' do
+    it 'responds to activity_code' do
       expect(course_template).to respond_to(:activity_code)
     end
 
-    it 'responds tp age_groups' do
+    it 'responds to age_groups' do
       expect(course_template).to respond_to(:age_groups)
     end
 
-    it 'responds tp booking_url' do
+    it 'responds to booking_url' do
       expect(course_template).to respond_to(:booking_url)
     end
 
-    it 'responds tp course_template_no' do
+    it 'responds to course_template_no' do
       expect(course_template).to respond_to(:course_template_no)
     end
 
-    it 'responds tp meta_description' do
+    it 'responds to meta_description' do
       expect(course_template).to respond_to(:meta_description)
     end
 
-    it 'responds tp occurrences' do
+    it 'responds to occurrences' do
       expect(course_template).to respond_to(:occurrences)
     end
 
-    it 'responds tp online_cpd' do
+    it 'responds to online_cpd' do
       expect(course_template).to respond_to(:online_cpd)
     end
 
-    it 'responds tp subjects' do
+    it 'responds to subjects' do
       expect(course_template).to respond_to(:subjects)
     end
 
-    it 'responds tp summary' do
+    it 'responds to summary' do
       expect(course_template).to respond_to(:summary)
     end
 
-    it 'responds tp title' do
+    it 'responds to title' do
       expect(course_template).to respond_to(:title)
     end
 
-    it 'responds tp workstream' do
+    it 'responds to workstream' do
       expect(course_template).to respond_to(:workstream)
     end
   end
@@ -57,6 +57,12 @@ RSpec.describe Achiever::Course::Template do
     describe 'RESOURCE_PATH' do
       it 'is not nil' do
         expect(Achiever::Course::Template::RESOURCE_PATH).not_to eq nil
+      end
+    end
+
+    describe 'TYPE' do
+      it 'is not nil' do
+        expect(Achiever::Course::Template::TYPE).not_to eq nil
       end
     end
 
