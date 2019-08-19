@@ -30,11 +30,7 @@ class CoursesController < ApplicationController
   private
 
     def init_filters
-      @current_location = nil
-      @current_level = nil
-      @current_topic = nil
-      @current_workstream = nil
-      @course_occurrences = nil
+      @current_level, @current_topic, @current_workstream, @course_occurrences = nil
     end
 
     def filter_courses(courses)
@@ -97,7 +93,7 @@ class CoursesController < ApplicationController
     end
 
     def course_locations(course_occurrences)
-      towns = course_occurrences.reduce([]) { |acc, oc| !oc.online_cpd ? acc.push(oc.address_town) : acc }
+      towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
       towns.uniq.sort.unshift('Face to face').unshift('Online')
     end
 end
