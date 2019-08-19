@@ -69,14 +69,14 @@
 
   @include govuk-media-query($from: 1024px) {
     background-image: url('/images/home/splash-pink.svg');
-    background-position: 187px 0;
+    background-position: 11.5rem 0.15rem;
 
     @-moz-document url-prefix() {
-      background-position: 194px 0;
+      background-position: 12rem 0.15rem;
     }
 
     background-repeat: no-repeat;
-    background-size: 120px;
+    background-size: 7.5rem;
     border: 9px solid $ncce-black;
     font-size: 2.8em;
     line-height: 1.2;
