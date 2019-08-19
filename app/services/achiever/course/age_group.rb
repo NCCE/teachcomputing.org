@@ -1,5 +1,6 @@
 class Achiever::Course::AgeGroup
   RESOURCE_PATH = 'Get?cmd=OptionsetAgeGroups'.freeze
+  TYPE = 'option_set'.freeze
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000' }.freeze
 
