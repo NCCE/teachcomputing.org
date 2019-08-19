@@ -27,10 +27,17 @@ RSpec.describe Achiever::Course::Delegate do
 
   describe 'class methods' do
     describe '#find_by_achiever_contact_number' do
-      it 'returns an array' do
+      before do
         stub_delegate
+      end
+
+      it 'returns an array' do
         expect(described_class.find_by_achiever_contact_number('id-101')).to be_an Array
       end
+
+      it 'contains instances of Achiever::Course::Delegate' do
+        expect(described_class.find_by_achiever_contact_number('id-101').first).to be_an Achiever::Course::Delegate
+      end 
     end
   end
 end
