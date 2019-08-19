@@ -8,7 +8,6 @@ class Achiever::Course::Delegate
     query_strings = {
       'Page': '1',
       'RecordCount': '1000',
-      'ProgrammeID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID'),
       'ProgrammeID': PROGAMME_ID,
       'CONTACTNO': achiever_contact_no
     }
