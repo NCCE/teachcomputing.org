@@ -20,7 +20,7 @@
           <p class="govuk-body"><%= link_to 'Download the brochure', 'https://static.teachcomputing.org/12133%20-%20BROCHURE_V3.pdf' %> for an overview of the programme, learning opportunities and support available for teachers.</p>
         </div>
         <div class="govuk-grid-column-one-third">
-          <aside class="ncce-aside">
+          <div class="ncce-aside">
             <% if current_user %>
               <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
             <% else%>
@@ -43,7 +43,7 @@
               <p class="govuk-body"><%= link_to 'Create an account', signup_stem_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
               <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', login_url, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
             <% end %>
-          </aside>
+          </div>
         </div>
       </div>
     </div>
