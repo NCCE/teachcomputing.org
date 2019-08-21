@@ -8,11 +8,8 @@ RSpec.describe Achiever::Course::Delegate do
       stub_delegate
     end
 
-    it 'responds to course_template_no' do
+    it 'provides the required accessor methods' do
       expect(delegate).to respond_to(:course_template_no)
-    end
-
-    it 'responds to is_fully_attended' do
       expect(delegate).to respond_to(:is_fully_attended)
     end
   end

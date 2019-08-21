@@ -8,47 +8,17 @@ RSpec.describe Achiever::Course::Template do
       stub_course_templates
     end
 
-    it 'responds to activity_code' do
+    it 'provides the required accessor methods' do
       expect(course_template).to respond_to(:activity_code)
-    end
-
-    it 'responds to age_groups' do
       expect(course_template).to respond_to(:age_groups)
-    end
-
-    it 'responds to booking_url' do
       expect(course_template).to respond_to(:booking_url)
-    end
-
-    it 'responds to course_template_no' do
       expect(course_template).to respond_to(:course_template_no)
-    end
-
-    it 'responds to meta_description' do
       expect(course_template).to respond_to(:meta_description)
-    end
-
-    it 'responds to occurrences' do
       expect(course_template).to respond_to(:occurrences)
-    end
-
-    it 'responds to online_cpd' do
       expect(course_template).to respond_to(:online_cpd)
-    end
-
-    it 'responds to subjects' do
       expect(course_template).to respond_to(:subjects)
-    end
-
-    it 'responds to summary' do
       expect(course_template).to respond_to(:summary)
-    end
-
-    it 'responds to title' do
       expect(course_template).to respond_to(:title)
-    end
-
-    it 'responds to workstream' do
       expect(course_template).to respond_to(:workstream)
     end
   end

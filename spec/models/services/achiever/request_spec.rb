@@ -40,37 +40,5 @@ RSpec.describe Achiever::Request do
         end
       end
     end
-
-    describe 'private methods' do
-      describe '#success?' do
-        it 'returns true' do
-          expect(described_class.send(:success?, double(status: 200), successful_parsed_response)).to eq true
-        end
-
-        context 'when status is not 200' do
-          it 'returns false' do
-            expect(described_class.send(:success?, double(status: 500), unsuccessful_parsed_response)).to eq false
-          end
-        end
-
-        context 'when a failure reason is present' do
-          it 'returns false' do
-            expect(described_class.send(:success?, double(status: 200), unsuccessful_parsed_response)).to eq false
-          end
-        end
-      end
-
-      describe '#query_strings' do
-        it 'returns a String containing hash keys and values' do
-          expect(described_class.send(:query_strings, 'query1': 'string', 'query2': 'string2')).to eq 'query1=string&query2=string2' 
-        end
-      end
-
-      describe '#parse_response' do
-        it 'returns an OpenStruct object' do
-          expect(described_class.send(:parse_response, successful_json_response).class).to eq OpenStruct
-        end
-      end
-    end
   end
 end

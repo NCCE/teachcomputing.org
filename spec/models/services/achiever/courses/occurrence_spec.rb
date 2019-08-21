@@ -8,67 +8,22 @@ RSpec.describe Achiever::Course::Occurrence do
       stub_face_to_face_occurrences
     end
 
-    it 'responds to activity_code' do
+    it 'provides the required accessor methods' do
       expect(course_occurrence).to respond_to(:activity_code)
-    end
-
-    it 'responds to activity_title' do
       expect(course_occurrence).to respond_to(:activity_title)
-    end
-
-    it 'responds to address_venue_name' do
       expect(course_occurrence).to respond_to(:address_venue_name)
-    end
-
-    it 'responds to address_venue_code' do
       expect(course_occurrence).to respond_to(:address_venue_code)
-    end
-
-    it 'responds to address_town' do
       expect(course_occurrence).to respond_to(:address_town)
-    end
-
-    it 'responds to address_postcode' do
       expect(course_occurrence).to respond_to(:address_postcode)
-    end
-
-    it 'responds to address_line_one' do
       expect(course_occurrence).to respond_to(:address_line_one)
-    end
-
-    it 'responds to age_groups' do
       expect(course_occurrence).to respond_to(:age_groups)
-    end
-
-    it 'responds to booking_url' do
       expect(course_occurrence).to respond_to(:booking_url)
-    end
-
-    it 'responds to course_template_no' do
       expect(course_occurrence).to respond_to(:course_template_no)
-    end
-
-    it 'responds to course_occurrence_no' do
       expect(course_occurrence).to respond_to(:course_occurrence_no)
-    end
-
-    it 'responds to end_date' do
       expect(course_occurrence).to respond_to(:end_date)
-    end
-
-    it 'responds to online_cpd' do
       expect(course_occurrence).to respond_to(:online_cpd)
-    end
-
-    it 'responds to region' do
       expect(course_occurrence).to respond_to(:region)
-    end
-
-    it 'responds to subject' do
       expect(course_occurrence).to respond_to(:subject)
-    end
-
-    it 'responds to start_date' do
       expect(course_occurrence).to respond_to(:start_date)
     end
   end
