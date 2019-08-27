@@ -19,7 +19,7 @@
           <p class="govuk-body"><strong>We hope you find the programme supportive and that it helps to give you the confidence to teach computer science across the curriculum. </strong></p>
         </div>
         <div class="govuk-grid-column-one-third">
-          <aside class="ncce-aside">
+          <div class="ncce-aside">
             <% if current_user %>
               <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
             <% else%>
@@ -42,7 +42,7 @@
               <p class="govuk-body"><%= link_to 'Create an account', signup_stem_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
               <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', login_url, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
             <% end %>
-          </aside>
+          </div>
         </div>
       </div>
     </div>
