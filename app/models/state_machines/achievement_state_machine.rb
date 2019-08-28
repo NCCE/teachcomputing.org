@@ -3,8 +3,10 @@ class StateMachines::AchievementStateMachine
 
   state :commenced, initial: true
   state :complete
+  state :dropped
 
   transition from: :commenced, to: :complete
+  transition from: :commenced, to: :dropped
 
   before_transition(from: :commenced, to: :complete) do |achievement, _transition|
   end

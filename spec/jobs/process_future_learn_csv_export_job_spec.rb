@@ -7,21 +7,23 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:user_three) { create(:user, email: 'user3@example.com') }
   let(:user_four) { create(:user, email: 'user4@example.com') }
   let(:user_five) { create(:user, email: 'user5@example.com') }
+  let(:user_six) { create(:user, email: 'user6@example.com') }
   let(:commenced_achievement_one) { create(:achievement, user_id: user_four.id, activity_id: activity.id) }
   let(:commenced_achievement_two) { create(:achievement, user_id: user_five.id, activity_id: activity.id) }
   let(:import) { create(:import) }
   let(:csv_contents) do
     'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,course_uuid,
-    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,nil,1234,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,nil,1234,
-    2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%,nil,1234,
-    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,nil,1234,
-    2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,59%,0,0%,nil,1234,'
+    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,,1234,
+    2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%,,1234,
+    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,1234,
+    2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,59%,0,0%,,1234,
+    2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,44%,0,0%,2019-05-03 10:45:45 UTC,1234,'
   end
 
   describe '#perform' do
     before do
-      [user_one, user_two, user_three, user_four, user_five, activity]
+      [user_one, user_two, user_three, user_four, user_five, user_six, activity]
       ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
     end
 
@@ -52,6 +54,16 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     it 'updates the the import record to have a completed_at timestamp' do
       import.reload
       expect(import.completed_at).not_to be_nil
+    end
+
+    context 'when left_at is present' do
+      it 'transitions the state to dropped' do
+        expect(user_six.achievements.find_by(activity_id: activity.id).current_state).to eq 'dropped'
+      end
+
+      it 'does not transition it to dropped if it is already complete' do
+        expect(user_four.achievements.find_by(activity_id: activity.id).current_state).to eq 'complete'
+      end
     end
 
     context 'when an achievement already exits' do

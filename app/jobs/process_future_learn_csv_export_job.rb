@@ -12,7 +12,11 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
+
+      next if achievement.current_state == 'complete'
+
       achievement.set_to_complete if record['steps_completed'].to_f >= 60
+      achievement.set_to_dropped(left_at: record['left_at']) if record['left_at'].present?
     end
 
     import_record.update(completed_at: DateTime.now.in_time_zone)
