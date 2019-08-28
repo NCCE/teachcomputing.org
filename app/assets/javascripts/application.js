@@ -13,5 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require cookieconsent/build/cookieconsent.min
+//= require micromodal/dist/micromodal.min
 //= require_tree .
 //= require govuk-frontend/all
