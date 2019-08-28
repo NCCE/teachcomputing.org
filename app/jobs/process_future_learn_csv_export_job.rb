@@ -15,6 +15,10 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       next if achievement.current_state == 'complete'
 
+      if achievement.current_state == 'dropped'
+        achievement.transition_to(:commenced) if record['left_at'].blank?
+      end
+
       achievement.set_to_complete if record['steps_completed'].to_f >= 60
       achievement.set_to_dropped(left_at: record['left_at']) if record['left_at'].present?
     end

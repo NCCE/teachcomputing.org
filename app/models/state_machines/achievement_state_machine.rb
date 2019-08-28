@@ -7,6 +7,7 @@ class StateMachines::AchievementStateMachine
 
   transition from: :commenced, to: :complete
   transition from: :commenced, to: :dropped
+  transition from: :dropped, to: [:commenced, :complete]
 
   before_transition(from: :commenced, to: :complete) do |achievement, _transition|
   end
