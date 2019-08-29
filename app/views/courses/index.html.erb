@@ -88,7 +88,7 @@
               <h2 class="govuk-heading-s ncce-courses__heading">
                 <% if current_user %>
                 <%=
-                  link_to_if(course.booking_url.nil?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
+                  link_to_if(course.booking_url.empty?, course.title, stem_course_link(course.course_template_no), class: 'ncce-link ncce-courses__heading--link', target: :_blank) do
                     link_to(course.title, course.booking_url, class: 'ncce-link ncce-courses__heading--link', target: :_blank)
                   end
                 %>
@@ -110,6 +110,8 @@
                 </svg>View dates & locations
                 </button>
               </h3>
+            <% end %>
+            <% unless course.occurrences.empty? %>
               <ul class="govuk-list govuk-body-s ncce-courses__meta">
                 <% course.occurrences.each do |oc| %>
                   <li class="govuk-grid-row ncce-courses__meta-item">
