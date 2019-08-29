@@ -15,7 +15,7 @@ class Achiever::Course::Template
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
                     'HideFromweb': '0',
-                    'ProgrammeID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
+                    'ProgrammeName': 'ncce' }.freeze
 
   def self.all
     templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
@@ -25,7 +25,7 @@ class Achiever::Course::Template
   def initialize(template)
     @activity_code = template.send('Template.ActivityCode')
     @age_groups = template.send('Template.AgeGroups').split(';')
-    @booking_url = template.send('Template.Booking_URL')
+    @booking_url = template.send('Template.BookingURL')
     @course_template_no = template.send('Template.COURSETEMPLATENO')
     @meta_description = template.send('Template.MetaDescription')
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)

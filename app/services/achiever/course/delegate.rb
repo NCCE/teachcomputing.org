@@ -2,13 +2,13 @@ class Achiever::Course::Delegate
   attr_accessor :course_template_no, :is_fully_attended
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
-  PROGAMME_ID = ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID').freeze
+  PROGRAMME_NAME = 'ncce'.freeze
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
     query_strings = {
       'Page': '1',
       'RecordCount': '1000',
-      'ProgrammeID': PROGAMME_ID,
+      'ProgrammeName': PROGRAMME_NAME,
       'CONTACTNO': achiever_contact_no
     }
     delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings)

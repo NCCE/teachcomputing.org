@@ -20,12 +20,11 @@ class Achiever::Course::Occurrence
   ONLINE_RESOURCE_PATH = 'Get?cmd=FutureOnlineCoursesByProgrammeId'.freeze
   QUERY_STRINGS = { 'Page': '1',
                     'RecordCount': '1000',
-                    'Date': Time.zone.today.strftime('%F'),
                     'EndDate': Time.zone.today.strftime('%F'),
-                    'ID': ENV.fetch('ACHIEVER_V2_NCCE_PROGRAMME_ID') }.freeze
+                    'ProgrammeName': 'ncce' }.freeze
 
   def self.face_to_face
-    occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS)
+    occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS.merge(date: Time.zone.today.strftime('%F')))
     occurrences.map { |occurrence| Achiever::Course::Occurrence.new(occurrence) }
   end
 
