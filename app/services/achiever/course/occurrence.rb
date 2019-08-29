@@ -24,7 +24,7 @@ class Achiever::Course::Occurrence
                     'ProgrammeName': 'ncce' }.freeze
 
   def self.face_to_face
-    occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS.merge(date: Time.zone.today.strftime('%F')))
+    occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH, QUERY_STRINGS.merge(Date: Time.zone.today.strftime('%F')))
     occurrences.map { |occurrence| Achiever::Course::Occurrence.new(occurrence) }
   end
 

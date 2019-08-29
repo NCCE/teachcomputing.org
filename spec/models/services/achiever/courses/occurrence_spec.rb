@@ -49,17 +49,13 @@ RSpec.describe Achiever::Course::Occurrence do
       it 'contains record count' do
         expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:RecordCount)
       end
-
-      it 'contains date' do
-        expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:Date)
-      end
-
+      
       it 'contains end date' do
         expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:EndDate)
       end
 
       it 'contains id' do
-        expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:ID)
+        expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:ProgrammeName)
       end
     end
 

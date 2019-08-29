@@ -44,7 +44,7 @@ RSpec.describe Achiever::Course::Template do
       end
 
       it 'contains programme id' do
-        expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:ProgrammeID)
+        expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:ProgrammeName)
       end
     end
   end
