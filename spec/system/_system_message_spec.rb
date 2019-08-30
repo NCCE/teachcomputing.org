@@ -5,6 +5,16 @@ RSpec.describe('Maintenance message', type: :system, js: true) do
   let(:browser) { page.driver.browser }
   let(:cookie_name) { 'maintenance-modal-20190829' }
 
+  before :all do
+    visit root_path
+    page.driver.browser.manage.delete_all_cookies
+  end
+
+  after :all do
+    visit root_path
+    page.driver.browser.manage.delete_all_cookies
+  end
+
   context 'when user first visits a page' do
     before do
       stub_featured_posts
@@ -46,6 +56,7 @@ RSpec.describe('Maintenance message', type: :system, js: true) do
       visit root_path
       browser.manage.delete_all_cookies
       browser.manage.add_cookie name: cookie_name, value: true.to_s
+      visit root_path
     end
 
     xit 'the popup message doesn\'t show' do
