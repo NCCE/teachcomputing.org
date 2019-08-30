@@ -10,22 +10,22 @@ RSpec.describe('pages/resources', type: :view) do
 
   it 'has key stage headings' do
     render
-    expect(rendered).to have_css('.resources-key-stage', count: 2)
+    expect(rendered).to have_css('.resources-key-stage', count: 3)
   end
 
   it 'has year headings' do
     render
-    expect(rendered).to have_css('.resources-year__heading', count: 3)
+    expect(rendered).to have_css('.resources-year__heading', count: 5)
   end
 
   it 'has resource lists for each year' do
     render
-    expect(rendered).to have_css('.resources-year__lesson-list', count: 3)
+    expect(rendered).to have_css('.resources-year__lesson-list', count: 5)
   end
 
   it 'has asides for each year' do
     render
-    expect(rendered).to have_css('.resources-aside', count: 3)
+    expect(rendered).to have_css('.resources-aside', count: 5)
   end
 
   context 'when a user is not signed in' do
