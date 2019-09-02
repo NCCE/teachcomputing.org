@@ -1,0 +1,47 @@
+<div class="modal micromodal-slide" id="maintenance-modal" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true"
+      aria-labelledby="modal-1-title">
+      <header>
+        <button class="modal__header-close" aria-label="Close modal">
+          <h2 class="govuk-heading-m" id="modal-1-title"
+            data-micromodal-close>Scheduled maintenance</h2>
+          <%= image_tag 'close-blue.svg', alt: '', class: 'modal__header-close-icon' %>
+        </button>
+      </header>
+      <main class="modal__content" id="modal-1-content">
+        <p class="govuk-body">
+          Between 10am on Wednesday 4th September and late morning on Monday 9th September, we will be performing some maintenance on the site.
+        </p>
+        <p class="govuk-body">
+          Some features will be unavailable during this time, including access to your dashboard.
+        </p>
+      </main>
+      <footer class="modal__footer">
+        <button
+          class="govuk-button ncce-button__pink ncce-button__pink--no-margin"
+          data-micromodal-close>Got it!</button>
+      </footer>
+    </div>
+  </div>
+</div>
+<%= javascript_tag nonce: true do -%>
+  var maintenance_modal = 'maintenance-modal';
+  var cookie_name = maintenance_modal + '-20190829';
+  var utils = cookieconsent.utils;
+  function onClose(modal) {
+    if(modal.id == maintenance_modal) {
+      utils.setCookie(cookie_name, true);
+    }
+  }
+
+  ready(function () {
+    MicroModal.init();
+    // if cookie is not set, show the dialog
+    if(!utils.getCookie(cookie_name)) {
+      MicroModal.show(maintenance_modal, {
+        onClose: onClose
+      });
+    }
+  })
+<% end -%>
