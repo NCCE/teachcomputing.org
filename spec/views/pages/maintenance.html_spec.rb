@@ -6,6 +6,6 @@ RSpec.describe('pages/maintenance', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'We are currently performing planned maintenance on the site.')
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Scheduled maintenance')
   end
 end
