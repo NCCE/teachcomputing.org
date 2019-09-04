@@ -15,40 +15,42 @@
       <button type="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
       <nav>
         <ul id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
-        <% if current_user %>
-          <ul class='ncce-header__navigation-user'>
-            <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
-            </li>
-            <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
-            </li>
-            <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="ncce-header__navigation-user">
-            <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Create an account', login_url, :class => 'govuk-header__link' %>
-            </li>
-            <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'log in', login_url, :class => 'govuk-header__link' %>
-            </li>
-          </ul>
-        <% end %>
-          <ul class='ncce-header__navigation-certification'>
-            <% if Programme.primary_certificate && Programme.primary_certificate.enrollable %>
-              <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Primary teachers', primary_path, class: 'govuk-header__link' %>
+          <li>
+          <% if current_user %>
+            <ul class='ncce-header__navigation-user'>
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
               </li>
-            <% end %>
-            <% if Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
-              <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
               </li>
-            <% end %>
-          </ul>
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="ncce-header__navigation-user">
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= link_to 'Create an account', login_url, :class => 'govuk-header__link' %>
+              </li>
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= link_to 'log in', login_url, :class => 'govuk-header__link' %>
+              </li>
+            </ul>
+          <% end %>
+            <ul class='ncce-header__navigation-certification'>
+              <% if Programme.primary_certificate && Programme.primary_certificate.enrollable %>
+                <li class="ncce-header__navigation-item-cert">
+                  <%= link_to 'Primary teachers', primary_path, class: 'govuk-header__link' %>
+                </li>
+              <% end %>
+              <% if Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
+                <li class="ncce-header__navigation-item-cert">
+                  <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
