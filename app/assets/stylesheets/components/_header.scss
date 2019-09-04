@@ -46,9 +46,6 @@
 }
 
 .ncce-header__navigation-certification {
-  list-style: none;
-  padding-left: 0;
-
   @include govuk-media-query($from: desktop) {
     text-align: right;
 
@@ -59,9 +56,6 @@
 }
 
 .ncce-header__navigation-user {
-  list-style: none;
-  padding-left: 0;
-
   @include govuk-media-query($from: desktop) {
     text-align: right;
   }

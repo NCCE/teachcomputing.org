@@ -16,7 +16,7 @@
       <nav>
         <ul id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
         <% if current_user %>
-          <ul class='ncce-header__navigation-user'>
+          <div class='ncce-header__navigation-user'>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
             </li>
@@ -26,7 +26,7 @@
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
             </li>
-          </ul>
+          </div>
         <% else %>
           <ul class="ncce-header__navigation-user">
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
@@ -37,7 +37,7 @@
             </li>
           </ul>
         <% end %>
-          <ul class='ncce-header__navigation-certification'>
+          <div class='ncce-header__navigation-certification'>
             <% if Programme.primary_certificate && Programme.primary_certificate.enrollable %>
               <li class="ncce-header__navigation-item-cert">
                 <%= link_to 'Primary teachers', primary_path, class: 'govuk-header__link' %>
@@ -48,7 +48,7 @@
                 <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
               </li>
             <% end %>
-          </ul>
+          </div>
         </ul>
       </nav>
     </div>
