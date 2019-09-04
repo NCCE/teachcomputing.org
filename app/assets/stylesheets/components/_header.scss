@@ -61,6 +61,12 @@
   }
 }
 
+.ncce-header__navigation-certification, .ncce-header__navigation-user {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .ncce-header__navigation-item {
   border-color: $ncce-white;
 }
