@@ -1,0 +1,27 @@
+<% presenters.each_with_index do |presenter, index|%>
+  <% unless presenter.empty? %>
+    <% if presenter.current_state == 'complete' %>
+      <li class="ncce-activity-list__item">
+        <span class="ncce-activity-list__item-text"><%= presenter.completed_text(index) %>
+        </span>
+        <span class="ncce-activity-list__item-activity">
+          <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete</span>
+          <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
+        </span>
+      </li>
+    <% else %>
+      <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
+        <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
+        <span class="ncce-activity-list__item-activity">
+          <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">In progress</span>
+          <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
+        <span>
+      </li>
+    <% end %>
+  <% else%>
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
+      <%= link_to presenter.button_label, presenter.button_url(workstream: 'CS Accelerator', current_user: current_user), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    </li>
+  <% end %>
+<% end %>

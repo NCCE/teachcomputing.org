@@ -7,7 +7,8 @@ class ProgrammesController < ApplicationController
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
-    achievements_by_category
+    @achievement_presenters = ProgrammeAchievementPresenters.new
+    @achievement_presenters.create(@programme, current_user)
     assessment_state_details
     render "programmes/#{@programme.slug}/show"
   end
@@ -15,7 +16,9 @@ class ProgrammesController < ApplicationController
   def complete
     return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
 
-    achievements_by_category
+    @achievement_presenters = ProgrammeAchievementPresenters.new
+    @achievement_presenters.create(@programme, current_user)
+
     assessment_state_details if @programme.assessment
     render "programmes/#{@programme.slug}/complete"
   end
@@ -33,12 +36,12 @@ class ProgrammesController < ApplicationController
       @programme = Programme.enrollable.find_by!(slug: params[:slug])
     end
 
-    def achievements_by_category
-      achievements = current_user.achievements.for_programme(@programme).sort_complete_first
-      @online_achievements = achievements.with_category('online').take(2)
-      @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
-      @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
-    end
+    # def achievements_by_category
+    #   achievements = current_user.achievements.for_programme(@programme).sort_complete_first
+    #   @online_achievements = achievements.with_category('online').take(2)
+    #   @face_to_face_achievements = achievements.with_category('face-to-face').take(2)
+    #   @downloaded_diagnostic = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' }).any?
+    # end
 
     def assessment_state_details
       @enough_credits_for_test = helpers.can_take_accelerator_test?(current_user, @programme)

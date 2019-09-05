@@ -4,6 +4,10 @@ module ProgrammesHelper
     "#{passed_date.strftime('%Y%m')}-#{sprintf('%03d', certificate_number || 0)}"
   end
 
+  def index_to_word_ordinal(index = 0)
+    to_word_ordinal(index + 1)
+  end
+
   def to_word_ordinal(number)
     index = number || 0;
     ordinals = %w[none first second third fourth fifth sixth seventh eighth ninth tenth]
