@@ -38,7 +38,7 @@ RSpec.describe('components/_header', type: :view) do
     end
 
     it 'shows link to log in' do
-      expect(rendered).to have_css('.govuk-header__navigation-item', text: 'log in')
+      expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Log in')
     end
 
     it 'does not show a link to your dashboard' do
