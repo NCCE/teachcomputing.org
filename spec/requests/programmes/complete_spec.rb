@@ -91,16 +91,8 @@ RSpec.describe ProgrammesController do
           expect(assigns(:programme)).to eq(programme)
         end
 
-        it 'assigns the online achievements' do
-          expect(assigns(:achievement_presenters).online_achievements).to include(online_achievement)
-        end
-
-        it 'assigns the face_to_face achievements' do
-          expect(assigns(:achievement_presenters).face_to_face_achievements).to include(face_to_face_achievement)
-        end
-
-        it 'assigns the diagnostic achievement state correctly' do
-          expect(assigns(:achievement_presenters).diagnostic_achievements.length).to eq(1)
+        it 'assigns the achievements' do
+          expect(assigns(:achievement_presenters)).to be_a(ProgrammeAchievementPresenters)
         end
 
         it 'redirects show to complete' do

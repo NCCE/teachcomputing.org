@@ -14,5 +14,7 @@ class ProgrammeAchievementPresenters
 
     @diagnostic_achievements = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' })
     @diagnostic_achievements = [DiagnosticPresenter.new(@diagnostic_achievements.first)]
+
+    self
   end
 end
