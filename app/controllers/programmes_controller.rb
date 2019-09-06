@@ -7,7 +7,7 @@ class ProgrammesController < ApplicationController
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
-    @achievement_presenters = ProgrammeAchievementPresenters.new.create(@programme, current_user)
+    @achievement_presenters = ProgrammeAchievementPresenters.new(@programme, current_user)
     assessment_state_details
     render "programmes/#{@programme.slug}/show"
   end
@@ -15,7 +15,7 @@ class ProgrammesController < ApplicationController
   def complete
     return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
 
-    @achievement_presenters = ProgrammeAchievementPresenters.new.create(@programme, current_user)
+    @achievement_presenters = ProgrammeAchievementPresenters.new(@programme, current_user)
     assessment_state_details if @programme.assessment
     render "programmes/#{@programme.slug}/complete"
   end

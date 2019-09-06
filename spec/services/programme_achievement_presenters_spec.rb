@@ -45,7 +45,7 @@ RSpec.describe ProgrammeAchievementPresenters do
     end
   end
 
-  let(:programme_achievement_presenters) { ProgrammeAchievementPresenters.new.create(programme, user) }
+  let(:programme_achievement_presenters) { ProgrammeAchievementPresenters.new(programme, user) }
 
   describe 'attr_accessor' do
     it 'online_achievements returns an Array' do

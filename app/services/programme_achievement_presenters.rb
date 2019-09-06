@@ -3,7 +3,7 @@ class ProgrammeAchievementPresenters
   attr_reader :face_to_face_achievements
   attr_reader :diagnostic_achievements
 
-  def create(programme, user)
+  def initialize(programme, user)
     achievements = user.achievements.for_programme(programme).sort_complete_first
 
     @online_achievements = achievements.with_category('online')
@@ -14,7 +14,5 @@ class ProgrammeAchievementPresenters
 
     @diagnostic_achievements = achievements.with_category('action').where(activities: { slug: 'diagnostic-tool' })
     @diagnostic_achievements = [DiagnosticPresenter.new(@diagnostic_achievements.first)]
-
-    self
   end
 end
