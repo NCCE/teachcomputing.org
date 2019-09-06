@@ -19,6 +19,6 @@ class FaceToFacePresenter < ActivityPresenter
   end
 
   def inspect
-    super + "\n\FaceToFacePresenter - empty? #{empty?}\n\n"
+    "FaceToFacePresenter - empty? #{empty?}\n" + super
   end
 end

@@ -19,6 +19,6 @@ class DiagnosticPresenter < ActivityPresenter
   end
 
   def inspect
-    super + "\n\DiagnosticPresenter - empty? #{empty?}\n\n"
+    "DiagnosticPresenter - empty? #{empty?}\n" + super
   end
 end

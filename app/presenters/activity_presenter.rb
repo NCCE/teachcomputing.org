@@ -29,6 +29,6 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def inspect
-    super + "\n\nActivityPresenter - empty? #{empty?}\n\n"
+    "ActivityPresenter - empty? #{empty?}\n" + super
   end
 end

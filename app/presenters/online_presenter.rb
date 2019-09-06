@@ -19,7 +19,7 @@ class OnlinePresenter < ActivityPresenter
   end
 
   def inspect
-    super + "\n\OnlinePresenter - empty? #{empty?}\n\n"
+    "OnlinePresenter - empty? #{empty?}\n" + super
   end
 end
 
