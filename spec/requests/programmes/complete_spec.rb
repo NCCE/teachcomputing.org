@@ -92,15 +92,15 @@ RSpec.describe ProgrammesController do
         end
 
         it 'assigns the online achievements' do
-          expect(assigns(:online_achievements)).to include(online_achievement)
+          expect(assigns(:achievement_presenters).online_achievements).to include(online_achievement)
         end
 
         it 'assigns the face_to_face achievements' do
-          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+          expect(assigns(:achievement_presenters).face_to_face_achievements).to include(face_to_face_achievement)
         end
 
         it 'assigns the diagnostic achievement state correctly' do
-          expect(assigns(:downloaded_diagnostic)).to eq (false)
+          expect(assigns(:achievement_presenters).diagnostic_achievements.length).to eq(1)
         end
 
         it 'redirects show to complete' do

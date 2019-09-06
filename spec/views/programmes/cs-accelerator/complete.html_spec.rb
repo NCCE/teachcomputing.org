@@ -7,6 +7,8 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   before do
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+    @achievement_presenters = instance_double('ProgrammeAchievementPresenters')
+    allow(@achievement_presenters).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
     render
   end
 

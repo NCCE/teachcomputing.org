@@ -30,6 +30,7 @@ RSpec.describe ProgrammesController do
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
     end
+    diagnostic_achievement
     online_achievement
     face_to_face_achievement
   end
@@ -118,15 +119,15 @@ RSpec.describe ProgrammesController do
         end
 
         it 'assigns the online achievements' do
-          expect(assigns(:online_achievements)).to include(online_achievement)
+          expect(assigns(:achievement_presenters).online_achievements).to include(online_achievement)
         end
 
         it 'assigns the face_to_face achievements' do
-          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+          expect(assigns(:achievement_presenters).face_to_face_achievements).to include(face_to_face_achievement)
         end
 
         it 'assigns the diagnostic achievement' do
-          expect(assigns(:downloaded_diagnostic)).not_to eq nil
+          expect(assigns(:achievement_presenters).diagnostic_achievements).to include(diagnostic_achievement)
         end
 
         it 'assigns the test gate correctly' do
@@ -156,11 +157,11 @@ RSpec.describe ProgrammesController do
           end
 
           it 'doesn\'t show in-progress courses' do
-            expect(assigns(:online_achievements)).to_not include(online_achievement)
+            expect(assigns(:achievement_presenters).online_achievements).to_not include(online_achievement)
           end
 
           it 'only shows complete courses' do
-            assigns(:online_achievements).each do |a|
+            assigns(:achievement_presenters).online_achievements.each do |a|
               expect(a.current_state).to eq('complete')
             end
           end

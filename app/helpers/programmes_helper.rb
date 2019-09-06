@@ -5,7 +5,7 @@ module ProgrammesHelper
   end
 
   def index_to_word_ordinal(index = 0)
-    to_word_ordinal(index + 1)
+    to_word_ordinal((index || 0) + 1)
   end
 
   def to_word_ordinal(number)
