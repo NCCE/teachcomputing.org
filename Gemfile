@@ -5,12 +5,12 @@ ruby '2.5.3'
 
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
-gem 'axe-matchers'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
 gem 'connection_pool','~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
+gem 'faraday', '~> 0.15.4', require: false
 gem "fog-aws", "~> 3.3"
 gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'
@@ -57,6 +57,7 @@ group :development do
 end
 
 group :test do
+  gem 'axe-matchers', :require => false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
