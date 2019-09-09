@@ -7,8 +7,10 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   before do
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    @achievement_presenters = instance_double('ProgrammeAchievementPresenters')
-    allow(@achievement_presenters).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
+    @user_programme_achievements = instance_double('UserProgrammeAchievements')
+    allow(@user_programme_achievements).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
+    @user_programme_assessment = instance_double('UserProgrammeAssessment')
+    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: false)
     render
   end
 

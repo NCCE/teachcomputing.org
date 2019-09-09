@@ -35,39 +35,6 @@ RSpec.describe ProgrammesController do
     face_to_face_achievement
   end
 
-  let(:setup_achievements_for_taking_test) do
-    setup_achievements_for_programme
-    online_achievement.set_to_complete
-    face_to_face_achievement.set_to_complete
-    activities = [create(:activity, :future_learn, credit: 20), create(:activity, :stem_learning, credit: 20)]
-
-    activities.each do |activity|
-      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
-      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
-    end
-  end
-
-  let(:one_commenced_test_attempt) do
-    setup_achievements_for_taking_test
-    create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id)
-  end
-
-  let(:one_failed_test_attempt) do
-    setup_achievements_for_taking_test
-    create(:failed_assessment_attempt, user_id: user.id, assessment_id: assessment.id)
-  end
-
-  let(:two_failed_test_attempts) do
-    setup_achievements_for_taking_test
-    create_list(:failed_assessment_attempt, 2, user_id: user.id, assessment_id: assessment.id)
-  end
-
-  let(:two_old_failed_test_attempts) do
-    setup_achievements_for_taking_test
-    create_list(:failed_assessment_attempt_from_before, 2, user_id: user.id, assessment_id: assessment.id)
-  end
-
-
   describe '#show' do
     describe 'while logged in' do
       before do
@@ -109,142 +76,11 @@ RSpec.describe ProgrammesController do
         end
 
         it 'assigns the achievements' do
-          expect(assigns(:achievement_presenters)).to be_a(ProgrammeAchievementPresenters)
+          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
         end
 
-        it 'assigns the test gate correctly' do
-          expect(assigns(:enough_credits_for_test)).to eq (false)
-        end
-
-        it 'assigns the test gate correctly' do
-          expect(assigns(:enough_credits_for_test)).to eq (false)
-        end
-
-        it 'assign the time until user can take the test correctly' do
-          expect(assigns(:can_take_test_at)).to eq (nil)
-        end
-
-        it 'assign whether user is currently doing a test correctly' do
-          expect(assigns(:currently_taking_test)).to eq (nil)
-        end
-
-        it 'assigns the number of attempts at test correctly' do
-          expect(assigns(:num_attempts)).to eq (0)
-        end
-
-        context 'when user can take the test' do
-          before do
-            setup_achievements_for_taking_test
-            get programme_path('cs-accelerator')
-          end
-
-          it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (true)
-          end
-
-          it 'assigns the time until user can take the test' do
-            expect(assigns(:can_take_test_at)).to eq (0)
-          end
-
-          it 'assigns that user is not currently doing a test' do
-            expect(assigns(:currently_taking_test)).to eq (false)
-          end
-
-          it 'assigns the number of attempts at test correctly' do
-            expect(assigns(:num_attempts)).to eq (0)
-          end
-        end
-
-        context 'when user started the test' do
-          before do
-            one_commenced_test_attempt
-            get programme_path('cs-accelerator')
-          end
-
-          it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (true)
-          end
-
-          it 'assigns the time until user can take the test' do
-            expect(assigns(:can_take_test_at)).to eq (0)
-          end
-
-          it 'assigns whether user is currently doing a test' do
-            expect(assigns(:currently_taking_test)).to eq (true)
-          end
-
-          it 'assigns the number of attempts at test correctly' do
-            expect(assigns(:num_attempts)).to eq (1)
-          end
-        end
-
-        context 'when user failed the test' do
-          before do
-            one_failed_test_attempt
-            get programme_path('cs-accelerator')
-          end
-
-          it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (true)
-          end
-
-          it 'assigns the time until user can take the test' do
-            expect(assigns(:can_take_test_at)).to eq (0)
-          end
-
-          it 'assigns whether user is currently doing a test' do
-            expect(assigns(:currently_taking_test)).to eq (false)
-          end
-
-          it 'assigns the number of attempts at test correctly' do
-            expect(assigns(:num_attempts)).to eq (1)
-          end
-        end
-
-        context 'when user failed the test twice' do
-          before do
-            two_failed_test_attempts
-            get programme_path('cs-accelerator')
-          end
-
-          it 'assigns the test gate correctly' do
-            expect(assigns(:enough_credits_for_test)).to eq (true)
-          end
-
-          it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
-            expect(assigns(:can_take_test_at)).to_not eq 0
-          end
-
-          it 'assigns the number of attempts at test correctly' do
-            expect(assigns(:num_attempts)).to eq (2)
-          end
-        end
-
-        context 'when user failed the test twice a while ago' do
-          before do
-            two_old_failed_test_attempts
-            get programme_path('cs-accelerator')
-          end
-
-          it 'assigns the time until user can take the test' do
-            expect(assigns(:can_take_test_at)).to eq (0)
-          end
-
-          it 'assigns the number of attempts at test correctly' do
-            expect(assigns(:num_attempts)).to eq (2)
-          end
-        end
-
-        context 'when assessment has been completed' do
-          before do
-            exam_programme_activity
-            passed_exam
-            get programme_path('cs-accelerator')
-          end
-
-          it 'doesn\'t set the time until user can take the test' do
-            expect(assigns(:can_take_test_at)).to eq (nil)
-          end
+        it 'assigns the assessments' do
+          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
         end
       end
     end

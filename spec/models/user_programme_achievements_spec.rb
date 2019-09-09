@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProgrammeAchievementPresenters do
+RSpec.describe UserProgrammeAchievements do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
@@ -45,33 +45,45 @@ RSpec.describe ProgrammeAchievementPresenters do
     end
   end
 
-  let(:programme_achievement_presenters) { ProgrammeAchievementPresenters.new(programme, user) }
+  let(:user_programme_achievements) { UserProgrammeAchievements.new(programme, user) }
 
-  describe 'attr_accessor' do
-    it 'online_achievements returns an Array' do
-      expect(programme_achievement_presenters.online_achievements).to be_an(Array)
+  describe 'online_achievements' do
+    it 'returns an Array' do
+      expect(user_programme_achievements.online_achievements).to be_an(Array)
     end
 
-    it 'face_to_face_achievements returns an Array' do
-      expect(programme_achievement_presenters.face_to_face_achievements).to be_an(Array)
+    it 'returns the correct number of items' do
+      expect(user_programme_achievements.online_achievements(2).count).to eq(2)
+    end
+  end
+
+  describe 'face_to_face_achievements' do
+    it 'returns an Array' do
+      expect(user_programme_achievements.face_to_face_achievements).to be_an(Array)
     end
 
+    it 'returns the correct number of items' do
+      expect(user_programme_achievements.face_to_face_achievements(2).count).to eq(2)
+    end
+  end
+
+  describe 'diagnostic_achievements' do
     it 'diagnostic_achievements returns an Array' do
-      expect(programme_achievement_presenters.diagnostic_achievements).to be_an(Array)
+      expect(user_programme_achievements.diagnostic_achievements).to be_an(Array)
     end
   end
 
   describe 'presenters are correct' do
     it 'online_achievements contains OnlinePresenters' do
-      expect(programme_achievement_presenters.online_achievements.first).to be_an(OnlinePresenter)
+      expect(user_programme_achievements.online_achievements.first).to be_an(OnlinePresenter)
     end
 
     it 'face_to_face_achievements contains FaceToFacePresenters' do
-      expect(programme_achievement_presenters.face_to_face_achievements.first).to be_a(FaceToFacePresenter)
+      expect(user_programme_achievements.face_to_face_achievements.first).to be_a(FaceToFacePresenter)
     end
 
     it 'diagnostic_achievements contains DiagnosticPresenters' do
-      expect(programme_achievement_presenters.diagnostic_achievements.first).to be_a(DiagnosticPresenter)
+      expect(user_programme_achievements.diagnostic_achievements.first).to be_a(DiagnosticPresenter)
     end
   end
 
@@ -81,15 +93,15 @@ RSpec.describe ProgrammeAchievementPresenters do
     end
 
     it 'online_achievements includes the online achievement' do
-      expect(programme_achievement_presenters.online_achievements).to include(online_achievement)
+      expect(user_programme_achievements.online_achievements).to include(online_achievement)
     end
 
     it 'face_to_face achievements includes the face_to_face_achievement' do
-      expect(programme_achievement_presenters.face_to_face_achievements).to include(face_to_face_achievement)
+      expect(user_programme_achievements.face_to_face_achievements).to include(face_to_face_achievement)
     end
 
     it 'diagnostic_achievements includes the diagnostic achievement' do
-      expect(programme_achievement_presenters.diagnostic_achievements).to include(diagnostic_achievement)
+      expect(user_programme_achievements.diagnostic_achievements).to include(diagnostic_achievement)
     end
   end
 
@@ -99,11 +111,11 @@ RSpec.describe ProgrammeAchievementPresenters do
     end
 
     it 'doesn\'t show in-progress achievements' do
-      expect(programme_achievement_presenters.online_achievements).to_not include(online_achievement)
+      expect(user_programme_achievements.online_achievements(2)).to_not include(online_achievement)
     end
 
     it 'only shows complete achievements' do
-      programme_achievement_presenters.online_achievements.each do |a|
+      user_programme_achievements.online_achievements(2).each do |a|
         expect(a.current_state).to eq('complete')
       end
     end

@@ -12,9 +12,9 @@
         <li class="ncce-activity-list__item">
           <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
         </li>
-        <%= render 'programmes/achievements', presenters: @achievement_presenters.diagnostic_achievements %>
-        <%= render 'programmes/achievements', presenters: @achievement_presenters.face_to_face_achievements %>
-        <%= render 'programmes/achievements', presenters: @achievement_presenters.online_achievements %>
+        <%= render 'programmes/achievements', presenters: @user_programme_achievements.diagnostic_achievements %>
+        <%= render 'programmes/achievements', presenters: @user_programme_achievements.face_to_face_achievements(2) %>
+        <%= render 'programmes/achievements', presenters: @user_programme_achievements.online_achievements(2) %>
       </ul>
       <%= render 'programmes/cs-accelerator/teacher_reference_number' %>
       <ul class="govuk-list ncce-activity-list ncce-activity-list--programme">

@@ -92,7 +92,11 @@ RSpec.describe ProgrammesController do
         end
 
         it 'assigns the achievements' do
-          expect(assigns(:achievement_presenters)).to be_a(ProgrammeAchievementPresenters)
+          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
+        end
+
+        it 'assigns the assessments' do
+          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
         end
 
         it 'redirects show to complete' do
