@@ -1,117 +1,99 @@
-require_relative('../lib/achiever')
-
 class CoursesController < ApplicationController
   layout 'full-width'
-  before_action :create_achiever, only: [:index]
   before_action :init_filters, only: [:index]
 
   def index
-    @courses = fetch_course_list
-    total_courses = @courses.length
+    @subjects = Achiever::Course::Subject.all
+    @age_groups = Achiever::Course::AgeGroup.all
+    @courses = Achiever::Course::Template.all
+    @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
 
-    @locations = course_locations(@course_occurrences)
-    @levels = course_levels(@courses)
-    @topics = course_tags(@courses)
-    @workstreams = course_workstreams(@courses)
-    @courses = filter_courses(@courses)
-
-    alert_filter_params(total_courses, @courses.length)
-
-    render :index
-  end
-
-  private
-
-  def init_filters
-    @current_location = nil
-    @current_level = nil
-    @current_topic = nil
-    @current_workstream = nil
-    @course_occurrences = nil
-  end
-
-  def create_achiever
-    @achiever = Achiever.new
-  end
-
-  def fetch_course_list
-    courses = @achiever.approved_course_templates
-    @course_occurrences = @achiever.future_face_to_face_courses + @achiever.future_online_courses
-
-    courses.each do |course|
-      @achiever.course_template_subject_details(course)
-      @achiever.course_template_age_range(course)
+    @courses.each do |course|
       @course_occurrences.each do |course_occurrence|
         if course_occurrence.course_template_no == course.course_template_no
           course.occurrences.push(course_occurrence)
         end
       end
     end
-    courses
+
+    @locations = course_locations(@course_occurrences)
+    @levels = @age_groups
+    @topics = course_tags(@courses)
+    @workstreams = 'CS Accelerator'
+    @courses = filter_courses(@courses)
+
+    alert_filter_params
+
+    render :index
   end
 
-  def filter_courses(courses)
-    courses.select do |c|
-      has_level = true
-      has_location = true
-      has_topic = true
-      has_workstream = true
+  private
 
-      if params[:level].present?
-        @current_level = params[:level]
-        has_level = c.key_stages.any?(@current_level)
-      end
-      if params[:location].present?
-        @current_location = params[:location]
-        has_location = compare_location(c, @current_location)
-      end
-      if params[:topic].present?
-        @current_topic = params[:topic]
-        has_topic = c.subjects.any?(@current_topic)
-      end
-      if params[:workstream].present?
-        @current_workstream = params[:workstream]
-        has_workstream = c.workstream == @current_workstream
-      end
-      has_level && has_location && has_topic && has_workstream
+    def init_filters
+      @current_level, @current_topic, @current_workstream, @course_occurrences = nil
     end
-  end
 
-  def alert_filter_params(total_count, filtered_count)
-    filter_strings = []
-    filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
-    filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
-    filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
-    filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
+    def filter_courses(courses)
+      courses.select do |c|
+        has_level = true
+        has_location = true
+        has_topic = true
+        has_workstream = true
 
-    return unless filter_strings.length.positive?
+        if params[:level].present?
+          @current_level = params[:level]
+          key = @age_groups[params[:level]].to_s
+          has_level = c.age_groups.any?(key)
+        end
+        if params[:location].present?
+          @current_location = params[:location]
+          has_location = compare_location(c, @current_location)
+        end
+        if params[:topic].present?
+          @current_topic = params[:topic]
+          key = @subjects[params[:topic]].to_s
+          has_topic = c.subjects.any?(key)
+        end
+        if params[:workstream].present?
+          @current_workstream = params[:workstream]
+          has_workstream = c.workstream == @current_workstream
+        end
+        has_level && has_location && has_topic && has_workstream
+      end
+    end
 
-    notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
-    notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
-    flash.now[:notice] = notice
-  end
+    def alert_filter_params
+      filter_strings = []
+      filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
+      filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
+      filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
+      filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
 
-  def compare_location(course, location)
-    return course.online_course? if location == 'Online'
-    return !course.online_course? if location == 'Face to face'
+      return if filter_strings.empty?
 
-    course.occurrences.any? { |oc| oc.address_town == location }
-  end
+      notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
+      notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
+      flash.now[:notice] = notice
+    end
 
-  def course_workstreams(courses)
-    courses.map(&:workstream).uniq.sort
-  end
+    def compare_location(course, location)
+      case location
+      when 'Online'
+        course.online_cpd
+      when 'Face to face'
+        !course.online_cpd
+      else
+        course.occurrences.any? { |oc| oc.address_town == location }
+      end
+    end
 
-  def course_tags(courses)
-    courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
-  end
+    def course_tags(courses)
+      used_subjects = courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
+      @subjects.select { |_k, v| used_subjects.include?(v.to_s) }
+    end
 
-  def course_levels(courses)
-    courses.reduce([]) { |levels, c| levels + c.key_stages }.uniq.sort
-  end
-
-  def course_locations(course_occurrences)
-    towns = course_occurrences.reduce([]) { |acc, oc| !oc.online_course? ? acc.push(oc.address_town) : acc }
-    towns.uniq.sort.unshift('Face to face').unshift('Online')
-  end
+    def course_locations(course_occurrences)
+      towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
+      towns.uniq.sort.unshift('Face to face').unshift('Online')
+    end
 end

@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home', action: :home
 
-  namespace :achiever do
-    delete '/cache', to: 'cache#destroy'
-  end
-
   resources :achievements, only: %i[create destroy]
 
   namespace :activities do
