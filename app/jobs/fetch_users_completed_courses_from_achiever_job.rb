@@ -2,7 +2,7 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
   queue_as :default
 
   def perform(user)
-    courses = DelegateCourseList.from_achiever(user.stem_achiever_contact_no)
+    courses = Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no)
     courses.each do |course|
       begin
         activity = Activity.find_by!(stem_course_id: course.course_template_no)
@@ -15,7 +15,7 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
-      achievement.set_to_complete if course.delegate_is_fully_attended == '1'
+      achievement.set_to_complete if course.is_fully_attended
     end
   end
 end
