@@ -7,11 +7,11 @@ RSpec.describe CoursesController do
   describe 'GET #index' do
     before do
       activity
-      stub_approved_course_templates
-      stub_fetch_future_face_to_face_courses
-      stub_fetch_future_online_courses
-      stub_course_template_subject_details
-      stub_course_template_age_range
+      stub_age_groups
+      stub_course_templates
+      stub_face_to_face_occurrences
+      stub_online_occurrences
+      stub_subjects
 
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
@@ -26,31 +26,25 @@ RSpec.describe CoursesController do
         expect(assigns(:courses)).to be_a(Array)
       end
 
-      it 'has at least one course' do
-        expect(assigns(:courses).length).to eq(9)
+      it 'has correct number of courses' do
+        expect(assigns(:courses).count).to eq(34)
       end
 
-      it 'assigns course_occurrences correctly' do
-        courses = assigns(:courses)
-        courses.each do |course|
-          expect(course.occurrences).to be_a(Array)
-          if course.course_template_no == '0f9644e0-afda-4307-b195-82fb62f5f8ab'
-            expect(course.occurrences.length).to equal(1)
-          end
-        end
+      it 'assigns adds course_occurrences to their respective courses' do
+        occurrence = assigns(:courses).select { |course| course.course_template_no == assigns(:course_occurrences).sample.course_template_no }
+        expect(occurrence).not_to eq 0
       end
 
-      it 'assigns all locations' do
-        expect(assigns(:locations)).to eq(%w[Online Face\ to\ face Cambridge Southampton York])
+      it 'assigns @locations' do
+        expect(assigns(:locations)).to be_a(Array)
       end
 
-      it 'assigns all levels' do
-        expect(assigns(:levels))
-          .to eq(['Key stage 2', 'Key stage 3', 'Key stage 4'])
+      it 'assigns @levels' do
+        expect(assigns(:levels)).to be_a(Hash)
       end
 
-      it 'assigns all topics' do
-        expect(assigns(:topics)).to eq(%w[Computing Mathematics])
+      it 'assigns all @subjects' do
+        expect(assigns(:subjects)).to be_a(Hash)
       end
 
       it 'initalises current location' do
@@ -65,29 +59,12 @@ RSpec.describe CoursesController do
         expect(assigns(:current_topic)).to be(nil)
       end
 
-
-      it 'can retrieve course tags correctly' do
-        courses = assigns(:courses)
-        courses.each.with_index do |course, index|
-          subject = index < 4 ? ['Computing'] : ['Mathematics']
-          expect(course.subjects).to eq(subject)
-        end
-      end
-
-      it 'can retrieve course key stage correctly' do
-        courses = assigns(:courses)
-        courses.each.with_index do |course, index|
-          key_stages = (index / 2).even? ? ['Key stage 3', 'Key stage 4'] : ['Key stage 2', 'Key stage 3']
-          expect(course.key_stages.sort).to eq(key_stages)
-        end
-      end
-
       it 'renders the correct template' do
         expect(response).to render_template('index')
       end
 
       it 'doesn\'t show a flash notice' do
-        expect(flash[:notice]).to_not be_present
+        expect(flash[:notice]).not_to be_present
       end
     end
 
@@ -98,13 +75,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(5)
-        end
-
-        it 'courses have correct subject' do
-          assigns(:courses).each do |course|
-            expect(course.subjects).to eq(['Mathematics'])
-          end
+          expect(assigns(:courses).count).to eq(3)
         end
 
         it 'initalises current topic' do
@@ -130,7 +101,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(2)
+          expect(assigns(:courses).count).to eq(12)
         end
 
         it 'courses have correct location' do
@@ -165,20 +136,12 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(3)
+          expect(assigns(:courses).count).to eq(14)
         end
 
-        it 'courses have correct location' do
+        it 'ensures the course templates are marked as online_cpd' do
           assigns(:courses).each do |course|
-            unless course.occurrences.empty?
-              expect(course.occurrences.map(&:online_course?)).to include(true)
-            end
-          end
-        end
-
-        it 'course templates are marked as online' do
-          assigns(:courses).each do |course|
-            expect(course.online_course?).to be true
+            expect(course.online_cpd).to eq true
           end
         end
 
@@ -201,20 +164,12 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(6)
-        end
-
-        it 'courses have correct location' do
-          assigns(:courses).each do |course|
-            unless course.occurrences.empty?
-              expect(course.occurrences.map(&:online_course?)).to_not include(true)
-            end
-          end
+          expect(assigns(:courses).count).to eq(20)
         end
 
         it 'course templates are not marked as online' do
           assigns(:courses).each do |course|
-            expect(course.online_course?).to be false
+            expect(course.online_cpd).to eq false
           end
         end
 
@@ -237,13 +192,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(5)
-        end
-
-        it 'courses have correct key_stages' do
-          assigns(:courses).each do |course|
-            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 4'])
-          end
+          expect(assigns(:courses).count).to eq(22)
         end
 
         it 'initalises current level' do
@@ -261,21 +210,11 @@ RSpec.describe CoursesController do
 
       context 'when filtering by workstream' do
         before do
-          get courses_path, params: { workstream: 'National Centre - Non-Core' }
+          get courses_path, params: { workstream: 'CS Accelerator' }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(3)
-        end
-
-        it 'courses have correct workstream' do
-          assigns(:courses).each do |course|
-            expect(course.workstream).to eq('National Centre - Non-Core')
-          end
-        end
-
-        it 'initalises current level' do
-          expect(assigns(:current_workstream)).to eq('National Centre - Non-Core')
+          expect(assigns(:courses).count).to eq(20)
         end
 
         it 'shows a flash notice' do
@@ -283,7 +222,7 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Non-Core/)
+          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: CS Accelerator/)
         end
       end
 
@@ -293,16 +232,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(1)
-        end
-
-        it 'has correct levels' do
-          expect(assigns(:courses).first.key_stages).to eq(['Key stage 3', 'Key stage 4'])
-        end
-
-        it 'has correct location' do
-          course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('York')
+          expect(assigns(:courses).count).to eq(7)
         end
 
         it 'shows a flash notice' do
@@ -317,23 +247,11 @@ RSpec.describe CoursesController do
 
       context 'when filtering by level and topic' do
         before do
-          get courses_path, params: { level: 'Key stage 2', topic: 'Mathematics' }
+          get courses_path, params: { level: 'Key stage 3', topic: 'Computing' }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(2)
-        end
-
-        it 'has correct topic' do
-          assigns(:courses).each do |course|
-            expect(course.subjects).to eq(['Mathematics'])
-          end
-        end
-
-        it 'has correct level' do
-          assigns(:courses).each do |course|
-            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
-          end
+          expect(assigns(:courses).count).to eq(15)
         end
 
         it 'shows a flash notice' do
@@ -341,34 +259,22 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 3/)
         end
       end
 
       context 'filter by level, location and topic' do
         before do
           get courses_path, params: {
-            level: 'Key stage 2',
-            topic: 'Mathematics',
+            level: 'Key stage 4',
+            topic: 'Computing',
             location: 'York'
           }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(1)
-        end
-
-        it 'has correct topic' do
-          assigns(:courses).each do |course|
-            expect(course.subjects).to eq(['Mathematics'])
-          end
-        end
-
-        it 'has correct level' do
-          assigns(:courses).each do |course|
-            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
-          end
+          expect(assigns(:courses).count).to eq(7)
         end
 
         it 'has filtered town' do
@@ -378,7 +284,7 @@ RSpec.describe CoursesController do
 
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('Cambridge')
+          expect(course.occurrences.map(&:address_town)).to include('London')
         end
 
         it 'shows a flash notice' do
@@ -386,36 +292,24 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
           expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
         end
       end
 
       context 'filter by level, location, topic and workstream' do
         before do
           get courses_path, params: {
-            level: 'Key stage 2',
-            topic: 'Mathematics',
+            level: 'Key stage 4',
+            topic: 'Computing',
             location: 'York',
-            workstream: 'National Centre - Core'
+            workstream: 'CS Accelerator'
           }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(1)
-        end
-
-        it 'has correct topic' do
-          assigns(:courses).each do |course|
-            expect(course.subjects).to eq(['Mathematics'])
-          end
-        end
-
-        it 'has correct level' do
-          assigns(:courses).each do |course|
-            expect(course.key_stages).to eq(['Key stage 3', 'Key stage 2'])
-          end
+          expect(assigns(:courses).count).to eq(5)
         end
 
         it 'has filtered town' do
@@ -425,12 +319,12 @@ RSpec.describe CoursesController do
 
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('Cambridge')
+          expect(course.occurrences.map(&:address_town)).to include('London')
         end
 
         it 'has correct workstream' do
           assigns(:courses).each do |course|
-            expect(course.workstream).to eq('National Centre - Core')
+            expect(course.workstream).to eq('CS Accelerator')
           end
         end
 
@@ -439,36 +333,10 @@ RSpec.describe CoursesController do
         end
 
         it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
+          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
           expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
-          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Core/)
-        end
-      end
-
-      context 'filter by level, location, topic and alternate workstream' do
-        before do
-          get courses_path, params: {
-            level: 'Key stage 2',
-            topic: 'Mathematics',
-            location: 'York',
-            workstream: 'National Centre - Non-Core'
-          }
-        end
-
-        it 'has correct number of courses' do
-          expect(assigns(:courses).length).to be(0)
-        end
-
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
-        end
-
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 2/)
-          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: National Centre - Non-Core/)
+          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: CS Accelerator/)
         end
       end
     end
