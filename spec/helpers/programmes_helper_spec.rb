@@ -85,21 +85,21 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
-  describe('#credits_for_accelerator') do
+  describe('#credits_for_programme') do
     it 'throws exception without the user' do
       expect {
-        helper.credits_for_accelerator(nil, nil)
+        helper.credits_for_programme(nil, nil)
       }.to raise_error(NoMethodError)
     end
 
     it 'throws exception without the programme' do
       expect {
-        helper.credits_for_accelerator(user, nil)
+        helper.credits_for_programme(user, nil)
       }.to raise_error(NoMethodError)
     end
 
     it 'yields zero when user is not enrolled' do
-      expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(0.0)
+      expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(0.0)
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -108,7 +108,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns correct score for credits' do
-        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(40.0)
+        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(40.0)
       end
     end
 
@@ -118,7 +118,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns true' do
-        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(80.0)
+        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(80.0)
       end
     end
   end
