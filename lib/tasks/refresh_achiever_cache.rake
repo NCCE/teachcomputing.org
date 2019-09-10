@@ -1,8 +1,8 @@
 namespace :achiever do
   task get_course_info: :environment do
     methods = [Achiever::Course::Template::RESOURCE_PATH,
-               Achiever::Course::Template::FACE_TO_FACE_RESOURCE_PATH,
-               Achiever::Course::Template::ONLINE_RESOURCE_PATH,
+               Achiever::Course::Occurrence::FACE_TO_FACE_RESOURCE_PATH,
+               Achiever::Course::Occurrence::ONLINE_RESOURCE_PATH,
                Achiever::Course::AgeGroup::RESOURCE_PATH,
                Achiever::Course::Subject::RESOURCE_PATH]
     methods.each do |method_id|
