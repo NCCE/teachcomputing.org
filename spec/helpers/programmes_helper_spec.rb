@@ -3,6 +3,7 @@ require 'rails_helper'
 describe ProgrammesHelper, type: :helper do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:other_programme) { create(:programme) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
   let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
@@ -98,8 +99,12 @@ describe ProgrammesHelper, type: :helper do
       }.to raise_error(NoMethodError)
     end
 
+    it 'yeilds the correct maxiumum value for a non-existent programme' do
+      expect { |b| helper.credits_for_programme(user, other_programme, &b) }.to yield_with_args(0, 0)
+    end
+
     it 'yields zero when user is not enrolled' do
-      expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(0.0)
+      expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(0, 80)
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -108,7 +113,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns correct score for credits' do
-        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(40.0)
+        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(40, 80)
       end
     end
 
@@ -118,7 +123,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns true' do
-        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(80.0)
+        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(80, 80)
       end
     end
   end

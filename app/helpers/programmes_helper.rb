@@ -12,15 +12,17 @@ module ProgrammesHelper
   end
 
   def can_take_accelerator_test?(user, programme)
-    credits_for_programme(user, programme) { |total| return total >= 80 }
+    credits_for_programme(user, programme) { |total, max| return total >= max }
   end
 
   def credits_for_programme(user, programme)
     total = 0
+    max = 0
     programme.credits_for_certificate.each do |category, threshold|
-      total += [_credits_for_courses(user, programme, category), threshold].min
+      max += threshold
+      total += [_credits_for_courses(user, programme, category), threshold].min.to_i
     end
-    yield total
+    yield(total, max)
   end
 
   private
