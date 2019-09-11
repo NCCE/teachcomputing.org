@@ -99,12 +99,16 @@ describe ProgrammesHelper, type: :helper do
       }.to raise_error(NoMethodError)
     end
 
+    it 'yeilds the correct maxiumum value for a CSA programme' do
+      expect(helper.credits_for_programme(user, programme)[:max]).to eq(80)
+    end
+
     it 'yeilds the correct maxiumum value for a non-existent programme' do
-      expect { |b| helper.credits_for_programme(user, other_programme, &b) }.to yield_with_args(0, 0)
+      expect(helper.credits_for_programme(user, other_programme)[:max]).to eq(0)
     end
 
     it 'yields zero when user is not enrolled' do
-      expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(0, 80)
+      expect(helper.credits_for_programme(user, programme)[:total]).to eq(0)
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -113,7 +117,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns correct score for credits' do
-        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(40, 80)
+        expect(helper.credits_for_programme(user, programme)[:total]).to eq(40)
       end
     end
 
@@ -123,7 +127,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns true' do
-        expect { |b| helper.credits_for_programme(user, programme, &b) }.to yield_with_args(80, 80)
+        expect(helper.credits_for_programme(user, programme)[:total]).to eq(80)
       end
     end
   end

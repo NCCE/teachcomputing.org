@@ -11,9 +11,8 @@
             <div class="certification-progress">
               <p class="govuk-body-s govuk-!-font-weight-bold">The National Centre for Computing Education certificate in</h2>
               <h3 class="govuk-body-l govuk-!-font-weight-bold"><%= link_to programme.title, programme_path(programme.slug), class: 'ncce-link' %></h3>
-              <% credits_for_programme(current_user, programme) do |total_credits, max_credits| %>
-                <progress class="certification-progress__bar" aria-label="You have <%= total_credits %> out of <%= max_credits %> credits" value="<%= total_credits %>" max="<%= max_credits %>"></progress>
-              <% end %>
+              <% credits = credits_for_programme(current_user, programme) %>
+              <progress class="certification-progress__bar" aria-label="You have <%= credits[:total] %> out of <%= credits[:max] %> credits" value="<%= credits[:total] %>" max="<%= credits[:max] %>"></progress>
               <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image') %>
             </div>
           </div>
