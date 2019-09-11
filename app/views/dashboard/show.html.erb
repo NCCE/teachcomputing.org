@@ -28,8 +28,8 @@
   </div>
 </div>
 </div>
-<% @programmes.each do |programme| %>
-  <%= render "dashboard/programmes/hero", programme: programme %>
+<% if @programmes.any? { |p| p.user_enrolled?(current_user) } %>
+  <%= render "dashboard/programmes/hero" %>
 <% end %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>

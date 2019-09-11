@@ -1,9 +1,24 @@
-<% if programme.user_enrolled?(current_user) %>
-  <% if programme.user_completed?(current_user) %>
-    <%= render "dashboard/programmes/complete", programme: programme %>
-  <% else%>
-    <%= render "dashboard/programmes/progress", programme: programme %>
-  <% end %>
-<% else %>
-  <%= render "dashboard/programmes/enrol", programme: programme %>
-<% end %>
+<div class="certification">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <h2 class="govuk-heading-m underlined__title">Your certificates</h2>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full certificates">
+          <% @programmes.each do |programme| %>
+            <% if programme.user_enrolled?(current_user) %>
+              <% if programme.user_completed?(current_user) %>
+                <%= render "dashboard/programmes/complete", programme: programme %>
+              <% else%>
+                <%= render "dashboard/programmes/progress", programme: programme %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

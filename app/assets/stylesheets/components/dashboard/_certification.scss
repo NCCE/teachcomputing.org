@@ -26,14 +26,31 @@
   }
 }
 
-.certification-progress {
-  position: relative;
-  background-color: $ncce-white;
-  border-radius: 10px;
-  padding: 1.25rem 0.9rem;
+.certificates {
 
   @include govuk-media-query($from: tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+.certification-progress {
+  background-color: $ncce-white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 1.25rem 0.9rem;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+    margin-left: 20px;
     padding: 1.25rem 1.9rem;
+    width: 100%;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   &__image {
