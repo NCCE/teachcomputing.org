@@ -3,6 +3,7 @@ require 'rails_helper'
 describe ProgrammesHelper, type: :helper do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:other_programme) { create(:programme) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
   let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
@@ -115,21 +116,29 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
-  describe('#credits_for_accelerator') do
+  describe('#credits_for_programme') do
     it 'throws exception without the user' do
       expect {
-        helper.credits_for_accelerator(nil, nil)
+        helper.credits_for_programme(nil, nil)
       }.to raise_error(NoMethodError)
     end
 
     it 'throws exception without the programme' do
       expect {
-        helper.credits_for_accelerator(user, nil)
+        helper.credits_for_programme(user, nil)
       }.to raise_error(NoMethodError)
     end
 
+    it 'yeilds the correct maxiumum value for a CSA programme' do
+      expect(helper.credits_for_programme(user, programme)[:max]).to eq(80)
+    end
+
+    it 'yeilds the correct maxiumum value for a non-existent programme' do
+      expect(helper.credits_for_programme(user, other_programme)[:max]).to eq(0)
+    end
+
     it 'yields zero when user is not enrolled' do
-      expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(0.0)
+      expect(helper.credits_for_programme(user, programme)[:total]).to eq(0)
     end
 
     context 'when user hasn\'t done enough activities' do
@@ -138,7 +147,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns correct score for credits' do
-        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(40.0)
+        expect(helper.credits_for_programme(user, programme)[:total]).to eq(40)
       end
     end
 
@@ -148,7 +157,7 @@ describe ProgrammesHelper, type: :helper do
       end
 
       it 'returns true' do
-        expect { |b| helper.credits_for_accelerator(user, programme, &b) }.to yield_with_args(80.0)
+        expect(helper.credits_for_programme(user, programme)[:total]).to eq(80)
       end
     end
   end
