@@ -95,6 +95,16 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe '#complete?' do
+    it 'when state is not complete' do
+      expect(achievement.complete?).to eq false
+    end
+
+    it 'when state is not complete' do
+      expect(completed_achievement.complete?).to eq true
+    end
+  end
+
   describe 'state' do
     context 'when default' do
       subject { Achievement.in_state(:commenced) }

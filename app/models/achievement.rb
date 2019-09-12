@@ -41,6 +41,10 @@ class Achievement < ApplicationRecord
     transition_to(:dropped, metadata)
   end
 
+  def complete?
+    current_state == 'complete'
+  end
+
   def self.initial_state
     StateMachines::AchievementStateMachine.initial_state
   end

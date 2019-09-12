@@ -75,23 +75,23 @@ RSpec.describe UserProgrammeAssessment do
     end
 
     it 'assigns the test gate correctly' do
-      expect(user_programme_asessment.enough_credits_for_test).to eq (false)
+      expect(user_programme_asessment.enough_credits_for_test?).to eq (false)
     end
 
     it 'assigns the test gate correctly' do
-      expect(user_programme_asessment.enough_credits_for_test).to eq (false)
+      expect(user_programme_asessment.enough_credits_for_test?).to eq (false)
     end
 
     it 'assign the time until user can take the test correctly' do
-      expect(user_programme_asessment.can_take_test_at).to eq (nil)
+      expect(user_programme_asessment.can_take_test_at).to eq (0)
     end
 
     it 'assign whether user is currently doing a test correctly' do
-      expect(user_programme_asessment.currently_taking_test).to eq (nil)
+      expect(user_programme_asessment.currently_taking_test?).to eq (false)
     end
 
     it 'assigns the number of attempts at test correctly' do
-      expect(user_programme_asessment.num_attempts).to eq (nil)
+      expect(user_programme_asessment.num_attempts).to eq (0)
     end
 
     context 'when user can take the test' do
@@ -100,7 +100,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
       end
 
       it 'assigns the time until user can take the test' do
@@ -108,7 +108,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns that user is not currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test).to eq (false)
+        expect(user_programme_asessment.currently_taking_test?).to eq (false)
       end
 
       it 'assigns the number of attempts at test correctly' do
@@ -122,7 +122,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
       end
 
       it 'assigns the time until user can take the test' do
@@ -130,7 +130,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns whether user is currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test).to eq (true)
+        expect(user_programme_asessment.currently_taking_test?).to eq (true)
       end
 
       it 'assigns the number of attempts at test correctly' do
@@ -144,7 +144,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
       end
 
       it 'assigns the time until user can take the test' do
@@ -152,7 +152,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns whether user is currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test).to eq (false)
+        expect(user_programme_asessment.currently_taking_test?).to eq (false)
       end
 
       it 'assigns the number of attempts at test correctly' do
@@ -166,7 +166,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
       end
 
       it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
@@ -199,7 +199,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'doesn\'t set the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (nil)
+        expect(user_programme_asessment.can_take_test_at).to eq (0)
       end
     end
   end

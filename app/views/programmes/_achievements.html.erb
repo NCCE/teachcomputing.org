@@ -1,6 +1,6 @@
 <% presenters.each_with_index do |presenter, index|%>
   <% unless presenter.empty? %>
-    <% if presenter.current_state == 'complete' %>
+    <% if presenter.complete? %>
       <li class="ncce-activity-list__item">
         <span class="ncce-activity-list__item-text"><%= presenter.completed_text(index) %>
         </span>
