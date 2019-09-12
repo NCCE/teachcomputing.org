@@ -10,7 +10,7 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
     @user_programme_achievements = instance_double('UserProgrammeAchievements')
     allow(@user_programme_achievements).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
     @user_programme_assessment = instance_double('UserProgrammeAssessment')
-    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: false)
+    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: false)
     render
   end
 

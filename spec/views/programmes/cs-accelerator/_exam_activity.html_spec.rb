@@ -9,7 +9,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
     assessment
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @user_programme_assessment = instance_double('UserProgrammeAssessment')
-    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: false, currently_taking_test: false, num_attempts: 0, can_take_test_at: 0)
+    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: false, currently_taking_test?: false, num_attempts: 0, can_take_test_at: 0)
     @programme = programme
   end
 
@@ -41,7 +41,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
 
   context 'when user has enough credits to take the test' do
     before do
-      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: true, can_take_test_at: 0)
+      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: true, can_take_test_at: 0)
       render
     end
 
@@ -56,7 +56,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
 
   context 'when user is taking the test' do
     before do
-      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: true, currently_taking_test: true)
+      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: true, currently_taking_test?: true)
       render
     end
 
@@ -71,7 +71,7 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
 
   context 'when user has failed the test 3 times' do
     before do
-      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test: true, can_take_test_at: 48.hours.to_i, num_attempts: 3)
+      allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: true, can_take_test_at: 48.hours.to_i, num_attempts: 3)
       render
     end
 
