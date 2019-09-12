@@ -29,7 +29,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     end
 
     it 'shows the certificate name' do
-      expect(rendered).to have_css('h1', text: programme.title)
+      expect(rendered).to have_css('.certification-hero__text', text: programme.title)
     end
 
     it 'shows the enrollment button' do
