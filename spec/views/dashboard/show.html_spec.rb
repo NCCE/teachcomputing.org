@@ -4,6 +4,11 @@ RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment,
+           user_id: user.id,
+           programme_id: programme.id)
+  end
 
   before do
     [programme, @programmes = Programme.all, activity]
@@ -32,4 +37,21 @@ RSpec.describe('dashboard/show', type: :view) do
   it 'has a link to download the diagnostic tool' do
     expect(rendered).to have_css('a', text: 'diagnostic tool')
   end
+
+  it 'does not show the certificate progress section' do
+    expect(rendered).not_to have_css('.govuk-heading-m', text: 'Your certificates')
+  end
+
+  context 'when the user has enrolled on a programme' do
+    before do
+      user_programme_enrolment
+      user.reload
+      render
+    end
+
+    it 'shows the certificate progress section' do
+      expect(rendered).to have_css('.govuk-heading-m', text: 'Your certificates')
+    end
+  end
+
 end
