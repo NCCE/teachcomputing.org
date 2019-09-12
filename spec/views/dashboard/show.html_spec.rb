@@ -45,6 +45,7 @@ RSpec.describe('dashboard/show', type: :view) do
   context 'when the user has enrolled on a programme' do
     before do
       user_programme_enrolment
+      user.reload
       render
     end
 

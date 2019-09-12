@@ -28,9 +28,7 @@
   </div>
 </div>
 </div>
-<% if @programmes.any? { |p| p.user_enrolled?(current_user) } %>
-  <%= render "dashboard/programmes/hero" %>
-<% end %>
+<%= render "dashboard/programmes/hero" if current_user.programmes.size.positive? %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>
 
