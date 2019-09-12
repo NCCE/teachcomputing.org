@@ -1,20 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe('courses/index', type: :view) do
-  let(:achiever) { Achiever.new }
-
   before do
-    stub_fetch_future_face_to_face_courses
-    stub_fetch_future_online_courses
-    stub_approved_course_templates
-    stub_course_template_subject_details
-    stub_course_template_age_range
-    @courses = achiever.approved_course_templates
-    @course_occurrences = achiever.future_face_to_face_courses + achiever.future_online_courses
+    stub_age_groups
+    stub_course_templates
+    stub_face_to_face_occurrences
+    stub_online_occurrences
+    stub_subjects
+    @courses = Achiever::Course::Template.all
+    @subjects = Achiever::Course::Subject.all
+    @age_groups = Achiever::Course::AgeGroup.all
+    @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
 
     @courses.each do |course|
-      achiever.course_template_subject_details(course)
-      achiever.course_template_age_range(course)
       @course_occurrences.each do |course_occurrence|
         if course_occurrence.course_template_no == course.course_template_no
           course.occurrences.push(course_occurrence)
@@ -23,8 +21,8 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     @locations = ['Cambridge']
-    @levels = ['Key stage 2']
-    @topics = ['Algorithms']
+    @levels = @age_groups
+    @topics = { 'Algorithms': '101' }
     @workstreams = ['CS Accelerator']
 
     render

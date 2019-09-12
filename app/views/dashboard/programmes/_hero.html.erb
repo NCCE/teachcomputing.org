@@ -1,8 +1,8 @@
 <% if programme.user_enrolled?(current_user) %>
   <% if programme.user_completed?(current_user) %>
-    <%= render "dashboard/programmes/#{programme.slug}/complete", programme: programme %>
+    <%= render "dashboard/programmes/complete", programme: programme %>
   <% else%>
-    <%= render "dashboard/programmes/#{programme.slug}/progress", programme: programme %>
+    <%= render "dashboard/programmes/progress", programme: programme %>
   <% end %>
 <% else %>
   <%= render "dashboard/programmes/enrol", programme: programme %>
