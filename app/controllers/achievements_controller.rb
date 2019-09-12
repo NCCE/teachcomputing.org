@@ -8,7 +8,6 @@ class AchievementsController < ApplicationController
       metadata = { credit: @achievement.activity.credit }
       if params[:self_verification_info].present?
         metadata[:self_verification_info] =  params[:self_verification_info]
-        puts "metadata #{metadata}"
       end
       @achievement.transition_to(:complete, metadata)
     else
