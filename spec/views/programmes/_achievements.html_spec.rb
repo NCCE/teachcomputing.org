@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) do
+RSpec.describe('programmes/_achievements', type: :view) do
   let(:user) { create(:user) }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
@@ -9,7 +9,8 @@ RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) 
 
   context 'when user has not completed any achievements' do
     before do
-      render
+      presenters = [ActivityPresenter.new(nil), ActivityPresenter.new(nil)]
+      render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
     it 'both achievements are  marked as incomplete' do
@@ -17,22 +18,18 @@ RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) 
     end
 
     it 'has a find courses buttons' do
-      expect(rendered).to have_link('Find a face to face course', count: 2)
-    end
-
-    it 'links to face to face courses' do
-      expect(rendered).to have_link('Find a face to face course', href: '/courses?location=Face+to+face&workstream=CS+Accelerator')
+      expect(rendered).to have_link('Find a course', count: 2)
     end
 
     it 'has prompt text' do
-      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.*Complete your (first|second).+face.+to.+face course.*/m)
+      expect(rendered).to have_css('.ncce-activity-list__item-text', text: /Complete your (first|second) course/)
     end
   end
 
   context 'when user has started one achievement' do
     before do
-      @face_to_face_achievements = [commenced_achievement]
-      render
+      presenters = [ActivityPresenter.new(commenced_achievement), ActivityPresenter.new(nil)]
+      render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
     it 'one achievement is marked as incomplete' do
@@ -44,67 +41,62 @@ RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) 
     end
 
     it 'has one find courses button' do
-      expect(rendered).to have_link('Find a face to face course', count: 1)
+      expect(rendered).to have_link('Find a course', count: 1)
     end
 
     it 'has the activity title' do
-      expect(rendered).to have_css('.ncce-activity-list__item-activity', text: /#{commenced_achievement.activity.title}.*/m)
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+course #{commenced_achievement.activity.title}.*/m)}
     end
-
-    it 'has a content within' do
-      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
-    end
-
   end
 
   context 'when user has started two achievements' do
     before do
-      @face_to_face_achievements = two_commenced_achievements
-      render
+      presenters = two_commenced_achievements.map { |a| ActivityPresenter.new(a) }
+      render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
-    it 'both achievements are marked as incomplete' do
+    it 'both achievements are marked as inprogress' do
       expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 2)
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a face to face course', count: 0)
+      expect(rendered).to have_link('Find a course', count: 0)
     end
 
     it 'has the 2nd activity title' do
       two_commenced_achievements.second do |achievement|
-          within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+second.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
+        expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+course #{achievement.activity.title}/)
       end
     end
   end
 
   context 'when user has finished one achievement' do
     before do
-      @face_to_face_achievements = [complete_achievement, commenced_achievement]
-      render
+      presenters = [ActivityPresenter.new(complete_achievement), ActivityPresenter.new(commenced_achievement)]
+      render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
-    it 'one achievement is marked as incomplete' do
+    it 'one achievement is marked as inprogress' do
       expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a face to face course', count: 0)
+      expect(rendered).to have_link('Find a course', count: 0)
     end
 
     it 'has the first activity as complete' do
-      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your first.+face.+to face course #{complete_achievement.activity.title}.*/m)}
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your first.+course #{complete_achievement.activity.title}.*/m)}
     end
 
     it 'has the second activity as in progress' do
-      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+face.+to face course #{commenced_achievement.activity.title}.*/m)}
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+course #{commenced_achievement.activity.title}.*/m)}
     end
   end
 
   context 'when user has finished both achievements' do
     before do
-      @face_to_face_achievements = two_complete_achievements
-      render
+      presenters = two_complete_achievements.map { |a| ActivityPresenter.new(a) }
+      render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
     it 'no achievement is marked as incomplete' do
@@ -112,12 +104,12 @@ RSpec.describe('programmes/cs-accelerator/_face_to_face_activity', type: :view) 
     end
 
     it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a face to face course', count: 0)
+      expect(rendered).to have_link('Find a course', count: 0)
     end
 
     it 'has both activities as complete' do
       two_complete_achievements.each do |achievement|
-        within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your (first|second).+face.+to face course #{achievement.activity.title}.*/m)}
+        within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Completed your (first|second).+course #{achievement.activity.title}.*/m)}
       end
     end
   end
