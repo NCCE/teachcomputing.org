@@ -5,7 +5,12 @@ class AchievementsController < ApplicationController
 
     if @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added to your Record of Achievement #{view_context.link_to_if(@achievement.activity.self_certifiable?, 'Undo', achievement_path(@achievement.id), method: :delete) {}}"
-      @achievement.transition_to(:complete, credit: @achievement.activity.credit)
+      metadata = { credit: @achievement.activity.credit }
+      if params[:self_verification_info].present?
+        metadata[:self_verification_info] =  params[:self_verification_info]
+        puts "metadata #{metadata}"
+      end
+      @achievement.transition_to(:complete, metadata)
     else
       flash[:error] = "Whoops something went wrong adding the activity to your Record of Achievement"
     end
