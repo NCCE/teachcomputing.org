@@ -33,6 +33,16 @@ RSpec.describe AchievementsController do
         expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
       end
 
+      it 'creates an achievement with the correct activity credit' do
+        transition = user.achievements.where(activity_id: activity.id).first.last_transition
+        expect(transition.metadata['credit']).to eq activity.credit
+      end
+
+      it 'creates an achievement without the self_verification param' do
+        transition = user.achievements.where(activity_id: activity.id).first.last_transition
+        expect(transition.metadata['self_verification_info']).to be(nil)
+      end
+
       it 'shows a flash notice' do
         expect(flash[:notice]).to be_present
       end
@@ -68,6 +78,36 @@ RSpec.describe AchievementsController do
 
       it 'flash error has correct info' do
         expect(flash[:error]).to match(/something went wrong adding/)
+      end
+    end
+
+    context 'with self_verification param' do
+      subject do
+        post achievements_path,
+             params: {
+               achievement: { activity_id: activity.id },
+               self_verification_info: 'This is a test'
+             }
+      end
+
+      it 'it is added to the achievement transition' do
+        post achievements_path,
+              params: {
+                achievement: { activity_id: activity.id },
+                self_verification_info: 'This is a test'
+              }
+        transition = user.achievements.where(activity_id: activity.id).first.last_transition
+        expect(transition.metadata['self_verification_info']).to eq('This is a test')
+      end
+
+      it 'empty strings are not stored' do
+        post achievements_path,
+              params: {
+                achievement: { activity_id: activity.id },
+                self_verification_info: ''
+              }
+        transition = user.achievements.where(activity_id: activity.id).first.last_transition
+        expect(transition.metadata['self_verification_info']).to be(nil)
       end
     end
   end
