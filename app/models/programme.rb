@@ -38,4 +38,12 @@ class Programme < ApplicationRecord
 
     false
   end
+
+  def credits_for_certificate
+    if slug == 'cs-accelerator'
+      return { online: 40, 'face-to-face': 40 }
+    end
+
+    {}
+  end
 end
