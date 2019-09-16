@@ -1,4 +1,4 @@
-test = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity|
+Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity|
   activity.title = 'Contribute to online discussion'
   activity.credit = 5
   activity.slug = activity.title.parameterize
