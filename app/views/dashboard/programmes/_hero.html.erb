@@ -11,7 +11,7 @@
           <% current_user.programmes.each do |programme| %>
             <% if programme.user_completed?(current_user) %>
               <%= render "dashboard/programmes/complete", programme: programme %>
-            <% else%>
+            <% else %>
               <%= render "dashboard/programmes/progress", programme: programme %>
             <% end %>
           <% end %>
