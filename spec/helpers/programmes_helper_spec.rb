@@ -86,6 +86,36 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
+  describe('#index_to_word_ordinal') do
+    it 'returns "0th" when argument is -1' do
+      expect(index_to_word_ordinal(-1)).to eq('0th')
+    end
+
+    it 'returns "first" when argument is nil' do
+      expect(index_to_word_ordinal(nil)).to eq('first')
+    end
+
+    it 'returns "first" when argument is 0' do
+      expect(index_to_word_ordinal(0)).to eq('first')
+    end
+
+    it 'returns "-10th" when argument is -11' do
+      expect(index_to_word_ordinal(-11)).to eq('-10th')
+    end
+
+    it 'returns "tenth" when argument is 9' do
+      expect(index_to_word_ordinal(9)).to eq('tenth')
+    end
+
+    it 'returns "third" when argument is 2' do
+      expect(index_to_word_ordinal(2)).to eq('third')
+    end
+
+    it 'returns "seventh" when argument is 6' do
+      expect(index_to_word_ordinal(6)).to eq('seventh')
+    end
+  end
+
   describe('#credits_for_programme') do
     it 'throws exception without the user' do
       expect {
