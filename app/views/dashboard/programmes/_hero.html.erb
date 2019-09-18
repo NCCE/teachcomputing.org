@@ -8,13 +8,11 @@
       </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full certificates">
-          <% @programmes.each do |programme| %>
-            <% if programme.user_enrolled?(current_user) %>
-              <% if programme.user_completed?(current_user) %>
-                <%= render "dashboard/programmes/complete", programme: programme %>
-              <% else%>
-                <%= render "dashboard/programmes/progress", programme: programme %>
-              <% end %>
+          <% current_user.programmes.each do |programme| %>
+            <% if programme.user_completed?(current_user) %>
+              <%= render "dashboard/programmes/complete", programme: programme %>
+            <% else %>
+              <%= render "dashboard/programmes/progress", programme: programme %>
             <% end %>
           <% end %>
         </div>
