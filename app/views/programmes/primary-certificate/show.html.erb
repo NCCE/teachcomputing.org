@@ -1,0 +1,23 @@
+<div class="ncce-self-certifiable"
+  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text">Testing</span>
+      <a href="#" class="govuk-button ncce-button__pink ncce-button__pink--rounded nncce-self-certifiable--add">I have done this</a>
+      <div class="ncce-self-certifiable-collap">
+        <p class="govuk-body-s">
+          <button class="ncce-self-certifiable-collap__title-button">
+            <span class="screen-reader-only">Click to close </span>I have done this
+          </button>
+        </p>
+        <span class="govuk-form-group">
+          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
+            <%= text_field :activity_id, Activity.user_removable.available_for(current_user).first.id %>
+            <%= label_tag :self_verification_info, 'Please provide a link to the review' %>
+            <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
+            <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+          <% end %>
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

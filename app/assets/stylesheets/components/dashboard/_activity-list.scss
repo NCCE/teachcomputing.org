@@ -55,6 +55,7 @@
 
 .ncce-activity-list__item-indent {
   margin-left: 2rem;
+
   @include govuk-media-query($from: tablet) {
     margin-left: 2.8rem;
     margin-top: 0.5rem;
