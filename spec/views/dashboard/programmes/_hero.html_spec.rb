@@ -20,13 +20,14 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements
-    render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+    render :template => 'dashboard/programmes/_hero'
   end
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
-      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+      user.reload
+      render :template => 'dashboard/programmes/_hero'
     end
 
     it 'shows the certificate link' do
@@ -42,6 +43,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     before do
       user_programme_enrolment
       passed_exam
+      user.reload
       render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
