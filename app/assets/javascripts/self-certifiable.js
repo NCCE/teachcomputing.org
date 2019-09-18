@@ -1,19 +1,21 @@
-function initialiseCollapsibleActivity() {
+function initialiseselfActivity() {
   const activity = document.querySelector(
-    '.ncce-self-certifiable--add')
+    '.ncce-activity-links--add')
   if (!activity) {
     return
   }
   const button = activity.querySelector('button')
   const target = activity.nextElementSibling
   const hideButton = target.querySelector(
-    'ncce-self-certifiable-collap__title-button')
-  console.log('you there?')
+    '.ncce-self-activity__title-button')
+
+  console.log("siri, you there?")
+
   const wrapper = document.querySelector(
     '.ncce-activity-links')
   wrapper.classList.toggle('ncce-activity-links--progressive')
 
-  target.classList.toggle('ncce-self-certifiable--progressive')
+  target.classList.toggle('ncce-self-activity--progressive')
 
   const listener = function () {
     const expanded = button.getAttribute('aria-expanded') === 'true'
@@ -26,5 +28,5 @@ function initialiseCollapsibleActivity() {
 }
 
 ready(function () {
-  initialiseCollapsibleActivity()
+  initialiseselfActivity()
 })
