@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CommunityPresenter do
-  let(:empty_presenter) { described_class.new(nil) }
   let(:community_activity) { create(:activity, :community, description: 'this is a <strong>community</strong> activity') }
   let(:achievement) { create(:achievement, activity_id: community_activity.id) }
   let(:completed_achievement) { create(:completed_achievement, activity_id: community_activity.id ) }
@@ -10,16 +9,6 @@ RSpec.describe CommunityPresenter do
     completed_achievement
     described_class.new(community_activity)
   }
-
-  describe('empty?') do
-    it 'returns true if the presenter has no delegate' do
-      expect(empty_presenter.empty?).to eq(true)
-    end
-
-    it 'returns false if the presenter has a delegate' do
-      expect(incomplete_presenter.empty?).to eq(false)
-    end
-  end
 
   describe('completed?') do
     it { expect(incomplete_presenter.completed?).to eq(false) }

@@ -4,15 +4,10 @@ class CommunityPresenter < SimpleDelegator
 
   def initialize(activity)
     super(activity)
-    @empty = activity.nil?
-  end
-
-  def empty?
-    @empty
   end
 
   def completed?
-    !@empty && has_achievement? && achievements.first.complete?
+    !achievements.nil? && achievements.any? && achievements.first.complete?
   end
 
   def list_item_classes(one_completed = false)
@@ -32,10 +27,5 @@ class CommunityPresenter < SimpleDelegator
   def inspect
     "CommunityPresenter - completed? #{completed?}\n" + super
   end
-
-  private
-    def has_achievement?
-      !achievements.nil? && !achievements.first.nil?
-    end
 end
 
