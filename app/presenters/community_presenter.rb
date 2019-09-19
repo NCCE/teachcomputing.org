@@ -10,10 +10,8 @@ class CommunityPresenter < SimpleDelegator
     !achievements.nil? && achievements.any? && achievements.first.complete?
   end
 
-  def list_item_classes(one_completed = false)
-    classes = ' ncce-activity-list__item--incomplete' unless completed?
-    classes = ' ncce-activity-list__item--disabled' if one_completed && !completed?
-    classes
+  def list_item_classes
+    ' ncce-activity-list__item--incomplete' unless completed?
   end
 
   def description

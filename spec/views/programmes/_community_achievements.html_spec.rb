@@ -29,16 +29,12 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
     end
 
-    it 'no achievements are  marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
+    it 'one achievement is  marked as incomplete' do
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
     end
 
-    it 'one achievement is disabled' do
-      expect(rendered).to have_css('.ncce-activity-list__item--disabled', count: 1)
-    end
-
-    it 'has no buttons to self verify' do
-      expect(rendered).to have_link('I have done this', count: 0)
+    it 'has one button to self verify' do
+      expect(rendered).to have_link('I have done this', count: 1)
     end
   end
 
@@ -52,10 +48,6 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
 
     it 'no achievements are  marked as incomplete' do
       expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
-    end
-
-    it 'no achievements are disabled' do
-      expect(rendered).to have_css('.ncce-activity-list__item--disabled', count: 0)
     end
 
     it 'has no buttons to self verify' do

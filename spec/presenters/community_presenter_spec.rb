@@ -21,8 +21,7 @@ RSpec.describe CommunityPresenter do
 
   describe('list_item_classes') do
     it { expect(incomplete_presenter.list_item_classes).to include('ncce-activity-list__item--incomplete') }
-    it { expect(incomplete_presenter.list_item_classes(true)).to include('ncce-activity-list__item--disabled') }
-    it { expect(completed_presenter.list_item_classes(true)).to be(nil) }
+    it { expect(completed_presenter.list_item_classes).to be(nil) }
   end
 
   describe('description') do
