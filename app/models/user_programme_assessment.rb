@@ -1,8 +1,6 @@
 class UserProgrammeAssessment
   include ProgrammesHelper
 
-  # attr_reader :enough_credits_for_test?
-
   def initialize(programme, user)
     @enough_credits_for_test = false
     @enough_credits_for_test = can_take_accelerator_test?(user, programme) if programme.assessment
