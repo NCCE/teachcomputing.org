@@ -51,4 +51,13 @@ FactoryBot.define do
     category { 'online' }
     self_certifiable { 'true' }
   end
+
+  trait :community do
+    title { 'Community Activity' }
+    slug { 'community-activity' }
+    category { 'community' }
+    provider { 'stem-learning' }
+    description { 'this is a community activity' }
+    credit { 5 }
+  end
 end
