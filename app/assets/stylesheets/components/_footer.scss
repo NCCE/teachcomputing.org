@@ -24,20 +24,15 @@
   }
   & .ncce-link {
     display: inline-flex;
+    &:active {
+      color: $ncce-white;
+    }
   }
 }
 
 .ncce-footer__link--homepage {
+  display: inline-block;
   text-decoration: none;
-  line-height: 1em;
-  color: $ncce-white;
-  &:link,
-  &:visited {
-    color: $ncce-white;
-  }
-  &:hover {
-    color: $ncce-grey-x-light;
-  }
   &:focus {
     color: $ncce-white;
     background-color: $ncce-pink;

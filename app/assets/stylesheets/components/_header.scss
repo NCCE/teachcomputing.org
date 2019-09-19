@@ -11,15 +11,6 @@
   padding-bottom: 16px;
 }
 
-.govuk-header__logotype-text {
-  font-family: $font-family-heading;
-  font-size: 1.5rem;
-
-  @include govuk-media-query($until: 380px) {
-    font-size: 1.25rem;
-  }
-}
-
 .govuk-header__link {
   font-weight: normal !important;
 
@@ -34,10 +25,16 @@
     color: $ncce-white;
     text-decoration: underline !important;
   }
+}
 
-  &--homepage {
-    line-height: 1;
+.govuk-header__link--homepage {
+  &:active {
+    border-color: transparent;
   }
+}
+
+.govuk-header__logotype {
+  line-height: initial;
 }
 
 .ncce-header__navigation {
