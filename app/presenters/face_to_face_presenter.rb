@@ -2,7 +2,7 @@ class FaceToFacePresenter < ActivityPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
-  def button_label(args = {})
+  def button_label(*)
     'Find a face to face course'
   end
 

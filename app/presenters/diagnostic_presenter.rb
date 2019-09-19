@@ -2,7 +2,7 @@ class DiagnosticPresenter < ActivityPresenter
   include Rails.application.routes.url_helpers
   include ActivitiesHelper
 
-  def button_label(args = {})
+  def button_label(*)
     'Use the diagnostic tool'
   end
 
@@ -10,12 +10,12 @@ class DiagnosticPresenter < ActivityPresenter
     activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(args[:current_user]) })
   end
 
-  def completed_text(index)
-    "Used the diagnostic tool"
+  def completed_text(*)
+    'Used the diagnostic tool'
   end
 
-  def prompt_text(index)
-    "Optionally, use the diagnostic tool"
+  def prompt_text(*)
+    'Optionally, use the diagnostic tool'
   end
 
   def inspect

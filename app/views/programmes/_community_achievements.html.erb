@@ -1,0 +1,11 @@
+<% presenters.each do |presenter|%>
+  <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
+    <span class="ncce-activity-list__item-text">
+      <span><%= presenter.title %></span>
+      <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
+    </span>
+    <% unless presenter.completed? %>
+      <%= link_to presenter.button_label, '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+    <% end %>
+  </li>
+<% end %>
