@@ -3,22 +3,22 @@
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
     <span class="ncce-activity-list__item-text">Testing</span>
         <p class="govuk-body-s ncce-self-certifiable-links--add">
-          <button aria-expanded="true" class="ncce-link ncce-self-certifiable-links-add-button">
+          <button aria-expanded="true" class="ncce-link ncce-self-certifiable-links-add-button govuk-button ncce-button__pink ncce-button__pink--rounded">
             I have done this
           </button>
         </p>
         <div class="ncce-self-certifiable">
           <p class="govuk-body-s">
             <button class="ncce-self-certifiable__title-button">
-              <span class="screen-reader-only">Click to close </span>I have done this
+              <span class="screen-reader-only">Click to close </span>Close
             </button>
           </p>
-            <span class="govuk-form-group">
+            <span class="govuk-form-group ncce-self-certifiable__group">
             <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
               <%= text_field :activity_id, Activity.user_removable.available_for(current_user).first.id %>
               <%= label_tag :self_verification_info, 'Please provide a link to the review' %>
               <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
-              <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+              <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
             <% end %>
           </span>
       </div>
