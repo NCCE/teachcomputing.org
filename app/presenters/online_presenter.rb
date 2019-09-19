@@ -2,7 +2,7 @@ class OnlinePresenter < ActivityPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
-  def button_label(args = {})
+  def button_label(*)
     'Find an online course'
   end
 
@@ -22,4 +22,3 @@ class OnlinePresenter < ActivityPresenter
     "OnlinePresenter - empty? #{empty?}\n" + super
   end
 end
-
