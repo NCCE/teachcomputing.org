@@ -18,7 +18,7 @@ class CommunityPresenter < SimpleDelegator
     (super || '').html_safe
   end
 
-  def button_label(args = {})
+  def button_label
     'I have done this'
   end
 
@@ -26,4 +26,3 @@ class CommunityPresenter < SimpleDelegator
     "CommunityPresenter - completed? #{completed?}\n" + super
   end
 end
-
