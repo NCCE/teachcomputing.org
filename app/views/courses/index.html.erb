@@ -48,7 +48,7 @@
           <%= form_tag url_for(controller: 'courses', anchor: 'filter-results'), { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
             <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
-              options_for_select(@levels.keys, @current_level),
+              options_for_select(@age_groups.keys, @current_level),
               {
                 include_blank: 'Any level',
                 class: 'govuk-select ncce-select',
@@ -67,6 +67,13 @@
                 include_blank: 'Any topic',
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
+            %>
+            <%= select_tag :certificate,
+              options_for_select(Programme.enrollable.pluck(:title, :slug), @current_certificate),
+              {
+                include_blank: 'Any certificate',
+                class: 'govuk-select ncce-select',
+                'aria-label': 'Filter by certificate' }
             %>
             <%= hidden_field_tag :workstream, @current_workstream %>
             <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>

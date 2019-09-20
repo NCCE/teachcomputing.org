@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
     @age_groups = Achiever::Course::AgeGroup.all
     @courses = Achiever::Course::Template.all
     @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
+    puts "#{@course_occurrences.count} total occ"
+    puts "#{@courses.count} total courses"
 
     @courses.each do |course|
       @course_occurrences.each do |course_occurrence|
@@ -17,9 +19,7 @@ class CoursesController < ApplicationController
     end
 
     @locations = course_locations(@course_occurrences)
-    @levels = @age_groups
     @topics = course_tags(@courses)
-    @workstreams = 'CS Accelerator'
     @courses = filter_courses(@courses)
 
     alert_filter_params
@@ -35,30 +35,36 @@ class CoursesController < ApplicationController
 
     def filter_courses(courses)
       courses.select do |c|
-        has_level = true
-        has_location = true
-        has_topic = true
-        has_workstream = true
+        has_certificate, has_level, has_location, has_topic, has_workstream = true, true, true, true, true
+
+        if params[:certificate].present?
+          @current_certificate = params[:certificate]
+          has_certificate = c.by_certificate(params[:certificate])
+        end
 
         if params[:level].present?
           @current_level = params[:level]
           key = @age_groups[params[:level]].to_s
           has_level = c.age_groups.any?(key)
         end
+
         if params[:location].present?
           @current_location = params[:location]
           has_location = compare_location(c, @current_location)
         end
+
         if params[:topic].present?
           @current_topic = params[:topic]
           key = @subjects[params[:topic]].to_s
           has_topic = c.subjects.any?(key)
         end
+
         if params[:workstream].present?
           @current_workstream = params[:workstream]
           has_workstream = c.workstream == @current_workstream
         end
-        has_level && has_location && has_topic && has_workstream
+
+        has_certificate && has_level && has_location && has_topic && has_workstream
       end
     end
 
@@ -67,6 +73,7 @@ class CoursesController < ApplicationController
       filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
       filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
       filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
+      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate}") if @current_certificate
       filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
 
       return if filter_strings.empty?

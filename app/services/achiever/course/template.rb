@@ -17,11 +17,6 @@ class Achiever::Course::Template
                     'HideFromweb': '0',
                     'ProgrammeName': 'ncce' }.freeze
 
-  def self.all
-    templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
-    templates.map { |course| Achiever::Course::Template.new(course) }
-  end
-
   def initialize(template)
     @activity_code = template.send('Template.ActivityCode')
     @age_groups = template.send('Template.AgeGroups').split(';')
@@ -34,5 +29,18 @@ class Achiever::Course::Template
     @summary = template.send('Template.Summary')
     @title = template.send('Template.TemplateTitle')
     @workstream = template.send('Template.Workstream')
+  end
+
+  def self.all
+    templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
+    templates.map { |course| Achiever::Course::Template.new(course) }
+  end
+
+  def by_certificate(certificate)
+    return @workstream == 'CS Accelerator' if certificate == 'cs-accelerator'
+    key_stages = Achiever::Course::AgeGroup.send(certificate.underscore)
+    puts key_stages
+    puts key_stages.any? { |key_stage| @age_groups.any?(key_stage) }
+    @workstream == 'National Centre - Core' && key_stages.any? { |key_stage| @age_groups.any?(key_stage.to_s) }
   end
 end
