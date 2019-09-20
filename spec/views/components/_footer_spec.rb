@@ -6,7 +6,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a link to the home page ' do
-    expect(rendered).to have_xpath('//a[@href = "/"][contains(@class, "govuk-footer__link")]', count: 1)
+    expect(rendered).to have_link('National Centre forComputing Education', href: '/')
   end
 
   it 'has an about link' do
