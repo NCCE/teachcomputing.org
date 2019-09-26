@@ -39,8 +39,6 @@ class Achiever::Course::Template
   def by_certificate(certificate)
     return @workstream == 'CS Accelerator' if certificate == 'cs-accelerator'
     key_stages = Achiever::Course::AgeGroup.send(certificate.underscore)
-    puts key_stages
-    puts key_stages.any? { |key_stage| @age_groups.any?(key_stage) }
     @workstream == 'National Centre - Core' && key_stages.any? { |key_stage| @age_groups.any?(key_stage.to_s) }
   end
 end
