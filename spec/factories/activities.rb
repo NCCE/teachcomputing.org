@@ -19,6 +19,7 @@ FactoryBot.define do
     slug { 'diagnostic-tool' }
     category { 'action' }
     provider { 'system' }
+    credit { 5 }
   end
 
   trait :stem_learning do
@@ -56,8 +57,8 @@ FactoryBot.define do
     title { 'Community Activity' }
     slug { 'community-activity' }
     category { 'community' }
-    provider { 'stem-learning' }
+    provider { 'cas' }
     description { 'this is a community activity' }
-    credit { 5 }
+    credit { 10 }
   end
 end

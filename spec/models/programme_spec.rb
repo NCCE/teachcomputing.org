@@ -87,31 +87,19 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#user_completed?' do
-    context 'when user is not passed in' do
-      it 'raises error if user is nil' do
-        expect {
-          programme.user_completed?(nil)
-        }.to raise_error(NoMethodError)
-      end
-    end
-
     before do
-      programme_activity
-      user_programme_enrolment
-    end
-    context 'when user has not completed programme' do
-      it 'returns false' do
-        expect(programme.user_completed?(user)).to eq false
-      end
+      allow(Programmes::CSAccelerator).to receive(:user_completed?).and_return(true)
     end
 
-    context 'when user has completed programme' do
-      before do
-        passed_exam
-      end
-
+    context 'with cs-accelerator programme' do
       it 'returns true' do
         expect(programme.user_completed?(user)).to eq true
+      end
+    end
+
+    context 'with non-existent programme' do
+      it 'returns false' do
+        expect(non_enrollable_programme.user_completed?(user)).to eq false
       end
     end
   end
