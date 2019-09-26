@@ -68,7 +68,7 @@
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= select_tag :certificate,
+            <%= hidden_field_tag :certificate,
               options_for_select(Programme.enrollable.pluck(:title, :slug), @current_certificate),
               {
                 include_blank: 'Any certificate',
