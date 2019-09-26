@@ -7,8 +7,6 @@ class CoursesController < ApplicationController
     @age_groups = Achiever::Course::AgeGroup.all
     @courses = Achiever::Course::Template.all
     @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
-    puts "#{@course_occurrences.count} total occ"
-    puts "#{@courses.count} total courses"
 
     @courses.each do |course|
       @course_occurrences.each do |course_occurrence|
