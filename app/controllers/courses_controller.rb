@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
         has_certificate, has_level, has_location, has_topic, has_workstream = true, true, true, true, true
 
         if params[:certificate].present?
-          @current_certificate = params[:certificate]
+          @current_certificate = Programme.find_by(slug: params[:certificate])
           has_certificate = c.by_certificate(params[:certificate])
         end
 
@@ -73,7 +73,7 @@ class CoursesController < ApplicationController
       filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
       filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
       filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
-      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate}") if @current_certificate
+      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate.title
       filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
 
       return if filter_strings.empty?
