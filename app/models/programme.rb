@@ -29,10 +29,6 @@ class Programme < ApplicationRecord
   end
 
   def user_completed?(user = nil)
-    return Programmes::CSAccelerator.user_completed?(user, self) if slug == 'cs-accelerator'
-
-    return Programmes::PrimaryCertificate.user_completed?(user, self) if slug == 'primary-certificate'
-
     false
   end
 

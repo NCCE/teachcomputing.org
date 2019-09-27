@@ -1,10 +1,12 @@
-module Programmes::CSAccelerator
+module Programmes
+  class CSAccelerator < Programme
 
-    def self.user_completed?(user, programme)
+    def user_completed?(user)
       user.achievements
-          .for_programme(programme)
+          .for_programme(self)
           .in_state('complete')
           .joins(:activity)
           .where(activities: { category: 'assessment' }).any?
     end
+  end
 end

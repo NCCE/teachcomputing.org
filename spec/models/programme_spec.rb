@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Programme, type: :model do
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:programmes) { create_list(:programme, 3) }
-  let(:primary_programme) { create(:programme, slug: 'primary-certificate') }
-  let(:secondary_programme) { create(:programme, slug: 'secondary-certificate') }
+  let(:primary_programme) { create(:primary_certificate) }
+  let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
@@ -74,6 +74,10 @@ RSpec.describe Programme, type: :model do
     it 'returns the primary record' do
       expect(Programme.primary_certificate).to eq primary_programme
     end
+
+    it 'returns the correct type' do
+      expect(Programme.primary_certificate).to be_a(Programmes::PrimaryCertificate)
+    end
   end
 
   describe '#secondary_certificate' do
@@ -84,19 +88,13 @@ RSpec.describe Programme, type: :model do
     it 'returns the secondary record' do
       expect(Programme.secondary_certificate).to eq secondary_programme
     end
+
+    it 'returns the correct type' do
+      expect(Programme.secondary_certificate).to be_a(Programmes::SecondaryCertificate)
+    end
   end
 
   describe '#user_completed?' do
-    before do
-      allow(Programmes::CSAccelerator).to receive(:user_completed?).and_return(true)
-    end
-
-    context 'with cs-accelerator programme' do
-      it 'returns true' do
-        expect(programme.user_completed?(user)).to eq true
-      end
-    end
-
     context 'with non-existent programme' do
       it 'returns false' do
         expect(non_enrollable_programme.user_completed?(user)).to eq false

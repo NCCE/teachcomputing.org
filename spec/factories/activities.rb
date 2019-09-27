@@ -61,4 +61,22 @@ FactoryBot.define do
     description { 'this is a community activity' }
     credit { 10 }
   end
+
+  trait :community_5 do
+    title { 'Community Activity' }
+    slug { 'community-activity-5' }
+    category { 'community' }
+    provider { 'cas' }
+    description { 'this is a 5 credit community activity' }
+    credit { 5 }
+  end
+
+  trait :community_20 do
+    title { 'Community Activity' }
+    slug { 'community-activity-20' }
+    category { 'community' }
+    provider { 'cas' }
+    description { 'this is a 20 credit community activity' }
+    credit { 20 }
+  end
 end

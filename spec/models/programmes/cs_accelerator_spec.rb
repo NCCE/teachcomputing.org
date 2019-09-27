@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Programmes::CSAccelerator do
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
@@ -17,22 +17,14 @@ RSpec.describe Programmes::CSAccelerator do
     context 'when user is not passed in' do
       it 'raises error if user is nil' do
         expect {
-          Programmes::CSAccelerator.user_completed?(nil, nil)
-        }.to raise_error(NoMethodError)
-      end
-    end
-
-    context 'when programme is not passed in' do
-      it 'raises error if programme is nil' do
-        expect {
-          Programmes::CSAccelerator.user_completed?(user, nil)
+          programme.user_completed?(nil)
         }.to raise_error(NoMethodError)
       end
     end
 
     context 'when user has not completed programme' do
       it 'returns false' do
-        expect(Programmes::CSAccelerator.user_completed?(user, programme)).to eq false
+        expect(programme.user_completed?(user)).to eq false
       end
     end
 
@@ -42,7 +34,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns true' do
-        expect(Programmes::CSAccelerator.user_completed?(user, programme)).to eq true
+        expect(programme.user_completed?(user)).to eq true
       end
     end
   end

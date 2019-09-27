@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserProgrammeAchievements do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -18,7 +18,7 @@ RSpec.describe UserProgrammeAchievements do
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
-  let(:community_activity) { create(:activity, :community) }
+  let(:community_activity) { create(:activity, :community_5) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
@@ -87,7 +87,7 @@ RSpec.describe UserProgrammeAchievements do
       expect(user_programme_achievements.diagnostic_achievements.first).to be_a(DiagnosticPresenter)
     end
 
-    it 'diagnostic_achievements contains DiagnosticPresenters' do
+    it 'community_activities contains CommunityPresenters' do
       expect(user_programme_achievements.community_activities.first).to be_a(CommunityPresenter)
     end
   end
