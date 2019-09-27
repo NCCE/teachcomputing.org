@@ -28,12 +28,12 @@ class CoursesController < ApplicationController
   private
 
     def init_filters
-      @current_level, @current_topic, @current_workstream, @course_occurrences = nil
+      @current_level, @current_topic, @course_occurrences = nil
     end
 
     def filter_courses(courses)
       courses.select do |c|
-        has_certificate, has_level, has_location, has_topic, has_workstream = true, true, true, true, true
+        has_certificate, has_level, has_location, has_topic = true, true, true, true, true
 
         if params[:certificate].present?
           @current_certificate = Programme.find_by(slug: params[:certificate])
@@ -57,12 +57,7 @@ class CoursesController < ApplicationController
           has_topic = c.subjects.any?(key)
         end
 
-        if params[:workstream].present?
-          @current_workstream = params[:workstream]
-          has_workstream = c.workstream == @current_workstream
-        end
-
-        has_certificate && has_level && has_location && has_topic && has_workstream
+        has_certificate && has_level && has_location && has_topic
       end
     end
 
@@ -71,8 +66,7 @@ class CoursesController < ApplicationController
       filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
       filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
       filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
-      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate.title
-      filter_strings.push("<strong>Programme</strong>: #{@current_workstream}") if @current_workstream
+      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate
 
       return if filter_strings.empty?
 
