@@ -14,10 +14,18 @@ slugs = %w[
   primary-programming-and-algorithms
   teaching-programming-in-primary-schools
   scratch-to-python-moving-from-block-to-text-based-programming
+  contribute-to-online-discussion
+  attend-a-cas-community-meeting
+  review-a-resource-on-cas
+  host-or-attend-a-barefoot-workshop
+  lead-a-cas-community-of-practice
+  run-an-after-school-code-club
+  lead-a-session-at-a-regional-or-national-conference
 ]
 
 slugs.each do |slug|
   activity = Activity.find_by(slug: slug)
+  puts "Activity for slug #{slug} - #{activity}"
   unless activity.programmes.include?(primary)
     puts "Adding: #{activity.title} to #{primary.slug}"
     activity.programmes << primary

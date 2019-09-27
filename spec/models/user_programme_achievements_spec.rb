@@ -18,6 +18,7 @@ RSpec.describe UserProgrammeAchievements do
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
+  let(:community_activity) { create(:activity, :community) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
@@ -25,7 +26,7 @@ RSpec.describe UserProgrammeAchievements do
   let(:setup_achievements_for_programme) do
     assessment
     user_programme_enrolment
-    activities = [diagnostic_tool_activity, online_course, face_to_face_course]
+    activities = [diagnostic_tool_activity, online_course, face_to_face_course, community_activity]
 
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
@@ -85,6 +86,10 @@ RSpec.describe UserProgrammeAchievements do
     it 'diagnostic_achievements contains DiagnosticPresenters' do
       expect(user_programme_achievements.diagnostic_achievements.first).to be_a(DiagnosticPresenter)
     end
+
+    it 'diagnostic_achievements contains DiagnosticPresenters' do
+      expect(user_programme_achievements.community_activities.first).to be_a(CommunityPresenter)
+    end
   end
 
   describe 'when the user has some achievements' do
@@ -102,6 +107,10 @@ RSpec.describe UserProgrammeAchievements do
 
     it 'diagnostic_achievements includes the diagnostic achievement' do
       expect(user_programme_achievements.diagnostic_achievements).to include(diagnostic_achievement)
+    end
+
+    it 'community_activities includes the community activity' do
+      expect(user_programme_achievements.community_activities).to include(community_activity)
     end
   end
 
