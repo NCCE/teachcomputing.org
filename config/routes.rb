@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
+  get '/primary-diagnostic', to: 'pages#page', as: :primary_diagnostic, defaults: { page_slug: 'primary-diagnostic' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/resources', to: 'pages#page', as: :resources, defaults: { page_slug: 'resources' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
