@@ -1,5 +1,6 @@
 class UserProgrammeAchievements
   def initialize(programme, user)
+    @user = user
     @achievements = user.achievements.for_programme(programme).sort_complete_first
   end
 
@@ -16,5 +17,10 @@ class UserProgrammeAchievements
   def diagnostic_achievements
     diagnostic_achievements = @achievements.with_category(Activity::ACTION_CATEGORY).where(activities: { slug: 'diagnostic-tool' })
     [DiagnosticPresenter.new(diagnostic_achievements.first)]
+  end
+
+  def community_activities(to_show = 1, credit = 5)
+    activities = Activity.community.joins("LEFT OUTER JOIN achievements on achievements.activity_id = activities.id AND achievements.user_id = '#{@user.id}'").where("credit = #{credit}").order('activities.credit')
+    (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index])}
   end
 end
