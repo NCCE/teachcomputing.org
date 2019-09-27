@@ -79,10 +79,6 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-select', count: 3)
     end
 
-    it 'renders hidden workstream field' do
-      expect(rendered).to have_selector(:xpath, '//input', :id => 'workstream', :visible => false)
-    end
-
     it 'renders location select' do
       expect(rendered).to have_css('.ncce-select option', text: 'Cambridge')
     end
