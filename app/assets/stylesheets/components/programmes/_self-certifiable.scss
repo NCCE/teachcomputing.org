@@ -11,16 +11,12 @@
 
     @include govuk-media-query($from: desktop) {
       right: 1.1rem;
-      width: 25rem;
+      width: 20rem;
     }
   }
 
   box-sizing: border-box;
   max-width: 100%;
-  padding: 1rem;
-
-
-
   background-color: $ncce-dark-x-grey;
   text-align: left;
 
@@ -55,4 +51,8 @@
       background-size: 1.2rem, 1.2rem;
     }
   }
+}
+
+.ncce-self-certifiable__text {
+  color: $ncce-white;
 }
