@@ -68,13 +68,7 @@
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= hidden_field_tag :certificate,
-              options_for_select(Programme.enrollable.pluck(:title, :slug), @current_certificate),
-              {
-                include_blank: 'Any certificate',
-                class: 'govuk-select ncce-select',
-                'aria-label': 'Filter by certificate' }
-            %>
+            <%= hidden_field_tag :certificate, @current_certificate %>
             <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
           <% end %>
         </div>

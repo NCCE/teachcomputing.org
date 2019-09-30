@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
         has_certificate, has_level, has_location, has_topic = true, true, true, true, true
 
         if params[:certificate].present?
+          puts "I am present"
           @current_certificate = Programme.find_by(slug: params[:certificate])
           has_certificate = c.by_certificate(params[:certificate])
         end
