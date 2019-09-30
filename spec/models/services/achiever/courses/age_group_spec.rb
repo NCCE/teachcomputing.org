@@ -20,11 +20,11 @@ RSpec.describe Achiever::Course::AgeGroup do
   end
 
   describe 'class methods' do
-    describe '#all' do
-      before do
-        stub_age_groups
-      end
+    before do
+      stub_age_groups
+    end
 
+    describe '#all' do
       it 'returns an Array' do
         expect(described_class.all).to be_an Hash
       end
@@ -33,6 +33,26 @@ RSpec.describe Achiever::Course::AgeGroup do
         described_class.all.each do |age_group|
           expect(age_group.first).to start_with('Key')
         end
+      end
+    end
+
+    describe '#primary_certificate' do
+      it 'contains two values' do
+        expect(described_class.primary_certificate.count).to eq 2
+      end
+
+      it 'does not include secondary certificate values' do
+        expect(described_class.primary_certificate).not_to include described_class.secondary_certificate
+      end
+    end
+
+    describe '#secondary_certificate' do
+      it 'contains two values' do
+        expect(described_class.secondary_certificate.count).to eq 2
+      end
+
+      it 'does not include primary certificate values' do
+        expect(described_class.secondary_certificate).not_to include described_class.primary_certificate
       end
     end
   end
