@@ -16,6 +16,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: { category: category })
   }
 
+  scope :with_credit, lambda { |credit|
+    joins(:activity).where(activities: { credit: credit })
+  }
+
   scope :without_category, lambda { |category|
     joins(:activity).where.not(activities: { category: category })
   }

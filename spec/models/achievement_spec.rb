@@ -6,6 +6,9 @@ RSpec.describe Achievement, type: :model do
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
+  let(:community_activity) { create(:activity, :community) }
+  let(:community_achievement) { create(:achievement, activity: community_activity) }
+
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
 
@@ -54,6 +57,21 @@ RSpec.describe Achievement, type: :model do
 
     it 'omits the achievements which don\'t match the category' do
       expect(Achievement.with_category(achievement.activity.category)).to_not include(diagnostic_achievement)
+    end
+  end
+
+  describe '#with_credit' do
+    before do
+      diagnostic_achievement
+      community_achievement
+    end
+
+    it 'returns the achievements which match the credit' do
+      expect(Achievement.with_credit(10)).to include(community_achievement)
+    end
+
+    it 'omits the achievements which don\'t match the credit' do
+      expect(Achievement.with_credit(10)).to_not include(diagnostic_achievement)
     end
   end
 
