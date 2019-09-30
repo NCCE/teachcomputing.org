@@ -68,7 +68,7 @@
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= hidden_field_tag :certificate, @current_certificate %>
+            <%= hidden_field_tag :certificate, @current_certificate.try(:slug) %>
             <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
           <% end %>
         </div>
