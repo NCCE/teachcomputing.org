@@ -21,7 +21,7 @@
   <% else%>
     <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
       <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
-      <%= link_to presenter.button_label, presenter.button_url(workstream: 'CS Accelerator', current_user: current_user), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+      <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
     </li>
   <% end %>
 <% end %>

@@ -7,7 +7,7 @@ class OnlinePresenter < ActivityPresenter
   end
 
   def button_url(args = {})
-    courses_path(location: 'Online', workstream: args[:workstream])
+    courses_path(location: 'Online', certificate: args[:certificate])
   end
 
   def completed_text(index)
