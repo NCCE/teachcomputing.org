@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get '/resources', to: 'pages#page', as: :resources, defaults: { page_slug: 'resources' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/signup-stem', to: 'pages#signup_stem', as: :signup_stem
+  get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions, defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }

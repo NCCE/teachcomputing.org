@@ -9,4 +9,12 @@ class Achiever::Course::AgeGroup
     parsed_response.reduce({}, :merge)
                    .select { |k| k.starts_with?('Key') }
   end
+
+  def self.primary_certificate
+    all.fetch_values('Key stage 1', 'Key stage 2')
+  end
+
+  def self.secondary_certificate
+    all.fetch_values('Key stage 3', 'Key stage 4')
+  end
 end

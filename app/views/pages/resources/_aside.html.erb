@@ -5,13 +5,15 @@
     <li>Lesson plans</li>
     <li>Learning graphs</li>
     <li>Unit overviews</li>
-    <li>Assessments</li>
     <li>Activities</li>
-    <li>Homework</li>
+    <% unless year <= 2 %>
+      <li>Assessments</li>
+      <li>Homework</li>
+    <% end %>
   </ul>
   <p class="govuk-body">
-  <%= link_to_if current_user, "Access year #{year} resources", '#ß', class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' do
-      link_to 'Login to access', login_path(source_uri: "#{request.original_fullpath}#year-#{year}"), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false'
+  <%= link_to_if current_user, "Access year #{year} resources", resource_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' do
+      link_to 'Log in to access', login_path(source_uri: "#{request.original_fullpath}#year-#{year}"), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false'
   end %>
   </p>
 </div>

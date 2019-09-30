@@ -64,4 +64,25 @@ RSpec.describe Achiever::Course::Template do
       end
     end
   end
+
+  describe '#by_certificate' do
+    before do
+      stub_age_groups
+      stub_course_templates
+    end
+
+    context 'when the programme is cs accelerator' do
+      it 'returns true when the template is part of the programme' do
+        template = described_class.all.first
+        expect(template.by_certificate('cs-accelerator')).to eq true
+      end
+    end
+
+    context 'when the template is not part of the programme' do
+      it 'returns false' do 
+        template = described_class.all.second
+        expect(template.by_certificate('primary-certificate')).to eq false
+      end
+    end
+  end
 end

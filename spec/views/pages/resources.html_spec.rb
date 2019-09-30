@@ -34,7 +34,7 @@ RSpec.describe('pages/resources', type: :view) do
     end
 
     it 'user sees login button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Login to access')
+      expect(rendered).to have_css('.ncce-aside__button', text: 'Log in to access')
     end
   end
 
