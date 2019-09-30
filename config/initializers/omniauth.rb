@@ -46,7 +46,7 @@ end
 
 OmniAuth.config.on_failure = AuthController.action(:failure)
 
-if ENV['BYPASS_OAUTH'].present?
+if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
   puts 'Faking OAuth login for review apps'
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(

@@ -1,9 +1,8 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'blog.teachcomputing.org',
-            'ncce-www-stage.stem.org.uk',
+            /\Ahttps?:\/\/(.+\.)?stem\.org\.uk\z/,
             'ncce.stem.ce-vm.local'
-
 
     resource(
       '*',

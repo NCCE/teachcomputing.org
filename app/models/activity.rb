@@ -2,6 +2,8 @@ class Activity < ApplicationRecord
   FACE_TO_FACE_CATEGORY = 'face-to-face'
   ONLINE_CATEGORY = 'online'
   ACTION_CATEGORY = 'action'
+  COMMUNITY_CATEGORY = 'community'
+  ASSESSMENT_CATEGORY = 'assessment'
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :users, through: :achievements
@@ -10,14 +12,15 @@ class Activity < ApplicationRecord
   has_one  :assessment
 
   validates :title, :slug, :category, presence: true
-  validates :category, inclusion: { in: %w[action online face-to-face assessment] }
-  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker] }
+  validates :category, inclusion: { in: [ACTION_CATEGORY, ONLINE_CATEGORY, FACE_TO_FACE_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY] }
+  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker cas] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :online, -> { where(category: ONLINE_CATEGORY) }
   scope :face_to_face, -> { where(category: FACE_TO_FACE_CATEGORY) }
   scope :future_learn, -> { where(provider: 'future-learn') }
   scope :stem_learning, -> { where(provider: 'stem-learning') }
+  scope :community, -> { where(category: COMMUNITY_CATEGORY) }
   scope :non_action, -> { where.not(category: ACTION_CATEGORY) }
   scope :self_certifiable, -> { where(self_certifiable: true) }
   scope :system, -> { where(provider: 'system') }

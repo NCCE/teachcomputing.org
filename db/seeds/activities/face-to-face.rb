@@ -83,7 +83,7 @@ Activity.find_or_create_by(slug: 'creative-computing-for-key-stage-3') do |activ
   activity.title = 'Creative Computing for Key Stage 3'
   activity.credit = 0
   activity.slug = activity.title.parameterize
-  activity.stem_course_id = '9239cb0d-3d45-4347-a212-2788ec9d0437'
+  activity.stem_course_id = '26c20962-6279-4927-b797-42363848130c'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -111,6 +111,15 @@ Activity.find_or_create_by(slug: 'pre-january-2019-csa-face-to-face-cpd') do |ac
   activity.credit = 40
   activity.slug = 'pre-january-2019-csa-face-to-face-cpd'
   activity.stem_course_id = 'f7fefbae-53aa-4c28-bbd2-b3d3b1bf7bbd'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'key-stage-3-computing-for-non-specialists') do |activity|
+  activity.title = 'Key stage 3 computing for non-specialists'
+  activity.credit = 0
+  activity.slug = 'key-stage-3-computing-for-non-specialists'
+  activity.stem_course_id = '46c07f3e-b9b2-4f0c-ba56-52319aadb955'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end

@@ -1,4 +1,3 @@
-
 class ActivityPresenter < SimpleDelegator
   include ProgrammesHelper
   attr_reader :empty
@@ -12,11 +11,11 @@ class ActivityPresenter < SimpleDelegator
     @empty
   end
 
-  def button_label(args = {})
+  def button_label(*)
     'Find a course'
   end
 
-  def button_url(args = {})
+  def button_url(*)
     '/'
   end
 
