@@ -13,7 +13,7 @@ class Activity < ApplicationRecord
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [ACTION_CATEGORY, ONLINE_CATEGORY, FACE_TO_FACE_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY] }
-  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker cas] }
+  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker cas barefoot code-club] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :online, -> { where(category: ONLINE_CATEGORY) }

@@ -1,4 +1,4 @@
-secondary = Programme.find_or_create_by(slug: 'secondary-certificate') do |programme|
+secondary = Programmes::SecondaryCertificate.find_or_create_by(slug: 'secondary-certificate') do |programme|
   programme.title = 'Teach secondary computing'
   programme.slug = 'secondary-certificate'
   programme.description = 'Teach secondary computing'

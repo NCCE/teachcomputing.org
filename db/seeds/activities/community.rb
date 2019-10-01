@@ -32,7 +32,7 @@ Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activ
   activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
-  activity.provider = 'cas'
+  activity.provider = 'barefoot'
   activity.self_certifiable = true
 end
 
@@ -50,7 +50,7 @@ Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.credit = 20
   activity.slug = activity.title.parameterize
   activity.category = 'community'
-  activity.provider = 'cas'
+  activity.provider = 'code-club'
   activity.self_certifiable = true
   activity.description = 'This is CAS online discussion forums and could include the CAS forum, #CASChat, webinars and other NCCE activities.'
 end
