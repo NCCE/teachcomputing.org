@@ -6,9 +6,11 @@ RSpec.describe('programmes/_achievements', type: :view) do
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
   let(:commenced_achievement) { create(:achievement, user: user) }
   let(:two_commenced_achievements) { create_list(:achievement, 2, user: user) }
+  let(:programme) { create(:programme) }
 
   context 'when user has not completed any achievements' do
     before do
+      @programme = programme
       presenters = [ActivityPresenter.new(nil), ActivityPresenter.new(nil)]
       render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
@@ -28,6 +30,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
 
   context 'when user has started one achievement' do
     before do
+      @programme = programme
       presenters = [ActivityPresenter.new(commenced_achievement), ActivityPresenter.new(nil)]
       render partial: 'programmes/achievements', locals: { presenters: presenters }
     end

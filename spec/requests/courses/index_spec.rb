@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:programme) { create(:programme, slug: 'cs-accelerator')}
 
   describe 'GET #index' do
     before do
@@ -39,8 +40,8 @@ RSpec.describe CoursesController do
         expect(assigns(:locations)).to be_a(Array)
       end
 
-      it 'assigns @levels' do
-        expect(assigns(:levels)).to be_a(Hash)
+      it 'assigns @age_groups' do
+        expect(assigns(:age_groups)).to be_a(Hash)
       end
 
       it 'assigns all @subjects' do
@@ -69,6 +70,29 @@ RSpec.describe CoursesController do
     end
 
     context 'when using filtering' do
+      context 'when filtering by certificate' do
+        before do
+          programme
+          get courses_path, params: { certificate: 'cs-accelerator' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).count).to eq(20)
+        end
+
+        it 'initalises current certificate' do
+          expect(assigns(:current_certificate)).to eq programme
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/<strong>Certificate<\/strong>: #{programme.title}/)
+        end
+      end
+
       context 'when filtering by subject' do
         before do
           get courses_path, params: { topic: 'Mathematics' }
@@ -208,24 +232,6 @@ RSpec.describe CoursesController do
         end
       end
 
-      context 'when filtering by workstream' do
-        before do
-          get courses_path, params: { workstream: 'CS Accelerator' }
-        end
-
-        it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(20)
-        end
-
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
-        end
-
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: CS Accelerator/)
-        end
-      end
-
       context 'when filtering by level and location' do
         before do
           get courses_path, params: { level: 'Key stage 4', location: 'York' }
@@ -298,18 +304,18 @@ RSpec.describe CoursesController do
         end
       end
 
-      context 'filter by level, location, topic and workstream' do
+      context 'filter by level, location, and topic' do
         before do
+          programme
           get courses_path, params: {
             level: 'Key stage 4',
             topic: 'Computing',
-            location: 'York',
-            workstream: 'CS Accelerator'
+            location: 'York'
           }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(5)
+          expect(assigns(:courses).count).to eq(7)
         end
 
         it 'has filtered town' do
@@ -322,12 +328,6 @@ RSpec.describe CoursesController do
           expect(course.occurrences.map(&:address_town)).to include('London')
         end
 
-        it 'has correct workstream' do
-          assigns(:courses).each do |course|
-            expect(course.workstream).to eq('CS Accelerator')
-          end
-        end
-
         it 'shows a flash notice' do
           expect(flash[:notice]).to be_present
         end
@@ -336,7 +336,6 @@ RSpec.describe CoursesController do
           expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
           expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
           expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
-          expect(flash[:notice]).to match(/<strong>Programme<\/strong>: CS Accelerator/)
         end
       end
     end

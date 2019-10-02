@@ -9,7 +9,7 @@ RSpec.describe FaceToFacePresenter do
 
   describe('button_url') do
     it { expect(empty_presenter.button_url).to eq('/courses?location=Face+to+face') }
-    it { expect(empty_presenter.button_url({ workstream: 123 })).to eq("/courses?location=Face+to+face&workstream=123") }
+    it { expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq('/courses?certificate=cs-accelerator&location=Face+to+face') }
   end
 
   describe('completed_text') do

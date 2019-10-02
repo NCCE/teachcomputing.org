@@ -1,4 +1,5 @@
 class Programme < ApplicationRecord
+
   has_many :programme_activities, dependent: :destroy
   has_many :activities, through: :programme_activities
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
@@ -28,14 +29,6 @@ class Programme < ApplicationRecord
   end
 
   def user_completed?(user = nil)
-    if slug == 'cs-accelerator'
-      return user.achievements
-                 .for_programme(self)
-                 .in_state('complete')
-                 .joins(:activity)
-                 .where(activities: { category: 'assessment' }).any?
-    end
-
     false
   end
 

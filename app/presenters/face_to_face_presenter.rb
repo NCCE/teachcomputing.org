@@ -7,7 +7,7 @@ class FaceToFacePresenter < ActivityPresenter
   end
 
   def button_url(args = {})
-    courses_path(location: 'Face to face', workstream: args[:workstream])
+    courses_path(location: 'Face to face', certificate: args[:certificate])
   end
 
   def completed_text(index)

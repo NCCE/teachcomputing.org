@@ -6,6 +6,7 @@ RSpec.describe Activity, type: :model do
   let(:face_to_face_activity) { create(:activity, :face_to_face) }
   let(:online_courses) { create_list(:activity, 3, :future_learn) }
   let(:face_to_face_courses) { create_list(:activity, 3, :stem_learning) }
+  let(:community_activity) { create(:activity, :community) }
   let(:system_activity) { create_list(:activity, 3, :system) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
@@ -109,6 +110,20 @@ RSpec.describe Activity, type: :model do
 
       it 'does not include actions' do
         expect(Activity.stem_learning).not_to include(online_courses.first)
+      end
+    end
+
+    describe 'community' do
+      before do
+        [community_activity, online_courses]
+      end
+
+      it 'includes only community activities' do
+        expect(Activity.community.to_a).to include(community_activity)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.community).not_to include(online_courses.first)
       end
     end
 
