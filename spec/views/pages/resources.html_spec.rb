@@ -15,17 +15,17 @@ RSpec.describe('pages/resources', type: :view) do
 
   it 'has year headings' do
     render
-    expect(rendered).to have_css('.resources-year__heading', count: 5)
+    expect(rendered).to have_css('.resources-year__heading', count: 6)
   end
 
   it 'has resource lists for each year' do
     render
-    expect(rendered).to have_css('.resources-year__lesson-list', count: 5)
+    expect(rendered).to have_css('.resources-year__lesson-list', count: 6)
   end
 
   it 'has asides for each year' do
     render
-    expect(rendered).to have_css('.resources-aside', count: 5)
+    expect(rendered).to have_css('.resources-aside', count: 6)
   end
 
   context 'when a user is not signed in' do
