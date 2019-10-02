@@ -1,5 +1,5 @@
-<div class="ihavedonethis">
-  <% presenters.each do |presenter|%>
+<% presenters.each do |presenter|%>
+  <div class="ihavedonethis">
     <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
@@ -20,5 +20,6 @@
         </div>
       <% end %>
     </li>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
