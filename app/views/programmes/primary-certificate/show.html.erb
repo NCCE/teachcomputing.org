@@ -11,28 +11,26 @@
       <%= render 'programmes/primary-certificate/achievement_list' %>
     </div>
   </div>
-<div class="ncce-self-certifiable-links">
+
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
-  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-    <span class="ncce-activity-list__item-text">Testing</span>
-        <p class="govuk-body-s ncce-self-certifiable-links--add">
-          <button aria-expanded="true" class="ncce-link ncce-self-certifiable-links-add-button govuk-button ncce-button__pink ncce-button__pink--rounded ncce-button__self-certifiable">
+    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text">Testing</span>
+      <div class="ihavedonethis-links">
+        <p class="govuk-body-s ihavedonethis-links--add">
+          <button aria-expanded="true" class="ihavedonethis-links-add-button govuk-button ncce-button__pink ncce-button__pink--rounded ncce-button__self-certifiable">
             I have done this
           </button>
         </p>
-        <div class="ncce-self-certifiable">
-          <p class="govuk-body-s">
-            <button class="ncce-self-certifiable__title-button">
-            </button>
-          </p>
-            <span class="govuk-form-group ncce-self-certifiable__group">
+        <div class="ihavedonethis">
+          <span class="govuk-form-group ihavedonethis__group">
             <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
-              <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-body-s ncce-self-certifiable__text' %>
+              <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-body-s ihavedonethis__text' %>
               <%= text_field :activity_id, Activity.user_removable.available_for(current_user).first.id, class: 'govuk-input' %>
               <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
             <% end %>
           </span>
+        </div>
       </div>
     </li>
   </ul>
-</div>
+

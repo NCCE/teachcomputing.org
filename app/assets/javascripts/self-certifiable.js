@@ -1,19 +1,17 @@
 function initialiseselfActivity() {
   const activity = document.querySelector(
-    '.ncce-self-certifiable-links--add')
+    '.ihavedonethis-links--add')
   if (!activity) {
     return
   }
   const button = activity.querySelector('button')
   const target = activity.nextElementSibling
-  const hideButton = target.querySelector(
-    '.ncce-self-certifiable__title-button')
 
   const wrapper = document.querySelector(
-    '.ncce-self-certifiable-links')
-  wrapper.classList.toggle('ncce-self-certifiable-links--progressive')
+    '.ihavedonethis-links')
+  wrapper.classList.toggle('ihavedonethis-links--progressive')
 
-  target.classList.toggle('ncce-self-certifiable--progressive')
+  target.classList.toggle('ihavedonethis--progressive')
 
   const listener = function () {
     const expanded = button.getAttribute('aria-expanded') === 'true'
@@ -21,7 +19,6 @@ function initialiseselfActivity() {
     target.hidden = expanded
   }
   button.onclick = listener
-  hideButton.onclick = listener
   listener()
 }
 
