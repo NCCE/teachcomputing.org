@@ -1,17 +1,14 @@
 function initialiseselfActivity() {
-  const activity = document.querySelector(
-    '.ihavedonethis-links--add')
-  if (!activity) {
+  const wrapper = document.querySelector(
+    '.ihavedonethis')
+  if (!wrapper) {
     return
   }
-  const button = activity.querySelector('button')
-  const target = activity.nextElementSibling
+  const button = wrapper.querySelector('button')
+  const target = button.nextElementSibling
 
-  const wrapper = document.querySelector(
-    '.ihavedonethis-links')
-  wrapper.classList.toggle('ihavedonethis-links--progressive')
 
-  target.classList.toggle('ihavedonethis--progressive')
+  wrapper.classList.toggle('ihavedonethis--progressive')
 
   const listener = function () {
     const expanded = button.getAttribute('aria-expanded') === 'true'
