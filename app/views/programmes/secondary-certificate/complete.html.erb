@@ -4,12 +4,12 @@
       <h1 class="govuk-heading-l underlined__title underlined__title--certificate-complete">Congratulations!</h1>
       <div class="certification-hero__wrapper--complete">
         <div class="certification-hero__image">
-          <img src="/images/notepad.svg" alt="" class="certification-hero__image--tablet"/>
+          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--tablet' %>
         </div>
         <div class="certification-hero__content">
           <p class="govuk-body-m govuk-!-font-weight-bold certification-hero__text">You have completed the National Centre for Computing Education certificate in</p>
           <h2 class="govuk-heading-m certification-hero__text"><%= @programme.title %></h2>
-          <img src="/images/notepad.svg" alt="" class="certification-hero__image--mobile"/>
+          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--mobile' %>
           <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and accredited by Royal Academy of Engineering</p>
           <p class="govuk-body">
             <%= link_to 'View your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
@@ -58,4 +58,3 @@
     </div>
   </div>
 </div>
-
