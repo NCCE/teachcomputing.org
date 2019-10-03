@@ -30,7 +30,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a resource link' do
-    expect(rendered).to have_link('Access resources', href: /stem\.org\.uk\/resources/)
+    expect(rendered).to have_link('Access resources', href: '/resources')
   end
 
   it 'has a certification link' do
