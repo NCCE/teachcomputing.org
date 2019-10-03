@@ -17,11 +17,15 @@ class Achiever::Request
       end
     end
 
-    def resource(resource_path, query = {})
+    def resource(resource_path, query = {}, cache = true)
       query_string = query_strings(query)
 
-      response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
-        api.get("#{resource_path}&#{query_string}")
+      if cache
+        response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
+          api.get("#{resource_path}&#{query_string}")
+        end
+      else
+        response = api.get("#{resource_path}&#{query_string}")
       end
       
       parsed_response = parse_response(response.body)
