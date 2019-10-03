@@ -31,7 +31,7 @@ RSpec.describe Activities::RedirectsController do
       end
 
       it 'redirects to login' do
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(/register/)
       end
 
       it 'creates an Achievement if one does not exist already' do
