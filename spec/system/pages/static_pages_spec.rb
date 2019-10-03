@@ -126,20 +126,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Login page' do
-    before do
-      visit login_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_content('Create an account')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'Offer page' do
     before do
       visit offer_path
