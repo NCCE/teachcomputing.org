@@ -1,0 +1,18 @@
+<div class="govuk-width-container">
+  <div class="ncce-login">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l ncce-login__title">Login to your account</h1>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body">If you have just verified your STEM account you can log straight in here.</p>
+            <p class="govuk-body">You may have been sent here from a STEM page but need to login. Please do this first, then it should return you to that page.</p>
+            <p class="govuk-body"><%= link_to 'Log in', local_assigns[:auth_uri] || '/auth/stem', method: :post, class: 'govuk-button ncce-login__button ncce-button__pink' %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
