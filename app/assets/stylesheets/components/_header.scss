@@ -43,6 +43,12 @@
 
 .ncce-header__logo {
   fill: $ncce-white;
+  // height: 119px;
+  width: 160px;
+  @include govuk-media-query($from: tablet) {
+    height: 119px;
+    width: 221px;
+  }
 }
 
 .ncce-header__navigation {
