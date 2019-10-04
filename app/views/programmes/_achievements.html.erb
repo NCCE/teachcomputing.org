@@ -1,4 +1,4 @@
-<% presenters.each_with_index do |presenter, index|%>
+<% presenters.each_with_index do |presenter, index| %>
   <% unless presenter.empty? %>
     <% if presenter.complete? %>
       <li class="ncce-activity-list__item">
@@ -18,7 +18,7 @@
         <span>
       </li>
     <% end %>
-  <% else%>
+  <% else %>
     <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
       <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
       <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
