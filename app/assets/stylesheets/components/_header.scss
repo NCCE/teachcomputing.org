@@ -29,7 +29,10 @@
 
 .govuk-header__logo {
   margin: 0;
-  padding: 16px 0;
+  padding: 9px 0 15px;
+  @include govuk-media-query($from: tablet) {
+    padding: 22px 0 20px;
+  }
 }
 
 .govuk-header__link--logo {
@@ -43,7 +46,6 @@
 
 .ncce-header__logo {
   fill: $ncce-white;
-  // height: 119px;
   width: 160px;
   @include govuk-media-query($from: tablet) {
     height: 119px;
