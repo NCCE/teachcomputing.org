@@ -52,16 +52,18 @@
   position: relative;
 
   .ihavedonethis__popup {
-    margin-top: 3.5rem;
+    margin-top: 0;
     position: absolute;
+    right: 0;
+    width: calc(100% - 2rem);
     z-index: 1;
 
     @include govuk-media-query($from: tablet) {
       margin-top: -1px;
+      width: 15rem;
     }
 
     @include govuk-media-query($from: desktop) {
-      right: 0;
       width: 20rem;
     }
   }
