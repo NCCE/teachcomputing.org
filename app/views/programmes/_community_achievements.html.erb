@@ -1,11 +1,13 @@
 <% presenters.each do |presenter|%>
-  <div class="ihavedonethis">
-    <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
+
+<li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
         <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
       </span>
       <% unless presenter.completed? %>
+      <div class="ihavedonethis">
+
         <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
         I have done this
         </button>
@@ -14,14 +16,12 @@
             <div class="govuk-form-group ihavedonethis__group">
               <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-label ihavedonethis__text' %>
               <%= text_field :activity_id, Activity.user_removable.available_for(current_user).first.id, class: 'govuk-input' %>
-              </div>
-              <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
+            </div>
+            <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
           <% end %>
         </div>
       </div>
     <% end %>
-  </div>
-<<<<<<< HEAD
 </li>
 <% end %>
 
