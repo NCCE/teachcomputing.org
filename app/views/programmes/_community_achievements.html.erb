@@ -7,9 +7,8 @@
       </span>
       <% unless presenter.completed? %>
       <div class="ihavedonethis">
-
         <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
-        I have done this
+        <%= presenter.button_label %>
         </button>
         <div class="ihavedonethis__popup">
           <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
