@@ -14,7 +14,7 @@
   <p class="govuk-body">
   <% if live %>
     <%= link_to_if current_user, "Access year #{year} resources", resource_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' do
-        link_to 'Log in to access', login_path(source_uri: "#{request.original_fullpath}#year-#{year}"), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false'
+        link_to 'Log in to access', "#{auth_url}?source_uri=#{request.original_fullpath}#year-#{year}", class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false'
     end %>
   <% else %>
     <%= button_to 'Coming soon', '#', class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', disabled: true %>

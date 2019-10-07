@@ -37,7 +37,7 @@ RSpec.describe('pages/terms-conditions', type: :view) do
     end
 
     it 'has a login link' do
-      expect(rendered).to have_link('National Centre for Computing Education website', href: '/login')
+      expect(rendered).to have_link('National Centre for Computing Education website', href: /register/)
     end
   end
 end

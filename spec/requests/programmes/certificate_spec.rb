@@ -80,7 +80,7 @@ RSpec.describe ProgrammesController do
       end
 
       it 'redirects to login' do
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(/register/)
       end
     end
   end
