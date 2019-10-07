@@ -20,11 +20,7 @@
         <p class="govuk-body-s ncce-aside__text">
         To book onto a course, you'll need to create an account. It's free and takes two minutes!
         </p>
-        <p class="govuk-body-z">
-          <%= link_to 'Create an account / log in', login_path,
-          class: 'govuk-button ncce-button__pink ncce-aside__button',
-            role: 'button', draggable: 'false' %>
-        </p>
+        <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
       </div>
       <% end %>
     </div>
@@ -93,7 +89,7 @@
                   end
                 %>
               <% else %>
-                <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
+                <%= link_to(course.title, auth_url, method: :post, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
               <span class="ncce-courses__heading-code"><%= course.activity_code %></span>
             </div>

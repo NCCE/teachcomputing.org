@@ -7,7 +7,7 @@
   border: none;
   margin-bottom: 0;
   padding-bottom: 10px;
-  padding-top: 18px;
+  padding-top: 16px;
   padding-bottom: 16px;
 }
 
@@ -27,18 +27,30 @@
   }
 }
 
-.govuk-header__link--homepage {
+.govuk-header__logo {
+  margin: 0;
+  padding: 9px 0 15px;
+  @include govuk-media-query($from: tablet) {
+    padding: 22px 0 20px;
+  }
+}
+
+.govuk-header__link--logo {
+  display: inline-block;
+  font-size: 0px;
+  line-height: 0px;
   &:active {
     border-color: transparent;
   }
 }
 
-.govuk-header__logotype {
-  line-height: initial;
-}
-
 .ncce-header__logo {
   fill: $ncce-white;
+  width: 160px;
+  @include govuk-media-query($from: tablet) {
+    height: 119px;
+    width: 221px;
+  }
 }
 
 .ncce-header__navigation {
