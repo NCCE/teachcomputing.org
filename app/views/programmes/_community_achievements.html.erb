@@ -1,11 +1,11 @@
 <% presenters.each do |presenter|%>
-  <div class="ihavedonethis">
-    <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
-      <span class="ncce-activity-list__item-text">
-        <span><%= presenter.title %></span>
-        <spa class="ncce-activity-list__item-description"><%= presenter.description %></span>
-      </span>
-      <% unless presenter.completed? %>
+<li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
+    <span class="ncce-activity-list__item-text">
+      <span><%= presenter.title %></span>
+      <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
+    </span>
+    <% unless presenter.completed? %>
+      <div class="ihavedonethis">
         <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
         I have done this
         </button>
@@ -18,8 +18,9 @@
               <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
           <% end %>
         </div>
-      <% end %>
-    </li>
+      </div>
+    <% end %>
   </div>
+</li>
 <% end %>
 
