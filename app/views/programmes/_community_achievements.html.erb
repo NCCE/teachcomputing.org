@@ -14,7 +14,7 @@
           <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
             <div class="govuk-form-group ihavedonethis__group">
               <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-label ihavedonethis__text' %>
-              <%= text_field :achievement_id, Activity.user_removable.available_for(current_user).first.id, class: 'govuk-input' %>
+              <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
             </div>
             <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
           <% end %>
