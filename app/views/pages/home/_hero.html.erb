@@ -13,7 +13,7 @@
                 confidence.</p>
               <%=
                 link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
-                  link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue'
+                  link_to 'Get started!', create_account_url, class: 'govuk-button ncce-button__blue'
                 end
               %>
             </div>
@@ -29,7 +29,7 @@
               confidence.</p>
             <%=
               link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
-                link_to 'Get started!', login_path, class: 'govuk-button ncce-button__blue'
+                link_to 'Get started!', create_account_url, class: 'govuk-button ncce-button__blue'
               end
             %>
           </div>
