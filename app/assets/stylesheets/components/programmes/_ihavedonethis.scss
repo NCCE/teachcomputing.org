@@ -54,6 +54,7 @@
   .ihavedonethis__popup {
     margin-top: 3.5rem;
     position: absolute;
+    z-index: 1;
 
     @include govuk-media-query($from: tablet) {
       margin-top: -1px;
