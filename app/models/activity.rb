@@ -1,9 +1,10 @@
 class Activity < ApplicationRecord
+  ACTION_CATEGORY = 'action'
+  ASSESSMENT_CATEGORY = 'assessment'
+  COMMUNITY_CATEGORY = 'community'
+  DIAGNOSTIC_CATEGORY = 'diagnostic'
   FACE_TO_FACE_CATEGORY = 'face-to-face'
   ONLINE_CATEGORY = 'online'
-  ACTION_CATEGORY = 'action'
-  COMMUNITY_CATEGORY = 'community'
-  ASSESSMENT_CATEGORY = 'assessment'
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :users, through: :achievements
@@ -12,8 +13,8 @@ class Activity < ApplicationRecord
   has_one  :assessment
 
   validates :title, :slug, :category, presence: true
-  validates :category, inclusion: { in: [ACTION_CATEGORY, ONLINE_CATEGORY, FACE_TO_FACE_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY] }
-  validates :provider, inclusion: { in: %w[future-learn stem-learning system classmarker cas barefoot code-club] }
+  validates :category, inclusion: { in: [ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY, DIAGNOSTIC_CATEGORY, FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY] }
+  validates :provider, inclusion: { in: %w[barefoot cas classmarker code-club future-learn stem-learning system] }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :online, -> { where(category: ONLINE_CATEGORY) }
@@ -30,11 +31,11 @@ class Activity < ApplicationRecord
     self_certifiable && category != ACTION_CATEGORY
   end
 
-  def self.diagnostic_tool
-    Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
+  def self.cs_accelerator_diagnostic_tool
+    Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
       activity.title = 'Taken diagnostic tool'
       activity.credit = 10
-      activity.slug = 'diagnostic-tool'
+      activity.slug = 'primary-certificate-diagnostic'
       activity.category = ACTION_CATEGORY
       activity.self_certifiable = true
       activity.provider = 'system'

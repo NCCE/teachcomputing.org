@@ -4,5 +4,9 @@ module Programmes
     def user_completed?(user)
       false
     end
+
+    def user_completed_diagnostic(user)
+      true
+    end
   end
 end

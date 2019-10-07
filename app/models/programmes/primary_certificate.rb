@@ -1,6 +1,10 @@
 module Programmes
   class PrimaryCertificate < Programme
 
+    def self.diagnostic
+      activity = Activity.find_by!(slug: 'primary-certificate-diagnostic')
+    end
+
     def user_completed?(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
@@ -19,6 +23,10 @@ module Programmes
             complete_achievements.with_category('community')
                                     .with_credit('20')
                                     .any?
+    end
+
+    def user_completed_diagnostic(user)
+      user.achievements.in_state(:complete).where(activity_id: self.diagnostic.id).exists?
     end
   end
 end

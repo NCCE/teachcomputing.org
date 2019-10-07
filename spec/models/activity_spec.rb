@@ -164,11 +164,11 @@ RSpec.describe Activity, type: :model do
     describe '#diagnostic_tool' do
       it 'returns a record if one is found' do
         activity = create(:activity, :diagnostic_tool)
-        expect(Activity.diagnostic_tool).to eq activity
+        expect(Activity.cs_accelerator_diagnostic_tool).to eq activity
       end
 
       it 'creates a record if one is not found' do
-        expect(Activity.diagnostic_tool.title).to eq 'Taken diagnostic tool'
+        expect(Activity.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
       end
     end
   end

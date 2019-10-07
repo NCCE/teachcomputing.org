@@ -1,0 +1,112 @@
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l ncce-about__title">Primary Computing Diagnostic</h1>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Introduction</h2>
+          <p class="govuk-body-l">This diagnostic tool is designed to give you some ideas of how to start your learning journey with the NCCE and give you direction towards the courses that might be of most use to you.  Nobody else will see the results so please feel free to be as honest as you can in your answers.</p>
+
+          <h2 class="govuk-heading-m">Question 1</h2>
+          <p class="govuk-body-l">How confident are you teaching the programming elements of the KS1 and KS2 Computing National Curriculum?</p>
+          <p class="govuk-body">For example, are you able to explain the concepts of algorithms and computational thinking to pupils?</p>
+
+          <%= form_for(:diagnostic) do |form| %>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '5', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_5'>Not at all confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '10', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_10'>A little confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '15', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_15'>Fairly confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '20', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_20'>Very confident</label>
+              </div>
+            </div>
+            <p class="govuk-body"></p>
+
+            <h2 class="govuk-heading-m">Question 2</h2>
+          <p class="govuk-body-l">How confident are you in effectively teaching the whole of the KS1 Computing National Curriculum?</p>
+          <p class="govuk-body">For example, are you familiar with common uses of technology beyond school, or how pupils can use technology to develop digital content?</p>
+
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_2', '5', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_5'>Not at all confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_2', '10', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_10'>A little confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_2', '15', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_15'>Fairly confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_2', '20', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_20'>Very confident</label>
+            </div>
+          </div>
+          <p class="govuk-body"></p>
+
+          <h2 class="govuk-heading-m">Question 3</h2>
+          <p class="govuk-body-l">How confident are you in effectively teaching the whole of the KS2 Computing National Curriculum?</p>
+          <p class="govuk-body">For example, are you able to develop pupils’ understanding of computer networks, including the Internet, or how to support children in developing a range of programs, systems and content, using digital devices?</p>
+
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_3', '5', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_3_5'>Not at all confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_3', '10', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_3_10'>A little confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_3', '15', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_3_15'>Fairly confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_3', '20', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_3_20'>Very confident</label>
+            </div>
+          </div>
+          <p class="govuk-body"></p>
+
+          <h2 class="govuk-heading-m">Question 4</h2>
+          <p class="govuk-body-l">How confident are you that you can support pupils to go beyond the requirements of the KS2 computing national curriculum, such as through introducing text based programming?</p>
+
+           <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_4', '5', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_4_5'>Not at all confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_4', '10', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_4_10'>A little confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_4', '15', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_4_15'>Fairly confident</label>
+            </div>
+            <div class="govuk-radios__item">
+              <%= form.radio_button 'question_4', '20', class: 'govuk-radios__input' %>
+              <label class="govuk-label govuk-radios__label" for='diagnostic_question_4_20'>Very confident</label>
+            </div>
+          </div>
+          <p class="govuk-body"></p>
+
+          <%= form.submit 'Submit', class: 'govuk-button ncce-button__pink' %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

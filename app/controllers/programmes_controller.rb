@@ -3,6 +3,7 @@ class ProgrammesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_programme, only: %i[show complete certificate]
   before_action :user_enrolled?, only: %i[show complete certificate]
+  before_action :user_completed_diagnostic?, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
 
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
@@ -30,6 +31,12 @@ class ProgrammesController < ApplicationController
   end
 
   private
+
+    def user_completed_diagnostic?
+      return true if @programme.user_completed_diagnostic(current_user)
+
+      redirect_to primary_certificate_diagnostic_path
+    end
 
     def find_programme
       @programme = Programme.enrollable.find_by!(slug: params[:slug])

@@ -6,6 +6,7 @@ class Achiever::Course::Delegate
   CACHE = false.freeze
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
+    
     query_strings = {
       'Page': '1',
       'RecordCount': '1000',

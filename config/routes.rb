@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :achievements, only: %i[create destroy]
 
-  namespace :activities do
-    resources :redirects, only: [:show]
-  end
-
   namespace 'admin' do
     resources :imports
   end
@@ -27,6 +23,9 @@ Rails.application.routes.draw do
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
   get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
+  get '/certificate/cs-accelerator/diagnostic', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
+  get '/certificate/primary-certificate/diagnostic/', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
+  post '/certificate/primary-certificate/diagnostic/', to: 'diagnostics/primary_certificate#create', as: :create_primary_certificate_diagnostic
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
