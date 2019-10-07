@@ -11,7 +11,7 @@ RSpec.describe('pages/home/_hero', type: :view) do
   end
 
   it 'button to find out more about NCCE' do
-    expect(rendered).to have_link('Get started!', href: login_path)
+    expect(rendered).to have_link('Get started!', href: /register/)
   end
 
   context 'when a user is signed in' do

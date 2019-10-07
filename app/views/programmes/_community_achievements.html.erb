@@ -3,7 +3,7 @@
     <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
-        <spa class="ncce-activity-list__item-description"><%= presenter.description %></span>
+        <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
       </span>
       <% unless presenter.completed? %>
         <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
@@ -21,5 +21,5 @@
       <% end %>
     </li>
   </div>
-<% end %>
+
 

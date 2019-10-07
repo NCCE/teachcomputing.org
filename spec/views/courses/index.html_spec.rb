@@ -36,8 +36,8 @@ RSpec.describe('courses/index', type: :view) do
       allow(view).to receive(:current_user).and_return(nil)
     end
 
-    it 'has a courses link' do
-      expect(rendered).to have_link('Create an account / log in', href: '/login')
+    it 'has a create account link' do
+      expect(rendered).to have_link('Create an account', href: /register/)
     end
   end
 
