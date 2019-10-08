@@ -15,6 +15,7 @@
             <div class="govuk-form-group ihavedonethis__group">
               <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-label ihavedonethis__text' %>
               <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
+              <%= f.hidden_field :activity_id, value: presenter.id %>
             </div>
             <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
           <% end %>
