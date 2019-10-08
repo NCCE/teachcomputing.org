@@ -6,6 +6,7 @@
 .ihavedonethis__button {
   background-position: right 0.5rem center;
   background-image: url('tick-self.svg');
+  background-size: 1rem;
   background-repeat: no-repeat;
   padding: 0.5rem 1.7rem 0.5rem 0.5rem;
   display: none; 
@@ -53,14 +54,13 @@
   position: relative;
 
   .ihavedonethis__popup {
-    margin-top: 0;
+    margin-top: 2rem;
     position: absolute;
     right: 0;
     width: calc(100% - 2rem);
     z-index: 1;
 
     @include govuk-media-query($from: tablet) {
-      margin-top: 2rem;
       width: 15rem;
     }
 
