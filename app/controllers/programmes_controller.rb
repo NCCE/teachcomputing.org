@@ -35,7 +35,7 @@ class ProgrammesController < ApplicationController
     def user_completed_diagnostic?
       return true if @programme.user_completed_diagnostic(current_user)
 
-      redirect_to primary_certificate_diagnostic_path
+      redirect_to primary_certificate_diagnostic_path(:introduction)
     end
 
     def find_programme
