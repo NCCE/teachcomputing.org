@@ -82,7 +82,7 @@ RSpec.describe AchievementsController do
       end
     end
 
-    context 'with invalid params' do
+    context 'with referrer header' do
       subject do
         post achievements_path,
              params: {
