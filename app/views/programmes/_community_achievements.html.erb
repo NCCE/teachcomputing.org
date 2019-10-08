@@ -11,7 +11,7 @@
         <%= presenter.button_label %>
         </button>
         <span class="ihavedonethis__popup">
-          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
+          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' } do |f| %>
             <span class="govuk-form-group ihavedonethis__group">
               <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-label ihavedonethis__text' %>
               <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
