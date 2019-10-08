@@ -100,7 +100,7 @@
     margin-right: 1em;
   }
   &-code {
-    color: $storm-grey;
+    color: $grey-storm;
     font-weight: 400;
     font-size: 0.74em;
   }
@@ -111,12 +111,12 @@
   padding-bottom: 5px;
   text-transform: initial;
   letter-spacing: 0;
-  background-color: $dark-purple;
+  background-color: $purple-dark;
 }
 
 .ncce-courses__filter-container {
   padding: 0;
-  background-color: $v-light-purple;
+  background-color: $purple-v-light;
   &--sticky {
     position: fixed;
     top: 0px;

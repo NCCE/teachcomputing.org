@@ -14,7 +14,7 @@
   &[aria-expanded="true"] {
     background-image: url('close-self.svg');
     background-repeat: no-repeat;
-    background-color: $dark-x-grey;
+    background-color: $grey-dark-x;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     box-shadow: none;
@@ -22,7 +22,7 @@
 
     &:focus {
       color: $white;
-      background-color: $dark-x-grey;
+      background-color: $grey-dark-x;
       outline: none;
       box-shadow: none;
       border-bottom-right-radius: 0;
@@ -32,7 +32,7 @@
     &:hover,
     &[disabled]:hover {
       color: $white;
-      background-color: $dark-x-grey;
+      background-color: $grey-dark-x;
       text-decoration: underline;
       box-shadow: none;
       border-bottom-right-radius: 0;
@@ -43,7 +43,7 @@
 }
 
 .ihavedonethis__popup {
-  background-color: $dark-x-grey;
+  background-color: $grey-dark-x;
   margin-top: -3.8rem;
   padding: 0.5rem;
   box-sizing: border-box;
