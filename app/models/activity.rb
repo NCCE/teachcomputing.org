@@ -35,9 +35,9 @@ class Activity < ApplicationRecord
     Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
       activity.title = 'Taken diagnostic tool'
       activity.credit = 10
-      activity.slug = 'primary-certificate-diagnostic'
-      activity.category = ACTION_CATEGORY
-      activity.self_certifiable = true
+      activity.slug = 'cs-accelerator-diagnostic-tool'
+      activity.category = DIAGNOSTIC_CATEGORY
+      activity.self_certifiable = false
       activity.provider = 'system'
     end
   end
