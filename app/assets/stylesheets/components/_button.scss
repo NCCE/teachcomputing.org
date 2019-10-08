@@ -1,10 +1,10 @@
 @mixin ncce_button($background_color) {
-	background-color: $background_color;
-	box-shadow: none;
-	font-size: 1.188rem;
-	font-weight: bold;
-	margin: 0;
-	padding: 12px 25px;
+  background-color: $background_color;
+  box-shadow: none;
+  font-size: 1.188rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 12px 25px;
 
   &[disabled] {
     background-color: $background_color;
