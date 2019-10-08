@@ -7,7 +7,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
 
   def create
     achievement = Achievement.create(user_id: current_user.id, activity_id: Programmes::PrimaryCertificate.diagnostic.id)
-    achievement.set_to_complete(diagnostic_response: diagnostic_params)
+    achievement.set_to_complete(diagnostic_response: diagnostic_params, score: score)
     redirect_to programme_path(Programme.primary_certificate.slug)
   end
 
