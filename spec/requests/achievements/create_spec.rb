@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
+  let (:referrer) { 'https://testing123.com' }
 
   describe 'POST #create' do
     before do
@@ -64,7 +65,7 @@ RSpec.describe AchievementsController do
         subject
       end
 
-      it 'redirects to the dashboard path' do
+      it 'redirects to the dashboard path by default' do
         expect(response).to redirect_to(dashboard_path)
       end
 
@@ -78,6 +79,24 @@ RSpec.describe AchievementsController do
 
       it 'flash error has correct info' do
         expect(flash[:error]).to match(/something went wrong adding/)
+      end
+    end
+
+    context 'with invalid params' do
+      subject do
+        post achievements_path,
+             params: {
+               achievement: { activity_id: nil }
+             },
+             headers: { 'HTTP_REFERER' => referrer }
+      end
+
+      before do
+        subject
+      end
+
+      it 'redirects to the referrer if specified' do
+          expect(response).to redirect_to(referrer)
       end
     end
 
