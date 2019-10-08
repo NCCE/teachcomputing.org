@@ -26,7 +26,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a news link' do
-    expect(rendered).to have_link('News', href: '/news')
+    expect(rendered).to have_link('News', href: 'https://blog.teachcomputing.org/tag/news/')
   end
 
   it 'has an offer link' do
@@ -38,7 +38,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a press link' do
-    expect(rendered).to have_link('Press', href: '/press')
+    expect(rendered).to have_link('Press', href: 'https://blog.teachcomputing.org/tag/press/')
   end
 
   it 'has an accessibility statement link' do
