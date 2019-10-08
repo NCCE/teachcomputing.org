@@ -2,39 +2,39 @@
   font-family: $font-family-body;
 
 	&:link {
-		color: $ncce-blue-link;
+		color: $blue-link;
 	}
 	&:visited {
-		color: $ncce-purple;
+		color: $purple;
 	}
 	&:hover {
-		color: $ncce-pink;
+		color: $pink;
 	}
 	&:focus {
-		color: $ncce-white;
-		background-color: $ncce-pink;
-		outline-color: $ncce-pink;
+		color: $white;
+		background-color: $pink;
+		outline-color: $pink;
 	}
 	&:active {
-		background-color: $ncce-pink;
-		color: $ncce-white;
+		background-color: $pink;
+		color: $white;
 	}
 
   &--on-dark {
   	&:link {
-  		color: $ncce-grey-x-light;
+  		color: $grey-x-light;
   	}
   	&:visited {
-  		color: $ncce-grey;
+  		color: $grey;
   	}
   	&:hover {
-  		color: $ncce-white;
+  		color: $white;
   	}
     &:focus {
-      color: $ncce-white;
+      color: $white;
     }
     &:active {
-      color: $ncce-black;
+      color: $black;
     }
   }
 }

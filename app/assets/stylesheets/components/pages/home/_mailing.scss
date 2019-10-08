@@ -1,5 +1,5 @@
 .ncce-stay-in-touch {
-	background-color: $ncce-dark-purple;
+	background-color: $dark-purple;
 	background-image: none;
 	padding-bottom: 30px;
 	padding-top: 20px;
@@ -15,7 +15,7 @@
 }
 
 .ncce-stay-in-touch__label {
-	color: $ncce-white;
+	color: $white;
 	font-weight: bold;
 }
 
@@ -25,15 +25,15 @@
 
 .ncce-stay-in-touch__heading,
 .ncce-stay-in-touch__body {
-	color: $ncce-white;
+	color: $white;
 }
 
 .ncce-stay-in-touch__footnote {
 	font-size: 0.875rem;
-	color: $ncce-white;
+	color: $white;
 
 	a {
-		color: $ncce-white;
+		color: $white;
 	}
 }
 

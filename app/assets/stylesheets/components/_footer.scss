@@ -1,11 +1,11 @@
 .ncce-footer {
-	background-color: $ncce-dark-x-grey;
+	background-color: $dark-x-grey;
 	border-top: none;
 	padding: 2rem 0;
 }
 
 .ncce-footer__heading {
-	color: $ncce-white;
+	color: $white;
 	margin-bottom: 20px;
 
 	@include govuk-media-query($from: tablet) {
@@ -30,20 +30,20 @@
 .ncce-footer__link--homepage {
   text-decoration: none;
   line-height: 1em;
-  color: $ncce-white;
+  color: $white;
   &:link,
   &:visited {
-    color: $ncce-white;
+    color: $white;
   }
   &:hover {
-    color: $ncce-grey-x-light;
+    color: $grey-x-light;
   }
   &:focus {
-    color: $ncce-white;
-    background-color: $ncce-pink;
-    outline-color: $ncce-pink;
+    color: $white;
+    background-color: $pink;
+    outline-color: $pink;
   }
   &:active {
-    color: $ncce-grey;
+    color: $grey;
   }
 }

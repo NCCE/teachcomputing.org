@@ -1,6 +1,6 @@
 .pathway-wrapper {
   border-radius: 10px;
-  background-color: $ncce-lavender;
+  background-color: $lavender;
   padding: 15px;
   font-family: $font-family-body;
   margin-bottom: 40px;
@@ -29,10 +29,10 @@
       left: 0;
       width: 26px;
       height: 26px;
-      color: $ncce-butterfly-bush;
-      background: $ncce-white;
+      color: $butterfly-bush;
+      background: $white;
       border-radius: 100px;
-      border: solid 3px $ncce-wakaiwa-grey;
+      border: solid 3px $wakaiwa-grey;
       text-align: center;
     }
   }
@@ -46,7 +46,7 @@
     width: 0;
     height: 100%;
     margin-left: 12px;
-    border-left: dotted 3px $ncce-canon-pink;
+    border-left: dotted 3px $canon-pink;
   }
 
   &__step:last-child:after {

@@ -1,5 +1,5 @@
 .ihavedonethis__text {
-  color: $ncce-white;
+  color: $white;
   margin-bottom: 0.5rem;
 }
 
@@ -14,15 +14,15 @@
   &[aria-expanded="true"] {
     background-image: url('close-self.svg');
     background-repeat: no-repeat;
-    background-color: $ncce-dark-x-grey;
+    background-color: $dark-x-grey;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     box-shadow: none;
-    color: $ncce-white;
+    color: $white;
 
     &:focus {
-      color: $ncce-white;
-      background-color: $ncce-dark-x-grey;
+      color: $white;
+      background-color: $dark-x-grey;
       outline: none;
       box-shadow: none;
       border-bottom-right-radius: 0;
@@ -31,8 +31,8 @@
 
     &:hover,
     &[disabled]:hover {
-      color: $ncce-white;
-      background-color: $ncce-dark-x-grey;
+      color: $white;
+      background-color: $dark-x-grey;
       text-decoration: underline;
       box-shadow: none;
       border-bottom-right-radius: 0;
@@ -43,7 +43,7 @@
 }
 
 .ihavedonethis__popup {
-  background-color: $ncce-dark-x-grey;
+  background-color: $dark-x-grey;
   margin-top: -3.8rem;
   padding: 0.5rem;
   box-sizing: border-box;
