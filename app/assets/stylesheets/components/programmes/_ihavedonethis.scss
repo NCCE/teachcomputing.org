@@ -1,5 +1,6 @@
 .ihavedonethis__text {
   color: $ncce-white;
+  margin-bottom: 0.5rem;
 }
 
 .ihavedonethis__button {
@@ -59,7 +60,7 @@
     z-index: 1;
 
     @include govuk-media-query($from: tablet) {
-      margin-top: -1px;
+      margin-top: 2rem;
       width: 15rem;
     }
 
@@ -74,5 +75,6 @@
 }
 
 .ihavedonethis__group {
+  display: inline-block;
   margin-bottom: 1rem;
 }

@@ -6,23 +6,23 @@
         <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
       </span>
       <% unless presenter.completed? %>
-      <div class="ihavedonethis">
+      <span class="ihavedonethis">
         <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
         <%= presenter.button_label %>
         </button>
-        <div class="ihavedonethis__popup">
+        <span class="ihavedonethis__popup">
           <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
-            <div class="govuk-form-group ihavedonethis__group">
+            <span class="govuk-form-group ihavedonethis__group">
               <%= label_tag :self_verification_info, 'Please provide a link to the review', class: 'govuk-label ihavedonethis__text' %>
               <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
               <%= f.hidden_field :activity_id, value: presenter.id %>
-            </div>
+            </span>
             <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
           <% end %>
-        </div>
-      </div>
+        </span>
+      </span>
     <% end %>
-</li>
+</span>
 <% end %>
 
 
