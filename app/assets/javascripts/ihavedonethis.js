@@ -1,4 +1,4 @@
-function initialiseselfActivity() {
+function initialiseIHaveDoneThisPopup() {
   const wrappers = document.querySelectorAll(
     '.ihavedonethis')
 
@@ -19,5 +19,5 @@ function initialiseselfActivity() {
 }
 
 ready(function () {
-  initialiseselfActivity()
+  initialiseIHaveDoneThisPopup()
 })
