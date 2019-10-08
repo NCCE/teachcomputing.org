@@ -18,7 +18,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
     end
 
     it 'has the buttons to self verify' do
-      expect(rendered).to have_link('I have done this', count: 2)
+      expect(rendered).to have_css('.ihavedonethis__button', count: 2)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
     end
 
     it 'has one button to self verify' do
-      expect(rendered).to have_link('I have done this', count: 1)
+      expect(rendered).to have_css('.ihavedonethis__button', count: 1)
     end
   end
 
@@ -51,7 +51,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
     end
 
     it 'has no buttons to self verify' do
-      expect(rendered).to have_link('I have done this', count: 0)
+      expect(rendered).to have_css('.ihavedonethis__button', count: 0)
     end
   end
 end

@@ -22,7 +22,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a news link' do
-    expect(rendered).to have_link('recent article', href: '/news/a-level')
+    expect(rendered).to have_link('recent article', href: 'https://blog.teachcomputing.org/a-level')
   end
 
   it 'has a find community link' do

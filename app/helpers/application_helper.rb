@@ -10,4 +10,12 @@ module ApplicationHelper
   def auth_url
     '/auth/stem'
   end
+
+  def news_url
+    'https://blog.teachcomputing.org/tag/news/'
+  end
+
+  def press_url
+    'https://blog.teachcomputing.org/tag/press/'
+  end
 end
