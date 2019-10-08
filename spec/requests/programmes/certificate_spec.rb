@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) {
                                     create( :user_programme_enrolment,
@@ -80,7 +80,7 @@ RSpec.describe ProgrammesController do
       end
 
       it 'redirects to login' do
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(/register/)
       end
     end
   end

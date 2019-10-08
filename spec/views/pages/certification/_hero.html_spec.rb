@@ -15,7 +15,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('h1.govuk-heading-m', text: programme.title)
+    expect(rendered).to have_css('.certification-hero__heading', text: programme.title)
   end
 
   it 'has one notepad image' do

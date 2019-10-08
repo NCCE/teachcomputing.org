@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_100608) do
+ActiveRecord::Schema.define(version: 2019_09_27_110338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_100608) do
     t.boolean "self_certifiable", default: false
     t.string "provider"
     t.string "future_learn_course_id"
+    t.text "description"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["slug"], name: "index_activities_on_slug", unique: true
@@ -116,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_100608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
+    t.string "type"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 

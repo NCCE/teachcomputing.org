@@ -20,11 +20,7 @@
         <p class="govuk-body-s ncce-aside__text">
         To book onto a course, you'll need to create an account. It's free and takes two minutes!
         </p>
-        <p class="govuk-body-z">
-          <%= link_to 'Create an account / log in', login_path,
-          class: 'govuk-button ncce-button__pink ncce-aside__button',
-            role: 'button', draggable: 'false' %>
-        </p>
+        <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
       </div>
       <% end %>
     </div>
@@ -48,7 +44,7 @@
           <%= form_tag url_for(controller: 'courses', anchor: 'filter-results'), { method: :get, class: 'ncce-courses__filter-form js-course-filter-form' } do %>
             <span class="govuk-body-m govuk-!-width-full ncce-courses__filter-prompt">Find a course:</span>
             <%= select_tag :level,
-              options_for_select(@levels.keys, @current_level),
+              options_for_select(@age_groups.keys, @current_level),
               {
                 include_blank: 'Any level',
                 class: 'govuk-select ncce-select',
@@ -68,7 +64,7 @@
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by topic' }
             %>
-            <%= hidden_field_tag :workstream, @current_workstream %>
+            <%= hidden_field_tag :certificate, @current_certificate.try(:slug) %>
             <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
           <% end %>
         </div>
@@ -93,7 +89,7 @@
                   end
                 %>
               <% else %>
-                <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
+                <%= link_to(course.title, auth_url, method: :post, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
               <span class="ncce-courses__heading-code"><%= course.activity_code %></span>
             </div>

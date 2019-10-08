@@ -23,7 +23,6 @@ RSpec.describe('courses/index', type: :view) do
     @locations = ['Cambridge']
     @levels = @age_groups
     @topics = { 'Algorithms': '101' }
-    @workstreams = ['CS Accelerator']
 
     render
   end
@@ -37,8 +36,8 @@ RSpec.describe('courses/index', type: :view) do
       allow(view).to receive(:current_user).and_return(nil)
     end
 
-    it 'has a courses link' do
-      expect(rendered).to have_link('Create an account / log in', href: '/login')
+    it 'has a create account link' do
+      expect(rendered).to have_link('Create an account', href: /register/)
     end
   end
 
@@ -67,20 +66,8 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
     end
 
-    it 'renders CS Accelerator tag' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
-    end
-
-    it 'doesn\'t render non CS Accelerator tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
-    end
-
     it 'renders filter selects' do
       expect(rendered).to have_css('.ncce-select', count: 3)
-    end
-
-    it 'renders hidden workstream field' do
-      expect(rendered).to have_selector(:xpath, '//input', :id => 'workstream', :visible => false)
     end
 
     it 'renders location select' do

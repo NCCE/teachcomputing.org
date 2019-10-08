@@ -5,7 +5,7 @@ RSpec.describe('components/_header', type: :view) do
 
   it 'has a link to the home page ' do
     render
-    expect(rendered).to have_link('National Centre forComputing Education', href: '/')
+    expect(rendered).to have_xpath('//a[@href = "/"][contains(@class, "govuk-header__link")]', count: 1)
   end
 
   context 'when a user is signed in' do

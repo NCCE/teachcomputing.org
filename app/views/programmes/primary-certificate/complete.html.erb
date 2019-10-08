@@ -1,0 +1,60 @@
+<div class="certification-hero">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <h1 class="govuk-heading-l underlined__title underlined__title--certificate-complete">Congratulations!</h1>
+      <div class="certification-hero__wrapper--complete">
+        <div class="certification-hero__image">
+          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--tablet' %>
+        </div>
+        <div class="certification-hero__content">
+          <p class="govuk-body-m govuk-!-font-weight-bold certification-hero__text">You have completed the National Centre for Computing Education certificate in</p>
+          <h2 class="govuk-heading-m certification-hero__text"><%= @programme.title %></h2>
+          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--mobile' %>
+          <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and accredited by Royal Academy of Engineering</p>
+          <p class="govuk-body">
+            <%= link_to 'View your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-m">Next steps:</h1>
+        <h2 class="govuk-heading-s">Certification</h2>
+        <p class="govuk-body">You have the option to download your certificate, or, if you would like to receive a hard-copy version, please <%= mail_to 'info@teachcomputing.org', 'contact us' %> to arrange the awarding of your certificate at a local CAS Community of Practice meeting.</p>
+        <h2 class="govuk-heading-s">Next steps</h2>
+        <p class="govuk-body">Some words here about next steps.</p>
+        <h2 class="govuk-heading-s">Tell us what you think</h2>
+        <p class="govuk-body">We hope that you have enjoyed learning with us and that this is having a positive impact on your teaching. To make this programme as useful as possible, we would love to hear <%= mail_to 'info@teachcomputing.org', 'your feedback' %>!</p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
+          <p class="govuk-body ncce-aside__text">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
+          <p class="govuk-body ncce-aside__text">You can also
+            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw" class="ncce-link ncce-link--on-dark" data-related="WeAreComputing" data-lang="en" data-show-count="false" data-dnt="true" target="_blank">follow @WeAreComputing</a>
+          </p>
+          <p class="govuk-body">
+            <a href="https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Teach%20primary%20computing%20Programme%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fprimary-certificate" class="govuk-button ncce-button__pink ncce-aside__button" data-size="large" data-related="WeAreComputing" data-lang="en" data-dnt="true">Tweet your certificate</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column">
+          <h2 class="govuk-heading-l ncce-programmes-activity__title underlined__title">Your learning journey</h2>
+        </div>
+      </div>
+      <%= render 'programmes/primary-certificate/achievement_list' %>
+    </div>
+  </div>
+</div>

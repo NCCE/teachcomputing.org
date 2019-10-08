@@ -10,10 +10,14 @@ RSpec.describe('programmes/cs-accelerator/show', type: :view) do
     @current_user = user
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+    @user_programme_achievements = instance_double('UserProgrammeAchievements')
+    allow(@user_programme_achievements).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
+    @user_programme_assessment = instance_double('UserProgrammeAssessment')
+    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: false)
     render
   end
 
   it 'has activities in the list' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 9)
+    expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
   end
 end

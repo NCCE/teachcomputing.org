@@ -62,34 +62,13 @@
       "description": "Allows login without using OAuth mechanism",
       "value": "true"
     },
-    "ACHIEVER_API_ENDPOINT": {
+    "ACHIEVER_V2_ENDPOINT": {
       "required": true
     },
-    "ACHIEVER_APPROVED_COURSE_TEMPLATES_WORKFLOW_ID": {
+    "ACHIEVER_V2_PASSWORD": {
       "required": true
     },
-    "ACHIEVER_FACE_TO_FACE_FUTURE_COURSES_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_ONLINE_FUTURE_COURSES_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_OCCURRENCE_FEE_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_OCCURRENCE_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSES_FOR_DELEGATE_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_DB_CONNECTION_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_TEMPLATE_SUBJECT_DETAILS_WORKFLOW_ID": {
-      "required": true
-    },
-    "ACHIEVER_COURSE_TEMPLATE_AGE_RANGE_WORKFLOW_ID": {
+    "ACHIEVER_V2_USERNAME": {
       "required": true
     },
     "PROXY_URL": {
@@ -108,9 +87,6 @@
       "required": true
     },
     "CLASS_MARKER_WEBHOOK_SECRET_PHRASE": {
-      "required": true
-    },
-    "STEM_LOGIN_ENABLED": {
       "required": true
     }
   },

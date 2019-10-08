@@ -28,9 +28,7 @@
   </div>
 </div>
 </div>
-<% @programmes.each do |programme| %>
-  <%= render "dashboard/programmes/hero", programme: programme %>
-<% end %>
+<%= render "dashboard/programmes/hero" if current_user.programmes.size.positive? %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>
 

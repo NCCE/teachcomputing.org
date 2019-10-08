@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('dashboard/programmes/_hero', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :diagnostic_tool) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:programmes) { Programme.enrollable }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
@@ -23,28 +23,11 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
   end
 
-  context 'when the user hasn\'t enrolled onto the CS Accelerator programme' do
-    before do
-      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
-    end
-
-    it 'shows the certificate name' do
-      expect(rendered).to have_css('.certification-hero__text', text: programme.title)
-    end
-
-    it 'shows the enrollment button' do
-      expect(rendered).to have_link('Find out more & enrol', href: "/#{programme.slug}")
-    end
-  end
-
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
-      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
-    end
-
-    it 'shows the certificate progress section' do
-      expect(rendered).to have_css('.underlined__title', text: 'Your certificate')
+      user.reload
+      render :template => 'dashboard/programmes/_hero'
     end
 
     it 'shows the certificate link' do
@@ -60,6 +43,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     before do
       user_programme_enrolment
       passed_exam
+      user.reload
       render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Tick icon</title>
+    <g id="Primary-certification" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pri-enrolled" transform="translate(-989.000000, -1011.000000)" fill="#FFFFFF">
+            <g id="button/small-copy-6" transform="translate(851.000000, 999.000000)">
+                <path d="M148.93421,9.62213965 C149.147179,9.82448073 149.278175,10.0998046 149.278175,10.4031746 L149.278175,17.1531746 C149.278175,17.7744949 148.728706,18.2781746 148.050902,18.2781746 C147.373098,18.2781746 146.823629,17.7744949 146.823629,17.1531746 L146.823629,11.73272 L141.403175,11.73272 C140.781854,11.73272 140.278175,11.1832513 140.278175,10.5054473 C140.278175,9.82764331 140.781854,9.27817459 141.403175,9.27817459 L148.153175,9.27817459 C148.456545,9.27817459 148.731868,9.40917027 148.93421,9.62213965 Z" id="Combined-Shape" transform="translate(144.778175, 13.778175) rotate(-225.000000) translate(-144.778175, -13.778175) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

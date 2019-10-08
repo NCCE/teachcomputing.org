@@ -127,3 +127,13 @@ Activity.find_or_create_by(slug: 'introduction-to-cybersecurity-for-teachers') d
   activity.future_learn_course_id = '030261f8-1e96-4a70-a329-e3eb8b868915'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'programming-with-guis') do |activity|
+  activity.title = 'Programming with GUIs'
+  activity.credit = 20
+  activity.slug = 'programming-with-guis'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '645ec51f-0b46-4102-a364-90647057f4f2'
+  activity.provider = 'future-learn'
+end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) {
                                     create( :user_programme_enrolment,
@@ -91,16 +91,12 @@ RSpec.describe ProgrammesController do
           expect(assigns(:programme)).to eq(programme)
         end
 
-        it 'assigns the online achievements' do
-          expect(assigns(:online_achievements)).to include(online_achievement)
+        it 'assigns the achievements' do
+          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
         end
 
-        it 'assigns the face_to_face achievements' do
-          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-        end
-
-        it 'assigns the diagnostic achievement state correctly' do
-          expect(assigns(:downloaded_diagnostic)).to eq (false)
+        it 'assigns the assessments' do
+          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
         end
 
         it 'redirects show to complete' do
@@ -116,7 +112,7 @@ RSpec.describe ProgrammesController do
       end
 
       it 'redirects to login' do
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(/register/)
       end
     end
   end

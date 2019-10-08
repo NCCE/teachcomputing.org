@@ -1,4 +1,4 @@
-secondary = Programme.find_or_create_by(slug: 'secondary-certificate') do |programme|
+secondary = Programmes::SecondaryCertificate.find_or_create_by(slug: 'secondary-certificate') do |programme|
   programme.title = 'Teach secondary computing'
   programme.slug = 'secondary-certificate'
   programme.description = 'Teach secondary computing'
@@ -13,6 +13,13 @@ slugs = %w[
   creative-computing-for-key-stage-3
   ks4-computing-for-all
   scratch-to-python-moving-from-block-to-text-based-programming
+  contribute-to-online-discussion
+  attend-a-cas-community-meeting
+  review-a-resource-on-cas
+  host-or-attend-a-barefoot-workshop
+  lead-a-cas-community-of-practice
+  run-an-after-school-code-club
+  lead-a-session-at-a-regional-or-national-conference
 ]
 
 slugs.each do |slug|
