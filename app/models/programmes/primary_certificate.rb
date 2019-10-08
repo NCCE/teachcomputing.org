@@ -1,7 +1,7 @@
 module Programmes
   class PrimaryCertificate < Programme
 
-    def self.diagnostic
+    def diagnostic
       activity = Activity.find_by!(slug: 'primary-certificate-diagnostic')
     end
 
