@@ -1,3 +1,7 @@
+$hero-goldenrod: #FAD160;
+$hero-terracotta: #E67D6E;
+$nearly-black: #040811;
+
 $logo_block: 40px;
 $deep-cerulean: #007fa2;
 $dixie: #e7a615;
@@ -13,7 +17,7 @@ $cs-accelerator-color: $tapestry;
 
 .hero {
   background-color: $action-color;
-  color: $ncce-dark-x-grey;
+  color: $grey-dark-x;
   position: relative;
   &:after {
     content: "";
@@ -83,8 +87,8 @@ $cs-accelerator-color: $tapestry;
 }
 
 .hero__status {
-  background-color: $ncce-dark-x-grey;
-  color: $ncce-white;
+  background-color: $grey-dark-x;
+  color: $white;
   float: left;
   font-weight: bold;
   padding: 5px 12px;
@@ -92,7 +96,7 @@ $cs-accelerator-color: $tapestry;
 }
 
 .hero__heading-wrapper {
-  background-color: $ncce-white;
+  background-color: $white;
   clear: both;
   float: left;
   max-width: 75%;
@@ -110,11 +114,11 @@ $cs-accelerator-color: $tapestry;
 
 .certification-hero__heading,
 .certification-hero__text {
-  color: $ncce-dark-x-grey;
+  color: $grey-dark-x;
 }
 
 .certification-hero {
-  background-color: $ncce-dark-purple;
+  background-color: $purple-dark;
   background-image: none;
 }
 
@@ -128,19 +132,18 @@ $cs-accelerator-color: $tapestry;
   display: flex;
 }
 
-.certification-hero__heading,
 .certification-hero__text {
-  color: $ncce-dark-x-grey;
+  color: $white;
 }
 
 .certification-hero__status {
-  background-color: $ncce-dark-x-grey;
-  color: $ncce-white;
+  background-color: $grey-dark-x;
+  color: $white;
   padding: 5px 12px;
-
 }
 
 .certification-hero__heading {
+  color: $white;
   margin-bottom: 10px;
   @include govuk-media-query($from: tablet) {
     font-size: 3.7vw;
@@ -190,16 +193,16 @@ $cs-accelerator-color: $tapestry;
 
   .certification-hero__heading,
   .certification-hero__text {
-    color: $ncce-white;
+    color: $white;
   }
 
   .certification-hero__status {
-    background-color: $ncce-white;
-    color: $ncce-dark-purple;
+    background-color: $white;
+    color: $purple-dark;
   }
 }
 .primary-certificate {
-  background-color: $ncce-hero-goldenrod;
+  background-color: $hero-goldenrod;
   background-image: url(/images/primary-certificate/hero-bg.svg);
   background-position: top right;
   background-repeat: no-repeat;
@@ -207,9 +210,9 @@ $cs-accelerator-color: $tapestry;
 }
 
 .secondary-certificate {
-  background-color: $ncce-hero-terracotta;
+  background-color: $hero-terracotta;
   .certification-hero__text {
-    color: $ncce-nearly-black;
+    color: $nearly-black;
   }
   .certification-hero__heading {
     @include govuk-media-query($from: tablet) {

@@ -1,22 +1,22 @@
 // Generic 'white on dark' box - for use in asides
 .ncce-aside {
-	background-color: $ncce-dark-y-grey;
+	background-color: $grey-dark-y;
 	padding: 1rem;
 
 	&__text {
-		color: $ncce-white;
+		color: $white;
 	}
 
 	&__title {
-		color: $ncce-white;
+		color: $white;
 		font-weight: 700;
 	}
 
 	&__link,
 	&__link:visited {
-		color: $ncce-white;
+		color: $white;
 		&:hover {
-			color: $ncce-grey-x-light;
+			color: $grey-x-light;
 		}
 	}
 

@@ -1,5 +1,5 @@
 .ncce-template__body {
-  background-color: $ncce-white;
+  background-color: $white;
 }
 
 .ncce-certificate {
@@ -10,7 +10,7 @@
     width: auto;
     height: auto;
     min-height: 100%;
-    background-color: $ncce-white;
+    background-color: $white;
   }
 
   &__wrapper {
@@ -59,7 +59,7 @@
     top: 0;
     width: 100px;
     height: 100px;
-    color: $ncce-white;
+    color: $white;
   }
 
   &__name {
@@ -121,7 +121,7 @@
   html, body {
     height:100%;
     overflow: hidden;
-    background: $ncce-white;
+    background: $white;
   }
   @page {
     margin: 0.0cm;
