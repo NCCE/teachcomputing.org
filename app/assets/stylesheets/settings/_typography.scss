@@ -3,7 +3,7 @@
 .govuk-heading-l,
 .govuk-heading-xl {
   font-family: $font-family-heading;
-  color: $ncce-black;
+  color: $black;
 }
 
 .govuk-body {
@@ -16,7 +16,7 @@
   background-position: 50% 80%;
   background-repeat: no-repeat;
   background-size: 10rem;
-  color: $ncce-white;
+  color: $white;
   padding: 1.5rem 0;
 
   @include govuk-media-query($from: tablet) {

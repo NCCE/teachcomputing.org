@@ -1,5 +1,5 @@
 .certification {
-  background-color: $ncce-dark-purple;
+  background-color: $purple-dark;
   background-image: none;
 
   @include govuk-media-query($from: tablet) {
@@ -16,7 +16,7 @@
     background-position: 50% 80%;
     background-repeat: no-repeat;
     background-size: 10rem;
-    color: $ncce-white;
+    color: $white;
     padding: 1.5rem 0;
 
     @include govuk-media-query($from: tablet) {
@@ -36,7 +36,7 @@
 }
 
 .certification-progress {
-  background-color: $ncce-white;
+  background-color: $white;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 1.25rem 0.9rem;
@@ -70,22 +70,22 @@
 .certification-progress__bar {
   width: 100%;
   height: 16px;
-  background-color: $ncce-grey-x-light;
-  color: $ncce-pink;
+  background-color: $grey-x-light;
+  color: $pink;
 
   &::-webkit-progress-bar {
-    background-color: $ncce-grey-x-light;
+    background-color: $grey-x-light;
   }
 
   &::-webkit-progress-value {
-    background: $ncce-pink;
+    background: $pink;
   }
 
   &::-moz-progress-bar {
-    background: $ncce-pink;
+    background: $pink;
   }
 }
 
 .pink-text {
-  color: $ncce-pink;
+  color: $pink;
 }

@@ -4,18 +4,18 @@
   margin: 20px 0 20px 0;
   padding: 1rem;
   align-items: center;
-  color: $ncce-dark-x-grey;
+  color: $grey-dark-x;
 }
 
 .ncce-alert {
   font-size: 1.188rem;
 
   &__notice {
-		background-color: $ncce-blue-flash;
+		background-color: $blue-flash;
   }
 
   &__error {
-		background-color: $ncce-pink-flash;
+		background-color: $pink-flash;
   }
 
   a {
