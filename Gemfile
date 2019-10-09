@@ -34,7 +34,7 @@ gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'wicked'
+gem 'wicked', '~> 1.3.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
