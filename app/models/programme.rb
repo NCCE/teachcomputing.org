@@ -1,5 +1,4 @@
 class Programme < ApplicationRecord
-
   has_many :programme_activities, dependent: :destroy
   has_many :activities, through: :programme_activities
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
@@ -22,24 +21,22 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def self.diagnostic
-    false
-  end
-
   def credits_for_certificate
-    if slug == 'cs-accelerator'
-      return { online: 40, 'face-to-face': 40 }
-    end
+    return { online: 40, 'face-to-face': 40 } if slug == 'cs-accelerator'
 
     {}
   end
 
-  def user_completed?(user = nil)
+  def diagnostic
+    activities.find_by!(category: 'diagnostic')
+  end
+
+  def user_completed?(_user = nil)
     false
   end
 
   def user_completed_diagnostic?(user)
-    false
+    user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
   end
 
   def user_enrolled?(user = nil)
