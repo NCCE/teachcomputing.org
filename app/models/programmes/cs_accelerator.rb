@@ -1,7 +1,7 @@
 module Programmes
   class CSAccelerator < Programme
 
-    def diagnostic
+    def self.diagnostic
       Activity.find_by!(slug: 'cs-accelerator-diagnostic-tool')
     end
 
@@ -13,8 +13,8 @@ module Programmes
           .where(activities: { category: 'assessment' }).any?
     end
 
-    def user_completed_diagnostic(user)
-      user.achievements.in_state(:complete).where(activity_id: self.diagnostic.id).exists?
+    def user_completed_diagnostic?(user)
+      user.achievements.in_state(:complete).where(activity_id: Programmes::CSAccelerator.diagnostic.id).exists?
     end
   end
 end

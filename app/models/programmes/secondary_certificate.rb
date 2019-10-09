@@ -9,7 +9,7 @@ module Programmes
       false
     end
 
-    def user_completed_diagnostic(user)
+    def user_completed_diagnostic?(user)
       true
     end
   end

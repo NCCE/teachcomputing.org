@@ -43,4 +43,8 @@ class Programme < ApplicationRecord
   def user_completed?(user = nil)
     false
   end
+
+  def user_completed_diagnostic?(user)
+    false
+  end
 end

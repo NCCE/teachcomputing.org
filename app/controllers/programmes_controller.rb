@@ -33,7 +33,7 @@ class ProgrammesController < ApplicationController
   private
 
     def user_completed_diagnostic?
-      return true if @programme.user_completed_diagnostic(current_user)
+      return true if @programme.user_completed_diagnostic?(current_user)
 
       redirect_to primary_certificate_diagnostic_path(:introduction)
     end

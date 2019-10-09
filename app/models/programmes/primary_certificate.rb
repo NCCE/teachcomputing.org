@@ -1,7 +1,7 @@
 module Programmes
   class PrimaryCertificate < Programme
 
-    def diagnostic
+    def self.diagnostic
       Activity.find_by!(slug: 'primary-certificate-diagnostic')
     end
 
@@ -25,8 +25,8 @@ module Programmes
                                     .any?
     end
 
-    def user_completed_diagnostic(user)
-      user.achievements.in_state(:complete).where(activity_id: self.diagnostic.id).exists?
+    def user_completed_diagnostic?(user)
+      user.achievements.in_state(:complete).where(activity_id: Programmes::PrimaryCertificate.diagnostic.id).exists?
     end
   end
 end
