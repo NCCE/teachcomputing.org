@@ -60,7 +60,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     end
 
     it 'shows the image' do
-        expect(rendered).to have_css('.certification-hero__image--dashboard', count: 1)
+        expect(rendered).to have_css('.hero__image--dashboard', count: 1)
     end
   end
 end

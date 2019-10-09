@@ -21,7 +21,7 @@ RSpec.describe('programmes/primary-certificate/show', type: :view) do
   end
 
   it 'has the hero' do
-    expect(rendered).to have_css('.certification-hero__heading', text: programme.title)
+    expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
 
   it 'has the title' do

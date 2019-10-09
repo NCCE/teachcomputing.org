@@ -15,15 +15,12 @@ RSpec.describe('pages/certification/_hero', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.certification-hero__heading', text: programme.title)
+    expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
 
-  it 'has one notepad image' do
-    expect(rendered).to have_css('.certification-hero__image', count: 1)
-  end
 
   it 'doesn\'t show the enrolled tag' do
-    expect(rendered).not_to have_css('.certification-hero__enrolled', count: 1)
+    expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
   end
 
   context 'when the user logged in but not enrolled' do
@@ -33,11 +30,11 @@ RSpec.describe('pages/certification/_hero', type: :view) do
     end
 
     it 'doesn\'t show the enrolled tag' do
-      expect(rendered).not_to have_css('.certification-hero__enrolled', count: 1)
+      expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
     end
   end
 
-  context 'when the user logged in but not enrolled' do
+  context 'when the user logged in and enrolled' do
     before do
       user_programme_enrolment
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -45,7 +42,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
     end
 
     it 'shows the enrolled tag' do
-      expect(rendered).to have_css('.certification-hero__enrolled', count: 1)
+      expect(rendered).to have_css('.hero__status', text: 'You are enrolled')
     end
   end
 end

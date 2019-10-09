@@ -1,28 +1,11 @@
-<div class="certification-hero">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <h1 class="govuk-heading-l underlined__title underlined__title--certificate-complete">Congratulations!</h1>
-      <div class="certification-hero__wrapper--complete">
-        <div class="certification-hero__image">
-          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--tablet' %>
-        </div>
-        <div class="certification-hero__content">
-          <p class="govuk-body-m govuk-!-font-weight-bold certification-hero__text">You have completed the National Centre for Computing Education certificate in</p>
-          <h2 class="govuk-heading-m certification-hero__text"><%= @programme.title %></h2>
-          <%= image_tag '/images/notepad.svg', alt: '', class: 'certification-hero__image--mobile' %>
-          <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and accredited by Royal Academy of Engineering</p>
-          <p class="govuk-body">
-            <%= link_to 'View your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'pages/certification/hero' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">
+          <%= link_to 'View your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__pink', role: 'button', draggable: 'false' %>
+        </p>
         <h1 class="govuk-heading-m">Next steps:</h1>
         <h2 class="govuk-heading-s">Certification</h2>
         <p class="govuk-body">You have the option to download your certificate, or, if you would like to receive a hard-copy version, please <%= mail_to 'info@teachcomputing.org', 'contact us' %> to arrange the awarding of your certificate at a local CAS Community of Practice meeting.</p>

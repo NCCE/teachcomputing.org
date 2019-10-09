@@ -3,6 +3,7 @@ $hero-terracotta: #E67D6E;
 $nearly-black: #040811;
 
 $logo_block: 40px;
+$logo_block-mobile: 29px;
 $deep-cerulean: #007fa2;
 $dixie: #e7a615;
 $tapestry: #a94e91;
@@ -11,8 +12,8 @@ $concrete: #F2F2F2;
 
 $plain-hero-color: $concrete;
 $action-color: $deep-cerulean;
-$primary-cert-color: $dixie;
-$secondary-cert-color: $jaffa;
+$secondary-cert-color: $dixie;
+$primary-cert-color: $jaffa;
 $cs-accelerator-color: $tapestry;
 
 .hero {
@@ -22,58 +23,83 @@ $cs-accelerator-color: $tapestry;
   &:after {
     content: "";
     display: block;
+    opacity: 0.15;
     position: absolute;
     top: 0;
     right: 0;
     height: 120px;
     width: 140px;
-    opacity: 0.15;
     background-image: url(/images/hero/glyph-1.svg);
+    background-position-x: right;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    @include govuk-media-query($from: desktop) {
+      background-size: 100%;
+    }
+  }
+}
+
+.hero-glyph-2:after {
+  height: 75px;
+  width: 105px;
+  background-image: url(/images/hero/glyph-2.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 100px;
+    width: 140px;
+  }
+}
+
+.hero-glyph-3:after {
+  height: 75px;
+  width: 60px;
+  background-image: url(/images/hero/glyph-3.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 100px;
+    width: 80px;
+  }
+}
+
+.hero-glyph-4:after {
+  height: 92px;
+  width: 90px;
+  background-image: url(/images/hero/glyph-4.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 130px;
+    width: 120px;
   }
 }
 
 .hero--center-glyph:after {
-  top: calc(50% - 60px);
+  top: calc(50% - 45px);
+  @include govuk-media-query($from: desktop) {
+    top: calc(50% - 60px);
+  }
 }
 
 .hero--bottom-glyph:after {
   top: unset;
   bottom: 0;
+  background-position-y: bottom;
 }
 
 .hero--plain {
   background-color: $plain-hero-color;
   &:after {
-    opacity: 1.0;
+    display: none;
+    background-image: none;
   }
 }
 
 .hero--primary-certificate {
   background-color: $primary-cert-color;
-  &:after {
-    height: 100px;
-    width: 140px;
-    background-image: url(/images/hero/glyph-2.svg);
-  }
 }
 
 .hero--secondary-certificate {
   background-color: $secondary-cert-color;
-  &:after {
-    height: 100px;
-    width: 80px;
-    background-image: url(/images/hero/glyph-3.svg);
-  }
 }
 
 .hero--cs-accelerator {
   background-color: $cs-accelerator-color;
-  &:after {
-    bottom: 0;
-    height: 130px;
-    width: 120px;
-    background-image: url(/images/hero/glyph-4.svg);
-  }
 }
 
 .hero__wrapper {
@@ -99,7 +125,9 @@ $cs-accelerator-color: $tapestry;
   background-color: $white;
   clear: both;
   float: left;
-  max-width: 75%;
+  @include govuk-media-query($from: desktop) {
+    max-width: 75%;
+  }
   padding: 10px;
 }
 
@@ -109,117 +137,9 @@ $cs-accelerator-color: $tapestry;
   margin-bottom: 0;
 }
 .hero__text {
+  margin-top: $logo_block-mobile / 4;
+  @include govuk-media-query($from: desktop) {
+    margin-top: $logo_block / 4;
+  }
   margin-bottom: 0;
-}
-
-.certification-hero__heading,
-.certification-hero__text {
-  color: $grey-dark-x;
-}
-
-.certification-hero {
-  background-color: $purple-dark;
-  background-image: none;
-}
-
-.certification-hero__wrapper {
-  align-items: center;
-  display: flex;
-}
-
-.certification-hero__wrapper--complete {
-  align-items: top;
-  display: flex;
-}
-
-.certification-hero__text {
-  color: $white;
-}
-
-.certification-hero__status {
-  background-color: $grey-dark-x;
-  color: $white;
-  padding: 5px 12px;
-}
-
-.certification-hero__heading {
-  color: $white;
-  margin-bottom: 10px;
-  @include govuk-media-query($from: tablet) {
-    font-size: 3.7vw;
-    margin-bottom: 20px;
-  }
-  @include govuk-media-query($from: 1500px) {
-    font-size: 57px;
-  }
-}
-
-.certification-hero__status + .certification-hero__heading {
-  margin-top: 10px;
-  @include govuk-media-query($from: tablet) {
-    margin-top: 20px;
-  }
-}
-
-.certification-hero__image {
-  align-self: flex-start;
-  margin-right: 1rem;
-  max-width: 140px;
-  min-width: 70px;
-  width: 20%;
-  @include govuk-media-query($from: tablet) {
-    margin-right: 2rem;
-  }
-}
-
-.certification-hero__image--dashboard {
-  float: left;
-  width: 40px;
-  margin: -10px 15px 30px 0;
-
-  @include govuk-media-query($from: tablet) {
-    width: 100px;
-    margin-top: 0;
-  }
-}
-
-.cs-accelerator {
-  @include govuk-media-query($from: tablet) {
-    background-image: url(/images/dashboard/triangle2.png);
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-  }
-
-  .certification-hero__heading,
-  .certification-hero__text {
-    color: $white;
-  }
-
-  .certification-hero__status {
-    background-color: $white;
-    color: $purple-dark;
-  }
-}
-.primary-certificate {
-  background-color: $hero-goldenrod;
-  background-image: url(/images/primary-certificate/hero-bg.svg);
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-}
-
-.secondary-certificate {
-  background-color: $hero-terracotta;
-  .certification-hero__text {
-    color: $nearly-black;
-  }
-  .certification-hero__heading {
-    @include govuk-media-query($from: tablet) {
-      font-size: 3.5vw;
-    }
-    @include govuk-media-query($from: 1400px) {
-      font-size: 51px;
-    }
-  }
 }

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
+  get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
