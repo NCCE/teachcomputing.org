@@ -1,3 +1,118 @@
+$logo_block: 40px;
+$deep-cerulean: #007fa2;
+$dixie: #e7a615;
+$tapestry: #a94e91;
+$jaffa: #f47c31;
+$concrete: #F2F2F2;
+
+$plain-hero-color: $concrete;
+$action-color: $deep-cerulean;
+$primary-cert-color: $dixie;
+$secondary-cert-color: $jaffa;
+$cs-accelerator-color: $tapestry;
+
+.hero {
+  background-color: $action-color;
+  color: $ncce-dark-x-grey;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 120px;
+    width: 140px;
+    opacity: 0.15;
+    background-image: url(/images/hero/glyph-1.svg);
+  }
+}
+
+.hero--center-glyph:after {
+  top: calc(50% - 60px);
+}
+
+.hero--bottom-glyph:after {
+  top: unset;
+  bottom: 0;
+}
+
+.hero--plain {
+  background-color: $plain-hero-color;
+  &:after {
+    opacity: 1.0;
+  }
+}
+
+.hero--primary-certificate {
+  background-color: $primary-cert-color;
+  &:after {
+    height: 100px;
+    width: 140px;
+    background-image: url(/images/hero/glyph-2.svg);
+  }
+}
+
+.hero--secondary-certificate {
+  background-color: $secondary-cert-color;
+  &:after {
+    height: 100px;
+    width: 80px;
+    background-image: url(/images/hero/glyph-3.svg);
+  }
+}
+
+.hero--cs-accelerator {
+  background-color: $cs-accelerator-color;
+  &:after {
+    bottom: 0;
+    height: 130px;
+    width: 120px;
+    background-image: url(/images/hero/glyph-4.svg);
+  }
+}
+
+.hero__wrapper {
+  padding-top: $logo_block;
+  padding-bottom: $logo_block;
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.hero__status {
+  background-color: $ncce-dark-x-grey;
+  color: $ncce-white;
+  float: left;
+  font-weight: bold;
+  padding: 5px 12px;
+  margin: 0;
+}
+
+.hero__heading-wrapper {
+  background-color: $ncce-white;
+  clear: both;
+  float: left;
+  max-width: 75%;
+  padding: 10px;
+}
+
+.hero__heading {
+  font-family: 'Objectivity Medium', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.hero__text {
+  margin-bottom: 0;
+}
+
+.certification-hero__heading,
+.certification-hero__text {
+  color: $ncce-dark-x-grey;
+}
+
 .certification-hero {
   background-color: $ncce-dark-purple;
   background-image: none;
@@ -18,7 +133,7 @@
   color: $ncce-dark-x-grey;
 }
 
-.certification-hero__enrolled {
+.certification-hero__status {
   background-color: $ncce-dark-x-grey;
   color: $ncce-white;
   padding: 5px 12px;
@@ -36,7 +151,7 @@
   }
 }
 
-.certification-hero__enrolled + .certification-hero__heading {
+.certification-hero__status + .certification-hero__heading {
   margin-top: 10px;
   @include govuk-media-query($from: tablet) {
     margin-top: 20px;
@@ -78,7 +193,7 @@
     color: $ncce-white;
   }
 
-  .certification-hero__enrolled {
+  .certification-hero__status {
     background-color: $ncce-white;
     color: $ncce-dark-purple;
   }
