@@ -1,7 +1,7 @@
 module Programmes
   class CSAccelerator < Programme
 
-    def self.diagnostic
+    def diagnostic
       Activity.find_by!(slug: 'cs-accelerator-diagnostic-tool')
     end
 
