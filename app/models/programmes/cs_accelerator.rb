@@ -2,7 +2,7 @@ module Programmes
   class CSAccelerator < Programme
 
     def diagnostic
-      activity = Activity.find_by!(slug: 'cs-accelerator-diagnostic-tool')
+      Activity.find_by!(slug: 'cs-accelerator-diagnostic-tool')
     end
 
     def user_completed?(user)

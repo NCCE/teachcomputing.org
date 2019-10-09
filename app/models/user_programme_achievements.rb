@@ -15,7 +15,7 @@ class UserProgrammeAchievements
   end
 
   def diagnostic_achievements
-    diagnostic_achievements = @achievements.with_category(Activity::ACTION_CATEGORY).where(activities: { category: 'diagnostic' })
+    diagnostic_achievements = @achievements.with_category(Activity::DIAGNOSTIC_CATEGORY)
     [DiagnosticPresenter.new(diagnostic_achievements.first)]
   end
 

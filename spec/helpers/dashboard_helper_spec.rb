@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe DashboardHelper, type: :helper do
   let(:user) { create(:user) }
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:another_activity) { create(:activity) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
 

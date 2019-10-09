@@ -4,7 +4,7 @@ RSpec.describe Achievement, type: :model do
   let(:achievement) { create(:achievement) }
   let(:achievement2) { create(:achievement) }
   let(:completed_achievement) { create(:completed_achievement) }
-  let(:diagnostic_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
   let(:community_activity) { create(:activity, :community) }
   let(:community_achievement) { create(:achievement, activity: community_activity) }

@@ -2,7 +2,7 @@ module Programmes
   class PrimaryCertificate < Programme
 
     def diagnostic
-      activity = Activity.find_by!(slug: 'primary-certificate-diagnostic')
+      Activity.find_by!(slug: 'primary-certificate-diagnostic')
     end
 
     def user_completed?(user)

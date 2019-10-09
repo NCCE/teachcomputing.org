@@ -4,7 +4,7 @@ RSpec.describe DashboardController do
   let(:user) { create(:user) }
   let(:complete_achievements) { create_list(:completed_achievement, 3, user: user) }
   let(:commenced_achievement) { create(:achievement, user: user) }
-  let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
   let(:create_programme) { create(:programme, slug: 'cs-accelerator') }
