@@ -10,12 +10,6 @@ class Programme < ApplicationRecord
 
   scope :enrollable, -> { where(enrollable: true) }
 
-  def user_enrolled?(user = nil)
-    return false if user.nil?
-
-    user.programmes.exists?(id)
-  end
-
   def self.cs_accelerator
     Programme.find_by(slug: 'cs-accelerator')
   end
@@ -28,6 +22,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
+  def self.diagnostic
+    false
+  end
+
   def credits_for_certificate
     if slug == 'cs-accelerator'
       return { online: 40, 'face-to-face': 40 }
@@ -36,15 +34,17 @@ class Programme < ApplicationRecord
     {}
   end
 
-  def diagnostic
-    false
-  end
-
   def user_completed?(user = nil)
     false
   end
 
   def user_completed_diagnostic?(user)
     false
+  end
+
+  def user_enrolled?(user = nil)
+    return false if user.nil?
+
+    user.programmes.exists?(id)
   end
 end
