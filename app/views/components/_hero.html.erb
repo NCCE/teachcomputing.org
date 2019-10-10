@@ -1,0 +1,21 @@
+<% colour = 'plain' if local_assigns[:colour].nil? %>
+<% glyph_position = false if local_assigns[:glyph_position].nil? %>
+<% glyph_num = false if local_assigns[:glyph_num].nil? %>
+<% status_message = false if local_assigns[:status_message].nil? %>
+<% subtitle = false if local_assigns[:subtitle].nil? %>
+<% small_title = false if local_assigns[:small_title].nil? %>
+<div class="hero<%= " hero--#{colour}" if colour %><%= " hero--#{glyph_position}-glyph" if glyph_position %><%= " hero--glyph-#{glyph_num}" if glyph_num %>">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <% if status_message %>
+        <span class="govuk-body-m hero__status"><%= status_message %></span>
+      <% end %>
+      <div class="hero__heading-wrapper">
+        <h1 class="<%= small_title ? 'govuk-heading-m' : 'govuk-heading-l'%> hero__heading"><%= title %></h1>
+        <% if subtitle %>
+          <p class="govuk-body-s hero__text"><%= subtitle %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

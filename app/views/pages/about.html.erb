@@ -1,9 +1,7 @@
+<%= render 'components/hero', title: 'About Us' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l ncce-about__title">About Us</h1>
-        </div>
         <div class="govuk-grid-column-two-thirds ncce-about__content">
           <p class="govuk-body-l">The National Centre for Computing Education is funded by the Department for Education and marks a significant investment in improving the provision of computing education in England.</p>
           <p class="govuk-body">Run by a consortium made up of <%= link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link', target: '_blank' %>, the <%= link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link', target: '_blank' %> and <%= link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link', target: '_blank' %>, our vision is to achieve a world-leading computing education for every child in England.</p>

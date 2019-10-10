@@ -1,8 +1,8 @@
+<%= render 'components/hero', title: 'Import' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h1 class='govuk-heading-l'>Import</h1>
           <p class='govuk-body'>Here you can upload the <strong>one</strong> CSV file from Future Learn.</p>
           <p class='govuk-body'>Once uploaded, a job will be scheduled to iterate over the file and process each record</p>
           <%= link_to 'Upload CSV', new_admin_import_path, class: 'govuk-button' %>

@@ -90,14 +90,17 @@ $cs-accelerator-color: $tapestry;
   }
 }
 
+.hero--orange,
 .hero--primary-certificate {
   background-color: $primary-cert-color;
 }
 
+.hero--yellow,
 .hero--secondary-certificate {
   background-color: $secondary-cert-color;
 }
 
+.hero--purple,
 .hero--cs-accelerator {
   background-color: $cs-accelerator-color;
 }
