@@ -28,7 +28,7 @@ class Programme < ApplicationRecord
   end
 
   def diagnostic
-    activities.find_by!(category: 'diagnostic')
+    activities.find_by(category: 'diagnostic')
   end
 
   def user_completed?(_user = nil)

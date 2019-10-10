@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Programme, type: :model do
+  let(:generic_programme) { create(:programme) }
   let(:programme) { create(:cs_accelerator) }
   let(:programmes) { create_list(:programme, 3) }
+  let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
@@ -37,6 +39,21 @@ RSpec.describe Programme, type: :model do
       it 'contains only programmes that are enrollable' do
         expect(Programme.enrollable).to eq programmes
         expect(Programme.enrollable).to_not include non_enrollable_programme
+      end
+    end
+  end
+
+  describe '#diagnostic' do
+    context 'when an associated diagnostic activity exists' do
+      it 'returns record' do
+        generic_programme.activities << diagnostic
+        expect(generic_programme.diagnostic).to eq diagnostic
+      end
+    end
+
+    context 'when an associated diagnostic activity exists' do
+      it 'returns nil' do
+        expect(generic_programme.diagnostic).to eq nil
       end
     end
   end
