@@ -2,6 +2,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
   include Wicked::Wizard
 
   before_action :authenticate
+  before_action :completed_diagnostic?, only: [:show]
 
   steps :introduction, :question_1, :question_2, :question_3, :question_4
 
@@ -21,6 +22,10 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
 
   private
 
+    def completed_diagnostic?
+      redirect_to finish_wizard_path if programme.user_completed_diagnostic?(current_user)
+    end
+
     def diagnostic_params
       params.require(:diagnostic).permit(:question_1, :question_2, :question_3, :question_4)
     end
@@ -34,6 +39,6 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     end
 
     def programme
-      @programme = Programme.find_by(slug: 'primary-certificate')
+      Programme.find_by(slug: 'primary-certificate')
     end
 end
