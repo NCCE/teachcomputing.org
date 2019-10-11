@@ -5,7 +5,9 @@
 }
 
 .ncce-footer__heading {
-	color: $white;
+  color: $white;
+  font-family: $font-family-heading;
+  font-weight: bold;
 	margin-bottom: 20px;
 
 	@include govuk-media-query($from: tablet) {
