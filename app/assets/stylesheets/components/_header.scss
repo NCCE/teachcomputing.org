@@ -19,19 +19,19 @@
   color: $deep-cerulean;
   font-weight: normal !important;
 
-  &:focus {
-    background-color: $deep-cerulean;
-    color: $white !important;
-    outline-color: $deep-cerulean;
+  &:link,
+  &:visited {
+    color: $deep-cerulean;
   }
-
   &:hover {
     border-color: transparent;
     color: $deep-cerulean;
     text-decoration: underline !important;
   }
-  &:visited {
-    color: $deep-cerulean;
+  &:focus {
+    background-color: $deep-cerulean;
+    color: $white;
+    outline-color: $deep-cerulean;
   }
 }
 .govuk-header__menu-button {
@@ -112,9 +112,8 @@
 
   .govuk-header__link {
     @include govuk-media-query($from: desktop) {
-      font-size: 19px;
+      font-size: 1.188rem;
       font-weight: bold !important;
-      text-decoration: none;
     }
   }
 
