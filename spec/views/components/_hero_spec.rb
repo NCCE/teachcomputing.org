@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe('components/_hero', type: :view) do
   let(:title) { 'Page title' }
   let(:colour) { 'blue' }
+  let(:status) { 'You are amazing' }
   let(:subtitle) { 'Some text here everybody' }
 
   context 'when no title is passed in' do
@@ -46,6 +47,16 @@ RSpec.describe('components/_hero', type: :view) do
 
     it 'is has the colour set' do
       expect(rendered).to have_css(".hero--#{colour}", count: 1)
+    end
+  end
+
+  context 'when status_message is passed in' do
+    before do
+      render :template => 'components/_hero', :locals => { title: title, status_message: status }
+    end
+
+    it 'shows the status block' do
+      expect(rendered).to have_css('.hero__status', text: status)
     end
   end
 
