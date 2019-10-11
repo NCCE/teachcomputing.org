@@ -12,13 +12,13 @@
 
   &:hover,
   &[disabled]:hover {
-    background-color: $ncce-black;
+    background-color: $black;
   }
 
   &:focus {
-    background-color: $ncce-black;
-    color: $ncce-white;
-    outline-color: $ncce-black;
+    background-color: $black;
+    color: $white;
+    outline-color: $black;
   }
 
   &[disabled]:active {
@@ -31,11 +31,11 @@
 }
 
 .ncce-button__pink {
-  @include ncce_button($ncce-pink);
+  @include ncce_button($pink);
 }
 
 .ncce-button__blue {
-  @include ncce_button($ncce-blue);
+  @include ncce_button($blue);
 }
 
 .ncce-button__pink--rounded {
@@ -51,7 +51,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px $ncce-black;
+    box-shadow: 0 0 0 2px $black;
     outline-color: rgba(255, 255, 255, 0);
   }
 

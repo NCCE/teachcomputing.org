@@ -1,17 +1,17 @@
 .govuk-input:focus,
 .govuk-radios__input:focus,
 .govuk-textarea:focus {
-  outline-color: $ncce-pink;
+  outline-color: $pink;
 }
 
 .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-  box-shadow: 0 0 0 3px $ncce-pink;
+  box-shadow: 0 0 0 3px $pink;
 }
 
 .govuk-input:focus,
 .govuk-select:focus {
-  box-shadow: 0 0 0 2px $ncce-pink;
-  outline-color: $ncce-white;
+  box-shadow: 0 0 0 2px $pink;
+  outline-color: $white;
   outline-offset: 2px;
 }
 

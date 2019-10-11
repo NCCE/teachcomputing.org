@@ -2,7 +2,7 @@
   background-image: url(/images/polka-teal-bg.svg);
   background-repeat: repeat-x;
   background-position: 0% 10%;
-  background-color: $ncce-blue-light;
+  background-color: $blue-light;
 
   @include govuk-media-query($from: tablet) {
     background-position: 0% 25%;
@@ -23,7 +23,7 @@
 .ncce-offering__aside {
   grid-column-start: 1;
   grid-column-end: 1;
-  background-color: $ncce-dark-purple;
+  background-color: $purple-dark;
   border-radius: 24px;
   padding: 24px;
   margin-bottom: 40px;
@@ -48,7 +48,7 @@
 }
 
 .ncce-offering__aside-text {
-  color: $ncce-white;
+  color: $white;
   margin-bottom: 0;
 }
 

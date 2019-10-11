@@ -1,5 +1,5 @@
 .govuk-header {
-  background: $ncce-blue;
+  background: $blue;
   border: none;
 }
 
@@ -15,14 +15,14 @@
   font-weight: normal !important;
 
   &:focus {
-    color: $ncce-white;
-    background-color: $ncce-pink;
-    outline-color: $ncce-pink;
+    color: $white;
+    background-color: $pink;
+    outline-color: $pink;
   }
 
   &:hover {
     border-color: transparent;
-    color: $ncce-white;
+    color: $white;
     text-decoration: underline !important;
   }
 }
@@ -45,7 +45,7 @@
 }
 
 .ncce-header__logo {
-  fill: $ncce-white;
+  fill: $white;
   width: 160px;
   @include govuk-media-query($from: tablet) {
     height: 119px;
@@ -81,12 +81,12 @@
 }
 
 .ncce-header__navigation-item {
-  border-color: $ncce-white;
+  border-color: $white;
 }
 
 .ncce-header__navigation-item-cert {
   padding: 10px 0;
-  border-bottom: 1px solid $ncce-white;
+  border-bottom: 1px solid $white;
 
   @include govuk-media-query($from: desktop) {
     margin-top: 5px;
@@ -109,8 +109,8 @@
 }
 
 .govuk-skip-link:focus {
-  background-color: $ncce-pink;
-  color: $ncce-white;
-  outline: 3px solid $ncce-pink;
+  background-color: $pink;
+  color: $white;
+  outline: 3px solid $pink;
   outline-offset: 0;
 }
