@@ -16,7 +16,8 @@ $secondary-cert-color: $dixie;
 $primary-cert-color: $jaffa;
 $cs-accelerator-color: $tapestry;
 
-.hero {
+.hero,
+.hero--blue {
   background-color: $action-color;
   color: $grey-dark-x;
   position: relative;
@@ -39,7 +40,7 @@ $cs-accelerator-color: $tapestry;
   }
 }
 
-.hero-glyph-2:after {
+.hero--glyph-2:after {
   height: 75px;
   width: 105px;
   background-image: url(/images/hero/glyph-2.svg);
@@ -49,7 +50,7 @@ $cs-accelerator-color: $tapestry;
   }
 }
 
-.hero-glyph-3:after {
+.hero--glyph-3:after {
   height: 75px;
   width: 60px;
   background-image: url(/images/hero/glyph-3.svg);
@@ -59,7 +60,7 @@ $cs-accelerator-color: $tapestry;
   }
 }
 
-.hero-glyph-4:after {
+.hero--glyph-4:after {
   height: 92px;
   width: 90px;
   background-image: url(/images/hero/glyph-4.svg);
