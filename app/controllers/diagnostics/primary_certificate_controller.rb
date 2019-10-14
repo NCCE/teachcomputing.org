@@ -11,12 +11,11 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
   end
 
   def update
+    session[:primary_diagnostic] = {}
     session[:primary_diagnostic].merge!(diagnostic_params)
-    case step
-    when Wicked::FINISH_STEP
-      achievement = Achievement.create(user_id: current_user.id, activity_id: programme.diagnostic.id)
-      achievement.set_to_complete(diagnostic_response: session[:primary_diagnostic], score: score)
-    end
+
+    create_diagnositc_achievement if step == Wicked::FINISH_STEP
+
     render_wizard
   end
 
@@ -24,6 +23,11 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
 
     def completed_diagnostic?
       redirect_to finish_wizard_path if programme.user_completed_diagnostic?(current_user)
+    end
+
+    def create_diagnositc_achievement
+      achievement = Achievement.create(user_id: current_user.id, activity_id: programme.diagnostic.id)
+      achievement.set_to_complete(diagnostic_response: session[:primary_diagnostic], score: score)
     end
 
     def diagnostic_params
