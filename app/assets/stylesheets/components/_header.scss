@@ -1,6 +1,10 @@
 .govuk-header {
   background: $white;
-  border: none;
+  border-bottom: none;
+  border-top: 10px solid $deep-cerulean;
+  @include govuk-media-query($from: desktop) {
+    border-top-width: 13px;
+  }
 }
 
 .govuk-header__container {
@@ -130,4 +134,5 @@
   color: $white;
   outline: 3px solid $deep-cerulean;
   outline-offset: 0;
+  padding-top: 0;
 }
