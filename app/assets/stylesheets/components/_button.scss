@@ -38,10 +38,6 @@
   @include ncce_button($blue);
 }
 
-.ncce-button__cerulean {
-  @include ncce_button(#007fa2);
-}
-
 .ncce-button__pink--rounded {
   border-radius: 0.5rem;
   box-shadow: none;
