@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('components/_hero', type: :view) do
-  let(:title) { 'Page title' }
+  let(:hero_title) { 'Page title' }
   let(:colour) { 'blue' }
   let(:status) { 'You are amazing' }
   let(:subtitle) { 'Some text here everybody' }
@@ -16,11 +16,11 @@ RSpec.describe('components/_hero', type: :view) do
 
   context 'when only the title is passed in' do
     before do
-      render :template => 'components/_hero', :locals => { title: title }
+      render :template => 'components/_hero', :locals => { hero_title: hero_title }
     end
 
     it 'shows the title' do
-      expect(rendered).to have_css('.hero__heading', text: title)
+      expect(rendered).to have_css('.hero__heading', text: hero_title)
     end
 
     it 'is the plain hero' do
@@ -38,7 +38,7 @@ RSpec.describe('components/_hero', type: :view) do
 
   context 'when colour is passed in' do
     before do
-      render :template => 'components/_hero', :locals => { title: title, colour: colour }
+      render :template => 'components/_hero', :locals => { hero_title: hero_title, colour: colour }
     end
 
     it 'is not the plain hero' do
@@ -52,7 +52,7 @@ RSpec.describe('components/_hero', type: :view) do
 
   context 'when status_message is passed in' do
     before do
-      render :template => 'components/_hero', :locals => { title: title, status_message: status }
+      render :template => 'components/_hero', :locals => { hero_title: hero_title, status_message: status }
     end
 
     it 'shows the status block' do
@@ -62,7 +62,7 @@ RSpec.describe('components/_hero', type: :view) do
 
   context 'when subtitle is passed in' do
     before do
-      render :template => 'components/_hero', :locals => { title: title, subtitle: subtitle }
+      render :template => 'components/_hero', :locals => { hero_title: hero_title, subtitle: subtitle }
     end
 
     it 'shows the subtitle' do
