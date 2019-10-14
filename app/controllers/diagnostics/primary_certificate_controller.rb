@@ -4,7 +4,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
   before_action :authenticate
   before_action :completed_diagnostic?, only: [:show]
 
-  steps :introduction, :question_1, :question_2, :question_3, :question_4
+  steps :question_1, :question_2, :question_3, :question_4
 
   def show
     render_wizard
