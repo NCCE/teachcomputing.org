@@ -9,13 +9,13 @@ namespace :populate_missing_achievements do
 
     attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      unless achievement_user_ids.include?(user_id) do
-        achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
-        achievement.save
-        certificate_number = assessment.assessment_counter.get_next_number
-        achievement.set_to_complete(certificate_number: certificate_number)
-        created_achievements << "#{achievement.id} - #{user.email}"
-      end
+      next if achievement_user_ids.include?(user_id)
+
+      achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
+      achievement.save
+      certificate_number = assessment.assessment_counter.get_next_number
+      achievement.set_to_complete(certificate_number: certificate_number)
+      created_achievements << "#{achievement.id} - #{user.email}"
     end
 
     puts created_achievements
@@ -30,11 +30,11 @@ namespace :populate_missing_achievements do
 
     attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      unless achievement_user_ids.include?(user_id) do
-        achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
-        achievement.save
-        created_achievements << "#{achievement.id} - #{user.email}"
-      end
+      next if achievement_user_ids.include?(user_id)
+
+      achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
+      achievement.save
+      created_achievements << "#{achievement.id} - #{user.email}"
     end
 
     puts created_achievements
