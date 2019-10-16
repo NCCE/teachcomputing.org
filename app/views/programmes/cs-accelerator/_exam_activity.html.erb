@@ -17,6 +17,9 @@
       <li>You can go back and change your answers</li>
       <li>You can skip a question</li>
       <li>Please be advised, clicking "Take the final test" will start an attempt</li>
+      <% if @user_programme_assessment.enough_credits_for_test? %>
+        <li><%= link_to 'Revision Guide', "#{ENV.fetch('STATIC_FILE_PATH')}/CS_Accelerator_Revision_Guide.pdf", class: 'ncce-link' %></li>
+      <% end %>
     </ul>
   </li>
   <li class="govuk-body-s ncce-activity-list__item ncce-activity-list__item--position ncce-exam-activity__attempts">
