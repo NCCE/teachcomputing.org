@@ -9,7 +9,7 @@ namespace :populate_missing_achievements do
 
     attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      next if achievement_user_ids.include?(user_id) do
+      unless achievement_user_ids.include?(user_id) do
         achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
         achievement.save
         certificate_number = assessment.assessment_counter.get_next_number
@@ -30,7 +30,7 @@ namespace :populate_missing_achievements do
 
     attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      unless if achievement_user_ids.include?(user_id) do
+      unless achievement_user_ids.include?(user_id) do
         achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
         achievement.save
         created_achievements << "#{achievement.id} - #{user.email}"
