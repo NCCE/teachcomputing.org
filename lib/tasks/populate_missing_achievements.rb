@@ -22,15 +22,15 @@ namespace :populate_missing_achievements do
   end
 
   task commenced: :environment do
-    attempts = AssessmentAttempt.in_state(:failed).pluck(:user_id)
+    attempt_user_ids = AssessmentAttempt.in_state(:failed).pluck(:user_id)
     activity = Activity.find_by(slug: 'cs-accelerator-assessment')
-    achievements = Achievement.in_state(:commenced).where(activity_id: activity.id).pluck(:user_id)
+    achievement_user_ids = Achievement.in_state(:commenced).where(activity_id: activity.id).pluck(:user_id)
 
     created_achievements = []
 
-    attempts.each do |user_id|
+    attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      unless if achievements.include?(user_id) do
+      unless if achievement_user_ids.include?(user_id) do
         achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
         achievement.save
         created_achievements << "#{achievement.id} - #{user.email}"
