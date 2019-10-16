@@ -9,7 +9,7 @@ Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
 
   Activity.find_or_create_by(slug: 'primary-certificate-diagnostic') do |activity|
     activity.title = 'Completed the diagnostic tool'
-    activity.credit = 0
+    activity.credit = 10
     activity.slug = 'primary-certificate-diagnostic'
     activity.category = 'diagnostic'
     activity.self_certifiable = false
