@@ -1,0 +1,80 @@
+.ihavedonethis__text {
+  color: $white;
+  margin-bottom: 0.5rem;
+}
+
+.ihavedonethis__button {
+  background-position: right 0.5rem center;
+  background-image: url('tick-self.svg');
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  padding: 0.5rem 1.7rem 0.5rem 0.5rem;
+  display: none; 
+
+  &[aria-expanded="true"] {
+    background-image: url('close-self.svg');
+    background-repeat: no-repeat;
+    background-color: $grey-dark-x;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+    color: $white;
+
+    &:focus {
+      color: $white;
+      background-color: $grey-dark-x;
+      outline: none;
+      box-shadow: none;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:hover,
+    &[disabled]:hover {
+      color: $white;
+      background-color: $grey-dark-x;
+      text-decoration: underline;
+      box-shadow: none;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+}
+
+.ihavedonethis__popup {
+  background-color: $grey-dark-x;
+  margin-top: -3.8rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.ihavedonethis--progressive {
+  position: relative;
+
+  .ihavedonethis__popup {
+    margin-top: 2rem;
+    position: absolute;
+    right: 0;
+    width: calc(100% - 2rem);
+    z-index: 1;
+
+    @include govuk-media-query($from: tablet) {
+      width: 15rem;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      width: 20rem;
+    }
+  }
+
+  .ihavedonethis__button {
+    display: inline-block;
+  }
+}
+
+.ihavedonethis__group {
+  display: inline-block;
+  margin-bottom: 1rem;
+}

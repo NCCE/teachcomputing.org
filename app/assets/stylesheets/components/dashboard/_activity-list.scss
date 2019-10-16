@@ -1,5 +1,5 @@
 .ncce-dashboard-activity {
-  background-color: $ncce-grey-x-light;
+  background-color: $grey-x-light;
   padding-bottom: 30px;
   padding-top: 0;
 }
@@ -9,7 +9,7 @@
 }
 
 .ncce-activity-list__item {
-  background-color: $ncce-white;
+  background-color: $white;
   display: grid;
   grid-template-rows: 2fr auto;
   align-items: start;
@@ -19,7 +19,7 @@
   }
 
   border-bottom-width: 2px;
-  border-bottom-color: $ncce-light-lavender;
+  border-bottom-color: $lavender-light;
   border-bottom-style: solid;
   margin-bottom: 0 !important;
 
@@ -62,6 +62,7 @@
 
 .ncce-activity-list__item-indent {
   margin-left: 2rem;
+
   @include govuk-media-query($from: tablet) {
     margin-left: 2.8rem;
     margin-top: 0.5rem;
@@ -70,7 +71,7 @@
 
 .ncce-activity-list__item-activity {
   @extend .ncce-activity-list__item-indent;
-  background-color: $ncce-pink-light;
+  background-color: $pink-light;
   font-weight: 700;
   padding: 0.7rem;
 }
@@ -172,21 +173,21 @@
     font-weight: 700;
     text-decoration: underline;
 
-    color: $ncce-blue-link;
+    color: $blue-link;
 
     &:hover {
-      color: $ncce-pink;
+      color: $pink;
     }
 
     &:focus {
-      color: $ncce-white;
-      background-color: $ncce-pink;
-      outline-color: $ncce-pink;
+      color: $white;
+      background-color: $pink;
+      outline-color: $pink;
     }
 
     &:active {
-      background-color: $ncce-pink;
-      color: $ncce-white;
+      background-color: $pink;
+      color: $white;
     }
   }
 }
@@ -214,8 +215,8 @@
 
 
 
-  background-color: $ncce-white;
-  box-shadow: 5px 5px 0 $ncce-box-shadow;
+  background-color: $white;
+  box-shadow: 5px 5px 0 $box-shadow;
   text-align: left;
 
   &__title-button {
@@ -233,7 +234,7 @@
     background-size: 1.2rem;
     font-size: 1rem;
     font-weight: 700;
-    color: $ncce-dark-z-grey;
+    color: $grey-dark-z;
     text-align: left;
     cursor: pointer;
     border: 0;
