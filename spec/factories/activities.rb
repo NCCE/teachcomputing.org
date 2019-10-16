@@ -19,7 +19,7 @@ FactoryBot.define do
     slug { 'cs-accelerator-diagnostic-tool' }
     category { 'diagnostic' }
     provider { 'system' }
-    credit { 10 }
+    credit { 0 }
   end
 
   trait :primary_certificate_diagnostic_tool do
@@ -27,7 +27,6 @@ FactoryBot.define do
     slug { 'primary-certificate-diagnostic' }
     category { 'diagnostic' }
     provider { 'system' }
-    credit { 10 }
   end
 
   trait :stem_learning do
