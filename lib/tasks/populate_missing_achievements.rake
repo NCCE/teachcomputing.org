@@ -22,7 +22,7 @@ namespace :populate_missing_achievements do
   end
 
   task commenced: :environment do
-    attempt_user_ids = AssessmentAttempt.in_state(:failed).pluck(:user_id)
+    attempt_user_ids = AssessmentAttempt.in_state(:failed).pluck(:user_id).uniq
     activity = Activity.find_by(slug: 'cs-accelerator-assessment')
     achievement_user_ids = Achievement.in_state(:commenced).where(activity_id: activity.id).pluck(:user_id)
 
