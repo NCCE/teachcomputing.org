@@ -17,7 +17,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
     end
 
-    context 'when an associated diagnostic activity exists' do
+    context 'when an associated diagnostic activity doesn\'t exists' do
       it 'returns raises an RecordNotFound' do
         expect {
           programme.diagnostic
