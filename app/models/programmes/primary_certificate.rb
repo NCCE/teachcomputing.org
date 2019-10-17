@@ -1,6 +1,10 @@
 module Programmes
   class PrimaryCertificate < Programme
 
+    def diagnostic
+      activities.find_by!(category: 'diagnostic')
+    end
+
     def user_completed?(user)
       complete_achievements = user.achievements
                                   .for_programme(self)

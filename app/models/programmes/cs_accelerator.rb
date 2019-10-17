@@ -1,6 +1,10 @@
 module Programmes
   class CSAccelerator < Programme
 
+    def diagnostic
+      activities.find_by!(category: 'diagnostic')
+    end
+
     def user_completed?(user)
       user.achievements
           .for_programme(self)

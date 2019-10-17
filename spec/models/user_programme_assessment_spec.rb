@@ -12,7 +12,7 @@ RSpec.describe UserProgrammeAssessment do
            programme_id: programme.id)
   end
 
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }

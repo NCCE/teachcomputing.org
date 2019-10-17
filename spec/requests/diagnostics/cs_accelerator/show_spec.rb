@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Activities::RedirectsController do
+RSpec.describe Diagnostics::CsAcceleratorController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_url) { ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }
 
   describe 'GET show' do
+    before do
+      activity
+    end
     describe 'while logged in' do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get activities_redirect_path(activity.id, redirect: { url: diagnostic_url })
+        get cs_accelerator_diagnostic_path(activity.id, redirect: { url: diagnostic_url })
       end
 
       it 'creates an Achievement if one does not exist already' do
@@ -27,7 +30,7 @@ RSpec.describe Activities::RedirectsController do
 
     describe 'while logged out' do
       before do
-        get activities_redirect_path(activity.id, redirect: { url: diagnostic_url })
+        get cs_accelerator_diagnostic_path(activity.id, redirect: { url: diagnostic_url })
       end
 
       it 'redirects to login' do

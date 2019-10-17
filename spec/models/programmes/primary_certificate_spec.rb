@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Programmes::PrimaryCertificate do
   let(:programme) { create(:primary_certificate) }
+  let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
@@ -30,7 +31,24 @@ RSpec.describe Programmes::PrimaryCertificate do
     end
   end
 
-  describe 'user_completed?' do
+  describe '#diagnostic' do
+    context 'when an associated diagnostic activity exists' do
+      it 'returns record' do
+        programme.activities << diagnostic
+        expect(programme.diagnostic).to eq diagnostic
+      end
+    end
+
+    context 'when an associated diagnostic activity doesn\'t exists' do
+      it 'returns raises an RecordNotFound' do
+        expect {
+          programme.diagnostic
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
+  describe '#user_completed?' do
     before do
       user_programme_enrolment
     end

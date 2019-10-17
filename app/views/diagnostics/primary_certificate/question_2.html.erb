@@ -1,0 +1,35 @@
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Question 2</h2>
+        <p class="govuk-body-l">How confident are you in effectively teaching the whole of the KS1 Computing National Curriculum?</p>
+        <p class="govuk-body">For example, are you familiar with common uses of technology beyond school, or how pupils can use technology to develop digital content?</p>
+        <%= form_for(:diagnostic, url: wizard_path(:question_3), method: :put) do |form| %>
+          <div class="govuk-radios">
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_2', '5', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_5'>Not at all confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_2', '10', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_10'>A little confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_2', '15', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_15'>Fairly confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_2', '20', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_2_20'>Very confident</label>
+              </div>
+            </div>
+          </div>
+          <p class="govuk-body"></p>
+          <%= form.submit 'Next', class: 'govuk-button ncce-button__pink' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

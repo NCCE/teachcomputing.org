@@ -8,7 +8,7 @@
             discover and book face-to-face and online training courses and view
             your progress.</p>
           <p class="govuk-body">If you need help finding a course that’s
-            suitable for you, <%= link_to 'use the diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %>
+            suitable for you, <%= link_to 'use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %>
             to identify the areas of subject knowledge where you need most
             support.</p>
         </div>

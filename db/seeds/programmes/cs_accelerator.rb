@@ -27,7 +27,7 @@ puts "Created assessment_counter: #{assessment_counter}"
 
 slugs = %w[
   registered-with-the-national-centre
-  diagnostic-tool
+  cs-accelerator-diagnostic-tool
   algorithms-in-gcse-computer-science
   data-and-computer-systems-in-gcse-computer-science
   networks-and-cyber-security-in-gcse-computer-science

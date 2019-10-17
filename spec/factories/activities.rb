@@ -14,12 +14,19 @@ FactoryBot.define do
     provider { 'system' }
   end
 
-  trait :diagnostic_tool do
+  trait :cs_accelerator_diagnostic_tool do
     title { 'Taken diagnostic tool' }
-    slug { 'diagnostic-tool' }
-    category { 'action' }
+    slug { 'cs-accelerator-diagnostic-tool' }
+    category { 'diagnostic' }
     provider { 'system' }
-    credit { 5 }
+    credit { 0 }
+  end
+
+  trait :primary_certificate_diagnostic_tool do
+    title { 'Completed the diagnostic tool' }
+    slug { 'primary-certificate-diagnostic' }
+    category { 'diagnostic' }
+    provider { 'system' }
   end
 
   trait :stem_learning do

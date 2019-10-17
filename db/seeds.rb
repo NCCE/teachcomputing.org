@@ -1,4 +1,5 @@
 require File.expand_path('../seeds/activities/action', __FILE__)
+require File.expand_path('../seeds/activities/diagnostic', __FILE__)
 require File.expand_path('../seeds/activities/face-to-face', __FILE__)
 require File.expand_path('../seeds/activities/online', __FILE__)
 require File.expand_path('../seeds/activities/assessment', __FILE__)
