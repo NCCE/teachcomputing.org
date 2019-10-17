@@ -5,11 +5,12 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
+    @programme = programme
     render
   end
 
   it 'has a heading' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator Programme')
+    expect(rendered).to have_css('h1.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator Programme')
   end
 
   it 'has diagram' do
@@ -22,7 +23,6 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
 
   context 'when a user is signed in' do
     before do
-      programme
       allow(view).to receive(:current_user).and_return(user)
       render
     end

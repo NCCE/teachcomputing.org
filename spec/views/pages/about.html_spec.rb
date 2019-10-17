@@ -6,7 +6,7 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-about__title', text: 'About')
+    expect(rendered).to have_css('.hero__heading', text: 'About')
   end
 
   it 'links to consortium' do

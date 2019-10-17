@@ -5,6 +5,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
 
   before do
+    @programme = programme
     render
   end
 
@@ -22,7 +23,6 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
 
   context 'when a user is signed in' do
     before do
-      programme
       allow(view).to receive(:current_user).and_return(user)
       render
     end

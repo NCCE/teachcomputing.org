@@ -6,7 +6,7 @@ RSpec.describe('pages/get-involved', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Inspiring the computing experts of the future')
+    expect(rendered).to have_css('.hero__heading', text: 'Inspiring the computing experts of the future')
   end
 
   it 'has a get involved section' do
@@ -22,6 +22,6 @@ RSpec.describe('pages/get-involved', type: :view) do
   end
 
   it 'list has headings' do
-    expect(rendered).to have_css('.govuk-list h4', count: 5)
+    expect(rendered).to have_css('.govuk-list h3', count: 5)
   end
 end
