@@ -1,24 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe('pages/certification/_hero', type: :view) do
+  let(:user) { create(:user) }
+  let(:programme) { create(:programme) }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment,
+           user_id: user.id,
+           programme_id: programme.id)
+  end
+
   before do
+    @programme = programme
     render
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('h1.govuk-heading-m', text: 'GCSE computer science subject knowledge')
+    expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
 
-  it 'has two subheadings' do
-    expect(rendered).to have_css('p.govuk-body-m', text: 'The National Centre for Computing Education certificate in')
+
+  it 'doesn\'t show the enrolled tag' do
+    expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
   end
 
-  it 'has one notepad image for mobile' do
-    expect(rendered).to have_css('.certification-hero__image--mobile', count: 1)
+  context 'when the user logged in but not enrolled' do
+    before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'doesn\'t show the enrolled tag' do
+      expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
+    end
   end
 
-  it 'has one notepad image for non-mobile' do
-    expect(rendered).to have_css('.certification-hero__image--tablet', count: 1)
-  end
+  context 'when the user logged in and enrolled' do
+    before do
+      user_programme_enrolment
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      render
+    end
 
+    it 'shows the enrolled tag' do
+      expect(rendered).to have_css('.hero__status', text: 'You are enrolled')
+    end
+  end
 end

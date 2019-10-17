@@ -5,6 +5,7 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
 
   before do
+    allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     user_programme_achievements = instance_double('UserProgrammeAchievements')
@@ -16,12 +17,12 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
     render
   end
 
-  it 'has a title' do
-    expect(rendered).to have_css('h1', text: 'Congratulations')
+  it 'has a status' do
+    expect(rendered).to have_css('.hero__status', text: 'You have completed')
   end
 
   it 'has the programme title' do
-    expect(rendered).to have_css('h2', text: programme.title)
+    expect(rendered).to have_css('.hero__heading', text: @programme.title)
   end
 
   it 'has the download button' do

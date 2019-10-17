@@ -1,19 +1,15 @@
-<div class="certification-hero">
+<div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper certification-hero__wrapper">
-      <div class="certification-hero__image">
-        <img src="/images/notepad.svg" alt="" class="certification-hero__image--tablet"/>
-      </div>
-      <div class="certification-hero__content">
-        <p class="govuk-body-m govuk-!-font-weight-bold certification-hero__text">The National Centre for Computing Education certificate in</p>
-        <% programme_title = 'GCSE computer science subject knowledge' if local_assigns[:programme_title].nil? %>
-        <h1 class="govuk-heading-m certification-hero__text"><%= programme_title %></h1>
-        <img src="/images/notepad.svg" alt="" class="certification-hero__image--mobile"/>
-        <p class="govuk-body-s certification-hero__text">Certification Awarded by BCS, The Chartered Institute for IT and accredited by Royal Academy of Engineering</h2>
+    <div class="govuk-main-wrapper hero__wrapper">
+      <% if current_user && @programme.user_completed?(current_user) %>
+        <span class="govuk-body-m hero__status">You have completed</span>
+      <% elsif current_user && @programme.user_enrolled?(current_user) %>
+        <span class="govuk-body-m hero__status">You are enrolled</span>
+      <% end %>
+      <div class="hero__heading-wrapper">
+        <h1 class="govuk-heading-l hero__heading"><%= @programme.title %></h1>
+        <p class="govuk-body-s hero__text">Certification awarded by BCS, The Chartered Institute for IT</p>
       </div>
     </div>
   </div>
 </div>
-
-
-

@@ -1,66 +1,139 @@
-.certification-hero {
-  background-color: $purple-dark;
-  background-image: none;
+$plain-hero-color: $concrete;
+$action-color: $deep-cerulean;
+$secondary-cert-color: $dixie;
+$primary-cert-color: $jaffa;
+$cs-accelerator-color: $tapestry;
 
-  @include govuk-media-query($from: tablet) {
-    background-image: url(/images/dashboard/triangle2.png);
-    background-position: top right;
+.hero,
+.hero--blue {
+  background-color: $action-color;
+  color: $grey-dark-x;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    opacity: 0.15;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 120px;
+    width: 140px;
+    background-image: url(/images/hero/glyph-1.svg);
+    background-position-x: right;
     background-repeat: no-repeat;
-    background-size: auto 100%;
+    background-size: 75%;
+    @include govuk-media-query($from: desktop) {
+      background-size: 100%;
+    }
   }
 }
 
-.certification-hero__wrapper {
-  align-items: center;
-  display: flex;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+.hero--glyph-2:after {
+  height: 75px;
+  width: 105px;
+  background-image: url(/images/hero/glyph-2.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 100px;
+    width: 140px;
   }
 }
 
-.certification-hero__wrapper--complete {
-  align-items: top;
-  display: flex;
+.hero--glyph-3:after {
+  height: 75px;
+  width: 60px;
+  background-image: url(/images/hero/glyph-3.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 100px;
+    width: 80px;
+  }
 }
 
-.certification-hero__text {
+.hero--glyph-4:after {
+  height: 92px;
+  width: 90px;
+  background-image: url(/images/hero/glyph-4.svg);
+  @include govuk-media-query($from: desktop) {
+    height: 130px;
+    width: 120px;
+  }
+}
+
+.hero--center-glyph:after {
+  top: calc(50% - 45px);
+  @include govuk-media-query($from: desktop) {
+    top: calc(50% - 60px);
+  }
+}
+
+.hero--bottom-glyph:after {
+  top: unset;
+  bottom: 0;
+  background-position-y: bottom;
+}
+
+.hero--plain {
+  background-color: $plain-hero-color;
+  &:after {
+    display: none;
+    background-image: none;
+  }
+}
+
+.hero--orange,
+.hero--primary-certificate {
+  background-color: $primary-cert-color;
+}
+
+.hero--yellow,
+.hero--secondary-certificate {
+  background-color: $secondary-cert-color;
+}
+
+.hero--purple,
+.hero--cs-accelerator {
+  background-color: $cs-accelerator-color;
+}
+
+.hero__wrapper {
+  padding-top: $logo_block-mobile;
+  padding-bottom: $logo_block-mobile;
+  @include govuk-media-query($from: desktop) {
+    padding-top: $logo_block;
+    padding-bottom: $logo_block;
+  }
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.hero__status {
+  background-color: $grey-dark-x;
   color: $white;
-}
-
-.certification-hero__image {
-  @include govuk-media-query($from: tablet) {
-    margin-right: 2rem;
-  }
-}
-
-.certification-hero__image--mobile {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  @include govuk-media-query($from: tablet) {
-    display: none;
-  }
-}
-
-.certification-hero__image--tablet {
-  @include govuk-media-query($until: tablet) {
-    display: none;
-  }
-}
-
-.certification-hero__image--dashboard {
   float: left;
-  width: 40px;
-  margin: -10px 15px 30px 0;
+  font-weight: bold;
+  padding: 5px 12px;
+  margin: 0;
+}
 
-  @include govuk-media-query($from: tablet) {
-    width: 100px;
-    margin-top: 0;
+.hero__heading-wrapper {
+  background-color: $white;
+  clear: both;
+  float: left;
+  @include govuk-media-query($from: desktop) {
+    max-width: 75%;
   }
+  padding: 10px;
+}
+
+.hero__heading {
+  margin-bottom: 0;
+}
+.hero__text {
+  margin-top: $logo_block-mobile / 4;
+  @include govuk-media-query($from: desktop) {
+    margin-top: $logo_block / 4;
+  }
+  margin-bottom: 0;
 }
