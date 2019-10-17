@@ -39,9 +39,7 @@ class Programme < ApplicationRecord
     user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
   end
 
-  def user_enrolled?(user = nil)
-    return false if user.nil?
-
+  def user_enrolled?(user)
     user.programmes.exists?(id)
   end
 end
