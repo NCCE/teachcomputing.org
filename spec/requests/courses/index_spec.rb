@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator')}
 
   describe 'GET #index' do

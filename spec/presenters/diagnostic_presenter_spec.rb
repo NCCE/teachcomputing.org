@@ -10,7 +10,7 @@ RSpec.describe DiagnosticPresenter do
 
   describe('button_url') do
     it { expect { empty_presenter.button_url }.to raise_error(NoMethodError) }
-    it { expect(empty_presenter.button_url({ current_user: user })).to start_with("/activities/redirects") }
+    it { expect(empty_presenter.button_url({ current_user: user })).to start_with('/certificate/cs-accelerator/diagnostic') }
     it { expect(empty_presenter.button_url({ current_user: user })).to include("user_id%3D#{user.id}") }
   end
 
@@ -23,6 +23,6 @@ RSpec.describe DiagnosticPresenter do
   end
 
   describe('inspect') do
-    it { expect(empty_presenter.inspect).to start_with("DiagnosticPresenter - empty? true") }
+    it { expect(empty_presenter.inspect).to start_with('DiagnosticPresenter - empty? true') }
   end
 end

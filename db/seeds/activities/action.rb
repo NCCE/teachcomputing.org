@@ -1,12 +1,3 @@
-Activity.find_or_create_by(slug: 'diagnostic-tool') do |activity|
-  activity.title = 'Used the diagnostic tool'
-  activity.credit = 10
-  activity.slug = 'diagnostic-tool'
-  activity.category = 'action'
-  activity.self_certifiable = true
-  activity.provider = 'system'
-end
-
 Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
   activity.title = 'Created your account with the National Centre for Computing Education'
   activity.credit = 5

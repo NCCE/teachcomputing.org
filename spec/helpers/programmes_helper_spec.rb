@@ -5,7 +5,7 @@ describe ProgrammesHelper, type: :helper do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:other_programme) { create(:programme) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
   let(:online_courses) { create_list(:activity, 2, :future_learn, credit: 20) }
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('dashboard/programmes/_hero', type: :view) do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:cs_accelerator) }
   let(:programmes) { Programme.enrollable }
   let(:user_programme_enrolment) do
