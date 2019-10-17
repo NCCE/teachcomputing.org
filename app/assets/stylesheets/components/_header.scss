@@ -63,7 +63,14 @@
     width: 221px;
   }
 }
-
+.ncce-stem__logo-wrapper {
+  .ncce-header__logo {
+    fill: $white;
+  }
+  .ncce-stem__link--homepage {
+    color: $white;
+  }
+}
 .govuk-header__link--logo:focus {
   .ncce-header__logo {
     fill: $white;
@@ -135,4 +142,11 @@
   outline: 3px solid $deep-cerulean;
   outline-offset: 0;
   padding-top: 0;
+}
+
+.ncce-stem {
+  .govuk-skip-link:focus {
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
 }
