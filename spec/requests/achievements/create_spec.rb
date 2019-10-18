@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
-  let (:referrer) { 'https://testing123.com' }
+  let(:programme) { create(:programme, slug: 'primary-certificate') }
+  let(:primary_certificate_path) { '/certificate/primary-certificate' }
 
   describe 'POST #create' do
     before do
@@ -82,21 +83,24 @@ RSpec.describe AchievementsController do
       end
     end
 
-    context 'with referrer header' do
+    context 'with achievement from primary certificate page' do
       subject do
+        programme
+        allow_any_instance_of(UserProgrammeAchievements).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [], community_activities: [])
+        allow_any_instance_of(ProgrammesController).to receive_messages('user_completed_diagnostic?': true, 'user_enrolled?': true)
+        get primary_certificate_path
         post achievements_path,
              params: {
                achievement: { activity_id: nil }
-             },
-             headers: { 'HTTP_REFERER' => referrer }
+            }
       end
 
       before do
         subject
       end
 
-      it 'redirects to the referrer if specified' do
-          expect(response).to redirect_to(referrer)
+      it 'redirects back to the primary certificate page' do
+        expect(response).to redirect_to(primary_certificate_path)
       end
     end
 

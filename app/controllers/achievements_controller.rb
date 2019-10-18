@@ -14,7 +14,7 @@ class AchievementsController < ApplicationController
       flash[:error] = "Whoops something went wrong adding the activity to your Record of Achievement"
     end
 
-    redirect_to request.referrer || dashboard_path
+    redirect_back_or dashboard_path
   end
 
   def destroy

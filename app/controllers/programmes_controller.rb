@@ -4,6 +4,7 @@ class ProgrammesController < ApplicationController
   before_action :find_programme, only: %i[show complete certificate]
   before_action :user_enrolled?, only: %i[show complete certificate]
   before_action :user_completed_diagnostic?, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
+  before_action :store_internal_location, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
 
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
