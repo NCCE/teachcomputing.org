@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
 
         if params[:certificate].present?
           @current_certificate = Programme.find_by(slug: params[:certificate])
-          has_certificate = c.by_certificate(params[:certificate])
+          has_certificate = c.by_certificate(params[:certificate]) if @current_certificate
         end
 
         if params[:level].present?
@@ -63,9 +63,9 @@ class CoursesController < ApplicationController
 
     def alert_filter_params
       filter_strings = []
-      filter_strings.push("<strong>Level</strong>: #{@current_level}") if @current_level
-      filter_strings.push("<strong>Topic</strong>: #{@current_topic}") if @current_topic
-      filter_strings.push("<strong>Location</strong>: #{@current_location}") if @current_location
+      filter_strings.push("<strong>Level</strong>: #{ERB::Util.html_escape(@current_level)}") if @current_level
+      filter_strings.push("<strong>Topic</strong>: #{ERB::Util.html_escape(@current_topic)}") if @current_topic
+      filter_strings.push("<strong>Location</strong>: #{ERB::Util.html_escape(@current_location)}") if @current_location
       filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate
 
       return if filter_strings.empty?
