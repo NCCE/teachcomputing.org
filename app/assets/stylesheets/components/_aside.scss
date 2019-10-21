@@ -28,6 +28,14 @@ $aside-padding: 1rem;
     }
   }
 
+  &__log {
+    color: $jelly-bean;
+
+    &:hover {
+      color: $scarpa-flow;
+    }
+  }
+
   &__button {
     background-color: $jelly-bean;
     margin-bottom: 0;
