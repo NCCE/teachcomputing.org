@@ -40,6 +40,8 @@ class Programme < ApplicationRecord
   end
 
   def user_enrolled?(user)
+    return false if user.nil?
+    
     user.programmes.exists?(id)
   end
 end
