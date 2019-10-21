@@ -5,70 +5,92 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-m">Welcome to the Primary Computing Programme</h1>
-          <p class="govuk-body">This is a professional development programme designed to support teachers from <i>all</i> backgrounds who want to improve their knowledge of computing. Certification can help you cover new areas while also reinforcing the skills you already have. Think of it as a refresher course that can help you identify and overcome your problem areas.</p>
+          <h1 class="govuk-heading-m">Welcome to the Primary Computing Programme
+          </h1>
+          <p class="govuk-body">This is a professional development programme
+            designed to support teachers from <i>all</i> backgrounds who want to
+            improve their knowledge of computing. Certification can help you
+            cover new areas while also reinforcing the skills you already have.
+            Think of it as a refresher course that can help you identify and
+            overcome your problem areas.</p>
           <div class="pathway-wrapper">
             <ol class="pathway">
               <li class="pathway__step">
                 <h2 class="govuk-heading-s pathway__step-title">
                   <span class="pathway__step-circle">
                   </span>
-                    Register & plan</h2>
-                  <p class="govuk-body"><%= link_to 'Create an account', create_account_url, :class => 'ncce-link' %> and discover courses suited to you using our diagnostic tool</p>
+                  Register & plan</h2>
+                <p class="govuk-body">
+                  <%= link_to 'Create an account', create_account_url, :class => 'ncce-link' %>
+                  and discover courses suited to you using our diagnostic tool
+                </p>
               </li>
               <li class="pathway__step">
                 <h2 class="govuk-heading-s pathway__step-title">
                   <span class="pathway__step-circle">
                   </span>
-                    Participate</h2>
-                  <p class="govuk-body">Complete a tailored of CPD, both online and local to you</p>
+                  Participate</h2>
+                <p class="govuk-body">Complete a tailored of CPD, both online
+                  and local to you</p>
               </li>
               <li class="pathway__step">
                 <h2 class="govuk-heading-s pathway__step-title">
                   <span class="pathway__step-circle">
                   </span>
-                    Engage</h2>
-                  <p class="govuk-body">Engage with other teachers and with local Communities of Practice</p>
+                  Engage</h2>
+                <p class="govuk-body">Engage with other teachers and with local
+                  Communities of Practice</p>
               </li>
               <li class="pathway__step">
                 <h2 class="govuk-heading-s pathway__step-title">
                   <span class="pathway__step-circle">
                   </span>
-                    Complete</h2>
-                  <p class="govuk-body">Complete your learning programme and receive your Certificate in Primary Computing</p>
+                  Complete</h2>
+                <p class="govuk-body">Complete your learning programme and
+                  receive your Certificate in Primary Computing</p>
               </li>
               <li class="pathway__step">
                 <h2 class="govuk-heading-s pathway__step-title">
                   <span class="pathway__step-circle">
                   </span>
-                    Reflect</h2>
-                  <p class="govuk-body">Embed new ideas in the classroom and see increased impact</p>
+                  Reflect</h2>
+                <p class="govuk-body">Embed new ideas in the classroom and see
+                  increased impact</p>
               </li>
             </ol>
           </div>
 
-          <p class="govuk-body">The programme is suitable for those already teaching or planning to teach computing and will help teachers to fill potential gaps in their knowledge.</p>
+          <p class="govuk-body">The programme is suitable for those already
+            teaching or planning to teach computing and will help teachers to
+            fill potential gaps in their knowledge.</p>
           <h2 class="govuk-heading-s">Benefits for you:</h2>
           <ul class="govuk-list govuk-list--bullet">
-            <li>update your skills and be recognised for your subject knowledge</li>
-            <li>feel more confident to teach this high demand subject across the curriculum</li>
-            <li>choose from face-to-face and online modules to suit your learning needs</li>
-            <li>save time on lesson planning and gain inspirational teaching ideas </li>
+            <li>update your skills and be recognised for your subject knowledge
+            </li>
+            <li>feel more confident to teach this high demand subject across the
+              curriculum</li>
+            <li>choose from face-to-face and online modules to suit your
+              learning needs</li>
+            <li>save time on lesson planning and gain inspirational teaching
+              ideas </li>
             <li>meet teachers in your area to share ideas</li>
           </ul>
-          <p class="govuk-body"><strong>We hope you find the programme supportive and that it helps to give you the confidence to teach computing in your school. </strong></p>
+          <p class="govuk-body"><strong>We hope you find the programme
+              supportive and that it helps to give you the confidence to teach
+              computing in your school. </strong></p>
         </div>
         <div class="govuk-grid-column-one-third">
           <div class="ncce-aside">
             <% if current_user %>
-              <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
+            <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
             <% else%>
-              <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
+            <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
             <% end %>
             <P class="govuk-body-s ncce-aside__text">Start your journey!</p>
-            <ol class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
+            <ol
+              class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
               <li>
-                 <%= image_tag("/images/favicon.png", size: '', alt: 'Completed icon', class: 'ncce-aside__check-mark') if current_user %>
+                <%= image_tag("/images/favicon.png", size: '', alt: 'Completed icon', class: 'ncce-aside__check-mark') if current_user %>
                 Create your account with STEM Learning, and log in
               </li>
               <li>Enrol with the click of the button</li>
@@ -77,10 +99,17 @@
               <li>Receive your certificate</li>
             </ol>
             <% if current_user %>
-              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary_certificate.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.primary_certificate.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+            <p class="govuk-body">
+              <%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary_certificate.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.primary_certificate.id }), method: :post, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
+            </p>
             <% else %>
-              <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
-              <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'Log in', auth_url, method: :post, class: 'ncce-link ncce-link--on-dark', role: 'button', draggable: 'false' %></p>
+            <p class="govuk-body">
+              <%= link_to 'Create an account', create_account_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
+            </p>
+            <p class="govuk-body-s ncce-aside__text">Already have a STEM
+              Learning account? Simply
+              <%= link_to 'Log in', auth_url, method: :post, class: 'ncce-link ncce-aside__log', role: 'button', draggable: 'false' %>
+            </p>
             <% end %>
           </div>
         </div>
