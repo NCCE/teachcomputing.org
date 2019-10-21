@@ -1,38 +1,46 @@
 .ncce-link {
   font-family: $font-family-body;
 
-	&:link {
-		color: $blue-link;
-	}
-	&:visited {
-		color: $purple;
-	}
-	&:hover {
-		color: $pink;
-	}
-	&:focus {
-		color: $white;
-		background-color: $pink;
-		outline-color: $pink;
-	}
-	&:active {
-		background-color: $pink;
-		color: $white;
-	}
+  &:link {
+    color: $boston-blue;
+  }
+
+  &:visited {
+    color: $purple;
+  }
+
+  &:hover {
+    color: $pink;
+  }
+
+  &:focus {
+    color: $white;
+    background-color: $pink;
+    outline-color: $pink;
+  }
+
+  &:active {
+    background-color: $pink;
+    color: $white;
+  }
 
   &--on-dark {
-  	&:link {
-  		color: $lavender;
-  	}
-  	&:visited {
-  		color: $grey;
-  	}
-  	&:hover {
-  		color: $white;
-  	}
+    &:link {
+      color: $concrete;
+    }
+
+    &:visited {
+      color: $grey;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
     &:focus {
       color: $white;
     }
+
     &:active {
       color: $black;
     }
@@ -40,14 +48,15 @@
 }
 
 .ncce-link__icon {
-	width: 30px;
-	height: 30px;
-	margin-right: 10px;
-	vertical-align: middle;
-	&--footer {
-		width: 20px;
-		height: 20px;
-	}
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+
+  &--footer {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .ncce-link--heading {

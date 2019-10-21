@@ -70,11 +70,11 @@
 .certification-progress__bar {
   width: 100%;
   height: 16px;
-  background-color: $lavender;
+  background-color: $concrete;
   color: $pink;
 
   &::-webkit-progress-bar {
-    background-color: $lavender;
+    background-color: $concrete;
   }
 
   &::-webkit-progress-value {

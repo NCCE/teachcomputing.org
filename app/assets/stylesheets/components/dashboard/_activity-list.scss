@@ -1,5 +1,5 @@
 .ncce-dashboard-activity {
-  background-color: $lavender;
+  background-color: $concrete;
   padding-bottom: 30px;
   padding-top: 0;
 }
@@ -14,12 +14,13 @@
   grid-template-rows: 2fr auto;
   align-items: start;
   padding: 0.5rem 1.125rem 1.125rem;
+
   @include govuk-media-query($from: tablet) {
     padding-bottom: 0.5rem;
   }
 
   border-bottom-width: 2px;
-  border-bottom-color: $lavender-light;
+  border-bottom-color: $concrete-light;
   border-bottom-style: solid;
   margin-bottom: 0 !important;
 
@@ -79,6 +80,7 @@
 .ncce-activity-list__item-description {
   font-size: 1rem;
   margin-bottom: 1.25rem;
+
   @include govuk-media-query($from: tablet) {
     font-size: 1.188rem;
     margin-bottom: 0;
@@ -173,7 +175,7 @@
     font-weight: 700;
     text-decoration: underline;
 
-    color: $blue-link;
+    color: $boston-blue;
 
     &:hover {
       color: $pink;

@@ -1,11 +1,12 @@
 .pathway-wrapper {
   border-radius: 10px;
-  background-color: $lavender;
+  background-color: $concrete;
   padding: 15px;
   font-family: $font-family-body;
   margin-bottom: 40px;
   margin-top: 40px;
 }
+
 .pathway {
   margin: 0;
   padding: 0;
@@ -15,9 +16,7 @@
     padding-left: 45px;
     list-style: none;
 
-    &-title {
-
-    }
+    &-title {}
 
     &-circle {
       -webkit-box-sizing: border-box;
@@ -29,10 +28,10 @@
       left: 0;
       width: 26px;
       height: 26px;
-      color: $butterfly-bush;
+      color: $astral;
       background: $white;
       border-radius: 100px;
-      border: solid 3px $grey-wakaiwa;
+      border: solid 3px $astral;
       text-align: center;
     }
   }
@@ -46,7 +45,7 @@
     width: 0;
     height: 100%;
     margin-left: 12px;
-    border-left: dotted 3px $pink-canon;
+    border-left: dotted 3px $astral;
   }
 
   &__step:last-child:after {
