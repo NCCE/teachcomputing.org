@@ -8,8 +8,6 @@ class Achievement < ApplicationRecord
 
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
-  default_scope { order('created_at ASC') }
-
   scope :for_programme, ->(programme) {
     where('activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)', programme.id)
   }
