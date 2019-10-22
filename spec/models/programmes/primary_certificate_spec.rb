@@ -48,6 +48,18 @@ RSpec.describe Programmes::PrimaryCertificate do
     end
   end
 
+  describe '#user_completing_criteria_achievement' do
+    before do
+      user_programme_enrolment
+    end
+
+    context 'when user has not completed programme' do
+      it 'returns false' do
+        expect(programme.user_completing_criteria_achievement(user)).to eq false
+      end
+    end
+  end
+
   describe '#user_completed?' do
     before do
       user_programme_enrolment

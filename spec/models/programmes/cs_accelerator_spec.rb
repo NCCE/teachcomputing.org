@@ -26,6 +26,37 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
+  describe '#user_completing_criteria_achievement' do
+    before do
+      programme_activity
+      user_programme_enrolment
+    end
+
+    context 'when user is not passed in' do
+      it 'raises error if user is nil' do
+        expect {
+          programme.user_completing_criteria_achievement(nil)
+        }.to raise_error(NoMethodError)
+      end
+    end
+
+    context 'when user has not completed programme' do
+      it 'returns false' do
+        expect(programme.user_completing_criteria_achievement(user)).to eq nil
+      end
+    end
+
+    context 'when user has completed programme' do
+      before do
+        passed_exam
+      end
+
+      it 'returns the passed achievement' do
+        expect(programme.user_completing_criteria_achievement(user)).to eq passed_exam
+      end
+    end
+  end
+
   describe '#user_completed?' do
     before do
       programme_activity
