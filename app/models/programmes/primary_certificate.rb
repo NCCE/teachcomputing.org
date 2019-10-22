@@ -24,5 +24,9 @@ module Programmes
                                     .with_credit('20')
                                     .any?
     end
+
+    def user_completing_criteria_achievement(user)
+      false
+    end
   end
 end

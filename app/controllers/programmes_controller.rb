@@ -47,7 +47,6 @@ class ProgrammesController < ApplicationController
     end
 
     def get_certificate_details
-      passed_achievements = current_user.achievements.for_programme(@programme).in_state('complete')
-      @transition = passed_achievements.last.last_transition if passed_achievements.any?
+      @transition = @programme.user_completing_criteria_achievement(current_user).last_transition
     end
 end

@@ -35,6 +35,10 @@ class Programme < ApplicationRecord
     false
   end
 
+  def user_completing_criteria_achievement(user)
+    false
+  end
+
   def user_completed_diagnostic?(user)
     user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
   end

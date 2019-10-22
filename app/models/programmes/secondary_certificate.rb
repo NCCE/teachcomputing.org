@@ -9,6 +9,10 @@ module Programmes
       false
     end
 
+    def user_completing_criteria_achievement(user)
+      false
+    end
+
     def user_completed_diagnostic?(user)
       false
     end
