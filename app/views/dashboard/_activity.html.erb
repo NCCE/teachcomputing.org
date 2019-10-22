@@ -3,19 +3,16 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
-          <h2 class="govuk-heading-m ncce-dashboard__title">Your record of
-            achievement</h2>
+          <h2 class="govuk-heading-m ncce-dashboard__title">Your record of achievement</h2>
         </div>
       </div>
       <ul class="govuk-list ncce-activity-list" role="list">
         <li class="ncce-activity-list__item">
-          <span class="ncce-activity-list__item-text">Created your account with
-            the National Centre for Computing Education</span>
+          <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
         </li>
         <% if has_user_completed_activity?(@current_user, Activity.cs_accelerator_diagnostic_tool) %>
         <li class="ncce-activity-list__item">
-          <span class="ncce-activity-list__item-text">Used the diagnostic
-            tool</span>
+          <span class="ncce-activity-list__item-text">Used the diagnostic tool</span>
         </li>
         <% end %>
         <% @achievements.each do |achievement| %>
@@ -35,10 +32,7 @@
           <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-activity-links-search' %>
         </p>
         <p class="govuk-body-s ncce-activity-links--add">
-          <button aria-expanded="true"
-            class="ncce-link ncce-activity-links-add-button">
-            Add a course you've completed
-          </button>
+          <button aria-expanded="true" class="ncce-link ncce-activity-links-add-button">Add a course you've completed</button>
         </p>
         <div class="ncce-collapsible-activity">
           <p class="govuk-body-s">
