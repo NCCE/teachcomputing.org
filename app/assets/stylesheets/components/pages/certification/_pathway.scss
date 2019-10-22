@@ -26,10 +26,10 @@
       left: 0;
       width: 23px;
       height: 23px;
-      color: $astral;
+      color: $deep-cerulean;
       background: $white;
       border-radius: 100px;
-      border: solid 3px $astral;
+      border: solid 3px $deep-cerulean;
       text-align: center;
     }
   }
@@ -43,7 +43,7 @@
     width: 0;
     height: 100%;
     margin-left: 10px;
-    border-left: dotted 3px $astral;
+    border-left: dotted 3px $deep-cerulean;
   }
 
   &__step:last-child:after {
