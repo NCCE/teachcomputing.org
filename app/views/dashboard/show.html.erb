@@ -1,27 +1,27 @@
 <%= render 'components/hero', hero_title: 'Your dashboard' %>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper ncce-main-wrapper--intro">
+  <div
+    class="govuk-main-wrapper ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">Welcome to your personal dashboard where you can
-          discover and book face-to-face and online training courses and view
-          your progress.</p>
-        <p class="govuk-body">If you need help finding a course that’s
-          suitable for you,
-          <%= link_to 'use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %>
-          to identify the areas of subject knowledge where you need most
-          support.</p>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">Find a course</h2>
-          <p class="govuk-body ncce-aside__text">See the list of current face
-            to face and online courses.</p>
-          <p class="govuk-body">
-            <%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
-          </p>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">Welcome to your personal dashboard where you can
+            discover and book face-to-face and online training courses and view
+            your progress.</p>
+          <p class="govuk-body">If you need help finding a course that’s
+            suitable for you, <%= link_to 'use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(current_user) }), class: 'ncce-link', target: :_blank %>
+            to identify the areas of subject knowledge where you need most
+            support.</p>
         </div>
-      </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="ncce-aside">
+            <h2 class="govuk-heading-m ncce-aside__title">Find a course</h2>
+            <p class="govuk-body ncce-aside__text">See the list of current face
+              to face and online courses.</p>
+            <p class="govuk-body">
+              <%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %>
+            </p>
+          </div>
+        </div>
     </div>
   </div>
 </div>
@@ -29,3 +29,4 @@
 <%= render "dashboard/programmes/hero" if current_user.programmes.size.positive? %>
 <%= render 'dashboard/activity' %>
 <%= render 'dashboard/courses' %>
+
