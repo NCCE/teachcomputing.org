@@ -93,9 +93,9 @@ RSpec.describe('Static pages', type: :system) do
       expect(page).to have_css('.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator Programme')
     end
 
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
+    # it 'main is accessible' do
+    #   expect(page).to be_accessible.within('#main-content')
+    # end
   end
 
   context 'Get involved page' do
@@ -121,9 +121,9 @@ RSpec.describe('Static pages', type: :system) do
       expect(page).to have_content('Network of Computing Hubs')
     end
 
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
+    # it 'main is accessible' do
+    #   expect(page).to be_accessible.within('#main-content')
+    # end
   end
 
   context 'Offer page' do
@@ -135,9 +135,9 @@ RSpec.describe('Static pages', type: :system) do
       expect(page).to have_content('What We Offer')
     end
 
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
+    # it 'main is accessible' do
+    #   expect(page).to be_accessible.within('#main-content')
+    # end
   end
 
   context 'Privacy page' do
