@@ -4,43 +4,40 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-primary-diagnostic__wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <div class="ncce-primary-diagnostic__container">
-          <div class="ncce-primary-diagnostic__question">
-            <h2 class="govuk-heading-m ncce-primary-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
-            <p class="govuk-body-l">How confident are you teaching the programming elements of the KS1 and KS2 Computing National Curriculum?</p>
-            <p class="govuk-body">For example, are you able to explain the concepts of algorithms and computational thinking to pupils?</p>
-            <%= form_for(:diagnostic, url: wizard_path(:question_2), method: :put) do |form| %>
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <%= form.radio_button :question_1, '5', class: 'govuk-radios__input', :checked => true %>
-                  <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_5'>Not at all confident</label>
-                </div>
-                <div class="govuk-radios__item">
-                  <%= form.radio_button :question_1, '10', class: 'govuk-radios__input' %>
-                  <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_10'>A little confident</label>
-                </div>
-                <div class="govuk-radios__item">
-                  <%= form.radio_button :question_1, '15', class: 'govuk-radios__input' %>
-                  <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_15'>Fairly confident</label>
-                </div>
-                <div class="govuk-radios__item">
-                  <%= form.radio_button :question_1, '20', class: 'govuk-radios__input' %>
-                  <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_20'>Very confident</label>
-                </div>
+        <div class="ncce-primary-diagnostic__question">
+          <h2 class="govuk-heading-m ncce-primary-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
+          <p class="govuk-body-l">How confident are you teaching the programming elements of the KS1 and KS2 Computing National Curriculum?</p>
+          <p class="govuk-body">For example, are you able to explain the concepts of algorithms and computational thinking to pupils?</p>
+          <%= form_for(:diagnostic, url: wizard_path(:question_2), method: :put) do |form| %>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '5', class: 'govuk-radios__input', :checked => true %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_5'>Not at all confident</label>
               </div>
-              <%= form.submit 'Continue', class: 'govuk-button ncce-primary-diagnostic__button' %>
-              <% end %>
-          </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '10', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_10'>A little confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '15', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_15'>Fairly confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button :question_1, '20', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label" for='diagnostic_question_1_20'>Very confident</label>
+              </div>
+            </div>
+            <%= form.submit 'Continue', class: 'govuk-button ncce-primary-diagnostic__button' %>
+          <% end %>
+        </div>
         </div>
         <div class="govuk-grid-column-one-third">
           <h2 class="govuk-heading-m ncce-aside__title">Enrolment questionnaire</h2>
           <p class="govuk-body-s ncce-aside__text">This questionnaire is designed to give you some ideas of how to start your learning journey with the NCCE and give you direction towards the courses that might be of most use to you.
           </p>
           <p class="govuk-body-s">Nobody else will see the results so please feel free to be as honest as you can in your answers.</p>
-       </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
