@@ -2,7 +2,7 @@
 <%= render 'pages/certification/hero' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-primary-diagnostic__wrapper">
-    <div class="govuk-grid-row">
+    <div class="govuk-grid-row ncce-primary-diagnostic__row">
       <div class="govuk-grid-column-two-thirds">
         <div class="ncce-primary-diagnostic__question">
           <h2 class="govuk-heading-m ncce-primary-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
@@ -30,8 +30,9 @@
             <%= form.submit 'Continue', class: 'govuk-button ncce-primary-diagnostic__button' %>
           <% end %>
         </div>
-        </div>
-        <div class="govuk-grid-column-one-third">
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside ncce-diagnostic__aside">
           <h2 class="govuk-heading-m ncce-aside__title">Enrolment questionnaire</h2>
           <p class="govuk-body-s ncce-aside__text">This questionnaire is designed to give you some ideas of how to start your learning journey with the NCCE and give you direction towards the courses that might be of most use to you.
           </p>
