@@ -49,4 +49,8 @@
   &__step:last-child:after {
     border-left: none;
   }
+
+  &__step-title {
+    margin-bottom: 10px;
+  }
 }
