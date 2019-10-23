@@ -1,21 +1,7 @@
 .ncce-primary-diagnostic__aside {
-  border-top: 3px solid $deep-cerulean;
-  width: 100%;
-  padding-top: 15px;
-  margin: 15px 15px 0 15px;
-
   @include govuk-media-query($from: desktop) {
     width: 35%;
   }
-}
-
-.ncce-primary-diagnostic__aside-body {
-  font-size: 17px;
-}
-
-
-.ncce-primary-diagnostic__aside-heading {
-  font-size: 19px;
 }
 
 .ncce-primary-diagnostic__button {
@@ -50,14 +36,14 @@
 }
 
 .ncce-primary-diagnostic__question {
-  margin: 0 15px 0 15px;
   width: 100%;
 
   @include govuk-media-query($from: desktop) {
+    margin-right: 15px;
     width: 65%;
   }
 }
 
 .ncce-primary-diagnostic__wrapper {
-  padding-top: 30px;
+  padding-top: 0;
 }
