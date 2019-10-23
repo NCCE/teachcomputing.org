@@ -1,12 +1,18 @@
 class UserProgrammeEnrolmentsController < ApplicationController
-  before_action :set_programme, :set_user, :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create]
 
   def create
     enrolment = UserProgrammeEnrolment.new(user_programme_enrolment_params)
+    programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
     if enrolment.save
-      flash[:notice] = "Congrats you have enrolled on #{@programme.title}"
-      redirect_to programme_path(slug: @programme.slug)
+      case programme.slug
+      when 'primary-certificate'
+        redirect_to primary_certificate_diagnostic_path(:question_1)
+      else
+        flash[:notice] = "Congrats you have enrolled on #{programme.title}"
+        redirect_to programme_path(slug: programme.slug)
+      end
 
     else
       flash[:error] = 'Whoops something went wrong'
@@ -15,14 +21,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
   end
 
   private
-
-    def set_programme
-      @programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
-    end
-
-    def set_user
-      @user = User.find_by!(id: params[:user_programme_enrolment][:user_id])
-    end
 
     def user_programme_enrolment_params
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
