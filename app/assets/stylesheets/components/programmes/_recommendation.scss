@@ -1,12 +1,11 @@
 .recommendation {
     background-color: $lilly-white;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
     margin-left: 2rem;
     padding: 0.5rem;
     width: auto;
-
-    display: flex;
-    flex-direction: column;
 
     @include govuk-media-query($from: desktop) {
         margin-bottom: 0;
