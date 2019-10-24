@@ -1,0 +1,33 @@
+.recommendation {
+    background-color: $lilly-white;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    @include govuk-media-query($from: desktop) {
+        margin-bottom: 0;
+        margin-left: 2.8rem;
+        padding: 1rem;
+        width: 80%;
+    }
+}
+
+.recommendation__title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.nccce-button__recommendation {
+    grid-row: 4;
+    margin-left: 2rem;
+    width: auto;
+    @include govuk-media-query($from: desktop) {
+        grid-row: auto;
+        margin-left: 0;
+    }
+
+}

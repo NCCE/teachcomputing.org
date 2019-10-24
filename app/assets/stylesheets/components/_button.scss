@@ -4,7 +4,7 @@
   font-size: 1.188rem;
   font-weight: bold;
   margin: 0;
-  padding: 12px 25px;
+  padding: 5px 8px;
 
   &[disabled] {
     background-color: $background_color;
@@ -36,6 +36,10 @@
 
 .ncce-button__blue {
   @include ncce_button($blue);
+}
+
+.ncce-button__blue--deep {
+  @include ncce_button($deep-cerulean);
 }
 
 .ncce-button__pink--rounded {
