@@ -25,7 +25,7 @@
     grid-row: 4;
     margin-left: 2rem;
     width: auto;
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
         grid-row: auto;
         margin-left: 0;
     }
