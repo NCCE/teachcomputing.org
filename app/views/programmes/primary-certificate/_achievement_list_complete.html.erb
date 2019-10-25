@@ -1,0 +1,8 @@
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+<%= render 'programmes/achievements', presenters: @user_programme_achievements.diagnostic_achievements %>
+<%= render 'programmes/achievements', presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1) %>
+<%= render 'programmes/achievements', presenters: @user_programme_achievements.online_achievements(to_show = 1) %>
+<%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
+<%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 10) %>
+<%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 20) %>
+</ul>
