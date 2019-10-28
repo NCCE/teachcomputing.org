@@ -5,7 +5,7 @@
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-m">Congratulations! You have been awarded the Teach Primary computing certificate.</h1>
         <p class="govuk-body">
-          <%= link_to 'Download your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__blue', role: 'button', draggable: 'false' %>
+          <%= link_to 'Download your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button ncce-button__blue--deep', role: 'button', draggable: 'false' %>
         </p>
         
         <p class="govuk-body-m">If you would like to receive a hard-copy version, please contact us to arrange the awarding of your certificate at local CAS Community of Practice meeting.</p>
@@ -15,7 +15,7 @@
           <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
           <p class="govuk-body ncce-aside__text">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
           <p class="govuk-body ncce-aside__text">You can also
-            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw" class="ncce-link ncce-link--on-dark" data-related="WeAreComputing" data-lang="en" data-show-count="false" data-dnt="true" target="_blank">follow @WeAreComputing</a>on Twitter
+            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw" class="ncce-link" data-related="WeAreComputing" data-lang="en" data-show-count="false" data-dnt="true" target="_blank">follow @WeAreComputing</a> on Twitter
           </p>
         </div>
       </div>
@@ -30,8 +30,9 @@
           <h2 class="govuk-heading-m ncce-programmes-activity__title">Your learning journey</h2>
         </div>
       </div>
-      <%= render 'programmes/primary-certificate/achievement_list_complete' %>
-
+      <div class="primary-certificate__complete">      
+        <%= render 'programmes/primary-certificate/achievement_list_complete' %>
+      </div>
     </div>
   </div>
 </div>

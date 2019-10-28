@@ -2,7 +2,7 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <% if current_user && @programme.user_completed?(current_user) %>
-        <span class="govuk-body-m hero__status">You have completed</span>
+        <span class="govuk-body-m hero__status">Certificate awarded</span>
       <% elsif current_user && @programme.user_enrolled?(current_user) %>
         <span class="govuk-body-m hero__status">You are enrolled</span>
       <% end %>
