@@ -37,11 +37,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
     expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
   end
 
-  it 'has the Twitter share button' do
-    expect(rendered).to have_css('.ncce-aside__button', text: 'Tweet your certificate')
-  end
-
   it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 4)
+    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
   end
 end
