@@ -14,7 +14,7 @@ class AchievementsController < ApplicationController
       flash[:error] = "Whoops something went wrong adding the activity to your Record of Achievement"
     end
 
-    redirect_to request.referrer || dashboard_path
+    redirect_to self_verification_url || dashboard_path
   end
 
   def destroy
@@ -32,5 +32,9 @@ class AchievementsController < ApplicationController
 
   def achievement_params
     params.require(:achievement).permit(:activity_id)
+  end
+
+  def self_verification_url
+    helpers.whitelist_redirect_url(request.referrer)
   end
 end

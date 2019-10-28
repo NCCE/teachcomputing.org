@@ -6,8 +6,8 @@ class DiagnosticPresenter < ActivityPresenter
     'Use the diagnostic tool'
   end
 
-  def button_url(args = {})
-    cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id, redirect: { url: class_marker_diagnostic_url(args[:current_user]) })
+  def button_url(*)
+    cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id)
   end
 
   def completed_text(*)

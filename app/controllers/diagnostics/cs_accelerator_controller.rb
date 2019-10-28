@@ -3,7 +3,7 @@ class Diagnostics::CsAcceleratorController < ApplicationController
   before_action :track_visit!, only: [:show]
 
   def show
-    redirect_to params[:redirect][:url].to_s
+    redirect_to helpers.class_marker_diagnostic_url(current_user)
   end
 
   private

@@ -84,6 +84,13 @@ RSpec.describe AchievementsController do
 
     context 'with referrer header' do
       subject do
+        allow_any_instance_of(
+          described_class
+        ).to(
+          receive(:self_verification_url).and_return(
+            referrer
+          )
+        )
         post achievements_path,
              params: {
                achievement: { activity_id: nil }
