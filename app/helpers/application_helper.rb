@@ -23,6 +23,7 @@ module ApplicationHelper
     allowed_redirect_urls = [
       /^https:\/\/teachcomputing.org/,
       /^https:\/\/staging-teachcomputing.org/,
+      /^https:\/\/stem.org.uk/,
       /^https:\/\/www.stem.org.uk/,
       /^https:\/\/www-stage.stem.org.uk/,
       /^https:\/\/teachcomputing-staging-pr-([0-9]+).herokuapp.com/
