@@ -15,7 +15,7 @@ class DiagnosticPresenter < ActivityPresenter
   end
 
   def prompt_text(*)
-    'Optionally, use the diagnostic tool'
+    'Use the diagnostic tool'
   end
 
   def inspect

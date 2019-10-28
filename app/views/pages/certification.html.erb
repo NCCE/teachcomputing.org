@@ -23,10 +23,12 @@
           <p class="govuk-body-s"><%= link_to 'Browse available courses', courses_path, class: 'govuk-button ncce-button__pink' %></p>
         </div>
         <% unless current_user %>
-          <div class="govuk-grid-column-one-third ncce-aside">
-            <h2 class="govuk-heading-s ncce-aside__title">Start your journey</h2>
-            <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
-            <p class="govuk-body-s"><%= link_to 'Create an account', create_account_url, class: 'ncce-link ncce-link--on-dark' %></p>
+          <div class="govuk-grid-column-one-third">
+            <div class="ncce-aside">
+              <h2 class="govuk-heading-m ncce-aside__title">Start your journey</h2>
+              <p class="govuk-body-s ncce-aside__text">To earn your first credits you need to register with the National Centre for Computing Education.</p>
+              <p class="govuk-body-s"><%= link_to 'Create an account', create_account_url, class: 'ncce-link ncce-link--on-dark' %></p>
+            </div>
           </div>
         <% end %>
     </div>

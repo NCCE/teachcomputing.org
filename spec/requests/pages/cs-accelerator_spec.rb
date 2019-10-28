@@ -11,6 +11,7 @@ RSpec.describe PagesController do
 
   describe 'GET #cs-accelerator' do
     before do
+      user
       programme
     end
 
@@ -27,8 +28,7 @@ RSpec.describe PagesController do
 
     context 'when user is not enrolled on programme' do
       before do
-        allow_any_instance_of(AuthenticationHelper)
-            .to receive(:current_user).and_return(user)
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get cs_accelerator_path
       end
 
@@ -39,8 +39,7 @@ RSpec.describe PagesController do
 
     context 'when user is enrolled on programme' do
       it 'redirects to the programme page' do
-        allow_any_instance_of(AuthenticationHelper)
-            .to receive(:current_user).and_return(user)
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         user_programme_enrolment
         get cs_accelerator_path
         expect(response).to redirect_to(programme_path('cs-accelerator'))

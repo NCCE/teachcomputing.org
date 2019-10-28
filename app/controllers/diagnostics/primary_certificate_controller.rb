@@ -1,16 +1,23 @@
 class Diagnostics::PrimaryCertificateController < ApplicationController
+  layout 'full-width'
   include Wicked::Wizard
 
   before_action :authenticate
-  before_action :completed_diagnostic?, only: [:show]
+  before_action :enrolled?, :completed_diagnostic?, only: [:show]
 
   steps :question_1, :question_2, :question_3, :question_4
 
   def show
+    @step = step
+    @steps = steps
+    @programme = programme
     render_wizard
   end
 
   def update
+    @step = step
+    @steps = steps
+    @programme = programme
     session[:primary_diagnostic] = {}
     session[:primary_diagnostic].merge!(diagnostic_params)
 
@@ -32,6 +39,10 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
 
     def diagnostic_params
       params.require(:diagnostic).permit(:question_1, :question_2, :question_3, :question_4)
+    end
+
+    def enrolled?
+      redirect_to primary_path unless programme.user_enrolled?(current_user)
     end
 
     def finish_wizard_path

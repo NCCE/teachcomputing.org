@@ -1,32 +1,48 @@
 // Generic 'white on dark' box - for use in asides
+
+$aside-padding: 1rem;
+
 .ncce-aside {
-	background-color: $grey-dark-y;
-	padding: 1rem;
+  background-color: $white;
+  border-top-color: $jelly-bean;
+  border-top-style: solid;
+  border-top-width: 5px;
 
-	&__text {
-		color: $white;
-	}
+  &__text {
+    color: $black;
+  }
 
-	&__title {
-		color: $white;
-	}
+  &__title {
+    color: $black;
+    padding-top: $aside-padding;
+  }
 
-	&__link,
-	&__link:visited {
-		color: $white;
-		&:hover {
-			color: $grey-x-light;
-		}
-	}
+  &__link,
+  &__link:visited {
+    color: $grey-dark-x;
 
-	&__button {
-		margin-bottom: 0;
-		display: block;
-		padding: 0.75em;
-	}
+    &:hover {
+      color: $tapestry;
+    }
+  }
 
-	&__check-mark {
-		width: 23px;
-		float: right;
-	}
+  &__log {
+    color: $deep-cerulean;
+
+    &:hover {
+      color: $scarpa-flow;
+    }
+  }
+
+  &__button {
+    background-color: $jelly-bean;
+    margin-bottom: 0;
+    display: block;
+    padding: 0.75em;
+  }
+
+  &__check-mark {
+    width: 23px;
+    float: right;
+  }
 }

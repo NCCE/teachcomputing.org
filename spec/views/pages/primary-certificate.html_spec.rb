@@ -55,7 +55,7 @@ RSpec.describe('pages/primary-certificate', type: :view) do
     end
 
     it 'has a Log in link' do
-      expect(rendered).to have_css('.ncce-link', text: 'Log in')
+      expect(rendered).to have_css('.ncce-link', text: 'log in')
     end
 
     it 'doesn\'t show the create account step as complete' do

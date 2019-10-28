@@ -19,7 +19,7 @@ RSpec.describe DiagnosticPresenter do
   end
 
   describe('prompt_text') do
-    it { expect(empty_presenter.prompt_text(1)).to eq('Optionally, use the diagnostic tool') }
+    it { expect(empty_presenter.prompt_text(1)).to eq('Use the diagnostic tool') }
   end
 
   describe('inspect') do

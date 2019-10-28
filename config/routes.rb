@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
   get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
   get '/certificate/cs-accelerator/diagnostic/:id', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
-  get '/certificate/primary-certificate/diagnostic/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
-  put '/certificate/primary-certificate/diagnostic/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
+  get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
+  put '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
 
   namespace 'class_marker' do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
