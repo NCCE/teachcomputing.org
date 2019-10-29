@@ -34,6 +34,10 @@ RSpec.describe('components/_hero', type: :view) do
     it 'doesn\'t show the subtitle' do
       expect(rendered).not_to have_css('.hero__text', count: 1)
     end
+
+    it 'header width is normal' do
+      expect(rendered).not_to have_css('.hero__heading-wrapper--full-width', count: 1)
+    end
   end
 
   context 'when colour is passed in' do
@@ -67,6 +71,16 @@ RSpec.describe('components/_hero', type: :view) do
 
     it 'shows the subtitle' do
       expect(rendered).to have_css('.hero__text', text: subtitle)
+    end
+  end
+
+  context 'when full_width is turned on' do
+    before do
+      render :template => 'components/_hero', :locals => { hero_title: hero_title, full_width: true }
+    end
+
+    it 'header width is overridden' do
+      expect(rendered).to have_css('.hero__heading-wrapper--full-width', count: 1)
     end
   end
 end
