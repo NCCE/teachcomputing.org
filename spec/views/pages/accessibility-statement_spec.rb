@@ -7,7 +7,7 @@ RSpec.describe('pages/accessibility-statement', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Accessibility statement')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Accessibility statement')
   end
 
   it 'has three subtitles' do

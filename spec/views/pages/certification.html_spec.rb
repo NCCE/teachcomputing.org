@@ -5,7 +5,7 @@ RSpec.describe('pages/certification', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Certification')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Certification')
   end
 
   it 'has a contact link' do

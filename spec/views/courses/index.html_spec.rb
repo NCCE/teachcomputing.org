@@ -28,7 +28,7 @@ RSpec.describe('courses/index', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Courses')
   end
 
   context 'when there is not signed in user' do

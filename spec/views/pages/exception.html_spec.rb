@@ -6,6 +6,6 @@ RSpec.describe('pages/exception', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Page not found')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Page not found')
   end
 end
