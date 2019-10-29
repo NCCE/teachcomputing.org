@@ -12,7 +12,7 @@ RSpec.describe Diagnostics::CsAcceleratorController do
     describe 'while logged in' do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get cs_accelerator_diagnostic_path(activity.id, redirect: { url: diagnostic_url })
+        get cs_accelerator_diagnostic_path(activity.id)
       end
 
       it 'creates an Achievement if one does not exist already' do
@@ -20,7 +20,7 @@ RSpec.describe Diagnostics::CsAcceleratorController do
       end
 
       it 'redirects to the value of the CLASS_MARKER_DIAGNOSTIC_URL variable' do
-        expect(response).to redirect_to(diagnostic_url)
+        expect(response).to redirect_to(/^#{diagnostic_url}/)
       end
 
       it 'creates an achievement in a state of complete' do
@@ -30,7 +30,7 @@ RSpec.describe Diagnostics::CsAcceleratorController do
 
     describe 'while logged out' do
       before do
-        get cs_accelerator_diagnostic_path(activity.id, redirect: { url: diagnostic_url })
+        get cs_accelerator_diagnostic_path(activity.id)
       end
 
       it 'redirects to login' do

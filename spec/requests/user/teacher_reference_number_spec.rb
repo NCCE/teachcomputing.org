@@ -10,6 +10,13 @@ RSpec.describe UserController do
     end
     context 'with valid params' do
       subject do
+        allow_any_instance_of(
+          described_class
+        ).to(
+          receive(:trn_redirect_path).and_return(
+            cs_accelerator_path
+          )
+        )
         patch user_teacher_reference_number_path(user),
              params: {
               user: { teacher_reference_number: 'TRN123' },
