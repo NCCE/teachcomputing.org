@@ -38,7 +38,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has the Twitter share button' do
-    expect(rendered).to have_css('.ncce-aside__button', text: 'Tweet your certificate')
+    expect(rendered).to have_css('.primary-button--aside', text: 'Tweet your certificate')
   end
 
   it 'has the roa' do
