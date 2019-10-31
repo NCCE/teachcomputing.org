@@ -2,13 +2,13 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <% if current_user && @programme.user_completed?(current_user) %>
-        <span class="govuk-body-m hero__status">You have completed</span>
+        <span class="govuk-body-m hero__status">Certificate awarded</span>
       <% elsif current_user && @programme.user_enrolled?(current_user) %>
         <span class="govuk-body-m hero__status">You are enrolled</span>
       <% end %>
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
-        <p class="govuk-body hero__text">Certification awarded by BCS, The Chartered Institute for IT</p>
+        <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
       </div>
     </div>
   </div>

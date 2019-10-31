@@ -14,7 +14,7 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   end
 
   it 'has a status' do
-    expect(rendered).to have_css('.hero__status', text: 'You have completed')
+    expect(rendered).to have_css('.hero__status', text: 'Certificate awarded')
   end
 
   it 'has the programme title' do

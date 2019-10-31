@@ -133,3 +133,21 @@
     }
   }
 }
+
+.primary-certificate__complete {
+
+  .ncce-activity-list__item-activity {
+    background-color: $lilly-white;
+    @include govuk-media-query($from: tablet) {
+      width: 60%;
+    }
+  }
+
+  .ncce-activity-list__item-text {
+    background-image: image-url('tick-blue.svg');
+  }
+
+  .ncce-activity-list__tag {
+    background-color: $deep-cerulean;
+  }
+}

@@ -18,7 +18,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has a status' do
-    expect(rendered).to have_css('.hero__status', text: 'You have completed')
+    expect(rendered).to have_css('.hero__status', text: 'Certificate awarded')
   end
 
   it 'has the programme title' do
@@ -26,7 +26,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has the download button' do
-    expect(rendered).to have_link('View your certificate', href: '/certificate/primary-certificate/view-certificate')
+    expect(rendered).to have_link('Download your certificate', href: '/certificate/primary-certificate/view-certificate')
   end
 
   it 'has the journey section' do
@@ -37,11 +37,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
     expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
   end
 
-  it 'has the Twitter share button' do
-    expect(rendered).to have_css('.ncce-aside__button', text: 'Tweet your certificate')
-  end
-
   it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 4)
+    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
   end
 end
