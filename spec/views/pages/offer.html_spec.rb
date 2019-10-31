@@ -6,7 +6,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'What We Offer')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'What We Offer')
   end
 
   it 'has login links' do

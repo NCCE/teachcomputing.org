@@ -5,7 +5,7 @@ RSpec.describe('pages/hubs', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Network of Computing Hubs')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Network of Computing Hubs')
   end
 
   it 'has a contact link' do
