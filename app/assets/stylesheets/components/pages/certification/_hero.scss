@@ -127,6 +127,12 @@ $cs-accelerator-color: $tapestry;
   padding: 10px;
 }
 
+.hero__heading-wrapper--full-width {
+  @include govuk-media-query($from: desktop) {
+    max-width: 100%;
+  }
+}
+
 .hero__heading {
   margin-bottom: 0;
 }

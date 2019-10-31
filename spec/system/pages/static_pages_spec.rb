@@ -33,7 +33,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'About Us')
+      expect(page).to have_css('.govuk-heading-xl', text: 'About Us')
     end
 
     it 'main is accessible' do
@@ -47,7 +47,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'Accessibility statement')
+      expect(page).to have_css('.govuk-heading-xl', text: 'Accessibility statement')
     end
 
     it 'main is accessible' do
@@ -75,7 +75,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'Certification')
+      expect(page).to have_css('.govuk-heading-xl', text: 'Certification')
     end
     #commented out as it's giving false result for unkonown reason
     # it 'main is accessible' do
@@ -174,7 +174,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'Page not found')
+      expect(page).to have_css('.govuk-heading-xl', text: 'Page not found')
     end
 
     it 'main is accessible' do

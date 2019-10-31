@@ -69,12 +69,15 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <span class="govuk-body-m hero__status">You have completed</span>
-      <div class="hero__heading-wrapper">
-        <h1 class="govuk-heading-l hero__heading">Teach GCSE Computing</h1>
+      <div class="hero__heading-wrapper hero__heading-wrapper--full-width">
+        <h1 class="govuk-heading-xl hero__heading">Teach GCSE Computer Science</h1>
         <p class="govuk-body-s hero__text">Certification awarded by BCS, The Chartered Institute for IT</p>
       </div>
     </div>
   </div>
 </div>
+
 <%# same header with the component - set _all_the_things_, colour to purple %>
-<%= render 'components/hero', hero_title: 'Teach GCSE Computing', status_message: 'You have completed', subtitle: 'Certification awarded by BCS, The Chartered Institute for IT', glyph_num: '4', glyph_position: 'bottom', colour: 'purple' %>
+<%= render 'components/hero', hero_title: 'Teach GCSE Computer Science', status_message: 'You have completed', subtitle: 'Certification awarded by BCS, The Chartered Institute for IT', glyph_num: '4', glyph_position: 'bottom', colour: 'purple' %>
+<%# same header with the component - set _all_the_things_, colour to purple & full_width title %>
+<%= render 'components/hero', hero_title: 'Teach GCSE Computer Science', status_message: 'You have completed', full_width: true, subtitle: 'Allow the main title to extend to 100% width', glyph_num: '4', glyph_position: 'bottom', colour: 'purple' %>
