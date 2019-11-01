@@ -4,7 +4,7 @@ RSpec.describe OnlinePresenter do
   let(:empty_presenter) { described_class.new(nil) }
 
   describe('button_label') do
-    it { expect(empty_presenter.button_label).to eq('Find an online course') }
+    it { expect(empty_presenter.button_label).to eq('Start an online course') }
   end
 
   describe('button_url') do

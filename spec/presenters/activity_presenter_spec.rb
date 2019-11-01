@@ -15,7 +15,7 @@ RSpec.describe ActivityPresenter do
   end
 
   describe('button_label') do
-    it { expect(empty_presenter.button_label).to eq('Find a course') }
+    it { expect(empty_presenter.button_label).to eq('Start a course') }
   end
 
   describe('button_url') do

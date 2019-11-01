@@ -44,4 +44,8 @@ class Programme < ApplicationRecord
     
     user.programmes.exists?(id)
   end
+
+  def course_recommendations(*)
+    []
+  end
 end

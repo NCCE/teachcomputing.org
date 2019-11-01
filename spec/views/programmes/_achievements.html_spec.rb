@@ -19,8 +19,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
     end
 
-    it 'has a find courses buttons' do
-      expect(rendered).to have_link('Find a course', count: 2)
+    it 'has a start courses buttons' do
+      expect(rendered).to have_link('Start a course', count: 2)
     end
 
     it 'has prompt text' do
@@ -43,8 +43,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
-    it 'has one find courses button' do
-      expect(rendered).to have_link('Find a course', count: 1)
+    it 'has one start courses button' do
+      expect(rendered).to have_link('Start a course', count: 1)
     end
 
     it 'has the activity title' do
@@ -62,8 +62,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 2)
     end
 
-    it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a course', count: 0)
+    it 'has no start courses buttons' do
+      expect(rendered).to have_link('Start a course', count: 0)
     end
 
     it 'has the 2nd activity title' do
@@ -83,8 +83,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list__item--inprogress', count: 1)
     end
 
-    it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a course', count: 0)
+    it 'has no start courses buttons' do
+      expect(rendered).to have_link('Start a course', count: 0)
     end
 
     it 'has the first activity as complete' do
@@ -106,8 +106,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
     end
 
-    it 'has no find courses buttons' do
-      expect(rendered).to have_link('Find a course', count: 0)
+    it 'has no start courses buttons' do
+      expect(rendered).to have_link('Start a course', count: 0)
     end
 
     it 'has both activities as complete' do
