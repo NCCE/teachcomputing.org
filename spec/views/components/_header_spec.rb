@@ -7,11 +7,21 @@ RSpec.describe('components/_header', type: :view) do
     render
     expect(rendered).to have_xpath('//a[@href = "/"][contains(@class, "govuk-header__link")]', count: 1)
   end
+  # hidden until we release new navigation all together
+  # it 'shows a link to resources' do
+  #   render
+  #   expect(rendered).to have_link('Resources', href: resources_path)
+  # end
 
-  it 'shows a link to resources' do
-    render
-    expect(rendered).to have_link('Resources', href: resources_path)
-  end
+  # it 'shows a link to Primary' do
+  #   render
+  #   expect(rendered).to have_link('Primary teachers', href: primary_path)
+  # end
+
+    # it 'shows a link to Secondary teachers' do
+  #   render
+  #   expect(rendered).to have_link('Primary teachers', href: secondary_path)
+  # end
 
   context 'when a user is signed in' do
     before do
