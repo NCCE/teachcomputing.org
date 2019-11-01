@@ -32,8 +32,6 @@ module Programmes
                                    .with_category('diagnostic')
                                    .first
 
-      return nil unless diagnostic_achievement
-
       score = diagnostic_achievement.last_transition.metadata['score']
 
       recommendations = {
