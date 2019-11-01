@@ -63,7 +63,7 @@ RSpec.describe('dashboard/_activity', type: :view) do
     end
 
     it 'has the collapsible form button' do
-      expect(rendered).to have_css('.ncce-activity-form__button--pink', count: 1)
+      expect(rendered).to have_css('.ncce-activity-form__button', count: 1)
     end
   end
 end

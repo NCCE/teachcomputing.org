@@ -38,25 +38,18 @@
   @include ncce_button($blue);
 }
 
-.ncce-button__blue--deep {
+.button {
   @include ncce_button($deep-cerulean);
 }
 
-.ncce-button__pink--rounded {
-  border-radius: 0.5rem;
-  box-shadow: none;
-  margin-left: 2rem;
-  padding: 0.5rem 1rem;
-  width: calc(100% - 2rem);
-
-  @include govuk-media-query($from: tablet) {
-    margin: 0;
-    width: auto;
+.button--aside {
+  @include ncce_button($deep-cerulean);
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
   }
-
-  &:focus {
-    box-shadow: 0 0 0 2px $black;
-    outline-color: rgba(255, 255, 255, 0);
+  display: block;
+  padding: 0.75em;
+  &[disabled] {
+    width: 100%;
   }
-
 }
