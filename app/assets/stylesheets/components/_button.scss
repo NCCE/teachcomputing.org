@@ -38,12 +38,11 @@
   @include ncce_button($blue);
 }
 
-.primary-button,
-.ncce-button__blue--deep {
+.button {
   @include ncce_button($deep-cerulean);
 }
 
-.primary-button--aside {
+.button--aside {
   @include ncce_button($deep-cerulean);
   @include govuk-media-query($from: desktop) {
     margin-bottom: 0;

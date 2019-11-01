@@ -13,11 +13,11 @@
   </ul>
   <p class="govuk-body">
   <% if live %>
-    <%= link_to_if current_user, "Access year #{year} resources", resource_url, class: 'govuk-button primary-button--aside', role: 'button', draggable: 'false' do
-        link_to 'Log in to access', "#{auth_url}?source_uri=#{request.original_fullpath}#year-#{year}", method: :post, class: 'govuk-button primary-button--aside', role: 'button', draggable: 'false'
+    <%= link_to_if current_user, "Access year #{year} resources", resource_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' do
+        link_to 'Log in to access', "#{auth_url}?source_uri=#{request.original_fullpath}#year-#{year}", method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false'
     end %>
   <% else %>
-    <%= button_to 'Coming soon', '#', class: 'govuk-button primary-button--aside', role: 'button', draggable: 'false', disabled: true %>
+    <%= button_to 'Coming soon', '#', class: 'govuk-button button--aside', role: 'button', draggable: 'false', disabled: true %>
   <% end %>
   </p>
 </div>
