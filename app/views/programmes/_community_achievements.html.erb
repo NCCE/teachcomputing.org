@@ -7,7 +7,7 @@
       </span>
       <% unless presenter.completed? %>
       <span class="ihavedonethis">
-        <button aria-expanded="true" class="govuk-button ncce-button__pink ncce-button__pink--rounded ihavedonethis__button">
+        <button aria-expanded="true" class="govuk-button button ihavedonethis__button">
         <%= presenter.button_label %>
         </button>
         <span class="ihavedonethis__popup">
@@ -17,7 +17,7 @@
               <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
               <%= f.hidden_field :activity_id, value: presenter.id %>
             </span>
-            <%= f.submit 'Complete activity', class: 'govuk-button ncce-button__pink' %>
+            <%= f.submit 'Complete activity', class: 'govuk-button button' %>
           <% end %>
         </span>
       </span>

@@ -32,7 +32,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     end
 
     it 'has Enrol button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Enrol on this certificate')
+      expect(rendered).to have_css('.button--aside', text: 'Enrol on this certificate')
     end
 
     it 'shows the create account step as complete' do
@@ -51,7 +51,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     end
 
     it 'has Account button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Create an account')
+      expect(rendered).to have_css('.button--aside', text: 'Create an account')
     end
 
     it 'has a Log in link' do

@@ -13,7 +13,7 @@
           <h2 class="govuk-heading-m ncce-aside__title">Diagnostic Tool</h2>
           <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
           knowledge where you need most support.</p>
-          <p class="govuk-body-s"><%= link_to 'Use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
+          <p class="govuk-body-s"><%= link_to 'Use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button--aside', role: 'button', draggable: 'false', target: :_blank %></p>
         </div>
       </div>
       <% else %>
@@ -23,7 +23,7 @@
           <p class="govuk-body-s ncce-aside__text">
           To book onto a course, you'll need to create an account. It's free and takes two minutes!
           </p>
-          <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false' %></p>
+          <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
         </div>
       </div>
       <% end %>
@@ -69,7 +69,7 @@
                 'aria-label': 'Filter by topic' }
             %>
             <%= hidden_field_tag :certificate, @current_certificate.try(:slug) %>
-            <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
+            <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button button ncce-courses__filter-button' %>
           <% end %>
         </div>
       </div>

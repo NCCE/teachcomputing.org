@@ -4,7 +4,7 @@ $aside-padding: 1rem;
 
 .ncce-aside {
   background-color: $white;
-  border-top-color: $jelly-bean;
+  border-top-color: $deep-cerulean;
   border-top-style: solid;
   border-top-width: 3px;
 
@@ -32,13 +32,6 @@ $aside-padding: 1rem;
     &:hover {
       color: $scarpa-flow;
     }
-  }
-
-  &__button {
-    background-color: $jelly-bean;
-    margin-bottom: 0;
-    display: block;
-    padding: 0.75em;
   }
 
   &__check-mark {
