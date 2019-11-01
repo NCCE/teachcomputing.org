@@ -50,11 +50,13 @@
               <% if Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
                 <li class="ncce-header__navigation-item-cert">
                   <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
+                </li>              
+              <% end %>
+              <% if Programme.primary_certificate && Programme.primary_certificate.enrollable || Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
+                <li class="ncce-header__navigation-item-cert">
+                  <%= link_to 'Resources', resources_path, class: 'govuk-header__link' %>
                 </li>
               <% end %>
-              <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Resources', resources_path, class: 'govuk-header__link' %>
-              </li>
             </ul>
           </li>
         </ul>
