@@ -6,7 +6,7 @@
       <div class="govuk-grid-column">
         <div class="govuk-grid-column-two-thirds ncce-about__content">
           <p class="govuk-body-l">The demand for computing skills and knowledge is growing – it is estimated that 1.2 million more people with specialist digital skills will be needed by 2022. We are calling on businesses to join our efforts to ensure young people are equipped with the necessary skills for the future.</p>
-          <p class="govuk-body">The National Centre for Computing Education is funded by the Department for Education and is led by a consortium of STEM Learning, Raspberry Pi and BCS, The Chartered Institute for IT. We provide resources, training and support for teaching computing in schools and colleges from Primary through to A Level.</p>
+          <p class="govuk-body">The National Centre for Computing Education is funded by the Department for Education and is led by a consortium of STEM Learning, Raspberry Pi Foundation and BCS, The Chartered Institute for IT. We provide resources, training and support for teaching computing in schools and colleges from Primary through to A Level.</p>
           <p class="govuk-body">By working with us, your organisation can help to deliver a world-leading computing education for every child in every school in England.</p>
           <h2 class="govuk-heading-m">Get involved</h2>
           <p class="govuk-body">Work with us and play a vital role in raising the profile of computing education with businesses, school and college leaders, teachers, parents and young people.</p>
@@ -22,18 +22,54 @@
             </li>
             <li>
               <h3 class="govuk-heading-s">Volunteer</h3>
-              <p class="govuk-body">encourage your employees to volunteer for computing education initiatives in schools and clubs</p>
+              <p class="govuk-body">encourage your employees to volunteer for computing education initiatives in schools and clubs, specifically</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <%= link_to 'Barefoot Computing', 'https://www.barefootcomputing.org/barefoot-volunteers', class: 'ncce-link' %>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Training, administration and resources are provided</li>
+                    <li>Deliver a 90 workshop to a group of primary teachers at their school, usually after school</li>
+                    <li>Choose to deliver one or many workshops - it’s up to you</li>
+                  </ul>
+                </li>
+                <li>
+                  <%= link_to 'Code Club', 'https://codeclub.org/en/volunteer', class: 'ncce-link' %>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Commit for a minimum of 12 weeks</li>
+                    <li>Spend 1 hour per week, usually after school</li>
+                    <li>Help around 15 young people aged 9-13 to use the Code Club projects</li>
+                  </ul>
+                </li>
+                <li>
+                  <%= link_to 'STEM Ambassadors', 'https://www.stem.org.uk/stem-ambassadors', class: 'ncce-link' %>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Free of charge Enhanced Disclosure Check</li>
+                    <li>Volunteering induction, ID card and approved STEM Ambassador status</li>
+                    <li>Access a personal dashboard to find a wide range of opportunities to engage with schools locally</li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li>
               <h3 class="govuk-heading-s">Enrichment</h3>
               <p class="govuk-body">provide talks, mentors, visits, facilities or technology to enrich the student experience of computing in school</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li><%= link_to 'STEM Ambassadors', 'https://www.stem.org.uk/stem-ambassadors', class: 'ncce-link' %></li>
+                <li><%= link_to 'Isaac Computer Science Discovery Events', 'https://isaaccomputerscience.org/events', class: 'ncce-link' %></li>
+              </ul>
             </li>
             <li>
               <h3 class="govuk-heading-s">Funding</h3>
               <p class="govuk-body">provide financial support to computing education programmes</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Our ambition is to raise £2m of additional funds to ensure that CPD is fully and freely accessible to every teacher in every school in priority areas in England.</li>
+                <li>Join our strategic partners and help to make this happen</li>
+              </ul>
             </li>
           </ul>
-          <p class="govuk-body">For more information and to let us know how you can help please contact <%= mail_to 'supporters@teachcomputing.org', 'supporters@teachcomputing.org' %></p>
+          <p class="govuk-body">For more information and to let us know how you can help please contact <%= mail_to 'supporters@teachcomputing.org', 'supporters@teachcomputing.org', class: 'ncce-link' %> and take a look at our <%= link_to 'Working Together Booklet', 'https://static.teachcomputing.org/BCS%20Working%20Together%20NCCE%20Booklet.pdf', class: 'ncce-link' %></p>
+          <h2 class="govuk-heading-m">Strategic partners</h2>
+          <p class="govuk-body">We’re hugely grateful to our strategic partners, Microsoft, BT, Rolls Royce, Arm and Nationwide are already supporting the NCCE with funding.  For more information and to let us know how you can help with additional funding please contact <%= mail_to 'supporters@teachcomputing.org', 'supporters@teachcomputing.org', class: 'ncce-link' %></p>
         </div>
       </div>
     </div>
