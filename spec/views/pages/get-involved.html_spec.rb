@@ -18,7 +18,7 @@ RSpec.describe('pages/get-involved', type: :view) do
   end
 
   it 'has a list of things you can do' do
-    expect(rendered).to have_css('.govuk-list li', count: 5)
+    expect(rendered).to have_css('.govuk-list li', count: 21)
   end
 
   it 'list has headings' do
