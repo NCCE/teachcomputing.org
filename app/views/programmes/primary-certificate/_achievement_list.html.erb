@@ -3,8 +3,14 @@
     <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
   </li>
   <%= render 'programmes/achievements', presenters: @user_programme_achievements.diagnostic_achievements %>
-  <%= render 'programmes/achievements', presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1) %>
-  <%= render 'programmes/achievements', presenters: @user_programme_achievements.online_achievements(to_show = 1) %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
+      recommendations: @programme.course_recommendations(current_user, Activity::FACE_TO_FACE_CATEGORY)
+  %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.online_achievements(to_show = 1),
+      recommendations: @programme.course_recommendations(current_user, Activity::ONLINE_CATEGORY)
+  %>
   <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
 </ul>
 <p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
@@ -16,5 +22,3 @@
   <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 20) %>
 </ul>
 
-<p class="govuk-body"><strong>Example</strong> how to implement Recommendation section:</p>
-<%= render 'programmes/primary-certificate/recommendation' %>

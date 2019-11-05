@@ -1,9 +1,9 @@
 class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
   queue_as :default
 
-  def perform(test_id, email, percentage)
+  def perform(test_id, user_id, percentage)
     begin
-      user = find_user(email)
+      user = find_user(user_id)
       assessment = find_assessment(test_id)
       achievement = find_achievement(user, assessment)
       latest_attempt = user.assessment_attempts.where(assessment_id: assessment.id).last
@@ -31,7 +31,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
       Assessment.find_by!(class_marker_test_id: test_id)
     end
 
-    def find_user(email)
-      User.find_by!(email: email)
+    def find_user(user_id)
+      User.find(user_id)
     end
 end

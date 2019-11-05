@@ -19,7 +19,7 @@ RSpec.describe ClassMarker::WebhooksController do
       it 'queues job with correct params' do
         expect do
           post class_marker_assessment_webhook_path, params: JSON.parse(passing_json_body)
-        end.to have_enqueued_job.with('100', 'john@example.com', '75.0')
+        end.to have_enqueued_job.with('100', '123456', '75.0')
       end
 
       it 'returns 200 response' do
