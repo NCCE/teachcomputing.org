@@ -3,7 +3,7 @@ class OnlinePresenter < ActivityPresenter
   include Rails.application.routes.url_helpers
 
   def button_label(*)
-    'Find an online course'
+    'Start an online course'
   end
 
   def button_url(args = {})
