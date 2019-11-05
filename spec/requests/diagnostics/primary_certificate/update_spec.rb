@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Diagnostics::PrimaryCertificateController do
-  let(:user) { create(:user) }
-  let(:programme) { create(:primary_certificate) }
   let(:activity) { create(:activity, :primary_certificate_diagnostic_tool) }
+  let(:programme) { create(:primary_certificate) }
+  let(:user) { create(:user) }
+  let(:enrolment) { create(:user_programme_enrolment, programme: programme, user: user) }
 
   describe 'PUT update' do
     before do
       programme
       activity
       programme.activities << activity
+      enrolment
     end
 
     describe 'while logged in' do

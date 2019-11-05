@@ -5,10 +5,6 @@ module Programmes
       false
     end
 
-    def user_completed?(user)
-      false
-    end
-
     def user_completed_diagnostic?(user)
       false
     end

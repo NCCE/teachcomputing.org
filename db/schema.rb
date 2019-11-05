@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_27_110338) do
+ActiveRecord::Schema.define(version: 2019_10_31_143324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -121,6 +121,18 @@ ActiveRecord::Schema.define(version: 2019_09_27_110338) do
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
+  create_table "user_programme_enrolment_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.uuid "user_programme_enrolment_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_programme_enrolment_id", "most_recent"], name: "index_user_programme_enrolment_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["user_programme_enrolment_id", "sort_key"], name: "index_user_programme_enrolment_transitions_parent_sort", unique: true
+  end
+
   create_table "user_programme_enrolments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "programme_id", null: false
@@ -151,4 +163,5 @@ ActiveRecord::Schema.define(version: 2019_09_27_110338) do
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "user_programme_enrolment_transitions", "user_programme_enrolments"
 end
