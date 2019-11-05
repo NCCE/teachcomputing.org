@@ -4,6 +4,7 @@ class Programme < ApplicationRecord
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :users, through: :user_programme_enrolments
   has_one  :assessment, dependent: :destroy
+  has_one  :programme_complete_counter, dependent: :destroy
 
   validates :title, :description, :slug, presence: true
 
