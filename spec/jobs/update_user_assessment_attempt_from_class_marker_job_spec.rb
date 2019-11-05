@@ -7,7 +7,6 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     let(:programme) { create(:programme) }
     let(:assessment) { create(:assessment, class_marker_test_id: '100', activity_id: activity.id, programme_id: programme.id) }
     let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id)}
-    let(:assessment_counter) { create(:assessment_counter, assessment_id: assessment.id) }
     let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
     let(:passing_json_body) { File.read('spec/support/class_marker/passing_webhook.json') }
     let(:failed_json_body) { File.read('spec/support/class_marker/failed_webhook.json') }
