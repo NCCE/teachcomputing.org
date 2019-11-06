@@ -47,7 +47,7 @@ namespace :cs_accelerator do
       percentage = test_taker[:percentage]
       if percentage.to_f >= 65.0
         assessment_attempt.transition_to(:passed, percentage: percentage.to_f)
-        certificate_number = assessment.assessment_counter.get_next_number
+        certificate_number = assessment.programme.programme_complete_counter.get_next_number
         achievement.set_to_complete(certificate_number: certificate_number)
         puts "...has passed with #{percentage}% - certificate_number: #{certificate_number}"
       else

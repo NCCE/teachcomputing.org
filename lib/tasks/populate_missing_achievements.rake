@@ -13,7 +13,7 @@ namespace :populate_missing_achievements do
 
       achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
       achievement.save
-      certificate_number = assessment.assessment_counter.get_next_number
+      certificate_number = assessment.programme.programme_complete_counter.get_next_number
       achievement.set_to_complete(certificate_number: certificate_number)
       created_achievements << "#{achievement.id} - #{user.email}"
     end

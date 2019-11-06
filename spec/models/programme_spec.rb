@@ -27,6 +27,10 @@ RSpec.describe Programme, type: :model do
     it 'has_one assessment' do
       expect(programme).to have_one(:assessment)
     end
+
+    it 'has_one programme_complete_counter' do
+      expect(programme).to have_one(:programme_complete_counter)
+    end
   end
 
   describe 'scopes' do
@@ -112,9 +116,24 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#user_completed?' do
-    context 'with non-existent programme' do
+    context 'when the user is enrolled' do
       it 'returns false' do
-        expect(non_enrollable_programme.user_completed?(user)).to eq false
+        user_programme_enrolment
+        expect(programme.user_completed?(user)).to eq false
+      end
+    end
+
+    context 'when the user is pending' do
+      it 'returns false' do
+        user_programme_enrolment.transition_to(:pending)
+        expect(programme.user_completed?(user)).to eq false
+      end
+    end
+
+    context 'when the user is complete' do
+      it 'returns true' do
+        user_programme_enrolment.transition_to(:complete)
+        expect(programme.user_completed?(user)).to eq true
       end
     end
   end
