@@ -8,7 +8,4 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   transition from: :enrolled, to: :pending
   transition from: :enrolled, to: :complete
   transition from: :complete, to: %i[pending enrolled]
-
-  before_transition(from: :enrolled, to: :complete) do |achievement, _transition|
-  end
 end
