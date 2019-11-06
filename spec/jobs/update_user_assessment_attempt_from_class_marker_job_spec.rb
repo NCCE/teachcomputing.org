@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   let(:user) { create(:user, email: 'john@example.com') }
   let(:activity) { create(:activity) }
+  let(:programme) { create(:programme) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
-  let(:assessment) { create(:assessment, class_marker_test_id: '100', activity_id: activity.id) }
-  let(:assessment_counter) { create(:assessment_counter, assessment_id: assessment.id) }
+  let(:assessment) { create(:assessment, class_marker_test_id: '100', activity_id: activity.id, programme_id: programme.id) }
   let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
+  let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id)}
   let(:passing_json_body) { File.read('spec/support/class_marker/passing_webhook.json') }
   let(:failed_json_body) { File.read('spec/support/class_marker/failed_webhook.json') }
   let(:passing_result) { JSON.parse(passing_json_body, symbolize_names: true) }
@@ -14,7 +15,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   describe '#perform' do
     context 'when the user has passed the test' do
       before do
-        [user, activity, achievement, assessment, assessment_counter, assessment_attempt]
+        [user, activity, achievement, assessment, assessment_attempt, programme_complete_counter]
       end
 
       it 'transitions assessment_attempt to complete' do
