@@ -17,18 +17,9 @@ RSpec.describe('programmes/primary-certificate/pending', type: :view) do
     render
   end
 
-#   it 'has a status' do
-#     expect(rendered).to have_css('.hero__status', text: 'Certificate awarded')
-#   end
-
   it 'has the programme title' do
     expect(rendered).to have_css('.govuk-heading-m', text: 'Well done! You have completed the programme')
   end
-
-  it 'has the subtitle' do
-    expect(rendered).to have_css('.govuk-body-m',  count: 1)
-  end
-
 
   it 'has the roa' do
     expect(rendered).to have_css('.primary-certificate__complete', count: 1)
