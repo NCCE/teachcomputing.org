@@ -20,6 +20,8 @@ class ProgrammesController < ApplicationController
     @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
+    @complete_achievements = current_user.achievements.for_programme(@programme).sort_complete_first
+
     render "programmes/#{@programme.slug}/complete"
   end
 
