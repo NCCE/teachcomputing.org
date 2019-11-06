@@ -25,6 +25,13 @@ end
 
 puts "Created assessment_counter: #{assessment_counter}"
 
+programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: cs_accelerator.id) do |programme_complete_counter|
+  programme_complete_counter.programme_id = cs_accelerator.id
+  programme_complete_counter.counter = assessment_counter.counter
+end
+
+puts "Created programme_complete_counter: #{programme_complete_counter}"
+
 slugs = %w[
   registered-with-the-national-centre
   cs-accelerator-diagnostic-tool
