@@ -7,6 +7,11 @@ end
 
 puts "Created Programme: #{secondary.title} (#{secondary})"
 
+programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: secondary.id) do |programme_complete_counter|
+  programme_complete_counter.programme_id = secondary.id
+  programme_complete_counter.counter = 0
+end
+
 slugs = %w[
   registered-with-the-national-centre
   gcse-computer-science-developing-outstanding-teaching

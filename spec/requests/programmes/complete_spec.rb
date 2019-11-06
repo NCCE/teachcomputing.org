@@ -4,16 +4,16 @@ RSpec.describe ProgrammesController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
-  let(:user_programme_enrolment) {
-                                    create( :user_programme_enrolment,
-                                            user_id: user.id,
-                                            programme_id: programme.id)
-                                  }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment,
+           user_id: user.id,
+           programme_id: programme.id)
+  end
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -52,9 +52,9 @@ RSpec.describe ProgrammesController do
       end
 
       it 'handles missing programmes' do
-        expect {
+        expect do
           get programme_complete_path('programme-missing')
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it 'redirects if not enrolled' do
@@ -75,6 +75,7 @@ RSpec.describe ProgrammesController do
 
       describe 'and complete' do
         before do
+          user_programme_enrolment.transition_to(:complete)
           setup_achievements_for_completed_course
           get programme_complete_path('cs-accelerator')
         end

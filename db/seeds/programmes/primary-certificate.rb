@@ -7,6 +7,13 @@ end
 
 puts "Created Programme: #{primary.title} (#{primary})"
 
+programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: primary.id) do |programme_complete_counter|
+  programme_complete_counter.programme_id = primary.id
+  programme_complete_counter.counter = 0
+end
+
+puts "Created programme_complete_counter: #{programme_complete_counter}"
+
 slugs = %w[
   primary-certificate-diagnostic
   registered-with-the-national-centre
