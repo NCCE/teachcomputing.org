@@ -28,6 +28,7 @@ module ApplicationHelper
       /^https:\/\/www-stage.stem.org.uk/,
       /^https:\/\/teachcomputing-staging-pr-([0-9]+).herokuapp.com/
     ]
+    allowed_redirect_urls.push(/^http:\/\/localhost:3000/) if ENV['RAILS_ENV'] == 'development'
     allowed_redirect_urls.each do |regex|
       return url if url =~ regex
     end
