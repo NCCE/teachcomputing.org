@@ -1,8 +1,8 @@
 class ProgrammesController < ApplicationController
   layout 'full-width'
   before_action :authenticate_user!
-  before_action :find_programme, only: %i[show complete certificate pending]
-  before_action :user_enrolled?, only: %i[show complete certificate pending]
+  before_action :find_programme, only: %i[show complete certificate]
+  before_action :user_enrolled?, only: %i[show complete certificate]
   before_action :user_completed_diagnostic?, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
 
   def show
@@ -28,15 +28,6 @@ class ProgrammesController < ApplicationController
 
     get_certificate_details
     render "programmes/#{@programme.slug}/certificate", layout: 'certificate'
-  end
-
-  def pending
-    return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
-
-    @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
-    @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
-
-    render "programmes/#{@programme.slug}/pending"
   end
 
   private
