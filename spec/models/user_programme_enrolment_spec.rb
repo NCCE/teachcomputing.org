@@ -11,5 +11,9 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it 'belongs to user' do
       expect(user_programme_enrolment).to belong_to(:user)
     end
+
+    it 'has many user programme enrolment transitions' do
+      expect(user_programme_enrolment).to have_many(:user_programme_enrolment_transitions)
+    end
   end
 end

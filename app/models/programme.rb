@@ -32,8 +32,11 @@ class Programme < ApplicationRecord
     activities.find_by(category: 'diagnostic')
   end
 
-  def user_completed?(_user = nil)
-    false
+  def user_completed?(user)
+    enrolment = user.user_programme_enrolments.find_by(programme_id: id)
+    return false if enrolment.nil?
+    
+    enrolment.current_state == 'complete'
   end
 
   def user_completed_diagnostic?(user)
