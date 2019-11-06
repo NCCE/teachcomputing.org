@@ -41,7 +41,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
 
   context 'when the user has completed the CS Accelerator programme' do
     before do
-      user_programme_enrolment
+      user_programme_enrolment.transition_to(:complete)
       passed_exam
       user.reload
       render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
