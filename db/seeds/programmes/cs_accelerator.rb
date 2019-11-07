@@ -52,6 +52,8 @@ slugs = %w[
   introduction-to-cybersecurity-for-teachers
   ncce-coaching-and-mentoring
   impact-of-technology-how-to-lead-classroom-discussions
+  design-and-prototype-embedded-computer-systems
+  programming-103-saving-and-structuring-data
 ]
 
 slugs.each do |slug|

@@ -137,3 +137,33 @@ Activity.find_or_create_by(slug: 'programming-with-guis') do |activity|
   activity.future_learn_course_id = '645ec51f-0b46-4102-a364-90647057f4f2'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing') do |activity|
+  activity.title = 'Creating an Inclusive Classroom: Approaches to Supporting Learners with SEND in Computing'
+  activity.credit = 20
+  activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = ''
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'design-and-prototype-embedded-computer-systems') do |activity|
+  activity.title = 'Design and Prototype Embedded Computer Systems'
+  activity.credit = 20
+  activity.slug = 'design-and-prototype-embedded-computer-systems'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '83c939cf-8aa7-43d9-ad06-acaa3b859d91'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'programming-103-saving-and-structuring-data') do |activity|
+  activity.title = 'Programming 103: Saving and Structuring Data'
+  activity.credit = 20
+  activity.slug = 'programming-103-saving-and-structuring-data'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
+  activity.provider = 'future-learn'
+end
