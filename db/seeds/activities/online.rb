@@ -167,3 +167,13 @@ Activity.find_or_create_by(slug: 'programming-103-saving-and-structuring-data') 
   activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'programming-pedagogy-in-primary-schools-developing-computing-teaching') do |activity|
+  activity.title = 'Programming Pedagogy in Primary Schools: Developing Computing Teaching'
+  activity.credit = 0
+  activity.slug = 'programming-pedagogy-in-primary-schools-developing-computing-teaching'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '26e9cd23-2d71-4964-9af3-751aa3fdc8e5'
+  activity.provider = 'future-learn'
+end
