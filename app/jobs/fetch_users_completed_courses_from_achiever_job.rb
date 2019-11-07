@@ -15,7 +15,13 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
-      achievement.set_to_complete if course.is_fully_attended
+
+      if course.is_fully_attended
+        achievement.set_to_complete
+        if activity.programmes.include?(Programme.primary_certificate)
+          PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'FetchUsersCompletedCoursesFromAchieverJob.perform')
+        end
+      end
     end
   end
 end
