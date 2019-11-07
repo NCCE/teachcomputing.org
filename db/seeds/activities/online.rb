@@ -144,7 +144,7 @@ Activity.find_or_create_by(slug: 'creating-an-inclusive-classroom-approaches-to-
   activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
   activity.category = 'online'
   activity.self_certifiable = false
-  activity.future_learn_course_id = ''
+  activity.future_learn_course_id = 'b19646a7-d78b-4a92-ad36-d4b3a11a3df1'
   activity.provider = 'future-learn'
 end
 
