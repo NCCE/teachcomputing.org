@@ -6,7 +6,27 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id, user_id: user.id) }
 
   describe '#perform' do
-    context 'when user is valid' do
+    context 'when user is invalid' do
+      it 'raises error if user is not found' do
+        expect {
+          PrimaryCertificatePendingTransitionJob.perform_now('123', some_value: '10')
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'when user is valid but mot enrolled' do
+      before do
+        primary_certificate
+      end
+
+      it 'doesn\'t cause errors' do
+        expect {
+          PrimaryCertificatePendingTransitionJob.perform_now(user.id, some_value: '10')
+        }.not_to raise_error
+      end
+    end
+
+    context 'when user is valid and enrolled' do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
         user_programme_enrolment
@@ -20,14 +40,6 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
       it 'metadata is stored' do
         expect(user_programme_enrolment.last_transition.metadata['some_value']).to eq '10'
       end
-    end
-  end
-
-  context 'when user is invalid' do
-    it 'raises error if user is not found' do
-      expect {
-        PrimaryCertificatePendingTransitionJob.perform_now('123', some_value: '10')
-      }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

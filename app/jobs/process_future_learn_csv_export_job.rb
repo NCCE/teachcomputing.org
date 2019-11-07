@@ -28,7 +28,12 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
         achievement.transition_to(:commenced) if record['left_at'].blank?
       end
 
-      achievement.set_to_complete if record['steps_completed'].to_f >= 60
+      if record['steps_completed'].to_f >= 60
+        achievement.set_to_complete
+        if activity.programmes.include?(Programme.primary_certificate)
+          PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'ProcessFutureLearnCsvExportJob.perform')
+        end
+      end
       achievement.set_to_dropped(left_at: record['left_at']) if record['left_at'].present?
     end
 

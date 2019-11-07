@@ -4,6 +4,9 @@ RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
   let (:referrer) { 'https://testing123.com' }
+  let(:programme) { create(:primary_certificate) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
+
 
   describe 'POST #create' do
     before do
@@ -11,7 +14,10 @@ RSpec.describe AchievementsController do
     end
 
     context 'with valid params' do
+      include ActiveJob::TestHelper
+
       subject do
+        programme_activity
         post achievements_path,
              params: {
                achievement: { activity_id: activity.id }
@@ -20,6 +26,10 @@ RSpec.describe AchievementsController do
 
       before do
         subject
+      end
+
+      after do
+        clear_enqueued_jobs
       end
 
       it 'redirects to the dashboard path' do
@@ -50,6 +60,10 @@ RSpec.describe AchievementsController do
 
       it 'flash notice has correct info' do
         expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
+      end
+
+      it 'queues PrimaryCertificatePendingTransitionJob job' do
+        expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
       end
     end
 
