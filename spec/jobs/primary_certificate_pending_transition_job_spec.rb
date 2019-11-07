@@ -6,6 +6,7 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id, user_id: user.id) }
 
   describe '#perform' do
+    include ActiveJob::TestHelper
     context 'when user is invalid' do
       it 'raises error if user is not found' do
         expect {
@@ -33,12 +34,20 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
         PrimaryCertificatePendingTransitionJob.perform_now(user.id, some_value: '10')
       end
 
+      after do
+        clear_enqueued_jobs
+      end
+
       it 'transitions to pending' do
         expect(user_programme_enrolment.current_state).to eq 'pending'
       end
 
       it 'metadata is stored' do
         expect(user_programme_enrolment.last_transition.metadata['some_value']).to eq '10'
+      end
+
+      it 'queues SchedulePrimaryCertificateCompletionJob job' do
+        expect(SchedulePrimaryCertificateCompletionJob).to have_been_enqueued.exactly(:once).at(7.days)
       end
     end
   end
