@@ -12,7 +12,7 @@
       justify-content: start;
       box-sizing:border-box;
       width: 100%;
-      background: $pink-light;
+      background: $foam;
       padding: 0.9rem 1rem;
       @include govuk-media-query($from: tablet) {
         margin-bottom: 2px;
@@ -60,7 +60,7 @@
 		& > li {
       box-sizing:border-box;
       width: 100%;
-      background: $pink-light;
+      background: $foam;
       padding: 0.45rem 1rem;
       margin-left: 0;
       margin-right: 0;
@@ -104,14 +104,6 @@
     font-weight: 400;
     font-size: 0.74em;
   }
-}
-
-.ncce-courses__tag {
-  margin-bottom: 0.5rem;
-  padding-bottom: 5px;
-  text-transform: initial;
-  letter-spacing: 0;
-  background-color: $purple-dark;
 }
 
 .ncce-courses__filter-container {
