@@ -23,13 +23,21 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,
     2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,'
   end
+  let(:programme) { create(:primary_certificate) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
 
   describe '#perform' do
+    include ActiveJob::TestHelper
+
     before do
-      [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two]
+      [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two, programme_activity]
       dropped_achievement.transition_to(:dropped)
       allow(Raven).to receive(:capture_message)
       ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
+    end
+
+    after do
+      clear_enqueued_jobs
     end
 
     context 'when a user exists and steps completed is >= 60%' do
@@ -97,6 +105,10 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       it 'state remains commenced if steps complete is less than 60' do
         expect(user_five.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'commenced'
       end
+    end
+
+    it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:twice)
     end
   end
 end
