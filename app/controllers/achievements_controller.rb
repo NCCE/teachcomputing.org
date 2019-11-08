@@ -10,6 +10,9 @@ class AchievementsController < ApplicationController
         metadata[:self_verification_info] =  params[:self_verification_info]
       end
       @achievement.transition_to(:complete, metadata)
+      if @achievement.activity.programmes.include?(Programme.primary_certificate)
+        PrimaryCertificatePendingTransitionJob.perform_later(current_user.id, source: 'AchievementsController.create')
+      end
     else
       flash[:error] = "Whoops something went wrong adding the activity to your Record of Achievement"
     end
