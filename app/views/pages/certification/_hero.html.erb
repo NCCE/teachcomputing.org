@@ -1,10 +1,15 @@
 <div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
-      <% if current_user && @programme.user_completed?(current_user) %>
-        <span class="govuk-body-m hero__status">Certificate awarded</span>
-      <% elsif current_user && @programme.user_enrolled?(current_user) %>
-        <span class="govuk-body-m hero__status">You are enrolled</span>
+      <% if current_user %>
+        <% case  current_user.user_programme_enrolments.find_by(programme_id: @programme.id).current_state %>
+        <% when 'enrolled' %>
+          <span class="govuk-body-m hero__status">You are enrolled</span>
+        <% when 'pending' %>
+          <span class="govuk-body-m hero__status">Complete</span>
+        <% when 'complete' %>
+          <span class="govuk-body-m hero__status">Certificate awarded</span>
+        <% end %>
       <% end %>
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
