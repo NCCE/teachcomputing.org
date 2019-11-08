@@ -3,7 +3,9 @@
 <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
-        <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
+        <% if presenter.description.present? %>
+          <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
+        <% end %>
       </span>
       <% unless presenter.completed? %>
       <span class="ihavedonethis">

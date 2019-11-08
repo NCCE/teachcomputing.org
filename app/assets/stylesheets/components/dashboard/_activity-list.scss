@@ -79,11 +79,17 @@
 }
 
 .ncce-activity-list__item-description {
-  font-size: 1rem;
-  margin-bottom: 1.25rem;
+  background-color: $foam;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.31579;
+  margin-bottom: 4px;
+  padding: 0.625rem;
   @include govuk-media-query($from: tablet) {
-    font-size: 1.188rem;
+    font-size: 1rem;
     margin-bottom: 0;
+    padding: 0.75rem;
+    width: calc(80% - 2.8rem);
   }
 }
 
