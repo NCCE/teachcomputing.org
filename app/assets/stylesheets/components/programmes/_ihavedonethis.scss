@@ -9,7 +9,7 @@
   background-size: 1rem;
   background-repeat: no-repeat;
   padding: 0.5rem 1.7rem 0.5rem 0.5rem;
-  display: none; 
+  display: none;
 
   &[aria-expanded="true"] {
     background-image: url('close-self.svg');
@@ -45,9 +45,21 @@
 .ihavedonethis__popup {
   background-color: $grey-dark-x;
   margin-top: -3.8rem;
-  padding: 0.5rem;
+  padding: 0.875rem;
   box-sizing: border-box;
   text-align: left;
+
+  .button {
+    margin-bottom: 0;
+  }
+
+  .govuk-input {
+    border: 0;
+  }
+
+  .govuk-input:focus {
+    outline-color: $white;
+  }
 }
 
 .ihavedonethis--progressive {
@@ -71,10 +83,17 @@
 
   .ihavedonethis__button {
     display: inline-block;
+    width: calc(100% - 2rem);
+    margin-left: 2rem;
+    @include govuk-media-query($from: tablet) {
+      width: auto;
+      margin-left: 0;
+    }
   }
 }
 
 .ihavedonethis__group {
   display: inline-block;
   margin-bottom: 1rem;
+  width: 100%;
 }

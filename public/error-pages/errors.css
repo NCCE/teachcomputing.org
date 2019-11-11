@@ -4886,14 +4886,18 @@
   padding-top: 10px;
   padding-bottom: 0;
 }
-.ncce-feedback {
-  border-bottom-color: #b8b7d7;
-}
 .govuk-tag {
   padding-bottom: 3px;
 }
 .govuk-phase-banner__content__tag {
-  background-color: #593e8e;
+  background-color: #007fa2;
+}
+.ncce-courses__tag {
+  margin-bottom: 0.5rem;
+  padding-bottom: 5px;
+  text-transform: initial;
+  letter-spacing: 0;
+  background-color: #007fa2;
 }
 .ncce-alert {
   display: flex;
@@ -5038,16 +5042,20 @@
 .govuk-input:focus,
 .govuk-radios__input:focus,
 .govuk-textarea:focus {
-  outline-color: #de01a5;
+  outline-color: #007fa2;
 }
 .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-  box-shadow: 0 0 0 3px #de01a5;
+  box-shadow: 0 0 0 3px #007fa2;
 }
 .govuk-input:focus,
 .govuk-select:focus {
-  box-shadow: 0 0 0 2px #de01a5;
+  box-shadow: 0 0 0 3px #007fa2;
   outline-color: #ffffff;
-  outline-offset: 2px;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 3px;
+}
+.govuk-radios__input:focus + .govuk-radios__label::before {
+  box-shadow: 0 0 0 3px #007fa2;
 }
 .ncce-select {
   -moz-appearance: none;
@@ -5056,7 +5064,6 @@
   background-image: url(/assets/chevron-2283f0906dd66f0f58a68ace96b919ee3e65ce8c08fbe48c5fbd2b2bf8524c20.svg);
   background-position: calc(100% - 10px) 50%;
   background-repeat: no-repeat;
-  border-radius: 5px;
   font-size: 1rem;
   height: 2.5rem;
   margin-right: 20px;
@@ -5073,17 +5080,11 @@
     width: 100%;
   }
 }
-.ncce-select:focus {
-  outline-color: rgba(255, 255, 255, 0);
-}
-.ncce-input {
-  border-radius: 5px;
-}
 .ncce-aside {
   background-color: #ffffff;
   border-top-color: #007fa2;
   border-top-style: solid;
-  border-top-width: 5px;
+  border-top-width: 3px;
 }
 .ncce-aside__text {
   color: #000000;
@@ -5188,6 +5189,7 @@
     line-height: 1.2;
   }
   @-moz-document url-prefix() {
+
     .ncce-hero__heading {
       background-position: 12rem 0.15rem;
     }
@@ -5750,7 +5752,7 @@
   justify-content: start;
   box-sizing: border-box;
   width: 100%;
-  background: #fdf2fa;
+  background: #e3f6fc;
   padding: 0.9rem 1rem;
 }
 @media (min-width: 40.0625em) {
@@ -5795,7 +5797,7 @@
 .ncce-courses__meta > li {
   box-sizing: border-box;
   width: 100%;
-  background: #fdf2fa;
+  background: #e3f6fc;
   padding: 0.45rem 1rem;
   margin-left: 0;
   margin-right: 0;
@@ -5835,13 +5837,6 @@
   color: #696b8f;
   font-weight: 400;
   font-size: 0.74em;
-}
-.ncce-courses__tag {
-  margin-bottom: 0.5rem;
-  padding-bottom: 5px;
-  text-transform: initial;
-  letter-spacing: 0;
-  background-color: #593e8e;
 }
 .ncce-courses__filter-container {
   padding: 0;
@@ -6131,7 +6126,7 @@
 }
 .ncce-activity-list__item-text {
   align-self: center;
-  background-image: url(/assets/tick-88fb7e93c06d9acd47b8a5c9ab3553512160e12830fa46057fbca20013efb8df.svg);
+  background-image: url(/assets/tick-blue-4aab5d620b8ab424ec9cd7d7d6efa57bed154fe3eb15cf2f035975d73dd9eb98.svg);
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 1.2rem;
@@ -6162,7 +6157,7 @@
   }
 }
 .ncce-activity-list__item-activity {
-  background-color: #fdf2fa;
+  background-color: #e3f6fc;
   font-weight: 700;
   padding: 0.7rem;
 }
@@ -6586,6 +6581,20 @@
     flex-basis: 50%;
   }
 }
+.primary-certificate__complete .ncce-activity-list__item-activity {
+  background-color: #e3f6fc;
+}
+@media (min-width: 40.0625em) {
+  .primary-certificate__complete .ncce-activity-list__item-activity {
+    width: 60%;
+  }
+}
+.primary-certificate__complete .ncce-activity-list__item-text {
+  background-image: url(/assets/tick-blue-4aab5d620b8ab424ec9cd7d7d6efa57bed154fe3eb15cf2f035975d73dd9eb98.svg);
+}
+.primary-certificate__complete .ncce-activity-list__tag {
+  background-color: #007fa2;
+}
 .ncce-exam-activity__remarks {
   grid-column-end: span 3;
   display: flex;
@@ -6728,9 +6737,15 @@
 .ihavedonethis__popup {
   background-color: #333448;
   margin-top: -3.8rem;
-  padding: 0.5rem;
+  padding: 0.875rem;
   box-sizing: border-box;
   text-align: left;
+}
+.ihavedonethis__popup .govuk-input {
+  border: 0;
+}
+.ihavedonethis__popup .govuk-input:focus {
+  outline-color: #ffffff;
 }
 .ihavedonethis--progressive {
   position: relative;
@@ -6760,7 +6775,7 @@
   margin-bottom: 1rem;
 }
 .recommendation {
-  background-color: #E4F6FC;
+  background-color: #e3f6fc;
   display: flex;
   flex-direction: column;
   font-size: 16px;
@@ -6779,6 +6794,9 @@
 }
 .recommendation__title {
   font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.recommendation__text {
   margin-bottom: 0.5rem;
 }
 .ncce-button__recommendation {
