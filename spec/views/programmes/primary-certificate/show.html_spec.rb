@@ -25,7 +25,7 @@ RSpec.describe('programmes/primary-certificate/show', type: :view) do
   end
 
   it 'has the title' do
-    expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your progress')
+    expect(rendered).to have_css('.govuk-body-l', text: /^Welcome to the Teach primary computing programme!/)
   end
 
   it 'has correct list setup' do

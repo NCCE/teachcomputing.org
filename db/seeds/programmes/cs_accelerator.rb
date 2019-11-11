@@ -18,16 +18,9 @@ end
 
 puts "Created assessment: #{assessment.activity.title} (#{assessment})"
 
-assessment_counter = AssessmentCounter.find_or_create_by(assessment_id: assessment.id) do |assessment_counter|
-  assessment_counter.assessment_id = assessment.id
-  assessment_counter.counter = 0
-end
-
-puts "Created assessment_counter: #{assessment_counter}"
-
 programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: cs_accelerator.id) do |programme_complete_counter|
   programme_complete_counter.programme_id = cs_accelerator.id
-  programme_complete_counter.counter = assessment_counter.counter
+  programme_complete_counter.counter = 0
 end
 
 puts "Created programme_complete_counter: #{programme_complete_counter}"
