@@ -47,6 +47,7 @@ slugs = %w[
   impact-of-technology-how-to-lead-classroom-discussions
   design-and-prototype-embedded-computer-systems
   programming-103-saving-and-structuring-data
+  introduction-to-encryption-and-cryptography
 ]
 
 slugs.each do |slug|
