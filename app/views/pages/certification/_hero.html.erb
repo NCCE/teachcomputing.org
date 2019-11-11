@@ -2,7 +2,7 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <% if current_user %>
-        <% case  current_user.user_programme_enrolments.find_by(programme_id: @programme.id).current_state %>
+        <% case  current_user.user_programme_enrolments.find_by(programme_id: @programme.id).try(:current_state) %>
         <% when 'enrolled' %>
           <span class="govuk-body-m hero__status">You are enrolled</span>
         <% when 'pending' %>
