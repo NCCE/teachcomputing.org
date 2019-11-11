@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
+  let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
 
   before do
     allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
@@ -14,6 +15,7 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
                                                            diagnostic_achievements: [],
                                                            community_activities: [])
     assign(:user_programme_achievements, user_programme_achievements)
+    enrolment.transition_to(:complete)
     render
   end
 

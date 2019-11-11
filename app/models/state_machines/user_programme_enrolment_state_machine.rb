@@ -7,5 +7,6 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
 
   transition from: :enrolled, to: :pending
   transition from: :enrolled, to: :complete
+  transition from: :pending, to: %i[complete enrolled]
   transition from: :complete, to: %i[pending enrolled]
 end

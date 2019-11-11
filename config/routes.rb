@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
+  get '/certificate/:slug/pending', action: :pending, controller: 'programmes', as: :programme_pending
   get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
   get '/certificate/cs-accelerator/diagnostic/:id', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
   get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
