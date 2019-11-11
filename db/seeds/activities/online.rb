@@ -170,10 +170,30 @@ end
 
 Activity.find_or_create_by(slug: 'programming-pedagogy-in-primary-schools-developing-computing-teaching') do |activity|
   activity.title = 'Programming Pedagogy in Primary Schools: Developing Computing Teaching'
-  activity.credit = 0
+  activity.credit = 20
   activity.slug = 'programming-pedagogy-in-primary-schools-developing-computing-teaching'
   activity.category = 'online'
   activity.self_certifiable = false
   activity.future_learn_course_id = '26e9cd23-2d71-4964-9af3-751aa3fdc8e5'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'introduction-to-encryption-and-cryptography') do |activity|
+  activity.title = 'Introduction to Encryption and Cryptography'
+  activity.credit = 20
+  activity.slug = 'introduction-to-encryption-and-cryptography'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = 'a1520b0c-8c99-49e5-8c65-f025f3431ab0'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching') do |activity|
+  activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
+  activity.credit = 20
+  activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
   activity.provider = 'future-learn'
 end
