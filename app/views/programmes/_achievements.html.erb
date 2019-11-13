@@ -4,7 +4,7 @@
       <li class="ncce-activity-list__item">
         <span class="ncce-activity-list__item-text"><%= presenter.completed_text(index) %>
         </span>
-        <span class="ncce-activity-list__item-activity">
+        <span class="ncce-activity-list__item-activity light-blue-bg">
           <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete</span>
           <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
         </span>
@@ -12,7 +12,7 @@
     <% else %>
       <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
         <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
-        <span class="ncce-activity-list__item-activity">
+        <span class="ncce-activity-list__item-activity light-blue-bg">
           <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">In progress</span>
           <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
         <span>
