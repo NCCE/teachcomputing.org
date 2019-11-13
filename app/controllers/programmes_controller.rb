@@ -21,7 +21,9 @@ class ProgrammesController < ApplicationController
     @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
-    @complete_achievements = current_user.achievements.for_programme(@programme).sort_complete_first if @programme.slug == 'primary-certificate'
+    @complete_achievements = current_user.achievements.without_category('action')
+                                                      .without_category('diagnostic')
+                                                      .for_programme(@programme).sort_complete_first if @programme.slug == 'primary-certificate'
 
     render "programmes/#{@programme.slug}/complete"
   end
@@ -36,7 +38,10 @@ class ProgrammesController < ApplicationController
   def pending
     return redirect_to programme_complete_path(@programme.slug) if enrolment.current_state == 'complete'
 
-    @complete_achievements = current_user.achievements.for_programme(@programme).sort_complete_first
+    @complete_achievements = current_user.achievements.without_category('action')
+                                                      .without_category('diagnostic')
+                                                      .for_programme(@programme).sort_complete_first if @programme.slug == 'primary-certificate'
+
     @enrolment = current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
 
     render "programmes/#{@programme.slug}/pending"
