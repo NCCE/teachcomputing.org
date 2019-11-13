@@ -105,10 +105,6 @@ RSpec.describe UserProgrammeAchievements do
       expect(user_programme_achievements.face_to_face_achievements).to include(face_to_face_achievement)
     end
 
-    it 'diagnostic_achievements includes the diagnostic achievement' do
-      expect(user_programme_achievements.diagnostic_achievements).to include(diagnostic_achievement)
-    end
-
     it 'community_activities includes the community activity' do
       expect(user_programme_achievements.community_activities).to include(community_activity)
     end
