@@ -91,20 +91,12 @@
 }
 
 .ncce-activity-list__item--incomplete {
-  // grid-template-rows: 2fr auto;
-
-  // @include govuk-media-query($from: tablet) {
-  //   grid-template-columns: 2fr auto;
-  // }
-
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }
 }
 
 .ncce-activity-list__item--inprogress {
-  grid-template-rows: 2fr auto;
-
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }
