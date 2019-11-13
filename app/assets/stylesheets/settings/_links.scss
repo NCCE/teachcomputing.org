@@ -77,3 +77,26 @@ a:not([class]) {
 .ncce-link--heading {
   font-family: $font-family-heading;
 }
+
+.light-blue-bg,
+.light-grey-bg {
+  .ncce-link,
+  a[class=""],
+  a:not([class]) {
+    &:link {
+      color: $grey-dark-x;
+    }
+    &:visited {
+      color: $tapestry;
+    }
+    &:hover {
+      color: $deep-cerulean;
+    }
+    &:focus {
+      color: $white;
+    }
+    &:active {
+      color: $white;
+    }
+  }
+}
