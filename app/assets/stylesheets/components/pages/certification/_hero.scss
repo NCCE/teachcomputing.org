@@ -134,9 +134,11 @@ $cs-accelerator-color: $tapestry;
 }
 
 .hero__heading {
+  color: $grey-dark-x;
   margin-bottom: 0;
 }
 .hero__text {
+  color: $mid-gray;
   margin-top: $logo_block-mobile / 4;
   @include govuk-media-query($from: desktop) {
     margin-top: $logo_block / 4;
