@@ -2,7 +2,6 @@ class UserProgrammeAchievements
   def initialize(programme, user)
     @user = user
     @achievements = user.achievements.without_category('action')
-                                     .without_category('diagnostic')
                                      .for_programme(programme).sort_complete_first
   end
 
