@@ -73,13 +73,11 @@
 
 .ncce-activity-list__item-activity {
   @extend .ncce-activity-list__item-indent;
-  background-color: $foam;
   font-weight: 700;
   padding: 0.7rem;
 }
 
 .ncce-activity-list__item-description {
-  background-color: $foam;
   font-size: 0.875rem;
   font-weight: normal;
   line-height: 1.31579;

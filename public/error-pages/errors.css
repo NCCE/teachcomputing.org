@@ -9,6 +9,9 @@
   src: url(/assets/Objectivity-Medium-a99dfe46456ea219f75ce66ce5bcdfa7ea36a5d16ba0c75d4adcc96b4cbe3a9b.woff) format("woff"), url(/assets/Objectivity-Medium-671b7f75ca405969201a2819647145872f3fe9c7b14f1381f43bb0291fee643d.woff2) format("woff2"), url(/assets/Objectivity-Medium-93abed3bd2868c28c782bebcc66428ea7a7f0deab6d6666fd078b7289a43aea8.otf) format("opentype");
   font-weight: 400;
 }
+.light-blue-bg {
+  background-color: #e3f6fc;
+}
 .govuk-link {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4568,25 +4571,37 @@
     width: 25% !important;
   }
 }
-.ncce-link {
+.ncce-link,
+a[class=""],
+a:not([class]) {
   font-family: "Roboto", sans-serif;
 }
-.ncce-link:link {
+.ncce-link:link,
+a[class=""]:link,
+a:not([class]):link {
   color: #007fa2;
 }
-.ncce-link:visited {
-  color: #7b1ec0;
+.ncce-link:visited,
+a[class=""]:visited,
+a:not([class]):visited {
+  color: #a94e91;
 }
-.ncce-link:hover {
-  color: #de01a5;
+.ncce-link:hover,
+a[class=""]:hover,
+a:not([class]):hover {
+  color: #333448;
 }
-.ncce-link:focus {
+.ncce-link:focus,
+a[class=""]:focus,
+a:not([class]):focus {
+  background-color: #007fa2;
   color: #ffffff;
-  background-color: #de01a5;
-  outline-color: #de01a5;
+  outline-color: #007fa2;
 }
-.ncce-link:active {
-  background-color: #de01a5;
+.ncce-link:active,
+a[class=""]:active,
+a:not([class]):active {
+  background-color: #007fa2;
   color: #ffffff;
 }
 .ncce-link--on-dark:link {
@@ -4602,7 +4617,32 @@
   color: #ffffff;
 }
 .ncce-link--on-dark:active {
-  color: #000000;
+  color: #333448;
+}
+.light-blue-bg .ncce-link:link,
+.light-blue-bg a[class=""]:link,
+.light-blue-bg a:not([class]):link {
+  color: #333448;
+}
+.light-blue-bg .ncce-link:visited,
+.light-blue-bg a[class=""]:visited,
+.light-blue-bg a:not([class]):visited {
+  color: #a94e91;
+}
+.light-blue-bg .ncce-link:hover,
+.light-blue-bg a[class=""]:hover,
+.light-blue-bg a:not([class]):hover {
+  color: #007fa2;
+}
+.light-blue-bg .ncce-link:focus,
+.light-blue-bg a[class=""]:focus,
+.light-blue-bg a:not([class]):focus {
+  color: #ffffff;
+}
+.light-blue-bg .ncce-link:active,
+.light-blue-bg a[class=""]:active,
+.light-blue-bg a:not([class]):active {
+  color: #ffffff;
 }
 .ncce-link__icon {
   width: 30px;
@@ -4922,7 +4962,7 @@
   margin-left: 1rem;
 }
 .ncce-button__pink {
-  background-color: #de01a5;
+  background-color: #007fa2;
   box-shadow: none;
   font-size: 1.188rem;
   font-weight: bold;
@@ -4930,7 +4970,7 @@
   padding: 12px 25px;
 }
 .ncce-button__pink[disabled] {
-  background-color: #de01a5;
+  background-color: #007fa2;
 }
 .ncce-button__pink:hover, .ncce-button__pink[disabled]:hover {
   background-color: #000000;
@@ -5840,7 +5880,7 @@
 }
 .ncce-courses__filter-container {
   padding: 0;
-  background-color: #d1d0e5;
+  background-color: #f2f2f2;
 }
 .ncce-courses__filter-container--sticky {
   position: fixed;
@@ -6157,18 +6197,22 @@
   }
 }
 .ncce-activity-list__item-activity {
-  background-color: #e3f6fc;
   font-weight: 700;
   padding: 0.7rem;
 }
 .ncce-activity-list__item-description {
-  font-size: 1rem;
-  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.31579;
+  margin-bottom: 4px;
+  padding: 0.625rem;
 }
 @media (min-width: 40.0625em) {
   .ncce-activity-list__item-description {
-    font-size: 1.188rem;
+    font-size: 1rem;
     margin-bottom: 0;
+    padding: 0.75rem;
+    width: calc(80% - 2.8rem);
   }
 }
 .ncce-activity-list__item--incomplete {
@@ -6741,6 +6785,9 @@
   box-sizing: border-box;
   text-align: left;
 }
+.ihavedonethis__popup .button {
+  margin-bottom: 0;
+}
 .ihavedonethis__popup .govuk-input {
   border: 0;
 }
@@ -6769,26 +6816,35 @@
 }
 .ihavedonethis--progressive .ihavedonethis__button {
   display: inline-block;
+  width: calc(100% - 2rem);
+  margin-left: 2rem;
+}
+@media (min-width: 40.0625em) {
+  .ihavedonethis--progressive .ihavedonethis__button {
+    width: auto;
+    margin-left: 0;
+  }
 }
 .ihavedonethis__group {
   display: inline-block;
   margin-bottom: 1rem;
+  width: 100%;
 }
 .recommendation {
-  background-color: #e3f6fc;
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-size: 0.875rem;
   margin-bottom: 1rem;
   margin-left: 2rem;
-  padding: 0.5rem;
+  padding: 0.625rem;
   width: auto;
 }
 @media (min-width: 48.0625em) {
   .recommendation {
+    font-size: 1rem;
     margin-bottom: 0;
     margin-left: 2.8rem;
-    padding: 1rem;
+    padding: 0.75rem;
     width: 80%;
   }
 }

@@ -1,40 +1,64 @@
-.ncce-link {
+.ncce-link,
+a[class=""],
+a:not([class]) {
   font-family: $font-family-body;
 
 	&:link {
 		color: $deep-cerulean;
 	}
 	&:visited {
-		color: $purple;
+		color: $tapestry;
 	}
 	&:hover {
-		color: $pink;
+		color: $grey-dark-x;
 	}
 	&:focus {
+		background-color: $deep-cerulean;
 		color: $white;
-		background-color: $pink;
-		outline-color: $pink;
+		outline-color: $deep-cerulean;
 	}
 	&:active {
-		background-color: $pink;
+		background-color: $deep-cerulean;
 		color: $white;
-	}
+  }
+}
 
-  &--on-dark {
-  	&:link {
-  		color: $grey-x-light;
-  	}
-  	&:visited {
-  		color: $grey;
-  	}
-  	&:hover {
-  		color: $white;
-  	}
+.ncce-link--on-dark {
+  &:link {
+    color: $grey-x-light;
+  }
+  &:visited {
+    color: $grey;
+  }
+  &:hover {
+    color: $white;
+  }
+  &:focus {
+    color: $white;
+  }
+  &:active {
+    color: $grey-dark-x;
+  }
+}
+
+.light-blue-bg {
+  .ncce-link,
+  a[class=""],
+  a:not([class]) {
+    &:link {
+      color: $grey-dark-x;
+    }
+    &:visited {
+      color: $tapestry;
+    }
+    &:hover {
+      color: $deep-cerulean;
+    }
     &:focus {
       color: $white;
     }
     &:active {
-      color: $black;
+      color: $white;
     }
   }
 }
@@ -52,4 +76,27 @@
 
 .ncce-link--heading {
   font-family: $font-family-heading;
+}
+
+.light-blue-bg,
+.light-grey-bg {
+  .ncce-link,
+  a[class=""],
+  a:not([class]) {
+    &:link {
+      color: $grey-dark-x;
+    }
+    &:visited {
+      color: $tapestry;
+    }
+    &:hover {
+      color: $deep-cerulean;
+    }
+    &:focus {
+      color: $white;
+    }
+    &:active {
+      color: $white;
+    }
+  }
 }
