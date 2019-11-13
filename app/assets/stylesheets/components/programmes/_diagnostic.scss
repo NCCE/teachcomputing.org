@@ -18,8 +18,9 @@
 
 .ncce-primary-diagnostic__question-progress {
   font-weight: normal;
-  font-size: 17px;
-  color: $grey-dark-x;
+  font-family: $font-family-body;
+  font-size: 1.188rem;
+  color: $mid-gray;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -32,8 +33,4 @@
     flex-direction: row;
     flex-flow: row;
   }
-}
-
-.ncce-primary-diagnostic__wrapper {
-  padding-top: 10px;
 }
