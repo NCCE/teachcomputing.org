@@ -1,9 +1,22 @@
 $logo-block-mobile: 30px;
 $logo-block: 40px;
 
+.govuk-main-wrapper {
+  padding-top: $logo-block-mobile;
+  padding-bottom: $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    padding-top: $logo-block;
+    padding-bottom: $logo-block;
+  }
+}
+
 .govuk-main-wrapper--xl {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: $logo-block-mobile * 1.5;
+  padding-bottom: $logo-block-mobile * 1.5;
+  @include govuk-media-query($from: desktop) {
+    padding-top: $logo-block * 1.5;
+    padding-bottom: $logo-block * 1.5;
+  }
 }
 
 .ncce-main-wrapper--intro {
