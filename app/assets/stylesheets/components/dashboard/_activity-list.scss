@@ -90,6 +90,10 @@
   }
 }
 
+.ncce-activity-list__item-activity--no-padding {
+  padding: 0;
+}
+
 .ncce-activity-list__item--incomplete {
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
