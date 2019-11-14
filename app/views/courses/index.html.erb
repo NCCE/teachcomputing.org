@@ -7,16 +7,7 @@
         <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
         <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
       </div>
-      <% if current_user %>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">Diagnostic Tool</h2>
-          <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
-          knowledge where you need most support.</p>
-          <p class="govuk-body-s"><%= link_to 'Use the diagnostic tool', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button--aside', role: 'button', draggable: 'false', target: :_blank %></p>
-        </div>
-      </div>
-      <% else %>
+      <% unless current_user %>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
           <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
