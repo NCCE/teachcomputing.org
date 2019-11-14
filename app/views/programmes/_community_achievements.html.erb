@@ -4,7 +4,6 @@
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
       </span>
-
       <% unless presenter.completed? %>
       <span class="ihavedonethis">
         <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
@@ -23,8 +22,8 @@
       </span>
     <% end %>
     <% if presenter.description.present? %>
-          <span class="ncce-activity-list__item-activity light-blue-bg"><%= presenter.description %></span>
-        <% end %>
+      <span class="ncce-activity-list__item-activity light-blue-bg"><%= presenter.description %></span>
+    <% end %>
 </li>
 <% end %>
 
