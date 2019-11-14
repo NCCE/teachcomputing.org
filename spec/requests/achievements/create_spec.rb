@@ -7,7 +7,6 @@ RSpec.describe AchievementsController do
   let(:programme) { create(:primary_certificate) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
-
   describe 'POST #create' do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -17,6 +16,7 @@ RSpec.describe AchievementsController do
       include ActiveJob::TestHelper
 
       subject do
+        allow(PrimaryCertificatePendingTransitionJob).to receive(:perform_now)
         programme_activity
         post achievements_path,
              params: {
@@ -26,10 +26,6 @@ RSpec.describe AchievementsController do
 
       before do
         subject
-      end
-
-      after do
-        clear_enqueued_jobs
       end
 
       it 'redirects to the dashboard path' do
@@ -62,8 +58,8 @@ RSpec.describe AchievementsController do
         expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
       end
 
-      it 'queues PrimaryCertificatePendingTransitionJob job' do
-        expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+      it 'calls PrimaryCertificatePendingTransitionJob' do
+        expect(PrimaryCertificatePendingTransitionJob).to have_received(:perform_now)
       end
     end
 
