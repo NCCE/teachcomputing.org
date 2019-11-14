@@ -14,10 +14,10 @@ RSpec.describe('programmes/primary-certificate/pending', type: :view) do
   end
 
   it 'has the programme title' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'Well done! You have completed the programme')
+    expect(rendered).to have_css('.govuk-body-l', text: 'Well done! You have completed the programme')
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.primary-certificate__incomplete', count: 1)
+    expect(rendered).to have_css('.ncce-activity-list', count: 2)
   end
 end

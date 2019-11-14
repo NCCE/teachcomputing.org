@@ -19,6 +19,13 @@ $logo-block: 40px;
   }
 }
 
+.block-bottom-margin {
+  margin-bottom: $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $logo-block;
+  }
+}
+
 .ncce-main-wrapper--intro {
   padding-top: 50px;
   padding-bottom: 2rem;
