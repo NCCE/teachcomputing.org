@@ -5,7 +5,7 @@ Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
-  activity.description = 'This is CAS online discussion forums and could include the CAS forum, #CASChat, webinars and other NCCE activities.'
+  activity.description = 'Engaging in the CAS online discussion forums and webinars.'
 end
 
 Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
@@ -15,7 +15,7 @@ Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
-  activity.description = 'Some words about what this activity involves. And a link to point the teacher towards to take action on it: <a href="#">find a CAS community meeting</a>.'
+  activity.description = 'CAS Community meetings are a great place to meet up with teachers in your area and share best practice. To find your local CAS Community visit- <a href="https://www.computingatschool.org.uk/">www.computingatschool.org.uk</a>.'
 end
 
 Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
@@ -25,6 +25,7 @@ Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
+  activity.description = 'Head over to the CAS website to review resources you’ve downloaded and used from the CAS community. <a href="https://community.computingatschool.org.uk/resources/2616/single">You can find CAS resources here</a>'
 end
 
 Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activity|
@@ -34,6 +35,7 @@ Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activ
   activity.category = 'community'
   activity.provider = 'barefoot'
   activity.self_certifiable = true
+  activity.description = 'Barefoot workshops enable you to explore the Barefoot materials, concepts and approaches with a Barefoot volunteer. You can request a free workshop over on the <a href="https://www.barefootcomputing.org/">Barefoot computing website</a>'
 end
 
 Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activity|
@@ -43,6 +45,7 @@ Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activit
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
+  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the CAS website. You’ll need to commit to running 3 meetings per year to support your local community.'
 end
 
 Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
