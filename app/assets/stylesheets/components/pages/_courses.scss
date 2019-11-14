@@ -168,7 +168,7 @@
     padding: 10px 0;
   }
   &-prompt {
-    color: $black;
+    color: $grey-dark-x;
     margin-right: 20px;
     @include govuk-media-query($until: tablet) {
       display: none;

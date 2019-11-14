@@ -24,7 +24,7 @@
 .resources-year {
   padding-bottom: 30px;
   &__heading {
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid $grey-dark-x;
     font-family: $font-family-body;
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -38,7 +38,7 @@
 }
 
 .resources-aside {
-  background-color: $grey-x-light;
+  background-color: $concrete;
   padding: 1rem;
   &__title {
     background-image: url(/images/resources/documents-icon.svg);
