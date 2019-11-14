@@ -1,9 +1,9 @@
 <%= render 'pages/certification/hero' %>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+  <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-m">Congratulations! You have been awarded the Teach Primary computing certificate.</h1>
+        <p class="govuk-body-l">Congratulations! You have been awarded the Teach Primary computing certificate.</p>
         <p class="govuk-body">
           <%= link_to 'Download your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
@@ -13,8 +13,8 @@
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
           <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
-          <p class="govuk-body ncce-aside__text">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
-          <p class="govuk-body ncce-aside__text">You can also
+          <p class="govuk-body ncce-aside__text--s">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
+          <p class="govuk-body ncce-aside__text--s">You can also
             <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw" class="ncce-link" data-related="WeAreComputing" data-lang="en" data-show-count="false" data-dnt="true" target="_blank">follow @WeAreComputing</a> on Twitter
           </p>
         </div>
@@ -24,7 +24,7 @@
 </div>
 <div class="ncce-programmes-activity">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m ncce-programmes-activity__title">Your learning journey</h2>
