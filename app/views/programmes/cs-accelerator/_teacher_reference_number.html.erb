@@ -17,9 +17,11 @@
           'aria-label': 'Enter your teacher reference number'
       %>
       <%= hidden_field_tag 'redirect_path', programme_path(@programme.slug) %>
-      <%= f.submit 'Add', class: 'govuk-button button ncce-activity-list__form-button' %>
+      <%= f.submit 'Add', class: 'govuk-button button button--small' %>
     <% end %>
-    <%= link_to 'What is my teacher reference number?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'ncce-link ncce-activity-list__item-link', target: '_blank' %>
+    <span class="ncce-activity-list__item-activity ncce-activity-list__item-activity--no-padding">
+      <%= link_to 'What is my teacher reference number?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'ncce-link', target: '_blank' %>
+    </span>
   </li>
 <% end %>
 </ul>

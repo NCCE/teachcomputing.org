@@ -11,7 +11,8 @@
 .ncce-activity-list__item {
   background-color: $white;
   display: grid;
-  grid-template-rows: 2fr auto;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 10px;
   align-items: start;
   padding: 0.5rem 1.125rem 1.125rem;
   @include govuk-media-query($from: tablet) {
@@ -35,7 +36,17 @@
   }
 
   @include govuk-media-query($from: tablet) {
+    grid-template-columns: 3fr auto;
+    grid-template-rows: auto auto;
     padding: 1.25rem 1.125rem;
+  }
+
+  .button {
+    align-self: right;
+    grid-row: 3;
+    @include govuk-media-query($from: tablet) {
+      grid-row: 1;
+    }
   }
 }
 
@@ -45,10 +56,9 @@
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 1.2rem;
-  display: grid;
-  grid-row-gap: 10px;
   font-size: 1.188rem;
-  font-weight: bold;
+  grid-row: 1;
+  grid-column: 1;
   margin-bottom: 10px;
   margin-top: 3px;
   padding-left: 2rem;
@@ -56,7 +66,6 @@
   @include govuk-media-query($from: tablet) {
     background-size: 1.9rem;
     line-height: 1.9rem;
-    font-weight: normal;
     margin-bottom: 0;
     padding-left: 2.8rem;
   }
@@ -67,45 +76,31 @@
 
   @include govuk-media-query($from: tablet) {
     margin-left: 2.8rem;
-    margin-top: 0.5rem;
   }
 }
 
 .ncce-activity-list__item-activity {
   @extend .ncce-activity-list__item-indent;
-  font-weight: 700;
+  font-size: 1rem;
+  grid-row: 2;
+  grid-column: 1;
   padding: 0.7rem;
+  @include govuk-media-query($from: tablet) {
+    width: 37vw;
+  }
 }
 
-.ncce-activity-list__item-description {
-  font-size: 0.875rem;
-  font-weight: normal;
-  line-height: 1.31579;
-  margin-bottom: 4px;
-  padding: 0.625rem;
-  @include govuk-media-query($from: tablet) {
-    font-size: 1rem;
-    margin-bottom: 0;
-    padding: 0.75rem;
-    width: calc(80% - 2.8rem);
-  }
+.ncce-activity-list__item-activity--no-padding {
+  padding: 0;
 }
 
 .ncce-activity-list__item--incomplete {
-  grid-template-rows: 2fr auto;
-
-  @include govuk-media-query($from: tablet) {
-    grid-template-columns: 2fr auto;
-  }
-
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }
 }
 
 .ncce-activity-list__item--inprogress {
-  grid-template-rows: 2fr auto;
-
   .ncce-activity-list__item-text {
     background-image: image-url('incomplete-achievement.svg');
   }

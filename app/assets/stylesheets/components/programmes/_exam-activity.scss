@@ -53,24 +53,6 @@
   }
 }
 
-.certification-progress__image--mobile-exam {
-  top: -10px;
-  right: -10px;
-  bottom: auto;
-
-  @include govuk-media-query($from: tablet) {
-    display: none;
-  }
-}
-
-.certification-progress__image--exam {
-  @include govuk-media-query($until: tablet) {
-    display: none;
-  }
-
-  right: -10px;
-}
-
 .ncce-activity-list__item-text--exam {
   grid-column-end: span 3;
 }

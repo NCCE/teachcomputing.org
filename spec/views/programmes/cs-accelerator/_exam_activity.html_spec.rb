@@ -30,14 +30,6 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
       expect(rendered).not_to have_css('.ncce-link', text: 'Revision Guide')
     end
 
-    it 'shows the certificate graphic' do
-      expect(rendered).to have_css('.certification-progress__image--exam', count: 1)
-    end
-
-    it 'shows the mobile certificate graphic' do
-      expect(rendered).to have_css('.certification-progress__image--mobile-exam', count: 1)
-    end
-
     it 'tells the user to get more credits' do
       expect(rendered).to have_css('span', text: 'The test will be available when you have completed the necessary courses')
     end
