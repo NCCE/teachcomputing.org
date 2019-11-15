@@ -42,6 +42,7 @@ $cs-accelerator-color: $tapestry;
   height: 75px;
   width: 60px;
   background-image: url(/images/hero/glyph-3.svg);
+  transform: rotate(180deg);
   @include govuk-media-query($from: desktop) {
     height: 100px;
     width: 80px;
