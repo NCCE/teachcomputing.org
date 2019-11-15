@@ -11,7 +11,7 @@ class AchievementsController < ApplicationController
       end
       @achievement.transition_to(:complete, metadata)
       if @achievement.activity.programmes.include?(Programme.primary_certificate)
-        PrimaryCertificatePendingTransitionJob.perform_later(current_user.id, source: 'AchievementsController.create')
+        PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
       end
     else
       flash[:error] = 'Whoops something went wrong adding the activity'
