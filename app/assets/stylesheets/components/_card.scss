@@ -1,0 +1,67 @@
+.card {
+  background-color: $white;
+  border-left: 13px solid $tapestry;
+  margin-bottom: $logo-block-mobile;
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $logo-block;
+    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
+    &:after {
+      content: "";
+      display: block;
+      // opacity: 0.15;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 62px;
+      width: 54px;
+      background-image: url(/images/card/glyph-1.svg);
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+
+.card__status {
+  @include status_block();
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.card__heading {
+  margin-bottom: 15px;
+  padding-top: 0;
+}
+.card__status + .card__heading {
+  padding-top: 0;
+}
+
+.card__text {
+  color: $mid-gray;
+  margin-bottom: 17px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 17px;
+  }
+}
+
+.card__progress-bar {
+  width: 100%;
+  height: 13px;
+  background-color: $concrete;
+  color: $pink;
+
+  &::-webkit-progress-bar {
+    background-color: $concrete;
+  }
+
+  &::-webkit-progress-value {
+    background: $deep-cerulean;
+  }
+
+  &::-moz-progress-bar {
+    background: $deep-cerulean;
+  }
+}

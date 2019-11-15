@@ -1,13 +1,9 @@
 <div class="certification">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
+      <h2 class="govuk-heading-m">Your certificates</h2>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column">
-          <h2 class="govuk-heading-m underlined__title">Your certificates</h2>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full certificates">
+        <div class="govuk-grid-column-two-thirds">
           <% current_user.programmes.each do |programme| %>
             <% if programme.user_completed?(current_user) %>
               <%= render "dashboard/programmes/complete", programme: programme %>
