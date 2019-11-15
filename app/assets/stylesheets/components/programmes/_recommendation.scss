@@ -12,6 +12,10 @@
     margin-bottom: 0.5rem;
 }
 
+.recommendation__link + .recommendation__text {
+  margin-top: 0.5rem;
+}
+
 .ncce-button__recommendation {
     grid-row: 4;
     margin-left: 2rem;
