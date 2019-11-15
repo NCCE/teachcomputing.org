@@ -1,5 +1,9 @@
 <% flash.each do |key, value| %>
-  <div class="ncce-alert ncce-alert__<%= key %> govuk-body" role="alert">
-    <%= value.html_safe %>
+  <div class="ncce-alert ncce-alert--<%= key %>">
+    <div class='govuk-width-container'>
+      <div class="govuk-body ncce-alert__inner" role="alert">
+        <%= value.html_safe %>
+      </div>
+    </div>
   </div>
 <% end %>
