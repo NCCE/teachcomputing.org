@@ -1,26 +1,16 @@
 .ncce-alert {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0 20px 0;
-  padding: 1rem;
-  align-items: center;
-  color: $grey-dark-x;
+  &--notice {
+		background-color: $foam;
+  }
+
+  &--error {
+		background-color: $amour;
+  }
 }
 
-.ncce-alert {
+.ncce-alert__inner {
+  color: $grey-dark-x;
   font-size: 1.188rem;
-
-  &__notice {
-		background-color: $blue-flash;
-  }
-
-  &__error {
-		background-color: $pink-flash;
-  }
-
-  a {
-    align-self: start;
-    flex-basis: 8rem;
-    margin-left: 1rem;
-  }
+  margin: 0;
+  padding: 1rem 0;
 }

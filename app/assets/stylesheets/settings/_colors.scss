@@ -1,5 +1,4 @@
 $black: #000000;
-$blue-flash: #b3ebff;
 $blue-light: #acdad8;
 $blue-link: #2012cd;
 $blue: #4c43c5;
@@ -17,7 +16,6 @@ $hero-goldenrod: #fad160;
 $hero-terracotta: #e67d6e;
 $lavender-light: #e6e5f3;
 $pink-canon: #9e4784;
-$pink-flash: #f5b2e4;
 $pink: #de01a5;
 $purple-dark: #593e8e;
 $purple-light: #b8b7d7;
@@ -27,15 +25,17 @@ $white: #ffffff;
 
 // New brand colors - move these later when we can remove unused ones above.
 // sort them in alphabetical order and keep then lowercase to be consistent with other RPF projects
+$amour: #f7e0f1; // light tint for tapestry
 $concrete: #f2f2f2;
-$deep-cerulean: #007fa2;
+$deep-cerulean: #007fa2; // primary/main colour
 $dixie: #e7a615;
+$egg-white: #ffeec3; //light tint for dixie
+$foam: #e3f6fc; // light tint for deep-cerulean
 $jaffa: #f47c31;
-$foam: #E3F6FC;
-$scarpa-flow: #575868;
+$karry: #ffe7d2; // light tint for jaffa
 $mid-gray: #5c5d6d;
+$scarpa-flow: #575868;
 $tapestry: #a94e91;
-$foam: #e3f6fc;
 
 $govuk-text-colour: $grey-dark-x;
 
