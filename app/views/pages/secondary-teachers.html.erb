@@ -1,0 +1,166 @@
+<div class="tapestry-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l">The essential toolkit for secondary
+            computing teachers</h1>
+          <p class="govuk-body-l">Training and inspiration that grows your
+            confidence, transforms your teaching and brings your lessons to
+            life.</p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_tag '/images/secondary-teachers/hero.jpg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-l">Improve progress and attainment at Key Stage 3
+          and 4
+          by developing your subject knowledge and classroom practice.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="light-blue-bg padded-box">
+          <p class="govuk-body"><strong>
+              <%= link_to 'Program with GUIs', '#', class: 'ncce-link' %></strong>
+          </p>
+          <p class="govuk-body">Discover how to build your own Graphical User
+            Interface (GUI) with Python and guizero.</p>
+          <%= image_tag '/images/secondary-teachers/video-placeholder.jpg', alt: '' %>
+          <p class="govuk-body-s icons"><strong><span class="icon-online">Free
+                online course</span><span class="icon-calendar">3
+                weeks</span><span class="icon-clock">2 hours per
+                week</span></strong></p>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside secondary-teachers-aside">
+          <p class="govuk-body"><strong>
+              <%= link_to 'Python programming essentials for GCSE computer science ', '#', class: 'ncce-link' %></strong>
+          </p>
+          <p class="govuk-body-s">Go from novice programmer to competent teacher
+            of Python.</p>
+          <%= image_tag '/images/secondary-teachers/aside.jpg', alt: '' %>
+          <ul class="govuk-body-s govuk-list govuk-list--bullet">
+            <li>Operators and flow control</li>
+            <li>Iteration and nested structures</li>
+            <li>Validation and testing</li>
+            <li>Sub-programs</li>
+            <li>Data structures including arrays</li>
+          </ul>
+          <p class="govuk-body-s icons"><strong><span
+                class="icon-face-to-face">Face to face course</span><span
+                class="icon-calendar">2 days</span></strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="center-button">
+      <%= link_to 'Browse our courses', courses_path, class: 'govuk-button button' %>
+    </div>
+  </div>
+</div>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="card card--plain card--bottom-glyph">
+            <h3 class="govuk-heading-m card__heading">
+              <%= link_to 'Teach GCSE computer science', cs_accelerator_path, class: 'ncce-link' %>
+            </h3>
+            <p class="govuk-body card__text">The Computer Science Accelerator
+              Programme is a certified professional development programme
+              designed to equip you with the subject knowledge and confidence to
+              successfully teach GCSE computer science.</p>
+            <%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="testimonial">
+            <p class="govuk-body-s testimonial__text">
+              “The online courses let me go through the content at my own pace,
+              while the face-to-face gave me more hands-on experience with
+              practical programming, with concepts explained more in-depth.”
+            </p>
+            <div class="testimonial__bio">
+              <%= image_tag '/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
+              <%= link_to 'Kasim Rashid', '#' %>
+              <span class="govuk-body-s">Maths and Computer Science teacher,
+                London</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Your local computing community</h2>
+        <h3 class="govuk-body"><strong>Hubs</strong></h3>
+        <p class="govuk-body">Computing Hubs provide local, responsive and
+          tailored support to teachers across England. They are led by schools
+          and colleges with an exceptional track record in teaching computing.
+        </p>
+        <h3 class="govuk-body"><strong>Local experts</strong></h3>
+        <p class="govuk-body">Your local Computing Hub can connect you with a
+          Subject Matter Expert to help your school improve the delivery of
+          computer science. Our experts also offer free coaching and
+          consultancy.
+          <%= link_to 'Contact your local Subject Matter Expert', '#' %>.</p>
+        <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
+        <p class="govuk-body">Communities of Practice - run by
+          <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
+          (CAS) - are local networks of computing teachers that share expertise,
+          resources and best practice to encourage strong and effective
+          teaching.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="light-grey-bg secondary-teachers-resources">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          <h2 class="govuk-heading-l">Access our free teaching resources</h2>
+          <p class="govuk-body secondary-teachers-resources__intro">Boost the
+            quality of your lessons with our free
+            online resource bank. You’ll get access to full units of work,
+            lesson
+            plans, assessments and activities.</p>
+          <%= link_to 'Browse teaching resources', resources_path, class: 'govuk-button button secondary-teachers-resources__button' %>
+        </div>
+      </div>
+      <div class="secondary-teachers-resources__grid">
+        <div class="white-bg secondary-teachers-resources__grid-item">
+          <h3 class="govuk-body icon-resources"><strong>Subject knowledge
+              assessments</strong>
+          </h3>
+          <p class="govuk-body">Our free online self-marking assessments allow
+            you to evaluate your students’ knowledge so you can use this
+            information to guide your teaching for the rest of the year.</p>
+          <%= link_to 'Access the tests now', '', class: 'govuk-body ncce-link' %>
+        </div>
+        <div class="white-bg secondary-teachers-resources__grid-item">
+          <h3 class="govuk-body icon-resources"><strong>Year 8 - Data
+              Representations
+              (Lesson 5: Large quantities)</strong></h3>
+          <p class="govuk-body">In this lesson you will teach what bytes are,
+            and what the prefixes kilo-, mega-, giga- and tera- mean. You will
+            also demonstrate how to convert between them.</p>
+          <%= link_to 'Download this sample resource', '', class: 'govuk-body ncce-link' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

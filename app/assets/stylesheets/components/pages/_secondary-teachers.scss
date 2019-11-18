@@ -1,0 +1,163 @@
+.text-photo-hero {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-areas: "photo" "text";
+  grid-template-rows: 1fr 1fr;
+  padding: 10px;
+  @include govuk-media-query($from: tablet) {
+    grid-column-gap: 20px;
+    grid-row-gap: 0;
+    grid-template-areas: "text photo";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 10px 30px;
+  }
+
+  &__block--text {
+    grid-area: text;
+    padding-top: 20px;
+  }
+
+  &__block--photo {
+    grid-area: photo;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.padded-top {
+  padding-top: 0.8125rem;
+}
+
+.padded-box {
+  margin: 20px 0;
+  padding: 0.8125rem;
+  @include govuk-media-query($from: tablet) {
+    margin: 0;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.icons {
+  span {
+    clear: both;
+    float: left;
+    margin-bottom: 10px;
+    @include govuk-media-query($from: tablet) {
+      clear: none;
+    }
+    margin-right: 30px;
+    padding-left: 1.5rem;
+  }
+  span:last-child {
+    margin-right: 0;
+  }
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+.icon-online {
+  background-image: image-url('laptop.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.icon-calendar {
+  background-image: image-url('calendar.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.icon-clock {
+  background-image: image-url('clock.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.icon-face-to-face {
+  background-image: image-url('map-pin.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.icon-resources {
+  background-image: image-url('resources-black.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+  min-height: 30px;
+  padding-left: 2rem;
+}
+
+.secondary-teachers-aside {
+  padding-top: 13px;
+  img {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
+.center-button {
+  padding-top: $logo-block-mobile;
+  text-align: center;
+  @include govuk-media-query($from: tablet) {
+    padding-top: $logo-block;
+  }
+}
+
+.testimonial {
+  &__text {
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 18px;
+    }
+  }
+  &__bio {
+    padding: 0 10px 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 0 18px 18px;
+    }
+  }
+  &__image {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+.secondary-teachers-resources {
+  &__intro,
+  &__button {
+    margin-bottom: 30px;
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-row-gap: 30px;
+    grid-template-rows: auto auto;
+    @include govuk-media-query($from: tablet) {
+      grid-column-gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+  }
+
+  &__grid-item {
+    padding: 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 30px;
+    }
+  }
+
+
+}
