@@ -1,10 +1,12 @@
 .card {
   background-color: $white;
-  border-left: 13px solid $tapestry;
+  border-left: 9px solid $tapestry;
   margin-bottom: $logo-block-mobile;
+  padding: 20px 20px 30px 15px;
   position: relative;
 
   @include govuk-media-query($from: desktop) {
+    border-left-width: 13px;
     margin-bottom: $logo-block;
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
     &:after {
@@ -25,14 +27,24 @@
   }
 }
 
+.card:last-child {
+  margin-bottom: 0;
+}
+
 .card__status {
   @include status_block();
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 25px;
+  }
 }
 
 .card__heading {
-  margin-bottom: 15px;
+  margin-bottom: 13px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
   padding-top: 0;
 }
 .card__status + .card__heading {
