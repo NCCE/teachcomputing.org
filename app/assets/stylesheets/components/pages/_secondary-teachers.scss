@@ -36,7 +36,8 @@
   @include govuk-media-query($from: tablet) {
     margin: 0;
   }
-  img {
+  img,
+  video {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -112,6 +113,10 @@
 }
 
 .testimonial {
+  padding-top: 50px;
+  @include govuk-media-query($from: tablet) {
+    padding-top: 0;
+  }
   &__text {
     background-color: $white;
     border-radius: 10px;
