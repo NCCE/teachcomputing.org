@@ -10,19 +10,18 @@
     margin-bottom: $logo-block;
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
     &:after {
-      content: "";
-      display: block;
-      // opacity: 0.15;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      height: 62px;
-      width: 54px;
       background-image: url(/images/card/glyph-1.svg);
       background-position-x: right;
       background-position-y: bottom;
       background-repeat: no-repeat;
       background-size: 100%;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 62px;
+      position: absolute;
+      right: 0;
+      width: 54px;
     }
   }
 }
@@ -60,10 +59,10 @@
 }
 
 .card__progress-bar {
-  width: 100%;
-  height: 13px;
   background-color: $concrete;
   color: $pink;
+  height: 13px;
+  width: 100%;
 
   &::-webkit-progress-bar {
     background-color: $concrete;
