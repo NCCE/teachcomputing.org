@@ -156,13 +156,4 @@
       grid-template-rows: auto;
     }
   }
-
-  &__grid-item {
-    padding: 10px;
-    @include govuk-media-query($from: tablet) {
-      padding: 30px;
-    }
-  }
-
-
 }
