@@ -1,19 +1,26 @@
 <div class="certification">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
+      <h2 class="govuk-heading-m">Your certificates</h2>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column">
-          <h2 class="govuk-heading-m underlined__title">Your certificates</h2>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full certificates">
+        <div class="govuk-grid-column-two-thirds">
           <% current_user.programmes.each do |programme| %>
-            <% if programme.user_completed?(current_user) %>
-              <%= render "dashboard/programmes/complete", programme: programme %>
-            <% else %>
-              <%= render "dashboard/programmes/progress", programme: programme %>
-            <% end %>
+            <div class="card card--plain card--bottom-glyph">
+              <% if current_user && programme.user_enrolled?(current_user) %>
+                <% case  current_user.user_programme_enrolments.find_by(programme_id: programme.id).current_state %>
+                  <% when 'enrolled' %>
+                    <span class="govuk-body-m card__status">You are enrolled</span>
+                  <% when 'pending' %>
+                    <span class="govuk-body-m card__status">Programme complete</span>
+                  <% when 'complete' %>
+                    <span class="govuk-body-m card__status">Certificate awarded</span>
+                  <% end %>
+              <% end %>
+              <h3 class="govuk-heading-m card__heading"><%= link_to programme.title, programme_path(programme.slug), class: 'ncce-link' %></h3>
+              <p class="govuk-body card__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+              <% credits = credits_for_programme(current_user, programme) %>
+              <progress class="card__progress-bar" aria-label="You have <%= credits[:total] %> out of <%= credits[:max] %> credits" value="<%= credits[:total] %>" max="<%= credits[:max] %>"></progress>
+            </div>
           <% end %>
         </div>
       </div>
