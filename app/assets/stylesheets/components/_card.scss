@@ -1,0 +1,78 @@
+.card {
+  background-color: $white;
+  border-left: 9px solid $tapestry;
+  margin-bottom: $logo-block-mobile;
+  padding: 20px 20px 30px 15px;
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    border-left-width: 13px;
+    margin-bottom: $logo-block;
+    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
+    &:after {
+      background-image: url(/images/card/glyph-1.svg);
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 62px;
+      position: absolute;
+      right: 0;
+      width: 54px;
+    }
+  }
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card__status {
+  @include status_block();
+  display: inline-block;
+  margin-bottom: 20px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 25px;
+  }
+}
+
+.card__heading {
+  margin-bottom: 13px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
+  padding-top: 0;
+}
+.card__status + .card__heading {
+  padding-top: 0;
+}
+
+.card__text {
+  color: $mid-gray;
+  margin-bottom: 17px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 17px;
+  }
+}
+
+.card__progress-bar {
+  background-color: $concrete;
+  color: $pink;
+  height: 13px;
+  width: 100%;
+
+  &::-webkit-progress-bar {
+    background-color: $concrete;
+  }
+
+  &::-webkit-progress-value {
+    background: $deep-cerulean;
+  }
+
+  &::-moz-progress-bar {
+    background: $deep-cerulean;
+  }
+}
