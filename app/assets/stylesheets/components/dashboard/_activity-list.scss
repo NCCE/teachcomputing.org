@@ -90,7 +90,11 @@
   grid-column: 1;
   padding: 0.7rem;
   @include govuk-media-query($from: tablet) {
-    width: 37vw;
+    grid-column-end: 3;
+  }
+  @include govuk-media-query($from: 900px) {
+    width: 500px;
+    grid-column-end: 1;
   }
 }
 

@@ -54,3 +54,10 @@ $govuk-text-colour: $grey-dark-x;
 .white-bg {
   background-color: $white;
 }
+
+@mixin status_block() {
+  background-color: $grey-dark-x;
+  color: $white;
+  font-weight: bold;
+  padding: 5px 12px;
+}
