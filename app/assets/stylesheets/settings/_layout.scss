@@ -36,3 +36,9 @@ $logo-block: 40px;
     margin-top: 50px;
   }
 }
+
+.clearfix {
+  clear: both;
+  content: '';
+  display: table;
+}
