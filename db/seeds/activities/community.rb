@@ -55,7 +55,7 @@ Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.category = 'community'
   activity.provider = 'code-club'
   activity.self_certifiable = true
-  activity.description = 'This is CAS online discussion forums and could include the CAS forum, #CASChat, webinars and other NCCE activities.'
+  activity.description = 'Code Club supports schools and teachers nationwide to run free after-school coding clubs for 9- to 13-year-olds. Code Clubs are simple to run and help students develop a range of skills, including problem-solving and digital literacy. The Code Club team provides free, hands-on coding activities that spark curiosity and inspire creative thinking: <a href="https://codeclub.org/en/start-a-code-club" class="ncce-link">Start a Code Club in your school today</a>'
 end
 
 Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference') do |activity|
