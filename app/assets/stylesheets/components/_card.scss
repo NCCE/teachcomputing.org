@@ -1,6 +1,16 @@
+.shadow_card {
+  background-color: $white;
+  box-shadow: 0 0 5px $box-shadow;
+  padding: 0.5 * $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    padding: 0.5 * $logo-block;
+  }
+}
+
 .card {
   background-color: $white;
   border-left: 9px solid $tapestry;
+  box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
   padding: 20px 20px 30px 15px;
   position: relative;

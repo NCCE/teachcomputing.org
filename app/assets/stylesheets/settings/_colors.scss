@@ -2,7 +2,7 @@ $black: #000000;
 $blue-light: #acdad8;
 $blue-link: #2012cd;
 $blue: #4c43c5;
-$box-shadow: rgba(0, 0, 0, 0.3);
+$box-shadow: rgba(0, 0, 0, 0.1);
 $butterfly-bush: #5f54a1;
 $grey-alto: #d8d8d8;
 $grey-dark-x: #333448;
@@ -45,6 +45,14 @@ $govuk-text-colour: $grey-dark-x;
 
 .light-grey-bg {
   background-color: $concrete;
+}
+
+.tapestry-bg {
+  background-color: $tapestry;
+}
+
+.white-bg {
+  background-color: $white;
 }
 
 @mixin status_block() {
