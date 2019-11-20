@@ -1,7 +1,5 @@
 .ncce-dashboard-activity {
   background-color: $concrete;
-  padding-bottom: 30px;
-  padding-top: 0;
 }
 
 .ncce-activity-list--programme {
@@ -50,6 +48,12 @@
   }
 }
 
+.ncce-dashboard-activity {
+  .ncce-activity-list__item {
+    grid-template-rows: auto;
+  }
+}
+
 .ncce-activity-list__item-text {
   align-self: center;
   background-image: image-url('tick-blue.svg');
@@ -86,7 +90,11 @@
   grid-column: 1;
   padding: 0.7rem;
   @include govuk-media-query($from: tablet) {
-    width: 37vw;
+    grid-column-end: 3;
+  }
+  @include govuk-media-query($from: 900px) {
+    width: 500px;
+    grid-column-end: 1;
   }
 }
 
@@ -106,160 +114,8 @@
   }
 }
 
-.ncce-activity-list__remove {
-  grid-template-columns: 2fr auto;
-}
-
 .ncce-activity-list__item--position {
   position: relative;
-}
-
-.ncce-activity-list__item-remove {
-  font-size: 0.7em;
-  margin-top: 0.6em;
-}
-
-.ncce-activity-links {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  position: relative;
-
-  &--progressive {
-    @include govuk-media-query($from: tablet) {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-
-  @include govuk-media-query($from: tablet) {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  &-search {
-    background-image: image-url('search-dashboard.svg');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 1.2rem;
-    padding-left: 1.5rem;
-    margin-right: 1em;
-    font-size: 1rem;
-    font-weight: 700;
-
-    @include govuk-media-query($until: tablet) {
-      line-height: 3rem;
-      background-size: 1rem;
-    }
-
-  }
-
-  &-add-button {
-    all: inherit;
-    cursor: pointer;
-    border: 0;
-    display: inline-flex;
-
-    background-image: image-url('add-dashboard.svg');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 1.2rem;
-
-    @include govuk-media-query($until: tablet) {
-      background-size: 1rem;
-    }
-
-    padding-left: 1.5rem;
-    font-size: 1rem;
-    font-weight: 700;
-    text-decoration: underline;
-
-    color: $blue-link;
-
-    &:hover {
-      color: $pink;
-    }
-
-    &:focus {
-      color: $white;
-      background-color: $pink;
-      outline-color: $pink;
-    }
-
-    &:active {
-      background-color: $pink;
-      color: $white;
-    }
-  }
-}
-
-.ncce-collapsible-activity {
-  margin-top: -3.8rem;
-
-  &--progressive {
-    position: absolute;
-    margin-top: 3.5rem;
-
-    @include govuk-media-query($from: tablet) {
-      margin-top: auto;
-    }
-
-    @include govuk-media-query($from: desktop) {
-      right: 4rem;
-      width: 30rem;
-    }
-  }
-
-  box-sizing: border-box;
-  max-width: 100%;
-  padding: 1rem;
-
-
-
-  background-color: $white;
-  box-shadow: 5px 5px 0 $box-shadow;
-  text-align: left;
-
-  &__title-button {
-    all: inherit;
-
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0 2rem 0;
-    padding-left: 1.5rem;
-
-    background-image: image-url('add-dark.svg');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 1.2rem;
-    font-size: 1rem;
-    font-weight: 700;
-    color: $grey-dark-z;
-    text-align: left;
-    cursor: pointer;
-    border: 0;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    @include govuk-media-query($from: tablet) {
-      background-image: image-url('add-dark.svg'), image-url('close-blue.svg');
-      background-position: left center, right, center;
-      background-repeat: no-repeat, no-repeat;
-      background-size: 1.2rem, 1.2rem;
-    }
-  }
-}
-
-.ncce-activity-form__select {
-  margin-bottom: 1rem;
-}
-
-.ncce-activity-form__button {
-  margin-top: 1rem;
-  width: 100%;
 }
 
 .ncce-activity-list__tag {

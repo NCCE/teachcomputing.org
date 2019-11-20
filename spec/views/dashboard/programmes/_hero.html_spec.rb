@@ -30,16 +30,33 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       render :template => 'dashboard/programmes/_hero'
     end
 
+    it 'shows the certificate section' do
+      expect(rendered).to have_css('.govuk-heading-m', text: 'Your certificates')
+    end
+
     it 'shows the certificate link' do
       expect(rendered).to have_link(programme.title, href: programme_path(slug: programme.slug))
     end
 
     it 'shows the progress bar' do
-      expect(rendered).to have_css('.certification-progress__bar', count: 1)
+      expect(rendered).to have_css('.card__progress-bar', count: 1)
     end
   end
 
   context 'when the user has completed the CS Accelerator programme' do
+    before do
+      user_programme_enrolment.transition_to(:pending)
+      passed_exam
+      user.reload
+      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+    end
+
+    it 'shows the completed text' do
+      expect(rendered).to have_css('.card__status', text: 'Programme complete')
+    end
+  end
+
+  context 'when the user has been awarded the CS Accelerator certificate' do
     before do
       user_programme_enrolment.transition_to(:complete)
       passed_exam
@@ -47,20 +64,8 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
     end
 
-    it 'shows the certificate complete section' do
-      expect(rendered).to have_css('.underlined__title', text: 'Your certificate')
-    end
-
-    it 'shows the certificate link' do
-      expect(rendered).to have_link(programme.title, href: programme_complete_path(slug: programme.slug))
-    end
-
     it 'shows the completed text' do
-      expect(rendered).to have_css('.pink-text', text: 'Completed!')
-    end
-
-    it 'shows the image' do
-        expect(rendered).to have_css('.hero__image--dashboard', count: 1)
+      expect(rendered).to have_css('.card__status', text: 'Certificate awarded')
     end
   end
 end

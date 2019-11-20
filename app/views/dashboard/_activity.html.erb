@@ -1,62 +1,20 @@
 <div class="ncce-dashboard-activity">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column">
-          <h2 class="govuk-heading-m ncce-dashboard__title">Your record of achievement</h2>
-        </div>
-      </div>
-      <ul class="govuk-list ncce-activity-list" role="list">
-        <li class="ncce-activity-list__item">
-          <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
-        </li>
-        <% @achievements.each do |achievement| %>
-          <li class="ncce-activity-list__item ncce-activity-list__remove">
-            <span class="screen-reader-only">Completed:</span>
-            <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
-            <%= link_to_if(achievement.activity.self_certifiable?, ("Remove <span class='screen-reader-only'>#{achievement.activity.title}</span>").html_safe, achievement_path(achievement.id),
-              class: 'ncce-link ncce-activity-list__item-remove',
-              method: :delete){}
-            %>
-          </li>
-        <% end %>
-      </ul>
-      <div class="ncce-activity-links">
-        <p class="govuk-body-s">
-          <%= link_to 'Find a course', courses_path, class: 'ncce-link ncce-activity-links-search' %>
-          </p>
-        <p class="govuk-body-s ncce-activity-links--add">
-          <button aria-expanded="true" class="ncce-link ncce-activity-links-add-button">
-            Add a course you've completed
-          </button>
-        </p>
-        <div class="ncce-collapsible-activity">
-          <p class="govuk-body-s">
-            <button class="ncce-collapsible-activity__title-button">
-              <span class="screen-reader-only">Click to close </span>Add a course you've completed
-            </button>
-          </p>
-          <span class="govuk-form-group">
-            <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' }, html: { class: '' } do |f| %>
-              <%= f.select :activity_id,
-                options_for_select(Activity.user_removable.available_for(current_user).collect { |activity| [ activity.title, activity.id ] }),
-                { include_blank: 'Select an activity' },
-                { class: 'govuk-select ncce-select ncce-activity-form__select',
-                  'aria-label': 'Select an activity' }
-              %>
-              <%= f.submit 'Add course', class: 'govuk-button button ncce-activity-form__button' %>
+      <h2 class="govuk-heading-m">Your activity</h2>
+        <% if @achievements.size.positive? %>
+          <ul class="govuk-list ncce-activity-list" role="list">
+            <% @achievements.each do |achievement| %>
+              <li class="ncce-activity-list__item ">
+                <span class="screen-reader-only">Completed:</span>
+                <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
+              </li>
             <% end %>
-          </span>
-        </div>
-      </div>
-
-      <p class="govuk-body ncce-dashboard__activities">Your activities are logged here.
-      Face-to-face course completion is updated automatically and online courses
-      will be soon as well, but for now you can add them manually. We will also be
-      including the credits you’ve earned that will
-      help you track your progress towards <%= link_to 'certification', certification_path,
-      class: 'ncce-link' %>.
-      </p>
+          </ul>
+        <% else %>
+          <p class="govuk-body">When you have completed an online or face to face course they will appear here.</p>
+          <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
+        <% end %>
     </div>
   </div>
 </div>

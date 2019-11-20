@@ -46,13 +46,9 @@
                 <li class="ncce-header__navigation-item-cert">
                   <%= link_to 'Primary teachers', primary_path, class: 'govuk-header__link' %>
                 </li>
-              <% end %>
-              <% if Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
                 <li class="ncce-header__navigation-item-cert">
-                  <%= link_to 'Secondary teachers', secondary_path, class: 'govuk-header__link' %>
-                </li>              
-              <% end %>
-              <% if Programme.primary_certificate && Programme.primary_certificate.enrollable || Programme.secondary_certificate && Programme.secondary_certificate.enrollable %>
+                  <%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link' %>
+                </li>
                 <li class="ncce-header__navigation-item-cert">
                   <%= link_to 'Resources', resources_path, class: 'govuk-header__link' %>
                 </li>

@@ -8,7 +8,7 @@ class PrimaryCertificatePendingTransitionJob < ApplicationJob
 
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
     enrolment.transition_to(:pending, meta)
-    SchedulePrimaryCertificateCompletionJob.set(wait_until: 7.days).perform_later(enrolment)
+    SchedulePrimaryCertificateCompletionJob.set(wait: 7.days).perform_later(enrolment)
   end
 
   private

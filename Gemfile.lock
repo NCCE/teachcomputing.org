@@ -49,7 +49,7 @@ GEM
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
     awesome_print (1.8.0)
-    axe-matchers (2.2.1)
+    axe-matchers (2.5.0)
       dumb_delegator (~> 0.8)
       virtus (~> 1.0)
     axiom-types (0.1.1)
@@ -225,7 +225,8 @@ GEM
     rack (2.0.7)
     rack-attack (5.4.2)
       rack (>= 1.0, < 3)
-    rack-cors (1.0.3)
+    rack-cors (1.0.5)
+      rack (>= 1.6.0)
     rack-protection (2.0.5)
       rack
     rack-test (1.1.0)
