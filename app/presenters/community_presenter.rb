@@ -25,8 +25,4 @@ class CommunityPresenter < SimpleDelegator
   def inspect
     "CommunityPresenter - completed? #{completed?}\n" + super
   end
-
-  def self_verification_info
-    (super || '').html_safe
-  end
 end
