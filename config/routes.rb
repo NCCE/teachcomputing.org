@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
   get '/accelerator', to: redirect('/cs-accelerator')
   get '/accessibility-statement', to: 'pages#page', as: :accessibility_statement, defaults: { page_slug: 'accessibility-statement' }
+  get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
