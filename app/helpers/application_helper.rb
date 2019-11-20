@@ -4,6 +4,8 @@ module ApplicationHelper
   end
 
   def create_account_url
+    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_OAUTH'])
+
     "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
   end
 
