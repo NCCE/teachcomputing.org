@@ -11,10 +11,8 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   before do
-    [programme, @programmes = Programme.all, activity]
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    create(:achievement, user: user)
-    @achievements = user.achievements
+    @achievements = []
     render
   end
 
@@ -26,8 +24,30 @@ RSpec.describe('dashboard/show', type: :view) do
     expect(rendered).to have_css('h2', text: 'Your activity')
   end
 
-  it 'does not show the certificate progress section' do
-    expect(rendered).not_to have_css('.govuk-heading-m', text: 'Your certificates')
+  it 'doesn\'t show the activity list' do
+    expect(rendered).not_to have_css('.ncce-activity-list li', count: 2)
+  end
+
+  it 'shows the find courses button' do
+    expect(rendered).to have_link('Find a course', href: courses_path)
+  end
+
+  context 'when the user has completed some achievements' do
+    before do
+      [programme, @programmes = Programme.all, activity]
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      create(:achievement, user: user)
+      @achievements = user.achievements
+      render
+    end
+
+    it 'shows the activity list' do
+      expect(rendered).to have_css('.ncce-activity-list li', count: 2)
+    end
+
+    it 'does not show the certificate progress section' do
+      expect(rendered).not_to have_css('.govuk-heading-m', text: 'Your certificates')
+    end
   end
 
   context 'when the user has enrolled on a programme' do
