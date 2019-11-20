@@ -2,14 +2,19 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <h2 class="govuk-heading-m">Your activity</h2>
-      <ul class="govuk-list ncce-activity-list" role="list">
-        <% @achievements.each do |achievement| %>
-          <li class="ncce-activity-list__item ">
-            <span class="screen-reader-only">Completed:</span>
-            <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
-          </li>
+        <% if @achievements.size.positive? %>
+          <ul class="govuk-list ncce-activity-list" role="list">
+            <% @achievements.each do |achievement| %>
+              <li class="ncce-activity-list__item ">
+                <span class="screen-reader-only">Completed:</span>
+                <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="govuk-body">When you have completed an online or face to face course they will appear here.</p>
+          <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
         <% end %>
-      </ul>
     </div>
   </div>
 </div>
