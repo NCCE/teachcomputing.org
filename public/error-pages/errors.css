@@ -4671,29 +4671,6 @@ a:not([class]):active {
 .govuk-body {
   line-height: 1.45;
 }
-.underlined__title {
-  text-align: center;
-  background-image: url(/images/dashboard/line.png);
-  background-position: 50% 80%;
-  background-repeat: no-repeat;
-  background-size: 10rem;
-  color: #ffffff;
-  padding: 1.5rem 0;
-}
-@media (min-width: 40.0625em) {
-  .underlined__title {
-    background-size: 15rem;
-    font-size: 1.8rem;
-  }
-}
-.underlined__title--certificate-complete {
-  background-size: 14rem;
-}
-@media (min-width: 40.0625em) {
-  .underlined__title--certificate-complete {
-    background-size: 17rem;
-  }
-}
 .screen-reader-only {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
