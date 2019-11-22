@@ -11,28 +11,6 @@
   line-height: 1.45;
 }
 
-.underlined__title {
-  text-align: center;
-  background-image: url(/images/dashboard/line.png);
-  background-position: 50% 80%;
-  background-repeat: no-repeat;
-  background-size: 10rem;
-  color: $white;
-  padding: 1.5rem 0;
-
-  @include govuk-media-query($from: tablet) {
-    background-size: 15rem;
-    font-size: 1.8rem;
-  }
-
-  &--certificate-complete {
-    background-size: 14rem;
-    @include govuk-media-query($from: tablet) {
-      background-size: 17rem;
-    }
-  }
-}
-
 .screen-reader-only {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
