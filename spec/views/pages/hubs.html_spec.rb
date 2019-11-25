@@ -10,11 +10,11 @@ RSpec.describe('pages/hubs', type: :view) do
 
   it 'has the hubs areas' do
     render
-    expect(rendered).to have_css('.hubs__area', count: 11)
+    expect(rendered).to have_css('.hubs-area', count: 11)
   end
 
   it 'has the hubs locations' do
     render
-    expect(rendered).to have_css('.hubs__location', count: 34)
+    expect(rendered).to have_css('.hubs-location', count: 34)
   end
 end
