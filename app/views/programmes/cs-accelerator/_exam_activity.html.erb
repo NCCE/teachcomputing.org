@@ -1,37 +1,38 @@
 <% if @programme.user_completed?(current_user) %>
   <li class="ncce-activity-list__item ncce-activity-list__item--position ">
-    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
     <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Passed the final test</span>
   </li>
 <% else %>
   <li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position">
-    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--mobile-exam') %>
     <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam"><span class="screen-reader-only">Once you have completed two online courses and two face-to-face courses, </span> Pass the final test</span>
     <ul class="govuk-body-s ncce-exam-activity__remarks" role="list" aria-label="Test information">
       <li><%= image_tag 'question-mark.svg', alt: '' %> 25 multiple-choice questions</li>
       <li><%= image_tag 'time-30-minutes.svg', alt: '' %> 30 minute time limit</li>
       <li><%= image_tag 'tick-plain.svg', alt: '' %> Pass mark of 65%</li>
     </ul>
+    <p class="govuk-body-s ncce-exam-activity__rules">At the start of the test, you will be asked to nominate a member of SLT who will be able to confirm you accessed this test in appropriate conditions. This is a question asked of all teachers, and is as a result of some tests not being conducted appropriately.</p>
     <ul class="govuk-list govuk-list--bullet govuk-body-s ncce-exam-activity__rules" aria-label="Test rules">
       <li>You must finish in one sitting</li>
       <li>You can go back and change your answers</li>
       <li>You can skip a question</li>
       <li>Please be advised, clicking "Take the final test" will start an attempt</li>
+      <% if @user_programme_assessment.enough_credits_for_test? %>
+        <li><%= link_to 'Revision Guide', "#{ENV.fetch('STATIC_FILE_PATH')}/CS_Accelerator_Revision_Guide.pdf", class: 'ncce-link' %></li>
+      <% end %>
     </ul>
   </li>
   <li class="govuk-body-s ncce-activity-list__item ncce-activity-list__item--position ncce-exam-activity__attempts">
     <% if @user_programme_assessment.enough_credits_for_test? %>
       <% if @user_programme_assessment.currently_taking_test? %>
-        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
+        <span class="ncce-exam-activity__attempts-text">You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
       <% elsif @user_programme_assessment.can_take_test_at != 0 %>
-        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">Your <%= to_word_ordinal(@user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!</span>
+        <span class="ncce-exam-activity__attempts-text">Your <%= to_word_ordinal(@user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!</span>
       <% else %>
-        <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</span>
-        <%= link_to 'Take the final test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button ncce-button__pink ncce-button__pink--rounded ncce-exam-activity__attempts-button' %>
+        <span class="ncce-exam-activity__attempts-text">You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</span>
+        <%= link_to 'Take the final test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button button button--small' %>
       <% end %>
     <% else %>
-      <span class="ncce-activity-list__item-sub-text ncce-exam-activity__attempts-text">The test will be available when you have completed the necessary courses</span>
+      <span class="ncce-exam-activity__attempts-text">The test will be available when you have completed the necessary courses</span>
     <% end %>
-    <%= image_tag(%"/images/notepad-right.svg", alt: '', class: 'certification-progress__image certification-progress__image--exam') %>
   </li>
 <% end %>

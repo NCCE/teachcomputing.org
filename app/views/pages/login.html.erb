@@ -1,33 +1,14 @@
+<% title "Login - Teach Computing" %>
+<%= render 'components/hero', hero_title: 'Login to your account' %>
 <div class="govuk-width-container">
   <div class="ncce-login">
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column">
           <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l ncce-login__title">Create an account</h1>
-          </div>
-          <div class="govuk-grid-column-two-thirds">
-            <p class="govuk-body">
-              To book onto face-to-face or online training, you need to create an account on our website. This will also enable you to:
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>be the first to access new features and resources</li>
-              <li>access our diagnostic tool to help you prioritise your CPD requirements</li>
-              <li>record your achievements and progress towards certification</li>
-          </ul>
-          <%= link_to 'Create an account', signup_stem_path, :class => 'govuk-button ncce-button__pink ncce-signup__button govuk-!-margin-bottom-8' %>
-          <h2 class="govuk-heading-s">Already have an account on STEM Learning?</h2>
-          <p class="govuk-body">You can log straight in!</p>
-
-          <p class="govuk-body"><%= link_to 'Log in', local_assigns[:auth_uri] || '/auth/stem', method: :post, class: 'govuk-button ncce-login__button ncce-button__pink' %></p>
-          </div>
-
-          <div class="govuk-grid-column-one-third ncce-aside">
-            <h2 class="govuk-heading-s ncce-aside__title">Registration information</h2>
-            <p class="govuk-body-s ncce-aside__text">
-              You will be creating an account on the STEM Learning website. STEM Learning are one of the consortium partners who run the National Centre for Computing Education, and are providing the booking and registration information for the site.
-            </p>
-            <p class="govuk-body-s"><%= link_to 'Read more about the consortium', about_path, class: 'ncce-link ncce-link--on-dark' %></p>
+            <p class="govuk-body">If you have just verified your STEM account you can log straight in here.</p>
+            <p class="govuk-body">You may have been sent here from a STEM page but need to login. Please do this first, then it should return you to that page.</p>
+            <p class="govuk-body"><%= link_to 'Log in', local_assigns[:auth_uri] || '/auth/stem', method: :post, class: 'govuk-button ncce-login__button button' %></p>
           </div>
         </div>
       </div>

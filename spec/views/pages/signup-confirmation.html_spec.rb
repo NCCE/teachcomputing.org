@@ -6,7 +6,7 @@ RSpec.describe('pages/signup-confirmation', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Thank you!')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Thank you!')
   end
 
   it 'has a link back to the root path' do

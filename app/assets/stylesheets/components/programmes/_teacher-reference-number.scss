@@ -14,32 +14,22 @@
 }
 
 .ncce-activity-list__form {
-  display: flex;
-  justify-content: flex-start;
-  margin: 0.5rem 0 1.5rem 0;
+  align-self: right;
+  grid-row: 3;
+  margin-left: 2rem;
   @include govuk-media-query($from: tablet) {
+    display: flex;
+    grid-row: 1;
+    justify-content: flex-start;
     margin: 0;
   }
   & > .ncce-input {
-    @include govuk-media-query($until: tablet) {
-      width: 70%;
+    font-size: 1rem;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    @include govuk-media-query($from: tablet) {
+      margin: 0;
     }
-  }
-
-  &-button {
-    width: auto;
-    max-height: 2.5rem;
-    margin-left: 0.5rem;
-    @include govuk-media-query($until: tablet) {
-      width: 30%;
-    }
-  }
-}
-
-.ncce-activity-list__item-link {
-  font-size: 0.9rem;
-  @include govuk-media-query($from: tablet) {
-    margin-left: 2.5rem;
-    margin-top: 0.5rem;
   }
 }

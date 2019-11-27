@@ -1,7 +1,11 @@
 module Programmes
   class SecondaryCertificate < Programme
 
-    def user_completed?(user)
+    def diagnostic
+      false
+    end
+
+    def user_completed_diagnostic?(user)
       false
     end
   end

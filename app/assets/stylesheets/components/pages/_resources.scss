@@ -1,5 +1,5 @@
 .resources-key-stage {
-  background-color: $ncce-dark-x-grey;
+  background-color: $grey-dark-x;
   &__wrapper {
     align-items: center;
     display: flex;
@@ -8,7 +8,7 @@
     padding: 8px 0;
   }
   &__heading {
-    color: $ncce-white;
+    color: $white;
     font-family: $font-family-body;
     margin: 0;
     padding: 15px 0 20px;
@@ -24,7 +24,7 @@
 .resources-year {
   padding-bottom: 30px;
   &__heading {
-    border-bottom: 1px solid $ncce-black;
+    border-bottom: 1px solid $grey-dark-x;
     font-family: $font-family-body;
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -38,7 +38,7 @@
 }
 
 .resources-aside {
-  background-color: $ncce-grey-x-light;
+  background-color: $concrete;
   padding: 1rem;
   &__title {
     background-image: url(/images/resources/documents-icon.svg);

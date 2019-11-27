@@ -1,5 +1,5 @@
 cs_accelerator = Programmes::CSAccelerator.find_or_create_by(slug: 'cs-accelerator') do |programme|
-  programme.title = 'GCSE computer science subject knowledge'
+  programme.title = 'Teach GCSE computer science'
   programme.slug = 'cs-accelerator'
   programme.description = 'If you’re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
   programme.enrollable = true
@@ -18,16 +18,16 @@ end
 
 puts "Created assessment: #{assessment.activity.title} (#{assessment})"
 
-assessment_counter = AssessmentCounter.find_or_create_by(assessment_id: assessment.id) do |assessment_counter|
-  assessment_counter.assessment_id = assessment.id
-  assessment_counter.counter = 0
+programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: cs_accelerator.id) do |programme_complete_counter|
+  programme_complete_counter.programme_id = cs_accelerator.id
+  programme_complete_counter.counter = 0
 end
 
-puts "Created assessment_counter: #{assessment_counter}"
+puts "Created programme_complete_counter: #{programme_complete_counter}"
 
 slugs = %w[
   registered-with-the-national-centre
-  diagnostic-tool
+  cs-accelerator-diagnostic-tool
   algorithms-in-gcse-computer-science
   data-and-computer-systems-in-gcse-computer-science
   networks-and-cyber-security-in-gcse-computer-science
@@ -45,6 +45,9 @@ slugs = %w[
   introduction-to-cybersecurity-for-teachers
   ncce-coaching-and-mentoring
   impact-of-technology-how-to-lead-classroom-discussions
+  design-and-prototype-embedded-computer-systems
+  programming-103-saving-and-structuring-data
+  introduction-to-encryption-and-cryptography
 ]
 
 slugs.each do |slug|

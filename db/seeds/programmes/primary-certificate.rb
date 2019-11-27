@@ -7,13 +7,23 @@ end
 
 puts "Created Programme: #{primary.title} (#{primary})"
 
+programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programme_id: primary.id) do |programme_complete_counter|
+  programme_complete_counter.programme_id = primary.id
+  programme_complete_counter.counter = 0
+end
+
+puts "Created programme_complete_counter: #{programme_complete_counter}"
+
 slugs = %w[
+  primary-certificate-diagnostic
   registered-with-the-national-centre
   teaching-and-leading-key-stage-1-computing
   teaching-and-leading-key-stage-2-computing
   primary-programming-and-algorithms
+  programming-pedagogy-in-primary-schools-developing-computing-teaching
+  creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing
   teaching-programming-in-primary-schools
-  scratch-to-python-moving-from-block-to-text-based-programming
+  primary-programming-and-algorithms
   contribute-to-online-discussion
   attend-a-cas-community-meeting
   review-a-resource-on-cas

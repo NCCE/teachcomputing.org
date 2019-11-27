@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
+  let (:referrer) { 'https://testing123.com' }
+  let(:programme) { create(:primary_certificate) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
   describe 'POST #create' do
     before do
@@ -10,7 +13,11 @@ RSpec.describe AchievementsController do
     end
 
     context 'with valid params' do
+      include ActiveJob::TestHelper
+
       subject do
+        allow(PrimaryCertificatePendingTransitionJob).to receive(:perform_now)
+        programme_activity
         post achievements_path,
              params: {
                achievement: { activity_id: activity.id }
@@ -50,6 +57,10 @@ RSpec.describe AchievementsController do
       it 'flash notice has correct info' do
         expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
       end
+
+      it 'calls PrimaryCertificatePendingTransitionJob' do
+        expect(PrimaryCertificatePendingTransitionJob).to have_received(:perform_now)
+      end
     end
 
     context 'with invalid params' do
@@ -64,7 +75,7 @@ RSpec.describe AchievementsController do
         subject
       end
 
-      it 'redirects to the dashboard path' do
+      it 'redirects to the dashboard path by default' do
         expect(response).to redirect_to(dashboard_path)
       end
 
@@ -78,6 +89,31 @@ RSpec.describe AchievementsController do
 
       it 'flash error has correct info' do
         expect(flash[:error]).to match(/something went wrong adding/)
+      end
+    end
+
+    context 'with referrer header' do
+      subject do
+        allow_any_instance_of(
+          described_class
+        ).to(
+          receive(:self_verification_url).and_return(
+            referrer
+          )
+        )
+        post achievements_path,
+             params: {
+               achievement: { activity_id: nil }
+             },
+             headers: { 'HTTP_REFERER' => referrer }
+      end
+
+      before do
+        subject
+      end
+
+      it 'redirects to the referrer if specified' do
+          expect(response).to redirect_to(referrer)
       end
     end
 

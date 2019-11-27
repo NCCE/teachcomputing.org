@@ -5,7 +5,7 @@ RSpec.describe('pages/resources', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Teaching resources')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Teaching resources')
   end
 
   it 'has key stage headings' do
@@ -34,7 +34,7 @@ RSpec.describe('pages/resources', type: :view) do
     end
 
     it 'user sees login button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Log in to access')
+      expect(rendered).to have_css('.button--aside', text: 'Log in to access')
     end
   end
 
@@ -45,7 +45,7 @@ RSpec.describe('pages/resources', type: :view) do
     end
 
     it 'user can access downloads' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Access year 7 resources')
+      expect(rendered).to have_css('.button--aside', text: 'Access year 7 resources')
     end
   end
 end

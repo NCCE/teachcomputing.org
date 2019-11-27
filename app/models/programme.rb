@@ -1,20 +1,14 @@
 class Programme < ApplicationRecord
-
   has_many :programme_activities, dependent: :destroy
   has_many :activities, through: :programme_activities
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :users, through: :user_programme_enrolments
   has_one  :assessment, dependent: :destroy
+  has_one  :programme_complete_counter, dependent: :destroy
 
   validates :title, :description, :slug, presence: true
 
   scope :enrollable, -> { where(enrollable: true) }
-
-  def user_enrolled?(user = nil)
-    return false if user.nil?
-
-    user.programmes.exists?(id)
-  end
 
   def self.cs_accelerator
     Programme.find_by(slug: 'cs-accelerator')
@@ -28,15 +22,34 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def user_completed?(user = nil)
-    false
-  end
-
   def credits_for_certificate
-    if slug == 'cs-accelerator'
-      return { online: 40, 'face-to-face': 40 }
-    end
+    return { online: 40, 'face-to-face': 40 } if slug == 'cs-accelerator'
 
     {}
+  end
+
+  def diagnostic
+    activities.find_by(category: 'diagnostic')
+  end
+
+  def user_completed?(user)
+    enrolment = user.user_programme_enrolments.find_by(programme_id: id)
+    return false if enrolment.nil?
+    
+    enrolment.current_state == 'complete'
+  end
+
+  def user_completed_diagnostic?(user)
+    user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
+  end
+
+  def user_enrolled?(user)
+    return false if user.nil?
+
+    user.programmes.exists?(id)
+  end
+
+  def course_recommendations(*)
+    nil
   end
 end

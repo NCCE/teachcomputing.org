@@ -1,0 +1,49 @@
+<%= render 'components/hero', hero_title: @programme.title, subtitle: 'Certification awarded by BCS, The Chartered Institute for IT', glyph_position: 'bottom', colour: 'orange' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="ncce-primary-diagnostic__question">
+          <%= link_to 'Back', previous_wizard_path, class: 'govuk-back-link' %>
+          <h2
+            class="govuk-heading-m ncce-primary-diagnostic__question-progress">
+            <%= current_position(@steps, @step) %></h2>
+          <%= form_for(:diagnostic, url: wizard_path(:wicked_finish), method: :put) do |form| %>
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend">
+              <p class="govuk-body-l">How confident are you that you can support
+                pupils to go beyond the requirements of the KS2 computing
+                national curriculum, such as through introducing text based
+                programming?</p>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_4', '5', class: 'govuk-radios__input', :checked => true %>
+                <label class="govuk-label govuk-radios__label"
+                  for='diagnostic_question_4_5'>Not at all confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_4', '10', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label"
+                  for='diagnostic_question_4_10'>A little confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_4', '15', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label"
+                  for='diagnostic_question_4_15'>Fairly confident</label>
+              </div>
+              <div class="govuk-radios__item">
+                <%= form.radio_button 'question_4', '20', class: 'govuk-radios__input' %>
+                <label class="govuk-label govuk-radios__label"
+                  for='diagnostic_question_4_20'>Very confident</label>
+              </div>
+            </div>
+          </fieldset>
+          <%= form.submit 'Continue', class: 'govuk-button ncce-primary-diagnostic__button' %>
+          <% end %>
+        </div>
+      </div>
+      <%= render 'aside' %>
+    </div>
+  </div>
+</div>

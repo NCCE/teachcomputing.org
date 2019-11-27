@@ -6,7 +6,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'What We Offer')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'What We Offer')
   end
 
   it 'has login links' do
@@ -22,7 +22,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a news link' do
-    expect(rendered).to have_link('recent article', href: '/news/a-level')
+    expect(rendered).to have_link('recent article', href: 'https://blog.teachcomputing.org/a-level')
   end
 
   it 'has a find community link' do
@@ -30,7 +30,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a resource link' do
-    expect(rendered).to have_link('Access resources', href: /stem\.org\.uk\/resources/)
+    expect(rendered).to have_link('Access resources', href: '/resources')
   end
 
   it 'has a certification link' do

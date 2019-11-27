@@ -1,9 +1,8 @@
+<% title "Accessibility statement - Teach Computing" %>
+<%= render 'components/hero', hero_title: 'Accessibility statement' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">Accessibility statement</h1>
-        </div>
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-s">Our aim</h2>
           <p class="govuk-body-l">
@@ -16,7 +15,7 @@
           <h2 class="govuk-heading-s">Get in touch with us</h2>
           <p class="govuk-body">Although we are working to make the National Centre for Computing Education accessible, we appreciate that issues may appear.</p>
 
-          <p class="govuk-body">We are always happy to receive feedback. If you have experienced any difficulties or if you enjoyed using our website, please get in touch <%= mail_to 'accessibility@teachcomputing.org', 'accessibility@teachcomputing.org' %></p>
+          <p class="govuk-body">We are always happy to receive feedback. If you have experienced any difficulties or if you enjoyed using our website, please get in touch <%= mail_to 'accessibility@teachcomputing.org', 'accessibility@teachcomputing.org', class: 'ncce-link' %></p>
         </div>
       </div>
     </div>

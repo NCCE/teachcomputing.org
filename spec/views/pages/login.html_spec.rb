@@ -6,15 +6,7 @@ RSpec.describe('pages/login', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.ncce-login__title', text: 'Create an account')
-  end
-
-  it 'button to create an account' do
-    expect(rendered).to have_css('.ncce-signup__button', text: 'Create an account')
-  end
-
-  it 'links to create a STEM Learning account' do
-    expect(rendered).to have_link('Create an account', href: signup_stem_path)
+    expect(rendered).to have_css('.hero__heading', text: 'Login to your account')
   end
 
   it 'button to log in' do
@@ -29,7 +21,4 @@ RSpec.describe('pages/login', type: :view) do
     expect(rendered).to have_css('a[@href="/test/123"][@data-method="post"]', count: 1)
   end
 
-  it 'links to about' do
-    expect(rendered).to have_link('Read more about the consortium', href: '/about')
-  end
 end

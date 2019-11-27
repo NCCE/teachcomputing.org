@@ -11,12 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def stem_login_enabled?
-    ActiveModel::Type::Boolean.new.cast(ENV.fetch('STEM_LOGIN_ENABLED'))
-  end
-
   def authenticate_user!
-    redirect_to(login_path) unless current_user
+    redirect_to(helpers.create_account_url) unless current_user
   end
 
   def redirect_to_dashboard

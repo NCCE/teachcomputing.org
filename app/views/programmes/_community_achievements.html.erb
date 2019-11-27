@@ -1,11 +1,28 @@
 <% presenters.each do |presenter|%>
-  <li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
-    <span class="ncce-activity-list__item-text">
-      <span><%= presenter.title %></span>
-      <span class="ncce-activity-list__item-description"><%= presenter.description %></span>
-    </span>
-    <% unless presenter.completed? %>
-      <%= link_to presenter.button_label, '#', class: 'govuk-button ncce-button__pink ncce-button__pink--rounded' %>
+
+<li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
+      <span class="ncce-activity-list__item-text">
+        <span><%= presenter.title %></span>
+      </span>
+      <% unless presenter.completed? %>
+      <span class="ihavedonethis">
+        <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
+        <%= presenter.button_label %>
+        </button>
+        <span class="ihavedonethis__popup">
+          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' } do |f| %>
+            <span class="govuk-form-group ihavedonethis__group">
+              <%= label_tag :self_verification_info, presenter.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
+              <%= text_field_tag :self_verification_info, '', class: 'govuk-input' %>
+              <%= f.hidden_field :activity_id, value: presenter.id %>
+            </span>
+            <%= f.submit 'Complete activity', class: 'govuk-button button button--focus-white' %>
+          <% end %>
+        </span>
+      </span>
     <% end %>
-  </li>
+    <% if presenter.description.present? %>
+      <span class="ncce-activity-list__item-activity light-blue-bg"><%= presenter.description %></span>
+    <% end %>
+</li>
 <% end %>

@@ -1,30 +1,21 @@
+<%= render 'components/hero', hero_title: 'Courses' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-main-wrapper--intro">
-    <h1 class="govuk-heading-l">Courses</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book.</p>
         <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
         <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
       </div>
-      <% if current_user %>
-      <div class="govuk-grid-column-one-third ncce-aside">
-        <h2 class="govuk-heading-s ncce-aside__title">Diagnostic Tool</h2>
-        <p class="govuk-body-s ncce-aside__text">Need help finding a course that's suitable for you? Use our diagnostic tool to identify the areas of subject
-        knowledge where you need most support.</p>
-        <p class="govuk-body-s"><%= link_to 'Use the diagnostic tool', activities_redirect_path(Activity.diagnostic_tool.id, :redirect => { url: class_marker_diagnostic_url(current_user) }), class: 'govuk-button ncce-button__pink ncce-aside__button', role: 'button', draggable: 'false', target: :_blank %></p>
-      </div>
-      <% else %>
-      <div class="govuk-grid-column-one-third ncce-aside">
-        <h2 class="govuk-heading-s ncce-aside__title">Book courses</h2>
-        <p class="govuk-body-s ncce-aside__text">
-        To book onto a course, you'll need to create an account. It's free and takes two minutes!
-        </p>
-        <p class="govuk-body-z">
-          <%= link_to 'Create an account / log in', login_path,
-          class: 'govuk-button ncce-button__pink ncce-aside__button',
-            role: 'button', draggable: 'false' %>
-        </p>
+      <% unless current_user %>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
+          <p class="govuk-body-s ncce-aside__text">
+          To book onto a course, you'll need to create an account. It's free and takes two minutes!
+          </p>
+          <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
+        </div>
       </div>
       <% end %>
     </div>
@@ -69,7 +60,7 @@
                 'aria-label': 'Filter by topic' }
             %>
             <%= hidden_field_tag :certificate, @current_certificate.try(:slug) %>
-            <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button ncce-button__pink ncce-courses__filter-button' %>
+            <%= submit_tag "Apply filter", :name => nil, class: 'govuk-button button ncce-courses__filter-button' %>
           <% end %>
         </div>
       </div>
@@ -93,7 +84,7 @@
                   end
                 %>
               <% else %>
-                <%= link_to(course.title, login_path, class: 'ncce-link ncce-courses__heading--link') %>
+                <%= link_to(course.title, auth_url, method: :post, class: 'ncce-link ncce-courses__heading--link') %>
               <% end %>
               <span class="ncce-courses__heading-code"><%= course.activity_code %></span>
             </div>

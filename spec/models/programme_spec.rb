@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Programme, type: :model do
+  let(:generic_programme) { create(:programme) }
   let(:programme) { create(:cs_accelerator) }
   let(:programmes) { create_list(:programme, 3) }
+  let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
@@ -25,6 +27,10 @@ RSpec.describe Programme, type: :model do
     it 'has_one assessment' do
       expect(programme).to have_one(:assessment)
     end
+
+    it 'has_one programme_complete_counter' do
+      expect(programme).to have_one(:programme_complete_counter)
+    end
   end
 
   describe 'scopes' do
@@ -37,6 +43,21 @@ RSpec.describe Programme, type: :model do
       it 'contains only programmes that are enrollable' do
         expect(Programme.enrollable).to eq programmes
         expect(Programme.enrollable).to_not include non_enrollable_programme
+      end
+    end
+  end
+
+  describe '#diagnostic' do
+    context 'when an associated diagnostic activity exists' do
+      it 'returns record' do
+        generic_programme.activities << diagnostic
+        expect(generic_programme.diagnostic).to eq diagnostic
+      end
+    end
+
+    context 'when an associated diagnostic activity exists' do
+      it 'returns nil' do
+        expect(generic_programme.diagnostic).to eq nil
       end
     end
   end
@@ -95,9 +116,24 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#user_completed?' do
-    context 'with non-existent programme' do
+    context 'when the user is enrolled' do
       it 'returns false' do
-        expect(non_enrollable_programme.user_completed?(user)).to eq false
+        user_programme_enrolment
+        expect(programme.user_completed?(user)).to eq false
+      end
+    end
+
+    context 'when the user is pending' do
+      it 'returns false' do
+        user_programme_enrolment.transition_to(:pending)
+        expect(programme.user_completed?(user)).to eq false
+      end
+    end
+
+    context 'when the user is complete' do
+      it 'returns true' do
+        user_programme_enrolment.transition_to(:complete)
+        expect(programme.user_completed?(user)).to eq true
       end
     end
   end

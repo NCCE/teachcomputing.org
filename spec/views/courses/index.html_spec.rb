@@ -28,7 +28,7 @@ RSpec.describe('courses/index', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Courses')
   end
 
   context 'when there is not signed in user' do
@@ -36,8 +36,8 @@ RSpec.describe('courses/index', type: :view) do
       allow(view).to receive(:current_user).and_return(nil)
     end
 
-    it 'has a courses link' do
-      expect(rendered).to have_link('Create an account / log in', href: '/login')
+    it 'has a create account link' do
+      expect(rendered).to have_link('Create an account', href: /register/)
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders filter submit' do
-      expect(rendered).to have_css('.ncce-button__pink[value="Apply filter"]', count: 1)
+      expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
     end
 
   end

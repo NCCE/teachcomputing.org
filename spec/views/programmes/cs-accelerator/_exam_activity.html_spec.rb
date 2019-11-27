@@ -26,12 +26,8 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
       expect(rendered).to have_css('ul>li', count: 7)
     end
 
-    it 'shows the certificate graphic' do
-      expect(rendered).to have_css('.certification-progress__image--exam', count: 1)
-    end
-
-    it 'shows the mobile certificate graphic' do
-      expect(rendered).to have_css('.certification-progress__image--mobile-exam', count: 1)
+    it 'doesn\'t show the revision guide' do
+      expect(rendered).not_to have_css('.ncce-link', text: 'Revision Guide')
     end
 
     it 'tells the user to get more credits' do
@@ -43,6 +39,10 @@ RSpec.describe('programmes/cs-accelerator/_exam_activity', type: :view) do
     before do
       allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: true, can_take_test_at: 0)
       render
+    end
+
+    it 'shows the revision guide' do
+      expect(rendered).to have_css('.ncce-link', text: 'Revision Guide')
     end
 
     it 'tells the user they can take the test' do

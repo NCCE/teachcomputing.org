@@ -127,3 +127,73 @@ Activity.find_or_create_by(slug: 'introduction-to-cybersecurity-for-teachers') d
   activity.future_learn_course_id = '030261f8-1e96-4a70-a329-e3eb8b868915'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'programming-with-guis') do |activity|
+  activity.title = 'Programming with GUIs'
+  activity.credit = 20
+  activity.slug = 'programming-with-guis'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '645ec51f-0b46-4102-a364-90647057f4f2'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing') do |activity|
+  activity.title = 'Creating an Inclusive Classroom: Approaches to Supporting Learners with SEND in Computing'
+  activity.credit = 20
+  activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = 'b19646a7-d78b-4a92-ad36-d4b3a11a3df1'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'design-and-prototype-embedded-computer-systems') do |activity|
+  activity.title = 'Design and Prototype Embedded Computer Systems'
+  activity.credit = 20
+  activity.slug = 'design-and-prototype-embedded-computer-systems'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '83c939cf-8aa7-43d9-ad06-acaa3b859d91'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'programming-103-saving-and-structuring-data') do |activity|
+  activity.title = 'Programming 103: Saving and Structuring Data'
+  activity.credit = 20
+  activity.slug = 'programming-103-saving-and-structuring-data'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'programming-pedagogy-in-primary-schools-developing-computing-teaching') do |activity|
+  activity.title = 'Programming Pedagogy in Primary Schools: Developing Computing Teaching'
+  activity.credit = 20
+  activity.slug = 'programming-pedagogy-in-primary-schools-developing-computing-teaching'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '26e9cd23-2d71-4964-9af3-751aa3fdc8e5'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'introduction-to-encryption-and-cryptography') do |activity|
+  activity.title = 'Introduction to Encryption and Cryptography'
+  activity.credit = 20
+  activity.slug = 'introduction-to-encryption-and-cryptography'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = 'a1520b0c-8c99-49e5-8c65-f025f3431ab0'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching') do |activity|
+  activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
+  activity.credit = 20
+  activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
+  activity.provider = 'future-learn'
+end

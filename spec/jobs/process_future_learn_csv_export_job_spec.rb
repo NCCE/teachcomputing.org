@@ -19,14 +19,25 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,1234,
     2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,59%,0,0%,,1234,
     2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,44%,0,0%,2019-05-03 10:45:45 UTC,1234,
-    2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,23%,0,0%,,5678,'
+    2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,23%,0,0%,,5678,
+    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,'
   end
+  let(:programme) { create(:primary_certificate) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
 
   describe '#perform' do
+    include ActiveJob::TestHelper
+
     before do
-      [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two]
+      [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two, programme_activity]
       dropped_achievement.transition_to(:dropped)
+      allow(Raven).to receive(:capture_message)
       ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
+    end
+
+    after do
+      clear_enqueued_jobs
     end
 
     context 'when a user exists and steps completed is >= 60%' do
@@ -41,6 +52,18 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
 
     it 'does not create an achievement if a user cannot be found' do
       expect(user_three.achievements.where(activity_id: activity_one.id).exists?).to eq false
+    end
+
+    it 'does not create an achievement if an activity cannot be found' do
+      expect(user_one.achievements.where(activity_id: '91011').exists?).to eq false
+    end
+
+    it 'sends a message to Raven if an activity cannot be found' do
+      expect(Raven).to have_received(:capture_message).with(/91011/)
+    end
+
+    it 'only sends one message to Raven for 2 rows with the same missing course' do
+      expect(Raven).to have_received(:capture_message).once
     end
 
     context 'when steps completed is less than 60' do
@@ -82,6 +105,10 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       it 'state remains commenced if steps complete is less than 60' do
         expect(user_five.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'commenced'
       end
+    end
+
+    it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:twice)
     end
   end
 end

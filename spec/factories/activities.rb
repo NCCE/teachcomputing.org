@@ -14,12 +14,19 @@ FactoryBot.define do
     provider { 'system' }
   end
 
-  trait :diagnostic_tool do
+  trait :cs_accelerator_diagnostic_tool do
     title { 'Taken diagnostic tool' }
-    slug { 'diagnostic-tool' }
-    category { 'action' }
+    slug { 'cs-accelerator-diagnostic-tool' }
+    category { 'diagnostic' }
     provider { 'system' }
-    credit { 5 }
+    credit { 0 }
+  end
+
+  trait :primary_certificate_diagnostic_tool do
+    title { 'Completed the diagnostic tool' }
+    slug { 'primary-certificate-diagnostic' }
+    category { 'diagnostic' }
+    provider { 'system' }
   end
 
   trait :stem_learning do
@@ -60,6 +67,7 @@ FactoryBot.define do
     provider { 'cas' }
     description { 'this is a community activity' }
     credit { 10 }
+    self_verification_info { 'Please provide a link to your contribution' }
   end
 
   trait :community_5 do

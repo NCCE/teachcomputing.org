@@ -10,7 +10,7 @@ RSpec.describe Activity, type: :model do
   let(:system_activity) { create_list(:activity, 3, :system) }
   let(:user) { create(:user) }
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
-  let(:diagnostic_tool_activity) { create(:activity, :diagnostic_tool) }
+  let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:removable_activity) { create(:activity, :user_removable) }
 
   describe 'associations' do
@@ -161,14 +161,14 @@ RSpec.describe Activity, type: :model do
   end
 
   describe 'class methods' do
-    describe '#diagnostic_tool' do
+    describe '#cs_accelerator_diagnostic_tool' do
       it 'returns a record if one is found' do
-        activity = create(:activity, :diagnostic_tool)
-        expect(Activity.diagnostic_tool).to eq activity
+        activity = create(:activity, :cs_accelerator_diagnostic_tool)
+        expect(Activity.cs_accelerator_diagnostic_tool).to eq activity
       end
 
       it 'creates a record if one is not found' do
-        expect(Activity.diagnostic_tool.title).to eq 'Taken diagnostic tool'
+        expect(Activity.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
       end
     end
   end

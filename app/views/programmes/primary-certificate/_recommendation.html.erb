@@ -1,0 +1,7 @@
+<% if recommendation %>
+  <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
+    <span class="recommendation__title">Our recommendation</span>
+    <span class="recommendation__text"><%= recommendation[:description] %></span>
+    <span class="recommendation__link"><%= link_to recommendation[:title], recommendation[:link], class: 'ncce-link ncce-link--contrast' %></span>
+  </span>
+<% end %>

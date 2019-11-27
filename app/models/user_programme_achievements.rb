@@ -1,7 +1,8 @@
 class UserProgrammeAchievements
   def initialize(programme, user)
     @user = user
-    @achievements = user.achievements.for_programme(programme).sort_complete_first
+    @achievements = user.achievements.without_category('action')
+                                     .for_programme(programme).sort_complete_first
   end
 
   def online_achievements(to_show = 1)
@@ -15,7 +16,7 @@ class UserProgrammeAchievements
   end
 
   def diagnostic_achievements
-    diagnostic_achievements = @achievements.with_category(Activity::ACTION_CATEGORY).where(activities: { slug: 'diagnostic-tool' })
+    diagnostic_achievements = @achievements.with_category(Activity::DIAGNOSTIC_CATEGORY)
     [DiagnosticPresenter.new(diagnostic_achievements.first)]
   end
 

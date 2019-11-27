@@ -1,0 +1,24 @@
+.recommendation {
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendation__title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation__text {
+    margin-bottom: 0.5rem;
+}
+
+.ncce-button__recommendation {
+    grid-row: 4;
+    margin-left: 2rem;
+    width: auto;
+    @include govuk-media-query($from: tablet) {
+        grid-row: auto;
+        margin-left: 0;
+    }
+
+}

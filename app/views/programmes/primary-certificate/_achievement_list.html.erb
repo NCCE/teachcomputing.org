@@ -1,17 +1,20 @@
+ <p class="govuk-body"><strong>Complete all</strong> of the following activities:</p>
  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <li class="ncce-activity-list__item">
-    <span class="ncce-activity-list__item-text">Created your account with the National Centre for Computing Education</span>
-  </li>
-  <%= render 'programmes/achievements', presenters: @user_programme_achievements.diagnostic_achievements %>
-  <%= render 'programmes/achievements', presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1) %>
-  <%= render 'programmes/achievements', presenters: @user_programme_achievements.online_achievements(to_show = 1) %>
-  <%= render 'programmes/community_achievements',  presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.online_achievements(to_show = 1),
+      recommendations: @programme.course_recommendations(current_user, Activity::ONLINE_CATEGORY)
+  %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
+      recommendations: @programme.course_recommendations(current_user, Activity::FACE_TO_FACE_CATEGORY)
+  %>
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
 </ul>
 <p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <%= render 'programmes/community_achievements',  presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 10) %>
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 10) %>
 </ul>
 <p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <%= render 'programmes/community_achievements',  presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 20) %>
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 20) %>
 </ul>

@@ -12,7 +12,7 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def button_label(*)
-    'Find a course'
+    'Start a course'
   end
 
   def button_url(*)

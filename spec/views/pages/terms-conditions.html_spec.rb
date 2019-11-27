@@ -5,7 +5,7 @@ RSpec.describe('pages/terms-conditions', type: :view) do
 
   it 'has a title' do
     render
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Terms and Conditions National Centre for Computing Education')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Terms and Conditions National Centre for Computing Education')
   end
 
   it 'has 11 sections' do
@@ -37,7 +37,7 @@ RSpec.describe('pages/terms-conditions', type: :view) do
     end
 
     it 'has a login link' do
-      expect(rendered).to have_link('National Centre for Computing Education website', href: '/login')
+      expect(rendered).to have_link('National Centre for Computing Education website', href: /register/)
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :diagnostic_tool) }
+  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:programme, slug: 'cs-accelerator')}
 
   describe 'GET #index' do
@@ -336,6 +336,38 @@ RSpec.describe CoursesController do
           expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
           expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
           expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+        end
+      end
+
+      context 'filter escapes input' do
+        before do
+          programme
+          get courses_path, params: {
+            certificate: '<h1>Not a cert</h1>',
+            level: '<p>My XSS is excessive</p>',
+            topic: '<script>alert("boom")</script>',
+            location: '<svg onload=alert(1)>'
+          }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).count).to eq(0)
+        end
+
+        it 'level param is escaped' do
+          expect(flash[:notice]).to match(/&lt;p&gt;My XSS is excessive&lt;\/p&gt;/)
+        end
+
+        it 'topic param is escaped' do
+          expect(flash[:notice]).to match(/&lt;script&gt;alert\(&quot;boom&quot;\)&lt;\/script&gt;/)
+        end
+
+        it 'location param is escaped' do
+          expect(flash[:notice]).to match(/&lt;svg onload=alert\(1\)&gt;/)
+        end
+
+        it 'invalid certificate does not cause filtering' do
+          expect(flash[:notice]).not_to match(/&lt;h1&gt;Not a cert&lt;\/h1&gt;/)
         end
       end
     end

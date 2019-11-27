@@ -5,6 +5,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
 
   before do
+    @programme = programme
     render
   end
 
@@ -22,7 +23,6 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
 
   context 'when a user is signed in' do
     before do
-      programme
       allow(view).to receive(:current_user).and_return(user)
       render
     end
@@ -32,11 +32,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     end
 
     it 'has Enrol button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Enrol on this certificate')
-    end
-
-    it 'shows the create account step as complete' do
-      expect(rendered).to have_css('.ncce-aside__check-mark', count: 1)
+      expect(rendered).to have_css('.button--aside', text: 'Enrol on this certificate')
     end
   end
 
@@ -51,15 +47,11 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     end
 
     it 'has Account button' do
-      expect(rendered).to have_css('.ncce-aside__button', text: 'Create an account')
+      expect(rendered).to have_css('.button--aside', text: 'Create an account')
     end
 
     it 'has a Log in link' do
-      expect(rendered).to have_css('.ncce-link', text: 'Log in')
-    end
-
-    it 'doesn\'t show the create account step as complete' do
-      expect(rendered).to have_css('.ncce-aside__check-mark', count: 0)
+      expect(rendered).to have_css('.ncce-link', text: 'log in')
     end
   end
 end
