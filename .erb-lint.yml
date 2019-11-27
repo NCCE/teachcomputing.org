@@ -2,9 +2,9 @@
 linters:
   ErbSafety:
     enabled: true
-    # better_html_config: .better-html.yml
-  # FinalNewline:
-  #   enabled: false
+    better_html_config: .better-html.yml
+  FinalNewline:
+    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:
@@ -26,12 +26,12 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
-  # RightTrim:
-  #   enabled: true
-  #   enforced_style: '-'
-  # SelfClosingTag:
-  #   enabled: true
-  #   enforced_style: 'always'
+  RightTrim:
+    enabled: true
+    enforced_style: '-'
+  SelfClosingTag:
+    enabled: true
+    enforced_style: 'never'
   SpaceInHtmlTag:
     exclude:
   SpaceAroundErbTag:
