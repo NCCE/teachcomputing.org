@@ -31,4 +31,8 @@ RSpec.describe CommunityPresenter do
   describe('inspect') do
     it { expect(incomplete_presenter.inspect).to start_with("CommunityPresenter - completed? false") }
   end
+
+  describe('self_verification_info') do
+    it { expect(incomplete_presenter.self_verification_info).to eq('Please provide a link to your contribution') }
+  end
 end
