@@ -42,6 +42,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'guard-rspec', '~> 4.7.3', :require => false
+  gem 'reek'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'rspec-mocks'
