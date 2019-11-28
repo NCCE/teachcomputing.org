@@ -105,4 +105,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.middleware.use Rack::Attack
+
+  # Enable secure cookies (will only work on https)
+  config.session_store :cookie_store,
+                       key: '_teach_computing_session',
+                       secure: true,
+                       httponly: true
 end
