@@ -197,3 +197,13 @@ Activity.find_or_create_by(slug: 'programming-pedagogy-in-secondary-schools-insp
   activity.future_learn_course_id = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'programming-103-saving-and-structuring-data') do |activity|
+  activity.title = 'Programming 103: Saving and Structuring Data'
+  activity.credit = 20
+  activity.slug = 'programming-103-saving-and-structuring-data'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '66ceead6-5641-485c-9d10-40a35b8e465e'
+  activity.provider = 'future-learn'
+end

@@ -36,6 +36,7 @@ slugs = %w[
   how-computers-work-demystifying-computation
   programming-101-an-introduction-to-python-for-educators
   programming-102-think-like-a-computer-scientist
+  programming-103-saving-and-structuring-data
   representing-data-with-images-and-sound-bringing-data-to-life
   object-oriented-programming-in-python-create-your-own-adventure-game
   an-introduction-to-computer-networking-for-teachers
