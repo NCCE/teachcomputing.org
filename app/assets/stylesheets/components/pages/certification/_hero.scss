@@ -54,6 +54,7 @@ $cs-accelerator-color: $tapestry;
   width: 90px;
   background-image: url(/images/hero/glyph-4.svg);
   @include govuk-media-query($from: desktop) {
+    background-size: 110px 130px;
     height: 130px;
     width: 120px;
   }
