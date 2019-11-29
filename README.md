@@ -73,6 +73,12 @@ Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled ta
 
 ## Tooling
 
+### Reek
+
+Used for detecting 'code smell' in your app.
+
+Run with `bundle exec reek`
+
 ### Brakeman
 
 Used for static code analysis to check for potential security flaws.  Run `brakeman .` in the project root to use the tool and check the output for warnings, etc.
