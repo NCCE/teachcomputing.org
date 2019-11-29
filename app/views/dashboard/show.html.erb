@@ -1,3 +1,4 @@
+<% meta_tag :title, 'Your dashboard - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Your dashboard', colour: 'blue', glyph_num: '3', glyph_position: 'bottom' %>
 <%= render "dashboard/programmes/hero" if current_user.programmes.size.positive? %>
 <%= render 'dashboard/activity' %>
