@@ -56,6 +56,14 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    better_html (1.0.14)
+      actionview (>= 4.0)
+      activesupport (>= 4.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      html_tokenizer (~> 0.0.6)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
@@ -102,6 +110,13 @@ GEM
     dumb_delegator (0.8.0)
     encryptor (3.0.0)
     equalizer (0.0.11)
+    erb_lint (0.0.30)
+      activesupport
+      better_html (~> 1.0.7)
+      html_tokenizer
+      rainbow
+      rubocop (~> 0.51)
+      smart_properties
     erubi (1.8.0)
     excon (0.62.0)
     execjs (2.7.0)
@@ -148,6 +163,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (0.3.8)
     hashie (3.6.0)
+    html_tokenizer (0.0.7)
     htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -365,6 +381,7 @@ GEM
     simplecov-html (0.10.2)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
+    smart_properties (1.15.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -431,6 +448,7 @@ DEPENDENCIES
   dalli (~> 2.7.9)
   ddtrace (~> 0.18.2)
   dotenv-rails
+  erb_lint
   factory_bot_rails
   faraday (~> 0.15.4)
   fog-aws (~> 3.3)
