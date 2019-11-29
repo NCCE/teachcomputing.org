@@ -70,3 +70,13 @@ docker-compose run --rm web bin/guard
 ## Sitemaps
 
 Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled task on Heroku. They can be found in the `public` directory.
+
+## Tooling
+
+### Reek
+
+Used for detecting 'code smell' in your app.
+
+Run with `bundle exec reek`
+
+https://github.com/troessner/reek
