@@ -79,4 +79,8 @@ Used for detecting 'code smell' in your app.
 
 Run with `bundle exec reek`
 
-https://github.com/troessner/reek
+### Brakeman
+
+Used for static code analysis to check for potential security flaws.  Run `brakeman .` in the project root to use the tool and check the output for warnings, etc.
+
+https://brakemanscanner.org/docs/quickstart/
