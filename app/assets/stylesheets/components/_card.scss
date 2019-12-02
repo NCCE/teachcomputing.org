@@ -19,21 +19,22 @@
     border-left-width: 13px;
     margin-bottom: $logo-block;
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
-    &:after {
-      background-image: url(/images/card/glyph-1.svg);
-      background-position-x: right;
-      background-position-y: bottom;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      bottom: 0;
-      content: "";
-      display: block;
-      height: 62px;
-      position: absolute;
-      right: 0;
-      width: 54px;
-    }
   }
+}
+
+.card--bottom-glyph:after {
+  background-image: url(/images/card/glyph-1.svg);
+  background-position-x: right;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 62px;
+  position: absolute;
+  right: 0;
+  width: 54px;
 }
 
 .card:last-child {

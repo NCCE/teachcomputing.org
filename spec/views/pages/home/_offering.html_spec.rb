@@ -6,6 +6,6 @@ RSpec.describe('pages/home/_offering', type: :view) do
   end
 
   it('contains the offering text') do
-    expect(rendered).to have_css('.ncce-offering__aside-text', text: /You have the power to transform lives/)
+    expect(rendered).to have_css('.card__text', text: /You have the power to transform/)
   end
 end

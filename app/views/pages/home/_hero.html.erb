@@ -1,39 +1,22 @@
-<div class="ncce-hero">
+<div class="dixie-bg">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper ncce-hero__wrapper">
-      <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-half">
-            <div class="ncce-hero__long-shadow">
-              <h1 class="govuk-heading-xl ncce-hero__heading">Helping you <br>teach computing</h1>
-            </div>
-            <div class="ncce-hero__cta--desktop">
-              <p class="govuk-body ncce-hero__body">Discover
-                <strong>training</strong>, <strong>resources</strong> and
-                <strong>guidance</strong> to help you teach computing with
-                confidence.</p>
-              <%=
-                link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
-                  link_to 'Get started!', create_account_url, class: 'govuk-button ncce-button__blue'
-                end
-              %>
-            </div>
-
-          </div>
-          <div class="govuk-grid-column-one-half">
-            <%= image_tag '/images/home/home-hero.jpg', class: 'ncce-hero__image', alt: '' %>
-          </div>
-          <div class="govuk-grid-column-one-half ncce-hero__cta--mobile">
-            <p class="govuk-body ncce-hero__body">Discover
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero text-photo-hero--home white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l hero-heading--home">Helping you <br>teach computing</h1>
+          <p class="govuk-body-l">Discover
               <strong>training</strong>, <strong>resources</strong> and
               <strong>guidance</strong> to help you teach computing with
               confidence.</p>
-            <%=
-              link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button ncce-button__blue') do
-                link_to 'Get started!', create_account_url, class: 'govuk-button ncce-button__blue'
-              end
-            %>
-          </div>
-
+          <%=
+            link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button button hero-button--home') do
+              link_to 'Get started!', create_account_url, class: 'govuk-button button  hero-button--home'
+            end
+          %>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <iframe class="hero-video--home" src="https://www.youtube.com/embed/SwV3QyVc-go" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>

@@ -28,6 +28,10 @@ $white: #ffffff;
 
 $govuk-text-colour: $grey-dark-x;
 
+.dixie-bg {
+  background-color: $dixie;
+}
+
 .light-blue-bg {
   background-color: $foam;
 }
@@ -38,6 +42,10 @@ $govuk-text-colour: $grey-dark-x;
 
 .tapestry-bg {
   background-color: $tapestry;
+}
+
+.tapestry-fg {
+  color: $tapestry;
 }
 
 .white-bg {

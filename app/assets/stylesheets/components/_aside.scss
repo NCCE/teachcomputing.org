@@ -3,39 +3,12 @@
 $aside-padding: 1rem;
 
 .ncce-aside {
-  background-color: $white;
   border-top-color: $deep-cerulean;
   border-top-style: solid;
   border-top-width: 3px;
+  padding-top: $aside-padding;
 
   &__text--s {
     font-size: 1.0625rem;
-  }
-
-  &__title {
-    color: $grey-dark-x;
-    padding-top: $aside-padding;
-  }
-
-  &__link,
-  &__link:visited {
-    color: $grey-dark-x;
-
-    &:hover {
-      color: $tapestry;
-    }
-  }
-
-  &__log {
-    color: $deep-cerulean;
-
-    &:hover {
-      color: $scarpa-flow;
-    }
-  }
-
-  &__check-mark {
-    width: 23px;
-    float: right;
   }
 }
