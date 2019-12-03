@@ -1,12 +1,15 @@
  <p class="govuk-body"><strong>Complete all</strong> of the following activities:</p>
  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <% diagnostic_result = @programme.diagnostic_result(current_user) %>
   <%= render 'programmes/achievements',
       presenters: @user_programme_achievements.online_achievements(to_show = 1),
-      recommendations: @programme.course_recommendations(current_user, Activity::ONLINE_CATEGORY)
+      category: Activity::ONLINE_CATEGORY,
+      diagnostic_result: diagnostic_result
   %>
   <%= render 'programmes/achievements',
       presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
-      recommendations: @programme.course_recommendations(current_user, Activity::FACE_TO_FACE_CATEGORY)
+      category: Activity::FACE_TO_FACE_CATEGORY,
+      diagnostic_result: diagnostic_result
   %>
   <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
 </ul>
