@@ -35,7 +35,7 @@ class Programme < ApplicationRecord
   def user_completed?(user)
     enrolment = user.user_programme_enrolments.find_by(programme_id: id)
     return false if enrolment.nil?
-    
+
     enrolment.current_state == 'complete'
   end
 
@@ -49,7 +49,7 @@ class Programme < ApplicationRecord
     user.programmes.exists?(id)
   end
 
-  def course_recommendations(*)
+  def diagnostic_result(*)
     nil
   end
 end
