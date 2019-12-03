@@ -63,4 +63,18 @@ describe ApplicationHelper, type: :helper do
       expect(helper.whitelist_redirect_url(url)).to be nil
     end
   end
+
+  describe('#yield_meta_tag') do
+    it 'returns the default text if a value is not set' do
+      default = 'testing'
+      expect(helper.yield_meta_tag(:title, default)).to eq(default)
+    end
+
+    it 'returns the custom text if a value is set' do
+      default = 'testing'
+      custom = 'custom'
+      helper.meta_tag(:title, custom)
+      expect(helper.yield_meta_tag(:title, default)).to eq(custom)
+    end
+  end
 end

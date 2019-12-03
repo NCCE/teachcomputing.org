@@ -1,0 +1,40 @@
+
+.hubs-area {
+  border-bottom: 1px solid $alto;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  @include govuk-media-query($from: desktop) {
+    padding-bottom: 20px;
+    padding-top: 30px;
+  }
+}
+
+.hubs-location {
+  border-bottom: 1px solid $alto;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  padding-bottom: 20px;
+  padding-top: 15px;
+  @include govuk-media-query($from: desktop) {
+    grid-column-gap: 20px;
+    grid-template-areas: "school email" "area .";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding-bottom: 20px;
+    padding-top: 30px;
+
+    &__school {
+      grid-area: school;
+    }
+    &__area {
+      grid-area: area;
+    }
+    &__email {
+      grid-area: email;
+    }
+  }
+}
+
+.hubs-location--last {
+  border-bottom: 0;
+}
