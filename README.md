@@ -70,3 +70,25 @@ docker-compose run --rm web bin/guard
 ## Sitemaps
 
 Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled task on Heroku. They can be found in the `public` directory.
+
+## Tooling
+
+### ERB Lint
+
+Used for linting ERB / HTML files
+
+Run with `bundle exec erblint --lint-all`
+
+https://github.com/Shopify/erb-lint
+
+### Reek
+
+Used for detecting 'code smell' in your app.
+
+Run with `bundle exec reek`
+
+### Brakeman
+
+Used for static code analysis to check for potential security flaws.  Run `brakeman .` in the project root to use the tool and check the output for warnings, etc.
+
+https://brakemanscanner.org/docs/quickstart/

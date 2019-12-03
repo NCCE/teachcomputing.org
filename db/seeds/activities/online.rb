@@ -164,7 +164,7 @@ Activity.find_or_create_by(slug: 'programming-103-saving-and-structuring-data') 
   activity.slug = 'programming-103-saving-and-structuring-data'
   activity.category = 'online'
   activity.self_certifiable = false
-  activity.future_learn_course_id = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
+  activity.future_learn_course_id = '66ceead6-5641-485c-9d10-40a35b8e465e'
   activity.provider = 'future-learn'
 end
 
