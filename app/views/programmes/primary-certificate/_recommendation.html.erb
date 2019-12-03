@@ -3,7 +3,7 @@
     <% if category == Activity::ONLINE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
         <span class="recommendation__title">Recommendation</span>
-        <span class="recommendation__text"><%= link_to 'Teaching Programming in Primary Schools', 'https://www.futurelearn.com/invitations/ncce/teaching-programming-primary-school/hqlykfbf6h3xsnvl6ejaf5r22tn064g', class: 'ncce-link ncce-link--contrast' %> will enable you to understand key programming concepts and apply them using Scratch. The course is designed to take four weeks to complete, studying for two hours each week.</span>
+        <span class="recommendation__text"><%= link_to 'Teaching Programming in Primary Schools', 'https://www.futurelearn.com/courses/teaching-programming-primary-school', class: 'ncce-link ncce-link--contrast' %> will enable you to understand key programming concepts and apply them using Scratch. The course is designed to take four weeks to complete, studying for two hours each week.</span>
       </span>
     <% elsif category == Activity::FACE_TO_FACE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
@@ -15,9 +15,18 @@
     <% if category == Activity::FACE_TO_FACE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
         <span class="recommendation__title">Recommendations</span>
-        <span class="recommendation__text"><%= link_to 'Teaching and leading key stage 1 computing', 'https://www.stem.org.uk/cpd/ondemand/445953/teaching-and-leading-key-stage-1-computing', class: 'ncce-link ncce-link--contrast' %>< course will help you examine engaging ways to use technology effectively to support other areas of the curriculum in KS1.</span>
+        <span class="recommendation__text"><%= link_to 'Teaching and leading key stage 1 computing', 'https://www.stem.org.uk/cpd/ondemand/445953/teaching-and-leading-key-stage-1-computing', class: 'ncce-link ncce-link--contrast' %>course will help you examine engaging ways to use technology effectively to support other areas of the curriculum in KS1.</span>
         <span class="recommendation__text"><%= link_to 'Teaching and leading key stage 2 computing', 'https://www.stem.org.uk/cpd/ondemand/445949/teaching-and-leading-key-stage-2-computing', class: 'ncce-link ncce-link--contrast' %> will use a range of software to develop your teaching of pupils to make creative projects, in addition to enhancing your knowledge of computer systems and networks.</span>
         <span class="recommendation__text">Both courses will develop your confidence in delivering all aspects of the computing curriculum at the relevant key stage and run over two non-consecutive days.</span>
+      </span>
+    <% end %>
+  <% when 20..29 %>
+    <% if category == Activity::ONLINE_CATEGORY %>
+      <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
+        <span class="recommendation__title">Recommendations</span>
+        <span class="recommendation__text"><%= link_to 'Programming 101: An Introduction to Python for Educators', 'https://www.futurelearn.com/courses/programming-101', class: 'ncce-link ncce-link--contrast' %> will introduce you to text based programming, helping you to implement programming concepts and learn the basics of creating programs with Python.</span>
+        <span class="recommendation__text">Alternatively, <%= link_to 'Scratch to Python: Moving from Block to Text based Programming', 'https://www.futurelearn.com/courses/block-to-text-based-programming', class: 'ncce-link ncce-link--contrast' %> will teach you how to apply the thinking and programming skills you've learnt in Scratch to text-based programming languages like Python.</span>
+        <span class="recommendation__text">Both courses are designed to take four weeks to complete, studying for two hours each week.</span>
       </span>
     <% end %>
 <% end %>
