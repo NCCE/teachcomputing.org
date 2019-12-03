@@ -12,8 +12,6 @@ RSpec.describe Programmes::PrimaryCertificate do
   let(:community_5_activity) { create(:activity, :community_5) }
   let(:community_20_activity) { create(:activity, :community_20) }
 
-  let(:online_recommendation) { 'Programming 101: An Introduction to Python for Educators' }
-  let(:face_to_face_recommendation) { 'Teaching and leading key stage 1 computing' }
 
   let(:setup_achievements_for_partial_completion) do
     user_programme_enrolment
@@ -58,7 +56,7 @@ RSpec.describe Programmes::PrimaryCertificate do
     end
   end
 
-  describe '#course_recommendations' do
+  describe '#diagnostic_result' do
     before do
       user_programme_enrolment
     end
@@ -66,7 +64,7 @@ RSpec.describe Programmes::PrimaryCertificate do
     context 'when user has not done the diagnostic' do
       it 'raises error if called' do
         expect {
-          programme.course_recommendations(user)
+          programme.diagnostic_result(user)
         }.to raise_error(NoMethodError)
       end
     end
@@ -77,38 +75,8 @@ RSpec.describe Programmes::PrimaryCertificate do
         diagnostic_achievement.transition_to(:complete, score: 15)
       end
 
-      it 'recommendation has correct fields' do
-        recommendation = programme.course_recommendations(user, Activity::ONLINE_CATEGORY).first
-        expect(recommendation).to have_key(:link)
-        expect(recommendation).to have_key(:link)
-        expect(recommendation).to have_key(:description)
-      end
-
-      it 'returns a matching recommendation for an online course' do
-        recommendation = programme.course_recommendations(user, Activity::ONLINE_CATEGORY).first
-        expect(recommendation[:title]).to eq(online_recommendation)
-      end
-
-      it 'returns a matching recommendation for a face-to-face course' do
-        recommendation = programme.course_recommendations(user, Activity::FACE_TO_FACE_CATEGORY).first
-        expect(recommendation[:title]).to eq(face_to_face_recommendation)
-      end
-    end
-
-    context 'when user has done the diagnostic with a score in a different range' do
-      before do
-        setup_diagnostic_score
-        diagnostic_achievement.transition_to(:complete, score: 21)
-      end
-
-      it 'returns a different recommendation for an online course' do
-        recommendation = programme.course_recommendations(user, Activity::ONLINE_CATEGORY).first
-        expect(recommendation[:title]).not_to eq(online_recommendation)
-      end
-
-      it 'returns a different recommendation for a face-to-face course' do
-        recommendation = programme.course_recommendations(user, Activity::FACE_TO_FACE_CATEGORY).first
-        expect(recommendation[:title]).not_to eq(face_to_face_recommendation)
+      it 'returns correct score' do
+        expect(programme.diagnostic_result(user)).to eq(15)
       end
     end
   end
