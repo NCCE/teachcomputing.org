@@ -19,9 +19,9 @@ module OmniAuth::Strategies
     end
 
     def user_info
+      Raven::Context.clear!
       response ||= access_token.get('/idp/module.php/oauth2/userinfo.php')
       raven_context(response)
-      Raven::Context.clear!
       response.parsed
     end
 
