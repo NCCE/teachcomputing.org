@@ -27,9 +27,9 @@
               <%= link_to 'Programming Pedagogy in Primary Schools', 'https://www.futurelearn.com/courses/primary-programming-pedagogy', class: 'ncce-link ncce-link--contrast' %></strong>
           </p>
           <p class="govuk-body">Investigate a range of pedagogical approaches suitable for teaching programming to primary school pupils (aged 5 to 11 years old).</p>
-          <video poster="///view.vzaar.com/21003295/image" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/20654375/download/sd_lower">
+          <video poster="//view.vzaar.com/21003295/image" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/21003295/download/sd_lower">
             <source src="//view.vzaar.com/21003295/download/sd_lower" type="video/mp4">
-            <track class="track" src="/images/secondary-teachers/ProgrammingWithGUIs.vtt" kind="subtitles" srclang="EN" label="English">
+            <track class="track" src="/images/primary-teachers/PrimaryPedagogy.vtt" kind="subtitles" srclang="EN" label="English">
           </video>
           <p class="govuk-body-s icons"><strong><span class="icon-online">Free
                 online course</span><span class="icon-calendar">4
@@ -66,9 +66,13 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l"><%= link_to 'Teach primary computing', '/', class: 'ncce-link' %></h2>
-          <p class="govuk-body">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
-          <%= link_to 'Find out more', '/' %>
+          <div class="card card--plain card--bottom-glyph">
+          <h2 class="govuk-heading-m card__heading">
+            <%= link_to 'Teach primary computing', primary_path, class: 'ncce-link' %>
+          </h2>
+          <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
+          <%= link_to 'Find out more', primary_path, class: 'ncce-link' %>
+        </div>
         </div>
       </div>
     </div>
