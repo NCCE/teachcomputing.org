@@ -8,9 +8,9 @@
 }
 
 .card,
-.card--plain {
+.card--blue {
   background-color: $white;
-  border-left: 9px solid $plain-hero-color;
+  border-left: 9px solid $action-color;
   box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
   padding: 20px 20px 30px 15px;
@@ -21,7 +21,7 @@
     margin-bottom: $logo-block;
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
     &:after {
-      background-color: $plain-hero-color;
+      background-color: $foam;
       background-position-x: right;
       background-position-y: bottom;
       background-repeat: no-repeat;
@@ -68,11 +68,11 @@
   }
 }
 
-.card--blue {
-  border-left-color: $action-color;
+.card--plain {
+  border-left-color: $plain-hero-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $foam;
+      background-color: $plain-hero-color;
     }
   }
 }
