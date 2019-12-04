@@ -82,79 +82,57 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Access our free teaching resources</h2>
-      </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-s">Enhance your understanding and gain inspiration across the primary computing curriculum with our free online resource repository. You’ll get access to lesson plans, activities and assessments.</p>
-        <%= link_to 'Browse teaching resources', '/', class: 'govuk-button button' %>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside landing-page__aside">
-          <p class="govuk-body"><strong>Effective computing pedagogy</strong></p>
-          <p class="govuk-body-s">Explore a range of free content specifically focused on developing conversations around effective computing pedagogy.</p>
-          <%= link_to 'Discover more', 'https://blog.teachcomputing.org/tag/pedagogy/' %>
-        </div>
+        <h2 class="govuk-heading-l">Your local computing community</h2>
+        <h3 class="govuk-body"><strong>Hubs</strong></h3>
+        <p class="govuk-body">Computing Hubs deliver face-to-face courses and provide local support to primary teachers. They are led by schools and colleges across England with an exceptional record in teaching computing.
+        <%= link_to 'Find out your Hub', '/hubs' %>.
+        </p>
+        <h3 class="govuk-body"><strong>Local experts</strong></h3>
+        <p class="govuk-body">Your local Computing Hub can connect you with a Subject Matter Expert, to help you assess your school’s computing education needs and work with you to maximise benefit from our range of primary support.
+          <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/1AIL-jTMcHCxKd50eS3n7NqVSr2fzi8Plmqv0IuQ9TP4/viewform' %>.</p>
+        <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
+        <p class="govuk-body">Communities of Practice - run by
+          <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
+          (CAS) - are local networks of computing teachers that share expertise,
+          resources and best practice to encourage strong and effective
+          teaching.
+          <%= link_to 'Find your local community', 'https://community.computingatschool.org.uk/hubs' %>.
+        </p>
+        <h3 class="govuk-body"><strong>Barefoot</strong></h3>
+        <p class="govuk-body">Barefoot provides local computational thinking workshops and classroom-ready resources to help you teach primary computing.
+        <%= link_to 'Read more about Barefoot', 'https://www.barefootcomputing.org/ncce-partnership' %>.
+        </p>
       </div>
     </div>
   </div>
 </div>
 <div class="light-grey-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l">Your local computing community</h2>
-          <h3 class="govuk-body"><strong>Hubs</strong></h3>
-          <p class="govuk-body">Computing Hubs deliver face-to-face courses and provide local support to primary teachers. They are led by schools and colleges across England with an exceptional record in teaching computing.
-          <%= link_to 'Find out your Hub', '/hubs' %>.
-          </p>
-          <h3 class="govuk-body"><strong>Local experts</strong></h3>
-          <p class="govuk-body">Your local Computing Hub can connect you with a Subject Matter Expert, to help you assess your school’s computing education needs and work with you to maximise benefit from our range of primary support.
-            <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/1AIL-jTMcHCxKd50eS3n7NqVSr2fzi8Plmqv0IuQ9TP4/viewform' %>.</p>
-          <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
-          <p class="govuk-body">Communities of Practice - run by
-            <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
-            (CAS) - are local networks of computing teachers that share expertise,
-            resources and best practice to encourage strong and effective
-            teaching.
-            <%= link_to 'Find your local community', 'https://community.computingatschool.org.uk/hubs' %>.
-          </p>
-          <h3 class="govuk-body"><strong>Barefoot</strong></h3>
-          <p class="govuk-body">Barefoot provides local computational thinking workshops and classroom-ready resources to help you teach primary computing.
-          <%= link_to 'Read more about Barefoot', 'https://www.barefootcomputing.org/ncce-partnership' %>.
-          </p>
+  <div class="landing-page-resources">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <h2 class="govuk-heading-l">Access our free teaching resources</h2>
+            <p class="govuk-body landing-page-resources__intro">Boost the
+              quality of your lessons with our free
+              online resource bank. You’ll get access to full units of work,
+              lesson
+              plans, assessments and activities.</p>
+            <%= link_to 'Browse teaching resources', resources_path, class: 'govuk-button button landing-page-resources__button' %>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="landing-page-resources">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters">
-          <h2 class="govuk-heading-l">Access our free teaching resources</h2>
-          <p class="govuk-body landing-page-resources__intro">Boost the
-            quality of your lessons with our free
-            online resource bank. You’ll get access to full units of work,
-            lesson
-            plans, assessments and activities.</p>
-          <%= link_to 'Browse teaching resources', resources_path, class: 'govuk-button button landing-page-resources__button' %>
-        </div>
-      </div>
-      <div class="landing-page-resources__grid">
-        <div class="shadow_card">
-          <h3 class="govuk-body icon-resources"><strong>Year 2 - Computer systems and networks - IT around us </strong>
-          </h3>
-          <p class="govuk-body">In this unit, learners will look at information technology at school and beyond, in settings such as shops, hospitals, and libraries. Learners will investigate how information technology improves our world, and they will learn about using information technology responsibly.</p>
-          <%= link_to 'Access unit 2', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
-        </div>
-        <div class="shadow_card">
-          <h3 class="govuk-body icon-resources"><strong>Year 3 - Computer systems and networks - Connecting Computers</strong></h3>
-          <p class="govuk-body">During this unit, learners develop their understanding of digital devices, with an initial focus on inputs, processes, and outputs. They also compare digital and non-digital devices. Following this, learners are introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
-          <%= link_to 'Acces unit 3', 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
+        <div class="landing-page-resources__grid">
+          <div class="shadow_card">
+            <h3 class="govuk-body icon-resources"><strong>Year 2 - Computer systems and networks - IT around us </strong>
+            </h3>
+            <p class="govuk-body">In this unit, learners will look at information technology at school and beyond, in settings such as shops, hospitals, and libraries. Learners will investigate how information technology improves our world, and they will learn about using information technology responsibly.</p>
+            <%= link_to 'Access unit 2', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-body icon-resources"><strong>Year 3 - Computer systems and networks - Connecting Computers</strong></h3>
+            <p class="govuk-body">During this unit, learners develop their understanding of digital devices, with an initial focus on inputs, processes, and outputs. They also compare digital and non-digital devices. Following this, learners are introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
+            <%= link_to 'Acces unit 3', 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
+          </div>
         </div>
       </div>
     </div>
