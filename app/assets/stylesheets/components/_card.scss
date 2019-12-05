@@ -30,7 +30,7 @@
       content: "";
       display: block;
       height: 62px;
-      mask-image: url(/images/card/glyph-1.svg);
+      background-image: url(/images/card/glyph-1.svg);
       position: absolute;
       right: 0;
       width: 54px;
@@ -39,17 +39,19 @@
 }
 
 .card--purple,
-.card--cs-accelerator  {
+.card--cs-accelerator,
+.card--secondary-certificate  {
   border-left-color: $cs-accelerator-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $amour;
+      background-color: $white;
+      background-image: url(/images/card/glyph-secondary.svg);
+
     }
   }
 }
 
-.card--yellow,
-.card--secondary-certificate {
+.card--yellow {
   border-left-color: $secondary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
@@ -63,7 +65,8 @@
   border-left-color: $primary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $karry;
+      background-color: $white;
+      background-image: url(/images/card/glyph-primary.svg);
     }
   }
 }
