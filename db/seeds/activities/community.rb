@@ -50,7 +50,7 @@ Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activit
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
-  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the CAS website. You’ll need to commit to running 3 meetings per year to support your local community.'
+  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the <a href="https://community.computingatschool.org.uk/" class="ncce-link"> CAS website</a>. You’ll need to commit to running 3 meetings per year to support your local community.'
 end
 
 Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
@@ -61,7 +61,7 @@ Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.provider = 'code-club'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
-  activity.description = 'Code Club supports schools and teachers nationwide to run free after-school coding clubs for 9- to 13-year-olds. Code Clubs are simple to run and help students develop a range of skills, including problem-solving and digital literacy. The Code Club team provides free, hands-on coding activities that spark curiosity and inspire creative thinking: <a href="https://codeclub.org/en/start-a-code-club" class="ncce-link">Start a Code Club in your school today</a>'
+  activity.description = 'Code Club supports schools and teachers nationwide to run free after-school coding clubs for 9- to 13-year-olds. <a href="https://codeclub.org/en/start-a-code-club" class="ncce-link">Start a Code Club today</a>'
 end
 
 Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference') do |activity|
