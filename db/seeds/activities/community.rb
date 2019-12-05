@@ -50,7 +50,7 @@ Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activit
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
-  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the CAS website. You’ll need to commit to running 3 meetings per year to support your local community.'
+  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the <a href="https://community.computingatschool.org.uk/" class="ncce-link"> CAS website</a>. You’ll need to commit to running 3 meetings per year to support your local community.'
 end
 
 Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
