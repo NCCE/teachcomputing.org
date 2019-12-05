@@ -5,7 +5,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <% current_user.programmes.each do |programme| %>
-            <div class="card card--plain card--<%= programme.slug %> card--bottom-glyph">
+            <div class="card card--plain card--<%= programme.slug %>">
               <% if current_user && programme.user_enrolled?(current_user) %>
                 <% case  current_user.user_programme_enrolments.find_by(programme_id: programme.id).current_state %>
                   <% when 'enrolled' %>
