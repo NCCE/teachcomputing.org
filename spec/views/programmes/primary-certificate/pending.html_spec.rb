@@ -18,6 +18,6 @@ RSpec.describe('programmes/primary-certificate/pending', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 2)
+    expect(rendered).to have_css('.ncce-activity-list', count: 1)
   end
 end
