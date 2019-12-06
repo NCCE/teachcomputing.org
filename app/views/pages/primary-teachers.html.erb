@@ -17,7 +17,7 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l">Develop your understanding of what outstanding teaching of computing looks like, to enable you create a curriculum that provides progression for all at Key Stage 1 and 2.  </p>
+        <p class="govuk-body-l landing-page__intro">Develop your understanding of what outstanding teaching of computing looks like, to enable you create a curriculum that provides progression for all at Key Stage 1 and 2.  </p>
       </div>
     </div>
     <div class="govuk-grid-row">
@@ -27,7 +27,7 @@
               <%= link_to 'Programming Pedagogy in Primary Schools', 'https://www.futurelearn.com/courses/primary-programming-pedagogy', class: 'ncce-link ncce-link--contrast' %></strong>
           </p>
           <p class="govuk-body">Investigate a range of pedagogical approaches suitable for teaching programming to primary school pupils (aged 5 to 11 years old).</p>
-          <video poster="//view.vzaar.com/21003295/image" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/21003295/download/sd_lower">
+          <video poster="/images/primary-teachers/video-placeholder.png" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/21003295/download/sd_lower">
             <source src="//view.vzaar.com/21003295/download/sd_lower" type="video/mp4">
             <track class="track" src="/images/primary-teachers/PrimaryPedagogy.vtt" kind="subtitles" srclang="EN" label="English">
           </video>
@@ -45,10 +45,10 @@
           <p class="govuk-body-s">Discover engaging and effective ways to help children use computational thinking</p>
           <%= image_tag '/images/primary-teachers/aside.jpg', alt: '' %>
           <ul class="govuk-body-s govuk-list govuk-list--bullet">
-            <li>Essential algorithm & programming knowledge</li>
-            <li>Algorithms and algorithmic evaluation in KS1</li>
-            <li>Sequence and repetition in KS2 apply evidence</li>
-            <li>Selection and variables in KS2</li>
+            <li>Essential programming knowledge</li>
+            <li>Algorithms and evaluation (KS1)</li>
+            <li>Sequence and repetition (KS2)</li>
+            <li>Selection and variables (KS2)</li>
           </ul>
           <p class="govuk-body-s icons"><strong><span
                 class="icon-face-to-face">Face to face course</span><span
@@ -63,15 +63,13 @@
 </div>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <div class="card card--primary-certificate">
-          <h2 class="govuk-heading-m card__heading">
-            <%= link_to 'Teach primary computing', primary_path, class: 'ncce-link' %>
-          </h2>
+          <h2 class="govuk-heading-m card__heading">Teach primary computing</h2>
           <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
-          <%= link_to 'Find out more', primary_path, class: 'ncce-link' %>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', primary_path, class: 'ncce-link' %></strong></p>
         </div>
         </div>
       </div>
@@ -79,7 +77,7 @@
   </div>
 </div>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
+  <div class="govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">Your local computing community</h2>
@@ -96,8 +94,8 @@
           <%= link_to 'Find your local community', 'https://community.computingatschool.org.uk/hubs' %>.
         </p>
         <h3 class="govuk-body"><strong>Barefoot</strong></h3>
-        <p class="govuk-body">Barefoot provides local computational thinking workshops and classroom-ready resources to help you teach primary computing.
-        <%= link_to 'Read more about Barefoot', 'https://www.barefootcomputing.org/ncce-partnership' %>.
+        <p class="govuk-body govuk-!-margin-bottom-0">Barefoot provides local computational thinking workshops and classroom-ready resources to help you teach primary computing.
+          <%= link_to 'Read more about Barefoot', 'https://www.barefootcomputing.org/ncce-partnership' %>.
         </p>
       </div>
     </div>
@@ -106,10 +104,10 @@
 <div class="light-grey-bg">
   <div class="landing-page-resources">
     <div class="govuk-width-container">
-      <div class="govuk-main-wrapper">
+      <div class="govuk-main-wrapper--xl">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-three-quarters">
-            <h2 class="govuk-heading-l">Access our free teaching resources</h2>
+            <h2 class="govuk-heading-l landing-page-resources__heading">Access our free teaching resources</h2>
             <p class="govuk-body landing-page-resources__intro">Boost the
               quality of your lessons with our free
               online resource bank. You’ll get access to full units of work,
@@ -123,12 +121,12 @@
             <h3 class="govuk-body icon-resources"><strong>Year 2 - Computer systems and networks - IT around us </strong>
             </h3>
             <p class="govuk-body">In this unit, learners will look at information technology at school and beyond, in settings such as shops, hospitals, and libraries. Learners will investigate how information technology improves our world, and they will learn about using information technology responsibly.</p>
-            <%= link_to 'Access IT around us unit', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
+            <%= link_to "Access 'IT around us' now", 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
           </div>
           <div class="shadow_card">
             <h3 class="govuk-body icon-resources"><strong>Year 3 - Computer systems and networks - Connecting Computers</strong></h3>
             <p class="govuk-body">During this unit, learners develop their understanding of digital devices, with an initial focus on inputs, processes, and outputs. They also compare digital and non-digital devices. Following this, learners are introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
-            <%= link_to 'Access Connecting Computers unit', 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
+            <%= link_to "Access 'Connecting Computers' now", 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
           </div>
         </div>
       </div>

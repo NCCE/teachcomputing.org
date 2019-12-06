@@ -13,13 +13,13 @@
   border-left: 9px solid $action-color;
   box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
-  padding: 20px 20px 30px 15px;
+  padding: 20px 20px 30px 20px;
   position: relative;
 
   @include govuk-media-query($from: desktop) {
     border-left-width: 13px;
     margin-bottom: $logo-block;
-    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
+    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) (0.75 * $logo-block);
     &:after {
       background-color: $foam;
       background-position-x: right;
@@ -105,7 +105,6 @@
 }
 
 .card__text {
-  color: $mid-gray;
   margin-bottom: 17px;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 17px;

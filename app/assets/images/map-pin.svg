@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>icon/location</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/location" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="15" cy="10" r="5"></circle>
+        <path d="M8.20089631,3.26145381 C11.9559376,-0.564628746 18.0440624,-0.564628746 21.7991037,3.26145381 C24.9827699,6.50535164 25.4672033,11.4580664 23.2524038,15.2219986 L23.2524038,15.2219986 L16.4753644,27.8240874 C15.6613789,29.3377154 14.3394568,29.3392697 13.5246356,27.8240874 L13.5246356,27.8240874 L6.74759623,15.2219986 C4.53279669,11.4580664 5.01723008,6.50535164 8.20089631,3.26145381 Z M15,5 C12.2385763,5 10,7.23857625 10,10 C10,12.7614237 12.2385763,15 15,15 C17.7614237,15 20,12.7614237 20,10 C20,7.23857625 17.7614237,5 15,5 Z" id="Combined-Shape" fill="#333448" fill-rule="nonzero"></path>
+    </g>
+</svg>

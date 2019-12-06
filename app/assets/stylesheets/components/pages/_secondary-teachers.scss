@@ -10,18 +10,22 @@
     grid-template-areas: "text photo";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    padding: 10px 30px;
+    padding: 10px 10px 10px 30px;
   }
 
   &__block--text {
+    align-self: center;
     grid-area: text;
-    padding-top: 20px;
     @include govuk-media-query($from: desktop) {
       .govuk-heading-l {
         font-size: 3.5vw;
       }
       .govuk-body-l {
         font-size: 2vw;
+      }
+
+      & > *:last-child {
+        margin-bottom: 0;
       }
     }
     @include govuk-media-query($from: 1000px) {
@@ -38,6 +42,10 @@
     grid-area: photo;
     img {
       width: 100%;
+      @include govuk-media-query($from: desktop) {
+        height: 100%;
+        width: auto;
+      }
     }
   }
 }
@@ -73,9 +81,9 @@
     }
   }
   &__bio {
-    padding: 0 10px 10px;
+    padding: 0 10px 0 10px;
     @include govuk-media-query($from: tablet) {
-      padding: 0 18px 18px;
+      padding: 0 18px 0 18px;
     }
   }
   &__image {

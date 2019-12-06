@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>icon/time</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/time" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="15" cy="15" r="12"></circle>
+        <g id="Group-6" fill="#333448">
+            <path d="M15,0 C23.2842712,0 30,6.71572875 30,15 C30,23.2842712 23.2842712,30 15,30 C6.71572875,30 0,23.2842712 0,15 C0,6.71572875 6.71572875,0 15,0 Z M15,3.75 C8.78679656,3.75 3.75,8.78679656 3.75,15 C3.75,21.2132034 8.78679656,26.25 15,26.25 C21.2132034,26.25 26.25,21.2132034 26.25,15 C26.25,8.78679656 21.2132034,3.75 15,3.75 Z" id="Combined-Shape"></path>
+            <path d="M15,5.625 C16.0355339,5.625 16.875,6.46446609 16.875,7.5 L16.875,13.125 L20.625,13.125 C21.6605339,13.125 22.5,13.9644661 22.5,15 C22.5,16.0355339 21.6605339,16.875 20.625,16.875 L15,16.875 L15,16.875 C13.9644661,16.875 13.125,16.0355339 13.125,15 L13.125,7.5 C13.125,6.46446609 13.9644661,5.625 15,5.625 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>
