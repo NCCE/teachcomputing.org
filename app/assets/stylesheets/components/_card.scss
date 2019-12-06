@@ -7,9 +7,10 @@
   }
 }
 
-.card {
+.card,
+.card--blue {
   background-color: $white;
-  border-left: 9px solid $tapestry;
+  border-left: 9px solid $action-color;
   box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
   padding: 20px 20px 30px 15px;
@@ -20,7 +21,7 @@
     margin-bottom: $logo-block;
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
     &:after {
-      background-image: url(/images/card/glyph-1.svg);
+      background-color: $foam;
       background-position-x: right;
       background-position-y: bottom;
       background-repeat: no-repeat;
@@ -29,9 +30,52 @@
       content: "";
       display: block;
       height: 62px;
+      background-image: url(/images/card/glyph-1.svg);
       position: absolute;
       right: 0;
       width: 54px;
+    }
+  }
+}
+
+.card--purple,
+.card--cs-accelerator,
+.card--secondary-certificate  {
+  border-left-color: $cs-accelerator-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $white;
+      background-image: url(/images/card/glyph-secondary.svg);
+
+    }
+  }
+}
+
+.card--yellow {
+  border-left-color: $secondary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $egg-white;
+    }
+  }
+}
+
+.card--orange,
+.card--primary-certificate {
+  border-left-color: $primary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $white;
+      background-image: url(/images/card/glyph-primary.svg);
+    }
+  }
+}
+
+.card--plain {
+  border-left-color: $plain-hero-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $plain-hero-color;
     }
   }
 }

@@ -28,6 +28,12 @@ $white: #ffffff;
 
 $govuk-text-colour: $grey-dark-x;
 
+$plain-hero-color: $concrete;
+$action-color: $deep-cerulean;
+$secondary-cert-color: $dixie;
+$primary-cert-color: $jaffa;
+$cs-accelerator-color: $tapestry;
+
 .light-blue-bg {
   background-color: $foam;
 }
@@ -38,6 +44,10 @@ $govuk-text-colour: $grey-dark-x;
 
 .tapestry-bg {
   background-color: $tapestry;
+}
+
+.jaffa-bg {
+  background-color: $jaffa;
 }
 
 .white-bg {
