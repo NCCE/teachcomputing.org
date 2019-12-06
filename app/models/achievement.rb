@@ -25,7 +25,7 @@ class Achievement < ApplicationRecord
   }
 
   scope :sort_complete_first, -> {
-    select(sanitize_sql_array(["achievements.*, COALESCE(?, ?) as current_state", "{@klass.send(:most_recent_transition_alias)}.to_state", @klass.send(:initial_state)]))
+    select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'commenced') as current_state")
     .joins(most_recent_transition_join)
     .order('current_state DESC')
   }
