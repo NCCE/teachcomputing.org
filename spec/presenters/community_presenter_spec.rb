@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe CommunityPresenter do
   let(:community_activity) { create(:activity, :community, description: 'this is a <strong>community</strong> activity') }
   let(:achievement) { create(:achievement, activity_id: community_activity.id) }
-  let(:completed_achievement) { create(:completed_achievement, activity_id: community_activity.id ) }
+  let(:completed_achievement) { create(:completed_achievement, activity_id: community_activity.id, user_id: user.id ) }
   let(:incomplete_presenter) { described_class.new(community_activity) }
   let(:completed_presenter) {
     completed_achievement
     described_class.new(community_activity)
   }
+  let(:user) { create(:user) }
 
   describe('completed?') do
-    it { expect(incomplete_presenter.completed?).to eq(false) }
-    it { expect(completed_presenter.completed?).to eq(true) }
+    it { expect(incomplete_presenter.completed?(user)).to eq(false) }
+    it { expect(completed_presenter.completed?(user)).to eq(true) }
   end
 
   describe('button_label') do
@@ -20,8 +21,8 @@ RSpec.describe CommunityPresenter do
   end
 
   describe('list_item_classes') do
-    it { expect(incomplete_presenter.list_item_classes).to include('ncce-activity-list__item--incomplete') }
-    it { expect(completed_presenter.list_item_classes).to be(nil) }
+    it { expect(incomplete_presenter.list_item_classes(user)).to include('ncce-activity-list__item--incomplete') }
+    it { expect(completed_presenter.list_item_classes(user)).to be(nil) }
   end
 
   describe('description') do
@@ -29,7 +30,7 @@ RSpec.describe CommunityPresenter do
   end
 
   describe('inspect') do
-    it { expect(incomplete_presenter.inspect).to start_with("CommunityPresenter - completed? false") }
+    it { expect(incomplete_presenter.inspect).to start_with("CommunityPresenter") }
   end
 
   describe('self_verification_info') do
