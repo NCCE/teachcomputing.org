@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe('pages/primary-teachers', type: :view) do
+  let(:programme) { create(:primary_certificate ) }
+
+  before do
+    programme
+  end
+
+
+
   it 'has a title' do
     render
     expect(rendered).to have_css('.govuk-heading-l', text: 'Inspiration and support for teaching primary computing')
