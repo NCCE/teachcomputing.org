@@ -38,6 +38,15 @@
   }
 }
 
+.card--plain {
+  border-left-color: $plain-hero-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $plain-hero-color;
+    }
+  }
+}
+
 .card--purple,
 .card--cs-accelerator,
 .card--secondary-certificate  {
@@ -67,15 +76,6 @@
     &:after {
       background-color: $white;
       background-image: url(/images/card/glyph-primary.svg);
-    }
-  }
-}
-
-.card--plain {
-  border-left-color: $plain-hero-color;
-  @include govuk-media-query($from: desktop) {
-    &:after {
-      background-color: $plain-hero-color;
     }
   }
 }
