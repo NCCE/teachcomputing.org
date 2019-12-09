@@ -24,7 +24,4 @@ RSpec.describe('pages/primary-teachers', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Access our free teaching resources')
   end
 
-  it 'has a link to Primary cert' do
-    expect(rendered).to have_link('Teach primary computing', href: '/primary-certificate')
-  end
 end
