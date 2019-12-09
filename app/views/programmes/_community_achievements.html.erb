@@ -1,10 +1,10 @@
 <% presenters.each do |presenter|%>
 
-<li class="ncce-activity-list__item<%= presenter.list_item_classes %>">
+<li class="ncce-activity-list__item<%= presenter.list_item_classes(current_user) %>">
       <span class="ncce-activity-list__item-text">
         <span><%= presenter.title %></span>
       </span>
-      <% unless presenter.completed? %>
+      <% unless presenter.completed?(current_user) %>
       <span class="ihavedonethis">
         <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
         <%= presenter.button_label %>

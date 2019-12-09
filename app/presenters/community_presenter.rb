@@ -6,12 +6,12 @@ class CommunityPresenter < SimpleDelegator
     super(activity)
   end
 
-  def completed?
-    !achievements.nil? && achievements.any? && achievements.first.complete?
+  def completed?(user)
+    user.achievements.exists?(activity_id: id)
   end
 
-  def list_item_classes
-    ' ncce-activity-list__item--incomplete' unless completed?
+  def list_item_classes(user)
+    ' ncce-activity-list__item--incomplete' unless completed?(user)
   end
 
   def description
@@ -23,6 +23,6 @@ class CommunityPresenter < SimpleDelegator
   end
 
   def inspect
-    "CommunityPresenter - completed? #{completed?}\n" + super
+    "CommunityPresenter - " + super
   end
 end
