@@ -25,6 +25,6 @@ RSpec.describe('pages/primary-teachers', type: :view) do
   end
 
   it 'has a link to Primary cert' do
-    expect(rendered).to have_link('Teach primary computing', href: primary_path)
+    expect(rendered).to have_link('Teach primary computing', href: primary_certificate_path)
   end
 end
