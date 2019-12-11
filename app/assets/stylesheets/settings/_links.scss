@@ -3,11 +3,9 @@ a[class=""],
 a:not([class]) {
   font-family: $font-family-body;
 
-	&:link {
+  &:link,
+  &:visited {
 		color: $deep-cerulean;
-	}
-	&:visited {
-		color: $tapestry;
 	}
 	&:hover {
 		color: $grey-dark-x;
@@ -56,28 +54,7 @@ a:not([class]) {
   font-family: $font-family-heading;
 }
 
-.ncce-link--contrast:link {
-  color: $grey-dark-x;
-}
-
-.light-blue-bg,
-.light-grey-bg {
-  a[class=""],
-  a:not([class]) {
-    &:link {
-      color: $grey-dark-x;
-    }
-    &:visited {
-      color: $tapestry;
-    }
-    &:hover {
-      color: $deep-cerulean;
-    }
-    &:focus {
-      color: $white;
-    }
-    &:active {
-      color: $white;
-    }
-  }
-}
+// .ncce-link--contrast:link,
+// .ncce-link--contrast:visited {
+//   color: $grey-dark-x;
+// }
