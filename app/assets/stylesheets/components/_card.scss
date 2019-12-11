@@ -7,34 +7,78 @@
   }
 }
 
-.card {
+.card,
+.card--blue {
   background-color: $white;
-  border-left: 9px solid $tapestry;
+  border-left: 9px solid $action-color;
   box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
-  padding: 20px 20px 30px 15px;
+  padding: 20px 20px 30px 20px;
   position: relative;
 
   @include govuk-media-query($from: desktop) {
     border-left-width: 13px;
     margin-bottom: $logo-block;
-    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) ((0.75 * $logo-block) - 13px);
+    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block) (0.75 * $logo-block);
+    &:after {
+      background-color: $foam;
+      mask-image: url(/images/card/glyph-1.svg);
+      -webkit-mask-image: url(/images/card/glyph-1.svg);
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 62px;
+      position: absolute;
+      right: 0;
+      width: 54px;
+    }
   }
 }
 
-.card--bottom-glyph:after {
-  background-image: url(/images/card/glyph-1.svg);
-  background-position-x: right;
-  background-position-y: bottom;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 62px;
-  position: absolute;
-  right: 0;
-  width: 54px;
+.card--plain {
+  border-left-color: $plain-hero-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $plain-hero-color;
+    }
+  }
+}
+
+.card--purple,
+.card--cs-accelerator  {
+  border-left-color: $cs-accelerator-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $white;
+      background-image: url(/images/card/glyph-secondary.svg);
+
+    }
+  }
+}
+
+.card--yellow,
+.card--secondary-certificate {
+  border-left-color: $secondary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $egg-white;
+    }
+  }
+}
+
+.card--orange,
+.card--primary-certificate {
+  border-left-color: $primary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $white;
+      background-image: url(/images/card/glyph-primary.svg);
+    }
+  }
 }
 
 .card:last-child {
@@ -62,7 +106,6 @@
 }
 
 .card__text {
-  color: $mid-gray;
   margin-bottom: 17px;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 17px;

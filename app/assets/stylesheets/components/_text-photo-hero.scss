@@ -10,18 +10,22 @@
     grid-template-areas: "text photo";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    padding: 10px 30px;
+    padding: 10px 10px 10px 30px;
   }
 
   &__block--text {
+    align-self: center;
     grid-area: text;
-    padding-top: 20px;
     @include govuk-media-query($from: desktop) {
       .govuk-heading-l {
         font-size: 3.5vw;
       }
       .govuk-body-l {
         font-size: 2vw;
+      }
+
+      & > *:last-child {
+        margin-bottom: 0;
       }
     }
     @include govuk-media-query($from: 1000px) {
@@ -38,27 +42,23 @@
     grid-area: photo;
     img {
       width: 100%;
+      @include govuk-media-query($from: desktop) {
+        display: block;
+        height: 100%;
+      }
     }
   }
 }
 
 .text-photo-hero--home {
-  grid-template-rows: 221fr 239fr;
-
   .govuk-heading-l {
     font-size: 2.5rem;
   }
 
   @include govuk-media-query($from: desktop) {
-    grid-template-areas: "text photo";
-    grid-template-columns: 385fr 550fr;
-    grid-template-rows: 1fr;
-    padding-right: 10px;
-    padding-left: 20px;
-
     .hero-heading--home {
-      margin-bottom: 20px;
       font-size: 42px;
+      margin-bottom: 20px;
     }
   }
 
@@ -66,8 +66,20 @@
     margin-bottom: 0;
   }
 
-  .hero-video--home {
+  .text-photo-hero__block--photo {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%; /*16:9*/
+    padding-top: 30px;
+  }
+  .text-photo-hero__block--photo iframe,
+  .text-photo-hero__block--photo object,
+  .text-photo-hero__block--photo embed {
     height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
     width: 100%;
   }
 }

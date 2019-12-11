@@ -24,7 +24,7 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l">Improve progress and attainment at Key Stage 3
+        <p class="govuk-body-l landing-page__intro">Improve progress and attainment at Key Stage 3
           and 4
           by developing your subject knowledge and classroom practice.</p>
       </div>
@@ -37,7 +37,7 @@
           </p>
           <p class="govuk-body">Discover how to build your own Graphical User
             Interface (GUI) with Python and guizero.</p>
-          <video poster="//view.vzaar.com/20654375/image" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/20654375/download/sd_lower">
+          <video poster="/images/secondary-teachers/video-placeholder.jpg" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/20654375/download/sd_lower">
             <source src="//view.vzaar.com/20654375/download/sd_lower" type="video/mp4">
             <track class="track" src="/images/secondary-teachers/ProgrammingWithGUIs.vtt" kind="subtitles" srclang="EN" label="English">
           </video>
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside secondary-teachers-aside">
+        <div class="ncce-aside landing-page__aside">
           <p class="govuk-body"><strong>
               <%= link_to 'Python programming essentials for GCSE computer science ', 'https://teachcomputing.org/courses?utf8=%E2%9C%93&level=Key+stage+4&location=Face+to+face&topic=Programming&certificate=#filter-results', class: 'ncce-link' %></strong>
           </p>
@@ -69,24 +69,22 @@
       </div>
     </div>
     <div class="center-button">
-      <%= link_to 'Browse our courses', courses_path, class: 'govuk-button button' %>
+      <%= link_to 'Browse our courses', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button' %>
     </div>
   </div>
 </div>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <div class="card card--plain card--bottom-glyph">
-            <h3 class="govuk-heading-m card__heading">
-              <%= link_to 'Teach GCSE computer science', cs_accelerator_path, class: 'ncce-link' %>
-            </h3>
+          <div class="card card--secondary-certificate card--bottom-glyph">
+            <h3 class="govuk-heading-m card__heading">Teach GCSE computer science</h3>
             <p class="govuk-body card__text">The Computer Science Accelerator
               Programme is a certified professional development programme
               designed to equip you with the subject knowledge and confidence to
               successfully teach GCSE computer science.</p>
-            <%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %>
+            <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong></p>
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
@@ -109,7 +107,7 @@
   </div>
 </div>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
+  <div class="govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">Your local computing community</h2>
@@ -117,15 +115,10 @@
         <p class="govuk-body">Computing Hubs provide local, responsive and
           tailored support to teachers across England. They are led by schools
           and colleges with an exceptional track record in teaching computing.
+          <%= link_to 'Find your local hub', '/hubs' %>.
         </p>
-        <h3 class="govuk-body"><strong>Local experts</strong></h3>
-        <p class="govuk-body">Your local Computing Hub can connect you with a
-          Subject Matter Expert to help your school improve the delivery of
-          computer science. Our experts also offer free coaching and
-          consultancy.
-          <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %>.</p>
         <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
-        <p class="govuk-body">Communities of Practice - run by
+        <p class="govuk-body govuk-!-margin-bottom-0">Communities of Practice - run by
           <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
           (CAS) - are local networks of computing teachers that share expertise,
           resources and best practice to encourage strong and effective
@@ -134,21 +127,21 @@
     </div>
   </div>
 </div>
-<div class="light-grey-bg secondary-teachers-resources">
+<div class="light-grey-bg landing-page-resources">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
-          <h2 class="govuk-heading-l">Access our free teaching resources</h2>
-          <p class="govuk-body secondary-teachers-resources__intro">Boost the
+          <h2 class="govuk-heading-l landing-page-resources__heading">Access our free teaching resources</h2>
+          <p class="govuk-body landing-page-resources__intro">Boost the
             quality of your lessons with our free
             online resource bank. You’ll get access to full units of work,
             lesson
             plans, assessments and activities.</p>
-          <%= link_to 'Browse teaching resources', resources_path, class: 'govuk-button button secondary-teachers-resources__button' %>
+          <%= link_to 'Browse teaching resources', resources_path, class: 'govuk-button button landing-page-resources__button' %>
         </div>
       </div>
-      <div class="secondary-teachers-resources__grid">
+      <div class="landing-page-resources__grid">
         <div class="shadow_card">
           <h3 class="govuk-body icon-resources"><strong>Subject knowledge
               assessments</strong>
@@ -159,13 +152,9 @@
           <%= link_to 'Access the tests now', 'https://www.eedi.co.uk/projects/teach-computing', class: 'govuk-body ncce-link' %>
         </div>
         <div class="shadow_card">
-          <h3 class="govuk-body icon-resources"><strong>Year 8 - Data
-              Representations
-              (Lesson 5: Large quantities)</strong></h3>
-          <p class="govuk-body">In this lesson you will teach what bytes are,
-            and what the prefixes kilo-, mega-, giga- and tera- mean. You will
-            also demonstrate how to convert between them.</p>
-          <%= link_to 'Download this sample resource', 'https://ncce.io/rep1-5-s', class: 'govuk-body ncce-link' %>
+          <h3 class="govuk-body icon-resources"><strong>Year 8 - Data Representations: from clay to silicon</strong></h3>
+          <p class="govuk-body">This unit conveys essential knowledge relating to binary representations. The activities gradually introduce learners to binary digits and how they can be used to represent text and numbers. The concepts are linked to practical applications and problems that the learners are familiar with.</p>
+          <%= link_to "Access 'Data Representations' now", 'https://ncce.io/Year8', class: 'govuk-body ncce-link' %>
         </div>
       </div>
     </div>

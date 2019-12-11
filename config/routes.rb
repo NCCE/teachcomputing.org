@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
     constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
     get '/secondary-teachers', to: 'pages#page', as: :secondary_teachers, defaults: { page_slug: 'secondary-teachers' }
+    get '/primary-teachers', to: 'pages#page', as: :primary_teachers, defaults: { page_slug: 'primary-teachers' }
     get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
 
