@@ -61,7 +61,7 @@ group :development do
 end
 
 group :test do
-  gem 'axe-matchers', :require => false
+  gem 'axe-matchers', '>= 2.5.0', :require => false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'

@@ -438,7 +438,7 @@ PLATFORMS
 DEPENDENCIES
   attr_encrypted (~> 3.1.0)
   awesome_print
-  axe-matchers
+  axe-matchers (>= 2.5.0)
   bootsnap (>= 1.1.0)
   brakeman
   byebug
