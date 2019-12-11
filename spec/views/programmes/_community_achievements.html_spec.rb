@@ -9,6 +9,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
 
   context 'when user has not completed any achievements' do
     before do
+      allow(view).to receive(:current_user).and_return(user)
       presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
     end
@@ -24,6 +25,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
 
   context 'when user has finished one achievement' do
     before do
+      allow(view).to receive(:current_user).and_return(user)
       complete_achievement
       presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
@@ -40,6 +42,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
 
   context 'when user has finished both achievements' do
     before do
+      allow(view).to receive(:current_user).and_return(user)
       complete_achievement
       second_complete_achievement
       presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
