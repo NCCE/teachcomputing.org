@@ -16,7 +16,7 @@ RSpec.describe('Static pages', type: :system) do
   end
 
   it 'page is accessible' do
-    expect(page).to be_accessible.within('#main-content').excluding('.hero-video--home')
+    expect(page).to be_accessible.within('#main-content').excluding('.axe-skip-a11y-test')
   end
 
   it 'footer is accessible' do
