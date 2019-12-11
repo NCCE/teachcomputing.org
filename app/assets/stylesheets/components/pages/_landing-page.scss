@@ -1,90 +1,119 @@
+.landing-page__intro {
+  margin-bottom: $logo-block-mobile;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: $logo-block;
+  }
+}
+
 .landing-page__aside {
-    padding-top: 13px;
-    img {
-      margin-bottom: 15px;
-      width: 100%;
-    }
+  padding-top: 13px;
+
+  img {
+    margin-bottom: 15px;
+    width: 100%;
+  }
 }
 
 .landing-page-resources {
-    &__intro,
-    &__button {
-      margin-bottom: 30px;
-      @include govuk-media-query($from: tablet) {
-        margin-bottom: 50px;
-      }
+
+  &__heading,
+  &__intro {
+    margin-bottom: $logo-block-mobile / 2;
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: $logo-block / 2;
     }
-  
-    &__grid {
-      display: grid;
-      grid-row-gap: 30px;
-      grid-template-rows: auto auto;
-      @include govuk-media-query($from: tablet) {
-        grid-column-gap: 30px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
+  }
+  &__button {
+    margin-bottom: $logo-block-mobile;
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: $logo-block;
     }
+  }
+
+  &__grid {
+    display: grid;
+    grid-row-gap: 30px;
+    grid-template-rows: auto auto;
+
+    @include govuk-media-query($from: tablet) {
+      grid-column-gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+  }
 }
 
 .center-button {
-    padding-top: $logo-block-mobile;
-    text-align: center;
-    @include govuk-media-query($from: tablet) {
-      padding-top: $logo-block;
-    }
+  padding-top: $logo-block-mobile;
+  text-align: center;
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: $logo-block;
+  }
 }
 
 .icons {
-    span {
-      clear: both;
-      float: left;
+  margin-bottom: 10px;
+  span {
+    clear: both;
+    float: left;
+    margin-bottom: 5px;
+    min-height: 20px;
+    padding-top: 5px;
+
+    @include govuk-media-query($from: tablet) {
+      clear: none;
       margin-bottom: 10px;
-      @include govuk-media-query($from: tablet) {
-        clear: none;
-      }
-      margin-right: 30px;
-      padding-left: 1.5rem;
     }
-    span:last-child {
-      margin-right: 0;
-    }
-    &:after {
-      clear: both;
-      content: "";
-      display: block;
-    }
+
+    margin-right: 30px;
+    padding-left: 1.7rem;
+  }
+
+  span:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
 }
-  
-    .icon-online {
-    background-image: image-url('laptop.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    }
 
-    .icon-calendar {
-    background-image: image-url('calendar.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    }
+.icon-online {
+  background-image: image-url('laptop.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
 
-    .icon-clock {
-    background-image: image-url('clock.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    }
+.icon-calendar {
+  background-image: image-url('calendar.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
 
-    .icon-face-to-face {
-    background-image: image-url('map-pin.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    }
+.icon-clock {
+  background-image: image-url('clock.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
 
-    .icon-resources {
-    background-image: image-url('resources-black.png');
-    background-repeat: no-repeat;
-    background-position: left top;
-    min-height: 30px;
-    padding-left: 2rem;
-    }
+.icon-face-to-face {
+  background-image: image-url('map-pin.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
 
+.icon-resources {
+  background-image: image-url('resources-black.svg');
+  background-position: left top;
+  background-repeat: no-repeat;
+  min-height: 30px;
+  padding-left: 2.2rem;
+}

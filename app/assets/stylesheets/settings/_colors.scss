@@ -27,12 +27,19 @@ $tapestry: #a94e91;
 $white: #ffffff;
 
 $govuk-text-colour: $grey-dark-x;
-
 $plain-hero-color: $concrete;
 $action-color: $deep-cerulean;
 $secondary-cert-color: $dixie;
 $primary-cert-color: $jaffa;
 $cs-accelerator-color: $tapestry;
+
+.dixie-bg {
+  background-color: $dixie;
+}
+
+.jaffa-bg {
+  background-color: $jaffa;
+}
 
 .light-blue-bg {
   background-color: $foam;
@@ -46,8 +53,8 @@ $cs-accelerator-color: $tapestry;
   background-color: $tapestry;
 }
 
-.jaffa-bg {
-  background-color: $jaffa;
+.tapestry-fg {
+  color: $tapestry;
 }
 
 .white-bg {

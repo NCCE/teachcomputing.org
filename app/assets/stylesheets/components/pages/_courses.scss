@@ -80,13 +80,13 @@
 			padding: 0;
 			font-size: 0.9375rem;
 			text-indent: 1.1rem;
-			background-image: image-url('map-pin.png');
+			background-image: image-url('map-pin.svg');
 			background-position: left center;
 			background-repeat: no-repeat;
 
 		}
 		&-icon--online {
-			background-image: image-url('laptop.png');
+			background-image: image-url('laptop.svg');
 			text-indent: 1.3rem;
 
 		}
