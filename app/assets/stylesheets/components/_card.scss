@@ -81,8 +81,9 @@
   }
 }
 
-.card:last-child {
-  margin-bottom: 0;
+.card--no-glyph:after {
+  background-color: $white;
+  background-image: none;
 }
 
 .card__status {
@@ -130,3 +131,12 @@
     background: $deep-cerulean;
   }
 }
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card > *:last-child {
+  margin-bottom: 0;
+}
+

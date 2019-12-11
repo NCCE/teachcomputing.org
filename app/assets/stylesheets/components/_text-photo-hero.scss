@@ -56,11 +56,15 @@
   }
 
   @include govuk-media-query($from: desktop) {
-    grid-template-columns: auto 500px;
+    grid-template-columns: auto 521px;
 
     .hero-heading--home {
       font-size: 42px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text--home {
+      margin-bottom: 15px;
     }
   }
 
