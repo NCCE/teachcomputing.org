@@ -43,8 +43,8 @@
     img {
       width: 100%;
       @include govuk-media-query($from: desktop) {
+        display: block;
         height: 100%;
-        width: auto;
       }
     }
   }
