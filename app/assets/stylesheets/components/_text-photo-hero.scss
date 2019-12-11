@@ -56,6 +56,8 @@
   }
 
   @include govuk-media-query($from: desktop) {
+    grid-template-columns: auto 500px;
+
     .hero-heading--home {
       font-size: 42px;
       margin-bottom: 20px;
@@ -71,7 +73,6 @@
     overflow: hidden;
     position: relative;
     padding-bottom: 56.25%; /*16:9*/
-    padding-top: 30px;
   }
   .text-photo-hero__block--photo iframe,
   .text-photo-hero__block--photo object,
