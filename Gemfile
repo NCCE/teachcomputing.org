@@ -22,7 +22,7 @@ gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.2.1'
@@ -61,7 +61,7 @@ group :development do
 end
 
 group :test do
-  gem 'axe-matchers', :require => false
+  gem 'axe-matchers', '>= 2.5.0', :require => false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'

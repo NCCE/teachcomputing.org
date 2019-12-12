@@ -1,0 +1,90 @@
+.text-photo-hero {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-areas: "photo" "text";
+  grid-template-rows: 1fr auto;
+  padding: 10px;
+  @include govuk-media-query($from: desktop) {
+    grid-column-gap: 20px;
+    grid-row-gap: 0;
+    grid-template-areas: "text photo";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 10px 10px 10px 30px;
+  }
+
+  &__block--text {
+    align-self: center;
+    grid-area: text;
+    @include govuk-media-query($from: desktop) {
+      .govuk-heading-l {
+        font-size: 3.5vw;
+      }
+      .govuk-body-l {
+        font-size: 2vw;
+      }
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @include govuk-media-query($from: 1000px) {
+      .govuk-heading-l {
+        font-size: 2.25rem;
+      }
+      .govuk-body-l {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__block--photo {
+    grid-area: photo;
+    img {
+      width: 100%;
+      @include govuk-media-query($from: desktop) {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.text-photo-hero--home {
+  .govuk-heading-l {
+    font-size: 2.5rem;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: auto 521px;
+
+    .hero-heading--home {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text--home {
+      margin-bottom: 15px;
+    }
+  }
+
+  .hero-button--home {
+    margin-bottom: 0;
+  }
+
+  .text-photo-hero__block--photo {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%; /*16:9*/
+  }
+  .text-photo-hero__block--photo iframe,
+  .text-photo-hero__block--photo object,
+  .text-photo-hero__block--photo embed {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

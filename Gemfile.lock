@@ -242,7 +242,7 @@ GEM
       method_source (~> 0.9.0)
     psych (3.1.0)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.2)
     rack (2.0.7)
     rack-attack (5.4.2)
       rack (>= 1.0, < 3)
@@ -438,7 +438,7 @@ PLATFORMS
 DEPENDENCIES
   attr_encrypted (~> 3.1.0)
   awesome_print
-  axe-matchers
+  axe-matchers (>= 2.5.0)
   bootsnap (>= 1.1.0)
   brakeman
   byebug
@@ -464,7 +464,7 @@ DEPENDENCIES
   omniauth-oauth2
   omniauth-rails_csrf_protection (~> 0.1.2)
   pg (~> 1.1)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack-attack (~> 5.4.2)
   rack-cors
   rails (~> 5.2.1)
