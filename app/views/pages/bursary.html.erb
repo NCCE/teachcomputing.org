@@ -1,87 +1,99 @@
-<% meta_tag :title, "Bursary entitlement - Teach Computing" %>
-<%= render 'components/hero', hero_title: 'Bursary entitlement' %>
+<% meta_tag :title, "Bursaries and fees - Teach Computing" %>
+<%= render 'components/hero', hero_title: 'Bursaries and fees' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds ncce-bursary__content">
-          <p class="govuk-body">We offer bursaries to state-funded schools and colleges across England that cover the cost of time out of the classroom for teachers attending CPD. These bursaries can contribute towards associated costs, including travel and supply cover.</p>
-          <h2 class="govuk-heading-l">For Primary Teachers</h2>
-          <h3 class="govuk-heading-m">What financial support is available to help you access CPD?</h3>
-          <h4 class="govuk-heading-s">Priority state-funded schools</h4>
-          <p class="govuk-body">We offer <strong>one free place</strong> on each course to primary teachers in state-funded priority schools*. All other places will be charged a fee of £35 per day. A bursary of £100 per teacher, per day is payable to the school, on successful completion of the course.</p>
-          <p class="govuk-body">*Priority schools are located in Local Authority Districts 5 and 6: <%= link_to 'check this list', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> or <%= mail_to 'info@teachcomputing.org', 'contact us', class: 'ncce-link' %> for details.</p>
-          <h4 class="govuk-heading-s">State-funded schools</h4>
-          <p class="govuk-body">The fee is £35 per day for teachers in state-funded, non-priority schools.</p>
-
-          <h4 class="govuk-heading-s">Independent schools</h4>
-          <p class="govuk-body">The fee is £220 per day for teachers from independent schools.</p>
+          <p class="govuk-body">We offer bursaries to state-funded schools and colleges across England to support continuing professional development in computing education.</p>
+          <p class="govuk-body">These bursaries can be used by your school to cover associated costs including travel and supply cover, and to remove the financial barriers associated with attending CPD.</p>
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-          <h2 class="govuk-heading-l">For Secondary teachers</h2>
-          <h3 class="govuk-heading-m">What kind of bursaries do we offer for face-to-face CPD?</h3>
-          <ol class="govuk-list govuk-list--number">
-            <li>A bursary for teachers taking part in the <%= link_to 'Computer Science Accelerator Programme', cs_accelerator_path, class: 'ncce-link' %></li>
-            <li>A bursary for teachers from secondary priority schools attending face-to-face courses in computing pedagogy</li>
-          </ol>
-          <h3 class="govuk-heading-s">Am I eligible for support?</h3>
-          <h4 class="govuk-heading-s">1. Bursary for the Computer Science Accelerator Programme</h4>
-          <p class="govuk-body">How much will <strong>my school</strong> receive if I’m eligible?</p>
-          <p class="govuk-body">The Computer Science Accelerator Programme offers free online courses to all teachers and free face-to-face CPD for teachers in state-funded education.</p>
-
+          <h2 class="govuk-heading-m">Primary teachers – Key Stages 1 and 2</h2>
+          <p class="govuk-body">We offer free online courses and bursary-supported face-to-face courses for primary teachers working in state-funded schools in England.</p>
+          <p class="govuk-body">One teacher from each school is eligible for a bursary to fund one course per academic year. This is payable on completion of the course.</p>
           <table class="govuk-table">
-            <caption class="govuk-table__caption">Bursary support for state-funded schools/colleges:</caption>
+            <caption class="govuk-table__caption">Bursary details:</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">Course fee</th>
+                <td class="govuk-table__cell">£35 per day</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">Bursary</th>
+                <td class="govuk-table__cell">£220 per day</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">Your school will receive</th>
+                <td class="govuk-table__cell">£185 per day</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="govuk-body">Subsequent teachers from the same school will pay £35 a day. The fee for teachers working in independent schools is £220 a day.</p>
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+          <h2 class="govuk-heading-m">Secondary teachers – GCSE level</h2>
+          <p class="govuk-body">The Computer Science Accelerator Programme offers free online courses to all teachers and free face-to-face courses for teachers working in state-funded education.</p>
+          <p class="govuk-body">Teachers working in state-funded education are eligible for bursaries up to £1,500, paid to your school, allocated as shown in the table below.</p>
+          <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col">Teacher progress</th>
-                <th class="govuk-table__header" scope="col">Receive</th>
+                <th class="govuk-table__header" scope="col">Your school will receive:</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Attend 1st two day face-to-face course</th>
+                <th class="govuk-table__header" scope="row">Attend 1st two-day face-to-face course</th>
                 <td class="govuk-table__cell">£440</td>
               </tr>
               <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Attend 2nd two day face-to-face course</th>
+                <th class="govuk-table__header" scope="row">Attend 2nd two-day face-to-face course</th>
                 <td class="govuk-table__cell">£440</td>
               </tr>
               <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Complete the programme including 2 online courses and sitting final test</th>
+                <th class="govuk-table__header" scope="row">Complete the programme including two online courses and sitting final test</th>
                 <td class="govuk-table__cell">£620</td>
               </tr>
               <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="row"></th>
-              <td class="govuk-table__cell">£300~</td>
-            </tr>
-              <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="row">Total bursary</th>
-                <td class="govuk-table__cell"><strong>£1800</strong></td>
+                <td class="govuk-table__cell">£1,500</td>
               </tr>
             </tbody>
           </table>
-          <p class="govuk-body-s">~ An additional £300 bursary is available to state-funded schools and colleges, to support teachers who complete the Computer Science Accelerator Programme in their classroom practice. This can be used for any of the following:
+          <div class="card card--blue">
+            <h2 class="govuk-heading-m card__heading">
+              <%= link_to 'Receive additional funding', '#funding', class: 'ncce-link' %>
+            </h2>
+            <p class="govuk-body card__text">Teachers who complete their first course by 29 February 2020 will receive an additional £300 funding on completion of the programme. This will be paid to the school or college and should be used in classroom practice.</p>
+            <%= link_to 'Find out more about eligibility', '#funding', class: 'ncce-link' %>
+          </div>
+          <p class="govuk-body">Teachers in independent schools can access any of our online courses for free. A fee of £220 per day is payable for face-to-face courses.
           </p>
-          <ul class="govuk-list govuk-body-s govuk-list--bullet">
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+          <h2 class="govuk-heading-m">Secondary teachers – Key stage 3 and 4 pedagogy</h2>
+          <p class="govuk-body">We offer free online courses and low cost face-to-face courses in Key Stage 3 and 4 computing pedagogy.</p>
+          <table class="govuk-table">
+            <caption class="govuk-table__caption">Course fees:</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">State-funded schools</th>
+                <td class="govuk-table__cell">£35 per day</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">Independent schools</th>
+                <td class="govuk-table__cell">£220 per day</td>
+              </tr>
+            </tbody>
+          </table>      
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+          <h3 class="govuk-heading-s" id="funding">Additional funding criteria: GCSE level</h3>
+          <p class="govuk-body-s">An additional £300 bursary is currently available to teachers in state-funded education who complete their first course by 29 February 2020. This will be paid to the school or college and can be used for any of the following:</p>
+          <ul class="govuk-body-s govuk-list govuk-list--bullet">
             <li>purchasing resources</li>
             <li>CPD (face-to-face and online)</li>
             <li>funding towards Chartered status</li>
-            <li>kit for an after school club</li>
+            <li>kit for an after-school club</li>
             <li>supporting events and networking with local schools (with support of CAS or Computing Hubs)</li>
-            <li>student trips – must be computer science related</li>
+            <li>student trips – must be computer science-related</li>
           </ul>
-          <p class="govuk-body-s">Complete a minimum of one course (online or face-to-face) by 29 February 2020 to be eligible.</p>
-
-          <p class="govuk-body"><strong>How much will I need to pay if I am NOT eligible?</strong></p>
-          <p class="govuk-body">Teachers in independent schools can access any of our online CPD for free. A fee of £220 per day is payable for face-to-face courses.</p>
-
-          <h4 class="govuk-heading-s">2. Bursary for face-to-face courses in computing pedagogy </h4>
-          <p class="govuk-body">CPD is free for <strong>all secondary computing teachers</strong> in state-funded priority schools*. A bursary of £100 per teacher, per day is payable to the school, following successful completion of the course. </p>
-
-          <p class="govuk-body">*Priority schools are located in Local Authority Districts 5 and 6: <%= link_to 'check this list', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> or <%= mail_to 'info@teachcomputing.org', 'contact us', class: 'ncce-link' %> for details.</p>
-
-          <p class="govuk-body"><strong>How much will I need to pay if I am NOT from a priority school?</strong></p>
-
-          <p class="govuk-body">The fee is £35 per day for teachers in state-funded, non-priority schools. The fee is £220 per day for teachers from independent schools.</p>
         </div>
       </div>
     </div>
