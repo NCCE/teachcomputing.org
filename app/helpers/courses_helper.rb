@@ -44,8 +44,7 @@ module CoursesHelper
     strip_tags(unescaped_str)
   end
 
-  def course_meta_css_class(isOnlineCourse)
-    cssClass = "ncce-courses__meta-icon"
-    isOnlineCourse ? "#{cssClass} #{cssClass}--online" : "#{cssClass}"
+  def course_meta_icon_class(isOnlineCourse)
+    isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 end

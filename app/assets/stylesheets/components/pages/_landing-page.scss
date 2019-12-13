@@ -53,7 +53,7 @@
   }
 }
 
-.icons {
+.landing-page__icons {
   margin-bottom: 10px;
   span {
     clear: both;
@@ -68,7 +68,6 @@
     }
 
     margin-right: 30px;
-    padding-left: 1.7rem;
   }
 
   span:last-child {
@@ -80,40 +79,4 @@
     content: "";
     display: block;
   }
-}
-
-.icon-online {
-  background-image: image-url('laptop.svg');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-}
-
-.icon-calendar {
-  background-image: image-url('calendar.svg');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-}
-
-.icon-clock {
-  background-image: image-url('clock.svg');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-}
-
-.icon-face-to-face {
-  background-image: image-url('map-pin.svg');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-}
-
-.icon-resources {
-  background-image: image-url('resources-black.svg');
-  background-position: left top;
-  background-repeat: no-repeat;
-  min-height: 30px;
-  padding-left: 2.2rem;
 }
