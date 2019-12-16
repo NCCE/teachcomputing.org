@@ -1,0 +1,32 @@
+@mixin icon($image, $position: left center, $width: 20px, $height: 20px, $spacing: 7px) {
+  background-image: image-url($image);
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: $width $height;
+  @if $position == left or $position == left top or $position == left bottom {
+    padding-left: $spacing + $width;
+  }  @else if $position == right or $position == right top or $position == right bottom {
+    padding-right: $spacing + $width;
+  }
+}
+
+.icon-online {
+  @include icon('laptop.svg', left bottom);
+}
+
+.icon-calendar {
+  @include icon('calendar.svg');
+}
+
+.icon-clock {
+  @include icon('clock.svg');
+}
+
+.icon-map-pin {
+  @include icon('map-pin.svg');
+}
+
+.icon-resources {
+  @include icon('resources-black.svg', left top, 30px, 30px, 5px);
+  min-height: 30px;
+}

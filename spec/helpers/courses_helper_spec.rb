@@ -59,13 +59,13 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('course_meta_css_class') do
+  describe('course_meta_icon_class') do
     it 'returns icon for offline courses' do
-      expect(helper.course_meta_css_class(false)).to eq 'ncce-courses__meta-icon'
+      expect(helper.course_meta_icon_class(false)).to eq 'icon-map-pin'
     end
 
     it 'returns icon for online courses' do
-      expect(helper.course_meta_css_class(true)).to eq 'ncce-courses__meta-icon ncce-courses__meta-icon--online'
+      expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
     end
   end
 end
