@@ -86,6 +86,15 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default_url_options = { host: 'https://teachcomputing.org' }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: ENV.fetch('MANDRILL_SMTP_USERNAME'),
+    password: ENV.fetch('MANDRILL_API_KEY'),
+    authentication: :plain,
+    domain: 'teachcomputing.org'
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
