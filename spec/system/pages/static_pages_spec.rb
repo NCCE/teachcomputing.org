@@ -38,7 +38,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_content('Bursary entitlement')
+      expect(page).to have_content('Bursaries and fees')
     end
 
     it 'main is accessible' do
