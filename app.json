@@ -88,6 +88,12 @@
     },
     "CLASS_MARKER_WEBHOOK_SECRET_PHRASE": {
       "required": true
+    },
+    "MANDRILL_SMTP_USERNAME": {
+      "required": true
+    },
+    "MANDRILL_API_KEY": {
+      "required": true
     }
   },
   "formation": {
