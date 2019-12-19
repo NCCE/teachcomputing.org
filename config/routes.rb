@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   resources :courses, path: '/courses', only: [:index]
 
   get 'dashboard', action: :show, controller: 'dashboard'
+  
+  get '/resources', action: :index, controller: 'resources'
+  get '/resources/*redirect_url', action: :show, controller: 'resources', as: 'resources_redirect', format: false
 
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user', as: :user_teacher_reference_number
 
@@ -51,7 +54,7 @@ Rails.application.routes.draw do
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
     constraints: ->(_request) { Programme.primary_certificate.enrollable? }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
-  get '/resources', to: 'pages#page', as: :resources, defaults: { page_slug: 'resources' }
+  # get '/resources', to: 'pages#page', as: :resources, defaults: { page_slug: 'resources' }
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
     constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
     get '/secondary-teachers', to: 'pages#page', as: :secondary_teachers, defaults: { page_slug: 'secondary-teachers' }

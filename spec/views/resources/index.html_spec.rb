@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/resources', type: :view) do
+RSpec.describe('resources/index', type: :view) do
   let(:user) { create(:user) }
 
   it 'has a title' do
