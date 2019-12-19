@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ResourcesController do
-  let(:user) { create(:user) }
-
   describe '#show' do
     it 'renders the index template' do
       redirect_url = URI.encode_www_form_component('https://ncce.io/Year1')
