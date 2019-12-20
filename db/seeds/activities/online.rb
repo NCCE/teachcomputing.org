@@ -197,3 +197,13 @@ Activity.find_or_create_by(slug: 'programming-pedagogy-in-secondary-schools-insp
   activity.future_learn_course_id = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'introduction-to-web-development') do |activity|
+  activity.title = 'Introduction to Web Development'
+  activity.credit = 20
+  activity.slug = 'introduction-to-web-development'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = '3574403e-a63f-4230-9f4b-3f5b6cd4ddb7'
+  activity.provider = 'future-learn'
+end

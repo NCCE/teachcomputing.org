@@ -49,6 +49,7 @@ slugs = %w[
   design-and-prototype-embedded-computer-systems
   programming-103-saving-and-structuring-data
   introduction-to-encryption-and-cryptography
+  introduction-to-web-development
 ]
 
 slugs.each do |slug|
