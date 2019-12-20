@@ -14,7 +14,7 @@
   <p class="govuk-body">
   <% if live %>
     <%= link_to_if current_user, "Access year #{year} resources", resources_redirect_path(redirect_url: URI.encode_www_form_component(resource_url), year: year), class: 'govuk-button button--aside', role: 'button', draggable: 'false' do
-        link_to 'Log in to access', "#{auth_url}?source_uri=#{request.original_fullpath}#year-#{year}", method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false'
+        link_to 'Log in to access', "#{auth_url}?source_uri=#{URI.escape(request.original_url + '#year-' + year.to_s)}", method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false'
     end %>
   <% else %>
     <%= button_to 'Coming soon', '#', class: 'govuk-button button--aside', role: 'button', draggable: 'false', disabled: true %>
