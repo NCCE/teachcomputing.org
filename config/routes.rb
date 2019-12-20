@@ -54,7 +54,6 @@ Rails.application.routes.draw do
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
     constraints: ->(_request) { Programme.primary_certificate.enrollable? }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
-  # get '/resources', to: 'pages#page', as: :resources, defaults: { page_slug: 'resources' }
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
     constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
     get '/secondary-teachers', to: 'pages#page', as: :secondary_teachers, defaults: { page_slug: 'secondary-teachers' }
