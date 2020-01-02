@@ -1,16 +1,7 @@
 <div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
-      <% if current_user && @programme.user_enrolled?(current_user) %>
-        <% case  current_user.user_programme_enrolments.find_by(programme_id: @programme.id).current_state %>
-          <% when 'enrolled' %>
-            <span class="govuk-body-m hero__status">You are enrolled</span>
-          <% when 'pending' %>
-            <span class="govuk-body-m hero__status">Programme complete</span>
-          <% when 'complete' %>
-            <span class="govuk-body-m hero__status">Certificate awarded</span>
-          <% end %>
-      <% end %>
+      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
         <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
