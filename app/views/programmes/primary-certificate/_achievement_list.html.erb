@@ -1,4 +1,5 @@
  <p class="govuk-body"><strong>Complete all</strong> of the following activities:</p>
+ <%= render 'programmes/bursary-card' %>
  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <% diagnostic_result = @programme.diagnostic_result(current_user) %>
   <%= render 'programmes/achievements',
