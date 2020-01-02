@@ -104,7 +104,7 @@
   }
 }
 
-.hero__status {
+.hero__wrapper > .status-block {
   @include status_block();
   float: left;
   margin: 0;

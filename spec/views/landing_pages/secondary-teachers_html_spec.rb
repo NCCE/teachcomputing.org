@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/secondary-teachers', type: :view) do
+RSpec.describe('landing_pages/secondary-teachers', type: :view) do
   let(:programme) { create(:cs_accelerator ) }
 
   before do
