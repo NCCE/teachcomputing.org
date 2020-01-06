@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :courses, path: '/courses', only: [:index]
 
   get 'dashboard', action: :show, controller: 'dashboard'
-  
+
   get '/resources', action: :index, controller: 'resources'
   get '/resources/*redirect_url', action: :show, controller: 'resources', as: 'resources_redirect', format: false
 
@@ -56,8 +56,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
     constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
-    get '/secondary-teachers', to: 'pages#page', as: :secondary_teachers, defaults: { page_slug: 'secondary-teachers' }
-    get '/primary-teachers', to: 'pages#page', as: :primary_teachers, defaults: { page_slug: 'primary-teachers' }
+    get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
+    get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
     get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
 

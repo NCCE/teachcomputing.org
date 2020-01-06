@@ -52,7 +52,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     end
 
     it 'shows the completed text' do
-      expect(rendered).to have_css('.card__status', text: 'Programme complete')
+      expect(rendered).to have_css('.status-block', text: 'Programme complete')
     end
   end
 
@@ -65,7 +65,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     end
 
     it 'shows the completed text' do
-      expect(rendered).to have_css('.card__status', text: 'Certificate awarded')
+      expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
     end
   end
 end

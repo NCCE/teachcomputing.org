@@ -20,7 +20,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
 
 
   it 'doesn\'t show the enrolled tag' do
-    expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
+    expect(rendered).not_to have_css('.status-block', text: 'You are enrolled')
   end
 
   context 'when the user logged in but not enrolled' do
@@ -30,7 +30,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
     end
 
     it 'doesn\'t show the enrolled tag' do
-      expect(rendered).not_to have_css('.hero__status', text: 'You are enrolled')
+      expect(rendered).not_to have_css('.status-block', text: 'You are enrolled')
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
     end
 
     it 'shows the enrolled tag' do
-      expect(rendered).to have_css('.hero__status', text: 'You are enrolled')
+      expect(rendered).to have_css('.status-block', text: 'You are enrolled')
     end
   end
 end

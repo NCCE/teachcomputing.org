@@ -86,12 +86,12 @@
   background-image: none;
 }
 
-.card__status {
+.card > .status-block {
   @include status_block();
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 }
 

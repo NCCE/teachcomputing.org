@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/primary-teachers', type: :view) do
+RSpec.describe('landing_pages/primary-teachers', type: :view) do
   let(:programme) { create(:primary_certificate ) }
 
   before do
