@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   layout 'full-width'
+  before_action :authenticate_user!, only: [:show]
 
   def index
     render :index
