@@ -14,25 +14,4 @@ module ProgrammesHelper
     return ordinals[index] if index <= ordinals.length && index > 0
     ActiveSupport::Inflector::ordinalize(index)
   end
-
-  def can_take_accelerator_test?(user, programme)
-    credits = credits_for_programme(user, programme)
-    credits[:total] >= credits[:max]
-  end
-
-  def credits_for_programme(user, programme)
-    total = 0
-    max = 0
-    programme.credits_for_certificate.each do |category, threshold|
-      max += threshold
-      total += [_credits_for_courses(user, programme, category), threshold].min.to_i
-    end
-    { :total => total, :max => max }
-  end
-
-  private
-    def _credits_for_courses(user, programme, category = 'online')
-      activities = user.achievements.for_programme(programme).in_state('complete').joins(:activity)
-      activities.where(activities: { category: category}).sum(:credit)
-    end
 end
