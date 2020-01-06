@@ -26,6 +26,6 @@ RSpec.describe('programmes/primary-certificate/show', type: :view) do
   end
 
   it 'has correct list setup' do
-    expect(rendered).to have_css('.ncce-activity-list--programme', count: 4)
+    expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
   end
 end
