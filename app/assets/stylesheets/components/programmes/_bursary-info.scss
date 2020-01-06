@@ -1,4 +1,4 @@
-.bursary-card__item {
+.bursary-info__item {
     background-color: $white;
     display: grid;
     grid-template-rows: auto auto auto;
@@ -16,7 +16,7 @@
   }
 
 
-.bursary-card__item-text {
+.bursary-info__item-text {
     align-self: center;
     background-image: image-url('icon-pound.svg');
     background-position: left top;
@@ -37,7 +37,7 @@
     }
   }
 
-.ncce-activity-list__item-activity-magda {
+.bursary-info__item-text-activity {
     font-size: 1.188rem;
     font-weight: bold;
     grid-row: 2;
