@@ -9,7 +9,7 @@
           <p class="govuk-body-l">Welcome to the Teach primary computing programme! To complete your primary certificate you’ll need to work through the activities below.</p>
         </div>
       </div>
-      <% if @user_programme_achievements.face_to_face_achievements == 0 %>
+      <% unless @user_programme_achievements.face_to_face_achievements.any? %>
         <%= render 'programmes/bursary-info' %>
       <% end %>
       <%= render 'programmes/primary-certificate/achievement_list' %>
