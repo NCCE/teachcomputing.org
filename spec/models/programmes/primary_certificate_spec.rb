@@ -120,4 +120,38 @@ RSpec.describe Programmes::PrimaryCertificate do
       end
     end
   end
+
+  describe '#credits_achieved_for_certificate' do
+    context 'when the user has not done any activities' do
+      it 'returns 0' do
+        expect(programme.credits_achieved_for_certificate(user)).to eq 0
+      end
+    end
+
+    context 'when the user has done 2 online activities' do
+      before do
+        setup_achievements_for_partial_completion
+      end
+
+      it 'returns 45' do
+        expect(programme.credits_achieved_for_certificate(user)).to eq 45
+      end
+    end
+
+    context 'when the user has done enough activities' do
+      before do
+        setup_achievements_for_completion
+      end
+
+      it 'returns 75' do
+        expect(programme.credits_achieved_for_certificate(user)).to eq 75
+      end
+    end
+  end
+
+  describe '#max_credits_for_certificate' do
+    it 'returns 75' do
+      expect(programme.max_credits_for_certificate).to eq 75
+    end
+  end
 end

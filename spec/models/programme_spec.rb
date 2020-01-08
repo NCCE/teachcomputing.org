@@ -137,4 +137,16 @@ RSpec.describe Programme, type: :model do
       end
     end
   end
+
+  describe '#credits_achieved_for_certificate' do
+    it 'returns 0' do
+      expect(programmes[0].credits_achieved_for_certificate(user)).to eq 0
+    end
+  end
+
+  describe '#max_credits_for_certificate' do
+    it 'returns 0' do
+      expect(programmes[0].max_credits_for_certificate).to eq 0
+    end
+  end
 end

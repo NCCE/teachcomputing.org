@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserProgrammeAssessment do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
