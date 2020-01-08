@@ -34,4 +34,8 @@ class UserProgrammeAssessment
     def less_than_two_failed_attempts?
       @attempts.last.current_state != StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s || num_attempts < 2
     end
+
+    def can_take_accelerator_test?(user, programme)
+      programme.credits_achieved_for_certificate(user) >= programme.max_credits_for_certificate
+    end
 end

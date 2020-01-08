@@ -22,10 +22,12 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def credits_for_certificate
-    return { online: 40, 'face-to-face': 40 } if slug == 'cs-accelerator'
+  def credits_achieved_for_certificate(user)
+    0
+  end
 
-    {}
+  def max_credits_for_certificate
+    0
   end
 
   def diagnostic
