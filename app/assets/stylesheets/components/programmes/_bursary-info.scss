@@ -1,0 +1,27 @@
+.bursary-info {
+  background-color: $white;
+  padding: 1.25rem 1.125rem;
+  margin-bottom: 2rem;
+  background-image: image-url('icon-pound.svg');
+  background-position: 1rem 1.8rem;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.5rem;
+    line-height: 1.5rem;
+    padding-left: 2rem;
+  }
+}
+
+
+.bursary-info__text {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.bursary-info__link {
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-left: 2rem;
+}
