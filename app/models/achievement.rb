@@ -25,9 +25,9 @@ class Achievement < ApplicationRecord
   }
 
   scope :sort_complete_first, -> {
-    select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'commenced') as current_state")
+    select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'enrolled') as current_state")
     .joins(most_recent_transition_join)
-    .order('current_state DESC')
+    .order('current_state')
   }
 
   def state_machine
@@ -43,6 +43,17 @@ class Achievement < ApplicationRecord
 
   def set_to_dropped(metadata = {})
     transition_to(:dropped, metadata)
+  end
+
+  def update_state(progress = 0, left_at)
+    metadata = { progress: progress }
+
+    return set_to_complete(metadata) if progress >= 60 && can_transition_to?(:complete)
+    return set_to_dropped(left_at: left_at) if left_at.present? && current_state != :complete.to_s
+    return transition_to(:enrolled, metadata) if progress < 1
+    return transition_to(:step_2, metadata) if progress > 30
+
+    transition_to(:step_1, metadata) if progress >= 1
   end
 
   def complete?
