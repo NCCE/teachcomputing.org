@@ -15,15 +15,9 @@ FactoryBot.define do
       end
     end
 
-    factory :step_1_achievement do
+    factory :in_progress_achievement do
       after(:create) do |achievement|
-        achievement.transition_to(:step_1, { credit: 29 })
-      end
-    end
-
-    factory :step_2_achievement do
-      after(:create) do |achievement|
-        achievement.transition_to(:step_2, { credit: 59 })
+        achievement.transition_to(:in_progress, { credit: 29 })
       end
     end
   end

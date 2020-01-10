@@ -42,18 +42,27 @@ class Achievement < ApplicationRecord
   end
 
   def set_to_dropped(metadata = {})
+    return false unless can_transition_to?(:dropped)
+
     transition_to(:dropped, metadata)
   end
 
-  def update_state(progress = 0, left_at)
+  def update_state_for_online_activity(progress = 0, left_at = nil)
+    return if current_state == :complete.to_s
+
     metadata = { progress: progress }
 
-    return set_to_complete(metadata) if progress >= 60 && can_transition_to?(:complete)
-    return set_to_dropped(left_at: left_at) if left_at.present? && current_state != :complete.to_s
-    return transition_to(:enrolled, metadata) if progress < 1
-    return transition_to(:step_2, metadata) if progress > 30
+    return set_to_complete(metadata) if progress >= 60
 
-    transition_to(:step_1, metadata) if progress >= 1
+    case progress
+    when 0
+      transition_to(:enrolled) if can_transition_to?(:enrolled)
+    when 1..59
+      transition_to(:in_progress, metadata) if can_transition_to?(:in_progress)
+      state_machine.last_transition.update(metadata: metadata)
+    end
+
+    return set_to_dropped(left_at: left_at) if left_at.present?
   end
 
   def complete?

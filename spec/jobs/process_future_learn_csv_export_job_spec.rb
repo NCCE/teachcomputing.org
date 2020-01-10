@@ -10,6 +10,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:user_five) { create(:user, email: 'user5@example.com') }
   let(:user_six) { create(:user, email: 'user6@example.com') }
   let(:dropped_achievement) { create(:achievement, user_id: user_six.id, activity_id: activity_two.id) }
+  let(:another_dropped_achievement) { create(:achievement, user_id: user_two.id, activity_id: activity_two.id) }
   let(:completed_achievement) { create(:achievement, user_id: user_four.id, activity_id: activity_two.id) }
   let(:import) { create(:import) }
   let(:csv_contents) do
@@ -36,6 +37,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     before do
       [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two, programme_activity]
       dropped_achievement.transition_to(:dropped)
+      another_dropped_achievement.transition_to(:dropped)
       completed_achievement.transition_to(:complete)
       allow(Raven).to receive(:capture_message)
       ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
@@ -107,12 +109,17 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
         expect(user_four.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
       end
 
-      it 'state is step_1 if steps complete is between 1 and 29' do
-        expect(user_one.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'step_1'
+      it 'state transitions to in_progress if steps complete is between 1 and 59' do
+        expect(user_one.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
       end
 
-      it 'state is step_2 if steps complete is between 30 and 59' do
-        expect(user_two.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'step_2'
+      it 'state transitions to in_progress if it was dropped' do
+        expect(user_two.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
+      end
+
+      it 'state in_progress shows correct metadata' do
+        expect(user_two.achievements.find_by(activity_id: activity_two.id).last_transition.metadata['progress']).to eq 45.0
+        expect(user_one.achievements.find_by(activity_id: activity_two.id).last_transition.metadata['progress']).to eq 15.0
       end
 
       it 'state remains enrolled if steps complete is 0' do
