@@ -54,10 +54,10 @@ RSpec.describe('Static pages', type: :system) do
     it 'is the correct page' do
       expect(page).to have_css('.govuk-heading-xl', text: 'Certification')
     end
-    #commented out as it's giving false result for unkonown reason
-    # it 'main is accessible' do
-    #   expect(page).to be_accessible.within('#main-content')
-    # end
+
+    it 'main is accessible' do
+      expect(page).to be_accessible.within('#main-content')
+    end
   end
 
   context 'CS Accelerator page' do
@@ -98,9 +98,9 @@ RSpec.describe('Static pages', type: :system) do
       expect(page).to have_content('Network of Computing Hubs')
     end
 
-    # it 'main is accessible' do
-    #   expect(page).to be_accessible.within('#main-content')
-    # end
+    it 'main is accessible' do
+      expect(page).to be_accessible.within('#main-content')
+    end
   end
 
   context 'Offer page' do
@@ -112,9 +112,9 @@ RSpec.describe('Static pages', type: :system) do
       expect(page).to have_content('What We Offer')
     end
 
-    # it 'main is accessible' do
-    #   expect(page).to be_accessible.within('#main-content')
-    # end
+    it 'main is accessible' do
+      expect(page).to be_accessible.within('#main-content')
+    end
   end
 
   context 'Privacy page' do
