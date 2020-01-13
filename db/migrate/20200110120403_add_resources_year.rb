@@ -5,5 +5,6 @@ class AddResourcesYear < ActiveRecord::Migration[5.2]
       t.string :resource_year, null: false
       t.integer :counter, :default => 0
       t.timestamps
+    end
   end
 end
