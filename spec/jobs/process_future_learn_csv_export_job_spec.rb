@@ -106,7 +106,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
 
     context 'when an achievement already exits' do
       it 'sets the state to complete if it is >= 60' do
-        expect(user_four.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
+        expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
       end
 
       it 'state transitions to in_progress if steps complete is between 1 and 59' do
@@ -128,7 +128,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     end
 
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:twice)
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
     end
   end
 end

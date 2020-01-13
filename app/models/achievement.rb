@@ -52,7 +52,7 @@ class Achievement < ApplicationRecord
 
     metadata = { progress: progress }
 
-    return set_to_complete(metadata) if progress >= 60
+    return set_to_dropped(left_at: left_at) if left_at.present?
 
     case progress
     when 0
@@ -60,9 +60,9 @@ class Achievement < ApplicationRecord
     when 1..59
       transition_to(:in_progress, metadata) if can_transition_to?(:in_progress)
       state_machine.last_transition.update(metadata: metadata)
+    when 60..100
+      set_to_complete(metadata)
     end
-
-    return set_to_dropped(left_at: left_at) if left_at.present?
   end
 
   def complete?
