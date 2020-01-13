@@ -6,11 +6,13 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
   let(:complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: community_activity.id) }
   let(:second_community_activity) { create(:activity, :community, slug: 'second-community-activity') }
   let(:second_complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: second_community_activity.id) }
+  let(:presenters) {
+    [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
+  }
 
   context 'when user has not completed any achievements' do
     before do
       allow(view).to receive(:current_user).and_return(user)
-      presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
     end
 
@@ -21,13 +23,18 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
     it 'has the buttons to self verify' do
       expect(rendered).to have_css('.ihavedonethis__button', count: 2)
     end
+
+    it 'has different ids for each form\'s input' do
+      presenters.each do |presenter|
+        expect(rendered).to have_field('self_verification_info', id: /#{presenter.id}/)
+      end
+    end
   end
 
   context 'when user has finished one achievement' do
     before do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
-      presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
     end
 
@@ -45,7 +52,6 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
       second_complete_achievement
-      presenters = [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
       render partial: 'programmes/community_achievements', locals: { presenters: presenters }
     end
 
