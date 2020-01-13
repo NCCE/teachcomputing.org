@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_103525) do
+ActiveRecord::Schema.define(version: 2020_01_10_120403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -120,6 +120,15 @@ ActiveRecord::Schema.define(version: 2019_11_15_103525) do
     t.boolean "enrollable", default: false
     t.string "type"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
+  end
+
+  create_table "resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "user_id_id"
+    t.string "resource_year", null: false
+    t.integer "counter", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id_id"], name: "index_resources_on_user_id_id"
   end
 
   create_table "user_programme_enrolment_transitions", force: :cascade do |t|
