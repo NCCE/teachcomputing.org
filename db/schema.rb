@@ -122,13 +122,14 @@ ActiveRecord::Schema.define(version: 2020_01_10_120403) do
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
-  create_table "resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id_id"
-    t.string "resource_year", null: false
-    t.integer "counter", default: 0
+  create_table "resource_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.integer "resource_year", null: false
+    t.integer "counter", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_resources_on_user_id_id"
+    t.index ["user_id", "resource_year"], name: "resource_year_user", unique: true
+    t.index ["user_id"], name: "index_resource_users_on_user_id"
   end
 
   create_table "user_programme_enrolment_transitions", force: :cascade do |t|
