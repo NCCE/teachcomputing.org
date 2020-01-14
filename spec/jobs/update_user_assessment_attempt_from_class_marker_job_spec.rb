@@ -46,8 +46,8 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         expect(assessment_attempt.current_state).to eq('failed')
       end
 
-      it 'leaves achievement in commenced state' do
-        expect(achievement.current_state).to eq('commenced')
+      it 'leaves achievement in enrolled state' do
+        expect(achievement.current_state).to eq('enrolled')
       end
     end
 

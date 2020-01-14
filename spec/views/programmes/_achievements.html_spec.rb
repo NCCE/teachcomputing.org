@@ -4,8 +4,8 @@ RSpec.describe('programmes/_achievements', type: :view) do
   let(:user) { create(:user) }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
-  let(:commenced_achievement) { create(:achievement, user: user) }
-  let(:two_commenced_achievements) { create_list(:achievement, 2, user: user) }
+  let(:enrolled_achievement) { create(:achievement, user: user) }
+  let(:two_enrolled_achievements) { create_list(:achievement, 2, user: user) }
   let(:programme) { create(:programme) }
 
   context 'when user has not completed any achievements' do
@@ -31,7 +31,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
   context 'when user has started one achievement' do
     before do
       @programme = programme
-      presenters = [ActivityPresenter.new(commenced_achievement), ActivityPresenter.new(nil)]
+      presenters = [ActivityPresenter.new(enrolled_achievement), ActivityPresenter.new(nil)]
       render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
@@ -48,13 +48,13 @@ RSpec.describe('programmes/_achievements', type: :view) do
     end
 
     it 'has the activity title' do
-      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+course #{commenced_achievement.activity.title}.*/m)}
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.+first.+course #{enrolled_achievement.activity.title}.*/m)}
     end
   end
 
   context 'when user has started two achievements' do
     before do
-      presenters = two_commenced_achievements.map { |a| ActivityPresenter.new(a) }
+      presenters = two_enrolled_achievements.map { |a| ActivityPresenter.new(a) }
       render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
@@ -67,7 +67,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
     end
 
     it 'has the 2nd activity title' do
-      two_commenced_achievements.second do |achievement|
+      two_enrolled_achievements.second do |achievement|
         expect(rendered).to have_css('.ncce-activity-list__item-text', text: /.+second.+course #{achievement.activity.title}/)
       end
     end
@@ -75,7 +75,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
 
   context 'when user has finished one achievement' do
     before do
-      presenters = [ActivityPresenter.new(complete_achievement), ActivityPresenter.new(commenced_achievement)]
+      presenters = [ActivityPresenter.new(complete_achievement), ActivityPresenter.new(enrolled_achievement)]
       render partial: 'programmes/achievements', locals: { presenters: presenters }
     end
 
@@ -92,7 +92,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
     end
 
     it 'has the second activity as in progress' do
-      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+course #{commenced_achievement.activity.title}.*/m)}
+      within('.ncce-activity-list__item-text'){expect(rendered).to have_content(/.*Complete your second.+course #{enrolled_achievement.activity.title}.*/m)}
     end
   end
 

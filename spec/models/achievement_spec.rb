@@ -125,7 +125,7 @@ RSpec.describe Achievement, type: :model do
 
   describe 'state' do
     context 'when default' do
-      subject { Achievement.in_state(:commenced) }
+      subject { Achievement.in_state(:enrolled) }
 
       it { is_expected.to include achievement }
     end

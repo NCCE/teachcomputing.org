@@ -38,9 +38,9 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
         expect(achievement.current_state).to eq 'complete'
       end
 
-      it 'has the state of commenced when the course is not fully attended' do
+      it 'has the state of enrolled when the course is not fully attended' do
         achievement = Achievement.where(activity_id: activity_two.id, user_id: user.id).first
-        expect(achievement.current_state).to eq 'commenced'
+        expect(achievement.current_state).to eq 'enrolled'
       end
 
       context 'when an an achievement already exits' do

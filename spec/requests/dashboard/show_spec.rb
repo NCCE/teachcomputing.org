@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DashboardController do
   let(:user) { create(:user) }
   let(:complete_achievements) { create_list(:completed_achievement, 3, user: user) }
-  let(:commenced_achievement) { create(:achievement, user: user) }
+  let(:enrolled_achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
@@ -13,7 +13,7 @@ RSpec.describe DashboardController do
     describe 'while logged in' do
       before do
         create_programme
-        [diagnostic_achievement, complete_achievements, commenced_achievement]
+        [diagnostic_achievement, complete_achievements, enrolled_achievement]
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end
@@ -22,8 +22,8 @@ RSpec.describe DashboardController do
         expect(assigns(:achievements).count).to eq 3
       end
 
-      it 'does not assign achievements in the state of commenced' do
-        expect(assigns(:achievements)).not_to include commenced_achievement
+      it 'does not assign achievements in the state of enrolled' do
+        expect(assigns(:achievements)).not_to include enrolled_achievement
       end
 
       it 'does not include diagnostic achievement in assigned achievements' do
