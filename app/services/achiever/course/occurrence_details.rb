@@ -1,17 +1,17 @@
 class Achiever::Course::OccurrenceDetails
   attr_accessor :activity_code,
                 :activity_title,
-                :address_city
-                :address_line_1
-                :address_line_2
-                :address_name
-                :address_post_code
-                :duration
-                :end_date
-                :id
+                :address_city,
+                :address_line_1,
+                :address_line_2,
+                :address_name,
+                :address_post_code,
+                :duration,
+                :end_date,
+                :id,
                 :start_date,
                 :summary,
-                :title,
+                :title
 
   RESOURCE_PATH = 'Get?cmd=CourseDetails'.freeze
   PROGRAMME_NAME = 'ncce'.freeze
