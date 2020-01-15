@@ -11,7 +11,6 @@ RSpec.describe ResourceUser, type: :model do
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:resource_year) }
     it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:resource_year) }
-    it { is_expected.to validate_numericality_of(:resource_year).only_integer }
     it { is_expected.to validate_presence_of(:counter) }
   end
 

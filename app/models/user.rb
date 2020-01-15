@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :assessment_attempts, dependent: :destroy
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :programmes, through: :user_programme_enrolments 
-  has_many :resource_users, dependent: :destroy  #do we need to destroy it?
+  has_many :resource_users
 
   after_commit :set_registered_with_ncce_achievement, on: :create
 
