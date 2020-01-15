@@ -37,4 +37,10 @@ module AchieverStubs
     json_response = File.new('spec/support/achiever/courses/subjects.json')
     stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=OptionsetSubject').to_return(body: json_response)
   end
+
+  def stub_occurrence_details
+    json_response = File.new('spec/support/achiever/courses/occurrence_details.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
 end

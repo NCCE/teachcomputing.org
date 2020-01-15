@@ -21,17 +21,17 @@ namespace :populate_missing_achievements do
     puts created_achievements
   end
 
-  task commenced: :environment do
+  task enrolled: :environment do
     attempt_user_ids = AssessmentAttempt.in_state(:failed).pluck(:user_id).uniq
     activity = Activity.find_by(slug: 'cs-accelerator-assessment')
-    commenced_achievement_user_ids = Achievement.in_state(:commenced).where(activity_id: activity.id).pluck(:user_id)
+    enrolled_achievement_user_ids = Achievement.in_state(:enrolled).where(activity_id: activity.id).pluck(:user_id)
     complete_achievement_user_ids = Achievement.in_state(:complete).where(activity_id: activity.id).pluck(:user_id)
 
     created_achievements = []
 
     attempt_user_ids.each do |user_id|
       user = User.find(user_id)
-      next if commenced_achievement_user_ids.include?(user_id) || complete_achievement_user_ids.include?(user_id)
+      next if enrolled_achievement_user_ids.include?(user_id) || complete_achievement_user_ids.include?(user_id)
 
       achievement = user.achievements.find_or_initialize_by(activity_id: activity.id)
       achievement.save
