@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses, path: '/courses', only: [:index]
+  resources :courses, only: [:index, :show]
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
