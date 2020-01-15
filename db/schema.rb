@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2020_01_10_120403) do
   create_table "resource_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.integer "resource_year", null: false
-    t.integer "counter", default: 1
+    t.integer "counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "resource_year"], name: "resource_year_user", unique: true
