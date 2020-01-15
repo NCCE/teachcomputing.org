@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   layout 'full-width'
   before_action :authenticate_user!, only: [:show]
+  before_action :track_resources!, only: [:show]
 
   def index
     render :index
@@ -16,4 +17,10 @@ class ResourcesController < ApplicationController
       return redirect_to root_path
     end
   end
+
+  private
+
+    def track_resources!
+      resource_user = ResourceUser.find_or_create_by!(user_id: current_user.id, resource_year: resource_year)
+    end
 end
