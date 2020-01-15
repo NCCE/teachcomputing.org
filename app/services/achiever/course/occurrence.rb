@@ -44,7 +44,7 @@ class Achiever::Course::Occurrence
     @age_groups = occurrence.send('Activity.AgeGroups').split(';')
     @booking_url = occurrence.send('Activity.BookingURL')
     @course_template_no = occurrence.send('Template.COURSETEMPLATENO')
-    @course_occurrence_no = occurrence.send('Template.COURSEOCCURRENCENO')
+    @course_occurrence_no = occurrence.send('Activity.COURSEOCCURRENCENO')
     @end_date = occurrence.send('Activity.EndDate')
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.OnlineCPD').downcase)
     @region = occurrence.send('Activity.Region')
