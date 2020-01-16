@@ -1,4 +1,5 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
+<%= render 'components/hero', hero_title: 'Introduction to Cybersecurity for Teachers', subtitle: 'CO214 Online course', glyph_position: 'bottom', colour: 'blue' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
@@ -7,11 +8,19 @@
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">What is Teach Computing?</h2>
-          <p class="govuk-body-s ncce-aside__text">
-          Teach Computing is a Department for Education funded service that offers training, resources and guidance to help teachers confidently teach computing.
-          </p>
-          <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-link', draggable: 'false' %></p>
+            <% unless current_user %>
+            <h2 class="govuk-heading-m ncce-aside__title">Start this course</h2>
+            <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
+            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-button button--aside', draggable: 'false' %></p>
+            <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?</p>
+            <p class="govuk-body"><%= link_to 'Create an account', '', class: 'govuk-link', draggable: 'false' %></p>
+            <% else %>
+            <h2 class="govuk-heading-m ncce-aside__title">What is Teach Computing?</h2>
+            <p class="govuk-body-s ncce-aside__text">
+            Teach Computing is a Department for Education funded service that offers training, resources and guidance to help teachers confidently teach computing.
+            </p>
+            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-link', draggable: 'false' %></p>
+            <% end %>
         </div>
       </div>
     </div>
