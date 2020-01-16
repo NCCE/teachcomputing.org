@@ -62,6 +62,11 @@ RSpec.describe User, type: :model do
     it 'has_many programmes through achievements' do
       expect(user).to have_many(:programmes).through(:user_programme_enrolments)
     end
+
+    it 'has_many resource_users' do
+      expect(user).to have_many(:resource_users)
+    end
+    
   end
 
   describe 'after_commit' do

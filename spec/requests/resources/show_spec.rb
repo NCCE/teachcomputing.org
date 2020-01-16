@@ -21,5 +21,24 @@ RSpec.describe ResourcesController do
         get resources_redirect_path(redirect_url: redirect_url, year: 1)
       end.to have_enqueued_job(ScheduleUserResourcesFeedbackJob)
     end
+
+    it 'adds resource user record' do
+      expect do
+        get resources_redirect_path(redirect_url: redirect_url, year: 1)
+      end.to change{ResourceUser.count}.by(1)
+    end
+
+    context 'when user has already downloaded resource year' do
+      before do
+        get resources_redirect_path(redirect_url: redirect_url, year: 1)
+        get resources_redirect_path(redirect_url: redirect_url, year: 1)
+      end
+
+      it 'updated the counter' do 
+        resource_year = ResourceUser.find_by(user_id: user.id, resource_year: 1)
+        expect(resource_year.counter).to eq(2)
+      end
+    end
+
   end
 end
