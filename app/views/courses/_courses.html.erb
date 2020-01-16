@@ -8,37 +8,33 @@
       </div>
       <div class='govuk-grid-row'>
         <div class="govuk-grid-column-one-third">
-          <div class="ncce-aside">
-            <h2 class="govuk-heading-m">Computer Science
-              Accelerator Programme</h2>
+          <div class="">
+            <h2 class="govuk-heading-m"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
             <p class="govuk-body">A supportive development programme to help you
               confidently teach GCSE computer science</p>
-            <p class="govuk-body">
-              <strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong>
+            <p class="govuk-body">Free online course
             </p>
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
-          <div class="ncce-aside">
-            <h2 class="govuk-heading-m">Attractive
-              bursaries</h2>
-            <p class="govuk-body">Funding for your school or college to make it
-              easier for you to participate in training</p>
-            <p class="govuk-body">
-              <strong><%= link_to 'Check your eligibility', bursary_path, class: 'ncce-link ncce-link--contrast' %></strong>
+            <div class="">
+            <h2 class="govuk-heading-m"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
+            <p class="govuk-body">A supportive development programme to help you
+                confidently teach GCSE computer science</p>
+            <p class="govuk-body">Free online course
             </p>
-          </div>
+            </div>
         </div>
         <div class="govuk-grid-column-one-third">
-          <div class="ncce-aside">
-            <h2 class="govuk-heading-m">Teacher training</h2>
-            <p class="govuk-body">Face-to-face and online courses to help you
-              teach computing or develop your practice</p>
-            <p class="govuk-body">
-              <strong><%= link_to 'Browse our courses', courses_path, class: 'ncce-link ncce-link--contrast' %></strong>
+        <div class="">
+            <h2 class="govuk-heading-m"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
+            <p class="govuk-body">A supportive development programme to help you
+                confidently teach GCSE computer science</p>
+            <p class="govuk-body">Free online course
             </p>
-          </div>
+            </div>
         </div>
+       
         <div class="center-button">
         <%= link_to 'Browse all our courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
       </div>
