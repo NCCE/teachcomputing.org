@@ -1,0 +1,42 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper--l">
+      <div class='govuk-grid-row govuk-!-margin-bottom-6'>
+        <div class="govuk-grid-column-two-thirds">
+         <h2 clsss="govuk-heading-m">Also part of Teach GSCE Computer Science:</h2>
+        </div>
+      </div>
+      <div class='tile__container'>
+        <div class="tile">
+          <h2 class="govuk-heading-s"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
+          <p class="govuk-body">A supportive development programme to help you
+            confidently teach GCSE computer science</p>
+          <span class="govuk-body-s icon-online">Free online course
+          </span>
+        </div>
+
+        <div class="tile">
+          <h2 class="govuk-heading-s"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
+          <p class="govuk-body">A supportive development programme to help you
+              confidently teach GCSE computer science. A supportive development programme to help you
+              confidently teach GCSE computer science</p>
+          <span class="govuk-body-s icon-map-pin">Face to face course
+          </span>
+        </div>
+
+        <div class="tile">
+          <h2 class="govuk-heading-s"><strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong></h2>
+          <p class="govuk-body">A supportive development programme to help you
+              confidently teach GCSE computer science. A supportive development programme to help you
+              confidently teach GCSE computer science. A supportive development programme to help you
+              confidently teach GCSE computer science. </p>
+          <span class="govuk-body-s icon-online">Free online course
+          </span>
+        </div>
+      </div>
+      <div class="center-button">
+        <%= link_to 'Browse all our courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+      </div>
+    </div>
+  </div>
+</div>
