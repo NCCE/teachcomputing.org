@@ -20,3 +20,14 @@
     justify-content: start;
 }
 
+.course-details {
+    border: 1px solid $concrete;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+
+.course-details_flex {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs></defs>
-    <g id="icon/time-half" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval-3" stroke="#007fa2" stroke-width="3" cx="15" cy="15" r="11.5"></circle>
-        <path d="M15,7 C19.418278,7 23,10.581722 23,15 C23,19.418278 19.418278,23 15,23 L15,7 Z" id="Combined-Shape" fill="#007fa2"></path>
-    </g>
-</svg>
+<svg height="30" viewBox="0 0 30 30" width="30" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="15" cy="15" r="11.5" stroke="#007fa2" stroke-width="3"/><path d="m15 7c4.418278 0 8 3.581722 8 8s-3.581722 8-8 8z" fill="#007fa2"/></g></svg>
