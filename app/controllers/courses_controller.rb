@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   layout 'full-width'
   before_action :init_filters, only: [:index]
+  before_action :course_programme, only: [:show]
 
   def index
     @subjects = Achiever::Course::Subject.all
@@ -25,7 +26,7 @@ class CoursesController < ApplicationController
     render :index
   end
 
-  def show 
+  def show
     render :show
   end
 
@@ -98,5 +99,16 @@ class CoursesController < ApplicationController
     def course_locations(course_occurrences)
       towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
       towns.uniq.sort.unshift('Face to face').unshift('Online')
+    end
+
+    def find_course
+      @courses = Achiever::Course::Template.all
+      @course = @courses.find { |c| c.title == 'Algorithms in GCSE computer science'}
+    end
+
+    def course_programme
+      find_course
+      activity = Activity.find_by(stem_course_id: @course.course_template_no)
+      @programme = activity.programmes.first if activity
     end
 end

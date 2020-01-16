@@ -1,10 +1,21 @@
-<% meta_tag :title, 'Courses - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Introduction to Cybersecurity for Teachers', subtitle: 'CO214 Online course', glyph_position: 'bottom', colour: 'blue' %>
+<% meta_tag :title, "#{@course.title} - Teach Computing" %>
+<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} - #{@course.online_cpd ? 'online' : 'face to face'}", glyph_position: 'bottom', colour: 'blue' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">Teachers will be introduced to the core ideas of cybersecurity that should be taught in the classroom.</p>
+        <p class="govuk-body"><%= @course.meta_description %></p>
+
+        <% if @programme %>
+        <div>
+          <p class="govuk-body">This course is part of <%= @programme.title %></p>
+          <% if @programme.user_enrolled?(current_user) %>
+            <p class="govuk-body">You are enrolled</p>
+          <% else %>
+            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-link', draggable: 'false' %></p>
+          <% end%>
+        </div>
+        <% end %>
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
@@ -26,4 +37,7 @@
     </div>
   </div>
 </div>
+<% if @programme %>
+  <h2 class="govuk-heading-m">Also part of <%= @programme.title %></h2>
+<% end %>
 <%= render 'courses/courses' %>
