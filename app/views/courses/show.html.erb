@@ -4,24 +4,16 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">Teachers will be introduced to the core ideas of cybersecurity that should be taught in the classroom.</p>
+        <h3 class="govuk-heading-s">Teachers will be introduced to the core ideas of cybersecurity that should be taught in the classroom.</h3>
+        <div class="course-details">
+            <strong class="govuk-tag ncce-courses__tag">Key stage 3</strong>
+            <strong class="govuk-tag ncce-courses__tag">Key stage 4</strong>
+        <div>
+        <p class="govuk-body">Teaching cybersecurity in schools is an important way to help students stay safe while using technology. On this course, teachers will be introduced to the core ideas of cybersecurity that should be taught in the classroom.</p>
+        <p class="govuk-body">You will learn the different attacks that individuals and devices are vulnerable to and how to prevent them. You will explore malware, malicious bots, SQL injections, and physical threats to data. You will also build your knowledge of the different tools that protect data and websites. These include strong passwords, biometrics, two-factor authentication, and firewalls.</p>
       </div>
       <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-            <% unless current_user %>
-            <h2 class="govuk-heading-m ncce-aside__title">Start this course</h2>
-            <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
-            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-button button--aside', draggable: 'false' %></p>
-            <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?</p>
-            <p class="govuk-body"><%= link_to 'Create an account', '', class: 'govuk-link', draggable: 'false' %></p>
-            <% else %>
-            <h2 class="govuk-heading-m ncce-aside__title">What is Teach Computing?</h2>
-            <p class="govuk-body-s ncce-aside__text">
-            Teach Computing is a Department for Education funded service that offers training, resources and guidance to help teachers confidently teach computing.
-            </p>
-            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-link', draggable: 'false' %></p>
-            <% end %>
-        </div>
+      <%= render 'courses/aside-section' %>
       </div>
     </div>
   </div>
