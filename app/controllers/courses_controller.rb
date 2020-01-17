@@ -103,12 +103,14 @@ class CoursesController < ApplicationController
 
     def find_course
       @courses = Achiever::Course::Template.all
-      @course = @courses.find { |c| c.title == 'Algorithms in GCSE computer science'}
+      @course = @courses.find { |c| c.activity_code == params[:id] }
+
+      redirect_to '/404' unless @course
     end
 
     def course_programme
       find_course
-      activity = Activity.find_by(stem_course_id: @course.course_template_no)
+      activity = Activity.find_by(stem_course_id: @course.course_template_no) if @course
       @programme = activity.programmes.first if activity
     end
 end

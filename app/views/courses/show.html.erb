@@ -12,7 +12,7 @@
           <% if @programme.user_enrolled?(current_user) %>
             <p class="govuk-body">You are enrolled</p>
           <% else %>
-            <p class="govuk-body"><%= link_to 'Learn more', '', class: 'govuk-link', draggable: 'false' %></p>
+            <p class="govuk-body"><%= link_to 'Learn more', programme_path(@programme.slug), class: 'govuk-link', draggable: 'false' %></p>
           <% end%>
         </div>
         <% end %>
