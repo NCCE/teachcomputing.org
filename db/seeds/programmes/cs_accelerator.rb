@@ -50,6 +50,7 @@ slugs = %w[
   programming-103-saving-and-structuring-data
   introduction-to-encryption-and-cryptography
   introduction-to-web-development
+  networking-with-python-socket-programming-for-communication
 ]
 
 slugs.each do |slug|
