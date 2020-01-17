@@ -207,3 +207,13 @@ Activity.find_or_create_by(slug: 'introduction-to-web-development') do |activity
   activity.future_learn_course_id = '3574403e-a63f-4230-9f4b-3f5b6cd4ddb7'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'networking-with-python-socket-programming-for-communication') do |activity|
+  activity.title = 'Networking with Python: Socket Programming for Communication'
+  activity.credit = 20
+  activity.slug = 'networking-with-python-socket-programming-for-communication'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_id = 'ceb5e1b6-6f1d-4e53-9cd3-3fddb2509fa8'
+  activity.provider = 'future-learn'
+end
