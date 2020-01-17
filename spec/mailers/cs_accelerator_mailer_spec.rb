@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe CertificateMailer, type: :mailer do
+RSpec.describe CsAcceleratorMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
-  let(:mail) { CertificateMailer.with(user: user, programme: programme).completed }
+  let(:mail) { CsAcceleratorMailer.with(user: user, programme: programme).completed }
 
   describe 'email' do
     it 'renders the headers' do
