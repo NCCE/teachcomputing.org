@@ -1,0 +1,13 @@
+<% if @programme %>
+  <div class="light-blue-bg govuk-!-padding-5">
+    <p class="govuk-body">This course is part of the <%= @programme.title %> certificate.</p>
+    <div class="card card--cs-accelerator card--bottom-glyph">
+      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+      <h2 class="govuk-heading-m card__heading"><%= @programme.title %></h2>
+      <p class="govuk-body card__text"><%= @programme.description %></p>
+      <% unless @programme.user_enrolled?(current_user) %>
+        <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', programme_path(@programme.slug), class: 'ncce-link' %></strong></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

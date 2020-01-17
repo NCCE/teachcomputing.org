@@ -1,0 +1,31 @@
+.courses__container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem
+}
+
+.course {
+    background-color: $white;
+    box-shadow: 0 0 5px $box-shadow;
+    margin-bottom: $logo-block-mobile;
+    padding: 1rem;
+    overflow: hidden;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: start;
+}
+
+.course-details {
+    border: 1px solid $concrete;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.course-details__icons {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
