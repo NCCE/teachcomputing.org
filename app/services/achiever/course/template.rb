@@ -41,7 +41,7 @@ class Achiever::Course::Template
     template = templates.select { |template| template.activity_code == activity_code.upcase }
     raise ActiveRecord::RecordNotFound unless template.any?
     
-    template
+    template.first
   end
 
   def by_certificate(certificate)
