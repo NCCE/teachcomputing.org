@@ -8,6 +8,16 @@
         <%= render 'courses/courses-details' %>
         <p class="govuk-body">Teaching cybersecurity in schools is an important way to help students stay safe while using technology. On this course, teachers will be introduced to the core ideas of cybersecurity that should be taught in the classroom.</p>
         <p class="govuk-body">You will learn the different attacks that individuals and devices are vulnerable to and how to prevent them. You will explore malware, malicious bots, SQL injections, and physical threats to data. You will also build your knowledge of the different tools that protect data and websites. These include strong passwords, biometrics, two-factor authentication, and firewalls.</p>
+        <% unless current_user %>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+                <video poster="/images/secondary-teachers/video-placeholder.jpg" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/20654375/download/sd_lower">
+                    <source src="//view.vzaar.com/20654375/download/sd_lower" type="video/mp4">
+                    <track class="track" src="/images/secondary-teachers/ProgrammingWithGUIs.vtt" kind="captions" srclang="EN" label="English">
+                </video>
+            </div>
+        </div>
+        <% else %>
         <p class="govuk-heading-s">Outomes</p>
         <p class="govuk-body">You will gain the required knowledge to help your students:</p>
         <ul class="govuk-body-s govuk-list govuk-list--bullet">
@@ -16,6 +26,7 @@
             <li>Trace algorithms and improve them, by identifying and correcting errors</li>
             <li>Design algorithms using written descriptions, pseudocode and flowcharts to solve problems, leading to modular programming of solutions in Python code</li>
         </ul>
+        <% end %>
         <%= render 'courses/courses-card' %>
       </div>
       <div class="govuk-grid-column-one-third">
