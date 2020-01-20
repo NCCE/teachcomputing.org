@@ -38,10 +38,10 @@ class Achiever::Course::Template
 
   def self.find_by_activity_code(activity_code)
     templates = all
-    template = templates.select { |template| template.activity_code == activity_code.upcase }
-    raise ActiveRecord::RecordNotFound unless template.any?
+    template = templates.find { |val| val.activity_code == activity_code.upcase }
+    raise ActiveRecord::RecordNotFound unless template
     
-    template.first
+    template
   end
 
   def by_certificate(certificate)
