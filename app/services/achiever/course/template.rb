@@ -36,6 +36,14 @@ class Achiever::Course::Template
     templates.map { |course| Achiever::Course::Template.new(course) }
   end
 
+  def self.find_by_activity_code(activity_code)
+    templates = all
+    template = templates.select { |template| template.activity_code == activity_code.upcase }
+    raise ActiveRecord::RecordNotFound unless template.any?
+    
+    template
+  end
+
   def by_certificate(certificate)
     return @workstream == 'CS Accelerator' if certificate == 'cs-accelerator'
     key_stages = Achiever::Course::AgeGroup.send(certificate.underscore)
