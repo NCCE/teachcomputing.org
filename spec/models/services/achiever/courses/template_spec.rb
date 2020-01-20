@@ -63,6 +63,24 @@ RSpec.describe Achiever::Course::Template do
         expect(described_class.all.sample).to be_an described_class
       end
     end
+
+    describe '#find_by_activity_code' do
+      before do
+        stub_course_templates
+      end
+      
+      context 'when a template exists' do
+        it 'returns the Achiever::Course::Template instance' do
+          expect(described_class.find_by_activity_code('CP201')).to be_an described_class
+        end
+      end
+
+      context 'when a template does not exists' do
+        it 'raises a 404 exception' do
+          expect { described_class.find_by_activity_code('111') }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+      end
+    end
   end
 
   describe '#by_certificate' do
