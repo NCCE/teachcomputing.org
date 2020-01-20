@@ -1,8 +1,12 @@
 .courses__container {
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 2rem
+
+    @include govuk-media-query($from: tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 2rem;
+      
+    }
 }
 
 .course {
