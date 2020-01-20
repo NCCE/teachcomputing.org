@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   layout 'full-width'
-  before_action :init_filters, only: [:index]
+  before_action :init_filters, only: [:index, :show]
 
   def index
     @subjects = Achiever::Course::Subject.all
@@ -26,6 +26,17 @@ class CoursesController < ApplicationController
   end
 
   def show 
+    @courses = Achiever::Course::Template.all
+    @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
+
+
+    @courses.each do |course|
+      @course_occurrences.each do |course_occurrence|
+        if course_occurrence.course_template_no == course.course_template_no
+          course.occurrences.push(course_occurrence)
+        end
+      end
+    end
     render :show
   end
 
