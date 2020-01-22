@@ -1,16 +1,16 @@
 <div class="course-details">
-<strong class="govuk-tag ncce-courses__tag">Key stage 3</strong>
-<strong class="govuk-tag ncce-courses__tag">Key stage 4</strong>
-<% unless current_user %>
-<div class="course-details__icons">
-    <span class="govuk-body-s icon-online">Free online course</span>
-    <span class="govuk-body-s icon-calendar">6 January-27 January 2020 (3 weeks)</span>
-    <span class="govuk-body-s icon-clock">2 hours per week</span>
-</div>
-<% else %>
-<div class="course-details__icons">
-    <span class="govuk-body-s icon-online">Free online course</span>
-    <%= render 'courses/courses-locations' %>
-</div>
-<% end %>
+	<strong class="govuk-tag ncce-courses__tag">Key stage 3</strong>
+	<strong class="govuk-tag ncce-courses__tag">Key stage 4</strong>
+	<% unless current_user %>
+		<div class="course-details__icons">
+				<span class="govuk-body-s icon-online">Free online course</span>
+				<span class="govuk-body-s icon-calendar">6 January-27 January 2020 (3 weeks)</span>
+				<span class="govuk-body-s icon-clock">2 hours per week</span>
+		</div>
+	<% else %>
+		<div class="course-details__icons">
+				<span class="govuk-body-s icon-online">Free online course</span>
+				<%= render 'courses/courses-locations' %>
+		</div>
+	<% end %>
 </div>

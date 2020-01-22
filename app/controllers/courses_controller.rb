@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   layout 'full-width'
-  before_action :init_filters, only: [:index, :show]
+  before_action :init_filters, only: [:index]
 
   def index
     @subjects = Achiever::Course::Subject.all
