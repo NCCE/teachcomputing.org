@@ -25,18 +25,8 @@ class CoursesController < ApplicationController
     render :index
   end
 
-  def show 
-    @courses = Achiever::Course::Template.all
-    @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
-
-
-    @courses.each do |course|
-      @course_occurrences.each do |course_occurrence|
-        if course_occurrence.course_template_no == course.course_template_no
-          course.occurrences.push(course_occurrence)
-        end
-      end
-    end
+  def show
+    @course = Achiever::Course::Template.find_by_activity_code(params[:id])
     render :show
   end
 
