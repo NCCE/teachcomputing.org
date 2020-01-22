@@ -102,10 +102,7 @@ class CoursesController < ApplicationController
     end
 
     def find_course
-      @courses = Achiever::Course::Template.all
-      @course = @courses.find { |c| c.activity_code == params[:id] }
-
-      redirect_to '/404' unless @course
+      @course = Achiever::Course::Template.find_by_activity_code(params[:id])
     end
 
     def course_programme

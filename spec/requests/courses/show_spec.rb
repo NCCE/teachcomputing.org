@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
-  let(:course) { Achiever::Course::Template.all.first }
+  let(:course) { Achiever::Course::Template.find_by_activity_code('CP201') }
   let(:activity) { create(:activity, stem_course_id: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) {
@@ -19,18 +19,17 @@ RSpec.describe CoursesController do
       stub_course_templates
     end
 
-    it 'redirects if the course does not exist' do
-      get course_path('non existent course')
-      expect(response).to redirect_to('/404')
+    it 'raises a 404 not found' do
+      expect { get course_path(id: 'ZZ101', name: 'this-is-a-dud') }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     context 'when the course exists' do
       before do
-        get course_path(course.activity_code)
+        get course_path(id: course.activity_code, name: 'this-is-a-name')
       end
 
       it 'sets the course correctly' do
-        expect(assigns(:course).title).to eq(course.title)
+        expect(assigns(:course).title).to eq("#{course.title}")
       end
 
       it 'sets the programme' do
@@ -41,7 +40,7 @@ RSpec.describe CoursesController do
     context 'when the course is part of a programme' do
       before do
         programme_activity
-        get course_path(course.activity_code)
+        get course_path(course.activity_code, name: 'this-is-a-dud')
       end
 
       it 'sets the programme' do
@@ -67,7 +66,7 @@ RSpec.describe CoursesController do
       context 'and enrolled' do
         before do
           user_programme_enrolment
-          get course_path(course.activity_code)
+          get course_path(course.activity_code, name: 'this-is-a-dud')
         end
 
         it 'has no link to the programme' do
