@@ -1,13 +1,27 @@
 <div class="ncce-aside">
-  <% unless current_user %>
+  <% if current_user %>
+    <% if user_done?(current_user, @activity) %>
+      <h2 class="govuk-heading-m ncce-aside__title">You've done this course</h2>
+      <% if @programme %>
+        <% unless @programme.user_enrolled?(current_user) %>
+          <p class="govuk-body-s ncce-aside__text">
+          This course is part of the <%= @programme.title %> certificate.
+          </p>
+          <p class="govuk-body-s"><%= link_to 'Learn more', programme_path(@programme.slug), class: 'ncce-link' %></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h2 class="govuk-heading-m ncce-aside__title">Book onto this course</h2>
+      <p class="govuk-body-s ncce-aside__text">
+      The course is delivered by Stem Learning
+      </p>
+      <p class="govuk-body"><%= link_to 'Book course', @course.booking_url, class: 'govuk-button button', draggable: 'false' %></p>
+    <% end %>
+  <% else %>
     <h2 class="govuk-heading-m ncce-aside__title">Start this course</h2>
     <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
     <p class="govuk-body"><%= link_to 'Log in', auth_url, class: 'govuk-button button--aside', draggable: 'false' %></p>
     <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?</p>
     <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-link', draggable: 'false' %></p>
-  <% else %>
-    <h2 class="govuk-heading-m ncce-aside__title">Book onto this course</h2>
-    <p class="govuk-body-s ncce-aside__text">The course is delivered by Stem Learning</p>
-    <p class="govuk-body"><%= link_to 'Book course', '', class: 'govuk-button button', draggable: 'false' %></p>
   <% end %>
 </div>

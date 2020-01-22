@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe CoursesHelper, type: :helper do
+  let(:user) { create(:user) }
+  let(:activity) { create(:activity) }
+  let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
+
   describe('#activity_address') do
     it 'rejects blank attributes' do
       course = instance_double('course', address_venue_name: 'Example',
@@ -66,6 +70,25 @@ describe CoursesHelper, type: :helper do
 
     it 'returns icon for online courses' do
       expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
+    end
+  end
+
+  describe('user_done?') do
+    it 'returns false if user is not supplied' do
+      expect(helper.user_done?(nil, activity)).to eq false
+    end
+
+    it 'returns false if activity is not supplied' do
+      expect(helper.user_done?(user, nil)).to eq false
+    end
+
+    it 'returns false if achievement is not complete' do
+      expect(helper.user_done?(user, activity)).to eq false
+    end
+
+    it 'returns true if achievement is complete' do
+      achievement.set_to_complete
+      expect(helper.user_done?(user, activity)).to eq true
     end
   end
 end

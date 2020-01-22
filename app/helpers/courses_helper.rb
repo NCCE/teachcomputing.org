@@ -47,4 +47,14 @@ module CoursesHelper
   def course_meta_icon_class(isOnlineCourse)
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
+
+  def user_done?(user, activity)
+    return false unless user && activity
+
+    achievement = Achievement.find_by(user_id: user.id, activity_id: activity.id)
+
+    return false unless achievement
+
+    achievement.complete?
+  end
 end
