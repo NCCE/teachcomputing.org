@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
 
-  resources :courses, path: '/courses', only: [:index]
+  get '/courses', action: :index, controller: 'courses', as: 'courses'
+  get '/courses/:id/*name', action: :show, controller: 'courses', as: 'course'
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
