@@ -25,6 +25,11 @@ class CoursesController < ApplicationController
     render :index
   end
 
+  def show
+    @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    render :show
+  end
+
   private
 
     def init_filters
