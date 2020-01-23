@@ -14,8 +14,7 @@ module OmniAuth::Strategies
         first_name: user_info['attributes']['firstName'][0],
         last_name: user_info['attributes']['lastName'][0],
         email: user_info['attributes']['mail'][0],
-        achiever_contact_no: user_info['attributes']['achieverContactNo'][0],
-        achiever_organisation_no: user_info['attributes']['achieverOrganisationNo'][0]
+        achiever_contact_no: user_info['attributes']['achieverContactNo'][0]
       }
     end
 
@@ -61,7 +60,6 @@ if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
     },
     info: {
       achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
-      achiever_organisation_no: 'dd748e4f-7c9a-4548-ba4e-8dd4a577f817',
       first_name: 'Web',
       last_name: 'Raspberry Pi',
       email: 'web@raspberrypi.org'
