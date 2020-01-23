@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_120403) do
+ActiveRecord::Schema.define(version: 2020_01_22_145117) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(version: 2020_01_10_120403) do
     t.string "encrypted_stem_credentials_refresh_token"
     t.string "encrypted_stem_credentials_refresh_token_iv"
     t.string "teacher_reference_number"
+    t.string "stem_achiever_organisation_no"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end
