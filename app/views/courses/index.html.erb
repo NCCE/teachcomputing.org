@@ -9,15 +9,15 @@
         <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
       </div>
       <% unless current_user %>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
-          <p class="govuk-body-s ncce-aside__text">
-          To book onto a course, you'll need to create an account. It's free and takes two minutes!
-          </p>
-          <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
+        <div class="govuk-grid-column-one-third">
+          <div class="ncce-aside">
+            <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
+            <p class="govuk-body-s ncce-aside__text">
+            To book onto a course, you'll need to create an account. It's free and takes two minutes!
+            </p>
+            <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
+          </div>
         </div>
-      </div>
       <% end %>
     </div>
   </div>
