@@ -15,6 +15,7 @@ RSpec.describe AuthController do
         },
         info: {
           achiever_contact_no: 'b44cb53f-c690-4535-bd79-89e893337ec6',
+          achiever_organisation_no: 'dd748e4f-7c9a-4548-ba4e-8dd4a577f817',
           first_name: 'Jane',
           last_name: 'Doe',
           email: 'user@example.com'
