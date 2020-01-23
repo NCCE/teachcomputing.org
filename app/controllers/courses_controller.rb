@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   layout 'full-width'
   before_action :init_filters, only: [:index]
-  before_action :course_programme, only: [:show]
 
   def index
     @subjects = Achiever::Course::Subject.all
@@ -27,6 +26,8 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    course_programme
     render :show
   end
 
@@ -101,12 +102,7 @@ class CoursesController < ApplicationController
       towns.uniq.sort.unshift('Face to face').unshift('Online')
     end
 
-    def find_course
-      @course = Achiever::Course::Template.find_by_activity_code(params[:id])
-    end
-
     def course_programme
-      find_course
       activity = Activity.find_by(stem_course_id: @course.course_template_no) if @course
       @programme = activity.programmes.first if activity
     end
