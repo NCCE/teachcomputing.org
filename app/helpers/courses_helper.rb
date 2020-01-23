@@ -47,4 +47,15 @@ module CoursesHelper
   def course_meta_icon_class(isOnlineCourse)
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
+
+  def other_courses_on_programme(course, programme, how_many = 3)
+    courses = Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no  }
+    return courses[0...how_many] unless programme
+
+    course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_id)
+
+    courses.select do |c|
+      course_ids.include?(c.course_template_no)
+    end[0...how_many]
+  end
 end
