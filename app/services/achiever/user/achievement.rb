@@ -1,9 +1,8 @@
 class Achiever::User::Achievement
   RESOURCE_PATH = 'Set?Cmd=CreateNCCEAchievement'.freeze
 
-  def initialize(achievement, user)
+  def initialize(achievement)
     @achievement = achievement
-    @user = user
   end
 
   def last_achievement_date
@@ -15,7 +14,7 @@ class Achiever::User::Achievement
   def request_body
     {
       'Entities' => [
-        { 'CONTACTNO' => @user.stem_achiever_contact_no,
+        { 'CONTACTNO' => @achievement.user.stem_achiever_contact_no,
           'From' => last_achievement_date,
           'Type' => '',
           'State' => @achievement.current_state,
