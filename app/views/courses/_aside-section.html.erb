@@ -1,21 +1,24 @@
 <div class="ncce-aside">
   <% if current_user %>
-    <% if user_done?(current_user, @activity) %>
+    <% case user_achievement_state(current_user, @activity) %>
+    <% when :complete %>
       <h2 class="govuk-heading-m ncce-aside__title">You've done this course</h2>
-      <% if @programme %>
-        <% unless @programme.user_enrolled?(current_user) %>
-          <p class="govuk-body-s ncce-aside__text">
-          This course is part of the <%= @programme.title %> certificate.
-          </p>
-          <p class="govuk-body-s"><%= link_to 'Learn more', programme_path(@programme.slug), class: 'ncce-link' %></p>
-        <% end %>
-      <% end %>
-    <% else %>
+    <% when :enrolled %>
+      <h2 class="govuk-heading-m ncce-aside__title">You are doing this course</h2>
+    <% when :not_enrolled %>
       <h2 class="govuk-heading-m ncce-aside__title">Book onto this course</h2>
       <p class="govuk-body-s ncce-aside__text">
       The course is delivered by Stem Learning
       </p>
       <p class="govuk-body"><%= link_to 'Book course', @course.booking_url, class: 'govuk-button button', draggable: 'false' %></p>
+    <% end %>
+    <% if @programme %>
+      <% unless @programme.user_enrolled?(current_user) %>
+        <p class="govuk-body-s ncce-aside__text">
+        This course is part of the <%= @programme.title %> certificate.
+        </p>
+        <p class="govuk-body-s"><%= link_to 'Learn more', programme_path(@programme.slug), class: 'ncce-link' %></p>
+      <% end %>
     <% end %>
   <% else %>
     <h2 class="govuk-heading-m ncce-aside__title">Start this course</h2>

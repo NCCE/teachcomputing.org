@@ -3,6 +3,7 @@ require 'rails_helper'
 describe CoursesHelper, type: :helper do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
+  let(:activity_two) { create(:activity) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
 
   describe('#activity_address') do
@@ -73,22 +74,27 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('user_done?') do
-    it 'returns false if user is not supplied' do
-      expect(helper.user_done?(nil, activity)).to eq false
+  describe('user_achievement_state') do
+    it 'throws error if user is not supplied' do
+      expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)
     end
 
-    it 'returns false if activity is not supplied' do
-      expect(helper.user_done?(user, nil)).to eq false
+    it 'throws error if activity is not supplied' do
+      expect { helper.user_achievement_state(user, nil) }.to raise_error(NoMethodError)
     end
 
-    it 'returns false if achievement is not complete' do
-      expect(helper.user_done?(user, activity)).to eq false
+    it 'returns not_enrolled for no achievement' do
+      expect(helper.user_achievement_state(user, activity_two)).to eq :not_enrolled
     end
 
-    it 'returns true if achievement is complete' do
+    it 'returns enrolled if achievement is not complete' do
+      achievement
+      expect(helper.user_achievement_state(user, activity)).to eq :enrolled
+    end
+
+    it 'returns complete if achievement is complete' do
       achievement.set_to_complete
-      expect(helper.user_done?(user, activity)).to eq true
+      expect(helper.user_achievement_state(user, activity)).to eq :complete
     end
   end
 end

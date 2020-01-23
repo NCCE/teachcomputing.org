@@ -48,13 +48,11 @@ module CoursesHelper
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 
-  def user_done?(user, activity)
-    return false unless user && activity
-
+  def user_achievement_state(user, activity)
     achievement = Achievement.find_by(user_id: user.id, activity_id: activity.id)
 
-    return false unless achievement
+    return :not_enrolled unless achievement
 
-    achievement.complete?
+    achievement.complete? ? :complete : :enrolled
   end
 end
