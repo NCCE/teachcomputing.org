@@ -1,0 +1,53 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper--l">
+      <% if @programme %>
+        <div class='govuk-grid-row govuk-!-margin-bottom-6'>
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Also part of <%= @programme.title %>:</h2>
+          </div>
+        </div>
+      <% end %>
+      <div class='courses__container'>
+        <div class="course">
+          <h2 class="govuk-heading-s">
+            <strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong>
+          </h2>
+          <p class="govuk-body">A supportive development programme to help you
+            confidently teach GCSE computer science</p>
+          <span class="govuk-body-s icon-online">Free online course
+          </span>
+        </div>
+
+        <div class="course">
+          <h2 class="govuk-heading-s">
+            <strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong>
+          </h2>
+          <p class="govuk-body">A supportive development programme to help you
+            confidently teach GCSE computer science. A supportive development
+            programme to help you
+            confidently teach GCSE computer science</p>
+          <span class="govuk-body-s icon-map-pin">Face to face course
+          </span>
+        </div>
+
+        <div class="course">
+          <h2 class="govuk-heading-s">
+            <strong><%= link_to 'Start your learning journey', cs_accelerator_path, class: 'ncce-link ncce-link--contrast' %></strong>
+          </h2>
+          <p class="govuk-body">A supportive development programme to help you
+            confidently teach GCSE computer science. A supportive development
+            programme to help you
+            confidently teach GCSE computer science. A supportive development
+            programme to help you
+            confidently teach GCSE computer science. </p>
+          <span class="govuk-body-s icon-online">Free online course
+          </span>
+        </div>
+      </div>
+      <div class="center-button govuk-!-padding-bottom-6">
+        <%= link_to 'Browse all our courses', courses_path(certificate: @programme&.slug), class: 'govuk-button button' %>
+      </div>
+    </div>
+  </div>
+</div>
