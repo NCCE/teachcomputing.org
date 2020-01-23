@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    course_programme
     render :show
   end
 
@@ -99,5 +100,10 @@ class CoursesController < ApplicationController
     def course_locations(course_occurrences)
       towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
       towns.uniq.sort.unshift('Face to face').unshift('Online')
+    end
+
+    def course_programme
+      activity = Activity.find_by(stem_course_id: @course.course_template_no)
+      @programme = activity.programmes.first if activity
     end
 end
