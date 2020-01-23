@@ -1,11 +1,13 @@
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper--l">
-      <div class='govuk-grid-row govuk-!-margin-bottom-6'>
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Also part of <%= @programme.title %>:</h2>
+      <% if @programme %>
+        <div class='govuk-grid-row govuk-!-margin-bottom-6'>
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Also part of <%= @programme.title %>:</h2>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class='courses__container'>
         <div class="course">
           <h2 class="govuk-heading-s">
@@ -44,7 +46,7 @@
         </div>
       </div>
       <div class="center-button govuk-!-padding-bottom-6">
-        <%= link_to 'Browse all our courses', courses_path(certificate: @programme.slug), class: 'govuk-button button' %>
+        <%= link_to 'Browse all our courses', courses_path(certificate: @programme&.slug), class: 'govuk-button button' %>
       </div>
     </div>
   </div>
