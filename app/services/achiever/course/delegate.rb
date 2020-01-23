@@ -12,7 +12,7 @@ class Achiever::Course::Delegate
       'ProgrammeName': PROGRAMME_NAME,
       'CONTACTNO': achiever_contact_no
     }
-    delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, cache = CACHE)
+    delegate_courses = Achiever::Request.get_resource(RESOURCE_PATH, query_strings, cache = CACHE)
     delegate_courses.map { |delegate_course| Achiever::Course::Delegate.new(delegate_course) }
   end
 

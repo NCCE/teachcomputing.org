@@ -23,7 +23,7 @@ class Achiever::Course::OccurrenceDetails
       'ProgrammeName': PROGRAMME_NAME,
       'ID': id
     }
-    occurrence_details = Achiever::Request.resource(RESOURCE_PATH, query_strings)
+    occurrence_details = Achiever::Request.get_resource(RESOURCE_PATH, query_strings)
     Achiever::Course::OccurrenceDetails.new(occurrence_details.first)
   end
 

@@ -17,7 +17,7 @@ class Achiever::Request
       end
     end
 
-    def resource(resource_path, query = {}, cache = true)
+    def get_resource(resource_path, query = {}, cache = true)
       query_string = query_strings(query)
 
       if cache
@@ -27,7 +27,7 @@ class Achiever::Request
       else
         response = api.get("#{resource_path}&#{query_string}")
       end
-      
+            
       parsed_response = parse_response(response.body)
 
       if success?(response, parsed_response)
@@ -35,6 +35,16 @@ class Achiever::Request
       else
         raise Achiever::Error.new(failure: { status: response.status,
                                              reason: parsed_response.GetJsonResult.FailureReason })
+      end
+    end
+
+    def post_resource(resource_path, body)
+      response = api.post(resource_path, body)
+
+      parsed_response = parse_response(response.body)
+
+      unless success?(response, parsed_response)
+        raise Achiever::Error.new(failure: { status: response.status, reason: parsed_response.GetJsonResult.FailureReason })
       end
     end
 

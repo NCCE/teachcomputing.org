@@ -32,7 +32,7 @@ class Achiever::Course::Template
   end
 
   def self.all
-    templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
+    templates = Achiever::Request.get_resource(RESOURCE_PATH, QUERY_STRINGS)
     templates.map { |course| Achiever::Course::Template.new(course) }
   end
 

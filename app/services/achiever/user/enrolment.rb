@@ -1,0 +1,30 @@
+class Achiever::User::Enrolment
+  RESOURCE_PATH = 'Set?Cmd=CreateNCCECertificate'.freeze
+
+  def initialize(enrolment)
+    @enrolment = enrolment
+  end
+
+  def last_enrolment_date
+    return @enrolment.last_transition.created_at if @enrolment.state_machine.history.any?
+
+    @enrolment.created_at
+  end
+
+  def request_body
+    {
+      'Entities' => [
+        { 'CONTACTNO' => @enrolment.user.stem_achiever_contact_no,
+          'From' => last_enrolment_date,
+          'Type' => '',
+          'State' => @enrolment.current_state,
+          'Notes' => @enrolment.try(:last_transition).try(:metadata),
+          'Title' => @enrolment.programme.title }
+      ]
+    }.to_json
+  end
+
+  def sync
+    Achiever::Request.post_resource(RESOURCE_PATH, request_body)
+  end
+end
