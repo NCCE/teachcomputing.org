@@ -37,34 +37,48 @@ RSpec.describe('courses/_aside-section', type: :view) do
     it 'shows the booking button' do
       expect(rendered).to have_link('Book course', href: course.booking_url)
     end
-  end
-
-  context 'when user has finished the course' do #'when is logged in and enrolled on the programme' do
-    before do
-      allow_any_instance_of(AuthenticationHelper)
-        .to receive(:current_user).and_return(user)
-      allow_any_instance_of(CoursesHelper)
-        .to receive(:user_done?).and_return(true)
-      render partial: 'courses/aside-section'
-    end
-
-    it 'prompts to book' do
-      expect(rendered).to have_css('.ncce-aside__title', text: "You've done this course")
-    end
 
     it 'does not show programme information' do
       expect(rendered).not_to have_css('.ncce-aside__text', text: /This course is part of the/)
     end
   end
 
-  context 'when has finished course, but not enrolled on the programme' do
+  context 'when user has enrolled the course' do
+    before do
+      allow_any_instance_of(AuthenticationHelper)
+        .to receive(:current_user).and_return(user)
+      allow_any_instance_of(CoursesHelper)
+        .to receive(:user_achievement_state).and_return(:enrolled)
+      render partial: 'courses/aside-section'
+    end
+
+    it 'shows they are doing it' do
+      expect(rendered).to have_css('.ncce-aside__title', text: 'You are doing this course')
+    end
+  end
+
+  context 'when user has finished the course' do
+    before do
+      allow_any_instance_of(AuthenticationHelper)
+        .to receive(:current_user).and_return(user)
+      allow_any_instance_of(CoursesHelper)
+        .to receive(:user_achievement_state).and_return(:complete)
+      render partial: 'courses/aside-section'
+    end
+
+    it 'shows they have done it' do
+      expect(rendered).to have_css('.ncce-aside__title', text: "You've done this course")
+    end
+  end
+
+  context 'when has not enrolled on the programme' do
     before do
       @programme = programme
       allow(programme).to receive(:user_enrolled?).and_return(false)
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
       allow_any_instance_of(CoursesHelper)
-        .to receive(:user_done?).and_return(true)
+        .to receive(:user_achievement_state).and_return(:not_enrolled)
       render partial: 'courses/aside-section'
     end
 

@@ -49,7 +49,7 @@ module CoursesHelper
   end
 
   def user_achievement_state(user, activity)
-    achievement = Achievement.find_by(user_id: user.id, activity_id: activity.id)
+    achievement = Achievement.find_by(user_id: user.id, activity_id: activity&.id)
 
     return :not_enrolled unless achievement
 

@@ -79,8 +79,8 @@ describe CoursesHelper, type: :helper do
       expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)
     end
 
-    it 'throws error if activity is not supplied' do
-      expect { helper.user_achievement_state(user, nil) }.to raise_error(NoMethodError)
+    it 'returns not_enrolled if activity is not supplied' do
+      expect(helper.user_achievement_state(user, nil)).to eq :not_enrolled
     end
 
     it 'returns not_enrolled for no achievement' do
