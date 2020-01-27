@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe CoursesHelper, type: :helper do
+  let(:user) { create(:user) }
+  let(:activity) { create(:activity) }
+  let(:activity_two) { create(:activity) }
+  let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
+
   describe('#activity_address') do
     it 'rejects blank attributes' do
       course = instance_double('course', address_venue_name: 'Example',
@@ -66,6 +71,30 @@ describe CoursesHelper, type: :helper do
 
     it 'returns icon for online courses' do
       expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
+    end
+  end
+
+  describe('user_achievement_state') do
+    it 'throws error if user is not supplied' do
+      expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)
+    end
+
+    it 'returns not_enrolled if activity is not supplied' do
+      expect(helper.user_achievement_state(user, nil)).to eq :not_enrolled
+    end
+
+    it 'returns not_enrolled for no achievement' do
+      expect(helper.user_achievement_state(user, activity_two)).to eq :not_enrolled
+    end
+
+    it 'returns enrolled if achievement is not complete' do
+      achievement
+      expect(helper.user_achievement_state(user, activity)).to eq :enrolled
+    end
+
+    it 'returns complete if achievement is complete' do
+      achievement.set_to_complete
+      expect(helper.user_achievement_state(user, activity)).to eq :complete
     end
   end
 end
