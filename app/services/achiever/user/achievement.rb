@@ -15,8 +15,8 @@ class Achiever::User::Achievement
     {
       'Entities' => [
         { 'CONTACTNO' => @achievement.user.stem_achiever_contact_no,
-          'From' => last_achievement_date,
-          'Type' => '',
+          'From' => last_achievement_date.to_default_s,
+          'Type' => @achievement.activity.slug,
           'State' => @achievement.current_state,
           'Notes' => @achievement.try(:last_transition).try(:metadata),
           'Title' => @achievement.activity.title }
@@ -24,7 +24,7 @@ class Achiever::User::Achievement
     }.to_json
   end
 
-  def sync
+  def send
     Achiever::Request.post_resource(RESOURCE_PATH, request_body)
   end
 end

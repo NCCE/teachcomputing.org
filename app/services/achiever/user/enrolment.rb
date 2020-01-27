@@ -15,8 +15,8 @@ class Achiever::User::Enrolment
     {
       'Entities' => [
         { 'CONTACTNO' => @enrolment.user.stem_achiever_contact_no,
-          'From' => last_enrolment_date,
-          'Type' => '',
+          'From' => last_enrolment_date.to_default_s,
+          'Type' => @enrolment.programme.slug,
           'State' => @enrolment.current_state,
           'Notes' => @enrolment.try(:last_transition).try(:metadata),
           'Title' => @enrolment.programme.title }
@@ -24,7 +24,7 @@ class Achiever::User::Enrolment
     }.to_json
   end
 
-  def sync
+  def send
     Achiever::Request.post_resource(RESOURCE_PATH, request_body)
   end
 end

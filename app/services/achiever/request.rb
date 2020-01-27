@@ -43,9 +43,9 @@ class Achiever::Request
 
       parsed_response = parse_response(response.body)
 
-      unless success?(response, parsed_response)
-        raise Achiever::Error.new(failure: { status: response.status, reason: parsed_response.GetJsonResult.FailureReason })
-      end
+      raise Achiever::Error.new(failure: { status: response.status, reason: parsed_response.FailureReason }) unless parsed_response.FailureReason.blank?
+
+      parsed_response
     end
 
     private
