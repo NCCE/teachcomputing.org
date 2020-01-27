@@ -15,7 +15,7 @@ class Achiever::User::Enrolment
     {
       'Entities' => [
         { 'CONTACTNO' => @enrolment.user.stem_achiever_contact_no,
-          'From' => last_enrolment_date.to_default_s,
+          'From' => last_enrolment_date.strftime('%Y-%m-%d'),
           'Type' => @enrolment.programme.slug,
           'State' => @enrolment.current_state,
           'Notes' => @enrolment.try(:last_transition).try(:metadata),

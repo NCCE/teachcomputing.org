@@ -15,7 +15,7 @@ class Achiever::User::Achievement
     {
       'Entities' => [
         { 'CONTACTNO' => @achievement.user.stem_achiever_contact_no,
-          'From' => last_achievement_date.to_default_s,
+          'From' => last_achievement_date.strftime('%Y-%m-%d'),
           'Type' => @achievement.activity.slug,
           'State' => @achievement.current_state,
           'Notes' => @achievement.try(:last_transition).try(:metadata),
