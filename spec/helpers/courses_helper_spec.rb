@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe CoursesHelper, type: :helper do
+  let(:user) { create(:user) }
+  let(:activity) { create(:activity) }
+  let(:activity_two) { create(:activity) }
+  let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
+
   let(:courses) {
     (0..10).map do |i|
       instance_double('course', course_template_no: i.to_s)
@@ -91,14 +96,31 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('other_courses_on_programme') do
-    before do
-      # create list of courses
-
-      # create single course
-      # create programme with activities online & offline.
+  describe('user_achievement_state') do
+    it 'throws error if user is not supplied' do
+      expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)
     end
 
+    it 'returns not_enrolled if activity is not supplied' do
+      expect(helper.user_achievement_state(user, nil)).to eq :not_enrolled
+    end
+
+    it 'returns not_enrolled for no achievement' do
+      expect(helper.user_achievement_state(user, activity_two)).to eq :not_enrolled
+    end
+
+    it 'returns enrolled if achievement is not complete' do
+      achievement
+      expect(helper.user_achievement_state(user, activity)).to eq :enrolled
+    end
+
+    it 'returns complete if achievement is complete' do
+      achievement.set_to_complete
+      expect(helper.user_achievement_state(user, activity)).to eq :complete
+    end
+  end
+
+  describe('other_courses_on_programme') do
     it 'throws error if courses is not passed' do
       expect { other_courses_on_programme(nil, course, programme, 3) }
           .to raise_error(NoMethodError)

@@ -48,6 +48,14 @@ module CoursesHelper
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 
+  def user_achievement_state(user, activity)
+    achievement = Achievement.find_by(user_id: user.id, activity_id: activity&.id)
+
+    return :not_enrolled unless achievement
+
+    achievement.complete? ? :complete : :enrolled
+  end
+
   def other_courses_on_programme(courses, course, programme, how_many = 3)
     course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_id)
 
