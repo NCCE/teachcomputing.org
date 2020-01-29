@@ -54,11 +54,6 @@
   @include govuk-media-query($from: desktop) {
     &:after {
       background-color: $cs-accelerator-color;
-      // mask-image: url(/images/card/glyph-1.svg);
-      // -webkit-mask-image: url(/images/card/glyph-1.svg);
-      // background-position-x: right;
-      // background-position-y: bottom;
-
     }
   }
 }
@@ -79,10 +74,6 @@
   @include govuk-media-query($from: desktop) {
     &:after {
       background-color: $primary-cert-color;
-      // mask-image: url(/images/card/glyph-1.svg);
-      // -webkit-mask-image: url(/images/card/glyph-1.svg);
-      // background-position-x: right;
-      // background-position-y: bottom;
     }
   }
 }
