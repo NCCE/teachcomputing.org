@@ -1,30 +1,40 @@
 class Achiever::User::Achievement
   RESOURCE_PATH = 'Set?Cmd=CreateNCCEAchievement'.freeze
 
-  def initialize(achievement)
-    @achievement = achievement
+  def initialize(record)
+    @record = record
+    @class_name = @record.class.to_s
   end
 
   def last_achievement_date
-    return @achievement.last_transition.created_at if @achievement.state_machine.history.any?
+    return @record.last_transition.created_at if @record.state_machine.history.any?
 
-    @achievement.created_at
+    @record.created_at
+  end
+
+  def class_attributes
+    case @class_name
+    when 'Achievement'
+      { 'Type' => @record.activity.slug,
+        'Title' => @record.activity.title }
+    when 'AssessmentAttempt'
+      { 'Type' => @record.assessment.programme.slug,
+        'Title' => @record.assessment.activity.title }
+    end
   end
 
   def request_body
     {
       'Entities' => [
-        { 'CONTACTNO' => @achievement.user.stem_achiever_contact_no,
+        { 'CONTACTNO' => @record.user.stem_achiever_contact_no,
           'From' => last_achievement_date.strftime('%Y-%m-%d'),
-          'Type' => @achievement.activity.slug,
-          'State' => @achievement.current_state,
-          'Notes' => @achievement.try(:last_transition).try(:metadata),
-          'Title' => @achievement.activity.title }
+          'State' => @record.current_state,
+          'Notes' => @record.try(:last_transition).try(:metadata) }.merge(class_attributes)
       ]
     }.to_json
   end
 
-  def send
+  def sync
     Achiever::Request.post_resource(RESOURCE_PATH, request_body)
   end
 end

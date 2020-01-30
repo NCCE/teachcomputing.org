@@ -19,7 +19,7 @@ RSpec.describe Achiever::User::Enrolment do
       end
 
       it 'returns an OpenStruct' do
-        expect(achiever_user_enrolment.send).to be_an OpenStruct
+        expect(achiever_user_enrolment.sync).to be_an OpenStruct
       end
     end
   end

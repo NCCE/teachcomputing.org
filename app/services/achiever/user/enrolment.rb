@@ -24,7 +24,7 @@ class Achiever::User::Enrolment
     }.to_json
   end
 
-  def send
+  def sync
     Achiever::Request.post_resource(RESOURCE_PATH, request_body)
   end
 end

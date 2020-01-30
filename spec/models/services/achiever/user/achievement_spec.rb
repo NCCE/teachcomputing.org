@@ -19,7 +19,7 @@ RSpec.describe Achiever::User::Achievement do
       end
 
       it 'returns an OpenStruct' do
-        expect(achiever_achievement.send).to be_an OpenStruct
+        expect(achiever_achievement.sync).to be_an OpenStruct
       end
     end
   end
