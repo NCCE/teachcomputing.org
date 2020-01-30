@@ -150,9 +150,8 @@ describe CoursesHelper, type: :helper do
     end
 
     it 'courses include the next 6 courses' do
-      other_courses = other_courses_on_programme(courses, course, programme, 6).map(&:course_template_no)
-      puts other_courses
-      ['0', '2', '3', '4', '5', '6'].each { |id| expect(other_courses.include?(id)).to eq(true) }
+      other_courses = other_courses_on_programme(courses, course, programme, 5).map(&:course_template_no)
+      ['0', '2', '3', '4', '5'].each { |id| expect(other_courses.include?(id)).to eq(true) }
     end
   end
 end
