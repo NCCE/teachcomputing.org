@@ -55,4 +55,12 @@ module CoursesHelper
 
     achievement.complete? ? :complete : :enrolled
   end
+
+  def other_courses_on_programme(courses, course, programme, how_many = 3)
+    course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_id)
+
+    courses.select do |c|
+      course_ids.include?(c.course_template_no) && course.course_template_no != c.course_template_no
+    end[0...how_many]
+  end
 end

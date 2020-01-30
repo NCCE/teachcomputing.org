@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    @other_courses = Achiever::Course::Template.without(@course)
     course_programme
     render :show
   end
