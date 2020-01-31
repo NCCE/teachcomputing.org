@@ -44,8 +44,21 @@ module CoursesHelper
     strip_tags(unescaped_str)
   end
 
+  def course_duration(duration)
+    return "#{duration} days" if duration.to_i >= 2
+
+    "#{duration} day"
+  end
+
   def course_meta_icon_class(isOnlineCourse)
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
+  end
+
+  def online_course_date(start_date)
+    date = Date.parse(start_date, '%-d %B')
+    return "Register now (Starts on #{date})" if date.future?
+
+    'Join now'
   end
 
   def user_achievement_state(user, activity)

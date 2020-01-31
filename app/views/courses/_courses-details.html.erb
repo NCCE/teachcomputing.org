@@ -1,10 +1,20 @@
 <div class="course-details">
-  <strong class="govuk-tag ncce-courses__tag">Key stage 3</strong>
-  <strong class="govuk-tag ncce-courses__tag">Key stage 4</strong>
+   <% @course.age_groups.each do |group| %>
+    <% if @age_groups.has_value?(group.to_i) %>
+      <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
+    <% end %>
+  <% end %>
   <div class="course-details__icons">
+  <% if @course.online_cpd %>
     <span class="govuk-body-s icon-online">Free online course</span>
-    <span class="govuk-body-s icon-calendar">6 January-27 January 2020 (3
-      weeks)</span>
+    <% unless @occurrences.empty? %>
+      <span class="govuk-body-s icon-calendar"><%= online_course_date(@occurrences.first.start_date) %></span>
+    <% end %>
     <span class="govuk-body-s icon-clock">2 hours per week</span>
+  <% else %>
+   <span class="govuk-body-s icon-map-pin">Face to face course</span>
+   <span class="govuk-body-s icon-clock"><%= course_duration(@course.duration) %></span>
+   <%= render 'courses/courses-locations' %>
+  <% end %>
   </div>
 </div>
