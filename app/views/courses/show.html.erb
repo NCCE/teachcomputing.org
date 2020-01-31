@@ -1,5 +1,6 @@
 <% meta_tag :title, "#{@course.title} - Teach Computing" %>
-<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} - #{@course.online_cpd ? 'online' : 'face to face'}", glyph_position: 'bottom', colour: 'blue' %>
+<% meta_tag :description, @course.meta_description %>
+<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{@course.online_cpd ? 'Online' : 'Face to face'}", glyph_position: 'bottom', colour: 'blue' %>
 <% meta_tag :image, image_url((@course.online_cpd ? '/images/secondary-teachers/video-placeholder.jpg' : '/images/primary-teachers/hero.jpg'), skip_pipeline: true) %>
 
 <div class="govuk-width-container">
