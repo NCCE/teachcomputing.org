@@ -104,7 +104,7 @@ class CoursesController < ApplicationController
     end
 
     def course_programme
-      @activity = Activity.find_by(stem_course_id: @course.course_template_no)
+      @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
       @programme = @activity.programmes.first if @activity
     end
 end
