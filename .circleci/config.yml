@@ -52,4 +52,4 @@ jobs:
       - run:
           name: Run rspec
           command: |
-            bundle exec rspec
+            bundle exec rspec --format documentation
