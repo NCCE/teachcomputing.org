@@ -27,6 +27,6 @@ SitemapGenerator::Sitemap.create do
   add '/terms-conditions', changefreq: 'monthly'
 
   Achiever::Course::Template.all.each do |course|
-    add course_path(id: course.activity_code, name: course.title), changefreq: 'monthly'
+    add course_path(id: course.activity_code, name: course.title.parameterize), changefreq: 'monthly'
   end
 end
