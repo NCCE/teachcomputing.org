@@ -12,7 +12,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: ncce_test
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
+      - image: circleci/postgres:9.6.7-alpine
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: ncce_test
