@@ -47,8 +47,12 @@ class Achiever::Course::Template
     templates = all
     template = templates.find { |val| val.activity_code == activity_code.upcase }
     raise ActiveRecord::RecordNotFound unless template
-    
+
     template
+  end
+
+  def self.without(course)
+    Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no  }
   end
 
   def by_certificate(certificate)
