@@ -28,8 +28,10 @@ class CoursesController < ApplicationController
   def show
     @age_groups = Achiever::Course::AgeGroup.all
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
-    @occurrences = @course.occurrences
     course_programme
+    @occurrences = @course.occurrences
+    @other_courses = Achiever::Course::Template.without(@course)
+    
     render :show
   end
 
