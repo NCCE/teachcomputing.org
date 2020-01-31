@@ -13,7 +13,7 @@
     <span class="govuk-body-s icon-clock">2 hours per week</span>
   <% else %>
    <span class="govuk-body-s icon-map-pin">Face to face course</span>
-   <span class="govuk-body-s icon-clock"><%= course_duration(@course.duration) %></span>
+   <span class="govuk-body-s icon-clock"><%= @course.duration %> <%= 'day'.pluralize(@course.duration.to_i) %></span>
    <%= render 'courses/courses-locations' %>
   <% end %>
   </div>

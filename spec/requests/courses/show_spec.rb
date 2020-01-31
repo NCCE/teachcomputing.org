@@ -16,6 +16,8 @@ RSpec.describe CoursesController do
 
   describe 'GET #show' do
     before do
+      stub_age_groups
+      stub_face_to_face_occurrences
       stub_course_templates
       activity
     end
@@ -56,11 +58,6 @@ RSpec.describe CoursesController do
         expect(response.body).to include(programme_path(programme.slug))
       end
     end
-
-    # context 'when user is not logged in' do
-    #   before do
-    #   end
-    # end
 
     context 'when user is logged in' do
       before do

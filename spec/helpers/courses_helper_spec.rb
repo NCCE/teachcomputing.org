@@ -74,6 +74,16 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe('#online_course_date') do
+    it 'returns Join Now when it is in the present' do
+      expect(helper.online_course_date(DateTime.now.change(year: 2021).to_s)).to include 'Register now'
+    end
+
+    it 'returns register when it is in the future' do
+      expect(helper.online_course_date(DateTime.now.to_s)).to eq 'Join now'
+    end
+  end
+
   describe('user_achievement_state') do
     it 'throws error if user is not supplied' do
       expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)

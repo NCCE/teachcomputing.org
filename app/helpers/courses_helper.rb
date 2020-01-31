@@ -44,12 +44,6 @@ module CoursesHelper
     strip_tags(unescaped_str)
   end
 
-  def course_duration(duration)
-    return "#{duration} days" if duration.to_i >= 2
-
-    "#{duration} day"
-  end
-
   def course_meta_icon_class(isOnlineCourse)
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
