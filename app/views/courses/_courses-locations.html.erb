@@ -1,8 +1,8 @@
 <div class="ncce-courses__course">
-  <h3 class="govuk-body-s govuk-!-font-weight-bold">
+  <h4 class="govuk-body-s govuk-!-font-weight-bold">
     <% if @occurrences.length > 1 %>
-      <h4 class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
-        <button aria-expanded="false">
+      <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
+        <button govuk-body-s govuk-!-font-weight-bold ncce-courses__locations aria-expanded="false">
           <svg aria-hidden="true" focusable="false" width="16px" height="10px"
             viewBox="0 0 160 100">
             <g transform="translate(80, 100) rotate(-135.0)">
@@ -11,7 +11,7 @@
             </g>
           </svg>View dates & locations
         </button>
-      </h4>
+      </div>
     <% end %>
     <% unless @occurrences.empty? %>
       <ul class="govuk-list govuk-body-s ncce-courses__meta">
@@ -24,5 +24,5 @@
         <% end %>
       </ul>
     <% end %>
-  </h3>
+  </h4>
 </div>
