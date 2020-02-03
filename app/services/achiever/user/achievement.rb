@@ -18,7 +18,7 @@ class Achiever::User::Achievement
       { 'Type' => @record.activity.slug,
         'Title' => @record.activity.title }
     when 'AssessmentAttempt'
-      { 'Type' => @record.assessment.programme.slug,
+      { 'Type' => "#{@record.assessment.programme.slug}-#{@record.assessment.activity.title}",
         'Title' => @record.assessment.activity.title }
     end
   end
