@@ -27,6 +27,16 @@
 	padding: 1rem 1rem 0 1rem;
 }
 
+.course-summary {
+  p {
+    @extend .govuk-body;
+  }
+
+  ul {
+    @extend .govuk-list, .govuk-list--bullet;
+  }
+}
+
 .course-details__icons {
 	display: flex;
 	flex-direction: column;
