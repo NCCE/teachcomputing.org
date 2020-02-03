@@ -17,6 +17,7 @@ RSpec.describe CoursesController do
   describe 'GET #show' do
     before do
       stub_course_templates
+      activity
     end
 
     it 'raises a 404 not found' do
@@ -34,6 +35,18 @@ RSpec.describe CoursesController do
 
       it 'sets the programme' do
         expect(assigns(:programme)).to eq(nil)
+      end
+
+      it 'assigns list of other_courses' do
+        expect(assigns(:other_courses)).not_to eq(nil)
+      end
+
+      it 'the single course is not in the list of other_courses' do
+        expect(assigns(:other_courses).map(&:course_template_no).include?(course.course_template_no)).to eq(false)
+      end
+
+      it 'sets the activity' do
+        expect(assigns(:activity)).to eq(activity)
       end
     end
 
