@@ -33,7 +33,7 @@ class Achiever::Course::Template
     @workstream = template.send('Template.Workstream')
   end
 
-  def fetched_occurrences
+  def with_occurrences
     occurrences = online_cpd ? Achiever::Course::Occurrence.online : Achiever::Course::Occurrence.face_to_face
     occurrences.select { |occurrence| occurrence.course_template_no == course_template_no }
   end

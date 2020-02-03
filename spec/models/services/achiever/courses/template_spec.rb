@@ -103,4 +103,15 @@ RSpec.describe Achiever::Course::Template do
       end
     end
   end
+
+  describe '#with_occurrences' do
+    before do
+      stub_course_templates
+      stub_face_to_face_occurrences
+    end
+
+    it 'returns a collection of with_occurrences' do
+      expect(described_class.all.first.with_occurrences.count).to eq 4
+    end
+  end
 end

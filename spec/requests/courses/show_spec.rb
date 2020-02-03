@@ -31,12 +31,20 @@ RSpec.describe CoursesController do
         get course_path(id: course.activity_code, name: 'this-is-a-name')
       end
 
+      it 'sets the age_groups' do
+        expect(assigns(:age_groups)).not_to eq(nil)
+      end
+
       it 'sets the course correctly' do
         expect(assigns(:course).title).to eq("#{course.title}")
       end
 
       it 'sets the programme' do
         expect(assigns(:programme)).to eq(nil)
+      end
+
+      it 'assigns list of occurrences' do
+        expect(assigns(:occurrences)).not_to eq(nil)
       end
 
       it 'assigns list of other_courses' do
