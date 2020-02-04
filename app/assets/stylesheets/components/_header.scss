@@ -151,10 +151,10 @@
   }
 }
 
-.ncce-header__navigation-magda {
+.ncce-header__navigation-enrol {
     background-color: $deep-cerulean;
     padding: 0.1rem 0.4rem;
-
+		position: relative;
 
 	.govuk-header__link {
     color: $white;
@@ -162,29 +162,25 @@
 	}
 }
 
-.ring-container {
-  position: relative;
-}
-
-.circle {
+.enrol-dot {
 	background-color: $dixie;
 	border-radius: 50%;
 	height: 0.6rem;
 	position: absolute;
-	right: -10px;
-	top: -7px;
+	right: -5px;
+	top: -5px;
 	width: 0.6rem;
 }
 
-.ringring {
+.enrol-ring {
 	animation: pulse 1s ease-out;
 	animation-iteration-count: infinite; 
 	border: 3px solid $dixie;
 	border-radius: 3rem;
 	height: 1.2rem;
 	position: absolute;
-	right: -18px;
-	top: -13px;
+	right: -12px;
+	top: -12px;
 	width: 1.2rem;
 }
 

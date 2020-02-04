@@ -21,11 +21,9 @@
           <li>
           <% if current_user %>
             <ul class='ncce-header__navigation-user'>
-              <li class="govuk-header__navigation-item ncce-header__navigation-magda">
-								<div class="ring-container">
-    							<div class="ringring"></div>
-    							<div class="circle"></div>
-								</div>	
+              <li class="govuk-header__navigation-item ncce-header__navigation-enrol">
+    							<span class="enrol-ring"></span>
+    							<span class="enrol-dot"></span>
                 <%= link_to 'Enrol now', dashboard_path, class: 'govuk-header__link' %>
               </li>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
