@@ -197,3 +197,13 @@
 		transform: scale(1.2, 1.2);
 	}
 }
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.enrol-ring {
+		animation: none;
+	}
+	.enrol-dot,
+	.enrol-ring {
+		display: none;
+	}
+}
