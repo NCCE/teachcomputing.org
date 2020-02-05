@@ -53,9 +53,7 @@
   border-left-color: $cs-accelerator-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $white;
-      background-image: url(/images/card/glyph-secondary.svg);
-
+      background-color: $amour;
     }
   }
 }
@@ -75,8 +73,7 @@
   border-left-color: $primary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $white;
-      background-image: url(/images/card/glyph-primary.svg);
+      background-color: $karry;
     }
   }
 }

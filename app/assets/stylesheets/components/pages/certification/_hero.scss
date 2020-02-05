@@ -4,18 +4,18 @@
   color: $grey-dark-x;
   position: relative;
   &:after {
-    content: "";
-    display: block;
-    opacity: 0.15;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 120px;
-    width: 140px;
     background-image: url(/images/hero/glyph-1.svg);
     background-position-x: right;
     background-repeat: no-repeat;
     background-size: 75%;
+    content: "";
+    display: block;
+    height: 120px;
+    opacity: 0.15;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 140px;
     @include govuk-media-query($from: desktop) {
       background-size: 100%;
     }
@@ -23,9 +23,9 @@
 }
 
 .hero--glyph-2:after {
+  background-image: url(/images/hero/glyph-2.svg);
   height: 75px;
   width: 105px;
-  background-image: url(/images/hero/glyph-2.svg);
   @include govuk-media-query($from: desktop) {
     height: 100px;
     width: 140px;
@@ -33,10 +33,10 @@
 }
 
 .hero--glyph-3:after {
-  height: 75px;
-  width: 60px;
   background-image: url(/images/hero/glyph-3.svg);
+  height: 75px;
   transform: rotate(180deg);
+  width: 60px;
   @include govuk-media-query($from: desktop) {
     height: 100px;
     width: 80px;
@@ -44,9 +44,9 @@
 }
 
 .hero--glyph-4:after {
+  background-image: url(/images/hero/glyph-4.svg);
   height: 92px;
   width: 90px;
-  background-image: url(/images/hero/glyph-4.svg);
   @include govuk-media-query($from: desktop) {
     background-size: 110px 130px;
     height: 130px;
@@ -62,16 +62,16 @@
 }
 
 .hero--bottom-glyph:after {
-  top: unset;
-  bottom: 0;
   background-position-y: bottom;
+  bottom: 0;
+  top: unset;
 }
 
 .hero--plain {
   background-color: $plain-hero-color;
   &:after {
-    display: none;
     background-image: none;
+    display: none;
   }
 }
 
@@ -91,11 +91,11 @@
 }
 
 .hero__wrapper {
-  padding-top: $logo_block-mobile;
   padding-bottom: $logo_block-mobile;
+  padding-top: $logo_block-mobile;
   @include govuk-media-query($from: desktop) {
-    padding-top: $logo_block;
     padding-bottom: $logo_block;
+    padding-top: $logo_block;
   }
   &:after {
     clear: both;
@@ -132,9 +132,9 @@
 }
 .hero__text {
   color: $mid-gray;
+  margin-bottom: 0;
   margin-top: $logo_block-mobile / 4;
   @include govuk-media-query($from: desktop) {
     margin-top: $logo_block / 4;
   }
-  margin-bottom: 0;
 }
