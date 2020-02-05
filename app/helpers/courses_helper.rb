@@ -48,6 +48,13 @@ module CoursesHelper
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 
+  def online_course_date(start_date)
+    date = Date.parse(start_date, '%-d %B')
+    return "Register now (Starts on #{date})" if date.future?
+
+    'Join now'
+  end
+
   def user_achievement_state(user, activity)
     achievement = Achievement.find_by(user_id: user.id, activity_id: activity&.id)
 
