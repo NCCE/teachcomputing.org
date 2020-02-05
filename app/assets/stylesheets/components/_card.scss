@@ -53,7 +53,7 @@
   border-left-color: $cs-accelerator-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $cs-accelerator-color;
+      background-color: $amour;
     }
   }
 }
@@ -73,7 +73,7 @@
   border-left-color: $primary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
-      background-color: $primary-cert-color;
+      background-color: $karry;
     }
   }
 }
