@@ -16,7 +16,7 @@
 							<h2 class="govuk-heading-s"><strong><%= link_to course.title, course_path(id: course.activity_code, name: course.title), class: 'ncce-link' %></strong></h2>
 							<p class="govuk-body-s"><%= course.meta_description %></p>
 						</div>
-            <span class="govuk-body-s <%= course_meta_icon_class(course.online_cpd) %>"><%= course.online_cpd ? 'Free online course' : 'Face to face course' %>
+            <span class="govuk-body-s course-card__type <%= course_meta_icon_class(course.online_cpd) %>"><%= course.online_cpd ? 'Free online course' : 'Face to face course' %>
             </span>
           </div>
         <% end %>

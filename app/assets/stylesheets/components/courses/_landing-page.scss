@@ -14,17 +14,23 @@
   margin-bottom: 1rem;
 
 	@include govuk-media-query($from: tablet) {
-	margin-bottom: 0;
-}
+    margin-bottom: 0;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    &__type {
+      line-height: 20px;
+    }
+  }
 
 }
-.course-card, 
+.course-card,
 .course-card__content {
 	flex: 1 1 auto;
 }
 
 .course-details {
-	border: 1px solid $concrete;
+	border: 2px solid $concrete;
 	margin-bottom: 1.5rem;
 	padding: 1rem 1rem 0 1rem;
 }

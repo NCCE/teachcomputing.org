@@ -8,9 +8,9 @@
     class="govuk-main-wrapper ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-s"><%= @course.meta_description %></h2>
+        <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
         <%= render 'courses/courses-details' %>
-        <div class="course-summary">
+        <div class="course-summary govuk-!-margin-bottom-7">
           <%= sanitize @course.summary.gsub!(/\&nbsp;/, ''), tags: %w(p h1 h2 h3 ul li ol) %>
         </div>
         <%= render 'courses/courses-card' %>
