@@ -9,11 +9,12 @@
 }
 
 .course-card {
-	// align-items: flex-start;
-	// display: flex;
-	// flex-direction: column;
-	// flex-grow: 1;
-	// justify-content: start;
+  display: flex;
+  flex-direction: column;
+}
+.course-card, 
+.course-card__content {
+	flex: 1 1 auto;
 }
 
 .course-details {
