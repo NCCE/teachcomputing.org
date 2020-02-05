@@ -11,6 +11,12 @@
 .course-card {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
+
+	@include govuk-media-query($from: tablet) {
+	margin-bottom: 0;
+}
+
 }
 .course-card, 
 .course-card__content {
