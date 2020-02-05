@@ -1,4 +1,4 @@
-.courses__container {
+.course-card__container {
   margin: 0 auto;
 
 	@include govuk-media-query($from: tablet) {
@@ -8,17 +8,12 @@
 	}
 }
 
-.course {
-	align-items: flex-start;
-	background-color: $white;
-	box-shadow: 0 0 5px $box-shadow;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	justify-content: start;
-	margin-bottom: $logo-block-mobile;
-	overflow: hidden;
-	padding: 1rem;
+.course-card {
+	// align-items: flex-start;
+	// display: flex;
+	// flex-direction: column;
+	// flex-grow: 1;
+	// justify-content: start;
 }
 
 .course-details {
