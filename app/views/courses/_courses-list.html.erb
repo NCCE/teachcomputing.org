@@ -8,19 +8,21 @@
           </div>
         </div>
       <% end %>
-      <div class='courses__container'>
+      <div class='course-card__container'>
         <% other_courses = @programme ? other_courses_on_programme(@other_courses, @course, @programme, 3) : @other_courses[0...3]  %>
         <% other_courses.each do |course| %>
-          <div class="course">
-            <h2 class="govuk-heading-s"><%= link_to course.title, course_path(id: course.activity_code, name: course.title), class: 'ncce-link' %></h2>
-            <p class="govuk-body"><%= course.meta_description %></p>
+          <div class="shadow_card course-card">
+						<div class="course-card__content">
+							<h2 class="govuk-heading-s"><strong><%= link_to course.title, course_path(id: course.activity_code, name: course.title), class: 'ncce-link' %></strong></h2>
+							<p class="govuk-body-s"><%= course.meta_description %></p>
+						</div>
             <span class="govuk-body-s <%= course_meta_icon_class(course.online_cpd) %>"><%= course.online_cpd ? 'Free online course' : 'Face to face course' %>
             </span>
           </div>
         <% end %>
       </div>
-      <div class="center-button govuk-!-padding-bottom-6">
-        <%= link_to 'Browse all our courses', courses_path(certificate: @programme&.slug), class: 'govuk-button button' %>
+      <div class="center-button govuk-!-padding-bottom-3 govuk-!-padding-top-6">
+        <%= link_to 'Browse more courses', courses_path(certificate: @programme&.slug), class: 'govuk-button button' %>
       </div>
     </div>
   </div>
