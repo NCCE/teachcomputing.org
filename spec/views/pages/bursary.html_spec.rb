@@ -9,12 +9,12 @@ RSpec.describe('pages/bursary', type: :view) do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Bursaries and fees')
   end
 
-  it 'has two subtitles' do
-    expect(rendered).to have_css('.govuk-heading-m', count: 4)
+  it 'has five subtitles' do
+    expect(rendered).to have_css('.govuk-heading-m', count: 5)
   end
 
   it 'has price table' do
-    expect(rendered).to have_css('.govuk-table', count: 3)
+    expect(rendered).to have_css('.govuk-table', count: 4)
   end
 
 end
