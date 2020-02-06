@@ -22,6 +22,7 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+				<h2 class="govuk-heading-l">Explore our courses</h2>
         <p class="govuk-body-l landing-page__intro">Develop your understanding of what outstanding teaching of computing looks like, to enable you to create a curriculum that provides progression for all at Key Stage 1 and 2.  </p>
       </div>
     </div>
@@ -71,6 +72,7 @@
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+					<h2 class="govuk-heading-l">Your Primary certificate</h2>
           <div class="card card--primary-certificate">
           <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
           <h2 class="govuk-heading-m card__heading">Teach primary computing</h2>
@@ -92,8 +94,8 @@
         <%= link_to 'Find your local hub', '/hubs' %>.
         </p>
         <h3 class="govuk-body"><strong>Subject Matter Experts</strong></h3>
-        <p class="govuk-body">Primary schools located in <%= link_to 'Local Authority Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view' %> are eligible for fully-funded support from a subject expert to help improve their delivery of computing. <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %>.
-        </p>
+        <p class="govuk-body">We offer fully-funded consultancy and guidance to primary schools located in <%= link_to 'Local Authority Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> through a network of computing education specialists, called Subject Matter Experts. Your local expert can help you to complete a three year action plan to improve your computing offer, and identify the most appropriate CPD to upskill your staff.  <%= link_to 'Find further information on support', bursary_path(anchor: 'subject') %>.</p>
+				<p class="govuk-body"> <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %></p>
         <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
         <p class="govuk-body">Communities of Practice - run by
           <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
@@ -129,12 +131,12 @@
           <div class="shadow_card">
             <h3 class="govuk-body icon-resources"><strong>Year 2 - Computer systems and networks - IT around us </strong>
             </h3>
-            <p class="govuk-body">In this unit, learners will look at information technology at school and beyond, in settings such as shops, hospitals, and libraries. Learners will investigate how information technology improves our world, and they will learn about using information technology responsibly.</p>
+            <p class="govuk-body">In this unit, explore information technology at school and beyond, in settings such as shops, hospitals and libraries. You will investigate how information technology improves our world, and learn about using information technology responsibly.</p>
             <%= link_to "Access 'IT around us' now", 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
           </div>
           <div class="shadow_card">
             <h3 class="govuk-body icon-resources"><strong>Year 3 - Computer systems and networks - Connecting Computers</strong></h3>
-            <p class="govuk-body">During this unit, learners develop their understanding of digital devices, with an initial focus on inputs, processes, and outputs. They also compare digital and non-digital devices. Following this, learners are introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
+            <p class="govuk-body">Develop your understanding of digital devices, with an initial focus on inputs, processes and outputs. You will compare digital and non-digital devices and be introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
             <%= link_to "Access 'Connecting Computers' now", 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
           </div>
         </div>
