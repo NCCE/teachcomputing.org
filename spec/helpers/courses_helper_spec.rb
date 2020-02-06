@@ -25,12 +25,12 @@ describe CoursesHelper, type: :helper do
   let(:programme) {
     programme = create(:programme)
     (0..5).each do |i|
-      activity = create(:activity, category:'online', stem_course_id: i.to_s)
+      activity = create(:activity, category:'online', stem_course_template_no: i.to_s)
       programme.activities << activity
     end
 
     (6..12).each do |i|
-      activity = create(:activity, category: 'face-to-face', stem_course_id: i.to_s)
+      activity = create(:activity, category: 'face-to-face', stem_course_template_no: i.to_s)
       programme.activities << activity
     end
     programme

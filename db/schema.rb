@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_093513) do
+ActiveRecord::Schema.define(version: 2020_01_31_175416) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -43,16 +42,16 @@ ActiveRecord::Schema.define(version: 2020_01_23_093513) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "category"
-    t.string "stem_course_id"
+    t.string "stem_course_template_no"
     t.boolean "self_certifiable", default: false
     t.string "provider"
-    t.string "future_learn_course_id"
+    t.string "future_learn_course_uuid"
     t.text "description"
     t.text "self_verification_info"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["slug"], name: "index_activities_on_slug", unique: true
-    t.index ["stem_course_id"], name: "index_activities_on_stem_course_id", unique: true
+    t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
   end
 
   create_table "assessment_attempt_transitions", force: :cascade do |t|
