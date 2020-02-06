@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP201') }
-  let(:activity) { create(:activity, stem_course_id: course.course_template_no) }
+  let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) {
     programme.activities << activity
