@@ -10,12 +10,17 @@ module OmniAuth::Strategies
     uid { user_info['attributes']['uid'][0] }
 
     info do
+      our_info = {}
+
       {
-        first_name: user_info['attributes']['firstName'][0],
-        last_name: user_info['attributes']['lastName'][0],
-        email: user_info['attributes']['mail'][0],
-        achiever_contact_no: user_info['attributes']['achieverContactNo'][0]
-      }
+        first_name: 'firstName',
+        last_name: 'lastName',
+        email: 'mail',
+        achiever_contact_no: 'achieverContactNo'
+      }.each_pair do |key, stem_key|
+        our_info[key] = user_info['attributes'][stem_key][0] if user_info['attributes'].has_key?(stem_key)
+      end
+      our_info
     end
 
     def user_info

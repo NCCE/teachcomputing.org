@@ -10,7 +10,8 @@
     <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
     <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
     <p class="govuk-body"><%= link_to @course.online_cpd ? 'Join this course' : 'Book this course', auth_url, class: 'govuk-button button--aside', draggable: 'false' %></p>
-    <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?</p>
-    <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-link', draggable: 'false' %></p>
+    <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?
+      <br>
+      <%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %></p>
   <% end %>
 </div>

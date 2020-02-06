@@ -6,14 +6,14 @@
   <% end %>
   <div class="course-details__icons">
   <% if @course.online_cpd %>
-    <span class="govuk-body-s icon-online">Free online course</span>
+    <span class="govuk-body icon-online">Free online course</span>
     <% unless @occurrences.empty? %>
-      <span class="govuk-body-s icon-calendar"><%= online_course_date(@occurrences.first.start_date) %></span>
+      <span class="govuk-body icon-calendar"><%= online_course_date(@occurrences.first.start_date) %></span>
     <% end %>
-    <span class="govuk-body-s icon-clock">2 hours per week</span>
+    <span class="govuk-body icon-clock">2 hours per week</span>
   <% else %>
-   <span class="govuk-body-s icon-map-pin">Face to face course</span>
-   <span class="govuk-body-s icon-clock"><%= @course.duration %> <%= 'day'.pluralize(@course.duration.to_i) %></span>
+   <span class="govuk-body icon-map-pin">Face to face course</span>
+   <span class="govuk-body icon-clock"><%= @course.duration %> <%= 'day'.pluralize(@course.duration.to_i) %></span>
    <%= render 'courses/courses-locations' %>
   <% end %>
   </div>

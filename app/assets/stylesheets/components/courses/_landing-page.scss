@@ -1,28 +1,34 @@
-.courses__container {
+.course-card__container {
+  display: grid;
+  grid-row-gap: 1rem;
   margin: 0 auto;
 
 	@include govuk-media-query($from: tablet) {
-		column-gap: 2rem;
-		display: grid;
+		grid-column-gap: 2rem;
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
-.course {
-	align-items: flex-start;
-	background-color: $white;
-	box-shadow: 0 0 5px $box-shadow;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	justify-content: start;
-	margin-bottom: $logo-block-mobile;
-	overflow: hidden;
-	padding: 1rem;
+.course-card {
+  display: flex;
+  flex-direction: column;
+
+  &__type {
+    margin-bottom: 0;
+    @include govuk-media-query($until: tablet) {
+      line-height: 20px;
+    }
+  }
+
+}
+
+.course-card,
+.course-card__content {
+	flex: 1 1 auto;
 }
 
 .course-details {
-	border: 1px solid $concrete;
+	border: 2px solid $concrete;
 	margin-bottom: 1.5rem;
 	padding: 1rem 1rem 0 1rem;
 }
@@ -41,4 +47,19 @@
 	display: flex;
 	flex-direction: column;
 	margin-top: 0.5rem;
+}
+
+.course-more {
+  padding-bottom: $logo-block-mobile * 1.5;
+  padding-top: $logo-block-mobile;
+  text-align: center;
+
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: $logo-block * 1.5;
+    padding-top: $logo-block;
+  }
+
+  .button {
+    margin-bottom: 0;
+  }
 }

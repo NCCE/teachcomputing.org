@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
-  let(:activity_one) { create(:activity, future_learn_course_id: '1234') }
-  let(:activity_two) { create(:activity, future_learn_course_id: '5678') }
+  let(:activity_one) { create(:activity, future_learn_course_uuid: '1234') }
+  let(:activity_two) { create(:activity, future_learn_course_uuid: '5678') }
   let(:user_one) { create(:user, email: 'user1@example.com') }
   let(:user_two) { create(:user, email: 'user2@example.com') }
   let(:user_three) { create(:user, email: 'user3@example.com') }
