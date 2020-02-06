@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:activity_one) { create(:activity, stem_course_id: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') }
-  let(:activity_two) { create(:activity, stem_course_id: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ax') }
-  let(:activity_three) { create(:activity, stem_course_id: '92f4f86e-0237-4ecc-a905-2f6c62d6b5aw') }
+  let(:activity_one) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') }
+  let(:activity_two) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ax') }
+  let(:activity_three) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5aw') }
   let(:achievement) { create(:achievement, activity_id: activity_three.id, user_id: user.id) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
 

@@ -11,7 +11,7 @@
         <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
         <%= render 'courses/courses-details' %>
         <div class="course-summary govuk-!-margin-bottom-7">
-          <%= sanitize @course.summary.gsub!(/\&nbsp;/, ''), tags: %w(p h1 h2 h3 ul li ol) %>
+          <%= sanitize @course.summary.gsub(/\&nbsp;/, ''), tags: %w(div body html p h1 h2 h3 ul li ol) %>
         </div>
         <%= render 'courses/courses-card' %>
       </div>
