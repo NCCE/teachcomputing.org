@@ -113,6 +113,43 @@
   border-color: $deep-cerulean;
 }
 
+.ncce-header__navigation-certification-progress-bar-container {
+  display: flex;
+  flex-direction: row;
+
+  @include govuk-media-query($from: desktop) {
+    display: block;
+  }
+}
+
+.ncce-header__navigation-certification-progress-bar {
+  background-color: $concrete;
+  color: $pink;
+  height: 12px;
+  width: 100%;
+  margin-top: 4px;
+  margin-left: 30px;
+
+  @include govuk-media-query($from: desktop) {
+    height: 5px;
+    display: block;
+    margin-top: 2px;
+    margin-left: 0;
+  }
+
+  &::-webkit-progress-bar {
+    background-color: $concrete;
+  }
+
+  &::-webkit-progress-value {
+    background: $deep-cerulean;
+  }
+
+  &::-moz-progress-bar {
+    background: $deep-cerulean;
+  }
+}
+
 .ncce-header__navigation-item-cert {
   padding: 10px 0;
   border-bottom: 1px solid $deep-cerulean;
