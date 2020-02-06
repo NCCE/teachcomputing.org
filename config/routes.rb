@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
     get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
+  get '/welcome', to: 'welcome#show', as: :welcome
 
   require 'sidekiq/web'
   if Rails.env.production?
