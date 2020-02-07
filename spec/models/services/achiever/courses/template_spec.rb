@@ -16,6 +16,7 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:meta_description)
       expect(course_template).to respond_to(:occurrences)
       expect(course_template).to respond_to(:online_cpd)
+      expect(course_template).to respond_to(:outcomes)
       expect(course_template).to respond_to(:subjects)
       expect(course_template).to respond_to(:summary)
       expect(course_template).to respond_to(:title)
