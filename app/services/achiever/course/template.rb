@@ -3,9 +3,11 @@ class Achiever::Course::Template
                 :age_groups,
                 :booking_url,
                 :course_template_no,
+                :duration,
                 :meta_description,
                 :occurrences,
                 :online_cpd,
+                :outcomes,
                 :subjects,
                 :summary,
                 :title,
@@ -22,13 +24,20 @@ class Achiever::Course::Template
     @age_groups = template.send('Template.AgeGroups').split(';')
     @booking_url = template.send('Template.BookingURL')
     @course_template_no = template.send('Template.COURSETEMPLATENO')
+    @duration = template.send('Template.Duration')
     @meta_description = template.send('Template.MetaDescription')
-    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @occurrences = []
+    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
+    @outcomes = template.send('Template.Outcomes')
     @subjects = template.send('Template.AdditionalSubjects').split(';')
     @summary = template.send('Template.Summary')
     @title = template.send('Template.TemplateTitle')
     @workstream = template.send('Template.Workstream')
+  end
+
+  def with_occurrences
+    occurrences = online_cpd ? Achiever::Course::Occurrence.online : Achiever::Course::Occurrence.face_to_face
+    occurrences.select { |occurrence| occurrence.course_template_no == course_template_no }
   end
 
   def self.all

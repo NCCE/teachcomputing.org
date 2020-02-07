@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP201') }
-  let(:activity) { create(:activity, stem_course_id: course.course_template_no) }
+  let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) {
     programme.activities << activity
@@ -16,6 +16,8 @@ RSpec.describe CoursesController do
 
   describe 'GET #show' do
     before do
+      stub_age_groups
+      stub_face_to_face_occurrences
       stub_course_templates
       activity
     end
@@ -29,12 +31,20 @@ RSpec.describe CoursesController do
         get course_path(id: course.activity_code, name: 'this-is-a-name')
       end
 
+      it 'sets the age_groups' do
+        expect(assigns(:age_groups)).not_to eq(nil)
+      end
+
       it 'sets the course correctly' do
         expect(assigns(:course).title).to eq("#{course.title}")
       end
 
       it 'sets the programme' do
         expect(assigns(:programme)).to eq(nil)
+      end
+
+      it 'assigns list of occurrences' do
+        expect(assigns(:occurrences)).not_to eq(nil)
       end
 
       it 'assigns list of other_courses' do
@@ -64,11 +74,6 @@ RSpec.describe CoursesController do
         expect(response.body).to include(programme_path(programme.slug))
       end
     end
-
-    # context 'when user is not logged in' do
-    #   before do
-    #   end
-    # end
 
     context 'when user is logged in' do
       before do

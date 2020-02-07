@@ -16,6 +16,7 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:meta_description)
       expect(course_template).to respond_to(:occurrences)
       expect(course_template).to respond_to(:online_cpd)
+      expect(course_template).to respond_to(:outcomes)
       expect(course_template).to respond_to(:subjects)
       expect(course_template).to respond_to(:summary)
       expect(course_template).to respond_to(:title)
@@ -101,6 +102,17 @@ RSpec.describe Achiever::Course::Template do
         template = described_class.all.second
         expect(template.by_certificate('primary-certificate')).to eq false
       end
+    end
+  end
+
+  describe '#with_occurrences' do
+    before do
+      stub_course_templates
+      stub_face_to_face_occurrences
+    end
+
+    it 'returns a collection of with_occurrences' do
+      expect(described_class.all.first.with_occurrences.count).to eq 4
     end
   end
 end

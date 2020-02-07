@@ -7,7 +7,7 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
     csv.each do |record|
       user = User.find_by('email ILIKE ?', record['learner_identifier'])
       begin
-        activity = Activity.find_by!(future_learn_course_id: record['course_uuid'])
+        activity = Activity.find_by!(future_learn_course_uuid: record['course_uuid'])
       rescue ActiveRecord::RecordNotFound
         unless missing_courses.include?(record['course_uuid'])
           Raven.capture_message("Missing course #{record['run_title']}: id #{record['course_uuid']} (user is: #{record['learner_identifier']})")

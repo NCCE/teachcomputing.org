@@ -25,12 +25,12 @@ describe CoursesHelper, type: :helper do
   let(:programme) {
     programme = create(:programme)
     (0..5).each do |i|
-      activity = create(:activity, category:'online', stem_course_id: i.to_s)
+      activity = create(:activity, category:'online', stem_course_template_no: i.to_s)
       programme.activities << activity
     end
 
     (6..12).each do |i|
-      activity = create(:activity, category: 'face-to-face', stem_course_id: i.to_s)
+      activity = create(:activity, category: 'face-to-face', stem_course_template_no: i.to_s)
       programme.activities << activity
     end
     programme
@@ -93,6 +93,16 @@ describe CoursesHelper, type: :helper do
 
     it 'returns icon for online courses' do
       expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
+    end
+  end
+
+  describe('#online_course_date') do
+    it 'returns Join Now when it is in the present' do
+      expect(helper.online_course_date(DateTime.now.change(year: 2021).to_s)).to include 'Register now'
+    end
+
+    it 'returns register when it is in the future' do
+      expect(helper.online_course_date(DateTime.now.to_s)).to eq 'Join now'
     end
   end
 

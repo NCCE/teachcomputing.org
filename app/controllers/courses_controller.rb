@@ -26,9 +26,12 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @age_groups = Achiever::Course::AgeGroup.all
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    @occurrences = @course.with_occurrences
     @other_courses = Achiever::Course::Template.without(@course)
     course_programme
+    
     render :show
   end
 
@@ -104,7 +107,7 @@ class CoursesController < ApplicationController
     end
 
     def course_programme
-      @activity = Activity.find_by(stem_course_id: @course.course_template_no)
+      @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
       @programme = @activity.programmes.first if @activity
     end
 end

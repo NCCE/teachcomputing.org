@@ -48,6 +48,13 @@ module CoursesHelper
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 
+  def online_course_date(start_date)
+    date = Date.parse(start_date, '%-d %B')
+    return "Register now (Starts on #{date})" if date.future?
+
+    'Join now'
+  end
+
   def user_achievement_state(user, activity)
     achievement = Achievement.find_by(user_id: user.id, activity_id: activity&.id)
 
@@ -57,7 +64,7 @@ module CoursesHelper
   end
 
   def other_courses_on_programme(courses, course, programme, how_many = 3)
-    course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_id)
+    course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_template_no)
 
     courses.select do |c|
       course_ids.include?(c.course_template_no) && course.course_template_no != c.course_template_no
