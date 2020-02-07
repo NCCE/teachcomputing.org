@@ -28,10 +28,13 @@ class CoursesController < ApplicationController
   def show
     @age_groups = Achiever::Course::AgeGroup.all
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+
+    return redirect_to course_path(id: @course.activity_code, name: @course.title.parameterize) if params[:name].nil?
+
     @occurrences = @course.with_occurrences
     @other_courses = Achiever::Course::Template.without(@course)
     course_programme
-    
+
     render :show
   end
 
