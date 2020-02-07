@@ -6,7 +6,7 @@
       <p class="govuk-body-s ncce-aside__text"><%= @course.online_cpd ? 'The course is delivered by Future Learn' : 'The course is delivered by STEM Learning' %></p>
       <p class="govuk-body">
         <%=
-          link_to_if(@course.booking_url.empty?, @course.online_cpd ? 'Join this course' : 'Book this course', stem_course_link(course.course_template_no), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) do
+          link_to_if(@course.booking_url.empty?, @course.online_cpd ? 'Join this course' : 'Book this course', stem_course_link(@course.course_template_no), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) do
             link_to(@course.online_cpd ? 'Join this course' : 'Book this course', @course.booking_url, class: 'govuk-button button--aside', draggable: 'false', target: :_blank)
           end
         %>
