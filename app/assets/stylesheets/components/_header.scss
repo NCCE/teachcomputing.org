@@ -132,7 +132,7 @@
 
   @include govuk-media-query($from: desktop) {
     height: 5px;
-    display: block;
+    display: initial;
     margin-top: 2px;
     margin-left: 0;
   }
