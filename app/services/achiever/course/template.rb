@@ -7,6 +7,7 @@ class Achiever::Course::Template
                 :meta_description,
                 :occurrences,
                 :online_cpd,
+                :outcomes,
                 :subjects,
                 :summary,
                 :title,
@@ -25,8 +26,9 @@ class Achiever::Course::Template
     @course_template_no = template.send('Template.COURSETEMPLATENO')
     @duration = template.send('Template.Duration')
     @meta_description = template.send('Template.MetaDescription')
-    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @occurrences = []
+    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
+    @outcomes = template.send('Template.Outcomes')
     @subjects = template.send('Template.AdditionalSubjects').split(';')
     @summary = template.send('Template.Summary')
     @title = template.send('Template.TemplateTitle')

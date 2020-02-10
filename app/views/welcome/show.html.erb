@@ -1,0 +1,21 @@
+<% meta_tag :title, 'Welcome to Teach Computing' %>
+<%= render 'components/hero', hero_title: 'Welcome to Teach Computing', small_title: true, colour: 'blue', glyph_num: '3', glyph_position: 'bottom' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="welcome__card-grid">
+      <div class="card card--primary-certificate">
+        <h2 class="govuk-heading-m card__heading">Teach primary computing</h2>
+        <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
+        <p class="govuk-body govuk-!-margin-bottom-0"><%= link_to 'Enrol now', primary_path, class: 'govuk-button button' %></p>
+      </div>
+      <div class="card card--cs-accelerator">
+        <h2 class="govuk-heading-m card__heading">Teach GCSE computer science</h2>
+        <p class="govuk-body card__text">The Computer Science Accelerator
+          Programme is a certified professional development programme
+          designed to equip you with the subject knowledge and confidence to
+          successfully teach GCSE computer science.</p>
+        <p class="govuk-body govuk-!-margin-bottom-0"><%= link_to 'Enrol now', cs_accelerator_path, class: 'govuk-button button' %></p>
+      </div>
+    </div>
+  </div>
+</div>
