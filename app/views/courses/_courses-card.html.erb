@@ -4,7 +4,13 @@
     <div class="card card--cs-accelerator card--bottom-glyph">
       <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
       <h2 class="govuk-heading-m card__heading"><%= @programme.title %></h2>
-      <p class="govuk-body card__text"><%= @programme.description %></p>
+			<% case  @programme.title %>
+				<% when 'Teach primary computing' %>
+					<p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
+				<% when 'Teach GCSE computer science' %>
+					<p class="govuk-body card__text">Our certified professional development programme will equip you with the subject knowledge and confidence to successfully teach and lead GCSE computer science.</p>
+			<% end %>
+			</p>
       <% unless @programme.user_enrolled?(current_user) %>
         <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', programme_path(@programme.slug), class: 'ncce-link' %></strong></p>
       <% end %>
