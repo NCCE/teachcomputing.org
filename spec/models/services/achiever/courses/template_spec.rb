@@ -112,7 +112,7 @@ RSpec.describe Achiever::Course::Template do
     end
 
     it 'returns a collection of with_occurrences' do
-      expect(described_class.all.first.with_occurrences.count).to eq 4
+      expect(described_class.all.first.with_occurrences.count).to eq 51
     end
   end
 end
