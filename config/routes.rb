@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
-  get '/courses/:id/*name', action: :show, controller: 'courses', as: 'course'
+  get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
