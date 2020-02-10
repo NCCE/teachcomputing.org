@@ -1,0 +1,12 @@
+.welcome__card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $logo-block-mobile;
+  @include govuk-media-query($from: tablet) {
+    grid-gap: $logo-block;
+  }
+
+  .card {
+    margin-bottom: 0;
+  }
+}
