@@ -60,6 +60,20 @@ RSpec.describe CoursesController do
       end
     end
 
+    context 'when the url just contains the activity code' do
+      before do
+        get course_path(id: course.activity_code)
+      end
+
+      it 'redirects' do
+        expect(response.status).to eq(302)
+      end
+
+      it 'adds the course title to the redirect url' do
+        expect(response).to redirect_to(/\/#{course.title.parameterize}$/)
+      end
+    end
+
     context 'when the course is part of a programme' do
       before do
         programme_activity

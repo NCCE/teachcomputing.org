@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe('courses/_aside-section', type: :view) do
   let(:user) { create(:user) }
-  let(:course) { instance_double('course', booking_url: 'test.com/course') }
+  let(:course) { Achiever::Course::Template.all.first }
   let(:programme) { create(:programme) }
 
   before do
+    stub_course_templates
     @course = course
   end
 
