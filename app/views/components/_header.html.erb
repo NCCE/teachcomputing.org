@@ -21,9 +21,17 @@
           <li>
           <% if current_user %>
             <ul class='ncce-header__navigation-user'>
-              <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
+						<% if current_user.programmes.empty? %>
+							<li class="govuk-header__navigation-item ncce-header__navigation-enrol">
+    							<span class="enrol-ring"></span>
+    							<span class="enrol-dot"></span>
+                <%= link_to 'Enrol now', welcome_path, class: 'govuk-header__link' %>
               </li>
+            <% else %>
+              <li class="govuk-header__navigation-item ncce-header__navigation-item">
+                <%= certificate_progress_for_user(current_user) %>
+              </li>
+						<% end %>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
                 <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
               </li>
@@ -42,14 +50,12 @@
             </ul>
           <% end %>
             <ul class='ncce-header__navigation-certification'>
-              <% if Programme.primary_certificate && Programme.primary_certificate.enrollable %>
-                <li class="ncce-header__navigation-item-cert">
-                  <%= link_to 'Primary teachers', primary_teachers_path, class: 'govuk-header__link' %>
-                </li>
-                <li class="ncce-header__navigation-item-cert">
-                  <%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link' %>
-                </li>
-              <% end %>
+              <li class="ncce-header__navigation-item-cert">
+                <%= link_to 'Primary teachers', primary_teachers_path, class: 'govuk-header__link' %>
+              </li>
+              <li class="ncce-header__navigation-item-cert">
+                <%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link' %>
+              </li>
             </ul>
           </li>
         </ul>
