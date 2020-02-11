@@ -179,7 +179,11 @@
     background-color: $deep-cerulean;
 		margin-right: 15px;
     padding: 0.1rem 0.4rem;
-		position: relative;
+    position: relative;
+
+    @include govuk-media-query($from: desktop) {
+      margin-right: 5px;
+    }
 
 	.govuk-header__link {
     color: $white;
@@ -199,7 +203,7 @@
 
 .enrol-ring {
 	animation: pulse 1s ease-out;
-	animation-iteration-count: infinite; 
+	animation-iteration-count: infinite;
 	border: 3px solid $dixie;
 	border-radius: 3rem;
 	height: 20px;
