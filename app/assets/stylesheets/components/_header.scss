@@ -177,12 +177,11 @@
 
 .ncce-header__navigation-enrol {
     background-color: $deep-cerulean;
-		margin-right: 15px;
     padding: 0.1rem 0.4rem;
     position: relative;
 
     @include govuk-media-query($from: desktop) {
-      margin-right: 5px;
+      margin-right: 15px;
     }
 
 	.govuk-header__link {
