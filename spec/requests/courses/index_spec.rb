@@ -28,7 +28,7 @@ RSpec.describe CoursesController do
       end
 
       it 'has correct number of courses' do
-        expect(assigns(:courses).count).to eq(34)
+        expect(assigns(:courses).count).to eq(36)
       end
 
       it 'assigns adds course_occurrences to their respective courses' do
@@ -77,7 +77,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(20)
+          expect(assigns(:courses).count).to eq(22)
         end
 
         it 'initalises current certificate' do
@@ -99,7 +99,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(3)
+          expect(assigns(:courses).count).to eq(4)
         end
 
         it 'initalises current topic' do
@@ -125,7 +125,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(12)
+          expect(assigns(:courses).count).to eq(10)
         end
 
         it 'courses have correct location' do
@@ -160,7 +160,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(14)
+          expect(assigns(:courses).count).to eq(22)
         end
 
         it 'ensures the course templates are marked as online_cpd' do
@@ -188,7 +188,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(20)
+          expect(assigns(:courses).count).to eq(14)
         end
 
         it 'course templates are not marked as online' do
@@ -216,7 +216,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(22)
+          expect(assigns(:courses).count).to eq(27)
         end
 
         it 'initalises current level' do
@@ -238,7 +238,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(7)
+          expect(assigns(:courses).count).to eq(6)
         end
 
         it 'shows a flash notice' do
@@ -257,7 +257,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(15)
+          expect(assigns(:courses).count).to eq(20)
         end
 
         it 'shows a flash notice' do
@@ -280,7 +280,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(7)
+          expect(assigns(:courses).count).to eq(6)
         end
 
         it 'has filtered town' do
@@ -315,7 +315,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(7)
+          expect(assigns(:courses).count).to eq(6)
         end
 
         it 'has filtered town' do
