@@ -9,10 +9,10 @@ class AuthController < ApplicationController
 
     if user_exists
       flash[:notice] = 'Welcome back, good to see you again!'
-      redirect_to course_booking_uri || dashboard_path
+      redirect_to course_booking_uri || welcome_path
     else
       flash[:notice] = 'Hello and welcome to the National Centre for Computing Education'
-      redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : dashboard_path(firstLogin: true)
+      redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : welcome_path(firstLogin: true)
     end
   end
 
