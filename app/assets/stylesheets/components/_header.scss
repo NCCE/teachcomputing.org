@@ -175,6 +175,63 @@
   }
 }
 
+.ncce-header__navigation-enrol {
+    background-color: $deep-cerulean;
+    padding: 0.1rem 0.4rem;
+		position: relative;
+
+	.govuk-header__link {
+    color: $white;
+		font-weight: bold !important;
+	}
+}
+
+.enrol-dot {
+	background-color: $dixie;
+	border-radius: 50%;
+	height: 0.6rem;
+	position: absolute;
+	right: -5px;
+	top: -5px;
+	width: 0.6rem;
+}
+
+.enrol-ring {
+	animation: pulse 1s ease-out;
+	animation-iteration-count: infinite; 
+	border: 3px solid $dixie;
+	border-radius: 3rem;
+	height: 1.2rem;
+	position: absolute;
+	right: -12px;
+	top: -12px;
+	width: 1.2rem;
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 0;
+		transform: scale(0.1, 0.1);
+	}
+	50% {
+		opacity: 1.0;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.2, 1.2);
+	}
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.enrol-ring {
+		animation: none;
+	}
+	.enrol-dot,
+	.enrol-ring {
+		display: none;
+	}
+}
+
 .govuk-skip-link:focus {
   background-color: $deep-cerulean;
   color: $white;
