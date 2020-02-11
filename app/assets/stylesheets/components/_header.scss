@@ -177,6 +177,7 @@
 
 .ncce-header__navigation-enrol {
     background-color: $deep-cerulean;
+		margin-right: 15px;
     padding: 0.1rem 0.4rem;
 		position: relative;
 
@@ -189,11 +190,11 @@
 .enrol-dot {
 	background-color: $dixie;
 	border-radius: 50%;
-	height: 0.6rem;
+	height: 10px;
 	position: absolute;
 	right: -4px;
 	top: -5px;
-	width: 0.6rem;
+	width: 10px;
 }
 
 .enrol-ring {
@@ -201,11 +202,11 @@
 	animation-iteration-count: infinite; 
 	border: 3px solid $dixie;
 	border-radius: 3rem;
-	height: 1.2rem;
+	height: 20px;
 	position: absolute;
-	right: -12px;
+	right: -13px;
 	top: -13px;
-	width: 1.2rem;
+	width: 20px;
 }
 
 @keyframes pulse {
