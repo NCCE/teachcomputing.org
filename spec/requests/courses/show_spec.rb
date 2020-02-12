@@ -101,10 +101,6 @@ RSpec.describe CoursesController do
           get course_path(course.activity_code, name: 'this-is-a-dud')
         end
 
-        it 'has no link to the programme' do
-          expect(response.body).not_to include(programme_path(programme.slug))
-        end
-
         it 'shows enrolment status' do
           expect(response.body).not_to include('You are enrolled')
         end
