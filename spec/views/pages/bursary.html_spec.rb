@@ -14,7 +14,7 @@ RSpec.describe('pages/bursary', type: :view) do
   end
 
   it 'has price table' do
-    expect(rendered).to have_css('.govuk-table', count: 4)
+    expect(rendered).to have_css('.govuk-table', count: 3)
   end
 
 end

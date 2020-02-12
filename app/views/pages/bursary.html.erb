@@ -33,7 +33,7 @@
               </tr>
             </tbody>
           </table>
-          <p class="govuk-body">Subsequent teachers from the same school will pay £35 a day. The fee for teachers working in independent schools is £220 a day.</p>  
+          <p class="govuk-body">Subsequent teachers from the same school will pay £35 a day. The fee for teachers working in independent schools is £220 a day.</p>
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
           <h2 class="govuk-heading-m" id="gcse">Secondary teachers – GCSE level</h2>
           <p class="govuk-body"><%= link_to 'The Computer Science Accelerator Programme', cs_accelerator_path, class: 'ncce-link' %> offers free online courses to all teachers and free face-to-face courses for teachers working in state-funded education.</p>
@@ -104,31 +104,27 @@
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 					<h2 class="govuk-heading-m" id="subject">Subject Matter Expert consultancy and funding</h2>
           <p class="govuk-body">We offer fully-funded consultancy from a network of Subject Matter Experts, to support eligible <%= link_to 'primary schools', primary_teachers_path, class: 'ncce-link' %> and <%= link_to 'secondary schools', secondary_teachers_path, class: 'ncce-link' %> and colleges to improve their computing offer. Bursary funding is also available to schools and colleges that meet the criteria; payable to the school or college upon implementation of all actions in an agreed plan.</p>
-          <table class="govuk-table">
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">School or college eligibility</td>
-								<td class="govuk-table__cell">Not currently offering GCSE computer science</td>
-         				<td class="govuk-table__cell">Considering dropping GCSE computer science (criteria below)</td>
-								<td class="govuk-table__cell">Has started teaching GCSE computer science in the last 2 years</td>
-								<td class="govuk-table__cell">Primary or secondary school located in <%= link_to 'Local Area Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %></td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Free consultancy and guidance</td>
-								<td class="govuk-table__cell">2.5 days</td>
-         				<td class="govuk-table__cell">1 day</td>
-								<td class="govuk-table__cell">1 day</td>
-								<td class="govuk-table__cell">0.5 days</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">£1400 bursary</td>
-								<td class="govuk-table__cell">Yes</td>
-								<td class="govuk-table__cell">Yes</td>
-								<td class="govuk-table__cell">n/a</td>
-								<td class="govuk-table__cell">n/a</td>
-              </tr>
-            </tbody>
-          </table>
+          <h3 class="govuk-heading-s">School or college eligibility</h3>
+          <p class="govuk-body"><strong>Not currently offering GCSE computer science</strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>2.5 days free consultancy and guidance</li>
+            <li>£1400 bursary</li>
+          </ul>
+          <p class="govuk-body"><strong>Considering dropping GCSE computer science (criteria below)</strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>1 day free consultancy and guidance</li>
+            <li>£1400 bursary</li>
+          </ul>
+          <p class="govuk-body"><strong>Has started teaching GCSE computer science in the last 2 years</strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>1 day free consultancy and guidance</li>
+            <li>No bursary</li>
+          </ul>
+          <p class="govuk-body"><strong>Primary or secondary school located in <%= link_to 'Local Area Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %></strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>0.5 days free consultancy and guidance</li>
+            <li>No bursary</li>
+          </ul>
 					<p class="govuk-body">The £1400 bursary is in addition to any funding we offer schools and colleges to support participation in Teach Computing CPD.</p>
 					<h3 class="govuk-heading-s">Which schools/colleges are considered at risk of dropping computer science?</h3>
 					<p class="govuk-body">Schools and colleges in which senior leaders are considering not offering GCSE computer science the following academic year, due to one or more of the following criteria:<p>
