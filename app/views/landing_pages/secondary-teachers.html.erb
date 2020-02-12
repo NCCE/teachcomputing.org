@@ -89,22 +89,30 @@
               Programme is a certified professional development programme
               designed to equip you with the subject knowledge and confidence to
               successfully teach GCSE computer science.</p>
-            <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong></p>
+            <% if current_user && @programme.user_enrolled?(current_user) %>
+              <%
+                achieved_credits = @programme.credits_achieved_for_certificate(current_user)
+                max_credits = @programme.max_credits_for_certificate
+              %>
+              <progress class="card__progress-bar" aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits" value="<%= achieved_credits %>" max="<%= max_credits %>"></progress>
+            <% else %>
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong></p>
+            <% end %>
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
           <div class="testimonial">
-            <div class="testimonial__bio">
-              <%= image_tag '/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
-              <p class="govuk-body-s"><strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
-                Maths and Computer Science teacher, London <span class="screen-reader-only">said</span>
-              </p>
-            </div>
             <p class="govuk-body-s testimonial__text">
               “The online courses let me go through the content at my own pace,
               while the face-to-face gave me more hands-on experience with
               practical programming, with concepts explained more in-depth.”
             </p>
+            <div class="testimonial__bio">
+              <%= image_tag '/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
+              <p class="govuk-body-s"><strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
+                Maths and Computer Science teacher, London
+              </p>
+            </div>
           </div>
         </div>
       </div>
