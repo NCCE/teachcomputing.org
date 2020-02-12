@@ -16,7 +16,8 @@ module OmniAuth::Strategies
         first_name: 'firstName',
         last_name: 'lastName',
         email: 'mail',
-        achiever_contact_no: 'achieverContactNo'
+        achiever_contact_no: 'achieverContactNo',
+        achiever_organisation_no: 'achieverOrganisationNo'
       }.each_pair do |key, stem_key|
         our_info[key] = user_info['attributes'][stem_key][0] if user_info['attributes'].has_key?(stem_key)
       end
