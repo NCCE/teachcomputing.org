@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
-  get '/bursary-cms', action: :cms_page, controller: :cms, defaults: { page_slug: 'bursary' }
+  get '/cms/:page_slug', action: :cms_page, controller: :cms, as: :cms_page, defaults: { page_slug: 'bursary' }, constraints: { page_slug: /(hubs|bursary)/ }
+  get '/cms/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache, defaults: { page_slug: 'bursary' }, constraints: { page_slug: /(hubs|bursary)/ }
   get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions, defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }

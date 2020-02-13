@@ -5,7 +5,7 @@ RSpec.describe CmsController do
     context 'with a valid page' do
       before do
         stub_cms_page
-        get '/bursary-cms'
+        get '/cms/bursary'
       end
 
       it 'assigns @page' do
@@ -27,7 +27,7 @@ RSpec.describe CmsController do
       end
 
       it 'raises an error' do
-        expect { get '/bursary-cms' }.to raise_error(NoMethodError)
+        expect { get '/cms/bursary' }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

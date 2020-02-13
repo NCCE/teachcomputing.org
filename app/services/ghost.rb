@@ -12,19 +12,20 @@ class Ghost
     }
 
     begin
-      result = Rails.cache.fetch("get_single_page-#{slug}", expires_in: 1.hour) do
+      result = Rails.cache.fetch("get_single_page-#{slug}", expires_in: 1.day) do
         RestClient.get(request, params: params).body
       end
 
       pages = ActiveSupport::JSON.decode(result)
       return pages['pages'][0]
-    rescue SocketError
-      return nil
-    rescue RestClient::Exception => error
+    rescue StandardError => error
       Raven.capture_exception(error)
-    rescue ActiveSupport::JSON.parse_error
-      Raven.capture_message("Ghost API JSON Parse error for string: #{result}")
+      raise ActiveRecord::RecordNotFound
     end
+  end
+
+  def clear_page_cache(slug = nil)
+    Rails.cache.delete("get_single_page-#{slug}")
   end
 
   def get_featured_posts(how_many = 2)
