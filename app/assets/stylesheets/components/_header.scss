@@ -248,3 +248,14 @@
     padding-bottom: 0;
   }
 }
+
+.magda {
+ display: grid !important;
+}
+
+.a {
+	order: 1;
+  @include govuk-media-query($from: tablet) {
+      order:  5;
+    }
+}
