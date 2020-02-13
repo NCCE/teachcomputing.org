@@ -78,7 +78,7 @@
 }
 
 .ncce-header__navigation {
-  float: none;
+  float: right;
   margin-bottom: 0;
   padding-top: $logo-block-mobile;
   @include govuk-media-query($from: desktop) {
@@ -251,11 +251,10 @@
 
 .magda {
  display: grid !important;
+grid-template-columns: repeat(3, 1fr);
+text-align: right;
 }
 
-.a {
-	order: 1;
-  @include govuk-media-query($from: tablet) {
-      order:  5;
-    }
+.d {
+grid-column: 2/3;
 }
