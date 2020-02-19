@@ -31,20 +31,16 @@ RSpec.describe('courses/index', type: :view) do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Courses')
   end
 
-  context 'when there is not signed in user' do
-    before do
-      allow(view).to receive(:current_user).and_return(nil)
-    end
-
-    it 'has a create account link' do
-      expect(rendered).to have_link('Create an account', href: /register/)
+  it 'links to the course landing page for each course' do
+    @courses.each do |course|
+      expect(rendered).to have_link(course.title, href: /#{course.activity_code}\/#{course.title.parameterize}/)
     end
   end
 
   describe 'courses' do
     it 'renders each of the course template titles' do
       @courses.each do |course|
-        expect(rendered).to have_css('.govuk-heading-s', text: course.title)
+        expect(rendered).to have_css('.ncce-courses__heading', text: course.title)
       end
     end
 
