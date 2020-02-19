@@ -113,8 +113,45 @@
   border-color: $deep-cerulean;
 }
 
+.ncce-header__navigation-certification-progress-bar-container {
+  display: flex;
+  flex-direction: row;
+
+  @include govuk-media-query($from: desktop) {
+    display: block;
+  }
+}
+
+.ncce-header__navigation-certification-progress-bar {
+  display: block;
+  background-color: $concrete;
+  width: 100%;
+  margin-top:5px;
+  padding:2px;
+  height:9px;
+  margin-left: 30px;
+
+  @include govuk-media-query($from: desktop) {
+    display: inherit;
+    margin-left: 0;
+  }
+
+  &::-webkit-progress-bar {
+    background-color: $concrete;
+  }
+
+  &::-webkit-progress-value {
+    background: $deep-cerulean;
+  }
+
+  &::-moz-progress-bar {
+    background: $deep-cerulean;
+  }
+}
+
 .ncce-header__navigation-item-cert {
   padding: 10px 0;
+
   border-bottom: 1px solid $deep-cerulean;
 
   @include govuk-media-query($from: desktop) {
@@ -134,6 +171,67 @@
     display: inline-block;
     padding: 5px 0;
   }
+}
+
+.ncce-header__navigation-enrol {
+    background-color: $deep-cerulean;
+    padding: 0.1rem 0.4rem;
+    position: relative;
+
+    @include govuk-media-query($from: desktop) {
+      margin-right: 15px;
+    }
+
+	.govuk-header__link {
+    color: $white;
+		font-weight: bold !important;
+	}
+}
+
+.enrol-dot {
+	background-color: $dixie;
+	border-radius: 50%;
+	height: 10px;
+	position: absolute;
+	right: -5px;
+	top: -5px;
+	width: 10px;
+}
+
+.enrol-ring {
+	animation: pulse 1s ease-out;
+	animation-iteration-count: infinite;
+	border: 3px solid $dixie;
+	border-radius: 3rem;
+	height: 20px;
+	position: absolute;
+	right: -13px;
+	top: -13px;
+	width: 20px;
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 0;
+		transform: scale(0.1, 0.1);
+	}
+	50% {
+		opacity: 1.0;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.2, 1.2);
+	}
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.enrol-ring {
+		animation: none;
+	}
+	.enrol-dot,
+	.enrol-ring {
+		display: none;
+	}
 }
 
 .govuk-skip-link:focus {
