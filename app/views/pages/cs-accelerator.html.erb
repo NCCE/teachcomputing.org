@@ -1,5 +1,5 @@
-<% meta_tag :title, "CS Accelerator - Teach Computing" %>
-<%= render 'pages/certification/hero', full_width: true  %>
+<% meta_tag :title, 'CS Accelerator - Teach Computing' %>
+<%= render 'pages/certification/hero', full_width: true %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
@@ -24,7 +24,7 @@
           <div class="ncce-aside">
             <% if current_user %>
               <h2 class="govuk-heading-m ncce-aside__title">Enrol</h2>
-            <% else%>
+            <% else %>
               <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
             <% end %>
             <P class="govuk-body-s ncce-aside__text">Begin your journey towards being a fully qualified GCSE computer science teacher!</p>
@@ -38,7 +38,7 @@
               <li>Pass the test and receive your qualification</li>
             </ol>
             <% if current_user %>
-              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.cs_accelerator.slug, :user_programme_enrolment => { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
+              <p class="govuk-body"><%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.cs_accelerator.slug, user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
             <% else %>
               <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
               <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning account? Simply <%= link_to 'log in', auth_url, method: :post, class: 'ncce-link ncce-link__log', role: 'button', draggable: 'false' %></p>
