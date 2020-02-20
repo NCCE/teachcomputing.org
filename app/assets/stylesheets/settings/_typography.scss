@@ -1,10 +1,15 @@
-.govuk-heading-s,
 .govuk-heading-m,
 .govuk-heading-l,
 .govuk-heading-xl {
+  color: $grey-dark-x;
   font-family: $font-family-heading;
   font-weight: 400;
+}
+
+.govuk-heading-s {
   color: $grey-dark-x;
+  font-family: $font-family-body;
+  font-weight: bold;
 }
 
 .govuk-body {
