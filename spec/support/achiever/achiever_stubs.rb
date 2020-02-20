@@ -14,7 +14,7 @@ module AchieverStubs
     json_response = File.new('spec/support/achiever/courses/templates.json')
     stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
   end
-  
+
   def stub_delegate
     json_response = File.new('spec/support/achiever/courses/delegate.json')
     uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO={contact_no}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CoursesForCurrentDelegateByProgramme'
@@ -41,6 +41,24 @@ module AchieverStubs
   def stub_occurrence_details
     json_response = File.new('spec/support/achiever/courses/occurrence_details.json')
     uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_valid_contact_details
+    json_response = File.new('spec/support/achiever/courses/contact_valid.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-valid&Page=1&RecordCount=1000&cmd=ContactDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_invalid_contact_details
+    json_response = File.new('spec/support/achiever/courses/contact_invalid.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-invalid&Page=1&RecordCount=1000&cmd=ContactDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_contact_no_org_details
+    json_response = File.new('spec/support/achiever/courses/contact_no_org.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-no-org&Page=1&RecordCount=1000&cmd=ContactDetails'
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 end
