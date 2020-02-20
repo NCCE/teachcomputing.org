@@ -16,13 +16,12 @@ class UpdateUsersDetailsFromAchieverJob < ApplicationJob
     if details
       achiever_organisation_no = details.send('Contact.COMPANYNO')
       if achiever_organisation_no.blank?
-        Rails.logger.warn "UpdateUsersDetailsFromAchieverJob: No achiever_organisation_no for user: #{user.id}"
+        Rails.logger.warn "UpdateUsersDetailsFromAchieverJob - No achiever_organisation_no for user: #{user.id}"
       else
-        user.stem_achiever_organisation_no = achiever_organisation_no
-        user.save!
+        user.update_attribute(:stem_achiever_organisation_no, achiever_organisation_no)
       end
     else
-      Rails.logger.warn "UpdateUsersDetailsFromAchieverJob: missing user: #{user.id}"
+      Rails.logger.warn "UpdateUsersDetailsFromAchieverJob - missing user: #{user.id}"
     end
   end
 end
