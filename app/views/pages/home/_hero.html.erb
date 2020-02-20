@@ -8,11 +8,9 @@
               <strong>training</strong>, <strong>resources</strong> and
               <strong>guidance</strong> to help you teach computing with
               confidence.</p>
-          <%=
-            link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button button hero-button--home') do
-              link_to 'Get started!', create_account_url, class: 'govuk-button button  hero-button--home'
-            end
-          %>
+          <%= link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button button hero-button--home') do %>
+            <%= link_to 'Get started!', create_account_url, class: 'govuk-button button  hero-button--home' %>
+          <% end %>
         </div>
         <div class="text-photo-hero__block--photo">
           <iframe class="axe-skip-a11y-test" width="640" height="360" title="Embedded video" src="https://www.youtube.com/embed/SwV3QyVc-go?cc_load_policy=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

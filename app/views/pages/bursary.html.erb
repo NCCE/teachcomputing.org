@@ -1,140 +1,222 @@
-<% meta_tag :title, "Bursaries and fees - Teach Computing" %>
+<% meta_tag :title, 'Bursaries and fees - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Bursaries and fees' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds ncce-bursary__content">
-          <p class="govuk-body">We offer bursaries to state-funded schools and colleges across England to support development in computing education.</p>
-          <p class="govuk-body">These bursaries can be used by your school or college to cover costs associated with CPD, including travel and supply cover, or to implement guidance from a Subject Matter Expert to improve your computing offer.</p>
-					<ul class="govuk-body-s govuk-list govuk-list--bullet">
-            <li> <%= link_to 'Primary teachers – Key Stages 1 and 2', '#stage1', class: 'ncce-link' %></li>
-						<li> <%= link_to 'Secondary teachers – GCSE level', '#gcse', class: 'ncce-link' %></li>
-            <li> <%= link_to 'Secondary teachers – Key stage 3 and 4 pedagogy', '#stage2', class: 'ncce-link' %></li>
-            <li> <%= link_to 'Subject Matter Expert consultancy and funding', '#subject', class: 'ncce-link' %></li>
-          </ul>
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-          <h2 class="govuk-heading-m" id="stage1">Primary teachers – Key Stages 1 and 2</h2>
-          <p class="govuk-body">We offer free online courses and bursary-supported face-to-face courses for primary teachers working in state-funded schools in England.</p>
-          <p class="govuk-body">One teacher from each school is eligible for a bursary to fund one course per academic year. There is no upfront cost; the course fee is covered by the bursary and will be deducted from the funding your school will receive on completion of the course.</p>
-          <table class="govuk-table">
-            <caption class="govuk-table__caption">Bursary details:</caption>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Course fee</th>
-                <td class="govuk-table__cell">£35 per day</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Bursary</th>
-                <td class="govuk-table__cell">£220 per day</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Your school will receive</th>
-                <td class="govuk-table__cell">£185 per day</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="govuk-body">Subsequent teachers from the same school will pay £35 a day. The fee for teachers working in independent schools is £220 a day.</p>
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-          <h2 class="govuk-heading-m" id="gcse">Secondary teachers – GCSE level</h2>
-          <p class="govuk-body"><%= link_to 'The Computer Science Accelerator Programme', cs_accelerator_path, class: 'ncce-link' %> offers free online courses to all teachers and free face-to-face courses for teachers working in state-funded education.</p>
-          <p class="govuk-body">Teachers working in state-funded education are eligible for bursaries up to £1,500, paid to your school, allocated as shown in the table below.</p>
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="col">Teacher progress</th>
-                <th class="govuk-table__header" scope="col">Your school will receive:</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Attend 1st two-day face-to-face course</th>
-                <td class="govuk-table__cell">£440</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Attend 2nd two-day face-to-face course</th>
-                <td class="govuk-table__cell">£440</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Complete the programme including two online courses and sitting final test</th>
-                <td class="govuk-table__cell">£620</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Total bursary</th>
-                <td class="govuk-table__cell">£1,500</td>
-              </tr>
-            </tbody>
-          </table>
-            <h2 class="govuk-heading-m">Receive additional funding</h2>
-            <p class="govuk-body">Teachers who complete their first course by 29 February 2020 will receive an additional £300 funding on completion of the programme. This will be paid to the school or college and should be used in classroom practice.</p>
-            <p class="govuk-body"><%= link_to 'Find out more about eligibility', '#funding', class: 'ncce-link' %></p>
-          <p class="govuk-body">Teachers in independent schools can access any of our online courses for free. A fee of £220 per day is payable for face-to-face courses.
-          </p>
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-          <h2 class="govuk-heading-m" id="stage2">Secondary teachers – Key stage 3 and 4 pedagogy</h2>
-          <p class="govuk-body">We offer free online courses and low cost face-to-face courses in Key Stage 3 and 4 computing pedagogy.</p>
-          <table class="govuk-table">
-            <caption class="govuk-table__caption">Course fees:</caption>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">State-funded schools</th>
-                <td class="govuk-table__cell">£35 per day</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="row">Independent schools</th>
-                <td class="govuk-table__cell">£220 per day</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="govuk-body">Teachers who have completed the Computer Science Accelerator Programme are eligible to attend all Key Stage 3 and 4 face-to-face CPD for free. Details will be sent to teachers on successful completion of the programme.</p>
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-          <h3 class="govuk-heading-s" id="funding">Additional funding criteria: GCSE level</h3>
-          <p class="govuk-body-s">An additional £300 bursary is currently available to teachers in state-funded education who complete their first course by 29 February 2020. This will be paid to the school or college and can be used for any of the following:</p>
-          <ul class="govuk-body-s govuk-list govuk-list--bullet">
-            <li>purchasing resources</li>
-            <li>CPD (face-to-face and online)</li>
-            <li>funding towards Chartered status</li>
-            <li>kit for an after-school club</li>
-            <li>supporting events and networking with local schools (with support of CAS or Computing Hubs)</li>
-            <li>student trips – must be computer science-related</li>
-          </ul>
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-					<h2 class="govuk-heading-m" id="subject">Subject Matter Expert consultancy and funding</h2>
-          <p class="govuk-body">We offer fully-funded consultancy from a network of Subject Matter Experts, to support eligible <%= link_to 'primary schools', primary_teachers_path, class: 'ncce-link' %> and <%= link_to 'secondary schools', secondary_teachers_path, class: 'ncce-link' %> and colleges to improve their computing offer. Bursary funding is also available to schools and colleges that meet the criteria; payable to the school or college upon implementation of all actions in an agreed plan.</p>
-          <table class="govuk-table">
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">School or college eligibility</td>
-								<td class="govuk-table__cell">Not currently offering GCSE computer science</td>
-         				<td class="govuk-table__cell">Considering dropping GCSE computer science (criteria below)</td>
-								<td class="govuk-table__cell">Has started teaching GCSE computer science in the last 2 years</td>
-								<td class="govuk-table__cell">Primary or secondary school located in <%= link_to 'Local Area Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %></td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Free consultancy and guidance</td>
-								<td class="govuk-table__cell">2.5 days</td>
-         				<td class="govuk-table__cell">1 day</td>
-								<td class="govuk-table__cell">1 day</td>
-								<td class="govuk-table__cell">0.5 days</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">£1400 bursary</td>
-								<td class="govuk-table__cell">Yes</td>
-								<td class="govuk-table__cell">Yes</td>
-								<td class="govuk-table__cell">n/a</td>
-								<td class="govuk-table__cell">n/a</td>
-              </tr>
-            </tbody>
-          </table>
-					<p class="govuk-body">The £1400 bursary is in addition to any funding we offer schools and colleges to support participation in Teach Computing CPD.</p>
-					<h3 class="govuk-heading-s">Which schools/colleges are considered at risk of dropping computer science?</h3>
-					<p class="govuk-body">Schools and colleges in which senior leaders are considering not offering GCSE computer science the following academic year, due to one or more of the following criteria:<p>
-					<ul class="govuk-body-s govuk-list govuk-list--bullet">
-            <li>results have been consistently below expectations (either when compared nationally or compared to other subjects in the school)</li>
-						<li>subject knowledge, pedagogy or confidence in teaching computer science is not strong as identified by Ofsted or internal/external monitoring</li>
-						<li>change in staffing has reduced the capacity to deliver computer science</li>
-						<li>student demand for computer science is low</li>
-          </ul>
-        </div>
+      <div class="govuk-grid-column-two-thirds ncce-bursary__content">
+        <p class="govuk-body">We offer bursaries to state-funded schools and
+          colleges across England to support development in computing education.
+        </p>
+        <p class="govuk-body">These bursaries can be used by your school or
+          college to cover costs associated with CPD, including travel and
+          supply cover, or to implement guidance from a Subject Matter Expert to
+          improve your computing offer.</p>
+        <ul class="govuk-body-s govuk-list govuk-list--bullet">
+          <li>
+            <%= link_to 'Primary teachers – Key Stages 1 and 2', '#stage1', class: 'ncce-link' %>
+          </li>
+          <li>
+            <%= link_to 'Secondary teachers – GCSE level', '#gcse', class: 'ncce-link' %>
+          </li>
+          <li>
+            <%= link_to 'Secondary teachers – Key stage 3 and 4 pedagogy', '#stage2', class: 'ncce-link' %>
+          </li>
+          <li>
+            <%= link_to 'Subject Matter Expert consultancy and funding', '#subject', class: 'ncce-link' %>
+          </li>
+        </ul>
+        <hr
+          class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <h2 class="govuk-heading-m" id="stage1">Primary teachers – Key Stages 1
+          and 2</h2>
+        <p class="govuk-body">We offer free online courses and bursary-supported
+          face-to-face courses for primary teachers working in state-funded
+          schools in England.</p>
+        <p class="govuk-body">One teacher from each school is eligible for a
+          bursary to fund one course per academic year. There is no upfront
+          cost; the course fee is covered by the bursary and will be deducted
+          from the funding your school will receive on completion of the course.
+        </p>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption">Bursary details:</caption>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Course fee</th>
+              <td class="govuk-table__cell">£35 per day</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Bursary</th>
+              <td class="govuk-table__cell">£220 per day</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Your school will
+                receive</th>
+              <td class="govuk-table__cell">£185 per day</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="govuk-body">Subsequent teachers from the same school will pay
+          £35 a day. The fee for teachers working in independent schools is £220
+          a day.</p>
+        <hr
+          class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <h2 class="govuk-heading-m" id="gcse">Secondary teachers – GCSE level
+        </h2>
+        <p class="govuk-body">
+          <%= link_to 'The Computer Science Accelerator Programme', cs_accelerator_path, class: 'ncce-link' %>
+          offers free online courses to all teachers and free face-to-face
+          courses for teachers working in state-funded education.</p>
+        <p class="govuk-body">Teachers working in state-funded education are
+          eligible for bursaries up to £1,500, paid to your school, allocated as
+          shown in the table below.</p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Teacher progress</th>
+              <th class="govuk-table__header" scope="col">Your school will
+                receive:</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Attend 1st two-day
+                face-to-face course</th>
+              <td class="govuk-table__cell">£440</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Attend 2nd two-day
+                face-to-face course</th>
+              <td class="govuk-table__cell">£440</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Complete the programme
+                including two online courses and sitting final test</th>
+              <td class="govuk-table__cell">£620</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Total bursary</th>
+              <td class="govuk-table__cell">£1,500</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="govuk-heading-m">Receive additional funding</h2>
+        <p class="govuk-body">Teachers who complete their first course by 29
+          February 2020 will receive an additional £300 funding on completion of
+          the programme. This will be paid to the school or college and should
+          be used in classroom practice.</p>
+        <p class="govuk-body">
+          <%= link_to 'Find out more about eligibility', '#funding', class: 'ncce-link' %>
+        </p>
+        <p class="govuk-body">Teachers in independent schools can access any of
+          our online courses for free. A fee of £220 per day is payable for
+          face-to-face courses.
+        </p>
+        <hr
+          class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <h2 class="govuk-heading-m" id="stage2">Secondary teachers – Key stage 3
+          and 4 pedagogy</h2>
+        <p class="govuk-body">We offer free online courses and low cost
+          face-to-face courses in Key Stage 3 and 4 computing pedagogy.</p>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption">Course fees:</caption>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">State-funded schools
+              </th>
+              <td class="govuk-table__cell">£35 per day</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Independent schools
+              </th>
+              <td class="govuk-table__cell">£220 per day</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="govuk-body">Teachers who have completed the Computer Science
+          Accelerator Programme are eligible to attend all Key Stage 3 and 4
+          face-to-face CPD for free. Details will be sent to teachers on
+          successful completion of the programme.</p>
+        <hr
+          class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <h3 class="govuk-heading-s" id="funding">Additional funding criteria:
+          GCSE level</h3>
+        <p class="govuk-body-s">An additional £300 bursary is currently
+          available to teachers in state-funded education who complete their
+          first course by 29 February 2020. This will be paid to the school or
+          college and can be used for any of the following:</p>
+        <ul class="govuk-body-s govuk-list govuk-list--bullet">
+          <li>purchasing resources</li>
+          <li>CPD (face-to-face and online)</li>
+          <li>funding towards Chartered status</li>
+          <li>kit for an after-school club</li>
+          <li>supporting events and networking with local schools (with support
+            of CAS or Computing Hubs)</li>
+          <li>student trips – must be computer science-related</li>
+        </ul>
+        <hr
+          class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <h2 class="govuk-heading-m" id="subject">Subject Matter Expert
+          consultancy and funding</h2>
+        <p class="govuk-body">We offer fully-funded consultancy from a network
+          of Subject Matter Experts, to support eligible
+          <%= link_to 'primary schools', primary_teachers_path, class: 'ncce-link' %>
+          and
+          <%= link_to 'secondary schools', secondary_teachers_path, class: 'ncce-link' %>
+          and colleges to improve their computing offer. Bursary funding is also
+          available to schools and colleges that meet the criteria; payable to
+          the school or college upon implementation of all actions in an agreed
+          plan.</p>
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">School or college eligibility</td>
+              <td class="govuk-table__cell">Not currently offering GCSE computer
+                science</td>
+              <td class="govuk-table__cell">Considering dropping GCSE computer
+                science (criteria below)</td>
+              <td class="govuk-table__cell">Has started teaching GCSE computer
+                science in the last 2 years</td>
+              <td class="govuk-table__cell">Primary or secondary school located
+                in
+                <%= link_to 'Local Area Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Free consultancy and guidance</td>
+              <td class="govuk-table__cell">2.5 days</td>
+              <td class="govuk-table__cell">1 day</td>
+              <td class="govuk-table__cell">1 day</td>
+              <td class="govuk-table__cell">0.5 days</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">£1400 bursary</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">n/a</td>
+              <td class="govuk-table__cell">n/a</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="govuk-body">The £1400 bursary is in addition to any funding we
+          offer schools and colleges to support participation in Teach Computing
+          CPD.</p>
+        <h3 class="govuk-heading-s">Which schools/colleges are considered at
+          risk of dropping computer science?</h3>
+        <p class="govuk-body">Schools and colleges in which senior leaders are
+          considering not offering GCSE computer science the following academic
+          year, due to one or more of the following criteria:<p>
+            <ul class="govuk-body-s govuk-list govuk-list--bullet">
+              <li>results have been consistently below expectations (either when
+                compared nationally or compared to other subjects in the school)
+              </li>
+              <li>subject knowledge, pedagogy or confidence in teaching computer
+                science is not strong as identified by Ofsted or
+                internal/external monitoring</li>
+              <li>change in staffing has reduced the capacity to deliver
+                computer science</li>
+              <li>student demand for computer science is low</li>
+            </ul>
       </div>
     </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<% meta_tag :title, "Terms and Conditions - Teach Computing" %>
+<% meta_tag :title, 'Terms and Conditions - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Terms and Conditions National Centre for Computing Education', small_title: false %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
@@ -43,14 +43,12 @@
       <p class="govuk-body">If you wish to transfer a booking to an alternative date for the same CPD activity or to an alternative activity, a request must be made at least 21 days prior to the start of the original CPD activity. If the request is accepted, there will be no charge other than any additional cost of the alternative activity above that of the original CPD activity.</p>
       <p class="govuk-body">Please note that all requests to transfer bookings are entirely at our discretion.</p>
 
-
       <h2 class="govuk-heading-m">2. Bursaries</h2>
       <% if current_user %>
       <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please visit your dashboard on the <%= link_to 'National Centre for Computing Education website', dashboard_path, class: 'ncce-link' %></p>
       <% else %>
       <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please create an account and log-in on the <%= link_to 'National Centre for Computing Education website', create_account_url, class: 'ncce-link' %></p>
       <% end %>
-
 
       <h2 class="govuk-heading-m">3. Website content</h2>
       <p class="govuk-body">The content on the website may be out of date or may include omissions, inaccuracies or other errors. All content is provided without warranty and is not subject to any checks of assurance of quality. We do not guarantee the availability of any content.</p>
