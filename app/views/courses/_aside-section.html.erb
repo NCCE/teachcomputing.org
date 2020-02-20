@@ -1,7 +1,7 @@
-<div class="ncce-aside">
-  <% if current_user %>
-    <% case user_achievement_state(current_user, @activity) %>
-    <% when :not_enrolled %>
+<% if current_user %>
+  <% case user_achievement_state(current_user, @activity) %>
+  <% when :not_enrolled %>
+    <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @course.online_cpd ? 'The course is delivered by Future Learn' : 'The course is delivered by STEM Learning' %></p>
       <p class="govuk-body">
@@ -11,13 +11,15 @@
           end
         %>
       </p>
-    <% end %>
-  <% else %>
-    <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
-    <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
-    <p class="govuk-body"><%= link_to @course.online_cpd ? 'Join this course' : 'Book this course', auth_url, class: 'govuk-button button--aside', draggable: 'false' %></p>
-    <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?
-      <br>
-      <%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %></p>
+    </div>
   <% end %>
-</div>
+<% else %>
+  <div class="ncce-aside">
+    <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
+      <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
+      <p class="govuk-body"><%= link_to @course.online_cpd ? 'Join this course' : 'Book this course', auth_url, class: 'govuk-button button--aside', draggable: 'false' %></p>
+      <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?
+        <br>
+        <%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %></p>
+  </div>
+<% end %>
