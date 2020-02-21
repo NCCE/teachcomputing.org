@@ -1,8 +1,4 @@
 .testimonial {
-  padding-top: 50px;
-  @include govuk-media-query($from: tablet) {
-    padding-top: 0;
-  }
   &__text {
     background-color: $white;
     border-radius: 10px;
@@ -23,5 +19,15 @@
   &__bio-cell--span-2 {
     grid-column-end: span 2;
     grid-column-start: 1;
+  }
+  &__bio > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.testimonial--secondary {
+  padding-top: 50px;
+  @include govuk-media-query($from: tablet) {
+    padding-top: 0;
   }
 }
