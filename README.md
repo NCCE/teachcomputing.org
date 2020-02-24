@@ -89,6 +89,10 @@ Run with `bundle exec reek`
 
 ### Brakeman
 
-Used for static code analysis to check for potential security flaws.  Run `brakeman .` in the project root to use the tool and check the output for warnings, etc.
+Used for static code analysis to check for potential security flaws.
 
 https://brakemanscanner.org/docs/quickstart/
+
+We are ignoring some of the warnings using the method described in the [Brakeman docs](https://brakemanscanner.org/docs/ignoring_false_positives/) We are using the default location for the ignore file, etc.
+
+Run `brakeman -i config/brakeman.ignore .` in the project root and follow the onscreen prompts, outlined in the above doc, to use the tool and check the output for warnings, etc.
