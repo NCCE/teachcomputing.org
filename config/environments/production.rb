@@ -85,6 +85,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.asset_host  = 'https://teachcomputing.org'
   config.action_mailer.default_url_options = { host: 'https://teachcomputing.org' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.mandrillapp.com',
