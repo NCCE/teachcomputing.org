@@ -5,10 +5,6 @@ RSpec.describe('components/_footer', type: :view) do
     render
   end
 
-  it 'has a link to the home page ' do
-    expect(rendered).to have_xpath('//a[@href = "/"]')
-  end
-
   it 'has a bursaries link' do
     expect(rendered).to have_link('Bursaries', href: '/bursary')
   end
