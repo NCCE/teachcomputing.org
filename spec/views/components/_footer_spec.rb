@@ -6,11 +6,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a link to the home page ' do
-    expect(rendered).to have_link('National Centre forComputing Education', href: '/')
-  end
-
-  it 'has an about link' do
-    expect(rendered).to have_link('About', href: '/about')
+    expect(rendered).to have_xpath('//a[@href = "/"]')
   end
 
   it 'has a bursaries link' do
@@ -18,7 +14,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a contact link' do
-    expect(rendered).to have_link('Contact', href: 'mailto:info@teachcomputing.org')
+    expect(rendered).to have_link('Email', href: 'mailto:info@teachcomputing.org')
   end
 
   it 'has a courses link' do
@@ -33,10 +29,6 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('News', href: 'https://blog.teachcomputing.org/tag/news/')
   end
 
-  it 'has an offer link' do
-    expect(rendered).to have_link('Our offer', href: '/offer')
-  end
-
   it 'has a privacy link' do
     expect(rendered).to have_link('Privacy', href: '/privacy')
   end
@@ -46,7 +38,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has an accessibility statement link' do
-    expect(rendered).to have_link('Accessibility statement', href: '/accessibility-statement')
+    expect(rendered).to have_link('Accessibility', href: '/accessibility-statement')
   end
 
 
