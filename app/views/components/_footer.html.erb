@@ -1,58 +1,66 @@
 <footer class="govuk-footer ncce-footer">
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-third">
-        <h1 class="govuk-heading-s ncce-footer__heading">
-          <%= link_to 'National Centre for<br>Computing Education'.html_safe, root_path, class: 'govuk-footer__link ncce-footer__link--homepage' %>
-        </h1>
+  <div class="govuk-width-container ncce-footer__grid">
+    <div class="ncce-footer__sub-grid ncce-footer__sub-grid--logos">
+      <img src="/images/ncce-logo.svg" class="ncce-footer__logos-img" alt="National Centre for Computing Education home">
+      <div>
+        <p class="govuk-body-s ncce-footer__text">Funded by</p>
+        <%= link_to 'https://www.gov.uk/government/organisations/department-for-education', class: 'govuk-footer__link ncce-link' do %>
+        <img src="/images/dfe.svg" class="ncce-footer__logos-img"
+          alt="Department for Education website">
+        <% end %>
       </div>
-      <nav class="govuk-grid-column-two-thirds ncce-footer__links" aria-label="Footer Navigation">
-        <ul class="govuk-footer__list ncce-footer__list">
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Resources', resources_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-         </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Our offer', offer_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Computing hubs', hubs_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'News', news_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Press', press_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'About us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= mail_to 'info@teachcomputing.org', 'Contact', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_top' %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-          </li>
-          <li class="govuk-footer__list-item">
-          <%= link_to 'Accessibility statement', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_blank' do %>
-              <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
-            <% end %>
-          </li>
-          <li class="govuk-footer__list-item">
-            <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', target: '_blank' do %>
-              <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
-            <% end %>
-          </li>
-        </ul>
-      </nav>
     </div>
+    <nav class="ncce-footer__links" aria-label="Footer Navigation">
+      <ul class="ncce-footer__list ncce-footer__sub-grid">
+        <li>
+          <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Resources', resources_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Computing hubs', hubs_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'News', news_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Press', press_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Accessibility', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li>
+          <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+      </ul>
+    </nav>
+    <nav class="ncce-footer__links" aria-label="Footer Navigation Contact Links">
+      <ul class="ncce-footer__list ncce-footer__sub-grid ncce-footer__sub-grid--single-col">
+        <li>
+          <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
+            <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
+            <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
+          <% end %>
+        </li>
+        <li>
+          <%= mail_to 'info@teachcomputing.org', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
+            <%= image_tag "email.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>Email
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'tel:01904 328 300', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
+            <%= image_tag "telephone.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>01904 328 300
+          <% end %>
+        </li>
+      </ul>
+    </nav>
   </div>
 </footer>
