@@ -3,10 +3,15 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP201') }
+  let(:another_course) { Achiever::Course::Template.find_by_activity_code('CP200') }
   let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) {
     programme.activities << activity
+  }
+  let(:primary_programme) { create(:primary_certificate) }
+  let(:primary_programme_activity) {
+    primary_programme.activities << activity
   }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
@@ -60,6 +65,26 @@ RSpec.describe CoursesController do
       end
     end
 
+    context 'when the course exists without an activity' do
+      before do
+        get course_path(id: another_course.activity_code, name: 'this-is-a-name')
+      end
+
+      it 'sets the course correctly' do
+        expect(assigns(:course).title).to eq("#{another_course.title}")
+      end
+
+      it 'the programmes are not set' do
+        expect(assigns(:programmes)).to eq(nil)
+      end
+
+      it 'the activity is nil' do
+        expect(assigns(:activity)).to eq(nil)
+      end
+    end
+
+
+
     context 'when the url just contains the activity code' do
       before do
         get course_path(id: course.activity_code)
@@ -86,6 +111,22 @@ RSpec.describe CoursesController do
 
       it 'has a link to the programme' do
         expect(response.body).to include(programme_path(programme.slug))
+      end
+    end
+
+    context 'when the course is part of two programmes' do
+      before do
+        programme_activity
+        primary_programme_activity
+        get course_path(course.activity_code, name: 'this-is-a-dud')
+      end
+
+      it 'sets both programmes' do
+        expect(assigns(:programmes).size).to eq(2)
+      end
+
+      it 'has a link to the primary_programme' do
+        expect(response.body).to include(programme_path(primary_programme.slug))
       end
     end
 
