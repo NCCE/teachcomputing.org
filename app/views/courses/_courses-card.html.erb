@@ -6,7 +6,7 @@
         <div class="card card--<%= programme.slug %> card--bottom-glyph">
           <%= render 'pages/certification/programme-enrolment-status', programme: programme %>
           <h2 class="govuk-heading-m card__heading"><%= programme.title %></h2>
-          <% if  programme.title == 'Teach primary computing' %>
+          <% if  programme.slug == 'primary-certificate' %>
               <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
             <% else %>
               <p class="govuk-body card__text">Our certified professional development programme will equip you with the subject knowledge and confidence to successfully teach and lead GCSE computer science.</p>
