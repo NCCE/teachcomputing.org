@@ -14,6 +14,22 @@ module Programmes
       total
     end
 
+    def enough_activites_for_test?(user)
+      complete_achievements = user.achievements
+                                  .for_programme(self)
+                                  .in_state('complete')
+
+      total = complete_achievements.with_category('face-to-face').sum(:credit)
+      return false if total.zero?
+
+      return true if total >= 20
+
+      total += complete_achievements.with_category('online').sum(:credit)
+      return true if total >= 20
+
+      false
+    end
+
     def max_credits_for_certificate
       80
     end

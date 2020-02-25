@@ -30,6 +30,10 @@ class Programme < ApplicationRecord
     0
   end
 
+  def enough_activites_for_test?(user)
+    false
+  end
+
   def diagnostic
     activities.find_by(category: 'diagnostic')
   end
