@@ -51,6 +51,7 @@ slugs = %w[
   introduction-to-encryption-and-cryptography
   introduction-to-web-development
   networking-with-python-socket-programming-for-communication
+  pre-january-2019-csa-face-to-face-cpd
 ]
 
 slugs.each do |slug|
