@@ -46,20 +46,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Certification page' do
-    before do
-      visit certification_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-xl', text: 'Certification')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'CS Accelerator page' do
     before do
       programme

@@ -34,7 +34,7 @@ RSpec.describe('pages/offer', type: :view) do
   end
 
   it 'has a certification link' do
-    expect(rendered).to have_link('Find out more about certification', href: '/certification')
+    expect(rendered).to have_link('Find out more about certification', href: '/welcome')
   end
 
   it 'has links to anchors' do
