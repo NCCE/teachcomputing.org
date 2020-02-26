@@ -23,11 +23,21 @@
   &__bio > *:last-child {
     margin-bottom: 0;
   }
+  &__image {
+    border: 2px solid $dixie;
+    border-radius: 24px;
+    height: 48px;
+    width: 48px;
+  }
 }
 
 .testimonial--secondary {
   padding-top: 50px;
   @include govuk-media-query($from: tablet) {
     padding-top: 0;
+  }
+  .testimonial__image {
+    border: none;
+    border-radius: 0;
   }
 }
