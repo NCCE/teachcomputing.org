@@ -21,6 +21,10 @@ RSpec.describe Achievement, type: :model do
     it 'belongs to user' do
       expect(achievement).to belong_to(:user)
     end
+
+    it 'belongs to programme' do
+      expect(achievement).to belong_to(:programme)
+    end
   end
 
   describe 'validations' do
