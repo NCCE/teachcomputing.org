@@ -1,120 +1,309 @@
 <% meta_tag :title, 'Terms and Conditions - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Terms and Conditions National Centre for Computing Education', small_title: false %>
+<%= render 'components/hero', hero_title: 'National Centre for Computing Education Terms and Conditions', small_title: true %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-column">
-      <p class="govuk-body-l">The National Centre for Computing Education is funded by the Department for Education and is run by a consortium of STEM Learning, the Raspberry Pi Foundation and BCS, The Chartered Institute for IT.</p>
-      <p class="govuk-body">By using this website teachcomputing.org, booking onto our face-to-face CPD and engaging with other National Centre for Computing Education activities you agree to accept these terms and conditions.</p>
+    <p class="govuk-body-l">The National Centre for Computing Education is
+      funded by the Department for Education and is run by a consortium of STEM
+      Learning, the Raspberry Pi Foundation and BCS, The Chartered Institute for
+      IT.</p>
+    <p class="govuk-body">By using this website teachcomputing.org, booking onto
+      our face-to-face CPD and engaging with other National Centre for Computing
+      Education activities you agree to accept these terms and conditions.</p>
 
-      <h2 class="govuk-heading-m">1. CPD terms</h2>
-      <p class="govuk-body">The CPD terms apply when you are booking onto a face to face  CPD activity, whether booked online, on the phone, in person or by any other method.</p>
-      <p class="govuk-heading-s">Booking on behalf of others</p>
-      <p class="govuk-body">If you are making a booking on behalf of others then by agreeing to these CPD terms you confirm that you have authority to enter into these CPD terms on their behalf, including permission to release (and for us to store) any personal data that is required in order to make the booking.</p>
+    <h2 class="govuk-heading-m">1. CPD terms</h2>
+    <p class="govuk-body">The CPD terms apply when you are booking onto a face
+      to face CPD activity, whether booked online, on the phone, in person or by
+      any other method.</p>
+    <p class="govuk-heading-s">Booking on behalf of others</p>
+    <p class="govuk-body">If you are making a booking on behalf of others then
+      by agreeing to these CPD terms you confirm that you have authority to
+      enter into these CPD terms on their behalf, including permission to
+      release (and for us to store) any personal data that is required in order
+      to make the booking.</p>
 
-      <h3 class="govuk-heading-s">Payment terms</h3>
-      <p class="govuk-body">The appropriate method of payment and deadline for payment to be received will be confirmed at the time of booking. Fees can be paid by BACS or via our online payment system where this is indicated as being available. If you are unable to pay by BACS, alternative methods of payment include cheques and debit/credit cards.
-      Most CPD payments are due no later than 21 days prior to the start of the CPD activity. For late bookings, payment should be made as soon as the booking is received. For some activities, payment can be made on the day that you attend the CPD activity or following the CPD activity.</p>
-      <p class="govuk-body">If fees are not paid in accordance with the instructions provided, we reserve the right to either:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>cancel the booking(s) and re-allocate the place(s) for the CPD activity to another participant(s); or</li>
-        <li>require payment on the first day of the CPD activity</li>
-      </ul>
-      <p class="govuk-body">In the event of late payment, we reserve the right to charge interest on all outstanding amounts at the rate of 2% per calendar month or part thereof from the last date that payment was due to the date that payment is made.</p>
+    <h3 class="govuk-heading-s">Payment terms</h3>
+    <p class="govuk-body">The appropriate method of payment and deadline for
+      payment to be received will be confirmed at the time of booking. Fees can
+      be paid by BACS or via our online payment system where this is indicated
+      as being available. If you are unable to pay by BACS, alternative methods
+      of payment include cheques and debit/credit cards.
+      Most CPD payments are due no later than 21 days prior to the start of the
+      CPD activity. For late bookings, payment should be made as soon as the
+      booking is received. For some activities, payment can be made on the day
+      that you attend the CPD activity or following the CPD activity.</p>
+    <p class="govuk-body">If fees are not paid in accordance with the
+      instructions provided, we reserve the right to either:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>cancel the booking(s) and re-allocate the place(s) for the CPD
+        activity to another participant(s); or</li>
+      <li>require payment on the first day of the CPD activity</li>
+    </ul>
+    <p class="govuk-body">In the event of late payment, we reserve the right to
+      charge interest on all outstanding amounts at the rate of 2% per calendar
+      month or part thereof from the last date that payment was due to the date
+      that payment is made.</p>
 
-      <p class="govuk-body">All payments must be made in pounds sterling.</p>
-      <p class="govuk-body">For National Centre for Computing Education CPD (which includes the all face-to-face training Computing Hubs) payment should be made by BACS All BACS payments should be accompanied by a remittance advice, including the invoice number, participant name and CPD activity code. The remittance advice should be sent to <%= mail_to 'finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link' %> or by mail to the STEM Learning's Finance department.</p>
-      <p class="govuk-body">If you are unable to pay by BACS, alternative methods of payment include cheques and debit/credit cards. Cheques should be made payable to “STEM Learning Ltd”, and should be accompanied by a remittance advice. Following receipt of invoice, payment by debit/credit card may be made by telephoning the STEM Learning Ltd Finance department on 01904 328369 or 01904 328384 and quoting your invoice number.</p>
+    <p class="govuk-body">All payments must be made in pounds sterling.</p>
+    <p class="govuk-body">For National Centre for Computing Education CPD (which
+      includes the all face-to-face training Computing Hubs) payment should be
+      made by BACS All BACS payments should be accompanied by a remittance
+      advice, including the invoice number, participant name and CPD activity
+      code. The remittance advice should be sent to
+      <%= mail_to 'finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link' %>
+      or by mail to the STEM Learning's Finance department.</p>
+    <p class="govuk-body">If you are unable to pay by BACS, alternative methods
+      of payment include cheques and debit/credit cards. Cheques should be made
+      payable to “STEM Learning Ltd”, and should be accompanied by a remittance
+      advice. Following receipt of invoice, payment by debit/credit card may be
+      made by telephoning the STEM Learning Ltd Finance department on 01904
+      328369 or 01904 328384 and quoting your invoice number.</p>
 
-      <h3 class="govuk-heading-s">Fees</h3>
-      <p class="govuk-body">Details of fees are provided on the booking page of the appropriate CPD activity. VAT may also be payable. Services such as accommodation, meals, refreshments and the provision of CPD materials may be included within the fee or quoted separately.</p>
-      <p class="govuk-body">Please note that your school or organisation will be charged the appropriate fee for the activity you apply for based on the organisation you belong to, irrelevant of any fee you may incorrectly select during the application process.</p>
+    <h3 class="govuk-heading-s">Fees</h3>
+    <p class="govuk-body">Details of fees are provided on the booking page of
+      the appropriate CPD activity. VAT may also be payable. Services such as
+      accommodation, meals, refreshments and the provision of CPD materials may
+      be included within the fee or quoted separately.</p>
+    <p class="govuk-body">Please note that your school or organisation will be
+      charged the appropriate fee for the activity you apply for based on the
+      organisation you belong to, irrelevant of any fee you may incorrectly
+      select during the application process.</p>
 
-      <h3 class="govuk-heading-s">Discount codes</h3>
-      <p class="govuk-body">Where a booking is made using a discount code this will discount the fee price to be paid. Discount codes that negate the full value of the course fee, then the bursary is not payable. VAT may continue to be invoiced for. The terms of the discount code will be clear on the CPD page or communication about the discount code.</p>
+    <h3 class="govuk-heading-s">Discount codes</h3>
+    <p class="govuk-body">Where a booking is made using a discount code this
+      will discount the fee price to be paid. Discount codes that negate the
+      full value of the course fee, then the bursary is not payable. VAT may
+      continue to be invoiced for. The terms of the discount code will be clear
+      on the CPD page or communication about the discount code.</p>
 
-      <h3 class="govuk-heading-s">Cancellations (made by you)</h3>
-      <p class="govuk-body">Cancellations must be made at least 21 days prior to the start of a CPD activity. If a booking is cancelled within 21 days, or if you fail to attend, the full fee remains payable. Any fees already paid will not be refunded. This equally applies to bookings made less than 21 days prior to the start date of a CPD activity.</p>
+    <h3 class="govuk-heading-s">Cancellations (made by you)</h3>
+    <p class="govuk-body">Cancellations must be made at least 21 days prior to
+      the start of a CPD activity. If a booking is cancelled within 21 days, or
+      if you fail to attend, the full fee remains payable. Any fees already paid
+      will not be refunded. This equally applies to bookings made less than 21
+      days prior to the start date of a CPD activity.</p>
 
-      <h3 class="govuk-heading-s">Cancellations (made by us)</h3>
-      <p class="govuk-body">We reserve the right to cancel or reschedule CPD activities without prior notice and to amend or alter published programmes, fees, venues and lecturers, without liability. In these circumstances, you will be offered an alternative date for the same CPD activity, an alternative CPD activity, a credit note or a full refund. It is important therefore that you supply an up-to-date email address and notify us if this changes.</p>
+    <h3 class="govuk-heading-s">Cancellations (made by us)</h3>
+    <p class="govuk-body">We reserve the right to cancel or reschedule CPD
+      activities without prior notice and to amend or alter published
+      programmes, fees, venues and lecturers, without liability. In these
+      circumstances, you will be offered an alternative date for the same CPD
+      activity, an alternative CPD activity, a credit note or a full refund. It
+      is important therefore that you supply an up-to-date email address and
+      notify us if this changes.</p>
 
-      <h3 class="govuk-heading-s">Transfers</h3>
-      <p class="govuk-body">If you are unable to attend, there is no charge to replace the original participant with a substitute. Please inform us of the substitute’s details.</p>
-      <p class="govuk-body">If you wish to transfer a booking to an alternative date for the same CPD activity or to an alternative activity, a request must be made at least 21 days prior to the start of the original CPD activity. If the request is accepted, there will be no charge other than any additional cost of the alternative activity above that of the original CPD activity.</p>
-      <p class="govuk-body">Please note that all requests to transfer bookings are entirely at our discretion.</p>
+    <h3 class="govuk-heading-s">Transfers</h3>
+    <p class="govuk-body">If you are unable to attend, there is no charge to
+      replace the original participant with a substitute. Please inform us of
+      the substitute’s details.</p>
+    <p class="govuk-body">If you wish to transfer a booking to an alternative
+      date for the same CPD activity or to an alternative activity, a request
+      must be made at least 21 days prior to the start of the original CPD
+      activity. If the request is accepted, there will be no charge other than
+      any additional cost of the alternative activity above that of the original
+      CPD activity.</p>
+    <p class="govuk-body">Please note that all requests to transfer bookings are
+      entirely at our discretion.</p>
 
-      <h2 class="govuk-heading-m">2. Bursaries</h2>
-      <% if current_user %>
-      <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please visit your dashboard on the <%= link_to 'National Centre for Computing Education website', dashboard_path, class: 'ncce-link' %></p>
-      <% else %>
-      <p class="govuk-body">You may be eligible for bursary support for attending CPD from the National Centre for Computing Education. To find out whether you are eligible, please create an account and log-in on the <%= link_to 'National Centre for Computing Education website', create_account_url, class: 'ncce-link' %></p>
-      <% end %>
+    <h2 class="govuk-heading-m">2. Bursaries</h2>
+    <% if current_user %>
+    <p class="govuk-body">You may be eligible for bursary support for attending
+      CPD from the National Centre for Computing Education. To find out whether
+      you are eligible, please visit your dashboard on the
+      <%= link_to 'National Centre for Computing Education website', dashboard_path, class: 'ncce-link' %>
+    </p>
+    <% else %>
+    <p class="govuk-body">You may be eligible for bursary support for attending
+      CPD from the National Centre for Computing Education. To find out whether
+      you are eligible, please create an account and log-in on the
+      <%= link_to 'National Centre for Computing Education website', create_account_url, class: 'ncce-link' %>
+    </p>
+    <% end %>
 
-      <h2 class="govuk-heading-m">3. Website content</h2>
-      <p class="govuk-body">The content on the website may be out of date or may include omissions, inaccuracies or other errors. All content is provided without warranty and is not subject to any checks of assurance of quality. We do not guarantee the availability of any content.</p>
-      <p class="govuk-body">The website may provide access via hypertext links to third party websites. By providing these links we are neither endorsing entities nor authorising any act which may be in breach of the intellectual property or any third party rights which are protected in law or by international treaties worldwide. We do not accept liability for any materials contained on a third-party website.</p>
-      <p class="govuk-body">All online resources available through the website are available on a non-commercial basis. National Centre for Computing Education is non-exclusive in the organisations it showcases and is free of commercial bias in its selection of physical and online resources available on the website.</p>
+    <h2 class="govuk-heading-m">3. Website content</h2>
+    <p class="govuk-body">The content on the website may be out of date or may
+      include omissions, inaccuracies or other errors. All content is provided
+      without warranty and is not subject to any checks of assurance of quality.
+      We do not guarantee the availability of any content.</p>
+    <p class="govuk-body">The website may provide access via hypertext links to
+      third party websites. By providing these links we are neither endorsing
+      entities nor authorising any act which may be in breach of the
+      intellectual property or any third party rights which are protected in law
+      or by international treaties worldwide. We do not accept liability for any
+      materials contained on a third-party website.</p>
+    <p class="govuk-body">All online resources available through the website are
+      available on a non-commercial basis. National Centre for Computing
+      Education is non-exclusive in the organisations it showcases and is free
+      of commercial bias in its selection of physical and online resources
+      available on the website.</p>
 
-      <h2 class="govuk-heading-m">4. Intellectual Property</h2>
-      <p class="govuk-body">The content featured on this website is subject to copyright protection unless otherwise indicated. The intellectual property rights in the content belongs wholly to the original author or publisher of the content. You agree to be bound by licensing arrangements associated with use of such content.</p>
-      <p class="govuk-body">You must not reproduce, distribute or communicate the content of this website, unless and to the extent that the same is specifically permitted under any license to which it is subject. If you wish to use any material which is not subject to a license, you must obtain prior written consent from the author or publisher. If reference to a copyright license is provided by us on this website then such license information should be used as a guide only; please contact the owner if you wish to reuse the content.</p>
-      <p class="govuk-body">You are permitted to download content from this website, except where it is expressly stated that you are not permitted to do so. Systematic downloading of files is strictly prohibited.  You must not use such downloaded files on any other website, network, repository or virtual learning environment without our prior written consent. If you wish to include material from this website on another website you may link to this website. In all cases, you must fully credit the author, this website, and the copyright status of the content.</p>
-      <p class="govuk-body">In relation to content which is subject to copyright but where the rights holder cannot be traced (Orphan Works) we will take the appropriate steps to trace the rights holder before uploading such content to our website. If you have found content which you consider is illegally held or published on this website, please contact us in accordance with our take down policy, see section 12.</p>
+    <h2 class="govuk-heading-m">4. Intellectual Property</h2>
+    <p class="govuk-body">The content featured on this website is subject to
+      copyright protection unless otherwise indicated. The intellectual property
+      rights in the content belongs wholly to the original author or publisher
+      of the content. You agree to be bound by licensing arrangements associated
+      with use of such content.</p>
+    <p class="govuk-body">You must not reproduce, distribute or communicate the
+      content of this website, unless and to the extent that the same is
+      specifically permitted under any license to which it is subject. If you
+      wish to use any material which is not subject to a license, you must
+      obtain prior written consent from the author or publisher. If reference to
+      a copyright license is provided by us on this website then such license
+      information should be used as a guide only; please contact the owner if
+      you wish to reuse the content.</p>
+    <p class="govuk-body">You are permitted to download content from this
+      website, except where it is expressly stated that you are not permitted to
+      do so. Systematic downloading of files is strictly prohibited. You must
+      not use such downloaded files on any other website, network, repository or
+      virtual learning environment without our prior written consent. If you
+      wish to include material from this website on another website you may link
+      to this website. In all cases, you must fully credit the author, this
+      website, and the copyright status of the content.</p>
+    <p class="govuk-body">In relation to content which is subject to copyright
+      but where the rights holder cannot be traced (Orphan Works) we will take
+      the appropriate steps to trace the rights holder before uploading such
+      content to our website. If you have found content which you consider is
+      illegally held or published on this website, please contact us in
+      accordance with our take down policy, see section 12.</p>
 
-      <h2 class="govuk-heading-m">5. User content</h2>
-      <p class="govuk-body">The intellectual property rights in user content will remain with you.  To enable us to provide this website service, by adding user content to this website you grant to us a non-exclusive, worldwide, free license to use, reproduce, publish and distribute your user content in whole or in part on the website and confirm that such content does not infringe the intellectual property rights of third parties. The license granted will not be used by us for any purpose directed towards private monetary compensation or commercial advantage. Please be aware that the website includes groups where your user content may be viewed by all users whether or not they have a user account for the website.</p>
-      <p class="govuk-body">If you wish to remove any user content from the website please contact us. Should you remove your user content from the website any licenses granted prior to removal shall survive.</p>
+    <h2 class="govuk-heading-m">5. User content</h2>
+    <p class="govuk-body">The intellectual property rights in user content will
+      remain with you. To enable us to provide this website service, by adding
+      user content to this website you grant to us a non-exclusive, worldwide,
+      free license to use, reproduce, publish and distribute your user content
+      in whole or in part on the website and confirm that such content does not
+      infringe the intellectual property rights of third parties. The license
+      granted will not be used by us for any purpose directed towards private
+      monetary compensation or commercial advantage. Please be aware that the
+      website includes groups where your user content may be viewed by all users
+      whether or not they have a user account for the website.</p>
+    <p class="govuk-body">If you wish to remove any user content from the
+      website please contact us. Should you remove your user content from the
+      website any licenses granted prior to removal shall survive.</p>
 
-      <h2 class="govuk-heading-m">6. Resources</h2>
-      <p class="govuk-body">All resources accessed via the website  and are published under the open government license</p>
+    <h2 class="govuk-heading-m">6. Resources</h2>
+    <p class="govuk-body">All resources accessed via the website and are
+      published under the open government license</p>
 
-      <h2 class="govuk-heading-m">7. Health and Safety</h2>
-      <p class="govuk-body">Use of a resource or other website content that includes a practical activity requires the user to carry out a full risk assessment. Resources have been published in the form that they were originally submitted by the contributor. This means that any health and safety risk assessment measures detailed within the resources reflect general practice and standards at the time that the resources were published and cannot be assumed to be acceptable today or that inclusion of such assessments within the resources should negate your obligation to perform appropriate risk assessments before use of such resources.</p>
-      <p class="govuk-body">Before using any resource that includes a practical activity, users should consult, and if necessary adapt, an appropriate employer’s risk assessment. Such risk assessment is the responsibility of the user, and the National Centre for Computing Education does not accept any responsibility and shall not be liable to you or any third party for any losses, damages, claims, expenses or outcomes resulting from the use of material included or referred to on this website.</p>
+    <h2 class="govuk-heading-m">7. Health and Safety</h2>
+    <p class="govuk-body">Use of a resource or other website content that
+      includes a practical activity requires the user to carry out a full risk
+      assessment. Resources have been published in the form that they were
+      originally submitted by the contributor. This means that any health and
+      safety risk assessment measures detailed within the resources reflect
+      general practice and standards at the time that the resources were
+      published and cannot be assumed to be acceptable today or that inclusion
+      of such assessments within the resources should negate your obligation to
+      perform appropriate risk assessments before use of such resources.</p>
+    <p class="govuk-body">Before using any resource that includes a practical
+      activity, users should consult, and if necessary adapt, an appropriate
+      employer’s risk assessment. Such risk assessment is the responsibility of
+      the user, and the National Centre for Computing Education does not accept
+      any responsibility and shall not be liable to you or any third party for
+      any losses, damages, claims, expenses or outcomes resulting from the use
+      of material included or referred to on this website.</p>
 
-      <h2 class="govuk-heading-m">8. User accounts and content standards</h2>
-      <p class="govuk-body">This website may ask you to set up a user account to access certain areas or to enable you to add user content. You are fully responsible for all activities that occur under your account.</p>
-      <p class="govuk-heading-s">Content Standards</p>
-      <p class="govuk-body">You must comply with the spirit of these standards as well as the letter. You agree:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>not to reproduce, duplicate, copy or re-sell any part of this website or materials except as expressly allowed</li>
-        <li>not to access without authority, interfere with, damage or disrupt: any part of this website; any equipment or network on which this website is stored; any software used in the provision of this website; or any equipment or network or software owned or used by any third party</li>
-        <li>not to post, email or otherwise message which contains software viruses or any other computer code that (i) either negatively impacts or damages software or hardware functionality or (ii) negatively affects a user’s access</li>
-        <li>not to remove copyright notices from content</li>
-        <li>to ensure that content:
-          <ul class="govuk-list govuk-list--bullet">
-            <li>is accurate (where it states facts) and does not contain information which is false or misleading</li>
-            <li>must be genuinely held (where it states opinions)</li>
-            <li>complies with applicable law in the UK and in any country from which it is posted</li>
-            <li>does not contain information which is: harassing or invades another's privacy, harms minors in any way, promotes bigotry, racism, hatred or harm against any group or individual or which is obscene</li>
-            <li>does not infringe another's rights, including but not limited to intellectual property or data protection rights (including the transmittance of personally identifiable information)</li>
-            <li>does not constitute spam (such as unsolicited advertising)</li>
-          </ul>
-        </li>
-      </ul>
-      <p class="govuk-body">We reserve the right to exercise our discretion in the removal and/or editing of any user content which contravenes these standards without notice. We shall use reasonable endeavours to remove such user content from the site as soon as reasonably practicable upon us becoming aware of it. We may at our discretion suspend or terminate your account at any time should you be in breach of these standards.</p>
+    <h2 class="govuk-heading-m">8. User accounts and content standards</h2>
+    <p class="govuk-body">This website may ask you to set up a user account to
+      access certain areas or to enable you to add user content. You are fully
+      responsible for all activities that occur under your account.</p>
+    <p class="govuk-heading-s">Content Standards</p>
+    <p class="govuk-body">You must comply with the spirit of these standards as
+      well as the letter. You agree:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>not to reproduce, duplicate, copy or re-sell any part of this website
+        or materials except as expressly allowed</li>
+      <li>not to access without authority, interfere with, damage or disrupt:
+        any part of this website; any equipment or network on which this website
+        is stored; any software used in the provision of this website; or any
+        equipment or network or software owned or used by any third party</li>
+      <li>not to post, email or otherwise message which contains software
+        viruses or any other computer code that (i) either negatively impacts or
+        damages software or hardware functionality or (ii) negatively affects a
+        user’s access</li>
+      <li>not to remove copyright notices from content</li>
+      <li>to ensure that content:
+        <ul class="govuk-list govuk-list--bullet">
+          <li>is accurate (where it states facts) and does not contain
+            information which is false or misleading</li>
+          <li>must be genuinely held (where it states opinions)</li>
+          <li>complies with applicable law in the UK and in any country from
+            which it is posted</li>
+          <li>does not contain information which is: harassing or invades
+            another's privacy, harms minors in any way, promotes bigotry,
+            racism, hatred or harm against any group or individual or which is
+            obscene</li>
+          <li>does not infringe another's rights, including but not limited to
+            intellectual property or data protection rights (including the
+            transmittance of personally identifiable information)</li>
+          <li>does not constitute spam (such as unsolicited advertising)</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="govuk-body">We reserve the right to exercise our discretion in the
+      removal and/or editing of any user content which contravenes these
+      standards without notice. We shall use reasonable endeavours to remove
+      such user content from the site as soon as reasonably practicable upon us
+      becoming aware of it. We may at our discretion suspend or terminate your
+      account at any time should you be in breach of these standards.</p>
 
-      <h2 class="govuk-heading-m">9. Take down policy</h2>
-      <p class="govuk-body">We reserve an absolute right to exercise our discretion in the removal of any content from the website.</p>
-      <p class="govuk-body">Should you have any concerns or have a complaint in relation to the content or should you consider such content is in breach of your intellectual property rights then please contact us. Upon becoming aware of any issues related to the content we will promptly and amicably resolve such matters (to the satisfaction of both parties should there be a complainant), with the following possible outcomes:</p>
-      <ol class="govuk-list govuk-list--number">
-        <li>The material remains on the website unchanged.</li>
-        <li>The material is replaced on the website with changes.</li>
-        <li>The material is permanently removed from the website.</li>
-      </ol>
-      <p class="govuk-body">Where we and a complainant are unable to settle such a matter, the content will remain unavailable through this website until a time when a resolution has been reached.</p>
+    <h2 class="govuk-heading-m">9. Take down policy</h2>
+    <p class="govuk-body">We reserve an absolute right to exercise our
+      discretion in the removal of any content from the website.</p>
+    <p class="govuk-body">Should you have any concerns or have a complaint in
+      relation to the content or should you consider such content is in breach
+      of your intellectual property rights then please contact us. Upon becoming
+      aware of any issues related to the content we will promptly and amicably
+      resolve such matters (to the satisfaction of both parties should there be
+      a complainant), with the following possible outcomes:</p>
+    <ol class="govuk-list govuk-list--number">
+      <li>The material remains on the website unchanged.</li>
+      <li>The material is replaced on the website with changes.</li>
+      <li>The material is permanently removed from the website.</li>
+    </ol>
+    <p class="govuk-body">Where we and a complainant are unable to settle such a
+      matter, the content will remain unavailable through this website until a
+      time when a resolution has been reached.</p>
 
-      <h2 class="govuk-heading-m">10. Warranty disclaimer and liability</h2>
-      <p class="govuk-body">Your use of this website is at your own risk and to the fullest extent permitted by law we hereby exclude all warranties, express or implied, and make no representation in relation to the content of the website. We do not accept responsibility and shall not be liable to you or any third party for any losses, damages, claims, expenses or outcomes resulting from your use of this website or any third party website which may be linked to this website.</p>
-      <p class="govuk-body">Nothing in these terms and conditions shall operate to exclude liability for fraudulent misrepresentation or for death or personal injury caused by our negligence or any other liability which cannot be excluded or limited by the applicable law.</p>
-      <p class="govuk-body">You acknowledge that any breach by you of these terms and conditions may cause us significant and irreparable damage and, accordingly, you agree that you will indemnify and hold us and our officers, employees and agents harmless against all and any losses, damages, claims and/or expenses suffered as a result of a breach of these terms and conditions. Without prejudice to the foregoing, in the event of any breach by you of these terms and conditions, we shall be entitled to immediately suspend or terminate your access to the website and shall further be entitled to injunctive or other equitable relief.</p>
+    <h2 class="govuk-heading-m">10. Warranty disclaimer and liability</h2>
+    <p class="govuk-body">Your use of this website is at your own risk and to
+      the fullest extent permitted by law we hereby exclude all warranties,
+      express or implied, and make no representation in relation to the content
+      of the website. We do not accept responsibility and shall not be liable to
+      you or any third party for any losses, damages, claims, expenses or
+      outcomes resulting from your use of this website or any third party
+      website which may be linked to this website.</p>
+    <p class="govuk-body">Nothing in these terms and conditions shall operate to
+      exclude liability for fraudulent misrepresentation or for death or
+      personal injury caused by our negligence or any other liability which
+      cannot be excluded or limited by the applicable law.</p>
+    <p class="govuk-body">You acknowledge that any breach by you of these terms
+      and conditions may cause us significant and irreparable damage and,
+      accordingly, you agree that you will indemnify and hold us and our
+      officers, employees and agents harmless against all and any losses,
+      damages, claims and/or expenses suffered as a result of a breach of these
+      terms and conditions. Without prejudice to the foregoing, in the event of
+      any breach by you of these terms and conditions, we shall be entitled to
+      immediately suspend or terminate your access to the website and shall
+      further be entitled to injunctive or other equitable relief.</p>
 
-      <h2 class="govuk-heading-m">11. General</h2>
-      <p class="govuk-body">We may need to change the terms and conditions. If we do so we will post an updated copy with the date of revision included within the title of the terms. If we consider the change is material we will post a notice on the website. Your continued use of the website indicates your acceptance of the current terms.</p>
-      <p class="govuk-body">The validity or enforceability of the remaining terms shall not be affected by the holding of any provision of part of the terms and conditions to be invalid or enforceable.
-      These terms and conditions shall be governed by and interpreted in accordance with the laws of England and Wales and the Courts of England and Wales shall have exclusive jurisdiction.</p>
-      <p class="govuk-body">The website aims to achieve a minimum W3C/WAI's Web Content Accessibility Guidelines 2.0, Conformance Level "A-A" Users with accessibility issues should contact us and we will be pleased to discuss any requirements.
-      We follow good business practice and have robust controls in place to prevent fraud, corruption and bribery. We are committed to the highest standards of openness, integrity and accountability.</p>
-    </div>
+    <h2 class="govuk-heading-m">11. General</h2>
+    <p class="govuk-body">We may need to change the terms and conditions. If we
+      do so we will post an updated copy with the date of revision included
+      within the title of the terms. If we consider the change is material we
+      will post a notice on the website. Your continued use of the website
+      indicates your acceptance of the current terms.</p>
+    <p class="govuk-body">The validity or enforceability of the remaining terms
+      shall not be affected by the holding of any provision of part of the terms
+      and conditions to be invalid or enforceable.
+      These terms and conditions shall be governed by and interpreted in
+      accordance with the laws of England and Wales and the Courts of England
+      and Wales shall have exclusive jurisdiction.</p>
+    <p class="govuk-body">The website aims to achieve a minimum W3C/WAI's Web
+      Content Accessibility Guidelines 2.0, Conformance Level "A-A" Users with
+      accessibility issues should contact us and we will be pleased to discuss
+      any requirements.
+      We follow good business practice and have robust controls in place to
+      prevent fraud, corruption and bribery. We are committed to the highest
+      standards of openness, integrity and accountability.</p>
   </div>
 </div>
