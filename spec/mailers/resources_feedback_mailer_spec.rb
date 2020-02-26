@@ -8,7 +8,7 @@ RSpec.describe ResourcesFeedbackMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('How are you finding the Resource Repository content?')
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(['noreply@teachcomputing.org'])
+      expect(mail.from).to eq(['teachcomputing@teachcomputing.org'])
     end
 
     it 'contains the users name' do

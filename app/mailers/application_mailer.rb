@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@teachcomputing.org'
+  default from: 'teachcomputing@teachcomputing.org'
   layout 'mailer'
 end
