@@ -19,13 +19,11 @@ module Programmes
                                   .for_programme(self)
                                   .in_state('complete')
 
-      total = complete_achievements.with_category('face-to-face').sum(:credit)
-      return false if total.zero?
+      total_face_to_face = complete_achievements.with_category('face-to-face').sum(:credit)
+      return true if total_face_to_face >= 20
 
-      return true if total >= 20
-
-      total += complete_achievements.with_category('online').sum(:credit)
-      return true if total >= 20
+      total_online = complete_achievements.with_category('online').sum(:credit)
+      return true if total_face_to_face >= 10 && total_online >= 20
 
       false
     end
