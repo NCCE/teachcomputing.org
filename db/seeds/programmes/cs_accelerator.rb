@@ -52,6 +52,7 @@ slugs = %w[
   introduction-to-web-development
   networking-with-python-socket-programming-for-communication
   pre-january-2019-csa-face-to-face-cpd
+  robotics-with-raspberry-pi-build-and-program-your-first-robot-buggy
 ]
 
 slugs.each do |slug|
