@@ -3,6 +3,7 @@ class Achievement < ApplicationRecord
 
   belongs_to :activity
   belongs_to :user
+  belongs_to :programme, optional: true
 
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
