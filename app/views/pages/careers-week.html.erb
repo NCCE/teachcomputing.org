@@ -1,0 +1,107 @@
+<% meta_tag :title, 'National Careers Week: think, learn, compute - Teach Computing' %>
+<% meta_tag :description, 'National Careers Week takes place from 2-7 March 2020 and celebrates the importance of good careers education in schools and colleges.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/careers-week/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'National Careers Week: think, learn, compute - Teach Computing' %>
+<div class="deep-cerulean-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l">National Careers Week: think, learn, compute</h1>
+          <p class="govuk-body-l">National Careers Week takes place from 2-7 March 2020 and celebrates the importance of good careers education in schools and colleges.</p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_tag '/images/careers-week/hero.jpg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">With the demand for computing skills growing, there has never been a more important time to ensure young people are equipped for the future workplace. This National Careers Week, we’re raising awareness of how computational thinking can empower us as individuals and as a society.</p>
+        <p class="govuk-body">We spoke to six professionals working in non-stereotypical roles and industries which rely on computing skills to show how essential it is to have a foundational knowledge of the subject, regardless of the career path you decide to follow.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper--xl">
+      <h2 class="govuk-heading-m">Meet the professionals</h2>
+      <div class="careers-week__testimonials">
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“I can’t think of any other job that would present me with the opportunity to be involved in the delivery of technologies, ranging from airfield telecommunications and aircraft airbridges, to the latest generation security screening equipment.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/rb.jpg', alt: 'Mark Bardsley', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Mark Bardsley</strong><br>Transformation Programme IT Executive<br>Manchester Airport Group</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Mark’s interview', 'https://blog.teachcomputing.org/flying-high', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“The thing I love is when you read stories about how Alexa has helped people. The leader of a charity for blind people said how much Alexa has helped him, because its users are now able to access RNIB-verified information via voice commands.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/beth.jpg', alt: 'Beth Holmes', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Beth Holmes</strong><br>Knowledge Engineer<br>Amazon</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Beth’s interview', 'https://blog.teachcomputing.org/alexa-can-you-tell-me-more-about-digital-careers', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“I feel incredibly fortunate to be in a role that allows my interests as a scientist to be used to support the care of cancer patients. Knowing my research has the potential to further improve the outcomes of patients is such a strong driving force.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/marcus.jpg', alt: 'Marcus Tyyger', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Marcus Tyyger</strong><br>Clinical Scientist - Medical<br>Physics (Radiotherapy)<br>NHS</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Marcus’s interview', 'https://blog.teachcomputing.org/using-coding-to-help-advance-healthcare', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“I think computer science is super interesting and can help tackle all sorts of real-world problems. There are still so many open research questions and computer science is definitely a valuable skill in academia!”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/risa.jpg', alt: 'Risa Ueno', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Risa Ueno</strong><br>PhD student<br>British Antarctic Survey</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Risa’s interview', 'https://blog.teachcomputing.org/using-computational-thinking-to-tackle-real-world-problems', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“For me, the most interesting thing is understanding behaviours - I enjoy and learn more when we go above and beyond current technology and think more about everyday habits and general consumer behaviour.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/swetha.jpg', alt: 'Swetha Sethu-Jones', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Swetha Sethu-Jones</strong><br>Senior UX
+              Researcher<br>Just Eat</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Swetha’s interview', 'https://blog.teachcomputing.org/researching-the-right-career', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“It’s been great to apply what I’ve been taught at university to real-life scenarios instead of those you read about in a textbook and see how they can be used to make a difference in practice.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/sam.jpg', alt: 'Sam Parker', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Sam Parker</strong><br>Technology Degree Apprenticeship and student<br>PwC</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Sam’s interview', 'https://blog.teachcomputing.org/flying-start', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
