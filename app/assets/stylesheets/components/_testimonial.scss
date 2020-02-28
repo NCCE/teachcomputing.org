@@ -1,0 +1,43 @@
+.testimonial {
+  &__text {
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 18px;
+    }
+  }
+  &__bio {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 52px auto;
+    padding: 0 10px 0 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 0 18px 0 18px;
+    }
+  }
+  &__bio-cell--span-2 {
+    grid-column-end: span 2;
+    grid-column-start: 1;
+  }
+  &__bio > *:last-child {
+    margin-bottom: 0;
+  }
+  &__image {
+    border: 2px solid $dixie;
+    border-radius: 24px;
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.testimonial--secondary {
+  padding-top: 50px;
+  @include govuk-media-query($from: tablet) {
+    padding-top: 0;
+  }
+  .testimonial__image {
+    border: none;
+    border-radius: 0;
+  }
+}
