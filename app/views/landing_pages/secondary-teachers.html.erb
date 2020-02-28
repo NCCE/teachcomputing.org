@@ -25,7 +25,8 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">Explore our courses</h2>
-        <p class="govuk-body-l landing-page__intro">Improve progress and attainment at Key Stage 3
+        <p class="govuk-body-l landing-page__intro">Improve progress and
+          attainment at Key Stage 3
           and 4
           by developing your subject knowledge and classroom practice.</p>
       </div>
@@ -38,11 +39,18 @@
           </p>
           <p class="govuk-body">Discover how to build your own Graphical User
             Interface (GUI) with Python and guizero.</p>
-          <video poster="/images/secondary-teachers/video-placeholder.jpg" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/20654375/download/sd_lower">
-            <source src="//view.vzaar.com/20654375/download/sd_lower" type="video/mp4">
-            <track class="track" src="/images/secondary-teachers/ProgrammingWithGUIs.vtt" kind="captions" srclang="EN" label="English">
+          <video poster="/images/secondary-teachers/video-placeholder.jpg"
+            controls="true" playsinline="true" crossorigin="anonymous"
+            preload="none" tabindex="-1"
+            src="//view.vzaar.com/20654375/download/sd_lower">
+            <source src="//view.vzaar.com/20654375/download/sd_lower"
+              type="video/mp4">
+            <track class="track"
+              src="/images/secondary-teachers/ProgrammingWithGUIs.vtt"
+              kind="captions" srclang="EN" label="English">
           </video>
-          <p class="govuk-body-s landing-page__icons"><strong><span class="icon-online">Free
+          <p class="govuk-body-s landing-page__icons"><strong><span
+                class="icon-online">Free
                 online course</span><span class="icon-calendar">3
                 weeks</span><span class="icon-clock">2 hours per
                 week</span></strong></p>
@@ -79,24 +87,31 @@
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l">Your GCSE computer science certificate</h2>
+          <h2 class="govuk-heading-l">Your GCSE computer science certificate
+          </h2>
         </div>
         <div class="govuk-grid-column-two-thirds">
           <div class="card card--cs-accelerator card--bottom-glyph">
             <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
-            <h2 class="govuk-heading-m card__heading">Teach GCSE computer science</h2>
+            <h2 class="govuk-heading-m card__heading">Teach GCSE computer
+              science</h2>
             <p class="govuk-body card__text">The Computer Science Accelerator
               Programme is a certified professional development programme
               designed to equip you with the subject knowledge and confidence to
               successfully teach GCSE computer science.</p>
             <% if current_user && @programme.user_enrolled?(current_user) %>
-              <%
+            <%
                 achieved_credits = @programme.credits_achieved_for_certificate(current_user)
                 max_credits = @programme.max_credits_for_certificate
               %>
-              <progress class="card__progress-bar" aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits" value="<%= achieved_credits %>" max="<%= max_credits %>"></progress>
+            <progress class="card__progress-bar"
+              aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits"
+              value="<%= achieved_credits %>"
+              max="<%= max_credits %>"></progress>
             <% else %>
-              <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong></p>
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong>
+            </p>
             <% end %>
           </div>
         </div>
@@ -109,7 +124,8 @@
             </p>
             <div class="testimonial__bio">
               <%= image_tag '/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
-              <p class="govuk-body-s"><strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
+              <p class="govuk-body-s">
+                <strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
                 Maths and Computer Science teacher, London
               </p>
             </div>
@@ -130,11 +146,21 @@
           and colleges with an exceptional track record in teaching computing.
           <%= link_to 'Find your local hub', '/hubs' %>.
         </p>
-        <h3 class="govuk-body" id="subject-matter-experts"><strong>Subject Matter Experts</strong></h3>
+        <h3 class="govuk-body" id="subject-matter-experts"><strong>Subject
+            Matter Experts</strong></h3>
         <p class="govuk-body">
-          We offer fully-funded consultancy and guidance to schools and colleges who meet our <%= link_to 'eligibility criteria', bursary_path(anchor: 'subject') %>. This is provided by a network of computing education specialists, called Subject Matter Experts. Our experts work with leaders and teachers to identify an action plan for improving or delivering computing and computer science in their school or college.
+          We offer fully-funded consultancy and guidance to schools and colleges
+          who meet our
+          <%= link_to 'eligibility criteria', bursary_path(anchor: 'subject') %>.
+          This is provided by a network of computing education specialists,
+          called Subject Matter Experts. Our experts work with leaders and
+          teachers to identify an action plan for improving or delivering
+          computing and computer science in their school or college.
         </p>
-        <p class="govuk-body">An additional £1400 bursary is also available for schools or colleges who are not currently offering GCSE computer science or are considering dropping the subject. <%= link_to 'Find out more', bursary_path(anchor: 'subject') %>.
+        <p class="govuk-body">An additional £1400 bursary is also available for
+          schools or colleges who are not currently offering GCSE computer
+          science or are considering dropping the subject.
+          <%= link_to 'Find out more', bursary_path(anchor: 'subject') %>.
         </p>
         <p class="govuk-body">
           <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %>
@@ -146,8 +172,13 @@
           resources and best practice to encourage strong and effective
           teaching.</p>
         <h3 class="govuk-body"><strong>CS Champion Support</strong></h3>
-        <p class="govuk-body">As part of the CS Accelerator Programme we are able to provide additional support and mentoring through our CS Champions, who can provide guidance throughout the programme, and advise on next steps following its completion.</p>
-        <p class="govuk-body govuk-!-margin-bottom-0">Please email <%= mail_to 'CSChampionSupport@stem.org.uk', 'CSChampionSupport@stem.org.uk', class: 'ncce-link' %> describing the support you require and how best to contact you.</p>
+        <p class="govuk-body">As part of the CS Accelerator Programme we are
+          able to provide additional support and mentoring through our CS
+          Champions, who can provide guidance throughout the programme, and
+          advise on next steps following its completion.</p>
+        <p class="govuk-body govuk-!-margin-bottom-0">Please email
+          <%= mail_to 'CSChampionSupport@stem.org.uk', 'CSChampionSupport@stem.org.uk', class: 'ncce-link' %>
+          describing the support you require and how best to contact you.</p>
       </div>
     </div>
   </div>
@@ -157,7 +188,8 @@
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
-          <h2 class="govuk-heading-l landing-page-resources__heading">Access our free teaching resources</h2>
+          <h2 class="govuk-heading-l landing-page-resources__heading">Access our
+            free teaching resources</h2>
           <p class="govuk-body landing-page-resources__intro">Boost the
             quality of your lessons with our free
             online resource bank. You’ll get access to full units of work,
@@ -168,17 +200,21 @@
       </div>
       <div class="landing-page-resources__grid">
         <div class="shadow_card">
-          <h3 class="govuk-body icon-resources"><strong>Subject knowledge
-              assessments</strong>
-          </h3>
+          <h3 class="govuk-heading-s icon-resources">Subject knowledge
+            assessments</h3>
           <p class="govuk-body">Our free online self-marking assessments allow
             you to evaluate your students’ knowledge so you can use this
             information to guide your teaching for the rest of the year.</p>
           <%= link_to 'Access the tests now', 'https://www.eedi.co.uk/projects/teach-computing', class: 'govuk-body ncce-link' %>
         </div>
         <div class="shadow_card">
-          <h3 class="govuk-body icon-resources"><strong>Year 8 - Data Representations: from clay to silicon</strong></h3>
-          <p class="govuk-body">This unit conveys essential knowledge relating to binary representations. The activities gradually introduce learners to binary digits and how they can be used to represent text and numbers. The concepts are linked to practical applications and problems that the learners are familiar with.</p>
+          <h3 class="govuk-heading-s icon-resources">Year 8 - Data
+            Representations: from clay to silicon</h3>
+          <p class="govuk-body">This unit conveys essential knowledge relating
+            to binary representations. The activities gradually introduce
+            learners to binary digits and how they can be used to represent text
+            and numbers. The concepts are linked to practical applications and
+            problems that the learners are familiar with.</p>
           <%= link_to "Access 'Data Representations' now", 'https://ncce.io/Year8', class: 'govuk-body ncce-link' %>
         </div>
       </div>

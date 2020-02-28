@@ -2,23 +2,26 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper--l">
       <% if @programme %>
-        <div class='govuk-grid-row govuk-!-margin-bottom-6'>
-          <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-m">Also part of <%= @programme.title %>:</h2>
-          </div>
+      <div class='govuk-grid-row govuk-!-margin-bottom-6'>
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Also part of <%= @programme.title %>:</h2>
         </div>
+      </div>
       <% end %>
       <div class='course-card__container'>
         <% other_courses = @programme ? other_courses_on_programme(@other_courses, @course, @programme, 3) : @other_courses[0...3]  %>
         <% other_courses.each do |course| %>
-          <div class="shadow_card course-card">
-						<div class="course-card__content">
-							<h2 class="govuk-heading-s"><strong><%= link_to course.title, course_path(id: course.activity_code, name: course.title.parameterize), class: 'ncce-link' %></strong></h2>
-							<p class="govuk-body-s"><%= course.meta_description %></p>
-						</div>
-            <span class="govuk-body-s course-card__type <%= course_meta_icon_class(course.online_cpd) %>"><%= course.online_cpd ? 'Free online course' : 'Face to face course' %>
-            </span>
+        <div class="shadow_card course-card">
+          <div class="course-card__content">
+            <h2 class="govuk-heading-s">
+              <%= link_to course.title, course_path(id: course.activity_code, name: course.title.parameterize), class: 'ncce-link' %>
+            </h2>
+            <p class="govuk-body-s"><%= course.meta_description %></p>
           </div>
+          <span
+            class="govuk-body-s course-card__type <%= course_meta_icon_class(course.online_cpd) %>"><%= course.online_cpd ? 'Free online course' : 'Face to face course' %>
+          </span>
+        </div>
         <% end %>
       </div>
       <div class="course-more">
