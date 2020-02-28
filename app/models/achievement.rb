@@ -7,11 +7,12 @@ class Achievement < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
-  before_create :fill_in_programme_id
+  before_create :fill_in_programme_id,
+                unless: proc { |achievement| achievement.programme_id }
 
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
-  scope :for_programme, ->(programme) {
+  scope :for_programme, lambda { |programme|
     where('activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)', programme.id)
   }
 
@@ -27,10 +28,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where.not(activities: { category: category })
   }
 
-  scope :sort_complete_first, -> {
+  scope :sort_complete_first, lambda {
     select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'enrolled') as current_state")
-    .joins(most_recent_transition_join)
-    .order('current_state')
+      .joins(most_recent_transition_join)
+      .order('current_state')
   }
 
   def state_machine
@@ -87,8 +88,6 @@ class Achievement < ApplicationRecord
   private
 
     def fill_in_programme_id
-      return if programme_id
-
       programmes = activity.programmes
 
       return if programmes.size.zero?
