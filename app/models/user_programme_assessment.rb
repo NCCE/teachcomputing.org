@@ -4,11 +4,16 @@ class UserProgrammeAssessment
   def initialize(programme, user)
     @enough_credits_for_test = false
     @enough_credits_for_test = can_take_accelerator_test?(user, programme) if programme.assessment
+    @enough_activites_for_test = enough_activites_for_accelerator_test?(user, programme) if programme.assessment
     @attempts = programme.assessment.assessment_attempts.for_user(user) if @enough_credits_for_test && !programme.user_completed?(user)
   end
 
   def enough_credits_for_test?
     @enough_credits_for_test
+  end
+
+  def enough_activites_for_test?
+    @enough_activites_for_test
   end
 
   def num_attempts
@@ -37,5 +42,9 @@ class UserProgrammeAssessment
 
     def can_take_accelerator_test?(user, programme)
       programme.credits_achieved_for_certificate(user) >= programme.max_credits_for_certificate
+    end
+
+    def enough_activites_for_accelerator_test?(user, programme)
+      programme.enough_activites_for_test?(user)
     end
 end
