@@ -90,7 +90,7 @@ class Achievement < ApplicationRecord
     def fill_in_programme_id
       programmes = activity.programmes
 
-      return if programmes.size.zero?
+      return if programmes.empty?
 
       find_matching_programme(programmes)
     end
