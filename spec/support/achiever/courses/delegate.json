@@ -33,6 +33,7 @@
         "Delegate.Progress": "157420002",
         "Activity.ImportedToITK": false,
         "Activity.COURSEOCCURRENCENO": "cf8903f9-91a2-4d08-ba41-596ea05b498d",
+        "OnlineCPD": false,
         "Activity.COURSETEMPLATENO": "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae"
       },
       {
@@ -59,6 +60,7 @@
         "Delegate.Progress": "157420002",
         "Activity.ImportedToITK": false,
         "Activity.COURSEOCCURRENCENO": "cf8903f9-91a2-4d08-ba41-596ea05b498c",
+        "OnlineCPD": true,
         "Activity.COURSETEMPLATENO": "92f4f86e-0237-4ecc-a905-2f6c62d6b5ax"
       },
       {
@@ -85,6 +87,7 @@
         "Delegate.Progress": "157420002",
         "Activity.ImportedToITK": false,
         "Activity.COURSEOCCURRENCENO": "cf8903f9-91a2-4d08-ba41-596ea05b498c",
+        "OnlineCPD": false,
         "Activity.COURSETEMPLATENO": "92f4f86e-0237-4ecc-a905-2f6c62d6b5aw"
       }
     ]
