@@ -11,6 +11,7 @@ RSpec.describe Achiever::Course::Delegate do
     it 'provides the required accessor methods' do
       expect(delegate).to respond_to(:course_template_no)
       expect(delegate).to respond_to(:is_fully_attended)
+      expect(delegate).to respond_to(:online_cpd)
     end
   end
 
@@ -34,7 +35,7 @@ RSpec.describe Achiever::Course::Delegate do
 
       it 'contains instances of Achiever::Course::Delegate' do
         expect(described_class.find_by_achiever_contact_number('id-101').first).to be_an Achiever::Course::Delegate
-      end 
+      end
     end
   end
 end

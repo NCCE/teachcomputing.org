@@ -1,15 +1,20 @@
-<% meta_tag :title, "Page not found - Teach Computing" %>
+<% meta_tag :title, 'Page not found - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Page not found' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column">
-        <div class="govuk-grid-column-two-thirds ncce-about__content">
-          <p class="govuk-body">If you entered a web address please check it was correct.</p>
-          <p class="govuk-body">If you pasted the web address, check you copied the entire address.</p>
-          <p class="govuk-body">You can also browse <%= link_to 'from the homepage', root_path, class: 'ncce-link' %> to find the information you need.</p>
-          <p class="govuk-body">If the web address is correct or you selected a link or button, <%= mail_to 'info@teachcomputing.org', 'contact us', class: 'ncce-link' %> to let us know.</p>
-        </div>
+      <div class="govuk-grid-column-two-thirds ncce-about__content">
+        <p class="govuk-body">If you entered a web address please check it was
+          correct.</p>
+        <p class="govuk-body">If you pasted the web address, check you copied
+          the entire address.</p>
+        <p class="govuk-body">You can also browse
+          <%= link_to 'from the homepage', root_path, class: 'ncce-link' %> to
+          find the information you need.</p>
+        <p class="govuk-body">If the web address is correct or you selected a
+          link or button,
+          <%= mail_to 'info@teachcomputing.org', 'contact us', class: 'ncce-link' %>
+          to let us know.</p>
       </div>
     </div>
   </div>

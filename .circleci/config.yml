@@ -53,3 +53,7 @@ jobs:
           name: Run rspec
           command: |
             bundle exec rspec
+      - run:
+          name: Run brakeman
+          command: |
+            bundle exec brakeman -q -i config/brakeman.ignore --no-summary

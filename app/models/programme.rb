@@ -5,6 +5,7 @@ class Programme < ApplicationRecord
   has_many :users, through: :user_programme_enrolments
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
+  has_many :achievements, dependent: :nullify
 
   validates :title, :description, :slug, presence: true
 
@@ -28,6 +29,10 @@ class Programme < ApplicationRecord
 
   def max_credits_for_certificate
     0
+  end
+
+  def enough_activites_for_test?(user)
+    false
   end
 
   def diagnostic
