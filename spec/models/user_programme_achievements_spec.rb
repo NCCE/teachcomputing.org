@@ -41,8 +41,8 @@ RSpec.describe UserProgrammeAchievements do
     activities = [create(:activity, :future_learn, credit: 20), create(:activity, :future_learn, credit: 20)]
 
     activities.each do |activity|
-      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
     end
   end
 

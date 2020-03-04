@@ -2,16 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
   let(:user) { create(:user) }
-  let(:achievement) { create(:achievement) }
+  let(:activity) { create(:activity) }
+  let(:programme) { create(:programme) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
+
+  let(:achievement) { create(:achievement, activity_id: activity.id) }
   let(:achievement2) { create(:achievement) }
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
   let(:community_activity) { create(:activity, :community) }
   let(:community_achievement) { create(:achievement, activity: community_activity) }
-
-  let(:programme) { create(:programme) }
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
 
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:achievement_with_passed_programme_id) {
