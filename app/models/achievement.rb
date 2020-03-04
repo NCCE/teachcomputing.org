@@ -7,9 +7,12 @@ class Achievement < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
+  before_create :fill_in_programme_id,
+                unless: proc { |achievement| achievement.programme_id }
+
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
-  scope :for_programme, ->(programme) {
+  scope :for_programme, lambda { |programme|
     where('activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)', programme.id)
   }
 
@@ -25,10 +28,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where.not(activities: { category: category })
   }
 
-  scope :sort_complete_first, -> {
+  scope :sort_complete_first, lambda {
     select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'enrolled') as current_state")
-    .joins(most_recent_transition_join)
-    .order('current_state')
+      .joins(most_recent_transition_join)
+      .order('current_state')
   }
 
   def state_machine
@@ -81,4 +84,33 @@ class Achievement < ApplicationRecord
   private_class_method :initial_state, :transition_class
 
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine
+
+  private
+
+    def fill_in_programme_id
+      programmes = activity.programmes
+
+      return if programmes.empty?
+
+      find_matching_programme(programmes)
+    end
+
+    def find_matching_programme(programmes)
+      if programmes.size == 1
+        self.programme_id = programmes.first.id
+      else
+        programme_ids = programmes.pluck(:id)
+        user_programme_ids = user.user_programme_enrolments
+                                 .in_state('enrolled')
+                                 .order(created_at: :desc)
+                                 .pluck(:programme_id)
+
+        user_programme_ids.each do |user_programme_id|
+          if programme_ids.include?(user_programme_id)
+            self.programme_id = user_programme_id
+            break
+          end
+        end
+      end
+    end
 end
