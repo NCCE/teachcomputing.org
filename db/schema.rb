@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_150022) do
+ActiveRecord::Schema.define(version: 2020_03_05_122433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -124,6 +124,17 @@ ActiveRecord::Schema.define(version: 2020_02_26_150022) do
     t.boolean "enrollable", default: false
     t.string "type"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
+  end
+
+  create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id"
+    t.string "title"
+    t.string "slug"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programme_id"], name: "index_questionnaires_on_programme_id"
+    t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
   end
 
   create_table "resource_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
