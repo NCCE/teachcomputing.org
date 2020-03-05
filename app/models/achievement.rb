@@ -13,7 +13,7 @@ class Achievement < ApplicationRecord
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
   scope :for_programme, lambda { |programme|
-    where('activity_id IN (SELECT activity_id FROM programme_activities WHERE programme_id = ?)', programme.id)
+    where(programme_id: programme.id)
   }
 
   scope :with_category, lambda { |category|
