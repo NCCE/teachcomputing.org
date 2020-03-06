@@ -6,6 +6,7 @@ class Programme < ApplicationRecord
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
   has_many :achievements, dependent: :nullify
+  has_one  :questionnaire, dependent: :nullify
 
   validates :title, :description, :slug, presence: true
 

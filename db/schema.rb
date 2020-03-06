@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_122433) do
+ActiveRecord::Schema.define(version: 2020_03_06_094237) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -124,6 +123,20 @@ ActiveRecord::Schema.define(version: 2020_03_05_122433) do
     t.boolean "enrollable", default: false
     t.string "type"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
+  end
+
+  create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "questionnaire_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "programme_id", null: false
+    t.integer "current_question", default: 0
+    t.json "answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programme_id", "user_id"], name: "index_questionnaire_responses_on_programme_id_and_user_id", unique: true
+    t.index ["programme_id"], name: "index_questionnaire_responses_on_programme_id"
+    t.index ["questionnaire_id"], name: "index_questionnaire_responses_on_questionnaire_id"
+    t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"
   end
 
   create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

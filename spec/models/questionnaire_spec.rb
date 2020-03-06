@@ -7,6 +7,10 @@ RSpec.describe Questionnaire, type: :model do
     it 'belongs to a programme' do
       expect(questionnaire).to belong_to(:programme)
     end
+
+    it 'has_many users' do
+      expect(questionnaire).to have_many(:questionnaire_responses)
+    end
   end
 
   describe 'validations' do
