@@ -25,7 +25,7 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def credits_achieved_for_certificate(user)
+  def credits_achieved_for_certificate(_user)
     0
   end
 
@@ -33,7 +33,7 @@ class Programme < ApplicationRecord
     0
   end
 
-  def enough_activites_for_test?(user)
+  def enough_activites_for_test?(_user)
     false
   end
 

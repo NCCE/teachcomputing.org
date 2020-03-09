@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_094237) do
+ActiveRecord::Schema.define(version: 2020_03_09_141031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -125,6 +125,18 @@ ActiveRecord::Schema.define(version: 2020_03_06_094237) do
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
+  create_table "questionnaire_response_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.uuid "questionnaire_response_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_response_id", "most_recent"], name: "index_questionnaire_response_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["questionnaire_response_id", "sort_key"], name: "index_questionnaire_response_transitions_parent_sort", unique: true
+  end
+
   create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "questionnaire_id", null: false
     t.uuid "user_id", null: false
@@ -203,5 +215,6 @@ ActiveRecord::Schema.define(version: 2020_03_06_094237) do
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "questionnaire_response_transitions", "questionnaire_responses"
   add_foreign_key "user_programme_enrolment_transitions", "user_programme_enrolments"
 end
