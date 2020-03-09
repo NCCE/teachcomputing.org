@@ -7,10 +7,8 @@ class QuestionnaireResponse < ApplicationRecord
 
   has_many :questionnaire_response_transitions, autosave: false, dependent: :destroy
 
-  validates :questionnaire_id, presence: true
-  validates :user_id, presence: true
+  validates :questionnaire_id, :user_id, :programme_id, presence: true
   validates :user_id, uniqueness: { scope: %i[programme_id questionnaire_id] }
-  validates :programme_id, presence: true
 
   def answer_current_question(answer)
     self.current_question = current_question + 1

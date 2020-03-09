@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_141031) do
   end
 
   create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "programme_id"
+    t.uuid "programme_id", null: false
     t.string "title"
     t.string "slug"
     t.text "description"
