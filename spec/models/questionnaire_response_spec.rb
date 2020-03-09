@@ -29,14 +29,14 @@ RSpec.describe QuestionnaireResponse, type: :model do
     end
 
     it { is_expected.to validate_presence_of(:questionnaire_id) }
-    it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:programme_id) }
+    it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:programme_id, :questionnaire_id) }
     it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:programme_id) }
   end
 
   describe '#add_answer' do
     it 'saves the answer correctly' do
-      expect(add_answer.answers['0']).to eq(answer)
+      expect(add_answer.answers['1']).to eq(answer)
     end
 
     it 'updates the current_question correctly' do

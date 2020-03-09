@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_094237) do
     t.json "answers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["programme_id", "user_id"], name: "index_questionnaire_responses_on_programme_id_and_user_id", unique: true
+    t.index ["programme_id", "user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
     t.index ["programme_id"], name: "index_questionnaire_responses_on_programme_id"
     t.index ["questionnaire_id"], name: "index_questionnaire_responses_on_questionnaire_id"
     t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"

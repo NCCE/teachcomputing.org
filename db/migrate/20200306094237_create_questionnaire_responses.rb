@@ -9,6 +9,6 @@ class CreateQuestionnaireResponses < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :questionnaire_responses, [:programme_id, :user_id], unique: true
+    add_index :questionnaire_responses, [:programme_id, :user_id, :questionnaire_id], unique: true, name: :index_one_questionnaire_per_user
   end
 end

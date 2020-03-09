@@ -32,8 +32,8 @@ RSpec.describe Programme, type: :model do
       expect(programme).to have_one(:programme_complete_counter)
     end
 
-    it 'has_one programme_complete_counter' do
-      expect(programme).to have_one(:questionnaire)
+    it 'has_one questionnaire' do
+      expect(programme).to have_many(:questionnaire)
     end
   end
 
