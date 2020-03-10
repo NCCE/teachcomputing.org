@@ -66,7 +66,10 @@ RSpec.describe User, type: :model do
     it 'has_many resource_users' do
       expect(user).to have_many(:resource_users)
     end
-    
+
+    it 'has_many questionnaire_responses' do
+      expect(user).to have_many(:questionnaire_response)
+    end
   end
 
   describe 'after_commit' do

@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_150022) do
+ActiveRecord::Schema.define(version: 2020_03_09_141031) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -126,6 +125,43 @@ ActiveRecord::Schema.define(version: 2020_02_26_150022) do
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
+  create_table "questionnaire_response_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.uuid "questionnaire_response_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_response_id", "most_recent"], name: "index_questionnaire_response_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["questionnaire_response_id", "sort_key"], name: "index_questionnaire_response_transitions_parent_sort", unique: true
+  end
+
+  create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "questionnaire_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "programme_id", null: false
+    t.integer "current_question", default: 0
+    t.json "answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programme_id", "user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
+    t.index ["programme_id"], name: "index_questionnaire_responses_on_programme_id"
+    t.index ["questionnaire_id"], name: "index_questionnaire_responses_on_questionnaire_id"
+    t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"
+  end
+
+  create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id", null: false
+    t.string "title"
+    t.string "slug"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programme_id"], name: "index_questionnaires_on_programme_id"
+    t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
+  end
+
   create_table "resource_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.integer "resource_year", null: false
@@ -179,5 +215,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_150022) do
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "questionnaire_response_transitions", "questionnaire_responses"
   add_foreign_key "user_programme_enrolment_transitions", "user_programme_enrolments"
 end

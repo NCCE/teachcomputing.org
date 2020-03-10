@@ -20,7 +20,8 @@ class User < ApplicationRecord
   has_many :assessment_attempts, dependent: :destroy
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :programmes, through: :user_programme_enrolments
-  has_many :resource_users
+  has_many :resource_users, dependent: :nullify
+  has_many :questionnaire_response, dependent: :nullify
 
   after_commit :set_registered_with_ncce_achievement, on: :create
 

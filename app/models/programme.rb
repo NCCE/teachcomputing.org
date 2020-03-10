@@ -6,6 +6,8 @@ class Programme < ApplicationRecord
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
   has_many :achievements, dependent: :nullify
+  has_many  :questionnaire, dependent: :nullify
+  has_many  :questionnaire_response, dependent: :nullify
 
   validates :title, :description, :slug, presence: true
 
@@ -23,7 +25,7 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def credits_achieved_for_certificate(user)
+  def credits_achieved_for_certificate(_user)
     0
   end
 
@@ -31,7 +33,7 @@ class Programme < ApplicationRecord
     0
   end
 
-  def enough_activites_for_test?(user)
+  def enough_activites_for_test?(_user)
     false
   end
 
