@@ -31,6 +31,8 @@ slugs = %w[
   lead-a-cas-community-of-practice
   run-an-after-school-code-club
   lead-a-session-at-a-regional-or-national-conference
+  programming-101-an-introduction-to-python-for-educators
+  scratch-to-python-moving-from-block-to-text-based-programming
 ]
 
 slugs.each do |slug|
