@@ -5,7 +5,7 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
     missing_courses = []
     csv = CSV.parse(csv_contents, headers: true)
     csv.each do |record|
-      user = User.find_by!('email ILIKE ?', record['learner_identifier'])
+      user = User.find_by('email ILIKE ?', record['learner_identifier'])
       begin
         activity = Activity.find_by!(future_learn_course_uuid: record['course_uuid'])
       rescue ActiveRecord::RecordNotFound
