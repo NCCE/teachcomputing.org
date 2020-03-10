@@ -53,6 +53,10 @@ slugs = %w[
   networking-with-python-socket-programming-for-communication
   pre-january-2019-csa-face-to-face-cpd
   robotics-with-raspberry-pi-build-and-program-your-first-robot-buggy
+  programming-with-guis
+  gcse-computer-science-developing-outstanding-teaching
+  ks4-computing-for-all
+  introduction-to-gcse-computer-science
 ]
 
 slugs.each do |slug|
