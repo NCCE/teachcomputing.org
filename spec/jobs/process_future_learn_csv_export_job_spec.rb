@@ -39,7 +39,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       dropped_achievement.transition_to(:dropped)
       another_dropped_achievement.transition_to(:dropped)
       completed_achievement.transition_to(:complete)
-      allow(Raven).to receive(:capture_message)
+      allow(Raven).to receive(:capture_exception)
       ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
     end
 
