@@ -66,11 +66,11 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     end
 
     it 'sends a message to Raven if an activity cannot be found' do
-      expect(Raven).to have_received(:capture_message).with(/91011/)
+      expect(Raven).to have_received(:capture_exception).with(/91011/)
     end
 
     it 'only sends one message to Raven for 2 rows with the same missing course' do
-      expect(Raven).to have_received(:capture_message).once
+      expect(Raven).to have_received(:capture_exception).once
     end
 
     context 'when steps completed is less than 60' do
