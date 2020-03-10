@@ -10,7 +10,7 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
         activity = Activity.find_by!(future_learn_course_uuid: record['course_uuid'])
       rescue ActiveRecord::RecordNotFound
         unless missing_courses.include?(record['course_uuid'])
-          Raven.capture_message("Missing course #{record['run_title']}: id #{record['course_uuid']} (user is: #{record['learner_identifier']})")
+          Raven.capture_exception("Missing course #{record['run_title']}: id #{record['course_uuid']} (user is: #{record['learner_identifier']})")
           missing_courses.push(record['course_uuid'])
         end
         next
