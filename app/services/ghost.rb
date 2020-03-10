@@ -5,6 +5,29 @@ class Ghost
     @ghost_api_key = ENV['GHOST_CONTENT_API_KEY']
   end
 
+  def get_single_page(slug)
+    request = "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/pages/slug/#{slug}/"
+    params = {
+      key: @ghost_api_key
+    }
+
+    begin
+      result = Rails.cache.fetch("get_single_page-#{slug}", expires_in: 1.day) do
+        RestClient.get(request, params: params).body
+      end
+
+      pages = ActiveSupport::JSON.decode(result)
+      return pages['pages'][0]
+    rescue StandardError => error
+      Raven.capture_exception(error)
+      raise ActiveRecord::RecordNotFound
+    end
+  end
+
+  def clear_page_cache(slug = nil)
+    Rails.cache.delete("get_single_page-#{slug}")
+  end
+
   def get_featured_posts(how_many = 2)
     request = api_url_prefix(:posts)
     params = {

@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
-  let(:achievement) { create(:achievement) }
+  let(:user) { create(:user) }
+  let(:activity) { create(:activity) }
+  let(:programme) { create(:programme) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
+
+  let(:achievement) { create(:achievement, activity_id: activity.id) }
   let(:achievement2) { create(:achievement) }
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
@@ -9,9 +14,25 @@ RSpec.describe Achievement, type: :model do
   let(:community_activity) { create(:activity, :community) }
   let(:community_achievement) { create(:achievement, activity: community_activity) }
 
-  let(:programme) { create(:programme) }
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: achievement.activity_id) }
+  let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:achievement_with_passed_programme_id) {
+    create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
+    create(:achievement, programme_id: cs_accelerator.id, activity_id: community_activity.id)
+  }
 
+  let(:achievement_with_programme) {
+    create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
+    create(:achievement, activity_id: community_activity.id)
+  }
+
+  let(:achievement_with_two_programmes) {
+    face_to_face_activity = create(:activity, :stem_learning)
+    create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
+    create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
+    create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
+    create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
+    create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
+  }
 
   describe 'associations' do
     it 'belongs to activity' do
@@ -33,6 +54,32 @@ RSpec.describe Achievement, type: :model do
     end
 
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:activity_id) }
+  end
+
+  describe '#before_create' do
+    it 'when activity has no programme does not set the programme_id' do
+      expect(achievement.programme_id).to be(nil)
+    end
+
+    it 'when programme_id is set, it is not overwritten' do
+      expect(achievement_with_passed_programme_id.programme).to eq(cs_accelerator)
+    end
+
+    it 'when activity has a single programme it is used' do
+      expect(achievement_with_programme.programme).to eq(programme)
+    end
+
+    it 'when activity has multiple programmes it gets the most recently enrolled one' do
+      expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
+    end
+
+    it 'when we update the programme, the id is saved' do
+      expect(diagnostic_achievement.programme).to eq(nil)
+      diagnostic_achievement.programme = cs_accelerator
+      diagnostic_achievement.save
+      diagnostic_achievement.reload
+      expect(diagnostic_achievement.programme_id).to eq(cs_accelerator.id)
+    end
   end
 
   describe '#for_programme' do

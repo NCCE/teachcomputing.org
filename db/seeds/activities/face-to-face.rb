@@ -123,3 +123,12 @@ Activity.find_or_create_by(slug: 'key-stage-3-computing-for-non-specialists') do
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
+
+Activity.find_or_create_by(slug: 'introduction-to-gcse-computer-science') do |activity|
+  activity.title = 'Introduction to GCSE computer science'
+  activity.credit = 20
+  activity.slug = 'introduction-to-gcse-computer-science'
+  activity.stem_course_template_no = '87bf64c2-6517-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end

@@ -1,6 +1,37 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "1b52e260e38dfcb324eb69f664c7646fc23b80730eb6225c3b01b61c8f1409bf",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/cms/cms_page.html.erb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Ghost.new.get_single_page(params[:page_slug])[\"html\"]",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "CmsController",
+          "method": "cms_page",
+          "line": 6,
+          "file": "app/controllers/cms_controller.rb",
+          "rendered": {
+            "name": "cms/cms_page",
+            "file": "app/views/cms/cms_page.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "cms/cms_page"
+      },
+      "user_input": "params[:page_slug]",
+      "confidence": "Weak",
+      "note": "Page slug comes fom config/routes.rb not externally"
+    },
+    {
       "warning_type": "Redirect",
       "warning_code": 18,
       "fingerprint": "4487c45352f6819f22fe01958108bf82b88c62eacaf3899be7cdbe93d2f56fbf",
@@ -61,6 +92,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     }
   ],
-  "updated": "2020-02-19 15:18:45 +0000",
+  "updated": "2020-03-04 14:33:40 +0000",
   "brakeman_version": "4.7.2"
 }

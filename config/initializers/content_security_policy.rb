@@ -5,9 +5,9 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-  policy.default_src :self, :https
+  policy.default_src :self, :https, 'youtube.com', 'www.youtube.com'
   policy.font_src    :self, :https, :data, 'fonts.gstatic.com'
-  policy.img_src     :self, :https, :data, 'view.vzaar.com'
+  policy.img_src     :self, :https, :data, 'view.vzaar.com', 'blog.teachcomputing.org'
   policy.media_src   :self, :https, :data, 'view.vzaar.com', 'download.vzaar.com'
   policy.object_src  :none
   policy.script_src  :self, :https, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
