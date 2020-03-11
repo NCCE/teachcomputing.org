@@ -56,6 +56,16 @@ Rails.application.configure do
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
 
+  # config.action_mailer.smtp_settings = {
+  #   address: 'smtp.mandrillapp.com',
+  #   port: 587,
+  #   enable_starttls_auto: true,
+  #   user_name: ENV.fetch('MANDRILL_SMTP_USERNAME'),
+  #   password: ENV.fetch('MANDRILL_API_KEY'),
+  #   authentication: :plain,
+  #   domain: 'teachcomputing.org'
+  # }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -65,4 +75,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.active_job.queue_adapter     = :sidekiq
+
 end
