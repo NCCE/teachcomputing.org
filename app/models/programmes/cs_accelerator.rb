@@ -35,5 +35,20 @@ module Programmes
     def diagnostic
       activities.find_by!(category: 'diagnostic')
     end
+
+		def user_meets_assessment_eligibility?(user)
+			complete_achievements = user.achievements
+                                  .for_programme(self)
+                                  .in_state('complete')
+
+      total_face_to_face = complete_achievements.with_category('face-to-face').sum(:credit)
+      return true if total_face_to_face >= 10
+
+      total_online = complete_achievements.with_category('online').sum(:credit)
+      return true if total_face_to_face >= 10 && total_online >= 10
+
+      false
+
+		end
   end
 end
