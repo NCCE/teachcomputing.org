@@ -5,7 +5,7 @@ class AssesmentEligibilityJob < ApplicationJob
   	user = find_user(user_id)
     programme = Programme.cs_accelerator
 
-		return unless programme.user_meets_assessment_eligibility?(user)
+		return unless programme.enough_activites_for_test?(user)
 
 		enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
