@@ -1,5 +1,5 @@
 class Achiever::Course::Delegate
-  attr_accessor :course_template_no, :is_fully_attended, :online_cpd
+  attr_accessor :course_template_no, :is_fully_attended, :online_cpd, :progress
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
   PROGRAMME_NAME = 'ncce'.freeze
