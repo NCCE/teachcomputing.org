@@ -2,6 +2,8 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
   queue_as :default
 
   def perform(user)
+    cancelled_id = Achiever::Course::Attendance.cancelled
+
     courses = Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no)
     courses.each do |course|
       begin
@@ -15,12 +17,14 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
-
+      
       if course.is_fully_attended
         achievement.set_to_complete
         if activity.programmes.include?(Programme.primary_certificate)
           PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'FetchUsersCompletedCoursesFromAchieverJob.perform')
         end
+      elsif course.progress == cancelled_id 
+        achievement.set_to_dropped
       end
     end
   end
