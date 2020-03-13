@@ -20,5 +20,6 @@ class Achiever::Course::Delegate
     @course_template_no = delegate_course.send('Activity.COURSETEMPLATENO')
     @is_fully_attended = ActiveRecord::Type::Boolean.new.deserialize(delegate_course.send('Delegate.Is_Fully_Attended').downcase)
     @online_cpd = delegate_course.send('OnlineCPD')
+    @progress = delegate_course.send('Delegate.Progress')
   end
 end

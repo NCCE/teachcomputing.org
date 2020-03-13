@@ -12,6 +12,7 @@ RSpec.describe Achiever::Course::Delegate do
       expect(delegate).to respond_to(:course_template_no)
       expect(delegate).to respond_to(:is_fully_attended)
       expect(delegate).to respond_to(:online_cpd)
+      expect(progress).to respond_to(:progress)
     end
   end
 
