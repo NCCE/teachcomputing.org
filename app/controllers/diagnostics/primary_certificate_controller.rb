@@ -2,7 +2,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
   layout 'full-width'
   include Wicked::Wizard
 
-  before_action :authenticate
+  before_action :authenticate, :set_questionnaire
   before_action :enrolled?, :completed_diagnostic?, only: [:show]
 
   steps :question_1, :question_2, :question_3, :question_4
@@ -11,6 +11,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     @step = step
     @steps = steps
     @programme = programme
+    create_questionnaire_response
     render_wizard
   end
 
@@ -18,23 +19,31 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     @step = step
     @steps = steps
     @programme = programme
-    session[:primary_diagnostic] = {}
-    session[:primary_diagnostic].merge!(diagnostic_params)
 
-    create_diagnositc_achievement if step == Wicked::FINISH_STEP
+    response = get_questionnaire_response
+    answer = diagnostic_params["question_#{response.current_question}".to_sym]
+    response.answer_current_question(answer)
+
+    response.transition_to(:complete) if step == Wicked::FINISH_STEP
 
     render_wizard
   end
 
   private
 
-    def completed_diagnostic?
-      redirect_to finish_wizard_path if programme.user_completed_diagnostic?(current_user)
+    def create_questionnaire_response
+      QuestionnaireResponse.create(user: current_user, programme: programme, questionnaire: @questionnaire)
     end
 
-    def create_diagnositc_achievement
-      achievement = Achievement.create(user_id: current_user.id, activity_id: programme.diagnostic.id)
-      achievement.set_to_complete(diagnostic_response: session[:primary_diagnostic], score: score)
+    def get_questionnaire_response
+      QuestionnaireResponse.find_by(user: current_user, questionnaire: @questionnaire)
+    end
+
+    def completed_diagnostic?
+      response = QuestionnaireResponse.find_by(user: current_user, questionnaire: @questionnaire)
+      return unless response
+
+      redirect_to finish_wizard_path if response.current_state == 'complete'
     end
 
     def diagnostic_params
@@ -49,11 +58,11 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
       programme_path(Programme.primary_certificate.slug)
     end
 
-    def score
-      session[:primary_diagnostic].values.map(&:to_i).inject(:+) / diagnostic_params.values.count
-    end
-
     def programme
       Programme.find_by(slug: 'primary-certificate')
+    end
+
+    def set_questionnaire
+      @questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
     end
 end

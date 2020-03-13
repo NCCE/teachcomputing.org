@@ -43,30 +43,20 @@ namespace :achievements do
 
     ActiveRecord::Base.transaction do
       achievements.each_with_index do |achievement, index|
-        metadata = achievement.last_transition.metadata
         user = achievement.user
         enrolment = user.user_programme_enrolments.find_by(programme: primary_certificate)
         next if enrolment.nil?
 
-        response = QuestionnaireResponse.new(user: user, programme: primary_certificate,
-                                             questionnaire: questionnaire)
+        response = QuestionnaireResponse.create(user: user, programme: primary_certificate,
+                                                questionnaire: questionnaire)
 
         if enrolment.current_state != 'enrolled'
-          response.current_question = 4
-          response.answers = { '4': metadata['diagnostic_response']['question_4'] }
-        end
-
-        response.save
-
-        if enrolment.current_state != 'enrolled'
-          response.reload
           response.transition_to(:complete)
         end
         print '.'
       end
       puts "\nGoing to remove old Primary Diagnostic achievements"
       achievements.destroy_all
-      raise ActiveRecord::Rollback
     end
 
     puts 'Done'
