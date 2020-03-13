@@ -47,7 +47,7 @@ namespace :achievements do
         enrolment = user.user_programme_enrolments.find_by(programme: primary_certificate)
         next if enrolment.nil?
 
-        response = QuestionnaireResponse.create(user: user, programme: primary_certificate,
+        response = QuestionnaireResponse.find_or_create_by(user: user, programme: primary_certificate,
                                                 questionnaire: questionnaire)
 
         if enrolment.current_state != 'enrolled'
