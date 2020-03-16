@@ -1,1 +1,27 @@
-<h1>Magda</h1>
+<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
+<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
+<div class="light-grey-bg">
+	<div class="govuk-width-container">
+		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+					<h2 class="govuk-heading-s">Welcome to the Teach GCSE computer science programme!</h2>
+				</div>
+				<div class="govuk-grid-column-two-thirds">
+					<%= render 'cs_changes/activity-list' %>
+				</div>
+				<div class="govuk-grid-column-one-third">
+					<aside class="ncce-aside landing-page__aside">
+						<p class="govuk-body-s">The minimum number of courses you have to do before the test is two. But this is about your confidence teaching CS. If you need more CPD to feel confident that is fine.</p>
+						<p class="govuk-body-s">Book or join a course today:</p>
+						<%= link_to 'Find a course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button' %>
+						<p class="govuk-body-s">telephone/contact</p>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
