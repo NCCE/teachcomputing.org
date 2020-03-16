@@ -28,9 +28,12 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       next if achievement.current_state != :complete.to_s
 
-      if activity.programmes.include?(Programme.primary_certificate)
-        PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'ProcessFutureLearnCsvExportJob.perform')
-      end
+			case achievement.programme.slug
+				when 'cs-accelerator'
+					AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
+				when 'primary-certificate'
+					PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
+			end
     end
 
     import_record.update(completed_at: DateTime.now.in_time_zone)

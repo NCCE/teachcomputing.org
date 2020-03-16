@@ -11,9 +11,7 @@ class AchievementsController < ApplicationController
       end
       @achievement.transition_to(:complete, metadata)
 
-			programme = Programme.first
-
-			case programme.slug
+			case achievement.programme.slug
 				when 'cs-accelerator'
 					AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
 				when 'primary-certificate'

@@ -18,9 +18,12 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
 
       if course.is_fully_attended
         achievement.set_to_complete
-        if activity.programmes.include?(Programme.primary_certificate)
-          PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'FetchUsersCompletedCoursesFromAchieverJob.perform')
-        end
+				case achievement.programme.slug
+					when 'cs-accelerator'
+						AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
+					when 'primary-certificate'
+						PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
+				end
       end
     end
   end
