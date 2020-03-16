@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get '/cms/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache, defaults: { page_slug: 'bursary' }, constraints: { page_slug: /(hubs|bursary)/ }
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions, defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
+ 	get '/cs-changes', to: 'cs_changes#show', as: :cs_changes
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
     get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/welcome', to: 'welcome#show', as: :welcome
+
 
   require 'sidekiq/web'
   if Rails.env.production?
