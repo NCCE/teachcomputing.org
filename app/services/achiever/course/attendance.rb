@@ -13,6 +13,6 @@ class Achiever::Course::Attendance
   end
 
   def self.pending
-    all['cancelled'].to_s
+    all['pending'].to_s
   end
 end
