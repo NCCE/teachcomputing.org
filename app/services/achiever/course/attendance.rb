@@ -12,6 +12,10 @@ class Achiever::Course::Attendance
     all['cancelled'].to_s
   end
 
+  def self.enrolled
+    all['enrolled'].to_s
+  end
+
   def self.pending
     all['pending'].to_s
   end
