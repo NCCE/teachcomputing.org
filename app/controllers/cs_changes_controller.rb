@@ -2,8 +2,8 @@ class CsChangesController < ApplicationController
   layout 'full-width'
 
   def show
-		@programme = Programme.find_by!(slug: params[:page_slug])
-		render: show
+		@programme = Programme.cs_accelerator
+		render :show
  	end
 
 end
