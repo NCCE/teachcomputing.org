@@ -57,6 +57,16 @@ slugs = %w[
   gcse-computer-science-developing-outstanding-teaching
   ks4-computing-for-all
   introduction-to-gcse-computer-science
+  search-and-sort-algorithms
+  representing-algorithms-using-flowcharts-and-pseudocode
+  computer-systems-input-output-and-storage
+  computer-processors
+  fundamentals-of-computer-networks
+  the-internet-and-cyber-security
+  python-programming-constructs-sequencing-selection-iteration
+  python-programming-working-with-data
+  an-introduction-to-algorithms-programming-and-data-in-gcse-computer-science
+  an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science
 ]
 
 slugs.each do |slug|
