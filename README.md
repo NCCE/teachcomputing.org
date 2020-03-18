@@ -47,6 +47,16 @@ After adding any new migrations they need to be run inside docker:
 docker-compose run --rm web bin/rails db:migrate
 ```
 
+### Seeding the database
+
+Once your database is setup and the migrations have been run, you will want to ensure it is populated with the data you need to run the application. You can do this by running the following command:
+
+```
+docker-compose run web bin/rails db:seed
+```
+
+This will populate things like Activities, Diagnstics and Programmes.
+
 ### Install new Dependencies
 
 Add the dependency to the Gemfile or package.json and run:
