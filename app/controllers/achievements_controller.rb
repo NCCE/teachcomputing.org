@@ -11,13 +11,14 @@ class AchievementsController < ApplicationController
       end
       @achievement.transition_to(:complete, metadata)
 
-      case @achievement.programme.slug
-      when 'cs-accelerator'
-        AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
-      when 'primary-certificate'
-        PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
+      if @achievement.programme
+        case @achievement.programme.slug
+        when 'cs-accelerator'
+          AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
+        when 'primary-certificate'
+          PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
+        end
       end
-
     else
       flash[:error] = 'Whoops something went wrong adding the activity'
     end

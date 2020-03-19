@@ -26,14 +26,14 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       achievement.update_state_for_online_activity(record['steps_completed'].to_f, record['left_at'])
 
-      next if achievement.current_state != :complete.to_s
+      next unless achievement.programme
 
-			case achievement.programme.slug
-				when 'cs-accelerator'
-					AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
-				when 'primary-certificate'
-					PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
-			end
+      case achievement.programme.slug
+      when 'cs-accelerator'
+        AssesmentEligibilityJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
+      when 'primary-certificate'
+        PrimaryCertificatePendingTransitionJob.perform_now(achievement.user.id, source: 'AchievementsController.create') if achievement.current_state == :complete.to_s
+      end
     end
 
     import_record.update(completed_at: DateTime.now.in_time_zone)
