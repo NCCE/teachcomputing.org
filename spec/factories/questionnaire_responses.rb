@@ -3,7 +3,6 @@ FactoryBot.define do
     questionnaire
     user
     programme
-    # current_question { 1 }
     answers { {} }
 
     trait :primary_enrolment_questionnaire_response do

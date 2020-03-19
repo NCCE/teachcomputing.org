@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_150800) do
     t.uuid "user_id", null: false
     t.uuid "programme_id", null: false
     t.integer "current_question", default: 1
-    t.json "answers", default: {"to"=>{}}
+    t.json "answers", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["programme_id", "user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true

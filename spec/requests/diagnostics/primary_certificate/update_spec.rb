@@ -21,6 +21,18 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         primary_enrolment_unanswered
       end
 
+      it 'redirects to the current question if form does not match' do
+        put update_primary_certificate_diagnostic_path(id: :question_3, diagnostic: { question_3: '10' })
+        expect(response).to redirect_to '/certificate/primary-certificate/questionnaire/question_1'
+      end
+
+      it 'redirects to the current question if form does not match' do
+        put update_primary_certificate_diagnostic_path(id: :question_1, diagnostic: { question_1: '15' })
+        put update_primary_certificate_diagnostic_path(id: :question_2, diagnostic: { question_2: '20' })
+        put update_primary_certificate_diagnostic_path(id: :question_1, diagnostic: { question_1: '15' })
+        expect(response).to redirect_to '/certificate/primary-certificate/questionnaire/question_3'
+      end
+
       it 'saves the question_1 response correctly' do
         put update_primary_certificate_diagnostic_path(id: :question_1, diagnostic: { question_1: '15' })
         questionnaire_response = primary_enrolment_response

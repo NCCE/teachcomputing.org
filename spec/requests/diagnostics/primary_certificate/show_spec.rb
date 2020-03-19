@@ -9,6 +9,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
   describe 'GET show' do
     before do
       programme
+      primary_questionnaire
     end
 
     describe 'while logged in' do
@@ -18,7 +19,6 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
 
       context 'when the user has not completed the diagnostic' do
         before do
-          primary_questionnaire
           user_programme_enrolment
           get primary_certificate_diagnostic_path(:question_1)
         end
@@ -35,7 +35,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
       context 'when the user has completed the diagnostic' do
         before do
           user_programme_enrolment
-          answers = create(:primary_enrolment_score_15, programme: programme, user: user)
+          answers = create(:primary_enrolment_score_15, questionnaire: primary_questionnaire, programme: programme, user: user)
           answers.transition_to(:complete)
         end
 

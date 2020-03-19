@@ -21,10 +21,15 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     @programme = programme
 
     response = get_questionnaire_response
-    answer = diagnostic_params["question_#{response.current_question}".to_sym]
-    response.answer_current_question(answer)
+    current_step = "question_#{response.current_question}".to_sym
+    answer = diagnostic_params[current_step]
 
-    response.transition_to(:complete) if step == Wicked::FINISH_STEP
+    if answer.nil?
+      jump_to(current_step)
+    else
+      response.answer_current_question(answer)
+      response.transition_to(:complete) if step == Wicked::FINISH_STEP
+    end
 
     render_wizard
   end
@@ -32,11 +37,11 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
   private
 
     def create_questionnaire_response
-      QuestionnaireResponse.create(user: current_user, programme: programme, questionnaire: @questionnaire)
+      QuestionnaireResponse.find_or_create_by(user: current_user, programme: programme, questionnaire: @questionnaire)
     end
 
     def get_questionnaire_response
-      QuestionnaireResponse.find_by(user: current_user, questionnaire: @questionnaire)
+      QuestionnaireResponse.find_by!(user: current_user, questionnaire: @questionnaire)
     end
 
     def completed_diagnostic?
@@ -63,6 +68,6 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     end
 
     def set_questionnaire
-      @questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
+      @questionnaire = Questionnaire.find_by!(slug: 'primary-certificate-enrolment-questionnaire')
     end
 end
