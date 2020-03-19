@@ -2,8 +2,6 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
   queue_as :default
 
   def perform(user)
-    cancelled_id = Achiever::Course::Attendance.cancelled
-
     courses = Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no)
     courses.each do |course|
       begin
