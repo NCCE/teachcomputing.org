@@ -9,7 +9,13 @@
 		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
 			<div class="govuk-grid-row">
 				<div class="govuk-grid-column-two-thirds">
-					<h2 class="govuk-heading-s">Welcome to the Teach GCSE computer science programme!</h2>
+					<h2 class="govuk-heading-m">Welcome to the Teach GCSE computer science programme!</h2>
+          <div class="bursary-info">
+              <p class="govuk-body bursary-info__text">You are eligible for funding to support your training. Bursaries for two face to face courses are available. All our online courses are free.
+              </p>
+              <p class="govuk-body bursary-info__link"><%= link_to 'Find out more', bursary_path, class: 'ncce-link ncce-link--contrast', role: 'button', draggable: 'false' %></p>
+          </div>
+          <h2 class="govuk-heading-s">Your activities</h2>
 				</div>
 				<div class="govuk-grid-column-two-thirds">
 					<%= render 'cs_changes/activity-list' %>
