@@ -128,7 +128,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     end
 
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued
     end
   end
 end
