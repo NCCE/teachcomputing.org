@@ -1,0 +1,19 @@
+<% if @programme.user_completed?(current_user) %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--position ">
+    <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam">Passed the final test</span>
+  </li>
+<% else %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--position">
+    <span class="ncce-activity-list__item-text ncce-activity-list__item-text--exam"><span class="screen-reader-only">Once you have completed two online courses and two face-to-face courses, </span> Pass the test</span>
+    <ul class="govuk-body-s" role="list" aria-label="Test information">
+      <li>25 multiple-choice questions</li>
+      <li>30 minute time limit</li>
+      <li class="govuk-!-padding-bottom-5">Pass mark of 65%</li>
+      <li>You must finish in one sitting</li>
+      <li>You can’t go back and change your answers</li>
+      <li>You can’t skip a question</li>
+    </ul>
+    <p class="govuk-body-s ncce-exam-activity__rules">You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</p>
+		<p>Teacher Reference Number (optional)</p>
+  </li>
+<% end %>

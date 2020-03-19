@@ -1,0 +1,13 @@
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+
+<% @online_achievements.each do |achievement| %>
+		<% if achievement.complete? %>
+			<span> <%= achievement.activity.title %></span>
+		<% else %>
+			<li class="list__item list__item--incomplete">
+				<span class="list__item-text list__item--incomplete-text"> <%= achievement.activity.title %> </span>
+				<p class="govuk-body-s list__item-button icon-online">Online course</p>
+			</li>
+		<% end %>
+<% end %>
+</ul>

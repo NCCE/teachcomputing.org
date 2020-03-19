@@ -149,7 +149,6 @@
 }
 
 .list__item-text {
-  align-self: center;
   background-image: image-url('incomplete-achievement.svg');
   background-position: left top;
   background-repeat: no-repeat;
@@ -168,7 +167,6 @@
 }
 
 .list__item-button {
-  align-self: center;
   font-size: 1.188rem;
   margin-bottom: 10px;
   margin-top: 3px;
@@ -178,4 +176,14 @@
     margin-bottom: 0;
     padding-left: 2.8rem;
   }
+}
+
+.list__item--incomplete {	
+	background-color: $concrete;
+	border: 1px solid $grey-light;
+
+}
+
+.list__item--incomplete-text {
+  background-image: image-url('tick-blue.svg');
 }
