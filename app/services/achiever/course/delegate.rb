@@ -26,6 +26,6 @@ class Achiever::Course::Delegate
   def attendance_status
     return 'attended' if @is_fully_attended
 
-    Achiever::Course::Attendance.all.key(@progress)
+    Achiever::Course::Attendance.all.key(@progress.to_i)
   end
 end
