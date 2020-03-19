@@ -17,13 +17,14 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.activity_id = activity.id
         achievement.user_id = user.id
       end
-      
-      if course.is_fully_attended
+
+      case course.attendance_status
+      when 'attended'
         achievement.set_to_complete
         if activity.programmes.include?(Programme.primary_certificate)
           PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'FetchUsersCompletedCoursesFromAchieverJob.perform')
         end
-      elsif course.progress == cancelled_id 
+      when 'cancelled'
         achievement.set_to_dropped
       end
     end

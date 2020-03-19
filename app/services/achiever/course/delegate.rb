@@ -22,4 +22,10 @@ class Achiever::Course::Delegate
     @online_cpd = delegate_course.send('OnlineCPD')
     @progress = delegate_course.send('Delegate.Progress')
   end
+
+  def attendance_status
+    return 'attended' if @is_fully_attended
+
+    Achiever::Course::Attendance.all.key(@progress)
+  end
 end

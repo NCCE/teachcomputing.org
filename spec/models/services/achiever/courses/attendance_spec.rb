@@ -30,19 +30,5 @@ RSpec.describe Achiever::Course::Attendance do
         expect(described_class.all).to be_an Hash
       end
     end
-
-    describe '#cancelled' do
-      it 'returns a Hash' do
-        stub_subjects
-        expect(described_class.cancelled).to be_an String
-      end
-    end
-
-    describe '#pending' do
-      it 'returns a Hash' do
-        stub_subjects
-        expect(described_class.pending).to be_an String
-      end
-    end
   end
 end

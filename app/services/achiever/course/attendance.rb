@@ -7,16 +7,4 @@ class Achiever::Course::Attendance
     options = Achiever::Request.option_sets(RESOURCE_PATH, QUERY_STRINGS)
     JSON.parse(options).reduce({}, :merge).transform_keys(&:downcase)
   end
-
-  def self.cancelled
-    all['cancelled'].to_s
-  end
-
-  def self.enrolled
-    all['enrolled'].to_s
-  end
-
-  def self.pending
-    all['pending'].to_s
-  end
 end
