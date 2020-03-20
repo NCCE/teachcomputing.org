@@ -63,6 +63,7 @@
   <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
 
   <%= render 'components/header' %>
+  <%= render 'components/announcement' %>
 
   <%= yield :content %>
 
