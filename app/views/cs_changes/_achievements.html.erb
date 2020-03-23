@@ -1,10 +1,10 @@
 <% unless @online_achievements.size.positive? %>
-  <li class="list__item list__item--incomplete">
+  <li class="activity-list__item activity-list__item--incomplete">
     Complete an online course
   </li>
 <% end %>
 <% @online_achievements.each do |achievement| %>
-  <li class="list__item <%= 'list__item--incomplete' unless achievement.complete? %>">
+  <li class="activity-list__item <%= 'activity-list__item--incomplete' unless achievement.complete? %>">
     <% unless achievement.complete? %>
       Complete an online course<br>
       <strong class="govuk-tag ncce-courses__tag">In progress</strong>
@@ -14,12 +14,12 @@
   </li>
 <% end %>
 <% unless @face_to_face_achievements.size.positive? %>
-  <li class="list__item list__item--incomplete">
+  <li class="activity-list__item activity-list__item--incomplete">
     Complete a face to face course
   </li>
 <% end %>
 <% @face_to_face_achievements.each do |achievement| %>
-  <li class="list__item <%= 'list__item--incomplete' unless achievement.complete? %>">
+  <li class="activity-list__item <%= 'activity-list__item--incomplete' unless achievement.complete? %>">
     <% unless achievement.complete? %>
       Complete a face to face course
       <strong class="govuk-tag ncce-courses__tag">In progress</strong>
