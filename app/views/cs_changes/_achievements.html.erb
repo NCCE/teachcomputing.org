@@ -1,30 +1,30 @@
 <% unless @online_achievements.size.positive? %>
   <li class="activity-list__item activity-list__item--incomplete">
-    Complete an online course
+    <span>Complete an online course</span>
   </li>
 <% end %>
 <% @online_achievements.each do |achievement| %>
   <li class="activity-list__item <%= 'activity-list__item--incomplete' unless achievement.complete? %>">
     <% unless achievement.complete? %>
-      Complete an online course<br>
+      <span>Complete an online course</span>
       <strong class="govuk-tag ncce-courses__tag">In progress</strong>
     <% end %>
-    <%= achievement.activity.title %><br>
-    <span class="icon-online">Online course</span>
+    <span><%= achievement.activity.title %>
+    <span class="govuk-body-s icon-online">Online course</span>
   </li>
 <% end %>
 <% unless @face_to_face_achievements.size.positive? %>
   <li class="activity-list__item activity-list__item--incomplete">
-    Complete a face to face course
+    <span>Complete a face to face course</span>
   </li>
 <% end %>
 <% @face_to_face_achievements.each do |achievement| %>
   <li class="activity-list__item <%= 'activity-list__item--incomplete' unless achievement.complete? %>">
     <% unless achievement.complete? %>
-      Complete a face to face course
+      <span>Complete a face to face course</span>
       <strong class="govuk-tag ncce-courses__tag">In progress</strong>
     <% end %>
-    <%= achievement.activity.title %>
-    <span class="icon-map-pin">Face to face course</span>
+    <span><%= achievement.activity.title %></span>
+    <span class="govuk-body-s icon-map-pin">Face to face course</span>
   </li>
 <% end %>
