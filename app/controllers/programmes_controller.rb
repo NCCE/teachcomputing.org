@@ -62,7 +62,9 @@ class ProgrammesController < ApplicationController
     end
 
     def user_completed_diagnostic?
-      return true if @programme.user_completed_diagnostic?(current_user)
+      questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
+      response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
+      return true if response && response.current_state == 'complete'
 
       redirect_to primary_certificate_diagnostic_path(:question_1)
     end

@@ -40,7 +40,7 @@ RSpec.describe QuestionnaireResponse, type: :model do
     end
 
     it 'updates the current_question correctly' do
-      expect(add_answer.current_question).to eq(1)
+      expect(add_answer.current_question).to eq(2)
     end
   end
 end
