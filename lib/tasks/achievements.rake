@@ -31,4 +31,34 @@ namespace :achievements do
 
     puts ' Done'
   end
+
+  task migrate_primary_diagnostic: :environment do
+    primary_certificate = Programme.primary_certificate
+    primary_diagnostic = Activity.find_by(slug: 'primary-certificate-diagnostic')
+    questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
+
+    achievements = Achievement.where(activity: primary_diagnostic)
+
+    puts "Going to migrate #{achievements.count} Primary Diagnostic achievements"
+
+    ActiveRecord::Base.transaction do
+      achievements.each_with_index do |achievement, index|
+        user = achievement.user
+        enrolment = user.user_programme_enrolments.find_by(programme: primary_certificate)
+        next if enrolment.nil?
+
+        response = QuestionnaireResponse.find_or_create_by(user: user, programme: primary_certificate,
+                                                questionnaire: questionnaire)
+
+        if enrolment.current_state != 'enrolled'
+          response.transition_to(:complete)
+        end
+        print '.'
+      end
+      puts "\nGoing to remove old Primary Diagnostic achievements"
+      achievements.destroy_all
+    end
+
+    puts 'Done'
+  end
 end
