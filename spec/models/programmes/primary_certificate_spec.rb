@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe Programmes::PrimaryCertificate do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:diagnostic) { create(:activity, :primary_certificate_diagnostic_tool) }
-  let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic.id) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
@@ -35,25 +33,7 @@ RSpec.describe Programmes::PrimaryCertificate do
 
   let(:setup_diagnostic_score) do
     user_programme_enrolment
-    create(:programme_activity, programme_id: programme.id, activity_id: diagnostic.id)
-    diagnostic_achievement
-  end
-
-  describe '#diagnostic' do
-    context 'when an associated diagnostic activity exists' do
-      it 'returns record' do
-        programme.activities << diagnostic
-        expect(programme.diagnostic).to eq diagnostic
-      end
-    end
-
-    context 'when an associated diagnostic activity doesn\'t exists' do
-      it 'returns raises an RecordNotFound' do
-        expect {
-          programme.diagnostic
-        }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
+    create(:primary_enrolment_score_15, programme: programme, user: user)
   end
 
   describe '#diagnostic_result' do
@@ -72,7 +52,6 @@ RSpec.describe Programmes::PrimaryCertificate do
     context 'when user has done the diagnostic with a score of 15' do
       before do
         setup_diagnostic_score
-        diagnostic_achievement.transition_to(:complete, score: 15)
       end
 
       it 'returns correct score' do
