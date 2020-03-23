@@ -43,3 +43,5 @@ spec/examples.txt
 # Sitemaps
 public/sitemap1.xml.gz
 public/sitemap.xml.gz
+
+.vscode
