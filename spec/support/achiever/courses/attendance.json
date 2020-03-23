@@ -1,0 +1,29 @@
+{
+  "GetJsonResult": {
+    "EntityName": "si_eventdelegate",
+    "FailureReason": "",
+    "Counter": 0,
+    "MoreRecords": false,
+    "OptionSetName": "si_attendance",
+    "Success": true,
+    "OptionSetsClean": "[{\"Pending\":157420001},{\"Enrolled\":157420000},{\"Cancelled\":157420003},{\"Do not use\":157420002},{\"Do not use\":157420004}]",
+    "OptionSets": [
+      {
+        "Pending": 157420001
+      },
+      {
+        "Enrolled": 157420000
+      },
+      {
+        "Cancelled": 157420003
+      },
+      {
+        "Do_x0020_not_x0020_use": 157420002
+      },
+      {
+        "Do_x0020_not_x0020_use": 157420004
+      }
+    ],
+    "Entities": null
+  }
+}
