@@ -1,17 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Achiever::Course::Delegate do
-  let(:delegate) { described_class.find_by_achiever_contact_number('id-101').first }
+  let(:delegate_records) { described_class.find_by_achiever_contact_number('id-101') }
 
   describe 'accessor methods' do
     before do
+      stub_attendance_sets
       stub_delegate
     end
 
     it 'provides the required accessor methods' do
-      expect(delegate).to respond_to(:course_template_no)
-      expect(delegate).to respond_to(:is_fully_attended)
-      expect(delegate).to respond_to(:online_cpd)
+      expect(delegate_records.first).to respond_to(:course_template_no)
+      expect(delegate_records.first).to respond_to(:is_fully_attended)
+      expect(delegate_records.first).to respond_to(:online_cpd)
+      expect(delegate_records.first).to respond_to(:progress)
     end
   end
 
@@ -19,6 +21,25 @@ RSpec.describe Achiever::Course::Delegate do
     describe 'RESOURCE_PATH' do
       it 'is not nil' do
         expect(Achiever::Course::Delegate::RESOURCE_PATH).not_to eq nil
+      end
+    end
+  end
+
+  describe '#attendance_status' do
+    before do
+      stub_attendance_sets
+      stub_delegate
+    end
+
+    context 'when fully attended' do
+      it 'returns attended' do
+        expect(delegate_records.first.attendance_status).to eq 'attended'
+      end
+    end
+
+    context 'with a progress of cancelled' do
+      it 'returns cancelled' do
+        expect(delegate_records.last.attendance_status).to eq 'cancelled'
       end
     end
   end
