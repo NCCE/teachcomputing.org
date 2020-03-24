@@ -61,4 +61,9 @@ module AchieverStubs
     uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-no-org&Page=1&RecordCount=1000&cmd=ContactDetails'
     stub_request(:get, uri_template).to_return(body: json_response)
   end
+
+  def stub_attendance_sets
+    json_response = File.new('spec/support/achiever/courses/attendance.json')
+    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAttendanceStatus').to_return(body: json_response)
+  end
 end
