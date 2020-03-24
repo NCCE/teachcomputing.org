@@ -1,0 +1,116 @@
+<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
+<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Gender balance' %>
+<div class="tapestry-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l">Gender Balance in Computing</h1>
+          <p class="govuk-body-l">A very short intro to the project – maybe with a snappy bit of data so show the 
+					f/m disparity in computing-releated subjects.</p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_tag '/images/secondary-teachers/hero.jpg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-l landing-page__intro">A sentence or two with a bit more detail, a sentence or two with a bit more detail. A sentence or two with a bit more detail, a sentence or two with a bit more detail.</p>
+				<ul class="govuk-body-s govuk-list govuk-list--bullet">
+					<li>Bullet point</li>
+					<li>Bullet point</li>
+					<li>Bullet point</li>
+					<li>Bullet point</li>
+        </ul>
+				<p class="govuk-body">Many young women don’t choose to study computing-related subjects. A variety of factors across primary and secondary education are likely to influence this, including girls feeling like they don’t belong in the subject or its community, a lack of sustained encouragement, and a lack of role models in computing when making their career choices. We are working with schools to better understand and help change this.</p>
+				<p class="govuk-body">The Department for Education has recently funded our Gender Balance in Computing (GBIC) research programme, giving us the amazing opportunity to work with schools to investigate different approaches to engage girls in computing and to help increase the number of girls who select Computer Science at GCSE and A level.</p>
+        <p class="govuk-body"><strong>
+          <%= link_to 'Link to the blog post for more details', '', class: 'ncce-link ncce-link--contrast' %></strong>
+        </p>
+        <p class="govuk-body"><strong>
+          <%= link_to 'Link to the blog post for more details', '', class: 'ncce-link ncce-link--contrast' %></strong>
+        </p>
+				<%= image_tag '/images/secondary-teachers/hero.jpg', alt: '' %>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <p class="govuk-body"><strong>Get involved in this landmark programme<strong>
+          </p>
+          <p class="govuk-body-s">Are you a teacher or headteacher at a school who is interested in GBIC?</p>
+      		<%= link_to 'Register your interest', '', class: 'govuk-button button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        	<h2 class="govuk-heading-m">A heading introducing this bit</h2>
+					<p class="govuk-body">Recently as part of <%= link_to 'Careers Week', '', class: 'ncce-link' %> we spoke to women working in tech about their experiences with computer science.</p>
+        </div>
+      </div>
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-third">
+ 					<div class="testimonial testimonial--secondary">
+            <p class="govuk-body-s testimonial__text">
+              “For me, the most interesting thing is understanding behaviours - I enjoy and learn more when we go above and beyond current technology and think more about everyday habits and general consumer behaviour.”
+            </p>
+            <div class="testimonial__bio">
+              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+              <p class="govuk-body-s">
+                <strong>Swetha Sethu-Jones</strong><br>
+                Senior UX Researcher<br>
+								Just Eat 
+              </p>
+            </div>
+						<%= link_to 'Read Risa’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
+          </div>
+				</div>
+				<div class="govuk-grid-column-one-third">
+ 					<div class="testimonial testimonial--secondary">
+            <p class="govuk-body-s testimonial__text">
+              “The thing I love is when you read stories about how Alexa has helped people. The leader of a charity for blind people said how much Alexa has helped him, because its users are now able to access RNIB-verified information via voice commands.”
+            </p>
+            <div class="testimonial__bio">
+              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+              <p class="govuk-body-s">
+                <strong>Beth Holmes</strong><br>
+                Knowledge Engineer<br>
+								Amazon
+              </p>
+            </div>
+						<%= link_to 'Read Beth’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
+          </div>
+				</div>
+				<div class="govuk-grid-column-one-third">
+           <div class="testimonial testimonial--secondary">
+            <p class="govuk-body-s testimonial__text">
+              “I think computer science is super interesting and can help tackle all sorts of real-world problems. There are still so many open research questions and computer science is definitely a valuable skill in academia!”
+            </p>
+            <div class="testimonial__bio">
+              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+              <p class="govuk-body-s">
+                <strong>Risa Ueno</strong><br>
+                PhD student<br>
+								British Antarctic Survey 
+              </p>
+            </div>
+						<%= link_to 'Read Beth’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
+          </div>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
