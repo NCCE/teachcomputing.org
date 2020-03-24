@@ -19,7 +19,7 @@
           <% if current_user.teacher_reference_number.present? %>
             <p>Teacher Reference Number: <%= current_user.teacher_reference_number %></p>
           <% else %>
-            Teacher Reference Number (optional)<br>
+            Teacher Reference Number <span class="govuk-body-s activity-list__item-trn-optional">(optional)</span><br>
             <%= form_for(current_user, url: user_teacher_reference_number_path(current_user),
                   html: {
                     class: ''
@@ -33,7 +33,7 @@
               <%= f.submit 'Add', class: 'govuk-button button button--small' %>
             <% end %>
             <span class="">
-              <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'ncce-link', target: '_blank' %>
+              <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
             </span>
           <% end %>
         </div>
