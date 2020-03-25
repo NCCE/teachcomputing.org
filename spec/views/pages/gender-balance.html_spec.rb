@@ -18,7 +18,7 @@ RSpec.describe('pages/gender-balance', type: :view) do
   end
 
 	it '2 grey boxes' do
-    expect(rendered).to have_css('.padded-box ', count: 2)
+    expect(rendered).to have_css('.padded-box', count: 2)
   end
 
   it 'has an aside section' do
