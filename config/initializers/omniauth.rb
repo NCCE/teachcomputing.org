@@ -32,7 +32,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
-      return super if if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_OAUTH'])
+      return super if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_OAUTH'])
 
       full_host + script_name + callback_path
     end
