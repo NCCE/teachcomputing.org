@@ -6,11 +6,11 @@ RSpec.describe('pages/gender-balance', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Inspiring the computing experts of the future')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Gender Balance in Computing')
   end
 
   it 'has a intro section' do
-    expect(rendered).to have_css('.govuk-body-l', count: 1)
+    expect(rendered).to have_css('.govuk-body-l', count: 2)
   end
 
   it 'has images' do
