@@ -7,11 +7,11 @@ gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
-gem 'connection_pool','~> 2.2.2'
+gem 'connection_pool', '~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
 gem 'faraday', '~> 0.15.4', require: false
-gem "fog-aws", "~> 3.3"
+gem 'fog-aws', '~> 3.3'
 gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'lograge'
@@ -19,7 +19,7 @@ gem 'memcachier'
 gem 'nokogiri', '~> 1.10.8'
 gem 'oauth2', '~> 1.4.1'
 gem 'omniauth', '~> 1.9.0'
-gem 'omniauth-oauth2'
+gem 'omniauth-oauth2', '~> 1.6.0'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.12'
@@ -38,30 +38,31 @@ gem 'wicked', '~> 1.3.4'
 
 group :development, :test do
   gem 'brakeman'
+  gem 'httplog'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
-  gem 'guard-rspec', '~> 4.7.3', :require => false
+  gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'reek'
-  gem 'rubocop'
-  gem 'rubocop-rspec'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'webmock'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'axe-matchers', '>= 2.5.0', :require => false
+  gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
@@ -70,4 +71,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
