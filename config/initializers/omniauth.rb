@@ -32,9 +32,9 @@ module OmniAuth::Strategies
     end
 
     def callback_url
-      return super if ENV['BYPASS_OAUTH'].present?
+      return super if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_OAUTH'])
 
-      ENV.fetch('STEM_OAUTH_CALLBACK_URL')
+      full_host + script_name + callback_path
     end
 
     def raven_context(response)
@@ -51,6 +51,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 OmniAuth.config.on_failure = AuthController.action(:failure)
+OmniAuth.config.logger = Rails.logger if Rails.env.development?
 
 if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
   puts 'Faking OAuth login for review apps'
