@@ -1,7 +1,7 @@
-<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
-<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :title, 'Gender Balance in Computing' %>
+<% meta_tag :description, 'Help us find the best ways to encourage young women to study Computer Science' %>
 <% meta_tag :url, request.original_url %>
-<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image, image_url('/images/gender-balance/hero.jpg', skip_pipeline: true) %>
 <% meta_tag :image_alt, 'Gender balance' %>
 <div class="tapestry-bg">
   <div class="govuk-width-container">
@@ -12,7 +12,7 @@
           <p class="govuk-body-l">Help us find the best ways to encourage young women to study Computer Science.</p>
         </div>
         <div class="text-photo-hero__block--photo">
-          <%= image_tag '/images/secondary-teachers/hero.jpg', alt: '' %>
+          <%= image_tag '/images/gender-balance/hero.jpg', alt: '' %>
         </div>
       </div>
     </div>
@@ -22,13 +22,12 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-				<div class="light-grey-bg padded-box govuk-!-margin-bottom-6">
+				<div class="light-blue-bg padded-box govuk-!-margin-bottom-6">
 					<h2 class="govuk-heading-m">The programme at a glance</h2>
 					<ul class="govuk-body-s govuk-list govuk-list--bullet">
-						<li>We are running 6 different research trials...</li>
-						<li>Across 4 years...</li>
-						<li>In over 1000 state schools in England!</li>
-						<li>Find out <%= link_to 'which trial', 'https://blog.teachcomputing.org/gender-balance-in-computing-programme-opens-to-all-schools-in-england/', class: 'ncce-link' %> could be right for your school</li>
+						<li>Six different research trials</li>
+						<li>Run across four years</li>
+						<li>In over 1000 state schools in England</li>
 					</ul>
 				</div>
 				<h2 class="govuk-heading-m">About us</h2>
@@ -39,20 +38,21 @@
 				<p class="govuk-body">We’re working with schools to find ways to address this disparity.</p>
 				<p class="govuk-body">More than 700 amazing schools have already begun working with us to explore the different approaches to meet this challenge, but we need more!</p>
 				<p class="govuk-body">We’ll provide free teaching and learning materials, as well as training where necessary. All we need you to do is to try the approaches we suggest and provide us with some information through surveys and perhaps a phone call or visit from us. We’d love your school to get involved. <strong>Why not join today?<strong></p>
-				<div class="light-grey-bg padded-box govuk-!-margin-bottom-3">
-					<h2 class="govuk-heading-m">How to join the programme</h2>
+				<div class="light-blue-bg padded-box govuk-!-margin-bottom-3">
+					<h2 class="govuk-heading-m">Join the programme</h2>
 					<ul class="govuk-body-s govuk-list govuk-list--number">
-						<li>Visit our <%= link_to 'trials page', 'https://blog.teachcomputing.org/gender-balance-in-computing-programme-opens-to-all-schools-in-england/', class: 'ncce-link' %> to decide which ones your school would like to participate in.</li>
-						<li>Register your interest to take part in the trials and join the GBIC Schools Network by filling <%= link_to 'register form', 'ncce.io/gbicregister', class: 'ncce-link' %>.</li>
+						<li><%= link_to 'Find out more about the different trials', 'https://blog.teachcomputing.org/gender-balance-in-computing-programme-opens-to-all-schools-in-england/', class: 'ncce-link' %> to decide which ones your school would like to participate in.</li>
+						<li>Register your interest to take part in the trials and join the GBIC Schools Network</li>
 					</ul>
+					<%= link_to 'Register your interest', 'ncce.io/gbicregister', class: 'govuk-button button button--small' %>
 				</div>
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
-          <p class="govuk-body"><strong>Get involved in this landmark programme<strong>
+          <p class="govuk-body"><strong>Join this landmark programme<strong>
           </p>
           <p class="govuk-body-s">Are you a teacher or headteacher at a school who is interested in GBIC?</p>
-      		<%= link_to 'Register your interest', 'ncce.io/gbicregister', class: 'govuk-button button' %>
+      		<%= link_to 'Register your interest', 'ncce.io/gbicregister', class: 'govuk-button button button--small' %>
         </div>
       </div>
     </div>
@@ -64,57 +64,62 @@
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-        	<h2 class="govuk-heading-m">A heading introducing this bit</h2>
-					<p class="govuk-body">Recently as part of <%= link_to 'Careers Week', '', class: 'ncce-link' %> we spoke to women working in tech about their experiences with computer science.</p>
+					<p class="govuk-body">Recently as part of <%= link_to 'Careers Week', 'https://teachcomputing.org/careers-week', class: 'ncce-link' %> we spoke to women working in tech about their experiences with computer science.</p>
         </div>
       </div>
 			<div class="govuk-grid-row">
 				<div class="govuk-grid-column-one-third">
- 					<div class="testimonial testimonial--secondary">
+ 					<div class="testimonial">
             <p class="govuk-body-s testimonial__text">
               “For me, the most interesting thing is understanding behaviours - I enjoy and learn more when we go above and beyond current technology and think more about everyday habits and general consumer behaviour.”
             </p>
             <div class="testimonial__bio">
-              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+    					<%= image_tag '/images/careers-week/swetha.jpg', alt: 'Swetha Sethu-Jones', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Swetha Sethu-Jones</strong><br>
                 Senior UX Researcher<br>
 								Just Eat 
               </p>
+							<p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Swetha’s interview', 'https://blog.teachcomputing.org/researching-the-right-career', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
             </div>
-						<%= link_to 'Read Swetha’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
           </div>
 				</div>
 				<div class="govuk-grid-column-one-third">
- 					<div class="testimonial testimonial--secondary">
+ 					<div class="testimonial">
             <p class="govuk-body-s testimonial__text">
               “The thing I love is when you read stories about how Alexa has helped people. The leader of a charity for blind people said how much Alexa has helped him, because its users are now able to access RNIB-verified information via voice commands.”
             </p>
             <div class="testimonial__bio">
-              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+              <%= image_tag '/images/careers-week/beth.jpg', alt: 'Beth Holmes', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Beth Holmes</strong><br>
                 Knowledge Engineer<br>
 								Amazon
               </p>
+							<p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Beth’s interview', 'https://blog.teachcomputing.org/alexa-can-you-tell-me-more-about-digital-careers', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
             </div>
-						<%= link_to 'Read Beth’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
           </div>
 				</div>
 				<div class="govuk-grid-column-one-third">
-           <div class="testimonial testimonial--secondary">
+           <div class="testimonial">
             <p class="govuk-body-s testimonial__text">
               “I think computer science is super interesting and can help tackle all sorts of real-world problems. There are still so many open research questions and computer science is definitely a valuable skill in academia!”
             </p>
             <div class="testimonial__bio">
-              <%= image_tag '/images/secondary-teachers/kasim.png', alt: '', class: 'testimonial__image' %>
+            	<%= image_tag '/images/careers-week/risa.jpg', alt: 'Risa Ueno', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Risa Ueno</strong><br>
                 PhD student<br>
 								British Antarctic Survey 
               </p>
+							<p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Risa’s interview', 'https://blog.teachcomputing.org/using-computational-thinking-to-tackle-real-world-problems', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
             </div>
-						<%= link_to 'Read Risa’s interview', '', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
           </div>
 				</div>
 			</div>
