@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 3.8'
   gem 'webmock'
+  gem 'pry', '~> 0.12.2'
 end
 
 group :development do
