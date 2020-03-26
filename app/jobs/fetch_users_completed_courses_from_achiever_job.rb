@@ -16,16 +16,21 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.user_id = user.id
       end
 
-      if course.is_fully_attended
-        achievement.set_to_complete
+      next if achievement.current_state == 'complete'
 
+      case course.attendance_status
+      when 'attended'
+        achievement.set_to_complete
         next unless achievement.programme
-				case achievement.programme.slug
-					when 'cs-accelerator'
-						AssesmentEligibilityJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
-					when 'primary-certificate'
-						PrimaryCertificatePendingTransitionJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
-				end
+
+        case achievement.programme.slug
+        when 'cs-accelerator'
+          AssesmentEligibilityJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
+        when 'primary-certificate'
+          PrimaryCertificatePendingTransitionJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
+        end
+      when 'cancelled'
+        achievement.set_to_dropped
       end
     end
   end

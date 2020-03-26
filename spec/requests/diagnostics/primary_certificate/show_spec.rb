@@ -3,14 +3,13 @@ require 'rails_helper'
 RSpec.describe Diagnostics::PrimaryCertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:activity) { create(:activity, :primary_certificate_diagnostic_tool) }
+  let(:primary_questionnaire) { create(:questionnaire, :primary_enrolment_questionnaire, programme: programme) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
   describe 'GET show' do
     before do
       programme
-      activity
-      programme.activities << activity
+      primary_questionnaire
     end
 
     describe 'while logged in' do
@@ -21,10 +20,14 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
       context 'when the user has not completed the diagnostic' do
         before do
           user_programme_enrolment
+          get primary_certificate_diagnostic_path(:question_1)
+        end
+
+        it 'assigns @questionnaire' do
+          expect(assigns(:questionnaire)).to be_a(Questionnaire)
         end
 
         it 'renders the first step in the wizard' do
-          get primary_certificate_diagnostic_path(:question_1)
           expect(response).to render_template(:question_1)
         end
       end
@@ -32,10 +35,10 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
       context 'when the user has completed the diagnostic' do
         before do
           user_programme_enrolment
-          achievement = create(:achievement, activity_id: activity.id, user_id: user.id)
-          achievement.transition_to(:complete)
+          answers = create(:primary_enrolment_score_15, questionnaire: primary_questionnaire, programme: programme, user: user)
+          answers.transition_to(:complete)
         end
-        
+
         it 'redirects to the programme page' do
           get primary_certificate_diagnostic_path(:question_1)
           expect(response).to redirect_to '/certificate/primary-certificate'
