@@ -146,7 +146,7 @@
   background-repeat: no-repeat;
   background-size: 1rem;
 
-  border: 1px solid $grey-light;
+  border: 2px solid $grey-light;
   display: flex;
   flex-direction: column;
 
@@ -159,6 +159,14 @@
     margin-bottom: 0;
     padding: 0.5rem 1.125rem 0.5rem 2.8rem;
   }
+
+	.icon-map-pin, .icon-online {
+		background-size: 15px;
+
+		@include govuk-media-query($from: tablet) {
+			background-size: 19px;
+		}
+	}
 }
 
 .activity-list__item > * {
@@ -168,6 +176,7 @@
 .activity-list__item--incomplete {
   background-color: $white;
   background-image: image-url('incomplete-achievement.svg');
+	border: none;
 }
 
 .activity-list__item-button {
