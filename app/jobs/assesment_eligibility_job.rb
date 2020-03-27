@@ -11,6 +11,6 @@ class AssesmentEligibilityJob < ApplicationJob
 
     return if enrolment.current_state == :complete.to_s
 
-    CsAcceleratorMailer.with(user: user).assesment_eligibility.deliver_now
+    # CsAcceleratorMailer.with(user: user).assesment_eligibility.deliver_now
   end
 end
