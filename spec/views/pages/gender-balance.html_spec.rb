@@ -22,6 +22,6 @@ RSpec.describe('pages/gender-balance', type: :view) do
   end
 
   it 'has an aside section' do
-    expect(rendered).to have_css('.ncce-aside', text: 'Get involved in this landmark programme')
+    expect(rendered).to have_css('.ncce-aside', text: 'Join this landmark programme')
   end
 end
