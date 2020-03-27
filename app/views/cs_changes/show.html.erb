@@ -1,0 +1,39 @@
+<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
+<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
+<%= render 'pages/certification/hero', full_width: true %>
+<div class="light-grey-bg">
+	<div class="govuk-width-container">
+		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+					<p class="govuk-body-l govuk-!-padding-bottom-3">Welcome to the Teach GCSE computer science programme!</p>
+          <div class="bursary-info govuk-!-padding-bottom-5">
+              <p class="govuk-body bursary-info__text">You are eligible for funding to support your training.
+              </p>
+              <p class="govuk-body bursary-info__link"><%= link_to 'Find out more', bursary_path, class: 'ncce-link ncce-link--contrast', role: 'button', draggable: 'false' %></p>
+          </div>
+          <h2 class="govuk-heading-s">Your activities</h2>
+				</div>
+				<div class="govuk-grid-column-two-thirds">
+					<%= render 'cs_changes/activity-list' %>
+				</div>
+				<div class="govuk-grid-column-one-third">
+					<div class="ncce-aside landing-page__aside">
+						<% if @user_programme_assessment.enough_activites_for_test? %>
+							<p class="govuk-body-s">Your test is ready. Feeling confident? Good luck!</p>
+							<p class="govuk-body-s">If you’re not yet feeling confident about teaching GCSE computer science you can do more stuff. Book or join a course today:</p>
+						<% else %>
+							<p class="govuk-body-s">The minimum number of courses you have to do before the test is two. But this is about your confidence teaching CS. If you need more CPD to feel confident that is fine.</p>
+							<p class="govuk-body-s">Book or join a course today:</p>
+						<% end %>
+							<p class="govuk-body-s"><%= link_to 'Find a course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button button--aside' %></p>
+							<p class="govuk-body-s">We are happy to support you along the way. Call <%= link_to '020 0234 5678' %> or email  <%= mail_to 'info@teachcomputing.org' %> if you need to speak to someone.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
