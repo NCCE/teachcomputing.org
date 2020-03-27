@@ -30,9 +30,9 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       case achievement.programme.slug
       when 'cs-accelerator'
-        AssesmentEligibilityJob.perform_now(achievement.user.id, source: 'AchievementsController.create')
+        AssesmentEligibilityJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
       when 'primary-certificate'
-        PrimaryCertificatePendingTransitionJob.perform_now(achievement.user.id, source: 'AchievementsController.create') if achievement.current_state == :complete.to_s
+        PrimaryCertificatePendingTransitionJob.perform_later(achievement.user.id, source: 'AchievementsController.create') if achievement.current_state == :complete.to_s
       end
     end
 
