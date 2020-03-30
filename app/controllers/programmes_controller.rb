@@ -9,10 +9,19 @@ class ProgrammesController < ApplicationController
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
-    @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
-    render "programmes/#{@programme.slug}/show"
+    if @programme.slug == 'cs-accelerator' && cs_10_hours_enabled?
+      @online_achievements = current_user.achievements.for_programme(@programme)
+                                                      .with_category(Activity::ONLINE_CATEGORY)
+      @face_to_face_achievements = current_user.achievements.for_programme(@programme)
+                                                            .with_category(Activity::FACE_TO_FACE_CATEGORY)
+      puts "I AM HERE"
+      render "programmes/#{@programme.slug}/10_hours/show"
+    else
+      @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
+      render "programmes/#{@programme.slug}/show"
+    end
   end
 
   def complete
