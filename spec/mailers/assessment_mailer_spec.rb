@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AssessmentMailer, type: :mailer do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator) }
-  let(:mail) { AssessmentMailer.with(user: user).failed }
+  let(:mail) { AssessmentMailer.with(user_id: user.id).failed }
   let(:subject) { 'Unfortunately your assessment was unsuccessful' }
 
   describe 'email' do

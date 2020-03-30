@@ -13,6 +13,6 @@ class StateMachines::AssessmentAttemptStateMachine
   transition from: STATE_COMMENCED, to: STATE_FAILED
 
   after_transition(to: :failed) do |assessment_attempt|
-    FailedAssessmentEmailJob.perform_later(assessment_attempt.user.id)
+    FailedAssessmentEmailJob.perform_later(assessment_attempt.user_id)
   end
 end
