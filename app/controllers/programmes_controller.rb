@@ -16,7 +16,6 @@ class ProgrammesController < ApplicationController
                                                       .with_category(Activity::ONLINE_CATEGORY)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
                                                             .with_category(Activity::FACE_TO_FACE_CATEGORY)
-      puts "I AM HERE"
       render "programmes/#{@programme.slug}/10_hours/show"
     else
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
