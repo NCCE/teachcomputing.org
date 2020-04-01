@@ -83,6 +83,26 @@ RSpec.describe ProgrammesController do
           expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
         end
       end
+
+      describe 'when CSA_10_HOUR_JOURNEY_ENABLED is true' do
+        before do
+          ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
+          setup_achievements_for_programme
+          get programme_path('cs-accelerator')
+        end
+
+        it 'assigns the face to face achievements' do
+          expect(assigns(:online_achievements)).not_to eq (nil)
+        end
+
+        it 'assigns the online achievements' do
+          expect(assigns(:face_to_face_achievements)).not_to eq (nil)
+        end
+
+        it 'renders the 10 hour template' do
+          expect(response).to render_template('programmes/cs-accelerator/10_hours/show')
+        end
+      end
     end
 
     describe 'while logged out' do
