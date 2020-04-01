@@ -6,4 +6,13 @@ class CsAcceleratorMailer < ApplicationMailer
 
     mail(to: @user.email, subject: @subject)
   end
+
+
+	def assesment_eligibility
+  	@user = params[:user]
+    @programme = Programme.cs_accelerator
+    @subject = 'You can now take final exam. Congrats'
+
+    mail(to: @user.email, subject: @subject)
+	end
 end
