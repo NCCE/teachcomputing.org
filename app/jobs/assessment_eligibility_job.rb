@@ -1,4 +1,4 @@
-class AssesmentEligibilityJob < ApplicationJob
+class AssessmentEligibilityJob < ApplicationJob
   queue_as :default
 
   def perform(user_id)
