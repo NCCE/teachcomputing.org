@@ -11,7 +11,7 @@ class ProgrammesController < ApplicationController
 
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
-    if @programme.slug == 'cs-accelerator' && cs_10_hours_enabled?
+    if @programme.slug == 'cs-accelerator' && @cs_10_hours_enabled
       @online_achievements = current_user.achievements.for_programme(@programme)
                                                       .with_category(Activity::ONLINE_CATEGORY)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
