@@ -53,7 +53,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews/"
-  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
 
   # Raises error for missing translations

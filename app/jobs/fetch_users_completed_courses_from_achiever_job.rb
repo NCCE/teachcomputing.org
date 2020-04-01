@@ -21,8 +21,13 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
       case course.attendance_status
       when 'attended'
         achievement.set_to_complete
-        if activity.programmes.include?(Programme.primary_certificate)
-          PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'FetchUsersCompletedCoursesFromAchieverJob.perform')
+        next unless achievement.programme
+
+        case achievement.programme.slug
+        when 'cs-accelerator'
+          AssessmentEligibilityJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
+        when 'primary-certificate'
+          PrimaryCertificatePendingTransitionJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
         end
       when 'cancelled'
         achievement.set_to_dropped
