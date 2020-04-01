@@ -94,6 +94,9 @@
     },
     "MANDRILL_API_KEY": {
       "required": true
+    },
+    "CSA_10_HOUR_JOURNEY_ENABLED": {
+      "required": true
     }
   },
   "formation": {
