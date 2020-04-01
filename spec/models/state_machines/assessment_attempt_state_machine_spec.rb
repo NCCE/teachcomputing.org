@@ -26,4 +26,11 @@ RSpec.describe StateMachines::AssessmentAttemptStateMachine do
         .to raise_error(Statesman::TransitionFailedError)
     end
   end
+
+  describe 'after_transition hooks' do
+    it 'queues FailedAssessmentEmailJob when state failed' do
+      expect { assessment_attempt.transition_to(:failed) }
+        .to have_enqueued_job(FailedAssessmentEmailJob)
+    end
+  end
 end
