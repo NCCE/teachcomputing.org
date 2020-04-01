@@ -1,12 +1,12 @@
 <div class="ncce-aside landing-page__aside">
-	<% if user_completed_diagnostic? %>
+	<% if ? %>
 		<h2>Diagnostic complete</h2>
+	<% elsif ? %>
+		<h2>Course in progress </h2>
 	<% elsif @user_programme_assessment.enough_activites_for_test?%>
 		<h2>Test ready</h2>
 	<% elsif @user_programme_assessment.num_attempts != 0  %>
 		<h2>Test failed</h2>
-  <% elsif @user_programme_assessment.currently_taking_test? %>
-		<h2>currently taking the test/h2>
 	<% else %>
 		<h2>New to programme</h2>
 		<p class="govuk-body-s">The minimum number of courses you have to do before the test is two. But this is about your confidence teaching CS. If you need more CPD to feel confident that is fine.</p>
