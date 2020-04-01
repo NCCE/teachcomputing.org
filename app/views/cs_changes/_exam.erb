@@ -30,7 +30,6 @@
                   'aria-label': 'Enter your teacher reference number'
               %>
               <%= hidden_field_tag 'redirect_path', programme_path(@programme.slug) %>
-              <%= f.submit 'Add', class: 'govuk-button button button--small' %>
             <% end %>
             <span class="">
               <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
@@ -42,7 +41,7 @@
         <% elsif @user_programme_assessment.can_take_test_at != 0 %>
           <span>Your <%= to_word_ordinal(@user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!</span>
         <% else %>
-          <%= link_to 'Take the test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button button' %>
+          <%= link_to 'Take the test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button button button--small govuk-!-margin-bottom-6' %>
         <% end %>
       </li>
     <% end %>
