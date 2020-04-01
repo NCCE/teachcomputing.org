@@ -21,17 +21,7 @@
 					<%= render 'cs_changes/activity-list' %>
 				</div>
 				<div class="govuk-grid-column-one-third">
-					<div class="ncce-aside landing-page__aside">
-						<% if @user_programme_assessment.enough_activites_for_test? %>
-							<p class="govuk-body-s">Your test is ready. Feeling confident? Good luck!</p>
-							<p class="govuk-body-s">If you’re not yet feeling confident about teaching GCSE computer science you can do more stuff. Book or join a course today:</p>
-						<% else %>
-							<p class="govuk-body-s">The minimum number of courses you have to do before the test is two. But this is about your confidence teaching CS. If you need more CPD to feel confident that is fine.</p>
-							<p class="govuk-body-s">Book or join a course today:</p>
-						<% end %>
-							<p class="govuk-body-s"><%= link_to 'Find a course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button button--aside' %></p>
-							<p class="govuk-body-s">We are happy to support you along the way. Call <%= link_to '020 0234 5678' %> or email  <%= mail_to 'info@teachcomputing.org' %> if you need to speak to someone.</p>
-					</div>
+					<%= render 'cs_changes/aside' %>
 				</div>
 			</div>
 		</div>
