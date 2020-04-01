@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AssesmentEligibilityJob, type: :job do
+RSpec.describe AssessmentEligibilityJob, type: :job do
   let(:user) { create(:user) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id) }

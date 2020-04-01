@@ -25,7 +25,7 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
 
         case achievement.programme.slug
         when 'cs-accelerator'
-          AssesmentEligibilityJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
+          AssessmentEligibilityJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
         when 'primary-certificate'
           PrimaryCertificatePendingTransitionJob.perform_later(achievement.user.id, source: 'AchievementsController.create')
         end
