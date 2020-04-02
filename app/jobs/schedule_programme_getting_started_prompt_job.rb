@@ -7,6 +7,6 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
 
     return if user.achievements.for_programme(programme).count.positive?
 
-    ProgrammeProgressMailer.with(user: user, slug: programme.slug).get_started_prompt.deliver_now
+    # ProgrammeProgressMailer.with(user: user, slug: programme.slug).get_started_prompt.deliver_now
   end
 end
