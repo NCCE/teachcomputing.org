@@ -1,10 +1,12 @@
 class UserProgrammeEnrolment < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries
-  
+
   belongs_to :user
   belongs_to :programme
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
+
+  after_commit :schedule_get_started_prompt, on: :create
 
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
@@ -21,4 +23,9 @@ class UserProgrammeEnrolment < ApplicationRecord
   private_class_method :initial_state, :transition_class
 
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine
+
+  private
+    def schedule_get_started_prompt
+      ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(user: user, programme: programme)
+    end
 end
