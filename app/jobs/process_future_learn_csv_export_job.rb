@@ -26,10 +26,13 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       achievement.update_state_for_online_activity(record['steps_completed'].to_f, record['left_at'])
 
-      next if achievement.current_state != :complete.to_s
+      next unless achievement.programme
 
-      if activity.programmes.include?(Programme.primary_certificate)
-        PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'ProcessFutureLearnCsvExportJob.perform')
+      case achievement.programme.slug
+      when 'cs-accelerator'
+        AssessmentEligibilityJob.perform_later(achievement.user.id)
+      when 'primary-certificate'
+        PrimaryCertificatePendingTransitionJob.perform_later(achievement.user.id, source: 'AchievementsController.create') if achievement.current_state == :complete.to_s
       end
     end
 

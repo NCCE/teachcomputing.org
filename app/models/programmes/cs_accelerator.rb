@@ -1,6 +1,5 @@
 module Programmes
   class CSAccelerator < Programme
-
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
