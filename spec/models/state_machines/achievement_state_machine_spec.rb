@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe StateMachines::AchievementStateMachine do
   let(:achievement) { create(:achievement) }
+  let!(:achievement2) { create(:achievement) } # <-- I need some advice on this
 
   describe 'guards' do
     it 'can transition from state enrolled to allowed states' do
@@ -37,6 +38,13 @@ RSpec.describe StateMachines::AchievementStateMachine do
         expect { create(:completed_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
       end
+    end
+  end
+
+  describe 'after_transition hooks' do
+    fit 'queue CompleteAchievementEmailJob when state complete' do
+      expect { achievement2.transition_to(:complete) }
+        .to have_enqueued_job(CompleteAchievementEmailJob)
     end
   end
 end
