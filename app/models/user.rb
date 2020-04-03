@@ -44,6 +44,6 @@ class User < ApplicationRecord
   def set_registered_with_ncce_achievement
     achievement = Achievement.create(user_id: id,
                                      activity_id: Activity.registered_with_the_national_centre.id)
-    achievement.set_to_complete
+    achievement.set_to_complete(new_registration: true)
   end
 end
