@@ -8,10 +8,10 @@ class ResourcesController < ApplicationController
 
   def show
     redirect_url = URI.decode_www_form_component(params[:redirect_url])
-    
+
     if helpers.whitelist_redirect_url(redirect_url)
-      track_resources!
-      ScheduleUserResourcesFeedbackJob.set(wait: 7.days).perform_later(current_user, params[:year])
+      resource_user = track_resources!
+      ScheduleUserResourcesFeedbackJob.set(wait: 7.days).perform_later(resource_user.user, params[:year]) if resource_user.counter == 1
       return redirect_to redirect_url
     else
       return redirect_to root_path
@@ -24,5 +24,6 @@ class ResourcesController < ApplicationController
       resource_user = ResourceUser.find_or_create_by!(user_id: current_user.id, resource_year: params[:year])
       resource_user.counter = resource_user.counter + 1
       resource_user.save
+      resource_user
     end
 end
