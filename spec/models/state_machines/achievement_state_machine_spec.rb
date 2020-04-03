@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe StateMachines::AchievementStateMachine do
-  let(:user) { create(:user) }
   let(:achievement) { create(:achievement) }
 
   describe 'guards' do

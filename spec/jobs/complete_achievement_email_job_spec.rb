@@ -6,7 +6,7 @@ RSpec.describe CompleteAchievementEmailJob, type: :job do
 
   describe '#perform' do
     it 'sends an email' do
-      # pending("Pending email content")
+      pending("Pending email content")
       expect { described_class.perform_now(user.id, activity.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
