@@ -40,9 +40,14 @@ class UserProgrammeAssessment
       @attempts.last.current_state != StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s || num_attempts < 2
     end
 
+		def last_attempt?
+			@attempts.last.current_state != StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s
+		end
+
     def can_take_accelerator_test?(user, programme)
       programme.credits_achieved_for_certificate(user) >= programme.max_credits_for_certificate
     end
+
 
     def enough_activites_for_accelerator_test?(user, programme)
       programme.enough_activites_for_test?(user)
