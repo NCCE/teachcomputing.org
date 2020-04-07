@@ -161,7 +161,7 @@
   }
 
 	.icon-map-pin, .icon-online {
-		background-size: 15px;
+    background-size: 15px;
 
 		@include govuk-media-query($from: tablet) {
 			background-size: 19px;
