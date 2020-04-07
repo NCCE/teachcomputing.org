@@ -15,5 +15,11 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it 'has many user programme enrolment transitions' do
       expect(user_programme_enrolment).to have_many(:user_programme_enrolment_transitions)
     end
+
+    it 'queues CompleteCertificateEmailJob job' do
+      expect do
+        user_programme_enrolment
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob)
+    end
   end
 end

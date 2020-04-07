@@ -1,0 +1,6 @@
+Dear <%= @user.first_name %>,
+It's great you've enrolled on the <%= @programme.title %> programme!
+If you want to start with an online course, <%= link_to 'find one here and sign up', courses_url(location: 'Online', certificate: @programme.slug) %></p>
+You'll also need to do some mentored learning, so checkout some of our <%= link_to 'available courses and dates', courses_url(location: 'Face to face', certificate: @programme.slug) %>
+We look forward to seeing your progress soon!
+The NCCE Team
