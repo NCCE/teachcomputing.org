@@ -93,8 +93,13 @@
         <div class="govuk-grid-column-two-thirds">
           <div class="card card--cs-accelerator card--bottom-glyph">
             <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
-            <h2 class="govuk-heading-m card__heading">Teach GCSE computer
-              science</h2>
+						<h2 class="govuk-heading-m card__heading">
+						<% if current_user && @programme.user_enrolled?(current_user) %>
+							<%= link_to 'Teach GCSE computer science', programme_path(@programme.slug), class: 'ncce-link' %>
+						<% else %>
+							Teach GCSE computer science
+						<% end %>
+						</h2>
             <p class="govuk-body card__text">The Computer Science Accelerator
               Programme is a certified professional development programme
               designed to equip you with the subject knowledge and confidence to
