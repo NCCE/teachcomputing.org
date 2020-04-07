@@ -155,7 +155,6 @@
 
   @include govuk-media-query($from: tablet) {
   	background-size: 1.3rem;
-
     line-height: 1.9rem;
     margin-bottom: 0;
     padding: 0.5rem 1.125rem 0.5rem 2.8rem;
@@ -194,8 +193,6 @@
 .activity-list__item-trn-box {
   align-self: stretch;
   background-color: $foam;
-	margin-bottom: 0.75 * $logo-block;
-	margin-top: 0.75 * $logo-block;
   padding: 10px;
 }
 
