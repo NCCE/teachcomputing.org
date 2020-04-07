@@ -1,0 +1,5 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
+  <p class='govuk-body'>Congratulations, you have completed: <%= @activity.title %></p>
+  <p class='govuk-body'>Please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>  if you have any questions.
+</div>
