@@ -11,7 +11,7 @@ class StateMachines::AchievementStateMachine
   transition from: :dropped, to: %i[enrolled complete in_progress]
 
   after_transition(to: :complete) do |achievement, transition|
-    CompleteAchievementEmailJob.perform_later(achievement.user_id, achievement.activity_id) unless
-      transition.metadata["new_registration"]
+    CompleteAchievementEmailJob.perform_later(achievement.user_id, achievement.activity_id) if
+      [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY].include?(achievement.activity.category)
   end
 end

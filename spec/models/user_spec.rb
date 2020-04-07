@@ -97,12 +97,6 @@ RSpec.describe User, type: :model do
         user.save
         expect(user.achievements.where(activity_id: registered_activity.id).first.current_state).to eq 'complete'
       end
-
-      it "has the new_registration flag in the metadata" do
-        user.save
-        achievement = user.achievements.where(activity_id: registered_activity.id).first;
-        expect(achievement.last_transition.metadata).to include('new_registration')
-      end
     end
   end
 
@@ -141,21 +135,6 @@ RSpec.describe User, type: :model do
 
     it 'has the last sign in date set' do
       expect(user.last_sign_in_at).to be_today
-    end
-  end
-
-  describe 'that already exists' do
-    let(:user) { build(:user) }
-    let(:activity) { create(:activity, :future_learn) }
-    let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
-
-    before do
-      user.save
-    end
-
-    it "has no new_registration flag in the metadata for a new achievement" do
-      achievement.transition_to(:complete)
-      expect(achievement.last_transition.metadata).not_to include('new_registration')
     end
   end
 end
