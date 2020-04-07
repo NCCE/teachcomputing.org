@@ -1,0 +1,10 @@
+.ncce-notice__container {
+		@include govuk-media-query($from: tablet) {
+		align-items: start;
+		display: grid;
+		grid-gap: 20px;
+		grid-template-columns: 6rem auto;
+  }
+}
+
+
