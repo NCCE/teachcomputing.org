@@ -5,7 +5,7 @@
 <% else %>
   <li class="activity-list__item activity-list__item--incomplete">
     <span class="screen-reader-only">Once you have completed two online courses and two face-to-face courses, </span>Pass the test
-    <% if @user_programme_assessment.enough_activites_for_test? %>
+    <% if @programme.enough_activites_for_test?(current_user) %>
         <ul class="govuk-list govuk-list--bullet" role="list" aria-label="Test information">
           <li>25 multiple-choice questions</li>
           <li>30 minute time limit</li>
