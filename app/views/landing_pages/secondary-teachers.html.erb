@@ -94,7 +94,7 @@
           <div class="card card--cs-accelerator card--bottom-glyph">
             <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
 						<h2 class="govuk-heading-m card__heading">
-							<%= link_to_if(current_user && @programme.user_enrolled?(current_user), 'Teach GCSE computer science', programme_path(@programme.slug = 'cs-accelerator'), class: 'ncce-link') do %>
+							<%= link_to_if(current_user && @programme.user_enrolled?(current_user), 'Teach GCSE computer science', programme_path(@programme.slug), class: 'ncce-link') do %>
             	Teach GCSE computer science
           		<% end %>
 						</h2>
