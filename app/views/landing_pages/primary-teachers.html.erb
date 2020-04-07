@@ -91,11 +91,9 @@
           <div class="card card--primary-certificate">
             <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
 						<h2 class="govuk-heading-m card__heading">
-						<% if current_user && @programme.user_enrolled?(current_user) %>
-							<%= link_to 'Teach primary computing', programme_path(@programme.slug), class: 'ncce-link' %>
-						<% else %>
-							Teach primary computing
-						<% end %>
+							<%= link_to_if(current_user && @programme.user_enrolled?(current_user), 'Teach primary computing', programme_path(@programme.slug), class: 'ncce-link') do %>
+            	Teach primary computing
+          		<% end %>
 						</h2>
             <p class="govuk-body card__text">Our nationally recognised
               qualification will support you to demonstrate your commitment to
