@@ -49,7 +49,6 @@ class UserProgrammeAssessment
       programme.credits_achieved_for_certificate(user) >= programme.max_credits_for_certificate
     end
 
-
     def enough_activites_for_accelerator_test?(user, programme)
       programme.enough_activites_for_test?(user)
     end
