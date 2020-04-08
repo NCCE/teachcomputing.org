@@ -3,13 +3,9 @@
   <% unless @programme.user_completed_diagnostic?(current_user) %>
     <p class='govuk-body-s'>Start your teaching journey by taking the diagnostic quiz to see how confident you feel about the various parts of the GCSE curriculum.</p>
   <% end %>
-  <% if @online_achievements.size.positive? || @face_to_face_achievements.size.positive? %>
+  <% if true %>
     <% if @programme.enough_activites_for_test?(current_user) %>
-      <% if @user_programme_assessment.failed_last_attempt? %>
-        <p class='govuk-body-s'>Bad luck! The test is available for another try.</p>
-      <% else %>
-        <p class='govuk-body-s'>Your test is ready. Feeling confident? Good luck!</p>
-      <% end %>
+      <%= @user_programme_assessment.failed_last_attempt? ? "<p class='govuk-body-s'>Bad luck! The test is available for another try.</p>".html_safe : "<p class='govuk-body-s'>Your test is ready. Feeling confident? Good luck!</p>".html_safe %>
       <p class='govuk-body-s'>If you’re not yet feeling confident about teaching GCSE computer science you can do more stuff</p>
     <% else %>
     <p class='govuk-body-s'>Continue your journey towards feeling confident about teaching GCSE computer science. You can do as much training as you like as part of this programme.</p>
