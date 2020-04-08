@@ -142,22 +142,21 @@
   align-items: flex-start;
   background-color: $concrete;
   background-image: image-url('tick-blue.svg');
-  background-position: 13px 12px;
+  background-position: 8px 8px;
   background-repeat: no-repeat;
-  background-size: 1rem;
-
+  background-size:24px;
   border: 2px solid $grey-light;
   display: flex;
   flex-direction: column;
-
   margin-bottom: 1rem !important;
-  padding: 0.4rem 1.125rem 0.4rem 2.8rem;
+  padding: 0.6rem 1.125rem 0.6rem 2.6rem;
 
   @include govuk-media-query($from: tablet) {
-		background-size: 1.3rem;
+  	background-position: 10px 10px;
+  	background-size: 30px;
     line-height: 1.9rem;
     margin-bottom: 0;
-    padding: 0.5rem 1.125rem 0.5rem 2.8rem;
+  	padding: 0.6rem 1.125rem 0.6rem 3.5rem;
   }
 
 	.icon-map-pin, .icon-online {
@@ -193,6 +192,8 @@
 .activity-list__item-trn-box {
   align-self: stretch;
   background-color: $foam;
+	margin-bottom: 0.75 * $logo-block;
+	margin-top: 0.75 * $logo-block;
   padding: 10px;
 }
 

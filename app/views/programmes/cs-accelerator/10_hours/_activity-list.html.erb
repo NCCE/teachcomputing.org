@@ -2,7 +2,7 @@
   <li class="activity-list__item <%= 'activity-list__item--incomplete' unless @programme.user_completed_diagnostic?(current_user) %>">
     Take the diagnostic to find out where you need support<br>
 		<% unless @programme.user_completed_diagnostic?(current_user) %>
-      <%= link_to 'Take the diagnostic', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button button--small' %>
+      <%= link_to 'Take the diagnostic', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button button--small govuk-!-margin-top-1' %>
     <% end %>
   </li>
   <%= render 'programmes/cs-accelerator/10_hours/achievements' %>
