@@ -18,6 +18,6 @@
     <p class='govuk-body-s'>Taken the diagnostic but not yet chosen a course.</p>
   <% end %>
   <p class='govuk-body-s'>Book or join a course today</p>
-  <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
+  <%= link_to 'Find a course', courses_path(certificate: @programme.slug), class: 'govuk-button button' %>
   <p class='govuk-body-s'>We are happy to support you along the way. Call 020 0234 5678 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org' %> if you need to speak to someone.</p>
 </div>
