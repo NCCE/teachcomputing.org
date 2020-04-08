@@ -5,7 +5,7 @@
   <% end %>
   <% if true %>
     <% if @programme.enough_activites_for_test?(current_user) %>
-      <%= @user_programme_assessment.failed_last_attempt? ? "<p class='govuk-body-s'>Bad luck! The test is available for another try.</p>".html_safe : "<p class='govuk-body-s'>Your test is ready. Feeling confident? Good luck!</p>".html_safe %>
+      <p class='govuk-body-s'><%= @user_programme_assessment.failed_last_attempt? ? "Bad luck! The test is available for another try" : "Your test is ready. Feeling confident? Good luck!" %></p>
       <p class='govuk-body-s'>If you’re not yet feeling confident about teaching GCSE computer science you can do more stuff</p>
     <% else %>
     <p class='govuk-body-s'>Continue your journey towards feeling confident about teaching GCSE computer science. You can do as much training as you like as part of this programme.</p>
