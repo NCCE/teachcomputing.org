@@ -7,4 +7,14 @@
   }
 }
 
+.ncce-notice_wrapper {
+  padding-bottom: 20px;
 
+  @include govuk-media-query($from: tablet) {
+    padding: 25px 25px 0 0;
+  }
+}
+
+.ncce-notice__tag {
+  text-align: center;
+}
