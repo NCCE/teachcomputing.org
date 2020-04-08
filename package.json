@@ -1,5 +1,8 @@
 {
   "name": "ncce-project",
+  "engines": {
+    "node": "12.16.x"
+  },
   "private": true,
   "dependencies": {
     "cookieconsent": "^3.1.0",
@@ -21,16 +24,16 @@
   },
   "lint-staged": {
     "*.js": [
-    "eslint --fix",
-    "git add"
+      "eslint --fix",
+      "git add"
     ],
     "*.scss": [
-    "stylelint --fix --syntax=scss",
-    "git add"
+      "stylelint --fix --syntax=scss",
+      "git add"
     ],
     "package.json": [
-    "prettier-package-json --write",
-    "git add"
+      "prettier-package-json --write",
+      "git add"
     ]
   },
   "pre-commit": "lint:staged"
