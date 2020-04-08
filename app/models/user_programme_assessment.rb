@@ -36,7 +36,7 @@ class UserProgrammeAssessment
 
   def failed_last_attempt?
     return false if @attempts.nil?
-    @attempts.last.current_state = StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s
+    @attempts.last.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s
   end
 
   private
