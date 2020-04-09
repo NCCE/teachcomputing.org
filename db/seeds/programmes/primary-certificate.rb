@@ -24,7 +24,6 @@ end
 puts "Created primary enrolment questionnaire: #{questionnaire}"
 
 slugs = %w[
-  primary-certificate-diagnostic
   registered-with-the-national-centre
   teaching-and-leading-key-stage-1-computing
   teaching-and-leading-key-stage-2-computing
