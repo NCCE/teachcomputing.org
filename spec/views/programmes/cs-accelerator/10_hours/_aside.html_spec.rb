@@ -5,5 +5,9 @@ RSpec.describe('programmes/cs-accelerator/10_hours/_aside', type: :view) do
     before do
       render
     end
+
+    it 'example' do
+
+    end
   end
 end
