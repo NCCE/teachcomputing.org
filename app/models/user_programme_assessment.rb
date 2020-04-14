@@ -34,11 +34,6 @@ class UserProgrammeAssessment
     @attempts.last.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
   end
 
-  def failed_last_attempt?
-    return false if @attempts.nil?
-    @attempts.last.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_FAILED.to_s
-  end
-
   private
 
     def less_than_two_failed_attempts?
