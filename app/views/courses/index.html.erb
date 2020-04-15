@@ -97,9 +97,9 @@
                 <ul class="govuk-list govuk-body-s ncce-courses__meta">
                   <% course.occurrences.each do |oc| %>
                     <li class="govuk-grid-row ncce-courses__meta-item">
-                      <span class="govuk-grid-column-one-third ncce-courses__meta-location <%= course_meta_icon_class(oc.online_cpd) %>">
+                      <span class="govuk-grid-column-one-half ncce-courses__meta-location <%= course_meta_icon_class(oc.online_cpd) %>">
                       <%= oc.address_town %></span>
-                      <span class="govuk-grid-column-two-thirds ncce-courses__meta-date"><%= activity_dates(oc.start_date, oc.end_date) %></span>
+                      <span class="govuk-grid-column-one-half ncce-courses__meta-date"><%= activity_times(oc.start_date, oc.end_date, oc.online_cpd) %></span>
                     </li>
                   <% end %>
                 </ul>

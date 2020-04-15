@@ -70,7 +70,14 @@ describe CoursesHelper, type: :helper do
       start_time = '1900-01-01T09:00:00+00:00'
       end_time = '1900-01-01T16:00:00+00:00'
 
-      expect(helper.activity_times(start_time, end_time)).to eq '09:00 - 16:00'
+      expect(helper.activity_times(start_time, end_time)).to eq '1 January 09:00—1 January 1900'
+    end
+
+    it 'returns the activity_dates if we ask for dates_only' do
+      start_time = '1900-01-01T09:00:00+00:00'
+      end_time = '1900-01-01T16:00:00+00:00'
+
+      expect(helper.activity_times(start_time, end_time, true)).to eq '1 January—1 January 1900'
     end
   end
 

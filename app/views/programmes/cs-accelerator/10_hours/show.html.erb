@@ -9,29 +9,15 @@
 		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
 			<div class="govuk-grid-row">
 				<div class="govuk-grid-column-two-thirds">
-					<p class="govuk-body-l govuk-!-padding-bottom-3">Welcome to the Teach GCSE computer science programme!</p>
-          <div class="bursary-info govuk-!-padding-bottom-5">
-              <p class="govuk-body bursary-info__text">You are eligible for funding to support your training.
-              </p>
-              <p class="govuk-body bursary-info__link"><%= link_to 'Find out more', bursary_path, class: 'ncce-link ncce-link--contrast', role: 'button', draggable: 'false' %></p>
-          </div>
+					<p class="govuk-body-l govuk-!-padding-bottom-3">Welcome to the Computer Science Accelerator Programme!</p>
+
           <h2 class="govuk-heading-s">Your activities</h2>
 				</div>
 				<div class="govuk-grid-column-two-thirds">
 					<%= render 'programmes/cs-accelerator/10_hours/activity-list' %>
 				</div>
 				<div class="govuk-grid-column-one-third">
-					<div class="ncce-aside landing-page__aside">
-						<% if @user_programme_assessment.enough_activites_for_test? %>
-							<p class="govuk-body-s">Your test is ready. Feeling confident? Good luck!</p>
-							<p class="govuk-body-s">If you’re not yet feeling confident about teaching GCSE computer science you can do more stuff. Book or join a course today:</p>
-						<% else %>
-							<p class="govuk-body-s">The minimum number of courses you have to do before the test is two. But this is about your confidence teaching CS. If you need more CPD to feel confident that is fine.</p>
-							<p class="govuk-body-s">Book or join a course today:</p>
-						<% end %>
-							<p class="govuk-body-s"><%= link_to 'Find a course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button button--aside govuk-!-padding-2' %></p>
-							<p class="govuk-body-s">We are happy to support you along the way. Call <%= link_to '020 0234 5678' %> or email  <%= mail_to 'info@teachcomputing.org' %> if you need to speak to someone.</p>
-					</div>
+					<%= render 'programmes/cs-accelerator/10_hours/aside' %>
 				</div>
 			</div>
 		</div>
