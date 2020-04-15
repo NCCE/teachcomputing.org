@@ -22,10 +22,12 @@ module CoursesHelper
     "#{Date.parse(start_date).strftime('%-d %B')}—#{Date.parse(end_date).strftime('%-d %B %Y')}"
   end
 
-  def activity_times(start_time, end_time)
+  def activity_times(start_time, end_time, dates_only = false)
+    return activity_dates(start_time, end_time) if dates_only
+
     return if start_time.blank? || end_time.blank?
 
-    "#{Time.zone.parse(start_time).strftime('%H:%M')} - #{Time.zone.parse(end_time).strftime('%H:%M')}"
+    "#{Time.zone.parse(start_time).strftime('%-d %B %H:%M')}—#{Time.zone.parse(end_time).strftime('%-d %B %Y')}"
   end
 
   def max_fee(fees)
