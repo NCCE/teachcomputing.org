@@ -6,7 +6,7 @@ RSpec.describe('components/_notice', type: :view) do
   end
 
   it 'has a tag' do
-    expect(rendered).to have_css('.ncce-courses__tag', text: 'COVID19')
+    expect(rendered).to have_css('.ncce-courses__tag', text: 'ANNOUNCEMENT')
   end
 
   it 'read our full statement' do
