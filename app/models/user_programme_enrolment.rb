@@ -26,6 +26,6 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private
     def schedule_get_started_prompt
-      ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(user: user, programme: programme)
+      ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(user.id, programme.id)
     end
 end
