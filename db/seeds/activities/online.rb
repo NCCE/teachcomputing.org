@@ -235,7 +235,17 @@ Activity.find_or_create_by(slug: 'networking-with-python-socket-programming-for-
   activity.slug = 'networking-with-python-socket-programming-for-communication'
   activity.category = 'online'
   activity.self_certifiable = false
-  #activity.stem_course_template_no = ''
+  activity.stem_course_template_no = 'af6b9355-0e39-ea11-a813-000d3a86d7a3'
   activity.future_learn_course_uuid = 'ceb5e1b6-6f1d-4e53-9cd3-3fddb2509fa8'
+  activity.provider = 'future-learn'
+end
+
+Activity.find_or_create_by(slug: 'robotics-with-raspberry-pi-build-and-program-your-first-robot-buggy') do |activity|
+  activity.title = 'Robotics With Raspberry Pi: Build and Program Your First Robot Buggy'
+  activity.credit = 20
+  activity.slug = 'robotics-with-raspberry-pi-build-and-program-your-first-robot-buggy'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_uuid = '0adab04d-f1b5-4110-839d-76f9faf7b819'
   activity.provider = 'future-learn'
 end

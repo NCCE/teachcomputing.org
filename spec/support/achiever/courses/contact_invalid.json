@@ -1,0 +1,13 @@
+{
+  "GetJsonResult": {
+      "EntityName": null,
+      "FailureReason": "",
+      "Counter": 0,
+      "MoreRecords": false,
+      "OptionSetName": null,
+      "Success": true,
+      "OptionSetsClean": null,
+      "OptionSets": null,
+      "Entities": []
+  }
+}

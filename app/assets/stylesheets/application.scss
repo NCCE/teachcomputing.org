@@ -11,6 +11,7 @@
 @import 'settings/_layout.scss';
 
 // import NCCE components
+@import 'components/_notice.scss';
 @import 'components/_cookie-notice.scss';
 @import 'components/_footer.scss';
 @import 'components/_header.scss';
@@ -22,11 +23,10 @@
 @import 'components/_card.scss';
 @import 'components/_text-photo-hero.scss';
 @import 'components/_icons.scss';
+@import 'components/_testimonial.scss';
 @import 'components/pages/home/_hero.scss';
-@import 'components/pages/home/_jobs.scss';
-@import 'components/pages/home/_mailing.scss';
-@import 'components/pages/home/_partners.scss';
 @import 'components/pages/home/_ghost-news-feed.scss';
+@import 'components/pages/_careers-week.scss';
 @import 'components/pages/certification/_cs-accelerator.scss';
 @import 'components/pages/certification/_hero.scss';
 @import 'components/pages/certification/_pathway.scss';
@@ -35,6 +35,7 @@
 @import 'components/pages/_news.scss';
 @import 'components/pages/_resources.scss';
 @import 'components/pages/_secondary-teachers.scss';
+@import 'components/pages/_cms.scss';
 @import 'components/courses/_courses.scss';
 @import 'components/courses/_landing-page.scss';
 @import 'components/dashboard/_certification.scss';

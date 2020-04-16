@@ -1,0 +1,97 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "1b52e260e38dfcb324eb69f664c7646fc23b80730eb6225c3b01b61c8f1409bf",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/cms/cms_page.html.erb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Ghost.new.get_single_page(params[:page_slug])[\"html\"]",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "CmsController",
+          "method": "cms_page",
+          "line": 6,
+          "file": "app/controllers/cms_controller.rb",
+          "rendered": {
+            "name": "cms/cms_page",
+            "file": "app/views/cms/cms_page.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "cms/cms_page"
+      },
+      "user_input": "params[:page_slug]",
+      "confidence": "Weak",
+      "note": "Page slug comes fom config/routes.rb not externally"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "4487c45352f6819f22fe01958108bf82b88c62eacaf3899be7cdbe93d2f56fbf",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/resources_controller.rb",
+      "line": 15,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(URI.decode_www_form_component(params[:redirect_url]))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ResourcesController",
+        "method": "show"
+      },
+      "user_input": "params[:redirect_url]",
+      "confidence": "Weak",
+      "note": "We check this URL with the whitelist function afterwards."
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "92eb83ef5ef70516174c5008c0c48df19eecf7c740f86bf521f80a3b475cae83",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/pages_controller.rb",
+      "line": 29,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PagesController",
+        "method": "static_programme_page"
+      },
+      "user_input": "params[:page_slug]",
+      "confidence": "Medium",
+      "note": "params[:page_slug] is set in config/router.rb"
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "bd20acdf9794a47896c7b7801031ca34eb7e296d7fd59c95af40ec6d767a5c2b",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/pages_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PagesController",
+        "method": "page"
+      },
+      "user_input": "params[:page_slug]",
+      "confidence": "Medium",
+      "note": "params[:page_slug] is set in config/router.rb"
+    }
+  ],
+  "updated": "2020-03-04 14:33:40 +0000",
+  "brakeman_version": "4.7.2"
+}

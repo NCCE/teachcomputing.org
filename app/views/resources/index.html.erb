@@ -3,11 +3,13 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column">
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">World-class lesson plans, unit guides and teacher guides to help you <strong>teach computing</strong>.</p>
-          <p class="govuk-body">If you would like to provide feedback on any of our resources, you can do so via this <%= link_to 'form', 'https://forms.gle/qT2XqoCecYjLLohC6' %> or by emailing us at <%= mail_to 'resourcesfeedback@raspberrypi.org' %>.</p>
-        </div>
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">World-class lesson plans, unit guides and teacher
+          guides to help you <strong>teach computing</strong>.</p>
+        <p class="govuk-body">If you would like to provide feedback on any of
+          our resources, you can do so via this
+          <%= link_to 'form', 'https://forms.gle/qT2XqoCecYjLLohC6' %> or by
+          emailing us at <%= mail_to 'resourcesfeedback@raspberrypi.org' %>.</p>
       </div>
     </div>
   </div>
@@ -24,6 +26,8 @@
   <div class="govuk-main-wrapper">
     <%= render 'year-3' %>
     <%= render 'year-4' %>
+    <%= render 'year-5' %>
+    <%= render 'year-6' %>
   </div>
 </div>
 <%= render 'key-stage-header', key_stage: 3, guide_url: '#' %>

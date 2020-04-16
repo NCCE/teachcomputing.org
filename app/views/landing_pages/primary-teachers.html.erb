@@ -9,7 +9,9 @@
       <div class="text-photo-hero white-bg">
         <div class="text-photo-hero__block--text">
           <h1 class="govuk-heading-l">Inspiration and support for teaching primary computing</h1>
-          <p class="govuk-body-l">Training and enrichment to help you teach and lead the computing curriculum and improve learning across your school.          </p>
+          <p class="govuk-body-l">Training and enrichment to help you teach and
+            lead the computing curriculum and improve learning across your
+            school. </p>
         </div>
         <div class="text-photo-hero__block--photo">
           <%= image_tag '/images/primary-teachers/hero.jpg', alt: '' %>
@@ -22,8 +24,11 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-				<h2 class="govuk-heading-l">Explore our courses</h2>
-        <p class="govuk-body-l landing-page__intro">Develop your understanding of what outstanding teaching of computing looks like, to enable you to create a curriculum that provides progression for all at Key Stage 1 and 2.  </p>
+        <h2 class="govuk-heading-l">Explore our courses</h2>
+        <p class="govuk-body-l landing-page__intro">Develop your understanding
+          of what outstanding teaching of computing looks like, to enable you to
+          create a curriculum that provides progression for all at Key Stage 1
+          and 2. </p>
       </div>
     </div>
     <div class="govuk-grid-row">
@@ -32,12 +37,21 @@
           <p class="govuk-body"><strong>
               <%= link_to 'Programming Pedagogy in Primary Schools', 'https://www.futurelearn.com/courses/primary-programming-pedagogy', class: 'ncce-link ncce-link--contrast' %></strong>
           </p>
-          <p class="govuk-body">Investigate a range of pedagogical approaches suitable for teaching programming to primary school pupils (aged 5 to 11 years old).</p>
-          <video poster="/images/primary-teachers/video-placeholder.png" controls="true" playsinline="true" crossorigin="anonymous" preload="none" tabindex="-1" src="//view.vzaar.com/21003295/download/sd_lower">
-            <source src="//view.vzaar.com/21003295/download/sd_lower" type="video/mp4">
-            <track class="track" src="/images/primary-teachers/PrimaryPedagogy.vtt" kind="captions" srclang="EN" label="English">
+          <p class="govuk-body">Investigate a range of pedagogical approaches
+            suitable for teaching programming to primary school pupils (aged 5
+            to 11 years old).</p>
+          <video poster="/images/primary-teachers/video-placeholder.png"
+            controls="true" playsinline="true" crossorigin="anonymous"
+            preload="none" tabindex="-1"
+            src="//view.vzaar.com/21003295/download/sd_lower">
+            <source src="//view.vzaar.com/21003295/download/sd_lower"
+              type="video/mp4">
+            <track class="track"
+              src="/images/primary-teachers/PrimaryPedagogy.vtt" kind="captions"
+              srclang="EN" label="English">
           </video>
-          <p class="govuk-body-s landing-page__icons"><strong><span class="icon-online">Free
+          <p class="govuk-body-s landing-page__icons"><strong><span
+                class="icon-online">Free
                 online course</span><span class="icon-calendar">4
                 weeks</span><span class="icon-clock">2 hours per
                 week</span></strong></p>
@@ -48,7 +62,8 @@
           <p class="govuk-body"><strong>
               <%= link_to 'Primary programming and algorithms', 'https://ncce.stem.org.uk/cpd/ondemand/445946/primary-programming-and-algorithms', class: 'ncce-link' %></strong>
           </p>
-          <p class="govuk-body-s">Discover engaging and effective ways to help children use computational thinking</p>
+          <p class="govuk-body-s">Discover engaging and effective ways to help
+            children use computational thinking</p>
           <%= image_tag '/images/primary-teachers/aside.jpg', alt: '' %>
           <ul class="govuk-body-s govuk-list govuk-list--bullet">
             <li>Essential programming knowledge</li>
@@ -72,13 +87,34 @@
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-					<h2 class="govuk-heading-l">Your Primary certificate</h2>
+          <h2 class="govuk-heading-l">Your Primary certificate</h2>
           <div class="card card--primary-certificate">
-          <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
-          <h2 class="govuk-heading-m card__heading">Teach primary computing</h2>
-          <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
-          <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', primary_path, class: 'ncce-link' %></strong></p>
-        </div>
+            <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+						<h2 class="govuk-heading-m card__heading">
+							<%= link_to_if(current_user && @programme.user_enrolled?(current_user), 'Teach primary computing', programme_path(@programme.slug), class: 'ncce-link') do %>
+            	Teach primary computing
+          		<% end %>
+						</h2>
+            <p class="govuk-body card__text">Our nationally recognised
+              qualification will support you to demonstrate your commitment to
+              developing your own practice and to computing as a school subject.
+            </p>
+
+            <% if current_user && @programme.user_enrolled?(current_user) %>
+            <%
+              achieved_credits = @programme.credits_achieved_for_certificate(current_user)
+              max_credits = @programme.max_credits_for_certificate
+            %>
+            <progress class="card__progress-bar"
+              aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits"
+              value="<%= achieved_credits %>"
+              max="<%= max_credits %>"></progress>
+            <% else %>
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <strong><%= link_to 'Find out more', primary_path, class: 'ncce-link' %></strong>
+            </p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -90,12 +126,25 @@
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">Your local computing community</h2>
         <h3 class="govuk-body"><strong>Hubs</strong></h3>
-        <p class="govuk-body">Computing Hubs deliver face-to-face courses and provide local support to primary teachers. They are led by schools and colleges across England with an exceptional record in teaching computing.
-        <%= link_to 'Find your local hub', '/hubs' %>.
+        <p class="govuk-body">Computing Hubs deliver face-to-face courses and
+          provide local support to primary teachers. They are led by schools and
+          colleges across England with an exceptional record in teaching
+          computing.
+          <%= link_to 'Find your local hub', '/hubs' %>.
         </p>
         <h3 class="govuk-body"><strong>Subject Matter Experts</strong></h3>
-        <p class="govuk-body">We offer fully-funded consultancy and guidance to primary schools located in <%= link_to 'Local Authority Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %> through a network of computing education specialists, called Subject Matter Experts. Your local expert can help you to complete a three year action plan to improve your computing offer, and identify the most appropriate CPD to upskill your staff.  <%= link_to 'Find further information on support', bursary_path(anchor: 'subject') %>.</p>
-				<p class="govuk-body"> <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %></p>
+        <p class="govuk-body">We offer fully-funded consultancy and guidance to
+          primary schools located in
+          <%= link_to 'Local Authority Districts 5 or 6', 'https://drive.google.com/file/d/1RX7bJpA1P3992Q4Nfe_7xHjVy80KGvsW/view', class: 'ncce-link' %>
+          through a network of computing education specialists, called Subject
+          Matter Experts. Your local expert can help you to complete a three
+          year action plan to improve your computing offer, and identify the
+          most appropriate CPD to upskill your staff.
+          <%= link_to 'Find further information on support', bursary_path(anchor: 'subject') %>.
+        </p>
+        <p class="govuk-body">
+          <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %>
+        </p>
         <h3 class="govuk-body"><strong>Communities of Practice</strong></h3>
         <p class="govuk-body">Communities of Practice - run by
           <%= link_to 'Computing at School', 'https://www.computingatschool.org.uk/' %>
@@ -105,7 +154,9 @@
           <%= link_to 'Find your local community', 'https://community.computingatschool.org.uk/hubs' %>.
         </p>
         <h3 class="govuk-body"><strong>Barefoot</strong></h3>
-        <p class="govuk-body govuk-!-margin-bottom-0">Barefoot provides local computational thinking workshops and classroom-ready resources to help you teach primary computing.
+        <p class="govuk-body govuk-!-margin-bottom-0">Barefoot provides local
+          computational thinking workshops and classroom-ready resources to help
+          you teach primary computing.
           <%= link_to 'Read more about Barefoot', 'https://www.barefootcomputing.org/ncce-partnership' %>.
         </p>
       </div>
@@ -129,14 +180,23 @@
         </div>
         <div class="landing-page-resources__grid">
           <div class="shadow_card">
-            <h3 class="govuk-body icon-resources"><strong>Year 2 - Computer systems and networks - IT around us </strong>
-            </h3>
-            <p class="govuk-body">In this unit, explore information technology at school and beyond, in settings such as shops, hospitals and libraries. You will investigate how information technology improves our world, and learn about using information technology responsibly.</p>
+            <h3 class="govuk-heading-s icon-resources">Year 2 - Computer systems
+              and networks - IT around us</h3>
+            <p class="govuk-body">In this unit, explore information technology
+              at school and beyond, in settings such as shops, hospitals and
+              libraries. You will investigate how information technology
+              improves our world, and learn about using information technology
+              responsibly.</p>
             <%= link_to "Access 'IT around us' now", 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
           </div>
           <div class="shadow_card">
-            <h3 class="govuk-body icon-resources"><strong>Year 3 - Computer systems and networks - Connecting Computers</strong></h3>
-            <p class="govuk-body">Develop your understanding of digital devices, with an initial focus on inputs, processes and outputs. You will compare digital and non-digital devices and be introduced to computer networks, including devices that make up a network’s infrastructure, such as wireless access points and switches.</p>
+            <h3 class="govuk-heading-s icon-resources">Year 3 - Computer systems
+              and networks - Connecting Computers</h3>
+            <p class="govuk-body">Develop your understanding of digital devices,
+              with an initial focus on inputs, processes and outputs. You will
+              compare digital and non-digital devices and be introduced to
+              computer networks, including devices that make up a network’s
+              infrastructure, such as wireless access points and switches.</p>
             <%= link_to "Access 'Connecting Computers' now", 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
           </div>
         </div>

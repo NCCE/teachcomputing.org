@@ -41,7 +41,9 @@ Rails.application.routes.draw do
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
   get '/bursary', to: 'pages#page', as: :bursary, defaults: { page_slug: 'bursary' }
-  get '/certification', to: 'pages#page', as: :certification, defaults: { page_slug: 'certification' }
+  get '/careers-week', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/cms/:page_slug', action: :cms_page, controller: :cms, as: :cms_page, defaults: { page_slug: 'bursary' }, constraints: { page_slug: /(hubs|bursary)/ }
+  get '/cms/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache, defaults: { page_slug: 'bursary' }, constraints: { page_slug: /(hubs|bursary)/ }
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions, defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
@@ -51,7 +53,6 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
-  get '/offer', to: 'pages#page', as: :offer, defaults: { page_slug: 'offer' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
     constraints: ->(_request) { Programme.primary_certificate.enrollable? }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
@@ -61,7 +62,9 @@ Rails.application.routes.draw do
     get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
     get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
+  get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome
+
 
   require 'sidekiq/web'
   if Rails.env.production?

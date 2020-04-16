@@ -5,13 +5,10 @@ module Programmes
     end
 
     def diagnostic_result(user)
-      diagnostic_achievement = user.achievements
-                                   .for_programme(self)
-                                   .in_state('complete')
-                                   .with_category('diagnostic')
-                                   .first
+      questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
+      response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
 
-      diagnostic_achievement.last_transition.metadata['score']
+      response.answers.keys.reduce(0) { |score, key| score + response.answers[key].to_i }
     end
 
     def credits_achieved_for_certificate(user)

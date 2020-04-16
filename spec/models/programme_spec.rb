@@ -31,6 +31,14 @@ RSpec.describe Programme, type: :model do
     it 'has_one programme_complete_counter' do
       expect(programme).to have_one(:programme_complete_counter)
     end
+
+    it 'has_one questionnaire' do
+      expect(programme).to have_many(:questionnaire)
+    end
+
+    it 'has_many questionnaire_responses' do
+      expect(programme).to have_many(:questionnaire_response)
+    end
   end
 
   describe 'scopes' do
@@ -149,4 +157,11 @@ RSpec.describe Programme, type: :model do
       expect(programmes[0].max_credits_for_certificate).to eq 0
     end
   end
+
+  describe '#enough_activites_for_test?' do
+    it 'returns 0' do
+      expect(programmes[0].enough_activites_for_test?(user)).to eq false
+    end
+  end
+
 end

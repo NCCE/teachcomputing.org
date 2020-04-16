@@ -2,38 +2,42 @@ require 'rails_helper'
 
 RSpec.describe('components/_header', type: :view) do
   let(:user) { create(:user) }
+  let(:enrolment) { create(:user_programme_enrolment, user: user) }
 
   it 'has a link to the home page ' do
     render
     expect(rendered).to have_xpath('//a[@href = "/"][contains(@class, "govuk-header__link")]', count: 1)
   end
-  # hidden until we release new navigation all together
-  # it 'shows a link to Primary' do
-  #   render
-  #   expect(rendered).to have_link('Primary teachers', href: primary_path)
-  # end
 
-    # it 'shows a link to Secondary teachers' do
-  #   render
-  #   expect(rendered).to have_link('Primary teachers', href: secondary_path)
-  # end
+  it 'shows a link to Primary teachers' do
+    render
+    expect(rendered).to have_link('Primary teachers', href: '/primary-teachers')
+  end
+
+  it 'shows a link to Secondary teachers' do
+    render
+    expect(rendered).to have_link('Secondary teachers', href: '/secondary-teachers')
+  end
 
   context 'when a user is signed in' do
     before do
       allow(view).to receive(:current_user).and_return(user)
+      enrolment
       render
     end
 
-    it 'shows a link to your dashboard' do
-      expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Your dashboard')
-    end
+    context 'when enrolled on a certificate' do
+      it 'shows a link to your your certificate' do
+        expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Your certificate')
+      end
 
-    it 'shows a link to your dashboard' do
-      expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Edit profile')
-    end
+      it 'shows a link to your edit profile' do
+        expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Edit profile')
+      end
 
-    it 'shows a link to logout' do
-      expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Logout')
+      it 'shows a link to logout' do
+        expect(rendered).to have_css('.govuk-header__navigation-item', text: 'Logout')
+      end
     end
   end
 

@@ -20,7 +20,8 @@ class User < ApplicationRecord
   has_many :assessment_attempts, dependent: :destroy
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :programmes, through: :user_programme_enrolments
-  has_many :resource_users
+  has_many :resource_users, dependent: :nullify
+  has_many :questionnaire_response, dependent: :nullify
 
   after_commit :set_registered_with_ncce_achievement, on: :create
 
@@ -34,6 +35,7 @@ class User < ApplicationRecord
       user.stem_credentials_access_token = credentials.token
       user.stem_credentials_refresh_token = credentials.refresh_token
       user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
+      user.stem_achiever_organisation_no = info.achiever_organisation_no
       user.last_sign_in_at = Time.current
       user.save!
     end

@@ -46,20 +46,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Certification page' do
-    before do
-      visit certification_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-xl', text: 'Certification')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'CS Accelerator page' do
     before do
       programme
@@ -103,20 +89,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Offer page' do
-    before do
-      visit offer_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_content('What We Offer')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'Privacy page' do
     before do
       visit privacy_path
@@ -137,7 +109,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_content('Terms and Conditions National Centre for Computing Education')
+      expect(page).to have_content('National Centre for Computing Education Terms and Conditions')
     end
 
     it 'main is accessible' do

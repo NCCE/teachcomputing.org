@@ -14,8 +14,16 @@ end
 
 puts "Created programme_complete_counter: #{programme_complete_counter}"
 
+questionnaire = Questionnaire.find_or_create_by(slug: 'primary-certificate-enrolment-questionnaire') do |q|
+  q.title = 'Enrolment questionnaire'
+  q.slug = 'primary-certificate-enrolment-questionnaire'
+  q.description = 'This questionnaire is designed to give you some ideas of how to start your learning journey with the NCCE and give you direction towards the courses that might be of most use to you.'
+  q.programme = primary
+end
+
+puts "Created primary enrolment questionnaire: #{questionnaire}"
+
 slugs = %w[
-  primary-certificate-diagnostic
   registered-with-the-national-centre
   teaching-and-leading-key-stage-1-computing
   teaching-and-leading-key-stage-2-computing
@@ -31,6 +39,8 @@ slugs = %w[
   lead-a-cas-community-of-practice
   run-an-after-school-code-club
   lead-a-session-at-a-regional-or-national-conference
+  programming-101-an-introduction-to-python-for-educators
+  scratch-to-python-moving-from-block-to-text-based-programming
 ]
 
 slugs.each do |slug|

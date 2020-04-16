@@ -17,14 +17,21 @@ In order for OAuth to work with STEM you will need to make sure you have an `id`
 
 If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
 
+Set a default password for postgres by adding `DEV_PASS=changeme` to your `.env` file.
+
 Build the containers:
 ```
 docker-compose build
 ```
 
-Start the web container:
+Start the stack:
 ```
-docker-compose up web
+docker-compose up -d
+```
+
+View logs (add -f to tail):
+```
+docker-compose logs
 ```
 
 Visit http://localhost:3000
@@ -46,6 +53,16 @@ After adding any new migrations they need to be run inside docker:
 ```
 docker-compose run --rm web bin/rails db:migrate
 ```
+
+### Seeding the database
+
+Once your database is setup and the migrations have been run, you will want to ensure it is populated with the data you need to run the application. You can do this by running the following command:
+
+```
+docker-compose run web bin/rails db:seed
+```
+
+This will populate things like Activities, Diagnstics and Programmes.
 
 ### Install new Dependencies
 
@@ -89,6 +106,15 @@ Run with `bundle exec reek`
 
 ### Brakeman
 
-Used for static code analysis to check for potential security flaws.  Run `brakeman .` in the project root to use the tool and check the output for warnings, etc.
+Used for static code analysis to check for potential security flaws.
 
 https://brakemanscanner.org/docs/quickstart/
+
+We are ignoring some of the warnings using the method described in the [Brakeman docs](https://brakemanscanner.org/docs/ignoring_false_positives/) We are using the default location for the ignore file, etc.
+
+Run `brakeman -i config/brakeman.ignore .` in the project root and follow the onscreen prompts, outlined in the above doc, to use the tool and check the output for warnings, etc.
+
+### Debugging
+
+Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
+

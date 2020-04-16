@@ -55,4 +55,27 @@ module AchieverStubs
     stub_request(:post, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Set?Cmd=CreateNCCECertificate')
       .to_return(body: json_response)
   end
+
+  def stub_valid_contact_details
+    json_response = File.new('spec/support/achiever/courses/contact_valid.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-valid&Page=1&RecordCount=1000&cmd=ContactDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_invalid_contact_details
+    json_response = File.new('spec/support/achiever/courses/contact_invalid.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-invalid&Page=1&RecordCount=1000&cmd=ContactDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_contact_no_org_details
+    json_response = File.new('spec/support/achiever/courses/contact_no_org.json')
+    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=contact-no-org&Page=1&RecordCount=1000&cmd=ContactDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_attendance_sets
+    json_response = File.new('spec/support/achiever/courses/attendance.json')
+    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAttendanceStatus').to_return(body: json_response)
+  end
 end

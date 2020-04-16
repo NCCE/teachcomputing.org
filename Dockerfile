@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.5.7-alpine
 RUN apk --no-cache add build-base postgresql-dev tzdata nodejs nodejs-npm
 RUN mkdir /app
 WORKDIR /app

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ResourcesController do
+  include ActiveJob::TestHelper
+
   let(:redirect_url) { URI.encode_www_form_component('https://ncce.io/Year1') }
   let(:user) { create(:user) }
 
@@ -16,10 +18,10 @@ RSpec.describe ResourcesController do
       expect(response).to redirect_to('https://ncce.io/Year1')
     end
 
-    it 'queues CsAcceleratorEnrolmentTransitionJob job' do
+    it 'queues ScheduleUserResourcesFeedbackJob job' do
       expect do
         get resources_redirect_path(redirect_url: redirect_url, year: 1)
-      end.to have_enqueued_job(ScheduleUserResourcesFeedbackJob)
+      end.to have_enqueued_job(ScheduleUserResourcesFeedbackJob).exactly(:once)
     end
 
     it 'adds resource user record' do
@@ -30,13 +32,18 @@ RSpec.describe ResourcesController do
 
     context 'when user has already downloaded resource year' do
       before do
+        clear_enqueued_jobs
         get resources_redirect_path(redirect_url: redirect_url, year: 1)
         get resources_redirect_path(redirect_url: redirect_url, year: 1)
       end
 
-      it 'updated the counter' do 
+      it 'updated the counter' do
         resource_year = ResourceUser.find_by(user_id: user.id, resource_year: 1)
         expect(resource_year.counter).to eq(2)
+      end
+
+      it 'only enqueues the job once' do
+        expect(ScheduleUserResourcesFeedbackJob).to have_been_enqueued.exactly(:once)
       end
     end
 

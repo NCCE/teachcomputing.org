@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.5.7'
 
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
@@ -16,20 +16,20 @@ gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'lograge'
 gem 'memcachier'
-gem 'nokogiri', '~> 1.10.4'
-gem 'oauth2', '~> 1.4.1'
-gem 'omniauth', '~> 1.9.0'
-gem 'omniauth-oauth2'
+gem 'nokogiri', '~> 1.10.8'
+gem 'oauth2', '~> 1.4.4'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-oauth2', '~> 1.6.0'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.12'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.4'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'sass-rails', '~> 5.0'
-gem 'sentry-raven', '~> 2.7.4'
+gem 'sentry-raven', '~> 2.13.0'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 3.8'
   gem 'webmock'
+  gem 'pry', '~> 0.12.2'
 end
 
 group :development do

@@ -13,6 +13,7 @@ $grey-dark-x: #333448;
 $grey-storm: #696b8f;
 $grey-x-light: #e3e2f3;
 $grey: #e0e0e0;
+$grey-light: #dddddd;
 $hero-goldenrod: #fad160;
 $hero-terracotta: #e67d6e;
 $jaffa: #f47c31;
@@ -33,6 +34,9 @@ $secondary-cert-color: $dixie;
 $primary-cert-color: $jaffa;
 $cs-accelerator-color: $tapestry;
 
+.deep-cerulean-bg {
+  background-color: $deep-cerulean;
+}
 .dixie-bg {
   background-color: $dixie;
 }

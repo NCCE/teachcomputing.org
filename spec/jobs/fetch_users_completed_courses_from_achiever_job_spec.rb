@@ -6,10 +6,12 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
   let(:activity_one) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') }
   let(:activity_two) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ax') }
   let(:activity_three) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5aw') }
+  let(:activity_four) { create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b511') }
   let(:achievement) { create(:achievement, activity_id: activity_three.id, user_id: user.id) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
 
   before do
+    stub_attendance_sets
     stub_delegate
   end
 
@@ -17,12 +19,16 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
     include ActiveJob::TestHelper
     context 'when a matching activity exists' do
       before do
-        [user, activity_one, activity_two, activity_three, achievement, programme_activity]
+        [user, activity_one, activity_two, activity_three, activity_four, achievement, programme_activity]
         FetchUsersCompletedCoursesFromAchieverJob.perform_now(user)
       end
 
       after do
         clear_enqueued_jobs
+      end
+
+      it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
+        expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
       end
 
       it 'creates an achievement that belongs to the right activity' do
@@ -43,14 +49,15 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
         expect(achievement.current_state).to eq 'enrolled'
       end
 
+      it 'has the state of dropped when the course progress is cancelled' do
+        achievement = Achievement.where(activity_id: activity_four.id, user_id: user.id).first
+        expect(achievement.current_state).to eq 'dropped'
+      end
+
       context 'when an an achievement already exits' do
         it 'sets the state to complete if it is fully attended' do
           expect(achievement.current_state).to eq 'complete'
         end
-      end
-
-      it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-        expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
       end
     end
 

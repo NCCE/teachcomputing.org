@@ -9,10 +9,18 @@ class ProgrammesController < ApplicationController
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
 
-    @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
-    render "programmes/#{@programme.slug}/show"
+    if @programme.slug == 'cs-accelerator' && @cs_10_hours_enabled
+      @online_achievements = current_user.achievements.for_programme(@programme)
+                                                      .with_category(Activity::ONLINE_CATEGORY)
+      @face_to_face_achievements = current_user.achievements.for_programme(@programme)
+                                                            .with_category(Activity::FACE_TO_FACE_CATEGORY)
+      render "programmes/#{@programme.slug}/10_hours/show"
+    else
+      @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
+      render "programmes/#{@programme.slug}/show"
+    end
   end
 
   def complete
@@ -62,7 +70,9 @@ class ProgrammesController < ApplicationController
     end
 
     def user_completed_diagnostic?
-      return true if @programme.user_completed_diagnostic?(current_user)
+      questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
+      response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
+      return true if response && response.current_state == 'complete'
 
       redirect_to primary_certificate_diagnostic_path(:question_1)
     end
