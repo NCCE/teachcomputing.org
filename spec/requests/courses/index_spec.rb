@@ -28,7 +28,7 @@ RSpec.describe CoursesController do
       end
 
       it 'has correct number of courses' do
-        expect(assigns(:courses).count).to eq(36)
+        expect(assigns(:courses).count).to eq(37)
       end
 
       it 'assigns adds course_occurrences to their respective courses' do
@@ -77,7 +77,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(22)
+          expect(assigns(:courses).count).to eq(23)
         end
 
         it 'initalises current certificate' do
@@ -188,7 +188,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(14)
+          expect(assigns(:courses).count).to eq(15)
         end
 
         it 'course templates are not marked as online' do
@@ -216,7 +216,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(27)
+          expect(assigns(:courses).count).to eq(28)
         end
 
         it 'initalises current level' do
@@ -257,7 +257,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(20)
+          expect(assigns(:courses).count).to eq(21)
         end
 
         it 'shows a flash notice' do

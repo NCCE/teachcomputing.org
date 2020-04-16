@@ -22,6 +22,7 @@ RSpec.describe Achiever::Course::Occurrence do
       expect(course_occurrence).to respond_to(:course_occurrence_no)
       expect(course_occurrence).to respond_to(:end_date)
       expect(course_occurrence).to respond_to(:online_cpd)
+      expect(course_occurrence).to respond_to(:remote_delivered_cpd)
       expect(course_occurrence).to respond_to(:region)
       expect(course_occurrence).to respond_to(:subject)
       expect(course_occurrence).to respond_to(:start_date)
@@ -49,7 +50,7 @@ RSpec.describe Achiever::Course::Occurrence do
       it 'contains record count' do
         expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:RecordCount)
       end
-      
+
       it 'contains end date' do
         expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:EndDate)
       end
@@ -87,6 +88,16 @@ RSpec.describe Achiever::Course::Occurrence do
           expect(described_class.online.sample).to be_an described_class
         end
       end
+    end
+  end
+
+  describe '@remote_delivered_cpd' do
+    before do
+      stub_face_to_face_occurrences
+    end
+
+    it 'is set to true if the API sets it so' do
+      expect(described_class.face_to_face.select {|o| o.remote_delivered_cpd }.size).to eq(1)
     end
   end
 end
