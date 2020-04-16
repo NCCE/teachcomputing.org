@@ -30,9 +30,9 @@
                   'aria-label': 'Enter your teacher reference number'
               %>
               <%= hidden_field_tag 'redirect_path', request.original_url %>
-							<%= f.submit 'Add', class: 'govuk-button button button--small' %>
+							<%= f.submit 'Add', class: 'govuk-button button button--small activity-list__item-trn-box--button' %>
             <% end %>
-            <span class="">
+            <span>
               <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
             </span>
           <% end %>
