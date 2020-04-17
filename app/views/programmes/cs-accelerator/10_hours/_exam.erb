@@ -15,7 +15,6 @@
           <li>You can’t skip a question</li>
         </ul>
         <p>You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</p>
-
         <% if @user_programme_assessment.currently_taking_test? %>
           <span>You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
         <% elsif @user_programme_assessment.can_take_test_at != 0 %>
@@ -36,12 +35,12 @@
                       'aria-label': 'Enter your teacher reference number'
                   %>
 
-                <span class="">
-                  <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
+                <span class=""govuk-!-margin-top-4><br>
+                  <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>
                 </span>
               <% end %>
             </div>
-            <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-6' %>
+            <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4' %>
           <% end %>
         <% end %>
       </li>
