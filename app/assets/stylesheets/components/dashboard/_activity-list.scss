@@ -205,11 +205,3 @@
 	opacity: 80%;
 }
 
-.activity-list__item-trn-box--button {
-	margin-top: 0.6rem;
-
-  @include govuk-media-query($from: tablet) {
-		margin-left: 0.6rem;
-		margin-top: 0;
-  }
-}
