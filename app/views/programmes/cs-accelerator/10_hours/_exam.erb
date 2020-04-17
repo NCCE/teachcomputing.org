@@ -29,18 +29,18 @@
               <% if current_user.teacher_reference_number.present? %>
                 <p>Teacher Reference Number: <%= current_user.teacher_reference_number %></p>
               <% else %>
-                Teacher Reference Number <span class="govuk-body-s activity-list__item-trn-optional">(optional)</span><br>
+                Teacher Reference Number <span class="govuk-body-s activity-list__item-trn-optional">(optional)</span>
                   <%= f.text_field :teacher_reference_number,
                       class: 'govuk-input ncce-input activity-list__item-trn-input',
                       'aria-label': 'Enter your teacher reference number'
                   %>
 
-                <span class="">
+                <span><br>
                   <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
                 </span>
               <% end %>
             </div>
-            <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-6' %>
+            <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4' %>
           <% end %>
         <% end %>
       </li>
