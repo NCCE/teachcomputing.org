@@ -249,3 +249,13 @@ Activity.find_or_create_by(slug: 'robotics-with-raspberry-pi-build-and-program-y
   activity.future_learn_course_uuid = '0adab04d-f1b5-4110-839d-76f9faf7b819'
   activity.provider = 'future-learn'
 end
+
+Activity.find_or_create_by(slug: 'introduction-to-databases-and-sql') do |activity|
+  activity.title = 'Introduction to Databases and SQL'
+  activity.credit = 20
+  activity.slug = 'introduction-to-databases-and-sql'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.future_learn_course_uuid = '88ad7443-d27a-482c-b2a9-83ddc1357532'
+  activity.provider = 'future-learn'
+end
