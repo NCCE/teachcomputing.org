@@ -9,7 +9,7 @@ RSpec.describe ApplicationController, type: :controller do
     describe '#authenticate' do
       context 'when BASIC_AUTH_PASSWORD is set' do
         it 'authenticate gets called' do
-          ENV.stub(:[]).with('BASIC_AUTH_PASSWORD').and_return('password')
+          allow(ENV).to receive(:[]).with('BASIC_AUTH_PASSWORD').and_return('password')
           controller.send(:authenticate)
           expect(controller).to have_received(:authenticate_or_request_with_http_basic)
         end
