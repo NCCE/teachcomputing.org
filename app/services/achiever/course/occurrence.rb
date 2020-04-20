@@ -13,6 +13,7 @@ class Achiever::Course::Occurrence
                 :end_date,
                 :online_cpd,
                 :region,
+                :remote_delivered_cpd,
                 :subject,
                 :start_date
 
@@ -48,6 +49,7 @@ class Achiever::Course::Occurrence
     @end_date = occurrence.send('Activity.EndDate')
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.OnlineCPD').downcase)
     @region = occurrence.send('Activity.Region')
+    @remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.RemoteDeliveredCPD')&.downcase)
     @subject = occurrence.send('Template.Subject')
     @start_date = occurrence.send('Activity.StartDate')
   end

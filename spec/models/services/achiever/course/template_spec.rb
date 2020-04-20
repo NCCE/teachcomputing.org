@@ -17,6 +17,7 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:occurrences)
       expect(course_template).to respond_to(:online_cpd)
       expect(course_template).to respond_to(:outcomes)
+      expect(course_template).to respond_to(:remote_delivered_cpd)
       expect(course_template).to respond_to(:subjects)
       expect(course_template).to respond_to(:summary)
       expect(course_template).to respond_to(:title)
@@ -50,6 +51,20 @@ RSpec.describe Achiever::Course::Template do
     end
   end
 
+  describe '@remote_delivered_cpd' do
+    before do
+      stub_course_templates
+    end
+
+    it 'is set to false by default' do
+      expect(described_class.find_by_activity_code('CP201').remote_delivered_cpd).to eq(false)
+    end
+
+    it 'is set to true if the API sets it so' do
+      expect(described_class.find_by_activity_code('CP228').remote_delivered_cpd).to eq(true)
+    end
+  end
+
   describe 'class methods' do
     describe '#all' do
       before do
@@ -69,7 +84,7 @@ RSpec.describe Achiever::Course::Template do
       before do
         stub_course_templates
       end
-      
+
       context 'when a template exists' do
         it 'returns the Achiever::Course::Template instance' do
           expect(described_class.find_by_activity_code('CP201')).to be_an described_class
@@ -98,7 +113,7 @@ RSpec.describe Achiever::Course::Template do
     end
 
     context 'when the template is not part of the programme' do
-      it 'returns false' do 
+      it 'returns false' do
         template = described_class.all.second
         expect(template.by_certificate('primary-certificate')).to eq false
       end
