@@ -1,5 +1,7 @@
 class AssessmentAttemptsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_assessment
+  before_action :teacher_reference_number, only: [:create]
 
   def create
     assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
@@ -27,5 +29,10 @@ class AssessmentAttemptsController < ApplicationController
 
     def assessment_url(user)
       "#{@assessment.link}&cm_e=#{user.email}&cm_user_id=#{user.id}"
+    end
+
+    def teacher_reference_number
+      trn = params.fetch(:user, {})[:teacher_reference_number]
+      current_user.update_attributes(teacher_reference_number: trn) if trn.present?
     end
 end
