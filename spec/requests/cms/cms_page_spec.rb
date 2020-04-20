@@ -31,4 +31,28 @@ RSpec.describe CmsController do
       end
     end
   end
+
+  describe 'GET #clear_page_cache' do
+    context 'with a cms page' do
+      before do
+        stub_cms_page
+        get '/cms/bursary/refresh'
+      end
+
+      it 'assigns @page' do
+        expect(response).to redirect_to('/cms/bursary')
+      end
+    end
+
+    context 'with a home teaching page' do
+      before do
+        stub_cms_page
+        get '/home-teaching/key-stage-1/refresh'
+      end
+
+      it 'assigns @page' do
+        expect(response).to redirect_to('/home-teaching/key-stage-1')
+      end
+    end
+  end
 end
