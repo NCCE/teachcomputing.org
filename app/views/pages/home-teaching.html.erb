@@ -1,0 +1,69 @@
+<% meta_tag :title, '' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/primary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, '' %>
+<div class="deep-cerulean-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l">Home Learning</h1>
+          <p class="govuk-body-l">High quality free computing lessons for students of all ages.</p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_tag '/images/primary-teachers/hero.jpg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-l">Home Learning is a new programme designed to help students of all Key Stages to continue their computing studies at home while in lockdown.</p>
+				<p class="govuk-body-s">Each unit of work features pre-recorded, high quality, and fun computing lessons that are grouped by Key Stage. The lessons can either be accessed independently by students, or introduced by a teacher or parent as a school time session.</p>
+				<p class="govuk-body-s">If a student needs further help with something in one of the lessons, they can attend a live drop-in session held by the expert computing teachers at our School Hubs.</p>
+				<p class="govuk-body-s">Start by finding the right Key Stage below for your students.</p>
+      </div>
+    </div>
+	</div>
+</div>
+<div class="light-grey-bg">
+  <div class="landing-page-resources">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper--xl">
+        <div class="landing-page-resources__grid">
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 1 (school years 1–2)</h3>
+            <p class="govuk-body">Algorithms</p>
+            <%= link_to 'Learn key stage 1 computing at home', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 2 (school years 3–6)</h3>
+            <p class="govuk-body">Programming with Scratch</p>
+            <%= link_to 'Learn key stage 2 computing at home', 'https://ncce.io/Year3', class: 'govuk-body ncce-link' %>
+          </div>
+					<div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 3 (school years 7–9)</h3>
+            <p class="govuk-body">Programming with Python
+						Programming / Algorithmic Thinking (App Development)
+						Cyber Security</p>
+            <%= link_to 'Learn key stage 3 computing at home', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 4 (school years 10–11)</h3>
+            <p class="govuk-body">Boolean Logic
+						Programming (Basics)
+						Algorithms & Programming (Advanced)
+						Networks
+						Maths and logic in Computer Science
+						Transition to A Level
+						</p>
+            <%= link_to 'Learn key stage 4 computing at home', 'https://ncce.io/Year2', class: 'govuk-body ncce-link' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
