@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/stem_course_details_scrubber.rb"
+
 module CoursesHelper
   def activity_address(course)
     [
@@ -71,5 +73,9 @@ module CoursesHelper
     courses.select do |c|
       course_ids.include?(c.course_template_no) && course.course_template_no != c.course_template_no
     end[0...how_many]
+  end
+
+  def scrub(html)
+    sanitize(html, scrubber: StemCourseDetailsScrubber.new)
   end
 end
