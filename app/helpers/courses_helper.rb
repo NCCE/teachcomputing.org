@@ -75,7 +75,7 @@ module CoursesHelper
     end[0...how_many]
   end
 
-  def scrub(html)
+  def sanitize_stem_html(html)
     sanitize(html, scrubber: StemCourseDetailsScrubber.new)
   end
 end
