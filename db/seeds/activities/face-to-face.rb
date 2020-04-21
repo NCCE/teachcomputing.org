@@ -224,3 +224,66 @@ Activity.find_or_create_by(slug: 'an-introduction-to-computer-systems-networking
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
+
+Activity.find_or_create_by(slug: 'representing-algorithms-using-flowcharts-and-pseudocode') do |activity|
+  activity.title = 'Representing algorithms using flowcharts and pseudocode'
+  activity.credit = 10
+  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode'
+  activity.stem_course_template_no = '07e76ffd-e17f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'fundamentals-of-computer-networks') do |activity|
+  activity.title = 'Fundamentals of Computer Networks'
+  activity.credit = 10
+  activity.slug = 'fundamentals-of-computer-networks'
+  activity.stem_course_template_no = 'dd8a8433-e57f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'python-programming-constructs-sequencing-selection-iteration') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration'
+  activity.credit = 10
+  activity.slug = 'python-programming-constructs-sequencing-selection-iteration'
+  activity.stem_course_template_no = '935a0639-e87f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing-module-1') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing - Module 1'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-1-computing-module-1'
+  activity.stem_course_template_no = 'e432e725-ba7f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing-module-2') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing - Module 2'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-1-computing-module-2'
+  activity.stem_course_template_no = '5b694e80-ce7f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing-module-1') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing - Module 1'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-2-computing-module-1'
+  activity.stem_course_template_no = 'a533bf46-d17f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing-module-2') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing - Module 2'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-2-computing-module-2'
+  activity.stem_course_template_no = '5fdb7188-dd7f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
