@@ -1,4 +1,4 @@
-<% colour = 'plain' if local_assigns[:colour].nil? %>
+<% colour = 'blue' if local_assigns[:colour].nil? %>
 <div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
