@@ -23,8 +23,8 @@ RSpec.describe('components/_hero', type: :view) do
       expect(rendered).to have_css('.hero__heading', text: hero_title)
     end
 
-    it 'is the plain hero' do
-      expect(rendered).to have_css('.hero--plain', count: 1)
+    it 'is the blue hero' do
+      expect(rendered).to have_css('.hero--blue', count: 1)
     end
 
     it 'doesn\'t show the status message' do
