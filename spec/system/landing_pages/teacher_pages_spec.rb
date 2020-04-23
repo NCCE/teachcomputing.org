@@ -30,5 +30,4 @@ RSpec.describe('Teacher Landing pages', type: :system) do
       expect(page).to be_accessible.within('#main-content').excluding('.axe-skip-a11y-test')
     end
   end
-
 end
