@@ -6,7 +6,7 @@ RSpec.describe('pages/home-teaching', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Home Learning')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Home Teaching')
   end
 
   it 'has a hero image' do
@@ -14,9 +14,6 @@ RSpec.describe('pages/home-teaching', type: :view) do
   end
 
   it 'has a k4 ey stage sections' do
-    expect(rendered).to have_css('.shadow_card', count: 4)
+    expect(rendered).to have_css('.shadow_card', count: 5)
   end
-
-
-
 end
