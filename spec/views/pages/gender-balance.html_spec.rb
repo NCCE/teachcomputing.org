@@ -10,7 +10,7 @@ RSpec.describe('pages/gender-balance', type: :view) do
   end
 
   it 'has a intro section' do
-    expect(rendered).to have_css('.govuk-body-l', count: 1)
+    expect(rendered).to have_css('.govuk-body-l', count: 2)
   end
 
   it 'has 4 images' do
