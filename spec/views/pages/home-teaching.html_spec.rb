@@ -6,7 +6,7 @@ RSpec.describe('pages/home-teaching', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Home Teaching')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Home teaching')
   end
 
   it 'has a hero image' do
