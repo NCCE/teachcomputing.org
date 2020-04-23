@@ -133,13 +133,11 @@ Activity.find_or_create_by(slug: 'introduction-to-gcse-computer-science') do |ac
   activity.provider = 'stem-learning'
 end
 
-##
-
 Activity.find_or_create_by(slug: 'search-and-sort-algorithms') do |activity|
   activity.title = 'Search and sort algorithms'
   activity.credit = 10
   activity.slug = 'search-and-sort-algorithms'
-  activity.stem_course_template_no = '0D64B3CD-B866-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '0d64b3cd-b866-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -148,7 +146,7 @@ Activity.find_or_create_by(slug: 'representing-algorithms-using-flowcharts-and-p
   activity.title = 'Representing algorithms using flowcharts and pseudocode'
   activity.credit = 10
   activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode'
-  activity.stem_course_template_no = '1199992C-3665-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '1199992c-3665-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -157,7 +155,7 @@ Activity.find_or_create_by(slug: 'computer-systems-input-output-and-storage') do
   activity.title = 'Computer systems: input, output and storage'
   activity.credit = 10
   activity.slug = 'computer-systems-input-output-and-storage'
-  activity.stem_course_template_no = '80D93C0F-BE66-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '80d93c0f-be66-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -166,7 +164,7 @@ Activity.find_or_create_by(slug: 'computer-processors') do |activity|
   activity.title = 'Computer processors'
   activity.credit = 10
   activity.slug = 'computer-processors'
-  activity.stem_course_template_no = '94B15AF9-C066-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '94b15af9-c066-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -175,7 +173,7 @@ Activity.find_or_create_by(slug: 'fundamentals-of-computer-networks') do |activi
   activity.title = 'Fundamentals of computer networks'
   activity.credit = 10
   activity.slug = 'fundamentals-of-computer-networks'
-  activity.stem_course_template_no = 'FF9EE9A5-6267-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = 'ff9ee9a5-6267-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -184,7 +182,7 @@ Activity.find_or_create_by(slug: 'the-internet-and-cyber-security') do |activity
   activity.title = 'The internet and cyber-security'
   activity.credit = 10
   activity.slug = 'the-internet-and-cyber-security'
-  activity.stem_course_template_no = '46D64F78-6367-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '46d64f78-6367-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -193,7 +191,7 @@ Activity.find_or_create_by(slug: 'python-programming-constructs-sequencing-selec
   activity.title = 'Python programming constructs: sequencing, selection, iteration'
   activity.credit = 10
   activity.slug = 'python-programming-constructs-sequencing-selection-iteration'
-  activity.stem_course_template_no = '43476CB7-6567-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '43476cb7-6567-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -202,7 +200,7 @@ Activity.find_or_create_by(slug: 'python-programming-working-with-data') do |act
   activity.title = 'Python programming: working with data'
   activity.credit = 10
   activity.slug = 'python-programming-working-with-data'
-  activity.stem_course_template_no = '84568CCF-6767-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '84568ccf-6767-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -211,7 +209,7 @@ Activity.find_or_create_by(slug: 'an-introduction-to-algorithms-programming-and-
   activity.title = 'An introduction to algorithms, programming and data in GCSE Computer Science'
   activity.credit = 10
   activity.slug = 'an-introduction-to-algorithms-programming-and-data-in-gcse-computer-science'
-  activity.stem_course_template_no = 'DE08C1A9-3868-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = 'de08c1a9-3868-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
@@ -220,7 +218,70 @@ Activity.find_or_create_by(slug: 'an-introduction-to-computer-systems-networking
   activity.title = 'An introduction to computer systems, networking and security in GCSE computer science'
   activity.credit = 10
   activity.slug = 'an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science'
-  activity.stem_course_template_no = '17D78590-4268-EA11-A811-000D3A86D7A3'
+  activity.stem_course_template_no = '17d78590-4268-ea11-a811-000d3a86d7a3'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'representing-algorithms-using-flowcharts-and-pseudocode') do |activity|
+  activity.title = 'Representing algorithms using flowcharts and pseudocode'
+  activity.credit = 10
+  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode'
+  activity.stem_course_template_no = '07e76ffd-e17f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'fundamentals-of-computer-networks') do |activity|
+  activity.title = 'Fundamentals of Computer Networks'
+  activity.credit = 10
+  activity.slug = 'fundamentals-of-computer-networks'
+  activity.stem_course_template_no = 'dd8a8433-e57f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'python-programming-constructs-sequencing-selection-iteration') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration'
+  activity.credit = 10
+  activity.slug = 'python-programming-constructs-sequencing-selection-iteration'
+  activity.stem_course_template_no = '935a0639-e87f-ea11-a811-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing-module-1') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing - Module 1'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-1-computing-module-1'
+  activity.stem_course_template_no = 'e432e725-ba7f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-1-computing-module-2') do |activity|
+  activity.title = 'Teaching and leading key stage 1 computing - Module 2'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-1-computing-module-2'
+  activity.stem_course_template_no = '5b694e80-ce7f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing-module-1') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing - Module 1'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-2-computing-module-1'
+  activity.stem_course_template_no = 'a533bf46-d17f-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing-module-2') do |activity|
+  activity.title = 'Teaching and leading key stage 2 computing - Module 2'
+  activity.credit = 10
+  activity.slug = 'teaching-and-leading-key-stage-2-computing-module-2'
+  activity.stem_course_template_no = '5fdb7188-dd7f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end

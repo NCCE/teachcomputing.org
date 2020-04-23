@@ -72,11 +72,15 @@ guard :rspec, cmd: "bundle exec rspec" do
   # end
 
    # FactoryGirl factories
-   begin
+  begin
     require 'active_support/inflector'
     watch(%r{^spec/factories/(.+)\.rb$}) do |m|
       ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"]
     end
   rescue LoadError # rubocop:disable Lint/HandleExceptions
+  end
+
+  watch(%r{^app/services/achiever/(.+)\.rb$}) do |m|
+    ["#{rspec.spec_dir}/models/services/achiever/#{m[1]}_spec.rb"]
   end
 end

@@ -15,34 +15,33 @@
           <li>You can’t skip a question</li>
         </ul>
         <p>You are allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!</p>
-        <div class="activity-list__item-trn-box">
-          <% if current_user.teacher_reference_number.present? %>
-            <p>Teacher Reference Number: <%= current_user.teacher_reference_number %></p>
-          <% else %>
-            Teacher Reference Number <span class="govuk-body-s activity-list__item-trn-optional">(optional)</span><br>
-            <%= form_for(current_user, url: user_teacher_reference_number_path(current_user),
-                  html: {
-                    class: ''
-                  }
-                ) do |f| %>
-              <%= f.text_field :teacher_reference_number,
-                  class: 'govuk-input ncce-input activity-list__item-trn-input',
-                  'aria-label': 'Enter your teacher reference number'
-              %>
-              <%= hidden_field_tag 'redirect_path', programme_path(@programme.slug) %>
-							<%= f.submit 'Add', class: 'govuk-button button button--small' %>
-            <% end %>
-            <span class="">
-              <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link', target: '_blank' %>
-            </span>
-          <% end %>
-        </div>
         <% if @user_programme_assessment.currently_taking_test? %>
           <span>You are currently taking the test.  If you have recently failed, please come back in 2 hours.</span>
         <% elsif @user_programme_assessment.can_take_test_at != 0 %>
           <span>Your <%= to_word_ordinal(@user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + @user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!</span>
         <% else %>
-          <%= link_to 'Take the test', assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }), method: :post, class: 'govuk-button button govuk-!-margin-bottom-6' %>
+          <%= form_for(current_user, method: :post, url: assessment_attempts_path(assessment_attempt: { assessment_id: @programme.assessment.id, user_id: current_user }),
+              html: {
+                class: ''
+              }
+            ) do |f| %>
+            <div class="activity-list__item-trn-box">
+              <% if current_user.teacher_reference_number.present? %>
+                <p>Teacher Reference Number: <%= current_user.teacher_reference_number %></p>
+              <% else %>
+                Teacher Reference Number <span class="govuk-body-s activity-list__item-trn-optional">(optional)</span><br>
+                  <%= f.text_field :teacher_reference_number,
+                      class: 'govuk-input ncce-input activity-list__item-trn-input',
+                      'aria-label': 'Enter your teacher reference number'
+                  %>
+
+                <span class=""govuk-!-margin-top-4><br>
+                  <%= link_to 'What is this?', 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>
+                </span>
+              <% end %>
+            </div>
+            <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4' %>
+          <% end %>
         <% end %>
       </li>
     <% end %>
