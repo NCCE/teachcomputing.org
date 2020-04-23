@@ -12,7 +12,7 @@ RSpec.describe('Teacher Landing pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'Inspiration and support for teaching primary computing')
+      expect(page).to have_css('.govuk-heading-l', text: 'High-quality free computing activities for students of all ages')
     end
 
     it 'main is accessible' do
@@ -24,10 +24,6 @@ RSpec.describe('Teacher Landing pages', type: :system) do
     before do
       cs_accelerator
       visit secondary_teachers_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-l', text: 'The essential toolkit for secondary computing teachers')
     end
 
     it 'main is accessible' do
