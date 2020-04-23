@@ -1,15 +1,15 @@
 <% unless @online_achievements.size.positive? %>
   <li class="activity-list__item activity-list__item--incomplete">
-    <span>Complete an online course</span>
+    <span>Complete an online or face to face course</span>
   </li>
 <% end %>
 <% @online_achievements.each do |achievement| %>
   <li class="activity-list__item <%= 'activity-list__item--incomplete' unless achievement.complete? %>">
     <% unless achievement.complete? %>
-      <span>Complete an online course</span>
+      <span>Complete an online or face to face course</span>
       <strong class="govuk-tag ncce-courses__tag">In progress</strong>
     <% end %>
-    <span><%= achievement.activity.title %>
+    <span><%= achievement.activity.title %></span>
     <span class="govuk-body-s icon-online">Online course</span>
   </li>
 <% end %>

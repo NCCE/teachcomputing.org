@@ -8,6 +8,6 @@ class CmsController < ApplicationController
 
   def clear_page_cache
     Ghost.new.clear_page_cache(params[:page_slug])
-    return redirect_to cms_page_path(page_slug: params[:page_slug])
+    return redirect_to request.fullpath.sub(/\/refresh$/, '')
   end
 end

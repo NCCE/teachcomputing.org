@@ -49,7 +49,10 @@ Rails.application.routes.draw do
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
+  get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
+  get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }, constraints: { page_slug: /(key-stage-1|key-stage-2|key-stage-3|key-stage-4|key-stage-5)/ }
+  get '/home-teaching/:page_slug/refresh', to: 'cms#clear_page_cache', as: :clear_home_teaching_page_cache, defaults: { page_slug: 'key-stage-1' }, constraints: { page_slug: /(key-stage-1|key-stage-2|key-stage-3|key-stage-4|key-stage-5)/ }
   get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout

@@ -24,7 +24,6 @@ end
 puts "Created primary enrolment questionnaire: #{questionnaire}"
 
 slugs = %w[
-  primary-certificate-diagnostic
   registered-with-the-national-centre
   teaching-and-leading-key-stage-1-computing
   teaching-and-leading-key-stage-2-computing
@@ -42,6 +41,10 @@ slugs = %w[
   lead-a-session-at-a-regional-or-national-conference
   programming-101-an-introduction-to-python-for-educators
   scratch-to-python-moving-from-block-to-text-based-programming
+  teaching-and-leading-key-stage-1-computing-module-1
+  teaching-and-leading-key-stage-1-computing-module-2
+  teaching-and-leading-key-stage-2-computing-module-1
+  teaching-and-leading-key-stage-2-computing-module-2
 ]
 
 slugs.each do |slug|

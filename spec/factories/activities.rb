@@ -22,13 +22,6 @@ FactoryBot.define do
     credit { 0 }
   end
 
-  trait :primary_certificate_diagnostic_tool do
-    title { 'Completed the diagnostic tool' }
-    slug { 'primary-certificate-diagnostic' }
-    category { 'diagnostic' }
-    provider { 'system' }
-  end
-
   trait :stem_learning do
     title { 'STEM' }
     provider { 'stem-learning' }

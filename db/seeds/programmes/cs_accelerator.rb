@@ -67,6 +67,10 @@ slugs = %w[
   python-programming-working-with-data
   an-introduction-to-algorithms-programming-and-data-in-gcse-computer-science
   an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science
+  introduction-to-databases-and-sql
+  python-programming-constructs-sequencing-selection-iteration
+  fundamentals-of-computer-networks
+  representing-algorithms-using-flowcharts-and-pseudocode
 ]
 
 slugs.each do |slug|

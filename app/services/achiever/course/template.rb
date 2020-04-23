@@ -8,6 +8,7 @@ class Achiever::Course::Template
                 :occurrences,
                 :online_cpd,
                 :outcomes,
+                :remote_delivered_cpd,
                 :subjects,
                 :summary,
                 :title,
@@ -29,6 +30,7 @@ class Achiever::Course::Template
     @occurrences = []
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @outcomes = template.send('Template.Outcomes')
+    @remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.RemoteDeliveredCPD')&.downcase)
     @subjects = template.send('Template.AdditionalSubjects').split(';')
     @summary = template.send('Template.Summary')
     @title = template.send('Template.TemplateTitle')

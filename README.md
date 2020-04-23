@@ -117,3 +117,4 @@ Run `brakeman -i config/brakeman.ignore .` in the project root and follow the on
 ### Debugging
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
+
