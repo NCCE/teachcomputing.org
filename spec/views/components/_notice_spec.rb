@@ -10,6 +10,6 @@ RSpec.describe('components/_notice', type: :view) do
   end
 
   it 'read our full statement' do
-    expect(rendered).to have_link('Read our full statement', href: 'https://blog.teachcomputing.org/coronavirus-update/')
+    expect(rendered).to have_link('resources and partner websites', href: 'https://teachcomputing.org/home-teaching/')
   end
 end
