@@ -29,6 +29,10 @@ class Programme < ApplicationRecord
     0
   end
 
+  def credits_for_standard_certificate(user)
+    0
+  end
+
   def percent_complete_10_hours_certificate(_user)
     0
   end

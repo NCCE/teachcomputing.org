@@ -3,6 +3,10 @@ module Programmes
     def credits_achieved_for_certificate(user)
       return percent_complete_10_hours_certificate(user) if ActiveModel::Type::Boolean.new.cast(ENV.fetch('CSA_10_HOUR_JOURNEY_ENABLED'))
 
+      credits_for_standard_certificate(user)
+    end
+
+    def credits_for_standard_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
                                   .in_state('complete')

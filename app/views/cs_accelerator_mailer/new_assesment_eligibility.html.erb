@@ -1,0 +1,42 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
+  <p class='govuk-body'>We have recently made some changes to the Computer
+    Science Accelerator Programme to make it even more flexible and applicable
+    for teachers with different levels of experience. As part of these changes,
+    you can now access the test earlier and decide when you feel that you have
+    the subject knowledge to complete the programme.</p>
+
+  <p class='govuk-body'><strong>Ready to take the test?</strong></p>
+
+  <p class='govuk-body'>You are one step away from receiving your qualification
+    and being recognised for your subject knowledge.</p>
+  <br>Plus, passing this test will mean you will receive your additional £920
+  bursary upon completion.</p>
+
+  <p class='govuk-body'><strong>How does it work?</strong></p>
+
+  <ul>
+    <li>25 multiple-choice questions
+    </li>
+    <li>30 minute time limit
+    </li>
+    <li>Pass mark of 65% required
+    </li>
+  </ul>
+  <p class='govuk-body'>
+    <%= link_to 'Take the test', programme_certificate_url(slug: @programme.slug) %>
+  </p>
+
+  <p class='govuk-body'><strong>Not quite ready?</strong></p>
+
+  <p class='govuk-body'>If you don't feel comfortable enough to take the test
+    just yet, we have a range of remote and online CPD to help you bridge any
+    knowledge gaps and help to build your confidence in teaching computing.
+    Plus, you can contact our (Computer Science Champions - linked to CS
+    champion email address) for guidance and one-to-one revision support.</p>
+
+  <p class='govuk-body'>
+    <%= link_to 'Browse our courses', courses_url(certificate: @programme.slug) %>
+  </p>
+
+</div>
