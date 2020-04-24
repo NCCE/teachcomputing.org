@@ -11,7 +11,7 @@ class CsAcceleratorMailer < ApplicationMailer
 	def assesment_eligibility
   	@user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = 'You can now take final exam. Congrats'
+    @subject = "Congratulations #{@user.first_name.to_s}, you are now eligible to take the CS Accelerator test and receive your certificate."
 
     mail(to: @user.email, subject: @subject)
   end
