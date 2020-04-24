@@ -13,6 +13,6 @@ class NewAssessmentEligibilityJob < ApplicationJob
 
     return unless programme.credits_for_standard_certificate(user) < 80
 
-    CsAcceleratorMailer.with(user: user).new_assesment_eligibility.deliver_now
+    CsAcceleratorMailer.with(user: user).new_assessment_eligibility.deliver_now
   end
 end

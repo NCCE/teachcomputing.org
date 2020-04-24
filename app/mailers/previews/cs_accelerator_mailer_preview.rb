@@ -3,11 +3,11 @@ class CsAcceleratorMailerPreview < ActionMailer::Preview
     CsAcceleratorMailer.with(user: User.first).completed
   end
 
-  def assesment_eligibility
-    CsAcceleratorMailer.with(user: User.first).assesment_eligibility
+  def assessment_eligibility
+    CsAcceleratorMailer.with(user: User.first).assessment_eligibility
   end
 
-  def new_assesment_eligibility
-    CsAcceleratorMailer.with(user: User.first).new_assesment_eligibility
+  def new_assessment_eligibility
+    CsAcceleratorMailer.with(user: User.first).new_assessment_eligibility
   end
 end

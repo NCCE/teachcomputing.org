@@ -5,8 +5,8 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
   let(:programme) { create(:cs_accelerator) }
   let(:completed_mail) { CsAcceleratorMailer.with(user: user, programme: programme).completed }
   let(:completed_subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge' }
-  let(:eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).assesment_eligibility }
-  let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assesment_eligibility }
+  let(:eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
+  let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
   let(:eligible_subject) { "Congratulations #{user.first_name.to_s}, you are now eligible to take the CS Accelerator test and receive your certificate." }
 
 
@@ -26,7 +26,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
     end
   end
 
-  describe '#assesment_eligibility' do
+  describe '#assessment_eligibility' do
     it 'renders the headers' do
       expect(eligible_mail.subject).to include(eligible_subject)
       expect(eligible_mail.to).to eq([user.email])
@@ -42,7 +42,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
     end
   end
 
-  describe '#new_assesment_eligibility' do
+  describe '#new_assessment_eligibility' do
     it 'renders the headers' do
       expect(newly_eligible_mail.subject).to include(eligible_subject)
       expect(newly_eligible_mail.to).to eq([user.email])
