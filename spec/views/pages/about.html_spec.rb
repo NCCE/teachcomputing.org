@@ -13,11 +13,7 @@ RSpec.describe('pages/about', type: :view) do
     expect(rendered).to have_css('.ncce-link', count: 3)
   end
 
-  it 'links to the home page' do
-    expect(rendered).to have_link('Find out more', href: '/', count: 2)
-  end
-
-  it 'has a mailto link' do
+  it 'has a get involved link' do
     expect(rendered).to have_link('Get involved', href: '/get-involved')
   end
 end

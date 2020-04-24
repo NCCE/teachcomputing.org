@@ -37,6 +37,10 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Accessibility', href: '/accessibility-statement')
   end
 
+  it 'has an about link' do
+    expect(rendered).to have_link('About Us', href: '/about')
+  end
+
 
   it 'has a twitter link' do
     expect(rendered).to have_link('Twitter', href: /twitter.com\/WeAreComputing/)
