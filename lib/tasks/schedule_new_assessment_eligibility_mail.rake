@@ -1,8 +1,8 @@
 namespace :new_assesment_eligibility do
   task schedule: :environment do
 
-    User.all.each do |user|
-      NewAssessmentEligibilityJob.perform_now(user.id)
+    Programme.cs_accelerator.user_programme_enrolments.in_state(:enrolled).all.each do |enrolment|
+      NewAssessmentEligibilityJob.perform_now(enrolment.user_id)
     end
   end
 end
