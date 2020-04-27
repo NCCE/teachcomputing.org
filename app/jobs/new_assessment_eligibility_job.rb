@@ -11,8 +11,6 @@ class NewAssessmentEligibilityJob < ApplicationJob
 
     return unless programme.enough_activites_for_test?(user)
 
-    return unless programme.credits_for_standard_certificate(user) < 80
-
     CsAcceleratorMailer.with(user: user).new_assessment_eligibility.deliver_now
   end
 end
