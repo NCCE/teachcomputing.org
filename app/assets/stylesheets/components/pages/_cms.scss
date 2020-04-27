@@ -54,4 +54,10 @@
     @extend .govuk-list;
     @extend .govuk-list--number;
   }
+
+  img,
+  video {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

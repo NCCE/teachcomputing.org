@@ -1,0 +1,70 @@
+<% meta_tag :title, 'Home teaching: High-quality, free, computing activities for students of all ages' %>
+<% meta_tag :description, 'A new programme designed to help students to continue their computing studies during lockdown. Teachers and parents can schedule high quality, relevant computing lessons for their students or children.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/home-teaching/hero.jpeg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Home teaching: High-quality, free, computing activities for students of all ages' %>
+<div class="deep-cerulean-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l">Home teaching</h1>
+          <p class="govuk-body-l">High-quality, free, computing activities for students of all ages.</p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_tag '/images/home-teaching/hero.jpeg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Home teaching is a new programme designed to help students to continue their computing studies while at home. Teachers and parents will be able to schedule the activities as part of the school day.</p>
+				<p class="govuk-body">Using our network of Computing Hubs and our consortium resources, we are providing you with a timetable of sequential, topic-led activities and live online support during the summer term. The programme will cover all priority curriculum topics, across all key stages.</p>
+        <h2 class="govuk-heading-s">The activities</h2>
+        <p class="govuk-body">The units of work feature high-quality and fun computing activities that are grouped by key stage.</p>
+				<p class="govuk-body">If a student needs further help with an activity, they can attend one of our live drop-in sessions held online by the expert computing teachers at our School Hubs. These Q&A sessions will be available every day to help explain the key principles of the weekly featured topics, and identify misconceptions.</p>
+        <h3 class="govuk-heading-s">Start by finding the right key stage below for your students.</h3>
+      </div>
+    </div>
+	</div>
+</div>
+<div class="light-grey-bg">
+  <div class="landing-page-resources">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper--xl">
+        <div class="landing-page-resources__grid">
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 1 (school years 1–2)</h3>
+            <p class="govuk-body">Algorithms</p>
+            <%= link_to 'Learn key stage 1 computing at home', '/home-teaching/key-stage-1', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 2 (school years 3–6)</h3>
+            <p class="govuk-body">Programming using Scratch</p>
+            <%= link_to 'Learn key stage 2 computing at home', '/home-teaching/key-stage-2', class: 'govuk-body ncce-link' %>
+          </div>
+					<div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 3 (school years 7–9)</h3>
+            <p class="govuk-body">Programming using Python and App Development</p>
+            <%= link_to 'Learn key stage 3 computing at home', '/home-teaching/key-stage-3', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 4 (school years 10–11)</h3>
+            <p class="govuk-body"> Python programming will be available in two levels including a basic introduction and more advanced Python for those with some pre-existing programming skills</p>
+						</p>
+            <%= link_to 'Learn key stage 4 computing at home', '/home-teaching/key-stage-4', class: 'govuk-body ncce-link' %>
+          </div>
+          <div class="shadow_card">
+            <h3 class="govuk-heading-s icon-resources">Key stage 5</h3>
+            <p class="govuk-body">Object-oriented programming</p>
+            <%= link_to 'Learn key stage 5 computing at home', '/home-teaching/key-stage-5', class: 'govuk-body ncce-link' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
