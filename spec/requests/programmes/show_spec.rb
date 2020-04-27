@@ -101,7 +101,7 @@ RSpec.describe ProgrammesController do
         end
 
         it 'does not include dropped achievements' do
-          expect(assigns(:face_to_face_achievements).count).to eq (0)
+          expect(assigns(:face_to_face_achievements)).not_to include(face_to_face_achievement)
         end
 
         it 'renders the 10 hour template' do
