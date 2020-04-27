@@ -87,16 +87,21 @@ RSpec.describe ProgrammesController do
       describe 'when CSA_10_HOUR_JOURNEY_ENABLED is true' do
         before do
           ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
+          face_to_face_achievement.transition_to(:dropped)
           setup_achievements_for_programme
           get programme_path('cs-accelerator')
         end
 
-        it 'assigns the face to face achievements' do
+        it 'assigns the online achievements' do
           expect(assigns(:online_achievements)).not_to eq (nil)
         end
 
-        it 'assigns the online achievements' do
+        it 'assigns the face to face achievements' do
           expect(assigns(:face_to_face_achievements)).not_to eq (nil)
+        end
+
+        it 'does not include dropped achievements' do
+          expect(assigns(:face_to_face_achievements).count).to eq (0)
         end
 
         it 'renders the 10 hour template' do
