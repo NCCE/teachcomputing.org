@@ -27,7 +27,7 @@ RSpec.describe('courses/_aside-section', type: :view) do
       end
 
       it 'tells the user who is delivering the course' do
-        expect(rendered).to have_css('.ncce-aside__text', text: 'The course is delivered by Future Learn')
+        expect(rendered).to have_css('.ncce-aside__text', text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses. Please use the same email address so we can track your progress.')
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe('courses/_aside-section', type: :view) do
       end
 
       it 'tells the user who is delivering the course' do
-        expect(rendered).to have_css('.ncce-aside__text', text: 'The course is delivered by STEM Learning')
+        expect(rendered).to have_css('.ncce-aside__text', text: 'You will be taken to the STEM Learning website to see further details and book.')
       end
     end
   end
