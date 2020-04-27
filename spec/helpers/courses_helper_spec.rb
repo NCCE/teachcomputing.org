@@ -171,4 +171,60 @@ describe CoursesHelper, type: :helper do
       ['0', '2', '3', '4', '5'].each { |id| expect(other_courses.include?(id)).to eq(true) }
     end
   end
+
+  describe('sanitize_stem_html') do
+    it 'does not allow empty nodes with non-breaking-spaces' do
+      expect(helper.sanitize_stem_html('<p>&nbsp;</p>')).to eq ''
+    end
+
+    it 'allows unordered lists' do
+      list = '<ul><li>One</li><li>Two</li></ul>'
+      expect(helper.sanitize_stem_html(list).gsub(/\s/, '')).to eq list
+    end
+
+    it 'allows ordered lists' do
+      list = '<ol><li>One</li><li>Two</li></ol>'
+      expect(helper.sanitize_stem_html(list).gsub(/\s/, '')).to eq list
+    end
+
+    it 'allows headings' do
+      headings = '<h1>One</h1><h2>Two</h2><h3>Three</h3><h4>Four</h4>'
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq headings
+    end
+
+    it 'disallows images' do
+      headings = '<p><img src="abc.jpg"/>Image</p>'
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Image</p>'
+    end
+
+    it 'disallows links' do
+      headings = '<p><a href="abc.html"/>Link</p>'
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Link</p>'
+    end
+
+    it 'disallows inline styles' do
+      headings = '<p style="font-family: Courier;color: f00;">Fancy text</p>'
+      expect(helper.sanitize_stem_html(headings)).to eq '<p>Fancy text</p>'
+    end
+
+    it 'disallows class attributes' do
+      headings = '<p class="govuk-body-m">Simple text</p>'
+      expect(helper.sanitize_stem_html(headings)).to eq '<p>Simple text</p>'
+    end
+
+    it 'allows video markup' do
+      video = %q(<video poster="image.jpg"
+                  controls="true" playsinline="true" crossorigin="anonymous"
+                  preload="none" tabindex="-1"
+                  src="/Videos/video.mp4">
+                  <source src="/Videos/video.mp4"
+                    type="video/mp4"></source>
+                  <track class="track"
+                    src="/Videos/captions.vtt" kind="captions"
+                    srclang="EN" label="English"></track>
+                </video>)
+
+      expect(helper.sanitize_stem_html(video).gsub(/\s/, '')).to eq video.to_s.gsub(/\s/, '')
+    end
+  end
 end
