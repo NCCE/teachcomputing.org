@@ -1,24 +1,15 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Courses', glyph_position: 'bottom', colour: 'blue' %>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper ncce-main-wrapper--intro">
+  <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">Please note that for face-to-face courses you will be taken to STEM Learning to see further details and book.</p>
-        <p class="govuk-body">Online courses are hosted by FutureLearn. If you go through our site to book these courses will come with a free upgrade. You will need a separate FutureLearn account to sign up for them, please use the same email address as you used for your account on this site so we can track your progress.</p>
-        <p class="govuk-body">After you complete the course, go to your dashboard to track your progress towards certification.</p>
+        <p class="govuk-body">We offer professional development courses to support the teaching of computing from Key Stages 1-4.</p>
+        <p class="govuk-body"><strong>Remote courses</strong></p>
+        <p class="govuk-body">To fully support teachers, we have adapted our face-to-face courses to be delivered  remotely across a series of short sessions.</p>
+        <p class="govuk-body"><strong>Online courses</strong></p>
+        <p class="govuk-body govuk-!-margin-bottom-0">Take part in any of our free online courses and learn at your own pace.</p>
       </div>
-      <% unless current_user %>
-        <div class="govuk-grid-column-one-third">
-          <div class="ncce-aside">
-            <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
-            <p class="govuk-body-s ncce-aside__text">
-            To book onto a course, you'll need to create an account. It's free and takes two minutes!
-            </p>
-            <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
@@ -125,6 +116,17 @@
           <% end %>
         <% end %>
       </div>
+      <% unless current_user %>
+        <div class="govuk-grid-column-one-third">
+          <div class="ncce-aside">
+            <h2 class="govuk-heading-m ncce-aside__title">Book courses</h2>
+            <p class="govuk-body-s ncce-aside__text">
+            To book onto a course, you'll need to create an account. It's free and takes two minutes!
+            </p>
+            <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
