@@ -7,7 +7,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
   let(:completed_subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge' }
   let(:eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
   let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
-  let(:eligible_subject) { "Congratulations #{user.first_name.to_s}, you are now eligible to take the CS Accelerator test and receive your certificate." }
+  let(:eligible_subject) { "#{user.first_name.to_s} your CS Accelerator test is ready." }
 
 
   describe '#completed' do
