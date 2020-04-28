@@ -6,8 +6,9 @@
 					<div class="ncce-notice__copy">
 						<h2 class="govuk-heading-s">We have adapted our programmes to enable you to participate from home:</h2>
 						<ul class="govuk-body govuk-list govuk-list--bullet">
-							<li>Explore <%= link_to 'live remote training and online courses', courses_path, class: 'ncce-link' %> for Key Stages 1-4.</li>
-              <li>Discover a collection of <%= link_to 'resources and partner websites', 'https://teachcomputing.org/home-teaching/', class: 'ncce-link' %> that support home learning.</li>
+							<li><%= link_to 'Access CPD:', courses_path, class: 'ncce-link' %> f live remote and online courses for teaching Key Stages 1-4.</li>
+              <li><%= link_to 'Discover home teaching:', '/home-teaching/', class: 'ncce-link' %> a timetable of high-quality, free, computing activities for students of all ages.</li>
+            	<li><%= link_to 'Explore home learning:', 'https://blog.teachcomputing.org/computing-resources-for-home-learning/', class: 'ncce-link' %> a collection of resources to educate and support young people.</li>
           	</ul>
 					</div>
     		</div>
