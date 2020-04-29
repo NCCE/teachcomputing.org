@@ -19,10 +19,15 @@ services:
     depends_on:
       - db
       - redis
+      - webdriver_chrome
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
       - OAUTH_DEBUG
+      - SELENIUM_REMOTE_URL=http://webdriver_chrome:4444/wd/hub
+      - ENV_TYPE=development # For now this will always be the case
+    stdin_open: true
+    tty: true # Allow interactive byebug sessions.
   redis:
     image: "redis:alpine"
     ports:
@@ -32,6 +37,8 @@ services:
     command: bundle exec sidekiq
     depends_on:
       - redis
+  webdriver_chrome:
+    image: selenium/standalone-chrome
 volumes:
   pg-data:
   node_modules:

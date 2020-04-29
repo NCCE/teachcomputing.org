@@ -68,7 +68,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
-  gem 'webdrivers'
+  # Only load webdrivers if SELENIUM_REMOTE_URL is not set
+  gem 'webdrivers', '~> 4.0', require: !ENV['SELENIUM_REMOTE_URL']
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
