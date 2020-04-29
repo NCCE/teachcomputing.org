@@ -24,7 +24,7 @@
     </li>
   </ul>
   <p class='govuk-body'>
-    <%= link_to 'Take the test', programme_certificate_url(slug: @programme.slug) %>
+    <%= link_to 'Take the test', programme_certificate_url(slug: @programme.slug), class: 'govuk-button button' %>
   </p>
 
   <p class='govuk-body'><strong>Not quite ready?</strong></p>
@@ -33,11 +33,11 @@
     just yet, we have a range of remote and online CPD to help you bridge any
     knowledge gaps and help to build your confidence in teaching computing.
     Plus, you can contact our
-    <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions'%>
+    <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions', class: 'ncce-link' %>
     for guidance and one-to-one revision support.</p>
 
   <p class='govuk-body'>
-    <%= link_to 'Browse our courses', courses_url(certificate: @programme.slug) %>
+    <%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
   </p>
 
 </div>
