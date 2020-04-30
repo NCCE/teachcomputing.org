@@ -45,6 +45,8 @@ slugs = %w[
   teaching-and-leading-key-stage-1-computing-module-2
   teaching-and-leading-key-stage-2-computing-module-1
   teaching-and-leading-key-stage-2-computing-module-2
+  introduction-to-primary-computing-remote
+  primary-programming-and-algorithms-remote
 ]
 
 slugs.each do |slug|
