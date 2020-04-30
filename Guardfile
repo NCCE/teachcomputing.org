@@ -83,4 +83,8 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(%r{^app/services/achiever/(.+)\.rb$}) do |m|
     ["#{rspec.spec_dir}/models/services/achiever/#{m[1]}_spec.rb"]
   end
+
+  watch(%r{^lib/(.+)\.rb$}) do |m|
+    ["#{rspec.spec_dir}/lib/#{m[1]}_spec.rb"]
+  end
 end
