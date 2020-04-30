@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_115555) do
+ActiveRecord::Schema.define(version: 2020_04_30_203907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_115555) do
     t.uuid "programme_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
   end

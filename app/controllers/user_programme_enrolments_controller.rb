@@ -5,7 +5,13 @@ class UserProgrammeEnrolmentsController < ApplicationController
     enrolment = UserProgrammeEnrolment.new(user_programme_enrolment_params)
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
-    if enrolment.save
+    begin
+      enrolled = enrolment.save
+    rescue ActiveRecord::RecordNotUnique
+      enrolled = true
+    end
+
+    if enrolled
       case programme.slug
       when 'primary-certificate'
         redirect_to primary_certificate_diagnostic_path(:question_1)
