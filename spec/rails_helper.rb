@@ -24,7 +24,7 @@ require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
 Capybara.default_driver = :selenium
 
-Capybara.register_driver :chrome_headless do |app|
+Capybara.register_driver :local_chrome_headless do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument('--headless')
@@ -35,7 +35,7 @@ Capybara.register_driver :chrome_headless do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.javascript_driver = :chrome_headless
+Capybara.javascript_driver = :local_chrome_headless
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
 
@@ -49,7 +49,7 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system) do
     if ENV['ENV_TYPE'] == 'development'
-      driven_by :chrome_headless
+      driven_by :local_chrome_headless
     else
       driven_by :selenium_chrome_headless
     end
