@@ -304,10 +304,10 @@ Activity.find_or_create_by(slug: 'computer-processors-remote') do |activity|
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'cthe-internet-and-cyber-security-remote') do |activity|
+Activity.find_or_create_by(slug: 'the-internet-and-cyber-security-remote') do |activity|
   activity.title = 'The Internet and Cyber Security'
   activity.credit = 10
-  activity.slug = 'cthe-internet-and-cyber-security-remote'
+  activity.slug = 'the-internet-and-cyber-security-remote'
   activity.stem_course_template_no = '770d8136-3d86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
