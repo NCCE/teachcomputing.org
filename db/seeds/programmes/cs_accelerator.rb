@@ -71,6 +71,11 @@ slugs = %w[
   python-programming-constructs-sequencing-selection-iteration
   fundamentals-of-computer-networks
   representing-algorithms-using-flowcharts-and-pseudocode
+  introduction-to-algorithms-programming-and-data-in-gcse-computer-science-remote
+  computer-processors-remote
+  the-internet-and-cyber-security-remote
+  python-programming-working-with-data-remote
+  an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science-remote
 ]
 
 slugs.each do |slug|
