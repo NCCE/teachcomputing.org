@@ -286,73 +286,73 @@ Activity.find_or_create_by(slug: 'teaching-and-leading-key-stage-2-computing-mod
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'introduction-to-algorithms-programming-and-data-in-gcse-computer-science') do |activity|
+Activity.find_or_create_by(slug: 'introduction-to-algorithms-programming-and-data-in-gcse-computer-science-remote') do |activity|
   activity.title = 'Introduction to algorithms, programming and data in GCSE computer science'
   activity.credit = 10
-  activity.slug = 'introduction-to-algorithms-programming-and-data-in-gcse-computer-science'
+  activity.slug = 'introduction-to-algorithms-programming-and-data-in-gcse-computer-science-remote'
   activity.stem_course_template_no = '526b3a42-b688-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'computer-processors') do |activity|
+Activity.find_or_create_by(slug: 'computer-processors-remote') do |activity|
   activity.title = 'Computer processors'
   activity.credit = 10
-  activity.slug = 'computer-processors'
+  activity.slug = 'computer-processors-remote'
   activity.stem_course_template_no = '65fe83ad-b188-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'cthe-internet-and-cyber-security') do |activity|
+Activity.find_or_create_by(slug: 'cthe-internet-and-cyber-security-remote') do |activity|
   activity.title = 'The Internet and Cyber Security'
   activity.credit = 10
-  activity.slug = 'cthe-internet-and-cyber-security'
+  activity.slug = 'cthe-internet-and-cyber-security-remote'
   activity.stem_course_template_no = '770d8136-3d86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'python-programming-working-with-data') do |activity|
+Activity.find_or_create_by(slug: 'python-programming-working-with-data-remote') do |activity|
   activity.title = 'Python programming: working with data'
   activity.credit = 10
-  activity.slug = 'python-programming-working-with-data'
+  activity.slug = 'python-programming-working-with-data-remote'
   activity.stem_course_template_no = '67a21143-4886-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science') do |activity|
+Activity.find_or_create_by(slug: 'an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science-remote') do |activity|
   activity.title = 'An introduction to computer systems, networking and security in GCSE computer science'
   activity.credit = 10
-  activity.slug = 'an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science'
+  activity.slug = 'an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science-remote'
   activity.stem_course_template_no = 'bd6497ad-4386-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'key-stage-3-computing-for-the-non-specialist-teacher') do |activity|
+Activity.find_or_create_by(slug: 'key-stage-3-computing-for-the-non-specialist-teacher-remote') do |activity|
   activity.title = 'Key Stage 3 computing for the non-specialist teacher'
   activity.credit = 10
-  activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher'
+  activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher-remote'
   activity.stem_course_template_no = 'dbb7808c-b888-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'introduction-to-primary-computing') do |activity|
+Activity.find_or_create_by(slug: 'introduction-to-primary-computing-remote') do |activity|
   activity.title = 'Introduction to primary computing'
   activity.credit = 10
-  activity.slug = 'introduction-to-primary-computing'
+  activity.slug = 'introduction-to-primary-computing-remote'
   activity.stem_course_template_no = 'bb7a0f31-5086-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'primary-programming-and-algorithms') do |activity|
+Activity.find_or_create_by(slug: 'primary-programming-and-algorithms-remote') do |activity|
   activity.title = 'Primary programming and algorithms'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'primary-programming-and-algorithms-remote'
   activity.stem_course_template_no = '6bc40e34-4c86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
