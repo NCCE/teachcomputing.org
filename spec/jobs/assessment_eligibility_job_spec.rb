@@ -29,10 +29,10 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
       .to change { ActionMailer::Base.deliveries.count }.by(0)
     end
 
-    # it 'does calls CsAcceleratorMailer' do
-    # allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
-    #   expect { described_class.perform_now(user.id) }
-    #   .to change { ActionMailer::Base.deliveries.count }.by(1)
-    # end
+    it 'does calls CsAcceleratorMailer' do
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      expect { described_class.perform_now(user.id) }
+      .to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
   end
 end
