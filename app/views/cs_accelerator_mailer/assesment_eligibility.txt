@@ -1,4 +1,0 @@
-Dear <%= @user.first_name %>,
-Congratulations! We are delighted to confirm that you can take the final test.
-<%= link_to 'Get your certificate', programme_certificate_url(slug: @programme.slug) %>
-
