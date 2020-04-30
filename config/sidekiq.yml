@@ -6,3 +6,7 @@ production:
   :concurrency: 3
 :queues:
   - default
+:schedule:
+  hello_world:
+    every: 1m   # Runs once per minute
+    class: HelloWorld
