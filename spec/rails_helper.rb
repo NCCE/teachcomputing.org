@@ -24,6 +24,7 @@ require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
 Capybara.default_driver = :selenium
 
+# This is necessary to get chrome to run headless in the container
 Capybara.register_driver :local_chrome_headless do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
