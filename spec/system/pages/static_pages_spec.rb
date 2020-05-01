@@ -32,20 +32,6 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Bursary page' do
-    before do
-      visit bursary_path
-    end
-
-    it 'is the correct page' do
-      expect(page).to have_content('Bursaries and fees')
-    end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content')
-    end
-  end
-
   context 'CS Accelerator page' do
     before do
       programme
