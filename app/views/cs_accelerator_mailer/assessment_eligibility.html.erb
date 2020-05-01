@@ -1,0 +1,43 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
+
+  <p class='govuk-body'>Congratulations <%= @user.first_name %>, you are now eligible to take the CS Accelerator test and receive your certificate.</p>
+
+  <p class='govuk-body'>This means you are able to complete your learning
+    programme by carrying out a short test based on the computer science
+    curriculum.</p>
+
+  <p class='govuk-body'><strong>Ready to take the test?</strong></p>
+
+  <p class='govuk-body'>You are one step away from receiving your qualification
+    and being recognised for your subject knowledge.
+    <br>Plus, if you are eligible for the CS Accelerator bursary, this will be paid to your school or college on successful completion of the test.</p>
+
+  <p class='govuk-body'><strong>How does it work?</strong></p>
+
+  <ul>
+    <li>25 multiple-choice questions
+    </li>
+    <li>30 minute time limit
+    </li>
+    <li>Pass mark of 65% required
+    </li>
+  </ul>
+  <p class='govuk-body'>
+    <%= link_to 'Take the test', programme_certificate_url(slug: @programme.slug), class: 'govuk-button button' %>
+  </p>
+
+  <p class='govuk-body'><strong>Not quite ready?</strong></p>
+
+  <p class='govuk-body'>If you don't feel comfortable enough to take the test
+    just yet, we have a range of remote and online CPD to help you bridge any
+    knowledge gaps and help to build your confidence in teaching computing.
+    Plus, you can contact our
+    <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions', class: 'ncce-link' %>
+    for guidance and one-to-one revision support.</p>
+
+  <p class='govuk-body'>
+    <%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
+  </p>
+
+</div>

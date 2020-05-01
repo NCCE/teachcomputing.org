@@ -1,0 +1,24 @@
+Dear <%= @user.first_name %>,
+
+Congratulations <%= @user.first_name %>, you are now eligible to take the CS Accelerator test and receive your certificate.
+
+We have recently made some changes to the Computer Science Accelerator Programme to make it even more flexible and applicable for teachers with different levels of experience. As part of these changes, you can now access the test earlier and decide when you feel that you have the subject knowledge to complete the programme.
+
+Ready to take the test?
+
+You are one step away from receiving your qualification and being recognised for your subject knowledge.
+Plus, if you are eligible for the CS Accelerator bursary, this will be paid to your school or college on successful completion of the test.
+
+How does it work?
+
+- 25 multiple-choice questions
+- 30 minute time limit
+- Pass mark of 65% required
+
+<%= link_to 'Take the test', programme_certificate_url(slug: @programme.slug) %>
+
+Not quite ready?
+
+If you don't feel comfortable enough to take the test just yet, we have a range of remote and online CPD to help you bridge any knowledge gaps and help to build your confidence in teaching computing. Plus, you can contact our <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions'%> for guidance and one-to-one revision support.
+
+<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug) %>
