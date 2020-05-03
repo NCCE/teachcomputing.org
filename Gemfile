@@ -13,6 +13,7 @@ gem 'ddtrace', '~> 0.18.2'
 gem 'faraday', '~> 0.15.4', require: false
 gem "fog-aws", "~> 3.3"
 gem 'htmlentities', '~> 4.3'
+gem 'sidekiq-scheduler'
 gem 'jwt', '~> 2.1.0'
 gem 'lograge'
 gem 'memcachier'
