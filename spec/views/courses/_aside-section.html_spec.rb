@@ -46,15 +46,4 @@ RSpec.describe('courses/_aside-section', type: :view) do
       end
     end
   end
-
-  context 'when user is not logged in' do
-    before do
-      allow(course).to receive(:online_cpd).and_return(true)
-      render partial: 'courses/aside-section'
-    end
-
-    it 'has the sign up button' do
-      expect(rendered).to have_link('Create an account', href: /\/user\/register/)
-    end
-  end
 end
