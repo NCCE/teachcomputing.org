@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ResourcesFeedbackMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:mail) { ResourcesFeedbackMailer.with(user: user, year: 1).feedback_request }
-  let(:subject) { 'How are you finding the Resource Repository content?' }
+  let(:subject) { 'How are you finding the Resource repository content?' }
 
   describe 'email' do
     it 'renders the headers' do
