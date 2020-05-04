@@ -15,7 +15,7 @@ class ResourcesFeedbackMailer < ApplicationMailer
                         'KS4' => 'http://ncce.io/ks4capture' }
 
     @feedback_url = @feedback_links[year]
-    @subject = 'How are you finding the Resource Repository content?'
+    @subject = 'How are you finding the Resource repository content?'
 
     mail(to: @user.email, subject: @subject)
   end
