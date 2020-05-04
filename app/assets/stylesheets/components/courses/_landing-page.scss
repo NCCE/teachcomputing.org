@@ -42,6 +42,10 @@
   ul {
     @extend .govuk-list, .govuk-list--bullet;
   }
+
+	h2 {
+		@extend .govuk-heading-m;
+	}
 }
 
 .course-details__icons {
