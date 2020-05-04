@@ -82,5 +82,8 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
     end
 
+    it 'not to render an asides' do
+      expect(rendered).not_to have_css('.ncce-aside')
+    end
   end
 end
