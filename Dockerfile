@@ -1,5 +1,5 @@
 FROM ruby:2.5.7-alpine
-RUN apk --no-cache add build-base postgresql-dev tzdata nodejs nodejs-npm
+RUN apk --no-cache add build-base postgresql-dev tzdata nodejs nodejs-npm chromium chromium-chromedriver
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile

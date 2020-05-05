@@ -23,6 +23,9 @@ services:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
       - OAUTH_DEBUG
+      - ENV_TYPE=development
+    stdin_open: true
+    tty: true # Allow interactive byebug sessions.
   redis:
     image: "redis:alpine"
     ports:
