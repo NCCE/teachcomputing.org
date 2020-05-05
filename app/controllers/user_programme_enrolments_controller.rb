@@ -1,17 +1,12 @@
 class UserProgrammeEnrolmentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
     enrolment = UserProgrammeEnrolment.new(user_programme_enrolment_params)
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
-    begin
-      enrolled = enrolment.save
-    rescue ActiveRecord::RecordNotUnique
-      enrolled = true
-    end
-
-    if enrolled
+    if enrolment.save
       case programme.slug
       when 'primary-certificate'
         redirect_to primary_certificate_diagnostic_path(:question_1)
@@ -30,5 +25,11 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     def user_programme_enrolment_params
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
+    end
+
+
+    def user_has_existing_enrolment?
+      enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
+      redirect_to programme_path(slug: enrolment.programme.slug) if enrolment
     end
 end
