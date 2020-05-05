@@ -3,6 +3,8 @@ namespace :enrolments do
     args.with_defaults(commit: 'false')
     commit = args.commit.downcase == "true" ? true : false
 
+    programmes = Programme.all
+
     ActiveRecord::Base.transaction do
       puts "Finding users with duplicated enrolments...\n"
       index = 0
@@ -16,13 +18,17 @@ namespace :enrolments do
       puts "\n\nCleaning up duplicated enrolments for #{multiple_enrolled_users.count} users\n\n"
 
       multiple_enrolled_users.each do |u|
-        enrolments = u.user_programme_enrolments.order(created_at: :desc)
-        puts "user: #{u.email} - removing, #{enrolments.count - 1} duplicates"
-        enrolments.each_with_index do |e, index|
-          if index.zero?
-            puts "Keeping record: #{e.programme.title} @#{e.created_at} (#{e.current_state})"
-          else
-            e.destroy
+        programmes.each do |p|
+          enrolments = u.user_programme_enrolments.where(programme: p).order(created_at: :desc)
+          next if enrolments.size.zero?
+
+          puts "user: #{u.email} - programme: #{p.title} - removing, #{enrolments.count - 1} duplicates"
+          enrolments.each_with_index do |e, index|
+            if index.zero?
+              puts "Keeping record: #{e.programme.title} @#{e.created_at} (#{e.current_state})"
+            else
+              e.destroy
+            end
           end
         end
       end
