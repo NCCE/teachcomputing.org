@@ -223,28 +223,28 @@ Activity.find_or_create_by(slug: 'an-introduction-to-computer-systems-networking
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'representing-algorithms-using-flowcharts-and-pseudocode') do |activity|
+Activity.find_or_create_by(slug: 'representing-algorithms-using-flowcharts-and-pseudocode-remote') do |activity|
   activity.title = 'Representing algorithms using flowcharts and pseudocode'
   activity.credit = 10
-  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode'
+  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode-remote'
   activity.stem_course_template_no = '07e76ffd-e17f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'fundamentals-of-computer-networks') do |activity|
+Activity.find_or_create_by(slug: 'fundamentals-of-computer-networks-remote') do |activity|
   activity.title = 'Fundamentals of Computer Networks'
   activity.credit = 10
-  activity.slug = 'fundamentals-of-computer-networks'
+  activity.slug = 'fundamentals-of-computer-networks-remote'
   activity.stem_course_template_no = 'dd8a8433-e57f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-Activity.find_or_create_by(slug: 'python-programming-constructs-sequencing-selection-iteration') do |activity|
+Activity.find_or_create_by(slug: 'python-programming-constructs-sequencing-selection-iteration-remote') do |activity|
   activity.title = 'Python programming constructs: sequencing, selection & iteration'
   activity.credit = 10
-  activity.slug = 'python-programming-constructs-sequencing-selection-iteration'
+  activity.slug = 'python-programming-constructs-sequencing-selection-iteration-remote'
   activity.stem_course_template_no = '935a0639-e87f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
