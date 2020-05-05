@@ -27,7 +27,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
     end
 
-
     def user_has_existing_enrolment?
       enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
       redirect_to programme_path(slug: enrolment.programme.slug) if enrolment
