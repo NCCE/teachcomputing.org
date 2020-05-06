@@ -23,5 +23,12 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
         user_programme_enrolment
       end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(user.id, programme.id)
     end
+
+    it 'only allows a unique enrolment per programme/user' do
+      expect do
+        create(:user_programme_enrolment, user: user, programme: programme)
+        create(:user_programme_enrolment, user: user, programme: programme)
+      end.to raise_error(ActiveRecord::RecordNotUnique)
+    end
   end
 end
