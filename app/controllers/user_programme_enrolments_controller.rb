@@ -1,5 +1,6 @@
 class UserProgrammeEnrolmentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
     enrolment = UserProgrammeEnrolment.new(user_programme_enrolment_params)
@@ -24,5 +25,10 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     def user_programme_enrolment_params
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
+    end
+
+    def user_has_existing_enrolment?
+      enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
+      redirect_to programme_path(slug: enrolment.programme.slug) if enrolment
     end
 end
