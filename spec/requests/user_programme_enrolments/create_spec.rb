@@ -36,5 +36,31 @@ RSpec.describe UserProgrammeEnrolmentsController do
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+
+    context 'enrolling twice' do
+      subject do
+        post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+      end
+
+      before do
+        RSpec::Expectations.configuration.on_potential_false_positives = :nothing
+      end
+
+      after do
+        RSpec::Expectations.configuration.on_potential_false_positives = :warn
+      end
+
+      it 'does not throw an error' do
+        expect do
+          subject
+        end.not_to raise_error(ActiveRecord::RecordNotUnique)
+      end
+
+      it 'redirects to the correct path' do
+        subject
+        expect(response).to redirect_to("/certificate/#{programme.slug}")
+      end
+    end
   end
 end
