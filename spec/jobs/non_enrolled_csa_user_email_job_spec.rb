@@ -6,7 +6,7 @@ RSpec.describe NonEnrolledCSAUserEmailJob, type: :job do
 
   describe '#perform' do
     it 'sends an email' do
-      pending("Pending email content")
+      programme
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
