@@ -1,15 +1,25 @@
-<% meta_tag :title, 'CS Accelerator - Teach Computing' %>
+<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
+<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true %>
-<div class="ncce-programmes-activity">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l ncce-programmes-activity__title">Your
-            progress</h2>
-        </div>
-      </div>
-      <%= render 'programmes/cs-accelerator/achievement_list' %>
-    </div>
-  </div>
+<div class="light-grey-bg">
+	<div class="govuk-width-container">
+		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+					<p class="govuk-body-l govuk-!-padding-bottom-3">Welcome to the Computer Science Accelerator Programme!</p>
+
+          <h2 class="govuk-heading-s">Your activities</h2>
+				</div>
+				<div class="govuk-grid-column-two-thirds">
+					<%= render 'programmes/cs-accelerator/activity-list' %>
+				</div>
+				<div class="govuk-grid-column-one-third">
+					<%= render 'programmes/cs-accelerator/aside' %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/cs-accelerator/10_hours/_aside', type: :view) do
+RSpec.describe('programmes/cs-accelerator/_aside', type: :view) do
   let(:user) { create(:user) }
 
   before do

@@ -11,14 +11,14 @@ class ProgrammesController < ApplicationController
 
     @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
-    if @programme.slug == 'cs-accelerator' && @cs_10_hours_enabled
+    if @programme.slug == 'cs-accelerator'
       @online_achievements = current_user.achievements.for_programme(@programme)
                                                       .not_in_state(:dropped)
                                                       .with_category(Activity::ONLINE_CATEGORY)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
                                                             .not_in_state(:dropped)
                                                             .with_category(Activity::FACE_TO_FACE_CATEGORY)
-      render "programmes/#{@programme.slug}/10_hours/show"
+      render "programmes/#{@programme.slug}/show"
     else
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
       render "programmes/#{@programme.slug}/show"
