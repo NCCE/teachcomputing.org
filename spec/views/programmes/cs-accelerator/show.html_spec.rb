@@ -17,7 +17,7 @@ RSpec.describe('programmes/cs-accelerator/show', type: :view) do
     render
   end
 
-  it 'has activities in the list' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
+  it 'has one heading' do
+    expect(rendered).to have_css('.govuk-heading-s', count: 1)
   end
 end
