@@ -2,7 +2,7 @@ class UserProgrammeAchievements
   def initialize(programme, user)
     @user = user
     @achievements = user.achievements.without_category('action')
-                                     .for_programme(programme)
+                                     .for_programme(programme).sort_complete_first
   end
  
   def online_achievements(to_show = 1)
