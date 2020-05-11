@@ -156,17 +156,7 @@ RSpec.describe Programmes::CSAccelerator do
   end
 
   describe '#max_credits_for_certificate' do
-    after do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-    end
-
-    it 'returns 80 for old system' do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-      expect(programme.max_credits_for_certificate).to eq 80
-    end
-
     it 'returns 100 for 10 hour system' do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
       expect(programme.max_credits_for_certificate).to eq 100
     end
   end
