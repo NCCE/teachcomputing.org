@@ -37,6 +37,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         put update_primary_certificate_diagnostic_path(id: :question_1, diagnostic: { question_1: '15' })
         questionnaire_response = primary_enrolment_response
         expect(questionnaire_response.answers['1'].to_i).to eq(15)
+        expect(questionnaire_response.current_question).to eq(2)
       end
 
       it 'saves the question_2 response correctly' do
@@ -44,14 +45,16 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         put update_primary_certificate_diagnostic_path(id: :question_2, diagnostic: { question_2: '20' })
         questionnaire_response = primary_enrolment_response
         expect(questionnaire_response.answers['2'].to_i).to eq(20)
+        expect(questionnaire_response.current_question).to eq(3)
       end
 
-      it 'saves the question_2 response correctly' do
+      it 'saves the question_3 response correctly' do
         put update_primary_certificate_diagnostic_path(id: :question_1, diagnostic: { question_1: '15' })
         put update_primary_certificate_diagnostic_path(id: :question_2, diagnostic: { question_2: '20' })
         put update_primary_certificate_diagnostic_path(id: :question_3, diagnostic: { question_3: '10' })
         questionnaire_response = primary_enrolment_response
         expect(questionnaire_response.answers['3'].to_i).to eq(10)
+        expect(questionnaire_response.current_question).to eq(4)
       end
 
       it 'saves the question_4 response correctly' do
@@ -64,6 +67,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         expect(questionnaire_response.answers['2'].to_i).to eq(20)
         expect(questionnaire_response.answers['3'].to_i).to eq(10)
         expect(questionnaire_response.answers['4'].to_i).to eq(0)
+        expect(questionnaire_response.current_question).to eq(4)
       end
     end
   end
