@@ -29,9 +29,9 @@ services:
     tty: true # Allow interactive byebug sessions.
     healthcheck:
       test: curl --fail -s http://localhost:3000/
-      interval: 5s
+      interval: 20s
       timeout: 180s
-      retries: 25
+      retries: 10
   redis:
     image: "redis:alpine"
     ports:
