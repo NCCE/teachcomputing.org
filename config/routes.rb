@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   namespace 'admin' do
     resources :imports
+		resources :users do
+			resources :achievements
+		end
   end
+
 
   resources :assessment_attempts
 
