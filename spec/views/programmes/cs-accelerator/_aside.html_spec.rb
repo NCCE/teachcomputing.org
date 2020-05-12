@@ -1,19 +1,6 @@
 require 'rails_helper'
-
-<<<<<<< HEAD:spec/views/programmes/cs-accelerator/_aside.html_spec.rb
 RSpec.describe('programmes/cs-accelerator/_aside', type: :view) do
-  let(:user) { create(:user) }
-
-  before do
-    @programme = create(:cs_accelerator)
-    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-  end
-
-  it 'prompts the user to continue their journey' do
-=======
-RSpec.describe('programmes/cs-accelerator/10_hours/_aside', type: :view) do
   it 'has the correct title' do
->>>>>>> master:spec/views/programmes/cs-accelerator/10_hours/_aside.html_spec.rb
     render
     expect(rendered).to have_css('.ncce-aside__title', text: 'Support')
   end
