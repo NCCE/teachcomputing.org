@@ -13,7 +13,7 @@ RSpec.describe('programmes/cs-accelerator/10_hours/_aside', type: :view) do
 
   it 'renders a link to FAQs' do
     render
-    expect(rendered).to have_link('Frequently Asked Questions', href: '/faq')
+    expect(rendered).to have_link('Frequently Asked Questions', href: '/faq/courses')
   end
 
   it 'renders a link to  the handbook' do
