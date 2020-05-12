@@ -27,8 +27,9 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     if answer.nil?
       jump_to(current_step)
     else
-      response.answer_current_question(answer)
-      response.transition_to(:complete) if step == Wicked::FINISH_STEP
+      final_step = step == @steps.last
+      response.answer_current_question(answer, final_step)
+      response.transition_to(:complete) if final_step
     end
 
     render_wizard
