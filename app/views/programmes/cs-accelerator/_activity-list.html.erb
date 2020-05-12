@@ -1,10 +1,16 @@
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <li class="activity-list__item <%= 'activity-list__item--incomplete' unless @programme.user_completed_diagnostic?(current_user) %>">
-    Take our quiz to assess your subject knowledge and identify areas for development<br>
-		<% unless @programme.user_completed_diagnostic?(current_user) %>
-      <%= link_to 'Take the quiz', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button button--small govuk-!-margin-top-1' %>
-    <% end %>
-  </li>
+  <% if @programme.user_completed_diagnostic?(current_user) %>
+    <li class="activity-list__item">
+      <span>Take our quiz to assess your subject knowledge and identify areas for development.
+      <%= link_to 'Take the quiz again', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'ncce-link' %></span>
+    </li>
+  <% else %>
+    <li class="activity-list__item activity-list__item--incomplete">
+      Take our quiz to assess your subject knowledge and identify areas for development.
+      <br><%= link_to 'Take the quiz', cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id), class: 'govuk-button button button--small govuk-!-margin-top-1' %>
+    </li>
+  <% end %>
+
   <%= render 'programmes/cs-accelerator/achievements' %>
   <%= render 'programmes/cs-accelerator/exam' %>
 </ul>

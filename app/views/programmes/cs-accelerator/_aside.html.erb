@@ -1,6 +1,6 @@
 <div class="ncce-aside landing-page__aside">
-  <p class='govuk-body-s'><%= @programme.enough_activites_for_test?(current_user) ? 'If you’re not yet feeling confident about teaching GCSE computer science, continue your journey.' : 'Continue your journey towards feeling confident about teaching GCSE computer science. You can do as much training as you like as part of this programme.' %></p>
-  <p class='govuk-body-s'>Book or join a course today:</p>
-  <%= link_to 'Find a course', courses_path(certificate: @programme.slug), class: 'govuk-button button button--margin-bottom' %>
-  <p class='govuk-body-s'>We are happy to support you along the way. Call 020 0234 5678 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org' %> if you need to speak to someone.</p>
+  <h2 class="govuk-heading-s ncce-aside__title">Support</h2>
+  <p class="govuk-body-s">Have a question about your activities on this page?  Check out our <%= link_to 'Frequently Asked Questions', faq_courses_path, class: 'ncce-link' %></p>
+  <p class='govuk-body-s'>Need to catch up on your learning? <%= link_to 'Download our Revision Handbook', 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link' %></p>
+  <p class='govuk-body-s'>We are happy to support you along the way. Call 020 0234 5678 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %> if you need to speak to someone.</p>
 </div>
