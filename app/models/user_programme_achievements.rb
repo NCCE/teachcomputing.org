@@ -4,14 +4,14 @@ class UserProgrammeAchievements
     @achievements = user.achievements.without_category('action')
                                      .for_programme(programme).sort_complete_first
   end
-
+ 
   def online_achievements(to_show = 1)
-    online_achievements = @achievements.with_category(Activity::ONLINE_CATEGORY)
+    online_achievements = @achievements.not_in_state(:dropped).with_category(Activity::ONLINE_CATEGORY)
     (0...to_show).to_a.map { |index| OnlinePresenter.new(online_achievements[index]) }
   end
 
   def face_to_face_achievements(to_show = 1)
-    face_to_face_achievements = @achievements.with_category(Activity::FACE_TO_FACE_CATEGORY)
+    face_to_face_achievements = @achievements.not_in_state(:dropped).with_category(Activity::FACE_TO_FACE_CATEGORY)
     (0...to_show).to_a.map { |index| FaceToFacePresenter.new(face_to_face_achievements[index]) }
   end
 
