@@ -340,6 +340,15 @@ Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811-000
   activity.provider = 'stem-learning'
 end
 
+Activity.find_or_create_by(stem_course_template_no: 'e5acc943-4926-ea11-a810-000d3a86d545') do |activity|
+  activity.title = 'Introduction to primary computing'
+  activity.credit = 10
+  activity.slug = 'introduction-to-primary-computing'
+  activity.stem_course_template_no = 'e5acc943-4926-ea11-a810-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
 Activity.find_or_create_by(stem_course_template_no: 'bb7a0f31-5086-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Introduction to primary computing'
   activity.credit = 10
