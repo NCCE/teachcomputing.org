@@ -1,18 +1,25 @@
 #!/bin/sh
 set -e
 
+RAILS_EXECUTABLE="bin/rails"
+PORT=3000
+IP=0.0.0.0
+DEBUG_PORT=1234
+
 PID="tmp/pids/server.pid"
 if [ -f $PID ]; then
   rm $PID
 fi
 
 echo "- Configuring databases:"
-rake db:exists && rake db:migrate || rake db:setup
+if [[ $ENV_TYPE == "development" ]]; then
+  rake db:exists && rake db:migrate || rake db:setup;
+fi
 
 echo "- Starting rails:"
-# if [ $ENV_TYPE == "development" ]; then
+if [[ $ENV_TYPE == "development" ]]; then
   # Start in debug mode, to optionally debug with an ide
-  # rdebug-ide --host 0.0.0.0 --port 1234 -- bin/rails s -p 3000 -b 0.0.0.0
-# else
-  rails s -b 0.0.0.0 -p 3000
-# fi
+  rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
+else
+  $RAILS_EXECUTABLE s -b $IP -p $PORT
+fi

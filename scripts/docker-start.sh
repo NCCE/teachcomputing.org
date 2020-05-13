@@ -16,13 +16,9 @@ fi
 # Brings the stack up and polls for availability
 echo "- Bringing up the stack:"
 docker-compose up -d
-printf %s "- Waiting for the stack to become available (Ctrl+C to cancel): "
+printf %s "- Waiting for the stack to become available (ctrl+c to cancel): "
 while ! curl -sSf $URL &> /dev/null ; do sleep 1; done
 echo "done"
-
-# Check the status of the stack
-echo "- Checking the stack:"
-docker-compose ps
 
 # Conditionally open a browser window
 printf %s "- Open localhost:3000 in your default browser (y/n)? "

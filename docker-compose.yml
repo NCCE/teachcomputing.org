@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   db:
     image: postgres
@@ -15,7 +15,8 @@ services:
       - .:/app
       - node_modules:/app/node_modules # ensures we retain node_modules from docker build
     ports:
-      - "1234:1234"
+      - '1234:1234'
+      - '26162:26162'
       - '3000:3000'
     depends_on:
       - db
@@ -27,11 +28,12 @@ services:
       - ENV_TYPE=development
     stdin_open: true
     tty: true # Allow interactive byebug sessions.
-    healthcheck:
-      test: curl --fail -s http://localhost:3000/
-      interval: 20s
-      timeout: 180s
-      retries: 10
+    # healthcheck:
+    #   test: curl --fail -s http://localhost:3000/ || exit 1
+    #   interval: 30s
+    #   timeout: 180s
+    #   retries: 3
+    #   start_period: 30s
   redis:
     image: "redis:alpine"
     ports:
