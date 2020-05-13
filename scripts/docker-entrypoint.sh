@@ -11,9 +11,9 @@ if [ -f $PID ]; then
   rm $PID
 fi
 
-echo "- Configuring databases:"
 if [[ $ENV_TYPE == "development" ]]; then
-  rake db:exists && rake db:migrate || rake db:setup;
+  echo "- Configuring databases:"
+  bundle exec rake db:exists && bundle exec rake db:migrate || bundle execrake db:setup;
 fi
 
 echo "- Starting rails:"
