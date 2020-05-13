@@ -17,3 +17,25 @@
 .ncce-programmes-activity__title {
   color: unset;
 }
+
+.cs-accelerator__intro-text {
+  background-color: $white;
+  margin-bottom: $logo-block-mobile * 1.5;
+  padding: $logo-block-mobile / 2;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: $logo-block * 1.5;
+    padding: $logo-block / 2;
+  }
+}
+
+.cs-accelerator__courses-prompt {
+  background-color: $foam;
+  border: 3px solid $deep-cerulean;
+  margin-bottom: 1rem;
+  padding: $logo-block-mobile / 2;
+
+  @include govuk-media-query($from: tablet) {
+    padding: $logo-block / 2;
+  }
+}
