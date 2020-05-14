@@ -27,7 +27,7 @@ class CsAcceleratorMailer < ApplicationMailer
   def non_enrolled_csa_user
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = "#{@user.first_name.to_s} would you like to enrol on the Computer Science Accelerator programme."
+    @subject = 'Time to finish what you’ve started and achieve your qualification'
 
     mail(to: @user.email, subject: @subject)
   end

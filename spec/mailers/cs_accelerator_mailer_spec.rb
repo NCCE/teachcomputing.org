@@ -9,7 +9,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
   let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
   let(:eligible_subject) { "#{user.first_name.to_s} your CS Accelerator test is ready." }
   let(:non_enrolled_csa_user_mail) { CsAcceleratorMailer.with(user: user, programme: programme).non_enrolled_csa_user }
-  let(:non_enrolled_csa_user_subject) { "#{user.first_name.to_s} would you like to enrol on the Computer Science Accelerator programme." }
+  let(:non_enrolled_csa_user_subject) { "Time to finish what you’ve started and achieve your qualification" }
 
 
   describe '#completed' do
