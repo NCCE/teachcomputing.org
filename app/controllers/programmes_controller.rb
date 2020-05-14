@@ -33,7 +33,7 @@ class ProgrammesController < ApplicationController
 
     @complete_achievements = current_user.achievements.without_category('action')
                                                       .without_category('diagnostic')
-                                                      .for_programme(@programme).sort_complete_first if @programme.slug == 'primary-certificate'
+                                                      .for_programme(@programme).sort_complete_first
 
     render "programmes/#{@programme.slug}/complete"
   end

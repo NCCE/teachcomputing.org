@@ -75,8 +75,12 @@ RSpec.describe ProgrammesController do
           expect(assigns(:programme)).to eq programme
         end
 
-        it 'assigns the achievements' do
-          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
+        it 'assigns the online achievements' do
+          expect(assigns(:online_achievements)).to include(online_achievement)
+        end
+
+        it 'assigns the face to face achievements' do
+          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
         end
 
         it 'assigns the assessments' do
