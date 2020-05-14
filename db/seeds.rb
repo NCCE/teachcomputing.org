@@ -1,13 +1,13 @@
-require File.expand_path('../seeds/programmes/cs_accelerator', __FILE__)
-require File.expand_path('../seeds/programmes/primary-certificate', __FILE__)
-# require File.expand_path('../seeds/programmes/secondary-certificate', __FILE__)
+require_relative './seeds/programmes/cs_accelerator'
+require_relative './seeds/programmes/primary-certificate'
+# require_relative './seeds/programmes/secondary-certificate'
 
-require File.expand_path('../seeds/activities/action', __FILE__)
-require File.expand_path('../seeds/activities/diagnostic', __FILE__)
-require File.expand_path('../seeds/activities/face-to-face', __FILE__)
-require File.expand_path('../seeds/activities/online', __FILE__)
-require File.expand_path('../seeds/activities/assessment', __FILE__)
-require File.expand_path('../seeds/activities/community', __FILE__)
+require_relative './seeds/activities/action'
+require_relative './seeds/activities/diagnostic'
+require_relative './seeds/activities/face-to-face'
+require_relative './seeds/activities/online'
+require_relative './seeds/activities/assessment'
+require_relative './seeds/activities/community'
 
 Programme.all.each do |p|
   puts "\nProgramme: #{p.title} activities:\n\n"
