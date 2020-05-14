@@ -8,6 +8,8 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
   let(:eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
   let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
   let(:eligible_subject) { "#{user.first_name.to_s} your CS Accelerator test is ready." }
+  let(:non_enrolled_csa_user_mail) { CsAcceleratorMailer.with(user: user, programme: programme).non_enrolled_csa_user }
+  let(:non_enrolled_csa_user_subject) { "Time to finish what you’ve started and achieve your qualification" }
 
 
   describe '#completed' do
@@ -55,6 +57,22 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
 
     it 'includes the subject in the email' do
       expect(newly_eligible_mail.body.encoded).to include("<title>#{eligible_subject}</title>")
+    end
+  end
+
+  describe '#non_enrolled_csa_user' do
+    it 'renders the headers' do
+      expect(non_enrolled_csa_user_mail.subject).to include(non_enrolled_csa_user_subject)
+      expect(non_enrolled_csa_user_mail.to).to eq([user.email])
+      expect(non_enrolled_csa_user_mail.from).to eq(['noreply@teachcomputing.org'])
+    end
+
+    it 'renders the body' do
+      expect(non_enrolled_csa_user_mail.body.encoded).to include(user.first_name.to_s)
+    end
+
+    it 'includes the subject in the email' do
+      expect(non_enrolled_csa_user_mail.body.encoded).to include("<title>#{non_enrolled_csa_user_subject}</title>")
     end
   end
 end

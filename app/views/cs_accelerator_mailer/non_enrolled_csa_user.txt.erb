@@ -1,0 +1,17 @@
+Dear <%= @user.first_name %>,
+
+Thank you for participating in our CPD and choosing to start your learning journey with Teach Computing. We just wanted to let you know that in doing so, you have already taken a big step towards achieving our national training certificate in GCSE computer science.
+
+About the Computer Science Accelerator Programme
+
+This programme will help you to develop the subject knowledge to teach this high demand subject across the curriculum. Tailor your training to suit your level of experience, choosing from a wide range of online and live remote courses.
+
+<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
+
+Join the programme for free today and receive immediate access to your own personal dashboard, enabling you to track your progress towards completing the programme.
+
+<%= link_to 'Get started', cs_accelerator_url %>
+
+Need more information?
+
+If you would like more information about the programme or your next steps, contact our <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions', class: 'ncce-link' %> for guidance and support.
