@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
+  get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
+  get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
     constraints: ->(_request) { Programme.primary_certificate.enrollable? }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
