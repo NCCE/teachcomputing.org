@@ -9,14 +9,9 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
     allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    @user_programme_achievements = instance_double('UserProgrammeAchievements')
-    allow(@user_programme_achievements).to receive_messages(online_achievements: [], face_to_face_achievements: [], diagnostic_achievements: [])
+  	assign(:complete_achievements, user.achievements.for_programme(programme).sort_complete_first)
     enrolment.transition_to(:complete)
     render
-  end
-
-  it 'has a status' do
-    expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
   end
 
   it 'has the programme title' do
@@ -40,6 +35,6 @@ RSpec.describe('programmes/cs-accelerator/complete', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 3)
+    expect(rendered).to have_css('.ncce-activity-list', count: 1)
   end
 end
