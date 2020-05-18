@@ -29,10 +29,6 @@ class Programme < ApplicationRecord
     0
   end
 
-  def percent_complete_10_hours_certificate(_user)
-    0
-  end
-
   def max_credits_for_certificate
     0
   end

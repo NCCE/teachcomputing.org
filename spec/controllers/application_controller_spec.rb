@@ -22,23 +22,5 @@ RSpec.describe ApplicationController, type: :controller do
         end
       end
     end
-
-    describe '#s_10_hours_enabled' do
-      context 'when true' do
-        it 'assigns instance variable cs_10_hours_enabled to true' do
-          ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
-          controller.send(:cs_10_hours_enabled)
-          expect(controller.cs_10_hours_enabled).to eq true
-        end
-      end
-
-      context 'when false' do
-        it 'assigns instance variable cs_10_hours_enabled to false' do
-          ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-          controller.send(:cs_10_hours_enabled)
-          expect(controller.cs_10_hours_enabled).to eq false
-        end
-      end
-    end
   end
 end

@@ -96,42 +96,7 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
-  describe '#credits_achieved_for_certificate - old system' do
-    before do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-    end
-
-    context 'when the user has not done any activities' do
-      it 'returns 0' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 0
-      end
-    end
-
-    context 'when the user has done 2 online activities' do
-      before do
-        setup_partially_complete_certificate
-      end
-
-      it 'returns 40' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 40
-      end
-    end
-
-    context 'when the user has done 2 online & 2 face-to-face activities' do
-      before do
-        setup_complete_certificate
-      end
-
-      it 'returns 80' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 80
-      end
-    end
-  end
-
-  describe '#credits_achieved_for_certificate - 10 hour system' do
-    before do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
-    end
+  describe '#credits_achieved_for_certificate' do
 
     context 'when the user has not done any activities' do
       it 'returns 0' do
@@ -191,17 +156,7 @@ RSpec.describe Programmes::CSAccelerator do
   end
 
   describe '#max_credits_for_certificate' do
-    after do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-    end
-
-    it 'returns 80 for old system' do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'false'
-      expect(programme.max_credits_for_certificate).to eq 80
-    end
-
     it 'returns 100 for 10 hour system' do
-      ENV['CSA_10_HOUR_JOURNEY_ENABLED'] = 'true'
       expect(programme.max_credits_for_certificate).to eq 100
     end
   end

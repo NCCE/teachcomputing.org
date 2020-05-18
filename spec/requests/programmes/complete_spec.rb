@@ -33,12 +33,6 @@ RSpec.describe ProgrammesController do
     setup_achievements_for_programme
     online_achievement.set_to_complete
     face_to_face_achievement.set_to_complete
-    activities = [create(:activity, :future_learn, credit: 20), create(:activity, :stem_learning, credit: 20)]
-
-    activities.each do |activity|
-      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
-      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
-    end
     exam_programme_activity
     passed_exam
   end
