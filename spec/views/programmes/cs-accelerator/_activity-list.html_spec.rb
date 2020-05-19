@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/cs-accelerator/10_hours/_activity-list', type: :view) do
+RSpec.describe('programmes/cs-accelerator/_activity-list', type: :view) do
   let!(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
@@ -12,8 +12,8 @@ RSpec.describe('programmes/cs-accelerator/10_hours/_activity-list', type: :view)
 
   context 'when the user has not done the diagnostic' do
     before do
-      stub_template 'programmes/cs-accelerator/10_hours/_achievements.html.erb' => 'stub achievements'
-      stub_template 'programmes/cs-accelerator/10_hours/_exam.html.erb' => 'stub exam'
+      stub_template 'programmes/cs-accelerator/_achievements.html.erb' => 'stub achievements'
+      stub_template 'programmes/cs-accelerator/_exam.html.erb' => 'stub exam'
       allow(programme).to receive(:user_completed_diagnostic?).and_return(false)
       render
     end
@@ -26,8 +26,8 @@ RSpec.describe('programmes/cs-accelerator/10_hours/_activity-list', type: :view)
 
   context 'when the user has done the diagnostic' do
     before do
-      stub_template 'programmes/cs-accelerator/10_hours/_achievements.html.erb' => 'stub achievements'
-      stub_template 'programmes/cs-accelerator/10_hours/_exam.html.erb' => 'stub exam'
+      stub_template 'programmes/cs-accelerator/_achievements.html.erb' => 'stub achievements'
+      stub_template 'programmes/cs-accelerator/_exam.html.erb' => 'stub exam'
       allow(programme).to receive(:user_completed_diagnostic?).and_return(true)
       render
     end
