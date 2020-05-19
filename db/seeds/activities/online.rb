@@ -1,4 +1,8 @@
-Activity.find_or_create_by(stem_course_template_no: '4936bd68-49b1-4e2c-b83f-5ea54db7e294') do |activity|
+cs_accelerator = Programme.cs_accelerator
+primary_certificate = Programme.primary_certificate
+# secondary_certificate = Programme.secondary_certificate
+
+a = Activity.find_or_create_by(stem_course_template_no: '4936bd68-49b1-4e2c-b83f-5ea54db7e294') do |activity|
   activity.title = 'Teaching Physical Computing with Raspberry Pi and Python'
   activity.credit = 20
   activity.slug = 'teaching-physical-computing-with-raspberry-pi-and-python'
@@ -8,7 +12,10 @@ Activity.find_or_create_by(stem_course_template_no: '4936bd68-49b1-4e2c-b83f-5ea
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '0fb20a94-d986-4844-a765-3f0eba96f11d') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '0fb20a94-d986-4844-a765-3f0eba96f11d') do |activity|
   activity.title = 'How Computers Work: Demystifying Computation'
   activity.credit = 20
   activity.slug = 'how-computers-work-demystifying-computation'
@@ -18,7 +25,10 @@ Activity.find_or_create_by(stem_course_template_no: '0fb20a94-d986-4844-a765-3f0
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '90313f27-1af1-49c4-a1ed-aa5ebf755fd0') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '90313f27-1af1-49c4-a1ed-aa5ebf755fd0') do |activity|
   activity.title = 'Programming 101: An Introduction to Python for Educators'
   activity.credit = 20
   activity.slug = 'programming-101-an-introduction-to-python-for-educators'
@@ -28,7 +38,11 @@ Activity.find_or_create_by(stem_course_template_no: '90313f27-1af1-49c4-a1ed-aa5
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'c010fde0-2010-4b48-b7e2-67a5f667b538') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c010fde0-2010-4b48-b7e2-67a5f667b538') do |activity|
   activity.title = 'Programming 102: Think like a Computer Scientist'
   activity.credit = 20
   activity.slug = 'programming-102-think-like-a-computer-scientist'
@@ -38,7 +52,10 @@ Activity.find_or_create_by(stem_course_template_no: 'c010fde0-2010-4b48-b7e2-67a
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '7ec0f376-5c2f-4e20-a94e-2b56fd852275') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7ec0f376-5c2f-4e20-a94e-2b56fd852275') do |activity|
   activity.title = 'Representing Data with Images and Sound: Bringing Data to Life'
   activity.credit = 20
   activity.slug = 'representing-data-with-images-and-sound-bringing-data-to-life'
@@ -48,7 +65,10 @@ Activity.find_or_create_by(stem_course_template_no: '7ec0f376-5c2f-4e20-a94e-2b5
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '7da9e258-f029-45b2-b57d-e0bbc9574d5f') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7da9e258-f029-45b2-b57d-e0bbc9574d5f') do |activity|
   activity.title = 'Object-oriented Programming in Python: Create Your Own Adventure Game'
   activity.credit = 20
   activity.slug = 'object-oriented-programming-in-python-create-your-own-adventure-game'
@@ -58,7 +78,10 @@ Activity.find_or_create_by(stem_course_template_no: '7da9e258-f029-45b2-b57d-e0b
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '579e53d8-f84c-45bd-9192-c6e4db5a5909') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '579e53d8-f84c-45bd-9192-c6e4db5a5909') do |activity|
   activity.title = 'An Introduction to Computer Networking for Teachers'
   activity.credit = 20
   activity.slug = 'an-introduction-to-computer-networking-for-teachers'
@@ -68,7 +91,10 @@ Activity.find_or_create_by(stem_course_template_no: '579e53d8-f84c-45bd-9192-c6e
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '890c180c-2a32-464b-8d9d-b56d94e26515') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '890c180c-2a32-464b-8d9d-b56d94e26515') do |activity|
   activity.title = 'Understanding Maths and Logic in Computer Science'
   activity.credit = 20
   activity.slug = 'understanding-maths-and-logic-in-computer-science'
@@ -78,7 +104,10 @@ Activity.find_or_create_by(stem_course_template_no: '890c180c-2a32-464b-8d9d-b56
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '37df9a75-3938-4b36-a8e3-44825a72e5ea') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '37df9a75-3938-4b36-a8e3-44825a72e5ea') do |activity|
   activity.title = 'Understanding Computer Systems'
   activity.credit = 20
   activity.slug = 'understanding-computer-systems'
@@ -88,7 +117,10 @@ Activity.find_or_create_by(stem_course_template_no: '37df9a75-3938-4b36-a8e3-448
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |activity|
   activity.title = 'Teaching Programming in Primary Schools'
   activity.credit = 10
   activity.slug = 'teaching-programming-in-primary-schools'
@@ -98,7 +130,9 @@ Activity.find_or_create_by(slug: 'teaching-programming-in-primary-schools') do |
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '6ef0e050-e94e-465e-8e70-5fa723517b10') do |activity|
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '6ef0e050-e94e-465e-8e70-5fa723517b10') do |activity|
   activity.title = 'Scratch to Python: Moving from Block- to Text-based Programming'
   activity.credit = 10
   activity.slug = 'scratch-to-python-moving-from-block-to-text-based-programming'
@@ -108,7 +142,10 @@ Activity.find_or_create_by(stem_course_template_no: '6ef0e050-e94e-465e-8e70-5fa
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '751bcaee-6b74-41e8-9a90-fcb52a1c234a') do |activity|
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '751bcaee-6b74-41e8-9a90-fcb52a1c234a') do |activity|
   activity.title = 'Impact of Technology: How To Lead Classroom Discussions'
   activity.credit = 20
   activity.slug = 'impact-of-technology-how-to-lead-classroom-discussions'
@@ -118,7 +155,10 @@ Activity.find_or_create_by(stem_course_template_no: '751bcaee-6b74-41e8-9a90-fcb
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '004e04d9-5018-4a27-9c8d-8be1956bff0e') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '004e04d9-5018-4a27-9c8d-8be1956bff0e') do |activity|
   activity.title = 'Introduction to Cybersecurity for Teachers'
   activity.credit = 20
   activity.slug = 'introduction-to-cybersecurity-for-teachers'
@@ -128,7 +168,10 @@ Activity.find_or_create_by(stem_course_template_no: '004e04d9-5018-4a27-9c8d-8be
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '91b14b5f-ba21-49c2-9393-14ac98e38dc7') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '91b14b5f-ba21-49c2-9393-14ac98e38dc7') do |activity|
   activity.title = 'Programming with GUIs'
   activity.credit = 20
   activity.slug = 'programming-with-guis'
@@ -139,7 +182,10 @@ Activity.find_or_create_by(stem_course_template_no: '91b14b5f-ba21-49c2-9393-14a
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '1296f189-6204-ea11-a811-000d3a86d716') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1296f189-6204-ea11-a811-000d3a86d716') do |activity|
   activity.title = 'Creating an Inclusive Classroom: Approaches to Supporting Learners with SEND in Computing'
   activity.credit = 20
   activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
@@ -150,7 +196,10 @@ Activity.find_or_create_by(stem_course_template_no: '1296f189-6204-ea11-a811-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '5c75d757-e2f4-e911-a813-000d3a86d545') do |activity|
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5c75d757-e2f4-e911-a813-000d3a86d545') do |activity|
   activity.title = 'Design and Prototype Embedded Computer Systems'
   activity.credit = 20
   activity.slug = 'design-and-prototype-embedded-computer-systems'
@@ -161,7 +210,10 @@ Activity.find_or_create_by(stem_course_template_no: '5c75d757-e2f4-e911-a813-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'd484d9e4-74f5-e911-a813-000d3a86d545') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd484d9e4-74f5-e911-a813-000d3a86d545') do |activity|
   activity.title = 'Programming 103: Saving and Structuring Data'
   activity.credit = 20
   activity.slug = 'programming-103-saving-and-structuring-data'
@@ -172,7 +224,10 @@ Activity.find_or_create_by(stem_course_template_no: 'd484d9e4-74f5-e911-a813-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '0d5092b4-6e04-ea11-a811-000d3a86d716') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '0d5092b4-6e04-ea11-a811-000d3a86d716') do |activity|
   activity.title = 'Programming Pedagogy in Primary Schools: Developing Computing Teaching'
   activity.credit = 20
   activity.slug = 'programming-pedagogy-in-primary-schools-developing-computing-teaching'
@@ -183,7 +238,9 @@ Activity.find_or_create_by(stem_course_template_no: '0d5092b4-6e04-ea11-a811-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'f81891d3-d106-ea11-a811-000d3a86d6ba') do |activity|
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f81891d3-d106-ea11-a811-000d3a86d6ba') do |activity|
   activity.title = 'Introduction to Encryption and Cryptography'
   activity.credit = 20
   activity.slug = 'introduction-to-encryption-and-cryptography'
@@ -194,7 +251,10 @@ Activity.find_or_create_by(stem_course_template_no: 'f81891d3-d106-ea11-a811-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '50c5bbf7-8f25-ea11-a810-000d3a86d7a3') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '50c5bbf7-8f25-ea11-a810-000d3a86d7a3') do |activity|
   activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
   activity.credit = 20
   activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
@@ -205,7 +265,7 @@ Activity.find_or_create_by(stem_course_template_no: '50c5bbf7-8f25-ea11-a810-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: '729c992c-8925-ea11-a810-000d3a86d7a3') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: '729c992c-8925-ea11-a810-000d3a86d7a3') do |activity|
   activity.title = 'Introduction to Web Development'
   activity.credit = 20
   activity.slug = 'introduction-to-web-development'
@@ -216,7 +276,10 @@ Activity.find_or_create_by(stem_course_template_no: '729c992c-8925-ea11-a810-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'af6b9355-0e39-ea11-a813-000d3a86d7a3') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'af6b9355-0e39-ea11-a813-000d3a86d7a3') do |activity|
   activity.title = 'Networking with Python: Socket Programming for Communication'
   activity.credit = 20
   activity.slug = 'networking-with-python-socket-programming-for-communication'
@@ -227,7 +290,10 @@ Activity.find_or_create_by(stem_course_template_no: 'af6b9355-0e39-ea11-a813-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'ed1e2f83-655c-ea11-a811-000d3a86d7a3') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ed1e2f83-655c-ea11-a811-000d3a86d7a3') do |activity|
   activity.title = 'Robotics With Raspberry Pi: Build and Program Your First Robot Buggy'
   activity.credit = 20
   activity.slug = 'robotics-with-raspberry-pi-build-and-program-your-first-robot-buggy'
@@ -238,7 +304,9 @@ Activity.find_or_create_by(stem_course_template_no: 'ed1e2f83-655c-ea11-a811-000
   activity.provider = 'future-learn'
 end
 
-Activity.find_or_create_by(stem_course_template_no: 'bf13c4a5-ef7f-ea11-a811-000d3a86f6ce') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'bf13c4a5-ef7f-ea11-a811-000d3a86f6ce') do |activity|
   activity.title = 'Introduction to Databases and SQL'
   activity.credit = 20
   activity.slug = 'introduction-to-databases-and-sql'
@@ -248,3 +316,5 @@ Activity.find_or_create_by(stem_course_template_no: 'bf13c4a5-ef7f-ea11-a811-000
   activity.future_learn_course_uuid = '88ad7443-d27a-482c-b2a9-83ddc1357532'
   activity.provider = 'future-learn'
 end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
