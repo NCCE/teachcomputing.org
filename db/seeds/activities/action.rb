@@ -1,4 +1,8 @@
-Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
+cs_accelerator = Programme.cs_accelerator
+primary_certificate = Programme.primary_certificate
+# secondary_certificate = Programme.secondary_certificate
+
+a = Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
   activity.title = 'Created your account with the National Centre for Computing Education'
   activity.credit = 5
   activity.slug = 'registered-with-the-national-centre'
@@ -7,7 +11,11 @@ Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |acti
   activity.provider = 'system'
 end
 
-Activity.find_or_create_by(slug: 'ncce-coaching-and-mentoring') do |activity|
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'ncce-coaching-and-mentoring') do |activity|
   activity.title = 'NCCE - Coaching and Mentoring'
   activity.credit = 0
   activity.slug = 'ncce-coaching-and-mentoring'
@@ -15,3 +23,5 @@ Activity.find_or_create_by(slug: 'ncce-coaching-and-mentoring') do |activity|
   activity.category = 'action'
   activity.provider = 'stem-learning'
 end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
