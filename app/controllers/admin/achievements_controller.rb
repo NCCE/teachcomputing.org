@@ -32,7 +32,7 @@ class Admin::AchievementsController < ApplicationController
 			render json: @achievement, status: 201
     else
 			#head 400
-      render json: {error: @achievement.errors.inspect}, status: 418
+      render json: {error: @achievement.errors.inspect}, status: 409
     end
 	end
 
