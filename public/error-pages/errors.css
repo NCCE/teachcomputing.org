@@ -6918,10 +6918,6 @@ a:not([class]):active {
   background-color: #e3e2f3;
 }
 
-.cs-accelerator__image {
-  max-width: 80%;
-}
-
 .cs-accelerator-aside__list>li {
   margin-bottom: 10px;
 }
@@ -7826,14 +7822,12 @@ a:not([class]):active {
   }
 }
 
-.ncce-activity-list__item-indent,
 .ncce-activity-list__item-activity {
   margin-left: 2rem;
 }
 
 @media (min-width: 40.0625em) {
 
-  .ncce-activity-list__item-indent,
   .ncce-activity-list__item-activity {
     margin-left: 2.8rem;
   }
@@ -7859,20 +7853,12 @@ a:not([class]):active {
   }
 }
 
-.ncce-activity-list__item-activity--no-padding {
-  padding: 0;
-}
-
 .ncce-activity-list__item--incomplete .ncce-activity-list__item-text {
   background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
 }
 
 .ncce-activity-list__item--inprogress .ncce-activity-list__item-text {
   background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
-}
-
-.ncce-activity-list__item--position {
-  position: relative;
 }
 
 .ncce-activity-list__tag {
@@ -8165,93 +8151,6 @@ a:not([class]):active {
   background-color: #007fa2;
 }
 
-.ncce-exam-activity__remarks {
-  grid-column-end: span 3;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  list-style: none;
-  margin: 10px 0 10px 0;
-  padding: 0;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-}
-
-@media (max-width: 40.0525em) {
-  .ncce-exam-activity__remarks {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-exam-activity__remarks {
-    margin-left: 40px;
-  }
-}
-
-.ncce-exam-activity__remarks>li {
-  height: 3em;
-  padding: 0 10px;
-  color: #333448;
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 40.0525em) {
-  .ncce-exam-activity__remarks>li {
-    width: 100%;
-  }
-}
-
-.ncce-exam-activity__remarks>li>img {
-  margin-right: 10px;
-}
-
-.ncce-exam-activity__rules {
-  grid-column-end: span 3;
-  margin: 10px 0 10px 0;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-exam-activity__rules {
-    margin-left: 40px;
-  }
-}
-
-@media (max-width: 40.0525em) {
-  .ncce-exam-activity__rules>li {
-    line-height: 1.5rem;
-  }
-}
-
-.ncce-activity-list__item-text--exam {
-  grid-column-end: span 3;
-}
-
-.ncce-exam-activity__attempts {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-exam-activity__attempts {
-    grid-template-columns: 2fr auto;
-  }
-}
-
-.ncce-exam-activity__attempts-text {
-  grid-row: 1;
-  grid-column: 1;
-  margin-bottom: 0;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-exam-activity__attempts-text {
-    margin-left: 40px;
-  }
-}
-
 .bursary-info {
   background-color: #ffffff;
   padding: 1.25rem 1.125rem;
@@ -8443,56 +8342,6 @@ a:not([class]):active {
   .ncce-button__recommendation {
     grid-row: auto;
     margin-left: 0;
-  }
-}
-
-.ncce-activity-list__item--trn {
-  grid-template-columns: 1fr;
-  align-items: center;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-activity-list__item--trn {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.ncce-activity-list__item-activity--trn {
-  font-weight: normal;
-  margin-top: 0;
-}
-
-@media (max-width: 40.0525em) {
-  .ncce-activity-list__item-activity--trn {
-    margin-bottom: 1rem;
-  }
-}
-
-.ncce-activity-list__form {
-  align-self: right;
-  grid-row: 3;
-  margin-left: 2rem;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-activity-list__form {
-    display: flex;
-    grid-row: 1;
-    justify-content: flex-start;
-    margin: 0;
-  }
-}
-
-.ncce-activity-list__form>.ncce-input {
-  font-size: 1rem;
-  height: 30px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-@media (min-width: 40.0625em) {
-  .ncce-activity-list__form>.ncce-input {
-    margin: 0;
   }
 }
 
