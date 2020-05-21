@@ -1,6 +1,8 @@
+# require "#{Rails.root}/jobs/assessment_eligibility_job.rb"
+# require "#{Rails.root}/jobs/primary_certificate_pending_transition_job.rb"
 class Admin::AchievementsController < ApplicationController	
 	protect_from_forgery unless: -> { request.format.json? }
-
+	
 	def index
 		u = User.find(params[:user_id])
 		render json: u.achievements
@@ -21,17 +23,24 @@ class Admin::AchievementsController < ApplicationController
       if @achievement.programme
         case @achievement.programme.slug
         when 'cs-accelerator'
-          AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
+          AssessmentEligibilityJob.perform_now(u.id)
         when 'primary-certificate'
-          PrimaryCertificatePendingTransitionJob.perform_now(current_user.id, source: 'AchievementsController.create')
+          PrimaryCertificatePendingTransitionJob.perform_now(u.id)
         end
       end
+			# redirect_to admin_user_achievement_path(user: u, achievement: @achievement)
+			render json: @achievement
     else
-			head 400
+			#head 400
       render json: {error: @achievement.errors.inspect}
     end
-		# redirect_to admin_user_achievement_path(user: u, achievement: @achievement)
-		render json: @achievement
 	end
+
+	def complete
+		u = User.find(params[:user_id])
+		@achievement = Achievement.find(params[:id])
+    @achievement.transition_to(:complete)
+		render json: @achievement
+  end
 
 end

@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   namespace 'admin' do
     resources :imports
 		resources :users do
-			resources :achievements
+			resources :achievements, only: %i[create index show]
 		end
   end
 
+	post '/admin/users/:user_id/achievements/:id/complete', action: :complete, controller: 'admin/achievements'
 
   resources :assessment_attempts
 
