@@ -12,7 +12,7 @@ class ResourcesFeedbackMailer < ApplicationMailer
                         '7' => 'http://ncce.io/year7capture',
                         '8' => 'http://ncce.io/year8capture',
                         '9' => 'http://ncce.io/year9capture',
-                        'KS4' => 'http://ncce.io/ks4capture' }
+                        '10 & 11' => 'http://ncce.io/ks4capture' }
 
     @feedback_url = @feedback_links[year]
     @subject = 'How are you finding the Resource repository content?'
