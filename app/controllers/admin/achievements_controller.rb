@@ -29,7 +29,7 @@ class Admin::AchievementsController < ApplicationController
         end
       end
 			# redirect_to admin_user_achievement_path(user: u, achievement: @achievement)
-			render json: @achievement
+			render json: @achievement, status: 201
     else
 			#head 400
       render json: {error: @achievement.errors.inspect}
@@ -40,7 +40,7 @@ class Admin::AchievementsController < ApplicationController
 		u = User.find(params[:user_id])
 		@achievement = Achievement.find(params[:id])
     @achievement.transition_to(:complete)
-		render json: @achievement
+		render json: @achievement, status: 201
   end
 
 end
