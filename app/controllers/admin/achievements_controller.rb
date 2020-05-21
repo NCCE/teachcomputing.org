@@ -5,13 +5,13 @@ class Admin::AchievementsController < ApplicationController
 	
 	def index
 		u = User.find(params[:user_id])
-		render json: u.achievements, status: 200
+		render json: u.achievements
 	end
 
 	def show
 		# u = User.find(params[:user_id])
 		a = Achievement.find(params[:id])
-		render json: a, status: 200
+		render json: a
 	end
 
 	def create
