@@ -1,7 +1,7 @@
-# require "#{Rails.root}/jobs/assessment_eligibility_job.rb"
-# require "#{Rails.root}/jobs/primary_certificate_pending_transition_job.rb"
 class Admin::AchievementsController < ApplicationController	
 	protect_from_forgery unless: -> { request.format.json? }
+	before_action :authenticate_api
+
 	
 	def index
 		u = User.find(params[:user_id])
@@ -42,5 +42,12 @@ class Admin::AchievementsController < ApplicationController
     @achievement.transition_to(:complete)
 		render json: @achievement, status: 201
   end
+
+ private
+    def authenticate_api
+      authenticate_or_request_with_http_token do |token, options|
+        ActiveSupport::SecurityUtils.secure_compare(token, 'secret')
+      end
+    end
 
 end
