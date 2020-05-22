@@ -9,6 +9,7 @@ RSpec.describe ProgrammesController do
            user_id: user.id,
            programme_id: programme.id)
   end
+  let(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
@@ -20,7 +21,7 @@ RSpec.describe ProgrammesController do
   let(:setup_achievements_for_programme) do
     assessment
     user_programme_enrolment
-    activities = [online_course, face_to_face_course]
+    activities = [online_course, face_to_face_course, diagostic_activity]
 
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
@@ -84,10 +85,6 @@ RSpec.describe ProgrammesController do
 
         it 'assigns the programme' do
           expect(assigns(:programme)).to eq(programme)
-        end
-
-        it 'assigns the achievements' do
-          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
         end
 
         it 'assigns the assessments' do

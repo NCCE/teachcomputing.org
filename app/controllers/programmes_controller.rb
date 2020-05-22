@@ -28,12 +28,21 @@ class ProgrammesController < ApplicationController
   def complete
     return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
 
-    @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
-    @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
+    if @programme.slug == 'cs-accelerator'
+      @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
+      @online_achievements = current_user.achievements.for_programme(@programme)
+                                                      .not_in_state(:dropped)
+                                                      .with_category(Activity::ONLINE_CATEGORY)
+      @face_to_face_achievements = current_user.achievements.for_programme(@programme)
+                                                            .not_in_state(:dropped)
+                                                            .with_category(Activity::FACE_TO_FACE_CATEGORY)
+    else
+      @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
 
-    @complete_achievements = current_user.achievements.without_category('action')
-                                                      .without_category('diagnostic')
-                                                      .for_programme(@programme).sort_complete_first
+      @complete_achievements = current_user.achievements.without_category('action')
+                                                        .without_category('diagnostic')
+                                                        .for_programme(@programme).sort_complete_first
+    end
 
     render "programmes/#{@programme.slug}/complete"
   end
