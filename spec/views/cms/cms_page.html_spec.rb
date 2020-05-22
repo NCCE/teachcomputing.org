@@ -12,6 +12,6 @@ RSpec.describe('cms/cms_page', type: :view) do
   end
 
   it('renders the content') do
-    expect(rendered).to have_css('.cms-content', text: /This is a test page/)
+    expect(rendered).to have_css('.external-content', text: /This is a test page/)
   end
 end
