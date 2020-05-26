@@ -34,6 +34,18 @@ RSpec.describe Admin::AchievementsController do
         expect(response.status).to eq 401
       end
     end
+
+
+    describe 'GET #show' do
+      before do
+        get "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: nil }
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
   end
 
   context 'token is passed' do
@@ -67,6 +79,16 @@ RSpec.describe Admin::AchievementsController do
 
       it 'returns the new achievement' do
         expect(JSON.parse(response.body)['activity_id']).to eq activity.id
+      end
+    end
+
+    describe 'GET #show' do
+      before do
+        get "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 200
       end
     end
   end
