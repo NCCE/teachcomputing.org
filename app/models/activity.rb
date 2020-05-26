@@ -15,7 +15,8 @@ class Activity < ApplicationRecord
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY, DIAGNOSTIC_CATEGORY, FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY] }
   validates :provider, inclusion: { in: %w[barefoot cas classmarker code-club future-learn stem-learning system] }
-  validates :future_learn_course_uuid, :stem_course_template_no, uniqueness: true
+  validates :future_learn_course_uuid, uniqueness: true, unless: Proc.new { |a| a.future_learn_course_uuid.blank? }
+  validates :stem_course_template_no, uniqueness: true, unless: Proc.new { |a| a.stem_course_template_no.blank? }
 
   scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
   scope :online, -> { where(category: ONLINE_CATEGORY) }
