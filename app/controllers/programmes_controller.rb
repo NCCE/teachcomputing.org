@@ -85,7 +85,9 @@ class ProgrammesController < ApplicationController
       response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
       return true if response && response.current_state == 'complete'
 
-      redirect_to primary_certificate_diagnostic_path(:question_1)
+      # Navigate directly to the last question reached, or question_1.
+      question = response && response.current_question ? "question_#{response.current_question}" : "question_1"
+      redirect_to primary_certificate_diagnostic_path(question.to_sym)
     end
 
     def user_enrolled?
