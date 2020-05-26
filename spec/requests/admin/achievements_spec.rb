@@ -6,9 +6,6 @@ RSpec.describe Admin::AchievementsController do
   let(:achievement) { create(:achievement, user: user) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
-  # This is a crude method to run before / after each test
-  # we may need to actually have some achievements for a user / activity
-  # but we can possibly do those in specific test 'before' blocks?
   before do
     Achievement.where(user: user).destroy_all
   end
@@ -38,7 +35,17 @@ RSpec.describe Admin::AchievementsController do
 
     describe 'GET #show' do
       before do
-        get "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: nil }
+        get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: nil }
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    describe 'POST #complete' do
+      before do
+        post "/admin/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -80,16 +87,44 @@ RSpec.describe Admin::AchievementsController do
       it 'returns the new achievement' do
         expect(JSON.parse(response.body)['activity_id']).to eq activity.id
       end
+
+      it 'check for duplication' do
+				post "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
+        expect(response.status).to eq 409
+      end
     end
 
     describe 'GET #show' do
-      before do
-        get "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
-      end
-
       it 'returns 200 status' do
+				get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: token_headers }
         expect(response.status).to eq 200
       end
+
+			it 'returns the new achievement' do
+				get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: token_headers }
+        expect(JSON.parse(response.body)['id']).to eq achievement.id
+      end
+
+      it 'raises an error for invalid achievement' do
+				expect {
+					get "/admin/users/#{user.id}/achievements/invalid", { headers: token_headers }
+				}.to raise_error(ActiveRecord::RecordNotFound)
+      end 
     end
+
+    describe 'POST #complete' do
+      before do
+        post "/admin/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: token_headers }
+      end
+
+      it 'returns 201 status' do
+        expect(response.status).to eq 201
+      end
+
+      it 'returns the achievement' do
+        expect(JSON.parse(response.body)['id']).to eq achievement.id
+      end
+    end
+
   end
 end
