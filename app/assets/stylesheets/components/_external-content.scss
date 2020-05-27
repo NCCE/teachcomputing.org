@@ -1,4 +1,4 @@
-.cms-content {
+.external-content {
   font-family: $font-family-body;
 
   p {
@@ -57,7 +57,7 @@
 
   img,
   video {
-    width: 100%;
     margin-bottom: 20px;
+    width: 100%;
   }
 }

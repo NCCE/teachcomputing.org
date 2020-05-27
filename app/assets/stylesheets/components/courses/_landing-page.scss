@@ -33,21 +33,6 @@
 	padding: 1rem 1rem 0 1rem;
 }
 
-.course-summary {
-  @extend .govuk-body;
-  p {
-    @extend .govuk-body;
-  }
-
-  ul {
-    @extend .govuk-list, .govuk-list--bullet;
-  }
-
-	h2 {
-		@extend .govuk-heading-m;
-	}
-}
-
 .course-details__icons {
 	display: flex;
 	flex-direction: column;
