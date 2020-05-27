@@ -176,7 +176,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_091151) do
     t.uuid "user_id", null: false
     t.string "mailer_type", null: false
     t.string "subject", null: false
-    t.boolean "delivered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "mailer_type"], name: "index_one_mailer_type_per_user", unique: true

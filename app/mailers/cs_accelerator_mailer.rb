@@ -33,6 +33,6 @@ class CsAcceleratorMailer < ApplicationMailer
     @programme = Programme.cs_accelerator
     @subject = 'Time to finish what you’ve started and achieve your qualification'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_NON_ENROLLED_USER_EMAIL)
   end
 end

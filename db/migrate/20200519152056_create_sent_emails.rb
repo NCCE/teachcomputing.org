@@ -4,7 +4,6 @@ class CreateSentEmails < ActiveRecord::Migration[5.2]
       t.references :user, type: :uuid, null: false, index: true
       t.string :mailer_type, null: false
       t.string :subject, null: false
-      t.boolean :delivered, default: false
 
       t.timestamps
     end
