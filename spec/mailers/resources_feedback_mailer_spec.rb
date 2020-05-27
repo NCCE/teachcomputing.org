@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe ResourcesFeedbackMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:mail) { ResourcesFeedbackMailer.with(user: user, year: 1).feedback_request }
+  let(:mail2) { ResourcesFeedbackMailer.with(user: user, year: '10 & 11').feedback_request }
   let(:subject) { 'How are you finding the Resource repository content?' }
 
   describe 'email' do
@@ -18,6 +19,10 @@ RSpec.describe ResourcesFeedbackMailer, type: :mailer do
 
     it 'contains the correct feedback link' do
       expect(mail.body.encoded).to include('http://ncce.io/year1capture')
+    end
+
+    it 'contains the correct feedback link for KS4' do
+      expect(mail2.body.encoded).to include('http://ncce.io/ks4capture')
     end
 
     it 'includes the subject in the email' do
