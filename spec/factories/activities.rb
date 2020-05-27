@@ -3,6 +3,8 @@ FactoryBot.define do
     sequence(:title, 100) { |n| "activity#{n}" }
     sequence(:credit, 100) { |n| n }
     sequence(:slug, 100) { |n| "activity-#{n}" }
+    sequence(:future_learn_course_uuid, 100) { |n| "future_learn_course_uuid-#{n}" }
+    sequence(:stem_course_template_no, 100) { |n| "stem_course_template_no-#{n}" }
     category { 'face-to-face' }
     provider { 'stem-learning' }
   end
