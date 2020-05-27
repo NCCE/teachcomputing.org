@@ -5,11 +5,11 @@ class Admin::AchievementsController < ApplicationController
 
 	def index
 		u = User.find(params[:user_id])
-		render json: u.achievements.to_json(except: [:created_at, :updated_at], include: [{ activity: { only: [:title]}}, {programme: { only: [:title]}} ])
+		render json: u.achievements.to_json(except: [:created_at, :updated_at], include: [
+		{activity: { only: [:title]}}, {programme: { only: [:title]}} ])
 	end
 
 	def show
-		# u = User.find(params[:user_id])
 		a = Achievement.find(params[:id])
 		render json: a
 	end
