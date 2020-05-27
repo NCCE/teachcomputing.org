@@ -10,7 +10,7 @@
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
         <%= render 'courses/courses-details' %>
-        <div class="course-summary govuk-!-margin-bottom-7">
+        <div class="external-content govuk-!-margin-bottom-7">
           <%= sanitize_stem_html @course.summary %>
           <%= sanitize_stem_html @course.outcomes %>
         </div>
