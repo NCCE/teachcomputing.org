@@ -27,9 +27,9 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
 
     response.answer_current_question(step_index, diagnostic_params[@step], next_step_index)
 
-    # Jump to any unanswered questions (handles users navigating directly to questions)
+    # Jump to any previously unanswered questions (handles users navigating directly to questions)
     missing = check_answers(response.answers)
-    jump_to(missing) if missing
+    jump_to(missing) if missing && past_step?(missing)
 
     response.transition_to(:complete) if final_step
 

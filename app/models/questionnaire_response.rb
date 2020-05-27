@@ -11,7 +11,8 @@ class QuestionnaireResponse < ApplicationRecord
   validates :user_id, uniqueness: { scope: %i[programme_id questionnaire_id] }
 
   def answer_current_question(step_index, answer, next_step_index)
-    self.answers[step_index] = answer
+    # Ensure we're dealing with strings on the way in and the way out
+    self.answers[step_index.to_s] = answer.to_s
     self.current_question = next_step_index
   end
 
