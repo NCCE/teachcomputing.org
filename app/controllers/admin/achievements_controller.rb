@@ -50,7 +50,7 @@ class Admin::AchievementsController < ApplicationController
 		def as_json(achievement)
 			achievement.as_json(methods: :current_state,
 													include: [
-														{activity: { only: [:title, :provider]}}, 
+														{activity: { only: [:title, :provider]}},
 														{programme: { only: [:title]}},
 														{user: { only: [:email]}}
 													])

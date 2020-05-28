@@ -4,7 +4,7 @@ RSpec.describe Admin::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
 	let(:programme) { create(:programme) }
-	let(:achievement) { 
+	let(:achievement) {
 		create(:achievement, user: user, programme: programme)
 	}
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
@@ -116,7 +116,7 @@ RSpec.describe Admin::AchievementsController do
 				expect {
 					get "/admin/users/#{user.id}/achievements/invalid", { headers: token_headers }
 				}.to raise_error(ActiveRecord::RecordNotFound)
-      end 
+      end
 
       it 'returns achievement current_state' do
 				get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: token_headers }
