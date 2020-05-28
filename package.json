@@ -24,7 +24,10 @@
   },
   "scripts": {
     "start": "npx ./scripts/docker-start.sh",
-    "stop": "npx ./scripts/docker-stop.sh"
+    "stop": "npx ./scripts/docker-stop.sh",
+    "log": "docker-compose logs -f web",
+    "drun": "docker-compose run --rm web",
+    "console": "docker-compose run --rm web bin/rails console"
   },
   "lint-staged": {
     "*.js": [
