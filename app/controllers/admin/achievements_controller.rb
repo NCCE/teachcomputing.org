@@ -7,10 +7,10 @@ class Admin::AchievementsController < ApplicationController
 		u = User.find(params[:user_id])
 		render json: u.achievements.to_json(except: [:created_at, :updated_at], 
 		include: [
+			{achievement_transitions: { only: [:to_state]}},
 			{activity: { only: [:title, :provider]}}, 
 			{programme: { only: [:title]}},
-			{user: { only: [:email]}},
-			{achievement_transitions: { only: [:to_state]}}
+			{user: { only: [:email]}}
 		])
 	end
 
