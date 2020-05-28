@@ -3,6 +3,5 @@ FactoryBot.define do
     user
     mailer_type { CsAcceleratorMailer::CSA_COMPLETED_EMAIL }
     subject { 'This is your completed email' }
-    delivered { false }
   end
 end
