@@ -1,5 +1,5 @@
 FROM ruby:2.5.7-alpine
-RUN apk --no-cache add build-base postgresql-dev tzdata nodejs nodejs-npm chromium chromium-chromedriver
+RUN apk --no-cache add curl build-base postgresql-dev tzdata nodejs nodejs-npm chromium chromium-chromedriver
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
@@ -8,3 +8,4 @@ RUN bundle install
 COPY package.json package-lock.json ./
 RUN npm i
 COPY . /app
+CMD ./scripts/docker-entrypoint.sh
