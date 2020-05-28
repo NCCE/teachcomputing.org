@@ -128,3 +128,4 @@ RSpec.describe Admin::AchievementsController do
 
   end
 end
+

@@ -5,9 +5,8 @@ class Admin::AchievementsController < ApplicationController
 
 	def index
 		u = User.find(params[:user_id])
-		render json: u.achievements.to_json(except: [:created_at, :updated_at], 
+		render json: u.achievements.as_json(methods: :current_state,
 		include: [
-			{achievement_transitions: { only: [:to_state]}},
 			{activity: { only: [:title, :provider]}}, 
 			{programme: { only: [:title]}},
 			{user: { only: [:email]}}
