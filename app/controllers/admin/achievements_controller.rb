@@ -9,7 +9,8 @@ class Admin::AchievementsController < ApplicationController
 		include: [
 			{activity: { only: [:title, :provider]}}, 
 			{programme: { only: [:title]}},
-			{user: { only: [:email]}}
+			{user: { only: [:email]}},
+			{achievement_transitions: { only: [:to_state]}}
 		])
 	end
 
