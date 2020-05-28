@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe Admin::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
-  let(:achievement) { create(:achievement, user: user) }
+	let(:programme) { create(:programme) }
+	let(:achievement) { 
+		create(:achievement, user: user, programme: programme)
+	}
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
   before do
@@ -73,6 +76,10 @@ RSpec.describe Admin::AchievementsController do
       it 'returns the right achievement' do
         expect(JSON.parse(response.body).first['id']).to eq achievement.id
       end
+
+			it 'returns user email' do
+        expect(JSON.parse(response.body).first['user']['email']).to eq user.email
+      end
     end
 
     describe 'POST #create' do
@@ -85,7 +92,7 @@ RSpec.describe Admin::AchievementsController do
       end
 
       it 'returns the new achievement' do
-        expect(JSON.parse(response.body)['activity_id']).to eq activity.id
+        expect(JSON.parse(response.body)['activity']['title']).to eq activity.title
       end
 
       it 'check for duplication' do
@@ -110,6 +117,17 @@ RSpec.describe Admin::AchievementsController do
 					get "/admin/users/#{user.id}/achievements/invalid", { headers: token_headers }
 				}.to raise_error(ActiveRecord::RecordNotFound)
       end 
+
+      it 'returns achievement current_state' do
+				get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: token_headers }
+        expect(JSON.parse(response.body)['current_state']).to eq achievement.current_state
+      end
+
+			it 'returns programme title' do
+				get "/admin/users/#{user.id}/achievements/#{achievement.id}", { headers: token_headers }
+        expect(JSON.parse(response.body)['programme']['title']).to eq programme.title
+      end
+
     end
 
     describe 'POST #complete' do
@@ -123,6 +141,10 @@ RSpec.describe Admin::AchievementsController do
 
       it 'returns the achievement' do
         expect(JSON.parse(response.body)['id']).to eq achievement.id
+      end
+
+      it 'returns achievement current_state' do
+        expect(JSON.parse(response.body)['current_state']).to eq 'complete'
       end
     end
 

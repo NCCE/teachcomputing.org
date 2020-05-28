@@ -4,47 +4,41 @@ class Admin::AchievementsController < ApplicationController
 
 
 	def index
-		u = User.find(params[:user_id])
-		render json: u.achievements.as_json(methods: :current_state,
-		include: [
-			{activity: { only: [:title, :provider]}}, 
-			{programme: { only: [:title]}},
-			{user: { only: [:email]}}
-		])
+		user = User.find(params[:user_id])
+		render json: as_json(user.achievements)
 	end
 
 	def show
-		a = Achievement.find(params[:id])
-		render json: a
+		user = User.find(params[:user_id])
+		achievement = user.achievements.find(params[:id])
+		render json: as_json(achievement)
 	end
 
 	def create
-		u = User.find(params[:user_id])
-		a = Activity.find(params[:activity_id])
-		@achievement = Achievement.new(activity_id: a.id, user_id: u.id)
+		user = User.find(params[:user_id])
+		activity = Activity.find(params[:activity_id])
+		achievement = Achievement.new(activity_id: activity.id, user_id: user.id)
 
-    if @achievement.save
-      if @achievement.programme
-        case @achievement.programme.slug
+    if achievement.save
+      if achievement.programme
+        case achievement.programme.slug
         when 'cs-accelerator'
-          AssessmentEligibilityJob.perform_now(u.id)
+          AssessmentEligibilityJob.perform_now(user.id, nil)
         when 'primary-certificate'
-          PrimaryCertificatePendingTransitionJob.perform_now(u.id)
+          PrimaryCertificatePendingTransitionJob.perform_now(user.id, nil)
         end
       end
-			# redirect_to admin_user_achievement_path(user: u, achievement: @achievement)
-			render json: @achievement, status: 201
+			render json: as_json(achievement), status: 201
     else
-			#head 400
-      render json: {error: @achievement.errors.inspect}, status: 409
+      render json: {error: achievement.errors.inspect}, status: 409
     end
 	end
 
 	def complete
-		u = User.find(params[:user_id])
-		@achievement = Achievement.find(params[:id])
-    @achievement.transition_to(:complete)
-		render json: @achievement, status: 201
+		user = User.find(params[:user_id])
+		achievement = user.achievements.find(params[:id])
+    achievement.transition_to(:complete)
+		render json: as_json(achievement), status: 201
   end
 
  private
@@ -53,5 +47,14 @@ class Admin::AchievementsController < ApplicationController
         ActiveSupport::SecurityUtils.secure_compare(token, 'secret')
       end
     end
+
+		def as_json(achievement)
+			achievement.as_json(methods: :current_state,
+													include: [
+														{activity: { only: [:title, :provider]}}, 
+														{programme: { only: [:title]}},
+														{user: { only: [:email]}}
+													])
+		end
 
 end
