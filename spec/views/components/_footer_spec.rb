@@ -45,6 +45,10 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Get Involved', href: '/get-involved')
   end
 
+  it 'has a pedagogy link' do
+    expect(rendered).to have_link('Pedagogy', href: '/pedagogy')
+  end
+
   it 'has a twitter link' do
     expect(rendered).to have_link('Twitter', href: /twitter.com\/WeAreComputing/)
   end
