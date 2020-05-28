@@ -10,5 +10,14 @@ RSpec.describe NonEnrolledCSAUserEmailJob, type: :job do
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
+
+    it 'only sends the email once' do
+      programme
+      described_class.perform_now(user.id)
+      expect {
+        described_class.perform_now(user.id)
+      }
+      .to change { SentEmail.count }.by(0)
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_203907) do
+ActiveRecord::Schema.define(version: 2020_05_26_091151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_203907) do
     t.text "description"
     t.text "self_verification_info"
     t.index ["category"], name: "index_activities_on_category"
+    t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
   end
@@ -169,6 +170,16 @@ ActiveRecord::Schema.define(version: 2020_04_30_203907) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "resource_year"], name: "resource_year_user", unique: true
     t.index ["user_id"], name: "index_resource_users_on_user_id"
+  end
+
+  create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "mailer_type", null: false
+    t.string "subject", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "mailer_type"], name: "index_one_mailer_type_per_user", unique: true
+    t.index ["user_id"], name: "index_sent_emails_on_user_id"
   end
 
   create_table "user_programme_enrolment_transitions", force: :cascade do |t|

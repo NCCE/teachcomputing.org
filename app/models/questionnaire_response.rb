@@ -10,10 +10,10 @@ class QuestionnaireResponse < ApplicationRecord
   validates :questionnaire_id, :user_id, :programme_id, presence: true
   validates :user_id, uniqueness: { scope: %i[programme_id questionnaire_id] }
 
-  def answer_current_question(answer, final_step = false)
-    self.answers[current_question] = answer
-    self.current_question = final_step ? current_question : current_question + 1
-    save
+  def answer_current_question(step_index, answer, next_step_index)
+    # Ensure we're dealing with strings on the way in and the way out
+    self.answers[step_index.to_s] = answer.to_s
+    self.current_question = next_step_index
   end
 
   def state_machine

@@ -6,6 +6,7 @@ RSpec.describe('programmes/cs-accelerator/_activity-list', type: :view) do
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
 
   before do
+    diagnostic_tool_activity
     @online_achievements = []
     @face_to_face_achievements = []
     @programme = programme
