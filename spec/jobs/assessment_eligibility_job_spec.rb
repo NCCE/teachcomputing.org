@@ -29,11 +29,25 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
       .to change { ActionMailer::Base.deliveries.count }.by(0)
     end
 
-    it 'does calls CsAcceleratorMailer' do
-      pending("Pending fix for unique email per user")
+    it 'sends the email' do
       allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
       expect { described_class.perform_now(user.id) }
       .to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it 'records the email has been sent for the user' do
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      expect { described_class.perform_now(user.id) }
+      .to change { SentEmail.count }.by(1)
+    end
+
+    it 'only sends the email once' do
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      described_class.perform_now(user.id)
+      expect {
+        described_class.perform_now(user.id)
+      }
+      .to change { SentEmail.count }.by(0)
     end
   end
 end
