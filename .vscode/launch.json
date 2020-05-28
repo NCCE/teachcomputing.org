@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [{
+    "name": "Debug Attach",
+    "type": "Ruby",
+    "request": "attach",
+    "cwd": "${workspaceRoot}",
+    "remoteWorkspaceRoot": "/app",
+    "remoteHost": "127.0.0.1",
+    "remotePort": "1234"
+  }]
+}

@@ -22,6 +22,14 @@
     "stylelint-order": "1.0.0",
     "stylelint-scss": "3.3.1"
   },
+  "scripts": {
+    "start": "npx ./scripts/docker-start.sh",
+    "stop": "npx ./scripts/docker-stop.sh",
+    "log": "docker-compose logs -f web",
+    "console": "docker-compose run --rm web bin/rails console",
+    "test": "docker-compose run --rm web bin/rspec",
+    "guard": "docker-compose run --rm web bin/guard"
+  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
