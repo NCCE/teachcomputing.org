@@ -4,8 +4,8 @@ RSpec.describe QuestionnaireResponse, type: :model do
   let(:questionnaire_response) { create(:questionnaire_response) }
   let(:answer) { 'This is my answer' }
   let(:add_answer) {
-    questionnaire_response.answer_current_question(answer)
-    questionnaire_response.reload
+    questionnaire_response.answer_current_question(1, answer, 2)
+    questionnaire_response.save
     questionnaire_response
   }
 
