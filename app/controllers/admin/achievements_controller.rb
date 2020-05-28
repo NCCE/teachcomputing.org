@@ -2,7 +2,6 @@ class Admin::AchievementsController < ApplicationController
 	protect_from_forgery unless: -> { request.format.json? }
 	before_action :authenticate_api
 
-
 	def index
 		user = User.find(params[:user_id])
 		render json: as_json(user.achievements)
