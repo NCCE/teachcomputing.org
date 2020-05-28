@@ -172,6 +172,16 @@ ActiveRecord::Schema.define(version: 2020_05_26_091151) do
     t.index ["user_id"], name: "index_resource_users_on_user_id"
   end
 
+  create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "mailer_type", null: false
+    t.string "subject", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "mailer_type"], name: "index_one_mailer_type_per_user", unique: true
+    t.index ["user_id"], name: "index_sent_emails_on_user_id"
+  end
+
   create_table "user_programme_enrolment_transitions", force: :cascade do |t|
     t.string "to_state", null: false
     t.json "metadata", default: {}
