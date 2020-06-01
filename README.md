@@ -11,8 +11,6 @@
 cp .env-example .env
 ```
 
-You'll need to set up the DB Connection ID and the relevant Workflow IDs. A list of env vars for Workflow IDs can be found [here](https://github.com/NCCE/private-documentation/blob/master/APIs/stem-achiever.md).
-
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
 
 If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
@@ -117,4 +115,3 @@ Run `brakeman -i config/brakeman.ignore .` in the project root and follow the on
 ### Debugging
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
-
