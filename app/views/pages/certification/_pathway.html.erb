@@ -3,11 +3,26 @@
   </h2>
 	<p class="govuk-body">Our learning pathways will help you to get started and offer a structured route through the programme based on your level of experience.</p>
   <ul class="govuk-list">
-		<li class="pathway__item icon-resources"><%= link_to 'Advanced GCSE computer science', '', class: 'govuk-link ncce-link' %></li>
-		<li class="pathway__item icon-resources"><%= link_to 'New to GCSE computer science', '', class: 'govuk-link ncce-link' %></li>
-		<li class="pathway__item icon-resources"><%= link_to 'New to algorithms & programming', '', class: 'govuk-link ncce-link' %></li>
-		<li class="pathway__item icon-resources"><%= link_to 'Computing non-specialist', '', class: 'govuk-link ncce-link' %></li>
-		<li class="pathway__item icon-resources"><%= link_to 'New to computer systems', '', class: 'govuk-link ncce-link' %></li>
+		<li class="pathway__item">
+			<%= link_to 'Advanced GCSE computer science', '', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="govuk-!-font-weight-bold">PDF</span>
+		</li>
+		<li class="pathway__item">
+			<%= link_to 'New to GCSE computer science', '', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="govuk-!-font-weight-bold">PDF</span>
+		</li>
+		<li class="pathway__item">
+			<%= link_to 'New to algorithms & programming', '', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="govuk-!-font-weight-bold">PDF</span>
+		</li>
+		<li class="pathway__item">
+			<%= link_to 'Computing non-specialist', '', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="govuk-!-font-weight-bold">PDF</span>
+		</li>
+		<li class="pathway__item">
+			<%= link_to 'New to computer systems', '', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="govuk-!-font-weight-bold">PDF</span>
+		</li>
   </ul>
 	<p class='govuk-body'>
 	<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
