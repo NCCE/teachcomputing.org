@@ -1,5 +1,4 @@
 .pathway-wrapper {
-  border-radius: 10px;
   padding: 15px;
   font-family: $font-family-body;
   margin-bottom: 40px;
@@ -53,3 +52,26 @@
     margin-bottom: 10px;
   }
 }
+
+.pathway__item {
+	align-items: start;
+ 	background-color: $white;
+  border-bottom-color: $lavender-light;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  row-gap: 10px;
+  padding: 0.7rem 0.5rem;
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 0.5rem;
+  }
+  margin-bottom: 0.5rem !important;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 3fr auto;
+    grid-template-rows: auto auto;
+    padding: 0.5rem;
+  }
+}
+

@@ -1,36 +1,15 @@
 <div class="pathway-wrapper light-grey-bg">
-  <h2 class="govuk-heading-s">You'll be supported at every step along the way
+  <h2 class="govuk-heading-s">Learning pathways for teachers
   </h2>
-  <ol class="pathway">
-    <li class="pathway__step">
-      <h2 class="govuk-heading-s pathway__step-title">
-        <span class="pathway__step-circle">
-        </span>
-          Register & plan</h2>
-        <p class="govuk-body"><%= link_to 'Create an account', create_account_url, class: 'ncce-link' %> and discover courses suited to you using our diagnostic tool</p>
-    </li>
-    <li class="pathway__step">
-      <h2 class="govuk-heading-s pathway__step-title">
-        <span class="pathway__step-circle">
-        </span>
-          Participate</h2>
-        <p class="govuk-body">Take part in the CPD that meets your needs, available online and face-to-face locally to you</p>
-        <p class="govuk-body-s">(Your release time is covered, paid to your school after completion of face-to-face courses)</p>
-    </li>
-    <li class="pathway__step">
-      <h2 class="govuk-heading-s pathway__step-title">
-        <span class="pathway__step-circle">
-        </span>
-          Complete</h2>
-        <p class="govuk-body">Complete your learning programme by carrying out a short test</p>
-        <p class="govuk-body-s">(Any extra funding support is paid to your school after completion of the test)</p>
-    </li>
-    <li class="pathway__step">
-      <h2 class="govuk-heading-s pathway__step-title">
-        <span class="pathway__step-circle">
-        </span>
-          Reflect</h2>
-        <p class="govuk-body">Embed new ideas in the classroom and see increased impact</p>
-    </li>
-  </ol>
+	<p class="govuk-body">Our learning pathways will help you to get started and offer a structured route through the programme based on your level of experience.</p>
+  <ul class="govuk-list">
+		<li class="pathway__item icon-resources"><%= link_to 'Advanced GCSE computer science', '', class: 'govuk-link ncce-link' %></li>
+		<li class="pathway__item icon-resources"><%= link_to 'New to GCSE computer science', '', class: 'govuk-link ncce-link' %></li>
+		<li class="pathway__item icon-resources"><%= link_to 'New to algorithms & programming', '', class: 'govuk-link ncce-link' %></li>
+		<li class="pathway__item icon-resources"><%= link_to 'Computing non-specialist', '', class: 'govuk-link ncce-link' %></li>
+		<li class="pathway__item icon-resources"><%= link_to 'New to computer systems', '', class: 'govuk-link ncce-link' %></li>
+  </ul>
+	<p class='govuk-body'>
+	<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
+</p>
 </div>
