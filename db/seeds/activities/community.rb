@@ -71,6 +71,20 @@ end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
+a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
+  activity.title = 'Providing Additional Support'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = "Please give details of the additional support you have provided"
+  activity.description = 'Providing additional support your local community of teachers, pupils or parents during the school closure period'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
 a = Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.title = 'Run an after-school Code Club'
   activity.credit = 20
