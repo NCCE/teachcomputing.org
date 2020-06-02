@@ -1,4 +1,9 @@
 .testimonial {
+	margin-bottom: 1rem;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+  }
+
   &__text {
     background-color: $white;
     border-radius: 10px;
