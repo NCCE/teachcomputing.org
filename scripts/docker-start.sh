@@ -1,6 +1,8 @@
 #!/bin/sh
-
-URL=http://localhost:3000
+source ./scripts/yaml-parser.sh
+create_variables ./nginx-mapping.yml 'y_'
+URL="http://${y_mappings__prefix[0]}.${y_domain_root}"
+URL_TO_POLL=http://localhost:3000
 
 # Create a tunnel
 # I've a created a host under ~/.ssh/config called 'proxy', but you can use -i to specify your own key
@@ -17,13 +19,13 @@ fi
 echo "- Bringing up the stack:"
 docker-compose up -d
 printf %s "- Waiting for the stack to become available (ctrl+c to cancel): "
-while ! curl -sSf $URL &> /dev/null ; do sleep 1; done
+while ! curl -sSf $URL_TO_POLL &> /dev/null ; do sleep 1; done
 echo "done"
 
 # Conditionally open a browser window
-printf %s "- Open localhost:3000 in your default browser (y/n)? "
+printf %s "- Open ${URL} in your default browser (y/n)? "
 read RESP
 if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  echo "- Opening page" # Should probably use your default browser :)
+  echo "- Opening page, if the page fails to load ensure you've run 'npm run setup'"
   open $URL
 fi

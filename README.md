@@ -4,63 +4,81 @@
 
 ### Dependencies:
 
+- [Homebrew](https://brew.sh/)
 - Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox)
+- Node & NPM
 
 ### Setup
+
+Builds the docker image, sets up environment variables, and adds nicer a local hostname:
 ```
-cp .env-example .env
+npm run setup
 ```
 
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
 
 If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
 
-Set a default password for postgres by adding `DEV_PASS=changeme` to your `.env` file.
+Optionally set a password for postgres by updating the value for `DEV_PASS` in your `.env` file.
 
-Build the containers:
-```
-docker-compose build
-```
+### Starting and stopping the stack
 
 Start the stack:
 ```
 docker-compose up -d
 ```
-
-View logs (add -f to tail):
+Or (to automatically create an ssh tunnel, poll for the env to start and open a new tab):
 ```
-docker-compose logs
+npm start
 ```
 
-Visit http://localhost:3000
+Stop the stack:
+```
+docker-compose down
+```
+Or (to also gracefully close the tunnel)
+```
+npm stop
+```
 
-If it's your first time running you'll need to create the database first before use. You'll also need to do this if you've removed your database volume.
+The app is available at: http://local.teachcomputing.org
 
 In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 Sidekiq is used to process background jobs. You can view the admin UI for this by visiting `/admin/sidekiq` and using the credentials `SIDEKIQ_USERNAME` and `SIDEKIQ_PASSWORD`. Values for these can be found in the terraform repository.
 
-### Create Database
+### Database
+
+The database is automatically setup the first time the container is run, and a migration is performed on each subsequent run.
+
+#### Reset the database
+
+Since the setup is run via rails it's easiest to bring the entire stack down.
 ```
-docker-compose run --rm web bin/rails db:create
+docker-compose down -v
+docker-compose up -d
 ```
 
-### Run migrations
+You can also target the db volume with the following, however you'll need to bring the web container down and up again too.
+```
+docker-compose rm -sv db
+docker-compose down
+docker-compose up -d
+```
 
-After adding any new migrations they need to be run inside docker:
+#### Run migrations
+
+To perform migrations manually (without restarting the container) run:
 ```
 docker-compose run --rm web bin/rails db:migrate
 ```
 
-### Seeding the database
+#### Seeding the database
 
-Once your database is setup and the migrations have been run, you will want to ensure it is populated with the data you need to run the application. You can do this by running the following command:
-
+To seed manually run:
 ```
 docker-compose run web bin/rails db:seed
 ```
-
-This will populate things like Activities, Diagnstics and Programmes.
 
 ### Install new Dependencies
 
@@ -76,10 +94,18 @@ Uses [rspec](https://github.com/rspec/rspec)
 ```
 docker-compose run --rm web bin/rspec
 ```
+Or
+```
+npm test
+```
 
 To use [guard](https://github.com/guard/guard) to watch the tests:
 ```
 docker-compose run --rm web bin/guard
+```
+Or
+```
+npm run guard
 ```
 
 ## Sitemaps

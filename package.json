@@ -25,6 +25,7 @@
   "scripts": {
     "start": "npx ./scripts/docker-start.sh",
     "stop": "npx ./scripts/docker-stop.sh",
+    "setup": "npx ./scripts/setup.sh",
     "log": "docker-compose logs -f web",
     "console": "docker-compose run --rm web bin/rails console",
     "test": "docker-compose run --rm web bin/rspec",
