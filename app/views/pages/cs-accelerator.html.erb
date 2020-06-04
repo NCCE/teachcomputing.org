@@ -7,9 +7,6 @@
         <h1 class="govuk-heading-m">Welcome to Computer Science Accelerator</h1>
         <p class="govuk-body">Computer Science Accelerator is a flexible professional development programme designed to give you the subject knowledge and confidence to teach GCSE computer science. </p>
 				<p class="govuk-body">The programme is suitable for current or aspiring teachers of GCSE computer science, and offers support to teachers from all backgrounds.</p>
-        <%= render 'pages/certification/pathway' %>
-				<h2 class="govuk-heading-s">Funding your programme</h2>
-        <p class="govuk-body">If you’re a teacher working in state-funded secondary education, you are eligible for  <%= link_to 'bursary funding', bursary_path, class: 'govuk-link ncce-link' %>, paid to your school or college upon completion of the programme. If you’re a trainee teacher, you’ll need to claim your bursary within one year of gaining Qualified Teacher Status.</p>
         <h2 class="govuk-heading-s">Programme benefits</h2>
         <ul class="govuk-list govuk-list--bullet">
           <li>Gain the subject knowledge required to teach the GCSE curriculum with confidence and drive attainment in your school
@@ -17,6 +14,9 @@
           <li>Access a network of on and offline support to guide you through your professional development journey</li>
           <li>Obtain a professionally-recognised training certificate, awarded by BCS, The Chartered Institute for IT</li>
         </ul>
+        <%= render 'pages/certification/pathway' %>
+				<h2 class="govuk-heading-s">Funding your programme</h2>
+        <p class="govuk-body">If you’re a teacher working in state-funded secondary education, you are eligible for  <%= link_to 'bursary funding', bursary_path, class: 'govuk-link ncce-link' %>, paid to your school or college upon completion of the programme. If you’re a trainee teacher, you’ll need to claim your bursary within one year of gaining Qualified Teacher Status.</p>
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
