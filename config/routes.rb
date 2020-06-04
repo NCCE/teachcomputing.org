@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :assessment_attempts
+	get 'download_pdf', to: "programmes#download_pdf"
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
