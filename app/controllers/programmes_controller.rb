@@ -66,7 +66,6 @@ class ProgrammesController < ApplicationController
     render "programmes/#{@programme.slug}/pending"
   end
 
-
   private
 
     def enrolment
