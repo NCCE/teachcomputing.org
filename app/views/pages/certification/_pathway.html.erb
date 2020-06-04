@@ -19,11 +19,9 @@
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
 		<li class="pathway__item">
-			<%= link_to 'New to computer systems', 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf', 'govuk-link ncce-link icon-resources' %>
+			<%= link_to 'New to computer systems', 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf', class: 'govuk-link ncce-link icon-resources' %>
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
   </ul>
-	<p class='govuk-body'>
 	<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
-</p>
 </div>
