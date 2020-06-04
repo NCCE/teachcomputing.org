@@ -10,7 +10,7 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
   end
 
   it 'has a heading' do
-    expect(rendered).to have_css('h1.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator')
+    expect(rendered).to have_css('h1.govuk-heading-m', text: 'Welcome to Computer Science Accelerator')
   end
 
   it 'has diagram' do

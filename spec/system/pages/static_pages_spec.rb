@@ -39,7 +39,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-m', text: 'Welcome to the Computer Science Accelerator')
+      expect(page).to have_css('.govuk-heading-m', text: 'Welcome to Computer Science Accelerator')
     end
 
     # it 'main is accessible' do
