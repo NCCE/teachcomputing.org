@@ -66,9 +66,6 @@ class ProgrammesController < ApplicationController
     render "programmes/#{@programme.slug}/pending"
   end
 
-	def download_pdf
-		send_file "#{Rails.root}/public/pdfs/01 - New to computing.pdf", type: "application/pdf", x_sendfile: true
-	end
 
   private
 
