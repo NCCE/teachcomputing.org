@@ -1,6 +1,6 @@
 .testimonial {
-	margin-bottom: 1rem;
-  @include govuk-media-query($from: tablet) {
+	margin-bottom: 2rem;
+  @include govuk-media-query($from: desktop) {
     margin-bottom: 0;
   }
 
