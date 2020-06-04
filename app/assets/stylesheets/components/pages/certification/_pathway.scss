@@ -60,7 +60,8 @@
 	font-weight: bold;
   grid-template-rows: auto auto auto;
   margin-bottom: 0.5rem !important;
-  padding: 0.5rem 1.125rem 1.125rem;
+  padding: 1.125rem 1.125rem;
+	padding-left: 0.5rem;
   row-gap: 0;
 
   @include govuk-media-query($from: tablet) {
@@ -69,14 +70,14 @@
   	margin-bottom: 1rem !important;
     padding-bottom: 0.5rem;
   }
+
+	.icon-resources {
+		padding-left: 40px;
+	}
 }
 
 .pathway__item--pdf {
 	font-size: 0.9rem;
 	font-weight: bold;
-
-  @include govuk-media-query($from: tablet) {
-		font-size: 1rem;
-  }
 }
 
