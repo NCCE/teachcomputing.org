@@ -41,7 +41,7 @@ Or (to also gracefully close the tunnel)
 npm stop
 ```
 
-The app is available at: http://local.teachcomputing.org
+The app is available at: http://teachcomputing.rpfdev.com
 
 In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 

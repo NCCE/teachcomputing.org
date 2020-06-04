@@ -1,8 +1,9 @@
 #!/bin/sh
 source ./scripts/yaml-parser.sh
-create_variables ./nginx-mapping.yml 'y_'
-URL="http://${y_mappings__prefix[0]}.${y_domain_root}"
-URL_TO_POLL=http://localhost:3000
+create_variables ./nginx-mapping.yml 'nginx_'
+URL="http://${nginx_mappings__prefix[0]}.${nginx_domain_root}"
+URL_TO_POLL="http://localhost:${nginx_mappings__port[0]}"
+echo $URL_TO_POLL
 
 # Create a tunnel
 # I've a created a host under ~/.ssh/config called 'proxy', but you can use -i to specify your own key

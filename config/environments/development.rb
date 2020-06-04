@@ -66,6 +66,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Allow nicer hostname
-  config.hosts << "local.teachcomputing.org"
+  # Allow nicer hostname, uncomment when upgrading to Rails 6
+  # config.hosts << /([a-z0-9\.])+\.rpfdev\.com/
 end
