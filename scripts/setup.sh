@@ -5,8 +5,11 @@ if [ "$RESP" != "${RESP#[Yy]}" ]; then
   cp .env-example .env
 fi
 
-echo "- Building the image"
-docker-compose build
+printf %s "- Build the docker image (y/n)? "
+read RESP
+if [ "$RESP" != "${RESP#[Yy]}" ]; then
+  docker-compose build
+fi
 
 echo "- Install dev-nginx"
 brew tap guardian/homebrew-devtools
