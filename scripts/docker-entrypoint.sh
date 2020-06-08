@@ -19,7 +19,7 @@ fi
 echo "- Starting rails:"
 if [[ $ENV_TYPE == "development" ]]; then
   # Start in debug mode, to optionally debug with an ide
-  rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
+  rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT --dispatcher-port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
 else
   $RAILS_EXECUTABLE s -b $IP -p $PORT
 fi

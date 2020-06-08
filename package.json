@@ -25,6 +25,8 @@
   "scripts": {
     "start": "npx ./scripts/docker-start.sh",
     "stop": "npx ./scripts/docker-stop.sh",
+    "setup": "npx ./scripts/setup.sh",
+    "tunnel": "ssh -f -C -N -D 8889 -L8888:127.0.0.1:8888 proxy",
     "log": "docker-compose logs -f web",
     "console": "docker-compose run --rm web bin/rails console",
     "test": "docker-compose run --rm web bin/rspec",
