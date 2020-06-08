@@ -1,7 +1,13 @@
 .testimonial {
+	margin-bottom: 2rem;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+  }
+
   &__text {
     background-color: $white;
     border-radius: 10px;
+		line-height: 1.4;
     padding: 10px;
     @include govuk-media-query($from: tablet) {
       padding: 18px;

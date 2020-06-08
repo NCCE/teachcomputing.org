@@ -318,3 +318,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '88ad7443-d27a-482c-b2a
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc') do |activity|
+  activity.title = 'Improving Computing Classroom Practice Through Action Research'
+  activity.credit = 20
+  activity.slug = 'improving-computing-classroom-practice-through-action-research'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = ''
+  activity.future_learn_course_uuid = '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc'
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
