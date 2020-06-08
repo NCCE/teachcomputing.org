@@ -9,7 +9,7 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |acti
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Engaging in the CAS online discussion forums and webinars.'
+  activity.description = 'Engage in the CAS online discussion forums and webinars in a meaningful way.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -37,7 +37,7 @@ a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Head over to the CAS website to review resources you’ve downloaded and used from the CAS community. <a href="https://community.computingatschool.org.uk/resources/2616/single">You can find CAS resources here</a>'
+  activity.description = 'Head over to the CAS website to give a full review of a resource you’ve downloaded and used including how you used it in the classroom. <a href="https://community.computingatschool.org.uk/resources/2616/single">You can find CAS resources here</a>'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
