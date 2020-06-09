@@ -39,7 +39,7 @@ RSpec.describe Achiever::Course::Delegate do
 
     context 'with a progress of cancelled' do
       it 'returns cancelled' do
-        expect(delegate_records.last.attendance_status).to eq 'cancelled'
+        expect(delegate_records[3].attendance_status).to eq 'cancelled'
       end
     end
   end
@@ -55,7 +55,7 @@ RSpec.describe Achiever::Course::Delegate do
       end
 
       it 'contains instances of Achiever::Course::Delegate' do
-        expect(described_class.find_by_achiever_contact_number('id-101').first).to be_an Achiever::Course::Delegate
+        expect(described_class.find_by_achiever_contact_number('id-101').first).to be_an described_class
       end
     end
   end

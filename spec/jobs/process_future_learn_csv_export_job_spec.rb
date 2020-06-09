@@ -3,12 +3,14 @@ require 'rails_helper'
 RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:activity_one) { create(:activity, future_learn_course_uuid: '1234') }
   let(:activity_two) { create(:activity, future_learn_course_uuid: '5678') }
-  let(:user_one) { create(:user, email: 'user1@example.com') }
-  let(:user_two) { create(:user, email: 'user2@example.com') }
-  let(:user_three) { create(:user, email: 'user3@example.com') }
-  let(:user_four) { create(:user, email: 'user4@example.com') }
-  let(:user_five) { create(:user, email: 'user5@example.com') }
-  let(:user_six) { create(:user, email: 'user6@example.com') }
+  let(:activity_three) { create(:activity, future_learn_course_uuid: '2222') }
+  let(:activity_four) { create(:activity, future_learn_course_uuid: '3333') }
+  let!(:user_one) { create(:user, email: 'user1@example.com') }
+  let!(:user_two) { create(:user, email: 'user2@example.com') }
+  let!(:user_three) { create(:user, email: 'user3@example.com') }
+  let!(:user_four) { create(:user, email: 'user4@example.com') }
+  let!(:user_five) { create(:user, email: 'user5@example.com') }
+  let!(:user_six) { create(:user, email: 'user6@example.com') }
   let(:dropped_achievement) { create(:achievement, user_id: user_six.id, activity_id: activity_two.id) }
   let(:another_dropped_achievement) { create(:achievement, user_id: user_two.id, activity_id: activity_two.id) }
   let(:completed_achievement) { create(:achievement, user_id: user_four.id, activity_id: activity_two.id) }
@@ -26,21 +28,26 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,
     2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,
     2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,15%,10,0%,,5678,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,'
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,2222,
+    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,3333,'
   end
   let(:programme) { create(:primary_certificate) }
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
+  let!(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
+
+  let(:cs_acc_programme) { create(:cs_accelerator) }
+  let!(:cs_acc_programme_activity) { create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_three.id) }
+  let!(:cs_acc_programme_activity2) { create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_four.id) }
 
   describe '#perform' do
     include ActiveJob::TestHelper
 
     before do
-      [user_one, user_two, user_three, user_four, user_five, user_six, activity_one, activity_two, programme_activity]
       dropped_achievement.transition_to(:dropped)
       another_dropped_achievement.transition_to(:dropped)
       completed_achievement.transition_to(:complete)
       allow(Raven).to receive(:capture_exception)
-      ProcessFutureLearnCsvExportJob.perform_now(csv_contents, import)
+      described_class.perform_now(csv_contents, import)
     end
 
     after do
@@ -129,6 +136,10 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
 
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
       expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+    end
+
+    it 'queues AssessmentEligibilityJob once for cs-accelerator per user' do
+      expect(AssessmentEligibilityJob).to have_been_enqueued.exactly(:once)
     end
   end
 end

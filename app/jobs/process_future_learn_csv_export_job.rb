@@ -3,6 +3,9 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
   def perform(csv_contents, import_record)
     missing_courses = []
+    cs_accelerator_user_ids = []
+    primary_certificate_user_ids = []
+
     csv = CSV.parse(csv_contents, headers: true)
     csv.each do |record|
       user = User.find_by('email ILIKE ?', record['learner_identifier'])
@@ -30,10 +33,18 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
       case achievement.programme.slug
       when 'cs-accelerator'
-        AssessmentEligibilityJob.perform_later(achievement.user.id)
+        cs_accelerator_user_ids << achievement.user.id
       when 'primary-certificate'
-        PrimaryCertificatePendingTransitionJob.perform_later(achievement.user.id, source: 'AchievementsController.create') if achievement.current_state == :complete.to_s
+        primary_certificate_user_ids << achievement.user.id if achievement.current_state == :complete.to_s
       end
+    end
+
+    cs_accelerator_user_ids.uniq.each do |id|
+      AssessmentEligibilityJob.perform_later(id)
+    end
+
+    primary_certificate_user_ids.uniq.each do |id|
+      PrimaryCertificatePendingTransitionJob.perform_later(id, source: 'AchievementsController.create')
     end
 
     import_record.update(completed_at: DateTime.now.in_time_zone)
