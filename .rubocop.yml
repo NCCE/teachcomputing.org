@@ -9,7 +9,7 @@ AllCops:
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.5.7
 
 Layout/EndOfLine:
   EnforcedStyle: lf
@@ -31,7 +31,7 @@ Layout/ClassStructure:
     - private_methods
 
 Layout/IndentationConsistency:
-  EnforcedStyle: rails
+  EnforcedStyle: indented_internal_methods
 
 Metrics/BlockLength:
   Enabled: false

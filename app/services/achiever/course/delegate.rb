@@ -3,7 +3,7 @@ class Achiever::Course::Delegate
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
   PROGRAMME_NAME = 'ncce'.freeze
-  CACHE = false.freeze
+  CACHE = false
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
     query_strings = {

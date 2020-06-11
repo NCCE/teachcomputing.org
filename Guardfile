@@ -71,6 +71,8 @@ guard :rspec, cmd: "bundle exec rspec" do
   #   Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   # end
 
+  # Background jobs
+  watch(%r{^app/jobs/(.+)\.rb$}) { |m| "spec/jobs/#{m[1]}_spec.rb" }
    # FactoryGirl factories
   begin
     require 'active_support/inflector'
