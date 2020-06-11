@@ -140,4 +140,18 @@ Run `brakeman -i config/brakeman.ignore .` in the project root and follow the on
 
 ### Debugging
 
+`ruby-debug-ide` is enabled and waiting for connections by default on port `1234`. There is a `launch.json` in the repo and if you're using vscode it should be as easy as going to the 'Run' view, selecting 'Debug Attach' and clicking the green Run button. It's important to note that if you attempt to restart or stop the debug process, this will effectively kill the container, and a `docker-compose up -d` will be necessary to continue - however this is rarely necessary in general use since you'll be debugging individual requests.
+
+If you prefer to use `byebug` you'll *first* need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker-compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker-compose up -d` again.
+
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
+
+### Troubleshooting
+
+> I've run `npm start` and it's hanging whilst 'Waiting for the stack to become available'
+
+The script doesn't time out so this indicates that it can't resolve to `localhost:3000` and there was a problem bringing up the web container. Run `docker-compose logs web` to investigate the cause.
+
+> I can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`
+
+In some circumstances the nginx instance used by dev-nginx may go down, just run `dev-nginx restart-nginx` to bring it up again.
