@@ -15,34 +15,18 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let(:another_dropped_achievement) { create(:achievement, user_id: user_two.id, activity_id: activity_two.id) }
   let(:completed_achievement) { create(:achievement, user_id: user_four.id, activity_id: activity_two.id) }
   let(:import) { create(:import) }
-  let(:csv_contents) do
-    'run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,course_uuid,
-    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,,1234,
-    2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%, ,1234,
-    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,1234,
-    2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,5678,
-    2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,0%,0,0%,,1234,
-    2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,44%,0,0%,2019-05-03 10:45:45 UTC,1234,
-    2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,0%,0,0%,,5678,
-    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,
-    2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,15%,10,0%,,5678,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,2222,
-    2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,3333,'
-  end
+  let(:csv_contents) { File.read('spec/support/test_future_learn_export.csv') }
   let(:programme) { create(:primary_certificate) }
-  let!(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id) }
 
   let(:cs_acc_programme) { create(:cs_accelerator) }
-  let!(:cs_acc_programme_activity) { create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_three.id) }
-  let!(:cs_acc_programme_activity2) { create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_four.id) }
 
   describe '#perform' do
     include ActiveJob::TestHelper
 
     before do
+      create(:programme_activity, programme_id: programme.id, activity_id: activity_one.id)
+      create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_three.id)
+      create(:programme_activity, programme_id: cs_acc_programme.id, activity_id: activity_four.id)
       dropped_achievement.transition_to(:dropped)
       another_dropped_achievement.transition_to(:dropped)
       completed_achievement.transition_to(:complete)
@@ -125,8 +109,16 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       end
 
       it 'state in_progress shows correct metadata' do
-        expect(user_two.achievements.find_by(activity_id: activity_two.id).last_transition.metadata['progress']).to eq 45.0
-        expect(user_one.achievements.find_by(activity_id: activity_two.id).last_transition.metadata['progress']).to eq 15.0
+        expect(
+          user_two.achievements
+          .find_by(activity_id: activity_two.id)
+          .last_transition.metadata['progress']
+        ).to eq 45.0
+        expect(
+          user_one.achievements
+          .find_by(activity_id: activity_two.id)
+          .last_transition.metadata['progress']
+        ).to eq 15.0
       end
 
       it 'state remains enrolled if steps complete is 0' do
