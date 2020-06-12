@@ -9,7 +9,7 @@ class ResourcesController < ApplicationController
   def show
     redirect_url = URI.decode_www_form_component(params[:redirect_url])
 
-    if helpers.whitelist_redirect_url(redirect_url)
+    if helpers.safe_redirect_url(redirect_url)
       resource_user = track_resources!
       ScheduleUserResourcesFeedbackJob.set(wait_until: Date.today.next_week.noon + 1.day).perform_later(resource_user.user, params[:year]) if resource_user.counter == 1
       return redirect_to redirect_url
