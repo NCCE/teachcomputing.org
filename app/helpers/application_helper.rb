@@ -25,7 +25,7 @@ module ApplicationHelper
     'https://blog.teachcomputing.org/tag/press/'
   end
 
-  def whitelist_redirect_url(url)
+  def safe_redirect_url(url)
     allowed_redirect_urls = [
       /^https:\/\/teachcomputing.org/,
       /^https:\/\/staging-teachcomputing.org/,
