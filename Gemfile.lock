@@ -149,6 +149,10 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphql (1.10.10)
+    graphql-client (0.16.0)
+      activesupport (>= 3.0)
+      graphql (~> 1.8)
     guard (2.16.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -451,12 +455,13 @@ DEPENDENCIES
   connection_pool (~> 2.2.2)
   dalli (~> 2.7.9)
   ddtrace (~> 0.18.2)
-  debase
+  debase (~> 0.2.3)
   dotenv-rails
   erb_lint
   factory_bot_rails
   faraday (~> 0.15.4)
   fog-aws (~> 3.3)
+  graphql-client
   guard-rspec (~> 4.7.3)
   htmlentities (~> 4.3)
   jwt (~> 2.1.0)
