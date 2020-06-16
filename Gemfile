@@ -11,7 +11,7 @@ gem 'connection_pool', '~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
 gem 'faraday', '~> 0.15.4', require: false
-gem "fog-aws", "~> 3.3"
+gem 'fog-aws', '~> 3.3'
 gem 'graphql-client'
 gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'
@@ -57,12 +57,12 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'debase', '~> 0.2.3'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'ruby-debug-ide'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'debase', '~> 0.2.3'
 end
 
 group :test do

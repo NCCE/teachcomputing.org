@@ -1,4 +1,4 @@
-# require 'rails_helper'
+require 'rails_helper'
 
 # RSpec.describe Curriculum::KeyStage, type: :request  do
 # 	let(:key_stage) { create(:key_stage) }
@@ -14,7 +14,7 @@
 #   end
 
 #   fdescribe 'list Key Stages' do
-#     it 'returns key stages' do
+#     fit 'returns key stages' do
 #       RestClient.post('https://curriculum.teachcomputing.rpfdev.com/graphql', :body => {
 #         keyStages {
 #           id
