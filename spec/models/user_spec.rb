@@ -137,4 +137,11 @@ RSpec.describe User, type: :model do
       expect(user.last_sign_in_at).to be_today
     end
   end
+
+  describe '#enrolments' do
+    it 'returns UserProgrammeEnrolments for the given user' do
+      enrolment = create(:user_programme_enrolment, user_id: user.id)
+      expect(user.enrolments).to include enrolment
+    end
+  end
 end
