@@ -2,25 +2,9 @@ require "graphql/client"
 require "graphql/client/http"
 
 class Curriculum
-  def initialize
-    http = GraphQL::Client::HTTP.new("https://curriculum.teachcomputing.rpfdev.com/graphql") do
-      def headers(context) {} end
-    end
-
-    schema = GraphQL::Client.load_schema(http)
+  def self.connect
+    http = GraphQL::Client::HTTP.new("#{ENV.fetch('CURRICULUM_APP_URL')}/graphql")
+    schema = GraphQL::Client.load_schema("db/resource_repository_schema.json")
     client = GraphQL::Client.new(schema: schema, execute: http)
-  end
-
-  # TODO: Move queries out into separate files
-  def get_key_stage
-    keyStage = Curriculum::Client.parse <<-'GRAPHQL'
-      query {
-        keystage {
-          id
-          title
-          description
-        }
-      }
-    GRAPHQL
   end
 end

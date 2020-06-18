@@ -83,6 +83,10 @@ guard :rspec, cmd: "bundle exec rspec" do
   end
 
   # TODO: Support any service defined
+  watch(%r{^app/services/curriculum/(.+)\.rb$}) do |m|
+    ["#{rspec.spec_dir}/models/services/curriculum/#{m[1]}_spec.rb"]
+  end
+
   watch(%r{^app/services/achiever/(.+)\.rb$}) do |m|
     ["#{rspec.spec_dir}/models/services/achiever/#{m[1]}_spec.rb"]
   end
