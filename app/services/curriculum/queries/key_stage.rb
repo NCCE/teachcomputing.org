@@ -1,5 +1,5 @@
 class Curriculum::KeyStage
-  KeyStageQuery = Curriculum::Client.parse <<-'GRAPHQL'
+  KeyStages = Curriculum::Client.parse <<-'GRAPHQL'
     query {
       keyStages {
         id
@@ -10,11 +10,20 @@ class Curriculum::KeyStage
   GRAPHQL
 
   def self.all
-    response = Curriculum::Client.query(KeyStageQuery)
-    if response.errors.any?
-      raise QueryError.new(response.errors[:data].join(", "))
-    else
-      response
-    end
+    Curriculum.execute(KeyStages)
+  end
+
+  KeyStage = Curriculum::Client.parse <<-'GRAPHQL'
+    query($id: ID!) {
+      keyStage(id: $id) {
+        id
+        title
+        description
+      }
+    }
+  GRAPHQL
+
+  def self.one(id)
+    Curriculum.execute(KeyStage, id)
   end
 end
