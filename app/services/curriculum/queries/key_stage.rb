@@ -10,7 +10,7 @@ class Curriculum::KeyStage
   GRAPHQL
 
   def self.all
-    Curriculum.execute(KeyStages)
+    Curriculum.request(KeyStages)
   end
 
   KeyStage = Curriculum::Client.parse <<-'GRAPHQL'
@@ -24,6 +24,6 @@ class Curriculum::KeyStage
   GRAPHQL
 
   def self.one(id)
-    Curriculum.execute(KeyStage, id)
+    Curriculum.request(KeyStage, id)
   end
 end

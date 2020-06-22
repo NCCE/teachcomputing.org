@@ -20,7 +20,7 @@ class Curriculum
     raise 'Unable to load the schema.'
   end
 
-  def self.execute(query, id = nil)
+  def self.request(query, id = nil)
     response = Client.query(query, variables: {:id => id})
     if response.errors.any?
       raise QueryError.new(response.errors[:data].join(", "))
