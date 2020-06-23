@@ -1,7 +1,7 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
-  <p class='govuk-body'>Congratulations! We are delighted to confirm that you have achieved the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge</p>
+  <p class='govuk-body'>We are delighted to confirm that you have achieved the National Centre for Computing Education certificate in GCSE computer science subject knowledge.</p>
   <p class='govuk-body'><%= link_to 'Get your certificate', programme_certificate_url(slug: @programme.slug), class: 'govuk-button button' %></p>
-  <p class='govuk-body'>We are planning to arrange for certificates to be presented at local Computing at School Communities of Practice in the future. When this process is confirmed, we will be in touch with full details.</p>
+  <p class='govuk-body'>You can also download a copy of your certificate from your dashboard on <%= link_to "teachcomputing.org", cs_accelerator_url %>.</p>
   <p class='govuk-body'>Congratulations on your achievement and please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>  if you have any questions.
 </div>
