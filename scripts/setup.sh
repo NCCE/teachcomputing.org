@@ -3,6 +3,14 @@ source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
 CONFIG_FILE="/usr/local/etc/nginx/servers/${nginx_name}.conf"
 
+echo "- Setting up homebrew"
+command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+
+echo "- Setting up npm"
+brew install node@12
+npm i
+
 printf %s "- Copy .env-example? WARNING this will overwrite any existing environment variables (y/n)? "
 read RESP
 if [ "$RESP" != "${RESP#[Yy]}" ]; then
