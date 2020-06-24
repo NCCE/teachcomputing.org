@@ -2,30 +2,41 @@ require "graphql/client"
 require "graphql/client/http"
 
 class Curriculum
-  class QueryError < StandardError; end
+  SCHEMA_PATH = "db/resource_repository_schema.json"
+  CURRICULUM_API_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql"
 
-  HTTP = GraphQL::Client::HTTP.new("#{ENV.fetch('CURRICULUM_APP_URL')}/graphql") do
-    def headers(context)
-      {
+  class SchemaLoadError < StandardError; end
+  class ConnectionError < StandardError; end
+
+  def self.connect(schema = SCHEMA_PATH, url = CURRICULUM_API_URL)
+    client = Graphlient::Client.new(url,
+      headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-      }
+      },
+      http_options: {
+        read_timeout: 20,
+        write_timeout: 30
+      },
+      schema_path: schema
+    )
+
+    if (client.schema == nil)
+      raise SchemaLoadError
     end
+
+    client
   end
 
-  begin
-    Schema = GraphQL::Client.load_schema("db/resource_repository_schema.json")
-    Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
-  rescue Errno::ECONNREFUSED
-    raise 'Unable to load the schema.'
-  end
+  def self.request(query, params = {}, client = nil)
+    client = client || self.connect
 
-  def self.request(query, id = nil)
-    response = Client.query(query, variables: {:id => id})
-    if response.errors.any?
-      raise QueryError.new(response.errors[:data].join(", "))
-    else
-      response.data
+    begin
+      response = client.execute(client.parse(query), params)
+    rescue Graphlient::Errors::ServerError
+      raise ConnectionError.new("Unable to connect to: #{CURRICULUM_API_URL}")
     end
+
+    response.data
   end
 end
