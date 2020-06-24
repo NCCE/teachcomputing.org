@@ -12,7 +12,7 @@ gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
 gem 'faraday', '~> 0.15.4', require: false
 gem 'fog-aws', '~> 3.3'
-gem 'graphlient'
+gem 'graphlient', '~> 0.4'
 gem 'htmlentities', '~> 4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'lograge'
