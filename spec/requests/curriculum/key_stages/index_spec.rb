@@ -7,7 +7,7 @@ RSpec.describe Curriculum::KeyStagesController do
     end
 
     it 'renders the index template' do
-      expect(response).to render_template(:new)
+      expect(response).to render_template(:index)
     end
   end
 end
