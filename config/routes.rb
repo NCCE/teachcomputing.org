@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
+  namespace 'curriculum' do
+    root to: 'key_stages#index', action: :index
+    resources :key_stages, only: %i[index]
+  end
+
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/resources', action: :index, controller: 'resources'
