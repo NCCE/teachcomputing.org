@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
+  namespace 'curriculum' do
+    root to: 'key_stages#index', action: :index
+    resources :key_stages, only: %i[index]
+  end
+
   get 'dashboard', action: :show, controller: 'dashboard'
 
   get '/resources', action: :index, controller: 'resources'
@@ -77,11 +82,5 @@ Rails.application.routes.draw do
 
 
   require 'sidekiq/web'
-  if Rails.env.production?
-    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_USERNAME'])) &
-        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
-    end
-  end
   mount Sidekiq::Web, at: 'admin/sidekiq'
 end
