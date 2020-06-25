@@ -10,7 +10,7 @@ RSpec.describe Curriculum::KeyStage do
         body: {}.to_json
       )
 
-    expect(described_class.one(0)).to have_requested(:post, url)
-      .with(body: hash_including({'variables': {'id': 0}}))
+    expect(described_class.one('some_id')).to have_requested(:post, url)
+      .with(body: hash_including({'variables': {'id': 'some_id'}}))
   end
 end
