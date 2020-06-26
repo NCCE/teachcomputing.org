@@ -84,9 +84,10 @@
 }
 
 .card--resource {
+	margin-bottom: 1rem !important;
 	@include govuk-media-query($from: desktop) {
 	padding: (0.5 * $logo-block) (1 * $logo-block) (0.5 * $logo-block) (0.5 * $logo-block);
-}
+	}
 
 }
 
