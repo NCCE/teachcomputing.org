@@ -83,6 +83,13 @@
   background-image: none;
 }
 
+.card--resource {
+	@include govuk-media-query($from: desktop) {
+	padding: (0.5 * $logo-block) (1 * $logo-block) (0.5 * $logo-block) (0.5 * $logo-block);
+}
+
+}
+
 .card > .status-block {
   @include status_block();
   display: inline-block;
