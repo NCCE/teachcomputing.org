@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Curriculum do
-  it 'throws if an incorrect schema is specified' do
+  fit 'throws if an incorrect schema is specified' do
     expect {described_class::Connection.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
   end
 
@@ -9,6 +9,15 @@ RSpec.describe Curriculum do
     client = described_class::Connection.connect
     expect(client.schema).to be_truthy
     expect(client.schema).to be_a Graphlient::Schema
+  end
+
+  it "throws if an unexpected or empty client instance is passed" do
+    query = <<~GRAPHQL
+      query {}
+    GRAPHQL
+
+    expect {described_class::Request.run(query, {}, described_class)}
+      .to raise_error(Curriculum::Errors::ConnectionError, "Invalid or missing Graphlient::Client, unable to connect")
   end
 
   it "throws if it can't connect" do

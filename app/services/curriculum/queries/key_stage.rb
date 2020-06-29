@@ -1,11 +1,11 @@
 class Curriculum::KeyStage
+  # TODO: Could this use the schema? (would need an instance of schema in)
+  FIELDS = ['id', 'title', 'shortTitle', 'level', 'ages', 'description', 'yearGroups']
+
   ALL = <<~GRAPHQL
     query {
       keyStages {
-        id
-        title
-        description
-        yearGroups
+        #{FIELDS.join(' ')}
       }
     }
   GRAPHQL
@@ -13,10 +13,7 @@ class Curriculum::KeyStage
   ONE = <<~GRAPHQL
     query($id: ID!) {
       keyStage(id: $id) {
-        id
-        title
-        description
-        yearGroups
+        #{FIELDS.join(' ')}
       }
     }
   GRAPHQL

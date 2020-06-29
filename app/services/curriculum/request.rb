@@ -5,6 +5,10 @@ class Curriculum::Request
   def self.run(query, params = {}, client = nil)
     client = client || Curriculum::Connection.connect
 
+    if (!client.is_a?(Graphlient::Client))
+      raise Curriculum::Errors::ConnectionError.new("Invalid or missing Graphlient::Client, unable to connect")
+    end
+
     begin
       response = client.execute(client.parse(query), params)
     rescue Graphlient::Errors::ServerError
