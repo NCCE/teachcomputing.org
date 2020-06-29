@@ -85,6 +85,10 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       end
 
       it 'does not transition it to dropped if it is already complete' do
+        expect(user_four.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
+      end
+
+      it 'does not transition to dropped if progress is 60%+' do
         expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
       end
     end
@@ -102,10 +106,6 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
 
       it 'state transitions to in_progress if steps complete is between 1 and 59' do
         expect(user_one.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
-      end
-
-      it 'state transitions to in_progress if it was dropped' do
-        expect(user_two.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
       end
 
       it 'state in_progress shows correct metadata' do
@@ -127,7 +127,7 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
     end
 
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:twice)
     end
 
     it 'queues AssessmentEligibilityJob once for cs-accelerator per user' do
