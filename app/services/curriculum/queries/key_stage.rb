@@ -22,10 +22,10 @@ class Curriculum::KeyStage
   GRAPHQL
 
   def self.all
-    Curriculum.request(ALL)
+    Curriculum::Request.run(ALL)
   end
 
   def self.one(id)
-    Curriculum.request(ONE, {id: id})
+    Curriculum::Request.run(ONE, {id: id})
   end
 end

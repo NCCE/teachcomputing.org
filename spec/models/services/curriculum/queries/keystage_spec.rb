@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Curriculum::KeyStage do
   it 'creates a request with the expected params' do
-    url = Curriculum::CURRICULUM_API_URL
+    url = Curriculum::Connection::CURRICULUM_API_URL
 
     stub_request(:post, url)
       .to_return(

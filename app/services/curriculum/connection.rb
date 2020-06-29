@@ -1,12 +1,9 @@
 require "graphql/client"
 require "graphql/client/http"
 
-class Curriculum
+class Curriculum::Connection
   SCHEMA_PATH = "db/resource_repository_schema.json"
   CURRICULUM_API_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql"
-
-  class SchemaLoadError < StandardError; end
-  class ConnectionError < StandardError; end
 
   def self.connect(schema = SCHEMA_PATH, url = CURRICULUM_API_URL)
     client = Graphlient::Client.new(url,
@@ -22,21 +19,9 @@ class Curriculum
     )
 
     if (client.schema == nil)
-      raise SchemaLoadError
+      raise Curriculum::Errors::SchemaLoadError
     end
 
     client
-  end
-
-  def self.request(query, params = {}, client = nil)
-    client = client || self.connect
-
-    begin
-      response = client.execute(client.parse(query), params)
-    rescue Graphlient::Errors::ServerError
-      raise ConnectionError.new("Unable to connect to: #{CURRICULUM_API_URL}")
-    end
-
-    response.data
   end
 end
