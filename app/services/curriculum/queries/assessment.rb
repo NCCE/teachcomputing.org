@@ -1,4 +1,4 @@
-class Curriculum::Assessment
+class Curriculum::Queries::Assessment
   FIELDS = ['id', 'unit', 'title', 'description', 'rubric', 'summative_assessment', 'sheets']
 
   ALL = <<~GRAPHQL
