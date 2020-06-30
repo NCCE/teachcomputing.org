@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Curriculum do
-  fit 'throws if an incorrect schema is specified' do
+  it 'throws if an incorrect schema is specified' do
     expect {described_class::Connection.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
   end
 
