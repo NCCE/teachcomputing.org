@@ -1,4 +1,4 @@
-class Curriculum::KeyStage
+class Curriculum::Queries::KeyStage
   # TODO: Could this use the schema? (would need an instance of schema in)
   FIELDS = ['id', 'title', 'shortTitle', 'level', 'ages', 'description', 'yearGroups']
 
