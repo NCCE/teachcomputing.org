@@ -89,12 +89,18 @@
 	border-left-width: 9px;
   box-shadow: 0 0 5px $box-shadow;
 	margin-bottom: 1rem !important;
+  padding: 20px 20px 30px 20px;
   position: relative;
 
 	@include govuk-media-query($from: desktop) {
     margin-bottom: $logo-block;
-		padding: (0.5 * $logo-block) 0 (0.5 * $logo-block) (0.5 * $logo-block);
+		padding: (0.5 * $logo-block) 0 (0.25 * $logo-block) (0.5 * $logo-block);
 	}
+}
+
+.card--resource__title {
+	font-weight: 500;
+	margin: 0;
 }
 
 .card > .status-block {
