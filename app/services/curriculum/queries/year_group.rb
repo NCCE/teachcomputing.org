@@ -3,7 +3,7 @@ class Curriculum::YearGroup
 
   ALL = <<~GRAPHQL
     query {
-      yearGroup {
+      yearGroups {
         #{FIELDS.join(' ')}
       }
     }
