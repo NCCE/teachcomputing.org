@@ -1,4 +1,4 @@
-class Curriculum::YearGroup
+class Curriculum::Queries::YearGroup
   FIELDS = ['id', 'keyStage', 'yearNumber', 'description', 'units']
 
   ALL = <<~GRAPHQL
