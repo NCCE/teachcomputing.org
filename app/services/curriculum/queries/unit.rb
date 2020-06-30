@@ -1,5 +1,5 @@
 class Curriculum::Queries::Unit
-  FIELDS = ['id', 'description', 'unitOverview', 'lessons']
+  FIELDS = ['id', 'title', 'description', 'unitOverview', 'assessments', 'lessons']
 
   ALL = <<~GRAPHQL
     query {
