@@ -84,11 +84,17 @@
 }
 
 .card--resource {
+	background-color: $concrete;
+	border-left-style: solid;
+	border-left-width: 9px;
+  box-shadow: 0 0 5px $box-shadow;
 	margin-bottom: 1rem !important;
-	@include govuk-media-query($from: desktop) {
-	padding: (0.5 * $logo-block) (1 * $logo-block) (0.5 * $logo-block) (0.5 * $logo-block);
-	}
+  position: relative;
 
+	@include govuk-media-query($from: desktop) {
+    margin-bottom: $logo-block;
+		padding: (0.5 * $logo-block) 0 (0.5 * $logo-block) (0.5 * $logo-block);
+	}
 }
 
 .card > .status-block {
