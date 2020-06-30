@@ -86,6 +86,9 @@
     "MANDRILL_API_KEY": {
       "required": true
     },
+    "CURRICULUM_ENABLED": {
+      "required": true
+    },
     "CURRICULUM_APP_URL": {
       "required": true
     }
