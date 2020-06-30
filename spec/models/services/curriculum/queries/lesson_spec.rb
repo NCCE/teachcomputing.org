@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Curriculum::Lesson do
+RSpec.describe Curriculum::Queries::Lesson do
   let(:url) {Curriculum::Connection::CURRICULUM_API_URL}
 
   before :each do

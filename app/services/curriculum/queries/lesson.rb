@@ -1,9 +1,9 @@
-class Curriculum::Lesson
+class Curriculum::Queries::Lesson
   FIELDS = ['id', 'unit', 'title', 'description', 'lessonPlan', 'activities', 'slides']
 
   ALL = <<~GRAPHQL
     query {
-      lesson {
+      lessons {
         #{FIELDS.join(' ')}
       }
     }
