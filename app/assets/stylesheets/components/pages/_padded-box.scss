@@ -14,14 +14,28 @@
 .padded-box__title {
 	font-weight: 500;
 	line-height: 1.5625rem;
+
+	background-image: image-url('bulb.svg');
+	background-position: left 0.2rem;
+	background-repeat: no-repeat;
+	background-size: 2.5rem;
+	padding-left: 3rem;
+	@include govuk-media-query($from: desktop) {
+		background-image: none;
+		padding-left: unset;
+	}
 }
 
 .padded-box__feedback {
-	margin-top: 1rem;
-  background-image: image-url('bulb.svg');
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 3rem;
-	padding-left: 4rem;
+
+  @include govuk-media-query($from: desktop) {
+		background-image: image-url('bulb.svg');
+		background-position: left 2.2rem;
+		background-repeat: no-repeat;
+		background-size: 3.5rem;
+		margin-top: 1rem;
+		padding-left: 4rem;
+	}
+
 }
 
