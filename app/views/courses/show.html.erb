@@ -1,7 +1,7 @@
 <% meta_tag :title, "#{@course.title} - Teach Computing" %>
 <% meta_tag :description, @course.meta_description %>
 <%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{@course.online_cpd ? 'Online' : 'Face to face'} course", glyph_position: 'bottom', colour: 'blue', small_title: true %>
-<% meta_tag :image, image_url('/images/courses.png'), skip_pipeline: true) %>
+<% meta_tag :image, image_url('/images/courses.png', skip_pipeline: true) %>
 
 <div class="govuk-width-container">
   <div
