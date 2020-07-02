@@ -1,14 +1,15 @@
 require 'spec_helper'
 
-RSpec.describe Curriculum do
-  it 'throws if an incorrect schema is specified' do
-    expect {described_class::Connection.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
-  end
+RSpec.describe Curriculum::Request do
+  let(:url) {Curriculum::Connection::CURRICULUM_API_URL}
+  let(:schema) {File.new('spec/support/curriculum/curriculum_schema.json')}
 
-  it 'can load the schema' do
-    client = described_class::Connection.connect
-    expect(client.schema).to be_truthy
-    expect(client.schema).to be_a Graphlient::Schema
+  before :each do
+    stub_request(:post, url)
+      .to_return(
+        status: 200,
+        body: schema
+      )
   end
 
   it "throws if an unexpected or empty client instance is passed" do
@@ -16,14 +17,17 @@ RSpec.describe Curriculum do
       query {}
     GRAPHQL
 
-    expect {described_class::Request.run(query, {}, described_class)}
+    expect {described_class.run(query, {}, described_class)}
       .to raise_error(Curriculum::Errors::ConnectionError, "Invalid or missing Graphlient::Client, unable to connect")
   end
 
   it "throws if it can't connect" do
-    url = Curriculum::Connection::CURRICULUM_API_URL
+    client = Curriculum::Connection::connect
+
+    # The next request should fail
     stub_request(:post, url)
       .to_raise(Errno::ECONNREFUSED)
+
     query = <<~GRAPHQL
       query {
         keyStages {
@@ -33,7 +37,7 @@ RSpec.describe Curriculum do
         }
       }
     GRAPHQL
-    expect {described_class::Request.run(query)}
+    expect {described_class.run(query, {}, client)}
       .to raise_error(Curriculum::Errors::ConnectionError, "Unable to connect to: #{url}")
   end
 end
