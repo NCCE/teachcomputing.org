@@ -30,7 +30,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a terms and conditions link' do
-    expect(rendered).to have_link('Terms and Conditions', href: '/terms-conditions)
+    expect(rendered).to have_link('Terms and Conditions', href: '/terms-conditions')
   end
 
   it 'has a press link' do
