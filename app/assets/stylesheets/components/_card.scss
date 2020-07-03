@@ -88,8 +88,8 @@
 	border-left-style: solid;
 	border-left-width: 9px;
   box-shadow: 0 0 5px $box-shadow;
-	margin-bottom: 1rem !important;
-  padding: 10px 10px 5px 30px;
+	margin-bottom: 1rem;
+  padding: 10px 10px 5px 20px;
   position: relative;
 
 	@include govuk-media-query($from: desktop) {
@@ -100,9 +100,13 @@
 
 .card--resource__title {
 	font-weight: 500;
-	line-height: 28px;
-	margin-bottom: 1rem;
+	line-height: 1.75rem;
+	margin-bottom: 0.5rem;
 	margin-top: 0;
+
+	@include govuk-media-query($from: desktop) {
+    margin-bottom: 1rem;
+  }
 }
 
 .card > .status-block {
