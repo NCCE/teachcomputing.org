@@ -29,6 +29,10 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Privacy', href: '/privacy')
   end
 
+  it 'has a terms and conditions link' do
+    expect(rendered).to have_link('Terms and Conditions', href: '/terms-conditions)
+  end
+
   it 'has a press link' do
     expect(rendered).to have_link('Press', href: 'https://blog.teachcomputing.org/tag/press/')
   end
