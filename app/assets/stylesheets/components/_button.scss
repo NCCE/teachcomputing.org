@@ -65,6 +65,10 @@
   margin-bottom: 0;
 }
 
+.button--medium {
+	padding: 0.75rem 0.9375rem;
+}
+
 .button--aside {
   @include ncce_button($deep-cerulean);
   @include govuk-media-query($from: desktop) {
