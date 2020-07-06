@@ -1,14 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Curriculum::Queries::Assessment do
-  let(:url) {Curriculum::Connection::CURRICULUM_API_URL}
-
   before :each do
-    stub_request(:post, url)
-    .to_return(
-      status: 200,
-      body: {}.to_json
-    )
+    stub_a_valid_schema_request
   end
 
   it 'creates valid queries' do

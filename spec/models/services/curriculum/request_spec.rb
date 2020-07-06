@@ -2,14 +2,9 @@ require 'spec_helper'
 
 RSpec.describe Curriculum::Request do
   let(:url) {Curriculum::Connection::CURRICULUM_API_URL}
-  let(:schema) {File.new('spec/support/curriculum/curriculum_schema.json')}
 
   before :each do
-    stub_request(:post, url)
-      .to_return(
-        status: 200,
-        body: schema
-      )
+    stub_a_valid_schema_request
   end
 
   it "throws if an unexpected or empty client instance is passed" do

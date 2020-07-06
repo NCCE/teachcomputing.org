@@ -11,23 +11,18 @@ RSpec.describe Curriculum::Connection do
     Rails.cache.clear
   end
 
-  fit 'throws if an incorrect schema is specified' do
-    expect {described_class.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
+  it 'throws if an incorrect schema is specified' do
+    expect{described_class.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
   end
 
-  fit 'can load a schema' do
-    stub_request(:post, url)
-      .to_return(
-        status: 200,
-        body: schema
-      )
-
+  it 'can load a schema' do
+    stub_a_valid_schema_request
     client = described_class.connect
     expect(client.schema).to be_truthy
     expect(client.schema).to be_a Graphlient::Schema
   end
 
-  fit 'can load a schema from the cache' do
+  it 'can load a schema from the cache' do
     stub = stub_request(:post, url)
     cache.write('curriculum_schema', schema)
     client = described_class.connect

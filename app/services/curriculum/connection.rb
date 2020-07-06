@@ -25,8 +25,7 @@ class Curriculum::Connection
     end
 
     if (store_schema)
-      # TODO: Is it possible to avoid writing a file?
-      new_schema = GraphQL::Client.dump_schema(client.http, 'tmp/tmp.json')
+      new_schema = GraphQL::Client.dump_schema(client.http)
       Rails.cache.write('curriculum_schema', new_schema, :expires_in => 3.5.hours)
     end
 
