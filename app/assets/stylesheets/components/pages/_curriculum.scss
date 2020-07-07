@@ -9,7 +9,7 @@
 }
 
 .curriculum__line {
-	border: 2px solid $concrete;
+	border: 1px solid $concrete;
   margin-bottom: 1.625rem;
 }
 
@@ -17,7 +17,8 @@
 	background-color: $concrete;
 	border-left-color: $jaffa;
 	border-left-style: solid;
- 	border-left-width: 5px;
+ 	border-left-width: 9px;
+	font-weight: 500;
 	margin-bottom: 1rem !important;
 	padding: 1rem;
 }
