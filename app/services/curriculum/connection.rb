@@ -5,7 +5,7 @@ class Curriculum::Connection
   CURRICULUM_API_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql".freeze
 
   def self.connect(schema_path = nil, url = CURRICULUM_API_URL)
-    schema = Rails.cache.fetch('curriculum_schema') || schema_path
+    schema = schema_path || Rails.cache.fetch('curriculum_schema')
     store_schema = schema_path || !schema
 
     @client = Graphlient::Client.new(
@@ -22,7 +22,7 @@ class Curriculum::Connection
       schema_path: schema
     )
 
-    raise Curriculum::Errors::SchemaLoadError if @client.schema.nil?
+    raise Curriculum::Errors::SchemaLoadError if @client.schema == nil
 
     if (store_schema)
       Rails.cache.write('curriculum_schema', self.get_json_schema, :expires_in => 24.hours)
