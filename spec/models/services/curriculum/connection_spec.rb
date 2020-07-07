@@ -22,12 +22,17 @@ RSpec.describe Curriculum::Connection do
     expect(client.schema).to be_a Graphlient::Schema
   end
 
-  it 'can load a schema from the cache' do
-    stub = stub_request(:post, url)
+  it 'writes the schema to the cache' do
+    stub_a_valid_schema_request
+    described_class.connect
+    cached_schema = Rails.cache.fetch('curriculum_schema')
+    expect(JSON.parse(cached_schema)).to eq(JSON.parse(schema))
+  end
+
+  it 'retrieves the schema from the cache' do
     cache.write('curriculum_schema', schema)
     client = described_class.connect
-
-    expect(stub).not_to have_been_requested
-    expect(client.schema).to be_a Graphlient::Schema
+    # The strange parsing here is to match the formatting
+    expect(JSON.parse(client.schema.to_json)).to eq(JSON.parse(schema))
   end
 end

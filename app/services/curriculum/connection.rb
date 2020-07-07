@@ -8,25 +8,31 @@ class Curriculum::Connection
     schema = Rails.cache.fetch('curriculum_schema') || schema_path
     store_schema = schema_path || !schema
 
-    client = Graphlient::Client.new(url,
-                                    headers: {
-                                      'Content-Type': 'application/json',
-                                      'Accept': 'application/json',
-                                      'Authorization' => "Bearer #{ENV['CURRICULUM_API_KEY']}"
-                                    },
-                                    http_options: {
-                                      read_timeout: 20,
-                                      write_timeout: 30
-                                    },
-                                    schema_path: schema)
+    @client = Graphlient::Client.new(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization' => "Bearer #{ENV['CURRICULUM_API_KEY']}"
+      },
+      http_options: {
+        read_timeout: 20,
+        write_timeout: 30
+      },
+      schema_path: schema
+    )
 
-    raise Curriculum::Errors::SchemaLoadError if client.schema.nil?
+    raise Curriculum::Errors::SchemaLoadError if @client.schema.nil?
 
     if (store_schema)
-      new_schema = GraphQL::Client.dump_schema(client.http)
-      Rails.cache.write('curriculum_schema', new_schema, :expires_in => 24.hours)
+      Rails.cache.write('curriculum_schema', self.get_json_schema, :expires_in => 24.hours)
     end
 
-    client
+    @client
+  end
+
+  def self.get_json_schema
+    new_schema = GraphQL::Client.dump_schema(@client.schema)
+    new_schema.to_json if new_schema
   end
 end
