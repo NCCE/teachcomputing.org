@@ -75,6 +75,15 @@
   }
 }
 
+.hero--resources {
+	.hero {
+		&:after {
+			background-image: none;
+			display: none;
+  	}
+	}
+}
+
 .hero--orange,
 .hero--primary-certificate {
   background-color: $primary-cert-color;
