@@ -25,3 +25,23 @@
 .resources__wrapper {
 	padding-top: 1.875rem;
 }
+
+.curriculum__year {
+	align-items: start;
+	display: grid;
+	grid-template-columns: 3fr auto;
+	grid-template-rows: auto auto;
+	margin-bottom: 0 !important;
+	padding: 0.5rem 0;
+
+	@include govuk-media-query($from: desktop) {
+		padding: 1.25rem 0;
+	}
+
+	.button--medium {
+		display: none;
+		@include govuk-media-query($from: desktop) {
+			display: block;
+		}
+	}
+}
