@@ -1,4 +1,6 @@
 class Curriculum::KeyStagesController < ApplicationController
+  layout 'full-width'
+  
   before_action :enabled?
 
   def index
