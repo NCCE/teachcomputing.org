@@ -1,12 +1,25 @@
 module CurriculumStubs
   URL = Curriculum::Connection::CURRICULUM_API_URL
+  SCHEMA = File.new('spec/support/curriculum/curriculum_schema.json').read.freeze
 
-  def stub_a_valid_schema_request
-    # Expects a valid schema to exist in :schema
+  # Validates schema requests (only useful in conjunction with calling `Curriculum.connect` directly)
+  def stub_a_valid_schema_request_strict
     stub_request(:post, URL)
-    .to_return(
-      status: 200,
-      body: File.new('spec/support/curriculum/curriculum_schema.json')
-    )
+      .with(body: /IntrospectionQuery/)
+      .to_return(status: 200, body: SCHEMA)
+  end
+
+  # Validates queries against the schema
+  def stub_a_valid_schema_request
+    stub_request(:post, URL)
+      .to_return(status: 200, body: SCHEMA)
+  end
+
+  def stub_a_valid_request(response = {})
+    stub_request(:post, URL)
+      .to_return(
+        { status: 200, body: SCHEMA },
+        { status: 200, body: { 'data': response }.to_json, headers: {} }
+      )
   end
 end

@@ -23,7 +23,11 @@ module Curriculum
         schema_path: schema
       )
 
-      raise Curriculum::Errors::SchemaLoadError if @client.schema.nil?
+      begin
+        raise Curriculum::Errors::SchemaLoadError unless @client.schema.present?
+      rescue KeyError # Workaround for no schema being returned on the initial request
+        raise Curriculum::Errors::SchemaLoadError
+      end
 
       if store_schema
         Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours)
