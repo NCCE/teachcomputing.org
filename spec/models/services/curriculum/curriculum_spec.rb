@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Curriculum do
   it 'throws if an incorrect schema is specified' do
-    expect {described_class::Connection.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
+    expect { described_class::Connection.connect('missing.json') }.to raise_error(Curriculum::Errors::SchemaLoadError)
   end
 
   it 'can load the schema' do
@@ -11,13 +11,13 @@ RSpec.describe Curriculum do
     expect(client.schema).to be_a Graphlient::Schema
   end
 
-  it "throws if an unexpected or empty client instance is passed" do
+  it 'throws if an unexpected or empty client instance is passed' do
     query = <<~GRAPHQL
       query {}
     GRAPHQL
 
-    expect {described_class::Request.run(query, {}, described_class)}
-      .to raise_error(Curriculum::Errors::ConnectionError, "Invalid or missing Graphlient::Client, unable to connect")
+    expect { described_class::Request.run(query, {}, described_class) }
+      .to raise_error(Curriculum::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect')
   end
 
   it "throws if it can't connect" do
@@ -33,7 +33,7 @@ RSpec.describe Curriculum do
         }
       }
     GRAPHQL
-    expect {described_class::Request.run(query)}
+    expect { described_class::Request.run(query) }
       .to raise_error(Curriculum::Errors::ConnectionError, "Unable to connect to: #{url}")
   end
 end

@@ -1,16 +1,20 @@
-class Curriculum::KeyStagesController < ApplicationController
-  layout 'full-width'
-  before_action :enabled?
+module Curriculum
+  class KeyStagesController < ApplicationController
+    layout 'full-width'
 
-  def index
-  end
+    before_action :enabled?
 
-	def show
-	end
+    def index
+      @key_stages = Queries::KeyStage.all.key_stages
+    end
 
-  private
+    def show
+    end
+    
+    private
 
-  def enabled?
-    redirect_to root_path unless curriculum_enabled?
+      def enabled?
+        redirect_to root_path unless curriculum_enabled?
+      end
   end
 end
