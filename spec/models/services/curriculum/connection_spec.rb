@@ -3,8 +3,8 @@ require 'spec_helper'
 RSpec.describe Curriculum::Connection do
   let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
   let(:cache) { Rails.cache }
-  let(:url) {Curriculum::Connection::CURRICULUM_API_URL}
-  let(:schema) {File.new('spec/support/curriculum/curriculum_schema.json').read}
+  let(:url) { Curriculum::Connection::CURRICULUM_API_URL }
+  let(:schema) { File.new('spec/support/curriculum/curriculum_schema.json').read }
 
   before do
     allow(Rails).to receive(:cache).and_return(file_cache)
@@ -12,7 +12,7 @@ RSpec.describe Curriculum::Connection do
   end
 
   it 'throws if an incorrect schema is specified' do
-    expect{described_class.connect('missing.json')}.to raise_error(Curriculum::Errors::SchemaLoadError)
+    expect { described_class.connect('missing.json') }.to raise_error(Curriculum::Errors::SchemaLoadError)
   end
 
   it 'can load a schema' do

@@ -1,11 +1,12 @@
 require 'graphql/client'
 require 'graphql/client/http'
 
-class Curriculum::Connection
+module Curriculum
+  class Connection
   CURRICULUM_API_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql".freeze
 
   def self.connect(schema_path = nil, url = CURRICULUM_API_URL)
-    schema = schema_path || Rails.cache.fetch('curriculum_schema')
+    schema = Rails.cache.fetch('curriculum_schema') || schema_path
     store_schema = schema_path || !schema
 
     @client = Graphlient::Client.new(
@@ -22,17 +23,17 @@ class Curriculum::Connection
       schema_path: schema
     )
 
-    raise Curriculum::Errors::SchemaLoadError if @client.schema == nil
+    raise Curriculum::Errors::SchemaLoadError if @client.schema.nil?
 
-    if (store_schema)
-      Rails.cache.write('curriculum_schema', self.get_json_schema, :expires_in => 24.hours)
+    if store_schema
+      Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours)
     end
 
     @client
   end
 
-  def self.get_json_schema
+  def self.dump_schema
     new_schema = GraphQL::Client.dump_schema(@client.schema)
-    new_schema.to_json if new_schema
+    new_schema&.to_json
   end
 end
