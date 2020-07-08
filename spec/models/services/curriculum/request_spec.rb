@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Curriculum::Request do
   let(:url) { Curriculum::Connection::CURRICULUM_API_URL }

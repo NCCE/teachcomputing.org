@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Curriculum::Connection do
   let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }

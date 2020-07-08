@@ -1,6 +1,6 @@
 class Curriculum::Queries::KeyStage
   # TODO: Could this use the schema? (would need an instance of schema in)
-  FIELDS = %w[id title shortTitle level ages description yearGroups teacherGuide].freeze
+  FIELDS = %w[id title shortTitle level ages description yearGroups teacherGuide years].freeze
 
   ALL = <<~GRAPHQL.freeze
     query {
