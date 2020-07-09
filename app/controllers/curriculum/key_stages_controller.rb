@@ -11,10 +11,6 @@ module Curriculum
     def show
     end
 
-		def unit
-			render "curriculum/key_stages/unit"
-    end
-
     private
 
     def enabled?
