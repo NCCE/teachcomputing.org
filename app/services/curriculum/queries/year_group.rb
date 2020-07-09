@@ -1,27 +1,31 @@
-class Curriculum::Queries::YearGroup
-  FIELDS = ['id', 'keyStage', 'yearNumber', 'description', 'units']
+module Curriculum
+  module Queries
+    class YearGroup
+      FIELDS = %w[id keyStage yearNumber description units].freeze
 
-  ALL = <<~GRAPHQL
-    query {
-      yearGroups {
-        #{FIELDS.join(' ')}
-      }
-    }
-  GRAPHQL
+      ALL = <<~GRAPHQL.freeze
+        query {
+          yearGroups {
+            #{FIELDS.join(' ')}
+          }
+        }
+      GRAPHQL
 
-  ONE = <<~GRAPHQL
-    query($id: ID!) {
-      yearGroup(id: $id) {
-        #{FIELDS.join(' ')}
-      }
-    }
-  GRAPHQL
+      ONE = <<~GRAPHQL.freeze
+        query($id: ID!) {
+          yearGroup(id: $id) {
+            #{FIELDS.join(' ')}
+          }
+        }
+      GRAPHQL
 
-  def self.all
-    Curriculum::Request.run(ALL)
-  end
+      def self.all
+        Curriculum::Request.run(ALL)
+      end
 
-  def self.one(id)
-    Curriculum::Request.run(ONE, {id: id})
+      def self.one(id)
+        Curriculum::Request.run(ONE, { id: id })
+      end
+    end
   end
 end

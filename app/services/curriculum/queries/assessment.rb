@@ -1,27 +1,31 @@
-class Curriculum::Queries::Assessment
-  FIELDS = ['id', 'unit', 'title', 'description', 'rubric', 'summativeAssessment', 'sheets']
+module Curriculum
+  module Queries
+    class Assessment
+      FIELDS = %w[id unit title description rubric summativeAssessment sheets].freeze
 
-  ALL = <<~GRAPHQL
-    query {
-      assessments {
-        #{FIELDS.join(' ')}
-      }
-    }
-  GRAPHQL
+      ALL = <<~GRAPHQL.freeze
+        query {
+          assessments {
+            #{FIELDS.join(' ')}
+          }
+        }
+      GRAPHQL
 
-  ONE = <<~GRAPHQL
-    query($id: ID!) {
-      assessment(id: $id) {
-        #{FIELDS.join(' ')}
-      }
-    }
-  GRAPHQL
+      ONE = <<~GRAPHQL.freeze
+        query($id: ID!) {
+          assessment(id: $id) {
+            #{FIELDS.join(' ')}
+          }
+        }
+      GRAPHQL
 
-  def self.all
-    Curriculum::Request.run(ALL)
-  end
+      def self.all
+        Curriculum::Request.run(ALL)
+      end
 
-  def self.one(id)
-    Curriculum::Request.run(ONE, {id: id})
+      def self.one(id)
+        Curriculum::Request.run(ONE, { id: id })
+      end
+    end
   end
 end

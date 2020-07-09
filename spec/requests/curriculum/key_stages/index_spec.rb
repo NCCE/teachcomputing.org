@@ -4,8 +4,7 @@ RSpec.describe Curriculum::KeyStagesController do
   describe 'GET #index' do
     context 'when curriculum is enabled' do
       before do
-        stub_request(:post, 'https://testing.teachcomputing.org/graphql')
-          .to_return(status: 200, body: '{"data":{"keyStages":[]}}', headers: {})
+        stub_a_valid_request({ 'keyStages': [] })
 
         allow_any_instance_of(described_class)
           .to receive(:curriculum_enabled?).and_return(true)

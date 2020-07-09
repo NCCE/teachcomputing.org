@@ -43,13 +43,24 @@ Capybara.javascript_driver = :local_chrome_headless
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
 
+module CachingHelpers
+  def file_caching_path
+    path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
+    FileUtils::mkdir_p(path)
+
+    path
+  end
+end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include AchieverStubs
+  config.include CurriculumStubs
   config.include GhostStubs
+  config.include CachingHelpers
 
   config.before(:each, type: :system) do
     if ENV['ENV_TYPE'] == 'development'
