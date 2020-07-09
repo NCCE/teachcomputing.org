@@ -8,6 +8,9 @@ module Curriculum
       @key_stages = Queries::KeyStage.all.key_stages
     end
 
+    def show
+    end
+    
     private
 
     def enabled?
