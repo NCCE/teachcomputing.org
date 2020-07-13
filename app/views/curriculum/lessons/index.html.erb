@@ -1,1 +1,41 @@
-<p>ppp</p>
+<div class="hero hero--resources hero--orange hero--bottom-glyph">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
+        <h1 class="govuk-heading-xl hero__heading">L6: Using a computer responsibly</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Resources', '', class: 'govuk-link ncce-link' %> > <%= link_to 'KS1', '', class: 'govuk-link ncce-link' %> >  <%= link_to 'Year 1 - Technology Around Us', '', class: 'govuk-link ncce-link' %> > Lesson 6 </p>
+	<div class="govuk-main-wrapper resources__wrapper">
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<p class="govuk-body govuk-!-margin-bottom-8">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices luctus et ultrices.</p>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<h3 class="govuk-heading-m">Package contents</h3>
+				<ul class="govuk-list govuk-list--bullet">
+						<li>Lesson plans</li>
+						<li>Learning graphs</li>
+						<li>Unit overviews</li>
+						<li>Activities</li>
+				</ul>
+				<%= link_to 'Download all lesson files', '', class: 'govuk-button button' %>
+				<%= render 'curriculum/rating' %>
+			</div>
+		</div>
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<h3 class="govuk-heading-m">Learning objectives</h3>
+				<ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-9">
+					<li>Define what networks are</li>
+					<li>Describe the hardware components required to build networks of devices</li>
+					<li>Analyse the benefits and problems associated with networks</li>
+				</ul>
+			</div>
+		</div>
+		<%= render 'curriculum/feedback' %>
+	</div>
+</div>

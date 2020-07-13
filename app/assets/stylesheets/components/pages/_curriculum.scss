@@ -53,3 +53,18 @@
 	}
 }
 
+.curriculum__rating {
+	background-color: $foam;
+	background-image: image-url('thumbs.svg');
+	background-position: center right 1rem;
+	background-repeat: no-repeat;
+	background-size: 6rem;
+	margin-top: 2.5rem;
+	padding: 1.5rem 1rem;
+}
+
+.curriculum__rating--text {
+	margin-bottom: 0 !important;
+	width: 55%;
+}
+
