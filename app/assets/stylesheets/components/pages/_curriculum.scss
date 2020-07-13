@@ -26,3 +26,30 @@
 .resources__wrapper {
 	padding-top: 1.875rem;
 }
+
+.tiles__wrapper {
+  display: grid;
+  grid-row-gap: 1rem;
+	padding-bottom:  3.75rem;
+  @include govuk-media-query($from: desktop) {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+.tile {
+	background-image: image-url('unit.svg');
+	background-position: 0.8rem center;
+	background-repeat: no-repeat;
+	background-size: 2.2rem;
+	border: 2px solid $concrete;
+	border-radius: 8px;
+	padding: 1rem;
+
+	@include govuk-media-query($from: desktop) {
+		background-size: 3rem;
+	}
+}
+

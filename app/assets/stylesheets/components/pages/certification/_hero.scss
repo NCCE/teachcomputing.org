@@ -129,6 +129,10 @@
   padding: 10px;
 }
 
+.hero__heading-wrapper--unit {
+	max-width: 90%;
+}
+
 .hero__heading-wrapper--full-width {
   @include govuk-media-query($from: desktop) {
     max-width: 100%;

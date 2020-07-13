@@ -10,7 +10,7 @@ module Curriculum
 
     def show
     end
-    
+
     private
 
     def enabled?
