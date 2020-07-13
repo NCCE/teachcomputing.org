@@ -1,1 +1,21 @@
-<h3>unit</h3>
+<div class="hero hero--resources hero--orange hero--bottom-glyph">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
+        <h1 class="govuk-heading-xl hero__heading">Computing Systems and Networks – Technology Around Us</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Resources', '', class: 'govuk-link ncce-link' %> > <%= link_to 'KS1', '', class: 'govuk-link ncce-link' %> > > Year 1 - Technology Around Us  </p>
+	<div class="govuk-main-wrapper resources__wrapper">
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<p class="govuk-body govuk-!-margin-bottom-8">In this unit, learners will develop their understanding of technology and how it can help us. They will start to become familiar with the different components of a computer by developing their keyboard and mouse skills. Learners will also consider how to use technology responsibly.</p>
+			</div>
+		</div>
+		<%= render 'tiles' %>
+		<%= render 'lessons' %>
+	</div>
+</div>
