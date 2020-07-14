@@ -27,7 +27,7 @@
 	padding-top: 1.875rem;
 }
 
-.tiles__wrapper {
+.curriculum__tiles {
   display: grid;
   grid-row-gap: 1rem;
 	padding-bottom:  3.75rem;
@@ -39,7 +39,7 @@
   }
 }
 
-.tile {
+.curriculum__tile {
 	background-image: image-url('unit.svg');
 	background-position: 0.8rem center;
 	background-repeat: no-repeat;
@@ -53,3 +53,42 @@
 	}
 }
 
+.curriculum__label {
+	background-color: $grey-dark-x;
+	color: $white;
+	margin: 0;
+	padding: 0.5rem 1rem;
+	width: fit-content;
+}
+
+.curriculum__rating {
+	background-color: $foam;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2.5rem;
+	padding: 1.5rem 1rem;
+}
+
+.curriculum__rating--text {
+	margin-bottom: 0 !important;
+	width: 55%;
+}
+
+.curriculum__rating--thumb {
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+}
+
+.curriculum__rating--thumb:hover {
+		transform: scale(1.1);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.curriculum__rating--thumb {
+		transform: none;
+	}
+
+	.curriculum__rating--thumb:hover {
+		transform: none;
+	}
+}
