@@ -7,7 +7,7 @@ RSpec.describe Curriculum::Queries::BaseQuery do
     stub_a_valid_schema_request
   end
 
-  describe 'queries' do
+  fdescribe 'queries' do
     it 'are performed with expected params' do
       expect(described_class.one('keyStage', ['id'], 'slug', 'key-stage-0')).to have_requested(:post, url)
         .with(body: hash_including({ 'variables': { 'slug': 'key-stage-0' } }))
@@ -17,7 +17,8 @@ RSpec.describe Curriculum::Queries::BaseQuery do
     end
 
     it 'only queries the requested fields' do
-      pending("time to add this, currently it's currently not a utilised code path")
+      pending "should add this, it's currently not a utilised code path so of lower priority"
+      raise
     end
   end
 end
