@@ -1,7 +1,7 @@
 module Curriculum
   module Queries
     class Unit
-      FIELDS = %w[id title slug description unitGuide summativeAssessments summativeAnswers learningGraphs rubrics ].freeze
+      FIELDS = %w[id title slug description unitGuide summativeAssessments summativeAnswers learningGraphs rubrics lessons ].freeze
 
       ALL = <<~GRAPHQL.freeze
         query {
