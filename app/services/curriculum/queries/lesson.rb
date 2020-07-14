@@ -1,7 +1,7 @@
 module Curriculum
   module Queries
     class Lesson
-      FIELDS = ['id', 'unit', 'title', 'description', 'lessonPlan', 'activities', 'slides']
+      FIELDS = ['id', 'unit', 'title', 'slug', 'description', 'zippedContents']
 
       ALL = <<~GRAPHQL
         query {
