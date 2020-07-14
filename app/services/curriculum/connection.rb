@@ -30,7 +30,7 @@ class Curriculum::Connection
     end
 
     @client
-end
+  end
 
   def self.dump_schema
     new_schema = GraphQL::Client.dump_schema(@client.schema)
