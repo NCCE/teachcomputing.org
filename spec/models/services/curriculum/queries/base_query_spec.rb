@@ -7,7 +7,7 @@ RSpec.describe Curriculum::Queries::BaseQuery do
     stub_a_valid_schema_request
   end
 
-  fdescribe 'queries' do
+  describe 'queries' do
     it 'are performed with expected params' do
       expect(described_class.one('keyStage', ['id'], 'slug', 'key-stage-0')).to have_requested(:post, url)
         .with(body: hash_including({ 'variables': { 'slug': 'key-stage-0' } }))
