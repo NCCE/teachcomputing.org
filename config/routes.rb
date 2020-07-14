@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   namespace 'curriculum' do
     root to: 'key_stages#index', action: :index
     resources :key_stages, only: %i[index show] do
-			resources :units, only: %i[index]
+			resources :units, only: %i[index] do
+				resources :lessons, only: %i[index]
+			end
 		end
   end
 
