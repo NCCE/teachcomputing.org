@@ -1,7 +1,7 @@
 module Curriculum
   module Queries
     class YearGroup
-      FIELDS = %w[id keyStage yearNumber description units].freeze
+      FIELDS = %w[id slug keyStage yearNumber description units].freeze
 
       ALL = <<~GRAPHQL.freeze
         query {

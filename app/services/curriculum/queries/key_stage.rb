@@ -2,7 +2,7 @@ module Curriculum
   module Queries
     class KeyStage
       # TODO: Could this use the schema? (would need an instance of schema in)
-      FIELDS = %w[id title shortTitle level ages description yearGroups teacherGuide years].freeze
+      FIELDS = %w[id title slug shortTitle level ages description yearGroups teacherGuide years].freeze
 
       ALL = <<~GRAPHQL.freeze
         query {
