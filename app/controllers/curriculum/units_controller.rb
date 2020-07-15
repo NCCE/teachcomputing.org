@@ -2,7 +2,7 @@ module Curriculum
   class UnitsController < ApplicationController
     layout 'full-width'
 
-		def index
+		def show
     end
 	end
 end
