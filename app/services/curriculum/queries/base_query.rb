@@ -4,15 +4,15 @@ class Curriculum::Queries::BaseQuery
   end
 
   def self.all(context, fields)
-    all = client.parse <<~GRAPHQL
+    all = <<~GRAPHQL
       query {
         #{context} {
-          #{fields.join(' ')}
+          #{fields}
         }
       }
     GRAPHQL
 
-    Curriculum::Request.run(all, nil, client)
+    Curriculum::Request.run(client.parse(all), nil, client)
   end
 
   def self.map_field_type(key)
@@ -27,14 +27,14 @@ class Curriculum::Queries::BaseQuery
   end
 
   def self.one(context, fields, key, value)
-    one = client.parse <<~GRAPHQL
+    one = <<~GRAPHQL
       query($#{key}: #{map_field_type(key)}) {
         #{context}(#{key}: $#{key}) {
-          #{fields.join(' ')}
+          #{fields}
         }
       }
     GRAPHQL
 
-    Curriculum::Request.run(one, { "#{key}": value }, client)
+    Curriculum::Request.run(client.parse(one), { "#{key}": value }, client)
   end
 end
