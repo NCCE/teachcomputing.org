@@ -1,31 +1,11 @@
-module Curriculum
-  module Queries
-    class Unit
-      FIELDS = %w[id title slug description unitGuide summativeAssessments summativeAnswers learningGraphs rubrics lessons ].freeze
+class Curriculum::Queries::Unit < Curriculum::Queries::BaseQuery
+  FIELDS = %w[id title slug description unitGuide summativeAssessments summativeAnswers learningGraphs rubrics lessons].freeze
 
-      ALL = <<~GRAPHQL.freeze
-        query {
-          units{
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
+  def self.all(fields = FIELDS)
+    super('units', fields)
+  end
 
-      ONE = <<~GRAPHQL.freeze
-        query($id: ID!) {
-          unit(id: $id) {
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
-
-      def self.all
-        Curriculum::Request.run(ALL)
-      end
-
-      def self.one(id)
-        Curriculum::Request.run(ONE, { id: id })
-      end
-    end
+  def self.one(slug, fields = FIELDS)
+    super('unit', fields, 'slug', slug)
   end
 end
