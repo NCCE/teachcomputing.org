@@ -1,5 +1,5 @@
 class Curriculum::Queries::Lesson < Curriculum::Queries::BaseQuery
-  FIELDS = %w[id unit title slug description zippedContents].freeze
+  FIELDS = %w[id unit title slug description objectives zippedContents].freeze
 
   def self.all(fields = FIELDS)
     super('lessons', fields)
