@@ -16,7 +16,6 @@ module CurriculumStubs
   end
 
   def stub_a_valid_request(response = {})
-    puts SCHEMA
     stub_request(:post, URL)
       .to_return(
         { status: 200, body: SCHEMA },
