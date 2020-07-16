@@ -19,7 +19,7 @@ module CurriculumStubs
     stub_request(:post, URL)
       .to_return(
         { status: 200, body: SCHEMA },
-        { status: 200, body: { 'data': response }.to_json, headers: {} }
+        { status: 200, body: response, headers: {} }
       )
   end
 end
