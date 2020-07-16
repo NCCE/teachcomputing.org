@@ -1,0 +1,74 @@
+{
+  "data": {
+    "keyStage": {
+      "title": "Key Stage 1",
+      "slug": "key-stage-1",
+      "level": "1",
+      "shortTitle": "KS1",
+      "ages": "5-6",
+      "years": "1-2",
+      "description": "Placeholder description",
+      "yearGroups": [
+        {
+          "id": "4a2daa4f-d32e-465a-8b59-39af22154939",
+          "slug": "y1",
+          "yearNumber": "1",
+          "units": [
+            {
+              "id": "dd753977-e708-4eaf-b6dc-c8a2cb178d90",
+              "slug": "creating-media-digital-painting",
+              "title": "Creating media – Digital painting"
+            },
+            {
+              "id": "69c60e2c-82cf-4081-99a1-ed20ffa67bbe",
+              "slug": "computing-systems-and-networks-technology-around-us",
+              "title": "Computing systems and networks – Technology around us"
+            },
+            {
+              "id": "86756108-c576-401d-80e2-55c48708b7ac",
+              "slug": "programming-a-moving-a-robot",
+              "title": "Programming A – Moving a robot"
+            },
+            {
+              "id": "55878ca8-1b19-4607-af03-d4959c2f227c",
+              "slug": "creating-media-digital-writing",
+              "title": "Creating media – Digital writing"
+            }
+          ]
+        },
+        {
+          "id": "6b11c382-05e4-44cf-8f76-ff602c371157",
+          "slug": "y2",
+          "yearNumber": "2",
+          "units": [
+            {
+              "id": "999f43f5-a356-418e-afdf-1e52b0e75fe9",
+              "slug": "creating-media-making-music",
+              "title": "Creating media – Making music"
+            },
+            {
+              "id": "6dc6d1ea-7366-4e28-b589-075e29dc606e",
+              "slug": "computing-systems-and-networks-it-around-us",
+              "title": "Computing systems and networks – IT around us"
+            },
+            {
+              "id": "0e7332ad-39ed-41e6-9bff-76dbf27bb109",
+              "slug": "programming-a-robot-algorithms",
+              "title": "Programming A – Robot algorithms"
+            },
+            {
+              "id": "d0b4ca46-a159-4ba9-9532-97619688a826",
+              "slug": "data-and-information-pictograms",
+              "title": "Data and information – Pictograms"
+            },
+            {
+              "id": "545ff6ea-00b3-4646-ad9f-a4e47741abf7",
+              "slug": "creating-media-digital-photography",
+              "title": "Creating media – Digital photography"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
