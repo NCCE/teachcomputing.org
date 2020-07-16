@@ -8,7 +8,13 @@ class Curriculum::Queries::KeyStage < Curriculum::Queries::BaseQuery
     ages
     description
     yearGroups {
-      id
+      slug
+      yearNumber
+      units {
+        id
+        title
+        slug
+      }
     }
     teacherGuide
     years

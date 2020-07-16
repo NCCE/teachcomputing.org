@@ -1,0 +1,17 @@
+
+<% years.each do |year| %>
+  <div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		<h3 class="govuk-heading-l">Year <%= year.year_number %></h3>
+	</div>
+</div>
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		<ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7 govuk-!-padding-top-7">
+      <% year.units.each do |unit| %>
+        <li class="curriculum__list--item"><%= link_to unit.title, '/', class: 'govuk-link ncce-link' %></li>
+      <% end %>
+		</ul>
+	</div>
+</div>
+<% end %>
