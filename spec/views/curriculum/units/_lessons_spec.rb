@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('curriculum/units_lessons', type: :view) do
+RSpec.describe('curriculum/units/_lessons', type: :view) do
   before do
     render
   end
