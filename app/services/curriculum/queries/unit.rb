@@ -1,5 +1,16 @@
 class Curriculum::Queries::Unit < Curriculum::Queries::BaseQuery
-  FIELDS = %w[id title slug description unitGuide summativeAssessments summativeAnswers learningGraphs rubrics lessons].freeze
+  FIELDS = <<~GRAPHQL.freeze
+    id
+    title
+    slug
+    description
+    unitGuide
+    summativeAssessments
+    summativeAnswers
+    learningGraphs
+    rubrics
+    lessons
+  GRAPHQL
 
   def self.all(fields = FIELDS)
     super('units', fields)

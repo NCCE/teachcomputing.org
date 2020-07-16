@@ -1,5 +1,18 @@
 class Curriculum::Queries::KeyStage < Curriculum::Queries::BaseQuery
-  FIELDS = %w[id title slug shortTitle level ages description yearGroups teacherGuide years].freeze
+  FIELDS = <<~GRAPHQL.freeze
+    id
+    title
+    slug
+    shortTitle
+    level
+    ages
+    description
+    yearGroups {
+      id
+    }
+    teacherGuide
+    years
+  GRAPHQL
 
   def self.all(fields = FIELDS)
     super('keyStages', fields)

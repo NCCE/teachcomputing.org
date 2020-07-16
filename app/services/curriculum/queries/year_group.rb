@@ -1,5 +1,12 @@
 class Curriculum::Queries::YearGroup < Curriculum::Queries::BaseQuery
-  FIELDS = %w[id slug keyStage yearNumber description units].freeze
+  FIELDS = <<~GRAPHQL.freeze
+    id
+    slug
+    keyStage
+    yearNumber
+    description
+    units
+  GRAPHQL
 
   def self.all(fields = FIELDS)
     super('yearGroups', fields)
