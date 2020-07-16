@@ -6,10 +6,12 @@ module Curriculum
 
     def index
       @key_stages = Curriculum::Queries::KeyStage.all.key_stages
+      puts "KeyStages contents #{@key_stages}"
     end
 
     def show
       @key_stage = Queries::KeyStage.one(params[:key_stage_slug]).key_stage
+      puts "KeyStage contents #{@key_stage}"
     end
 
     private
