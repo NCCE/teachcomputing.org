@@ -2,7 +2,7 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
-        <h1 class="govuk-heading-xl hero__heading">Key stage 1 resources</h1>
+        <h1 class="govuk-heading-xl hero__heading"><%= @key_stage.title %> resources</h1>
       </div>
     </div>
   </div>
@@ -12,11 +12,11 @@
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
-				<p class="govuk-body-l govuk-!-margin-bottom-8">World-class lesson plans, unit guides and teacher guides to help you <strong>teach computing.</strong></p>
+				<p class="govuk-body-l govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
 		</div>
 		<hr class="curriculum__line">
-		<%= render 'year' %>
+		<%= render partial: 'years', locals: { years: @key_stage.year_groups } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
