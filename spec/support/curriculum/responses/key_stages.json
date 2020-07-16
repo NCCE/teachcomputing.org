@@ -8,6 +8,7 @@
         "shortTitle": "KS1",
         "ages": "5-6",
         "years": "1-2",
+        "description": "Placeholder description",
         "yearGroups": [
           {
             "id": "4a2daa4f-d32e-465a-8b59-39af22154939",
@@ -77,6 +78,7 @@
         "shortTitle": "KS2",
         "ages": "7-10",
         "years": "3-6",
+        "description": "Placeholder description",
         "yearGroups": [
           {
             "id": "7872a8e2-55be-43eb-a39a-e8e171c9aadd",
@@ -185,6 +187,7 @@
         "shortTitle": "KS3",
         "ages": "11-13",
         "years": "7-9",
+        "description": "Placeholder description",
         "yearGroups": [
           {
             "id": "0ec5b2a1-b7b8-417a-8acf-8b26284a814d",
@@ -301,6 +304,7 @@
         "shortTitle": "KS4",
         "ages": "14-15",
         "years": "10-11",
+        "description": "Placeholder description",
         "yearGroups": [
           {
             "id": "6ef52bb1-eae0-4ec9-b4f3-3cce787e92f4",
