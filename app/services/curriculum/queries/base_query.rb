@@ -1,6 +1,6 @@
 class Curriculum::Queries::BaseQuery
   def self.client
-    @client ||= Curriculum::Connection.connect
+    @client ||= Curriculum::Connection.connect('spec/support/curriculum/curriculum_schema.json')
   end
 
   def self.all(context, fields)
