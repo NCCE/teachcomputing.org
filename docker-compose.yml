@@ -1,13 +1,15 @@
-version: '3.5'
+version: "3.5"
 services:
   db:
     image: postgres
     volumes:
       - pg-data:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=${DEV_PASS}
+    networks:
+      - backend
   web:
     build: .
     command: ./scripts/docker-entrypoint.sh
@@ -15,8 +17,8 @@ services:
       - .:/app
       - node_modules:/app/node_modules # ensures we retain node_modules from docker build
     ports:
-      - '1234:1234'
-      - '3000:3000'
+      - "1234:1234"
+      - "3000:3000"
     depends_on:
       - db
       - redis
@@ -33,15 +35,26 @@ services:
     #   timeout: 180s
     #   retries: 3
     #   start_period: 30s
+    networks:
+      - main
+      - backend
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    networks:
+      - backend
   sidekiq:
     build: .
     command: bundle exec sidekiq
     depends_on:
       - redis
+    networks:
+      - backend
 volumes:
   pg-data:
   node_modules:
+networks:
+  main:
+    driver: bridge
+  backend:

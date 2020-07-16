@@ -1,32 +1,24 @@
-module Curriculum
-  module Queries
-    class KeyStage
-      # TODO: Could this use the schema? (would need an instance of schema in)
-      FIELDS = %w[id title slug shortTitle level ages description yearGroups teacherGuide years].freeze
+class Curriculum::Queries::KeyStage < Curriculum::Queries::BaseQuery
+  FIELDS = <<~GRAPHQL.freeze
+    id
+    title
+    slug
+    shortTitle
+    level
+    ages
+    description
+    yearGroups {
+      id
+    }
+    teacherGuide
+    years
+  GRAPHQL
 
-      ALL = <<~GRAPHQL.freeze
-        query {
-          keyStages {
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
+  def self.all(fields = FIELDS)
+    super('keyStages', fields)
+  end
 
-      ONE = <<~GRAPHQL.freeze
-        query($id: ID!) {
-          keyStage(id: $id) {
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
-
-      def self.all
-        Curriculum::Request.run(ALL)
-      end
-
-      def self.one(id)
-        Curriculum::Request.run(ONE, { id: id })
-      end
-    end
+  def self.one(slug, fields = FIELDS)
+    super('keyStage', fields, 'slug', slug)
   end
 end

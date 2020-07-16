@@ -1,31 +1,19 @@
-module Curriculum
-  module Queries
-    class Lesson
-      FIELDS = ['id', 'unit', 'title', 'slug', 'description', 'zippedContents']
+class Curriculum::Queries::Lesson < Curriculum::Queries::BaseQuery
+  FIELDS = <<~GRAPHQL.freeze
+    id
+    unit
+    title
+    slug
+    description
+    objectives
+    zippedContents
+  GRAPHQL
 
-      ALL = <<~GRAPHQL
-        query {
-          lessons {
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
+  def self.all(fields = FIELDS)
+    super('lessons', fields)
+  end
 
-      ONE = <<~GRAPHQL
-        query($id: ID!) {
-          lesson(id: $id) {
-            #{FIELDS.join(' ')}
-          }
-        }
-      GRAPHQL
-
-      def self.all
-        Curriculum::Request.run(ALL)
-      end
-
-      def self.one(id)
-        Curriculum::Request.run(ONE, {id: id})
-      end
-    end
+  def self.one(slug, fields = FIELDS)
+    super('lesson', fields, 'slug', slug)
   end
 end

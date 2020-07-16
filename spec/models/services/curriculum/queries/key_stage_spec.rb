@@ -11,9 +11,4 @@ RSpec.describe Curriculum::Queries::KeyStage do
     expect { described_class.all }.not_to raise_error
     expect { described_class.one('some_id') }.not_to raise_error
   end
-
-  it 'creates a request with the expected params' do
-    expect(described_class.one('some_id')).to have_requested(:post, url)
-      .with(body: hash_including({ 'variables': { 'id': 'some_id' } }))
-  end
 end
