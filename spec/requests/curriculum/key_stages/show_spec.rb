@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Curriculum::KeyStagesController do
-  let(:key_stages_json_response) { File.new('spec/support/curriculum/responses/key_stages.json').read }
+  let(:key_stage_json_response) { File.new('spec/support/curriculum/responses/key_stage.json').read }
 
-  describe 'GET #index' do
+  describe 'GET #show' do
     context 'when curriculum is enabled' do
       before do
-        stub_a_valid_request(key_stages_json_response)
+        stub_a_valid_request(key_stage_json_response)
 
         allow_any_instance_of(described_class)
           .to receive(:curriculum_enabled?).and_return(true)
       end
 
-      xit 'renders the show template' do
-        get curriculum_key_stage_units(key_stages_slug: 'key-stage-1')
-        expect(response).to render_template(:index)
+      it 'renders the show template' do
+        get curriculum_key_stage_units_path(key_stage_slug: 'key-stage-1')
+        expect(response).to render_template(:show)
       end
     end
 
@@ -23,8 +23,8 @@ RSpec.describe Curriculum::KeyStagesController do
     end
 
     context 'when curriculum is not enabled' do
-      xit 'redirects to the root path' do
-        get curriculum_key_stage_units(key_stages_slug: 'key-stage-1')
+      it 'redirects to the root path' do
+        get curriculum_key_stage_units_path(key_stage_slug: 'key-stage-1')
         expect(response).to redirect_to(root_path)
       end
     end
