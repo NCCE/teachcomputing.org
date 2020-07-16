@@ -2,10 +2,9 @@
 	<div class="govuk-grid-column-full">
 		<h3 class="govuk-heading-m">Lessons</h3>
 			<ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7">
-				<li class="curriculum__list--item"><%= link_to 'L1: Data and Information – Pictograms', '', class: 'govuk-link ncce-link' %></li>
-				<li class="curriculum__list--item"><%= link_to 'L2: Computing Systems and Networks – Information Technology Around Us', '', class: 'govuk-link ncce-link' %></li>
-				<li class="curriculum__list--item"><%= link_to 'L3: Creating Media – Digital Painting', '', class: 'govuk-link ncce-link' %></li>
-				<li class="curriculum__list--item"><%= link_to 'L4: Creating Media – Digital Writing', '', class: 'govuk-link ncce-link' %></li>
+        <% lessons.each do |lesson| %>
+          <li class="curriculum__list--item"><%= link_to lesson.title, curriculum_key_stage_unit_lesson_path(key_stage_slug: 'example', unit_slug: '', lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
+        <% end %>
 			</ul>
 	</div>
 </div>

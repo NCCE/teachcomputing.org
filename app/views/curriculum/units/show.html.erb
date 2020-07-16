@@ -3,7 +3,7 @@
     <div class="govuk-main-wrapper hero__wrapper">
 			<p class="govuk-body curriculum__label">Unit</p>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
-        <h1 class="govuk-heading-xl hero__heading">Computing Systems and Networks – Technology Around Us</h1>
+        <h1 class="govuk-heading-xl hero__heading"><%= @unit.title %></h1>
       </div>
     </div>
   </div>
@@ -13,14 +13,14 @@
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
-				<p class="govuk-body govuk-!-margin-bottom-8">In this unit, learners will develop their understanding of technology and how it can help us. They will start to become familiar with the different components of a computer by developing their keyboard and mouse skills. Learners will also consider how to use technology responsibly.</p>
+				<p class="govuk-body govuk-!-margin-bottom-8"><%= @unit.description %></p>
 			</div>
 			<div class="govuk-grid-column-one-third">
 				<%= render 'curriculum/rating' %>
 			</div>
 		</div>
 		<%= render 'tiles' %>
-		<%= render 'lessons' %>
+    <%= render partial: 'lessons', locals: { lessons: @unit.lessons } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
