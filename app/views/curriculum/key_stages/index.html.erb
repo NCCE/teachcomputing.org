@@ -9,7 +9,7 @@
 				<p class="govuk-heading-m curriculum__title">Choose resources by key stage</p>
 			</div>
 		</div>
-		<%= render 'resources' %>
+		<%= render partial: 'key_stages', locals: { key_stages: @key_stages } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
