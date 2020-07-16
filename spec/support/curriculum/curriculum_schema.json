@@ -10,125 +10,6 @@
       "subscriptionType": null,
       "types": [
         {
-          "kind": "OBJECT",
-          "name": "Assessment",
-          "description": null,
-          "fields": [
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "rubric",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "sheets",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "summativeAssessment",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "title",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "unit",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Unit",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "SCALAR",
           "name": "Boolean",
           "description": "Represents `true` or `false` values.",
@@ -727,67 +608,6 @@
           "description": null,
           "fields": [
             {
-              "name": "assessment",
-              "description": null,
-              "args": [
-                {
-                  "name": "id",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "slug",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Assessment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "assessments",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Assessment",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "keyStage",
               "description": null,
               "args": [
@@ -813,13 +633,9 @@
                 }
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "KeyStage",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "KeyStage",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -829,19 +645,15 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "KeyStage",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "KeyStage",
+                    "ofType": null
                   }
                 }
               },
@@ -874,13 +686,9 @@
                 }
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Lesson",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "Lesson",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -890,19 +698,15 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Lesson",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "Lesson",
+                    "ofType": null
                   }
                 }
               },
@@ -935,13 +739,9 @@
                 }
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Unit",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "Unit",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -951,19 +751,15 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Unit",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "Unit",
+                    "ofType": null
                   }
                 }
               },
@@ -996,13 +792,9 @@
                 }
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "YearGroup",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "YearGroup",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -1012,19 +804,15 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "NON_NULL",
+                "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
+                  "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "YearGroup",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "YearGroup",
+                    "ofType": null
                   }
                 }
               },
@@ -1052,26 +840,6 @@
           "name": "Unit",
           "description": null,
           "fields": [
-            {
-              "name": "assessments",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "Assessment",
-                    "ofType": null
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
             {
               "name": "description",
               "description": null,
@@ -1343,18 +1111,6 @@
                   "name": "KeyStage",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "learningGraph",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
