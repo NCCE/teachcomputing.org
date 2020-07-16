@@ -13,12 +13,12 @@
 
 .padded-box__title {
 	background-image: image-url('bulb.svg');
-	background-position: left 0;
+	background-position: left 0.2rem;
 	background-repeat: no-repeat;
-	background-size: 3rem;
+	background-size: 2.5rem;
 	font-weight: 500;
 	line-height: 1.5625rem;
-	margin-bottom: 1.8rem;
+	margin-bottom: 1rem;
 	padding-left: 3rem;
 
 	@include govuk-media-query($from: desktop) {
@@ -42,7 +42,7 @@
 
   @include govuk-media-query($from: desktop) {
 		background-image: image-url('bulb.svg');
-		background-position: 1rem 4.7rem;
+		background-position: 1rem 4.5rem;
 		background-repeat: no-repeat;
 		background-size: 4.3rem;
 		padding: 2rem;
