@@ -10,7 +10,7 @@ RSpec.describe Curriculum::KeyStagesController do
           .to receive(:curriculum_enabled?).and_return(true)
       end
 
-      xit 'renders the index template' do
+      it 'renders the index template' do
         get curriculum_key_stages_path
         expect(response).to render_template(:index)
       end

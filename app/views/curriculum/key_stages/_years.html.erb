@@ -8,7 +8,7 @@
     <div class="govuk-grid-column-full">
       <ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7 govuk-!-padding-top-7">
         <% year.units.each do |unit| %>
-          <li class="curriculum__list--item"><%= link_to unit.title, '/', class: 'govuk-link ncce-link' %></li>
+          <li class="curriculum__list--item"><%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: 'example', unit_slug: unit.slug), class: 'govuk-link ncce-link' %></li>
         <% end %>
       </ul>
     </div>
