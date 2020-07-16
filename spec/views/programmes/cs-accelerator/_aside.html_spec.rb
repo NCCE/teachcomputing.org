@@ -17,6 +17,6 @@ RSpec.describe('programmes/cs-accelerator/_aside', type: :view) do
 
   it 'renders a link to  the handbook' do
     render
-    expect(rendered).to have_link('Download our Revision Handbook', href: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf')
+    expect(rendered).to have_link('Download our Handbook', href: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf')
   end
 end
