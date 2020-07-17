@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Resources', '', class: 'govuk-link ncce-link' %> > <%= link_to 'KS1', '', class: 'govuk-link ncce-link' %> > > Year 1 - Technology Around Us  </p>
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > Year <%= @unit.year_group.year_number %> - <%= @unit.title %></p>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
@@ -19,8 +19,8 @@
 				<%= render 'curriculum/rating' %>
 			</div>
 		</div>
-		<%= render 'tiles' %>
-    <%= render partial: 'lessons', locals: { lessons: @unit.lessons } %>
+		<%= render partial: 'tiles', locals: { unit: @unit } %>
+    <%= render partial: 'lessons', locals: { key_stage_slug: @unit.year_group.key_stage.slug, unit: @unit, lessons: @unit.lessons } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>

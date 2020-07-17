@@ -3,7 +3,7 @@
 		<h3 class="govuk-heading-m">Lessons</h3>
 			<ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7">
         <% lessons.each do |lesson| %>
-          <li class="curriculum__list--item"><%= link_to lesson.title, curriculum_key_stage_unit_lesson_path(key_stage_slug: 'example', unit_slug: '', lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
+          <li class="curriculum__list--item"><%= link_to lesson.title, curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage_slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
         <% end %>
 			</ul>
 	</div>
