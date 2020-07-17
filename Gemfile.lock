@@ -188,6 +188,8 @@ GEM
     ipaddress (0.8.3)
     jaro_winkler (1.5.4)
     jwt (2.1.0)
+    kramdown (2.3.0)
+      rexml
     kwalify (0.7.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -471,6 +473,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7.3)
   htmlentities (~> 4.3)
   jwt (~> 2.1.0)
+  kramdown
   listen (>= 3.0.5, < 3.2)
   lograge
   memcachier
