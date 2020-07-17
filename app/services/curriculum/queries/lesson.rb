@@ -7,6 +7,17 @@ class Curriculum::Queries::Lesson < Curriculum::Queries::BaseQuery
     description
     objectives
     zippedContents
+    unit {
+      slug
+      title
+      yearGroup {
+        yearNumber
+        keyStage {
+          shortTitle
+          slug
+        }
+      }
+    }
   GRAPHQL
 
   def self.all(fields = FIELDS)

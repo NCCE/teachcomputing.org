@@ -9,6 +9,14 @@ class Curriculum::Queries::Unit < Curriculum::Queries::BaseQuery
     summativeAnswers
     learningGraphs
     rubrics
+    yearGroup {
+      yearNumber
+      slug
+      keyStage {
+        slug
+        shortTitle
+      }
+    }
     lessons {
       id
       slug
