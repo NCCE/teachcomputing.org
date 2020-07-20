@@ -9,7 +9,19 @@ class Curriculum::Queries::Unit < Curriculum::Queries::BaseQuery
     summativeAnswers
     learningGraphs
     rubrics
-    lessons
+    yearGroup {
+      yearNumber
+      slug
+      keyStage {
+        slug
+        shortTitle
+      }
+    }
+    lessons {
+      id
+      slug
+      title
+    }
   GRAPHQL
 
   def self.all(fields = FIELDS)

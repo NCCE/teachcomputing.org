@@ -1,0 +1,23 @@
+{
+  "data": {
+    "lesson": {
+      "id": "a84ec81e-9dd7-4161-9604-575d1c0036d1",
+      "title": "Lesson 1 Across time and space ",
+      "slug": "lesson-1-across-time-and-space",
+      "description": "placeholder description",
+      "objectives": null,
+      "zippedContents": null,
+      "unit": {
+        "slug": "representations-from-clay-to-silicon",
+        "title": "Representations – from clay to silicon",
+        "yearGroup": {
+          "yearNumber": "8",
+          "keyStage": {
+            "shortTitle": "KS3",
+            "slug": "key-stage-3"
+          }
+        }
+      }
+    }
+  }
+}
