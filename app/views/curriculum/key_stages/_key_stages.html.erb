@@ -1,5 +1,5 @@
 <div class="govuk-grid-row">
-  <% @key_stages.each do |key_stage| %>
+  <% key_stages.each do |key_stage| %>
     <div class="govuk-grid-column-one-quarter">
       <div class="<%= ['1', '2'].include?(key_stage.level) ? 'card--orange' : 'card--purple' %> card--resource">
         <h3 class="govuk-heading-m card--resource__title"><%= link_to "#{key_stage.title} resources", curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), class: 'govuk-link ncce-link' %></h3>
