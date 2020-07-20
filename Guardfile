@@ -79,7 +79,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
     watch(%r{^spec/factories/(.+)\.rb$}) do |m|
       ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"]
     end
-  rescue LoadError
+  rescue LoadError # rubocop:disable Lint/SuppressedException
   end
 
   watch(%r{^app/services/(.+)/(.+)\.rb$}) do |m|
