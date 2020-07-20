@@ -6,7 +6,7 @@ RSpec.describe('curriculum/_rating', type: :view) do
   end
 
   it 'has a rating text' do
-    expect(rendered).to have_css('.curriculum__rating--text', text: 'How would you rate this lesson?')
+    expect(rendered).to have_css('.curriculum__rating--text', text: 'Did you find this unit useful?')
   end
 
   it 'has two thumbs' do

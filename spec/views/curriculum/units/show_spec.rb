@@ -16,8 +16,4 @@ RSpec.describe('curriculum/units/show', type: :view) do
   it 'links to feedback form' do
     expect(rendered).to have_link('Provide your feedback', href: 'https://forms.gle/qT2XqoCecYjLLohC6')
   end
-
-  it 'has a rating text' do
-    expect(rendered).to have_css('.curriculum__rating--text', text: 'How would you rate this lesson?')
-  end
 end

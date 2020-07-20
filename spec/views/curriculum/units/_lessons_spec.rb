@@ -5,8 +5,8 @@ RSpec.describe('curriculum/units/_lessons', type: :view) do
     render
   end
 
-  it 'has a paragraph' do
-    expect(rendered).to have_css('.govuk-body-l', text: 'Lessons')
+  it 'has a title' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Lessons')
   end
 
   it 'has list of lessons' do
