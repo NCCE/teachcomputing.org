@@ -7,7 +7,7 @@
       "check_name": "CrossSiteScripting",
       "message": "Unescaped parameter value",
       "file": "app/views/cms/cms_page.html.erb",
-      "line": 7,
+      "line": 12,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Ghost.new.get_single_page(params[:page_slug])[\"html\"]",
       "render_path": [
@@ -52,6 +52,37 @@
       "note": "We check this URL with the whitelist function afterwards."
     },
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "7d444a46e9a11d0df3bb9d0eef96da6482d47be20fdd0ec43b8e8f638765b054",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/curriculum/lessons/show.html.erb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Kramdown::Document.new(Queries::Lesson.one(params[:lesson_slug]).lesson.objectives).to_html",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "Curriculum::LessonsController",
+          "method": "show",
+          "line": 7,
+          "file": "app/controllers/curriculum/lessons_controller.rb",
+          "rendered": {
+            "name": "curriculum/lessons/show",
+            "file": "app/views/curriculum/lessons/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "curriculum/lessons/show"
+      },
+      "user_input": "params[:lesson_slug]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
       "fingerprint": "92eb83ef5ef70516174c5008c0c48df19eecf7c740f86bf521f80a3b475cae83",
@@ -92,6 +123,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     }
   ],
-  "updated": "2020-03-04 14:33:40 +0000",
-  "brakeman_version": "4.7.2"
+  "updated": "2020-07-17 10:21:09 +0000",
+  "brakeman_version": "4.8.0"
 }
