@@ -28,7 +28,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'ec9bf026-49da-4542-abb9-2551f862d8d5') do |activity|
   activity.title = 'NCCE facilitator development program (stage one)'
-  activity.credit = 20
+  activity.credit = 40
   activity.slug = 'ncce-facilitator-development-program-stage-one'
   activity.stem_course_template_no = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
   activity.category = 'face-to-face'
