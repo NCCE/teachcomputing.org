@@ -1,5 +1,5 @@
 class Curriculum::Request
-  def self.run(query, params = {}, client = nil)
+  def self.run(query, client = nil, params = {})
     unless client.is_a?(Graphlient::Client)
       raise Curriculum::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect'
     end

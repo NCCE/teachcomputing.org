@@ -10,10 +10,18 @@ class Curriculum::Queries::Lesson < Curriculum::Queries::BaseQuery
   GRAPHQL
 
   def self.all(fields = FIELDS)
-    super('lessons', fields)
+    super(:lessons, fields)
   end
 
   def self.one(slug, fields = FIELDS)
-    super('lesson', fields, 'slug', slug)
+    super(:lesson, fields, :slug, slug)
+  end
+
+  def self.add_positive_rating(id, fields = FIELDS)
+    rate(:lesson, fields, :positive, id)
+  end
+
+  def self.add_negative_rating(id, fields = FIELDS)
+    rate(:lesson, fields, :negative, id)
   end
 end
