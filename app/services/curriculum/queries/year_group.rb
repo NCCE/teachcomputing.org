@@ -4,7 +4,6 @@ class Curriculum::Queries::YearGroup < Curriculum::Queries::BaseQuery
     slug
     keyStage
     yearNumber
-    description
     units
   GRAPHQL
 

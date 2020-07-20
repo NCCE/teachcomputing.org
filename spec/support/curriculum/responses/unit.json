@@ -1,0 +1,58 @@
+{
+  "data": {
+    "unit": {
+      "id": "636b0aff-b2a5-439d-88fa-f53a17d6b5ef",
+      "title": "Representations – from clay to silicon",
+      "slug": "representations-from-clay-to-silicon",
+      "description": "placeholder description",
+      "unitGuide": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoWkdSa05Ea3laQzFtTVdJMkxUUXlaV1V0WVdReE5TMHdNVFJoWkdVNFlqRTJOamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e2062ac60421ca5dac1744c49949b63bbbc9195c/Unit%20overview%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.docx",
+      "summativeAssessments": [],
+      "summativeAnswers": [],
+      "learningGraphs": [
+        "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T0dKa01qazVPUzAwWW1RMkxUUmhZakF0T0Rnek15MW1NekkxWXpnd1pEUXpNVEVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5b85b47bd7f5005623c069e6de5224d631aab5e5/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.jpg",
+        "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6TVdSbE5URTVOaTAwT1RJeUxUUm1OalV0WVRreU1pMDJOekU0TmpOa1ltRmpZamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--fad073b0ebc1748b517f5255d86856080441db5e/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20-%20fluid%20%E2%80%93%20Y8.jpg"
+      ],
+      "rubrics": [],
+      "yearGroup": {
+        "yearNumber": "8",
+        "slug": "y8",
+        "keyStage": {
+          "slug": "key-stage-3",
+          "shortTitle": "KS3"
+        }
+      },
+      "lessons": [
+        {
+          "id": "a84ec81e-9dd7-4161-9604-575d1c0036d1",
+          "slug": "lesson-1-across-time-and-space",
+          "title": "Lesson 1 Across time and space "
+        },
+        {
+          "id": "c836e425-4b3c-4808-ac32-1878f4a1b43a",
+          "slug": "lesson-2-lights-and-drums",
+          "title": "Lesson 2 Lights and drums"
+        },
+        {
+          "id": "4222d494-438b-4eb8-a7b1-e12552a1220c",
+          "slug": "lesson-3-binary-digits",
+          "title": "Lesson 3 Binary digits"
+        },
+        {
+          "id": "aed0b997-1780-4985-b288-0ce8db8c546c",
+          "slug": "lesson-4-numbers-in-binary",
+          "title": "Lesson 4 Numbers in binary"
+        },
+        {
+          "id": "377b71b3-c089-46b0-96ca-5a8dc397cdbd",
+          "slug": "lesson-5-large-quantities",
+          "title": "Lesson 5 Large quantities"
+        },
+        {
+          "id": "4171a807-44c7-4c32-8eb1-0cac706c083d",
+          "slug": "lesson-6-turings-mug",
+          "title": "Lesson 6 Turings mug"
+        }
+      ]
+    }
+  }
+}
