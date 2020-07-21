@@ -3,24 +3,24 @@
     <div class="govuk-main-wrapper hero__wrapper">
 			<p class="govuk-body curriculum__label">Unit</p>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
-        <h1 class="govuk-heading-xl hero__heading">Computing Systems and Networks – Technology Around Us</h1>
+        <h1 class="govuk-heading-xl hero__heading"><%= @unit.title %></h1>
       </div>
     </div>
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Resources', '', class: 'govuk-link ncce-link' %> > <%= link_to 'KS1', '', class: 'govuk-link ncce-link' %> > > Year 1 - Technology Around Us  </p>
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > Year <%= @unit.year_group.year_number %> - <%= @unit.title %></p>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
-				<p class="govuk-body govuk-!-margin-bottom-8">In this unit, learners will develop their understanding of technology and how it can help us. They will start to become familiar with the different components of a computer by developing their keyboard and mouse skills. Learners will also consider how to use technology responsibly.</p>
+				<p class="govuk-body govuk-!-margin-bottom-8"><%= @unit.description %></p>
 			</div>
 			<div class="govuk-grid-column-one-third">
 				<%= render 'curriculum/rating' %>
 			</div>
 		</div>
-		<%= render 'tiles' %>
-		<%= render 'lessons' %>
+		<%= render partial: 'tiles', locals: { unit: @unit } %>
+    <%= render partial: 'lessons', locals: { key_stage_slug: @unit.year_group.key_stage.slug, unit: @unit, lessons: @unit.lessons } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
