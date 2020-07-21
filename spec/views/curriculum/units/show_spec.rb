@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe('curriculum/units/show', type: :view) do
+	let(:unit) { create(:unit ) }
+
   before do
     render
   end
