@@ -20,7 +20,7 @@ RSpec.describe Curriculum::Request do
         query {}
       GRAPHQL
 
-      expect { described_class.run(query, {}, client) }
+      expect { described_class.run(query, client) }
         .to raise_error(Curriculum::Errors::UnparsedQuery)
     end
 
@@ -40,7 +40,7 @@ RSpec.describe Curriculum::Request do
           }
         }
       GRAPHQL
-      expect { described_class.run(client.parse(query), {}, client) }
+      expect { described_class.run(client.parse(query), client) }
         .to raise_error(Curriculum::Errors::ConnectionError, "Unable to connect to: #{url}")
     end
   end

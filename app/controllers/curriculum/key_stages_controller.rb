@@ -9,7 +9,7 @@ module Curriculum
     end
 
     def show
-      @key_stage = Queries::KeyStage.one(params[:key_stage_slug]).key_stage
+      @key_stage = Curriculum::Queries::KeyStage.one(params[:key_stage_slug]).key_stage
     end
 
     private

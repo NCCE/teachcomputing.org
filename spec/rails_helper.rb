@@ -10,7 +10,9 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+if Rails.env.production?
+  abort('The Rails environment is running in production mode!')
+end
 require 'rspec/rails'
 require 'webmock/rspec'
 
@@ -46,7 +48,7 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
 module CachingHelpers
   def file_caching_path
     path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
-    FileUtils::mkdir_p(path)
+    FileUtils.mkdir_p(path)
 
     path
   end
