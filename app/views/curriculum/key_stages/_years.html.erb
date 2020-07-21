@@ -7,9 +7,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7 govuk-!-padding-top-7">
+      <% if year.year_number == '7' %>
+        <% year.units.select { |unit| unit.slug == 'impact-of-technology-collaborating-online-respectfully' }.each do |unit| %>
+          <li class="curriculum__list--item"><%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %></li>
+        <% end %>
+        <% year.units.reject { |unit| unit.slug == 'impact-of-technology-collaborating-online-respectfully' }.each do |unit| %>
+          <li class="curriculum__list--item"><%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %></li>
+        <% end %>
+      <% else %>
         <% year.units.each do |unit| %>
           <li class="curriculum__list--item"><%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %></li>
         <% end %>
+      <% end %>
       </ul>
     </div>
   </div>
