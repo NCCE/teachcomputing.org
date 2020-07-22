@@ -6,10 +6,10 @@ require:
 
 AllCops:
   Exclude:
-    - "vendor/**/*"
-    - "spec/fixtures/**/*"
-    - "tmp/**/*"
-  TargetRubyVersion: 2.6.1
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 2.5.7
 
 Layout/EndOfLine:
   EnforcedStyle: lf
@@ -58,13 +58,4 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/HashEachMethods:
-  Enabled: false
-
-Style/HashTransformKeys:
-  Enabled: false
-
-Style/HashTransformValues:
   Enabled: false
