@@ -456,7 +456,7 @@ DEPENDENCIES
   axe-matchers (>= 2.5.0)
   bootsnap (>= 1.1.0)
   brakeman
-  bundler (~> 2)
+  bundler (~> 2.0)
   byebug
   capybara (>= 2.15)
   cloudflare-rails (~> 0.4.0)
