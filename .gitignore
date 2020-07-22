@@ -46,3 +46,5 @@ public/sitemap.xml.gz
 
 .vscode
 .standard.yml
+.idea
+.history
