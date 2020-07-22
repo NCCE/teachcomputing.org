@@ -2,10 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.7-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
         environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
+          BUNDLE_JOBS: "3"
+          BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
           CREDENTIALS_ENV: test
           DB_HOST: 127.0.0.1
@@ -16,7 +16,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: ncce_test
-          POSTGRES_PASSWORD: ''
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
