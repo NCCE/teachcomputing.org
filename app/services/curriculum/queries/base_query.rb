@@ -12,14 +12,14 @@ class Curriculum::Queries::BaseQuery
       }
     GRAPHQL
 
-    Curriculum::Request.run(client.parse(all), nil, client)
+    Curriculum::Request.run(client.parse(all), client)
   end
 
   def self.map_field_type(key)
     case key
-    when :id.to_s
+    when :id
       'ID'
-    when 'slug'
+    when :slug
       'String'
     else
       raise Curriculum::Errors::UnsupportedType "No type defined for: #{key}"
@@ -35,6 +35,21 @@ class Curriculum::Queries::BaseQuery
       }
     GRAPHQL
 
-    Curriculum::Request.run(client.parse(one), { "#{key}": value }, client)
+    Curriculum::Request.run(client.parse(one), client, { "#{key}": value })
+  end
+
+  def self.rate(context, fields, polarity, id)
+    rating = <<~GRAPHQL
+      mutation {
+        add#{polarity.to_s.classify}#{context.to_s.classify}Rating(
+          id: "#{id}"
+        )
+        {
+          #{fields}
+        }
+      }
+    GRAPHQL
+
+    Curriculum::Request.run(client.parse(rating), client)
   end
 end

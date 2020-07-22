@@ -4,9 +4,9 @@ require:
 
 AllCops:
   Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
-    - 'tmp/**/*'
+    - "vendor/**/*"
+    - "spec/fixtures/**/*"
+    - "tmp/**/*"
   TargetRubyVersion: 2.5.7
 
 Layout/EndOfLine:
