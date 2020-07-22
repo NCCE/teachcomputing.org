@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine
+FROM ruby:2.5.7-alpine
 RUN apk --no-cache add curl build-base postgresql-dev tzdata nodejs nodejs-npm chromium chromium-chromedriver
 RUN mkdir /app
 WORKDIR /app
