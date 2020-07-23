@@ -15,7 +15,7 @@
 			<div class="govuk-grid-column-two-thirds">
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @lesson.description %></p>
         <% unless @lesson.objectives.nil? %>
-          <h3 class="govuk-heading-m">Learning objectives</h3>
+          <h3 class="govuk-heading-m external-content">Learning objectives</h3>
             <%= Kramdown::Document.new(@lesson.objectives).to_html.html_safe %>
         <% end %>
 			</div>

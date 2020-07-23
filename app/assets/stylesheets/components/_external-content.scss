@@ -1,4 +1,4 @@
-.external-content, .resources__wrapper {
+.external-content {
   font-family: $font-family-body;
 
   p {
@@ -62,6 +62,7 @@
   }
 
 	a {
-		@extend .govuk-link, .ncce-link;
+		@extend .govuk-link;
+		@extend .ncce-link;
 	}
 }
