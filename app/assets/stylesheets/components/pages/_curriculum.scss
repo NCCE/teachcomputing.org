@@ -105,7 +105,15 @@
 }
 
 .curriculum__rating--thumb:hover {
-		transform: scale(1.1);
+		transform: scale(1.2);
+}
+
+.curriculum__rating--thumb-up:hover {
+	filter: invert(67%) sepia(58%) saturate(2005%) hue-rotate(46deg) brightness(96%) contrast(101%);
+}
+
+.curriculum__rating--thumb-down:hover {
+	filter: invert(31%) sepia(97%) saturate(4260%) hue-rotate(0deg) brightness(102%) contrast(108%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
