@@ -68,8 +68,8 @@
   fill: $deep-cerulean;
   width: 160px;
   @include govuk-media-query($from: tablet) {
-    height: 119px;
-    width: 221px;
+    height: auto;
+    width: 200px;
   }
 }
 .ncce-stem__logo-wrapper {
@@ -170,7 +170,7 @@
 
   .govuk-header__link {
     @include govuk-media-query($from: desktop) {
-      font-size: 1rem;
+      font-size: 19px;
       font-weight: bold !important;
     }
   }
