@@ -106,7 +106,8 @@
     text-align: right;
 
     .ncce-header__navigation-item-cert {
-      margin-left: 20px;
+			font-size: 1rem !important;
+      margin-left: 0.9rem;
     }
   }
 }
@@ -168,7 +169,7 @@
 
   .govuk-header__link {
     @include govuk-media-query($from: desktop) {
-      font-size: 1.188rem;
+      font-size: 1rem;
       font-weight: bold !important;
     }
   }
