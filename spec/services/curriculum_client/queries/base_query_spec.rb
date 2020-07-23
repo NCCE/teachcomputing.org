@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-RSpec.describe Curriculum::Queries::BaseQuery do
-  let(:url) { Curriculum::Connection::CURRICULUM_API_URL }
+RSpec.describe CurriculumClient::Queries::BaseQuery do
+  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
 
   before do
     stub_a_valid_request

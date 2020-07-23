@@ -16,7 +16,7 @@
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @unit.description %></p>
 			</div>
 			<div class="govuk-grid-column-one-third">
-				<%= render 'curriculum/rating' %>
+				<%= render partial: 'curriculum/rating', locals: { path: :curriculum_unit_rating_path, id: @unit.id } unless @has_rated %>
 			</div>
 		</div>
 		<%= render partial: 'tiles', locals: { unit: @unit } %>

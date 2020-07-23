@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Curriculum::Connection do
+RSpec.describe CurriculumClient::Connection do
   let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
   let(:cache) { Rails.cache }
-  let(:url) { Curriculum::Connection::CURRICULUM_API_URL }
+  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
   let(:schema) { File.new('spec/support/curriculum/curriculum_schema.json').read }
 
   describe 'schema' do
@@ -13,7 +13,7 @@ RSpec.describe Curriculum::Connection do
     end
 
     it 'raises an error if it fails to load' do
-      expect { described_class.connect('missing.json') }.to raise_error(Curriculum::Errors::SchemaLoadError)
+      expect { described_class.connect('missing.json') }.to raise_error(CurriculumClient::Errors::SchemaLoadError)
     end
 
     it 'can load' do

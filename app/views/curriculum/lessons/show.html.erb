@@ -29,7 +29,7 @@
 						<li>Activities</li>
 					</ul>
 					<%= link_to 'Download all lesson files', @lesson.zipped_contents, class: 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
-					<%= render 'curriculum/rating' %>
+					<%= render partial: 'curriculum/rating', locals: { path: :curriculum_lesson_rating_path, id: @lesson.id } unless @has_rated %>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Curriculum::Queries::YearGroup do
+RSpec.describe CurriculumClient::Queries::YearGroup do
   before do
     stub_a_valid_schema_request
   end

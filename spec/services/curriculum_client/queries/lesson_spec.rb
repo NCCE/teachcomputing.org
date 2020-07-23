@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-RSpec.describe Curriculum::Queries::Unit do
-  let(:url) { Curriculum::Connection::CURRICULUM_API_URL }
+RSpec.describe CurriculumClient::Queries::Lesson do
+  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
 
   before do
     stub_a_valid_schema_request
@@ -14,11 +14,11 @@ RSpec.describe Curriculum::Queries::Unit do
 
   it 'creates a query for a positive rating' do
     expect(described_class.add_positive_rating('an_id')).to have_requested(:post, url)
-      .with(body: /addPositiveUnitRating\(id:\s\\"an_id\\"\)/)
+      .with(body: /addPositiveLessonRating\(id:\s\\"an_id\\"\)/)
   end
 
   it 'creates a query for a negative rating' do
     expect(described_class.add_negative_rating('other_id')).to have_requested(:post, url)
-      .with(body: /addNegativeUnitRating\(id:\s\\"other_id\\"\)/)
+      .with(body: /addNegativeLessonRating\(id:\s\\"other_id\\"\)/)
   end
 end
