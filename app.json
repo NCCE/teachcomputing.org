@@ -91,6 +91,9 @@
     },
     "CURRICULUM_APP_URL": {
       "required": true
+    },
+    "CURRICULUM_API_KEY": {
+      "required": true
     }
   },
   "formation": {
