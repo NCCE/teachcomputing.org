@@ -3,16 +3,18 @@ module Curriculum
     extend ActiveSupport::Concern
 
     NEW_FEEDBACK = 'Thank you for your feedback!'.freeze
-    EXISTING_FEEDBACK = 'You have already provided feedback, thanks!'.freeze
+    EXISTING_FEEDBACK = 'You have already provided a rating, thanks!'.freeze
 
     def rate
-      raise MethodMissing unless respond_to?(:client)
+      raise NoMethodError unless respond_to?(:client, true)
 
       id = params[:id]
       polarity = params[:polarity]
-      message = EXISTING_FEEDBACK
+      message = ''
 
-      unless rating(id)
+      if helpers.user_has_rated?(id)
+        message = EXISTING_FEEDBACK
+      else
         response = add_rating(id, polarity)
         store_rating(id)
         message = NEW_FEEDBACK
@@ -38,16 +40,10 @@ module Curriculum
     end
 
     def store_rating(id)
-      raw_cookie = cookies[:ratings]
+      raw_cookie = cookies.encrypted[:ratings]
       ratings = raw_cookie.nil? ? [] : JSON.parse(raw_cookie)
       ratings << id
-      cookies[:ratings] = JSON.generate(ratings)
-    end
-
-    def rating(id)
-      raw_cookie = cookies[:ratings]
-      ratings = JSON.parse(raw_cookie) unless raw_cookie.nil?
-      ratings&.include?(id)
+      cookies.encrypted[:ratings] = { value: JSON.generate(ratings), expires: 1.month }
     end
   end
 end

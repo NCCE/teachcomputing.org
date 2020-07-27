@@ -1,6 +1,6 @@
 <div class="curriculum__rating">
-  <% if @has_rated %>
-    <p class="govuk-body curriculum__rating--full_text"><%= Curriculum::Rateable::EXISTING_FEEDBACK %></p>
+  <% if user_has_rated?(id) %>
+    <p class="govuk-body curriculum__rating--full_text"><%= get_feedback_string %></p>
   <% else %>
     <p class="govuk-body curriculum__rating--text">Did you find this unit useful?</p>
     <%= link_to image_tag("/images/resources/thumb_up.png", alt: "thumb up", class: "curriculum__rating--thumb"), send(path, :positive, id), remote: true, data: { disable_with: true } %>

@@ -22,19 +22,19 @@ RSpec.shared_examples_for 'rateable' do |path|
       expect(body['data']).to eq({'casted_data' => {}, 'data' => {}, 'errors' => []})
     end
 
-    it 'sets a cookie, with the expected id' do
+    it 'creates cookies with the expected ids' do
       get send(path, polarity: :negative, id: :an_id)
-      expect(cookies[:ratings]).to eq([:an_id].to_json)
-
       get send(path, polarity: :negative, id: :another_id)
-      expect(cookies[:ratings]).to eq(%i[an_id another_id].to_json)
+
+      cookie_jar = ActionDispatch::Cookies::CookieJar.build(request, cookies.to_hash)
+      expect(cookie_jar.encrypted[:ratings]).to eq(%i[an_id another_id].to_json)
     end
 
     it 'prevents re-rating' do
       get send(path, polarity: :negative, id: :an_id) # First request
       get send(path, polarity: :negative, id: :an_id) # Second request
       body = JSON.parse(response.body)
-      expect(body['message']).to eq('You have already provided feedback, thanks!')
+      expect(body['message']).to eq('You have already provided a rating, thanks!')
       expect(body['data']).to eq(nil)
     end
   end
