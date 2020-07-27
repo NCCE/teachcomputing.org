@@ -2,29 +2,39 @@ module Curriculum
   module Rateable
     extend ActiveSupport::Concern
 
+    NEW_FEEDBACK = 'Thank you for your feedback!'.freeze
+    EXISTING_FEEDBACK = 'You have already provided feedback, thanks!'.freeze
+
     def rate
       raise MethodMissing unless respond_to?(:client)
 
       id = params[:id]
       polarity = params[:polarity]
+      message = EXISTING_FEEDBACK
 
-      case polarity.to_sym
-      when :positive
-        response = client.add_positive_rating(id)
-      when :negative
-        response = client.add_negative_rating(id)
-      else
-        raise ArgumentError, "Unexpected polarity: #{polarity}"
+      unless rating(id)
+        response = add_rating(id, polarity)
+        store_rating(id)
+        message = NEW_FEEDBACK
       end
-
-      store_rating(id)
 
       # TODO: Would be better if this text lived in the template
       render json: {
         origin: __method__.to_s,
-        message: 'Thank you for your feedback!',
-        response: response
+        message: message,
+        data: response
       }, status: :ok
+    end
+
+    def add_rating(id, polarity)
+      case polarity.to_sym
+      when :positive
+        client.add_positive_rating(id)
+      when :negative
+        client.add_negative_rating(id)
+      else
+        raise ArgumentError, "Unexpected polarity: #{polarity}"
+      end
     end
 
     def store_rating(id)

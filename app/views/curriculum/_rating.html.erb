@@ -1,5 +1,9 @@
 <div class="curriculum__rating">
-  <p class="govuk-body curriculum__rating--text">Did you find this unit useful?</p>
-  <%= link_to image_tag("/images/resources/thumb_up.png", alt: "thumb up", class: "curriculum__rating--thumb"), send(path, :positive, id), remote: true, data: { disable_with: true } %>
-  <%= link_to image_tag("/images/resources/thumb_down.png", alt: "thumb down", class: "curriculum__rating--thumb"), send(path, :negative, id), remote: true, data: { disable_with: true } %>
+  <% if @has_rated %>
+    <p class="govuk-body curriculum__rating--full_text"><%= Curriculum::Rateable::EXISTING_FEEDBACK %></p>
+  <% else %>
+    <p class="govuk-body curriculum__rating--text">Did you find this unit useful?</p>
+    <%= link_to image_tag("/images/resources/thumb_up.png", alt: "thumb up", class: "curriculum__rating--thumb"), send(path, :positive, id), remote: true, data: { disable_with: true } %>
+    <%= link_to image_tag("/images/resources/thumb_down.png", alt: "thumb down", class: "curriculum__rating--thumb"), send(path, :negative, id), remote: true, data: { disable_with: true } %>
+  <% end %>
 </div>
