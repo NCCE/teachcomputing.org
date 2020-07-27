@@ -18,7 +18,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a resources link' do
-    expect(rendered).to have_link('Resources', href: '/resources')
+    expect(rendered).to have_link('Teaching resources', href: '/resources')
   end
 
   it 'has a news link' do
