@@ -20,7 +20,7 @@
  	border-left-width: 0.5625rem;
 	font-weight: 500;
 	margin-bottom: 1rem !important;
-	padding: 1rem;
+	padding: 1.3rem;
 }
 
 .resources__wrapper {
@@ -42,14 +42,18 @@
 }
 
 .curriculum__tile {
+	align-items: center;
 	background-image: image-url('unit.svg');
-	background-position: 1.625rem center;
+	background-position: 1rem center;
 	background-repeat: no-repeat;
 	background-size: 2.2rem;
 	border: 0.125rem solid $aluminum;
 	border-radius: 0.5rem;
+	display: flex;
+	justify-content: center;
 	margin-bottom: 0.9375rem;
-	padding: 1rem;
+	padding: 1.4rem 0;
+
 
 	@include govuk-media-query($from: desktop) {
 		background-size: 3rem;
@@ -58,7 +62,8 @@
 }
 
 .curriculum__tile--heading {
-	text-align: center;
+	font-weight: 600;
+	margin-bottom: 0;
 }
 
 .curriculum__label {
@@ -78,6 +83,10 @@
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem;
+
+	img {
+		width: auto !important;
+	}
 }
 
 .curriculum__rating--text {
@@ -96,7 +105,15 @@
 }
 
 .curriculum__rating--thumb:hover {
-		transform: scale(1.1);
+		transform: scale(1.2);
+}
+
+.curriculum__rating--thumb-up:hover {
+	filter: invert(58%) sepia(96%) saturate(435%) hue-rotate(45deg) brightness(93%) contrast(107%);
+}
+
+.curriculum__rating--thumb-down:hover {
+	filter: invert(31%) sepia(97%) saturate(4260%) hue-rotate(0deg) brightness(102%) contrast(108%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
