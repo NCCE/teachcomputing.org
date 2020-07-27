@@ -1,4 +1,4 @@
-.external-content {
+.external-content, .resources__wrapper {
   font-family: $font-family-body;
 
   p {
@@ -60,4 +60,8 @@
     margin-bottom: 20px;
     width: 100%;
   }
+
+	a {
+		@extend .govuk-link, .ncce-link;
+	}
 }
