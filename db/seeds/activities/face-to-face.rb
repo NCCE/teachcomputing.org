@@ -458,3 +458,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '41a77207-c4c2-ea11-a812-000d3a86d545') do |activity|
+  activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
+  activity.credit = 10
+  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams'
+  activity.stem_course_template_no = '41a77207-c4c2-ea11-a812-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
