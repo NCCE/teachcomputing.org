@@ -73,6 +73,7 @@
 }
 
 .curriculum__rating {
+  align-items: center;
 	background-color: $foam;
 	display: flex;
 	justify-content: space-between;
@@ -112,7 +113,7 @@
 }
 
 .curriculum__rating--thumb-down:hover {
-	filter: invert(31%) sepia(97%) saturate(4260%) hue-rotate(0deg) brightness(102%) contrast(108%);
+	filter: invert(47%) sepia(91%) saturate(6461%) hue-rotate(359deg) brightness(105%) contrast(110%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
