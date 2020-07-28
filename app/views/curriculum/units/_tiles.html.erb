@@ -3,27 +3,27 @@
 		<div class="curriculum__tiles">
       <% unless unit.unit_guide.nil? %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading curriculum__tile--heading"><%= link_to 'Unit guide', unit.unit_guide, class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-m curriculum__tile--heading"><%= link_to 'Unit guide', unit.unit_guide, class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
       <% unit.learning_graphs.each do |learning_graph_url| %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading curriculum__tile--heading"><%= link_to 'Learning graph', learning_graph_url, class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-m curriculum__tile--heading"><%= link_to 'Learning graph', learning_graph_url, class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
       <% unit.rubrics.each do |rubric_url| %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading curriculum__tile--heading"><%= link_to 'Rubric', rubric_url, class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-m curriculum__tile--heading"><%= link_to 'Rubric', rubric_url, class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
       <% unit.summative_assessments.each do |summative_assessment_url| %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading curriculum__tile--heading"><%= link_to 'Summative Assessment', summative_assessment_url, class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-m curriculum__tile--heading"><%= link_to 'Summative Assessment', summative_assessment_url, class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
       <% unit.summative_answers.each do |summative_answers_url| %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading curriculum__tile--heading"><%= link_to 'Summative Answers', summative_answers_url, class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-m curriculum__tile--heading"><%= link_to 'Summative Answers', summative_answers_url, class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
 		</div>
