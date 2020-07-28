@@ -17,7 +17,6 @@
 				<p class="govuk-body-l govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
 		</div>
-		<hr class="curriculum__line">
 		<%= render partial: 'years', locals: { key_stage: @key_stage, years: @key_stage.year_groups } %>
 		<%= render 'curriculum/feedback' %>
 	</div>

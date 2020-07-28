@@ -1,5 +1,5 @@
 module CurriculumStubs
-  URL = Curriculum::Connection::CURRICULUM_API_URL
+  URL = CurriculumClient::Connection::CURRICULUM_API_URL
   SCHEMA = File.new('spec/support/curriculum/curriculum_schema.json').read.freeze
 
   # Validates schema requests (only useful in conjunction with calling `Curriculum.connect` directly)
