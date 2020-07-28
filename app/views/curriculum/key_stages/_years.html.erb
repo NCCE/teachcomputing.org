@@ -1,12 +1,13 @@
 <% years.each do |year| %>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+			<hr class="curriculum__line">
       <h3 class="govuk-heading-l">Year <%= year.year_number %></h3>
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <ul class="govuk-list govuk-body-l govuk-!-padding-bottom-7 govuk-!-padding-top-7">
+      <ul class="govuk-list govuk-body-l govuk-!-padding-bottom-4 govuk-!-padding-top-2">
       <% if year.year_number == '7' %>
         <% year.units.select { |unit| unit.slug == 'impact-of-technology-collaborating-online-respectfully' }.each do |unit| %>
           <li class="curriculum__list--item"><%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %></li>
