@@ -3,7 +3,7 @@
     <p class="govuk-body curriculum__rating--only-text"><%= get_feedback_string %></p>
   <% else %>
     <p class="govuk-body curriculum__rating--text">Did you find this content useful?</p>
-    <%= link_to image_tag("/images/resources/thumb_up.svg", alt: "thumb up", class: "curriculum__rating--thumb curriculum__rating--thumb-up"), send(path, :positive, id), remote: true, data: { disable_with: true } %>
-    <%= link_to image_tag("/images/resources/thumb_down.svg", alt: "thumb down", class: "curriculum__rating--thumb curriculum__rating--thumb-down"), send(path, :negative, id), remote: true, data: { disable_with: true } %>
+    <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true }) %>
+    <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true }) %>
   <% end %>
 </div>

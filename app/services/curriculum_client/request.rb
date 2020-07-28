@@ -16,7 +16,8 @@ module CurriculumClient
         when 404
           raise CurriculumClient::Errors::RecordNotFound, e.message
         else
-          raise CurriculumClient::Errors::ConnectionError, "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_API_URL}. Error: #{e.message} (#{e.status_code})"
+          raise CurriculumClient::Errors::ConnectionError,
+                "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_API_URL}. Error: #{e.message} (#{e.status_code})"
         end
       end
 
