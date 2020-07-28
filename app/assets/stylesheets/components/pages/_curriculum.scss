@@ -42,17 +42,16 @@
 }
 
 .curriculum__tile {
-	align-items: center;
 	background-image: image-url('unit.svg');
-	background-position: 1rem center;
+	background-position: 1.25rem center;
 	background-repeat: no-repeat;
 	background-size: 2.2rem;
 	border: 0.125rem solid $aluminum;
 	border-radius: 0.5rem;
-	display: flex;
-	justify-content: center;
 	margin-bottom: 0.9375rem;
-	padding: 1.4rem 0;
+	padding: 2.2rem 0;
+	padding-left: 5.5rem;
+	padding-right: 1.25rem;
 
 
 	@include govuk-media-query($from: desktop) {

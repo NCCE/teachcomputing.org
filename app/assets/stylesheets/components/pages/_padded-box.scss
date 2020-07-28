@@ -23,6 +23,8 @@
 
 .padded-box--resources {
 		padding: 1rem;
+		padding-left: 4rem;
+		padding-top: 3rem;
 
   @include govuk-media-query($from: desktop) {
 		margin-top: 2.2rem;
