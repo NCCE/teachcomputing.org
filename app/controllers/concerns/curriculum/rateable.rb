@@ -20,7 +20,6 @@ module Curriculum
         message = NEW_FEEDBACK
       end
 
-      # TODO: Would be better if this text lived in the template
       render json: {
         origin: __method__.to_s,
         message: message,
