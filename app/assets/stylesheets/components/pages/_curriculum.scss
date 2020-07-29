@@ -26,29 +26,37 @@
 	margin-top: 2.75rem;
 	padding-bottom: 1.375rem;
 
-  @include govuk-media-query($from: desktop) {
+	@include govuk-media-query($from: tablet) {
 		display: grid;
     grid-column-gap: 1rem;
     grid-row-gap: 1.5rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+	}
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
 		padding-bottom:  3.75rem;
   }
 }
 
 .curriculum__tile {
-	align-items: center;
 	background-image: image-url('unit.svg');
-	background-position: 1rem center;
+	background-position: 1.25rem center;
 	background-repeat: no-repeat;
 	background-size: 2.2rem;
 	border: 0.125rem solid $aluminum;
 	border-radius: 0.5rem;
-	display: flex;
-	justify-content: center;
+	height: 1.6rem;
 	margin-bottom: 0.9375rem;
-	padding: 1.4rem 0;
+	padding: 2.2rem 0;
+	padding-left: 5.5rem;
+	padding-right: 1.25rem;
 
+	@include govuk-media-query($from: tablet) {
+		align-items: center;
+  	display: flex;
+	}
 
 	@include govuk-media-query($from: desktop) {
 		background-size: 3rem;
@@ -57,7 +65,7 @@
 }
 
 .curriculum__tile--heading {
-	font-weight: 600;
+	font-weight: 500;;
 	margin-bottom: 0;
 }
 
@@ -75,6 +83,7 @@
 
 .curriculum__rating {
 	background-color: $foam;
+	padding: 1rem;
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem;
@@ -86,7 +95,7 @@
 
 .curriculum__rating--text {
 	margin-bottom: 0 !important;
-	width: 45%;
+
 	@include govuk-media-query($from: desktop) {
 		width: 55%;
 	}
@@ -113,7 +122,7 @@
 }
 
 .curriculum__rating--thumb-down:hover {
-	filter: invert(31%) sepia(97%) saturate(4260%) hue-rotate(0deg) brightness(102%) contrast(108%);
+	filter: invert(47%) sepia(91%) saturate(6461%) hue-rotate(359deg) brightness(105%) contrast(110%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
