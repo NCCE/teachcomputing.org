@@ -18,7 +18,8 @@
         "slug": "y8",
         "keyStage": {
           "slug": "key-stage-3",
-          "shortTitle": "KS3"
+          "shortTitle": "KS3",
+          "level": "1"
         }
       },
       "lessons": [
