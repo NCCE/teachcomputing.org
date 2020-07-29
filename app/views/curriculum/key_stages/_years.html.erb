@@ -10,18 +10,18 @@
       <ul class="govuk-list govuk-body govuk-!-padding-bottom-4 govuk-!-padding-top-2">
       <% if year.year_number == '7' %>
         <% year.units.select { |unit| unit.slug == 'impact-of-technology-collaborating-online-respectfully' }.each do |unit| %>
-          <li class="curriculum__list--item <%= ['1', '2'].include?(key_stage.level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple' %>">
+          <li class="curriculum__list--item <%= key_stage_list_color(key_stage) %>">
             <%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
           </li>
         <% end %>
         <% year.units.reject { |unit| unit.slug == 'impact-of-technology-collaborating-online-respectfully' }.each do |unit| %>
-          <li class="curriculum__list--item <%= ['1', '2'].include?(key_stage.level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple' %>">
+          <li class="curriculum__list--item <%= key_stage_list_color(key_stage) %>">
             <%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
           </li>
         <% end %>
       <% else %>
         <% year.units.each do |unit| %>
-          <li class="curriculum__list--item <%= ['1', '2'].include?(key_stage.level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple' %>">
+          <li class="curriculum__list--item <%= key_stage_list_color(key_stage) %>">
             <%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
           </li>
         <% end %>
