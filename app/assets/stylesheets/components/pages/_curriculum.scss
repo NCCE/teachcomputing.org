@@ -52,6 +52,10 @@
 	padding-left: 5.5rem;
 	padding-right: 1.25rem;
 
+	@include govuk-media-query($from: tablet) {
+		align-items: center;
+  	display: flex;
+	}
 
 	@include govuk-media-query($from: desktop) {
 		background-size: 3rem;
@@ -60,6 +64,7 @@
 }
 
 .curriculum__tile--heading {
+	font-weight: 500;;
 	margin-bottom: 0;
 }
 
