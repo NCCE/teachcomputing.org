@@ -81,36 +81,19 @@
 }
 
 .curriculum__rating {
-  align-items: center;
 	background-color: $foam;
 	padding: 1rem;
 	display: flex;
 	justify-content: space-between;
+	padding: 1rem;
 
 	img {
 		width: auto !important;
-	}
-
-	@include govuk-media-query($from: tablet) {
-		display: block;
-		text-align: center;
-	}
-
-	@include govuk-media-query($from: desktop) {
-		display: flex;
-		justify-content: space-between;
-		text-align: unset;
 	}
 }
 
 .curriculum__rating--text {
 	margin-bottom: 0 !important;
-	width: 70%;
-
-	@include govuk-media-query($from: tablet) {
-		padding-bottom: 1rem;
-		width: auto;
-	}
 
 	@include govuk-media-query($from: desktop) {
 		width: 55%;
