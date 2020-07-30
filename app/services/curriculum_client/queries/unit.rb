@@ -17,6 +17,7 @@ module CurriculumClient
           keyStage {
             slug
             shortTitle
+            level
           }
         }
         lessons {

@@ -1,7 +1,7 @@
 <% meta_tag :title, @key_stage.title %>
 <% meta_tag :description, @key_stage.description %>
 <% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
-<div class="hero hero--resources hero--orange hero--bottom-glyph">
+<div class="hero hero--resources <%= ['1', '2'].include?(@key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">

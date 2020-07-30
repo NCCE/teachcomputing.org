@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<%= render partial: 'tiles', locals: { unit: @unit } %>
-    <%= render partial: 'lessons', locals: { key_stage_slug: @unit.year_group.key_stage.slug, unit: @unit, lessons: @unit.lessons } %>
+    <%= render partial: 'lessons', locals: { key_stage: @unit.year_group.key_stage, unit: @unit, lessons: @unit.lessons } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
