@@ -12,8 +12,9 @@ module CurriculumClient
       begin
         response = client.execute(query, params)
       rescue Graphlient::Errors::ExecutionError => e
-        # Graphlient still does not support the graphql @extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
-        extensions = e.response.original_hash['errors'][0]['extensions']
+        # Graphlient does not support the graphql extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
+        original_hash = e.response.original_hash
+        extensions = original_hash['errors'][0]['extensions']
         raise ActiveRecord::RecordNotFound, e.message if extensions['code'] == :not_found.to_s
 
         raise # Don't prevent other ExecutionErrors from being raised
