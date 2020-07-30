@@ -3,8 +3,8 @@ module CurriculumHelper
       Curriculum::Rateable::EXISTING_FEEDBACK
   end
 
-  def key_stage_list_color(key_stage)
-    ['1', '2'].include?(key_stage.level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple'
+  def key_stage_list_color(level)
+    ['1', '2'].include?(level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple'
   end
 
   def user_has_rated?(id)

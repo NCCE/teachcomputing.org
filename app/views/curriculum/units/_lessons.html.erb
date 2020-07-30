@@ -3,7 +3,7 @@
 		<p class="govuk-body-l">Lessons</p>
 			<ul class="govuk-list govuk-body govuk-!-padding-bottom-7">
         <% lessons.each do |lesson| %>
-          <li class="curriculum__list--item <%= ['1', '2'].include?(key_stage.level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple' %>"><%= link_to lesson.title, curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
+          <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>"><%= link_to lesson.title, curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
         <% end %>
 			</ul>
 	</div>
