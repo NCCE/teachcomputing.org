@@ -1,5 +1,6 @@
 <% meta_tag :title, @unit.title %>
 <% meta_tag :description, @unit.description %>
+<% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
 <div class="hero hero--resources hero--orange hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
@@ -22,7 +23,7 @@
 			</div>
 		</div>
 		<%= render partial: 'tiles', locals: { unit: @unit } %>
-    <%= render partial: 'lessons', locals: { key_stage_slug: @unit.year_group.key_stage.slug, unit: @unit, lessons: @unit.lessons } %>
+    <%= render partial: 'lessons', locals: { key_stage: @unit.year_group.key_stage, unit: @unit, lessons: @unit.lessons } %>
 		<%= render 'curriculum/feedback' %>
 	</div>
 </div>
