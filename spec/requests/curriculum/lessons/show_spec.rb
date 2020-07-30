@@ -1,13 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Curriculum::LessonsController do
-  let(:lesson_json_response) { File.new('spec/support/curriculum/responses/lesson.json').read }
+  let(:unit_json_response) { File.new('spec/support/curriculum/responses/unit.json').read }
 
   describe 'GET #show' do
+    before do
+      stub_a_valid_request(unit_json_response)
+    end
+
     it 'renders the show template' do
-      stub_a_valid_request(lesson_json_response)
       get curriculum_key_stage_unit_lesson_path(key_stage_slug: 'key-stage-3', unit_slug: 'representations-from-clay-to-silicon', lesson_slug: 'lesson-1-across-time-and-space')
       expect(response).to render_template(:show)
+    end
+
+    it '404s when the lesson slug does not exist' do
+      expect { get get curriculum_key_stage_unit_lesson_path(key_stage_slug: 'key-stage-3', unit_slug: 'representations-from-clay-to-silicon', lesson_slug: 'a-dud') }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

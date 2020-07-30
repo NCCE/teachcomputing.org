@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe CurriculumClient::Request do
   let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
+  let(:null_error_response_json) { File.new('spec/support/curriculum/responses/key_stage_null_error.json').read }
+  let(:other_error_response_json) { File.new('spec/support/curriculum/responses/key_stage_other_error.json').read }
 
   describe 'request' do
     before do
@@ -24,7 +26,7 @@ RSpec.describe CurriculumClient::Request do
         .to raise_error(CurriculumClient::Errors::UnparsedQuery)
     end
 
-    it "rasies an error if a connection isn't possible" do
+    it "raises an error if a connection isn't possible" do
       client = CurriculumClient::Connection.connect
 
       stub_request(:post, url)
@@ -41,6 +43,46 @@ RSpec.describe CurriculumClient::Request do
       GRAPHQL
       expect { described_class.run(client.parse(query), client) }
         .to raise_error(CurriculumClient::Errors::ConnectionError, /Unable to connect to/)
+    end
+
+    it 'raises a 404 for an invalid record' do
+      client = CurriculumClient::Connection.connect
+
+      response = JSON.parse(null_error_response_json, object_class: OpenStruct)
+
+      stub_request(:post, url)
+        .to_raise(Graphlient::Errors::ExecutionError.new(response))
+
+      query = <<~GRAPHQL
+        query {
+          keyStage(slug: "nonsense") {
+            id
+          }
+        }
+      GRAPHQL
+
+      expect { described_class.run(client.parse(query), client) }
+        .to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "doesn't block other execution errors" do
+      client = CurriculumClient::Connection.connect
+
+      response = JSON.parse(other_error_response_json, object_class: OpenStruct)
+
+      stub_request(:post, url)
+        .to_raise(Graphlient::Errors::ExecutionError.new(response))
+
+      query = <<~GRAPHQL
+        query {
+          keyStage(slug: "nonsense") {
+            id
+          }
+        }
+      GRAPHQL
+
+      expect { described_class.run(client.parse(query), client) }
+        .to raise_error(Graphlient::Errors::ExecutionError)
     end
   end
 end

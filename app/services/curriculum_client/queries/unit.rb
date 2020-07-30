@@ -17,12 +17,16 @@ module CurriculumClient
           keyStage {
             slug
             shortTitle
+            level
           }
         }
         lessons {
           id
           slug
+          description
+          zippedContents
           title
+          objectives
         }
       GRAPHQL
 
