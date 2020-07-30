@@ -148,7 +148,7 @@
 
 .curriculum__rating--thumb-up {
 	@include govuk-media-query($from: tablet) {
-		margin-right: 1rem;
+		margin-right: 3rem;
 	}
 	@include govuk-media-query($from: desktop) {
 		margin-right: unset;
