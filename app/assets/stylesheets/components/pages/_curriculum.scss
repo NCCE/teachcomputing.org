@@ -82,21 +82,46 @@
 }
 
 .curriculum__rating {
+	align-items: center;
 	background-color: $foam;
-	padding: 1rem;
 	display: flex;
+	height: 3.5rem;
 	justify-content: space-between;
 	padding: 1rem;
 
 	img {
 		width: auto !important;
 	}
+
+	@include govuk-media-query($from: tablet) {
+		display: block;
+    height: auto;
+    text-align: center;
+	}
+
+	@include govuk-media-query($from: desktop) {
+		align-items: center;
+		display: flex;
+		height: 3.5rem;
+		justify-content: space-between;
+	}
+}
+
+.curriculum__rating--submitted {
+	text-align: center;
 }
 
 .curriculum__rating--text {
 	margin-bottom: 0 !important;
+	width: 55%;
+
+	@include govuk-media-query($from: tablet) {
+    padding-bottom: 1rem;
+  	width: 100%;
+	}
 
 	@include govuk-media-query($from: desktop) {
+		padding-bottom: unset;
 		width: 55%;
 	}
 }
@@ -112,6 +137,17 @@
 	transition: all .2s ease-in-out;
 	width: auto;
 }
+
+.curriculum__rating--thumb-up {
+	@include govuk-media-query($from: tablet) {
+		margin-right: 1rem;
+	}
+	@include govuk-media-query($from: desktop) {
+		margin-right: unset;
+	}
+}
+
+
 
 .curriculum__rating--thumb:hover {
 		transform: scale(1.2);
