@@ -22,7 +22,10 @@ module CurriculumClient
         lessons {
           id
           slug
+          description
+          zippedContents
           title
+          objectives
         }
       GRAPHQL
 
