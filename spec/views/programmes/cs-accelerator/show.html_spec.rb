@@ -13,7 +13,7 @@ RSpec.describe('programmes/cs-accelerator/show', type: :view) do
   end
 
   it 'has one heading' do
-    expect(rendered).to have_css('.govuk-heading-s', count: 2)
+    expect(rendered).to have_css('.govuk-heading-s', count: 3)
   end
 
 	it 'has one courses button' do
