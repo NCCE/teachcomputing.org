@@ -8,7 +8,6 @@ RSpec.describe('programmes/cs-accelerator/_quiz', type: :view) do
   before do
     diagostic_activity
     programme.activities << diagostic_activity
-    achievement.transition_to(:complete)
     allow_any_instance_of(Programme).to receive(:user_completed?).and_return(true)
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
