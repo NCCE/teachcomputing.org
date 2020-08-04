@@ -14,4 +14,14 @@ describe CurriculumHelper, type: :helper do
       end
     end
   end
+
+  describe('#year_group_title') do
+    context 'when the year number contains GCSE' do
+      expect(helper.year_group_title('GCSE')).to eq 'GCSE'
+    end
+
+    context 'when the year number contains anything but GCSE' do
+      expect(helper.year_group_title('1')).to eq 'Year 1'
+    end
+  end
 end
