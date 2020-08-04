@@ -1,7 +1,7 @@
 <% meta_tag :title, @lesson.title %>
 <% meta_tag :description, @lesson.description %>
 <% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
-<div class="hero hero--resources <%= ['1', '2'].include?(@nit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
+<div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
 			<p class="govuk-body curriculum__label">Lesson</p>
