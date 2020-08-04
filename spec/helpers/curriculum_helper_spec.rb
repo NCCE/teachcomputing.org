@@ -17,11 +17,15 @@ describe CurriculumHelper, type: :helper do
 
   describe('#year_group_title') do
     context 'when the year number contains GCSE' do
-      expect(helper.year_group_title('GCSE')).to eq 'GCSE'
+      it 'returns GCSE' do
+        expect(helper.year_group_title('GCSE')).to eq 'GCSE'
+      end
     end
 
     context 'when the year number contains anything but GCSE' do
-      expect(helper.year_group_title('1')).to eq 'Year 1'
+      it 'returns Year and its number' do
+        expect(helper.year_group_title('1')).to eq 'Year 1'
+      end
     end
   end
 end
