@@ -46,8 +46,8 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       expect(rendered).to have_css('.ncce-aside__title', text: 'Enrol on the programme')
     end
 
-    it 'has Account button' do
-      expect(rendered).to have_css('.button--aside', text: 'Enrol now')
+    it 'has a button to log in' do
+      expect(rendered).to have_css('.button--aside', text: 'Log in')
     end
   end
 end
