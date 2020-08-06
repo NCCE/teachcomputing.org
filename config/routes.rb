@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }
   get '/home-teaching/:page_slug/refresh', to: 'cms#clear_page_cache', as: :clear_home_teaching_page_cache, defaults: { page_slug: 'key-stage-1' }
-  get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
+  get '/hubs', to: 'cms#cms_page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
