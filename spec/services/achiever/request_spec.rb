@@ -28,15 +28,21 @@ RSpec.describe Achiever::Request do
     describe '#resource' do
       it 'returns an Array' do
         stub_course_templates
-        expect(described_class.resource('Get?cmd=CourseTemplatesListingByProgramme', template_query_strings)).to be_a Array
+        expect(described_class.resource(
+                 'Get?cmd=CourseTemplatesListingByProgramme',
+                 template_query_strings
+               ))
+          .to be_a Array
       end
 
       context 'when unsuccessful' do
-        it 'raises an Achiever::Error exception' do
+        it 'returns an empty array' do
           stub_a_failed_response('CourseTemplatesListingByProgramme', template_query_strings)
-          expect do
-            described_class.resource('Get?cmd=CourseTemplatesListingByProgramme', template_query_strings)
-          end.to raise_error(Achiever::Error)
+          expect(described_class.resource(
+                   'Get?cmd=CourseTemplatesListingByProgramme',
+                   template_query_strings
+                 ))
+            .to eq([])
         end
       end
     end
