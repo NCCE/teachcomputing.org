@@ -36,7 +36,7 @@
           </p>
           <% else %>
           <p class="govuk-body">
-            <%= link_to 'Enrol now', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
           </p>
           <% end %>
         </div>
