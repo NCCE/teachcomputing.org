@@ -45,6 +45,17 @@ RSpec.describe Achiever::Request do
             .to eq([])
         end
       end
+
+      context 'when json parsing errors' do
+        it 'returns an empty array' do
+          stub_an_html_error_page('CourseTemplatesListingByProgramme', template_query_strings)
+          expect(described_class.resource(
+                   'Get?cmd=CourseTemplatesListingByProgramme',
+                   template_query_strings
+                 ))
+            .to eq([])
+        end
+      end
     end
   end
 end

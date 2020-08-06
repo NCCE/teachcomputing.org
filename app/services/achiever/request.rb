@@ -36,6 +36,9 @@ class Achiever::Request
         Rails.logger.warn "Achiever::Request error: #{parsed_response.GetJsonResult.FailureReason}"
         []
       end
+    rescue JSON::ParserError => e
+      Rails.logger.warn "Achiever::Request Error parsing JSON: #{e.message}"
+      []
     end
 
     private
