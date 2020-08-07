@@ -210,6 +210,34 @@ RSpec.describe CoursesController do
         end
       end
 
+      context 'when filtering by Remote' do
+        before do
+          get courses_path, params: { location: 'Remote' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).count).to eq(1)
+        end
+
+        it 'course templates are not marked as online' do
+          assigns(:courses).each do |course|
+            expect(course.online_cpd).to eq false
+          end
+        end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('Remote')
+        end
+
+        it 'shows a flash notice' do
+          expect(flash[:notice]).to be_present
+        end
+
+        it 'flash notice has correct info' do
+          expect(flash[:notice]).to match(/<strong>Location<\/strong>: Remote/)
+        end
+      end
+
       context 'when filtering by level' do
         before do
           get courses_path, params: { level: 'Key stage 4' }

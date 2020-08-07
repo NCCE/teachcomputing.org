@@ -40,7 +40,7 @@
             <%= select_tag :location,
               options_for_select(@locations, @current_location),
               {
-                include_blank: 'Any location',
+                include_blank: 'Any type or location',
                 class: 'govuk-select ncce-select',
                 'aria-label': 'Filter by location' }
             %>
