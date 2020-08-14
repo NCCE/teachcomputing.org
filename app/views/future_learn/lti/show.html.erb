@@ -1,0 +1,22 @@
+<p>Redirecting to FutureLearn...</p>
+<form action="<%= @consumer.launch_url %>" name="ltiLaunchForm" id="ltiLaunchForm" method="post" encType="application/x-www-form-urlencoded">
+  <% @consumer.generate_launch_data.each_pair do |key, val| %>
+    <input type="hidden" name="<%= key %>" value="<%= val %>"/>
+  <% end %>
+</form>
+
+<%= javascript_tag nonce: true do -%>
+    document.getElementById('ltiLaunchForm').submit();
+<% end -%>
+
+<noscript>
+  <p>
+    JavaScript is not enabled, please click the button below to join the course.
+  </p>
+  <form action="<%= @consumer.launch_url %>" name="ltiLaunchForm" id="ltiLaunchForm" method="post" encType="application/x-www-form-urlencoded">
+    <% @consumer.generate_launch_data.each_pair do |key, val| %>
+      <input type="hidden" name="<%= key %>" value="<%= val %>"/>
+    <% end %>
+    <button type="submit">Join this course</button>
+  </form>
+</noscript>

@@ -1,23 +1,24 @@
 <% if current_user %>
-  <% case user_achievement_state(current_user, @activity) %>
-  <% when :not_enrolled %>
+  <% join_or_book = @course.online_cpd ? 'Join this course' : 'Book this course' %>
+  <% if user_achievement_state(current_user, @activity) == :not_enrolled %>
     <div class="ncce-aside">
-      <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= join_or_book %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @course.online_cpd ? 'You will be taken to the FutureLearn website to create an account and sign up for online courses. Please use the same email address so we can track your progress.' : 'You will be taken to the STEM Learning website to see further details and book.' %></p>
       <p class="govuk-body">
-        <%=
-          link_to_if(@course.booking_url.empty?, @course.online_cpd ? 'Join this course' : 'Book this course', stem_course_link(@course.course_template_no), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) do
-            link_to(@course.online_cpd ? 'Join this course' : 'Book this course', @course.booking_url, class: 'govuk-button button--aside', draggable: 'false', target: :_blank)
-          end
-        %>
+
+        <% if @course.online_cpd == true %>
+          <%= link_to(join_or_book, futurelearn_lti_path(@activity.future_learn_course_uuid), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) %>
+        <% else %>
+          <%= link_to(join_or_book, stem_course_link(@course.course_template_no), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) %>
+        <% end %>
       </p>
     </div>
   <% end %>
 <% else %>
   <div class="ncce-aside">
-    <h2 class="govuk-heading-m ncce-aside__title"><%= @course.online_cpd ? 'Join this course' : 'Book this course' %></h2>
+    <h2 class="govuk-heading-m ncce-aside__title"><%= join_or_book %></h2>
       <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
-      <p class="govuk-body"><%= link_to @course.online_cpd ? 'Join this course' : 'Book this course', "#{auth_url}?source_uri=#{URI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %></p>
+      <p class="govuk-body"><%= link_to join_or_book, "#{auth_url}?source_uri=#{URI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %></p>
       <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?
         <br>
         <%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %></p>

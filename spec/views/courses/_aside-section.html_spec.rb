@@ -8,6 +8,7 @@ RSpec.describe('courses/_aside-section', type: :view) do
   before do
     stub_course_templates
     @course = course
+    @activity = create(:activity)
   end
 
   describe 'when logged in' do
