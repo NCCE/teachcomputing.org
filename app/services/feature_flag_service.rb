@@ -9,6 +9,8 @@ class FeatureFlagService
     private
 
       def cast_boolean(string_value)
+        return false unless string_value.present?
+
         ActiveModel::Type::Boolean.new.cast(string_value)
       end
   end
