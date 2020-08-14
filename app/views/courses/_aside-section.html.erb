@@ -7,9 +7,31 @@
       <p class="govuk-body">
 
         <% if @course.online_cpd == true %>
-          <%= link_to(join_or_book, futurelearn_lti_path(@activity.future_learn_course_uuid), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) %>
+          <% if FeatureFlagService.flags[:fl_lti_enabled] %>
+            <%= link_to(
+              join_or_book,
+              futurelearn_lti_path(@activity.future_learn_course_uuid),
+              class: 'govuk-button button--aside',
+              draggable: 'false',
+              target: :_blank
+            ) %>
+          <% else %>
+            <%= link_to(
+              join_or_book,
+              @course.booking_url,
+              class: 'govuk-button button--aside',
+              draggable: 'false',
+              target: :_blank
+            ) %>
+          <% end %>
         <% else %>
-          <%= link_to(join_or_book, stem_course_link(@course.course_template_no), class: 'govuk-button button--aside', draggable: 'false', target: :_blank) %>
+          <%= link_to(
+            join_or_book,
+            stem_course_link(@course.course_template_no),
+            class: 'govuk-button button--aside',
+            draggable: 'false',
+            target: :_blank
+          ) %>
         <% end %>
       </p>
     </div>
