@@ -1,5 +1,7 @@
 module FutureLearn
   class LtiController < ApplicationController
+    before_action :authenticate_user!
+
     def show
       @consumer = IMS::LTI::ToolConsumer.new(
         ENV['FL_LTI_CONSUMER_KEY'],
