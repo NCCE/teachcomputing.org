@@ -7,7 +7,7 @@
       <p class="govuk-body">
 
         <% if @course.online_cpd == true %>
-          <% if FeatureFlagService.flags[:fl_lti_enabled] %>
+          <% if FeatureFlagService.new.flags[:fl_lti_enabled] %>
             <%= link_to(
               join_or_book,
               futurelearn_lti_path(@activity.future_learn_course_uuid),
