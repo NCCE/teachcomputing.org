@@ -35,6 +35,10 @@ RSpec.describe FeatureFlagService do
     end
 
     context('when env var is not set') do
+      before do
+        ENV['TEST_FLAG_VAR'] = nil
+      end
+
       it 'sets flag correctly' do
         expect(flags[:test_flag]).to eq(false)
       end
