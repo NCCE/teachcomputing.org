@@ -26,9 +26,7 @@ module CurriculumClient
         raise CurriculumClient::Errors::SchemaLoadError
       end
 
-      if store_schema
-        Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours)
-      end
+      Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours) if store_schema
 
       @client
     end

@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/find?external_learner_id=wrong
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc0MjI5NTQsImV4cCI6MTU5NzQyMzU1NH0.H5Us2A3J6LpggVesJT3VQpDEFHsbC2sLgUcXiU2pWRY
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 14 Aug 2020 16:35:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - cd39e9c5-e26b-4867-986b-d0ab2bbc8706
+      X-Runtime:
+      - '0.009467'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"error":"not_found"}'
+  recorded_at: Fri, 14 Aug 2020 16:35:55 GMT
+recorded_with: VCR 6.0.0
