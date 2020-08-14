@@ -9,7 +9,7 @@ module CurriculumHelper
 
   def generate_download_url(contents_url)
     modified_url = contents_url.dup
-    return modified_url.to_s << "?user_stem_achiever_contact_no=#{current_user.stem_achiever_contact_no}" if current_user
+    return modified_url << "?user_stem_achiever_contact_no=#{current_user.stem_achiever_contact_no}" if current_user
     contents_url
   end
 
