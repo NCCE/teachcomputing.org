@@ -77,8 +77,8 @@ class CoursesController < ApplicationController
     def alert_filter_params
       filter_strings = []
       filter_strings.push("#{ERB::Util.html_escape(@current_level)}") if @current_level
-      filter_strings.push("#{ERB::Util.html_escape(@current_topic)}") if @current_topic
       filter_strings.push("#{ERB::Util.html_escape(@current_location)}") if @current_location
+      filter_strings.push("#{ERB::Util.html_escape(@current_topic)}") if @current_topic
       filter_strings.push("#{@current_certificate.title}") if @current_certificate
 
       return if filter_strings.empty?
