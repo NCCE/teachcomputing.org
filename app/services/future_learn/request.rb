@@ -1,7 +1,7 @@
 module FutureLearn
   JWT_ALGORITHM = 'HS256'.freeze
   CACHE_EXPIRY = 5.hours
-  BASE_URL = ENV.fetch('FL_LTI_API_URL').freeze
+  BASE_URL = ENV.fetch('FL_PARTNERS_URL').freeze
 
   class Request
     def self.run(endpoint, params = {})
@@ -38,11 +38,11 @@ module FutureLearn
       now = Time.now
       @expiry = now + 10.minutes
       payload = {
-        iss: ENV.fetch('FL_LTI_API_CONSUMER_KEY'),
+        iss: ENV.fetch('FL_PARTNERS_CONSUMER_KEY'),
         iat: now.to_i,
         exp: @expiry.to_i
       }
-      JWT.encode payload, ENV.fetch('FL_LTI_API_CONSUMER_SECRET'), JWT_ALGORITHM
+      JWT.encode payload, ENV.fetch('FL_PARTNERS_CONSUMER_SECRET'), JWT_ALGORITHM
     end
   end
 end
