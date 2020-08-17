@@ -91,7 +91,7 @@ class CoursesController < ApplicationController
       when 'Online'
         course.online_cpd
       when 'Face to face'
-        !course.online_cpd
+        !course.online_cpd && !course.remote_delivered_cpd
       when 'Remote'
         course.remote_delivered_cpd
       else
