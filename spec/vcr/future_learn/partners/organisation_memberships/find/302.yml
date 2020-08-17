@@ -7,14 +7,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - Faraday v1.0.1
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc0MjI4OTQsImV4cCI6MTU5NzQyMzQ5NH0.IOBUsepGoccUr5uEQgs3DVfOKs4MBLqqfkExx55ZdUM
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc2ODEyODAsImV4cCI6MTU5NzY4MTg4MH0.VXLsVvvJazyss4kLGQdw4GG-GhF9VBFufkg3TWYDCBo
       Accept:
       - application/json
       Content-Type:
       - application/json
+      User-Agent:
+      - Faraday v1.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,7 +23,7 @@ http_interactions:
       message: Found
     headers:
       Date:
-      - Fri, 14 Aug 2020 16:34:55 GMT
+      - Mon, 17 Aug 2020 16:21:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,57 +35,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 895bd774-5ba0-49ea-8035-e5f35eb292f3
+      - 188bb531-ac4f-40de-bd1e-386f9398fb8d
       X-Runtime:
-      - '0.010371'
+      - '0.035275'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
     body:
       encoding: UTF-8
       string: '{"uuid":"7f64ee87-5e77-47bb-8736-3fec909ab1a1","href":"https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/7f64ee87-5e77-47bb-8736-3fec909ab1a1"}'
-  recorded_at: Fri, 14 Aug 2020 16:34:55 GMT
-- request:
-    method: get
-    uri: https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/find?external_learner_id=87e2b457-4bcd-4630-970e-01672b4e0365
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc0MjI5NTQsImV4cCI6MTU5NzQyMzU1NH0.H5Us2A3J6LpggVesJT3VQpDEFHsbC2sLgUcXiU2pWRY
-      Accept:
-      - application/json
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 302
-      message: Found
-    headers:
-      Date:
-      - Fri, 14 Aug 2020 16:35:54 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Location:
-      - https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/7f64ee87-5e77-47bb-8736-3fec909ab1a1
-      Cache-Control:
-      - no-cache
-      X-Request-Id:
-      - 8dd21362-1a5a-4344-bc03-1b7352f4e007
-      X-Runtime:
-      - '0.009457'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-    body:
-      encoding: UTF-8
-      string: '{"uuid":"7f64ee87-5e77-47bb-8736-3fec909ab1a1","href":"https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/7f64ee87-5e77-47bb-8736-3fec909ab1a1"}'
-  recorded_at: Fri, 14 Aug 2020 16:35:54 GMT
+  recorded_at: Mon, 17 Aug 2020 16:21:20 GMT
 recorded_with: VCR 6.0.0

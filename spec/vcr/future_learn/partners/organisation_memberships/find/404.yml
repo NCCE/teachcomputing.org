@@ -7,14 +7,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - Faraday v1.0.1
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc0MjI5NTQsImV4cCI6MTU5NzQyMzU1NH0.H5Us2A3J6LpggVesJT3VQpDEFHsbC2sLgUcXiU2pWRY
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc2ODEyODAsImV4cCI6MTU5NzY4MTg4MH0.VXLsVvvJazyss4kLGQdw4GG-GhF9VBFufkg3TWYDCBo
       Accept:
       - application/json
       Content-Type:
       - application/json
+      User-Agent:
+      - Faraday v1.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,7 +23,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Fri, 14 Aug 2020 16:35:55 GMT
+      - Mon, 17 Aug 2020 16:21:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,13 +33,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - cd39e9c5-e26b-4867-986b-d0ab2bbc8706
+      - bf9de06e-eaa1-4333-9d22-a9072a591c95
       X-Runtime:
-      - '0.009467'
+      - '0.010527'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
     body:
       encoding: UTF-8
       string: '{"error":"not_found"}'
-  recorded_at: Fri, 14 Aug 2020 16:35:55 GMT
+  recorded_at: Mon, 17 Aug 2020 16:21:20 GMT
 recorded_with: VCR 6.0.0
