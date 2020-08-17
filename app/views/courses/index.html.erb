@@ -1,14 +1,20 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Courses', glyph_position: 'bottom', colour: 'blue' %>
+<%= render 'components/hero', hero_title: 'Computing courses for teachers', glyph_position: 'bottom', colour: 'blue' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">We offer professional development courses to support the teaching of computing from Key Stages 1-4.</p>
-        <p class="govuk-body"><strong>Remote courses</strong></p>
-        <p class="govuk-body">To fully support teachers, we have adapted our face-to-face courses to be delivered  remotely across a series of short sessions.</p>
-        <p class="govuk-body"><strong>Online courses</strong></p>
-        <p class="govuk-body govuk-!-margin-bottom-0">Take part in any of our free online courses and learn at your own pace.</p>
+        <p class="govuk-body">
+          Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge, with
+          <%= link_to 'bursaries', bursary_path, class: 'ncce-link' %> available for schools and colleges to help you participate.
+        </p>
+        <p class="govuk-body">
+          Choose how and when you want to learn, through face-to-face, online, or live remote training.
+        </p>
+        <p class="govuk-body">
+          Select individual courses, or make your learning go further, by enrolling on our national certification programmes in
+          <%= link_to 'primary computing', primary_path, class: 'ncce-link' %>, or <%= link_to 'GCSE computer science', cs_accelerator_path, class: 'ncce-link' %>.
+        </p>
       </div>
     </div>
   </div>
