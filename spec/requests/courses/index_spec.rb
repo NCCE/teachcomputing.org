@@ -184,12 +184,18 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(15)
+          expect(assigns(:courses).count).to eq(14)
         end
 
         it 'course templates are not marked as online' do
           assigns(:courses).each do |course|
             expect(course.online_cpd).to eq false
+          end
+        end
+
+        it 'course templates are not marked as remote' do
+          assigns(:courses).each do |course|
+            expect(course.remote_delivered_cpd).to eq false
           end
         end
 
