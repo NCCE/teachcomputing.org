@@ -75,6 +75,7 @@ group :test do
   gem 'simplecov'
   # Don't load webdrivers if ENV_TYPE is 'development'
   gem 'webdrivers', '~> 4.0', require: ENV['ENV_TYPE'] != 'development'
+  gem 'vcr'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
