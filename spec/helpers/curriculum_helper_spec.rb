@@ -51,7 +51,7 @@ describe CurriculumHelper, type: :helper do
 
   describe('.sorted_years') do
     before do
-      Year = Struct.new(:year, :year_number)
+      stub_const('Year', Struct.new(:year, :year_number))
     end
 
     it 'sorts numeric years correctly' do
