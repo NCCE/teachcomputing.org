@@ -48,4 +48,36 @@ describe CurriculumHelper, type: :helper do
       end
     end
   end
+
+  describe('.sorted_years') do
+    before do
+      Year = Struct.new(:year, :year_number)
+    end
+
+    it 'sorts numeric years correctly' do
+      years = [
+        Year.new(1, '1'),
+        Year.new(3, '3'),
+        Year.new(2, '2')
+      ]
+      expect(helper.sorted_years(years))
+        .to eq([
+                 Year.new(1, '1'),
+                 Year.new(2, '2'),
+                 Year.new(3, '3')
+               ])
+    end
+
+    it 'sorts GCSE and Non-GCSE correctly' do
+      years = [
+        Year.new(10, 'Non-GCSE'),
+        Year.new(11, 'GCSE')
+      ]
+      expect(helper.sorted_years(years))
+        .to eq([
+                 Year.new(11, 'GCSE'),
+                 Year.new(10, 'Non-GCSE')
+               ])
+    end
+  end
 end
