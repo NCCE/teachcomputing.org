@@ -91,6 +91,18 @@
     },
     "CURRICULUM_APP_URL": {
       "required": true
+    },
+    "CURRICULUM_API_KEY": {
+      "required": true
+    },
+    "FL_PARTNERS_URL": {
+      "required": true
+    },
+    "FL_PARTNERS_CONSUMER_KEY": {
+      "required": true
+    },
+    "FL_PARTNERS_CONSUMER_SECRET": {
+      "required": true
     }
   },
   "formation": {

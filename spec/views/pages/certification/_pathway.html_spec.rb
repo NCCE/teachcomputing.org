@@ -16,8 +16,12 @@ RSpec.describe('pages/certification/_pathway', type: :view) do
     expect(rendered).to have_css('.pathway__item', count: 5)
   end
 
-  it 'has a courses link' do
+  it 'has a courses button' do
     expect(rendered).to have_css('.button', text: 'Browse our courses')
+  end
+
+  it 'has a courses link' do
+    expect(rendered).to have_css('.ncce-link', text: 'to book online')
   end
 
 end

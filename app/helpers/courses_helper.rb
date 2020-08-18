@@ -8,7 +8,7 @@ module CoursesHelper
       course.address_line_2,
       course.address_line_3,
       course.address_line_4,
-      course.address_town,
+      course.address_town
     ].reject(&:blank?).join('<br>').html_safe
   end
 
@@ -34,7 +34,8 @@ module CoursesHelper
 
   def max_fee(fees)
     return if fees.blank?
-    sorted_fees = fees.sort { |x,y| y.fee.to_f <=> x.fee.to_f }
+
+    sorted_fees = fees.sort { |x, y| y.fee.to_f <=> x.fee.to_f }
 
     "£#{sorted_fees[0].fee}"
   end
@@ -44,7 +45,7 @@ module CoursesHelper
   end
 
   def stripped_summary(string)
-    unescaped_str = CGI::unescapeHTML(string)
+    unescaped_str = CGI.unescapeHTML(string)
     strip_tags(unescaped_str)
   end
 
@@ -77,5 +78,17 @@ module CoursesHelper
 
   def sanitize_stem_html(html)
     sanitize(html, scrubber: StemCourseDetailsScrubber.new)
+  end
+
+  def course_subtitle_text(course)
+    return 'Online' if course.online_cpd
+
+    remote_or_face_to_face(course)
+  end
+
+  def remote_or_face_to_face(course)
+    return 'Remote' if course.remote_delivered_cpd
+
+    'Face to face'
   end
 end

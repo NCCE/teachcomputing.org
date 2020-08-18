@@ -2,13 +2,9 @@ class LandingPagesController < ApplicationController
   layout 'full-width'
   before_action :find_programme
 
-  def primary_teachers
-    render "landing_pages/primary-teachers"
-  end
+  def primary_teachers; end
 
-  def secondary_teachers
-    render "landing_pages/secondary-teachers"
-  end
+  def secondary_teachers; end
 
   private
 

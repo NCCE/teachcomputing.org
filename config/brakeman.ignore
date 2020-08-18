@@ -54,19 +54,19 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "7d444a46e9a11d0df3bb9d0eef96da6482d47be20fdd0ec43b8e8f638765b054",
+      "fingerprint": "8f9d47d6ae45ad2980b63c1fd0cc378abc84b45689873fb2c926f054a9ad3dd0",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped parameter value",
       "file": "app/views/curriculum/lessons/show.html.erb",
       "line": 19,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Kramdown::Document.new(Queries::Lesson.one(params[:lesson_slug]).lesson.objectives).to_html",
+      "code": "Kramdown::Document.new(CurriculumClient::Queries::Lesson.one(params[:lesson_slug]).lesson.objectives).to_html",
       "render_path": [
         {
           "type": "controller",
           "class": "Curriculum::LessonsController",
           "method": "show",
-          "line": 7,
+          "line": 14,
           "file": "app/controllers/curriculum/lessons_controller.rb",
           "rendered": {
             "name": "curriculum/lessons/show",
@@ -123,6 +123,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     }
   ],
-  "updated": "2020-07-17 10:21:09 +0000",
-  "brakeman_version": "4.8.0"
+  "updated": "2020-07-27 14:09:23 +0100",
+  "brakeman_version": "4.8.2"
 }

@@ -14,9 +14,7 @@ RSpec.describe('courses/index', type: :view) do
 
     @courses.each do |course|
       @course_occurrences.each do |course_occurrence|
-        if course_occurrence.course_template_no == course.course_template_no
-          course.occurrences.push(course_occurrence)
-        end
+        course.occurrences.push(course_occurrence) if course_occurrence.course_template_no == course.course_template_no
       end
     end
 
@@ -28,12 +26,15 @@ RSpec.describe('courses/index', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-xl', text: 'Courses')
+    expect(rendered).to have_css(
+      '.govuk-heading-xl',
+      text: 'Computing courses for teachers'
+    )
   end
 
   it 'links to the course landing page for each course' do
     @courses.each do |course|
-      expect(rendered).to have_link(course.title, href: /#{course.activity_code}\/#{course.title.parameterize}/)
+      expect(rendered).to have_link(course.title, href: %r{#{course.activity_code}/#{course.title.parameterize}})
     end
   end
 

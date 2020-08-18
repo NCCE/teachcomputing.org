@@ -1,4 +1,7 @@
-<div class="hero hero--resources hero--orange hero--bottom-glyph">
+<% meta_tag :title, @key_stage.title %>
+<% meta_tag :description, @key_stage.description %>
+<% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
+<div class="hero hero--resources <%= ['1', '2'].include?(@key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
@@ -12,10 +15,9 @@
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
-				<p class="govuk-body-l govuk-!-margin-bottom-8">World-class lesson plans, unit guides and teacher guides to help you <strong>teach computing.</strong></p>
+				<p class="govuk-body govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
 		</div>
-		<hr class="curriculum__line">
 		<%= render partial: 'years', locals: { key_stage: @key_stage, years: @key_stage.year_groups } %>
 		<%= render 'curriculum/feedback' %>
 	</div>

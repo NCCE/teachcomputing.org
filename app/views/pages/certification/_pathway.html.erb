@@ -1,13 +1,13 @@
 <div class="pathway-wrapper light-grey-bg">
   <h2 class="govuk-heading-s">Learning pathways for teachers</h2>
-	<p class="govuk-body">Our learning pathways will help you to get started and offer a structured route through the programme based on your level of experience.</p>
+	<p class="govuk-body">Our learning pathways will help you to get started and offer a structured route through the programme based on your level of experience. Once you have identified your pathway please browse our courses <%= link_to 'to book online', courses_path(certificate: @programme.slug), class: 'govuk-link ncce-link' %>.</p>
   <ul class="govuk-list">
 		<li class="pathway__item">
 			<%= link_to 'Advanced GCSE computer science', 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
 		<li class="pathway__item">
-			<%= link_to 'New to GCSE computer science', 'https://static.teachcomputing.org/pathways/02_New_to_GCSE_computer+science.pdf', class: 'govuk-link ncce-link icon-resources' %>
+			<%= link_to 'New to GCSE computer science', 'https://static.teachcomputing.org/pathways/02_New_to_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
 		<li class="pathway__item">

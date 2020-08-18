@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get '/curriculum/:key_stage_slug', to: 'curriculum/key_stages#show', as: :curriculum_key_stage_units
   get '/curriculum/:key_stage_slug/:unit_slug', to: 'curriculum/units#show', as: :curriculum_key_stage_unit
   get '/curriculum/:key_stage_slug/:unit_slug/:lesson_slug', to: 'curriculum/lessons#show', as: :curriculum_key_stage_unit_lesson
+  get '/curriculum/rating/units/:polarity/:id', to: 'curriculum/units#rate', as: :create_curriculum_unit_rating
+  get '/curriculum/rating/lessons/:polarity/:id', to: 'curriculum/lessons#rate', as: :create_curriculum_lesson_rating
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
@@ -62,24 +64,23 @@ Rails.application.routes.draw do
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }
   get '/home-teaching/:page_slug/refresh', to: 'cms#clear_page_cache', as: :clear_home_teaching_page_cache, defaults: { page_slug: 'key-stage-1' }
-  get '/hubs', to: 'pages#page', as: :hubs, defaults: { page_slug: 'hubs' }
+  get '/hubs', to: 'cms#cms_page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
-    constraints: ->(_request) { Programme.primary_certificate.enrollable? }
+                              constraints: ->(_request) { Programme.primary_certificate.enrollable? }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
-    constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
-    get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
-    get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
-    get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
+                                constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
+  get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
+  get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
+  get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome
-
 
   require 'sidekiq/web'
   mount Sidekiq::Web, at: 'admin/sidekiq'

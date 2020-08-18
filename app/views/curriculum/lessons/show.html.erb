@@ -1,4 +1,7 @@
-<div class="hero hero--resources hero--orange hero--bottom-glyph">
+<% meta_tag :title, @lesson.title %>
+<% meta_tag :description, @lesson.description %>
+<% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
+<div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
 			<p class="govuk-body curriculum__label">Lesson</p>
@@ -9,18 +12,18 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @lesson.unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@lesson.unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "Year #{@lesson.unit.year_group.year_number} - #{@lesson.unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @lesson.unit.year_group.key_stage.slug, unit_slug: @lesson.unit.slug) %> > <%= @lesson.title %></p>
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %> > <%= @lesson.title %></p>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds">
+			<div class="govuk-grid-column-two-thirds external-content">
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @lesson.description %></p>
-        <% unless @lesson.objectives.nil? %>
+        <% if @lesson.objectives.present?  %>
           <h3 class="govuk-heading-m">Learning objectives</h3>
             <%= Kramdown::Document.new(@lesson.objectives).to_html.html_safe %>
         <% end %>
 			</div>
 			<div class="govuk-grid-column-one-third">
-				<div class="ncce-aside ncce-diagnostic__aside">
+				<div class="ncce-aside">
 					<h2 class="govuk-heading-m ncce-aside__title">Package contents</h2>
 					<ul class="govuk-list">
 						<li>Lesson plans</li>
@@ -28,8 +31,8 @@
 						<li>Unit overviews</li>
 						<li>Activities</li>
 					</ul>
-					<%= link_to 'Download all lesson files', @lesson.zipped_contents, class: 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
-					<%= render 'curriculum/rating' %>
+					<%= link_to 'Download all lesson files', generate_download_url(@lesson.zipped_contents), class: 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+					<%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, id: @lesson.id } %>
 				</div>
 			</div>
 		</div>

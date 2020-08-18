@@ -1,0 +1,27 @@
+{
+  "data": {
+    "keyStage": null,
+    "errors": {
+      "details": []
+    }
+  },
+  "original_hash": {
+    "errors": [
+      {
+        "message": "'nonsense' not found",
+        "locations": [
+          {
+            "line": 2,
+            "column": 5
+          }
+        ],
+        "path": [
+          "keyStage"
+        ],
+        "extensions": {
+          "code": "not_found"
+        }
+      }
+    ]
+  }
+}

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator')}
+  let(:programme) { create(:programme, slug: 'cs-accelerator', title: 'CS Accelerator')}
 
   describe 'GET #index' do
     before do
@@ -84,12 +84,12 @@ RSpec.describe CoursesController do
           expect(assigns(:current_certificate)).to eq programme
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Certificate<\/strong>: #{programme.title}/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('CS Accelerator')
         end
       end
 
@@ -106,16 +106,12 @@ RSpec.describe CoursesController do
           expect(assigns(:current_topic)).to eq('Mathematics')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Mathematics/)
-        end
-
-        it 'flash notice has a link to remove filtering' do
-          expect(flash[:notice]).to match(/<a href="#{url_for(controller: 'courses', anchor: 'filter-results')}">Remove filter<\/a>/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Mathematics')
         end
       end
 
@@ -145,12 +141,12 @@ RSpec.describe CoursesController do
           expect(assigns(:current_location)).to eq('York')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('York')
         end
       end
 
@@ -173,12 +169,12 @@ RSpec.describe CoursesController do
           expect(assigns(:current_location)).to eq('Online')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: Online/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Online')
         end
       end
 
@@ -188,7 +184,41 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(15)
+          expect(assigns(:courses).count).to eq(14)
+        end
+
+        it 'course templates are not marked as online' do
+          assigns(:courses).each do |course|
+            expect(course.online_cpd).to eq false
+          end
+        end
+
+        it 'course templates are not marked as remote' do
+          assigns(:courses).each do |course|
+            expect(course.remote_delivered_cpd).to eq false
+          end
+        end
+
+        it 'initalises current location' do
+          expect(assigns(:current_location)).to eq('Face to face')
+        end
+
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
+        end
+
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Face to face')
+        end
+      end
+
+      context 'when filtering by Remote' do
+        before do
+          get courses_path, params: { location: 'Remote' }
+        end
+
+        it 'has correct number of courses' do
+          expect(assigns(:courses).count).to eq(1)
         end
 
         it 'course templates are not marked as online' do
@@ -198,15 +228,15 @@ RSpec.describe CoursesController do
         end
 
         it 'initalises current location' do
-          expect(assigns(:current_location)).to eq('Face to face')
+          expect(assigns(:current_location)).to eq('Remote')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: Face to face/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Remote')
         end
       end
 
@@ -223,12 +253,12 @@ RSpec.describe CoursesController do
           expect(assigns(:current_level)).to eq('Key stage 4')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Key stage 4')
         end
       end
 
@@ -241,13 +271,13 @@ RSpec.describe CoursesController do
           expect(assigns(:courses).count).to eq(6)
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Key stage 4')
+          expect(assigns(:filters)).to include('York')
         end
       end
 
@@ -260,13 +290,13 @@ RSpec.describe CoursesController do
           expect(assigns(:courses).count).to eq(21)
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 3/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Key stage 3')
+          expect(assigns(:filters)).to include('Computing')
         end
       end
 
@@ -293,14 +323,14 @@ RSpec.describe CoursesController do
           expect(course.occurrences.map(&:address_town)).to include('London')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Key stage 4')
+          expect(assigns(:filters)).to include('York')
+          expect(assigns(:filters)).to include('Computing')
         end
       end
 
@@ -328,14 +358,14 @@ RSpec.describe CoursesController do
           expect(course.occurrences.map(&:address_town)).to include('London')
         end
 
-        it 'shows a flash notice' do
-          expect(flash[:notice]).to be_present
+        it 'assigns the filters variable' do
+          expect(assigns(:filters)).to be_present
         end
 
-        it 'flash notice has correct info' do
-          expect(flash[:notice]).to match(/<strong>Topic<\/strong>: Computing/)
-          expect(flash[:notice]).to match(/<strong>Location<\/strong>: York/)
-          expect(flash[:notice]).to match(/<strong>Level<\/strong>: Key stage 4/)
+        it 'has correct info' do
+          expect(assigns(:filters)).to include('Key stage 4')
+          expect(assigns(:filters)).to include('York')
+          expect(assigns(:filters)).to include('Computing')
         end
       end
 
@@ -355,19 +385,19 @@ RSpec.describe CoursesController do
         end
 
         it 'level param is escaped' do
-          expect(flash[:notice]).to match(/&lt;p&gt;My XSS is excessive&lt;\/p&gt;/)
+          expect(assigns(:filters)).to include(/&lt;p&gt;My XSS is excessive&lt;\/p&gt;/)
         end
 
         it 'topic param is escaped' do
-          expect(flash[:notice]).to match(/&lt;script&gt;alert\(&quot;boom&quot;\)&lt;\/script&gt;/)
+          expect(assigns(:filters)).to include(/&lt;script&gt;alert\(&quot;boom&quot;\)&lt;\/script&gt;/)
         end
 
         it 'location param is escaped' do
-          expect(flash[:notice]).to match(/&lt;svg onload=alert\(1\)&gt;/)
+          expect(assigns(:filters)).to include(/&lt;svg onload=alert\(1\)&gt;/)
         end
 
         it 'invalid certificate does not cause filtering' do
-          expect(flash[:notice]).not_to match(/&lt;h1&gt;Not a cert&lt;\/h1&gt;/)
+          expect(assigns(:filters)).not_to include(/&lt;h1&gt;Not a cert&lt;\/h1&gt;/)
         end
       end
     end

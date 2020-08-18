@@ -60,4 +60,9 @@
     margin-bottom: 20px;
     width: 100%;
   }
+
+	a {
+		@extend .govuk-link;
+		@extend .ncce-link;
+	}
 }
