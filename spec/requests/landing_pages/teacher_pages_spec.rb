@@ -11,7 +11,7 @@ RSpec.describe LandingPagesController do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('landing_pages/primary-teachers')
+      expect(response).to render_template('landing_pages/primary_teachers')
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe LandingPagesController do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('landing_pages/secondary-teachers')
+      expect(response).to render_template('landing_pages/secondary_teachers')
     end
   end
 end
