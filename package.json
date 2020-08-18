@@ -30,7 +30,8 @@
     "logs": "docker-compose logs -f web",
     "console": "docker-compose run --rm web bin/rails console",
     "test": "docker-compose run --rm --no-deps web bin/rspec",
-    "guard": "docker-compose run --rm --no-deps web bin/guard"
+    "guard": "docker-compose run --rm --no-deps web bin/guard",
+    "rebuild": "bundle install && docker-compose build && npm start"
   },
   "lint-staged": {
     "*.js": [

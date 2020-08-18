@@ -80,7 +80,8 @@
       </div>
     </div>
     <div class="center-button">
-      <%= link_to 'Browse our courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+      <%= link_to 'Browse KS1 courses', courses_path(level: 'Key stage 1'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
+      <%= link_to 'Browse KS2 courses', courses_path(level: 'Key stage 2'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
     </div>
   </div>
 </div>
@@ -118,6 +119,9 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <div class="center-button">
+        <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
       </div>
     </div>
   </div>
