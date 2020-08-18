@@ -66,6 +66,21 @@
   </div>
 </div>
 <div class="govuk-width-container">
+  <div class="govuk-main-wrapper ncce-courses__filter-active-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <% unless @filters.nil? %>
+          <h3 class="govuk-heading-s ncce-courses__filter-active-heading">Active filters:</h3>
+          <% @filters.each do |filter| %>
+            <span class="govuk-tag ncce-courses__filter-active-tag"><%= filter %></span>
+          <% end %>
+          <%= link_to 'x clear filters', courses_path(anchor: 'filter-results'), class: 'govuk-link' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__results-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
