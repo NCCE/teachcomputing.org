@@ -1,31 +1,48 @@
 .padded-box {
-  margin: 20px 0;
-  padding: 0.8125rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.padded-box:before {
   @include govuk-media-query($from: tablet) {
-    margin: 0;
-  }
-  img,
-  video {
-    width: 100%;
-    margin-bottom: 20px;
+    content: '';
+    background-image: url('document.svg');
+    background-position: 2rem 1.3rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 70%;
+    height: 5rem;
+    width:  5rem;
   }
 }
 
-.padded-box__title {
-	font-weight: 500;
-	line-height: 1.5625rem;
-	margin-bottom: 1.8rem !important;
-
-	@include govuk-media-query($from: desktop) {
-		margin-bottom: 2.5rem !important;
-	}
+.padded-box-item--left {
+  width: 100%;
+  flex: 1 1 60%;
 }
 
-.padded-box--resources {
-		padding: 3rem 1rem 1rem 2rem;
+.padded-box-item--right {
+  flex: 1 1 30%;
+  text-align: right;
 
-  @include govuk-media-query($from: tablet) {
-		margin-top: 2.2rem;
-		padding: 2rem 2rem 1rem 4rem;
-	}
+  @include govuk-media-query($until: desktop) {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+}
+
+.padded-box-item__title{
+  font-size: 1.2rem;
+
+  @include govuk-media-query($until: 600px) {
+    font-size: 1rem;
+  }
+}
+
+.padded-box-item__text, .padded-box-item__title {
+  margin: 0;
+  width: 100%;
 }
