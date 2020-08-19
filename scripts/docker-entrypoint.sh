@@ -11,15 +11,15 @@ if [ -f $PID ]; then
   rm $PID
 fi
 
-if [[ $ENV_TYPE == "development" ]]; then
+if [ "$ENV_TYPE" = "development" ]; then
   echo "- Configuring databases:"
-  bundle exec rake db:exists && bundle exec rake db:migrate || bundle exec rake db:setup
+  bundle exec rake db:exists && (bundle exec rake db:migrate || bundle exec rake db:setup)
 fi
 
 echo "- Starting rails:"
-if [[ $ENV_TYPE == "development" ]]; then
-  # Start in debug mode, to optionally debug with an ide
+if [ "$ENV_TYPE" = "development" ]; then
+  # Will start normally, allowing later debug sessions
   rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT --dispatcher-port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
 else
-  $RAILS_EXECUTABLE s -b $IP -p $PORT
+  $RAILS_EXECUTABLE s -p $PORT -b $IP
 fi
