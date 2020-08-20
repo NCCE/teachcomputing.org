@@ -5,24 +5,22 @@
   align-items: stretch;
   justify-content: center;
   padding: 2rem;
+  margin-top: 2.2rem;
 }
 
-.padded-box:before {
-  content: '';
-  background-image: image-url('document.svg');
-  background-position: 2rem 1.3rem;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 45px;
-  flex: 0 0 55px;
-
-  @include govuk-media-query($until: 640px) {
-    background-size: 40px;
+@include govuk-media-query($from: tablet) {
+  .padded-box:before {
+    content: '';
+    background-image: image-url('document.svg');
+    background-position: 2rem 1.3rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 45px;
+    flex: 0 0 55px;
   }
 }
 
 .padded-box-item--left {
-  width: 100%;
   flex: 1 1 60%;
 }
 
@@ -32,7 +30,7 @@
 
   @include govuk-media-query($until: 880px) {
     text-align: left;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
   }
 }
 
