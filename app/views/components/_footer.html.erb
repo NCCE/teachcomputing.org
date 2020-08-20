@@ -16,11 +16,7 @@
           <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
         <li>
-					<% if ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')) %>
-          	<%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-					<% else %>
-     				<%= link_to 'Teaching resources', resources_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-   				<% end %>
+          <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
         <li>
           <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>

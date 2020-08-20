@@ -76,16 +76,14 @@ class CoursesController < ApplicationController
 
     def alert_filter_params
       filter_strings = []
-      filter_strings.push("<strong>Level</strong>: #{ERB::Util.html_escape(@current_level)}") if @current_level
-      filter_strings.push("<strong>Topic</strong>: #{ERB::Util.html_escape(@current_topic)}") if @current_topic
-      filter_strings.push("<strong>Location</strong>: #{ERB::Util.html_escape(@current_location)}") if @current_location
-      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate
+      filter_strings.push("#{ERB::Util.html_escape(@current_level)}") if @current_level
+      filter_strings.push("#{ERB::Util.html_escape(@current_location)}") if @current_location
+      filter_strings.push("#{ERB::Util.html_escape(@current_topic)}") if @current_topic
+      filter_strings.push("#{@current_certificate.title}") if @current_certificate
 
       return if filter_strings.empty?
 
-      notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
-      notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
-      flash.now[:notice] = notice
+      @filters = filter_strings
     end
 
     def compare_location(course, location)
@@ -93,7 +91,7 @@ class CoursesController < ApplicationController
       when 'Online'
         course.online_cpd
       when 'Face to face'
-        !course.online_cpd
+        !course.online_cpd && !course.remote_delivered_cpd
       when 'Remote'
         course.remote_delivered_cpd
       else

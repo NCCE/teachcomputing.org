@@ -49,8 +49,8 @@
 .button--focus-white {
   &:hover,
   &[disabled]:hover {
-    color: $grey-dark-x;
     background-color: $white;
+    color: $grey-dark-x;
   }
 
   &:focus {
@@ -61,12 +61,12 @@
 
 .button--small {
   font-size: 1rem;
-  padding: 0.3125rem 0.875rem;
   margin-bottom: 0;
+  padding: 0.3125rem 0.875rem;
 }
 
 .button--medium {
-	padding: 0.75rem 0.9375rem;
+  padding: 0.75rem 0.9375rem;
 }
 
 .button--aside {
@@ -88,4 +88,11 @@
 
 .button--margin-bottom {
   margin-bottom: 20px;
+}
+
+.button--margin-sides {
+  @include govuk-media-query($from: tablet) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

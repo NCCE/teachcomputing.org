@@ -80,7 +80,8 @@
       </div>
     </div>
     <div class="center-button">
-      <%= link_to 'Browse our courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+      <%= link_to 'Browse KS1 courses', courses_path(level: 'Key stage 1'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
+      <%= link_to 'Browse KS2 courses', courses_path(level: 'Key stage 2'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
     </div>
   </div>
 </div>
@@ -118,6 +119,9 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <div class="center-button">
+        <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
       </div>
     </div>
   </div>
@@ -181,11 +185,7 @@
               online resource bank. You’ll get access to full units of work,
               lesson
               plans, assessments and activities.</p>
-            <%=
-              link_to_if( ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')), 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button landing-page-resources__button') do
-                link_to 'Browse teaching resources', resources_path, class: 'govuk-button button landing-page-resources__button'
-              end
-            %>
+            <%= link_to 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button landing-page-resources__button' %>
           </div>
         </div>
         <div class="landing-page-resources__grid">
@@ -197,11 +197,7 @@
               libraries. You will investigate how information technology
               improves our world, and learn about using information technology
               responsibly.</p>
-          <%=
-            link_to_if( ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')), "Access 'IT around us' now", '/curriculum/key-stage-1/computing-systems-and-networks-it-around-us', class: 'govuk-body ncce-link') do
-              link_to "Access 'IT around us' now", 'https://ncce.io/Year2', class: 'govuk-body ncce-link'
-            end
-          %>
+          <%= link_to "Access 'IT around us' now", '/curriculum/key-stage-1/computing-systems-and-networks-it-around-us', class: 'govuk-body ncce-link' %>
           </div>
           <div class="shadow_card">
             <h3 class="govuk-heading-s icon-resources">Year 3 - Computer systems
@@ -211,11 +207,7 @@
               compare digital and non-digital devices and be introduced to
               computer networks, including devices that make up a network’s
               infrastructure, such as wireless access points and switches.</p>
-            <%=
-              link_to_if( ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')), "Access 'Connecting Computers' now", '/curriculum/key-stage-2/computing-systems-and-networks-connecting-computers', class: 'govuk-body ncce-link') do
-                link_to "Access 'Connecting Computers' now", 'https://ncce.io/Year3', class: 'govuk-body ncce-link'
-              end
-            %>
+            <%= link_to "Access 'Connecting Computers' now", '/curriculum/key-stage-2/computing-systems-and-networks-connecting-computers', class: 'govuk-body ncce-link' %>
           </div>
         </div>
       </div>

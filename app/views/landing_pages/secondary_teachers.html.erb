@@ -78,7 +78,8 @@
       </div>
     </div>
     <div class="center-button">
-      <%= link_to 'Browse our courses', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button' %>
+      <%= link_to 'Browse KS3 courses', courses_path(level: 'Key stage 3'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
+      <%= link_to 'Browse KS4 courses', courses_path(level: 'Key stage 4'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
     </div>
   </div>
 </div>
@@ -134,6 +135,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="center-button">
+        <%= link_to 'Browse GCSE certificate courses', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button' %>
       </div>
     </div>
   </div>
@@ -198,11 +202,7 @@
             online resource bank. You’ll get access to full units of work,
             lesson
             plans, assessments and activities.</p>
-          <%=
-            link_to_if( ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')), 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button landing-page-resources__button') do
-              link_to 'Browse teaching resources', resources_path, class: 'govuk-button button landing-page-resources__button'
-            end
-          %>
+          <%= link_to 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button landing-page-resources__button' %>
         </div>
       </div>
       <div class="landing-page-resources__grid">
@@ -222,11 +222,7 @@
             learners to binary digits and how they can be used to represent text
             and numbers. The concepts are linked to practical applications and
             problems that the learners are familiar with.</p>
-          <%=
-            link_to_if( ActiveModel::Type::Boolean.new.cast(ENV.fetch('CURRICULUM_ENABLED')), "Access 'Data Representations' now", '/curriculum/key-stage-3/representations-from-clay-to-silicon', class: 'govuk-body ncce-link') do
-              link_to "Access 'Data Representations' now", 'https://ncce.io/Year8', class: 'govuk-body ncce-link'
-            end
-          %>
+          <%= link_to "Access 'Data Representations' now", '/curriculum/key-stage-3/representations-from-clay-to-silicon', class: 'govuk-body ncce-link' %>
         </div>
       </div>
     </div>
