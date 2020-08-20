@@ -12,7 +12,9 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %> > <%= @lesson.title %></p>
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0">
+    <%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %>
+  </p>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds external-content">
