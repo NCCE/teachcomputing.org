@@ -4,7 +4,7 @@
   align-items: center;
   align-items: stretch;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .padded-box:before {
@@ -30,7 +30,7 @@
   flex: 1 1 30%;
   text-align: right;
 
-  @include govuk-media-query($until: 842px) {
+  @include govuk-media-query($until: 880px) {
     text-align: left;
     margin-top: 0.5rem;
   }
