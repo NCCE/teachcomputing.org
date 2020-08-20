@@ -6,7 +6,7 @@ RSpec.describe('curriculum/key_stages/_hero', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.hero__heading', text: 'Teach computing curriculum')
+    expect(rendered).to have_css('.hero__heading', text: 'Teach Computing Curriculum')
   end
 
 end
