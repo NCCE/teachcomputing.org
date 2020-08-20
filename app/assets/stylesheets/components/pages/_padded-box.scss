@@ -2,20 +2,22 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 1rem;
 }
 
 .padded-box:before {
-  @include govuk-media-query($from: tablet) {
-    content: '';
-    background-image: url('document.svg');
-    background-position: 2rem 1.3rem;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 70%;
-    height: 5rem;
-    width:  5rem;
+  content: '';
+  background-image: url('document.svg');
+  background-position: 2rem 1.3rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 45px;
+  flex: 0 0 55px;
+
+  @include govuk-media-query($until: 640px) {
+    background-size: 40px;
   }
 }
 
@@ -28,7 +30,7 @@
   flex: 1 1 30%;
   text-align: right;
 
-  @include govuk-media-query($until: desktop) {
+  @include govuk-media-query($until: 842px) {
     text-align: left;
     margin-top: 0.5rem;
   }
@@ -37,7 +39,7 @@
 .padded-box-item__title{
   font-size: 1.2rem;
 
-  @include govuk-media-query($until: 600px) {
+  @include govuk-media-query($until: 640px) {
     font-size: 1rem;
   }
 }
