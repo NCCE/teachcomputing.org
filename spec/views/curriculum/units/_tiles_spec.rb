@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe('curriculum/units/_tiles', type: :view) do
-	let(:unit) { create(:unit ) }
-
   before do
     render
   end

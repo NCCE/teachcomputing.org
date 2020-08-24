@@ -3,16 +3,11 @@ require 'rails_helper'
 RSpec.describe('curriculum/units/show', type: :view) do
 	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
-	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
-
   before do
 		json = JSON.parse(unit_json, object_class: OpenStruct).data
 		assign(:unit, json.unit)
-
-		json = JSON.parse(unit_json, object_class: OpenStruct).data
-		assign(:unit, json.unit)
 		assign(:id, 'id')
-		render :template => "curriculum/units/show.html.erb"
+		render
   end
 
   it 'has a title' do
