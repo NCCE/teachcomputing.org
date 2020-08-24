@@ -14,10 +14,6 @@ RSpec.describe('curriculum/units/show', type: :view) do
     expect(rendered).to have_css('.hero__heading', text: 'Unit 1')
   end
 
-  it 'has a unit label' do
-    expect(rendered).to have_css('.curriculum__label', text: 'Unit')
-  end
-
   it 'links to feedback form' do
     expect(rendered).to have_link('Provide your feedback', href: 'https://forms.gle/qT2XqoCecYjLLohC6')
   end

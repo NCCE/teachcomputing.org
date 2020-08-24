@@ -6,7 +6,6 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
   before do
-		#stub_a_valid_request(unit_json_response)
 		json = JSON.parse(unit_json, object_class: OpenStruct).data
 		assign(:unit, json.unit)
 
@@ -18,10 +17,6 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 
   it 'has a title' do
     expect(rendered).to have_css('.hero__heading', text: 'Lesson 1')
-  end
-
-  it 'has a lesson label' do
-    expect(rendered).to have_css('.curriculum__label', text: 'Lesson')
   end
 
   it 'has a download button' do
