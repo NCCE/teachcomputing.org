@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe('curriculum/units/_lessons', type: :view) do
 	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
+	let(:key_stage_json) { File.new('spec/support/curriculum/views/key_stage.json').read }
+
   before do
-		json = JSON.parse(unit_json, object_class: OpenStruct).data
-		assign(:unit, json.unit)
-		assign(:id, 'id')
-		render
+		unit = JSON.parse(unit_json, object_class: OpenStruct).data.unit
+		key_stage = JSON.parse(key_stage_json, object_class: OpenStruct).data.key_stage
+		render partial: 'lessons', locals: { key_stage: key_stage, unit: unit, lessons: unit.lessons }
   end
 
   it 'has a title' do

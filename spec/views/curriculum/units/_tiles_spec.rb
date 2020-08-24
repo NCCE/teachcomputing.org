@@ -4,10 +4,8 @@ RSpec.describe('curriculum/units/_tiles', type: :view) do
 	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
   before do
-		json = JSON.parse(unit_json, object_class: OpenStruct).data
-		assign(:unit, json.unit)
-		assign(:id, 'id')
-		render
+		unit = JSON.parse(unit_json, object_class: OpenStruct).data.unit
+		render partial: 'tiles', locals: { unit: unit }
   end
 
   it 'has a tiles wrapper' do
