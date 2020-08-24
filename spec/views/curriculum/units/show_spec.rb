@@ -1,14 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe('curriculum/units/show', type: :view) do
-	let(:unit) { create(:unit ) }
+	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
+
+	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
   before do
-    render
+		json = JSON.parse(unit_json, object_class: OpenStruct).data
+		assign(:unit, json.unit)
+
+		json = JSON.parse(unit_json, object_class: OpenStruct).data
+		assign(:unit, json.unit)
+		assign(:id, 'id')
+		render :template => "curriculum/units/show.html.erb"
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.hero__heading', text: 'Computing Systems and Networks – Technology Around Us')
+    expect(rendered).to have_css('.hero__heading', text: 'Unit 1')
   end
 
   it 'has a unit label' do
