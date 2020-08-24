@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('curriculum/units/show', type: :view) do
+RSpec.describe('curriculum/units/_lessons', type: :view) do
 	let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
 
   before do
