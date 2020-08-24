@@ -16,7 +16,6 @@ module CurriculumStubs
   end
 
   def stub_a_valid_request(response = { "data": {} }.to_json)
-		puts 'Stab stub anything'
     stub_request(:post, URL)
       .to_return(
         { status: 200, body: response, headers: {} }
