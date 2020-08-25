@@ -14,7 +14,8 @@
           "yearNumber": "8",
           "keyStage": {
             "shortTitle": "KS3",
-            "slug": "key-stage-3"
+            "slug": "key-stage-3",
+						"level": "year 1"
           }
         }
       }

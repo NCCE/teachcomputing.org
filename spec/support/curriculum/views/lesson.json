@@ -1,0 +1,23 @@
+{
+	"data": {
+		"lesson": {
+			"id": "12",
+			"title": "Lesson 1",
+			"slug": "lesson-1",
+			"description": "This is a Lesson",
+			"objectives": null,
+			"zipped_contents": "https://teachcomputing.org",
+			"unit": {
+					"slug": "unit-2",
+					"title": "Unit 2",
+					"year_group": {
+							"year_number": "2",
+							"key_stage": {
+									"short_title": "KS1",
+									"slug": "key-stage-1"
+							}
+					}
+			}
+		}
+  }
+}

@@ -21,7 +21,9 @@
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @unit.description %></p>
 			</div>
 			<div class="govuk-grid-column-one-third">
-				<%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, id: @unit.id } %>
+        <% if current_user %>
+				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, id: @unit.id } %>
+        <% end %>
 			</div>
 		</div>
 		<%= render partial: 'tiles', locals: { unit: @unit } %>
