@@ -1,6 +1,9 @@
 module CurriculumClient
   module Queries
     class Lesson < CurriculumClient::Queries::BaseQuery
+      extend CurriculumClient::Queries::RateableQuery
+      CONTEXT = :lesson
+
       FIELDS = <<~GRAPHQL.freeze
         id
         unit
@@ -28,14 +31,6 @@ module CurriculumClient
 
       def self.one(slug, fields = FIELDS)
         super(:lesson, fields, :slug, slug)
-      end
-
-      def self.add_positive_rating(id:, fields: nil, stem_achiever_contact_no:)
-        rate(:lesson, fields, :positive, id, stem_achiever_contact_no)
-      end
-
-      def self.add_negative_rating(id:, fields: nil, stem_achiever_contact_no:)
-        rate(:lesson, fields, :negative, id, stem_achiever_contact_no)
       end
     end
   end

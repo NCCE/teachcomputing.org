@@ -21,23 +21,4 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
         .with(body: /yearGroup\s\{\\n\s+id\\n\s+slug\\n\s+units\s\{\\n\s+id\\n\s+\}\\n\s+\}\\n\}/)
     end
   end
-
-  describe '.rate' do
-    it 'creates a negative mutation query' do
-      expect(described_class.rate(:lesson, 'id', :negative, 'an_id', 'achieverid')).to have_requested(:post, url)
-        .with(body: /addNegativeLessonRating\(id:\s\\"an_id\\",\suserStemAchieverContactNo:\s\\"achieverid\\"\)/)
-    end
-
-    it 'creates a positive mutation query' do
-      expect(described_class.rate(:lesson, 'id', :positive, 'an_id', 'achieverid'))
-        .to have_requested(:post, url)
-        .with(body: /addPositiveLessonRating\(id:\s\\"an_id\\",\suserStemAchieverContactNo:\s\\"achieverid\\"\)/)
-    end
-
-    it 'fails to create a mutation for an unsupported polarity' do
-      expect { described_class.rate(:lesson, 'id', :unsupported, 'an_id', 'achieverid') }.to raise_error(
-        Graphlient::Errors::ClientError, "Field 'addUnsupportedLessonRating' doesn't exist on type 'Mutation'"
-      )
-    end
-  end
 end
