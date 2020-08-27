@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe CurriculumClient::Queries::Unit do
   let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
@@ -13,12 +13,14 @@ RSpec.describe CurriculumClient::Queries::Unit do
   end
 
   it 'creates a query for a positive rating' do
-    expect(described_class.add_positive_rating('an_id')).to have_requested(:post, url)
-      .with(body: /addPositiveUnitRating\(id:\s\\"an_id\\"\)/)
+    expect(described_class.add_positive_rating(id: 'an_id', stem_achiever_contact_no: 'achieverno'))
+      .to have_requested(:post, url)
+      .with(body: /addPositiveUnitRating\(id:\s\\"an_id\\",\suserStemAchieverContactNo:\s\\"achieverno\\"\)/)
   end
 
   it 'creates a query for a negative rating' do
-    expect(described_class.add_negative_rating('other_id')).to have_requested(:post, url)
-      .with(body: /addNegativeUnitRating\(id:\s\\"other_id\\"\)/)
+    expect(described_class.add_negative_rating(id: 'other_id', stem_achiever_contact_no: 'achieverno'))
+      .to have_requested(:post, url)
+      .with(body: /addNegativeUnitRating\(id:\s\\"other_id\\",\suserStemAchieverContactNo:\s\\"achieverno\\"\)/)
   end
 end

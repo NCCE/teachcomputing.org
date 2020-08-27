@@ -37,15 +37,16 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(client.parse(one), client, {"#{key}": value })
+        CurriculumClient::Request.run(client.parse(one), client, { "#{key}": value })
       end
 
-      def self.rate(context, fields, polarity, id)
+      def self.rate(context, fields, polarity, id, achiever_contact_number)
         fields = fields ? "{#{fields}}" : ''
         rating = <<~GRAPHQL
           mutation {
             add#{polarity.to_s.classify}#{context.to_s.classify}Rating(
               id: "#{id}"
+              userStemAchieverContactNo: "#{achiever_contact_number}"
             )
             #{fields}
           }

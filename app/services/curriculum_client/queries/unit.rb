@@ -38,12 +38,12 @@ module CurriculumClient
         super(:unit, fields, :slug, slug)
       end
 
-      def self.add_positive_rating(id, fields = nil)
-        rate(:unit, fields, :positive, id)
+      def self.add_positive_rating(id:, fields: nil, stem_achiever_contact_no:)
+        rate(:unit, fields, :positive, id, stem_achiever_contact_no)
       end
 
-      def self.add_negative_rating(id, fields = nil)
-        rate(:unit, fields, :negative, id)
+      def self.add_negative_rating(id:, fields: nil, stem_achiever_contact_no:)
+        rate(:unit, fields, :negative, id, stem_achiever_contact_no)
       end
     end
   end
