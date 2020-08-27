@@ -22,7 +22,7 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
     end
   end
 
-  describe 'rating' do
+  describe '.rate' do
     it 'creates a negative mutation query' do
       expect(described_class.rate(:lesson, 'id', :negative, 'an_id', 'achieverid')).to have_requested(:post, url)
         .with(body: /addNegativeLessonRating\(id:\s\\"an_id\\",\suserStemAchieverContactNo:\s\\"achieverid\\"\)/)

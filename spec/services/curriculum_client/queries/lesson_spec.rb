@@ -12,15 +12,31 @@ RSpec.describe CurriculumClient::Queries::Lesson do
     expect { described_class.one('some_id') }.not_to raise_error
   end
 
-  it 'creates a query for a positive rating' do
-    expect(described_class.add_positive_rating(id: 'an_id', stem_achiever_contact_no: 'achieverno'))
-      .to have_requested(:post, url)
-      .with(body: /addPositiveLessonRating\(id:\s\\"an_id\\",\suserStemAchieverContactNo:\s\\"achieverno\\"\)/)
+  describe '.add_positive_rating' do
+    before do
+      allow(described_class).to receive(:rate)
+    end
+
+    it 'calls .rate correctly' do
+      described_class.add_positive_rating(id: 'an_id', stem_achiever_contact_no:
+                                          'achieverno')
+      expect(described_class)
+        .to have_received(:rate)
+        .with(:lesson, nil, :positive, 'an_id', 'achieverno')
+    end
   end
 
-  it 'creates a query for a negative rating' do
-    expect(described_class.add_negative_rating(id: 'other_id', stem_achiever_contact_no: 'achieverno'))
-      .to have_requested(:post, url)
-      .with(body: /addNegativeLessonRating\(id:\s\\"other_id\\",\suserStemAchieverContactNo:\s\\"achieverno\\"\)/)
+  describe '.add_negative_rating' do
+    before do
+      allow(described_class).to receive(:rate)
+    end
+
+    it 'calls .rate correctly for a negative rating' do
+      described_class.add_negative_rating(id: 'an_id', stem_achiever_contact_no:
+                                          'achieverno')
+      expect(described_class)
+        .to have_received(:rate)
+        .with(:lesson, nil, :negative, 'an_id', 'achieverno')
+    end
   end
 end
