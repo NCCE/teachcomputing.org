@@ -189,27 +189,27 @@ describe CoursesHelper, type: :helper do
 
     it 'allows headings' do
       headings = '<h1>One</h1><h2>Two</h2><h3>Three</h3><h4>Four</h4>'
-      expect(helper.sanitize_stem_html(headings)).to eq headings
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq headings
     end
 
     it 'disallows images' do
-      image = '<p><img src="abc.jpg"/>Image</p>'
-      expect(helper.sanitize_stem_html(image)).to eq '<p>Image</p>'
+      headings = '<p><img src="abc.jpg"/>Image</p>'
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Image</p>'
     end
 
-    it 'allows links' do
-      link = '<p><a href="abc.html">Link</a></p>'
-      expect(helper.sanitize_stem_html(link)).to eq link
+    it 'disallows links' do
+      headings = '<p><a href="abc.html"/>Link</p>'
+      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Link</p>'
     end
 
     it 'disallows inline styles' do
-      style = '<p style="font-family: Courier;color: f00;">Fancy text</p>'
-      expect(helper.sanitize_stem_html(style)).to eq '<p>Fancy text</p>'
+      headings = '<p style="font-family: Courier;color: f00;">Fancy text</p>'
+      expect(helper.sanitize_stem_html(headings)).to eq '<p>Fancy text</p>'
     end
 
     it 'disallows class attributes' do
-      class_attr = '<p class="govuk-body-m">Simple text</p>'
-      expect(helper.sanitize_stem_html(class_attr)).to eq '<p>Simple text</p>'
+      headings = '<p class="govuk-body-m">Simple text</p>'
+      expect(helper.sanitize_stem_html(headings)).to eq '<p>Simple text</p>'
     end
 
     it 'allows video markup' do
