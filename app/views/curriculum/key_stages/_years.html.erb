@@ -1,7 +1,7 @@
-<% years.each do |year| %>
+<% sorted_years(years).each do |year| %>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-			<hr class="curriculum__line">
+      <hr class="curriculum__line">
       <h3 class="govuk-heading-m"><%= year_group_title(year.year_number) %></h3>
     </div>
   </div>

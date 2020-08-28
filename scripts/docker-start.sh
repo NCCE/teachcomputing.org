@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
 URL="https://${nginx_mappings__prefix[0]}.${nginx_domain_root}"
 URL_TO_POLL="http://localhost:${nginx_mappings__port[0]}"
-echo $URL_TO_POLL
+TIMEOUT=45
+OK_TO_PROCEED=0
 
 # Create a tunnel
 # I've a created a host under ~/.ssh/config called 'proxy', but you can use -i to specify your own key
@@ -20,18 +21,27 @@ fi
 echo "- Bringing up the stack:"
 docker-compose up -d
 printf %s "- Waiting for the stack to become available (ctrl+c to cancel): "
-while ! curl -sSf $URL_TO_POLL &> /dev/null ; do sleep 1; done
-echo "done"
+SECONDS=0
+while (( SECONDS < TIMEOUT )); do
+  if ! curl -sSf "$URL_TO_POLL" &> /dev/null; then
+    sleep 1;
+  else
+    OK_TO_PROCEED=1
+    break
+  fi
+done
 
-# Start nginx
-echo "- Starting dev-nginx:"
-dev-nginx restart-nginx
-echo "done"
-
-# Conditionally open a browser window
-printf %s "- Open ${URL} in your default browser (y/n)? "
-read RESP
-if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  echo "- Opening page, if the page fails to load ensure you've run 'npm run setup'"
-  open $URL
+if [ $OK_TO_PROCEED = 1 ]; then
+  echo "done"
+  # Conditionally open a browser window
+  printf %s "- Open ${URL} in your default browser (y/n)? "
+  read -r RESP
+  if [ "$RESP" != "${RESP#[Yy]}" ]; then
+    echo "- Opening page, if the page fails to load ensure you've run 'npm run setup'"
+    open "$URL"
+  fi
+else
+  echo "failed"
+  echo "- Check the logs:"
+  docker-compose logs
 fi

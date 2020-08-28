@@ -38,6 +38,7 @@ services:
     networks:
       - main
       - backend
+    restart: unless-stopped
   redis:
     image: "redis:alpine"
     ports:

@@ -4,7 +4,7 @@
 <div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
-			<p class="govuk-body curriculum__label">Lesson</p>
+			<p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @lesson.title %></h1>
       </div>
@@ -12,7 +12,9 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %> > <%= @lesson.title %></p>
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0">
+    <%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %>
+  </p>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds external-content">
@@ -31,8 +33,14 @@
 						<li>Unit overviews</li>
 						<li>Activities</li>
 					</ul>
-					<%= link_to 'Download all lesson files', generate_download_url(@lesson.zipped_contents), class: 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
-					<%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, id: @lesson.id } %>
+          <% if current_user %>
+            <%= link_to 'Download all lesson files', generate_download_url(@lesson.zipped_contents), class: 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+					  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, id: @lesson.id } %>
+          <% else %>
+            <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{URI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+            <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
+            <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
+          <% end %>
 				</div>
 			</div>
 		</div>

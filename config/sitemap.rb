@@ -35,7 +35,6 @@ SitemapGenerator::Sitemap.create do
   add '/press', changefreq: 'daily'
   add '/primary-certificate', changefreq: 'monthly'
   add '/primary-teachers', changefreq: 'monthly'
-  add '/resources', changefreq: 'monthly'
   add '/privacy', changefreq: 'monthly'
   add '/secondary-certificate', changefreq: 'monthly'
   add '/secondary-teachers', changefreq: 'monthly'
