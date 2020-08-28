@@ -14,7 +14,6 @@ gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'graphlient', '~> 0.4'
 gem 'htmlentities', '~> 4.3'
-gem 'ims-lti', '1.2.4'
 gem 'jwt', '~> 2.1.0'
 gem 'kramdown'
 gem 'lograge'
