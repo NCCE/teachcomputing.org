@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
+  get '/futurelearn/lti/:fl_id', to: 'future_learn/lti#show', as: 'futurelearn_lti'
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user', as: :user_teacher_reference_number
 
   get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
@@ -73,6 +74,7 @@ Rails.application.routes.draw do
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
                                 constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
+  get '/support-for-ite-providers', to: 'cms#cms_page', as: :support_for_ite_providers, defaults: { page_slug: 'support-for-ite-providers' }
   get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
