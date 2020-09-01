@@ -7,7 +7,8 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
     @primary_certificate_user_ids = []
 
     CSV.parse(csv_contents, headers: true).each do |record|
-      user = User.find_by('email ILIKE ?', record['learner_identifier'])
+      user = User.find_by(id: record['learner_identifier'])
+      user ||= User.find_by('email ILIKE ?', record['learner_identifier'])
       next if user.nil?
 
       activity = fetch_activity(record)
