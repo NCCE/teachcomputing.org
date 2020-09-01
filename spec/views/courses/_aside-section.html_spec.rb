@@ -23,7 +23,9 @@ RSpec.describe('courses/_aside-section', type: :view) do
       before do
         allow(course).to receive(:online_cpd).and_return(true)
         allow(course).to receive(:booking_url).and_return('www.bookingurl.com')
-        allow_any_instance_of(FeatureFlagService)
+        flags_double = instance_double(FeatureFlagService)
+        allow(FeatureFlagService).to receive(:new).and_return(flags_double)
+        allow(flags_double)
           .to receive(:flags)
           .and_return({ fl_lti_enabled: lti_enabled })
 
@@ -64,6 +66,37 @@ RSpec.describe('courses/_aside-section', type: :view) do
 
       it 'tells the user who is delivering the course' do
         expect(rendered).to have_css('.ncce-aside__text', text: 'You will be taken to the STEM Learning website to see further details and book.')
+      end
+    end
+  end
+
+  describe 'when not logged in' do
+    context 'when its an online course' do
+      let(:lti_enabled) { true }
+
+      before do
+        allow(course).to receive(:online_cpd).and_return(true)
+        flags_double = instance_double(FeatureFlagService)
+        allow(FeatureFlagService).to receive(:new).and_return(flags_double)
+        allow(flags_double)
+          .to receive(:flags)
+          .and_return({ fl_lti_enabled: lti_enabled })
+
+        render partial: 'courses/aside-section'
+      end
+
+      it 'renders link to log in' do
+        expected_link = '/auth/stem?source_uri=http://test.host/courses'
+        expect(rendered).to have_link('Join this course', href: expected_link)
+      end
+
+      context 'when LTI not enabled' do
+        let(:lti_enabled) { false }
+
+        it 'renders link to log in' do
+          expected_link = '/auth/stem?source_uri=http://test.host/courses'
+          expect(rendered).to have_link('Join this course', href: expected_link)
+        end
       end
     end
   end
