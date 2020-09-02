@@ -11,6 +11,8 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let!(:user_four) { create(:user, email: 'user4@example.com') }
   let!(:user_five) { create(:user, email: 'user5@example.com') }
   let!(:user_six) { create(:user, email: 'user6@example.com') }
+  let!(:id_user) { create(:user, id: '83b9d231-ed72-47d1-87ad-d985f4182ff1') }
+
   let(:dropped_achievement) { create(:achievement, user_id: user_six.id, activity_id: activity_two.id) }
   let(:another_dropped_achievement) { create(:achievement, user_id: user_two.id, activity_id: activity_two.id) }
   let(:completed_achievement) { create(:achievement, user_id: user_four.id, activity_id: activity_two.id) }
@@ -126,8 +128,14 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       end
     end
 
+    context 'when learner_identifier is user id' do
+      it 'creates an achievement' do
+        expect(id_user.achievements.where(activity_id: activity_one.id).exists?).to eq true
+      end
+    end
+
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:twice)
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(3).times
     end
 
     it 'queues AssessmentEligibilityJob once for cs-accelerator per user' do
