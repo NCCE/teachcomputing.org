@@ -13,3 +13,4 @@ run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_c
 2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,
 2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,2222,
 2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,3333,
+2019-01-07,1,83b9d231-ed72-47d1-87ad-d985f4182ff1,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,

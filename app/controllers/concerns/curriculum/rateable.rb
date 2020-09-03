@@ -28,11 +28,18 @@ module Curriculum
     end
 
     def add_rating(id, polarity)
+      achiever_contact_no = current_user&.stem_achiever_contact_no
       case polarity.to_sym
       when :positive
-        client.add_positive_rating(id)
+        client.add_positive_rating(
+          id: id,
+          stem_achiever_contact_no: achiever_contact_no
+        )
       when :negative
-        client.add_negative_rating(id)
+        client.add_negative_rating(
+          id: id,
+          stem_achiever_contact_no: achiever_contact_no
+        )
       else
         raise ArgumentError, "Unexpected polarity: #{polarity}"
       end
