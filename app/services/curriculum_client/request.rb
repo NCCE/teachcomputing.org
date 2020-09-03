@@ -10,7 +10,16 @@ module CurriculumClient
       end
 
       begin
-        response = client.execute(query, params)
+        return client.execute(query, params).data unless query.definition_node.operation_type == 'query'
+
+        Rails.cache.fetch(params.to_s, expires_in: 12.hours) do
+          json_response = client.execute(query, params)
+                                .data
+                                .to_h
+                                .deep_transform_keys { |key| key.to_s.underscore }
+                                .to_json
+          JSON.parse(json_response, object_class: OpenStruct)
+        end
       rescue Graphlient::Errors::ExecutionError => e
         # Graphlient does not support the graphql extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
         original_hash = e.response.original_hash
@@ -27,8 +36,6 @@ module CurriculumClient
                 "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_API_URL}. Error: #{e.message} (#{e.status_code})"
         end
       end
-
-      response.data
     end
   end
 end
