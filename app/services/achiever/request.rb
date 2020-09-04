@@ -3,7 +3,12 @@ class Achiever::Request
     def option_sets(resource_path, query = {})
       query_string = query_strings(query)
 
-      response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
+      response = Rails.cache.fetch(
+        resource_path,
+        expires_in: 1.day,
+        race_condition_ttl: 20.seconds,
+        namespace: 'achiever'
+      ) do
         api.get("#{resource_path}&#{query_string}")
       end
 
