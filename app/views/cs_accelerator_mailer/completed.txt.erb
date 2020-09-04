@@ -1,5 +1,7 @@
 Dear <%= @user.first_name %>,
-We are delighted to confirm that you have achieved the National Centre for Computing Education certificate in GCSE computer science subject knowledge.
-<%= link_to 'Get your certificate', programme_certificate_url(slug: @programme.slug) %>
-You can also download a copy of your certificate from your dashboard on teachcomputing.org/cs-accelerator.
-Congratulations on your achievement and please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org' %>  if you have any questions.
+Congratulations on passing your test!
+You've achieved your national qualification in GCSE computer science subject knowledge.
+Continue your journey by logging in to get your certificate, share your success and continue your professional development.
+<%= link_to 'Log in now', programme_certificate_url(slug: @programme.slug) %>
+Any questions?
+Please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org' %>.
