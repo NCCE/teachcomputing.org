@@ -12,7 +12,12 @@ module CurriculumClient
       begin
         return client.execute(query, params).data unless query.definition_node.operation_type == 'query'
 
-        Rails.cache.fetch(params.to_s, expires_in: 12.hours) do
+        Rails.cache.fetch(
+          params.to_s,
+          expires_in: 12.hours,
+          race_condition_ttl: 20.seconds,
+          namespace: 'curriculum'
+        ) do
           json_response = client.execute(query, params)
                                 .data
                                 .to_h
