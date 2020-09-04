@@ -424,8 +424,6 @@ a = Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811
   activity.provider = 'stem-learning'
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
 a = Activity.find_or_create_by(stem_course_template_no: 'e5acc943-4926-ea11-a810-000d3a86d545') do |activity|
   activity.title = 'Introduction to primary computing'
   activity.credit = 10
@@ -479,17 +477,15 @@ a = Activity.find_or_create_by(stem_course_template_no: '22880db7-78e8-ea11-a817
   activity.provider = 'stem-learning'
 end
 
-# a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce') do |activity|
   activity.title = 'Key Stage 3 computing for the non-specialist teacher'
   activity.credit = 10
-  activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher-face-to-face'
+  activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher'
   activity.stem_course_template_no = '6ed470e0-75e8-ea11-a817-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
 
-# a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
