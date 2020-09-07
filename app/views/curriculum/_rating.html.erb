@@ -5,7 +5,7 @@
 <% else %>
 	<div class="curriculum__rating">
     <p class="govuk-body curriculum__rating--text">Did you find this content useful?</p>
-    <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true }) %>
-    <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true }) %>
+    <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true }) %>
+    <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true }) %>
 	</div>
 <% end %>
