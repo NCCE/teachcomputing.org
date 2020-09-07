@@ -56,9 +56,9 @@ Rails.application.configure do
     lambda do |request|
       session_key = (Rails.application.config.session_options || {})[:key]
       session_data = request.cookie_jar.encrypted[session_key] || {}
-      user_id = session_data["user_id"] || "guest"
-      session_id = session_data["session_id"] || "no-session"
-      "session: #{session_id.to_s}, user: #{user_id.to_s}"
+      user_id = session_data['user_id'] || 'guest'
+      session_id = session_data['session_id'] || 'no-session'
+      "session: #{session_id}, user: #{user_id}, user_agent: #{request.user_agent}"
     end
   ]
 
@@ -74,7 +74,7 @@ Rails.application.configure do
                          pool_size: 5 }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
@@ -83,7 +83,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.asset_host  = 'https://teachcomputing.org'
+  config.action_mailer.asset_host = 'https://teachcomputing.org'
   config.action_mailer.default_url_options = { host: 'https://teachcomputing.org' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.mandrillapp.com',
