@@ -127,6 +127,7 @@
 .ncce-header__navigation-certification-progress-bar-container {
   display: flex;
   flex-direction: row;
+  text-align: center;
 
   @include govuk-media-query($from: desktop) {
     display: block;
@@ -134,13 +135,14 @@
 }
 
 .ncce-header__navigation-certification-progress-bar {
-  display: block;
   background-color: $concrete;
   width: 100%;
+  max-width: 108px;
   margin-top:5px;
   padding:2px;
   height:9px;
   margin-left: 30px;
+  text-align: center;
 
   @include govuk-media-query($from: desktop) {
     display: inherit;
