@@ -325,7 +325,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53
   activity.slug = 'improving-computing-classroom-practice-through-action-research'
   activity.category = 'online'
   activity.self_certifiable = false
-  activity.stem_course_template_no = ''
+  activity.stem_course_template_no = '2d32d88c-35a7-ea11-a812-000d3a86d545'
   activity.future_learn_course_uuid = '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc'
   activity.provider = 'future-learn'
 end
