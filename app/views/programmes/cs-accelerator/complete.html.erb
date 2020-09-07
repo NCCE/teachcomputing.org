@@ -5,25 +5,25 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m">Your certificate is ready!</h2>
-        <p class="govuk-body">Congratulations on completing your learning programme, and reaching this important milestone in your professional development.</p>
+        <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
         <p class="govuk-body">
           <%= link_to 'View your certificate', programme_certificate_path('cs-accelerator'), class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <h2 class="govuk-heading-m">Next steps for you</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
         <h3 class="govuk-heading-s">Continue learning</h3>
         <p class="govuk-body">Now you've completed the programme, you can participate in any of our huge range of professional development courses for free!</p>
         <p class="govuk-body">
-          <%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %>
+          <strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong>
         </p>
         <h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
         <p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
         <p class="govuk-body">
-          <%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %>
+          <strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong>
         </p>
         <h3 class="govuk-heading-s">Support an after school club</h3>
         <p class="govuk-body">Use your skills and confidence to run a <%= link_to 'Code Club', 'https://codeclub.org/en', class: 'govuk-link ncce-link' %>, hackathon, or school programme to encourage more pupils to engage with computing.</p>
         <p class="govuk-body">
-          <%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %>
+          <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
