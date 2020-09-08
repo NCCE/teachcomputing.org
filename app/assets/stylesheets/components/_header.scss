@@ -137,7 +137,6 @@
 .ncce-header__navigation-certification-progress-bar {
   background-color: $concrete;
   width: 100%;
-  max-width: 108px;
   margin-top:5px;
   padding:2px;
   height:9px;
@@ -145,6 +144,7 @@
   text-align: center;
 
   @include govuk-media-query($from: desktop) {
+    max-width: 108px;
     display: inherit;
     margin-left: 0;
   }
