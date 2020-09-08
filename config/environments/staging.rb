@@ -57,9 +57,9 @@ Rails.application.configure do
     lambda do |request|
       session_key = (Rails.application.config.session_options || {})[:key]
       session_data = request.cookie_jar.encrypted[session_key] || {}
-      user_id = session_data["user_id"] || "guest"
-      session_id = session_data["session_id"] || "no-session"
-      "session: #{session_id.to_s}, user: #{user_id.to_s}"
+      user_id = session_data['user_id'] || 'guest'
+      session_id = session_data['session_id'] || 'no-session'
+      "session: #{session_id}, user: #{user_id}, user_agent: #{request.user_agent}"
     end
   ]
 
@@ -77,7 +77,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.show_previews = true
-  config.action_mailer.asset_host  = 'https://staging.teachcomputing.org'
+  config.action_mailer.asset_host = 'https://staging.teachcomputing.org'
   config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews/"
   config.action_mailer.default_url_options = { host: 'https://staging.teachcomputing.org' }
   config.action_mailer.smtp_settings = {
