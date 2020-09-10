@@ -1,4 +1,7 @@
 class CertificateGenerator
+  CSA_PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
+  PRIMARY_PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
+
   def initialize(user:, programme:, transition:)
     @user = user
     @programme = programme
@@ -10,7 +13,7 @@ class CertificateGenerator
     temp_path = File.join(Rails.root, 'tmp', "#{temp_id}.pdf")
 
     user_name = "#{@user.first_name} #{@user.last_name}"
-    programme_title = @programme.title
+    programme_title = select_programme_title
     date_awarded = @transition.created_at.strftime('%d/%m/%Y')
     cert_number = certificate_number
     slug = @programme.slug
@@ -81,5 +84,11 @@ class CertificateGenerator
       cert_number = @transition.metadata['certificate_number']
       passed_date = @transition.created_at
       "#{passed_date.strftime('%Y%m')}-#{format('%03d', cert_number || 0)}"
+    end
+
+    def select_programme_title
+      return CSA_PROGRAMME_TITLE if @programme.slug == 'cs-accelerator'
+
+      PRIMARY_PROGRAMME_TITLE
     end
 end
