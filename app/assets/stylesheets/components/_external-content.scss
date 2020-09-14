@@ -1,8 +1,13 @@
 .external-content {
-  font-family: $font-family-body;
+  @extend .govuk-body;
 
   p {
     @extend .govuk-body;
+  }
+
+  h1 {
+    @extend .heading-generic;
+    font-size: 1.5rem;
   }
 
   h2,
@@ -60,4 +65,9 @@
     margin-bottom: 20px;
     width: 100%;
   }
+
+	a {
+		@extend .govuk-link;
+		@extend .ncce-link;
+	}
 }

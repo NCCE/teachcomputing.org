@@ -32,35 +32,35 @@ describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe('#whitelist_redirect_url') do
+  describe('#safe_redirect_url') do
     it 'allows teachcomputing url' do
       url = 'https://teachcomputing.org/courses/'
-      expect(helper.whitelist_redirect_url(url)).to eq(url)
+      expect(helper.safe_redirect_url(url)).to eq(url)
     end
 
     it 'allows stem url' do
       url = 'https://www.stem.org.uk/resources'
-      expect(helper.whitelist_redirect_url(url)).to eq(url)
+      expect(helper.safe_redirect_url(url)).to eq(url)
     end
 
     it 'allows staging url' do
       url = 'https://staging-teachcomputing.org/courses/'
-      expect(helper.whitelist_redirect_url(url)).to eq(url)
+      expect(helper.safe_redirect_url(url)).to eq(url)
     end
 
     it 'allows stem staging url' do
       url = 'https://www-stage.stem.org.uk/resources'
-      expect(helper.whitelist_redirect_url(url)).to eq(url)
+      expect(helper.safe_redirect_url(url)).to eq(url)
     end
 
     it 'allows teachcomputing review app url' do
       url = 'https://teachcomputing-staging-pr-460.herokuapp.com/courses/'
-      expect(helper.whitelist_redirect_url(url)).to eq(url)
+      expect(helper.safe_redirect_url(url)).to eq(url)
     end
 
     it 'does not allow urls that are not whitelisted' do
       url = 'https://3v1l-h4x0rs.com/steal-your-details'
-      expect(helper.whitelist_redirect_url(url)).to be nil
+      expect(helper.safe_redirect_url(url)).to be nil
     end
   end
 

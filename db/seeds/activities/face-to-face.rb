@@ -28,12 +28,14 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'ec9bf026-49da-4542-abb9-2551f862d8d5') do |activity|
   activity.title = 'NCCE facilitator development program (stage one)'
-  activity.credit = 0
+  activity.credit = 40
   activity.slug = 'ncce-facilitator-development-program-stage-one'
   activity.stem_course_template_no = 'ec9bf026-49da-4542-abb9-2551f862d8d5'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '88715914-72ee-4b26-a22b-4f2d610ed267') do |activity|
   activity.title = 'NCCE Train the Trainer'
@@ -454,3 +456,36 @@ a = Activity.find_or_create_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '41a77207-c4c2-ea11-a812-000d3a86d545') do |activity|
+  activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
+  activity.credit = 10
+  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams'
+  activity.stem_course_template_no = '41a77207-c4c2-ea11-a812-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '22880db7-78e8-ea11-a817-000d3a86f6ce') do |activity|
+  activity.title = 'New subject leaders of secondary computing'
+  activity.credit = 10
+  activity.slug = 'new-subject-leaders-of-secondary-computing'
+  activity.stem_course_template_no = '22880db7-78e8-ea11-a817-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce') do |activity|
+  activity.title = 'Key Stage 3 computing for the non-specialist teacher'
+  activity.credit = 10
+  activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher'
+  activity.stem_course_template_no = '6ed470e0-75e8-ea11-a817-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

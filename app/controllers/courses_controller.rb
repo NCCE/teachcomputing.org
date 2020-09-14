@@ -10,9 +10,7 @@ class CoursesController < ApplicationController
 
     @courses.each do |course|
       @course_occurrences.each do |course_occurrence|
-        if course_occurrence.course_template_no == course.course_template_no
-          course.occurrences.push(course_occurrence)
-        end
+        course.occurrences.push(course_occurrence) if course_occurrence.course_template_no == course.course_template_no
       end
     end
 
@@ -76,16 +74,14 @@ class CoursesController < ApplicationController
 
     def alert_filter_params
       filter_strings = []
-      filter_strings.push("<strong>Level</strong>: #{ERB::Util.html_escape(@current_level)}") if @current_level
-      filter_strings.push("<strong>Topic</strong>: #{ERB::Util.html_escape(@current_topic)}") if @current_topic
-      filter_strings.push("<strong>Location</strong>: #{ERB::Util.html_escape(@current_location)}") if @current_location
-      filter_strings.push("<strong>Certificate</strong>: #{@current_certificate.title}") if @current_certificate
+      filter_strings.push("#{ERB::Util.html_escape(@current_level)}") if @current_level
+      filter_strings.push("#{ERB::Util.html_escape(@current_location)}") if @current_location
+      filter_strings.push("#{ERB::Util.html_escape(@current_topic)}") if @current_topic
+      filter_strings.push("#{@current_certificate.title}") if @current_certificate
 
       return if filter_strings.empty?
 
-      notice = "<span>You are filtering with #{filter_strings.join('; ')}</span>"
-      notice += " #{view_context.link_to('Remove filter', url_for(controller: 'courses', anchor: 'filter-results'))}"
-      flash.now[:notice] = notice
+      @filters = filter_strings
     end
 
     def compare_location(course, location)
@@ -93,7 +89,9 @@ class CoursesController < ApplicationController
       when 'Online'
         course.online_cpd
       when 'Face to face'
-        !course.online_cpd
+        !course.online_cpd && !course.remote_delivered_cpd
+      when 'Remote'
+        course.remote_delivered_cpd
       else
         course.occurrences.any? { |oc| oc.address_town == location }
       end
@@ -106,7 +104,7 @@ class CoursesController < ApplicationController
 
     def course_locations(course_occurrences)
       towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
-      towns.uniq.sort.unshift('Face to face').unshift('Online')
+      towns.reject! { |location| location == 'Remote delivered CPD' }.uniq.sort.unshift('Face to face', 'Online', 'Remote')
     end
 
     def course_programme

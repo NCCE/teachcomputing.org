@@ -44,6 +44,6 @@ class AchievementsController < ApplicationController
     end
 
     def self_verification_url
-      helpers.whitelist_redirect_url(request.referrer)
+      helpers.safe_redirect_url(request.referrer)
     end
 end

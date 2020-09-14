@@ -37,12 +37,6 @@
     "STEM_OAUTH_CLIENT_SECRET": {
       "required": true
     },
-    "SIDEKIQ_USERNAME": {
-      "required": true
-    },
-    "SIDEKIQ_PASSWORD": {
-      "required": true
-    },
     "AWS_ACCESS_KEY_ID": {
       "required": true
     },
@@ -90,6 +84,21 @@
       "required": true
     },
     "MANDRILL_API_KEY": {
+      "required": true
+    },
+    "CURRICULUM_APP_URL": {
+      "required": true
+    },
+    "CURRICULUM_API_KEY": {
+      "required": true
+    },
+    "FL_PARTNERS_URL": {
+      "required": true
+    },
+    "FL_PARTNERS_CONSUMER_KEY": {
+      "required": true
+    },
+    "FL_PARTNERS_CONSUMER_SECRET": {
       "required": true
     }
   },

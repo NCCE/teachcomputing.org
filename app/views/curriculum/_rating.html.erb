@@ -1,0 +1,11 @@
+<% if user_has_rated?(id) %>
+	<div class="curriculum__rating curriculum__rating--submitted">
+		<p class="govuk-body curriculum__rating--only-text"><%= get_feedback_string %></p>
+	</div>
+<% else %>
+	<div class="curriculum__rating">
+    <p class="govuk-body curriculum__rating--text">Did you find this content useful?</p>
+    <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true }) %>
+    <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true }) %>
+	</div>
+<% end %>

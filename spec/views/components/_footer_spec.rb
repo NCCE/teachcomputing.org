@@ -18,7 +18,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a resources link' do
-    expect(rendered).to have_link('Resources', href: '/resources')
+    expect(rendered).to have_link('Teaching resources', href: '/curriculum')
   end
 
   it 'has a news link' do
@@ -27,6 +27,10 @@ RSpec.describe('components/_footer', type: :view) do
 
   it 'has a privacy link' do
     expect(rendered).to have_link('Privacy', href: '/privacy')
+  end
+
+  it 'has a terms and conditions link' do
+    expect(rendered).to have_link('Terms and Conditions', href: '/terms-conditions')
   end
 
   it 'has a press link' do
@@ -50,11 +54,11 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a twitter link' do
-    expect(rendered).to have_link('Twitter', href: /twitter.com\/WeAreComputing/)
+    expect(rendered).to have_link('Twitter', href: %r{twitter.com/WeAreComputing})
   end
 
   it 'has a facebook link' do
-    expect(rendered).to have_link('Facebook', href: /facebook.com\/WeAreComputing/)
+    expect(rendered).to have_link('Facebook', href: %r{facebook.com/WeAreComputing})
   end
 
   it 'has a twitter icon' do
@@ -64,5 +68,4 @@ RSpec.describe('components/_footer', type: :view) do
   it 'has a facebook icon' do
     expect(rendered).to have_xpath('//img[contains(@class, "ncce-link__icon--footer")][contains(@alt, "Facebook logo")]')
   end
-
 end

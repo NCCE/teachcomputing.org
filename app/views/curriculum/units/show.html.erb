@@ -1,0 +1,33 @@
+<% meta_tag :title, @unit.title %>
+<% meta_tag :description, @unit.description %>
+<% meta_tag :image, image_url('/images/curriculum.png', skip_pipeline: true) %>
+<div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+			<p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
+      <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
+        <h1 class="govuk-heading-xl hero__heading"><%= @unit.title %></h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0">
+    <%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %>
+  </p>
+	<div class="govuk-main-wrapper resources__wrapper">
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<p class="govuk-body govuk-!-margin-bottom-8"><%= @unit.description %></p>
+			</div>
+			<div class="govuk-grid-column-one-third">
+        <% if current_user %>
+				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, id: @unit.id, user_id: current_user.id } %>
+        <% end %>
+			</div>
+		</div>
+		<%= render partial: 'tiles', locals: { unit: @unit } %>
+    <%= render partial: 'lessons', locals: { key_stage: @unit.year_group.key_stage, unit: @unit, lessons: @unit.lessons } %>
+		<%= render 'curriculum/feedback' %>
+	</div>
+</div>

@@ -56,7 +56,9 @@ class Achievement < ApplicationRecord
 
     metadata = { progress: progress }
 
-    return set_to_dropped(left_at: left_at) if left_at.present?
+    if left_at.present?
+      return set_to_dropped(left_at: left_at) unless progress >= 60
+    end
 
     case progress
     when 0

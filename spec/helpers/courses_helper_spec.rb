@@ -6,26 +6,26 @@ describe CoursesHelper, type: :helper do
   let(:activity_two) { create(:activity) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
 
-  let(:courses) {
+  let(:courses) do
     (0..10).map do |i|
       instance_double('course', course_template_no: i.to_s)
     end
-  }
+  end
 
-  let(:course) { instance_double('course', course_template_no: '1',
-                                            address_venue_name: 'Example',
-                                            address_line_1: 'Line 1',
-                                            address_line_2: 'Line 2',
-                                            address_line_3: 'Line 3',
-                                            address_line_4: '',
-                                            address_town: 'Town'
-                  )
-  }
+  let(:course) do
+    instance_double('course', course_template_no: '1',
+                              address_venue_name: 'Example',
+                              address_line_1: 'Line 1',
+                              address_line_2: 'Line 2',
+                              address_line_3: 'Line 3',
+                              address_line_4: '',
+                              address_town: 'Town')
+  end
 
-  let(:programme) {
+  let(:programme) do
     programme = create(:programme)
     (0..5).each do |i|
-      activity = create(:activity, category:'online', stem_course_template_no: i.to_s)
+      activity = create(:activity, category: 'online', stem_course_template_no: i.to_s)
       programme.activities << activity
     end
 
@@ -34,7 +34,7 @@ describe CoursesHelper, type: :helper do
       programme.activities << activity
     end
     programme
-  }
+  end
 
   describe('#activity_address') do
     it 'rejects blank attributes' do
@@ -140,17 +140,17 @@ describe CoursesHelper, type: :helper do
   describe('other_courses_on_programme') do
     it 'throws error if courses is not passed' do
       expect { other_courses_on_programme(nil, course, programme, 3) }
-          .to raise_error(NoMethodError)
+        .to raise_error(NoMethodError)
     end
 
     it 'throws error if programme is not passed' do
       expect { other_courses_on_programme(courses, course, nil, 3) }
-          .to raise_error(NoMethodError)
+        .to raise_error(NoMethodError)
     end
 
     it 'throws error if course is not passed' do
       expect { other_courses_on_programme(courses, nil, programme, 3) }
-          .to raise_error(NoMethodError)
+        .to raise_error(NoMethodError)
     end
 
     it 'returns 3 courses by default' do
@@ -168,7 +168,7 @@ describe CoursesHelper, type: :helper do
 
     it 'courses include the next 6 courses' do
       other_courses = other_courses_on_programme(courses, course, programme, 5).map(&:course_template_no)
-      ['0', '2', '3', '4', '5'].each { |id| expect(other_courses.include?(id)).to eq(true) }
+      %w[0 2 3 4 5].each { |id| expect(other_courses.include?(id)).to eq(true) }
     end
   end
 
@@ -189,31 +189,31 @@ describe CoursesHelper, type: :helper do
 
     it 'allows headings' do
       headings = '<h1>One</h1><h2>Two</h2><h3>Three</h3><h4>Four</h4>'
-      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq headings
+      expect(helper.sanitize_stem_html(headings)).to eq headings
     end
 
     it 'disallows images' do
-      headings = '<p><img src="abc.jpg"/>Image</p>'
-      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Image</p>'
+      image = '<p><img src="abc.jpg"/>Image</p>'
+      expect(helper.sanitize_stem_html(image)).to eq '<p>Image</p>'
     end
 
-    it 'disallows links' do
-      headings = '<p><a href="abc.html"/>Link</p>'
-      expect(helper.sanitize_stem_html(headings).gsub(/\s/, '')).to eq '<p>Link</p>'
+    it 'allows links' do
+      link = '<p><a href="abc.html">Link</a></p>'
+      expect(helper.sanitize_stem_html(link)).to eq link
     end
 
     it 'disallows inline styles' do
-      headings = '<p style="font-family: Courier;color: f00;">Fancy text</p>'
-      expect(helper.sanitize_stem_html(headings)).to eq '<p>Fancy text</p>'
+      style = '<p style="font-family: Courier;color: f00;">Fancy text</p>'
+      expect(helper.sanitize_stem_html(style)).to eq '<p>Fancy text</p>'
     end
 
     it 'disallows class attributes' do
-      headings = '<p class="govuk-body-m">Simple text</p>'
-      expect(helper.sanitize_stem_html(headings)).to eq '<p>Simple text</p>'
+      class_attr = '<p class="govuk-body-m">Simple text</p>'
+      expect(helper.sanitize_stem_html(class_attr)).to eq '<p>Simple text</p>'
     end
 
     it 'allows video markup' do
-      video = %q(<video poster="image.jpg"
+      video = '<video poster="image.jpg"
                   controls="true" playsinline="true" crossorigin="anonymous"
                   preload="none" tabindex="-1"
                   src="/Videos/video.mp4">
@@ -222,9 +222,40 @@ describe CoursesHelper, type: :helper do
                   <track class="track"
                     src="/Videos/captions.vtt" kind="captions"
                     srclang="EN" label="English"></track>
-                </video>)
+                </video>'
 
       expect(helper.sanitize_stem_html(video).gsub(/\s/, '')).to eq video.to_s.gsub(/\s/, '')
+    end
+  end
+
+  describe 'course_subtitle_text' do
+    it 'returns remote correctly' do
+      course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
+      expect(helper.course_subtitle_text(course)).to eq('Remote')
+    end
+
+    it 'returns online correctly' do
+      course = instance_double('course', online_cpd: true, remote_delivered_cpd:
+                              false)
+      expect(helper.course_subtitle_text(course)).to eq('Online')
+    end
+
+    it 'returns face to face correctly' do
+      course = instance_double('course', online_cpd: false, remote_delivered_cpd:
+                              false)
+      expect(helper.course_subtitle_text(course)).to eq('Face to face')
+    end
+  end
+
+  describe 'remote_or_face_to_face' do
+    it 'returns remote correctly' do
+      course = instance_double('course', remote_delivered_cpd: true)
+      expect(helper.remote_or_face_to_face(course)).to eq('Remote')
+    end
+
+    it 'returns face to face correctly' do
+      course = instance_double('course', remote_delivered_cpd: false)
+      expect(helper.remote_or_face_to_face(course)).to eq('Face to face')
     end
   end
 end

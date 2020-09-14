@@ -33,6 +33,6 @@ class AuthController < ApplicationController
   end
 
   def course_redirect_params
-    helpers.whitelist_redirect_url(request.env['omniauth.params']['source_uri'] || request.env['omniauth.origin'])
+    helpers.safe_redirect_url(request.env['omniauth.params']['source_uri'] || request.env['omniauth.origin'])
   end
 end

@@ -83,6 +83,31 @@
   background-image: none;
 }
 
+.card--resource {
+	background-color: $concrete;
+	border-left-style: solid;
+	border-left-width: 9px;
+	margin-bottom: 1rem;
+  padding: 10px 10px 5px 20px;
+  position: relative;
+
+	@include govuk-media-query($from: desktop) {
+    margin-bottom: $logo-block;
+		padding: (0.5 * $logo-block) 0 (0.1 * $logo-block) (0.75 * $logo-block);
+	}
+}
+
+.card--resource__title {
+	font-weight: 500;
+	line-height: 1.75rem;
+	margin-bottom: 0.5rem;
+	margin-top: 0;
+
+	@include govuk-media-query($from: desktop) {
+    margin-bottom: 1rem;
+  }
+}
+
 .card > .status-block {
   @include status_block();
   display: inline-block;

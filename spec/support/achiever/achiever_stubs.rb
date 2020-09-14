@@ -5,6 +5,12 @@ module AchieverStubs
     stub_request(:any, "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
   end
 
+  def stub_an_html_error_page(method, query)
+    json_response = File.new('spec/support/achiever/failure.html')
+    query_strings = query.map { |k, v| "#{k}=#{v}" }.join('&')
+    stub_request(:any, "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
+  end
+
   def stub_age_groups
     json_response = File.new('spec/support/achiever/courses/age_groups.json')
     stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAgeGroups').to_return(body: json_response)

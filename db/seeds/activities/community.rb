@@ -9,7 +9,7 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |acti
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Engaging in the CAS online discussion forums and webinars.'
+  activity.description = 'Engage in the CAS online discussion forums and webinars in a meaningful way.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -37,7 +37,7 @@ a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Head over to the CAS website to review resources you’ve downloaded and used from the CAS community. <a href="https://community.computingatschool.org.uk/resources/2616/single">You can find CAS resources here</a>'
+  activity.description = 'Head over to the CAS website to give a full review of a resource you’ve downloaded and used including how you used it in the classroom. <a href="https://community.computingatschool.org.uk/resources/2616/single">You can find CAS resources here</a>'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -66,6 +66,20 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |act
   activity.self_certifiable = true
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
   activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the <a href="https://community.computingatschool.org.uk/" class="ncce-link"> CAS website</a>. You’ll need to commit to running 3 meetings per year to support your local community.'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
+  activity.title = 'Providing Additional Support'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = "Please give details of the additional support you have provided"
+  activity.description = 'Providing additional support your local community of teachers, pupils or parents during the school closure period'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)

@@ -41,6 +41,10 @@ class User < ApplicationRecord
     end
   end
 
+  def enrolments
+    self.user_programme_enrolments
+  end
+
   def set_registered_with_ncce_achievement
     achievement = Achievement.create(user_id: id,
                                      activity_id: Activity.registered_with_the_national_centre.id)

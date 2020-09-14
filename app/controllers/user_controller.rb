@@ -14,6 +14,6 @@ class UserController < ApplicationController
 
   private
     def trn_redirect_path
-      helpers.whitelist_redirect_url(params[:redirect_path])
+      helpers.safe_redirect_url(params[:redirect_path])
     end
 end

@@ -3,7 +3,12 @@ class Achiever::Request
     def option_sets(resource_path, query = {})
       query_string = query_strings(query)
 
-      response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
+      response = Rails.cache.fetch(
+        resource_path,
+        expires_in: 1.day,
+        race_condition_ttl: 20.seconds,
+        namespace: 'achiever'
+      ) do
         api.get("#{resource_path}&#{query_string}")
       end
 
@@ -20,40 +25,43 @@ class Achiever::Request
     def resource(resource_path, query = {}, cache = true)
       query_string = query_strings(query)
 
-      if cache
-        response = Rails.cache.fetch(resource_path, expires_in: 1.day) do
-          api.get("#{resource_path}&#{query_string}")
-        end
-      else
-        response = api.get("#{resource_path}&#{query_string}")
-      end
-      
+      response = if cache
+                   Rails.cache.fetch(resource_path, expires_in: 1.day) do
+                     api.get("#{resource_path}&#{query_string}")
+                   end
+                 else
+                   api.get("#{resource_path}&#{query_string}")
+                 end
+
       parsed_response = parse_response(response.body)
 
       if success?(response, parsed_response)
         parsed_response.GetJsonResult.Entities
       else
-        raise Achiever::Error.new(failure: { status: response.status,
-                                             reason: parsed_response.GetJsonResult.FailureReason })
+        Rails.logger.warn "Achiever::Request error: #{parsed_response.GetJsonResult.FailureReason}"
+        []
       end
+    rescue JSON::ParserError => e
+      Rails.logger.warn "Achiever::Request Error parsing JSON: #{e.message}"
+      []
     end
 
     private
 
-    def success?(response, parsed_response)
-      response.status == 200 && parsed_response.GetJsonResult.FailureReason.blank?
-    end
+      def success?(response, parsed_response)
+        response.status == 200 && parsed_response.GetJsonResult.FailureReason.blank?
+      end
 
-    def query_strings(query)
-      query.map { |k, v| "#{k}=#{v}" }.join('&')
-    end
+      def query_strings(query)
+        query.map { |k, v| "#{k}=#{v}" }.join('&')
+      end
 
-    def parse_response(response_body)
-      JSON.parse(response_body, object_class: OpenStruct)
-    end
+      def parse_response(response_body)
+        JSON.parse(response_body, object_class: OpenStruct)
+      end
 
-    def api
-      Achiever::Connection.api
-    end
+      def api
+        Achiever::Connection.api
+      end
   end
 end

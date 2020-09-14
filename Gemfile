@@ -7,13 +7,17 @@ gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
-gem 'connection_pool','~> 2.2.2'
+gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
+gem 'connection_pool', '~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.18.2'
-gem 'faraday', '~> 0.15.4', require: false
-gem "fog-aws", "~> 3.3"
+gem 'faraday', '~> 1.0', require: false
+gem 'fog-aws', '~> 3.3'
+gem 'graphlient', '~> 0.4'
 gem 'htmlentities', '~> 4.3'
+gem 'ims-lti', '1.2.4'
 gem 'jwt', '~> 2.1.0'
+gem 'kramdown'
 gem 'lograge'
 gem 'memcachier'
 gem 'nokogiri', '~> 1.10.8'
@@ -22,6 +26,7 @@ gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-oauth2', '~> 1.6.0'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'pg', '~> 1.1'
+gem 'prawn', '~> 2.3'
 gem 'puma', '~> 3.12'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
@@ -29,7 +34,7 @@ gem 'rails', '~> 5.2.4'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'sass-rails', '~> 5.0'
-gem 'sentry-raven', '~> 2.13.0'
+gem 'sentry-raven', '~> 3.0'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
@@ -39,39 +44,41 @@ gem 'wicked', '~> 1.3.4'
 group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
-  gem 'guard-rspec', '~> 4.7.3', :require => false
+  gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-byebug'
   gem 'reek'
-  gem 'rubocop'
-  gem 'rubocop-rspec'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'webmock'
-  gem 'pry', '~> 0.12.2'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'debase', '~> 0.2.3'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'ruby-debug-ide'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'ruby-debug-ide'
-  gem 'debase'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'axe-matchers', '>= 2.5.0', :require => false
+  gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '>= 2.15'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
   # Don't load webdrivers if ENV_TYPE is 'development'
+  gem 'vcr'
   gem 'webdrivers', '~> 4.0', require: ENV['ENV_TYPE'] != 'development'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
