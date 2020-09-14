@@ -46,6 +46,12 @@ RSpec.describe ProgrammesController do
 
       describe 'and complete' do
         before do
+          generator_double = instance_double(CertificateGenerator)
+          allow(generator_double)
+            .to receive(:generate_pdf)
+            .and_return({ path: 'spec/support/example_certificate.pdf', filename: 'test-certificate.pdf' })
+          allow(CertificateGenerator).to receive(:new) { generator_double }
+
           programme_activity
           passed_exam.set_to_complete
           user_programme_enrolment.transition_to(:complete, certificate_number: 20)
@@ -56,8 +62,9 @@ RSpec.describe ProgrammesController do
           expect(response.status).to eq(200)
         end
 
-        it 'renders the correct template' do
-          expect(response).to render_template('certificate')
+        it 'responds with inline pdf file' do
+          expect(response.content_type).to eq('application/pdf')
+          expect(response.headers['Content-Disposition']).to eq('inline; filename="test-certificate.pdf"')
         end
 
         it 'assigns the programme' do

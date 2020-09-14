@@ -1,6 +1,26 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "11d70bc8846b7a1488da8e25685fed9e2b7193fceeee1b4fcd138ab11845da83",
+      "check_name": "SendFile",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/programmes_controller.rb",
+      "line": 64,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(CertificateGenerator.new(:user => current_user, :programme => Programme.enrollable.find_by!(:slug => params[:slug]), :transition => (@transition)).generate_pdf[:path], :filename => CertificateGenerator.new(:user => current_user, :programme => Programme.enrollable.find_by!(:slug => params[:slug]), :transition => (@transition)).generate_pdf[:filename], :type => \"application/pdf\", :disposition => \"inline\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ProgrammesController",
+        "method": "certificate"
+      },
+      "user_input": "Programme.enrollable.find_by!(:slug => params[:slug])",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "1b52e260e38dfcb324eb69f664c7646fc23b80730eb6225c3b01b61c8f1409bf",
@@ -30,57 +50,6 @@
       "user_input": "params[:page_slug]",
       "confidence": "Weak",
       "note": "Page slug comes fom config/routes.rb not externally"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "4487c45352f6819f22fe01958108bf82b88c62eacaf3899be7cdbe93d2f56fbf",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/resources_controller.rb",
-      "line": 15,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(URI.decode_www_form_component(params[:redirect_url]))",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "ResourcesController",
-        "method": "show"
-      },
-      "user_input": "params[:redirect_url]",
-      "confidence": "Weak",
-      "note": "We check this URL with the whitelist function afterwards."
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 2,
-      "fingerprint": "8f9d47d6ae45ad2980b63c1fd0cc378abc84b45689873fb2c926f054a9ad3dd0",
-      "check_name": "CrossSiteScripting",
-      "message": "Unescaped parameter value",
-      "file": "app/views/curriculum/lessons/show.html.erb",
-      "line": 19,
-      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Kramdown::Document.new(CurriculumClient::Queries::Lesson.one(params[:lesson_slug]).lesson.objectives).to_html",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "Curriculum::LessonsController",
-          "method": "show",
-          "line": 14,
-          "file": "app/controllers/curriculum/lessons_controller.rb",
-          "rendered": {
-            "name": "curriculum/lessons/show",
-            "file": "app/views/curriculum/lessons/show.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "curriculum/lessons/show"
-      },
-      "user_input": "params[:lesson_slug]",
-      "confidence": "Weak",
-      "note": ""
     },
     {
       "warning_type": "Dynamic Render Path",
@@ -123,6 +92,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     }
   ],
-  "updated": "2020-07-27 14:09:23 +0100",
+  "updated": "2020-09-10 08:55:03 +0100",
   "brakeman_version": "4.8.2"
 }
