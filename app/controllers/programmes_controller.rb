@@ -13,11 +13,11 @@ class ProgrammesController < ApplicationController
 
     if @programme.slug == 'cs-accelerator'
       @online_achievements = current_user.achievements.for_programme(@programme)
-                                                      .not_in_state(:dropped)
-                                                      .with_category(Activity::ONLINE_CATEGORY)
+                                         .not_in_state(:dropped)
+                                         .with_category(Activity::ONLINE_CATEGORY)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
-                                                            .not_in_state(:dropped)
-                                                            .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                                               .not_in_state(:dropped)
+                                               .with_category(Activity::FACE_TO_FACE_CATEGORY)
       render "programmes/#{@programme.slug}/show"
     else
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
@@ -31,17 +31,17 @@ class ProgrammesController < ApplicationController
     if @programme.slug == 'cs-accelerator'
       @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
       @online_achievements = current_user.achievements.for_programme(@programme)
-                                                      .not_in_state(:dropped)
-                                                      .with_category(Activity::ONLINE_CATEGORY)
+                                         .not_in_state(:dropped)
+                                         .with_category(Activity::ONLINE_CATEGORY)
       @face_to_face_achievements = current_user.achievements.for_programme(@programme)
-                                                            .not_in_state(:dropped)
-                                                            .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                                               .not_in_state(:dropped)
+                                               .with_category(Activity::FACE_TO_FACE_CATEGORY)
     else
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
 
       @complete_achievements = current_user.achievements.without_category('action')
-                                                        .without_category('diagnostic')
-                                                        .for_programme(@programme).sort_complete_first
+                                           .without_category('diagnostic')
+                                           .for_programme(@programme).sort_complete_first
     end
 
     render "programmes/#{@programme.slug}/complete"
@@ -51,15 +51,31 @@ class ProgrammesController < ApplicationController
     return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
 
     get_certificate_details
-    render "programmes/#{@programme.slug}/certificate", layout: 'certificate'
+
+    generator = CertificateGenerator.new(
+      user: current_user,
+      programme: @programme,
+      transition: @transition
+    )
+
+    pdf_details = generator.generate_pdf
+
+    send_file(
+      pdf_details[:path],
+      filename: pdf_details[:filename],
+      type: 'application/pdf',
+      disposition: 'inline'
+    )
   end
 
   def pending
     return redirect_to programme_complete_path(@programme.slug) if enrolment.current_state == 'complete'
 
-    @complete_achievements = current_user.achievements.without_category('action')
-                                                      .without_category('diagnostic')
-                                                      .for_programme(@programme).sort_complete_first if @programme.slug == 'primary-certificate'
+    if @programme.slug == 'primary-certificate'
+      @complete_achievements = current_user.achievements.without_category('action')
+                                           .without_category('diagnostic')
+                                           .for_programme(@programme).sort_complete_first
+    end
 
     @enrolment = current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
 
@@ -86,7 +102,7 @@ class ProgrammesController < ApplicationController
       return true if response && response.current_state == 'complete'
 
       # Navigate directly to the last question reached, or question_1.
-      question = response && response.current_question ? "question_#{response.current_question}" : "question_1"
+      question = response&.current_question ? "question_#{response.current_question}" : 'question_1'
       redirect_to primary_certificate_diagnostic_path(question.to_sym)
     end
 
