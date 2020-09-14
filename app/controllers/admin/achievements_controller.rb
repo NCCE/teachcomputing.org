@@ -41,12 +41,6 @@ class Admin::AchievementsController < ApplicationController
   end
 
  private
-    def authenticate_api
-      authenticate_or_request_with_http_token do |token, options|
-        ActiveSupport::SecurityUtils.secure_compare(token, 'secret')
-      end
-    end
-
 		def as_json(achievement)
 			achievement.as_json(methods: :current_state,
 													include: [
@@ -55,5 +49,4 @@ class Admin::AchievementsController < ApplicationController
 														{user: { only: [:email]}}
 													])
 		end
-
 end

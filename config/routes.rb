@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   namespace 'admin' do
     resources :imports
 		resources :users do
-			resources :achievements, only: %i[create index show]
+      resources :achievements, only: %i[create index show]
+      resources :enrolments, only: %i[index]
 		end
   end
 
