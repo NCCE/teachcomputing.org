@@ -27,7 +27,6 @@ RSpec.describe Admin::AchievementsController do
         expect(response.status).to eq 401
       end
     end
-
   end
 
   context 'token is passed' do
