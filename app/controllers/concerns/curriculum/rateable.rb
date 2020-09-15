@@ -4,7 +4,6 @@ module Curriculum
 
     NEW_FEEDBACK = 'Thank you for your feedback!'.freeze
     EXISTING_FEEDBACK = 'You have already provided a rating, thanks!'.freeze
-    NO_USER_FEEDBACK = 'You must be logged in to leave a rating.'.freeze
 
     def rate
       raise NoMethodError unless respond_to?(:client, true)
@@ -16,11 +15,7 @@ module Curriculum
 
       user = current_user.present? ? current_user : User.find_by(id: user_id)
 
-      if user.nil?
-        message = NO_USER_FEEDBACK
-        # It shouldn't be possible to make this request without being logged in.
-        Raven.capture_message("Information missing when adding rating, current_user: #{current_user&.id}, user_id param: #{user_id}")
-      elsif helpers.user_has_rated?(id)
+      if helpers.user_has_rated?(id)
         message = EXISTING_FEEDBACK
       else
         response = add_rating(id, polarity, user)
@@ -37,8 +32,6 @@ module Curriculum
 
     def add_rating(id, polarity, user)
       achiever_contact_no = user.stem_achiever_contact_no
-
-      Raven.capture_message("User has no stem_achiever_contact_no: #{user.id}") unless achiever_contact_no.present?
 
       case polarity.to_sym
       when :positive
