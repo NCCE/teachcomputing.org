@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   namespace 'admin' do
     resources :imports
-    get '/users', to: 'users#show', constraints: { sender: /[^\/]+/}
+    get '/users', to: 'users#show'
 		resources :users do
-      resources :achievements, only: %i[create index show]
+      resources :achievements, only: %i[create complete]
 		end
   end
 
