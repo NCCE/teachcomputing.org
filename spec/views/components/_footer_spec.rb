@@ -53,6 +53,14 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Pedagogy', href: '/pedagogy')
   end
 
+  it 'has a home teaching link' do
+    expect(rendered).to have_link('Home teaching', href: '/home-teaching')
+  end
+
+  it 'has a ITE providers link' do
+    expect(rendered).to have_link('ITE providers', href: '/support-for-ite-providers')
+  end
+
   it 'has a twitter link' do
     expect(rendered).to have_link('Twitter', href: %r{twitter.com/WeAreComputing})
   end

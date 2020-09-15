@@ -10,7 +10,7 @@
     grid-template-columns: 1fr;
 
     @include govuk-media-query($from: desktop) {
-      grid-template-columns: 6fr 5fr 3fr;
+      grid-template-columns: 3fr 10fr 3fr;
     }
   }
 
@@ -18,13 +18,13 @@
     display: grid;
     grid-column-gap: $logo-block;
     grid-row-gap: 16px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   &__sub-grid--logos {
     @include govuk-media-query($from: desktop) {
       grid-column-gap: $logo-block;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr;
     }
   }
 
