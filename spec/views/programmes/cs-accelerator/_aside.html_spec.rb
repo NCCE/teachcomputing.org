@@ -15,8 +15,13 @@ RSpec.describe('programmes/cs-accelerator/_aside', type: :view) do
     expect(rendered).to have_link('Frequently Asked Questions', href: '/faq/courses')
   end
 
-  it 'renders a link to  the handbook' do
+  it 'renders a link to the handbook' do
     render
     expect(rendered).to have_link('Download our Handbook', href: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf')
+  end
+
+  it 'renders a link to the GCSE specification map' do
+    render
+    expect(rendered).to have_link('Download our GCSE Specification Map', href: 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf')
   end
 end
