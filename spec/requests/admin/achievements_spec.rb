@@ -4,18 +4,8 @@ RSpec.describe Admin::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
 	let(:programme) { create(:programme) }
-	let(:achievement) {
-		create(:achievement, user: user, programme: programme)
-	}
+	let(:achievement) { create(:achievement, user: user, programme: programme) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
-
-  before do
-    Achievement.where(user: user).destroy_all
-  end
-
-  after do
-    Achievement.where(user: user).destroy_all
-  end
 
   context 'token is not passed' do
     describe 'POST #create' do
@@ -79,4 +69,3 @@ RSpec.describe Admin::AchievementsController do
     end
   end
 end
-

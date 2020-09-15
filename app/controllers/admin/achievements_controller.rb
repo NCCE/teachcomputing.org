@@ -8,13 +8,11 @@ class Admin::AchievementsController < ApplicationController
 		achievement = Achievement.new(activity_id: activity.id, user_id: user.id)
 
     if achievement.save
-      if achievement.programme
-        case achievement.programme.slug
-        when 'cs-accelerator'
-          AssessmentEligibilityJob.perform_now(user.id, nil)
-        when 'primary-certificate'
-          PrimaryCertificatePendingTransitionJob.perform_now(user.id, nil)
-        end
+      case achievement.programme&.slug
+      when 'cs-accelerator'
+        AssessmentEligibilityJob.perform_now(user.id, nil)
+      when 'primary-certificate'
+        PrimaryCertificatePendingTransitionJob.perform_now(user.id, nil)
       end
 			render json: as_json(achievement), status: 201
     else
@@ -26,6 +24,14 @@ class Admin::AchievementsController < ApplicationController
 		user = User.find(params[:user_id])
 		achievement = user.achievements.find(params[:id])
     achievement.transition_to(:complete)
+
+    case achievement.programme&.slug
+    when 'cs-accelerator'
+      AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
+    when 'primary-certificate'
+      PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
+    end
+
 		render json: as_json(achievement), status: 201
   end
 
