@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Admin::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
-	let(:programme) { create(:programme) }
+  let(:programme) { create(:programme) }
 	let(:achievement) { create(:achievement, user: user, programme: programme) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
