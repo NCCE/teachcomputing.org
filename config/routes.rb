@@ -5,7 +5,13 @@ Rails.application.routes.draw do
 
   namespace 'admin' do
     resources :imports
+    get '/users', to: 'users#show'
+		resources :users do
+      resources :achievements, only: %i[create complete]
+		end
   end
+
+	post '/admin/users/:user_id/achievements/:id/complete', action: :complete, controller: 'admin/achievements'
 
   resources :assessment_attempts
 
