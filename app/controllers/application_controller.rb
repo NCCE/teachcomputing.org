@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_api
+    authenticate_or_request_with_http_token do |token, options|
+      ActiveSupport::SecurityUtils.secure_compare(token, ENV.fetch('USER_ACHIEVEMENTS_API_SECRET'))
+    end
+  end
+
   def authenticate_user!
     redirect_to(helpers.create_account_url) unless current_user
   end

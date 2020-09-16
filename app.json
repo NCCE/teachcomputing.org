@@ -100,6 +100,10 @@
     },
     "FL_PARTNERS_CONSUMER_SECRET": {
       "required": true
+    },
+    "USER_ACHIEVEMENTS_API_SECRET": {
+      "required": true,
+      "value": "secret"
     }
   },
   "formation": {
