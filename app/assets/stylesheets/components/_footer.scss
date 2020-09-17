@@ -38,6 +38,7 @@
   }
 
   &__sub-grid--single-col {
+    grid-template-columns: 1fr 1fr;
     @include govuk-media-query($from: desktop) {
       grid-template-columns: 1fr;
     }
