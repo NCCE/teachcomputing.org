@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Admin::UsersController do
   let(:user) { create(:user) }
+  let(:achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme)}
@@ -24,6 +25,7 @@ RSpec.describe Admin::UsersController do
     describe 'GET #show' do
       before do
         enrolment
+        achievement
         get "/admin/users/", { params: { email: user.email }, headers: token_headers }
       end
 

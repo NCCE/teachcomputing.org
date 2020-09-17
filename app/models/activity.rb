@@ -43,15 +43,4 @@ class Activity < ApplicationRecord
       activity.provider = 'system'
     end
   end
-
-  def self.registered_with_the_national_centre
-    Activity.find_or_create_by(slug: 'registered-with-the-national-centre') do |activity|
-      activity.title = 'Registered with the National Centre'
-      activity.credit = 5
-      activity.slug = activity.title.parameterize
-      activity.category = ACTION_CATEGORY
-      activity.self_certifiable = false
-      activity.provider = 'system'
-    end
-  end
 end

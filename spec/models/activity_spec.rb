@@ -174,19 +174,4 @@ RSpec.describe Activity, type: :model do
       end
     end
   end
-
-  describe 'registered_with_the_national_centre' do
-    it 'returns a record if one is found' do
-      activity = create(:activity, :registered_with_national_centre)
-      expect(Activity.registered_with_the_national_centre).to eq activity
-    end
-
-    it 'creates a record if one is not found' do
-      expect(Activity.registered_with_the_national_centre.title).to eq 'Registered with the National Centre'
-    end
-
-    it 'has a credit weighting of 5' do
-      expect(Activity.registered_with_the_national_centre.credit).to eq 5
-    end
-  end
 end
