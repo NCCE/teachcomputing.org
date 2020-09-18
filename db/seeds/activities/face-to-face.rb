@@ -489,3 +489,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817
 end
 
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd0aa3d40-f2f7-ea11-a815-000d3a86f6ce') do |activity|
+  activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a programme'
+  activity.credit = 10
+  activity.slug = 'python-programming-projects-advanced-subject-knowledge-implementation-and-testing-a-programme'
+  activity.stem_course_template_no = 'd0aa3d40-f2f7-ea11-a815-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
