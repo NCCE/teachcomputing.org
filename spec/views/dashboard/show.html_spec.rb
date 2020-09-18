@@ -42,7 +42,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the activity list' do
-      expect(rendered).to have_css('.ncce-activity-list li', count: 2)
+      expect(rendered).to have_css('.ncce-activity-list li', count: 1)
     end
 
     it 'does not show the certificate progress section' do

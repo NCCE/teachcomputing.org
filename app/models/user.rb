@@ -23,8 +23,6 @@ class User < ApplicationRecord
   has_many :resource_users, dependent: :nullify
   has_many :questionnaire_response, dependent: :nullify
 
-  after_commit :set_registered_with_ncce_achievement, on: :create
-
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
       user.stem_user_id = id
@@ -43,11 +41,5 @@ class User < ApplicationRecord
 
   def enrolments
     self.user_programme_enrolments
-  end
-
-  def set_registered_with_ncce_achievement
-    achievement = Achievement.create(user_id: id,
-                                     activity_id: Activity.registered_with_the_national_centre.id)
-    achievement.set_to_complete
   end
 end
