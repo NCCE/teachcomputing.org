@@ -9,13 +9,6 @@ FactoryBot.define do
     provider { 'stem-learning' }
   end
 
-  trait :registered_with_national_centre do
-    title { 'Registered with the National Centre' }
-    slug { 'registered-with-the-national-centre' }
-    category { 'action' }
-    provider { 'system' }
-  end
-
   trait :cs_accelerator_diagnostic_tool do
     title { 'Taken diagnostic tool' }
     slug { 'cs-accelerator-diagnostic-tool' }
