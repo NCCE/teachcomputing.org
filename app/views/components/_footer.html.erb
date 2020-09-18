@@ -1,73 +1,85 @@
 <footer class="govuk-footer ncce-footer">
   <div class="govuk-width-container ncce-footer__grid">
-    <div class="ncce-footer__sub-grid ncce-footer__sub-grid--logos">
+    <div class="ncce-footer__grid-logos">
       <img src="/images/ncce-logo.svg" class="ncce-footer__logos-img" alt="National Centre for Computing Education home">
       <div>
         <p class="govuk-body-s ncce-footer__text">Funded by</p>
         <%= link_to 'https://www.gov.uk/government/organisations/department-for-education', class: 'govuk-footer__link ncce-link' do %>
-        <img src="/images/dfe.svg" class="ncce-footer__logos-img"
-          alt="Department for Education website">
+          <img src="/images/dfe.svg" class="ncce-footer__logos-img"
+                                     alt="Department for Education website">
         <% end %>
       </div>
     </div>
-    <nav class="ncce-footer__links" aria-label="Footer Navigation">
-      <ul class="ncce-footer__list ncce-footer__sub-grid">
-        <li>
+
+    <nav class="ncce-footer__grid-links" aria-label="Footer Navigation">
+      <ul class="ncce-footer__list">
+        <li class="ncce-footer__list-item">
           <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
-          <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
-          <%= link_to 'Computing hubs', hubs_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Pedagogy', pedagogy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Home teaching', home_teaching_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+      </ul>
+      <ul class="ncce-footer__list">
+        <li class="ncce-footer__list-item">
+          <%= link_to 'About us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'News', news_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Get involved', get_involved_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Computing hubs', hubs_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'ITE providers', support_for_ite_providers_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+        </li>
+      </ul>
+      <ul class="ncce-footer__list">
+        <li class="ncce-footer__list-item">
           <%= link_to 'Press', press_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'Accessibility', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'Terms and Conditions', terms_conditions_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li>
-          <%= link_to 'About Us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li>
-          <%= link_to 'Get Involved', get_involved_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li>
-          <%= link_to 'Pedagogy', pedagogy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
         </li>
       </ul>
     </nav>
-    <nav class="ncce-footer__links" aria-label="Footer Navigation Contact Links">
-      <ul class="ncce-footer__list ncce-footer__sub-grid ncce-footer__sub-grid--single-col">
-        <li>
+
+    <nav class="ncce-footer__nav-social" aria-label="Footer Contact Navigation">
+      <ul class="ncce-footer__list ncce-footer__grid-social">
+        <li class="ncce-footer__list-item">
           <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
             <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
           <% end %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
             <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
           <% end %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= mail_to 'info@teachcomputing.org', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
             <%= image_tag "email.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>Email
           <% end %>
         </li>
-        <li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'tel:01904 328 300', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
             <%= image_tag "telephone.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>01904 328 300
           <% end %>
