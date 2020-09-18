@@ -5,41 +5,59 @@
 
   &__grid {
     display: grid;
-    grid-column-gap: $logo-block;
-    grid-row-gap: $logo-block;
+    grid-row-gap: 25px;
+    grid-template-areas:
+      'logos'
+      'links'
+      'social';
     grid-template-columns: 1fr;
-
+    @include govuk-media-query($from: tablet) {
+      grid-column-gap: 15px;
+      grid-row-gap: $logo-block;
+      grid-template-areas:
+        'logos logos logos logos '
+        'links links links social';
+    }
     @include govuk-media-query($from: desktop) {
-      grid-template-columns: 6fr 5fr 3fr;
+      grid-column-gap: 19px;
+      grid-template-areas: 'logos links links links social';
+      grid-template-columns: 225px 1fr 1fr 1fr 1fr;
     }
   }
 
-  &__sub-grid {
+  &__grid-logos {
     display: grid;
-    grid-column-gap: $logo-block;
+    grid-area: logos;
+    grid-column-gap: 20px;
     grid-row-gap: 16px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  &__sub-grid--logos {
-    @include govuk-media-query($from: desktop) {
-      grid-column-gap: $logo-block;
-      grid-template-columns: auto 1fr;
-    }
-  }
-
-  &__link-ncce {
-    height: 123px;
-    width: 124px;
-  }
-
-  &__logos-img {
-    display: block;
-  }
-
-  &__sub-grid--single-col {
+    grid-template-columns: auto 1fr;
     @include govuk-media-query($from: desktop) {
       grid-template-columns: 1fr;
+    }
+  }
+
+  &__grid-links {
+    display: grid;
+    grid-area: links;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__grid-social {
+    display: grid;
+    grid-area: social;
+    grid-template-columns: 120px 1fr;
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &-item {
+      margin-bottom: 15px;
     }
   }
 
@@ -47,9 +65,17 @@
     color: $white;
   }
 
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  &__nav-social {
+    @include govuk-media-query($from: tablet) {
+      padding-left: 20px;
+    }
+  }
+
+  &__logos-img {
+    display: block;
+    width: 100px;
+    @include govuk-media-query($from: tablet) {
+      width: 125px;
+    }
   }
 }
