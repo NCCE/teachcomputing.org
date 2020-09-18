@@ -42,15 +42,23 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has an about link' do
-    expect(rendered).to have_link('About Us', href: '/about')
+    expect(rendered).to have_link('About us', href: '/about')
   end
 
   it 'has a get involved link' do
-    expect(rendered).to have_link('Get Involved', href: '/get-involved')
+    expect(rendered).to have_link('Get involved', href: '/get-involved')
   end
 
   it 'has a pedagogy link' do
     expect(rendered).to have_link('Pedagogy', href: '/pedagogy')
+  end
+
+  it 'has a home teaching link' do
+    expect(rendered).to have_link('Home teaching', href: '/home-teaching')
+  end
+
+  it 'has a ITE providers link' do
+    expect(rendered).to have_link('ITE providers', href: '/support-for-ite-providers')
   end
 
   it 'has a twitter link' do
