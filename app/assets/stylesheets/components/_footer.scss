@@ -46,7 +46,7 @@
   &__grid-social {
     display: grid;
     grid-area: social;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 120px 1fr;
     @include govuk-media-query($from: tablet) {
       grid-template-columns: 1fr;
     }
