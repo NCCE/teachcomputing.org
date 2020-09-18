@@ -7,9 +7,9 @@
     display: grid;
     grid-row-gap: 25px;
     grid-template-areas:
-      'logos logos logos '
-      'links links links'
-      'social social social';
+      'logos'
+      'links'
+      'social';
     grid-template-columns: 1fr;
     @include govuk-media-query($from: tablet) {
       grid-column-gap: 15px;
