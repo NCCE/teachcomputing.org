@@ -2,10 +2,6 @@ cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
 # secondary_certificate = Programme.secondary_certificate
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'ncce-coaching-and-mentoring') do |activity|
   activity.title = 'NCCE - Coaching and Mentoring'
   activity.credit = 0
