@@ -5,41 +5,67 @@
 
   &__grid {
     display: grid;
-    grid-column-gap: $logo-block;
-    grid-row-gap: $logo-block;
-    grid-template-columns: 1fr;
-
+    grid-column-gap: 6%;
+    grid-row-gap: 25px;
+    grid-template-areas:
+      'logos logos . '
+      'links1 links2 links3'
+      'social social social';
+    grid-template-columns: 1fr 1fr 1fr;
+    @include govuk-media-query($from: tablet) {
+      grid-column-gap: 3%;
+      grid-row-gap: $logo-block;
+      grid-template-areas:
+        'logos logos . . '
+        'links1 links2 links3 social';
+    }
     @include govuk-media-query($from: desktop) {
-      grid-template-columns: 3fr 10fr 3fr;
+      grid-column-gap: 2%;
+      grid-template-areas: 'logos links1 links2 links3 social';
+      grid-template-columns: 225px 1fr 1fr 1fr 1fr;
     }
   }
 
-  &__sub-grid {
+  &__grid-logos {
     display: grid;
-    grid-column-gap: $logo-block;
+    grid-area: logos;
+    grid-column-gap: 20px;
     grid-row-gap: 16px;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  &__sub-grid--logos {
+    grid-template-columns: auto 1fr;
     @include govuk-media-query($from: desktop) {
-      grid-column-gap: $logo-block;
       grid-template-columns: 1fr;
     }
   }
 
-  &__link-ncce {
-    height: 123px;
-    width: 124px;
+  &__grid-links1 {
+    grid-area: links1;
   }
 
-  &__logos-img {
-    display: block;
+  &__grid-links2 {
+    grid-area: links2;
   }
 
-  &__sub-grid--single-col {
+  &__grid-links3 {
+    grid-area: links3;
+  }
+
+  &__grid-social {
+    grid-area: social;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &-item {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__social-list {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       grid-template-columns: 1fr;
     }
   }
@@ -48,9 +74,17 @@
     color: $white;
   }
 
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  &__nav-social {
+    @include govuk-media-query($from: tablet) {
+      padding-left: 20px;
+    }
+  }
+
+  &__logos-img {
+    display: block;
+    width: 100px;
+    @include govuk-media-query($from: tablet) {
+      width: 125px;
+    }
   }
 }
