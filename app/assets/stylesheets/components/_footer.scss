@@ -5,23 +5,22 @@
 
   &__grid {
     display: grid;
-    grid-column-gap: 6%;
     grid-row-gap: 25px;
     grid-template-areas:
-      'logos logos . '
-      'links1 links2 links3'
+      'logos logos logos '
+      'links links links'
       'social social social';
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     @include govuk-media-query($from: tablet) {
-      grid-column-gap: 3%;
+      grid-column-gap: 15px;
       grid-row-gap: $logo-block;
       grid-template-areas:
-        'logos logos . . '
-        'links1 links2 links3 social';
+        'logos logos logos logos '
+        'links links links social';
     }
     @include govuk-media-query($from: desktop) {
-      grid-column-gap: 2%;
-      grid-template-areas: 'logos links1 links2 links3 social';
+      grid-column-gap: 19px;
+      grid-template-areas: 'logos links links links social';
       grid-template-columns: 225px 1fr 1fr 1fr 1fr;
     }
   }
@@ -37,20 +36,20 @@
     }
   }
 
-  &__grid-links1 {
-    grid-area: links1;
-  }
-
-  &__grid-links2 {
-    grid-area: links2;
-  }
-
-  &__grid-links3 {
-    grid-area: links3;
+  &__grid-links {
+    display: grid;
+    grid-area: links;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   &__grid-social {
+    display: grid;
     grid-area: social;
+    grid-template-columns: 1fr 1fr;
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__list {
@@ -59,14 +58,6 @@
     padding: 0;
     &-item {
       margin-bottom: 15px;
-    }
-  }
-
-  &__social-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include govuk-media-query($from: tablet) {
-      grid-template-columns: 1fr;
     }
   }
 
