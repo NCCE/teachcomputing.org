@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace 'admin' do
     resources :imports
     get '/users', to: 'users#show'
+    resources :activities, only: %i[index]
 		resources :users do
       resources :achievements, only: %i[create complete]
 		end
