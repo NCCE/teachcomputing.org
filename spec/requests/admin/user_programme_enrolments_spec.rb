@@ -119,13 +119,25 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
     context 'when the record is flagged' do
       before do
         enrolment.update(flagged: true)
-        byebug
         post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
       end
 
       it 'returns 409 status' do
         expect(response.status).to eq 409
       end
+    end
+  end
+  describe 'POST #flag' do
+    before do
+      post "/admin/user_programme_enrolments/#{enrolment.id}/flag", { headers: token_headers }
+    end
+
+    it 'returns 201 status' do
+      expect(response.status).to eq 201
+    end
+
+    it 'sets the enrolment flag to true' do
+      expect(enrolment.flagged).to eq true
     end
   end
 end
