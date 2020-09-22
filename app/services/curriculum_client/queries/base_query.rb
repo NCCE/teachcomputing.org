@@ -6,7 +6,7 @@ module CurriculumClient
           @client ||= CurriculumClient::Connection.connect
         end
 
-        def all(context, fields, cache_key)
+        def all(context:, fields:, cache_key:)
           all = <<~GRAPHQL
             query {
               #{context} {
@@ -18,7 +18,7 @@ module CurriculumClient
           CurriculumClient::Request.run(query: client.parse(all), client: client, cache_key: cache_key)
         end
 
-        def one(context, fields, key, value, cache_key)
+        def one(context:, fields:, key:, value:, cache_key:)
           one = <<~GRAPHQL
             query($#{key}: #{map_field_type(key)}) {
               #{context}(#{key}: $#{key}) {

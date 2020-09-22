@@ -23,11 +23,11 @@ module CurriculumClient
       GRAPHQL
 
       def self.all(fields = FIELDS)
-        super(:keyStages, fields, 'key_stage--all')
+        super(context: :keyStages, fields: fields, cache_key: 'key_stage--all')
       end
 
       def self.one(slug, fields = FIELDS)
-        super(:keyStage, fields, :slug, slug, "key_stage--#{slug}")
+        super(context: :keyStage, fields: fields, key: :slug, value: slug, cache_key: "key_stage--#{slug}")
       end
     end
   end
