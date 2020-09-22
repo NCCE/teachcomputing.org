@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   namespace 'admin' do
     resources :imports
     resources :activities, only: %i[index]
-		resources :users, param: :email, only: %i[show] do
+    get '/users', to: 'users#show'
+		resources :users
       resources :achievements, only: %i[create complete]
 		end
   end
