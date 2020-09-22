@@ -34,11 +34,11 @@ module CurriculumClient
       GRAPHQL
 
       def self.all(fields = FIELDS)
-        super(:units, fields)
+        super(:units, fields, 'unit--all')
       end
 
       def self.one(slug, fields = FIELDS)
-        super(:unit, fields, :slug, slug)
+        super(:unit, fields, :slug, slug, "unit--#{slug}")
       end
     end
   end

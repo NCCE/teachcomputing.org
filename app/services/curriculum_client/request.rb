@@ -1,6 +1,6 @@
 module CurriculumClient
   class Request
-    def self.run(query, client = nil, params = {}, _cache_key)
+    def self.run(query:, client: nil, params: {}, cache_key: nil)
       unless client.is_a?(Graphlient::Client)
         raise CurriculumClient::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect'
       end
@@ -13,7 +13,7 @@ module CurriculumClient
         return client.execute(query, params).data unless query.definition_node.operation_type == 'query'
 
         Rails.cache.fetch(
-          params.to_s,
+          cache_key,
           expires_in: 12.hours,
           race_condition_ttl: 20.seconds,
           namespace: 'curriculum'
