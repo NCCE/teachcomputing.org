@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     get '/users', to: 'users#show'
 		resources :users, only: %i[] do
       resources :achievements, only: %i[create complete]
-		end
+    end
+    resources :user_programme_enrolments, only: %i[complete enrolled flagged show] do
+      post '/complete', action: :complete
+      post '/enrolled', action: :enrolled
+      post '/flag', action: :flag
+    end
   end
 
 	post '/admin/users/:user_id/achievements/:id/complete', action: :complete, controller: 'admin/achievements'
