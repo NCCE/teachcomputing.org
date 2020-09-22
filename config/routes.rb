@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :imports
     resources :activities, only: %i[index]
     get '/users', to: 'users#show'
-		resources :users, only: %i[] do
+		namespace 'users' do
       resources :achievements, only: %i[create complete]
 		end
   end
