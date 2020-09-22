@@ -14,7 +14,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(client.parse(all), client)
+        CurriculumClient::Request.run(client.parse(all), client, "#{context}--all")
       end
 
       def self.map_field_type(key)
@@ -37,7 +37,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(client.parse(one), client, { "#{key}": value })
+        CurriculumClient::Request.run(client.parse(one), client, { "#{key}": value }, "#{context}--#{value}")
       end
     end
   end
