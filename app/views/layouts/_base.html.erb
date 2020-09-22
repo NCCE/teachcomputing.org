@@ -39,6 +39,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', nonce: true %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
@@ -70,5 +72,6 @@
   <%= javascript_tag nonce: true do -%>
       window.GOVUKFrontend.initAll()
   <% end -%>
+  <div data-controller="test">test</div>
 </body>
 </html>
