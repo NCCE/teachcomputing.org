@@ -137,6 +137,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
     end
 
     it 'sets the enrolment flag to true' do
+      enrolment.reload
       expect(enrolment.flagged).to eq true
     end
   end
