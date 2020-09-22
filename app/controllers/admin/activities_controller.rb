@@ -1,14 +1,12 @@
-class Admin::ActivitiesController < ApplicationController
-	before_action :authenticate_api
-
+class Admin::ActivitiesController < AdminController
   def index
     activities = Activity.all
-		render json: as_json(activities)
+    render json: as_json(activities)
   end
 
   private
 
-  def as_json(user)
-    user.as_json(include: :programmes)
-  end
+    def as_json(user)
+      user.as_json(include: :programmes)
+    end
 end

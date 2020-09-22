@@ -1,7 +1,4 @@
 class Admin::AchievementsController < AdminController
-  protect_from_forgery unless: -> { request.format.json? }
-  before_action :authenticate_api
-
   def create
     user = User.find(params[:user_id])
     activity = Activity.find(params[:activity_id])

@@ -1,7 +1,4 @@
 class Admin::UsersController < AdminController
-  protect_from_forgery unless: -> { request.format.json? }
-  before_action :authenticate_api
-
   def show
     user = User.find_by!(email: params[:email].downcase)
     render json: as_json(user)
