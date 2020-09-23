@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[] do
       resources :achievements, only: %i[create complete]
     end
-    resources :user_programme_enrolments, only: %i[complete enrolled flagged show] do
+    resources :user_programme_enrolments, only: %i[show] do
       post '/complete', action: :complete
       post '/enrolled', action: :enrolled
       post '/flag', action: :flag
