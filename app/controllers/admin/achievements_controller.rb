@@ -19,7 +19,7 @@ class Admin::AchievementsController < AdminController
 
   def complete
     user = User.find(params[:user_id])
-    achievement = user.achievements.find(params[:id])
+    achievement = user.achievements.find(params[:achievement_id])
     achievement.transition_to(:complete)
 
     case achievement.programme&.slug

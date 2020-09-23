@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :activities, only: %i[index]
     get '/users', to: 'users#show'
     resources :users, only: %i[] do
-      post '/achievements/:id/complete', action: :complete, controller: 'achievements'
-      resources :achievements, only: %i[create]
+      resources :achievements, only: %i[create] do
+        post 'complete', action: :complete
+      end
     end
     resources :user_programme_enrolments, only: %i[show] do
       post '/complete', action: :complete
