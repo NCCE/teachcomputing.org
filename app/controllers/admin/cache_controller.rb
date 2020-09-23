@@ -2,11 +2,17 @@ module Admin
   class CacheController < AdminController
     def destroy
       CacheInvalidator.new(
-        resource: params[:resource],
-        identifier: params[:identifier]
+        resource: cache_params[:resource],
+        identifier: cache_params[:identifier]
       ).run
 
       head :no_content
     end
+
+    private
+
+      def cache_params
+        params.permit(:resource, :identifier)
+      end
   end
 end
