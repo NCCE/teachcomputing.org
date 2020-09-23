@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     resources :activities, only: %i[index]
     get '/users', to: 'users#show'
     resources :users, only: %i[] do
-      resources :achievements, only: %i[create complete]
+      post '/achievements/:id/complete', action: :complete, controller: 'achievements'
+      resources :achievements, only: %i[create]
     end
     resources :user_programme_enrolments, only: %i[show] do
       post '/complete', action: :complete
@@ -17,8 +18,6 @@ Rails.application.routes.draw do
       post '/flag', action: :flag
     end
   end
-
-  post '/admin/users/:user_id/achievements/:id/complete', action: :complete, controller: 'admin/achievements'
 
   resources :assessment_attempts
 
