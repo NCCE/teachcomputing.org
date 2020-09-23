@@ -10,11 +10,11 @@ module CurriculumClient
       GRAPHQL
 
       def self.all(fields = FIELDS)
-        super(:yearGroups, fields)
+        super(context: :yearGroups, fields: fields, cache_key: 'year_group--all')
       end
 
       def self.one(slug, fields = FIELDS)
-        super(:yearGroup, fields, :slug, slug)
+        super(context: :yearGroup, fields: fields, key: :slug, value: slug, cache_key: "year_group--#{slug}")
       end
     end
   end

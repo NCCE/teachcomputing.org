@@ -13,7 +13,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(client.parse(rating), client)
+        CurriculumClient::Request.run(query: client.parse(rating), client: client)
       end
 
       def add_positive_rating(id:, fields: nil, stem_achiever_contact_no:)
