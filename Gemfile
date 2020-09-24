@@ -40,7 +40,8 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked', '~> 1.3.4'
-gem 'webpacker', '~> 5.x'
+gem 'webpacker', '~> 5.0'
+gem 'turbolinks', '~> 5'
 
 group :development, :test do
   gem 'brakeman'

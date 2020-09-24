@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require cookieconsent/build/cookieconsent.min
 //= require_tree .
-//= require govuk-frontend/all

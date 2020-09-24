@@ -5,10 +5,10 @@
   },
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0",
+    "@rails/ujs": "^6.0.3",
     "@rails/webpacker": "5.2.1",
     "cookieconsent": "^3.1.0",
-    "govuk-frontend": "^2.3.0",
+    "govuk-frontend": "^3.9.1",
     "stimulus": "^1.1.1"
   },
   "devDependencies": {
@@ -32,6 +32,7 @@
     "tunnel": "ssh -f -C -N -D 8889 -L8888:127.0.0.1:8888 proxy",
     "logs": "docker-compose logs -f web",
     "console": "docker-compose run --rm web bin/rails console",
+    "prompt": "docker-compose exec web sh",
     "test": "docker-compose run --rm --no-deps web bin/rspec",
     "guard": "docker-compose run --rm --no-deps web bin/guard",
     "rebuild": "bundle install && docker-compose build && npm start"

@@ -2,7 +2,9 @@
 @import 'settings/_fonts.scss';
 @import 'settings/_colors.scss';
 
-@import 'govuk-frontend/all';
+// GovUK
+$govuk-assets-path: "~govuk-frontend/govuk/assets/";
+@import 'govuk-frontend/govuk/all';
 
 // import NCCE settings
 @import 'settings/_links.scss';

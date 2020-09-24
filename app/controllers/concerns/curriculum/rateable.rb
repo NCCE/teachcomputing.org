@@ -2,30 +2,32 @@ module Curriculum
   module Rateable
     extend ActiveSupport::Concern
 
-    NEW_FEEDBACK = 'Thank you for your feedback!'.freeze
-    EXISTING_FEEDBACK = 'You have already provided a rating, thanks!'.freeze
-
     def rate
       raise NoMethodError unless respond_to?(:client, true)
 
       id = params[:id]
       polarity = params[:polarity]
       user_id = params[:user_id]
-      message = ''
 
       user = current_user.present? ? current_user : User.find_by(id: user_id)
+      response = add_rating(id, polarity, user)
+      store_rating(id)
 
-      if helpers.user_has_rated?(id)
-        message = EXISTING_FEEDBACK
-      else
-        response = add_rating(id, polarity, user)
-        store_rating(id)
-        message = NEW_FEEDBACK
-      end
+      # TODO: Add id
 
       render json: {
         origin: __method__.to_s,
-        message: message,
+        data: response
+      }, status: :ok
+    end
+
+    def comment
+      raise NoMethodError unless respond_to?(:client, true)
+
+      # TODO: Add comment
+
+      render json: {
+        origin: __method__.to_s,
         data: response
       }, status: :ok
     end
