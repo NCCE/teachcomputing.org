@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:user) { create(:user) }
   let(:achievements) { create_list(:achievement, 5, user: user) }
-  # let(:programme_activities) { create_list(:programme_activity, 5, programme_id: programme.id) }
   let(:programme) { create(:cs_accelerator) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
