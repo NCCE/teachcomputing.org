@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe FutureLearn::Queries::CourseRuns do
   let(:vcr_id_base) { "/future_learn//partners/course_runs/" }
-  let(:full_endpoint) { "#{ENV.fetch('FL_PARTNERS_URL')}/future_learn//partners/course_runs" }
+  let(:full_endpoint) { "#{ENV.fetch('FL_PARTNERS_URL')}/future_learn/partners/course_runs" }
 
   before(:each) do
     VCR.turn_on!
