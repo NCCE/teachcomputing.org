@@ -4,15 +4,21 @@ Rails.application.routes.draw do
   resources :achievements, only: %i[create destroy]
 
   namespace 'admin' do
-    resources :imports
+    delete '/cache', to: 'cache#destroy'
+    resources :imports, only: %i[index new create]
     resources :activities, only: %i[index]
     get '/users', to: 'users#show'
-		resources :users, only: %i[] do
-      resources :achievements, only: %i[create complete]
-		end
+    resources :users, only: %i[] do
+      resources :achievements, only: %i[create] do
+        post 'complete', action: :complete
+      end
+    end
+    resources :user_programme_enrolments, only: %i[show] do
+      post '/complete', action: :complete
+      post '/enrolled', action: :enrolled
+      post '/flag', action: :flag
+    end
   end
-
-	post '/admin/users/:user_id/achievements/:id/complete', action: :complete, controller: 'admin/achievements'
 
   resources :assessment_attempts
 
