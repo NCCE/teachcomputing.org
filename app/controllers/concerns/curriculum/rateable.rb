@@ -10,14 +10,13 @@ module Curriculum
       user_id = params[:user_id]
 
       user = current_user.present? ? current_user : User.find_by(id: user_id)
-      response = add_rating(id, polarity, user)
-      store_rating(id)
-
-      # TODO: Add id
+      # response = add_rating(id, polarity, user)
+      # store_rating(id)
 
       render json: {
         origin: __method__.to_s,
-        data: response
+        # rating_id: response.id
+        rating_id: 'blabla'
       }, status: :ok
     end
 
@@ -37,18 +36,22 @@ module Curriculum
 
       case polarity.to_sym
       when :positive
-        client.add_positive_rating(
+        response = client.add_positive_rating(
           id: id,
-          stem_achiever_contact_no: achiever_contact_no
+          stem_achiever_contact_no: achiever_contact_no,
+          fields: 'id'
         )
       when :negative
-        client.add_negative_rating(
+        response = client.add_negative_rating(
           id: id,
-          stem_achiever_contact_no: achiever_contact_no
+          stem_achiever_contact_no: achiever_contact_no,
+          fields: 'id'
         )
       else
         raise ArgumentError, "Unexpected polarity: #{polarity}"
       end
+
+      response
     end
 
     def store_rating(id)

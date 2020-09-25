@@ -4,6 +4,10 @@
   outline-color: $deep-cerulean;
 }
 
+.govuk-textarea {
+  font-size: 1rem;
+}
+
 .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
   box-shadow: 0 0 0 3px $deep-cerulean;
 }

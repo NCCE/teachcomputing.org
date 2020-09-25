@@ -1,21 +1,21 @@
 <% if user_has_rated?(id) %>
-  <div class="curriculum__rating curriculum__rating--submitted">
-    <h3 class="govuk-body">You have already provided a rating, thanks!</h3>
+  <div class="curriculum__rating page">
+    <p class="govuk-body">You have already provided a rating, thanks!</p>
   </div>
 <% else %>
   <div class="curriculum__rating" data-controller="rating">
-    <div class="page" data-target="rating.page">
-      <p class="govuk-body curriculum__rating--text">Did you find this content useful?</p>
+    <div class="rating_page" data-target="rating.page">
+      <p class="govuk-body curriculum__rating--text-left">Did you find these resources useful?</p>
       <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up col", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
       <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down col", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
     </div>
-    <div class="page comment_page" data-target="rating.page">
-      <h3 class="govuk-body row">Thanks for your rating!</h3>
-      <textarea class='govuk-textarea row'></textarea>
-      <%= link_to('Submit', send(path, :negative, id, user_id), :alt => "Submit your response", :class => "govuk-button button button--small button--curriculum row", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onCommentSuccess' }) %>
+    <div class="rating_page rating_page--rows" data-target="rating.page">
+      <p class="govuk-body row">Thanks for your rating!</p>
+      <%= text_area_tag :comment, "Tell us more to help us improve the quality of our resources", :class => "govuk-textarea row", :data => { action: "focusin->rating#onTextAreaFocus" } %>
+      <%= link_to('Submit', '', :alt => "Submit your response", :class => "govuk-button button button--small button--curriculum row", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onCommentSuccess' }) %>
     </div>
-    <div class="page" data-target="rating.page">
-      <h3 class="govuk-body curriculum__rating--only-text">Thanks for your feedback!</h3>
+    <div class="rating_page" data-target="rating.page">
+      <p class="govuk-body curriculum__rating__text">Thanks for your feedback!</p>
     </div>
   </div>
 <% end %>
