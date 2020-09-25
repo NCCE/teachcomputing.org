@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   AJAX_LISTENERS = { rate: 'rate', comment: 'comment' }
-  static targets = ["page"];
+  static targets = ["page", "ratingId"];
   clearText = true;
   retrievedRatingId = '';
 
@@ -16,8 +16,18 @@ export default class extends Controller {
 
     if (!rating_id) console.error("No rating ID returned");
     this.retrievedRatingId = rating_id;
+    this.ratingIdTarget.value = rating_id;
 
     this.showPage(1);
+  }
+
+  onCommentBeforeSend(ev) {
+    if (this.ratingIdTarget.value !== this.retrievedRatingId) {
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+      this.ratingIdTarget.value = this.retrievedRatingId;
+      console.error("There is a mismatch between the id retrieved and the id sent, the request has been aborted and the id reset.");
+    }
   }
 
   onCommentSuccess(ev) {
@@ -25,13 +35,6 @@ export default class extends Controller {
     if (origin !== this.AJAX_LISTENERS.comment) return;
 
     this.showPage(2);
-  }
-
-  onTextAreaFocus(ev) {
-    if (this.clearText) {
-      ev.target.value = '';
-      this.clearText = false;
-    }
   }
 
   showPage(index) {

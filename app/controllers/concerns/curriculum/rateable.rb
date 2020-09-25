@@ -10,20 +10,22 @@ module Curriculum
       user_id = params[:user_id]
 
       user = current_user.present? ? current_user : User.find_by(id: user_id)
-      # response = add_rating(id, polarity, user)
-      # store_rating(id)
+      response = add_rating(id, polarity, user)
+      store_rating(id)
 
       render json: {
         origin: __method__.to_s,
-        # rating_id: response.id
-        rating_id: 'blabla'
+        rating_id: response.id
       }, status: :ok
     end
 
     def comment
       raise NoMethodError unless respond_to?(:client, true)
 
-      # TODO: Add comment
+      response = client.comment(
+        id: request[:rating_id],
+        comment: request[:comment]
+      )
 
       render json: {
         origin: __method__.to_s,

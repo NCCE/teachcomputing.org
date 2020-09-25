@@ -31,6 +31,21 @@ module CurriculumClient
       def rating_type(polarity)
         "add_#{polarity}_#{self::CONTEXT}_rating"
       end
+
+      def comment(id:, fields: nil, comment:)
+        fields = fields ? "{#{fields}}" : ''
+        update = <<~GRAPHQL
+          mutation {
+            updateRating(
+              id: "#{id}"
+              comment: "#{comment}"
+            )
+            #{fields}
+          }
+        GRAPHQL
+
+        CurriculumClient::Request.run(query: client.parse(update), client: client)
+      end
     end
   end
 end
