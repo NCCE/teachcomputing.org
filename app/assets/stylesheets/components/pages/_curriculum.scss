@@ -96,6 +96,7 @@
 
 .rating_page {
   display: none;
+  transition:display 1s ease-in-out;
 
   .row {
     flex: 1 0 auto;
@@ -120,10 +121,6 @@
 }
 
 .curriculum__rating {
-  // -webkit-transform: scale(1.3);
-  // -ms-transform: scale(1.3);
-  // transform: scale(1.3);
-
   align-items: center;
   background-color: $foam;
   justify-content: space-between;

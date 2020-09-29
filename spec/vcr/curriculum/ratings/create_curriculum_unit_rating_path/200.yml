@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: http://curriculum:3000/graphql
+    uri: https://staging-curriculum.teachcomputing.org/graphql
     body:
       encoding: UTF-8
-      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47042985771500
-        {\n  addNegativeUnitRating(id: \"1cbd71df-4f32-44f2-88a6-e4736b5ffabb\", userStemAchieverContactNo:
-        \"achieverid\") {\n    id\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47042985771500","variables":{}}'
+      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47168049224260
+        {\n  addNegativeUnitRating(id: \"63ba977a-0b50-43f5-ae98-5c4bc8c113b5\", userStemAchieverContactNo:
+        \"achieverid\") {\n    id\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47168049224260","variables":{}}'
     headers:
       Content-Type:
       - application/json
       Accept:
       - application/json
       Authorization:
-      - Bearer
+      - Bearer ***REMOVED***
       User-Agent:
       - Faraday v1.0.1
       Accept-Encoding:
@@ -24,6 +24,18 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Tue, 29 Sep 2020 23:09:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da0f702360d37c403f4fa7512a2730f041601420950; expires=Thu, 29-Oct-20
+        23:09:10 GMT; path=/; domain=.teachcomputing.org; HttpOnly; SameSite=Lax;
+        Secure
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -36,20 +48,30 @@ http_interactions:
       - none
       Referrer-Policy:
       - strict-origin-when-cross-origin
-      Content-Type:
-      - application/json; charset=utf-8
       Etag:
-      - W/"232d628bc949169cd3802f952b6bc95b"
+      - W/"daf795c9ae369c1f6972d4c3c44d1fa0"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 0a8b4384-6a93-4ee3-9b57-e29fa87e35cf
+      - 533f6f32-ed2b-4ecc-8953-7a5b0bf05477
       X-Runtime:
-      - '0.047904'
-      Transfer-Encoding:
-      - chunked
+      - '0.021070'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 057db993510000007d791be200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5da95ecbb94e007d-LHR
     body:
-      encoding: UTF-8
-      string: '{"data":{"addNegativeUnitRating":{"id":"e4049d28-a258-406b-a32d-d72204ed24d5"}}}'
-  recorded_at: Mon, 28 Sep 2020 15:48:39 GMT
+      encoding: ASCII-8BIT
+      string: '{"data":{"addNegativeUnitRating":{"id":"b849d81f-3348-47bb-a086-3aa586b8cc3d"}}}'
+  recorded_at: Tue, 29 Sep 2020 23:09:10 GMT
 recorded_with: VCR 6.0.0

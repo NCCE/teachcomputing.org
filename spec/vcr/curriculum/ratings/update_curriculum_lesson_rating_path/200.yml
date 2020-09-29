@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: http://curriculum:3000/graphql
+    uri: https://staging-curriculum.teachcomputing.org/graphql
     body:
       encoding: UTF-8
-      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47457443323020
-        {\n  updateRating(id: \"f23d70ee-8e00-44f7-bbf8-2122fd8717f0\", comment: \"This
-        is a test\") {\n    __typename\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47457443323020","variables":{}}'
+      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47168016072300
+        {\n  updateRating(id: \"15f2930b-629d-4535-b310-6bc1fb074236\", comment: \"This
+        is a test\") {\n    __typename\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47168016072300","variables":{}}'
     headers:
       Content-Type:
       - application/json
       Accept:
       - application/json
       Authorization:
-      - Bearer
+      - Bearer ***REMOVED***
       User-Agent:
       - Faraday v1.0.1
       Accept-Encoding:
@@ -24,6 +24,18 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Tue, 29 Sep 2020 23:09:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc183ffdd9426c3a2a890568e5e2e06261601420949; expires=Thu, 29-Oct-20
+        23:09:09 GMT; path=/; domain=.teachcomputing.org; HttpOnly; SameSite=Lax;
+        Secure
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -36,20 +48,30 @@ http_interactions:
       - none
       Referrer-Policy:
       - strict-origin-when-cross-origin
-      Content-Type:
-      - application/json; charset=utf-8
       Etag:
       - W/"6236cf3fa2afd0b31d6226737d627909"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1f65558d-deaf-4a81-9f08-bebb16ef4757
+      - e2ce1e92-7070-40b5-afdd-cd339fd91c1c
       X-Runtime:
-      - '0.013986'
-      Transfer-Encoding:
-      - chunked
+      - '0.005661'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 057db9902b0000074e6e086200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5da95ec6ad40074e-LHR
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"data":{"updateRating":{"__typename":"Rating"}}}'
-  recorded_at: Mon, 28 Sep 2020 16:24:52 GMT
+  recorded_at: Tue, 29 Sep 2020 23:09:09 GMT
 recorded_with: VCR 6.0.0
