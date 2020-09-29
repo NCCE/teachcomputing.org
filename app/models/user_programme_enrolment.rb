@@ -7,6 +7,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
   after_commit :schedule_get_started_prompt, on: :create
+  before_create :set_eligible_achievements_for_programme
 
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
@@ -14,6 +15,12 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   def self.transition_class
     UserProgrammeEnrolmentTransition
+  end
+
+  def set_eligible_achievements_for_programme
+    user.achievements.where(programme_id: nil).each do |achievement|
+      achievement.update(programme_id: programme.id) if programme.programme_activities.find_by(activity_id: achievement.activity_id)
+    end
   end
 
   def state_machine
