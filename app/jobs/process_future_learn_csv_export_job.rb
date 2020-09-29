@@ -11,6 +11,8 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
       user ||= User.find_by('email ILIKE ?', record['learner_identifier'])
       next if user.nil?
 
+			set_organisation_membership(user, record['organisation_membership_uuid'])
+
       activity = fetch_activity(record)
       next if activity.nil?
 
@@ -30,6 +32,12 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
   end
 
   private
+
+		def set_organisation_membership(user, membership_id)
+			return if user.future_learn_organisation_membership_uuid?
+			user.future_learn_organisation_membership_uuid = membership_id
+			user.save
+		end
 
     def fetch_activity(record)
       Activity.find_by!(future_learn_course_uuid: record['course_uuid'])
