@@ -103,7 +103,6 @@ class Achievement < ApplicationRecord
       else
         programme_ids = programmes.pluck(:id)
         user_programme_ids = user.user_programme_enrolments
-                                 .in_state('enrolled')
                                  .order(created_at: :desc)
                                  .pluck(:programme_id)
 
