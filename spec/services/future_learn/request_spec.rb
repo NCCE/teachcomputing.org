@@ -18,12 +18,8 @@ RSpec.describe FutureLearn::Request do
     it 'returns the expected data for a valid learner' do
       VCR.use_cassette("#{vcr_id_base}/302") do
         resp = described_class.run(endpoint, { external_learner_id: user_id })
-        expect(resp).to eq(
-          {
-            'uuid' => '7f64ee87-5e77-47bb-8736-3fec909ab1a1',
-            'href' => 'https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/7f64ee87-5e77-47bb-8736-3fec909ab1a1'
-          }
-        )
+        expect(resp.uuid).to eq '7f64ee87-5e77-47bb-8736-3fec909ab1a1'
+        expect(resp.href).to eq 'https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/7f64ee87-5e77-47bb-8736-3fec909ab1a1'
       end
     end
   end
