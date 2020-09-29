@@ -68,6 +68,8 @@
 
   <%= render 'components/footer' %>
 
-  <%= javascript_pack_tag 'govuk', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_tag nonce: true do -%>
+      window.GOVUKFrontend.initAll()
+  <% end -%>
 </body>
 </html>

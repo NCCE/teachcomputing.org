@@ -4024,10 +4024,10 @@ got@^6.7.1:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
-govuk-frontend@^3.9.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.9.1.tgz#731aa62f5d956aa9999726027a1e25c8b7e52fc4"
-  integrity sha512-ouOoDUj0QwDA4uCHIBkGCFMpORuTRcSuDscOrz7V1PBcOecntLglxJAZAuNm+j2sPo7anoScHU0ZSeE2QIoeAg==
+govuk-frontend@^2.3.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.13.0.tgz#0273f7c92070abd6450c73a006ebb3ddc793463a"
+  integrity sha512-6XDtTt5plSrPQvPgLFN4LCtb9ULuqoXCgkHy5c7XE/70/sVm47RPbLR11tYGPcmV8cOApBhW0wL8y8ryspHfpw==
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.2.4"

@@ -18,6 +18,3 @@ import "../controllers";
 import Rails from "@rails/ujs";
 
 Rails.start()
-
-// To aid debugging...
-console.log(`Webpacker active: ${new Date(Date.now()).toLocaleString()}`);

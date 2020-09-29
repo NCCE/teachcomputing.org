@@ -8,7 +8,7 @@
     "@rails/ujs": "^6.0.3",
     "@rails/webpacker": "5.2.1",
     "cookieconsent": "^3.1.0",
-    "govuk-frontend": "^3.9.1",
+    "govuk-frontend": "^2.3.0",
     "stimulus": "^1.1.1",
     "yargs-parser": "^20.2.0"
   },
@@ -36,7 +36,10 @@
     "prompt": "docker-compose exec web sh",
     "test": "docker-compose run --rm --no-deps web bin/rspec",
     "guard": "docker-compose run --rm --no-deps web bin/guard",
-    "rebuild": "bundle install && docker-compose build && npm start"
+    "rails": "docker-compose run --rm --no-deps web bin/rails",
+    "rake": "docker-compose run --rm --no-deps web bin/rake",
+    "rebuild": "bundle install && docker-compose build && npm start",
+    "nginx": "dev-nginx restart-nginx"
   },
   "lint-staged": {
     "*.js": [
