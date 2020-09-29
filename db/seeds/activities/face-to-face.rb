@@ -504,7 +504,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 a = Activity.find_or_create_by(stem_course_template_no: 'de4d357a-93f9-ea11-a815-000d3a86f6ce') do |activity|
   activity.title = 'Python programming projects: analysis, design and evaluation'
   activity.credit = 10
-  activity.slug = 'python-programming-projects-analysis-design-and-dvaluation'
+  activity.slug = 'python-programming-projects-analysis-design-and-evaluation'
   activity.stem_course_template_no = 'de4d357a-93f9-ea11-a815-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
