@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('curriculum/_rating', type: :view) do
-  fdescribe 'a lesson rating partial' do
+  describe 'a lesson rating partial' do
     before do
       render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: 'an_id', user_id: 'user_id' }
     end
@@ -15,7 +15,7 @@ RSpec.describe('curriculum/_rating', type: :view) do
     end
   end
 
-  fdescribe 'a unit rating partial' do
+  describe 'a unit rating partial' do
     before do
       render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, comment_path: :update_curriculum_unit_rating, id: 'an_id', user_id: 'user_id' }
     end
