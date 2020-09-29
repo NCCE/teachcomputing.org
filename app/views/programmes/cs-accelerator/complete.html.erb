@@ -4,27 +4,26 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Your certificate is ready!</h2>
+				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
         <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
         <p class="govuk-body">
           <%= link_to 'View your certificate', programme_certificate_path('cs-accelerator'), class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
-        <h3 class="govuk-heading-s">Continue learning</h3>
-        <p class="govuk-body">Now you've completed the programme, you can participate in any of our huge range of professional development courses for free!</p>
-        <p class="govuk-body">
-          <strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong>
-        </p>
-        <h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
-        <p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
-        <p class="govuk-body">
-          <strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong>
-        </p>
+				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
+				<h3 class="govuk-heading-s">Continue learning</h3>
+				<p class="govuk-body">Now you've completed the programme, you can participate in any of our huge range of professional development courses for free!</p>
+				<p class="govuk-body">
+					<strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong>
+				</p>
+				<h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
+				<p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
+				<p class="govuk-body"><strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong></p>
         <h3 class="govuk-heading-s">Support an after school club</h3>
         <p class="govuk-body">Use your skills and confidence to run a <%= link_to 'Code Club', 'https://codeclub.org/en', class: 'govuk-link ncce-link' %>, hackathon, or school programme to encourage more pupils to engage with computing.</p>
         <p class="govuk-body">
           <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
-        </p>
+				</p>
+
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
@@ -32,20 +31,22 @@
           <p class="govuk-body ncce-aside__text">Do you know someone who would
             benefit from this programme? Invite them to join and discuss what
             you’ve learnt with someone you know.</p>
-          <p class="govuk-body ncce-aside__text">You can also
+          <p class="govuk-body ncce-aside__text">Follow us on
             <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
               class="ncce-link" data-related="WeAreComputing" data-lang="en"
-              data-show-count="false" data-dnt="true" target="_blank">follow
-              @WeAreComputing</a>
+              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
+           and tag us when sharing your achievement</p>
+          <p class="govuk-body govuk-!-margin-bottom-2">
+            <a href="https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator"
+              class="govuk-link ncce-link complete__social complete__social--twitter" data-size="large"
+              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on Twitter</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </p>
-          <p class="govuk-body">
-            <a href="https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20Programme%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator"
-              class="govuk-button button--aside" data-size="large"
-              data-related="WeAreComputing" data-lang="en" data-dnt="true">Tweet
-              your certificate</a>
-            <script async src="https://platform.twitter.com/widgets.js"
-              charset="utf-8"></script>
-          </p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator" target="_blank" class="govuk-link ncce-link complete__social complete__social--facebook">Share on Facebook</a></p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator" rel="noopener" target="_blank"class="govuk-link ncce-link complete__social complete__social--linkedin">Share on LinkedIn</a></p>
           <h2 class="govuk-heading-m ncce-aside__title">Support</h2>
           <p class="govuk-body ncce-aside__text">We're always happy to support our graduates. Call 020 0234 5678 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'govuk-link ncce-link' %>.</p>
           <h2 class="govuk-heading-m ncce-aside__title">Useful documents</h2>

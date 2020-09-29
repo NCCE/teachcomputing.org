@@ -500,3 +500,25 @@ a = Activity.find_or_create_by(stem_course_template_no: 'd0aa3d40-f2f7-ea11-a815
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'de4d357a-93f9-ea11-a815-000d3a86f6ce') do |activity|
+  activity.title = 'Python programming projects: analysis, design and evaluation'
+  activity.credit = 10
+  activity.slug = 'python-programming-projects-analysis-design-and-evaluation'
+  activity.stem_course_template_no = 'de4d357a-93f9-ea11-a815-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545') do |activity|
+  activity.title = 'Outstanding primary computing for all - face to face'
+  activity.credit = 10
+  activity.slug = 'outstanding-primary-computing-for-all-face-to-face'
+  activity.stem_course_template_no = '34ff2768-a7fc-ea11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
