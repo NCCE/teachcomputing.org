@@ -4,27 +4,26 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
+        <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
         <p class="govuk-body">
           <%= link_to 'View your certificate', programme_certificate_path('cs-accelerator'), class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <h1 class="govuk-heading-m">Your next steps:</h1>
-        <h2 class="govuk-heading-s">Certification</h2>
-        <p class="govuk-body">You have the option to download your GCSE subject
-          knowledge certificate, or, if you would like to receive a hard-copy
-          version, please <%= mail_to 'info@teachcomputing.org', 'contact us' %>
-          to arrange the awarding of your certificate at a local CAS Community
-          of Practice meeting.</p>
-        <h2 class="govuk-heading-s">Next steps</h2>
-        <p class="govuk-body">Once you’ve successfully completed the Computer
-          Science Accelerator Programme, you will be able to participate for
-          free in our four day face-to-face course, Outstanding teaching of GCSE
-          Computer Science. This course counts towards the National Centre for
-          Computing Education secondary certificate, which is coming soon.</p>
-        <h2 class="govuk-heading-s">Tell us what you think</h2>
-        <p class="govuk-body">We hope that you have enjoyed learning with us and
-          that this is having a positive impact on your teaching. To make this
-          programme as useful as possible, we would love to hear
-          <%= mail_to 'info@teachcomputing.org', 'your feedback' %>!</p>
+				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
+				<h3 class="govuk-heading-s">Continue learning</h3>
+				<p class="govuk-body">Now you've completed the programme, you can participate in any of our huge range of professional development courses for free!</p>
+				<p class="govuk-body">
+					<strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong>
+				</p>
+				<h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
+				<p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
+				<p class="govuk-body"><strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong></p>
+        <h3 class="govuk-heading-s">Support an after school club</h3>
+        <p class="govuk-body">Use your skills and confidence to run a <%= link_to 'Code Club', 'https://codeclub.org/en', class: 'govuk-link ncce-link' %>, hackathon, or school programme to encourage more pupils to engage with computing.</p>
+        <p class="govuk-body">
+          <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
+				</p>
+
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
