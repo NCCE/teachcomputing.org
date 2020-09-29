@@ -1,16 +1,19 @@
-run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,course_uuid,
-2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,
-2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,,1234,
-2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%, ,1234,
-2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,1234,
-2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,5678,
-2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,0%,0,0%,,1234,
-2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,44%,0,0%,2019-05-03 10:45:45 UTC,1234,
-2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,0%,0,0%,,5678,
-2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,
-2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,
-2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,15%,10,0%,,5678,
-2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,
-2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,2222,
-2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,3333,
-2019-01-07,1,83b9d231-ed72-47d1-87ad-d985f4182ff1,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,
+run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_completed,comments_posted,avg_test_score,left_at,course_uuid,organisation_membership_uuid
+2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,1f75dafc-9926-4b09-970f-0fe991ceb248
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,0%,0,0%,,1234,1f75dafc-9926-4b09-970f-0fe991ceb247
+2019-01-07,3,user500@example.com,Name 500,https://www.futurelearn.com/profiles/500,99%,0,0%, ,1234,1f75dafc-9926-4b09-970f-0fe991ceb500
+2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,1234,1f75dafc-9926-4b09-970f-0fe991ceb244
+2019-01-07,4,user4@example.com,Name 4,https://www.futurelearn.com/profiles/4,99%,0,0%,2019-05-03 10:45:45 UTC,5678,1f75dafc-9926-4b09-970f-0fe991ceb244
+2019-01-07,5,user5@example.com,Name 5,https://www.futurelearn.com/profiles/5,0%,0,0%,,1234,1f75dafc-9926-4b09-970f-0fe991ceb245
+2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,44%,0,0%,2019-05-03 10:45:45 UTC,1234,1f75dafc-9926-4b09-970f-0fe991ceb246
+2019-01-07,6,user6@example.com,Name 6,https://www.futurelearn.com/profiles/6,0%,0,0%,,5678,1f75dafc-9926-4b09-970f-0fe991ceb246
+2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,23%,0,0%,,91011,1f75dafc-9926-4b09-970f-0fe991ceb248
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,23%,0,0%,,91011,1f75dafc-9926-4b09-970f-0fe991ceb247
+2019-01-07,1,user1@example.com,Name 1,https://www.futurelearn.com/profiles/1,15%,10,0%,,5678,1f75dafc-9926-4b09-970f-0fe991ceb248
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,5678,1f75dafc-9926-4b09-970f-0fe991ceb247
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,2222,1f75dafc-9926-4b09-970f-0fe991ceb247
+2019-01-07,2,user2@example.com,Name 2,https://www.futurelearn.com/profiles/2,45%,0,0%,,3333,1f75dafc-9926-4b09-970f-0fe991ceb247
+2019-01-07,1,83b9d231-ed72-47d1-87ad-d985f4182ff1,Name 1,https://www.futurelearn.com/profiles/1,61%,1,0%,,1234,1f75dafc-9926-4b09-970f-0fe991ceb878
+2019-01-07,7,user7@example.com,Name 7,https://www.futurelearn.com/profiles/7,61%,1,0%,,1234,7d116df9-7001-4e49-885c-98fd311f09e3
+2019-01-07,8,user8@example.com,Name 8,https://www.futurelearn.com/profiles/8,61%,1,0%,,1234,22752662-3f65-4c54-a394-0284679cccb9
+2019-01-07,9,user9@example.com,Name 9,https://www.futurelearn.com/profiles/9,61%,1,0%,,1234,d4beba48-1c1c-4a87-9941-a744126d02cf
