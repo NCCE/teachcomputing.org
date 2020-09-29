@@ -21,7 +21,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, context, id, rating
     end
 
     it 'adds a rating and returns the id' do
-      VCR.use_cassette("#{vcr_id_base}/#{path}/200", :record => :once) do
+      VCR.use_cassette("#{vcr_id_base}/#{path}/200", :record => :none) do
         get send(path, polarity: :negative, id: id, user_id: '94c52a7c-5001-45e3-82bd-949a882f5fb6')
         body = JSON.parse(response.body, object_class: OpenStruct)
         expect(response).to have_http_status(:ok)
@@ -61,7 +61,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, context, id, rating
     end
 
     it 'adds a comment to a rating' do
-      VCR.use_cassette("#{vcr_id_base}/#{comment_path}/200", :record => :once) do
+      VCR.use_cassette("#{vcr_id_base}/#{comment_path}/200", :record => :none) do
         post send(comment_path, rating_id: rating_id, comment: 'This is a test')
         expect(response).to have_http_status(:ok)
       end
