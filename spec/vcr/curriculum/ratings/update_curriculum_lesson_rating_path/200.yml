@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://curriculum:3000/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47457443323020
+        {\n  updateRating(id: \"f23d70ee-8e00-44f7-bbf8-2122fd8717f0\", comment: \"This
+        is a test\") {\n    __typename\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47457443323020","variables":{}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6236cf3fa2afd0b31d6226737d627909"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1f65558d-deaf-4a81-9f08-bebb16ef4757
+      X-Runtime:
+      - '0.013986'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"updateRating":{"__typename":"Rating"}}}'
+  recorded_at: Mon, 28 Sep 2020 16:24:52 GMT
+recorded_with: VCR 6.0.0

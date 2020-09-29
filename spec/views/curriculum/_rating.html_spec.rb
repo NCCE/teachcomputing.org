@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe('curriculum/_rating', type: :view) do
-  describe 'a lesson rating partial' do
+  fdescribe 'a lesson rating partial' do
     before do
-      render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, id: 'an_id', user_id: 'user_id' }
+      render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: 'an_id', user_id: 'user_id' }
     end
 
     it 'renders the thumbs up link with expected route' do
@@ -15,9 +15,9 @@ RSpec.describe('curriculum/_rating', type: :view) do
     end
   end
 
-  describe 'a unit rating partial' do
+  fdescribe 'a unit rating partial' do
     before do
-      render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, id: 'an_id', user_id: 'user_id' }
+      render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, comment_path: :update_curriculum_unit_rating, id: 'an_id', user_id: 'user_id' }
     end
 
     it 'renders the thumbs up link with expected route' do

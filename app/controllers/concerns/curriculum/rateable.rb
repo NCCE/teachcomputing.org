@@ -9,14 +9,20 @@ module Curriculum
       polarity = params[:polarity]
       user_id = params[:user_id]
 
-      user = current_user.present? ? current_user : User.find_by(id: user_id)
-      response = add_rating(id, polarity, user)
-      store_rating(id)
+      if helpers.user_has_rated?(id)
+        status = :conflict
+      else
+        user = current_user.present? ? current_user : User.find_by(id: user_id)
+        response = add_rating(id, polarity, user)
+        store_rating(id)
+        rating_id = response&.id
+        status = :ok
+      end
 
       render json: {
         origin: __method__.to_s,
-        rating_id: response.id
-      }, status: :ok
+        rating_id: rating_id
+      }, status: status
     end
 
     def comment
