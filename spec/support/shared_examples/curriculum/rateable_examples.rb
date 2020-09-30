@@ -12,7 +12,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, context, id, rating
     VCR.turn_off!
   end
 
-  fdescribe 'GET #rate' do
+  describe 'GET #rate' do
     before do
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
@@ -54,7 +54,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, context, id, rating
     end
   end
 
-  fdescribe 'GET #comment' do
+  describe 'GET #comment' do
     it 'adds a comment to a rating' do
       VCR.use_cassette("#{vcr_id_base}/#{comment_path}/200", :record => :new_episodes) do
         post send(comment_path, rating_id: rating_id, comment: 'This is a test')
