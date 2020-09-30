@@ -33,7 +33,7 @@ module CurriculumClient
           raise CurriculumClient::Errors::RecordNotFound, e.message
         else
           raise CurriculumClient::Errors::ConnectionError,
-                "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_API_URL}. Error: #{e.message} (#{e.status_code})"
+                "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_APP_URL}. Error: #{e.message} (#{e.status_code})"
         end
       end
     end
