@@ -24,13 +24,6 @@ jobs:
           name: Which bundler?
           command: bundle -v
 
-      - store_test_results:
-          path: /tmp/test-results
-
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test_results
-
       - restore_cache:
           keys:
             - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -70,7 +63,12 @@ jobs:
       - run:
           name: Run rspec
           command: |
-            bundle exec rspec
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+
+      - store_test_results:
+          path: ~/rspec
+
       - run:
           name: Run brakeman
           command: |
