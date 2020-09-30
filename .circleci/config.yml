@@ -24,6 +24,13 @@ jobs:
           name: Which bundler?
           command: bundle -v
 
+      - store_test_results:
+          path: /tmp/test-results
+
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test_results
+
       - restore_cache:
           keys:
             - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
