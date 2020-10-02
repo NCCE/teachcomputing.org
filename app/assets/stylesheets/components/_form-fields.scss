@@ -5,6 +5,7 @@
 }
 
 .govuk-textarea {
+  border: 0.125rem solid #979797;
   font-size: 1rem;
 }
 
@@ -13,7 +14,8 @@
 }
 
 .govuk-input:focus,
-.govuk-select:focus {
+.govuk-select:focus,
+.govuk-textarea:focus {
   box-shadow: 0 0 0 3px $deep-cerulean;
   outline-color: $white;
   outline-color: rgba(255, 255, 255, 0);

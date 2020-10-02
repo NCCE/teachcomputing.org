@@ -23,10 +23,17 @@ export default class extends Controller {
 
   onCommentBeforeSend(ev) {
     if (this.ratingIdTarget.value !== this.retrievedRatingId) {
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
+      this.preventFormSubmission(ev);
       this.ratingIdTarget.value = this.retrievedRatingId;
       console.error("There is a mismatch between the id retrieved and the id sent, the request has been aborted and the id reset.");
+    }
+
+    // Allow users to submit an empty response, but prevent a db call
+    const comment = ev.currentTarget.elements.namedItem("comment");
+    if (comment && !comment.value) {
+      debugger;
+      this.preventFormSubmission(ev);
+      this.showPage(2);
     }
   }
 
@@ -42,5 +49,10 @@ export default class extends Controller {
     this.pageTargets.forEach((el, i) => {
       el.classList.toggle("rating_page--current", index == i);
     });
+  }
+
+  preventFormSubmission(ev) {
+    ev.preventDefault();
+    ev.stopImmediatePropagation();
   }
 }
