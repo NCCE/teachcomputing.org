@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+  skip_before_action :authenticate
   before_action :authenticate_api
 
   def authenticate_api
