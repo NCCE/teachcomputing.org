@@ -12,7 +12,9 @@ RSpec.describe CertificateGenerator do
 
   let(:transition) do
     user_programme_enrolment.transition_to(:complete, certificate_number: 20)
-    user_programme_enrolment.reload.last_transition
+    transition = user_programme_enrolment.reload.last_transition
+    transition.update_attribute(:created_at, Date.new(2020, 10, 1))
+    transition
   end
 
   let(:generator) do
@@ -45,7 +47,7 @@ RSpec.describe CertificateGenerator do
       expect(generator.generate_pdf)
         .to eq(
           {
-            filename: 'gcse-computer-science-subject-knowledge-certificate-202009-020.pdf',
+            filename: 'gcse-computer-science-subject-knowledge-certificate-202010-020.pdf',
             path: 'tmp/test_generated_certificate.pdf'
           }
         )
