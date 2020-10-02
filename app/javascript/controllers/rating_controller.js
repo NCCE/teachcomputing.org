@@ -31,7 +31,6 @@ export default class extends Controller {
     // Allow users to submit an empty response, but prevent a db call
     const comment = ev.currentTarget.elements.namedItem("comment");
     if (comment && !comment.value) {
-      debugger;
       this.preventFormSubmission(ev);
       this.showPage(2);
     }
