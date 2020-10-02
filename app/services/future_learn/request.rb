@@ -5,9 +5,9 @@ module FutureLearn
     def self.run(endpoint, params = [])
       @connection = Connection.connect
 
-      endpoint_with_params = "#{endpoint}/#{params.join('/')}"
-      res = Rails.cache.fetch(endpoint_with_params, expires_in: CACHE_EXPIRY) do
-        res = @connection.get(endpoint_with_params)
+      endpoint = "#{endpoint}/#{Array.wrap(params).join('/')}" unless params.empty?
+      res = Rails.cache.fetch(endpoint, expires_in: CACHE_EXPIRY) do
+        res = @connection.get(endpoint)
       end
 
       JSON.parse(res.body, object_class: OpenStruct)
