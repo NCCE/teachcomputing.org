@@ -6,6 +6,10 @@ module FutureLearn
       def self.all
         FutureLearn::Request.run(ENDPOINT)
       end
+
+      def self.one(course_run_uuid)
+        FutureLearn::Request.run(ENDPOINT, [course_run_uuid])
+      end
     end
   end
 end
