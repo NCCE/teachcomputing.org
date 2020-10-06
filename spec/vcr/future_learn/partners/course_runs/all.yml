@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE2MDEwMzkyODUsImV4cCI6MTYwMTAzOTg4NX0.O-Uj2JGRp_ci9Sm4ZNryVyNS_fh4DoNJEKbmeYIE8kc
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE2MDE2NTA4ODgsImV4cCI6MTYwMTY1MTc4OH0.gi3HD7v4A9aWY12f8JpdXUQz8PZfw0kWPy_RMQ2FWaQ
       Accept:
       - application/json
       Content-Type:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 25 Sep 2020 13:08:06 GMT
+      - Fri, 02 Oct 2020 15:01:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,9 +35,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d5ec0c15-2891-40ae-a342-296b61585b9f
+      - b229e899-ebcf-4377-8c4e-834a0987a077
       X-Runtime:
-      - '0.553274'
+      - '0.323259'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
     body:
@@ -169,5 +169,5 @@ http_interactions:
         to Encryption and Cryptography","full_code":"encryption","code":null,"start_time":"2020-09-07T00:00:00.000Z","weeks_count":3,"course":{"uuid":"a1520b0c-8c99-49e5-8c65-f025f3431ab0","href":"https://lticourses-api.sandbox.futurelearn.com/partners/courses/a1520b0c-8c99-49e5-8c65-f025f3431ab0"}},{"uuid":"ca2d032f-477b-4a10-8bae-4d239527338e","href":"https://lticourses-api.sandbox.futurelearn.com/partners/course_runs/ca2d032f-477b-4a10-8bae-4d239527338e","title":"Representing
         Data with Images and Sound: Bringing Data to Life","full_code":null,"code":null,"start_time":"2020-09-07T00:00:00.000Z","weeks_count":3,"course":{"uuid":"e290318f-ba23-4c95-8f18-584946233af9","href":"https://lticourses-api.sandbox.futurelearn.com/partners/courses/e290318f-ba23-4c95-8f18-584946233af9"}},{"uuid":"dc98de3b-81cc-4690-aa3c-a95734444a12","href":"https://lticourses-api.sandbox.futurelearn.com/partners/course_runs/dc98de3b-81cc-4690-aa3c-a95734444a12","title":"Teaching
         Physical Computing with Raspberry Pi and Python","full_code":null,"code":null,"start_time":"2020-09-07T00:00:00.000Z","weeks_count":3,"course":{"uuid":"ecf78d20-2966-4798-af5f-0f869c1818e2","href":"https://lticourses-api.sandbox.futurelearn.com/partners/courses/ecf78d20-2966-4798-af5f-0f869c1818e2"}}]'
-  recorded_at: Fri, 25 Sep 2020 13:08:06 GMT
+  recorded_at: Fri, 02 Oct 2020 15:01:28 GMT
 recorded_with: VCR 6.0.0
