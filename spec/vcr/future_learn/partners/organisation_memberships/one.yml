@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/8e89c1b4-d5c0-4208-b4ad-52928f37ab3f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE2MDE2NTE5OTMsImV4cCI6MTYwMTY1Mjg5M30.yObN1hUUq7qGtPiEX_UDnlKCXLzFexSIhFbb_dsHnDw
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Oct 2020 15:19:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"9e84e15eb247c42fbabbe2d62da59bdc"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 010a7f88-52f1-4d97-ab59-a30a57b65f72
+      X-Runtime:
+      - '0.044804'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"uuid":"8e89c1b4-d5c0-4208-b4ad-52928f37ab3f","href":"https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/8e89c1b4-d5c0-4208-b4ad-52928f37ab3f","learner":{"uuid":"4c9edfc0-eb9f-44dd-bc30-a239bbd1e840","href":"https://lticourses-api.sandbox.futurelearn.com/partners/learners/4c9edfc0-eb9f-44dd-bc30-a239bbd1e840"},"external_learner_id":"sanitized_id_0b050e9f2d557f414b9c3d445d271f14c96f6519"}'
+  recorded_at: Fri, 02 Oct 2020 15:19:53 GMT
+recorded_with: VCR 6.0.0

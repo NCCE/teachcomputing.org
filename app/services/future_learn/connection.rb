@@ -23,7 +23,7 @@ module FutureLearn
 
     def self.create_jwt
       now = Time.now
-      @expiry = now + 10.minutes
+      @expiry = now + 15.minutes
       payload = {
         iss: KEY,
         iat: now.to_i,
