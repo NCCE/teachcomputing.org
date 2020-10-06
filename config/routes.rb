@@ -83,12 +83,13 @@ Rails.application.routes.draw do
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
                               constraints: ->(_request) { Programme.primary_certificate.enrollable? }
+  get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
                                 constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
+  get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders, defaults: { page_slug: 'secondary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
   get '/support-for-ite-providers', to: 'cms#cms_page', as: :support_for_ite_providers, defaults: { page_slug: 'support-for-ite-providers' }
-  get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }

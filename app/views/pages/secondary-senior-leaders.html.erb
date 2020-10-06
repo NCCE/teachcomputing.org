@@ -1,0 +1,110 @@
+<% meta_tag :title, 'Secondary Senior Leaders' %>
+<% meta_tag :description, 'TBC about secondary senior leaders' %>
+<% meta_tag :url, request.original_url %>
+<%# <% meta_tag :image, image_url('/images/gender-balance/hero.jpg', skip_pipeline: true) %>
+<%# <% meta_tag :image_alt, 'Gender balance' %>
+
+<div class="deep-cerulean-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="hero__heading-wrapper ">
+        <h1 class="govuk-heading-xl hero__heading">Support for Secondary Senior Leaders</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">
+          Future proof your computing department  
+        </h2>
+        <p class="govuk-body">
+We offer free, flexible support to a challenge faced by many school and college senior leadership teams - recruiting teachers with the skills to provide high quality delivery of the computing curriculum.
+        </p>
+        <h2 class="govuk-heading-m">
+          Computer Science Accelerator  
+        </h2>
+        <p class="govuk-body">
+          The <%= link_to 'Computer Science Accelerator', cs_accelerator_path, class: 'ncce-link' %> offers high impact, professional development which can upskill your staff, increase the number of computer science teachers in your school and improve the quality of teaching, which could lead to improved student attainment.
+        </p>
+        <p class="govuk-body">
+          <%= link_to 'Download guide for senior leaders', '#', class: 'govuk-button button' %>
+        </p>
+        <p class="govuk-body">
+          Over 1,000 teachers with all levels of experience have taken advantage of our wide range of courses, fully funded by the Department for Education and available to start immediately.
+        </p>
+        <p class="govuk-body"><strong>Programme benefits</strong></p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Fully-funded - bursaries are available for state-funded secondary schools and colleges, with up to £1,800 available for every teacher who completes the programme.</li>
+          <li>Flexible - teachers can learn face-to-face, online or remotely, during or outside of school hours.</li>
+          <li> For everyone - teachers in any subject have the opportunity to develop the subject knowledge to teach GCSE computer science - from non-specialists to those already teaching at this level.</li>
+          <li>Grow your curriculum - our programme can help you to strengthen your computing offer, whether your school already offers GCSE computer science or is looking to enhance KS3 provision first.</li>
+        </ul>
+        <%= link_to 'Find out more about the programme', cs_accelerator_path, class: 'govuk-button button' %>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-s ncce-aside__title">Related Links</h2>
+          <p class="govuk-body-s govuk-!-margin-bottom-2">
+            <%= link_to 'Senior leaders guide', '#', class: 'ncce-link' %>
+          </p>
+          <p class="govuk-body-s govuk-!-margin-bottom-2">
+            <%= link_to 'Bursaries ', bursary_path, class: 'ncce-link' %>
+          </p>
+          <p class="govuk-body-s govuk-!-margin-bottom-2">
+            <%= link_to 'Courses', courses_path, class: 'ncce-link' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">
+            What do teachers say?
+          </h2>
+          <div class="testimonial-wide">
+            <div class="testimonial-wide__quote">
+              <p class="govuk-body-s testimonial__text">
+                  “The bursary has had a real, visible impact. We have been able to invest in our department, getting laptop computers for our students and robots for our coding clubs. We’ve also now got so many resources for our lessons that have come from all of the courses I took, which my colleagues are using now too.”
+              </p>
+            </div>
+            <div class="testimonial-wide__bio">
+              <%= image_tag '/images/secondary-teachers/anne-cuffe-davies.png', alt: 'Anne Cuffe Davies', class: 'testimonial-wide__image' %>
+              <div class="">
+                <p class="govuk-body-s">
+                  <strong><%= link_to 'Anne Cuffe Davies', 'https://blog.teachcomputing.org/how-cpd-changed-my-career/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
+                  Computer Science Teacher
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m">
+          Teach Computing Curriculum  
+        </h2>
+        <p class="govuk-body">
+          Your school or college can also benefit from our curriculum, which contains everything you need to teach computing at key stages 1 to 4, including lesson plans, homework, assessment and an innovative progression framework.
+        </p>
+        <%= link_to 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button' %>
+      </div>
+    </div>
+  </div>
+</div>
