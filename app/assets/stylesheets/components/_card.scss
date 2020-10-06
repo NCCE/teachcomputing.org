@@ -162,11 +162,17 @@
   margin-bottom: 0;
 }
 
-.center_card {
+.dark_card {
 	border-color: $lilly-white;
 	padding: 1.375rem;
 }
 
-.center_card--title {
+.dark_card--title {
+	padding-top: 1.875rem;
 	text-align: center;
+}
+
+.dark_card--image {
+	display: block;
+	margin: auto;
 }
