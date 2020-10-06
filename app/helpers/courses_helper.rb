@@ -54,8 +54,8 @@ module CoursesHelper
   end
 
   def online_course_date(start_date)
-    date = Date.parse(start_date, '%-d %B')
-    return "Register now (Starts on #{date})" if date.future?
+    date = Date.parse(start_date)
+    return "Register now (Starts on #{date.strftime('%-d %B %Y')})" if date.future?
 
     'Join now'
   end
