@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/find?external_learner_id=wrong
+    uri: https://lticourses-api.sandbox.futurelearn.com/partners/organisation_memberships/wrong
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE1OTc2ODEyODAsImV4cCI6MTU5NzY4MTg4MH0.VXLsVvvJazyss4kLGQdw4GG-GhF9VBFufkg3TWYDCBo
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuY2NlLnRlc3QiLCJpYXQiOjE2MDE2NTIzNTcsImV4cCI6MTYwMTY1MzI1N30.vAtqRa06NDO_lOgcP-u0rMZJH-dHQw3tk2GD_kW8mHE
       Accept:
       - application/json
       Content-Type:
@@ -23,7 +23,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Mon, 17 Aug 2020 16:21:20 GMT
+      - Fri, 02 Oct 2020 15:25:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,13 +33,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - bf9de06e-eaa1-4333-9d22-a9072a591c95
+      - 2983daaa-4f49-4a4b-a1f0-7308cc580d19
       X-Runtime:
-      - '0.010527'
+      - '0.006131'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
     body:
       encoding: UTF-8
       string: '{"error":"not_found"}'
-  recorded_at: Mon, 17 Aug 2020 16:21:20 GMT
+  recorded_at: Fri, 02 Oct 2020 15:25:57 GMT
 recorded_with: VCR 6.0.0
