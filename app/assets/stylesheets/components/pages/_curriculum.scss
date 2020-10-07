@@ -90,16 +90,12 @@
   }
 }
 
-.rating_page.row {
-  margin-bottom: 0;
-}
-
 .rating_page {
   display: none;
+  width: 100%;
 
   .row {
     flex: 1 0 auto;
-    width:100%;
   }
 
   @include govuk-media-query($from: tablet) {
@@ -111,6 +107,10 @@
   }
 }
 
+.rating_page.row {
+  margin-bottom: 0;
+}
+
 .rating_page--rows {
   flex-direction: column;
 }
@@ -120,12 +120,13 @@
 }
 
 .curriculum__rating {
+  display: flex;
   align-items: center;
-  background-color: $foam;
   justify-content: space-between;
-  padding: 1rem;
   height: 100%;
   min-height: 3rem;
+  background-color: $foam;
+  padding: 1rem;
 
   textarea {
     height: 6rem;
@@ -134,11 +135,6 @@
 
   img {
     width: auto !important;
-  }
-
-  @include govuk-media-query($from: desktop) {
-    align-items: center;
-    justify-content: space-between;
   }
 }
 
@@ -161,14 +157,14 @@
 
 .curriculum__rating--text-only {
   text-align: center;
-  margin-top: 0.9em;
+  margin: 0;
   width: 100%;
 }
 
 .curriculum__rating--thumb {
   cursor: pointer;
   width: auto;
-  margin: 0;
+  margin: 0.1rem 0 0 0;
   flex: 1 0 auto;
   text-align: center;
 
@@ -181,7 +177,7 @@
   }
 
   @include govuk-media-query($from: tablet) {
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -190,10 +186,10 @@
 }
 
 .curriculum__rating--thumb-up {
-  margin-right: 2.5rem;
+  margin-right: 1.7rem;
 
   @include govuk-media-query($from: tablet) {
-    margin-right: 2rem;
+    margin-right: 3.6rem;
   }
 
   @include govuk-media-query($from: desktop) {
