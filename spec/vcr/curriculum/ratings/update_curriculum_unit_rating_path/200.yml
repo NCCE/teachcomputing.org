@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging-curriculum.teachcomputing.org/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation GraphQL__Client__OperationDefinition_47168049691640
+        {\n  updateRating(id: \"10e4b009-ede5-4a49-98d9-4dad4326e739\", comment: \"This
+        is a test\") {\n    __typename\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_47168049691640","variables":{}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer ***REMOVED***
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Sep 2020 23:09:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d2981fffb0d831b7c11393496585394e21601420950; expires=Thu, 29-Oct-20
+        23:09:10 GMT; path=/; domain=.teachcomputing.org; HttpOnly; SameSite=Lax;
+        Secure
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Etag:
+      - W/"6236cf3fa2afd0b31d6226737d627909"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a6f3637b-131d-4449-88e9-ea94bd712e71
+      X-Runtime:
+      - '0.006384'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 057db9941300002c8a2b3f1200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5da95ecce89c2c8a-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"updateRating":{"__typename":"Rating"}}}'
+  recorded_at: Tue, 29 Sep 2020 23:09:10 GMT
+recorded_with: VCR 6.0.0

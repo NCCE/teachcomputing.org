@@ -48,3 +48,10 @@ public/sitemap.xml.gz
 .standard.yml
 .idea
 .history
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

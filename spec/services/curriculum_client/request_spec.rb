@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CurriculumClient::Request do
-  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
+  let(:url) { CurriculumClient::Connection::CURRICULUM_APP_URL }
   let(:null_error_response_json) { File.new('spec/support/curriculum/responses/key_stage_null_error.json').read }
   let(:other_error_response_json) { File.new('spec/support/curriculum/responses/key_stage_other_error.json').read }
 
