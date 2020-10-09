@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe CurriculumClient::Queries::KeyStage do
-  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
+  let(:url) { CurriculumClient::Connection::CURRICULUM_APP_URL }
 
   before do
     stub_a_valid_schema_request

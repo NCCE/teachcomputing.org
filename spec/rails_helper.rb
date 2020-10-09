@@ -56,8 +56,13 @@ module CachingHelpers
 end
 
 VCR.configure do |config|
+<<<<<<< HEAD
   config.default_cassette_options = { :record => :once }
   config.cassette_library_dir = "#{::Rails.root}/spec/vcr"
+=======
+  config.default_cassette_options = { :record => :new_episodes }
+  config.cassette_library_dir = "spec/vcr"
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
   config.hook_into :webmock
 end
 

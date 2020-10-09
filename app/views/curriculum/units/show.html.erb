@@ -22,7 +22,11 @@
 			</div>
 			<div class="govuk-grid-column-one-third">
         <% if current_user %>
+<<<<<<< HEAD
 				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, id: @unit.id, user_id: current_user.id } %>
+=======
+				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, comment_path: :update_curriculum_unit_rating, id: @unit.id, user_id: current_user.id } %>
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
         <% end %>
 			</div>
 		</div>

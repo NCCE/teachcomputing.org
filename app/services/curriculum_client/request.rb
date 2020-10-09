@@ -10,7 +10,11 @@ module CurriculumClient
       end
 
       begin
+<<<<<<< HEAD
         return client.execute(query, params).data unless query.definition_node.operation_type == 'query'
+=======
+        return fetch_data(query, client, params) unless query.definition_node.operation_type == 'query'
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
 
         Rails.cache.fetch(
           cache_key,
@@ -18,12 +22,16 @@ module CurriculumClient
           race_condition_ttl: 20.seconds,
           namespace: 'curriculum'
         ) do
+<<<<<<< HEAD
           json_response = client.execute(query, params)
                                 .data
                                 .to_h
                                 .deep_transform_keys { |key| key.to_s.underscore }
                                 .to_json
           JSON.parse(json_response, object_class: OpenStruct)
+=======
+          fetch_data(query, client, params)
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
         end
       rescue Graphlient::Errors::ExecutionError => e
         # Graphlient does not support the graphql extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
@@ -38,9 +46,21 @@ module CurriculumClient
           raise CurriculumClient::Errors::RecordNotFound, e.message
         else
           raise CurriculumClient::Errors::ConnectionError,
-                "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_API_URL}. Error: #{e.message} (#{e.status_code})"
+                "Unable to connect to: #{CurriculumClient::Connection::CURRICULUM_APP_URL}. Error: #{e.message} (#{e.status_code})"
         end
       end
+<<<<<<< HEAD
+=======
+    end
+
+    def self.fetch_data(query, client, params)
+      json_response = client.execute(query, params)
+            .data
+            .to_h
+            .deep_transform_keys { |key| key.to_s.underscore }
+            .to_json
+      JSON.parse(json_response, object_class: OpenStruct)
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
     end
   end
 end

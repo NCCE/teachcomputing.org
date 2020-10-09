@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: circleci/ruby:2.5.7-node-browsers
         environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
+          BUNDLE_JOBS: "3"
+          BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
           CREDENTIALS_ENV: test
           DB_HOST: 127.0.0.1
@@ -16,7 +16,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: ncce_test
-          POSTGRES_PASSWORD: ''
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
@@ -37,9 +37,20 @@ jobs:
           paths:
             - vendor/bundle
 
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+
       - run:
-          name: Npm Install
-          command: npm install
+          name: Install Dependencies
+          command: yarn install --immutable
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       - run:
           name: Wait for DB
@@ -52,7 +63,12 @@ jobs:
       - run:
           name: Run rspec
           command: |
-            bundle exec rspec
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+
+      - store_test_results:
+          path: ~/rspec
+
       - run:
           name: Run brakeman
           command: |

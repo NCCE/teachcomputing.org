@@ -23,7 +23,11 @@ fi
 echo "- Starting rails:"
 if [ "$ENV_TYPE" = "development" ]; then
   # Will start normally, allowing later debug sessions
+<<<<<<< HEAD
   rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT --dispatcher-port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
+=======
+  rdebug-ide --skip_wait_for_start --host $IP --port $DEBUG_PORT -- $RAILS_EXECUTABLE s -p $PORT -b $IP
+>>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
 else
   $RAILS_EXECUTABLE s -p $PORT -b $IP
 fi
