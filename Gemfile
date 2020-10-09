@@ -43,6 +43,7 @@ gem 'wicked', '~> 1.3.4'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'rspec_junit_formatter', '~> 0.4.1'
+gem 'pretender', '~> 0.3.4'
 
 group :development, :test do
   gem 'brakeman'

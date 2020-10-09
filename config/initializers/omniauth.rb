@@ -63,7 +63,6 @@ if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
       expires_at: 1_546_601_180,
       refresh_token: '27266366070255897068',
       token: '14849048797785647933'
-
     },
     info: {
       achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',

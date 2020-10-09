@@ -27,6 +27,10 @@ echo "- Install dev-nginx"
 brew tap guardian/homebrew-devtools
 brew install guardian/devtools/dev-nginx
 
+echo "- Updating dev-nginx and adding service to start on boot"
+brew upgrade dev-nginx
+brew services start nginx
+
 echo "- Setup mapping"
 dev-nginx setup-app nginx-mapping.yml
 if [ -f "$CONFIG_FILE" ] && ! grep -q 'X-Forwarded-Ssl' "$CONFIG_FILE"
