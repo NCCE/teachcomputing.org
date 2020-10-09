@@ -14,11 +14,13 @@ Rails.application.config.content_security_policy do |policy|
   policy.style_src   :self, :https, :unsafe_inline
 
   policy.report_uri 'https://sentry.io/api/1370995/security/?sentry_key=f6ac7f0efe2242db8a1439f5059fafad'
+
+  policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035' if Rails.env.development?
 end
 
 # If you are using UJS then enable automatic nonce generation
 # This overrides 'unsafe-inline', if specified
-Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
+Rails.application.config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(16) }
 
 # For further information see the following documentation:
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only

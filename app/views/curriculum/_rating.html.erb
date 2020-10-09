@@ -1,11 +1,27 @@
 <% if user_has_rated?(id) %>
-	<div class="curriculum__rating curriculum__rating--submitted">
-		<p class="govuk-body curriculum__rating--only-text"><%= get_feedback_string %></p>
-	</div>
+  <div class="curriculum__rating page">
+    <p class="govuk-body curriculum__rating--text-only">You have already provided a rating, thanks!</p>
+  </div>
 <% else %>
-	<div class="curriculum__rating">
-    <p class="govuk-body curriculum__rating--text">Did you find this content useful?</p>
-    <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true }) %>
-    <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true }) %>
-	</div>
+  <div class="curriculum__rating" data-controller="rating">
+    <div class="rating_page" data-target="rating.page">
+      <p class="govuk-body curriculum__rating--text">Did you find these resources useful?</p>
+      <p class="curriculum__rating--thumb">
+        <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
+        <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
+      </p>
+    </div>
+    <div class="rating_page rating_page--rows" data-target="rating.page">
+      <p class="govuk-body curriculum__rating--text row">Thanks for your rating!</p>
+      <%= form_with(url: comment_path, method: "post", remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
+        <%= hidden_field_tag :rating_id, :rating_id, value: '', data: { target: "rating.ratingId" } %>
+        <%= text_area_tag :comment, nil, :placeholder => "Tell us more to help us improve the quality of our resources", :class => "govuk-textarea row" %>
+        <%= submit_tag "Submit", :class => 'govuk-button button button--small button--curriculum row' %>
+      <% end %>
+    </div>
+    <div class="rating_page" data-target="rating.page">
+      <p class="govuk-body curriculum__rating--text-only">Thanks for your feedback!</p>
+    </div>
+  </div>
 <% end %>
+

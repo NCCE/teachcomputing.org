@@ -1,17 +1,20 @@
 {
   "name": "ncce-project",
   "engines": {
-    "node": "12.16.x"
+    "yarn": "1.x"
   },
   "private": true,
   "dependencies": {
+    "@rails/ujs": "^6.0.3",
+    "@rails/webpacker": "5.2.1",
     "cookieconsent": "^3.1.0",
-    "govuk-frontend": "^2.3.0"
+    "govuk-frontend": "^2.3.0",
+    "stimulus": "^1.1.1",
+    "yargs-parser": "^20.2.0"
   },
   "devDependencies": {
     "eslint": "5.6.1",
     "eslint-config-prettier": "3.1.0",
-    "eslint-loader": "2.1.1",
     "eslint-plugin-prettier": "3.0.0",
     "lint-staged": "7.3.0",
     "prettier": "1.14.3",
@@ -20,7 +23,8 @@
     "stylelint": "9.6.0",
     "stylelint-config-recommended-scss": "3.2.0",
     "stylelint-order": "1.0.0",
-    "stylelint-scss": "3.3.1"
+    "stylelint-scss": "3.3.1",
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "start": "npx ./scripts/docker-start.sh",

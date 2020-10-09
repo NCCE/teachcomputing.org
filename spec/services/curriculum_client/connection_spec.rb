@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CurriculumClient::Connection do
   let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
   let(:cache) { Rails.cache }
-  let(:url) { CurriculumClient::Connection::CURRICULUM_API_URL }
+  let(:url) { CurriculumClient::Connection::CURRICULUM_APP_URL }
   let(:schema) { File.new('spec/support/curriculum/curriculum_schema.json').read }
 
   describe 'schema' do
