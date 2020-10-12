@@ -26,7 +26,12 @@
         category = 'none' unless local_assigns[:category]
         diagnostic_result = 0 unless local_assigns[:diagnostic_result]
       %>
-      <%= render 'programmes/primary-certificate/recommendation', category: category, diagnostic_result: diagnostic_result %>
+      <%=
+        render 'programmes/primary-certificate/recommendation',
+          category: category,
+          diagnostic_result: diagnostic_result,
+          diagnostic_result_max: local_assigns[:diagnostic_result]
+      %>
     </li>
   <% end %>
 <% end %>

@@ -1,5 +1,5 @@
-<% case diagnostic_result %>
-  <% when 0..9 %>
+<% case (diagnostic_result / diagnostic_result_max * 100) %>
+  <% when 0..30 %>
     <% if category == Activity::ONLINE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
         <span class="recommendation__title">Recommendation</span>
@@ -11,7 +11,7 @@
         <span class="recommendation__text"><%= link_to 'Primary programming and algorithms', 'https://www.stem.org.uk/cpd/ondemand/445946/primary-programming-and-algorithms', class: 'ncce-link ncce-link--contrast' %> is a great place to start. You will develop your understanding of programming and algorithms and discover engaging ways to help pupils use computational thinking on this one day course. </span>
       </span>
     <% end %>
-  <% when 10..19 %>
+  <% when 31..60 %>
     <% if category == Activity::FACE_TO_FACE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
         <span class="recommendation__title">Recommendations</span>
@@ -20,7 +20,7 @@
         <span class="recommendation__text">Both courses will develop your confidence in delivering all aspects of the computing curriculum at the relevant key stage and run over two non-consecutive days.</span>
       </span>
     <% end %>
-  <% when 20..29 %>
+  <% when 61..100 %>
     <% if category == Activity::ONLINE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
         <span class="recommendation__title">Recommendations</span>

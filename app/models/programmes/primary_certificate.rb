@@ -11,6 +11,10 @@ module Programmes
       response.answers.keys.reduce(0) { |score, key| score + response.answers[key].to_i }
     end
 
+    def diagnostic_result_max
+      80
+    end
+
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)

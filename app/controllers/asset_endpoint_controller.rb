@@ -1,6 +1,5 @@
 class AssetEndpointController < ApplicationController
-    def css_endpoint
-      redirect_to "#{helpers.asset_path("application", type: :stylesheet)}"
-    end
+  def css_endpoint
+    redirect_to "#{helpers.asset_path("application", type: :stylesheet)}"
   end
-  
+end
