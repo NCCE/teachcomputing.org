@@ -8,20 +8,14 @@ module Curriculum
       id = params[:id]
       polarity = params[:polarity]
       user_id = params[:user_id]
-<<<<<<< HEAD
       message = ''
-=======
->>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
 
       user = current_user.present? ? current_user : User.find_by(id: user_id)
 
       if helpers.user_has_rated?(id)
         status = :conflict
       else
-<<<<<<< HEAD
-=======
         user = current_user.present? ? current_user : User.find_by(id: user_id)
->>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
         response = add_rating(id, polarity, user)
         store_rating(id)
         rating_id = response&.id
@@ -53,16 +47,6 @@ module Curriculum
 
       case polarity.to_sym
       when :positive
-<<<<<<< HEAD
-        client.add_positive_rating(
-          id: id,
-          stem_achiever_contact_no: achiever_contact_no
-        )
-      when :negative
-        client.add_negative_rating(
-          id: id,
-          stem_achiever_contact_no: achiever_contact_no
-=======
         response = client.add_positive_rating(
           id: id,
           stem_achiever_contact_no: achiever_contact_no,
@@ -73,7 +57,6 @@ module Curriculum
           id: id,
           stem_achiever_contact_no: achiever_contact_no,
           fields: 'id'
->>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
         )
       else
         raise ArgumentError, "Unexpected polarity: #{polarity}"
