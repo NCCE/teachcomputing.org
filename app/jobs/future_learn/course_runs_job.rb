@@ -6,7 +6,7 @@ module FutureLearn
       course_runs = FutureLearn::Queries::CourseRuns.all
 
       course_run_ids_hash = Hash.new { |h, k| h[k] = [] }
-      course_runs.each { |r| course_run_ids_hash[r.course.uuid] << r.uuid }
+      course_runs.each { |r| course_run_ids_hash[r[:course][:uuid]] << r[:uuid] }
 
       tc_course_ids = Activity.all.pluck(:future_learn_course_uuid).compact
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FutureLearn::CourseRunsJob, type: :job do
   let(:mock_runs) do
     [
-      OpenStruct.new(
+      {
         uuid: 'run1uuid',
         href: 'https://testapi.com/course_runs/run1uuid',
         title: 'Scratch to Python: Moving from Block- to Text-based Programming',
@@ -11,13 +11,13 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
         code: nil,
         start_time: '2019-03-04T00:00:00.000Z',
         weeks_count: 4,
-        course: OpenStruct.new(
+        course: {
           uuid: 'course1uuid',
           href: 'https://testapi.com/courses/course1uuid'
-        )
-      ),
+        }
+      },
 
-      OpenStruct.new(
+      {
         uuid: 'run2uuid',
         href: 'https://testapi.com/course_runs/run2uuid',
         title: 'Scratch to Python: Moving from Block- to Text-based Programming',
@@ -25,13 +25,13 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
         code: nil,
         start_time: '2019-05-21T00:00:00.000Z',
         weeks_count: 4,
-        course: OpenStruct.new(
+        course: {
           uuid: 'course1uuid',
           href: 'https://testapi.com/courses/course1uuid'
-        )
-      ),
+        }
+      },
 
-      OpenStruct.new(
+      {
         uuid: 'run3uuid',
         href: 'https://testapi.com/course_runs/run3uuid',
         title: 'Programming 101: An Introduction to Python for Educators',
@@ -39,13 +39,13 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
         code: nil,
         start_time: '2019-01-07T00:00:00.000Z',
         weeks_count: 4,
-        course: OpenStruct.new(
+        course: {
           uuid: 'course2uuid',
           href: 'https://testapi.com/courses/course2uuid'
-        )
-      ),
+        }
+      },
 
-      OpenStruct.new(
+      {
         uuid: 'run4uuid',
         href: 'https://testapi.com/course_runs/run4uuid',
         title: 'Teaching Programming in Primary Schools',
@@ -53,11 +53,11 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
         code: nil,
         start_time: '2019-03-04T00:00:00.000Z',
         weeks_count: 4,
-        course: OpenStruct.new(
+        course: {
           uuid: 'course3uuid',
           href: 'https://testapi.com/courses/course3uuid'
-        )
-      )
+        }
+      }
     ]
   end
 

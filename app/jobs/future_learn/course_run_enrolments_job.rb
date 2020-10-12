@@ -11,16 +11,16 @@ module FutureLearn
 
       enrolments.each do |enrolment|
         if known_organisation_membership_uuids.include?(
-          enrolment.organisation_membership.uuid
+          enrolment[:organisation_membership][:uuid]
         )
           FutureLearn::UpdateUserActivityJob.perform_later(
             course_uuid: course_uuid,
-            enrolment: enrolment.to_json
+            enrolment: enrolment
           )
         else
           FutureLearn::UserInformationJob.perform_later(
             course_uuid: course_uuid,
-            enrolment: enrolment.to_json
+            enrolment: enrolment
           )
         end
       end

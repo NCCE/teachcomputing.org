@@ -1,7 +1,7 @@
-class FutureLearn::UpdateUserActivityJob < ApplicationJob
-  queue_as :default
+module FutureLearn
+  class UpdateUserActivityJob < ApplicationJob
+    queue_as :default
 
-  def perform(*args)
-    # Do something later
+    def perform(course_uuid:, enrolment:); end
   end
 end

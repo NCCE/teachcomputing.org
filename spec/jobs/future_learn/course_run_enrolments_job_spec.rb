@@ -11,21 +11,21 @@ RSpec.describe FutureLearn::CourseRunEnrolmentsJob, type: :job do
 
   let(:mock_enrolments) do
     [
-      OpenStruct.new(
-        run: OpenStruct.new(
+      {
+        run: {
           uuid: run_uuid,
           href: 'https://testapi.com/partners/course_runs/d2acdb39-f6cb-45da-8c37-681d3b4d2911'
-        ),
-        organisation_membership: OpenStruct.new(
+        },
+        organisation_membership: {
           uuid: membership_id,
           href: 'https://testapi.com/partners/organisation_memberships/0ea0e41f-5620-4a91-a1c7-2a15ecf16a06'
-        ),
+        },
         status: 'active',
         activated_at: '2020-01-16T09:48:01.000Z',
         deactivated_at: nil,
         steps_completed_count: 0,
         steps_completed_ratio: 0.0
-      )
+      }
     ]
   end
 
@@ -47,7 +47,7 @@ RSpec.describe FutureLearn::CourseRunEnrolmentsJob, type: :job do
       it 'queues job to update users activity' do
         expect { run_job }
           .to have_enqueued_job(FutureLearn::UpdateUserActivityJob)
-          .with(course_uuid: course_uuid, enrolment: mock_enrolments.first.to_json)
+          .with(course_uuid: course_uuid, enrolment: mock_enrolments.first)
           .once
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe FutureLearn::CourseRunEnrolmentsJob, type: :job do
       it 'queues job to fetch user information' do
         expect { run_job }
           .to have_enqueued_job(FutureLearn::UserInformationJob)
-          .with(course_uuid: course_uuid, enrolment: mock_enrolments.first.to_json)
+          .with(course_uuid: course_uuid, enrolment: mock_enrolments.first)
           .once
       end
     end
