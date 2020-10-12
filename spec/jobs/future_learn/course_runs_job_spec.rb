@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FutureLearnCourseRunsJob, type: :job do
+RSpec.describe FutureLearn::CourseRunsJob, type: :job do
   let(:mock_runs) do
     [
       OpenStruct.new(
@@ -80,7 +80,7 @@ RSpec.describe FutureLearnCourseRunsJob, type: :job do
 
     it 'queues job to check enrolments' do
       expect { described_class.perform_now }
-        .to have_enqueued_job(FutureLearnCourseRunEnrolmentsJob).exactly(3).times
+        .to have_enqueued_job(FutureLearn::CourseRunEnrolmentsJob).exactly(3).times
     end
 
     it 'reports any courses not in our records' do
