@@ -430,12 +430,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-<<<<<<< HEAD
-=======
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
->>>>>>> 0341a1ecef3abe348d2014a052ac745e8c6872fa
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
