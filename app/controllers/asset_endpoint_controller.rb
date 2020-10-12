@@ -3,3 +3,4 @@ class AssetEndpointController < ApplicationController
     redirect_to "#{helpers.asset_path("application", type: :stylesheet)}"
   end
 end
+
