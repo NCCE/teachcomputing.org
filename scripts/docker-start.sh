@@ -37,7 +37,7 @@ if [ $OK_TO_PROCEED = 1 ]; then
   printf %s "- Open ${URL} in your default browser (y/n)? "
   read -r RESP
   if [ "$RESP" != "${RESP#[Yy]}" ]; then
-    echo "- Opening page, if the page fails to load ensure you've run 'npm run setup'"
+    echo "- Opening page, if the page fails to load ensure you've run 'yarn run setup' and 'yarn dev-nginx restart'"
     open "$URL"
   fi
 else
