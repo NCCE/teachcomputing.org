@@ -1,5 +1,7 @@
 module Programmes
   class PrimaryCertificate < Programme
+    DIAGNOSTIC_TOTAL = 80
+
     def diagnostic
       activities.find_by!(category: 'diagnostic')
     end
@@ -11,8 +13,8 @@ module Programmes
       response.answers.keys.reduce(0) { |score, key| score + response.answers[key].to_i }
     end
 
-    def diagnostic_result_max
-      80
+    def diagnostic_result_percentage(user)
+      (diagnostic_result(user).to_f / DIAGNOSTIC_TOTAL * 100).ceil
     end
 
     def credits_achieved_for_certificate(user)

@@ -1,4 +1,4 @@
-<% case (diagnostic_result / diagnostic_result_max * 100) %>
+<% case (diagnostic_result_percentage) %>
   <% when 0..30 %>
     <% if category == Activity::ONLINE_CATEGORY %>
       <span class="ncce-activity-list__item-activity light-blue-bg recommendation">
