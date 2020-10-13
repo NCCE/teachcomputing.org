@@ -43,7 +43,9 @@ Rails.application.routes.draw do
   get '/curriculum/:key_stage_slug/:unit_slug', to: 'curriculum/units#show', as: :curriculum_key_stage_unit
   get '/curriculum/:key_stage_slug/:unit_slug/:lesson_slug', to: 'curriculum/lessons#show', as: :curriculum_key_stage_unit_lesson
   get '/curriculum/rating/units/:polarity/:id/:user_id', to: 'curriculum/units#rate', as: :create_curriculum_unit_rating
+  post '/curriculum/rating/comment', to: 'curriculum/units#comment', as: :update_curriculum_unit_rating
   get '/curriculum/rating/lessons/:polarity/:id/:user_id', to: 'curriculum/lessons#rate', as: :create_curriculum_lesson_rating
+  post '/curriculum/rating/comment', to: 'curriculum/lessons#comment', as: :update_curriculum_lesson_rating
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
@@ -91,6 +93,7 @@ Rails.application.routes.draw do
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
   get '/support-for-ite-providers', to: 'cms#cms_page', as: :support_for_ite_providers, defaults: { page_slug: 'support-for-ite-providers' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
+  get '/take-the-next-step-in-your-career', to: 'cms#cms_page', as: :take_the_next_step_in_your_career, defaults: { page_slug: 'take-the-next-step-in-your-career' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome

@@ -12,7 +12,7 @@
 
 Builds the docker image, sets up environment variables, and adds nicer a local hostname:
 ```
-npm run setup
+yarn run setup
 ```
 
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
@@ -29,7 +29,7 @@ docker-compose up -d
 ```
 Or (to automatically create an ssh tunnel, poll for the env to start and open a new tab):
 ```
-npm start
+yarn start
 ```
 
 Stop the stack:
@@ -38,7 +38,7 @@ docker-compose down
 ```
 Or (to also gracefully close the tunnel)
 ```
-npm stop
+yarn stop
 ```
 
 The app is available at: http://teachcomputing.rpfdev.com
@@ -96,7 +96,7 @@ docker-compose run --rm web bin/rspec
 ```
 Or
 ```
-npm test
+yarn test
 ```
 
 To use [guard](https://github.com/guard/guard) to watch the tests:
@@ -105,7 +105,7 @@ docker-compose run --rm web bin/guard
 ```
 Or
 ```
-npm run guard
+yarn run guard
 ```
 
 ## Sitemaps
@@ -148,7 +148,7 @@ Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
 ### Troubleshooting
 
-> I've run `npm start` and it's hanging whilst 'Waiting for the stack to become available'
+> I've run `yarn start` and it's hanging whilst 'Waiting for the stack to become available'
 
 The script doesn't time out so this indicates that it can't resolve to `localhost:3000` and there was a problem bringing up the web container. Run `docker-compose logs web` to investigate the cause.
 

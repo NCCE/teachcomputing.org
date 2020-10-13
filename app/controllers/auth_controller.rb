@@ -5,7 +5,13 @@ class AuthController < ApplicationController
     course_booking_uri = course_redirect_params
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
+
     session[:user_id] = user.id
+
+    if ENV['ENABLE_IMPERSONATION']
+      impersonate_user(User.find(ENV['USER_TO_IMPERSONATE']))
+      session[:user_id] = current_user.id
+    end
 
     if user_exists
       flash[:notice] = 'Welcome back, good to see you again!'
@@ -22,6 +28,7 @@ class AuthController < ApplicationController
   end
 
   def logout
+    stop_impersonating_user if ENV['ENABLE_IMPERSONATION']
     reset_session
     redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/ncce/logout"
   end

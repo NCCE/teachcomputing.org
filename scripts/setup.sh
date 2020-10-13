@@ -7,9 +7,9 @@ echo "- Setting up homebrew"
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
-echo "- Setting up npm"
-brew install node@12
-npm i
+echo "- Setting up yarn"
+brew install yarn
+yarn install
 
 printf %s "- Copy .env-example? WARNING this will overwrite any existing environment variables (y/n)? "
 read -r RESP
@@ -26,6 +26,10 @@ fi
 echo "- Install dev-nginx"
 brew tap guardian/homebrew-devtools
 brew install guardian/devtools/dev-nginx
+
+echo "- Updating dev-nginx and adding service to start on boot"
+brew upgrade dev-nginx
+brew services start nginx
 
 echo "- Setup mapping"
 dev-nginx setup-app nginx-mapping.yml

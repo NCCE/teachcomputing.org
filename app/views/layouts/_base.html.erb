@@ -39,6 +39,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', nonce: true %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
@@ -55,6 +56,7 @@
 
 <body class="govuk-template__body ">
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
