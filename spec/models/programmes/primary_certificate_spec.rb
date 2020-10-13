@@ -57,6 +57,10 @@ RSpec.describe Programmes::PrimaryCertificate do
       it 'returns correct score' do
         expect(programme.diagnostic_result(user)).to eq(15)
       end
+
+      it 'returns the expected percentage' do
+        expect(programme.diagnostic_result_percentage(user)).to eq(19)
+      end
     end
   end
 
