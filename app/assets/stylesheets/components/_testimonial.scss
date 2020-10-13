@@ -1,5 +1,5 @@
 .testimonial {
-	margin-bottom: 2rem;
+  margin-bottom: 2rem;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 0;
   }
@@ -7,7 +7,7 @@
   &__text {
     background-color: $white;
     border-radius: 10px;
-		line-height: 1.4;
+    line-height: 1.4;
     padding: 10px;
     @include govuk-media-query($from: tablet) {
       padding: 18px;
@@ -34,6 +34,42 @@
     border-radius: 24px;
     height: 48px;
     width: 48px;
+  }
+}
+
+.testimonial-wide {
+  display: grid;
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr 1fr;
+  }
+  &__bio {
+    display: grid;
+    grid-template-columns: 75px auto;
+
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px auto;
+      padding-left: 30px;
+    }
+    @include govuk-media-query($from: desktop) {
+      padding-left: 45px;
+    }
+  }
+  &__quote {
+  }
+  &__image {
+    border: 2px solid $dixie;
+    border-radius: 50%;
+    margin-left: 12px;
+    width: 48px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: 20px;
+      width: 66px;
+    }
+    @include govuk-media-query($from: desktop) {
+      margin-left: 25px;
+    }
   }
 }
 
