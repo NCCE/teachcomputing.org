@@ -80,7 +80,20 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
 
     it 'queues job to check enrolments' do
       expect { described_class.perform_now }
-        .to have_enqueued_job(FutureLearn::CourseRunEnrolmentsJob).exactly(3).times
+        .to have_enqueued_job(FutureLearn::CourseEnrolmentsJob).exactly(2).times
+    end
+
+    it 'queues with correct information' do
+      allow(FutureLearn::CourseEnrolmentsJob).to receive(:perform_later)
+      described_class.perform_now
+      expect(FutureLearn::CourseEnrolmentsJob)
+        .to have_received(:perform_later)
+        .with(course_id: 'course1uuid', run_ids: %w[run1uuid run2uuid])
+        .once
+      expect(FutureLearn::CourseEnrolmentsJob)
+        .to have_received(:perform_later)
+        .with(course_id: 'course2uuid', run_ids: %w[run3uuid])
+        .once
     end
 
     it 'reports any courses not in our records' do

@@ -16,12 +16,10 @@ module FutureLearn
           next
         end
 
-        run_ids.each do |run_id|
-          FutureLearn::CourseRunEnrolmentsJob.perform_later(
-            course_id: course_id,
-            run_id: run_id
-          )
-        end
+        FutureLearn::CourseEnrolmentsJob.perform_later(
+          course_id: course_id,
+          run_ids: run_ids
+        )
       end
     end
 

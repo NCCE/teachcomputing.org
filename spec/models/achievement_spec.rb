@@ -15,24 +15,24 @@ RSpec.describe Achievement, type: :model do
   let(:community_achievement) { create(:achievement, activity: community_activity) }
 
   let(:cs_accelerator) { create(:cs_accelerator) }
-  let(:achievement_with_passed_programme_id) {
+  let(:achievement_with_passed_programme_id) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
     create(:achievement, programme_id: cs_accelerator.id, activity_id: community_activity.id)
-  }
+  end
 
-  let(:achievement_with_programme) {
+  let(:achievement_with_programme) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
     create(:achievement, activity_id: community_activity.id)
-  }
+  end
 
-  let(:achievement_with_two_programmes) {
+  let(:achievement_with_two_programmes) do
     face_to_face_activity = create(:activity, :stem_learning)
     create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
     create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
     create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
     create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
     create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
-  }
+  end
 
   describe 'associations' do
     it 'belongs to activity' do
@@ -107,7 +107,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the category' do
-      expect(Achievement.with_category(achievement.activity.category)).to_not include(diagnostic_achievement)
+      expect(Achievement.with_category(achievement.activity.category)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -122,7 +122,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the credit' do
-      expect(Achievement.with_credit(10)).to_not include(diagnostic_achievement)
+      expect(Achievement.with_credit(10)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -137,7 +137,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the category' do
-      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to_not include(diagnostic_achievement)
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -164,6 +164,13 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe '#set_to_dropped' do
+    it 'sets state to dropped' do
+      achievement.set_to_dropped
+      expect(achievement.current_state).to eq 'dropped'
+    end
+  end
+
   describe '#complete?' do
     it 'when state is not complete' do
       expect(achievement.complete?).to eq false
@@ -171,6 +178,17 @@ RSpec.describe Achievement, type: :model do
 
     it 'when state is not complete' do
       expect(completed_achievement.complete?).to eq true
+    end
+  end
+
+  describe '#dropped?' do
+    it 'returns false if not dropped' do
+      expect(achievement.dropped?).to eq false
+    end
+
+    it 'returns true if dropped' do
+      dropped_achievement = create(:dropped_achievement)
+      expect(dropped_achievement.dropped?).to eq true
     end
   end
 
@@ -193,6 +211,7 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
     it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
     it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
+    it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
 
   describe 'destroy' do
@@ -202,7 +221,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'deletes transitions' do
-      expect { achievement.destroy }.to change { AchievementTransition.count }.by(-1)
+      expect { achievement.destroy }.to change(AchievementTransition, :count).by(-1)
     end
   end
 end
