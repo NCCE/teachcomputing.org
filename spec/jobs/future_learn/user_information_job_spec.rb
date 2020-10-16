@@ -4,23 +4,7 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
   let(:tc_user_id) { 'b4b3542b-e51b-4cb6-be49-9cdf112efd0d' }
   let(:course_uuid) { '621a6593-9b37-47a8-a9b5-e840e6b66fbe' }
   let(:fl_membership_id) { '4248b6c4-70c4-4288-acf3-ce620fd73494' }
-  let(:enrolment) do
-    {
-      run: {
-        uuid: 'run-uuid',
-        href: 'https://testapi.com/partners/course_runs/d2acdb39-f6cb-45da-8c37-681d3b4d2911'
-      },
-      organisation_membership: {
-        uuid: fl_membership_id,
-        href: 'https://testapi.com/partners/organisation_memberships/0ea0e41f-5620-4a91-a1c7-2a15ecf16a06'
-      },
-      status: 'active',
-      activated_at: '2020-01-16T09:48:01.000Z',
-      deactivated_at: nil,
-      steps_completed_count: 0,
-      steps_completed_ratio: 0.0
-    }
-  end
+  let(:enrolment) { build(:fl_enrolment, membership_uuid: fl_membership_id) }
 
   describe '.perform' do
     before do
@@ -32,11 +16,9 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
     context 'when FL user matches TC user by ID' do
       let!(:user) { create(:user, id: tc_user_id) }
       let(:mock_org_membership) do
-        {
-          uuid: fl_membership_id,
-          href: 'https://testapi.com/partners/organisation_memberships/ef508…',
-          external_learner_id: tc_user_id
-        }
+        build(:fl_organisation_membership,
+              uuid: fl_membership_id,
+              external_learner_id: tc_user_id)
       end
 
       it 'calls organisation membership with correct id' do
@@ -64,11 +46,9 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
       let!(:user) { create(:user, email: 'testemail@example.com') }
 
       let(:mock_org_membership) do
-        {
-          uuid: fl_membership_id,
-          href: 'https://testapi.com/partners/organisation_memberships/ef508…',
-          external_learner_id: 'testemail@example.com'
-        }
+        build(:fl_organisation_membership,
+              uuid: fl_membership_id,
+              external_learner_id: 'testemail@example.com')
       end
 
       it 'updates user future_learn_organisation_membership_uuid' do
@@ -80,11 +60,9 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
 
     context 'when FL user does not match TC user' do
       let(:mock_org_membership) do
-        {
-          uuid: fl_membership_id,
-          href: 'https://testapi.com/partners/organisation_memberships/ef508…',
-          external_learner_id: 'testemail@example.com'
-        }
+        build(:fl_organisation_membership,
+              uuid: fl_membership_id,
+              external_learner_id: 'testemail@example.com')
       end
 
       it 'does not error' do

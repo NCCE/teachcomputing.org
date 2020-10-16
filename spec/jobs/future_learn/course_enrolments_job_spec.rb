@@ -29,7 +29,7 @@ RSpec.describe FutureLearn::CourseEnrolmentsJob, type: :job do
     run1_enrolments = build_list(:fl_enrolment, 3, run_uuid: run1_uuid)
     run1_enrolments << user_enrolment_run1
 
-    run2_enrolments = build_list(:fl_enrolment, 3, run_uuid: run2_uuid)
+    run2_enrolments = build_list(:fl_enrolment, 2, run_uuid: run2_uuid)
     run2_enrolments << user_enrolment_run2
 
     allow(FutureLearn::Queries::CourseEnrolments)
