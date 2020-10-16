@@ -10,7 +10,7 @@
     "cookieconsent": "^3.1.0",
     "govuk-frontend": "^2.3.0",
     "stimulus": "^1.1.1",
-    "yargs-parser": "^20.2.0"
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "5.6.1",
@@ -24,22 +24,19 @@
     "stylelint-config-recommended-scss": "3.2.0",
     "stylelint-order": "1.0.0",
     "stylelint-scss": "3.3.1",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "yargs-parser": "^20.2.0",
+    "libnpx": "^10.2.3"
   },
   "scripts": {
+    "setup": "npx ./scripts/setup.sh",
     "start": "npx ./scripts/docker-start.sh",
     "stop": "npx ./scripts/docker-stop.sh",
-    "setup": "npx ./scripts/setup.sh",
-    "tunnel": "ssh -f -C -N -D 8889 -L8888:127.0.0.1:8888 proxy",
-    "logs": "docker-compose logs -f web",
-    "console": "docker-compose run --rm web bin/rails console",
-    "prompt": "docker-compose exec web sh",
-    "test": "docker-compose run --rm --no-deps web bin/rspec",
-    "guard": "docker-compose run --rm --no-deps web bin/guard",
-    "rails": "docker-compose run --rm --no-deps web bin/rails",
-    "rake": "docker-compose run --rm --no-deps web bin/rake",
-    "rebuild": "bundle install && docker-compose build && npm start",
-    "nginx": "dev-nginx restart-nginx"
+    "start-tunnel": "ssh -fCND 8889 -L8888:127.0.0.1:8888 -S /tmp/.ssh_stem_proxy -M proxy",
+    "stop-tunnel": "ssh -S /tmp/.ssh_stem_proxy -O exit proxy",
+    "logs": "docker-compose logs -f",
+    "exec": "docker-compose run --rm --no-deps web bundle exec",
+    "rebuild": "bundle install && docker-compose build && npm start"
   },
   "lint-staged": {
     "*.js": [

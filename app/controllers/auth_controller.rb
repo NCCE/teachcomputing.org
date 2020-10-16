@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
-
-  impersonates :user if ENV['ENABLE_IMPERSONATION']
+  IMPERSONATION_ENABLED = !ENV['USER_TO_IMPERSONATE'].nil?
+  impersonates :user if IMPERSONATION_ENABLED
 
   def callback
     auth = omniauth_params
@@ -10,8 +10,9 @@ class AuthController < ApplicationController
 
     session[:user_id] = user.id
 
-    if ENV['ENABLE_IMPERSONATION'] == 'true'
-      impersonate_user(User.find(ENV['USER_TO_IMPERSONATE']))
+    if IMPERSONATION_ENABLED
+      new_user = User.find(ENV['USER_TO_IMPERSONATE'])
+      impersonate_user(new_user)
       session[:user_id] = current_user.id
     end
 
@@ -30,7 +31,7 @@ class AuthController < ApplicationController
   end
 
   def logout
-    stop_impersonating_user if ENV['ENABLE_IMPERSONATION'] == 'true'
+    stop_impersonating_user if IMPERSONATION_ENABLED
     reset_session
     redirect_to "#{ENV.fetch('STEM_OAUTH_SITE')}/user/ncce/logout"
   end
