@@ -274,4 +274,67 @@ RSpec.describe Achievement, type: :model do
       end
     end
   end
+
+  describe '#update_state_for_online_activity' do
+    let(:achievement) { create(:achievement) }
+
+    context 'when left_at is present' do
+      it 'sets to dropped' do
+        left_at = DateTime.now.to_s
+        expect { achievement.update_state_for_online_activity(0, left_at) }
+          .to change(achievement, :dropped?).to(true)
+      end
+
+      it 'does not set dropped if progress is 60 or over' do
+        left_at = DateTime.now.to_s
+        achievement.update_state_for_online_activity(60, left_at)
+        expect(achievement.dropped?).to eq(false)
+      end
+    end
+
+    context 'when progress is 0' do
+      it 'sets to enrolled' do
+        achievement.update_state_for_online_activity(0, nil)
+        expect(achievement.in_state?(:enrolled)).to eq(true)
+      end
+    end
+
+    context 'when progress between 1 and 59' do
+      it 'sets to in progress with metadata when progress is 1' do
+        achievement.update_state_for_online_activity(1, nil)
+        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.last_transition.metadata).to eq({ 'progress' => 1 })
+      end
+
+      it 'sets to in progress with metadata when progress is 59' do
+        achievement.update_state_for_online_activity(59, nil)
+        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.last_transition.metadata).to eq({ 'progress' => 59 })
+      end
+    end
+
+    context 'when progress between 60 and 100' do
+      let(:achievement) { create(:achievement, activity: create(:activity, credit: 99)) }
+
+      it 'sets to complete when progress is 60' do
+        achievement.update_state_for_online_activity(60, nil)
+        expect(achievement.complete?).to eq(true)
+        expect(achievement.last_transition.metadata)
+          .to eq({ 'credit' => 99.0, 'progress' => 60 })
+      end
+
+      it 'sets to complete when progress is 100' do
+        achievement.update_state_for_online_activity(100, nil)
+        expect(achievement.complete?).to eq(true)
+        expect(achievement.last_transition.metadata)
+          .to eq({ 'credit' => 99.0, 'progress' => 100 })
+      end
+    end
+
+    it 'does not change state if achievement is complete' do
+      achievement = create(:completed_achievement)
+      achievement.update_state_for_online_activity(40, DateTime.now.to_s)
+      expect(achievement.complete?).to eq(true)
+    end
+  end
 end
