@@ -88,11 +88,11 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
       described_class.perform_now
       expect(FutureLearn::CourseEnrolmentsJob)
         .to have_received(:perform_later)
-        .with(course_id: 'course1uuid', run_ids: %w[run1uuid run2uuid])
+        .with(course_uuid: 'course1uuid', run_uuids: %w[run1uuid run2uuid])
         .once
       expect(FutureLearn::CourseEnrolmentsJob)
         .to have_received(:perform_later)
-        .with(course_id: 'course2uuid', run_ids: %w[run3uuid])
+        .with(course_uuid: 'course2uuid', run_uuids: %w[run3uuid])
         .once
     end
 

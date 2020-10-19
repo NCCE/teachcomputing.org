@@ -17,8 +17,8 @@ module FutureLearn
         end
 
         FutureLearn::CourseEnrolmentsJob.perform_later(
-          course_id: course_id,
-          run_ids: run_ids
+          course_uuid: course_id,
+          run_uuids: run_ids
         )
       end
     end
