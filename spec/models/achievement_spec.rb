@@ -224,4 +224,54 @@ RSpec.describe Achievement, type: :model do
       expect { achievement.destroy }.to change(AchievementTransition, :count).by(-1)
     end
   end
+
+  describe '#primary_certificate?' do
+    context 'when programme is primary certificate' do
+      it 'returns true' do
+        programme = build(:primary_certificate_programme)
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.primary_certificate?).to eq(true)
+      end
+    end
+
+    context 'when programme is not primary certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme-slug')
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.primary_certificate?).to eq(false)
+      end
+    end
+
+    context 'when programme is nil' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.primary_certificate?).to eq(false)
+      end
+    end
+  end
+
+  describe '#cs_accelerator?' do
+    context 'when programme is cs accelerator' do
+      it 'returns true' do
+        programme = build(:cs_accelerator_programme)
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.cs_accelerator?).to eq(true)
+      end
+    end
+
+    context 'when programme is not cs accelerator' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme-slug')
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.cs_accelerator?).to eq(false)
+      end
+    end
+
+    context 'when programme is nil' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.cs_accelerator?).to eq(false)
+      end
+    end
+  end
 end

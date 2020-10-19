@@ -20,8 +20,8 @@ FactoryBot.define do
     status { 'active' }
     activated_at { DateTime.now.to_s }
     deactivated_at { nil }
-    steps_completed_count { 0 }
-    steps_completed_ratio { 0.0 }
+    steps_completed_count { 30 }
+    steps_completed_ratio { 0.7 }
 
     initialize_with { attributes }
   end

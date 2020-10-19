@@ -61,4 +61,12 @@ class Programme < ApplicationRecord
   def diagnostic_result(*)
     nil
   end
+
+  def primary_certificate?
+    slug == 'primary-certificate'
+  end
+
+  def cs_accelerator?
+    slug == 'cs-accelerator'
+  end
 end
