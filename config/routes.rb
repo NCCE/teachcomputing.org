@@ -22,14 +22,20 @@ Rails.application.routes.draw do
 
   resources :assessment_attempts
 
+  get '/certificate/primary-certificate', action: :show, controller: 'programmes/primary_certificate', as: :primary_certificate
+  get '/certificate/achievements', action: :show, controller: 'programmes/primary_certificate', as: :primary_certificate_achievements
+  get '/certificate/primary-certificate/complete', action: :complete, controller: 'programmes/primary_certificate', as: :primary_certificate_complete
+  get '/certificate/primary-certificate/pending', action: :pending, controller: 'programmes/primary_certificate', as: :primary_certificate_pending
+  get '/certificate/primary-certificate/view-certificate', action: :certificate, controller: 'programmes/primary_certificate', as: :primary_certificate_certificate
+  get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
+  put '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
+
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
   get '/certificate/:slug/pending', action: :pending, controller: 'programmes', as: :programme_pending
   get '/certificate/:slug/view-certificate', action: :certificate, controller: 'programmes', as: :programme_certificate
   get '/certificate/cs-accelerator/diagnostic/:id', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
-  get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
-  put '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
 
   namespace 'class_marker' do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
