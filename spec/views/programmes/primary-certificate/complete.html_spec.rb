@@ -30,7 +30,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has the Twitter share button' do
-    expect(rendered).to have_link('Share on Twitter', href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the Primary Certificate from WeAreComputing. Sign up: #{primary_url}"}")
+    expect(rendered).to have_link('Share on Twitter', href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the Primary Certificate from @WeAreComputing. Sign up: #{primary_url}"}")
   end
 
   it 'has the Facebook share button' do
