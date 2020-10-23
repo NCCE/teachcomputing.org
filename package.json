@@ -36,6 +36,7 @@
     "stop-tunnel": "ssh -S /tmp/.ssh_stem_proxy -O exit proxy",
     "logs": "docker-compose logs -f",
     "exec": "docker-compose run --rm --no-deps web bundle exec",
+    "test": "yarn run exec rspec",
     "rebuild": "bundle install && docker-compose build && npm start"
   },
   "lint-staged": {
