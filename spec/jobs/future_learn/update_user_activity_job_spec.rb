@@ -89,11 +89,20 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
                programme: create(:cs_accelerator_programme))
       end
 
-      it 'queues AssessmentEligibilityJob' do
-        expect { run_job }
-          .to have_enqueued_job(AssessmentEligibilityJob)
-          .with(user.id)
-          .once
+      context "when user's achievement is updated to complete" do
+        let(:enrolment) do
+          build(:fl_enrolment,
+                run_uuid: run_uuid,
+                membership_uuid: membership_id,
+                steps_completed_count: 90)
+        end
+
+        it 'queues AssessmentEligibilityJob' do
+          expect { run_job }
+            .to have_enqueued_job(AssessmentEligibilityJob)
+            .with(user.id)
+            .once
+        end
       end
     end
 

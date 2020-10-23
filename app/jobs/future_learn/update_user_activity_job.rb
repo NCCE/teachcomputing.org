@@ -40,7 +40,7 @@ module FutureLearn
       end
 
       def needs_assessment_eligibility_job?(achievement)
-        achievement.cs_accelerator?
+        achievement.cs_accelerator? && achievement.complete?
       end
 
       def queue_assessment_eligibility_job(user_id)
