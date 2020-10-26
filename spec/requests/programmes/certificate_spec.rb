@@ -30,7 +30,7 @@ RSpec.describe ProgrammesController do
 
       it 'redirects if not enrolled' do
         get programme_certificate_path('cs-accelerator')
-        expect(response).to redirect_to(cs_accelerator_path)
+        expect(response).to redirect_to(programme_path('cs-accelerator'))
       end
 
       describe 'and enrolled' do
@@ -65,18 +65,6 @@ RSpec.describe ProgrammesController do
         it 'responds with inline pdf file' do
           expect(response.content_type).to eq('application/pdf')
           expect(response.headers['Content-Disposition']).to eq('inline; filename="test-certificate.pdf"')
-        end
-
-        it 'assigns the programme' do
-          expect(assigns(:programme)).to eq(programme)
-        end
-
-        it 'assigns the passed_test_at date' do
-          expect(assigns(:transition).created_at).to eq(user_programme_enrolment.last_transition.created_at)
-        end
-
-        it 'assigns the certificate_number' do
-          expect(assigns(:transition).metadata['certificate_number']).to eq(20)
         end
       end
     end

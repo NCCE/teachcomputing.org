@@ -1,10 +1,12 @@
 class ProgrammesController < ApplicationController
   layout 'full-width'
   before_action :authenticate_user!
-  before_action :find_programme, only: %i[show complete certificate pending]
-  before_action :user_enrolled?, only: %i[show complete certificate pending]
+  before_action :find_programme, only: %i[show complete pending]
+  before_action :user_enrolled?, only: %i[show complete pending]
   before_action :user_completed_diagnostic?, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
-  before_action :user_programme_enrolment_pending?, only: %i[show complete certificate], if: -> { @programme.slug == 'primary-certificate' }
+
+  # is this being tested?
+  before_action :user_programme_enrolment_pending?, only: %i[show complete], if: -> { @programme.slug == 'primary-certificate' }
 
   def show
     return redirect_to programme_complete_path(@programme.slug) if @programme.user_completed?(current_user)
@@ -47,27 +49,6 @@ class ProgrammesController < ApplicationController
     render "programmes/#{@programme.slug}/complete"
   end
 
-  def certificate
-    return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
-
-    get_certificate_details
-
-    generator = CertificateGenerator.new(
-      user: current_user,
-      programme: @programme,
-      transition: @transition
-    )
-
-    pdf_details = generator.generate_pdf
-
-    send_file(
-      pdf_details[:path],
-      filename: pdf_details[:filename],
-      type: 'application/pdf',
-      disposition: 'inline'
-    )
-  end
-
   def pending
     return redirect_to programme_complete_path(@programme.slug) if enrolment.current_state == 'complete'
 
@@ -90,10 +71,6 @@ class ProgrammesController < ApplicationController
 
     def find_programme
       @programme = Programme.enrollable.find_by!(slug: params[:slug])
-    end
-
-    def get_certificate_details
-      @transition = enrolment.last_transition
     end
 
     def user_completed_diagnostic?
