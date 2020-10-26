@@ -12,7 +12,8 @@ module FutureLearn
 
       course_run_ids_hash.each do |course_id, run_ids|
         unless tc_course_ids.include?(course_id)
-          report_missing_course(course_id)
+          title = course_runs.select { |r| r[:course][:uuid] == course_id }.first[:title]
+          report_missing_course(course_id, title)
           next
         end
 
@@ -25,8 +26,8 @@ module FutureLearn
 
     private
 
-      def report_missing_course(course_id)
-        Raven.capture_message("FutureLearn course ID not be found during progress update checking: #{course_id}")
+      def report_missing_course(course_id, title)
+        Raven.capture_message("FutureLearn course not found during progress update checking: #{course_id}, - #{title}")
       end
   end
 end

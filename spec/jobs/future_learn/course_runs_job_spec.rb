@@ -101,7 +101,10 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
       expect(Raven)
         .to have_received(:capture_message)
         .once
-        .with('FutureLearn course ID not be found during progress update checking: course3uuid')
+        .with(
+          'FutureLearn course not found during progress update checking: '\
+          'course3uuid, - Teaching Programming in Primary Schools'
+        )
     end
   end
 end
