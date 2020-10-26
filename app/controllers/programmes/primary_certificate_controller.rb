@@ -2,10 +2,10 @@ module Programmes
   class PrimaryCertificateController < ApplicationController
     layout 'full-width'
     before_action :authenticate_user!
-    before_action :find_programme, only: %i[show complete certificate pending]
-    before_action :user_enrolled?, only: %i[show complete certificate pending]
-    before_action :user_completed_diagnostic?, only: %i[show], if: -> { @programme.slug == 'primary-certificate' }
-    before_action :user_programme_enrolment_pending?, only: %i[show complete certificate], if: -> { @programme.slug == 'primary-certificate' }
+    before_action :find_programme, only: %i[show complete pending]
+    before_action :user_enrolled?, only: %i[show complete pending]
+    before_action :user_completed_diagnostic?, only: %i[show]
+    before_action :user_programme_enrolment_pending?, only: %i[show complete]
 
     def show
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
@@ -18,39 +18,18 @@ module Programmes
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
 
       @complete_achievements = current_user.achievements.without_category('action')
-                                          .without_category('diagnostic')
-                                          .for_programme(@programme).sort_complete_first
+                                           .without_category('diagnostic')
+                                           .for_programme(@programme).sort_complete_first
 
       render "programmes/#{@programme.slug}/complete"
-    end
-
-    def certificate
-      return redirect_to programme_path(@programme.slug) unless @programme.user_completed?(current_user)
-
-      get_certificate_details
-
-      generator = CertificateGenerator.new(
-        user: current_user,
-        programme: @programme,
-        transition: @transition
-      )
-
-      pdf_details = generator.generate_pdf
-
-      send_file(
-        pdf_details[:path],
-        filename: pdf_details[:filename],
-        type: 'application/pdf',
-        disposition: 'inline'
-      )
     end
 
     def pending
       return redirect_to programme_complete_path(@programme.slug) if enrolment.current_state == 'complete'
 
       @complete_achievements = current_user.achievements.without_category('action')
-                                          .without_category('diagnostic')
-                                          .for_programme(@programme).sort_complete_first
+                                           .without_category('diagnostic')
+                                           .for_programme(@programme).sort_complete_first
 
       @enrolment = current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
 
@@ -65,10 +44,6 @@ module Programmes
 
       def find_programme
         @programme = Programme.enrollable.find_by!(slug: 'primary-certificate')
-      end
-
-      def get_certificate_details
-        @transition = enrolment.last_transition
       end
 
       def user_completed_diagnostic?

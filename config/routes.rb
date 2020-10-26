@@ -26,9 +26,10 @@ Rails.application.routes.draw do
   get '/certificate/achievements', action: :show, controller: 'programmes/primary_certificate', as: :primary_certificate_achievements
   get '/certificate/primary-certificate/complete', action: :complete, controller: 'programmes/primary_certificate', as: :primary_certificate_complete
   get '/certificate/primary-certificate/pending', action: :pending, controller: 'programmes/primary_certificate', as: :primary_certificate_pending
-  get '/certificate/primary-certificate/view-certificate', action: :certificate, controller: 'programmes/primary_certificate', as: :primary_certificate_certificate
   get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
   put '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
+
+  get '/certificate/primary-certificate/view-certificate', action: :show, controller: 'programmes/certificate', as: :primary_certificate_certificate, defaults: { slug: 'primary-certificate' }
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
   get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
