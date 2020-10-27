@@ -44,130 +44,92 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       clear_enqueued_jobs
     end
 
-    context 'when a user exists and steps completed is >= 60%' do
-      it 'creates an achievement' do
-        expect(user_one.achievements.where(activity_id: activity_one.id).exists?).to eq true
-      end
+    it 'handles export correctly' do
+      # when a user exists and steps completed is >= 60% it creates an achievement
+      expect(user_one.achievements.where(activity_id: activity_one.id).exists?).to eq true
 
-      it 'creates an achievement with the state of complete' do
-        expect(user_one.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
-      end
-    end
+      # it creates an achievement with the state of complete
+      expect(user_one.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
 
-    it 'does not create an achievement if a user cannot be found' do
+      # it does not create an achievement if a user cannot be found
       expect(user_three.achievements.where(activity_id: activity_one.id).exists?).to eq false
-    end
 
-    it 'does not create an achievement if an activity cannot be found' do
+      # it does not create an achievement if an activity cannot be found
       expect(user_one.achievements.where(activity_id: '91011').exists?).to eq false
-    end
 
-    it 'sends a message to Raven if an activity cannot be found' do
+      # it sends a message to Raven if an activity cannot be found
       expect(Raven).to have_received(:capture_exception).with(/91011/)
-    end
 
-    it 'only sends one message to Raven for 2 rows with the same missing course' do
+      # it only sends one message to Raven for 2 rows with the same missing course
       expect(Raven).to have_received(:capture_exception).once
-    end
 
-    context 'when steps completed is less than 60' do
-      it 'creates an achievement' do
-        expect(user_two.achievements.where(activity_id: activity_one.id).exists?).to eq true
-      end
+      # when steps completed is less than 60 it creates an achievement
+      expect(user_two.achievements.where(activity_id: activity_one.id).exists?).to eq true
 
-      it 'creates an achievement with the state of enrolled' do
-        expect(user_two.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'enrolled'
-      end
-    end
+      # it creates an achievement with the state of enrolled
+      expect(user_two.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'enrolled'
 
-    it 'updates the the import record to have a completed_at timestamp' do
-      import.reload
-      expect(import.completed_at).not_to be_nil
-    end
+      # it updates the the import record to have a completed_at timestamp
+      expect(import.reload.completed_at).not_to be_nil
 
-    context 'when left_at is present' do
-      it 'transitions the state to dropped' do
-        expect(user_six.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'dropped'
-      end
+      # when left_at is present it transitions the state to dropped
+      expect(user_six.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'dropped'
 
-      it 'does not transition it to dropped if it is already complete' do
-        expect(user_four.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
-      end
+      # it does not transition it to dropped if it is already complete
+      expect(user_four.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'complete'
 
-      it 'does not transition to dropped if progress is 60%+' do
-        expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
-      end
-    end
+      # it does not transition to dropped if progress is 60%+
+      expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
 
-    context 'when an achievement is in a state of dropped' do
-      it 'transitions to enrolled' do
-        expect(user_six.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'enrolled'
-      end
-    end
+      # when an achievement is in a state of dropped it transitions to enrolled
+      expect(user_six.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'enrolled'
 
-    context 'when an achievement already exits' do
-      it 'sets the state to complete if it is >= 60' do
-        expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
-      end
+      # when an achievement already exits it sets the state to complete if it is >= 60
+      expect(user_four.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'complete'
 
-      it 'state transitions to in_progress if steps complete is between 1 and 59' do
-        expect(user_one.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
-      end
+      # it state transitions to in_progress if steps complete is between 1 and 59
+      expect(user_one.achievements.find_by(activity_id: activity_two.id).current_state).to eq 'in_progress'
 
-      it 'state in_progress shows correct metadata' do
-        expect(
-          user_two.achievements
-          .find_by(activity_id: activity_two.id)
-          .last_transition.metadata['progress']
-        ).to eq 45.0
-        expect(
-          user_one.achievements
-          .find_by(activity_id: activity_two.id)
-          .last_transition.metadata['progress']
-        ).to eq 15.0
-      end
+      # it state in_progress shows correct metadata
+      expect(
+        user_two.achievements
+        .find_by(activity_id: activity_two.id)
+        .last_transition.metadata['progress']
+      ).to eq 45.0
+      expect(
+        user_one.achievements
+        .find_by(activity_id: activity_two.id)
+        .last_transition.metadata['progress']
+      ).to eq 15.0
 
-      it 'state remains enrolled if steps complete is 0' do
-        expect(user_five.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'enrolled'
-      end
-    end
+      # it state remains enrolled if steps complete is 0
+      expect(user_five.achievements.find_by(activity_id: activity_one.id).current_state).to eq 'enrolled'
 
-    context 'when learner_identifier is user id' do
-      it 'creates an achievement' do
-        expect(id_user.achievements.where(activity_id: activity_one.id).exists?).to eq true
-      end
-    end
+      # when learner_identifier is user id it creates an achievement
+      expect(id_user.achievements.where(activity_id: activity_one.id).exists?).to eq true
 
-    context 'when user membership_id is set' do
-      it "doesn't change user membership_id" do
-        expect(membership_id_user.reload.future_learn_organisation_memberships).to eq(['7d116df9-7001-4e49-885c-98fd311f09e3'])
-      end
-    end
+      # when user membership_id is set it "doesn't change user membership_id"
+      expect(membership_id_user.reload.future_learn_organisation_memberships)
+        .to eq(['7d116df9-7001-4e49-885c-98fd311f09e3'])
 
-    context 'when user membership_id is set but user has second organisation membership' do
-      it 'adds second membership id' do
-        expect(double_membership_id_user.reload.future_learn_organisation_memberships).to match_array(%w[bdea158d-a6bf-4f79-886b-611e861c3acf b0af88ab-d62f-407d-a58f-bb7998827a49])
-      end
-    end
+      # when user membership_id is set but user has second organisation membership it adds second membership id
+      expect(double_membership_id_user.reload.future_learn_organisation_memberships)
+        .to match_array(%w[bdea158d-a6bf-4f79-886b-611e861c3acf b0af88ab-d62f-407d-a58f-bb7998827a49])
 
-    context 'when user membership_id is not set' do
-      it 'sets user membership_id' do
-        expect(no_membership_id_user.reload.future_learn_organisation_memberships)
-          .to eq(['22752662-3f65-4c54-a394-0284679cccb9'])
-      end
-    end
+      # when user membership_id is not set it sets user membership_id
+      expect(no_membership_id_user.reload.future_learn_organisation_memberships)
+        .to eq(['22752662-3f65-4c54-a394-0284679cccb9'])
 
-    context 'when user membership_id is different from the export value' do
-      it 'logs an error' do
-        expect(Raven).to have_received(:capture_exception).once
-      end
-    end
+      # when user membership_id is different from the export value it logs an error
+      expect(Raven)
+        .to have_received(:capture_exception)
+        .once
+        .with('Missing course : id 91011 (user is: user1@example.com)')
 
-    it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
+      # it queues PrimaryCertificatePendingTransitionJob job for complete courses'
       expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(7).times
-    end
 
-    it 'queues AssessmentEligibilityJob once for cs-accelerator per user' do
+      # it queues AssessmentEligibilityJob once for cs-accelerator per user
       expect(AssessmentEligibilityJob).to have_been_enqueued.exactly(:once)
     end
   end
