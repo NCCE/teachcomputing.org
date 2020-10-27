@@ -49,6 +49,8 @@ Rails.application.routes.draw do
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
+  get '/early-career-teachers', to: 'cms#cms_page', as: :early_career_teachers, defaults: { page_slug: 'early-career-teachers' }
+
   get '/futurelearn/lti/:fl_id', to: 'future_learn/lti#show', as: 'futurelearn_lti'
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user', as: :user_teacher_reference_number
 
