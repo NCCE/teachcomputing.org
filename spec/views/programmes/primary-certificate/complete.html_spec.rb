@@ -13,10 +13,6 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
     render
   end
 
-  it 'has a status' do
-    expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
-  end
-
   it 'has the programme title' do
     expect(rendered).to have_css('.hero__heading', text: @programme.title)
   end
@@ -33,7 +29,15 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
     expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
   end
 
-  it 'has the roa' do
-    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
+  it 'has the Twitter share button' do
+    expect(rendered).to have_link('Share on Twitter', href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the Primary Certificate from @WeAreComputing. Sign up: #{primary_url}"}")
+  end
+
+  it 'has the Facebook share button' do
+    expect(rendered).to have_link('Share on Facebook', href: "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape primary_url}")
+  end
+
+  it 'has the LinkedIn share button' do
+    expect(rendered).to have_link('Share on LinkedIn', href: "https://www.linkedin.com/shareArticle?mini=true&url=#{CGI.escape primary_url}")
   end
 end

@@ -37,5 +37,8 @@ if [ -f "$CONFIG_FILE" ] && ! grep -q 'X-Forwarded-Ssl' "$CONFIG_FILE"
 then
   sed -i '' '/proxy_buffering off\;/a\
   proxy_set_header  X-Forwarded-Ssl on\;' "$CONFIG_FILE"
-  dev-nginx restart-nginx
+  dev-nginx restart
 fi
+
+echo "- Build assets (init webpacker)"
+yarn run exec rails assets:precompile
