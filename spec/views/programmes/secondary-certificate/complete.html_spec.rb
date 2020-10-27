@@ -19,10 +19,6 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
     render
   end
 
-  it 'has a status' do
-    expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
-  end
-
   it 'has the programme title' do
     expect(rendered).to have_css('.hero__heading', text: @programme.title)
   end
@@ -37,13 +33,5 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
 
   it 'has the Twitter section' do
     expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
-  end
-
-  it 'has the Twitter share button' do
-    expect(rendered).to have_css('.button--aside', text: 'Tweet your certificate')
-  end
-
-  it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 3)
   end
 end
