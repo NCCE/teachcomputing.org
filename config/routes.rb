@@ -20,15 +20,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :assessment_attempts
+  resources :assessment_attempts, only: %i[create]
 
   get '/certificate/primary-certificate', action: :show, controller: 'programmes/primary_certificate', as: :primary_certificate
-  get '/certificate/achievements', action: :show, controller: 'programmes/primary_certificate', as: :primary_certificate_achievements
   get '/certificate/primary-certificate/complete', action: :complete, controller: 'programmes/primary_certificate', as: :primary_certificate_complete
   get '/certificate/primary-certificate/pending', action: :pending, controller: 'programmes/primary_certificate', as: :primary_certificate_pending
   get '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#show', as: :primary_certificate_diagnostic
   put '/certificate/primary-certificate/questionnaire/:id', to: 'diagnostics/primary_certificate#update', as: :update_primary_certificate_diagnostic
-
   get '/certificate/primary-certificate/view-certificate', action: :show, controller: 'programmes/certificate', as: :primary_certificate_certificate, defaults: { slug: 'primary-certificate' }
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
@@ -37,7 +35,7 @@ Rails.application.routes.draw do
 
   get '/certificate/:slug/view-certificate', action: :show, controller: 'programmes/certificate', as: :programme_certificate
 
-  post '/certifcate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
+  post '/certificate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
   get '/certificate/cs-accelerator/diagnostic/:id', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
 
   namespace 'class_marker' do
