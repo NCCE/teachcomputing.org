@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProgrammesController do
+RSpec.describe Certificates::CertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -46,7 +46,7 @@ RSpec.describe ProgrammesController do
 
       describe 'and complete' do
         before do
-          generator_double = instance_double(CertificateGenerator)
+          generator_double = instance_double(::CertificateGenerator)
           allow(generator_double)
             .to receive(:generate_pdf)
             .and_return({ path: 'spec/support/example_certificate.pdf', filename: 'test-certificate.pdf' })

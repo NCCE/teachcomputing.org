@@ -1,4 +1,4 @@
-module Programmes
+module Certificates
   class CertificateController < ApplicationController
     before_action :authenticate_user!
 

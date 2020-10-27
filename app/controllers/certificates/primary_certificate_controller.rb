@@ -1,4 +1,4 @@
-module Programmes
+module Certificates
   class PrimaryCertificateController < ApplicationController
     layout 'full-width'
     before_action :authenticate_user!
