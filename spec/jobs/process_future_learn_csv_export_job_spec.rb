@@ -11,11 +11,11 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
   let!(:user_four) { create(:user, email: 'user4@example.com') }
   let!(:user_five) { create(:user, email: 'user5@example.com') }
   let!(:user_six) { create(:user, email: 'user6@example.com') }
-  let!(:membership_id_user) { create(:user, email: 'user7@example.com', future_learn_organisation_membership_uuid: '7d116df9-7001-4e49-885c-98fd311f09e3') }
+  let!(:membership_id_user) { create(:user, email: 'user7@example.com', future_learn_organisation_memberships: ['7d116df9-7001-4e49-885c-98fd311f09e3']) }
   let!(:no_membership_id_user) { create(:user, email: 'user8@example.com') }
-  let!(:wrong_membership_id_user) { create(:user, email: 'user9@example.com', future_learn_organisation_membership_uuid: '9d1c1daa-7f99-40d8-88cb-d567e97d1fce') }
+  let!(:wrong_membership_id_user) { create(:user, email: 'user9@example.com', future_learn_organisation_memberships: ['9d1c1daa-7f99-40d8-88cb-d567e97d1fce']) }
   let!(:id_user) { create(:user, id: '83b9d231-ed72-47d1-87ad-d985f4182ff1') }
-
+  let!(:double_membership_id_user) { create(:user, id: '53a92624-d785-4f23-860d-77d35c9a9c2e', email: 'user10@example.com', future_learn_organisation_memberships: ['bdea158d-a6bf-4f79-886b-611e861c3acf']) }
 
   let(:dropped_achievement) { create(:achievement, user_id: user_six.id, activity_id: activity_two.id) }
   let(:another_dropped_achievement) { create(:achievement, user_id: user_two.id, activity_id: activity_two.id) }
@@ -138,26 +138,33 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
       end
     end
 
-		context 'when user membership_id is set' do
-			it "doesn't change user membership_id" do
-				expect(membership_id_user.future_learn_organisation_membership_uuid).to eq('7d116df9-7001-4e49-885c-98fd311f09e3')
-			end
-		end
+    context 'when user membership_id is set' do
+      it "doesn't change user membership_id" do
+        expect(membership_id_user.reload.future_learn_organisation_memberships).to eq(['7d116df9-7001-4e49-885c-98fd311f09e3'])
+      end
+    end
 
-		context 'when user membership_id is not set' do
-			it "sets user membership_id" do
-				expect(no_membership_id_user.reload.future_learn_organisation_membership_uuid).to eq('22752662-3f65-4c54-a394-0284679cccb9')
-			end
-		end
+    context 'when user membership_id is set but user has second organisation membership' do
+      it 'adds second membership id' do
+        expect(double_membership_id_user.reload.future_learn_organisation_memberships).to match_array(%w[bdea158d-a6bf-4f79-886b-611e861c3acf b0af88ab-d62f-407d-a58f-bb7998827a49])
+      end
+    end
 
-		context 'when user membership_id is different from the export value' do
-			it "logs an error" do
-				expect(Raven).to have_received(:capture_exception).once
-			end
-		end
+    context 'when user membership_id is not set' do
+      it 'sets user membership_id' do
+        expect(no_membership_id_user.reload.future_learn_organisation_memberships)
+          .to eq(['22752662-3f65-4c54-a394-0284679cccb9'])
+      end
+    end
+
+    context 'when user membership_id is different from the export value' do
+      it 'logs an error' do
+        expect(Raven).to have_received(:capture_exception).once
+      end
+    end
 
     it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(6).times
+      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(7).times
     end
 
     it 'queues AssessmentEligibilityJob once for cs-accelerator per user' do
