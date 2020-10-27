@@ -99,7 +99,7 @@ RSpec.describe Programmes::CSAccelerator do
   describe '#credits_achieved_for_certificate' do
     context 'when the user has not done any activities' do
       it 'returns 0' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq0
+        expect(programme.credits_achieved_for_certificate(user)).to eq(0)
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq50
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -119,7 +119,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq50
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -129,7 +129,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq50
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -139,7 +139,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 100%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq100
+        expect(programme.credits_achieved_for_certificate(user)).to eq(100)
       end
     end
 
@@ -149,21 +149,21 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 100%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq100
+        expect(programme.credits_achieved_for_certificate(user)).to eq(100)
       end
     end
   end
 
   describe '#max_credits_for_certificate' do
     it 'returns 100 for 10 hour system' do
-      expect(programme.max_credits_for_certificate).to eq 100
+      expect(programme.max_credits_for_certificate).to eq(100)
     end
   end
 
   describe '#enough_activites_for_test?' do
     context 'when the user has not done any activities' do
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqfalse
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -173,7 +173,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqfalse
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -183,7 +183,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqfalse
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -193,7 +193,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqfalse
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -203,7 +203,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqtrue
+        expect(programme.enough_activites_for_test?(user)).to eq(true)
       end
     end
 
@@ -213,7 +213,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eqtrue
+        expect(programme.enough_activites_for_test?(user)).to eq(true)
       end
     end
   end
