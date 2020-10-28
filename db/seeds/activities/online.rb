@@ -332,3 +332,68 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '03fb0a52-a712-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
+  activity.credit = 20
+  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '41a77207-c4c2-ea11-a812-000d3a86d545'
+  activity.future_learn_course_uuid = '03fb0a52-a712-eb11-a813-000d3a86d545'
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '') do |activity|
+  activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a program - Remote'
+  activity.credit = 20
+  activity.slug = 'python-programming-projects-advanced-subject-knowledge-implementation-and-testing-a-program-remote'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = 'e1e54959-db12-eb11-a813-000d3a86d545'
+  activity.future_learn_course_uuid = ''
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '') do |activity|
+  activity.title = 'Search and sort algorithms - Remote'
+  activity.credit = 20
+  activity.slug = 'search-and-sort-algorithms-remote'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = ''
+  activity.future_learn_course_uuid = ''
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '') do |activity|
+  activity.title = 'Computer systems, Input, output and storage - Remote'
+  activity.credit = 20
+  activity.slug = 'computer systems-input-output-and-storage-remote'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '8eb6f3de-bf12-eb11-a813-000d3a86d545'
+  activity.future_learn_course_uuid = ''
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '') do |activity|
+  activity.title = 'Python programming projects - analysing, designing and evaluating a program - Remote'
+  activity.credit = 20
+  activity.slug = 'python-programming-projects-analysing-designing-and-evaluating-a-program-remote'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = ''
+  activity.future_learn_course_uuid = ''
+  activity.provider = 'future-learn'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)

@@ -522,3 +522,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e3c14378-3015-eb11-a813-000d3a86f6ce') do |activity|
+  activity.title = 'Leading Primary Computing - Face to Face'
+  activity.credit = 10
+  activity.slug = 'leading-primary-computing-face-to-face'
+  activity.stem_course_template_no = 'e3c14378-3015-eb11-a813-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
