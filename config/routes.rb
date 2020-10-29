@@ -30,6 +30,12 @@ Rails.application.routes.draw do
       put '/questionnaire/:id', to: '/diagnostics/primary_certificate#update', as: :update_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'primary-certificate' }
     end
+
+		resource 'secondary_certificate', controller: 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
+      get '/complete', action: :complete, as: :complete
+      get '/pending', action: :pending, as: :pending
+      get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'secondary-certificate' }
+    end
   end
 
   get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme

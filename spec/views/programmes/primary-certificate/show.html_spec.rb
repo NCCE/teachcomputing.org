@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/primary-certificate/show', type: :view) do
+RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
 

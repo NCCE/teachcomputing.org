@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_achievements', type: :view) do
+RSpec.describe('certificates/_achievements', type: :view) do
   let(:user) { create(:user) }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
@@ -12,7 +12,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
     before do
       @programme = programme
       presenters = [ActivityPresenter.new(nil), ActivityPresenter.new(nil)]
-      render partial: 'programmes/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
     it 'both achievements are  marked as incomplete' do
@@ -32,7 +32,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
     before do
       @programme = programme
       presenters = [ActivityPresenter.new(enrolled_achievement), ActivityPresenter.new(nil)]
-      render partial: 'programmes/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
     it 'one achievement is marked as incomplete' do
@@ -55,7 +55,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
   context 'when user has started two achievements' do
     before do
       presenters = two_enrolled_achievements.map { |a| ActivityPresenter.new(a) }
-      render partial: 'programmes/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
     it 'both achievements are marked as inprogress' do
@@ -76,7 +76,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
   context 'when user has finished one achievement' do
     before do
       presenters = [ActivityPresenter.new(complete_achievement), ActivityPresenter.new(enrolled_achievement)]
-      render partial: 'programmes/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
     it 'one achievement is marked as inprogress' do
@@ -99,7 +99,7 @@ RSpec.describe('programmes/_achievements', type: :view) do
   context 'when user has finished both achievements' do
     before do
       presenters = two_complete_achievements.map { |a| ActivityPresenter.new(a) }
-      render partial: 'programmes/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
     it 'no achievement is marked as incomplete' do
