@@ -34,6 +34,6 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
+    expect(rendered).to have_css('.certificate__complete', count: 1)
   end
 end
