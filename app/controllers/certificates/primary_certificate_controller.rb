@@ -9,7 +9,7 @@ module Certificates
 
     def show
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
-      render "programmes/#{@programme.slug}/show"
+      render :show
     end
 
     def complete
@@ -21,7 +21,7 @@ module Certificates
                                            .without_category('diagnostic')
                                            .for_programme(@programme).sort_complete_first
 
-      render "programmes/#{@programme.slug}/complete"
+      render :complete
     end
 
     def pending
@@ -33,7 +33,7 @@ module Certificates
 
       @enrolment = current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
 
-      render "programmes/#{@programme.slug}/pending"
+      render :pending
     end
 
     private

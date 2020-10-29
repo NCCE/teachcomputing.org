@@ -1,0 +1,23 @@
+ <p class="govuk-body"><strong>Complete all</strong> of the following activities:</p>
+ <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <% diagnostic_result_percentage = @programme.diagnostic_result_percentage(current_user) %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.online_achievements(to_show = 1),
+      category: Activity::ONLINE_CATEGORY,
+      diagnostic_result_percentage: diagnostic_result_percentage
+  %>
+  <%= render 'programmes/achievements',
+      presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
+      category: Activity::FACE_TO_FACE_CATEGORY,
+      diagnostic_result_percentage: diagnostic_result_percentage
+  %>
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
+</ul>
+<p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 10) %>
+</ul>
+<p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <%= render 'programmes/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 4, credit = 20) %>
+</ul>
