@@ -47,7 +47,7 @@ RSpec.describe FutureLearn::CourseEnrolmentsJob, type: :job do
       before do
         create(
           :user,
-          future_learn_organisation_membership_uuid: membership_id
+          future_learn_organisation_memberships: [membership_id]
         )
       end
 

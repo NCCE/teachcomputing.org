@@ -14,7 +14,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
     let(:mock_instance) { instance_double(Achievement) }
 
     let!(:user) do
-      create(:user, future_learn_organisation_membership_uuid: membership_id)
+      create(:user, future_learn_organisation_memberships: [membership_id])
     end
 
     let(:enrolment) do

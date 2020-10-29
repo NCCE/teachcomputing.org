@@ -33,7 +33,7 @@ module FutureLearn
 
       def known_organisation_membership_uuids
         @known_organisation_membership_uuids ||= begin
-          User.pluck(:future_learn_organisation_membership_uuid).compact
+          User.pluck(:future_learn_organisation_memberships).flatten.compact
         end
       end
   end

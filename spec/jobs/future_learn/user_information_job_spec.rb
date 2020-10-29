@@ -28,10 +28,10 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
           .with(fl_membership_id)
       end
 
-      it 'updates user future_learn_organisation_membership_uuid' do
+      it 'updates users future_learn_organisation_memberships' do
         expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
-          .to change { user.reload.future_learn_organisation_membership_uuid }
-          .to(fl_membership_id)
+          .to change { user.reload.future_learn_organisation_memberships }
+          .to([fl_membership_id])
       end
 
       it 'queues UpdateUserActivityJob' do
@@ -53,8 +53,8 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
 
       it 'updates user future_learn_organisation_membership_uuid' do
         expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
-          .to change { user.reload.future_learn_organisation_membership_uuid }
-          .to(fl_membership_id)
+          .to change { user.reload.future_learn_organisation_memberships }
+          .to([fl_membership_id])
       end
     end
 

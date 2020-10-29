@@ -4,7 +4,7 @@ module FutureLearn
 
     def perform(course_uuid:, enrolment:)
       user = User.find_by(
-        future_learn_organisation_membership_uuid: enrolment[:organisation_membership][:uuid]
+        "'#{enrolment[:organisation_membership][:uuid]}' = ANY (future_learn_organisation_memberships)"
       )
 
       activity = Activity.find_by(future_learn_course_uuid: course_uuid)

@@ -11,10 +11,8 @@ module FutureLearn
 
       return unless user
 
-      user.update_attribute(
-        :future_learn_organisation_membership_uuid,
-        organisation_membership[:uuid]
-      )
+      user.future_learn_organisation_memberships << organisation_membership[:uuid]
+      user.save
 
       FutureLearn::UpdateUserActivityJob.perform_later(
         course_uuid: course_uuid,
