@@ -40,6 +40,18 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
           .with(course_uuid: course_uuid, enrolment: enrolment)
           .once
       end
+
+      it 'does not duplicate membership ids' do
+        # if we get into this job but another run of the job has already added
+        # the id we need to make sure we don't end up with two the same in the
+        # array
+        user.future_learn_organisation_memberships = [fl_membership_id]
+        user.save
+
+        described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment)
+        expect(user.reload.future_learn_organisation_memberships)
+          .to eq([fl_membership_id])
+      end
     end
 
     context 'when FL user matches TC user by email' do
