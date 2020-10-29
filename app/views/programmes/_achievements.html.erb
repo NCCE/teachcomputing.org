@@ -22,11 +22,11 @@
     <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
       <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
       <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__recommendation' %>
-      <%
-        category = 'none' unless local_assigns[:category]
-        diagnostic_result = 0 unless local_assigns[:diagnostic_result]
+      <%=
+        render 'programmes/primary-certificate/recommendation',
+          category: local_assigns[:category] || 'none',
+          diagnostic_result_percentage: local_assigns[:diagnostic_result_percentage] || 0
       %>
-      <%= render 'programmes/primary-certificate/recommendation', category: category, diagnostic_result: diagnostic_result %>
     </li>
   <% end %>
 <% end %>

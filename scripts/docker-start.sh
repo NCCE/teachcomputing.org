@@ -13,7 +13,7 @@ COMMAND="$(nc -z localhost 8889 2>&1)"
 if [[ $COMMAND =~ .*succeeded.* ]]; then
   echo "already exists"
 else
-  ssh -f -C -N -D 8889 -L8888:127.0.0.1:8888 proxy
+  yarn run start-tunnel
   echo "done"
 fi
 

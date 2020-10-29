@@ -105,7 +105,7 @@ docker-compose run --rm web bin/guard
 ```
 Or
 ```
-yarn run guard
+yarn run exec guard
 ```
 
 ## Sitemaps

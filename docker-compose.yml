@@ -28,13 +28,7 @@ services:
       - OAUTH_DEBUG
       - ENV_TYPE=development
     stdin_open: true
-    tty: true # Allow interactive byebug sessions.
-    # healthcheck:
-    #   test: curl --fail -s http://localhost:3000/ || exit 1
-    #   interval: 30s
-    #   timeout: 180s
-    #   retries: 3
-    #   start_period: 30s
+    tty: true # Allow interactive byebug sessions
     networks:
       - main
       - backend
