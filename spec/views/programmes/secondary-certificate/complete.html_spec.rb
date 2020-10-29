@@ -19,31 +19,19 @@ RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
     render
   end
 
-  it 'has a status' do
-    expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
-  end
+  # it 'has the programme title' do
+  #   expect(rendered).to have_css('.hero__heading', text: @programme.title)
+  # end
 
-  it 'has the programme title' do
-    expect(rendered).to have_css('.hero__heading', text: @programme.title)
-  end
+  # it 'has the download button' do
+  #   expect(rendered).to have_link('View your certificate', href: '/certificate/secondary-certificate/view-certificate')
+  # end
 
-  it 'has the download button' do
-    expect(rendered).to have_link('View your certificate', href: '/certificate/secondary-certificate/view-certificate')
-  end
+  # it 'has the journey section' do
+  #   expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your learning journey')
+  # end
 
-  it 'has the journey section' do
-    expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your learning journey')
-  end
-
-  it 'has the Twitter section' do
-    expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
-  end
-
-  it 'has the Twitter share button' do
-    expect(rendered).to have_css('.button--aside', text: 'Tweet your certificate')
-  end
-
-  it 'has the roa' do
-    expect(rendered).to have_css('.ncce-activity-list', count: 3)
-  end
+  # it 'has the Twitter section' do
+  #   expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
+  # end
 end
