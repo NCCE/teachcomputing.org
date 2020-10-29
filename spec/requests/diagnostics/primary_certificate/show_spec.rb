@@ -20,7 +20,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
       context 'when the user has not completed the diagnostic' do
         before do
           user_programme_enrolment
-          get primary_certificate_diagnostic_path(:question_1)
+          get diagnostic_primary_certificate_path(:question_1)
         end
 
         it 'assigns @questionnaire' do
@@ -40,14 +40,14 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         end
 
         it 'redirects to the programme page' do
-          get primary_certificate_diagnostic_path(:question_1)
+          get diagnostic_primary_certificate_path(:question_1)
           expect(response).to redirect_to '/certificate/primary-certificate'
         end
       end
 
       context 'when the user is not enrolled' do
         it 'redirects back to the certificate page' do
-          get primary_certificate_diagnostic_path(:question_1)
+          get diagnostic_primary_certificate_path(:question_1)
           expect(response).to redirect_to '/primary-certificate'
         end
       end
