@@ -47,15 +47,15 @@ RSpec.describe FeatureFlagService do
     context('with app defined flags') do
       subject(:flags) { described_class.new.flags }
 
-      it 'sets the future learn lti flag' do
-        expect(flags[:fl_lti_enabled]).not_to eq(nil)
+      it 'sets the secondary certificate feature flag flag' do
+        expect(flags[:secondary_certificate_enabled]).not_to eq(nil)
       end
     end
   end
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      flag_hash = { fl_lti_enabled: 'FLAG_FL_LTI_ENABLED' }
+      flag_hash = { secondary_certificate_enabled: 'SECONDARY_CERTIFICATE_ENABLED' }
       expect(FeatureFlagService::FLAGS).to eq(flag_hash)
     end
   end
