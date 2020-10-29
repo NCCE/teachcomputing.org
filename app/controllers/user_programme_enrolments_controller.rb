@@ -9,7 +9,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
     if enrolment.save
       case programme.slug
       when 'primary-certificate'
-        redirect_to primary_certificate_diagnostic_path(:question_1)
+        redirect_to diagnostic_primary_certificate_path(:question_1)
       else
         flash[:notice] = "Congrats you have enrolled on #{programme.title}"
         redirect_to programme_path(slug: programme.slug)

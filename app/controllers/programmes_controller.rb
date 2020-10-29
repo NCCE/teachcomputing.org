@@ -80,7 +80,7 @@ class ProgrammesController < ApplicationController
 
       # Navigate directly to the last question reached, or question_1.
       question = response&.current_question ? "question_#{response.current_question}" : 'question_1'
-      redirect_to primary_certificate_diagnostic_path(question.to_sym)
+      redirect_to diagnostic_primary_certificate_path(question.to_sym)
     end
 
     def user_enrolled?
