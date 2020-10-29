@@ -537,7 +537,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(stem_course_template_no: '03fb0a52-a712-eb11-a813-000d3a86d545') do |activity|
   activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
   activity.credit = 10
-  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams'
+  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams-remote'
   activity.stem_course_template_no = '03fb0a52-a712-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
@@ -570,7 +570,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 a = Activity.find_or_create_by(stem_course_template_no: '8eb6f3de-bf12-eb11-a813-000d3a86d545') do |activity|
   activity.title = 'Computer systems, Input, output and storage - Remote'
   activity.credit = 10
-  activity.slug = 'computer systems-input-output-and-storage-remote'
+  activity.slug = 'computer-systems-input-output-and-storage-remote'
   activity.stem_course_template_no = '8eb6f3de-bf12-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
