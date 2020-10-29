@@ -17,3 +17,5 @@ run_start_date,membership_id,learner_identifier,full_name,fl_profile_url,steps_c
 2019-01-07,7,user7@example.com,Name 7,https://www.futurelearn.com/profiles/7,61%,1,0%,,1234,7d116df9-7001-4e49-885c-98fd311f09e3
 2019-01-07,8,user8@example.com,Name 8,https://www.futurelearn.com/profiles/8,61%,1,0%,,1234,22752662-3f65-4c54-a394-0284679cccb9
 2019-01-07,9,user9@example.com,Name 9,https://www.futurelearn.com/profiles/9,61%,1,0%,,1234,d4beba48-1c1c-4a87-9941-a744126d02cf
+2019-01-07,9,user10@example.com,Name 9,https://www.futurelearn.com/profiles/9,61%,1,0%,,1234,bdea158d-a6bf-4f79-886b-611e861c3acf
+2019-01-07,9,53a92624-d785-4f23-860d-77d35c9a9c2e,Name 9,https://www.futurelearn.com/profiles/9,61%,1,0%,,1234,b0af88ab-d62f-407d-a58f-bb7998827a49
