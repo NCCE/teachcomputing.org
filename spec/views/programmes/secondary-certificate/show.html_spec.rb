@@ -24,11 +24,11 @@ RSpec.describe('programmes/secondary-certificate/show', type: :view) do
     expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
 
-  it 'has the title' do
-    expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your progress')
-  end
+  # it 'has the title' do
+  #   expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your progress')
+  # end
 
-  it 'has correct list setup' do
-    expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
-  end
+  # it 'has correct list setup' do
+  #   expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
+  # end
 end
