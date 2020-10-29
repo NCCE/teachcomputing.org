@@ -533,3 +533,58 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e3c14378-3015-eb11-a813
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '03fb0a52-a712-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
+  activity.credit = 10
+  activity.slug = 'higher-attainment-in-gcse-computer-science-meeting-the-challenge-of-exams'
+  activity.stem_course_template_no = '03fb0a52-a712-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a program - Remote'
+  activity.credit = 10
+  activity.slug = 'python-programming-projects-advanced-subject-knowledge-implementation-and-testing-a-program-remote'
+  activity.stem_course_template_no = 'e1e54959-db12-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813-000d3a86f6ce') do |activity|
+  activity.title = 'Search and sort algorithms - Remote'
+  activity.credit = 10
+  activity.slug = 'search-and-sort-algorithms-remote'
+  activity.stem_course_template_no = 'ce24e77f-d312-eb11-a813-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '8eb6f3de-bf12-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Computer systems, Input, output and storage - Remote'
+  activity.credit = 10
+  activity.slug = 'computer systems-input-output-and-storage-remote'
+  activity.stem_course_template_no = '8eb6f3de-bf12-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce') do |activity|
+  activity.title = 'Python programming projects - analysing, designing and evaluating a program - Remote'
+  activity.credit = 10
+  activity.slug = 'python-programming-projects-analysing-designing-and-evaluating-a-program-remote'
+  activity.stem_course_template_no = 'ad8580c0-2915-eb11-a813-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
