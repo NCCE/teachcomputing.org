@@ -30,7 +30,7 @@ RSpec.describe('courses/_aside-section', type: :view) do
       end
 
       it 'tells the user who is delivering the course' do
-        expect(rendered).to have_css('.ncce-aside__text', text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses. Please use the same email address so we can track your progress.')
+        expect(rendered).to have_css('.ncce-aside__text', text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses.')
       end
 
       it 'renders link to futurelearn LTI' do
