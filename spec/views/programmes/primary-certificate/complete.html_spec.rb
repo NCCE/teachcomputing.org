@@ -26,7 +26,7 @@ RSpec.describe('certificates/primary_certificate/complete', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.certificate__complete', count: 1)
+    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
   end
 
   it 'has the Twitter share button' do
