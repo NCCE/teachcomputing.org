@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :assessment_attempts, only: %i[create]
 
   namespace 'certificates', path: 'certificate', as: '' do
-    resource 'primary_certificate', controller: 'primary_certificate', path: 'primary-certificate', only: %i[show] do
+    resource 'primary_certificate', path: 'primary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/questionnaire/:id', to: '/diagnostics/primary_certificate#show', as: :diagnostic
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'primary-certificate' }
     end
 
-		resource 'secondary_certificate', controller: 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
+    resource 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'secondary-certificate' }
