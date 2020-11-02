@@ -1,26 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "File Access",
-      "warning_code": 16,
-      "fingerprint": "11d70bc8846b7a1488da8e25685fed9e2b7193fceeee1b4fcd138ab11845da83",
-      "check_name": "SendFile",
-      "message": "Model attribute used in file name",
-      "file": "app/controllers/programmes_controller.rb",
-      "line": 64,
-      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
-      "code": "send_file(CertificateGenerator.new(:user => current_user, :programme => Programme.enrollable.find_by!(:slug => params[:slug]), :transition => (@transition)).generate_pdf[:path], :filename => CertificateGenerator.new(:user => current_user, :programme => Programme.enrollable.find_by!(:slug => params[:slug]), :transition => (@transition)).generate_pdf[:filename], :type => \"application/pdf\", :disposition => \"inline\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "ProgrammesController",
-        "method": "certificate"
-      },
-      "user_input": "Programme.enrollable.find_by!(:slug => params[:slug])",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "1b52e260e38dfcb324eb69f664c7646fc23b80730eb6225c3b01b61c8f1409bf",
@@ -58,7 +38,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 29,
+      "line": 28,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -92,6 +72,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     }
   ],
-  "updated": "2020-09-10 08:55:03 +0100",
+  "updated": "2020-11-02 14:57:24 +0000",
   "brakeman_version": "4.8.2"
 }
