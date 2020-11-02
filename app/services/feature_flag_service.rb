@@ -1,6 +1,6 @@
 class FeatureFlagService
   FLAGS = {
-    fl_lti_enabled: 'FLAG_FL_LTI_ENABLED'
+    secondary_certificate_enabled: 'SECONDARY_CERTIFICATE_ENABLED'
   }.freeze
 
   def initialize(dependencies = {})

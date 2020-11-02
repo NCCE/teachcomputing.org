@@ -109,6 +109,6 @@ class CoursesController < ApplicationController
 
     def course_programme
       @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
-      @programme = @activity.programmes.first if @activity
+      @programme = @activity.programmes.enrollable.first if @activity
     end
 end
