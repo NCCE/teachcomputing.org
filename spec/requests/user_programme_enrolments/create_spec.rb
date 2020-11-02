@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserProgrammeEnrolmentsController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme) }
+  let(:programme) { create(:cs_accelerator_certificate_programme) }
 
   describe 'POST #create' do
     before do
@@ -13,7 +13,7 @@ RSpec.describe UserProgrammeEnrolmentsController do
 
     context 'with valid params' do
       subject do
-        post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
       end
 
       before do
@@ -32,15 +32,15 @@ RSpec.describe UserProgrammeEnrolmentsController do
     context 'with invalid params' do
       it 'raises ActiveRecord::RecordNotFound exception' do
         expect do
-          post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: nil, user_id: nil })
+          post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: nil, user_id: nil })
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
     context 'enrolling twice' do
       subject do
-        post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
-        post user_programme_enrolment_path(slug: programme.slug, user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
       end
 
       before do

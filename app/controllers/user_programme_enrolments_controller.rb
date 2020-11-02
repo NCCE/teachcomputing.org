@@ -12,7 +12,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
         redirect_to diagnostic_primary_certificate_path(:question_1)
       else
         flash[:notice] = "Congrats you have enrolled on #{programme.title}"
-        redirect_to programme_path(slug: programme.slug)
+        redirect_to programme.path
       end
 
     else
@@ -29,6 +29,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     def user_has_existing_enrolment?
       enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
-      redirect_to programme_path(slug: enrolment.programme.slug) if enrolment
+      redirect_to enrolment.programme.path if enrolment
     end
 end

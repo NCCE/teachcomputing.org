@@ -64,7 +64,5 @@ class Programme < ApplicationRecord
     nil
   end
 
-  def path
-    programme_path(slug)
-  end
+  def path; end
 end

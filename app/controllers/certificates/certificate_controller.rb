@@ -3,7 +3,7 @@ module Certificates
     before_action :authenticate_user!
 
     def show
-      return redirect_to programme_path(programme.slug) unless programme.user_completed?(current_user)
+      return redirect_to programme.path unless programme.user_completed?(current_user)
 
       generator = CertificateGenerator.new(
         user: current_user,

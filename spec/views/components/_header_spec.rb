@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe('components/_header', type: :view) do
   let(:user) { create(:user) }
-  let(:enrolment) { create(:user_programme_enrolment, user: user) }
+  let(:enrolment) do
+    create(:user_programme_enrolment,
+           user: user,
+           programme: create(:cs_accelerator_certificate_programme))
+  end
 
   it 'has a link to the home page ' do
     render

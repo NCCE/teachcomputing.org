@@ -6,7 +6,7 @@
       <div class="govuk-grid-column-two-thirds">
 				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
         <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
-        <p class="govuk-body"><%= link_to 'Download your certificate', programme_certificate_path(@programme.slug), class: 'govuk-button button', role: 'button', draggable: 'false' %></p>
+        <p class="govuk-body"><%= link_to 'Download your certificate', certificate_primary_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %></p>
 
 				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
 
@@ -68,4 +68,3 @@
     </div>
   </div>
 </div>
-

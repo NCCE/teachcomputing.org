@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PagesController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator_certificate_programme) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
@@ -42,7 +42,7 @@ RSpec.describe PagesController do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         user_programme_enrolment
         get cs_accelerator_path
-        expect(response).to redirect_to(programme_path('cs-accelerator'))
+        expect(response).to redirect_to(cs_accelerator_certificate_path)
       end
     end
   end

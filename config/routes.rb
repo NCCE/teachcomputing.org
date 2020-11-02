@@ -29,23 +29,24 @@ Rails.application.routes.draw do
       get '/questionnaire/:id', to: '/diagnostics/primary_certificate#show', as: :diagnostic
       put '/questionnaire/:id', to: '/diagnostics/primary_certificate#update', as: :update_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'primary-certificate' }
+      post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
     resource 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'secondary-certificate' }
+      post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+    end
+
+    resource 'cs_accelerator', controller: 'cs_accelerator', path: 'cs-accelerator', only: %i[show], as: :cs_accelerator_certificate do
+      get '/complete', action: :complete, as: :complete
+      get '/pending', action: :pending, as: :pending
+      get '/diagnostic/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
+      get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
+      post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
   end
-
-  get '/certificate/:slug', action: :show, controller: 'programmes', as: :programme
-  get '/certificate/:slug/complete', action: :complete, controller: 'programmes', as: :programme_complete
-  get '/certificate/:slug/pending', action: :pending, controller: 'programmes', as: :programme_pending
-
-  get '/certificate/:slug/view-certificate', action: :show, controller: 'certificates/certificate', as: :programme_certificate
-
-  post '/certificate/:slug/enrol', action: :create, controller: 'user_programme_enrolments', as: :user_programme_enrolment
-  get '/certificate/cs-accelerator/diagnostic/:id', to: 'diagnostics/cs_accelerator#show', as: :cs_accelerator_diagnostic
 
   namespace 'class_marker' do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'

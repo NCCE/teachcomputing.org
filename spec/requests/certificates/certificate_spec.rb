@@ -22,25 +22,19 @@ RSpec.describe Certificates::CertificateController do
           .to receive(:current_user).and_return(user)
       end
 
-      it 'handles missing programmes' do
-        expect do
-          get programme_certificate_path('programme-missing')
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-
       it 'redirects if not enrolled' do
-        get programme_certificate_path('cs-accelerator')
-        expect(response).to redirect_to(programme_path('cs-accelerator'))
+        get certificate_cs_accelerator_certificate_path
+        expect(response).to redirect_to(cs_accelerator_certificate_path)
       end
 
       describe 'and enrolled' do
         before do
           user_programme_enrolment
-          get programme_certificate_path('cs-accelerator')
+          get certificate_cs_accelerator_certificate_path
         end
 
         it 'redirects if not complete' do
-          expect(response).to redirect_to(programme_path('cs-accelerator'))
+          expect(response).to redirect_to(cs_accelerator_certificate_path)
         end
       end
 
@@ -55,7 +49,7 @@ RSpec.describe Certificates::CertificateController do
           programme_activity
           passed_exam.set_to_complete
           user_programme_enrolment.transition_to(:complete, certificate_number: 20)
-          get programme_certificate_path('cs-accelerator')
+          get certificate_cs_accelerator_certificate_path
         end
 
         it 'shows the page if complete' do
@@ -71,7 +65,7 @@ RSpec.describe Certificates::CertificateController do
 
     describe 'while logged out' do
       before do
-        get programme_certificate_path('cs-accelerator')
+        get certificate_cs_accelerator_certificate_path
       end
 
       it 'redirects to login' do
