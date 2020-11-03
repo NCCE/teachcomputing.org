@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :assessment_attempts, only: %i[create]
 
   namespace 'certificates', path: 'certificate', as: '' do
-    resource 'primary_certificate', path: 'primary-certificate', only: %i[show] do
+    resource 'primary_certificate', controller: 'primary_certificate', path: 'primary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/questionnaire/:id', to: '/diagnostics/primary_certificate#show', as: :diagnostic

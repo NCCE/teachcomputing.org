@@ -57,7 +57,7 @@ module Certificates
       end
 
       def user_enrolled?
-        redirect_to "/#{@programme.slug}" unless @programme.user_enrolled?(current_user)
+        redirect_to primary_path unless @programme.user_enrolled?(current_user)
       end
 
       def user_programme_enrolment_pending?
