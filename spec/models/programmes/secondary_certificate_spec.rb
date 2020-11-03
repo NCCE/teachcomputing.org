@@ -6,6 +6,21 @@ RSpec.describe Programmes::SecondaryCertificate do
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: cs_accelerator.id) }
   let(:secondary_certificate) { create(:secondary_certificate) }
 
+  describe '#csa_eligible_courses' do
+    context 'without a CS Accelerator enrolment' do
+      it 'returns nil' do
+        cs_accelerator
+        expect(secondary_certificate.csa_eligible_courses(user)).to eq nil
+      end
+    end
+
+    it 'returns a collection of eligble courses' do
+      cs_accelerator_enrolment.transition_to(:complete)
+      create(:achievement, user_id: user.id, programme_id: cs_accelerator.id).transition_to(:complete)
+      expect(secondary_certificate.csa_eligible_courses(user).count).to eq 1
+    end
+  end
+
   describe '#user_is_eligible?' do
     context 'when user has not completed cs_accelerator' do
       it 'returns falsey' do

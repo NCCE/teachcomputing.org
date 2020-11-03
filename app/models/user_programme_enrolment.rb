@@ -17,6 +17,12 @@ class UserProgrammeEnrolment < ApplicationRecord
     UserProgrammeEnrolmentTransition
   end
 
+  def completed_at?
+    return nil unless current_state == 'complete'
+
+    last_transition.created_at
+  end
+
   def set_eligible_achievements_for_programme
     user.achievements.where(programme_id: nil).each do |achievement|
       if programme.programme_activities.find_by(activity_id: achievement.activity_id)
