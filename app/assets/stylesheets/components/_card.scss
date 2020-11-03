@@ -176,7 +176,7 @@
 	display: block;
 	height: 81px;
 	margin: auto;
-	max-width: 20rem;
+	max-width: 16rem;
 
   @include govuk-media-query($from: desktop) {
 		width: auto;
