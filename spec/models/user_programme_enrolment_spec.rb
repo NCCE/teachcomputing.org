@@ -33,6 +33,20 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     end
   end
 
+  describe '#completed_at?' do
+
+    it 'returns nil' do
+      expect(user_programme_enrolment.completed_at?).to eq nil
+    end
+
+    context 'when complete' do
+      it 'returns the date of transition' do
+        user_programme_enrolment.transition_to(:complete)
+        expect(user_programme_enrolment.created_at?).to_not eq nil
+      end
+    end
+  end
+
   describe '#set_eligible_achievements_for_programme' do
     before do
       programme
