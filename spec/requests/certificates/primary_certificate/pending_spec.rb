@@ -34,6 +34,8 @@ RSpec.describe Certificates::PrimaryCertificateController do
   end
 
   describe '#show' do
+    subject { get pending_primary_certificate_path }
+
     context 'when user is logged in' do
       before do
         programme
@@ -43,77 +45,29 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
       context 'when user is not enrolled' do
         it 'redirects if not enrolled' do
-          get primary_certificate_path
+          subject
           expect(response).to redirect_to(primary_path)
         end
       end
 
-      context 'when user has not completed questionnaire' do
+      context 'when user is enrolled' do
         before do
           setup_achievements_for_programme
-        end
-
-        it 'redirects to the diagnostic path' do
-          get primary_certificate_path
-          expect(response)
-            .to redirect_to(diagnostic_primary_certificate_path(:question_1))
-        end
-
-        it 'redirects to last question completed' do
-          questionnaire = create(:questionnaire, :primary_enrolment_questionnaire)
-          create(:questionnaire_response,
-                 user: user,
-                 questionnaire: questionnaire,
-                 current_question: 3)
-          get primary_certificate_path
-          expect(response)
-            .to redirect_to(diagnostic_primary_certificate_path(:question_3))
-        end
-      end
-
-      context 'when user has completed questionnaire' do
-        before do
-          setup_achievements_for_programme
-          create(:activity, :community_5)
-          create_list(:activity, 3, :community)
-          create_list(:activity, 4, :community_20)
-          questionnaire = create(:questionnaire, :primary_enrolment_questionnaire)
-          questionnaire_response = create(:questionnaire_response,
-                                          user: user,
-                                          questionnaire: questionnaire)
-          questionnaire_response.transition_to(:complete)
         end
 
         it 'renders the correct template' do
-          get primary_certificate_path
-          expect(response).to render_template('show')
+          subject
+          expect(response).to render_template(:pending)
         end
 
         it 'assigns the correct programme' do
-          get primary_certificate_path
+          subject
           expect(assigns(:programme)).to eq(Programme.primary_certificate)
-        end
-
-        it 'assigns the assessments' do
-          get primary_certificate_path
-          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
-        end
-
-        it 'assigns the user programme achievements' do
-          get primary_certificate_path
-          expect(assigns(:user_programme_achievements))
-            .to be_a(UserProgrammeAchievements)
-        end
-
-        it 'redirects to pending when course pending' do
-          user_programme_enrolment.transition_to(:pending)
-          get primary_certificate_path
-          expect(response).to redirect_to(pending_primary_certificate_path)
         end
 
         it 'redirects to complete when course complete' do
           user_programme_enrolment.transition_to(:complete)
-          get primary_certificate_path
+          subject
           expect(response).to redirect_to(complete_primary_certificate_path)
         end
       end
@@ -121,7 +75,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
     describe 'while logged out' do
       before do
-        get primary_certificate_path
+        subject
       end
 
       it 'redirects to login' do

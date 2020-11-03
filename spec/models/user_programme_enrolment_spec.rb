@@ -41,9 +41,18 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
         create(:programme_activity, programme: programme, activity: activity)
       end
     end
+
     it 'sets the programme_id for the achievements relating to the programe ' do
       create(:user_programme_enrolment, user: user, programme: programme)
       expect(user.achievements.pluck(:programme_id).uniq).to include programme.id
     end
+  end
+
+  describe 'delegates' do
+    it { is_expected.to delegate_method(:can_transition_to?).to(:state_machine).as(:can_transition_to?) }
+    it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
+    it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
+    it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
+    it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
 end
