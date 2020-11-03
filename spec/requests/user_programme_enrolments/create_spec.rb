@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserProgrammeEnrolmentsController do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator_certificate_programme) }
+  let(:programme) { create(:cs_accelerator) }
 
   describe 'POST #create' do
     before do

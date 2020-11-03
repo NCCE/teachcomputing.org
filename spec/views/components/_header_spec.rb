@@ -5,7 +5,7 @@ RSpec.describe('components/_header', type: :view) do
   let(:enrolment) do
     create(:user_programme_enrolment,
            user: user,
-           programme: create(:cs_accelerator_certificate_programme))
+           programme: create(:cs_accelerator))
   end
 
   it 'has a link to the home page ' do

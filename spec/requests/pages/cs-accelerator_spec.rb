@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PagesController do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator_certificate_programme) }
+  let(:programme) { create(:cs_accelerator) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,

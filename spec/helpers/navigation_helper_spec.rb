@@ -5,7 +5,7 @@ describe NavigationHelper, type: :helper do
   let(:enrolment) do
     create(:user_programme_enrolment,
            user: user,
-           programme: create(:cs_accelerator_certificate_programme))
+           programme: create(:cs_accelerator))
   end
 
   describe('#certificate_progress_for_user') do
