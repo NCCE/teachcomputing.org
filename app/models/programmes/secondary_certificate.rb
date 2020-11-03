@@ -1,11 +1,10 @@
 module Programmes
   class SecondaryCertificate < Programme
     def csa_eligible_courses(user)
-      programme = Programme.cs_accelerator
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
+      enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: Programme.cs_accelerator.id)
       return unless enrolment
 
-      courses = user.achievements.for_programme(programme).where('created_at > ?', enrolment.completed_at?)
+      courses = user.achievements.for_programme(Programme.cs_accelerator).where('created_at > ?', enrolment.completed_at?)
     end
 
     def diagnostic
