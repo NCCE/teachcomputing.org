@@ -4,8 +4,8 @@ require_relative './seeds/programmes/primary-certificate'
 
 require_relative './seeds/activities/action'
 require_relative './seeds/activities/diagnostic'
-require_relative './seeds/activities/face-to-face'
-require_relative './seeds/activities/online'
+require_relative './seeds/activities/stem_learning'
+require_relative './seeds/activities/feature_learn'
 require_relative './seeds/activities/assessment'
 require_relative './seeds/activities/community'
 
