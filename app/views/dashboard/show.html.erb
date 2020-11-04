@@ -1,5 +1,18 @@
 <% meta_tag :title, 'Your dashboard - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Your dashboard', colour: 'blue', glyph_num: '3', glyph_position: 'bottom' %>
 <%= render "dashboard/programmes/hero" if current_user.programmes.size.positive? %>
+<div class="ncce-dashboard-activity">
+	<div class="govuk-width-container">
+		<div class="govuk-main-wrapper">
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+					<p class="govuk-body-l">Welcome to the Teach Computing Dashboard! Enrol and track your progress in our range of professional development programmes, accredited by BCS; The Chartered Institute for IT.</p>
+				</div>
+			</div>
+			<%= render 'dashboard/certificates' %>
+			<%= render 'dashboard/courses' %>
+		</div>
+	</div>
+</div>
 <%= render 'dashboard/activity' %>
 
