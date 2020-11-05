@@ -7032,12 +7032,8 @@ a:not([class]):active {
   background-color: #f47c31;
 }
 
-.hero--yellow,
-.hero--secondary-certificate {
-  background-color: #e7a615;
-}
-
 .hero--purple,
+.hero--secondary-certificate,
 .hero--cs-accelerator {
   background-color: #a94e91;
 }
