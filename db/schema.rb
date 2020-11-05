@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_134207) do
+ActiveRecord::Schema.define(version: 2020_11_03_150940) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -102,8 +103,19 @@ ActiveRecord::Schema.define(version: 2020_10_27_134207) do
     t.uuid "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "programme_activity_grouping_id"
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
+  end
+
+  create_table "programme_activity_groupings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.integer "sort_key"
+    t.integer "required_for_completion"
+    t.uuid "programme_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
   create_table "programme_complete_counters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
