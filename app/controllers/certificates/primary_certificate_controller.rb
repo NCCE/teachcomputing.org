@@ -10,7 +10,6 @@ module Certificates
     def show
       return redirect_to complete_primary_certificate_path if @programme.user_completed?(current_user)
 
-      @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
       @user_programme_achievements = user_programme_achievements
       render :show
     end
