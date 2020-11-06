@@ -7,7 +7,7 @@ RSpec.describe('certificates/primary_certificate/_recommendation', type: :view) 
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 0
             }
-    expect(rendered).to have_link('Teaching Programming in Primary Schools', href: 'https://www.futurelearn.com/courses/teaching-programming-primary-school')
+    expect(rendered).to have_link('Teaching Programming in Primary Schools', href: 'https://teachcomputing.org/courses/CO010/teaching-programming-in-primary-schools')
   end
 
   it 'shows expected face to face course for lowest band' do
@@ -44,8 +44,8 @@ RSpec.describe('certificates/primary_certificate/_recommendation', type: :view) 
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 61
             }
-    expect(rendered).to have_link('Programming 101: An Introduction to Python for Educators', href: 'https://www.futurelearn.com/courses/programming-101')
-    expect(rendered).to have_link('Scratch to Python: Moving from Block to Text based Programming', href: 'https://www.futurelearn.com/courses/block-to-text-based-programming')
+    expect(rendered).to have_link('Programming 101: An Introduction to Python for Educators', href: 'hhttps://teachcomputing.org/courses/CO207/programming-101-an-introduction-to-python-for-educators')
+    expect(rendered).to have_link('Scratch to Python: Moving from Block to Text based Programming', href: 'https://teachcomputing.org/courses/CO211/scratch-to-python-moving-from-block-to-text-based-programming')
   end
 
   it 'shows expected face to face course for highest band' do
