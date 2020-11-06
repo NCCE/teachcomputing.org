@@ -63,7 +63,7 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     end
 
     def finish_wizard_path
-      programme_path(Programme.primary_certificate.slug)
+      primary_certificate_path
     end
 
     def programme
@@ -84,10 +84,10 @@ class Diagnostics::PrimaryCertificateController < ApplicationController
     end
 
     def check_answers(answers)
-      steps.each { |step|
+      steps.each do |step|
         step_index = get_step_index(step)
         return step if step_index && !answers.include?(step_index.to_s) # returns the first missing answer
-      }
-      return nil
+      end
+      nil
     end
 end

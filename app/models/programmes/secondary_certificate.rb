@@ -11,7 +11,7 @@ module Programmes
       false
     end
 
-    def user_completed_diagnostic?(user)
+    def user_completed_diagnostic?(_user)
       false
     end
 
@@ -21,6 +21,7 @@ module Programmes
       enrolment.current_state == :complete.to_s
     end
 
+
     def user_meets_completion_requirement?(user)
       completed_group_count = 0
       programme_activity_groupings.each do |group|
@@ -28,6 +29,9 @@ module Programmes
       end
 
       return true if completed_group_count == programme_activity_groupings.count
+    end 
+    
+    def path
     end
   end
 end

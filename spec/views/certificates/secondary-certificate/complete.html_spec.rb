@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/secondary-certificate/complete', type: :view) do
+RSpec.describe('certificates/secondary_certificate/complete', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
   let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
