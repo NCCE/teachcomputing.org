@@ -29,9 +29,10 @@ module Programmes
       end
 
       return true if completed_group_count == programme_activity_groupings.count
-    end 
-    
+    end
+
     def path
+      secondary_certificate_path
     end
   end
 end
