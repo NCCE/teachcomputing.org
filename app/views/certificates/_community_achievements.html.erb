@@ -10,7 +10,7 @@
         <%= presenter.button_label %>
         </button>
         <span class="ihavedonethis__popup">
-          <%= form_for Achievement.new, url: { controller: 'achievements', action: 'create' } do |f| %>
+          <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' } do |f| %>
             <span class="govuk-form-group ihavedonethis__group">
               <%= label_tag "#{:self_verification_info.to_s}_#{presenter.id}", presenter.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
               <%= text_field_tag "#{:self_verification_info.to_s}_#{presenter.id}", '', class: 'govuk-input', name: :self_verification_info %>

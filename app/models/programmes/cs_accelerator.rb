@@ -39,5 +39,9 @@ module Programmes
     def diagnostic
       activities.find_by!(category: 'diagnostic')
     end
+
+    def path
+      cs_accelerator_certificate_path
+    end
   end
 end
