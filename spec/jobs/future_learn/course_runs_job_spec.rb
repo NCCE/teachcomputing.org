@@ -1,75 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe FutureLearn::CourseRunsJob, type: :job do
-  let(:mock_runs) do
-    [
-      {
-        uuid: 'run1uuid',
-        href: 'https://testapi.com/course_runs/run1uuid',
-        title: 'Scratch to Python: Moving from Block- to Text-based Programming',
-        full_code: nil,
-        code: nil,
-        start_time: '2019-03-04T00:00:00.000Z',
-        weeks_count: 4,
-        course: {
-          uuid: 'course1uuid',
-          href: 'https://testapi.com/courses/course1uuid'
-        }
-      },
-
-      {
-        uuid: 'run2uuid',
-        href: 'https://testapi.com/course_runs/run2uuid',
-        title: 'Scratch to Python: Moving from Block- to Text-based Programming',
-        full_code: nil,
-        code: nil,
-        start_time: '2019-05-21T00:00:00.000Z',
-        weeks_count: 4,
-        course: {
-          uuid: 'course1uuid',
-          href: 'https://testapi.com/courses/course1uuid'
-        }
-      },
-
-      {
-        uuid: 'run3uuid',
-        href: 'https://testapi.com/course_runs/run3uuid',
-        title: 'Programming 101: An Introduction to Python for Educators',
-        full_code: nil,
-        code: nil,
-        start_time: '2019-01-07T00:00:00.000Z',
-        weeks_count: 4,
-        course: {
-          uuid: 'course2uuid',
-          href: 'https://testapi.com/courses/course2uuid'
-        }
-      },
-
-      {
-        uuid: 'run4uuid',
-        href: 'https://testapi.com/course_runs/run4uuid',
-        title: 'Teaching Programming in Primary Schools',
-        full_code: nil,
-        code: nil,
-        start_time: '2019-03-04T00:00:00.000Z',
-        weeks_count: 4,
-        course: {
-          uuid: 'course3uuid',
-          href: 'https://testapi.com/courses/course3uuid'
-        }
-      }
-    ]
-  end
+  let(:course1_uuid) { '5508d66a-c52a-429b-8ff1-d3fe8518b955' }
+  let(:course2_uuid) { 'e0aea4ae-4b94-4dca-bb19-296e8e095a49' }
+  let(:course1_run1) { build(:fl_course_run, course_uuid: course1_uuid) }
+  let(:course1_run2) { build(:fl_course_run, course_uuid: course1_uuid) }
+  let(:course2_run) { build(:fl_course_run, course_uuid: course2_uuid) }
+  let(:unknown_course_run) { build(:fl_course_run) }
 
   before do
-    create(:activity, future_learn_course_uuid: 'course1uuid')
-    create(:activity, future_learn_course_uuid: 'course2uuid')
+    create(:activity, future_learn_course_uuid: course1_uuid)
+    create(:activity, future_learn_course_uuid: course2_uuid)
 
     allow(FutureLearn::Queries::CourseRuns)
       .to receive(:all)
-      .and_return(mock_runs)
-
-    allow(Raven).to receive(:capture_message)
+      .and_return([course1_run1, course1_run2, course2_run, unknown_course_run])
   end
 
   describe '#perform' do
@@ -78,7 +23,7 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
       expect(FutureLearn::Queries::CourseRuns).to have_received(:all)
     end
 
-    it 'queues job to check enrolments' do
+    it 'queues job to check enrolments ignoring courses not in system' do
       expect { described_class.perform_now }
         .to have_enqueued_job(FutureLearn::CourseEnrolmentsJob).exactly(2).times
     end
@@ -88,23 +33,13 @@ RSpec.describe FutureLearn::CourseRunsJob, type: :job do
       described_class.perform_now
       expect(FutureLearn::CourseEnrolmentsJob)
         .to have_received(:perform_later)
-        .with(course_uuid: 'course1uuid', run_uuids: %w[run1uuid run2uuid])
+        .with(course_uuid: course1_uuid,
+              run_uuids: [course1_run1[:uuid], course1_run2[:uuid]])
         .once
       expect(FutureLearn::CourseEnrolmentsJob)
         .to have_received(:perform_later)
-        .with(course_uuid: 'course2uuid', run_uuids: %w[run3uuid])
+        .with(course_uuid: course2_uuid, run_uuids: [course2_run[:uuid]])
         .once
-    end
-
-    it 'reports any courses not in our records' do
-      described_class.perform_now
-      expect(Raven)
-        .to have_received(:capture_message)
-        .once
-        .with(
-          'FutureLearn course not found during progress update checking: '\
-          'course3uuid, - Teaching Programming in Primary Schools'
-        )
     end
   end
 end

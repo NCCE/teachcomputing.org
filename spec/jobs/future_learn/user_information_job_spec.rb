@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe FutureLearn::UserInformationJob, type: :job do
   let(:tc_user_id) { 'b4b3542b-e51b-4cb6-be49-9cdf112efd0d' }
-  let(:course_uuid) { '621a6593-9b37-47a8-a9b5-e840e6b66fbe' }
   let(:fl_membership_id) { '4248b6c4-70c4-4288-acf3-ce620fd73494' }
-  let(:enrolment) { build(:fl_enrolment, membership_uuid: fl_membership_id) }
 
   describe '.perform' do
     before do
@@ -22,23 +20,16 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
       end
 
       it 'calls organisation membership with correct id' do
-        described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment)
+        described_class.perform_now(membership_id: fl_membership_id)
         expect(FutureLearn::Queries::OrganisationMemberships)
           .to have_received(:one)
           .with(fl_membership_id)
       end
 
       it 'updates users future_learn_organisation_memberships' do
-        expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
+        expect { described_class.perform_now(membership_id: fl_membership_id) }
           .to change { user.reload.future_learn_organisation_memberships }
           .to([fl_membership_id])
-      end
-
-      it 'queues UpdateUserActivityJob' do
-        expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
-          .to have_enqueued_job(FutureLearn::UpdateUserActivityJob)
-          .with(course_uuid: course_uuid, enrolment: enrolment)
-          .once
       end
 
       it 'does not duplicate membership ids' do
@@ -48,7 +39,7 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
         user.future_learn_organisation_memberships = [fl_membership_id]
         user.save
 
-        described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment)
+        described_class.perform_now(membership_id: fl_membership_id)
         expect(user.reload.future_learn_organisation_memberships)
           .to eq([fl_membership_id])
       end
@@ -64,7 +55,7 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
       end
 
       it 'updates user future_learn_organisation_membership_uuid' do
-        expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
+        expect { described_class.perform_now(membership_id: fl_membership_id) }
           .to change { user.reload.future_learn_organisation_memberships }
           .to([fl_membership_id])
       end
@@ -78,11 +69,11 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
       end
 
       it 'does not error' do
-        expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }.not_to raise_error
+        expect { described_class.perform_now(membership_id: fl_membership_id) }.not_to raise_error
       end
 
       it 'does not queue UpdateUserActivityJob' do
-        expect { described_class.perform_now(course_uuid: course_uuid, enrolment: enrolment) }
+        expect { described_class.perform_now(membership_id: fl_membership_id) }
           .not_to have_enqueued_job(FutureLearn::UpdateUserActivityJob)
       end
     end

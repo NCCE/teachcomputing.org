@@ -11,11 +11,7 @@ module FutureLearn
       tc_course_ids = Activity.all.pluck(:future_learn_course_uuid).compact
 
       course_run_ids_hash.each do |course_id, run_ids|
-        unless tc_course_ids.include?(course_id)
-          title = course_runs.select { |r| r[:course][:uuid] == course_id }.first[:title]
-          report_missing_course(course_id, title)
-          next
-        end
+        next unless tc_course_ids.include?(course_id)
 
         FutureLearn::CourseEnrolmentsJob.perform_later(
           course_uuid: course_id,
@@ -23,11 +19,5 @@ module FutureLearn
         )
       end
     end
-
-    private
-
-      def report_missing_course(course_id, title)
-        Raven.capture_message("FutureLearn course not found during progress update checking: #{course_id}, - #{title}")
-      end
   end
 end
