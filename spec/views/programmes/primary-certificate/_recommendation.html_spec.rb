@@ -7,7 +7,7 @@ RSpec.describe('certificates/primary_certificate/_recommendation', type: :view) 
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 0
             }
-    expect(rendered).to have_link('Teaching Programming in Primary Schools', href: 'https://www.futurelearn.com/courses/teaching-programming-primary-school')
+    expect(rendered).to have_link('Teaching Programming in Primary Schools', href: 'https://teachcomputing.org/courses/CO010/teaching-programming-in-primary-schools')
   end
 
   it 'shows expected face to face course for lowest band' do
