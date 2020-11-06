@@ -191,7 +191,7 @@ a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activit
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.self_verification_info = 'TBC'
+  activity.self_verification_info = ''
 end
 
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
