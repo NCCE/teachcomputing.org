@@ -22,19 +22,12 @@ module Programmes
     end
 
     def user_meets_completion_requirement?(user)
-      groups_completed_count = 0
+      completed_group_count = 0
       programme_activity_groupings.each do |group|
-          complete_requirement = group.required_for_completion
-          compelted_activity_count = 0
-          group.programme_activities.each do |programme_activity|
-              completed_activity = user.achievements.in_state(:complete).for_programme(self).where(activity_id: programme_activity.activity.id).any?
-              compelted_activity_count += 1 if completed_activity
-              groups_completed_count += 1 if compelted_activity_count >= complete_requirement
-              break if compelted_activity_count >= complete_requirement
-          end
-        end
+        completed_group_count += 1 if group.user_complete?(user)
+      end
 
-        return true if groups_completed_count == programme_activity_groupings.count
+      return true if completed_group_count == programme_activity_groupings.count
     end
   end
 end
