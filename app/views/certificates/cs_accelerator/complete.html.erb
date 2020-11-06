@@ -7,7 +7,7 @@
 				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
         <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
         <p class="govuk-body">
-          <%= link_to 'View your certificate', programme_certificate_path('cs-accelerator'), class: 'govuk-button button', role: 'button', draggable: 'false' %>
+          <%= link_to 'View your certificate', certificate_cs_accelerator_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
 				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
 				<h3 class="govuk-heading-s">Continue learning</h3>
@@ -68,7 +68,7 @@
         </div>
       </div>
       <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-        <%= render 'programmes/cs-accelerator/achievements' %>
+        <%= render 'achievements' %>
       </ul>
     </div>
   </div>

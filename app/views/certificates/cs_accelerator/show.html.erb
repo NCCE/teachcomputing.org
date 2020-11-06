@@ -11,7 +11,7 @@
 				<div class="govuk-grid-column-two-thirds">
           <div class="govuk-body-l">Welcome to the Computer Science Accelerator Programme!
           To complete your certificate you’ll need to work through the activities below.</div>
-          <%= render 'programmes/cs-accelerator/bursary-info' %>
+          <%= render 'certificates/cs_accelerator/bursary-info' %>
 				</div>
 				<div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-s">Your activities</h2>
@@ -19,12 +19,12 @@
             <p class="govuk-body">You can do as much training as you like as part of this programme</p>
             <%= link_to 'Book or join a course today', courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0' %>
           </div>
-					<%= render 'programmes/cs-accelerator/activity-list' %>
-				</div>
-				<div class="govuk-grid-column-one-third">
-					<%= render 'programmes/cs-accelerator/aside' %>
-				</div>
-			</div>
-		</div>
-	</div>
+          <%= render 'activity-list' %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render 'aside' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

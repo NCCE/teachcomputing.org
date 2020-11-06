@@ -17,15 +17,14 @@ class PagesController < ApplicationController
 
   def login
     auth_uri = '/auth/stem'
-    if params[:source_uri].present?
-      auth_uri += "?source_uri=#{params[:source_uri]}"
-    end
+    auth_uri += "?source_uri=#{params[:source_uri]}" if params[:source_uri].present?
     render template: 'pages/login', locals: { auth_uri: auth_uri }
   end
 
   def static_programme_page
     @programme = Programme.find_by!(slug: params[:page_slug])
-    redirect_to programme_path(params[:page_slug]) and return if @programme.user_enrolled?(current_user)
+    redirect_to @programme.path and return if @programme.user_enrolled?(current_user)
+
     render template: "pages/#{params[:page_slug]}"
   end
 end
