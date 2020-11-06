@@ -10,7 +10,6 @@ RSpec.describe Programmes::PrimaryCertificate do
   let(:community_5_activity) { create(:activity, :community_5) }
   let(:community_20_activity) { create(:activity, :community_20) }
 
-
   let(:setup_achievements_for_partial_completion) do
     user_programme_enrolment
     activities = [online_course, face_to_face_course, community_5_activity]
@@ -43,9 +42,9 @@ RSpec.describe Programmes::PrimaryCertificate do
 
     context 'when user has not done the diagnostic' do
       it 'raises error if called' do
-        expect {
+        expect do
           programme.diagnostic_result(user)
-        }.to raise_error(NoMethodError)
+        end.to raise_error(NoMethodError)
       end
     end
 
@@ -71,9 +70,9 @@ RSpec.describe Programmes::PrimaryCertificate do
 
     context 'when user is not passed in' do
       it 'raises error if user is nil' do
-        expect {
+        expect do
           programme.user_meets_completion_requirement?(nil)
-        }.to raise_error(NoMethodError)
+        end.to raise_error(NoMethodError)
       end
     end
 
@@ -135,6 +134,12 @@ RSpec.describe Programmes::PrimaryCertificate do
   describe '#max_credits_for_certificate' do
     it 'returns 75' do
       expect(programme.max_credits_for_certificate).to eq 75
+    end
+  end
+
+  describe '#path' do
+    it 'returns the path for the programme' do
+      expect(programme.path).to eq('/certificate/primary-certificate')
     end
   end
 end

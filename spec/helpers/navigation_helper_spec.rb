@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe NavigationHelper, type: :helper do
   let(:user) { create(:user) }
-  let(:enrolment) { create(:user_programme_enrolment, user: user) }
+  let(:enrolment) do
+    create(:user_programme_enrolment,
+           user: user,
+           programme: create(:cs_accelerator))
+  end
 
   describe('#certificate_progress_for_user') do
     context 'when a user is enrolled on a programme' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProgrammesController do
+RSpec.describe Certificates::CertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -22,31 +22,25 @@ RSpec.describe ProgrammesController do
           .to receive(:current_user).and_return(user)
       end
 
-      it 'handles missing programmes' do
-        expect do
-          get programme_certificate_path('programme-missing')
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-
       it 'redirects if not enrolled' do
-        get programme_certificate_path('cs-accelerator')
-        expect(response).to redirect_to(cs_accelerator_path)
+        get certificate_cs_accelerator_certificate_path
+        expect(response).to redirect_to(cs_accelerator_certificate_path)
       end
 
       describe 'and enrolled' do
         before do
           user_programme_enrolment
-          get programme_certificate_path('cs-accelerator')
+          get certificate_cs_accelerator_certificate_path
         end
 
         it 'redirects if not complete' do
-          expect(response).to redirect_to(programme_path('cs-accelerator'))
+          expect(response).to redirect_to(cs_accelerator_certificate_path)
         end
       end
 
       describe 'and complete' do
         before do
-          generator_double = instance_double(CertificateGenerator)
+          generator_double = instance_double(::CertificateGenerator)
           allow(generator_double)
             .to receive(:generate_pdf)
             .and_return({ path: 'spec/support/example_certificate.pdf', filename: 'test-certificate.pdf' })
@@ -55,7 +49,7 @@ RSpec.describe ProgrammesController do
           programme_activity
           passed_exam.set_to_complete
           user_programme_enrolment.transition_to(:complete, certificate_number: 20)
-          get programme_certificate_path('cs-accelerator')
+          get certificate_cs_accelerator_certificate_path
         end
 
         it 'shows the page if complete' do
@@ -66,24 +60,12 @@ RSpec.describe ProgrammesController do
           expect(response.content_type).to eq('application/pdf')
           expect(response.headers['Content-Disposition']).to eq('inline; filename="test-certificate.pdf"')
         end
-
-        it 'assigns the programme' do
-          expect(assigns(:programme)).to eq(programme)
-        end
-
-        it 'assigns the passed_test_at date' do
-          expect(assigns(:transition).created_at).to eq(user_programme_enrolment.last_transition.created_at)
-        end
-
-        it 'assigns the certificate_number' do
-          expect(assigns(:transition).metadata['certificate_number']).to eq(20)
-        end
       end
     end
 
     describe 'while logged out' do
       before do
-        get programme_certificate_path('cs-accelerator')
+        get certificate_cs_accelerator_certificate_path
       end
 
       it 'redirects to login' do

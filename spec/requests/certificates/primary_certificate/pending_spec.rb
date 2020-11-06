@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe ProgrammesController do
+RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
-  let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
+  let(:programme) { create(:primary_certificate) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
@@ -18,10 +17,9 @@ RSpec.describe ProgrammesController do
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
-
   let(:setup_achievements_for_programme) do
     assessment
     user_programme_enrolment
@@ -36,62 +34,48 @@ RSpec.describe ProgrammesController do
   end
 
   describe '#show' do
-    describe 'while logged in' do
+    subject { get pending_primary_certificate_path }
+
+    context 'when user is logged in' do
       before do
         programme
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
 
-      it 'handles missing programmes' do
-        expect do
-          get programme_path('programme-missing')
-        end.to raise_error(ActiveRecord::RecordNotFound)
+      context 'when user is not enrolled' do
+        it 'redirects if not enrolled' do
+          subject
+          expect(response).to redirect_to(primary_path)
+        end
       end
 
-      it 'redirects if not enrolled' do
-        get programme_path('cs-accelerator')
-        expect(response).to redirect_to(cs_accelerator_path)
-      end
-
-      it 'handles non-enrollable programme' do
-        non_enrollable_programme
-        expect do
-          get programme_path('non-enrollable')
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-
-      describe 'and enrolled' do
+      context 'when user is enrolled' do
         before do
           setup_achievements_for_programme
-          get programme_path('cs-accelerator')
         end
 
         it 'renders the correct template' do
-          expect(response).to render_template('show')
+          subject
+          expect(response).to render_template(:pending)
         end
 
         it 'assigns the correct programme' do
-          expect(assigns(:programme)).to eq programme
+          subject
+          expect(assigns(:programme)).to eq(Programme.primary_certificate)
         end
 
-        it 'assigns the online achievements' do
-          expect(assigns(:online_achievements)).to include(online_achievement)
-        end
-
-        it 'assigns the face to face achievements' do
-          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-        end
-
-        it 'assigns the assessments' do
-          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
+        it 'redirects to complete when course complete' do
+          user_programme_enrolment.transition_to(:complete)
+          subject
+          expect(response).to redirect_to(complete_primary_certificate_path)
         end
       end
     end
 
     describe 'while logged out' do
       before do
-        get programme_path('cs-accelerator')
+        subject
       end
 
       it 'redirects to login' do
