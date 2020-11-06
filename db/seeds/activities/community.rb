@@ -160,13 +160,14 @@ end
 
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-balance-in-computing-programme-details-can-be-found-here-https-teachcomputing-org-gender-balance') do |activity|
-  activity.title = 'Register to participate in the Gender Balance in Computing Programme – details can be found here (https://teachcomputing.org/gender-balance)'
+a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-balance-in-computing-programme') do |activity|
+  activity.title = 'Register to participate in the Gender Balance in Computing Programme'
   activity.credit = 20
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
+  activity.description = 'details can be found here <a href="https://teachcomputing.org/gender-balance" class="ncce-link">(https://teachcomputing.org/gender-balance)</a>'
   activity.self_verification_info = 'Screenshot to show registration'
 end
 
