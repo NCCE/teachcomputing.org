@@ -16,7 +16,7 @@ RSpec.describe('certificates/primary_certificate/_recommendation', type: :view) 
               category: Activity::FACE_TO_FACE_CATEGORY,
               diagnostic_result_percentage: 30
             }
-    expect(rendered).to have_link('Primary programming and algorithms', href: 'https://teachcomputing.org/courses/CO010/teaching-programming-in-primary-schools')
+    expect(rendered).to have_link('Primary programming and algorithms', href: 'https://www.stem.org.uk/cpd/ondemand/445946/primary-programming-and-algorithms')
   end
 
   it 'shows expected online course for middle band' do
