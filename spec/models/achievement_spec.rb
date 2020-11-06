@@ -66,7 +66,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'when activity has a single programme it is used' do
-      expect(achievement_with_programme.programme).to eq(programme)
+      expect(achievement_with_programme.programme.id).to eq(programme.id)
     end
 
     it 'when activity has multiple programmes it gets the most recently enrolled one' do

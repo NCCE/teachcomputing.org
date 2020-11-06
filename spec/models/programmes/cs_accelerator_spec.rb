@@ -5,7 +5,7 @@ RSpec.describe Programmes::CSAccelerator do
   let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -89,18 +89,17 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when an associated diagnostic activity doesn\'t exists' do
       it 'returns raises an RecordNotFound' do
-        expect {
+        expect do
           programme.diagnostic
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
 
   describe '#credits_achieved_for_certificate' do
-
     context 'when the user has not done any activities' do
       it 'returns 0' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (0)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(0)
       end
     end
 
@@ -110,7 +109,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (50)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -120,7 +119,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (50)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -130,7 +129,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 50%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (50)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(50)
       end
     end
 
@@ -140,7 +139,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 100%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (100)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(100)
       end
     end
 
@@ -150,21 +149,21 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns 100%' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq (100)
+        expect(programme.credits_achieved_for_certificate(user)).to eq(100)
       end
     end
   end
 
   describe '#max_credits_for_certificate' do
     it 'returns 100 for 10 hour system' do
-      expect(programme.max_credits_for_certificate).to eq 100
+      expect(programme.max_credits_for_certificate).to eq(100)
     end
   end
 
   describe '#enough_activites_for_test?' do
     context 'when the user has not done any activities' do
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (false)
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -174,7 +173,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (false)
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -184,7 +183,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (false)
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -194,7 +193,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (false)
+        expect(programme.enough_activites_for_test?(user)).to eq(false)
       end
     end
 
@@ -204,7 +203,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (true)
+        expect(programme.enough_activites_for_test?(user)).to eq(true)
       end
     end
 
@@ -214,8 +213,14 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq (true)
+        expect(programme.enough_activites_for_test?(user)).to eq(true)
       end
+    end
+  end
+
+  describe '#path' do
+    it 'returns the path for the programme' do
+      expect(programme.path).to eq('/certificate/cs-accelerator')
     end
   end
 end

@@ -10,7 +10,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
            user_id: user.id,
            programme_id: programme.id)
   end
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -20,14 +20,14 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements
-    render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+    render template: 'dashboard/programmes/_hero', locals: { programme: programme }
   end
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
       user.reload
-      render :template => 'dashboard/programmes/_hero'
+      render template: 'dashboard/programmes/_hero'
     end
 
     it 'shows the certificate section' do
@@ -35,7 +35,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     end
 
     it 'shows the certificate link' do
-      expect(rendered).to have_link(programme.title, href: programme_path(slug: programme.slug))
+      expect(rendered).to have_link(programme.title, href: programme.path)
     end
 
     it 'shows the progress bar' do
@@ -48,7 +48,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       user_programme_enrolment.transition_to(:pending)
       passed_exam
       user.reload
-      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+      render template: 'dashboard/programmes/_hero', locals: { programme: programme }
     end
 
     it 'shows the completed text' do
@@ -61,7 +61,7 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       user_programme_enrolment.transition_to(:complete)
       passed_exam
       user.reload
-      render :template => 'dashboard/programmes/_hero', :locals => { programme: programme }
+      render template: 'dashboard/programmes/_hero', locals: { programme: programme }
     end
 
     it 'shows the completed text' do

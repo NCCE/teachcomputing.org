@@ -1,4 +1,6 @@
 class Programme < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   has_many :programme_activities, dependent: :destroy
   has_many :activities, through: :programme_activities
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
@@ -69,4 +71,6 @@ class Programme < ApplicationRecord
   def cs_accelerator?
     slug == 'cs-accelerator'
   end
+
+  def path; end
 end
