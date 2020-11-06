@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
+RSpec.describe('certificates/primary_certificate/_recommendation', type: :view) do
   it 'shows expected online course for lowest band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 0
@@ -11,7 +11,7 @@ RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
   end
 
   it 'shows expected face to face course for lowest band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::FACE_TO_FACE_CATEGORY,
               diagnostic_result_percentage: 30
@@ -20,7 +20,7 @@ RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
   end
 
   it 'shows expected online course for middle band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 31
@@ -29,7 +29,7 @@ RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
   end
 
   it 'shows expected face to face course for middle band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::FACE_TO_FACE_CATEGORY,
               diagnostic_result_percentage: 60
@@ -39,7 +39,7 @@ RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
   end
 
   it 'shows expected online course for highest band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::ONLINE_CATEGORY,
               diagnostic_result_percentage: 61
@@ -49,7 +49,7 @@ RSpec.describe('programmes/primary-certificate/_recommendation', type: :view) do
   end
 
   it 'shows expected face to face course for highest band' do
-    render  partial: 'programmes/primary-certificate/recommendation',
+    render  partial: 'certificates/primary_certificate/recommendation',
             locals: {
               category: Activity::FACE_TO_FACE_CATEGORY,
               diagnostic_result_percentage: 100

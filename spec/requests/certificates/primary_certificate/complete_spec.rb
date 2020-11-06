@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe ProgrammesController do
+RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator) }
+  let(:programme) { create(:primary_certificate) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
@@ -39,6 +39,8 @@ RSpec.describe ProgrammesController do
   end
 
   describe '#complete' do
+    subject { get complete_primary_certificate_path }
+
     describe 'while logged in' do
       before do
         programme
@@ -46,25 +48,22 @@ RSpec.describe ProgrammesController do
           .to receive(:current_user).and_return(user)
       end
 
-      it 'handles missing programmes' do
-        expect do
-          get programme_complete_path('programme-missing')
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-
       it 'redirects if not enrolled' do
-        get programme_complete_path('cs-accelerator')
-        expect(response).to redirect_to(cs_accelerator_path)
+        subject
+        expect(response).to redirect_to(primary_path)
       end
 
       describe 'and enrolled' do
-        before do
-          user_programme_enrolment
-          get programme_complete_path('cs-accelerator')
+        it 'redirects to pending when course pending' do
+          user_programme_enrolment.transition_to(:pending)
+          subject
+          expect(response).to redirect_to(pending_primary_certificate_path)
         end
 
         it 'redirects if not complete' do
-          expect(response).to redirect_to(programme_path('cs-accelerator'))
+          user_programme_enrolment
+          subject
+          expect(response).to redirect_to(primary_certificate_path)
         end
       end
 
@@ -72,7 +71,7 @@ RSpec.describe ProgrammesController do
         before do
           user_programme_enrolment.transition_to(:complete)
           setup_achievements_for_completed_course
-          get programme_complete_path('cs-accelerator')
+          subject
         end
 
         it 'shows the page if complete' do
@@ -87,20 +86,16 @@ RSpec.describe ProgrammesController do
           expect(assigns(:programme)).to eq(programme)
         end
 
-        it 'assigns the assessments' do
-          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
-        end
-
-        it 'redirects show to complete' do
-          get programme_path('cs-accelerator')
-          expect(response).to redirect_to(programme_complete_path('cs-accelerator'))
+        it 'assigns the programme achievements' do
+          expect(assigns(:user_programme_achievements))
+            .to be_a(UserProgrammeAchievements)
         end
       end
     end
 
     describe 'while logged out' do
       before do
-        get programme_complete_path('cs-accelerator')
+        subject
       end
 
       it 'redirects to login' do
