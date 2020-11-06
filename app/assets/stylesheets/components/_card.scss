@@ -174,11 +174,12 @@
 
 .dark_card--image {
 	display: block;
-	height: 81px;
+	height: 56px;
 	margin: auto;
 	max-width: 16rem;
 
   @include govuk-media-query($from: desktop) {
+		height: 81px;
 		width: auto;
   }
 }
