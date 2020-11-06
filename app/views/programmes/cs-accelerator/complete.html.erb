@@ -11,10 +11,13 @@
         </p>
 				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
 				<h3 class="govuk-heading-s">Continue learning</h3>
-				<p class="govuk-body">Now you've completed the programme, you can participate in any of our huge range of professional development courses for free!</p>
-				<p class="govuk-body">
-					<strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong>
-				</p>
+				<p class="govuk-body">Now that you’ve completed the programme, enhance your learning by participating in any of our huge range of professional development courses. Plus, if you work in a state-funded secondary school or college, you can access any of these courses for free by using the code “CSAGraduate” when booking your next course.</p>
+        <p class="govuk-body"><em>Note</em>, this code can only be used on bookings for teachers working in secondary state education. We reserve the right to charge the full course fee if the code is used by anyone who does not fall into this criteria.</p>
+        <p class="govuk-body">Teachers from independent schools will continue to pay a fee of £220 per course for any of our face-to-face or remote courses. </p>
+				<p class="govuk-body"><strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong></p>
+        <h3 class="govuk-heading-s">Bursary payment</h3>
+        <p class="govuk-body">If you are from a state-funded school or college, your completion bursary is usually paid within six to eight weeks. If your organisation has not received funding from us previously, please complete <%= link_to 'this form', 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'govuk-link ncce-link' %> and return to <%= mail_to 'finance@stem.org.uk', 'finance@stem.org.uk', class: 'govuk-link ncce-link' %>. </p>
+        <p class="govuk-body"><strong><%= link_to 'Find out more', bursary_path, class: 'govuk-link ncce-link' %></strong></p>
 				<h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
 				<p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
 				<p class="govuk-body"><strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong></p>
@@ -23,7 +26,6 @@
         <p class="govuk-body">
           <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
 				</p>
-
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">

@@ -10,7 +10,7 @@
         </div>
       </div>
       <% unless @user_programme_achievements.face_to_face_achievements.any? { |p| !p.empty? } %>
-        <%= render 'programmes/bursary-info' %>
+        <%= render 'programmes/primary-certificate/bursary-info' %>
       <% end %>
       <%= render 'programmes/primary-certificate/achievement_list' %>
     </div>
