@@ -16,11 +16,7 @@ This means:
 - A user may have multiple enrolments on the same course and we need to process the latest one to get their progress
 - A user may have multiple enrolments on the same course with different organisation memberships and we need to process the latest one across accounts
 
-They may also have done both, in which case they will have two organisation
-membership IDs on FutureLearns system. Because we only want to see the latest
-progress for a user we have to ensure that data for a single TeachComputing
-user is only processed once. This means we have to link the organisation
-membership IDs if we can before we process user progress.
+This means we have to link the organisation membership IDs if we can before we process user progress.
 
 ## Update user information
 
