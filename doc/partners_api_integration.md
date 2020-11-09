@@ -57,7 +57,7 @@ The course enrolment job does the following:
 - Get all enrolments for all runs of the course and group them by organisation membership
 - For each member check if they have multiple organisation memberships
 - If they have multiple memberships join any enrolments on this courses runs
-- At this point we have a list of all users enrolled on a course (across runs) linked to a list of their enrolments (which shows their progress) across all runs of a course, and across any memberships they may have
+- At this point we have a list of all users enrolled on a course linked to a list of their enrolments (which shows their progress) across all runs of a course, and across any memberships they may have
 - Take the latest enrolment for a user and queue the `FutureLearn::UpdateUserActivityJob`
 
 The update user activity job does the following:
@@ -71,3 +71,5 @@ The update user activity job does the following:
 
 Because we have to do this two step process we end up calling the same endpoints in fairly quick succession.
 There is caching in place on the API calls however so we should be pulling data from cache for the duplicate requests.
+
+As we are running this process in the middle of the night UK time it is unlikely there will be any changes to the data between checking for user information and updating the users progress.
