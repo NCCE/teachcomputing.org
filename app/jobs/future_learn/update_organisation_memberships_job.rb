@@ -21,6 +21,7 @@ module FutureLearn
         end
 
         run_uuids.each do |run_uuid|
+          retries ||= 0
           enrolments = FutureLearn::Queries::CourseEnrolments.all(run_uuid)
           membership_ids = enrolments.map { |e| e[:organisation_membership][:uuid] }.uniq
 
@@ -33,6 +34,9 @@ module FutureLearn
             # queue another update job for it
             known_membership_ids << membership_id
           end
+        rescue Faraday::UnauthorizedError => e
+          retry if (retries += 1) < 3
+          Raven.capture_message("Error checking course enrolments: #{e}, Run UUID: #{run_uuid}")
         end
       end
     end

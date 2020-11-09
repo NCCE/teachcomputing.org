@@ -66,9 +66,11 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
         expect(FutureLearn::Queries::CourseEnrolments)
           .to have_received(:all)
           .with(run_with_enrolments[:uuid])
+          .once
         expect(FutureLearn::Queries::CourseEnrolments)
           .to have_received(:all)
           .with(run_with_enrolments2[:uuid])
+          .once
       end
 
       it 'does not get enrolments for missing courses' do
@@ -95,6 +97,39 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
           .not_to have_enqueued_job(FutureLearn::UserInformationJob)
           .once
           .with(membership_id: known_membership_id)
+      end
+    end
+
+    context 'when CourseEnrolments throws a 401 error' do
+      before do
+        allow(FutureLearn::Queries::CourseEnrolments)
+          .to receive(:all)
+          .with(run_with_enrolments[:uuid])
+          .and_raise(Faraday::UnauthorizedError, '401 error message')
+      end
+
+      it 'logs error' do
+        described_class.perform_now
+        expect(Raven)
+          .to have_received(:capture_message)
+          .once
+          .with("Error checking course enrolments: 401 error message, Run UUID: #{run_with_enrolments[:uuid]}")
+      end
+
+      it 'retries erroring call' do
+        described_class.perform_now
+        expect(FutureLearn::Queries::CourseEnrolments)
+          .to have_received(:all)
+          .with(run_with_enrolments[:uuid])
+          .exactly(3).times
+      end
+
+      it 'still requests other enrolments' do
+        described_class.perform_now
+        expect(FutureLearn::Queries::CourseEnrolments)
+          .to have_received(:all)
+          .with(run_with_enrolments2[:uuid])
+          .once
       end
     end
 
