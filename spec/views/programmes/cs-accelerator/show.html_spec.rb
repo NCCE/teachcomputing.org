@@ -12,11 +12,23 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
     render
   end
 
-  it 'has one heading' do
-    expect(rendered).to have_css('.govuk-heading-s', count: 2)
+  it 'has the hero' do
+    expect(rendered).to have_css('.hero__heading', text: programme.title)
+  end
+
+  it 'has a heading' do
+    expect(rendered).to have_css('.govuk-heading-m')
+  end
+
+  it 'has an activity heading' do
+    expect(rendered).to have_css('.govuk-heading-s')
   end
 
   it 'has one courses button' do
     expect(rendered).to have_link('Book or join a course today', href: /cs-accelerator/)
+  end
+
+  it 'has the expected bursary info' do
+    expect(rendered).to have_css('.bursary-info', text: /secondary teacher/)
   end
 end
