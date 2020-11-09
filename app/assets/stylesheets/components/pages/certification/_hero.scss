@@ -91,14 +91,10 @@
   background-color: $primary-cert-color;
 }
 
-.hero--yellow,
-.hero--secondary-certificate {
-  background-color: $secondary-cert-color;
-}
-
 .hero--purple,
+.hero--secondary-certificate,
 .hero--cs-accelerator {
-  background-color: $cs-accelerator-color;
+  background-color: $secondary-cert-color;
 }
 
 .hero__wrapper {

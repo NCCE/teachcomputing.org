@@ -38,7 +38,7 @@ module Certificates
       end
 
       def find_programme
-        @programme = Programme.enrollable.find_by!(slug: params[:slug])
+        @programme = Programme.secondary_certificate
       end
 
       def user_enrolled?
