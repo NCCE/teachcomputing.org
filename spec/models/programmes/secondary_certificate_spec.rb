@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.describe Programmes::SecondaryCertificate do
@@ -39,6 +38,13 @@ RSpec.describe Programmes::SecondaryCertificate do
         expect(cs_accelerator_enrolment.current_state).to eq(:complete.to_s)
         expect(secondary_certificate.user_is_eligible?(user)).to be_truthy
       end
+    end
+  end
+
+  describe '#path' do
+    it 'returns the path for the programme' do
+      expect(secondary_certificate.path)
+        .to eq('/certificate/secondary-certificate')
     end
   end
 end

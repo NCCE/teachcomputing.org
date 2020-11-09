@@ -1,0 +1,30 @@
+<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
+<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
+<%= render 'pages/certification/hero', full_width: true %>
+<div class="light-grey-bg">
+	<div class="govuk-width-container">
+		<div class="govuk-main-wrapper govuk-main-wrapper--xl">
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator Programme!</h2>
+          <div class="govuk-body-m">To complete your certificate you’ll need to work through the activities below.</div>
+          <%= render 'certificates/cs_accelerator/bursary-info' %>
+				</div>
+				<div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-s">Your activities</h2>
+          <div class="cs-accelerator__courses-prompt">
+            <p class="govuk-body">You can do as much training as you like as part of this programme</p>
+            <%= link_to 'Book or join a course today', courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0' %>
+          </div>
+          <%= render 'activity-list' %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render 'aside' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

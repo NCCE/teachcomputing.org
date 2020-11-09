@@ -23,6 +23,10 @@
 									<li>gain practical skills to help you confidently teach</li>
 								<% end %>
 							</ul>
+              <h3 class="govuk-heading-m card__heading">
+                <%= link_to programme.title, programme.path, class: 'ncce-link' %>
+              </h3>
+              <p class="govuk-body card__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
               <%
                 achieved_credits = programme.credits_achieved_for_certificate(current_user)
                 max_credits = programme.max_credits_for_certificate

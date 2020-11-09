@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/primary-certificate/complete', type: :view) do
+RSpec.describe('certificates/primary_certificate/complete', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'primary-certificate') }
   let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
@@ -26,7 +26,7 @@ RSpec.describe('programmes/primary-certificate/complete', type: :view) do
   end
 
   it 'has the roa' do
-    expect(rendered).to have_css('.certificate__complete', count: 1)
+    expect(rendered).to have_css('.primary-certificate__complete', count: 1)
   end
 
   it 'has the Twitter share button' do

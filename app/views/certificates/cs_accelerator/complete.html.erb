@@ -1,0 +1,75 @@
+<% meta_tag :title, 'CS Accelerator - Teach Computing' %>
+<%= render 'pages/certification/hero', full_width: true  %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
+        <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
+        <p class="govuk-body">
+          <%= link_to 'View your certificate', certificate_cs_accelerator_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+        </p>
+				<h2 class="govuk-heading-m govuk-!-margin-top-6">Next steps for you</h2>
+				<h3 class="govuk-heading-s">Continue learning</h3>
+				<p class="govuk-body">Now that you’ve completed the programme, enhance your learning by participating in any of our huge range of professional development courses. Plus, if you work in a state-funded secondary school or college, you can access any of these courses for free by using the code “CSAGraduate” when booking your next course.</p>
+        <p class="govuk-body"><em>Note</em>, this code can only be used on bookings for teachers working in secondary state education. We reserve the right to charge the full course fee if the code is used by anyone who does not fall into this criteria.</p>
+        <p class="govuk-body">Teachers from independent schools will continue to pay a fee of £220 per course for any of our face-to-face or remote courses. </p>
+				<p class="govuk-body"><strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong></p>
+        <h3 class="govuk-heading-s">Bursary payment</h3>
+        <p class="govuk-body">If you are from a state-funded school or college, your completion bursary is usually paid within six to eight weeks. If your organisation has not received funding from us previously, please complete <%= link_to 'this form', 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'govuk-link ncce-link' %> and return to <%= mail_to 'finance@stem.org.uk', 'finance@stem.org.uk', class: 'govuk-link ncce-link' %>. </p>
+        <p class="govuk-body"><strong><%= link_to 'Find out more', bursary_path, class: 'govuk-link ncce-link' %></strong></p>
+				<h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
+				<p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
+				<p class="govuk-body"><strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong></p>
+        <h3 class="govuk-heading-s">Support an after school club</h3>
+        <p class="govuk-body">Use your skills and confidence to run a <%= link_to 'Code Club', 'https://codeclub.org/en', class: 'govuk-link ncce-link' %>, hackathon, or school programme to encourage more pupils to engage with computing.</p>
+        <p class="govuk-body">
+          <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
+				</p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
+          <p class="govuk-body ncce-aside__text">Do you know someone who would
+            benefit from this programme? Invite them to join, and discuss what
+            you’ve learnt with someone you know.</p>
+          <p class="govuk-body ncce-aside__text">Follow us on
+            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
+           and tag us when sharing your achievement</p>
+          <p class="govuk-body govuk-!-margin-bottom-2">
+            <a href="https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator"
+              class="govuk-link ncce-link complete__social complete__social--twitter" data-size="large"
+              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on Twitter</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator" target="_blank" class="govuk-link ncce-link complete__social complete__social--facebook">Share on Facebook</a></p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator" rel="noopener" target="_blank"class="govuk-link ncce-link complete__social complete__social--linkedin">Share on LinkedIn</a></p>
+          <h2 class="govuk-heading-m ncce-aside__title">Support</h2>
+          <p class="govuk-body ncce-aside__text">We're always happy to support our graduates. Call 020 0234 5678 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'govuk-link ncce-link' %>.</p>
+          <h2 class="govuk-heading-m ncce-aside__title">Useful documents</h2>
+          <p class="govuk-body-s govuk-!-margin-bottom-2"><%= link_to 'Download our Handbook', 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'govuk-link ncce-link' %></p>
+          <p class="govuk-body-s"><%= link_to 'Download our GCSE Specification Map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'govuk-link ncce-link' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l ncce-programmes-activity__title">Your learning journey</h2>
+        </div>
+      </div>
+      <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+        <%= render 'achievements' %>
+      </ul>
+    </div>
+  </div>
+</div>

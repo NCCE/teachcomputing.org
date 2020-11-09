@@ -2,6 +2,6 @@ Dear <%= @user.first_name %>,
 Congratulations on completing your certificate!
 You’ve achieved your national qualification in Primary Computing Teaching.
 Continue your journey by logging in to get your certificate, share your success and continue your professional development.
-<%= link_to 'Log in', programme_certificate_url(slug: @programme.slug) %>
+<%= link_to 'Log in', certificate_primary_certificate_url %>
 Any questions?
 Please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org' %>.

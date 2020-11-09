@@ -4,6 +4,7 @@
   color: $grey-dark-x;
   position: relative;
   &:after {
+    @include govuk-media-query($from: tablet) {
     background-image: url(/images/hero/glyph-1.svg);
     background-position-x: right;
     background-repeat: no-repeat;
@@ -16,6 +17,7 @@
     right: 0;
     top: 0;
     width: 140px;
+    }
     @include govuk-media-query($from: desktop) {
       background-size: 100%;
     }
@@ -89,14 +91,10 @@
   background-color: $primary-cert-color;
 }
 
-.hero--yellow,
-.hero--secondary-certificate {
-  background-color: $secondary-cert-color;
-}
-
 .hero--purple,
+.hero--secondary-certificate,
 .hero--cs-accelerator {
-  background-color: $cs-accelerator-color;
+  background-color: $secondary-cert-color;
 }
 
 .hero__wrapper {

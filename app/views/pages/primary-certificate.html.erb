@@ -64,15 +64,15 @@
           potential gaps in their knowledge.</p>
         <h2 class="govuk-heading-s">Benefits for you:</h2>
         <ul class="govuk-list govuk-list--bullet">
-          <li>Update your skills and be recognised for your subject knowledge
+          <li>update your skills and be recognised for your subject knowledge
           </li>
-          <li>Feel more confident to teach this high demand subject across the
+          <li>feel more confident to teach this high demand subject across the
             curriculum</li>
-          <li>Choose from face-to-face and online modules to suit your learning
+          <li>choose from face-to-face and online modules to suit your learning
             needs</li>
-          <li>Save time on lesson planning and gain inspirational teaching ideas
+          <li>save time on lesson planning and gain inspirational teaching ideas
           </li>
-          <li>Meet teachers in your area to share ideas</li>
+          <li>meet teachers in your area to share ideas</li>
         </ul>
         <p class="govuk-body"><strong>We hope you find the programme supportive
             and that it helps to give you the confidence to teach computing in
@@ -102,7 +102,7 @@
           </ol>
           <% if current_user %>
           <p class="govuk-body">
-            <%= link_to 'Enrol on this certificate', user_programme_enrolment_path(slug: Programme.primary_certificate.slug, user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.primary_certificate.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            <%= link_to 'Enrol on this certificate', enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.primary_certificate.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
           </p>
           <% else %>
           <p class="govuk-body">
