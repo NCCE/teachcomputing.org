@@ -9,7 +9,7 @@
 				<li>flexible and tailored to your needs</li>
 				<li>bursaries for eligible schools</li>
 			</ul>
-			<%= link_to 'Enrol', '/', class: 'govuk-button button' %>
+			<%= link_to 'Enrol', '/', class: 'govuk-button button button--aside' %>
 		</div>
 	</div>
 	<div class="govuk-grid-column-one-third">
@@ -21,7 +21,7 @@
 				<li>flexible and tailored to your needs</li>
 				<li>bursaries for eligible schools</li>
 			</ul>
-			<%= link_to 'Enrol', '/', class: 'govuk-button button' %>
+			<%= link_to 'Enrol', '/', class: 'govuk-button button button--aside' %>
 		</div>
 	</div>
 	<div class="govuk-grid-column-one-third">
@@ -34,7 +34,10 @@
 				<li>bursaries for eligible schools</li>
 			</ul>
 			<span>Progress section</span>
-			<%= link_to 'Enrol', '/', class: 'govuk-button button' %>
+			<%= link_to 'Enrol', '/', class: 'govuk-button button button--aside' %>
+ 			<li class="govuk-header__navigation-item ncce-header__navigation-item">
+        <%= certificate_progress_for_user(current_user) %>
+        </li>
 		</div>
 	</div>
 </div>

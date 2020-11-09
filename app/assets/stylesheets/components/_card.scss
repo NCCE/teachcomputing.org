@@ -112,6 +112,7 @@
   @include status_block();
   display: inline-block;
   margin-bottom: 10px;
+	border: 1px solid grey;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 15px;
   }
@@ -162,3 +163,18 @@
   margin-bottom: 0;
 }
 
+.card--dashboard {
+	border-top: 9px solid $action-color;
+}
+
+.card--dashboard--cs-accelerator {
+  border-top-color: $cs-accelerator-color;
+}
+
+.card--dashboard--primary {
+  border-top-color: $primary-cert-color;
+}
+
+.card--dashboard--secondary {
+  border-top-color: $cs-accelerator-color;
+}

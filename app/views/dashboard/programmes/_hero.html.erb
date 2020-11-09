@@ -1,22 +1,43 @@
 <div class="certification">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
-      <h2 class="govuk-heading-m">Your certificates</h2>
+      <h2 class="govuk-heading-m">Certificates</h2>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <% current_user.programmes.each do |programme| %>
-            <div class="card card--<%= programme.slug %>">
+				<% current_user.programmes.each do |programme| %>
+					<div class="govuk-grid-column-one-third">
+            <div class="shadow_card card--dashboard card--dashboard--<%= programme.slug %>">
               <%= render 'pages/certification/programme-enrolment-status', programme: programme %>
               <h3 class="govuk-heading-m card__heading"><%= link_to programme.title, programme_path(programme.slug), class: 'ncce-link' %></h3>
-              <p class="govuk-body card__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+							<ul class="govuk-list govuk-list--bullet">
+								<% if programme.slug == 'cs-accelerator' %>
+									<li>complete courses and pass a test to get your certificate</li>
+									<li>resources to find the right courses for you</li>
+									<li>bursaries for eligible schools</li>
+								<% elsif programme.slug == 'primary-certificate' %>
+									<li>blended course and activity programme</li>
+									<li>flexible and tailored to your needs</li>
+									<li>bursaries for eligible schools</li>
+								<% else %>
+									<li>a follow on from GCSE subject knowledge certificate</li>
+									<li>blended course and activity programme</li>
+									<li>gain practical skills to help you confidently teach</li>
+								<% end %>
+							</ul>
               <%
                 achieved_credits = programme.credits_achieved_for_certificate(current_user)
                 max_credits = programme.max_credits_for_certificate
               %>
               <progress class="card__progress-bar" aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits" value="<%= achieved_credits %>" max="<%= max_credits %>"></progress>
+							<% if programme.user_enrolled?(current_user) %>
+								<%= link_to 'Check progress', programme_path(programme.slug), class: 'govuk-button button button--aside' %>
+							<% elsif programme.user_completed?(current_user) %>
+								<%= link_to 'View cert', programme_path(programme.slug), class: 'govuk-button button button--aside' %>
+							<% else %>
+								<%= link_to 'Enrol!', '/', class: 'govuk-button button button--aside' %>
+							<% end %>
             </div>
-          <% end %>
-        </div>
+        	</div>
+        <% end %>
       </div>
     </div>
   </div>
