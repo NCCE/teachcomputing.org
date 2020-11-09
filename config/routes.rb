@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
-    resource 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
+    resource 'secondary_certificate', controller: 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'secondary-certificate' }

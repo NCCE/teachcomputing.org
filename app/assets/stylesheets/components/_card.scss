@@ -50,7 +50,7 @@
 
 .card--purple,
 .card--cs-accelerator  {
-  border-left-color: $cs-accelerator-color;
+  border-left-color: $secondary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
       background-color: $amour;
