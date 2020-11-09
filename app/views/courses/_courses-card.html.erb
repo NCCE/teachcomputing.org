@@ -11,7 +11,7 @@
 			<% end %>
 			</p>
       <% unless @programme.user_enrolled?(current_user) %>
-        <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', programme_path(@programme.slug), class: 'ncce-link' %></strong></p>
+        <p class="govuk-body govuk-!-margin-bottom-0"><strong><%= link_to 'Find out more', @programme.path, class: 'ncce-link' %></strong></p>
       <% end %>
     </div>
   </div>

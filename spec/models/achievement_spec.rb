@@ -15,24 +15,24 @@ RSpec.describe Achievement, type: :model do
   let(:community_achievement) { create(:achievement, activity: community_activity) }
 
   let(:cs_accelerator) { create(:cs_accelerator) }
-  let(:achievement_with_passed_programme_id) {
+  let(:achievement_with_passed_programme_id) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
     create(:achievement, programme_id: cs_accelerator.id, activity_id: community_activity.id)
-  }
+  end
 
-  let(:achievement_with_programme) {
+  let(:achievement_with_programme) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
     create(:achievement, activity_id: community_activity.id)
-  }
+  end
 
-  let(:achievement_with_two_programmes) {
+  let(:achievement_with_two_programmes) do
     face_to_face_activity = create(:activity, :stem_learning)
     create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
     create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
     create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
     create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
     create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
-  }
+  end
 
   describe 'associations' do
     it 'belongs to activity' do
@@ -66,7 +66,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'when activity has a single programme it is used' do
-      expect(achievement_with_programme.programme).to eq(programme)
+      expect(achievement_with_programme.programme.id).to eq(programme.id)
     end
 
     it 'when activity has multiple programmes it gets the most recently enrolled one' do
@@ -107,7 +107,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the category' do
-      expect(Achievement.with_category(achievement.activity.category)).to_not include(diagnostic_achievement)
+      expect(Achievement.with_category(achievement.activity.category)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -122,7 +122,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the credit' do
-      expect(Achievement.with_credit(10)).to_not include(diagnostic_achievement)
+      expect(Achievement.with_credit(10)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -137,7 +137,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the category' do
-      expect(Achievement.without_category(diagnostic_achievement.activity.category)).to_not include(diagnostic_achievement)
+      expect(Achievement.without_category(diagnostic_achievement.activity.category)).not_to include(diagnostic_achievement)
     end
   end
 
@@ -202,7 +202,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'deletes transitions' do
-      expect { achievement.destroy }.to change { AchievementTransition.count }.by(-1)
+      expect { achievement.destroy }.to change(AchievementTransition, :count).by(-1)
     end
   end
 end

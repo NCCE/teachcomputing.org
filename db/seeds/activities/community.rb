@@ -112,3 +112,87 @@ end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
+a = Activity.find_or_create_by(slug: 'download-use-and-provide-meaningful-feedback-on-a-resource-from-the-teach-computing-curriculum') do |activity|
+  activity.title = 'Download, use and provide meaningful feedback on a resource from the Teach Computing Curriculum'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide screenshot of feedback'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school') do |activity|
+  activity.title = 'Provide computing CPD in your school or to another local school'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide details of the training including date training took place'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'become-a-mentor-support-another-teacher-through-the-cs-accelerator-programme-support-a-trainee-teacher') do |activity|
+  activity.title = 'Become a mentor – support another teacher through the CS Accelerator programme, support a trainee teacher'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide details of who/how you provided support'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'give-additional-support-beyond-your-day-to-day-teaching-to-your-local-community-of-teachers-pupils-or-parents') do |activity|
+  activity.title = 'Give additional support, beyond your day to day teaching, to your local community of teachers, pupils or parents'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide details of support provided'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-balance-in-computing-programme') do |activity|
+  activity.title = 'Register to participate in the Gender Balance in Computing Programme'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.description = 'details can be found here <a href="https://teachcomputing.org/gender-balance" class="ncce-link">(https://teachcomputing.org/gender-balance)</a>'
+  activity.self_verification_info = 'Screenshot to show registration'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'volunteer-to-run-an-event-with-the-isaac-computer-science-programme') do |activity|
+  activity.title = 'Volunteer to run an event with the ISAAC Computer Science programme'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'isaac'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide link to the event'
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activity|
+  activity.title = 'Engage with STEM Ambassadors'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.self_verification_info = ''
+end
+
+# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
