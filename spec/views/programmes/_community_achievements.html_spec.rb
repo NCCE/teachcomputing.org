@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe('programmes/_community_achievements', type: :view) do
+RSpec.describe('certificates/_community_achievements', type: :view) do
   let(:user) { create(:user) }
   let(:community_activity) { create(:activity, :community) }
   let(:complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: community_activity.id) }
   let(:second_community_activity) { create(:activity, :community, slug: 'second-community-activity') }
   let(:second_complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: second_community_activity.id) }
-  let(:presenters) {
+  let(:presenters) do
     [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
-  }
+  end
 
   context 'when user has not completed any achievements' do
     before do
       allow(view).to receive(:current_user).and_return(user)
-      render partial: 'programmes/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
     end
 
     it 'both achievements are  marked as incomplete' do
@@ -35,7 +35,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
     before do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
-      render partial: 'programmes/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
     end
 
     it 'one achievement is  marked as incomplete' do
@@ -52,7 +52,7 @@ RSpec.describe('programmes/_community_achievements', type: :view) do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
       second_complete_achievement
-      render partial: 'programmes/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
     end
 
     it 'no achievements are  marked as incomplete' do

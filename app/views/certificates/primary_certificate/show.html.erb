@@ -1,0 +1,19 @@
+<% meta_tag :title, 'Primary certificate - Teach Computing' %>
+<% meta_tag :url, request.original_url %>
+<%= render 'pages/certification/hero' %>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          <h2 class="govuk-heading-m">Welcome to the Teach primary computing programme!</h2>
+          <p class="govuk-body-m">To complete your certificate you’ll need to work through the activities below.</p>
+        </div>
+      </div>
+      <% unless @user_programme_achievements.face_to_face_achievements.any? { |p| !p.empty? } %>
+        <%= render 'certificates/primary_certificate/bursary-info' %>
+      <% end %>
+      <%= render 'achievement_list' %>
+    </div>
+  </div>
+</div>

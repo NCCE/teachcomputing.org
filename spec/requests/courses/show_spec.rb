@@ -5,9 +5,9 @@ RSpec.describe CoursesController do
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP201') }
   let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
-  let(:programme_activity) {
+  let(:programme_activity) do
     programme.activities << activity
-  }
+  end
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
@@ -36,7 +36,7 @@ RSpec.describe CoursesController do
       end
 
       it 'sets the course correctly' do
-        expect(assigns(:course).title).to eq("#{course.title}")
+        expect(assigns(:course).title).to eq(course.title.to_s)
       end
 
       it 'sets the programme' do
@@ -70,7 +70,7 @@ RSpec.describe CoursesController do
       end
 
       it 'adds the course title to the redirect url' do
-        expect(response).to redirect_to(/\/#{course.title.parameterize}$/)
+        expect(response).to redirect_to(%r{/#{course.title.parameterize}$})
       end
     end
 
@@ -85,14 +85,14 @@ RSpec.describe CoursesController do
       end
 
       it 'has a link to the programme' do
-        expect(response.body).to include(programme_path(programme.slug))
+        expect(response.body).to include(programme.path)
       end
     end
 
     context 'when user is logged in' do
       before do
         allow_any_instance_of(AuthenticationHelper)
-        .to receive(:current_user).and_return(user)
+          .to receive(:current_user).and_return(user)
       end
 
       context 'and enrolled' do

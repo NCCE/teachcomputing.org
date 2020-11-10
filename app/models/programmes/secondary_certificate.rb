@@ -11,7 +11,7 @@ module Programmes
       false
     end
 
-    def user_completed_diagnostic?(user)
+    def user_completed_diagnostic?(_user)
       false
     end
 
@@ -19,6 +19,10 @@ module Programmes
       programme = Programme.find_by(slug: 'cs-accelerator')
       enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
       enrolment.current_state == :complete.to_s
+    end
+
+    def path
+      secondary_certificate_path
     end
   end
 end

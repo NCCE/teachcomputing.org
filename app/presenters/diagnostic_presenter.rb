@@ -7,7 +7,7 @@ class DiagnosticPresenter < ActivityPresenter
   end
 
   def button_url(*)
-    cs_accelerator_diagnostic_path(Activity.cs_accelerator_diagnostic_tool.id)
+    diagnostic_cs_accelerator_certificate_path(Activity.cs_accelerator_diagnostic_tool.id)
   end
 
   def completed_text(*)
