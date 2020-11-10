@@ -11,6 +11,34 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
         .and_return(mock_org_membership)
     end
 
+    context 'when API call returns 401 response' do
+      let(:mock_org_membership) { {} }
+
+      before do
+        allow(Raven).to receive(:capture_message)
+
+        allow(FutureLearn::Queries::OrganisationMemberships)
+          .to receive(:one)
+          .and_raise(Faraday::UnauthorizedError, '401 error message')
+      end
+
+      it 'retries to 3 total calls' do
+        described_class.perform_now(membership_id: fl_membership_id)
+        expect(FutureLearn::Queries::OrganisationMemberships)
+          .to have_received(:one)
+          .with(fl_membership_id)
+          .exactly(3).times
+      end
+
+      it 'logs the error after retrying' do
+        described_class.perform_now(membership_id: fl_membership_id)
+        expect(Raven)
+          .to have_received(:capture_message)
+          .once
+          .with("Error retrieving organisation membership: 401 error message, Membership UUID: #{fl_membership_id}")
+      end
+    end
+
     context 'when FL user matches TC user by ID' do
       let!(:user) { create(:user, id: tc_user_id) }
       let(:mock_org_membership) do
