@@ -170,3 +170,23 @@
 	opacity: 80%;
 }
 
+.ncce-activity-list__item--dashboard {
+	border-radius: 5px;
+	margin-bottom: 1.25 rem !important;
+	border-left: 9px solid $action-color;
+	&:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.item--dashboard--cs-accelerator {
+  border-top-color: $cs-accelerator-color;
+}
+
+.item--dashboard--primary {
+  border-top-color: $primary-cert-color;
+}
+
+.item--dashboard--secondary {
+  border-top-color: $cs-accelerator-color;
+}
