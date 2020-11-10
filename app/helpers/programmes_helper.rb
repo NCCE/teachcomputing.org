@@ -15,7 +15,7 @@ module ProgrammesHelper
     ActiveSupport::Inflector::ordinalize(index)
   end
 
-  def user_eligible?(user)
+  def eligible_for_secondary?(user)
     Programme.secondary_certificate.user_is_eligible?(user)
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     before do
       @programme = programme
       assign(:current_user, nil)
-      allow(view).to receive(:user_eligible?).and_return(false)
+      allow(view).to receive(:eligible_for_secondary?).and_return(false)
       render
     end
 
@@ -45,7 +45,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     before do
       @programme = programme
       assign(:current_user, user)
-      allow(view).to receive(:user_eligible?).and_return(false)
+      allow(view).to receive(:eligible_for_secondary?).and_return(false)
       render
     end
 
@@ -66,7 +66,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     before do
       @programme = programme
       assign(:current_user, user)
-      allow(view).to receive(:user_eligible?).and_return(true)
+      allow(view).to receive(:eligible_for_secondary?).and_return(true)
       render
     end
 
