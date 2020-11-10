@@ -7,13 +7,12 @@ RSpec.describe Programme, type: :model do
   let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
-  let(:non_enrollable_programme) { create(:programme, enrollable: false ) }
+  let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
-
 
   describe 'associations' do
     it 'has_many activities' do
@@ -54,7 +53,7 @@ RSpec.describe Programme, type: :model do
 
       it 'contains only programmes that are enrollable' do
         expect(Programme.enrollable).to eq programmes
-        expect(Programme.enrollable).to_not include non_enrollable_programme
+        expect(Programme.enrollable).not_to include non_enrollable_programme
       end
     end
   end
@@ -168,4 +167,35 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe '#primary_certificate?' do
+    context 'when programme is primary certificate' do
+      it 'returns true' do
+        programme = build(:primary_certificate_programme)
+        expect(programme.primary_certificate?).to eq(true)
+      end
+    end
+
+    context 'when programme is not primary certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: nil)
+        expect(programme.primary_certificate?).to eq(false)
+      end
+    end
+  end
+
+  describe '#cs_accelerator?' do
+    context 'when programme is cs accelerator' do
+      it 'returns true' do
+        programme = build(:cs_accelerator_programme)
+        expect(programme.cs_accelerator?).to eq(true)
+      end
+    end
+
+    context 'when programme is not cs accelerator' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme')
+        expect(programme.cs_accelerator?).to eq(false)
+      end
+    end
+  end
 end

@@ -65,5 +65,13 @@ class Programme < ApplicationRecord
     nil
   end
 
+  def primary_certificate?
+    slug == 'primary-certificate'
+  end
+
+  def cs_accelerator?
+    slug == 'cs-accelerator'
+  end
+
   def path; end
 end
