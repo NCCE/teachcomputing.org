@@ -12,7 +12,7 @@ programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programm
   programme_complete_counter.counter = 0
 end
 
-puts "Creating Programme Activity Groupings" do
+puts 'Creating Programme Activity Groupings' do
   secondary.programme_activity_group.find_or_create_by(title: 'Course requirements') do |programme_activity_group|
     programme_activity_group.sort_key 1
     programme_activity_group.required_for_completion = 2
