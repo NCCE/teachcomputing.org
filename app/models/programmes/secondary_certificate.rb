@@ -22,13 +22,7 @@ module Programmes
     end
 
     def user_meets_completion_requirement?(user)
-      completed_group_count = 0
-      programme_activity_groupings.each do |group|
-        completed_group_count += 1 if group.user_complete?(user)
-      end
-
-      return true if completed_group_count == programme_activity_groupings.count
-      false
+      programme_activity_groupings.all? { |group| group.user_complete?(user) }
     end
 
     def path
