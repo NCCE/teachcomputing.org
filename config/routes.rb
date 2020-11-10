@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
-    resource 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
+    resource 'secondary_certificate', controller: 'secondary_certificate', path: 'secondary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'secondary-certificate' }
@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
+	get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
