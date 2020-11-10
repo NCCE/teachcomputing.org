@@ -9,7 +9,7 @@ RSpec.describe('components/_notice', type: :view) do
     expect(rendered).to have_css('.ncce-courses__tag', text: 'ANNOUNCEMENT')
   end
 
-  it 'read our full statement' do
+  it 'national restrictions' do
     expect(rendered).to have_link(' here for more information', href: 'https://blog.teachcomputing.org/national-restrictions/')
   end
 end
