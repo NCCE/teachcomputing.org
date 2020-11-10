@@ -10,6 +10,6 @@ RSpec.describe('components/_notice', type: :view) do
   end
 
   it 'national restrictions' do
-    expect(rendered).to have_link(' here for more information', href: 'https://blog.teachcomputing.org/national-restrictions/')
+    expect(rendered).to have_link('here for more information', href: 'https://blog.teachcomputing.org/national-restrictions/')
   end
 end
