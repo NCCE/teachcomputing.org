@@ -8,8 +8,12 @@ RSpec.describe ProgrammeActivity, type: :model do
       expect(programme_activity).to belong_to(:activity)
     end
 
-    it 'belongs to user' do
+    it 'belongs to programme' do
       expect(programme_activity).to belong_to(:programme)
+    end
+
+    it 'belongs to programme activity grouping' do
+      expect(programme_activity).to belong_to(:programme_activity_grouping)
     end
   end
 end

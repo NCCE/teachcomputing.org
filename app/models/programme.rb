@@ -5,6 +5,7 @@ class Programme < ApplicationRecord
   has_many :activities, through: :programme_activities
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :users, through: :user_programme_enrolments
+  has_many :programme_activity_groupings
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
   has_many :achievements, dependent: :nullify

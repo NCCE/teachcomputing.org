@@ -23,6 +23,10 @@ RSpec.describe Programme, type: :model do
       expect(programme).to have_many(:users).through(:user_programme_enrolments)
     end
 
+    it 'has_many programme activity groupings' do
+      expect(programme).to have_many(:programme_activity_groupings)
+    end
+
     it 'has_one assessment' do
       expect(programme).to have_one(:assessment)
     end
