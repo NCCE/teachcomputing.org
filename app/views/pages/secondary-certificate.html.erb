@@ -42,15 +42,17 @@
           <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
           <ol
             class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
+            <% if !user_eligible?(current_user) %>
             <li>Successfully complete <%= link_to 'the Computer Science Accelerator programme', cs_accelerator_path, class: 'ncce-link' %></li>
+            <% end %>
             <li>Enrol with the click of the button</li>
             <li>Complete the required professional development, engagement, and community activities to receive your qualification</li>
           </ol>
-          <% if current_user %>
+          <% if current_user && user_eligible?(current_user) %>
           <p class="govuk-body">
             <%= link_to 'Enrol on this certificate', enrol_secondary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
           </p>
-          <% else %>
+          <% elsif !current_user %>
           <p class="govuk-body">
             <%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
           </p>

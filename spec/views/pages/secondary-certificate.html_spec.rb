@@ -8,6 +8,7 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
     before do
       @programme = programme
       assign(:current_user, nil)
+      allow(view).to receive(:user_eligible?).and_return(false)
       render
     end
 
@@ -27,27 +28,57 @@ RSpec.describe('pages/secondary-certificate', type: :view) do
       expect(rendered).to have_css('.ncce-aside__title', text: 'How to enrol')
     end
 
+    it 'has csa enrolment link' do
+      expect(rendered).to have_link('the Computer Science Accelerator programme', href: '/cs-accelerator', count: 2)
+    end
+
     it 'has Account button' do
       expect(rendered).to have_css('.button--aside', text: 'Create an account')
     end
 
-    it 'has a Log in link' do
+    it 'has Login button' do
       expect(rendered).to have_link('log in', href: '/auth/stem')
     end
   end
 
-  context 'when a user is signed in' do
+  context 'when a user is signed in but not enrolled' do
     before do
       @programme = programme
       assign(:current_user, user)
+      allow(view).to receive(:user_eligible?).and_return(false)
       render
+    end
+
+    it 'has csa enrolment link' do
+      expect(rendered).to have_link('the Computer Science Accelerator programme', href: '/cs-accelerator', count: 2)
+    end
+
+    it 'has no Enrol button' do
+      expect(rendered).not_to have_css('.button--aside', text: 'Enrol on this certificate')
+    end
+
+    it 'has no Login button' do
+      expect(rendered).not_to have_link('log in', href: '/auth/stem')
+    end
+  end
+
+  context 'when a user is signed in and enrolled' do
+    before do
+      @programme = programme
+      assign(:current_user, user)
+      allow(view).to receive(:user_eligible?).and_return(true)
+      render
+    end
+
+    it 'has no csa enrolment link' do
+      expect(rendered).not_to have_text(/Successfully complete the Computer Science Accelerator programme/)
     end
 
     it 'has Enrol button' do
       expect(rendered).to have_css('.button--aside', text: 'Enrol on this certificate')
     end
 
-    it 'has no Log in link' do
+    it 'has no Login button' do
       expect(rendered).not_to have_link('log in', href: '/auth/stem')
     end
   end
