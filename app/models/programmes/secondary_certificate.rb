@@ -17,8 +17,8 @@ module Programmes
 
     def user_is_eligible?(user)
       programme = Programme.find_by(slug: 'cs-accelerator')
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
-      enrolment.current_state == :complete.to_s
+      enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)
+      enrolment&.current_state == :complete.to_s
     end
 
     def path
