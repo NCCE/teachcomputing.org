@@ -164,6 +164,13 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe '#set_to_dropped' do
+    it 'sets state to dropped' do
+      achievement.set_to_dropped
+      expect(achievement.current_state).to eq 'dropped'
+    end
+  end
+
   describe '#complete?' do
     it 'when state is not complete' do
       expect(achievement.complete?).to eq false
@@ -171,6 +178,17 @@ RSpec.describe Achievement, type: :model do
 
     it 'when state is not complete' do
       expect(completed_achievement.complete?).to eq true
+    end
+  end
+
+  describe '#dropped?' do
+    it 'returns false if not dropped' do
+      expect(achievement.dropped?).to eq false
+    end
+
+    it 'returns true if dropped' do
+      dropped_achievement = create(:dropped_achievement)
+      expect(dropped_achievement.dropped?).to eq true
     end
   end
 
@@ -193,6 +211,7 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to delegate_method(:current_state).to(:state_machine).as(:current_state) }
     it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
     it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
+    it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
 
   describe 'destroy' do
@@ -203,6 +222,119 @@ RSpec.describe Achievement, type: :model do
 
     it 'deletes transitions' do
       expect { achievement.destroy }.to change(AchievementTransition, :count).by(-1)
+    end
+  end
+
+  describe '#primary_certificate?' do
+    context 'when programme is primary certificate' do
+      it 'returns true' do
+        programme = build(:primary_certificate_programme)
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.primary_certificate?).to eq(true)
+      end
+    end
+
+    context 'when programme is not primary certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme-slug')
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.primary_certificate?).to eq(false)
+      end
+    end
+
+    context 'when programme is nil' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.primary_certificate?).to eq(false)
+      end
+    end
+  end
+
+  describe '#cs_accelerator?' do
+    context 'when programme is cs accelerator' do
+      it 'returns true' do
+        programme = build(:cs_accelerator_programme)
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.cs_accelerator?).to eq(true)
+      end
+    end
+
+    context 'when programme is not cs accelerator' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme-slug')
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.cs_accelerator?).to eq(false)
+      end
+    end
+
+    context 'when programme is nil' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.cs_accelerator?).to eq(false)
+      end
+    end
+  end
+
+  describe '#update_state_for_online_activity' do
+    let(:achievement) { create(:achievement) }
+
+    context 'when left_at is present' do
+      it 'sets to dropped' do
+        left_at = DateTime.now.to_s
+        expect { achievement.update_state_for_online_activity(0, left_at) }
+          .to change(achievement, :dropped?).to(true)
+      end
+
+      it 'does not set dropped if progress is 60 or over' do
+        left_at = DateTime.now.to_s
+        achievement.update_state_for_online_activity(60, left_at)
+        expect(achievement.dropped?).to eq(false)
+      end
+    end
+
+    context 'when progress is 0' do
+      it 'sets to enrolled' do
+        achievement.update_state_for_online_activity(0, nil)
+        expect(achievement.in_state?(:enrolled)).to eq(true)
+      end
+    end
+
+    context 'when progress between 1 and 59' do
+      it 'sets to in progress with metadata when progress is 1' do
+        achievement.update_state_for_online_activity(1, nil)
+        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.last_transition.metadata).to eq({ 'progress' => 1 })
+      end
+
+      it 'sets to in progress with metadata when progress is 59' do
+        achievement.update_state_for_online_activity(59, nil)
+        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.last_transition.metadata).to eq({ 'progress' => 59 })
+      end
+    end
+
+    context 'when progress between 60 and 100' do
+      let(:achievement) { create(:achievement, activity: create(:activity, credit: 99)) }
+
+      it 'sets to complete when progress is 60' do
+        achievement.update_state_for_online_activity(60, nil)
+        expect(achievement.complete?).to eq(true)
+        expect(achievement.last_transition.metadata)
+          .to eq({ 'credit' => 99.0, 'progress' => 60 })
+      end
+
+      it 'sets to complete when progress is 100' do
+        achievement.update_state_for_online_activity(100, nil)
+        expect(achievement.complete?).to eq(true)
+        expect(achievement.last_transition.metadata)
+          .to eq({ 'credit' => 99.0, 'progress' => 100 })
+      end
+    end
+
+    it 'does not change state if achievement is complete' do
+      achievement = create(:completed_achievement)
+      achievement.update_state_for_online_activity(40, DateTime.now.to_s)
+      expect(achievement.complete?).to eq(true)
     end
   end
 end
