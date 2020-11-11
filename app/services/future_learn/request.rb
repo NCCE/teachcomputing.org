@@ -10,7 +10,7 @@ module FutureLearn
         res = @connection.get(endpoint)
       end
 
-      JSON.parse(res.body, object_class: OpenStruct)
+      JSON.parse(res.body, symbolize_names: true)
     end
   end
 end

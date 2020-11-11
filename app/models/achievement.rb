@@ -72,7 +72,11 @@ class Achievement < ApplicationRecord
   end
 
   def complete?
-    current_state == 'complete'
+    in_state?(:complete)
+  end
+
+  def dropped?
+    in_state?(:dropped)
   end
 
   def self.initial_state
@@ -83,9 +87,17 @@ class Achievement < ApplicationRecord
     AchievementTransition
   end
 
+  def primary_certificate?
+    programme.present? && programme.primary_certificate?
+  end
+
+  def cs_accelerator?
+    programme.present? && programme.cs_accelerator?
+  end
+
   private_class_method :initial_state, :transition_class
 
-  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
 
   private
 

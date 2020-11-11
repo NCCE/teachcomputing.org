@@ -5,6 +5,7 @@ RSpec.describe Programmes::SecondaryCertificate do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: cs_accelerator.id) }
   let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 3, :with_activities, programme: secondary_certificate) }
 
   describe '#csa_eligible_courses' do
     context 'without a CS Accelerator enrolment' do
@@ -37,6 +38,29 @@ RSpec.describe Programmes::SecondaryCertificate do
       it 'returns truthy' do
         expect(cs_accelerator_enrolment.current_state).to eq(:complete.to_s)
         expect(secondary_certificate.user_is_eligible?(user)).to be_truthy
+      end
+    end
+  end
+
+  describe '#user_meets_completion_requirement?' do
+    before do
+      user
+      programme_activity_groupings
+    end
+
+    context 'when the user has not completed one activity from each group' do
+      it 'returns false' do
+        expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq false
+      end
+    end
+
+    context 'when the user has completed one activity from each group' do
+      it 'returns true' do
+        programme_activity_groupings.each do |group|
+          create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+        end
+
+        expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
       end
     end
   end
