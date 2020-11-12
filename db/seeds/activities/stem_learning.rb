@@ -126,7 +126,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '1dcba944-6ae9-4b68-af69
   activity.provider = 'stem-learning'
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '258c93cc-69e2-46f6-bf39-fbce27cb8fc2') do |activity|
@@ -138,7 +137,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '258c93cc-69e2-46f6-bf39
   activity.provider = 'stem-learning'
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 # a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'f7fefbae-53aa-4c28-bbd2-b3d3b1bf7bbd') do |activity|
