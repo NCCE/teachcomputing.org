@@ -1,5 +1,5 @@
 primary_certificate = Programme.primary_certificate
-# secondary_certificate = Programme.secondary_certificate
+secondary_certificate = Programme.secondary_certificate
 
 a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity|
   activity.title = 'Contribute to online discussion'
@@ -13,7 +13,7 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |acti
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
   activity.title = 'Attend a CAS Community meeting'
@@ -27,7 +27,7 @@ a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activ
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.title = 'Review a resource on CAS'
@@ -41,7 +41,7 @@ a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activity|
   activity.title = 'Host or attend a Barefoot Workshop'
@@ -55,7 +55,6 @@ a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |a
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activity|
   activity.title = 'Lead a CAS Community of Practice'
@@ -69,7 +68,7 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |act
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
   activity.title = 'Providing Additional Support'
@@ -83,21 +82,19 @@ a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activit
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.title = 'Run an after-school Code Club'
   activity.credit = 20
   activity.slug = activity.title.parameterize
   activity.category = 'community'
-  activity.provider = 'code-club'
+  activity.provider = 'raspberrypi'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
   activity.description = 'Code Club supports schools and teachers nationwide to run free after-school coding clubs for 9- to 13-year-olds. <a href="https://codeclub.org/en/start-a-code-club" class="ncce-link">Start a Code Club today</a>'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference') do |activity|
   activity.title = 'Lead a session at a regional or national conference'
@@ -110,7 +107,7 @@ a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-c
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'download-use-and-provide-meaningful-feedback-on-a-resource-from-the-teach-computing-curriculum') do |activity|
   activity.title = 'Download, use and provide meaningful feedback on a resource from the Teach Computing Curriculum'
@@ -122,7 +119,7 @@ a = Activity.find_or_create_by(slug: 'download-use-and-provide-meaningful-feedba
   activity.self_verification_info = 'Provide screenshot of feedback'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school') do |activity|
   activity.title = 'Provide computing CPD in your school or to another local school'
@@ -134,7 +131,7 @@ a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to
   activity.self_verification_info = 'Provide details of the training including date training took place'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'become-a-mentor-support-another-teacher-through-the-cs-accelerator-programme-support-a-trainee-teacher') do |activity|
   activity.title = 'Become a mentor – support another teacher through the CS Accelerator programme, support a trainee teacher'
@@ -146,7 +143,7 @@ a = Activity.find_or_create_by(slug: 'become-a-mentor-support-another-teacher-th
   activity.self_verification_info = 'Provide details of who/how you provided support'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'give-additional-support-beyond-your-day-to-day-teaching-to-your-local-community-of-teachers-pupils-or-parents') do |activity|
   activity.title = 'Give additional support, beyond your day to day teaching, to your local community of teachers, pupils or parents'
@@ -158,7 +155,7 @@ a = Activity.find_or_create_by(slug: 'give-additional-support-beyond-your-day-to
   activity.self_verification_info = 'Provide details of support provided'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-balance-in-computing-programme') do |activity|
   activity.title = 'Register to participate in the Gender Balance in Computing Programme'
@@ -171,7 +168,7 @@ a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-bala
   activity.self_verification_info = 'Screenshot to show registration'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'volunteer-to-run-an-event-with-the-isaac-computer-science-programme') do |activity|
   activity.title = 'Volunteer to run an event with the ISAAC Computer Science programme'
@@ -183,7 +180,7 @@ a = Activity.find_or_create_by(slug: 'volunteer-to-run-an-event-with-the-isaac-c
   activity.self_verification_info = 'Provide link to the event'
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activity|
   activity.title = 'Engage with STEM Ambassadors'
@@ -195,4 +192,16 @@ a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activit
   activity.self_verification_info = ''
 end
 
-# a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activity|
+  activity.title = 'Run a Code Club or Coder Dojo'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'raspberrypi'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Provide address including postcode'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
