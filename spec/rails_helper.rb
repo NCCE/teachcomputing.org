@@ -67,7 +67,6 @@ RSpec.configure do |config|
   config.include CurriculumStubs
   config.include GhostStubs
   config.include CachingHelpers
-  config.include MailerHelpers
   config.include ActiveSupport::Testing::TimeHelpers
 
   VCR.turn_off! # Turn it on selectively
