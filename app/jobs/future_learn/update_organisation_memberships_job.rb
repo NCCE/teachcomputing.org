@@ -36,7 +36,10 @@ module FutureLearn
           end
         rescue Faraday::UnauthorizedError => e
           retry if (retries += 1) < 3
-          Raven.capture_message("Error checking course enrolments: #{e}, Run UUID: #{run_uuid}")
+          Raven.capture_message(
+            'UnauthorizedError checking course enrolments',
+            extra: { error: e, run_uuid: run_uuid }
+          )
         end
       end
     end
@@ -46,7 +49,10 @@ module FutureLearn
       def report_missing_course(course_id, title)
         return if FL_PARTNERS_IGNORED_COURSE_UUIDS.include?(course_id)
 
-        Raven.capture_message("FutureLearn course not found during progress update checking: #{course_id}, - #{title}")
+        Raven.capture_message(
+          'FutureLearn course not found during progress update checking',
+          extra: { course_id: course_id, course_title: title }
+        )
       end
   end
 end

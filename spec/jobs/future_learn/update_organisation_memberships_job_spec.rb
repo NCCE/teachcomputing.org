@@ -101,11 +101,13 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
     end
 
     context 'when CourseEnrolments throws a 401 error' do
+      let(:error) { Faraday::UnauthorizedError.new('401 error message') }
+
       before do
         allow(FutureLearn::Queries::CourseEnrolments)
           .to receive(:all)
           .with(run_with_enrolments[:uuid])
-          .and_raise(Faraday::UnauthorizedError, '401 error message')
+          .and_raise(error)
       end
 
       it 'logs error' do
@@ -113,7 +115,8 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
         expect(Raven)
           .to have_received(:capture_message)
           .once
-          .with("Error checking course enrolments: 401 error message, Run UUID: #{run_with_enrolments[:uuid]}")
+          .with('UnauthorizedError checking course enrolments',
+                extra: { error: error, run_uuid: run_with_enrolments[:uuid] })
       end
 
       it 'retries erroring call' do
@@ -140,8 +143,11 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
           .to have_received(:capture_message)
           .once
           .with(
-            'FutureLearn course not found during progress update checking: '\
-            "#{missing_course_run[:course][:uuid]}, - #{missing_course_run[:title]}"
+            'FutureLearn course not found during progress update checking',
+            extra: {
+              course_id: missing_course_run[:course][:uuid],
+              course_title: missing_course_run[:title]
+            }
           )
       end
     end
@@ -156,8 +162,11 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
         expect(Raven)
           .not_to have_received(:capture_message)
           .with(
-            'FutureLearn course not found during progress update checking: '\
-            "#{ignored_course_run[:course][:uuid]}, - #{ignored_course_run[:title]}"
+            'FutureLearn course not found during progress update checking',
+            extra: {
+              course_id: ignored_course_run[:course][:uuid],
+              course_title: ignored_course_run[:title]
+            }
           )
       end
     end
