@@ -1,0 +1,21 @@
+.ncce-notice__container {
+		@include govuk-media-query($from: tablet) {
+		align-items: start;
+		display: grid;
+		grid-gap: 20px;
+		grid-template-columns: 10rem auto;
+  }
+}
+
+.ncce-notice_wrapper {
+  padding-bottom: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 25px 25px 0 0;
+  }
+}
+
+.ncce-notice__tag {
+  background: transparent !important;
+  text-align: center;
+}
