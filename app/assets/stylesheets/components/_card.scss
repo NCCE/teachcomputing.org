@@ -168,7 +168,7 @@
 }
 
 .card--dashboard--cs-accelerator {
-  border-top-color: $cs-accelerator-color;
+  border-top-color: $secondary-cert-color;
 }
 
 .card--dashboard--primary {
@@ -176,7 +176,7 @@
 }
 
 .card--dashboard--secondary {
-  border-top-color: $cs-accelerator-color;
+  border-top-color: $secondary-cert-color;
 .dark_card {
 	border-color: $lilly-white;
 	padding: 1.375rem;
@@ -197,4 +197,5 @@
 		height: 81px;
 		width: auto;
   }
+}
 }

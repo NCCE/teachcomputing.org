@@ -5,12 +5,12 @@
         <% if @achievements.size.positive? %>
           <ul class="govuk-list ncce-activity-list" role="list">
             <% @achievements.each do |achievement| %>
-              <li class="ncce-activity-list__item--dashboard ncce-activity-list__item">
+              <li class="ncce-activity-list__item ncce-activity-list__item--dashboard">
                 <span class="screen-reader-only">Completed:</span>
-                <span class="ncce-activity-list__item-text"> <%= achievement.activity.title %> </span>
-								<span class>
-									<span>Label</span>
-									<span>Date</span>
+                <span class="ncce-activity-list__item-text"> <%= link_to achievement.activity.title, '/', class: 'govuk-link ncce-link' %></span>
+								<span class="ncce-activity-list__item--dashboard-tags">
+									<span class="ncce-activity-list__item--dashboard-tags--course">Label</span>
+									<span class="govuk-body-s ncce-activity-list__item--dashboard-tags-date">Completed on: Date</span>
 								</span>
               </li>
             <% end %>

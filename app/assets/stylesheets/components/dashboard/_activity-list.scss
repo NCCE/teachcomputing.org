@@ -180,7 +180,7 @@
 }
 
 .item--dashboard--cs-accelerator {
-  border-top-color: $cs-accelerator-color;
+  border-top-color: $secondary-cert-color;
 }
 
 .item--dashboard--primary {
@@ -188,5 +188,28 @@
 }
 
 .item--dashboard--secondary {
-  border-top-color: $cs-accelerator-color;
+  border-top-color: $secondary-cert-color;
+}
+
+.ncce-activity-list__item--dashboard {
+	grid-template-rows: auto auto !important;
+}
+
+.ncce-activity-list__item--dashboard-tags {
+	grid-row: 2;
+}
+
+.ncce-activity-list__item--dashboard-tags-date {
+	float: right;
+}
+
+.ncce-activity-list__item--dashboard-tags--course {
+	background-color: black;
+  color: $white;
+  margin-left: 2.8rem;
+  padding: 5px 16px;
+}
+
+.ncce-activity-list__item--dashboard-tags--course-cs-accelerator {
+	background-color: black;
 }
