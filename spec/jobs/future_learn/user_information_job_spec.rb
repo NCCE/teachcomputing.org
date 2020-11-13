@@ -16,8 +16,6 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
       let(:error_401) { Faraday::UnauthorizedError.new('401 error message') }
 
       before do
-        allow(Raven).to receive(:capture_exception)
-
         allow(FutureLearn::Queries::OrganisationMemberships)
           .to receive(:one)
           .and_raise(error_401)
