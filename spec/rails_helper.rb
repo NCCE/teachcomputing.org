@@ -11,9 +11,7 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
-if Rails.env.production?
-  abort('The Rails environment is running in production mode!')
-end
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
 
@@ -56,13 +54,12 @@ module CachingHelpers
 end
 
 VCR.configure do |config|
-  config.default_cassette_options = { :record => :new_episodes }
-  config.cassette_library_dir = "spec/vcr"
+  config.default_cassette_options = { record: :new_episodes }
+  config.cassette_library_dir = 'spec/vcr'
   config.hook_into :webmock
 end
 
 RSpec.configure do |config|
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!

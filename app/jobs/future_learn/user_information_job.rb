@@ -1,9 +1,9 @@
 module FutureLearn
   class UserInformationJob < ApplicationJob
+    retry_on Faraday::UnauthorizedError, attempts: 3
     queue_as :default
 
     def perform(membership_id:)
-      retries ||= 0
       organisation_membership =
         FutureLearn::Queries::OrganisationMemberships.one(membership_id)
 
@@ -19,9 +19,6 @@ module FutureLearn
           user.save
         end
       end
-    rescue Faraday::UnauthorizedError => e
-      retry if (retries += 1) < 3
-      Raven.capture_message("Error retrieving organisation membership: #{e}, Membership UUID: #{membership_id}")
     end
   end
 end

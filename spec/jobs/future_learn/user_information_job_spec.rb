@@ -13,29 +13,25 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
 
     context 'when API call returns 401 response' do
       let(:mock_org_membership) { {} }
+      let(:error_401) { Faraday::UnauthorizedError.new('401 error message') }
 
       before do
-        allow(Raven).to receive(:capture_message)
-
         allow(FutureLearn::Queries::OrganisationMemberships)
           .to receive(:one)
-          .and_raise(Faraday::UnauthorizedError, '401 error message')
+          .and_raise(error_401)
       end
 
-      it 'retries to 3 total calls' do
-        described_class.perform_now(membership_id: fl_membership_id)
-        expect(FutureLearn::Queries::OrganisationMemberships)
-          .to have_received(:one)
-          .with(fl_membership_id)
-          .exactly(3).times
+      it 'retries the job' do
+        expect do
+          described_class.perform_now(membership_id: fl_membership_id)
+        end.to have_enqueued_job(described_class).with(membership_id: fl_membership_id)
       end
 
-      it 'logs the error after retrying' do
-        described_class.perform_now(membership_id: fl_membership_id)
-        expect(Raven)
-          .to have_received(:capture_message)
-          .once
-          .with("Error retrieving organisation membership: 401 error message, Membership UUID: #{fl_membership_id}")
+      it 'receives retry_on 3 times' do
+        allow_any_instance_of(described_class).to receive(:executions).and_return(3)
+        expect do
+          described_class.perform_now(membership_id: fl_membership_id)
+        end.to raise_error(error_401)
       end
     end
 
