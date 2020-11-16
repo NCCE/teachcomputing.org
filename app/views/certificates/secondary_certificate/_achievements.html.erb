@@ -1,0 +1,60 @@
+<% presenters.each do |presenter|%>
+  <% if presenter.category == Activity::COMMUNITY_CATEGORY %>
+    <li class="ncce-activity-list__item<%= presenter.list_item_classes(current_user) %>">
+      <span class="ncce-activity-list__item-text">
+        <span><%= presenter.title %></span>
+      </span>
+      <% unless presenter.completed?(current_user) %>
+        <span class="ihavedonethis">
+          <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
+          <%= presenter.button_label %>
+          </button>
+          <span class="ihavedonethis__popup">
+            <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' } do |f| %>
+              <span class="govuk-form-group ihavedonethis__group">
+                <%= label_tag "#{:self_verification_info.to_s}_#{presenter.id}", presenter.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
+                <%= text_field_tag "#{:self_verification_info.to_s}_#{presenter.id}", '', class: 'govuk-input', name: :self_verification_info %>
+                <%= f.hidden_field :activity_id, value: presenter.id %>
+              </span>
+              <%= f.submit 'Complete activity', class: 'govuk-button button button--focus-white' %>
+            <% end %>
+          </span>
+        </span>
+    <% end %>
+    <% if presenter.description.present? %>
+      <span class="ncce-activity-list__item-activity light-blue-bg"><%= presenter.description %></span>
+    <% end %>
+    </li>
+  <% else %>
+    <% unless presenter.empty? %>
+      <% if presenter.complete? %>
+        <li class="ncce-activity-list__item">
+          <span class="ncce-activity-list__item-text"><%= presenter.completed_text(index) %>
+          </span>
+          <span class="ncce-activity-list__item-activity light-blue-bg">
+            <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete</span>
+            <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
+          </span>
+        </li>
+      <% else %>
+        <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
+          <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
+          <span class="ncce-activity-list__item-activity light-blue-bg">
+            <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">In progress</span>
+            <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
+          <span>
+        </li>
+      <% end %>
+    <% else %>
+      <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
+        <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>
+        <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__recommendation' %>
+        <%=
+          render 'certificates/primary_certificate/recommendation',
+            category: local_assigns[:category] || 'none',
+            diagnostic_result_percentage: local_assigns[:diagnostic_result_percentage] || 0
+        %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
