@@ -41,6 +41,18 @@ a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(slug: 'provide-feedback-on-a-cas-resource') do |activity|
+  activity.title = 'Provide feedback on a CAS resource'
+  activity.credit = 10
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Please provide a link to your contribution'
+  activity.description = 'Give a full review of a <a href="https://community.computingatschool.org.uk/resources/landing" class="ncce-link">CAS resource</a> you’ve downloaded - including how you used it in the classroom'
+end
+
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activity|
@@ -64,7 +76,7 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |act
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
-  activity.description = 'Support the CAS Community further by registering as a CAS Community Leader through the <a href="https://community.computingatschool.org.uk/" class="ncce-link"> CAS website</a>. You’ll need to commit to running 3 meetings per year to support your local community.'
+  activity.description = 'Register as <a href="https://www.computingatschool.org.uk/custom_pages/365-leading-a-local-cas-community" class="ncce-link">a CAS Community Leader</a> and help support other teachers. You’ll need to commit to running 3 meetings per year in your local community'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -78,7 +90,7 @@ a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activit
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = "Please give details of the additional support you have provided"
-  activity.description = 'Providing additional support your local community of teachers, pupils or parents during the school closure period'
+  activity.description = 'Go beyond your day to day teaching, and support your local teachers, pupils or parents'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -111,11 +123,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'download-use-and-provide-meaningful-feedback-on-a-resource-from-the-teach-computing-curriculum') do |activity|
   activity.title = 'Download, use and provide meaningful feedback on a resource from the Teach Computing Curriculum'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
+  activity.description = 'Give a full review of a <a href="https://teachcomputing.org/curriculum" class="ncce-link">Teach Computing curriculum lesson</a> you’ve downloaded - including how you used it in the classroom.'
   activity.self_verification_info = 'Provide screenshot of feedback'
 end
 
@@ -123,11 +136,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school') do |activity|
   activity.title = 'Provide computing CPD in your school or to another local school'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
+  activity.description = 'Deliver computing CPD in your school, or another local school'
   activity.self_verification_info = 'Provide details of the training including date training took place'
 end
 
@@ -135,11 +149,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'become-a-mentor-support-another-teacher-through-the-cs-accelerator-programme-support-a-trainee-teacher') do |activity|
   activity.title = 'Become a mentor – support another teacher through the CS Accelerator programme, support a trainee teacher'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
+  activity.description = 'Support another teacher through the CS Accelerator programme, or support a trainee teacher in qualifying as a computing teacher'
   activity.self_verification_info = 'Provide details of who/how you provided support'
 end
 
@@ -147,11 +162,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'give-additional-support-beyond-your-day-to-day-teaching-to-your-local-community-of-teachers-pupils-or-parents') do |activity|
   activity.title = 'Give additional support, beyond your day to day teaching, to your local community of teachers, pupils or parents'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
+  activity.description = 'Go beyond your day to day teaching, and support your local teachers, pupils or parents'
   activity.self_verification_info = 'Provide details of support provided'
 end
 
@@ -159,12 +175,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-balance-in-computing-programme') do |activity|
   activity.title = 'Register to participate in the Gender Balance in Computing Programme'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'details can be found here <a href="https://teachcomputing.org/gender-balance" class="ncce-link">(https://teachcomputing.org/gender-balance)</a>'
+  activity.description = 'Support gender equality in computing, by participating in our research programme. <a href="https://teachcomputing.org/gender-balance" class="ncce-link">Find out more and register</a>.'
   activity.self_verification_info = 'Screenshot to show registration'
 end
 
@@ -172,7 +188,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'volunteer-to-run-an-event-with-the-isaac-computer-science-programme') do |activity|
   activity.title = 'Volunteer to run an event with the ISAAC Computer Science programme'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'isaac'
@@ -184,11 +200,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activity|
   activity.title = 'Engage with STEM Ambassadors'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
+  activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors/inspiration/activities" class="ncce=link">Register for STEM ambassadors</a> and complete a visit, or any other meaningful engagement'
   activity.self_verification_info = ''
 end
 
@@ -196,11 +213,12 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activity|
   activity.title = 'Run a Code Club or Coder Dojo'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'raspberrypi'
   activity.self_certifiable = true
+  activity.description = 'Run an after-school <a href="https://codeclub.org/en/start-a-code-club" class="ncce-link">Code Club</a> or <a href="https://coderdojo.com/start-a-dojo/" class="ncce-link">Coder Dojo</a>, and help young people to learn to code.'
   activity.self_verification_info = 'Provide address including postcode'
 end
 
