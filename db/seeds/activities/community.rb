@@ -130,6 +130,7 @@ a = Activity.find_or_create_by(slug: 'download-use-and-provide-meaningful-feedba
   activity.self_certifiable = true
   activity.description = 'Give a full review of a <a href="https://teachcomputing.org/curriculum" class="ncce-link">Teach Computing curriculum lesson</a> you’ve downloaded - including how you used it in the classroom.'
   activity.self_verification_info = 'Provide screenshot of feedback'
+  activity.uploadable = true
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -182,6 +183,7 @@ a = Activity.find_or_create_by(slug: 'register-to-participate-in-the-gender-bala
   activity.self_certifiable = true
   activity.description = 'Support gender equality in computing, by participating in our research programme. <a href="https://teachcomputing.org/gender-balance" class="ncce-link">Find out more and register</a>.'
   activity.self_verification_info = 'Screenshot to show registration'
+  activity.uploadable = true
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
