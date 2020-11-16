@@ -78,6 +78,11 @@ if activity = Activity.find_by(slug: 'review-a-resource-on-cas')
   programme_activity.update(programme_activity_grouping_id: group_three.id) unless group_three.programme_activities.include?(programme_activity)
 end
 
+if activity = Activity.find_by(slug: 'complete-a-cs-accelerator-course')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  programme_activity.update(programme_activity_grouping_id: group_three.id) unless group_three.programme_activities.include?(programme_activity)
+end
+
 group_four = secondary.programme_activity_groupings.find_by(sort_key: 4)
 
 if activity = Activity.find_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school')
