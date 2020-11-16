@@ -1,7 +1,7 @@
 ## Status
 
 * Current Status: WIP / Ready for (front-end / tech) review
-* Review App: *populate this once the PR has been created*
+* Review App link(s): *populate this with links to the relevant parts of the review app*
 * Closes *add issue numbers or delete*
 * Related to *add issue numbers or delete*
 
