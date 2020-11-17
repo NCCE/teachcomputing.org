@@ -9,10 +9,17 @@
                 <span class="screen-reader-only">Completed:</span>
                 <span class="ncce-activity-list__item-text"> <%= link_to achievement.activity.title, '/', class: 'govuk-link ncce-link' %></span>
 								<span class="ncce-activity-list__item--dashboard-tags">
-									<span class="ncce-activity-list__item--dashboard-tags--course">Label</span>
-									<span class="govuk-body-s ncce-activity-list__item--dashboard-tags-date">Completed on: Date</span>
+									<% if achievement.programme.slug == 'cs-accelerator' %>
+										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-cs-accelerator">CS Accelerator</span>
+									<% elsif achievement.programme.slug == 'secondary-certificate' %>
+										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-secondary">Secondary</span>
+									<% elsif achievement.programme.slug == 'primary-certificate' %>
+										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-primary">Primary</span>
+									<% end %>
+									<span class="govuk-body-s ncce-activity-list__item--dashboard-tags-date">Completed on <%= achievement.updated_at.strftime("%b %Y") %></h2></span>
 								</span>
               </li>
+							Inspect <%= achievement.programme.slug.inspect %>
             <% end %>
           </ul>
         <% else %>

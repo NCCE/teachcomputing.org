@@ -204,12 +204,19 @@
 }
 
 .ncce-activity-list__item--dashboard-tags--course {
-	background-color: black;
   color: $white;
   margin-left: 2.8rem;
   padding: 5px 16px;
 }
 
 .ncce-activity-list__item--dashboard-tags--course-cs-accelerator {
-	background-color: black;
+	background-color: $secondary-cert-color;
+}
+
+.ncce-activity-list__item--dashboard-tags--course-primary {
+	background-color: $primary-cert-color
+}
+
+.ncce-activity-list__item--dashboard-tags--course-cs-secondary {
+	background-color: $secondary-cert-color
 }

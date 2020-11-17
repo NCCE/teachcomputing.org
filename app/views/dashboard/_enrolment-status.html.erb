@@ -1,0 +1,7 @@
+<% if @programme.user_enrolled?(current_user) %>
+	<%= link_to 'Check progress', programme.path, class: 'govuk-button button button--small button--full-width' %>
+<% elsif @programme.user_completed?(current_user) %>
+	<%= link_to 'View cert', programme.path, class: 'govuk-button button button--aside' %>
+<% else %>
+	<%= link_to 'Enrol!', '/', class: 'govuk-button button button--small button--full-width' %>
+<% end %>
