@@ -72,3 +72,10 @@ $primary-cert-color: $jaffa;
   font-weight: bold;
   padding: 5px 12px;
 }
+
+@mixin status_block_light() {
+  background-color: $white;
+  color: $grey-dark-x;
+  font-weight: bold;
+  padding: 5px 12px;
+}

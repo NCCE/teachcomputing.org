@@ -1,6 +1,6 @@
 	<div class="govuk-grid-column-one-third">
 		<div class="shadow_card card--dashboard card--dashboard--primary %>">
-			<span>Enrolment status</span>
+			<%= render 'dashboard/programme-enrolment-status-dashboard', programme: Programme.primary_certificate %>
 			<h3 class="govuk-heading-m card__heading">
 				<%= link_to 'Teach primary computing', '/', class: 'ncce-link ncce-link--heading' %>
 			</h3>

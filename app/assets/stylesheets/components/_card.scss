@@ -108,11 +108,21 @@
   }
 }
 
-.card > .status-block {
+.card, .shadow_card > .status-block {
   @include status_block();
   display: inline-block;
   margin-bottom: 10px;
-	border: 1px solid grey;
+	border: 1px solid $grey-dark-x;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
+}
+
+.shadow_card > .status-block-light {
+  @include status_block_light();
+  display: inline-block;
+  margin-bottom: 10px;
+	border: 4px solid $grey-dark-x;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 15px;
   }

@@ -172,6 +172,7 @@
 
 .ncce-activity-list__item--dashboard {
 	border-radius: 5px;
+	grid-template-rows: auto auto !important;
 	margin-bottom: 1.25 rem !important;
 	border-left: 9px solid $action-color;
 	&:last-child {
@@ -189,10 +190,6 @@
 
 .item--dashboard--secondary {
   border-top-color: $secondary-cert-color;
-}
-
-.ncce-activity-list__item--dashboard {
-	grid-template-rows: auto auto !important;
 }
 
 .ncce-activity-list__item--dashboard-tags {
