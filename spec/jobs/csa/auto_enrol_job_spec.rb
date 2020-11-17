@@ -37,10 +37,22 @@ RSpec.describe CSA::AutoEnrolJob, type: :job do
       end
 
       context 'when user is enrolled in non csa programme' do
-        it 'does not enrol user' do
-          create(:user_programme_enrolment, user: user, programme: primary_certificate)
-          expect { described_class.perform_now(achievement_id: achievement.id) }
-            .not_to change(UserProgrammeEnrolment, :count)
+        context 'when non csa enrolment is not complete' do
+          it 'does not enrol user' do
+            create(:user_programme_enrolment, user: user, programme: primary_certificate)
+            expect { described_class.perform_now(achievement_id: achievement.id) }
+              .not_to change(UserProgrammeEnrolment, :count)
+          end
+        end
+
+        context 'when non csa enrolment is complete' do
+          it 'enrols user' do
+            enrolment = create(:user_programme_enrolment, user: user, programme: primary_certificate)
+            enrolment.transition_to(:complete)
+            expect { described_class.perform_now(achievement_id: achievement.id) }
+              .to change(UserProgrammeEnrolment, :count)
+              .by(1)
+          end
         end
       end
 
