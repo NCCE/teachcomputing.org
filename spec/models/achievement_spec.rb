@@ -36,7 +36,7 @@ RSpec.describe Achievement, type: :model do
 
   describe 'callbacks' do
     it { is_expected.to callback(:fill_in_programme_id).before(:create) }
-    it { is_expected.to callback(:check_csa_enrolment).after(:save) }
+    it { is_expected.to callback(:queue_auto_enrolment).after(:save) }
   end
 
   describe 'associations' do
@@ -336,7 +336,7 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#check_csa_enrolment' do
+  describe '#queue_auto_enrolment' do
     context 'when course is part of csa' do
       let!(:achievement) { create(:achievement, activity: activity, user: user) }
 
