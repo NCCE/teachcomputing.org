@@ -232,7 +232,7 @@ a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |act
   activity.slug = 'complete-a-cs-accelerator-course'
   activity.stem_course_template_no = ''
   activity.category = 'community'
-  activity.provider = ''
+  activity.provider = 'ncce'
   activity.description = 'Complete an additional <a href="https://teachcomputing.org/courses?certificate=cs-accelerator" class="ncce-link">CS Accelerator</a> course and expand you’re subject knowledge'
 end
 
