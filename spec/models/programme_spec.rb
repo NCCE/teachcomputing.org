@@ -170,7 +170,7 @@ RSpec.describe Programme, type: :model do
   describe '#primary_certificate?' do
     context 'when programme is primary certificate' do
       it 'returns true' do
-        programme = build(:primary_certificate_programme)
+        programme = build(:primary_certificate)
         expect(programme.primary_certificate?).to eq(true)
       end
     end
@@ -186,7 +186,7 @@ RSpec.describe Programme, type: :model do
   describe '#cs_accelerator?' do
     context 'when programme is cs accelerator' do
       it 'returns true' do
-        programme = build(:cs_accelerator_programme)
+        programme = build(:cs_accelerator)
         expect(programme.cs_accelerator?).to eq(true)
       end
     end

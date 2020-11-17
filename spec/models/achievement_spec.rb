@@ -34,18 +34,16 @@ RSpec.describe Achievement, type: :model do
     create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
   end
 
+  describe 'callbacks' do
+    it { is_expected.to callback(:fill_in_programme_id).before(:create) }
+    it { is_expected.to callback(:check_csa_enrolment).after(:save) }
+  end
+
   describe 'associations' do
-    it 'belongs to activity' do
-      expect(achievement).to belong_to(:activity)
-    end
-
-    it 'belongs to user' do
-      expect(achievement).to belong_to(:user)
-    end
-
-    it 'belongs to programme' do
-      expect(achievement).to belong_to(:programme)
-    end
+    it { is_expected.to belong_to(:activity) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:programme) }
+    it { is_expected.to have_many(:achievement_transitions) }
   end
 
   describe 'validations' do
@@ -228,7 +226,7 @@ RSpec.describe Achievement, type: :model do
   describe '#primary_certificate?' do
     context 'when programme is primary certificate' do
       it 'returns true' do
-        programme = build(:primary_certificate_programme)
+        programme = build(:primary_certificate)
         achievement = build(:achievement, programme: programme)
         expect(achievement.primary_certificate?).to eq(true)
       end
@@ -253,7 +251,7 @@ RSpec.describe Achievement, type: :model do
   describe '#cs_accelerator?' do
     context 'when programme is cs accelerator' do
       it 'returns true' do
-        programme = build(:cs_accelerator_programme)
+        programme = build(:cs_accelerator)
         achievement = build(:achievement, programme: programme)
         expect(achievement.cs_accelerator?).to eq(true)
       end
@@ -335,6 +333,65 @@ RSpec.describe Achievement, type: :model do
       achievement = create(:completed_achievement)
       achievement.update_state_for_online_activity(40, DateTime.now.to_s)
       expect(achievement.complete?).to eq(true)
+    end
+  end
+
+  describe '#check_csa_enrolment' do
+    context 'when course is part of csa' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(:programme_activity, programme: cs_accelerator, activity: activity)
+      end
+
+      it 'queues job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.to have_enqueued_job(CSA::AutoEnrolJob)
+          .with(achievement_id: achievement.id)
+      end
+    end
+
+    context 'when course is part of csa and another programme' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(
+          :programme_activity,
+          programme: create(:primary_certificate),
+          activity: activity
+        )
+
+        create(
+          :programme_activity,
+          programme: cs_accelerator,
+          activity: activity
+        )
+      end
+
+      it 'queues job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.to have_enqueued_job(CSA::AutoEnrolJob)
+      end
+    end
+
+    context 'when course is not part of csa' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(
+          :programme_activity,
+          programme: create(:primary_certificate),
+          activity: activity
+        )
+      end
+
+      it 'does not queue job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.not_to have_enqueued_job(CSA::AutoEnrolJob)
+      end
     end
   end
 end

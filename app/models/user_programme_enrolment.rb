@@ -18,7 +18,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def completed_at?
-    return nil unless current_state == 'complete'
+    return nil unless in_state?(:complete)
 
     last_transition.created_at
   end
@@ -32,7 +32,11 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def state_machine
-    @state_machine ||= StateMachines::UserProgrammeEnrolmentStateMachine.new(self, transition_class: UserProgrammeEnrolmentTransition)
+    @state_machine ||= begin
+                         StateMachines::UserProgrammeEnrolmentStateMachine.new(
+                           self, transition_class: UserProgrammeEnrolmentTransition
+                         )
+                       end
   end
 
   private_class_method :initial_state, :transition_class
@@ -42,6 +46,8 @@ class UserProgrammeEnrolment < ApplicationRecord
   private
 
     def schedule_get_started_prompt
-      ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(user.id, programme.id)
+      ScheduleProgrammeGettingStartedPromptJob
+        .set(wait: 7.days)
+        .perform_later(user.id, programme.id)
     end
 end

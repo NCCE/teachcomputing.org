@@ -61,7 +61,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         create(:achievement,
                user: user,
                activity: activity,
-               programme: create(:primary_certificate_programme))
+               programme: create(:primary_certificate))
       end
 
       context "when user's achievement is updated to complete" do
@@ -86,7 +86,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         create(:achievement,
                user: user,
                activity: activity,
-               programme: create(:cs_accelerator_programme))
+               programme: create(:cs_accelerator))
       end
 
       context "when user's achievement is updated to complete" do

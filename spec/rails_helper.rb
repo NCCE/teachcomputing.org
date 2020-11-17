@@ -68,6 +68,7 @@ RSpec.configure do |config|
   config.include GhostStubs
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
 
   VCR.turn_off! # Turn it on selectively
 

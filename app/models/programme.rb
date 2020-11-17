@@ -58,7 +58,7 @@ class Programme < ApplicationRecord
   def user_enrolled?(user)
     return false if user.nil?
 
-    user.programmes.exists?(id)
+    user_programme_enrolments.where(user_id: user.id).present?
   end
 
   def diagnostic_result(*)

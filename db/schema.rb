@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_150940) do
+ActiveRecord::Schema.define(version: 2020_11_16_163017) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -212,6 +211,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "flagged", default: false
+    t.boolean "auto_enrolled", default: false
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"

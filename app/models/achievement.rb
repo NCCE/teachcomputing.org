@@ -10,6 +10,8 @@ class Achievement < ApplicationRecord
   before_create :fill_in_programme_id,
                 unless: proc { |achievement| achievement.programme_id }
 
+  after_save :check_csa_enrolment
+
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
   scope :for_programme, lambda { |programme|
@@ -125,5 +127,11 @@ class Achievement < ApplicationRecord
           end
         end
       end
+    end
+
+    def check_csa_enrolment
+      return unless activity.programmes.any? { |p| p.cs_accelerator? }
+
+      CSA::AutoEnrolJob.perform_later(achievement_id: id)
     end
 end
