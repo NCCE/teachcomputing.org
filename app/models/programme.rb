@@ -48,7 +48,7 @@ class Programme < ApplicationRecord
     enrolment = user.user_programme_enrolments.find_by(programme_id: id)
     return false if enrolment.nil?
 
-    enrolment.current_state == 'complete'
+    enrolment.in_state?(:complete)
   end
 
   def user_completed_diagnostic?(user)
