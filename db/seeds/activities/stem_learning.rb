@@ -578,15 +578,3 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
-a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |activity|
-  activity.title = 'Complete a CS Accelerator course'
-  activity.credit = 10
-  activity.slug = 'complete-a-cs-accelerator-course'
-  activity.stem_course_template_no = ''
-  activity.category = 'face-to-face'
-  activity.provider = 'stem-learning'
-  activity.description = 'Complete an additional <a href="https://teachcomputing.org/courses?certificate=cs-accelerator" class="ncce-link">CS Accelerator</a> course and expand you’re subject knowledge'
-end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

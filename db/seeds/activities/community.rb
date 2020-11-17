@@ -225,3 +225,15 @@ a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activi
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |activity|
+  activity.title = 'Complete a CS Accelerator course'
+  activity.credit = 10
+  activity.slug = 'complete-a-cs-accelerator-course'
+  activity.stem_course_template_no = ''
+  activity.category = 'community'
+  activity.provider = ''
+  activity.description = 'Complete an additional <a href="https://teachcomputing.org/courses?certificate=cs-accelerator" class="ncce-link">CS Accelerator</a> course and expand you’re subject knowledge'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
