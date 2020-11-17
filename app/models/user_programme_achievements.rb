@@ -26,19 +26,6 @@ class UserProgrammeAchievements
   end
 
   def secondary_activities(programme_activities)
-    programme_activities.to_a.map { |programme_activity| determine_presenter(programme_activity.activity) }
-  end
-
-  private
-
-  def determine_presenter(activity)
-    case activity.category
-      when 'face-to-face'
-        FaceToFacePresenter.new(activity)
-      when 'online'
-        OnlinePresenter.new(activity)
-      when 'community'
-        CommunityPresenter.new(activity)
-    end
+    programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity) }
   end
 end
