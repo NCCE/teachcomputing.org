@@ -1,4 +1,4 @@
-# This file contains seeds for Activities faciliated by STEM Learning
+# This file contains seeds for Activities faciliated by Future Learn
 
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
