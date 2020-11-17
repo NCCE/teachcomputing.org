@@ -43,7 +43,10 @@
     "AWS_SECRET_ACCESS_KEY": {
       "required": true
     },
-    "AWS_S3_BUCKET": {
+    "AWS_S3_ACTIVE_STORAGE_BUCKET": {
+      "required": true
+    },
+    "AWS_S3_SITEMAP_BUCKET": {
       "required": true
     },
     "AWS_S3_REGION": {

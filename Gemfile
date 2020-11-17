@@ -5,6 +5,7 @@ ruby '2.5.7'
 
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
+gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudflare-rails', '~> 0.4.0'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
