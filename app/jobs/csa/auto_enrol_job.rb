@@ -8,7 +8,10 @@ class CSA::AutoEnrolJob < ApplicationJob
       return unless user.csa_auto_enrollable?
       return if user_enrolled_on_non_csa_activity_programme(user, achievement.activity)
 
-      user.user_programme_enrolments << UserProgrammeEnrolment.new(programme: Programme.cs_accelerator)
+      user.user_programme_enrolments << UserProgrammeEnrolment.new(
+        programme: Programme.cs_accelerator,
+        auto_enrolled: true
+      )
     end
 
     # send the email

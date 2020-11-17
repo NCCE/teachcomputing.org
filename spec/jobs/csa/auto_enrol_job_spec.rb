@@ -15,6 +15,11 @@ RSpec.describe CSA::AutoEnrolJob, type: :job do
         .to change(UserProgrammeEnrolment, :count).by(1)
     end
 
+    it 'sets auto_enrolled flag' do
+      described_class.perform_now(achievement_id: achievement.id)
+      expect(UserProgrammeEnrolment.last.auto_enrolled).to eq(true)
+    end
+
     context 'when user is enrolled in csa' do
       it 'does not enrol user' do
         create(:user_programme_enrolment, user: user, programme: cs_accelerator)
