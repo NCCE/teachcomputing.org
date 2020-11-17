@@ -131,6 +131,7 @@ class Achievement < ApplicationRecord
 
     def queue_auto_enrolment
       return unless activity.programmes.any? { |p| p.cs_accelerator? }
+      return unless user.csa_auto_enrollable?
 
       CSA::AutoEnrolJob.perform_later(achievement_id: id)
     end

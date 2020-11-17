@@ -350,6 +350,17 @@ RSpec.describe Achievement, type: :model do
         end.to have_enqueued_job(CSA::AutoEnrolJob)
           .with(achievement_id: achievement.id)
       end
+
+      context 'when user is enrolled on CSA' do
+        it 'does not queue job' do
+          create(:user_programme_enrolment,
+                 user: user,
+                 programme: cs_accelerator)
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.not_to have_enqueued_job(CSA::AutoEnrolJob)
+        end
+      end
     end
 
     context 'when course is part of csa and another programme' do
@@ -373,6 +384,17 @@ RSpec.describe Achievement, type: :model do
         expect do
           achievement.reload.run_callbacks(:save)
         end.to have_enqueued_job(CSA::AutoEnrolJob)
+      end
+
+      context 'when user is enrolled on CSA' do
+        it 'does not queue job' do
+          create(:user_programme_enrolment,
+                 user: user,
+                 programme: cs_accelerator)
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.not_to have_enqueued_job(CSA::AutoEnrolJob)
+        end
       end
     end
 
