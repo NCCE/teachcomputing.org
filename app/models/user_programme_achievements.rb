@@ -25,7 +25,7 @@ class UserProgrammeAchievements
     (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index])}
   end
 
-  def secondary_achievements(programme_activities)
+  def secondary_activities(programme_activities)
     programme_activities.to_a.map { |programme_activity| determine_presenter(programme_activity.activity) }
   end
 
