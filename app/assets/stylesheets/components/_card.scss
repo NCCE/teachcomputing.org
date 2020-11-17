@@ -128,6 +128,14 @@
   }
 }
 
+.status-block__icon {
+  background-image: image-url('tick-plain.svg');
+  background-position: left 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  padding-left: 2rem !important;
+}
+
 .card__heading {
   margin-bottom: 13px;
   @include govuk-media-query($from: desktop) {
