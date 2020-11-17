@@ -154,6 +154,8 @@ a = Activity.find_or_create_by(stem_course_template_no: '46c07f3e-b9b2-4f0c-ba56
   activity.provider = 'stem-learning'
 end
 
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
 a = Activity.find_or_create_by(stem_course_template_no: '87bf64c2-6517-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Introduction to GCSE computer science'
   activity.credit = 20
