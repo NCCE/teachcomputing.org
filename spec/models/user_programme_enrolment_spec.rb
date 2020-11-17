@@ -7,30 +7,27 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
   describe 'associations' do
-    it 'belongs to programme' do
-      expect(user_programme_enrolment).to belong_to(:programme)
-    end
+    it { is_expected.to belong_to(:programme) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:user_programme_enrolment_transitions) }
+  end
 
-    it 'belongs to user' do
-      expect(user_programme_enrolment).to belong_to(:user)
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:user) }
+    it { is_expected.to validate_presence_of(:programme) }
 
-    it 'has many user programme enrolment transitions' do
-      expect(user_programme_enrolment).to have_many(:user_programme_enrolment_transitions)
+    it 'ensures user can only be enrolled on a programme once' do
+      create(:user_programme_enrolment, user: user, programme: programme)
+      enrolment = build(:user_programme_enrolment, user: user, programme: programme)
+      expect(enrolment.valid?).to eq(false)
+      expect(enrolment.errors.messages[:user]).to eq(['has already been taken'])
     end
+  end
 
-    it 'queues CompleteCertificateEmailJob job' do
-      expect do
-        user_programme_enrolment
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(user.id, programme.id)
-    end
-
-    it 'only allows a unique enrolment per programme/user' do
-      expect do
-        create(:user_programme_enrolment, user: user, programme: programme)
-        create(:user_programme_enrolment, user: user, programme: programme)
-      end.to raise_error(ActiveRecord::RecordNotUnique)
-    end
+  it 'queues CompleteCertificateEmailJob job' do
+    expect do
+      user_programme_enrolment
+    end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(user.id, programme.id)
   end
 
   describe '#completed_at?' do

@@ -9,6 +9,9 @@ class UserProgrammeEnrolment < ApplicationRecord
   after_commit :schedule_get_started_prompt, on: :create
   before_create :set_eligible_achievements_for_programme
 
+  validates :user, :programme, presence: true
+  validates :user, uniqueness: { scope: [:programme] }
+
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
   end
