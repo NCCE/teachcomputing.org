@@ -46,9 +46,9 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
         expect(user_programme_enrolment.last_transition.metadata['some_value']).to eq '10'
       end
 
-      it 'queues SchedulePrimaryCertificateCompletionJob job' do
+      it 'queues ScheduleCertificateCompletionJob job' do
         #https://github.com/rspec/rspec-rails/pull/2206
-        expect(SchedulePrimaryCertificateCompletionJob).to have_been_enqueued.exactly(:once)#.at(a_value_within(1.minute).of(7.days.from_now))
+        expect(ScheduleCertificateCompletionJob).to have_been_enqueued.exactly(:once)#.at(a_value_within(1.minute).of(7.days.from_now))
       end
     end
   end
