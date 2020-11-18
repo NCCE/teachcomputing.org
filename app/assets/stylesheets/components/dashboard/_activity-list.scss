@@ -81,7 +81,6 @@
   grid-column: 1;
 	margin-left: 2rem;
   padding: 0.7rem;
-  overflow-wrap: break-word;
   @include govuk-media-query($from: tablet) {
     grid-column-end: 3;
 		margin-left: 2.8rem;
