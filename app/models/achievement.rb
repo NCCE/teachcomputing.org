@@ -108,27 +108,22 @@ class Achievement < ApplicationRecord
 
       return if programmes.empty?
 
-      find_matching_programme(programmes)
+      self.programme_id = find_matching_programme_id(programmes)
     end
 
-    def find_matching_programme(programmes)
-      if programmes.size == 1
-        self.programme_id = programmes.first.id
-        return
-      end
-      programme_ids = programmes.pluck(:id)
+    def find_matching_programme_id(programmes)
+      return programmes.first.id if programmes.size == 1
 
       user_programme_ids = user.user_programme_enrolments
-                               .where(programme_id: programme_ids)
+                               .where(programme_id: programmes.pluck(:id))
                                .not_in_state(:unenrolled)
                                .order(created_at: :desc)
                                .pluck(:programme_id)
-
-      self.programme_id = user_programme_ids.first
+      user_programme_ids.first
     end
 
     def queue_auto_enrolment
-      return unless activity.programmes.any? { |p| p.cs_accelerator? }
+      return unless activity.programmes.any?(&:cs_accelerator?)
       return unless user.csa_auto_enrollable?
 
       CSA::AutoEnrolJob.perform_later(achievement_id: id)
