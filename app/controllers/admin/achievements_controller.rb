@@ -25,7 +25,7 @@ class Admin::AchievementsController < AdminController
     case achievement.programme&.slug
     when 'cs-accelerator'
       AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
-    when 'primary-certificate'
+    when 'primary-certificate' || 'secondary-certificate'
       CertificatePendingTransitionJob.perform_later(achievement.programme, user.id, source: 'AdminAchievementsController.complete')
     end
 
