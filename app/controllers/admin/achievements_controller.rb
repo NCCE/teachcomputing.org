@@ -9,7 +9,7 @@ class Admin::AchievementsController < AdminController
       when 'cs-accelerator'
         AssessmentEligibilityJob.perform_now(user.id, nil)
       when 'primary-certificate'
-        PrimaryCertificatePendingTransitionJob.perform_now(user.id, nil)
+        CertificatePendingTransitionJob.perform_now(achievement.programme, user.id, nil)
       end
       render json: as_json(achievement), status: 201
     else
@@ -26,7 +26,7 @@ class Admin::AchievementsController < AdminController
     when 'cs-accelerator'
       AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
     when 'primary-certificate'
-      PrimaryCertificatePendingTransitionJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
+      CertificatePendingTransitionJob.perform_later(achievement.programme, user.id, source: 'AdminAchievementsController.complete')
     end
 
     render json: as_json(achievement), status: 201

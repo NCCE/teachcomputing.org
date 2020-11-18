@@ -68,11 +68,11 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
 
     def queue_jobs_for_users
       @cs_accelerator_user_ids.uniq.each do |id|
-        AssessmentEligibilityJob.perform_later(id)
+        AssessmentEligibilityJob.perform_later(id, source: 'ProcessFutureLearnCsvExportJob')
       end
 
       @primary_certificate_user_ids.uniq.each do |id|
-        PrimaryCertificatePendingTransitionJob.perform_later(id, source: 'AchievementsController.create')
+        CertificatePendingTransitionJob.perform_later(Programme.primary_certificate, id, source: 'ProcessFutureLearnCsvExportJob')
       end
     end
 end

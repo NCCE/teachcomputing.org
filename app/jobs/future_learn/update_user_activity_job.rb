@@ -34,7 +34,8 @@ module FutureLearn
       end
 
       def queue_primary_cert_transition_job(user_id)
-        PrimaryCertificatePendingTransitionJob.perform_later(
+        CertificatePendingTransitionJob.perform_later(
+          Programme.primary_certificate,
           user_id,
           source: 'FutureLearn::UpdateUserActivityJob'
         )

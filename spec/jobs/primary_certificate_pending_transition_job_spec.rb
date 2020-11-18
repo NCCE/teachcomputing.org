@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
+RSpec.describe CertificatePendingTransitionJob, type: :job do
   let(:primary_certificate) { create(:primary_certificate) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id, user_id: user.id) }
@@ -10,7 +10,7 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
     context 'when user is invalid' do
       it 'raises error if user is not found' do
         expect {
-          PrimaryCertificatePendingTransitionJob.perform_now('123', some_value: '10')
+          CertificatePendingTransitionJob.perform_now(primary_certificate, '123', some_value: '10')
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
@@ -22,7 +22,7 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
 
       it 'doesn\'t cause errors' do
         expect {
-          PrimaryCertificatePendingTransitionJob.perform_now(user.id, some_value: '10')
+          CertificatePendingTransitionJob.perform_now(primary_certificate, user.id, some_value: '10')
         }.not_to raise_error
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe PrimaryCertificatePendingTransitionJob, type: :job do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
         user_programme_enrolment
-        PrimaryCertificatePendingTransitionJob.perform_now(user.id, some_value: '10')
+        CertificatePendingTransitionJob.perform_now(primary_certificate, user.id, some_value: '10')
       end
 
       after do

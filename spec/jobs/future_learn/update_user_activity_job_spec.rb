@@ -72,9 +72,9 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
                 steps_completed_count: 90)
         end
 
-        it 'queues PrimaryCertificatePendingTransitionJob' do
+        it 'queues CertificatePendingTransitionJob' do
           expect { run_job }
-            .to have_enqueued_job(PrimaryCertificatePendingTransitionJob)
+            .to have_enqueued_job(CertificatePendingTransitionJob)
             .with(user.id, source: 'FutureLearn::UpdateUserActivityJob')
             .once
         end

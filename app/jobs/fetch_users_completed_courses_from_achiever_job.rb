@@ -20,7 +20,7 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
         achievement.set_to_dropped
       end
     end
-    run_jobs(user.id)
+    run_jobs(achievement.programme, user.id)
   end
 
   private
@@ -49,12 +49,13 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
       end
     end
 
-    def run_jobs(user_id)
+    def run_jobs(programme = nil, user_id)
       AssessmentEligibilityJob.perform_later(user_id) if @assess_eligibility_job
 
       return unless @pending_transition_job
 
-      PrimaryCertificatePendingTransitionJob.perform_later(
+      CertificatePendingTransitionJob.perform_later(
+        programme,
         user_id, source: 'AchievementsController.create'
       )
     end
