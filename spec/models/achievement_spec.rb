@@ -284,7 +284,7 @@ RSpec.describe Achievement, type: :model do
       end
     end
 
-    context 'when programme is not cs accelerator' do
+    context 'when programme is not secondary certificate' do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme-slug')
         achievement = build(:achievement, programme: programme)
