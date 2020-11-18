@@ -64,11 +64,33 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'when activity has a single programme it is used' do
-      expect(achievement_with_programme.programme.id).to eq(programme.id)
+      expect(achievement_with_programme.programme_id).to eq(programme.id)
     end
 
-    it 'when activity has multiple programmes it gets the most recently enrolled one' do
-      expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
+    context 'when activity has multiple programmes' do
+      it 'gets the most recently enrolled one' do
+        expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
+      end
+
+      it 'ignores a programme the user has unenrolled from' do
+        face_to_face_activity = create(:activity, :stem_learning)
+        create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
+        csa_enrolment = create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
+        csa_enrolment.transition_to(:unenrolled)
+
+        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
+        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
+        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
+        expect(achievement.programme_id).to eq(programme.id)
+      end
+
+      it 'does not set id if user not enrolled on any programmes' do
+        face_to_face_activity = create(:activity, :stem_learning)
+        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
+        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
+        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
+        expect(achievement.programme_id).to eq(nil)
+      end
     end
 
     it 'when we update the programme, the id is saved' do

@@ -118,21 +118,13 @@ class Achievement < ApplicationRecord
       end
       programme_ids = programmes.pluck(:id)
 
-      # TODO: check for unenrolled
-      # should this ignore completed enrolments?
-      # should this ignore pending enrolments?
       user_programme_ids = user.user_programme_enrolments
+                               .where(programme_id: programme_ids)
+                               .not_in_state(:unenrolled)
                                .order(created_at: :desc)
                                .pluck(:programme_id)
 
-      # use intersect here? user_programme_ids & programme_ids to give array
-      # of ids common to both
-      user_programme_ids.each do |user_programme_id|
-        if programme_ids.include?(user_programme_id)
-          self.programme_id = user_programme_id
-          break
-        end
-      end
+      self.programme_id = user_programme_ids.first
     end
 
     def queue_auto_enrolment
