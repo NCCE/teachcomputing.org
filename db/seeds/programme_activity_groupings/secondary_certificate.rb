@@ -110,7 +110,7 @@ if activity = Activity.find_by(slug: 'download-use-and-provide-meaningful-feedba
   programme_activity.update(programme_activity_grouping_id: group_three.id) unless group_three.programme_activities.include?(programme_activity)
 end
 
-if activity = Activity.find_by(slug: 'review-a-resource-on-cas')
+if activity = Activity.find_by(slug: 'provide-feedback-on-a-cas-resource')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_three.id) unless group_three.programme_activities.include?(programme_activity)
 end
