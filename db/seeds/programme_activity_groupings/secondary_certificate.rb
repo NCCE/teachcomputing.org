@@ -63,7 +63,6 @@ end
 
 group_two = secondary.programme_activity_groupings.find_by(sort_key: 2)
 
-
 if activity = Activity.find_by(stem_course_template_no: '22880db7-78e8-ea11-a817-000d3a86f6ce')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
@@ -80,6 +79,21 @@ if activity = Activity.find_by(stem_course_template_no: '26c20962-6279-4927-b797
 end
 
 if activity = Activity.find_by(stem_course_template_no: '258c93cc-69e2-46f6-bf39-fbce27cb8fc2')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+end
+
+if activity = Activity.find_by(stem_course_template_no: '46c07f3e-b9b2-4f0c-ba56-52319aadb955')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+end
+
+if activity = Activity.find_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811-000d3a86d545')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+end
+
+if activity = Activity.find_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
 end

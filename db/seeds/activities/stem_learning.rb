@@ -418,6 +418,8 @@ a = Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811
   activity.provider = 'stem-learning'
 end
 
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
 a = Activity.find_or_create_by(stem_course_template_no: 'e5acc943-4926-ea11-a810-000d3a86d545') do |activity|
   activity.title = 'Introduction to primary computing'
   activity.credit = 10
@@ -481,6 +483,8 @@ a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'd0aa3d40-f2f7-ea11-a815-000d3a86f6ce') do |activity|
   activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a programme'
