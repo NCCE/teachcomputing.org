@@ -86,6 +86,11 @@ RSpec.describe Programme, type: :model do
     it 'returns false if user not defined' do
       expect(programme.user_enrolled?(nil)).to eq(false)
     end
+
+    it 'returns false if user unenrolled' do
+      user_programme_enrolment.transition_to(:unenrolled)
+      expect(programme.user_enrolled?(user)).to eq(false)
+    end
   end
 
   describe '#cs_accelerator' do

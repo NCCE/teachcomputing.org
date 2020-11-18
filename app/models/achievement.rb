@@ -116,6 +116,9 @@ class Achievement < ApplicationRecord
         self.programme_id = programmes.first.id
       else
         programme_ids = programmes.pluck(:id)
+
+        # TODO: check for unenrolled
+        # should this ignore completed enrolments?
         user_programme_ids = user.user_programme_enrolments
                                  .order(created_at: :desc)
                                  .pluck(:programme_id)

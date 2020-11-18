@@ -58,7 +58,8 @@ class Programme < ApplicationRecord
   def user_enrolled?(user)
     return false if user.nil?
 
-    user_programme_enrolments.where(user_id: user.id).present?
+    enrolment = user_programme_enrolments.find_by(user_id: user.id)
+    enrolment.present? && !enrolment.in_state?(:unenrolled)
   end
 
   def diagnostic_result(*)
