@@ -9,7 +9,7 @@
 					<li>flexible and tailored to your needs</li>
 					<li>bursaries for eligible schools</li>
 			</ul>
-			<span>Progress status</span>
+				<%= certificate_progress_for_user_primary(current_user) %>
 			<%= link_to 'Enrol!', '/', class: 'govuk-button button button--small button--full-width' %>
 		</div>
 	</div>
