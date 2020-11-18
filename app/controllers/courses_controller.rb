@@ -104,7 +104,7 @@ class CoursesController < ApplicationController
 
     def course_locations(course_occurrences)
       towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
-      towns.reject! { |location| location == 'Remote delivered CPD' }.uniq.sort.unshift('Face to face', 'Online', 'Remote')
+      towns.reject { |location| location == 'Remote delivered CPD' }.uniq.sort.unshift('Face to face', 'Online', 'Remote')
     end
 
     def course_programme

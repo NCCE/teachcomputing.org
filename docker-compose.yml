@@ -10,6 +10,25 @@ services:
       - POSTGRES_PASSWORD=${DEV_PASS}
     networks:
       - backend
+    env_file:
+      - .env
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+    env_file:
+      - .env
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+    networks:
+      - backend
+    env_file:
+      - .env
   web:
     build: .
     command: ./scripts/docker-entrypoint.sh
@@ -27,25 +46,14 @@ services:
       - RAILS_DEV_DB_PASS=${DEV_PASS}
       - OAUTH_DEBUG
       - ENV_TYPE=development
+      - USER_ACHIEVEMENTS_API_SECRET=${DEV_PASS}
+      - CURRICULUM_APP_URL=http://curriculum:3000
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     networks:
       - main
       - backend
     restart: unless-stopped
-  redis:
-    image: "redis:alpine"
-    ports:
-      - "6379:6379"
-    networks:
-      - backend
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq
-    depends_on:
-      - redis
-    networks:
-      - backend
 volumes:
   pg-data:
   node_modules:
