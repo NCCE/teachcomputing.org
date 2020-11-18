@@ -12,6 +12,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
     let(:membership_id) { '0ea0e41f-5620-4a91-a1c7-2a15ecf16a06' }
     let!(:activity) { create(:activity, future_learn_course_uuid: course_uuid) }
     let(:mock_instance) { instance_double(Achievement) }
+    let(:primary_certificate) { create(:primary_certificate) }
 
     let!(:user) do
       create(:user, future_learn_organisation_memberships: [membership_id])
@@ -61,7 +62,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         create(:achievement,
                user: user,
                activity: activity,
-               programme: create(:primary_certificate_programme))
+               programme: primary_certificate)
       end
 
       context "when user's achievement is updated to complete" do
@@ -75,7 +76,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         it 'queues CertificatePendingTransitionJob' do
           expect { run_job }
             .to have_enqueued_job(CertificatePendingTransitionJob)
-            .with(user.id, source: 'FutureLearn::UpdateUserActivityJob')
+            .with(primary_certificate, user.id, source: 'FutureLearn::UpdateUserActivityJob')
             .once
         end
       end
