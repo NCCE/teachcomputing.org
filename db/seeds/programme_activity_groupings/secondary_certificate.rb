@@ -38,27 +38,27 @@ group_one = secondary.programme_activity_groupings.find_by(sort_key: 1)
 
 if activity = Activity.find_by(future_learn_course_uuid: 'ecf78d20-2966-4798-af5f-0f869c1818e2')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(future_learn_course_uuid: '3ce9a624-6cc7-4d23-8f5f-95162e360178')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(future_learn_course_uuid: 'b19646a7-d78b-4a92-ad36-d4b3a11a3df1')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(future_learn_course_uuid: '6cd40c14-adbf-4da7-af81-849d0f74a2fe')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
 end
 
 group_two = secondary.programme_activity_groupings.find_by(sort_key: 2)
