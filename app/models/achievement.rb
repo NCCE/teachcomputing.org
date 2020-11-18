@@ -114,20 +114,23 @@ class Achievement < ApplicationRecord
     def find_matching_programme(programmes)
       if programmes.size == 1
         self.programme_id = programmes.first.id
-      else
-        programme_ids = programmes.pluck(:id)
+        return
+      end
+      programme_ids = programmes.pluck(:id)
 
-        # TODO: check for unenrolled
-        # should this ignore completed enrolments?
-        user_programme_ids = user.user_programme_enrolments
-                                 .order(created_at: :desc)
-                                 .pluck(:programme_id)
+      # TODO: check for unenrolled
+      # should this ignore completed enrolments?
+      # should this ignore pending enrolments?
+      user_programme_ids = user.user_programme_enrolments
+                               .order(created_at: :desc)
+                               .pluck(:programme_id)
 
-        user_programme_ids.each do |user_programme_id|
-          if programme_ids.include?(user_programme_id)
-            self.programme_id = user_programme_id
-            break
-          end
+      # use intersect here? user_programme_ids & programme_ids to give array
+      # of ids common to both
+      user_programme_ids.each do |user_programme_id|
+        if programme_ids.include?(user_programme_id)
+          self.programme_id = user_programme_id
+          break
         end
       end
     end
