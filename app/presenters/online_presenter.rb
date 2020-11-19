@@ -2,10 +2,6 @@ class OnlinePresenter < ActivityPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
-  def button_label(*)
-    'Start an online course'
-  end
-
   def button_url(args = {})
     courses_path(location: 'Online', certificate: args[:certificate])
   end

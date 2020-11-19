@@ -2,33 +2,32 @@ require 'rails_helper'
 
 RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'secondary-certificate') }
-  let(:assessment) { create(:assessment, programme_id: programme.id) }
+  let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 5, programme_id: secondary_certificate.id) }
 
   before do
-    assessment
+    FactoryBot.rewind_sequences
+    cs_accelerator
     @current_user = user
-    @programme = programme
-    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    @user_programme_achievements = instance_double('UserProgrammeAchievements')
-    allow(@user_programme_achievements).to receive_messages(online_achievements: [],
-                                                            face_to_face_achievements: [],
-                                                            diagnostic_achievements: [],
-                                                            community_activities: [])
-    @user_programme_assessment = instance_double('UserProgrammeAssessment')
-    allow(@user_programme_assessment).to receive_messages(enough_credits_for_test?: false)
+    @programme = secondary_certificate
+    programme_activity_groupings.each do |grouping|
+      create_list(:programme_activity, 3, programme_id: @programme.id, programme_activity_grouping_id: grouping.id)
+    end
+    @programme_activity_groupings = @programme.programme_activity_groupings
+    @user_programme_achievements = UserProgrammeAchievements.new(@programme, @current_user)
     render
   end
 
   it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: programme.title)
+    expect(rendered).to have_css('.hero__heading', text: @programme.title)
   end
 
-  # it 'has the title' do
-  #   expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your progress')
-  # end
+  it 'has correct list setup' do
+    expect(rendered).to have_css('.ncce-activity-list--programme', count: 4)
+  end
 
-  # it 'has correct list setup' do
-  #   expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
-  # end
+  it 'has support information' do
+    expect(rendered).to have_css('.ncce-aside__title', text: 'Support')
+  end
 end
