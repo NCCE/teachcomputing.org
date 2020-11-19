@@ -2,10 +2,6 @@ class FaceToFacePresenter < ActivityPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
-  def button_label(*)
-    'Book a face to face course'
-  end
-
   def button_url(args = {})
     courses_path(location: 'Face to face', certificate: args[:certificate])
   end
