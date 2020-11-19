@@ -5,6 +5,7 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
     @missing_courses = []
     @cs_accelerator_user_ids = []
     @primary_certificate_user_ids = []
+    @secondary_certificate_user_ids = []
 
     CSV.parse(csv_contents, headers: true).each do |record|
       user = User.find_by(id: record['learner_identifier'])
@@ -63,16 +64,22 @@ class ProcessFutureLearnCsvExportJob < ApplicationJob
         @cs_accelerator_user_ids << user_id
       when 'primary-certificate'
         @primary_certificate_user_ids << user_id if achievement.current_state == :complete.to_s
+      when 'secondary-certificate'
+        @secondary_certificate_user_ids << user_id if achievement.current_state == :complete.to_s
       end
     end
 
     def queue_jobs_for_users
       @cs_accelerator_user_ids.uniq.each do |id|
-        AssessmentEligibilityJob.perform_later(id)
+        AssessmentEligibilityJob.perform_later(id, source: 'ProcessFutureLearnCsvExportJob')
       end
 
       @primary_certificate_user_ids.uniq.each do |id|
-        PrimaryCertificatePendingTransitionJob.perform_later(id, source: 'AchievementsController.create')
+        CertificatePendingTransitionJob.perform_later(Programme.primary_certificate, id, source: 'ProcessFutureLearnCsvExportJob')
+      end
+
+      @secondary_certificate_user_ids.uniq.each do |id|
+        CertificatePendingTransitionJob.perform_later(Programme.secondary_certificate, id, source: 'ProcessFutureLearnCsvExportJob')
       end
     end
 end

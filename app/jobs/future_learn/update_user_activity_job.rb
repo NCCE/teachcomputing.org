@@ -18,7 +18,7 @@ module FutureLearn
         enrolment[:deactivated_at]
       )
 
-      queue_primary_cert_transition_job(user.id) if needs_primary_cert_transition_job?(achievement)
+      queue_cert_transition_job(achievement.programme, user.id) if needs_cert_transition_job?(achievement)
 
       queue_assessment_eligibility_job(user.id) if needs_assessment_eligibility_job?(achievement)
     end
@@ -29,12 +29,13 @@ module FutureLearn
         Achievement.find_or_create_by(activity_id: activity_id, user_id: user_id)
       end
 
-      def needs_primary_cert_transition_job?(achievement)
-        achievement.primary_certificate? && achievement.complete?
+      def needs_cert_transition_job?(achievement)
+        achievement.primary_certificate? || achievement.secondary_certificate? && achievement.complete?
       end
 
-      def queue_primary_cert_transition_job(user_id)
-        PrimaryCertificatePendingTransitionJob.perform_later(
+      def queue_cert_transition_job(programme, user_id)
+        CertificatePendingTransitionJob.perform_later(
+          programme,
           user_id,
           source: 'FutureLearn::UpdateUserActivityJob'
         )
