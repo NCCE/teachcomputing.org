@@ -1,15 +1,18 @@
-	<div class="govuk-grid-column-one-third">
-		<div class="shadow_card card--dashboard card--dashboard--primary %>">
-			<%= render 'dashboard/programme-enrolment-status-dashboard', programme: Programme.primary_certificate %>
-			<h3 class="govuk-heading-m card__heading">
-				<%= link_to 'Teach primary computing', '/', class: 'ncce-link ncce-link--heading' %>
-			</h3>
-			<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
-					<li>blended course and activity programme</li>
-					<li>flexible and tailored to your needs</li>
-					<li>bursaries for eligible schools</li>
-			</ul>
-				<%= certificate_progress_for_user_primary(current_user) %>
-			<%= link_to 'Enrol!', '/', class: 'govuk-button button button--small button--full-width' %>
-		</div>
+<% programme = Programme.primary_certificate %>
+<div class="govuk-grid-column-one-third">
+	<div class="shadow_card card--dashboard card--dashboard--primary %>">
+		<%= render 'dashboard/programme-enrolment-status-dashboard', programme: programme %>
+		<h3 class="govuk-heading-m card__heading">
+			<%= link_to 'Teach primary computing', '/', class: 'ncce-link ncce-link--heading' %>
+		</h3>
+		<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
+				<li>blended course and activity programme</li>
+				<li>flexible and tailored to your needs</li>
+				<li>bursaries for eligible schools</li>
+		</ul>
+		<span class="govuk-header__navigation-item ncce-header__navigation-item">
+		<%= certificate_progress_for_user_programme(current_user, programme) %>
+		</span>
+		<%= render 'dashboard/enrolment-status', programme: programme %>
 	</div>
+</div>

@@ -1,6 +1,7 @@
+<% programme = Programme.cs_accelerator %>
 <div class="govuk-grid-column-one-third">
 	<div class="shadow_card card--dashboard card--dashboard--cs-accelerator %>">
-			<%= render 'dashboard/programme-enrolment-status-dashboard', programme: Programme.cs_accelerator %>
+			<%= render 'dashboard/programme-enrolment-status-dashboard', programme: programme %>
 			<h3 class="govuk-heading-m card__heading">
 				<%= link_to 'Teach GCSE computer science', '/', class: 'ncce-link ncce-link--heading' %>
 			</h3>
@@ -10,9 +11,8 @@
 					<li>bursaries for eligible schools</li>
 			</ul>
 			<span class="govuk-header__navigation-item ncce-header__navigation-item">
-				<%= certificate_progress_for_user_cs_accelerator(current_user) %>
+			<%= certificate_progress_for_user_programme(current_user, programme) %>
 			</span>
-			<%= link_to 'Enrol!', '/', class: 'govuk-button button button--small button--full-width' %>
-			<%# <%= render 'dashboard/enrolment-status' %>
+			<%= render 'dashboard/enrolment-status', programme: programme %>
 		</div>
 </div>

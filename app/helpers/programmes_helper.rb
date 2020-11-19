@@ -18,4 +18,19 @@ module ProgrammesHelper
   def eligible_for_secondary?(user)
     Programme.secondary_certificate.user_is_eligible?(user)
   end
+
+  def certificate_progress_for_user_programme(user, programme)
+		enrolled = user.programmes.include?(programme)
+
+  	if enrolled
+			achieved_credits = programme.credits_achieved_for_certificate(user)
+			max_credits = programme.max_credits_for_certificate
+
+			link_to(programme.path, class: 'govuk-header__link ncce-header__navigation-certification-progress-bar-container') do
+				"<progress class='ncce-header__navigation-certification-progress-bar' aria-label='You have #{achieved_credits} out of #{max_credits} credits' value='#{achieved_credits}' max='#{max_credits}'></progress>".html_safe
+			end
+		else
+			"<span aria-label='To be filled'></span>".html_safe
+		end
+  end
 end
