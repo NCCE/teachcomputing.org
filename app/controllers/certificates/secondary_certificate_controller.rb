@@ -11,6 +11,7 @@ module Certificates
 
       @programme_activity_groupings = @programme.programme_activity_groupings
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
+
       render :show
     end
 
