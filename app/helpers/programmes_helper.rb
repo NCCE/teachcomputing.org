@@ -30,7 +30,7 @@ module ProgrammesHelper
 				"<progress class='ncce-header__navigation-certification-progress-bar' aria-label='You have #{achieved_credits} out of #{max_credits} credits' value='#{achieved_credits}' max='#{max_credits}'></progress>".html_safe
 			end
 		else
-			"<span aria-label='To be filled'></span>".html_safe
+			"<span aria-label='Enrol to a programme and track your progress'></span>".html_safe
 		end
   end
 end

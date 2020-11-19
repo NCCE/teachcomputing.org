@@ -88,17 +88,11 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
-  describe('#certificate_progress_for_user') do
+  describe('#user_certificate_progress') do
     context 'when a user is enrolled on a programme' do
       it 'returns a string' do
         enrolment
-        expect(helper.certificate_progress_for_user(user)).to be_a(String)
-      end
-    end
-
-    context 'when a user is not enrolled on a programme' do
-      it 'returns nil' do
-        expect(helper.certificate_progress_for_user(user)).to eq nil
+        expect(helper.user_certificate_progress(user)).to be_a(String)
       end
     end
   end
