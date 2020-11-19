@@ -126,8 +126,8 @@ RSpec.describe ProcessFutureLearnCsvExportJob, type: :job do
         .once
         .with('Missing course : id 91011 (user is: user1@example.com)')
 
-      # it queues PrimaryCertificatePendingTransitionJob job for complete courses'
-      expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(7).times
+      # it queues CertificatePendingTransitionJob job for complete courses'
+      expect(CertificatePendingTransitionJob).to have_been_enqueued.exactly(7).times
 
       # it queues AssessmentEligibilityJob once for cs-accelerator per user
       expect(AssessmentEligibilityJob).to have_been_enqueued.exactly(:once)
