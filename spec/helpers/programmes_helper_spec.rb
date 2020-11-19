@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe ProgrammesHelper, type: :helper do
+  let(:user) { create(:user) }
+  let(:enrolment) do
+    create(:user_programme_enrolment,
+           user: user,
+           programme: create(:cs_accelerator))
+  end
 
   describe('#certificate_number') do
     it 'defaults to 0 for missing param' do
@@ -79,6 +85,21 @@ describe ProgrammesHelper, type: :helper do
 
     it 'returns "seventh" when argument is 6' do
       expect(index_to_word_ordinal(6)).to eq('seventh')
+    end
+  end
+
+  describe('#certificate_progress_for_user') do
+    context 'when a user is enrolled on a programme' do
+      it 'returns a string' do
+        enrolment
+        expect(helper.certificate_progress_for_user(user)).to be_a(String)
+      end
+    end
+
+    context 'when a user is not enrolled on a programme' do
+      it 'returns nil' do
+        expect(helper.certificate_progress_for_user(user)).to eq nil
+      end
     end
   end
 end
