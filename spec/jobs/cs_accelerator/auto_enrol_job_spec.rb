@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CSA::AutoEnrolJob, type: :job do
+RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
   describe '.perform' do
     let(:user) { create(:user) }
     let(:cs_accelerator) { create(:cs_accelerator) }

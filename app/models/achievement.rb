@@ -130,6 +130,6 @@ class Achievement < ApplicationRecord
       return unless activity.programmes.any?(&:cs_accelerator?)
       return unless user.csa_auto_enrollable?
 
-      CSA::AutoEnrolJob.perform_later(achievement_id: id)
+      CsAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 end
