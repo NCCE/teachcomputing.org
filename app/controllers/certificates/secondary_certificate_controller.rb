@@ -9,6 +9,7 @@ module Certificates
     def show
       return redirect_to complete_secondary_certificate_path if @programme.user_completed?(current_user)
 
+      @programme_activity_groupings = @programme.programme_activity_groupings
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
       render :show
     end
