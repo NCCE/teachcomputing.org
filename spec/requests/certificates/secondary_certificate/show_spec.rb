@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Certificates::PrimaryCertificateController do
+RSpec.describe Certificates::SecondaryCertificateController do
   let(:user) { create(:user) }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:secondary_certificate_groupings) { create_list(:programme_activity_grouping, 3, programme_id: secondary_certificate.id)}
