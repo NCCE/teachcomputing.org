@@ -19,7 +19,7 @@ module ProgrammesHelper
     Programme.secondary_certificate.user_is_eligible?(user)
   end
 
-  def certificate_progress_for_user_programme(user, programme)
+  def user_certificate_progress(user, programme)
 		enrolled = user.programmes.include?(programme)
 
   	if enrolled
