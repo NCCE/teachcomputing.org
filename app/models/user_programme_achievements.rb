@@ -4,7 +4,7 @@ class UserProgrammeAchievements
     @achievements = user.achievements.without_category('action')
                                      .for_programme(programme).sort_complete_first
   end
- 
+
   def online_achievements(to_show = 1)
     online_achievements = @achievements.not_in_state(:dropped).with_category(Activity::ONLINE_CATEGORY)
     (0...to_show).to_a.map { |index| OnlinePresenter.new(online_achievements[index]) }
@@ -23,5 +23,9 @@ class UserProgrammeAchievements
   def community_activities(to_show = 1, credit = 5)
     activities = Activity.community.joins("LEFT OUTER JOIN achievements on achievements.activity_id = activities.id AND achievements.user_id = '#{@user.id}'").where("credit = ?", credit).order('activities.credit')
     (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index])}
+  end
+
+  def secondary_activities(programme_activities)
+    programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity) }
   end
 end
