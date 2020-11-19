@@ -198,4 +198,20 @@ RSpec.describe Programme, type: :model do
       end
     end
   end
+
+  describe '#secondary_certificate?' do
+    context 'when programme is secondary certificate' do
+      it 'returns true' do
+        programme = build(:secondary_certificate)
+        expect(programme.secondary_certificate?).to eq(true)
+      end
+    end
+
+    context 'when programme is not secondary certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme')
+        expect(programme.secondary_certificate?).to eq(false)
+      end
+    end
+  end
 end
