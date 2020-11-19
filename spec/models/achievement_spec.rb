@@ -295,6 +295,31 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe '#secondary_certificate?' do
+    context 'when programme is secondary certificate' do
+      it 'returns true' do
+        programme = build(:secondary_certificate)
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.secondary_certificate?).to eq(true)
+      end
+    end
+
+    context 'when programme is not secondary certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme-slug')
+        achievement = build(:achievement, programme: programme)
+        expect(achievement.secondary_certificate?).to eq(false)
+      end
+    end
+
+    context 'when programme is nil' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.secondary_certificate?).to eq(false)
+      end
+    end
+  end
+
   describe '#update_state_for_online_activity' do
     let(:achievement) { create(:achievement) }
 

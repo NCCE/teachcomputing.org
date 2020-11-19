@@ -23,9 +23,9 @@ RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
         clear_enqueued_jobs
       end
 
-      it 'queues PrimaryCertificatePendingTransitionJob job for complete courses' do
+      it 'queues CertificatePendingTransitionJob job for complete courses' do
         perform_job
-        expect(PrimaryCertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+        expect(CertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
       end
 
       it 'creates an achievement that belongs to the right activity' do

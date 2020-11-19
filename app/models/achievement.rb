@@ -93,6 +93,10 @@ class Achievement < ApplicationRecord
     programme.present? && programme.primary_certificate?
   end
 
+  def secondary_certificate?
+    programme.present? && programme.secondary_certificate?
+  end
+
   def cs_accelerator?
     programme.present? && programme.cs_accelerator?
   end

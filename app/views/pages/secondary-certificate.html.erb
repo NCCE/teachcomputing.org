@@ -51,7 +51,7 @@
           <% if current_user %>
             <% if eligible_for_secondary?(current_user) %>
             <p class="govuk-body">
-              <%= link_to 'Enrol on this certificate', enrol_secondary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+              <%= link_to 'Enrol on this certificate', enrol_secondary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
             </p>
             <% end %>
           <% elsif %>

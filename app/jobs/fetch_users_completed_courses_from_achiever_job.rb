@@ -44,7 +44,8 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
       case programme_slug
       when 'cs-accelerator'
         @assess_eligibility_job = true
-      when 'primary-certificate'
+      when 'primary-certificate' || 'secondary-certificate'
+        @programme = Programme.find_by(slug: programme_slug)
         @pending_transition_job = true
       end
     end
@@ -54,7 +55,8 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
 
       return unless @pending_transition_job
 
-      PrimaryCertificatePendingTransitionJob.perform_later(
+      CertificatePendingTransitionJob.perform_later(
+        @programme,
         user_id, source: 'AchievementsController.create'
       )
     end

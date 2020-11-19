@@ -70,6 +70,10 @@ class Programme < ApplicationRecord
     slug == 'primary-certificate'
   end
 
+  def secondary_certificate?
+    slug == 'secondary-certificate'
+  end
+
   def cs_accelerator?
     slug == 'cs-accelerator'
   end
