@@ -14,4 +14,8 @@ class CsAcceleratorMailerPreview < ActionMailer::Preview
   def non_enrolled_csa_user
     CsAcceleratorMailer.with(user: User.first).non_enrolled_csa_user
   end
+
+  def auto_enrolled_welcome
+    CsAcceleratorMailer.with(user: User.first).auto_enrolled_welcome
+  end
 end
