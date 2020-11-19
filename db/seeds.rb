@@ -1,6 +1,6 @@
 require_relative './seeds/programmes/cs_accelerator'
 require_relative './seeds/programmes/primary-certificate'
-# require_relative './seeds/programmes/secondary-certificate'
+require_relative './seeds/programmes/secondary-certificate'
 
 require_relative './seeds/activities/action'
 require_relative './seeds/activities/diagnostic'

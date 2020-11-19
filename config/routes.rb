@@ -46,6 +46,12 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
+
+    namespace 'cs_accelerator' do
+      resource 'auto_enrolment' do
+        get '/unenroll', action: :destroy
+      end
+    end
   end
 
   namespace 'class_marker' do
@@ -100,7 +106,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
-	get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
+  get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
