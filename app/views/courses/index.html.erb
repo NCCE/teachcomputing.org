@@ -13,7 +13,11 @@
         </p>
         <p class="govuk-body">
           Select individual courses, or make your learning go further, by enrolling on our national certification programmes in
-          <%= link_to 'primary computing', primary_path, class: 'ncce-link' %>, <%= link_to 'GCSE computer science subject knowledge', cs_accelerator_path, class: 'ncce-link' %> or <%= link_to 'secondary computing', secondary_path, class: 'ncce-link' %>.
+          <% if FeatureFlagService.new.flags[:secondary_certificate_enabled] %>
+            <%= link_to 'primary computing', primary_path, class: 'ncce-link' %>, <%= link_to 'GCSE computer science subject knowledge', cs_accelerator_path, class: 'ncce-link' %> or <%= link_to 'secondary computing', secondary_path, class: 'ncce-link' %>.
+          <% else %>
+            <%= link_to 'primary computing', primary_path, class: 'ncce-link' %>, or <%= link_to 'GCSE computer science', cs_accelerator_path, class: 'ncce-link' %>.
+          <% end %>
         </p>
       </div>
     </div>
