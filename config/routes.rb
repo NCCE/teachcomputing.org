@@ -111,7 +111,7 @@ Rails.application.routes.draw do
   get '/secondary-certificate', to: 'pages#static_programme_page', as: :secondary, defaults: { page_slug: 'secondary-certificate' },
                                 constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
   get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders, defaults: { page_slug: 'secondary-senior-leaders' }
-  get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers, defaults: { slug: 'cs-accelerator' }
+  get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
   get '/support-for-ite-providers', to: 'cms#cms_page', as: :support_for_ite_providers, defaults: { page_slug: 'support-for-ite-providers' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/take-the-next-step-in-your-career', to: 'cms#cms_page', as: :take_the_next_step_in_your_career, defaults: { page_slug: 'take-the-next-step-in-your-career' }

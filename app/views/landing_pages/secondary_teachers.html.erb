@@ -93,9 +93,9 @@
         </div>
         <div class="govuk-grid-column-two-thirds">
           <div class="card card--cs-accelerator card--bottom-glyph">
-            <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+            <%= render 'pages/certification/programme-enrolment-status', programme: @cs_accelerator %>
 						<h2 class="govuk-heading-m card__heading">
-							<%= link_to_if(current_user && @programme.user_enrolled?(current_user), 'Teach GCSE computer science', cs_accelerator_certificate_path, class: 'ncce-link') do %>
+							<%= link_to_if(current_user && @cs_accelerator.user_enrolled?(current_user), 'Teach GCSE computer science', cs_accelerator_certificate_path, class: 'ncce-link') do %>
             	Teach GCSE computer science
           		<% end %>
 						</h2>
@@ -103,10 +103,10 @@
               Programme is a certified professional development programme
               designed to equip you with the subject knowledge and confidence to
               successfully teach GCSE computer science.</p>
-            <% if current_user && @programme.user_enrolled?(current_user) %>
+            <% if current_user && @cs_accelerator.user_enrolled?(current_user) %>
             <%
-                achieved_credits = @programme.credits_achieved_for_certificate(current_user)
-                max_credits = @programme.max_credits_for_certificate
+                achieved_credits = @cs_accelerator.credits_achieved_for_certificate(current_user)
+                max_credits = @cs_accelerator.max_credits_for_certificate
               %>
             <progress class="card__progress-bar"
               aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits"
