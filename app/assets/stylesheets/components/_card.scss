@@ -183,6 +183,12 @@
 
 .card--dashboard {
 	border-top: 9px solid $action-color;
+	display: flex;
+  flex-flow: column;
+}
+
+.card--dashboard--content {
+	flex-grow: 1;
 }
 
 .card--dashboard--cs-accelerator {

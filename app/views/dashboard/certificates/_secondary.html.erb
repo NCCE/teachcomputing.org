@@ -2,17 +2,19 @@
 <div class="govuk-grid-column-one-third">
 	<div class="shadow_card card--dashboard card--dashboard--secondary %>">
 		<%= render 'dashboard/programme-enrolment-status', programme: programme %>
-		<h3 class="govuk-heading-m card__heading">
-			<%= link_to 'Teach secondary computing', secondary_certificate_path, class: 'ncce-link ncce-link--heading' %>
-		</h3>
-		<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
-				<li>blended course and activity programme</li>
-				<li>flexible and tailored to your needs</li>
-				<li>bursaries for eligible schools</li>
-		</ul>
-		<span class="govuk-header__navigation-item ncce-header__navigation-item">
-		<%= user_certificate_progress(current_user, programme) %>
-		</span>
-		<%= render 'dashboard/enrolment-status', programme: programme %>
+		<div class="card--dashboard--content">
+			<h3 class="govuk-heading-m card__heading">
+				<%= link_to 'Teach secondary computing', secondary_certificate_path, class: 'ncce-link ncce-link--heading' %>
+			</h3>
+			<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
+					<li>blended course and activity programme</li>
+					<li>flexible and tailored to your needs</li>
+					<li>bursaries for eligible schools</li>
+			</ul>
+			<span class="govuk-header__navigation-item ncce-header__navigation-item">
+			<%= user_certificate_progress(current_user, programme) %>
+			</span>
+			<%= render 'dashboard/enrolment-status', programme: programme %>
+		</div>
 	</div>
 </div>
