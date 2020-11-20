@@ -4,20 +4,36 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l">Congratulations! You have been awarded Project Nigel.</p>
+        <p class="govuk-body-l">Your certificate is ready!</p>
+        <p class="govuk-body">Congratulations on completing your programme and reaching this important milestone in your professional development.</p>
         <p class="govuk-body">
           <%= link_to 'Download your certificate', certificate_secondary_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-
-        <p class="govuk-body-m">If you would like to receive a hard-copy version, please contact us to arrange the awarding of your certificate at local CAS Community of Practice meeting.</p>
+        <p class="govuk-body-l">Next steps for you</p>
+        <p class="govuk-body-l">Discover our teaching resources</p>
+        <p class="govuk-body">Access over 500 hours of teaching materials through the Teach Computing Curriculum, which contains everything you need to teach computing at key stages 1 to 4.</p>
+        <p class="govuk-body">
+          <%= link_to 'Explore teaching resources', curriculum_key_stages_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+        </p>
+        <p class="govuk-body-l">Continue learning</p>
+        <p class="govuk-body">Enhance your learning by participating in courses from our growing programme of CPD. Plus, if you work in a state-funded secondary school or college, you can access any of these courses for free.</p>
+        <%= link_to 'Browse all courses', courses_path, class: 'govuk-button button' %>
+        <p class="govuk-body-l">Share your experience at a CAS Community meeting</p>
+        <p class="govuk-body">CAS communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experiences with other teachers.</p>
+        <%= link_to 'Find out more', 'https://community.computingatschool.org.uk/events', class: 'govuk-button button' %>
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
           <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
           <p class="govuk-body ncce-aside__text--s">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
-          <p class="govuk-body ncce-aside__text--s">You can also
-            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw" class="ncce-link" data-related="WeAreComputing" data-lang="en" data-show-count="false" data-dnt="true" target="_blank">follow @WeAreComputing</a> on Twitter
-          </p>
+          <p class="govuk-body ncce-aside__text">Follow us on
+            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
+           and tag us when sharing your achievement</p>
         </div>
       </div>
     </div>
