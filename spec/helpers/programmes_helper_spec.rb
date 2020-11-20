@@ -87,13 +87,4 @@ describe ProgrammesHelper, type: :helper do
       expect(index_to_word_ordinal(6)).to eq('seventh')
     end
   end
-
-  describe('#user_certificate_progress') do
-    context 'when a user is enrolled on a programme' do
-      it 'returns a string' do
-        enrolment
-        expect(helper.user_certificate_progress(user)).to be_a(String)
-      end
-    end
-  end
 end
