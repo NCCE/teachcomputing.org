@@ -6,7 +6,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id) }
   let(:complete_achievements) { user.achievements.without_category('action').for_programme(secondary_certificate).sort_complete_first }
 
-  describe '#pending' do
+  describe '#complete' do
     context 'when user is logged in' do
       before do
         secondary_certificate
@@ -14,14 +14,14 @@ RSpec.describe Certificates::SecondaryCertificateController do
           .to receive(:current_user).and_return(user)
       end
 
-      context 'when user is enrolled and that enrolment is in a pending state' do
+      context 'when user is enrolled and that enrolment is in a complete state' do
         before do
-          secondary_enrolment.transition_to(:pending)
-          get pending_secondary_certificate_path
+          secondary_enrolment.transition_to(:complete)
+          get complete_secondary_certificate_path
         end
 
-        it 'renders the pending template' do
-          expect(response).to render_template('pending')
+        it 'renders the complete template' do
+          expect(response).to render_template('complete')
         end
 
         it 'assigns programme' do
@@ -33,9 +33,9 @@ RSpec.describe Certificates::SecondaryCertificateController do
         end
       end
 
-      context 'when the enrolment is not in a pending state' do
+      context 'when the enrolment is not in a complete state' do
         before do
-          get pending_secondary_certificate_path
+          get complete_secondary_certificate_path
         end
 
         it 'redirects to login' do
@@ -46,7 +46,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
 
     describe 'while logged out' do
       before do
-        get pending_secondary_certificate_path
+        get complete_secondary_certificate_path
       end
 
       it 'redirects to login' do
