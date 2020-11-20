@@ -8,8 +8,7 @@ class CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob < ApplicationJo
 
     return if user.achievements.for_programme(programme).include?(additional_csa_course_activity)
 
-    eligible_courses = programme.csa_eligible_courses(user)
-    if eligible_courses.any?
+    if programme.csa_eligible_courses(user).any?
       achievement = Achievement.create(activity_id: additional_csa_course_activity.id, user_id: user.id, programme_id: programme.id)
       achievement.transition_to(:complete, eligible_courses.map { |achievement| achievement.activity.title } )
     end
