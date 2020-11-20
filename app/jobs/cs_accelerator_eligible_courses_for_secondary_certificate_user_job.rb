@@ -1,4 +1,4 @@
-class CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob
+class CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob < ApplicationJob
   queue_as :default
 
   def perform(user_id)
