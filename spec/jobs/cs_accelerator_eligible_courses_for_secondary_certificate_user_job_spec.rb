@@ -32,10 +32,18 @@ RSpec.describe CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type:
       end
 
       context 'and the user has done an eligible CSA course' do
-        it 'creates creates an achievement for the user' do
+        before do
           eligible_csa_achievement
+        end
+
+        it 'creates creates an achievement for the user' do
           expect { CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob.perform_now(user.id) }
             .to change { user.achievements.count }.by(1)
+        end
+
+        it 'schedules CertificatePendingTransitionJob' do
+          expect { CsAcceleratorEligibleCoursesForSecondaryCertificateUserJob.perform_now(user.id) }
+            .to have_enqueued_job(CertificatePendingTransitionJob)
         end
       end
 
