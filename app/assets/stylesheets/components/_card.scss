@@ -199,6 +199,11 @@
   // @include govuk-media-query($from: desktop) {
   //   margin-bottom: 0;
   // }
+
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
 }
 
 .card--dashboard--cs-accelerator {
@@ -211,6 +216,8 @@
 
 .card--dashboard--secondary {
   border-top-color: $secondary-cert-color;
+}
+
 .dark_card {
 	border-color: $lilly-white;
 	padding: 1.375rem;
@@ -231,5 +238,4 @@
 		height: 81px;
 		width: auto;
   }
-}
 }
