@@ -29,6 +29,14 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     def user_has_existing_enrolment?
       enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
-      redirect_to enrolment.programme.path if enrolment
+      return unless enrolment
+
+      if enrolment.in_state?(:unenrolled)
+        enrolment.transition_to(:enrolled)
+        enrolment.update_attribute(:auto_enrolled, false)
+        flash[:notice] = "Congrats you have enrolled on #{enrolment.programme.title}"
+      end
+
+      redirect_to enrolment.programme.path
     end
 end

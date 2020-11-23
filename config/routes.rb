@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     end
 
     namespace 'cs_accelerator' do
-      resource 'auto_enrolment' do
+      resource 'auto_enrolment', only: [] do
         get '/unenroll', action: :destroy
       end
     end
