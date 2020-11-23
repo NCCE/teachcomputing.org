@@ -190,21 +190,15 @@
   margin-bottom: 0;
 }
 
-.card--dashboard{
+.card--dashboard {
 	border-top: 9px solid $action-color;
-	display: flex;
-  flex-flow: column;
-	margin-bottom: 1.25rem !important;
-	&:last-child {
-    margin-bottom: 0;
-  }
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: 0;
-  }
-}
-
-.card--dashboard--content {
-	flex-grow: 1;
+	// margin-bottom: 1.25rem !important;
+	// &:last-child {
+  //   margin-bottom: 0;
+  // }
+  // @include govuk-media-query($from: desktop) {
+  //   margin-bottom: 0;
+  // }
 }
 
 .card--dashboard--cs-accelerator {

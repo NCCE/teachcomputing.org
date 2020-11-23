@@ -1,17 +1,17 @@
 <% programme = Programme.cs_accelerator %>
-<div class="govuk-grid-column-one-third">
+<div class="certification">
 	<div class="shadow_card card--dashboard card--dashboard--cs-accelerator">
-			<%= render 'dashboard/programme-enrolment-status', programme: programme %>
-			<div class="card--dashboard--content">
-				<h3 class="govuk-heading-m card__heading">
-					<%= link_to 'Teach GCSE computer science', cs_accelerator_path, class: 'ncce-link ncce-link--heading' %>
-				</h3>
-				<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
-					<li>complete courses and pass a test to get your certificate</li>
-					<li>resources to find the right courses for you</li>
-					<li><%= link_to 'bursaries', bursary_path, class: 'ncce-link' %> for eligible schools</li>
-				</ul>
-				<%= render 'dashboard/enrolment-status', programme: programme %>
+		<%= render 'dashboard/programme-enrolment-status', programme: programme %>
+		<div class="card--dashboard--content">
+			<h3 class="govuk-heading-m card__heading">
+				<%= link_to 'Teach GCSE computer science', cs_accelerator_path, class: 'ncce-link ncce-link--heading' %>
+			</h3>
+			<ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4">
+				<li>complete courses and pass a test to get your certificate</li>
+				<li>resources to find the right courses for you</li>
+				<li><%= link_to 'bursaries', bursary_path, class: 'ncce-link' %> for eligible schools</li>
+			</ul>
+			<%= render 'dashboard/enrolment-status', programme: programme %>
 			</div>
 		</div>
 </div>
