@@ -28,7 +28,16 @@ module CsAccelerator
       end
 
       def schedule_email(user)
-        CsAcceleratorMailer.with(user: user).auto_enrolled_welcome.deliver_now
+        now = Time.now
+        delay = if (9 - now.hour).negative?
+                  0
+                else
+                  9 - now.hour
+                end
+
+        CsAcceleratorMailer.with(user: user)
+                           .auto_enrolled_welcome
+                           .deliver_later(wait: delay.hours)
       end
   end
 end
