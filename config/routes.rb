@@ -103,8 +103,7 @@ Rails.application.routes.draw do
 	get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
-  get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' },
-                              constraints: ->(_request) { Programme.primary_certificate.enrollable? }
+  get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' }
   get '/primary-senior-leaders', to: 'cms#cms_page', as: :primary_senior_leaders, defaults: { page_slug: 'primary-senior-leaders' }
   get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
   get '/privacy', to: 'pages#page', as: :privacy, defaults: { page_slug: 'privacy' }
