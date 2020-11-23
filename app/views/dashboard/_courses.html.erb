@@ -10,11 +10,11 @@
                 <span class="ncce-activity-list__item-text"> <%= link_to achievement.activity.title, '/', class: 'govuk-link ncce-link' %></span>
 								<span class="ncce-activity-list__item--dashboard-tags">
 									<% if achievement.cs_accelerator? %>
-										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-cs-accelerator">CS Accelerator</span>
+										<span class="ncce-activity-list__item--dashboard-tags--course dashboard-tags--cs-accelerator">CS Accelerator</span>
 									<% elsif achievement.secondary_certificate? %>
-										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-secondary">Secondary</span>
+										<span class="ncce-activity-list__item--dashboard-tags--course dashboard-tags--secondary">Secondary</span>
 									<% elsif achievement.primary_certificate? %>
-										<span class="ncce-activity-list__item--dashboard-tags--course ncce-activity-list__item--dashboard-tags--course-primary">Primary</span>
+										<span class="ncce-activity-list__item--dashboard-tags--course dashboard-tags--primary">Primary</span>
 									<% end %>
 									<span class="govuk-body-s ncce-activity-list__item--dashboard-tags-date">Completed on <%= achievement.updated_at.strftime("%b %Y") %></h2></span>
 								</span>
