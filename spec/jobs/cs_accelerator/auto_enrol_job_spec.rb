@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
   describe '.perform' do
+    subject(:enrol_job) { described_class.perform_now(achievement_id: achievement.id) }
+
     let(:user) { create(:user) }
     let(:cs_accelerator) { create(:cs_accelerator) }
     let(:activity) { create(:activity) }
@@ -11,21 +13,33 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
     end
 
     it 'enrols user in csa' do
-      expect { described_class.perform_now(achievement_id: achievement.id) }
+      expect { enrol_job }
         .to change(UserProgrammeEnrolment, :count).by(1)
     end
 
     it 'sets auto_enrolled flag' do
-      described_class.perform_now(achievement_id: achievement.id)
+      enrol_job
       expect(UserProgrammeEnrolment.last.auto_enrolled).to eq(true)
     end
 
-    context 'when user is enrolled in csa' do
-      it 'does not enrol user' do
-        create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+    it 'sends email' do
+      expect { enrol_job }
+        .to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
 
-        expect { described_class.perform_now(achievement_id: achievement.id) }
+    context 'when user is enrolled in csa' do
+      before do
+        create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+      end
+
+      it 'does not enrol user' do
+        expect { enrol_job }
           .not_to change(UserProgrammeEnrolment, :count)
+      end
+
+      it 'does not send email' do
+        expect { enrol_job }
+          .not_to change { ActionMailer::Base.deliveries.count }
       end
     end
 
@@ -38,28 +52,49 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
 
       context 'when user is enrolled in non csa programme' do
         context 'when non csa enrolment is not complete' do
-          it 'does not enrol user' do
+          before do
             create(:user_programme_enrolment, user: user, programme: primary_certificate)
-            expect { described_class.perform_now(achievement_id: achievement.id) }
+          end
+
+          it 'does not enrol user' do
+            expect { enrol_job }
               .not_to change(UserProgrammeEnrolment, :count)
+          end
+
+          it 'does not send email' do
+            expect { enrol_job }
+              .not_to change { ActionMailer::Base.deliveries.count }
           end
         end
 
         context 'when non csa enrolment is complete' do
-          it 'enrols user' do
+          before do
             enrolment = create(:user_programme_enrolment, user: user, programme: primary_certificate)
             enrolment.transition_to(:complete)
-            expect { described_class.perform_now(achievement_id: achievement.id) }
+          end
+
+          it 'enrols user' do
+            expect { enrol_job }
               .to change(UserProgrammeEnrolment, :count)
               .by(1)
+          end
+
+          it 'sends email' do
+            expect { enrol_job }
+              .to change { ActionMailer::Base.deliveries.count }.by(1)
           end
         end
       end
 
       context 'when user is not enrolled in any programme linked to activity' do
         it 'enrols user to csa' do
-          expect { described_class.perform_now(achievement_id: achievement.id) }
+          expect { enrol_job }
             .to change(UserProgrammeEnrolment, :count).by(1)
+        end
+
+        it 'sends email' do
+          expect { enrol_job }
+            .to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
     end
