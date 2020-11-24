@@ -18,10 +18,7 @@ module Certificates
     def complete
       return redirect_to secondary_certificate_path unless @programme.user_completed?(current_user)
 
-      @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
-
-      @complete_achievements = current_user.achievements.without_category('action')
-                                           .for_programme(@programme).sort_complete_first
+      @complete_achievements = complete_achievements
 
       render :complete
     end

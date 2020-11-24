@@ -39,8 +39,8 @@ RSpec.describe CoursesController do
         expect(assigns(:course).title).to eq(course.title.to_s)
       end
 
-      it 'sets the programme' do
-        expect(assigns(:programme)).to eq(nil)
+      it 'sets the programmes' do
+        expect(assigns(:programmes).count).to eq(0)
       end
 
       it 'assigns list of occurrences' do
@@ -81,7 +81,7 @@ RSpec.describe CoursesController do
       end
 
       it 'sets the programme' do
-        expect(assigns(:programme)).to eq(programme)
+        expect(assigns(:programmes)).to include(programme)
       end
 
       it 'has a link to the programme' do

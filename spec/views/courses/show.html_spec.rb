@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe('courses/show', type: :view) do
-  let(:programme) { create(:cs_accelerator) }
+  let(:cs_accelerator) { create(:cs_accelerator) }
 
   before do
+    cs_accelerator
     stub_course_templates
     courses = Achiever::Course::Template.all
     @course = courses[0]
@@ -12,6 +13,7 @@ RSpec.describe('courses/show', type: :view) do
     assign(:other_courses, [])
     assign(:age_groups, {})
     assign(:occurrences, [])
+    assign(:programmes, Programme.enrollable)
   end
 
   describe 'renders' do
@@ -41,8 +43,8 @@ RSpec.describe('courses/show', type: :view) do
       expect(rendered).to have_text(strip_tags(sanitize_stem_html(@course.outcomes)))
     end
 
-    it 'the courses card partial' do
-      expect(rendered).to render_template(:partial => '_courses-card')
+    it 'the certificates card partial' do
+      expect(rendered).to render_template(:partial => '_certificates-card')
     end
 
     it 'the courses list partial' do
