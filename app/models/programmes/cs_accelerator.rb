@@ -43,5 +43,9 @@ module Programmes
     def path
       cs_accelerator_certificate_path
     end
+
+    def enrol_path(opts = {})
+      enrol_cs_accelerator_certificate_path(opts)
+    end
   end
 end

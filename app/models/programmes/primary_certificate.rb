@@ -60,5 +60,9 @@ module Programmes
     def path
       primary_certificate_path
     end
+
+    def enrol_path(opts = {})
+      enrol_primary_certificate_path(opts)
+    end
   end
 end

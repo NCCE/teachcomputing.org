@@ -28,5 +28,9 @@ module Programmes
     def path
       secondary_certificate_path
     end
+
+    def enrol_path(opts = {})
+      enrol_secondary_certificate_path(opts)
+    end
   end
 end
