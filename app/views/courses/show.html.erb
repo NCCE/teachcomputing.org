@@ -14,7 +14,7 @@
           <%= sanitize_stem_html @course.summary %>
           <%= sanitize_stem_html @course.outcomes %>
         </div>
-        <%= render 'courses/certificates-card' %>
+        <%= render 'courses/certificates-card' if @programmes.any? %>
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render 'courses/aside-section' %>
