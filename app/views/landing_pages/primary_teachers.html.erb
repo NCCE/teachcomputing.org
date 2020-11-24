@@ -120,8 +120,12 @@
           </div>
         </div>
       </div>
-      <div class="center-button">
-        <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="center-button button--margin-bottom">
+            <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
