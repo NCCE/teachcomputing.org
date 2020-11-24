@@ -1,7 +1,7 @@
 <% if programme.user_enrolled?(current_user) %>
-	<%= link_to 'Check progress', programme.path, class: 'govuk-button button button--small button--full-width' %>
+	<%= link_to 'Check progress', programme.path, class: 'govuk-button button button--full-width' %>
 <% elsif programme.user_completed?(current_user) %>
-	<%= link_to 'View certifate', programme.path, class: 'govuk-button button button--small button--full-width' %>
+	<%= link_to 'View certifate', programme.path, class: 'govuk-button button button--full-width' %>
 <% else %>
-	<%= link_to 'Enrol', programme.path, class: 'govuk-button button button--small button--full-width' %>
+  <%= link_to 'Enrol on this cer', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
 <% end %>

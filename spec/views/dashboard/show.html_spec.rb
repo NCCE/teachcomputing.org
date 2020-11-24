@@ -21,7 +21,7 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   it 'has progress section' do
-    expect(rendered).to have_css('h2', text: 'Your activity')
+    expect(rendered).to have_css('h2', text: 'Your courses')
   end
 
   it 'doesn\'t show the activity list' do
