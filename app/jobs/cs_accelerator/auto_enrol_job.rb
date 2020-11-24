@@ -4,7 +4,9 @@ module CsAccelerator
 
     def perform(achievement_id:)
       achievement = Achievement.find(achievement_id)
-      user = User.find(achievement.user_id)
+      user = User.find_by(id: achievement.user_id)
+      return unless user
+
       user.with_lock do
         return unless user.csa_auto_enrollable?
         return if user_incomplete_enrolment_on_non_csa_activity_programme(user, achievement.activity)
