@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div class="center-button ">
+    <div class="center-button">
       <%= link_to 'Browse KS3 courses', courses_path(level: 'Key stage 3'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
       <%= link_to 'Browse KS4 courses', courses_path(level: 'Key stage 4'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
     </div>
@@ -146,7 +146,7 @@
             </h2>
             <p class="govuk-body card__text">Following on from the Computer Science Accelerator, this programme will give you confidence to take your teaching to the next level and to apply those skills in the classroom.</p>
 
-            <% unless current_user && @cs_accelerator.user_enrolled?(current_user) %>
+            <% unless current_user && @secondary_certificate.user_enrolled?(current_user) %>
               <p class="govuk-body govuk-!-margin-bottom-0">
                 <strong><%= link_to 'Find out more', secondary_certificate_path, class: 'ncce-link' %></strong>
               </p>
