@@ -40,7 +40,7 @@ class AchievementsController < ApplicationController
   private
 
     def achievement_params
-      params.require(:achievement).permit(:activity_id)
+      params.require(:achievement).permit(:activity_id, :supporting_evidence)
     end
 
     def self_verification_url

@@ -12,8 +12,14 @@
           <span class="ihavedonethis__popup">
             <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' } do |f| %>
               <span class="govuk-form-group ihavedonethis__group">
-                <%= label_tag "#{:self_verification_info.to_s}_#{presenter.id}", presenter.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
-                <%= text_field_tag "#{:self_verification_info.to_s}_#{presenter.id}", '', class: 'govuk-input', name: :self_verification_info %>
+              <%= label_tag "#{:supporting_evidence.to_s}_#{presenter.id}", presenter.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
+                <% if presenter.uploadable? %>
+                  <div class="ihavedonethis__upload-container">
+                    <%= file_field :supporting_evidence, '', class: 'custom-file-input', name: :self_verification_info %>
+                  </div>
+                <% else %>
+                  <%= text_field_tag "#{:self_verification_info.to_s}_#{presenter.id}", '', class: 'govuk-input', name: :self_verification_info %>
+                <% end %>
                 <%= f.hidden_field :activity_id, value: presenter.id %>
               </span>
               <%= f.submit 'Complete activity', class: 'govuk-button button button--focus-white' %>
