@@ -103,25 +103,20 @@
               developing your own practice and to computing as a school subject.
             </p>
 
-            <% if current_user && @programme.user_enrolled?(current_user) %>
-            <%
-              achieved_credits = @programme.credits_achieved_for_certificate(current_user)
-              max_credits = @programme.max_credits_for_certificate
-            %>
-            <progress class="card__progress-bar"
-              aria-label="You have <%= achieved_credits %> out of <%= max_credits %> credits"
-              value="<%= achieved_credits %>"
-              max="<%= max_credits %>"></progress>
-            <% else %>
-            <p class="govuk-body govuk-!-margin-bottom-0">
-              <strong><%= link_to 'Find out more', primary_path, class: 'ncce-link' %></strong>
-            </p>
+            <% unless current_user && @programme.user_enrolled?(current_user) %>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong><%= link_to 'Find out more', primary_path, class: 'ncce-link' %></strong>
+              </p>
             <% end %>
           </div>
         </div>
       </div>
-      <div class="center-button">
-        <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="center-button button--margin-bottom">
+            <%= link_to 'Browse primary certificate courses', courses_path(certificate: Programme.primary_certificate.slug), class: 'govuk-button button' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
