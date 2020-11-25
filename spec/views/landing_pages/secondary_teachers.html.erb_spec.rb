@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe('landing_pages/secondary_teachers', type: :view) do
-  let(:programme) { create(:cs_accelerator) }
+  let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:secondary_certificate) { create(:secondary_certificate) }
 
   before do
-    @programme = programme
+    ENV['SECONDARY_CERTIFICATE_ENABLED'] = 'true'
+    @cs_accelerator = cs_accelerator
+    @secondary_certificate = secondary_certificate
     render
   end
 
@@ -14,5 +17,15 @@ RSpec.describe('landing_pages/secondary_teachers', type: :view) do
 
   it 'has embedded video' do
     expect(rendered).to have_css('video', count: 1)
+  end
+
+  it 'renders cs accelerator card' do
+    expect(rendered).to have_css('.card__heading', text: 'GCSE computer science subject knowledge')
+  end
+
+  context 'when secondary certificate is enabled' do
+    it 'renders the secondary certificate card' do
+      expect(rendered).to have_css('.card__heading', text: 'Teach secondary computing')
+    end
   end
 end

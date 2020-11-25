@@ -107,6 +107,9 @@
     "USER_ACHIEVEMENTS_API_SECRET": {
       "required": true,
       "value": "secret"
+    },
+    "SECONDARY_CERTIFICATE_ENABLED": {
+      "required": true
     }
   },
   "formation": {

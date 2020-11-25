@@ -45,12 +45,8 @@
 }
 
 .center-button {
-  padding-top: $logo-block-mobile;
+  padding-top: 40px;
   text-align: center;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: $logo-block;
-  }
 }
 
 .landing-page__icons {
