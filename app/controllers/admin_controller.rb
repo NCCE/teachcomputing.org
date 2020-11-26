@@ -4,7 +4,6 @@ class AdminController < ApplicationController
   before_action :authenticate_api
 
   def authenticate_api
-		binding.pry
     authenticate_or_request_with_http_token do |token, _options|
       ActiveSupport::SecurityUtils.secure_compare(token, ENV.fetch('USER_ACHIEVEMENTS_API_SECRET'))
     end
