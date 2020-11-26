@@ -3,5 +3,5 @@
 <% elsif programme.user_completed?(current_user) %>
 	<%= link_to 'View certifate', programme.path, class: 'govuk-button button button--full-width' %>
 <% else %>
-  <%= link_to 'Enrol on this cer', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
+  <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
 <% end %>
