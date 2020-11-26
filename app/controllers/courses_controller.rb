@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
 
     @occurrences = @course.with_occurrences
     @other_courses = Achiever::Course::Template.without(@course)
-    course_programme
+    course_programmes
 
     render :show
   end
@@ -107,8 +107,8 @@ class CoursesController < ApplicationController
       towns.reject { |location| location == 'Remote delivered CPD' }.uniq.sort.unshift('Face to face', 'Online', 'Remote')
     end
 
-    def course_programme
+    def course_programmes
       @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
-      @programme = @activity.programmes.enrollable.first if @activity
+      @programmes = @activity.programmes.enrollable if @activity
     end
 end
