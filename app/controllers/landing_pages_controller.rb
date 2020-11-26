@@ -1,14 +1,12 @@
 class LandingPagesController < ApplicationController
   layout 'full-width'
-  before_action :find_programme
 
-  def primary_teachers; end
+  def primary_teachers
+    @programme = Programme.primary_certificate
+  end
 
-  def secondary_teachers; end
-
-  private
-
-    def find_programme
-      @programme = Programme.enrollable.find_by!(slug: params[:slug])
-    end
+  def secondary_teachers
+    @cs_accelerator = Programme.cs_accelerator
+    @secondary_certificate = Programme.secondary_certificate
+  end
 end
