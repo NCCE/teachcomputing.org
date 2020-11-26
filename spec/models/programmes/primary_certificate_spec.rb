@@ -142,4 +142,11 @@ RSpec.describe Programmes::PrimaryCertificate do
       expect(programme.path).to eq('/certificate/primary-certificate')
     end
   end
+
+  describe '#programme_title' do
+    it 'returns correct title' do
+      expect(programme.programme_title)
+        .to eq('Primary Computing Teaching')
+    end
+  end
 end
