@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let!(:programme) { create(:cs_accelerator) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
@@ -11,6 +11,8 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   before do
+		create(:primary_certificate)
+		create(:secondary_certificate)
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @achievements = []
     render
@@ -20,7 +22,7 @@ RSpec.describe('dashboard/show', type: :view) do
     expect(rendered).to have_css('h1', text: 'Your dashboard')
   end
 
-  it 'has progress section' do
+  it 'has courses section' do
     expect(rendered).to have_css('h2', text: 'Your courses')
   end
 
@@ -44,10 +46,6 @@ RSpec.describe('dashboard/show', type: :view) do
     it 'shows the activity list' do
       expect(rendered).to have_css('.ncce-activity-list li', count: 1)
     end
-
-    it 'does not show the certificate progress section' do
-      expect(rendered).not_to have_css('.govuk-heading-m', text: 'Your certificates')
-    end
   end
 
   context 'when the user has enrolled on a programme' do
@@ -58,7 +56,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the certificate progress section' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'Your certificates')
+      expect(rendered).to have_css('.govuk-heading-m', text: 'Certificates')
     end
   end
 
