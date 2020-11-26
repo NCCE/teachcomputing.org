@@ -14,7 +14,8 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
 
     it 'enrols user in csa' do
       expect { enrol_job }
-        .to change(UserProgrammeEnrolment, :count).by(1)
+        .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
+        .by(1)
     end
 
     it 'sets auto_enrolled flag' do
@@ -76,7 +77,7 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
 
           it 'enrols user' do
             expect { enrol_job }
-              .to change(UserProgrammeEnrolment, :count)
+              .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
               .by(1)
           end
 
@@ -91,7 +92,8 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
       context 'when user is not enrolled in any programme linked to activity' do
         it 'enrols user to csa' do
           expect { enrol_job }
-            .to change(UserProgrammeEnrolment, :count).by(1)
+            .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
+            .by(1)
         end
 
         it 'queues email' do
