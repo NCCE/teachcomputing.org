@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe ProgrammesHelper, type: :helper do
-  let(:user) { create(:user) }
-  let(:enrolment) do
-    create(:user_programme_enrolment,
-           user: user,
-           programme: create(:cs_accelerator))
-  end
 
   describe('#certificate_number') do
     it 'defaults to 0 for missing param' do
