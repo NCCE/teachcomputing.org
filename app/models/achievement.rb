@@ -7,6 +7,7 @@ class Achievement < ApplicationRecord
 
   has_one_attached :supporting_evidence
 
+  validates :supporting_evidence, blob: { content_type: :image }
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
   before_create :fill_in_programme_id,
