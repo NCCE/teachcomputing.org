@@ -21,7 +21,7 @@ RSpec.describe('dashboard/certificates/_primary', type: :view) do
     render template: 'dashboard/certificates/_primary', locals: { programme: programme }
   end
 
-  context 'when the user has enrolled onto the Primaryprogramme' do
+  context 'when the user has enrolled onto the Primary programme' do
     before do
       user_programme_enrolment
       user.reload
