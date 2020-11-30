@@ -17,7 +17,13 @@
   }
 }
 
-.ncce-certs__col1 {
+.ncce-certs__col2-container {
+  display: table;
+  height: 100%;
+}
+
+.ncce-certs__col1,
+.ncce-certs__col2 {
   display: table-cell;
   vertical-align: middle;
 }
@@ -39,8 +45,4 @@
 
 .ncce-certs__heading {
   margin-bottom: 10px;
-}
-
-.ncce-certs__p {
-  line-height: 22px;
 }
