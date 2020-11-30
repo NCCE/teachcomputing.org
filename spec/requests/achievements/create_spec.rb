@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
-  let (:referrer) { 'https://testing123.com' }
+  let(:referrer) { 'https://testing123.com' }
   let(:programme) { create(:primary_certificate) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
@@ -144,6 +144,21 @@ RSpec.describe AchievementsController do
               }
         transition = user.achievements.where(activity_id: activity.id).first.last_transition
         expect(transition.metadata['self_verification_info']).to be(nil)
+      end
+    end
+
+    context 'with supporting_evidence params' do
+      subject do
+        post achievements_path,
+        params: {
+          achievement: { activity_id: activity.id, supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png')) }
+        }
+      end
+
+      it 'sets supporting_evidence metadata' do
+        subject
+        transition = user.achievements.where(activity_id: activity.id).first.last_transition
+        expect(transition.metadata['supporting_evidence']).not_to be(nil)
       end
     end
   end
