@@ -223,4 +223,10 @@ RSpec.describe Programmes::CSAccelerator do
       expect(programme.path).to eq('/certificate/cs-accelerator')
     end
   end
+
+  describe '#programme_title' do
+    it 'returns correct title' do
+      expect(programme.programme_title).to eq('GCSE Computer Science Subject Knowledge')
+    end
+  end
 end

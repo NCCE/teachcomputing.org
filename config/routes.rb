@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home', action: :home
+  get '/temp-homepage', to: 'pages#page', as: :homepage_development, defaults: { page_slug: 'home_v2/index' }
 
   resources :achievements, only: %i[create destroy]
 
@@ -100,7 +101,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
-	get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
+  get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' }
