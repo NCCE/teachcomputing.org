@@ -78,4 +78,6 @@ class Programme < ApplicationRecord
   end
 
   def path; end
+
+  def programme_title; end
 end
