@@ -155,8 +155,15 @@ RSpec.describe AchievementsController do
         }
       end
 
-      it 'sets supporting_evidence metadata' do
+      before do
         subject
+      end
+
+      it 'uploads the attachment to the achievement' do
+        expect(user.achievements.where(activity_id: activity.id).first.supporting_evidence.attached?).to eq true
+      end
+
+      it 'sets supporting_evidence metadata' do
         transition = user.achievements.where(activity_id: activity.id).first.last_transition
         expect(transition.metadata['supporting_evidence']).not_to be(nil)
       end
