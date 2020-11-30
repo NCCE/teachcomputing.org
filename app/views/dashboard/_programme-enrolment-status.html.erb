@@ -1,5 +1,5 @@
 <% if current_user && programme.user_enrolled?(current_user) %>
-  <% case  current_user.user_programme_enrolments.find_by(programme_id: programme.id).current_state %>
+  <% case  programme_enrolment %>
     <% when 'enrolled' %>
       <span class="govuk-body-m status-block">You are enrolled</span>
     <% when 'pending' %>
