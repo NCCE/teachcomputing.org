@@ -10,8 +10,7 @@ RSpec.describe('dashboard/certificates/_primary', type: :view) do
            user_id: user.id,
            programme_id: programme.id)
   end
-  let(:exam_activity) { create(:activity, :primary_certificate_exam) }
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
+  let(:programme_activity) { create(:programme_activity, programme_id: programme.id) }
 
   before do
     [programme, @programmes = programmes, activity]
