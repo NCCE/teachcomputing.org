@@ -229,4 +229,10 @@ RSpec.describe Programmes::CSAccelerator do
       expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id', programme_id: 'programme_id' })).to eq('/certificate/cs-accelerator/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
     end
   end
+  
+  describe '#programme_title' do
+    it 'returns correct title' do
+      expect(programme.programme_title).to eq('GCSE Computer Science Subject Knowledge')
+    end
+  end
 end

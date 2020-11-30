@@ -1,5 +1,6 @@
 module Programmes
   class PrimaryCertificate < Programme
+    PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
     DIAGNOSTIC_TOTAL = 80
 
     def diagnostic
@@ -63,6 +64,10 @@ module Programmes
 
     def enrol_path(opts = {})
       enrol_primary_certificate_path(opts)
+    end 
+    
+    def programme_title
+      PROGRAMME_TITLE
     end
   end
 end
