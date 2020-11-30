@@ -12,7 +12,6 @@ RSpec.describe('dashboard/certificates/_primary', type: :view) do
   end
   let(:exam_activity) { create(:activity, :primary_certificate_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
-  let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   before do
     [programme, @programmes = programmes, activity]
@@ -38,7 +37,6 @@ RSpec.describe('dashboard/certificates/_primary', type: :view) do
   context 'when the user has completed the Primary programme' do
     before do
       user_programme_enrolment.transition_to(:pending)
-      passed_exam
       user.reload
       render template: 'dashboard/certificates/_primary', locals: { programme: programme }
     end
@@ -51,7 +49,6 @@ RSpec.describe('dashboard/certificates/_primary', type: :view) do
   context 'when the user has been awarded the Primary certificate' do
     before do
       user_programme_enrolment.transition_to(:complete)
-      passed_exam
       user.reload
       render template: 'dashboard/certificates/_primary', locals: { programme: programme }
     end
