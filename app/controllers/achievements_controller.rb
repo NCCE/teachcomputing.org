@@ -5,6 +5,10 @@ class AchievementsController < ApplicationController
 
     if @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
+      metadata = { credit: @achievement.activity.credit }
+      metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
+      metadata[:supporting_evidence] = rails_blob_path(@achievement.supporting_evidence, disposition: 'attachment') if params[:supporting_evidence].present?
+
       @achievement.transition_to(:complete, metadata)
 
       if @achievement.programme
@@ -41,11 +45,5 @@ class AchievementsController < ApplicationController
 
     def self_verification_url
       helpers.safe_redirect_url(request.referrer)
-    end
-
-    def metadata
-      metadata = { credit: @achievement.activity.credit }
-      metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      metadata[:supporting_evidence] = rails_blob_path(@achievement.supporting_evidence, disposition: 'attachment') if params[:supporting_evidence].present?
     end
 end
