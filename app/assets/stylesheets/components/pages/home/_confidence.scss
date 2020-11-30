@@ -1,0 +1,25 @@
+.ncce-confidence {
+}
+.ncce-confidence__heading {
+  display: none;
+  @include govuk-media-query($from: tablet) {
+    display: block;
+    text-align: center;
+  }
+}
+
+.ncce-confidence__panel {
+  margin-bottom: 2rem;
+}
+
+.ncce-confidence__icon-container {
+  background-color: $concrete;
+  border-bottom: 3px solid $deep-cerulean;
+  margin-bottom: 1rem;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.ncce-confidence__icon {
+  width: 106px;
+}
