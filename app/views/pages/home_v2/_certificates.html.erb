@@ -11,23 +11,23 @@
         </div>
         <div>
           <div class='ncce-certs__certificate ncce-certs__certificate--primary'>
-            <h3 class='govuk-heading-m'>
+            <h3 class='govuk-heading-m ncce-certs__heading'>
               <%= link_to 'Primary Certificate', primary_path, class: 'ncce-link ncce-link--heading' %>
             </h3>
-            <p class='govuk-body'>Teach computing for key stage 1 and 2</p>
+            <p class='govuk-body ncce-certs__p'>Teach computing for key stage 1 and 2</p>
           </div>
           <div class='ncce-certs__certificate ncce-certs__certificate--secondary'>
-            <h3 class='govuk-heading-m'>
+            <h3 class='govuk-heading-m ncce-certs__heading'>
               <%= link_to 'Computer Science Accelerator', cs_accelerator_path, class: 'ncce-link ncce-link--heading' %>
             </h3>
-            <p class='govuk-body'>Develop subject knowledge of GCSE computer science</p>
+            <p class='govuk-body ncce-certs__p'>Develop subject knowledge of GCSE computer science</p>
           </div>
           <% if FeatureFlagService.new.flags[:secondary_certificate_enabled] %>
             <div class='ncce-certs__certificate ncce-certs__certificate--secondary'>
-              <h3 class='govuk-heading-m'>
+              <h3 class='govuk-heading-m ncce-certs__heading'>
                 <%= link_to 'Secondary Certificate', secondary_path, class: 'ncce-link ncce-link--heading' %>
               </h3>
-              <p class='govuk-body'>Further your knowledge and effectively teach secondary computing</p>
+              <p class='govuk-body ncce-certs__p'>Further your knowledge and effectively teach secondary computing</p>
             </div>
           <% end %>
         </div>
