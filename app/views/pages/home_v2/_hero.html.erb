@@ -13,15 +13,17 @@
 <div class="govuk-width-container">
 	<div class="text-temp">
 		<h1 class="govuk-heading-l hero-heading--home-temp">Helping you <br>teach computing</h1>
-		<p class="govuk-body">We offer teachers:</p>
+		<p class="govuk-body govuk-!-margin-bottom-0">We offer teachers:</p>
 		<ul class="govuk-list govuk-list--bullet" role="list">
 			<li>courses and accreditation</li>
 			<li>bursaries for training</li>
 			<li>free curriculum teaching resources</li>
 			<li>community support and more</li>
 		</ul>
-		<%= link_to('Join for free', '', class: 'govuk-button button')  %>
-		<%= link_to 'About us', '', class: 'govuk-button button' %>
+		<div class="temp--buttons">
+			<%= link_to('Join for free', '/', class: 'govuk-button button hero__button--wide govuk-!-margin-right-5')  %>
+			<%= link_to '', '/', class: 'govuk-button button button--inverted button--copy' %>
+		</div>
 	</div>
 </div>
 

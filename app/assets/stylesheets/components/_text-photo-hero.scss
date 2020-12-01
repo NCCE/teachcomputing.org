@@ -107,6 +107,7 @@
 	padding: 1.75rem 1.5rem;
 
 	@include govuk-media-query($from: tablet) {
+		padding: 1.75rem 1.5rem;
 		position: absolute;
 		top: 50%;
 	}
@@ -114,4 +115,30 @@
 
 .hero-heading--home-temp {
  font-size: 2.5rem !important;
+}
+
+.temp--buttons {
+	display: inline;
+}
+
+.button--copy:before {
+	content: 'About us';
+	line-height: 39px;
+	width: 9rem;
+
+	@include govuk-media-query($from: desktop) {
+		content: 'Learn more about us';
+		line-height: 39px;
+    padding: 1.25rem;
+		width: 13rem;
+	}
+}
+
+
+.hero__button--wide {
+	padding: 0.5rem 1rem;
+
+	@include govuk-media-query($from: desktop) {
+  	padding: 0.75rem 3rem;
+	}
 }
