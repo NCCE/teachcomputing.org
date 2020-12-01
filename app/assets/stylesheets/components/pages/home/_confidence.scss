@@ -1,5 +1,14 @@
 .ncce-confidence {
 }
+
+.ncce-confidence__grid {
+  display: grid;
+  grid-template-columns: auto;
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 .ncce-confidence__heading {
   display: none;
   @include govuk-media-query($from: tablet) {
@@ -10,6 +19,19 @@
 
 .ncce-confidence__panel {
   margin-bottom: 2rem;
+  @include govuk-media-query($from: tablet) {
+    width: 95%;
+  }
+}
+
+.ncce-confidence__grid-col2 {
+  display: flex;
+  justify-content: center;
+}
+
+.ncce-confidence__grid-col3 {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .ncce-confidence__icon-container {

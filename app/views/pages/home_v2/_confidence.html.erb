@@ -1,41 +1,49 @@
 <div class='govuk-width-container'>
   <div class='govuk-main-wrapper'>
     <h2 class='govuk-heading-l ncce-confidence__heading'>Get more confident with computing</h2>
-    <div class='ncce-confidence__panel'>
-      <div class='ncce-confidence__icon-container'>
-          <img src='/images/home/courses_icon.svg' class='ncce-confidence__icon' alt=''>
+    <div class='ncce-confidence__grid'>
+      <div class='ncce-confidence__grid-col1'>
+        <div class='ncce-confidence__panel'>
+          <div class='ncce-confidence__icon-container'>
+              <img src='/images/home/courses_icon.svg' class='ncce-confidence__icon' alt=''>
+          </div>
+          <h3 class='govuk-heading-m'>Courses</h3>
+          <p class='govuk-body'>
+            Discover our range of professional development courses, designed to help you teach computing from key stages 1 to 4.
+          </p>
+          <p>
+            <%= link_to 'Browse our courses', courses_path, class: 'ncce-link ncce-link--emph' %>
+          </p>
+        </div>
       </div>
-      <h3 class='govuk-heading-m'>Courses</h3>
-      <p class='govuk-body'>
-        Discover our range of professional development courses, designed to help you teach computing from key stages 1 to 4.
-      </p>
-      <p>
-        <%= link_to 'Browse our courses', courses_path, class: 'ncce-link ncce-link--emph' %>
-      </p>
-    </div>
-    <div class='ncce-confidence__panel'>
-      <div class='ncce-confidence__icon-container'>
-          <img src='/images/home/bursaries_icon.svg' class='ncce-confidence__icon' alt=''>
+      <div class='ncce-confidence__grid-col2'>
+        <div class='ncce-confidence__panel'>
+          <div class='ncce-confidence__icon-container'>
+              <img src='/images/home/bursaries_icon.svg' class='ncce-confidence__icon' alt=''>
+          </div>
+          <h3 class='govuk-heading-m'>Bursaries</h3>
+          <p class='govuk-body'>
+            We offer financial support to state-funded schools and colleges across England.
+          </p>
+          <p>
+            <%= link_to 'Check your eligibility', bursary_path, class: 'ncce-link ncce-link--emph' %>
+          </p>
+        </div>
       </div>
-      <h3 class='govuk-heading-m'>Bursaries</h3>
-      <p class='govuk-body'>
-        We offer financial support to state-funded schools and colleges across England.
-      </p>
-      <p>
-        <%= link_to 'Check your eligibility', bursary_path, class: 'ncce-link ncce-link--emph' %>
-      </p>
-    </div>
-    <div class='ncce-confidence__panel'>
-      <div class='ncce-confidence__icon-container'>
-          <img src='/images/home/teaching_resources_icon.svg' class='ncce-confidence__icon' alt=''>
+      <div class='ncce-confidence__grid-col3'>
+        <div class='ncce-confidence__panel'>
+          <div class='ncce-confidence__icon-container'>
+              <img src='/images/home/teaching_resources_icon.svg' class='ncce-confidence__icon' alt=''>
+          </div>
+          <h3 class='govuk-heading-m'>Teaching Resources</h3>
+          <p class='govuk-body'>
+            Over 500 hours of free curriculum resources to help you teach computing at key stages 1 to 4.
+          </p>
+          <p>
+            <%= link_to 'Browse our teaching resources', curriculum_key_stages_path, class: 'ncce-link ncce-link--emph' %>
+          </p>
+        </div>
       </div>
-      <h3 class='govuk-heading-m'>Teaching Resources</h3>
-      <p class='govuk-body'>
-        Over 500 hours of free curriculum resources to help you teach computing at key stages 1 to 4.
-      </p>
-      <p>
-        <%= link_to 'Browse our teaching resources', curriculum_key_stages_path, class: 'ncce-link ncce-link--emph' %>
-      </p>
     </div>
   </div>
 </div>
