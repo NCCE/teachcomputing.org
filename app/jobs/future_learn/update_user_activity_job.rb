@@ -14,7 +14,7 @@ module FutureLearn
       return if achievement.complete?
 
       achievement.update_state_for_online_activity(
-        enrolment[:steps_completed_count].to_f,
+        enrolment[:steps_completed_ratio].to_f * 100,
         enrolment[:deactivated_at]
       )
 
