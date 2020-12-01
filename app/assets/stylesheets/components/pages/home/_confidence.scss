@@ -10,10 +10,13 @@
 }
 
 .ncce-confidence__heading {
-  display: none;
+  padding: 8px 0;
   @include govuk-media-query($from: tablet) {
-    display: block;
+    padding: 16px 0;
     text-align: center;
+  }
+  @include govuk-media-query($from: desktop) {
+    padding: 24px 0;
   }
 }
 
@@ -35,7 +38,6 @@
 }
 
 .ncce-confidence__icon-container {
-  // padding: 16px 0 8px;
   width: 84px;
   @include govuk-media-query($from: tablet) {
     background-color: $concrete;
