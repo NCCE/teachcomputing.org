@@ -16,7 +16,7 @@
     text-align: center;
   }
   @include govuk-media-query($from: desktop) {
-    padding: 24px 0;
+    padding: 14px 0 24px;
   }
 }
 
