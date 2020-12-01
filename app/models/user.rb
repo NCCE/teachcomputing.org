@@ -43,7 +43,7 @@ class User < ApplicationRecord
     self.user_programme_enrolments
   end
 
-	def programme_enrolment_state(programme_id)
+	def programme_enrolment_state(programme.id)
 		self.user_programme_enrolments.find_by(programme_id: programme.id).current_state
 	end
 end
