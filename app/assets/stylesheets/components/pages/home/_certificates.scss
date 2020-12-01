@@ -9,7 +9,9 @@
 .ncce-certs__col1-container {
   display: table;
   height: 100%;
+  padding-bottom: 1.5rem;
   @include govuk-media-query($from: tablet) {
+    padding-bottom: 0;
     padding-right: 60px;
   }
   @include govuk-media-query($from: desktop) {
