@@ -94,5 +94,25 @@
 .image-temp {
 	img {
 		max-width: 100%;
-    height: auto;}
+    height: auto;
+	}
+	@include govuk-media-query($from: tablet) {
+		position: relative;
+		width: 100%;
+	}
+}
+
+.text-temp {
+	background-color: $white;
+	padding: 1.75rem 1.5rem;
+
+	@include govuk-media-query($from: tablet) {
+		position: absolute;
+		top: 500px;
+		left: 100px;
+	}
+}
+
+.hero-heading--home-temp {
+ font-size: 2.5rem !important;
 }
