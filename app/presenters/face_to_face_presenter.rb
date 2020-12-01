@@ -7,11 +7,11 @@ class FaceToFacePresenter < ActivityPresenter
   end
 
   def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} face to face course"
+    "Completed your #{index_to_word_ordinal(index)} face to face or remote course"
   end
 
   def prompt_text(index)
-    "Complete your #{index_to_word_ordinal(index)} face to face course"
+    "Complete your #{index_to_word_ordinal(index)} face to face or remote course"
   end
 
   def inspect

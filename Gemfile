@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.7'
 
+gem 'activestorage-validator', '~> 0.1.3'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem "aws-sdk-s3", require: false
