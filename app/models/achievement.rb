@@ -23,6 +23,8 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: { category: category })
   }
 
+  scope :with_courses, -> { joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] }) }
+
   scope :with_credit, lambda { |credit|
     joins(:activity).where(activities: { credit: credit })
   }
