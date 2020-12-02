@@ -4,7 +4,7 @@ class AchievementPresenter < SimpleDelegator
 
   def initialize(achievement)
     super(achievement)
-    @programme = achievement.programme
+    @programme = achievement.programme if achievement
     @empty = achievement.nil?
   end
 
