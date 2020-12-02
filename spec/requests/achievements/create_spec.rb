@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
-  let (:referrer) { 'https://testing123.com' }
+  let(:referrer) { 'https://testing123.com' }
   let(:programme) { create(:primary_certificate) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
@@ -144,6 +144,43 @@ RSpec.describe AchievementsController do
               }
         transition = user.achievements.where(activity_id: activity.id).first.last_transition
         expect(transition.metadata['self_verification_info']).to be(nil)
+      end
+    end
+
+    context 'with supporting_evidence params' do
+      context 'with a valid file' do
+        before do
+          post achievements_path,
+          params: {
+            achievement: { activity_id: activity.id, supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png')) }
+          }
+        end
+
+        it 'uploads the attachment to the achievement' do
+          expect(user.achievements.where(activity_id: activity.id).first.supporting_evidence.attached?).to eq true
+        end
+
+        it 'sets supporting_evidence metadata' do
+          transition = user.achievements.where(activity_id: activity.id).first.last_transition
+          expect(transition.metadata['supporting_evidence']).not_to be(nil)
+        end
+      end
+
+      context 'with an invalid file' do
+        before do
+          post achievements_path,
+          params: {
+            achievement: { activity_id: activity.id, supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt')) }
+          }
+        end
+
+        it 'does not create the achievement' do
+          expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+        end
+
+        it 'renders a flash message' do
+          expect(flash[:error]).to match(/something went wrong adding/)
+        end
       end
     end
   end

@@ -9,7 +9,9 @@
 .ncce-certs__col1-container {
   display: table;
   height: 100%;
+  padding-bottom: 1.5rem;
   @include govuk-media-query($from: tablet) {
+    padding-bottom: 0;
     padding-right: 60px;
   }
   @include govuk-media-query($from: desktop) {
@@ -36,10 +38,16 @@
     padding: 20px 20px 5px 20px;
   }
   &--primary {
-    border-left: 13px solid $primary-cert-color;
+    border-left: 9px solid $primary-cert-color;
+    @include govuk-media-query($from: tablet) {
+      border-left: 13px solid $primary-cert-color;
+    }
   }
   &--secondary {
-    border-left: 13px solid $secondary-cert-color;
+    border-left: 9px solid $secondary-cert-color;
+    @include govuk-media-query($from: tablet) {
+      border-left: 13px solid $secondary-cert-color;
+    }
   }
 }
 
