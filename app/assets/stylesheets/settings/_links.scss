@@ -1,23 +1,23 @@
 .ncce-link,
-a[class=""],
+a[class=''],
 a:not([class]) {
   font-family: $font-family-body;
 
   &:link,
   &:visited {
-		color: $deep-cerulean;
-	}
-	&:hover {
-		color: $grey-dark-x;
-	}
-	&:focus {
-		background-color: $deep-cerulean;
-		color: $white;
-		outline-color: $deep-cerulean;
-	}
-	&:active {
-		background-color: $deep-cerulean;
-		color: $white;
+    color: $deep-cerulean;
+  }
+  &:hover {
+    color: $grey-dark-x;
+  }
+  &:focus {
+    background-color: $deep-cerulean;
+    color: $white;
+    outline-color: $deep-cerulean;
+  }
+  &:active {
+    background-color: $deep-cerulean;
+    color: $white;
   }
 }
 
@@ -40,21 +40,20 @@ a:not([class]) {
 }
 
 .ncce-link__icon {
-	width: 30px;
-	height: 30px;
-	margin-right: 10px;
-	vertical-align: middle;
-	&--footer {
-		width: 20px;
-		height: 20px;
-	}
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 30px;
+  &--footer {
+    height: 20px;
+    width: 20px;
+  }
 }
 
 .ncce-link--heading {
   font-family: $font-family-heading;
 }
 
-// .ncce-link--contrast:link,
-// .ncce-link--contrast:visited {
-//   color: $grey-dark-x;
-// }
+.ncce-link--emph {
+  font-weight: 700;
+}
