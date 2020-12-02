@@ -136,6 +136,7 @@
 
 
 .hero__button--wide {
+	display: inline;
 	padding: 0.5rem 1rem;
 
 	@include govuk-media-query($from: desktop) {
