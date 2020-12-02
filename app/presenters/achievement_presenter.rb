@@ -2,9 +2,10 @@ class AchievementPresenter < SimpleDelegator
   include ProgrammesHelper
   attr_reader :empty
 
-  def initialize(achievement)
+  def initialize(achievement, programme = nil)
     super(achievement)
     @empty = achievement.nil?
+    @programme = programme
   end
 
   def empty?
