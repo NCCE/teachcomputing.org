@@ -1,4 +1,4 @@
-class FaceToFacePresenter < ActivityPresenter
+class FaceToFacePresenter < AchievementPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
@@ -11,6 +11,7 @@ class FaceToFacePresenter < ActivityPresenter
   end
 
   def prompt_text(index)
+    'Complete at least one face to face, or remote course' if @progamme == Programme.secondary_certificate
     "Complete your #{index_to_word_ordinal(index)} face to face course"
   end
 

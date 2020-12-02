@@ -1,4 +1,4 @@
-class OnlinePresenter < ActivityPresenter
+class OnlinePresenter < AchievementPresenter
   include ProgrammesHelper
   include Rails.application.routes.url_helpers
 
@@ -11,6 +11,7 @@ class OnlinePresenter < ActivityPresenter
   end
 
   def prompt_text(index)
+    'Complete at least one online course' if @progamme == Programme.secondary_certificate
     "Complete your #{index_to_word_ordinal(index)} online course"
   end
 

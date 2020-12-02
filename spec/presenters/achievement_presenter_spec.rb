@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ActivityPresenter do
+RSpec.describe AchievementPresenter do
   let(:empty_presenter) { described_class.new(nil) }
   let(:decorating_presenter) { described_class.new([0, 1, 2]) }
 
