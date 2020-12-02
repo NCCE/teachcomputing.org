@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FaceToFacePresenter do
   let(:empty_presenter) { described_class.new(nil) }
   let(:secondary_certificate) { create(:secondary_certificate) }
-  let(:presenter) { described_class.new(create(:achievement, programme_id: secondary_certificate.id)) }
+  let(:presenter) { described_class.new(create(:achievement, programme_id: secondary_certificate.id), secondary_certificate) }
 
   before do
     secondary_certificate
