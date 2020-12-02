@@ -11,7 +11,7 @@ class OnlinePresenter < AchievementPresenter
   end
 
   def prompt_text(index)
-    'Complete at least one online course' if @progamme == Programme.secondary_certificate
+    return 'Complete at least one online course' if self.try(:programme) == Programme.secondary_certificate
     "Complete your #{index_to_word_ordinal(index)} online course"
   end
 

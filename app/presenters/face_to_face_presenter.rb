@@ -7,12 +7,12 @@ class FaceToFacePresenter < AchievementPresenter
   end
 
   def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} face to face course"
+    "Completed your #{index_to_word_ordinal(index)} face to face, or remote course"
   end
 
   def prompt_text(index)
-    'Complete at least one face to face, or remote course' if @progamme == Programme.secondary_certificate
-    "Complete your #{index_to_word_ordinal(index)} face to face course"
+    return 'Complete at least one face to face, or remote course' if self.try(:programme) == Programme.secondary_certificate
+    "Complete your #{index_to_word_ordinal(index)} face to face, or remote course"
   end
 
   def inspect

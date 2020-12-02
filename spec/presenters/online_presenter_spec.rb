@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe OnlinePresenter do
   let(:empty_presenter) { described_class.new(nil) }
+  let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:presenter) { described_class.new(create(:achievement, programme_id: secondary_certificate.id)) }
+
+  before do
+    secondary_certificate
+  end
 
   describe('button_url') do
     it { expect(empty_presenter.button_url).to eq('/courses?location=Online') }
@@ -14,6 +20,10 @@ RSpec.describe OnlinePresenter do
 
   describe('prompt_text') do
     it { expect(empty_presenter.prompt_text(1)).to eq('Complete your second online course') }
+
+    context 'when the the achievement belongs to secondary certificate' do
+      it { expect(presenter.prompt_text(1)).to eq('Complete at least one online course') }
+    end
   end
 
   describe('inspect') do

@@ -31,7 +31,7 @@ RSpec.describe AchievementPresenter do
   end
 
   describe('inspect') do
-    it { expect(empty_presenter.inspect).to start_with("ActivityPresenter - empty? true\nnil") }
+    it { expect(empty_presenter.inspect).to start_with("AchievementPresenter - empty? true\nnil") }
   end
 
   describe('delegates correctly') do
