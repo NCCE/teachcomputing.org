@@ -20,9 +20,13 @@ RSpec.describe User, type: :model do
                    stem_info)
   end
 
+
+	let(:create_programme) { create(:programme) }
+
   describe 'validations' do
     before do
       user
+			create_programme
     end
 
     it { is_expected.to validate_presence_of(:first_name) }
@@ -114,6 +118,14 @@ RSpec.describe User, type: :model do
     it 'returns UserProgrammeEnrolments for the given user' do
       enrolment = create(:user_programme_enrolment, user_id: user.id)
       expect(user.enrolments).to include enrolment
+    end
+  end
+
+  describe '#programme_enrolment_state' do
+    it 'returns programme enrolment state' do
+      enrolment = create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
+			programme = enrolment.find_by(programme_id: programme_id)
+      expect(user.enrolments).to include enrolment.programme.current_state
     end
   end
 end
