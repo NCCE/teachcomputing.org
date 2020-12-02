@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('dashboard/programmes/_hero', type: :view) do
+RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:cs_accelerator) }
@@ -20,26 +20,18 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     create(:achievement, user: user)
     @achievements = user.achievements
-    render template: 'dashboard/programmes/_hero', locals: { programme: programme }
+    render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
   end
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
       user.reload
-      render template: 'dashboard/programmes/_hero'
-    end
-
-    it 'shows the certificate section' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'Your certificates')
+      render template: 'dashboard/certificates/_cs-accelerator'
     end
 
     it 'shows the certificate link' do
-      expect(rendered).to have_link(programme.title, href: programme.path)
-    end
-
-    it 'shows the progress bar' do
-      expect(rendered).to have_css('.card__progress-bar', count: 1)
+      expect(rendered).to have_link('Teach GCSE computer science', href: cs_accelerator_path)
     end
   end
 
@@ -48,11 +40,11 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       user_programme_enrolment.transition_to(:pending)
       passed_exam
       user.reload
-      render template: 'dashboard/programmes/_hero', locals: { programme: programme }
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
     end
 
     it 'shows the completed text' do
-      expect(rendered).to have_css('.status-block', text: 'Programme complete')
+      expect(rendered).to have_css('.status-block-light', text: 'Programme complete')
     end
   end
 
@@ -61,11 +53,11 @@ RSpec.describe('dashboard/programmes/_hero', type: :view) do
       user_programme_enrolment.transition_to(:complete)
       passed_exam
       user.reload
-      render template: 'dashboard/programmes/_hero', locals: { programme: programme }
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
     end
 
     it 'shows the completed text' do
-      expect(rendered).to have_css('.status-block', text: 'Certificate awarded')
+      expect(rendered).to have_css('.status-block-light', text: 'Certificate awarded')
     end
   end
 end

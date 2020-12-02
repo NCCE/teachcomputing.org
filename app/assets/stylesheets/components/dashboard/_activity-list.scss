@@ -170,3 +170,68 @@
 	opacity: 80%;
 }
 
+.ncce-activity-list__item--dashboard {
+	border-radius: 5px;
+	grid-template-rows: auto auto !important;
+	grid-row-gap: 0.5rem;
+	margin-bottom: 1.25rem !important;
+	border-left: 9px solid $action-color;
+	&:last-child {
+    margin-bottom: 0;
+  }
+
+	@include govuk-media-query($from: tablet) {
+		grid-row-gap: 1rem;
+	}
+}
+
+.item--dashboard--cs-accelerator {
+  border-top-color: $secondary-cert-color;
+}
+
+.item--dashboard--primary {
+  border-top-color: $primary-cert-color;
+}
+
+.item--dashboard--secondary {
+  border-top-color: $secondary-cert-color;
+}
+
+.ncce-activity-list__item--dashboard-tags {
+	grid-row: 2;
+}
+
+.ncce-activity-list__item--dashboard-tags-date {
+	float: left;
+	margin-bottom: 0 !important;
+	margin-left: 2rem;
+	margin-top: 1rem;
+
+	@include govuk-media-query($from: tablet) {
+		float: right;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}
+
+.ncce-activity-list__item--dashboard-tags--course {
+  color: $white;
+  margin-left: 2rem;
+  padding: 5px 16px;
+
+	@include govuk-media-query($from: tablet) {
+		margin-left: 2.8rem;
+	}
+}
+
+.dashboard-tags--cs-accelerator {
+	background-color: $secondary-cert-color;
+}
+
+.dashboard-tags--primary {
+	background-color: $primary-cert-color;
+}
+
+.dashboard-tags--secondary {
+	background-color: $secondary-cert-color;
+}

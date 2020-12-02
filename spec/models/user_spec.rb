@@ -116,4 +116,21 @@ RSpec.describe User, type: :model do
       expect(user.enrolments).to include enrolment
     end
   end
+
+  describe '#programme_enrolment_state' do
+		context 'when user is enrolled to the programme' do
+			it 'returns programme enrolment state' do
+				programme = create(:programme)
+				enrolment = create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
+				expect(user.programme_enrolment_state(programme.id)).to eq ('enrolled')
+    	end
+		end
+
+		context 'when user is not enrolled to the programme' do
+			it 'returns not enrolled' do
+				programme = create(:programme)
+				expect(user.programme_enrolment_state(programme.id)).to eq ('Not enrolled')
+			end
+		end
+  end
 end
