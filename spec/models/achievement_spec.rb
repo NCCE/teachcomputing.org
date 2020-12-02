@@ -54,6 +54,20 @@ RSpec.describe Achievement, type: :model do
     end
 
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:activity_id) }
+
+    context 'valid file' do
+      it 'is valid' do
+        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png'))
+        expect(achievement.valid?).to eq true
+      end
+    end
+
+    context 'invalid file' do
+      it 'is not valid' do
+        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'))
+        expect(achievement.valid?).to eq false
+      end
+    end
   end
 
   describe '#before_create' do

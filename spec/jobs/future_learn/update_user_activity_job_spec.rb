@@ -35,7 +35,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         run_job
         expect(mock_instance)
           .to have_received(:update_state_for_online_activity)
-          .with(enrolment[:steps_completed_count].to_f,
+          .with(enrolment[:steps_completed_ratio].to_f * 100,
                 enrolment[:deactivated_at])
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         run_job
         expect(mock_instance)
           .to have_received(:update_state_for_online_activity)
-          .with(enrolment[:steps_completed_count].to_f,
+          .with(enrolment[:steps_completed_ratio].to_f * 100,
                 enrolment[:deactivated_at])
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
           build(:fl_enrolment,
                 run_uuid: run_uuid,
                 membership_uuid: membership_id,
-                steps_completed_count: 90)
+                steps_completed_ratio: 0.9)
         end
 
         it 'queues CertificatePendingTransitionJob' do
@@ -96,7 +96,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
           build(:fl_enrolment,
                 run_uuid: run_uuid,
                 membership_uuid: membership_id,
-                steps_completed_count: 90)
+                steps_completed_ratio: 0.9)
         end
 
         it 'queues AssessmentEligibilityJob' do
@@ -121,7 +121,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
           build(:fl_enrolment,
                 run_uuid: run_uuid,
                 membership_uuid: membership_id,
-                steps_completed_count: 77)
+                steps_completed_ratio: 0.77)
         end
 
         it 'queues CertificatePendingTransitionJob' do
