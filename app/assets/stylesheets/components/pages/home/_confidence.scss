@@ -21,9 +21,16 @@
 }
 
 .ncce-confidence__panel {
-  margin-bottom: 2rem;
   @include govuk-media-query($from: tablet) {
     width: 95%;
+  }
+}
+
+.ncce-confidence__grid-col1,
+.ncce-confidence__grid-col2 {
+  margin-bottom: 2rem;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
   }
 }
 

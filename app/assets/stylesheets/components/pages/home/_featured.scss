@@ -1,0 +1,33 @@
+.ncce-feat {
+}
+
+.ncce-feat__main {
+}
+
+.ncce-feat__title {
+  margin-bottom: 26px;
+  @include govuk-media-query($from: tablet) {
+    text-align: center;
+  }
+}
+
+.ncce-feat__panel-container {
+  border-top: 2px solid $grey;
+}
+
+.ncce-feat__panel {
+  border-bottom: 2px solid $grey;
+  padding: 8px 0 6px;
+}
+
+.ncce-feat__date {
+  margin-bottom: 0;
+}
+
+.ncce-feat__heading {
+  margin: 2px 0 10px;
+}
+
+.ncce-feat__excerpt {
+  margin-bottom: 30px;
+}
