@@ -61,7 +61,7 @@ class Achievement < ApplicationRecord
   def update_state_for_online_activity(progress = 0, left_at = nil)
     return if current_state == :complete.to_s
 
-    metadata = { progress: progress }
+    metadata = { progress: progress.floor }
 
     if left_at.present?
       return set_to_dropped(left_at: left_at) unless progress >= 60
