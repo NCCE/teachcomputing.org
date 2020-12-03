@@ -29,7 +29,7 @@
               </li>
             <% else %>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= certificate_progress_for_user(current_user) %>
+                <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
               </li>
 						<% end %>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">

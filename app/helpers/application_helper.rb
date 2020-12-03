@@ -27,6 +27,7 @@ module ApplicationHelper
 
   def safe_redirect_url(url)
     allowed_redirect_urls = [
+      /^https:\/\/teachcomputing.rpfdev.com/,
       /^https:\/\/teachcomputing.org/,
       /^https:\/\/staging-teachcomputing.org/,
       /^https:\/\/stem.org.uk/,

@@ -5,6 +5,9 @@ class Achievement < ApplicationRecord
   belongs_to :user
   belongs_to :programme, optional: true
 
+  has_one_attached :supporting_evidence
+
+  validates :supporting_evidence, blob: { content_type: :image }
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
   before_create :fill_in_programme_id,
@@ -19,6 +22,8 @@ class Achievement < ApplicationRecord
   scope :with_category, lambda { |category|
     joins(:activity).where(activities: { category: category })
   }
+
+  scope :with_courses, -> { joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] }) }
 
   scope :with_credit, lambda { |credit|
     joins(:activity).where(activities: { credit: credit })

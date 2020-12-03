@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity) }
+  let(:activity) { create(:activity, category: 'online') }
+  let(:face_to_face_activity) { create(:activity, category: 'face-to-face') }
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
   let(:achievement) { create(:achievement, activity_id: activity.id) }
-  let(:achievement2) { create(:achievement) }
+  let(:achievement2) { create(:achievement, activity_id: face_to_face_activity.id) }
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
@@ -54,6 +55,20 @@ RSpec.describe Achievement, type: :model do
     end
 
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:activity_id) }
+
+    context 'valid file' do
+      it 'is valid' do
+        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png'))
+        expect(achievement.valid?).to eq true
+      end
+    end
+
+    context 'invalid file' do
+      it 'is not valid' do
+        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'))
+        expect(achievement.valid?).to eq false
+      end
+    end
   end
 
   describe '#before_create' do
@@ -108,6 +123,24 @@ RSpec.describe Achievement, type: :model do
 
     it 'omits the achievements which don\'t match the category' do
       expect(Achievement.with_category(achievement.activity.category)).not_to include(diagnostic_achievement)
+    end
+  end
+
+  describe '#with_courses' do
+    before do
+      programme_activity
+    end
+
+    it 'includes face to face courses' do
+      expect(Achievement.with_courses).to include(achievement)
+    end
+
+    it 'includes online courses' do
+      expect(Achievement.with_courses).to include(achievement2)
+    end
+
+    it 'does not include any other category' do
+      expect(Achievement.with_courses).not_to include(community_activity)
     end
   end
 

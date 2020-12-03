@@ -6,9 +6,9 @@ class AchievementsController < ApplicationController
     if @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
       metadata = { credit: @achievement.activity.credit }
-      if params[:self_verification_info].present?
-        metadata[:self_verification_info] = params[:self_verification_info]
-      end
+      metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
+      metadata[:supporting_evidence] = rails_blob_path(@achievement.supporting_evidence, disposition: 'attachment') if achievement_params[:supporting_evidence].present?
+
       @achievement.transition_to(:complete, metadata)
 
       if @achievement.programme
@@ -40,7 +40,7 @@ class AchievementsController < ApplicationController
   private
 
     def achievement_params
-      params.require(:achievement).permit(:activity_id)
+      params.require(:achievement).permit(:activity_id, :supporting_evidence)
     end
 
     def self_verification_url
