@@ -1,12 +1,10 @@
-include ActionDispatch::TestProcess
-
 FactoryBot.define do
   factory :achievement do
     activity
     user
 
     trait :with_supporting_evidence do
-      supporting_evidence { fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png')) }
+      supporting_evidence { Rack::Test::UploadedFile.new('spec/support/active_storage/supporting_evidence_test_upload.png', 'image/png') }
     end
 
     factory :completed_achievement do
