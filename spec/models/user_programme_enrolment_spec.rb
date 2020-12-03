@@ -5,6 +5,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:achievements) { create_list(:achievement, 5, user: user) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:secondary_enrolment) { create(:user_programme_enrolment, user: user, programme: secondary_certificate) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
 
   describe 'associations' do
@@ -60,8 +61,9 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   describe '#after_commit callbacks' do
     describe '#schedule_welcome_email' do
       context 'when Secondary certificate' do
-        it '' do
-
+        it 'sends SecondaryMailer' do
+          expect { secondary_enrolment }
+          .to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
       context 'when CS Accelerator' do
