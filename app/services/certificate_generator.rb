@@ -1,10 +1,7 @@
 class CertificateGenerator
-  CSA_PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
-  PRIMARY_PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
-
   def initialize(user:, programme:, transition:, dependencies: {})
     @src_path = dependencies.fetch(:src_path) do
-      File.join(Rails.root, 'app', 'assets', 'pdf', 'ncce-cert-src.pdf')
+      File.join(Rails.root, 'app', 'assets', 'pdf', "#{programme.slug}-src.pdf")
     end
 
     @output_path = dependencies.fetch(:output_path) do
@@ -18,7 +15,6 @@ class CertificateGenerator
 
   def generate_pdf
     user_name = "#{@user.first_name} #{@user.last_name}"
-    programme_title = select_programme_title
     date_awarded = @transition.created_at.strftime('%d/%m/%Y')
     cert_number = certificate_number
     slug = @programme.slug
@@ -33,9 +29,6 @@ class CertificateGenerator
 
       move_down 115
       text user_name, align: :center, size: 18, color: '333448'
-
-      move_down 115
-      text programme_title, align: :center, size: 18, color: '333448'
 
       text_box date_awarded,
                at: [392, 134],
@@ -78,7 +71,7 @@ class CertificateGenerator
 
     src_pdf.save(@output_path)
 
-    filename = "#{programme_title.parameterize}-certificate-#{cert_number}.pdf"
+    filename = "#{@programme.programme_title.parameterize}-certificate-#{cert_number}.pdf"
 
     { path: @output_path, filename: filename }
   end
@@ -89,11 +82,5 @@ class CertificateGenerator
       cert_number = @transition.metadata['certificate_number']
       passed_date = @transition.created_at
       "#{passed_date.strftime('%Y%m')}-#{format('%03d', cert_number || 0)}"
-    end
-
-    def select_programme_title
-      return CSA_PROGRAMME_TITLE if @programme.slug == 'cs-accelerator'
-
-      PRIMARY_PROGRAMME_TITLE
     end
 end

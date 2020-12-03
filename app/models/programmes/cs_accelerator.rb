@@ -1,5 +1,6 @@
 module Programmes
   class CSAccelerator < Programme
+    PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
@@ -42,6 +43,14 @@ module Programmes
 
     def path
       cs_accelerator_certificate_path
+    end
+
+    def enrol_path(opts = {})
+      enrol_cs_accelerator_certificate_path(opts)
+    end
+    
+    def programme_title
+      PROGRAMME_TITLE
     end
   end
 end

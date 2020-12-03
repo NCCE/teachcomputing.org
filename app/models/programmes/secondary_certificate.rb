@@ -1,5 +1,6 @@
 module Programmes
   class SecondaryCertificate < Programme
+    PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
     def csa_eligible_courses(user)
       enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: Programme.cs_accelerator.id)
       return unless enrolment
@@ -27,6 +28,14 @@ module Programmes
 
     def path
       secondary_certificate_path
+    end
+
+    def enrol_path(opts = {})
+      enrol_secondary_certificate_path(opts)
+    end
+    
+    def programme_title
+      PROGRAMME_TITLE
     end
   end
 end
