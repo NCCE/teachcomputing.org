@@ -1,0 +1,16 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Welcome <%= @user.first_name %>, we are delighted to have you on board!</p>
+  <p class='govuk-body'>You’ve successfully signed up to the Computer Science Accelerator programme, and we look forward to guiding you through your professional learning journey, and helping you on the path towards chartered status.</p>
+  <p class='govuk-body'>On your <%= link_to 'personal dashboard', dashboard_url, class: 'ncce-link' %> you’ll find all of the resources and support you need, <%= link_to 'including our handbook', 'http://ncce.io/csa-handbook', class: 'ncce-link' %>, which will walk you through what to expect over the course of the programme.</p>
+  <p class='govuk-body'><strong>Next steps...</strong></p>
+  <ol class="govuk-list govuk-list govuk-list--number">
+    <li>Discover our learning pathways, or complete a short quiz to assess your subject knowledge</li>
+    <li>Explore our courses, choosing how, what and when you want to learn</li>
+    <li>Complete a minimum of ten hours of CPD, which must include a face-to-face or remote course</li>
+    <li>Pass a short test to receive your qualification</li>
+  </ol>
+  <p class='govuk-body'><strong>Bursary funding</strong></p>
+  <p class='govuk-body'>If you work in state-funded secondary education, you are eligible for bursary funding of up to £1,800, paid to your school or college. <%= link_to 'Check your eligibility', bursary_url, class: 'ncce-link' %>
+  <p class='govuk-body'><strong>Get help from a CS Champion</strong></p>
+  <p class='govuk-body'>If you're a teacher from a state-funded school or college in England, start your journey by booking a course. One of our CS Champions will then be in touch to support you through. Need help now? Contact <%= mail_to 'CSChampionSupport@stem.org.uk', 'CSChampionSupport@stem.org.uk', class: 'ncce-link' %>.
+</div>

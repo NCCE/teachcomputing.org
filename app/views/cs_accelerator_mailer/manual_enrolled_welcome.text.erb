@@ -1,12 +1,19 @@
-Welcome [name here], we are delighted to have you on board!
+Welcome <%= @user.first_name %>, we are delighted to have you on board!
+
 You’ve successfully signed up to the Computer Science Accelerator programme, and we look forward to guiding you through your professional learning journey, and helping you on the path towards chartered status.
-On your personal dashboard you’ll find all of the resources and support you need, including our handbook, which will walk you through what to expect over the course of the programme.
+On your personal dashboard (<%= dashboard_url %>) you’ll find all of the resources and support you need, including our handbook (http://ncce.io/csa-handbook), which will walk you through what to expect over the course of the programme.
+
 Next steps...
-Discover our learning pathways, or complete a short quiz to assess your subject knowledge
-Explore our courses, choosing how, what and when you want to learn
-Complete a minimum of ten hours of CPD, which must include a face-to-face or remote course
-Pass a short test to receive your qualification
+
+1. Discover our learning pathways, or complete a short quiz to assess your subject knowledge
+2. Explore our courses, choosing how, what and when you want to learn
+3.Complete a minimum of ten hours of CPD, which must include a face-to-face or remote course
+4.Pass a short test to receive your qualification
+
 Bursary funding
-If you work in state-funded secondary education, you are eligible for bursary funding of up to £1,800, paid to your school or college. Check your eligibility
+
+If you work in state-funded secondary education, you are eligible for bursary funding of up to £1,800, paid to your school or college. Check your eligibility (<%= bursary_url %>)
+
 Get help from a CS Champion
+
 If you're a teacher from a state-funded school or college in England, start your journey by booking a course. One of our CS Champions will then be in touch to support you through. Need help now? Contact CSChampionSupport@stem.org.uk
