@@ -1,19 +1,17 @@
 <div class="temp">
 	<div class="image-temp">
-		<img
-			srcset="/images/hero/hero-lg.svg 1024w,
-							/images/hero/hero-md.svg 640w,
-							/images/hero/hero-sm.svg 320w"
-			sizes="(min-width: 16em) 99.3vw, 100vw"
-			src="/images/hero/hero-sm.svg"
-			class=""
-			alt="Pic alt to be filled" />
+		<picture>
+			<source srcset="/images/hero/hero-lg.svg"
+							media="(min-width: 800px)">
+			<img src="/images/hero/hero-sm.svg" alt="" />
+		</picture>
 	</div>
 </div>
 <div class="govuk-width-container">
 	<div class="text-temp">
 		<h1 class="govuk-heading-l hero-heading--home-temp">Helping you <br>teach computing</h1>
 		<p class="govuk-body govuk-!-margin-bottom-0">We offer teachers:</p>
+		<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
 			<li>courses and accreditation</li>
 			<li>bursaries for training</li>
 			<li>free curriculum teaching resources</li>
@@ -21,7 +19,8 @@
 		</ul>
 		<div class="temp--buttons">
 			<%= link_to('Join for free', '/', class: 'govuk-button button hero__button--wide govuk-!-margin-right-5')  %>
-			<%= link_to '', '/', class: 'govuk-button button button--inverted button--copy' %>
+			<%= link_to 'About us', '/', class: 'govuk-button button button--inverted button--copy-mob' %>
+			<%= link_to 'Learn more about us', '/', class: 'govuk-button button button--inverted button--copy-desk' %>
 		</div>
 	</div>
 </div>

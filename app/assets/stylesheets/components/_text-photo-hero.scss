@@ -93,45 +93,81 @@
 
 .image-temp {
 	img {
-		max-width: 100%;
-    height: auto;
-	}
-	@include govuk-media-query($from: tablet) {
-		position: relative;
 		width: 100%;
+    height: auto;
+
+		@include govuk-media-query($from: tablet) {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+	}
+
+	@include govuk-media-query($from: tablet) {
+		width: auto;
+    height: 600px;
+    display: block;
+    position: relative;
+    overflow: hidden;
 	}
 }
 
 .text-temp {
 	background-color: $white;
-	padding: 1.75rem 1.5rem;
+	padding: 1.5rem 0.5rem 2rem 0;
 
 	@include govuk-media-query($from: tablet) {
-		padding: 1.75rem 1.5rem;
+		padding: 1.75rem 1.5rem 3rem 1.5rem;
 		position: absolute;
 		top: 50%;
 	}
 }
 
 .hero-heading--home-temp {
- font-size: 2.5rem !important;
+	@include govuk-media-query($from: tablet) {
+		font-size: 2.5rem !important;
+		margin-bottom: 10px !important;
+	}
+
 }
 
 .temp--buttons {
 	display: inline;
+
+	@include govuk-media-query($from: tablet) {
+  	margin-bottom: 1.75rem;
+	}
 }
 
-.button--copy:before {
-	content: 'About us';
-	line-height: 39px;
-	width: 9rem;
+// .button--copy:before {
+// 	content: 'About us';
+// 	line-height: 39px;
+// 	width: 9rem;
 
+// 	@include govuk-media-query($from: desktop) {
+// 		content: 'Learn more about us';
+// 		line-height: 39px;
+//     padding: 1.25rem;
+// 		width: 13rem;
+// 	}
+// }
+
+.button--copy-desk {
+	display: none;
 	@include govuk-media-query($from: desktop) {
-		content: 'Learn more about us';
-		line-height: 39px;
-    padding: 1.25rem;
-		width: 13rem;
+  	display: inline;
 	}
+
+}
+
+.button--copy-mob {
+	display: inline;
+	padding: 0.5rem 1.5rem;
+		@include govuk-media-query($from: desktop) {
+  	display: none;
+	}
+
 }
 
 
