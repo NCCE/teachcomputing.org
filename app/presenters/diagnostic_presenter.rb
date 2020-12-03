@@ -1,4 +1,4 @@
-class DiagnosticPresenter < ActivityPresenter
+class DiagnosticPresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
   include ActivitiesHelper
 

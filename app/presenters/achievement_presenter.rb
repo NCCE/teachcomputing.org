@@ -1,10 +1,11 @@
-class ActivityPresenter < SimpleDelegator
+class AchievementPresenter < SimpleDelegator
   include ProgrammesHelper
   attr_reader :empty
 
-  def initialize(achievement)
+  def initialize(achievement, programme = nil)
     super(achievement)
     @empty = achievement.nil?
+    @programme = programme
   end
 
   def empty?
@@ -20,7 +21,7 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} course"
+  "Completed your #{index_to_word_ordinal(index)} course"
   end
 
   def prompt_text(index)
@@ -28,6 +29,6 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def inspect
-    "ActivityPresenter - empty? #{empty?}\n" + super
+    "AchievementPresenter - empty? #{empty?}\n" + super
   end
 end

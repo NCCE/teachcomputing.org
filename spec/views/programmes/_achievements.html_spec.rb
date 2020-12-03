@@ -11,7 +11,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
   context 'when user has not completed any achievements' do
     before do
       @programme = programme
-      presenters = [ActivityPresenter.new(nil), ActivityPresenter.new(nil)]
+      presenters = [AchievementPresenter.new(nil), AchievementPresenter.new(nil)]
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
@@ -31,7 +31,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
   context 'when user has started one achievement' do
     before do
       @programme = programme
-      presenters = [ActivityPresenter.new(enrolled_achievement), ActivityPresenter.new(nil)]
+      presenters = [AchievementPresenter.new(enrolled_achievement), AchievementPresenter.new(nil)]
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
@@ -54,7 +54,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has started two achievements' do
     before do
-      presenters = two_enrolled_achievements.map { |a| ActivityPresenter.new(a) }
+      presenters = two_enrolled_achievements.map { |a| AchievementPresenter.new(a) }
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
@@ -75,7 +75,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has finished one achievement' do
     before do
-      presenters = [ActivityPresenter.new(complete_achievement), ActivityPresenter.new(enrolled_achievement)]
+      presenters = [AchievementPresenter.new(complete_achievement), AchievementPresenter.new(enrolled_achievement)]
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
@@ -98,7 +98,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has finished both achievements' do
     before do
-      presenters = two_complete_achievements.map { |a| ActivityPresenter.new(a) }
+      presenters = two_complete_achievements.map { |a| AchievementPresenter.new(a) }
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
 
