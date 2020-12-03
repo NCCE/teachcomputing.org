@@ -8,15 +8,29 @@ RSpec.describe ClearAchievementAttachmentJob, type: :job do
   let(:achievement) { create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id, programme_id: progamme.id, user_id: user.id) }
 
   describe '#perform' do
-    before do
-      enrolment.transition_to(:complete)
-      achievement
-      ClearAchievementAttachmentJob.perform_now(enrolment)
+    context 'when the enrolment is in a state of complete' do
+      before do
+        enrolment.transition_to(:complete)
+        achievement
+        ClearAchievementAttachmentJob.perform_now(enrolment)
+      end
+
+      it 'clears the attachment for the achievement' do
+        achievement.reload
+        expect(achievement.supporting_evidence.attached?).to eq false
+      end
     end
 
-    it 'clears the attachment for the achievement' do
-      achievement.reload
-      expect(achievement.supporting_evidence.attached?).to eq false
+    context 'when the enrolment is not in a state of complete' do
+      before do
+        achievement
+        ClearAchievementAttachmentJob.perform_now(enrolment)
+      end
+
+      it 'does not clear the attachment for the achievement' do
+        achievement.reload
+        expect(achievement.supporting_evidence.attached?).to eq true
+      end
     end
   end
 end
