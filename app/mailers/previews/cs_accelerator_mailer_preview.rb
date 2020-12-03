@@ -11,6 +11,10 @@ class CsAcceleratorMailerPreview < ActionMailer::Preview
     CsAcceleratorMailer.with(user: User.first).new_assessment_eligibility
   end
 
+  def manual_enrolled_welcome
+    CsAcceleratorMailer.with(user: User.first).manual_enrolled_welcome
+  end
+
   def non_enrolled_csa_user
     CsAcceleratorMailer.with(user: User.first).non_enrolled_csa_user
   end

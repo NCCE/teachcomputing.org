@@ -6,7 +6,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
-  after_commit :schedule_get_started_prompt, on: :create
+  after_commit :schedule_welcome_email, on: :create
   before_create :set_eligible_achievements_for_programme
 
   def self.initial_state
@@ -41,7 +41,13 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private
 
-    def schedule_get_started_prompt
+  def schedule_welcome_email
+    case programme.slug
+    when 'secondary-certificate'
+      SecondaryMailer.with(user: user).welcome.deliver_now
+    when 'cs-accelerator'
       ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(user.id, programme.id)
+      CsAcceleratorMailer.with(user: user).manual_enrolled_welcome.deliver_now
     end
+  end
 end
