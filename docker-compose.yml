@@ -48,7 +48,6 @@ services:
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
-      - USER_ACHIEVEMENTS_API_SECRET=${DEV_PASS}
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     networks:

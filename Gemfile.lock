@@ -367,6 +367,7 @@ GEM
     rspec-expectations (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
+    rspec-json_expectations (2.2.0)
     rspec-mocks (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
@@ -554,6 +555,7 @@ DEPENDENCIES
   redis-rails (~> 5.0.2)
   reek
   rest-client (~> 2.0.2)
+  rspec-json_expectations
   rspec-mocks
   rspec-rails (~> 4.0)
   rspec_junit_formatter (~> 0.4.1)

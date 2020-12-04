@@ -14,6 +14,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
+require "rspec/json_expectations"
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -26,7 +27,7 @@ end
 
 require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
-Capybara.default_driver = :selenium
+Capybara.default_driver = :chrome_headless
 Capybara.register_driver :chrome_headless do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
@@ -39,6 +40,8 @@ Capybara.register_driver :chrome_headless do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 Capybara.javascript_driver = :chrome_headless
+
+WebMock.disable_net_connect!(:allow_localhost => true)
 
 VCR.configure do |config|
   config.default_cassette_options = { record: :new_episodes }
@@ -57,7 +60,7 @@ RSpec.configure do |config|
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
 
-  config.before(:each, type: :system) do
-    driven_by :chrome_headless
-  end
+  # config.before(:each, type: :system) do
+  #   driven_by :chrome_headless
+  # end
 end

@@ -84,6 +84,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
   gem 'vcr'
+  gem 'rspec-json_expectations'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
