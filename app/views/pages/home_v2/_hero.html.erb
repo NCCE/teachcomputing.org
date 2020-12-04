@@ -1,9 +1,9 @@
 <div class="temp">
 	<div class="image-temp">
 		<picture>
-			<source srcset="/images/hero/hero-lg.svg"
+			<source srcset="/images/hero/hero-lg.jpg"
 							media="(min-width: 800px)">
-			<img src="/images/hero/hero-sm.svg" alt="" />
+			<img src="/images/hero/hero-sm.jpg" alt="" />
 		</picture>
 	</div>
 </div>
@@ -18,9 +18,13 @@
 			<li>community support and more</li>
 		</ul>
 		<div class="temp--buttons">
-			<%= link_to('Join for free', '/', class: 'govuk-button button hero__button--wide govuk-!-margin-right-5')  %>
-			<%= link_to 'About us', '/', class: 'govuk-button button button--inverted button--copy-mob' %>
-			<%= link_to 'Learn more about us', '/', class: 'govuk-button button button--inverted button--copy-desk' %>
+			<% if current_user %>
+				<%= link_to('View dashboard', dashboard_path, class: 'govuk-button button hero__button--wide govuk-!-margin-right-5 button--copy-desk')  %>
+			<% else %>
+				<%= link_to('Join for free', auth_url, class: 'govuk-button button hero__button--wide govuk-!-margin-right-5')  %>
+			<% end %>
+			<%= link_to 'About us', about_path, class: 'govuk-button button button--inverted button--copy-mob' %>
+			<%= link_to 'Learn more about us', about_path, class: 'govuk-button button button--inverted button--copy-desk' %>
 		</div>
 	</div>
 </div>
