@@ -19,6 +19,8 @@ class Achievement < ApplicationRecord
     where(programme_id: programme.id)
   }
 
+  scope :with_attachments, -> { joins(:activity).where(activities: { uploadable: true }) }
+
   scope :with_category, lambda { |category|
     joins(:activity).where(activities: { category: category })
   }
