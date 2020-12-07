@@ -1,9 +1,12 @@
-<% if programme.user_completed?(current_user) %>
-  <%= link_to 'View certificate', programme.path, class: 'govuk-button button button--full-width' %>
-<% elsif programme.user_enrolled?(current_user) %>
-	<%= link_to 'Check progress', programme.path, class: 'govuk-button button button--full-width' %>
+<% if programme.user_enrolled?(current_user) %>
+  <% case  current_user.programme_enrolment_state(programme.id) %>
+    <% when 'enrolled' || 'pending' %>
+      <%= link_to 'Check progress', programme.path, class: 'govuk-button button button--full-width' %>
+    <% when 'complete' %>
+      <%= link_to 'View certificate', programme.path, class: 'govuk-button button button--full-width' %>
+    <% end %>
 <% else %>
-  <%= link_to_if programme.secondary_certificate?, 'Find out more', secondary_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' do %>
+	<%= link_to_if programme.secondary_certificate?, 'Find out more', secondary_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' do %>
     <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
   <% end %>
 <% end %>
