@@ -71,4 +71,11 @@ RSpec.describe Programmes::SecondaryCertificate do
         .to eq('/certificate/secondary-certificate')
     end
   end
+
+  describe '#programme_title' do
+    it 'returns correct title' do
+      expect(secondary_certificate.programme_title)
+        .to eq('Secondary Computing Teaching')
+    end
+  end
 end
