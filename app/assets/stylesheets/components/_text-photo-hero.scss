@@ -92,43 +92,28 @@
 //Temporary hero styles
 
 .image-temp {
+
+	@include govuk-media-query($from: tablet) {
+    display: block;
+		height: auto;
+    overflow: hidden;
+    position: relative;
+	}
+
 	img {
-		// width: 100%;
-    // height: auto;
-
-		// @include govuk-media-query($from: tablet) {
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-		// 	width: 100%;
-		// 	object-position: center;
-		// 	object-fit: contain;
-		// }
-
-
-		// object-position: center top;
-		object-fit: fill;
-
 		width: 100%;
-		max-height: 100%;
-	}
 
-	@include govuk-media-query($from: tablet) {
-		// width: auto;
-    // height: 500px;
-    // display: block;
-    // position: relative;
-    // overflow: hidden;
-		height: 30rem;
-	}
+		@include govuk-media-query($from: tablet) {
+			display: block;
+			object-fit: fill;
+    	margin: 0 auto 3.75rem;
+			max-height: 100%;
+			max-width: 1100px;
+		}
 
-	@include govuk-media-query($from: tablet) {
-		// width: auto;
-    // height: 500px;
-    // display: block;
-    // position: relative;
-    // overflow: hidden;
-		height: 40rem;
+		@include govuk-media-query($from: desktop) {
+    	margin: 0 auto;
+		}
 	}
 
 }
@@ -140,11 +125,12 @@
 	@include govuk-media-query($from: tablet) {
 		padding: 1.75rem 1.5rem 3rem 1.5rem;
 		position: absolute;
-		top: 50%;
+		top: 55%;
 	}
 }
 
 .hero-heading--home-temp {
+	font-size: 2rem !important;
 	@include govuk-media-query($from: tablet) {
 		font-size: 2.5rem !important;
 		margin-bottom: 10px !important;
