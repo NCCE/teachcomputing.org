@@ -1,5 +1,5 @@
 <% if programme.user_enrolled?(current_user) %>
-  <% case  current_user.programme_enrolment_state(programme.id) %>
+  <% case current_user.programme_enrolment_state(programme.id) %>
     <% when 'enrolled' || 'pending' %>
       <%= link_to 'Check progress', programme.path, class: 'govuk-button button button--full-width' %>
     <% when 'complete' %>
