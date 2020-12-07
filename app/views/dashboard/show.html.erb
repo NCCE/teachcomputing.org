@@ -10,9 +10,9 @@
 			</div>
 			<h2 class="govuk-heading-m govuk-!-margin-bottom-6">Certificates</h2>
 				<div class="certification__container">
-					<%= render 'dashboard/certificates/primary' %>
-					<%= render 'dashboard/certificates/cs-accelerator' %>
-					<%= render 'dashboard/certificates/secondary' if FeatureFlagService.new.flags[:secondary_certificate_enabled]  %>
+					<%= render 'dashboard/certificates/primary', programme: Programme.primary_certificate %>
+					<%= render 'dashboard/certificates/cs-accelerator', programme: Programme.cs_accelerator %>
+					<%= render 'dashboard/certificates/secondary', programme: Programme.secondary_certificate if FeatureFlagService.new.flags[:secondary_certificate_enabled] %>
 				</div>
 			<%= render 'dashboard/courses' %>
 		</div>
