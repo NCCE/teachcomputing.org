@@ -1,7 +1,9 @@
-<% if programme.user_enrolled?(current_user) %>
+<% if programme.user_completed?(current_user) %>
+  <%= link_to 'View certificate', programme.path, class: 'govuk-button button button--full-width' %>
+<% elsif programme.user_enrolled?(current_user) %>
 	<%= link_to 'Check progress', programme.path, class: 'govuk-button button button--full-width' %>
-<% elsif programme.user_completed?(current_user) %>
-	<%= link_to 'View certificate', programme.path, class: 'govuk-button button button--full-width' %>
 <% else %>
-  <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
+  <%= link_to_if programme.secondary_certificate?, 'Find out more', secondary_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' do %>
+    <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
+  <% end %>
 <% end %>
