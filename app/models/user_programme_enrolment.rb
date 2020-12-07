@@ -6,7 +6,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
-  after_commit :schedule_kick_off_email, on: :create
+  after_commit :schedule_kick_off_emails, on: :create
   before_create :set_eligible_achievements_for_programme
 
   def self.initial_state
@@ -41,7 +41,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private
 
-  def schedule_kick_off_email
+  def schedule_kick_off_emails
     KickOffEmailsJob.perform_later(user.id, programme.id)
   end
 end

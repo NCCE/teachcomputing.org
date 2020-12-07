@@ -57,7 +57,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   end
 
   describe '#after_commit callbacks' do
-    describe '#schedule_kick_off_email' do
+    describe '#schedule_kick_off_emails' do
       context 'when Secondary certificate' do
         it 'sends SecondaryMailer' do
           expect do
