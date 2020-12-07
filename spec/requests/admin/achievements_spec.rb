@@ -35,7 +35,7 @@ RSpec.describe Admin::AchievementsController do
         post "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
       end
 
-      it 'returns 201 status' do
+      it 'returns 201  status' do
         expect(response.status).to eq 201
       end
 

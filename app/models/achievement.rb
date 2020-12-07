@@ -19,9 +19,13 @@ class Achievement < ApplicationRecord
     where(programme_id: programme.id)
   }
 
+  scope :with_attachments, -> { joins(:activity).where(activities: { uploadable: true }) }
+
   scope :with_category, lambda { |category|
     joins(:activity).where(activities: { category: category })
   }
+
+  scope :with_courses, -> { joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] }) }
 
   scope :with_credit, lambda { |credit|
     joins(:activity).where(activities: { credit: credit })
@@ -57,7 +61,7 @@ class Achievement < ApplicationRecord
   def update_state_for_online_activity(progress = 0, left_at = nil)
     return if current_state == :complete.to_s
 
-    metadata = { progress: progress }
+    metadata = { progress: progress.floor }
 
     if left_at.present?
       return set_to_dropped(left_at: left_at) unless progress >= 60

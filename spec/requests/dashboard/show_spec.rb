@@ -7,23 +7,19 @@ RSpec.describe DashboardController do
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
-  let(:create_programme) { create(:programme, slug: 'cs-accelerator') }
-
   describe '#show' do
     describe 'while logged in' do
       before do
-        create_programme
+				create(:primary_certificate)
+				create(:secondary_certificate)
+        create(:cs_accelerator)
         [diagnostic_achievement, complete_achievements, enrolled_achievement]
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end
 
       it 'assigns the users complete achievements' do
-        expect(assigns(:achievements).count).to eq 3
-      end
-
-      it 'does not assign achievements in the state of enrolled' do
-        expect(assigns(:achievements)).not_to include enrolled_achievement
+        expect(assigns(:achievements).count).to eq 4
       end
 
       it 'does not include diagnostic achievement in assigned achievements' do
