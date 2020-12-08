@@ -7,7 +7,7 @@ class AssessmentEligibilityJob < ApplicationJob
 
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
-    return if enrolment.nil? || enrolment.current_state == :complete.to_s
+    return if enrolment.nil? || enrolment.in_state?(:complete, :unenrolled)
 
     return unless programme.enough_activites_for_test?(user)
 
