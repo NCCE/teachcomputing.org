@@ -46,6 +46,8 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'rspec_junit_formatter', '~> 0.4.1'
 gem 'pretender', '~> 0.3.4'
+# must match the version used to generate the schema
+gem 'graphql', '<= 1.10.10'
 
 group :development, :test do
   gem 'brakeman'
@@ -59,17 +61,18 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'reek'
   gem 'rspec-mocks'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'webmock'
+  gem 'solargraph'
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'debase', '~> 0.2.3'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'ruby-debug-ide'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -77,14 +80,13 @@ end
 
 group :test do
   gem 'axe-matchers', '>= 2.5.0', require: false
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '~> 3.32'
   gem 'rails-controller-testing'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.142.7'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
-  # Don't load webdrivers if ENV_TYPE is 'development'
   gem 'vcr'
-  gem 'webdrivers', '~> 4.0', require: ENV['ENV_TYPE'] != 'development'
+  gem 'rspec-json_expectations'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

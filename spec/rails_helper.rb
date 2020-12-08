@@ -14,6 +14,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
+require "rspec/json_expectations"
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -26,37 +27,27 @@ end
 
 require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
-Capybara.default_driver = :selenium
-
-# This is necessary to get chrome to run headless in the container
-Capybara.register_driver :local_chrome_headless do |app|
+Capybara.default_driver = :chrome_headless
+Capybara.register_driver :chrome_headless do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument('--headless')
   options.add_argument('--no-sandbox')
   options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--disable-gpu')
   options.add_argument('--window-size=1400,1400')
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+Capybara.javascript_driver = :chrome_headless
 
-Capybara.javascript_driver = :local_chrome_headless
-
-WebMock.disable_net_connect!(allow_localhost: true, allow: /chromedriver/)
-
-module CachingHelpers
-  def file_caching_path
-    path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
-    FileUtils.mkdir_p(path)
-
-    path
-  end
-end
+WebMock.disable_net_connect!(:allow_localhost => true)
 
 VCR.configure do |config|
   config.default_cassette_options = { record: :new_episodes }
   config.cassette_library_dir = 'spec/vcr'
   config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = true
 end
 
 RSpec.configure do |config|
@@ -69,13 +60,7 @@ RSpec.configure do |config|
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
 
-  VCR.turn_off! # Turn it on selectively
-
   config.before(:each, type: :system) do
-    if ENV['ENV_TYPE'] == 'development'
-      driven_by :local_chrome_headless
-    else
-      driven_by :selenium_chrome_headless
-    end
+    driven_by :chrome_headless
   end
 end
