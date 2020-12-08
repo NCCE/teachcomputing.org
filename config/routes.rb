@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home', action: :home
-  get '/temp-homepage', to: 'pages#page', as: :homepage_development, defaults: { page_slug: 'home_v2/index' }
+  get '/temp-homepage', to: 'pages#home_v2'
 
   resources :achievements, only: %i[create destroy]
 
@@ -46,6 +46,12 @@ Rails.application.routes.draw do
       get '/diagnostic/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+    end
+
+    namespace 'cs_accelerator' do
+      resource 'auto_enrolment', only: [] do
+        get '/unenroll', action: :destroy
+      end
     end
   end
 

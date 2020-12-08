@@ -4,14 +4,6 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, context, id, rating
   let(:vcr_id_base) { "curriculum/ratings" }
   let(:user) { create(:user, stem_achiever_contact_no: 'achieverid') }
 
-  before(:each) do
-    VCR.turn_on!
-  end
-
-  after(:each) do
-    VCR.turn_off!
-  end
-
   describe 'GET #rate' do
     before do
       allow_any_instance_of(AuthenticationHelper)
