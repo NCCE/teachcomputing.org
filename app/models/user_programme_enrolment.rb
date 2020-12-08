@@ -42,6 +42,6 @@ class UserProgrammeEnrolment < ApplicationRecord
   private
 
   def schedule_kick_off_emails
-    KickOffEmailsJob.perform_later(user.id, programme.id)
+    KickOffEmailsJob.perform_later(id)
   end
 end
