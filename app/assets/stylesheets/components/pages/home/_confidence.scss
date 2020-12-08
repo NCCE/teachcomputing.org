@@ -9,17 +9,6 @@
   }
 }
 
-.ncce-confidence__heading {
-  padding: 8px 0;
-  @include govuk-media-query($from: tablet) {
-    padding: 16px 0;
-    text-align: center;
-  }
-  @include govuk-media-query($from: desktop) {
-    padding: 14px 0 24px;
-  }
-}
-
 .ncce-confidence__panel {
   @include govuk-media-query($from: tablet) {
     width: 95%;

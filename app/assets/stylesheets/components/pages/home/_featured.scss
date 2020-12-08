@@ -14,16 +14,6 @@
   }
 }
 
-.ncce-feat__title {
-  margin-bottom: 26px;
-  @include govuk-media-query($from: tablet) {
-    text-align: center;
-  }
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: 40px;
-  }
-}
-
 .ncce-feat__panel-container {
   border-top: 2px solid $grey;
   @include govuk-media-query($from: tablet) {
