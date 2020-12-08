@@ -54,12 +54,10 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   end
 
   describe '#after_commit callbacks' do
-    describe '#schedule_kick_off_emails' do
-      it 'schedules KickOffEmailsJob' do
-        expect do
-          cs_accelerator_enrolment
-        end.to have_enqueued_job(KickOffEmailsJob).with(cs_accelerator_enrolment.id)
-      end
+    it 'queues CompleteCertificateEmailJob job' do
+      expect do
+        create(:user_programme_enrolment)
+      end.to have_enqueued_job(KickOffEmailsJob)
     end
   end
 
