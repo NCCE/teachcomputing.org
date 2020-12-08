@@ -1,3 +1,10 @@
+.ncce-feat {
+  padding-bottom: 30px;
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 40px;
+  }
+}
+
 .ncce-feat__grid {
   display: grid;
   grid-template-columns: auto;
