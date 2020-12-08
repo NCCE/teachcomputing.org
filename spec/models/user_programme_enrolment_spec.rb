@@ -34,7 +34,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     context 'when complete' do
       it 'returns the date of transition' do
         cs_accelerator_enrolment.transition_to(:complete)
-        expect(cs_accelerator_enrolment.created_at?).to_not eq nil
+        expect(cs_accelerator_enrolment.created_at?).not_to eq nil
       end
     end
   end
