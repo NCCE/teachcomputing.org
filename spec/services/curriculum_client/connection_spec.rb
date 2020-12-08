@@ -27,13 +27,12 @@ RSpec.describe CurriculumClient::Connection do
       stub_a_valid_schema_request_strict
       described_class.connect
       cached_schema = Rails.cache.fetch('curriculum_schema')
-      expect(JSON.parse(cached_schema)).to eq(JSON.parse(schema))
+      expect(JSON.parse(cached_schema)).to match(JSON.parse(schema))
     end
 
     it 'can be retrieved from the cache' do
       cache.write('curriculum_schema', schema)
       client = described_class.connect
-      # The strange parsing here is to match the formatting
       expect(JSON.parse(client.schema.to_json)).to eq(JSON.parse(schema))
     end
   end
