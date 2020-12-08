@@ -2,6 +2,7 @@ class CsAcceleratorMailer < ApplicationMailer
   CSA_COMPLETED_EMAIL = 'csa_completed_email'.freeze
   CSA_ASSESSMENT_ELIGIBILITY_EMAIL = 'csa_assessment_eligibility_email'.freeze
   CSA_MANUAL_ENROLLED_WELCOME = 'csa_manual_enrolled_welcome_email'.freeze
+  CSA_AUTO_ENROLLED_WELCOME = 'csa_auto_enrolled_welcome_email'.freeze
 
   def completed
     @user = params[:user]
@@ -33,5 +34,12 @@ class CsAcceleratorMailer < ApplicationMailer
     @subject = 'Welcome to the Computer Science Accelerator'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
+  end
+
+  def auto_enrolled_welcome
+    @user = params[:user]
+    @subject = 'Kick-start your CPD with our Computer Science Accelerator programme'
+
+    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
   end
 end

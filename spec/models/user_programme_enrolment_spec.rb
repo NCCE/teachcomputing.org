@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 RSpec.describe UserProgrammeEnrolment, type: :model do
@@ -7,23 +8,20 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
 
   describe 'associations' do
-    it 'belongs to programme' do
-      expect(cs_accelerator_enrolment).to belong_to(:programme)
-    end
+    it { is_expected.to belong_to(:programme) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:user_programme_enrolment_transitions) }
+  end
 
-    it 'belongs to user' do
-      expect(cs_accelerator_enrolment).to belong_to(:user)
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:user) }
+    it { is_expected.to validate_presence_of(:programme) }
 
-    it 'has many user programme enrolment transitions' do
-      expect(cs_accelerator_enrolment).to have_many(:user_programme_enrolment_transitions)
-    end
-
-    it 'only allows a unique enrolment per programme/user' do
-      expect do
-        create(:user_programme_enrolment, user: user, programme: cs_accelerator)
-        create(:user_programme_enrolment, user: user, programme: cs_accelerator)
-      end.to raise_error(ActiveRecord::RecordNotUnique)
+    it 'ensures user can only be enrolled on a programme once' do
+      create(:user_programme_enrolment, user: user, programme: programme)
+      enrolment = build(:user_programme_enrolment, user: user, programme: programme)
+      expect(enrolment.valid?).to eq(false)
+      expect(enrolment.errors.messages[:user]).to eq(['has already been taken'])
     end
   end
 

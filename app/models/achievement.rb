@@ -13,6 +13,8 @@ class Achievement < ApplicationRecord
   before_create :fill_in_programme_id,
                 unless: proc { |achievement| achievement.programme_id }
 
+  after_save :queue_auto_enrolment
+
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
   scope :for_programme, lambda { |programme|
@@ -117,24 +119,24 @@ class Achievement < ApplicationRecord
 
       return if programmes.empty?
 
-      find_matching_programme(programmes)
+      self.programme_id = find_matching_programme_id(programmes)
     end
 
-    def find_matching_programme(programmes)
-      if programmes.size == 1
-        self.programme_id = programmes.first.id
-      else
-        programme_ids = programmes.pluck(:id)
-        user_programme_ids = user.user_programme_enrolments
-                                 .order(created_at: :desc)
-                                 .pluck(:programme_id)
+    def find_matching_programme_id(programmes)
+      return programmes.first.id if programmes.size == 1
 
-        user_programme_ids.each do |user_programme_id|
-          if programme_ids.include?(user_programme_id)
-            self.programme_id = user_programme_id
-            break
-          end
-        end
-      end
+      user_programme_ids = user.user_programme_enrolments
+                               .where(programme_id: programmes.pluck(:id))
+                               .not_in_state(:unenrolled)
+                               .order(created_at: :desc)
+                               .pluck(:programme_id)
+      user_programme_ids.first
+    end
+
+    def queue_auto_enrolment
+      return unless activity.programmes.any?(&:cs_accelerator?)
+      return unless user.csa_auto_enrollable?
+
+      CsAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 end

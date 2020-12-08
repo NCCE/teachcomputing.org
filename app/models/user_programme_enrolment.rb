@@ -9,6 +9,9 @@ class UserProgrammeEnrolment < ApplicationRecord
   after_commit :schedule_kick_off_emails, on: :create
   before_create :set_eligible_achievements_for_programme
 
+  validates :user, :programme, presence: true
+  validates :user, uniqueness: { scope: [:programme] }
+
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
   end
@@ -18,7 +21,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def completed_at?
-    return nil unless current_state == 'complete'
+    return nil unless in_state?(:complete)
 
     last_transition.created_at
   end
@@ -32,7 +35,11 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def state_machine
-    @state_machine ||= StateMachines::UserProgrammeEnrolmentStateMachine.new(self, transition_class: UserProgrammeEnrolmentTransition)
+    @state_machine ||= begin
+                         StateMachines::UserProgrammeEnrolmentStateMachine.new(
+                           self, transition_class: UserProgrammeEnrolmentTransition
+                         )
+                       end
   end
 
   private_class_method :initial_state, :transition_class

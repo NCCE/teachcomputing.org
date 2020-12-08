@@ -4,6 +4,9 @@ class CsAcceleratorMailerPreview < ActionMailer::Preview
   end
 
   def assessment_eligibility
+    SentEmail.where(user_id: User.first.id,
+                    mailer_type: CsAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
+             .destroy_all
     CsAcceleratorMailer.with(user: User.first).assessment_eligibility
   end
 
@@ -14,5 +17,12 @@ class CsAcceleratorMailerPreview < ActionMailer::Preview
   def manual_enrolled_welcome
     SentEmail.where(user_id: User.first.id, mailer_type: CsAcceleratorMailer::CSA_MANUAL_ENROLLED_WELCOME).destroy_all
     CsAcceleratorMailer.with(user: User.first).manual_enrolled_welcome
+  end
+
+  def auto_enrolled_welcome
+    SentEmail.where(user_id: User.first.id,
+                    mailer_type: CsAcceleratorMailer::CSA_AUTO_ENROLLED_WELCOME)
+             .destroy_all
+    CsAcceleratorMailer.with(user: User.first).auto_enrolled_welcome
   end
 end
