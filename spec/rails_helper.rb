@@ -60,7 +60,7 @@ RSpec.configure do |config|
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
 
-  # config.before(:each, type: :system) do
-  #   driven_by :chrome_headless
-  # end
+  config.before(:each, type: :system) do
+    driven_by :chrome_headless
+  end
 end
