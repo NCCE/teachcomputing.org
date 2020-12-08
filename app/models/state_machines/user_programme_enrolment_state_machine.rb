@@ -16,8 +16,7 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   end
 
   after_transition(to: :complete) do |programme_enrolment|
-    CompleteCertificateEmailJob.perform_later(programme_enrolment.user,
-                                              programme_enrolment.programme)
-    ClearAchievementAttachmentJob.perform_later(programme_enrolment)
+    CompleteCertificateEmailJob.perform_later(programme_enrolment.user, programme_enrolment.programme)
+    ClearAchievementAttachmentsJob.perform_later(programme_enrolment)
   end
 end
