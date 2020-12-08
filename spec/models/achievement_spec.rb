@@ -35,18 +35,16 @@ RSpec.describe Achievement, type: :model do
     create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
   end
 
+  describe 'callbacks' do
+    it { is_expected.to callback(:fill_in_programme_id).before(:create) }
+    it { is_expected.to callback(:queue_auto_enrolment).after(:save) }
+  end
+
   describe 'associations' do
-    it 'belongs to activity' do
-      expect(achievement).to belong_to(:activity)
-    end
-
-    it 'belongs to user' do
-      expect(achievement).to belong_to(:user)
-    end
-
-    it 'belongs to programme' do
-      expect(achievement).to belong_to(:programme)
-    end
+    it { is_expected.to belong_to(:activity) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:programme) }
+    it { is_expected.to have_many(:achievement_transitions) }
   end
 
   describe 'validations' do
@@ -81,11 +79,33 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'when activity has a single programme it is used' do
-      expect(achievement_with_programme.programme.id).to eq(programme.id)
+      expect(achievement_with_programme.programme_id).to eq(programme.id)
     end
 
-    it 'when activity has multiple programmes it gets the most recently enrolled one' do
-      expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
+    context 'when activity has multiple programmes' do
+      it 'gets the most recently enrolled one' do
+        expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
+      end
+
+      it 'ignores a programme the user has unenrolled from' do
+        face_to_face_activity = create(:activity, :stem_learning)
+        create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
+        csa_enrolment = create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
+        csa_enrolment.transition_to(:unenrolled)
+
+        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
+        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
+        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
+        expect(achievement.programme_id).to eq(programme.id)
+      end
+
+      it 'does not set id if user not enrolled on any programmes' do
+        face_to_face_activity = create(:activity, :stem_learning)
+        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
+        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
+        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
+        expect(achievement.programme_id).to eq(nil)
+      end
     end
 
     it 'when we update the programme, the id is saved' do
@@ -261,7 +281,7 @@ RSpec.describe Achievement, type: :model do
   describe '#primary_certificate?' do
     context 'when programme is primary certificate' do
       it 'returns true' do
-        programme = build(:primary_certificate_programme)
+        programme = build(:primary_certificate)
         achievement = build(:achievement, programme: programme)
         expect(achievement.primary_certificate?).to eq(true)
       end
@@ -286,7 +306,7 @@ RSpec.describe Achievement, type: :model do
   describe '#cs_accelerator?' do
     context 'when programme is cs accelerator' do
       it 'returns true' do
-        programme = build(:cs_accelerator_programme)
+        programme = build(:cs_accelerator)
         achievement = build(:achievement, programme: programme)
         expect(achievement.cs_accelerator?).to eq(true)
       end
@@ -393,6 +413,87 @@ RSpec.describe Achievement, type: :model do
       achievement = create(:completed_achievement)
       achievement.update_state_for_online_activity(40, DateTime.now.to_s)
       expect(achievement.complete?).to eq(true)
+    end
+  end
+
+  describe '#queue_auto_enrolment' do
+    context 'when course is part of csa' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(:programme_activity, programme: cs_accelerator, activity: activity)
+      end
+
+      it 'queues job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+          .with(achievement_id: achievement.id)
+      end
+
+      context 'when user is enrolled on CsAccelerator' do
+        it 'does not queue job' do
+          create(:user_programme_enrolment,
+                 user: user,
+                 programme: cs_accelerator)
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end
+      end
+    end
+
+    context 'when course is part of csa and another programme' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(
+          :programme_activity,
+          programme: create(:primary_certificate),
+          activity: activity
+        )
+
+        create(
+          :programme_activity,
+          programme: cs_accelerator,
+          activity: activity
+        )
+      end
+
+      it 'queues job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+      end
+
+      context 'when user is enrolled on CsAccelerator' do
+        it 'does not queue job' do
+          create(:user_programme_enrolment,
+                 user: user,
+                 programme: cs_accelerator)
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end
+      end
+    end
+
+    context 'when course is not part of csa' do
+      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+
+      before do
+        create(
+          :programme_activity,
+          programme: create(:primary_certificate),
+          activity: activity
+        )
+      end
+
+      it 'does not queue job' do
+        expect do
+          achievement.reload.run_callbacks(:save)
+        end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+      end
     end
   end
 end

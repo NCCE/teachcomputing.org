@@ -47,6 +47,12 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
+
+    namespace 'cs_accelerator' do
+      resource 'auto_enrolment', only: [] do
+        get '/unenroll', action: :destroy
+      end
+    end
   end
 
   namespace 'class_marker' do

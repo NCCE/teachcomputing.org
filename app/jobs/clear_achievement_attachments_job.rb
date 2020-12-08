@@ -1,4 +1,4 @@
-class ClearAchievementAttachmentJob < ApplicationJob
+class ClearAchievementAttachmentsJob < ApplicationJob
   queue_as :default
 
   def perform(enrolment)
