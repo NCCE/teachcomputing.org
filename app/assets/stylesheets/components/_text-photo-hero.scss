@@ -139,7 +139,7 @@
 }
 
 .temp--buttons {
-	display: inline;
+	display: flex;
 
 	@include govuk-media-query($from: tablet) {
   	margin-bottom: 1.75rem;
