@@ -68,22 +68,6 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
     end
   end
 
-  describe '#non_enrolled_csa_user' do
-    it 'renders the headers' do
-      expect(non_enrolled_csa_user_mail.subject).to include(non_enrolled_csa_user_subject)
-      expect(non_enrolled_csa_user_mail.to).to eq([user.email])
-      expect(non_enrolled_csa_user_mail.from).to eq(['noreply@teachcomputing.org'])
-    end
-
-    it 'renders the body' do
-      expect(non_enrolled_csa_user_mail.body.encoded).to include(user.first_name.to_s)
-    end
-
-    it 'includes the subject in the email' do
-      expect(non_enrolled_csa_user_mail.body.encoded).to include("<title>#{non_enrolled_csa_user_subject}</title>")
-    end
-  end
-
   describe '#auto_enrolled_welcome' do
     let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
     let(:mail_subject) { 'Kick-start your CPD with our Computer Science Accelerator programme' }

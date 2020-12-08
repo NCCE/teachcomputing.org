@@ -16,8 +16,6 @@ module CsAccelerator
           auto_enrolled: true
         )
       end
-
-      schedule_email(user)
     end
 
     private
@@ -27,19 +25,6 @@ module CsAccelerator
         non_csa_programmes.any? do |programme|
           programme.user_enrolled?(user) && !programme.user_completed?(user)
         end
-      end
-
-      def schedule_email(user)
-        now = Time.now
-        delay = if (9 - now.hour).negative?
-                  0
-                else
-                  9 - now.hour
-                end
-
-        CsAcceleratorMailer.with(user: user)
-                           .auto_enrolled_welcome
-                           .deliver_later(wait: delay.hours)
       end
   end
 end

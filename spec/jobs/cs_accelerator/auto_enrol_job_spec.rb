@@ -23,12 +23,6 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
       expect(UserProgrammeEnrolment.last.auto_enrolled).to eq(true)
     end
 
-    it 'queues email' do
-      expect { enrol_job }
-        .to have_enqueued_job(ActionMailer::Parameterized::DeliveryJob)
-        .with('CsAcceleratorMailer', 'auto_enrolled_welcome', 'deliver_now', { user: user })
-    end
-
     context 'when user is enrolled in csa' do
       before do
         create(:user_programme_enrolment, user: user, programme: cs_accelerator)
@@ -37,11 +31,6 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
       it 'does not enrol user' do
         expect { enrol_job }
           .not_to change(UserProgrammeEnrolment, :count)
-      end
-
-      it 'does not queue email' do
-        expect { enrol_job }
-          .not_to have_enqueued_job(ActionMailer::Parameterized::DeliveryJob)
       end
     end
 
@@ -62,11 +51,6 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
             expect { enrol_job }
               .not_to change(UserProgrammeEnrolment, :count)
           end
-
-          it 'does not queue email' do
-            expect { enrol_job }
-              .not_to have_enqueued_job(ActionMailer::Parameterized::DeliveryJob)
-          end
         end
 
         context 'when non csa enrolment is complete' do
@@ -80,12 +64,6 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
               .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
               .by(1)
           end
-
-          it 'queues email' do
-            expect { enrol_job }
-              .to have_enqueued_job(ActionMailer::Parameterized::DeliveryJob)
-              .with('CsAcceleratorMailer', 'auto_enrolled_welcome', 'deliver_now', { user: user })
-          end
         end
       end
 
@@ -94,12 +72,6 @@ RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
           expect { enrol_job }
             .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
             .by(1)
-        end
-
-        it 'queues email' do
-          expect { enrol_job }
-            .to have_enqueued_job(ActionMailer::Parameterized::DeliveryJob)
-            .with('CsAcceleratorMailer', 'auto_enrolled_welcome', 'deliver_now', { user: user })
         end
       end
     end
