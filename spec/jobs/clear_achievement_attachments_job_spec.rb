@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ClearAchievementAttachmentJob, type: :job do
+RSpec.describe ClearAchievementAttachmentsJob, type: :job do
   let(:user) { create(:user) }
   let(:progamme) { create(:secondary_certificate) }
   let(:enrolment) { create(:user_programme_enrolment, programme_id: progamme.id, user_id: user.id) }
@@ -12,7 +12,7 @@ RSpec.describe ClearAchievementAttachmentJob, type: :job do
       before do
         enrolment.transition_to(:complete)
         achievement
-        ClearAchievementAttachmentJob.perform_now(enrolment)
+        ClearAchievementAttachmentsJob.perform_now(enrolment)
       end
 
       it 'clears the attachment for the achievement' do
@@ -24,7 +24,7 @@ RSpec.describe ClearAchievementAttachmentJob, type: :job do
     context 'when the enrolment is not in a state of complete' do
       before do
         achievement
-        ClearAchievementAttachmentJob.perform_now(enrolment)
+        ClearAchievementAttachmentsJob.perform_now(enrolment)
       end
 
       it 'does not clear the attachment for the achievement' do
