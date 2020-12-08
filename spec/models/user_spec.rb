@@ -117,20 +117,61 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#programme_enrolment_state' do
-		context 'when user is enrolled to the programme' do
-			it 'returns programme enrolment state' do
-				programme = create(:programme)
-				enrolment = create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
-				expect(user.programme_enrolment_state(programme.id)).to eq ('enrolled')
-    	end
-		end
+  describe '#csa_auto_enrollable?' do
+    context 'when user is enrolled on CSA programme' do
+      let!(:enrolment) do
+        create(:user_programme_enrolment,
+               user: user,
+               programme: create(:cs_accelerator))
+      end
 
-		context 'when user is not enrolled to the programme' do
-			it 'returns not enrolled' do
-				programme = create(:programme)
-				expect(user.programme_enrolment_state(programme.id)).to eq ('Not enrolled')
-			end
-		end
+      it 'returns false' do
+        expect(user.csa_auto_enrollable?).to eq(false)
+      end
+
+      context 'when user has unenrolled' do
+        it 'returns false' do
+          enrolment.transition_to(:unenrolled)
+          expect(user.csa_auto_enrollable?).to eq(false)
+        end
+      end
+
+      context 'when user has completed' do
+        it 'returns false' do
+          enrolment.transition_to(:complete)
+          expect(user.csa_auto_enrollable?).to eq(false)
+        end
+      end
+
+      context 'when user enrolment is in pending state' do
+        it 'returns false' do
+          enrolment.transition_to(:pending)
+          expect(user.csa_auto_enrollable?).to eq(false)
+        end
+      end
+    end
+
+    context 'when user is not enrolled on CSA programme' do
+      it 'returns true' do
+        expect(user.csa_auto_enrollable?).to eq(true)
+      end
+    end
+  end
+
+  describe '#programme_enrolment_state' do
+    context 'when user is enrolled to the programme' do
+      it 'returns programme enrolment state' do
+        programme = create(:programme)
+        create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
+        expect(user.programme_enrolment_state(programme.id)).to eq 'enrolled'
+      end
+    end
+
+    context 'when user is not enrolled to the programme' do
+      it 'returns not enrolled' do
+        programme = create(:programme)
+        expect(user.programme_enrolment_state(programme.id)).to eq 'Not enrolled'
+      end
+    end
   end
 end

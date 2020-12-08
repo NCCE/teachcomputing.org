@@ -40,7 +40,16 @@ class User < ApplicationRecord
   end
 
   def enrolments
-    self.user_programme_enrolments
+    user_programme_enrolments
+  end
+
+  def csa_auto_enrollable?
+    csa_enrolment = user_programme_enrolments
+                    .find_by(programme: Programme.cs_accelerator)
+
+    return false if csa_enrolment
+
+    true
   end
 
 	def programme_enrolment_state(programme_id)

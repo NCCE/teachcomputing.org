@@ -5,14 +5,6 @@ RSpec.describe FutureLearn::Request do
   let(:endpoint) { 'partners/organisation_memberships' }
   let(:user_id) { '87e2b457-4bcd-4630-970e-01672b4e0365' }
 
-  before(:each) do
-    VCR.turn_on!
-  end
-
-  after(:each) do
-    VCR.turn_off!
-  end
-
   describe 'with an invalid jwt' do
     before do
       stub_request(:get, "#{ENV.fetch('FL_PARTNERS_URL')}/#{endpoint}/#{user_id}")
