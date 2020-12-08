@@ -18,15 +18,14 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it { is_expected.to validate_presence_of(:programme) }
 
     it 'ensures user can only be enrolled on a programme once' do
-      create(:user_programme_enrolment, user: user, programme: programme)
-      enrolment = build(:user_programme_enrolment, user: user, programme: programme)
+      create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+      enrolment = build(:user_programme_enrolment, user: user, programme: cs_accelerator)
       expect(enrolment.valid?).to eq(false)
       expect(enrolment.errors.messages[:user]).to eq(['has already been taken'])
     end
   end
 
   describe '#completed_at?' do
-
     it 'returns nil' do
       expect(cs_accelerator_enrolment.completed_at?).to eq nil
     end
@@ -56,12 +55,10 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
 
   describe '#after_commit callbacks' do
     describe '#schedule_kick_off_emails' do
-      context 'when Secondary certificate' do
-        it 'sends SecondaryMailer' do
-          expect do
-            cs_accelerator_enrolment
-          end.to have_enqueued_job(KickOffEmailsJob).with(user.id, cs_accelerator.id)
-        end
+      it 'schedules KickOffEmailsJob' do
+        expect do
+          cs_accelerator_enrolment
+        end.to have_enqueued_job(KickOffEmailsJob).with(cs_accelerator_enrolment.id)
       end
     end
   end

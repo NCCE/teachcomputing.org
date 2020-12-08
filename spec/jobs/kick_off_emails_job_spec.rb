@@ -9,20 +9,20 @@ RSpec.describe KickOffEmailsJob, type: :job do
   describe '#perform' do
     context 'when the programme is cs accelerator' do
       it 'sends an email' do
-        expect { described_class.perform_now(cs_accelerator_enrolment.user.id, cs_accelerator_enrolment.programme.id) }
+        expect { described_class.perform_now(cs_accelerator_enrolment.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
       it 'sends an queues the getting started job' do
         expect do
-          described_class.perform_now(cs_accelerator_enrolment.user.id, cs_accelerator_enrolment.programme.id)
-        end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.user.id, cs_accelerator.id)
+          described_class.perform_now(cs_accelerator_enrolment.id)
+        end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id)
       end
     end
 
     context 'when the programme is secondary' do
       it 'sends an email' do
-        expect { described_class.perform_now(secondary_enrolment.user.id, secondary_enrolment.programme.id) }
+        expect { described_class.perform_now(secondary_enrolment.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
