@@ -42,7 +42,7 @@
           "file": "something_else.somewhere_else"
         }
       ],
-      "teacher_guide": null,
+      "teacher_guide": "https://teachcomputing.org",
       "years": "1-3"
     }
   }
