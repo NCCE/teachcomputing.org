@@ -15,6 +15,12 @@ class PagesController < ApplicationController
     render template: 'pages/home/index'
   end
 
+  def home_v2
+    posts = Ghost.new.get_featured_posts(5)
+    @main_feature, *@featured_posts = posts
+    render template: 'pages/home_v2/index'
+  end
+
   def login
     auth_uri = '/auth/stem'
     auth_uri += "?source_uri=#{params[:source_uri]}" if params[:source_uri].present?

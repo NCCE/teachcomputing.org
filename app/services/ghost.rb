@@ -38,7 +38,7 @@ class Ghost
     }
 
     begin
-      result = Rails.cache.fetch("get_featured_posts-#{Date.today}", expires_in: 10.minutes) do
+      result = Rails.cache.fetch("get_#{how_many}_featured_posts-#{Date.today}", expires_in: 10.minutes) do
         RestClient.get(request, params: params).body
       end
 
