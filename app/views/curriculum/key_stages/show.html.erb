@@ -18,7 +18,8 @@
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
 		</div>
-    <%= render partial: 'tiles', locals: { key_stage: @key_stage } %>
+    <% tiles = @key_stage.curriculum_maps.any? #|| @key_stage.teacher_guide.present? %>
+    <%= render partial: 'tiles', locals: { key_stage: @key_stage } if tiles %>
 		<%= render partial: 'years', locals: { key_stage: @key_stage, years: @key_stage.year_groups } %>
 		<%= render 'curriculum/feedback' %>
 	</div>

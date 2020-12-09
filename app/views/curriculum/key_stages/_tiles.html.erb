@@ -6,6 +6,11 @@
           <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to map.name, generate_download_url(map.file), class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
+      <!--<% unless key_stage.teacher_guide.nil? %>
+        <div class="curriculum__tile">
+          <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to "#{key_stage.short_title} teacher guide", generate_download_url(key_stage.teacher_guide), class: 'govuk-link ncce-link' %></h3>
+        </div>
+      <% end %>-->
 		</div>
 	</div>
 </div>

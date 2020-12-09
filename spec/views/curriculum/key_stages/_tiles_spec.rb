@@ -8,7 +8,7 @@ RSpec.describe('curriculum/key_stages/_tiles', type: :view) do
 		render partial: 'tiles', locals: { key_stage: key_stage }
   end
 
-  it 'shows the expected links' do
+  it 'shows the expected curriculum maps' do
     expect(rendered).to have_link('Map 1', href: 'something.somewhere')
     expect(rendered).to have_link('Map 2', href: 'something_else.somewhere_else')
   end
