@@ -91,7 +91,7 @@
 
 //Temporary hero styles
 
-.image-temp {
+.home-hero__image {
 
 	@include govuk-media-query($from: tablet) {
     display: block;
@@ -120,7 +120,7 @@
 
 }
 
-.text-temp {
+.home-hero__text {
 	background-color: $white;
 	padding: 1.5rem 0.5rem 2rem 0;
 
@@ -140,7 +140,7 @@
 
 }
 
-.temp--buttons {
+.home-hero__buttons {
 	display: flex;
 
 	@include govuk-media-query($from: tablet) {
@@ -148,25 +148,11 @@
 	}
 }
 
-// .button--copy:before {
-// 	content: 'About us';
-// 	line-height: 39px;
-// 	width: 9rem;
-
-// 	@include govuk-media-query($from: desktop) {
-// 		content: 'Learn more about us';
-// 		line-height: 39px;
-//     padding: 1.25rem;
-// 		width: 13rem;
-// 	}
-// }
-
 .button--copy-desk {
 	display: none;
 	@include govuk-media-query($from: desktop) {
   	display: inline;
 	}
-
 }
 
 .button--copy-mob {
@@ -175,15 +161,5 @@
 		@include govuk-media-query($from: desktop) {
   	display: none;
 	}
-
 }
 
-
-.hero__button--wide {
-	display: inline;
-	padding: 0.5rem 1rem;
-
-	@include govuk-media-query($from: desktop) {
-  	padding: 0.75rem 3rem;
-	}
-}

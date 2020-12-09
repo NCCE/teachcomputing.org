@@ -1,14 +1,12 @@
-<div class="temp">
-	<div class="image-temp">
-		<picture>
-			<source srcset="/images/hero/hero-lg2.jpg" media="(min-width: 800px)">
-			<source srcset="/images/hero/hero-md.jpg" media="(min-width: 600px)">
-			<img src="/images/hero/hero-sm2.jpg" alt="A women in front of a computer">
-		</picture>
-	</div>
+<div class="home-hero__image">
+	<picture>
+		<source srcset="/images/hero/hero-lg2.jpg" media="(min-width: 800px)">
+		<source srcset="/images/hero/hero-md.jpg" media="(min-width: 600px)">
+		<img src="/images/hero/hero-sm2.jpg" alt="A women in front of a computer">
+	</picture>
 </div>
 <div class="govuk-width-container">
-	<div class="text-temp">
+	<div class="home-hero__text">
 		<h1 class="govuk-heading-l hero-heading--home-temp">Helping you <br>teach computing</h1>
 		<p class="govuk-body-l govuk-!-margin-bottom-0">We offer teachers:</p>
 		<ul class="govuk-body-l govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
@@ -17,11 +15,11 @@
 			<li>free curriculum teaching resources</li>
 			<li>community support and more</li>
 		</ul>
-		<div class="temp--buttons">
+		<div class="home-hero__buttons">
 			<% if current_user %>
-				<%= link_to('View dashboard', dashboard_path, class: 'govuk-button button hero__button--wide govuk-!-margin-right-5 button--copy-desk')  %>
+				<%= link_to('View dashboard', dashboard_path, class: 'govuk-button button button--wide govuk-!-margin-right-5 button--copy-desk')  %>
 			<% else %>
-				<%= link_to('Join for free', auth_url, class: 'govuk-button button hero__button--wide govuk-!-margin-right-5')  %>
+				<%= link_to('Join for free', auth_url, class: 'govuk-button button button--wide govuk-!-margin-right-5')  %>
 			<% end %>
 			<%= link_to 'About us', about_path, class: 'govuk-button button button--inverted button--copy-mob' %>
 			<%= link_to 'Learn more about us', about_path, class: 'govuk-button button button--inverted button--copy-desk' %>
