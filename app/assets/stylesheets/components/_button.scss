@@ -70,11 +70,15 @@
 }
 
 .button--inverted {
-	background-color: $white;
-	border-color: $deep-cerulean;
-	border-width: 3px;
-	color: $deep-cerulean !important;
-	padding: 0.69rem;
+  background-color: $white;
+  border-color: $deep-cerulean;
+  border-width: 3px;
+  color: $deep-cerulean !important;
+  padding: 0.69rem;
+  &:hover {
+    border-color: $black;
+    color: $white !important;
+  }
 }
 
 .button--aside {
@@ -115,10 +119,10 @@
 }
 
 .button--wide {
-	display: inline;
-	padding: 0.5rem 1rem;
+  display: inline;
+  padding: 0.5rem 1rem;
 
-	@include govuk-media-query($from: desktop) {
-  	padding: 0.75rem 3rem;
-	}
+  @include govuk-media-query($from: desktop) {
+    padding: 0.75rem 3rem;
+  }
 }
