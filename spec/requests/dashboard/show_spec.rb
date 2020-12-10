@@ -19,7 +19,7 @@ RSpec.describe DashboardController do
       end
 
       it 'assigns the users complete achievements' do
-        expect(assigns(:achievements).count).to eq 4
+        expect(assigns(:achievements).count).to eq 3
       end
 
       it 'does not include diagnostic achievement in assigned achievements' do
