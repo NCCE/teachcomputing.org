@@ -1,13 +1,13 @@
 .text-photo-hero {
   display: grid;
   grid-row-gap: 20px;
-  grid-template-areas: "photo" "text";
+  grid-template-areas: 'photo' 'text';
   grid-template-rows: 1fr auto;
   padding: 10px;
   @include govuk-media-query($from: desktop) {
     grid-column-gap: 20px;
     grid-row-gap: 0;
-    grid-template-areas: "text photo";
+    grid-template-areas: 'text photo';
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 10px 10px 10px 30px;
@@ -75,8 +75,8 @@
   .text-photo-hero__block--photo {
     height: 0;
     overflow: hidden;
-    position: relative;
     padding-bottom: 56.25%; /*16:9*/
+    position: relative;
   }
   .text-photo-hero__block--photo iframe,
   .text-photo-hero__block--photo object,
@@ -88,78 +88,3 @@
     width: 100%;
   }
 }
-
-//Temporary hero styles
-
-.home-hero__image {
-
-	@include govuk-media-query($from: tablet) {
-    display: block;
-		height: auto;
-		min-height: 500px;
-    overflow: hidden;
-    position: relative;
-	}
-
-	img {
-		width: 100%;
-
-		@include govuk-media-query($from: tablet) {
-			display: block;
-			object-fit: fill;
-    	margin: 0 auto 3.75rem;
-			max-height: 100%;
-			max-width: 1100px;
-			min-height: 500px;
-		}
-
-		@include govuk-media-query($from: desktop) {
-    	margin: 0 auto;
-		}
-	}
-
-}
-
-.home-hero__text {
-	background-color: $white;
-	padding: 1.5rem 0.5rem 2rem 0;
-
-	@include govuk-media-query($from: tablet) {
-		padding: 1.75rem 1.5rem 3rem 1.5rem;
-		position: absolute;
-		top: 23rem;
-	}
-}
-
-.hero-heading--home-temp {
-	font-size: 2rem !important;
-	@include govuk-media-query($from: tablet) {
-		font-size: 2.5rem !important;
-		margin-bottom: 10px !important;
-	}
-
-}
-
-.home-hero__buttons {
-	display: flex;
-
-	@include govuk-media-query($from: tablet) {
-  	margin-bottom: 1.75rem;
-	}
-}
-
-.button--copy-desk {
-	display: none;
-	@include govuk-media-query($from: desktop) {
-  	display: inline;
-	}
-}
-
-.button--copy-mob {
-	display: inline;
-	padding: 0.5rem 1.5rem;
-		@include govuk-media-query($from: desktop) {
-  	display: none;
-	}
-}
-
