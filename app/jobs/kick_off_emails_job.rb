@@ -1,8 +1,8 @@
 class KickOffEmailsJob < ApplicationJob
   queue_as :default
 
-  def perform(enrolement_id)
-    enrolment = UserProgrammeEnrolment.find(enrolement_id)
+  def perform(enrolment_id)
+    enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
     case enrolment.programme.slug
     when 'secondary-certificate'
