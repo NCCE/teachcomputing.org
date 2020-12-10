@@ -584,3 +584,12 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '952bb189-4239-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'An introduction to teaching robotics using VEXcode VR'
+  activity.credit = 0
+  activity.slug = 'an-introduction-to-teaching-robotics-using-vexcode-vr'
+  activity.stem_course_template_no = '952bb189-4239-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
