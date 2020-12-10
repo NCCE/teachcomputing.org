@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @achievements = current_user.achievements.not_in_state(:dropped)
+    @achievements = current_user.achievements.in_state(:complete)
                                 .with_courses.order('created_at ASC')
     render :show
   end
