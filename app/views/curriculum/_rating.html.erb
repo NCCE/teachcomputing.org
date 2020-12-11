@@ -16,7 +16,7 @@
       <%= form_with(url: comment_path, method: "post", remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
         <%= hidden_field_tag :rating_id, :rating_id, value: '', data: { target: "rating.ratingId" } %>
         <%= text_area_tag :comment, nil, :placeholder => "Tell us more to help us improve the quality of our resources", :class => "govuk-textarea row" %>
-        <%= submit_tag "Submit", :class => 'govuk-button button button--small button--curriculum row' %>
+        <%= submit_tag "Submit", :class => 'govuk-button button button--small button--inline row' %>
       <% end %>
     </div>
     <div class="rating_page" data-target="rating.page">

@@ -1,3 +1,95 @@
+.ncce-home-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 60px;
+  }
+}
+
+.ncce-home-hero__image {
+  @include govuk-media-query($from: tablet) {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  img {
+    width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+      display: block;
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+  }
+}
+
+.ncce-home-hero__text-wrapper {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+  @include govuk-media-query($from: tablet) {
+    align-self: center;
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+}
+
+.ncce-home-hero__text {
+  background-color: $white;
+  padding: 1.5rem 1rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 29px;
+    padding: 1.75rem 1.5rem;
+    width: 348px;
+  }
+  @include govuk-media-query($from: desktop) {
+    margin-left: 0;
+    width: 432px;
+  }
+}
+
+.ncce-home-hero__heading {
+  font-size: 2rem;
+  line-height: 1.25;
+  @include govuk-media-query($from: tablet) {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  @include govuk-media-query($from: desktop) {
+    font-size: 3rem;
+  }
+}
+
+.ncce-home-hero__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ncce-home-hero__button {
+  margin-bottom: 0;
+  padding: 6px 0;
+  width: 46%;
+  @include govuk-media-query($from: tablet) {
+    padding: 12px 0;
+  }
+}
+
+.ncce-home-hero__list {
+  margin-bottom: 28px;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 14px;
+  }
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 44px;
+  }
+
+  li {
+    margin-bottom: 0;
+  }
+}
+
+// Old hero styles below
+
 .ncce-hero {
   background-color: $hero-goldenrod;
   background-image: url(/images/home/polka-yellow-bg.svg);
@@ -9,24 +101,24 @@
 }
 
 .ncce-hero__image {
-  mask-image: url('/images/home/squiggle-shape.svg');
   -webkit-mask-image: url('/images/home/squiggle-shape.svg');
-  mask-size: cover;
+  mask-image: url('/images/home/squiggle-shape.svg');
   -webkit-mask-size: cover;
+  mask-size: cover;
   position: relative;
   width: 100%;
+
+  z-index: 20;
 
   @include govuk-media-query($from: tablet) {
     margin-left: -18%;
     width: 120%;
   }
-
-  z-index: 20;
 }
 
 .ncce-hero__long-shadow {
-  position: relative;
   margin-top: 40px;
+  position: relative;
 
   @include govuk-media-query($from: tablet) {
     left: -20px;
@@ -34,7 +126,7 @@
 
   &:before {
     background-color: $hero-terracotta;
-    content: "";
+    content: '';
     height: 101%;
     left: -800px;
     position: absolute;
@@ -61,9 +153,12 @@
   background-color: $white;
   border: 6px solid $black;
   font-family: $font-family-heading;
-  font-weight: bold;
   font-size: 8.4vw;
+  font-weight: bold;
   line-height: 1;
+
+  margin-bottom: 10px;
+  padding: 10px;
 
   @include govuk-media-query($from: tablet) {
     font-size: 4vw;
@@ -73,23 +168,22 @@
     background-image: url('/images/home/splash-pink.svg');
     background-position: 11.5rem 0.15rem;
 
-    @-moz-document url-prefix() {
-      background-position: 12rem 0.15rem;
-    }
-
     background-repeat: no-repeat;
     background-size: 7.5rem;
     border: 9px solid $black;
     font-size: 2.8em;
     line-height: 1.2;
-  }
 
-  margin-bottom: 10px;
-  padding: 10px;
+    @-moz-document url-prefix() {
+      background-position: 12rem 0.15rem;
+    }
+  }
 }
 
 .ncce-hero__cta--desktop {
   display: none;
+
+  position: relative;
 
   @include govuk-media-query($from: tablet) {
     display: block;
@@ -98,18 +192,16 @@
   @include govuk-media-query($until: desktop) {
     margin-bottom: 40px;
   }
-
-  position: relative;
 }
 
 .ncce-hero__cta--mobile {
   margin-bottom: 25px;
 
+  position: relative;
+
   @include govuk-media-query($from: tablet) {
     display: none;
   }
-
-  position: relative;
 }
 
 .ncce-hero__body {
@@ -136,13 +228,9 @@
   background-repeat: no-repeat;
   background-size: 100%;
 
-
-
   @include govuk-media-query($from: tablet) {
     background-position: top 0 right -48px;
     background-size: 800px;
     margin: 1.5rem auto;
   }
-
-
 }
