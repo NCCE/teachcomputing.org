@@ -2,7 +2,7 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <h2 class="govuk-heading-m">Your courses</h2>
-      <% unless @incomplete_achievements.size.positive? || @completed_achievements.size.positive? %>
+      <% if @incomplete_achievements.blank? && @completed_achievements.blank? %>
         <p class="govuk-body">If you have booked or completed an online, face to face or remote course they will appear here.</p>
         <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
       <% else %>

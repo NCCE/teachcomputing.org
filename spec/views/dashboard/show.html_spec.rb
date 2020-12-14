@@ -16,19 +16,20 @@ RSpec.describe('dashboard/show', type: :view) do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @incomplete_achievements = []
     @completed_achievements = []
-    render
   end
 
-  it 'has a title' do
-    expect(rendered).to have_css('h1', text: 'Your dashboard')
-  end
+  context 'when the user has not enrolled' do
+    before do
+      render
+    end
 
-  it 'has courses section' do
-    expect(rendered).to have_css('h2', text: 'Your courses')
-  end
+    it 'has a title' do
+      expect(rendered).to have_css('h1', text: 'Your dashboard')
+    end
 
-  it 'shows the find courses button' do
-    expect(rendered).to have_link('Find a course', href: courses_path)
+    it 'has courses section' do
+      expect(rendered).to have_css('h2', text: 'Your courses')
+    end
   end
 
   context 'when the user has enrolled on a programme' do
@@ -44,11 +45,15 @@ RSpec.describe('dashboard/show', type: :view) do
   end
 
   context 'when there are no achievements' do
+    before do
+      render
+    end
+
     it 'has no activity list' do
       expect(rendered).not_to have_css('.ncce-activity-list')
     end
 
-    it 'shows the placeholder text' do
+    it 'shows the placeholder content' do
       expect(rendered).to have_link('Find a course', href: '/courses')
     end
   end
@@ -66,6 +71,10 @@ RSpec.describe('dashboard/show', type: :view) do
     it 'shows the enrolled prefix' do
       expect(rendered).to have_text('Enrolled Dec 2020')
     end
+
+    it "does not show the placeholder content" do
+      expect(rendered).not_to have_link('Find a course', href: '/courses')
+    end
   end
 
   context 'when there are only complete achievements' do
@@ -81,6 +90,10 @@ RSpec.describe('dashboard/show', type: :view) do
     it 'shows the completed prefix' do
       expect(rendered).to have_text('Completed Dec 2020')
     end
+
+    it "does not show the placeholder content" do
+      expect(rendered).not_to have_link('Find a course', href: '/courses')
+    end
   end
 
   context 'when there are both complete and incomplete achievements' do
@@ -92,6 +105,10 @@ RSpec.describe('dashboard/show', type: :view) do
 
     it 'has an activity list with the expected number of items' do
       expect(rendered).to have_css('.ncce-activity-list li', count: 4)
+    end
+
+    it "does not show the placeholder content" do
+      expect(rendered).not_to have_link('Find a course', href: '/courses')
     end
   end
 
@@ -105,5 +122,4 @@ RSpec.describe('dashboard/show', type: :view) do
       expect(rendered).to have_css('.ncce-activity-list li', count: 1)
     end
   end
-
 end

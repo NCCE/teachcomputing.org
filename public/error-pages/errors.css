@@ -7713,10 +7713,6 @@ a:not([class]):active {
   padding-left: 2rem;
 }
 
-.ncce-activity-list__item-text--incomplete {
-  background-image: image-url('incomplete-achievement.svg');
-}
-
 @media (min-width: 40.0625em) {
   .ncce-activity-list__item-text {
     background-size: 1.9rem;
