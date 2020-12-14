@@ -1,0 +1,13 @@
+.ncce-mobile-only__inline {
+  display: inline;
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}
+
+.ncce-desktop-only__inline {
+  display: none;
+  @include govuk-media-query($from: desktop) {
+    display: inline;
+  }
+}
