@@ -593,3 +593,25 @@ a = Activity.find_or_create_by(stem_course_template_no: '952bb189-4239-eb11-a813
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: '67ff4e64-d83a-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Introduction to algorithms, programming and data for D&T teachers'
+  activity.credit = 10
+  activity.slug = 'introduction-to-algorithms-programming-and-data-for-d-t-teachers-remote'
+  activity.stem_course_template_no = '67ff4e64-d83a-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c0b37384-e93a-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Introduction to algorithms, programming and data for D&T teachers'
+  activity.credit = 10
+  activity.slug = 'introduction-to-algorithms-programming-and-data-for-d-t-teachers-face-to-face'
+  activity.stem_course_template_no = 'c0b37384-e93a-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
