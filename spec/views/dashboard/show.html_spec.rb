@@ -49,7 +49,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the placeholder text' do
-      expect(rendered).to have_link('Find a course', courses_path)
+      expect(rendered).to have_link('Find a course', href: '/courses')
     end
   end
 
