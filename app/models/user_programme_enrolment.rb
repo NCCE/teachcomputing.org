@@ -6,7 +6,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
-  after_commit :schedule_get_started_prompt, on: :create
+  after_commit :schedule_kick_off_emails, on: :create
   before_create :set_eligible_achievements_for_programme
 
   validates :user, :programme, presence: true
@@ -48,9 +48,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private
 
-    def schedule_get_started_prompt
-      ScheduleProgrammeGettingStartedPromptJob
-        .set(wait: 7.days)
-        .perform_later(user.id, programme.id)
-    end
+  def schedule_kick_off_emails
+    KickOffEmailsJob.perform_later(id)
+  end
 end

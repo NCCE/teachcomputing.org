@@ -1,20 +1,30 @@
-<div class="dixie-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="text-photo-hero text-photo-hero--home white-bg">
-        <div class="text-photo-hero__block--text">
-          <h1 class="govuk-heading-l hero-heading--home">Helping you <br>teach computing</h1>
-          <p class="govuk-body-l hero-text--home">Discover
-              <strong>training</strong>, <strong>resources</strong> and
-              <strong>guidance</strong> to help you teach computing with
-              confidence.</p>
-          <%= link_to_if(current_user, 'Get started!', dashboard_path, class: 'govuk-button button hero-button--home') do %>
-            <%= link_to 'Get started!', create_account_url, class: 'govuk-button button  hero-button--home' %>
-          <% end %>
-        </div>
-        <div class="text-photo-hero__block--photo">
-          <iframe class="axe-skip-a11y-test" width="640" height="360" title="Embedded video" src="https://www.youtube.com/embed/SwV3QyVc-go?cc_load_policy=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+<div class="ncce-home-hero">
+  <div class="ncce-home-hero__image">
+    <picture>
+      <source srcset="/images/hero/hero-lg2.jpg" media="(min-width: 800px)">
+      <source srcset="/images/hero/hero-md.jpg" media="(min-width: 600px)">
+      <img src="/images/hero/hero-sm2.jpg" alt="A women in front of a computer">
+    </picture>
+  </div>
+  <div class="ncce-home-hero__text-wrapper">
+    <div class="ncce-home-hero__text">
+      <h1 class="govuk-heading-l ncce-home-hero__heading">Helping you <br>teach computing</h1>
+      <p class="govuk-body-l govuk-!-margin-bottom-0">We offer teachers:</p>
+      <ul class="govuk-body-l govuk-list--bullet ncce-home-hero__list">
+        <li>courses and accreditation</li>
+        <li>bursaries for training</li>
+        <li>free curriculum teaching resources</li>
+        <li>community support and more</li>
+      </ul>
+      <div class="ncce-home-hero__buttons">
+        <% if current_user %>
+          <%= link_to('Dashboard', dashboard_path, class: 'govuk-button button ncce-mobile-only__inline ncce-home-hero__button')  %>
+          <%= link_to('View dashboard', dashboard_path, class: 'govuk-button button ncce-desktop-only__inline ncce-home-hero__button')  %>
+        <% else %>
+          <%= link_to('Join for free', auth_url, class: 'govuk-button button ncce-home-hero__button')  %>
+        <% end %>
+        <%= link_to 'About us', about_path, class: 'govuk-button button button--inverted ncce-mobile-only__inline ncce-home-hero__button' %>
+        <%= link_to 'Learn more about us', about_path, class: 'govuk-button button button--inverted ncce-desktop-only__inline ncce-home-hero__button' %>
       </div>
     </div>
   </div>

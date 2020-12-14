@@ -4,16 +4,22 @@
 <% meta_tag :url, request.original_url %>
 <%= render 'hero' %>
 <div class="govuk-width-container">
-	<div class="govuk-main-wrapper">
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-three-quarters">
-				<p class="govuk-body">Our curriculum contains everything you need to teach computing at key stages 1 to 4, including lesson plans, slides, worksheets, homework and assessment.</p>
-				<p class="govuk-body">All of the content is completely free to access, and has been created by subject experts, based on the latest pedagogical research and teacher feedback. It also provides an innovative progression framework where computing content (concepts, knowledge, skills, and objectives) has been organised into interconnected networks we call learning graphs.</p>
-				<p class="govuk-heading-m curriculum__title">Choose resources by key stage</p>
-			</div>
-		</div>
-		<%= render partial: 'key_stages', locals: { key_stages: @key_stages } %>
-		<%= render 'curriculum/feedback' %>
-	</div>
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        <p class="govuk-body">Our curriculum contains everything you need to teach computing at key stages 1 to 4, including lesson plans, slides, worksheets, homework and assessment.</p>
+        <p class="govuk-body">
+          All of the content is completely free to access, and has been created by subject experts,
+          based on the latest pedagogical research and teacher feedback.
+          It also provides an innovative progression framework where computing content
+          (concepts, knowledge, skills, and objectives) has been organised into interconnected networks we call learning graphs.
+          You can get an overall view of progression using our
+          <%= link_to 'curriculum journey poster', 'https://static.teachcomputing.org/curriculum_journey.pdf', class: 'govuk-link ncce-link' %>,
+          or download our individual key stage curriculum maps for more detail.</p>
+        <p class="govuk-heading-m curriculum__title">Choose resources by key stage</p>
+      </div>
+    </div>
+    <%= render partial: 'key_stages', locals: { key_stages: @key_stages } %>
+    <%= render 'curriculum/feedback' %>
+  </div>
 </div>
-

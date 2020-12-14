@@ -9,6 +9,7 @@
 @import 'settings/_section-breaks.scss';
 @import 'settings/_typography.scss';
 @import 'settings/_layout.scss';
+@import 'settings/_device-behaviour.scss';
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
@@ -29,7 +30,6 @@
 @import 'components/pages/home/_confidence.scss';
 @import 'components/pages/home/_featured.scss';
 @import 'components/pages/home/_hero.scss';
-@import 'components/pages/home/_ghost-news-feed.scss';
 @import 'components/pages/_careers-week.scss';
 @import 'components/pages/certification/_cs-accelerator.scss';
 @import 'components/pages/certification/_hero.scss';
