@@ -12,8 +12,12 @@ RSpec.describe PagesController do
         expect(assigns(:featured_posts)).to be_a(Array)
       end
 
+      it 'has one main feature' do
+        expect(assigns(:main_feature)).to be_a(Hash)
+      end
+
       it 'has correct number of posts' do
-        expect(assigns(:featured_posts).length).to eq(2)
+        expect(assigns(:featured_posts).length).to eq(1)
       end
     end
 

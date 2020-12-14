@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: 'pages#home', action: :home
-  get '/temp-homepage', to: 'pages#home_v2'
 
   resources :achievements, only: %i[create destroy]
 
