@@ -7809,6 +7809,10 @@ a:not([class]):active {
   padding-left: 2rem;
 }
 
+.ncce-activity-list__item-text--incomplete {
+  background-image: image-url('incomplete-achievement.svg');
+}
+
 @media (min-width: 40.0625em) {
   .ncce-activity-list__item-text {
     background-size: 1.9rem;
@@ -7847,14 +7851,6 @@ a:not([class]):active {
     width: 500px;
     grid-column-end: 1;
   }
-}
-
-.ncce-activity-list__item--incomplete .ncce-activity-list__item-text {
-  background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
-}
-
-.ncce-activity-list__item--inprogress .ncce-activity-list__item-text {
-  background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
 }
 
 .ncce-activity-list__tag {

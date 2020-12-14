@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe DashboardController do
   let(:user) { create(:user) }
-  let(:complete_achievements) { create_list(:completed_achievement, 3, user: user) }
-  let(:enrolled_achievement) { create(:achievement, user: user) }
+  let(:primary_certificate) { create(:primary_certificate) }
+  let(:complete_achievements) { create_list(:completed_achievement, 3, user: user, programme_id: primary_certificate.id) }
+  let(:enrolled_achievement) { create(:achievement, user: user, programme_id: primary_certificate.id) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
   describe '#show' do
     describe 'while logged in' do
       before do
-				create(:primary_certificate)
-				create(:secondary_certificate)
+        create(:secondary_certificate)
         create(:cs_accelerator)
         [diagnostic_achievement, complete_achievements, enrolled_achievement]
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -19,11 +19,16 @@ RSpec.describe DashboardController do
       end
 
       it 'assigns the users complete achievements' do
-        expect(assigns(:achievements).count).to eq 3
+        expect(assigns(:completed_achievements).count).to eq 3
+      end
+
+      it 'assigns the users incomplete achievements' do
+        expect(assigns(:incomplete_achievements).count).to eq 1
       end
 
       it 'does not include diagnostic achievement in assigned achievements' do
-        expect(assigns(:achievements)).not_to include diagnostic_achievement
+        expect(assigns(:completed_achievements)).not_to include diagnostic_achievement
+        expect(assigns(:incomplete_achievements)).not_to include diagnostic_achievement
       end
 
       it 'renders the correct template' do
