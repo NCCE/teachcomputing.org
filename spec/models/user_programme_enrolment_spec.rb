@@ -1,10 +1,11 @@
+
 require 'rails_helper'
 
 RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:user) { create(:user) }
   let(:achievements) { create_list(:achievement, 5, user: user) }
-  let(:programme) { create(:cs_accelerator) }
-  let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+  let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
 
   describe 'associations' do
     it { is_expected.to belong_to(:programme) }
@@ -17,44 +18,46 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it { is_expected.to validate_presence_of(:programme) }
 
     it 'ensures user can only be enrolled on a programme once' do
-      create(:user_programme_enrolment, user: user, programme: programme)
-      enrolment = build(:user_programme_enrolment, user: user, programme: programme)
+      create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+      enrolment = build(:user_programme_enrolment, user: user, programme: cs_accelerator)
       expect(enrolment.valid?).to eq(false)
       expect(enrolment.errors.messages[:user]).to eq(['has already been taken'])
     end
   end
 
-  it 'queues CompleteCertificateEmailJob job' do
-    expect do
-      user_programme_enrolment
-    end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(user.id, programme.id)
-  end
-
   describe '#completed_at?' do
     it 'returns nil' do
-      expect(user_programme_enrolment.completed_at?).to eq nil
+      expect(cs_accelerator_enrolment.completed_at?).to eq nil
     end
 
     context 'when complete' do
       it 'returns the date of transition' do
-        user_programme_enrolment.transition_to(:complete)
-        expect(user_programme_enrolment.created_at?).not_to eq nil
+        cs_accelerator_enrolment.transition_to(:complete)
+        expect(cs_accelerator_enrolment.created_at?).not_to eq nil
       end
     end
   end
 
   describe '#set_eligible_achievements_for_programme' do
     before do
-      programme
+      cs_accelerator
       achievements
       Activity.all.each do |activity|
-        create(:programme_activity, programme: programme, activity: activity)
+        create(:programme_activity, programme: cs_accelerator, activity: activity)
       end
     end
 
     it 'sets the programme_id for the achievements relating to the programe ' do
-      create(:user_programme_enrolment, user: user, programme: programme)
-      expect(user.achievements.pluck(:programme_id).uniq).to include programme.id
+      create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+      expect(user.achievements.pluck(:programme_id).uniq).to include cs_accelerator.id
+    end
+  end
+
+  describe '#after_commit callbacks' do
+    it 'queues CompleteCertificateEmailJob job' do
+      expect do
+        create(:user_programme_enrolment)
+      end.to have_enqueued_job(KickOffEmailsJob)
     end
   end
 
