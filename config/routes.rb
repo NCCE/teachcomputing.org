@@ -107,6 +107,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
   get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
+  get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' }
@@ -123,6 +124,8 @@ Rails.application.routes.draw do
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome
+
+  get '/style-guide', to: 'pages#page', as: :style_guide, defaults: { page_slug: 'style-guide' }
 
   require 'sidekiq/web'
   mount Sidekiq::Web, at: 'admin/sidekiq'
