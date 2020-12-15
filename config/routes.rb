@@ -126,8 +126,6 @@ Rails.application.routes.draw do
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome
 
-  get '/style-guide', to: 'pages#page', as: :style_guide, defaults: { page_slug: 'style-guide' }
-
   require 'sidekiq/web'
   mount Sidekiq::Web, at: 'admin/sidekiq'
 end
