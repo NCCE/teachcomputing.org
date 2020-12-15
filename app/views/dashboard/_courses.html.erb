@@ -5,10 +5,9 @@
       <% if @incomplete_achievements.blank? && @completed_achievements.blank? %>
         <p class="govuk-body">If you have booked or completed an online, face to face or remote course they will appear here.</p>
         <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
-      <% else %>
-        <%= render 'achievement_list', achievements: @incomplete_achievements %>
-        <%= render 'achievement_list', achievements: @completed_achievements %>
       <% end %>
+      <%= render 'achievement_list', achievements: @incomplete_achievements if @incomplete_achievements.present? %>
+      <%= render 'achievement_list', achievements: @completed_achievements if @completed_achievements.present? %>
     </div>
   </div>
 </div>

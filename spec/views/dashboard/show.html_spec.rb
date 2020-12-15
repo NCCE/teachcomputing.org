@@ -75,6 +75,10 @@ RSpec.describe('dashboard/show', type: :view) do
     it "does not show the placeholder content" do
       expect(rendered).not_to have_link('Find a course', href: '/courses')
     end
+
+    it "does not render an empty list for complete achievements" do
+      expect(rendered).to have_css('.ncce-activity-list', count: 1)
+    end
   end
 
   context 'when there are only complete achievements' do
@@ -93,6 +97,10 @@ RSpec.describe('dashboard/show', type: :view) do
 
     it "does not show the placeholder content" do
       expect(rendered).not_to have_link('Find a course', href: '/courses')
+    end
+
+    it "does not render an empty list for incomplete achievements" do
+      expect(rendered).to have_css('.ncce-activity-list', count: 1)
     end
   end
 
