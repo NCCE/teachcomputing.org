@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get '/diagnostic/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      post '/unenrol', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
     end
 
     namespace 'cs_accelerator' do

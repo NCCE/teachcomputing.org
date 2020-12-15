@@ -21,6 +21,17 @@ class UserProgrammeEnrolmentsController < ApplicationController
     end
   end
 
+  def destroy
+    enrolment = UserProgrammeEnrolment.find_by!(params[:user_programme_enrolment_id])
+
+    if enrolment.present?
+      enrolment.transition_to(:unenrolled)
+      flash[:notice] = 'You have successfully opted out of the Computer Science Accelerator'
+    end
+
+    redirect_to dashboard_path
+  end
+
   private
 
     def user_programme_enrolment_params
