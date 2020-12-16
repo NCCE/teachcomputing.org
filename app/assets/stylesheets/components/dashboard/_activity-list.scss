@@ -79,6 +79,18 @@
   }
 }
 
+.ncce-activity-list__item--incomplete {
+  .ncce-activity-list__item-text {
+    background-image: image-url('incomplete-achievement.svg');
+  }
+}
+
+.ncce-activity-list__item--inprogress {
+  .ncce-activity-list__item-text {
+    background-image: image-url('incomplete-achievement.svg');
+  }
+}
+
 .ncce-activity-list__item-activity {
   font-size: 1rem;
   grid-row: 2;
