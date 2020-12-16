@@ -17,6 +17,7 @@ RSpec.describe('Dashboard page', type: :system) do
   end
 
   it 'main is accessible' do
-    expect(page).to be_accessible.within('#main-content')
+    # Remove .ncce-link exclusion when https://github.com/NCCE/teachcomputing.org-issues/issues/858 addressed.
+    expect(page).to be_accessible.within('#main-content').excluding('.ncce-link')
   end
 end
