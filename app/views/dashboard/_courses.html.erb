@@ -1,11 +1,15 @@
 <div class="ncce-dashboard-activity">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
-      <h2 class="govuk-heading-m">Your courses</h2>
-      <% if @incomplete_achievements.blank? && @completed_achievements.blank? %>
-        <p class="govuk-body">If you have booked or completed an online, face to face or remote course they will appear here.</p>
-        <%= link_to 'Find a course', courses_path, class: 'govuk-button button' %>
-      <% end %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Your courses</h2>
+          <p class="govuk-body">
+            If you have booked or completed a course, they will appear here.<br>
+            <%= link_to 'Browse our courses', courses_path, class: 'ncce-link' %> and keep developing your professional skills.
+          </p>
+        </div>
+      </div>
       <%= render 'achievement_list', achievements: @incomplete_achievements if @incomplete_achievements.present? %>
       <%= render 'achievement_list', achievements: @completed_achievements if @completed_achievements.present? %>
     </div>
