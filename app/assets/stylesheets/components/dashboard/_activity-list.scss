@@ -73,6 +73,10 @@
     margin-bottom: 0;
     padding-left: 2.8rem;
   }
+
+  &--incomplete {
+    background-image: image-url('incomplete-achievement.svg');
+  }
 }
 
 .ncce-activity-list__item-activity {
@@ -88,18 +92,6 @@
   @include govuk-media-query($from: 900px) {
     width: 500px;
     grid-column-end: 1;
-  }
-}
-
-.ncce-activity-list__item--incomplete {
-  .ncce-activity-list__item-text {
-    background-image: image-url('incomplete-achievement.svg');
-  }
-}
-
-.ncce-activity-list__item--inprogress {
-  .ncce-activity-list__item-text {
-    background-image: image-url('incomplete-achievement.svg');
   }
 }
 

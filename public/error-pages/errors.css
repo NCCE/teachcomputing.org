@@ -7752,14 +7752,6 @@ a:not([class]):active {
   }
 }
 
-.ncce-activity-list__item--incomplete .ncce-activity-list__item-text {
-  background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
-}
-
-.ncce-activity-list__item--inprogress .ncce-activity-list__item-text {
-  background-image: url(/assets/incomplete-achievement-6da0f8f695528de9d842e401be89640cfb8bd73d52c4d60e119b4e7d42d2d0f7.svg);
-}
-
 .ncce-activity-list__tag {
   float: left;
   margin-bottom: 0.7rem;
