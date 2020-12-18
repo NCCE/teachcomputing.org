@@ -10,9 +10,10 @@
           <%= link_to 'View your certificate', certificate_cs_accelerator_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
 				<h2 class="govuk-heading-m govuk-!-margin-top-6">Your recommended next steps</h2>
-				<h3 class="govuk-heading-s">Continue learning</h3>
+				<h3 class="govuk-heading-s">Improve your teaching confidence</h3>
         <p class="govuk-body">Take your professional development to the next level and start our new <%= link_to 'Teach secondary computing certificate', secondary_certificate_path, class: 'govuk-link ncce-link' %>. This qualification will help you to build on your subject knowledge and give you the practical skills for the classroom. It also supports your progress to chartered status.</p>
         <%= link_to 'Enrol on Teach secondary computing', Programme.secondary_certificate.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }), method: :post, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+        <h3 class="govuk-heading-s">Continue learning</h3>
         <p class="govuk-body">As a graduate of the Computer Science Accelerator, you can participate in any of our huge range of professional development courses for free, if you work in secondary state education. Just use the code “CSAGraduate” when booking your next course. The courses you take can also contribute towards your Teach secondary computing certificate.</p>
         <p class="govuk-body"><em>Note</em>, this code can only be used on bookings for teachers working in secondary state education. We reserve the right to charge the full course fee if the code is used by anyone who does not fall into this criteria. Teachers from independent schools will continue to pay a fee of £220 per course for any of our face-to-face or remote courses.</p>
 				<p class="govuk-body"><strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong></p>
