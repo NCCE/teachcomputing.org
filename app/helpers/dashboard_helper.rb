@@ -9,15 +9,15 @@ module DashboardHelper
     end
   end
 
-  def get_course_tag_class(achievement)
-    "dashboard-tags--#{get_course_strings(achievement)&.parameterize}"
+  def get_course_suffix(achievement)
+    get_course_strings(achievement)&.parameterize
   end
 
   def get_date_string(achievement)
     if achievement.current_state == :complete.to_s
-      "Completed #{achievement.created_at.strftime("%b %Y")}"
+      "Completed on #{achievement.created_at.strftime("%b %Y")}"
     else
-      "Enrolled #{achievement.updated_at.strftime("%b %Y")}"
+      "Enrolled on #{achievement.updated_at.strftime("%b %Y")}"
     end
   end
 end
