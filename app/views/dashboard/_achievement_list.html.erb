@@ -5,10 +5,12 @@
       <%= achievement.activity.title %>
     </span>
     <span class="ncce-activity-list__item--dashboard-tags">
-      <span class="govuk-body-s ncce-activity-list__item--dashboard-tags--course dashboard-tags--<%= get_course_suffix(achievement) %>">
-        <strong><%= get_course_strings(achievement) %></strong>
-      </span>
-      <span class="govuk-body-xs ncce-activity-list__item--dashboard-tags-date"><%= get_date_string(achievement) %></span>
+      <% unless get_course_tag(achievement).blank? %>
+        <span class="govuk-body ncce-activity-list__item--dashboard-tags--course dashboard-tags--<%= get_course_suffix(achievement) %>">
+          <strong><%= get_course_tag(achievement) %></strong>
+        </span>
+      <% end %>
+      <span class="govuk-body ncce-activity-list__item--dashboard-tags-date"><%= get_date_string(achievement) %></span>
     </span>
   </li>
   <% end %>

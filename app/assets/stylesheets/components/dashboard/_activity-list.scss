@@ -59,19 +59,17 @@
   background-image: image-url('tick-blue.svg');
   background-position: left top;
   background-repeat: no-repeat;
-  background-size: 1.2rem;
+  background-size: 1.9rem;
+  line-height: 1.9rem;
   font-size: 1.188rem;
   grid-row: 1;
   grid-column: 1;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   margin-top: 3px;
-  padding-left: 2rem;
+  padding-left: 2.8rem;
 
-  @include govuk-media-query($from: tablet) {
-    background-size: 1.9rem;
-    line-height: 1.9rem;
-    margin-bottom: 0;
-    padding-left: 2.8rem;
+  @include govuk-media-query($until: 414px) {
+    font-size: 1rem;
   }
 
   &--incomplete {
@@ -99,7 +97,6 @@
   padding: 0.7rem;
   @include govuk-media-query($from: tablet) {
     grid-column-end: 3;
-		margin-left: 2.8rem;
   }
   @include govuk-media-query($from: 900px) {
     width: 500px;
@@ -109,14 +106,10 @@
 
 .ncce-activity-list__tag {
   text-transform: none;
-  margin-bottom: 0.7rem;
   width: auto;
   float: left;
-
-  @include govuk-media-query($from: tablet) {
-    float: none;
-    margin-bottom: 0;
-  }
+  float: none;
+  margin-bottom: 0;
 }
 
 .ncce-activity-list__course {
@@ -179,7 +172,7 @@
 	grid-template-rows: auto auto !important;
 	grid-row-gap: 0.5rem;
 	margin-bottom: 1.25rem !important;
-  border-left: 9px solid $action-color;
+  border-left: 9px solid $grey-dark-x;
   border-bottom: none;
 	&:last-child {
     margin-bottom: 0;
@@ -201,35 +194,29 @@
 }
 
 .ncce-activity-list__item--dashboard-tags {
-	grid-row: 2;
+  grid-row: 2;
 }
 
 .ncce-activity-list__item--dashboard-tags-date {
-	float: left;
 	margin-bottom: 0 !important;
-	margin-left: 2rem;
-	margin-top: 1rem;
+	margin-left: 2.8rem;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 1rem;
 
 	@include govuk-media-query($from: tablet) {
 		float: right;
 		margin-left: 0;
-		margin-top: 0;
-  }
-
-  @include govuk-media-query($until: tablet) {
-    float: none;
-    display: block;
   }
 }
 
 .ncce-activity-list__item--dashboard-tags--course {
   color: $white;
-  margin-left: 2rem;
+  margin-left: 2.8rem;
   padding: 5px 16px;
-
-	@include govuk-media-query($from: tablet) {
-		margin-left: 2.8rem;
-	}
+  font-size: 1rem;
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 .dashboard-tags--cs-accelerator {

@@ -1,5 +1,5 @@
 module DashboardHelper
-  def get_course_strings(achievement)
+  def get_course_tag(achievement)
     if achievement&.cs_accelerator?
       'CS Accelerator'
     elsif achievement&.secondary_certificate?
@@ -10,7 +10,7 @@ module DashboardHelper
   end
 
   def get_course_suffix(achievement)
-    get_course_strings(achievement)&.parameterize
+    get_course_tag(achievement)&.parameterize
   end
 
   def get_date_string(achievement)
