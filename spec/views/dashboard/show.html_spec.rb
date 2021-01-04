@@ -69,7 +69,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the enrolled prefix' do
-      expect(rendered).to have_text('Enrolled Dec 2020')
+      expect(rendered).to have_text('Enrolled')
     end
 
     it "does not render an empty list for complete achievements" do
@@ -88,7 +88,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the completed prefix' do
-      expect(rendered).to have_text('Completed Dec 2020')
+      expect(rendered).to have_text('Completed')
     end
 
     it "does not render an empty list for incomplete achievements" do
