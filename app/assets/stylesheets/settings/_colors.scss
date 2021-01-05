@@ -70,14 +70,12 @@ $primary-cert-color: $jaffa;
   background-color: $grey-dark-x;
   color: $white;
   font-weight: bold;
-  padding: 5px 12px;
+  padding: 2px 12px;
 	width: fit-content;
 }
 
 @mixin status_block_light() {
+  @extend .status-block;
   background-color: $white;
   color: $grey-dark-x;
-  font-weight: bold;
-  padding: 2px 12px;
-	width: fit-content;
 }
