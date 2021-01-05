@@ -69,7 +69,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the enrolled prefix' do
-      expect(rendered).to have_text('Enrolled on Dec 2020')
+      expect(rendered).to have_text('Enrolled')
     end
 
     it 'shows the expected border' do
@@ -96,7 +96,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the completed prefix' do
-      expect(rendered).to have_text('Completed on Dec 2020')
+      expect(rendered).to have_text('Completed')
     end
 
     it 'shows the expected border' do
