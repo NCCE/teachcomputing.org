@@ -6,9 +6,9 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
 
     return if enrolment.user.achievements.for_programme(enrolment.programme).count.positive?
 
-    case enrolment.progamme.slug
+    case enrolment.programme.slug
     when 'cs-accelerator'
-      CsAcceleratorMailer.with(user: user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
+      CsAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
     end
   end
 end
