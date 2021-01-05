@@ -22,7 +22,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
   end
 
   def destroy
-    enrolment = UserProgrammeEnrolment.find_by!(params[:user_programme_enrolment_id])
+    enrolment = UserProgrammeEnrolment.find_by!(id: params[:id])
 
     if enrolment.present?
       enrolment.transition_to(:unenrolled)
