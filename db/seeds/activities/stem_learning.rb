@@ -615,3 +615,56 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c0b37384-e93a-eb11-a813
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f12d0fbd-993b-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Enriching secondary computing with STEM Ambassadors'
+  activity.credit = 10
+  activity.slug = 'enriching-secondary-computing-with-stem-ambassadors'
+  activity.stem_course_template_no = 'f12d0fbd-993b-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '11f58c3f-3341-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'Assessment of primary computing'
+  activity.credit = 20
+  activity.slug = 'assessment-of-primary-computing'
+  activity.stem_course_template_no = '11f58c3f-3341-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '3b2957a3-3541-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'KS3 computing (module 1): Creative curriculum design principles'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-1-creative-curriculum-design-principles'
+  activity.stem_course_template_no = '3b2957a3-3541-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c9957d36-3841-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'KS3 computing (module 2): Creative curriculum content, sequencing and pedagogy'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-2-creative-curriculum-content-sequencing-and-pedagogy'
+  activity.stem_course_template_no = 'c9957d36-3841-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '15040292-3941-eb11-a813-000d3a86d545') do |activity|
+  activity.title = 'KS3 computing (module 3): Creative curriculum enrichment and inclusion'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-3-creative-curriculum-enrichment-and-inclusion'
+  activity.stem_course_template_no = '15040292-3941-eb11-a813-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

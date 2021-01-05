@@ -99,6 +99,7 @@ Rails.application.routes.draw do
   get '/fl-trailers', to: 'pages#page', as: :trailers, defaults: { page_slug: 'fl-trailers' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
+  get '/governors-and-trustees', to: 'cms#cms_page', as: :governors_and_trustees, defaults: { page_slug: 'governors-and-trustees' }
   get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }
