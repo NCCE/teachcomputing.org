@@ -8,7 +8,6 @@ module Certificates
     def show
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
-      @enrolment = current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
       assign_assessment_and_achievements
 
       render :show
