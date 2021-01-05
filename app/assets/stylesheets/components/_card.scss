@@ -121,7 +121,6 @@
 .shadow_card > .status-block {
   @include status_block();
   border: 1px solid $grey-dark-x;
-  border: 2px solid $grey-dark-x;
   display: inline-block;
   margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
