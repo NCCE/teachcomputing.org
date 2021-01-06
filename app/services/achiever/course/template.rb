@@ -8,6 +8,7 @@ class Achiever::Course::Template
                 :occurrences,
                 :online_cpd,
                 :outcomes,
+                :programmes,
                 :remote_delivered_cpd,
                 :subjects,
                 :summary,
@@ -30,6 +31,7 @@ class Achiever::Course::Template
     @occurrences = []
     @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
     @outcomes = template.send('Template.Outcomes')
+    @programmes = template.send('Template.TCProgrammeTag').split(',')
     @remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.RemoteDeliveredCPD')&.downcase)
     @subjects = template.send('Template.AdditionalSubjects').split(';')
     @summary = template.send('Template.Summary')
@@ -60,8 +62,13 @@ class Achiever::Course::Template
   end
 
   def by_certificate(certificate)
-    return @workstream == 'CS Accelerator' if certificate == 'cs-accelerator'
-    key_stages = Achiever::Course::AgeGroup.send(certificate.underscore)
-    @workstream == 'National Centre - Core' && key_stages.any? { |key_stage| @age_groups.any?(key_stage.to_s) }
+    case certificate
+      when 'cs-accelerator'
+        return @programmes.include?('CS Accelerator')
+      when 'secondary-certificate'
+        return @programmes.include?('Secondary')
+      when 'primary-certificate'
+        return @programmes.include?('Primary')
+    end
   end
 end
