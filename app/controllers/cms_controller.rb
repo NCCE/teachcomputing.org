@@ -3,7 +3,13 @@ class CmsController < ApplicationController
 
   def cms_page
     @page = Ghost.new.get_single_page(params[:page_slug])
+    @parent_slug = get_parent_slug
     render :cms_page
+  end
+
+  def get_parent_slug
+    route = request.env['PATH_INFO'].split('/').reject { |el| el.empty? }
+    parent = route[0] || ''
   end
 
   def clear_page_cache

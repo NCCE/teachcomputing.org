@@ -5,10 +5,6 @@ describe 'CMS Page routes' do
     expect(get('/cms/hubs')).to route_to(controller: 'cms', action: 'cms_page', page_slug: 'hubs')
   end
 
-  it 'has a route for generic refresh' do
-    expect(get('/cms/hubs/refresh')).to route_to(controller: 'cms', action: 'clear_page_cache', page_slug: 'hubs')
-  end
-
   it 'has a route for bursary' do
     expect(get('/bursary')).to route_to(controller: 'cms', action: 'cms_page', page_slug: 'bursary')
   end

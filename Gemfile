@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.7'
+ruby '2.7.2'
 
-gem 'activestorage-validator', '~> 0.1.3'
+gem 'activestorage-validator'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'aws-sdk-s3', require: false
@@ -22,7 +22,7 @@ gem 'jwt', '~> 2.1.0'
 gem 'kramdown'
 gem 'lograge'
 gem 'memcachier'
-gem 'nokogiri', '~> 1.10.8'
+gem 'nokogiri', '~> 1.11.0'
 gem 'oauth2', '~> 1.4.4'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-oauth2', '~> 1.6.0'
@@ -53,7 +53,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'debase'
+  gem 'debase', '0.2.3'
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
