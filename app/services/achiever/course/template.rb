@@ -64,11 +64,11 @@ class Achiever::Course::Template
   def by_certificate(certificate)
     case certificate
       when 'cs-accelerator'
-        return @programmes.include?('CS Accelerator')
+        @programmes.include?('CS Accelerator')
       when 'secondary-certificate'
-        return @programmes.include?('Secondary')
+        @programmes.include?('Secondary')
       when 'primary-certificate'
-        return @programmes.include?('Primary')
+        @programmes.include?('Primary')
     end
   end
 end
