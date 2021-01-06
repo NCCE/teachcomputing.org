@@ -26,7 +26,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     if enrolment.present?
       enrolment.transition_to(:unenrolled)
-      flash[:notice] = 'You have successfully opted out of the Computer Science Accelerator'
+      flash[:notice] = "You have successfully opted out of the #{enrolment.programme.title}"
     end
 
     redirect_to dashboard_path
