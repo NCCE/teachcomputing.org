@@ -14,7 +14,7 @@
 
 ### Setup
 
-Builds the docker image, sets up environment variables, and adds nicer a local hostname:
+Builds the docker image, sets up environment variables and adds nicer a local hostname:
 
 ```
 yarn run setup
