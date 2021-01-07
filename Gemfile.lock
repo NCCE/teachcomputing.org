@@ -538,7 +538,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   axe-matchers (>= 2.5.0)
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.5.1)
   brakeman
   byebug
   capybara (~> 3.32)
