@@ -25,9 +25,7 @@ module OmniAuth::Strategies
     end
 
     def user_info
-      Raven::Context.clear!
       response ||= access_token.get('/idp/module.php/oauth2/userinfo.php')
-      raven_context(response)
       response.parsed
     end
 
@@ -35,10 +33,6 @@ module OmniAuth::Strategies
       return super if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_OAUTH'])
 
       full_host + script_name + callback_path
-    end
-
-    def raven_context(response)
-      Raven.tags_context(response: response.parsed)
     end
   end
 end
