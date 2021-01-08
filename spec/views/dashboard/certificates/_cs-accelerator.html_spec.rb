@@ -27,7 +27,7 @@ RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
     before do
       user_programme_enrolment
       user.reload
-      render template: 'dashboard/certificates/_cs-accelerator'
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
     end
 
     it 'shows the certificate link' do

@@ -18,6 +18,10 @@ module CurriculumClient
             slug
           }
         }
+        curriculumMaps {
+          name
+          file
+        }
         teacherGuide
         years
       GRAPHQL

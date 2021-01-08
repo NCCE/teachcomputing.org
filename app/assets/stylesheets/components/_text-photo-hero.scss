@@ -1,13 +1,13 @@
 .text-photo-hero {
   display: grid;
   grid-row-gap: 20px;
-  grid-template-areas: "photo" "text";
+  grid-template-areas: 'photo' 'text';
   grid-template-rows: 1fr auto;
   padding: 10px;
   @include govuk-media-query($from: desktop) {
     grid-column-gap: 20px;
     grid-row-gap: 0;
-    grid-template-areas: "text photo";
+    grid-template-areas: 'text photo';
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 10px 10px 10px 30px;
@@ -75,8 +75,8 @@
   .text-photo-hero__block--photo {
     height: 0;
     overflow: hidden;
-    position: relative;
     padding-bottom: 56.25%; /*16:9*/
+    position: relative;
   }
   .text-photo-hero__block--photo iframe,
   .text-photo-hero__block--photo object,

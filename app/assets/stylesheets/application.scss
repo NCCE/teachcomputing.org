@@ -9,6 +9,7 @@
 @import 'settings/_section-breaks.scss';
 @import 'settings/_typography.scss';
 @import 'settings/_layout.scss';
+@import 'settings/_device-behaviour.scss';
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
@@ -24,10 +25,11 @@
 @import 'components/_text-photo-hero.scss';
 @import 'components/_icons.scss';
 @import 'components/_testimonial.scss';
+@import 'components/_headings.scss';
 @import 'components/pages/home/_certificates.scss';
 @import 'components/pages/home/_confidence.scss';
+@import 'components/pages/home/_featured.scss';
 @import 'components/pages/home/_hero.scss';
-@import 'components/pages/home/_ghost-news-feed.scss';
 @import 'components/pages/_careers-week.scss';
 @import 'components/pages/certification/_cs-accelerator.scss';
 @import 'components/pages/certification/_hero.scss';
@@ -49,5 +51,12 @@
 @import 'components/programmes/_complete.scss';
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
-@import 'components/welcome/_welcome.scss';
 @import 'components/_external-content.scss';
+
+// Blog styles
+
+@import 'components/blog/_ghost-news-feed.scss';
+
+// CMS styles
+
+@import 'components/cms/_shared.scss';

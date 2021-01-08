@@ -44,9 +44,11 @@
       @extend .govuk-table__row !optional;
       th {
         @extend .govuk-table__header;
+        padding: 10px;
       }
       td {
         @extend .govuk-table__cell;
+        padding: 10px;
       }
     }
   }
@@ -60,14 +62,8 @@
     @extend .govuk-list--number;
   }
 
-  img,
-  video {
-    margin-bottom: 20px;
-    width: 100%;
+  a {
+    @extend .govuk-link;
+    @extend .ncce-link;
   }
-
-	a {
-		@extend .govuk-link;
-		@extend .ncce-link;
-	}
 }

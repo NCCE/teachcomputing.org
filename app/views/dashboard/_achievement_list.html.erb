@@ -1,0 +1,17 @@
+<ul class="govuk-list ncce-activity-list" role="list">
+  <% achievements.each do |achievement| %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--dashboard dashboard-border--<%= get_course_suffix(achievement) %>">
+    <span class="ncce-activity-list__item-text <%= 'ncce-activity-list__item-text--incomplete' unless achievement.current_state == :complete.to_s %>">
+      <%= achievement.activity.title %>
+    </span>
+    <span class="ncce-activity-list__item--dashboard-tags">
+      <% unless get_course_tag(achievement).blank? %>
+        <span class="govuk-body ncce-activity-list__item--dashboard-tags--course dashboard-tags--<%= get_course_suffix(achievement) %>">
+          <strong><%= get_course_tag(achievement) %></strong>
+        </span>
+      <% end %>
+      <span class="govuk-body ncce-activity-list__item--dashboard-tags-date"><%= get_date_string(achievement) %></span>
+    </span>
+  </li>
+  <% end %>
+</ul>

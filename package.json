@@ -32,12 +32,15 @@
     "setup": "npx ./scripts/setup.sh",
     "start": "npx ./scripts/docker-start.sh",
     "stop": "npx ./scripts/docker-stop.sh",
+    "reset-db": "npx ./scripts/reset-db.sh",
     "start-tunnel": "ssh -fCND 8889 -L8888:127.0.0.1:8888 -S /tmp/.ssh_stem_proxy -M proxy",
     "stop-tunnel": "ssh -S /tmp/.ssh_stem_proxy -O exit proxy",
     "logs": "docker-compose logs -f",
-    "exec": "docker-compose run --rm --no-deps web bundle exec",
-    "test": "yarn run exec rspec",
-    "rebuild": "bundle install && docker-compose build && npm start"
+    "bundle": "docker-compose run --rm --no-deps web bundle",
+    "bundle-install": "yarn run bundle install && docker-compose restart web && yarn start",
+    "bundle-update": "yarn run bundle update && docker-compose restart web && yarn start",
+    "exec": "yarn run bundle exec",
+    "test": "yarn run exec rspec"
   },
   "lint-staged": {
     "*.js": [

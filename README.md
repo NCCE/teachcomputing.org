@@ -14,7 +14,7 @@
 
 ### Setup
 
-Builds the docker image, sets up environment variables, and adds nicer a local hostname:
+Builds the docker image, sets up environment variables and adds nicer a local hostname:
 
 ```
 yarn run setup
@@ -34,11 +34,13 @@ Start the stack:
 docker-compose up -d
 ```
 
-Or (to automatically create an ssh tunnel, poll for the env to start and open a new tab):
+Or (this automatically creates the ssh tunnel and waits until the stack is ready to use):
 
 ```
 yarn start
 ```
+
+The app is available at: https://teachcomputing.rpfdev.com
 
 Stop the stack:
 
@@ -46,13 +48,11 @@ Stop the stack:
 docker-compose down
 ```
 
-Or (to also gracefully close the tunnel)
+Or (this also gracefully closes the tunnel):
 
 ```
 yarn stop
 ```
-
-The app is available at: http://teachcomputing.rpfdev.com
 
 In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
@@ -64,19 +64,8 @@ The database is automatically setup the first time the container is run, and a m
 
 #### Reset the database
 
-Since the setup is run via rails it's easiest to bring the entire stack down.
-
 ```
-docker-compose down -v
-docker-compose up -d
-```
-
-You can also target the db volume with the following, however you'll need to bring the web container down and up again too.
-
-```
-docker-compose rm -sv db
-docker-compose down
-docker-compose up -d
+yarn run reset-db
 ```
 
 #### Run migrations
@@ -84,7 +73,7 @@ docker-compose up -d
 To perform migrations manually (without restarting the container) run:
 
 ```
-docker-compose run --rm web bin/rails db:migrate
+yarn run exec rails db:migrate
 ```
 
 #### Seeding the database
@@ -92,15 +81,22 @@ docker-compose run --rm web bin/rails db:migrate
 To seed manually run:
 
 ```
-docker-compose run web bin/rails db:seed
+yarn run exec rails db:seed
 ```
 
-### Install new Dependencies
+### Install new Dependencies / Updates
 
-Add the dependency to the Gemfile or package.json and run:
+The bundle has now been moved to a separate volume and once the initial build has taken place the bundle directory is mapped to a volume and persisted.
+
+To install/update a new gem, first update the Gemfile and run `bundle install` or `bundle update` locally then:
 
 ```
-docker-compose down
+yarn run bundle-install
+```
+
+To reinstall all packages:
+
+```
 docker-compose build
 ```
 
@@ -170,10 +166,5 @@ Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
 ### Troubleshooting
 
-> I've run `yarn start` and it's hanging whilst 'Waiting for the stack to become available'
-
-The script doesn't time out so this indicates that it can't resolve to `localhost:3000` and there was a problem bringing up the web container. Run `docker-compose logs web` to investigate the cause.
-
-> I can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`
-
-In some circumstances the nginx instance used by dev-nginx may go down, just run `dev-nginx restart-nginx` to bring it up again.
+* `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent error.
+* If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.

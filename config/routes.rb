@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: 'pages#home', action: :home
-  get '/temp-homepage', to: 'pages#page', as: :homepage_development, defaults: { page_slug: 'home_v2/index' }
 
   resources :achievements, only: %i[create destroy]
 
@@ -47,6 +46,12 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
+
+    namespace 'cs_accelerator' do
+      resource 'auto_enrolment', only: [] do
+        get '/unenroll', action: :destroy
+      end
+    end
   end
 
   namespace 'class_marker' do
@@ -81,29 +86,27 @@ Rails.application.routes.draw do
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
   get '/bursary', to: 'cms#cms_page', as: :bursary, defaults: { page_slug: 'bursary' }
-  get '/bursary/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'bursary' }
   get '/careers-week', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
   get '/cms/:page_slug', action: :cms_page, controller: :cms, as: :cms_page, defaults: { page_slug: 'hubs' }
-  get '/cms/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache, defaults: { page_slug: 'hubs' }
+  get '/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache_flat, defaults: { page_slug: 'hubs' }
+  get '/:page_slug/:page_slug/refresh', action: :clear_page_cache, controller: :cms, as: :clear_page_cache_flat_nested, defaults: { page_slug: 'hubs' }
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions, defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator, defaults: { page_slug: 'cs-accelerator' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
   get '/faq/courses/', to: 'cms#cms_page', as: :faq_courses, defaults: { page_slug: 'faq-courses' }
-  get '/faq/courses/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'faq-courses' }
   get '/fl-trailers', to: 'pages#page', as: :trailers, defaults: { page_slug: 'fl-trailers' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
+  get '/governors-and-trustees', to: 'cms#cms_page', as: :governors_and_trustees, defaults: { page_slug: 'governors-and-trustees' }
   get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }
-  get '/home-teaching/:page_slug/refresh', to: 'cms#clear_page_cache', as: :clear_home_teaching_page_cache, defaults: { page_slug: 'key-stage-1' }
   get '/hubs', to: 'cms#cms_page', as: :hubs, defaults: { page_slug: 'hubs' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
   get '/contributing-partners', to: 'pages#page', as: :contributing_partners, defaults: { page_slug: 'contributing-partners' }
   get '/pedagogy', to: 'cms#cms_page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
-  get '/pedagogy/refresh', to: 'cms#clear_page_cache', defaults: { page_slug: 'pedagogy' }
   get '/primary-certificate', to: 'pages#static_programme_page', as: :primary, defaults: { page_slug: 'primary-certificate' }
   get '/primary-senior-leaders', to: 'cms#cms_page', as: :primary_senior_leaders, defaults: { page_slug: 'primary-senior-leaders' }
   get '/primary-teachers', to: 'landing_pages#primary_teachers', as: :primary_teachers, defaults: { slug: 'primary-certificate' }
@@ -112,6 +115,11 @@ Rails.application.routes.draw do
                                 constraints: ->(_request) { Programme.secondary_certificate.enrollable? }
   get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders, defaults: { page_slug: 'secondary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
+  get '/subject-practitioners', to: 'cms#cms_page', as: :subject_practitioners, defaults: { page_slug: 'subject-practitioner-panels' }
+  get "/subject-practitioner-panels-(*level)" => redirect("/subject-practitioners/%{level}") # for the page links
+  get '/subject-practitioners/primary', to: 'cms#cms_page', as: :subject_practitioners_primary, defaults: { page_slug: 'subject-practitioner-panels-primary' }
+  get '/subject-practitioners/secondary', to: 'cms#cms_page', as: :subject_practitioners_secondary, defaults: { page_slug: 'subject-practitioner-panels-secondary' }
+  get '/subject-practitioners/a-level', to: 'cms#cms_page', as: :subject_practitioners_a_level, defaults: { page_slug: 'subject-practitioner-panels-a-level' }
   get '/support-for-ite-providers', to: 'cms#cms_page', as: :support_for_ite_providers, defaults: { page_slug: 'support-for-ite-providers' }
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/take-the-next-step-in-your-career', to: 'cms#cms_page', as: :take_the_next_step_in_your_career, defaults: { page_slug: 'take-the-next-step-in-your-career' }

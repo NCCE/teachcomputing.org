@@ -1,6 +1,23 @@
 module DashboardHelper
-  def has_user_completed_activity?(user, activity)
-    return false if user.blank? || activity.blank?
-    user.achievements.any? { |a| a.activity.id == activity.id }
+  def get_course_tag(achievement)
+    if achievement&.cs_accelerator?
+      'CS Accelerator'
+    elsif achievement&.secondary_certificate?
+      'Secondary'
+    elsif achievement&.primary_certificate?
+      'Primary'
+    end
+  end
+
+  def get_course_suffix(achievement)
+    get_course_tag(achievement)&.parameterize
+  end
+
+  def get_date_string(achievement)
+    if achievement.current_state == :complete.to_s
+      "Completed on #{achievement.created_at.strftime("%b %Y")}"
+    else
+      "Enrolled on #{achievement.updated_at.strftime("%b %Y")}"
+    end
   end
 end
