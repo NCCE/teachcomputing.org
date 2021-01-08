@@ -33,6 +33,6 @@ class AssessmentAttemptsController < ApplicationController
 
     def teacher_reference_number
       trn = params.fetch(:user, {})[:teacher_reference_number]
-      current_user.update_attributes(teacher_reference_number: trn) if trn.present?
+      current_user.update(teacher_reference_number: trn) if trn.present?
     end
 end
