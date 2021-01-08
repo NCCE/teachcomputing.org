@@ -1,4 +1,4 @@
-class CsAcceleratorMailer < ApplicationMailer
+class CSAcceleratorMailer < ApplicationMailer
   CSA_COMPLETED_EMAIL = 'csa_completed_email'.freeze
   CSA_ASSESSMENT_ELIGIBILITY_EMAIL = 'csa_assessment_eligibility_email'.freeze
   CSA_MANUAL_ENROLLED_WELCOME = 'csa_manual_enrolled_welcome_email'.freeze

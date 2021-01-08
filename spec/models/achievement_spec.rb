@@ -427,18 +427,18 @@ RSpec.describe Achievement, type: :model do
       it 'queues job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
           .with(achievement_id: achievement.id)
       end
 
-      context 'when user is enrolled on CsAccelerator' do
+      context 'when user is enrolled on CSAccelerator' do
         it 'does not queue job' do
           create(:user_programme_enrolment,
                  user: user,
                  programme: cs_accelerator)
           expect do
             achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
         end
       end
     end
@@ -463,17 +463,17 @@ RSpec.describe Achievement, type: :model do
       it 'queues job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
       end
 
-      context 'when user is enrolled on CsAccelerator' do
+      context 'when user is enrolled on CSAccelerator' do
         it 'does not queue job' do
           create(:user_programme_enrolment,
                  user: user,
                  programme: cs_accelerator)
           expect do
             achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
         end
       end
     end
@@ -492,7 +492,7 @@ RSpec.describe Achievement, type: :model do
       it 'does not queue job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
       end
     end
   end

@@ -1,5 +1,5 @@
 module Certificates
-  class CsAcceleratorController < ApplicationController
+  class CSAcceleratorController < ApplicationController
     layout 'full-width'
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete]

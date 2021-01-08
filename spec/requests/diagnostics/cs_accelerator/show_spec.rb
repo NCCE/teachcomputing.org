@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Diagnostics::CsAcceleratorController do
+RSpec.describe Diagnostics::CSAcceleratorController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_url) { ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }

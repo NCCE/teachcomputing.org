@@ -4,7 +4,7 @@ class CompleteCertificateEmailJob < ApplicationJob
   def perform(user, programme)
     case programme.slug
     when 'cs-accelerator'
-      CsAcceleratorMailer.with(user: user).completed.deliver_now
+      CSAcceleratorMailer.with(user: user).completed.deliver_now
     when 'primary-certificate'
       PrimaryMailer.with(user: user).completed.deliver_now
     end

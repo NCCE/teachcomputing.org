@@ -10,9 +10,9 @@ class KickOffEmailsJob < ApplicationJob
     when 'cs-accelerator'
       ScheduleProgrammeGettingStartedPromptJob.set(wait: 7.days).perform_later(enrolment.user.id, enrolment.programme.id)
       if enrolment.auto_enrolled?
-        CsAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
+        CSAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
       else
-        CsAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now
+        CSAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now
       end
     end
   end

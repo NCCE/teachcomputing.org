@@ -12,7 +12,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
         latest_attempt.transition_to(:passed, percentage: percentage.to_f)
         certificate_number = assessment.programme.programme_complete_counter.get_next_number
         achievement.set_to_complete
-        CsAcceleratorEnrolmentTransitionJob.perform_later(user, certificate_number: certificate_number)
+        CSAcceleratorEnrolmentTransitionJob.perform_later(user, certificate_number: certificate_number)
       else
         latest_attempt.transition_to(:failed, percentage: percentage.to_f)
       end

@@ -1,28 +1,30 @@
-class CsAcceleratorMailerPreview < ActionMailer::Preview
-  def completed
-    CsAcceleratorMailer.with(user: User.first).completed
-  end
+module Previews
+  class CSAcceleratorMailerPreview < ActionMailer::Preview
+    def completed
+      CSAcceleratorMailer.with(user: User.first).completed
+    end
 
-  def assessment_eligibility
-    SentEmail.where(user_id: User.first.id,
-                    mailer_type: CsAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
-             .destroy_all
-    CsAcceleratorMailer.with(user: User.first).assessment_eligibility
-  end
+    def assessment_eligibility
+      SentEmail.where(user_id: User.first.id,
+                      mailer_type: CSAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
+               .destroy_all
+      CSAcceleratorMailer.with(user: User.first).assessment_eligibility
+    end
 
-  def new_assessment_eligibility
-    CsAcceleratorMailer.with(user: User.first).new_assessment_eligibility
-  end
+    def new_assessment_eligibility
+      CSAcceleratorMailer.with(user: User.first).new_assessment_eligibility
+    end
 
-  def manual_enrolled_welcome
-    SentEmail.where(user_id: User.first.id, mailer_type: CsAcceleratorMailer::CSA_MANUAL_ENROLLED_WELCOME).destroy_all
-    CsAcceleratorMailer.with(user: User.first).manual_enrolled_welcome
-  end
+    def manual_enrolled_welcome
+      SentEmail.where(user_id: User.first.id, mailer_type: CSAcceleratorMailer::CSA_MANUAL_ENROLLED_WELCOME).destroy_all
+      CSAcceleratorMailer.with(user: User.first).manual_enrolled_welcome
+    end
 
-  def auto_enrolled_welcome
-    SentEmail.where(user_id: User.first.id,
-                    mailer_type: CsAcceleratorMailer::CSA_AUTO_ENROLLED_WELCOME)
-             .destroy_all
-    CsAcceleratorMailer.with(user: User.first).auto_enrolled_welcome
+    def auto_enrolled_welcome
+      SentEmail.where(user_id: User.first.id,
+                      mailer_type: CSAcceleratorMailer::CSA_AUTO_ENROLLED_WELCOME)
+               .destroy_all
+      CSAcceleratorMailer.with(user: User.first).auto_enrolled_welcome
+    end
   end
 end
