@@ -56,9 +56,15 @@ RSpec.describe Achievement, type: :model do
 
     context 'valid file' do
       it 'is valid' do
+<<<<<<< Updated upstream
         achievement.supporting_evidence.attach(
           io: File.open('spec/support/active_storage/supporting_evidence_test_upload.png'), filename: 'test.png', content_type: 'image/png'
         )
+=======
+        fix = file_fixture('supporting_evidence_test_upload.png')
+        achievement.supporting_evidence = fix
+
+>>>>>>> Stashed changes
         expect(achievement.valid?).to eq true
       end
     end
