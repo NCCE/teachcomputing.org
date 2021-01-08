@@ -28,7 +28,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-    # Raise exceptions for disallowed deprecations.
+  # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
 
   # Tell Active Support which deprecation messages to disallow.
@@ -76,6 +76,7 @@ Rails.application.configure do
   # Ensure every change triggers an update (in development only), else docker misses things.
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
-  # Allow nicer hostname, uncomment when upgrading to Rails 6
-  # config.hosts << /([a-z0-9\.])+\.rpfdev\.com/
+  # Allow nicer hostname
+  config.hosts << /([a-z0-9.])+\.rpfdev\.com/
+  config.hosts << 'web'
 end

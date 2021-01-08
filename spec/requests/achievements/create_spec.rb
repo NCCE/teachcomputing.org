@@ -113,7 +113,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'redirects to the referrer if specified' do
-          expect(response).to redirect_to(referrer)
+        expect(response).to redirect_to(referrer)
       end
     end
 
@@ -126,22 +126,22 @@ RSpec.describe AchievementsController do
              }
       end
 
-      it 'it is added to the achievement transition' do
+      it 'is added to the achievement transition' do
         post achievements_path,
-              params: {
-                achievement: { activity_id: activity.id },
-                self_verification_info: 'This is a test'
-              }
+             params: {
+               achievement: { activity_id: activity.id },
+               self_verification_info: 'This is a test'
+             }
         transition = user.achievements.where(activity_id: activity.id).first.last_transition
         expect(transition.metadata['self_verification_info']).to eq('This is a test')
       end
 
       it 'empty strings are not stored' do
         post achievements_path,
-              params: {
-                achievement: { activity_id: activity.id },
-                self_verification_info: ''
-              }
+             params: {
+               achievement: { activity_id: activity.id },
+               self_verification_info: ''
+             }
         transition = user.achievements.where(activity_id: activity.id).first.last_transition
         expect(transition.metadata['self_verification_info']).to be(nil)
       end
@@ -151,9 +151,10 @@ RSpec.describe AchievementsController do
       context 'with a valid file' do
         before do
           post achievements_path,
-          params: {
-            achievement: { activity_id: activity.id, supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png')) }
-          }
+               params: {
+                 achievement: { activity_id: activity.id,
+                                supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png')) }
+               }
         end
 
         it 'uploads the attachment to the achievement' do
@@ -169,9 +170,10 @@ RSpec.describe AchievementsController do
       context 'with an invalid file' do
         before do
           post achievements_path,
-          params: {
-            achievement: { activity_id: activity.id, supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt')) }
-          }
+               params: {
+                 achievement: { activity_id: activity.id,
+                                supporting_evidence: fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt')) }
+               }
         end
 
         it 'does not create the achievement' do
