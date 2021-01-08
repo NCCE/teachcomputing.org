@@ -5,14 +5,15 @@ class UserController < ApplicationController
     trn = params[:user][:teacher_reference_number]
 
     if !trn.present?
-      flash[:error] = "Please enter your teacher reference number"
-    elsif current_user.update_attributes!(teacher_reference_number: trn)
-      flash[:notice] = "Teacher reference number added"
+      flash[:error] = 'Please enter your teacher reference number'
+    elsif current_user.update!(teacher_reference_number: trn)
+      flash[:notice] = 'Teacher reference number added'
     end
-    return redirect_to trn_redirect_path || dashboard_path
+    redirect_to trn_redirect_path || dashboard_path
   end
 
   private
+
     def trn_redirect_path
       helpers.safe_redirect_url(params[:redirect_path])
     end
