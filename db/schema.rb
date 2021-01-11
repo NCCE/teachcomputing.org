@@ -118,14 +118,6 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
   end
 
-  create_table "imports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "provider"
-    t.string "triggered_by"
-    t.datetime "completed_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "programme_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.uuid "activity_id", null: false
