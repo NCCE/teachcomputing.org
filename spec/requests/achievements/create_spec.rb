@@ -155,9 +155,7 @@ RSpec.describe AchievementsController do
                  achievement: {
                    activity_id: activity.id,
                    supporting_evidence: Rack::Test::UploadedFile.new(
-                     File.open(
-                       'spec/support/active_storage/supporting_evidence_test_upload.png'
-                     )
+                     'spec/support/active_storage/supporting_evidence_test_upload.png', 'image/png'
                    )
                  }
                }
@@ -180,9 +178,7 @@ RSpec.describe AchievementsController do
                  achievement: {
                    activity_id: activity.id,
                    supporting_evidence: Rack::Test::UploadedFile.new(
-                     File.open(
-                       'spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'
-                     )
+                     'spec/support/active_storage/supporting_evidence_invalid_test_upload.txt', 'text/plain'
                    )
                  }
                }
