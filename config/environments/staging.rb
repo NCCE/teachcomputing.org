@@ -122,5 +122,6 @@ Rails.application.configure do
   config.session_store :cookie_store,
                        key: '_teach_computing_session',
                        secure: true,
-                       httponly: true
+                       httponly: true,
+                       expire_after: 48.hours
 end
