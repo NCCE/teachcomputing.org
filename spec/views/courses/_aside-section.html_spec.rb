@@ -64,7 +64,7 @@ RSpec.describe('courses/_aside-section', type: :view) do
       end
 
       it 'renders link to log in' do
-        expected_link = '/auth/stem?source_uri=http://test.host/courses'
+        expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
         expect(rendered).to have_link('Join this course', href: expected_link)
       end
     end

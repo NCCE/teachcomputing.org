@@ -10,7 +10,7 @@ RSpec.describe NewAssessmentEligibilityJob, type: :job do
       [user, cs_accelerator_enrolment]
     end
 
-    it 'does not call CsAcceleratorMailer when the user does not have enough activities for the test' do
+    it 'does not call CSAcceleratorMailer when the user does not have enough activities for the test' do
         expect { described_class.perform_now(user.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(0)
     end

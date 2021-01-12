@@ -8,8 +8,8 @@ class KickOffEmailsJob < ApplicationJob
     when 'secondary-certificate'
       SecondaryMailer.with(user: enrolment.user).welcome.deliver_now
     when 'cs-accelerator'
-      CsAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now unless enrolment.auto_enrolled
-      CsAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
+      CSAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now unless enrolment.auto_enrolled
+      CSAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
     end
     ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month).perform_later(enrolment_id)
   end

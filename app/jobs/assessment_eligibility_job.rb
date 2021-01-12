@@ -11,8 +11,8 @@ class AssessmentEligibilityJob < ApplicationJob
 
     return unless programme.enough_activites_for_test?(user)
 
-    return if SentEmail.mailer_type_for_user(user, CsAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL).any?
+    return if SentEmail.mailer_type_for_user(user, CSAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL).any?
 
-    CsAcceleratorMailer.with(user: user).assessment_eligibility.deliver_now
+    CSAcceleratorMailer.with(user: user).assessment_eligibility.deliver_now
   end
 end
