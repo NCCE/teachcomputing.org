@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
     end
 
     namespace 'cs_accelerator' do
