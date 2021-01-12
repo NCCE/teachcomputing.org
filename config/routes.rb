@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get '/diagnostic/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate, defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
     end
 
     namespace 'cs_accelerator' do
@@ -99,6 +100,7 @@ Rails.application.routes.draw do
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/governors-and-trustees', to: 'cms#cms_page', as: :governors_and_trustees, defaults: { page_slug: 'governors-and-trustees' }
   get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
+  get '/home-teaching-resources', to: 'cms#cms_page', as: :home_teaching_resources, defaults: { page_slug: 'home-teaching-resources' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/home-teaching/:page_slug', to: 'cms#cms_page', as: :cms_home_teaching_page, defaults: { page_slug: 'key-stage-1' }
   get '/hubs', to: 'cms#cms_page', as: :hubs, defaults: { page_slug: 'hubs' }
