@@ -102,6 +102,7 @@ Rails.application.routes.draw do
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
+  get '/home-teaching-resources', to: 'cms#cms_page', as: :home_teaching_resources, defaults: { page_slug: 'home-teaching-resources' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
