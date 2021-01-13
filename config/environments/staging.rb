@@ -110,6 +110,12 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # Raise exceptions for disallowed deprecations.
+  config.active_support.disallowed_deprecation = :raise
+
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
+
   # Enable lograge to make logs less verbose
   config.lograge.enabled = true
 
@@ -122,5 +128,6 @@ Rails.application.configure do
   config.session_store :cookie_store,
                        key: '_teach_computing_session',
                        secure: true,
-                       httponly: true
+                       httponly: true,
+                       expire_after: 48.hours
 end

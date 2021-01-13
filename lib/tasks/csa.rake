@@ -19,7 +19,7 @@ namespace :csa do
 
     user_achievements.each do |user_id, achievements|
       enrolled_user_ids << user_id
-      CsAccelerator::AutoEnrolJob.perform_later(achievement_id: achievements.first.id)
+      CSAccelerator::AutoEnrolJob.perform_later(achievement_id: achievements.first.id)
     end
 
     abort('Reached limit') if limit.present?
@@ -33,7 +33,7 @@ namespace :csa do
     csa_achievements.each { |c| user_achievements[c.user_id] << c }
     user_achievements.each do |user_id, achievements|
       enrolled_user_ids << user_id
-      CsAccelerator::AutoEnrolJob.perform_later(achievement_id: achievements.first.id)
+      CSAccelerator::AutoEnrolJob.perform_later(achievement_id: achievements.first.id)
     end
   end
 end

@@ -1,0 +1,15 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
+  <p class='govuk-body'><strong>Kick-start your learning on the Computer Science Accelerator programme!</strong></p>
+  <p class='govuk-body'>Take your first step towards gaining certification with the Computer Science Accelerator programme. We’re here to help you at every stage of your professional learning.</p>
+  <p class='govuk-body'><strong>Not sure where to start?</strong></p>
+  <ul class='govuk-list'>
+    <li>Discover your <%= link_to 'personal dashboard', cs_accelerator_url, class: 'ncce-link' %>, where you’ll find all the resources and support you need</li>
+    <li>Take our short quiz to identify areas for improvement, or use our learning pathways to see recommended courses for you</li>
+    <li>Our handbook <%= link_to 'https://ncce.io/csa-handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link' %> provides a great overview of the programme, and useful guidance</li>
+  </ul>
+  <p class='govuk-body'>Our subject knowledge certificate is awarded by BCS and accredited by the Royal Academy of Engineering,  and can even set you on the path towards chartered status.</p>
+  <p class='govuk-body'><strong>Get help from a CS Champion</strong></p>
+  <p class='govuk-body'>If you're a teacher from a state-funded school or college in England, start your journey by booking a course. One of our CS Champions will then be in touch to support you through. Need help now? Contact <%= mail_to 'CSChampionSupport@stem.org.uk', 'CSChampionSupport@stem.org.uk' %></p>
+  <p class='govuk-body'>If you don't want to continue on the programme at this time, then <%= link_to 'let us know', unenrol_cs_accelerator_certificate_url(@enrolment_id), class: 'ncce-link' %> and we'll update our records. You can still re-enrol yourself in the future <%= link_to 'on our website', cs_accelerator_url, class: 'ncce-link' %>.<p>
+</div>
