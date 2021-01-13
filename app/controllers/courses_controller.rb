@@ -107,7 +107,7 @@ class CoursesController < ApplicationController
         occurrence.online_cpd ? acc : acc.push(occurrence.address_town)
       end
       towns.reject do |location|
-        location.downcase.include('remote delivered cpd')
+        location.downcase.include?('remote delivered cpd')
       end.uniq.sort.unshift('Face to face', 'Online', 'Remote')
     end
 
