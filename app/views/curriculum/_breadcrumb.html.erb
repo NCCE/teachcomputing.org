@@ -4,7 +4,7 @@
     <%= separator %><%= link_to key_stage_title, key_stage_path, class: 'govuk-link ncce-link' %>
   <% end %>
   <% if local_assigns[:unit_path].present? %>
-     <%= separator %><%= link_to 'Unit', unit_path, class: 'govuk-link ncce-link' %>
+    <%= separator %><%= link_to 'Unit', unit_path, class: 'govuk-link ncce-link' %>
   <% end %>
   <%= separator << current if local_assigns[:current].present? %>
 </p>
