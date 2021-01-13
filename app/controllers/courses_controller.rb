@@ -74,10 +74,10 @@ class CoursesController < ApplicationController
 
     def alert_filter_params
       filter_strings = []
-      filter_strings.push("#{ERB::Util.html_escape(@current_level)}") if @current_level
-      filter_strings.push("#{ERB::Util.html_escape(@current_location)}") if @current_location
-      filter_strings.push("#{ERB::Util.html_escape(@current_topic)}") if @current_topic
-      filter_strings.push("#{@current_certificate.title}") if @current_certificate
+      filter_strings.push(ERB::Util.html_escape(@current_level).to_s) if @current_level
+      filter_strings.push(ERB::Util.html_escape(@current_location).to_s) if @current_location
+      filter_strings.push(ERB::Util.html_escape(@current_topic).to_s) if @current_topic
+      filter_strings.push(@current_certificate.title.to_s) if @current_certificate
 
       return if filter_strings.empty?
 
@@ -103,8 +103,12 @@ class CoursesController < ApplicationController
     end
 
     def course_locations(course_occurrences)
-      towns = course_occurrences.reduce([]) { |acc, occurrence| !occurrence.online_cpd ? acc.push(occurrence.address_town) : acc }
-      towns.reject { |location| location == 'Remote delivered CPD' }.uniq.sort.unshift('Face to face', 'Online', 'Remote')
+      towns = course_occurrences.reduce([]) do |acc, occurrence|
+        occurrence.online_cpd ? acc : acc.push(occurrence.address_town)
+      end
+      towns.reject do |location|
+        location == 'Remote delivered CPD'
+      end.uniq.sort.unshift('Face to face', 'Online', 'Remote')
     end
 
     def course_programmes
