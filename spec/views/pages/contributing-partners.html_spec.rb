@@ -10,7 +10,6 @@ RSpec.describe('pages/contributing-partners', type: :view) do
   end
 
   it 'has 8 cards' do
-    expect(rendered).to have_css('.dark_card', count: 8)
+    expect(rendered).to have_css('.dark_card', count: 9)
   end
-
 end

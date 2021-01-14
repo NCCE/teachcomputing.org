@@ -17,6 +17,7 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:occurrences)
       expect(course_template).to respond_to(:online_cpd)
       expect(course_template).to respond_to(:outcomes)
+      expect(course_template).to respond_to(:programmes)
       expect(course_template).to respond_to(:remote_delivered_cpd)
       expect(course_template).to respond_to(:subjects)
       expect(course_template).to respond_to(:summary)
@@ -51,20 +52,6 @@ RSpec.describe Achiever::Course::Template do
     end
   end
 
-  describe '@remote_delivered_cpd' do
-    before do
-      stub_course_templates
-    end
-
-    it 'is set to false by default' do
-      expect(described_class.find_by_activity_code('CP201').remote_delivered_cpd).to eq(false)
-    end
-
-    it 'is set to true if the API sets it so' do
-      expect(described_class.find_by_activity_code('CP228').remote_delivered_cpd).to eq(true)
-    end
-  end
-
   describe 'class methods' do
     describe '#all' do
       before do
@@ -87,7 +74,7 @@ RSpec.describe Achiever::Course::Template do
 
       context 'when a template exists' do
         it 'returns the Achiever::Course::Template instance' do
-          expect(described_class.find_by_activity_code('CP201')).to be_an described_class
+          expect(described_class.find_by_activity_code('CP228')).to be_an described_class
         end
       end
 
@@ -127,7 +114,7 @@ RSpec.describe Achiever::Course::Template do
     end
 
     it 'returns a collection of with_occurrences' do
-      expect(described_class.all.first.with_occurrences.count).to eq 51
+      expect(described_class.all.first.with_occurrences).to be_a(Array)
     end
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator', title: 'CS Accelerator')}
+  let(:programme) { create(:programme, slug: 'cs-accelerator', title: 'CS Accelerator') }
 
   describe 'GET #index' do
     before do
@@ -27,12 +27,10 @@ RSpec.describe CoursesController do
         expect(assigns(:courses)).to be_a(Array)
       end
 
-      it 'has correct number of courses' do
-        expect(assigns(:courses).count).to eq(37)
-      end
-
       it 'assigns adds course_occurrences to their respective courses' do
-        occurrence = assigns(:courses).select { |course| course.course_template_no == assigns(:course_occurrences).sample.course_template_no }
+        occurrence = assigns(:courses).select do |course|
+          course.course_template_no == assigns(:course_occurrences).sample.course_template_no
+        end
         expect(occurrence).not_to eq 0
       end
 
@@ -77,7 +75,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(23)
+          expect(assigns(:courses).count).to eq(45)
         end
 
         it 'initalises current certificate' do
@@ -99,7 +97,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(4)
+          expect(assigns(:courses).count).to eq(1)
         end
 
         it 'initalises current topic' do
@@ -121,7 +119,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(10)
+          expect(assigns(:courses).count).to eq(5)
         end
 
         it 'courses have correct location' do
@@ -156,7 +154,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(22)
+          expect(assigns(:courses).count).to eq(25)
         end
 
         it 'ensures the course templates are marked as online_cpd' do
@@ -184,18 +182,12 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(14)
+          expect(assigns(:courses).count).to eq(30)
         end
 
         it 'course templates are not marked as online' do
           assigns(:courses).each do |course|
             expect(course.online_cpd).to eq false
-          end
-        end
-
-        it 'course templates are not marked as remote' do
-          assigns(:courses).each do |course|
-            expect(course.remote_delivered_cpd).to eq false
           end
         end
 
@@ -218,7 +210,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(1)
+          expect(assigns(:courses).count).to eq(24)
         end
 
         it 'course templates are not marked as online' do
@@ -246,7 +238,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(28)
+          expect(assigns(:courses).count).to eq(54)
         end
 
         it 'initalises current level' do
@@ -268,7 +260,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(6)
+          expect(assigns(:courses).count).to eq(0)
         end
 
         it 'assigns the filters variable' do
@@ -287,7 +279,7 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(21)
+          expect(assigns(:courses).count).to eq(33)
         end
 
         it 'assigns the filters variable' do
@@ -303,19 +295,19 @@ RSpec.describe CoursesController do
       context 'filter by level, location and topic' do
         before do
           get courses_path, params: {
-            level: 'Key stage 4',
+            level: 'Key stage 2',
             topic: 'Computing',
-            location: 'York'
+            location: 'Swindon'
           }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(6)
+          expect(assigns(:courses).count).to eq(2)
         end
 
         it 'has filtered town' do
           course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('York')
+          expect(course.occurrences.map(&:address_town)).to include('Swindon')
         end
 
         it 'doesn\'t exclude other occurrence locations' do
@@ -328,8 +320,8 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct info' do
-          expect(assigns(:filters)).to include('Key stage 4')
-          expect(assigns(:filters)).to include('York')
+          expect(assigns(:filters)).to include('Key stage 2')
+          expect(assigns(:filters)).to include('Swindon')
           expect(assigns(:filters)).to include('Computing')
         end
       end
@@ -338,24 +330,24 @@ RSpec.describe CoursesController do
         before do
           programme
           get courses_path, params: {
-            level: 'Key stage 4',
+            level: 'Key stage 1',
             topic: 'Computing',
-            location: 'York'
+            location: 'Redruth'
           }
         end
 
         it 'has correct number of courses' do
-          expect(assigns(:courses).count).to eq(6)
+          expect(assigns(:courses).count).to eq(1)
         end
 
         it 'has filtered town' do
           course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('York')
+          expect(course.occurrences.map(&:address_town)).to include('Redruth')
         end
 
         it 'doesn\'t exclude other occurrence locations' do
           course = assigns(:courses).first
-          expect(course.occurrences.map(&:address_town)).to include('London')
+          expect(course.occurrences.map(&:address_town)).to include('York')
         end
 
         it 'assigns the filters variable' do
@@ -363,8 +355,8 @@ RSpec.describe CoursesController do
         end
 
         it 'has correct info' do
-          expect(assigns(:filters)).to include('Key stage 4')
-          expect(assigns(:filters)).to include('York')
+          expect(assigns(:filters)).to include('Key stage 1')
+          expect(assigns(:filters)).to include('Redruth')
           expect(assigns(:filters)).to include('Computing')
         end
       end
@@ -385,11 +377,11 @@ RSpec.describe CoursesController do
         end
 
         it 'level param is escaped' do
-          expect(assigns(:filters)).to include(/&lt;p&gt;My XSS is excessive&lt;\/p&gt;/)
+          expect(assigns(:filters)).to include(%r{&lt;p&gt;My XSS is excessive&lt;/p&gt;})
         end
 
         it 'topic param is escaped' do
-          expect(assigns(:filters)).to include(/&lt;script&gt;alert\(&quot;boom&quot;\)&lt;\/script&gt;/)
+          expect(assigns(:filters)).to include(%r{&lt;script&gt;alert\(&quot;boom&quot;\)&lt;/script&gt;})
         end
 
         it 'location param is escaped' do
@@ -397,7 +389,7 @@ RSpec.describe CoursesController do
         end
 
         it 'invalid certificate does not cause filtering' do
-          expect(assigns(:filters)).not_to include(/&lt;h1&gt;Not a cert&lt;\/h1&gt;/)
+          expect(assigns(:filters)).not_to include(%r{&lt;h1&gt;Not a cert&lt;/h1&gt;})
         end
       end
     end

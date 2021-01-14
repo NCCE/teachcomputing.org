@@ -1,12 +1,14 @@
 class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
   queue_as :default
 
-  def perform(user_id, programme_id)
-    user = User.find(user_id)
-    programme = Programme.find(programme_id)
+  def perform(enrolment_id)
+    enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
-    return if user.achievements.for_programme(programme).count.positive?
+    return if enrolment.user.achievements.for_programme(enrolment.programme).count.positive?
 
-    # ProgrammeProgressMailer.with(user: user, slug: programme.slug).get_started_prompt.deliver_now
+    case enrolment.programme.slug
+    when 'cs-accelerator'
+      CSAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
+    end
   end
 end

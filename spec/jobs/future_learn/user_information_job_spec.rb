@@ -26,13 +26,6 @@ RSpec.describe FutureLearn::UserInformationJob, type: :job do
           described_class.perform_now(membership_id: fl_membership_id)
         end.to have_enqueued_job(described_class).with(membership_id: fl_membership_id)
       end
-
-      it 'receives retry_on 3 times' do
-        allow_any_instance_of(described_class).to receive(:executions).and_return(3)
-        expect do
-          described_class.perform_now(membership_id: fl_membership_id)
-        end.to raise_error(error_401)
-      end
     end
 
     context 'when FL user matches TC user by ID' do
