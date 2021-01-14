@@ -31,7 +31,7 @@ module CurriculumHelper
   end
 
   # Separator for the breadcrumbs
-  def separator
+  def breadcrumb_separator
     ' > '
   end
 end
