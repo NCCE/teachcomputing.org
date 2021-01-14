@@ -21,7 +21,7 @@ RSpec.describe CmsController do
       end
 
       it 'has the expected class' do
-        expect(assigns(:parent_slug)).to eq('bursary')
+        expect(assigns(:style_slug)).to eq('bursary')
       end
     end
 
@@ -38,11 +38,11 @@ RSpec.describe CmsController do
     context 'with a nested page' do
       before do
         stub_nested_cms_page
-        get '/home-teaching/key-stage-1'
+        get '/subject-practitioners/primary'
       end
 
       it 'has the expected class' do
-        expect(assigns(:parent_slug)).to eq('home-teaching')
+        expect(assigns(:style_slug)).to eq('subject-practitioners')
       end
     end
   end
