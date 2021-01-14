@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CsAccelerator::AutoEnrolJob, type: :job do
+RSpec.describe CSAccelerator::AutoEnrolJob, type: :job do
   describe '.perform' do
     subject(:enrol_job) { described_class.perform_now(achievement_id: achievement.id) }
 

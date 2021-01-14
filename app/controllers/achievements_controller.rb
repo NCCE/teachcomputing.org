@@ -7,7 +7,10 @@ class AchievementsController < ApplicationController
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
       metadata = { credit: @achievement.activity.credit }
       metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      metadata[:supporting_evidence] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
+      if achievement_params[:supporting_evidence].present?
+        metadata[:supporting_evidence] =
+          url_for(@achievement.supporting_evidence)
+      end
 
       @achievement.transition_to(:complete, metadata)
 
@@ -16,7 +19,8 @@ class AchievementsController < ApplicationController
         when 'cs-accelerator'
           AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
         when 'primary-certificate' || 'secondary-certificate'
-          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
+          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id,
+                                                      source: 'AchievementsController.create')
         end
       end
     else

@@ -8,7 +8,7 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
 
     case enrolment.programme.slug
     when 'cs-accelerator'
-      CsAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
+      CSAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
     end
   end
 end

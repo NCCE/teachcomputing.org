@@ -29,7 +29,7 @@
   <div class="ncce-aside">
     <h2 class="govuk-heading-m ncce-aside__title"><%= join_or_book %></h2>
       <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
-      <p class="govuk-body"><%= link_to join_or_book, "#{auth_url}?source_uri=#{URI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %></p>
+      <p class="govuk-body"><%= link_to join_or_book, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %></p>
       <p class="govuk-body-s ncce-aside__text"> Not got a STEM Learning account?
         <br>
         <%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %></p>
