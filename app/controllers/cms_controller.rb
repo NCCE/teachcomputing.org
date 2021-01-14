@@ -2,8 +2,7 @@ class CmsController < ApplicationController
   layout 'full-width'
 
   def cms_page
-    slug = build_slug_from_params
-    @page = Ghost.new.get_single_page(slug)
+    @page = Ghost.new.get_single_page(build_slug_from_params)
     @style_slug = style_slug
     render :cms_page
   end
