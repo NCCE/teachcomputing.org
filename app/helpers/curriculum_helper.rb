@@ -29,4 +29,9 @@ module CurriculumHelper
   def sorted_years(years)
     years.sort_by(&:year_number)
   end
+
+  # Separator for the breadcrumbs
+  def breadcrumb_separator
+    ' > '
+  end
 end
