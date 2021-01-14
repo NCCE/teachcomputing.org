@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Certificates::CsAcceleratorController do
+RSpec.describe Certificates::CSAcceleratorController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }

@@ -12,11 +12,7 @@ if [ -f $PID ]; then
 fi
 
 echo "- Configuring databases:"
-if bundle exec rake db:exists; then
-  bundle exec rake db:migrate
-else
-  bundle exec rake db:setup
-fi
+bundle exec rake db:prepare
 
 echo "- Starting rails:"
 # Will start normally, allowing later debug sessions

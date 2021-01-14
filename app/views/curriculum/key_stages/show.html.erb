@@ -11,7 +11,7 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0"><%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %>
+  <%= render partial: 'curriculum/breadcrumb', locals: { current: @key_stage.short_title } %>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
