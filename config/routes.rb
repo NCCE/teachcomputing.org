@@ -102,9 +102,6 @@ Rails.application.routes.draw do
   get '/fl-trailers', to: 'pages#page', as: :trailers, defaults: { page_slug: 'fl-trailers' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
-  get '/home-teaching', to: 'pages#page', as: :home_teaching, defaults: { page_slug: 'home-teaching' }
-  get '/home-teaching-resources', to: 'cms#cms_page', as: :home_teaching_resources,
-                                  defaults: { page_slug: 'home-teaching-resources' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
@@ -126,13 +123,13 @@ Rails.application.routes.draw do
   get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders,
                                    defaults: { page_slug: 'secondary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
-  get '/subject-practitioner-panels-(*level)' => redirect('/subject-practitioners/%{level}') # for the page links
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome
 
   # CMS ROUTES
+  get '/home-teaching-resources' => redirect('/home-teaching')
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 

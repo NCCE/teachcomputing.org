@@ -17,9 +17,9 @@ class Ghost
       end
 
       pages = ActiveSupport::JSON.decode(result)
-      return pages['pages'][0]
-    rescue StandardError => error
-      Raven.capture_exception(error)
+      pages['pages'][0]
+    rescue StandardError => e
+      Raven.capture_exception(e)
       raise ActiveRecord::RecordNotFound
     end
   end
@@ -46,9 +46,9 @@ class Ghost
 
       return featured_posts['posts']
     rescue SocketError
-      return [];
-    rescue RestClient::Exception => error
-      Raven.capture_exception(error)
+      return []
+    rescue RestClient::Exception => e
+      Raven.capture_exception(e)
     rescue ActiveSupport::JSON.parse_error
       Raven.capture_message("Ghost API JSON Parse error for string: #{result}")
     end
