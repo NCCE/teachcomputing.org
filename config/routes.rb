@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: 'admin/sidekiq'
+
   resources :assessment_attempts, only: %i[create]
 
   namespace 'certificates', path: 'certificate', as: '' do
@@ -135,7 +138,4 @@ Rails.application.routes.draw do
 
   get '/:parent_slug/:page_slug', to: 'cms#cms_page'
   get '/:page_slug', to: 'cms#cms_page'
-
-  require 'sidekiq/web'
-  mount Sidekiq::Web, at: 'admin/sidekiq'
 end
