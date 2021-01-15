@@ -679,3 +679,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '6e8bfcd4-df50-eb11-a812
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1a81f632-a255-eb11-a812-000d3a874628') do |activity|
+  activity.title = 'Teaching GCSE computer science: improving student engagement'
+  activity.credit = 10
+  activity.slug = 'teaching-gcse-computer-science-improving-student-engagement'
+  activity.stem_course_template_no = '1a81f632-a255-eb11-a812-000d3a874628'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
