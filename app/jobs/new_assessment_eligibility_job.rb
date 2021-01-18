@@ -7,6 +7,6 @@ class NewAssessmentEligibilityJob < ApplicationJob
 
     return unless programme.enough_activites_for_test?(user)
 
-    CsAcceleratorMailer.with(user: user).new_assessment_eligibility.deliver_now
+    CSAcceleratorMailer.with(user: user).new_assessment_eligibility.deliver_now
   end
 end

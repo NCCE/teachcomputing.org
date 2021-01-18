@@ -62,14 +62,13 @@
     @extend .govuk-list--number;
   }
 
-  img,
-  video {
-    margin-bottom: 20px;
-    width: 100%;
-  }
-
   a {
     @extend .govuk-link;
     @extend .ncce-link;
+  }
+
+  button {
+    @extend .govuk-button;
+    @extend .button;
   }
 }

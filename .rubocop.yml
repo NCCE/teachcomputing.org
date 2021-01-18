@@ -6,10 +6,11 @@ require:
 
 AllCops:
   Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
-    - 'tmp/**/*'
-  TargetRubyVersion: 2.5.7
+    - "vendor/**/*"
+    - "spec/fixtures/**/*"
+    - "tmp/**/*"
+  TargetRubyVersion: 2.7.2
+  NewCops: enable
 
 Layout/EndOfLine:
   EnforcedStyle: lf
@@ -45,9 +46,6 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Enabled: false
 
-Rails:
-  Enabled: true
-
 RSpec/ExampleLength:
   Enabled: false
 
@@ -59,3 +57,6 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

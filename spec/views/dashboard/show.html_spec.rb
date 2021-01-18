@@ -3,16 +3,16 @@ require 'rails_helper'
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let!(:programme) { create(:cs_accelerator) }
+  let!(:primary_certificate) { create(:primary_certificate) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:secondary_certificate) { create(:secondary_certificate) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,
-           programme_id: programme.id)
+           programme_id: cs_accelerator.id)
   end
 
   before do
-		create(:primary_certificate)
-		create(:secondary_certificate)
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     @incomplete_achievements = []
     @completed_achievements = []
@@ -60,7 +60,7 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context 'when there are only incomplete achievements' do
     before do
-      @incomplete_achievements = [create(:achievement, user: user, programme_id: programme.id)]
+      @incomplete_achievements = [create(:achievement, user: user, programme_id: primary_certificate.id)]
       render
     end
 
@@ -69,7 +69,15 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the enrolled prefix' do
-      expect(rendered).to have_text('Enrolled Dec 2020')
+      expect(rendered).to have_text('Enrolled')
+    end
+
+    it 'shows the expected border' do
+      expect(rendered).to have_css('.dashboard-border--primary')
+    end
+
+    it 'shows the expected tag' do
+      expect(rendered).to have_css('.dashboard-tags--primary')
     end
 
     it "does not render an empty list for complete achievements" do
@@ -79,7 +87,7 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context 'when there are only complete achievements' do
     before do
-      @completed_achievements = [create(:completed_achievement, user: user, programme_id: programme.id)]
+      @completed_achievements = [create(:completed_achievement, user: user, programme_id: secondary_certificate.id)]
       render
     end
 
@@ -88,7 +96,15 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the completed prefix' do
-      expect(rendered).to have_text('Completed Dec 2020')
+      expect(rendered).to have_text('Completed')
+    end
+
+    it 'shows the expected border' do
+      expect(rendered).to have_css('.dashboard-border--secondary')
+    end
+
+    it 'shows the expected tag' do
+      expect(rendered).to have_css('.dashboard-tags--secondary')
     end
 
     it "does not render an empty list for incomplete achievements" do
@@ -98,13 +114,21 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context 'when there are both complete and incomplete achievements' do
     before do
-      @incomplete_achievements = create_list(:achievement, 2, user: user, programme_id: programme.id)
-      @completed_achievements = create_list(:completed_achievement, 2, user: user, programme_id: programme.id)
+      @incomplete_achievements = create_list(:achievement, 2, user: user, programme_id: primary_certificate.id)
+      @completed_achievements = create_list(:completed_achievement, 2, user: user, programme_id: cs_accelerator.id)
       render
     end
 
     it 'has an activity list with the expected number of items' do
       expect(rendered).to have_css('.ncce-activity-list li', count: 4)
+    end
+
+    it 'shows the expected border' do
+      expect(rendered).to have_css('.dashboard-border--cs-accelerator', count: 2)
+    end
+
+    it 'shows the expected tag' do
+      expect(rendered).to have_css('.dashboard-tags--cs-accelerator', count: 2)
     end
   end
 

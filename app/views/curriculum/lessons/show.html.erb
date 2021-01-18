@@ -12,9 +12,12 @@
   </div>
 </div>
 <div class="govuk-width-container">
-	<p class="govuk-body govuk-!-padding-top-4 govuk-!-margin-bottom-0">
-    <%= link_to 'Curriculum', curriculum_key_stages_path, class: 'govuk-link ncce-link' %> > <%= link_to @unit.year_group.key_stage.short_title, curriculum_key_stage_units_path(@unit.year_group.key_stage.slug), class: 'govuk-link ncce-link' %> > <%= link_to "#{year_group_title(@unit.year_group.year_number)} - #{@unit.title}", curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug) %>
-  </p>
+  <%= render partial: 'curriculum/breadcrumb', locals: {
+    key_stage_title: @unit.year_group.key_stage.short_title,
+    key_stage_path: curriculum_key_stage_units_path(@unit.year_group.key_stage.slug),
+    unit_path: curriculum_key_stage_unit_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.slug),
+    current: 'Lesson'
+  } %>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds external-content">
@@ -39,7 +42,7 @@
               <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: @lesson.id, user_id: current_user.id } %>
             <% end %>
           <% else %>
-            <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{URI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+            <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
             <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
             <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
           <% end %>

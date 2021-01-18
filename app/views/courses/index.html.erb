@@ -6,7 +6,7 @@
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body">
           Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge, with
-          <%= link_to 'bursaries', bursary_path, class: 'ncce-link' %> available for schools and colleges to help you participate.
+          <%= link_to 'bursaries', '/bursary', class: 'ncce-link' %> available for schools and colleges to help you participate.
         </p>
         <p class="govuk-body">
           Choose how and when you want to learn, through face-to-face, online, or live remote training.
@@ -132,8 +132,8 @@
                         <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
                       <% end %>
                   <% end %>
-                  <% if course.workstream == 'CS Accelerator' %>
-                    <strong class="govuk-tag ncce-courses__tag"><%= course.workstream %></strong>
+                  <% course.programmes.each do |programme| %>
+                    <strong class="govuk-tag ncce-courses__tag"><%= programme %></strong>
                   <% end %>
                 </p>
               <% end %>

@@ -21,6 +21,17 @@ class UserProgrammeEnrolmentsController < ApplicationController
     end
   end
 
+  def destroy
+    enrolment = UserProgrammeEnrolment.find_by!(id: params[:id])
+
+    if enrolment.present?
+      enrolment.transition_to(:unenrolled)
+      flash[:notice] = "You have successfully opted out of the #{enrolment.programme.title}"
+    end
+
+    redirect_to dashboard_path
+  end
+
   private
 
     def user_programme_enrolment_params
