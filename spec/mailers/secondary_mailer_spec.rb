@@ -38,7 +38,9 @@ RSpec.describe SecondaryMailer, type: :mailer do
 
   describe 'completed' do
     let(:mail) { SecondaryMailer.with(user: user).completed }
-    let(:mail_subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in Secondary Computing Teaching' }
+    let(:mail_subject) do
+      'Congratulations you have completed the National Centre for Computing Education Certificate in Secondary Computing Teaching'
+    end
 
     it 'renders the headers' do
       expect(mail.subject).to eq(mail_subject)
