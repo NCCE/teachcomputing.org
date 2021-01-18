@@ -18,6 +18,8 @@ class Ghost
 
       pages = ActiveSupport::JSON.decode(result)
       pages['pages'][0]
+    rescue RestClient::NotFound
+      raise ActiveRecord::RecordNotFound
     rescue StandardError => e
       Raven.capture_exception(e)
       raise ActiveRecord::RecordNotFound
