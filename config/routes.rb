@@ -133,6 +133,7 @@ Rails.application.routes.draw do
 
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')
+  get '/home-teaching/:page_slug' => redirect('/home-teaching')
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
