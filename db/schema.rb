@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_104616) do
+ActiveRecord::Schema.define(version: 2021_01_18_152837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -116,6 +116,24 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.string "class_marker_test_id"
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
+  end
+
+  create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "pathway_id"
+    t.uuid "activity_id"
+    t.boolean "supplemental"
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pathways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.int4range "range"
+    t.uuid "programme_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "programme_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -233,6 +251,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.datetime "updated_at", null: false
     t.boolean "flagged", default: false
     t.boolean "auto_enrolled", default: false
+    t.uuid "pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"

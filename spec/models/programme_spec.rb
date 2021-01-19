@@ -9,6 +9,7 @@ RSpec.describe Programme, type: :model do
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
+  
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
@@ -29,6 +30,10 @@ RSpec.describe Programme, type: :model do
 
     it 'has_one assessment' do
       expect(programme).to have_one(:assessment)
+    end
+
+    it 'has_one pathway' do
+      expect(programme).to have_one(:pathway)
     end
 
     it 'has_one programme_complete_counter' do

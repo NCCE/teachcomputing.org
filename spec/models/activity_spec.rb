@@ -14,6 +14,14 @@ RSpec.describe Activity, type: :model do
   let(:removable_activity) { create(:activity, :user_removable) }
 
   describe 'associations' do
+    it 'has_one assessment' do
+      expect(activity).to have_one(:assessment)
+    end
+
+    it 'has_one pathway' do
+      expect(activity).to have_one(:pathway_activity)
+    end
+
     it 'has_many achievements' do
       expect(activity).to have_many(:achievements)
     end

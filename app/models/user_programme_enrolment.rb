@@ -3,6 +3,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   belongs_to :user
   belongs_to :programme
+  belongs_to :pathway
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 

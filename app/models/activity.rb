@@ -11,6 +11,7 @@ class Activity < ApplicationRecord
   has_many :programme_activities, dependent: :destroy
   has_many :programmes, through: :programme_activities
   has_one  :assessment
+  has_one  :pathway_activity
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY, DIAGNOSTIC_CATEGORY, FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY] }

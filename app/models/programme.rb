@@ -11,6 +11,7 @@ class Programme < ApplicationRecord
   has_many :programme_activity_groupings
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
+  has_one  :pathway, dependent: :destroy
   has_many :achievements, dependent: :nullify
   has_many  :questionnaire, dependent: :nullify
   has_many  :questionnaire_response, dependent: :nullify
