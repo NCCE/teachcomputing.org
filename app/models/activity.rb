@@ -1,10 +1,10 @@
 class Activity < ApplicationRecord
-  ACTION_CATEGORY = 'action'
-  ASSESSMENT_CATEGORY = 'assessment'
-  COMMUNITY_CATEGORY = 'community'
-  DIAGNOSTIC_CATEGORY = 'diagnostic'
-  FACE_TO_FACE_CATEGORY = 'face-to-face'
-  ONLINE_CATEGORY = 'online'
+  ACTION_CATEGORY = 'action'.freeze
+  ASSESSMENT_CATEGORY = 'assessment'.freeze
+  COMMUNITY_CATEGORY = 'community'.freeze
+  DIAGNOSTIC_CATEGORY = 'diagnostic'.freeze
+  FACE_TO_FACE_CATEGORY = 'face-to-face'.freeze
+  ONLINE_CATEGORY = 'online'.freeze
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :users, through: :achievements
@@ -14,12 +14,19 @@ class Activity < ApplicationRecord
   has_one  :pathway_activity
 
   validates :title, :slug, :category, presence: true
-  validates :category, inclusion: { in: [ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY, DIAGNOSTIC_CATEGORY, FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY] }
-  validates :provider, inclusion: { in: %w[barefoot cas classmarker future-learn isaac ncce raspberrypi stem-learning system] }
-  validates :future_learn_course_uuid, uniqueness: true, unless: Proc.new { |a| a.future_learn_course_uuid.blank? }
-  validates :stem_course_template_no, uniqueness: true, unless: Proc.new { |a| a.stem_course_template_no.blank? }
+  validates :category, inclusion: { in: [
+    ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY,
+    DIAGNOSTIC_CATEGORY, FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY
+  ] }
+  validates :provider, inclusion: {
+    in: %w[barefoot cas classmarker future-learn isaac ncce raspberrypi stem-learning system]
+  }
+  validates :future_learn_course_uuid, uniqueness: true, unless: proc { |a| a.future_learn_course_uuid.blank? }
+  validates :stem_course_template_no, uniqueness: true, unless: proc { |a| a.stem_course_template_no.blank? }
 
-  scope :available_for, ->(user) { where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id) }
+  scope :available_for, ->(user) {
+    where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id)
+  }
   scope :online, -> { where(category: ONLINE_CATEGORY) }
   scope :face_to_face, -> { where(category: FACE_TO_FACE_CATEGORY) }
   scope :future_learn, -> { where(provider: 'future-learn') }

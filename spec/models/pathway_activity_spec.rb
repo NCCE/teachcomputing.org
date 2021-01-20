@@ -12,4 +12,12 @@ RSpec.describe PathwayActivity, type: :model do
       expect(pathway_activity).to belong_to(:activity)
     end
   end
+
+  describe 'activity type' do
+    it 'is updated when the model is saved' do
+      pa = build(:pathway_activity)
+      pa.run_callbacks :save
+      expect(pa.activity_type).to eq('face-to-face')
+    end
+  end
 end
