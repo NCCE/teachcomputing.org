@@ -5,7 +5,7 @@ class CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob < ApplicationJo
     user = User.find(user_id)
     programme = Programme.secondary_certificate
     additional_csa_course_activity = Activity.find_by(slug: 'complete-a-cs-accelerator-course')
-    metadata = []
+    metadata = {}
 
     return if user.achievements.for_programme(programme).where(activity_id: additional_csa_course_activity.id).any?
 
