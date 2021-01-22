@@ -18,8 +18,8 @@ RSpec.describe Activity, type: :model do
       expect(activity).to have_one(:assessment)
     end
 
-    it 'has_one pathway' do
-      expect(activity).to have_one(:pathway_activity)
+    it 'has_many pathway_activities' do
+      expect(activity).to have_many(:pathway_activities)
     end
 
     it 'has_many achievements' do

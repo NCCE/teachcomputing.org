@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_152837) do
+ActiveRecord::Schema.define(version: 2021_01_18_152839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -119,18 +119,19 @@ ActiveRecord::Schema.define(version: 2021_01_18_152837) do
   end
 
   create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "pathway_id"
-    t.uuid "activity_id"
-    t.boolean "supplemental"
+    t.uuid "pathway_id", null: false
+    t.uuid "activity_id", null: false
+    t.integer "activity_type", null: false
     t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_pathway_activities_on_activity_id"
+    t.index ["pathway_id"], name: "index_pathway_activities_on_pathway_id"
   end
 
   create_table "pathways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.int4range "range"
-    t.uuid "programme_id"
-    t.string "title"
+    t.int4range "range", null: false
+    t.string "title", null: false
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -252,6 +253,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_152837) do
     t.boolean "flagged", default: false
     t.boolean "auto_enrolled", default: false
     t.uuid "pathway_id"
+    t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
@@ -282,6 +284,9 @@ ActiveRecord::Schema.define(version: 2021_01_18_152837) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "pathway_activities", "activities"
+  add_foreign_key "pathway_activities", "pathways"
   add_foreign_key "questionnaire_response_transitions", "questionnaire_responses"
   add_foreign_key "user_programme_enrolment_transitions", "user_programme_enrolments"
+  add_foreign_key "user_programme_enrolments", "pathways"
 end

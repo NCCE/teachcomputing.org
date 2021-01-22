@@ -10,8 +10,8 @@ class Activity < ApplicationRecord
   has_many :users, through: :achievements
   has_many :programme_activities, dependent: :destroy
   has_many :programmes, through: :programme_activities
+  has_many :pathway_activities, dependent: :destroy
   has_one  :assessment
-  has_one  :pathway_activity
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [
