@@ -158,13 +158,20 @@ Run `brakeman -I config/brakeman.ignore .` in the project root and follow the on
 
 ### Debugging
 
-`ruby-debug-ide` is enabled and waiting for connections by default on port `1234`. There is a `launch.json` in the repo and if you're using vscode it should be as easy as going to the 'Run' view, selecting 'Debug Attach' and clicking the green Run button. It's important to note that if you attempt to restart or stop the debug process, this will effectively kill the container, and a `docker-compose up -d` will be necessary to continue - however this is rarely necessary in general use since you'll be debugging individual requests.
+`ruby-debug-ide` is enabled and waiting for connections by default on port `1234`. There is a `launch.json` in the repo and if you're using vscode it should be as easy as going to the 'Run' view, selecting 'Rails Debug' and clicking the green Run button. It's important to note that if you attempt to restart or stop the debug process, this will effectively kill the container, and a `docker-compose up -d` will be necessary to continue - however this is rarely necessary in general use since you'll be debugging individual requests.
+
+Calling `yarn run rspec-debug <path to spec>` will start an rspec debug session, this session will wait for a connection on `127.0.0.1:1235`. Add any breakpoints required, then for VSCode there is a launch configuration in `launch.json` called 'RSpec Debug', starting this will glom onto the previously started debug session.
 
 If you prefer to use `byebug` you'll _first_ need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker-compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker-compose up -d` again.
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
+### User Impersonation
+
+When debugging it is sometimes desirable to see the site from a users perspective.
+To do so without needing to change password you can set the `USER_TO_IMPERSONATE` environment variable in the `.env` file to the desired users ID.
+
 ### Troubleshooting
 
-* `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent error.
-* If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.
+- `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent error.
+- If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.

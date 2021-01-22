@@ -27,7 +27,9 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: { category: category })
   }
 
-  scope :with_courses, -> { joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] }) }
+  scope :with_courses, lambda {
+                         joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] })
+                       }
 
   scope :with_credit, lambda { |credit|
     joins(:activity).where(activities: { credit: credit })
@@ -65,9 +67,7 @@ class Achievement < ApplicationRecord
 
     metadata = { progress: progress.floor }
 
-    if left_at.present?
-      return set_to_dropped(left_at: left_at) unless progress >= 60
-    end
+    return set_to_dropped(left_at: left_at) if left_at.present? && !(progress >= 60)
 
     case progress
     when 0
@@ -137,6 +137,6 @@ class Achievement < ApplicationRecord
       return unless activity.programmes.any?(&:cs_accelerator?)
       return unless user.csa_auto_enrollable?
 
-      CsAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
+      CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 end

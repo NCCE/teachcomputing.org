@@ -56,14 +56,18 @@ RSpec.describe Achievement, type: :model do
 
     context 'valid file' do
       it 'is valid' do
-        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_test_upload.png'))
+        achievement.supporting_evidence.attach(
+          io: File.open('spec/support/active_storage/supporting_evidence_test_upload.png'), filename: 'test.png', content_type: 'image/png'
+        )
         expect(achievement.valid?).to eq true
       end
     end
 
     context 'invalid file' do
       it 'is not valid' do
-        achievement.supporting_evidence = fixture_file_upload(File.new('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'))
+        achievement.supporting_evidence.attach(
+          io: File.open('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'), filename: 'test.txt', content_type: 'text/plain'
+        )
         expect(achievement.valid?).to eq false
       end
     end
@@ -427,18 +431,18 @@ RSpec.describe Achievement, type: :model do
       it 'queues job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
           .with(achievement_id: achievement.id)
       end
 
-      context 'when user is enrolled on CsAccelerator' do
+      context 'when user is enrolled on CSAccelerator' do
         it 'does not queue job' do
           create(:user_programme_enrolment,
                  user: user,
                  programme: cs_accelerator)
           expect do
             achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
         end
       end
     end
@@ -463,17 +467,17 @@ RSpec.describe Achievement, type: :model do
       it 'queues job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
       end
 
-      context 'when user is enrolled on CsAccelerator' do
+      context 'when user is enrolled on CSAccelerator' do
         it 'does not queue job' do
           create(:user_programme_enrolment,
                  user: user,
                  programme: cs_accelerator)
           expect do
             achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
         end
       end
     end
@@ -492,7 +496,7 @@ RSpec.describe Achievement, type: :model do
       it 'does not queue job' do
         expect do
           achievement.reload.run_callbacks(:save)
-        end.not_to have_enqueued_job(CsAccelerator::AutoEnrolJob)
+        end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
       end
     end
   end

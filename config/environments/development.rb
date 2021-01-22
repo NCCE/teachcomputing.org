@@ -16,6 +16,7 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -26,6 +27,12 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
+  # Raise exceptions for disallowed deprecations.
+  config.active_support.disallowed_deprecation = :raise
+
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
@@ -52,7 +59,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews/"
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews/"
   config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
 
@@ -69,6 +76,7 @@ Rails.application.configure do
   # Ensure every change triggers an update (in development only), else docker misses things.
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
-  # Allow nicer hostname, uncomment when upgrading to Rails 6
-  # config.hosts << /([a-z0-9\.])+\.rpfdev\.com/
+  # Allow nicer hostname
+  config.hosts << /([a-z0-9.])+\.rpfdev\.com/
+  config.hosts << 'web'
 end

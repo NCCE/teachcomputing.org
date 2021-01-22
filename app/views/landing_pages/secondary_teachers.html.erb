@@ -157,7 +157,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <div class="center-button button--margin-bottom">
-            <%= link_to 'Browse courses', courses_path, class: 'govuk-button button' %>
+            <%= link_to 'Browse Teach secondary courses', courses_path(certificate: Programme.secondary_certificate.slug), class: 'govuk-button button' %>
           </div>
         </div>
       </div>
@@ -181,7 +181,7 @@
         <p class="govuk-body">
           We offer fully-funded consultancy and guidance to schools and colleges
           who meet our
-          <%= link_to 'eligibility criteria', bursary_path(anchor: 'subject') %>.
+          <%= link_to 'eligibility criteria', '/bursary#subject' %>.
           This is provided by a network of computing education specialists,
           called Subject Matter Experts. Our experts work with leaders and
           teachers to identify an action plan for improving or delivering
@@ -190,7 +190,7 @@
         <p class="govuk-body">An additional £1400 bursary is also available for
           schools or colleges who are not currently offering GCSE computer
           science or are considering dropping the subject.
-          <%= link_to 'Find out more', bursary_path(anchor: 'subject') %>.
+          <%= link_to 'Find out more', 'bursary#subject' %>.
         </p>
         <p class="govuk-body">
           <%= link_to 'Contact your local Subject Matter Expert', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform' %>

@@ -5,9 +5,11 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
-  let(:assessment) { create(:assessment, class_marker_test_id: '100', activity_id: activity.id, programme_id: programme.id) }
+  let(:assessment) do
+    create(:assessment, class_marker_test_id: '100', activity_id: activity.id, programme_id: programme.id)
+  end
   let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
-  let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id)}
+  let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id) }
   let(:passing_json_body) { File.read('spec/support/class_marker/passing_webhook.json') }
   let(:failed_json_body) { File.read('spec/support/class_marker/failed_webhook.json') }
   let(:passing_result) { JSON.parse(passing_json_body, symbolize_names: true) }
@@ -19,19 +21,22 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       end
 
       it 'transitions assessment_attempt to complete' do
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
         expect(assessment_attempt.current_state).to eq('passed')
       end
 
       it 'transitions achievement to complete' do
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
         expect(achievement.current_state).to eq('complete')
       end
 
-      it 'queues CsAcceleratorEnrolmentTransitionJob job' do
+      it 'queues CSAcceleratorEnrolmentTransitionJob job' do
         expect do
-          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
-        end.to have_enqueued_job(CsAcceleratorEnrolmentTransitionJob)
+          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                    passing_result[:result][:percentage])
+        end.to have_enqueued_job(CSAcceleratorEnrolmentTransitionJob)
       end
     end
 
@@ -39,7 +44,8 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         [user, activity, achievement, assessment, assessment_attempt]
         failing_result = JSON.parse(failed_json_body, symbolize_names: true)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(failing_result[:test][:test_id], user.id, failing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(failing_result[:test][:test_id], user.id,
+                                                                  failing_result[:result][:percentage])
       end
 
       it 'transitions assessment_attempt to failed' do
@@ -54,7 +60,8 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     context 'when the user is invalid' do
       before do
         allow(Raven).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
       end
 
       it 'raises an error' do
@@ -66,7 +73,8 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         user
         allow(Raven).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
       end
 
       it 'raises an error' do
@@ -79,7 +87,8 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         user
         assessment
         allow(Raven).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id, passing_result[:result][:percentage])
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
       end
 
       it 'raises an error' do

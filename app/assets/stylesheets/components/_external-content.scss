@@ -66,4 +66,9 @@
     @extend .govuk-link;
     @extend .ncce-link;
   }
+
+  button {
+    @extend .govuk-button;
+    @extend .button;
+  }
 }

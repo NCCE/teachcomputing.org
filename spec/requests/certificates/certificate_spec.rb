@@ -58,7 +58,8 @@ RSpec.describe Certificates::CertificateController do
 
         it 'responds with inline pdf file' do
           expect(response.content_type).to eq('application/pdf')
-          expect(response.headers['Content-Disposition']).to eq('inline; filename="test-certificate.pdf"')
+          expect(response.headers['Content-Disposition'])
+            .to eq("inline; filename=\"test-certificate.pdf\"; filename*=UTF-8''test-certificate.pdf")
         end
       end
     end
