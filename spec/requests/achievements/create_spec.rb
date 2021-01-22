@@ -167,7 +167,7 @@ RSpec.describe AchievementsController do
 
         it 'sets supporting_evidence metadata' do
           transition = user.achievements.where(activity_id: activity.id).first.last_transition
-          expect(transition.metadata['supporting_evidence']).not_to be(nil)
+          expect(transition.metadata['self_verification_info']).not_to be(nil)
         end
       end
 

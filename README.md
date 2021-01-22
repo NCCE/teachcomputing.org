@@ -166,7 +166,12 @@ If you prefer to use `byebug` you'll _first_ need to attach to the container whi
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
+### User Impersonation
+
+When debugging it is sometimes desirable to see the site from a users perspective.
+To do so without needing to change password you can set the `USER_TO_IMPERSONATE` environment variable in the `.env` file to the desired users ID.
+
 ### Troubleshooting
 
-* `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent error.
-* If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.
+- `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent error.
+- If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.
