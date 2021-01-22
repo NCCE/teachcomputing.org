@@ -8,7 +8,7 @@ class AchievementsController < ApplicationController
       metadata = { credit: @achievement.activity.credit }
       metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
       if achievement_params[:supporting_evidence].present?
-        metadata[:supporting_evidence] =
+        metadata[:self_verification_info] =
           url_for(@achievement.supporting_evidence)
       end
 
