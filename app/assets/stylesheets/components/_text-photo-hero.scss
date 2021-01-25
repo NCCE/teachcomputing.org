@@ -10,7 +10,7 @@
     grid-template-areas: 'text photo';
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    padding: 20px 10px 20px 30px;
+    padding: 10px 10px 10px 30px;
   }
 
   &__block--text {
@@ -81,10 +81,10 @@
   .text-photo-hero__block--photo iframe,
   .text-photo-hero__block--photo object,
   .text-photo-hero__block--photo embed {
-    height: 100%;
+    height: auto;
     left: 0;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: auto;
   }
 }
