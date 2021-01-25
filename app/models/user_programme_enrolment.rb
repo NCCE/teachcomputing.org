@@ -3,6 +3,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   belongs_to :user
   belongs_to :programme
+  belongs_to :pathway, optional: true
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
@@ -36,10 +37,10 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   def state_machine
     @state_machine ||= begin
-                         StateMachines::UserProgrammeEnrolmentStateMachine.new(
-                           self, transition_class: UserProgrammeEnrolmentTransition
-                         )
-                       end
+      StateMachines::UserProgrammeEnrolmentStateMachine.new(
+        self, transition_class: UserProgrammeEnrolmentTransition
+      )
+    end
   end
 
   private_class_method :initial_state, :transition_class
