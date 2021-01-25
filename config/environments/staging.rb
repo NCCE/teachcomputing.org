@@ -78,7 +78,7 @@ Rails.application.configure do
 
   config.action_mailer.show_previews = true
   config.action_mailer.asset_host = 'https://staging.teachcomputing.org'
-  config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews/"
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews/"
   config.action_mailer.default_url_options = { host: 'https://staging.teachcomputing.org' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.mandrillapp.com',
