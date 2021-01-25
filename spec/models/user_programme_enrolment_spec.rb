@@ -62,7 +62,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it 'queues ScheduleCertificateSyncJob job' do
       expect do
         create(:user_programme_enrolment)
-      end.to have_enqueued_job(ScheduleCertificateSyncJob)
+      end.to have_enqueued_job(Achiever::ScheduleCertificateSyncJob)
     end
   end
 
