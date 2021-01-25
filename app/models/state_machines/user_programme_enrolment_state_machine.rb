@@ -21,6 +21,6 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   end
 
   after_transition do |programme_enrolment|
-    ScheduleCertificateSyncJob.perform_later(programme_enrolment.id)
+    Achiever::ScheduleCertificateSyncJob.perform_later(programme_enrolment.id)
   end
 end

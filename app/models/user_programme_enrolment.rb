@@ -53,6 +53,6 @@ class UserProgrammeEnrolment < ApplicationRecord
     end
 
     def schedule_sync_to_achiever
-      ScheduleCertificateSyncJob.perform_later(id)
+      Achiever::ScheduleCertificateSyncJob.perform_later(id)
     end
 end
