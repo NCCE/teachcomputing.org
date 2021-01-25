@@ -3,8 +3,9 @@ module Achiever
     queue_as :achiever
 
     def perform(enrolment_id)
-      enrolment = UserProgrammeEnrolment.find(enrolment_id)
-      Achiever::User::Enrolment.new(enrolment).sync
+      # for now we dont want this to run until the initial sync has been done
+      # enrolment = UserProgrammeEnrolment.find(enrolment_id)
+      # Achiever::User::Enrolment.new(enrolment).sync
     end
   end
 end
