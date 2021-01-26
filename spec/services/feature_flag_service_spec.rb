@@ -55,7 +55,7 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      expect(FeatureFlagService::FLAGS.count).to 2
+      expect(FeatureFlagService::FLAGS.count).to eq 2
     end
   end
 end
