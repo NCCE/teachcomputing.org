@@ -40,10 +40,6 @@
 
   &__block--photo {
     grid-area: photo;
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 56.25%; /*16:9*/
-    position: relative;
 
     img {
       width: 100%;
@@ -52,16 +48,6 @@
         height: 100%;
       }
     }
-  }
-
-	&__block--photo iframe,
-  &__block--photo object,
-  &__block--photo embed {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
   }
 }
 
@@ -87,3 +73,20 @@
     margin-bottom: 0;
   }
 }
+
+.text-photo-hero__block--video {
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%; /*16:9*/
+	position: relative;
+}
+
+	.text-photo-hero__block--video iframe,
+  .text-photo-hero__block--video object,
+  .text-photo-hero__block--video embed {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
