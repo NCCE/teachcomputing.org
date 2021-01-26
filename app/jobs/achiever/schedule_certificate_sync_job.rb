@@ -1,5 +1,6 @@
 module Achiever
   class ScheduleCertificateSyncJob < ApplicationJob
+    retry_on Faraday::TimeoutError, Faraday::ConnectionFailed, Faraday::SSLError, wait: 1.minute
     queue_as :achiever
 
     def perform(enrolment_id)
