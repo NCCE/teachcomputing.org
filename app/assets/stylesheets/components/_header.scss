@@ -16,12 +16,30 @@
 }
 
 .header__bottom {
-	display: flex;
+	width: 100%;
 }
 
-.header__bottom > li {
-  flex-grow: 1;
-  flex-basis: 0;
+.magda-ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.magda-li {
+	list-style: none;
+	flex-grow: 1;
+	text-align: center;
+  background-image: image-url('tick-blue-no-border.svg'), image-url('line.svg');
+  background-position: right 12px, right 0;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 1rem, 1rem;
+	padding-right: 1rem;
+	cursor: pointer;
+
+  &:last-child {
+    background-image: image-url('tick-blue-no-border.svg'), none;
+  }
 }
 
 .header__logo {
@@ -117,7 +135,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-	display: flex
 }
 
 .ncce-header__navigation-certification {
@@ -126,8 +143,6 @@
 
     .ncce-header__navigation-item-cert {
 			font-size: 1rem !important;
-			flex-grow: 1;
-			flex-basis: 0;
     }
   }
 }
