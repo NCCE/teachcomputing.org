@@ -110,6 +110,9 @@
     },
     "SECONDARY_CERTIFICATE_ENABLED": {
       "required": true
+    },
+    "CERTIFICATION_SYNC_ENABLED": {
+      "required": true
     }
   },
   "formation": {

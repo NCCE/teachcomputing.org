@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.describe UserProgrammeEnrolment, type: :model do
@@ -54,10 +53,16 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   end
 
   describe '#after_commit callbacks' do
-    it 'queues CompleteCertificateEmailJob job' do
+    it 'queues KickOffEmailsJob job' do
       expect do
         create(:user_programme_enrolment)
       end.to have_enqueued_job(KickOffEmailsJob)
+    end
+
+    it 'queues ScheduleCertificateSyncJob job' do
+      expect do
+        create(:user_programme_enrolment)
+      end.to have_enqueued_job(Achiever::ScheduleCertificateSyncJob)
     end
   end
 

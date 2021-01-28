@@ -46,6 +46,16 @@ class Achiever::Request
       []
     end
 
+    def resource_post(resource_path, body)
+      response = api.post(resource_path, body)
+
+      parsed_response = parse_response(response.body)
+
+      raise Achiever::Error.new(failure: { status: response.status, reason: parsed_response.FailureReason }) unless parsed_response.FailureReason.blank?
+
+      parsed_response
+    end
+
     private
 
       def success?(response, parsed_response)

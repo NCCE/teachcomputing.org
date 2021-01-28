@@ -1,8 +1,8 @@
-class UpdateUsersDetailsFromAchieverJob < ApplicationJob
-  queue_as :default
+class Achiever::UpdateUsersDetailsFromAchieverJob < ApplicationJob
+  queue_as :achiever
 
   RESOURCE_PATH = 'Get?cmd=ContactDetails'.freeze
-  CACHE = false.freeze
+  CACHE = false
 
   def perform(user)
     query_strings = {
@@ -16,12 +16,12 @@ class UpdateUsersDetailsFromAchieverJob < ApplicationJob
     if details
       achiever_organisation_no = details.send('Contact.COMPANYNO')
       if achiever_organisation_no.blank?
-        Rails.logger.warn "UpdateUsersDetailsFromAchieverJob - No achiever_organisation_no for user: #{user.id}"
+        Rails.logger.warn "Achiever::UpdateUsersDetailsFromAchieverJob - No achiever_organisation_no for user: #{user.id}"
       else
         user.update_attribute(:stem_achiever_organisation_no, achiever_organisation_no)
       end
     else
-      Rails.logger.warn "UpdateUsersDetailsFromAchieverJob - missing user: #{user.id}"
+      Rails.logger.warn "Achiever::UpdateUsersDetailsFromAchieverJob - missing user: #{user.id}"
     end
   end
 end
