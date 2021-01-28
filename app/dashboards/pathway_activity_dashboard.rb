@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class PathwayActivityDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -11,10 +11,12 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway: Field::BelongsTo,
     activity: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    activity_type: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
+    activity_type: Field::Select.with_options(searchable: false, collection: lambda { |field|
+                                                                               field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                                             }),
     order: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,32 +25,32 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  pathway
-  activity
-  id
-  activity_type
+    pathway
+    activity
+    id
+    activity_type
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  pathway
-  activity
-  id
-  activity_type
-  order
-  created_at
-  updated_at
+    pathway
+    activity
+    id
+    activity_type
+    order
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  pathway
-  activity
-  activity_type
-  order
+    pathway
+    activity
+    activity_type
+    order
   ].freeze
 
   # COLLECTION_FILTERS
