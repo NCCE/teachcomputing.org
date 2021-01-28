@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ActivitiesController do
+RSpec.describe Api::ActivitiesController do
   let(:activities) { create_list(:activity, 10) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 

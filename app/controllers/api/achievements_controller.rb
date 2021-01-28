@@ -1,4 +1,5 @@
-class Admin::AchievementsController < AdminController
+module Api
+  classs AchievementsController < ApiController
   def create
     user = User.find(params[:user_id])
     activity = Activity.find(params[:activity_id])
@@ -26,7 +27,8 @@ class Admin::AchievementsController < AdminController
     when 'cs-accelerator'
       AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
     when 'primary-certificate' || 'secondary-certificate'
-      CertificatePendingTransitionJob.perform_later(achievement.programme, user.id, source: 'AdminAchievementsController.complete')
+      CertificatePendingTransitionJob.perform_later(achievement.programme, user.id,
+                                                    source: 'AdminAchievementsController.complete')
     end
 
     render json: as_json(achievement), status: 201

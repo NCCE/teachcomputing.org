@@ -1,4 +1,5 @@
-class Admin::UsersController < AdminController
+module Api
+  class UsersController < ApiController
   def show
     user = User.find_by!(email: params[:email].downcase)
     render json: as_json(user)

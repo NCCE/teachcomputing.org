@@ -1,5 +1,5 @@
-module Admin
-  class ActivitiesController < AdminController
+module Api
+  class ActivitiesController < ApiController
     def index
       activities = Activity.all
       render json: as_json(activities)

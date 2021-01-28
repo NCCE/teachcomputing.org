@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::UserProgrammeEnrolmentsController do
+RSpec.describe Api::UserProgrammeEnrolmentsController do
   let(:user) { create(:user) }
   let(:enrolment) { create(:user_programme_enrolment, user: user)}
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }

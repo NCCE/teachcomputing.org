@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::AchievementsController do
+RSpec.describe Api::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }

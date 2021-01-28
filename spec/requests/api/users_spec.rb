@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Admin::UsersController do
+RSpec.describe Api::UsersController do
   let(:user) { create(:user) }
   let(:achievement) { create(:achievement, user: user) }
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
-  let(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme)}
-	let(:achievement) { create(:achievement, user: user, programme: programme) }
+  let(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+  let(:achievement) { create(:achievement, user: user, programme: programme) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        get "/admin/users/", { params: { email: user.email }, headers: nil }
+        get '/admin/users/', { params: { email: user.email }, headers: nil }
       end
 
       it 'returns 401 status' do
@@ -26,7 +26,7 @@ RSpec.describe Admin::UsersController do
       before do
         enrolment
         achievement
-        get "/admin/users/", { params: { email: user.email }, headers: token_headers }
+        get '/admin/users/', { params: { email: user.email }, headers: token_headers }
       end
 
       it 'returns 201 status' do
