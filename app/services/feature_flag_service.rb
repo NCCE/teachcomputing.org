@@ -1,5 +1,6 @@
 class FeatureFlagService
   FLAGS = {
+    certification_sync_enabled: 'CERTIFICATION_SYNCING_ENABLED',
     secondary_certificate_enabled: 'SECONDARY_CERTIFICATE_ENABLED'
   }.freeze
 
@@ -11,8 +12,8 @@ class FeatureFlagService
 
   def flags
     @flags ||= begin
-                 @flags_to_define.map { |k, v| [k, cast_boolean(ENV[v])] }.to_h
-               end
+      @flags_to_define.map { |k, v| [k, cast_boolean(ENV[v])] }.to_h
+    end
   end
 
   private
