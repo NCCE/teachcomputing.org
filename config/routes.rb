@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     resources :activities, only: %i[index]
   end
 
+  resources :user_programme_enrolments, only: %i[show] do	    resources :activities, only: %i[index]
+    post '/complete', action: :complete
+    post '/enrolled', action: :enrolled
+    post '/flag', action: :flag
+  end
+
   require 'sidekiq/web'
   mount Sidekiq::Web, at: 'admin/sidekiq'
 

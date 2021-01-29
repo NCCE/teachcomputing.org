@@ -13,7 +13,7 @@ default: &default
   # additional_paths: ["app/assets"]
 
   # Reload manifest.json on all requests so we reload latest compiled packs
-  cache_manifest: true
+  cache_manifest: false
 
   # Don't extract and emit a css file
   extract_css: true
