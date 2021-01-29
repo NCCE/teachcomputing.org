@@ -55,8 +55,7 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      flag_hash = { secondary_certificate_enabled: 'SECONDARY_CERTIFICATE_ENABLED' }
-      expect(FeatureFlagService::FLAGS).to eq(flag_hash)
+      expect(FeatureFlagService::FLAGS.count).to eq 2
     end
   end
 end

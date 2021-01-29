@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_104616) do
+ActiveRecord::Schema.define(version: 2021_01_27_085220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.uuid "programme_id"
     t.index ["activity_id", "user_id"], name: "index_achievements_on_activity_id_and_user_id", unique: true
     t.index ["programme_id", "user_id"], name: "index_achievements_on_programme_id_and_user_id"
+  end
+
+  create_table "achiever_sync_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "state", null: false
+    t.uuid "user_programme_enrolment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_programme_enrolment_id"], name: "index_achiever_sync_records_on_user_programme_enrolment_id"
   end
 
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -80,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.text "description"
     t.text "self_verification_info"
     t.boolean "uploadable", default: false
+    t.string "stem_activity_code"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -116,6 +125,25 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.string "class_marker_test_id"
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
+  end
+
+  create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "pathway_id", null: false
+    t.uuid "activity_id", null: false
+    t.integer "activity_type", null: false
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_pathway_activities_on_activity_id"
+    t.index ["pathway_id"], name: "index_pathway_activities_on_pathway_id"
+  end
+
+  create_table "pathways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.int4range "range", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "programme_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -233,6 +261,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
     t.datetime "updated_at", null: false
     t.boolean "flagged", default: false
     t.boolean "auto_enrolled", default: false
+    t.uuid "pathway_id"
+    t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
@@ -260,9 +290,13 @@ ActiveRecord::Schema.define(version: 2021_01_11_104616) do
   end
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade
+  add_foreign_key "achiever_sync_records", "user_programme_enrolments"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "pathway_activities", "activities"
+  add_foreign_key "pathway_activities", "pathways"
   add_foreign_key "questionnaire_response_transitions", "questionnaire_responses"
   add_foreign_key "user_programme_enrolment_transitions", "user_programme_enrolments"
+  add_foreign_key "user_programme_enrolments", "pathways"
 end
