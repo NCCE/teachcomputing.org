@@ -26,6 +26,8 @@ RSpec.describe Achiever::Course::Occurrence do
       expect(course_occurrence).to respond_to(:region)
       expect(course_occurrence).to respond_to(:subject)
       expect(course_occurrence).to respond_to(:start_date)
+      expect(course_occurrence).to respond_to(:hub_id)
+      expect(course_occurrence).to respond_to(:hub_name)
     end
   end
 
