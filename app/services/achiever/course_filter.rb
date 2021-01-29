@@ -3,7 +3,6 @@ module Achiever
     attr_reader :subjects, :age_groups
 
     def initialize(filter_params:)
-      # current_certificate? where is that used
       @filter_params = filter_params
       @subjects = Achiever::Course::Subject.all
       @age_groups = Achiever::Course::AgeGroup.all
