@@ -24,14 +24,12 @@
               </h3>
               <p class='govuk-body'>Develop subject knowledge of GCSE computer science</p>
             </div>
-            <% if FeatureFlagService.new.flags[:secondary_certificate_enabled] %>
-              <div class='ncce-certs__certificate ncce-certs__certificate--secondary'>
-                <h3 class='govuk-heading-m ncce-certs__heading'>
-                  <%= link_to 'Secondary certificate', secondary_path, class: 'ncce-link ncce-link--heading' %>
-                </h3>
-                <p class='govuk-body'>Further your knowledge and teach secondary computing effectively</p>
-              </div>
-            <% end %>
+            <div class='ncce-certs__certificate ncce-certs__certificate--secondary'>
+              <h3 class='govuk-heading-m ncce-certs__heading'>
+                <%= link_to 'Secondary certificate', secondary_path, class: 'ncce-link ncce-link--heading' %>
+              </h3>
+              <p class='govuk-body'>Further your knowledge and teach secondary computing effectively</p>
+            </div>
           </div>
         </div>
       </div>
