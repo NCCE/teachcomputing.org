@@ -10,7 +10,7 @@
           <p class="govuk-body-l">Discover <strong>Isaac Computer Science</strong>, our online learning programme for <strong>A level computer science teachers and students.</strong></p>
         </div>
         <div class="text-photo-hero__block--photo text-photo-hero__block--video">
-					<iframe  src="https://www.youtube.com/embed/nW4J-NVDziw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe  src="https://www.youtube.com/embed/nW4J-NVDziw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen data-event-action="video click" data-event-category="Isaac Computer Science" data-event-label="Introducing Isaac Computer Science video"></iframe>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
           <h2 class="govuk-heading-m ncce-aside__title">Why sign up?</h2>
           <p class="govuk-body-s ncce-aside__text">Benefit from a wide range of online events and A level resources.</p>
 					<p class="govuk-body-s ncce-aside__text">Register with Isaac Computer Science and create your free account.</p>
-          <p class="govuk-body-s"><%= link_to 'Visit Isaac Computer Science', 'https://isaaccomputerscience.org/', class: 'govuk-button button button--aside' %></p>
+          <p class="govuk-body-s"><%= link_to 'Visit Isaac Computer Science', 'https://isaaccomputerscience.org/', class: 'govuk-button button button--aside', :'data-event-action' => 'button click', :'data-event-category' => 'Isaac Computer Science', :'data-event-label' => 'Visit Isaac Computer Science' %></p>
         </div>
       </div>
     </div>
