@@ -43,19 +43,19 @@ RSpec.describe FeatureFlagService do
         expect(flags[:test_flag]).to eq(false)
       end
     end
-
-    context('with app defined flags') do
-      subject(:flags) { described_class.new.flags }
-
-      it 'sets the secondary certificate feature flag flag' do
-        expect(flags[:secondary_certificate_enabled]).not_to eq(nil)
-      end
-    end
   end
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
       expect(FeatureFlagService::FLAGS.count).to eq 2
+    end
+
+    it 'sets the csa_questionnaire_enabled flag' do
+      expect(FeatureFlagService::FLAGS.keys).to include(:csa_questionnaire_enabled)
+    end
+
+    it 'sets the certification_sync_enabled flag' do
+      expect(FeatureFlagService::FLAGS.keys).to include(:certification_sync_enabled)
     end
   end
 end
