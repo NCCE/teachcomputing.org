@@ -3,7 +3,7 @@
 
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
-      <%= link_to root_path, class: 'govuk-header__link govuk-header__link--logo' do %>
+      <%= link_to root_path, class: 'govuk-header__link govuk-header__link--logo', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Logo" do %>
         <svg class="ncce-header__logo" viewBox="0 0 221 119" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <title>
             Teach Computing
@@ -22,37 +22,46 @@
           <% if current_user %>
             <ul class='ncce-header__navigation-user'>
 						  <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link' %>
+                <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Your dashboard"
+ %>
               </li>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link' %>
+                <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Edit profile"
+ %>
               </li>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Logout', logout_url, class: 'govuk-header__link' %>
+                <%= link_to 'Logout', logout_url, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Logout"
+ %>
               </li>
             </ul>
           <% else %>
             <ul class="ncce-header__navigation-user">
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link' %>
+                <%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Create an account"
+ %>
               </li>
               <li class="govuk-header__navigation-item ncce-header__navigation-item">
-                <%= link_to 'Log in', auth_url, method: :post, :class => 'govuk-header__link' %>
+                <%= link_to 'Log in', auth_url, method: :post, :class => 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Log in"
+ %>
               </li>
             </ul>
           <% end %>
             <ul class='ncce-header__navigation-certification'>
               <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Primary teachers', primary_teachers_path, class: 'govuk-header__link' %>
+                <%= link_to 'Primary teachers', primary_teachers_path, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Primary teachers"
+ %>
               </li>
               <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link' %>
+                <%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Secondary teachers"
+ %>
               </li>
               <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Courses', courses_path, class: 'govuk-header__link' %>
+                <%= link_to 'Courses', courses_path, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Courses"
+ %>
               </li>
               <li class="ncce-header__navigation-item-cert">
-                <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-header__link' %>
+                <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-header__link', :'data-event-action' => 'click', :'data-event-category' =>  "Header: Navigation", :'data-event-label' =>  "Teaching resources"
+ %>
               </li>
             </ul>
           </li>
