@@ -47,11 +47,7 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      expect(FeatureFlagService::FLAGS.count).to eq 3
-    end
-
-    it 'defines secondary_certificate_enabled flag' do
-      expect(FeatureFlagService::FLAGS.keys).to include(:secondary_certificate_enabled)
+      expect(FeatureFlagService::FLAGS.count).to eq 2
     end
 
     it 'sets the csa_questionnaire_enabled flag' do
