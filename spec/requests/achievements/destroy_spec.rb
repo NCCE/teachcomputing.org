@@ -28,40 +28,30 @@ RSpec.describe AchievementsController do
       end
 
       it 'shows a flash notice' do
-        expect(flash[:notice]).to be_present
-      end
-
-      it 'flash notice has correct info' do
         expect(flash[:notice]).to match(/'#{activity.title}' has been removed/)
       end
     end
 
     context 'with invalid params' do
       subject do
-        post achievements_path,
-             params: {
-               achievement: { activity_id: activity.id }
-             }
         delete achievement_path(id: 'invalid')
       end
 
       before do
-        subject
+        create(:achievement)
       end
 
       it 'redirects to the dashboard path' do
+        subject
         expect(response).to redirect_to(dashboard_path)
       end
 
       it 'does not delete an Achievement' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
+        expect { subject }.not_to change { Achievement.all.count }
       end
 
       it 'shows a flash error' do
-        expect(flash[:error]).to be_present
-      end
-
-      it 'flash error has correct info' do
+        subject
         expect(flash[:error]).to match(/something went wrong removing/)
       end
     end
