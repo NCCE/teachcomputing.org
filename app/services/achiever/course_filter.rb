@@ -89,8 +89,7 @@ module Achiever
       def course_occurrences
         @course_occurrences ||= begin
           course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
-          course_occurrences = filter_course_occurences(course_occurrences)
-          course_occurrences
+          filter_course_occurences(course_occurrences)
         end
       end
 
@@ -102,7 +101,10 @@ module Achiever
 
       def filter_courses(courses)
         courses.select do |c|
-          has_certificate, has_level, has_location, has_topic = true, true, true, true, true
+          has_certificate = true
+          has_level = true
+          has_location = true
+          has_topic = true
 
           has_certificate = c.by_certificate(current_certificate.slug) if current_certificate
 
