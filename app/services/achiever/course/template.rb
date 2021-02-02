@@ -21,22 +21,24 @@ class Achiever::Course::Template
                     'HideFromweb': '0',
                     'ProgrammeName': 'ncce' }.freeze
 
-  def initialize(template)
-    @activity_code = template.send('Template.ActivityCode')
-    @age_groups = template.send('Template.AgeGroups').split(';')
-    @booking_url = template.send('Template.BookingURL')
-    @course_template_no = template.send('Template.COURSETEMPLATENO')
-    @duration = template.send('Template.Duration')
-    @meta_description = template.send('Template.MetaDescription')
-    @occurrences = []
-    @online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
-    @outcomes = template.send('Template.Outcomes')
-    @programmes = template.send('Template.TCProgrammeTag').split(',')
-    @remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.RemoteDeliveredCPD')&.downcase)
-    @subjects = template.send('Template.AdditionalSubjects').split(';')
-    @summary = template.send('Template.Summary')
-    @title = template.send('Template.TemplateTitle')
-    @workstream = template.send('Template.Workstream')
+  def self.from_resource(template)
+    new.tap do |t|
+      t.activity_code = template.send('Template.ActivityCode')
+      t.age_groups = template.send('Template.AgeGroups').split(';')
+      t.booking_url = template.send('Template.BookingURL')
+      t.course_template_no = template.send('Template.COURSETEMPLATENO')
+      t.duration = template.send('Template.Duration')
+      t.meta_description = template.send('Template.MetaDescription')
+      t.occurrences = []
+      t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.OnlineCPD').downcase)
+      t.outcomes = template.send('Template.Outcomes')
+      t.programmes = template.send('Template.TCProgrammeTag').split(',')
+      t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(template.send('Template.RemoteDeliveredCPD')&.downcase)
+      t.subjects = template.send('Template.AdditionalSubjects').split(';')
+      t.summary = template.send('Template.Summary')
+      t.title = template.send('Template.TemplateTitle')
+      t.workstream = template.send('Template.Workstream')
+    end
   end
 
   def with_occurrences
@@ -46,7 +48,7 @@ class Achiever::Course::Template
 
   def self.all
     templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
-    templates.map { |course| Achiever::Course::Template.new(course) }
+    templates.map { |course| Achiever::Course::Template.from_resource(course) }
   end
 
   def self.find_by_activity_code(activity_code)
@@ -58,17 +60,17 @@ class Achiever::Course::Template
   end
 
   def self.without(course)
-    Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no  }
+    Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no }
   end
 
   def by_certificate(certificate)
     case certificate
-      when 'cs-accelerator'
-        @programmes.include?('CS Accelerator')
-      when 'secondary-certificate'
-        @programmes.include?('Secondary')
-      when 'primary-certificate'
-        @programmes.include?('Primary')
+    when 'cs-accelerator'
+      @programmes.include?('CS Accelerator')
+    when 'secondary-certificate'
+      @programmes.include?('Secondary')
+    when 'primary-certificate'
+      @programmes.include?('Primary')
     end
   end
 end
