@@ -14,6 +14,14 @@ RSpec.describe Activity, type: :model do
   let(:removable_activity) { create(:activity, :user_removable) }
 
   describe 'associations' do
+    it 'has_one assessment' do
+      expect(activity).to have_one(:assessment)
+    end
+
+    it 'has_many pathway_activities' do
+      expect(activity).to have_many(:pathway_activities)
+    end
+
     it 'has_many achievements' do
       expect(activity).to have_many(:achievements)
     end
@@ -33,6 +41,7 @@ RSpec.describe Activity, type: :model do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_inclusion_of(:category).in_array(%w[action online face-to-face]) }
     it { is_expected.to validate_uniqueness_of(:future_learn_course_uuid) }
+    it { is_expected.to validate_uniqueness_of(:stem_activity_code) }
     it { is_expected.to validate_uniqueness_of(:stem_course_template_no) }
   end
 

@@ -20,7 +20,7 @@
         <%= render 'pages/certification/pathway' %>
 				<h2 class="govuk-heading-s">Funding your programme</h2>
         <p class="govuk-body">The programme is free to teachers working in state-funded education across all phases and all subjects, including trainee teachers, supply teachers, and teachers returning to the state sector.</p>
-        <p class="govuk-body">Teachers working in state-funded education are also eligible for <%= link_to 'bursary funding', bursary_path, class: 'govuk-link ncce-link' %>, paid to your school or college. If you’re a supply teacher, returning teacher, or trainee teacher, you’ll need to claim your bursary within the academic year once you have gained full employment within the state sector.</p>
+        <p class="govuk-body">Teachers working in state-funded education are also eligible for <%= link_to 'bursary funding', '/bursary', class: 'govuk-link ncce-link' %>, paid to your school or college. If you’re a supply teacher, returning teacher, or trainee teacher, you’ll need to claim your bursary within the academic year once you have gained full employment within the state sector.</p>
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
@@ -31,7 +31,11 @@
             <li>
               Enrol with the click of a button
             </li>
-            <li>Complete a quiz to assess your subject knowledge</li>
+            <% if FeatureFlagService.new.flags[:csa_questionnaire_enabled] %>
+              <li>Complete a questionnaire to assess your subject knowledge</li>
+            <% else %>
+              <li>Complete a quiz to assess your subject knowledge</li>
+            <% end %>
             <li>Participate in a mix of courses to suit your experience</li>
             <li>Pass a short test to receive your qualification</li>
           </ol>

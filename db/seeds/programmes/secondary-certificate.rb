@@ -2,7 +2,7 @@ secondary = Programmes::SecondaryCertificate.find_or_create_by(slug: 'secondary-
   programme.title = 'Teach secondary computing'
   programme.slug = 'secondary-certificate'
   programme.description = 'Teach secondary computing'
-  programme.enrollable = false
+  programme.enrollable = true
 end
 
 puts "Created Programme: #{secondary.title} (#{secondary})"

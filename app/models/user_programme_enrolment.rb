@@ -3,10 +3,11 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   belongs_to :user
   belongs_to :programme
+  belongs_to :pathway, optional: true
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
-  after_commit :schedule_kick_off_emails, on: :create
+  after_commit :schedule_kick_off_emails, :schedule_sync_to_achiever, on: :create
   before_create :set_eligible_achievements_for_programme
 
   validates :user, :programme, presence: true
@@ -36,10 +37,10 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   def state_machine
     @state_machine ||= begin
-                         StateMachines::UserProgrammeEnrolmentStateMachine.new(
-                           self, transition_class: UserProgrammeEnrolmentTransition
-                         )
-                       end
+      StateMachines::UserProgrammeEnrolmentStateMachine.new(
+        self, transition_class: UserProgrammeEnrolmentTransition
+      )
+    end
   end
 
   private_class_method :initial_state, :transition_class
@@ -48,7 +49,11 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private
 
-  def schedule_kick_off_emails
-    KickOffEmailsJob.perform_later(id)
-  end
+    def schedule_kick_off_emails
+      KickOffEmailsJob.perform_later(id)
+    end
+
+    def schedule_sync_to_achiever
+      Achiever::ScheduleCertificateSyncJob.perform_later(id)
+    end
 end

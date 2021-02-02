@@ -5,7 +5,6 @@ RSpec.describe('landing_pages/secondary_teachers', type: :view) do
   let(:secondary_certificate) { create(:secondary_certificate) }
 
   before do
-    ENV['SECONDARY_CERTIFICATE_ENABLED'] = 'true'
     @cs_accelerator = cs_accelerator
     @secondary_certificate = secondary_certificate
     render
@@ -23,9 +22,7 @@ RSpec.describe('landing_pages/secondary_teachers', type: :view) do
     expect(rendered).to have_css('.card__heading', text: 'GCSE computer science subject knowledge')
   end
 
-  context 'when secondary certificate is enabled' do
-    it 'renders the secondary certificate card' do
-      expect(rendered).to have_css('.card__heading', text: 'Teach secondary computing')
-    end
+  it 'renders the secondary certificate card' do
+    expect(rendered).to have_css('.card__heading', text: 'Teach secondary computing')
   end
 end

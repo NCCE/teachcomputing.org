@@ -1,16 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe CsAcceleratorMailer, type: :mailer do
+RSpec.describe CSAcceleratorMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
-  let(:completed_mail) { CsAcceleratorMailer.with(user: user, programme: programme).completed }
-  let(:completed_subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge' }
-  let(:eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
-  let(:manual_enrolled_welcome_mail) { CsAcceleratorMailer.with(user: user).manual_enrolled_welcome }
-  let(:newly_eligible_mail) { CsAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
+  let(:enrolment) { create(:user_programme_enrolment, programme: programme, user: user) }
+  let(:completed_mail) { CSAcceleratorMailer.with(user: user, programme: programme).completed }
+  let(:completed_subject) do
+    'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge'
+  end
+  let(:eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
+  let(:manual_enrolled_welcome_mail) { CSAcceleratorMailer.with(user: user).manual_enrolled_welcome }
+  let(:newly_eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
   let(:eligible_subject) { "#{user.first_name} your CS Accelerator test is ready." }
-  let(:non_enrolled_csa_user_mail) { CsAcceleratorMailer.with(user: user, programme: programme).non_enrolled_csa_user }
+  let(:non_enrolled_csa_user_mail) { described_class.with(user: user, programme: programme).non_enrolled_csa_user }
   let(:non_enrolled_csa_user_subject) { 'Time to finish what you’ve started and achieve your qualification' }
+  let(:getting_started_prompt) do
+    CSAcceleratorMailer.with(user: user, enrolment_id: enrolment.id).getting_started_prompt
+  end
 
   describe '#completed' do
     it 'renders the headers' do
@@ -41,6 +47,14 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
 
     it 'includes the subject in the email' do
       expect(eligible_mail.body.encoded).to include("<title>#{eligible_subject}</title>")
+    end
+  end
+
+  describe '#getting_started_prompt' do
+    it 'renders the headers' do
+      expect(getting_started_prompt.subject).to include('Kick-start your CPD with our Computer Science Accelerator programme')
+      expect(getting_started_prompt.to).to eq([user.email])
+      expect(getting_started_prompt.from).to eq(['noreply@teachcomputing.org'])
     end
   end
 
@@ -99,7 +113,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
 
     it 'contains link to bursary' do
       expect(mail.html_part.body)
-        .to have_link('Check your eligibility', href: bursary_url)
+        .to have_link('Check your eligibility', href: 'https://teachcomputing.org/bursary')
     end
 
     it 'contains mail_to link' do
@@ -147,7 +161,7 @@ RSpec.describe CsAcceleratorMailer, type: :mailer do
 
       it 'contains link to bursary' do
         expect(mail.text_part.body)
-          .to match(/Check your eligibility \(#{bursary_url}\)/)
+          .to match(%r{Check your eligibility https://teachcomputing.org/bursary})
       end
 
       it 'contains mail_to link' do

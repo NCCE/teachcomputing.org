@@ -78,7 +78,7 @@ Rails.application.configure do
 
   config.action_mailer.show_previews = true
   config.action_mailer.asset_host = 'https://staging.teachcomputing.org'
-  config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews/"
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews/"
   config.action_mailer.default_url_options = { host: 'https://staging.teachcomputing.org' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.mandrillapp.com',
@@ -110,6 +110,12 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # Raise exceptions for disallowed deprecations.
+  config.active_support.disallowed_deprecation = :raise
+
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
+
   # Enable lograge to make logs less verbose
   config.lograge.enabled = true
 
@@ -122,5 +128,6 @@ Rails.application.configure do
   config.session_store :cookie_store,
                        key: '_teach_computing_session',
                        secure: true,
-                       httponly: true
+                       httponly: true,
+                       expire_after: 48.hours
 end

@@ -1,4 +1,4 @@
-module CsAccelerator
+module CSAccelerator
   class AutoEnrolJob < ApplicationJob
     queue_as :default
 

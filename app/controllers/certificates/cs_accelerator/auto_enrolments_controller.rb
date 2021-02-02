@@ -1,5 +1,5 @@
 module Certificates
-  module CsAccelerator
+  module CSAccelerator
     class AutoEnrolmentsController < ApplicationController
       before_action :authenticate_user!, only: %i[destroy]
 

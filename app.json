@@ -108,7 +108,7 @@
       "required": true,
       "value": "secret"
     },
-    "SECONDARY_CERTIFICATE_ENABLED": {
+    "CERTIFICATION_SYNCING_ENABLED": {
       "required": true
     }
   },

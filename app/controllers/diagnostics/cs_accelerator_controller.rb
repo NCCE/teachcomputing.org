@@ -1,4 +1,4 @@
-class Diagnostics::CsAcceleratorController < ApplicationController
+class Diagnostics::CSAcceleratorController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :track_visit!, only: [:show]
 

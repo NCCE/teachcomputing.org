@@ -26,6 +26,8 @@ RSpec.describe Achiever::Course::Occurrence do
       expect(course_occurrence).to respond_to(:region)
       expect(course_occurrence).to respond_to(:subject)
       expect(course_occurrence).to respond_to(:start_date)
+      expect(course_occurrence).to respond_to(:hub_id)
+      expect(course_occurrence).to respond_to(:hub_name)
     end
   end
 
@@ -97,7 +99,7 @@ RSpec.describe Achiever::Course::Occurrence do
     end
 
     it 'is set to true if the API sets it so' do
-      expect(described_class.face_to_face.select {|o| o.remote_delivered_cpd }.size).to eq(1)
+      expect(described_class.face_to_face.select { |o| o.remote_delivered_cpd }.size).to eq(203)
     end
   end
 end

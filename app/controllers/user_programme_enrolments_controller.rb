@@ -11,7 +11,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       when 'primary-certificate'
         redirect_to diagnostic_primary_certificate_path(:question_1)
       else
-        flash[:notice] = "Congrats you have enrolled on #{programme.title}"
+        flash[:notice] = "Congratulations, you have enrolled on #{programme.title}"
         redirect_to programme.path
       end
 
@@ -19,6 +19,17 @@ class UserProgrammeEnrolmentsController < ApplicationController
       flash[:error] = 'Whoops something went wrong'
       redirect_to dashboard_path
     end
+  end
+
+  def destroy
+    enrolment = UserProgrammeEnrolment.find_by!(id: params[:id])
+
+    if enrolment.present?
+      enrolment.transition_to(:unenrolled)
+      flash[:notice] = "You have successfully opted out of the #{enrolment.programme.title}"
+    end
+
+    redirect_to dashboard_path
   end
 
   private
@@ -34,7 +45,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       if enrolment.in_state?(:unenrolled)
         enrolment.transition_to(:enrolled)
         enrolment.update_attribute(:auto_enrolled, false)
-        flash[:notice] = "Congrats you have enrolled on #{enrolment.programme.title}"
+        flash[:notice] = "Congratulations, you have enrolled on #{enrolment.programme.title}"
       end
 
       redirect_to enrolment.programme.path

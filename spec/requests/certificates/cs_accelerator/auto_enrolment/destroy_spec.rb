@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Certificates::CsAccelerator::AutoEnrolmentsController do
+RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
 

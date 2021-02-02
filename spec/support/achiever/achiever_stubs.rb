@@ -2,23 +2,27 @@ module AchieverStubs
   def stub_a_failed_response(method, query)
     json_response = File.new('spec/support/achiever/failure.json')
     query_strings = query.map { |k, v| "#{k}=#{v}" }.join('&')
-    stub_request(:any, "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
+    stub_request(:any,
+                 "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
   end
 
   def stub_an_html_error_page(method, query)
     json_response = File.new('spec/support/achiever/failure.html')
     query_strings = query.map { |k, v| "#{k}=#{v}" }.join('&')
-    stub_request(:any, "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
+    stub_request(:any,
+                 "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=#{method}&#{query_strings}").to_return(body: json_response)
   end
 
   def stub_age_groups
     json_response = File.new('spec/support/achiever/courses/age_groups.json')
-    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAgeGroups').to_return(body: json_response)
+    stub_request(:get,
+                 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAgeGroups').to_return(body: json_response)
   end
 
   def stub_course_templates
     json_response = File.new('spec/support/achiever/courses/templates.json')
-    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
+    stub_request(:get,
+                 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
   end
 
   def stub_delegate
@@ -41,13 +45,20 @@ module AchieverStubs
 
   def stub_subjects
     json_response = File.new('spec/support/achiever/courses/subjects.json')
-    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=OptionsetSubject').to_return(body: json_response)
+    stub_request(:get,
+                 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=OptionsetSubject').to_return(body: json_response)
   end
 
   def stub_occurrence_details
     json_response = File.new('spec/support/achiever/courses/occurrence_details.json')
     uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseDetails'
     stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
+  def stub_post_enrolment
+    json_response = File.new('spec/support/achiever/users/enrolment.json')
+    stub_request(:post, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Set?Cmd=CreateNCCECertificate')
+      .to_return(body: json_response)
   end
 
   def stub_valid_contact_details
@@ -70,6 +81,7 @@ module AchieverStubs
 
   def stub_attendance_sets
     json_response = File.new('spec/support/achiever/courses/attendance.json')
-    stub_request(:get, 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAttendanceStatus').to_return(body: json_response)
+    stub_request(:get,
+                 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAttendanceStatus').to_return(body: json_response)
   end
 end

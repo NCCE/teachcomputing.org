@@ -12,12 +12,6 @@ RSpec.describe KickOffEmailsJob, type: :job do
         expect { described_class.perform_now(cs_accelerator_enrolment.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
-
-      it 'sends an queues the getting started job' do
-        expect do
-          described_class.perform_now(cs_accelerator_enrolment.id)
-        end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.user.id, cs_accelerator.id)
-      end
     end
 
     context 'when the programme is secondary' do
@@ -25,6 +19,12 @@ RSpec.describe KickOffEmailsJob, type: :job do
         expect { described_class.perform_now(secondary_enrolment.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
+    end
+
+    it 'sends an queues the getting started job' do
+      expect do
+        described_class.perform_now(cs_accelerator_enrolment.id)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id)
     end
   end
 end
