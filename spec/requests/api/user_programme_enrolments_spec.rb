@@ -8,7 +8,7 @@ RSpec.describe Api::UserProgrammeEnrolmentsController do
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        get "/admin/user_programme_enrolments/#{enrolment.id}/", { headers: nil }
+        get "/api/user_programme_enrolments/#{enrolment.id}/", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -18,7 +18,7 @@ RSpec.describe Api::UserProgrammeEnrolmentsController do
 
     describe 'POST #enrolled' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -28,7 +28,7 @@ RSpec.describe Api::UserProgrammeEnrolmentsController do
 
     describe 'POST #complete' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/complete", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -38,7 +38,7 @@ RSpec.describe Api::UserProgrammeEnrolmentsController do
 
     describe 'POST #flag' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/flag", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/flag", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -50,7 +50,7 @@ RSpec.describe Api::UserProgrammeEnrolmentsController do
   context 'token is valid' do
     describe 'GET #show' do
       before do
-        get "/admin/user_programme_enrolments/#{enrolment.id}/", { headers: token_headers }
+        get "/api/user_programme_enrolments/#{enrolment.id}/", { headers: token_headers }
       end
 
       it 'returns 201 status' do

@@ -12,7 +12,7 @@ RSpec.describe Api::UsersController do
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        get '/admin/users/', { params: { email: user.email }, headers: nil }
+        get '/api/users/', { params: { email: user.email }, headers: nil }
       end
 
       it 'returns 401 status' do
@@ -26,7 +26,7 @@ RSpec.describe Api::UsersController do
       before do
         enrolment
         achievement
-        get '/admin/users/', { params: { email: user.email }, headers: token_headers }
+        get '/api/users/', { params: { email: user.email }, headers: token_headers }
       end
 
       it 'returns 201 status' do

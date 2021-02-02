@@ -8,7 +8,7 @@ RSpec.describe Api::ActivitiesController do
     describe 'GET #show' do
       before do
         activities
-        get "/admin/activities/", { headers: nil }
+        get "/api/activities/", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -21,7 +21,7 @@ RSpec.describe Api::ActivitiesController do
     describe 'GET #show' do
       before do
         activities
-        get "/admin/activities/", { headers: token_headers }
+        get "/api/activities/", { headers: token_headers }
       end
 
       it 'returns 201 status' do

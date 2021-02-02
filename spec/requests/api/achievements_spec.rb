@@ -10,7 +10,7 @@ RSpec.describe Api::AchievementsController do
   context 'token is not passed' do
     describe 'POST #create' do
       before do
-        post "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: nil }
+        post "/api/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: nil }
       end
 
       it 'returns 401 status' do
@@ -20,7 +20,7 @@ RSpec.describe Api::AchievementsController do
 
     describe 'POST #complete' do
       before do
-        post "/admin/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: nil }
+        post "/api/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -32,7 +32,7 @@ RSpec.describe Api::AchievementsController do
   context 'token is passed' do
     describe 'POST #create' do
       before do
-        post "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
+        post "/api/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
       end
 
       it 'returns 201  status' do
@@ -44,14 +44,14 @@ RSpec.describe Api::AchievementsController do
       end
 
       it 'check for duplication' do
-				post "/admin/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
+				post "/api/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: token_headers }
         expect(response.status).to eq 409
       end
     end
 
     describe 'POST #complete' do
       before do
-        post "/admin/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: token_headers }
+        post "/api/users/#{user.id}/achievements/#{achievement.id}/complete", { headers: token_headers }
       end
 
       it 'returns 201 status' do
