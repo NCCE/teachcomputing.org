@@ -1,5 +1,5 @@
 module Api
-  classs AchievementsController < ApiController
+  class AchievementsController < ApiController
   def create
     user = User.find(params[:user_id])
     activity = Activity.find(params[:activity_id])
