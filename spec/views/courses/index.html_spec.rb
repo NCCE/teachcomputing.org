@@ -1,27 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe('courses/index', type: :view) do
+  let(:courses) do
+    build_list(
+      :achiever_course_template,
+      3,
+      age_groups: ['157430010'],
+      subjects: ['157430000'],
+      occurrences: [build(:achiever_course_occurrence)]
+    )
+  end
+
   before do
-    stub_age_groups
-    stub_course_templates
-    stub_face_to_face_occurrences
-    stub_online_occurrences
-    stub_subjects
-    @courses = Achiever::Course::Template.all
-    @subjects = Achiever::Course::Subject.all
-    @age_groups = Achiever::Course::AgeGroup.all
-    @course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
+    subjects = { 'Algorithmic thinking' => 100_000_011, 'Biology' => 157_430_000, 'Careers' => 157_430_001 }
+    age_groups = { 'Key stage 1' => 157_430_008, 'Key stage 2' => 157_430_009, 'Key stage 3' => 157_430_010,
+                   'Key stage 4' => 157_430_011 }
 
-    @courses.each do |course|
-      @course_occurrences.each do |course_occurrence|
-        course.occurrences.push(course_occurrence) if course_occurrence.course_template_no == course.course_template_no
-      end
-    end
+    filter_stub = instance_double(Achiever::CourseFilter)
 
-    @locations = ['Cambridge']
-    @levels = @age_groups
-    @topics = { 'Algorithms': '101' }
+    allow(filter_stub).to receive_messages(
+      course_tags: { 'Algorithms': '101' },
+      age_groups: age_groups,
+      subjects: subjects,
+      courses: courses,
+      course_locations: ['Cambridge'],
+      current_level: nil, current_location: nil,
+      current_topic: nil, current_certificate: nil,
+      applied_filters: nil
+    )
 
+    @course_filter = filter_stub
     render
   end
 
@@ -33,20 +41,20 @@ RSpec.describe('courses/index', type: :view) do
   end
 
   it 'links to the course landing page for each course' do
-    @courses.each do |course|
+    courses.each do |course|
       expect(rendered).to have_link(course.title, href: %r{#{course.activity_code}/#{course.title.parameterize}})
     end
   end
 
   describe 'courses' do
     it 'renders each of the course template titles' do
-      @courses.each do |course|
+      courses.each do |course|
         expect(rendered).to have_css('.ncce-courses__heading', text: course.title)
       end
     end
 
     it 'renders each of the course template codes' do
-      @courses.each do |course|
+      courses.each do |course|
         expect(rendered).to have_css('.ncce-courses__heading-code', text: course.activity_code)
       end
     end
@@ -60,7 +68,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders course subject tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'Computing')
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Biology')
     end
 
     it 'renders filter selects' do
