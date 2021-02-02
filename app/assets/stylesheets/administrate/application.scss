@@ -12,19 +12,19 @@
 @import "administrate/base/tables";
 @import "administrate/base/typography";
 
-// @import "administrate/components/app-container";
-// @import "administrate/components/attributes";
-// @import "administrate/components/buttons";
-// @import "administrate/components/cells";
-// @import "administrate/components/field-unit";
-// @import "administrate/components/flashes";
-// @import "administrate/components/form-actions";
-// @import "administrate/components/main-content";
-// @import "administrate/components/navigation";
-// @import "administrate/components/pagination";
-// @import "administrate/components/search";
+@import "administrate/components/app-container";
+@import "administrate/components/attributes";
+@import "administrate/components/buttons";
+@import "administrate/components/cells";
+@import "administrate/components/field-unit";
+@import "administrate/components/flashes";
+@import "administrate/components/form-actions";
+@import "administrate/components/main-content";
+@import "administrate/components/navigation";
+@import "administrate/components/pagination";
+@import "administrate/components/search";
 
 @import "administrate/utilities/text-color";
 
+@import "trix/dist/trix";
 @import "selectize";
-@import "flatpickr/dist/flatpickr.min";
