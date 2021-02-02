@@ -4,4 +4,3 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("../administrate/index")
