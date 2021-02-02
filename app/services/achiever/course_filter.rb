@@ -10,7 +10,7 @@ module Achiever
 
     def courses
       @courses ||= begin
-        courses = Achiever::Course::Template.all
+        courses = all_courses
 
         courses.each do |course|
           course_occurrences.each do |course_occurrence|
@@ -35,7 +35,7 @@ module Achiever
     end
 
     def course_tags
-      used_subjects = courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
+      used_subjects = all_courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
       @subjects.select { |_k, v| used_subjects.include?(v.to_s) }
     end
 
@@ -85,6 +85,10 @@ module Achiever
     end
 
     private
+
+      def all_courses
+        @all_courses ||= Achiever::Course::Template.all
+      end
 
       def course_occurrences
         @course_occurrences ||= begin
