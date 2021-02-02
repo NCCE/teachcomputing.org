@@ -82,6 +82,7 @@ end
 group :test do
   gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '~> 3.32'
+  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
   gem 'selenium-webdriver', '~> 3.142.7'
