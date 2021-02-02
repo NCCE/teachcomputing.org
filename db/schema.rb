@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
     t.index ["programme_id", "user_id"], name: "index_achievements_on_programme_id_and_user_id"
   end
 
+  create_table "achiever_sync_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "state", null: false
+    t.uuid "user_programme_enrolment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_programme_enrolment_id"], name: "index_achiever_sync_records_on_user_programme_enrolment_id"
+  end
+
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -282,6 +290,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
   end
 
   add_foreign_key "achievement_transitions", "achievements", on_delete: :cascade
+  add_foreign_key "achiever_sync_records", "user_programme_enrolments"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"

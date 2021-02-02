@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   end
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
+  get '/courses/hubs/:hub_id', action: :index, controller: 'courses', as: 'hub'
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
   get '/curriculum', to: 'curriculum/key_stages#index', as: :curriculum_key_stages

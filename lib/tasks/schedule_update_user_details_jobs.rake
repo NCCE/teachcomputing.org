@@ -6,7 +6,7 @@ namespace :update_user_details_jobs do
       puts "Processing batch: #{batch}"
       group.each_with_index do |user, index|
         delay = (batch * batch_size * interval) + (index * interval)
-        UpdateUsersDetailsFromAchieverJob.set(wait: delay.seconds).perform_later(user)
+        Achiever::UpdateUsersDetailsFromAchieverJob.set(wait: delay.seconds).perform_later(user)
       end
     end
   end

@@ -41,6 +41,7 @@
     "bundle-install": "yarn run bundle install && docker-compose restart web && yarn start",
     "bundle-update": "yarn run bundle update && docker-compose restart web && yarn start",
     "exec": "yarn run bundle exec",
+    "shell": "docker-compose exec web sh",
     "test": "yarn run exec rspec",
     "test-debug": "docker-compose exec web rdebug-ide --host 0.0.0.0 --port 1235 -- bin/rspec"
   },

@@ -3,7 +3,9 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.new(achievement_params)
     @achievement.user_id = current_user.id
 
-    if @achievement.save
+    if invalid_params?
+      flash[:error] = "You must provide supporting evidence for '#{@achievement.activity.title}'"
+    elsif @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
       metadata = { credit: @achievement.activity.credit }
       metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
@@ -42,6 +44,11 @@ class AchievementsController < ApplicationController
   end
 
   private
+
+    def invalid_params?
+      (params[:self_verification_info].nil? || params[:self_verification_info].empty?) &&
+        achievement_params[:supporting_evidence].nil?
+    end
 
     def achievement_params
       params.require(:achievement).permit(:activity_id, :supporting_evidence)
