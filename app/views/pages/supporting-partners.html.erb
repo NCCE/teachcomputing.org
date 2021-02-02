@@ -6,26 +6,23 @@
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body govuk-!-padding-bottom-5">
           The demand for computing expertise is growing - with an estimated 1.2 million more people with specialist digital skills needed by 2022. We are calling on businesses to join us in equipping young people with the necessary skills for the future.
-          <br/>
-          You can play a major role in shaping and improving the accessibility and quality of computing education in England.
         </p>
         <h2 class="govuk-heading-l">How can you help?</h2>
-        <h3 class="govuk-heading-m">Funding</h3>
         <p class="govuk-body">
         The NCCE programme relies on financial contributions from our supporting partners to achieve our mission. Funding is used for:
         </p>
         <ul class="govuk-list govuk-list--bullet ncce-inside-list">
           <li class="govuk-!-padding-bottom-5">
-          Bursaries: To help cover the costs for teachers to attend training courses, and to achieve computing certifications, we provide them with bursaries. Professional development in turn helps to improve the quality of teaching for learners.
+
+          <%= link_to 'Bursaries', '/bursary', class: 'ncce-link' %>: help cover the costs for teachers to attend training courses and to achieve certifications. Professional development in turn helps improve the quality of teaching for learners.
           </li>
 
           <li class="">
-            Special projects: The NCCE is always looking to expand our offering so it is a comprehensive source of support and resources for teachers.
+            Special projects: we are always looking to expand our offering so it is a comprehensive source of support and resources for teachers.
             Our <%= link_to 'Curriculum resources', curriculum_key_stages_path, class: 'ncce-link' %> is just one of the special projects we were able to deliver through additional funding.
           </li>
         </ul>
 
-        <h3 class="govuk-heading-m">Get involved</h3>
         <p class="govuk-body">
           To find out more on how you can help us continue this crucial work, see our <%=  link_to 'Working Together booklet', '#', class: 'ncce-link' %>, or
           <br />
@@ -48,17 +45,17 @@
       <div class="landing-page-resources__grid">
         <div class="shadow_card dark_card">
           <%= link_to 'https://www.arm.com/resources/education/schools', class: 'ncce-link' do %>
-            <img src="/images/partners/arm-school-program.svg" class="dark_card--image dark_card--image-wide" alt="Arm school program logo">
+            <img src="/images/partners/arm.svg" class="dark_card--image dark_card--image-wide" alt="Arm logo">
           <% end %>
-          <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Arm', 'https://www.arm.com/resources/education/schools', class: 'ncce-link ncce-link--heading' %></h2>
+          <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Arm', 'https://www.arm.com/', class: 'ncce-link ncce-link--heading' %></h2>
           <p class="govuk-body govuk-!-margin-bottom-0">
             As the world’s leading semiconductor IP company, Arm’s technology is
             in billions of devices; from supercomputers and cars, to mobile phones
             and small computers. The Arm School Program is part of its Education
             team and works with schools and partners to support teaching communities
             of practice and enabling research into STEM and computing education.
-            They also offer <%= link_to 'a range of free resources', 'https://www.arm.com/resources/education/schools/content', class: 'ncce-link' %>
-            , linked to the computer science curriculum.
+            They also offer <%= link_to 'a range of free resources', 'https://www.arm.com/resources/education/schools/content', class: 'ncce-link' %>,
+            linked to the computer science curriculum.
           </p>
         </div>
 
@@ -72,7 +69,7 @@
           <p class="govuk-body govuk-!-margin-bottom-0">
             BT Skills for Tomorrow offers a wide range of free advice,
             information and support for all ages and abilities,
-            to help people make the most of the digital world.
+            to help people make the most of life in the digital world.
             As part of this, BT and Computing at School’s (CAS)
             <%= link_to 'Barefoot programme', 'https://www.barefootcomputing.org/', class: 'ncce-link' %>
             supports primary teachers with the computing curriculum,
@@ -90,13 +87,16 @@
             <%= link_to 'Google', 'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science', class: 'ncce-link ncce-link--heading' %>
           </h2>
           <p class="govuk-body govuk-!-margin-bottom-0">
-            Google believes that everyone deserves the tools and skills to set
-            them up for success in building the future they want for themselves.
-            They help educators to make a greater impact by creating resources and
-            tools to inspire creativity, encourage hands-on learning, and equip
-            students with digital skills. This includes CS First: a free computer
-            science curriculum, and Applied Digital Skills: a free project-based
-            video curriculum.
+            Google is dedicated to closing equity gaps in computer science education
+            by providing the tools, resources, and inspiration to help every educator
+            give their students confidence in Computer Science, advance their skills,
+            and prepare them for the future.
+            This includes
+            <%= link_to 'CS First', 'https://csfirst.withgoogle.com/s/en/home?utm_source=pdpartner&utm_medium=referral&utm_campaign=20210115-TCUK21--hsms-ins-&src=re-pdp-20210115-TCUK21--hsms-ins-', class: 'ncce-link' %>: a free computer
+            science curriculum and
+            <%= link_to 'Applied Digital Skills',
+            'https://applieddigitalskills.withgoogle.com/s/en-uk/teach?utm_source=partners&utm_medium=website&utm_campaign=10/2/2020-TC-UK--hsms-ins-&src=partners-website-10/2/2020-TC-UK--hsms-ins-', class: 'ncce-link' %>: free video-based
+            lessons to prepare students for the jobs of today and tomorrow.
           </p>
         </div>
 
