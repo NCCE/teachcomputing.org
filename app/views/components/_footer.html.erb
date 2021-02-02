@@ -4,7 +4,7 @@
       <img src="/images/ncce-logo.svg" class="ncce-footer__logos-img" alt="National Centre for Computing Education home">
       <div>
         <p class="govuk-body-s ncce-footer__text">Funded by</p>
-        <%= link_to 'https://www.gov.uk/government/organisations/department-for-education', class: 'govuk-footer__link ncce-link' do %>
+        <%= link_to 'https://www.gov.uk/government/organisations/department-for-education', class: 'govuk-footer__link ncce-link', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'DfE' } do %>
           <img src="/images/dfe.svg" class="ncce-footer__logos-img"
                                      alt="Department for Education website">
         <% end %>
@@ -14,53 +14,53 @@
     <nav class="ncce-footer__grid-links" aria-label="Footer Navigation">
       <ul class="ncce-footer__list">
         <li class="ncce-footer__list-item">
-          <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Courses', courses_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Courses' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Bursaries', bursary_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Bursaries', '/bursary', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Bursaries' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Pedagogy', pedagogy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Pedagogy', '/pedagogy', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Pedagogy' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Teaching resources' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Home teaching', home_teaching_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-      </ul>
-      <ul class="ncce-footer__list">
-        <li class="ncce-footer__list-item">
-          <%= link_to 'About us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li class="ncce-footer__list-item">
-          <%= link_to 'News', news_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li class="ncce-footer__list-item">
-          <%= link_to 'Get involved', get_involved_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li class="ncce-footer__list-item">
-          <%= link_to 'Contributing partners', contributing_partners_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li class="ncce-footer__list-item">
-          <%= link_to 'Computing hubs', hubs_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
-        </li>
-        <li class="ncce-footer__list-item">
-          <%= link_to 'ITE providers', support_for_ite_providers_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Home teaching', '/home-teaching', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Home teaching' } %>
         </li>
       </ul>
       <ul class="ncce-footer__list">
         <li class="ncce-footer__list-item">
-          <%= link_to 'Press', press_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'About us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'About us' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Accessibility', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'News', news_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'News' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Get involved', get_involved_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Get involved' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Terms and Conditions', terms_conditions_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark' %>
+          <%= link_to 'Contributing partners', contributing_partners_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Contributing partners' } %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Computing hubs', '/hubs', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Computing hubs' } %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'ITE providers', '/support-for-ite-providers', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'ITE providers' } %>
+        </li>
+      </ul>
+      <ul class="ncce-footer__list">
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Press', press_url, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Press' } %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Accessibility', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Accessibility' }%>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Privacy', privacy_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Privacy' } %>
+        </li>
+        <li class="ncce-footer__list-item">
+          <%= link_to 'Terms and Conditions', terms_conditions_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Terms and Conditions' } %>
         </li>
       </ul>
     </nav>
@@ -68,22 +68,22 @@
     <nav class="ncce-footer__nav-social" aria-label="Footer Contact Navigation">
       <ul class="ncce-footer__list ncce-footer__grid-social">
         <li class="ncce-footer__list-item">
-          <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
+          <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Facebook' } do %>
             <%= image_tag "facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark' do %>
+          <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Twitter' } do %>
             <%= image_tag "twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= mail_to 'info@teachcomputing.org', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
+          <%= mail_to 'info@teachcomputing.org', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Email' } do %>
             <%= image_tag "email.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>Email
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'tel:01904 328 300', class: 'govuk-footer__link ncce-link ncce-link--on-dark'  do %>
+          <%= link_to 'tel:01904 328 300', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Telephone' } do %>
             <%= image_tag "telephone.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>01904 328 300
           <% end %>
         </li>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Certificates::CsAcceleratorController do
+RSpec.describe Certificates::CSAcceleratorController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -17,6 +17,7 @@ RSpec.describe Certificates::CsAcceleratorController do
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
+  let!(:secondary_certificate) { create(:secondary_certificate) }
 
   let(:setup_achievements_for_programme) do
     assessment

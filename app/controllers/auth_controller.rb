@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  IMPERSONATION_ENABLED = !ENV['USER_TO_IMPERSONATE'].nil?
+  IMPERSONATION_ENABLED = ENV['USER_TO_IMPERSONATE'].present?
   impersonates :user if IMPERSONATION_ENABLED
 
   def callback
@@ -38,11 +38,11 @@ class AuthController < ApplicationController
 
   private
 
-  def omniauth_params
-    request.env['omniauth.auth']
-  end
+    def omniauth_params
+      request.env['omniauth.auth']
+    end
 
-  def course_redirect_params
-    helpers.safe_redirect_url(request.env['omniauth.params']['source_uri'] || request.env['omniauth.origin'])
-  end
+    def course_redirect_params
+      helpers.safe_redirect_url(request.env['omniauth.params']['source_uri'] || request.env['omniauth.origin'])
+    end
 end

@@ -7,12 +7,12 @@ gem 'activestorage-validator'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'aws-sdk-s3', require: false
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'cloudflare-rails', '~> 0.4.0'
+gem 'bootsnap', '>= 1.5.1', require: false
+gem 'cloudflare-rails', '~> 1.1'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
-gem 'ddtrace', '~> 0.18.2'
+gem 'ddtrace', '~> 0.44'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'graphlient', '~> 0.4'
@@ -33,7 +33,7 @@ gem 'pretender', '~> 0.3.4'
 gem 'puma', '~> 3.12'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.1'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
@@ -52,7 +52,7 @@ gem 'graphql', '<= 1.10.10'
 group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug'
   gem 'debase', '0.2.3'
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
@@ -82,6 +82,7 @@ end
 group :test do
   gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '~> 3.32'
+  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
   gem 'selenium-webdriver', '~> 3.142.7'
@@ -91,4 +92,4 @@ group :test do
   gem 'vcr'
 end
 
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data'

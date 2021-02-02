@@ -14,7 +14,7 @@ RSpec.describe SecondaryMailer, type: :mailer do
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to match(/Welcome Tobias/)
+      expect(mail.body.encoded).to match(/Welcome to Teach secondary computing Tobias/)
     end
 
     it 'contains mail_to link' do
@@ -27,7 +27,7 @@ RSpec.describe SecondaryMailer, type: :mailer do
 
     context 'when viewing plain text' do
       it 'greets the user' do
-        expect(mail.text_part.body.to_s).to match(/Welcome Tobias to Teach secondary computing!/)
+        expect(mail.text_part.body.to_s).to match(/Welcome to Teach secondary computing Tobias/)
       end
 
       it 'includes email address' do
@@ -38,7 +38,9 @@ RSpec.describe SecondaryMailer, type: :mailer do
 
   describe 'completed' do
     let(:mail) { SecondaryMailer.with(user: user).completed }
-    let(:mail_subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in Secondary Computing Teaching' }
+    let(:mail_subject) do
+      'Congratulations you have completed the National Centre for Computing Education Certificate in Secondary Computing Teaching'
+    end
 
     it 'renders the headers' do
       expect(mail.subject).to eq(mail_subject)

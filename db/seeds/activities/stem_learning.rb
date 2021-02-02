@@ -130,6 +130,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '258c93cc-69e2-46f6-bf39
   activity.stem_course_template_no = '258c93cc-69e2-46f6-bf39-fbce27cb8fc2'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP207'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -154,8 +155,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '46c07f3e-b9b2-4f0c-ba56
   activity.provider = 'stem-learning'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(stem_course_template_no: '87bf64c2-6517-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Introduction to GCSE computer science'
   activity.credit = 20
@@ -174,6 +173,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '0d64b3cd-b866-ea11-a811
   activity.stem_course_template_no = '0d64b3cd-b866-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP220'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -185,6 +185,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '1199992c-3665-ea11-a811
   activity.stem_course_template_no = '1199992c-3665-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP230'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -196,6 +197,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '80d93c0f-be66-ea11-a811
   activity.stem_course_template_no = '80d93c0f-be66-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP221'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -207,6 +209,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '94b15af9-c066-ea11-a811
   activity.stem_course_template_no = '94b15af9-c066-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP231'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -218,6 +221,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ff9ee9a5-6267-ea11-a811
   activity.stem_course_template_no = 'ff9ee9a5-6267-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP222'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -229,6 +233,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '46d64f78-6367-ea11-a811
   activity.stem_course_template_no = '46d64f78-6367-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP232'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -240,6 +245,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '43476cb7-6567-ea11-a811
   activity.stem_course_template_no = '43476cb7-6567-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP223'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -251,6 +257,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '84568ccf-6767-ea11-a811
   activity.stem_course_template_no = '84568ccf-6767-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP233'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -262,6 +269,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'de08c1a9-3868-ea11-a811
   activity.stem_course_template_no = 'de08c1a9-3868-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP228'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -273,6 +281,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '17d78590-4268-ea11-a811
   activity.stem_course_template_no = '17d78590-4268-ea11-a811-000d3a86d7a3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP238'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -284,6 +293,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811
   activity.stem_course_template_no = '07e76ffd-e17f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP420'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -295,6 +305,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811
   activity.stem_course_template_no = 'dd8a8433-e57f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP422'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -306,6 +317,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '935a0639-e87f-ea11-a811
   activity.stem_course_template_no = '935a0639-e87f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -317,6 +329,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e432e725-ba7f-ea11-a811
   activity.stem_course_template_no = 'e432e725-ba7f-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP450'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -328,6 +341,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '5b694e80-ce7f-ea11-a811
   activity.stem_course_template_no = '5b694e80-ce7f-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP451'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -339,6 +353,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'a533bf46-d17f-ea11-a811
   activity.stem_course_template_no = 'a533bf46-d17f-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP452'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -350,6 +365,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '5fdb7188-dd7f-ea11-a811
   activity.stem_course_template_no = '5fdb7188-dd7f-ea11-a811-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP453'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -361,6 +377,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '526b3a42-b688-ea11-a811
   activity.stem_course_template_no = '526b3a42-b688-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP428'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -372,6 +389,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '65fe83ad-b188-ea11-a811
   activity.stem_course_template_no = '65fe83ad-b188-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP431'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -383,6 +401,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '770d8136-3d86-ea11-a811
   activity.stem_course_template_no = '770d8136-3d86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP432'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -394,6 +413,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '67a21143-4886-ea11-a811
   activity.stem_course_template_no = '67a21143-4886-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP433'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -405,6 +425,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'bd6497ad-4386-ea11-a811
   activity.stem_course_template_no = 'bd6497ad-4386-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP438'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -416,9 +437,8 @@ a = Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811
   activity.stem_course_template_no = 'dbb7808c-b888-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP445'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e5acc943-4926-ea11-a810-000d3a86d545') do |activity|
   activity.title = 'Introduction to primary computing'
@@ -427,6 +447,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e5acc943-4926-ea11-a810
   activity.stem_course_template_no = 'e5acc943-4926-ea11-a810-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP004'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -438,6 +459,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'bb7a0f31-5086-ea11-a811
   activity.stem_course_template_no = 'bb7a0f31-5086-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP454'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -449,6 +471,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811
   activity.stem_course_template_no = '6bc40e34-4c86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP455'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -460,6 +483,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '41a77207-c4c2-ea11-a812
   activity.stem_course_template_no = '41a77207-c4c2-ea11-a812-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP239'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -471,6 +495,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '22880db7-78e8-ea11-a817
   activity.stem_course_template_no = '22880db7-78e8-ea11-a817-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP211'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -482,9 +507,8 @@ a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817
   activity.stem_course_template_no = '6ed470e0-75e8-ea11-a817-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP215'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'd0aa3d40-f2f7-ea11-a815-000d3a86f6ce') do |activity|
   activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a programme'
@@ -493,6 +517,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'd0aa3d40-f2f7-ea11-a815
   activity.stem_course_template_no = 'd0aa3d40-f2f7-ea11-a815-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP243'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -504,6 +529,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'de4d357a-93f9-ea11-a815
   activity.stem_course_template_no = 'de4d357a-93f9-ea11-a815-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP244'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -515,6 +541,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813
   activity.stem_course_template_no = '34ff2768-a7fc-ea11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP005'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -526,6 +553,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e3c14378-3015-eb11-a813
   activity.stem_course_template_no = 'e3c14378-3015-eb11-a813-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP008'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -537,6 +565,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '03fb0a52-a712-eb11-a813
   activity.stem_course_template_no = '03fb0a52-a712-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP439'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -548,6 +577,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e1e54959-db12-eb11-a813
   activity.stem_course_template_no = 'e1e54959-db12-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP463'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -559,6 +589,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813
   activity.stem_course_template_no = 'ce24e77f-d312-eb11-a813-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP430'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -570,6 +601,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '8eb6f3de-bf12-eb11-a813
   activity.stem_course_template_no = '8eb6f3de-bf12-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP421'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -581,6 +613,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813
   activity.stem_course_template_no = 'ad8580c0-2915-eb11-a813-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP464'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -592,6 +625,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '952bb189-4239-eb11-a813
   activity.stem_course_template_no = '952bb189-4239-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP301'
 end
 
 a = Activity.find_or_create_by(stem_course_template_no: '67ff4e64-d83a-eb11-a813-000d3a86d545') do |activity|
@@ -601,6 +635,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '67ff4e64-d83a-eb11-a813
   activity.stem_course_template_no = '67ff4e64-d83a-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP429'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -612,6 +647,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c0b37384-e93a-eb11-a813
   activity.stem_course_template_no = 'c0b37384-e93a-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP229'
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -623,6 +659,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'f12d0fbd-993b-eb11-a813
   activity.stem_course_template_no = 'f12d0fbd-993b-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP446'
 end
 
 a = Activity.find_or_create_by(stem_course_template_no: '11f58c3f-3341-eb11-a813-000d3a86d545') do |activity|
@@ -632,6 +669,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '11f58c3f-3341-eb11-a813
   activity.stem_course_template_no = '11f58c3f-3341-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP007'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -643,6 +681,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '3b2957a3-3541-eb11-a813
   activity.stem_course_template_no = '3b2957a3-3541-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP247'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -654,6 +693,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c9957d36-3841-eb11-a813
   activity.stem_course_template_no = 'c9957d36-3841-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP248'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -665,6 +705,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '15040292-3941-eb11-a813
   activity.stem_course_template_no = '15040292-3941-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP249'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -676,6 +717,19 @@ a = Activity.find_or_create_by(stem_course_template_no: '6e8bfcd4-df50-eb11-a812
   activity.stem_course_template_no = '6e8bfcd4-df50-eb11-a812-000d3a86f6ce'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP447'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1a81f632-a255-eb11-a812-000d3a874628') do |activity|
+  activity.title = 'Teaching GCSE computer science: improving student engagement'
+  activity.credit = 10
+  activity.slug = 'teaching-gcse-computer-science-improving-student-engagement'
+  activity.stem_course_template_no = '1a81f632-a255-eb11-a812-000d3a874628'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP240'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

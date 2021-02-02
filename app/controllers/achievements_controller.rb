@@ -3,11 +3,16 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.new(achievement_params)
     @achievement.user_id = current_user.id
 
-    if @achievement.save
+    if invalid_params?
+      flash[:error] = "You must provide supporting evidence for '#{@achievement.activity.title}'"
+    elsif @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
       metadata = { credit: @achievement.activity.credit }
       metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      metadata[:supporting_evidence] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
+      if achievement_params[:supporting_evidence].present?
+        metadata[:self_verification_info] =
+          url_for(@achievement.supporting_evidence)
+      end
 
       @achievement.transition_to(:complete, metadata)
 
@@ -16,7 +21,8 @@ class AchievementsController < ApplicationController
         when 'cs-accelerator'
           AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
         when 'primary-certificate' || 'secondary-certificate'
-          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
+          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id,
+                                                      source: 'AchievementsController.create')
         end
       end
     else
@@ -38,6 +44,11 @@ class AchievementsController < ApplicationController
   end
 
   private
+
+    def invalid_params?
+      (params[:self_verification_info].nil? || params[:self_verification_info].empty?) &&
+        achievement_params[:supporting_evidence].nil?
+    end
 
     def achievement_params
       params.require(:achievement).permit(:activity_id, :supporting_evidence)
