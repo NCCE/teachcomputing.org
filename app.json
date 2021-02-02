@@ -123,9 +123,6 @@
   ],
   "buildpacks": [
     {
-      "url": "https://github.com/DataDog/heroku-buildpack-datadog"
-    },
-    {
       "url": "heroku/nodejs"
     },
     {
