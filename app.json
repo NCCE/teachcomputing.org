@@ -108,7 +108,7 @@
       "required": true,
       "value": "secret"
     },
-    "SECONDARY_CERTIFICATE_ENABLED": {
+    "CERTIFICATION_SYNCING_ENABLED": {
       "required": true
     }
   },
@@ -122,9 +122,6 @@
     "heroku-redis:hobby-dev"
   ],
   "buildpacks": [
-    {
-      "url": "https://github.com/DataDog/heroku-buildpack-datadog"
-    },
     {
       "url": "heroku/nodejs"
     },

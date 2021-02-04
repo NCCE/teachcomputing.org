@@ -13,7 +13,8 @@ RSpec.describe UserProgrammeEnrolmentsController do
 
     context 'with valid params' do
       subject(:enrol) do
-        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id,
+                                                                               user_id: user.id })
       end
 
       it 'redirects to the dashboard path' do
@@ -29,7 +30,7 @@ RSpec.describe UserProgrammeEnrolmentsController do
       it 'displays flash message' do
         enrol
         expect(flash[:notice]).to be_present
-        expect(flash[:notice]).to match(/Congrats you have enrolled on #{programme.title}/)
+        expect(flash[:notice]).to match(/Congratulations, you have enrolled on #{programme.title}/)
       end
 
       context 'when user has unenrolled from certificate after auto enrolment' do
@@ -63,7 +64,7 @@ RSpec.describe UserProgrammeEnrolmentsController do
         it 'displays flash message' do
           enrol
           expect(flash[:notice]).to be_present
-          expect(flash[:notice]).to match(/Congrats you have enrolled on #{programme.title}/)
+          expect(flash[:notice]).to match(/Congratulations, you have enrolled on #{programme.title}/)
         end
       end
     end
@@ -78,8 +79,10 @@ RSpec.describe UserProgrammeEnrolmentsController do
 
     context 'when attempting to enrol twice' do
       subject do
-        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
-        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id, user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id,
+                                                                               user_id: user.id })
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: { programme_id: programme.id,
+                                                                               user_id: user.id })
       end
 
       before do

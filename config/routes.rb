@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   end
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
+  get '/courses/hubs/:hub_id', action: :index, controller: 'courses', as: 'hub'
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
   get '/curriculum', to: 'curriculum/key_stages#index', as: :curriculum_key_stages
@@ -109,6 +110,8 @@ Rails.application.routes.draw do
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
+  get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
+                                  defaults: { page_slug: 'a-level-computer-science' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
