@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   resources :achievements, only: %i[create destroy]
   namespace :admin do
     root to: 'pathways#index'
-    delete '/cache', to: 'cache#destroy'
+    resources :activities
     resources :pathways
     resources :pathway_activities
   end
 
   namespace :api do
+    delete '/cache', to: 'cache#destroy'
     get '/users', to: 'users#show'
     resources :users, only: %i[] do
       resources :achievements, only: %i[create] do

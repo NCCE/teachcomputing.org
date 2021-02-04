@@ -1,4 +1,4 @@
-module Admin
+module Api
   class CacheController < ApiController
     def destroy
       CacheInvalidator.new(
