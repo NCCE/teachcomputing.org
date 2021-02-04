@@ -2,10 +2,10 @@
 <%= render 'components/hero', hero_title: @programme.title, subtitle: 'Certification awarded by BCS, The Chartered Institute for IT', glyph_position: 'bottom', colour: 'orange' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row ncce-primary-diagnostic__row">
+    <div class="govuk-grid-row ncce-diagnostic__row">
       <div class="govuk-grid-column-two-thirds">
-        <div class="ncce-primary-diagnostic__question">
-          <h2 class="govuk-heading-m ncce-primary-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
+        <div class="ncce-diagnostic__question">
+          <h2 class="govuk-heading-m ncce-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
           <%= form_for(:diagnostic, url: wizard_path, method: :put) do |form| %>
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend">
@@ -31,7 +31,7 @@
                 </div>
               </div>
             </fieldset>
-            <%= form.submit 'Continue', class: 'govuk-button ncce-primary-diagnostic__button' %>
+            <%= form.submit 'Continue', class: 'govuk-button ncce-diagnostic__button' %>
           <% end %>
         </div>
       </div>

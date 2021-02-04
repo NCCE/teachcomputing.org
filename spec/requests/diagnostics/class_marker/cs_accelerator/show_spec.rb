@@ -13,7 +13,7 @@ RSpec.describe Diagnostics::ClassMarker::CSAcceleratorController do
     describe 'while logged in' do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get diagnostic_cs_accelerator_certificate_path(activity.id)
+        get class_marker_diagnostic_cs_accelerator_certificate_path(activity.id)
       end
 
       it 'creates an Achievement if one does not exist already' do
@@ -31,7 +31,7 @@ RSpec.describe Diagnostics::ClassMarker::CSAcceleratorController do
 
     describe 'while logged out' do
       before do
-        get diagnostic_cs_accelerator_certificate_path(activity.id)
+        get class_marker_diagnostic_cs_accelerator_certificate_path(activity.id)
       end
 
       it 'redirects to login' do

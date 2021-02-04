@@ -3,12 +3,12 @@
   margin-top: 15px;
 }
 
-.ncce-primary-diagnostic__button {
+.ncce-diagnostic__button {
   margin-top: 25px !important;
   @include ncce_button($deep-cerulean);
 }
 
-.ncce-primary-diagnostic__hidden {
+.ncce-diagnostic__hidden {
   display: none;
 
   @include govuk-media-query($from: desktop) {
@@ -16,7 +16,7 @@
   }
 }
 
-.ncce-primary-diagnostic__question-progress {
+.ncce-diagnostic__question-progress {
   font-weight: normal;
   font-family: $font-family-body;
   font-size: 1.188rem;
@@ -25,7 +25,7 @@
   margin-bottom: 10px;
 }
 
-.ncce-primary-diagnostic__row {
+.ncce-diagnostic__row {
   display: flex;
   flex-flow: wrap-reverse;
 

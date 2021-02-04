@@ -10,7 +10,7 @@ RSpec.describe('certificates/cs_accelerator/_activity-list', type: :view) do
     @online_achievements = []
     @face_to_face_achievements = []
     @programme = programme
-    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+    allow(view).to receive(:current_user).and_return(user)
   end
 
   context 'when the user has not done the diagnostic' do

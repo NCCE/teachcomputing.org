@@ -57,6 +57,5 @@
       "git add"
     ]
   },
-  "pre-commit": "lint:staged",
-  "version": "0.0.0"
+  "pre-commit": "lint:staged"
 }

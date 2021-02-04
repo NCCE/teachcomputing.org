@@ -49,7 +49,10 @@ Rails.application.routes.draw do
                                as: :cs_accelerator_certificate do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
-      get '/class_marker_diagnostic/:id', to: '/diagnostics/class_marker/cs_accelerator#show', as: :diagnostic
+      get '/questionnaire/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
+      put '/questionnaire/:id', to: '/diagnostics/cs_accelerator#update', as: :update_diagnostic
+      get '/class_marker_diagnostic/:id', to: '/diagnostics/class_marker/cs_accelerator#show',
+                                          as: :class_marker_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol

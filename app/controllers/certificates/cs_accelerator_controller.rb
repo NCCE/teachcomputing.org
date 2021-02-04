@@ -4,6 +4,7 @@ module Certificates
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete]
     before_action :user_enrolled?, only: %i[show complete]
+    before_action :user_completed_diagnostic?, only: %i[show]
 
     def show
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
@@ -29,6 +30,16 @@ module Certificates
 
       def user_enrolled?
         redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
+      end
+
+      def user_completed_diagnostic?
+        questionnaire = Questionnaire.find_by(slug: 'cs-accelerator-enrolment-questionnaire')
+        response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
+        return true if response&.current_state == 'complete'
+
+        # Navigate directly to the last question reached, or question_1.
+        question = response&.current_question ? "question_#{response.current_question}".to_sym : :question_1
+        redirect_to diagnostic_cs_accelerator_certificate_path(question)
       end
 
       def assign_assessment_and_achievements
