@@ -49,23 +49,24 @@
 			</div>
 			<div class="header__bottom">
 				<ul class='ncce-header__navigation-certification magda-ul'>
-					<li class="ncce-header__navigation-item-cert magda-li">
-						<%= link_to 'Primary teachers', primary_teachers_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Primary teachers' } %>
-					</li>
-					<li class="ncce-header__navigation-item-cert magda-li">
-						<%= link_to 'Secondary teachers', secondary_teachers_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Secondary teachers' } %>
-					</li>
-					<li class="ncce-header__navigation-item-cert magda-li">
-						<%= link_to 'Training and CPD', courses_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Training and CPD' } %>
-					</li>
-					<li class="ncce-header__navigation-item-cert magda-li">
-						<%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Teaching resources' } %>
-					</li>
-					<li class="ncce-header__navigation-item-cert magda-li">
-						<%= link_to 'About us', curriculum_key_stages_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'About us' } %>
-					</li>
+					<% header_navigation.each do  | nav_item |%>
+						<li class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations ncce-header__navigation-item-cert magda-li">
+							<button aria-expanded="false"><%= nav_item[:text] %>
+								<svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
+									<g transform="translate(80, 100) rotate(-135.000000)">
+											<rect width="100" height="27"></rect>
+											<rect width="27" height="100"></rect>
+									</g>
+								</svg>
+							</button>
+						</li>
+						<ul class="govuk-list govuk-body-s">
+							<% nav_item[:children].each do  | item |%>
+								<li><%= link_to item[:text], item[:link], class: '', data: { event_action: 'click', event_category: '', event_label: item[:label] } %></li>
+							<% end %>
+						</ul>
+					<% end %>
 				</ul>
-			</div>
 		</nav>
   </div>
 </header>

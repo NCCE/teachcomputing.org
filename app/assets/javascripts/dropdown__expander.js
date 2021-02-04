@@ -47,7 +47,7 @@ function initialiseSections(className) {
 }
 
 function initialiseStickyFilterBar() {
-	const className = 'ncce-courses__filter-container'
+	const className = 'dropdown__expander__filter-container'
 	const filterContainer = document.querySelector('.' + className)
 	let filterTop = filterContainer.offsetTop
 	let sticky = false
@@ -69,9 +69,7 @@ function initialiseStickyFilterBar() {
 }
 
 ready(function () {
-	initialiseSections('ncce-courses__locations')
-	initialiseSections('ncce-courses__filter-mobile-heading')
-	initialiseSections('header__expander')
+	initialiseSections('dropdown__expander')
 	// When we can reload and scroll, re-introduce
 	// initialiseStickyFilterBar()
 })
