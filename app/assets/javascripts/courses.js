@@ -71,7 +71,6 @@ function initialiseStickyFilterBar() {
 ready(function () {
 	initialiseSections('ncce-courses__locations')
 	initialiseSections('ncce-courses__filter-mobile-heading')
-	initialiseSections('header__expander')
 	// When we can reload and scroll, re-introduce
 	// initialiseStickyFilterBar()
 })
