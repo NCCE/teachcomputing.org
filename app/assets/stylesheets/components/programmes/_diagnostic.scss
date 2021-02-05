@@ -8,11 +8,13 @@
   @include ncce_button($deep-cerulean);
 }
 
-.ncce-diagnostic__hidden {
-  display: none;
+.ncce-diagnostic__aside {
+  display: block;
 
-  @include govuk-media-query($from: desktop) {
-    display: block;
+  @include govuk-media-query($until: desktop) {
+    &:not(.ncce-diagnostic__aside-question-1) {
+      display: none;
+    }
   }
 }
 

@@ -1,5 +1,9 @@
 module DiagnosticHelper
+  def step_index(steps, step)
+    steps.index(step) + 1
+  end
+
   def current_position(steps, step)
-    "Question #{steps.index(step) + 1} of #{steps.count}"
+    "Question #{step_index(steps, step)} of #{steps.count}"
   end
 end

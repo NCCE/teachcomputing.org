@@ -33,6 +33,8 @@ module Certificates
       end
 
       def user_completed_diagnostic?
+        return true unless FeatureFlagService.new.flags[:csa_questionnaire_enabled]
+
         questionnaire = Questionnaire.find_by(slug: 'cs-accelerator-enrolment-questionnaire')
         response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
         return true if response&.current_state == 'complete'

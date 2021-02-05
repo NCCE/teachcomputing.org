@@ -18,7 +18,8 @@ module Diagnostics
       response = questionnaire_response
       store_response response
       jump_to_latest response
-      response.transition_to(:complete) if next_step == :wicked_finish.to_s
+      response.transition_to(:complete) if next_step == :wicked_finish.to_s &&
+                                           questionnaire_response.answers.count == steps.count - 1
 
       render_wizard response unless completed_diagnostic?
     end
