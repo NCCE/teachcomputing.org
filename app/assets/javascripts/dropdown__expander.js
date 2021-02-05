@@ -13,20 +13,20 @@ function initialiseSections(className) {
 	const headings = document.querySelectorAll('.' + className)
 	Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
 		// We only have a single node to pull out here the next thing.
-		let contents = heading.nextElementSibling
-		contents.parentNode.removeChild(contents)
+		// let contents = heading.nextElementSibling
+		// contents.parentNode.removeChild(contents)
+		// console.log(heading.children)
 
 		// Create a wrapper element for `contents` and hide it
-		let wrapper = document.createElement('div')
-		wrapper.className = 'dropdown__expander-content'
-		wrapper.classList.add(sectionToggleClass)
 
-		// Add each element of `contents` to `wrapper`
-		wrapper.appendChild(contents)
+		// let wrapper = document.createElement('div')
+		heading.children[1].classList.add(sectionToggleClass)
+
+		// // Add each element of `contents` to `wrapper`
+		// wrapper.appendChild(contents)
 
 		// Add the wrapped content back into the DOM
 		// after the heading
-		heading.parentNode.insertBefore(wrapper, heading.nextElementSibling)
 
 		heading.classList.add(headingToggleClass)
 
@@ -42,7 +42,7 @@ function initialiseSections(className) {
 			// Switch the state
 			btn.setAttribute('aria-expanded', !expanded)
 			// Switch the content's visibility
-			wrapper.classList.toggle(sectionToggleClass)
+			heading.children[1].classList.toggle(sectionToggleClass)
 		}
 	})
 }

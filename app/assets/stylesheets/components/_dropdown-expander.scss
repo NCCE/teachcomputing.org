@@ -7,10 +7,6 @@
   transform: scaleY(-1);
 }
 
-.dropdown__expander button [aria-expanded] path {
-  fill: pink;
-}
-
 .dropdown__expander--closed {
   margin-bottom: 20px;
 }
@@ -20,8 +16,23 @@
 }
 
 .dropdown__expander-content {
-	position: absolute;
-	top: 16rem;
-	background: pink;
+	background: $white;
+  box-shadow: 0 0 5px $box-shadow;
 	padding: 1rem;
+}
+
+.dropdown__expander-content li {
+	padding-bottom: 1rem;
+
+  &:first-child {
+		font-weight: 700;
+	}
+
+  &:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.dropdown__expander button[aria-expanded='true'] {
+	color: pink;
 }

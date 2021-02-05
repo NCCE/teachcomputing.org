@@ -1,7 +1,7 @@
 <header class="header" data-module="header">
   <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
   <div class="header__container govuk-width-container">
-		<nav aria-label="Navigation" class="header-nav">
+		<nav role="Navigation" class="header-nav">
 			<div class="header__top">
 				<div class="header__logo">
 					<%= link_to root_path, class: 'govuk-header__link govuk-header__link--logo', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Logo' } do %>
@@ -17,40 +17,38 @@
 				</div>
 				<div class="header__content">
 					<button type="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
-					<nav>
-						<ul id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
-							<li>
-							<% if current_user %>
-								<ul class='ncce-header__navigation-user'>
-									<li class="govuk-header__navigation-item ncce-header__navigation-item">
-										<%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
-									</li>
-									<li class="govuk-header__navigation-item ncce-header__navigation-item">
-										<%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Edit profile' } %>
-									</li>
-									<li class="govuk-header__navigation-item ncce-header__navigation-item">
-										<%= link_to 'Logout', logout_url, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Logout' } %>
-									</li>
-								</ul>
-							<% else %>
-								<ul class="ncce-header__navigation-user">
-									<li class="govuk-header__navigation-item ncce-header__navigation-item">
-										<%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Create an account' } %>
-									</li>
-									<li class="govuk-header__navigation-item ncce-header__navigation-item">
-										<%= link_to 'Log in', auth_url, method: :post, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Log in' } %>
-									</li>
-								</ul>
-							<% end %>
-							</li>
-						</ul>
-					</nav>
+					<ul id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
+						<li>
+						<% if current_user %>
+							<ul class='ncce-header__navigation-user'>
+								<li class="govuk-header__navigation-item ncce-header__navigation-item">
+									<%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
+								</li>
+								<li class="govuk-header__navigation-item ncce-header__navigation-item">
+									<%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Edit profile' } %>
+								</li>
+								<li class="govuk-header__navigation-item ncce-header__navigation-item">
+									<%= link_to 'Logout', logout_url, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Logout' } %>
+								</li>
+							</ul>
+						<% else %>
+							<ul class="ncce-header__navigation-user">
+								<li class="govuk-header__navigation-item ncce-header__navigation-item">
+									<%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Create an account' } %>
+								</li>
+								<li class="govuk-header__navigation-item ncce-header__navigation-item">
+									<%= link_to 'Log in', auth_url, method: :post, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Log in' } %>
+								</li>
+							</ul>
+						<% end %>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="header__bottom">
-				<ul class='ncce-header__navigation-certification magda-ul'>
+				<ul class='ncce-header__navigation-certification header__list'>
 					<% header_navigation.each do  | nav_item |%>
-						<li class="govuk-body-s govuk-!-font-weight-bold dropdown__expander ncce-header__navigation-item-cert magda-li">
+						<li class="govuk-body dropdown__expander ncce-header__navigation-item-cert header__list-item">
 							<button aria-expanded="false"><%= nav_item[:text] %>
 								<svg aria-hidden="true" focusable="false" width="16px" height="10px" viewBox="0 0 160 100">
 									<g transform="translate(80, 100) rotate(-135.000000)">
@@ -59,12 +57,12 @@
 									</g>
 								</svg>
 							</button>
-						</li>
-						<ul class="govuk-list govuk-body-s">
+							<ul class="govuk-list govuk-body-s dropdown__expander-content">
 							<% nav_item[:children].each do  | item |%>
 								<li><%= link_to item[:text], item[:link], class: '', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] } %></li>
 							<% end %>
-						</ul>
+							</ul>
+						</li>
 					<% end %>
 				</ul>
 		</nav>

@@ -19,46 +19,47 @@
 	width: 100%;
 }
 
-.magda-ul {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
+.header__list {
+
 
 		@include govuk-media-query($from: desktop) {
 			flex-direction: row;
+    display: flex;
+    margin: 0;
+    padding: 0;
 		}
 }
 
-.magda-li {
+.header__list-item {
+  color: $deep-cerulean;
   margin-bottom: 0;
 	list-style: none;
 	flex-grow: 1;
+	font-weight: 700;
 
   // background-image: image-url('tick-blue-no-border.svg'), image-url('line.svg');
   // background-position: right 12px, right 0;
   // background-repeat: no-repeat;
   // background-size: 1rem, 1rem;
 
-  background-image: image-url('tick-blue-no-border.svg');
-  background-position: right 12px;
-  background-repeat: no-repeat;
-  background-size: 1rem;
+  // background-image: image-url('tick-blue-no-border.svg');
+  // background-position: right 12px;
+  // background-repeat: no-repeat;
+  // background-size: 1rem;
 	padding-right: 1rem;
 	cursor: pointer;
 
-  &:last-child {
-    background-image: image-url('tick-blue-no-border.svg'), none;
-  }
+  // &:last-child {
+  //   background-image: image-url('tick-blue-no-border.svg'), none;
+  // }
 
 		@include govuk-media-query($from: desktop) {
-			text-align: center;
+			// text-align: center;
 		}
 }
 
-.magda-li button {
+.header__list-item button {
   all: inherit;
-  background: #e3f6fc;
   border: 0;
   box-sizing: border-box;
   cursor: pointer;
@@ -68,8 +69,9 @@
   width: 100%;
 }
 
-.magda-li button svg {
-  margin-right: 0.5em;
+.header__list-item button svg {
+	fill: $deep-cerulean;
+  margin-left: 1rem;
   margin-top: 0.2em;
 }
 
