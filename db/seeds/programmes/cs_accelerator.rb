@@ -13,3 +13,12 @@ programme_complete_counter = ProgrammeCompleteCounter.find_or_create_by(programm
 end
 
 puts "Created programme_complete_counter: #{programme_complete_counter}"
+
+questionnaire = Questionnaire.find_or_create_by(slug: 'cs-accelerator-enrolment-questionnaire') do |q|
+  q.title = 'Enrolment questionnaire'
+  q.slug = 'cs-accelerator-enrolment-questionnaire'
+  q.description = 'Questionnaire description'
+  q.programme = cs_accelerator
+end
+
+puts "Created CSAccelerator enrolment questionnaire: #{questionnaire}"
