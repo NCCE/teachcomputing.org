@@ -7,9 +7,6 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
   let(:primary_enrolment_unanswered) do
     create(:primary_enrolment_unanswered, questionnaire: primary_enrolment_questionnaire, user: user)
   end
-  let(:primary_enrolment_response) do
-    QuestionnaireResponse.find_by(questionnaire: primary_enrolment_questionnaire, user: user)
-  end
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme: programme, user: user) }
 
   describe 'PUT update' do
@@ -42,7 +39,6 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         put update_diagnostic_primary_certificate_path(id: :question_2, diagnostic: { question_2: '0' })
         put update_diagnostic_primary_certificate_path(id: :question_3, diagnostic: { question_3: '0' })
         put update_diagnostic_primary_certificate_path(id: :question_4, diagnostic: { question_4: '0' })
-        expect(primary_enrolment_response.answers['4'].to_i).to eq(0)
         expect(response).to redirect_to '/certificate/primary-certificate'
       end
     end

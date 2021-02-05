@@ -45,14 +45,19 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       expect(response).to redirect_to '/certificate/cs-accelerator/questionnaire/question_1'
     end
 
+    it 'redirects to the next sequential question after editing an answer' do
+      put update_diagnostic_cs_accelerator_certificate_path(id: :question_1, diagnostic: { question_1: '15' })
+      put update_diagnostic_cs_accelerator_certificate_path(id: :question_2, diagnostic: { question_2: '20' })
+      put update_diagnostic_cs_accelerator_certificate_path(id: :question_1, diagnostic: { question_1: '15' })
+      expect(response).to redirect_to '/certificate/cs-accelerator/questionnaire/question_2'
+    end
+
     it 'redirects after the final question' do
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_1, diagnostic: { question_1: '5' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_2, diagnostic: { question_2: '0' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_3, diagnostic: { question_3: '0' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_4, diagnostic: { question_4: '0' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_5, diagnostic: { question_5: '10' })
-      qr = QuestionnaireResponse.find_by(user_id: user.id)
-      expect(qr.answers).to include_json('1': '5', '2': '0', '3': '0', '4': '0', '5': '10')
       expect(response).to redirect_to '/certificate/cs-accelerator'
     end
 
