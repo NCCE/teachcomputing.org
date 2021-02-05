@@ -1,36 +1,3 @@
-.dropdown__expander {
-  margin-bottom: 0;
-}
-
-.dropdown__expander button {
-  all: inherit;
-  background: #e3f6fc;
-  border: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: flex;
-  justify-content: start;
-  padding: 0.9rem 1rem;
-  width: 100%;
-}
-
-@media (min-width: 40.0625em) {
-  .dropdown__expander button {
-    margin-bottom: 2px;
-  }
-}
-
-.dropdown__expander button svg {
-  margin-right: 0.5em;
-  margin-top: 0.2em;
-}
-
-@media (min-width: 40.0625em) {
-  .dropdown__expander button svg {
-    margin-top: 0.3em;
-  }
-}
-
 .dropdown__expander button[aria-expanded='true'] svg {
   -ms-filter: 'FlipW';
   filter: FlipW;
@@ -42,11 +9,6 @@
 
 .dropdown__expander button [aria-expanded] path {
   fill: currentColor;
-}
-
-.dropdown__expander button:hover,
-.dropdown__expander button:focus {
-  text-decoration: underline;
 }
 
 .dropdown__expander--closed {

@@ -18,6 +18,7 @@ function initialiseSections(className) {
 
 		// Create a wrapper element for `contents` and hide it
 		let wrapper = document.createElement('div')
+		wrapper.className = 'dropdown__expander-content'
 		wrapper.classList.add(sectionToggleClass)
 
 		// Add each element of `contents` to `wrapper`
@@ -46,27 +47,7 @@ function initialiseSections(className) {
 	})
 }
 
-function initialiseStickyFilterBar() {
-	const className = 'dropdown__expander__filter-container'
-	const filterContainer = document.querySelector('.' + className)
-	let filterTop = filterContainer.offsetTop
-	let sticky = false
 
-	document.onscroll = function documentOnScroll(e) {
-		const top = e.target.scrollingElement.scrollTop
-		if (!sticky) {
-			filterTop = filterContainer.offsetTop
-			if (top > filterTop) {
-				filterContainer.classList.add(className + '--sticky')
-				sticky = true
-			}
-		} else if (top < filterTop) {
-			filterContainer.classList.remove(className + '--sticky')
-			sticky = false
-		}
-	}
-
-}
 
 ready(function () {
 	initialiseSections('dropdown__expander')
