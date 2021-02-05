@@ -4,39 +4,38 @@ module NavigationHelper
 		[
 			{text: "Primary teachers",
 			children: [
-				{text: "Primary teachers", link: dashboard_path, label: "Primary teachers" },
-				{text: "Primary certificate", link: dashboard_path, label: "Primary certificate" }
+				{text: "Primary teachers", link: primary_teachers_path, label: "Primary teachers" },
+				{text: "Primary certificate", link: primary_path, label: "Primary certificate" }
 			]},
 			{text: "Secondary teachers", children:
 				[{text: "Secondary teachers",
-				link: dashboard_path, label: "" },
-				{text: "Computer Science Accelerator certificate",
-				link: dashboard_path, label: "" },
+				link: secondary_teachers_path, label: "Secondary teachers" },
+				{text: "Subject knowledge certificate",
+				link: cs_accelerator_path, label: "Subject knowledge certificate" },
 				{text: "Secondary certificate",
-				link: dashboard_path, label: "" },
+				link: secondary_path, label: "Secondary certificate" },
 				{text: "A level computer science",
-				link: dashboard_path, label: "" }
+				link: a_level_computer_science_path, label: "A level computer science" }
 			]},
 			{text: "Training and support",
 			children: [
-				{text: "Courses", link: dashboard_path, label: "" },
-				{text: "Bursaries", link: dashboard_path, label: "" },
-				{text: "Computing hubs", link: dashboard_path, label: "" },
-				{text: "Case studies", link: dashboard_path, label: "" }
+				{text: "Courses", link: courses_path, label: "Courses" },
+				{text: "Bursaries", link: '/bursary', label: "Bursaries" },
+				{text: "Computing hubs", link: '/hubs', label: "Computing hubs" }
 			]},
 			{text: "Teaching resources",
 			children: [
-				{text: "Teaching resources", link: dashboard_path, label: "" },
-				{text: "Pedagogy", link: dashboard_path, label: "" }
+				{text: "Teaching resources", link: curriculum_key_stages_path, label: "Teaching resources" },
+				{text: "Pedagogy", link: '/pedagogy', label: "Pedagogy" }
 			]},
 			{text: "About us",
 			children: [
-				{text: "About us", link: dashboard_path, label: "" },
-				{text: "About us", link: dashboard_path, label: "" },
-				{text: "About us", link: dashboard_path, label: "" },
-				{text: ",About us", link: dashboard_path, label: "" },
-				{text: "About us", link: dashboard_path, label: "" },
-				{text: "About us", link: dashboard_path, label: "" }
+				{text: "About the NCCE", link: about_path, label: "About the NCCE" },
+				{text: "News", link: 'https://blog.teachcomputing.org/', label: "News" },
+				{text: "Get involved", link: get_involved_path, label: "Get involved" },
+				{text: "Reaserch centre", link: '/get-involved', label: "Reaserch centre" },
+				{text: "Gender Balance research", link: gender_balance_path, label: "Gender Balance research" },
+				{text: "Subject practitioners", link: '/subject-practitioners', label: "Subject practitioners" }
 			]}
 		]
   end

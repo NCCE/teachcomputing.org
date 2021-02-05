@@ -8,7 +8,7 @@
 }
 
 .dropdown__expander button [aria-expanded] path {
-  fill: currentColor;
+  fill: pink;
 }
 
 .dropdown__expander--closed {
@@ -17,4 +17,11 @@
 
 .dropdown__expander-section--closed {
   display: none;
+}
+
+.dropdown__expander-content {
+	position: absolute;
+	top: 16rem;
+	background: pink;
+	padding: 1rem;
 }
