@@ -346,7 +346,7 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
-a = Activity.find_or_create_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc') do |activity|
+a = Activity.find_or_create_by(future_learn_course_uuid: 'bc7debb8-59a0-4d4a-8d86-082047bf155f') do |activity|
   activity.title = 'Get Started Teaching Computing in Primary Schools: Preparing to teach 5 - 11 year olds'
   activity.credit = 20
   activity.slug = 'get-started-teaching-computing-in-primary-schools-preparing-to-teach-5-11-year-olds'
