@@ -39,7 +39,6 @@ module Certificates
         response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
         return true if response&.current_state == 'complete'
 
-        # Navigate directly to the last question reached, or question_1.
         question = response&.current_question ? "question_#{response.current_question}".to_sym : :question_1
         redirect_to diagnostic_cs_accelerator_certificate_path(question)
       end

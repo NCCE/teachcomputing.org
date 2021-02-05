@@ -38,6 +38,7 @@ module Diagnostics
       final_step = next_step == :wicked_finish.to_s
       next_step_index = final_step ? step_index : step_index(next_step)
       response.answer_current_question(step_index, diagnostic_params[@step], next_step_index)
+      response.save
     end
 
     def jump_to_latest(response)
