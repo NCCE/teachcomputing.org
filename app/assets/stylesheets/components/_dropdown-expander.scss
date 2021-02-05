@@ -33,6 +33,11 @@
 	}
 }
 
-.dropdown__expander button[aria-expanded='true'] {
-	color: pink;
+.dropdown__expander .header__button[aria-expanded='true'] {
+	background-color: $deep-cerulean;
+	color: $white;
+}
+
+.header__button[aria-expanded='true'] .header__icon  {
+	fill: $white;
 }
