@@ -6,5 +6,6 @@ production:
   :concurrency: 3
 :queues:
   - achiever
+  - active_storage_analysis
   - default
   - mailers
