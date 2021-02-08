@@ -3,11 +3,14 @@ require 'rails_helper'
 RSpec.describe Achiever::CourseFilter do
   subject(:course_filter) { described_class.new(filter_params: filter_params) }
 
-  let(:subjects) { { 'Algorithms' => '111111111', 'Other' => '222222222' } }
+  let(:subjects) do
+    { 'Algorithms' => '111111111', 'Other' => '222222222',
+      'Unused subject' => '333333333' }
+  end
   let(:filter_params) { {} }
   let(:age_groups) { { 'Key stage 1' => '111111111', 'Key stage 2' => '222222222' } }
 
-  let(:f2f_template) { build(:achiever_course_template) }
+  let(:f2f_template) { build(:achiever_course_template, subjects: [subjects['Other']]) }
   let(:f2f_occurrence) { build(:achiever_course_occurrence, course_template_no: f2f_template.course_template_no) }
   let(:online_template) { build(:achiever_course_template, online_cpd: true) }
   let(:online_occurrence) do
@@ -195,6 +198,20 @@ RSpec.describe Achiever::CourseFilter do
 
       it 'returns "Hub - no courses"' do
         expect(course_filter.current_hub).to eq('Hub - no courses')
+      end
+    end
+  end
+
+  describe '#course_tags' do
+    it 'returns subjects present on courses' do
+      expect(course_filter.course_tags).to eq({ 'Algorithms' => '111111111', 'Other' => '222222222' })
+    end
+
+    context 'when filtering' do
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: 'Algorithms' } }
+
+      it 'returns subjects present on all courses, not just filtered courses' do
+        expect(course_filter.course_tags).to eq({ 'Algorithms' => '111111111', 'Other' => '222222222' })
       end
     end
   end
