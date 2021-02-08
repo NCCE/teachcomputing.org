@@ -486,7 +486,7 @@ GEM
     sitemap_generator (6.0.2)
       builder (~> 3.0)
     smart_properties (1.15.0)
-    solargraph (0.40.2)
+    solargraph (0.40.3)
       backport (~> 1.1)
       benchmark
       bundler (>= 1.17.2)
