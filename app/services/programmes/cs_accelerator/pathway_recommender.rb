@@ -10,19 +10,15 @@ module Programmes
       }.freeze
 
       def initialize(questionnaire_response:)
-        @answers = Hash[questionnaire_response.answers.map { |k, str| [k, str.to_i] }]
+        @answers = questionnaire_response.answers.transform_values { |val| val.to_i }
         @score = questionnaire_response.score
       end
 
       def recommended_pathway
-        pathway_from_score
+        Pathway.find_by(slug: PATHWAY_MAP[pathway_map_key_from_answers])
       end
 
       private
-
-        def pathway_from_score
-          Pathway.find_by(slug: PATHWAY_MAP[pathway_map_key_from_answers])
-        end
 
         def pathway_map_key_from_answers
           return :A if specific_questions_have_possible_answer?(questions: %w[1], possible_answers: [1])
@@ -39,16 +35,13 @@ module Programmes
 
         def key_from_middle_banding
           return :B unless single_a_or_b_response?
-          # If answered B to Q1
-          return :B if specific_questions_have_possible_answer?(questions: %w[1], possible_answers: [2])
 
           key_from_single_low_confidence_answer
         end
 
         def key_from_upper_banding
           return :E unless any_a_or_b_responses?
-
-          # return something if more than one a or b response...
+          return :B if multiple_a_or_b_responses?
 
           key_from_single_low_confidence_answer
         end
@@ -61,11 +54,18 @@ module Programmes
           @answers.values.select { |answer| [1, 2].include?(answer) }.any?
         end
 
+        def multiple_a_or_b_responses?
+          @answers.values.select { |answer| [1, 2].include?(answer) }.length > 1
+        end
+
         def specific_questions_have_possible_answer?(questions:, possible_answers:)
           @answers.slice(*questions).values.intersection(possible_answers).any?
         end
 
         def key_from_single_low_confidence_answer
+          # If answered B to Q1
+          return :B if specific_questions_have_possible_answer?(questions: %w[1], possible_answers: [2])
+
           # If answered A or B to Q2 or Q4
           return :C if specific_questions_have_possible_answer?(questions: %w[2 4], possible_answers: [1, 2])
 
