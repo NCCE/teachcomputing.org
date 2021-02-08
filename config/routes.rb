@@ -18,12 +18,12 @@ Rails.application.routes.draw do
       end
     end
     resources :activities, only: %i[index]
-  end
-
-  resources :user_programme_enrolments, only: %i[show] do	    resources :activities, only: %i[index]
-    post '/complete', action: :complete
-    post '/enrolled', action: :enrolled
-    post '/flag', action: :flag
+    resources :user_programme_enrolments, only: %i[show] do
+      resources :activities, only: %i[index]
+      post '/complete', action: :complete
+      post '/enrolled', action: :enrolled
+      post '/flag', action: :flag
+    end
   end
 
   require 'sidekiq/web'
