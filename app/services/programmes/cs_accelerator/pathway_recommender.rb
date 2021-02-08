@@ -16,7 +16,6 @@ module Programmes
 
       def recommended_pathway
         pathway_from_score
-        # get pathway for score
       end
 
       private

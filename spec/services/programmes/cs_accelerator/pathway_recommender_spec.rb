@@ -21,10 +21,19 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
     end
 
     context 'when score is less than 10' do
-      let(:answers) { { '1': '1', '2': '1', '3': '1', '4': '1', '5': '1' } }
+      let(:questionnaire_response) { instance_double(QuestionnaireResponse) }
 
-      it 'recommends "Preparing to teach GCSE Computer Science" pathway' do
-        expect(recommender.recommended_pathway).to eq(preparing_to_teach_pathway)
+      before do
+        allow(questionnaire_response).to receive(:answers).and_return({})
+      end
+
+      (2..10).each do |val|
+        context "when score is #{val}" do
+          it 'recommends "Preparing to teach GCSE Computer Science" pathway' do
+            allow(questionnaire_response).to receive(:score).and_return(val)
+            expect(recommender.recommended_pathway).to eq(preparing_to_teach_pathway)
+          end
+        end
       end
     end
 
