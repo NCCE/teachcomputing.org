@@ -21,17 +21,20 @@ module Programmes
       private
 
         def pathway_from_score
-          key = case @score
-                when 1
-                  :A
-                when 2..10
-                  :B
-                when 11..14
-                  key_from_middle_banding
-                when 15..20
-                  key_from_upper_banding
-                end
-          Pathway.find_by(slug: PATHWAY_MAP[key])
+          Pathway.find_by(slug: PATHWAY_MAP[pathway_map_key_from_answers])
+        end
+
+        def pathway_map_key_from_answers
+          return :A if specific_questions_have_possible_answer?(questions: %w[1], possible_answers: [1])
+
+          case @score
+          when 2..10
+            :B
+          when 11..14
+            key_from_middle_banding
+          when 15..20
+            key_from_upper_banding
+          end
         end
 
         def key_from_middle_banding

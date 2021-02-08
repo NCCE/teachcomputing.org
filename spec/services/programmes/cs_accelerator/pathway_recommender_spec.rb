@@ -21,6 +21,14 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       end
     end
 
+    context 'when user answered "not confident" to question 1 and has further answers' do
+      let(:answers) { { '1': '1', '2': '2', '3': '3', '4': '2', '5': '2' } }
+
+      it 'recommends "New to computing" pathway' do
+        expect(recommender.recommended_pathway).to eq(new_to_computing_pathway)
+      end
+    end
+
     context 'when score is less than 10' do
       let(:questionnaire_response) { instance_double(QuestionnaireResponse) }
 
