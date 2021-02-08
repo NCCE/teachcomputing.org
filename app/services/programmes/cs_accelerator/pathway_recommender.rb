@@ -28,6 +28,8 @@ module Programmes
                   :B
                 when 11..14
                   key_from_middle_banding
+                when 15..20
+                  key_from_upper_banding
                 end
           Pathway.find_by(slug: PATHWAY_MAP[key])
         end
@@ -37,19 +39,35 @@ module Programmes
           # If answered B to Q1
           return :B if specific_questions_have_possible_answer?(questions: %w[1], possible_answers: [2])
 
-          # If answered A or B to Q2 or Q4
-          return :C if specific_questions_have_possible_answer?(questions: %w[2 4], possible_answers: [1, 2])
+          key_from_single_low_confidence_answer
+        end
 
-          # They must have answered A or B to Q3 or Q5
-          :D
+        def key_from_upper_banding
+          return :E unless any_a_or_b_responses?
+
+          # return something if more than one a or b response...
+
+          key_from_single_low_confidence_answer
         end
 
         def single_a_or_b_response?
           @answers.values.select { |answer| [1, 2].include?(answer) }.length == 1
         end
 
+        def any_a_or_b_responses?
+          @answers.values.select { |answer| [1, 2].include?(answer) }.any?
+        end
+
         def specific_questions_have_possible_answer?(questions:, possible_answers:)
           @answers.slice(*questions).values.intersection(possible_answers).any?
+        end
+
+        def key_from_single_low_confidence_answer
+          # If answered A or B to Q2 or Q4
+          return :C if specific_questions_have_possible_answer?(questions: %w[2 4], possible_answers: [1, 2])
+
+          # They must have answered A or B to Q3 or Q5
+          :D
         end
     end
   end
