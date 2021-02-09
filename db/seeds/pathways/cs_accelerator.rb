@@ -95,10 +95,10 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5)
 end
 
-# activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
-# if activity && !pathway.pathway_activities.include?(activity)
-#   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6)
-# end
+activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
+if activity && !pathway.pathway_activities.include?(activity)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6)
+end
 
 # alternative remote
 
@@ -128,11 +128,6 @@ activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-3
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, activity_type: 'supplemental')
 end
-
-# activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f', activity_type: 'supplemental')
-# if activity && !pathway.pathway_activities.include?(activity)
-#   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
-# end
 
 pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') do |q|
   q.title = 'New to algorithms and programming'
