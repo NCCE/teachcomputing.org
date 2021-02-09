@@ -13,6 +13,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    credit: Field::Number,
     slug: Field::String,
     category: Field::String,
     stem_course_template_no: Field::String,
@@ -59,7 +60,6 @@ class ActivityDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     pathway_activities
-
     title
     credit
     slug
@@ -89,7 +89,7 @@ class ActivityDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how activities are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(activity)
-  #   "Activity ##{activity.id}"
-  # end
+  def display_resource(activity)
+    activity.title
+  end
 end

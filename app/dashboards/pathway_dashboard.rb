@@ -64,7 +64,7 @@ class PathwayDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how pathways are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(pathway)
-  #   "Pathway ##{pathway.id}"
-  # end
+  def display_resource(pathway)
+    pathway.title
+  end
 end
