@@ -8,6 +8,6 @@ class PathwayActivity < ApplicationRecord
   enum activity_type: %i[face-to-face online supplemental]
 
   def update_activity_type
-    self.activity_type = activity.category
+    self.activity_type = activity.category unless activity_type == 'supplemental'
   end
 end

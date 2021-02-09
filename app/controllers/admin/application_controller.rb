@@ -18,18 +18,6 @@ module Admin
       end
     end
 
-    'https://github.com/thoughtbot/administrate/issues/441'
-    def read_param_value(data)
-      new_data = if data.is_a?(String) && data.blank?
-                   nil
-                 elsif data.is_a?(ActionController::Parameters)
-                   data.transform_values { |v| read_param_value(v) }
-                 else
-                   data
-                 end
-      super(new_data)
-    end
-
     private
 
       def decode_cookie(token)
