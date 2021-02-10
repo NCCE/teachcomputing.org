@@ -17,8 +17,13 @@ class QuestionnaireResponse < ApplicationRecord
 
   def state_machine
     @state_machine ||= StateMachines::QuestionnaireResponseStateMachine.new(
-      self, transition_class: QuestionnaireResponseTransition
+      self,
+      transition_class: QuestionnaireResponseTransition
     )
+  end
+
+  def score
+    answers.values.sum(&:to_i)
   end
 
   def self.transition_class
