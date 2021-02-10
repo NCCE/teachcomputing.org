@@ -57,7 +57,7 @@ module Diagnostics
     def completed_diagnostic?
       return unless questionnaire_response.present?
 
-      redirect_to finish_wizard_path if questionnaire_response.current_state == :complete.to_s
+      redirect_to finish_wizard_path if questionnaire_response.complete?
     end
 
     def finish_wizard_path

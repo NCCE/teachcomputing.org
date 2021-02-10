@@ -575,7 +575,6 @@ DEPENDENCIES
   capybara (~> 3.32)
   cloudflare-rails (~> 1.1)
   combine_pdf (~> 1.0, >= 1.0.18)
-  concurrent-ruby
   connection_pool (~> 2.2.2)
   dalli (~> 2.7.9)
   ddtrace (~> 0.44)

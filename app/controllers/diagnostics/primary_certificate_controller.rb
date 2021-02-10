@@ -11,7 +11,7 @@ module Diagnostics
       @steps = steps
       @answer = answer_for_current_step
 
-      render_wizard
+      render_wizard nil, template: '/diagnostics/primary_certificate/questions'
     end
 
     def update

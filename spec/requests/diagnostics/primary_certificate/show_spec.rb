@@ -23,8 +23,12 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
           get diagnostic_primary_certificate_path(:question_1)
         end
 
-        it 'renders the first step in the wizard' do
-          expect(response).to render_template(:question_1)
+        it 'renders a question' do
+          expect(response).to render_template(:questions)
+        end
+
+        it 'renders the first question' do
+          expect(response.body).to include('Question 1 of 4')
         end
       end
 

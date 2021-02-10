@@ -1,5 +1,5 @@
 FROM ruby:2.7.2-alpine
-RUN apk --no-cache add curl build-base postgresql-dev tzdata nodejs chromium chromium-chromedriver yarn git
+RUN apk --no-cache add curl build-base postgresql-dev tzdata nodejs chromium chromium-chromedriver yarn git procps
 RUN apk --update add less
 RUN mkdir /app
 WORKDIR /app
