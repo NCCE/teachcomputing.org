@@ -7,7 +7,7 @@ RSpec.describe 'Admin root request spec' do
 
       get admin_root_path
 
-      expect(response).to redirect_to(admin_pathways_path)
+      expect(response).to have_http_status(:ok)
     end
   end
 
