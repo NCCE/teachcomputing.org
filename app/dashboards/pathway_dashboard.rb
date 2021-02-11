@@ -12,6 +12,7 @@ class PathwayDashboard < Administrate::BaseDashboard
     id: Field::String.with_options(searchable: false),
     range: Field::Select.with_options(searchable: false, collection: { '1..10': '[1, 10)', '11..20': '[11, 20)' }),
     title: Field::String,
+    slug: Field::String,
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -34,6 +35,7 @@ class PathwayDashboard < Administrate::BaseDashboard
     id
     range
     title
+    slug
     description
     created_at
     updated_at
@@ -46,6 +48,7 @@ class PathwayDashboard < Administrate::BaseDashboard
     pathway_activities
     range
     title
+    slug
     description
   ].freeze
 

@@ -138,7 +138,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when there is one "A" or "B" relating to Q3' do
         let(:answers) { { '1': '3', '2': '3', '3': '2', '4': '3', '5': '4' } }
 
-        it 'recommends "advanced to computer systems" pathway' do
+        it 'recommends "new to computer systems' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
@@ -146,7 +146,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when there is one "A" or "B" relating to Q5' do
         let(:answers) { { '1': '3', '2': '3', '3': '4', '4': '4', '5': '1' } }
 
-        it 'recommends "advanced to computer systems" pathway' do
+        it 'recommends "new to computer systems' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
