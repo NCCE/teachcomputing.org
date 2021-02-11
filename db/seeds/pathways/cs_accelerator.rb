@@ -25,7 +25,7 @@ end
 
 activity = Activity.find_by(future_learn_course_uuid: '83c939cf-8aa7-43d9-ad06-acaa3b859d91')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
 
 # alternative remote
@@ -42,7 +42,7 @@ end
 
 activity = Activity.find_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3, supplementary: true)
 end
 
 # alternative online
@@ -121,12 +121,12 @@ end
 
 activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, supplementary: true)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4, supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, supplementary: true)
 end
 
 pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') do |q|
