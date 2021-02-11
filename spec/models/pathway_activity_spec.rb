@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PathwayActivity, type: :model do
-  let(:activity) { create(:activity) }
+  let(:activity) { create(:activity, category: 'online') }
   let(:pathway_activity) { create(:pathway_activity, activity_id: activity.id) }
 
   describe 'associations' do
@@ -14,15 +14,9 @@ RSpec.describe PathwayActivity, type: :model do
     end
   end
 
-  describe 'activity type' do
-    it 'is updated when the model is saved' do
-      expect(pathway_activity.activity_type).to eq('face-to-face')
-    end
-
-    it 'is updated when the Activity is updated' do
-      activity.category = :online
-      activity.save
-      expect(pathway_activity.activity_type).to eq('online')
+  describe '#category' do
+    it 'returns the category of the associated activity' do
+      expect(pathway_activity.category).to eq('online')
     end
   end
 end

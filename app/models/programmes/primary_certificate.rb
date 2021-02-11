@@ -11,7 +11,7 @@ module Programmes
       questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
       response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
 
-      response.answers.keys.reduce(0) { |score, key| score + response.answers[key].to_i }
+      response.score
     end
 
     def diagnostic_result_percentage(user)
@@ -64,8 +64,8 @@ module Programmes
 
     def enrol_path(opts = {})
       enrol_primary_certificate_path(opts)
-    end 
-    
+    end
+
     def programme_title
       PROGRAMME_TITLE
     end

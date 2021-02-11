@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Admin::UserProgrammeEnrolmentsController do
+RSpec.describe Api::UserProgrammeEnrolmentsController do
   let(:user) { create(:user) }
-  let(:enrolment) { create(:user_programme_enrolment, user: user)}
+  let(:enrolment) { create(:user_programme_enrolment, user: user) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        get "/admin/user_programme_enrolments/#{enrolment.id}/", { headers: nil }
+        get "/api/user_programme_enrolments/#{enrolment.id}/", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -18,7 +18,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
 
     describe 'POST #enrolled' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -28,7 +28,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
 
     describe 'POST #complete' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/complete", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -38,7 +38,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
 
     describe 'POST #flag' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/flag", { headers: nil }
+        post "/api/user_programme_enrolments/#{enrolment.id}/flag", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -50,7 +50,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
   context 'token is valid' do
     describe 'GET #show' do
       before do
-        get "/admin/user_programme_enrolments/#{enrolment.id}/", { headers: token_headers }
+        get "/api/user_programme_enrolments/#{enrolment.id}/", { headers: token_headers }
       end
 
       it 'returns 201 status' do
@@ -66,7 +66,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
   describe 'POST #enrolled' do
     context 'with a state of enrolled' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: token_headers }
+        post "/api/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: token_headers }
       end
 
       it 'returns 409 status' do
@@ -77,7 +77,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
     context 'with a state other than enrolled' do
       before do
         enrolment.transition_to(:complete)
-        post "/admin/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: token_headers }
+        post "/api/user_programme_enrolments/#{enrolment.id}/enrolled", { headers: token_headers }
       end
 
       it 'returns 201 status' do
@@ -94,7 +94,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
     context 'with a state of complete' do
       before do
         enrolment.transition_to(:complete)
-        post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
+        post "/api/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
       end
 
       it 'returns 409 status' do
@@ -104,7 +104,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
 
     context 'with a state of enrolled and not flagged' do
       before do
-        post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
+        post "/api/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
       end
 
       it 'returns 201 status' do
@@ -119,7 +119,7 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
     context 'when the record is flagged' do
       before do
         enrolment.update(flagged: true)
-        post "/admin/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
+        post "/api/user_programme_enrolments/#{enrolment.id}/complete", { headers: token_headers }
       end
 
       it 'returns 409 status' do
@@ -127,9 +127,10 @@ RSpec.describe Admin::UserProgrammeEnrolmentsController do
       end
     end
   end
+
   describe 'POST #flag' do
     before do
-      post "/admin/user_programme_enrolments/#{enrolment.id}/flag", { headers: token_headers }
+      post "/api/user_programme_enrolments/#{enrolment.id}/flag", { headers: token_headers }
     end
 
     it 'returns 201 status' do
