@@ -11,9 +11,7 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway: Field::BelongsTo,
     activity: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    activity_type: Field::Select.with_options(searchable: false, collection: lambda { |field|
-                                                                               field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                                             }),
+    supplementary: Field::Boolean,
     order: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -28,7 +26,7 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway
     activity
     id
-    activity_type
+    supplementary
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,7 +35,7 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway
     activity
     id
-    activity_type
+    supplementary
     order
     created_at
     updated_at
@@ -49,7 +47,7 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     pathway
     activity
-    activity_type
+    supplementary
     order
   ].freeze
 

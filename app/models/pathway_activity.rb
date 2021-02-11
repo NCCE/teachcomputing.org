@@ -5,9 +5,7 @@ class PathwayActivity < ApplicationRecord
   belongs_to :pathway
   belongs_to :activity, autosave: true, validate: true
 
-  enum activity_type: %i[face-to-face online supplemental]
-
-  def update_activity_type
-    self.activity_type = activity.category unless activity_type == 'supplemental'
+  def category
+    activity.category
   end
 end

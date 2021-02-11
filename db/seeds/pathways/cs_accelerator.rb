@@ -32,34 +32,34 @@ end
 
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
 # alternative online
 
 activity = Activity.find_by(future_learn_course_uuid: '3574403e-a63f-4230-9f4b-3f5b6cd4ddb7')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4, supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: '2e1e3f69-b200-4fc7-a6bd-dff682bdd228')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: '88ad7443-d27a-482c-b2a9-83ddc1357532')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
 pathway = Pathway.find_or_create_by(slug: 'prepare-to-teach-gcse-computer-science') do |q|
@@ -104,29 +104,29 @@ end
 
 activity = Activity.find_by(stem_course_template_no: '65fe83ad-b188-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3, supplementary: true)
 end
 
 # alternative online
 
 activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1, supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
 pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') do |q|
@@ -162,25 +162,25 @@ end
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d54')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 # alternative online
@@ -188,12 +188,12 @@ end
 activity = Activity.find_by(future_learn_course_uuid: '66ceead6-5641-485c-9d10-40a35b8e465e')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: 'e290318f-ba23-4c95-8f18-584946233af9')
 if activity && !pathway.pathway_activities.include?(activity)
-  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, activity_type: 'supplemental')
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
 pathway = Pathway.find_or_create_by(slug: 'new-to-computing') do |q|
@@ -239,19 +239,19 @@ end
 activity = Activity.find_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '65fe83ad-b188-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 # alternative online
@@ -259,19 +259,19 @@ end
 activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: 'e290318f-ba23-4c95-8f18-584946233af9')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: 'ffc6793d-5643-40c8-893a-0164844ca62f')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 pathway = Pathway.find_or_create_by(slug: 'new-to-computer-systems') do |q|
@@ -307,13 +307,13 @@ end
 activity = Activity.find_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(stem_course_template_no: '770d8136-3d86-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 # alternative online
@@ -321,17 +321,17 @@ end
 activity = Activity.find_by(future_learn_course_uuid: '04953102-a4cf-485d-a34e-0c64621033be')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: '030261f8-1e96-4a70-a329-e3eb8b868915')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
 
 activity = Activity.find_by(future_learn_course_uuid: 'ffc6793d-5643-40c8-893a-0164844ca62f')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5,
-                                               activity_type: 'supplemental')
+                                               supplementary: true)
 end
