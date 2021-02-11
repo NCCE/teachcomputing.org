@@ -21,7 +21,7 @@ module Diagnostics
       if finished? || diagnostic_params[:question_1] == '1'
         response.complete!
         redirect_to finish_wizard_path
-        # recommend_pathway
+        recommend_pathway
       else
         jump_to_latest response
         render_wizard response
