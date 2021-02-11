@@ -18,8 +18,8 @@ module Diagnostics
       response = questionnaire_response
       store_response response
 
-      if finished? response
-        response.transition_to(:complete)
+      if finished?
+        response.complete!
         redirect_to finish_wizard_path
       else
         jump_to_latest response
@@ -35,10 +35,6 @@ module Diagnostics
 
       def questionnaire
         Questionnaire.find_by!(slug: 'primary-certificate-enrolment-questionnaire')
-      end
-
-      def finished?(response)
-        next_step == :wicked_finish.to_s && response.answers.count == steps.count
       end
 
       def enrolled?

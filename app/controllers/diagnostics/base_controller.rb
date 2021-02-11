@@ -54,6 +54,10 @@ module Diagnostics
       nil
     end
 
+    def finished?
+      questionnaire_response.answers.count == steps.count
+    end
+
     def completed_diagnostic?
       return unless questionnaire_response.present?
 

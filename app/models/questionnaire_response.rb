@@ -30,6 +30,10 @@ class QuestionnaireResponse < ApplicationRecord
     QuestionnaireResponseTransition
   end
 
+  def complete!
+    transition_to(:complete)
+  end
+
   def complete?
     current_state == :complete.to_s
   end

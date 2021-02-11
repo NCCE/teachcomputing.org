@@ -18,8 +18,8 @@ module Diagnostics
       response = questionnaire_response
       store_response response
 
-      if finished? response
-        response.transition_to(:complete)
+      if finished? || diagnostic_params[:question_1] == '1'
+        response.complete!
         redirect_to finish_wizard_path
       else
         jump_to_latest response
@@ -35,11 +35,6 @@ module Diagnostics
 
       def questionnaire
         @questionnaire ||= Questionnaire.find_by!(slug: 'cs-accelerator-enrolment-questionnaire')
-      end
-
-      def finished?(response)
-        (next_step == :wicked_finish.to_s && response.answers.count == steps.count) ||
-          (step == :question_1 && diagnostic_params[:question_1] == '1')
       end
 
       def enrolled?
