@@ -41,3 +41,51 @@
 .header__button[aria-expanded='true'] .header__icon  {
 	fill: $white;
 }
+
+.header__bottom {
+	li {
+	display: block;
+	position: relative;
+  transition-duration: 0.5s;
+	}
+
+	li:hover,
+	li:focus-within {
+		cursor: pointer;
+	}
+
+	.header__list-item:hover,
+	.header__list-item:hover {
+		background-color: $deep-cerulean;
+		color: $white;
+	}
+
+	ul li ul li {
+		clear: both;
+		width: 100%;
+	}
+}
+
+.dropdown__expander-content-no-js {
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+	left: 0;
+  display: none;
+  margin-top: 0.5rem;
+
+  &:last-child {
+  right: 0;
+  }
+}
+
+.header__list li:hover > .dropdown__expander-content-no-js,
+.header__list li:focus-within > .dropdown__expander-content-no-js,
+.header__list li ul:hover,
+.header__list li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
