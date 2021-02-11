@@ -7,6 +7,10 @@
     "RAILS_ENV": {
       "required": true
     },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true,
+      "value": "enabled"
+    },
     "STATIC_FILE_PATH": {
       "required": true
     },

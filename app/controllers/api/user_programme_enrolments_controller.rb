@@ -1,5 +1,5 @@
-module Admin
-  class UserProgrammeEnrolmentsController < AdminController
+module Api
+  class UserProgrammeEnrolmentsController < ApiController
     def show
       enrolment = UserProgrammeEnrolment.find(params[:id])
       render json: as_json(enrolment)

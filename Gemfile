@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'activestorage-validator'
+gem 'administrate'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'aws-sdk-s3', require: false
@@ -37,7 +38,7 @@ gem 'rails', '~> 6.1'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0.0'
 gem 'sentry-raven', '~> 3.0'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'

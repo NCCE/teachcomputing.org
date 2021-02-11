@@ -6,11 +6,11 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
 
   let(:questionnaire_response) { create(:questionnaire_response, programme: cs_accelerator, answers: answers) }
 
-  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new_to_computing') }
-  let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'preparing_to_teach') }
-  let!(:algorithms_and_programming_pathway) { create(:pathway, slug: 'algorithms_and_programming') }
-  let!(:systems_pathway) { create(:pathway, slug: 'systems') }
-  let!(:advanced_pathway) { create(:pathway, slug: 'advanced') }
+  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new-to-computing') }
+  let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'prepare-to-teach-gcse-computer-science') }
+  let!(:algorithms_and_programming_pathway) { create(:pathway, slug: 'new-to-algorithms-and-programming') }
+  let!(:systems_pathway) { create(:pathway, slug: 'new-to-computer-systems') }
+  let!(:advanced_pathway) { create(:pathway, slug: 'advanced-gcse-computer-science') }
 
   describe '#recommended_pathway' do
     context 'when user answered "A" to question 1' do
@@ -66,7 +66,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when "A" or "B" relates to Q2' do
         let(:answers) { { '1': '3', '2': '2', '3': '3', '4': '3', '5': '3' } }
 
-        it 'recommends "Algorithms & Programming" pathway' do
+        it 'recommends "new to Algorithms & Programming" pathway' do
           expect(recommender.recommended_pathway).to eq(algorithms_and_programming_pathway)
         end
       end
@@ -74,7 +74,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when "A" or "B" relates to Q4' do
         let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '2', '5': '3' } }
 
-        it 'recommends "Algorithms & Programming" pathway' do
+        it 'recommends "new to Algorithms & Programming" pathway' do
           expect(recommender.recommended_pathway).to eq(algorithms_and_programming_pathway)
         end
       end
@@ -82,7 +82,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when "A" or "B" relates to Q3' do
         let(:answers) { { '1': '3', '2': '3', '3': '2', '4': '3', '5': '3' } }
 
-        it 'recommends "Systems" pathway' do
+        it 'recommends "new to Systems" pathway' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
@@ -90,7 +90,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when "A" or "B" relates to Q5' do
         let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '3', '5': '2' } }
 
-        it 'recommends "Systems" pathway' do
+        it 'recommends "new to Systems" pathway' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
@@ -99,7 +99,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
     context 'when score is between 15 and 20' do
       let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '3', '5': '3' } }
 
-      it 'recommends "Advanced" pathway' do
+      it 'recommends "Advanced GCSE Computer Science" pathway' do
         expect(recommender.recommended_pathway).to eq(advanced_pathway)
       end
 
@@ -138,7 +138,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when there is one "A" or "B" relating to Q3' do
         let(:answers) { { '1': '3', '2': '3', '3': '2', '4': '3', '5': '4' } }
 
-        it 'recommends "Systems" pathway' do
+        it 'recommends "new to computer systems' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
@@ -146,7 +146,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
       context 'when there is one "A" or "B" relating to Q5' do
         let(:answers) { { '1': '3', '2': '3', '3': '4', '4': '4', '5': '1' } }
 
-        it 'recommends "Systems" pathway' do
+        it 'recommends "new to computer systems' do
           expect(recommender.recommended_pathway).to eq(systems_pathway)
         end
       end
