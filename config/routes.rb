@@ -2,18 +2,24 @@ Rails.application.routes.draw do
   root to: 'pages#home', action: :home
 
   resources :achievements, only: %i[create destroy]
+  namespace :admin do
+    root to: 'pathways#index'
+    resources :activities
+    resources :pathways
+    resources :pathway_activities
+  end
 
-  namespace 'admin' do
+  namespace :api do
     delete '/cache', to: 'cache#destroy'
-    resources :imports, only: %i[index new create]
-    resources :activities, only: %i[index]
     get '/users', to: 'users#show'
     resources :users, only: %i[] do
       resources :achievements, only: %i[create] do
         post 'complete', action: :complete
       end
     end
+    resources :activities, only: %i[index]
     resources :user_programme_enrolments, only: %i[show] do
+      resources :activities, only: %i[index]
       post '/complete', action: :complete
       post '/enrolled', action: :enrolled
       post '/flag', action: :flag
@@ -108,7 +114,7 @@ Rails.application.routes.draw do
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
-                                  defaults: { page_slug: 'a-level-computer-science' }
+                                   defaults: { page_slug: 'a-level-computer-science' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }

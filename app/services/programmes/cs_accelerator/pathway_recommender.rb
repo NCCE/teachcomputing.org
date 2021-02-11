@@ -2,11 +2,11 @@ module Programmes
   class CSAccelerator
     class PathwayRecommender
       PATHWAY_MAP = {
-        A: 'new_to_computing',
-        B: 'preparing_to_teach',
-        C: 'algorithms_and_programming',
-        D: 'systems',
-        E: 'advanced'
+        A: 'new-to-computing',
+        B: 'prepare-to-teach-gcse-computer-science',
+        C: 'new-to-algorithms-and-programming',
+        D: 'new-to-computer-systems',
+        E: 'advanced-gcse-computer-science'
       }.freeze
 
       def initialize(questionnaire_response:)

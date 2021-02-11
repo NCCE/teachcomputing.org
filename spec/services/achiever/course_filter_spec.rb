@@ -218,20 +218,25 @@ RSpec.describe Achiever::CourseFilter do
 
   describe '#courses' do
     context 'when no filters are present' do
-      it 'returns all achiever courses with occurrences and their occurrences' do
+      it 'returns all achiever courses and their occurrences if present' do
         expect(f2f_template.occurrences).to eq([])
         expect(online_template.occurrences).to eq([])
         expect(secondary_template.occurrences).to eq([])
         expect(ks2_template.occurrences).to eq([])
         expect(course_filter.courses)
-          .to match_array([f2f_template,
-                           online_template,
-                           location_template,
-                           ks2_template,
-                           algorithms_template,
-                           multi_filter_template,
-                           hub_template,
-                           secondary_template])
+          .to match_array(
+            [
+              f2f_template,
+              online_template,
+              location_template,
+              ks2_template,
+              algorithms_template,
+              multi_filter_template,
+              hub_template,
+              secondary_template,
+              no_occ_template
+            ]
+          )
         expect(f2f_template.occurrences).to eq([f2f_occurrence])
         expect(online_template.occurrences).to eq([online_occurrence])
         expect(secondary_template.occurrences).to eq([secondary_occurrence])
@@ -302,7 +307,8 @@ RSpec.describe Achiever::CourseFilter do
                            ks2_template,
                            algorithms_template,
                            hub_template,
-                           secondary_template])
+                           secondary_template,
+                           no_occ_template])
       end
     end
 
