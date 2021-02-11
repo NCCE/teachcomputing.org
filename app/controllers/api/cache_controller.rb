@@ -1,5 +1,5 @@
-module Admin
-  class CacheController < AdminController
+module Api
+  class CacheController < ApiController
     def destroy
       CacheInvalidator.new(
         resource: cache_params[:resource],
