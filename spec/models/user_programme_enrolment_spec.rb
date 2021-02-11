@@ -5,6 +5,8 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:achievements) { create_list(:achievement, 5, user: user) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
+  let(:questionnaire_response) { create(:cs_accelerator_enrolment_score_1) }
+  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new_to_computing') }
 
   describe 'associations' do
     it { is_expected.to belong_to(:programme) }
@@ -49,6 +51,15 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it 'sets the programme_id for the achievements relating to the programe ' do
       create(:user_programme_enrolment, user: user, programme: cs_accelerator)
       expect(user.achievements.pluck(:programme_id).uniq).to include cs_accelerator.id
+    end
+  end
+
+  describe '#set_pathway' do
+    it 'sets the pathway id' do
+      cs_accelerator
+      upe = create(:user_programme_enrolment, user: user, programme: cs_accelerator)
+      upe.pathway(questionnaire_response)
+      expect(upe.pathway_id).to eq(new_to_computing_pathway.id)
     end
   end
 

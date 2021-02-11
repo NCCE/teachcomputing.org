@@ -35,6 +35,11 @@ class UserProgrammeEnrolment < ApplicationRecord
     end
   end
 
+  def pathway(questionnaire_response)
+    pathway = Programmes::CSAccelerator::PathwayRecommender.new(questionnaire_response: questionnaire_response)
+    update(pathway_id: pathway.recommended_pathway.id)
+  end
+
   def state_machine
     @state_machine ||= begin
       StateMachines::UserProgrammeEnrolmentStateMachine.new(

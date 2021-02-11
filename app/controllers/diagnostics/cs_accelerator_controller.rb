@@ -21,6 +21,7 @@ module Diagnostics
       if finished? || diagnostic_params[:question_1] == '1'
         response.complete!
         redirect_to finish_wizard_path
+        # recommend_pathway
       else
         jump_to_latest response
         render_wizard response
@@ -35,6 +36,11 @@ module Diagnostics
 
       def questionnaire
         @questionnaire ||= Questionnaire.find_by!(slug: 'cs-accelerator-enrolment-questionnaire')
+      end
+
+      def recommend_pathway
+        upe = UserProgrammeEnrolment.find_by(user_id: current_user.id)
+        upe.pathway(questionnaire_response)
       end
 
       def enrolled?
