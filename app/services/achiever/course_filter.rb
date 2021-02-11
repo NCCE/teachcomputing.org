@@ -19,7 +19,7 @@ module Achiever
             end
           end
         end
-        courses.reject! { |c| c.occurrences.count.zero? }
+        courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
         filter_courses(courses)
       end
