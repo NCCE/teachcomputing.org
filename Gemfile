@@ -59,8 +59,10 @@ group :development, :test do
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
   gem 'guard-rspec', '~> 4.7.3', require: false
-  gem 'pry', '~> 0.12.2'
+  gem 'interception'
+  gem 'pry'
   gem 'pry-byebug'
+  gem 'pry-rescue'
   gem 'reek'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 4.0'
@@ -68,6 +70,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'ruby-debug-ide'
+  gem 'ruby_jard'
   gem 'solargraph'
   gem 'webmock'
 end

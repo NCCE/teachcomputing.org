@@ -8,7 +8,8 @@
       "cwd": "${workspaceRoot}",
       "remoteWorkspaceRoot": "/app",
       "remoteHost": "127.0.0.1",
-      "remotePort": "1234"
+      "remotePort": "1234",
+      "showDebuggerOutput": true
     },
     {
       "name": "RSpec Debug",
@@ -17,7 +18,8 @@
       "cwd": "${workspaceRoot}",
       "remoteWorkspaceRoot": "/app",
       "remoteHost": "127.0.0.1",
-      "remotePort": "1235"
+      "remotePort": "1235",
+      "showDebuggerOutput": true
     }
   ]
 }
