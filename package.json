@@ -17,7 +17,6 @@
     "eslint": "5.6.1",
     "eslint-config-prettier": "3.1.0",
     "eslint-plugin-prettier": "3.0.0",
-    "libnpx": "^10.2.3",
     "lint-staged": "7.3.0",
     "prettier": "1.14.3",
     "prettier-package-json": "2.0.1",
@@ -29,10 +28,10 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "setup": "npx ./scripts/setup.sh",
-    "start": "npx ./scripts/docker-start.sh",
-    "stop": "npx ./scripts/docker-stop.sh",
-    "reset-db": "npx ./scripts/reset-db.sh",
+    "setup": "sh ./scripts/setup.sh",
+    "start": "sh ./scripts/docker-start.sh",
+    "stop": "sh ./scripts/docker-stop.sh",
+    "reset-db": "sh ./scripts/reset-db.sh",
     "start-tunnel": "ssh -fCND 8889 -L8888:127.0.0.1:8888 -S /tmp/.ssh_stem_proxy -M proxy",
     "stop-tunnel": "ssh -S /tmp/.ssh_stem_proxy -O exit proxy",
     "logs": "docker-compose logs -f",

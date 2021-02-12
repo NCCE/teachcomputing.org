@@ -12,8 +12,8 @@ RSpec.describe Diagnostics::CSAcceleratorController do
     )
   end
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
-  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new_to_computing') }
-  let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'preparing_to_teach') }
+  let!(:new_to_computing_pathway) { create(:new_to_computing) }
+  let!(:preparing_to_teach_pathway) { create(:prepare_to_teach_gcse_computer_science) }
 
   describe 'GET update' do
     before do

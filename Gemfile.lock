@@ -621,7 +621,7 @@ DEPENDENCIES
   connection_pool (~> 2.2.2)
   dalli (~> 2.7.9)
   ddtrace (~> 0.44)
-  debase (= 0.2.3)
+  debase
   dotenv-rails
   erb_lint
   factory_bot_rails

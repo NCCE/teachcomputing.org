@@ -6,7 +6,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
   let(:questionnaire_response) { create(:cs_accelerator_enrolment_score_1) }
-  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new_to_computing') }
+  let!(:new_to_computing_pathway) { create(:new_to_computing) }
 
   describe 'associations' do
     it { is_expected.to belong_to(:programme) }
