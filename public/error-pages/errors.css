@@ -7828,7 +7828,7 @@ a:not([class]):active {
   }
 }
 
-.ncce-primary-diagnostic__question-progress {
+.ncce-diagnostic__question-progress {
   color: #5c5d6d;
   font-family: 'Roboto', sans-serif;
   font-size: 1.188rem;
@@ -7837,13 +7837,13 @@ a:not([class]):active {
   margin-top: 20px;
 }
 
-.ncce-primary-diagnostic__row {
+.ncce-diagnostic__row {
   display: flex;
   flex-flow: wrap-reverse;
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-primary-diagnostic__row {
+  .ncce-diagnostic__row {
     flex-direction: row;
     flex-flow: row;
   }

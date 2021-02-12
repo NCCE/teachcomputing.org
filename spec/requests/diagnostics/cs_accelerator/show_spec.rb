@@ -2,44 +2,54 @@ require 'rails_helper'
 
 RSpec.describe Diagnostics::CSAcceleratorController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:diagnostic_url) { ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }
+  let!(:programme) { create(:cs_accelerator) }
+  let(:cs_accelerator_questionnaire) do
+    create(:questionnaire, :cs_accelerator_enrolment_questionnaire, programme: programme)
+  end
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
   describe 'GET show' do
     before do
-      activity
+      cs_accelerator_questionnaire
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     end
 
-    describe 'while logged in' do
+    context 'when the user has not completed the diagnostic' do
       before do
-        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get diagnostic_cs_accelerator_certificate_path(activity.id)
+        user_programme_enrolment
+        get diagnostic_cs_accelerator_certificate_path(:question_1)
       end
 
-      it 'creates an Achievement if one does not exist already' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
+      it 'renders a question' do
+        expect(response).to render_template(:questions)
       end
 
-      it 'redirects to the value of the CLASS_MARKER_DIAGNOSTIC_URL variable' do
-        expect(response).to redirect_to(/^#{diagnostic_url}/)
-      end
-
-      it 'creates an achievement in a state of complete' do
-        expect(user.achievements.where(activity_id: activity.id).first.current_state).to eq 'complete'
+      it 'renders the first question' do
+        expect(response.body).to include('Question 1 of 5')
       end
     end
 
-    describe 'while logged out' do
+    context 'when the user has completed the diagnostic' do
       before do
-        get diagnostic_cs_accelerator_certificate_path(activity.id)
+        user_programme_enrolment
+        answers = create(
+          :cs_accelerator_enrolment_score_15,
+          questionnaire: cs_accelerator_questionnaire,
+          programme: programme, user: user
+        )
+        answers.transition_to(:complete)
+        get diagnostic_cs_accelerator_certificate_path(:question_1)
       end
 
-      it 'redirects to login' do
-        expect(response).to redirect_to(/register/)
+      it 'redirects to the programme page' do
+        expect(response).to redirect_to '/certificate/cs-accelerator'
       end
+    end
 
-      it 'creates an Achievement if one does not exist already' do
-        expect(Achievement.count).to eq 0
+    context 'when the user is not enrolled' do
+      it 'redirects back to the certificate page' do
+        get diagnostic_cs_accelerator_certificate_path(:question_1)
+        expect(response).to redirect_to '/cs-accelerator'
       end
     end
   end

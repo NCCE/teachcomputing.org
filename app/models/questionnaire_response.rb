@@ -11,14 +11,15 @@ class QuestionnaireResponse < ApplicationRecord
   validates :user_id, uniqueness: { scope: %i[programme_id questionnaire_id] }
 
   def answer_current_question(step_index, answer, next_step_index)
-    # Ensure we're dealing with strings on the way in and the way out
     answers[step_index.to_s] = answer.to_s
     self.current_question = next_step_index
   end
 
   def state_machine
-    @state_machine ||= StateMachines::QuestionnaireResponseStateMachine.new(self,
-                                                                            transition_class: QuestionnaireResponseTransition)
+    @state_machine ||= StateMachines::QuestionnaireResponseStateMachine.new(
+      self,
+      transition_class: QuestionnaireResponseTransition
+    )
   end
 
   def score
@@ -27,6 +28,14 @@ class QuestionnaireResponse < ApplicationRecord
 
   def self.transition_class
     QuestionnaireResponseTransition
+  end
+
+  def complete!
+    transition_to(:complete)
+  end
+
+  def complete?
+    current_state == :complete.to_s
   end
 
   def self.initial_state

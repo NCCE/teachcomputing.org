@@ -79,6 +79,13 @@ Rails.application.configure do
   # Allow nicer hostname
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
   config.hosts << 'web'
-
   config.autoload_paths << 'lib'
+
+  if ENV['DOCKER_LOGS']
+    config.log_level = :debug
+    config.log_tags = [:uuid]
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 end

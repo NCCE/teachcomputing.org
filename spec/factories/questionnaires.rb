@@ -8,7 +8,9 @@ FactoryBot.define do
     trait :primary_enrolment_questionnaire do
       slug { 'primary-certificate-enrolment-questionnaire' }
     end
+
+    trait :cs_accelerator_enrolment_questionnaire do
+      slug { 'cs-accelerator-enrolment-questionnaire' }
+    end
   end
-
-
 end

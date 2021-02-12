@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ActivitiesController do
+RSpec.describe Api::ActivitiesController do
   let(:activities) { create_list(:activity, 10) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
 
@@ -8,7 +8,7 @@ RSpec.describe Admin::ActivitiesController do
     describe 'GET #show' do
       before do
         activities
-        get "/admin/activities/", { headers: nil }
+        get "/api/activities/", { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -21,7 +21,7 @@ RSpec.describe Admin::ActivitiesController do
     describe 'GET #show' do
       before do
         activities
-        get "/admin/activities/", { headers: token_headers }
+        get "/api/activities/", { headers: token_headers }
       end
 
       it 'returns 201 status' do

@@ -1,0 +1,22 @@
+<%= link_to 'Back', previous_wizard_path, class: 'govuk-back-link' unless @step == :question_1 %>
+<h2 class="govuk-heading-m ncce-diagnostic__question-progress"><%= current_position(@steps, @step) %></h2>
+<%= form_for(:diagnostic, url: wizard_path, method: :put) do |form| %>
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      <p class="govuk-body-l"><%= question.text %></p>
+      <p class="govuk-body"><%= question&.sub_text %></p>
+    </legend>
+    <div class="govuk-radios">
+      <% question.answers.each_with_index do | answer, idx | %>
+        <div class="govuk-radios__item">
+          <%= form.radio_button @step,
+              answer.value,
+              class: 'govuk-radios__input',
+              :checked => @answer == answer.value || (idx + 1) == question.default_answer %>
+          <label class="govuk-label govuk-radios__label" for='<%= "diagnostic_#{@step.to_s}_#{idx + 1}" %>'><%= answer.text %></label>
+        </div>
+      <% end %>
+    </div>
+  </fieldset>
+  <%= form.submit 'Continue', class: 'govuk-button ncce-diagnostic__button' %>
+<% end %>
