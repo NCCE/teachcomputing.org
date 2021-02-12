@@ -11,6 +11,13 @@
         <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
         <%= render 'courses/courses-details' %>
         <div class="external-content govuk-!-margin-bottom-7">
+          <%= sanitize_stem_html @course.course_leaders %>
+          <%= sanitize_stem_html @course.how_long_is_the_course %>
+          <%= sanitize_stem_html @course.how_will_you_learn %>
+          <%= sanitize_stem_html @course.topics_covered %>
+          <%= sanitize_stem_html @course.who_is_it_for %>
+
+          existing
           <%= sanitize_stem_html @course.summary %>
           <%= sanitize_stem_html @course.outcomes %>
         </div>
