@@ -4,7 +4,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:recommender) { described_class.new(questionnaire_response: questionnaire_response) }
 
-  let(:questionnaire_response) { create(:questionnaire_response, programme: cs_accelerator, answers: answers) }
+  let(:questionnaire_response) { create(:questionnaire_response, answers: answers) }
 
   let!(:new_to_computing_pathway) { create(:pathway, slug: 'new-to-computing') }
   let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'prepare-to-teach-gcse-computer-science') }
