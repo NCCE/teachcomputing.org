@@ -35,7 +35,7 @@ RSpec.describe Diagnostics::CSAcceleratorController do
         answers = create(
           :cs_accelerator_enrolment_score_15,
           questionnaire: cs_accelerator_questionnaire,
-          programme: programme, user: user
+          user: user
         )
         answers.transition_to(:complete)
         get diagnostic_cs_accelerator_certificate_path(:question_1)

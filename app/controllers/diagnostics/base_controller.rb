@@ -17,7 +17,7 @@ module Diagnostics
 
     def questionnaire_response
       QuestionnaireResponse.find_or_create_by(
-        user: current_user, programme: programme, questionnaire: questionnaire
+        user: current_user, questionnaire: questionnaire
       )
     end
 
