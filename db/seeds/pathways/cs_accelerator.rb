@@ -1,8 +1,8 @@
 puts 'Creating Pathways for CSA'
 
-pathway = Pathway.find_or_create_by(slug: 'teaching-advanced-gcse-computer-science') do |q|
-  q.title = 'Teaching advanced GCSE Computer Science'
-  q.slug = 'teaching-advanced-gcse-computer-science'
+pathway = Pathway.find_or_create_by(slug: 'advanced-gcse-computer-science') do |q|
+  q.title = 'Advanced GCSE Computer Science'
+  q.slug = 'advanced-gcse-computer-science'
   q.range = 0..0
   q.pdf_link = 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf'
 end
