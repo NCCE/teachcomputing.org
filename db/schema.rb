@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_084438) do
+ActiveRecord::Schema.define(version: 2021_02_15_103254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -203,14 +203,12 @@ ActiveRecord::Schema.define(version: 2021_02_11_084438) do
   create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "questionnaire_id", null: false
     t.uuid "user_id", null: false
-    t.uuid "programme_id", null: false
     t.integer "current_question", default: 1
     t.json "answers", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["programme_id", "user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
-    t.index ["programme_id"], name: "index_questionnaire_responses_on_programme_id"
     t.index ["questionnaire_id"], name: "index_questionnaire_responses_on_questionnaire_id"
+    t.index ["user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
     t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"
   end
 

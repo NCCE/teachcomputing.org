@@ -36,7 +36,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         before do
           user_programme_enrolment
           answers = create(
-            :primary_enrolment_score_15, questionnaire: primary_questionnaire, programme: programme, user: user
+            :primary_enrolment_score_15, questionnaire: primary_questionnaire,  user: user
           )
           answers.transition_to(:complete)
         end
