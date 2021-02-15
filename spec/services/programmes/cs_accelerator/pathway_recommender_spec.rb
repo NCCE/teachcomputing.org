@@ -99,7 +99,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
     context 'when score is between 15 and 20' do
       let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '3', '5': '3' } }
 
-      it 'recommends "Advanced GCSE Computer Science" pathway' do
+      it 'recommends "advanced GCSE Computer Science" pathway' do
         expect(recommender.recommended_pathway).to eq(advanced_pathway)
       end
 
