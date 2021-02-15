@@ -10,7 +10,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
   let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'prepare-to-teach-gcse-computer-science') }
   let!(:algorithms_and_programming_pathway) { create(:pathway, slug: 'new-to-algorithms-and-programming') }
   let!(:systems_pathway) { create(:pathway, slug: 'new-to-computer-systems') }
-  let!(:advanced_pathway) { create(:pathway, slug: 'advanced-gcse-computer-science') }
+  let!(:advanced_pathway) { create(:pathway, slug: 'teaching-advanced-gcse-computer-science') }
 
   describe '#recommended_pathway' do
     context 'when user answered "A" to question 1' do
@@ -99,7 +99,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
     context 'when score is between 15 and 20' do
       let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '3', '5': '3' } }
 
-      it 'recommends "Advanced GCSE Computer Science" pathway' do
+      it 'recommends "Teaching advanced GCSE Computer Science" pathway' do
         expect(recommender.recommended_pathway).to eq(advanced_pathway)
       end
 

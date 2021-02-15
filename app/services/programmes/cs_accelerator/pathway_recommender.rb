@@ -6,7 +6,7 @@ module Programmes
         B: 'prepare-to-teach-gcse-computer-science',
         C: 'new-to-algorithms-and-programming',
         D: 'new-to-computer-systems',
-        E: 'advanced-gcse-computer-science'
+        E: 'teaching-advanced-gcse-computer-science'
       }.freeze
 
       def initialize(questionnaire_response:)
