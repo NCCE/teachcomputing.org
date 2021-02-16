@@ -35,7 +35,7 @@ class UserProgrammeEnrolment < ApplicationRecord
     end
   end
 
-  def assign_pathway(questionnaire_response)
+  def assign_recommended_pathway(questionnaire_response)
     recommender = Programmes::CSAccelerator::PathwayRecommender.new(questionnaire_response: questionnaire_response)
     update(pathway_id: recommender.recommended_pathway&.id)
   end
