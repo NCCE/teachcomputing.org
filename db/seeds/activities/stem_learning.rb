@@ -733,3 +733,39 @@ a = Activity.find_or_create_by(stem_course_template_no: '1a81f632-a255-eb11-a812
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7ab53294-7a6c-eb11-a812-000d3a872800') do |activity|
+  activity.title = 'Computing as a second subject for non-specialist teachers'
+  activity.credit = 10
+  activity.slug = 'computing-as-a-second-subject-for-non-specialist-teachers'
+  activity.stem_course_template_no = '7ab53294-7a6c-eb11-a812-000d3a872800'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP308'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5b1b5967-7c6c-eb11-a812-000d3a872800') do |activity|
+  activity.title = 'New subject leaders of secondary computing (remote)'
+  activity.credit = 10
+  activity.slug = 'new-subject-leaders-of-secondary-computing-remote'
+  activity.stem_course_template_no = '5b1b5967-7c6c-eb11-a812-000d3a872800'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP411'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '3bff03fd-256d-eb11-a812-000d3a872640') do |activity|
+  activity.title = 'Leading primary computing (remote)'
+  activity.credit = 10
+  activity.slug = 'leading-primary-computing-remote'
+  activity.stem_course_template_no = '3bff03fd-256d-eb11-a812-000d3a872640'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP456'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
