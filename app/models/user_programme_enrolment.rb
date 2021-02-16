@@ -7,7 +7,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
 
-  after_commit :schedule_kick_off_emails, :schedule_sync_to_achiever, on: :create
+  after_commit :schedule_kick_off_emails, :schedule_sync_to_achiever, :create_questionnaire_response, on: :create
   before_create :set_eligible_achievements_for_programme
 
   validates :user, :programme, presence: true
@@ -48,6 +48,13 @@ class UserProgrammeEnrolment < ApplicationRecord
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
 
   private
+
+    def create_questionnaire_response
+      return unless FeatureFlagService.new.flags[:csa_questionnaire_enabled]
+      return unless programme.cs_accelerator?
+
+      QuestionnaireResponse.create(user: user, questionnaire: Questionnaire.cs_accelerator)
+    end
 
     def schedule_kick_off_emails
       KickOffEmailsJob.perform_later(id)

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::CSAcceleratorController do
+  let!(:questionnaire) { create(:csa_enrolment_questionnaire, programme: programme) }
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
@@ -37,6 +38,15 @@ RSpec.describe Certificates::CSAcceleratorController do
     face_to_face_achievement
   end
 
+  # Remove before() and after() when the feature is released
+  before do
+    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'true'
+  end
+
+  after do
+    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'false'
+  end
+
   describe '#show' do
     context 'when user is logged in' do
       before do
@@ -57,15 +67,6 @@ RSpec.describe Certificates::CSAcceleratorController do
         end
 
         context 'when the user has not completed the diagnostic' do
-          # Remove before() and after() when the feature is released
-          before do
-            ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'true'
-          end
-
-          after do
-            ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'false'
-          end
-
           it 'redirects to the diagnostic path' do
             get cs_accelerator_certificate_path
             expect(response)
@@ -73,10 +74,9 @@ RSpec.describe Certificates::CSAcceleratorController do
           end
 
           it 'redirects to last question completed' do
-            create(:questionnaire_response,
-                   user: user,
-                   questionnaire: create(:questionnaire, :cs_accelerator_enrolment_questionnaire),
-                   current_question: 3)
+            user_response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
+            user_response.update(current_question: 3)
+
             get cs_accelerator_certificate_path
             expect(response)
               .to redirect_to(diagnostic_cs_accelerator_certificate_path(:question_3))
@@ -88,10 +88,7 @@ RSpec.describe Certificates::CSAcceleratorController do
             create(:activity, :community_5)
             create_list(:activity, 3, :community)
             create_list(:activity, 4, :community_20)
-            questionnaire_response = create(:questionnaire_response,
-                                            user: user,
-                                            questionnaire: create(:questionnaire,
-                                                                  :cs_accelerator_enrolment_questionnaire))
+            questionnaire_response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
             questionnaire_response.transition_to(:complete)
             get cs_accelerator_certificate_path
           end
@@ -122,6 +119,15 @@ RSpec.describe Certificates::CSAcceleratorController do
             get cs_accelerator_certificate_path
             expect(response)
               .to redirect_to(complete_cs_accelerator_certificate_path)
+          end
+        end
+
+        context 'when the user does not have a diagnostic response' do
+          it 'renders the correct template' do
+            QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire).destroy
+
+            get cs_accelerator_certificate_path
+            expect(response).to render_template('show')
           end
         end
       end

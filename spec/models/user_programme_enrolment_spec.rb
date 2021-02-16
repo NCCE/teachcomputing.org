@@ -64,6 +64,14 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
         create(:user_programme_enrolment)
       end.to have_enqueued_job(Achiever::ScheduleCertificateSyncJob)
     end
+
+    context 'when Programme is CSA' do
+      it 'creates questionnaire response' do
+        create(:csa_enrolment_questionnaire)
+        expect { create(:user_programme_enrolment, programme: cs_accelerator) }
+          .to change(QuestionnaireResponse, :count).by(1)
+      end
+    end
   end
 
   describe 'delegates' do
