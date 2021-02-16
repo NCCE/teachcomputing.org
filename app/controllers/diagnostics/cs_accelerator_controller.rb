@@ -1,19 +1,50 @@
-class Diagnostics::CSAcceleratorController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
-  before_action :track_visit!, only: [:show]
+module Diagnostics
+  class CSAcceleratorController < BaseController
+    before_action :authenticate, :questionnaire
+    before_action :enrolled?, :completed_diagnostic?, only: %i[show]
 
-  def show
-    redirect_to helpers.class_marker_diagnostic_url(current_user)
+    steps :question_1, :question_2, :question_3, :question_4, :question_5
+
+    def show
+      @programme = programme
+      @step = step
+      @steps = steps
+      @answer = answer_for_current_step
+
+      render_wizard nil, template: '/diagnostics/cs_accelerator/questions'
+    end
+
+    def update
+      response = questionnaire_response
+      store_response response
+
+      if finished? || diagnostic_params[:question_1] == '1'
+        response.complete!
+        recommend_pathway
+        redirect_to finish_wizard_path
+      else
+        jump_to_latest response
+        render_wizard response
+      end
+    end
+
+    private
+
+      def programme
+        @programme ||= Programme.find_by(slug: 'cs-accelerator')
+      end
+
+      def questionnaire
+        @questionnaire ||= Questionnaire.find_by!(slug: 'cs-accelerator-enrolment-questionnaire')
+      end
+
+      def recommend_pathway
+        upe = UserProgrammeEnrolment.find_by(user_id: current_user.id)
+        upe.assign_recommended_pathway(questionnaire_response)
+      end
+
+      def enrolled?
+        redirect_to cs_accelerator_path unless programme.user_enrolled?(current_user)
+      end
   end
-
-  private
-
-    def activity
-      Activity.find_by(id: params[:id])
-    end
-
-    def track_visit!
-      achievement = Achievement.find_or_create_by!(user_id: current_user.id, activity_id: activity.id)
-      achievement.set_to_complete
-    end
 end

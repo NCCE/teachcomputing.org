@@ -1,0 +1,13 @@
+<%= render 'components/hero', hero_title: @programme.title, subtitle: 'Certification awarded by BCS, The Chartered Institute for IT', glyph_position: 'bottom', colour: 'orange' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row ncce-diagnostic__row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="ncce-diagnostic__question">
+          <%= render partial: 'diagnostics/question', locals: { question: primary_certificate_questions(@step) } %>
+        </div>
+      </div>
+      <%= render 'aside' %>
+    </div>
+  </div>
+</div>

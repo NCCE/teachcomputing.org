@@ -23,19 +23,21 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
           get diagnostic_primary_certificate_path(:question_1)
         end
 
-        it 'assigns @questionnaire' do
-          expect(assigns(:questionnaire)).to be_a(Questionnaire)
+        it 'renders a question' do
+          expect(response).to render_template(:questions)
         end
 
-        it 'renders the first step in the wizard' do
-          expect(response).to render_template(:question_1)
+        it 'renders the first question' do
+          expect(response.body).to include('Question 1 of 4')
         end
       end
 
       context 'when the user has completed the diagnostic' do
         before do
           user_programme_enrolment
-          answers = create(:primary_enrolment_score_15, questionnaire: primary_questionnaire, programme: programme, user: user)
+          answers = create(
+            :primary_enrolment_score_15, questionnaire: primary_questionnaire,  user: user
+          )
           answers.transition_to(:complete)
         end
 

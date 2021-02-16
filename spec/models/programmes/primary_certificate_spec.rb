@@ -22,7 +22,8 @@ RSpec.describe Programmes::PrimaryCertificate do
 
   let(:setup_achievements_for_completion) do
     user_programme_enrolment
-    activities = [online_course, face_to_face_course, community_5_activity, community_10_activity, community_20_activity]
+    activities = [online_course, face_to_face_course, community_5_activity, community_10_activity,
+                  community_20_activity]
 
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
@@ -32,7 +33,7 @@ RSpec.describe Programmes::PrimaryCertificate do
 
   let(:setup_diagnostic_score) do
     user_programme_enrolment
-    create(:primary_enrolment_score_15, programme: programme, user: user)
+    create(:primary_enrolment_score_15, user: user)
   end
 
   describe '#diagnostic_result' do
@@ -145,10 +146,11 @@ RSpec.describe Programmes::PrimaryCertificate do
 
   describe '#enrol_path' do
     it 'returns the path for the enrol' do
-      expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id', programme_id: 'programme_id' })).to eq('/certificate/primary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
+      expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id',
+                                                              programme_id: 'programme_id' })).to eq('/certificate/primary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
     end
   end
-  
+
   describe '#programme_title' do
     it 'returns correct title' do
       expect(programme.programme_title)

@@ -14,10 +14,6 @@ RSpec.describe QuestionnaireResponse, type: :model do
       expect(questionnaire_response).to belong_to(:questionnaire)
     end
 
-    it 'belongs to a programme' do
-      expect(questionnaire_response).to belong_to(:programme)
-    end
-
     it 'belongs to a user' do
       expect(questionnaire_response).to belong_to(:user)
     end
@@ -29,9 +25,8 @@ RSpec.describe QuestionnaireResponse, type: :model do
     end
 
     it { is_expected.to validate_presence_of(:questionnaire_id) }
-    it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:programme_id, :questionnaire_id) }
+    it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:questionnaire_id) }
     it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:programme_id) }
   end
 
   describe '#add_answer' do

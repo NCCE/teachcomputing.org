@@ -4,13 +4,13 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:recommender) { described_class.new(questionnaire_response: questionnaire_response) }
 
-  let(:questionnaire_response) { create(:questionnaire_response, programme: cs_accelerator, answers: answers) }
+  let(:questionnaire_response) { create(:questionnaire_response, answers: answers) }
 
-  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new-to-computing') }
-  let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'prepare-to-teach-gcse-computer-science') }
-  let!(:algorithms_and_programming_pathway) { create(:pathway, slug: 'new-to-algorithms-and-programming') }
-  let!(:systems_pathway) { create(:pathway, slug: 'new-to-computer-systems') }
-  let!(:advanced_pathway) { create(:pathway, slug: 'advanced-gcse-computer-science') }
+  let!(:new_to_computing_pathway) { create(:new_to_computing) }
+  let!(:preparing_to_teach_pathway) { create(:prepare_to_teach_gcse_computer_science) }
+  let!(:algorithms_and_programming_pathway) { create(:new_to_algorithms_and_programming) }
+  let!(:systems_pathway) { create(:new_to_computer_systems) }
+  let!(:advanced_pathway) { create(:advanced_gcse_computer_science) }
 
   describe '#recommended_pathway' do
     context 'when user answered "A" to question 1' do
@@ -99,7 +99,7 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
     context 'when score is between 15 and 20' do
       let(:answers) { { '1': '3', '2': '3', '3': '3', '4': '3', '5': '3' } }
 
-      it 'recommends "Advanced GCSE Computer Science" pathway' do
+      it 'recommends "advanced GCSE Computer Science" pathway' do
         expect(recommender.recommended_pathway).to eq(advanced_pathway)
       end
 
