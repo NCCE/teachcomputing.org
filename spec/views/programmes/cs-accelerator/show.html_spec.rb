@@ -7,8 +7,8 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
   before do
     @current_user = user
     @programme = programme
-    stub_template 'certificates/cs_accelerator/_activity-list.html.erb' => 'stub activity list'
-    stub_template 'certificates/cs_accelerator/_aside.html.erb' => 'stub aside'
+    stub_template 'certificates/cs_accelerator/v1/_activity-list.html.erb' => 'stub activity list'
+    stub_template 'certificates/cs_accelerator/v1/_aside.html.erb' => 'stub aside'
     render
   end
 
