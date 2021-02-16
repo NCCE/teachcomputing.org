@@ -147,7 +147,7 @@ GEM
       momentjs-rails (>= 2.8.1)
     ddtrace (0.45.0)
       msgpack
-    debase (0.2.3)
+    debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
     descendants_tracker (0.0.4)
@@ -621,7 +621,7 @@ DEPENDENCIES
   connection_pool (~> 2.2.2)
   dalli (~> 2.7.9)
   ddtrace (~> 0.44)
-  debase
+  debase (~> 0.2.4)
   dotenv-rails
   erb_lint
   factory_bot_rails
