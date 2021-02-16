@@ -38,13 +38,9 @@ RSpec.describe Certificates::CSAcceleratorController do
     face_to_face_achievement
   end
 
-  # Remove before() and after() when the feature is released
+  # Remove when the feature is released
   before do
-    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'true'
-  end
-
-  after do
-    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'false'
+    stub_feature_flags({ csa_questionnaire_enabled: true })
   end
 
   describe '#show' do
