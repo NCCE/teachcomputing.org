@@ -19,7 +19,7 @@ module Programmes
       total
     end
 
-    def enough_activites_for_test?(user)
+    def enough_activities_for_test?(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
                                   .in_state('complete')

@@ -12,9 +12,13 @@ RSpec.describe Programmes::CSAccelerator do
   let(:online_courses) { create_list(:activity, 2, :future_learn, credit: 20) }
   let(:face_to_face_courses) { create_list(:activity, 2, :stem_learning, credit: 20) }
   let(:short_face_to_face_course) { create(:activity, :stem_learning, credit: 10) }
-  let(:short_face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: short_face_to_face_course.id) }
+  let(:short_face_to_face_achievement) do
+    create(:achievement, user_id: user.id, activity_id: short_face_to_face_course.id)
+  end
   let(:another_short_face_to_face_course) { create(:activity, :stem_learning, credit: 10) }
-  let(:another_short_face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: another_short_face_to_face_course.id) }
+  let(:another_short_face_to_face_achievement) do
+    create(:achievement, user_id: user.id, activity_id: another_short_face_to_face_course.id)
+  end
 
   let(:setup_partially_complete_certificate) do
     user_programme_enrolment
@@ -52,7 +56,8 @@ RSpec.describe Programmes::CSAccelerator do
     setup_one_short_f2f_achievement
     another_short_face_to_face_course
     create(:programme_activity, programme_id: programme.id, activity_id: another_short_face_to_face_course.id)
-    another_short_face_to_face_achievement = create(:achievement, user_id: user.id, activity_id: another_short_face_to_face_course.id)
+    another_short_face_to_face_achievement = create(:achievement, user_id: user.id,
+                                                                  activity_id: another_short_face_to_face_course.id)
     another_short_face_to_face_achievement.set_to_complete
   end
 
@@ -160,10 +165,10 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
-  describe '#enough_activites_for_test?' do
+  describe '#enough_activities_for_test?' do
     context 'when the user has not done any activities' do
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(false)
+        expect(programme.enough_activities_for_test?(user)).to eq(false)
       end
     end
 
@@ -173,7 +178,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(false)
+        expect(programme.enough_activities_for_test?(user)).to eq(false)
       end
     end
 
@@ -183,7 +188,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(false)
+        expect(programme.enough_activities_for_test?(user)).to eq(false)
       end
     end
 
@@ -193,7 +198,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(false)
+        expect(programme.enough_activities_for_test?(user)).to eq(false)
       end
     end
 
@@ -203,7 +208,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(true)
+        expect(programme.enough_activities_for_test?(user)).to eq(true)
       end
     end
 
@@ -213,7 +218,7 @@ RSpec.describe Programmes::CSAccelerator do
       end
 
       it 'returns false' do
-        expect(programme.enough_activites_for_test?(user)).to eq(true)
+        expect(programme.enough_activities_for_test?(user)).to eq(true)
       end
     end
   end
@@ -226,10 +231,11 @@ RSpec.describe Programmes::CSAccelerator do
 
   describe '#enrol_path' do
     it 'returns the path for the enrol' do
-      expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id', programme_id: 'programme_id' })).to eq('/certificate/cs-accelerator/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
+      expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id',
+                                                              programme_id: 'programme_id' })).to eq('/certificate/cs-accelerator/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
     end
   end
-  
+
   describe '#programme_title' do
     it 'returns correct title' do
       expect(programme.programme_title).to eq('GCSE Computer Science Subject Knowledge')

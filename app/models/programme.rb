@@ -38,7 +38,7 @@ class Programme < ApplicationRecord
     0
   end
 
-  def enough_activites_for_test?(_user)
+  def enough_activities_for_test?(_user)
     false
   end
 

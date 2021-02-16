@@ -163,9 +163,9 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#enough_activites_for_test?' do
+  describe '#enough_activities_for_test?' do
     it 'returns 0' do
-      expect(programmes[0].enough_activites_for_test?(user)).to eq false
+      expect(programmes[0].enough_activities_for_test?(user)).to eq false
     end
   end
 
