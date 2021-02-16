@@ -7,8 +7,7 @@ RSpec.describe Diagnostics::CSAcceleratorController do
   let(:cs_accelerator_enrolment_unanswered) do
     create(
       :cs_accelerator_enrolment_unanswered,
-      questionnaire: cs_accelerator_enrolment_questionnaire,
-      programme: programme
+      questionnaire: cs_accelerator_enrolment_questionnaire
     )
   end
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
