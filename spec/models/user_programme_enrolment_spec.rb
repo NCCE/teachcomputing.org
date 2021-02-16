@@ -58,7 +58,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it 'sets the pathway id' do
       cs_accelerator
       upe = create(:user_programme_enrolment, user: user, programme: cs_accelerator)
-      upe.pathway(questionnaire_response)
+      upe.assign_pathway(questionnaire_response)
       expect(upe.pathway_id).to eq(new_to_computing_pathway.id)
     end
   end
