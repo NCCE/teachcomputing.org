@@ -67,17 +67,17 @@
 }
 
 .dropdown__expander-content-no-js {
-	visibility: hidden;
+  visibility: hidden;
   opacity: 0;
   min-width: 5rem;
-	position: absolute;
+  position: absolute;
   transition: all 0.5s ease;
 	left: 0;
   display: none;
   margin-top: 0.5rem;
 
   &:last-child {
-  right: 0;
+  	right: 0;
   }
 }
 
@@ -87,5 +87,5 @@
 .header__list li ul:focus {
   visibility: visible;
   opacity: 1;
-  display: block
+  display: block;
 }
