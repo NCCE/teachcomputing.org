@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :questionnaire_response, dependent: :nullify
 
   def self.from_auth(id, credentials, info)
-    where(stem_user_id: id).first_or_initialize.tap do |user|
+    where(email: info.email.downcase).first_or_initialize.tap do |user|
       user.stem_user_id = id
       user.first_name = info.first_name
       user.last_name = info.last_name

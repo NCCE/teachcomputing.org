@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AuthController do
   describe '#callback' do
-    let(:user) { create(:user, stem_user_id: '2074871c-eb73-4a2f-b9fd-c2fff15f97e7') }
+    let(:user) { create(:user, email: 'user@example.com') }
 
     before do
       OmniAuth.config.test_mode = true
