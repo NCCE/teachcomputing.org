@@ -1,18 +1,9 @@
-.dropdown__expander button[aria-expanded='true'] svg {
-  -ms-filter: 'FlipW';
-  filter: FlipW;
-  -moz-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  transform: scaleY(-1);
-}
-
 .dropdown__expander--closed {
   margin-bottom: 20px;
 }
 
 .dropdown__expander-section--closed {
-  display: none;
+	display: none !important;
 }
 
 .dropdown__expander-content {
@@ -44,7 +35,7 @@
 
 .header__list {
 	li {
-	display: block;
+	//display: block;
 	position: relative;
   transition-duration: 0.5s;
 	}
@@ -88,5 +79,5 @@
 .header__list li ul:focus {
   visibility: visible;
   opacity: 1;
-  display: block;
+	display: block;
 }

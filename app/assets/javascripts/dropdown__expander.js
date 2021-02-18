@@ -13,12 +13,12 @@ function initialiseSections(className) {
 	const headings = document.querySelectorAll('.' + className)
 	Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
 
-		heading.children[1].classList.add(sectionToggleClass)
+		heading.children[0].classList.add(sectionToggleClass)
 
 		heading.classList.add(headingToggleClass)
 
 		// Assign the list element
-		let btn = heading.querySelector('button')
+		let btn = heading
 
 		btn.onclick = function btnOnClick() {
 			// Cast the state as a boolean
@@ -29,7 +29,7 @@ function initialiseSections(className) {
 			// Switch the state
 			btn.setAttribute('aria-expanded', !expanded)
 			// Switch the content's visibility
-			heading.children[1].classList.toggle(sectionToggleClass)
+			heading.children[0].classList.toggle(sectionToggleClass)
 		}
 	})
 }
