@@ -1,6 +1,6 @@
 require 'administrate/base_dashboard'
 
-class PathwayDashboard < Administrate::BaseDashboard
+class ProgrammeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,13 @@ class PathwayDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pathway_activities: Field::HasMany,
-    programme: Field::BelongsTo,
+    pathways: Field::HasMany,
     id: Field::String.with_options(searchable: false),
-    range: Field::Select.with_options(searchable: false, collection: { '1..10': '[1, 10)', '11..20': '[11, 20)' }),
     title: Field::String,
     slug: Field::String,
-    order: Field::Number,
     description: Field::Text,
+    enrollable: Field::Boolean,
+    type: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
 
@@ -28,36 +27,27 @@ class PathwayDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
-    order
-    range
+    slug
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    pathway_activities
-    programme
     id
-    range
     title
     slug
-    order
     description
-    created_at
-    updated_at
+    enrollable
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    pathway_activities
-    programme
-    range
     title
     slug
-    order
     description
+    pathways
   ].freeze
 
   # COLLECTION_FILTERS
@@ -72,10 +62,10 @@ class PathwayDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how pathways are displayed
+  # Overwrite this method to customize how programmes are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(pathway)
-    pathway.title
+  def display_resource(programme)
+    programme.title
   end
 end

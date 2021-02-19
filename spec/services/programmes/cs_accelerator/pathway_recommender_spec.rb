@@ -6,11 +6,11 @@ RSpec.describe Programmes::CSAccelerator::PathwayRecommender do
 
   let(:questionnaire_response) { create(:questionnaire_response, answers: answers) }
 
-  let!(:new_to_computing_pathway) { create(:pathway, slug: 'new-to-computing') }
-  let!(:preparing_to_teach_pathway) { create(:pathway, slug: 'prepare-to-teach-gcse-computer-science') }
-  let!(:algorithms_and_programming_pathway) { create(:pathway, slug: 'new-to-algorithms-and-programming') }
-  let!(:systems_pathway) { create(:pathway, slug: 'new-to-computer-systems') }
-  let!(:advanced_pathway) { create(:pathway, slug: 'advanced-gcse-computer-science') }
+  let!(:new_to_computing_pathway) { create(:new_to_computing) }
+  let!(:preparing_to_teach_pathway) { create(:prepare_to_teach_gcse_computer_science) }
+  let!(:algorithms_and_programming_pathway) { create(:new_to_algorithms_and_programming) }
+  let!(:systems_pathway) { create(:new_to_computer_systems) }
+  let!(:advanced_pathway) { create(:advanced_gcse_computer_science) }
 
   describe '#recommended_pathway' do
     context 'when user answered "A" to question 1' do

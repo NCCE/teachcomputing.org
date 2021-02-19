@@ -16,29 +16,13 @@ RSpec.describe Programme, type: :model do
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   describe 'associations' do
-    it 'has_many activities' do
-      expect(programme).to have_many(:activities).through(:programme_activities)
-    end
-
-    it 'has_many users' do
-      expect(programme).to have_many(:users).through(:user_programme_enrolments)
-    end
-
-    it 'has_many programme activity groupings' do
-      expect(programme).to have_many(:programme_activity_groupings)
-    end
-
-    it 'has_one assessment' do
-      expect(programme).to have_one(:assessment)
-    end
-
-    it 'has_one programme_complete_counter' do
-      expect(programme).to have_one(:programme_complete_counter)
-    end
-
-    it 'has_one questionnaire' do
-      expect(programme).to have_many(:questionnaire)
-    end
+    it { is_expected.to have_many(:pathways) }
+    it { is_expected.to have_many(:activities).through(:programme_activities) }
+    it { is_expected.to have_many(:users).through(:user_programme_enrolments) }
+    it { is_expected.to have_many(:programme_activity_groupings) }
+    it { is_expected.to have_one(:assessment) }
+    it { is_expected.to have_one(:programme_complete_counter) }
+    it { is_expected.to have_many(:questionnaires) }
   end
 
   describe 'scopes' do
