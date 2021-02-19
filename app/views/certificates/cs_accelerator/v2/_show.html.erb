@@ -1,0 +1,30 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator Programme!</h2>
+          <div class="govuk-body-m">
+            To unlock our test and get your certificate you’ll need to take at
+            least one face to face or remote course, and one further CSA course.
+            But we encourage you to take as many courses as you need to gain the
+            subject knowledge to confidently teach computer science.
+          </div>
+
+          <%= render 'certificates/cs_accelerator/v2/pathway-prompt' %>
+
+          <div class="govuk-body ncce-activity-list ncce-activity-list--programme" role="list">
+            <%= render 'certificates/cs_accelerator/v2/achievements' %>
+            <%= render 'certificates/cs_accelerator/v2/recommended-courses' %>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render 'components/bursary-aside' %>
+          <%= render 'certificates/pathway-aside' %>
+          <%= render 'components/support-aside' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

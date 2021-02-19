@@ -5,4 +5,8 @@
 <% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true %>
 
-<%= render 'certificates/cs_accelerator/v1/show' %>
+<% if FeatureFlagService.new.flags[:csa_questionnaire_enabled] %>
+  <%= render 'certificates/cs_accelerator/v2/show' %>
+<% else %>
+  <%= render 'certificates/cs_accelerator/v1/show' %>
+<% end %>

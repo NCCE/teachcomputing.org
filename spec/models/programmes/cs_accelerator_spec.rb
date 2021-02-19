@@ -241,4 +241,92 @@ RSpec.describe Programmes::CSAccelerator do
       expect(programme.programme_title).to eq('GCSE Computer Science Subject Knowledge')
     end
   end
+
+  describe '#compulsory_achievement' do
+    context 'when user has no f2f achievements' do
+      it 'returns nil' do
+        expect(programme.compulsory_achievement(user)).to eq(nil)
+      end
+    end
+
+    context 'when user has single f2f achievement' do
+      it 'returns the achievement' do
+        achievement = create(:achievement, programme: programme, user: user)
+        expect(programme.compulsory_achievement(user)).to eq(achievement)
+      end
+    end
+
+    context 'when user has multiple f2f achievements' do
+      it 'returns the first achievement' do
+        create_list(:achievement, 2, programme: programme, user: user)
+        earliest_achievement = create(:achievement, programme: programme, user: user,
+                                                    created_at: Time.now - 7.days)
+        expect(programme.compulsory_achievement(user)).to eq(earliest_achievement)
+      end
+    end
+
+    context 'when user has no f2f achievements but has online achievements' do
+      it 'returns nil' do
+        activity = create(:activity, :online)
+        achievement = create(:achievement, programme: programme, user: user,
+                                           activity: activity)
+        expect(programme.compulsory_achievement(user)).to eq(nil)
+      end
+    end
+  end
+
+  describe '#non_compulsory_achievements' do
+    context 'when user has no achievements' do
+      it 'returns empty list' do
+        expect(programme.non_compulsory_achievements(user)).to eq([])
+      end
+    end
+
+    context 'when user has non course achievements' do
+      it 'does not return other types of achievements' do
+        create(:achievement, activity: create(:activity, category: 'action'),
+                             programme: programme, user: user)
+        create(:achievement, activity: create(:activity, category: 'assessment'),
+                             programme: programme, user: user)
+        create(:achievement, activity: create(:activity, category: 'community'),
+                             programme: programme, user: user)
+        create(:achievement, activity: create(:activity, category: 'diagnostic'),
+                             programme: programme, user: user)
+        expect(programme.non_compulsory_achievements(user)).to eq([])
+      end
+    end
+
+    context 'when user has compulsory achievement but no others' do
+      it 'returns empty list' do
+        achievement = create(:achievement, programme: programme, user: user)
+        expect(programme.non_compulsory_achievements(user)).to eq([])
+      end
+    end
+
+    context 'when user has no f2f achievements but does have online achievements' do
+      it 'returns online achievements' do
+        achievements = create_list(:achievement, 2, :online,
+                                   programme: programme, user: user)
+        expect(programme.non_compulsory_achievements(user)).to match_array(achievements)
+      end
+    end
+
+    context 'when user has f2f achievements and online achievements' do
+      it 'returns online achievements and f2f achievements except the first one' do
+        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
+        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        online_achievements = create_list(:achievement, 2, :online,
+                                          programme: programme, user: user)
+        results = programme.non_compulsory_achievements(user)
+        expect(results).to match_array(f2f_achievements + online_achievements)
+      end
+    end
+  end
+
+  describe '#pathways' do
+    it 'returns all pathways linked to cs_accelerator' do
+      pathways = create_list(:pathway, 2)
+      expect(programme.pathways).to match_array(pathways)
+    end
+  end
 end

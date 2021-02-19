@@ -1,0 +1,27 @@
+<div>
+  <% if current_user.on_programme_pathway?(@programme) %>
+    <h2 class="govuk-heading-s">
+      Learning pathways for teachers
+    </h2>
+    <p class="govuk-body-s">
+      Are you an aspiring computing teacher or are you unsure about your level of experience?
+      Our learning pathways will help you to get started and offer a structured route through the programme:
+    </p>
+    <ul>
+      <% @programme.pathways.each do |pathway| %>
+        <li><%= pathway.title %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="govuk-body">
+      Not sure this is the right pathway for you? See what our other pathways include:
+    </p>
+    <ul>
+      <%# Need to put a list of the pathways other than the one the user is on %>
+      <li>New to algorithms and programming</li>
+      <li>New to computer systems</li>
+      <li>Advanced GCSE computer science</li>
+      <li>New to computing</li>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+<% unless @compulsory_achievement %>
+  <div class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--borderless">
+    <span class="ncce-activity-list__item-text">
+      Complete a face to face or remote course
+    </span>
+  </div>
+<% end %>
+
+<% if @compulsory_achievement %>
+  <div class="ncce-activity-list__item <%= 'ncce-activity-list__item--incomplete' unless @compulsory_achievement.complete? %> ncce-activity-list__item--borderless">
+    <% unless @compulsory_achievement.complete? %>
+      <span class="ncce-activity-list__item-text">
+        Complete a face to face course
+      </span>
+      <strong class="govuk-tag ncce-courses__tag">In progress</strong>
+    <% end %>
+    <span><%= @compulsory_achievement.activity.title %></span>
+    <span class="govuk-body-s icon-map-pin">Face to face course</span>
+  </div>
+<% end %>
+
+<% unless @non_compulsory_achievements.size.positive? %>
+  <div class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--borderless">
+    <span class="ncce-activity-list__item-text">
+      Complete any other CSA course
+    </span>
+  </div>
+<% end %>
+<% @non_compulsory_achievements.each do |achievement| %>
+  <div class="ncce-activity-list__item <%= 'ncce-activity-list__item--incomplete' unless achievement.complete? %> ncce-activity-list__item--borderless">
+    <% unless achievement.complete? %>
+      <span class="ncce-activity-list__item-text">
+        Complete an online or face to face course
+      </span>
+      <strong class="govuk-tag ncce-courses__tag">In progress</strong>
+    <% end %>
+    <span><%= achievement.activity.title %></span>
+    <span class="govuk-body-s icon-online">Online course</span>
+  </div>
+<% end %>

@@ -2,7 +2,7 @@
   background-color: $grey-x-light;
 }
 
-.cs-accelerator-aside__list>li {
+.cs-accelerator-aside__list > li {
   font-weight: 1.4rem;
   margin-bottom: 10px;
 }
@@ -34,5 +34,16 @@
 
   @include govuk-media-query($from: tablet) {
     padding: $logo-block / 2;
+  }
+}
+
+.csa__pathway-prompt {
+  background-color: $foam;
+  border: 3px solid $deep-cerulean;
+  margin-bottom: 1rem;
+  padding: $logo-block-mobile / 2;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 20px 20px 0px 20px;
   }
 }

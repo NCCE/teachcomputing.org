@@ -75,4 +75,8 @@ FactoryBot.define do
     description { 'this is a 20 credit community activity' }
     credit { 20 }
   end
+
+  trait :online do
+    category { 'online' }
+  end
 end
