@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_103254) do
+ActiveRecord::Schema.define(version: 2021_02_19_111220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -146,6 +146,9 @@ ActiveRecord::Schema.define(version: 2021_02_15_103254) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug", null: false
     t.string "pdf_link"
+    t.uuid "programme_id", null: false
+    t.integer "order"
+    t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
 
