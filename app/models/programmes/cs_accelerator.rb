@@ -64,10 +64,5 @@ module Programmes
                           Activity::ONLINE_CATEGORY])
           .where.not(id: compulsory_achievement(user)&.id)
     end
-
-    def pathways
-      # TODO: once pathways are linked to programme amend this to only return pathways for cs accelerator
-      Pathway.all
-    end
   end
 end

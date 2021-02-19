@@ -322,11 +322,4 @@ RSpec.describe Programmes::CSAccelerator do
       end
     end
   end
-
-  describe '#pathways' do
-    it 'returns all pathways linked to cs_accelerator' do
-      pathways = create_list(:pathway, 2)
-      expect(programme.pathways).to match_array(pathways)
-    end
-  end
 end
