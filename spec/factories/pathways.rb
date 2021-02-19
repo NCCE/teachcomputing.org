@@ -5,6 +5,7 @@ FactoryBot.define do
     description { 'Pathway description' }
     pdf_link { 'https://example.com/pdf-link.pdf' }
     slug { 'slug' }
+    programme
 
     trait :new_to_computing do
       slug { 'new-to-computing' }
