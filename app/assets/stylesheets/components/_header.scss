@@ -28,67 +28,41 @@
 }
 
 .header__list-item {
-  color: $deep-cerulean;
   margin-bottom: 0;
-	margin-right: 1rem;
 	list-style: none;
 	flex-grow: 1;
 	font-weight: 700;
 
-  // background-image: image-url('tick-blue-no-border.svg'), image-url('line.svg');
-  // background-position: right 12px, right 0;
-  // background-repeat: no-repeat;
-  // background-size: 1rem, 1rem;
-
-  // &:last-child {
-  //   	margin-right: 0;
-  // }
-
-  background-image: image-url('tick-blue-no-border.svg');
-  background-position: right 20px center;
+  background-image: image-url('line.svg');
+  background-position: right center;
   background-repeat: no-repeat;
-  background-size: 1rem;
-	padding-right: 1rem;
+  background-size: 0.1rem;
 	cursor: pointer;
 
-  // &:last-child {
-  //   background-image: image-url('tick-blue-no-border.svg'), none;
-  // }
+  &:last-child {
+    background-image: none;
+  }
 
-		@include govuk-media-query($from: desktop) {
-      // text-align: center;
-      padding: 0.5rem !important;
-		}
+  &:hover {
+    background-color: $deep-cerulean;
+		color: $white;
+		padding: 8px 0;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    // text-align: center;
+    padding: 0.3rem;
+  }
 }
 
-.header__button {
-  all: inherit;
-  border: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: flex;
-  justify-content: start;
-  padding: 0.9rem 1rem;
-  width: 100%;
-}
-
-.header__icon {
-	fill: $deep-cerulean;
-  margin-left: 1rem;
-  margin-top: 0.2em;
-}
-
-.header__logo {
-  margin: 0;
-	// width: auto !important;
-}
-
-.header__content {
-	// width: auto !important;
-
-	@include govuk-media-query($from: desktop) {
-
-	}
+.magda-ala {
+  background-image: image-url('tick-blue-no-border.svg');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 0.7rem;
+  color: $deep-cerulean;
+  padding-right: 20px;
+  padding-left: 5px;
 }
 
 .header__container {
@@ -176,10 +150,6 @@
 .ncce-header__navigation-certification {
   @include govuk-media-query($from: desktop) {
     padding-top: 25px;
-
-    .ncce-header__navigation-item-cert {
-			font-size: 1rem !important;
-    }
   }
 }
 
@@ -234,7 +204,7 @@
 }
 
 .ncce-header__navigation-item-cert {
-  padding: 10px 0;
+  // padding: 10px 0;
 
   border-bottom: 1px solid $deep-cerulean;
 

@@ -35,9 +35,7 @@
 
 .header__list {
 	li {
-	//display: block;
 	position: relative;
-  transition-duration: 0.5s;
 	}
 
 	li:hover,
@@ -45,11 +43,11 @@
 		cursor: pointer;
 	}
 
-	.header__list-item:hover,
-	.header__list-item:hover {
+	.magda-ala:hover {
 		background-color: $deep-cerulean;
 		background-image: image-url('arrow-down.svg');
 		color: $white;
+		padding: 10px 20px 10px 5px;
 	}
 
 	ul li ul li {
@@ -73,11 +71,13 @@
   }
 }
 
-.header__list li:hover > .dropdown__expander-content-no-js,
+.header__list li span:hover > .dropdown__expander-content-no-js,
 .header__list li:focus-within > .dropdown__expander-content-no-js,
 .header__list li ul:hover,
-.header__list li ul:focus {
+.header__list li ul:focus,
+.header__list-item:hover > .dropdown__expander-content-no-js {
   visibility: visible;
   opacity: 1;
 	display: block;
+	min-width: 10rem;
 }
