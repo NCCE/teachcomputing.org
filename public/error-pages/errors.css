@@ -5869,14 +5869,6 @@ a:not([class]):active {
   }
 }
 
-.ncce-stem__logo-wrapper .ncce-header__logo {
-  fill: #ffffff;
-}
-
-.ncce-stem__logo-wrapper .ncce-stem__link--homepage {
-  color: #ffffff;
-}
-
 .govuk-header__link--logo:focus .ncce-header__logo {
   fill: #ffffff;
 }
@@ -5893,72 +5885,32 @@ a:not([class]):active {
   }
 }
 
-.ncce-header__navigation-certification,
-.ncce-header__navigation-user {
+.ncce-header__certification,
+.ncce-header__user {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-header__navigation-certification {
+  .ncce-header__certification {
     padding-top: 25px;
     text-align: right;
   }
 
-  .ncce-header__navigation-certification .ncce-header__navigation-item-cert {
+  .ncce-header__certification .ncce-header__navigation-item-cert {
     margin-left: 20px;
   }
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-header__navigation-user {
+  .ncce-header__user {
     text-align: right;
   }
 }
 
 .ncce-header__navigation-item {
   border-color: #007fa2;
-}
-
-.ncce-header__navigation-certification-progress-bar-container {
-  display: flex;
-  flex-direction: row;
-}
-
-@media (min-width: 48.0625em) {
-  .ncce-header__navigation-certification-progress-bar-container {
-    display: block;
-  }
-}
-
-.ncce-header__navigation-certification-progress-bar {
-  background-color: #f2f2f2;
-  display: block;
-  height: 9px;
-  margin-left: 30px;
-  margin-top: 5px;
-  padding: 2px;
-  width: 100%;
-}
-
-@media (min-width: 48.0625em) {
-  .ncce-header__navigation-certification-progress-bar {
-    display: inherit;
-    margin-left: 0;
-  }
-}
-
-.ncce-header__navigation-certification-progress-bar::-webkit-progress-bar {
-  background-color: #f2f2f2;
-}
-
-.ncce-header__navigation-certification-progress-bar::-webkit-progress-value {
-  background: #007fa2;
-}
-
-.ncce-header__navigation-certification-progress-bar::-moz-progress-bar {
-  background: #007fa2;
 }
 
 .ncce-header__navigation-item-cert {
@@ -6059,11 +6011,6 @@ a:not([class]):active {
   outline: 3px solid #007fa2;
   outline-offset: 0;
   padding-top: 0;
-}
-
-.ncce-stem .govuk-skip-link:focus {
-  padding-bottom: 0;
-  padding-top: 10px;
 }
 
 .govuk-tag {

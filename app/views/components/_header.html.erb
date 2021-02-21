@@ -15,7 +15,7 @@
 			<button type="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
 			<div id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
 				<% if current_user %>
-					<ul class='ncce-header__navigation-user'>
+					<ul class='ncce-header__user'>
 						<li class="govuk-header__navigation-item ncce-header__navigation-item">
 							<%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
 						</li>
@@ -27,7 +27,7 @@
 						</li>
 					</ul>
 				<% else %>
-					<ul class="ncce-header__navigation-user">
+					<ul class="ncce-header__user">
 						<li class="govuk-header__navigation-item ncce-header__navigation-item">
 							<%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Create an account' } %>
 						</li>
@@ -36,7 +36,7 @@
 						</li>
 					</ul>
 				<% end %>
-				<ul class='ncce-header__navigation-certification header__list'>
+				<ul class='ncce-header__certification header__list'>
 					<% header_navigation.each do  | nav_item |%>
 						<li class="govuk-body  ncce-header__navigation-item-cert dropdown__expander header__list-item" aria-expanded="false">				<span class="magda-ala"><%= nav_item[:text] %></span>
 							<ul class="govuk-list govuk-body-s dropdown__expander-content dropdown__expander-content-no-js">
