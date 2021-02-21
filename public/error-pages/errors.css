@@ -5898,7 +5898,7 @@ a:not([class]):active {
     text-align: right;
   }
 
-  .ncce-header__certification .ncce-header__navigation-item-cert {
+  .ncce-header__certification .ncce-header__certification-item {
     margin-left: 20px;
   }
 }
@@ -5913,26 +5913,26 @@ a:not([class]):active {
   border-color: #007fa2;
 }
 
-.ncce-header__navigation-item-cert {
+.ncce-header__certification-item {
   border-bottom: 1px solid #007fa2;
   padding: 10px 0;
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-header__navigation-item-cert {
+  .ncce-header__certification-item {
     margin-top: 5px;
   }
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-header__navigation-item-cert .govuk-header__link {
+  .ncce-header__certification-item .govuk-header__link {
     font-size: 1.188rem;
     font-weight: bold !important;
   }
 }
 
 @media (min-width: 48.0625em) {
-  .ncce-header__navigation-item-cert {
+  .ncce-header__certification-item {
     border: 0;
     display: inline-block;
     padding: 5px 0;

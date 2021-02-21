@@ -36,9 +36,9 @@
 						</li>
 					</ul>
 				<% end %>
-				<ul class='ncce-header__certification header__list'>
+				<ul class='ncce-header__certification'>
 					<% header_navigation.each do  | nav_item |%>
-						<li class="govuk-body  ncce-header__navigation-item-cert dropdown__expander header__list-item" aria-expanded="false">				<span class="magda-ala"><%= nav_item[:text] %></span>
+						<li class="govuk-body  ncce-header__certification-item dropdown__expander" aria-expanded="false">				<span class="magda-ala"><%= nav_item[:text] %></span>
 							<ul class="govuk-list govuk-body-s dropdown__expander-content dropdown__expander-content-no-js">
 							<% nav_item[:children].each do  | item |%>
 								<li><%= link_to item[:text], item[:link], class: '', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] } %></li>
