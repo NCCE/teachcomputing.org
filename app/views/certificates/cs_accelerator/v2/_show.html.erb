@@ -18,10 +18,11 @@
             <%= render partial: 'certificates/cs_accelerator/v2/recommended-courses',
               locals: { pathway: @user_programme_pathway } %>
           </div>
+
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'components/bursary-aside' %>
-          <%= render 'certificates/pathway-aside' %>
+          <%= render partial: 'certificates/pathway-aside', locals: { user_pathway: @user_programme_pathway } %>
           <%= render 'components/support-aside' %>
         </div>
       </div>

@@ -1,10 +1,10 @@
 <div class="ncce-pathway-aside">
-  <% if current_user.on_programme_pathway?(@programme) %>
+  <% if user_pathway.present? %>
     <h2 class="govuk-heading-s">
       Not sure this is the right pathway for you? See what our other pathways include:
     </h2>
     <ul class="govuk-list ">
-      <% @programme.pathways_excluding(current_user.programme_pathway(@programme)).ordered.each do |pathway| %>
+      <% @programme.pathways_excluding(user_pathway).ordered.each do |pathway| %>
         <li>
           <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
         </li>
