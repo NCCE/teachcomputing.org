@@ -1,11 +1,29 @@
-<div class="csa__pathway-prompt">
-  <p class="govuk-body">
-    Not sure which courses are right for you?
-    <br />
-    <%= link_to 'Take our short questionnaire', diagnostic_cs_accelerator_certificate_path(:question_1), class: 'ncce-link' %>
-    to be put on a learning pathway, and see personalised course recommendations.
-  </p>
-  <p class="govuk-body-s">
-    This is optional. Don’t worry, any existing progress will be kept.
-  </p>
+<div class="csa-pathway-prompt">
+  <% if @user_programme_pathway %>
+    <p class="govuk-body">
+      Based on your answers to our enrolment questionnaire, our suggested pathway is: 
+    </p>
+    <div class="csa-pathway-prompt__pathway-info">
+      <span class="govuk-body">
+        <strong><%= @user_programme_pathway.title %></strong>
+      </span>
+      <%= link_to 'Pathway PDF', @user_programme_pathway.pdf_link, class: 'govuk-body ncce-link' %>
+    </div>
+  <% else %>
+    <p class="govuk-body">
+      Not sure which courses are right for you?
+      <br />
+      <%= link_to 'Take our short questionnaire', diagnostic_cs_accelerator_certificate_path(:question_1), class: 'ncce-link' %>
+      to be put on a learning pathway, and see personalised course recommendations.
+    </p>
+    <p class="govuk-body-s">
+      This is optional. Don’t worry, any existing progress will be kept.
+    </p>
+  <% end %>
 </div>
+
+<% if @user_programme_pathway %>
+  <p class="govuk-body">
+    To help you get started we’ve made some course recommendations for you.
+  </p>
+<% end %>

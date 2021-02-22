@@ -103,6 +103,23 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe('.course_icon_class') do
+    it 'returns icon for remote courses' do
+      course = build(:achiever_course_template, remote_delivered_cpd: true, online_cpd: false)
+      expect(helper.course_icon_class(course)).to eq('icon-remote')
+    end
+
+    it 'returns icon for face to face courses' do
+      course = build(:achiever_course_template, remote_delivered_cpd: false, online_cpd: false)
+      expect(helper.course_icon_class(course)).to eq('icon-map-pin')
+    end
+
+    it 'returns icon for online courses' do
+      course = build(:achiever_course_template, remote_delivered_cpd: false, online_cpd: true)
+      expect(helper.course_icon_class(course)).to eq('icon-online')
+    end
+  end
+
   describe('#online_course_date') do
     context 'when the date is past' do
       it 'returns Join Now' do
@@ -261,6 +278,19 @@ describe CoursesHelper, type: :helper do
     it 'returns face to face correctly' do
       course = instance_double('course', remote_delivered_cpd: false)
       expect(helper.remote_or_face_to_face(course)).to eq('Face to face')
+    end
+  end
+
+  describe '.clean_course_title' do
+    it 'removes " - remote" from the end of the title' do
+      title = 'Course title - remote'
+      expect(helper.clean_course_title(title)).to eq('Course title')
+    end
+
+    it 'does not affect title that does not end in  " - remote"' do
+      title = 'Course title - something else'
+      expect(helper.clean_course_title(title))
+        .to eq('Course title - something else')
     end
   end
 end

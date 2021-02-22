@@ -1,5 +1,25 @@
-  <div class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--borderless">
-    <div class="ncce-activity-list__buttons">
-      <%= link_to 'View all CSA courses', courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0' %>
-    </div>
+<div class="ncce-recommended-courses">
+  <% if pathway.present? %>
+    <p class="govuk-body">
+      <strong>Recommended courses</strong> based on your pathway.
+    </p>
+    <% pathway.recommended_courses.each do |c| %>
+      <div class="ncce-recommended-courses__course">
+        <p>
+          <%= link_to clean_course_title(c.title), course_path(id: c.activity_code, name: c.title.parameterize), class: 'ncce-link' %>
+        </p>
+        <p>
+          <%= c.meta_description %>
+        </p>
+
+        <p class="ncce-recommended-courses__location <%= course_icon_class(c) %>">
+          <%=  course_subtitle_text(c) %>
+        </p>
+      </div>
+    <% end %>
+
+  <% end %>
+  <div class="ncce-recommended-courses__buttons">
+    <%= link_to 'View all CSA courses', courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0' %>
   </div>
+</div>

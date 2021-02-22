@@ -30,3 +30,7 @@
   @include icon('resources-black.svg', left top, 30px, 30px, 5px);
   min-height: 30px;
 }
+
+.icon-remote {
+  @include icon('icon-remote.svg');
+}

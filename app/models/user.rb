@@ -60,7 +60,11 @@ class User < ApplicationRecord
   end
 
   def on_programme_pathway?(programme)
+    programme_pathway(programme).present?
+  end
+
+  def programme_pathway(programme)
     enrolment = user_programme_enrolments.find_by(programme: programme)
-    enrolment&.pathway_id.present?
+    enrolment&.pathway
   end
 end

@@ -135,6 +135,7 @@
   }
 
   .icon-map-pin,
+  .icon-remote,
   .icon-online {
     background-size: 15px;
 
@@ -225,8 +226,4 @@
 
 .dashboard-tags--secondary {
   background-color: $secondary-cert-color;
-}
-
-.ncce-activity-list__buttons {
-  text-align: center;
 }

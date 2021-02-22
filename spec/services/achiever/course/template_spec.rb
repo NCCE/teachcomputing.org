@@ -52,36 +52,54 @@ RSpec.describe Achiever::Course::Template do
     end
   end
 
-  describe 'class methods' do
-    describe '#all' do
-      before do
-        stub_course_templates
-      end
+  describe '.all' do
+    before do
+      stub_course_templates
+    end
 
-      it 'returns an array' do
-        expect(described_class.all).to be_an Array
-      end
+    it 'returns an array' do
+      expect(described_class.all).to be_an Array
+    end
 
-      it 'the array contains Achiever::Course::Template objects' do
-        expect(described_class.all.sample).to be_an described_class
+    it 'the array contains Achiever::Course::Template objects' do
+      expect(described_class.all.sample).to be_an described_class
+    end
+  end
+
+  describe '.find_by_activity_code' do
+    before do
+      stub_course_templates
+    end
+
+    context 'when a template exists' do
+      it 'returns the Achiever::Course::Template instance' do
+        expect(described_class.find_by_activity_code('CP228')).to be_an described_class
       end
     end
 
-    describe '#find_by_activity_code' do
-      before do
-        stub_course_templates
+    context 'when a template does not exists' do
+      it 'raises a 404 exception' do
+        expect { described_class.find_by_activity_code('111') }.to raise_error(ActiveRecord::RecordNotFound)
       end
+    end
+  end
 
-      context 'when a template exists' do
-        it 'returns the Achiever::Course::Template instance' do
-          expect(described_class.find_by_activity_code('CP228')).to be_an described_class
-        end
+  describe '.find_many_by_activity_codes' do
+    before do
+      stub_course_templates
+    end
+
+    context 'when templates exist' do
+      it 'returns the Achiever::Course::Template instance' do
+        results = described_class.find_many_by_activity_codes(%w[CP228 CP428])
+        expect(results).to be_an(Array)
+        expect(results).to all(be_an(described_class))
       end
+    end
 
-      context 'when a template does not exists' do
-        it 'raises a 404 exception' do
-          expect { described_class.find_by_activity_code('111') }.to raise_error(ActiveRecord::RecordNotFound)
-        end
+    context 'when template do not exist' do
+      it 'returns an empty array' do
+        expect(described_class.find_many_by_activity_codes(%w[111 222])).to eq([])
       end
     end
   end

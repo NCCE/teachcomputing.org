@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Certificates::CSAcceleratorController do
   let!(:questionnaire) { create(:csa_enrolment_questionnaire, programme: programme) }
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let!(:programme) { create(:cs_accelerator) }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
@@ -46,7 +46,6 @@ RSpec.describe Certificates::CSAcceleratorController do
   describe '#show' do
     context 'when user is logged in' do
       before do
-        programme
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
@@ -95,18 +94,6 @@ RSpec.describe Certificates::CSAcceleratorController do
 
           it 'assigns the correct programme' do
             expect(assigns(:programme)).to eq programme
-          end
-
-          it 'assigns the online achievements' do
-            expect(assigns(:online_achievements)).to include(online_achievement)
-          end
-
-          it 'assigns the face to face achievements' do
-            expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-          end
-
-          it 'assigns the assessments' do
-            expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
           end
 
           it 'redirects to complete_path on completion' do

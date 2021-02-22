@@ -10,7 +10,6 @@ module Certificates
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
       if FeatureFlagService.new.flags[:csa_questionnaire_enabled]
-        puts 'something'
         assign_assessment_and_achievements_v2
       else
         assign_assessment_and_achievements
@@ -58,6 +57,8 @@ module Certificates
       def assign_assessment_and_achievements_v2
         @compulsory_achievement = @programme.compulsory_achievement(current_user)
         @non_compulsory_achievements = @programme.non_compulsory_achievements(current_user)
+
+        @user_programme_pathway = current_user.programme_pathway(@programme)
       end
 
       def online_achievements
