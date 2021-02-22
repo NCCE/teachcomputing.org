@@ -73,6 +73,13 @@ if activity = Activity.find_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53
   end
 end
 
+if activity = Activity.find_by(future_learn_course_uuid: '9a03-414a-ad9f-c0b5a9f347f1')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_one.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_one.id)
+  end
+end
+
 # STEM Learning Courses
 
 group_two = secondary.programme_activity_groupings.find_by(sort_key: 2)
