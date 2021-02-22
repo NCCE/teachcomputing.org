@@ -360,14 +360,14 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
-a = Activity.find_or_create_by(future_learn_course_uuid: '9a03-414a-ad9f-c0b5a9f347f1') do |activity|
+a = Activity.find_or_create_by(future_learn_course_uuid: '8a38adaf-9a03-414a-ad9f-c0b5a9f347f1') do |activity|
   activity.title = 'Teach Computing in Schools: Creating a Curriculum for Ages 11 to 16'
   activity.credit = 20
   activity.slug = 'teach-computing-in-schools-creating-a-curriculum-for-ages-11-to-16'
   activity.category = 'online'
   activity.self_certifiable = false
-  activity.stem_course_template_no = 'f1771a74-b772-eb11-a812-0022481a6e92'
-  activity.future_learn_course_uuid = '9a03-414a-ad9f-c0b5a9f347f1'
+  activity.stem_course_template_no = '6f127935-ab72-eb11-a812-0022481a6e92'
+  activity.future_learn_course_uuid = '8a38adaf-9a03-414a-ad9f-c0b5a9f347f1'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO230'
 end
