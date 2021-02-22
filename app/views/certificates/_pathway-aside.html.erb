@@ -1,14 +1,14 @@
 <div class="ncce-pathway-aside">
   <% if current_user.on_programme_pathway?(@programme) %>
-    <p class="govuk-body">
+    <h2 class="govuk-heading-s">
       Not sure this is the right pathway for you? See what our other pathways include:
-    </p>
+    </h2>
     <ul class="govuk-list ">
-      <%# Need to put a list of the pathways other than the one the user is on %>
-      <li>New to algorithms and programming</li>
-      <li>New to computer systems</li>
-      <li>Advanced GCSE computer science</li>
-      <li>New to computing</li>
+      <% @programme.pathways_excluding(current_user.programme_pathway(@programme)).ordered.each do |pathway| %>
+        <li>
+          <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
+        </li>
+      <% end %>
     </ul>
   <% else %>
     <h2 class="govuk-heading-s">

@@ -200,4 +200,15 @@ RSpec.describe Programme, type: :model do
       end
     end
   end
+
+  describe '#pathways_excluding' do
+    it 'returns the pathways except for the pathway argument' do
+      programme = create(:programme)
+      p1 = create(:pathway, programme: programme)
+      p2 = create(:pathway, programme: programme)
+      p3 = create(:pathway, programme: programme)
+
+      expect(programme.pathways_excluding(p2)).to match_array([p1, p3])
+    end
+  end
 end
