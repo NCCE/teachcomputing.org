@@ -82,7 +82,7 @@ GEM
       execjs
     awesome_print (1.8.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.426.0)
+    aws-partitions (1.427.0)
     aws-sdk-core (3.112.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -91,7 +91,7 @@ GEM
     aws-sdk-kms (1.42.0)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.88.0)
+    aws-sdk-s3 (1.88.1)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -240,7 +240,7 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.8)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     ims-lti (1.2.4)
@@ -293,7 +293,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.1104)
+    mime-types-data (3.2021.0212)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
@@ -357,6 +357,8 @@ GEM
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-mini-profiler (2.3.1)
+      rack (>= 1.2.0)
     rack-protection (2.1.0)
       rack
     rack-proxy (0.6.5)
@@ -454,7 +456,7 @@ GEM
     rspec-support (3.10.2)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.9.1)
+    rubocop (1.10.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -483,17 +485,6 @@ GEM
       pry (~> 0.13.0)
       tty-screen (~> 0.8.1)
     rubyzip (2.3.0)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -546,7 +537,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.2)
+    sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.2)
@@ -566,8 +557,6 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
@@ -653,6 +642,7 @@ DEPENDENCIES
   puma (~> 3.12)
   rack-attack (~> 5.4.2)
   rack-cors
+  rack-mini-profiler (~> 2.3.1)
   rails (~> 6.1)
   rails-controller-testing
   redis-rails (~> 5.0.2)
@@ -667,7 +657,6 @@ DEPENDENCIES
   rubocop-rspec
   ruby-debug-ide
   ruby_jard
-  sass-rails (~> 5.0)
   selenium-webdriver (~> 3.142.7)
   sentry-raven (~> 3.0)
   shoulda-callback-matchers
@@ -681,11 +670,10 @@ DEPENDENCIES
   statesman (~> 4.1.0)
   turbolinks (~> 5)
   tzinfo-data
-  uglifier (>= 1.3.0)
   vcr
   web-console (>= 3.3.0)
   webmock
-  webpacker (~> 5.0)
+  webpacker (~> 5.x)
   wicked (~> 1.3.4)
 
 RUBY VERSION

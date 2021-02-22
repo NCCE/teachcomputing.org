@@ -7,8 +7,8 @@
     <div class="rating_page" data-target="rating.page">
       <p class="govuk-body curriculum__rating--text">Did you find these resources useful?</p>
       <p class="curriculum__rating--thumb">
-        <%= link_to(image_tag("/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
-        <%= link_to(image_tag("/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
+        <%= link_to(image_pack_tag("media/images/resources/thumb_up.svg"), send(path, :positive, id, user_id), :alt => "thumb up", :class => "curriculum__rating--thumb-up", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
+        <%= link_to(image_pack_tag("media/images/resources/thumb_down.svg"), send(path, :negative, id, user_id), :alt => "thumb down", :class => "curriculum__rating--thumb-down", :remote => true, :data => { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }) %>
       </p>
     </div>
     <div class="rating_page rating_page--rows" data-target="rating.page">

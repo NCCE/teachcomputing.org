@@ -43,5 +43,5 @@ if [ $OK_TO_PROCEED = 1 ]; then
 else
   echo "failed"
   echo "- Check the logs:"
-  docker-compose logs
+  docker-compose logs --tail 50
 fi

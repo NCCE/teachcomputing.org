@@ -1,7 +1,7 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
-  source_path: app/javascript
+  source_path: app/webpacker
   source_entry_path: packs
   public_root_path: public
   public_output_path: packs
@@ -10,12 +10,12 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  # additional_paths: ["app/assets"]
+  additional_paths: ["app/webpacker/javascript", "app/webpacker/stylesheets"]
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
-  # Don't extract and emit a css file
+  # Extract and emit a css file
   extract_css: true
 
   static_assets_extensions:
@@ -40,7 +40,6 @@ default: &default
     - .css
     - .module.sass
     - .module.scss
-    - .module.css
     - .png
     - .svg
     - .gif
@@ -53,8 +52,10 @@ development:
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
-    https: false
-    host: localhost
+    historyApiFallback: true
+    publicPath: "/"
+    https: true
+    host: webpack
     port: 3035
     public: localhost:3035
     hmr: true
@@ -63,9 +64,9 @@ development:
     overlay: true
     compress: true
     disable_host_check: true
-    use_local_ip: false
+    use_local_ip: true
     quiet: false
-    pretty: false
+    pretty: true
     headers:
       "Access-Control-Allow-Origin": "*"
     watch_options:
@@ -74,9 +75,6 @@ development:
 test:
   <<: *default
   compile: true
-
-  # Extract and emit a css file
-  extract_css: true
 
   # Compile test packs to a separate directory
   public_output_path: packs-test

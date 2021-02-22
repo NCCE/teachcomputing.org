@@ -1,8 +1,13 @@
 const { environment } = require('@rails/webpacker')
 
-// resolve-url-loader must be used before sass-loader
-environment.loaders.get('sass').use.splice(-1, 0, {
-  loader: 'resolve-url-loader'
-});
+// Get the actual sass-loader config
+const sassLoader = environment.loaders.get('sass')
+const sassLoaderConfig = sassLoader.use.find(function (element) {
+  return element.loader == 'sass-loader'
+})
+
+// Use Dart-implementation of Sass (default is node-sass)
+const options = sassLoaderConfig.options
+options.implementation = require('sass')
 
 module.exports = environment
