@@ -1,10 +1,14 @@
 puts 'Creating Pathways for CSA'
 
+prog_id = Programmes::CSAccelerator.find_by(slug: 'cs-accelerator').id
+
 pathway = Pathway.find_or_create_by(slug: 'advanced-gcse-computer-science') do |q|
   q.title = 'Advanced GCSE Computer Science'
   q.slug = 'advanced-gcse-computer-science'
   q.range = 0..0
   q.pdf_link = 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf'
+  q.programme_id = prog_id
+  q.order = 4
 end
 
 # main
@@ -68,6 +72,8 @@ pathway = Pathway.find_or_create_by(slug: 'prepare-to-teach-gcse-computer-scienc
   q.slug = 'prepare-to-teach-gcse-computer-science'
   q.range = 2..10
   q.pdf_link = 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf'
+  q.programme_id = prog_id
+  q.order = 1
 end
 
 # main
@@ -136,6 +142,8 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') d
   q.slug = 'new-to-algorithms-and-programming'
   q.range = 0..0
   q.pdf_link = 'https://static.teachcomputing.org/pathways/03_New_to_algorithms_and_programming.pdf'
+  q.programme_id = prog_id
+  q.order = 2
 end
 
 # main
@@ -204,6 +212,8 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-computing') do |q|
   q.slug = 'new-to-computing'
   q.range = 0..0
   q.pdf_link = 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf'
+  q.programme_id = prog_id
+  q.order = 5
 end
 
 # main
@@ -283,6 +293,8 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-computer-systems') do |q|
   q.slug = 'new-to-computer-systems'
   q.range = 0..0
   q.pdf_link = 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf'
+  q.programme_id = prog_id
+  q.order = 3
 end
 
 # main
