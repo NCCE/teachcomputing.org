@@ -106,7 +106,8 @@ Rails.application.routes.draw do
                                   defaults: { page_slug: 'accessibility-statement' }
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
-  get '/careers-week', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers-week', to: redirect('/careers')
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
