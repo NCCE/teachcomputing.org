@@ -8,12 +8,12 @@ function ready(fn) {
 
 function initialiseSections(className) {
 	const headingToggleClass = className + '--closed'
-	const sectionToggleClass = className + '-section--closed'
+	const sectionToggleClass = className + '-section--visible'
 	// Get all the <h2> headings
 	const headings = document.querySelectorAll('.' + className)
 	Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
 
-		heading.children[1].classList.add(sectionToggleClass)
+		// heading.children[1].classList.add(sectionToggleClass)
 
 		heading.classList.add(headingToggleClass)
 
@@ -25,6 +25,7 @@ function initialiseSections(className) {
 			let expanded = btn.getAttribute('aria-expanded') === 'true' || false
 
 			heading.classList.toggle(headingToggleClass)
+			console.log("click")
 
 			// Switch the state
 			btn.setAttribute('aria-expanded', !expanded)
