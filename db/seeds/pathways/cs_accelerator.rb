@@ -88,12 +88,12 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
+activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
 end
 
-activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
+activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
@@ -127,12 +127,12 @@ end
 
 # alternative online
 
-activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
+activity = Activity.find_by(future_learn_course_uuid: 'ffc6793d-5643-40c8-893a-0164844ca62f')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4, supplementary: true)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
+activity = Activity.find_by(future_learn_course_uuid: 'd9fe6126-298f-48ed-8be3-b82e1c473566')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, supplementary: true)
 end
@@ -233,17 +233,17 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
+activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
+activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
+activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6)
 end
