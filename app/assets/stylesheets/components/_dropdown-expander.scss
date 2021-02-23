@@ -12,9 +12,7 @@
   box-shadow: 0 0 5px $box-shadow;
   display: none;
   left: 0;
-  margin-top: 0.5rem;
-  min-width: 5rem;
-  // opacity: 0;
+  min-width: 10rem;
   padding: 1rem;
   position: absolute;
   transition: all 0.5s ease;
@@ -34,5 +32,9 @@
 
   &:last-child {
 		padding-bottom: 0;
-	}
+  }
+  
+  a {
+    text-decoration: none;
+  }
 }
