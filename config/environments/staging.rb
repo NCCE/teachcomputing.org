@@ -132,4 +132,7 @@ Rails.application.configure do
                        secure: true,
                        httponly: true,
                        expire_after: 48.hours
+
+  config.hosts << /([a-z0-9.])+\.herokuapp\.com/
+  config.hosts << 'staging.teachcomputing.org'
 end
