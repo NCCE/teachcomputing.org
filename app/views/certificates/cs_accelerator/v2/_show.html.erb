@@ -19,6 +19,9 @@
               locals: { pathway: @user_programme_pathway } %>
           </div>
 
+          <div class="govuk-body ncce-activity-list ncce-activity-list--programme" role="list">
+            <%= render partial: 'certificates/cs_accelerator/v2/supplementary-courses', locals: { pathway: @user_programme_pathway } %>
+          </div>
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'components/bursary-aside' %>

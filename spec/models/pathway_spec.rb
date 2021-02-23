@@ -52,4 +52,22 @@ RSpec.describe Pathway, type: :model do
       expect(pathway.recommended_courses).to match_array(templates.slice(0, 2))
     end
   end
+
+  describe '#supplementary_courses' do
+    it 'returns the course data for recommended_activities' do
+      templates = [
+        build(:achiever_course_template, activity_code: 'A001'),
+        build(:achiever_course_template, activity_code: 'A002'),
+        build(:achiever_course_template, activity_code: 'A003'),
+        build(:achiever_course_template, activity_code: 'A004')
+      ]
+
+      allow(Achiever::Course::Template).to receive(:all).and_return(templates)
+      create(:pathway_activity, pathway: pathway, supplementary: true,
+                                activity: create(:activity, stem_activity_code: 'A003'))
+      create(:pathway_activity, pathway: pathway, supplementary: true,
+                                activity: create(:activity, stem_activity_code: 'A004'))
+      expect(pathway.supplementary_courses).to match_array(templates.slice(2, 2))
+    end
+  end
 end

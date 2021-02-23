@@ -18,6 +18,7 @@
 @import 'components/_header.scss';
 @import 'components/_tags.scss';
 @import 'components/_flash.scss';
+@import 'components/_flex.scss';
 @import 'components/_button.scss';
 @import 'components/_form-fields.scss';
 @import 'components/_aside.scss';
@@ -33,7 +34,6 @@
 @import 'components/pages/home/_hero.scss';
 @import 'components/pages/_careers-week.scss';
 @import 'components/pages/certification/_cs-accelerator.scss';
-@import 'components/pages/certification/_csa-pathway-prompt.scss';
 @import 'components/pages/certification/_hero.scss';
 @import 'components/pages/certification/_pathway.scss';
 @import 'components/pages/_curriculum.scss';
@@ -45,7 +45,7 @@
 @import 'components/courses/_landing-page.scss';
 @import 'components/dashboard/_certification.scss';
 @import 'components/dashboard/_activity-list.scss';
-@import 'components/dashboard/_recommended-courses.scss';
+@import 'components/dashboard/_pathway-courses.scss';
 @import 'components/programmes/_diagnostic.scss';
 @import 'components/programmes/_view-certificate.scss';
 @import 'components/programmes/_bursary-info.scss';

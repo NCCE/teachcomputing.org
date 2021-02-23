@@ -17,4 +17,9 @@ class Pathway < ApplicationRecord
     activity_codes = recommended_activities.map { |pa| pa.activity.stem_activity_code }
     Achiever::Course::Template.find_many_by_activity_codes(activity_codes)
   end
+
+  def supplementary_courses
+    activity_codes = supplementary_activities.map { |pa| pa.activity.stem_activity_code }
+    Achiever::Course::Template.find_many_by_activity_codes(activity_codes)
+  end
 end
