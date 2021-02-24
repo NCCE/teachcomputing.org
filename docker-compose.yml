@@ -50,6 +50,7 @@ services:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
       - WEBPACKER_DEV_SERVER_HOST=webpack
+      - DOCKER_LOGS=true
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     networks:

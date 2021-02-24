@@ -92,7 +92,6 @@
 
 .ncce-hero {
   background-color: $hero-goldenrod;
-  background-image: url(/images/home/polka-yellow-bg.svg);
   overflow: hidden;
 }
 
@@ -101,8 +100,6 @@
 }
 
 .ncce-hero__image {
-  -webkit-mask-image: url('/images/home/squiggle-shape.svg');
-  mask-image: url('/images/home/squiggle-shape.svg');
   -webkit-mask-size: cover;
   mask-size: cover;
   position: relative;
@@ -165,7 +162,6 @@
   }
 
   @include govuk-media-query($from: 1024px) {
-    background-image: url('/images/home/splash-pink.svg');
     background-position: 11.5rem 0.15rem;
 
     background-repeat: no-repeat;

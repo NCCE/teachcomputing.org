@@ -1366,7 +1366,7 @@
 }
 
 .govuk-button--start {
-  background-image: url('/assets/images/icon-pointer.png');
+  background-image: url('../images/icon-pointer.png');
   background-position: 100% 50%;
   background-repeat: no-repeat;
   font-size: 18px;
@@ -1397,7 +1397,7 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .govuk-button--start {
-    background-image: url('/assets/images/icon-pointer-2x.png');
+    background-image: url('../images/icon-pointer-2x.png');
     background-size: 30px 19px;
   }
 }
@@ -2575,7 +2575,7 @@
 }
 
 .govuk-footer__copyright-logo {
-  background-image: url('/assets/images/govuk-crest.png');
+  background-image: url('../images/govuk-crest.png');
   background-position: 50% 0%;
   background-repeat: no-repeat;
   background-size: 125px 102px;
@@ -2589,7 +2589,7 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .govuk-footer__copyright-logo {
-    background-image: url('/assets/images/govuk-crest-2x.png');
+    background-image: url('../images/govuk-crest-2x.png');
   }
 }
 
@@ -6660,7 +6660,7 @@ a:not([class]):active {
 
 .ncce-hero {
   background-color: #fad160;
-  background-image: url(/images/home/polka-yellow-bg.svg);
+  background-image: url(../images/home/polka-yellow-bg.svg);
   overflow: hidden;
 }
 
@@ -6669,8 +6669,8 @@ a:not([class]):active {
 }
 
 .ncce-hero__image {
-  -webkit-mask-image: url('/images/home/squiggle-shape.svg');
-  mask-image: url('/images/home/squiggle-shape.svg');
+  -webkit-mask-image: url('../images/home/squiggle-shape.svg');
+  mask-image: url('../images/home/squiggle-shape.svg');
   -webkit-mask-size: cover;
   mask-size: cover;
   position: relative;
@@ -6739,7 +6739,7 @@ a:not([class]):active {
 
 @media (min-width: 64em) {
   .ncce-hero__heading {
-    background-image: url('/images/home/splash-pink.svg');
+    background-image: url('../images/home/splash-pink.svg');
     background-position: 11.5rem 0.15rem;
     background-repeat: no-repeat;
     background-size: 7.5rem;

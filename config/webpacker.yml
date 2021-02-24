@@ -10,7 +10,12 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: ["app/webpacker/javascript", "app/webpacker/stylesheets"]
+  additional_paths:
+    [
+      "app/webpacker/javascript",
+      "app/webpacker/stylesheets",
+      "app/webpacker/pdf",
+    ]
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
@@ -31,6 +36,8 @@ default: &default
     - .ttf
     - .woff
     - .woff2
+    - .ttf
+    - .pdf
 
   extensions:
     - .mjs

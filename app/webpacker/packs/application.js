@@ -23,8 +23,9 @@ import "../javascript/cookie_notice";
 import "../javascript/courses";
 import "../javascript/ihavedonethis";
 
-// Images
-const images = require.context('../images', true);
-const imagePath = (name) => images(name, true);
+// Media
+require.context('../fonts', true);
+require.context('../images', true);
+require.context('../pdf', true);
 
 Rails.start();

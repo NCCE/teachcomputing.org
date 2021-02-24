@@ -1,6 +1,6 @@
 <% meta_tag :title, @unit.title %>
 <% meta_tag :description, @unit.description %>
-<% meta_tag :image, image_url('media/images/curriculum.png', skip_pipeline: true) %>
+<% meta_tag :image, asset_pack_path('media/images/curriculum.png') %>
 <div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
