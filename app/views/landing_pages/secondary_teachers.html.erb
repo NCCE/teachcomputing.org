@@ -147,7 +147,7 @@
 
             <% unless current_user && @secondary_certificate.user_enrolled?(current_user) %>
               <p class="govuk-body govuk-!-margin-bottom-0">
-                <strong><%= link_to 'Find out more', secondary_certificate_path, class: 'ncce-link' %></strong>
+                <strong><%= link_to 'Find out more', secondary_path, class: 'ncce-link' %></strong>
               </p>
             <% end %>
           </div>
