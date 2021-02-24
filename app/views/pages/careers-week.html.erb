@@ -1,15 +1,15 @@
-<% meta_tag :title, 'National Careers Week: think, learn, compute - Teach Computing' %>
-<% meta_tag :description, 'National Careers Week takes place from 2-7 March 2020 and celebrates the importance of good careers education in schools and colleges.' %>
+<% meta_tag :title, 'Careers in computing' %>
+<% meta_tag :description, 'With the demand for digital skills growing, there has never been a more important time to prepare young people for their future' %>
 <% meta_tag :url, request.original_url %>
 <% meta_tag :image, image_url('/images/careers-week/hero.jpg', skip_pipeline: true) %>
-<% meta_tag :image_alt, 'National Careers Week: think, learn, compute - Teach Computing' %>
+<% meta_tag :image_alt, 'Careers in computing' %>
 <div class="deep-cerulean-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="text-photo-hero white-bg">
         <div class="text-photo-hero__block--text">
-          <h1 class="govuk-heading-l">National Careers Week: think, learn, compute</h1>
-          <p class="govuk-body-l">National Careers Week takes place from 2-7 March 2020 and celebrates the importance of good careers education in schools and colleges.</p>
+          <h1 class="govuk-heading-l">Careers in computing</h1>
+          <p class="govuk-body-l">With the demand for digital skills growing, there has never been a more important time to prepare young people for their future.</p>
         </div>
         <div class="text-photo-hero__block--photo">
           <%= image_pack_tag 'media/images/careers-week/hero.jpg', alt: '' %>
@@ -22,8 +22,14 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">With the demand for computing skills growing, there has never been a more important time to ensure young people are equipped for the future workplace. This National Careers Week, we’re raising awareness of how computational thinking can empower us as individuals and as a society.</p>
-        <p class="govuk-body">We spoke to six professionals working in non-stereotypical roles and industries which rely on computing skills to show how essential it is to have a foundational knowledge of the subject, regardless of the career path you decide to follow.</p>
+        <p class="govuk-body">Gain inspiration from our hand-picked selection of resources and stories, to support your students to better understand how digital skills will benefit a wide range of future career choices and contribute to Gatsby benchmarks 4 and 5.</p>
+        <h2 class="govuk-heading-m">Useful resources</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>access a selection of <%= link_to 'resources, videos and job profiles', 'https://www.stem.org.uk/stem-careers/computing', class: 'ncce-link' %> on the STEM Learning website to help you to link your computing curriculum to careers.</li>
+            <li>explore how volunteer <%= link_to 'STEM Ambassadors', 'https://teachcomputing.org/courses/CP446/enriching-secondary-computing-with-stem-ambassadors', class: 'ncce-link' %> can support your secondary students to learn about careers linked to computing and digital skills.</li>
+            <li>develop the skills needed to hold relevant and exciting discussions in the classroom with our <%= link_to 'Impact of technology: how to lead classroom discussions course', 'https://teachcomputing.org/courses/CO215/impact-of-technology-how-to-lead-classroom-discussions', class: 'ncce-link' %>.</li>
+            <li>find ideas for linking to the wider curriculum in the <%= link_to 'STEM careers guide for teachers', 'https://www.stem.org.uk/resources/elibrary/resource/482786/teachers-guide-linking-careers-stem-curriculum', class: 'ncce-link' %> or <%= link_to 'Linking curriculum learning to STEM careers', 'https://www.futurelearn.com/courses/linking-stem-curriculum-learning-to-careers?utm_campaign=ncce_linking_stem_curriculum_learning_to_careers&utm_medium=link&utm_source=stemcareers', class: 'ncce-link' %> course.</li>
+          </ul>
       </div>
     </div>
   </div>
@@ -31,8 +37,31 @@
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper--xl">
-      <h2 class="govuk-heading-m">Meet the professionals</h2>
+      <h2 class="govuk-heading-m">Meet our professionals</h2>
+      <p class=govuk-body>Read about the experiences of these professionals working in non-traditional roles and industries which rely on computing skills and show your students how essential it is to have a foundational knowledge of the subject, regardless of the career path you decide to follow.</p>
       <div class="careers-week__testimonials">
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“I loved studying computer science. It’s so exciting, and being in the tech field means that I am constantly surrounded by optimism and growth. You have complete control over what you want to create and build.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/nabilah.jpg', alt: 'Nabilah Joarder', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Nabilah Joarder</strong><br>Graduate Software Developer</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Nabilah’s interview', 'https://isaaccomputerscience.org/pages/cs_journeys_nabilah', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="govuk-body-s testimonial__text">“I would love women to realise that they know so much more than they think they do. An engineer is not just someone who can take apart a clock and put it back together, or a man who builds bridges and roads. If you follow your interests and have confidence in your abilities, you will be an excellent engineer.”</p>
+          <div class="testimonial__bio">
+            <%= image_tag '/images/careers-week/daisy.jpg', alt: 'Daisy Tyrer', class: 'testimonial__image' %>
+            <p class="govuk-body-s">
+              <strong>Daisy Tyrer</strong><br>Energy Consultant<br>Element Energy</p>
+            <p class="govuk-body-s testimonial__bio-cell--span-2">
+              <strong><%= link_to 'Read Daisy’s interview', 'https://isaaccomputerscience.org/pages/cs_journeys_daisy', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+            </p>
+          </div>
+        </div>
         <div class="testimonial">
           <p class="govuk-body-s testimonial__text">“I can’t think of any other job that would present me with the opportunity to be involved in the delivery of technologies, ranging from airfield telecommunications and aircraft airbridges, to the latest generation security screening equipment.”</p>
           <div class="testimonial__bio">
