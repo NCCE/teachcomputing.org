@@ -62,7 +62,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rescue'
-  gem 'rack-mini-profiler', '~> 2.3.1'
   gem 'reek'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 4.0'
