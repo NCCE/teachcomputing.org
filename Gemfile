@@ -62,7 +62,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rescue'
-  gem 'rack-mini-profiler', '~> 2.3.1', require: false
   gem 'reek'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 4.0'
@@ -81,6 +80,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'rack-mini-profiler', '~> 2.3.1', require: false
 end
 
 group :test do
