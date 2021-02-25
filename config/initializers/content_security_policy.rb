@@ -10,7 +10,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.img_src     :self, :https, :data, 'view.vzaar.com', 'blog.teachcomputing.org', 'futurelearn-assets.raspberrypi.org'
   policy.media_src   :self, :https, :data, 'view.vzaar.com', 'download.vzaar.com', 'futurelearn-assets.raspberrypi.org'
   policy.object_src  :none
-  policy.script_src  :self, :https, :data, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
+  policy.script_src  :self, :https, :data, :unsafe_inline, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
   policy.style_src   :self, :https, :unsafe_inline
 
   policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035' if Rails.env.development?
