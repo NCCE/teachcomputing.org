@@ -29,3 +29,7 @@ require.context('../images', true);
 require.context('../pdf', true);
 
 Rails.start();
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.body.className = `${document.body.className} js-enabled`.trim();
+});

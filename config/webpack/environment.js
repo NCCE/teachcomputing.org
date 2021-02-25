@@ -1,13 +1,17 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
 // Get the actual sass-loader config
-const sassLoader = environment.loaders.get('sass')
+const sassLoader = environment.loaders.get('sass');
 const sassLoaderConfig = sassLoader.use.find(function (element) {
-  return element.loader == 'sass-loader'
+  return element.loader == 'sass-loader';
 })
 
 // Use Dart-implementation of Sass (default is node-sass)
-const options = sassLoaderConfig.options
-options.implementation = require('sass')
+const options = sassLoaderConfig.options;
+options.implementation = require('sass');
 
-module.exports = environment
+// Add dotenv
+const Dotenv = require('dotenv-webpack');
+environment.plugins.append('Dotenv', new Dotenv());
+
+module.exports = environment;

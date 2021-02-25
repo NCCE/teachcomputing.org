@@ -33,8 +33,9 @@
   <%= csp_meta_tag %>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'govuk-frontend', 'data-turbolinks-track': 'reload' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
@@ -51,19 +52,14 @@
 
 <body class="govuk-template__body ncce-template__body">
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
   <% end %>
-  <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
 
   <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
 
   <%= yield :content %>
-
-  <%= javascript_tag nonce: true do -%>
-      window.GOVUKFrontend.initAll()
-  <% end -%>
 </body>
 </html>

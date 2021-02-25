@@ -37,9 +37,9 @@
   <%= csp_meta_tag %>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
-  <%= stylesheet_pack_tag 'application', media: 'all' %>
-  <%= javascript_pack_tag 'application' %>
-  <%= javascript_pack_tag 'govuk-frontend' %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'govuk-frontend', 'data-turbolinks-track': 'reload' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
@@ -61,7 +61,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
   <% end %>
-  <%= javascript_tag nonce: true do -%>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');<% end -%>
 
   <%= render 'components/header' %>
   <%= render 'components/notice' %>
