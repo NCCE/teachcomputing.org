@@ -41,7 +41,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', nonce: true %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
+  <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
     <%= javascript_tag nonce: true do -%>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
