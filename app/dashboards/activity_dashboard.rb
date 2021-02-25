@@ -23,8 +23,8 @@ class ActivityDashboard < Administrate::BaseDashboard
     description: Field::Text,
     self_verification_info: Field::Text,
     uploadable: Field::Boolean,
-    stem_activity_code: Field::String
-    remote_delivered_cpd: Field::Boolean,
+    stem_activity_code: Field::String,
+    remote_delivered_cpd: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
