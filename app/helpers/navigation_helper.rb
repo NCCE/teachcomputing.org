@@ -33,7 +33,6 @@ module NavigationHelper
 				{text: "About the NCCE", link: about_path, label: "About the NCCE" },
 				{text: "News", link: 'https://blog.teachcomputing.org/', label: "News" },
 				{text: "Get involved", link: get_involved_path, label: "Get involved" },
-				{text: "Reaserch centre", link: '/get-involved', label: "Reaserch centre" },
 				{text: "Gender Balance research", link: gender_balance_path, label: "Gender Balance research" },
 				{text: "Subject practitioners", link: '/subject-practitioners', label: "Subject practitioners" }
 			]}
