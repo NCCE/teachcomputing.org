@@ -16,7 +16,7 @@ Rails.application.config.content_security_policy do |policy|
     policy.default_src :self, :https, :unsafe_eval
     policy.connect_src :self, :https, 'http://localhost:3035', 'wss://localhost:3035'
   else
-    policy.script_src  :self, :https, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
+    policy.script_src  :self, :https, :data, :unsafe_inline, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
     policy.default_src :self, :https, 'youtube.com', 'www.youtube.com'
   end
 end
