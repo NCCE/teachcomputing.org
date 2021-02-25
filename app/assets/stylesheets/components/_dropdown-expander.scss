@@ -12,15 +12,12 @@
   box-shadow: 0 0 5px $box-shadow;
   display: none;
   left: 0;
+  width: -webkit-fill-available;
   min-width: 10rem;
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   position: absolute;
   transition: all 0.5s ease;
   visibility: hidden;
-
-  &:last-child {
-  	right: 0 !important;
-  }
 }
 
 .dropdown__expander-content-item {
@@ -36,5 +33,11 @@
   
   a {
     text-decoration: none;
+  }
+
+  a:hover,
+  a:focus-within
+   {
+    text-decoration: underline;
   }
 }
