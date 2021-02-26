@@ -40,4 +40,16 @@ class CSADash
   def other_programme_pathways_for_user
     @other_programme_pathways_for_user ||= @programme.pathways_excluding(user_programme_pathway).ordered
   end
+
+  def recommended_activities_for_user
+    return @recommended_activities_for_user if defined? @recommended_activities_for_user
+
+    @recommended_activities_for_user = user_programme_pathway.recommended_activities_for_user(@user)
+  end
+
+  def supplementary_activities_for_user
+    return @supplementary_activities_for_user if defined? @supplementary_activities_for_user
+
+    @supplementary_activities_for_user = user_programme_pathway.supplementary_activities_for_user(@user)
+  end
 end

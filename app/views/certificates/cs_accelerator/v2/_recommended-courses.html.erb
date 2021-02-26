@@ -4,7 +4,7 @@
       <strong>Recommended courses</strong> based on your pathway.
     </p>
 
-    <% pathway.recommended_activities.each do |pa| %>
+    <% recommended_activities.each do |pa| %>
       <div class="ncce-pathway-courses__course">
         <p>
           <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' %>

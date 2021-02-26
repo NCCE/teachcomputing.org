@@ -19,17 +19,23 @@
               user_completed_non_compulsory_achievement: @csa_dash.user_completed_non_compulsory_achievement?,
               non_compulsory_achievements: @csa_dash.non_compulsory_achievements
             } %>
-            <%= render partial: 'certificates/cs_accelerator/v2/recommended-courses', locals: { pathway: @csa_dash.user_programme_pathway } %>
+
+          <%= render partial: 'certificates/cs_accelerator/v2/recommended-courses', locals: {
+            pathway: @csa_dash.user_programme_pathway,
+            recommended_activities: @csa_dash.recommended_activities_for_user
+          } %>
           </div>
 
           <div class="govuk-body ncce-activity-list ncce-activity-list--programme">
-            <%= render partial: 'certificates/cs_accelerator/v2/supplementary-courses', locals: { pathway: @csa_dash.user_programme_pathway } %>
+            <%= render partial: 'certificates/cs_accelerator/v2/supplementary-courses', locals: {
+              pathway: @csa_dash.user_programme_pathway ,
+              supplementary_activities: @csa_dash.supplementary_activities_for_user
+            } %>
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'components/bursary-aside' %>
           <%= render partial: 'certificates/pathway-aside', locals: {
-            foo: 'asdf',
             other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
             user_pathway: @csa_dash.user_programme_pathway,
           } %>

@@ -20,7 +20,7 @@
   <p class="govuk-body">Want to go the extra mile? Here are some <strong>additional courses</strong></p>
 
   <div data-target="supplementary-courses.expander" class="expander">
-    <% pathway.supplementary_activities.each do |sa| %>
+    <% supplementary_activities.each do |sa| %>
       <div class="ncce-pathway-courses__course">
         <p>
           <%= link_to sa.title, course_path(id: sa.stem_activity_code, name: sa.slug), class: 'ncce-link' %>
