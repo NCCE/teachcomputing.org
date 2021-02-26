@@ -744,8 +744,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '7ab53294-7a6c-eb11-a812
   activity.stem_activity_code = 'CP308'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(stem_course_template_no: '5b1b5967-7c6c-eb11-a812-000d3a872800') do |activity|
   activity.title = 'New subject leaders of secondary computing (remote)'
   activity.credit = 10

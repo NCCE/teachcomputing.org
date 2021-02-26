@@ -131,4 +131,9 @@ Rails.application.configure do
                        secure: true,
                        httponly: true,
                        expire_after: 48.hours
+
+  config.hosts = [
+  'teachcomputing.org',
+  '.teachcomputing.org'
+  ]
 end

@@ -23,7 +23,8 @@ class ActivityDashboard < Administrate::BaseDashboard
     description: Field::Text,
     self_verification_info: Field::Text,
     uploadable: Field::Boolean,
-    stem_activity_code: Field::String
+    stem_activity_code: Field::String,
+    remote_delivered_cpd: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -53,6 +54,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     self_verification_info
     uploadable
     stem_activity_code
+    remote_delivered_cpd
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -72,6 +74,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     self_verification_info
     uploadable
     stem_activity_code
+    remote_delivered_cpd
   ].freeze
 
   # COLLECTION_FILTERS
