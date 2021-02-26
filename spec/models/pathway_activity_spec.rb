@@ -12,4 +12,5 @@ RSpec.describe PathwayActivity, type: :model do
   it { is_expected.to delegate_method(:slug).to(:activity).as(:slug) }
   it { is_expected.to delegate_method(:category).to(:activity).as(:category) }
   it { is_expected.to delegate_method(:online?).to(:activity).as(:online?) }
+  it { is_expected.to delegate_method(:remote_delivered_cpd?).to(:activity).as(:remote_delivered_cpd?) }
 end

@@ -5,10 +5,10 @@
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator Programme!</h2>
           <div class="govuk-body-m">
-            To unlock our test and get your certificate you’ll need to take at
-            least one face to face or remote course, and one further CSA course.
-            But we encourage you to take as many courses as you need to gain the
-            subject knowledge to confidently teach computer science.
+            To access our test and get your certificate, you’ll need to complete
+            at least one face to face or remote course, and one additional CS
+            Accelerator course. But we encourage you to complete as many courses
+            as you need to gain the subject knowledge to confidently teach computer science.
           </div>
 
           <%= render partial: 'certificates/cs_accelerator/v2/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway }%>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render 'components/bursary-aside' %>
+          <%= render 'certificates/cs_accelerator/v2/bursary-aside' %>
           <%= render partial: 'certificates/pathway-aside', locals: {
             other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
             user_pathway: @csa_dash.user_programme_pathway,
