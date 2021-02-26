@@ -5,15 +5,15 @@ module ActivitiesHelper
 
   def activity_type(activity)
     return 'Online' if activity.online?
+    return 'Remote' if activity.remote_delivered_cpd?
 
-    # TODO: make this handle remote
     'Face to face'
   end
 
   def activity_icon_class(activity)
     return 'icon-online' if activity.online?
+    return 'icon-remote' if activity.remote_delivered_cpd?
 
-    # TODO: make this handle remote
     'icon-map-pin'
   end
 end
