@@ -26,7 +26,7 @@ import "../javascript/ihavedonethis";
 // Media
 require.context('../fonts', true);
 require.context('../images', true);
-require.context('../pdf', true);
+// require.context('../pdf', true);
 
 Rails.start();
 
