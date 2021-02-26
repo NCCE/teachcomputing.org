@@ -1,13 +1,13 @@
 <div class="bordered-card">
-  <% if @user_programme_pathway %>
+  <% if user_programme_pathway %>
     <p class="govuk-body">
       Based on your answers to our enrolment questionnaire, our suggested pathway is: 
     </p>
     <div class="ncce-flex__space-between">
       <span class="govuk-body">
-        <strong><%= @user_programme_pathway.title %></strong>
+        <strong><%= user_programme_pathway.title %></strong>
       </span>
-      <%= link_to 'Pathway PDF', @user_programme_pathway.pdf_link, class: 'govuk-body ncce-link' %>
+      <%= link_to 'Pathway PDF', user_programme_pathway.pdf_link, class: 'govuk-body ncce-link' %>
     </div>
   <% else %>
     <p class="govuk-body">
@@ -22,7 +22,7 @@
   <% end %>
 </div>
 
-<% if @user_programme_pathway %>
+<% if user_programme_pathway %>
   <p class="govuk-body">
     To help you get started we’ve made some course recommendations for you.
   </p>

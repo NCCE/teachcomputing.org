@@ -3,13 +3,6 @@
     <h2 class="govuk-heading-s">
       Not sure this is the right pathway for you? See what our other pathways include:
     </h2>
-    <ul class="govuk-list ">
-      <% @programme.pathways_excluding(user_pathway).ordered.each do |pathway| %>
-        <li>
-          <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
-        </li>
-      <% end %>
-    </ul>
   <% else %>
     <h2 class="govuk-heading-s">
       Learning pathways for teachers
@@ -18,12 +11,12 @@
       Are you an aspiring computing teacher or are you unsure about your level of experience?
       Our learning pathways will help you to get started and offer a structured route through the programme:
     </p>
-    <ul class="govuk-list govuk-body-s">
-      <% @programme.pathways.ordered.each do |pathway| %>
-        <li>
-          <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
-        </li>
-      <% end %>
-    </ul>
   <% end %>
+  <ul class="govuk-list ">
+    <% other_programme_pathways_for_user.each do |pathway| %>
+      <li>
+        <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
+      </li>
+    <% end %>
+  </ul>
 </div>

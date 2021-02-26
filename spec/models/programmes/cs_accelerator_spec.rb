@@ -322,4 +322,43 @@ RSpec.describe Programmes::CSAccelerator do
       end
     end
   end
+
+  describe '#user_completed_non_compulsory_achievement?' do
+    context 'when user has no achievements' do
+      it 'returns false' do
+        expect(programme.user_completed_non_compulsory_achievement?(user)).to eq(false)
+      end
+    end
+
+    context 'when user has no complete non compulsory achievement' do
+      it 'returns false' do
+        achievements = create_list(:achievement, 2, :online,
+                                   programme: programme, user: user)
+        expect(programme.user_completed_non_compulsory_achievement?(user))
+          .to eq(false)
+      end
+    end
+
+    context 'when user at least one complete non compulsory achievement' do
+      it 'returns true' do
+        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
+        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        online_achievement = create(:achievement, :online, programme: programme, user: user)
+        online_achievement.transition_to(:complete)
+        expect(programme.user_completed_non_compulsory_achievement?(user))
+          .to eq(true)
+      end
+    end
+
+    context 'when user completed compulsory but not non compulsory achievement' do
+      it 'returns false' do
+        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
+        compulsory_achievement = create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        compulsory_achievement.transition_to(:complete)
+        create(:achievement, :online, programme: programme, user: user)
+        expect(programme.user_completed_non_compulsory_achievement?(user))
+          .to eq(false)
+      end
+    end
+  end
 end

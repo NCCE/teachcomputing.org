@@ -38,6 +38,7 @@ class Activity < ApplicationRecord
   scope :system, -> { where(provider: 'system') }
   scope :user_removable, -> { self_certifiable.non_action }
 
+  # TODO: remove this?
   def user_removable?
     self_certifiable && category != ACTION_CATEGORY
   end
@@ -51,5 +52,9 @@ class Activity < ApplicationRecord
       activity.self_certifiable = false
       activity.provider = 'system'
     end
+  end
+
+  def online?
+    category == ONLINE_CATEGORY
   end
 end

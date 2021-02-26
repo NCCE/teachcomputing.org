@@ -111,6 +111,8 @@ class Achievement < ApplicationRecord
   private_class_method :initial_state, :transition_class
 
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
+  delegate :title, :stem_activity_code, to: :activity
+  delegate :slug, :stem_activity_code, to: :activity
 
   private
 

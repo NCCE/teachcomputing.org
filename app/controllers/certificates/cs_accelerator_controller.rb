@@ -55,10 +55,11 @@ module Certificates
       end
 
       def assign_assessment_and_achievements_v2
-        @compulsory_achievement = @programme.compulsory_achievement(current_user)
-        @non_compulsory_achievements = @programme.non_compulsory_achievements(current_user)
+        @csa_dash = CSADash.new(user: current_user)
+        # @compulsory_achievement = @programme.compulsory_achievement(current_user)
+        # @non_compulsory_achievements = @programme.non_compulsory_achievements(current_user)
 
-        @user_programme_pathway = current_user.programme_pathway(@programme)
+        # @user_programme_pathway = current_user.programme_pathway(@programme)
       end
 
       def online_achievements

@@ -210,5 +210,14 @@ RSpec.describe Programme, type: :model do
 
       expect(programme.pathways_excluding(p2)).to match_array([p1, p3])
     end
+
+    it 'returns all pathways if argument is nil' do
+      programme = create(:programme)
+      p1 = create(:pathway, programme: programme)
+      p2 = create(:pathway, programme: programme)
+      p3 = create(:pathway, programme: programme)
+
+      expect(programme.pathways_excluding(nil)).to match_array([p1, p2, p3])
+    end
   end
 end

@@ -1,40 +1,63 @@
-<% unless @compulsory_achievement %>
-  <div class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--borderless">
-    <span class="ncce-activity-list__item-text">
-      Complete a face to face or remote course
-    </span>
+<div class="ncce-activity-list__item
+  <%= 'ncce-activity-list__item--incomplete' unless compulsory_achievement&.complete? %>
+  ncce-activity-list__item--borderless">
+  <span class="ncce-activity-list__item-text">
+    Complete a face to face or remote course
+  </span>
+</div>
+
+<% if compulsory_achievement %>
+  <div class="ncce-pathway-courses__short">
+    <div class="ncce-pathway-courses__course">
+      <p>
+        <% if compulsory_achievement.stem_activity_code.present? %>
+          <%= link_to compulsory_achievement.title,
+                      course_path(id: compulsory_achievement.stem_activity_code,
+                                  name: compulsory_achievement.slug),
+                      class: 'ncce-link' %>
+        <% else %>
+          <%= compulsory_achievement.title %>
+        <% end %>
+      </p>
+
+
+      <div class="ncce-flex__space-between">
+        <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(compulsory_achievement.activity) %>">
+          <%= activity_type(compulsory_achievement.activity) %> course
+        </span>
+        <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
+          <%= compulsory_achievement.complete? ? 'Completed' : 'In progress' %>
+        </strong>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<% if @compulsory_achievement %>
-  <div class="ncce-activity-list__item <%= 'ncce-activity-list__item--incomplete' unless @compulsory_achievement.complete? %> ncce-activity-list__item--borderless">
-    <% unless @compulsory_achievement.complete? %>
-      <span class="ncce-activity-list__item-text">
-        Complete a face to face course
-      </span>
-      <strong class="govuk-tag ncce-courses__tag">In progress</strong>
-    <% end %>
-    <span><%= @compulsory_achievement.activity.title %></span>
-    <span class="govuk-body-s icon-map-pin">Face to face course</span>
-  </div>
-<% end %>
 
-<% unless @non_compulsory_achievements.size.positive? %>
-  <div class="ncce-activity-list__item ncce-activity-list__item--incomplete ncce-activity-list__item--borderless">
-    <span class="ncce-activity-list__item-text">
-      Complete any other CSA course
-    </span>
-  </div>
-<% end %>
-<% @non_compulsory_achievements.each do |achievement| %>
-  <div class="ncce-activity-list__item <%= 'ncce-activity-list__item--incomplete' unless achievement.complete? %> ncce-activity-list__item--borderless">
-    <% unless achievement.complete? %>
-      <span class="ncce-activity-list__item-text">
-        Complete an online or face to face course
-      </span>
-      <strong class="govuk-tag ncce-courses__tag">In progress</strong>
-    <% end %>
-    <span><%= achievement.activity.title %></span>
-    <span class="govuk-body-s icon-online">Online course</span>
-  </div>
-<% end %>
+<div class="ncce-activity-list__item
+  <%= 'ncce-activity-list__item--incomplete' unless user_completed_non_compulsory_achievement %>
+  ncce-activity-list__item--borderless">
+  <span class="ncce-activity-list__item-text">
+    Complete any other CSA course
+  </span>
+</div>
+
+<div class="ncce-pathway-courses__short">
+  <% non_compulsory_achievements.each do |achievement| %>
+    <div class="ncce-pathway-courses__course">
+      <p>
+        <%= link_to achievement.title, course_path(id: achievement.stem_activity_code, name: achievement.slug), class: 'ncce-link' %>
+      </p>
+
+
+      <div class="ncce-flex__space-between">
+        <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(achievement.activity) %>">
+          <%= activity_type(achievement.activity) %> course
+        </span>
+        <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
+          <%= achievement.complete? ? 'Completed' : 'In progress' %>
+        </strong>
+      </div>
+    </div>
+  <% end %>
+</div>

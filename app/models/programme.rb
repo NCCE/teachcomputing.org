@@ -92,6 +92,6 @@ class Programme < ApplicationRecord
   def programme_title; end
 
   def pathways_excluding(pathway)
-    pathways.where.not(id: pathway.id)
+    pathways.where.not(id: pathway&.id)
   end
 end
