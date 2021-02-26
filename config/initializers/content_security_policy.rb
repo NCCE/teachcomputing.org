@@ -12,8 +12,7 @@ Rails.application.config.content_security_policy do |policy|
 #   policy.object_src  :none
 #   policy.script_src  :self, :https, :data, 'www.google-analytics.com', 'www.googletagmanager.com', 'tagmanager.google.com'
 #   policy.style_src   :self, :https, :unsafe_inline
-
-    policy.connect_src :self, :https, 'localhost:3035', 'wss://localhost:3035' if Rails.env.development?
+  policy.connect_src :self, :https, 'https://localhost:3035', 'wss://localhost:3035' if Rails.env.development?
 end
 
 # If you are using UJS then enable automatic nonce generation
