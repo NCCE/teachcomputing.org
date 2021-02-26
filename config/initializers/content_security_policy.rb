@@ -17,7 +17,7 @@ end
 
 # If you are using UJS then enable automatic nonce generation
 # This overrides 'unsafe-inline', if specified
-# Rails.application.config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(16) }
+Rails.application.config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(16) }
 
 # For further information see the following documentation:
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
