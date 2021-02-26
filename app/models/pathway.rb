@@ -12,14 +12,4 @@ class Pathway < ApplicationRecord
   def supplementary_activities
     pathway_activities.where(supplementary: true)
   end
-
-  def recommended_courses
-    activity_codes = recommended_activities.map { |pa| pa.activity.stem_activity_code }
-    Achiever::Course::Template.find_many_by_activity_codes(activity_codes)
-  end
-
-  def supplementary_courses
-    activity_codes = supplementary_activities.map { |pa| pa.activity.stem_activity_code }
-    Achiever::Course::Template.find_many_by_activity_codes(activity_codes)
-  end
 end
