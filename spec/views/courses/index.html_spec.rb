@@ -19,7 +19,7 @@ RSpec.describe('courses/index', type: :view) do
     filter_stub = instance_double(Achiever::CourseFilter)
 
     allow(filter_stub).to receive_messages(
-      course_tags: { 'Algorithms': '101' },
+      course_tags: { Algorithms: '101' },
       age_groups: age_groups,
       subjects: subjects,
       courses: courses,
@@ -44,6 +44,10 @@ RSpec.describe('courses/index', type: :view) do
     courses.each do |course|
       expect(rendered).to have_link(course.title, href: %r{#{course.activity_code}/#{course.title.parameterize}})
     end
+  end
+
+  it 'renders the bursary partial' do
+    expect(rendered).to render_template(partial: 'courses/_aside-bursary')
   end
 
   describe 'courses' do

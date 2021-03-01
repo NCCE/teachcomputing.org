@@ -5,16 +5,14 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body">
-          Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge, with
-          <%= link_to 'bursaries', '/bursary', class: 'ncce-link' %> available for schools and colleges to help you participate.
+          Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
         </p>
         <p class="govuk-body">
           Choose how and when you want to learn, through face-to-face, online, or live remote training.
         </p>
-        <p class="govuk-body">
-          Select individual courses, or make your learning go further, by enrolling on our national certification programmes in
-            <%= link_to 'primary computing', primary_path, class: 'ncce-link' %>, <%= link_to 'GCSE computer science subject knowledge', cs_accelerator_path, class: 'ncce-link' %> or <%= link_to 'secondary computing', secondary_path, class: 'ncce-link' %>.
-        </p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <%= render 'courses/aside-bursary' %>
       </div>
     </div>
   </div>
