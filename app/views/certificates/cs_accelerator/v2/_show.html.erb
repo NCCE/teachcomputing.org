@@ -6,9 +6,10 @@
           <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator Programme!</h2>
           <% if @csa_dash.has_enough_activities_for_test %>
             <p class="govuk-body-m">
-              You’ve completed enough courses to unlock the test.
-              You should continue to take any courses you think are right for you.
-              When you are ready, you can take our test or practice with our mock test. 
+              You’ve completed enough courses to access the test.
+              You should continue to complete any courses you think are right for you.
+              When you are ready, you can
+              <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link' %>. 
             </p>
           <% else %>
             <p class="govuk-body-m">
