@@ -1,11 +1,26 @@
-@mixin icon($image, $position: left center, $width: 20px, $height: 20px, $spacing: 7px) {
+@mixin icon(
+  $image,
+  $position: left center,
+  $width: 20px,
+  $height: 20px,
+  $spacing: 7px
+) {
   background-image: url($image);
   background-position: $position;
   background-repeat: no-repeat;
   background-size: $width $height;
   @if $position == left or $position == left top or $position == left bottom {
     padding-left: $spacing + $width;
-  }  @else if $position == right or $position == right top or $position == right bottom {
+  } @else if
+    $position ==
+    right or
+    $position ==
+    right
+    top or
+    $position ==
+    right
+    bottom
+  {
     padding-right: $spacing + $width;
   }
 }
@@ -32,5 +47,5 @@
 }
 
 .icon-remote {
-  @include icon('icon-remote.svg');
+  @include icon('../images/icon-remote.svg');
 }

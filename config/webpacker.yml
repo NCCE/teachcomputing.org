@@ -62,7 +62,7 @@ development:
     historyApiFallback: true
     publicPath: "/"
     https: true
-    host: webpack
+    host: localhost
     port: 3035
     public: localhost:3035
     hmr: false
