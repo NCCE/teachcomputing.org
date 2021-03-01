@@ -207,7 +207,7 @@ RSpec.describe Programmes::CSAccelerator do
         setup_two_short_f2f_achievements
       end
 
-      it 'returns false' do
+      it 'returns true' do
         expect(programme.enough_activities_for_test?(user)).to eq(true)
       end
     end
@@ -217,7 +217,7 @@ RSpec.describe Programmes::CSAccelerator do
         setup_short_f2f_and_online_achievement
       end
 
-      it 'returns false' do
+      it 'returns true' do
         expect(programme.enough_activities_for_test?(user)).to eq(true)
       end
     end

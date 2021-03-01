@@ -52,4 +52,12 @@ class CSADash
 
     @supplementary_activities_for_user = user_programme_pathway.supplementary_activities_for_user(@user)
   end
+
+  def has_enough_activities_for_test
+    @has_enough_activities_for_test ||= @programme.enough_activities_for_test?(@user)
+  end
+
+  def user_programme_assessment
+    @user_programme_assessment ||= UserProgrammeAssessment.new(@programme, @user)
+  end
 end
