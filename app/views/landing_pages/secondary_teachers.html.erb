@@ -1,7 +1,7 @@
 <% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
 <% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
 <% meta_tag :url, request.original_url %>
-<% meta_tag :image, image_url('/images/secondary-teachers/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image, asset_pack_path('media/images/secondary-teachers/hero.jpg') %>
 <% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
 <div class="tapestry-bg">
   <div class="govuk-width-container">
@@ -14,7 +14,7 @@
             life.</p>
         </div>
         <div class="text-photo-hero__block--photo">
-          <%= image_tag '/images/secondary-teachers/hero.jpg', alt: '' %>
+          <%= image_pack_tag 'media/images/secondary-teachers/hero.jpg', alt: '' %>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
           </p>
           <p class="govuk-body">Discover how to build your own Graphical User
             Interface (GUI) with Python and guizero.</p>
-          <video poster="/images/secondary-teachers/video-placeholder.jpg"
+          <video poster="<%= asset_pack_path 'media/images/secondary-teachers/video-placeholder.jpg' %>"
             controls="true" playsinline="true" crossorigin="anonymous"
             preload="none" tabindex="-1"
             src="https://futurelearn-assets.raspberrypi.org/Programming%20with%20GUIs/Films/GUI%20Trailer%20Final_LD.mp4">
@@ -63,7 +63,7 @@
           </p>
           <p class="govuk-body-s">Go from novice programmer to competent teacher
             of Python.</p>
-          <%= image_tag '/images/secondary-teachers/aside.jpg', alt: '' %>
+          <%= image_pack_tag 'media/images/secondary-teachers/aside.jpg', alt: '' %>
           <ul class="govuk-body-s govuk-list govuk-list--bullet">
             <li>Operators and flow control</li>
             <li>Iteration and nested structures</li>
@@ -118,7 +118,7 @@
               practical programming, with concepts explained more in-depth.”
             </p>
             <div class="testimonial__bio">
-              <%= image_tag '/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
+              <%= image_pack_tag 'media/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
                 Maths and Computer Science teacher, London
