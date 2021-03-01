@@ -1,9 +1,9 @@
 <div class="ncce-home-hero">
   <div class="ncce-home-hero__image">
     <picture>
-      <source srcset="/images/hero/hero-lg.jpg" media="(min-width: 800px)">
-      <source srcset="/images/hero/hero-md.jpg" media="(min-width: 600px)">
-      <img src="/images/hero/hero-sm2.jpg" alt="A women in front of a computer">
+      <source srcset="<%= asset_pack_path "media/images/hero/hero-lg.jpg" %>" media="(min-width: 800px)">
+      <source srcset="<%= asset_pack_path "media/images/hero/hero-md.jpg" %>" media="(min-width: 600px)">
+      <%= image_pack_tag 'media/images/hero/hero-sm2.jpg', alt: 'A women in front of a computer' %>
     </picture>
   </div>
   <div class="ncce-home-hero__text-wrapper">

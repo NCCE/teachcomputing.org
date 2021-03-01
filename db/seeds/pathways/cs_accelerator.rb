@@ -122,7 +122,7 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
-activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
+activity = Activity.find_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3, supplementary: true)
 end

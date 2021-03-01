@@ -61,6 +61,10 @@ RSpec.configure do |config|
   config.include(Shoulda::Callback::Matchers::ActiveModel)
   config.include FeatureFlagHelper
 
+  config.before(:suite) do
+    Webpacker.compile
+  end
+
   config.before(:each, type: :system) do
     driven_by :chrome_headless
   end

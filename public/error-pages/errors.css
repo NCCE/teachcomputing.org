@@ -3,22 +3,22 @@
 @font-face {
   font-family: 'Objectivity';
   font-weight: bold;
-  src: url(/assets/Objectivity-Bold-9e1118241c7ada5fe6378ae7d3ee2da86ff56f98e54bac80019f2f4851d04408.woff)
+  src: url(./Objectivity-Bold.woff)
       format('woff'),
-    url(/assets/Objectivity-Bold-10502ff4933d9caadab31315ba7c3ebb2d66bb7490e75b2c8e7b67985051bbe3.woff2)
+    url(./Objectivity-Bold.woff2)
       format('woff2'),
-    url(/assets/Objectivity-Bold-af4fa13d9c2e8d0e1449708b04a3bbac146094c0bcd926b1e15833223699b834.otf)
+    url(./Objectivity-Bold.otf)
       format('opentype');
 }
 
 @font-face {
   font-family: 'Objectivity';
   font-weight: 400;
-  src: url(/assets/Objectivity-Medium-a99dfe46456ea219f75ce66ce5bcdfa7ea36a5d16ba0c75d4adcc96b4cbe3a9b.woff)
+  src: url(./Objectivity-Medium.woff)
       format('woff'),
-    url(/assets/Objectivity-Medium-671b7f75ca405969201a2819647145872f3fe9c7b14f1381f43bb0291fee643d.woff2)
+    url(./Objectivity-Medium.woff2)
       format('woff2'),
-    url(/assets/Objectivity-Medium-93abed3bd2868c28c782bebcc66428ea7a7f0deab6d6666fd078b7289a43aea8.otf)
+    url(./Objectivity-Medium.otf)
       format('opentype');
 }
 
@@ -1366,7 +1366,7 @@
 }
 
 .govuk-button--start {
-  background-image: url('/assets/images/icon-pointer.png');
+  background-image: url('../images/icon-pointer.png');
   background-position: 100% 50%;
   background-repeat: no-repeat;
   font-size: 18px;
@@ -1397,7 +1397,7 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .govuk-button--start {
-    background-image: url('/assets/images/icon-pointer-2x.png');
+    background-image: url('../images/icon-pointer-2x.png');
     background-size: 30px 19px;
   }
 }
@@ -2575,7 +2575,7 @@
 }
 
 .govuk-footer__copyright-logo {
-  background-image: url('/assets/images/govuk-crest.png');
+  background-image: url('../images/govuk-crest.png');
   background-position: 50% 0%;
   background-repeat: no-repeat;
   background-size: 125px 102px;
@@ -2589,7 +2589,7 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .govuk-footer__copyright-logo {
-    background-image: url('/assets/images/govuk-crest-2x.png');
+    background-image: url('../images/govuk-crest-2x.png');
   }
 }
 
@@ -6388,8 +6388,8 @@ a:not([class]):active {
     content: '';
     display: block;
     height: 62px;
-    -webkit-mask-image: url(/images/card/glyph-1.svg);
-    mask-image: url(/images/card/glyph-1.svg);
+    -webkit-mask-image: url(../images/card/glyph-1.svg);
+    mask-image: url(../images/card/glyph-1.svg);
     position: absolute;
     right: 0;
     width: 54px;
@@ -6660,7 +6660,7 @@ a:not([class]):active {
 
 .ncce-hero {
   background-color: #fad160;
-  background-image: url(/images/home/polka-yellow-bg.svg);
+  background-image: url(../images/home/polka-yellow-bg.svg);
   overflow: hidden;
 }
 
@@ -6669,8 +6669,8 @@ a:not([class]):active {
 }
 
 .ncce-hero__image {
-  -webkit-mask-image: url('/images/home/squiggle-shape.svg');
-  mask-image: url('/images/home/squiggle-shape.svg');
+  -webkit-mask-image: url('../images/home/squiggle-shape.svg');
+  mask-image: url('../images/home/squiggle-shape.svg');
   -webkit-mask-size: cover;
   mask-size: cover;
   position: relative;
@@ -6739,7 +6739,7 @@ a:not([class]):active {
 
 @media (min-width: 64em) {
   .ncce-hero__heading {
-    background-image: url('/images/home/splash-pink.svg');
+    background-image: url('../images/home/splash-pink.svg');
     background-position: 11.5rem 0.15rem;
     background-repeat: no-repeat;
     background-size: 7.5rem;
@@ -6845,7 +6845,7 @@ a:not([class]):active {
 
 .hero:after,
 .hero--blue:after {
-  background-image: url(/images/hero/glyph-1.svg);
+  background-image: url(../images/hero/glyph-1.svg);
   background-position-x: right;
   background-repeat: no-repeat;
   background-size: 75%;

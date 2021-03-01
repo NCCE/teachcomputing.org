@@ -1,0 +1,238 @@
+.shadow_card {
+  background-color: $white;
+  box-shadow: 0 0 5px $box-shadow;
+  padding: 0.5 * $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    padding: 0.5 * $logo-block;
+  }
+}
+
+.card,
+.card--blue {
+  background-color: $white;
+  border-left: 9px solid $action-color;
+  box-shadow: 0 0 5px $box-shadow;
+  margin-bottom: $logo-block-mobile;
+  padding: 20px 20px 30px 20px;
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    border-left-width: 13px;
+    margin-bottom: $logo-block;
+    padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block)
+      (0.75 * $logo-block);
+    &:after {
+      background-color: $foam;
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 62px;
+      -webkit-mask-image: url(../images/card/glyph-1.svg);
+      mask-image: url(../images/card/glyph-1.svg);
+      position: absolute;
+      right: 0;
+      width: 54px;
+    }
+  }
+}
+
+.card--plain {
+  border-left-color: $plain-hero-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $plain-hero-color;
+    }
+  }
+}
+
+.card--purple,
+.card--cs-accelerator {
+  border-left-color: $secondary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $amour;
+    }
+  }
+}
+
+.card--yellow,
+.card--secondary-certificate {
+  border-left-color: $secondary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $egg-white;
+    }
+  }
+}
+
+.card--orange,
+.card--primary-certificate {
+  border-left-color: $primary-cert-color;
+  @include govuk-media-query($from: desktop) {
+    &:after {
+      background-color: $karry;
+    }
+  }
+}
+
+.card--no-glyph:after {
+  background-color: $white;
+  background-image: none;
+}
+
+.card--resource {
+  background-color: $concrete;
+  border-left-style: solid;
+  border-left-width: 9px;
+  margin-bottom: 1rem;
+  padding: 10px 10px 5px 20px;
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $logo-block;
+    padding: (0.5 * $logo-block) 0 (0.1 * $logo-block) (0.75 * $logo-block);
+  }
+}
+
+.card--resource__title {
+  font-weight: 500;
+  line-height: 1.75rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 1rem;
+  }
+}
+
+.card > .status-block {
+  @include status_block();
+  display: inline-block;
+  margin-bottom: 10px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
+}
+
+.shadow_card > .status-block {
+  @include status_block();
+  border: 2px solid $grey-dark-x;
+  display: inline-block;
+  margin-bottom: 10px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
+}
+
+.shadow_card > .status-block-light {
+  @extend .status-block;
+  @include status_block_light();
+}
+
+.status-block__icon {
+  background-image: url('../images/tick-plain.svg');
+  background-position: left 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  padding-left: 2rem !important;
+}
+
+.card__heading {
+  margin-bottom: 13px;
+  padding-top: 0;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
+}
+.card__status + .card__heading {
+  padding-top: 0;
+}
+
+.card__text {
+  margin-bottom: 17px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 17px;
+  }
+}
+
+.card__progress-bar {
+  background-color: $concrete;
+  color: $pink;
+  height: 13px;
+  width: 100%;
+
+  &::-webkit-progress-bar {
+    background-color: $concrete;
+  }
+
+  &::-webkit-progress-value {
+    background: $deep-cerulean;
+  }
+
+  &::-moz-progress-bar {
+    background: $deep-cerulean;
+  }
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card > *:last-child {
+  margin-bottom: 0;
+}
+
+.card--dashboard {
+  border-top: 9px solid $action-color;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+
+  &--cs-accelerator,
+  &--secondary {
+    border-top-color: $secondary-cert-color;
+  }
+
+  &--primary {
+    border-top-color: $primary-cert-color;
+  }
+}
+
+.dark_card {
+  border-color: $lilly-white;
+  padding: 1.375rem;
+}
+
+.dark_card--title {
+  padding-top: 1.375rem;
+  text-align: center;
+}
+
+.dark_card--image {
+  display: block;
+  height: 56px;
+  margin: auto;
+  max-width: 16rem;
+
+  @include govuk-media-query($from: desktop) {
+    height: 81px;
+    width: auto;
+  }
+}
+
+.bordered-card {
+  background-color: $foam;
+  border: 3px solid $deep-cerulean;
+  margin-bottom: 1rem;
+  padding: $logo-block-mobile / 2;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 20px 20px 0px 20px;
+  }
+}
