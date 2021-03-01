@@ -10,7 +10,7 @@ module Certificates
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
       if FeatureFlagService.new.flags[:csa_questionnaire_enabled]
-        assign_assessment_and_achievements_v2
+        @csa_dash = CSADash.new(user: current_user)
       else
         assign_assessment_and_achievements
       end
@@ -52,14 +52,6 @@ module Certificates
         @user_programme_assessment = user_programme_assessment
         @online_achievements = online_achievements
         @face_to_face_achievements = face_to_face_achievements
-      end
-
-      def assign_assessment_and_achievements_v2
-        @csa_dash = CSADash.new(user: current_user)
-        # @compulsory_achievement = @programme.compulsory_achievement(current_user)
-        # @non_compulsory_achievements = @programme.non_compulsory_achievements(current_user)
-
-        # @user_programme_pathway = current_user.programme_pathway(@programme)
       end
 
       def online_achievements
