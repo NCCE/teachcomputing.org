@@ -13,6 +13,10 @@
   background: $foam;
   margin-bottom: 2px;
   padding: 2px 18px;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
 }
 
 .ncce-pathway-courses__buttons {

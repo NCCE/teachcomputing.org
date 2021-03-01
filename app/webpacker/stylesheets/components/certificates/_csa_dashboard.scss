@@ -2,7 +2,9 @@
   background-color: $white;
   border: none;
   margin-bottom: 30px;
-  padding: 1.25rem 1.125rem 1px;
+  &-padded {
+    padding: 1.25rem 1.125rem 1px;
+  }
 }
 
 .ncce-csa-dash__sub-section {

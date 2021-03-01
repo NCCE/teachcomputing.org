@@ -7,6 +7,7 @@ FactoryBot.define do
     sequence(:stem_course_template_no, 100) { |n| "stem_course_template_no-#{n}" }
     category { 'face-to-face' }
     provider { 'stem-learning' }
+    sequence(:stem_activity_code, 100) { |n| "C#{n}" }
   end
 
   trait :cs_accelerator_diagnostic_tool do
