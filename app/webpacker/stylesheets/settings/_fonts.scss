@@ -8,16 +8,16 @@ $font-family-heading: 'Objectivity', sans-serif !default;
 
 @font-face {
   font-family: 'Objectivity';
-  src: font-url('../fonts/Objectivity-Bold.woff') format('woff'),
-    font-url('../fonts/Objectivity-Bold.woff2') format('woff2'),
-    font-url('../fonts/Objectivity-Bold.otf') format('opentype');
+  src: url('../fonts/Objectivity-Bold.woff') format('woff'),
+    url('../fonts/Objectivity-Bold.woff2') format('woff2'),
+    url('../fonts/Objectivity-Bold.otf') format('opentype');
   font-weight: bold;
 }
 
-// @font-face {
-//   font-family: 'Objectivity';
-//   src: font-url('../fonts/Objectivity-Medium.woff') format('woff'),
-//     font-url('../fonts/Objectivity-Medium.woff2') format('woff2'),
-//     font-url('../fonts/Objectivity-Medium.otf') format('opentype');
-//   font-weight: 400;
-// }
+@font-face {
+  font-family: 'Objectivity';
+  src: url('../fonts/Objectivity-Medium.woff') format('woff'),
+    url('../fonts/Objectivity-Medium.woff2') format('woff2'),
+    url('../fonts/Objectivity-Medium.otf') format('opentype');
+  font-weight: 400;
+}
