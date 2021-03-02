@@ -150,6 +150,8 @@ Rails.application.routes.draw do
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
-  get '/:parent_slug/:page_slug', to: 'cms#cms_page'
-  get '/:page_slug', to: 'cms#cms_page'
+  constraints ->(req) { req.format == :html } do
+    get '/:parent_slug/:page_slug', to: 'cms#cms_page'
+    get '/:page_slug', to: 'cms#cms_page'
+  end
 end
