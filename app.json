@@ -114,6 +114,9 @@
     },
     "CERTIFICATION_SYNCING_ENABLED": {
       "required": true
+    },
+    "DYNAMICS_WEBHOOK_TOKEN": {
+      "required": true
     }
   },
   "formation": {
