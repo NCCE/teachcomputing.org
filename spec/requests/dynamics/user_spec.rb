@@ -25,7 +25,7 @@ RSpec.describe Dynamics::WebhooksController do
 
     context 'with an invalid bearer token' do
       it 'raises an error' do
-        post '/dynamics/webhook', params: JSON.parse(json_body), headers: token_headers
+        post '/dynamics/webhook', params: JSON.parse(json_body), headers: nil
         expect(response.status).to eq 401
       end
     end
