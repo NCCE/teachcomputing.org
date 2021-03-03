@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FetchUsersCompletedCoursesFromAchieverJob, type: :job do
+RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job do
   subject(:perform_job) { described_class.perform_now(user) }
 
   let(:user) { create(:user) }
