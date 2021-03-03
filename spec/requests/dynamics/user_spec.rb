@@ -13,19 +13,19 @@ RSpec.describe Dynamics::WebhooksController do
     context 'with a valid bearer token' do
       it 'queues Achiever::FetchUsersCompletedCoursesFromAchieverJob job' do
         expect do
-          post dynamics_user_webhook_path, params: JSON.parse(json_body), headers: token_headers
+          post '/dynamics/webhook', params: JSON.parse(json_body), headers: token_headers
         end.to have_enqueued_job(Achiever::FetchUsersCompletedCoursesFromAchieverJob)
       end
 
       it 'returns 200 response' do
-        post dynamics_user_webhook_path, params: JSON.parse(json_body), headers: token_headers
+        post '/dynamics/webhook', params: JSON.parse(json_body), headers: token_headers
         expect(response.status).to eq 200
       end
     end
 
     context 'with an invalid bearer token' do
       it 'raises an error' do
-        post dynamics_user_webhook_path, params: JSON.parse(json_body), headers: token_headers
+        post '/dynamics/webhook', params: JSON.parse(json_body), headers: token_headers
         expect(response.status).to eq 401
       end
     end
