@@ -202,22 +202,22 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#pathways_excluding' do
-    it 'returns the pathways except for the pathway argument' do
+    it 'returns the pathways except for the pathway argument in order' do
       programme = create(:programme)
-      p1 = create(:pathway, programme: programme)
+      p1 = create(:pathway, programme: programme, order: 10)
       p2 = create(:pathway, programme: programme)
-      p3 = create(:pathway, programme: programme)
+      p3 = create(:pathway, programme: programme, order: 9)
 
-      expect(programme.pathways_excluding(p2)).to match_array([p1, p3])
+      expect(programme.pathways_excluding(p2)).to eq([p3, p1])
     end
 
-    it 'returns all pathways if argument is nil' do
+    it 'returns all pathways in order if argument is nil' do
       programme = create(:programme)
-      p1 = create(:pathway, programme: programme)
-      p2 = create(:pathway, programme: programme)
-      p3 = create(:pathway, programme: programme)
+      p1 = create(:pathway, programme: programme, order: 3)
+      p2 = create(:pathway, programme: programme, order: 1)
+      p3 = create(:pathway, programme: programme, order: 2)
 
-      expect(programme.pathways_excluding(nil)).to match_array([p1, p2, p3])
+      expect(programme.pathways_excluding(nil)).to eq([p2, p3, p1])
     end
   end
 end

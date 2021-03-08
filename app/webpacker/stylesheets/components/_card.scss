@@ -229,7 +229,7 @@
 .bordered-card {
   background-color: $foam;
   border: 3px solid $deep-cerulean;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: $logo-block-mobile / 2;
 
   @include govuk-media-query($from: tablet) {
