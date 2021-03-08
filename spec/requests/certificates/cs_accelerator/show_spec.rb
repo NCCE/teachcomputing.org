@@ -43,6 +43,10 @@ RSpec.describe Certificates::CSAcceleratorController do
     stub_feature_flags({ csa_questionnaire_enabled: true })
   end
 
+  after do
+    unstub_feature_flags
+  end
+
   describe '#show' do
     context 'when user is logged in' do
       before do
