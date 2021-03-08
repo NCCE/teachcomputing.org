@@ -168,7 +168,7 @@
   margin: -3px -15px 0 -15px;
 
   @include govuk-media-query($from: desktop) {
-    margin: 0 -3px 0 0 ;
+    margin: 0 -3px;
     padding: 0.3rem;
   }
 }
