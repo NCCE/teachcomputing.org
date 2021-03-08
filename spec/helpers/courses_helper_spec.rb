@@ -103,23 +103,6 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('.course_icon_class') do
-    it 'returns icon for remote courses' do
-      course = build(:achiever_course_template, remote_delivered_cpd: true, online_cpd: false)
-      expect(helper.course_icon_class(course)).to eq('icon-remote')
-    end
-
-    it 'returns icon for face to face courses' do
-      course = build(:achiever_course_template, remote_delivered_cpd: false, online_cpd: false)
-      expect(helper.course_icon_class(course)).to eq('icon-map-pin')
-    end
-
-    it 'returns icon for online courses' do
-      course = build(:achiever_course_template, remote_delivered_cpd: false, online_cpd: true)
-      expect(helper.course_icon_class(course)).to eq('icon-online')
-    end
-  end
-
   describe('#online_course_date') do
     context 'when the date is past' do
       it 'returns Join Now' do

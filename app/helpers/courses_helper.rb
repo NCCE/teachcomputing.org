@@ -53,12 +53,6 @@ module CoursesHelper
     isOnlineCourse ? 'icon-online' : 'icon-map-pin'
   end
 
-  def course_icon_class(course)
-    return 'icon-remote' if course.remote_delivered_cpd == true
-
-    course.online_cpd ? 'icon-online' : 'icon-map-pin'
-  end
-
   def online_course_date(start_date)
     date = Date.parse(start_date)
     return "Register now (Starts on #{date.strftime('%-d %B %Y')})" if date.future?
