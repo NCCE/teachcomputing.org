@@ -1,7 +1,7 @@
 {
   "name": "teachcomputing",
   "scripts": {
-    "postdeploy": "bin/rails db:migrate && bin/rails db:seed"
+    "postdeploy": "bin/rails db:migrate"
   },
   "env": {
     "RAILS_ENV": {
