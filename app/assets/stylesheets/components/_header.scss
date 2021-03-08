@@ -1,8 +1,7 @@
 .header__container {
   border: none;
   margin-bottom: 0;
-  padding-bottom: 10px;
-  padding-bottom: $logo-block;
+  padding-bottom: $logo-block / 2;
   padding-top: $logo-block-mobile;
 
   @include govuk-media-query($from: desktop) {
@@ -165,7 +164,7 @@
  {
   background-color: $deep-cerulean;
   background-image: none;
-  margin: -3px -6% 0 -6%;
+  margin: -3px -15px 0 -15px;
 
   @include govuk-media-query($from: desktop) {
     margin: 0 -3px 0 0 ;
@@ -180,7 +179,7 @@
 
 .ncce-header__certification-item--text {
   background-image: image-url('tick-blue-no-border.svg');
-  background-position: right;
+  background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 0.7rem;
   color: $deep-cerulean;
@@ -197,7 +196,7 @@
 
 .ncce-header__certification-item--text:hover {
   margin: 0 15px;
-  background-position: right 25px center;
+  background-position: right 38px center;
 
   @include govuk-media-query($from: desktop) {
     margin: 0;
