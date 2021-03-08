@@ -160,7 +160,8 @@
 }
 
 .ncce-header__certification-item:hover,
-.ncce-header__certification-item:focus-within 
+.ncce-header__certification-item:focus-within,
+.ncce-header__certification-item[aria-expanded="true"] 
  {
   background-color: $deep-cerulean;
   background-image: none;
@@ -172,12 +173,13 @@
   }
 }
 
-.ncce-header__certification-item:hover > .ncce-header__certification-item--text {
+.ncce-header__certification-item:hover > .ncce-header__certification-item--text, .ncce-header__certification-item[aria-expanded="true"] > .ncce-header__certification-item--text {
   background-image: image-url('arrow-down.svg');
   color: $white;
 }
 
-.ncce-header__certification-item--text {
+.ncce-header__certification-item--text,
+.ncce-header__certification-item--text[aria-expanded="true"] {
   background-image: image-url('tick-blue-no-border.svg');
   background-position: right 10px center;
   background-repeat: no-repeat;
@@ -194,7 +196,8 @@
   }
 }
 
-.ncce-header__certification-item--text:hover {
+.ncce-header__certification-item--text:hover,
+.ncce-header__certification-item--text[aria-expanded="true"] {
   margin: 0 15px;
   background-position: right 38px center;
 
