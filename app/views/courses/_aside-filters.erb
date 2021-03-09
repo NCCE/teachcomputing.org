@@ -1,0 +1,49 @@
+<% unless @course_filter.nil? %>
+<div class="ncce-aside ncce-aside--filters">
+  <h2 class="govuk-body-m ncce-aside__title">Filter courses</h2>
+  <div id="filter-results" class="ncce-courses__filter">
+    <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
+      <%= label_tag :level, 'Key Stage:', class: 'govuk-body-s ncce-label' %>
+      <%= select_tag :level,
+        options_for_select(@course_filter.age_groups.keys, @course_filter.current_level),
+        {
+          include_blank: 'Any level',
+          class: 'govuk-select ncce-select',
+          'aria-label': 'Filter by level',
+          data: { action: "input->course-filter#filter" }
+        }
+      %>
+      <%= label_tag :level, 'Topic:', class: 'govuk-body-s ncce-label' %>
+      <%= select_tag :topic,
+        options_for_select(@course_filter.course_tags.keys, @course_filter.current_topic),
+        {
+          include_blank: 'Any topic',
+          class: 'govuk-select ncce-select',
+          'aria-label': 'Filter by topic',
+          data: { action: "input->course-filter#filter" }
+        }
+      %>
+      <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label' %>
+      <%= select_tag :certificate,
+        options_for_select(@course_filter.certificates, @course_filter.current_certificate&.title),
+        {
+          include_blank: 'Any certificate',
+          class: 'govuk-select ncce-select',
+          'aria-label': 'Filter by certificate',
+          data: { action: "input->course-filter#filter" }
+        }
+      %>
+      <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label' %>
+      <% @course_filter.course_formats.each do |format| %>
+        <div>
+          <%= check_box_tag format, format.to_s, false, data: { action: "input->course-filter#filter", class: 'govuk-checkboxes__input ncce-checkboxes' } %>
+          <%= label_tag format.to_s, format, class: 'govuk-body-s ncce-label' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% unless @course_filter&.applied_filters.nil? %>
+  <%= link_to 'clear all filters', courses_path(anchor: 'filter-results'), class: 'govuk-link ncce-courses__clear_filters' %>
+<% end %>

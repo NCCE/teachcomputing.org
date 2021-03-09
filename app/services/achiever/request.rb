@@ -51,7 +51,10 @@ class Achiever::Request
 
       parsed_response = parse_response(response.body)
 
-      raise Achiever::Error.new(failure: { status: response.status, reason: parsed_response.FailureReason }) unless parsed_response.FailureReason.blank?
+      unless parsed_response.FailureReason.blank?
+        raise Achiever::Error.new(failure: { status: response.status,
+                                             reason: parsed_response.FailureReason })
+      end
 
       parsed_response
     end

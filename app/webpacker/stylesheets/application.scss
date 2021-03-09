@@ -11,6 +11,7 @@
 @import 'settings/_typography.scss';
 @import 'settings/_layout.scss';
 @import 'settings/_device-behaviour.scss';
+@import 'settings/_variables.scss';
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
@@ -43,6 +44,7 @@
 @import 'components/courses/_courses.scss';
 @import 'components/courses/_landing-page.scss';
 @import 'components/courses/_aside_bursary.scss';
+@import 'components/courses/_aside_filters.scss';
 @import 'components/dashboard/_certification.scss';
 @import 'components/dashboard/_activity-list.scss';
 @import 'components/programmes/_diagnostic.scss';

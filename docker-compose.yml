@@ -67,7 +67,9 @@ services:
     ports:
       - "3035:3035"
     environment:
-      - WEBPACKER_DEV_SERVER_HOST=webpack
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+      - RAILS_ENV=development
+      - NODE_ENV=development
     networks:
       - main
 volumes:

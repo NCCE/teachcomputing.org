@@ -2,10 +2,14 @@ module Achiever
   class CourseFilter
     attr_reader :subjects, :age_groups
 
-    def initialize(filter_params:)
+    def initialize(filter_params = {})
       @filter_params = filter_params
-      @subjects = Achiever::Course::Subject.all
-      @age_groups = Achiever::Course::AgeGroup.all
+      @subjects ||= Achiever::Course::Subject.all
+      @age_groups ||= Achiever::Course::AgeGroup.all
+    end
+
+    def filter(filter_params:)
+      @filter_params = filter_params
     end
 
     def courses
@@ -23,6 +27,10 @@ module Achiever
 
         filter_courses(courses)
       end
+    end
+
+    def course_formats
+      @formats ||= ['Face to face', 'Online', 'Remote']
     end
 
     def course_locations
@@ -43,6 +51,10 @@ module Achiever
       return nil unless @filter_params[:certificate].present?
 
       @current_certificate ||= Programme.find_by(slug: @filter_params[:certificate])
+    end
+
+    def certificates
+      @certificates ||= Programme.pluck(:title)
     end
 
     def current_topic

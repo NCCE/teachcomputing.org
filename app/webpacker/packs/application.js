@@ -12,9 +12,8 @@
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
 import Rails from "@rails/ujs";
+import Turbolinks from "turbolinks";
 import 'cookieconsent'
 
 // JS
@@ -23,12 +22,15 @@ import "../javascript/cookie_notice";
 import "../javascript/courses";
 import "../javascript/ihavedonethis";
 
+// CSS
+import "../stylesheets/application";
+
 // Media
 require.context('../fonts', true);
 require.context('../images', true);
-// require.context('../pdf', true);
 
 Rails.start();
+Turbolinks.start();
 
 window.addEventListener('DOMContentLoaded', () => {
   document.body.className = `${document.body.className} js-enabled`.trim();

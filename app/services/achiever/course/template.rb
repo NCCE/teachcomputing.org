@@ -16,10 +16,10 @@ class Achiever::Course::Template
                 :workstream
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
-  QUERY_STRINGS = { 'Page': '1',
-                    'RecordCount': '1000',
-                    'HideFromweb': '0',
-                    'ProgrammeName': 'ncce' }.freeze
+  QUERY_STRINGS = { Page: '1',
+                    RecordCount: '1000',
+                    HideFromweb: '0',
+                    ProgrammeName: 'ncce' }.freeze
 
   def self.from_resource(template)
     new.tap do |t|

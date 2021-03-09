@@ -37,11 +37,16 @@
   height: 2.5rem;
   margin-right: 20px;
   padding-right: 30px;
+  width: 100%;
+
   @include govuk-media-query($until: 900px) {
     margin: 0 20px 20px 0;
   }
   @include govuk-media-query($until: tablet) {
     margin: 0 0 20px;
-    width: 100%;
   }
+}
+
+.ncce-label {
+  line-height: 2rem;
 }
