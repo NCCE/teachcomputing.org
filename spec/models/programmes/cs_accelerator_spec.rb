@@ -257,11 +257,25 @@ RSpec.describe Programmes::CSAccelerator do
     end
 
     context 'when user has multiple f2f achievements' do
-      it 'returns the first achievement' do
-        create_list(:achievement, 2, programme: programme, user: user)
-        earliest_achievement = create(:achievement, programme: programme, user: user,
-                                                    created_at: Time.now - 7.days)
+      let!(:earliest_achievement) do
+        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+      end
+      let!(:another_achievement) { create(:achievement, programme: programme, user: user) }
+      let!(:further_achievement) { create(:achievement, programme: programme, user: user) }
+
+      it 'returns the first achievement if none are complete' do
         expect(programme.compulsory_achievement(user)).to eq(earliest_achievement)
+      end
+
+      it 'returns the complete achievement if 1 is complete' do
+        another_achievement.transition_to(:complete)
+        expect(programme.compulsory_achievement(user)).to eq(another_achievement)
+      end
+
+      it 'returns the achievement completed first if multiple are complete' do
+        further_achievement.transition_to(:complete)
+        another_achievement.transition_to(:complete)
+        expect(programme.compulsory_achievement(user)).to eq(further_achievement)
       end
     end
 

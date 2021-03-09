@@ -55,7 +55,16 @@ module Programmes
     end
 
     def compulsory_achievement(user)
-      user.achievements.for_programme(self).with_category(Activity::FACE_TO_FACE_CATEGORY).first
+      achievements = user
+                     .achievements
+                     .for_programme(self)
+                     .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                     .order(:created_at)
+
+      complete = achievements.select { |ach| ach.in_state?(:complete) }
+      return complete.min_by { |x| x.last_transition.created_at } if complete.present?
+
+      achievements.first
     end
 
     def non_compulsory_achievements(user)
