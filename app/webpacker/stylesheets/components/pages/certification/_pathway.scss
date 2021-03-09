@@ -1,0 +1,82 @@
+.pathway-wrapper {
+  padding: 15px;
+  font-family: $font-family-body;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.pathway {
+  margin: 0;
+  padding: 0;
+
+  &__step {
+    position: relative;
+    padding-left: 45px;
+    list-style: none;
+
+
+    &-circle {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      width: 23px;
+      height: 23px;
+      color: $deep-cerulean;
+      background: $white;
+      border-radius: 100px;
+      border: solid 3px $deep-cerulean;
+      text-align: center;
+    }
+  }
+
+  &__step:after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 22px;
+    width: 0;
+    height: 100%;
+    margin-left: 10px;
+    border-left: dotted 3px $deep-cerulean;
+  }
+
+  &__step:last-child:after {
+    border-left: none;
+  }
+
+  &__step-title {
+    margin-bottom: 10px;
+  }
+}
+
+.pathway__item {
+	align-items: flex-start;
+ 	background-color: $white;
+  display: grid;
+	font-weight: bold;
+  grid-template-rows: auto auto auto;
+  margin-bottom: 0.5rem !important;
+  padding: 1.125rem 1.125rem;
+	padding-left: 0.5rem;
+  row-gap: 0;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 3fr auto;
+    grid-template-rows: auto auto;
+  	margin-bottom: 1rem !important;
+  }
+
+	.icon-resources {
+		padding-left: 40px;
+	}
+}
+
+.pathway__item--pdf {
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+

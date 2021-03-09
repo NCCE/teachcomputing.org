@@ -9,13 +9,16 @@ class PathwayDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     pathway_activities: Field::HasMany,
+    programme: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
     range: Field::Select.with_options(searchable: false, collection: { '1..10': '[1, 10)', '11..20': '[11, 20)' }),
     title: Field::String,
     slug: Field::String,
+    order: Field::Number,
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
+
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,6 +28,7 @@ class PathwayDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
+    order
     range
   ].freeze
 
@@ -32,10 +36,12 @@ class PathwayDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     pathway_activities
+    programme
     id
     range
     title
     slug
+    order
     description
     created_at
     updated_at
@@ -46,9 +52,11 @@ class PathwayDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     pathway_activities
+    programme
     range
     title
     slug
+    order
     description
   ].freeze
 

@@ -60,6 +60,10 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
 
+  config.before(:suite) do
+    Webpacker.compile
+  end
+
   config.before(:each, type: :system) do
     driven_by :chrome_headless
   end

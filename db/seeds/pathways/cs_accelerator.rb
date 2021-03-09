@@ -1,9 +1,14 @@
 puts 'Creating Pathways for CSA'
 
+prog_id = Programmes::CSAccelerator.find_by(slug: 'cs-accelerator').id
+
 pathway = Pathway.find_or_create_by(slug: 'advanced-gcse-computer-science') do |q|
   q.title = 'Advanced GCSE Computer Science'
   q.slug = 'advanced-gcse-computer-science'
   q.range = 0..0
+  q.pdf_link = 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf'
+  q.programme_id = prog_id
+  q.order = 4
 end
 
 # main
@@ -66,6 +71,9 @@ pathway = Pathway.find_or_create_by(slug: 'prepare-to-teach-gcse-computer-scienc
   q.title = 'Preparing to teach GCSE computer science'
   q.slug = 'prepare-to-teach-gcse-computer-science'
   q.range = 2..10
+  q.pdf_link = 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf'
+  q.programme_id = prog_id
+  q.order = 1
 end
 
 # main
@@ -80,12 +88,12 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
+activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
 end
 
-activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
+activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
@@ -112,19 +120,19 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2, supplementary: true)
 end
 
-activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
+activity = Activity.find_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3, supplementary: true)
 end
 
 # alternative online
 
-activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
+activity = Activity.find_by(future_learn_course_uuid: 'ffc6793d-5643-40c8-893a-0164844ca62f')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4, supplementary: true)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-9554-34f3aedc233f')
+activity = Activity.find_by(future_learn_course_uuid: 'd9fe6126-298f-48ed-8be3-b82e1c473566')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, supplementary: true)
 end
@@ -133,6 +141,9 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') d
   q.title = 'New to algorithms and programming'
   q.slug = 'new-to-algorithms-and-programming'
   q.range = 0..0
+  q.pdf_link = 'https://static.teachcomputing.org/pathways/03_New_to_algorithms_and_programming.pdf'
+  q.programme_id = prog_id
+  q.order = 2
 end
 
 # main
@@ -200,6 +211,9 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-computing') do |q|
   q.title = 'New to computing'
   q.slug = 'new-to-computing'
   q.range = 0..0
+  q.pdf_link = 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf'
+  q.programme_id = prog_id
+  q.order = 5
 end
 
 # main
@@ -219,17 +233,17 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
+activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
+activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
+activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6)
 end
@@ -278,6 +292,9 @@ pathway = Pathway.find_or_create_by(slug: 'new-to-computer-systems') do |q|
   q.title = 'New to computer systems'
   q.slug = 'new-to-computer-systems'
   q.range = 0..0
+  q.pdf_link = 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf'
+  q.programme_id = prog_id
+  q.order = 3
 end
 
 # main

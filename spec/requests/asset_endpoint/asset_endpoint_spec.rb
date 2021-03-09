@@ -12,7 +12,7 @@ RSpec.describe AssetEndpointController do
       end
 
       it 'redirects to the application CSS' do
-        expect(response.headers['Location']).to match(/assets\/application-([A-Za-z0-9]+)\.css/)
+        expect(response.headers['Location']).to match(/packs-test\/css\/application-([A-Za-z0-9]+)\.css/)
       end
     end
   end

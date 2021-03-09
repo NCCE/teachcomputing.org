@@ -97,7 +97,7 @@ Rails.application.routes.draw do
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user',
                                                as: :user_teacher_reference_number
 
-  get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
+  get '/404', to: 'pages#exception', defaults: { status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
@@ -106,7 +106,8 @@ Rails.application.routes.draw do
                                   defaults: { page_slug: 'accessibility-statement' }
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
-  get '/careers-week', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers-week', to: redirect('/careers')
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
@@ -149,6 +150,8 @@ Rails.application.routes.draw do
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
-  get '/:parent_slug/:page_slug', to: 'cms#cms_page'
-  get '/:page_slug', to: 'cms#cms_page'
+  constraints ->(req) { req.format == :html } do
+    get '/:parent_slug/:page_slug', to: 'cms#cms_page'
+    get '/:page_slug', to: 'cms#cms_page'
+  end
 end

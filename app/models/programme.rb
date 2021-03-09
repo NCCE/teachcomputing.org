@@ -12,8 +12,8 @@ class Programme < ApplicationRecord
   has_one  :assessment, dependent: :destroy
   has_one  :programme_complete_counter, dependent: :destroy
   has_many :achievements, dependent: :nullify
-  has_many  :questionnaire, dependent: :nullify
-  has_many  :questionnaire_response, dependent: :nullify
+  has_many :questionnaires, dependent: :nullify
+  has_many :pathways, dependent: :nullify
 
   validates :title, :description, :slug, presence: true
 
