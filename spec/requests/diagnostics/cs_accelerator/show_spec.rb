@@ -10,8 +10,13 @@ RSpec.describe Diagnostics::CSAcceleratorController do
 
   describe 'GET show' do
     before do
+      stub_feature_flags({ csa_questionnaire_enabled: true })
       cs_accelerator_questionnaire
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+    end
+
+    after do
+      unstub_feature_flags
     end
 
     context 'when the user has not completed the diagnostic' do
