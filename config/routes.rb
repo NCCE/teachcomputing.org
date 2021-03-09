@@ -99,7 +99,7 @@ Rails.application.routes.draw do
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user',
                                                as: :user_teacher_reference_number
 
-  get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
+  get '/404', to: 'pages#exception', defaults: { status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
@@ -154,6 +154,8 @@ Rails.application.routes.draw do
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
-  get '/:parent_slug/:page_slug', to: 'cms#cms_page'
-  get '/:page_slug', to: 'cms#cms_page'
+  constraints ->(req) { req.format == :html } do
+    get '/:parent_slug/:page_slug', to: 'cms#cms_page'
+    get '/:page_slug', to: 'cms#cms_page'
+  end
 end

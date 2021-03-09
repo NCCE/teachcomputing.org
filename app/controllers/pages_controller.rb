@@ -7,7 +7,10 @@ class PagesController < ApplicationController
   end
 
   def exception
-    render template: 'pages/exception', status: params[:status]
+    respond_to do |format|
+      format.html { render template: 'pages/exception', status: params[:status] }
+      format.all { render plain: params[:status], status: params[:status] }
+    end
   end
 
   def home
