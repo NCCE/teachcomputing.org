@@ -6,9 +6,10 @@
 
 .ncce-pathway-courses__short {
   background-color: $white;
-  border: none;
+  border-bottom: 1px solid $concrete;
   padding: 1px 1.125rem;
 }
+
 .ncce-pathway-courses__course {
   background: $foam;
   margin-bottom: 2px;

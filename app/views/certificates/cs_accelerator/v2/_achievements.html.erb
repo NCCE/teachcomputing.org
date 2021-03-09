@@ -1,7 +1,6 @@
-<div class="ncce-activity-list__item
-  <%= 'ncce-activity-list__item--incomplete' unless compulsory_achievement&.complete? %>
-  ncce-activity-list__item--borderless">
-  <span class="ncce-activity-list__item-text">
+<div class="ncce-csa-dash__objective
+  <%= 'ncce-csa-dash__objective--incomplete' unless compulsory_achievement&.complete? %>">
+  <span class="ncce-csa-dash__objective-text">
     Complete a face to face or remote course
   </span>
 </div>
@@ -34,10 +33,10 @@
 <% end %>
 
 
-<div class="ncce-activity-list__item
-  <%= 'ncce-activity-list__item--incomplete' unless user_completed_non_compulsory_achievement %>
-  ncce-activity-list__item--borderless">
-  <span class="ncce-activity-list__item-text">
+<div class="ncce-csa-dash__objective
+  <%= 'ncce-csa-dash__objective--incomplete' unless user_completed_non_compulsory_achievement %>
+  ncce-csa-dash__objective--borderless">
+  <span class="ncce-csa-dash__objective-text">
     Complete any other CS Accelerator course
   </span>
 </div>

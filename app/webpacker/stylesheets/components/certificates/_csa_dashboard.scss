@@ -3,7 +3,7 @@
   border: none;
   margin-bottom: 30px;
   &-padded {
-    padding: 1.25rem 1.125rem 1px;
+    padding: 1.25rem 1.125rem;
   }
 }
 
@@ -16,4 +16,48 @@
 .ncce-csa-dash__trn {
   height: 47px;
   width: 285px;
+}
+
+.ncce-csa-dash__objective {
+  align-items: flex-start;
+  background-color: $white;
+  display: grid;
+  grid-template-rows: auto auto;
+  padding: 0.5rem 1.125rem 1.125rem;
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 0.5rem;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.ncce-csa-dash__objective-text {
+  align-self: center;
+  background-image: url('../images/tick-blue.svg');
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 1.9rem;
+  font-size: 1.188rem;
+  grid-column: 1;
+  grid-row: 1;
+  line-height: 1.9rem;
+  margin-bottom: 0;
+  margin-top: 3px;
+  padding-left: 2.8rem;
+
+  @include govuk-media-query($until: 640px) {
+    font-size: 1rem;
+  }
+
+  &--incomplete {
+    background-image: url('../images/incomplete-achievement.svg');
+  }
+}
+
+.ncce-csa-dash__objective--incomplete {
+  .ncce-csa-dash__objective-text {
+    background-image: url('../images/incomplete-achievement.svg');
+  }
 }
