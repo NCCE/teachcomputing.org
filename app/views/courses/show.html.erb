@@ -13,16 +13,16 @@
         <div class="external-content govuk-!-margin-bottom-7">
           <h2 class="govuk-heading-s">Summary</h2>
           <%= @course.summary.html_safe %>
-          <h2 class="govuk-heading-s">Course leaders</h2>
-          <%= @course.course_leaders.html_safe %>
+          <h2 class="govuk-heading-s">Who is it for</h2>
+          <%= @course.who_is_it_for.html_safe %>
+          <h2 class="govuk-heading-s">Topics covered</h2>
+          <%= @course.topics_covered.html_safe %>
           <h2 class="govuk-heading-s">How long is this course</h2>
           <%= @course.how_long_is_the_course.html_safe %>
           <h2 class="govuk-heading-s">How will you learn</h2>
           <%= @course.how_will_you_learn.html_safe %>
-          <h2 class="govuk-heading-s">Topics covered</h2>
-          <%= @course.topics_covered.html_safe %>
-          <h2 class="govuk-heading-s">Who is it for</h2>
-          <%= @course.who_is_it_for.html_safe %>
+          <h2 class="govuk-heading-s">Course leaders</h2>
+          <%= @course.course_leaders.html_safe %>
         </div>
         <%= render 'courses/certificates-card' unless @programmes.nil? %>
       </div>
