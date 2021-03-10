@@ -11,27 +11,35 @@ function initialiseSections(className) {
 	const sectionToggleClass = className + '-section--visible'
 	// Get all the <h2> headings
 	const headings = document.querySelectorAll('.' + className)
+	let menuParent = null
+
 	Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
-
-		// heading.children[1].classList.add(sectionToggleClass)
-
 		heading.classList.add(headingToggleClass)
 
 		// Assign the list element
 		let btn = heading
 
-		btn.onclick = function btnOnClick() {
-			// Cast the state as a boolean
-			let expanded = btn.getAttribute('aria-expanded') === 'true' || false
+		const toggleMenu = event => {
+			if (event.key && event.key !== 'Tab') return;
+			debugger
 
-			heading.classList.toggle(headingToggleClass)
-			console.log("click")
-
-			// Switch the state
-			btn.setAttribute('aria-expanded', !expanded)
-			// Switch the content's visibility
-			heading.children[1].classList.toggle(sectionToggleClass)
+			if (event.currentTarget != menuParent) {
+				let expanded = btn.getAttribute('aria-expanded') === 'true' || false
+				btn.setAttribute('aria-expanded', !expanded)
+	
+				heading.classList.toggle(headingToggleClass)
+				// Switch the content's visibility
+				heading.children[1].classList.toggle(sectionToggleClass)
+				menuParent = event.currentTarget
+			} else {
+				menuParent = event.currentTarget
+			}
 		}
+
+		btn.onclick = toggleMenu
+		btn.onmouseover = toggleMenu
+		btn.onmouseout = toggleMenu
+		btn.onkeyup = toggleMenu
 	})
 }
 
