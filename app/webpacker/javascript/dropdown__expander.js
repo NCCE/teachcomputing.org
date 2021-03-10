@@ -1,53 +1,70 @@
 function ready(fn) {
-	if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-		fn();
-	} else {
-		document.addEventListener('DOMContentLoaded', fn);
-	}
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
 }
 
 function initialiseSections(className) {
-	const headingToggleClass = className + '--closed'
-	const sectionToggleClass = className + '-section--visible'
-	// Get all the <h2> headings
-	const headings = document.querySelectorAll('.' + className)
-	let menuParent = null
+  const headingToggleClass = className + '--closed'
+  const sectionToggleClass = className + '-section--visible'
+  const headings = document.querySelectorAll('.' + className) // Get all the <h2> headings
 
-	Array.prototype.forEach.call(headings, function iterateHeadings(heading) {
-		heading.classList.add(headingToggleClass)
+  Array.prototype.forEach.call(headings, (heading) => {
+    heading.classList.add(headingToggleClass)
 
-		// Assign the list element
-		let btn = heading
+    // Assign the list element
+    const btn = heading
+    const items = btn.children[1].children
+    const lastItem = items[items.length - 1]
 
-		const toggleMenu = event => {
-			if (event.key && event.key !== 'Tab') return;
-			debugger
+    const openMenu = (event) => {
+      btn.setAttribute('aria-expanded', 'true')
+      btn.classList.remove(headingToggleClass)
+      btn.children[1].classList.add(sectionToggleClass)
+    }
 
-			if (event.currentTarget != menuParent) {
-				let expanded = btn.getAttribute('aria-expanded') === 'true' || false
-				btn.setAttribute('aria-expanded', !expanded)
-	
-				heading.classList.toggle(headingToggleClass)
-				// Switch the content's visibility
-				heading.children[1].classList.toggle(sectionToggleClass)
-				menuParent = event.currentTarget
-			} else {
-				menuParent = event.currentTarget
-			}
-		}
+    const closeMenu = (event) => {
+      btn.setAttribute('aria-expanded', 'false')
+      btn.classList.add(headingToggleClass)
+      btn.children[1].classList.remove(sectionToggleClass)
+    }
 
-		btn.onclick = toggleMenu
-		btn.onmouseover = toggleMenu
-		btn.onmouseout = toggleMenu
-		btn.onkeyup = toggleMenu
-	})
+    const tabOpen = event => {
+      if (event.key && event.key !== 'Tab') return;
+      openMenu(event)
+    }
+
+    const tabClose = event => {
+      if (event.key && event.key !== 'Tab') return;
+      if (event.srcElement.innerText == lastItem.innerText) {
+        closeMenu(event)
+      }
+    }
+
+    const toggleMenu = (event) => {
+      if (event.currentTarget.getAttribute('aria-expanded') == 'true') {
+        closeMenu(event)
+      } else {
+        openMenu(event)
+      }
+    }
+
+    btn.onclick = toggleMenu // TODO should only happen on mobile & styling goes odd
+    btn.onmouseover = openMenu
+    btn.onmouseout = closeMenu
+
+    btn.addEventListener('focusin', tabOpen)
+    btn.addEventListener('focusout', tabClose)
+  })
 }
 
 
 
 ready(function () {
-	initialiseSections('dropdown__expander')
-	// When we can reload and scroll, re-introduce
-	// initialiseStickyFilterBar()
+  initialiseSections('dropdown__expander')
+  // When we can reload and scroll, re-introduce
+  // initialiseStickyFilterBar()
 })
 
