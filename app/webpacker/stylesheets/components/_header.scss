@@ -137,7 +137,7 @@
   }
 
   @include govuk-media-query($from: desktop) {
-    background-image: image-url('line.svg');
+    background-image: url('../images/line.svg');
     background-position: right center;
     background-repeat: no-repeat;
     background-size: 0.1rem;
@@ -174,13 +174,13 @@
 }
 
 .ncce-header__certification-item:hover > .ncce-header__certification-item--text, .ncce-header__certification-item[aria-expanded="true"] > .ncce-header__certification-item--text {
-  background-image: image-url('arrow-down.svg');
+  background-image: url('../images/arrow-down.svg');
   color: $white;
 }
 
 .ncce-header__certification-item--text,
 .ncce-header__certification-item--text[aria-expanded="true"] {
-  background-image: image-url('tick-blue-no-border.svg');
+  background-image: url('../images/tick-blue-no-border.svg');
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 0.7rem;
