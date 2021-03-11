@@ -52,7 +52,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#getting_started_prompt' do
     it 'renders the headers' do
-      expect(getting_started_prompt.subject).to include('Kick-start your CPD with our Computer Science Accelerator programme')
+      expect(getting_started_prompt.subject).to include('Achieve your subject knowledge certificate with the Computer Science Accelerator')
       expect(getting_started_prompt.to).to eq([user.email])
       expect(getting_started_prompt.from).to eq(['noreply@teachcomputing.org'])
     end
@@ -84,7 +84,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#auto_enrolled_welcome' do
     let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
-    let(:mail_subject) { 'Kick-start your CPD with our Computer Science Accelerator programme' }
+    let(:mail_subject) { 'Achieve your subject knowledge certificate with the Computer Science Accelerator' }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(mail_subject)

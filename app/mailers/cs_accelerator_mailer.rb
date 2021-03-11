@@ -47,7 +47,7 @@ class CSAcceleratorMailer < ApplicationMailer
 
   def auto_enrolled_welcome
     @user = params[:user]
-    @subject = 'Kick-start your CPD with our Computer Science Accelerator programme'
+    @subject = 'Achieve your subject knowledge certificate with the Computer Science Accelerator'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
   end
