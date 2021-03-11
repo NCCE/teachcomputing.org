@@ -7,74 +7,69 @@ function ready(fn) {
 }
 
 function initialiseSections(className) {
-  const headingToggleClass = className + '--closed'
+  const menuItemToggleClass = className + '--closed'
   const sectionToggleClass = className + '-section--visible'
-  const headings = document.querySelectorAll('.' + className) // Get all the <h2> headings
+  const menuItems = document.querySelectorAll('.' + className) // Get all the <h2> headings
 
-  Array.prototype.forEach.call(headings, (heading) => {
-    heading.classList.add(headingToggleClass)
+  const closeMenu = (menuItem) => {
+    menuItem.setAttribute('aria-expanded', 'false')
+    menuItem.classList.add(menuItemToggleClass)
+    menuItem.children[1].classList.remove(sectionToggleClass)
+  }
 
-    // Assign the list element
-    const btn = heading
-    const items = btn.children[1].children
-    const lastItem = items[items.length - 1]
-    let isOpen = false
+  const openMenu = (menuItem) => {
+    menuItem.setAttribute('aria-expanded', 'true')
+    menuItem.classList.remove(menuItemToggleClass)
+    menuItem.children[1].classList.add(sectionToggleClass)
+  }
 
-    const openMenu = event => {
-      event.preventDefault()
-      btn.setAttribute('aria-expanded', 'true')
-      btn.classList.remove(headingToggleClass)
-      btn.children[1].classList.add(sectionToggleClass)
+  menuItems.forEach(menuItem => {
+    if (!menuItem.classList.contains(menuItemToggleClass)) {
+      menuItem.classList.add(menuItemToggleClass)
     }
 
-    const closeMenu = event => {
-      event.preventDefault()
-      btn.setAttribute('aria-expanded', 'false')
-      btn.classList.add(headingToggleClass)
-      btn.children[1].classList.remove(sectionToggleClass)
-    }
+    const subMenuItems = menuItem.children[1].children
+    const lastSubMenuItem = subMenuItems[subMenuItems.length - 1]
 
-    const tabOpen = event => {
-      if (event.key && event.key !== 'Tab') return;
-      openMenu(event)
-    }
-
-    const tabClose = event => {
-      if (event.key && event.key !== 'Tab') return;
-      if (event.srcElement.innerText == lastItem.innerText) {
-        closeMenu(event)
-      }
-    }
-
-    const toggleMenu = (event) => {
-      if (isOpen) {
-        closeMenu(event)
-        isOpen = false
+    const toggleTabbedMenu = event => {
+      const { key, srcElement } = event
+      if (key !== 'Tab') return
+      if (srcElement.innerText == lastSubMenuItem.innerText) {
+        closeMenu(menuItem)
       } else {
-        openMenu(event)
-        isOpen = true
+        openMenu(menuItem)
       }
     }
 
-    const isDesktop = window.matchMedia('(min-width: 770px)').matches
-    if (isDesktop) {
-      btn.onmouseover = openMenu
-      btn.onmouseout = closeMenu
-    } else {
-      console.log('isMobile')
-      btn.onclick = toggleMenu
+    const toggleMenu = event => {
+      // Prevent mouse over & out events firing on mobile
+      const mouseEvents = ['mouseout', 'mouseover']
+      if (!window.matchMedia('(min-width: 770px)').matches
+        && mouseEvents.includes(event.type)) {
+        return
+      }
+
+      if (menuItem.classList.contains(menuItemToggleClass)) {
+        openMenu(menuItem)
+      } else {
+        closeMenu(menuItem)
+      }
     }
 
-    btn.addEventListener('focusin', tabOpen)
-    btn.addEventListener('focusout', tabClose)
+    menuItem.addEventListener('mouseover', toggleMenu)
+    menuItem.addEventListener('mouseout', toggleMenu)
+    menuItem.addEventListener('click', toggleMenu)
+    menuItem.addEventListener('keydown', toggleTabbedMenu)
+  })
+
+  const closeAllMenus = () => menuItems.forEach(menuItem => closeMenu(menuItem))
+  window.addEventListener('resize', closeAllMenus)
+  window.addEventListener('keydown', event => {
+    if (event.key == 'Escape') closeAllMenus()
   })
 }
 
-
-
 ready(function () {
   initialiseSections('dropdown__expander')
-  // When we can reload and scroll, re-introduce
-  // initialiseStickyFilterBar()
 })
 

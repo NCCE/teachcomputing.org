@@ -135,6 +135,10 @@
     background-image: none;
   }
 
+  @include govuk-media-query($until: desktop) {
+    outline: none;
+  }
+
   @include govuk-media-query($from: desktop) {
     background-image: url('../images/line.svg');
     background-position: right center;
