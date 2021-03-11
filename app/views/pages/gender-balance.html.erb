@@ -1,7 +1,7 @@
 <% meta_tag :title, 'Gender Balance in Computing' %>
 <% meta_tag :description, 'Help us find the best ways to encourage young women to study Computer Science' %>
 <% meta_tag :url, request.original_url %>
-<% meta_tag :image, image_url('/images/gender-balance/hero.jpg', skip_pipeline: true) %>
+<% meta_tag :image, asset_pack_path('media/images/gender-balance/hero.jpg') %>
 <% meta_tag :image_alt, 'Gender balance' %>
 <div class="tapestry-bg">
   <div class="govuk-width-container">
@@ -12,7 +12,7 @@
           <p class="govuk-body-l">Help us find the best ways to encourage young women to study Computer Science.</p>
         </div>
         <div class="text-photo-hero__block--photo">
-          <%= image_tag '/images/gender-balance/hero.jpg', alt: '' %>
+          <%= image_pack_tag 'media/images/gender-balance/hero.jpg', alt: '' %>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
               “For me, the most interesting thing is understanding behaviours - I enjoy and learn more when we go above and beyond current technology and think more about everyday habits and general consumer behaviour.”
             </p>
             <div class="testimonial__bio">
-    					<%= image_tag '/images/careers-week/swetha.jpg', alt: 'Swetha Sethu-Jones', class: 'testimonial__image' %>
+    					<%= image_pack_tag 'media/images/careers-week/swetha.jpg', alt: 'Swetha Sethu-Jones', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Swetha Sethu-Jones</strong><br>
                 Senior UX Researcher<br>
@@ -91,7 +91,7 @@
               “The thing I love is when you read stories about how Alexa has helped people. The leader of a charity for blind people said how much Alexa has helped him, because its users are now able to access RNIB-verified information via voice commands.”
             </p>
             <div class="testimonial__bio">
-              <%= image_tag '/images/careers-week/beth.jpg', alt: 'Beth Holmes', class: 'testimonial__image' %>
+              <%= image_pack_tag 'media/images/careers-week/beth.jpg', alt: 'Beth Holmes', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Beth Holmes</strong><br>
                 Knowledge Engineer<br>
@@ -109,7 +109,7 @@
               “I think computer science is super interesting and can help tackle all sorts of real-world problems. There are still so many open research questions and computer science is definitely a valuable skill in academia!”
             </p>
             <div class="testimonial__bio">
-            	<%= image_tag '/images/careers-week/risa.jpg', alt: 'Risa Ueno', class: 'testimonial__image' %>
+            	<%= image_pack_tag 'media/images/careers-week/risa.jpg', alt: 'Risa Ueno', class: 'testimonial__image' %>
               <p class="govuk-body-s">
                 <strong>Risa Ueno</strong><br>
                 PhD student<br>

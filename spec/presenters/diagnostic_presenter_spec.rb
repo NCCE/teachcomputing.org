@@ -9,7 +9,7 @@ RSpec.describe DiagnosticPresenter do
   end
 
   describe('button_url') do
-    it { expect(empty_presenter.button_url).to start_with('/certificate/cs-accelerator/diagnostic') }
+    it { expect(empty_presenter.button_url).to start_with('/certificate/cs-accelerator/class_marker_diagnostic') }
   end
 
   describe('completed_text') do

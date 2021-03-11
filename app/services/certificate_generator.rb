@@ -1,7 +1,7 @@
 class CertificateGenerator
   def initialize(user:, programme:, transition:, dependencies: {})
     @src_path = dependencies.fetch(:src_path) do
-      File.join(Rails.root, 'app', 'assets', 'pdf', "#{programme.slug}-src.pdf")
+      File.join(Rails.root, 'app', 'webpacker', 'pdf', "#{programme.slug}-src.pdf")
     end
 
     @output_path = dependencies.fetch(:output_path) do
@@ -22,8 +22,8 @@ class CertificateGenerator
 
     Prawn::Document.generate(@output_path) do
       font_families.update('Roboto' => {
-                             normal: Rails.root.join('app', 'assets', 'fonts', 'Roboto-Regular.ttf').to_s,
-                             bold: Rails.root.join('app', 'assets', 'fonts', 'Roboto-Bold.ttf').to_s
+                             normal: Rails.root.join('app', 'webpacker', 'fonts', 'Roboto-Regular.ttf').to_s,
+                             bold: Rails.root.join('app', 'webpacker', 'fonts', 'Roboto-Bold.ttf').to_s
                            })
       font 'Roboto'
 

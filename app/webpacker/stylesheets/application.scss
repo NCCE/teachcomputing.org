@@ -1,0 +1,64 @@
+
+// Override Gov UK fonts & colours
+@import 'settings/_fonts.scss';
+@import 'settings/_colors.scss';
+
+@import 'govuk-frontend/all';
+
+// import NCCE settings
+@import 'settings/_links.scss';
+@import 'settings/_section-breaks.scss';
+@import 'settings/_typography.scss';
+@import 'settings/_layout.scss';
+@import 'settings/_device-behaviour.scss';
+
+// import NCCE components
+@import 'components/_cookie-notice.scss';
+@import 'components/_notice.scss';
+@import 'components/_footer.scss';
+@import 'components/_header.scss';
+@import 'components/_tags.scss';
+@import 'components/_flash.scss';
+@import 'components/_button.scss';
+@import 'components/_form-fields.scss';
+@import 'components/_aside.scss';
+@import 'components/_card.scss';
+@import 'components/_text-photo-hero.scss';
+@import 'components/_icons.scss';
+@import 'components/_testimonial.scss';
+@import 'components/_headings.scss';
+@import 'components/pages/home/_certificates.scss';
+@import 'components/pages/home/_confidence.scss';
+@import 'components/pages/home/_featured.scss';
+@import 'components/pages/home/_hero.scss';
+@import 'components/pages/_careers-week.scss';
+@import 'components/pages/certification/_cs-accelerator.scss';
+@import 'components/pages/certification/_hero.scss';
+@import 'components/pages/certification/_pathway.scss';
+@import 'components/pages/_curriculum.scss';
+@import 'components/pages/_hubs.scss';
+@import 'components/pages/_landing-page.scss';
+@import 'components/pages/_news.scss';
+@import 'components/pages/_padded-box.scss';
+@import 'components/pages/_supporting-partners.scss';
+@import 'components/courses/_courses.scss';
+@import 'components/courses/_landing-page.scss';
+@import 'components/dashboard/_certification.scss';
+@import 'components/dashboard/_activity-list.scss';
+@import 'components/programmes/_diagnostic.scss';
+@import 'components/programmes/_view-certificate.scss';
+@import 'components/programmes/_bursary-info.scss';
+@import 'components/programmes/_ihavedonethis.scss';
+@import 'components/programmes/_recommendation.scss';
+@import 'components/programmes/_complete.scss';
+@import 'components/_table.scss';
+@import 'components/_confirmation.scss';
+@import 'components/_external-content.scss';
+
+// Blog styles
+
+@import 'components/blog/_ghost-news-feed.scss';
+
+// CMS styles
+
+@import 'components/cms/_shared.scss';

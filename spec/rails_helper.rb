@@ -25,7 +25,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-require 'capybara/rspec'
 Capybara.server = :puma, { Silent: true }
 Capybara.default_driver = :chrome_headless
 Capybara.register_driver :chrome_headless do |app|
@@ -60,6 +59,10 @@ RSpec.configure do |config|
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
+
+  config.before(:suite) do
+    Webpacker.compile
+  end
 
   config.before(:each, type: :system) do
     driven_by :chrome_headless

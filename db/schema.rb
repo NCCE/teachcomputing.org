@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_085220) do
+ActiveRecord::Schema.define(version: 2021_02_25_090132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_programme_enrolment_id"], name: "index_achiever_sync_records_on_user_programme_enrolment_id"
+  end
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -89,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
     t.text "self_verification_info"
     t.boolean "uploadable", default: false
     t.string "stem_activity_code"
+    t.boolean "remote_delivered_cpd", default: false
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -130,10 +141,10 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
   create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "pathway_id", null: false
     t.uuid "activity_id", null: false
-    t.integer "activity_type", null: false
     t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "supplementary", default: false
     t.index ["activity_id"], name: "index_pathway_activities_on_activity_id"
     t.index ["pathway_id"], name: "index_pathway_activities_on_pathway_id"
   end
@@ -144,6 +155,12 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug", null: false
+    t.string "pdf_link"
+    t.uuid "programme_id", null: false
+    t.integer "order"
+    t.index ["programme_id"], name: "index_pathways_on_programme_id"
+    t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
 
   create_table "programme_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -200,14 +217,12 @@ ActiveRecord::Schema.define(version: 2021_01_27_085220) do
   create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "questionnaire_id", null: false
     t.uuid "user_id", null: false
-    t.uuid "programme_id", null: false
     t.integer "current_question", default: 1
     t.json "answers", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["programme_id", "user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
-    t.index ["programme_id"], name: "index_questionnaire_responses_on_programme_id"
     t.index ["questionnaire_id"], name: "index_questionnaire_responses_on_questionnaire_id"
+    t.index ["user_id", "questionnaire_id"], name: "index_one_questionnaire_per_user", unique: true
     t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"
   end
 

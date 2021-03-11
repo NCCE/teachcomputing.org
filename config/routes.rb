@@ -2,18 +2,24 @@ Rails.application.routes.draw do
   root to: 'pages#home', action: :home
 
   resources :achievements, only: %i[create destroy]
+  namespace :admin do
+    root to: 'pathways#index'
+    resources :activities
+    resources :pathways
+    resources :pathway_activities
+  end
 
-  namespace 'admin' do
+  namespace :api do
     delete '/cache', to: 'cache#destroy'
-    resources :imports, only: %i[index new create]
-    resources :activities, only: %i[index]
     get '/users', to: 'users#show'
     resources :users, only: %i[] do
       resources :achievements, only: %i[create] do
         post 'complete', action: :complete
       end
     end
+    resources :activities, only: %i[index]
     resources :user_programme_enrolments, only: %i[show] do
+      resources :activities, only: %i[index]
       post '/complete', action: :complete
       post '/enrolled', action: :enrolled
       post '/flag', action: :flag
@@ -49,7 +55,10 @@ Rails.application.routes.draw do
                                as: :cs_accelerator_certificate do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
-      get '/diagnostic/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
+      get '/questionnaire/:id', to: '/diagnostics/cs_accelerator#show', as: :diagnostic
+      put '/questionnaire/:id', to: '/diagnostics/cs_accelerator#update', as: :update_diagnostic
+      get '/class_marker_diagnostic/:id', to: '/diagnostics/class_marker/cs_accelerator#show',
+                                          as: :class_marker_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
@@ -88,7 +97,7 @@ Rails.application.routes.draw do
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user',
                                                as: :user_teacher_reference_number
 
-  get '/404', to: 'pages#exception', defaults: { format: 'html', status: 404 }
+  get '/404', to: 'pages#exception', defaults: { status: 404 }
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
@@ -97,7 +106,8 @@ Rails.application.routes.draw do
                                   defaults: { page_slug: 'accessibility-statement' }
   get '/auth/stem', to: redirect('/login')
   get '/auth/callback', to: 'auth#callback', as: 'callback'
-  get '/careers-week', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers', to: 'pages#page', as: :careers_week, defaults: { page_slug: 'careers-week' }
+  get '/careers-week', to: redirect('/careers')
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
@@ -141,6 +151,8 @@ Rails.application.routes.draw do
   get '/:parent_slug/:page_slug/refresh', to: 'cms#clear_page_cache'
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
-  get '/:parent_slug/:page_slug', to: 'cms#cms_page'
-  get '/:page_slug', to: 'cms#cms_page'
+  constraints ->(req) { req.format == :html } do
+    get '/:parent_slug/:page_slug', to: 'cms#cms_page'
+    get '/:page_slug', to: 'cms#cms_page'
+  end
 end

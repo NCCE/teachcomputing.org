@@ -19,7 +19,9 @@ RSpec.describe Certificates::CSAcceleratorController do
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
-  let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
+  let(:exam_programme_activity) do
+    create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id)
+  end
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   let(:setup_achievements_for_programme) do
@@ -54,34 +56,73 @@ RSpec.describe Certificates::CSAcceleratorController do
           get cs_accelerator_certificate_path
         end
 
-        it 'renders the correct template' do
-          expect(response).to render_template('show')
+        context 'when the user has not completed the diagnostic' do
+          # Remove before() and after() when the feature is released
+          before do
+            ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'true'
+          end
+
+          after do
+            ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'false'
+          end
+
+          it 'redirects to the diagnostic path' do
+            get cs_accelerator_certificate_path
+            expect(response)
+              .to redirect_to(diagnostic_cs_accelerator_certificate_path(:question_1))
+          end
+
+          it 'redirects to last question completed' do
+            create(:questionnaire_response,
+                   user: user,
+                   questionnaire: create(:questionnaire, :cs_accelerator_enrolment_questionnaire),
+                   current_question: 3)
+            get cs_accelerator_certificate_path
+            expect(response)
+              .to redirect_to(diagnostic_cs_accelerator_certificate_path(:question_3))
+          end
         end
 
-        it 'assigns the correct programme' do
-          expect(assigns(:programme)).to eq programme
-        end
+        context 'when the user has completed the diagnostic' do
+          before do
+            create(:activity, :community_5)
+            create_list(:activity, 3, :community)
+            create_list(:activity, 4, :community_20)
+            questionnaire_response = create(:questionnaire_response,
+                                            user: user,
+                                            questionnaire: create(:questionnaire,
+                                                                  :cs_accelerator_enrolment_questionnaire))
+            questionnaire_response.transition_to(:complete)
+            get cs_accelerator_certificate_path
+          end
 
-        it 'assigns the online achievements' do
-          expect(assigns(:online_achievements)).to include(online_achievement)
-        end
+          it 'renders the correct template' do
+            expect(response).to render_template('show')
+          end
 
-        it 'assigns the face to face achievements' do
-          expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
-        end
+          it 'assigns the correct programme' do
+            expect(assigns(:programme)).to eq programme
+          end
 
-        it 'assigns the assessments' do
-          expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
-        end
-      end
+          it 'assigns the online achievements' do
+            expect(assigns(:online_achievements)).to include(online_achievement)
+          end
 
-      context 'when user has completed course' do
-        it 'redirects to complete_path' do
-          user_programme_enrolment.transition_to(:complete)
+          it 'assigns the face to face achievements' do
+            expect(assigns(:face_to_face_achievements)).to include(face_to_face_achievement)
+          end
 
-          get cs_accelerator_certificate_path
-          expect(response)
-            .to redirect_to(complete_cs_accelerator_certificate_path)
+          it 'assigns the assessments' do
+            expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
+          end
+
+          it 'redirects to complete_path on completion' do
+            user_programme_enrolment.transition_to(:complete)
+
+            get cs_accelerator_certificate_path
+            expect(response)
+              .to redirect_to(complete_cs_accelerator_certificate_path)
+          end
         end
       end
     end

@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'activestorage-validator'
+gem 'administrate'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'aws-sdk-s3', require: false
@@ -37,14 +38,13 @@ gem 'rails', '~> 6.1'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
-gem 'sass-rails', '~> 5.0'
 gem 'sentry-raven', '~> 3.0'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
 gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 5.0'
+gem 'uglifier', '>= 4.2'
+gem 'webpacker', '~> 5.x'
 gem 'wicked', '~> 1.3.4'
 # must match the version used to generate the schema
 gem 'graphql', '<= 1.10.10'
@@ -53,13 +53,15 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'debase', '0.2.3'
+  gem 'debase', '~> 0.2.4'
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
   gem 'guard-rspec', '~> 4.7.3', require: false
-  gem 'pry', '~> 0.12.2'
+  gem 'interception'
+  gem 'pry'
   gem 'pry-byebug'
+  gem 'pry-rescue'
   gem 'reek'
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 4.0'
@@ -67,6 +69,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'ruby-debug-ide'
+  gem 'ruby_jard'
   gem 'solargraph'
   gem 'webmock'
 end
@@ -77,6 +80,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'rack-mini-profiler', '~> 2.3.1', require: false
 end
 
 group :test do
