@@ -18,14 +18,17 @@ function initialiseSections(className) {
     const btn = heading
     const items = btn.children[1].children
     const lastItem = items[items.length - 1]
+    let isOpen = false
 
-    const openMenu = (event) => {
+    const openMenu = event => {
+      event.preventDefault()
       btn.setAttribute('aria-expanded', 'true')
       btn.classList.remove(headingToggleClass)
       btn.children[1].classList.add(sectionToggleClass)
     }
 
-    const closeMenu = (event) => {
+    const closeMenu = event => {
+      event.preventDefault()
       btn.setAttribute('aria-expanded', 'false')
       btn.classList.add(headingToggleClass)
       btn.children[1].classList.remove(sectionToggleClass)
@@ -44,16 +47,23 @@ function initialiseSections(className) {
     }
 
     const toggleMenu = (event) => {
-      if (event.currentTarget.getAttribute('aria-expanded') == 'true') {
+      if (isOpen) {
         closeMenu(event)
+        isOpen = false
       } else {
         openMenu(event)
+        isOpen = true
       }
     }
 
-    btn.onclick = toggleMenu // TODO should only happen on mobile & styling goes odd
-    btn.onmouseover = openMenu
-    btn.onmouseout = closeMenu
+    const isDesktop = window.matchMedia('(min-width: 770px)').matches
+    if (isDesktop) {
+      btn.onmouseover = openMenu
+      btn.onmouseout = closeMenu
+    } else {
+      console.log('isMobile')
+      btn.onclick = toggleMenu
+    }
 
     btn.addEventListener('focusin', tabOpen)
     btn.addEventListener('focusout', tabClose)
