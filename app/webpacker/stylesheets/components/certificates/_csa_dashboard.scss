@@ -1,7 +1,7 @@
 .ncce-csa-dash__section {
   background-color: $white;
   border: none;
-  margin-bottom: 30px;
+  @include bottom-margined;
   &-padded {
     padding: 1.25rem 1.125rem;
   }

@@ -1,11 +1,10 @@
 .ncce-bursary-aside {
-  // background-color: $white;
   background-image: url('../images/icon-pound.svg');
   background-position: 0 1rem;
   background-repeat: no-repeat;
   background-size: 1.2rem;
-  margin-bottom: 2rem;
-  padding: 0.5rem 0;
+  padding-top: 0.5rem;
+  @include bottom-margined;
 }
 
 .ncce-bursary-aside__text {

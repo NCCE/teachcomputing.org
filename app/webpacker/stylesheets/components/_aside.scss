@@ -14,7 +14,7 @@ $aside-padding: 1rem;
 }
 
 .ncce-pathway-aside {
-  margin-bottom: 2rem;
+  @include bottom-margined;
 }
 
 .ncce-pathway-aside__select {
