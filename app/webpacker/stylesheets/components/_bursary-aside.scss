@@ -1,23 +1,23 @@
-.bursary-aside {
-  background-color: $white;
+.ncce-bursary-aside {
+  // background-color: $white;
   background-image: url('../images/icon-pound.svg');
-  background-position: 1rem 1.8rem;
+  background-position: 0 1rem;
   background-repeat: no-repeat;
   background-size: 1.2rem;
   margin-bottom: 2rem;
-  padding: 1.25rem 1.125rem;
+  padding: 0.5rem 0;
 }
 
-.bursary-aside__text {
+.ncce-bursary-aside__text {
   margin-bottom: 1rem;
 }
 
-.bursary-aside__link {
+.ncce-bursary-aside__link {
   font-weight: bold;
   margin-bottom: 0;
 }
 
-.bursary-aside__heading {
+.ncce-bursary-aside__heading {
   padding-left: 2rem;
   padding-top: 12px;
 

@@ -1,4 +1,4 @@
-<div class="ncce-pathway-aside">
+<div class="ncce-aside ncce-pathway-aside">
   <% if user_pathway.present? %>
     <h2 class="govuk-heading-s">
       Not sure this is the right pathway for you? See what our other pathways include:
@@ -12,11 +12,29 @@
       Our learning pathways will help you to get started and offer a structured route through the programme:
     </p>
   <% end %>
-  <ul class="govuk-list ">
+  <ul class="govuk-list govuk-body-s">
     <% other_programme_pathways_for_user.each do |pathway| %>
       <li>
         <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
       </li>
     <% end %>
   </ul>
+  <% if user_pathway.present? %>
+    <h2 class="govuk-heading-s">
+      Select your new pathway:
+    </h2>
+
+    <%= form_tag update_user_pathway_cs_accelerator_certificate_path, { method: :put, class: '' } do %>
+        <%= select_tag :pathway_id,
+          options_for_select(other_programme_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
+          {
+            include_blank: 'choose your new pathway',
+            class: 'govuk-select ncce-select ncce-pathway-aside__select',
+            'aria-label': 'Choose your new pathway',
+            required: true
+          }
+        %>
+        <%= submit_tag 'Change your pathway', class: 'govuk-button button govuk-!-margin-bottom-4' %>
+    <% end %>
+  <% end %>
 </div>

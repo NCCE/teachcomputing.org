@@ -63,6 +63,7 @@ Rails.application.routes.draw do
                                defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
       get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
+      put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
     end
 
     namespace 'cs_accelerator' do
