@@ -146,7 +146,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to teachcomputing' do
         expect(mail.text_part.body)
-          .to match(%r{TeachComputing.org. \(https://teachcomputing.org/\)})
+          .to match(%r{TeachComputing.org \(https://teachcomputing.org/\)})
       end
 
       it 'contains link to handbook' do
@@ -161,17 +161,17 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to bursary' do
         expect(mail.text_part.body)
-          .to match(%r{Check your eligibility https://teachcomputing.org/bursary})
+          .to match(%r{Check your eligibility \(https://teachcomputing.org/bursary\)})
       end
 
       it 'contains mail_to link' do
         expect(mail.text_part.body)
-          .to match(/Contact CSChampionSupport@stem.org.uk/)
+          .to match(/Contact (CSChampionSupport@stem.org.uk)/)
       end
 
       it 'contains opt-out link' do
         expect(mail.text_part.body)
-          .to match(/let us know \(#{unenroll__cs_accelerator_auto_enrolment_url}\)/)
+          .to match(/let us know, \(#{unenroll__cs_accelerator_auto_enrolment_url}\)/)
       end
 
       it 'contains link to cs_accelerator' do
