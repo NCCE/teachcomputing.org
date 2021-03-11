@@ -40,7 +40,7 @@ class CSAcceleratorMailer < ApplicationMailer
   def manual_enrolled_welcome
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = 'Welcome to the Computer Science Accelerator'
+    @subject = 'Welcome to our subject knowledge certificate'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
   end
