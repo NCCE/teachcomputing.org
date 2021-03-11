@@ -52,7 +52,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#getting_started_prompt' do
     it 'renders the headers' do
-      expect(getting_started_prompt.subject).to include('Achieve your subject knowledge certificate with the Computer Science Accelerator')
+      expect(getting_started_prompt.subject).to include('Kick-start your CPD and achieve a national qualification')
       expect(getting_started_prompt.to).to eq([user.email])
       expect(getting_started_prompt.from).to eq(['noreply@teachcomputing.org'])
     end

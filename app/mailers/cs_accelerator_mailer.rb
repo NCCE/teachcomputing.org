@@ -24,7 +24,7 @@ class CSAcceleratorMailer < ApplicationMailer
   def getting_started_prompt
     @user = params[:user]
     @enrolment_id = params[:enrolment_id]
-    @subject = 'Kick-start your CPD with our Computer Science Accelerator programme'
+    @subject = 'Kick-start your CPD and achieve a national qualification'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
   end
