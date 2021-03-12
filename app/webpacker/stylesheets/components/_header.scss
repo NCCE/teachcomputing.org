@@ -227,7 +227,7 @@
 
   @include govuk-media-query($from: desktop) {
     margin: 0;
-    background-position: right;
+    background-position: right 10px center;
   }
 }
 
