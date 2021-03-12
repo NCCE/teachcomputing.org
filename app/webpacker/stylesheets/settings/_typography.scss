@@ -27,3 +27,21 @@
   position: absolute;
   width: 1px;
 }
+
+.ncce-inside-list {
+  list-style: none;
+  list-style-position: inside;
+  padding-left: 0;
+
+  li::before {
+    background: $grey-dark-x;
+    border-radius: 50%;
+    bottom: 4px;
+    content: ' ';
+    display: inline-block;
+    height: 4px;
+    margin-right: 2px;
+    position: relative;
+    width: 4px;
+  }
+}
