@@ -16,13 +16,12 @@
   // width: fill-available;
   width: stretch;
   min-width: 10rem;
-  padding: 1.5rem 1rem 1rem 2rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   transition: all 0.5s ease;
   visibility: hidden;
 
   @include govuk-media-query($from: desktop) {
     box-shadow: 0 0 5px $box-shadow;
-    padding: 1.5rem 1rem 1rem 1rem;
     position: absolute;
   }
 }
