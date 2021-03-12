@@ -12,5 +12,9 @@ FactoryBot.define do
     trait :cs_accelerator_enrolment_questionnaire do
       slug { 'cs-accelerator-enrolment-questionnaire' }
     end
+
+    factory :csa_enrolment_questionnaire do
+      slug { 'cs-accelerator-enrolment-questionnaire' }
+    end
   end
 end

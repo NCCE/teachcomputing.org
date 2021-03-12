@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :pathway_activity do
     pathway
     activity
-    order { 1 }
+    sequence(:order) { |n| n }
   end
 end

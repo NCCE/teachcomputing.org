@@ -1,0 +1,50 @@
+<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded" id="csa-test" >
+  <p class="govuk-body govuk-!-margin-0">
+    Want to practice for the test?
+    <%= link_to 'Take our mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link' %>
+  </p>
+</div>
+
+<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded">
+  <p class="govuk-body">
+    Ready to take your test?
+  </p>
+
+  <% if user_programme_assessment.currently_taking_test? %>
+    <p class="govuk-body govuk-!-margin-0">
+      You are currently taking the test.  If you have recently failed, please come back in 2 hours.
+    </p>
+  <% elsif user_programme_assessment.can_take_test_at != 0 %>
+    <p class="govuk-body govuk-!-margin-0">
+      Your <%= to_word_ordinal(user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!
+    </p>
+  <% else %>
+    <%= form_for(current_user,
+                method: :post,
+                url: assessment_attempts_path(assessment_attempt: {
+                  assessment_id: @programme.assessment.id,
+                  user_id: current_user
+                })) do |f| %>
+      <p class="govuk-body-s">
+        <strong>Teacher reference number (TRN)</strong> <%= link_to "what's this?", 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>
+      </p>
+
+      <div class="ncce-flex__space-between">
+        <%= f.text_field :teacher_reference_number,
+            class: 'govuk-input ncce-input ncce-csa-dash__trn',
+            'aria-label': 'Enter your teacher reference number',
+            placeholder: 'optional',
+            value: current_user.teacher_reference_number
+        %>
+        <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4' %>
+      </div>
+    <% end %>
+    <div class="ncce-csa-dash__sub-section">
+      <p class="govuk-body-s">
+        You’ll have 30 minutes to answer 25 multiple-choice questions and you must complete it in one sitting.
+        The pass mark is 65%. You’re allowed two initial attempts at the test before a 48 hour cool off
+        period between each subsequent attempt. Good luck!
+      </p>
+    </div>
+  <% end %>
+</div>

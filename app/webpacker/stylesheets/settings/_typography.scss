@@ -28,6 +28,21 @@
   width: 1px;
 }
 
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 .ncce-inside-list {
   list-style: none;
   list-style-position: inside;

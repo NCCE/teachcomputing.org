@@ -238,6 +238,8 @@
 
 .dark_card--image-wide {
   @include govuk-media-query($from: desktop) {
+    height: 81px;
     max-width: 22rem;
+    width: auto;
   }
 }

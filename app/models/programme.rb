@@ -39,7 +39,7 @@ class Programme < ApplicationRecord
     0
   end
 
-  def enough_activites_for_test?(_user)
+  def enough_activities_for_test?(_user)
     false
   end
 
@@ -90,4 +90,8 @@ class Programme < ApplicationRecord
   def enrol_path(opts = {}); end
 
   def programme_title; end
+
+  def pathways_excluding(pathway)
+    pathways.where.not(id: pathway&.id).ordered
+  end
 end

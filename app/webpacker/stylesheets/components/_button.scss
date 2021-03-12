@@ -117,3 +117,28 @@
     width: 100%;
   }
 }
+
+.ncce-link-button {
+  background: none;
+  border: 0;
+  color: $deep-cerulean;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover {
+    color: $grey-dark-x;
+  }
+  &:focus {
+    background-color: $deep-cerulean;
+    color: $white;
+    outline-color: $deep-cerulean;
+  }
+
+  &:active {
+    background-color: $deep-cerulean;
+    color: $white;
+  }
+}
