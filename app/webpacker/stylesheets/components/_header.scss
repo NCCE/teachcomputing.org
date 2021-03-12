@@ -224,21 +224,12 @@
 }
 
 .ncce-header__certification-item--text:hover {
-  //margin: 0 15px;
-  //background-position: right 38px center;
 
   @include govuk-media-query($from: desktop) {
     margin: 0;
     background-position: right;
   }
 }
-
-// .ncce-header__certification-item--text:hover,
-// .ncce-header__certification-item--text:focus-within {
-//   background-color: $deep-cerulean;
-//   color: $white !important;
-//   //padding: 0.3rem 20px 0.3rem 0.3rem;
-// }
 
 /// links
 .govuk-header__link {
