@@ -6,7 +6,7 @@ module Dynamics
     def user
       user = User.find_by(stem_achiever_contact_no: request[:stem_achiever_contact_no])
       Rails.logger.warn request[:stem_achiever_contact_no]
-      Rails.logger.warn request.headers
+      Rails.logger.warn request.headers.inspect
       Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user) if user
 
       head :ok
