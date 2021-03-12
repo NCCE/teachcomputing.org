@@ -3,8 +3,6 @@ $logo-block: 40px;
 
 $v-space: 40px;
 $v-space-large: 54px;
-// $v-space-small: 1.5rem;
-// $v-space-tiny: 0.5rem;
 
 $v-space-mobile: 30px;
 $v-space-large-mobile: 42px;
@@ -49,6 +47,10 @@ $v-space-large-mobile: 42px;
   clear: both;
   content: '';
   display: table;
+}
+
+.ncce-centered {
+  text-align: center;
 }
 
 @mixin bottom-margined {

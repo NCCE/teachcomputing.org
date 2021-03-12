@@ -3,7 +3,7 @@
 		<div class="curriculum__tiles">
       <% unless unit.unit_guide.nil? %>
         <div class="curriculum__tile">
-          <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to 'Unit guide', generate_download_url(unit.unit_guide), class: 'govuk-link ncce-link' %></h3>
+          <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to 'Unit overview', generate_download_url(unit.unit_guide), class: 'govuk-link ncce-link' %></h3>
         </div>
       <% end %>
       <% unit.learning_graphs.each do |learning_graph_url| %>

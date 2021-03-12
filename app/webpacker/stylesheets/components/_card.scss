@@ -120,7 +120,7 @@
 
 .shadow_card > .status-block {
   @include status_block();
-  border: 2px solid $grey-dark-x;
+  border: 1px solid $grey-dark-x;
   display: inline-block;
   margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
@@ -131,6 +131,12 @@
 .shadow_card > .status-block-light {
   @extend .status-block;
   @include status_block_light();
+  border: 2px solid $grey-dark-x;
+  display: inline-block;
+  margin-bottom: 10px;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 15px;
+  }
 }
 
 .status-block__icon {
@@ -188,11 +194,14 @@
 
 .card--dashboard {
   border-top: 9px solid $action-color;
-
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
+}
+
+.card--dashboard--cs-accelerator {
+  border-top-color: $secondary-cert-color;
 
   &--cs-accelerator,
   &--secondary {
@@ -218,10 +227,19 @@
   display: block;
   height: 56px;
   margin: auto;
-  max-width: 16rem;
+  max-width: 15rem;
 
   @include govuk-media-query($from: desktop) {
     height: 81px;
+    max-width: 16rem;
+    width: auto;
+  }
+}
+
+.dark_card--image-wide {
+  @include govuk-media-query($from: desktop) {
+    height: 81px;
+    max-width: 22rem;
     width: auto;
   }
 }
