@@ -1,7 +1,7 @@
 <div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded" id="csa-test" >
   <p class="govuk-body govuk-!-margin-0">
     Want to practice for the test?
-    <%= link_to 'Take our mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link' %>
+    <%= link_to 'Take our mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Take mock test' } %>
   </p>
 </div>
 
@@ -36,7 +36,7 @@
             placeholder: 'optional',
             value: current_user.teacher_reference_number
         %>
-        <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4' %>
+        <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Take our test' } %>
       </div>
     <% end %>
     <div class="ncce-csa-dash__sub-section">
