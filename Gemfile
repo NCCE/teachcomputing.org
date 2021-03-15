@@ -16,6 +16,7 @@ gem 'dalli', '~> 2.7.9'
 gem 'ddtrace', '~> 0.44'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
+gem 'geocoder', '~> 1.6', '>= 1.6.6'
 gem 'graphlient', '~> 0.4'
 gem 'htmlentities', '~> 4.3'
 gem 'ims-lti', '1.2.4'
@@ -77,10 +78,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rack-mini-profiler', '~> 2.3.1', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'rack-mini-profiler', '~> 2.3.1', require: false
 end
 
 group :test do

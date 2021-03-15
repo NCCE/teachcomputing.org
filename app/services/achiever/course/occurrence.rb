@@ -17,14 +17,16 @@ class Achiever::Course::Occurrence
                 :region,
                 :remote_delivered_cpd,
                 :subject,
-                :start_date
+                :start_date,
+                :coordinates,
+                :distance
 
   FACE_TO_FACE_RESOURCE_PATH = 'Get?cmd=CourseListingFutureByProgrammeId'.freeze
   ONLINE_RESOURCE_PATH = 'Get?cmd=FutureOnlineCoursesByProgrammeId'.freeze
-  QUERY_STRINGS = { 'Page': '1',
-                    'RecordCount': '1000',
-                    'EndDate': Time.zone.today.strftime('%F'),
-                    'ProgrammeName': 'ncce' }.freeze
+  QUERY_STRINGS = { Page: '1',
+                    RecordCount: '1000',
+                    EndDate: Time.zone.today.strftime('%F'),
+                    ProgrammeName: 'ncce' }.freeze
 
   def self.face_to_face
     occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH,
@@ -37,27 +39,45 @@ class Achiever::Course::Occurrence
     occurrences.map { |occurrence| Achiever::Course::Occurrence.from_resource(occurrence) }
   end
 
-  def self.from_resource(occurrence)
-    new.tap do |o|
-      o.activity_code = occurrence.send('Activity.InstanceCode')
-      o.activity_title = occurrence.send('Activity.ActivityTitle')
-      o.address_venue_name = occurrence.send('ActivityVenueAddress.VenueName')
-      o.address_venue_code = occurrence.send('ActivityVenueAddress.VenueCode')
-      o.address_town = occurrence.send('ActivityVenueAddress.City')
-      o.address_postcode = occurrence.send('ActivityVenueAddress.PostCode')
-      o.address_line_one = occurrence.send('ActivityVenueAddress.Address.Line1')
-      o.age_groups = occurrence.send('Activity.AgeGroups').split(';')
-      o.booking_url = occurrence.send('Activity.BookingURL')
-      o.course_template_no = occurrence.send('Template.COURSETEMPLATENO')
-      o.course_occurrence_no = occurrence.send('Activity.COURSEOCCURRENCENO')
-      o.end_date = occurrence.send('Activity.EndDate')
-      o.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.OnlineCPD').downcase)
-      o.region = occurrence.send('Activity.Region')
-      o.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(occurrence.send('Activity.RemoteDeliveredCPD')&.downcase)
-      o.subject = occurrence.send('Template.Subject')
-      o.start_date = occurrence.send('Activity.StartDate')
-      o.hub_id = occurrence.send('Activity.SubDelivererID')
-      o.hub_name = occurrence.send('Activity.SubDeliverer')
+  def self.from_resource(resource, location_coords: nil)
+    occurrence = new.tap do |o|
+      o.activity_code = resource.send('Activity.InstanceCode')
+      o.activity_title = resource.send('Activity.ActivityTitle')
+      o.address_venue_name = resource.send('ActivityVenueAddress.VenueName')
+      o.address_venue_code = resource.send('ActivityVenueAddress.VenueCode')
+      o.address_town = resource.send('ActivityVenueAddress.City')
+      o.address_postcode = resource.send('ActivityVenueAddress.PostCode')
+      o.address_line_one = resource.send('ActivityVenueAddress.Address.Line1')
+      o.age_groups = resource.send('Activity.AgeGroups').split(';')
+      o.booking_url = resource.send('Activity.BookingURL')
+      o.course_template_no = resource.send('Template.COURSETEMPLATENO')
+      o.course_occurrence_no = resource.send('Activity.COURSEOCCURRENCENO')
+      o.end_date = resource.send('Activity.EndDate')
+      o.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(
+        resource.send('Activity.OnlineCPD').downcase
+      )
+      o.region = resource.send('Activity.Region')
+      o.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(
+        resource.send('Activity.RemoteDeliveredCPD')&.downcase
+      )
+      o.subject = resource.send('Template.Subject')
+      o.start_date = resource.send('Activity.StartDate')
+      o.hub_id = resource.send('Activity.SubDelivererID')
+      o.hub_name = resource.send('Activity.SubDeliverer')
     end
+
+    lat = resource.send('ActivityVenueAddress.Latitude')
+    long = resource.send('ActivityVenueAddress.Longitude')
+
+    if lat.present? && long.present?
+      occurrence.coordinates = [lat, long]
+
+      if location_coords.present?
+        occurrence.distance = Geocoder::Calculations
+                              .distance_between(location_coords, occurrence.coordinates)
+                              .round(1)
+      end
+    end
+    occurrence
   end
 end
