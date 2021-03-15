@@ -166,11 +166,11 @@ RSpec.describe Achiever::Course::Occurrence do
         expect(occurrence.coordinates).to eq(['53.38297', '-1.4659'])
       end
 
-      it 'adds a distance property rounded to 1 decimal place when location_coords are passed' do
+      it 'adds a distance property rounded to 1 decimal place when comparison_coords are passed' do
         allow(Geocoder::Calculations).to receive(:distance_between).and_return(123.45)
         coords = [53.4083714, -2.9915726]
         parsed_json = JSON.parse(resource_hash.to_json, object_class: OpenStruct)
-        occurrence = described_class.from_resource(parsed_json, location_coords: coords)
+        occurrence = described_class.from_resource(parsed_json, comparison_coords: coords)
         expect(Geocoder::Calculations)
           .to have_received(:distance_between).with(coords, ['53.38297', '-1.4659'])
         expect(occurrence.distance).to eq(123.5)

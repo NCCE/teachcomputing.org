@@ -39,7 +39,7 @@ class Achiever::Course::Occurrence
     occurrences.map { |occurrence| Achiever::Course::Occurrence.from_resource(occurrence) }
   end
 
-  def self.from_resource(resource, location_coords: nil)
+  def self.from_resource(resource, comparison_coords: nil)
     occurrence = new.tap do |o|
       o.activity_code = resource.send('Activity.InstanceCode')
       o.activity_title = resource.send('Activity.ActivityTitle')
@@ -72,9 +72,9 @@ class Achiever::Course::Occurrence
     if lat.present? && long.present?
       occurrence.coordinates = [lat, long]
 
-      if location_coords.present?
+      if comparison_coords.present?
         occurrence.distance = Geocoder::Calculations
-                              .distance_between(location_coords, occurrence.coordinates)
+                              .distance_between(comparison_coords, occurrence.coordinates)
                               .round(1)
       end
     end
