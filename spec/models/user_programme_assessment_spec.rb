@@ -91,7 +91,7 @@ RSpec.describe UserProgrammeAssessment do
     end
 
     it 'assigns the new test gate correctly' do
-      expect(user_programme_asessment.enough_activites_for_test?).to eq (false)
+      expect(user_programme_asessment.enough_activities_for_test?).to eq (false)
     end
 
     context 'when user can take the test' do
@@ -116,7 +116,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the new test gate correctly' do
-        expect(user_programme_asessment.enough_activites_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_activities_for_test?).to eq (true)
       end
     end
 

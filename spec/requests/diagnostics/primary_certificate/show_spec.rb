@@ -23,11 +23,8 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
           get diagnostic_primary_certificate_path(:question_1)
         end
 
-        it 'renders a question' do
-          expect(response).to render_template(:questions)
-        end
-
         it 'renders the first question' do
+          expect(response).to render_template(:questions)
           expect(response.body).to include('Question 1 of 4')
         end
       end
@@ -36,7 +33,7 @@ RSpec.describe Diagnostics::PrimaryCertificateController do
         before do
           user_programme_enrolment
           answers = create(
-            :primary_enrolment_score_15, questionnaire: primary_questionnaire,  user: user
+            :primary_enrolment_score_15, questionnaire: primary_questionnaire, user: user
           )
           answers.transition_to(:complete)
         end

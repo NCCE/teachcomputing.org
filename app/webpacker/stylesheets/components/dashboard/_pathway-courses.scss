@@ -1,0 +1,36 @@
+.ncce-pathway-courses {
+  background-color: $white;
+  border: none;
+  padding: 1.25rem 1.125rem;
+}
+
+.ncce-pathway-courses__short {
+  background-color: $white;
+  border-bottom: 1px solid $concrete;
+  padding: 1px 1.125rem;
+}
+
+.ncce-pathway-courses__course {
+  background: $foam;
+  margin-bottom: 2px;
+  padding: 2px 18px;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+}
+
+.ncce-pathway-courses__buttons {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.ncce-pathway-courses__location {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.ncce-pathway-courses__status {
+  bottom: 8px;
+  position: relative;
+}

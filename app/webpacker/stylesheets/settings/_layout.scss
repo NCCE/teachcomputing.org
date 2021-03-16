@@ -1,6 +1,12 @@
 $logo-block-mobile: 30px;
 $logo-block: 40px;
 
+$v-space: 40px;
+$v-space-large: 54px;
+
+$v-space-mobile: 30px;
+$v-space-large-mobile: 42px;
+
 .govuk-main-wrapper {
   padding-bottom: $logo-block-mobile;
   padding-top: $logo-block-mobile;
@@ -45,4 +51,26 @@ $logo-block: 40px;
 
 .ncce-centered {
   text-align: center;
+}
+
+@mixin bottom-margined {
+  margin-bottom: $v-space-mobile;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $v-space;
+  }
+}
+
+@mixin bottom-margined-l {
+  margin-bottom: $v-space-large;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $v-space-large;
+  }
+}
+
+.bottom-margin {
+  @include bottom-margined;
+}
+
+.bottom-margin-l {
+  @include bottom-margined-l;
 }

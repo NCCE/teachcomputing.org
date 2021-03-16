@@ -1,36 +1,29 @@
-.ncce-dashboard-activity {
-  background-color: $concrete;
-}
-
 .ncce-activity-list--programme {
   margin-bottom: 60px;
 }
 
 .ncce-activity-list__item {
-  background-color: $white;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-row-gap: 10px;
   align-items: flex-start;
+  background-color: $white;
+  border-bottom-color: $lavender-light;
+  border-bottom-style: solid;
+
+  border-bottom-width: 2px;
+  display: grid;
+  grid-row-gap: 10px;
+  grid-template-rows: auto auto auto;
+  margin-bottom: 0 !important;
   padding: 0.5rem 1.125rem 1.125rem;
   @include govuk-media-query($from: tablet) {
     padding-bottom: 0.5rem;
   }
 
-  border-bottom-width: 2px;
-  border-bottom-color: $lavender-light;
-  border-bottom-style: solid;
-  margin-bottom: 0 !important;
-
-  &:first-child {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+  &:last-child {
+    border-bottom: 0;
   }
 
-  &:last-child {
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom: 0;
+  &--borderless {
+    border: none;
   }
 
   @include govuk-media-query($from: tablet) {
@@ -49,6 +42,7 @@
 }
 
 .ncce-dashboard-activity {
+  background-color: $concrete;
   .ncce-activity-list__item {
     grid-template-rows: auto;
   }
@@ -60,10 +54,10 @@
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 1.9rem;
-  line-height: 1.9rem;
   font-size: 1.188rem;
-  grid-row: 1;
   grid-column: 1;
+  grid-row: 1;
+  line-height: 1.9rem;
   margin-bottom: 0;
   margin-top: 3px;
   padding-left: 2.8rem;
@@ -91,31 +85,31 @@
 
 .ncce-activity-list__item-activity {
   font-size: 1rem;
-  grid-row: 2;
   grid-column: 1;
-	margin-left: 2rem;
+  grid-row: 2;
+  margin-left: 2rem;
   padding: 0.7rem;
   @include govuk-media-query($from: tablet) {
     grid-column-end: 3;
   }
   @include govuk-media-query($from: 900px) {
-    width: 500px;
     grid-column-end: 1;
+    width: 500px;
   }
 }
 
 .ncce-activity-list__tag {
-  text-transform: none;
-  width: auto;
   float: left;
   float: none;
   margin-bottom: 0;
+  text-transform: none;
+  width: auto;
 }
 
 .ncce-activity-list__course {
   @include govuk-media-query($until: tablet) {
-    float: left;
     clear: both;
+    float: left;
   }
 }
 
@@ -125,7 +119,7 @@
   background-image: url('../images/tick-blue.svg');
   background-position: 8px 8px;
   background-repeat: no-repeat;
-  background-size:24px;
+  background-size: 24px;
   border: 2px solid $grey-light;
   display: flex;
   flex-direction: column;
@@ -133,30 +127,32 @@
   padding: 0.6rem 1.125rem 0.6rem 2.6rem;
 
   @include govuk-media-query($from: tablet) {
-  	background-position: 10px 10px;
-  	background-size: 30px;
+    background-position: 10px 10px;
+    background-size: 30px;
     line-height: 1.9rem;
     margin-bottom: 0;
-  	padding: 0.6rem 1.125rem 0.6rem 3.5rem;
+    padding: 0.6rem 1.125rem 0.6rem 3.5rem;
   }
 
-	.icon-map-pin, .icon-online {
-		background-size: 15px;
+  .icon-map-pin,
+  .icon-remote,
+  .icon-online {
+    background-size: 15px;
 
-		@include govuk-media-query($from: tablet) {
-			background-size: 19px;
-		}
+    @include govuk-media-query($from: tablet) {
+      background-size: 19px;
+    }
   }
 }
 
 .activity-list__item > * {
-	margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .activity-list__item--incomplete {
   background-color: $white;
   background-image: url('../images/incomplete-achievement.svg');
-	border: none;
+  border: none;
 }
 
 .activity-list__item-trn-input {
@@ -164,22 +160,22 @@
 }
 
 .activity-list__item-trn-optional {
-	opacity: 80%;
+  opacity: 80%;
 }
 
 .ncce-activity-list__item--dashboard {
-	border-radius: 5px !important; /* Temporary fix until curved borders are discussed */
-	grid-template-rows: auto auto !important;
-	grid-row-gap: 0.5rem;
-	margin-bottom: 1.25rem !important;
-  border-left: 9px solid $deep-cerulean;
   border-bottom: none;
-	&:last-child {
+  border-left: 9px solid $deep-cerulean;
+  border-radius: 5px !important; /* Temporary fix until curved borders are discussed */
+  grid-row-gap: 0.5rem;
+  grid-template-rows: auto auto !important;
+  margin-bottom: 1.25rem !important;
+  &:last-child {
     margin-bottom: 0;
   }
 
-	@include govuk-media-query($from: tablet) {
-		grid-row-gap: 1rem;
+  @include govuk-media-query($from: tablet) {
+    grid-row-gap: 1rem;
   }
 }
 
@@ -188,7 +184,8 @@
     border-left-color: $primary-cert-color;
   }
 
-  &--cs-accelerator, &--secondary {
+  &--cs-accelerator,
+  &--secondary {
     border-left-color: $secondary-cert-color;
   }
 }
@@ -198,35 +195,35 @@
 }
 
 .ncce-activity-list__item--dashboard-tags-date {
-	margin-bottom: 0 !important;
-	margin-left: 2.8rem;
-  font-size: 0.9rem;
   display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0 !important;
+  margin-left: 2.8rem;
   margin-top: 1rem;
 
-	@include govuk-media-query($from: tablet) {
-		float: right;
-		margin-left: 0;
+  @include govuk-media-query($from: tablet) {
+    float: right;
+    margin-left: 0;
   }
 }
 
 .ncce-activity-list__item--dashboard-tags--course {
   color: $white;
+  display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 0;
   margin-left: 2.8rem;
   padding: 5px 16px;
-  font-size: 1rem;
-  display: inline-block;
-  margin-bottom: 0;
 }
 
 .dashboard-tags--cs-accelerator {
-	background-color: $secondary-cert-color;
+  background-color: $secondary-cert-color;
 }
 
 .dashboard-tags--primary {
-	background-color: $primary-cert-color;
+  background-color: $primary-cert-color;
 }
 
 .dashboard-tags--secondary {
-	background-color: $secondary-cert-color;
+  background-color: $secondary-cert-color;
 }

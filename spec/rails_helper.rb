@@ -59,6 +59,7 @@ RSpec.configure do |config|
   config.include CachingHelpers
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
+  config.include FeatureFlagHelper
 
   config.before(:suite) do
     Webpacker.compile
