@@ -34,7 +34,7 @@
             required: true
           }
         %>
-        <%= submit_tag 'Change your pathway', class: 'govuk-button button govuk-!-margin-bottom-0' %>
+        <%= submit_tag 'Change your pathway', class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Change pathway' } %>
     <% end %>
   <% end %>
 </div>

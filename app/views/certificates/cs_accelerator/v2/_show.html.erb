@@ -9,7 +9,7 @@
               You’ve completed enough courses to access the test.
               You should continue to complete any courses you think are right for you.
               When you are ready, you can
-              <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link' %>. 
+              <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View test and mock test' } %>.
             </p>
           <% else %>
             <p class="govuk-body-m">

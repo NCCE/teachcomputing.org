@@ -19,6 +19,6 @@
   <% end %>
 
   <div class="ncce-pathway-courses__buttons">
-    <%= link_to 'View all CS Accelerator courses', courses_path(certificate: 'cs-accelerator'), class: 'govuk-button button' %>
+    <%= link_to 'View all CS Accelerator courses', courses_path(certificate: 'cs-accelerator'), class: 'govuk-button button', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View all CSA courses' } %>
   </div>
 </div>

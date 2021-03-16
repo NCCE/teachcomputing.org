@@ -7,13 +7,13 @@
       <span class="govuk-body">
         <strong><%= user_programme_pathway.title %></strong>
       </span>
-      <%= link_to 'Pathway PDF', user_programme_pathway.pdf_link, class: 'govuk-body ncce-link' %>
+      <%= link_to 'Pathway PDF', user_programme_pathway.pdf_link, class: 'govuk-body ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View pathway PDF' } %>
     </div>
   <% else %>
     <p class="govuk-body">
       Not sure which courses are right for you?
       <br />
-      <%= link_to 'Take our short questionnaire', diagnostic_cs_accelerator_certificate_path(:question_1), class: 'ncce-link' %>
+      <%= link_to 'Take our short questionnaire', diagnostic_cs_accelerator_certificate_path(:question_1), class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Take questionnaire' } %>
       to be put on a learning pathway, and see personalised course recommendations.
     </p>
     <p class="govuk-body-s">
