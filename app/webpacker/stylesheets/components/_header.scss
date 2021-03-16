@@ -162,6 +162,11 @@
   }
 }
 
+.ncce-header__certification-item:hover > .ncce-header__certification-item--text, .ncce-header__certification-item[aria-expanded="true"] > .ncce-header__certification-item--text {
+  background-image: url('../images/arrow-down.svg');
+  color: $white;
+}
+
 @media (any-hover: hover) {
   .ncce-header__certification-item:hover
    {
