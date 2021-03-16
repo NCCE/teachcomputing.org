@@ -21,7 +21,7 @@ module NavigationHelper
 			children: [
 				{text: "Courses", link: courses_path, label: "Courses" },
 				{text: "Bursaries", link: '/bursary', label: "Bursaries" },
-				{text: "Computing hubs", link: '/hubs', label: "Computing hubs" }
+				{text: "Computing Hubs", link: '/hubs', label: "Computing hubs" }
 			]},
 			{text: "Teaching resources",
 			children: [

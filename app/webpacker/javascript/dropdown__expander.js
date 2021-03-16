@@ -10,7 +10,6 @@ function initialiseSections(className) {
   const menuItemToggleClass = className + '--closed'
   const sectionToggleClass = className + '-section--visible'
   const menuItems = document.querySelectorAll('.' + className) // Get all the <h2> headings
-  let lastMenuItem = null;
 
   const closeMenu = (menuItem) => {
     if (!menuItem) return
@@ -25,7 +24,6 @@ function initialiseSections(className) {
     menuItem.setAttribute('aria-expanded', 'true')
     menuItem.classList.remove(menuItemToggleClass)
     menuItem.children[1].classList.add(sectionToggleClass)
-    lastMenuItem = menuItem
   }
 
   menuItems.forEach(menuItem => {
@@ -57,6 +55,9 @@ function initialiseSections(className) {
     }
 
     const toggleExpanded = event => {
+      const isDesktop = window.matchMedia('(min-width: 770px)').matches
+      if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
+
       if (menuItem.getAttribute('aria-expanded') == 'true') {
         menuItem.setAttribute('aria-expanded', 'false')
       } else {
@@ -72,7 +73,9 @@ function initialiseSections(className) {
 
   window.addEventListener('resize', () => {
     // Urgh, I know this is terrible...
-    setTimeout(() => closeMenu(lastMenuItem), 1000)
+    menuItems.forEach(menuItem => { 
+      setTimeout(() => closeMenu(menuItem), 1000)
+    })
   })
 }
 
