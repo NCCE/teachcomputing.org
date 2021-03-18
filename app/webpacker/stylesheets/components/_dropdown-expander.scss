@@ -12,11 +12,8 @@
   background: $white;
   display: none;
   left: 0;
-  // width: -webkit-fill-available;
-  // width: fill-available;
-  width: stretch;
-  min-width: 10rem;
   padding: 1.5rem 1rem 1rem 1rem;
+  width: stretch;
   transition: all 0.5s ease;
   visibility: hidden;
 

@@ -2,7 +2,7 @@
   border: none;
   margin-bottom: 0;
   padding-bottom: $logo-block / 2;
-  padding-top: $logo-block-mobile;
+  padding-top: $logo-block / 2;
 
   @include govuk-media-query($from: desktop) {
     padding-bottom: $logo-block;
@@ -23,7 +23,7 @@
 /// header logo
 .ncce-header__logo {
   fill: $deep-cerulean;
-  width: 160px;
+  width: 128px;
   @include govuk-media-query($from: tablet) {
     height: auto;
     width: 160px;
@@ -55,7 +55,7 @@
 .ncce-header__navigation {
   float: none;
   margin-bottom: 0;
-  padding-top: $logo-block-mobile;
+  padding-top: $logo-block / 2;
   @include govuk-media-query($from: desktop) {
     padding-top: 7px;
   }
@@ -126,7 +126,7 @@
   flex-grow: 1;
   font-weight: 700;
   margin-bottom: 0;
-  padding: 10px 0 0 0;
+  padding: 5px 0;
 
   &:first-child {
     border-top: 1px solid #CED0D2;
@@ -255,7 +255,10 @@
 
 .govuk-header__menu-button {
   color: $deep-cerulean;
+  font-size: 16px;
   margin-right: 15px;
+  line-height: 18px;
+  top: 30px;
 } 
 
 .govuk-header__menu-button::after {
@@ -274,7 +277,7 @@
 
 .govuk-header__menu-button--open::after {
   background-image: url('../images/menu-close.svg');
-  background-size: 1.5rem;
+  background-size: 1.6rem;
   background-position: center;
   background-repeat: no-repeat;
   border-style: none;
