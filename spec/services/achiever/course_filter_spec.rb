@@ -10,69 +10,90 @@ RSpec.describe Achiever::CourseFilter do
   let(:filter_params) { {} }
   let(:age_groups) { { 'Key stage 1' => '111111111', 'Key stage 2' => '222222222' } }
 
-  let(:f2f_template) { build(:achiever_course_template, subjects: [subjects['Other']]) }
-  let(:f2f_occurrence) { build(:achiever_course_occurrence, course_template_no: f2f_template.course_template_no) }
-  let(:online_template) { build(:achiever_course_template, online_cpd: true) }
+  let(:f2f_template) { build(:achiever_course_template, title: 'F2F template', subjects: [subjects['Other']]) }
+  let(:f2f_occurrence) do
+    build(:achiever_course_occurrence, course_template_no: f2f_template.course_template_no, distance: 10)
+  end
+  let(:online_template) { build(:achiever_course_template, title: 'Online template', online_cpd: true) }
   let(:online_occurrence) do
     build(:achiever_course_occurrence, online_cpd: true, course_template_no: online_template.course_template_no)
   end
-  let(:no_occ_template) { build(:achiever_course_template) }
-  let(:secondary_template) { build(:achiever_course_template, programmes: ['Secondary']) }
+  let(:no_occ_template) { build(:achiever_course_template, title: 'No occurrence template') }
+  let(:secondary_template) { build(:achiever_course_template, programmes: ['Secondary'], title: 'Secondary template') }
   let(:secondary_occurrence) do
-    build(:achiever_course_occurrence, course_template_no: secondary_template.course_template_no)
+    build(:achiever_course_occurrence, course_template_no: secondary_template.course_template_no, distance: 50)
   end
-  let(:ks2_template) { build(:achiever_course_template, age_groups: [age_groups['Key stage 2']]) }
+  let(:ks2_template) do
+    build(:achiever_course_template, age_groups: [age_groups['Key stage 2']], title: 'KS2 template')
+  end
   let(:ks2_occurrence) do
-    build(:achiever_course_occurrence, course_template_no: ks2_template.course_template_no)
+    build(:achiever_course_occurrence, course_template_no: ks2_template.course_template_no, distance: 80)
   end
-  let(:location_template) { build(:achiever_course_template, remote_delivered_cpd: true) }
+  let(:location_template) { build(:achiever_course_template, remote_delivered_cpd: true, title: 'Location template') }
   let(:location_occurrence_matching_location) do
     build(:achiever_course_occurrence,
           course_template_no: location_template.course_template_no,
-          address_town: 'York')
+          address_town: 'York',
+          distance: 90)
   end
   let(:location_occurrence_other_location) do
     build(:achiever_course_occurrence,
           course_template_no: location_template.course_template_no,
-          address_town: 'Cambridge')
+          address_town: 'Cambridge',
+          distance: 20)
   end
-  let(:algorithms_template) { build(:achiever_course_template, subjects: [subjects['Algorithms']]) }
+  let(:algorithms_template) do
+    build(:achiever_course_template, subjects: [subjects['Algorithms']], title: 'Algorithms template')
+  end
   let(:algorithms_occurrence) do
-    build(:achiever_course_occurrence, course_template_no: algorithms_template.course_template_no)
+    build(:achiever_course_occurrence, course_template_no: algorithms_template.course_template_no, distance: 30)
   end
 
   let(:multi_filter_template) do
     build(:achiever_course_template,
           subjects: [subjects['Algorithms']],
           remote_delivered_cpd: true,
+          title: 'Multi filter template',
           age_groups: [age_groups['Key stage 2']])
   end
   let(:multi_filter_occurrence) do
-    build(:achiever_course_occurrence, course_template_no: multi_filter_template.course_template_no)
+    build(:achiever_course_occurrence, course_template_no: multi_filter_template.course_template_no, distance: 70)
   end
 
-  let(:hub_template) { build(:achiever_course_template) }
+  let(:hub_template) { build(:achiever_course_template, title: 'Hub template') }
   let(:hub_occurrence_matching_hub) do
     build(:achiever_course_occurrence,
           course_template_no: hub_template.course_template_no,
           hub_id: 'hubid',
-          hub_name: 'Hub name')
+          hub_name: 'Hub name',
+          distance: 40)
   end
   let(:hub_occurrence_other_hub) do
     build(:achiever_course_occurrence,
           course_template_no: hub_template.course_template_no,
           hub_id: 'otherhubid',
-          hub_name: 'Other hub name')
+          hub_name: 'Other hub name',
+          distance: 60)
   end
 
   before do
     allow(Achiever::Course::Subject).to receive(:all).and_return(subjects)
     allow(Achiever::Course::AgeGroup).to receive(:all).and_return(age_groups)
 
+    # return courses sorted alphabetically by title same way the achiever does
     allow(Achiever::Course::Template)
       .to receive(:all)
-      .and_return([f2f_template, online_template, no_occ_template, secondary_template,
-                   ks2_template, location_template, algorithms_template, multi_filter_template, hub_template])
+      .and_return([
+                    algorithms_template,
+                    f2f_template,
+                    hub_template,
+                    ks2_template,
+                    location_template,
+                    multi_filter_template,
+                    no_occ_template,
+                    online_template,
+                    secondary_template
+                  ])
     allow(Achiever::Course::Occurrence)
       .to receive(:face_to_face)
       .and_return([f2f_occurrence, secondary_occurrence, ks2_occurrence,
@@ -349,6 +370,69 @@ RSpec.describe Achiever::CourseFilter do
         expect(course.occurrences).not_to include(hub_occurrence_other_hub)
       end
     end
+
+    context 'when searching by location and face to face' do
+      let(:filter_params) { { search_location: 'Liverpool', location: 'Face to face' } }
+      let(:result_dbl) { double('result') }
+
+      before do
+        allow(Geocoder).to receive(:search) { [result_dbl] }
+        allow(result_dbl).to receive(:coordinates).and_return([53.41058, -2.97794])
+      end
+
+      it 'orders courses by nearest occurrence' do
+        expect(course_filter.courses)
+          .to eq([f2f_template,
+                  algorithms_template,
+                  hub_template,
+                  secondary_template,
+                  ks2_template,
+                  no_occ_template])
+      end
+    end
+
+    context 'when searching by location' do
+      let(:filter_params) { { search_location: 'Liverpool' } }
+      let(:result_dbl) { double('result') }
+
+      before do
+        allow(Geocoder).to receive(:search) { [result_dbl] }
+        allow(result_dbl).to receive(:coordinates).and_return([53.41058, -2.97794])
+      end
+
+      it 'orders courses by nearest occurrences followed by other courses' do
+        # other courses are simply returned in the same order they were returned by the API
+        expect(course_filter.courses)
+          .to eq([f2f_template,
+                  algorithms_template,
+                  hub_template,
+                  secondary_template,
+                  ks2_template,
+                  no_occ_template,
+                  location_template,
+                  multi_filter_template,
+                  online_template])
+      end
+
+      it 'orders course occurrences by distance for each course' do
+        course_filter.courses
+        expect(hub_template.occurrences)
+          .to eq(
+            [
+              hub_occurrence_matching_hub,
+              hub_occurrence_other_hub
+            ]
+          )
+
+        expect(location_template.occurrences)
+          .to eq(
+            [
+              location_occurrence_other_location,
+              location_occurrence_matching_location
+            ]
+          )
+      end
+    end
   end
 
   describe '#applied_filters' do
@@ -475,6 +559,53 @@ RSpec.describe Achiever::CourseFilter do
 
       it 'invalid certificate does not cause filtering' do
         expect(course_filter.applied_filters).not_to include(%r{&lt;h1&gt;Not a cert&lt;/h1&gt;})
+      end
+    end
+  end
+
+  describe '#location_search?' do
+    context 'when search_location param present' do
+      let(:filter_params) { { search_location: 'liverpool' } }
+
+      it 'returns true' do
+        expect(course_filter.location_search?).to eq(true)
+      end
+    end
+
+    context 'when search_location param empty' do
+      let(:filter_params) { { search_location: '' } }
+
+      it 'returns false' do
+        expect(course_filter.location_search?).to eq(false)
+      end
+    end
+  end
+
+  describe '#search_location_formatted_address' do
+    let(:result_dbl) { double('result') }
+
+    context 'when geocoded location is found' do
+      before do
+        allow(Geocoder).to receive(:search) { [result_dbl] }
+      end
+
+      let(:filter_params) { { search_location: 'liverpool' } }
+
+      it 'returns the address from geocoding result' do
+        allow(result_dbl).to receive(:formatted_address).and_return('Liverpool, UK')
+        expect(course_filter.search_location_formatted_address).to eq('Liverpool, UK')
+      end
+
+      context 'when geocoded location is not found' do
+        before do
+          allow(Geocoder).to receive(:search).and_return([])
+        end
+
+        let(:filter_params) { { search_location: 'asdfasdfasdfasdf' } }
+
+        it 'returns the not found message' do
+          expect(course_filter.search_location_formatted_address).to eq('This location was not recognised. Please check if it is correct.')
+        end
       end
     end
   end

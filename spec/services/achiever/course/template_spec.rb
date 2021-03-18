@@ -135,4 +135,42 @@ RSpec.describe Achiever::Course::Template do
       expect(described_class.all.first.with_occurrences).to be_a(Array)
     end
   end
+
+  describe '#nearest_occurrence_distance' do
+    context 'when occurrences have distances' do
+      it 'returns the smallest distance value' do
+        occ1 = build(:achiever_course_occurrence, distance: 90)
+        occ2 = build(:achiever_course_occurrence, distance: 20)
+        occ3 = build(:achiever_course_occurrence, distance: 60)
+        template = build(:achiever_course_template, occurrences: [occ1, occ2, occ3])
+        expect(template.nearest_occurrence_distance).to eq(20)
+      end
+    end
+
+    context 'when not all occurrences have distances' do
+      it 'returns the smallest distance value' do
+        occ1 = build(:achiever_course_occurrence, distance: 90)
+        occ2 = build(:achiever_course_occurrence, distance: nil)
+        occ3 = build(:achiever_course_occurrence, distance: 60)
+        template = build(:achiever_course_template, occurrences: [occ1, occ2, occ3])
+        expect(template.nearest_occurrence_distance).to eq(60)
+      end
+    end
+
+    context 'when no occurrences have distances' do
+      it 'returns nil' do
+        occ1 = build(:achiever_course_occurrence, distance: nil)
+        occ2 = build(:achiever_course_occurrence, distance: nil)
+        template = build(:achiever_course_template, occurrences: [occ1, occ2])
+        expect(template.nearest_occurrence_distance).to eq(nil)
+      end
+    end
+
+    context 'when template has no occurrences' do
+      it 'returns nil' do
+        template = build(:achiever_course_template)
+        expect(template.nearest_occurrence_distance).to eq(nil)
+      end
+    end
+  end
 end

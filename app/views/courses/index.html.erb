@@ -103,6 +103,7 @@
                     </g>
                   </svg>View dates & locations
                   </button>
+                  <span><%= course.nearest_occurrence_distance %></span>
                 </h3>
               <% end %>
               <% unless course.occurrences.empty? %>
@@ -112,6 +113,7 @@
                       <span class="govuk-grid-column-one-half ncce-courses__meta-location <%= course_meta_icon_class(oc.online_cpd) %>">
                       <%= oc.address_town %></span>
                       <span class="govuk-grid-column-one-half ncce-courses__meta-date"><%= activity_times(oc.start_date, oc.end_date, oc.online_cpd) %></span>
+                      <span><%= oc.distance %></span>
                     </li>
                   <% end %>
                 </ul>

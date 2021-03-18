@@ -4,6 +4,9 @@ module Achiever
 
     def initialize(filter_params:)
       @filter_params = filter_params
+
+      @filter_params[:search_location] = 'London'
+      puts @filter_params[:search_location]
       @subjects = Achiever::Course::Subject.all
       @age_groups = Achiever::Course::AgeGroup.all
     end
@@ -21,7 +24,8 @@ module Achiever
         end
         courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
-        filter_courses(courses)
+        filtered_courses = filter_courses(courses)
+        sort_courses(filtered_courses)
       end
     end
 
@@ -84,6 +88,20 @@ module Achiever
       filter_strings
     end
 
+    def search_location_formatted_address
+      return @search_location_formatted_address if defined? @search_location_formatted_address
+
+      @search_location_formatted_address = if geocoded_search_location.nil?
+                                             'This location was not recognised. Please check if it is correct.'
+                                           else
+                                             geocoded_search_location.formatted_address
+                                           end
+    end
+
+    def location_search?
+      @filter_params[:search_location].present?
+    end
+
     private
 
       def all_courses
@@ -92,7 +110,11 @@ module Achiever
 
       def course_occurrences
         @course_occurrences ||= begin
-          course_occurrences = Achiever::Course::Occurrence.face_to_face + Achiever::Course::Occurrence.online
+          course_occurrences = Achiever::Course::Occurrence
+                               .face_to_face(
+                                 search_location_coordinates: search_location_coordinates
+                               ) +
+                               Achiever::Course::Occurrence.online
           filter_course_occurences(course_occurrences)
         end
       end
@@ -141,6 +163,40 @@ module Achiever
 
       def current_level_age_group_key
         @age_groups[current_level].to_s
+      end
+
+      def search_location_coordinates
+        return nil unless location_search?
+        return @search_location_coordinates if defined? @search_location_coordinates
+
+        @search_location_coordinates = if geocoded_search_location.nil?
+                                         nil
+                                       else
+                                         geocoded_search_location.coordinates
+                                       end
+      end
+
+      def geocoded_search_location
+        return @geocoded_search_location if defined? @geocoded_search_location
+
+        @geocoded_search_location = Geocoder.search(@filter_params[:search_location], params: { region: 'GB' }).first
+      end
+
+      def sort_courses(courses)
+        return courses unless location_search?
+
+        f2f_courses = courses.select { |c| !c.online_cpd && !c.remote_delivered_cpd }
+        other_courses = courses.difference(f2f_courses)
+
+        f2f_courses.sort! do |a, b|
+          a.nearest_occurrence_distance <=> b.nearest_occurrence_distance || (b.nearest_occurrence_distance && 1) || -1
+        end
+        f2f_courses.each do |course|
+          course.occurrences.sort! do |a, b|
+            a.distance <=> b.distance || (b.distance && 1) || -1
+          end
+        end
+        f2f_courses.concat(other_courses)
       end
   end
 end
