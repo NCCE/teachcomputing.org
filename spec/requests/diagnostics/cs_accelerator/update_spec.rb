@@ -10,7 +10,11 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       questionnaire: cs_accelerator_enrolment_questionnaire
     )
   end
-  let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+
+  let!(:other_programme_enrolment) { create(:user_programme_enrolment, user: user) }
+  let(:user_programme_enrolment) do
+    create(:user_programme_enrolment, user: user, programme: programme, pathway_id: nil)
+  end
   let!(:new_to_computing_pathway) { create(:new_to_computing) }
   let!(:preparing_to_teach_pathway) { create(:prepare_to_teach_gcse_computer_science) }
 
@@ -38,7 +42,11 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       end
 
       it 'sets the pathway' do
-        expect(Pathway.find(user_programme_enrolment.pathway_id).slug).to(eq(new_to_computing_pathway.slug))
+        expect(user_programme_enrolment.pathway_id).to eq(new_to_computing_pathway.id)
+      end
+
+      it 'does not put pathway against incorrect enrolment' do
+        expect(other_programme_enrolment.reload.pathway_id).to eq(nil)
       end
 
       it 'redirects to the programme page' do
