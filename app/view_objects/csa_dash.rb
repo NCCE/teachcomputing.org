@@ -33,7 +33,7 @@ class CSADash
   def recommended_activities_for_user
     return @recommended_activities_for_user if defined? @recommended_activities_for_user
 
-    @recommended_activities_for_user = user_programme_pathway.recommended_activities_for_user(@user)
+    @recommended_activities_for_user = user_programme_pathway&.recommended_activities_for_user(@user)
   end
 
   def supplementary_activities_for_user
