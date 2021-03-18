@@ -9,7 +9,7 @@ class AssessmentEligibilityJob < ApplicationJob
 
     return if enrolment.nil? || enrolment.in_state?(:complete, :unenrolled)
 
-    return unless programme.enough_activites_for_test?(user)
+    return unless programme.enough_activities_for_test?(user)
 
     return if SentEmail.mailer_type_for_user(user, CSAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL).any?
 

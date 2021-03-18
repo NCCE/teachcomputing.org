@@ -4,6 +4,7 @@ RSpec.describe AuthController do
   describe '#failure' do
     before do
       OmniAuth.config.test_mode = true
+      OmniAuth.config.logger = Rails.logger
     end
 
     context 'when an error is encountered' do

@@ -5,7 +5,7 @@ class NewAssessmentEligibilityJob < ApplicationJob
     user = User.find(user_id)
     programme = Programme.cs_accelerator
 
-    return unless programme.enough_activites_for_test?(user)
+    return unless programme.enough_activities_for_test?(user)
 
     CSAcceleratorMailer.with(user: user).new_assessment_eligibility.deliver_now
   end

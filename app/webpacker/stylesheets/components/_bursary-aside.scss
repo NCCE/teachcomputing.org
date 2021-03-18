@@ -1,0 +1,26 @@
+.ncce-bursary-aside {
+  background-image: url('../images/icon-pound.svg');
+  background-position: 0 1rem;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  padding-top: 0.5rem;
+  @include bottom-margined;
+}
+
+.ncce-bursary-aside__text {
+  margin-bottom: 1rem;
+}
+
+.ncce-bursary-aside__link {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.ncce-bursary-aside__heading {
+  padding-left: 2rem;
+  padding-top: 12px;
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 10px;
+  }
+}

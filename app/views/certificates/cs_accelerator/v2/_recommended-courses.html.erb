@@ -1,0 +1,24 @@
+<div class="ncce-csa-dash__section ncce-csa-dash__section-padded">
+  <% if pathway.present? %>
+    <p class="govuk-body">
+      <strong>Recommended courses</strong> based on your pathway.
+    </p>
+
+    <% recommended_activities.each do |pa| %>
+      <div class="ncce-pathway-courses__course">
+        <p>
+          <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' %>
+        </p>
+
+        <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %>">
+          <%=  activity_type(pa) %>
+        </p>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <div class="ncce-pathway-courses__buttons">
+    <%= link_to 'View all CS Accelerator courses', courses_path(certificate: 'cs-accelerator'), class: 'govuk-button button', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View all CSA courses' } %>
+  </div>
+</div>
