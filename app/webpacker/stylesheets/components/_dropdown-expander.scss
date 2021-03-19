@@ -12,7 +12,7 @@
   background: $white;
   display: none;
   left: 0;
-  padding: 1.5rem 1rem 1rem 1rem;
+  padding: 1.125rem 1rem 1rem 1.5rem;
   width: stretch;
   transition: all 0.5s ease;
   visibility: hidden;
@@ -28,6 +28,7 @@
 	padding-bottom: 1rem;
 
   &:first-child {
+    font-size: 1.125rem;
 		font-weight: 700;
 	}
 
