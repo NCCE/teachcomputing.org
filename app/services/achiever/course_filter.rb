@@ -5,8 +5,8 @@ module Achiever
     def initialize(filter_params:)
       @filter_params = filter_params
 
-      @filter_params[:search_location] = 'London'
-      puts @filter_params[:search_location]
+      # @filter_params[:search_location] = 'London'
+      # puts @filter_params[:search_location]
       @subjects = Achiever::Course::Subject.all
       @age_groups = Achiever::Course::AgeGroup.all
     end
@@ -24,8 +24,8 @@ module Achiever
         end
         courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
-        filtered_courses = filter_courses(courses)
-        sort_courses(filtered_courses)
+        filter_courses(courses)
+        # sort_courses(filtered_courses)
       end
     end
 
@@ -100,6 +100,45 @@ module Achiever
 
     def location_search?
       @filter_params[:search_location].present?
+    end
+
+    def search_radius
+      return @search_radius if defined? @search_radius
+
+      @search_radius = if @filter_params[:radius].present?
+                         @filter_params[:radius]
+                       else
+                         '40'
+                       end
+    end
+
+    def location_search_results
+      return nil unless location_search?
+      return @location_search_results if defined? @location_search_results
+
+      @location_search_results = begin
+        f2f_courses = courses.select { |c| !c.online_cpd && !c.remote_delivered_cpd }
+
+        f2f_courses.sort! do |a, b|
+          a.nearest_occurrence_distance <=> b.nearest_occurrence_distance || (b.nearest_occurrence_distance && 1) || -1
+        end
+        f2f_courses.each do |course|
+          course.occurrences.sort! do |a, b|
+            a.distance <=> b.distance || (b.distance && 1) || -1
+          end
+        end
+        radius = search_radius.to_i
+        f2f_courses.select { |c| c.nearest_occurrence_distance.present? && c.nearest_occurrence_distance <= radius }
+      end
+    end
+
+    def non_location_search_results
+      return courses unless location_search?
+      return @non_location_search_results if defined? @non_location_search_results
+
+      @non_location_search_results = begin
+        courses.select { |c| c&.online_cpd || c&.remote_delivered_cpd }
+      end
     end
 
     private

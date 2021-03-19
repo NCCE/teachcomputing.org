@@ -237,14 +237,14 @@ RSpec.describe Achiever::CourseFilter do
     end
   end
 
-  describe '#courses' do
+  describe '#non_location_search_results' do
     context 'when no filters are present' do
       it 'returns all achiever courses and their occurrences if present' do
         expect(f2f_template.occurrences).to eq([])
         expect(online_template.occurrences).to eq([])
         expect(secondary_template.occurrences).to eq([])
         expect(ks2_template.occurrences).to eq([])
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array(
             [
               f2f_template,
@@ -285,7 +285,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: 'secondary-certificate', level: '', location: '', topic: '' } }
 
       it 'only returns courses for correct certificate' do
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array([secondary_template])
       end
     end
@@ -294,7 +294,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: 'Key stage 2', location: '', topic: '' } }
 
       it 'returns courses with correct level' do
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array([ks2_template, multi_filter_template])
       end
     end
@@ -303,7 +303,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: '', location: 'York', topic: '' } }
 
       it 'returns courses for correct location with all their occurrences' do
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array([location_template])
         expect(location_template.occurrences).to include(location_occurrence_matching_location)
         expect(location_template.occurrences).to include(location_occurrence_other_location)
@@ -314,7 +314,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: '', location: 'Online', topic: '' } }
 
       it 'returns only courses with online_cpd true' do
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array([online_template])
       end
     end
@@ -323,7 +323,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: '', location: 'Face to face', topic: '' } }
 
       it 'returns courses with online_cpd false and remote_delivered_cpd false' do
-        expect(course_filter.courses)
+        expect(course_filter.non_location_search_results)
           .to match_array([f2f_template,
                            ks2_template,
                            algorithms_template,
@@ -337,7 +337,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: '', location: 'Remote', topic: '' } }
 
       it 'returns courses with remote_delivered_cpd true' do
-        expect(course_filter.courses).to match_array([location_template, multi_filter_template])
+        expect(course_filter.non_location_search_results).to match_array([location_template, multi_filter_template])
       end
     end
 
@@ -345,7 +345,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', level: '', location: '', topic: 'Algorithms' } }
 
       it 'only returns courses for correct topic' do
-        expect(course_filter.courses).to match_array([algorithms_template, multi_filter_template])
+        expect(course_filter.non_location_search_results).to match_array([algorithms_template, multi_filter_template])
       end
     end
 
@@ -353,7 +353,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: '', location: 'Remote', level: 'Key stage 2', topic: 'Algorithms' } }
 
       it 'returns courses which match all criteria' do
-        expect(course_filter.courses).to match_array([multi_filter_template])
+        expect(course_filter.non_location_search_results).to match_array([multi_filter_template])
       end
     end
 
@@ -361,61 +361,59 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { hub_id: 'hubid', certificate: '', level: '', location: '', topic: '' } }
 
       it 'only returns courses with occurrences at the correct hub' do
-        expect(course_filter.courses).to match_array([hub_template])
+        expect(course_filter.non_location_search_results).to match_array([hub_template])
       end
 
       it 'only returns occurrences for the correct hub' do
-        course = course_filter.courses.first
+        course = course_filter.non_location_search_results.first
         expect(course.occurrences).to include(hub_occurrence_matching_hub)
         expect(course.occurrences).not_to include(hub_occurrence_other_hub)
       end
     end
 
-    context 'when searching by location and face to face' do
-      let(:filter_params) { { search_location: 'Liverpool', location: 'Face to face' } }
-      let(:result_dbl) { double('result') }
+    context 'when using search location' do
+      let(:filter_params) { { search_location: 'Liverpool' } }
 
-      before do
-        allow(Geocoder).to receive(:search) { [result_dbl] }
-        allow(result_dbl).to receive(:coordinates).and_return([53.41058, -2.97794])
+      it 'returns only remote and online courses' do
+        puts course_filter.non_location_search_results.map(&:title)
+        expect(course_filter.non_location_search_results)
+          .to match_array(
+            [
+              online_template,
+              location_template,
+              multi_filter_template
+            ]
+          )
       end
+    end
+  end
 
-      it 'orders courses by nearest occurrence' do
-        expect(course_filter.courses)
-          .to eq([f2f_template,
-                  algorithms_template,
-                  hub_template,
-                  secondary_template,
-                  ks2_template,
-                  no_occ_template])
+  describe '#location_search_results' do
+    let(:result_dbl) { double('result') }
+
+    before do
+      allow(Geocoder).to receive(:search) { [result_dbl] }
+      allow(result_dbl).to receive(:coordinates).and_return([53.41058, -2.97794])
+    end
+
+    context 'when not searching by location' do
+      it 'returns nil' do
+        expect(course_filter.location_search_results).to eq(nil)
       end
     end
 
     context 'when searching by location' do
       let(:filter_params) { { search_location: 'Liverpool' } }
-      let(:result_dbl) { double('result') }
 
-      before do
-        allow(Geocoder).to receive(:search) { [result_dbl] }
-        allow(result_dbl).to receive(:coordinates).and_return([53.41058, -2.97794])
-      end
-
-      it 'orders courses by nearest occurrences followed by other courses' do
-        # other courses are simply returned in the same order they were returned by the API
-        expect(course_filter.courses)
+      it 'returns f2f courses ordered by nearest occurrences within default radius' do
+        expect(course_filter.location_search_results)
           .to eq([f2f_template,
                   algorithms_template,
-                  hub_template,
-                  secondary_template,
-                  ks2_template,
-                  no_occ_template,
-                  location_template,
-                  multi_filter_template,
-                  online_template])
+                  hub_template])
       end
 
       it 'orders course occurrences by distance for each course' do
-        course_filter.courses
+        course_filter.location_search_results
         expect(hub_template.occurrences)
           .to eq(
             [
@@ -423,14 +421,18 @@ RSpec.describe Achiever::CourseFilter do
               hub_occurrence_other_hub
             ]
           )
+      end
+    end
 
-        expect(location_template.occurrences)
-          .to eq(
-            [
-              location_occurrence_other_location,
-              location_occurrence_matching_location
-            ]
-          )
+    context 'when searching by location and radius' do
+      let(:filter_params) { { search_location: 'Liverpool', radius: '60' } }
+
+      it 'returns f2f courses ordered by nearest occurrences within defined radius' do
+        expect(course_filter.location_search_results)
+          .to eq([f2f_template,
+                  algorithms_template,
+                  hub_template,
+                  secondary_template])
       end
     end
   end
@@ -606,6 +608,22 @@ RSpec.describe Achiever::CourseFilter do
         it 'returns the not found message' do
           expect(course_filter.search_location_formatted_address).to eq('This location was not recognised. Please check if it is correct.')
         end
+      end
+    end
+  end
+
+  describe '#search_radius' do
+    let(:filter_params) { {} }
+
+    it 'returns 40 by default' do
+      expect(course_filter.search_radius).to eq('40')
+    end
+
+    context 'when radius present in params' do
+      let(:filter_params) { { radius: '50' } }
+
+      it 'returns value set by params' do
+        expect(course_filter.search_radius).to eq('50')
       end
     end
   end
