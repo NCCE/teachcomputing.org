@@ -10,6 +10,7 @@
 
 .dropdown__expander-content {
   background: $white;
+  border-bottom: 1px solid #CED0D2;
   display: none;
   left: 0;
   padding: 1.125rem 1rem 1rem 1.5rem;
@@ -18,6 +19,7 @@
   visibility: hidden;
 
   @include govuk-media-query($from: desktop) {
+    border-bottom: unset;
     box-shadow: 0 0 5px $box-shadow;
     position: absolute;
     z-index: 1;
