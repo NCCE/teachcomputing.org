@@ -63,7 +63,13 @@
 
 .ncce-header__navigation-item {
   border-bottom: none;
+
+  a {
+    font-size: 1rem;
+  }
+
 }
+
 
 .ncce-header__certification,
 .ncce-header__user {
@@ -213,12 +219,14 @@
   background-size: 0.7rem;
   color: $deep-cerulean;
   display: inline-block;
-  padding: 0.3rem 0 0.3rem 0.3rem;
+  font-size: 1.125rem;
+  padding: 0.3rem 0;
   width: 100%;
 
   @include govuk-media-query($from: desktop) {
+    background-position: right 25px center;
     display: block;
-    padding: 0.3rem 20px 0.3rem 0.3rem;
+    padding: 0.3rem 15%;
     width: auto;
   }
 }
