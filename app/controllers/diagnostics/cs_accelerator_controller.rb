@@ -39,7 +39,8 @@ module Diagnostics
       end
 
       def recommend_pathway
-        upe = UserProgrammeEnrolment.find_by(user_id: current_user.id)
+        upe = UserProgrammeEnrolment.find_by(user_id: current_user.id,
+                                             programme_id: programme.id)
         upe.assign_recommended_pathway(questionnaire_response)
       end
 

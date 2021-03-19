@@ -1,6 +1,6 @@
 .ncce-csa-dash__section {
   background-color: $white;
-  border: none;
+  border-top: 1px solid $concrete;
   @include bottom-margined;
   &-padded {
     padding: 1.25rem 1.125rem;
@@ -21,6 +21,7 @@
 .ncce-csa-dash__objective {
   align-items: flex-start;
   background-color: $white;
+  border-top: 1px solid $concrete;
   display: grid;
   grid-template-rows: auto auto;
   padding: 0.5rem 1.125rem 1.125rem;
