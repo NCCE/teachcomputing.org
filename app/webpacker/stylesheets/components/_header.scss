@@ -5,7 +5,7 @@
   padding-top: $logo-block / 2;
 
   @include govuk-media-query($from: desktop) {
-    padding-bottom: $logo-block;
+    padding-bottom: 0;
     padding-top: $logo-block;
   }
 }
@@ -183,7 +183,8 @@
 
     @include govuk-media-query($from: desktop) {
       background-image: none;
-      padding: 0.6875rem 0.3rem;
+      //padding: 0.6875rem 0.3rem;
+      padding: 0.6875rem 0.3rem 0.875rem 0.3rem;
     }
   }
 }
