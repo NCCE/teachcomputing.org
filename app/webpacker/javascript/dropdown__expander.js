@@ -47,6 +47,12 @@ function initialiseSections(className) {
       if (isDesktop && event.type == 'click') return
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
 
+      menuItems.forEach(item => { 
+        if (menuItem !== item) {
+          closeMenu(item)
+        }
+      })
+
       if (!menuItem.classList.contains(menuItemToggleClass)) {
         closeMenu(menuItem)
       } else {
