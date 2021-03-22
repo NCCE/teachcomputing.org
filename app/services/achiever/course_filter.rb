@@ -25,7 +25,6 @@ module Achiever
         courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
         filter_courses(courses)
-        # sort_courses(filtered_courses)
       end
     end
 
