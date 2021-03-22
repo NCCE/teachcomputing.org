@@ -221,6 +221,7 @@
 .ncce-header__certification-item[aria-expanded="false"] > .ncce-header__certification-item--text {
   background-image: url('../images/tick-blue-no-border.svg');  
   color: $deep-cerulean;
+  padding-bottom: 0;
 }
 
 .ncce-header__certification-item--text,
