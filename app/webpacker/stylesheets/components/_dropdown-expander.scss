@@ -15,7 +15,6 @@
   left: 0;
   padding: 1.125rem 1rem 1rem 1rem;
   width: stretch;
-  transition: all 0.5s ease;
   visibility: hidden;
 
   @include govuk-media-query($from: desktop) {
@@ -51,7 +50,7 @@
 
   @include govuk-media-query($from: desktop) {
     font-size: 1.125rem;
-    
+
     &:first-child {
       font-size: 1.25rem;
     }

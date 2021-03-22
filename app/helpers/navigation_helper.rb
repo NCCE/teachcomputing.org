@@ -2,12 +2,12 @@ module NavigationHelper
 
   def header_navigation
 		[
-			{text: "Primary",
+			{text: "Primary teachers",
 			children: [
 				{text: "Primary teachers", link: primary_teachers_path, label: "Primary teachers" },
 				{text: "Primary certificate", link: primary_path, label: "Primary certificate" }
 			]},
-			{text: "Secondary", children:
+			{text: "Secondary teacher", children:
 				[{text: "Secondary teachers",
 				link: secondary_teachers_path, label: "Secondary teachers" },
 				{text: "Subject knowledge certificate",

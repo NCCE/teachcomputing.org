@@ -56,6 +56,7 @@
   float: none;
   margin-bottom: 0;
   padding-top: $logo-block / 2;
+
   @include govuk-media-query($from: desktop) {
     padding-top: 7px;
   }
@@ -199,11 +200,11 @@
   border: none;
 
   @include govuk-media-query($from: desktop) {
-    padding: 0.5rem 0.3rem;
+    //padding: 0.5rem 0.3rem;
     //padding: 0.3rem 15%;
+    padding: 0.6875rem 0.3rem;
   }
 }
-
 
 .ncce-header__certification-item:hover > .ncce-header__certification-item--text, .ncce-header__certification-item[aria-expanded="true"] > .ncce-header__certification-item--text {
   background-image: url('../images/arrow-down.svg');
@@ -214,14 +215,17 @@
   @include govuk-media-query($from: desktop) {
     //padding-bottom: unset;
     padding-left: unset;
-    padding: 0.3rem 10%;
+    //padding: 0.3rem 10%;
+    padding: 0.6875rem 0.3rem;
   }
 }
+
 
 .ncce-header__certification-item[aria-expanded="false"] > .ncce-header__certification-item--text {
   background-image: url('../images/tick-blue-no-border.svg');  
   color: $deep-cerulean;
   padding-bottom: 0;
+  padding-left: 0;
 }
 
 .ncce-header__certification-item--text,
@@ -236,10 +240,10 @@
   width: 100%;
 
   @include govuk-media-query($from: desktop) {
-    background-position: right 25px center;
+    background-position: right 15px center;
     display: block;
     font-size: 1.1875rem;
-    padding: 0.3rem 10%;
+    //padding: 0.3rem 10%;
     width: auto;
   }
 }
