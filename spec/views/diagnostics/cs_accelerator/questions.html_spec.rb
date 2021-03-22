@@ -4,7 +4,7 @@ RSpec.describe('diagnostics/cs_accelerator/questions', type: :view) do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
-    stub_template 'diagnostics/_question' => "<div class='ncce-diagnostic__question'></div>"
+    stub_template 'diagnostics/_question.html.erb' => "<div class='ncce-diagnostic__question'></div>"
     assign(:programme, programme)
     assign(:step, :question_1)
     assign(:steps, [:question_1])

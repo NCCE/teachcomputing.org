@@ -1,6 +1,7 @@
 module Programmes
   class CSAccelerator < Programme
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
+
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
@@ -19,7 +20,7 @@ module Programmes
       total
     end
 
-    def enough_activites_for_test?(user)
+    def enough_activities_for_test?(user)
       complete_achievements = user.achievements
                                   .for_programme(self)
                                   .in_state('complete')
@@ -51,6 +52,30 @@ module Programmes
 
     def programme_title
       PROGRAMME_TITLE
+    end
+
+    def compulsory_achievement(user)
+      achievements = user
+                     .achievements
+                     .for_programme(self)
+                     .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                     .order(:created_at)
+
+      complete = achievements.select { |ach| ach.in_state?(:complete) }
+      return complete.min_by { |x| x.last_transition.created_at } if complete.present?
+
+      achievements.first
+    end
+
+    def non_compulsory_achievements(user)
+      user.achievements.for_programme(self)
+          .with_category([Activity::FACE_TO_FACE_CATEGORY,
+                          Activity::ONLINE_CATEGORY])
+          .where.not(id: compulsory_achievement(user)&.id)
+    end
+
+    def user_completed_non_compulsory_achievement?(user)
+      non_compulsory_achievements(user).any? { |a| a.complete? }
     end
   end
 end

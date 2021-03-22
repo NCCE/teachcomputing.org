@@ -18,7 +18,7 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
     end
 
     it 'does not call CSAcceleratorMailer when the enrolment is already in a state of complete' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
       cs_accelerator_enrolment.transition_to(:complete)
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(0)
@@ -26,7 +26,7 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
 
     it 'does not call CSAcceleratorMailer when the enrolment is in a state of unenrolled' do
       allow_any_instance_of(Programmes::CSAccelerator)
-        .to receive(:enough_activites_for_test?)
+        .to receive(:enough_activities_for_test?)
         .with(user)
         .and_return(true)
       cs_accelerator_enrolment.transition_to(:unenrolled)
@@ -35,26 +35,26 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
     end
 
     it 'does not call CSAcceleratorMailer when the user does not have an enrolment' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
       cs_accelerator_enrolment.destroy
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(0)
     end
 
     it 'sends the email' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'records the email has been sent for the user' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
       expect { described_class.perform_now(user.id) }
         .to change(SentEmail, :count).by(1)
     end
 
     it 'only sends the email once' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
       described_class.perform_now(user.id)
       expect do
         described_class.perform_now(user.id)

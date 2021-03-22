@@ -1,0 +1,65 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator programme</h2>
+          <% if @csa_dash.has_enough_activities_for_test %>
+            <p class="govuk-body-m bottom-margin-l">
+              You’ve completed enough courses to access the test.
+              You should continue to complete any courses you think are right for you.
+              When you are ready, you can
+              <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View test and mock test' } %>.
+            </p>
+          <% else %>
+            <p class="govuk-body-m">
+              To access our test and get your certificate, you’ll need to complete
+              at least one face to face or remote course, and one additional CS
+              Accelerator course. But we encourage you to complete as many courses
+              as you need to gain the subject knowledge to confidently teach computer science.
+            </p>
+          <% end %>
+
+          <%= render partial: 'certificates/cs_accelerator/v2/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway }%>
+
+          <div class="govuk-body ncce-csa-dash__section-unpadded">
+            <%= render partial: 'certificates/cs_accelerator/v2/achievements', locals: {
+              compulsory_achievement: @csa_dash.compulsory_achievement,
+              user_completed_non_compulsory_achievement: @csa_dash.user_completed_non_compulsory_achievement?,
+              non_compulsory_achievements: @csa_dash.non_compulsory_achievements
+            } %>
+
+            <%= render partial: 'certificates/cs_accelerator/v2/recommended-courses', locals: {
+              pathway: @csa_dash.user_programme_pathway,
+              recommended_activities: @csa_dash.recommended_activities_for_user
+            } %>
+          </div>
+
+          <% if @csa_dash.user_programme_pathway.present? %>
+            <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
+              <%= render partial: 'certificates/cs_accelerator/v2/supplementary-courses', locals: {
+                pathway: @csa_dash.user_programme_pathway ,
+                supplementary_activities: @csa_dash.supplementary_activities_for_user
+              } %>
+            </div>
+          <% end %>
+
+          <% if @csa_dash.has_enough_activities_for_test %>
+            <%= render partial: 'certificates/cs_accelerator/v2/csa-test', locals: {
+                user_programme_assessment: @csa_dash.user_programme_assessment
+            } %>
+          <% end %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render 'certificates/cs_accelerator/v2/bursary-aside' %>
+          <%= render partial: 'certificates/pathway-aside', locals: {
+            other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
+            user_pathway: @csa_dash.user_programme_pathway,
+          } %>
+          <%= render 'components/support-aside' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

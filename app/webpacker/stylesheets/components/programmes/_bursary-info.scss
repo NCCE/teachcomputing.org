@@ -6,6 +6,8 @@
   background-position: 1rem 1.8rem;
   background-repeat: no-repeat;
   background-size: 1.2rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.125rem;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.5rem;
@@ -22,5 +24,9 @@
 .bursary-info__link {
   font-weight: bold;
   margin-bottom: 0;
+  padding-left: 2rem;
+}
+
+.bursary-info__heading {
   padding-left: 2rem;
 }

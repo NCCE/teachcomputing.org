@@ -1,0 +1,26 @@
+.ncce-sp-icons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 14px;
+  @include govuk-media-query($from: desktop) {
+    margin-top: 20px;
+  }
+}
+
+.ncce-sp-icon {
+  margin-bottom: 8%;
+  max-width: 222px;
+  width: 46%;
+
+  @include govuk-media-query($from: tablet) {
+    width: 23%;
+  }
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 60px;
+  }
+
+  img {
+    width: 100%;
+  }
+}

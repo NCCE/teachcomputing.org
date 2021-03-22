@@ -38,10 +38,6 @@ class Activity < ApplicationRecord
   scope :system, -> { where(provider: 'system') }
   scope :user_removable, -> { self_certifiable.non_action }
 
-  def user_removable?
-    self_certifiable && category != ACTION_CATEGORY
-  end
-
   def self.cs_accelerator_diagnostic_tool
     Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
       activity.title = 'Taken diagnostic tool'
@@ -51,5 +47,9 @@ class Activity < ApplicationRecord
       activity.self_certifiable = false
       activity.provider = 'system'
     end
+  end
+
+  def online?
+    category == ONLINE_CATEGORY
   end
 end

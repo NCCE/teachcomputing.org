@@ -16,7 +16,7 @@ RSpec.describe NewAssessmentEligibilityJob, type: :job do
     end
 
     it 'mails if the user is eligible' do
-      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activites_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
         expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
