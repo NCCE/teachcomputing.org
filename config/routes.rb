@@ -77,8 +77,7 @@ Rails.application.routes.draw do
   end
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
-  get '/courses/filter(/:level/:stage/:certificate/:format)', action: :filter, controller: 'courses',
-                                                              as: 'course_filter'
+  get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'
   get '/courses/hubs/:hub_id', action: :index, controller: 'courses', as: 'hub'
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 

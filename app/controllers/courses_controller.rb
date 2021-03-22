@@ -2,13 +2,17 @@ class CoursesController < ApplicationController
   layout 'full-width'
 
   def index
-    @course_filter = Achiever::CourseFilter.new
+    @filter_params = filter_params
+    @course_filter = Achiever::CourseFilter.new(
+      filter_params: filter_params
+    )
     render :index
   end
 
   def filter
-    @course_filter = Achiever::CourseFilter.new
-    @course_filter.filter(filter_params: filter_params)
+    @course_filter = Achiever::CourseFilter.new(
+      filter_params: filter_params
+    )
     render partial: 'courses/courses-list', layout: false
   end
 
@@ -33,6 +37,6 @@ class CoursesController < ApplicationController
     end
 
     def filter_params
-      params.permit(:certificate, :level, :location, :topic, :hub_id)
+      params.permit(:certificate, :level, :location, :topic, :hub_id, course_format: [])
     end
 end

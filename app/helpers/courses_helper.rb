@@ -49,8 +49,14 @@ module CoursesHelper
     strip_tags(unescaped_str)
   end
 
-  def course_meta_icon_class(isOnlineCourse)
-    isOnlineCourse ? 'icon-online' : 'icon-map-pin'
+  def course_meta_icon_class(course)
+    if course&.online_cpd
+      'icon-online'
+    elsif course&.remote_delivered_cpd
+      'icon-remote'
+    else
+      'icon-map-pin'
+    end
   end
 
   def online_course_date(start_date)

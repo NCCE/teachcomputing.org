@@ -19,7 +19,9 @@ describe CoursesHelper, type: :helper do
                               address_line_2: 'Line 2',
                               address_line_3: 'Line 3',
                               address_line_4: '',
-                              address_town: 'Town')
+                              address_town: 'Town',
+                              online_cpd: false,
+                              remote_delivered_cpd: false)
   end
 
   let(:programme) do
@@ -95,11 +97,17 @@ describe CoursesHelper, type: :helper do
 
   describe('course_meta_icon_class') do
     it 'returns icon for offline courses' do
-      expect(helper.course_meta_icon_class(false)).to eq 'icon-map-pin'
+      expect(helper.course_meta_icon_class(course)).to eq 'icon-map-pin'
+    end
+
+    it 'returns icon for remote courses' do
+      remote_course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
+      expect(helper.course_meta_icon_class(remote_course)).to eq 'icon-remote'
     end
 
     it 'returns icon for online courses' do
-      expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
+      online_course = instance_double('course', online_cpd: true, remote_delivered_cpd: false)
+      expect(helper.course_meta_icon_class(online_course)).to eq 'icon-online'
     end
   end
 

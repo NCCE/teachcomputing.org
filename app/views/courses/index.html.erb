@@ -17,13 +17,30 @@
     </div>
   </div>
 </div>
+
+<% if @course_filter.current_hub %>
+<div class="ncce-courses__hub-container">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper ncce-courses__hub-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h3 class="govuk-heading-s ncce-courses__hub-heading">
+            Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
+            <%= link_to 'show all results', courses_path(anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub' %>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 <div class="govuk-width-container" data-controller="course-filter">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__results-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds" data-course-filter-target="results">
+      <div class="govuk-grid-column-two-thirds" data-course-filter-target="results"  id="results-top">
         <%= render 'courses/courses-list' %>
       </div>
-      <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-column-one-third sticky">
         <%= render 'courses/aside-filters' %>
       </div>
     </div>

@@ -26,6 +26,10 @@
   @include icon('../images/map-pin.svg');
 }
 
+.icon-remote {
+  @include icon('../images/icons/icon-remote.svg');
+}
+
 .icon-resources {
   @include icon('../images/resources-black.svg', left top, 30px, 30px, 5px);
   min-height: 30px;

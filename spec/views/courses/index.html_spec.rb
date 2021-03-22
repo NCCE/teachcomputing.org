@@ -15,6 +15,11 @@ RSpec.describe('courses/index', type: :view) do
     subjects = { 'Algorithmic thinking' => 100_000_011, 'Biology' => 157_430_000, 'Careers' => 157_430_001 }
     age_groups = { 'Key stage 1' => 157_430_008, 'Key stage 2' => 157_430_009, 'Key stage 3' => 157_430_010,
                    'Key stage 4' => 157_430_011 }
+    certificates = {
+      'cs-accelerator': 'CS Accelerator',
+      'secondary-certificate': 'Secondary Certificate',
+      'primary-certificate': 'Primary Certificate'
+    }
 
     filter_stub = instance_double(Achiever::CourseFilter)
 
@@ -22,13 +27,17 @@ RSpec.describe('courses/index', type: :view) do
       course_tags: { Algorithms: '101' },
       age_groups: age_groups,
       subjects: subjects,
+      certificates: certificates,
       courses: courses,
+      course_formats: %i[face_to_face online remote],
       course_locations: ['Cambridge'],
+      current_hub: nil,
       current_level: nil, current_location: nil,
       current_topic: nil, current_certificate: nil,
       applied_filters: nil
     )
 
+    @filter_params = { hub_id: 'bla' }
     @course_filter = filter_stub
     render
   end
@@ -76,7 +85,7 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'renders filter selects' do
-      expect(rendered).to have_css('.ncce-select', count: 3)
+      expect(rendered).to have_css('.ncce-select', count: 4)
     end
 
     it 'renders location select' do
@@ -91,12 +100,12 @@ RSpec.describe('courses/index', type: :view) do
       expect(rendered).to have_css('.ncce-select option', text: 'Algorithms')
     end
 
-    it 'renders filter submit' do
-      expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
-    end
+    # it 'renders filter submit' do
+    #   expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
+    # end
 
-    it 'not to render an asides' do
-      expect(rendered).not_to have_css('.ncce-aside')
+    it 'to render the filter partial' do
+      expect(rendered).to have_css('.ncce-aside--filters')
     end
   end
 end

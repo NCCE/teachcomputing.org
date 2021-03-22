@@ -9,13 +9,13 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # if cookies[:CF_Authorization].nil?
-      #   flash[:error] = 'Whoops something went wrong'
-      #   redirect_to root_path
-      # else
-      #   decoded_token = decode_cookie(cookies[:CF_Authorization])
-      #   @admin_email = decoded_token.first['email']
-      # end
+      if cookies[:CF_Authorization].nil?
+        flash[:error] = 'Whoops something went wrong'
+        redirect_to root_path
+      else
+        decoded_token = decode_cookie(cookies[:CF_Authorization])
+        @admin_email = decoded_token.first['email']
+      end
     end
 
     private
