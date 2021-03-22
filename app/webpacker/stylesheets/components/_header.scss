@@ -63,6 +63,7 @@
 
 .ncce-header__navigation-item {
   border-bottom: none;
+  padding: 12px 0;
 
   a {
     font-size: 1rem;
@@ -85,6 +86,7 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+    margin-bottom: 12px;
   }
 }
 
@@ -207,11 +209,12 @@
   background-image: url('../images/arrow-down.svg');
   color: $white;
   padding-bottom: 0.5rem;
+  padding-left: 2px;
 
   @include govuk-media-query($from: desktop) {
     //padding-bottom: unset;
     padding-left: unset;
-    padding: 0.3rem 15%;
+    padding: 0.3rem 10%;
   }
 }
 
@@ -234,7 +237,8 @@
   @include govuk-media-query($from: desktop) {
     background-position: right 25px center;
     display: block;
-    padding: 0.3rem 15%;
+    font-size: 1.1875rem;
+    padding: 0.3rem 10%;
     width: auto;
   }
 }
