@@ -4,11 +4,11 @@ module NavigationHelper
 		[
 			{text: "Primary teachers",
 			children: [
-				{text: "Primary teachers", link: primary_teachers_path, label: "Primary teachers" },
+				{text: "Primary teacher toolkit", link: primary_teachers_path, label: "Primary teachers" },
 				{text: "Primary certificate", link: primary_path, label: "Primary certificate" }
 			]},
 			{text: "Secondary teacher", children:
-				[{text: "Secondary teachers",
+				[{text: "Secondary teacher toolkit",
 				link: secondary_teachers_path, label: "Secondary teachers" },
 				{text: "Subject knowledge certificate",
 				link: cs_accelerator_path, label: "Subject knowledge certificate" },

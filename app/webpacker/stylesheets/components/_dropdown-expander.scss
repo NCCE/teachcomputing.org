@@ -20,6 +20,7 @@
   @include govuk-media-query($from: desktop) {
     border-bottom: unset;
     box-shadow: 0 0 5px $box-shadow;
+    margin-top: 0.7rem;
     position: absolute;
     z-index: 1;
   }
