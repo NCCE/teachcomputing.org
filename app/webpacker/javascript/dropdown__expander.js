@@ -43,22 +43,20 @@ function initialiseSections(className) {
     }
 
     const toggleMenu = event => {
-      const isDesktop = window.matchMedia('(min-width: 769px)').matches
-
       let isTouch = false
       if (
         'ontouchstart' in window ||
         navigator.maxTouchPoints > 0 ||
         navigator.msMaxTouchPoints > 0
       ) {
-        /* browser with either Touch Events of Pointer Events
-              running on touch-capable device */
+        /* browser with either Touch Events of Pointer Events running on touch-capable device */
         isTouch = true
       }
+      console.log(event.type)
+
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
-      if (isDesktop && !isTouch && event.type == 'click') return
-      if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
-      if (isDesktop && event.type == 'click') return
+      if (!isTouch && event.type == 'click') return
+
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
 
       menuItems.forEach(item => { 
@@ -75,8 +73,18 @@ function initialiseSections(className) {
     }
 
     const toggleExpanded = event => {
+      let isTouch = false
+      if (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      ) {
+        /* browser with either Touch Events of Pointer Events running on touch-capable device */
+        isTouch = true
+      }
+
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
-      if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
+      if (!isDesktop && isTouch && ['mouseover', 'mouseout'].includes(event.type)) return
 
       if (menuItem.getAttribute('aria-expanded') == 'true') {
         menuItem.setAttribute('aria-expanded', 'false')
