@@ -3,7 +3,7 @@ Sentry.init do |config|
   config.rails.report_rescued_exceptions = true
   config.breadcrumbs_logger = [:active_support_logger]
   config.traces_sample_rate = 0.5
-  config.enabled_environments = %w[staging]
+  config.enabled_environments = %w[staging production]
 
   filter = ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
   config.before_send = lambda do |event, _hint|
