@@ -28,8 +28,8 @@ class FetchUsersCompletedCoursesFromAchieverJob < ApplicationJob
     def course_activity(stem_course_template_no:, user_id:)
       Activity.find_by!(stem_course_template_no: stem_course_template_no)
     rescue ActiveRecord::RecordNotFound => e
-      Raven.tags_context(stem_course_template_no: stem_course_template_no, user_id: user_id)
-      Raven.capture_exception(e)
+      Sentry.set_tags(stem_course_template_no: stem_course_template_no, user_id: user_id)
+      Sentry.capture_exception(e)
       nil
     end
 
