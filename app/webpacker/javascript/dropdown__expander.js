@@ -52,7 +52,6 @@ function initialiseSections(className) {
         /* browser with either Touch Events of Pointer Events running on touch-capable device */
         isTouch = true
       }
-      console.log(event.type)
 
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
       if (!isTouch && event.type == 'click') return
