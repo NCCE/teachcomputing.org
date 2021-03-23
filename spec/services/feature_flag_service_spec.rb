@@ -53,9 +53,5 @@ RSpec.describe FeatureFlagService do
     it 'sets the csa_questionnaire_enabled flag' do
       expect(FeatureFlagService::FLAGS.keys).to include(:csa_questionnaire_enabled)
     end
-
-    it 'sets the certification_sync_enabled flag' do
-      expect(FeatureFlagService::FLAGS.keys).to include(:certification_sync_enabled)
-    end
   end
 end

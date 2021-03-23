@@ -1,6 +1,5 @@
 class FeatureFlagService
   FLAGS = {
-    certification_sync_enabled: 'CERTIFICATION_SYNCING_ENABLED',
     csa_questionnaire_enabled: 'CSA_QUESTIONNAIRE_ENABLED'
   }.freeze
 
