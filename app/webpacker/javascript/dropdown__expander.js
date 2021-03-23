@@ -43,7 +43,21 @@ function initialiseSections(className) {
     }
 
     const toggleMenu = event => {
-      const isDesktop = window.matchMedia('(min-width: 1025px)').matches
+      const isDesktop = window.matchMedia('(min-width: 769px)').matches
+
+      let isTouch = false
+      if (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      ) {
+        /* browser with either Touch Events of Pointer Events
+              running on touch-capable device */
+        isTouch = true
+      }
+      const isDesktop = window.matchMedia('(min-width: 769px)').matches
+      if (isDesktop && !isTouch && event.type == 'click') return
+      if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
       if (isDesktop && event.type == 'click') return
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
 
@@ -61,7 +75,7 @@ function initialiseSections(className) {
     }
 
     const toggleExpanded = event => {
-      const isDesktop = window.matchMedia('(min-width: 1025px)').matches
+      const isDesktop = window.matchMedia('(min-width: 769px)').matches
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
 
       if (menuItem.getAttribute('aria-expanded') == 'true') {
