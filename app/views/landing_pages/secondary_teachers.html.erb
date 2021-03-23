@@ -21,20 +21,7 @@
   </div>
 </div>
 <div class="govuk-width-container">
-
-  <div class="govuk-main-wrapper govuk-!-padding-0">
-    <div class="govuk-grid-row govuk-!-margin-bottom-0">
-      <div class="govuk-grid-column-full govuk-!-margin-bottom-0 dedicated-pages">
-        <p class="govuk-body govuk-!-margin-bottom-0">
-          <strong>We also have dedicated pages for:</strong>
-        </p>
-        <%= link_to 'Secondary senior leaders', secondary_senior_leaders_path,
-          class: 'govuk-button button button--inverted dedicated-pages--button' %>
-        <%= link_to 'Early careers teachers', 'https://teachcomputing.org/early-career-teachers',
-          class: 'govuk-button button button--inverted dedicated-pages--button' %>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'landing_pages/dedicated_pages', locals: { show_secondary_link: true } %>
 
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
