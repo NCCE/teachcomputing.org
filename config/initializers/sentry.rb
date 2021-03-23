@@ -1,6 +1,5 @@
 Sentry.init do |config|
   config.dsn = Rails.application.credentials[ENV.fetch('SENTRY_DSN')]
-  config.breadcrumbs_logger = :active_support_logger
   config.rails.report_rescued_exceptions = true
   config.enabled_environments = %w[staging]
 
