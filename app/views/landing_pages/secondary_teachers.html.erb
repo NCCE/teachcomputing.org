@@ -9,18 +9,33 @@
       <div class="text-photo-hero white-bg">
         <div class="text-photo-hero__block--text">
           <h1 class="govuk-heading-l">The essential toolkit for secondary computing teachers</h1>
-          <p class="govuk-body-l">Training and inspiration that grows your
-            confidence, transforms your teaching and brings your lessons to
-            life.</p>
+          <p class="govuk-body-l">
+            Training and inspiration that grows your confidence and transforms your teaching.
+          </p>
         </div>
         <div class="text-photo-hero__block--photo">
-          <%= image_pack_tag 'media/images/secondary-teachers/hero.jpg', alt: '' %>
+          <%= image_pack_tag 'media/images/secondary-teachers/hero.png', alt: '' %>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="govuk-width-container">
+
+  <div class="govuk-main-wrapper govuk-!-padding-0">
+    <div class="govuk-grid-row govuk-!-margin-bottom-0">
+      <div class="govuk-grid-column-full govuk-!-margin-bottom-0 dedicated-pages">
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          <strong>We also have dedicated pages for:</strong>
+        </p>
+        <%= link_to 'Secondary senior leaders', secondary_senior_leaders_path,
+          class: 'govuk-button button button--inverted dedicated-pages--button' %>
+        <%= link_to 'Early careers teachers', 'https://teachcomputing.org/early-career-teachers',
+          class: 'govuk-button button button--inverted dedicated-pages--button' %>
+      </div>
+    </div>
+  </div>
+
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">

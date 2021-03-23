@@ -1,0 +1,19 @@
+.dedicated-pages {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 12px;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+  }
+}
+
+.dedicated-pages--button {
+  margin-top: 8px;
+  @include govuk-media-query($from: tablet) {
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+}
