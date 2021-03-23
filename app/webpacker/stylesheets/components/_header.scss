@@ -151,6 +151,7 @@
     background-size: 0.1rem;
     border: none;
     display: inline-block;
+    min-width: 7rem;
     padding: 0.6875rem 0.3rem;
 
     &:first-child {
@@ -168,8 +169,12 @@
 
 .ncce-header__certification-item:hover > .ncce-header__certification-item--text,
 .ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--text {
-  background-image: url('../images/arrow-down.svg');
   color: $white;
+}
+
+.ncce-header__certification-item:hover > .ncce-header__certification-item--icon,
+.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--icon {
+  background-image: url('../images/arrow-down.svg');
 }
 
 @media (any-hover: hover) {
@@ -191,7 +196,6 @@
 
 .ncce-header__certification-item:hover > .ncce-header__certification-item--text,
 .ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--text {
-  background-image: url('../images/arrow-down.svg');
   color: $white;
   padding-bottom: 0.5rem;
   padding-left: 2px;
@@ -202,8 +206,12 @@
   }
 }
 
+.ncce-header__certification-item:hover > .ncce-header__certification-item--icon,
+.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--icon {
+  background-image: url('../images/arrow-down.svg');
+}
+
 .ncce-header__certification-item[aria-expanded='false'] > .ncce-header__certification-item--text {
-  background-image: url('../images/tick-blue-no-border.svg');
   color: $deep-cerulean;
   padding-bottom: 0.5rem;
   padding-left: 2px;
@@ -214,22 +222,37 @@
   }
 }
 
+.ncce-header__certification-item[aria-expanded='false'] > .ncce-header__certification-item--icon {
+  background-image: url('../images/tick-blue-no-border.svg');
+}
+
 .ncce-header__certification-item--text,
 .ncce-header__certification-item--text[aria-expanded='true'] {
-  background-image: url('../images/tick-blue-no-border.svg');
-  background-position: right 10px center;
-  background-repeat: no-repeat;
-  background-size: 0.7rem;
   color: $deep-cerulean;
   display: inline-block;
   font-size: 1.125rem;
   width: 100%;
 
   @include govuk-media-query($from: desktop) {
-    background-position: right 15px center;
-    display: block;
     font-size: 1.1875rem;
     width: auto;
+  }
+}
+
+.ncce-header__certification-item--icon,
+.ncce-header__certification-item--icon[aria-expanded='true'] {
+  background-image: url('../images/tick-blue-no-border.svg');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 0.7rem;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+
+
+  @include govuk-media-query($from: desktop) {
+    background-position: right 15px center;
+    padding-left: 10px;
   }
 }
 
