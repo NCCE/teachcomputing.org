@@ -47,15 +47,11 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      expect(FeatureFlagService::FLAGS.count).to eq 2
+      expect(FeatureFlagService::FLAGS.count).to eq 1
     end
 
     it 'sets the csa_questionnaire_enabled flag' do
       expect(FeatureFlagService::FLAGS.keys).to include(:csa_questionnaire_enabled)
-    end
-
-    it 'sets the certification_sync_enabled flag' do
-      expect(FeatureFlagService::FLAGS.keys).to include(:certification_sync_enabled)
     end
   end
 end

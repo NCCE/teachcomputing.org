@@ -10,8 +10,6 @@ RSpec.describe Achiever::ScheduleCertificateSyncJob, type: :job do
         stub_post_enrolment
         allow(Achiever::User::Enrolment).to receive(:new).and_return(my_instance)
         allow(my_instance).to receive(:sync)
-
-        ENV['CERTIFICATION_SYNCING_ENABLED'] = 'true'
       end
 
       it 'creates an AchieverSyncRecord' do
