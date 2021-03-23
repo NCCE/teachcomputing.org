@@ -37,11 +37,11 @@
 <div class="govuk-width-container" data-controller="course-filter">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__results-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds" data-course-filter-target="results"  id="results-top">
-        <%= render 'courses/courses-list' %>
-      </div>
       <div class="govuk-grid-column-one-third sticky">
         <%= render 'courses/aside-filters' %>
+      </div>
+      <div class="govuk-grid-column-two-thirds" data-course-filter-target="results" id="results-top">
+        <%= render 'courses/courses-list' %>
       </div>
     </div>
   </div>

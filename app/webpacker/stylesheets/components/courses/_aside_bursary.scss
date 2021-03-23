@@ -4,5 +4,9 @@
     background-repeat: no-repeat;
     background-size: 1.05rem;
     padding-left: 1.7rem;
+
+    @include govuk-media-query($until: tablet) {
+      background-size: 0.8rem;
+    }
   }
 }

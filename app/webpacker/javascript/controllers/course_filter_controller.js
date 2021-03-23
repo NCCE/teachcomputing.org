@@ -2,14 +2,15 @@ import ApplicationController from "./application_controller";
 import Rails from "@rails/ujs";
 
 export default class extends ApplicationController {
-  static targets = ['results', 'form', 'loadingBar', 'courseList', 'clearFilters', 'resultsCount'];
+  static targets = [
+    'results', 'form', 'loadingBar', 'courseList', 'clearFilters', 'resultsCount', 'filterForm', 'filterFormToggle'
+  ];
   intervalId = null;
+  boundToggleFilterForm = null;
 
   initialize() {
-    this.clearFiltersTarget.addEventListener('click', () => {
-      this.toggleLoadingBar();
-      this.resetResultsCount(this.resultsCountTarget)
-    });
+    this.toggleMobileMode();
+    this.boundToggleFilterForm = this.toggleFilterForm.bind(this);
   }
 
   filter(ev) {
@@ -73,6 +74,25 @@ export default class extends ApplicationController {
 
     if (clearFilters.contains('hidden')) {
       clearFilters.remove('hidden');
+    }
+  }
+
+  clearFilters() {
+    this.toggleLoadingBar();
+    this.resetResultsCount(this.resultsCountTarget);
+  }
+
+  toggleFilterForm() {
+    this.filterFormTarget.classList.toggle('hidden');
+  }
+
+  toggleMobileMode() {
+    const isMobile = window.matchMedia('(max-width: 669px)').matches;
+    if (isMobile) {
+      this.filterFormToggleTarget.addEventListener('click', this.boundToggleFilterForm);
+      this.filterFormTarget.classList.toggle('hidden');
+    } else {
+      this.filterFormToggleTarget.removeEventListener('click', this.boundToggleFilterForm);
     }
   }
 }

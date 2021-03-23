@@ -5,6 +5,10 @@
   box-sizing: border-box;
   padding: 13px;
   margin-top: 40px;
+
+  @include govuk-media-query($until: tablet) {
+    margin-top: 0;
+  }
 }
 
 .ncce-aside--filters__title {

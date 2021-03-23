@@ -15,6 +15,7 @@
     "dotenv-webpack": "^6.0.2",
     "flatpickr": "^4.6.9",
     "govuk-frontend": "^2.3.0",
+    "mobile-device-detect": "^0.4.3",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "stimulus": "^2.0",

@@ -1,7 +1,7 @@
 <% unless @course_filter.nil? %>
-<div class="ncce-aside ncce-aside--filters">
-  <h2 class="govuk-body-m ncce-aside__title">Filter courses</h2>
-  <div class="ncce-courses__filter">
+<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#toggleMobileMode">
+  <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title" data-course-filter-target="filterFormToggle">Filter courses</h2>
+  <div class="ncce-courses__filter" data-course-filter-target="filterForm">
     <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
       <%= label_tag :level, 'Key Stage:', class: 'govuk-body-s ncce-label' %>
       <%= select_tag :level,
@@ -46,7 +46,7 @@
       <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label' %>
       <% @course_filter.course_formats.each do |course_format| %>
         <div>
-          <%= check_box_tag 'course_format[]', course_format, false, data: { action: "input->course-filter#filter", 'aria-label': 'Filter by format', class: 'govuk-checkboxes__input ncce-checkboxes' } %>
+          <%= check_box_tag 'course_format[]', course_format, false, data: { action: 'input->course-filter#filter', 'aria-label': 'Filter by format', class: 'govuk-checkboxes__input ncce-checkboxes' } %>
           <%= label_tag course_format, (course_format.to_s).humanize, class: 'govuk-body-s ncce-label' %>
         </div>
       <% end %>
@@ -56,5 +56,5 @@
 </div>
 <% end %>
 <div class='ncce-courses__clear-filters <%= @course_filter.applied_filters.blank? ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
-  <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text' %>
+  <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text', data: { action: 'click->course-filter#clearFilters' } %>
 </div>
