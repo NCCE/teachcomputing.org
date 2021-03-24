@@ -7,6 +7,23 @@
   }
 }
 
+.ncce-header__logo {
+  fill: $deep-cerulean;
+  width: 160px;
+  @include govuk-media-query($from: tablet) {
+    height: auto;
+    width: 200px;
+  }
+}
+.ncce-stem__logo-wrapper {
+  .ncce-header__logo {
+    fill: $white;
+  }
+  .ncce-stem__link--homepage {
+    color: $white;
+  }
+}
+
 .govuk-header__logo {
   margin: 0;
 	width: auto !important;
