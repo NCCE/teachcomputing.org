@@ -1,13 +1,57 @@
 <div class="light-grey-bg">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper--xl">
+    <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-l">Certificates</h2>
         </div>
-
         <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l">
+            <%= @landing_page.certificates_text %>
+          </p>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <% if @landing_page.secondary %>
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page">
+              <div class="ncce-flex__space-between">
+                <h2 class="govuk-heading-m card__heading">
+                  Subject knowledge certificate
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @cs_accelerator %>
+              </div>
+              <p class="govuk-body card__text card__text-landing-page">
+                Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <%= link_to @landing_page.csa_link_text, cs_accelerator_path, class: 'button govuk-button' %>
+              </p>
+            </div>
 
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page">
+
+              <div class="ncce-flex__space-between">
+                <h2 class="govuk-heading-m card__heading">
+                  Teach secondary computing
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @secondary_certificate %>
+              </div>
+
+              <p class="govuk-body card__text">
+                Following on from the Computer Science Accelerator, gain the confidence to take your teaching practice to the next level.
+              </p>
+
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <strong><%= link_to @landing_page.secondary_cert_link_text, secondary_path, class: 'button govuk-button' %></strong>
+                </p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <%= render 'landing_pages/bursary-aside' %>
+          <% if @landing_page.secondary %>
+            <%= render 'landing_pages/champions-aside' %>
+          <% end %>
         </div>
       </div>
     </div>

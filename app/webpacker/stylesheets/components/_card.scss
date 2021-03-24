@@ -109,7 +109,7 @@
   }
 }
 
-.card > .status-block {
+.card .status-block {
   @include status_block();
   display: inline-block;
   margin-bottom: 10px;
@@ -237,4 +237,12 @@
     max-width: 22rem;
     width: auto;
   }
+}
+
+.card--landing-page {
+  padding: 30px 20px 0 30px;
+}
+
+.card__text-landing-page {
+  margin-right: 30px;
 }

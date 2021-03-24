@@ -20,8 +20,16 @@
     </div>
   </div>
 </div>
-<%= render partial: 'landing_pages/dedicated_pages', locals: { show_secondary_link: true } %>
-<%= render partial: 'landing_pages/certificates', locals: { secondary: true } %>
+<%= render partial: 'landing_pages/dedicated_pages' %>
+<%= render partial: 'landing_pages/certificates' %>
+<%= render partial: 'landing_pages/testimonials' %>
+
+
+
+
+
+
+
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
@@ -86,86 +94,18 @@
     </div>
   </div>
 </div>
-<div class="light-grey-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper--xl">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l">Your certificates
-          </h2>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <div class="card card--cs-accelerator card--bottom-glyph">
-            <%= render 'pages/certification/programme-enrolment-status', programme: @cs_accelerator %>
-						<h2 class="govuk-heading-m card__heading">
-							<%= link_to_if(current_user && @cs_accelerator.user_enrolled?(current_user), 'GCSE computer science subject knowledge', cs_accelerator_certificate_path, class: 'ncce-link') do %>
-            	GCSE computer science subject knowledge
-          		<% end %>
-						</h2>
-            <p class="govuk-body card__text">
-              Computer Science Accelerator is a flexible professional development programme designed to equip you with the subject knowledge to teach GCSE computer science.
-            </p>
 
-            <% unless current_user && @cs_accelerator.user_enrolled?(current_user) %>
-              <p class="govuk-body govuk-!-margin-bottom-0">
-                <strong><%= link_to 'Find out more', cs_accelerator_path, class: 'ncce-link' %></strong>
-              </p>
-            <% end %>
-          </div>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <div class="testimonial testimonial--secondary">
-            <p class="govuk-body-s testimonial__text">
-              “The online courses let me go through the content at my own pace,
-              while the face-to-face gave me more hands-on experience with
-              practical programming, with concepts explained more in-depth.”
-            </p>
-            <div class="testimonial__bio">
-              <%= image_pack_tag 'media/images/secondary-teachers/kasim.png', alt: 'Kasim Rashid', class: 'testimonial__image' %>
-              <p class="govuk-body-s">
-                <strong><%= link_to 'Kasim Rashid', 'https://blog.teachcomputing.org/getting-with-the-programming/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
-                Maths and Computer Science teacher, London
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <div class="center-button button--margin-bottom">
-            <%= link_to 'Browse GCSE certificate courses', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button' %>
-          </div>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <div class="card card--cs-accelerator card--bottom-glyph">
-            <%= render 'pages/certification/programme-enrolment-status', programme: @secondary_certificate %>
-            <h2 class="govuk-heading-m card__heading">
-              <%= link_to_if(current_user && @secondary_certificate.user_enrolled?(current_user), 'Teach secondary computing', secondary_certificate_path, class: 'ncce-link') do %>
-              Teach secondary computing
-              <% end %>
-            </h2>
-            <p class="govuk-body card__text">Following on from the Computer Science Accelerator, this programme will give you confidence to take your teaching to the next level and to apply those skills in the classroom.</p>
 
-            <% unless current_user && @secondary_certificate.user_enrolled?(current_user) %>
-              <p class="govuk-body govuk-!-margin-bottom-0">
-                <strong><%= link_to 'Find out more', secondary_path, class: 'ncce-link' %></strong>
-              </p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <div class="center-button button--margin-bottom">
-            <%= link_to 'Browse Teach secondary courses', courses_path(certificate: Programme.secondary_certificate.slug), class: 'govuk-button button' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
+
+
+
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper--xl">
     <div class="govuk-grid-row">

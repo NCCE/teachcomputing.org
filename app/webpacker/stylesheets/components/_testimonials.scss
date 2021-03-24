@@ -1,0 +1,22 @@
+.ncce-testimonials {
+  background-color: hsla(193, 100%, 32%, 0.1);
+  display: flex;
+  margin-bottom: 48px;
+  padding: 24px 20px;
+}
+
+.ncce-testimonials__testimonial {
+  margin-right: 30px;
+}
+
+.ncce-testimonials__testimonial:last-of-type {
+  margin-right: 0;
+}
+
+.ncce-testimonials__testimonial-bio {
+  padding: 0;
+}
+
+.ncce-testimonials__testimonial-bio-text {
+  margin-left: 12px;
+}

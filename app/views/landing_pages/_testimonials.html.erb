@@ -1,0 +1,29 @@
+<% if @landing_page.testimonials.present? %>
+  <div class="light-grey-bg">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="ncce-testimonials">
+            <% @landing_page.testimonials.each do |testimonial| %>
+              <div class="testimonial ncce-testimonials__testimonial">
+                <p class="govuk-body-s testimonial__text">
+                  <%= testimonial[:text] %>
+                </p>
+                <div class="testimonial__bio  ncce-testimonials__testimonial-bio">
+                  <%= image_pack_tag testimonial[:image], alt: testimonial[:name], class: 'testimonial__image' %>
+                  <p class="govuk-body-s ncce-testimonials__testimonial-bio-text">
+                    <strong>
+                      <%= link_to testimonial[:name], testimonial[:link_target], class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %>
+                    </strong>
+                    <br />
+                    <%= testimonial[:bio] %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
