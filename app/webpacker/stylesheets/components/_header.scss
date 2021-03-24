@@ -117,13 +117,15 @@
 }
 
 @media (any-hover: hover) {
-  .ncce-header__certification-item:hover > .dropdown__expander-content {
+  .ncce-header__certification-item:hover .dropdown__expander-content {
     display: block;
     opacity: 1;
     visibility: visible;
   }
 }
-
+.ncce-header__wrap {
+  display: flex;
+}
 .ncce-header__certification-item {
   border-bottom: 1px solid #ced0d2;
   clear: both;
@@ -150,7 +152,6 @@
     background-repeat: no-repeat;
     background-size: 0.1rem;
     border: none;
-    display: inline-block;
     min-width: 7rem;
     padding: 0.6875rem 0.3rem;
 
@@ -165,16 +166,6 @@
       font-weight: bold !important;
     }
   }
-}
-
-.ncce-header__certification-item:hover > .ncce-header__certification-item--text,
-.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--text {
-  color: $white;
-}
-
-.ncce-header__certification-item:hover > .ncce-header__certification-item--icon,
-.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--icon {
-  background-image: url('../images/arrow-down.svg');
 }
 
 @media (any-hover: hover) {
@@ -194,38 +185,6 @@
   margin: 0;
 }
 
-.ncce-header__certification-item:hover > .ncce-header__certification-item--text,
-.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--text {
-  color: $white;
-  padding-bottom: 0.5rem;
-  padding-left: 2px;
-
-  @include govuk-media-query($from: desktop) {
-    padding-bottom: 0;
-    padding-left: unset;
-  }
-}
-
-.ncce-header__certification-item:hover > .ncce-header__certification-item--icon,
-.ncce-header__certification-item[aria-expanded='true'] > .ncce-header__certification-item--icon {
-  background-image: url('../images/arrow-down.svg');
-}
-
-.ncce-header__certification-item[aria-expanded='false'] > .ncce-header__certification-item--text {
-  color: $deep-cerulean;
-  padding-bottom: 0.5rem;
-  padding-left: 2px;
-
-  @include govuk-media-query($from: desktop) {
-    padding-bottom: 0;
-    padding-left: unset;
-  }
-}
-
-.ncce-header__certification-item[aria-expanded='false'] > .ncce-header__certification-item--icon {
-  background-image: url('../images/tick-blue-no-border.svg');
-}
-
 .ncce-header__certification-item--text,
 .ncce-header__certification-item--text[aria-expanded='true'] {
   color: $deep-cerulean;
@@ -239,20 +198,62 @@
   }
 }
 
-.ncce-header__certification-item--icon,
-.ncce-header__certification-item--icon[aria-expanded='true'] {
-  background-image: url('../images/tick-blue-no-border.svg');
-  background-position: right 10px center;
-  background-repeat: no-repeat;
-  background-size: 0.7rem;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-
+.ncce-header__certification-item:hover .ncce-header__certification-item--text,
+.ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--text {
+  color: $white;
+  padding-bottom: 0.5rem;
+  padding-left: 2px;
 
   @include govuk-media-query($from: desktop) {
-    background-position: right 15px center;
+    padding-bottom: 0;
+    padding-left: unset;
+  }
+}
+
+.ncce-header__certification-item[aria-expanded='false'] .ncce-header__certification-item--text {
+  color: $deep-cerulean;
+  padding-bottom: 0.5rem;
+  padding-left: 2px;
+
+  @include govuk-media-query($from: desktop) {
+    padding-bottom: 0;
+    padding-left: unset;
+  }
+}
+
+.ncce-header__certification-item--icon {
+  background-image: url('../images/tick-blue-no-border.svg');
+  background-position: 0 10px;
+  background-repeat: no-repeat;
+  background-size: 0.7rem;
+  display: block;
+  width: 24px;
+
+  @include govuk-media-query($from: desktop) {
+    background-position: center 10px;
     padding-left: 10px;
+  }
+}
+
+.ncce-header__certification-item[aria-expanded='false'] .ncce-header__certification-item--icon {
+  background-image: url('../images/tick-blue-no-border.svg');
+  @include govuk-media-query($from: desktop) {
+  }
+}
+
+@media (any-hover: hover) {
+  .ncce-header__certification-item:hover .ncce-header__certification-item--icon {
+    background-image: url('../images/arrow-down.svg');
+    @include govuk-media-query($from: desktop) {
+      background-position: center 9px;
+    }
+  }
+}
+
+.ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--icon {
+  background-image: url('../images/arrow-down.svg');
+  @include govuk-media-query($from: desktop) {
+    background-position: center 9px;
   }
 }
 

@@ -1,8 +1,12 @@
 function ready(fn) {
-  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-    fn();
+  if (
+    document.attachEvent
+      ? document.readyState === 'complete'
+      : document.readyState !== 'loading'
+  ) {
+    fn()
   } else {
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener('DOMContentLoaded', fn)
   }
 }
 
@@ -26,13 +30,13 @@ function initialiseSections(className) {
     menuItem.children[1].classList.add(sectionToggleClass)
   }
 
-  menuItems.forEach(menuItem => {
+  menuItems.forEach((menuItem) => {
     menuItem.classList.add(menuItemToggleClass)
 
     const subMenuItems = menuItem.children[1].children
     const lastSubMenuItem = subMenuItems[subMenuItems.length - 1]
 
-    const toggleTabbedMenu = event => {
+    const toggleTabbedMenu = (event) => {
       const { key, srcElement } = event
       if (key !== 'Tab') return
       if (srcElement.innerText == lastSubMenuItem.innerText) {
@@ -42,7 +46,7 @@ function initialiseSections(className) {
       }
     }
 
-    const toggleMenu = event => {
+    const toggleMenu = (event) => {
       let isTouch = false
       if (
         'ontouchstart' in window ||
@@ -54,11 +58,13 @@ function initialiseSections(className) {
       }
 
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
+      console.log(isTouch)
+      console.log(event.type)
       if (!isTouch && event.type == 'click') return
 
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
 
-      menuItems.forEach(item => { 
+      menuItems.forEach((item) => {
         if (menuItem !== item) {
           closeMenu(item)
         }
@@ -71,7 +77,7 @@ function initialiseSections(className) {
       }
     }
 
-    const toggleExpanded = event => {
+    const toggleExpanded = (event) => {
       let isTouch = false
       if (
         'ontouchstart' in window ||
@@ -83,7 +89,11 @@ function initialiseSections(className) {
       }
 
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
-      if (!isDesktop && isTouch && ['mouseover', 'mouseout'].includes(event.type)) return
+
+      console.log(event.type)
+      console.log(isDesktop)
+      console.log(isTouch)
+      if (isTouch && ['mouseover', 'mouseout'].includes(event.type)) return
 
       if (menuItem.getAttribute('aria-expanded') == 'true') {
         menuItem.setAttribute('aria-expanded', 'false')
@@ -100,7 +110,7 @@ function initialiseSections(className) {
 
   window.addEventListener('resize', () => {
     // Urgh, I know this is terrible...
-    menuItems.forEach(menuItem => { 
+    menuItems.forEach((menuItem) => {
       setTimeout(() => closeMenu(menuItem), 1000)
     })
   })
@@ -109,4 +119,3 @@ function initialiseSections(className) {
 ready(function () {
   initialiseSections('dropdown__expander')
 })
-

@@ -4,48 +4,47 @@
 
 .dropdown__expander-section--visible {
   display: block !important;
-  visibility: visible !important;
   margin-bottom: 0 !important;
+  visibility: visible !important;
 }
 
 .dropdown__expander-content {
   background: $white;
-  border-bottom: 1px solid #CED0D2;
+  border-bottom: 1px solid #ced0d2;
   display: none;
   left: 0;
   padding: 1.125rem 1rem 1rem 1rem;
-  width: stretch;
   visibility: hidden;
+  width: stretch;
 
   @include govuk-media-query($from: desktop) {
     border-bottom: unset;
     box-shadow: 0 0 5px $box-shadow;
-    margin-top: 0.7rem;
     position: absolute;
+    top: 100%;
     z-index: 1;
   }
 }
 
 .dropdown__expander-content-item {
   font-size: 1rem;
-	padding-bottom: 1rem;
+  padding-bottom: 1rem;
 
   &:first-child {
     font-size: 1.125rem;
-		font-weight: 700;
-	}
+    font-weight: 700;
+  }
 
   &:last-child {
-		padding-bottom: 0;
+    padding-bottom: 0;
   }
-  
+
   a {
     text-decoration: none;
   }
 
   a:hover,
-  a:focus-within
-   {
+  a:focus-within {
     text-decoration: underline;
   }
 
