@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_090132) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_programme_enrolment_id"], name: "index_achiever_sync_records_on_user_programme_enrolment_id"
   end
-  
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
