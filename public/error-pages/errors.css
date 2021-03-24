@@ -2703,6 +2703,7 @@
 }
 
 .govuk-header {
+  background: #0b0c0c;
   border-bottom: 10px solid #ffffff;
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
