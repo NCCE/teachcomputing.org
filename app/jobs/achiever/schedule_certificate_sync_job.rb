@@ -4,8 +4,6 @@ module Achiever
     queue_as :achiever
 
     def perform(enrolment_id)
-      return unless FeatureFlagService.new.flags[:certification_sync_enabled]
-
       enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
       return if AchieverSyncRecord.find_by(user_programme_enrolment_id: enrolment.id, state: enrolment.current_state)

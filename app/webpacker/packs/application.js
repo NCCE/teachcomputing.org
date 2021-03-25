@@ -17,14 +17,16 @@ import Turbolinks from 'turbolinks';
 import 'cookieconsent'
 
 // JS
+import "../javascript/controllers";
+import "../javascript/cookie_notice";
+import "../javascript/courses";
+import "../javascript/dropdown__expander";
+import "../javascript/ihavedonethis";
 import '../javascript/js_enabled';
-import '../javascript/controllers';
-import '../javascript/cookie_notice';
-import '../javascript/courses';
-import '../javascript/ihavedonethis';
 
 // CSS
 import '../stylesheets/application';
+
 
 // Media
 require.context('../fonts', true);

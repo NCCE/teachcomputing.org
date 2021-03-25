@@ -111,9 +111,6 @@
     "USER_ACHIEVEMENTS_API_SECRET": {
       "required": true,
       "value": "secret"
-    },
-    "CERTIFICATION_SYNCING_ENABLED": {
-      "required": true
     }
   },
   "formation": {

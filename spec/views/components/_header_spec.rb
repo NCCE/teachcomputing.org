@@ -15,12 +15,12 @@ RSpec.describe('components/_header', type: :view) do
 
   it 'shows a link to Primary teachers' do
     render
-    expect(rendered).to have_link('Primary teachers', href: '/primary-teachers')
+    expect(rendered).to have_link('Primary teacher toolkit', href: '/primary-teachers')
   end
 
   it 'shows a link to Secondary teachers' do
     render
-    expect(rendered).to have_link('Secondary teachers', href: '/secondary-teachers')
+    expect(rendered).to have_link('Secondary teacher toolkit', href: '/secondary-teachers')
   end
 
   context 'when a user is signed in' do

@@ -38,7 +38,8 @@ gem 'rails', '~> 6.1'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
-gem 'sentry-raven', '~> 3.0'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
@@ -81,7 +82,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'rack-mini-profiler', '~> 2.3.1', require: false
 end
 
 group :test do

@@ -59,26 +59,26 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
 
     context 'when the user is invalid' do
       before do
-        allow(Raven).to receive(:capture_exception)
+        allow(Sentry).to receive(:capture_exception)
         UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
                                                                   passing_result[:result][:percentage])
       end
 
       it 'raises an error' do
-        expect(Raven).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
       end
     end
 
     context 'when the assessment is invalid' do
       before do
         user
-        allow(Raven).to receive(:capture_exception)
+        allow(Sentry).to receive(:capture_exception)
         UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
                                                                   passing_result[:result][:percentage])
       end
 
       it 'raises an error' do
-        expect(Raven).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
       end
     end
 
@@ -86,13 +86,13 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       before do
         user
         assessment
-        allow(Raven).to receive(:capture_exception)
+        allow(Sentry).to receive(:capture_exception)
         UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
                                                                   passing_result[:result][:percentage])
       end
 
       it 'raises an error' do
-        expect(Raven).to have_received(:capture_exception).with(an_instance_of(NoMethodError))
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(NoMethodError))
       end
     end
   end
