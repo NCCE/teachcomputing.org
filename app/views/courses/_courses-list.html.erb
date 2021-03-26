@@ -1,4 +1,4 @@
-<div class='govuk-body-s ncce-courses__count sticky' data-course-filter-target="resultsCount">Showing <%= pluralize(@course_filter.courses.size, 'result') %></div>
+<div class='govuk-body-s ncce-courses__count' data-course-filter-target="resultsCount">Showing <%= pluralize(@course_filter.courses.size, 'result') %></div>
 <div class="govuk-body-m ncce-courses__loading-bar sticky hidden" data-course-filter-target="loadingBar">Loading...</div>
 <% if @course_filter.courses.length == 0 %>
   <div class='ncce-courses__no-results' data-course-filter-target="courseList">

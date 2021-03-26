@@ -35,15 +35,21 @@
   margin-bottom: 0;
 
   &-type, &-name {
-    display: flex;
-  }
+    flex: 50%;
+    margin: 0.3rem 0;
 
-  &-type {
-    width: 65%;
+    @include govuk-media-query($until: desktop) {
+      flex-wrap: wrap;
+      flex: 100%;
+    }
   }
 
   &-name {
-    width: 35%;
+    text-align: right;
+
+    @include govuk-media-query($until: desktop) {
+      font-weight: normal;
+    }
   }
 
   .icon-map-pin, .icon-online {
@@ -60,8 +66,15 @@
     padding: 0.9rem 1rem;
     justify-content: flex-start;
     width: 100%;
+    display: flex;
     @include govuk-media-query($from: tablet) {
       margin-bottom: 2px;
+    }
+
+    @include govuk-media-query($until: desktop) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
     }
 
     & svg {
@@ -104,6 +117,7 @@
   display: block;
   line-height: 1.6;
   padding: 0;
+  margin-top: 5px;
 
   & > li {
     background: $concrete;

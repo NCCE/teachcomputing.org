@@ -3,14 +3,22 @@ import Rails from "@rails/ujs";
 
 export default class extends ApplicationController {
   static targets = [
-    'results', 'form', 'loadingBar', 'courseList', 'clearFilters', 'resultsCount', 'filterForm', 'filterFormToggle'
+    'results',
+    'form',
+    'loadingBar',
+    'courseList',
+    'clearFilters',
+    'resultsCount',
+    'filterForm',
+    'filterFormToggle',
+    'filterCount'
   ];
   intervalId = null;
-  boundToggleFilterForm = null;
+  menuClass = null;
+  filterCount = 0;
 
-  initialize() {
-    this.toggleMobileMode();
-    this.boundToggleFilterForm = this.toggleFilterForm.bind(this);
+  connect() {
+    this.menuClass = 'ncce-courses__filter-form-toggle';
   }
 
   filter(ev) {
@@ -18,7 +26,7 @@ export default class extends ApplicationController {
     this.toggleLoadingBar();
 
     try {
-      this.resultsTarget.scrollIntoView(true);
+      // this.resultsTarget.scrollIntoView(true);
       Rails.fire(this.formTarget, 'submit');
     } catch (err) {
       this.handleError(err);
@@ -34,9 +42,17 @@ export default class extends ApplicationController {
     if (currentTarget.selectedIndex == 0) {
       currentTarget.classList.remove('ncce-select--filters--active');
       currentTarget.blur();
+      this.filterCount--;
     } else {
       currentTarget.classList.add('ncce-select--filters--active');
+      this.filterCount++;
     }
+
+    this.updateFilterCount();
+  }
+
+  updateFilterCount() {
+    this.filterCountTarget.innerText = `${this.filterCount} filters applied`;
   }
 
   toggleLoadingBar() {
@@ -82,17 +98,31 @@ export default class extends ApplicationController {
     this.resetResultsCount(this.resultsCountTarget);
   }
 
-  toggleFilterForm() {
-    this.filterFormTarget.classList.toggle('hidden');
+  openFilterForm() {
+    const formClasses = this.filterFormTarget.classList;
+    const menuClasses = this.filterFormToggleTarget.classList;
+    menuClasses.replace(this.menuClass, `${this.menuClass}--open`);
+    formClasses.remove('hidden');
   }
 
-  toggleMobileMode() {
-    const isMobile = window.matchMedia('(max-width: 669px)').matches;
-    if (isMobile) {
-      this.filterFormToggleTarget.addEventListener('click', this.boundToggleFilterForm);
-      this.filterFormTarget.classList.toggle('hidden');
+  closeFilterForm() {
+    const formClasses = this.filterFormTarget.classList;
+    const menuClasses = this.filterFormToggleTarget.classList;
+    menuClasses.replace(`${this.menuClass}--open`, this.menuClass);
+    formClasses.add('hidden');
+  }
+
+  openFilterFormOnDesktop() {
+    if (window.matchMedia('(max-width: 669px)').matches) return;
+    this.openFilterForm();
+  }
+
+  toggleFilterForm() {
+    const formClasses = this.filterFormTarget.classList;
+    if (!formClasses.contains('hidden')) {
+      this.closeFilterForm();
     } else {
-      this.filterFormToggleTarget.removeEventListener('click', this.boundToggleFilterForm);
+      this.openFilterForm();
     }
   }
 }

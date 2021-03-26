@@ -101,4 +101,12 @@ module CoursesHelper
   def clean_course_title(title)
     title.chomp(' - remote')
   end
+
+  def filter_count(course_filter)
+    if course_filter.applied_filters.present?
+      course_filter.applied_filters.count
+    else
+      'No'
+    end
+  end
 end
