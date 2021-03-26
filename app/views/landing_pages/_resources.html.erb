@@ -1,0 +1,40 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Resources</h2>
+          <p class="govuk-body-l">
+            <%= @landing_page.resources_text %>
+          </p>
+          <%= link_to 'Browse teaching resources', curriculum_key_stages_path, class: 'button govuk-button' %>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <% @landing_page.resources.each do |resource| %>
+            <div class="card card--cs-accelerator card--lp card--no-glyph">
+              <span class="govuk-body-s card--lp__featured">
+                <span class="icon-star">
+                  Featured
+                </span>
+              </span>
+              <h2 class="icon-resources  card__heading">
+                <%= link_to resource[:title], resource[:url], class: 'ncce-link ncce-link--heading' %>
+              </h2>
+              <p class="govuk-body card__text card__text-landing-page card--lp__text">
+                <%= resource[:description] %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <% if @landing_page.secondary %>
+            <%= render 'landing_pages/subject-knowledge-assessments-aside' %>
+          <% end %>
+            <%= render 'landing_pages/contributing-partners-aside' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,8 @@
 <%= render partial: 'landing_pages/dedicated_pages' %>
 <%= render partial: 'landing_pages/certificates' %>
 <%= render partial: 'landing_pages/testimonials' %>
+<%= render partial: 'landing_pages/courses' %>
+<%= render partial: 'landing_pages/resources' %>
 
 
 
@@ -30,70 +32,6 @@
 
 
 
-
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">Explore our courses</h2>
-        <p class="govuk-body-l landing-page__intro">Improve progress and
-          attainment at Key Stage 3
-          and 4
-          by developing your subject knowledge and classroom practice.</p>
-      </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="light-blue-bg padded-box">
-          <p class="govuk-body"><strong>
-              <%= link_to 'Programming with GUIs', 'https://teachcomputing.org/courses/CO217/programming-with-guis', class: 'ncce-link ncce-link--contrast' %></strong>
-          </p>
-          <p class="govuk-body">Discover how to build your own Graphical User
-            Interface (GUI) with Python and guizero.</p>
-          <video poster="<%= asset_pack_path 'media/images/secondary-teachers/video-placeholder.jpg' %>"
-            controls="true" playsinline="true" crossorigin="anonymous"
-            preload="none" tabindex="-1"
-            src="https://futurelearn-assets.raspberrypi.org/Programming%20with%20GUIs/Films/GUI%20Trailer%20Final_LD.mp4">
-            <source src="https://futurelearn-assets.raspberrypi.org/Programming%20with%20GUIs/Films/GUI%20Trailer%20Final_LD.mp4"
-              type="video/mp4">
-            <track class="track"
-              src="https://futurelearn-assets.raspberrypi.org/Programming%20with%20GUIs/Films/GUI%20Trailer%20Final.vtt" kind="captions"
-              srclang="EN" label="English">
-          </video>
-          <p class="govuk-body-s landing-page__icons"><strong><span
-                class="icon-online">Free
-                online course</span><span class="icon-calendar">3
-                weeks</span><span class="icon-clock">2 hours per
-                week</span></strong></p>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside landing-page__aside">
-          <p class="govuk-body"><strong>
-              <%= link_to 'Python programming essentials for GCSE computer science ', 'https://teachcomputing.org/courses?utf8=%E2%9C%93&level=Key+stage+4&location=Face+to+face&topic=Programming&certificate=#filter-results', class: 'ncce-link' %></strong>
-          </p>
-          <p class="govuk-body-s">Go from novice programmer to competent teacher
-            of Python.</p>
-          <%= image_pack_tag 'media/images/secondary-teachers/aside.jpg', alt: '' %>
-          <ul class="govuk-body-s govuk-list govuk-list--bullet">
-            <li>Operators and flow control</li>
-            <li>Iteration and nested structures</li>
-            <li>Validation and testing</li>
-            <li>Sub-programs</li>
-            <li>Data structures including arrays</li>
-          </ul>
-          <p class="govuk-body-s landing-page__icons"><strong><span
-                class="icon-map-pin">Face to face course</span><span
-                class="icon-calendar">2 days</span></strong></p>
-        </div>
-      </div>
-    </div>
-    <div class="center-button">
-      <%= link_to 'Browse KS3 courses', courses_path(level: 'Key stage 3'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
-      <%= link_to 'Browse KS4 courses', courses_path(level: 'Key stage 4'), class: 'govuk-button button button--margin-bottom button--margin-sides' %>
-    </div>
-  </div>
-</div>
 
 
 

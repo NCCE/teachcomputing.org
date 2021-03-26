@@ -84,6 +84,24 @@
   background-image: none;
 }
 
+.card--lp {
+  padding: 30px;
+}
+
+.card--lp__text {
+  padding-left: 40px;
+}
+
+.card--lp__featured {
+  background: $grey-dark-x;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-left: 40px;
+  padding: 7px 12px 7px 8px;
+}
+
 .card--resource {
   background-color: $concrete;
   border-left-style: solid;
