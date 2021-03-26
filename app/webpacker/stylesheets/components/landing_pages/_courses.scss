@@ -1,5 +1,11 @@
 .lp-courses {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: desktop) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .lp-courses__intro {
@@ -7,12 +13,7 @@
 }
 
 .lp-courses__course {
-  margin-right: 36px;
   position: relative;
-}
-
-.lp-courses__course:last-of-type {
-  margin-right: 0;
 }
 
 .lp-courses__image {

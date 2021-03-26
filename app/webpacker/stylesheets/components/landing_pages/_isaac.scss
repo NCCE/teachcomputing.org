@@ -1,0 +1,43 @@
+.isaac {
+  display: flex;
+  flex-direction: column;
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+  }
+}
+
+.isaac__logo {
+  margin-bottom: 20px;
+  width: 149px;
+  @include govuk-media-query($from: desktop) {
+    margin-left: 25px;
+    margin-right: 60px;
+    width: 238px;
+  }
+}
+
+.isaac__description {
+  @include govuk-media-query($from: desktop) {
+    margin-right: 90px;
+  }
+}
+
+.isaac__link {
+  font-weight: 700;
+  &:link,
+  &:visited {
+    color: $black;
+  }
+  &:hover {
+    color: $grey-dark-x;
+  }
+  &:focus {
+    background: none;
+    color: $black;
+    outline-color: none;
+  }
+  &:active {
+    background-color: none;
+    color: $black;
+  }
+}
