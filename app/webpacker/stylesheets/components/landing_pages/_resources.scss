@@ -1,0 +1,37 @@
+.lp-resources--heading {
+  display: inline-block;
+  @include govuk-media-query($from: tablet) {
+    @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
+    min-height: 30px;
+  }
+}
+
+.card--lp {
+  padding: 30px;
+}
+
+.lp-resources-card--text {
+  @include govuk-media-query($from: tablet) {
+    padding-left: 40px;
+    margin-right: 30px;
+  }
+}
+
+.lp-resources--featured-outer {
+  @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
+  display: inline-block;
+  margin-bottom: 0;
+
+  @include govuk-media-query($from: tablet ) {
+    background: unset;
+  }
+}
+
+.lp-resources--featured-inner {
+  background: $grey-dark-x;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding: 7px 12px 7px 8px;
+}

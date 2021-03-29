@@ -2,7 +2,7 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-two-thirds bottom-margin">
           <h2 class="govuk-heading-l">Resources</h2>
           <p class="govuk-body-l">
             <%= @landing_page.resources_text %>
@@ -14,15 +14,17 @@
         <div class="govuk-grid-column-two-thirds">
           <% @landing_page.resources.each do |resource| %>
             <div class="card card--cs-accelerator card--lp card--no-glyph">
-              <span class="govuk-body-s card--lp__featured">
-                <span class="icon-star">
-                  Featured
+              <span class="govuk-body-s lp-resources--featured-outer">
+                <span class="govuk-body-s lp-resources--featured-inner">
+                  <span class="icon-star">
+                    Featured
+                  </span>
                 </span>
               </span>
-              <h2 class="icon-resources  card__heading">
-                <%= link_to resource[:title], resource[:url], class: 'ncce-link ncce-link--heading' %>
+              <h2 class="card__heading">
+                <%= link_to resource[:title], resource[:url], class: 'ncce-link ncce-link--heading lp-resources--heading' %>
               </h2>
-              <p class="govuk-body card__text card__text-landing-page card--lp__text">
+              <p class="govuk-body card__text lp-resources-card--text">
                 <%= resource[:description] %>
               </p>
             </div>

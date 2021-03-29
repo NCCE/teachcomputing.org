@@ -2,8 +2,12 @@
   display: grid;
   grid-template-columns: auto;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
     column-gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include govuk-media-query($from: desktop) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -16,7 +20,8 @@
   margin-bottom: 16px;
   padding: 16px 11px 24px;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 24px;
     padding: 22px;
   }
 }

@@ -2,6 +2,10 @@
   display: grid;
   grid-template-columns: auto;
 
+  @include govuk-media-query($from: tablet) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr;
+  }
   @include govuk-media-query($from: desktop) {
     column-gap: 36px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -9,15 +13,24 @@
 }
 
 .lp-courses__intro {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .lp-courses__course {
+  margin-bottom: 36px;
   position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .lp-courses__image {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+  }
 }
 
 .lp-courses__featured {
@@ -32,6 +45,7 @@
 
 .lp-courses__details {
   background: $concrete;
+  line-height: 20px;
   margin-bottom: 3px;
   padding: 10px;
 }
