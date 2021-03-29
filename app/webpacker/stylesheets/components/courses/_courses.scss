@@ -1,10 +1,19 @@
 .ncce-courses__results-wrapper {
   padding: 0 0 30px 0;
+
+  /* This is to allow us to re-order the divs */
+  @include govuk-media-query($from: desktop) {
+    & > div:first-child {
+      display: flex;
+    }
+  }
 }
 
 .ncce-courses__hub-container {
   background-color: $foam;
   padding: 0;
+  margin-bottom: 30px;
+
   &--sticky {
     margin-top: 0;
     position: fixed;
@@ -27,4 +36,15 @@
 
 .ncce-courses__hub-heading-name {
   font-weight: bold;
+}
+
+.ncce-aside--filters-wrapper {
+  align-self: flex-start;
+
+  /* This is to allow us to re-order the divs */
+  order: 2;
+
+  @include govuk-media-query($until: desktop) {
+    padding: 0;
+  }
 }

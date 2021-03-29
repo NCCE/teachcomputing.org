@@ -1,12 +1,19 @@
 .ncce-aside--filters {
-  border-top: none;
   background-color: #F2F2F2;
-  border: solid 1px #C4C4C4;
-  box-sizing: border-box;
+  border: none;
   padding: 13px;
+  margin-top: 40px;
 
-  @include govuk-media-query($until: tablet) {
-    margin-top: 0;
+  @include govuk-media-query($until: desktop) {
+    margin: 0 0 5px 0;
+    padding: 15px;
+  }
+
+  & button {
+    @include govuk-media-query($from: desktop) {
+      visibility: hidden;
+      display: none;
+    }
   }
 }
 
@@ -20,10 +27,6 @@
 }
 
 .ncce-courses__filter {
-  padding: 0;
-}
-
-.ncce-courses__filter-wrapper {
   padding: 0;
 }
 
@@ -50,6 +53,7 @@
   position: inherit;
   margin: 0;
   text-align: right;
+  color: #333448;
 
   &:focus, &:active, &:hover {
     outline: none;
@@ -63,6 +67,7 @@
 
 .ncce-courses__filter-form-toggle-applied {
   float: left;
+  color: $deep-cerulean;
 }
 
 .ncce-courses__filter-form-toggle--open:after {
@@ -70,7 +75,13 @@
 }
 
 .ncce-courses__filter-form {
-  padding: 10px 0;
+  padding-top: 0.6rem;
+
+  @include govuk-media-query($until: desktop) {
+    border-bottom: 2px solid #CCCCCC;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.6rem;
+  }
 }
 
 .ncce-courses__filter-prompt {
@@ -78,12 +89,14 @@
   margin-right: 20px;
   @include govuk-media-query($until: tablet) {
     display: none;
+    visibility: hidden;
   }
 }
 
 .ncce-courses__filter-button {
   margin-bottom: 0;
   padding: 9px 15px 6px;
+  width: auto;
 }
 
 .ncce-courses__filter-mobile-heading {
@@ -126,9 +139,11 @@
 }
 
 .ncce-courses__clear-filters {
-  padding: 0.5rem 0;
-  text-align: right;
-  background-color: white;
+  padding: 0.9rem 0;
+
+  @include govuk-media-query($until: desktop) {
+    border-bottom: 2px solid #CCCCCC;
+  }
 }
 
 .ncce-courses__filter-button {
@@ -149,8 +164,14 @@
 }
 
 .ncce-courses__clear-filters-text--hub {
-  margin-left: 26px;
+  margin-left: 10px;
   text-align: right;
+
+  @include govuk-media-query($until: desktop) {
+    margin: 5px 0 0 0;
+    display: block;
+    text-align: left;
+  }
 }
 
 /* Style on this page only until we're ready to change sitewide (08/03/21) */
@@ -160,12 +181,21 @@
 }
 
 .ncce-select--filters:not(:last-child) {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.ncce-select--filters:focus, .ncce-select--filters--active {
+.ncce-select--filters:focus, .filter--active {
   box-shadow: none;
   outline: none;
   border-color: #007fa2;
   background-color: #E3F6FC;
+}
+
+.ncce-courses__view-results {
+  padding: 5px 25px;
+
+  @include govuk-media-query($from: desktop) {
+    display: none;
+    visibility: hidden;
+  }
 }

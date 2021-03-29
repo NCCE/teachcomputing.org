@@ -2,10 +2,13 @@
 <div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop">
   <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
   <button type="button" class="ncce-courses__filter-form-toggle--open" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
-    <span class='ncce-courses__filter-form-toggle-applied' data-course-filter-target="filterCount"><%= filter_count(@course_filter) %> filters applied</span>
+    <span class="ncce-courses__filter-form-toggle-applied" data-course-filter-target="filterCount"><%= filter_count(@course_filter) %> filters applied</span>
     Filter courses
   </button>
   <div class="ncce-courses__filter" data-course-filter-target="filterForm">
+    <div class='ncce-courses__clear-filters <%= @course_filter.applied_filters.blank? ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
+      <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text', data: { action: 'click->course-filter#clearFilters' } %>
+    </div>
     <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
       <%= label_tag :level, 'Key Stage:', class: 'govuk-body-s ncce-label' %>
       <%= select_tag :level,
@@ -48,18 +51,17 @@
           }
       %>
       <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label' %>
-      <% @course_filter.course_formats.each do |course_format| %>
-        <div>
-          <%= check_box_tag 'course_format[]', course_format, false, data: { action: 'input->course-filter#filter', 'aria-label': 'Filter by format', class: 'govuk-checkboxes__input ncce-checkboxes' } %>
-          <%= label_tag course_format, (course_format.to_s).humanize, class: 'govuk-body-s ncce-label' %>
+      <div class="govuk-checkboxes">
+      <% @course_filter.course_formats.each_with_index do |course_format, index| %>
+        <div class='govuk-checkboxes__item ncce-checkboxes__item'>
+          <%= check_box_tag 'course_format[]', course_format, false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'input->course-filter#filter', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
+          <%= label_tag "course_format_#{index}", (course_format.to_s).humanize, class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
         </div>
       <% end %>
+      </div>
       <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
-      <%= hidden_field_tag 'filter_count', filter_count(@course_filter) %>
     <% end %>
+    <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.courses.size, 'result') %></button>
   </div>
 </div>
 <% end %>
-<div class='ncce-courses__clear-filters <%= @course_filter.applied_filters.blank? ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
-  <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text', data: { action: 'click->course-filter#clearFilters' } %>
-</div>

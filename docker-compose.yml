@@ -57,6 +57,12 @@ services:
       - main
       - backend
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "200k"
+        max-file: "10"
+
   webpack:
     build: .
     command: ./bin/webpack-dev-server
@@ -72,6 +78,11 @@ services:
       - NODE_ENV=development
     networks:
       - main
+    logging:
+      driver: json-file
+      options:
+        max-size: "200k"
+        max-file: "10"
 volumes:
   bundle:
   pg-data:

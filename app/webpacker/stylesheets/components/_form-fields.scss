@@ -50,3 +50,34 @@
 .ncce-label {
   line-height: 2rem;
 }
+
+/* govuk checkboxes use the label hack, so we need to style that */
+.ncce-checkboxes__item {
+  .ncce-checkboxes__label {
+    line-height: 1.1rem;
+    padding: 8px 2px 5px;
+
+    &::before {
+      width: 35px;
+      height: 35px;
+    }
+
+    &::after {
+      left: 6px;
+      top: 9px;
+    }
+  }
+
+  .ncce-checkboxes__label::before {
+    border: 2px solid #0B0C0C;
+    border-radius: $border-radius;
+    background-color: white;
+  }
+
+  .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before {
+    box-shadow: none;
+    outline: none;
+    border-color: #007fa2;
+    background-color: #E3F6FC;
+  }
+}

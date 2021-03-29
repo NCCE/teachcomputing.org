@@ -11,14 +11,16 @@ export default class extends ApplicationController {
     'resultsCount',
     'filterForm',
     'filterFormToggle',
-    'filterCount'
+    'filterCount',
+    'viewResultsCount'
   ];
-  intervalId = null;
-  menuClass = null;
+  menuClass = '';
   filterCount = 0;
+  defaultResultsCountString = ''
 
-  connect() {
+  initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
+    this.defaultResultsCountString = 'Showing 0 results';
   }
 
   filter(ev) {
@@ -26,25 +28,21 @@ export default class extends ApplicationController {
     this.toggleLoadingBar();
 
     try {
-      // this.resultsTarget.scrollIntoView(true);
+      this.resultsTarget.scrollIntoView(true);
       Rails.fire(this.formTarget, 'submit');
     } catch (err) {
       this.handleError(err);
     }
   }
 
-  resetResultsCount(target) {
-    target.innerText = 'Showing 0 results'
-  }
-
   toggleActiveSelect(ev) {
     const { currentTarget } = ev;
     if (currentTarget.selectedIndex == 0) {
-      currentTarget.classList.remove('ncce-select--filters--active');
+      currentTarget.classList.remove('filter--active');
       currentTarget.blur();
       this.filterCount--;
     } else {
-      currentTarget.classList.add('ncce-select--filters--active');
+      currentTarget.classList.add('filter--active');
       this.filterCount++;
     }
 
@@ -52,15 +50,17 @@ export default class extends ApplicationController {
   }
 
   updateFilterCount() {
-    this.filterCountTarget.innerText = `${this.filterCount} filters applied`;
+    this.filterCountTarget.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
   }
 
   toggleLoadingBar() {
     const loadingBar = this.loadingBarTarget.classList;
     const courseList = this.courseListTarget.classList;
 
-    this.resetResultsCount(this.resultsCountTarget);
     this.animateLoadingBar();
+
+    this.resultsCountTarget.innerText = this.defaultResultsCountString;
+    this.viewResultsCountTarget.innerText = 'View 0 results';
 
     loadingBar.toggle('hidden');
     courseList.toggle('hidden');
@@ -68,13 +68,13 @@ export default class extends ApplicationController {
 
   animateLoadingBar() {
     let dots = 3;
-    if (this.intervalId) clearInterval(this.intervalId);
 
-    this.intervalId = setInterval(() => {
+    const intervalId = setInterval(() => {
       if (dots < 3) {
         this.loadingBarTarget.innerText += '.';
         dots++;
       } else {
+        clearInterval(intervalId);
         this.loadingBarTarget.innerText = 'Loading'
         dots = 0;
       }
@@ -88,6 +88,10 @@ export default class extends ApplicationController {
     this.toggleLoadingBar();
     this.resultsTarget.innerHTML = xhr.response;
 
+    // Set the count on the view results button on mobile
+    this.viewResultsCountTarget.innerText =
+      this.resultsCountTarget.innerText.replace('Showing', 'View');
+
     if (clearFilters.contains('hidden')) {
       clearFilters.remove('hidden');
     }
@@ -95,7 +99,7 @@ export default class extends ApplicationController {
 
   clearFilters() {
     this.toggleLoadingBar();
-    this.resetResultsCount(this.resultsCountTarget);
+    this.resultsCountTarget.innerText = this.defaultResultsCountString;
   }
 
   openFilterForm() {
