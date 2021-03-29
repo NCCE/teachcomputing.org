@@ -12,3 +12,11 @@ $aside-padding: 1rem;
     font-size: 1.0625rem;
   }
 }
+
+.ncce-pathway-aside {
+  @include bottom-margined;
+}
+
+.ncce-pathway-aside__select {
+  margin-bottom: 1.5rem;
+}

@@ -91,4 +91,8 @@ module CoursesHelper
 
     'Face to face'
   end
+
+  def clean_course_title(title)
+    title.chomp(' - remote')
+  end
 end

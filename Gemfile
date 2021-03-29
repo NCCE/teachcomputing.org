@@ -23,6 +23,7 @@ gem 'jwt', '~> 2.1.0'
 gem 'kramdown'
 gem 'lograge'
 gem 'memcachier'
+gem 'mimemagic', '~> 0.3.7'
 gem 'nokogiri', '~> 1.11.0'
 gem 'oauth2', '~> 1.4.4'
 gem 'omniauth', '~> 1.9.1'
@@ -38,7 +39,8 @@ gem 'rails', '~> 6.1'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
-gem 'sentry-raven', '~> 3.0'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 gem 'sidekiq', '~> 5.2.5'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
@@ -77,10 +79,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rack-mini-profiler', '~> 2.3.1', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'rack-mini-profiler', '~> 2.3.1', require: false
 end
 
 group :test do

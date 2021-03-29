@@ -1,4 +1,3 @@
-
 // Override Gov UK fonts & colours
 @import 'settings/_fonts.scss';
 @import 'settings/_colors.scss';
@@ -14,11 +13,13 @@
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
+@import 'components/_dropdown-expander.scss';
 @import 'components/_notice.scss';
 @import 'components/_footer.scss';
 @import 'components/_header.scss';
 @import 'components/_tags.scss';
 @import 'components/_flash.scss';
+@import 'components/_flex.scss';
 @import 'components/_button.scss';
 @import 'components/_form-fields.scss';
 @import 'components/_aside.scss';
@@ -27,6 +28,7 @@
 @import 'components/_icons.scss';
 @import 'components/_testimonial.scss';
 @import 'components/_headings.scss';
+@import 'components/_bursary-aside.scss';
 @import 'components/pages/home/_certificates.scss';
 @import 'components/pages/home/_confidence.scss';
 @import 'components/pages/home/_featured.scss';
@@ -40,10 +42,12 @@
 @import 'components/pages/_landing-page.scss';
 @import 'components/pages/_news.scss';
 @import 'components/pages/_padded-box.scss';
+@import 'components/pages/_supporting-partners.scss';
 @import 'components/courses/_courses.scss';
 @import 'components/courses/_landing-page.scss';
 @import 'components/dashboard/_certification.scss';
 @import 'components/dashboard/_activity-list.scss';
+@import 'components/dashboard/_pathway-courses.scss';
 @import 'components/programmes/_diagnostic.scss';
 @import 'components/programmes/_view-certificate.scss';
 @import 'components/programmes/_bursary-info.scss';
@@ -53,6 +57,8 @@
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
 @import 'components/_external-content.scss';
+@import 'components/certificates/_csa_dashboard.scss';
+@import 'components/certificates/_pathway_prompt.scss';
 
 // Blog styles
 

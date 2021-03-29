@@ -269,6 +269,10 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to delegate_method(:transition_to).to(:state_machine).as(:transition_to) }
     it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
     it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
+
+    it { is_expected.to delegate_method(:title).to(:activity).as(:title) }
+    it { is_expected.to delegate_method(:stem_activity_code).to(:activity).as(:stem_activity_code) }
+    it { is_expected.to delegate_method(:slug).to(:activity).as(:slug) }
   end
 
   describe 'destroy' do

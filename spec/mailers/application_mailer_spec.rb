@@ -2,7 +2,8 @@ require 'rails_helper'
 
 class TestMailer < ApplicationMailer
   def test_email(record_sent: false)
-    mail(to: 'test@example.com', subject: 'Test Email', record_sent_mail: record_sent, mailer_type: 'test', body: 'Test')
+    mail(to: 'test@example.com', subject: 'Test Email', record_sent_mail: record_sent, mailer_type: 'test',
+         body: 'Test')
   end
 end
 
@@ -36,7 +37,7 @@ RSpec.describe ApplicationMailer do
       context 'when recording email errors' do
         before do
           create(:sent_email, mailer_type: 'test', subject: 'Test Email', user: user)
-          allow(Raven).to receive(:capture_message)
+          allow(Sentry).to receive(:capture_message)
         end
 
         it 'does not raise error' do
@@ -46,7 +47,7 @@ RSpec.describe ApplicationMailer do
 
         it 'logs error to sentry' do
           TestMailer.test_email(record_sent: true).deliver_now
-          expect(Raven)
+          expect(Sentry)
             .to have_received(:capture_message)
             .with('Error recording email sending: Validation failed: User has already been taken')
         end

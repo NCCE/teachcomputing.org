@@ -147,9 +147,9 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#enough_activites_for_test?' do
+  describe '#enough_activities_for_test?' do
     it 'returns 0' do
-      expect(programmes[0].enough_activites_for_test?(user)).to eq false
+      expect(programmes[0].enough_activities_for_test?(user)).to eq false
     end
   end
 
@@ -198,6 +198,26 @@ RSpec.describe Programme, type: :model do
         programme = build(:programme, slug: 'another-programme')
         expect(programme.secondary_certificate?).to eq(false)
       end
+    end
+  end
+
+  describe '#pathways_excluding' do
+    it 'returns the pathways except for the pathway argument in order' do
+      programme = create(:programme)
+      p1 = create(:pathway, programme: programme, order: 10)
+      p2 = create(:pathway, programme: programme)
+      p3 = create(:pathway, programme: programme, order: 9)
+
+      expect(programme.pathways_excluding(p2)).to eq([p3, p1])
+    end
+
+    it 'returns all pathways in order if argument is nil' do
+      programme = create(:programme)
+      p1 = create(:pathway, programme: programme, order: 3)
+      p2 = create(:pathway, programme: programme, order: 1)
+      p3 = create(:pathway, programme: programme, order: 2)
+
+      expect(programme.pathways_excluding(nil)).to eq([p2, p3, p1])
     end
   end
 end

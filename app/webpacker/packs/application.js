@@ -22,6 +22,7 @@ import "../javascript/controllers";
 import "../javascript/cookie_notice";
 import "../javascript/courses";
 import "../javascript/ihavedonethis";
+import "../javascript/dropdown__expander";
 
 // Media
 require.context('../fonts', true);

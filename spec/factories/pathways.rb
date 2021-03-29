@@ -4,7 +4,7 @@ FactoryBot.define do
     title { 'Pathway' }
     description { 'Pathway description' }
     pdf_link { 'https://example.com/pdf-link.pdf' }
-    slug { 'slug' }
+    sequence(:slug) { |n| "slug-#{n}" }
     programme
 
     trait :new_to_computing do

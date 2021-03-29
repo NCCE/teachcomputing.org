@@ -174,4 +174,43 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#on_programme_pathway?' do
+    let(:programme) { create(:cs_accelerator) }
+
+    it 'returns false when user not enrolled' do
+      expect(user.on_programme_pathway?(programme)).to eq(false)
+    end
+
+    it 'returns false when user is not on a pathway for that programme' do
+      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
+      expect(user.on_programme_pathway?(programme)).to eq(false)
+    end
+
+    it 'returns true when user is on a pathway for that programme' do
+      pathway = create(:pathway, programme: programme)
+      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway_id: pathway.id)
+      expect(user.on_programme_pathway?(programme)).to eq(true)
+    end
+  end
+
+  describe '#programme_pathway' do
+    let(:programme) { create(:cs_accelerator) }
+
+    it 'returns nil when user not enrolled' do
+      expect(user.programme_pathway(programme)).to eq(nil)
+    end
+
+    it 'returns nil when user is not on a pathway for that programme' do
+      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway: nil)
+      expect(user.programme_pathway(programme)).to eq(nil)
+    end
+
+    it 'returns pathway when user is on a pathway for that programme' do
+      pathway = create(:pathway, programme: programme)
+      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway_id: pathway.id)
+      expect(user.programme_pathway(programme)).not_to eq(nil)
+      expect(user.programme_pathway(programme)).to eq(pathway)
+    end
+  end
 end

@@ -17,4 +17,11 @@ RSpec.describe Questionnaire, type: :model do
     it { is_expected.to validate_presence_of(:slug) }
     it { is_expected.to validate_presence_of(:title) }
   end
+
+  describe '.cs_accelerator' do
+    it 'returns the CSA questionnaire' do
+      questionnaire = create(:questionnaire, :cs_accelerator_enrolment_questionnaire)
+      expect(Questionnaire.cs_accelerator).to eq(questionnaire)
+    end
+  end
 end
