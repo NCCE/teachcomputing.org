@@ -74,3 +74,16 @@ $v-space-large-mobile: 42px;
 .bottom-margin-l {
   @include bottom-margined-l;
 }
+
+.ncce-mobile-full-container {
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: max(30px, calc(15px + env(safe-area-inset-left)));
+    margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
+  }
+
+  @include govuk-media-query($from: desktop) {
+    margin: 0 auto;
+  }
+}

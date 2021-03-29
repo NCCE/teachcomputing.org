@@ -10,8 +10,8 @@
         </div>
         <div class="govuk-grid-column-two-thirds">
           <% if @landing_page.secondary %>
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page">
-              <div class="ncce-flex__space-between">
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading">
                   Subject knowledge certificate
                 </h2>
@@ -21,13 +21,12 @@
                 Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
               </p>
               <p class="govuk-body govuk-!-margin-bottom-0">
-                <%= link_to @landing_page.csa_link_text, cs_accelerator_path, class: 'button govuk-button' %>
+                <%= link_to @landing_page.csa_link_text, cs_accelerator_path, class: 'button govuk-button lp-certs--button' %>
               </p>
             </div>
 
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page">
-
-              <div class="ncce-flex__space-between">
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading">
                   Teach secondary computing
                 </h2>
@@ -39,7 +38,7 @@
               </p>
 
                 <p class="govuk-body govuk-!-margin-bottom-0">
-                  <strong><%= link_to @landing_page.secondary_cert_link_text, secondary_path, class: 'button govuk-button' %></strong>
+                  <strong><%= link_to @landing_page.secondary_cert_link_text, secondary_path, class: 'button govuk-button lp-certs--button' %></strong>
                 </p>
             </div>
           <% end %>
