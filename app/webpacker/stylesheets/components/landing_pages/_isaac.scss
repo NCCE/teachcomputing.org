@@ -1,7 +1,7 @@
 .isaac {
   display: flex;
   flex-direction: column;
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
     flex-direction: row;
   }
 }
@@ -9,14 +9,23 @@
 .isaac__logo {
   margin-bottom: 20px;
   width: 149px;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 15px;
+    margin-right: 50px;
+    width: 238px;
+  }
+
   @include govuk-media-query($from: desktop) {
     margin-left: 25px;
     margin-right: 60px;
-    width: 238px;
   }
 }
 
 .isaac__description {
+  @include govuk-media-query($from: tablet) {
+    margin-right: 70px;
+  }
   @include govuk-media-query($from: desktop) {
     margin-right: 90px;
   }
