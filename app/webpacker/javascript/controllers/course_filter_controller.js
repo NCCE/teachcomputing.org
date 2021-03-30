@@ -3,6 +3,7 @@ import Rails from "@rails/ujs";
 
 export default class extends ApplicationController {
   static targets = [
+    'jsEnabled',
     'results',
     'form',
     'loadingBar',
@@ -16,11 +17,18 @@ export default class extends ApplicationController {
   ];
   menuClass = '';
   filterCount = 0;
-  defaultResultsCountString = ''
+  defaultResultsCountString = '';
+  defaultViewResultsCountString = '';
+  hiddenClass = '';
+  openModifier = '';
+  intervalId = null;
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
     this.defaultResultsCountString = 'Showing 0 results';
+    this.defaultViewResultsCountString = 'View 0 results';
+    this.hiddenClass = 'hidden';
+    this.openModifier = '--open';
   }
 
   filter(ev) {
@@ -29,8 +37,11 @@ export default class extends ApplicationController {
 
     try {
       this.resultsTarget.scrollIntoView(true);
+      Object.values(ev.currentTarget.form).find(field => field.name == 'js_enabled').value = true;
       Rails.fire(this.formTarget, 'submit');
     } catch (err) {
+      clearInterval(this.intervalId);
+      this.loadingBarTarget.innerText = "An error has occurred, please refresh the page and try again.";
       this.handleError(err);
     }
   }
@@ -60,21 +71,21 @@ export default class extends ApplicationController {
     this.animateLoadingBar();
 
     this.resultsCountTarget.innerText = this.defaultResultsCountString;
-    this.viewResultsCountTarget.innerText = 'View 0 results';
+    this.viewResultsCountTarget.innerText = this.defaultViewResultsCountString;
 
-    loadingBar.toggle('hidden');
-    courseList.toggle('hidden');
+    loadingBar.toggle(this.hiddenClass);
+    courseList.toggle(this.hiddenClass);
   }
 
   animateLoadingBar() {
     let dots = 3;
 
-    const intervalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       if (dots < 3) {
         this.loadingBarTarget.innerText += '.';
         dots++;
       } else {
-        clearInterval(intervalId);
+        clearInterval(this.intervalId);
         this.loadingBarTarget.innerText = 'Loading'
         dots = 0;
       }
@@ -92,8 +103,8 @@ export default class extends ApplicationController {
     this.viewResultsCountTarget.innerText =
       this.resultsCountTarget.innerText.replace('Showing', 'View');
 
-    if (clearFilters.contains('hidden')) {
-      clearFilters.remove('hidden');
+    if (clearFilters.contains(this.hiddenClass)) {
+      clearFilters.remove(this.hiddenClass);
     }
   }
 
@@ -105,15 +116,15 @@ export default class extends ApplicationController {
   openFilterForm() {
     const formClasses = this.filterFormTarget.classList;
     const menuClasses = this.filterFormToggleTarget.classList;
-    menuClasses.replace(this.menuClass, `${this.menuClass}--open`);
-    formClasses.remove('hidden');
+    menuClasses.replace(this.menuClass, `${this.menuClass}${this.openModifier}`);
+    formClasses.remove(this.hiddenClass);
   }
 
   closeFilterForm() {
     const formClasses = this.filterFormTarget.classList;
     const menuClasses = this.filterFormToggleTarget.classList;
-    menuClasses.replace(`${this.menuClass}--open`, this.menuClass);
-    formClasses.add('hidden');
+    menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
+    formClasses.add(this.hiddenClass);
   }
 
   openFilterFormOnDesktop() {
@@ -123,7 +134,7 @@ export default class extends ApplicationController {
 
   toggleFilterForm() {
     const formClasses = this.filterFormTarget.classList;
-    if (!formClasses.contains('hidden')) {
+    if (!formClasses.contains(this.hiddenClass)) {
       this.closeFilterForm();
     } else {
       this.openFilterForm();

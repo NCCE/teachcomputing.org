@@ -4,7 +4,6 @@ export default class extends Controller {
   handleError = (error) => {
     const context = {
       controller: this.identifier,
-      user_id: this.userId,
     };
     this.application.handleError(
       error,
@@ -12,8 +11,4 @@ export default class extends Controller {
       context
     );
   };
-
-  get userId() {
-    return this.metaValue("user_id");
-  }
 }

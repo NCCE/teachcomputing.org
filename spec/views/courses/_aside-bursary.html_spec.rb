@@ -10,6 +10,6 @@ RSpec.describe('courses/_aside-bursary', type: :view) do
   end
 
   it 'renders a link' do
-    expect(rendered).to have_link('Find out more', href: '/bursary')
+    expect(rendered).to have_link('Bursary information', href: '/bursary')
   end
 end

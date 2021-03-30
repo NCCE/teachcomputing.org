@@ -6,3 +6,7 @@
   position: sticky;
   top: 0;
 }
+
+body:not(.js-enabled) .sticky {
+  position: inherit;
+}

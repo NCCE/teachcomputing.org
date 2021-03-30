@@ -2,11 +2,11 @@
 <div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop">
   <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
   <button type="button" class="ncce-courses__filter-form-toggle--open" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
-    <span class="ncce-courses__filter-form-toggle-applied" data-course-filter-target="filterCount"><%= filter_count(@course_filter) %> filters applied</span>
+    <span class="ncce-courses__filter-form-toggle-applied" data-course-filter-target="filterCount"><%= filter_count(@course_filter).positive? ? filter_count(@course_filter) : 'No' %> filters applied</span>
     Filter courses
   </button>
   <div class="ncce-courses__filter" data-course-filter-target="filterForm">
-    <div class='ncce-courses__clear-filters <%= @course_filter.applied_filters.blank? ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
+    <div class='ncce-courses__clear-filters <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
       <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text', data: { action: 'click->course-filter#clearFilters' } %>
     </div>
     <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
@@ -60,7 +60,9 @@
       <% end %>
       </div>
       <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
+      <%= hidden_field_tag 'js_enabled', false %>
     <% end %>
+    <%= submit_tag "Apply filters", :name => nil, class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
     <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.courses.size, 'result') %></button>
   </div>
 </div>

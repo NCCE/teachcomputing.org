@@ -119,6 +119,10 @@
   line-height: 1.6;
   padding: 0;
 
+  @include govuk-media-query($until: tablet) {
+    margin-top: 0.3rem;
+  }
+
   & > li {
     background: $concrete;
     box-sizing:border-box;

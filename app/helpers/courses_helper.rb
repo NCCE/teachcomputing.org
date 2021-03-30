@@ -103,10 +103,7 @@ module CoursesHelper
   end
 
   def filter_count(course_filter)
-    if course_filter.applied_filters.present?
-      course_filter.applied_filters.count
-    else
-      'No'
-    end
+    filters = course_filter.applied_filters || []
+    filters.reject { |f| f == course_filter.current_hub }.count
   end
 end
