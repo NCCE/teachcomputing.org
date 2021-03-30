@@ -9,13 +9,13 @@
           </p>
         </div>
         <div class="govuk-grid-column-two-thirds">
-          <% if @landing_page.secondary %>
+          <% if @landing_page.secondary? %>
             <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading">
                   Subject knowledge certificate
                 </h2>
-                <%= render 'pages/certification/programme-enrolment-status', programme: @cs_accelerator %>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.cs_accelerator %>
               </div>
               <p class="govuk-body card__text card__text-landing-page">
                 Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
@@ -30,7 +30,7 @@
                 <h2 class="govuk-heading-m card__heading">
                   Teach secondary computing
                 </h2>
-                <%= render 'pages/certification/programme-enrolment-status', programme: @secondary_certificate %>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.secondary_certificate %>
               </div>
 
               <p class="govuk-body card__text">
@@ -46,7 +46,7 @@
 
         <div class="govuk-grid-column-one-third">
           <%= render 'landing_pages/bursary-aside' %>
-          <% if @landing_page.secondary %>
+          <% if @landing_page.secondary? %>
             <%= render 'landing_pages/champions-aside' %>
           <% end %>
         </div>

@@ -1,12 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe('landing_pages/secondary_teachers', type: :view) do
-  let(:cs_accelerator) { create(:cs_accelerator) }
-  let(:secondary_certificate) { create(:secondary_certificate) }
-
   before do
-    @cs_accelerator = cs_accelerator
-    @secondary_certificate = secondary_certificate
+    @landing_page = SecondaryLandingPage.new(current_user: nil)
     render
   end
 
@@ -14,15 +10,19 @@ RSpec.describe('landing_pages/secondary_teachers', type: :view) do
     expect(rendered).to have_css('.govuk-heading-l', text: 'The essential toolkit for secondary computing teachers')
   end
 
-  it 'has embedded video' do
-    expect(rendered).to have_css('video', count: 1)
+  it 'renders certificates' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Certificates')
   end
 
-  it 'renders cs accelerator card' do
-    expect(rendered).to have_css('.card__heading', text: 'GCSE computer science subject knowledge')
+  it 'renders courses' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Courses')
   end
 
-  it 'renders the secondary certificate card' do
-    expect(rendered).to have_css('.card__heading', text: 'Teach secondary computing')
+  it 'renders resources' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Resources')
+  end
+
+  it 'renders support section' do
+    expect(rendered).to have_css('.govuk-heading-l', text: "We're here to help")
   end
 end

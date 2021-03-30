@@ -1,5 +1,5 @@
 class SecondaryLandingPage
-  # attr_reader :current_user
+  attr_reader :cs_accelerator, :secondary_certificate
 
   def initialize(current_user:)
     @current_user = current_user
@@ -11,7 +11,7 @@ class SecondaryLandingPage
     'Improve your subject knowledge and gain confidence with our nationally recognised certificates.'
   end
 
-  def secondary
+  def secondary?
     true
   end
 

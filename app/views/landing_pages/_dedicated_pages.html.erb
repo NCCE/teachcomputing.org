@@ -5,7 +5,7 @@
         <p class="govuk-body dedicated-pages--intro">
           <strong>We also have dedicated pages for:</strong>
         </p>
-        <% if @landing_page.secondary %>
+        <% if @landing_page.secondary? %>
           <%= link_to 'Secondary senior leaders', secondary_senior_leaders_path,
             class: 'govuk-button button button--inverted dedicated-pages--button' %>
         <% else %>

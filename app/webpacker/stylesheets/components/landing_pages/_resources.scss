@@ -12,8 +12,8 @@
 
 .lp-resources-card--text {
   @include govuk-media-query($from: tablet) {
-    padding-left: 40px;
     margin-right: 30px;
+    padding-left: 40px;
   }
 }
 
@@ -22,7 +22,7 @@
   display: inline-block;
   margin-bottom: 0;
 
-  @include govuk-media-query($from: tablet ) {
+  @include govuk-media-query($from: tablet) {
     background: unset;
   }
 }

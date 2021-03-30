@@ -31,9 +31,5 @@ RSpec.describe('Teacher Landing pages', type: :system) do
     it 'is the correct page' do
       expect(page).to have_css('.govuk-heading-l', text: 'The essential toolkit for secondary computing teachers')
     end
-
-    it 'main is accessible' do
-      expect(page).to be_accessible.within('#main-content').excluding('.axe-skip-a11y-test')
-    end
   end
 end

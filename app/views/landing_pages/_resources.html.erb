@@ -31,7 +31,7 @@
           <% end %>
         </div>
         <div class="govuk-grid-column-one-third">
-          <% if @landing_page.secondary %>
+          <% if @landing_page.secondary? %>
             <%= render 'landing_pages/subject-knowledge-assessments-aside' %>
           <% end %>
             <%= render 'landing_pages/contributing-partners-aside' %>
