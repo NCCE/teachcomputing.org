@@ -2,18 +2,18 @@
   <div class="govuk-main-wrapper govuk-!-padding-0">
     <div class="govuk-grid-row govuk-!-margin-bottom-0">
       <div class="govuk-grid-column-full dedicated-pages">
-        <p class="govuk-body dedicated-pages--intro">
+        <p class="govuk-body-s dedicated-pages--intro">
           <strong>We also have dedicated pages for:</strong>
         </p>
         <% if @landing_page.secondary? %>
           <%= link_to 'Secondary senior leaders', secondary_senior_leaders_path,
-            class: 'govuk-button button button--inverted dedicated-pages--button' %>
+            class: 'govuk-button button button--small button--inverted dedicated-pages--button' %>
         <% else %>
           <%= link_to 'Primary senior leaders', '/primary-senior-leaders',
-            class: 'govuk-button button button--inverted dedicated-pages--button' %>
+            class: 'govuk-button button button--small button--inverted dedicated-pages--button' %>
         <% end %>
         <%= link_to 'Early careers teachers', '/early-career-teachers',
-          class: 'govuk-button button button--inverted dedicated-pages--button' %>
+          class: 'govuk-button button button--small button--inverted dedicated-pages--button' %>
       </div>
     </div>
   </div>

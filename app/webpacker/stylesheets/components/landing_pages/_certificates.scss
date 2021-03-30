@@ -1,5 +1,5 @@
 .lp-certs--card {
-  padding: 12px 10px 0 16px;
+  padding: 12px 10px 8px 16px;
 }
 
 .lp-certs--card-header {
@@ -11,6 +11,13 @@
   @include govuk-media-query($from: tablet) {
     flex-direction: row;
     padding-top: 10px;
+  }
+}
+
+.lp-certs--card-heading {
+  margin-top: 6px;
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0px;
   }
 }
 

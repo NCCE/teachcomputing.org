@@ -12,11 +12,11 @@
   }
 }
 
-.lp-courses__intro {
+.lp-courses--intro {
   margin-bottom: 32px;
 }
 
-.lp-courses__course {
+.lp-courses--course {
   margin-bottom: 36px;
   position: relative;
 
@@ -25,15 +25,23 @@
   }
 }
 
-.lp-courses__image {
+.lp-courses--image-wrapper {
   margin-bottom: 12px;
-  width: 100%;
+  max-height: 175px;
+  overflow: hidden;
+  position: relative;
+
   @include govuk-media-query($from: tablet) {
     margin-bottom: 8px;
+    max-height: unset;
   }
 }
 
-.lp-courses__featured {
+.lp-courses--image {
+  width: 100%;
+}
+
+.lp-courses--featured {
   background: $grey-dark-x;
   color: $white;
   font-weight: bold;
@@ -43,23 +51,34 @@
   top: 0;
 }
 
-.lp-courses__details {
+.lp-courses--details {
   background: $concrete;
   line-height: 20px;
   margin-bottom: 3px;
   padding: 10px;
 }
 
-.lp-courses__type,
-.lp-courses__duration {
+.lp-courses--type,
+.lp-courses--duration {
   display: inline-block;
   font-weight: bold;
   margin-bottom: 0;
 }
 
-.lp-courses__time {
+.lp-courses--duration {
+  background-size: 16px 16px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
+}
+
+.lp-courses--time {
+  background-size: 16px 16px;
   display: inline-block;
   font-weight: bold;
   margin-bottom: 0;
   margin-left: 20px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
 }

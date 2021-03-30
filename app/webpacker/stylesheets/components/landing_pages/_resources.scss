@@ -1,16 +1,21 @@
 .lp-resources--heading {
   display: inline-block;
+  margin-top: 12px;
   @include govuk-media-query($from: tablet) {
     @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
+    margin-top: 10px;
     min-height: 30px;
   }
 }
 
-.card--lp {
-  padding: 30px;
+.lp-resources--card {
+  padding: 12px 18px;
+  @include govuk-media-query($from: tablet) {
+    padding: 16px 24px;
+  }
 }
 
-.lp-resources-card--text {
+.lp-resources--card-text {
   @include govuk-media-query($from: tablet) {
     margin-right: 30px;
     padding-left: 40px;

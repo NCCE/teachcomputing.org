@@ -18,7 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 16px;
-  padding: 16px 11px 24px;
+  padding: 16px 11px;
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 24px;

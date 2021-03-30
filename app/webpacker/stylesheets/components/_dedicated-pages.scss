@@ -21,9 +21,11 @@
 
 .dedicated-pages--button {
   margin-bottom: 8px;
+  padding: 5px 14px;
   width: auto;
   @include govuk-media-query($from: tablet) {
     margin-bottom: 14px;
     margin-left: 20px;
+    padding: 8px 12px;
   }
 }
