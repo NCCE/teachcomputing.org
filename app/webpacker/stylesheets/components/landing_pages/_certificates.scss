@@ -1,10 +1,17 @@
 .lp-certs--card {
   padding: 12px 10px 0 16px;
 }
+
 .lp-certs--card-header {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
+  padding-top: 4px;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+    padding-top: 10px;
+  }
 }
 
 .lp-certs--button {

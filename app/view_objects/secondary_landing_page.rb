@@ -72,7 +72,7 @@ class SecondaryLandingPage
         description: 'Improve student engagement in your GCSE computer science lessons by developing your classroom pedagogy.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
-        duration: '1 day',
+        duration: 'days vary',
         time_commitment: '6 hours'
       },
       {
