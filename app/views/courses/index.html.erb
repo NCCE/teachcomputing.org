@@ -17,7 +17,6 @@
     </div>
   </div>
 </div>
-
 <% if @course_filter.current_hub %>
 <div class="ncce-courses__hub-container">
   <div class="govuk-width-container">
@@ -34,10 +33,10 @@
   </div>
 </div>
 <% end %>
-<div class="govuk-width-container" data-controller="course-filter">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl ncce-courses__results-wrapper">
+<div class="govuk-width-container ncce-courses__container" data-controller="course-filter">
+  <div class="govuk-main-wrapper ncce-courses__results-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-third-from-desktop ncce-aside--filters-wrapper sticky">
+      <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper sticky">
         <%= render 'courses/aside-filters' %>
       </div>
       <div class="govuk-grid-column-two-thirds-from-desktop" data-course-filter-target="results" id="results-top">

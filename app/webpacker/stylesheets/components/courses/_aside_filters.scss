@@ -7,7 +7,8 @@
 
   @include govuk-media-query($until: desktop) {
     margin: 0 0 5px 0;
-    padding: 15px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1.5px 2px -2px #333448;
   }
 
   & button {
@@ -215,6 +216,10 @@ body:not(.js-enabled) .ncce-courses__apply-filters-button {
 
 .ncce-courses__view-results {
   padding: 5px 25px;
+
+  @include govuk-media-query($until: desktop) {
+    width: 100%;
+  }
 
   @include govuk-media-query($from: desktop) {
     display: none;

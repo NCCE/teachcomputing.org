@@ -125,6 +125,7 @@ export default class extends ApplicationController {
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
     formClasses.add(this.hiddenClass);
+    this.resultsTarget.scrollIntoView(true);
   }
 
   openFilterFormOnDesktop() {

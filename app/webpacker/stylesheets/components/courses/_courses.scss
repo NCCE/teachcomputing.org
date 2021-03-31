@@ -9,24 +9,26 @@
   }
 }
 
+.ncce-courses__container {
+  /* Override tablet dimensions to get the full width */
+  @include govuk-media-query($until: desktop) {
+    margin-right: max(15px, calc(15px + env(safe-area-inset-right)));
+    margin-left: max(15px, calc(15px + env(safe-area-inset-left)));
+  }
+}
+
 .ncce-courses__hub-container {
   background-color: $foam;
-  padding: 0;
-  margin-bottom: 30px;
-
-  &--sticky {
-    margin-top: 0;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-  }
+  margin-bottom: 15px;
 }
 
 .ncce-courses__hub-wrapper {
   padding: 18px 0;
+  margin-bottom: 1rem;
 }
 
 .ncce-courses__hub-heading {
+  padding-bottom: 0;
   display: inline;
   font-weight: 100;
   @include govuk-media-query($from: tablet) {
@@ -38,10 +40,9 @@
   font-weight: bold;
 }
 
-.ncce-aside--filters-wrapper {
-  align-self: flex-start;
-
+.ncce-courses__filters-wrapper {
   /* This is to allow us to re-order the divs */
+  align-self: flex-start;
   order: 2;
 
   @include govuk-media-query($until: desktop) {
