@@ -1,20 +1,20 @@
-<% meta_tag :title, 'The essential toolkit for secondary computing teachers' %>
-<% meta_tag :description, 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.' %>
+<% meta_tag :title, @landing_page.meta[:title] %>
+<% meta_tag :description, @landing_page.meta[:description] %>
 <% meta_tag :url, request.original_url %>
-<% meta_tag :image, asset_pack_path('media/images/secondary-teachers/hero.jpg') %>
-<% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
+<% meta_tag :image, asset_pack_path(@landing_page.meta[:image]) %>
+<% meta_tag :image_alt, @landing_page.meta[:image_alt] %>
 <div class="tapestry-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="text-photo-hero white-bg">
         <div class="text-photo-hero__block--text">
-          <h1 class="govuk-heading-l">The essential toolkit for secondary computing teachers</h1>
+          <h1 class="govuk-heading-l"><%= @landing_page.heading %></h1>
           <p class="govuk-body-l">
-            Training and inspiration that grows your confidence and transforms your teaching.
+            <%= @landing_page.hero_text %>
           </p>
         </div>
         <div class="text-photo-hero__block--photo">
-          <%= image_pack_tag 'media/images/secondary-teachers/hero.png', alt: '' %>
+          <%= image_pack_tag @landing_page.hero_image, alt: '' %>
         </div>
       </div>
     </div>

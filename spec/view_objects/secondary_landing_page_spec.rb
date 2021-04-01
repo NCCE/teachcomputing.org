@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SecondaryLandingPage do
-  # let!(:csa) { create(:cs_accelerator) }
   let!(:csa) { instance_double(Programmes::CSAccelerator) }
-  # let!(:secondary_cert) { create(:secondary_certificate) }
   let!(:secondary_cert) { instance_double(Programmes::SecondaryCertificate) }
   let(:user) { create(:user) }
 
@@ -22,7 +20,16 @@ RSpec.describe SecondaryLandingPage do
     expect(landing_page.secondary_certificate).to eq(secondary_cert)
   end
 
-  describe 'certificates text' do
+  describe '#meta' do
+    it 'returns correctly shaped data' do
+      keys = %i[title description image image_alt]
+
+      expect(landing_page.meta.keys).to eq(keys)
+    end
+
+  end
+
+  describe '#certificates_text' do
     it 'returns text' do
       expect(landing_page.certificates_text).to match(/Improve your subject knowledge/)
     end

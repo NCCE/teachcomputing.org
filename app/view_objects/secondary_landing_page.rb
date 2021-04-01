@@ -7,6 +7,28 @@ class SecondaryLandingPage
     @secondary_certificate = Programme.secondary_certificate
   end
 
+  def meta
+    {
+      title: 'The essential toolkit for secondary computing teachers',
+      description: 'Training and inspiration that grows your confidence, transforms your teaching and brings your lessons to life.',
+      image: 'media/images/secondary-teachers/hero.jpg',
+      image_alt: 'Secondary Teachers - Teach Computing',
+    }
+
+  end
+
+  def heading
+    'The essential toolkit for secondary computing teachers'
+  end
+
+  def hero_text
+    'Training and inspiration that grows your confidence and transforms your teaching.'
+  end
+
+  def hero_image
+    'media/images/secondary-teachers/hero.png'
+  end
+
   def certificates_text
     'Improve your subject knowledge and gain confidence with our nationally recognised certificates.'
   end
