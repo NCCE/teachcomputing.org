@@ -10,12 +10,12 @@ RSpec.describe LandingPagesController do
       get primary_teachers_path
     end
 
-    it 'assigns programme' do
-      expect(assigns(:programme)).to eq(primary_certificate)
+    it 'assigns PrimaryLandingPage' do
+      expect(assigns(:landing_page)).to be_a(PrimaryLandingPage)
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('landing_pages/primary_teachers')
+      expect(response).to render_template('landing_pages/show')
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe LandingPagesController do
     end
 
     it 'renders the correct template' do
-      expect(response).to render_template('landing_pages/secondary_teachers')
+      expect(response).to render_template('landing_pages/show')
     end
   end
 end

@@ -51,6 +51,26 @@
                   %>
                 </p>
             </div>
+          <% else %>
+            <div class="card card--primary-certificate card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
+                <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
+                  Teach primary computing
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.primary_certificate %>
+              </div>
+              <p class="govuk-body card__text card__text-landing-page">
+                Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <%= link_to @landing_page.primary_cert_link_text, cs_accelerator_path,
+                  class: 'button govuk-button lp-certs--button',
+                  data: { event_action: 'click',
+                          event_category: @landing_page.event_tracking_category,
+                          event_label: @landing_page.primary_tracking_event }
+                %>
+              </p>
+            </div>
           <% end %>
         </div>
 

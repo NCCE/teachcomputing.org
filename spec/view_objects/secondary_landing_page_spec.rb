@@ -43,7 +43,7 @@ RSpec.describe SecondaryLandingPage do
 
   describe '#hero_image' do
     it 'returns image path' do
-      expect(landing_page.hero_image).to eq('media/images/secondary-teachers/hero.png')
+      expect(landing_page.hero_image).to eq('media/images/landing-pages/sec-hero.png')
     end
   end
 
@@ -68,6 +68,12 @@ RSpec.describe SecondaryLandingPage do
   describe '#secondary?' do
     it 'returns true' do
       expect(landing_page.secondary?).to eq(true)
+    end
+  end
+
+  describe '#primary?' do
+    it 'returns false' do
+      expect(landing_page.primary?).to eq(false)
     end
   end
 
