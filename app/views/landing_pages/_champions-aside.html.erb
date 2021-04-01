@@ -6,6 +6,11 @@
     Our team provide support and mentoring to help you complete the Computer Science Accelerator programme.
   </p>
   <p class="govuk-body-s ncce-bursary-aside__link">
-    <%= link_to 'Email our CS Champions', 'mailto:CSChampionSupport@stem.org.uk', class: 'ncce-link ncce-link--contrast' %>
+    <%= link_to 'Email our CS Champions', 'mailto:CSChampionSupport@stem.org.uk',
+        class: 'ncce-link ncce-link--contrast',
+        data: { event_action: 'click',
+                event_category: @landing_page.event_tracking_category,
+                event_label: 'Email CS Champions' }
+    %>
   </p>
 </div>

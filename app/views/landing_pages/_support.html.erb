@@ -23,7 +23,12 @@
                   exceptional track record in teaching computing.
                 </p>
               </div>
-              <%= link_to 'Meet your local hub', '/hubs', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+              <%= link_to 'Meet your local hub', '/hubs',
+                class: 'button govuk-button govuk-!-margin-bottom-0',
+                data: { event_action: 'click',
+                        event_category: @landing_page.event_tracking_category,
+                        event_label: 'Local hub' }
+              %>
             </div>
             <div class="lp-support__card">
               <div>
@@ -35,7 +40,12 @@
                   expertise, resources and best practice. Run by Computing at School (CAS).
                 </p>
               </div>
-              <%= link_to 'Join a community', 'https://community.computingatschool.org.uk/communities', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+              <%= link_to 'Join a community', 'https://community.computingatschool.org.uk/communities',
+                class: 'button govuk-button govuk-!-margin-bottom-0',
+                data: { event_action: 'click',
+                        event_category: @landing_page.event_tracking_category,
+                        event_label: 'CAS' }
+              %>
             </div>
             <div class="lp-support__card">
               <div>
@@ -45,11 +55,22 @@
                 <p class="govuk-body">
                   Our computing specialists offer fully-funded consultancy and
                   guidance to schools and colleges who meet
-                  <%= link_to 'our eligibility criteria', '/bursary#subject', class: 'ncce-link' %>.
+                  <%= link_to 'our eligibility criteria', '/bursary#subject',
+                    class: 'ncce-link',
+                    data: { event_action: 'click',
+                            event_category: @landing_page.event_tracking_category,
+                            event_label: 'SME eligibility' }
+                    %>.
                   They’ll work with you to develop a tailor-made action plan.
                 </p>
               </div>
-              <%= link_to 'Contact your local SME', 'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+              <%= link_to 'Contact your local SME',
+                'https://docs.google.com/forms/d/e/1FAIpQLSeSmjJgi5jsUI0u6AxUR-FmEkudj-jgeGYLAVumaHgxGiIEIw/viewform',
+                class: 'button govuk-button govuk-!-margin-bottom-0',
+                data: { event_action: 'click',
+                        event_category: @landing_page.event_tracking_category,
+                        event_label: 'SME contact' }
+              %>
             </div>
           </div>
       </div>

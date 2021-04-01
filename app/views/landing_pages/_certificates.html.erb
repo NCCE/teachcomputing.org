@@ -21,7 +21,12 @@
                 Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
               </p>
               <p class="govuk-body govuk-!-margin-bottom-0">
-                <%= link_to @landing_page.csa_link_text, cs_accelerator_path, class: 'button govuk-button lp-certs--button' %>
+                <%= link_to @landing_page.csa_link_text, cs_accelerator_path,
+                  class: 'button govuk-button lp-certs--button',
+                  data: { event_action: 'click',
+                          event_category: @landing_page.event_tracking_category,
+                          event_label: @landing_page.csa_tracking_event }
+                %>
               </p>
             </div>
 
@@ -38,7 +43,12 @@
               </p>
 
                 <p class="govuk-body govuk-!-margin-bottom-0">
-                  <strong><%= link_to @landing_page.secondary_cert_link_text, secondary_path, class: 'button govuk-button lp-certs--button' %></strong>
+                  <%= link_to @landing_page.secondary_cert_link_text, secondary_path,
+                    class: 'button govuk-button lp-certs--button',
+                    data: { event_action: 'click',
+                            event_category: @landing_page.event_tracking_category,
+                            event_label: @landing_page.secondary_tracking_event }
+                  %>
                 </p>
             </div>
           <% end %>
