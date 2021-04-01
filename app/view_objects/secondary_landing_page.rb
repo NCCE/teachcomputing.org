@@ -29,6 +29,10 @@ class SecondaryLandingPage
     'media/images/secondary-teachers/hero.png'
   end
 
+  def hero_class
+    'tapestry-bg'
+  end
+
   def certificates_text
     'Improve your subject knowledge and gain confidence with our nationally recognised certificates.'
   end

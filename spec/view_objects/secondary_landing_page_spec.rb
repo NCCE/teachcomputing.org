@@ -29,6 +29,30 @@ RSpec.describe SecondaryLandingPage do
 
   end
 
+  describe '#heading' do
+    it 'returns text' do
+      expect(landing_page.heading).to eq('The essential toolkit for secondary computing teachers')
+    end
+  end
+
+  describe '#hero_text' do
+    it 'returns text' do
+      expect(landing_page.hero_text).to eq('Training and inspiration that grows your confidence and transforms your teaching.')
+    end
+  end
+
+  describe '#hero_image' do
+    it 'returns image path' do
+      expect(landing_page.hero_image).to eq('media/images/secondary-teachers/hero.png')
+    end
+  end
+
+  describe '#hero_class' do
+    it 'returns tapestry-bg' do
+      expect(landing_page.hero_class).to eq('tapestry-bg')
+    end
+  end
+
   describe '#certificates_text' do
     it 'returns text' do
       expect(landing_page.certificates_text).to match(/Improve your subject knowledge/)

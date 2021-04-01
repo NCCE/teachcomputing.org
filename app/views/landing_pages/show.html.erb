@@ -3,7 +3,7 @@
 <% meta_tag :url, request.original_url %>
 <% meta_tag :image, asset_pack_path(@landing_page.meta[:image]) %>
 <% meta_tag :image_alt, @landing_page.meta[:image_alt] %>
-<div class="tapestry-bg">
+<div class="<%= @landing_page.hero_class %>">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="text-photo-hero white-bg">
