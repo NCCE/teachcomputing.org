@@ -49,22 +49,25 @@
 
 .ncce-label {
   line-height: 2rem;
+  font-size: 14px;
 }
 
 /* govuk checkboxes use the label hack, so we need to style that */
 .ncce-checkboxes__item {
   .ncce-checkboxes__label {
-    line-height: 1.1rem;
-    padding: 0.5rem;
+    line-height: 0.8rem;
+    padding: 0.2rem;
 
     &::before {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
     }
 
     &::after {
-      left: 6px;
-      top: 9px;
+      left: 5px;
+      top: 8px;
+      width: 14px;
+      height: 6px;
     }
   }
 

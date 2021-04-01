@@ -1,46 +1,53 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Computing courses for teachers', glyph_position: 'bottom', colour: 'blue' %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">
-          Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
-        </p>
-        <p class="govuk-body">
-          Choose how and when you want to learn, through face-to-face, online, or live remote training.
-        </p>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <%= render 'courses/aside-bursary' %>
-      </div>
-    </div>
-  </div>
-</div>
-<% if @course_filter.current_hub %>
-<div class="ncce-courses__hub-container">
+<div data-controller="course-filter">
+  <div id="page-mask" class='hidden' data-course-filter-target="pageMask"></div>
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper ncce-courses__hub-wrapper">
+    <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h3 class="govuk-heading-s ncce-courses__hub-heading">
-            Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
-            <%= link_to 'show all results', courses_path(anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub' %>
-          </h3>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">
+            Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
+          </p>
+          <p class="govuk-body">
+            Choose how and when you want to learn, through face to face, online, or live remote training.
+          </p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render 'courses/aside-bursary' %>
         </div>
       </div>
     </div>
   </div>
-</div>
-<% end %>
-<div class="govuk-width-container ncce-courses__container" data-controller="course-filter">
-  <div class="govuk-main-wrapper ncce-courses__results-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper sticky">
-        <%= render 'courses/aside-filters' %>
+  <% if @filter_params[:hub_id].present? %>
+  <div class="ncce-courses__hub-container" data-course-filter-target="hubMessage">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper ncce-courses__hub-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <h3 class="govuk-heading-s ncce-courses__hub-heading">
+              <% if @course_filter.current_hub == :no_courses %>
+                There are no courses to show from this Computing Hub
+              <% else %>
+                Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
+              <% end %>
+              <%= link_to 'show all results', courses_path(anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub' %>
+            </h3>
+          </div>
+        </div>
       </div>
-      <div class="govuk-grid-column-two-thirds-from-desktop" data-course-filter-target="results" id="results-top">
-        <%= render 'courses/courses-list' %>
+    </div>
+  </div>
+  <% end %>
+  <div class="govuk-width-container ncce-courses__container" data-course-filter-target="resultsContainer" id="results-top">
+    <div class="govuk-main-wrapper ncce-courses__results-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper sticky">
+          <%= render 'courses/aside-filters' %>
+        </div>
+        <div class="govuk-grid-column-two-thirds-from-desktop" data-course-filter-target="results">
+          <%= render 'courses/courses-list' %>
+        </div>
       </div>
     </div>
   </div>

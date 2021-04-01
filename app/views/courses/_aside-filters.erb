@@ -1,13 +1,13 @@
 <% unless @course_filter.nil? %>
-<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop">
+<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop resize@window->course-filter#removePageMaskOnDesktop resize@window->course-filter#addPageMaskOnMobile" data-course-filter-target="filterFormHeader">
   <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
   <button type="button" class="ncce-courses__filter-form-toggle--open" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
-    <span class="ncce-courses__filter-form-toggle-applied" data-course-filter-target="filterCount"><%= filter_count(@course_filter).positive? ? filter_count(@course_filter) : 'No' %> filters applied</span>
+    <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= filter_count(@course_filter) %> filters applied</span>
     Filter courses
   </button>
   <div class="ncce-courses__filter" data-course-filter-target="filterForm">
     <div class='ncce-courses__clear-filters <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
-      <%= link_to 'clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text', data: { action: 'click->course-filter#clearFilters' } %>
+      <%= link_to 'Clear all filters', courses_path(hub_id: @filter_params[:hub_id], anchor: 'results-top'), class: 'govuk-button button button--small govuk-body-m', data: { action: 'click->course-filter#clearFilters' } %>
     </div>
     <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
       <%= label_tag :level, 'Key Stage:', class: 'govuk-body-s ncce-label' %>

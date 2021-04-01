@@ -188,8 +188,8 @@ RSpec.describe Achiever::CourseFilter do
     context 'when filtering by hub with no occurrences' do
       let(:filter_params) { { certificate: '', level: '', location: '', topic: '', hub_id: 'nooccurrenceshubid' } }
 
-      it 'returns "Hub - no courses"' do
-        expect(course_filter.current_hub).to eq('Hub - no courses')
+      it 'returns :no_courses' do
+        expect(course_filter.current_hub).to eq(:no_courses)
       end
     end
   end

@@ -9,8 +9,12 @@ export default class extends ApplicationController {
     'loadingBar',
     'courseList',
     'clearFilters',
+    'pageMask',
     'resultsCount',
+    'resultsContainer',
+    'hubMessage',
     'filterForm',
+    'filterFormHeader',
     'filterFormToggle',
     'filterCount',
     'viewResultsCount'
@@ -21,14 +25,20 @@ export default class extends ApplicationController {
   defaultViewResultsCountString = '';
   hiddenClass = '';
   openModifier = '';
+  tabletWidth = 0;
   intervalId = null;
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
     this.defaultResultsCountString = 'Showing 0 results';
-    this.defaultViewResultsCountString = 'View 0 results';
+    this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
+    this.tabletWidth = 769;
+  }
+
+  connect() {
+    this.addPageMaskOnMobile();
   }
 
   filter(ev) {
@@ -36,7 +46,7 @@ export default class extends ApplicationController {
     this.toggleLoadingBar();
 
     try {
-      this.resultsTarget.scrollIntoView(true);
+      this.scrollToTop();
       Object.values(ev.currentTarget.form).find(field => field.name == 'js_enabled').value = true;
       Rails.fire(this.formTarget, 'submit');
     } catch (err) {
@@ -44,6 +54,11 @@ export default class extends ApplicationController {
       this.loadingBarTarget.innerText = "An error has occurred, please refresh the page and try again.";
       this.handleError(err);
     }
+  }
+
+  scrollToTop() {
+    const scrollTarget = this.hasHubMessageTarget ? this.hubMessageTarget : this.resultsContainerTarget;
+    scrollTarget.scrollIntoView(true);
   }
 
   toggleActiveSelect(ev) {
@@ -56,12 +71,24 @@ export default class extends ApplicationController {
       currentTarget.classList.add('filter--active');
       this.filterCount++;
     }
-
-    this.updateFilterCount();
   }
 
   updateFilterCount() {
+    if (this.filterCount > 0) {
+      this.filterCountTarget.classList.remove(this.hiddenClass);
+    } else {
+      this.filterCountTarget.classList.add(this.hiddenClass);
+    }
+
     this.filterCountTarget.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
+  }
+
+  toggleClearFilter() {
+    if (this.filterCount > 0) {
+      this.clearFiltersTarget.classList.remove(this.hiddenClass);
+    } else {
+      this.clearFiltersTarget.classList.add(this.hiddenClass);
+    }
   }
 
   toggleLoadingBar() {
@@ -103,9 +130,9 @@ export default class extends ApplicationController {
     this.viewResultsCountTarget.innerText =
       this.resultsCountTarget.innerText.replace('Showing', 'View');
 
-    if (clearFilters.contains(this.hiddenClass)) {
-      clearFilters.remove(this.hiddenClass);
-    }
+
+    this.updateFilterCount();
+    this.toggleClearFilter();
   }
 
   clearFilters() {
@@ -114,22 +141,32 @@ export default class extends ApplicationController {
   }
 
   openFilterForm() {
-    const formClasses = this.filterFormTarget.classList;
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(this.menuClass, `${this.menuClass}${this.openModifier}`);
-    formClasses.remove(this.hiddenClass);
+    this.filterFormTarget.classList.remove(this.hiddenClass);
+    this.pageMaskTarget.classList.remove(this.hiddenClass);
   }
 
   closeFilterForm() {
-    const formClasses = this.filterFormTarget.classList;
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
-    formClasses.add(this.hiddenClass);
-    this.resultsTarget.scrollIntoView(true);
+    this.filterFormTarget.classList.add(this.hiddenClass);
+    this.pageMaskTarget.classList.add(this.hiddenClass);
+    this.scrollToTop();
+  }
+
+  addPageMaskOnMobile() {
+    if (window.matchMedia(`(min-width: ${this.tabletWidth}px)`).matches) return;
+    this.pageMaskTarget.classList.remove(this.hiddenClass);
+  }
+
+  removePageMaskOnDesktop() {
+    if (window.matchMedia(`(max-width: ${this.tabletWidth}px)`).matches) return;
+    this.pageMaskTarget.classList.add(this.hiddenClass);
   }
 
   openFilterFormOnDesktop() {
-    if (window.matchMedia('(max-width: 669px)').matches) return;
+    if (window.matchMedia(`(max-width: ${this.tabletWidth}px)`).matches) return;
     this.openFilterForm();
   }
 

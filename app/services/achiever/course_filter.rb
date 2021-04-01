@@ -77,7 +77,7 @@ module Achiever
       return nil unless @filter_params[:hub_id].present?
 
       @current_hub ||= begin
-        course_occurrences.map(&:hub_name).compact.first || 'Hub - no courses'
+        course_occurrences.map(&:hub_name).compact.first || :no_courses
       end
     end
 

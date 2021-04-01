@@ -87,12 +87,6 @@
   }
 }
 
-body:not(.js-enabled) .ncce-courses__filter-form {
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: 0;
-  }
-}
-
 .ncce-courses__filter-prompt {
   color: $grey-dark-x;
   margin-right: 20px;
@@ -106,7 +100,12 @@ body:not(.js-enabled) .ncce-courses__filter-form {
   margin-bottom: 0;
   padding: 9px 15px 6px;
   width: auto;
-  position: inherit;
+  position: initial;
+}
+
+/* TODO: Why? why is this necessary... */
+.ncce-courses__filter-button::before {
+  display: none;
 }
 
 .ncce-courses__apply-filters-button {
@@ -115,11 +114,6 @@ body:not(.js-enabled) .ncce-courses__filter-form {
   width: 100%;
   display: none;
   visibility: hidden;
-}
-
-body:not(.js-enabled) .ncce-courses__apply-filters-button {
-  display: initial;
-  visibility: visible;
 }
 
 .ncce-courses__filter-mobile-heading {
@@ -162,9 +156,14 @@ body:not(.js-enabled) .ncce-courses__apply-filters-button {
 }
 
 .ncce-courses__clear-filters {
-  padding: 0.9rem 0;
+  padding: 0.9rem 0 0 0;
+
+  a {
+    width: auto;
+  }
 
   @include govuk-media-query($until: desktop) {
+    padding-bottom: 0.9rem;
     border-bottom: 2px solid #CCCCCC;
   }
 }
@@ -214,6 +213,10 @@ body:not(.js-enabled) .ncce-courses__apply-filters-button {
   background-color: #E3F6FC;
 }
 
+.ncce-select--filters.filter--active {
+  font-weight: 700;
+}
+
 .ncce-courses__view-results {
   padding: 5px 25px;
 
@@ -227,9 +230,27 @@ body:not(.js-enabled) .ncce-courses__apply-filters-button {
   }
 }
 
-body:not(.js-enabled) .ncce-courses__view-results {
-  @include govuk-media-query($until: desktop) {
+body:not(.js-enabled) {
+  .ncce-courses__filter-form-toggle,
+  .ncce-courses__filter-form-toggle--open:after {
     display: none;
-    visibility: hidden;
+  }
+
+  .ncce-courses__filter-form {
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: 0;
+    }
+  }
+
+  .ncce-courses__apply-filters-button {
+    display: initial;
+    visibility: visible;
+  }
+
+  .ncce-courses__view-results {
+    @include govuk-media-query($until: desktop) {
+      display: none;
+      visibility: hidden;
+    }
   }
 }
