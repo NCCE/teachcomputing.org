@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('courses/_courses-list', type: :view) do
+RSpec.describe('courses/_aside-filters', type: :view) do
   let(:courses) do
     build_list(
       :achiever_course_template,
@@ -42,39 +42,26 @@ RSpec.describe('courses/_courses-list', type: :view) do
     render
   end
 
-  it 'links to the course landing page for each course' do
-    courses.each do |course|
-      expect(rendered).to have_link(course.title, href: %r{#{course.activity_code}/#{course.title.parameterize}})
-    end
-  end
-
   describe 'courses' do
-    it 'renders each of the course template titles' do
-      courses.each do |course|
-        expect(rendered).to have_css('.ncce-courses__heading', text: course.title)
-      end
+    it 'renders filter selects' do
+      expect(rendered).to have_css('.ncce-select', count: 4)
     end
 
-    it 'renders each of the course template codes' do
-      courses.each do |course|
-        expect(rendered).to have_css('.ncce-courses__heading-code', text: course.activity_code)
-      end
+    it 'renders location select' do
+      expect(rendered).to have_css('.ncce-select option', text: 'Cambridge')
     end
 
-    it 'renders course key stage tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
+    it 'renders level select' do
+      expect(rendered).to have_css('.ncce-select option', text: 'Key stage 2')
     end
 
-    it 'renders course subject tags area' do
-      expect(rendered).to have_css('h3.screen-reader-only', text: 'Tags for this course')
+    it 'renders topic select' do
+      expect(rendered).to have_css('.ncce-select option', text: 'Algorithms')
     end
 
-    it 'renders course subject tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'Biology')
-    end
-
-    it 'renders the programme tag' do
-      expect(rendered).to have_css('.ncce-courses__filter-tag--cs-accelerator', text: 'CS Accelerator')
-    end
+    # TODO: When je-enabled true / false
+    # it 'renders filter submit' do
+    #   expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
+    # end
   end
 end

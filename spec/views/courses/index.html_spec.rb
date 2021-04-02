@@ -23,6 +23,7 @@ RSpec.describe('courses/index', type: :view) do
       allow(filter_stub).to receive_messages(
         current_hub: nil
       )
+      @filter_params = {}
       @course_filter = filter_stub
       render
     end
@@ -56,6 +57,7 @@ RSpec.describe('courses/index', type: :view) do
       allow(filter_stub).to receive_messages(
         current_hub: 'bla'
       )
+      @filter_params = { hub_id: 'bla' }
       @course_filter = filter_stub
       render
     end
@@ -65,7 +67,26 @@ RSpec.describe('courses/index', type: :view) do
     end
 
     it 'has the clear filters link' do
-      expect(rendered).to have_link('show all results', href: courses_path)
+      expect(rendered).to have_link('show all results', href: courses_path(anchor: 'results-top'))
+    end
+  end
+
+  context 'with a hub with no courses' do
+    before do
+      allow(filter_stub).to receive_messages(
+        current_hub: :no_courses
+      )
+      @filter_params = { hub_id: 'bla' }
+      @course_filter = filter_stub
+      render
+    end
+
+    it 'has the expected title' do
+      expect(rendered).to have_text('There are no courses to show from this Computing Hub')
+    end
+
+    it 'has the clear filters link' do
+      expect(rendered).to have_link('show all results', href: courses_path(anchor: 'results-top'))
     end
   end
 end
