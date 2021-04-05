@@ -2,7 +2,7 @@
 <div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop resize@window->course-filter#removePageMaskOnDesktop resize@window->course-filter#addPageMaskOnMobile" data-course-filter-target="filterFormHeader">
   <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
   <button type="button" class="ncce-courses__filter-form-toggle--open" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
-    <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= filter_count(@course_filter) %> filters applied</span>
+    <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %> applied</span>
     Filter courses
   </button>
   <div class="ncce-courses__filter" data-course-filter-target="filterForm">
@@ -61,8 +61,9 @@
       </div>
       <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
       <%= hidden_field_tag 'js_enabled', false %>
+
+      <%= submit_tag "Apply filters", :name => nil, class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
     <% end %>
-    <%= submit_tag "Apply filters", :name => nil, class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
     <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.courses.size, 'result') %></button>
   </div>
 </div>

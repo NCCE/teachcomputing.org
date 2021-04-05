@@ -2,23 +2,20 @@ class CoursesController < ApplicationController
   layout 'full-width'
 
   def index
-    define_filter_params
-
+    assign_params
     render :index
   end
 
   def filter
-    define_filter_params
-
-    js_enabled = ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
-    if js_enabled
+    assign_params
+    if ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
       render partial: 'courses/courses-list', layout: false
     else
       render :index
     end
   end
 
-  def define_filter_params
+  def assign_params
     @filter_params = filter_params
     @course_filter = Achiever::CourseFilter.new(
       filter_params: filter_params

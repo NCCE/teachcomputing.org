@@ -106,4 +106,8 @@ module CoursesHelper
     filters = course_filter.applied_filters || []
     filters.reject { |f| f == course_filter.current_hub }.count
   end
+
+  def applied_filters_string(course_filter)
+    "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), 'filter')} applied"
+  end
 end
