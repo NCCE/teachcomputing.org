@@ -83,7 +83,7 @@ class PrimaryLandingPage
         icon_class: 'icon-remote',
         type: 'Live remote training',
         duration: 'days vary',
-        time_commitment: '6 hours'
+        time_commitment: '5 hours'
       },
       {
         image: 'media/images/landing-pages/lp-pri-crs-3.png',
