@@ -39,15 +39,15 @@
     color: $black;
   }
   &:hover {
-    color: $grey-dark-x;
+    color: $mid-gray;
   }
   &:focus {
-    background: none;
-    color: $black;
+    background: $grey-dark-x;
+    color: $white;
     outline-color: none;
   }
   &:active {
-    background-color: none;
-    color: $black;
+    background: $grey-dark-x;
+    color: $white;
   }
 }
