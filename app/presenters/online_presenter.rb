@@ -3,7 +3,7 @@ class OnlinePresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
 
   def button_url(args = {})
-    courses_path(location: 'Online', certificate: args[:certificate])
+    courses_path(topic: 'Online', certificate: args[:certificate])
   end
 
   def completed_text(index)

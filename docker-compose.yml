@@ -13,6 +13,7 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+
   redis:
     image: "redis:alpine"
     ports:
@@ -22,6 +23,7 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+
   sidekiq:
     build: .
     command: bundle exec sidekiq
@@ -31,6 +33,7 @@ services:
       - backend
     env_file:
       - .env
+
   web:
     build: .
     command: ./scripts/docker-entrypoint.sh
@@ -45,7 +48,6 @@ services:
     depends_on:
       - db
       - redis
-      - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
@@ -57,15 +59,12 @@ services:
       - main
       - backend
     restart: unless-stopped
-    logging:
-      driver: json-file
-      options:
-        max-size: "200k"
-        max-file: "10"
 
   webpack:
     build: .
     command: ./bin/webpack-dev-server
+    depends_on:
+      - web
     volumes:
       - .:/app
       - node_modules:/app/node_modules # ensures we retain node_modules from docker build
@@ -78,11 +77,7 @@ services:
       - NODE_ENV=development
     networks:
       - main
-    logging:
-      driver: json-file
-      options:
-        max-size: "200k"
-        max-file: "10"
+
 volumes:
   bundle:
   pg-data:

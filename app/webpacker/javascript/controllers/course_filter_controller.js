@@ -25,24 +25,21 @@ export default class extends ApplicationController {
   defaultViewResultsCountString = '';
   hiddenClass = '';
   openModifier = '';
-  tabletWidth = 0;
   intervalId = null;
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
-    this.defaultResultsCountString = 'Showing 0 results';
+    this.defaultResultsCountString = 'Showing results';
     this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
-    this.tabletWidth = 769;
   }
 
   connect() {
-    this.addPageMaskOnMobile();
+    this.addPageMaskOnMobileOrTablet();
   }
 
   filter(ev) {
-    this.toggleActiveSelect(ev);
     this.toggleLoadingBar();
 
     try {
@@ -63,12 +60,29 @@ export default class extends ApplicationController {
 
   toggleActiveSelect(ev) {
     const { currentTarget } = ev;
-    if (currentTarget.selectedIndex == 0) {
+    const { options: { selectedIndex } } = currentTarget;
+
+    if (selectedIndex == 0) {
+      currentTarget.options[selectedIndex].removeAttribute('selected');
       currentTarget.classList.remove('filter--active');
       currentTarget.blur();
       this.filterCount--;
     } else {
+      currentTarget.options[selectedIndex].setAttribute('selected', true);
       currentTarget.classList.add('filter--active');
+      this.filterCount++;
+    }
+  }
+
+  toggleActiveCheckbox(ev) {
+    const { currentTarget } = ev;
+    const checked = currentTarget.getAttribute('checked');
+    if (checked) {
+      currentTarget.removeAttribute('checked');
+      currentTarget.blur();
+      this.filterCount--;
+    } else {
+      currentTarget.setAttribute('checked', 'checked');
       this.filterCount++;
     }
   }
@@ -95,6 +109,7 @@ export default class extends ApplicationController {
     const loadingBar = this.loadingBarTarget.classList;
     const courseList = this.courseListTarget.classList;
 
+    this.minHeightHack();
     this.animateLoadingBar();
 
     this.resultsCountTarget.innerText = this.defaultResultsCountString;
@@ -102,6 +117,18 @@ export default class extends ApplicationController {
 
     loadingBar.toggle(this.hiddenClass);
     courseList.toggle(this.hiddenClass);
+  }
+
+  /** This is to prevent some of the jumpiness on desktop as the page resizes */
+  minHeightHack() {
+    if (!this.isDesktop()) return;
+
+    const minHeight = '1000px';
+    if (this.resultsTarget.style.minHeight == minHeight) {
+      this.resultsTarget.style.minHeight = 'initial';
+    } else {
+      this.resultsTarget.style.minHeight = minHeight;
+    }
   }
 
   animateLoadingBar() {
@@ -121,7 +148,6 @@ export default class extends ApplicationController {
 
   handleResults(ev) {
     const [, , xhr] = ev.detail;
-    const clearFilters = this.clearFiltersTarget.classList;
 
     this.toggleLoadingBar();
     this.resultsTarget.innerHTML = xhr.response;
@@ -144,29 +170,44 @@ export default class extends ApplicationController {
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(this.menuClass, `${this.menuClass}${this.openModifier}`);
     this.filterFormTarget.classList.remove(this.hiddenClass);
-    this.pageMaskTarget.classList.remove(this.hiddenClass);
+    this.scrollToTop();
+    this.addPageMask();
   }
 
   closeFilterForm() {
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
     this.filterFormTarget.classList.add(this.hiddenClass);
-    this.pageMaskTarget.classList.add(this.hiddenClass);
     this.scrollToTop();
+    this.removePageMask();
   }
 
-  addPageMaskOnMobile() {
-    if (window.matchMedia(`(min-width: ${this.tabletWidth}px)`).matches) return;
-    this.pageMaskTarget.classList.remove(this.hiddenClass);
+  addPageMaskOnMobileOrTablet() {
+    if (!this.isDesktop() && this.isMenuOpen()) {
+      this.addPageMask();
+    }
   }
 
   removePageMaskOnDesktop() {
-    if (window.matchMedia(`(max-width: ${this.tabletWidth}px)`).matches) return;
-    this.pageMaskTarget.classList.add(this.hiddenClass);
+    if (this.isDesktop()) {
+      this.removePageMask();
+    }
+  }
+
+  addPageMask() {
+    if (this.pageMaskTarget.classList.contains(this.hiddenClass)) {
+      this.pageMaskTarget.classList.remove(this.hiddenClass);
+    }
+  }
+
+  removePageMask() {
+    if (!this.pageMaskTarget.classList.contains(this.hiddenClass)) {
+      this.pageMaskTarget.classList.add(this.hiddenClass);
+    }
   }
 
   openFilterFormOnDesktop() {
-    if (window.matchMedia(`(max-width: ${this.tabletWidth}px)`).matches) return;
+    if (!this.isDesktop()) return;
     this.openFilterForm();
   }
 
@@ -177,5 +218,13 @@ export default class extends ApplicationController {
     } else {
       this.openFilterForm();
     }
+  }
+
+  isDesktop() {
+    return window.matchMedia(`(min-width: 769px)`).matches;
+  }
+
+  isMenuOpen() {
+    return !this.filterFormTarget.classList.contains(this.hiddenClass);
   }
 }

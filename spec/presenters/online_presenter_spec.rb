@@ -10,8 +10,8 @@ RSpec.describe OnlinePresenter do
   end
 
   describe('button_url') do
-    it { expect(empty_presenter.button_url).to eq('/courses?location=Online') }
-    it { expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq("/courses?certificate=cs-accelerator&location=Online") }
+    it { expect(empty_presenter.button_url).to eq('/courses?topic=Online') }
+    it { expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq("/courses?certificate=cs-accelerator&topic=Online") }
   end
 
   describe('completed_text') do

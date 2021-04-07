@@ -77,10 +77,13 @@
     background-color: white;
   }
 
-  .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before {
+  .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before,
+  .ncce-checkboxes__input:active + .ncce-checkboxes__label::before,
+  .ncce-checkboxes__input[checked='checked'] + .ncce-checkboxes__label::before {
     box-shadow: none;
     outline: none;
     border-color: #007fa2;
     background-color: #E3F6FC;
   }
+
 }

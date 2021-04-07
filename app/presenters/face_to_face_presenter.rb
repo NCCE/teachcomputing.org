@@ -3,7 +3,7 @@ class FaceToFacePresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
 
   def button_url(args = {})
-    courses_path(location: 'Face to face', certificate: args[:certificate])
+    courses_path(topic: 'Face to face', certificate: args[:certificate])
   end
 
   def completed_text(index)

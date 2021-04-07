@@ -25,20 +25,19 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+driver = :selenium_chrome_headless
 Capybara.server = :puma, { Silent: true }
-Capybara.default_driver = :chrome_headless
-Capybara.register_driver :chrome_headless do |app|
+Capybara.register_driver driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument('--headless')
   options.add_argument('--no-sandbox')
   options.add_argument('--disable-dev-shm-usage')
-  options.add_argument('--disable-gpu')
   options.add_argument('--window-size=1400,1400')
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
-Capybara.javascript_driver = :chrome_headless
+Capybara.javascript_driver = driver
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -65,7 +64,7 @@ RSpec.configure do |config|
     Webpacker.compile
   end
 
-  config.before(:each, type: :system) do
-    driven_by :chrome_headless
+  config.before(:each, type: :system, js: true) do
+    driven_by driver
   end
 end
