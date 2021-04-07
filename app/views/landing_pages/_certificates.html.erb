@@ -76,9 +76,7 @@
 
         <div class="govuk-grid-column-one-third">
           <%= render 'landing_pages/bursary-aside' %>
-          <% if @landing_page.secondary? %>
-            <%= render 'landing_pages/champions-aside' %>
-          <% end %>
+          <%= render 'landing_pages/champions-aside' if @landing_page.secondary? %>
         </div>
       </div>
     </div>
