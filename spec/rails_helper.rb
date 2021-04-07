@@ -31,9 +31,11 @@ Capybara.register_driver driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument('--headless')
+  options.add_argument('--disable-extensions')
   options.add_argument('--no-sandbox')
-  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--disable-gpu')
   options.add_argument('--window-size=1400,1400')
+  options.add_argument('--verbose')
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
@@ -64,7 +66,7 @@ RSpec.configure do |config|
     Webpacker.compile
   end
 
-  config.before(:each, type: :system, js: true) do
+  config.before(:each, type: :system) do
     driven_by driver
   end
 end

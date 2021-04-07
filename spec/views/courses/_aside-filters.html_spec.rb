@@ -30,6 +30,7 @@ RSpec.describe('courses/_aside-filters', type: :view) do
           current_level: nil,
           current_location: nil,
           current_topic: nil,
+          current_format: [],
           current_certificate: nil,
           applied_filters: %w[bla]
         )
@@ -102,6 +103,7 @@ RSpec.describe('courses/_aside-filters', type: :view) do
           current_level: nil,
           current_location: nil,
           current_topic: nil,
+          current_format: [],
           current_certificate: 'cs-accelerator',
           applied_filters: %w[bla cs-accelerator]
         )
