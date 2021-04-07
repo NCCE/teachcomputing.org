@@ -74,7 +74,7 @@
   .ncce-checkboxes__label::before {
     border: 2px solid #0B0C0C;
     border-radius: $border-radius;
-    background-color: white;
+    background-color: $white;
   }
 
   .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before,

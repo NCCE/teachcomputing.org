@@ -9,7 +9,6 @@ export default class extends ApplicationController {
     'loadingBar',
     'courseList',
     'clearFilters',
-    'pageMask',
     'resultsCount',
     'resultsContainer',
     'hubMessage',
@@ -33,10 +32,6 @@ export default class extends ApplicationController {
     this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
-  }
-
-  connect() {
-    this.addPageMaskOnMobileOrTablet();
   }
 
   filter(ev) {
@@ -68,6 +63,7 @@ export default class extends ApplicationController {
       currentTarget.blur();
       this.filterCount--;
     } else {
+      Object.values(currentTarget.options).forEach(option => option.removeAttribute('selected'));
       currentTarget.options[selectedIndex].setAttribute('selected', true);
       currentTarget.classList.add('filter--active');
       this.filterCount++;
@@ -134,12 +130,13 @@ export default class extends ApplicationController {
   animateLoadingBar() {
     let dots = 3;
 
+    clearInterval(this.intervalId);
+
     this.intervalId = setInterval(() => {
       if (dots < 3) {
         this.loadingBarTarget.innerText += '.';
         dots++;
       } else {
-        clearInterval(this.intervalId);
         this.loadingBarTarget.innerText = 'Loading'
         dots = 0;
       }
@@ -171,7 +168,6 @@ export default class extends ApplicationController {
     menuClasses.replace(this.menuClass, `${this.menuClass}${this.openModifier}`);
     this.filterFormTarget.classList.remove(this.hiddenClass);
     this.scrollToTop();
-    this.addPageMask();
   }
 
   closeFilterForm() {
@@ -179,31 +175,6 @@ export default class extends ApplicationController {
     menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
     this.filterFormTarget.classList.add(this.hiddenClass);
     this.scrollToTop();
-    this.removePageMask();
-  }
-
-  addPageMaskOnMobileOrTablet() {
-    if (!this.isDesktop() && this.isMenuOpen()) {
-      this.addPageMask();
-    }
-  }
-
-  removePageMaskOnDesktop() {
-    if (this.isDesktop()) {
-      this.removePageMask();
-    }
-  }
-
-  addPageMask() {
-    if (this.pageMaskTarget.classList.contains(this.hiddenClass)) {
-      this.pageMaskTarget.classList.remove(this.hiddenClass);
-    }
-  }
-
-  removePageMask() {
-    if (!this.pageMaskTarget.classList.contains(this.hiddenClass)) {
-      this.pageMaskTarget.classList.add(this.hiddenClass);
-    }
   }
 
   openFilterFormOnDesktop() {

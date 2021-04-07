@@ -413,26 +413,26 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by online' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Online', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'online', topic: '' } }
 
       it 'returns online string' do
-        expect(course_filter.applied_filters).to match_array(['Online'])
+        expect(course_filter.applied_filters).to match_array(['online'])
       end
     end
 
     context 'when filtering by face to face' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Face to face', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'face_to_face', topic: '' } }
 
       it 'returns face to face string' do
-        expect(course_filter.applied_filters).to match_array(['Face to face'])
+        expect(course_filter.applied_filters).to match_array(['face_to_face'])
       end
     end
 
     context 'when filtering by remote' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Remote', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'remote', topic: '' } }
 
       it 'returns remote string' do
-        expect(course_filter.applied_filters).to match_array(['Remote'])
+        expect(course_filter.applied_filters).to match_array(['remote'])
       end
     end
 
@@ -454,7 +454,7 @@ RSpec.describe Achiever::CourseFilter do
 
     context 'when filtering by all options' do
       let(:filter_params) do
-        { certificate: 'secondary-certificate', location: 'Remote', level: 'Key stage 2', topic: 'Algorithms',
+        { certificate: 'secondary-certificate', course_format: %w[remote face_to_face], level: 'Key stage 2', topic: 'Algorithms',
           hub_id: 'hubid' }
       end
 
@@ -466,7 +466,7 @@ RSpec.describe Achiever::CourseFilter do
               'secondary-certificate',
               'Algorithms',
               'Key stage 2',
-              'Remote'
+              '[&quot;remote&quot;, &quot;face_to_face&quot;]'
             ]
           )
       end

@@ -20,14 +20,10 @@ RSpec.describe('Courses page', type: :system) do
     expect(page).to have_css('.ncce-courses__count', text: 'Showing 79 results')
   end
 
-  # it 'shows the loadiing bar immediately after adding a filter' do
-  #   select('Key stage 1', from: :level)
-  #   expect(page).to have_text('Loading')
-  # end
-
   describe 'selecting a filter' do
     before do
       select('Key stage 1', from: :level)
+      sleep(1)
     end
 
     it 'shows the expected number of results when a filter is applied' do
@@ -42,16 +38,4 @@ RSpec.describe('Courses page', type: :system) do
       expect(page).to have_css('.filter--active', text: 'Key stage 1')
     end
   end
-
-  # it 'header is accessible' do
-  #   expect(page).to be_accessible.within('header')
-  # end
-
-  # it 'page is accessible' do
-  #   expect(page).to be_accessible.within('#main-content').excluding('.axe-skip-a11y-test')
-  # end
-
-  # it 'footer is accessible' do
-  #   expect(page).to be_accessible.within('footer')
-  # end
 end

@@ -197,24 +197,26 @@
 }
 
 /* Style on this page only until we're ready to change sitewide (08/03/21) */
-.ncce-select--filters {
-  border-radius: $border-radius;
-  border-color: #0B0C0C;
-}
+.ncce-aside--filters {
+  .ncce-select--filters {
+    border-radius: $border-radius;
+    border-color: #0B0C0C;
+  }
 
-.ncce-select--filters:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
+  .ncce-select--filters:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
 
-.ncce-select--filters:focus, .filter--active {
-  box-shadow: none;
-  outline: none;
-  border-color: #007fa2;
-  background-color: #E3F6FC;
-}
+  .ncce-select--filters:focus, .filter--active {
+    box-shadow: none;
+    outline: none;
+    border-color: #007fa2;
+    background-color: #E3F6FC;
+  }
 
-.ncce-select--filters.filter--active {
-  font-weight: 700;
+  .ncce-select--filters.filter--active {
+    font-weight: 700;
+  }
 }
 
 .ncce-courses__view-results {

@@ -1,5 +1,5 @@
 <% unless @course_filter.nil? %>
-<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop resize@window->course-filter#removePageMaskOnDesktop resize@window->course-filter#addPageMaskOnMobileOrTablet resize@window->course-filter#scrollToTop" data-course-filter-target="filterFormHeader">
+<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop resize@window->course-filter#scrollToTop" data-course-filter-target="filterFormHeader">
   <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
   <button type="button" class="ncce-courses__filter-form-toggle--open" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
     <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %> applied</span>

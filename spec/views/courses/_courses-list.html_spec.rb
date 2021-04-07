@@ -39,8 +39,10 @@ RSpec.describe('courses/_courses-list', type: :view) do
         course_formats: %i[face_to_face online remote],
         course_locations: ['Cambridge'],
         current_hub: nil,
-        current_level: nil, current_location: nil,
-        current_topic: nil, current_certificate: nil,
+        current_level: nil,
+        current_location: nil,
+        current_topic: nil,
+        current_certificate: nil,
         applied_filters: nil
       )
 
@@ -104,8 +106,10 @@ RSpec.describe('courses/_courses-list', type: :view) do
           course_formats: %i[face_to_face online remote],
           course_locations: ['Cambridge'],
           current_hub: nil,
-          current_level: nil, current_location: nil,
-          current_topic: nil, current_certificate: nil,
+          current_level: nil,
+          current_location: nil,
+          current_topic: nil,
+          current_certificate: nil,
           applied_filters: nil
         )
         @filter_params = {}
@@ -133,8 +137,10 @@ RSpec.describe('courses/_courses-list', type: :view) do
           course_formats: %i[face_to_face online remote],
           course_locations: ['Cambridge'],
           current_hub: 'bla',
-          current_level: nil, current_location: nil,
-          current_topic: nil, current_certificate: nil,
+          current_level: nil,
+          current_location: nil,
+          current_topic: nil,
+          current_certificate: nil,
           applied_filters: ['bla']
         )
         @filter_params = { hub_id: 'bla' }
