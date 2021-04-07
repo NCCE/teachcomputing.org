@@ -2,9 +2,12 @@
   background-image: url('../images/icon-pound.svg');
   background-position: 0 1rem;
   background-repeat: no-repeat;
-  background-size: 1.2rem;
+  background-size: 1rem;
   padding-top: 0.5rem;
   @include bottom-margined;
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.2rem;
+  }
 }
 
 .ncce-bursary-aside__text {
@@ -18,9 +21,5 @@
 
 .ncce-bursary-aside__heading {
   padding-left: 2rem;
-  padding-top: 12px;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 10px;
-  }
+  padding-top: 10px;
 }
