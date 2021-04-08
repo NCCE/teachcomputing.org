@@ -1,0 +1,29 @@
+<% meta_tag :title, @landing_page.meta[:title] %>
+<% meta_tag :description, @landing_page.meta[:description] %>
+<% meta_tag :url, request.original_url %>
+<% meta_tag :image, asset_pack_path(@landing_page.meta[:image]) %>
+<% meta_tag :image_alt, @landing_page.meta[:image_alt] %>
+<div class="<%= @landing_page.hero_class %>">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l"><%= @landing_page.heading %></h1>
+          <p class="govuk-body-l">
+            <%= @landing_page.hero_text %>
+          </p>
+        </div>
+        <div class="text-photo-hero__block--photo">
+          <%= image_pack_tag @landing_page.hero_image, alt: '' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: 'landing_pages/dedicated_pages' %>
+<%= render partial: 'landing_pages/certificates' %>
+<%= render partial: 'landing_pages/testimonials' %>
+<%= render partial: 'landing_pages/courses' %>
+<%= render partial: 'landing_pages/resources' %>
+<%= render partial: 'landing_pages/isaac' if @landing_page.secondary? %>
+<%= render partial: 'landing_pages/support' %>

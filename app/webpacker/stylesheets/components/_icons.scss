@@ -46,10 +46,14 @@
 }
 
 .icon-resources {
-  @include icon('../images/resources-black.svg', left top, 30px, 30px, 5px);
+  @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
   min-height: 30px;
 }
 
 .icon-remote {
   @include icon('../images/icon-remote.svg');
+}
+
+.icon-star {
+  @include icon('../images/icon-star.svg');
 }

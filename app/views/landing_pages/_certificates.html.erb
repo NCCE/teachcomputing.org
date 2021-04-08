@@ -1,0 +1,84 @@
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Certificates</h2>
+          <p class="govuk-body-l">
+            <%= @landing_page.certificates_text %>
+          </p>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <% if @landing_page.secondary? %>
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
+                <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
+                  Subject knowledge certificate
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.cs_accelerator %>
+              </div>
+              <p class="govuk-body card__text card__text-landing-page">
+                Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <%= link_to @landing_page.csa_link_text, cs_accelerator_path,
+                  class: 'button govuk-button lp-certs--button',
+                  data: { event_action: 'click',
+                          event_category: @landing_page.event_tracking_category,
+                          event_label: @landing_page.csa_tracking_event }
+                %>
+              </p>
+            </div>
+
+            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
+                <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
+                  Teach secondary computing
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.secondary_certificate %>
+              </div>
+
+              <p class="govuk-body card__text">
+                Following on from the Computer Science Accelerator, gain the confidence to take your teaching practice to the next level.
+              </p>
+
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <%= link_to @landing_page.secondary_cert_link_text, secondary_path,
+                    class: 'button govuk-button lp-certs--button',
+                    data: { event_action: 'click',
+                            event_category: @landing_page.event_tracking_category,
+                            event_label: @landing_page.secondary_tracking_event }
+                  %>
+                </p>
+            </div>
+          <% else %>
+            <div class="card card--primary-certificate card--bottom-glyph card--landing-page lp-certs--card">
+              <div class="lp-certs--card-header">
+                <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
+                  Teach primary computing
+                </h2>
+                <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.primary_certificate %>
+              </div>
+              <p class="govuk-body card__text card__text-landing-page">
+                Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <%= link_to @landing_page.primary_cert_link_text, primary_path,
+                  class: 'button govuk-button lp-certs--button',
+                  data: { event_action: 'click',
+                          event_category: @landing_page.event_tracking_category,
+                          event_label: @landing_page.primary_tracking_event }
+                %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <%= render 'landing_pages/bursary-aside' %>
+          <%= render 'landing_pages/champions-aside' if @landing_page.secondary? %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
