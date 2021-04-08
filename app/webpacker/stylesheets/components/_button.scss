@@ -60,9 +60,12 @@
 }
 
 .button--small {
-  font-size: 1rem;
+  font-size: 14px;
   margin-bottom: 0;
   padding: 0.3125rem 0.875rem;
+  @include govuk-media-query($from: tablet) {
+    font-size: 16px;
+  }
 }
 
 .button--medium {

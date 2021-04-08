@@ -1,0 +1,84 @@
+.lp-courses {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: tablet) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @include govuk-media-query($from: desktop) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.lp-courses--intro {
+  margin-bottom: 32px;
+}
+
+.lp-courses--course {
+  margin-bottom: 36px;
+  position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.lp-courses--image-wrapper {
+  margin-bottom: 12px;
+  max-height: 175px;
+  overflow: hidden;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+    max-height: unset;
+  }
+}
+
+.lp-courses--image {
+  width: 100%;
+}
+
+.lp-courses--featured {
+  background: $grey-dark-x;
+  color: $white;
+  font-weight: bold;
+  left: 0;
+  padding: 7px 12px 7px 8px;
+  position: absolute;
+  top: 0;
+}
+
+.lp-courses--details {
+  background: $concrete;
+  line-height: 20px;
+  margin-bottom: 3px;
+  padding: 10px;
+}
+
+.lp-courses--type,
+.lp-courses--duration {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.lp-courses--duration {
+  background-size: 16px 16px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
+}
+
+.lp-courses--time {
+  background-size: 16px 16px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-left: 20px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
+}

@@ -20,7 +20,7 @@ $hero-terracotta: #e67d6e;
 $jaffa: #f47c31;
 $karry: #ffe7d2;
 $lavender-light: #e6e5f3;
-$lilly-white: #EBEBEB;
+$lilly-white: #ebebeb;
 $mid-gray: #5c5d6d;
 $pink: #de01a5;
 $purple-dark: #593e8e;
@@ -28,6 +28,7 @@ $purple: #7b1ec0;
 $scarpa-flow: #575868;
 $tapestry: #a94e91;
 $white: #ffffff;
+$isaac: #feb44c;
 
 $govuk-text-colour: $grey-dark-x;
 $plain-hero-color: $concrete;
@@ -58,6 +59,10 @@ $primary-cert-color: $jaffa;
   background-color: $tapestry;
 }
 
+.isaac-bg {
+  background-color: $isaac;
+}
+
 .tapestry-fg {
   color: $tapestry;
 }
@@ -71,7 +76,7 @@ $primary-cert-color: $jaffa;
   color: $white;
   font-weight: bold;
   padding: 2px 12px;
-	width: fit-content;
+  width: fit-content;
 }
 
 @mixin status_block_light() {
