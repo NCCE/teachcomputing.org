@@ -66,4 +66,5 @@ const initialise = () => {
 }
 
 window.addEventListener('DOMContentLoaded', initialise);
+window.addEventListener('ajax:success', initialise);
 window.addEventListener('turbolinks:render', initialise);

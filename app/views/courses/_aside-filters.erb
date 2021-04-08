@@ -15,7 +15,7 @@
         options_for_select(@course_filter.age_groups.keys, @course_filter.current_level),
         {
           include_blank: 'Any level',
-          class: "govuk-select ncce-select ncce-select--filters #{@course_filter.current_level ? 'filter--active' : ''}",
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_level }],
           'aria-label': 'Filter by level',
           data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
         }
@@ -25,7 +25,7 @@
         options_for_select(@course_filter.course_tags.keys, @course_filter.current_topic),
         {
           include_blank: 'Any topic',
-          class: "govuk-select ncce-select ncce-select--filters #{@course_filter.current_topic ? 'filter--active' : ''}",
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_topic }],
           'aria-label': 'Filter by topic',
           data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
         }
@@ -35,7 +35,7 @@
         options_for_select(@course_filter.certificates, @course_filter.current_certificate),
         {
           include_blank: 'Any certificate',
-          class: "govuk-select ncce-select ncce-select--filters #{@course_filter.current_certificate ? 'filter--active' : ''}",
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_certificate }],
           'aria-label': 'Filter by certificate',
           data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
         }
@@ -45,7 +45,7 @@
         options_for_select(@course_filter.course_locations, @course_filter.current_location),
           {
             include_blank: 'Any location',
-            class: "govuk-select ncce-select ncce-select--filters #{@course_filter.current_location ? 'filter--active' : ''}",
+            class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_location }],
             'aria-label': 'Filter by location',
             data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
           }

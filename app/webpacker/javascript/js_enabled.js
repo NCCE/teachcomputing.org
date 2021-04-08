@@ -3,4 +3,5 @@ const setJsEnabled = () => {
 };
 
 window.addEventListener('DOMContentLoaded', setJsEnabled);
+window.addEventListener('ajax:success', setJsEnabled);
 window.addEventListener('turbolinks:render', setJsEnabled);
