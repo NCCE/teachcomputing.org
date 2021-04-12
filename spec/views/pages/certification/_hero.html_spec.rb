@@ -15,7 +15,7 @@ RSpec.describe('pages/certification/_hero', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.hero__heading', 'Subject knowledge certificate')
+    expect(rendered).to have_css('.hero__heading', text: 'Subject knowledge certificate')
   end
 
 

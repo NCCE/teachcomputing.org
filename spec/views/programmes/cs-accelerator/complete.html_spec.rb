@@ -20,7 +20,7 @@ RSpec.describe('certificates/cs_accelerator/complete', type: :view) do
   end
 
   it 'has the programme title' do
-    expect(rendered).to have_css('.hero__heading', 'Subject knowledge certificate')
+    expect(rendered).to have_css('.hero__heading', text: 'Subject knowledge certificate')
   end
 
   it 'has the download button' do
