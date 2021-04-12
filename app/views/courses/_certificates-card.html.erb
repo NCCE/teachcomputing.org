@@ -3,7 +3,7 @@
     <p class="govuk-body">This course is part of the <%= programme.title %> certificate.</p>
     <div class="card card--cs-accelerator card--bottom-glyph">
       <%= render 'pages/certification/programme-enrolment-status', programme: programme %>
-      <h2 class="govuk-heading-m card__heading">Subject knowledge certificate</h2>
+      <h2 class="govuk-heading-m card__heading"><%= card_heading %>></h2>
       <% if programme.primary_certificate? %>
         <p class="govuk-body card__text">Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.</p>
       <% elsif programme.cs_accelerator? %>

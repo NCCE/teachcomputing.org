@@ -42,4 +42,8 @@ module ApplicationHelper
     end
     return nil
   end
+
+  def card_heading
+    'Subject knowledge certificate'
+  end 
 end
