@@ -59,6 +59,12 @@ module CoursesHelper
     end
   end
 
+  def occurrence_meta_location(occurrence)
+    return 'Online course' if occurrence.online_cpd
+    return 'Live remote training' if occurrence.remote_delivered_cpd
+    occurrence.address_town
+  end
+
   def online_course_date(start_date)
     date = Date.parse(start_date)
     return "Register now (Starts on #{date.strftime('%-d %B %Y')})" if date.future?
@@ -87,13 +93,13 @@ module CoursesHelper
   end
 
   def course_subtitle_text(course)
-    return 'Online' if course.online_cpd
+    return 'Online course' if course.online_cpd
 
     remote_or_face_to_face(course)
   end
 
   def remote_or_face_to_face(course)
-    return 'Remote' if course.remote_delivered_cpd
+    return 'Live remote training' if course.remote_delivered_cpd
 
     'Face to face'
   end

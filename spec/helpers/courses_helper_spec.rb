@@ -111,6 +111,24 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe('occurrence_meta_location') do
+    it 'returns address_town for offline occurrences' do
+      occurrence = build(:achiever_course_occurrence, address_town: 'Hastings')
+      expect(helper.occurrence_meta_location(occurrence)).to eq('Hastings')
+    end
+
+    it 'returns "Live remote training" for remote occurrences' do
+      remote_occurrence = build(:achiever_course_occurrence, remote_delivered_cpd: true)
+      expect(helper.occurrence_meta_location(remote_occurrence)).to eq('Live remote training')
+    end
+
+    it 'returns icon for online occurrences' do
+      online_occurrence = build(:achiever_course_occurrence, online_cpd: true)
+      expect(helper.occurrence_meta_location(online_occurrence)).to eq('Online course')
+    end
+  end
+
+
   describe('#online_course_date') do
     context 'when the date is past' do
       it 'returns Join Now' do

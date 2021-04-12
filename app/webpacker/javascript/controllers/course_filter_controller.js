@@ -16,7 +16,8 @@ export default class extends ApplicationController {
     'filterFormHeader',
     'filterFormToggle',
     'filterCount',
-    'viewResultsCount'
+    'viewResultsCount',
+    'selectOne'
   ];
   menuClass = '';
   filterCount = 0;
@@ -51,6 +52,13 @@ export default class extends ApplicationController {
   scrollToTop() {
     const scrollTarget = this.hasHubMessageTarget ? this.hubMessageTarget : this.resultsContainerTarget;
     scrollTarget.scrollIntoView(true);
+  }
+
+  scrollToFilters(ev) {
+    ev.preventDefault();
+    let scroll_target = document.getElementById('results-top');
+    scroll_target.scrollIntoView(true);
+    document.activeElement.blur();
   }
 
   toggleActiveSelect(ev) {

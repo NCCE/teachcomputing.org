@@ -36,6 +36,7 @@
 
   &-name {
     font-weight: normal;
+    padding-left: 27px;
   }
 
   &-type, &-name {
@@ -78,7 +79,7 @@
     box-sizing:border-box;
     cursor: pointer;
     display: flex;
-    padding: 0.9rem 1rem;
+    padding: 0.6rem 1rem;
     justify-content: flex-start;
     width: 100%;
     display: flex;
@@ -132,6 +133,10 @@
   display: inline-block;
   font-size: 0.875rem;
   padding: 0;
+  padding-left: 27px;
+  @include govuk-media-query($from: tablet) {
+    padding-left: 0;
+  }
 }
 
 .ncce-courses__meta-location {

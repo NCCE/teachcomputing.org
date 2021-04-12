@@ -42,10 +42,11 @@
 
 .ncce-courses__filters-wrapper {
   /* This is to allow us to re-order the divs */
-  align-self: flex-start;
   order: 2;
 
   @include govuk-media-query($until: desktop) {
     padding: 0;
+    position: sticky;
+    top: 0;
   }
 }
