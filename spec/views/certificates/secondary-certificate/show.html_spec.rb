@@ -20,7 +20,7 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   end
 
   it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: 'Subject knowledge certificate')
+    expect(rendered).to have_css('.hero__heading', text: @programme.title)
   end
 
   it 'has correct list setup' do
