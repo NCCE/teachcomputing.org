@@ -19,7 +19,7 @@ module ProgrammesHelper
     Programme.secondary_certificate.user_is_eligible?(user)
   end
 
-  def card_heading
+  def csa_programme_title
     'Subject knowledge certificate'
   end 
 end
