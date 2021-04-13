@@ -9,8 +9,6 @@
     box-shadow: 0 1.5px 2px -2px #333448;
     margin: 0 0 5px 0;
     padding: 1rem 1.2rem 0;
-    // position: sticky;
-    // top: 0;
   }
 
   & button {
@@ -49,7 +47,8 @@
   padding: 0;
 
   @media (max-height: 420px) and (max-width: 768px) {
-    height: 82vh;
+    height: 81vh;
+    padding-bottom: 24px;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -79,12 +78,12 @@
 .ncce-courses__filter-form-toggle,
 .ncce-courses__filter-form-toggle--open {
   @extend .govuk-header__menu-button;
-  width: 100%;
-  position: inherit;
-  margin: 0;
-  display: block;
-  text-align: right;
   color: #333448;
+  display: block;
+  margin: 0;
+  position: inherit;
+  text-align: right;
+  width: 100%;
 
   &:focus, &:active, &:hover {
     outline: none;
@@ -248,7 +247,9 @@
 }
 
 .ncce-aside--filters-header {
-  padding-bottom: 1rem;
+  @media (max-height: 420px) and (max-width: 768px) {
+    height: 10vh
+  }
 }
 
 .ncce-courses__view-results {

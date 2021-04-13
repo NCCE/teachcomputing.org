@@ -16,8 +16,7 @@ export default class extends ApplicationController {
     'filterFormHeader',
     'filterFormToggle',
     'filterCount',
-    'viewResultsCount',
-    'selectOne'
+    'viewResultsCount'
   ];
   menuClass = '';
   filterCount = 0;
@@ -33,6 +32,8 @@ export default class extends ApplicationController {
     this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
+
+    this.openFilterFormOnDesktop();
   }
 
   filter(ev) {
