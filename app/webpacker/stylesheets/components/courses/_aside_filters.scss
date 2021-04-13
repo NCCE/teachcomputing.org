@@ -247,8 +247,14 @@
 }
 
 .ncce-aside--filters-header {
+  height: 5vh;
+
   @media (max-height: 420px) and (max-width: 768px) {
     height: 10vh
+  }
+
+  @include govuk-media-query($from: desktop) {
+    height: auto;
   }
 }
 
