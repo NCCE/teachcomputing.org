@@ -5,11 +5,14 @@ module Credly
     def self.run(resource_path, body = {})
       connection = Credly::Connection.new.connect
 
-      # request = Rails.cache.fetch(resource_path, expires_in: CACHE_EXPIRY) do
-        request = connection.get(resource_path)
-      # end
+      if body.empty?
+        request = Rails.cache.fetch(resource_path, expires_in: CACHE_EXPIRY) do
+          request = connection.get(resource_path)
+        end
+      else
+        request = connection.post(resource_path, body)
+      end
 
-      byebug
       JSON.parse(request.body, symbolize_names: true)
     end
   end
