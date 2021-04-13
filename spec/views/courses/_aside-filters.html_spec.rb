@@ -52,8 +52,8 @@ RSpec.describe('courses/_aside-filters', type: :view) do
         expect(rendered).to have_css('.ncce-courses__clear-filters.hidden')
       end
 
-      it 'renders the filter aside open by default' do
-        expect(rendered).to have_css('.ncce-courses__filter-form-toggle--open')
+      it 'renders the filter aside closed by default' do
+        expect(rendered).to have_css('.ncce-courses__filter-form-toggle')
       end
 
       it 'renders location select' do
