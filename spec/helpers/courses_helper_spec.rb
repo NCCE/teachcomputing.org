@@ -262,13 +262,13 @@ describe CoursesHelper, type: :helper do
   describe 'course_subtitle_text' do
     it 'returns remote correctly' do
       course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
-      expect(helper.course_subtitle_text(course)).to eq('Remote')
+      expect(helper.course_subtitle_text(course)).to eq('Live remote training')
     end
 
     it 'returns online correctly' do
       course = instance_double('course', online_cpd: true, remote_delivered_cpd:
                               false)
-      expect(helper.course_subtitle_text(course)).to eq('Online')
+      expect(helper.course_subtitle_text(course)).to eq('Online course')
     end
 
     it 'returns face to face correctly' do
@@ -281,7 +281,7 @@ describe CoursesHelper, type: :helper do
   describe 'remote_or_face_to_face' do
     it 'returns remote correctly' do
       course = instance_double('course', remote_delivered_cpd: true)
-      expect(helper.remote_or_face_to_face(course)).to eq('Remote')
+      expect(helper.remote_or_face_to_face(course)).to eq('Live remote training')
     end
 
     it 'returns face to face correctly' do
