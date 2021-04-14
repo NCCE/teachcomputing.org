@@ -28,6 +28,7 @@ end
 
 selenium_driver = :local_chrome_headless
 Capybara.server = :puma, { Silent: true }
+Capybara.default_max_wait_time = 10
 Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
