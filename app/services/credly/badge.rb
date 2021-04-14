@@ -12,6 +12,9 @@ module Credly
       user = User.find(user_id)
       body = {
         'recipient_email' => user.email,
+        'issued_to_first_name' => user.first_name,
+        'issued_to_last_name' => user.last_name,
+        "issued_at" => DateTime.now.strftime('%Y-%m-%d %H:%M:%S %z')
         'badge_template_id' => badge_template_id,
         'issuer_earner_id' => user.id,
         'suppress_badge_notification_email' => false
