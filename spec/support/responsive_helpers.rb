@@ -4,11 +4,11 @@ module ResponsiveHelpers
   end
 
   def resize_window_to_tablet
-    resize_window_by([960, 640])
+    resize_window_by([960, 641])
   end
 
-  def resize_window_default
-    resize_window_by([1024, 768])
+  def resize_window_to_desktop
+    resize_window_by([1024, 769])
   end
 
   private
