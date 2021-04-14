@@ -10,7 +10,6 @@ RSpec.describe('Courses page', type: :system) do
     stub_age_groups
     stub_course_templates
     visit courses_path
-    sleep(1)
   end
 
   context 'when using a desktop', js: true do
