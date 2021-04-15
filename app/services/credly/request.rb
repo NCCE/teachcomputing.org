@@ -6,14 +6,13 @@ module Credly
       connection = Credly::Connection.new.connect
 
       if body.empty?
-        request = Rails.cache.fetch(resource_path, expires_in: CACHE_EXPIRY) do
-          request = connection.get(resource_path)
+        response = Rails.cache.fetch(resource_path, expires_in: CACHE_EXPIRY) do
+          response = connection.get(resource_path)
         end
       else
-        request = connection.post(resource_path, body)
+        response = connection.post(resource_path, body, 'Content-Type' => 'application/json')
       end
-
-      JSON.parse(request.body, symbolize_names: true)
+      JSON.parse(response.body, symbolize_names: true)
     end
   end
 end
