@@ -12,11 +12,12 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
+
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'rspec/json_expectations'
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -25,9 +26,10 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-driver = :selenium_chrome_headless
+selenium_driver = :local_chrome_headless
 Capybara.server = :puma, { Silent: true }
-Capybara.register_driver driver do |app|
+Capybara.default_max_wait_time = 10
+Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument('--headless')
@@ -39,7 +41,7 @@ Capybara.register_driver driver do |app|
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
-Capybara.javascript_driver = driver
+Capybara.javascript_driver = selenium_driver
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -58,6 +60,7 @@ RSpec.configure do |config|
   config.include CurriculumStubs
   config.include GhostStubs
   config.include CachingHelpers
+  config.include ResponsiveHelpers
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
   config.include FeatureFlagHelper
@@ -67,6 +70,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system) do
-    driven_by driver
+    driven_by selenium_driver
   end
 end

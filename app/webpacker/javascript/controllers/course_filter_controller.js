@@ -201,7 +201,7 @@ export default class extends ApplicationController {
   }
 
   isDesktop() {
-    return window.matchMedia(`(min-width: 769px)`).matches;
+    return window.matchMedia(`(min-width: 770px)`).matches;
   }
 
   isMenuOpen() {
