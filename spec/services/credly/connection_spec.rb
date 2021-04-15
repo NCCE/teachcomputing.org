@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Credly::Connection do
-  describe '#api' do
+  describe '#connect' do
     it 'is a Faraday::Connection class' do
-      expect(described_class.api.class).to eq Faraday::Connection
+      expect(described_class.connect.class).to eq Faraday::Connection
     end
   end
 end
