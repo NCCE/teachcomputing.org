@@ -12,12 +12,12 @@ RSpec.describe('Courses page', type: :system) do
     stub_subjects
     stub_age_groups
     stub_course_templates
-    visit courses_path
   end
 
   context 'when using a desktop', js: true do
     before do
       resize_window_to_desktop
+      visit courses_path
     end
 
     describe 'with no filters applied' do
@@ -71,57 +71,58 @@ RSpec.describe('Courses page', type: :system) do
   context 'when using a mobile device' do
     before do
       resize_window_to_mobile
+      visit courses_path
     end
 
     describe 'with no filters applied' do
-      # it 'the menu is collapsed by default' do
-      #   expect(page).not_to have_css('.ncce-courses__filter-form-toggle--open')
-      # end
+      it 'the menu is collapsed by default' do
+        expect(page).not_to have_css('.ncce-courses__filter-form-toggle--open')
+      end
 
-      # it 'shows the menu when clicked' do
-      #   click_button(class: 'ncce-courses__filter-form-toggle')
-      #   expect(page).to have_css('.ncce-courses__filter-form-toggle--open')
-      # end
+      it 'shows the menu when clicked' do
+        click_button(class: 'ncce-courses__filter-form-toggle')
+        expect(page).to have_css('.ncce-courses__filter-form-toggle--open')
+      end
 
-      # it 'closes the menu when clicked twice' do
-      #   click_button(class: 'ncce-courses__filter-form-toggle')
-      #   expect(page).to have_css('.ncce-courses__filter-form-toggle--open')
-      #   click_button(class: 'ncce-courses__filter-form-toggle--open')
-      #   expect(page).not_to have_css('.ncce-courses__filter-form-toggle--open')
-      # end
+      it 'closes the menu when clicked twice' do
+        click_button(class: 'ncce-courses__filter-form-toggle')
+        expect(page).to have_css('.ncce-courses__filter-form-toggle--open')
+        click_button(class: 'ncce-courses__filter-form-toggle--open')
+        expect(page).not_to have_css('.ncce-courses__filter-form-toggle--open')
+      end
 
       it 'shows the expected number of results' do
         expect(page).to have_css('.ncce-courses__count', text: 'Showing 79 results')
       end
     end
 
-    # describe 'with filters applied' do
-    #   before do
-    #     click_button(class: 'ncce-courses__filter-form-toggle')
-    #     check('course_format_1', visible: false)
-    #   end
+    describe 'with filters applied' do
+      before do
+        click_button(class: 'ncce-courses__filter-form-toggle')
+        check('course_format_1', visible: false)
+      end
 
-    #   it 'shows the expected number of results' do
-    #     expect(page).to have_css('.ncce-courses__count', text: 'Showing 25 results')
-    #   end
+      it 'shows the expected number of results' do
+        expect(page).to have_css('.ncce-courses__count', text: 'Showing 25 results')
+      end
 
-    #   it 'shows the expected number of filters' do
-    #     expect(page).to have_css('.ncce-courses__filter-form-toggle', text: '1 filter applied')
-    #   end
+      it 'shows the expected number of filters' do
+        expect(page).to have_css('.ncce-courses__filter-form-toggle-applied', text: '1 filter applied')
+      end
 
-    #   it 'increases the filter count when another filter is clicked' do
-    #     check('course_format_2', visible: false)
-    #     expect(page).to have_css('.ncce-courses__filter-form-toggle', text: '2 filters applied')
-    #   end
+      it 'increases the filter count when another filter is clicked' do
+        check('course_format_2', visible: false)
+        expect(page).to have_css('.ncce-courses__filter-form-toggle-applied', text: '2 filters applied')
+      end
 
-    #   it 'shows the clear all filters button' do
-    #     expect(page).to have_link('Clear all filters', href: courses_path(anchor: 'results-top'))
-    #   end
+      it 'shows the clear all filters button' do
+        expect(page).to have_link('Clear all filters', href: courses_path(anchor: 'results-top'))
+      end
 
-    #   it 'shows the expected number of filters when the menu is closed' do
-    #     click_button(class: 'ncce-courses__filter-form-toggle--open')
-    #     expect(page).to have_css('.ncce-courses__filter-form-toggle', text: '1 filter applied')
-    #   end
-    # end
+      it 'shows the expected number of filters when the menu is closed' do
+        click_button(class: 'ncce-courses__filter-form-toggle--open')
+        expect(page).to have_css('.ncce-courses__filter-form-toggle-applied', text: '1 filter applied')
+      end
+    end
   end
 end
