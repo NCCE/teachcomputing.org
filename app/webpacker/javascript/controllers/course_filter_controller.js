@@ -176,14 +176,12 @@ export default class extends ApplicationController {
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(this.menuClass, `${this.menuClass}${this.openModifier}`);
     this.filterFormTarget.classList.remove(this.hiddenClass);
-    this.scrollToTop();
   }
 
   closeFilterForm() {
     const menuClasses = this.filterFormToggleTarget.classList;
     menuClasses.replace(`${this.menuClass}${this.openModifier}`, this.menuClass);
     this.filterFormTarget.classList.add(this.hiddenClass);
-    this.scrollToTop();
   }
 
   openFilterFormOnDesktop() {
@@ -198,6 +196,7 @@ export default class extends ApplicationController {
     } else {
       this.openFilterForm();
     }
+    this.scrollToTop();
   }
 
   isDesktop() {
