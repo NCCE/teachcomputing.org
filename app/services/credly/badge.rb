@@ -14,7 +14,7 @@ module Credly
         'recipient_email' => user.email,
         'issued_to_first_name' => user.first_name,
         'issued_to_last_name' => user.last_name,
-        'badge_template_id' => "00cd7d3b-baca-442b-bce5-f20666ed591b",
+        'badge_template_id' => template_id,
         'issued_at' => DateTime.now.strftime('%Y-%m-%d %H:%M:%S %z'),
         'issuer_earner_id' => user.id
       }.to_json

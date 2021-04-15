@@ -5,7 +5,7 @@ module Credly
       @url = 'https://api.credly.com/v1/'
     end
 
-    def connect
+    def self.connect
       Faraday.new(url: @url) do |conn|
         conn.basic_auth(@api_token, '')
       end

@@ -3,7 +3,7 @@ module Credly
 
   class Request
     def self.run(resource_path, body = {})
-      connection = Credly::Connection.new.connect
+      connection = Credly::Connection.connect
 
       if body.empty?
         response = Rails.cache.fetch(resource_path, expires_in: CACHE_EXPIRY) do
