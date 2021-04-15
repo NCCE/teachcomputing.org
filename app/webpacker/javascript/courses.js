@@ -39,27 +39,6 @@ function initialiseSections(className) {
   })
 }
 
-function initialiseStickyFilterBar() {
-  const className = 'ncce-courses__filter-container'
-  const filterContainer = document.querySelector('.' + className)
-  let filterTop = filterContainer.offsetTop
-  let sticky = false
-
-  document.onscroll = () => {
-    const top = e.target.scrollingElement.scrollTop
-    if (!sticky) {
-      filterTop = filterContainer.offsetTop
-      if (top > filterTop) {
-        filterContainer.classList.add(className + '--sticky')
-        sticky = true
-      }
-    } else if (top < filterTop) {
-      filterContainer.classList.remove(className + '--sticky')
-      sticky = false
-    }
-  }
-}
-
 const initialise = () => {
   initialiseSections('ncce-courses__locations');
   initialiseSections('ncce-courses__filter-mobile-heading');
