@@ -105,7 +105,7 @@
       "issuer_earner_id": "some long guid from dynamics 789",
       "locale": "en",
       "public": true,
-      "recipient_email": "damien@raspberrypi.org",
+      "recipient_email": "web@raspberrypi.org",
       "replacement_badge_id": null,
       "replaces_badge_id": null,
       "revocation_reason": null,
