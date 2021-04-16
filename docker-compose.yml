@@ -6,7 +6,7 @@ services:
     networks:
       default:
         aliases:
-          - curriculum.rpfdev.com
+          - curriculum.teachcomputing.rpfdev.com
   db:
     image: postgres
     volumes:
