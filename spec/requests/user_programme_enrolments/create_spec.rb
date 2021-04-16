@@ -30,7 +30,7 @@ RSpec.describe UserProgrammeEnrolmentsController do
       it 'displays flash message' do
         enrol
         expect(flash[:notice]).to be_present
-        expect(flash[:notice]).to match(/Congratulations, you have enrolled on #{programme.title}/)
+        expect(flash[:notice]).to match(/Congratulations, you have enrolled on our #{programme.title}/)
       end
 
       context 'when user has unenrolled from certificate after auto enrolment' do
@@ -64,7 +64,7 @@ RSpec.describe UserProgrammeEnrolmentsController do
         it 'displays flash message' do
           enrol
           expect(flash[:notice]).to be_present
-          expect(flash[:notice]).to match(/Congratulations, you have enrolled on #{programme.title}/)
+          expect(flash[:notice]).to match(/Congratulations, you have enrolled on our #{programme.title}/)
         end
       end
     end
