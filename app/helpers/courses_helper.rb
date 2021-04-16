@@ -65,7 +65,7 @@ module CoursesHelper
 
     return :not_enrolled unless achievement
 
-    achievement.complete? ? :complete : :enrolled
+    achievement.current_state.to_sym
   end
 
   def other_courses_on_programme(courses, course, programme, how_many = 3)
