@@ -267,7 +267,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -294,7 +294,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0212)
-    mimemagic (0.3.5)
+    mimemagic (0.3.9)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
@@ -498,8 +500,16 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
-    sentry-raven (3.1.1)
+    sentry-rails (4.3.2)
+      rails (>= 5.0)
+      sentry-ruby-core (~> 4.3.0)
+    sentry-ruby (4.3.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
+      sentry-ruby-core (= 4.3.0)
+    sentry-ruby-core (4.3.0)
+      concurrent-ruby
+      faraday
     shellany (0.0.1)
     shoulda-callback-matchers (1.1.4)
       activesupport (>= 3)
@@ -626,10 +636,11 @@ DEPENDENCIES
   ims-lti (= 1.2.4)
   interception
   jwt (~> 2.1.0)
-  kramdown
+  kramdown (>= 2.3.1)
   listen (>= 3.0.5, < 3.2)
   lograge
   memcachier
+  mimemagic (~> 0.3.7)
   nokogiri (~> 1.11.0)
   oauth2 (~> 1.4.4)
   omniauth (~> 1.9.1)
@@ -660,7 +671,8 @@ DEPENDENCIES
   ruby-debug-ide
   ruby_jard
   selenium-webdriver (~> 3.142.7)
-  sentry-raven (~> 3.0)
+  sentry-rails
+  sentry-ruby
   shoulda-callback-matchers
   shoulda-matchers (~> 3.1)
   sidekiq (~> 5.2.5)

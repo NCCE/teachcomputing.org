@@ -1,0 +1,31 @@
+.dedicated-pages {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  margin-top: 12px;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+}
+
+.dedicated-pages--intro {
+  margin-bottom: 8px;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.dedicated-pages--button {
+  margin-bottom: 8px;
+  padding: 5px 14px;
+  width: auto;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 14px;
+    margin-left: 20px;
+    padding: 8px 12px;
+  }
+}

@@ -1,16 +1,16 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
 		<div class="curriculum__tiles">
-      <% key_stage.curriculum_maps.each do |map| %>
-        <div class="curriculum__tile">
-          <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to map.name, generate_download_url(map.file), class: 'govuk-link ncce-link' %></h3>
-        </div>
-      <% end %>
-      <% unless key_stage.teacher_guide.nil? %>
-        <div class="curriculum__tile">
-          <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to "#{key_stage.short_title} teacher guide", generate_download_url(key_stage.teacher_guide), class: 'govuk-link ncce-link' %></h3>
-        </div>
-      <% end %>
+        <% unless key_stage.teacher_guide.nil? %>
+          <div class="curriculum__tile">
+            <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to "Teacher guide", generate_download_url(key_stage.teacher_guide), class: 'govuk-link ncce-link' %></h3>
+          </div>
+        <% end %>
+        <% key_stage.curriculum_maps.each do |map| %>
+          <div class="curriculum__tile">
+            <h3 class="govuk-heading-s curriculum__tile--heading"><%= link_to map.name, generate_download_url(map.file), class: 'govuk-link ncce-link' %></h3>
+          </div>
+        <% end %>
 		</div>
 	</div>
 </div>

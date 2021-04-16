@@ -171,16 +171,26 @@ RSpec.describe Activity, type: :model do
     end
   end
 
-  describe 'class methods' do
-    describe '#cs_accelerator_diagnostic_tool' do
-      it 'returns a record if one is found' do
-        activity = create(:activity, :cs_accelerator_diagnostic_tool)
-        expect(Activity.cs_accelerator_diagnostic_tool).to eq activity
-      end
+  describe '.cs_accelerator_diagnostic_tool' do
+    it 'returns a record if one is found' do
+      activity = create(:activity, :cs_accelerator_diagnostic_tool)
+      expect(Activity.cs_accelerator_diagnostic_tool).to eq activity
+    end
 
-      it 'creates a record if one is not found' do
-        expect(Activity.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
-      end
+    it 'creates a record if one is not found' do
+      expect(Activity.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
+    end
+  end
+
+  describe '#online?' do
+    it 'returns true when category is "online"' do
+      activity = build(:activity, category: described_class::ONLINE_CATEGORY)
+      expect(activity.online?).to eq(true)
+    end
+
+    it 'returns false when category is something else' do
+      activity = build(:activity, category: described_class::FACE_TO_FACE_CATEGORY)
+      expect(activity.online?).to eq(false)
     end
   end
 end

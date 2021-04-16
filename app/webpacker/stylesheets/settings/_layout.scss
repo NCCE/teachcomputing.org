@@ -1,21 +1,27 @@
 $logo-block-mobile: 30px;
 $logo-block: 40px;
 
+$v-space: 40px;
+$v-space-large: 54px;
+
+$v-space-mobile: 30px;
+$v-space-large-mobile: 42px;
+
 .govuk-main-wrapper {
-  padding-top: $logo-block-mobile;
   padding-bottom: $logo-block-mobile;
+  padding-top: $logo-block-mobile;
   @include govuk-media-query($from: desktop) {
-    padding-top: $logo-block;
     padding-bottom: $logo-block;
+    padding-top: $logo-block;
   }
 }
 
 .govuk-main-wrapper--xl {
-  padding-top: $logo-block-mobile * 1.5;
   padding-bottom: $logo-block-mobile * 1.5;
+  padding-top: $logo-block-mobile * 1.5;
   @include govuk-media-query($from: desktop) {
-    padding-top: $logo-block * 1.5;
     padding-bottom: $logo-block * 1.5;
+    padding-top: $logo-block * 1.5;
   }
 }
 
@@ -27,8 +33,8 @@ $logo-block: 40px;
 }
 
 .ncce-main-wrapper--intro {
-  padding-top: 50px;
   padding-bottom: 2rem;
+  padding-top: 50px;
 }
 
 @include govuk-media-query($until: tablet) {
@@ -41,4 +47,43 @@ $logo-block: 40px;
   clear: both;
   content: '';
   display: table;
+}
+
+.ncce-centered {
+  text-align: center;
+}
+
+@mixin bottom-margined {
+  margin-bottom: $v-space-mobile;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $v-space;
+  }
+}
+
+@mixin bottom-margined-l {
+  margin-bottom: $v-space-large;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: $v-space-large;
+  }
+}
+
+.bottom-margin {
+  @include bottom-margined;
+}
+
+.bottom-margin-l {
+  @include bottom-margined-l;
+}
+
+.ncce-mobile-full-container {
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: max(30px, calc(15px + env(safe-area-inset-left)));
+    margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
+  }
+
+  @include govuk-media-query($from: desktop) {
+    margin: 0 auto;
+  }
 }

@@ -24,7 +24,7 @@
           <h2 class="govuk-heading-s">Course leaders</h2>
           <%= @course.course_leaders.html_safe %>
         </div>
-        <%= render 'courses/certificates-card' unless @programmes.nil? %>
+        <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render 'courses/aside-section' %>

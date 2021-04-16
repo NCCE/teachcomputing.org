@@ -52,7 +52,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#getting_started_prompt' do
     it 'renders the headers' do
-      expect(getting_started_prompt.subject).to include('Kick-start your CPD with our Computer Science Accelerator programme')
+      expect(getting_started_prompt.subject).to include('Kick-start your CPD and achieve a national qualification')
       expect(getting_started_prompt.to).to eq([user.email])
       expect(getting_started_prompt.from).to eq(['noreply@teachcomputing.org'])
     end
@@ -60,7 +60,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#manual_enrolled_welcome' do
     it 'renders the headers' do
-      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to the Computer Science Accelerator')
+      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to our subject knowledge certificate')
       expect(manual_enrolled_welcome_mail.to).to eq([user.email])
       expect(manual_enrolled_welcome_mail.from).to eq(['noreply@teachcomputing.org'])
     end
@@ -84,7 +84,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#auto_enrolled_welcome' do
     let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
-    let(:mail_subject) { 'Kick-start your CPD with our Computer Science Accelerator programme' }
+    let(:mail_subject) { 'Achieve your subject knowledge certificate with the Computer Science Accelerator' }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(mail_subject)
@@ -146,7 +146,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to teachcomputing' do
         expect(mail.text_part.body)
-          .to match(%r{TeachComputing.org. \(https://teachcomputing.org/\)})
+          .to match(%r{TeachComputing.org \(https://teachcomputing.org/\)})
       end
 
       it 'contains link to handbook' do
@@ -161,17 +161,17 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to bursary' do
         expect(mail.text_part.body)
-          .to match(%r{Check your eligibility https://teachcomputing.org/bursary})
+          .to match(%r{Check your eligibility \(https://teachcomputing.org/bursary\)})
       end
 
       it 'contains mail_to link' do
         expect(mail.text_part.body)
-          .to match(/Contact CSChampionSupport@stem.org.uk/)
+          .to match(/Contact (CSChampionSupport@stem.org.uk)/)
       end
 
       it 'contains opt-out link' do
         expect(mail.text_part.body)
-          .to match(/let us know \(#{unenroll__cs_accelerator_auto_enrolment_url}\)/)
+          .to match(/let us know, \(#{unenroll__cs_accelerator_auto_enrolment_url}\)/)
       end
 
       it 'contains link to cs_accelerator' do

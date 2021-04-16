@@ -1,0 +1,38 @@
+<div data-controller='supplementary-courses' class="ncce-csa-dash__section ncce-csa-dash__section-padded">
+  <div class="ncce-flex__space-between">
+    <h2 class="govuk-heading-s">You might be interested in</h2>
+    <div class="ncce-dash-courses__buttons">
+      <button data-action="supplementary-courses#toggleAll"
+              data-supplementary-courses-target="showButton"
+              aria-hidden="true"
+              class="ncce-link-button hidden"
+              data-event-action="click"
+              data-event-label="Show additional courses"
+              data-event-category="CSA enrolled">
+        Show more
+      </button>
+      <button data-action="supplementary-courses#toggleAll"
+              data-supplementary-courses-target="hideButton"
+              aria-hidden="true"
+              class="ncce-link-button hidden">
+        Hide
+      </button>
+    </div>
+  </div>
+
+  <p class="govuk-body">Want to go the extra mile? Here are some <strong>additional courses</strong></p>
+
+  <div data-supplementary-courses-target="expander" class="expander">
+    <% supplementary_activities.each do |sa| %>
+      <div class="ncce-pathway-courses__course">
+        <p>
+          <%= link_to sa.title, course_path(id: sa.stem_activity_code, name: sa.slug), class: 'ncce-link' %>
+        </p>
+
+        <p class="ncce-pathway-courses__location <%= activity_icon_class(sa) %>">
+          <%=  activity_type(sa) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

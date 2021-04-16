@@ -1,0 +1,64 @@
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds lp-courses--intro">
+        <h2 class="govuk-heading-l">Courses</h2>
+        <p class="govuk-body-l"><%=  @landing_page.courses_intro %>
+        We offer <%= link_to 'bursaries', '/bursary',
+          class: 'ncce-link',
+          data: { event_action: 'click',
+                  event_category: @landing_page.event_tracking_category,
+                  event_label: 'Bursaries courses' }
+          %>
+          to teachers working in state-funded education in England.
+        </p>
+        <%= link_to 'Browse our courses', courses_path,
+          class: 'button govuk-button' ,
+          data: { event_action: 'click',
+                  event_category: @landing_page.event_tracking_category,
+                  event_label: 'Browse courses' }
+        %>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+          <div class="lp-courses">
+            <% @landing_page.courses.each do |course| %>
+              <div class="lp-courses--course">
+
+                <div class="lp-courses--image-wrapper">
+                  <%= image_pack_tag course[:image], alt: course[:title], class: 'lp-courses--image' %>
+                  <span class="govuk-body-s lp-courses--featured">
+                    <span class="icon-star ">Featured</span>
+                  </span>
+                </div>
+
+                <p class="govuk-body">
+                  <strong>
+                    <%= link_to course[:title], course[:url], class: 'ncce-link' %>
+                  </strong>
+                </span>
+                <p class="govuk-body">
+                  <%= course[:description] %>
+                </p>
+                <div class="lp-courses--details">
+                  <span class="govuk-body-s <%= course[:icon_class] %> lp-courses--type">
+                      <%= course[:type] %>
+                  </span>
+                </div>
+                <div class="lp-courses--details">
+                  <span class="govuk-body-s icon-calendar lp-courses--duration">
+                      <%= course[:duration] %>
+                  </span>
+                  <span class="govuk-body-s icon-clock lp-courses--time">
+                      <%= course[:time_commitment] %>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>

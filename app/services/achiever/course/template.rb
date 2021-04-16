@@ -21,12 +21,12 @@ class Achiever::Course::Template
                 :workstream
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
-  QUERY_STRINGS = { 'Page': '1',
-                    'RecordCount': '1000',
-                    'HideFromweb': '0',
-                    'ProgrammeName': 'ncce' }.freeze
+  QUERY_STRINGS = { Page: '1',
+                    RecordCount: '1000',
+                    HideFromweb: '0',
+                    ProgrammeName: 'ncce' }.freeze
 
-  def self.from_resource(template)
+  def self.from_resource(resource)
     new.tap do |t|
       t.activity_code = template.send('Template.ActivityCode')
       t.age_groups = template.send('Template.AgeGroups').split(';')
@@ -67,6 +67,10 @@ class Achiever::Course::Template
     raise ActiveRecord::RecordNotFound unless template
 
     template
+  end
+
+  def self.find_many_by_activity_codes(activity_codes)
+    all.select { |val| activity_codes.include?(val.activity_code) }
   end
 
   def self.without(course)

@@ -1,0 +1,28 @@
+.lp-certs--card {
+  padding: 12px 10px 8px 16px;
+}
+
+.lp-certs--card-header {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding-top: 4px;
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+    padding-top: 10px;
+  }
+}
+
+.lp-certs--card-heading {
+  margin-top: 6px;
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0px;
+  }
+}
+
+.lp-certs--button {
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  width: auto;
+}

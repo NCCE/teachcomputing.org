@@ -263,4 +263,17 @@ describe CoursesHelper, type: :helper do
       expect(helper.remote_or_face_to_face(course)).to eq('Face to face')
     end
   end
+
+  describe '.clean_course_title' do
+    it 'removes " - remote" from the end of the title' do
+      title = 'Course title - remote'
+      expect(helper.clean_course_title(title)).to eq('Course title')
+    end
+
+    it 'does not affect title that does not end in  " - remote"' do
+      title = 'Course title - something else'
+      expect(helper.clean_course_title(title))
+        .to eq('Course title - something else')
+    end
+  end
 end

@@ -63,6 +63,7 @@ Rails.application.routes.draw do
                                defaults: { slug: 'cs-accelerator' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
       get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
+      put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
     end
 
     namespace 'cs_accelerator' do
@@ -92,6 +93,10 @@ Rails.application.routes.draw do
   post '/curriculum/rating/comment', to: 'curriculum/lessons#comment', as: :update_curriculum_lesson_rating
 
   get 'dashboard', action: :show, controller: 'dashboard'
+
+  namespace 'dynamics' do
+    post '/webhook', to: 'webhooks#user', as: 'user_webhook'
+  end
 
   get '/futurelearn/lti/:fl_id', to: 'future_learn/lti#show', as: 'futurelearn_lti'
   patch '/users/:id/teacher-reference-number', action: :teacher_reference_number, controller: 'user',
@@ -140,6 +145,7 @@ Rails.application.routes.draw do
                                    defaults: { page_slug: 'secondary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
+  get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/trailer-demo', to: 'pages#page', defaults: { page_slug: 'trailer-demo' }
   get '/welcome', to: 'welcome#show', as: :welcome

@@ -21,7 +21,7 @@ class Ghost
     rescue RestClient::NotFound, RestClient::UnprocessableEntity, URI::InvalidURIError
       raise ActiveRecord::RecordNotFound
     rescue StandardError => e
-      Raven.capture_exception(e)
+      Sentry.capture_exception(e)
       raise ActiveRecord::RecordNotFound
     end
   end
@@ -50,9 +50,9 @@ class Ghost
     rescue SocketError
       return []
     rescue RestClient::Exception => e
-      Raven.capture_exception(e)
+      Sentry.capture_exception(e)
     rescue ActiveSupport::JSON.parse_error
-      Raven.capture_message("Ghost API JSON Parse error for string: #{result}")
+      Sentry.capture_message("Ghost API JSON Parse error for string: #{result}")
     end
     []
   end

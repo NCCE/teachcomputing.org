@@ -2,14 +2,15 @@ puts 'Creating Pathways for CSA'
 
 prog_id = Programmes::CSAccelerator.find_by(slug: 'cs-accelerator').id
 
-pathway = Pathway.find_or_create_by(slug: 'advanced-gcse-computer-science') do |q|
-  q.title = 'Advanced GCSE Computer Science'
-  q.slug = 'advanced-gcse-computer-science'
-  q.range = 0..0
-  q.pdf_link = 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf'
-  q.programme_id = prog_id
-  q.order = 4
-end
+pathway = Pathway.find_or_initialize_by(slug: 'advanced-gcse-computer-science')
+pathway.update(
+  title: 'Advanced GCSE Computer Science',
+  slug: 'advanced-gcse-computer-science',
+  range: 0..0,
+  pdf_link: 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf',
+  programme_id: prog_id,
+  order: 5
+)
 
 # main
 
@@ -67,14 +68,15 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
-pathway = Pathway.find_or_create_by(slug: 'prepare-to-teach-gcse-computer-science') do |q|
-  q.title = 'Preparing to teach GCSE computer science'
-  q.slug = 'prepare-to-teach-gcse-computer-science'
-  q.range = 2..10
-  q.pdf_link = 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf'
-  q.programme_id = prog_id
-  q.order = 1
-end
+pathway = Pathway.find_or_initialize_by(slug: 'prepare-to-teach-gcse-computer-science')
+pathway.update(
+  title: 'Preparing to teach GCSE computer science',
+  slug: 'prepare-to-teach-gcse-computer-science',
+  range: 2..10,
+  pdf_link: 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf',
+  programme_id: prog_id,
+  order: 4
+)
 
 # main
 
@@ -137,14 +139,15 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5, supplementary: true)
 end
 
-pathway = Pathway.find_or_create_by(slug: 'new-to-algorithms-and-programming') do |q|
-  q.title = 'New to algorithms and programming'
-  q.slug = 'new-to-algorithms-and-programming'
-  q.range = 0..0
-  q.pdf_link = 'https://static.teachcomputing.org/pathways/03_New_to_algorithms_and_programming.pdf'
-  q.programme_id = prog_id
-  q.order = 2
-end
+pathway = Pathway.find_or_initialize_by(slug: 'new-to-algorithms-and-programming')
+pathway.update(
+  title: 'New to algorithms and programming',
+  slug: 'new-to-algorithms-and-programming',
+  range: 0..0,
+  pdf_link: 'https://static.teachcomputing.org/pathways/03_New_to_algorithms_and_programming.pdf',
+  programme_id: prog_id,
+  order: 2
+)
 
 # main
 
@@ -207,14 +210,15 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
-pathway = Pathway.find_or_create_by(slug: 'new-to-computing') do |q|
-  q.title = 'New to computing'
-  q.slug = 'new-to-computing'
-  q.range = 0..0
-  q.pdf_link = 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf'
-  q.programme_id = prog_id
-  q.order = 5
-end
+pathway = Pathway.find_or_initialize_by(slug: 'new-to-computing')
+pathway.update(
+  title: 'New to computing',
+  slug: 'new-to-computing',
+  range: 0..0,
+  pdf_link: 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf',
+  programme_id: prog_id,
+  order: 1
+)
 
 # main
 
@@ -288,14 +292,15 @@ if activity && !pathway.pathway_activities.include?(activity)
                                                supplementary: true)
 end
 
-pathway = Pathway.find_or_create_by(slug: 'new-to-computer-systems') do |q|
-  q.title = 'New to computer systems'
-  q.slug = 'new-to-computer-systems'
-  q.range = 0..0
-  q.pdf_link = 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf'
-  q.programme_id = prog_id
-  q.order = 3
-end
+pathway = Pathway.find_or_initialize_by(slug: 'new-to-computer-systems')
+pathway.update(
+  title: 'New to computer systems',
+  slug: 'new-to-computer-systems',
+  range: 0..0,
+  pdf_link: 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf',
+  programme_id: prog_id,
+  order: 3
+)
 
 # main
 

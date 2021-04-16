@@ -24,7 +24,7 @@ class CSAcceleratorMailer < ApplicationMailer
   def getting_started_prompt
     @user = params[:user]
     @enrolment_id = params[:enrolment_id]
-    @subject = 'Kick-start your CPD with our Computer Science Accelerator programme'
+    @subject = 'Kick-start your CPD and achieve a national qualification'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
   end
@@ -40,14 +40,14 @@ class CSAcceleratorMailer < ApplicationMailer
   def manual_enrolled_welcome
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = 'Welcome to the Computer Science Accelerator'
+    @subject = 'Welcome to our subject knowledge certificate'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
   end
 
   def auto_enrolled_welcome
     @user = params[:user]
-    @subject = 'Kick-start your CPD with our Computer Science Accelerator programme'
+    @subject = 'Achieve your subject knowledge certificate with the Computer Science Accelerator'
 
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
   end
