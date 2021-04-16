@@ -1,5 +1,5 @@
 module Credly
-  CACHE_EXPIRY = 12.hours
+  CACHE_EXPIRY = 12.hours.freeze
 
   class Request
     def self.run(resource_path, body = {})
