@@ -1,7 +1,6 @@
 #!/bin/bash
 source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
-CONFIG_FILE="/usr/local/etc/nginx/servers/${nginx_name}.conf"
 
 echo "- Setting up homebrew"
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
