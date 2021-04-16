@@ -1,5 +1,6 @@
 name: teachcomputing.org
 domain-root: rpfdev.com
+ssl: false
 mappings:
   - port: 3000
     prefix: teachcomputing
