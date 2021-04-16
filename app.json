@@ -112,7 +112,7 @@
       "required": true,
       "value": "secret"
     },
-    "CERTIFICATION_SYNCING_ENABLED": {
+    "DYNAMICS_WEBHOOK_TOKEN": {
       "required": true
     }
   },

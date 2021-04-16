@@ -1,5 +1,12 @@
 version: "3.5"
 services:
+  docker-host:
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    networks:
+      default:
+        aliases:
+          - curriculum.teachcomputing.rpfdev.com
   db:
     image: postgres
     volumes:
@@ -8,8 +15,6 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=${DEV_PASS}
-    networks:
-      - backend
     restart: unless-stopped
     env_file:
       - .env
@@ -17,8 +22,6 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
-    networks:
-      - backend
     restart: unless-stopped
     env_file:
       - .env
@@ -27,8 +30,6 @@ services:
     command: bundle exec sidekiq
     depends_on:
       - redis
-    networks:
-      - backend
     env_file:
       - .env
   web:
@@ -46,6 +47,7 @@ services:
       - db
       - redis
       - webpack
+      - docker-host
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
@@ -53,9 +55,6 @@ services:
       - DOCKER_LOGS=true
     stdin_open: true
     tty: true # Allow interactive byebug sessions
-    networks:
-      - main
-      - backend
     restart: unless-stopped
   webpack:
     build: .
@@ -68,13 +67,7 @@ services:
       - "3035:3035"
     environment:
       - WEBPACKER_DEV_SERVER_HOST=webpack
-    networks:
-      - main
 volumes:
   bundle:
   pg-data:
   node_modules:
-networks:
-  main:
-    driver: bridge
-  backend:

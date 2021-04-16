@@ -14,6 +14,6 @@ RSpec.describe('curriculum/key_stages/_tiles', type: :view) do
   end
 
   it 'shows the expected teacher guide' do
-    expect(rendered).to have_link('KS1 teacher guide', href: "https://teachcomputing.org")
+    expect(rendered).to have_link('Teacher guide', href: "https://teachcomputing.org")
   end
 end

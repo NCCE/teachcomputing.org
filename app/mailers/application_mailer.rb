@@ -23,7 +23,7 @@ class ApplicationMailer < ActionMailer::Base
     sent_email.save!
     true
   rescue StandardError => e
-    Raven.capture_message("Error recording email sending: #{e}")
+    Sentry.capture_message("Error recording email sending: #{e}")
     false
   end
 end

@@ -13,6 +13,7 @@
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
+@import 'components/_dropdown-expander.scss';
 @import 'components/_notice.scss';
 @import 'components/_footer.scss';
 @import 'components/_header.scss';
@@ -28,6 +29,13 @@
 @import 'components/_testimonial.scss';
 @import 'components/_headings.scss';
 @import 'components/_bursary-aside.scss';
+@import 'components/_dedicated-pages.scss';
+@import 'components/landing_pages/_certificates.scss';
+@import 'components/landing_pages/_courses.scss';
+@import 'components/landing_pages/_isaac.scss';
+@import 'components/landing_pages/_resources.scss';
+@import 'components/landing_pages/_support.scss';
+@import 'components/landing_pages/_testimonials.scss';
 @import 'components/pages/home/_certificates.scss';
 @import 'components/pages/home/_confidence.scss';
 @import 'components/pages/home/_featured.scss';

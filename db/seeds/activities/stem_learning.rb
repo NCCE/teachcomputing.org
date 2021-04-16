@@ -767,3 +767,176 @@ a = Activity.find_or_create_by(stem_course_template_no: '3bff03fd-256d-eb11-a812
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1b0d5b9c-c97d-eb11-a812-0022481a889a') do |activity|
+  activity.title = 'New to computing pathway for humanities and PSHE teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-humanities-and-pshe-teachers'
+  activity.stem_course_template_no = '1b0d5b9c-c97d-eb11-a812-0022481a889a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP472'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'baa34bc0-ca7d-eb11-a812-0022481a889a') do |activity|
+  activity.title = 'New to computing pathway for music, art and media teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-music-art-and-media-teachers'
+  activity.stem_course_template_no = 'baa34bc0-ca7d-eb11-a812-0022481a889a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP473'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f1ae2e7d-f37f-eb11-a812-000d3a8743ca') do |activity|
+  activity.title = 'New to computing pathway for modern foreign language teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-modern-foreign-language-teachers'
+  activity.stem_course_template_no = 'f1ae2e7d-f37f-eb11-a812-000d3a8743ca'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP474'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '2518b7bc-fb7f-eb11-a812-000d3a8743ca') do |activity|
+  activity.title = 'New to computing pathway for English teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-english-teachers'
+  activity.stem_course_template_no = '2518b7bc-fb7f-eb11-a812-000d3a8743ca'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP475'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '05854aa2-fd7f-eb11-a812-000d3a8743ca') do |activity|
+  activity.title = 'New to computing pathway for Science teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-science-teachers'
+  activity.stem_course_template_no = '05854aa2-fd7f-eb11-a812-000d3a8743ca'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP476'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '08fc66c2-6686-eb11-a812-0022481a795f') do |activity|
+  activity.title = 'New to computing pathway for business teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-business-teachers-face-to-face'
+  activity.stem_course_template_no = '08fc66c2-6686-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP270'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '683eca82-6a86-eb11-a812-0022481a795f') do |activity|
+  activity.title = 'New to computing pathway for PE teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-pe-teachers-face-to-face'
+  activity.stem_course_template_no = '683eca82-6a86-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP271'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '023164c4-6d86-eb11-a812-0022481a795f') do |activity|
+  activity.title = 'New to computing pathway for humanities and PSHE teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-humanities-and-pshe-teachers-face-to-face'
+  activity.stem_course_template_no = '023164c4-6d86-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP272'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '100969a4-6f86-eb11-a812-0022481a795f') do |activity|
+  activity.title = ' New to computing pathway for music, art and media teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-music-art-and-media-teachers-face-to-face'
+  activity.stem_course_template_no = '100969a4-6f86-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP273'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '39b94bd0-7186-eb11-a812-0022481a795f') do |activity|
+  activity.title = 'New to computing pathway for modern foreign language teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-modern-foreign-language-teachers-face-to-face'
+  activity.stem_course_template_no = '39b94bd0-7186-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP274'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '75CAE0B0-7386-EB11-A812-0022481A795F') do |activity|
+  activity.title = 'New to computing pathway for English teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-english-teachers-face-to-face'
+  activity.stem_course_template_no = '75CAE0B0-7386-EB11-A812-0022481A795F'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP275'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'cb178ecb-7486-eb11-a812-0022481a795f') do |activity|
+  activity.title = 'New to computing pathway for Science teachers'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-for-science-teachers-face-to-face'
+  activity.stem_course_template_no = 'cb178ecb-7486-eb11-a812-0022481a795f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP276'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'bacc4ebb-eb8a-eb11-b1ac-0022481a662d') do |activity|
+  activity.title = 'Teaching GCSE Computer Science: developing knowledge and understanding'
+  activity.credit = 10
+  activity.slug = 'teaching-gcse-computer-science-developing-knowledge-and-understanding-face-to-face'
+  activity.stem_course_template_no = 'bacc4ebb-eb8a-eb11-b1ac-0022481a662d'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP241'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd35ce2c2-e78a-eb11-b1ac-0022481a662d') do |activity|
+  activity.title = 'Teaching GCSE Computer Science pedagogy for programming'
+  activity.credit = 10
+  activity.slug = 'teaching-gcse-computer-science-pedagogy-for-programming-face-to-face'
+  activity.stem_course_template_no = 'd35ce2c2-e78a-eb11-b1ac-0022481a662d'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP242'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

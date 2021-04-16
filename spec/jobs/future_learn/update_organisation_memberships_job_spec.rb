@@ -37,7 +37,7 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
       .to receive(:all)
       .and_return([run_with_enrolments, run_with_enrolments2, missing_course_run, ignored_course_run])
 
-    allow(Raven).to receive(:capture_message)
+    allow(Sentry).to receive(:capture_message)
 
     allow(FutureLearn::Queries::CourseEnrolments)
       .to receive(:all)
@@ -112,7 +112,7 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
 
       it 'logs error' do
         described_class.perform_now
-        expect(Raven)
+        expect(Sentry)
           .to have_received(:capture_message)
           .once
           .with('UnauthorizedError checking course enrolments',
@@ -139,7 +139,7 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
     context 'when course is not in TC database' do
       it 'reports course' do
         described_class.perform_now
-        expect(Raven)
+        expect(Sentry)
           .to have_received(:capture_message)
           .once
           .with(
@@ -159,7 +159,7 @@ RSpec.describe FutureLearn::UpdateOrganisationMembershipsJob, type: :job do
           [ignored_course_run[:course][:uuid]]
         )
         described_class.perform_now
-        expect(Raven)
+        expect(Sentry)
           .not_to have_received(:capture_message)
           .with(
             'FutureLearn course not found during progress update checking',
