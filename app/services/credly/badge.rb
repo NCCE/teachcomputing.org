@@ -4,7 +4,7 @@ module Credly
     BADGES_RESOURCE_PATH = "organizations/#{ORG_ID}/badges".freeze
     TEMPLATES_RESOURCE_PATH = "organizations/#{ORG_ID}/badge_templates".freeze
 
-    def self.all
+    def self.templates
       Credly::Request.run(TEMPLATES_RESOURCE_PATH, {})[:data]
     end
 
@@ -18,7 +18,7 @@ module Credly
         'issued_at' => DateTime.now.strftime('%Y-%m-%d %H:%M:%S %z'),
         'issuer_earner_id' => user.id
       }.to_json
-      Credly::Request.run(BADGES_RESOURCE_PATH, body)
+      Credly::Request.run(BADGES_RESOURCE_PATH, body)[:data]
     end
 
     def self.issued(user_id)
