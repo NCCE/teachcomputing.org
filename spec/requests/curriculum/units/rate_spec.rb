@@ -1,6 +1,10 @@
  require 'rails_helper'
 
 RSpec.describe Curriculum::UnitsController do
+  before do
+    VCR.turn_on!
+  end
+
   include_examples 'rateable',
                    :create_curriculum_unit_rating_path,
                    :update_curriculum_unit_rating_path,
