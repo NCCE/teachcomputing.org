@@ -63,8 +63,6 @@ services:
   webpack:
     build: .
     command: ./bin/webpack-dev-server
-    depends_on:
-      - web
     volumes:
       - .:/app
       - node_modules:/app/node_modules # ensures we retain node_modules from docker build
