@@ -104,6 +104,12 @@ module CoursesHelper
     'Face to face'
   end
 
+  def view_course_phrase(course)
+    return 'View dates' if course.remote_delivered_cpd
+
+    'View locations and dates'
+  end
+
   def clean_course_title(title)
     title.chomp(' - remote')
   end

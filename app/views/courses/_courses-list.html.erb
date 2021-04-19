@@ -25,7 +25,7 @@
             <button aria-expanded="false">
             <span class='ncce-courses__locations-type <%= course_meta_icon_class(course) %>'><%= course_subtitle_text(course) %></span>
             <span class='ncce-courses__locations-name'>
-              <%= remote_or_face_to_face(course) == 'Remote' ? 'View dates' : 'View locations and dates' %>
+              <%= view_course_phrase(course) %>
             </span>
             </button>
           </h3>

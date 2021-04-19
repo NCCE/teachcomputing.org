@@ -295,6 +295,18 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe 'view_course_phrase' do
+    it 'returns correctly for remote courses' do
+      course = instance_double('course', remote_delivered_cpd: true)
+      expect(helper.view_course_phrase(course)).to eq('View dates')
+    end
+
+    it 'returns correctly for non remote courses' do
+      course = instance_double('course', remote_delivered_cpd: false)
+      expect(helper.view_course_phrase(course)).to eq('View locations and dates')
+    end
+  end
+
   describe '.clean_course_title' do
     it 'removes " - remote" from the end of the title' do
       title = 'Course title - remote'
