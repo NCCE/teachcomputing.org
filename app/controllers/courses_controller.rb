@@ -2,11 +2,24 @@ class CoursesController < ApplicationController
   layout 'full-width'
 
   def index
+    assign_params
+    render :index
+  end
+
+  def filter
+    assign_params
+    if ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
+      render partial: 'courses/courses-list', layout: false
+    else
+      render :index
+    end
+  end
+
+  def assign_params
+    @filter_params = filter_params
     @course_filter = Achiever::CourseFilter.new(
       filter_params: filter_params
     )
-
-    render :index
   end
 
   def show
@@ -30,6 +43,6 @@ class CoursesController < ApplicationController
     end
 
     def filter_params
-      params.permit(:certificate, :level, :location, :topic, :hub_id)
+      params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, course_format: [])
     end
 end

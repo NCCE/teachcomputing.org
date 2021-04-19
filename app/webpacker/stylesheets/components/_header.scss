@@ -237,6 +237,10 @@
   }
 }
 
+.ncce-header__certification-item--text:focus {
+  color: $white;
+}
+
 .ncce-header__certification-item:hover .ncce-header__certification-item--text,
 .ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--text {
   color: $white;

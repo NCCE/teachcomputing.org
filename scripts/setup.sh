@@ -29,6 +29,9 @@ sudo ln -s /usr/local/opt/nginx/homebrew.mxcl.nginx.plist /Library/LaunchDaemons
 sudo chown root:wheel /usr/local/opt/nginx/homebrew.mxcl.nginx.plist
 sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
 
+echo "- Install shared-mime-info for mimemagic"
+brew install shared-mime-info
+
 echo "- Updating dev-nginx and adding service to start on boot"
 brew upgrade dev-nginx
 brew services start nginx

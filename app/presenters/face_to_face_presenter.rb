@@ -3,7 +3,7 @@ class FaceToFacePresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
 
   def button_url(args = {})
-    courses_path(location: 'Face to face', certificate: args[:certificate])
+    courses_path(course_format: [:face_to_face], certificate: args[:certificate])
   end
 
   def completed_text(index)
@@ -12,6 +12,7 @@ class FaceToFacePresenter < AchievementPresenter
 
   def prompt_text(index)
     return 'Complete at least one face to face, or remote course' if @programme == Programme.secondary_certificate
+
     "Complete your #{index_to_word_ordinal(index)} face to face, or remote course"
   end
 
