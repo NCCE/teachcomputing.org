@@ -405,7 +405,6 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { search_location: 'Liverpool' } }
 
       it 'returns only remote and online courses' do
-        puts course_filter.non_location_search_results.map(&:title)
         expect(course_filter.non_location_search_results)
           .to match_array(
             [
