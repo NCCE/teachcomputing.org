@@ -11,88 +11,82 @@ RSpec.describe('courses/index', type: :view) do
     )
   end
 
+  let(:filter_stub) { instance_double(Achiever::CourseFilter) }
+
   before do
-    subjects = { 'Algorithmic thinking' => 100_000_011, 'Biology' => 157_430_000, 'Careers' => 157_430_001 }
-    age_groups = { 'Key stage 1' => 157_430_008, 'Key stage 2' => 157_430_009, 'Key stage 3' => 157_430_010,
-                   'Key stage 4' => 157_430_011 }
-
-    filter_stub = instance_double(Achiever::CourseFilter)
-
-    allow(filter_stub).to receive_messages(
-      course_tags: { 'Algorithms': '101' },
-      age_groups: age_groups,
-      subjects: subjects,
-      courses: courses,
-      course_locations: ['Cambridge'],
-      current_level: nil, current_location: nil,
-      current_topic: nil, current_certificate: nil,
-      applied_filters: nil
-    )
-
-    @course_filter = filter_stub
-    render
+    stub_template 'courses/_courses-list' => ''
+    stub_template 'courses/_aside-filters' => ''
   end
 
-  it 'has a title' do
-    expect(rendered).to have_css(
-      '.govuk-heading-xl',
-      text: 'Computing courses for teachers'
-    )
-  end
+  context 'with no hub' do
+    before do
+      allow(filter_stub).to receive_messages(
+        current_hub: nil
+      )
+      @filter_params = {}
+      @course_filter = filter_stub
+      render
+    end
 
-  it 'links to the course landing page for each course' do
-    courses.each do |course|
-      expect(rendered).to have_link(course.title, href: %r{#{course.activity_code}/#{course.title.parameterize}})
+    it 'has a title' do
+      expect(rendered).to have_css(
+        '.govuk-heading-xl',
+        text: 'Computing courses for teachers'
+      )
+    end
+
+    it 'renders the bursary partial' do
+      expect(rendered).to render_template(partial: 'courses/_aside-bursary')
+    end
+
+    it 'renders the courses_list partial' do
+      expect(rendered).to render_template(partial: 'courses/_courses-list')
+    end
+
+    it 'renders the filters partial' do
+      expect(rendered).to render_template(partial: 'courses/_aside-filters')
+    end
+
+    it 'does not render the hub details' do
+      expect(rendered).not_to have_css('ncce-courses__hub-container')
     end
   end
 
-  describe 'courses' do
-    it 'renders each of the course template titles' do
-      courses.each do |course|
-        expect(rendered).to have_css('.ncce-courses__heading', text: course.title)
-      end
+  context 'with a hub' do
+    before do
+      allow(filter_stub).to receive_messages(
+        current_hub: 'bla'
+      )
+      @filter_params = { hub_id: 'bla' }
+      @course_filter = filter_stub
+      render
     end
 
-    it 'renders each of the course template codes' do
-      courses.each do |course|
-        expect(rendered).to have_css('.ncce-courses__heading-code', text: course.activity_code)
-      end
+    it 'has the expected title' do
+      expect(rendered).to have_text('Showing courses run by bla')
     end
 
-    it 'renders course key stage tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 3')
+    it 'has the clear filters link' do
+      expect(rendered).to have_link('show all results', href: courses_path(anchor: 'results-top'))
+    end
+  end
+
+  context 'with a hub with no courses' do
+    before do
+      allow(filter_stub).to receive_messages(
+        current_hub: :no_courses
+      )
+      @filter_params = { hub_id: 'bla' }
+      @course_filter = filter_stub
+      render
     end
 
-    it 'renders course subject tags area' do
-      expect(rendered).to have_css('h3.screen-reader-only', text: 'Tags for this course')
+    it 'has the expected title' do
+      expect(rendered).to have_text('There are no courses to show from this Computing Hub')
     end
 
-    it 'renders course subject tags' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'Biology')
-    end
-
-    it 'renders filter selects' do
-      expect(rendered).to have_css('.ncce-select', count: 3)
-    end
-
-    it 'renders location select' do
-      expect(rendered).to have_css('.ncce-select option', text: 'Cambridge')
-    end
-
-    it 'renders level select' do
-      expect(rendered).to have_css('.ncce-select option', text: 'Key stage 2')
-    end
-
-    it 'renders topic select' do
-      expect(rendered).to have_css('.ncce-select option', text: 'Algorithms')
-    end
-
-    it 'renders filter submit' do
-      expect(rendered).to have_css('.button[value="Apply filter"]', count: 1)
-    end
-
-    it 'not to render an asides' do
-      expect(rendered).not_to have_css('.ncce-aside')
+    it 'has the clear filters link' do
+      expect(rendered).to have_link('show all results', href: courses_path(anchor: 'results-top'))
     end
   end
 end

@@ -10,6 +10,7 @@
 @import 'settings/_typography.scss';
 @import 'settings/_layout.scss';
 @import 'settings/_device-behaviour.scss';
+@import 'settings/_variables.scss';
 
 // import NCCE components
 @import 'components/_cookie-notice.scss';
@@ -51,7 +52,10 @@
 @import 'components/pages/_padded-box.scss';
 @import 'components/pages/_supporting-partners.scss';
 @import 'components/courses/_courses.scss';
+@import 'components/courses/_courses_list.scss';
 @import 'components/courses/_landing-page.scss';
+@import 'components/courses/_aside_bursary.scss';
+@import 'components/courses/_aside_filters.scss';
 @import 'components/dashboard/_certification.scss';
 @import 'components/dashboard/_activity-list.scss';
 @import 'components/dashboard/_pathway-courses.scss';
@@ -74,3 +78,7 @@
 // CMS styles
 
 @import 'components/cms/_shared.scss';
+
+// Other
+
+@import 'settings/_utility.scss';

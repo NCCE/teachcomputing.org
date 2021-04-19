@@ -15,6 +15,7 @@
     "dotenv-webpack": "^6.0.2",
     "flatpickr": "^4.6.9",
     "govuk-frontend": "^2.3.0",
+    "mobile-device-detect": "^0.4.3",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "stimulus": "^2.0",
@@ -22,6 +23,9 @@
     "turbolinks": "^5.2.0",
     "webpack": "^4.x",
     "yargs-parser": "^20.2.0"
+  },
+  "resolutions": {
+    "@rails/webpacker/is-svg": "4.2.2"
   },
   "devDependencies": {
     "eslint": "^7.20",
