@@ -20,16 +20,26 @@ RSpec.describe Credly::Badge do
   end
 
   describe '#issue' do
-    before do
-      user
-      stub_issue_badge(user.id, badge_template_id)
+    context 'when the user exists' do
+      before do
+        user
+        stub_issue_badge(user.id, badge_template_id)
+      end
+
+      it 'returns the required keys' do
+        issue = described_class.issue(user.id, badge_template_id)
+
+        %i[created_by user issuer badge_template].each do |key|
+        expect(issue.key?(key)).to eq(true)
+        end
+      end
     end
 
-    it 'returns the required keys' do
-      issue = described_class.issue(user.id, badge_template_id)
-
-      %i[created_by user issuer badge_template].each do |key|
-      expect(issue.key?(key)).to eq(true)
+    context 'when the user does not exist' do
+      it 'raises ActiveRecord::RecordNotFound' do
+        expect do
+          described_class.issue('123456789', badge_template_id)
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
