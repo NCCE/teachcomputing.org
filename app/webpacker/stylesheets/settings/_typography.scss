@@ -17,6 +17,10 @@
   line-height: 1.45;
 }
 
+.no-bottom-margin {
+  margin-bottom: 0;
+}
+
 .screen-reader-only {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);

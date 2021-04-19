@@ -4,8 +4,7 @@
 <% meta_tag :image, asset_pack_path('media/images/courses.png') %>
 
 <div class="govuk-width-container">
-  <div
-    class="govuk-main-wrapper ncce-main-wrapper--intro">
+  <div class="govuk-main-wrapper ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
@@ -17,7 +16,7 @@
         <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
       <div class="govuk-grid-column-one-third">
-        <%= render 'courses/aside-section' %>
+        <%= render 'courses/booking-aside' %>
       </div>
     </div>
   </div>

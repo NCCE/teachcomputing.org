@@ -24,6 +24,13 @@ module CoursesHelper
     "#{Date.parse(start_date).strftime('%-d %B')}—#{Date.parse(end_date).strftime('%-d %B %Y')}"
   end
 
+  def activity_start_time(start_date)
+    return if start_date.blank?
+
+    date = Time.zone.parse(start_date)
+    date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
+  end
+
   def activity_times(start_time, end_time, dates_only = false)
     return activity_dates(start_time, end_time) if dates_only
 
