@@ -40,7 +40,7 @@ Or (this automatically creates the ssh tunnel and waits until the stack is ready
 yarn start
 ```
 
-The app is available at: https://teachcomputing.rpfdev.com
+The app is available at: http://teachcomputing.rpfdev.com
 
 Stop the stack:
 

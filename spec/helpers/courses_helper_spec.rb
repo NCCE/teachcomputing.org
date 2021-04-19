@@ -140,6 +140,11 @@ describe CoursesHelper, type: :helper do
       achievement.set_to_complete
       expect(helper.user_achievement_state(user, activity)).to eq :complete
     end
+
+    it 'returns :dropped if achievement is in state dropped' do
+      achievement.transition_to(:dropped)
+      expect(helper.user_achievement_state(user, activity)).to eq :dropped
+    end
   end
 
   describe('other_courses_on_programme') do

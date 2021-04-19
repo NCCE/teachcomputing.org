@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
-URL="https://${nginx_mappings__prefix[0]}.${nginx_domain_root}"
+URL="http://${nginx_mappings__prefix[0]}.${nginx_domain_root}"
 URL_TO_POLL="http://localhost:${nginx_mappings__port[0]}"
 TIMEOUT=45
 OK_TO_PROCEED=0
