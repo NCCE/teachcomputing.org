@@ -3,7 +3,7 @@ class OnlinePresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
 
   def button_url(args = {})
-    courses_path(location: 'Online', certificate: args[:certificate])
+    courses_path(course_format: [:online], certificate: args[:certificate])
   end
 
   def completed_text(index)
@@ -12,6 +12,7 @@ class OnlinePresenter < AchievementPresenter
 
   def prompt_text(index)
     return 'Complete at least one online course' if @programme == Programme.secondary_certificate
+
     "Complete your #{index_to_word_ordinal(index)} online course"
   end
 

@@ -26,6 +26,7 @@
   <meta name="twitter:image" content="<%= yield_meta_tag(:image, default_social_image) %>">
   <meta name="twitter:image:alt" content="<%= yield_meta_tag(:image_alt, 'Teaching Computing') %>">
   <meta name="twitter:dnt" content="on">
+  <meta name="turbolinks-cache-control" content="<%= yield_meta_tag(:turbolinks_cache_control, 'cache') %>">
 
   <%= favicon_pack_tag 'media/images/favicon.ico', sizes: '16x16 32x32 48x48' %>
   <%= favicon_pack_tag 'media/images/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '120x120' %>

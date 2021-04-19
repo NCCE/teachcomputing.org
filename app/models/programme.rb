@@ -81,10 +81,6 @@ class Programme < ApplicationRecord
     slug == 'cs-accelerator'
   end
 
-  def secondary_certificate?
-    slug == 'secondary-certificate'
-  end
-
   def path; end
 
   def enrol_path(opts = {}); end

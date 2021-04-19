@@ -1,15 +1,3 @@
-function ready(fn) {
-  if (
-    document.attachEvent
-      ? document.readyState === 'complete'
-      : document.readyState !== 'loading'
-  ) {
-    fn()
-  } else {
-    document.addEventListener('DOMContentLoaded', fn)
-  }
-}
-
 function initialiseSections(className) {
   const menuItemToggleClass = className + '--closed'
   const sectionToggleClass = className + '-section--visible'
@@ -58,8 +46,6 @@ function initialiseSections(className) {
       }
 
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
-      console.log(isTouch)
-      console.log(event.type)
       if (!isTouch && event.type == 'click') return
 
       if (!isDesktop && ['mouseover', 'mouseout'].includes(event.type)) return
@@ -90,9 +76,6 @@ function initialiseSections(className) {
 
       const isDesktop = window.matchMedia('(min-width: 769px)').matches
 
-      console.log(event.type)
-      console.log(isDesktop)
-      console.log(isTouch)
       if (isTouch && ['mouseover', 'mouseout'].includes(event.type)) return
 
       if (menuItem.getAttribute('aria-expanded') == 'true') {
@@ -116,6 +99,9 @@ function initialiseSections(className) {
   })
 }
 
-ready(function () {
+const initialise = () => {
   initialiseSections('dropdown__expander')
-})
+};
+
+window.addEventListener('DOMContentLoaded', initialise);
+window.addEventListener('turbolinks:render', initialise);

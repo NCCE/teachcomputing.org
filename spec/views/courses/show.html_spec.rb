@@ -22,11 +22,11 @@ RSpec.describe('courses/show', type: :view) do
     end
 
     it 'the hero partial' do
-      expect(rendered).to render_template(:partial => '_hero')
+      expect(rendered).to render_template(partial: '_hero')
     end
 
     it 'the asides partial' do
-      expect(rendered).to render_template(:partial => '_aside-section')
+      expect(rendered).to render_template(partial: '_aside-section')
     end
 
     it 'a course summary' do
@@ -34,7 +34,7 @@ RSpec.describe('courses/show', type: :view) do
     end
 
     it 'the courses details partial' do
-      expect(rendered).to render_template(:partial => '_courses-details')
+      expect(rendered).to render_template(partial: '_courses-details')
     end
 
     it 'a course description' do
@@ -44,11 +44,11 @@ RSpec.describe('courses/show', type: :view) do
     end
 
     it 'the certificates card partial' do
-      expect(rendered).to render_template(:partial => '_certificates-card')
+      expect(rendered).to render_template(partial: '_certificates-card')
     end
 
-    it 'the courses list partial' do
-      expect(rendered).to render_template(:partial => '_courses-list')
+    it 'the courses cards partial' do
+      expect(rendered).to render_template(partial: '_courses-cards')
     end
   end
 

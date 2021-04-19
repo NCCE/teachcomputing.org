@@ -37,11 +37,56 @@
   height: 2.5rem;
   margin-right: 20px;
   padding-right: 30px;
+  width: 100%;
+
   @include govuk-media-query($until: 900px) {
     margin: 0 20px 20px 0;
   }
   @include govuk-media-query($until: tablet) {
     margin: 0 0 20px;
-    width: 100%;
   }
+}
+
+.ncce-label--s {
+  font-size: 14px;
+  line-height: 2rem;
+}
+
+.ncce-label {
+  font-size: 17px;
+  line-height: 2rem;
+}
+
+/* govuk checkboxes use the label hack, so we need to style that */
+.ncce-checkboxes__item {
+  min-height: 28px;
+  .ncce-checkboxes__label {
+    line-height: 0.8rem;
+    padding: 8px 0 0 0;
+
+    &::before {
+      background-color: $white;
+      border: 2px solid #0B0C0C;
+      border-radius: $border-radius;
+      height: 30px;
+      width: 30px;
+    }
+
+    &::after {
+      height: 6px;
+      left: 5px;
+      top: 8px;
+      width: 14px;
+    }
+  }
+
+  .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before,
+  .ncce-checkboxes__input:active + .ncce-checkboxes__label::before,
+  .ncce-checkboxes__input[checked='checked'] + .ncce-checkboxes__label::before {
+    background-color: #E3F6FC;
+    border-color: #007fa2;
+    box-shadow: none;
+    outline: none;
+  }
+
 }

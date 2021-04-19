@@ -45,7 +45,7 @@ RSpec.describe CoursesController do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ['Key stage 1', 'Redruth', 'Computing', 'CS Accelerator']
+            ['Key stage 1', 'Redruth', 'Computing', 'cs-accelerator']
           )
       end
     end

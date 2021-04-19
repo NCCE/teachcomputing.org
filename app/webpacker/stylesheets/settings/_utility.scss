@@ -1,0 +1,40 @@
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+body:not(.js-enabled) .sticky {
+  position: inherit;
+}
+
+#page-mask {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @include govuk-media-query($from: mobile) {
+    padding-top: 670px;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 610px;
+  }
+}
