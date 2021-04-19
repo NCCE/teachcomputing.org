@@ -8,7 +8,11 @@
   @include govuk-media-query($until: desktop) {
     box-shadow: 0 1.5px 2px -2px #333448;
     margin: 0 0 5px 0;
-    padding: 1rem 1.2rem 0;
+    padding: 2vh 1.2rem 0;
+  }
+
+  @media (max-height: 420px) and (max-width: 768px) {
+    padding: 3vh 1.2rem 0;
   }
 
   & button {
@@ -40,20 +44,18 @@
 }
 
 .ncce-courses__filter {
-  height: 90vh;
-  max-height: 535px;
+  height: 92vh;
   overflow: scroll;
   overflow-x: hidden;
-  padding: 0;
+  padding-bottom: 2vh;
 
   @media (max-height: 420px) and (max-width: 768px) {
-    height: 81vh;
-    padding-bottom: 24px;
+    height: 85vh;
+    padding-bottom: 3vh;
   }
 
   @include govuk-media-query($from: desktop) {
     height: 100%;
-    max-height: unset;
     overflow: hidden;
     padding-bottom: 4px;
   }
