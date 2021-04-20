@@ -52,11 +52,14 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
 end
 
+VCR.turn_off!
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include AchieverStubs
+  config.include CredlyStubs
   config.include CurriculumStubs
   config.include GhostStubs
   config.include CachingHelpers
