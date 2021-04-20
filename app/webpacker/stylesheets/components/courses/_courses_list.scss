@@ -63,6 +63,11 @@
     }
   }
 
+  button &-name--details {
+    text-align: left;
+    background-position: left center;
+  }
+
   button[aria-expanded='true'] &-name {
     background-image: url('../images/icons/expander_up.svg');
   }
