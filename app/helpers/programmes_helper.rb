@@ -18,4 +18,8 @@ module ProgrammesHelper
   def eligible_for_secondary?(user)
     Programme.secondary_certificate.user_is_eligible?(user)
   end
+
+  def csa_programme_title
+    'Subject knowledge certificate'
+  end 
 end

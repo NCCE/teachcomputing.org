@@ -31,7 +31,7 @@ RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
     end
 
     it 'shows the certificate link' do
-      expect(rendered).to have_link('Teach GCSE computer science', href: cs_accelerator_path)
+      expect(rendered).to have_link('Subject knowledge certificate', href: cs_accelerator_path)
     end
   end
 
