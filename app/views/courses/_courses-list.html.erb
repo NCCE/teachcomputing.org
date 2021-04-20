@@ -1,6 +1,10 @@
-<div class='govuk-body-s ncce-courses__count' data-course-filter-target="resultsCount">Showing <%= pluralize(@course_filter.courses.size, 'result') %></div>
+<div class='govuk-body-s ncce-courses__count' data-course-filter-target="resultsCount">Showing <%= pluralize(@course_filter.results_count, 'result') %></div>
+<p><%=  @course_filter.location_search? %></p>
+
 <div class="govuk-body-m ncce-courses__loading-bar hidden" data-course-filter-target="loadingBar">Loading...</div>
-<% if @course_filter.courses.length == 0 %>
+
+
+<% if @course_filter.results_count == 0 %>
   <div class='ncce-courses__no-results' data-course-filter-target="courseList">
     <% if @course_filter.current_hub.present? %>
       <p class="govuk-body">Sorry, this Computing Hub is currently not running any courses.</p>
@@ -13,6 +17,8 @@
     <%= link_to 'Show all courses', courses_path(anchor: 'results-top'), class: 'govuk-button button ncce-courses__filter-button' %>
   </div>
 <% else %>
+
+
   <div class="ncce-courses__list" data-course-filter-target="courseList">
     <% @course_filter.courses.each do |course| %>
       <div class="ncce-courses__course">

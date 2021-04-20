@@ -648,4 +648,11 @@ RSpec.describe Achiever::CourseFilter do
       end
     end
   end
+
+  describe '#results_count' do
+    it 'returns total results' do
+      expect(course_filter.results_count).to eq(9)
+    end
+
+  end
 end

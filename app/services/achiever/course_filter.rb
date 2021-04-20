@@ -5,7 +5,7 @@ module Achiever
     def initialize(filter_params:)
       @filter_params = filter_params
 
-      # @filter_params[:search_location] = 'London'
+      @filter_params[:search_location] = 'London'
       # puts @filter_params[:search_location]
       @subjects ||= Achiever::Course::Subject.all
       @age_groups ||= Achiever::Course::AgeGroup.all
@@ -155,6 +155,10 @@ module Achiever
       @non_location_search_results = begin
         courses.select { |c| c&.online_cpd || c&.remote_delivered_cpd }
       end
+    end
+
+    def results_count
+      @results_count ||= courses.size
     end
 
     private
