@@ -31,7 +31,7 @@ RSpec.describe CmsController do
       end
 
       it 'raises an error' do
-        expect { get '/cms/bursary' }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { get '/eggs' }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
