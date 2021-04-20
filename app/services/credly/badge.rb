@@ -23,7 +23,7 @@ module Credly
 
     def self.issued(user_id)
       user = User.find(user_id)
-      query_strings = "?filter=recipient_email::#{user.email}" if user
+      query_strings = "?filter=recipient_email::#{user.email}"
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
   end
