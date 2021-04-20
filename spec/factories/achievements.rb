@@ -4,8 +4,13 @@ FactoryBot.define do
     user
 
     trait :with_supporting_evidence do
-      supporting_evidence do
-        Rack::Test::UploadedFile.new('spec/support/active_storage/supporting_evidence_test_upload.png', 'image/png')
+      after(:build) do |achievement|
+        achievement.supporting_evidence.attach(
+          io: File.open(
+            Rails.root.join('spec', 'support', 'active_storage',
+                            'supporting_evidence_test_upload.png')
+          ), filename: 'test.png', content_type: 'image/png'
+        )
       end
     end
 

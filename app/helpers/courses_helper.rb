@@ -49,8 +49,20 @@ module CoursesHelper
     strip_tags(unescaped_str)
   end
 
-  def course_meta_icon_class(isOnlineCourse)
-    isOnlineCourse ? 'icon-online' : 'icon-map-pin'
+  def course_meta_icon_class(course)
+    if course&.online_cpd
+      'icon-online'
+    elsif course&.remote_delivered_cpd
+      'icon-remote'
+    else
+      'icon-map-pin'
+    end
+  end
+
+  def occurrence_meta_location(occurrence)
+    return 'Online course' if occurrence.online_cpd
+    return 'Live remote training' if occurrence.remote_delivered_cpd
+    occurrence.address_town
   end
 
   def online_course_date(start_date)
@@ -81,18 +93,41 @@ module CoursesHelper
   end
 
   def course_subtitle_text(course)
-    return 'Online' if course.online_cpd
+    type = 'Face to face'
+    type = 'Online' if course.online_cpd
+    type = 'Live remote training' if course.remote_delivered_cpd
+
+    "#{type} course"
+  end
+
+  def course_type(course)
+    return 'Online course' if course.online_cpd
 
     remote_or_face_to_face(course)
   end
 
   def remote_or_face_to_face(course)
-    return 'Remote' if course.remote_delivered_cpd
+    return 'Live remote training' if course.remote_delivered_cpd
 
     'Face to face'
   end
 
+  def view_course_phrase(course)
+    return 'View dates' if course.remote_delivered_cpd
+
+    'View locations and dates'
+  end
+
   def clean_course_title(title)
     title.chomp(' - remote')
+  end
+
+  def filter_count(course_filter)
+    filters = course_filter.applied_filters || []
+    filters.reject { |f| f == course_filter.current_hub }.count
+  end
+
+  def applied_filters_string(course_filter)
+    "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), 'filter')} applied"
   end
 end

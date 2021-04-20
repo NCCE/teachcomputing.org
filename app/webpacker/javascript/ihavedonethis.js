@@ -32,7 +32,11 @@ function initialiseIHaveDoneThisPopup() {
   })
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+const initialise = () => {
   initialiseIHaveDoneThisPopup()
   closeOtherPopups();
-})
+};
+
+window.addEventListener('DOMContentLoaded', initialise);
+window.addEventListener('ajax:success', initialise);
+window.addEventListener('turbolinks:render', initialise);

@@ -109,15 +109,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: 'secondary-certificate', level: '', location: '', topic: '' } }
 
       it 'returns the certificate' do
-        expect(course_filter.current_certificate).to eq(Programme.secondary_certificate)
-      end
-    end
-
-    context 'when filtering by invalid certificate' do
-      let(:filter_params) { { certificate: '50m-breaststroke-bronze-achiever', level: '', location: '', topic: '' } }
-
-      it 'returns nil' do
-        expect(course_filter.current_certificate).to eq(nil)
+        expect(course_filter.current_certificate).to eq(Programme.secondary_certificate.slug)
       end
     end
   end
@@ -196,8 +188,26 @@ RSpec.describe Achiever::CourseFilter do
     context 'when filtering by hub with no occurrences' do
       let(:filter_params) { { certificate: '', level: '', location: '', topic: '', hub_id: 'nooccurrenceshubid' } }
 
-      it 'returns "Hub - no courses"' do
-        expect(course_filter.current_hub).to eq('Hub - no courses')
+      it 'returns :no_courses' do
+        expect(course_filter.current_hub).to eq(:no_courses)
+      end
+    end
+  end
+
+  describe '#course_format' do
+    context 'when not filtering by course format' do
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: '', course_format: '' } }
+
+      it 'returns nil' do
+        expect(course_filter.current_format).to eq(nil)
+      end
+    end
+
+    context 'when filtering by course format' do
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: '', course_format: %w[online remote] } }
+
+      it 'returns the course format' do
+        expect(course_filter.current_format).to eq(%w[online remote])
       end
     end
   end
@@ -290,7 +300,7 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by online' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Online', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: '', course_format: %w[online] } }
 
       it 'returns only courses with online_cpd true' do
         expect(course_filter.courses)
@@ -299,7 +309,7 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by face to face' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Face to face', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: '', course_format: %w[face_to_face] } }
 
       it 'returns courses with online_cpd false and remote_delivered_cpd false' do
         expect(course_filter.courses)
@@ -313,10 +323,28 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by remote' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Remote', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', location: '', topic: '', course_format: %w[remote] } }
 
       it 'returns courses with remote_delivered_cpd true' do
         expect(course_filter.courses).to match_array([location_template, multi_filter_template])
+      end
+    end
+
+    context 'when filtering by multiple formats' do
+      let(:filter_params) do
+        { certificate: '', level: '', location: '', topic: '', course_format: %w[face_to_face online] }
+      end
+
+      it 'only returns courses for correct topic' do
+        expect(course_filter.courses).to match_array([
+                                                       f2f_template,
+                                                       ks2_template,
+                                                       algorithms_template,
+                                                       hub_template,
+                                                       secondary_template,
+                                                       no_occ_template,
+                                                       online_template
+                                                     ])
       end
     end
 
@@ -329,7 +357,9 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by level, location and topic' do
-      let(:filter_params) { { certificate: '', location: 'Remote', level: 'Key stage 2', topic: 'Algorithms' } }
+      let(:filter_params) do
+        { certificate: '', location: '', level: 'Key stage 2', topic: 'Algorithms', course_format: %w[remote] }
+      end
 
       it 'returns courses which match all criteria' do
         expect(course_filter.courses).to match_array([multi_filter_template])
@@ -362,15 +392,7 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { certificate: 'secondary-certificate', level: '', location: '', topic: '' } }
 
       it 'returns current certificate' do
-        expect(course_filter.applied_filters).to match_array(['Secondary Certificate'])
-      end
-
-      context 'when filtering by invalid certificate' do
-        let(:filter_params) { { certificate: 'best-knobbly-knees', level: '', location: '', topic: '' } }
-
-        it 'does not add anything to applied filters' do
-          expect(course_filter.applied_filters).to eq(nil)
-        end
+        expect(course_filter.applied_filters).to match_array(['secondary-certificate'])
       end
     end
 
@@ -391,26 +413,26 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context 'when filtering by online' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Online', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'online', topic: '' } }
 
       it 'returns online string' do
-        expect(course_filter.applied_filters).to match_array(['Online'])
+        expect(course_filter.applied_filters).to match_array(['online'])
       end
     end
 
     context 'when filtering by face to face' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Face to face', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'face_to_face', topic: '' } }
 
       it 'returns face to face string' do
-        expect(course_filter.applied_filters).to match_array(['Face to face'])
+        expect(course_filter.applied_filters).to match_array(['face_to_face'])
       end
     end
 
     context 'when filtering by remote' do
-      let(:filter_params) { { certificate: '', level: '', location: 'Remote', topic: '' } }
+      let(:filter_params) { { certificate: '', level: '', course_format: 'remote', topic: '' } }
 
       it 'returns remote string' do
-        expect(course_filter.applied_filters).to match_array(['Remote'])
+        expect(course_filter.applied_filters).to match_array(['remote'])
       end
     end
 
@@ -432,7 +454,7 @@ RSpec.describe Achiever::CourseFilter do
 
     context 'when filtering by all options' do
       let(:filter_params) do
-        { certificate: 'secondary-certificate', location: 'Remote', level: 'Key stage 2', topic: 'Algorithms',
+        { certificate: 'secondary-certificate', course_format: %w[remote face_to_face], level: 'Key stage 2', topic: 'Algorithms',
           hub_id: 'hubid' }
       end
 
@@ -441,10 +463,10 @@ RSpec.describe Achiever::CourseFilter do
           .to match_array(
             [
               course_filter.current_hub,
-              'Secondary Certificate',
+              'secondary-certificate',
               'Algorithms',
               'Key stage 2',
-              'Remote'
+              '[&quot;remote&quot;, &quot;face_to_face&quot;]'
             ]
           )
       end
@@ -473,8 +495,8 @@ RSpec.describe Achiever::CourseFilter do
         expect(course_filter.applied_filters).to include(/&lt;svg onload=alert\(1\)&gt;/)
       end
 
-      it 'invalid certificate does not cause filtering' do
-        expect(course_filter.applied_filters).not_to include(%r{&lt;h1&gt;Not a cert&lt;/h1&gt;})
+      it 'certificate param is escaped' do
+        expect(course_filter.applied_filters).to include(%r{&lt;h1&gt;Not a cert&lt;/h1&gt;})
       end
     end
   end

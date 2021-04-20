@@ -1,0 +1,52 @@
+{
+  "parallel_manager": null,
+  "headers": {
+    "Authorization": "Basic c2lcZGV2UmFzcGJlcnJ5UGk6ZXo6YiIueVFLNl0/KjdfWA==",
+    "User-Agent": "Faraday v1.3.0"
+  },
+  "params": {},
+  "options": {
+    "params_encoder": null,
+    "proxy": null,
+    "bind": null,
+    "timeout": null,
+    "open_timeout": null,
+    "read_timeout": null,
+    "write_timeout": null,
+    "boundary": null,
+    "oauth": null,
+    "context": null,
+    "on_data": null
+  },
+  "ssl": {
+    "verify": null,
+    "ca_file": null,
+    "ca_path": null,
+    "verify_mode": null,
+    "cert_store": null,
+    "client_cert": null,
+    "client_key": null,
+    "certificate": null,
+    "private_key": null,
+    "verify_depth": null,
+    "version": null,
+    "min_version": null,
+    "max_version": null
+  },
+  "default_parallel_manager": null,
+  "builder": {
+    "adapter": {
+      "name": "Faraday::Adapter::NetHttp",
+      "args": [],
+      "block": null
+    },
+    "handlers": []
+  },
+  "url_prefix": "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/",
+  "manual_proxy": true,
+  "proxy": {
+    "uri": "http://host.docker.internal:8888",
+    "user": null,
+    "password": null
+  }
+}

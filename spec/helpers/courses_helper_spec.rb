@@ -19,7 +19,9 @@ describe CoursesHelper, type: :helper do
                               address_line_2: 'Line 2',
                               address_line_3: 'Line 3',
                               address_line_4: '',
-                              address_town: 'Town')
+                              address_town: 'Town',
+                              online_cpd: false,
+                              remote_delivered_cpd: false)
   end
 
   let(:programme) do
@@ -95,13 +97,37 @@ describe CoursesHelper, type: :helper do
 
   describe('course_meta_icon_class') do
     it 'returns icon for offline courses' do
-      expect(helper.course_meta_icon_class(false)).to eq 'icon-map-pin'
+      expect(helper.course_meta_icon_class(course)).to eq 'icon-map-pin'
+    end
+
+    it 'returns icon for remote courses' do
+      remote_course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
+      expect(helper.course_meta_icon_class(remote_course)).to eq 'icon-remote'
     end
 
     it 'returns icon for online courses' do
-      expect(helper.course_meta_icon_class(true)).to eq 'icon-online'
+      online_course = instance_double('course', online_cpd: true, remote_delivered_cpd: false)
+      expect(helper.course_meta_icon_class(online_course)).to eq 'icon-online'
     end
   end
+
+  describe('occurrence_meta_location') do
+    it 'returns address_town for offline occurrences' do
+      occurrence = build(:achiever_course_occurrence, address_town: 'Hastings')
+      expect(helper.occurrence_meta_location(occurrence)).to eq('Hastings')
+    end
+
+    it 'returns "Live remote training" for remote occurrences' do
+      remote_occurrence = build(:achiever_course_occurrence, remote_delivered_cpd: true)
+      expect(helper.occurrence_meta_location(remote_occurrence)).to eq('Live remote training')
+    end
+
+    it 'returns icon for online occurrences' do
+      online_occurrence = build(:achiever_course_occurrence, online_cpd: true)
+      expect(helper.occurrence_meta_location(online_occurrence)).to eq('Online course')
+    end
+  end
+
 
   describe('#online_course_date') do
     context 'when the date is past' do
@@ -241,31 +267,62 @@ describe CoursesHelper, type: :helper do
   describe 'course_subtitle_text' do
     it 'returns remote correctly' do
       course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
-      expect(helper.course_subtitle_text(course)).to eq('Remote')
+      expect(helper.course_subtitle_text(course)).to eq('Live remote training course')
     end
 
     it 'returns online correctly' do
       course = instance_double('course', online_cpd: true, remote_delivered_cpd:
                               false)
-      expect(helper.course_subtitle_text(course)).to eq('Online')
+      expect(helper.course_subtitle_text(course)).to eq('Online course')
     end
 
     it 'returns face to face correctly' do
       course = instance_double('course', online_cpd: false, remote_delivered_cpd:
                               false)
-      expect(helper.course_subtitle_text(course)).to eq('Face to face')
+      expect(helper.course_subtitle_text(course)).to eq('Face to face course')
+    end
+  end
+
+  describe 'course_type' do
+    it 'returns remote correctly' do
+      course = instance_double('course', online_cpd: false, remote_delivered_cpd: true)
+      expect(helper.course_type(course)).to eq('Live remote training')
+    end
+
+    it 'returns online correctly' do
+      course = instance_double('course', online_cpd: true, remote_delivered_cpd:
+                              false)
+      expect(helper.course_type(course)).to eq('Online course')
+    end
+
+    it 'returns face to face correctly' do
+      course = instance_double('course', online_cpd: false, remote_delivered_cpd:
+                              false)
+      expect(helper.course_type(course)).to eq('Face to face')
     end
   end
 
   describe 'remote_or_face_to_face' do
     it 'returns remote correctly' do
       course = instance_double('course', remote_delivered_cpd: true)
-      expect(helper.remote_or_face_to_face(course)).to eq('Remote')
+      expect(helper.remote_or_face_to_face(course)).to eq('Live remote training')
     end
 
     it 'returns face to face correctly' do
       course = instance_double('course', remote_delivered_cpd: false)
       expect(helper.remote_or_face_to_face(course)).to eq('Face to face')
+    end
+  end
+
+  describe 'view_course_phrase' do
+    it 'returns correctly for remote courses' do
+      course = instance_double('course', remote_delivered_cpd: true)
+      expect(helper.view_course_phrase(course)).to eq('View dates')
+    end
+
+    it 'returns correctly for non remote courses' do
+      course = instance_double('course', remote_delivered_cpd: false)
+      expect(helper.view_course_phrase(course)).to eq('View locations and dates')
     end
   end
 
