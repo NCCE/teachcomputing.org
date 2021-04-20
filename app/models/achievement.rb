@@ -27,6 +27,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: { category: category })
   }
 
+  scope :with_provider, lambda { |provider|
+    joins(:activity).where(activities: { provider: provider })
+  }
+
   scope :with_courses, lambda {
                          joins(:activity).where(activities: { category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY] })
                        }
@@ -44,6 +48,15 @@ class Achievement < ApplicationRecord
       .joins(most_recent_transition_join)
       .order('current_state')
   }
+
+  def eligible_for_badge?
+    return unless programme
+    return unless user.user_programme_enrolments.find_by(programme_id: programme.id)
+
+    first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
+
+    Credly::IssueBadge.perform_later(user.id, programme.id) if first_stem_achievement
+  end
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
