@@ -12,7 +12,7 @@
     <% end %>
     <span class="govuk-body icon-clock">2 hours per week</span>
   <% else %>
-    <span class="govuk-body icon-map-pin"><%= "#{remote_or_face_to_face(@course)} course" %></span>
+    <span class="govuk-body <%= course_meta_icon_class(@occurrences.first) %>"><%= "#{remote_or_face_to_face(@course)} course" %></span>
     <span class="govuk-body icon-clock"><%= @course.duration %> <%= @course.remote_delivered_cpd ? 'hour'.pluralize(@course.duration.to_i) : 'day'.pluralize(@course.duration.to_i) %></span>
    <%= render 'courses/courses-locations', course: @course %>
   <% end %>
