@@ -5,6 +5,10 @@ RSpec.describe FutureLearn::Queries::OrganisationMemberships do
   let(:membership_uuid) { '8e89c1b4-d5c0-4208-b4ad-52928f37ab3f' }
 
   describe 'one' do
+    before do
+      VCR.turn_on!
+    end
+
     it 'returns the specified organisation membership' do
       VCR.use_cassette("#{vcr_id_base}/one") do
         result = described_class.one(membership_uuid)

@@ -1,6 +1,6 @@
 <% meta_tag :title, "#{@course.title} - Teach Computing" %>
 <% meta_tag :description, @course.meta_description %>
-<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{course_subtitle_text(@course)} course", glyph_position: 'bottom', colour: 'blue', small_title: true %>
+<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{course_subtitle_text(@course)}", glyph_position: 'bottom', colour: 'blue', small_title: true %>
 <% meta_tag :image, asset_pack_path('media/images/courses.png') %>
 
 <div class="govuk-width-container">
