@@ -28,7 +28,7 @@ module Api
         AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
       when 'primary-certificate'
         CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(achievement.programme, user.id,
-          source: 'AdminAchievementsController.complete')
+                                            source: 'AdminAchievementsController.complete')
       when 'secondary-certificate'
         CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(achievement.programme, user.id,
                                             source: 'AdminAchievementsController.complete')

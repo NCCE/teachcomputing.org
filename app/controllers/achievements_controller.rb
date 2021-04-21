@@ -22,7 +22,7 @@ class AchievementsController < ApplicationController
           AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
         when 'primary-certificate'
           CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id,
-            source: 'AchievementsController.create')
+                                              source: 'AchievementsController.create')
         when 'secondary-certificate'
           CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id,
                                               source: 'AchievementsController.create')
