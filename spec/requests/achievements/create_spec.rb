@@ -16,7 +16,6 @@ RSpec.describe AchievementsController do
       include ActiveJob::TestHelper
 
       subject do
-        allow(CertificatePendingTransitionJob).to receive(:perform_now)
         programme_activity
         post achievements_path,
              params: {
@@ -55,8 +54,8 @@ RSpec.describe AchievementsController do
         expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
       end
 
-      it 'calls CertificatePendingTransitionJob' do
-        expect(CertificatePendingTransitionJob).to have_received(:perform_now)
+      it 'queues CertificatePendingTransitionJob' do
+        expect(CertificatePendingTransitionJob).to have_been_enqueued
       end
     end
 
