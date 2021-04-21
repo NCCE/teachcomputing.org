@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, category: 'online') }
+  let(:activity) { create(:activity, category: 'online', provider: 'future-learn') }
   let(:face_to_face_activity) { create(:activity, category: 'face-to-face') }
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
@@ -195,6 +195,21 @@ RSpec.describe Achievement, type: :model do
 
     it 'omits the achievements which don\'t match the category' do
       expect(Achievement.without_category(diagnostic_achievement.activity.category)).not_to include(diagnostic_achievement)
+    end
+  end
+
+  describe '#with_provider' do
+    before do
+      achievement
+      achievement2
+    end
+
+    it 'returns the achievements which match the provider' do
+      expect(Achievement.with_provider('stem-learning')).to include(achievement2)
+    end
+
+    it 'omits the achievements which don\'t match the provider' do
+      expect(Achievement.with_provider('stem-learning')).not_to include(achievement)
     end
   end
 
