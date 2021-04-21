@@ -1,4 +1,4 @@
-class StemBookingPresenter < BasePresenter
+class StemBookingPresenter
   def title
     'Book this course'
   end
@@ -11,8 +11,21 @@ class StemBookingPresenter < BasePresenter
     'Book'
   end
 
-  def booking_path(occurence_id)
-    view.stem_course_link(occurence_id)
+  def activity_date(start_date)
+    return if start_date.blank?
+
+    date = Time.zone.parse(start_date)
+    date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
+  end
+
+  def booking_path(occurrence_id)
+    "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{occurrence_id}"
+  end
+
+  def address(occurrence)
+    return 'Live remote training' if occurrence.remote_delivered_cpd
+
+    "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
   end
 
   def show_occurrence_list

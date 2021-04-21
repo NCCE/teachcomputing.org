@@ -27,3 +27,12 @@
     text-align: end;
   }
 }
+
+.ncce-booking-list__skip-button {
+  margin-bottom: 1.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    display: none;
+    visibility: hidden;
+  }
+}

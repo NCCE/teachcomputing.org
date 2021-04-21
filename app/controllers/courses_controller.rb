@@ -33,9 +33,9 @@ class CoursesController < ApplicationController
     course_programmes
 
     @booking = if @course.online_cpd
-                 ::OnlineBookingPresenter.new(@course, view_context)
+                 ::OnlineBookingPresenter.new
                else
-                 ::StemBookingPresenter.new(@course, view_context)
+                 ::StemBookingPresenter.new
                end
 
     render :show
