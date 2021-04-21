@@ -21,8 +21,8 @@ class AchievementsController < ApplicationController
         when 'cs-accelerator'
           AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
         when 'primary-certificate' || 'secondary-certificate'
-          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id,
-                                                      source: 'AchievementsController.create')
+          CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id,
+                                              source: 'AchievementsController.create')
         end
       end
     else

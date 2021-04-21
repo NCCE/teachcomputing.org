@@ -56,7 +56,7 @@ module Achiever
 
         return unless @pending_transition_job
 
-        CertificatePendingTransitionJob.perform_later(
+        CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
           @programme,
           user_id, source: 'AchievementsController.create'
         )
