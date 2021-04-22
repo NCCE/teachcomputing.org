@@ -1,4 +1,6 @@
 class StemBookingPresenter
+  include ActionView::Helpers::UrlHelper
+
   def title
     'Book this course'
   end
@@ -16,6 +18,18 @@ class StemBookingPresenter
 
     date = Time.zone.parse(start_date)
     date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
+  end
+
+  def course_button(occurrences, course_template_no)
+    return unless occurrences.blank? || occurrences.count >= 20
+
+    link_to(
+      occurrences.blank? ? 'View course' : 'See more dates',
+      booking_path(course_template_no),
+      class: 'govuk-button button button--full-width',
+      draggable: 'false',
+      target: :_blank
+    )
   end
 
   def booking_path(occurrence_id)

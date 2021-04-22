@@ -7,11 +7,11 @@
         <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |occurrence| %>
           <li class="ncce-booking-list__item">
-            <div class='govuk-body-s no-bottom-margin ncce-booking-list__date'>
+            <div class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__date'>
               <%= @booking.activity_date(occurrence.start_date) %>
             </div>
             <div class='ncce-booking-list__details-wrapper'>
-              <span class='govuk-body-s no-bottom-margin ncce-booking-list__address'>
+              <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
                 <%= @booking.address(occurrence) %>
               </span>
               <span class='ncce-booking-list__button_wrapper'>
@@ -26,21 +26,8 @@
             </div>
           </li>
         <% end %>
-        <%= link_to(
-          'View course',
-          @booking.booking_path(@course.course_template_no),
-          class: 'govuk-button button button--full-width',
-          draggable: 'false',
-          target: :_blank
-        ) if @occurrences.blank? %>
         </ul>
-        <%= link_to(
-          'See more dates',
-          @booking.booking_path(@course.course_template_no),
-          class: 'govuk-button button button--full-width',
-          draggable: 'false',
-          target: :_blank
-        ) if @occurrences.count >= 20 %>
+        <%= @booking.course_button(@occurrences, @course.course_template_no)  %>
       <% else %>
         <p class="govuk-body">
           <%= link_to(

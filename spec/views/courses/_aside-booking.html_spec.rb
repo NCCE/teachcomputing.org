@@ -65,6 +65,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       before do
         assign(:booking, stem_booking_presenter)
         assign(:occurrences, occurrences)
+        assign(:course, course)
         assign(:activity, activity)
 
         render
