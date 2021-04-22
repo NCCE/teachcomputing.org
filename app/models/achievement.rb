@@ -55,7 +55,7 @@ class Achievement < ApplicationRecord
 
     first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
 
-    Credly::IssueBadge.perform_later(user.id, programme.id) if first_stem_achievement
+    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if first_stem_achievement
   end
 
   def state_machine
