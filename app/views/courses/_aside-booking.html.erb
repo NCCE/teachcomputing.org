@@ -1,6 +1,6 @@
 <% if current_user %>
   <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
-    <div class="ncce-aside" id="booking-list">
+    <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
       <% if (@booking.show_occurrence_list) %>
@@ -26,14 +26,21 @@
             </div>
           </li>
         <% end %>
+        <%= link_to(
+          'View course',
+          @booking.booking_path(@course.course_template_no),
+          class: 'govuk-button button button--full-width',
+          draggable: 'false',
+          target: :_blank
+        ) if @occurrences.blank? %>
         </ul>
         <%= link_to(
           'See more dates',
           @booking.booking_path(@course.course_template_no),
-          class: 'govuk-button button button--small button--full-width',
+          class: 'govuk-button button button--full-width',
           draggable: 'false',
           target: :_blank
-        ) unless @occurrences.count < 20 %>
+        ) if @occurrences.count >= 20 %>
       <% else %>
         <p class="govuk-body">
           <%= link_to(

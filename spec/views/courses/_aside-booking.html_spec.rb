@@ -55,6 +55,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
         expect(rendered).to have_link('Join this course', href: expected_link)
       end
+
+      it "does not show the 'View course' button" do
+        expect(rendered).not_to have_link('View course')
+      end
     end
 
     context 'when its a face to face course' do
@@ -102,6 +106,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         it "does not show the 'See more dates' button if there are less than 20 items" do
           expect(rendered).not_to have_link('See more dates')
         end
+
+        it "does not show the 'View course' button if there are occurences" do
+          expect(rendered).not_to have_link('View course')
+        end
       end
     end
 
@@ -146,6 +154,22 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{course.course_template_no}"
         )
       end
+    end
+
+    it "shows the 'View Course' button if there are no occurrences" do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
+      assign(:course, course)
+      assign(:booking, stem_booking_presenter)
+      assign(:occurrences, [])
+      assign(:activity, activity)
+
+      render
+
+      expect(rendered).to have_link(
+        'View course',
+        href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{course.course_template_no}"
+      )
     end
   end
 
