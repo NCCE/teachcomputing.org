@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
+  include ActiveJob::TestHelper
   let(:user) { create(:user) }
   let(:activity) { create(:activity, category: 'online', provider: 'future-learn') }
   let(:face_to_face_activity) { create(:activity, category: 'face-to-face') }
@@ -372,6 +373,64 @@ RSpec.describe Achievement, type: :model do
       it 'returns false' do
         achievement = build(:achievement, programme: nil)
         expect(achievement.secondary_certificate?).to eq(false)
+      end
+    end
+  end
+
+  describe '#eligible_for_badge?' do
+    context 'without a programme' do
+      it 'returns nil' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.eligible_for_badge?).to eq nil
+      end
+    end
+
+    context 'without an enrolment' do
+      it 'returns nil' do
+        achievement = build(:achievement, programme: programme)
+        achievement.eligible_for_badge?
+        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
+      end
+    end
+
+    context 'with a programme, enrolment and an achievement count of 1' do
+      it 'queues Credly::IssueBadgeJob' do
+        achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
+        achievement.transition_to(:complete)
+        create(:user_programme_enrolment,
+          user: user,
+          programme: cs_accelerator)
+        achievement.eligible_for_badge?
+        expect(Credly::IssueBadgeJob).to have_been_enqueued
+      end
+
+      after do
+        clear_enqueued_jobs
+      end
+    end
+
+    context 'with a programme, enrolment and an achievement count of 0' do
+      it 'returns nil and does not queue Credly::IssueBadgeJob' do
+        achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
+        create(:user_programme_enrolment,
+          user: user,
+          programme: cs_accelerator)
+        achievement.eligible_for_badge?
+        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
+      end
+    end
+
+    context 'with a programme, enrolment and an achievement count greater than 1' do
+      it 'returns nil and does not queue Credly::IssueBadgeJob' do
+        3.times do
+          achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
+          achievement.transition_to(:complete)
+        end
+        create(:user_programme_enrolment,
+          user: user,
+          programme: cs_accelerator)
+        achievement.eligible_for_badge?
+        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
       end
     end
   end
