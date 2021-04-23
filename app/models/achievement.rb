@@ -51,6 +51,7 @@ class Achievement < ApplicationRecord
 
   def eligible_for_badge?
     return unless programme
+    return unless programme.credly_badge_template_id.present?
     return unless user.user_programme_enrolments.find_by(programme_id: programme.id)
 
     first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
