@@ -1,0 +1,38 @@
+.ncce-booking-list__item {
+  border-bottom: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+
+  &:first-child {
+    border-top: 1px solid #CCCCCC;
+  }
+}
+
+.ncce-booking-list__date {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.ncce-booking-list__details-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .ncce-booking-list__address {
+    width: 100%;
+    padding-right: 0.5rem;
+  }
+
+  .ncce-booking-list__button_wrapper {
+    text-align: end;
+  }
+}
+
+.ncce-booking-list__skip-button {
+  margin-bottom: 1.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    display: none;
+    visibility: hidden;
+  }
+}

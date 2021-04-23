@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP228') }
+  let(:online_course) { Achiever::Course::Template.find_by_activity_code('CO214') }
   let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) do
@@ -16,8 +17,10 @@ RSpec.describe CoursesController do
 
   describe 'GET #show' do
     before do
-      stub_age_groups
       stub_face_to_face_occurrences
+      stub_online_occurrences
+      stub_subjects
+      stub_age_groups
       stub_course_templates
       activity
     end
@@ -104,6 +107,28 @@ RSpec.describe CoursesController do
         it 'shows enrolment status' do
           expect(response.body).not_to include('You are enrolled')
         end
+      end
+    end
+
+    context 'when the course is online' do
+      before do
+        user_programme_enrolment
+        get course_path(id: online_course.activity_code, name: online_course.title.parameterize)
+      end
+
+      it 'assigns the correct presenter' do
+        expect(response.body).to include('Join this course')
+      end
+    end
+
+    context 'when the course is remote or face to face' do
+      before do
+        user_programme_enrolment
+        get course_path(id: course.activity_code, name: online_course.title.parameterize)
+      end
+
+      it 'assigns the correct presenter' do
+        expect(response.body).to include('Book this course')
       end
     end
   end

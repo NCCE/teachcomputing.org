@@ -32,6 +32,12 @@ class CoursesController < ApplicationController
     @other_courses = Achiever::Course::Template.without(@course)
     course_programmes
 
+    @booking = if @course.online_cpd
+                 ::OnlineBookingPresenter.new
+               else
+                 ::StemBookingPresenter.new
+               end
+
     render :show
   end
 
