@@ -2,18 +2,19 @@ require 'rails_helper'
 
 RSpec.describe('courses/show', type: :view) do
   let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:course) { Achiever::Course::Template.all.first }
 
   before do
     cs_accelerator
     stub_course_templates
-    courses = Achiever::Course::Template.all
-    @course = courses[0]
 
-    assign(:course, @course)
+    assign(:course, course)
     assign(:other_courses, [])
     assign(:age_groups, {})
     assign(:occurrences, [])
     assign(:programmes, Programme.enrollable)
+
+    stub_template 'courses/_aside-booking': ''
   end
 
   describe 'renders' do
@@ -26,11 +27,11 @@ RSpec.describe('courses/show', type: :view) do
     end
 
     it 'the asides partial' do
-      expect(rendered).to render_template(partial: '_aside-section')
+      expect(rendered).to render_template(partial: '_aside-booking')
     end
 
     it 'a course summary' do
-      expect(rendered).to have_css('h2.govuk-body-m', text: @course.meta_description)
+      expect(rendered).to have_css('h2.govuk-body-m', text: course.meta_description)
     end
 
     it 'the courses details partial' do
@@ -39,8 +40,8 @@ RSpec.describe('courses/show', type: :view) do
 
     it 'a course description' do
       expect(rendered).to have_css('.external-content')
-      expect(rendered).to have_text(strip_tags(sanitize_stem_html(@course.summary)))
-      expect(rendered).to have_text(strip_tags(sanitize_stem_html(@course.outcomes)))
+      expect(rendered).to have_text(strip_tags(sanitize_stem_html(course.summary)))
+      expect(rendered).to have_text(strip_tags(sanitize_stem_html(course.outcomes)))
     end
 
     it 'the certificates card partial' do
@@ -56,7 +57,7 @@ RSpec.describe('courses/show', type: :view) do
     allow(view).to receive(:sanitize_stem_html)
     render
 
-    expect(view).to have_received(:sanitize_stem_html).with(@course.summary)
-    expect(view).to have_received(:sanitize_stem_html).with(@course.outcomes)
+    expect(view).to have_received(:sanitize_stem_html).with(course.summary)
+    expect(view).to have_received(:sanitize_stem_html).with(course.outcomes)
   end
 end

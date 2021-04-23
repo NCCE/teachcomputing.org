@@ -7,7 +7,7 @@
       "request": "attach",
       "cwd": "${workspaceRoot}",
       "remoteWorkspaceRoot": "/app",
-      "remoteHost": "127.0.0.1",
+      "remoteHost": "0.0.0.0",
       "remotePort": "1234",
       "showDebuggerOutput": true
     },
@@ -17,7 +17,7 @@
       "request": "attach",
       "cwd": "${workspaceRoot}",
       "remoteWorkspaceRoot": "/app",
-      "remoteHost": "127.0.0.1",
+      "remoteHost": "0.0.0.0",
       "remotePort": "1235",
       "showDebuggerOutput": true
     }
