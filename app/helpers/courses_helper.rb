@@ -62,6 +62,7 @@ module CoursesHelper
   def occurrence_meta_location(occurrence)
     return 'Online course' if occurrence.online_cpd
     return 'Live remote training' if occurrence.remote_delivered_cpd
+
     occurrence.address_town
   end
 
@@ -93,6 +94,14 @@ module CoursesHelper
   end
 
   def course_subtitle_text(course)
+    type = 'Face to face'
+    type = 'Online' if course.online_cpd
+    type = 'Live remote training' if course.remote_delivered_cpd
+
+    "#{type} course"
+  end
+
+  def course_type(course)
     return 'Online course' if course.online_cpd
 
     remote_or_face_to_face(course)

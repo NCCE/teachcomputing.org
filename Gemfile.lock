@@ -145,8 +145,6 @@ GEM
     dalli (2.7.11)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
-    ddtrace (0.45.0)
-      msgpack
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
@@ -621,7 +619,6 @@ DEPENDENCIES
   combine_pdf (~> 1.0, >= 1.0.18)
   connection_pool (~> 2.2.2)
   dalli (~> 2.7.9)
-  ddtrace (~> 0.44)
   debase (~> 0.2.4)
   dotenv-rails
   erb_lint

@@ -12,4 +12,3 @@ RUN bundle install
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . /app
-CMD ./scripts/docker-entrypoint.sh

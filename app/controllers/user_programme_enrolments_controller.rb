@@ -11,7 +11,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       when 'primary-certificate'
         redirect_to diagnostic_primary_certificate_path(:question_1)
       else
-        flash[:notice] = "Congratulations, you have enrolled on #{programme.title}"
+        flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
         redirect_to programme.path
       end
 
@@ -45,7 +45,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       if enrolment.in_state?(:unenrolled)
         enrolment.transition_to(:enrolled)
         enrolment.update_attribute(:auto_enrolled, false)
-        flash[:notice] = "Congratulations, you have enrolled on #{enrolment.programme.title}"
+        flash[:notice] = "Congratulations, you have enrolled on our #{enrolment.programme.title}"
       end
 
       redirect_to enrolment.programme.path
