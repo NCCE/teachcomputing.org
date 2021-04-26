@@ -377,11 +377,34 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#eligible_for_badge?' do
-    context 'without a programme' do
-      it 'returns nil' do
+  describe '#badgeable?' do
+     context 'without a programme' do
+      it 'returns false' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.eligible_for_badge?).to eq nil
+        expect(achievement.badgeable?).to eq false
+      end
+    end
+
+    context 'with a programme but without a credly_badge_template_id' do
+      it 'returns false' do
+        achievement = create(:achievement, programme: create(:programme, credly_badge_template_id: nil))
+        expect(achievement.badgeable?).to eq false
+      end
+    end
+
+    context 'with a programme that has credly_badge_template_id populated' do
+      it 'returns true' do
+        achievement = create(:achievement, programme: create(:cs_accelerator))
+        expect(achievement.badgeable?).to eq true
+      end
+    end
+  end
+
+  describe '#eligible_for_badge?' do
+    context 'with badgeable is false' do
+      it 'returns false' do
+        achievement = build(:achievement, programme: nil)
+        expect(achievement.eligible_for_badge?).to eq false
       end
     end
 
