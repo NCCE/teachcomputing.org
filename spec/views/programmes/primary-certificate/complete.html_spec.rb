@@ -14,7 +14,7 @@ RSpec.describe('certificates/primary_certificate/complete', type: :view) do
   end
 
   it 'has the programme title' do
-    expect(rendered).to have_css('.hero__heading', text: @programme.title)
+    expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
 
   it 'has the download button' do

@@ -45,7 +45,7 @@ module Achiever
         case programme_slug
         when 'cs-accelerator'
           @assess_eligibility_job = true
-        when 'primary-certificate' || 'secondary-certificate'
+        when 'primary-certificate', 'secondary-certificate'
           @programme = Programme.find_by(slug: programme_slug)
           @pending_transition_job = true
         end
@@ -56,7 +56,7 @@ module Achiever
 
         return unless @pending_transition_job
 
-        CertificatePendingTransitionJob.perform_later(
+        CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
           @programme,
           user_id, source: 'AchievementsController.create'
         )
