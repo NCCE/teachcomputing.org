@@ -59,10 +59,10 @@ RSpec.describe StateMachines::AchievementStateMachine do
       end
     end
 
-    it 'calls eligible_for_badge?' do
-      allow(achievement).to receive(:eligible_for_badge?).and_return(true)
+    it 'calls issue_badge' do
+      allow(achievement).to receive(:issue_badge).and_return(true)
       achievement.transition_to(:complete)
-      expect(achievement).to have_received(:eligible_for_badge?)
+      expect(achievement).to have_received(:issue_badge)
     end
   end
 end

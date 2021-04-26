@@ -49,13 +49,8 @@ class Achievement < ApplicationRecord
       .order('current_state')
   }
 
-  def badgeable?
-    programme&.credly_badge_template_id.present?
-  end
-
-  def eligible_for_badge?
-    return false unless badgeable?
-    return false unless user.user_programme_enrolments.find_by(programme_id: programme.id)
+  def issue_badge
+    return false unless programme&.badgeable? && programme&.user_enrolled?(user)
 
     first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
 

@@ -377,41 +377,18 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#badgeable?' do
-     context 'without a programme' do
-      it 'returns false' do
-        achievement = build(:achievement, programme: nil)
-        expect(achievement.badgeable?).to eq false
-      end
-    end
-
-    context 'with a programme but without a credly_badge_template_id' do
-      it 'returns false' do
-        achievement = create(:achievement, programme: create(:programme, credly_badge_template_id: nil))
-        expect(achievement.badgeable?).to eq false
-      end
-    end
-
-    context 'with a programme that has credly_badge_template_id populated' do
-      it 'returns true' do
-        achievement = create(:achievement, programme: create(:cs_accelerator))
-        expect(achievement.badgeable?).to eq true
-      end
-    end
-  end
-
-  describe '#eligible_for_badge?' do
+  describe '#issue_badge' do
     context 'with badgeable is false' do
       it 'returns false' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.eligible_for_badge?).to eq false
+        expect(achievement.issue_badge).to eq false
       end
     end
 
     context 'without an enrolment' do
       it 'returns nil' do
         achievement = build(:achievement, programme: programme)
-        achievement.eligible_for_badge?
+        achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
       end
     end
@@ -423,7 +400,7 @@ RSpec.describe Achievement, type: :model do
         create(:user_programme_enrolment,
           user: user,
           programme: cs_accelerator)
-        achievement.eligible_for_badge?
+        achievement.issue_badge
         expect(Credly::IssueBadgeJob).to have_been_enqueued
       end
 
@@ -438,7 +415,7 @@ RSpec.describe Achievement, type: :model do
         create(:user_programme_enrolment,
           user: user,
           programme: cs_accelerator)
-        achievement.eligible_for_badge?
+        achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
       end
     end
@@ -452,7 +429,7 @@ RSpec.describe Achievement, type: :model do
         create(:user_programme_enrolment,
           user: user,
           programme: cs_accelerator)
-        achievement.eligible_for_badge?
+        achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
       end
     end
