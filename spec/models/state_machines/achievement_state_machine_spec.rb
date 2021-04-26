@@ -58,5 +58,11 @@ RSpec.describe StateMachines::AchievementStateMachine do
         expect { disallowed_achievement.transition_to(:complete) }.not_to have_enqueued_job(CompleteAchievementEmailJob)
       end
     end
+
+    it 'calls eligible_for_badge?' do
+      allow(achievement).to receive(:eligible_for_badge?).and_return(true)
+      achievement.transition_to(:complete)
+      expect(achievement).to have_received(:eligible_for_badge?)
+    end
   end
 end
