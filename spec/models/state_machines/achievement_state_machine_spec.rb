@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe StateMachines::AchievementStateMachine do
   let(:achievement) { create(:achievement) }
-
   let(:online_achievement) { create(:achievement, activity: create(:activity, category: Activity::FACE_TO_FACE_CATEGORY)) }
   let(:face_to_face_achievement) { create(:achievement, activity: create(:activity, category: Activity::ONLINE_CATEGORY)) }
   let(:action_achievement) { create(:achievement, activity: create(:activity, category: Activity::ACTION_CATEGORY)) }
@@ -57,23 +56,6 @@ RSpec.describe StateMachines::AchievementStateMachine do
     it "doesn't queue CompleteAchievementEmailJob when state complete for the expected categories" do
       [action_achievement, assessment_achievement, community_achievement, diagnostic_achievement].each do |disallowed_achievement|
         expect { disallowed_achievement.transition_to(:complete) }.not_to have_enqueued_job(CompleteAchievementEmailJob)
-      end
-    end
-
-    context 'when the provider is not stem-learning' do
-      it 'calls eligible_for_badge?' do
-        achievement = create(:achievement, activity: create(:activity, provider: 'future-learn'))
-        allow(achievement).to receive(:eligible_for_badge?).and_return(true)
-        achievement.transition_to(:complete)
-        expect(achievement).not_to have_received(:eligible_for_badge?)
-      end
-    end
-
-    context 'when the provider is stem-learning' do
-      it 'calls eligible_for_badge?' do
-        allow(achievement).to receive(:eligible_for_badge?).and_return(true)
-        achievement.transition_to(:complete)
-        expect(achievement).to have_received(:eligible_for_badge?)
       end
     end
   end
