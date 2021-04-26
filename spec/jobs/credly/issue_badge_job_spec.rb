@@ -12,7 +12,11 @@ RSpec.describe Credly::IssueBadgeJob, type: :job do
 
     context 'when the feature flag is enabled' do
       before do
-        ENV['BADGES_ENABLED'] = 'true'
+        stub_feature_flags({ badges_enabled: true })
+      end
+
+      after do
+        unstub_feature_flags
       end
 
       context 'when the user already has the badged issued' do
