@@ -6,16 +6,11 @@ RSpec.describe('certificates/cs_accelerator/v1/_activity-list', type: :view) do
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
 
   before do
-    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'false'
     diagnostic_tool_activity
     @online_achievements = []
     @face_to_face_achievements = []
     @programme = programme
     allow(view).to receive(:current_user).and_return(user)
-  end
-
-  after do
-    ENV['CSA_QUESTIONNAIRE_ENABLED'] = 'true'
   end
 
   context 'when the user has not done the diagnostic' do

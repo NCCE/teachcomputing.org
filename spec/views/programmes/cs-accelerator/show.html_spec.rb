@@ -5,7 +5,6 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
   let!(:programme) { create(:cs_accelerator) }
 
   before do
-    stub_feature_flags({ csa_questionnaire_enabled: true })
     @csa_dash = CSADash.new(user: user)
     @current_user = user
     @programme = programme
