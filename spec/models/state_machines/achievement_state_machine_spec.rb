@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe StateMachines::AchievementStateMachine do
   let(:achievement) { create(:achievement) }
-
   let(:online_achievement) { create(:achievement, activity: create(:activity, category: Activity::FACE_TO_FACE_CATEGORY)) }
   let(:face_to_face_achievement) { create(:achievement, activity: create(:activity, category: Activity::ONLINE_CATEGORY)) }
   let(:action_achievement) { create(:achievement, activity: create(:activity, category: Activity::ACTION_CATEGORY)) }
@@ -48,7 +47,6 @@ RSpec.describe StateMachines::AchievementStateMachine do
   end
 
   describe 'after_transition hooks' do
-
     it 'queues CompleteAchievementEmailJob when state complete for the expected categories' do
       [online_achievement, face_to_face_achievement].each do |allowed_achievement|
         expect { allowed_achievement.transition_to(:complete) }.to have_enqueued_job(CompleteAchievementEmailJob)
@@ -59,6 +57,12 @@ RSpec.describe StateMachines::AchievementStateMachine do
       [action_achievement, assessment_achievement, community_achievement, diagnostic_achievement].each do |disallowed_achievement|
         expect { disallowed_achievement.transition_to(:complete) }.not_to have_enqueued_job(CompleteAchievementEmailJob)
       end
+    end
+
+    it 'calls issue_badge' do
+      allow(achievement).to receive(:issue_badge).and_return(true)
+      achievement.transition_to(:complete)
+      expect(achievement).to have_received(:issue_badge)
     end
   end
 end

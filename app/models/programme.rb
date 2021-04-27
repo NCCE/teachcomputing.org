@@ -31,6 +31,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
+  def badgeable?
+    credly_badge_template_id.present?
+  end
+
   def credits_achieved_for_certificate(_user)
     0
   end
