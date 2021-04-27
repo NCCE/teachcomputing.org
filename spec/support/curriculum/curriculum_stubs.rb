@@ -15,10 +15,28 @@ module CurriculumStubs
       .to_return(status: 200, body: SCHEMA)
   end
 
-  def stub_a_valid_request(response = { "data": {} }.to_json)
+  def stub_a_valid_request(response = { data: {} }.to_json)
     stub_request(:post, URL)
       .to_return(
         { status: 200, body: response, headers: {} }
+      )
+  end
+
+  def stub_a_rating_request(rating_id)
+    stub_request(:post, URL)
+      .to_return(
+        {
+          status: 200,
+          body: {
+            data: {
+              add_positive_lesson_rating: { id: rating_id },
+              add_negative_lesson_rating: { id: rating_id },
+              add_positive_unit_rating: { id: rating_id },
+              add_negative_unit_rating: { id: rating_id }
+            }
+          }.to_json,
+          headers: {}
+        }
       )
   end
 end

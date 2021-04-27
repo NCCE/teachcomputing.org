@@ -16,13 +16,13 @@ module CurriculumClient
         CurriculumClient::Request.run(query: client.parse(rating), client: client)
       end
 
-      def add_positive_rating(id:, fields: nil, stem_achiever_contact_no:)
+      def add_positive_rating(id:, stem_achiever_contact_no:, fields: nil)
         rating_type = rating_type(:positive)
         response = rate(fields, id, stem_achiever_contact_no, rating_type)
         response&.send(rating_type)
       end
 
-      def add_negative_rating(id:, fields: nil, stem_achiever_contact_no:)
+      def add_negative_rating(id:, stem_achiever_contact_no:, fields: nil)
         rating_type = rating_type(:negative)
         response = rate(fields, id, stem_achiever_contact_no, rating_type)
         response&.send(rating_type)
@@ -32,7 +32,7 @@ module CurriculumClient
         "add_#{polarity}_#{self::CONTEXT}_rating"
       end
 
-      def comment(id:, fields: nil, comment:)
+      def comment(id:, comment:, fields: nil)
         fields = fields ? "{#{fields}}" : ''
         update = <<~GRAPHQL
           mutation {

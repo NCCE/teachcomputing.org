@@ -34,13 +34,27 @@ RSpec.describe('Courses page', type: :system) do
       end
     end
 
-    describe 'with a check box filter' do
+    describe 'with a checkbox filter' do
       before do
         check('course_format_0', visible: false)
       end
 
       it 'shows the expected number of results' do
         expect(page).to have_css('.ncce-courses__count', text: 'Showing 30 results')
+      end
+
+      it 'shows the clear all filters button' do
+        expect(page).to have_link('Clear all filters', href: courses_path(anchor: 'results-top'))
+      end
+    end
+
+    describe 'with a select filter' do
+      before do
+        select('Key stage 1', from: 'level')
+      end
+
+      it 'shows the expected number of results' do
+        expect(page).to have_css('.ncce-courses__count', text: 'Showing 14 results')
       end
 
       it 'shows the clear all filters button' do
