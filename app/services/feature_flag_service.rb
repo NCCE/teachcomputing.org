@@ -1,6 +1,7 @@
 class FeatureFlagService
   FLAGS = {
-    csa_questionnaire_enabled: 'CSA_QUESTIONNAIRE_ENABLED'
+    csa_questionnaire_enabled: 'CSA_QUESTIONNAIRE_ENABLED',
+    badges_enabled: 'BADGES_ENABLED'
   }.freeze
 
   def initialize(dependencies = {})

@@ -112,6 +112,22 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe '#badgeable?' do
+   context 'with a programme but without a credly_badge_template_id' do
+     it 'returns false' do
+        programme = build(:programme, credly_badge_template_id: nil)
+        expect(programme.badgeable?).to eq false
+     end
+   end
+
+   context 'with a programme that has credly_badge_template_id populated' do
+     it 'returns true' do
+      programme = build(:programme, credly_badge_template_id: '123456789')
+       expect(programme.badgeable?).to eq true
+     end
+   end
+ end
+
   describe '#user_completed?' do
     context 'when the user is enrolled' do
       it 'returns false' do

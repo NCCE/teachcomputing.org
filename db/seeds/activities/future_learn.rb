@@ -374,14 +374,14 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(future_learn_course_uuid: '147b3adf-9f26-4ffa-a95f-6c1720ca4d27 ') do |activity|
+a = Activity.find_or_create_by(future_learn_course_uuid: '147b3adf-9f26-4ffa-a95f-6c1720ca4d27') do |activity|
   activity.title = 'Teaching Programming to 5 - 11 year olds'
   activity.credit = 10
   activity.slug = 'teaching-programming-to-5-11-year-olds'
   activity.category = 'online'
   activity.self_certifiable = false
   activity.stem_course_template_no = '06bb0045-bb8b-eb11-b1ac-0022481a67ae'
-  activity.future_learn_course_uuid = '147b3adf-9f26-4ffa-a95f-6c1720ca4d27 '
+  activity.future_learn_course_uuid = '147b3adf-9f26-4ffa-a95f-6c1720ca4d27'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO041'
 end
