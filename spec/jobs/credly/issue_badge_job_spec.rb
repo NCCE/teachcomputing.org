@@ -42,10 +42,6 @@ RSpec.describe Credly::IssueBadgeJob, type: :job do
     end
 
     context 'when the feature flag is not enabled' do
-      before do
-        ENV['BADGES_ENABLED'] = 'false'
-      end
-
       it 'does not call Credly::Badge.issue' do
         described_class.perform_now(user.id, programme.id)
           expect(Credly::Badge).not_to have_received(:issue)
