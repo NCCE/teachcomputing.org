@@ -940,3 +940,29 @@ a = Activity.find_or_create_by(stem_course_template_no: 'd35ce2c2-e78a-eb11-b1ac
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '4044cbf0-776c-eb11-a812-000d3a872800') do |activity|
+  activity.title = 'New to computing - Spring into the Computer Science Accelerator Easter 2021'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-spring-into-the-computer-science-accelerator-easter-2021'
+  activity.stem_course_template_no = '4044cbf0-776c-eb11-a812-000d3a872800'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP250'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7f63e415-7a6c-eb11-a812-000d3a872800') do |activity|
+  activity.title = 'Advanced GCSE Computer Science - Spring into the Computer Science Accelerator Easter 2021'
+  activity.credit = 40
+  activity.slug = 'advanced-gcse-computer-science-spring-into-the-computer-science-accelerator-easter-2021'
+  activity.stem_course_template_no = '7f63e415-7a6c-eb11-a812-000d3a872800'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP251'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
