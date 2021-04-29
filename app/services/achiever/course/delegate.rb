@@ -1,5 +1,5 @@
 class Achiever::Course::Delegate
-  attr_accessor :course_template_no, :is_fully_attended, :online_cpd, :progress
+  attr_accessor :course_occurence_no, :course_template_no, :is_fully_attended, :online_cpd, :progress
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
   PROGRAMME_NAME = 'ncce'.freeze
@@ -17,6 +17,7 @@ class Achiever::Course::Delegate
   end
 
   def initialize(delegate_course)
+    @course_occurence_no = delegate_course.send('Activity.COURSEOCCURRENCENO')
     @course_template_no = delegate_course.send('Activity.COURSETEMPLATENO')
     @is_fully_attended = ActiveRecord::Type::Boolean.new.deserialize(delegate_course.send('Delegate.Is_Fully_Attended').downcase)
     @online_cpd = delegate_course.send('OnlineCPD')
