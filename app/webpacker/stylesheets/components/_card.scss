@@ -224,7 +224,7 @@
   max-width: 15rem;
 
   @include govuk-media-query($from: desktop) {
-    max-width: 16rem;
+    height: 136px;
     width: auto;
   }
 }
