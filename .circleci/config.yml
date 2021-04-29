@@ -69,6 +69,13 @@ jobs:
       - store_test_results:
           path: ~/rspec
 
+      - store_artifacts:
+          path: coverage
+
+      - store_artifacts:
+          path: ../tmp/screenshots
+          destination: screenshots
+
       - run:
           name: Run brakeman
           command: |
