@@ -75,4 +75,13 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by selenium_driver
   end
+
+  config.after(:each, type: :system, js: true) do |_spec|
+    errors = page.driver.browser.manage.logs.get(:browser)
+                 .select { |e| e.level == 'SEVERE' && e.message.present? }
+                 .map(&:message)
+                 .to_a
+
+    raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
+  end
 end

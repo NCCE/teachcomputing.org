@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
@@ -69,7 +69,20 @@ jobs:
       - store_test_results:
           path: ~/rspec
 
+      - store_artifacts:
+          path: coverage
+
+      - store_artifacts:
+          path: ../tmp/screenshots
+          destination: screenshots
+
       - run:
           name: Run brakeman
           command: |
             bundle exec brakeman -q -i config/brakeman.ignore --no-summary
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
