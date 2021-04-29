@@ -19,7 +19,7 @@ RSpec.describe('pages/supporting-partners', type: :view) do
 
     it 'has external links for each of the supporting_partner cards' do
       current_supporting_partners_logo_links = [
-        'https://www.arm.com/resources/education/schools',
+        'https://www.arm.com/',
         'https://www.bt.com/skillsfortomorrow',
         'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science',
         'https://www.nationwide-jobs.co.uk/',
