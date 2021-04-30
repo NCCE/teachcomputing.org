@@ -966,3 +966,99 @@ a = Activity.find_or_create_by(stem_course_template_no: '7f63e415-7a6c-eb11-a812
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'afa28241-4d8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Collaboration in KS3 programming'
+  activity.credit = 10
+  activity.slug = 'collaboration-in-ks3-programming'
+  activity.stem_course_template_no = 'afa28241-4d8d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP437'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '2c724a38-768d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'New to computing pathway for Maths teachers'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-pathway-for-maths-teachers'
+  activity.stem_course_template_no = '2c724a38-768d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP277'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '2ea1cee7-438d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Maths in computer science'
+  activity.credit = 10
+  activity.slug = 'maths-in-computer-science'
+  activity.stem_course_template_no = '2ea1cee7-438d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP234'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'b9af812f-4b8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Assessment in secondary computing'
+  activity.credit = 10
+  activity.slug = 'assessment-in-secondary-computing'
+  activity.stem_course_template_no = 'b9af812f-4b8d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP413'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'afa28241-4d8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Maths in computer science - remote'
+  activity.credit = 10
+  activity.slug = 'maths-in-computer-science-remote'
+  activity.stem_course_template_no = 'afa28241-4d8d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP434'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Encouraging girls into GCSE computer science'
+  activity.credit = 10
+  activity.slug = 'encouraging-girls-into-gcse-computer-science'
+  activity.stem_course_template_no = '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP440'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '3fd9b792-af8c-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'New to computing pathway for Maths teachers'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-pathway-for-maths-teachers-remote'
+  activity.stem_course_template_no = '3fd9b792-af8c-eb11-b1ac-0022481a6ad5'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP477'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '039c98c5-3c91-eb11-b1ac-000d3a86ec4a') do |activity|
+  activity.title = 'Careers and enrichment in primary computing with STEM Ambassadors in your region'
+  activity.credit = 10
+  activity.slug = 'careers-and-enrichment-in-primary-computing-with-stem-ambassadors-in-your-region'
+  activity.stem_course_template_no = '039c98c5-3c91-eb11-b1ac-000d3a86ec4a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP441'
+  activity.remote_delivered_cpd = true
+end
