@@ -13,6 +13,7 @@
         <div class="external-content govuk-!-margin-bottom-7">
           <%= sanitize_stem_html @course.summary %>
           <%= sanitize_stem_html @course.outcomes %>
+        </div>
         <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
       <div class="govuk-grid-column-one-third">
