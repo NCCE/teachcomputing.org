@@ -36,7 +36,6 @@ RSpec.describe CoursesController do
         get courses_path, params: {
           level: 'Key stage 1',
           topic: 'Computing',
-          location: 'Redruth',
           certificate: 'cs-accelerator'
         }
       end
@@ -45,7 +44,7 @@ RSpec.describe CoursesController do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ['Key stage 1', 'Redruth', 'Computing', 'cs-accelerator']
+            ['Key stage 1', 'Computing', 'cs-accelerator']
           )
       end
     end

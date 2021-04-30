@@ -435,8 +435,18 @@ RSpec.describe Achiever::CourseFilter do
         expect(course_filter.location_based_results.max_radius) .to eq(described_class::SEARCH_RADII.max)
       end
 
-      it 'sets radius_maxed true when search radius is at max value'
-      it 'sets radius_maxed false when search radius is less than max value'
+      it 'sets radius_maxed false when search radius is less than max value' do
+        expect(course_filter.location_based_results.radius_maxed).to eq(false)
+      end
+
+      context 'when at max search radius' do
+        let(:filter_params) { { location: 'Liverpool', radius: '60' } }
+
+        it 'sets radius_maxed true when search radius is at max value' do
+          expect(course_filter.location_based_results.radius_maxed).to eq(true)
+        end
+      end
+
 
       it 'returns f2f courses ordered by nearest occurrences within default radius' do
         expect(course_filter.location_based_results.courses)
@@ -617,25 +627,25 @@ RSpec.describe Achiever::CourseFilter do
 
         let(:filter_params) { { location: 'asdfasdfasdfasdf' } }
 
-        it 'returns the not found message' do
-          expect(course_filter.search_location_formatted_address).to eq('This location was not recognised. Please check if it is correct.')
+        it 'returns nil' do
+          expect(course_filter.search_location_formatted_address).to eq(nil)
         end
       end
     end
   end
 
-  describe '#search_radius' do
+  describe '#current_radius' do
     let(:filter_params) { {} }
 
     it 'returns 40 by default' do
-      expect(course_filter.search_radius).to eq('40')
+      expect(course_filter.current_radius).to eq(40)
     end
 
     context 'when radius present in params' do
       let(:filter_params) { { radius: '50' } }
 
       it 'returns value set by params' do
-        expect(course_filter.search_radius).to eq('50')
+        expect(course_filter.current_radius).to eq(50)
       end
     end
   end

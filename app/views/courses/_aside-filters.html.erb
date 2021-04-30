@@ -17,9 +17,9 @@
         options_for_select(@course_filter.age_groups.keys, @course_filter.current_level),
         {
           include_blank: 'Any level',
-          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_level }],
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_level }],
           'aria-label': 'Filter by level',
-          data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect" }
         }
       %>
       <%= label_tag :level, 'Topic:', class: 'govuk-body-s ncce-label--s' %>
@@ -27,9 +27,9 @@
         options_for_select(@course_filter.course_tags.keys, @course_filter.current_topic),
         {
           include_blank: 'Any topic',
-          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_topic }],
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_topic }],
           'aria-label': 'Filter by topic',
-          data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect" }
         }
       %>
       <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label--s' %>
@@ -37,16 +37,16 @@
         options_for_select(@course_filter.certificates, @course_filter.current_certificate),
         {
           include_blank: 'Any certificate',
-          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active' => @course_filter.current_certificate }],
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
           'aria-label': 'Filter by certificate',
-          data: { action: "input->course-filter#filter input->course-filter#toggleActiveSelect" }
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect" }
         }
       %>
       <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label--s' %>
       <div class="govuk-checkboxes">
       <% @course_filter.course_formats.each_with_index do |course_format, index| %>
         <div class='govuk-checkboxes__item ncce-checkboxes__item'>
-          <%= check_box_tag 'course_format[]', course_format, @course_filter&.current_format&.include?(course_format.to_s), class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'input->course-filter#filter  input->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
+          <%= check_box_tag 'course_format[]', course_format, @course_filter&.current_format&.include?(course_format.to_s), class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
           <%= label_tag "course_format_#{index}", (course_format.to_s).humanize, class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
         </div>
       <% end %>
@@ -77,7 +77,7 @@
       <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
       <%= hidden_field_tag 'js_enabled', false %>
 
-      <%= submit_tag "Apply filters", :name => nil, class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
+      <%= submit_tag "Apply filters", class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
     <% end %>
     <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.total_results_count, 'result') %></button>
   </div>

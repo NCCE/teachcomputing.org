@@ -7,8 +7,6 @@ module Achiever
     def initialize(filter_params:)
       @filter_params = filter_params
 
-      # @filter_params[:location] = 'Liverpool' if Rails.env.development?
-
       @subjects ||= Achiever::Course::Subject.all
       @age_groups ||= Achiever::Course::AgeGroup.all
       @search_radii = SEARCH_RADII
@@ -20,9 +18,8 @@ module Achiever
 
       @location_search_results = begin
         results = Achiever::LocationCourseSearchResult.new
-        radius = current_radius.to_i
         results.max_radius = max_radius
-        results.radius_maxed = radius == max_radius
+        results.radius_maxed = current_radius == max_radius
 
         f2f_courses = courses.select { |c| !c.online_cpd && !c.remote_delivered_cpd }
 
@@ -51,7 +48,7 @@ module Achiever
                                          results_within_max_radius
                                        else
                                          results_within_max_radius.select do |c|
-                                           c.nearest_occurrence_distance <= radius
+                                           c.nearest_occurrence_distance <= current_radius
                                          end
                                        end
 
@@ -158,7 +155,7 @@ module Achiever
       return @search_radius if defined? @search_radius
 
       @search_radius = if @filter_params[:radius].present?
-                         @filter_params[:radius]
+                         @filter_params[:radius].to_i
                        else
                          40
                        end

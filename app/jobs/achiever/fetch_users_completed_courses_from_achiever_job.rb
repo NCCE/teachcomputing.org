@@ -7,6 +7,7 @@ module Achiever
       @pending_transition_job = false
       Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no).each do |course|
         activity = course_activity(stem_course_template_no: course.course_template_no, user_id: user.id)
+        Rails.logger.warn "Could not find activity with template #{course.course_template_no} and occ #{course.course_occurence_no} for user #{user.stem_achiever_contact_no}" unless activity
         next unless activity
 
         achievement = fetch_achievement(activity_id: activity.id, user_id: user.id)
@@ -45,7 +46,7 @@ module Achiever
         case programme_slug
         when 'cs-accelerator'
           @assess_eligibility_job = true
-        when 'primary-certificate' || 'secondary-certificate'
+        when 'primary-certificate', 'secondary-certificate'
           @programme = Programme.find_by(slug: programme_slug)
           @pending_transition_job = true
         end
@@ -56,7 +57,7 @@ module Achiever
 
         return unless @pending_transition_job
 
-        CertificatePendingTransitionJob.perform_later(
+        CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
           @programme,
           user_id, source: 'AchievementsController.create'
         )

@@ -11,6 +11,7 @@ RSpec.describe Achiever::Course::Delegate do
 
     it 'provides the required accessor methods' do
       expect(delegate_records.first).to respond_to(:course_template_no)
+      expect(delegate_records.first).to respond_to(:course_occurence_no)
       expect(delegate_records.first).to respond_to(:is_fully_attended)
       expect(delegate_records.first).to respond_to(:online_cpd)
       expect(delegate_records.first).to respond_to(:progress)

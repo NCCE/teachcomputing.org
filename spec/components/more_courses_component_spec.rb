@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe MoreCoursesComponent, type: :component do
+  let(:filter) { instance_double(Achiever::CourseFilter) }
 
   context 'when searching within maximum radius' do
     it 'shows message when there are more courses within max radius' do
@@ -9,8 +10,9 @@ RSpec.describe MoreCoursesComponent, type: :component do
         sr.further_results_count = 23
         sr.max_radius = 88
       end
+      allow(filter).to receive(:location_based_results).and_return(search_results)
 
-      render_inline(described_class.new(search_results: search_results))
+      render_inline(described_class.new(course_filter: filter))
       expect(rendered_component).to have_text('There are 23 more face to face courses within 88 miles')
     end
 
@@ -20,8 +22,9 @@ RSpec.describe MoreCoursesComponent, type: :component do
         sr.further_results_count = 1
         sr.max_radius = 88
       end
+      allow(filter).to receive(:location_based_results).and_return(search_results)
 
-      render_inline(described_class.new(search_results: search_results))
+      render_inline(described_class.new(course_filter: filter))
       expect(rendered_component).to have_text('There is 1 more face to face course within 88 miles')
     end
 
@@ -31,8 +34,9 @@ RSpec.describe MoreCoursesComponent, type: :component do
         sr.further_results_count = 0
         sr.outside_max_radius_results_count = 12
       end
+      allow(filter).to receive(:location_based_results).and_return(search_results)
 
-      render_inline(described_class.new(search_results: search_results))
+      render_inline(described_class.new(course_filter: filter))
       expect(rendered_component).to have_text('There are 12 more face to face courses nationwide')
     end
 
@@ -42,8 +46,9 @@ RSpec.describe MoreCoursesComponent, type: :component do
         sr.further_results_count = 0
         sr.outside_max_radius_results_count = 1
       end
+      allow(filter).to receive(:location_based_results).and_return(search_results)
 
-      render_inline(described_class.new(search_results: search_results))
+      render_inline(described_class.new(course_filter: filter))
       expect(rendered_component).to have_text('There is 1 more face to face course nationwide')
     end
 
@@ -53,8 +58,9 @@ RSpec.describe MoreCoursesComponent, type: :component do
         sr.further_results_count = 0
         sr.outside_max_radius_results_count = 0
       end
+      allow(filter).to receive(:location_based_results).and_return(search_results)
 
-      render_inline(described_class.new(search_results: search_results))
+      render_inline(described_class.new(course_filter: filter))
       expect(rendered_component).to have_text('There are 0 more face to face courses nationwide with current filters')
     end
 

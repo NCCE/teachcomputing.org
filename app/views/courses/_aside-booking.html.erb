@@ -1,0 +1,56 @@
+<% if current_user %>
+  <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
+    <div class="ncce-aside">
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <% if (@booking.show_occurrence_list) %>
+        <ul class="govuk-list ncce-booking-list">
+        <% @occurrences.each do |occurrence| %>
+          <li class="ncce-booking-list__item">
+            <div class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__date'>
+              <%= @booking.activity_date(occurrence.start_date) %>
+            </div>
+            <div class='ncce-booking-list__details-wrapper'>
+              <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
+                <%= @booking.address(occurrence) %>
+              </span>
+              <span class='ncce-booking-list__button_wrapper'>
+                <%= link_to(
+                  @booking.booking_button_title,
+                  @booking.booking_path(occurrence.course_occurrence_no),
+                  class: 'govuk-button button button--small',
+                  draggable: 'false',
+                  target: :_blank
+                ) %>
+              </span>
+            </div>
+          </li>
+        <% end %>
+        </ul>
+        <%= @booking.course_button(@occurrences, @course.course_template_no)  %>
+      <% else %>
+        <p class="govuk-body">
+          <%= link_to(
+            @booking.title,
+            @booking.booking_path(@activity.future_learn_course_uuid),
+            class: 'govuk-button button--aside',
+            draggable: 'false',
+            target: :_blank
+          ) %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="ncce-aside" id="booking-list">
+    <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
+    <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
+    <p class="govuk-body">
+      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %>
+    </p>
+    <p class="govuk-body-s ncce-aside__text">
+      Not got a STEM Learning account?
+      <br><%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %>
+    </p>
+  </div>
+<% end %>

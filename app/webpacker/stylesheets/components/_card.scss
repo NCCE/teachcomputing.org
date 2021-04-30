@@ -218,22 +218,22 @@
   text-align: center;
 }
 
+.dark_image--supporting-partners {
+  height: 136px;
+}
+
 .dark_card--image {
   display: block;
-  height: 56px;
   margin: auto;
   max-width: 15rem;
 
   @include govuk-media-query($from: desktop) {
-    height: 81px;
-    max-width: 16rem;
     width: auto;
   }
 }
 
 .dark_card--image-wide {
   @include govuk-media-query($from: desktop) {
-    height: 81px;
     max-width: 22rem;
     width: auto;
   }

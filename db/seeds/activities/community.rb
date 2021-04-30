@@ -188,15 +188,16 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(slug: 'join-isaac-and-volunteer-to-run-an-event') do |activity|
-  activity.title = 'Join Isaac and volunteer to run an event'
+a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-science') do |activity|
+  activity.title = 'Answer 5 questions on Isaac Computer Science'
   activity.credit = 10
   activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'isaac'
   activity.self_certifiable = true
-  activity.description = '<a href="https://isaaccomputerscience.org/" class="ncce=link">Register with Isaac Computer Science</a> and be a volunteer at an event'
-  activity.self_verification_info = 'Provide details of the date and venue of event'
+  activity.description = "<a href='https://isaaccomputerscience.org/teachers' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' class='ncce=link'>answer any 5 questions from across the topic sections. <a href='https://isaaccomputerscience.org/progress' class='ncce-link'>Screenshot your progress dashboard</a> as evidence you have completed this activity."
+  activity.self_verification_info = 'Provide screenshot of your progress dashboard'
+  activity.uploadable = true
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

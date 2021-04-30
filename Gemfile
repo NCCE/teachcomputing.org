@@ -13,7 +13,6 @@ gem 'cloudflare-rails', '~> 1.1'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.2.2'
 gem 'dalli', '~> 2.7.9'
-gem 'ddtrace', '~> 0.44'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
@@ -48,7 +47,7 @@ gem 'statesman', '~> 4.1.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 4.2'
 gem "view_component", require: "view_component/engine"
-gem 'webpacker', '~> 5.x'
+gem 'webpacker', '~> 5.3.0'
 gem 'wicked', '~> 1.3.4'
 # must match the version used to generate the schema
 gem 'graphql', '<= 1.10.10'

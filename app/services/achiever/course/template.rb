@@ -2,8 +2,11 @@ class Achiever::Course::Template
   attr_accessor :activity_code,
                 :age_groups,
                 :booking_url,
+                :course_leaders,
                 :course_template_no,
                 :duration,
+                :how_long_is_the_course,
+                :how_will_you_learn,
                 :meta_description,
                 :occurrences,
                 :online_cpd,
@@ -13,6 +16,8 @@ class Achiever::Course::Template
                 :subjects,
                 :summary,
                 :title,
+                :topics_covered,
+                :who_is_it_for,
                 :workstream
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
@@ -26,8 +31,11 @@ class Achiever::Course::Template
       t.activity_code = resource.send('Template.ActivityCode')
       t.age_groups = resource.send('Template.AgeGroups').split(';')
       t.booking_url = resource.send('Template.BookingURL')
+      t.course_leaders = resource.send('Template.CourseLeaders')
       t.course_template_no = resource.send('Template.COURSETEMPLATENO')
       t.duration = resource.send('Template.Duration')
+      t.how_long_is_the_course = resource.send('Template.HowLongCourse')
+      t.how_will_you_learn = resource.send('Template.HowYouWillLearn')
       t.meta_description = resource.send('Template.MetaDescription')
       t.occurrences = []
       t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource.send('Template.OnlineCPD').downcase)
@@ -37,6 +45,8 @@ class Achiever::Course::Template
       t.subjects = resource.send('Template.AdditionalSubjects').split(';')
       t.summary = resource.send('Template.Summary')
       t.title = resource.send('Template.TemplateTitle')
+      t.topics_covered = resource.send('Template.TopicsCovered')
+      t.who_is_it_for = resource.send('Template.WhoIsFor')
       t.workstream = resource.send('Template.Workstream')
     end
   end

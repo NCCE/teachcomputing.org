@@ -168,6 +168,13 @@ if activity = Activity.find_by(stem_course_template_no: 'd35ce2c2-e78a-eb11-b1ac
   end
 end
 
+if activity = Activity.find_by(stem_course_template_no: 'afa28241-4d8d-eb11-b1ac-0022481a6ad5')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_two.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_two.id)
+  end
+end
+
 group_three = secondary.programme_activity_groupings.find_by(sort_key: 3)
 
 if activity = Activity.find_by(slug: 'contribute-to-online-discussion')
