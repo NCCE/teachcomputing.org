@@ -11,10 +11,6 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
     render
   end
 
-  after do
-    unstub_feature_flags
-  end
-
   it 'has the hero' do
     expect(rendered).to have_css('.hero__heading', text: programme.title)
   end
