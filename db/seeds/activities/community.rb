@@ -195,7 +195,7 @@ a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-scien
   activity.category = 'community'
   activity.provider = 'isaac'
   activity.self_certifiable = true
-  activity.description = '<a href='https://isaaccomputerscience.org/teachers' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' class='ncce=link'>answer any 5 questions from across the topic sections. <a href='https://isaaccomputerscience.org/progress' class='ncce-link'>Screenshot your progress dashboard</a> as evidence you have completed this activity.'
+  activity.description = "<a href='https://isaaccomputerscience.org/teachers' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' class='ncce=link'>answer any 5 questions from across the topic sections. <a href='https://isaaccomputerscience.org/progress' class='ncce-link'>Screenshot your progress dashboard</a> as evidence you have completed this activity."
   activity.self_verification_info = 'Provide screenshot of your progress dashboard'
   activity.uploadable = true
 end
