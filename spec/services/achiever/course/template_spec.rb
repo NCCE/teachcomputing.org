@@ -12,7 +12,11 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:activity_code)
       expect(course_template).to respond_to(:age_groups)
       expect(course_template).to respond_to(:booking_url)
+      expect(course_template).to respond_to(:course_leaders)
       expect(course_template).to respond_to(:course_template_no)
+      expect(course_template).to respond_to(:duration)
+      expect(course_template).to respond_to(:how_long_is_the_course)
+      expect(course_template).to respond_to(:how_will_you_learn)
       expect(course_template).to respond_to(:meta_description)
       expect(course_template).to respond_to(:occurrences)
       expect(course_template).to respond_to(:online_cpd)
@@ -22,6 +26,8 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:subjects)
       expect(course_template).to respond_to(:summary)
       expect(course_template).to respond_to(:title)
+      expect(course_template).to respond_to(:topics_covered)
+      expect(course_template).to respond_to(:who_is_it_for)
       expect(course_template).to respond_to(:workstream)
     end
   end
