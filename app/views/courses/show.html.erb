@@ -8,22 +8,11 @@
     class="govuk-main-wrapper ncce-main-wrapper--intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-body-m"><% @course.meta_description %></h2>
+        <h2 class="govuk-body-m"><%= @course.meta_description %></h2>
         <%= render 'courses/courses-details' %>
         <div class="external-content govuk-!-margin-bottom-7">
-          <h2 class="govuk-heading-s">Summary</h2>
-          <%= @course.summary.html_safe %>
-          <h2 class="govuk-heading-s">Who is it for</h2>
-          <%= @course.who_is_it_for.html_safe %>
-          <h2 class="govuk-heading-s">Topics covered</h2>
-          <%= @course.topics_covered.html_safe %>
-          <h2 class="govuk-heading-s">How long is this course</h2>
-          <%= @course.how_long_is_the_course.html_safe %>
-          <h2 class="govuk-heading-s">How will you learn</h2>
-          <%= @course.how_will_you_learn.html_safe %>
-          <h2 class="govuk-heading-s">Course leaders</h2>
-          <%= @course.course_leaders.html_safe %>
-        </div>
+          <%= sanitize_stem_html @course.summary %>
+          <%= sanitize_stem_html @course.outcomes %>
         <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
       <div class="govuk-grid-column-one-third">

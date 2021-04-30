@@ -1,8 +1,8 @@
 class StemCourseDetailsScrubber < Rails::Html::PermitScrubber
   def initialize
     super
-    self.tags = %w[img a div body html p h1 h2 h3 h4 ul li ol strong video track source]
-    self.attributes = %w[name href src width height alt]
+    self.tags = %w[a div body html p h1 h2 h3 h4 ul li ol strong video track source]
+    self.attributes = %w[name href src]
     @video_attributes = %w[poster controls playsinline crossorigin preload tabindex src type class kind srclang label]
   end
 
@@ -31,8 +31,9 @@ class StemCourseDetailsScrubber < Rails::Html::PermitScrubber
   end
 
   def allowed_node?(node)
-    return true if video_element?(node) || node.node_name == 'img'
-    return false if node.blank? || node.content.blank?
+    unless video_element?(node)
+      return false unless strip_nbsp(node).size.positive?
+    end
 
     super(node)
   end
