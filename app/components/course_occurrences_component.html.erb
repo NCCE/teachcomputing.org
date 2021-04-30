@@ -1,0 +1,17 @@
+<div class="govuk-body-s course-occurrences">
+  <% @course.occurrences.each do |oc| %>
+    <div class="course-occurrence">
+      <span class="course-occurrence__meta-location <%= course_meta_icon_class(@course) %>">
+        <%= occurrence_meta_location(oc) %>
+      </span>
+      <span class="course-occurrence__meta-date">
+        <%= activity_times(oc.start_date, oc.end_date, oc.online_cpd) %>
+      </span>
+      <span class="course-occurrence__distance">
+        <% if oc.distance.present? %>
+          <strong><%= oc.distance %> miles</strong> away
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+</div>

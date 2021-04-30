@@ -110,7 +110,7 @@
   padding-top: 0.6rem;
 
   @include govuk-media-query($until: desktop) {
-    border-bottom: 2px solid #CCCCCC;
+    border-bottom: 2px solid $grey-mid;
     margin-bottom: 0.9rem;
     padding-bottom: 0.6rem;
   }
@@ -193,7 +193,7 @@
 
   @include govuk-media-query($until: desktop) {
     padding-bottom: 0.9rem;
-    border-bottom: 2px solid #CCCCCC;
+    border-bottom: 2px solid $grey-mid;
   }
 }
 
@@ -228,8 +228,8 @@
 /* Style on this page only until we're ready to change sitewide (08/03/21) */
 .ncce-aside--filters {
   .ncce-select--filters {
-    border-radius: $border-radius;
     border-color: #0B0C0C;
+    border-radius: $border-radius;
   }
 
   .ncce-select--filters:not(:last-child) {
@@ -246,6 +246,10 @@
   .ncce-select--filters.filter--active {
     font-weight: 700;
   }
+}
+
+.ncce-aside--filters-narrow-select {
+  width: 105px;
 }
 
 .ncce-aside--filters-header {

@@ -11,7 +11,7 @@
   background-color: $white;
   padding: 10px 0;
   margin-bottom: 20px;
-  border-bottom: solid 2px #CCCCCC;
+  border-bottom: solid 2px $grey-mid;
 }
 
 .ncce-courses__heading {
@@ -25,10 +25,14 @@
   margin-left: 1.5rem;
 }
 
-.ncce-courses__course:not(:first-child) {
-  border-top: solid 2px #CCCCCC;
-  padding-top: 20px;
-  margin-bottom: 0;
+.ncce-courses__course {
+  // margin-bottom: 0;
+  // padding-top: 20px;
+}
+
+.ncce-courses__course:not(:last-of-type) {
+  border-bottom: solid 2px $grey-mid;
+  margin-bottom: 20px;
 }
 
 .ncce-courses__locations {
@@ -132,24 +136,4 @@
       margin-bottom: 2px;
     }
   }
-}
-
-.ncce-courses__meta-date {
-  display: inline-block;
-  font-size: 0.875rem;
-  padding: 0;
-  padding-left: 27px;
-  @include govuk-media-query($from: tablet) {
-    padding-left: 0;
-  }
-}
-
-.ncce-courses__meta-location {
-  display: inline-block;
-  font-size: 0.9375rem;
-  font-weight: 700;
-}
-
-.ncce-courses__meta-location.icon-online {
-  background-position-y: center !important;
 }

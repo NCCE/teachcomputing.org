@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  showing_face_to_face_courses:
+    one: Showing 1 face to face course
+    other: Showing %{count} face to face courses sorted by distance
+  more_face_to_face_courses_html:
+    one: There is <strong>1</strong> more face to face course
+    other: There are <strong>%{count}</strong> more face to face courses
+  more_face_to_face_courses_nationwide_html:
+    one: There is <strong>1</strong> more face to face course nationwide
+    other: There are <strong>%{count}</strong> more face to face courses nationwide

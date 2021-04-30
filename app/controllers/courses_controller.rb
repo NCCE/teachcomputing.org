@@ -9,7 +9,12 @@ class CoursesController < ApplicationController
   def filter
     assign_params
     if ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
-      render partial: 'courses/courses-list', layout: false
+      render json: {
+        results: render_to_string('courses/_courses-list', layout: false),
+        geocoded_location: @course_filter.search_location_formatted_address,
+        location_search: @course_filter.location_search?,
+        geocoded_successfully: @course_filter.geocoded_successfully?
+      }
     else
       render :index
     end
@@ -43,6 +48,6 @@ class CoursesController < ApplicationController
     end
 
     def filter_params
-      params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, course_format: [])
+      params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
     end
 end

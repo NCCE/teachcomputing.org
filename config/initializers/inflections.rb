@@ -18,4 +18,5 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'CS'
   inflect.acronym 'CSA'
+  inflect.irregular "is", "are"
 end
