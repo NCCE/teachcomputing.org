@@ -33,7 +33,6 @@ module Achiever
           end
         end
 
-
         total_f2f_course_count = f2f_courses.size
 
         results_outside_max_radius = f2f_courses.select do |c|
@@ -144,7 +143,17 @@ module Achiever
       return nil unless location_search?
       return @search_location_formatted_address if defined? @search_location_formatted_address
 
-      @search_location_formatted_address ||= geocoded_search_location&.formatted_address
+      @search_location_formatted_address ||=
+        begin
+          town_components = geocoded_search_location&.address_components&.select do |c|
+            c['types'].include?('postal_town')
+          end
+          if town_components&.any?
+            town_components.first['long_name']
+          else
+            geocoded_search_location&.formatted_address
+          end
+        end
     end
 
     def location_search?

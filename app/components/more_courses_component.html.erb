@@ -28,11 +28,14 @@
 </div>
 
 <% if show_nationwide_results? %>
-  <div data-course-filter-target="nationwideCourses" class="hidden">
-    <%= render CourseComponent.with_collection(@search_results.outside_max_radius_results, filter: @course_filter) %>
-
-    <button type="button" class="govuk-button button" data-action="click->course-filter#hideNationwideCourses">
-      Show fewer face to face courses
-    </button>
+  <div data-course-filter-target="nationwideCourses" class="hidden more-courses__results">
+    <div class="location-search-results__courses">
+      <%= render CourseComponent.with_collection(@search_results.outside_max_radius_results, filter: @course_filter) %>
+    </div>
+    <div class="more-courses">
+      <button type="button" class="govuk-button button" data-action="click->course-filter#hideNationwideCourses">
+        Show fewer face to face courses
+      </button>
+    </div>
   </div>
 <% end %>

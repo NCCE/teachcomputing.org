@@ -9,9 +9,10 @@
 
 .ncce-courses__count {
   background-color: $white;
-  padding: 10px 0;
-  margin-bottom: 20px;
   border-bottom: solid 2px $grey-mid;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 10px 0;
 }
 
 .ncce-courses__heading {
@@ -26,8 +27,7 @@
 }
 
 .ncce-courses__course {
-  // margin-bottom: 0;
-  // padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .ncce-courses__course:not(:last-of-type) {
@@ -48,8 +48,8 @@
     margin: 0.3rem 0;
 
     @include govuk-media-query($until: desktop) {
-      flex-wrap: wrap;
       flex: 100%;
+      flex-wrap: wrap;
     }
   }
 

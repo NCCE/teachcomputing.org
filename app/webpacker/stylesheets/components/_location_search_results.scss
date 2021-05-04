@@ -1,4 +1,23 @@
-.location-search-results__no-courses {
+.location-search-results {
+  margin-bottom: 50px;
+}
+
+.location-search-results__courses {
+  border-left: 6px solid $foam;
+  padding-left: 12px;
+  padding-top: 20px;
+}
+
+.location-search-results--no-courses {
   border-bottom: 2px solid $grey-mid;
   padding-bottom: 20px;
+}
+
+
+.location-search-results--title {
+  background-color: $foam;
+  border-left: 6px solid $foam;
+  font-weight: 700;
+  margin-bottom: 0;
+  padding: 12px 10px;
 }

@@ -615,7 +615,15 @@ RSpec.describe Achiever::CourseFilter do
 
       let(:filter_params) { { location: 'liverpool' } }
 
-      it 'returns the address from geocoding result' do
+      it 'returns the postal_town component if present from geocoding result' do
+        allow(result_dbl).to receive(:address_components).and_return([
+            {"long_name"=>"Liverpool", "short_name"=>"Liverpool", "types"=>["postal_town"]}
+        ])
+        expect(course_filter.search_location_formatted_address).to eq('Liverpool')
+      end
+
+      it 'returns the formatted address if no postal_town component' do
+        allow(result_dbl).to receive(:address_components).and_return([])
         allow(result_dbl).to receive(:formatted_address).and_return('Liverpool, UK')
         expect(course_filter.search_location_formatted_address).to eq('Liverpool, UK')
       end

@@ -16,7 +16,7 @@
   <%= render CourseOccurrencesComponent.new(course: @course) %>
 
   <% unless @course.subjects.nil? && @course.key_stages.nil? && @course.workstream.nil?%>
-    <p class="govuk-body"><h3 class="screen-reader-only">Tags for this course:</h3>
+    <h3 class="screen-reader-only">Tags for this course:</h3>
       <% @course.subjects.each do |subject| %>
         <% if @course_filter.subjects&.has_value?(subject.to_i) %>
           <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.subjects.key(subject.to_i) %></strong>
@@ -30,6 +30,5 @@
       <% @course.programmes.each do |programme| %>
         <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= programme %></strong>
       <% end %>
-    </p>
   <% end %>
 </div>
