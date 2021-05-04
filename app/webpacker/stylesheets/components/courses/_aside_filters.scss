@@ -281,6 +281,20 @@
   }
 }
 
+.ncce-aside--filters-geo-error {
+  background-color: $white;
+  background-image: url('../images/icons/black-close.svg');
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  background-size: 0.9rem;
+  border: 2px solid $dixie;
+  padding: 6px 0 6px 28px;
+
+  & > p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
 
 body:not(.js-enabled) {
   .ncce-courses__filter-form-toggle,

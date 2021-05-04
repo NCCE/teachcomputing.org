@@ -50,10 +50,7 @@
   min-height: 30px;
 }
 
-.icon-remote {
-  @include icon('../images/icon-remote.svg');
+.icon-star {
+  @include icon('../images/icons/star.svg');
 }
 
-.icon-star {
-  @include icon('../images/icon-star.svg');
-}

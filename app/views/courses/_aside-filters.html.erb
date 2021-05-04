@@ -68,9 +68,9 @@
         %>
         <span>of <span data-course-filter-target="geocodedLocation">search location</span> </span>
       </div>
-      <div class="hidden govuk-body-s" data-course-filter-target="geocodingError">
-        <p>
-          This location was not recognised. Please check if it is correct.
+      <div class="hidden ncce-aside--filters-geo-error" data-course-filter-target="geocodingError">
+        <p class="govuk-body-s">
+          The location was not recognised. Please check it is correct.
         </p>
       </div>
       <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
