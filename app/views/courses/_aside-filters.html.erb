@@ -44,20 +44,19 @@
       %>
       <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label--s' %>
       <div class="govuk-checkboxes">
-      <% @course_filter.course_formats.each_with_index do |course_format, index| %>
-        <div class='govuk-checkboxes__item ncce-checkboxes__item'>
-          <%= check_box_tag 'course_format[]', course_format, @course_filter&.current_format&.include?(course_format.to_s), class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
-          <%= label_tag "course_format_#{index}", (course_format.to_s).humanize, class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-        </div>
-      <% end %>
+        <% @course_filter.course_formats.each_with_index do |course_format, index| %>
+          <div class='govuk-checkboxes__item ncce-checkboxes__item'>
+            <%= check_box_tag 'course_format[]', course_format, @course_filter&.current_format&.include?(course_format.to_s), class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
+            <%= label_tag "course_format_#{index}", (course_format.to_s).humanize, class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+        <% end %>
       </div>
       <div>
         <%= label_tag :format, 'Find a face to face course near you:', class: 'govuk-body-s ncce-label--s' %>
-        <%= text_field_tag :location, @course_filter.current_location, class: 'govuk-input', placeholder: 'Postcode or Town/City' %>
+        <%= text_field_tag :location, @course_filter.current_location, class: 'govuk-input ncce-aside--filters-location', placeholder: 'Postcode or Town/City' %>
         <%= submit_tag 'Search location', class: 'govuk-button button', data: { action: "click->course-filter#filter click->course-filter#addLocationFilter" } %>
       </div>
       <div class="hidden govuk-body-s" data-course-filter-target="distanceFilter">
-        <%# label_tag :radius, 'Within:', class: 'govuk-body-s ncce-label--s' %>
         <span>Within</span>
         <%= select_tag :radius,
           options_for_select(@course_filter.search_radii.map { |r| ["#{r} miles", r]}, @course_filter.current_radius),

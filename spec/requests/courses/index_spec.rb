@@ -25,7 +25,7 @@ RSpec.describe CoursesController do
         expect(response).to render_template('index')
       end
 
-      it 'doesn\'t show a flash notice' do
+      it "doesn't show a flash notice" do
         expect(flash[:notice]).not_to be_present
       end
     end
