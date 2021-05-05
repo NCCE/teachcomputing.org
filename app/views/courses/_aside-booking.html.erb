@@ -7,7 +7,7 @@
         <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |occurrence| %>
           <li class="ncce-booking-list__item">
-            <div class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__date'>
+            <div class='govuk-body-s ncce-booking-list__date'>
               <%= @booking.activity_date(occurrence.start_date) %>
             </div>
             <div class='ncce-booking-list__details-wrapper'>
