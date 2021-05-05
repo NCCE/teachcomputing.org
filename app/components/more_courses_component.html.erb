@@ -1,16 +1,16 @@
-<div class="more-courses" data-course-filter-target="moreCourses">
+<div class="more-courses <%= "more-courses__none" unless courses_present? %>" data-course-filter-target="moreCourses">
   <% if show_results_within_max? %>
     <p class="govuk-body">
-      <%= t("more_face_to_face_courses_html", count: @search_results.further_results_count) %> within <%= @search_results.max_radius %> miles
+      <%= t(".more_face_to_face_courses_html", count: @search_results.further_results_count, radius: @search_results.max_radius) %>
     </p>
     <button type="button" class="govuk-button button" data-course-filter-target="expandRadius" data-action="click->course-filter#expandSearch">
-      Show more face to face courses
+      <%= t('.cta') %>
     </button>
   <% end %>
 
   <% if show_nationwide_results? %>
     <p class="govuk-body">
-      <%= t("more_face_to_face_courses_nationwide_html", count: @search_results.outside_max_radius_results_count) %>
+      <%= t(".more_face_to_face_courses_nationwide_html", count: @search_results.outside_max_radius_results_count) %>
     </p>
     <button type="button" class="govuk-button button" data-course-filter-target="showNationwideCourses" data-action="click->course-filter#showNationwideCourses">
       Show all face to face courses
@@ -22,7 +22,7 @@
 
   <% if no_more_results? %>
     <p class="govuk-body">
-      There are <strong>0</strong> more face to face courses nationwide with current filters
+      <%= t('.no_more_results_html') %>
     </p>
   <% end %>
 </div>

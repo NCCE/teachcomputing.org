@@ -10,13 +10,19 @@ class MoreCoursesComponent < ViewComponent::Base
     @search_results.radius_maxed == false && @search_results.further_results_count.positive?
   end
 
+  def courses_present?
+    @course_filter.location_based_results.courses_count.positive?
+  end
+
   def show_nationwide_results?
-    (@search_results.radius_maxed == true || @search_results.further_results_count.zero?) &&
-      @search_results.outside_max_radius_results_count.positive?
+    # (@search_results.radius_maxed == true || @search_results.further_results_count.zero?) &&
+    #   @search_results.outside_max_radius_results_count.positive?
+    false
   end
 
   def no_more_results?
-    @search_results.further_results_count.zero? &&
-      @search_results.outside_max_radius_results_count.zero?
+    # @search_results.further_results_count.zero? &&
+      # @search_results.outside_max_radius_results_count.zero?
+    false
   end
 end

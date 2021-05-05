@@ -21,5 +21,7 @@ module TeachComputing
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
   end
 end

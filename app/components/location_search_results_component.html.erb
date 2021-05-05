@@ -3,17 +3,17 @@
     <%= render NoCoursesComponent.new(hub: @course_filter.current_hub) %>
   <% else %>
     <% if courses_present? %>
-      <p class="govuk-body-s location-search-results--title">
-        <%= t('showing_face_to_face_courses', count: @course_filter.location_based_results.courses_count) %>
+      <p class="govuk-body location-search-results--title">
+        <%= t('.showing_face_to_face_courses_html', count: @course_filter.location_based_results.courses_count) %>
       </p>
+      <div class="location-search-results__courses">
+        <%= render CourseComponent.with_collection(@course_filter.location_based_results&.courses, filter: @course_filter) %>
+      </div>
     <% else %>
-      <p class="govuk-body-s location-search-results--title">
-        There are no face to face courses within <%=  @course_filter.current_radius %> miles
+      <p class="govuk-body location-search-results--title">
+        <%= t('.no_courses_within', radius: @course_filter.current_radius) %>
       </p>
     <% end %>
-    <div class="location-search-results__courses">
-      <%= render CourseComponent.with_collection(@course_filter.location_based_results&.courses, filter: @course_filter) %>
-    </div>
     <%= render MoreCoursesComponent.new(course_filter: @course_filter) %>
   <% end %>
 </div>
