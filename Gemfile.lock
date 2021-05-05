@@ -572,6 +572,8 @@ GEM
     unf_ext (0.0.7.7)
     unicode-display_width (2.0.0)
     vcr (6.0.0)
+    view_component (2.31.1)
+      activesupport (>= 5.0.0, < 7.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -683,6 +685,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 4.2)
   vcr
+  view_component
   web-console (>= 3.3.0)
   webmock
   webpacker (~> 5.3.0)
