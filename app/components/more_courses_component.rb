@@ -15,12 +15,14 @@ class MoreCoursesComponent < ViewComponent::Base
   end
 
   def show_nationwide_results?
+    # TODO: remove or re-implement after user testing
     # (@search_results.radius_maxed == true || @search_results.further_results_count.zero?) &&
     #   @search_results.outside_max_radius_results_count.positive?
     false
   end
 
   def no_more_results?
+    # TODO: remove or re-implement after user testing
     # @search_results.further_results_count.zero? &&
       # @search_results.outside_max_radius_results_count.zero?
     false
