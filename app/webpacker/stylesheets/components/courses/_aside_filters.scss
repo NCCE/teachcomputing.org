@@ -282,6 +282,11 @@
   }
 }
 
+.ncce-aside--filters-geo {
+  border-top: 2px solid $grey-mid;
+  margin-top: 24px;
+  padding-top: 8px;
+}
 .ncce-aside--filters-geo-error {
   background-color: $white;
   background-image: url('../images/icons/black-close.svg');
