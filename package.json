@@ -5,40 +5,37 @@
   },
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/eslint-parser": "^7.13.14",
     "@rails/actiontext": "^6.1.3",
     "@rails/activestorage": "^6.1.3",
     "@rails/ujs": "^6.1.3",
     "@rails/webpacker": "^5.3.0",
-    "babel-eslint": "^10.1.0",
     "channels": "^0.0.4",
     "cookieconsent": "^3.1.0",
-    "core-js": "^3.8.3",
-    "dotenv-webpack": "^6.0.2",
+    "core-js": "^3.12.0",
+    "dotenv-webpack": "^7.0.2",
     "flatpickr": "^4.6.9",
     "govuk-frontend": "^2.3.0",
-    "mobile-device-detect": "^0.4.3",
-    "sass": "^1.32.8",
+    "is-svg": "4.3.1",
+    "sass": "^1.32.12",
     "sass-loader": "^10.1.1",
     "stimulus": "^2.0",
-    "trix": "^1.2.0",
+    "trix": "^1.3",
     "turbolinks": "^5.2.0",
     "webpack": "^4.x",
-    "yargs-parser": "^20.2.0"
-  },
-  "resolutions": {
-    "@rails/webpacker/is-svg": "4.2.2"
+    "yargs-parser": "^20.2"
   },
   "devDependencies": {
-    "eslint": "^7.20",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint": "^7.25",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4",
     "install": "^0.13.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "prettier-package-json": "^2.1.3",
     "prettier-stylelint": "^0.4.2",
-    "speed-measure-webpack-plugin": "^1.4.2",
-    "stylelint": "^13.11",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "stylelint": "^13.13",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.19",
@@ -68,10 +65,6 @@
     ],
     "*.scss": [
       "stylelint --fix --syntax=scss",
-      "git add"
-    ],
-    "package.json": [
-      "prettier-package-json --write",
       "git add"
     ]
   },
