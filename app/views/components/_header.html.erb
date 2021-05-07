@@ -43,21 +43,11 @@
                 <span class="ncce-header__certification-item--text"><%= nav_item[:text] %></span>
                 <span class="ncce-header__certification-item--icon"></span>
               </div>
-
-              <% if nav_item[:text] == 'About us' %>
-                <ul class="govuk-list govuk-body-s dropdown__expander-content last_dropdown__expander_section">
-                  <% nav_item[:children].each do  | item |%>
-                    <li class="dropdown__expander-content-item"><%= link_to item[:text], item[:link], data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] } %></li>
-                  <% end %>
-                </ul>
-              <% else%>
-                <ul class="govuk-list govuk-body-s dropdown__expander-content">
-                  <% nav_item[:children].each do  | item |%>
-                    <li class="dropdown__expander-content-item"><%= link_to item[:text], item[:link], data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] } %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-
+							<ul class="govuk-list govuk-body-s dropdown__expander-content">
+							<% nav_item[:children].each do  | item |%>
+								<li class="dropdown__expander-content-item"><%= link_to item[:text], item[:link], data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] } %></li>
+							<% end %>
+							</ul>
 						</li>
 					<% end %>
 				</ul>
