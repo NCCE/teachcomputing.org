@@ -42,6 +42,18 @@
     padding-left: 27px;
   }
 
+  &-nearest {
+    font-weight: normal;
+    padding-left: 27px;
+    padding-right: 1.5rem;
+    text-align: right;
+
+    @include govuk-media-query($until: tablet) {
+      padding-right: 0;
+      text-align: left;
+    }
+  }
+
   &-type, &-name {
     flex: 50%;
     margin: 0.3rem 0;
@@ -50,6 +62,12 @@
       flex: 100%;
       flex-wrap: wrap;
     }
+  }
+
+  &-info {
+    display: flex;
+    flex: 50%;
+    flex-direction: column;
   }
 
   button &-name {
@@ -87,10 +105,9 @@
     box-sizing:border-box;
     cursor: pointer;
     display: flex;
-    padding: 0.6rem 1rem;
     justify-content: flex-start;
+    padding: 0.6rem 1rem;
     width: 100%;
-    display: flex;
 
     @include govuk-media-query($from: tablet) {
       margin-bottom: 2px;
