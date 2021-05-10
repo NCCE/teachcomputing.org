@@ -48,7 +48,13 @@ class PrimaryLandingPage
   end
 
   def primary_cert_link_text
-    enrolled_on_primary? ? 'View your progress' : 'Find out more'
+    if completed_primary?
+      'View certificate'
+    elsif enrolled_on_primary?
+      'View your progress'
+    else
+      'Find out more'
+    end
   end
 
   def primary_tracking_event
@@ -126,5 +132,9 @@ class PrimaryLandingPage
 
     def enrolled_on_primary?
       @current_user && @primary_certificate.user_enrolled?(@current_user)
+    end
+
+    def completed_primary?
+      @current_user && @primary_certificate.user_completed?(@current_user)
     end
 end

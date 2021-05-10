@@ -74,13 +74,23 @@ RSpec.describe PrimaryLandingPage do
   describe '#primary_cert_link_text' do
     context 'when user enrolled on primary certificate' do
       it 'returns correct text' do
+        allow(primary_cert).to receive(:user_completed?)
         allow(primary_cert).to receive(:user_enrolled?).and_return(true)
         expect(landing_page.primary_cert_link_text).to eq('View your progress')
       end
     end
 
+    context 'when user completes primary certificate' do
+      it 'returns correct text' do
+        allow(primary_cert).to receive(:user_enrolled?)
+        allow(primary_cert).to receive(:user_completed?).and_return(true)
+        expect(landing_page.primary_cert_link_text).to eq('View certificate')
+      end
+    end
+
     context 'when user not enrolled on primary certificate' do
       it 'returns correct text' do
+        allow(primary_cert).to receive(:user_completed?)
         allow(primary_cert).to receive(:user_enrolled?).and_return(false)
         expect(landing_page.primary_cert_link_text).to eq('Find out more')
       end
