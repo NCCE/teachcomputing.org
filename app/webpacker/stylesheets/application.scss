@@ -75,6 +75,10 @@
 @import 'components/certificates/_csa_dashboard.scss';
 @import 'components/certificates/_pathway_prompt.scss';
 
+// import ViewComponent styles
+@import '../../components/bursary_component/bursary_component.scss';
+
+
 // Blog styles
 
 @import 'components/blog/_ghost-news-feed.scss';

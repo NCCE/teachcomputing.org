@@ -35,10 +35,6 @@ RSpec.describe('courses/index', type: :view) do
       )
     end
 
-    it 'renders the bursary partial' do
-      expect(rendered).to render_template(partial: 'courses/_aside-bursary')
-    end
-
     it 'renders the courses_list partial' do
       expect(rendered).to render_template(partial: 'courses/_courses-list')
     end
