@@ -16,17 +16,25 @@
             <h2 class="govuk-body-m">Who is it for?</h2>
             <%= sanitize_stem_html @course.who_is_it_for %>
           <% end %>
-          <% unless @course.how_will_you_learn.blank? %>
-            <h2 class="govuk-body-m">How will you learn?</h2>
-            <%= sanitize_stem_html @course.how_will_you_learn %>
+          <% unless @course.topics_covered.blank? %>
+            <h2 class="govuk-body-m">Topics covered</h2>
+            <%= sanitize_stem_html @course.topics_covered %>
           <% end %>
           <% unless @course.how_long_is_the_course.blank? %>
             <h2 class="govuk-body-m">How long is this course?</h2>
             <%= sanitize_stem_html @course.how_long_is_the_course %>
           <% end %>
-          <% unless @course.topics_covered.blank? %>
-            <h2 class="govuk-body-m">Topics covered</h2>
-            <%= sanitize_stem_html @course.topics_covered %>
+          <% unless @course.how_will_you_learn.blank? %>
+            <h2 class="govuk-body-m">How will you learn?</h2>
+            <%= sanitize_stem_html @course.how_will_you_learn %>
+          <% end %>
+          <% unless @course.course_leaders.blank? %>
+            <h2 class="govuk-body-m">Course leaders</h2>
+            <%= sanitize_stem_html @course.course_leaders %>
+          <% end %>
+          <% unless @course.outcomes.blank? %>
+            <h2 class="govuk-body-m">Outcomes</h2>
+            <%= sanitize_stem_html @course.outcomes %>
           <% end %>
         </div>
         <%= render 'courses/certificates-card' if @programmes.present? %>
