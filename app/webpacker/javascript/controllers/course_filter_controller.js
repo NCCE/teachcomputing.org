@@ -36,6 +36,7 @@ export default class extends ApplicationController {
   openModifier = '';
   intervalId = null;
   locationFiltering = false;
+  didScroll = false;
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
@@ -43,8 +44,16 @@ export default class extends ApplicationController {
     this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
+    this.didScroll = false;
 
     this.openFilterFormOnDesktop();
+
+    setInterval(() => {
+      if (this.didScroll) {
+        this.didScroll = false;
+        this.setBackToFilterDisplay();
+      }
+    }, 500);
   }
 
   filter(ev) {
@@ -280,17 +289,22 @@ export default class extends ApplicationController {
     }
   }
 
+  pageScrolled(){
+    this.didScroll = true;
+  }
+
   setBackToFilterDisplay() {
     if (!this.isDesktop()) return;
+
     const classes = this.backToFilterTarget.classList;
     let offset = this.backToFilterTarget.getBoundingClientRect().top;
-    if(offset > 0) {
-      if(!classes.contains('visually-hidden')) {
-        this.backToFilterTarget.classList.add('visually-hidden');
-      }
-    } else {
+    if(offset <= 20) {
       if(classes.contains('visually-hidden')) {
         this.backToFilterTarget.classList.remove('visually-hidden');
+      }
+    } else {
+      if(!classes.contains('visually-hidden')) {
+        this.backToFilterTarget.classList.add('visually-hidden');
       }
     }
   }
