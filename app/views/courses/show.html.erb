@@ -12,16 +12,22 @@
         <%= render 'courses/courses-details' %>
         <div class="external-content govuk-!-margin-bottom-7">
           <%= sanitize_stem_html @course.summary %>
-          <p>course leaders</p>
-          <%= sanitize_stem_html @course.course_leaders %>
-          <p>how_long_is_the_course</p>
-          <%= sanitize_stem_html @course.how_long_is_the_course %>
-          <p>how_will_you_learn</p>
-          <%= sanitize_stem_html @course.how_will_you_learn %>
-          <p>topics_covered</p>
-          <%= sanitize_stem_html @course.topics_covered %>
-          <p>who_is_it_for</p>
-          <%= sanitize_stem_html @course.who_is_it_for %>
+          <% unless @course.who_is_it_for.blank? %>
+            <h2 class="govuk-body-m">Who is it for?</h2>
+            <%= sanitize_stem_html @course.who_is_it_for %>
+          <% end %>
+          <% unless @course.how_will_you_learn.blank? %>
+            <h2 class="govuk-body-m">How will you learn?</h2>
+            <%= sanitize_stem_html @course.how_will_you_learn %>
+          <% end %>
+          <% unless @course.how_long_is_the_course.blank? %>
+            <h2 class="govuk-body-m">How long is this course?</h2>
+            <%= sanitize_stem_html @course.how_long_is_the_course %>
+          <% end %>
+          <% unless @course.topics_covered.blank? %>
+            <h2 class="govuk-body-m">Topics covered</h2>
+            <%= sanitize_stem_html @course.topics_covered %>
+          <% end %>
         </div>
         <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
