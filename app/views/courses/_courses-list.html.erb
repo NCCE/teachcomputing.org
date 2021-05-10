@@ -10,7 +10,7 @@
   <div class="ncce-courses__list" data-course-filter-target="courseList">
     <%= render LocationSearchResultsComponent.new(course_filter: @course_filter) %>
 
-    <% if @course_filter.location_search? %>
+    <% if @course_filter.location_search? && @course_filter.total_results_count != 0 %>
       <p class="govuk-body ncce-courses__results-title">
         <%= t('found_remote_online_courses_html', count: @course_filter.non_location_based_results.size) %>
       </p>
