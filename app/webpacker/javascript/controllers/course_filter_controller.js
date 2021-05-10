@@ -16,6 +16,7 @@ export default class extends ApplicationController {
     'filterFormHeader',
     'filterFormToggle',
     'filterCount',
+    'filterCount2',
     'viewResultsCount',
     'distanceFilter',
     'geocodedLocation',
@@ -111,11 +112,14 @@ export default class extends ApplicationController {
   updateFilterCount() {
     if (this.filterCount > 0) {
       this.filterCountTarget.classList.remove(this.hiddenClass);
+      this.filterCount2Target.classList.remove(this.hiddenClass);
     } else {
       this.filterCountTarget.classList.add(this.hiddenClass);
+      this.filterCount2Target.classList.add(this.hiddenClass);
     }
 
     this.filterCountTarget.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
+    this.filterCount2Target.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
   }
 
   toggleClearFilter() {

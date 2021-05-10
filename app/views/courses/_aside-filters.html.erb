@@ -3,7 +3,7 @@
   <div class="ncce-aside--filters-header">
     <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
     <button type="button" class="ncce-courses__filter-form-toggle" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
-      <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %> applied</span>
+      <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %></span>
       Filter courses
     </button>
   </div>
@@ -81,7 +81,8 @@
     <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.total_results_count, 'result') %></button>
   </div>
 </div>
-<div class="sticky ncce-aside--filters__sticky">
+<div class="govuk-body sticky ncce-aside--filters__sticky ncce-aside--filters__back">
+  <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount2"><%= applied_filters_string(@course_filter) %></span>
   <%= link_to 'back to filter', '', class: ['ncce-link'], data: { action: "click->course-filter#scrollToFilters" } %>
 </div>
 <% end %>

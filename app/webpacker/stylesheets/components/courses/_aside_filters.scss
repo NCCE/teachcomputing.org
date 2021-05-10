@@ -1,5 +1,5 @@
 .ncce-aside--filters {
-  background-color: #F2F2F2;
+  background-color: $concrete;
   border: none;
   margin-top: 40px;
   padding: 13px;
@@ -41,6 +41,13 @@
     text-align: right;
     visibility: visible;
   }
+}
+
+.ncce-aside--filters__back {
+  background-color: $concrete;
+  border: 1px solid $grey-mid;
+  margin-top: 20px;
+  padding: 12px;
 }
 
 .ncce-courses__filter {
