@@ -12,7 +12,16 @@
         <%= render 'courses/courses-details' %>
         <div class="external-content govuk-!-margin-bottom-7">
           <%= sanitize_stem_html @course.summary %>
-          <%= sanitize_stem_html @course.outcomes %>
+          <p>course leaders</p>
+          <%= sanitize_stem_html @course.course_leaders %>
+          <p>how_long_is_the_course</p>
+          <%= sanitize_stem_html @course.how_long_is_the_course %>
+          <p>how_will_you_learn</p>
+          <%= sanitize_stem_html @course.how_will_you_learn %>
+          <p>topics_covered</p>
+          <%= sanitize_stem_html @course.topics_covered %>
+          <p>who_is_it_for</p>
+          <%= sanitize_stem_html @course.who_is_it_for %>
         </div>
         <%= render 'courses/certificates-card' if @programmes.present? %>
       </div>
