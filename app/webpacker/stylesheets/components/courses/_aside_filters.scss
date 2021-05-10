@@ -45,9 +45,13 @@
 
 .ncce-aside--filters__back {
   background-color: $concrete;
+  background-image: url('../images/icons/up-arrow.svg');
+  background-position: right 7px center;
+  background-repeat: no-repeat;
+  background-size: 10px;
   border: 1px solid $grey-mid;
   margin-top: 20px;
-  padding: 12px;
+  padding: 12px 25px 12px 12px;
 }
 
 .ncce-courses__filter {

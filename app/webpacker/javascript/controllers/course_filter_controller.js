@@ -25,7 +25,8 @@ export default class extends ApplicationController {
     'nationwideCourses',
     'showNationwideCourses',
     'hideNationwideCourses',
-    'moreCourses'
+    'moreCourses',
+    'backToFilter',
   ];
   menuClass = '';
   filterCount = 0;
@@ -276,6 +277,21 @@ export default class extends ApplicationController {
     const classes = this.geocodingErrorTarget.classList;
     if (!classes.contains(this.hiddenClass)) {
       this.geocodingErrorTarget.classList.add(this.hiddenClass);
+    }
+  }
+
+  setBackToFilterDisplay() {
+    if (!this.isDesktop()) return;
+    const classes = this.backToFilterTarget.classList;
+    let offset = this.backToFilterTarget.getBoundingClientRect().top;
+    if(offset > 0) {
+      if(!classes.contains('visually-hidden')) {
+        this.backToFilterTarget.classList.add('visually-hidden');
+      }
+    } else {
+      if(classes.contains('visually-hidden')) {
+        this.backToFilterTarget.classList.remove('visually-hidden');
+      }
     }
   }
 
