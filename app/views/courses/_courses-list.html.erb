@@ -10,9 +10,11 @@
   <div class="ncce-courses__list" data-course-filter-target="courseList">
     <%= render LocationSearchResultsComponent.new(course_filter: @course_filter) %>
 
-    <p class="govuk-body">
-      <%= t('found_remote_online_courses_html', count: @course_filter.non_location_based_results.size) %>
-    </p>
+    <% if @course_filter.location_search? %>
+      <p class="govuk-body ncce-courses__results-title">
+        <%= t('found_remote_online_courses_html', count: @course_filter.non_location_based_results.size) %>
+      </p>
+    <% end %>
     <%= render CourseComponent.with_collection(@course_filter.non_location_based_results, filter: @course_filter) %>
   </div>
 <% end %>
