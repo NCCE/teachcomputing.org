@@ -122,13 +122,23 @@ RSpec.describe SecondaryLandingPage do
   describe '#secondary_cert_link_text' do
     context 'when user enrolled on secondary certificate' do
       it 'returns correct text' do
+        allow(secondary_cert).to receive(:user_completed?)
         allow(secondary_cert).to receive(:user_enrolled?).and_return(true)
         expect(landing_page.secondary_cert_link_text).to eq('View your progress')
       end
     end
 
+    context 'when user completes secondary cert' do
+      it 'returns correct text' do
+        allow(secondary_cert).to receive(:user_enrolled?)
+        allow(secondary_cert).to receive(:user_completed?).and_return(true)
+        expect(landing_page.secondary_cert_link_text).to eq('View certificate')
+      end
+    end
+
     context 'when user not enrolled on secondary certificate' do
       it 'returns correct text' do
+        allow(secondary_cert).to receive(:user_completed?)
         allow(secondary_cert).to receive(:user_enrolled?).and_return(false)
         expect(landing_page.secondary_cert_link_text).to eq('Find out more')
       end
