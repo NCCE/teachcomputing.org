@@ -20,16 +20,16 @@
             </p>
           <% end %>
 
-          <%= render partial: 'certificates/cs_accelerator/v2/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway }%>
+          <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway }%>
 
           <div class="govuk-body ncce-csa-dash__section-unpadded">
-            <%= render partial: 'certificates/cs_accelerator/v2/achievements', locals: {
+            <%= render partial: 'certificates/cs_accelerator/achievements', locals: {
               compulsory_achievement: @csa_dash.compulsory_achievement,
               user_completed_non_compulsory_achievement: @csa_dash.user_completed_non_compulsory_achievement?,
               non_compulsory_achievements: @csa_dash.non_compulsory_achievements
             } %>
 
-            <%= render partial: 'certificates/cs_accelerator/v2/recommended-courses', locals: {
+            <%= render partial: 'certificates/cs_accelerator/recommended-courses', locals: {
               pathway: @csa_dash.user_programme_pathway,
               recommended_activities: @csa_dash.recommended_activities_for_user
             } %>
@@ -37,7 +37,7 @@
 
           <% if @csa_dash.user_programme_pathway.present? %>
             <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-              <%= render partial: 'certificates/cs_accelerator/v2/supplementary-courses', locals: {
+              <%= render partial: 'certificates/cs_accelerator/supplementary-courses', locals: {
                 pathway: @csa_dash.user_programme_pathway ,
                 supplementary_activities: @csa_dash.supplementary_activities_for_user
               } %>
@@ -45,13 +45,13 @@
           <% end %>
 
           <% if @csa_dash.has_enough_activities_for_test %>
-            <%= render partial: 'certificates/cs_accelerator/v2/csa-test', locals: {
+            <%= render partial: 'certificates/cs_accelerator/csa-test', locals: {
                 user_programme_assessment: @csa_dash.user_programme_assessment
             } %>
           <% end %>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render 'certificates/cs_accelerator/v2/bursary-aside' %>
+          <%= render 'certificates/cs_accelerator/bursary-aside' %>
           <%= render partial: 'certificates/pathway-aside', locals: {
             other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
             user_pathway: @csa_dash.user_programme_pathway,

@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'actionpack', '>= 6.1.3.2'
 gem 'activestorage-validator'
 gem 'administrate'
 gem 'attr_encrypted', '~> 3.1.0'
@@ -45,7 +46,7 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 4.2'
-gem "view_component", require: "view_component/engine"
+gem 'view_component', require: 'view_component/engine'
 gem 'webpacker', '~> 5.3.0'
 gem 'wicked', '~> 1.3.4'
 # must match the version used to generate the schema
