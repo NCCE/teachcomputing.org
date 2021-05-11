@@ -2,7 +2,6 @@
 
 class HeroImageComponent < ViewComponent::Base
   def initialize(params)
-    super
     @params = params
   end
 end

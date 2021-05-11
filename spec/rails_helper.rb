@@ -61,7 +61,6 @@ RSpec.configure do |config|
   config.include AchieverStubs
   config.include CredlyStubs
   config.include CurriculumStubs
-  config.include ComponentStubs
   config.include GhostStubs
   config.include CachingHelpers
   config.include ResponsiveHelpers

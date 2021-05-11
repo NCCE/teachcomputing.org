@@ -5,7 +5,8 @@ class AboutPage
         class_name: 'dixie-bg',
         title: I18n.t('pages.about.hero.title'),
         text: I18n.t('pages.about.hero.text.html'),
-        image: 'media/images/pages/about/ncce_staff.png'
+        image_url: 'media/images/pages/about/ncce_staff.png',
+        image_title: I18n.t('pages.about.hero.image_title')
       }
     end
 
@@ -41,6 +42,7 @@ class AboutPage
     def report_card
       {
         class_name: 'impact-and-evaluation-report-card',
+        date: nil,
         title: I18n.t('pages.about.report_card.title'),
         text: I18n.t('pages.about.report_card.text'),
         bullets: [
