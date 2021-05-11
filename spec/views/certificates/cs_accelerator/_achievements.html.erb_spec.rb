@@ -8,7 +8,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
   let(:no_stem_id_achievement) { create(:achievement, activity: no_stem_id_activity) }
 
   it 'links to activity if it has stem_activity_code' do
-    render partial: 'certificates/cs_accelerator/v2/achievements',
+    render partial: 'certificates/cs_accelerator/achievements',
            locals: {
              non_compulsory_achievements: [stem_id_achievement],
              compulsory_achievement: nil,
@@ -18,7 +18,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
   end
 
   it 'does not error if achievement has no stem id' do
-    render partial: 'certificates/cs_accelerator/v2/achievements',
+    render partial: 'certificates/cs_accelerator/achievements',
            locals: {
              non_compulsory_achievements: [no_stem_id_achievement],
              compulsory_achievement: nil,

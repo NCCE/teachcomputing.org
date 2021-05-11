@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe('certificates/cs_accelerator/v1/_aside', type: :view) do
+RSpec.describe('certificates/cs_accelerator/_aside', type: :view) do
   it 'has the correct title' do
     render
     expect(rendered).to have_css('.ncce-aside__title', text: 'Support')

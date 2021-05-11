@@ -9,11 +9,7 @@ module Certificates
     def show
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
-      if FeatureFlagService.new.flags[:csa_questionnaire_enabled]
-        @csa_dash = CSADash.new(user: current_user)
-      else
-        assign_assessment_and_achievements
-      end
+      @csa_dash = CSADash.new(user: current_user)
 
       render :show
     end
@@ -37,8 +33,6 @@ module Certificates
       end
 
       def user_completed_diagnostic?
-        return true unless FeatureFlagService.new.flags[:csa_questionnaire_enabled]
-
         questionnaire = Questionnaire.cs_accelerator
         questionnaire_response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
         return if questionnaire_response.nil?
