@@ -31,7 +31,15 @@
               <% else %>
                 Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
               <% end %>
-              <%= link_to 'show all results', courses_path(anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub' %>
+              <%= link_to 'show all results',
+                courses_path(anchor: 'results-top'),
+                class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub',
+                data: {
+                  event_action: 'click',
+                  event_category: 'Courses',
+                  event_label: 'Clear hub filter'
+                }
+              %>
             </h3>
           </div>
         </div>

@@ -7,5 +7,12 @@
     <p class="govuk-body">Sorry, we couldn't find any courses that match your filter options.</p>
     <p class="govuk-body">Try modifying or clearing the filter to see more results.</p>
   <% end %>
-  <%= link_to 'Show all courses', courses_path(anchor: 'results-top'), class: 'govuk-button button ncce-courses__filter-button' %>
+  <%= link_to 'Show all courses',
+    courses_path(anchor: 'results-top'),
+    class: 'govuk-button button ncce-courses__filter-button',
+    data: {
+      event_action: 'click',
+      event_category: 'Courses',
+      event_label: 'View all courses'
+    } %>
 </div>

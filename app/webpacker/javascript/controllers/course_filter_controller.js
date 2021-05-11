@@ -99,6 +99,19 @@ export default class extends ApplicationController {
     }
   }
 
+  topicSelectChanged(ev) {
+    const { currentTarget } = ev;
+    this.sendSelectEvent(`Topic - ${currentTarget.value}`);
+  }
+
+  sendSelectEvent(label) {
+    window.dataLayer.push({
+        event: 'selected',
+        category: 'Courses',
+        label: label
+    });
+  }
+
   toggleActiveCheckbox(ev) {
     const { currentTarget } = ev;
     const checked = currentTarget.getAttribute('checked');
