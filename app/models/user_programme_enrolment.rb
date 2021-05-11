@@ -55,7 +55,6 @@ class UserProgrammeEnrolment < ApplicationRecord
   private
 
     def create_questionnaire_response
-      return unless FeatureFlagService.new.flags[:csa_questionnaire_enabled]
       return unless programme.cs_accelerator?
 
       QuestionnaireResponse.create(user: user, questionnaire: Questionnaire.cs_accelerator)
