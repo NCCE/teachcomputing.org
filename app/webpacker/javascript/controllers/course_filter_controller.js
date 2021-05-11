@@ -106,9 +106,9 @@ export default class extends ApplicationController {
 
   sendSelectEvent(label) {
     window.dataLayer.push({
-        event: 'selected',
-        category: 'Courses',
-        label: label
+        'event': 'selected',
+        'category': 'Courses',
+        'label': label
     });
   }
 
