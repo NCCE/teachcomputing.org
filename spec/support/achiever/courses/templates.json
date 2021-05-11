@@ -38,8 +38,7 @@
         "Template.WorkstreamID": "53baea18-0dcf-e911-a812-000d3a86d6ce",
         "Template.Workstream": "CS Accelerator",
         "Template.CourseLeaders": "John Smith",
-        "Template.HowLongCourse": "<p>This course is approximately five hours in duration, split across several days.<\/p>
-        <p><em><strong>This course is delivered as part of the&nbsp;National Centre for Computing Education.<\/strong><\/em><\/p>",
+        "Template.HowLongCourse": "<p>This course is approximately five hours in duration, split across several days.<\/p> <p><em><strong>This course is delivered as part of the&nbsp;National Centre for Computing Education.<\/strong><\/em><\/p>",
         "Template.TopicsCovered": "<p><strong>01 | Introduction to algorithms<\/strong> - From the instructions you might give to make the perfect cup of tea, to the steps needed to sort a list alphabetically, this session will introduce algorithms. You&rsquo;ll discover the three key constructs that comprise all algorithms at this level, and how to describe algorithms using flowcharts and pseudocode as required by the GCSE examination.<\/p>",
         "Template.WhoIsFor": "<p>This course is for prospective teachers of GCSE computer science who may be new to the subject, or who may teach computing in earlier years.<\/p>",
         "Template.Pathway": "",
