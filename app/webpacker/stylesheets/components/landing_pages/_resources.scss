@@ -2,7 +2,7 @@
   display: inline-block;
   margin-top: 12px;
   @include govuk-media-query($from: tablet) {
-    @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
+    @include icon('../images/icons/resources-black.svg', left top, 30px, 30px, 10px);
     margin-top: 10px;
     min-height: 30px;
   }
@@ -23,7 +23,7 @@
 }
 
 .lp-resources--featured-outer {
-  @include icon('../images/resources-black.svg', left top, 30px, 30px, 10px);
+  @include icon('../images/icons/resources-black.svg', left top, 30px, 30px, 10px);
   display: inline-block;
   margin-bottom: 0;
 

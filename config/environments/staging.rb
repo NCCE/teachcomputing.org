@@ -126,6 +126,9 @@ Rails.application.configure do
 
   config.middleware.use Rack::Attack
 
+  config.view_component.preview_paths << "#{Rails.root}/previews/components"
+  config.view_component.preview_route = '/rails/components'
+
   # Enable secure cookies (will only work on https)
   config.session_store :cookie_store,
                        key: '_teach_computing_session',

@@ -1,0 +1,37 @@
+.page-card-component {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: tablet) {
+    column-gap: 36px;
+    row-gap: 36px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.page-card-component--card {
+  position: relative;
+  background-color: $white;
+  padding: 1.5em;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.page-card-component--image-wrapper {
+  margin-bottom: 12px;
+  max-height: 175px;
+  overflow: hidden;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+    max-height: unset;
+  }
+}
+
+.page-card-component--image {
+  width: 100%;
+}

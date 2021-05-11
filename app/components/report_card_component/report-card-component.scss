@@ -1,5 +1,7 @@
 .report-card-component__wrapper {
   margin: 1.6em 0;
+  background-color: $white;
+  padding: 2em;
 }
 
 @include govuk-media-query($from: desktop) {

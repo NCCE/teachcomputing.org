@@ -46,7 +46,7 @@
       <div class="landing-page-resources__grid">
         <div class="shadow_card dark_card govuk-!-padding-top-0">
           <%= link_to ' https://www.arm.com/ ', class: 'ncce-link' do %>
-            <img src="/images/partners/arm.svg" class="dark_card--image dark_card--image-wide dark_image--supporting-partners" alt="Arm logo">
+            <%= image_pack_tag 'media/images/partners/arm.svg', class: 'dark_card--image dark_card--image-wide dark_image--supporting-partners', alt: 'Arm logo' %>
           <% end %>
           <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0"><%= link_to 'Arm', 'https://www.arm.com/', class: 'ncce-link ncce-link--heading' %></h2>
           <p class="govuk-body govuk-!-margin-bottom-0">
@@ -62,7 +62,7 @@
 
         <div class="shadow_card dark_card govuk-!-padding-top-0">
           <%= link_to 'https://www.bt.com/skillsfortomorrow', class: 'ncce-link' do %>
-            <img src="/images/partners/bt.svg" class="dark_card--image dark_image--supporting-partners" alt="BT logo">
+            <%= image_pack_tag 'media/images/partners/bt.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'BT logo' %>
           <% end %>
           <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
             <%= link_to 'BT', 'https://www.bt.com/skillsfortomorrow', class: 'ncce-link ncce-link--heading' %>
@@ -82,7 +82,7 @@
 
         <div class="shadow_card dark_card govuk-!-padding-top-0">
           <%= link_to 'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science', class: 'ncce-link' do %>
-            <img src="/images/partners/google.svg" class="dark_card--image dark_image--supporting-partners" alt="Google logo">
+            <%= image_pack_tag 'media/images/partners/google.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Google logo' %>
           <% end %>
           <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
             <%= link_to 'Google', 'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science', class: 'ncce-link ncce-link--heading' %>
@@ -103,7 +103,7 @@
 
         <div class="shadow_card dark_card govuk-!-padding-top-0">
           <%= link_to 'https://www.nationwide-jobs.co.uk/', class: 'ncce-link' do %>
-            <img src="/images/partners/nationwide.svg" class="dark_card--image dark_image--supporting-partners" alt="nationwide logo">
+            <%= image_pack_tag 'media/images/partners/nationwide.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Nationwide logo' %>
           <% end %>
           <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
             <%= link_to 'Nationwide Building Society', 'https://www.nationwide-jobs.co.uk/', class: 'ncce-link ncce-link--heading' %>
@@ -122,7 +122,7 @@
 
         <%# <div class="shadow_card dark_card"> %>
           <%# <%= link_to 'https://www.microsoft.com/en-gb', class: 'ncce-link' do %>
-            <%# <img src="/images/partners/microsoft.svg" class="dark_card--image dark_image--supporting-partners" alt="Microsoft logo"> %>
+            <%# image_pack_tag 'media/images/partners/microsoft.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Microsoft logo' %>
           <%# <% end %>
           <%# <h2 class="govuk-heading-m dark_card--title"> %>
             <%# <%= link_to 'Microsoft', 'https://www.microsoft.com/en-gb', class: 'ncce-link ncce-link--heading' %>
@@ -140,7 +140,7 @@
 
         <div class="shadow_card dark_card govuk-!-padding-top-0">
           <%= link_to 'https://www.stem.org.uk/rolls-royce-schools-prize-science-technology', class: 'ncce-link' do %>
-            <img src="/images/partners/rolls-royce.svg" class="dark_card--image dark_image--supporting-partners" alt="">
+            <%= image_pack_tag 'media/images/partners/rolls-royce.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Rolls-Royce logo' %>
           <% end %>
           <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
             <%= link_to 'Rolls-Royce Schools Prize for Science & Technology', 'https://www.stem.org.uk/rolls-royce-schools-prize-science-technology', class: 'ncce-link ncce-link--heading' %>
@@ -175,23 +175,23 @@
     <div class="ncce-sp-icons-grid">
       <div class="ncce-sp-icon">
         <%= link_to 'https://www.barefootcomputing.org/barefoot-volunteers', class: 'govuk-header__link--logo'  do %>
-          <img src="/images/partners/barefoot_square.svg" alt="Barefoot programme logo">
+          <%= image_pack_tag 'media/images/partners/barefoot_square.svg', alt: 'Barefoot programme logo' %>
         <% end %>
       </div>
 
       <div class="ncce-sp-icon">
         <%= link_to 'https://codeclub.org/en/volunteer', class: 'govuk-header__link--logo'  do %>
-          <img src="/images/partners/code_club_square.svg" alt="Code Club logo">
+          <%= image_pack_tag 'media/images/partners/code_club_square.svg', alt: 'Code Club logo' %>
         <% end %>
       </div>
       <div class="ncce-sp-icon">
         <%= link_to 'https://www.stem.org.uk/stem-ambassadors', class: 'govuk-header__link--logo'  do %>
-          <img src="/images/partners/stem_square.svg" alt="STEM logo">
+          <%= image_pack_tag 'media/images/partners/stem_square.svg', alt: 'STEM logo' %>
         <% end %>
       </div>
       <div class="ncce-sp-icon">
         <%= link_to 'https://isaaccomputerscience.org/events', class: 'govuk-header__link--logo' do %>
-          <img src="/images/partners/isaac_square.svg" alt="Isaac computer science logo">
+          <%= image_pack_tag 'media/images/partners/isaac_square.svg', alt: 'Isaac computer science logo' %>
         <% end %>
       </div>
     </div>

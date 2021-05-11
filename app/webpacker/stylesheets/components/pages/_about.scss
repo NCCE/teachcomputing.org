@@ -1,0 +1,45 @@
+.ncce-about__wrapper {
+  padding: 3em 0;
+}
+
+.resource-cards {
+  @include govuk-media-query($from: desktop) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .page-card-component--card {
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.programme-cards {
+  .card-1 {
+    border-top: solid 9px $primary-cert-color;
+  }
+
+  .card-2 {
+    border-top: solid 9px $secondary-cert-color;
+  }
+}
+
+.impact-and-evaluation-report-card {
+  .report-card-component__title {
+    background-image: url('../images/icons/resources-black.svg');
+    background-repeat: no-repeat;
+    background-size: 1.8rem;
+    padding-left: 2.1rem !important;
+  }
+
+  .report-card-component__list {
+    list-style-type: none;
+
+    li {
+      background-image: url('../images/icons/tick-plain.svg');
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      padding-left: 2rem !important;
+    }
+  }
+}

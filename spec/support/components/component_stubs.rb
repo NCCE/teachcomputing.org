@@ -16,4 +16,15 @@ module ComponentStubs
       }
     )
   end
+
+  def hero_image_stub
+    OpenStruct.new(
+      {
+        class_name: 'hero-image-example-component',
+        title: 'Hero Image Component',
+        text: "This is an example of a hero image component. It's a hero and it has an image, it also has some text.",
+        image: 'media/images/landing-pages/pri-hero.png'
+      }
+    )
+  end
 end

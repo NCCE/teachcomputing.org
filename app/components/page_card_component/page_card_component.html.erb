@@ -1,0 +1,14 @@
+<div class="page-card-component <%= @params[:class_name] %>">
+  <% @params[:cards].each_with_index do | card, index | %>
+  <div class='page-card-component--card <%= "card-#{index + 1}" %>'>
+    <% if card[:image_url].present? %>
+    <div class="page-card-component--image-wrapper">
+      <%= image_pack_tag card[:image_url], alt: card[:title], class: 'page-card-component--image' %>
+    </div>
+    <% end %>
+    <h2 class="govuk-heading-m"><%= card[:title] %></h2>
+    <p class="govuk-body"><%= card[:text] %></p>
+    <p class="govuk-body"><%= link_to card[:link_title], card[:link_url], class: 'ncce-link' %></p>
+  </div>
+  <% end %>
+</div>
