@@ -38,10 +38,14 @@ RSpec.describe('courses/show', type: :view) do
       expect(rendered).to render_template(partial: '_courses-details')
     end
 
-    it 'a course description' do
+    it 'has present course information' do
       expect(rendered).to have_css('.external-content')
-      expect(rendered).to have_text(strip_tags(sanitize_stem_html(course.summary)))
-      expect(rendered).to have_text(strip_tags(sanitize_stem_html(course.outcomes)))
+      expect(rendered).to have_text('Who is it for?')
+      expect(rendered).to have_text('Topics covered')
+      expect(rendered).to have_text('How long is this course?')
+      expect(rendered).to have_text('How will you learn?')
+      expect(rendered).to have_text('Course leaders')
+      expect(rendered).to have_text('Outcomes')
     end
 
     it 'the certificates card partial' do
@@ -58,6 +62,11 @@ RSpec.describe('courses/show', type: :view) do
     render
 
     expect(view).to have_received(:sanitize_stem_html).with(course.summary)
+    expect(view).to have_received(:sanitize_stem_html).with(course.who_is_it_for)
+    expect(view).to have_received(:sanitize_stem_html).with(course.topics_covered)
+    expect(view).to have_received(:sanitize_stem_html).with(course.how_long_is_the_course)
+    expect(view).to have_received(:sanitize_stem_html).with(course.how_will_you_learn)
+    expect(view).to have_received(:sanitize_stem_html).with(course.course_leaders)
     expect(view).to have_received(:sanitize_stem_html).with(course.outcomes)
   end
 end
