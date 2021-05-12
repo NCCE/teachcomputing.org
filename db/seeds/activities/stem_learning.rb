@@ -1124,8 +1124,6 @@ a = Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236
   activity.stem_activity_code = 'CP252'
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
 a = Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS4 Raspberry Pi Pico'
   activity.credit = 10
@@ -1136,8 +1134,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236
   activity.stem_activity_code = 'CP254'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS3 micro:bit'
   activity.credit = 10
@@ -1147,5 +1143,3 @@ a = Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP253'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
