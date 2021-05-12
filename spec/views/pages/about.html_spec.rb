@@ -5,15 +5,51 @@ RSpec.describe('pages/about', type: :view) do
     render
   end
 
-  it 'has a title' do
-    expect(rendered).to have_css('.hero__heading', text: 'About')
+  it 'has an introduction' do
+    expect(rendered).to have_css('.govuk-body-l', text: 'The National Centre for Computing Education (NCCE) is funded')
   end
 
-  it 'links to consortium' do
-    expect(rendered).to have_css('.ncce-link', count: 3)
+  it 'has the expected links in the introduction' do
+    expect(rendered).to have_link('STEM Learning', href: 'https://www.stem.org.uk/')
+    expect(rendered).to have_link('Raspberry Pi Foundation', href: 'https://www.raspberrypi.org/')
+    expect(rendered).to have_link('BCS, The Chartered Institute for IT', href: 'https://www.bcs.org/')
+    expect(rendered).to have_link('Discover our teaching resources', href: '/curriculum')
+    expect(rendered).to have_link('Explore our A level resources', href: '/a-level-computer-science')
+    expect(rendered).to have_link('Learn about our research', href: '/gender-balance')
   end
 
-  it 'has a get involved link' do
-    expect(rendered).to have_link('Get involved', href: '/get-involved')
+  it 'has an ambition section' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Our Ambition')
+  end
+
+  it 'has the expected links in the ambition section' do
+    expect(rendered).to have_link('See our latest report', href: 'https://www.stem.org.uk/sites/default/files/pages/downloads/NCCE_Impact_Report_Final.pdf')
+  end
+
+  it 'has a diversity section' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Diversity and inclusion')
+  end
+
+  it 'has an offer section' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Our offer')
+  end
+
+  it 'has the expected links in the offer section' do
+    expect(rendered).to have_link('resources', href: '/curriculum')
+    expect(rendered).to have_link('training courses', href: '/courses')
+    expect(rendered).to have_link('bursaries', href: '/bursary')
+    expect(rendered).to have_link('Primary teachers toolkit', href: '/primary-teachers')
+    expect(rendered).to have_link('Secondary teachers toolkit', href: '/secondary-teachers')
+  end
+
+  it 'has a support section' do
+    expect(rendered).to have_css('.govuk-heading-l', text: 'How you can support our work')
+  end
+
+  it 'has the expected links in the support section' do
+    expect(rendered).to have_link('Support us', href: '/supporting-partners')
+    expect(rendered).to have_link('How you can help', href: '/get-involved')
+    expect(rendered).to have_link('Meet our partners', href: '/contributing-partners')
+    expect(rendered).to have_link('Advocate for us', href: '/governors-and-trustees/')
   end
 end
