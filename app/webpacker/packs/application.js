@@ -13,8 +13,6 @@
 
 import Rails from '@rails/ujs'
 import Turbolinks from 'turbolinks'
-import { Application } from 'stimulus'
-import { definitionsFromContext } from 'stimulus/webpack-helpers'
 import 'cookieconsent'
 
 // JS
@@ -34,17 +32,3 @@ require.context('../images', true)
 
 Rails.start()
 Turbolinks.start()
-
-// Load controllers from components subdirectory
-const application = Application.start()
-const context = require.context('controllers', true, /\.js$/)
-const contextComponents = require.context(
-  '../../components',
-  true,
-  /_controller\.js$/
-)
-application.load(
-  definitionsFromContext(context).concat(
-    definitionsFromContext(contextComponents)
-  )
-)
