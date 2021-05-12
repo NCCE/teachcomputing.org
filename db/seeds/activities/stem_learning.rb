@@ -1062,3 +1062,90 @@ a = Activity.find_or_create_by(stem_course_template_no: '039c98c5-3c91-eb11-b1ac
   activity.stem_activity_code = 'CP441'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'aafe379e-9e8c-eb11-b1ac-0022481a6ffe') do |activity|
+  activity.title = 'KS3 computing (module 1): Creative curriculum design principles'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-1-creative-curriculum-design-principles'
+  activity.stem_course_template_no = 'aafe379e-9e8c-eb11-b1ac-0022481a6ffe'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP435'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '6172f084-b38c-eb11-b1ac-0022481a6ffe') do |activity|
+  activity.title = 'Solving computational problems in KS3 computing'
+  activity.credit = 10
+  activity.slug = 'solving-computational-problems-in-ks3-computing'
+  activity.stem_course_template_no = '6172f084-b38c-eb11-b1ac-0022481a6ffe'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP436'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '4a06856d-7977-eb11-a812-0022481a9648') do |activity|
+  activity.title = 'New to computing pathway for Business teachers'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-pathway-for-business-teachers-remote'
+  activity.stem_course_template_no = '4a06856d-7977-eb11-a812-0022481a9648'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP470'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e8c02102-7c77-eb11-a812-0022481a9648') do |activity|
+  activity.title = 'New to computing pathway for PE teachers'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-pathway-for-pe-teachers-remote'
+  activity.stem_course_template_no = 'e8c02102-7c77-eb11-a812-0022481a9648'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP471'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000d3a8747c3') do |activity|
+  activity.title = 'Physical computing kit - KS2 Crumble'
+  activity.credit = 10
+  activity.slug = 'physical-computing-kit-ks2-crumble'
+  activity.stem_course_template_no = 'de77674a-51b2-eb11-8236-000d3a8747c3'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP252'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
+  activity.title = 'Physical computing kit - KS4 Raspberry Pi Pico'
+  activity.credit = 10
+  activity.slug = 'physical-computing-kit-ks4-raspberry-pi-pico'
+  activity.stem_course_template_no = '3e42eddb-54b2-eb11-8236-000d3a8747c3'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP254'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236-000d3a8747c3') do |activity|
+  activity.title = 'Physical computing kit - KS3 micro:bit'
+  activity.credit = 10
+  activity.slug = 'physical-computing-kit-ks3-micro-bit'
+  activity.stem_course_template_no = '07ddd6da-55b2-eb11-8236-000d3a8747c3'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP253'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
