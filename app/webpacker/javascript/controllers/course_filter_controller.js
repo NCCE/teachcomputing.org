@@ -100,12 +100,20 @@ export default class extends ApplicationController {
   }
 
   topicSelectChanged(ev) {
-    const { currentTarget } = ev;
-    this.sendSelectEvent(`Topic dropdown - ${currentTarget.value}`);
+    this.sendSelectEvent(ev, 'Topic');
   }
 
-  sendSelectEvent(label) {
-    this.sendGTMEvent('selected', label);
+  keyStageSelectChanged(ev) {
+    this.sendSelectEvent(ev, 'Key Stage');
+  }
+
+  certificateSelectChanged(ev) {
+    this.sendSelectEvent(ev, 'Certificate');
+  }
+
+  sendSelectEvent(ev, type) {
+    const { currentTarget } = ev;
+    this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
   }
 
   sendGTMEvent(event, label) {

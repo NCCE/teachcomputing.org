@@ -27,7 +27,7 @@
           include_blank: 'Any level',
           class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_level }],
           'aria-label': 'Filter by level',
-          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect" }
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#keyStageSelectChanged" }
         }
       %>
       <%= label_tag :level, 'Topic:', class: 'govuk-body-s ncce-label--s' %>
@@ -47,7 +47,7 @@
           include_blank: 'Any certificate',
           class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
           'aria-label': 'Filter by certificate',
-          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect" }
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#certificateSelectChanged" }
         }
       %>
       <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label--s' %>
