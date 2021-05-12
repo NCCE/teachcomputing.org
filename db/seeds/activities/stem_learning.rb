@@ -770,7 +770,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 
 a = Activity.find_or_create_by(stem_course_template_no: '1b0d5b9c-c97d-eb11-a812-0022481a889a') do |activity|
   activity.title = 'New to computing pathway for humanities and PSHE teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-humanities-and-pshe-teachers'
   activity.stem_course_template_no = '1b0d5b9c-c97d-eb11-a812-0022481a889a'
   activity.category = 'face-to-face'
@@ -783,7 +783,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'baa34bc0-ca7d-eb11-a812-0022481a889a') do |activity|
   activity.title = 'New to computing pathway for music, art and media teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-music-art-and-media-teachers'
   activity.stem_course_template_no = 'baa34bc0-ca7d-eb11-a812-0022481a889a'
   activity.category = 'face-to-face'
@@ -796,7 +796,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'f1ae2e7d-f37f-eb11-a812-000d3a8743ca') do |activity|
   activity.title = 'New to computing pathway for modern foreign language teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-modern-foreign-language-teachers'
   activity.stem_course_template_no = 'f1ae2e7d-f37f-eb11-a812-000d3a8743ca'
   activity.category = 'face-to-face'
@@ -809,7 +809,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '2518b7bc-fb7f-eb11-a812-000d3a8743ca') do |activity|
   activity.title = 'New to computing pathway for English teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-english-teachers'
   activity.stem_course_template_no = '2518b7bc-fb7f-eb11-a812-000d3a8743ca'
   activity.category = 'face-to-face'
@@ -822,7 +822,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '05854aa2-fd7f-eb11-a812-000d3a8743ca') do |activity|
   activity.title = 'New to computing pathway for Science teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-science-teachers'
   activity.stem_course_template_no = '05854aa2-fd7f-eb11-a812-000d3a8743ca'
   activity.category = 'face-to-face'
@@ -835,7 +835,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '08fc66c2-6686-eb11-a812-0022481a795f') do |activity|
   activity.title = 'New to computing pathway for business teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-business-teachers-face-to-face'
   activity.stem_course_template_no = '08fc66c2-6686-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
@@ -847,7 +847,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '683eca82-6a86-eb11-a812-0022481a795f') do |activity|
   activity.title = 'New to computing pathway for PE teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-pe-teachers-face-to-face'
   activity.stem_course_template_no = '683eca82-6a86-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
@@ -859,7 +859,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '023164c4-6d86-eb11-a812-0022481a795f') do |activity|
   activity.title = 'New to computing pathway for humanities and PSHE teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-humanities-and-pshe-teachers-face-to-face'
   activity.stem_course_template_no = '023164c4-6d86-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
@@ -871,7 +871,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '100969a4-6f86-eb11-a812-0022481a795f') do |activity|
   activity.title = ' New to computing pathway for music, art and media teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-music-art-and-media-teachers-face-to-face'
   activity.stem_course_template_no = '100969a4-6f86-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
@@ -883,7 +883,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '39b94bd0-7186-eb11-a812-0022481a795f') do |activity|
   activity.title = 'New to computing pathway for modern foreign language teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-modern-foreign-language-teachers-face-to-face'
   activity.stem_course_template_no = '39b94bd0-7186-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
@@ -895,7 +895,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '75CAE0B0-7386-EB11-A812-0022481A795F') do |activity|
   activity.title = 'New to computing pathway for English teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-english-teachers-face-to-face'
   activity.stem_course_template_no = '75CAE0B0-7386-EB11-A812-0022481A795F'
   activity.category = 'face-to-face'
@@ -907,7 +907,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'cb178ecb-7486-eb11-a812-0022481a795f') do |activity|
   activity.title = 'New to computing pathway for Science teachers'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-for-science-teachers-face-to-face'
   activity.stem_course_template_no = 'cb178ecb-7486-eb11-a812-0022481a795f'
   activity.category = 'face-to-face'
