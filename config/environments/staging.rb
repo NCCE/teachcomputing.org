@@ -80,7 +80,7 @@ Rails.application.configure do
 
   config.action_mailer.show_previews = true
   config.action_mailer.asset_host = 'https://staging.teachcomputing.org'
-  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews/"
+  config.action_mailer.preview_path = "#{Rails.root}/app/previews/mailers"
   config.action_mailer.default_url_options = { host: 'https://staging.teachcomputing.org' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.mandrillapp.com',
@@ -126,7 +126,7 @@ Rails.application.configure do
 
   config.middleware.use Rack::Attack
 
-  config.view_component.preview_paths << "#{Rails.root}/previews/components"
+  config.view_component.preview_paths << "#{Rails.root}/app/previews/components"
   config.view_component.preview_route = '/rails/components'
 
   # Enable secure cookies (will only work on https)

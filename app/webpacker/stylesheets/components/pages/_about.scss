@@ -1,5 +1,13 @@
 .ncce-about__wrapper {
   padding: 3em 0;
+
+  img {
+    width: 100%;
+    @include govuk-media-query($from: desktop) {
+      display: block;
+      height: 100%;
+    }
+  }
 }
 
 .resource-cards {

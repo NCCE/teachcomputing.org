@@ -23,7 +23,11 @@
     grid-row: 3;
   }
 
-  .report-card-component__list {
+  .report-card-component__list-wrapper {
     grid-row: 1 / span 3;
+  }
+
+  .report-card-component__list {
+    padding-left: 0;
   }
 }

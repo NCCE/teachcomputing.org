@@ -21,7 +21,7 @@ en:
         text: "Help us find the best ways to encourage young women to study Computer Science."
         link_title: "Learn about our research"
       ambition:
-        title: "Our Ambition"
+        title: "Our ambition"
         text: "We aim to transform the way computing is taught in schools across the country – and enable more young people to benefit from studying this important subject. Through this, we believe that their skills and career opportunities will be enhanced."
       report_card:
         title: "Impact and evaluation"
@@ -29,6 +29,7 @@ en:
         engagements: "29,500+ teachers engaged across more than 14,000 schools in England"
         enrolments: "7,400+ Computer Science Accelerator programme enrolments"
         downloads: "305,000+ lessons downloaded from the Teach Computing Curriculum since launch"
+        stats_date: "Figures as at April 2021"
         button_title: "See our latest report"
       diversity:
         title: "Diversity and inclusion"
@@ -56,7 +57,7 @@ en:
         title: "Get involved"
         text: "We’ve achieved a lot already but there is more work needed to improve young people’s computing education."
         link_title: "How you can help"
-      contributing_partners:
+      contributing_partners_card:
         title: "Contibuting partners"
         text: "We work in partnership with other programmes to enrich and enhance our schools’ computing offer."
         link_title: "Meet our partners"

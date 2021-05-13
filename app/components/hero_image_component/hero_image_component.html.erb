@@ -6,8 +6,8 @@
           <h1 class="govuk-heading-l hero-image-component__title"><%= @params[:title] %></h1>
           <p class="govuk-body-l hero-image-component__text"><%= @params[:text].html_safe %></p>
         </div>
-        <div class="hero-image-component__image-wrapper">
-          <%= image_pack_tag @params[:image_url], alt: @params[:image_title], class: 'hero-image-component__image' %>
+        <div class="hero-image-component__image">
+          <%= image_pack_tag @params[:image_url], alt: @params[:image_title] %>
         </div>
       </div>
     </div>

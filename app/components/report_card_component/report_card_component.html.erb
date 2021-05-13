@@ -6,11 +6,16 @@
     <% end %>
   </div>
   <p class="govuk-body report-card-component__text"><%= @params[:text] %></p>
-  <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
-    <% @params[:bullets].each do | bullet | %>
-    <li><%= bullet %></li>
+  <div class='report-card-component__list-wrapper'>
+    <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
+      <% @params[:bullets].each do | bullet | %>
+      <li><%= bullet %></li>
+      <% end %>
+    </ul>
+    <% unless @params[:stats_date].blank? %>
+      <p class="govuk-body govuk-body-s report-card-component__date"><%= @params[:stats_date] %></p>
     <% end %>
-  </ul>
+  </div>
   <div class='report-card-component__button'>
     <%= link_to @params[:button_title], @params[:button_url], class: 'govuk-button button govuk-!-margin-bottom-0'  %>
   </div>

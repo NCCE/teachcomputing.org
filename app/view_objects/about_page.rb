@@ -42,7 +42,6 @@ class AboutPage
     def report_card
       {
         class_name: 'impact-and-evaluation-report-card',
-        date: nil,
         title: I18n.t('pages.about.report_card.title'),
         text: I18n.t('pages.about.report_card.text'),
         bullets: [
@@ -50,8 +49,9 @@ class AboutPage
           I18n.t('pages.about.report_card.enrolments'),
           I18n.t('pages.about.report_card.downloads')
         ],
+        stats_date: I18n.t('pages.about.report_card.stats_date'),
         button_title: I18n.t('pages.about.report_card.button_title'),
-        button_url: 'https://www.stem.org.uk/sites/default/files/pages/downloads/NCCE_Impact_Report_Final.pdf'
+        button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf'
       }
     end
 
@@ -92,9 +92,9 @@ class AboutPage
             link_url: '/get-involved'
           },
           {
-            title: I18n.t('pages.about.contributing_partners.title'),
-            text: I18n.t('pages.about.contributing_partners.text'),
-            link_title: I18n.t('pages.about.contributing_partners.link_title'),
+            title: I18n.t('pages.about.contributing_partners_card.title'),
+            text: I18n.t('pages.about.contributing_partners_card.text'),
+            link_title: I18n.t('pages.about.contributing_partners_card.link_title'),
             link_url: '/contributing-partners'
           },
           {
