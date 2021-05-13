@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReportCardComponent < ViewComponent::Base
-  def initialize(class_name:, title:, text:, bullets:, button_title:, button_url:, date: nil, stats_date: nil)
+  def initialize(title:, text:, bullets:, button_title:, button_url:, class_name: nil, date: nil, stats_date: nil)
     @class_name = class_name
     @title = title
     @date = date

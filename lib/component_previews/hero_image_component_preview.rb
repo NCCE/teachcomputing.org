@@ -1,5 +1,5 @@
 class HeroImageComponentPreview < ViewComponent::Preview
-  def default
+  def standard
     params = {
       class_name: 'tapestry-bg',
       title: 'About us',

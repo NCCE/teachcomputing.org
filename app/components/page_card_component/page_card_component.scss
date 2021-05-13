@@ -1,15 +1,3 @@
-.page-card-component {
-  display: grid;
-  grid-template-columns: auto;
-
-  column-gap: 36px;
-  row-gap: 36px;
-
-  @include govuk-media-query($from: tablet) {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .page-card-component--card {
   position: relative;
   background-color: $white;

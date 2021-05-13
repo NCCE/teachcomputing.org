@@ -60,12 +60,14 @@ class AboutPage
         class_name: 'programme-cards',
         cards: [
           {
+            class_name: 'primary-certificate',
             title: I18n.t('pages.about.primary_card.title'),
             text: I18n.t('pages.about.primary_card.text'),
             link_title: I18n.t('pages.about.primary_card.link_title'),
             link_url: '/primary-teachers'
           },
           {
+            class_name: 'secondary-certificate',
             title: I18n.t('pages.about.secondary_card.title'),
             text: I18n.t('pages.about.secondary_card.text'),
             link_title: I18n.t('pages.about.secondary_card.link_title'),

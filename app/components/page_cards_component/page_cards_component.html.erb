@@ -1,0 +1,5 @@
+<div class="page-cards-component <%= @class_name %>">
+  <% @cards.each do | card | %>
+    <%= render PageCardComponent.new(card) %>
+  <% end %>
+</div>
