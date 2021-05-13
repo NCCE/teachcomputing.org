@@ -19,11 +19,11 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'has an ambition section' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'Our Ambition')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Our ambition')
   end
 
   it 'has the expected links in the ambition section' do
-    expect(rendered).to have_link('See our latest report', href: 'https://www.stem.org.uk/sites/default/files/pages/downloads/NCCE_Impact_Report_Final.pdf')
+    expect(rendered).to have_link('See our latest report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
   end
 
   it 'has a diversity section' do
