@@ -59,7 +59,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.preview_path = "#{Rails.root}/app/previews/mailers"
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
   config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
 
@@ -81,8 +81,7 @@ Rails.application.configure do
   config.hosts << 'web'
   config.autoload_paths << 'lib'
 
-  config.view_component.preview_paths << "#{Rails.root}/app/previews/components"
-  config.view_component.preview_route = '/rails/components'
+  config.view_component.preview_paths << "#{Rails.root}/lib/component_previews"
 
   if ENV['DOCKER_LOGS']
     config.log_level = :debug
