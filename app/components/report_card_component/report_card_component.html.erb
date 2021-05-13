@@ -1,22 +1,22 @@
-<div class="report-card-component__wrapper <%= @params[:class_name] %>">
+<div class="report-card-component__wrapper <%= @class_name %>">
   <div class="report-card-component__title">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @params[:title] %></h2>
-    <% unless @params[:date].blank? %>
-      <p class="govuk-body govuk-body-s report-card-component__date"><%= @params[:date] %></p>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @title %></h2>
+    <% unless @date.blank? %>
+      <p class="govuk-body govuk-body-s report-card-component__date"><%= @date %></p>
     <% end %>
   </div>
-  <p class="govuk-body report-card-component__text"><%= @params[:text] %></p>
+  <p class="govuk-body report-card-component__text"><%= @text %></p>
   <div class='report-card-component__list-wrapper'>
     <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
-      <% @params[:bullets].each do | bullet | %>
+      <% @bullets.each do | bullet | %>
       <li><%= bullet %></li>
       <% end %>
     </ul>
-    <% unless @params[:stats_date].blank? %>
-      <p class="govuk-body govuk-body-s report-card-component__date"><%= @params[:stats_date] %></p>
+    <% unless @stats_date.blank? %>
+      <p class="govuk-body govuk-body-s report-card-component__date"><%= @stats_date %></p>
     <% end %>
   </div>
   <div class='report-card-component__button'>
-    <%= link_to @params[:button_title], @params[:button_url], class: 'govuk-button button govuk-!-margin-bottom-0'  %>
+    <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0'  %>
   </div>
 </div>

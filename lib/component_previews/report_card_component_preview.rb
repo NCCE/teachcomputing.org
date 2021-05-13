@@ -32,13 +32,13 @@ class ReportCardComponentPreview < ViewComponent::Preview
 
   def with_stats_date
     params = {
-      class_name: 'report-card-example-component',
-      stats_date: 'Figure as at April 2021',
+      class_name: 'report-card-example-component',,
       title: 'Report Card Component',
       text: 'This is an example of a report card component. This is the main body text and it may span multiple, ' \
             'lines so our text should attempt to do this too. There will also be some bullet points and a button ' \
             'displayed. All are populated by parameters.',
       bullets: ['Item 1', 'Item 2', 'Item 3'],
+      stats_date: 'Figure as at April 2021'
       button_title: 'Example button',
       button_url: '/'
     }

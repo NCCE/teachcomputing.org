@@ -1,5 +1,5 @@
-<div class="page-card-component <%= @params[:class_name] %>">
-  <% @params[:cards].each_with_index do | card, index | %>
+<div class="page-card-component <%= @class_name %>">
+  <% @cards.each_with_index do | card, index | %>
   <div class='page-card-component--card <%= "card-#{index + 1}" %>'>
     <% if card[:image_url].present? %>
     <div class="page-card-component--image-wrapper">

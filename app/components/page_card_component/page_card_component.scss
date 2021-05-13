@@ -2,9 +2,10 @@
   display: grid;
   grid-template-columns: auto;
 
+  column-gap: 36px;
+  row-gap: 36px;
+
   @include govuk-media-query($from: tablet) {
-    column-gap: 36px;
-    row-gap: 36px;
     grid-template-columns: 1fr 1fr;
   }
 }

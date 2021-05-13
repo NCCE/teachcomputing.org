@@ -31,23 +31,3 @@
     border-top: solid 9px $secondary-cert-color;
   }
 }
-
-.impact-and-evaluation-report-card {
-  .report-card-component__title {
-    background-image: url('../images/icons/resources-black.svg');
-    background-repeat: no-repeat;
-    background-size: 1.8rem;
-    padding-left: 2.1rem !important;
-  }
-
-  .report-card-component__list {
-    list-style-type: none;
-
-    li {
-      background-image: url('../images/icons/tick-plain.svg');
-      background-repeat: no-repeat;
-      background-size: 1.5rem;
-      padding-left: 2rem !important;
-    }
-  }
-}

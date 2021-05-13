@@ -4,12 +4,38 @@
   padding: 2em;
 }
 
+.report-card-component__title {
+  background-image: url('../images/icons/resources-black.svg');
+  background-repeat: no-repeat;
+  background-size: 1.8rem;
+  padding-left: 2.1rem !important;
+}
+
+.report-card-component__list {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    background-image: url('../images/icons/tick-plain.svg');
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    padding-left: 2rem !important;
+  }
+}
+
+@include govuk-media-query($until: desktop) {
+  .report-card-component__list li {
+    background-size: 1.3rem;
+    padding-left: 1.7rem !important;
+  }
+}
+
 @include govuk-media-query($from: desktop) {
   .report-card-component__wrapper {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto auto;
-    gap: 0.5em 1em;
+    gap: 1em;
     margin: 1.6em 0;
   }
 
@@ -25,9 +51,5 @@
 
   .report-card-component__list-wrapper {
     grid-row: 1 / span 3;
-  }
-
-  .report-card-component__list {
-    padding-left: 0;
   }
 }
