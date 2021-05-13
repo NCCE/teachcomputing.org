@@ -72,6 +72,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'after_create' do
+    it 'schedules FetchUsersCompletedCoursesFromAchieverJob' do
+      user = build(:user)
+      expect do
+        user.save
+      end.to have_enqueued_job(Achiever::FetchUsersCompletedCoursesFromAchieverJob)
+    end
+  end
+
   describe '#from_auth' do
     it 'has the correct id' do
       expect(user.stem_user_id).to eq uid
