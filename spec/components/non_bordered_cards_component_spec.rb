@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PageCardsComponent, type: :component do
+RSpec.describe NonBorderedCardsComponent, type: :component do
   before do
     render_inline(described_class.new(AboutPage.programme_cards))
   end
@@ -10,6 +10,6 @@ RSpec.describe PageCardsComponent, type: :component do
   end
 
   it 'renders the expected number of cards' do
-    expect(rendered_component).to have_css('.page-card-component--card', count: 2)
+    expect(rendered_component).to have_css('.non-bordered-card-component', count: 2)
   end
 end

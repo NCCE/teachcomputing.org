@@ -1,0 +1,11 @@
+.bordered-cards-component {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  column-gap: 36px;
+  row-gap: 36px;
+}

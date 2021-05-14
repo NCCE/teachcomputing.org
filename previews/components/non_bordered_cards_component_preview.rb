@@ -1,4 +1,4 @@
-class PageCardsComponentPreview < ViewComponent::Preview
+class NonBorderedCardsComponentPreview < ViewComponent::Preview
   def two_cards_one_with_no_image
     params = {
       class_name: 'page-cards-example-component',
@@ -20,7 +20,7 @@ class PageCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(PageCardsComponent.new(params))
+    render(NonBorderedCardsComponent.new(params))
   end
 
   def two_cards
@@ -44,7 +44,7 @@ class PageCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(PageCardsComponent.new(params))
+    render(NonBorderedCardsComponent.new(params))
   end
 
   def more_cards
@@ -96,6 +96,6 @@ class PageCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(PageCardsComponent.new(params))
+    render(NonBorderedCardsComponent.new(params))
   end
 end

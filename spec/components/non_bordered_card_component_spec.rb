@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PageCardComponent, type: :component do
+RSpec.describe NonBorderedCardComponent, type: :component do
   let(:test_data) { AboutPage.programme_cards[:cards][0] }
 
   context 'without an image' do
@@ -9,7 +9,7 @@ RSpec.describe PageCardComponent, type: :component do
     end
 
     it 'does not render an image' do
-      expect(rendered_component).not_to have_css('page-card-component--image-wrapper')
+      expect(rendered_component).not_to have_css('non-bordered-card-component__image-wrapper')
     end
 
     it 'has the expected title' do
@@ -33,7 +33,7 @@ RSpec.describe PageCardComponent, type: :component do
     end
 
     it 'renders an image' do
-      expect(rendered_component).to have_css('.page-card-component--image-wrapper')
+      expect(rendered_component).to have_css('.non-bordered-card-component__image-wrapper')
     end
   end
 end

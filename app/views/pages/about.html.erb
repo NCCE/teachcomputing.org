@@ -4,7 +4,7 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l govuk-!-margin-bottom-8">
+        <p class="govuk-body-l govuk-!-margin-bottom-9">
           <%= t('.intro_text.html',
             stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
             rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
@@ -15,7 +15,7 @@
     </div>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <%= render PageCardsComponent.new(AboutPage.resource_cards) %>
+        <%= render NonBorderedCardsComponent.new(AboutPage.resource_cards) %>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
     </div>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <%= render PageCardsComponent.new(AboutPage.programme_cards) %>
+        <%= render BorderedCardsComponent.new(AboutPage.programme_cards) %>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@
     </div>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <%= render PageCardsComponent.new(AboutPage.support_cards) %>
+        <%= render BorderedCardsComponent.new(AboutPage.support_cards) %>
       </div>
     </div>
   </div>

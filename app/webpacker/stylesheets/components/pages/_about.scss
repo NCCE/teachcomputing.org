@@ -1,33 +1,13 @@
 .ncce-about__wrapper {
-  padding: 3em 0;
-
-  img {
-    width: 100%;
-    @include govuk-media-query($from: desktop) {
-      display: block;
-      height: 100%;
-    }
-  }
+  padding: 3.7em 0;
 }
 
-.resource-cards {
+.ncce-about__wrapper img {
+  width: 100%;
+
   @include govuk-media-query($from: desktop) {
-    column-gap: 36px;
-    grid-template-columns: 1fr 1fr 1fr !important;
-  }
-
-  .page-card-component--card {
-    box-shadow: none;
-    padding: 0;
+    display: block;
+    height: 100%;
   }
 }
 
-.programme-cards {
-  .primary-certificate {
-    border-top: solid 9px $primary-cert-color;
-  }
-
-  .secondary-certificate {
-    border-top: solid 9px $secondary-cert-color;
-  }
-}

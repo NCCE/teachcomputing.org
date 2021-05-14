@@ -1,0 +1,5 @@
+<%= content_tag :div, class: ['bordered-cards-component', { @class_name => @class_name.present? }] do %>
+  <% @cards.each do | card | %>
+    <%= render BorderedCardComponent.new(card) %>
+  <% end %>
+<% end %>

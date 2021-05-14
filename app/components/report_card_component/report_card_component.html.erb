@@ -1,4 +1,4 @@
-<div class="report-card-component__wrapper <%= @class_name %>">
+<%= content_tag :div, class: ['report-card-component__wrapper', { @class_name => @class_name.present? }] do %>
   <div class="report-card-component__title">
     <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @title %></h2>
     <% unless @date.blank? %>
@@ -19,4 +19,4 @@
   <div class='report-card-component__button'>
     <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0'  %>
   </div>
-</div>
+<% end %>

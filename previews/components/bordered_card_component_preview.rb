@@ -1,4 +1,4 @@
-class PageCardComponentPreview < ViewComponent::Preview
+class BorderedCardComponentPreview < ViewComponent::Preview
   def card_with_image
     params = {
       image_url: 'media/images/logos/tc-logo-with-bg.svg',
@@ -8,7 +8,7 @@ class PageCardComponentPreview < ViewComponent::Preview
       link_url: '/curriculum'
     }
 
-    render(PageCardComponent.new(params))
+    render(BorderedCardComponent.new(params))
   end
 
   def card_no_image
@@ -20,6 +20,6 @@ class PageCardComponentPreview < ViewComponent::Preview
       link_url: '/curriculum'
     }
 
-    render(PageCardComponent.new(params))
+    render(BorderedCardComponent.new(params))
   end
 end
