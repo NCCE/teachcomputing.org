@@ -49,7 +49,13 @@ class SecondaryLandingPage
   end
 
   def csa_link_text
-    enrolled_on_csa? ? 'View your progress' : 'Find out more'
+    if completed_csa?
+      'View certificate'
+    elsif enrolled_on_csa?
+      'View your progress'
+    else
+      'Find out more'
+    end
   end
 
   def csa_tracking_event
@@ -57,7 +63,13 @@ class SecondaryLandingPage
   end
 
   def secondary_cert_link_text
-    enrolled_on_secondary? ? 'View your progress' : 'Find out more'
+    if completed_secondary?
+      'View certificate'
+    elsif enrolled_on_secondary?
+      'View your progress'
+    else
+      'Find out more'
+    end
   end
 
   def secondary_tracking_event
@@ -162,7 +174,16 @@ class SecondaryLandingPage
       @current_user && @cs_accelerator.user_enrolled?(@current_user)
     end
 
+    def completed_csa?
+      @current_user && @cs_accelerator.user_completed?(@current_user)
+    end
+
     def enrolled_on_secondary?
       @current_user && @secondary_certificate.user_enrolled?(@current_user)
     end
+
+    def completed_secondary?
+      @current_user && @secondary_certificate.user_completed?(@current_user)
+    end
+
 end

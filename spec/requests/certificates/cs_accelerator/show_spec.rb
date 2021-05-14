@@ -38,15 +38,6 @@ RSpec.describe Certificates::CSAcceleratorController do
     face_to_face_achievement
   end
 
-  # Remove when the feature is released
-  before do
-    stub_feature_flags({ csa_questionnaire_enabled: true })
-  end
-
-  after do
-    unstub_feature_flags
-  end
-
   describe '#show' do
     context 'when user is logged in' do
       before do
