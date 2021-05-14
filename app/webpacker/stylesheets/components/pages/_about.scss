@@ -5,6 +5,10 @@
 .ncce-about__wrapper img {
   width: 100%;
 
+  @include govuk-media-query($until: tablet) {
+    padding-bottom: 1.5em;
+  }
+
   @include govuk-media-query($from: desktop) {
     display: block;
     height: 100%;

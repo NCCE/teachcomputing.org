@@ -5,4 +5,8 @@ class BorderedCardsComponent < ViewComponent::Base
     @cards = cards
     @class_name = class_name
   end
+
+  def render?
+    @cards.present?
+  end
 end

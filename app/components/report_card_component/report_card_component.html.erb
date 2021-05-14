@@ -17,6 +17,6 @@
     <% end %>
   </div>
   <div class='report-card-component__button'>
-    <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0'  %>
+    <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: @tracking_page, event_label: @tracking_label }  %>
   </div>
 <% end %>

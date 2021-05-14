@@ -1,5 +1,9 @@
 class AboutPage
   class << self
+    def tracking_page
+      'About'
+    end
+
     def hero
       {
         class_name: 'dixie-bg',
@@ -19,21 +23,27 @@ class AboutPage
             title: I18n.t('pages.about.tc_card.title'),
             text: I18n.t('pages.about.tc_card.text'),
             link_title: I18n.t('pages.about.tc_card.link_title'),
-            link_url: '/curriculum'
+            link_url: '/curriculum',
+            tracking_page: tracking_page,
+            tracking_label: 'Teaching resources'
           },
           {
             image_url: 'media/images/logos/isaac-logo-with-bg.svg',
             title: I18n.t('pages.about.isaac_card.title'),
             text: I18n.t('pages.about.isaac_card.text'),
             link_title: I18n.t('pages.about.isaac_card.link_title'),
-            link_url: '/a-level-computer-science'
+            link_url: '/a-level-computer-science',
+            tracking_page: tracking_page,
+            tracking_label: 'A level resources'
           },
           {
             image_url: 'media/images/logos/gender-balance-logo-with-bg.svg',
             title: I18n.t('pages.about.gender_balance_card.title'),
             text: I18n.t('pages.about.gender_balance_card.text'),
             link_title: I18n.t('pages.about.gender_balance_card.link_title'),
-            link_url: '/gender-balance'
+            link_url: '/gender-balance',
+            tracking_page: tracking_page,
+            tracking_label: 'Gender balance'
           }
         ]
       }
@@ -64,14 +74,18 @@ class AboutPage
             title: I18n.t('pages.about.primary_card.title'),
             text: I18n.t('pages.about.primary_card.text'),
             link_title: I18n.t('pages.about.primary_card.link_title'),
-            link_url: '/primary-teachers'
+            link_url: '/primary-teachers',
+            tracking_page: tracking_page,
+            tracking_label: I18n.t('pages.about.primary_card.title')
           },
           {
             class_name: 'bordered-card-component--secondary-cert',
             title: I18n.t('pages.about.secondary_card.title'),
             text: I18n.t('pages.about.secondary_card.text'),
             link_title: I18n.t('pages.about.secondary_card.link_title'),
-            link_url: '/secondary-teachers'
+            link_url: '/secondary-teachers',
+            tracking_page: tracking_page,
+            tracking_label: I18n.t('pages.about.secondary_card.title')
           }
         ]
       }
@@ -85,25 +99,33 @@ class AboutPage
             title: I18n.t('pages.about.supporting_partners_card.title'),
             text: I18n.t('pages.about.supporting_partners_card.text'),
             link_title: I18n.t('pages.about.supporting_partners_card.link_title'),
-            link_url: '/supporting-partners'
+            link_url: '/supporting-partners',
+            tracking_page: tracking_page,
+            tracking_label: I18n.t('pages.about.supporting_partners_card.title')
           },
           {
             title: I18n.t('pages.about.involvement_card.title'),
             text: I18n.t('pages.about.involvement_card.text'),
             link_title: I18n.t('pages.about.involvement_card.link_title'),
-            link_url: '/get-involved'
+            link_url: '/get-involved',
+            tracking_page: tracking_page,
+            tracking_label: I18n.t('pages.about.involvement_card.title')
           },
           {
             title: I18n.t('pages.about.contributing_partners_card.title'),
             text: I18n.t('pages.about.contributing_partners_card.text'),
             link_title: I18n.t('pages.about.contributing_partners_card.link_title'),
-            link_url: '/contributing-partners'
+            link_url: '/contributing-partners',
+            tracking_page: tracking_page,
+            tracking_label: I18n.t('pages.about.contributing_partners_card.title')
           },
           {
             title: I18n.t('pages.about.governors_card.title'),
             text: I18n.t('pages.about.governors_card.text'),
             link_title: I18n.t('pages.about.governors_card.link_title'),
-            link_url: '/governors-and-trustees/'
+            link_url: '/governors-and-trustees/',
+            tracking_page: tracking_page,
+            tracking_label: 'Governors'
           }
         ]
       }

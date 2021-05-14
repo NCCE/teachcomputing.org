@@ -6,5 +6,5 @@
   <% end %>
   <h2 class="govuk-heading-m"><%= @title %></h2>
   <p class="govuk-body"><%= @text %></p>
-  <p class="govuk-body"><%= link_to @link_title, @link_url, class: 'ncce-link' %></p>
+  <p class="govuk-body"><%= link_to @link_title, @link_url, class: 'ncce-link', data: { event_action: 'click', event_category: @tracking_page, event_label: @tracking_label } %></p>
 <% end %>

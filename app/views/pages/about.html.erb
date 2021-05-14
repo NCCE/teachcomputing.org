@@ -51,9 +51,9 @@
         <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
         <p class='govuk-body'>
           <%= t('.programmes.text.html',
-            resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link'),
-            training_link: (link_to 'training courses', '/courses', class: 'ncce-link'),
-            bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link')
+            resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
+            training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
+            bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Bursaries' })
           ) %>
         </p>
       </div>
