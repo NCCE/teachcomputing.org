@@ -10,11 +10,17 @@
   <div class="ncce-courses__list" data-course-filter-target="courseList">
     <%= render LocationSearchResultsComponent.new(course_filter: @course_filter) %>
 
-    <% if @course_filter.location_search? && @course_filter.total_results_count != 0 %>
+    <% if @course_filter.location_search? && @course_filter.total_results_count != 0 && @course_filter.includes_online_or_remote? %>
       <p class="govuk-body ncce-courses__results-title">
         <%= t('found_remote_online_courses_html', count: @course_filter.non_location_based_results.size) %>
       </p>
     <% end %>
     <%= render CourseComponent.with_collection(@course_filter.non_location_based_results, filter: @course_filter) %>
+
+    <% if @course_filter.location_search? %>
+      <div class="ncce-courses__attribution">
+        <%= image_pack_tag 'media/images/courses/powered_by_google.png', alt: 'Powered by Google', class: 'ncce-courses__powered-by' %>
+      </div>
+    <% end %>
   </div>
 <% end %>

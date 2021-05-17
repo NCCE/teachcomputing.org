@@ -160,3 +160,17 @@
     }
   }
 }
+
+.ncce-courses__attribution {
+  position: relative;
+  text-align: right;
+  top: 30px;
+}
+
+.ncce-courses__powered-by {
+  width: 112px;
+  @include govuk-media-query($from: desktop) {
+    width: 144px;
+  }
+}
+

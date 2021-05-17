@@ -71,7 +71,9 @@ module Achiever
     end
 
     def course_formats
-      @course_formats ||= %i[face_to_face online remote]
+      @course_formats ||= [{ label: 'Face to face', value: 'face_to_face' },
+                           { label: 'Online', value: 'online' },
+                           { label: 'Live Remote', value: 'remote' }]
     end
 
     def course_tags
@@ -183,6 +185,11 @@ module Achiever
 
     def geocoded_successfully?
       @geocoded_successfully ||= geocoded_search_location.present?
+    end
+
+    def includes_online_or_remote?
+      return true if current_format.nil?
+      current_format.include?('remote') || current_format.include?('online')
     end
 
     private

@@ -27,4 +27,10 @@ class MoreCoursesComponent < ViewComponent::Base
       # @search_results.outside_max_radius_results_count.zero?
     false
   end
+
+  def render?
+    return false if @search_results.radius_maxed
+    return false unless @search_results.further_results_count.positive?
+    true
+  end
 end

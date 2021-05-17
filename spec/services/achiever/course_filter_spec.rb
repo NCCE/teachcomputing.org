@@ -699,4 +699,44 @@ RSpec.describe Achiever::CourseFilter do
       end
     end
   end
+
+  describe '#includes_online_or_remote?' do
+    context 'when no filtering applied' do
+      it 'returns true' do
+        expect(course_filter.includes_online_or_remote?).to eq(true)
+      end
+    end
+
+    context 'when filtering to face to face only' do
+      let(:filter_params) { { course_format: %w[face_to_face] } }
+
+      it 'returns false' do
+        expect(course_filter.includes_online_or_remote?).to eq(false)
+      end
+    end
+
+    context 'when filtering includes online' do
+      let(:filter_params) { { course_format: %w[face_to_face online] } }
+
+      it 'returns true' do
+        expect(course_filter.includes_online_or_remote?).to eq(true)
+      end
+    end
+
+    context 'when filtering includes remote' do
+      let(:filter_params) { { course_format: %w[face_to_face remote] } }
+
+      it 'returns true' do
+        expect(course_filter.includes_online_or_remote?).to eq(true)
+      end
+    end
+
+    context 'when filtering includes remote and online' do
+      let(:filter_params) { { course_format: %w[face_to_face remote online] } }
+
+      it 'returns true' do
+        expect(course_filter.includes_online_or_remote?).to eq(true)
+      end
+    end
+  end
 end
