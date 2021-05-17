@@ -189,20 +189,6 @@ if activity = Activity.find_by(stem_course_template_no: '6172f084-b38c-eb11-b1ac
   end
 end
 
-if activity = Activity.find_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3')
-  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  unless group_two.programme_activities.include?(programme_activity)
-    programme_activity.update(programme_activity_grouping_id: group_two.id)
-  end
-end
-
-if activity = Activity.find_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236-000d3a8747c3')
-  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  unless group_two.programme_activities.include?(programme_activity)
-    programme_activity.update(programme_activity_grouping_id: group_two.id)
-  end
-end
-
 group_three = secondary.programme_activity_groupings.find_by(sort_key: 3)
 
 if activity = Activity.find_by(slug: 'contribute-to-online-discussion')

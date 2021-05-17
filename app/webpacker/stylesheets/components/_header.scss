@@ -162,6 +162,7 @@
     visibility: visible;
   }
 }
+
 .ncce-header__wrap {
   display: flex;
 }
@@ -192,7 +193,7 @@
     background-size: 0.1rem;
     border: none;
     min-width: 7rem;
-    padding: 0.6875rem 0.3rem;
+    padding: 1.5rem 0.3rem;
 
     &:first-child {
       border-top: none;
@@ -364,3 +365,4 @@
   vertical-align: middle;
   width: 1rem;
 }
+
