@@ -1,6 +1,10 @@
 .report-card-component__wrapper {
   background-color: $white;
-  padding: 2em;
+  padding: $component-padding-mobile;
+
+  @include govuk-media-query($from: tablet) {
+    padding: $component-padding;
+  }
 
   @include govuk-media-query($from: desktop) {
     display: grid;
@@ -13,12 +17,19 @@
 .report-card-component__title {
   background-image: url('../images/icons/resources-black.svg');
   background-repeat: no-repeat;
-  background-size: 1.3rem;
+  background-size: 1.6rem;
   padding-left: 2em !important;
+  min-height: 1.8em;
+  padding-top: 0.35em;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.8rem;
     padding-left: 2.5em !important;
+    padding-top: 0;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    height: 1.5em;
   }
 }
 
@@ -44,13 +55,17 @@
 }
 
 .report-card-component__list-wrapper {
+  padding: 1.1em 0;
+
   @include govuk-media-query($from: desktop) {
     grid-row: 1 / span 4;
+    padding: 0;
   }
 }
 
 .report-card-component__date {
   @include govuk-media-query($from: desktop) {
+    padding-left: 2.4em;
     margin-bottom: 0;
   }
 }

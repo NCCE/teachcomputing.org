@@ -5,7 +5,7 @@
 
   position: relative;
   background-color: $white;
-  padding: 1.5em;
+  padding: $component-padding-mobile;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
   > *:last-child {
@@ -22,6 +22,10 @@
 
   &--secondary-cert {
     border-top: solid 9px $secondary-cert-color;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding: $component-padding;
   }
 }
 
