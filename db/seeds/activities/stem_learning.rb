@@ -1232,3 +1232,14 @@ a = Activity.find_or_create_by(stem_course_template_no: 'fbd07be9-c6b4-eb11-8236
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e4cc4e34-329d-eb11-b1ac-000d3a86e608') do |activity|
+  activity.title = 'Diagnostic assessment for GCSE computer science'
+  activity.credit = 10
+  activity.slug = 'diagnostic-assessment-for-gcse-computer-science'
+  activity.stem_course_template_no = 'e4cc4e34-329d-eb11-b1ac-000d3a86e608'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP412'
+  activity.remote_delivered_cpd = true
+end
