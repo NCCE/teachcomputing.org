@@ -1,4 +1,4 @@
-<%= content_tag :div, class: ['hero-image-component__wrapper', { @class_name => @class_name.present? }] do %>
+<%= content_tag :div, class: ['hero-image-component__wrapper', { "#{@class_name}": @class_name.present? }] do %>
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="hero-image-component white-bg">

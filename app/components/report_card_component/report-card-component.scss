@@ -19,7 +19,6 @@
   background-repeat: no-repeat;
   background-size: 1.6rem;
   padding-left: 2em !important;
-  min-height: 1.8em;
   padding-top: 0.35em;
 
   @include govuk-media-query($from: tablet) {
@@ -29,7 +28,15 @@
   }
 
   @include govuk-media-query($from: desktop) {
-    height: 1.5em;
+    height: 1.75em;
+  }
+}
+
+.report-card-component__text {
+  margin-top: 0.9em;
+
+  @include govuk-media-query($from: desktop) {
+    margin-top: 0;
   }
 }
 
@@ -69,6 +76,8 @@
     margin-bottom: 0;
   }
 }
+
+
 
 @include govuk-media-query($from: desktop) {
   .report-card-component__title,

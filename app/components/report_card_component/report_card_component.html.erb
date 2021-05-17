@@ -1,4 +1,4 @@
-<%= content_tag :div, class: ['report-card-component__wrapper', { @class_name => @class_name.present? }] do %>
+<%= content_tag :div, class: ['report-card-component__wrapper', { "#{@class_name}": @class_name.present? }] do %>
   <div class="report-card-component__title">
     <h2 class="govuk-heading-m"><%= @title %></h2>
     <% unless @date.blank? %>
