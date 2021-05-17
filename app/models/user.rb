@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :resource_users, dependent: :nullify
   has_many :questionnaire_response, dependent: :nullify
 
+  after_create :schedule_fetching_of_course_bookings
+
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
       user.stem_user_id = id
@@ -66,5 +68,9 @@ class User < ApplicationRecord
   def programme_pathway(programme)
     enrolment = user_programme_enrolments.find_by(programme: programme)
     enrolment&.pathway
+  end
+
+  def schedule_fetching_of_course_bookings
+    Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(self)
   end
 end

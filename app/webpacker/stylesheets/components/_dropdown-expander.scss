@@ -26,6 +26,12 @@
   }
 }
 
+.dropdown__expander:last-of-type > .dropdown__expander-content{
+  right: 0;
+  left:auto;
+  min-width: 175px;
+}
+
 .dropdown__expander-content-item {
   font-size: 1rem;
   padding-bottom: 1rem;
