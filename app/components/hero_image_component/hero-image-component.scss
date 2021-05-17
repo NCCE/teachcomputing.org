@@ -26,21 +26,8 @@
     }
 
     @include govuk-media-query($from: desktop) {
-      .govuk-body-l {
-        font-size: 2vw;
-      }
-
       & > *:last-child {
         margin-bottom: 0;
-      }
-    }
-
-    @include govuk-media-query($from: 1000px) {
-      .govuk-heading-l {
-        font-size: 2.25rem;
-      }
-      .govuk-body-l {
-        font-size: 1.5rem;
       }
     }
   }
