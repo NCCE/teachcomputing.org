@@ -24,10 +24,6 @@ RSpec.describe BorderedCardComponent, type: :component do
     it 'has the expected link' do
       expect(rendered_component).to have_link('Primary teachers toolkit', href: '/primary-teachers')
     end
-
-    it 'renders the expected tracking information' do
-      expect(rendered_component).to have_
-    end
   end
 
   context 'with an image' do
