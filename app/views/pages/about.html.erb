@@ -1,81 +1,83 @@
 <% meta_tag :title, 'About Us - Teach Computing' %>
 <%= render HeroImageComponent.new(AboutPage.hero) %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l govuk-!-margin-bottom-9">
-          <%= t('.intro_text.html',
-            stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
-            rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
-            bcs_link: (link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link')
-          ) %>
-        </p>
+<div class='ncce-about__wrapper'>
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l">
+            <%= t('.intro_text.html',
+              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
+              rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
+              bcs_link: (link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link')
+            ) %>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <%= render NonBorderedCardsComponent.new(AboutPage.resource_cards) %>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render NonBorderedCardsComponent.new(AboutPage.resource_cards) %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class='foam-bg govuk-main-wrapper ncce-about__wrapper'>
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class='govuk-heading-l'><%= t('.ambition.title') %></h2>
-        <p class='govuk-body'><%= t('.ambition.text') %></p>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl foam-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.ambition.title') %></h2>
+          <p class='govuk-body'><%= t('.ambition.text') %></p>
+        </div>
       </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <%= render ReportCardComponent.new(AboutPage.report_card) %>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render ReportCardComponent.new(AboutPage.report_card) %>
+        </div>
       </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-top-8">
-      <div class="govuk-grid-column-one-half">
-        <%= image_pack_tag 'media/images/pages/about/inclusion-in-the-classroom.png', alt: 'Inclusion in the classroom' %>
-      </div>
-      <div class="govuk-grid-column-one-half">
-        <h2 class='govuk-heading-l'><%= t('.diversity.title') %></h2>
-        <p class='govuk-body'><%= t('.diversity.text') %></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class='govuk-main-wrapper ncce-about__wrapper'>
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
-        <p class='govuk-body'>
-          <%= t('.programmes.text.html',
-            resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
-            training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
-            bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Bursaries' })
-          ) %>
-        </p>
-      </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <%= render BorderedCardsComponent.new(AboutPage.programme_cards) %>
+      <div class="govuk-grid-row govuk-!-margin-top-8">
+        <div class="govuk-grid-column-one-half">
+          <%= image_pack_tag 'media/images/pages/about/inclusion-in-the-classroom.png', alt: 'Inclusion in the classroom' %>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <h2 class='govuk-heading-l'><%= t('.diversity.title') %></h2>
+          <p class='govuk-body'><%= t('.diversity.text') %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class='govuk-main-wrapper light-grey-bg ncce-about__wrapper'>
   <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class='govuk-heading-l'><%= t('.support.title') %></h2>
-        <p class='govuk-body'><%= t('.support.text') %></p>
+    <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
+          <p class='govuk-body'>
+            <%= t('.programmes.text.html',
+              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
+              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
+              bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Bursaries' })
+            ) %>
+          </p>
+        </div>
       </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7">
+          <%= render BorderedCardsComponent.new(AboutPage.programme_cards) %>
+        </div>
+        </div>
     </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <%= render BorderedCardsComponent.new(AboutPage.support_cards) %>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl light-grey-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.support.title') %></h2>
+          <p class='govuk-body'><%= t('.support.text') %></p>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7">
+          <%= render BorderedCardsComponent.new(AboutPage.support_cards) %>
+        </div>
       </div>
     </div>
   </div>
