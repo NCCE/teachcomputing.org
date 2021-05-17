@@ -15,12 +15,17 @@
   }
 
   &__text-wrapper {
-    align-self: center;
     grid-area: text;
+
     @include govuk-media-query($from: desktop) {
-      .govuk-heading-l {
-        font-size: 3.5vw;
-      }
+      padding-top: 33px;
+    }
+
+    .govuk-heading-xl {
+      margin-bottom: 20px;
+    }
+
+    @include govuk-media-query($from: desktop) {
       .govuk-body-l {
         font-size: 2vw;
       }
@@ -29,6 +34,7 @@
         margin-bottom: 0;
       }
     }
+
     @include govuk-media-query($from: 1000px) {
       .govuk-heading-l {
         font-size: 2.25rem;

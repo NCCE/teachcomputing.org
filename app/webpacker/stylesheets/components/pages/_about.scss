@@ -6,3 +6,9 @@
     height: 100%;
   }
 }
+
+.ncce-about__image {
+  @include govuk-media-query($until: tablet) {
+    padding-bottom: 25px;
+  }
+}
