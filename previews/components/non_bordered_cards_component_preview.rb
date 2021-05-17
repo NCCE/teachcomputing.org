@@ -13,7 +13,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 2',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example.',
           link_title: 'A link',
           link_url: '/curriculum'
         }
@@ -37,7 +37,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 2',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example of a page card component with a bit more text than the other.',
           link_title: 'A link',
           link_url: '/curriculum'
         }
@@ -68,7 +68,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 3',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example of a page card component. This is an example of a page card component. This is an example of a page card component.',
           link_title: 'A link',
           link_url: '/curriculum'
         },

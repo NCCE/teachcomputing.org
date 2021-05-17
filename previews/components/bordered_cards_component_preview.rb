@@ -13,7 +13,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 2',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced.',
           link_title: 'A link',
           link_url: '/curriculum'
         }
@@ -68,7 +68,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 3',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced.',
           link_title: 'A link',
           link_url: '/curriculum'
         },
@@ -82,7 +82,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 5',
-          text: 'This is an example of a page card component.',
+          text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced. This one has even more text which should provide some variation.',
           link_title: 'A link',
           link_url: '/curriculum'
         },
