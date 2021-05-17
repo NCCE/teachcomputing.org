@@ -59,7 +59,7 @@ RSpec.describe('Curriculum Ratings', type: :system) do
 
     describe 'when a positive rating is given' do
       before do
-        click_on class: 'curriculum__rating--thumb-down'
+        click_on class: 'curriculum__rating--thumb-up'
       end
 
       it 'does not show the thumbs buttons' do

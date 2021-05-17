@@ -52,7 +52,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'lists available online activities for a given user' do
-        expect(Activity.available_for(user)).to eq(online_courses)
+        expect(Activity.available_for(user)).to match_array(online_courses)
       end
 
       it 'does not include activities if a user already has an existing achievement' do
@@ -66,9 +66,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only online activities' do
-        online_courses.each do |online_course|
-          expect(Activity.online.to_a).to include(online_course)
-        end
+        expect(Activity.online).to match_array(online_courses)
       end
 
       it 'does not include actions' do
@@ -82,9 +80,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only face-to-face activities' do
-        face_to_face_courses.each do |face_to_face_course|
-          expect(Activity.face_to_face.to_a).to include(face_to_face_course)
-        end
+        expect(Activity.face_to_face).to match_array(face_to_face_courses)
       end
 
       it 'does not include actions' do
@@ -98,9 +94,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only future-learn activities' do
-        online_courses.each do |online_course|
-          expect(Activity.future_learn.to_a).to include(online_course)
-        end
+        expect(Activity.future_learn).to match_array(online_courses)
       end
 
       it 'does not include actions' do
@@ -114,9 +108,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only stem-learning activities' do
-        face_to_face_courses.each do |face_to_face_course|
-          expect(Activity.stem_learning.to_a).to include(face_to_face_course)
-        end
+        expect(Activity.stem_learning).to match_array(face_to_face_courses)
       end
 
       it 'does not include actions' do
