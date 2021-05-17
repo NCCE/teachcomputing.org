@@ -1,6 +1,6 @@
 <%= content_tag :div, class: ['report-card-component__wrapper', { @class_name => @class_name.present? }] do %>
   <div class="report-card-component__title">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @title %></h2>
+    <h2 class="govuk-heading-m"><%= @title %></h2>
     <% unless @date.blank? %>
       <p class="govuk-body govuk-body-s report-card-component__date"><%= @date %></p>
     <% end %>
@@ -9,7 +9,7 @@
   <div class='report-card-component__list-wrapper'>
     <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
       <% @bullets.each do | bullet | %>
-      <li><%= bullet %></li>
+      <li><%= bullet.html_safe %></li>
       <% end %>
     </ul>
     <% unless @stats_date.blank? %>

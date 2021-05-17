@@ -5,7 +5,7 @@
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-l">
+          <p class="govuk-body-l govuk-!-margin-bottom-0">
             <%= t('.intro_text.html',
               stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
               rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
@@ -26,7 +26,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class='govuk-heading-l'><%= t('.ambition.title') %></h2>
-          <p class='govuk-body'><%= t('.ambition.text') %></p>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.ambition.text') %></p>
         </div>
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
@@ -36,11 +36,11 @@
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-8">
         <div class="govuk-grid-column-one-half">
-          <%= image_pack_tag 'media/images/pages/about/inclusion-in-the-classroom.png', alt: 'Inclusion in the classroom' %>
+          <%= image_pack_tag 'media/images/pages/about/inclusion-in-the-classroom.png', alt: 'Inclusion in the classroom', class: 'govuk-!-padding-bottom-7' %>
         </div>
         <div class="govuk-grid-column-one-half">
           <h2 class='govuk-heading-l'><%= t('.diversity.title') %></h2>
-          <p class='govuk-body'><%= t('.diversity.text') %></p>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.diversity.text') %></p>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
-          <p class='govuk-body'>
+          <p class='govuk-body govuk-!-margin-bottom-0'>
             <%= t('.programmes.text.html',
               resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
               training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
@@ -71,7 +71,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class='govuk-heading-l'><%= t('.support.title') %></h2>
-          <p class='govuk-body'><%= t('.support.text') %></p>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.support.text') %></p>
         </div>
       </div>
       <div class="govuk-grid-row">

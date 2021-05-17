@@ -26,9 +26,12 @@ en:
       report_card:
         title: "Impact and evaluation"
         text: "View our report on how we are improving the quality of teaching computing in schools."
-        engagements: "29,500+ teachers engaged across more than 14,000 schools in England"
-        enrolments: "7,400+ Computer Science Accelerator programme enrolments"
-        downloads: "305,000+ lessons downloaded from the Teach Computing Curriculum since launch"
+        engagements:
+          html: "<strong>29,500+ teachers engaged</strong> across more than 14,000 schools in England"
+        enrolments:
+          html: "<strong>7,400+ Computer Science Accelerator</strong> programme enrolments"
+        downloads:
+          html: "<strong>305,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
         stats_date: "Figures as at April 2021"
         button_title: "See our latest report"
       diversity:

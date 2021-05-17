@@ -13,8 +13,13 @@
 .report-card-component__title {
   background-image: url('../images/icons/resources-black.svg');
   background-repeat: no-repeat;
-  background-size: 1.8rem;
-  padding-left: 2.1rem !important;
+  background-size: 1.3rem;
+  padding-left: 2em !important;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.8rem;
+    padding-left: 2.5em !important;
+  }
 }
 
 .report-card-component__list {
@@ -24,19 +29,29 @@
   li {
     background-image: url('../images/icons/tick-plain.svg');
     background-repeat: no-repeat;
-    background-size: 1.5rem;
-    padding-left: 2rem !important;
+    background-size: 1.3rem;
+    padding: 0 0 0.5em 1.7em;
 
-    @include govuk-media-query($until: desktop) {
-      background-size: 1.3rem;
-      padding-left: 1.7rem !important;
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      background-size: 1.6rem;
+      padding-left: 2em !important;
     }
   }
 }
 
 .report-card-component__list-wrapper {
   @include govuk-media-query($from: desktop) {
-    grid-row: 1 / span 3;
+    grid-row: 1 / span 4;
+  }
+}
+
+.report-card-component__date {
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
   }
 }
 
@@ -48,6 +63,6 @@
   }
 
   .report-card-component__button {
-    grid-row: 3;
+    grid-row: 4;
   }
 }

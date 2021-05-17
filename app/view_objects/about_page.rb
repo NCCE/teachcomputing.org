@@ -55,9 +55,9 @@ class AboutPage
         title: I18n.t('pages.about.report_card.title'),
         text: I18n.t('pages.about.report_card.text'),
         bullets: [
-          I18n.t('pages.about.report_card.engagements'),
-          I18n.t('pages.about.report_card.enrolments'),
-          I18n.t('pages.about.report_card.downloads')
+          I18n.t('pages.about.report_card.engagements.html'),
+          I18n.t('pages.about.report_card.enrolments.html'),
+          I18n.t('pages.about.report_card.downloads.html')
         ],
         stats_date: I18n.t('pages.about.report_card.stats_date'),
         button_title: I18n.t('pages.about.report_card.button_title'),
