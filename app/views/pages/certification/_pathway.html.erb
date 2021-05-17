@@ -1,13 +1,9 @@
 <div class="pathway-wrapper light-grey-bg">
-  <h2 class="govuk-heading-s">Learning pathways for teachers</h2>
-	<p class="govuk-body">Our learning pathways will help you to get started and offer a structured route through the programme based on your level of experience. Once you have identified your pathway please browse our courses <%= link_to 'to book online', courses_path(certificate: @programme.slug), class: 'govuk-link ncce-link' %>.</p>
+  <h2 class="govuk-heading-s">Choose a pathway</h2>
+	<p class="govuk-body">Are you an aspiring computer science teacher, or are you unsure which courses support your development objectives? Our learning pathways are designed for teachers at different levels and provide a set of recommended courses to help you get started.</p>
   <ul class="govuk-list">
 		<li class="pathway__item">
-			<%= link_to 'Advanced GCSE computer science', 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
-			<span class="pathway__item--pdf">PDF</span>
-		</li>
-		<li class="pathway__item">
-			<%= link_to 'Preparing to teach GCSE computer science', 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
+			<%= link_to 'New to computing', 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf', class: 'govuk-link ncce-link icon-resources' %>
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
 		<li class="pathway__item">
@@ -15,13 +11,19 @@
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
 		<li class="pathway__item">
-			<%= link_to 'New to computing', 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf', class: 'govuk-link ncce-link icon-resources' %>
-			<span class="pathway__item--pdf">PDF</span>
-		</li>
-		<li class="pathway__item">
 			<%= link_to 'New to computer systems', 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf', class: 'govuk-link ncce-link icon-resources' %>
 			<span class="pathway__item--pdf">PDF</span>
 		</li>
+		<li class="pathway__item">
+			<%= link_to 'Preparing to teach GCSE computer science', 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="pathway__item--pdf">PDF</span>
+		</li>
+		<li class="pathway__item">
+			<%= link_to 'Advanced GCSE computer science', 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf', class: 'govuk-link ncce-link icon-resources' %>
+			<span class="pathway__item--pdf">PDF</span>
+		</li>
   </ul>
+  <p class="govuk-body">You can also tailor your learning, selecting from our wide range of courses to increase your subject knowledge. </p>
+  <p class="govuk-body">This may be a good option if you are self-motivated and already have a good understanding of computer science.</p>
 	<%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
 </div>
