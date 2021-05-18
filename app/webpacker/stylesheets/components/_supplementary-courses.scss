@@ -1,0 +1,22 @@
+.supplementary-courses__header {
+  margin-bottom: 0;
+}
+
+.supplementary-courses__expander {
+  background-color: $white;
+  background-image: url('../images/icons/expander_down.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding-right: 1.5rem;
+}
+
+.supplementary-courses__expander[aria-expanded='true'] {
+  background-image: url('../images/icons/expander_up.svg');
+}
+
+.supplementary-courses__course:first-child {
+  margin-top: 20px;
+}
