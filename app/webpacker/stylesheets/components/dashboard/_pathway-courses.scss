@@ -33,3 +33,9 @@
   bottom: 8px;
   position: relative;
 }
+
+.ncce-pathway-courses__link {
+  @include govuk-media-query($until: desktop ) {
+    line-height: 1.2rem;
+  }
+}
