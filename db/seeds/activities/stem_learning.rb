@@ -1143,3 +1143,103 @@ a = Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP253'
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e6257895-bab4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer - new to algorithms and programming track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-new-to-algorithms-and-programming-track'
+  activity.stem_course_template_no = 'e6257895-bab4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP480'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd7412f2a-beb4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer - teaching advanced GCSE computer science track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-teaching-advanced-gcse-computer-science-track'
+  activity.stem_course_template_no = 'd7412f2a-beb4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP481'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '526b3a42-b688-ea11-a811-000d3a86d545') do |activity|
+  activity.title = 'CSA in the summer - new to computing track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-new-to-computing-track'
+  activity.stem_course_template_no = '526b3a42-b688-ea11-a811-000d3a86d545'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP428'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '03f27704-c2b4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer - preparing to teach GCSE computer science track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-preparing-to-teach-gcse-computer-science-track'
+  activity.stem_course_template_no = '03f27704-c2b4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP483'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1c72b615-c3b4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer - new to computer systems and networking track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-new-to-computer-systems-and-networking-track'
+  activity.stem_course_template_no = '1c72b615-c3b4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP484'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'b740b3b5-c5b4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer - teaching advanced GCSE computer science track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-teaching-advanced-gcse-computer-science'
+  activity.stem_course_template_no = 'b740b3b5-c5b4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP281'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'fbd07be9-c6b4-eb11-8236-000d3a87482f') do |activity|
+  activity.title = 'CSA in the summer: new to computing track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-new-to-computing-track'
+  activity.stem_course_template_no = 'fbd07be9-c6b4-eb11-8236-000d3a87482f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP280'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e4cc4e34-329d-eb11-b1ac-000d3a86e608') do |activity|
+  activity.title = 'Diagnostic assessment for GCSE computer science'
+  activity.credit = 10
+  activity.slug = 'diagnostic-assessment-for-gcse-computer-science'
+  activity.stem_course_template_no = 'e4cc4e34-329d-eb11-b1ac-000d3a86e608'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP412'
+  activity.remote_delivered_cpd = true
+end
