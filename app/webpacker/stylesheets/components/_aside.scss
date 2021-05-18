@@ -4,15 +4,18 @@ $aside-padding: 1rem;
 
 .ncce-aside {
   border-top-color: $deep-cerulean;
-  border-bottom: 3px solid $deep-cerulean;
   border-top-style: solid;
   border-top-width: 3px;
   padding-top: $aside-padding;
-  margin-bottom: 20px;
 
   &__text--s {
     font-size: 1.0625rem;
   }
+}
+
+.ncce-aside__csa-info-page {
+  border-bottom: 3px solid $deep-cerulean;
+  margin-bottom: 20px;
 }
 
 .ncce-pathway-aside {
