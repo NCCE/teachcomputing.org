@@ -1,0 +1,14 @@
+.ncce-about__wrapper img {
+  width: 100%;
+
+  @include govuk-media-query($from: desktop) {
+    display: block;
+    height: 100%;
+  }
+}
+
+.ncce-about__image {
+  @include govuk-media-query($until: tablet) {
+    padding-bottom: 25px;
+  }
+}

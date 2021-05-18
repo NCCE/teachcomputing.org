@@ -10,7 +10,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-xl', text: 'About Us')
+      expect(page).to have_css('.hero-image-component__title', text: 'About us')
     end
 
     it 'main is accessible' do

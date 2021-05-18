@@ -61,13 +61,15 @@ RSpec.configure do |config|
   config.include AchieverStubs
   config.include CredlyStubs
   config.include CurriculumStubs
-  config.include ComponentStubs
   config.include GhostStubs
   config.include CachingHelpers
   config.include ResponsiveHelpers
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
   config.include FeatureFlagHelper
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 
   config.before(:suite) do
     Webpacker.compile
@@ -85,7 +87,4 @@ RSpec.configure do |config|
 
     raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
   end
-
-  config.include ViewComponent::TestHelpers, type: :component
-  config.include Capybara::RSpecMatchers, type: :component
 end

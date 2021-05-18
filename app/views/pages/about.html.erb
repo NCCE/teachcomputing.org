@@ -1,23 +1,84 @@
 <% meta_tag :title, 'About Us - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'About Us' %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds ncce-about__content">
-          <p class="govuk-body-l">The National Centre for Computing Education is funded by the Department for Education and marks a significant investment in improving the provision of computing education in England.</p>
-          <p class="govuk-body">Run by a consortium made up of <%= link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link' %>, the <%= link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link' %> and <%= link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link' %>, our vision is to achieve a world-leading computing education for every child in England.</p>
-
-          <h2 class="govuk-heading-m">What we offer</h2>
-          <p class="govuk-body">We provide high-quality support for the teaching of computing in schools and colleges, from Key Stage 1 through to A level. Our extensive range of training, resources and support covers elements of the curriculum at every Key Stage, catering for all levels of subject knowledge and experience.</p>
-
-          <h2 class="govuk-heading-m">How we can support you</h2>
-          <p class="govuk-body">Whether you’re a teacher, employer or resource provider, there are plenty of ways you can engage with us.</p>
-
-          <h2 class="govuk-heading-m">Work with us</h2>
-          <p class="govuk-body"> To ensure every young person can benefit from a high-quality computing education, we are calling on businesses to partner with us.</p>
-          <p class="govuk-body">Find out more about how you can work with us.</p>
-          <p class="govuk-body"><%= link_to 'Get involved', get_involved_path, class: 'govuk-button button ncce-about__button' %></p>
+<%= render HeroImageComponent.new(AboutPage.hero) %>
+<div class='ncce-about__wrapper'>
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l govuk-!-margin-bottom-0">
+            <%= t('.intro_text.html',
+              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
+              rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
+              bcs_link: (link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link')
+            ) %>
+          </p>
         </div>
       </div>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render NonBorderedCardsComponent.new(AboutPage.resource_cards) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl foam-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.ambition.title') %></h2>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.ambition.text') %></p>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render ReportCardComponent.new(AboutPage.report_card) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-top-8">
+        <div class="govuk-grid-column-one-half">
+          <%= image_pack_tag 'media/images/pages/about/inclusion-in-the-classroom.png', alt: 'Inclusion in the classroom', class: 'ncce-about__image' %>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <h2 class='govuk-heading-l'><%= t('.diversity.title') %></h2>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.diversity.text') %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-width-container">
+    <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
+          <p class='govuk-body govuk-!-margin-bottom-0'>
+            <%= t('.programmes.text.html',
+              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
+              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
+              bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Bursaries' })
+            ) %>
+          </p>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7">
+          <%= render BorderedCardsComponent.new(AboutPage.programme_cards) %>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl light-grey-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'><%= t('.support.title') %></h2>
+          <p class='govuk-body govuk-!-margin-bottom-0'><%= t('.support.text') %></p>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7">
+          <%= render BorderedCardsComponent.new(AboutPage.support_cards) %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
