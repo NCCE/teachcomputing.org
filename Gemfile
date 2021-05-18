@@ -3,9 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-gem 'actionpack', '>= 6.1.3.2'
 gem 'activestorage-validator'
-gem 'administrate'
+gem 'administrate', '~> 0.16.0'
 gem 'attr_encrypted', '~> 3.1.0'
 gem 'awesome_print'
 gem 'aws-sdk-s3', require: false
@@ -35,7 +34,7 @@ gem 'pretender', '~> 0.3.4'
 gem 'puma', '~> 3.12'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 6.1.3.2'
 gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'rspec_junit_formatter', '~> 0.4.1'
