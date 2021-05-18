@@ -1,31 +1,25 @@
 <% meta_tag :title, 'CS Accelerator - Teach Computing' %>
-<%= render 'pages/certification/hero', full_width: true %>
+<%= render 'pages/certification/csa_hero', full_width: true %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-m">Welcome to Computer Science Accelerator</h1>
-        <p class="govuk-body">Computer Science Accelerator is a flexible professional development programme designed to give you the subject knowledge and confidence to teach GCSE computer science. </p>
-        <p class="govuk-body"><%= link_to 'Download the CSA brochure', 'https://static.teachcomputing.org/CSA.brochure.pdf', class: 'ncce-link' %> and find out what you need to do as part of the programme and how to get started.</p>
-				<p class="govuk-body">The programme is suitable for current or aspiring teachers of GCSE computer science, and offers support to teachers from all backgrounds.</p>
-        <h2 class="govuk-heading-s">Programme benefits</h2>
+        <p class="govuk-body">Computer Science Accelerator is a professional development programme for teachers, funded by the Department for Education, leading to a national certificate in computer science subject knowledge.</p>
+				<p class="govuk-body">The programme will help you develop or refresh your subject knowledge up to GCSE, with bursary funding available for state-funded schools and colleges to support your learning.</p>
+        <h2 class="govuk-heading-m">Who is eligible?</h2>
         <ul class="govuk-list govuk-list--bullet govuk-body">
-          <li>gain the subject knowledge required to teach the GCSE curriculum with confidence and drive attainment in your school
-          </li>
-          <li>access a network of on and offline support to guide you through your professional development journey</li>
-          <li>obtain a professionally-recognised training certificate, awarded by BCS, The Chartered Institute for IT</li>
-          <li>
-            map your professional development to the <%= link_to ' GCSE computer science specifications (September 2020)', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %> from AQA, OCR, and Pearson Edexcel.
-          </li>
+          <li>current and aspiring computing teachers</li>
+          <li>suitable for all abilities, from little or no experience in teaching computer science to experienced teachers looking to deepen their subject knowledge</li>
         </ul>
+        <h2 class="govuk-heading-m">How do i get started?</h2>
         <%= render 'pages/certification/pathway' %>
-				<h2 class="govuk-heading-s">Funding your programme</h2>
-        <p class="govuk-body">The programme is free to teachers working in state-funded education across all phases and all subjects, including trainee teachers, supply teachers, and teachers returning to the state sector.</p>
-        <p class="govuk-body">Teachers working in state-funded education are also eligible for <%= link_to 'bursary funding', '/bursary', class: 'govuk-link ncce-link' %>, paid to your school or college. If you’re a supply teacher, returning teacher, or trainee teacher, you’ll need to claim your bursary within the academic year once you have gained full employment within the state sector.</p>
+				<h2 class="govuk-heading-m">How much does it cost?</h2>
+        <p class="govuk-body">There are no fees to pay for teachers in England who work in state-funded schools and colleges and trainee teachers, supply teachers or teachers returning to the state sector.</p>
+        <p class="govuk-body">If you are a teacher in state-funded education, you will also be eligible to apply for <%= link_to 'bursary funding', '/bursary', class: 'govuk-link ncce-link' %> to support your learning, paid to your school or college. Deferred bursaries are also available for teachers who do not currently work in state education who meet our eligibility criteria.</p>
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
+        <div class="ncce-aside ncce-aside__csa-info-page">
           <h2 class="govuk-heading-s ncce-aside__title">Enrol on the programme</h2>
           <ol
             class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
@@ -46,6 +40,13 @@
           </p>
           <% end %>
         </div>
+        <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
+        <p class="govuk-body-s">
+          <%= link_to 'Computer Science Accelerator brochure', 'https://static.teachcomputing.org/CSA.brochure.pdf', class: 'ncce-aside__link' %>
+        </p>
+        <p class="govuk-body-s">
+          <%= link_to 'GCSE specifications to Computer Science Accelerator course map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-aside__link' %> (September 2020)
+        </p>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ RSpec.describe('pages/certification/_pathway', type: :view) do
   end
 
   it 'has the title' do
-    expect(rendered).to have_css('.govuk-heading-s', text: 'Learning pathways for teachers')
+    expect(rendered).to have_css('.govuk-heading-s', text: 'Choose a pathway')
   end
 
   it 'has all items' do
@@ -18,10 +18,6 @@ RSpec.describe('pages/certification/_pathway', type: :view) do
 
   it 'has a courses button' do
     expect(rendered).to have_css('.button', text: 'Browse our courses')
-  end
-
-  it 'has a courses link' do
-    expect(rendered).to have_css('.ncce-link', text: 'to book online')
   end
 
 end
