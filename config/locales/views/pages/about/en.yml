@@ -29,10 +29,10 @@ en:
         engagements:
           html: "<strong>29,500+ teachers engaged</strong> across more than 14,000 schools in England"
         enrolments:
-          html: "<strong>7,400+ Computer Science Accelerator</strong> programme enrolments"
+          html: "<strong>4800+ teachers have received training</strong> through the Computer Science Accelerator"
         downloads:
-          html: "<strong>305,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
-        stats_date: "Figures as at April 2021"
+          html: "<strong>349,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
+        stats_date: "Figures as at May 2021"
         button_title: "See our latest report"
       diversity:
         title: "Diversity and inclusion"
