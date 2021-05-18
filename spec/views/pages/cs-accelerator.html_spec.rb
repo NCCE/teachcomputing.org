@@ -46,4 +46,13 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       expect(rendered).to have_css('.button--aside', text: 'Log in')
     end
   end
+
+  context 'useful links and documents' do
+    it 'has link to csa brochure' do
+      expect(rendered).to have_css('.ncce-aside__link', text: 'Computer Science Accelerator brochure')
+    end
+    it 'has link to csa course map' do
+      expect(rendered).to have_css('.ncce-aside__link', text: 'GCSE specifications to Computer Science Accelerator course map')
+    end
+  end
 end
