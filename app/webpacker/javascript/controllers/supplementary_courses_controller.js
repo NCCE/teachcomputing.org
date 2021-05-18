@@ -3,28 +3,30 @@ import { Controller } from 'stimulus'
 export default class extends Controller {
   static targets = ['expander', 'expanderButton']
 
-  initialize() {
-    this.toggleAriaHidden(this.expanderButtonTarget)
-    this.toggleHidden(this.expanderTarget)
+  connect() {
+    this.collapse()
   }
+
+  collapse() {
+    let classes = this.expanderTarget.classList
+    if(!classes.contains('hidden')) {
+      classes.add('hidden')
+    }
+    this.expanderButtonTarget.setAttribute('aria-expanded', 'false')
+  }
+
+  expand() {
+    this.expanderTarget.classList.remove('hidden')
+    this.expanderButtonTarget.setAttribute('aria-expanded', 'true')
+  }
+
 
   toggleAll() {
-    this.toggleAriaHidden(this.expanderButtonTarget)
-    this.toggleHidden(this.expanderTarget)
-  }
-
-  toggleAriaHidden(element) {
-    if(element.getAttribute('aria-expanded') === 'true') {
-      element.setAttribute('aria-expanded', 'false')
+    let expanded = this.expanderButtonTarget.getAttribute('aria-expanded')
+    if(expanded === 'true') {
+      this.collapse()
     } else {
-      element.setAttribute('aria-expanded', 'true')
+      this.expand()
     }
-  }
-
-  toggleHidden(element) {
-    let classes = element.classList
-    classes.contains('hidden')
-      ? classes.remove('hidden')
-      : classes.add('hidden')
   }
 }
