@@ -31,9 +31,6 @@
 @import 'components/_headings.scss';
 @import 'components/_bursary-aside.scss';
 @import 'components/_dedicated-pages.scss';
-@import 'components/_location_search_results.scss';
-@import 'components/_course_occurrences.scss';
-@import 'components/_more_courses.scss';
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
 @import 'components/_external-content.scss';
@@ -78,7 +75,9 @@
 
 // import ViewComponent styles
 @import '../../components/bursary_component/bursary_component.scss';
-
+@import '../../components/course_occurrences_component/course_occurrences_component.scss';
+@import '../../components/location_search_results_component/location_search_results_component.scss';
+@import '../../components/more_courses_component/more_courses_component.scss';
 
 // Blog styles
 

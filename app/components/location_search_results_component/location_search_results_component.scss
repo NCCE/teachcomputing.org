@@ -1,19 +1,19 @@
-.location-search-results {
+.location-search-results-component {
   border: 2px solid $grey-mid;
   margin: 40px 0;
 }
 
-.location-search-results__courses {
+.location-search-results-component__courses {
   padding: 40px 9px 0;
 }
 
-.location-search-results--no-courses {
+.location-search-results-component__no-courses {
   border-bottom: 2px solid $grey-mid;
   padding-bottom: 20px;
 }
 
 
-.location-search-results--title {
+.location-search-results-component__title {
   background-color: $foam;
   margin-bottom: 0;
   padding: 12px 10px;

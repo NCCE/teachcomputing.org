@@ -1,7 +1,4 @@
-.course-occurrences {
-}
-
-.course-occurrence {
+.course-occurrences-component__occurrence {
   background: $concrete;
   box-sizing: border-box;
   display: flex;
@@ -19,7 +16,7 @@
   }
 }
 
-.course-occurrence__meta-location {
+.course-occurrences-component__meta-location {
   background-position: left top;
   display: inline-block;
   font-size: 0.9375rem;
@@ -30,7 +27,7 @@
   }
 }
 
-.course-occurrence__meta-date {
+.course-occurrences-component__meta-date {
   display: inline-block;
   font-size: 0.875rem;
   padding: 0;
@@ -41,7 +38,7 @@
   }
 }
 
-.course-occurrence__distance {
+.course-occurrences-component__distance {
   display: inline-block;
   font-size: 0.9375rem;
   padding-left: 27px;
@@ -52,6 +49,6 @@
   }
 }
 
-.course-occurrence__meta-location.icon-online {
+.course-occurrences-component__meta-location.icon-online {
   background-position-y: center !important;
 }

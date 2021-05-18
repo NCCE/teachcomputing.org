@@ -1,4 +1,4 @@
-<div class="more-courses <%= "more-courses__none" unless courses_present? %>" data-course-filter-target="moreCourses">
+<div class="more-courses-component <%= "more-courses-component__none" unless courses_present? %>" data-course-filter-target="moreCourses">
   <% if show_results_within_max? %>
     <p class="govuk-body">
       <%= t(".more_face_to_face_courses_html", count: @search_results.further_results_count, radius: @search_results.max_radius) %>
@@ -28,11 +28,11 @@
 </div>
 
 <% if show_nationwide_results? %>
-  <div data-course-filter-target="nationwideCourses" class="hidden more-courses__results">
+  <div data-course-filter-target="nationwideCourses" class="hidden more-courses-component__results">
     <div class="location-search-results__courses">
       <%= render CourseComponent.with_collection(@search_results.outside_max_radius_results, filter: @course_filter) %>
     </div>
-    <div class="more-courses">
+    <div class="more-courses-component">
       <button type="button" class="govuk-button button" data-action="click->course-filter#hideNationwideCourses">
         Show fewer face to face courses
       </button>
