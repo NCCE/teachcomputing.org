@@ -19,6 +19,10 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
     render
   end
 
+  it 'has the hero' do
+    expect(rendered).to have_css('.hero__heading', text: @programme.title)
+  end
+  
   it 'has correct list setup' do
     expect(rendered).to have_css('.ncce-activity-list--programme', count: 4)
   end

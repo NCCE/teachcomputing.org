@@ -55,4 +55,16 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
       expect(rendered).to have_css('.ncce-aside__link', text: 'GCSE specifications to Computer Science Accelerator course map')
     end
   end
+
+  context 'hero section' do
+    it 'has title' do
+      expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
+    end
+    it 'has sub title' do
+      expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
+    end
+    it 'has video' do
+      expect(rendered).to have_css('iframe')
+    end
+  end
 end
