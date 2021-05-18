@@ -37,14 +37,6 @@ RSpec.describe('Static pages', type: :system) do
       programme
       visit cs_accelerator_path
     end
-
-    it 'is the correct page' do
-      expect(page).to have_css('.govuk-heading-m', text: 'Welcome to Computer Science Accelerator')
-    end
-
-    # it 'main is accessible' do
-    #   expect(page).to be_accessible.within('#main-content')
-    # end
   end
 
   context 'Get involved page' do
