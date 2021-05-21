@@ -156,7 +156,7 @@
 }
 
 @media (any-hover: hover) {
-  .ncce-header__certification-item:hover .dropdown__expander-content {
+  .ncce-header__certification-item:hover .dropdown__expander-content, .ncce-header__certification-item.dropdown__expander {
     display: block;
     opacity: 1;
     visibility: visible;
@@ -219,14 +219,14 @@
   }
 }
 
-.ncce-header__certification-item[aria-expanded='true'] {
+.ncce-header__certification-item:hover, .ncce-header__certification-item:not(.dropdown__expander--closed) {
   background-color: $deep-cerulean;
   border: none;
   margin: 0;
 }
 
 .ncce-header__certification-item--text,
-.ncce-header__certification-item--text[aria-expanded='true'] {
+.ncce-header__certification-item--text:hover {
   color: $deep-cerulean;
   display: inline-block;
   font-size: 1.125rem;
@@ -243,7 +243,8 @@
 }
 
 .ncce-header__certification-item:hover .ncce-header__certification-item--text,
-.ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--text {
+.ncce-header__certification-item:hover .ncce-header__certification-item--text,
+.ncce-header__certification-item:not(.dropdown__expander--closed) .ncce-header__certification-item--text  {
   color: $white;
   padding-bottom: 0.5rem;
   padding-left: 2px;
@@ -254,7 +255,7 @@
   }
 }
 
-.ncce-header__certification-item[aria-expanded='false'] .ncce-header__certification-item--text {
+.ncce-header__certification-item .ncce-header__certification-item--text {
   color: $deep-cerulean;
   padding-bottom: 0.5rem;
   padding-left: 2px;
@@ -279,7 +280,7 @@
   }
 }
 
-.ncce-header__certification-item[aria-expanded='false'] .ncce-header__certification-item--icon {
+.ncce-header__certification-item .ncce-header__certification-item--icon {
   background-image: url('../images/tick-blue-no-border.svg');
   @include govuk-media-query($from: desktop) {
   }
@@ -294,7 +295,7 @@
   }
 }
 
-.ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--icon {
+.ncce-header__certification-item:hover .ncce-header__certification-item--icon {
   background-image: url('../images/arrow-down.svg');
   @include govuk-media-query($from: desktop) {
     background-position: center 9px;

@@ -94,7 +94,7 @@ function initialiseSections(className) {
   window.addEventListener('resize', () => {
     // Urgh, I know this is terrible...
     menuItems.forEach((menuItem) => {
-      setTimeout(() => closeMenu(menuItem), 1000)
+      setTimeout(() => closeMenu(menuItem), 200)
     })
   })
 }
