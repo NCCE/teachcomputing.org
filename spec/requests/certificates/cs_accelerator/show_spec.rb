@@ -58,13 +58,14 @@ RSpec.describe Certificates::CSAcceleratorController do
 
         context 'when the user has not completed the diagnostic' do
           it 'redirects to the diagnostic path' do
+            create(:questionnaire_response, user: user, questionnaire: questionnaire)
             get cs_accelerator_certificate_path
             expect(response)
               .to redirect_to(diagnostic_cs_accelerator_certificate_path(:question_1))
           end
 
           it 'redirects to last question completed' do
-            user_response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
+            user_response = create(:questionnaire_response, user: user, questionnaire: questionnaire)
             user_response.update(current_question: 3)
 
             get cs_accelerator_certificate_path
@@ -78,7 +79,7 @@ RSpec.describe Certificates::CSAcceleratorController do
             create(:activity, :community_5)
             create_list(:activity, 3, :community)
             create_list(:activity, 4, :community_20)
-            questionnaire_response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
+            questionnaire_response = create(:questionnaire_response, user: user, questionnaire: questionnaire)
             questionnaire_response.transition_to(:complete)
             get cs_accelerator_certificate_path
           end
@@ -102,8 +103,6 @@ RSpec.describe Certificates::CSAcceleratorController do
 
         context 'when the user does not have a diagnostic response' do
           it 'renders the correct template' do
-            QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire).destroy
-
             get cs_accelerator_certificate_path
             expect(response).to render_template('show')
           end

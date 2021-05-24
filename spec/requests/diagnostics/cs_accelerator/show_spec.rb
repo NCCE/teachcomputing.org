@@ -36,10 +36,7 @@ RSpec.describe Diagnostics::CSAcceleratorController do
     context 'when the user has completed the diagnostic' do
       before do
         user_programme_enrolment
-        answers = QuestionnaireResponse.find_by(
-          user: user,
-          questionnaire: cs_accelerator_questionnaire
-        )
+        answers = create(:questionnaire_response, user: user, questionnaire: cs_accelerator_questionnaire)
         answers.transition_to(:complete)
         get diagnostic_cs_accelerator_certificate_path(:question_1)
       end
