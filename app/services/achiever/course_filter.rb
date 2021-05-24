@@ -73,7 +73,7 @@ module Achiever
     def course_formats
       @course_formats ||= [{ label: 'Face to face', value: 'face_to_face' },
                            { label: 'Online', value: 'online' },
-                           { label: 'Live Remote', value: 'remote' }]
+                           { label: 'Live remote', value: 'remote' }]
     end
 
     def course_tags
