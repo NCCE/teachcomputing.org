@@ -2,7 +2,7 @@ require 'csv'
 require 'open-uri'
 
 task assign_new_contact_ids: :environment do
-  contents = open('https://static.teachcomputing.org/rake/old_and_new_ids.csv')
+  contents = URI.open('https://static.teachcomputing.org/rake/old_and_new_ids.csv')
   csv = CSV.parse(contents, headers: true)
   csv.each do |record|
     begin
