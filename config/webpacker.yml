@@ -14,6 +14,7 @@ default: &default
     - "app/webpacker/javascript"
     - "app/webpacker/stylesheets"
     - "app/webpacker/pdf"
+    - "app/components"
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false

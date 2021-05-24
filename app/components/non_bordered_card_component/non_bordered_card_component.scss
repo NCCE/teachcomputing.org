@@ -1,0 +1,27 @@
+.non-bordered-card-component {
+  position: relative;
+  background-color: $white;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .ncce-link {
+    font-weight: bold;
+  }
+}
+
+.non-bordered-card-component__image-wrapper {
+  margin-bottom: 12px;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+    max-height: unset;
+  }
+}
+
+.non-bordered-card-component__image {
+  width: 100%;
+  padding-bottom: 0;
+}

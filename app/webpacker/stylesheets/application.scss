@@ -34,7 +34,7 @@
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
 @import 'components/_external-content.scss';
-@import 'components/report-card-component.scss';
+@import 'components/_supplementary-courses.scss';
 @import 'components/landing_pages/_certificates.scss';
 @import 'components/landing_pages/_courses.scss';
 @import 'components/landing_pages/_isaac.scss';
@@ -45,6 +45,7 @@
 @import 'components/pages/home/_confidence.scss';
 @import 'components/pages/home/_featured.scss';
 @import 'components/pages/home/_hero.scss';
+@import 'components/pages/_about.scss';
 @import 'components/pages/_careers-week.scss';
 @import 'components/pages/certification/_cs-accelerator.scss';
 @import 'components/pages/certification/_hero.scss';
@@ -73,20 +74,14 @@
 @import 'components/certificates/_csa_dashboard.scss';
 @import 'components/certificates/_pathway_prompt.scss';
 
-// import ViewComponent styles
-@import '../../components/bursary_component/bursary_component.scss';
-@import '../../components/course_occurrences_component/course_occurrences_component.scss';
-@import '../../components/location_search_results_component/location_search_results_component.scss';
-@import '../../components/more_courses_component/more_courses_component.scss';
+// Import component styles
+@import '../../components/**/*.scss';
 
 // Blog styles
-
 @import 'components/blog/_ghost-news-feed.scss';
 
 // CMS styles
-
 @import 'components/cms/_shared.scss';
 
 // Other
-
 @import 'settings/_utility.scss';

@@ -3,10 +3,10 @@ class UserProgrammeEnrolmentsController < ApplicationController
   before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
-    enrolment = UserProgrammeEnrolment.new(user_programme_enrolment_params)
+    enroller = Programmes::UserEnroller.new(user_programme_enrolment_params)
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
-    if enrolment.save
+    if enroller.call
       case programme.slug
       when 'primary-certificate'
         redirect_to diagnostic_primary_certificate_path(:question_1)

@@ -9,10 +9,6 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     render
   end
 
-  it 'has a heading' do
-    expect(rendered).to have_css('h1.govuk-heading-m', text: 'Welcome to Computer Science Accelerator')
-  end
-
   it 'has diagram' do
     expect(rendered).to have_css('.pathway-wrapper', count: 1)
   end
@@ -48,6 +44,27 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
 
     it 'has a button to log in' do
       expect(rendered).to have_css('.button--aside', text: 'Log in')
+    end
+  end
+
+  context 'useful links and documents' do
+    it 'has link to csa brochure' do
+      expect(rendered).to have_css('.ncce-aside__link', text: 'Computer Science Accelerator brochure')
+    end
+    it 'has link to csa course map' do
+      expect(rendered).to have_css('.ncce-aside__link', text: 'GCSE specifications to Computer Science Accelerator course map')
+    end
+  end
+
+  context 'hero section' do
+    it 'has title' do
+      expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
+    end
+    it 'has sub title' do
+      expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
+    end
+    it 'has video' do
+      expect(rendered).to have_css('iframe')
     end
   end
 end

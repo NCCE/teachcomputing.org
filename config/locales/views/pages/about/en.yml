@@ -1,0 +1,70 @@
+en:
+  pages:
+    about:
+      hero:
+        title: "About us"
+        text:
+          html: "<strong>Our vision</strong> is for every child in England to have a world-leading computing education."
+        image_title: "A photo of the team"
+      intro_text:
+        html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and marks a significant investment in improving the provision of computing education in England. The NCCE is run by a consortium made up of %{stem_link}, the %{rpi_link} and %{bcs_link}. It is made up of the following programmes:"
+      tc_card:
+        title: "Teach Computing"
+        text: "Discover training, resources and guidance to help you teach computing with confidence."
+        link_title: "Discover our teaching resources"
+      isaac_card:
+        title: "Isaac Computer Science"
+        text: "Explore our online learning programme for A level computer science teachers and students."
+        link_title: "Explore our A level resources"
+      gender_balance_card:
+        title: "Gender Balance in Computing"
+        text: "Help us find the best ways to encourage young women to study Computer Science."
+        link_title: "Learn about our research"
+      ambition:
+        title: "Our ambition"
+        text: "We aim to transform the way computing is taught in schools across the country – and enable more young people to benefit from studying this important subject. Through this, we believe that their skills and career opportunities will be enhanced."
+      report_card:
+        title: "Impact and evaluation"
+        text: "View our report on how we are improving the quality of teaching computing in schools."
+        engagements:
+          html: "<strong>29,500+ teachers engaged</strong> across more than 14,000 schools in England"
+        enrolments:
+          html: "<strong>4800+ teachers have received training</strong> through the Computer Science Accelerator"
+        downloads:
+          html: "<strong>349,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
+        stats_date: "Figures as at May 2021"
+        button_title: "See our latest report"
+      diversity:
+        title: "Diversity and inclusion"
+        text: "We believe that every individual, and group of individuals, should feel included and encouraged when engaging with computing education. We make sure that diversity and inclusion is integral to our planning, our programmes and materials, the way we work and how we behave. Within a culture that champions diversity and promotes inclusion, we know we are better able to advance our vision."
+      programmes:
+        title: "Our offer"
+        text:
+          html: "We provide teachers with a comprehensive range of evidence-informed, high-quality support, including free %{resources_link} and %{training_link} -  mostly free of charge or supported by %{bursaries_link} - to help them become inspirational computing teachers."
+      primary_card:
+        title: "Primary teachers"
+        text: "Resources and training for primary teachers."
+        link_title: "Primary teachers toolkit"
+      secondary_card:
+        title: "Secondary teachers"
+        text: "Everything you need to teach computing at secondary level"
+        link_title: "Secondary teachers toolkit"
+      support:
+        title: "How you can support our work"
+        text: "We cannot do this alone and the help of partners is vital to achieving our goals. Find out more about how to help."
+      supporting_partners_card:
+        title: "Supporting partners"
+        text: "Help us continue to remove barriers for teachers in state-funded education in England to access essential CPD."
+        link_title: "Support us"
+      involvement_card:
+        title: "Get involved"
+        text: "We’ve achieved a lot already but there is more work needed to improve young people’s computing education."
+        link_title: "How you can help"
+      contributing_partners_card:
+        title: "Contibuting partners"
+        text: "We work in partnership with other programmes to enrich and enhance our schools’ computing offer."
+        link_title: "Meet our partners"
+      governors_card:
+        title: "School governors"
+        text: "You can play an important role in advocating for computing as a subject within your school."
+        link_title: "Advocate for us"

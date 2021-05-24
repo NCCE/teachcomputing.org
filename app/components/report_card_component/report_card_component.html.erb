@@ -1,0 +1,22 @@
+<%= content_tag :div, class: ['report-card-component__wrapper', { "#{@class_name}": @class_name.present? }] do %>
+  <div class="report-card-component__title">
+    <h2 class="govuk-heading-m"><%= @title %></h2>
+    <% unless @date.blank? %>
+      <p class="govuk-body govuk-body-s report-card-component__date"><%= @date %></p>
+    <% end %>
+  </div>
+  <p class="govuk-body report-card-component__text"><%= @text %></p>
+  <div class='report-card-component__list-wrapper'>
+    <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
+      <% @bullets.each do | bullet | %>
+      <li><%= bullet.html_safe %></li>
+      <% end %>
+    </ul>
+    <% unless @stats_date.blank? %>
+      <p class="govuk-body govuk-body-s report-card-component__date"><%= @stats_date %></p>
+    <% end %>
+  </div>
+  <div class='report-card-component__button'>
+    <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: @tracking_page, event_label: @tracking_label }  %>
+  </div>
+<% end %>

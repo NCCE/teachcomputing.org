@@ -1,30 +1,32 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = ['expander', 'showButton', 'hideButton']
+  static targets = ['expander', 'expanderButton']
 
-  initialize() {
-    this.toggleVisuallyHidden(this.expanderTarget)
-    this.toggleHidden(this.showButtonTarget)
+  connect() {
+    this.collapse()
   }
+
+  collapse() {
+    let classes = this.expanderTarget.classList
+    if(!classes.contains('hidden')) {
+      classes.add('hidden')
+    }
+    this.expanderButtonTarget.setAttribute('aria-expanded', 'false')
+  }
+
+  expand() {
+    this.expanderTarget.classList.remove('hidden')
+    this.expanderButtonTarget.setAttribute('aria-expanded', 'true')
+  }
+
 
   toggleAll() {
-    this.toggleVisuallyHidden(this.expanderTarget)
-    this.toggleHidden(this.showButtonTarget)
-    this.toggleHidden(this.hideButtonTarget)
-  }
-
-  toggleVisuallyHidden(element) {
-    let classes = element.classList
-    classes.contains('visually-hidden')
-      ? classes.remove('visually-hidden')
-      : classes.add('visually-hidden')
-  }
-
-  toggleHidden(element) {
-    let classes = element.classList
-    classes.contains('hidden')
-      ? classes.remove('hidden')
-      : classes.add('hidden')
+    let expanded = this.expanderButtonTarget.getAttribute('aria-expanded')
+    if(expanded === 'true') {
+      this.collapse()
+    } else {
+      this.expand()
+    }
   }
 }

@@ -72,6 +72,10 @@ $primary-cert-color: $jaffa;
   background-color: $white;
 }
 
+.foam-bg {
+  background-color: $foam;
+}
+
 @mixin status_block() {
   background-color: $grey-dark-x;
   color: $white;
