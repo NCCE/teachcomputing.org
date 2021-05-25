@@ -297,6 +297,10 @@
   border-top: 2px solid $grey-mid;
   margin-top: 24px;
   padding-top: 8px;
+
+  @include govuk-media-query($until: desktop) {
+    padding-bottom: 8px;
+  }
 }
 
 .ncce-aside--filters-geo-error {
@@ -315,6 +319,7 @@
 }
 
 .ncce-aside--filters-radius {
+  margin-bottom: 0;
   margin-top: 12px;
 
   @include govuk-media-query($from: desktop) {
