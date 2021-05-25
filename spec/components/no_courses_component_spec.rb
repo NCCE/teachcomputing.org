@@ -1,13 +1,20 @@
 require "rails_helper"
 
 RSpec.describe NoCoursesComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'shows link to all courses' do
+    render_inline(described_class.new(hub: nil))
+    expect(rendered_component).to have_link('Show all courses', href: '/courses#results-top')
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'shows correct text' do
+    render_inline(described_class.new(hub: nil))
+    expect(rendered_component).to have_text("Sorry, we couldn't find any courses")
+  end
+
+  context 'when hub is present' do
+    it 'has a title' do
+      render_inline(described_class.new(hub: 'asdf'))
+      expect(rendered_component).to have_text('Sorry, this Computing Hub is currently not running any courses.')
+    end
+  end
 end
