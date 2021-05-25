@@ -7,35 +7,4 @@
       <%= t('.cta') %>
     </button>
   <% end %>
-
-  <% if show_nationwide_results? %>
-    <p class="govuk-body">
-      <%= t(".more_face_to_face_courses_nationwide_html", count: @search_results.outside_max_radius_results_count) %>
-    </p>
-    <button type="button" class="govuk-button button" data-course-filter-target="showNationwideCourses" data-action="click->course-filter#showNationwideCourses">
-      Show all face to face courses
-    </button>
-    <button type="button" class="govuk-button button hidden" data-course-filter-target="hideNationwideCourses" data-action="click->course-filter#hideNationwideCourses">
-      Show fewer face to face courses
-    </button>
-  <% end %>
-
-  <% if no_more_results? %>
-    <p class="govuk-body">
-      <%= t('.no_more_results_html') %>
-    </p>
-  <% end %>
 </div>
-
-<% if show_nationwide_results? %>
-  <div data-course-filter-target="nationwideCourses" class="hidden more-courses-component__results">
-    <div class="location-search-results__courses">
-      <%= render CourseComponent.with_collection(@search_results.outside_max_radius_results, filter: @course_filter) %>
-    </div>
-    <div class="more-courses-component">
-      <button type="button" class="govuk-button button" data-action="click->course-filter#hideNationwideCourses">
-        Show fewer face to face courses
-      </button>
-    </div>
-  </div>
-<% end %>

@@ -14,20 +14,6 @@ class MoreCoursesComponent < ViewComponent::Base
     @course_filter.location_based_results.courses_count.positive?
   end
 
-  def show_nationwide_results?
-    # TODO: remove or re-implement after user testing
-    # (@search_results.radius_maxed == true || @search_results.further_results_count.zero?) &&
-    #   @search_results.outside_max_radius_results_count.positive?
-    false
-  end
-
-  def no_more_results?
-    # TODO: remove or re-implement after user testing
-    # @search_results.further_results_count.zero? &&
-      # @search_results.outside_max_radius_results_count.zero?
-    false
-  end
-
   def render?
     return false if @search_results.radius_maxed
     return false unless @search_results.further_results_count.positive?
