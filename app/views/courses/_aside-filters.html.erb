@@ -71,7 +71,7 @@
             event_label: 'Search location'
           } %>
       </div>
-      <div class="hidden govuk-body" data-course-filter-target="distanceFilter">
+      <div class="hidden govuk-body ncce-aside--filters-radius" data-course-filter-target="distanceFilter">
         <span>Within a</span>
         <%= select_tag :radius,
           options_for_select(@course_filter.search_radii.map { |r| ["#{r} mile", r]}, @course_filter.current_radius),
