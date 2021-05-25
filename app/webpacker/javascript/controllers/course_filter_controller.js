@@ -116,9 +116,9 @@ export default class extends ApplicationController {
     this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
   }
 
-  sendGTMEvent(event, label) {
+  sendGTMEvent(gtmEvent, label) {
     window.dataLayer.push({
-        'event': event,
+        'event': gtmEvent,
         'category': 'Courses',
         'label': label
     });
@@ -127,18 +127,18 @@ export default class extends ApplicationController {
   toggleActiveCheckbox(ev) {
     const { currentTarget } = ev;
     const checked = currentTarget.getAttribute('checked');
-    let event = '';
+    let gtmEvent = '';
     if (checked) {
       currentTarget.removeAttribute('checked');
       currentTarget.blur();
       this.filterCount--;
-      event = 'unchecked';
+      gtmEvent = 'unchecked';
     } else {
       currentTarget.setAttribute('checked', 'checked');
       this.filterCount++;
-      event = 'checked';
+      gtmEvent = 'checked';
     }
-    this.sendGTMEvent(event, currentTarget.value);
+    this.sendGTMEvent(gtmEvent, currentTarget.value);
   }
 
   addLocationFilter(ev) {
