@@ -1243,3 +1243,16 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e4cc4e34-329d-eb11-b1ac
   activity.stem_activity_code = 'CP412'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'be2ded42-3fbd-eb11-bacc-0022481a6a2c') do |activity|
+  activity.title = 'Adapted teaching and effective learning interventions in secondary computing'
+  activity.credit = 10
+  activity.slug = 'adapted-teaching-and-effective-learning-interventions-in-secondary-computing'
+  activity.stem_course_template_no = 'be2ded42-3fbd-eb11-bacc-0022481a6a2c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP448'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
