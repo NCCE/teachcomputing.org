@@ -35,15 +35,16 @@ RSpec.describe('courses/_courses-list', type: :view) do
         age_groups: age_groups,
         subjects: subjects,
         certificates: certificates,
-        courses: courses,
         course_formats: %i[face_to_face online remote],
-        course_locations: ['Cambridge'],
         current_hub: nil,
         current_level: nil,
         current_location: nil,
         current_topic: nil,
         current_certificate: nil,
-        applied_filters: nil
+        applied_filters: nil,
+        total_results_count: 3,
+        location_search?: false,
+        non_location_based_results: courses,
       )
 
       @filter_params = { hub_id: 'bla' }
@@ -102,15 +103,16 @@ RSpec.describe('courses/_courses-list', type: :view) do
           age_groups: age_groups,
           subjects: subjects,
           certificates: certificates,
-          courses: [],
           course_formats: %i[face_to_face online remote],
-          course_locations: ['Cambridge'],
           current_hub: nil,
           current_level: nil,
           current_location: nil,
           current_topic: nil,
           current_certificate: nil,
-          applied_filters: nil
+          applied_filters: nil,
+          total_results_count: 0,
+          location_search?: false,
+          non_location_based_results: [],
         )
         @filter_params = {}
         @course_filter = filter_stub
@@ -122,7 +124,7 @@ RSpec.describe('courses/_courses-list', type: :view) do
       end
 
       it 'displays the expected message' do
-        expect(rendered).to have_text('Sorry, we couldn’t find any courses that match your filter options.')
+        expect(rendered).to have_text("Sorry, we couldn't find any courses that match your filter options.")
       end
     end
 
@@ -133,15 +135,16 @@ RSpec.describe('courses/_courses-list', type: :view) do
           age_groups: age_groups,
           subjects: subjects,
           certificates: certificates,
-          courses: [],
           course_formats: %i[face_to_face online remote],
-          course_locations: ['Cambridge'],
           current_hub: 'bla',
           current_level: nil,
           current_location: nil,
           current_topic: nil,
           current_certificate: nil,
-          applied_filters: ['bla']
+          applied_filters: ['bla'],
+          total_results_count: 0,
+          location_search?: false,
+          non_location_based_results: [],
         )
         @filter_params = { hub_id: 'bla' }
         @course_filter = filter_stub

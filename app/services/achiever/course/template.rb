@@ -87,4 +87,8 @@ class Achiever::Course::Template
       @programmes.include?('Primary')
     end
   end
+
+  def nearest_occurrence_distance
+    occurrences.map(&:distance).compact.min
+  end
 end

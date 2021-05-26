@@ -1,0 +1,20 @@
+.location-search-results-component {
+  border: 2px solid $grey-mid;
+  margin: 40px 0;
+}
+
+.location-search-results-component__courses {
+  padding: 40px 22px 0;
+}
+
+.location-search-results-component__no-courses {
+  border-bottom: 2px solid $grey-mid;
+  padding-bottom: 20px;
+}
+
+
+.location-search-results-component__title {
+  background-color: $foam;
+  margin-bottom: 0;
+  padding: 12px 10px;
+}

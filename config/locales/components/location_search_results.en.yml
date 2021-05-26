@@ -1,0 +1,6 @@
+en:
+  location_search_results_component:
+    showing_face_to_face_courses_html:
+      one: Found <strong>1 face to face course</strong>
+      other: Found <strong>%{count} face to face courses</strong>, sorted by distance
+    no_courses_within: There are no face to face courses within %{radius} miles
