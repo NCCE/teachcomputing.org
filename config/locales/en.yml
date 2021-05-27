@@ -30,4 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  found_remote_online_courses_html:
+    one: Found <strong>1 remote or online course</strong>
+    other: Found <strong>%{count} remote or online courses</strong>, displayed alphabetically
+

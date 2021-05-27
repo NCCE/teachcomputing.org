@@ -1,0 +1,19 @@
+.bursary-component {
+  @include bottom-margined;
+}
+
+.bursary-component__title {
+  background-image: url('../images/icons/icon-pound.svg');
+  background-repeat: no-repeat;
+  background-size: 1.05rem;
+  padding-left: 1.7rem;
+
+  @include govuk-media-query($until: tablet) {
+    background-size: 0.8rem;
+  }
+}
+
+.bursary-component__link {
+  font-weight: bold;
+  margin-bottom: 0;
+}

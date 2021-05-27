@@ -1,0 +1,10 @@
+<div class="more-courses-component <%= "more-courses-component__none" unless courses_present? %>" data-course-filter-target="moreCourses">
+  <% if show_results_within_max? %>
+    <p class="govuk-body">
+      <%= t(".more_face_to_face_courses_html", count: @search_results.further_results_count, radius: @search_results.max_radius) %>
+    </p>
+    <button type="button" class="govuk-button button" data-course-filter-target="expandRadius" data-action="click->course-filter#expandSearch">
+      <%= t('.cta') %>
+    </button>
+  <% end %>
+</div>

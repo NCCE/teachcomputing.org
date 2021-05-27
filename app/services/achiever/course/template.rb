@@ -93,4 +93,8 @@ class Achiever::Course::Template
   def duration
     unit = Achiever::Course::DurationUnit.look_up(duration_unit.to_i)
   end
+
+  def nearest_occurrence_distance
+    occurrences.map(&:distance).compact.min
+  end
 end

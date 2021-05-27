@@ -1,4 +1,5 @@
 .ncce-courses__no-results {
+  padding-bottom: 24px;
   text-align: center;
 }
 
@@ -9,9 +10,9 @@
 
 .ncce-courses__count {
   background-color: $white;
-  padding: 10px 0;
+  border-bottom: solid 2px $grey-mid;
   margin-bottom: 20px;
-  border-bottom: solid 2px #CCCCCC;
+  padding: 10px 0;
 }
 
 .ncce-courses__heading {
@@ -25,10 +26,19 @@
   margin-left: 1.5rem;
 }
 
-.ncce-courses__course:not(:first-child) {
-  border-top: solid 2px #CCCCCC;
-  padding-top: 20px;
-  margin-bottom: 0;
+.ncce-courses__course {
+  padding-bottom: 20px;
+}
+
+.ncce-courses__course:not(:last-of-type) {
+  border-bottom: solid 2px $grey-mid;
+  margin-bottom: 20px;
+}
+
+.ncce-courses__results-title {
+  background-color: $foam;
+  margin-bottom: 40px;
+  padding: 12px 10px;
 }
 
 .ncce-courses__locations {
@@ -39,14 +49,32 @@
     padding-left: 27px;
   }
 
+  &-nearest {
+    font-weight: normal;
+    padding-left: 27px;
+    padding-right: 1.5rem;
+    text-align: right;
+
+    @include govuk-media-query($until: tablet) {
+      padding-right: 0;
+      text-align: left;
+    }
+  }
+
   &-type, &-name {
     flex: 50%;
     margin: 0.3rem 0;
 
     @include govuk-media-query($until: desktop) {
-      flex-wrap: wrap;
       flex: 100%;
+      flex-wrap: wrap;
     }
+  }
+
+  &-info {
+    display: flex;
+    flex: 50%;
+    flex-direction: column;
   }
 
   button &-name {
@@ -84,10 +112,9 @@
     box-sizing:border-box;
     cursor: pointer;
     display: flex;
-    padding: 0.6rem 1rem;
     justify-content: flex-start;
+    padding: 0.6rem 1rem;
     width: 100%;
-    display: flex;
 
     @include govuk-media-query($from: tablet) {
       margin-bottom: 2px;
@@ -134,22 +161,16 @@
   }
 }
 
-.ncce-courses__meta-date {
-  display: inline-block;
-  font-size: 0.875rem;
-  padding: 0;
-  padding-left: 27px;
-  @include govuk-media-query($from: tablet) {
-    padding-left: 0;
+.ncce-courses__attribution {
+  position: relative;
+  top: 30px;
+}
+
+.ncce-courses__powered-by {
+  padding-bottom: 20px;
+  width: 112px;
+  @include govuk-media-query($from: desktop) {
+    width: 144px;
   }
 }
 
-.ncce-courses__meta-location {
-  display: inline-block;
-  font-size: 0.9375rem;
-  font-weight: 700;
-}
-
-.ncce-courses__meta-location.icon-online {
-  background-position-y: center !important;
-}

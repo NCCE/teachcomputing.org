@@ -1,0 +1,54 @@
+.course-occurrences-component__occurrence {
+  background: $concrete;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  margin-bottom: 2px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.45rem 1rem;
+  width: 100%;
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+}
+
+.course-occurrences-component__meta-location {
+  background-position: left top;
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 700;
+
+  @include govuk-media-query($from: tablet) {
+    width: 25%;
+  }
+}
+
+.course-occurrences-component__meta-date {
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0;
+  padding-left: 27px;
+  @include govuk-media-query($from: tablet) {
+    padding-left: 0;
+    width: 34%;
+  }
+}
+
+.course-occurrences-component__distance {
+  display: inline-block;
+  font-size: 0.9375rem;
+  padding-left: 27px;
+  @include govuk-media-query($from: tablet) {
+    padding-left: 0;
+    text-align: right;
+    width: 25%;
+  }
+}
+
+.course-occurrences-component__meta-location.icon-online {
+  background-position-y: center !important;
+}
