@@ -132,6 +132,18 @@ RSpec.describe Achiever::Course::Template do
     end
   end
 
+  describe '#duration' do
+    before do
+      stub_duration_units
+      stub_age_groups
+      stub_course_templates
+    end
+
+    it 'returns the duration unit value' do
+      expect(described_class.all.second.duration).to eq 'Hours'
+    end
+  end
+
   describe '#with_occurrences' do
     before do
       stub_course_templates
