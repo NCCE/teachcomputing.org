@@ -1,6 +1,5 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
 <% meta_tag :turbolinks_cache_control, 'no-cache' %>
-
 <%= render 'components/hero', hero_title: 'Computing courses for teachers', glyph_position: 'bottom', colour: 'blue' %>
 <div data-controller="course-filter">
   <div class="govuk-width-container">
@@ -15,7 +14,7 @@
           </p>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render 'courses/aside-bursary' %>
+          <%= render BursaryComponent.new(tracking_event_category: 'Courses', tracking_event_label: 'Bursaries') %>
         </div>
       </div>
     </div>
@@ -32,7 +31,15 @@
               <% else %>
                 Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
               <% end %>
-              <%= link_to 'show all results', courses_path(anchor: 'results-top'), class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub' %>
+              <%= link_to 'show all results',
+                courses_path(anchor: 'results-top'),
+                class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub',
+                data: {
+                  event_action: 'click',
+                  event_category: 'Courses',
+                  event_label: 'Clear hub filter'
+                }
+              %>
             </h3>
           </div>
         </div>
@@ -45,7 +52,6 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper">
           <%= render 'courses/aside-filters' %>
-
         </div>
         <div class="govuk-grid-column-two-thirds-from-desktop" data-course-filter-target="results">
           <%= render 'courses/courses-list' %>

@@ -25,7 +25,7 @@ RSpec.describe CoursesController do
         expect(response).to render_template('index')
       end
 
-      it 'doesn\'t show a flash notice' do
+      it "doesn't show a flash notice" do
         expect(flash[:notice]).not_to be_present
       end
     end
@@ -36,7 +36,6 @@ RSpec.describe CoursesController do
         get courses_path, params: {
           level: 'Key stage 1',
           topic: 'Computing',
-          location: 'Redruth',
           certificate: 'cs-accelerator'
         }
       end
@@ -45,7 +44,7 @@ RSpec.describe CoursesController do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ['Key stage 1', 'Redruth', 'Computing', 'cs-accelerator']
+            ['Key stage 1', 'Computing', 'cs-accelerator']
           )
       end
     end

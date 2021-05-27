@@ -1,5 +1,5 @@
 .ncce-aside--filters {
-  background-color: #F2F2F2;
+  background-color: $concrete;
   border: none;
   margin-top: 40px;
   padding: 13px;
@@ -41,6 +41,17 @@
     text-align: right;
     visibility: visible;
   }
+}
+
+.ncce-aside--filters__back {
+  background-color: $concrete;
+  background-image: url('../images/icons/up-arrow.svg');
+  background-position: right 7px center;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  border: 1px solid $grey-mid;
+  margin-top: 20px;
+  padding: 12px 25px 12px 12px;
 }
 
 .ncce-courses__filter {
@@ -110,7 +121,7 @@
   padding-top: 0.6rem;
 
   @include govuk-media-query($until: desktop) {
-    border-bottom: 2px solid #CCCCCC;
+    border-bottom: 2px solid $grey-mid;
     margin-bottom: 0.9rem;
     padding-bottom: 0.6rem;
   }
@@ -193,7 +204,7 @@
 
   @include govuk-media-query($until: desktop) {
     padding-bottom: 0.9rem;
-    border-bottom: 2px solid #CCCCCC;
+    border-bottom: 2px solid $grey-mid;
   }
 }
 
@@ -228,8 +239,8 @@
 /* Style on this page only until we're ready to change sitewide (08/03/21) */
 .ncce-aside--filters {
   .ncce-select--filters {
-    border-radius: $border-radius;
     border-color: #0B0C0C;
+    border-radius: $border-radius;
   }
 
   .ncce-select--filters:not(:last-child) {
@@ -248,6 +259,11 @@
   }
 }
 
+.ncce-aside--filters-narrow-select {
+  margin: 0 4px;
+  width: 95px;
+}
+
 .ncce-aside--filters-header {
   height: 5vh;
 
@@ -258,6 +274,10 @@
   @include govuk-media-query($from: desktop) {
     height: auto;
   }
+}
+
+.ncce-aside--filters-location {
+  margin-bottom: 10px;
 }
 
 .ncce-courses__view-results {
@@ -273,6 +293,39 @@
   }
 }
 
+.ncce-aside--filters-geo {
+  border-top: 2px solid $grey-mid;
+  margin-top: 24px;
+  padding-top: 8px;
+
+  @include govuk-media-query($until: desktop) {
+    padding-bottom: 8px;
+  }
+}
+
+.ncce-aside--filters-geo-error {
+  background-color: $white;
+  background-image: url('../images/icons/black-close.svg');
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  background-size: 0.9rem;
+  border: 2px solid $dixie;
+  padding: 6px 0 6px 28px;
+
+  & > p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
+.ncce-aside--filters-radius {
+  margin-bottom: 0;
+  margin-top: 12px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-top: 0;
+  }
+}
 
 body:not(.js-enabled) {
   .ncce-courses__filter-form-toggle,

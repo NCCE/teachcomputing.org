@@ -16,6 +16,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'rspec/json_expectations'
+require 'capybara/rspec'
+require 'view_component/test_helpers'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
@@ -67,6 +69,8 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include(Shoulda::Callback::Matchers::ActiveModel)
   config.include FeatureFlagHelper
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
