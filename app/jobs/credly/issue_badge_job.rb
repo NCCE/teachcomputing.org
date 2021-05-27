@@ -14,7 +14,7 @@ module Credly
 
       Credly::Badge.issue(user.id, badge_template_id)
       # send email
-      NewBadgeMailer.new_badge_email(user: user, programme: programme).deliver_now
+      NewBadgeMailer.new_badge_email(user, programme).deliver_now
     end
   end
 end
