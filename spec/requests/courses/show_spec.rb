@@ -17,6 +17,7 @@ RSpec.describe CoursesController do
 
   describe 'GET #show' do
     before do
+      VCR.turn_off!
       stub_duration_units
       stub_face_to_face_occurrences
       stub_online_occurrences
