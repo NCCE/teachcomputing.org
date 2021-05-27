@@ -9,6 +9,10 @@ RSpec.describe Achiever::Request do
   let(:unsuccessful_parsed_response) { described_class.send(:parse_response, unsuccessful_json_response) }
 
   describe 'class methods' do
+    before do
+      VCR.turn_off!
+    end
+
     describe '#option_sets' do
       it 'returns an String' do
         stub_age_groups
