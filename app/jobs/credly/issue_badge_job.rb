@@ -13,6 +13,7 @@ module Credly
 
       Credly::Badge.issue(user.id, badge_template_id)
       # send email
+      NewBadgeMailer.new_badge_email.deliver_now
     end
   end
 end

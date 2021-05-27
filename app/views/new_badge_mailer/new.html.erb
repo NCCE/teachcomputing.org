@@ -18,7 +18,7 @@
     <li>Mention about users who have stem learning badges outside of TC</li>
   </ol>
   <h2 class="govuk-heading-m">Not received your email from Credly?</h2>
-  <p class='govuk-body'>Check that you have added admin@credly.com to your Safe Sender list in your email settings.</p>
-  <p class='govuk-body'>If you have any questions about your badge, contact info@teachcomputing.org.</p>
+  <p class='govuk-body'>Check that you have added <%= mail_to('admin@credly.com') %> to your Safe Sender list in your email settings.</p>
+  <p class='govuk-body'>If you have any questions about your badge, contact <%= mail_to('info@teachcomputing.org') %></p>
   <p class='govuk-body'>The NCCE Team</p>
 </div>
