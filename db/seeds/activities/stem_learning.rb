@@ -1256,3 +1256,15 @@ a = Activity.find_or_create_by(stem_course_template_no: 'be2ded42-3fbd-eb11-bacc
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f5f6db3c-29be-eb11-bacc-0022481a663f') do |activity|
+  activity.title = 'CSA in the summer - preparing to teach GCSE computer science track'
+  activity.credit = 40
+  activity.slug = 'csa-in-the-summer-preparing-to-teach-gcse-computer-science-track'
+  activity.stem_course_template_no = 'f5f6db3c-29be-eb11-bacc-0022481a663f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP282'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
