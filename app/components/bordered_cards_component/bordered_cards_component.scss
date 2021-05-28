@@ -15,7 +15,7 @@
 .bordered-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   position: relative;
   background-color: $white;
@@ -41,6 +41,10 @@
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
   }
+}
+
+.bordered-card__text {
+  flex-grow: 1;
 }
 
 .bordered-card__image-wrapper {

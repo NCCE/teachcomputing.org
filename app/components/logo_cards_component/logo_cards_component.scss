@@ -1,8 +1,7 @@
 .logo-cards-component {
   display: grid;
   grid-template-columns: auto;
-
-  gap: 36px;
+  grid-gap: 26px;
 
   @include govuk-media-query($from: tablet) {
     grid-template-columns: repeat(2, 1fr);

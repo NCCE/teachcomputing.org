@@ -29,7 +29,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
     end
 
     it 'has the expected links' do
-      expect(rendered).to have_link('View Impact Report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
+      expect(rendered).to have_link('View NCCE Impact Report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
       expect(rendered).to have_link('Computer Science Accelerator Graduates Evaluation (cohort 2)', href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf')
     end
   end

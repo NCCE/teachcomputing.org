@@ -39,14 +39,26 @@
   background-image: url('../images/icons/resources-black.svg');
   background-repeat: no-repeat;
   background-size: 1.6rem;
-  padding-left: 2em !important;
-  padding-top: 0.35em;
+  padding-left: 2em;
   line-height: 1.5em;
+  margin-bottom: 0;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.8rem;
-    padding-left: 2.2em !important;
+    padding-left: 2.2em;
     padding-top: 0;
+  }
+}
+
+.document-card__text {
+  margin-top: 20px;
+}
+
+.document-card__date {
+  margin: 0.2em 0 0 2.2em;
+
+  @include govuk-media-query($from: tablet) {
+    padding-left: 0.4em;
   }
 }
 
