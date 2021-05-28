@@ -1,31 +1,20 @@
 <div data-controller='supplementary-courses' class="ncce-csa-dash__section ncce-csa-dash__section-padded">
-  <div class="ncce-flex__space-between">
-    <h2 class="govuk-heading-s">You might be interested in</h2>
-    <div class="ncce-dash-courses__buttons">
+  <p class="govuk-body supplementary-courses__header">Want to go the extra mile?
       <button data-action="supplementary-courses#toggleAll"
-              data-supplementary-courses-target="showButton"
-              aria-hidden="true"
-              class="ncce-link-button hidden"
+              data-supplementary-courses-target="expanderButton"
+              aria-expanded="true"
+              class="govuk-body supplementary-courses__expander"
               data-event-action="click"
               data-event-label="Show additional courses"
               data-event-category="CSA enrolled">
-        Show more
+          View <strong>additional courses</strong>
       </button>
-      <button data-action="supplementary-courses#toggleAll"
-              data-supplementary-courses-target="hideButton"
-              aria-hidden="true"
-              class="ncce-link-button hidden">
-        Hide
-      </button>
-    </div>
-  </div>
-
-  <p class="govuk-body">Want to go the extra mile? Here are some <strong>additional courses</strong></p>
+  </p>
 
   <div data-supplementary-courses-target="expander" class="expander">
     <% supplementary_activities.each do |sa| %>
-      <div class="ncce-pathway-courses__course">
-        <p>
+      <div class="ncce-pathway-courses__course supplementary-courses__course">
+        <p class="ncce-pathway-courses__link">
           <%= link_to sa.title, course_path(id: sa.stem_activity_code, name: sa.slug), class: 'ncce-link' %>
         </p>
 

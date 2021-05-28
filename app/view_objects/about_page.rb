@@ -67,8 +67,10 @@ class AboutPage
           I18n.t('pages.about.report_card.downloads.html')
         ],
         stats_date: I18n.t('pages.about.report_card.stats_date'),
-        button_title: I18n.t('pages.about.report_card.button_title'),
-        button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf'
+        button: {
+          button_title: I18n.t('pages.about.report_card.button_title'),
+          button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf'
+        }
       }
     end
 

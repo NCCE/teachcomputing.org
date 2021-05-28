@@ -13,6 +13,11 @@ $aside-padding: 1rem;
   }
 }
 
+.ncce-aside__csa-info-page {
+  border-bottom: 3px solid $deep-cerulean;
+  margin-bottom: 20px;
+}
+
 .ncce-pathway-aside {
   @include bottom-margined;
 }

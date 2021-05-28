@@ -29,10 +29,12 @@ class ImpactPage
           I18n.t('pages.impact-and-evaluation.impact_report_card.downloads.html'),
           I18n.t('pages.impact-and-evaluation.impact_report_card.questions.html')
         ],
-        button_title: I18n.t('pages.impact-and-evaluation.impact_report_card.button_title'),
-        button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf',
-        tracking_page: tracking_page,
-        tracking_label: 'Impact report'
+        button: {
+          button_title: I18n.t('pages.impact-and-evaluation.impact_report_card.button_title'),
+          button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf',
+          tracking_page: tracking_page,
+          tracking_label: 'Impact report'
+        }
       }
     end
 
@@ -67,10 +69,12 @@ class ImpactPage
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_3.html'),
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_4.html')
         ],
-        button_title: I18n.t('pages.impact-and-evaluation.literacy_report_card.button_title'),
-        button_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
-        tracking_page: tracking_page,
-        tracking_label: 'Digital literacy',
+        button: {
+          button_title: I18n.t('pages.impact-and-evaluation.literacy_report_card.button_title'),
+          button_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
+          tracking_page: tracking_page,
+          tracking_label: 'Digital literacy'
+        },
         show_border: true
       }
     end

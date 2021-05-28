@@ -16,7 +16,17 @@ export default class extends ApplicationController {
     'filterFormHeader',
     'filterFormToggle',
     'filterCount',
-    'viewResultsCount'
+    'filterCount2',
+    'viewResultsCount',
+    'distanceFilter',
+    'geocodedLocation',
+    'geocodingError',
+    'radiusSelect',
+    'nationwideCourses',
+    'showNationwideCourses',
+    'hideNationwideCourses',
+    'moreCourses',
+    'backToFilter',
   ];
   menuClass = '';
   filterCount = 0;
@@ -25,6 +35,8 @@ export default class extends ApplicationController {
   hiddenClass = '';
   openModifier = '';
   intervalId = null;
+  locationFiltering = false;
+  didScroll = false;
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
@@ -32,8 +44,16 @@ export default class extends ApplicationController {
     this.defaultViewResultsCountString = 'View results';
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
+    this.didScroll = false;
 
     this.openFilterFormOnDesktop();
+
+    setInterval(() => {
+      if (this.didScroll) {
+        this.didScroll = false;
+        this.setBackToFilterDisplay();
+      }
+    }, 500);
   }
 
   filter(ev) {
@@ -41,7 +61,7 @@ export default class extends ApplicationController {
 
     try {
       this.scrollToTop();
-      Object.values(ev.currentTarget.form).find(field => field.name == 'js_enabled').value = true;
+      Object.values(this.formTarget).find(field => field.name == 'js_enabled').value = true;
       Rails.fire(this.formTarget, 'submit');
     } catch (err) {
       clearInterval(this.intervalId);
@@ -79,27 +99,66 @@ export default class extends ApplicationController {
     }
   }
 
+  topicSelectChanged(ev) {
+    this.sendSelectEvent(ev, 'Topic');
+  }
+
+  keyStageSelectChanged(ev) {
+    this.sendSelectEvent(ev, 'Key Stage');
+  }
+
+  certificateSelectChanged(ev) {
+    this.sendSelectEvent(ev, 'Certificate');
+  }
+
+  sendSelectEvent(ev, type) {
+    const { currentTarget } = ev;
+    this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
+  }
+
+  sendGTMEvent(gtmEvent, label) {
+    window.dataLayer.push({
+        'event': gtmEvent,
+        'category': 'Courses',
+        'label': label
+    });
+  }
+
   toggleActiveCheckbox(ev) {
     const { currentTarget } = ev;
     const checked = currentTarget.getAttribute('checked');
+    let gtmEvent = '';
     if (checked) {
       currentTarget.removeAttribute('checked');
       currentTarget.blur();
       this.filterCount--;
+      gtmEvent = 'unchecked';
     } else {
       currentTarget.setAttribute('checked', 'checked');
       this.filterCount++;
+      gtmEvent = 'checked';
+    }
+    this.sendGTMEvent(gtmEvent, currentTarget.value);
+  }
+
+  addLocationFilter(ev) {
+    if(this.locationFiltering === false) {
+      this.filterCount++;
+      this.locationFiltering = true;
     }
   }
 
   updateFilterCount() {
     if (this.filterCount > 0) {
       this.filterCountTarget.classList.remove(this.hiddenClass);
+      this.filterCount2Target.classList.remove(this.hiddenClass);
     } else {
       this.filterCountTarget.classList.add(this.hiddenClass);
+      this.filterCount2Target.classList.add(this.hiddenClass);
     }
 
     this.filterCountTarget.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
+    this.filterCount2Target.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
   }
 
   toggleClearFilter() {
@@ -122,6 +181,19 @@ export default class extends ApplicationController {
 
     loadingBar.toggle(this.hiddenClass);
     courseList.toggle(this.hiddenClass);
+  }
+
+  showNationwideCourses() {
+    this.nationwideCoursesTarget.classList.remove(this.hiddenClass);
+    this.showNationwideCoursesTarget.classList.add(this.hiddenClass);
+    this.hideNationwideCoursesTarget.classList.remove(this.hiddenClass);
+  }
+
+  hideNationwideCourses() {
+    this.showNationwideCoursesTarget.classList.remove(this.hiddenClass);
+    this.hideNationwideCoursesTarget.classList.add(this.hiddenClass);
+    this.moreCoursesTarget.scrollIntoView(true);
+    this.nationwideCoursesTarget.classList.add(this.hiddenClass);
   }
 
   /** This is to prevent some of the jumpiness on desktop as the page resizes */
@@ -156,8 +228,20 @@ export default class extends ApplicationController {
     const [, , xhr] = ev.detail;
 
     this.toggleLoadingBar();
-    this.resultsTarget.innerHTML = xhr.response;
 
+    let res = JSON.parse(xhr.response)
+    this.resultsTarget.innerHTML = res.results;
+
+    if (res.location_search) {
+      if(res.geocoded_successfully) {
+        this.geocodedLocationTarget.innerText = res.geocoded_location;
+        this.hideGeocodingError();
+        this.showDistanceFilter();
+      } else {
+        this.hideDistanceFilter();
+        this.showGeocodingError();
+      }
+    }
     // Set the count on the view results button on mobile
     this.viewResultsCountTarget.innerText =
       this.resultsCountTarget.innerText.replace('Showing', 'View');
@@ -170,6 +254,7 @@ export default class extends ApplicationController {
   clearFilters() {
     this.toggleLoadingBar();
     this.resultsCountTarget.innerText = this.defaultResultsCountString;
+    this.locationFiltering = false;
   }
 
   openFilterForm() {
@@ -197,6 +282,60 @@ export default class extends ApplicationController {
       this.openFilterForm();
     }
     this.scrollToTop();
+  }
+
+  expandSearch(){
+    let lastValue = this.radiusSelectTarget.options[this.radiusSelectTarget.options.length - 1].value;
+    this.radiusSelectTarget.value = lastValue;
+    this.filter();
+  }
+
+  showDistanceFilter() {
+    const classes = this.distanceFilterTarget.classList;
+    if (classes.contains(this.hiddenClass)) {
+      this.distanceFilterTarget.classList.remove(this.hiddenClass);
+    }
+  }
+
+  hideDistanceFilter() {
+    const classes = this.distanceFilterTarget.classList;
+    if (!classes.contains(this.hiddenClass)) {
+      this.distanceFilterTarget.classList.add(this.hiddenClass);
+    }
+  }
+
+  showGeocodingError() {
+    const classes = this.geocodingErrorTarget.classList;
+    if (classes.contains(this.hiddenClass)) {
+      this.geocodingErrorTarget.classList.remove(this.hiddenClass);
+    }
+  }
+
+  hideGeocodingError() {
+    const classes = this.geocodingErrorTarget.classList;
+    if (!classes.contains(this.hiddenClass)) {
+      this.geocodingErrorTarget.classList.add(this.hiddenClass);
+    }
+  }
+
+  pageScrolled(){
+    this.didScroll = true;
+  }
+
+  setBackToFilterDisplay() {
+    if (!this.isDesktop()) return;
+
+    const classes = this.backToFilterTarget.classList;
+    let offset = this.backToFilterTarget.getBoundingClientRect().top;
+    if(offset <= 20) {
+      if(classes.contains('visually-hidden')) {
+        this.backToFilterTarget.classList.remove('visually-hidden');
+      }
+    } else {
+      if(!classes.contains('visually-hidden')) {
+        this.backToFilterTarget.classList.add('visually-hidden');
+      }
+    }
   }
 
   isDesktop() {

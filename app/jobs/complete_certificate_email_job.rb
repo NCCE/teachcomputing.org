@@ -7,6 +7,8 @@ class CompleteCertificateEmailJob < ApplicationJob
       CSAcceleratorMailer.with(user: user).completed.deliver_now
     when 'primary-certificate'
       PrimaryMailer.with(user: user).completed.deliver_now
+    when 'secondary-certificate'
+      SecondaryMailer.with(user: user).completed.deliver_now
     end
   end
 end

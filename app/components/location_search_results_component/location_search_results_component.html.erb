@@ -1,0 +1,19 @@
+<div class="location-search-results-component">
+  <% if show_no_results_message? %>
+    <%= render NoCoursesComponent.new(hub: @course_filter.current_hub) %>
+  <% else %>
+    <% if courses_present? %>
+      <p class="govuk-body location-search-results-component__title">
+        <%= t('.showing_face_to_face_courses_html', count: @course_filter.location_based_results.courses_count) %>
+      </p>
+      <div class="location-search-results-component__courses">
+        <%= render CourseComponent.with_collection(@course_filter.location_based_results&.courses, filter: @course_filter) %>
+      </div>
+    <% else %>
+      <p class="govuk-body location-search-results-component__title">
+        <%= t('.no_courses_within', radius: @course_filter.current_radius) %>
+      </p>
+    <% end %>
+    <%= render MoreCoursesComponent.new(course_filter: @course_filter) %>
+  <% end %>
+</div>

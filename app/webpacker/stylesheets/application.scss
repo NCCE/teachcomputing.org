@@ -34,6 +34,7 @@
 @import 'components/_table.scss';
 @import 'components/_confirmation.scss';
 @import 'components/_external-content.scss';
+@import 'components/_supplementary-courses.scss';
 @import 'components/landing_pages/_certificates.scss';
 @import 'components/landing_pages/_courses.scss';
 @import 'components/landing_pages/_isaac.scss';
@@ -73,7 +74,7 @@
 @import 'components/certificates/_csa_dashboard.scss';
 @import 'components/certificates/_pathway_prompt.scss';
 
-// Import component styles
+// import ViewComponent styles
 @import '../../components/**/*.scss';
 
 // Blog styles

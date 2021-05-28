@@ -24,15 +24,19 @@ RSpec.describe('courses/_aside-filters', type: :view) do
           subjects: subjects,
           certificates: certificates,
           courses: courses,
-          course_formats: %i[face_to_face online remote],
-          course_locations: ['Cambridge'],
+          course_formats: [{ label: 'Face to face', value: 'face_to_face' },
+                           { label: 'Online', value: 'online' },
+                           { label: 'Live Remote', value: 'remote' }],
           current_hub: 'bla',
           current_level: nil,
           current_location: nil,
           current_topic: nil,
           current_format: [],
           current_certificate: nil,
-          applied_filters: %w[bla]
+          applied_filters: %w[bla],
+          search_radii: [20, 30, 40, 50, 60],
+          current_radius: 40,
+          total_results_count: 3
         )
 
         @filter_params = { hub_id: 'bla' }
@@ -54,10 +58,6 @@ RSpec.describe('courses/_aside-filters', type: :view) do
 
       it 'renders the filter aside closed by default' do
         expect(rendered).to have_css('.ncce-courses__filter-form-toggle')
-      end
-
-      it 'renders location select' do
-        expect(rendered).to have_select(:location, with_options: ['Any location', 'Cambridge'])
       end
 
       it 'renders level select' do
@@ -97,15 +97,19 @@ RSpec.describe('courses/_aside-filters', type: :view) do
           subjects: subjects,
           certificates: certificates,
           courses: courses,
-          course_formats: %i[face_to_face online remote],
-          course_locations: ['Cambridge'],
+          course_formats: [{ label: 'Face to face', value: 'face_to_face' },
+                           { label: 'Online', value: 'online' },
+                           { label: 'Live Remote', value: 'remote' }],
           current_hub: 'bla',
           current_level: nil,
           current_location: nil,
           current_topic: nil,
           current_format: [],
           current_certificate: 'cs-accelerator',
-          applied_filters: %w[bla cs-accelerator]
+          applied_filters: %w[bla cs-accelerator],
+          search_radii: [20, 30, 40, 50, 60],
+          current_radius: 40,
+          total_results_count: 3
         )
 
         @filter_params = { hub_id: 'bla', certificate: 'cs-accelerator' }

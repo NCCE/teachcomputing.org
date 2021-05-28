@@ -1,0 +1,10 @@
+en:
+  more_courses_component:
+      cta: Increase search radius
+      more_face_to_face_courses_html:
+        one: There is <strong>1</strong> more face to face course within %{radius} miles
+        other: There are <strong>%{count}</strong> more face to face courses within %{radius} miles
+      more_face_to_face_courses_nationwide_html:
+        one: There is <strong>1</strong> more face to face course nationwide
+        other: There are <strong>%{count}</strong> more face to face courses nationwide
+      no_more_results_html: There are <strong>0</strong> more face to face courses nationwide with current filters
