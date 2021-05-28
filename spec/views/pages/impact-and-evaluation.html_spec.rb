@@ -29,7 +29,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
     end
 
     it 'has the expected links' do
-      expect(rendered).to have_link('View Impact report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
+      expect(rendered).to have_link('View Impact Report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
       expect(rendered).to have_link('Computer Science Accelerator Graduates Evaluation (cohort 2)', href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf')
     end
   end
@@ -40,7 +40,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
     end
 
     it 'has the expected links' do
-      expect(rendered).to have_link('View Digital literacy report', href: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf')
+      expect(rendered).to have_link('View Digital Literacy Report', href: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf')
       expect(rendered).to have_link('International Computing Textbook Review', href: 'https://static.teachcomputing.org/International_Textbook_Review.pdf')
     end
   end
