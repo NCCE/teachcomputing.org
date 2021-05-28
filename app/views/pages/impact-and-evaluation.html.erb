@@ -1,0 +1,79 @@
+<% meta_tag :title, 'Impact and evaluation - Teach Computing' %>
+<%= render 'components/hero', hero_title: t('.hero.title'), small_title: true, full_width: true %>
+<div class='ncce-impact__wrapper'>
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l govuk-!-margin-bottom-0">
+            <%= t('.intro_text') %>
+          </p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render RelatedLinksComponent.new(ImpactPage.related_links) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl foam-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-l'><%= t('.impact_reports_title') %></h2>
+          <%= render ReportCardComponent.new(ImpactPage.impact_report_card) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render DocumentCardsComponent.new(ImpactPage.evaluation_cards) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-l'><%= t('.curriculum_reports_title') %></h2>
+          <%= render ReportCardComponent.new(ImpactPage.literacy_report_card) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render DocumentCardsComponent.new(ImpactPage.curriculum_cards) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl light-grey-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-l'><%= t('.research_resources_title') %></h2>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <%= render BorderedCardsComponent.new(ImpactPage.research_resource_cards) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-l'><%= t('.partner_resources_title') %></h2>
+          <p class="govuk-body-m govuk-!-margin-bottom-0">
+            <%= t('.partner_resources_text') %>
+          </p>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-top-7">
+        <div class="govuk-grid-column-full">
+          <%= render LogoCardsComponent.new(ImpactPage.partner_resources) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

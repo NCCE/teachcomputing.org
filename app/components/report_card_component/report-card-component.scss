@@ -1,6 +1,7 @@
 .report-card-component__wrapper {
   background-color: $white;
   padding: $component-padding-mobile;
+  box-shadow: none;
 
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
@@ -10,8 +11,12 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto auto;
-    gap: 1em;
+    row-gap: 1em;
   }
+}
+
+.report-card-component__wrapper[data-show-border='true'] {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .report-card-component__title {
@@ -21,14 +26,14 @@
   padding-left: 2em !important;
   padding-top: 0.35em;
 
-  @include govuk-media-query($from: tablet) {
-    background-size: 1.8rem;
-    padding-left: 2.5em !important;
-    padding-top: 0;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
   }
 
-  @include govuk-media-query($from: desktop) {
-    height: 1.75em;
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.8rem;
+    padding-left: 1.7em !important;
+    padding-top: 0;
   }
 }
 
@@ -43,6 +48,7 @@
 .report-card-component__list {
   list-style-type: none;
   padding-left: 0;
+  margin-bottom: 0;
 
   li {
     background-image: url('../images/icons/tick-plain.svg');
@@ -52,6 +58,7 @@
 
     &:last-child {
       padding-bottom: 0;
+      margin-bottom: 0;
     }
 
     @include govuk-media-query($from: tablet) {
@@ -63,21 +70,25 @@
 
 .report-card-component__list-wrapper {
   padding: 1.1em 0;
+  align-self: center;
 
   @include govuk-media-query($from: desktop) {
     grid-row: 1 / span 4;
-    padding: 0;
+    padding: 0 0 0 1em;
   }
 }
 
 .report-card-component__date {
+  margin-bottom: 0;
+}
+
+.report-card-component__date--stats {
+  margin: 0.75em 0;
+
   @include govuk-media-query($from: desktop) {
-    padding-left: 2.4em;
     margin-bottom: 0;
   }
 }
-
-
 
 @include govuk-media-query($from: desktop) {
   .report-card-component__title,

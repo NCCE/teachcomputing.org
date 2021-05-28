@@ -2,8 +2,17 @@
 
 class ReportCardComponent < ViewComponent::Base
   def initialize(
-    title:, text:, bullets:, button_title:, button_url:,
-    tracking_page: nil, tracking_label: nil, class_name: nil, date: nil, stats_date: nil
+    title:,
+    text:,
+    bullets:,
+    button_title:,
+    button_url:,
+    tracking_page: nil,
+    tracking_label: nil,
+    class_name: nil,
+    date: nil,
+    stats_date: nil,
+    show_border: false
   )
     @title = title
     @text = text
@@ -15,5 +24,6 @@ class ReportCardComponent < ViewComponent::Base
     @class_name = class_name
     @date = date
     @stats_date = stats_date
+    @show_border = show_border
   end
 end

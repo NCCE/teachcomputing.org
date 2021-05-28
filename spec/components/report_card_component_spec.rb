@@ -13,6 +13,10 @@ RSpec.describe ReportCardComponent, type: :component do
       expect(rendered_component).to have_css('.impact-and-evaluation-report-card')
     end
 
+    it 'sets show-border data attribute' do
+      expect(rendered_component).to have_css(".impact-and-evaluation-report-card[data-show-border='false']")
+    end
+
     it 'renders a title' do
       expect(rendered_component).to have_css('.report-card-component__title', text: 'Impact and evaluation')
     end

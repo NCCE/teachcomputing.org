@@ -1,4 +1,4 @@
-.non-bordered-cards-component {
+.logo-cards-component {
   display: grid;
   grid-template-columns: auto;
 
@@ -13,20 +13,16 @@
   }
 }
 
-.non-bordered-card {
+.logo-card {
   position: relative;
   background-color: $white;
 
   > *:last-child {
     margin-bottom: 0;
   }
-
-  .ncce-link {
-    font-weight: bold;
-  }
 }
 
-.non-bordered-card__image-wrapper {
+.logo-card__image-wrapper {
   margin-bottom: 12px;
   position: relative;
 
@@ -36,7 +32,7 @@
   }
 }
 
-.non-bordered-card__image {
+.logo-card__image {
   width: 100%;
   padding-bottom: 0;
 }
