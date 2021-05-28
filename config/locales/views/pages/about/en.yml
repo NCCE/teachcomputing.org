@@ -29,7 +29,7 @@ en:
         engagements:
           html: "<strong>29,500+ teachers engaged</strong> across more than 14,000 schools in England"
         enrolments:
-          html: "<strong>7,400+ Computer Science Accelerator</strong> programme enrolments"
+          html: "<strong>4800+ teachers have received training</strong> through the Computer Science Accelerator"
         downloads:
           html: "<strong>305,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
         stats_date: "Figures as at April 2021"
@@ -40,7 +40,7 @@ en:
       programmes:
         title: "Our offer"
         text:
-          html: "We provide teachers with a comprehensive range of evidence-informed, high-quality support, including free %{resources_link} and %{training_link} courses -  mostly free of charge or supported by %{bursaries_link} - to help them become inspirational computing teachers."
+          html: "We provide teachers with a comprehensive range of evidence-informed, high-quality support, including free %{resources_link} and %{training_link} -  mostly free of charge or supported by %{bursaries_link} - to help them become inspirational computing teachers."
       primary_card:
         title: "Primary teachers"
         text: "Resources and training for primary teachers."
