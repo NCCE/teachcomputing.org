@@ -31,6 +31,12 @@ module AchieverStubs
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
+  def stub_duration_units
+    json_response = File.new('spec/support/achiever/courses/duration_units.json')
+    stub_request(:get,
+                 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?cmd=OptionsetDurationUnit').to_return(body: json_response)
+  end
+
   def stub_face_to_face_occurrences
     json_response = File.new('spec/support/achiever/courses/face_to_face_occurrences.json')
     uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseListingFutureByProgrammeId'

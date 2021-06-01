@@ -9,6 +9,7 @@ RSpec.describe('Course Details page', type: :system) do
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
+    stub_duration_units
     stub_face_to_face_occurrences
     stub_online_occurrences
     stub_subjects

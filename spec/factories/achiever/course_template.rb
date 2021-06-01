@@ -4,7 +4,7 @@ FactoryBot.define do
     age_groups { %w[000000000] }
     booking_url { '' }
     course_template_no { SecureRandom.uuid }
-    duration { '1' }
+    duration_value { '1' }
     meta_description { 'Course meta description' }
     online_cpd { false }
     outcomes { '' }
