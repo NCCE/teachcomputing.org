@@ -1,4 +1,6 @@
 class NewBadgeMailer < ApplicationMailer
+  helper :new_badge_email
+
   def new_badge_email(user, programme)
     @user = user
     @programme = programme
