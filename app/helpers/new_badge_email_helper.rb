@@ -1,5 +1,5 @@
 module NewBadgeEmailHelper
-  def get_programme(programme)
+  def programme_name(programme)
     if programme&.cs_accelerator?
       'CS Accelerator'
     elsif programme&.secondary_certificate?
