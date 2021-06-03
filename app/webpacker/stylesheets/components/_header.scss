@@ -166,7 +166,12 @@
 .ncce-header__wrap {
   padding: 15px 0;
   display: flex;
+
+  @include govuk-media-query($from: desktop) {
+    padding: 0;
+  }
 }
+
 .ncce-header__certification-item {
   border-bottom: 1px solid #ced0d2;
   clear: both;
