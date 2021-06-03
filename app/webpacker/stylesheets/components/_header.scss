@@ -167,7 +167,7 @@
   padding: 15px 0;
   display: flex;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
     padding: 0;
   }
 }
