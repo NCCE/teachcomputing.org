@@ -10,5 +10,7 @@ class CompletedDashBadgeComponent < DashBadgeComponent
   def render?
     return false unless FeatureFlagService.new.flags[:badges_enabled]
     return false unless @issued_badge
+
+    true
   end
 end
