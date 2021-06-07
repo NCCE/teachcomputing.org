@@ -18,7 +18,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
     end
 
     it 'sets show-border data attribute' do
-      expect(rendered_component).to have_css(".evaluation-cards[data-show-border='false']")
+      expect(rendered_component).to have_css(".evaluation-cards[data-show-border='true']")
     end
 
     it 'sets the expected properties' do

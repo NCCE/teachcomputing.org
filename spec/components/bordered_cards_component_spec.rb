@@ -28,7 +28,7 @@ RSpec.describe BorderedCardsComponent, type: :component do
     it 'has the expected titles' do
       expect(rendered_component).to have_css('.supporting-partners-card', text: 'Supporting partners')
       expect(rendered_component).to have_css('.involvement-card', text: 'Get involved')
-      expect(rendered_component).to have_css('.contributing-partners-card', text: 'Contibuting partners')
+      expect(rendered_component).to have_css('.contributing-partners-card', text: 'Contributing partners')
       expect(rendered_component).to have_css('.governors-card', text: 'School governors')
     end
 
