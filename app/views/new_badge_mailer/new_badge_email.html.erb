@@ -1,3 +1,9 @@
+<style>
+  .stem_learning_logo {
+    height: 125px;
+  }
+</style>
+
 <div class='mailer__content'>
   <p class='govuk-body'>Congratulations <%= @user.first_name %>,</p>
   <p class='govuk-body'>You’ve been awarded a new digital badge for completing your first remote or face to face course as part of <%= programme_name(@programme) %>. </p>
@@ -12,7 +18,7 @@
       If you don’t have an account with Credly yet, click the link and create a free account.
     </li>
     <li>
-      Within Credly, you can share your badge on your social media accounts, including Facebook, Twitter and LinkedIn.Go to “my account” in Credly to add your social media accounts and share your success with your network.
+      Within Credly, you can share your badge on your social media accounts, including Facebook, Twitter and LinkedIn. Go to “my account” in Credly to add your social media accounts and share your success with your network.
     </li>
     <li>Next time you go to your TeachComputing certificate dashboard for the certificate you have enrolled on, you will be able to see your new badge alongside your certificate progress.</li>
   </ol>
@@ -22,4 +28,4 @@
   <p class='govuk-body'>The NCCE Team</p>
   <p class='govuk-body'>Digital badges are part of the offer from STEM Learning.</p>
 </div>
-  <%= image_pack_tag('media/images/stem_learning_logo.svg', alt: '') %>
+  <%= image_pack_tag('media/images/stem_learning_logo.svg', alt: '', class: 'stem_learning_logo') %>
