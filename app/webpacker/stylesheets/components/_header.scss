@@ -181,10 +181,11 @@
   padding-top: 0.5rem;
 
   &:first-child {
+    background-image: none;
     border-top: 1px solid #ced0d2;
   }
 
-  &:last-child {
+  &:hover {
     background-image: none;
   }
 
@@ -194,12 +195,12 @@
 
   @include govuk-media-query($from: desktop) {
     background-image: url('../images/line.svg');
-    background-position: right 5px center;
+    background-position: left center;
     background-repeat: no-repeat;
     background-size: 0.1rem;
     border: none;
     min-width: 7rem;
-    padding: 1.5rem 0.3rem;
+    padding: 1.5rem 0 1.5rem 0.6rem;
 
     &:first-child {
       border-top: none;
