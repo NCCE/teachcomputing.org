@@ -164,10 +164,14 @@
 }
 
 .ncce-header__wrap {
-  padding: 15px 0;
   display: flex;
+  padding: 5px 0;
 
   @include govuk-media-query($from: tablet) {
+    padding: 7px 0;
+  }
+
+  @include govuk-media-query($from: desktop) {
     padding: 0;
   }
 }
