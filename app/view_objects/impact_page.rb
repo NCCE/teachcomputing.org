@@ -20,6 +20,7 @@ class ImpactPage
     def impact_report_card
       {
         class_name: 'impact-report-card',
+        show_border: true,
         title: I18n.t('pages.impact-and-evaluation.impact_report_card.title'),
         date: I18n.t('pages.impact-and-evaluation.impact_report_card.date'),
         text: I18n.t('pages.impact-and-evaluation.impact_report_card.text'),
@@ -41,6 +42,7 @@ class ImpactPage
     def evaluation_cards
       {
         class_name: 'evaluation-cards',
+        show_border: true,
         cards: [
           {
             class_name: 'impact-graduates-card',
@@ -74,15 +76,13 @@ class ImpactPage
           button_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
           tracking_page: tracking_page,
           tracking_label: 'Digital literacy'
-        },
-        show_border: true
+        }
       }
     end
 
     def curriculum_cards
       {
         class_name: 'curriculum-cards',
-        show_border: true,
         cards: [
           {
             class_name: 'impact-textbook-card',
