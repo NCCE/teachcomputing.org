@@ -5,7 +5,7 @@ class DashBadgeComponent < ViewComponent::Base
     @achievement = achievement
     @badge_template_id = badge_template_id
     @user = User.find_by!(id: user_id)
-    @issued_badge = Credly::Badge.issued_badge(@user.id, @badge_template_id)
+    @issued_badge = Credly::Badge.by_badge_template_id(@user.id, @badge_template_id)
   end
 
   def render?
