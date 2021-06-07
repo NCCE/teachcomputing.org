@@ -6,6 +6,7 @@ RSpec.describe('courses/show', type: :view) do
 
   before do
     cs_accelerator
+    stub_duration_units
     stub_course_templates
 
     assign(:course, course)

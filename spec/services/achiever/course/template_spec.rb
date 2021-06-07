@@ -14,7 +14,8 @@ RSpec.describe Achiever::Course::Template do
       expect(course_template).to respond_to(:booking_url)
       expect(course_template).to respond_to(:course_leaders)
       expect(course_template).to respond_to(:course_template_no)
-      expect(course_template).to respond_to(:duration)
+      expect(course_template).to respond_to(:duration_unit)
+      expect(course_template).to respond_to(:duration_value)
       expect(course_template).to respond_to(:how_long_is_the_course)
       expect(course_template).to respond_to(:how_will_you_learn)
       expect(course_template).to respond_to(:meta_description)
@@ -128,6 +129,18 @@ RSpec.describe Achiever::Course::Template do
         template = described_class.all.second
         expect(template.by_certificate('primary-certificate')).to eq false
       end
+    end
+  end
+
+  describe '#duration' do
+    before do
+      stub_duration_units
+      stub_age_groups
+      stub_course_templates
+    end
+
+    it 'returns the duration unit value' do
+      expect(described_class.all.second.duration).to eq 'Hours'
     end
   end
 
