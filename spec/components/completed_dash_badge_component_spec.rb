@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe CompletedDashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
-  let(:completed_dash_badge_component) { described_class.new(user_id: user.id, badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b')}
+  let(:completed_dash_badge_component) { described_class.new(user_id: user.id, badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b', tracking_event_category: 'category', tracking_event_label: 'label')}
 
   context 'when the badges feature is disabled' do
     before do
@@ -36,6 +36,12 @@ RSpec.describe CompletedDashBadgeComponent, type: :component do
 
       it "the congratulatory copy" do
         expect(rendered_component).to have_css('.completed-dash-badge-component__content')
+      end
+
+      it 'adds data attributes when passed' do
+        expect(rendered_component).to have_selector("a[data-event-category='category']")
+        expect(rendered_component).to have_selector("a[data-event-label='label']")
+        expect(rendered_component).to have_selector("a[data-event-action='click']")
       end
     end
   end

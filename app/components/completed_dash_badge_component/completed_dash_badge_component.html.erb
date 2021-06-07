@@ -2,6 +2,6 @@
 <div class="completed-dash-badge-component">
   <%= image_tag badge_image_url, class: 'completed-dash-badge-component__badge', alt: '' %>
   <p class="govuk-body completed-dash-badge-component__content">
-    <%= t('completed_dash_badge_component.awarded.html', badge_link: (link_to t('completed_dash_badge_component.link.text'), badge_url, class: 'ncce-link')) %>
+    <%= t('completed_dash_badge_component.awarded.html', badge_link: (link_to t('completed_dash_badge_component.link.text'), badge_url, class: 'ncce-link', data: tracking_data)) %>
   </p>
 </div>
