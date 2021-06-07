@@ -10,6 +10,11 @@
 
   .ncce-link {
     font-weight: bold;
+    font-size: 18px;
+
+    @include govuk-media-query($until: tablet) {
+      font-size: 15px;
+    }
   }
 
   @include govuk-media-query($until: tablet) {
