@@ -1,6 +1,7 @@
 .report-card-component__wrapper {
   background-color: $white;
   padding: $component-padding-mobile;
+  box-shadow: none;
 
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
@@ -10,8 +11,11 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto auto;
-    gap: 1em;
   }
+}
+
+.report-card-component__wrapper[data-show-border='true'] {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .report-card-component__title {
@@ -20,29 +24,39 @@
   background-size: 1.6rem;
   padding-left: 2em !important;
   padding-top: 0.35em;
+  margin: 0;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.8rem;
-    padding-left: 2.5em !important;
+    padding-left: 1.7em !important;
     padding-top: 0;
-  }
-
-  @include govuk-media-query($from: desktop) {
-    height: 1.75em;
   }
 }
 
-.report-card-component__text {
-  margin-top: 0.9em;
+.report-card-component__date {
+  margin: 0.2em 0 0 2.6em;
+}
 
+.report-card-component__text {
+  margin: 20px 0;
+}
+
+.report-card-component__list-wrapper {
   @include govuk-media-query($from: desktop) {
-    margin-top: 0;
+    grid-row: 1 / span 4;
+    align-self: center;
   }
 }
 
 .report-card-component__list {
   list-style-type: none;
   padding-left: 0;
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+    padding-left: 1em;
+  }
 
   li {
     background-image: url('../images/icons/tick-plain.svg');
@@ -51,6 +65,7 @@
     padding: 0 0 0.5em 1.7em;
 
     &:last-child {
+      margin-bottom: 0;
       padding-bottom: 0;
     }
 
@@ -61,23 +76,14 @@
   }
 }
 
-.report-card-component__list-wrapper {
-  padding: 1.1em 0;
+.report-card-component__date--stats {
+  margin: 0.75em 0;
 
   @include govuk-media-query($from: desktop) {
-    grid-row: 1 / span 4;
-    padding: 0;
-  }
-}
-
-.report-card-component__date {
-  @include govuk-media-query($from: desktop) {
-    padding-left: 2.4em;
     margin-bottom: 0;
+    margin-left: 3.65em;
   }
 }
-
-
 
 @include govuk-media-query($from: desktop) {
   .report-card-component__title,
