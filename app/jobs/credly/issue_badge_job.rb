@@ -5,8 +5,8 @@ module Credly
     def perform(user_id, programme_id)
       return unless FeatureFlagService.new.flags[:badges_enabled]
 
-      badge_template_id = Programme.find(programme_id).credly_badge_template_id
       programme = Programme.find(programme_id)
+      badge_template_id = programme.credly_badge_template_id
       user = User.find(user_id)
       issued_badges = Credly::Badge.issued(user.id)
 
