@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_115806) do
+ActiveRecord::Schema.define(version: 2021_06_08_102603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -126,6 +126,32 @@ ActiveRecord::Schema.define(version: 2021_04_20_115806) do
     t.string "class_marker_test_id"
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
+  end
+
+  create_table "hub_regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "order", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hubs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.uuid "hub_region_id", null: false
+    t.uuid "subdeliverer_id", null: false
+    t.string "address"
+    t.string "postcode"
+    t.string "email"
+    t.string "phone"
+    t.string "website"
+    t.string "twitter"
+    t.string "facebook"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hub_region_id"], name: "index_hubs_on_hub_region_id"
+    t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
 
   create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -300,6 +326,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_115806) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"
   add_foreign_key "pathway_activities", "pathways"
   add_foreign_key "questionnaire_response_transitions", "questionnaire_responses"
