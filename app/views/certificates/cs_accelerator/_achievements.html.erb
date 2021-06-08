@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <%= render DashBadgeComponent.new(achievement: compulsory_achievement, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
+  <%= render SecondaryDashBadgeComponent.new(achievement: compulsory_achievement, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, fixed_width: false, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
 <% end %>
 
 <div class="ncce-csa-dash__objective
