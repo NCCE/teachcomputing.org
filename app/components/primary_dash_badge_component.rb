@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PrimaryDashBadgeComponent < ViewComponent::Base
+class PrimaryDashBadgeComponent < SecondaryDashBadgeComponent
   def initialize(achievement:, badge_template_id:, user_id:, tracking_event_category: nil, tracking_event_label: nil)
     @achievement = achievement
     @badge_template_id = badge_template_id
