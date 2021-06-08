@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_102603) do
     t.integer "order", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order"], name: "index_hub_regions_on_order", unique: true
   end
 
   create_table "hubs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
