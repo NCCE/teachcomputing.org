@@ -9,7 +9,7 @@
           <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
         </span>
       </li>
-      <%= render PrimaryDashBadgeComponent.new(achievement: presenter, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
+      <%= render PrimarySecondaryDashBadgeComponent.new(achievement: presenter, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
     <% else %>
       <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
         <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index) %></span>

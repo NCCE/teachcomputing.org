@@ -19,7 +19,6 @@
         <% end %>
       </p>
 
-
       <div class="ncce-flex__space-between">
         <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(compulsory_achievement.activity) %>">
           <%= activity_type(compulsory_achievement.activity) %> course
@@ -30,7 +29,7 @@
       </div>
     </div>
   </div>
-  <%= render SecondaryDashBadgeComponent.new(achievement: compulsory_achievement, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
+  <%= render CSAcceleratorDashBadgeComponent.new(achievement: compulsory_achievement, badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'InProgressDashboard', tracking_event_label: 'Badges') %>
 <% end %>
 
 <div class="ncce-csa-dash__objective

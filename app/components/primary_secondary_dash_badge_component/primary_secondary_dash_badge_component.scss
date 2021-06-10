@@ -1,0 +1,27 @@
+.primary-secondary-dash-badge-component {
+  align-items: center;
+  border: 10px solid $foam;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+
+  @include govuk-media-query($from: desktop) {
+    margin-left: 3.5%;
+    flex-direction: row;
+    width: 54.5%;
+  }
+}
+
+.primary-secondary-dash-badge-component__badge {
+  margin: 10px;
+  max-height: 112px;
+  max-width: 112px;
+}
+
+.seconprimary-secondarydary-dash-badge-component__content {
+  margin: 15px;
+
+  @include govuk-media-query($from: tablet) {
+    margin: 0 22px;
+  }
+}

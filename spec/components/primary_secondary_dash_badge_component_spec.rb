@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PrimaryDashBadgeComponent, type: :component do
+RSpec.describe PrimarySecondaryDashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:achievement) { create(:achievement, user: user) }
   let(:dash_badge_component) { described_class.new(achievement: achievement, badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b', user_id: user.id, tracking_event_category: 'category', tracking_event_label: 'label')}
@@ -36,7 +36,7 @@ RSpec.describe PrimaryDashBadgeComponent, type: :component do
       end
 
       it "the badges image" do
-        expect(rendered_component).to have_css('.primary-dash-badge-component__badge')
+        expect(rendered_component).to have_css('.primary-secondary-dash-badge-component__badge')
       end
 
       it "a link to the badge" do
@@ -44,7 +44,7 @@ RSpec.describe PrimaryDashBadgeComponent, type: :component do
       end
 
       it "the congratulatory copy" do
-        expect(rendered_component).to have_css('.primary-dash-badge-component__content')
+        expect(rendered_component).to have_css('.primary-secondary-dash-badge-component__content')
       end
 
       it 'adds data attributes when passed' do

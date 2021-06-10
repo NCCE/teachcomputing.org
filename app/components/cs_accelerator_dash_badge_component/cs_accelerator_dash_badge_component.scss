@@ -1,0 +1,24 @@
+.csa-dash-badge-component {
+  align-items: center;
+  border: 10px solid $foam;
+  display: flex;
+  flex-direction: column;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+  }
+}
+
+.csa-dash-badge-component__badge {
+  margin: 10px;
+  max-height: 112px;
+  max-width: 112px;
+}
+
+.csa-dash-badge-component__content {
+  margin: 15px;
+
+  @include govuk-media-query($from: tablet) {
+    margin: 0 22px;
+  }
+}

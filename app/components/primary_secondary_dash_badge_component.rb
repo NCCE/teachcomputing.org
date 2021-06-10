@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-class SecondaryDashBadgeComponent < ViewComponent::Base
-  def initialize(achievement:, badge_template_id:, user_id:, fixed_width: false, tracking_event_category: nil, tracking_event_label: nil)
+class PrimarySecondaryDashBadgeComponent < ViewComponent::Base
+  def initialize(achievement:, badge_template_id:, user_id:, tracking_event_category: nil, tracking_event_label: nil)
     @achievement = achievement
     @badge_template_id = badge_template_id
     @user = User.find_by!(id: user_id)
-    @fixed_width = fixed_width
     @tracking_event_category = tracking_event_category
     @tracking_event_label = tracking_event_label
     @issued_badge = Credly::Badge.by_badge_template_id(@user.id, @badge_template_id)
@@ -28,10 +27,6 @@ class SecondaryDashBadgeComponent < ViewComponent::Base
     else
       @issued_badge[:url]
     end
-  end
-
-  def fixed_width
-    'dash-badge-component-fixed' if @fixed_width
   end
 
   def tracking_data
