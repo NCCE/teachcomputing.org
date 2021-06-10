@@ -10,7 +10,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
   end
 
   it 'has an introduction' do
-    expect(rendered).to have_css('.govuk-body-l', text: 'Our vision is to achieve a world-leading computing')
+    expect(rendered).to have_css('.govuk-body-l', text: 'Our vision is for every child in England to have a world-leading computing education.')
   end
 
   context 'with the related links section' do
@@ -30,7 +30,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
 
     it 'has the expected links' do
       expect(rendered).to have_link('View NCCE Impact Report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
-      expect(rendered).to have_link('Computer Science Accelerator Graduates Evaluation (cohort 2)', href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf')
+      expect(rendered).to have_link('Computer Science Accelerator Graduates Evaluation (cohort 1)', href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf')
     end
   end
 
