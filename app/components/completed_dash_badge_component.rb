@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CompletedDashBadgeComponent < SecondaryDashBadgeComponent
+class CompletedDashBadgeComponent < PrimarySecondaryDashBadgeComponent
   def initialize(badge_template_id:, user_id:, tracking_event_category: nil, tracking_event_label: nil)
     @badge_template_id = badge_template_id
     @user = User.find_by!(id: user_id)
