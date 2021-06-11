@@ -26,6 +26,10 @@ class AuthController < ApplicationController
   end
 
   def failure
+    Sentry.capture_message(
+      'Auth failure',
+      extra: { error: request.env['omniauth.error'], error_type: request.env['omniauth.error.type'] }
+    )
     flash[:error] = 'Sorry, we were unable to log you in. Please try again or contact us for help.'
     redirect_to root_path
   end
