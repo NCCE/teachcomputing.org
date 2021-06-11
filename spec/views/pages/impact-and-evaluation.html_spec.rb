@@ -10,7 +10,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
   end
 
   it 'has an introduction' do
-    expect(rendered).to have_css('.govuk-body-l', text: 'Our vision is for every child in England to have a world-leading computing education.')
+    expect(rendered).to have_css('.govuk-body-l', text: 'Our vision is for every child in every school in England to have a world-leading computing education.')
   end
 
   context 'with the related links section' do
