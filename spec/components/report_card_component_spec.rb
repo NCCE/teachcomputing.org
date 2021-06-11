@@ -27,7 +27,7 @@ RSpec.describe ReportCardComponent, type: :component do
 
     it 'renders the body text' do
       expect(rendered_component).to have_css('.report-card-component__text',
-                                             text: 'View our reports on how we are improving the quality of teaching computing in schools')
+                                             text: 'View our latest impact and evaluation reports to find out how the NCCE is improving the quality of teaching computing in schools.')
     end
 
     it 'renders a button' do
