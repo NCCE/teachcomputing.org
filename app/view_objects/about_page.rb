@@ -69,7 +69,9 @@ class AboutPage
         stats_date: I18n.t('pages.about.report_card.stats_date'),
         button: {
           button_title: I18n.t('pages.about.report_card.button_title'),
-          button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf'
+          button_url: '/impact-and-evaluation',
+          tracking_page: tracking_page,
+          tracking_label: 'Impact and evaluation'
         }
       }
     end

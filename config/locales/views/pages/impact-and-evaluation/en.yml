@@ -3,7 +3,8 @@ en:
     impact-and-evaluation:
       hero:
         title: "Impact, evaluation and research"
-      intro_text: "Our vision is for every child in England to have a world-leading computing education. We continually evaluate the impact that our programmes, services and resources are having on improving the quality of teaching computing in schools, and the learning experience for young people."
+      intro_text:
+        html: "<strong>Our vision</strong> is for every child in every school in England to have a world-leading computing education. We continually evaluate the impact that our programmes, services and resources are having on improving the quality of teaching computing in schools, and the learning experience for young people."
       impact_reports_title: "Impact and evaluation reports"
       impact_report_card:
         title: "NCCE Impact Report"

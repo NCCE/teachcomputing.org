@@ -4,7 +4,7 @@ en:
       hero:
         title: "About us"
         text:
-          html: "<strong>Our vision</strong> is for every child in England to have a world-leading computing education."
+          html: "<strong>Our vision</strong> is for every child in every school in England to have a world-leading computing education."
         image_title: "A photo of the team"
       intro_text:
         html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and marks a significant investment in improving the provision of computing education in England. The NCCE is run by a consortium made up of %{stem_link}, the %{rpi_link} and %{bcs_link}. It is made up of the following programmes:"
@@ -25,7 +25,7 @@ en:
         text: "We aim to transform the way computing is taught in schools across the country – and enable more young people to benefit from studying this important subject. Through this, we believe that their skills and career opportunities will be enhanced."
       report_card:
         title: "Impact and evaluation"
-        text: "View our report on how we are improving the quality of teaching computing in schools."
+        text: "View our reports on how we are improving the quality of teaching computing in schools"
         engagements:
           html: "<strong>29,500+ teachers engaged</strong> across more than 14,000 schools in England"
         enrolments:
@@ -33,7 +33,7 @@ en:
         downloads:
           html: "<strong>349,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
         stats_date: "Figures as at May 2021"
-        button_title: "See our latest report"
+        button_title: "Impact and evaluation"
       diversity:
         title: "Diversity and inclusion"
         text: "We believe that every individual, and group of individuals, should feel included and encouraged when engaging with computing education. We make sure that diversity and inclusion is integral to our planning, our programmes and materials, the way we work and how we behave. Within a culture that champions diversity and promotes inclusion, we know we are better able to advance our vision."
