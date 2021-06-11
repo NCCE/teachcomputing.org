@@ -27,11 +27,11 @@ RSpec.describe ReportCardComponent, type: :component do
 
     it 'renders the body text' do
       expect(rendered_component).to have_css('.report-card-component__text',
-                                             text: 'View our report on how we are improving the quality of teaching computing in schools.')
+                                             text: 'View our reports on how we are improving the quality of teaching computing in schools')
     end
 
     it 'renders a button' do
-      expect(rendered_component).to have_link('See our latest report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
+      expect(rendered_component).to have_link('Impact and evaluation', href: '/impact-and-evaluation')
     end
 
     it 'renders a list with the expected number of items' do
