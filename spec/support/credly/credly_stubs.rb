@@ -18,4 +18,9 @@ module CredlyStubs
     json_response = File.new('spec/support/credly/issued_badges.json')
     stub_request(:get, 'https://api.credly.com/v1/organizations/e52b9e79-9ddb-4110-9883-ae2c44a7440e/badges?filter=recipient_email::web@raspberrypi.org').to_return(body: json_response)
   end
+
+  def stub_issued_badges_empty(user_id)
+    json_response = File.new('spec/support/credly/issued_badges_empty.json')
+    stub_request(:get, 'https://api.credly.com/v1/organizations/e52b9e79-9ddb-4110-9883-ae2c44a7440e/badges?filter=recipient_email::web@raspberrypi.org').to_return(body: json_response)
+  end
 end
