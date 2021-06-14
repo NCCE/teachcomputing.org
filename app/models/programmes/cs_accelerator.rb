@@ -60,6 +60,7 @@ module Programmes
                      .for_programme(self)
                      .with_category(Activity::FACE_TO_FACE_CATEGORY)
                      .order(:created_at)
+                     .select { |ach| !ach.in_state?(:dropped) }
 
       complete = achievements.select { |ach| ach.in_state?(:complete) }
       return complete.min_by { |x| x.last_transition.created_at } if complete.present?

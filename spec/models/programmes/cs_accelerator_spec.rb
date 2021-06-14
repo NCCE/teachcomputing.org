@@ -254,6 +254,12 @@ RSpec.describe Programmes::CSAccelerator do
         achievement = create(:achievement, programme: programme, user: user)
         expect(programme.compulsory_achievement(user)).to eq(achievement)
       end
+
+      it 'ignores dropped achievements' do
+        achievement = create(:achievement, programme: programme, user: user)
+        achievement.transition_to(:dropped)
+        expect(programme.compulsory_achievement(user)).to eq(nil)
+      end
     end
 
     context 'when user has multiple f2f achievements' do
