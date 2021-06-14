@@ -72,6 +72,7 @@ module Programmes
           .with_category([Activity::FACE_TO_FACE_CATEGORY,
                           Activity::ONLINE_CATEGORY])
           .where.not(id: compulsory_achievement(user)&.id)
+          .select { |ach| !ach.in_state?(:dropped) }
     end
 
     def user_completed_non_compulsory_achievement?(user)

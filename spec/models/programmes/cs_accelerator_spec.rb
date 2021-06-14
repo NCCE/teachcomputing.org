@@ -334,6 +334,17 @@ RSpec.describe Programmes::CSAccelerator do
         results = programme.non_compulsory_achievements(user)
         expect(results).to match_array(f2f_achievements + online_achievements)
       end
+
+      it 'ignores dropped achievements' do
+        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
+        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        online_achievements = create_list(:achievement, 2, :online,
+                                          programme: programme, user: user)
+        dropped_achievement = create(:achievement, programme: programme, user: user)
+        dropped_achievement.transition_to(:dropped)
+        results = programme.non_compulsory_achievements(user)
+        expect(results).not_to include(dropped_achievement)
+      end
     end
   end
 
