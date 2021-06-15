@@ -16,9 +16,11 @@
   }
 
   &:focus {
-    background-color: $black;
-    color: $white;
+    background-color: $black !important;
+    color: $white !important;
     outline-color: $black;
+    border-color: $black !important;
+    box-shadow: none;
   }
 
   &[disabled]:active {
@@ -44,6 +46,12 @@
 
 .button {
   @include ncce_button($deep-cerulean);
+
+  &:focus {
+    background-color: $black;
+    color: $white;
+    border-color: $black;
+  }
 }
 
 .button--focus-white {

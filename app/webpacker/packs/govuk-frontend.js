@@ -1,8 +1,8 @@
-import GOVUKFrontend from 'govuk-frontend/all'
+import GOVUKFrontend from 'govuk-frontend/govuk/all'
 
 const initialise = () => {
-  GOVUKFrontend.initAll();
-};
+  GOVUKFrontend.initAll()
+}
 
-window.addEventListener('DOMContentLoaded', initialise);
-window.addEventListener('turbolinks:render', initialise);
+window.addEventListener('DOMContentLoaded', initialise)
+window.addEventListener('turbolinks:render', initialise)

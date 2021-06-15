@@ -121,10 +121,11 @@ export default class extends ApplicationController {
   }
 
   sendGTMEvent(gtmEvent, label) {
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        'event': gtmEvent,
-        'category': 'Courses',
-        'label': label
+      'event': gtmEvent,
+      'category': 'Courses',
+      'label': label
     });
   }
 
@@ -146,7 +147,7 @@ export default class extends ApplicationController {
   }
 
   addLocationFilter(ev) {
-    if(this.locationFiltering === false) {
+    if (this.locationFiltering === false) {
       this.filterCount++;
       this.locationFiltering = true;
     }
@@ -237,7 +238,7 @@ export default class extends ApplicationController {
     this.resultsTarget.innerHTML = res.results;
 
     if (res.location_search) {
-      if(res.geocoded_successfully) {
+      if (res.geocoded_successfully) {
         this.geocodedLocationTarget.innerText = res.geocoded_location;
         this.hideGeocodingError();
         this.showDistanceFilter();
@@ -288,7 +289,7 @@ export default class extends ApplicationController {
     this.scrollToTop();
   }
 
-  expandSearch(){
+  expandSearch() {
     let lastValue = this.radiusSelectTarget.options[this.radiusSelectTarget.options.length - 1].value;
     this.radiusSelectTarget.value = lastValue;
     this.filter();
@@ -322,7 +323,7 @@ export default class extends ApplicationController {
     }
   }
 
-  pageScrolled(){
+  pageScrolled() {
     this.didScroll = true;
   }
 
@@ -331,12 +332,12 @@ export default class extends ApplicationController {
 
     const classes = this.backToFilterTarget.classList;
     let offset = this.backToFilterTarget.getBoundingClientRect().top;
-    if(offset <= 20) {
-      if(classes.contains('visually-hidden')) {
+    if (offset <= 20) {
+      if (classes.contains('visually-hidden')) {
         this.backToFilterTarget.classList.remove('visually-hidden');
       }
     } else {
-      if(!classes.contains('visually-hidden')) {
+      if (!classes.contains('visually-hidden')) {
         this.backToFilterTarget.classList.add('visually-hidden');
       }
     }
