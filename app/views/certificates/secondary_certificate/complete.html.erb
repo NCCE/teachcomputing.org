@@ -9,7 +9,7 @@
         <p class="govuk-body">
           <%= link_to 'Download your certificate', certificate_secondary_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <%= render CompletedDashBadgeComponent.new(badge_template_id: @programme.credly_badge_template_id, user_id: current_user.id, tracking_event_category: 'Secondary completed', tracking_event_label: 'Secondary badge') %>
+        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: 'Secondary completed', tracking_event_label: 'Secondary badge') %>
         <p class="govuk-body-l">Next steps for you</p>
         <p class="govuk-body-l">Discover our teaching resources</p>
         <p class="govuk-body">Access over 500 hours of teaching materials through the Teach Computing Curriculum, which contains everything you need to teach computing at key stages 1 to 4.</p>

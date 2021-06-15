@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CompletedDashBadgeComponent < ViewComponent::Base
+class DashBadgeComponent < ViewComponent::Base
   def initialize(badge:, tracking_event_category: nil, tracking_event_label: nil)
     @badge = badge
     @tracking_event_category = tracking_event_category
@@ -9,7 +9,6 @@ class CompletedDashBadgeComponent < ViewComponent::Base
 
   def render?
     return false unless FeatureFlagService.new.flags[:badges_enabled]
-
     true
   end
 

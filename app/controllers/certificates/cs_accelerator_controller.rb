@@ -10,6 +10,7 @@ module Certificates
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
       @csa_dash = CSADash.new(user: current_user)
+      assign_issued_badge
 
       render :show
     end
@@ -18,11 +19,16 @@ module Certificates
       return redirect_to cs_accelerator_certificate_path unless @programme.user_completed?(current_user)
 
       assign_assessment_and_achievements
+      assign_issued_badge
 
       render :complete
     end
 
     private
+
+      def assign_issued_badge
+        @issued_badge = Credly::Badge.by_badge_template_id(current_user.id, @programme.credly_badge_template_id) if FeatureFlagService.new.flags[:badges_enabled]
+      end
 
       def find_programme
         @programme = Programme.cs_accelerator

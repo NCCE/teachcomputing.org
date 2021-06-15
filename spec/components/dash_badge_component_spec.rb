@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe PrimarySecondaryDashBadgeComponent, type: :component do
+RSpec.describe DashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
-  let(:achievement) { create(:achievement, user: user) }
-  let(:dash_badge_component) { described_class.new(achievement: achievement, badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b', user_id: user.id, tracking_event_category: 'category', tracking_event_label: 'label')}
+  let(:badge) { Credly::Badge.by_badge_template_id(user.id, '00cd7d3b-baca-442b-bce5-f20666ed591b') }
+  let(:dash_badge_component) { described_class.new(badge: badge, tracking_event_category: 'category', tracking_event_label: 'label') }
 
   context 'when the badges feature is disabled' do
     before do
@@ -22,21 +22,13 @@ RSpec.describe PrimarySecondaryDashBadgeComponent, type: :component do
       stub_feature_flags({ badges_enabled: true })
     end
 
-    context 'but the achievement is not in a state of complete' do
-      it 'does not render' do
-        render_inline(dash_badge_component)
-        expect(rendered_component).to eq ''
-      end
-    end
-
-    context 'when the achievement is complete' do
+    context 'when the badging feature flag is enabled' do
       before do
-        achievement.transition_to(:complete)
         render_inline(dash_badge_component)
       end
 
       it "the badges image" do
-        expect(rendered_component).to have_css('.primary-secondary-dash-badge-component__badge')
+        expect(rendered_component).to have_css('.dash-badge-component__badge')
       end
 
       it "a link to the badge" do
@@ -44,7 +36,7 @@ RSpec.describe PrimarySecondaryDashBadgeComponent, type: :component do
       end
 
       it "the congratulatory copy" do
-        expect(rendered_component).to have_css('.primary-secondary-dash-badge-component__content')
+        expect(rendered_component).to have_css('.dash-badge-component__content')
       end
 
       it 'adds data attributes when passed' do

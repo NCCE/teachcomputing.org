@@ -1,4 +1,4 @@
-.csa-dash-badge-component {
+.dash-badge-component {
   align-items: center;
   border: 10px solid $foam;
   display: flex;
@@ -9,13 +9,24 @@
   }
 }
 
-.csa-dash-badge-component__badge {
+.ncce-activity-list__item {
+  .dash-badge-component {
+    margin-left: 10%;
+
+    @include govuk-media-query($from: desktop) {
+      margin-left: 3.5%;
+      width: 54.5%;
+    }
+  }
+}
+
+.dash-badge-component__badge {
   margin: 10px;
   max-height: 112px;
   max-width: 112px;
 }
 
-.csa-dash-badge-component__content {
+.dash-badge-component__content {
   margin: 15px;
 
   @include govuk-media-query($from: tablet) {

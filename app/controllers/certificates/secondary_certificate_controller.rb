@@ -11,6 +11,7 @@ module Certificates
 
       @programme_activity_groupings = @programme.programme_activity_groupings
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
+      assign_issued_badge
 
       render :show
     end
@@ -19,6 +20,7 @@ module Certificates
       return redirect_to secondary_certificate_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
+      assign_issued_badge
 
       render :complete
     end
@@ -32,6 +34,10 @@ module Certificates
     end
 
     private
+
+      def assign_issued_badge
+        @issued_badge = Credly::Badge.by_badge_template_id(current_user.id, @programme.credly_badge_template_id) if FeatureFlagService.new.flags[:badges_enabled]
+      end
 
       def enrolment
         current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
