@@ -7,17 +7,6 @@ RSpec.describe DashBadgeComponent, type: :component do
   let(:fixed_width_dash_badge_component) { described_class.new(badge: badge, fixed_width: true, tracking_event_category: 'category', tracking_event_label: 'label') }
 
   context 'when the badges feature is disabled' do
-    context 'when full width is true' do
-      before do
-        stub_issued_badges(user.id)
-        render_inline(fixed_width_dash_badge_component)
-      end
-
-      it 'has the full width class applied' do
-        expect(rendered_component).to have_css('.dash-badge-component-fixed-width')
-      end
-    end
-
     before do
       stub_issued_badges(user.id)
       render_inline(dash_badge_component)
@@ -29,6 +18,17 @@ RSpec.describe DashBadgeComponent, type: :component do
   end
 
   context 'when the badging feature is enabled' do
+    context 'and fixed width is true' do
+      before do
+        stub_issued_badges(user.id)
+        render_inline(fixed_width_dash_badge_component)
+      end
+
+      it 'has the full width class applied' do
+        expect(rendered_component).to have_css('.dash-badge-component-fixed-width')
+      end
+    end
+
     before do
       stub_issued_badges(user.id)
       stub_feature_flags({ badges_enabled: true })
