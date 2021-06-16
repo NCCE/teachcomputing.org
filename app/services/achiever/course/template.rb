@@ -4,7 +4,8 @@ class Achiever::Course::Template
                 :booking_url,
                 :course_leaders,
                 :course_template_no,
-                :duration,
+                :duration_unit,
+                :duration_value,
                 :how_long_is_the_course,
                 :how_will_you_learn,
                 :meta_description,
@@ -33,7 +34,8 @@ class Achiever::Course::Template
       t.booking_url = resource.send('Template.BookingURL')
       t.course_leaders = resource.send('Template.CourseLeaders')
       t.course_template_no = resource.send('Template.COURSETEMPLATENO')
-      t.duration = resource.send('Template.Duration')
+      t.duration_unit = resource.send('Template.DurationUnit')
+      t.duration_value = resource.send('Template.Duration')
       t.how_long_is_the_course = resource.send('Template.HowLongCourse')
       t.how_will_you_learn = resource.send('Template.HowYouWillLearn')
       t.meta_description = resource.send('Template.MetaDescription')
@@ -86,6 +88,10 @@ class Achiever::Course::Template
     when 'primary-certificate'
       @programmes.include?('Primary')
     end
+  end
+
+  def duration
+    Achiever::Course::DurationUnit.look_up(duration_unit.to_i)
   end
 
   def nearest_occurrence_distance

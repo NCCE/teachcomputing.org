@@ -52,7 +52,7 @@ end
 # Wrap the code to avoid autoloading classes too early in the runtime, this will cause an error in
 # future Rails versions see https://guides.rubyonrails.org/autoloading_and_reloading_constants.html#autoloading-when-the-application-boots
 Rails.application.reloader.to_prepare do
-  OmniAuth.config.on_failure = AuthController.action(:failure)
+  OmniAuth.config.on_failure { |env| AuthController.action(:failure).call(env) }
 end
 
 OmniAuth.config.logger = Rails.logger if Rails.env.development?

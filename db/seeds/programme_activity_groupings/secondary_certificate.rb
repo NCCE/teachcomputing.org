@@ -73,7 +73,14 @@ if activity = Activity.find_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53
   end
 end
 
-if activity = Activity.find_by(future_learn_course_uuid: '9a03-414a-ad9f-c0b5a9f347f1')
+if activity = Activity.find_by(future_learn_course_uuid: '8a38adaf-9a03-414a-ad9f-c0b5a9f347f1')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_one.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_one.id)
+  end
+end
+
+if activity = Activity.find_by(future_learn_course_uuid: 'be2ded42-3fbd-eb11-bacc-0022481a6a2c')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_one.programme_activities.include?(programme_activity)
     programme_activity.update(programme_activity_grouping_id: group_one.id)
@@ -183,6 +190,13 @@ if activity = Activity.find_by(stem_course_template_no: 'aafe379e-9e8c-eb11-b1ac
 end
 
 if activity = Activity.find_by(stem_course_template_no: '6172f084-b38c-eb11-b1ac-0022481a6ffe')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_two.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_two.id)
+  end
+end
+
+if activity = Activity.find_by(stem_course_template_no: 'be2ded42-3fbd-eb11-bacc-0022481a6a2c')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_two.programme_activities.include?(programme_activity)
     programme_activity.update(programme_activity_grouping_id: group_two.id)

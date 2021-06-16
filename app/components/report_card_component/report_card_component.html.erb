@@ -1,10 +1,8 @@
-<%= content_tag :div, class: ['report-card-component__wrapper', { "#{@class_name}": @class_name.present? }] do %>
-  <div class="report-card-component__title">
-    <h2 class="govuk-heading-m"><%= @title %></h2>
-    <% unless @date.blank? %>
-      <p class="govuk-body govuk-body-s report-card-component__date"><%= @date %></p>
-    <% end %>
-  </div>
+<%= content_tag :div, class: ['report-card-component__wrapper', { "#{@class_name}": @class_name.present? } ], data: { show_border: @show_border } do %>
+  <h2 class="govuk-heading-m report-card-component__title"><%= @title %></h2>
+  <% unless @date.blank? %>
+    <p class="govuk-body govuk-body-s report-card-component__date"><%= @date %></p>
+  <% end %>
   <p class="govuk-body report-card-component__text"><%= @text %></p>
   <div class='report-card-component__list-wrapper'>
     <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
@@ -13,10 +11,10 @@
       <% end %>
     </ul>
     <% unless @stats_date.blank? %>
-      <p class="govuk-body govuk-body-s report-card-component__date"><%= @stats_date %></p>
+      <p class="govuk-body govuk-body-s report-card-component__date report-card-component__date--stats"><%= @stats_date %></p>
     <% end %>
   </div>
   <div class='report-card-component__button'>
-    <%= link_to @button_title, @button_url, class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: @tracking_page, event_label: @tracking_label }  %>
+    <%= link_to @button[:button_title], @button[:button_url], class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: @button[:tracking_page], event_label: @button[:tracking_label] }  %>
   </div>
 <% end %>

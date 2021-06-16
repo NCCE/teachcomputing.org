@@ -7,15 +7,19 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
           image_url: nil,
           title: 'Card 1',
           text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
+          link: {
+            link_title: 'A link',
+            link_url: '/curriculum'
+          }
         },
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example.',
-          link_title: 'A link',
-          link_url: '/curriculum'
+          link: {
+            link_title: 'A link',
+            link_url: '/curriculum'
+          }
         }
       ]
     }
@@ -31,67 +35,19 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 1',
           text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
+          link: {
+            link_title: 'A link',
+            link_url: '/curriculum'
+          }
         },
         {
           image_url: 'media/images/logos/tc-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example of a page card component with a bit more text than the other.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        }
-      ]
-    }
-
-    render(NonBorderedCardsComponent.new(params))
-  end
-
-  def more_cards
-    params = {
-      class_name: 'page-cards-example-component',
-      cards: [
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 1',
-          text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        },
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 2',
-          text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        },
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 3',
-          text: 'This is an example of a page card component. This is an example of a page card component. This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        },
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 4',
-          text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        },
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 5',
-          text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
-        },
-        {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: 'Card 6',
-          text: 'This is an example of a page card component.',
-          link_title: 'A link',
-          link_url: '/curriculum'
+          link: {
+            link_title: 'A link',
+            link_url: '/curriculum'
+          }
         }
       ]
     }

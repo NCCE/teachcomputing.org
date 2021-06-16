@@ -1,0 +1,25 @@
+<div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+      <div class="text-photo-hero white-bg">
+        <div class="text-photo-hero__block--text">
+          <h1 class="govuk-heading-l"><%= @programme.title %></h1>
+          <p class="govuk-body-l">
+            Certificate awarded by BCS, The Chartered Institute for IT
+          </p>
+        </div>
+        <div class="text-photo-hero__block--photo text-photo-hero__block--video">
+          <% if @programme&.cs_accelerator? %>
+           <iframe src="https://www.youtube.com/embed/CVlI2nrwhkM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-event-action="click" data-event-category="Isaac Computer Science" data-event-label="Introductory video"></iframe>
+          <% elsif @programme&.primary_certificate? %>
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/JLXm5NhHgVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <% elsif @programme&.secondary_certificate? %>
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/hPpAB-g_9Kc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

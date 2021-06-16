@@ -1,0 +1,15 @@
+<%= content_tag :div, class: ['document-cards-component', { "#{@class_name}": @class_name.present? }], data: data_attributes, style: css_variables do %>
+  <% @cards.each do | card | %>
+    <%= content_tag :div, class: ['document-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
+      <p class="govuk-body document-card__title">
+        <%= link_to card[:title_link][:title], card[:title_link][:title_url], class: 'ncce-link', data: {
+          event_action: 'click', event_category: card[:title_link][:tracking_page], event_label: card[:title_link][:tracking_label]
+        } %>
+      </p>
+      <% unless card[:date].blank? %>
+        <p class="govuk-body govuk-body-s document-card__date"><%= card[:date] %></p>
+      <% end %>
+      <p class="govuk-body document-card__text"><%= card[:text] %></p>
+    <% end %>
+  <% end %>
+<% end %>

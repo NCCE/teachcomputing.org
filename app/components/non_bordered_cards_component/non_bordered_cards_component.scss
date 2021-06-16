@@ -5,8 +5,40 @@
   gap: 36px;
 
   @include govuk-media-query($from: tablet) {
-    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
+  }
+}
+
+.non-bordered-card {
+  position: relative;
+  background-color: $white;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .ncce-link {
+    font-weight: bold;
+  }
+}
+
+.non-bordered-card__image-wrapper {
+  margin-bottom: 12px;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+    max-height: unset;
+  }
+}
+
+.non-bordered-card__image {
+  width: 100%;
+  padding-bottom: 0;
 }
 
 

@@ -111,6 +111,10 @@ export default class extends ApplicationController {
     this.sendSelectEvent(ev, 'Certificate');
   }
 
+  locationSearched(ev) {
+    this.sendGTMEvent('click', 'Search location');
+  }
+
   sendSelectEvent(ev, type) {
     const { currentTarget } = ev;
     this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);

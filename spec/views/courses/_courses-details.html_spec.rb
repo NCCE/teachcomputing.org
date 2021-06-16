@@ -7,7 +7,7 @@ RSpec.describe('courses/_courses-details', type: :view) do
 
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
+    stub_duration_units
     stub_age_groups
     stub_face_to_face_occurrences
     stub_course_templates

@@ -59,6 +59,7 @@ module Programmes
                      .achievements
                      .for_programme(self)
                      .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                     .not_in_state(:dropped)
                      .order(:created_at)
 
       complete = achievements.select { |ach| ach.in_state?(:complete) }
@@ -72,6 +73,7 @@ module Programmes
           .with_category([Activity::FACE_TO_FACE_CATEGORY,
                           Activity::ONLINE_CATEGORY])
           .where.not(id: compulsory_achievement(user)&.id)
+          .not_in_state(:dropped)
     end
 
     def user_completed_non_compulsory_achievement?(user)
