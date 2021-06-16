@@ -15,7 +15,7 @@ RSpec.describe HeroImageComponent, type: :component do
 
   it 'renders the body text' do
     expect(rendered_component).to have_css('.hero-image-component__text',
-                                           text: 'Our vision is for every child in every school in England to have a world-leading computing education.')
+                                           text: 'Our vision is for every child in England to have a world-leading computing education.')
   end
 
   it 'renders an image' do

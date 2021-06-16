@@ -161,7 +161,6 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c
   activity.stem_activity_code = 'CO215'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(future_learn_course_uuid: '030261f8-1e96-4a70-a329-e3eb8b868915') do |activity|

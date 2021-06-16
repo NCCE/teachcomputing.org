@@ -67,8 +67,8 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         expect(page).not_to have_css('.curriculum__rating--thumb-down')
       end
 
-      it 'shows the textarea' do
-        expect(page).to have_css('.curriculum__rating-textarea')
+      it 'does not show the textarea' do
+        expect(page).not_to have_css('.curriculum__rating-textarea')
       end
 
       it 'shows the expected text' do

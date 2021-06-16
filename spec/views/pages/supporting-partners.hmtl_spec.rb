@@ -14,7 +14,7 @@ RSpec.describe('pages/supporting-partners', type: :view) do
     end
 
     it 'has supporting partner cards showing' do
-      expect(rendered).to have_css('.shadow_card', count: 6)
+      expect(rendered).to have_css('.shadow_card', count: 5)
     end
 
     it 'has external links for each of the supporting_partner cards' do

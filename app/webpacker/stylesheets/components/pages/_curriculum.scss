@@ -121,13 +121,12 @@
 }
 
 .curriculum__rating {
-  align-items: center;
-  background-color: $foam;
   display: flex;
-  height: 100%;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
+  height: 100%;
   min-height: 3rem;
+  background-color: $foam;
   padding: 1rem;
 
   textarea {

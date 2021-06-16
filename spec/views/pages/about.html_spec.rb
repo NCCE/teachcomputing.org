@@ -23,7 +23,7 @@ RSpec.describe('pages/about', type: :view) do
   end
 
   it 'has the expected links in the ambition section' do
-    expect(rendered).to have_link('Impact and evaluation', href: '/impact-and-evaluation')
+    expect(rendered).to have_link('See our latest report', href: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf')
   end
 
   it 'has a diversity section' do

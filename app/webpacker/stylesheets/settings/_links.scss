@@ -58,11 +58,3 @@ a:not([class]) {
 .ncce-link--emph {
   font-weight: 700;
 }
-
-.ncce-link--small {
-  font-size: 14px;
-
-  @include govuk-media-query($from: tablet) {
-    font-size: 16px;
-  }
-}

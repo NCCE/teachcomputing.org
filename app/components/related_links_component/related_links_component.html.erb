@@ -1,8 +1,0 @@
-<%= content_tag :div, class: ['related-links-component', { "#{@class_name}": @class_name.present? }] do %>
-  <h2 class="govuk-heading-s"><%= t('.title') %></h2>
-  <ul class='govuk-list govuk-list--ncce'>
-  <% @links.each do |link| %>
-    <li><%= link_to link[:link_title], link[:link_url], class: 'ncce-link', data: { event_action: 'click', event_category: link[:tracking_page], event_label: link[:tracking_label] } %></li>
-  <% end %>
-  </ul>
-<% end %>

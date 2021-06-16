@@ -1,64 +1,11 @@
 .bordered-cards-component {
   display: grid;
   grid-template-columns: auto;
-  gap: 36px;
 
   @include govuk-media-query($from: tablet) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 
-  @include govuk-media-query($from: desktop) {
-    grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
-  }
-}
-
-.bordered-card {
-  display: flex;
-  flex-direction: column;
-  // justify-content: space-between;
-
-  position: relative;
-  background-color: $white;
-  padding: $component-padding-mobile;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
-
-  .ncce-link {
-    font-weight: bold;
-  }
-
-  &--primary-cert {
-    border-top: solid 9px $primary-cert-color;
-  }
-
-  &--secondary-cert {
-    border-top: solid 9px $secondary-cert-color;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    padding: $component-padding;
-  }
-}
-
-.bordered-card__text {
-  flex-grow: 1;
-}
-
-.bordered-card__image-wrapper {
-  margin-bottom: 12px;
-  max-height: 175px;
-  overflow: hidden;
-  position: relative;
-
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: 8px;
-    max-height: unset;
-  }
-}
-
-.bordered-card__image {
-  width: 100%;
+  column-gap: 36px;
+  row-gap: 36px;
 }
