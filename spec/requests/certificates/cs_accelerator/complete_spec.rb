@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::CSAcceleratorController do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:programme) { create(:cs_accelerator) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
@@ -42,6 +42,7 @@ RSpec.describe Certificates::CSAcceleratorController do
   describe '#complete' do
     context 'when user is logged in' do
       before do
+        stub_issued_badges(user.id)
         programme
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)

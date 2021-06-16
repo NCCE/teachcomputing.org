@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe('certificates/secondary_certificate/complete', type: :view) do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:secondary_certificate) { create(:secondary_certificate) }
 
   before do
+    stub_issued_badges(user.id)
     @programme = secondary_certificate
     assign(:complete_achievements, user.achievements.for_programme(secondary_certificate).sort_complete_first)
+    assign(:current_user, user)
     render
   end
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('certificates/_achievements', type: :view) do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:complete_achievement) { create(:completed_achievement, user: user) }
   let(:two_complete_achievements) { create_list(:completed_achievement, 2, user: user) }
   let(:enrolled_achievement) { create(:achievement, user: user) }
@@ -11,6 +11,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
   context 'when user has not completed any achievements' do
     before do
       @programme = programme
+      stub_issued_badges(user.id)
       presenters = [AchievementPresenter.new(nil), AchievementPresenter.new(nil)]
       render partial: 'certificates/achievements', locals: { presenters: presenters }
     end
@@ -54,8 +55,10 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has started two achievements' do
     before do
+      stub_issued_badges(user.id)
+      @programme = programme
       presenters = two_enrolled_achievements.map { |a| AchievementPresenter.new(a) }
-      render partial: 'certificates/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters, current_user: user }
     end
 
     it 'both achievements are marked as inprogress' do
@@ -75,8 +78,10 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has finished one achievement' do
     before do
+      stub_issued_badges(user.id)
+      @programme = programme
       presenters = [AchievementPresenter.new(complete_achievement), AchievementPresenter.new(enrolled_achievement)]
-      render partial: 'certificates/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters, current_user: user }
     end
 
     it 'one achievement is marked as inprogress' do
@@ -98,8 +103,10 @@ RSpec.describe('certificates/_achievements', type: :view) do
 
   context 'when user has finished both achievements' do
     before do
+      @programme = programme
+      stub_issued_badges(user.id)
       presenters = two_complete_achievements.map { |a| AchievementPresenter.new(a) }
-      render partial: 'certificates/achievements', locals: { presenters: presenters }
+      render partial: 'certificates/achievements', locals: { presenters: presenters, current_user: user }
     end
 
     it 'no achievement is marked as incomplete' do

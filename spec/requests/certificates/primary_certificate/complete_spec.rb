@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::PrimaryCertificateController do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:programme) { create(:primary_certificate) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
@@ -43,6 +43,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
     describe 'while logged in' do
       before do
+        stub_issued_badges(user.id)
         programme
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
@@ -69,6 +70,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
       describe 'and complete' do
         before do
+          stub_issued_badges(user.id)
           user_programme_enrolment.transition_to(:complete)
           setup_achievements_for_completed_course
           subject
