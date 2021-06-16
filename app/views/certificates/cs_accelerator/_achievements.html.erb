@@ -31,7 +31,7 @@
   </div>
   <% if @issued_badge %>
     <div class="ncce-csa-dash__objective">
-      <%= render DashBadgeComponent.new(badge: @issued_badge, tracking_event_category: 'CSA enrolled', tracking_event_label: 'CSA badge') %>
+      <%= render DashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
     </div>
   <% end %>
 <% end %>

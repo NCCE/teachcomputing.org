@@ -11,11 +11,7 @@
       </li>
       <% if @issued_badge %>
         <li class="ncce-activity-list__item">
-          <% if @programme.secondary_certificate? %>
-            <%= render DashBadgeComponent.new(badge: @issued_badge, fixed_width: true, tracking_event_category: 'Secondary enrolled', tracking_event_label: 'Secondary badge') %>
-          <% elsif %>
-            <%= render DashBadgeComponent.new(badge: @issued_badge, fixed_width: true, tracking_event_category: 'Primary enrolled', tracking_event_label: 'Primary badge') %>
-          <% end %>
+          <%= render DashBadgeComponent.new(badge: @issued_badge, fixed_width: true, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
         </li>
       <% end %>
     <% else %>
