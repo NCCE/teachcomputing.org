@@ -35,7 +35,7 @@ module Certificates
 
     private
 
-      def assign_issued_badge
+      def assign_issued_badge_data
         return unless FeatureFlagService.new.flags[:badges_enabled]
 
         @issued_badge = Credly::Badge.by_badge_template_id(current_user.id, @programme.credly_badge_template_id)
