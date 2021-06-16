@@ -4,8 +4,20 @@ RSpec.describe DashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:badge) { Credly::Badge.by_badge_template_id(user.id, '00cd7d3b-baca-442b-bce5-f20666ed591b') }
   let(:dash_badge_component) { described_class.new(badge: badge, tracking_event_category: 'category', tracking_event_label: 'label') }
+  let(:fixed_width_dash_badge_component) { described_class.new(badge: badge, fixed_width: true, tracking_event_category: 'category', tracking_event_label: 'label') }
 
   context 'when the badges feature is disabled' do
+    context 'when full width is true' do
+      before do
+        stub_issued_badges(user.id)
+        render_inline(fixed_width_dash_badge_component)
+      end
+
+      it 'has the full width class applied' do
+        expect(rendered_component).to have_css('.dash-badge-component-fixed-width')
+      end
+    end
+
     before do
       stub_issued_badges(user.id)
       render_inline(dash_badge_component)
@@ -43,6 +55,10 @@ RSpec.describe DashBadgeComponent, type: :component do
         expect(rendered_component).to have_selector("a[data-event-category='category']")
         expect(rendered_component).to have_selector("a[data-event-label='label']")
         expect(rendered_component).to have_selector("a[data-event-action='click']")
+      end
+
+      it 'does not have the full width class applied' do
+        expect(rendered_component).not_to have_css('.dash-badge-component-fixed-width')
       end
     end
   end

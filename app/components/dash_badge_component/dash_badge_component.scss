@@ -9,14 +9,12 @@
   }
 }
 
-.ncce-activity-list__item {
-  .dash-badge-component {
-    margin-left: 10%;
+.dash-badge-component-fixed-width {
+  margin-left: 10%;
 
-    @include govuk-media-query($from: desktop) {
-      margin-left: 3.5%;
-      width: 54.5%;
-    }
+  @include govuk-media-query($from: desktop) {
+    margin-left: 3.5%;
+    width: 54.5%;
   }
 }
 
