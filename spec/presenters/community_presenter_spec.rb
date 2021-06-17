@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe CommunityPresenter do
   let(:programme) { create(:programme) }
   let(:community_activity) { create(:activity, :community, description: 'this is a <strong>community</strong> activity') }
-  let(:achievement) { create(:achievement, activity_id: community_activity.id) }
-  let(:completed_achievement) { create(:completed_achievement, activity_id: community_activity.id, user_id: user.id ) }
+  let(:achievement) { create(:achievement, activity_id: community_activity.id, programme_id: programme.id) }
+  let(:completed_achievement) { create(:completed_achievement, activity_id: community_activity.id, user_id: user.id, programme_id: programme.id) }
   let(:incomplete_presenter) { described_class.new(community_activity, programme.id) }
   let(:completed_presenter) {
     completed_achievement
-    described_class.new(community_activity)
+    described_class.new(community_activity, programme.id)
   }
   let(:user) { create(:user) }
 
