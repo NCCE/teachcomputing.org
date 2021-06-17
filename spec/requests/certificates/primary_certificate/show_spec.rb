@@ -17,14 +17,20 @@ RSpec.describe Certificates::PrimaryCertificateController do
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
+  let(:community_activities_5) { create_list(:activity, 1, :community_5) }
+  let(:community_activities_10) { create_list(:activity, 3, :community) }
+  let(:community_activities_20) { create_list(:activity, 4, :community_20) }
   let(:setup_achievements_for_programme) do
-    assessment
-    user_programme_enrolment
-    activities = [diagnostic_tool_activity, online_course, face_to_face_course]
+    [assessment, user_programme_enrolment, community_activities_5, community_activities_10, community_activities_20]
 
-    activities.each do |activity|
+    [diagnostic_tool_activity, online_course, face_to_face_course].each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
     end
+
+    Activity.community.each do |activity|
+      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+    end
+
     diagnostic_achievement
     online_achievement
     face_to_face_achievement
@@ -71,9 +77,6 @@ RSpec.describe Certificates::PrimaryCertificateController do
       context 'when user has completed questionnaire' do
         before do
           setup_achievements_for_programme
-          create(:activity, :community_5)
-          create_list(:activity, 3, :community)
-          create_list(:activity, 4, :community_20)
           questionnaire = create(:questionnaire, :primary_enrolment_questionnaire)
           questionnaire_response = create(:questionnaire_response,
                                           user: user,
