@@ -101,6 +101,7 @@
   &:focus, &:active, &:hover {
     outline: none;
     text-decoration: none;
+    background-color: $concrete;
   }
 
   &:after {

@@ -26,12 +26,13 @@
     }
 
     &:focus {
-      background-color: $grey-dark-x;
+      background-color: $grey-dark-x !important;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      box-shadow: none;
+      box-shadow: none !important;
       color: $white;
       outline: none;
+      border-color: $grey-dark-x !important;
     }
 
     &:hover,
@@ -56,6 +57,12 @@
 
   .button {
     margin-bottom: 20px;
+
+    &:focus {
+      background-color: $white !important;
+      color: $black !important;
+    }
+
     @include govuk-media-query($from: tablet) {
       margin-bottom: 0;
     }
@@ -65,6 +72,7 @@
     border: 0;
     margin-bottom: 20px;
     margin-top: 20px;
+    border-radius: 0;
     @include govuk-media-query($from: tablet) {
       margin-bottom: 0;
       margin-top: 0;
@@ -72,7 +80,9 @@
   }
 
   .govuk-input:focus {
-    outline-color: $white;
+    border-width: 2px;
+    outline: 3px solid $white;
+    box-shadow: 0 0 0 3px #007fa2 !important;
   }
 }
 

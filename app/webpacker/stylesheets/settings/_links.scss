@@ -21,6 +21,11 @@ a:not([class]) {
   }
 }
 
+a:focus {
+  outline-offset: initial;
+  box-shadow: none !important;
+}
+
 .ncce-link--on-dark {
   &:link {
     color: $grey-x-light;

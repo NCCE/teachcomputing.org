@@ -1,4 +1,4 @@
-<header class="header" data-module="header">
+<header class="header" data-module="govuk-header">
   <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
   <div class="header__container govuk-width-container">
 		<nav role="navigation" class="header-nav">
@@ -12,7 +12,7 @@
 					</g>
 				</svg>
 			<% end %>
-			<button type="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+			<button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
 			<div id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
 				<% if current_user %>
 					<ul class='ncce-header__user'>

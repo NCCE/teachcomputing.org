@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://teachcomputing.rpfdev.com",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Rails Debug",
       "type": "Ruby",
       "request": "attach",
