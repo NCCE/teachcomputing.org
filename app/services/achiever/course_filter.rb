@@ -142,17 +142,7 @@ module Achiever
       return nil unless location_search?
       return @search_location_formatted_address if defined? @search_location_formatted_address
 
-      @search_location_formatted_address ||=
-        begin
-          town_components = geocoded_search_location&.address_components&.select do |c|
-            c['types'].include?('postal_town')
-          end
-          if town_components&.any?
-            town_components.first['long_name']
-          else
-            geocoded_search_location&.formatted_address
-          end
-        end
+      @search_location_formatted_address ||= Geocoding.format_address(geocoded_location: geocoded_search_location)
     end
 
     def location_search?

@@ -1,0 +1,23 @@
+<div class="sorted-hubs-component__displaying">
+  <div>
+    <p class="govuk-body govuk-!-margin-bottom-0">
+      Displaying Hubs by distance from <strong><%= @formatted_address %> </strong>
+    </p>
+  </div>
+  <div>
+    <p class="govuk-body govuk-!-margin-bottom-0">
+      <%= link_to 'clear location', hubs_path, class: "ncce-link sorted-hubs-component__clear"  %>
+    </p>
+  </div>
+</div>
+
+<% @sorted_hubs.each do |hub| %>
+  <div class="sorted-hubs-component__hub">
+    <div class="sorted-hubs-component__distance">
+      <p class="govuk-body-s"><strong><%= hub.distance.round(1) %> miles</strong> away </p>
+    </div>
+    <div class="sorted-hubs-component__hub-component">
+      <%= render HubComponent.new(hub: hub) %>
+    </div>
+  </div>
+<% end %>

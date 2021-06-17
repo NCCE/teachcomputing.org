@@ -1,0 +1,11 @@
+<%= form_with url: hubs_path, method: :get, class: '', local: true do %>
+  <div class="hub-search-component">
+    <div class="hub-search-component__inputs">
+      <%= label_tag :location, t('.search_label'), class: 'govuk-body-s ncce-label hub-search-component__label' %>
+      <%= text_field_tag :location, @location, placeholder: t('.placeholder'), class: 'govuk-input' %>
+    </div>
+    <div>
+      <%= submit_tag t('.button_text'), class: 'govuk-button button button--small button--inline hub-search-component__button' %>
+    </div>
+  </div>
+<% end %>

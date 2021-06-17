@@ -1,0 +1,27 @@
+<div class="hub-component">
+  <h2 class="govuk-heading-s hub-component__heading"><%= @hub.name %></h2>
+  <div class="hub-component__address">
+    <p class="govuk-body-s hub-component__content">
+      <%= @hub.address %>
+    </p>
+    <p class="govuk-body-s hub-component__content">
+      <%= @hub.postcode %>
+    </p>
+  </div>
+  <div class="hub-component__contact">
+    <p class="govuk-body-s hub-component__content">
+      <%= mail_to @hub.email, @hub.email, class: 'ncce-link' %>
+    </p>
+    <% if @hub.phone.present? %>
+      <p class="govuk-body-s hub-component__content">
+        <%= link_to @hub.phone, "tel:#{@hub.phone}", class: 'ncce-link' %>
+      </p>
+    <% end %>
+  </div>
+  <div class="hub-component__social">
+    <%= render HubSocialLinkComponent.new(type: 'website', value: @hub.website) %>
+    <%= render HubSocialLinkComponent.new(type: 'facebook', value: @hub.facebook) %>
+    <%= render HubSocialLinkComponent.new(type: 'twitter', value: @hub.twitter) %>
+  </div>
+  <%= link_to 'View hub courses', hub_path(@hub.subdeliverer_id), class: 'govuk-button button button--small' %>
+</div>

@@ -1,0 +1,27 @@
+.hub-component {
+  display: list-item;
+  list-style-type: disc;
+  margin-bottom: 40px;
+  margin-left: 18px;
+}
+
+.hub-component__heading {
+  position: relative;
+  top: 2px;
+}
+
+.hub-component__address {
+  margin-bottom: 6px;
+}
+
+.hub-component__contact {
+  margin-bottom: 12px;
+}
+
+.hub-component__content {
+  margin-bottom: 4px;
+}
+
+.hub-component__social {
+  margin-bottom: 16px;
+}

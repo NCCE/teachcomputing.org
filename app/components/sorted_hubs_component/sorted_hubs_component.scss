@@ -1,0 +1,34 @@
+.sorted-hubs-component {
+}
+
+.sorted-hubs-component__hub {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.sorted-hubs-component__distance {
+  padding-top: 4px;
+  width: 150px;
+}
+
+.sorted-hubs-component__hub-component {
+  width: 500px;
+}
+
+.sorted-hubs-component__clear {
+  background-image: url('../images/icons/blue-close.svg');
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: 0.8rem;
+  padding-left: 1.2rem;
+}
+
+.sorted-hubs-component__displaying {
+  border-bottom: 1px solid $grey-mid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+}

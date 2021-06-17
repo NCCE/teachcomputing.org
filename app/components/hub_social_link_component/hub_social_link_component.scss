@@ -1,0 +1,17 @@
+.hub-social-link-component {
+}
+
+.hub-social-link-component__link {
+  text-decoration: none;
+
+  &:active {
+    background-color: none;
+    color: none;
+  }
+}
+
+.hub-social-link-component__image {
+  height: 20px;
+  margin-right: 10px;
+  width: 20px;
+}

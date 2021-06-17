@@ -1,0 +1,22 @@
+.hub-search-component {
+  align-items: flex-end;
+  background-color: $concrete;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px 20px 16px 20px;
+}
+
+.hub-search-component__inputs {
+  margin-right: 20px;
+  width: 100%;
+}
+
+.hub-search-component__label {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.hub-search-component__button {
+  padding: 0.6rem 1rem;
+}
