@@ -22,11 +22,11 @@ class UserProgrammeAchievements
   end
 
   def community_activities(to_show = 1, credit = 5)
-    activities = Activity.community.joins("LEFT OUTER JOIN achievements on achievements.activity_id = activities.id AND achievements.user_id = '#{@user.id}'").where("credit = ?", credit).order('activities.credit')
-    (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index])}
+    activities = @programme.activities.community.joins("LEFT OUTER JOIN achievements on achievements.activity_id = activities.id AND achievements.user_id = '#{@user.id}'").where("credit = ?", credit).order('activities.credit')
+    (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index], @programme.id)}
   end
 
   def secondary_activities(programme_activities)
-    programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity) }
+    programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity, @programme.id) }
   end
 end
