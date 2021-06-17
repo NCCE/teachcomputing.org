@@ -15,15 +15,15 @@
     background-color: $black;
   }
 
-  &:focus {
-    background-color: $black !important;
-    color: $white !important;
-    outline-color: $black;
-    border-color: $black !important;
+  &[disabled]:active {
     box-shadow: none;
   }
 
-  &[disabled]:active {
+  &:focus {
+    /* !importants are currently necessary to override ugly framework rules (_index.scss:110) */
+    background-color: $black !important;
+    color: $white !important;
+    border-color: $black !important;
     box-shadow: none;
   }
 
@@ -46,12 +46,6 @@
 
 .button {
   @include ncce_button($deep-cerulean);
-
-  &:focus {
-    background-color: $black;
-    color: $white;
-    border-color: $black;
-  }
 }
 
 .button--focus-white {
