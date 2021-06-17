@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe('certificates/_community_achievements', type: :view) do
+  let(:programme) { create(:programme) }
   let(:user) { create(:user) }
   let(:community_activity) { create(:activity, :community) }
   let(:complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: community_activity.id) }
   let(:second_community_activity) { create(:activity, :community, slug: 'second-community-activity') }
   let(:second_complete_achievement) { create(:completed_achievement, user_id: user.id, activity_id: second_community_activity.id) }
   let(:presenters) do
-    [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity)]
+    [CommunityPresenter.new(community_activity), CommunityPresenter.new(second_community_activity, programme.id)]
   end
 
   context 'when user has not completed any achievements' do
