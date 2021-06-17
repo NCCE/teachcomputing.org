@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_090329) do
+ActiveRecord::Schema.define(version: 2021_06_08_102603) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -217,7 +216,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_090329) do
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
     t.string "type"
-    t.text "credly_badge_template_ids", default: [], array: true
+    t.string "credly_badge_template_id"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
