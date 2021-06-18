@@ -38,7 +38,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/pages_controller.rb",
-      "line": 26,
+      "line": 30,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(Programme.find_by!(:slug => params[:page_slug]).path)",
       "render_path": null,
@@ -78,7 +78,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 32,
+      "line": 51,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(UserProgrammeEnrolment.find_by(user_programme_enrolment_params).programme.path)",
       "render_path": null,
@@ -98,7 +98,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 28,
+      "line": 32,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -130,8 +130,24 @@
       "user_input": "params[:page_slug]",
       "confidence": "Medium",
       "note": "params[:page_slug] is set in config/router.rb"
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 106,
+      "fingerprint": "cdfb1541fdcc9cdcf0784ce5bd90013dc39316cb822eedea3f03b2521c06137f",
+      "check_name": "SanitizeMethods",
+      "message": "loofah gem 2.10.0 is vulnerable (CVE-2018-8048). Upgrade to 2.2.1",
+      "file": "Gemfile.lock",
+      "line": 288,
+      "link": "https://github.com/flavorjones/loofah/issues/144",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
     }
   ],
-  "updated": "2020-11-02 15:13:13 +0000",
-  "brakeman_version": "4.8.2"
+  "updated": "2021-06-17 16:41:22 +0100",
+  "brakeman_version": "5.0.0"
 }
