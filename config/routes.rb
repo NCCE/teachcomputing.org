@@ -145,8 +145,8 @@ Rails.application.routes.draw do
       constraints: lambda { |_request|
                      Programme.secondary_certificate.enrollable?
                    }
-  get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders,
-                                   defaults: { page_slug: 'secondary-senior-leaders' }
+  # get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders,
+  #                                  defaults: { page_slug: 'secondary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
