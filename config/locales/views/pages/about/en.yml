@@ -68,3 +68,12 @@ en:
         title: "School governors"
         text: "You can play an important role in advocating for computing as a subject within your school."
         link_title: "Advocate for us"
+    partnerships:
+      supporting_partner_card:
+        title: "Supporting partners"
+        text: "Help us continue to remove barriers for teachers in state-funded education in England to access essential CPD."
+        link_title: "Support us"
+      contributing_partner_card:
+        title: "Contributing partners"
+        text: "We work in partnership with other programmes to enrich and enhance our schools’ computing offer."
+        link_title: "Meet out partners"
