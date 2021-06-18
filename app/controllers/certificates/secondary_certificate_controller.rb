@@ -37,12 +37,9 @@ module Certificates
 
       def assign_issued_badge_data
         return unless FeatureFlagService.new.flags[:badges_enabled]
+        return unless @programme.badges.any?
 
-        @badge_template = @programme.badges.active.first
-
-        return unless @badge_template
-
-        @issued_badge = Credly::Badge.by_badge_template_id(current_user.id, @badge_template.credly_badge_template_id)
+        @issued_badge = Credly::Badge.by_badge_template_id(current_user.id, @programme.id)
         @badge_tracking_event_category = 'Secondary enrolled'
         @badge_tracking_event_label = 'Secondary badge'
       end
