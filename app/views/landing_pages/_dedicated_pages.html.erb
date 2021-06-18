@@ -6,7 +6,7 @@
           <strong>We also have dedicated pages for:</strong>
         </p>
         <% if @landing_page.secondary? %>
-          <%= link_to 'Secondary senior leaders', secondary_senior_leaders_path,
+          <%= link_to 'Secondary senior leaders', '/secondary-senior-leaders',
             class: 'govuk-button button button--small button--inverted dedicated-pages--button',
             data: { event_action: 'click', event_category: @landing_page.event_tracking_category, event_label: 'Senior leaders' }
           %>
