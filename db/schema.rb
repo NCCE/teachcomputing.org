@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_090329) do
+ActiveRecord::Schema.define(version: 2021_06_18_071048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -127,6 +127,15 @@ ActiveRecord::Schema.define(version: 2021_06_16_090329) do
     t.string "class_marker_test_id"
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
+  end
+
+  create_table "badges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id", null: false
+    t.boolean "active", default: false, null: false
+    t.uuid "credly_badge_template_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["programme_id"], name: "index_badges_on_programme_id"
   end
 
   create_table "hub_regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -328,6 +337,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_090329) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "badges", "programmes"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"
   add_foreign_key "pathway_activities", "pathways"

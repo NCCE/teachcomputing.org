@@ -27,13 +27,11 @@ module Credly
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
 
-    def self.by_badge_programme_template_ids(user_id, programme_id)
-      programme = Programme.find_by!(programme_id)
+    def self.by_badge_template_id(user_id, badge_template_id)
       badge_template_id = '00cd7d3b-baca-442b-bce5-f20666ed591b'
       issued = Credly::Badge.issued(user_id)
 
-
-      badges = issued.keep_if { |issued| programme.credly_badge_template_ids.include?(issued[:badge_template][:id]) }
+      badges = issued.keep_if { |issued| issued[:badge_template][:id] == badge_template_id }
       return unless badges.any?
 
       badges.last
