@@ -42,6 +42,7 @@ class GetInvolved
             class_name: 'supporting-partners-card',
             title: I18n.t('pages.partnerships.supporting_partner_card.title'),
             text: I18n.t('pages.partnerships.supporting_partner_card.text'),
+            list_items:[],
             link: {
               link_title: I18n.t('pages.partnerships.supporting_partner_card.link_title'),
               link_url: '/supporting-partners',
@@ -53,6 +54,7 @@ class GetInvolved
             class_name: 'contributing-partners-card',
             title: I18n.t('pages.partnerships.contributing_partner_card.title'),
             text: I18n.t('pages.partnerships.contributing_partner_card.text'),
+            list_items:[],
             link: {
               link_title: I18n.t('pages.partnerships.contributing_partner_card.link_title'),
               link_url: '/contributing-partners',
@@ -65,6 +67,7 @@ class GetInvolved
             class_name: 'contributing-partners-card',
             title: I18n.t('pages.partnerships.contributing_partner_card.title'),
             text: I18n.t('pages.partnerships.contributing_partner_card.text'),
+            list_items:["jkajssjjdfsj",'sdhhffhdkdfhjk','skjhffhjjhfksd'],
             link: {
               link_title: I18n.t('pages.partnerships.contributing_partner_card.link_title'),
               link_url: '/contributing-partners',

@@ -7,7 +7,14 @@
         </div>
       <% end %>
       <h2 class="govuk-heading-m"><%= card[:title] %></h2>
-      <p class="govuk-body bordered-card__text"><%= card[:text] %></p>
+      <% if card[:text].present? %>
+        <p class="govuk-body bordered-card__text"><%= card[:text] %></p>
+      <% end %>
+      <% if card[:list_items].present? %>
+        <% card[:list_items].each do |list_item| %>
+          <li class="govuk-body bordered-card__text"><%= list_item %></li>
+        <% end %>
+      <% end %>
       <p class="govuk-body">
         <%= link_to card[:link][:link_title],card[:link][:link_url], class: "ncce-link", data: {
           event_action: 'click', event_category: card[:link][:tracking_page], event_label: card[:link][:tracking_label]

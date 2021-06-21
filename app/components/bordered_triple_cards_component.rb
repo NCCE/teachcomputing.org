@@ -7,8 +7,8 @@ class BorderedTripleCardsComponent < ViewComponent::Base
     @cards_per_row = cards_per_row
   end
 
-  def assign_card(title:, text:, link:, class_name: nil, image_url: nil)
-    { title: title, text: text, class_name: class_name, image_url: image_url, link: assign_link(link) }
+  def assign_card(title:, text:, list_items:, link:, class_name: nil, image_url: nil)
+    { title: title, text: text, list_items: list_items, class_name: class_name, image_url: image_url, link: assign_link(link) }
   end
 
   def assign_link(link_title:, link_url:, tracking_page: nil, tracking_label: nil, class_name: nil)
