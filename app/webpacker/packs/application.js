@@ -22,6 +22,7 @@ import '../javascript/courses'
 import '../javascript/dropdown__expander'
 import '../javascript/ihavedonethis'
 import '../javascript/js_enabled'
+import '../javascript/gtm'
 
 // CSS
 import '../stylesheets/application'

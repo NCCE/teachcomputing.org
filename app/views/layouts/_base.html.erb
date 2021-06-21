@@ -44,14 +44,12 @@
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
-    <%= javascript_tag nonce: true do -%>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-      n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>');
-    <% end -%>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date())
+    </script>
     <!-- End Google Tag Manager -->
   <% end %>
 </head>

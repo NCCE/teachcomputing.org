@@ -4,13 +4,13 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs";
-// import Turbolinks from "turbolinks";
+import Turbolinks from "turbolinks";
 
 // import 'javascript/components/table';
 // import 'javascript/components/date_time_picker';
 
 Rails.start();
-// Turbolinks.start();
+Turbolinks.start();
 
 // The next line you only need if you want ActiveStorage support
 // require("@rails/activestorage").start();
