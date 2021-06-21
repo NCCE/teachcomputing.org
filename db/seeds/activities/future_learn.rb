@@ -388,3 +388,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '147b3adf-9f26-4ffa-a95
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '7f88c178-9538-4970-b438-ab80e6125d5e') do |activity|
+  activity.title = 'Teaching Computing Systems and Networks to 5- to 11-year-olds'
+  activity.credit = 10
+  activity.slug = 'teaching-computing-systems-and-networks-to-5-to-11-year-olds'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '31971bdc-34d0-eb11-bacc-00224800f845'
+  activity.future_learn_course_uuid = '7f88c178-9538-4970-b438-ab80e6125d5e'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO042'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
