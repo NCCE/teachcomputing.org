@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="<%= yield_meta_tag(:image, default_social_image) %>">
   <meta name="twitter:image:alt" content="<%= yield_meta_tag(:image_alt, 'Teaching Computing') %>">
   <meta name="twitter:dnt" content="on">
-  <meta name="turbolinks-cache-control" content="reload">
+  <meta name="turbolinks-cache-control" content="<%= yield_meta_tag(:turbolinks_cache_control, 'cache') %>">
 
   <%= favicon_pack_tag 'media/images/favicon.ico', sizes: '16x16 32x32 48x48' %>
   <%= favicon_pack_tag 'media/images/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '120x120' %>
@@ -42,11 +42,18 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'govuk-frontend', 'data-turbolinks-track': 'reload' %>
 
-  <%# if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
+  <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
-    <%= javascript_pack_tag 'gtm', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_tag do -%>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
+      n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','<%= ENV['GOOGLE_TAG_MANAGER_KEY'] %>');
+    <% end -%>
     <!-- End Google Tag Manager -->
-  <%# end %>
+  <% end %>
 </head>
 
 <body class="govuk-template__body ">
