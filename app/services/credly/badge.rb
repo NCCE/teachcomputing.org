@@ -26,5 +26,13 @@ module Credly
       query_strings = "?filter=recipient_email::#{user.email}"
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
+
+    def self.by_badge_template_id(user_id, badge_template_id)
+      issued = Credly::Badge.issued(user_id)
+      badges = issued.keep_if { |issued| issued[:badge_template][:id] == badge_template_id }
+      return unless badges.any?
+
+      badges.last
+    end
   end
 end

@@ -9,6 +9,7 @@
         <p class="govuk-body">
           <%= link_to 'View your certificate', certificate_cs_accelerator_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
+        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
 				<h2 class="govuk-heading-m govuk-!-margin-top-6">Your recommended next steps</h2>
 				<h3 class="govuk-heading-s">Improve your teaching confidence</h3>
         <p class="govuk-body">Take your professional development to the next level and start our new <%= link_to 'Teach secondary computing certificate', secondary_certificate_path, class: 'govuk-link ncce-link' %>. This qualification will help you to build on your subject knowledge and give you the practical skills for the classroom. It also supports your progress to chartered status.</p>

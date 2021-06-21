@@ -19,7 +19,6 @@
         <% end %>
       </p>
 
-
       <div class="ncce-flex__space-between">
         <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(compulsory_achievement.activity) %>">
           <%= activity_type(compulsory_achievement.activity) %> course
@@ -30,8 +29,12 @@
       </div>
     </div>
   </div>
+  <% if @issued_badge %>
+    <div class="ncce-csa-dash__objective">
+      <%= render DashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+    </div>
+  <% end %>
 <% end %>
-
 
 <div class="ncce-csa-dash__objective
   <%= 'ncce-csa-dash__objective--incomplete' unless user_completed_non_compulsory_achievement %>

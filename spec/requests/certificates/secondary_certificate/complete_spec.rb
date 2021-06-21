@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::SecondaryCertificateController do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id) }
   let(:complete_achievements) { user.achievements.without_category('action').for_programme(secondary_certificate).sort_complete_first }
@@ -9,6 +9,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
   describe '#complete' do
     context 'when user is logged in' do
       before do
+        stub_issued_badges(user.id)
         secondary_certificate
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)

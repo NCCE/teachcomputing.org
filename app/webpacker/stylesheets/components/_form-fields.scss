@@ -22,6 +22,16 @@
   outline-offset: 3px;
 }
 
+.govuk-input {
+  border-radius: 5px;
+}
+
+.govuk-input:focus {
+  border: 2px solid #007fa2;
+  box-shadow: none;
+  outline: none;
+}
+
 .govuk-radios__input:focus + .govuk-radios__label::before {
   box-shadow: 0 0 0 3px $deep-cerulean;
 }
@@ -73,10 +83,10 @@
     }
 
     &::after {
-      height: 6px;
-      left: 5px;
       top: 8px;
-      width: 14px;
+      left: 5px;
+      height: 11px;
+      width: 19px;
     }
   }
 
@@ -84,7 +94,7 @@
   .ncce-checkboxes__input:active + .ncce-checkboxes__label::before,
   .ncce-checkboxes__input[checked='checked'] + .ncce-checkboxes__label::before {
     background-color: #E3F6FC;
-    border-color: #007fa2;
+    border: 2px solid #007fa2;
     box-shadow: none;
     outline: none;
   }

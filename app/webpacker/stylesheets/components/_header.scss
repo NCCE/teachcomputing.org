@@ -359,6 +359,18 @@
   line-height: 18px;
   margin-right: 15px;
   top: 0;
+
+  &:focus, &--open:focus,
+  &:visited, &--open:visited,
+  &:hover, &--open:hover {
+    color: #007fa2;
+    text-decoration: solid underline 1px;
+  }
+
+  &:focus, &--open:focus {
+    background-color: $white;
+    box-shadow: none;
+  }
 }
 
 .govuk-header__menu-button::after {

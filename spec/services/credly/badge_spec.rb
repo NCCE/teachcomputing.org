@@ -68,4 +68,37 @@ RSpec.describe Credly::Badge do
       end
     end
   end
+
+  describe '#by_badge_template_id' do
+    context 'when the user exists' do
+      before do
+        user
+        stub_issued_badges(user.id)
+      end
+
+      context 'when a user has been issued the badge' do
+        it 'returns a badge' do
+          issued = described_class.by_badge_template_id(user.id, badge_template_id)
+
+          %i[badge_template issued_to issuer_earner_id].each do |key|
+          expect(issued.key?(key)).to eq(true)
+          end
+        end
+      end
+
+      context 'when the user has not been issued the badge' do
+        it 'returns nil' do
+          expect(issued = described_class.by_badge_template_id(user.id, '1')).to eq nil
+        end
+      end
+    end
+
+    context 'when the user does not exist' do
+      it 'raises ActiveRecord::RecordNotFound' do
+        expect do
+          described_class.issued('123')
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end

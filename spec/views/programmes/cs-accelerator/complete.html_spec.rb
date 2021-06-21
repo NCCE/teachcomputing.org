@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('certificates/cs_accelerator/complete', type: :view) do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let!(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: diagostic_activity.id) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
@@ -9,6 +9,7 @@ RSpec.describe('certificates/cs_accelerator/complete', type: :view) do
   let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
 
   before do
+    stub_issued_badges(user.id)
     programme.activities << diagostic_activity
     @online_achievements = []
     @face_to_face_achievements = []
