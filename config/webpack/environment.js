@@ -18,12 +18,12 @@ sassLoader.use.find(item => item.loader === 'sass-loader').options.sassOptions =
 };
 
 // dotenv (for env vars)
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 
-dotenv.config({ path: '.env' })
-environment.plugins.insert(
-  "Environment",
-  new webpack.EnvironmentPlugin(process.env)
-)
+// dotenv.config({ path: '.env' })
+// environment.plugins.insert(
+//   "Environment",
+//   new webpack.EnvironmentPlugin(process.env)
+// )
 
 module.exports = environment;
