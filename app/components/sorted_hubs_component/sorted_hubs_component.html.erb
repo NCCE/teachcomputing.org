@@ -1,4 +1,4 @@
-<div class="sorted-hubs-component__displaying">
+<div class="sorted-hubs-component__displaying" id="sorted-hubs">
   <div>
     <p class="govuk-body govuk-!-margin-bottom-0">
       Displaying Hubs by distance from <strong><%= @formatted_address %> </strong>
@@ -16,7 +16,7 @@
     <div class="sorted-hubs-component__distance">
       <p class="govuk-body-s"><strong><%= hub.distance.round(1) %> miles</strong> away </p>
     </div>
-    <div class="sorted-hubs-component__hub-component">
+    <div>
       <%= render HubComponent.new(hub: hub) %>
     </div>
   </div>

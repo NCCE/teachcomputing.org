@@ -3,17 +3,17 @@
 
 .sorted-hubs-component__hub {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+  }
 }
 
 .sorted-hubs-component__distance {
   padding-top: 4px;
   width: 150px;
-}
-
-.sorted-hubs-component__hub-component {
-  width: 500px;
 }
 
 .sorted-hubs-component__clear {

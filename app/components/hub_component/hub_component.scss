@@ -20,6 +20,11 @@
 
 .hub-component__content {
   margin-bottom: 4px;
+  max-width: 250px;
+
+  @include govuk-media-query($from: desktop) {
+    max-width: 400px;
+  }
 }
 
 .hub-component__social {

@@ -1,12 +1,18 @@
 <div class="hub-component">
   <h2 class="govuk-heading-s hub-component__heading"><%= @hub.name %></h2>
   <div class="hub-component__address">
-    <p class="govuk-body-s hub-component__content">
-      <%= @hub.address %>
-    </p>
-    <p class="govuk-body-s hub-component__content">
-      <%= @hub.postcode %>
-    </p>
+    <% if show_address? %>
+      <p class="govuk-body-s hub-component__content">
+        <%= @hub.address %>
+      </p>
+      <p class="govuk-body-s hub-component__content">
+        <%= @hub.postcode %>
+      </p>
+    <% else %>
+      <p class="govuk-body-s hub-component__content">
+        <%= t('.no_address') %>
+      </p>
+    <% end %>
   </div>
   <div class="hub-component__contact">
     <p class="govuk-body-s hub-component__content">

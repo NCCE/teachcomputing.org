@@ -1,10 +1,16 @@
 .hub-search-component {
-  align-items: flex-end;
+  align-items: flex-start;
   background-color: $concrete;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 6px 20px 16px 20px;
+  padding: 14px 16px;
+
+  @include govuk-media-query($from: desktop) {
+    align-items: flex-end;
+    flex-direction: row;
+    padding: 14px 20px 18px 20px;
+  }
 }
 
 .hub-search-component__inputs {
@@ -12,9 +18,23 @@
   width: 100%;
 }
 
+.hub-search-component__textfield {
+  margin-bottom: 12px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+  }
+}
+
 .hub-search-component__label {
   display: inline-block;
-  margin-bottom: 6px;
+  line-height: 1.2rem;
+  margin-bottom: 10px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 12px;
+  }
+
 }
 
 .hub-search-component__button {
