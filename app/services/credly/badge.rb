@@ -10,6 +10,7 @@ module Credly
 
     def self.issue(user_id, template_id)
       user = User.find(user_id)
+
       body = {
         'recipient_email' => user.email,
         'issued_to_first_name' => user.first_name,
@@ -29,13 +30,12 @@ module Credly
 
     def self.by_badge_template_ids(user_id, programme_id)
       programme = Programme.find(programme_id)
-
       template_ids = programme.badges.pluck(:credly_badge_template_id)
       issued = Credly::Badge.issued(user_id)
-
       badges = issued.keep_if { |issued| template_ids.include?(issued[:badge_template][:id]) }
       return unless badges.any?
 
       badges.last
     end
   end
+end
