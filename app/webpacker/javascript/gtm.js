@@ -5,4 +5,4 @@ const registerPageView = () => {
   });
 }
 
-window.addEventListener('turbolinks:render', registerPageView)
+window.addEventListener('turbolinks:load', registerPageView)
