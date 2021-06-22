@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_071048) do
   create_table "badges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.boolean "active", default: false
+    t.string "academic_year", null: false
     t.uuid "credly_badge_template_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
