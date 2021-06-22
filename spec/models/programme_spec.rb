@@ -17,6 +17,7 @@ RSpec.describe Programme, type: :model do
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   describe 'associations' do
+    it { is_expected.to have_many(:badges) }
     it { is_expected.to have_many(:pathways) }
     it { is_expected.to have_many(:activities).through(:programme_activities) }
     it { is_expected.to have_many(:users).through(:user_programme_enrolments) }
