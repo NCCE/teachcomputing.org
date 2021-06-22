@@ -9,6 +9,7 @@ RSpec.describe Programme, type: :model do
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
+  let(:badge) { create(:badge, :active, programme_id: programme.id)}
 
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
@@ -113,17 +114,25 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#badgeable?' do
-   context 'with a programme but without a credly_badge_template_id' do
+    before do
+      programme
+    end
+
+   context 'with a programme but without a badge' do
      it 'returns false' do
-        programme = build(:programme, credly_badge_template_id: nil)
         expect(programme.badgeable?).to eq false
      end
    end
 
-   context 'with a programme that has credly_badge_template_id populated' do
-     it 'returns true' do
-      programme = build(:programme, credly_badge_template_id: '123456789')
-       expect(programme.badgeable?).to eq true
+   context 'with a programme that has a badge' do
+     it 'returns true when active' do
+      badge
+      expect(programme.badgeable?).to eq true
+     end
+
+     it 'returns false when active is false' do
+       badge.update(active: false)
+       expect(programme.badgeable?).to eq false
      end
    end
  end
