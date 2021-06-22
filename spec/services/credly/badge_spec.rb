@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Credly::Badge do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
-  let(:badge) { create(:badge, :active) }
+  let(:badge) { create(:badge, :active, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
 
   describe '#templates' do
     before do
