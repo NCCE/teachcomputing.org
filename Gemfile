@@ -72,7 +72,6 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'ruby-debug-ide'
-  gem 'ruby_jard'
   gem 'solargraph'
   gem 'webmock'
 end
