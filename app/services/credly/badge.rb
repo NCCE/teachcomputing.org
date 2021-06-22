@@ -28,7 +28,7 @@ module Credly
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
 
-    def self.by_badge_template_ids(user_id, programme_id)
+    def self.by_programme_badge_template_ids(user_id, programme_id)
       programme = Programme.find(programme_id)
       template_ids = programme.badges.pluck(:credly_badge_template_id)
       issued = Credly::Badge.issued(user_id)

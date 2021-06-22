@@ -39,7 +39,7 @@ module Certificates
         return unless FeatureFlagService.new.flags[:badges_enabled]
         return unless @programme.badges.any?
 
-        @issued_badge = Credly::Badge.by_badge_template_ids(current_user.id, @programme.id)
+        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.id)
         @badge_tracking_event_category = 'Secondary enrolled'
         @badge_tracking_event_label = 'Secondary badge'
       end
