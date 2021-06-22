@@ -1268,3 +1268,16 @@ a = Activity.find_or_create_by(stem_course_template_no: 'f5f6db3c-29be-eb11-bacc
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'b7f3eb4b-42d3-eb11-bacb-0022481aa15a') do |activity|
+  activity.title = 'KS3 computing (module 2): creative curriculum content, sequencing and pedagogy'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-2-creative-curriculum-content-sequencing-and-pedagogy'
+  activity.stem_course_template_no = 'b7f3eb4b-42d3-eb11-bacb-0022481aa15a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP458'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
