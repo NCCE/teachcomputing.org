@@ -33,7 +33,7 @@ class Programme < ApplicationRecord
   end
 
   def badgeable?
-    badges.active.present?
+    badges.active.exists?
   end
 
   def credits_achieved_for_certificate(_user)

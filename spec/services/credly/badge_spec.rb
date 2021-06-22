@@ -78,7 +78,7 @@ RSpec.describe Credly::Badge do
       context 'when a user has been issued the badge' do
         it 'returns a badge' do
           stub_issued_badges(user.id)
-          issued = described_class.by_badge_template_ids(user.id, badge.programme.id)
+          issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)
 
           %i[badge_template issued_to issuer_earner_id].each do |key|
           expect(issued.key?(key)).to eq(true)
@@ -89,7 +89,7 @@ RSpec.describe Credly::Badge do
       context 'when the user has not been issued the badge' do
         it 'returns nil' do
           stub_issued_badges_empty(user.id)
-          expect(issued = described_class.by_badge_template_ids(user.id, badge.programme.id)).to eq nil
+          expect(issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)).to eq nil
         end
       end
     end
