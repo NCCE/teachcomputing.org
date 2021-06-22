@@ -1,13 +1,10 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe HubRegionComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:hub_region) { build(:hub_region) }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'shows name' do
+    render_inline(described_class.new(hub_region: hub_region))
+    expect(rendered_component).to include(hub_region.name)
+  end
 end

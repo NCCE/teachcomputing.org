@@ -1,13 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe HubSearchComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'shows location if present' do
+    render_inline(described_class.new(location: 'sheffield'))
+    expect(rendered_component).to include('sheffield')
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'shows placeholder if no location' do
+    render_inline(described_class.new(location: nil))
+    expect(rendered_component).to include('Town, city or postcode')
+  end
 end
