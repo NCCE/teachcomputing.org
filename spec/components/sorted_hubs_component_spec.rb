@@ -1,13 +1,25 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe SortedHubsComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:hub) { double(Hub) }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  before do
+    allow(hub).to receive(:distance).and_return(100)
+    allow(hub).to receive_messages( attributes_for(:hub))
+  end
+
+  it 'does not render when sorted_hubs is nil' do
+    render_inline(described_class.new(sorted_hubs: nil, formatted_address: nil))
+    expect(rendered_component).to eq ''
+  end
+
+  it 'renders formatted address' do
+    render_inline(described_class.new(sorted_hubs: [hub], formatted_address: 'Amazing place'))
+    expect(rendered_component).to have_text('Displaying Hubs by distance from Amazing place')
+  end
+
+  it 'has link to clear location' do
+    render_inline(described_class.new(sorted_hubs: [hub], formatted_address: 'Amazing place'))
+    expect(rendered_component).to have_link('clear location', href: '/hubs')
+  end
 end
