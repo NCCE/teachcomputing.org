@@ -1,4 +1,4 @@
-import { onPageLoad } from './utilities/loader'
+import { onPageLoad } from './utilities/loaders'
 
 onPageLoad(() => {
   window.dataLayer.push({
