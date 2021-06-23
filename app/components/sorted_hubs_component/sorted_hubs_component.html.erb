@@ -14,7 +14,7 @@
 <% @sorted_hubs.each do |hub| %>
   <div class="sorted-hubs-component__hub">
     <div class="sorted-hubs-component__distance">
-      <p class="govuk-body-s"><strong><%= hub.distance.round(1) %> miles</strong> away </p>
+      <p class="govuk-body-s sorted-hubs-component__distance-text"><strong><%= hub.distance.round(1) %> miles</strong> away </p>
     </div>
     <div>
       <%= render HubComponent.new(hub: hub) %>

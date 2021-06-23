@@ -1,5 +1,10 @@
 .hub-component {
   margin-bottom: 40px;
+  margin-left: 10px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-left: 20px;
+  }
 }
 
 .hub-component__heading {

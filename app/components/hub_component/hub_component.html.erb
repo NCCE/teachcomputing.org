@@ -2,24 +2,24 @@
   <h2 class="govuk-heading-s hub-component__heading"><%= @hub.name %></h2>
   <div class="hub-component__address">
     <% if show_address? %>
-      <p class="govuk-body-s hub-component__content">
+      <p class="govuk-body hub-component__content">
         <%= @hub.address %>
       </p>
-      <p class="govuk-body-s hub-component__content">
+      <p class="govuk-body hub-component__content">
         <%= @hub.postcode %>
       </p>
     <% else %>
-      <p class="govuk-body-s hub-component__content">
+      <p class="govuk-body hub-component__content">
         <%= t('.no_address') %>
       </p>
     <% end %>
   </div>
   <div class="hub-component__contact">
-    <p class="govuk-body-s hub-component__content">
+    <p class="govuk-body hub-component__content">
       <%= mail_to @hub.email, @hub.email, class: 'ncce-link' %>
     </p>
     <% if @hub.phone.present? %>
-      <p class="govuk-body-s hub-component__content">
+      <p class="govuk-body hub-component__content">
         <%= link_to @hub.phone, "tel:#{@hub.phone}", class: 'ncce-link' %>
       </p>
     <% end %>
@@ -29,5 +29,5 @@
     <%= render HubSocialLinkComponent.new(type: 'facebook', value: @hub.facebook) %>
     <%= render HubSocialLinkComponent.new(type: 'twitter', value: @hub.twitter) %>
   </div>
-  <%= link_to 'View hub courses', hub_path(@hub.subdeliverer_id), class: 'govuk-button button button--small' %>
+  <%= link_to t('.button_text'), hub_path(@hub.subdeliverer_id), class: 'govuk-button button button--small' %>
 </div>

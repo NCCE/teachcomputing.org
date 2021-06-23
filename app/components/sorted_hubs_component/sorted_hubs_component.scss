@@ -12,8 +12,16 @@
 }
 
 .sorted-hubs-component__distance {
+  margin-left: 10px;
   padding-top: 4px;
   width: 150px;
+  @include govuk-media-query($from: desktop) {
+    margin-left: 0;
+  }
+}
+
+.sorted-hubs-component__distance-text {
+  margin-bottom: 5px;
 }
 
 .sorted-hubs-component__clear {
