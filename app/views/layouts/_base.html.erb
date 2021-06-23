@@ -26,7 +26,6 @@
   <meta name="twitter:image" content="<%= yield_meta_tag(:image, default_social_image) %>">
   <meta name="twitter:image:alt" content="<%= yield_meta_tag(:image_alt, 'Teaching Computing') %>">
   <meta name="twitter:dnt" content="on">
-  <meta name="turbolinks-cache-control" content="<%= yield_meta_tag(:turbolinks_cache_control, 'cache') %>">
 
   <%= favicon_pack_tag 'media/images/favicon.ico', sizes: '16x16 32x32 48x48' %>
   <%= favicon_pack_tag 'media/images/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '120x120' %>
@@ -38,9 +37,9 @@
   <%= csp_meta_tag %>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
-  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'govuk-frontend', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all' %>
+  <%= javascript_pack_tag 'application' %>
+  <%= javascript_pack_tag 'govuk-frontend' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->

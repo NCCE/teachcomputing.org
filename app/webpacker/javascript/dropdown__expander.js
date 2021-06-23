@@ -100,6 +100,4 @@ function initialiseSections(className) {
   })
 }
 
-onPageLoad(() => {
-  initialiseSections('dropdown__expander')
-})
+onPageLoad(() => initialiseSections('dropdown__expander'))
