@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :activities
     resources :pathways
     resources :pathway_activities
+    resources :hubs
+    resources :hub_regions
   end
 
   namespace :api do
