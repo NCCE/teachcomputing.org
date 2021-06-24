@@ -9,16 +9,16 @@
     "stylelint-scss",
     "stylelint-prettier"
   ],
-    "rules": {
-      "block-no-empty": null,
-      "block-opening-brace-newline-after": "always-multi-line",
-      "block-closing-brace-newline-before": "always-multi-line",
-      "declaration-block-single-line-max-declarations": 1,
-      "order/order": [
-        "custom-properties",
-        "declarations"
-      ],
-      "prettier/prettier": true
-    "order/properties-alphabetical-order": true
+  "rules": {
+    "block-no-empty": null,
+    "block-opening-brace-newline-after": "always-multi-line",
+    "block-closing-brace-newline-before": "always-multi-line",
+    "declaration-block-single-line-max-declarations": 1,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-alphabetical-order": true,
+    "prettier/prettier": true
   }
 }
