@@ -1,8 +1,4 @@
 import GOVUKFrontend from 'govuk-frontend/govuk/all'
+import { onPageLoad } from '../javascript/utilities/loaders'
 
-const initialise = () => {
-  GOVUKFrontend.initAll()
-}
-
-window.addEventListener('DOMContentLoaded', initialise)
-window.addEventListener('turbolinks:render', initialise)
+onPageLoad(() => GOVUKFrontend.initAll())
