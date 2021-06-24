@@ -61,7 +61,7 @@
       </div>
       <div class="ncce-aside--filters-geo">
         <%= label_tag :format, 'Find face to face courses near you:', class: 'govuk-body-s ncce-label--s' %>
-        <%= text_field_tag :location, @course_filter.current_location, class: 'govuk-input ncce-aside--filters-location', placeholder: 'Town, city or postcode' %>
+        <%= text_field_tag :location, @course_filter.current_location, class: 'govuk-input ncce-search-input ncce-aside--filters-location', placeholder: 'Town, city or postcode' %>
         <%= submit_tag 'Search location',
           class: 'govuk-button button',
           data: {
