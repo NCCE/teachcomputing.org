@@ -1,6 +1,7 @@
 class FeatureFlagService
   FLAGS = {
-    badges_enabled: 'BADGES_ENABLED'
+    badges_enabled: 'BADGES_ENABLED',
+    new_hubs_enabled: 'NEW_HUBS_ENABLED'
   }.freeze
 
   def initialize(dependencies = {})

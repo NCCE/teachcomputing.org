@@ -79,7 +79,9 @@ Rails.application.routes.draw do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
 
-  resources :hubs, only: %i[index]
+  if FeatureFlagService.new.flags[:new_hubs_enabled]
+    resources :hubs, only: %i[index]
+  end
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'
