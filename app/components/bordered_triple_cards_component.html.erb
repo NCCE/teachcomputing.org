@@ -12,7 +12,9 @@
       <% end %>
       <% if card[:list_items].present? %>
         <% card[:list_items].each do |list_item| %>
-          <li class="govuk-body bordered-card__text"><%= list_item %></li>
+          <ul class="govuk-body bordered-card__list">
+            <li><%= list_item %></li>
+          </ul>
         <% end %>
       <% end %>
       <p class="govuk-body">
