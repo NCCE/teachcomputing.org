@@ -1,5 +1,4 @@
 const { environment } = require('@rails/webpacker');
-const webpack = require('webpack')
 
 // Get the sass-loader config
 const sassLoader = environment.loaders.get('sass');
