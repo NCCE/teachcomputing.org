@@ -77,23 +77,26 @@ class User < ApplicationRecord
   end
 
   def forget!
-    id = self.id
-    self.first_name = id
-    self.last_name = id
-    self.email = "#{id}@forgotten.com"
-    self.stem_user_id = id
-    self.stem_achiever_contact_no = id
-    self.stem_credentials_expires_at = DateTime.now
-    self.teacher_reference_number = id
-    self.stem_achiever_organisation_no = id
-    self.future_learn_organisation_memberships = []
-    self.stem_credentials_access_token = id
-    self.stem_credentials_refresh_token = id
-    self.encrypted_stem_credentials_access_token = id
-    self.encrypted_stem_credentials_refresh_token = id
-    self.encrypted_stem_credentials_access_token_iv = id
-    self.encrypted_stem_credentials_refresh_token_iv = id
-    self.forgotten = true
+    return if forgotten
+
+    attributes.each do |name, _value|
+      params_to_skip = %w[id created_at updated_at]
+      next if params_to_skip.include?(name) || name.match(/^encrypted_/)
+
+      self[name] = case name.to_sym
+                   when :email
+                     "#{id}@forgotten.com"
+                   when :stem_credentials_expires_at
+                     DateTime.now
+                   when :future_learn_organisation_memberships
+                     []
+                   when :forgotten
+                     true
+                   else
+                     id
+                   end
+    end
+
     save!
   end
 end
