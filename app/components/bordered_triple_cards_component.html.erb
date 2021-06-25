@@ -3,7 +3,7 @@
     <%= content_tag :div, class: ['bordered-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
       <% if card[:image_url].present? %>
         <div class="bordered-card__image-wrapper">
-          <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image' %>
+          <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image bordered-card__triple-image' %>
         </div>
       <% end %>
       <h2 class="govuk-heading-m"><%= card[:title] %></h2>

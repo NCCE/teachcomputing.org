@@ -43,7 +43,7 @@ class GetInvolved
             title: I18n.t('pages.other_ways_to_get_involved.code_club.title'),
             text:'',
             list_items: I18n.t('pages.other_ways_to_get_involved.code_club.list_items'),
-            image_url: '',
+            image_url: 'get-involved/codeclub.svg',
             link: {
               link_title: I18n.t('pages.other_ways_to_get_involved.code_club.link_title'),
               link_url: 'https://codeclub.org/en/volunteer',
@@ -56,7 +56,7 @@ class GetInvolved
             title: I18n.t('pages.other_ways_to_get_involved.stem_ambassador.title'),
             text: '',
             list_items: I18n.t('pages.other_ways_to_get_involved.stem_ambassador.list_items'),
-            image_url: '',
+            image_url: 'get-involved/stem.svg',
             link: {
               link_title: I18n.t('pages.other_ways_to_get_involved.stem_ambassador.link_title'),
               link_url: 'https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme',
@@ -76,20 +76,6 @@ class GetInvolved
               link_url: 'https://isaaccomputerscience.org/pages/getintouch_events',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.other_ways_to_get_involved.isac_computing.title'),
-              class_name: "button"
-            }
-          },
-          {
-            class_name: 'barefoot-computing-card',
-            title: I18n.t('pages.other_ways_to_get_involved.barefoot_computing.title'),
-            text: I18n.t('pages.other_ways_to_get_involved.barefoot_computing.text'),
-            list_items: I18n.t('pages.other_ways_to_get_involved.barefoot_computing.list_items'),
-            image_url: '',
-            link: {
-              link_title: I18n.t('pages.other_ways_to_get_involved.barefoot_computing.link_title'),
-              link_url: 'https://www.barefootcomputing.org/',
-              tracking_page: tracking_page,
-              tracking_label: I18n.t('pages.other_ways_to_get_involved.barefoot_computing.title'),
               class_name: "button"
             }
           },
