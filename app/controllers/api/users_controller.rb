@@ -5,6 +5,12 @@ module Api
       render json: as_json(user)
     end
 
+    def forget
+      user = User.find_by!(email: params[:email].downcase)
+      user.forget!
+      render json: as_json(user)
+    end
+
     private
 
       def as_json(user)
