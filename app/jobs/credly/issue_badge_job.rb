@@ -13,7 +13,7 @@ module Credly
 
       issued_badges = Credly::Badge.issued(user.id)
 
-      return if issued_badges.map { |b| b[:badge_template][:id] == badge.credly_badge_template_id }.any?
+      return if issued_badges.any? { |b| b[:badge_template][:id] == badge.credly_badge_template_id }
 
       Credly::Badge.issue(user.id, badge.credly_badge_template_id)
       NewBadgeMailer.new_badge_email(user, programme).deliver_now
