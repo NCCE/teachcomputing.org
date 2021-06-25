@@ -47,10 +47,18 @@
   flex-grow: 1;
 }
 
+.bordered-card__title {
+  text-align: center;
+}
+
 .bordered-card__list {
   margin-bottom: 7px;
 }
 
+.ways-to-get-involved__section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 .bordered-card__image-wrapper {
   margin-bottom: 12px;
   max-height: 175px;
