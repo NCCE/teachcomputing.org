@@ -397,6 +397,7 @@ RSpec.describe Achievement, type: :model do
       it 'queues Credly::IssueBadgeJob' do
         achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
+        create(:badge, :active, programme_id: cs_accelerator.id)
         create(:user_programme_enrolment,
           user: user,
           programme: cs_accelerator)

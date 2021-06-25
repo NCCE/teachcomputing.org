@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :achievements, only: %i[create destroy]
   namespace :admin do
     root to: 'pathways#index'
+    resources :badges
     resources :activities
     resources :pathways
     resources :pathway_activities
