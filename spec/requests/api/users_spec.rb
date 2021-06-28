@@ -68,7 +68,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'scrubs the credentials' do
-        updated_user = User.unscoped.find(user.id)
+        updated_user = User.find(user.id)
         expect(updated_user.stem_credentials_expires_at).to be_within(10.seconds).of(DateTime.now)
       end
 
@@ -88,7 +88,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'flags the user as forgotten' do
-        updated_user = User.unscoped.find(user.id)
+        updated_user = User.find(user.id)
         expect(updated_user.forgotten).to be true
       end
     end

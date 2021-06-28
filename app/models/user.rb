@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   after_create :schedule_fetching_of_course_bookings
 
-  default_scope { where(forgotten: false) }
+  scope :without_forgotten, -> { where(forgotten: false) }
 
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
@@ -80,8 +80,7 @@ class User < ApplicationRecord
     return if forgotten
 
     attributes.each do |name, _value|
-      params_to_skip = %w[id created_at updated_at]
-      next if params_to_skip.include?(name) || name.match(/^encrypted_/)
+      next if %w[id created_at updated_at].include?(name) || name.match(/_token/)
 
       self[name] = case name.to_sym
                    when :email
@@ -96,6 +95,9 @@ class User < ApplicationRecord
                      id
                    end
     end
+
+    self.stem_credentials_access_token = id
+    self.stem_credentials_refresh_token = id
 
     save!
   end
