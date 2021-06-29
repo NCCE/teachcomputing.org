@@ -10,5 +10,7 @@ FactoryBot.define do
     website { 'http://example.com' }
     twitter { '@hubtwitter' }
     facebook { '@hubfacebook' }
+    satellite { false }
+    satellite_info { Faker::Lorem.sentences(number: 1) }
   end
 end

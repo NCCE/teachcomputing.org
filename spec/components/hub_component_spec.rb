@@ -8,20 +8,20 @@ RSpec.describe HubComponent, type: :component do
     expect(rendered_component).to have_css('.hub-component__heading', text: hub.name)
   end
 
-  context 'when address and postcode are present' do
+  context 'when hub is not a satellite' do
     it 'shows address and postcode' do
       render_inline(described_class.new(hub: hub))
-      expect(rendered_component).to include(hub.address)
-      expect(rendered_component).to include(hub.postcode)
+      expect(rendered_component).to have_text(hub.address)
+      expect(rendered_component).to have_text(hub.postcode)
     end
   end
 
-  context 'when address and postcode are nil' do
-    let(:hub) { build(:hub, address: nil, postcode: nil) }
-    it 'shows no address message' do
+  context 'when hub is satellite' do
+    let(:hub) { build(:hub, address: nil, postcode: nil, satellite: true) }
+    it 'shows satellite_info' do
       render_inline(described_class.new(hub: hub))
       expect(rendered_component)
-        .to include('We are currently setting up a venue for this hub' )
+        .to have_text(hub.satellite_info)
     end
   end
 end
