@@ -12,7 +12,7 @@ class BorderedCardsComponent < ViewComponent::Base
   end
 
   def assign_link(link_title:, link_url:, tracking_page: nil, tracking_label: nil, class_name: nil)
-    { link_title: link_title, link_url: link_url, tracking_page: tracking_page, tracking_label: tracking_label }
+    { link_title: link_title, link_url: link_url, tracking_page: tracking_page, tracking_label: tracking_label, class_name: class_name }
   end
 
   def custom_properties

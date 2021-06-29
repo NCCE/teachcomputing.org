@@ -16,7 +16,7 @@ class GetInvolved
               link_url: '/supporting-partners',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.about.supporting_partners_card.title'),
-              class_name: 'full-width-button'
+              class_name: 'govuk-button button bordered-card__get-involved-button'
             }
           },
           {
@@ -28,7 +28,7 @@ class GetInvolved
               link_url: '/contributing-partners',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.partnerships.contributing_partner_card.title'),
-              class_name: 'full-width-button'
+              class_name: 'govuk-button button bordered-card__get-involved-button'
             }
           }
         ]
