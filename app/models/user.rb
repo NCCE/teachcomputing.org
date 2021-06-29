@@ -99,6 +99,11 @@ class User < ApplicationRecord
     self.stem_credentials_access_token = id
     self.stem_credentials_refresh_token = id
 
+    achievements_with_attachments = achievements.with_attachments
+    achievements_with_attachments.each do |achievement|
+      achievement.supporting_evidence.purge
+    end
+
     save!
   end
 end

@@ -6,7 +6,11 @@ RSpec.describe Api::UsersController do
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
-  let(:achievement) { create(:achievement, user: user, programme: programme) }
+  let(:uploadable_activity) { create(:activity, uploadable: true) }
+  let(:achievement) do
+    create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id,
+                                                    programme_id: programme.id, user_id: user.id)
+  end
   let(:token_headers) { { HTTP_AUTHORIZATION: 'Bearer secret', HTTP_CONTENT_TYPE: 'application/json' } }
 
   context 'token is not passed' do
@@ -92,6 +96,11 @@ RSpec.describe Api::UsersController do
       it 'flags the user as forgotten' do
         updated_user = User.find(user.id)
         expect(updated_user.forgotten).to be true
+      end
+
+      it 'removes any supporting evidence' do
+        achievement.reload
+        expect(achievement.supporting_evidence.attached?).to eq false
       end
     end
   end
