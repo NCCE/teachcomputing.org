@@ -15,7 +15,8 @@ class GetInvolved
               link_title: I18n.t('pages.partnerships.supporting_partner_card.link_title'),
               link_url: '/supporting-partners',
               tracking_page: tracking_page,
-              tracking_label: I18n.t('pages.about.supporting_partners_card.title')
+              tracking_label: I18n.t('pages.about.supporting_partners_card.title'),
+              class_name: 'full-width-button'
             }
           },
           {
@@ -27,7 +28,7 @@ class GetInvolved
               link_url: '/contributing-partners',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.partnerships.contributing_partner_card.title'),
-              class_name: "button"
+              class_name: 'full-width-button'
             }
           }
         ]
@@ -48,7 +49,8 @@ class GetInvolved
               link_title: I18n.t('pages.other_ways_to_get_involved.code_club.link_title'),
               link_url: 'https://codeclub.org/en/volunteer',
               tracking_page: tracking_page,
-              tracking_label: I18n.t('pages.about.supporting_partners_card.title')
+              tracking_label: I18n.t('pages.about.supporting_partners_card.title'),
+              class_name: 'button'
             }
           },
           {
@@ -62,7 +64,7 @@ class GetInvolved
               link_url: 'https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.other_ways_to_get_involved.stem_ambassador.title'),
-              class_name: "button"
+              class_name: 'button'
             }
           },
           {
@@ -76,7 +78,6 @@ class GetInvolved
               link_url: 'https://isaaccomputerscience.org/pages/getintouch_events',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.other_ways_to_get_involved.isac_computing.title'),
-              class_name: "button"
             }
           },
           {
@@ -90,7 +91,6 @@ class GetInvolved
               link_url: 'https://www.computingatschool.org.uk/',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.other_ways_to_get_involved.cas.title'),
-              class_name: "button"
             }
           },
           {
@@ -104,7 +104,7 @@ class GetInvolved
               link_url: 'https://teachcomputing.org/governors-and-trustees/',
               tracking_page: tracking_page,
               tracking_label: I18n.t('pages.other_ways_to_get_involved.school_governors.title'),
-              class_name: "button"
+              class_name: 'button'
             }
           }
         ]
