@@ -56,7 +56,7 @@ RSpec.describe Api::UsersController do
       before do
         enrolment
         achievement
-        get '/api/users/forget', { params: { email: user.email }, headers: token_headers }
+        get '/api/users/forget', { params: { stem_user_id: user.stem_user_id }, headers: token_headers }
       end
 
       it 'returns 200 status' do
