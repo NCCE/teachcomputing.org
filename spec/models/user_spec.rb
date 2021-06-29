@@ -38,6 +38,12 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:teacher_reference_number) }
   end
 
+  describe 'defaults' do
+    it 'sets forgotten to false by default' do
+      expect(user.forgotten).to be false
+    end
+  end
+
   describe 'encryption' do
     it 'encrypts stem_credentials_access_token' do
       expect(user.stem_credentials_access_token).not_to be_nil
