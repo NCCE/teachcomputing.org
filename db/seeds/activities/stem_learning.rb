@@ -1170,14 +1170,14 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '526b3a42-b688-ea11-a811-000d3a86d545') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: 'ec4b4138-c0b4-eb11-8236-000d3a87482f') do |activity|
   activity.title = 'CSA in the summer - new to computing track'
   activity.credit = 40
   activity.slug = 'csa-in-the-summer-new-to-computing-track'
-  activity.stem_course_template_no = '526b3a42-b688-ea11-a811-000d3a86d545'
+  activity.stem_course_template_no = 'ec4b4138-c0b4-eb11-8236-000d3a87482f'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP428'
+  activity.stem_activity_code = 'CP482'
   activity.remote_delivered_cpd = true
 end
 
