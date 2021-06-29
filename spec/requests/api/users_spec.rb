@@ -70,6 +70,8 @@ RSpec.describe Api::UsersController do
       it 'scrubs the credentials' do
         updated_user = User.find(user.id)
         expect(updated_user.stem_credentials_expires_at).to be_within(10.seconds).of(DateTime.now)
+        expect(updated_user.encrypted_stem_credentials_refresh_token).not_to eq(user.encrypted_stem_credentials_refresh_token)
+        expect(updated_user.encrypted_stem_credentials_access_token).not_to eq(user.encrypted_stem_credentials_access_token)
       end
 
       it 'scrubs the exposed parameters' do
