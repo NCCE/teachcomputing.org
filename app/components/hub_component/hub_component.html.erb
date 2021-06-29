@@ -1,16 +1,16 @@
 <div class="hub-component">
   <h2 class="govuk-heading-s hub-component__heading"><%= @hub.name %></h2>
   <div class="hub-component__address">
-    <% if show_address? %>
+    <% if @hub.satellite? %>
+      <p class="govuk-body hub-component__content">
+        This satellite hub <%= @hub.satellite_info %>
+      </p>
+    <% else %>
       <p class="govuk-body hub-component__content">
         <%= @hub.address %>
       </p>
       <p class="govuk-body hub-component__content">
         <%= @hub.postcode %>
-      </p>
-    <% else %>
-      <p class="govuk-body hub-component__content">
-        <%= t('.no_address') %>
       </p>
     <% end %>
   </div>
