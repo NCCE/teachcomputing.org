@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_06_28_145014) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -128,6 +129,16 @@ ActiveRecord::Schema.define(version: 2021_06_28_145014) do
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
   end
 
+  create_table "badges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id", null: false
+    t.boolean "active", default: false
+    t.string "academic_year", null: false
+    t.uuid "credly_badge_template_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["programme_id"], name: "index_badges_on_programme_id"
+  end
+
   create_table "hub_regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "order", null: false
@@ -218,7 +229,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_145014) do
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
     t.string "type"
-    t.string "credly_badge_template_id"
+    t.text "credly_badge_template_ids", default: [], array: true
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
@@ -329,6 +340,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_145014) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
+  add_foreign_key "badges", "programmes"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"
   add_foreign_key "pathway_activities", "pathways"

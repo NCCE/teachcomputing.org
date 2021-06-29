@@ -91,6 +91,13 @@ end
 
 group_two = secondary.programme_activity_groupings.find_by(sort_key: 2)
 
+if activity = Activity.find_by(stem_course_template_no: 'b7f3eb4b-42d3-eb11-bacb-0022481aa15a')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_two.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_two.id)
+  end
+end
+
 if activity = Activity.find_by(stem_course_template_no: '22880db7-78e8-ea11-a817-000d3a86f6ce')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_two.programme_activities.include?(programme_activity)

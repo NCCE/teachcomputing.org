@@ -1,3 +1,5 @@
+import { onPageLoad } from './utilities/loaders'
+
 function initialiseSections(className) {
   const menuItemToggleClass = className + '--closed'
   const sectionToggleClass = className + '-section--visible'
@@ -92,16 +94,10 @@ function initialiseSections(className) {
   })
 
   window.addEventListener('resize', () => {
-    // Urgh, I know this is terrible...
     menuItems.forEach((menuItem) => {
       setTimeout(() => closeMenu(menuItem), 200)
     })
   })
 }
 
-const initialise = () => {
-  initialiseSections('dropdown__expander')
-};
-
-window.addEventListener('DOMContentLoaded', initialise);
-window.addEventListener('turbolinks:render', initialise);
+onPageLoad(() => initialiseSections('dropdown__expander'))

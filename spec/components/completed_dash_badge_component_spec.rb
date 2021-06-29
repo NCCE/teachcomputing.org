@@ -2,8 +2,9 @@ require "rails_helper"
 
 RSpec.describe CompletedDashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
-  let(:badge) { Credly::Badge.by_badge_template_id(user.id, '00cd7d3b-baca-442b-bce5-f20666ed591b') }
-  let(:completed_dash_badge_component) { described_class.new(badge: badge, tracking_event_category: 'category', tracking_event_label: 'label') }
+  let(:badge) { create(:badge, :active, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
+  let(:awarded_badge) { Credly::Badge.by_programme_badge_template_ids(user.id, badge.programme.id) }
+  let(:completed_dash_badge_component) { described_class.new(badge: awarded_badge, tracking_event_category: 'category', tracking_event_label: 'label') }
 
   context 'when the badges feature is disabled' do
     before do
@@ -18,12 +19,23 @@ RSpec.describe CompletedDashBadgeComponent, type: :component do
 
   context 'when the badging feature is enabled' do
     before do
-      stub_issued_badges(user.id)
       stub_feature_flags({ badges_enabled: true })
+    end
+
+    context 'when badge is not present' do
+      before do
+        stub_issued_badges_empty(user.id)
+        render_inline(completed_dash_badge_component)
+      end
+
+      it 'does not render' do
+        expect(rendered_component).to eq ''
+      end
     end
 
     context 'when the achievement is complete' do
       before do
+        stub_issued_badges(user.id)
         render_inline(completed_dash_badge_component)
       end
 

@@ -1,4 +1,5 @@
 import '@rails/activestorage'
+import { onPageLoad } from './utilities/loaders';
 
 function closeOtherPopups(currentWrapper = null) {
   const wrappers = document.querySelectorAll('.ihavedonethis')
@@ -32,11 +33,7 @@ function initialiseIHaveDoneThisPopup() {
   })
 }
 
-const initialise = () => {
+onPageLoad(() => {
   initialiseIHaveDoneThisPopup()
-  closeOtherPopups();
-};
-
-window.addEventListener('DOMContentLoaded', initialise);
-window.addEventListener('ajax:success', initialise);
-window.addEventListener('turbolinks:render', initialise);
+  closeOtherPopups()
+})

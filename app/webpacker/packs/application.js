@@ -12,7 +12,6 @@
 // or the `imagePath` JavaScript helper below.
 
 import Rails from '@rails/ujs'
-import Turbolinks from 'turbolinks'
 import 'cookieconsent'
 
 // JS
@@ -31,4 +30,3 @@ require.context('../fonts', true)
 require.context('../images', true)
 
 Rails.start()
-Turbolinks.start()

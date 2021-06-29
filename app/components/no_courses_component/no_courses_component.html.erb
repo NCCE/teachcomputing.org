@@ -9,6 +9,7 @@
   <% end %>
   <%= link_to 'Show all courses',
     courses_path(anchor: 'results-top'),
+    method: :get, # force a reload
     class: 'govuk-button button ncce-courses__filter-button',
     data: {
       event_action: 'click',

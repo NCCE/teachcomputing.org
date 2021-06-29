@@ -1,3 +1,5 @@
+import { onPageLoad } from './utilities/loaders'
+
 function initialiseSections(className) {
   const headingToggleClass = className + '--closed'
   const sectionToggleClass = className + '-section--closed'
@@ -39,11 +41,7 @@ function initialiseSections(className) {
   })
 }
 
-const initialise = () => {
-  initialiseSections('ncce-courses__locations');
-  initialiseSections('ncce-courses__filter-mobile-heading');
-}
-
-window.addEventListener('DOMContentLoaded', initialise);
-window.addEventListener('ajax:success', initialise);
-window.addEventListener('turbolinks:render', initialise);
+onPageLoad(() => {
+  initialiseSections('ncce-courses__locations')
+  initialiseSections('ncce-courses__filter-mobile-heading')
+})

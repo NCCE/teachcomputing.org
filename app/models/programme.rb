@@ -14,6 +14,7 @@ class Programme < ApplicationRecord
   has_many :achievements, dependent: :nullify
   has_many :questionnaires, dependent: :nullify
   has_many :pathways, dependent: :nullify
+  has_many :badges
 
   validates :title, :description, :slug, presence: true
 
@@ -32,7 +33,7 @@ class Programme < ApplicationRecord
   end
 
   def badgeable?
-    credly_badge_template_id.present?
+    badges.active.exists?
   end
 
   def credits_achieved_for_certificate(_user)

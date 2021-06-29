@@ -12,20 +12,24 @@
 }
 
 .padded-box__title {
-	font-weight: 500;
-	line-height: 1.5625rem;
-	margin-bottom: 1.8rem !important;
+  font-weight: 500;
+  line-height: 1.5625rem;
+  margin-bottom: 1.2rem !important;
 
-	@include govuk-media-query($from: desktop) {
-		margin-bottom: 2.5rem !important;
-	}
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 .padded-box--resources {
-		padding: 3rem 1rem 1rem 2rem;
+  padding: 1.5rem 1rem 1rem 2rem;
 
   @include govuk-media-query($from: tablet) {
-		margin-top: 2.2rem;
-		padding: 2rem 2rem 1rem 4rem;
-	}
+    margin-top: 2.2rem;
+    padding: 2rem 2rem 1rem 4rem;
+  }
+}
+
+.padded-box--button {
+  margin-bottom: 10px;
 }

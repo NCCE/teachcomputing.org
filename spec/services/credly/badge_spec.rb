@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Credly::Badge do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
-  let(:badge_template_id) { '00cd7d3b-baca-442b-bce5-f20666ed591b' }
+  let(:badge) { create(:badge, :active, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
 
   describe '#templates' do
     before do
@@ -23,11 +23,11 @@ RSpec.describe Credly::Badge do
     context 'when the user exists' do
       before do
         user
-        stub_issue_badge(user.id, badge_template_id)
+        stub_issue_badge(user.id, badge.programme.id)
       end
 
       it 'returns the required keys' do
-        issue = described_class.issue(user.id, badge_template_id)
+        issue = described_class.issue(user.id, badge.programme.id)
 
         %i[created_by user issuer badge_template].each do |key|
         expect(issue.key?(key)).to eq(true)
@@ -38,7 +38,7 @@ RSpec.describe Credly::Badge do
     context 'when the user does not exist' do
       it 'raises ActiveRecord::RecordNotFound' do
         expect do
-          described_class.issue('123456789', badge_template_id)
+          described_class.issue('123456789', badge.programme.id)
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
@@ -73,12 +73,12 @@ RSpec.describe Credly::Badge do
     context 'when the user exists' do
       before do
         user
-        stub_issued_badges(user.id)
       end
 
       context 'when a user has been issued the badge' do
         it 'returns a badge' do
-          issued = described_class.by_badge_template_id(user.id, badge_template_id)
+          stub_issued_badges(user.id)
+          issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)
 
           %i[badge_template issued_to issuer_earner_id].each do |key|
           expect(issued.key?(key)).to eq(true)
@@ -88,7 +88,8 @@ RSpec.describe Credly::Badge do
 
       context 'when the user has not been issued the badge' do
         it 'returns nil' do
-          expect(issued = described_class.by_badge_template_id(user.id, '1')).to eq nil
+          stub_issued_badges_empty(user.id)
+          expect(issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)).to eq nil
         end
       end
     end

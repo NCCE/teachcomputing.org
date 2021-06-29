@@ -1,7 +1,3 @@
-const setJsEnabled = () => {
-  document.body.classList.add('js-enabled');
-};
+import { onPageLoad } from "./utilities/loaders"
 
-window.addEventListener('DOMContentLoaded', setJsEnabled);
-window.addEventListener('ajax:success', setJsEnabled);
-window.addEventListener('turbolinks:render', setJsEnabled);
+onPageLoad(() => document.body.classList.add('js-enabled'))
