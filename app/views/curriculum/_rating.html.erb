@@ -13,6 +13,7 @@
           alt: "thumb up",
           class: "curriculum__rating--thumb-up",
           remote: true, 'aria-label': 'Thumbs up',
+          method: :post,
           data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
         ) %>
         <%= link_to(
@@ -22,6 +23,7 @@
           class: "curriculum__rating--thumb-down",
           'aria-label': 'Thumbs down',
           remote: true,
+          method: :post,
           data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
         ) %>
       </p>
