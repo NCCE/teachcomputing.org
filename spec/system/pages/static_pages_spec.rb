@@ -45,7 +45,7 @@ RSpec.describe('Static pages', type: :system) do
     end
 
     it 'is the correct page' do
-      expect(page).to have_content('Inspiring the computing experts of the future')
+      expect(page).to have_content('Help us inspire the computing experts of the future')
     end
 
     it 'main is accessible' do
