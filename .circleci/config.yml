@@ -1,4 +1,5 @@
-version: 2
+version: 2.1
+
 jobs:
   brakeman:
     docker:
@@ -19,17 +20,6 @@ jobs:
       - ruby/rubocop-check:
           format: progress
           label: Inspecting with Rubocop
-
-  stylelint:
-    docker:
-      - image: 'cimg/ruby:3.0.1-node'
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-          name: Inspecting with Stylelint
-          command: yarn run stylelint
 
   test:
     docker:
@@ -113,7 +103,6 @@ jobs:
 
 orbs:
   ruby: circleci/ruby@1
-  node: circleci/node@4
 
 workflows:
   version: 2
