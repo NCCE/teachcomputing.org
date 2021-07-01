@@ -19,7 +19,7 @@ jobs:
       - ruby/install-deps
       - run:
           name: Inspecting with Rubocop
-          command: bundle exec rubocop --format quiet || true
+          command: bundle exec rubocop --fail-level F --format quiet
 
   test:
     docker:
@@ -98,7 +98,7 @@ jobs:
 
       - run:
           name: Post test coverage to Github
-          command: bash -ue .circleci/record_coverage
+          command: bash -ue .circleci/record_coverage.sh
           when: always
 
 orbs:
