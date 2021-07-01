@@ -116,6 +116,7 @@ orbs:
   node: circleci/node@4
 
 workflows:
+  version: 2
   code_quality:
     jobs:
       - brakeman:
