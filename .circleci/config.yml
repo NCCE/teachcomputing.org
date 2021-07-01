@@ -20,6 +20,7 @@ jobs:
       - ruby/rubocop-check:
           format: progress
           label: Inspecting with Rubocop
+          command: bundle exec rubocop || true
 
   test:
     docker:
