@@ -17,7 +17,7 @@ RSpec.describe('Courses page', type: :system) do
   context 'when using a desktop', js: true do
     before do
       resize_window_to_desktop
-      visit courses_path
+      # visit courses_path
     end
 
     describe 'with no filters applied' do
