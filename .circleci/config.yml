@@ -1,5 +1,36 @@
 version: 2
 jobs:
+  brakeman:
+    docker:
+      - image: 'cimg/ruby:3.0.1'
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Inspecting with Brakeman
+          command: bundle exec brakeman
+
+  rubocop:
+    docker:
+      - image: 'cimg/ruby:3.0.1'
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check:
+          format: progress
+          label: Inspecting with Rubocop
+
+  stylelint:
+    docker:
+      - image: 'cimg/ruby:3.0.1-node'
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Inspecting with Stylelint
+          command: yarn run stylelint
+
   test:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
@@ -73,16 +104,38 @@ jobs:
           path: coverage
 
       - store_artifacts:
-          path: ../tmp/screenshots
-          destination: screenshots
+          path: tmp/screenshots
 
       - run:
-          name: Run brakeman
-          command: |
-            bundle exec brakeman -q -i config/brakeman.ignore --no-summary
+          name: Post test coverage to Github
+          command: bash -ue .circleci/record_coverage
+          when: always
+
+orbs:
+  ruby: circleci/ruby@1
+  node: circleci/node@4
 
 workflows:
-  version: 2
+  code_quality:
+    jobs:
+      - brakeman:
+          filters:
+            branches:
+              ignore:
+                - master
+                - main
+      - rubocop:
+          filters:
+            branches:
+              ignore:
+                - master
+                - main
+      - stylelint:
+          filters:
+            branches:
+              ignore:
+                - master
+                - main
   test:
     jobs:
       - test
