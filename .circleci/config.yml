@@ -105,7 +105,6 @@ orbs:
   ruby: circleci/ruby@1
 
 workflows:
-  version: 2
   code_quality:
     jobs:
       - brakeman:
@@ -120,12 +119,7 @@ workflows:
               ignore:
                 - master
                 - main
-      - stylelint:
-          filters:
-            branches:
-              ignore:
-                - master
-                - main
+
   test:
     jobs:
       - test
