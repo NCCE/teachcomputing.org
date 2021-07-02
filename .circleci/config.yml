@@ -81,12 +81,12 @@ jobs:
           command: |
             bundle exec brakeman -q -i config/brakeman.ignore --no-summary
 
-    - run:
-        name: Install Lighthouse
-        command: sudo npm install -g @lhci/cli@0.8.x
-    - run:
-        name: Run Lighthouse
-        command: lhci autorun
+      - run:
+          name: Install Lighthouse
+          command: sudo npm install -g @lhci/cli@0.8.x
+      - run:
+          name: Run Lighthouse
+          command: lhci autorun
 
 workflows:
   version: 2
