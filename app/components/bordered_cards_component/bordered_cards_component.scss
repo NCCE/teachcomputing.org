@@ -1,7 +1,7 @@
 .bordered-cards-component {
   display: grid;
   grid-template-columns: auto;
-  gap: 36px;
+  gap: 24px;
 
   @include govuk-media-query($from: tablet) {
     grid-template-columns: repeat(2, 1fr);

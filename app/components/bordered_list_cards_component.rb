@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BorderedTripleCardsComponent < ViewComponent::Base
+class BorderedListCardsComponent < ViewComponent::Base
   def initialize(cards:, class_name: nil, cards_per_row: 3)
     @cards = cards.collect { |card| assign_card card }
     @class_name = class_name

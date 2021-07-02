@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe BorderedTripleCardsComponent, type: :component do
+RSpec.describe BorderedListCardsComponent, type: :component do
   let(:test_data) { GetInvolved.other_ways_to_get_involved_cards}
 
   context 'other ways to get involved cards' do
