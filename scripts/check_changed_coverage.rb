@@ -3,7 +3,7 @@
 output = `cat #{ENV['CIRCLE_ARTIFACTS'] || '.'}/coverage/index.html | grep Changed -A 2 | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)
 
-raise 'Unable to determine test coverage change' unless percentage_match
+raise `Unable to determine test coverage change at: #{ENV['CIRCLE_ARTIFACTS'] || '.'}/coverage/index.html` unless percentage_match
 
 RED = "\033[0;31m".freeze
 BOLD = "\033[1m".freeze
