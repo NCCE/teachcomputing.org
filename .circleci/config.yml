@@ -18,8 +18,8 @@ jobs:
       - checkout
       - ruby/install-deps
       - run:
-          name: Inspecting with Rubocop
-          command: bundle exec rubocop --fail-level F --format quiet
+          name: Inspecting changes with Rubocop
+          command: bundle exec rubocop-changes --fail-level F --format quiet
 
   test:
     docker:
@@ -100,6 +100,8 @@ jobs:
           name: Post artifacts to Github
           command: bash -ue .circleci/link_artifacts.sh
           when: always
+    post:
+      - ruby scripts/check_changed_coverage.rb
 
 orbs:
   ruby: circleci/ruby@1
