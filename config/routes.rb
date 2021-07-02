@@ -89,10 +89,9 @@ Rails.application.routes.draw do
   get '/curriculum/:key_stage_slug/:unit_slug', to: 'curriculum/units#show', as: :curriculum_key_stage_unit
   get '/curriculum/:key_stage_slug/:unit_slug/:lesson_slug', to: 'curriculum/lessons#show',
                                                              as: :curriculum_key_stage_unit_lesson
-  get '/curriculum/rating/units/:polarity/:id/:user_id', to: 'curriculum/units#rate', as: :create_curriculum_unit_rating
+  post '/curriculum/rating/units/:polarity/:id/:user_id', to: 'curriculum/units#rate', as: :create_curriculum_unit_rating
   post '/curriculum/rating/comment', to: 'curriculum/units#comment', as: :update_curriculum_unit_rating
-  get '/curriculum/rating/lessons/:polarity/:id/:user_id', to: 'curriculum/lessons#rate',
-                                                           as: :create_curriculum_lesson_rating
+  post '/curriculum/rating/lessons/:polarity/:id/:user_id', to: 'curriculum/lessons#rate', as: :create_curriculum_lesson_rating
   post '/curriculum/rating/comment', to: 'curriculum/lessons#comment', as: :update_curriculum_lesson_rating
 
   get 'dashboard', action: :show, controller: 'dashboard'

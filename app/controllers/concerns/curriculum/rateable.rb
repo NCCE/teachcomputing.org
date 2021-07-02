@@ -2,6 +2,10 @@ module Curriculum
   module Rateable
     extend ActiveSupport::Concern
 
+    included do
+      before_action :authenticate_user!, only: [:rate, :comment]
+    end
+
     def rate
       raise NoMethodError unless respond_to?(:client, true)
 
