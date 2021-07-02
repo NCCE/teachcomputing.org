@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.3'
 
 gem 'activestorage-validator'
 gem 'administrate', '~> 0.16.0'
