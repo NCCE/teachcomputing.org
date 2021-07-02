@@ -96,7 +96,6 @@ jobs:
       - store_artifacts:
           path: tmp/screenshots
 
-    coverage:
       - run:
           name: Check coverage
           command: ruby scripts/check_coverage.rb
