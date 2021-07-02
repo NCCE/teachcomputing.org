@@ -80,7 +80,7 @@ class User < ApplicationRecord
     return if forgotten
 
     attributes.each do |name, _value|
-      next if %w[id created_at updated_at].include?(name) || name.match(/_token/)
+      next if %w[id created_at updated_at last_sign_in_at].include?(name) || name.match(/_token/)
 
       self[name] = case name.to_sym
                    when :email
@@ -96,8 +96,8 @@ class User < ApplicationRecord
                    end
     end
 
-    self.stem_credentials_access_token = id
-    self.stem_credentials_refresh_token = id
+    self.stem_credentials_access_token = SecureRandom.hex(8)
+    self.stem_credentials_refresh_token = SecureRandom.hex(8)
 
     achievements_with_attachments = achievements.with_attachments
     achievements_with_attachments.each do |achievement|
