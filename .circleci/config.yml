@@ -97,8 +97,8 @@ jobs:
           path: tmp/screenshots
 
       - run:
-          name: Post test coverage to Github
-          command: bash -ue .circleci/record_coverage.sh
+          name: Post artifacts to Github
+          command: bash -ue .circleci/link_artifacts.sh
           when: always
 
 orbs:

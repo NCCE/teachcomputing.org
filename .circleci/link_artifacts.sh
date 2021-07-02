@@ -65,11 +65,7 @@ else
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
 fi
 
-screenshots_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "tmp/screenshots"))[0].url')
-
-if ! [ "${screenshots_url}" = "null" ] ; then
-  msg="$msg* [Screenshots:]($artifacts_response)\n\n"
-fi
+msg="$msg* [All artifacts](${artifacts_response})"
 
 # Find associated PR.  *NB* we're assuming that the first, open PR is the one
 # to comment on.
