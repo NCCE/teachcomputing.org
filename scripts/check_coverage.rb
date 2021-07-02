@@ -1,4 +1,4 @@
-output = `cat #{ENV['CIRCLE_ARTIFACTS']}~/coverage/index.html | grep "[0-9\.]*%"`
+output = `cat /home/circleci/project/coverage/index.html | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)
 
 if percentage_match.nil?
