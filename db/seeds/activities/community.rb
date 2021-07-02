@@ -13,6 +13,18 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |acti
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion-secondary') do |activity|
+  activity.title = 'Contribute to online discussion'
+  activity.credit = 5
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Please provide a link to your contribution'
+  activity.description = 'Engage in the CAS online discussion forums and webinars in a meaningful way.'
+end
+
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
@@ -25,8 +37,19 @@ a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activ
   activity.self_verification_info = 'Please provide the date and venue details of the meeting'
   activity.description = 'CAS Community meetings are a great place to meet up with teachers in your area and share best practice. To find your local CAS Community visit- <a href="https://www.computingatschool.org.uk/">www.computingatschool.org.uk</a>.'
 end
-
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting-secondary') do |activity|
+  activity.title = 'Attend a CAS Community meeting'
+  activity.credit = 10
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Please provide the date and venue details of the meeting'
+  activity.description = 'CAS Community meetings are a great place to meet up with teachers in your area and share best practice. To find your local CAS Community visit- <a href="https://www.computingatschool.org.uk/">www.computingatschool.org.uk</a>.'
+end
+
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
@@ -80,6 +103,18 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |act
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice-secondary') do |activity|
+  activity.title = 'Lead a CAS Community of Practice'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
+  activity.description = 'Register as <a href="https://www.computingatschool.org.uk/custom_pages/365-leading-a-local-cas-community" class="ncce-link">a CAS Community Leader</a> and help support other teachers. You’ll need to commit to running 3 meetings per year in your local community'
+end
+
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
@@ -119,6 +154,17 @@ a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-c
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference-secondary') do |activity|
+  activity.title = 'Lead a session at a regional or national conference'
+  activity.credit = 20
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'cas'
+  activity.self_certifiable = true
+  activity.self_verification_info = 'Please provide us with a link conference programme'
+end
+
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-our-curriculum-resources') do |activity|
