@@ -97,13 +97,8 @@ jobs:
           path: tmp/screenshots
 
       - run:
-          name: Post artifacts to Github
-          command: bash -ue .circleci/link_artifacts.sh
-          when: always
-
-      - run:
           name: Check coverage
-          command: ruby scripts/check_changed_coverage.rb
+          command: ruby scripts/check_coverage.rb
           when: always
 
 orbs:
