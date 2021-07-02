@@ -100,8 +100,11 @@ jobs:
           name: Post artifacts to Github
           command: bash -ue .circleci/link_artifacts.sh
           when: always
-    post:
-      - ruby scripts/check_changed_coverage.rb
+
+      - run:
+          name: Check coverage
+          command: ruby scripts/check_changed_coverage.rb
+          when: always
 
 orbs:
   ruby: circleci/ruby@1
