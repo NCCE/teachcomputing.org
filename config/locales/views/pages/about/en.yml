@@ -90,7 +90,7 @@ en:
       stem_ambassador:
         title: "STEM Ambassador"
         text:
-        link_title: "Become a STEM Ambassadors"
+        link_title: "Become an Ambassador"
         list_items: ["Get involved in activities and make a difference to young people, your community and STEM education",
                       "Help young people to understand the real world applications of their learning"]
       isac_computing:
@@ -115,7 +115,7 @@ en:
                       "Take part in free CAS events"]
       school_governors:
         title: "School governors"
-        text: "You can play an important role in advocating for computing as a subject within your school."
+        text: ''
         link_title: "Advocate for us"
-        list_items:
+        list_items: ["You can play an important role in advocating for computing as a subject within your school."]
 

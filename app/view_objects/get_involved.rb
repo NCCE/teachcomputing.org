@@ -97,7 +97,7 @@ class GetInvolved
             class_name: 'school-governors-card',
             title: I18n.t('pages.other_ways_to_get_involved.school_governors.title'),
             text: I18n.t('pages.other_ways_to_get_involved.school_governors.text'),
-            list_items:[],
+            list_items:I18n.t('pages.other_ways_to_get_involved.school_governors.list_items'),
             image_url: 'get-involved/school_governors.svg',
             link: {
               link_title: I18n.t('pages.other_ways_to_get_involved.school_governors.link_title'),

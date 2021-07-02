@@ -6,16 +6,15 @@
           <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image bordered-card__triple-image' %>
         </div>
       <% end %>
-      <h2 class='govuk-heading-m bordered-card__title'><%= card[:title] %></h2>
       <% if card[:text].present? %>
         <p class='govuk-body bordered-card__text'><%= card[:text] %></p>
       <% end %>
       <% if card[:list_items].present? %>
-        <% card[:list_items].each do |list_item| %>
           <ul class='govuk-body bordered-card__list'>
-            <li><%= list_item %></li>
+            <% card[:list_items].each do |list_item| %>
+                <li><%= list_item %></li>
+            <% end %>
           </ul>
-        <% end %>
       <% end %>
       <p class="govuk-body">
         <%= link_to card[:link][:link_title],card[:link][:link_url], class: "ncce-link get-involved-link bordered-card__get-involved-link", data: {
