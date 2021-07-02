@@ -1,8 +1,9 @@
 .padded-box {
   margin: 20px 0;
-  padding: 0.8125rem;
+  padding: 1rem 1rem 0.2rem;
   @include govuk-media-query($from: tablet) {
     margin: 0;
+    padding: 1.5rem 1.5rem 0.5rem;
   }
   img,
   video {
