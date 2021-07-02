@@ -19,7 +19,7 @@ jobs:
       - ruby/install-deps
       - run:
           name: Inspecting changes with Rubocop
-          command: bundle exec rubocop-changes --fail-level F --format quiet
+          command: bundle exec rubocop-changes --format quiet
 
   test:
     docker:
