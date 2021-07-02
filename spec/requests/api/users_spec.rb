@@ -68,6 +68,10 @@ RSpec.describe Api::UsersController do
         expect(JSON.parse(response.body)['email']).to eq "#{user.id}@forgotten.com"
       end
 
+      it 'removes the future_learn_organisation_memberships' do
+        expect(JSON.parse(response.body)['future_learn_organisation_memberships']).to eq nil
+      end
+
       it 'scrubs the credentials' do
         updated_user = User.find(user.id)
         expect(updated_user.stem_credentials_expires_at).to be_within(10.seconds).of(DateTime.now)
@@ -76,7 +80,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'scrubs the exposed parameters' do
-        params_to_skip = %w[email created_at updated_at enrolments achievements]
+        params_to_skip = %w[email future_learn_organisation_memberships created_at updated_at enrolments achievements]
         parsed_response = JSON.parse(response.body)
         parsed_response.each do |key, value|
           next if params_to_skip.include? key
