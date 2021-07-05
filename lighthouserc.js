@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      url: ['http://localhost:3000/'],
+      url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
       startServerCommand: 'bundle exec rails server -e production',
       settings: {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
@@ -9,6 +9,8 @@ module.exports = {
 
       },
     },
+    // If we want to start failing the test suite on lighthouse failures we add
+    // the assertions
     // assert: {
       // preset: 'lighthouse:no-pwa'
     // },
