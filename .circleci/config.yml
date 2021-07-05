@@ -96,6 +96,8 @@ jobs:
           STEM_OAUTH_ACCESS_TOKEN_URL: fake
           STEM_OAUTH_CLIENT_ID: fake
           STEM_OAUTH_CLIENT_SECRET: fake
+          CURRICULUM_APP_URL: fake
+          CURRICULUM_API_KEY: fake
     steps:
       - checkout
       - ruby/install-deps:
