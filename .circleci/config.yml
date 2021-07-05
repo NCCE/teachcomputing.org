@@ -87,7 +87,7 @@ jobs:
 
   lighthouse:
     docker:
-      - image: cimg/ruby:2.7.2-browsers
+      - image: circleci/ruby:2.7.2-node-browsers
     steps:
       - checkout
       - ruby/install-deps
