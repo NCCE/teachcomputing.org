@@ -1,4 +1,4 @@
-file = '/home/circleci/project/coverage/index.html'
+file = '~/teachcomputing/coverage/index.html'
 
 output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)
@@ -12,14 +12,9 @@ raise 'Unable to determine test coverage change' unless percentage_match
 
 percentage = percentage_match[0].to_f
 if percentage < 90
-  warn '\n'
-  warn 'INSUFFICIENT TEST COVERAGE'
-  warn '\n'
-  warn "New and changed files need a test coverage of >= 90% -- Simplecov only detected #{percentage}"
-  warn '\n'
+  warn "Coverage was #{percentage}%, expected at least 90% \n"
   warn 'Changed files:'
-  warn " * #{`git diff --name-only origin/master`.split("\n").join("\n * ")}"
-  warn '\n'
+  warn " * #{`git diff --name-only origin/master`.split("\n").join("\n * ")} \n"
   exit 1
 end
 
