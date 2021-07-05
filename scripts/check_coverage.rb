@@ -1,4 +1,4 @@
-file = '~/teachcomputing/coverage/index.html'
+file = 'coverage/index.html'
 
 output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)

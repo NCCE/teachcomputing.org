@@ -24,7 +24,7 @@ jobs:
   test:
     working_directory: ~/teachcomputing
     docker:
-      - image: circleci/ruby:2.7.2-node-browsers
+      - image: cimg/ruby:2.7.2-node-browsers
         environment:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"
