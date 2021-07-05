@@ -91,6 +91,9 @@ jobs:
         environment:
           MANDRILL_SMTP_USERNAME: fake
           MANDRILL_API_KEY: fake
+          STEM_OAUTH_SITE: fake
+          STEM_OAUTH_AUTH_URL: fake
+          STEM_OAUTH_ACCESS_TOKEN_URL: fake
     steps:
       - checkout
       - ruby/install-deps
