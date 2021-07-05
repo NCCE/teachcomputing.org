@@ -1,6 +1,6 @@
 file = '/home/circleci/project/coverage/index.html'
 
-output = `[ -r "#{file}" ] && cat #{file} | grep Changed -A 2 | grep "[0-9\.]*%"` # Allow for failure
+output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)
 
 if percentage_match.nil?
