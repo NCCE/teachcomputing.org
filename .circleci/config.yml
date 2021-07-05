@@ -94,9 +94,11 @@ jobs:
           STEM_OAUTH_SITE: fake
           STEM_OAUTH_AUTH_URL: fake
           STEM_OAUTH_ACCESS_TOKEN_URL: fake
+          STEM_OAUTH_CLIENT_ID: fake
     steps:
       - checkout
-      - ruby/install-deps
+      - ruby/install-deps:
+          key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
       - node/install-packages:
           pkg-manager: yarn
       - run:
