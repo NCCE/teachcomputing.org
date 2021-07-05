@@ -7,5 +7,10 @@ module.exports = {
     upload: {
       target: 'temporary-public-storage',
     },
+    settings: {
+      skipAudits: [
+        'cumulative-layout-shift'
+      ]
+    }
   },
 };
