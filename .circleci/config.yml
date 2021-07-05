@@ -1,4 +1,7 @@
 version: 2
+orbs:
+  ruby: circleci/ruby@1.1.2
+  node: circleci/node@4.2.0
 jobs:
   test:
     docker:
@@ -81,6 +84,15 @@ jobs:
           command: |
             bundle exec brakeman -q -i config/brakeman.ignore --no-summary
 
+
+  lighthouse:
+    docker:
+      - image: cimg/ruby:2.7.2-browsers
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Install Lighthouse
           command: sudo npm install -g @lhci/cli@0.8.x
@@ -93,3 +105,4 @@ workflows:
   test:
     jobs:
       - test
+      - lighthouse
