@@ -93,6 +93,7 @@ jobs:
     working_directory: ~/teachcomputing
     machine: true
     steps:
+      - checkout
       - attach_workspace:
           at: ~/teachcomputing
       - run:
