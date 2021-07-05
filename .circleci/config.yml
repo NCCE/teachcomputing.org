@@ -104,19 +104,7 @@ jobs:
           when: always
       - run:
           name: Post test coverage to Github
-          command: bash -ue .circleci/record_coverage.sh
-          when: always
-      - run:
-          name: Get artifacts
-          when: on_fail
-          command: |
-            artifacts=$(curl -X GET "https://circleci.com/api/v2/project/(vcs)/(org)/(project)/$CIRCLE_BUILD_NUM/artifacts" \
-            -H "Accept: application/json" \
-            -u "$CIRCLE_API_TOKEN:")
-            echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
-      - run:
-          name: Post test coverage to Github
-          command: bash -ue .circleci/record_coverage.sh
+          command: bash -ue scripts/record_coverage.sh
           when: always
 
 orbs:

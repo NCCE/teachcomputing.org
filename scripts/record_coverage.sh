@@ -46,7 +46,17 @@ which jq > /dev/null || sudo apt-get install -y jq
 msg="* CircleCI build [#${CIRCLE_BUILD_NUM}](${CIRCLE_BUILD_URL})\n"
 msg="$msg* Test coverage: "
 
-coverage_url="$ARTIFACT_RESPONSE/coverage/index.html#_Changed"
+
+# Check to see if coverage is under `result.line` or under `result.covered_percent` (older versions)
+coverage=$(jq -r 'if .result.line then .result.line else .result.covered_percent end' < coverage/.last_run.json)
+
+if [ "${coverage}" = "null" ] ; then
+  echo "*** Failed to determine coverage"
+  exit 0
+fi
+
+artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https://circleci.com/api/v1.1/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts)
+coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html#_Changed"))[0].url')
 
 if ! [ "${coverage_url}" = "null" ] ; then
   msg="$msg [$coverage%]($coverage_url)\n\n"
