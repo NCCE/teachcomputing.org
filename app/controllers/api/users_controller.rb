@@ -9,6 +9,14 @@ module Api
       fputs 'this has been added to intentionally fail the coverage test, and shoud be removed'
     end
 
+    def reduce_coverage
+      fputs 'this has been added to intentionally fail the coverage test, and shoud be removed'
+    end
+
+    def reduce_coverage_more
+      fputs 'this has been added to intentionally fail the coverage test, and shoud be removed'
+    end
+
     def forget
       user = User.find_by!(stem_user_id: params[:stem_user_id])
       user.forget!
