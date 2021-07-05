@@ -102,9 +102,24 @@ jobs:
           name: Check coverage
           command: ruby scripts/check_coverage.rb
           when: always
+      - run:
+          name: Post test coverage to Github
+          command: bash -ue .circleci/record_coverage.sh
+          when: always
+      - run:
+          name: Get artifacts
+          when: on_fail
+          command: |
+            artifacts=$(curl -X GET "https://circleci.com/api/v2/project/(vcs)/(org)/(project)/$CIRCLE_BUILD_NUM/artifacts" \
+            -H "Accept: application/json" \
+            -u "$CIRCLE_API_TOKEN:")
+            echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
+      - pr-comment:
+          comment: "[SimpleCov report]($ARTIFACT_RESPONSE/coverage/index.html)\n[Screenshots](ARTIFACT_RESPONSE)"
 
 orbs:
   ruby: circleci/ruby@1
+  pr-comment: benjlevesque/pr-comment@0.1.9
 
 workflows:
   code_quality:
