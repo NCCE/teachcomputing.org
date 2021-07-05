@@ -110,6 +110,7 @@ jobs:
           AWS_S3_ACTIVE_STORAGE_BUCKET: changeme
           AWS_S3_SITEMAP_BUCKET: changeme
           AWS_S3_REGION: changeme
+          CREDENTIALS_ENV: test
     steps:
       - checkout
       - ruby/install-deps:
