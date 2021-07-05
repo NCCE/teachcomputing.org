@@ -98,6 +98,13 @@ jobs:
           STEM_OAUTH_CLIENT_SECRET: fake
           CURRICULUM_APP_URL: fake
           CURRICULUM_API_KEY: fake
+          FL_LTI_CONSUMER_KEY: changeme
+          FL_LTI_CONSUMER_SECRET: changeme
+          FL_LTI_URL: changeme
+          FL_PARTNERS_CONSUMER_KEY: changeme
+          FL_PARTNERS_CONSUMER_SECRET: changeme
+          FL_PARTNERS_URL: changeme
+          BYPASS_OAUTH: true
     steps:
       - checkout
       - ruby/install-deps:
