@@ -92,7 +92,6 @@ jobs:
       - checkout
       - ruby/install-deps
       - node/install-packages:
-          cache-key: yarn.lock
           pkg-manager: yarn
       - run:
           name: Install Lighthouse
