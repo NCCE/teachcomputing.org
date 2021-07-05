@@ -88,6 +88,9 @@ jobs:
   lighthouse:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
+        environment:
+          MANDRILL_SMTP_USERNAME: fake
+          MANDRILL_API_KEY: fake
     steps:
       - checkout
       - ruby/install-deps
