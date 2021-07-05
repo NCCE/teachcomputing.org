@@ -114,12 +114,13 @@ jobs:
             -H "Accept: application/json" \
             -u "$CIRCLE_API_TOKEN:")
             echo "export ARTIFACT_RESPONSE=$artifacts" >> $BASH_ENV
-      - pr-comment:
-          comment: "[SimpleCov report]($ARTIFACT_RESPONSE/coverage/index.html)\n[Screenshots](ARTIFACT_RESPONSE)"
+      - run:
+          name: Post test coverage to Github
+          command: bash -ue .circleci/record_coverage.sh
+          when: always
 
 orbs:
   ruby: circleci/ruby@1
-  pr-comment: benjlevesque/pr-comment@0.1.9
 
 workflows:
   code_quality:
