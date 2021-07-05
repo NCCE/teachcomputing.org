@@ -1,6 +1,6 @@
 file = 'coverage/index.html'
 
-output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*%"`
+output = `[ -r "#{file}" ] && cat #{file} | grep Changed -A 4 | grep "[0-9\.]*%"`
 percentage_match = output.match(/([0-9.]+)%/)
 
 if percentage_match.nil?

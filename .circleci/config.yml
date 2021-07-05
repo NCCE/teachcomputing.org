@@ -96,6 +96,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/teachcomputing
+      - store_artifacts:
+          path: coverage
       - run:
           name: Check coverage
           command: ruby scripts/check_coverage.rb
