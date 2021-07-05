@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   node: circleci/node@4.2.0
@@ -92,6 +92,7 @@ jobs:
       - checkout
       - ruby/install-deps
       - node/install-packages:
+          cache-key: yarn.lock
           pkg-manager: yarn
       - run:
           name: Install Lighthouse
