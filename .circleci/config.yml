@@ -22,6 +22,7 @@ jobs:
           command: bundle exec rubocop-changes --format quiet
 
   test:
+    working_directory: ~/teachcomputing
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
@@ -40,62 +41,60 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
-
+      - attach_workspace:
+          at: ~/teachcomputing
       - run:
           name: Which bundler?
           command: bundle -v
-
       - restore_cache:
           keys:
             - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
-
       - run:
           name: Bundle Install
           command: bundle check || bundle install
-
       - save_cache:
           key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
-
       - run:
           name: Install Dependencies
           command: yarn install --immutable
-
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-
       - run:
           name: Run rspec
           command: |
             mkdir ~/rspec
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-
       - store_test_results:
           path: ~/rspec
-
       - store_artifacts:
           path: coverage
-
       - store_artifacts:
           path: tmp/screenshots
+      - persist_to_workspace:
+          root: ~/teachcomputing
+          paths: [coverage]
 
+  coverage:
+    working_directory: ~/teachcomputing
+    machine: true
+    steps:
+      - attach_workspace:
+          at: ~/teachcomputing
       - run:
           name: Check coverage
           command: ruby scripts/check_coverage.rb
@@ -123,3 +122,6 @@ workflows:
   test:
     jobs:
       - test
+      - coverage:
+          requires:
+            - test
