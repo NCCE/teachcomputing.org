@@ -3,6 +3,7 @@ module.exports = {
     collect: {
       url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
       startServerCommand: 'bundle exec rails server -e production',
+      startServerReadyTimeout: 60000,
       settings: {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
         skipAudits: ['cumulative-layout-shift'],
