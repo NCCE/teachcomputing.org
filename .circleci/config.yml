@@ -125,7 +125,6 @@ jobs:
           key: ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
       - node/install-packages:
           pkg-manager: yarn
-          key: yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Lighthouse
           command: sudo npm install -g @lhci/cli@0.8.x
