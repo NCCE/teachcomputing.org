@@ -7,7 +7,8 @@ SimpleCov.start 'rails' do
   add_group 'Services', 'app/services'
   add_group 'Presenters', 'app/presenters'
 
-  changed_files = `git diff --name-only origin/master`.split("\n")
+  current_branch = `git rev-parse --abbrev-ref HEAD`
+  changed_files = `git diff --name-only master...#{current_branch}`.split("\n")
   add_group 'Changed' do |source_file|
     changed_files.detect do |filename|
       source_file.filename.ends_with?(filename)
