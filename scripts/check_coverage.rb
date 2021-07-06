@@ -1,7 +1,7 @@
-file = 'coverage/index.html'
+file = 'coverage/.last_run.json'
 
-output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*%"`
-percentage_match = output.match(/([0-9.]+)%/)
+output = `[ -r "#{file}" ] && cat #{file} | grep "[0-9\.]*"`
+percentage_match = output.match(/([0-9.]+)/)
 
 if percentage_match.nil?
   puts 'Nothing to check'
