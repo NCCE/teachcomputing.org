@@ -17,6 +17,14 @@ class HubSocialLinkComponent < ViewComponent::Base
     end
   end
 
+  def tracking_data
+    {
+      event_action: 'click',
+      event_category: 'Hubs',
+      event_label: "Hub #{@type}"
+    }
+  end
+
   def render?
     @value.present?
   end

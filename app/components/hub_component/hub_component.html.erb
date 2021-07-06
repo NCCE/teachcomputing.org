@@ -16,7 +16,7 @@
   </div>
   <div class="hub-component__contact">
     <p class="govuk-body hub-component__content">
-      <%= mail_to @hub.email, @hub.email, class: 'ncce-link' %>
+      <%= mail_to @hub.email, @hub.email, class: 'ncce-link', data: { event_action: 'click', event_category: 'Hubs', event_label: 'Hub email' } %>
     </p>
     <% if @hub.phone.present? %>
       <p class="govuk-body hub-component__content">
@@ -29,5 +29,5 @@
     <%= render HubSocialLinkComponent.new(type: 'facebook', value: @hub.facebook) %>
     <%= render HubSocialLinkComponent.new(type: 'twitter', value: @hub.twitter) %>
   </div>
-  <%= link_to t('.button_text'), hub_path(@hub.subdeliverer_id), class: 'govuk-button button button--small' %>
+  <%= link_to t('.button_text'), hub_path(@hub.subdeliverer_id), class: 'govuk-button button button--small', data: { event_action: 'click', event_category: 'Hubs', event_label: 'Hub courses' } %>
 </div>

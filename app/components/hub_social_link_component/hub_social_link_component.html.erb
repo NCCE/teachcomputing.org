@@ -1,3 +1,5 @@
-<%= link_to social_link, class: 'hub-social-link-component__link' do %>
+<%= link_to social_link,
+    class: 'hub-social-link-component__link',
+    data: tracking_data do %>
   <%= image_pack_tag "media/images/hubs/#{@type}.svg", alt: "#{@type} icon", class: 'hub-social-link-component__image' %>
 <% end %>
