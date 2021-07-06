@@ -9,7 +9,7 @@
          The Chartered Institute for IT. We provide resources, training and support
          for teaching computing in schools and colleges from
          Primary through to A Level.</p>
-        <h2 class="govuk-heading-m">Why you should get involved</h2>
+        <h2 class="govuk-heading-l">Why you should get involved</h2>
         <p class="govuk-body">Our vision is for every child in every school in England to
           have a world-leading computing education. Join our efforts to ensure
           young people are equipped with the necessary skills for the future.</p>
@@ -20,27 +20,33 @@
           <li> Continue to build capacity and demand for computer science at GCSE and beyond</li>
           <li>Make computing and digital skills engaging, so all pupils can understand their value and see the opportunities available to them</li>
         </ul>
-        <h2 class="govuk-heading-m govuk-!-margin-top-9 govuk-!-margin-bottom-0">Our partnerships</h2>
       </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-!-margin-top-7">
-          <%= render BorderedCardsComponent.new(GetInvolved.partnership_cards) %>
-        </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
+        <h2 class='govuk-heading-l'>Our partnerships</h2>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full govuk-!-margin-top-3">
+        <%= render BorderedCardsComponent.new(GetInvolved.partnership_cards) %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="govuk-grid-row ways-to-get-involved__section govuk-!-padding-top-9">
-  <div class="govuk-width-container">
-    <h2 class="govuk-heading-l">Other ways to get involved</h2>
-    <p class="govuk-body-m">
-      These opportunities are open to anyone who is interested in helping computing education in their local community.
-    </p>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full govuk-!-margin-top-7">
-        <%= render BorderedListCardsComponent.new(GetInvolved.other_ways_to_get_involved_cards) %>
+<div class='govuk-main-wrapper govuk-main-wrapper--xl light-grey-bg'>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class='govuk-heading-l'>Other ways to get involved</h2>
+          <p class='govuk-body govuk-!-margin-bottom-0'>These opportunities are open to anyone who is interested in helping computing education in their local community.</p>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7">
+          <%= render BorderedListCardsComponent.new(GetInvolved.other_ways_to_get_involved_cards) %>
+        </div>
       </div>
     </div>
   </div>
-</div>

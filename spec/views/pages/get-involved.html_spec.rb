@@ -14,7 +14,7 @@ RSpec.describe('pages/get-involved', type: :view) do
   end
 
   it 'has a how you can help section' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'Why you should get involved')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Why you should get involved')
   end
 
   it 'has a list of things you can do' do

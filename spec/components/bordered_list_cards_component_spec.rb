@@ -11,18 +11,10 @@ RSpec.describe BorderedListCardsComponent, type: :component do
 
     it 'has the expected links' do
       expect(rendered_component).to have_link('Volunteer at a Code Club', href: 'https://codeclub.org/en/volunteer')
-      expect(rendered_component).to have_link('Become a STEM Ambassadors', href: 'https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme')
+      expect(rendered_component).to have_link('Become an Ambassador', href: 'https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme')
       expect(rendered_component).to have_link('Help at a Discovery event', href: 'https://isaaccomputerscience.org/pages/getintouch_events')
       expect(rendered_component).to have_link('Join Computing at School', href: 'https://www.computingatschool.org.uk/')
       expect(rendered_component).to have_link('Advocate for us', href: 'https://teachcomputing.org/governors-and-trustees/')
-    end
-
-    it 'has the expected titles' do
-      expect(rendered_component).to have_css('.code-club-card', text: 'Code Club')
-      expect(rendered_component).to have_css('.stem-card', text: 'STEM Ambassador')
-      expect(rendered_component).to have_css('.isac-computer-card', text: 'Isaac Computer Science Discovery Events')
-      expect(rendered_component).to have_css('.cas-card', text: 'Computing at School (CAS)')
-      expect(rendered_component).to have_css('.school-governors-card', text: 'School governors')
     end
 
     it 'sets the expected properties' do
