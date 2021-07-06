@@ -46,9 +46,8 @@ which jq > /dev/null || sudo apt-get install -y jq
 msg="* CircleCI build [#${CIRCLE_BUILD_NUM}](${CIRCLE_BUILD_URL})\n"
 msg="$msg* Test coverage: "
 
-# Get the coverage for changed files in this PR
-file='coverage/index.html'
-coverage=$(cat $file | grep Changed -A 4 | grep "[0-9\.]*%" | xargs)
+# Check to see if coverage is under `result.line` or under `result.covered_percent` (older versions)
+coverage=$(jq -r 'if .result.line then .result.line else .result.covered_percent end' < coverage/.last_run.json)
 
 if [ "${coverage}" = "null" ] ; then
   echo "*** Failed to determine coverage"
@@ -59,7 +58,7 @@ artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https:
 coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html"))[0].url')
 
 if ! [ "${coverage_url}" = "null" ] ; then
-  msg="$msg [$coverage](${coverage_url}#_Changed)\n"
+  msg="$msg [$coverage]($coverage_url)\n"
 else
   msg="$msg $coverage\n\n"
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
