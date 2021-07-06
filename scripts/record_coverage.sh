@@ -59,7 +59,7 @@ artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https:
 coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html"))[0].url')
 
 if ! [ "${coverage_url}" = "null" ] ; then
-  msg="$msg [$coverage%]($coverage_url)\n\n"
+  msg="$msg [$coverage]($coverage_url)\n\n"
 else
   msg="$msg $coverage%\n\n"
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
