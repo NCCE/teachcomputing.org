@@ -48,7 +48,7 @@ msg="$msg* Test coverage: "
 
 # Get the coverage for changed files in this PR
 file='coverage/index.html'
-coverage=$(cat $file | grep Changed -A 4 | grep "[0-9\.]*%")
+coverage=$(cat $file | grep Changed -A 4 | grep "[0-9\.]*%" | xargs)
 
 if [ "${coverage}" = "null" ] ; then
   echo "*** Failed to determine coverage"
@@ -59,13 +59,13 @@ artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https:
 coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html"))[0].url')
 
 if ! [ "${coverage_url}" = "null" ] ; then
-  msg="$msg [$coverage](${coverage_url}#_Changed)\n\n"
+  msg="$msg [$coverage](${coverage_url}#_Changed)\n"
 else
   msg="$msg $coverage\n\n"
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
 fi
 
-msg="$msg* [All artifacts (incl Screenshots)]($artifacts_response)"
+msg="$msg [All artifacts]($artifacts_response)"
 
 # Find associated PR.  *NB* we're assuming that the first, open PR is the one
 # to comment on.
