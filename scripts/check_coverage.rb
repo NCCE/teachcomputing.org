@@ -16,4 +16,4 @@ if percentage < ENV['SIMPLECOV_MIN_COVERAGE'].to_i
   exit 1
 end
 
-puts "Test coverage: #{percentage}"
+puts "Test coverage: #{percentage}%"
