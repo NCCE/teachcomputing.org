@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'simplecov'
 require 'vcr'
 
-SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE']
+SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
 SimpleCov.start 'rails' do
   add_group 'Services', 'app/services'
   add_group 'Presenters', 'app/presenters'
