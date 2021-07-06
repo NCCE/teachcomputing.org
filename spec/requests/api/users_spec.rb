@@ -41,6 +41,7 @@ RSpec.describe Api::UsersController do
         expect(JSON.parse(response.body)['id']).to eq user.id
         expect(JSON.parse(response.body)['email']).to eq user.email
         expect(JSON.parse(response.body)['stem_achiever_contact_no']).to eq user.stem_achiever_contact_no
+        expect(JSON.parse(response.body)['stem_user_id']).to eq user.stem_user_id
       end
 
       it 'contains the users achievements' do
