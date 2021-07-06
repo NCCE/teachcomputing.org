@@ -56,14 +56,16 @@ if [ "${coverage}" = "null" ] ; then
 fi
 
 artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https://circleci.com/api/v1.1/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts)
-coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html#_Changed"))[0].url')
+coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html"))[0].url')
 
 if ! [ "${coverage_url}" = "null" ] ; then
-  msg="$msg [$coverage]($coverage_url)\n\n"
+  msg="$msg [$coverage](${coverage_url}#_Changed)\n\n"
 else
-  msg="$msg $coverage%\n\n"
+  msg="$msg $coverage\n\n"
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
 fi
+
+msg="$msg* [All artifacts (incl Screenshots)]($artifacts_response)"
 
 # Find associated PR.  *NB* we're assuming that the first, open PR is the one
 # to comment on.
