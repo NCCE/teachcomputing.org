@@ -129,6 +129,6 @@ workflows:
   test:
     jobs:
       - test
-      - coverage:
+      - coverage_check:
           requires:
             - test
