@@ -136,7 +136,7 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only system activities' do
-        expect(Activity.system).to eq(system_activity)
+        expect(Activity.system).to match_array(system_activity)
       end
 
       it 'does not include actions' do
