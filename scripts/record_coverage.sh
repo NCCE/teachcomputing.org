@@ -65,8 +65,6 @@ else
   msg="$msg > CircleCI didn't store the Simplecov index (maybe the store_artifacts step is missing?)"
 fi
 
-msg="$msg [All artifacts]($artifacts_response)"
-
 # Find associated PR.  *NB* we're assuming that the first, open PR is the one
 # to comment on.
 q="query {
