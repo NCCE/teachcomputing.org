@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe ClearAchievementAttachmentsJob, type: :job do
   let(:user) { create(:user) }
-  let(:progamme) { create(:secondary_certificate) }
-  let(:enrolment) { create(:user_programme_enrolment, programme_id: progamme.id, user_id: user.id) }
+  let(:programme) { create(:secondary_certificate) }
+  let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
   let(:uploadable_activity) { create(:activity, uploadable: true) }
-  let(:achievement) { create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id, programme_id: progamme.id, user_id: user.id) }
+  let(:achievement) do
+    create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id, programme_id: programme.id,
+                                                    user_id: user.id)
+  end
 
   describe '#perform' do
     context 'when the enrolment is in a state of complete' do

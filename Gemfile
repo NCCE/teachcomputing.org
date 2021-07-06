@@ -63,7 +63,7 @@ group :development, :test do
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'interception'
   gem 'pry'
-  gem 'pry-byebug'
+  gem 'pry-byebug', '~> 3.9.0'
   gem 'pry-rescue'
   gem 'reek'
   gem 'rspec-mocks'

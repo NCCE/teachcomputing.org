@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   after_create :schedule_fetching_of_course_bookings
 
+  scope :without_forgotten, -> { where(forgotten: false) }
+
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|
       user.stem_user_id = id
@@ -72,5 +74,36 @@ class User < ApplicationRecord
 
   def schedule_fetching_of_course_bookings
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(self)
+  end
+
+  def forget!
+    return if forgotten
+
+    attributes.each do |name, _value|
+      next if %w[id created_at updated_at].include?(name) || name.match(/_token/)
+
+      self[name] = case name.to_sym
+                   when :email
+                     "#{id}@forgotten.com"
+                   when :stem_credentials_expires_at
+                     DateTime.now
+                   when :future_learn_organisation_memberships
+                     []
+                   when :forgotten
+                     true
+                   else
+                     id
+                   end
+    end
+
+    self.stem_credentials_access_token = id
+    self.stem_credentials_refresh_token = id
+
+    achievements_with_attachments = achievements.with_attachments
+    achievements_with_attachments.each do |achievement|
+      achievement.supporting_evidence.purge
+    end
+
+    save!
   end
 end
