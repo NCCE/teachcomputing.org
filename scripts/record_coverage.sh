@@ -48,7 +48,7 @@ msg="$msg* Test coverage: "
 
 # Get the coverage for changed files in this PR
 file='coverage/index.html'
-coverage=cat $file | grep Changed -A 4 | grep "[0-9\.]*%"
+coverage=$(cat $file | grep Changed -A 4 | grep "[0-9\.]*%")
 
 if [ "${coverage}" = "null" ] ; then
   echo "*** Failed to determine coverage"
