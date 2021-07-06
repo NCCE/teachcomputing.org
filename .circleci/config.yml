@@ -89,7 +89,7 @@ jobs:
           root: ~/teachcomputing
           paths: [coverage]
 
-  coverage:
+  coverage_check:
     working_directory: ~/teachcomputing
     machine: true
     steps:
