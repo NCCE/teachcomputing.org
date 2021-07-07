@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :activities
     resources :pathways
     resources :pathway_activities
+    resources :hubs
+    resources :hub_regions
   end
 
   namespace :api do
@@ -78,6 +80,8 @@ Rails.application.routes.draw do
   namespace 'class_marker' do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
+
+  resources :hubs, only: %i[index]
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'

@@ -60,6 +60,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'interception'
   gem 'pry'
@@ -73,7 +74,6 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'ruby-debug-ide'
-  gem 'ruby_jard'
   gem 'solargraph'
   gem 'webmock'
 end
@@ -90,7 +90,6 @@ end
 group :test do
   gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '~> 3.32'
-  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
   gem 'selenium-webdriver', '~> 3.142.7'

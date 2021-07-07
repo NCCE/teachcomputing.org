@@ -10,13 +10,18 @@ RSpec.describe Hub, type: :model do
       hub = build(:hub, address: '123 Fake Street', postcode: 'S1 1SS')
       expect(hub.geocodable_address).to eq('123 Fake Street, S1 1SS')
     end
+
+    it 'returns postcode only if address is nil' do
+      hub = build(:hub, address: nil, postcode: 'S1 1SS')
+      expect(hub.geocodable_address).to eq('S1 1SS')
+    end
   end
 
   describe '#needs_geocoding?' do
     let(:new_hub) { build(:hub, address: nil, postcode: nil) }
-    it 'returns false if address not present' do
+    it 'returns true if only postcode present' do
       new_hub.postcode = 'S1 1SS'
-      expect(new_hub.needs_geocoding?).to eq(false)
+      expect(new_hub.needs_geocoding?).to eq(true)
     end
 
     it 'returns false if postcode not present' do
@@ -24,12 +29,10 @@ RSpec.describe Hub, type: :model do
       expect(new_hub.needs_geocoding?).to eq(false)
     end
 
-    context 'on new instance' do
-      it 'returns true if postcode and address are present' do
-        new_hub.postcode = 'S1 1SS'
-        new_hub.address = 'Lovely address'
-        expect(new_hub.needs_geocoding?).to eq(true)
-      end
+    it 'returns true if postcode and address are present' do
+      new_hub.postcode = 'S1 1SS'
+      new_hub.address = 'Lovely address'
+      expect(new_hub.needs_geocoding?).to eq(true)
     end
 
     context 'on persisted instance' do

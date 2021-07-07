@@ -11,7 +11,7 @@ class FeatureFlagService
 
   def flags
     @flags ||= begin
-      @flags_to_define.map { |k, v| [k, cast_boolean(ENV[v])] }.to_h
+      @flags_to_define.transform_values { |v| cast_boolean(ENV[v]) }
     end
   end
 
