@@ -156,6 +156,9 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
       - run:
+          name: Run server
+          command: bin/rails server
+      - run:
           name: Run Lighthouse
           command: lhci autorun
 
