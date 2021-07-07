@@ -8,7 +8,7 @@ module.exports = {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
         skipAudits: ['cumulative-layout-shift'],
         maxWaitForLoad: 90000,
-
+        verbose: true,
       },
     },
     // If we want to start failing the test suite on lighthouse failures we add
