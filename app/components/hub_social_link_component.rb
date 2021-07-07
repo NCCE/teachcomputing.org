@@ -30,7 +30,7 @@ class HubSocialLinkComponent < ViewComponent::Base
     when 'website', 'facebook'
       "media/images/social-media/#{@type}.svg"
     when 'twitter'
-      "media/images/social-media/twitter_round.svg"
+      'media/images/social-media/twitter_round.svg'
     end
   end
 

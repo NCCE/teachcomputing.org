@@ -1,12 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe SortedHubsComponent, type: :component do
+  # the distance method is added by the geocoder gem at runtime when running
+  # geospatial queries. Using a verifying double here will not let us stub a
+  # distance
+  # rubocop:disable RSpec/VerifiedDoubles
   let(:hub) { double(Hub) }
+  # rubocop:enable RSpec/VerifiedDoubles
 
   before do
     allow(hub).to receive(:distance).and_return(100)
     allow(hub).to receive(:satellite?).and_return(false)
-    allow(hub).to receive_messages( attributes_for(:hub))
+    allow(hub).to receive_messages(attributes_for(:hub))
   end
 
   it 'does not render when sorted_hubs is nil' do
