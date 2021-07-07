@@ -5,6 +5,7 @@ class HubsIndex
 
   def hub_regions
     return nil if @location.present?
+
     HubRegion.order(:order)
   end
 
@@ -14,6 +15,7 @@ class HubsIndex
 
   def sorted_hubs
     return nil unless @location.present?
+
     Hub.near(geocoded_search_location.coordinates, 500)
   end
 
@@ -23,9 +25,10 @@ class HubsIndex
 
   private
 
-  def geocoded_search_location
-    return nil unless @location.present?
-    return @geocoded_search_location if defined? @geocoded_search_location
-    @geocoded_search_location = Geocoder.search(@location, params: { region: 'GB' }).first
-  end
+    def geocoded_search_location
+      return nil unless @location.present?
+      return @geocoded_search_location if defined? @geocoded_search_location
+
+      @geocoded_search_location = Geocoder.search(@location, params: { region: 'GB' }).first
+    end
 end

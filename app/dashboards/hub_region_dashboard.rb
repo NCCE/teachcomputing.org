@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class HubRegionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,7 +13,7 @@ class HubRegionDashboard < Administrate::BaseDashboard
     name: Field::String,
     order: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

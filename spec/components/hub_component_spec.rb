@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe HubComponent, type: :component do
   let(:hub) { build(:hub) }
@@ -18,6 +18,7 @@ RSpec.describe HubComponent, type: :component do
 
   context 'when hub is satellite' do
     let(:hub) { build(:hub, address: nil, postcode: nil, satellite: true) }
+
     it 'shows satellite_info' do
       render_inline(described_class.new(hub: hub))
       expect(rendered_component)

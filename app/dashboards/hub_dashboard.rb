@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class HubDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -22,7 +22,7 @@ class HubDashboard < Administrate::BaseDashboard
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

@@ -71,7 +71,7 @@ RSpec.describe HubsIndex do
     let(:location) { 'sheffield' }
 
     it 'calls format_address method on Geocoding class' do
-      result_dbl = double('result')
+      result_dbl = instance_double('result')
       allow(Geocoder).to receive(:search) { [result_dbl] }
       allow(Geocoding).to receive(:format_address)
       hub_index.formatted_address

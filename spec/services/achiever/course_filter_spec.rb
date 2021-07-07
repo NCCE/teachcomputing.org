@@ -617,8 +617,8 @@ RSpec.describe Achiever::CourseFilter do
       let(:filter_params) { { location: 'liverpool' } }
 
       it 'calls the Geocoding format_address method' do
-        expect(Geocoding).to receive(:format_address).with(geocoded_location: result_dbl)
         course_filter.search_location_formatted_address
+        expect(Geocoding).to have_received(:format_address).with(geocoded_location: result_dbl)
       end
     end
   end
