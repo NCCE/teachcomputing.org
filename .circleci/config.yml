@@ -106,10 +106,6 @@ jobs:
           command: bash -ue scripts/record_coverage.sh
           when: always
 
-orbs:
-  ruby: circleci/ruby@1
-
-
   lighthouse:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
@@ -162,6 +158,9 @@ orbs:
       - run:
           name: Run Lighthouse
           command: lhci autorun
+
+orbs:
+  ruby: circleci/ruby@1
 
 workflows:
   code_quality:
