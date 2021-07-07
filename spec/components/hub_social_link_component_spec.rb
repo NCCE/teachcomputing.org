@@ -9,7 +9,7 @@ RSpec.describe HubSocialLinkComponent, type: :component do
   context 'when type is twitter' do
     it 'renders correct image' do
       render_inline(described_class.new(type: 'twitter', value: '@twithandle'))
-      expect(rendered_component).to include('packs-test/media/images/hubs/twitter-')
+      expect(rendered_component).to include('packs-test/media/images/social-media/twitter_round-')
       expect(rendered_component)
         .to have_xpath('//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "twitter icon")]')
     end
@@ -23,7 +23,7 @@ RSpec.describe HubSocialLinkComponent, type: :component do
   context 'when type is facebook' do
     it 'renders correct image' do
       render_inline(described_class.new(type: 'facebook', value: 'facehandle'))
-      expect(rendered_component).to include('packs-test/media/images/hubs/facebook-')
+      expect(rendered_component).to include('packs-test/media/images/social-media/facebook-')
       expect(rendered_component)
         .to have_xpath('//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "facebook icon")]')
     end
@@ -37,7 +37,7 @@ RSpec.describe HubSocialLinkComponent, type: :component do
   context 'when type is website' do
     it 'renders correct image' do
       render_inline(described_class.new(type: 'website', value: 'https://www.example.com'))
-      expect(rendered_component).to include('packs-test/media/images/hubs/website-')
+      expect(rendered_component).to include('packs-test/media/images/social-media/website-')
       expect(rendered_component)
         .to have_xpath('//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "website icon")]')
     end
