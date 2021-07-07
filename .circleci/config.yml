@@ -110,27 +110,27 @@ jobs:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
-          MANDRILL_SMTP_USERNAME: fake
-          MANDRILL_API_KEY: fake
-          STEM_OAUTH_SITE: fake
-          STEM_OAUTH_AUTH_URL: fake
-          STEM_OAUTH_ACCESS_TOKEN_URL: fake
-          STEM_OAUTH_CLIENT_ID: fake
-          STEM_OAUTH_CLIENT_SECRET: fake
-          CURRICULUM_APP_URL: fake
-          CURRICULUM_API_KEY: fake
-          FL_LTI_CONSUMER_KEY: changeme
-          FL_LTI_CONSUMER_SECRET: changeme
-          FL_LTI_URL: changeme
-          FL_PARTNERS_CONSUMER_KEY: changeme
-          FL_PARTNERS_CONSUMER_SECRET: changeme
-          FL_PARTNERS_URL: changeme
-          BYPASS_OAUTH: true
-          AWS_ACCESS_KEY_ID: changeme
-          AWS_SECRET_ACCESS_KEY: changeme
-          AWS_S3_ACTIVE_STORAGE_BUCKET: changeme
-          AWS_S3_SITEMAP_BUCKET: changeme
-          AWS_S3_REGION: changeme
+          # MANDRILL_SMTP_USERNAME: fake
+          # MANDRILL_API_KEY: fake
+          # STEM_OAUTH_SITE: fake
+          # STEM_OAUTH_AUTH_URL: fake
+          # STEM_OAUTH_ACCESS_TOKEN_URL: fake
+          # STEM_OAUTH_CLIENT_ID: fake
+          # STEM_OAUTH_CLIENT_SECRET: fake
+          # CURRICULUM_APP_URL: fake
+          # CURRICULUM_API_KEY: fake
+          # FL_LTI_CONSUMER_KEY: changeme
+          # FL_LTI_CONSUMER_SECRET: changeme
+          # FL_LTI_URL: changeme
+          # FL_PARTNERS_CONSUMER_KEY: changeme
+          # FL_PARTNERS_CONSUMER_SECRET: changeme
+          # FL_PARTNERS_URL: changeme
+          # BYPASS_OAUTH: true
+          # AWS_ACCESS_KEY_ID: changeme
+          # AWS_SECRET_ACCESS_KEY: changeme
+          # AWS_S3_ACTIVE_STORAGE_BUCKET: changeme
+          # AWS_S3_SITEMAP_BUCKET: changeme
+          # AWS_S3_REGION: changeme
           DB_HOST: 127.0.0.1
           PGHOST: 127.0.0.1
           PGUSER: ncce_test

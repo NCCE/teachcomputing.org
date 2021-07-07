@@ -2,8 +2,7 @@ module.exports = {
   ci: {
     collect: {
       url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
-      startServerReadyTimeout: 120000,
-      startServerCommand: 'bundle exec rails server',
+      startServerCommand: 'bin/rails server -e test',
       numberOfRuns: 1,
       settings: {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
