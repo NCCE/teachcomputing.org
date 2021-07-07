@@ -4,9 +4,11 @@ module.exports = {
       url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
       startServerReadyTimeout: 60000,
       startServerCommand: 'bundle exec rails server',
+      numberOfRuns: 1,
       settings: {
         onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
         skipAudits: ['cumulative-layout-shift'],
+        maxWaitForLoad: 90000,
 
       },
     },
