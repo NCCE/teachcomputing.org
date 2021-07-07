@@ -69,6 +69,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'rspec-rails', '~> 4.0'
   gem 'rubocop'
+  gem 'rubocop-changes'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'ruby-debug-ide'
