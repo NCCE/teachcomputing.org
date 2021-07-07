@@ -161,6 +161,7 @@ jobs:
 
 orbs:
   ruby: circleci/ruby@1
+  node: circleci/node@4.2.0
 
 workflows:
   code_quality:
