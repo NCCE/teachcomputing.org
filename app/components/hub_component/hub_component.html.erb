@@ -3,7 +3,7 @@
   <div class="hub-component__address">
     <% if @hub.satellite? %>
       <p class="govuk-body hub-component__content">
-        This satellite hub <%= @hub.satellite_info %>
+        <%= t('.satellite_hub', info: @hub.satellite_info) %>
       </p>
     <% else %>
       <p class="govuk-body hub-component__content">

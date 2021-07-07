@@ -1,4 +1,5 @@
 en:
-  no_address: "We are currently setting up a venue for this hub"
-  button_text: "View courses"
+  no_address: We are currently setting up a venue for this hub
+  button_text: View courses
+  satellite_hub: This satellite hub %{info}
 

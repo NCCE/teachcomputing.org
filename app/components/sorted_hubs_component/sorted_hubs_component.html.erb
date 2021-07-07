@@ -1,12 +1,12 @@
 <div class="sorted-hubs-component__displaying" id="sorted-hubs">
   <div>
     <p class="govuk-body govuk-!-margin-bottom-0">
-      Displaying Hubs by distance from <strong><%= @formatted_address %> </strong>
+      <%= t('.displaying_html', location: @formatted_address) %>
     </p>
   </div>
   <div>
     <p class="govuk-body govuk-!-margin-bottom-0">
-      <%= link_to 'clear location', hubs_path, class: "ncce-link sorted-hubs-component__clear"  %>
+      <%= link_to t('.clear_link'), hubs_path, class: "ncce-link sorted-hubs-component__clear"  %>
     </p>
   </div>
 </div>
@@ -14,7 +14,9 @@
 <% @sorted_hubs.each do |hub| %>
   <div class="sorted-hubs-component__hub">
     <div class="sorted-hubs-component__distance">
-      <p class="govuk-body-s sorted-hubs-component__distance-text"><strong><%= hub.distance.round(1) %> miles</strong> away </p>
+      <p class="govuk-body-s sorted-hubs-component__distance-text">
+        <%= t('.hub_distance_html', distance: hub.distance.round(1)) %>
+      </p>
     </div>
     <div>
       <%= render HubComponent.new(hub: hub) %>

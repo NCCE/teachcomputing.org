@@ -25,6 +25,15 @@ class HubSocialLinkComponent < ViewComponent::Base
     }
   end
 
+  def image_path
+    case @type
+    when 'website', 'facebook'
+      "media/images/social-media/#{@type}.svg"
+    when 'twitter'
+      "media/images/social-media/twitter_round.svg"
+    end
+  end
+
   def render?
     @value.present?
   end

@@ -9,8 +9,8 @@ FactoryBot.define do
     phone { '01141234567' }
     website { 'http://example.com' }
     twitter { '@hubtwitter' }
-    facebook { '@hubfacebook' }
+    facebook { 'hubfacebook' }
     satellite { false }
-    satellite_info { Faker::Lorem.sentences(number: 1) }
+    satellite_info { Faker::Lorem.sentence(word_count: 16) }
   end
 end
