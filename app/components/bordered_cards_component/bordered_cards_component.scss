@@ -56,7 +56,6 @@
   padding-left: 20px;
 
   @include govuk-media-query($from: desktop) {
-    min-height: 216px;
   }
 }
 

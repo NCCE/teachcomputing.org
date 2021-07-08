@@ -97,7 +97,8 @@ en:
         title: "Isaac Computer Science Discovery Events"
         text: ''
         link_title: "Help at a Discovery event"
-        list_items: ["Inspire A level students about careers in computer science",
+        list_items: ["Volunteer at a Discovery Event",
+                      "Inspire A level students about careers in computer science",
                       "Contribute to a session either as the main speaker or as a panellist"]
       barefoot_computing:
         title: "Barefoot Computing"
@@ -117,5 +118,5 @@ en:
         title: "School governors"
         text: ''
         link_title: "Advocate for us"
-        list_items: ["You can play an important role in advocating for computing as a subject within your school."]
+        list_items: ["As a governor or trustee, help raise the profile of computing as a subject within schools."]
 
