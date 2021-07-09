@@ -1,4 +1,4 @@
-task :vital_model_checker do
+task vital_model_checker: :environment do
   online_achievements_count = Achievement.without_category('online').where(created_at: (Time.now - 24.hours)..Time.now).count
 
   Sentry.capture_message('No online achievements created at in the last 24 hours.') if online_achievements_count == 0
