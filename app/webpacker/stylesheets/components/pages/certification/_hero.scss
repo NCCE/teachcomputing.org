@@ -24,10 +24,6 @@
   }
 }
 
-.hero--orange {
-  background-color: #E6A614;
-}
-
 .hero--glyph-2:after {
   background-image: url(../images/hero/glyph-2.svg);
   height: 75px;
@@ -92,7 +88,7 @@
 
 .hero--orange,
 .hero--primary-certificate {
-  background-color: #E6A615;
+  background-color: $dixie;
 }
 
 .hero--purple,
