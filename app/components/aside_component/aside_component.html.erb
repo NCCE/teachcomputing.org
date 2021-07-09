@@ -1,0 +1,17 @@
+<div class="aside-component">
+  <h2 class="govuk-heading-s">
+    <%= @title %>
+  </h2>
+  <p class="govuk-body-s aside-component__text">
+    <%= @text %>
+  </p>
+  <p class="govuk-body-s aside-component__link">
+    <%= link_to @link_text,
+      @link_url,
+      class: 'ncce-link ncce-link--contrast',
+      role: 'button',
+      draggable: 'false',
+      data: tracking_data
+    %>
+  </p>
+</div>
