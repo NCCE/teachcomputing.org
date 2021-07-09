@@ -2,10 +2,10 @@ module.exports = {
   ci: {
     collect: {
       url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
-      startServerCommand: 'bin/rails server -e development',
+      startServerCommand: 'bin/rails server',
       numberOfRuns: 1,
       settings: {
-        onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+        onlyCategories: ['accessibility', 'best-practices', 'seo'],
         skipAudits: ['cumulative-layout-shift'],
         maxWaitForLoad: 90000,
         verbose: true,
