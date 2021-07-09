@@ -4,10 +4,6 @@
   border-top-width: 3px;
   padding-top: 1rem;
   @include bottom-margined;
-
-  &__text--s {
-    font-size: 1.0625rem;
-  }
 }
 
 .aside-component__text {
