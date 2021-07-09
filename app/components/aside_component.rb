@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class AsideComponent < ViewComponent::Base
-  def initialize(title:, text:, link_text:, link_url:, tracking_category: nil, tracking_label: nil)
+  def initialize(title:, text:, link_text:, link_url:, **options)
     @title = title
     @text = text
     @link_text = link_text
     @link_url = link_url
-    @tracking_category = tracking_category
-    @tracking_label = tracking_label
+    @tracking_category = options[:tracking_category]
+    @tracking_label = options[:tracking_label]
   end
 
   def tracking_data
