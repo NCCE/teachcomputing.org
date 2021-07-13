@@ -198,7 +198,7 @@
   }
 
   @include govuk-media-query($from: desktop) {
-    background-image: url('../images/icons/line.svg');
+    background-image: url('../images/line.svg');
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 0.1rem;
@@ -289,7 +289,7 @@
 
 
 .ncce-header__certification-item--icon {
-  background-image: url('../images/icons/tick-blue-no-border.svg');
+  background-image: url('../images/tick-blue-no-border.svg');
   background-position: 0 10px;
   background-repeat: no-repeat;
   background-size: 0.7rem;
@@ -303,14 +303,14 @@
 }
 
 .ncce-header__certification-item .ncce-header__certification-item--icon {
-  background-image: url('../images/icons/tick-blue-no-border.svg');
+  background-image: url('../images/tick-blue-no-border.svg');
   @include govuk-media-query($from: desktop) {
   }
 }
 
 @media (any-hover: hover) {
   .ncce-header__certification-item:hover .ncce-header__certification-item--icon {
-    background-image: url('../images/icons/arrow-down.svg');
+    background-image: url('../images/arrow-down.svg');
     @include govuk-media-query($from: desktop) {
       background-position: center 9px;
     }
@@ -318,7 +318,7 @@
 }
 
 .ncce-header__certification-item[aria-expanded='true'] .ncce-header__certification-item--icon {
-  background-image: url('../images/icons/arrow-down.svg');
+  background-image: url('../images/arrow-down.svg');
   @include govuk-media-query($from: desktop) {
     background-position: center 9px;
   }
@@ -374,7 +374,7 @@
 }
 
 .govuk-header__menu-button::after {
-  background-image: url('../images/icons/menu-open.svg');
+  background-image: url('../images/menu-open.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1rem;
@@ -388,7 +388,7 @@
 }
 
 .govuk-header__menu-button--open::after {
-  background-image: url('../images/icons/menu-close.svg');
+  background-image: url('../images/menu-close.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.6rem;

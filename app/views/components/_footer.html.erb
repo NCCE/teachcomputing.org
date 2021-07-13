@@ -1,11 +1,11 @@
 <footer class="govuk-footer ncce-footer">
   <div class="govuk-width-container ncce-footer__grid">
     <div class="ncce-footer__grid-logos">
-      <%= image_pack_tag 'media/images/logos/ncce-logo.svg', class: 'ncce-footer__logos-img', alt: 'National Centre for Computing Education home' %>
+      <%= image_pack_tag 'media/images/ncce-logo.svg', class: 'ncce-footer__logos-img', alt: 'National Centre for Computing Education home' %>
       <div>
         <p class="govuk-body-s ncce-footer__text">Funded by</p>
         <%= link_to 'https://www.gov.uk/government/organisations/department-for-education', class: 'govuk-footer__link ncce-link', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'DfE' } do %>
-          <%= image_pack_tag 'media/images/logos/dfe.svg', class: 'ncce-footer__logos-img', alt: 'Department for Education website' %>
+          <%= image_pack_tag 'media/images/dfe.svg', class: 'ncce-footer__logos-img', alt: 'Department for Education website' %>
         <% end %>
       </div>
     </div>
@@ -68,22 +68,22 @@
       <ul class="ncce-footer__list ncce-footer__grid-social">
         <li class="ncce-footer__list-item">
           <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Facebook' } do %>
-            <%= image_pack_tag "media/images/social-media/facebook_small.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
+            <%= image_pack_tag "media/images/facebook.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
           <%= link_to 'https://twitter.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Twitter' } do %>
-            <%= image_pack_tag "media/images/social-media/twitter_small.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
+            <%= image_pack_tag "media/images/twitter.png", alt: 'Twitter logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Twitter
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
           <%= mail_to 'info@teachcomputing.org', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Email' } do %>
-            <%= image_pack_tag "media/images/icons/email.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>Email
+            <%= image_pack_tag "media/images/email.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>Email
           <% end %>
         </li>
         <li class="ncce-footer__list-item">
           <%= link_to 'tel:01904 328 300', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Telephone' } do %>
-            <%= image_pack_tag "media/images/icons/telephone.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>01904 328 300
+            <%= image_pack_tag "media/images/telephone.svg", alt: '', class: 'ncce-link__icon ncce-link__icon--footer' %>01904 328 300
           <% end %>
         </li>
       </ul>

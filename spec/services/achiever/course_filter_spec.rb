@@ -611,14 +611,33 @@ RSpec.describe Achiever::CourseFilter do
     context 'when geocoded location is found' do
       before do
         allow(Geocoder).to receive(:search) { [result_dbl] }
-        allow(Geocoding).to receive(:format_address)
       end
 
       let(:filter_params) { { location: 'liverpool' } }
 
-      it 'calls the Geocoding format_address method' do
-        course_filter.search_location_formatted_address
-        expect(Geocoding).to have_received(:format_address).with(geocoded_location: result_dbl)
+      it 'returns the postal_town component if present from geocoding result' do
+        allow(result_dbl).to receive(:address_components).and_return([
+            {"long_name"=>"Liverpool", "short_name"=>"Liverpool", "types"=>["postal_town"]}
+        ])
+        expect(course_filter.search_location_formatted_address).to eq('Liverpool')
+      end
+
+      it 'returns the formatted address if no postal_town component' do
+        allow(result_dbl).to receive(:address_components).and_return([])
+        allow(result_dbl).to receive(:formatted_address).and_return('Liverpool, UK')
+        expect(course_filter.search_location_formatted_address).to eq('Liverpool, UK')
+      end
+
+      context 'when geocoded location is not found' do
+        before do
+          allow(Geocoder).to receive(:search).and_return([])
+        end
+
+        let(:filter_params) { { location: 'asdfasdfasdfasdf' } }
+
+        it 'returns nil' do
+          expect(course_filter.search_location_formatted_address).to eq(nil)
+        end
       end
     end
   end

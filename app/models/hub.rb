@@ -5,13 +5,11 @@ class Hub < ApplicationRecord
   after_validation :geocode, if: :needs_geocoding?
 
   def geocodable_address
-    return postcode unless address.present?
-
     [address, postcode].join(', ')
   end
 
   def needs_geocoding?
-    return false unless postcode.present?
+    return false unless address.present? && postcode.present?
     return false unless address_changed? || postcode_changed?
 
     true

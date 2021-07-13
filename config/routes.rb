@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     resources :activities
     resources :pathways
     resources :pathway_activities
-    resources :hubs
-    resources :hub_regions
   end
 
   namespace :api do
@@ -81,8 +79,6 @@ Rails.application.routes.draw do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
 
-  resources :hubs, only: %i[index]
-
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'
   get '/courses/hubs/:hub_id', action: :index, controller: 'courses', as: 'hub'
@@ -124,6 +120,8 @@ Rails.application.routes.draw do
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
                          defaults: { page_slug: 'cs-accelerator' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
+  get '/images/:id', to: 'asset_endpoint#stem_image_endpoint', as: :stem_image_endpoint,
+                     constraints: { id: /[A-Za-z0-9-]+\.png/ }
   get '/fl-trailers', to: 'pages#page', as: :trailers, defaults: { page_slug: 'fl-trailers' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }

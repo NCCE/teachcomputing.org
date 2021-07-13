@@ -25,7 +25,7 @@ class SecondaryLandingPage
   end
 
   def hero_image
-    'media/images/landing-pages/sec-hero.png'
+     'media/images/landing-pages/sec-hero.png'
   end
 
   def hero_class
@@ -96,7 +96,7 @@ class SecondaryLandingPage
       },
       {
         text: '“Completing the Computer Science Accelerator has honestly changed my career. It has given me the confidence to do so many new things.”',
-        image: 'media/images/landing-pages/annie.png',
+        image: 'media/images/anne-cuffe-davies.png',
         name: 'Annie Cuffe Davies',
         link_target: 'https://blog.teachcomputing.org/how-cpd-changed-my-career/',
         bio: 'ICT and Computing teacher, London',
@@ -185,4 +185,5 @@ class SecondaryLandingPage
     def completed_secondary?
       @current_user && @secondary_certificate.user_completed?(@current_user)
     end
+
 end

@@ -40,7 +40,7 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url('../images/icons/chevron.svg');
+  background-image: url('../images/chevron.svg');
   background-position: calc(100% - 10px) 50%;
   background-repeat: no-repeat;
   font-size: 1rem;
@@ -99,12 +99,4 @@
     outline: none;
   }
 
-}
-
-.ncce-search-input {
-  background-image: url('../images/icons/search.svg');
-  background-position: 6px 7px;
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  padding-left: 40px;
 }

@@ -99,7 +99,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
             expect(rendered).to have_link(
               'Book',
-              href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+              href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
             )
           end
         end
@@ -143,7 +143,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
             expect(rendered).to have_link(
               'Book',
-              href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+              href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
             )
           end
         end
@@ -152,7 +152,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       it "shows the 'See more dates' button if there are more than 20 items" do
         expect(rendered).to have_link(
           'See more dates',
-          href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
+          href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{course.course_template_no}"
         )
       end
     end
@@ -169,7 +169,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       expect(rendered).to have_link(
         'View course',
-        href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
+        href: "https://ncce-www-stage.stem.org.uk/cpdredirect/#{course.course_template_no}"
       )
     end
   end
@@ -189,7 +189,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       end
 
       it 'renders an account creation link' do
-        expect(rendered).to have_link('Create an account', href: 'https://ncce-www-stage-int.stem.org.uk/user/register?from=NCCE')
+        expect(rendered).to have_link('Create an account', href: 'https://ncce-www-stage.stem.org.uk/user/register?from=NCCE')
       end
     end
 

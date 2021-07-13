@@ -1,4 +1,0 @@
-en:
-  displaying_html: Displaying Hubs by distance from <strong>%{location}</strong>
-  clear_link: clear location
-  hub_distance_html: <strong>%{distance} miles</strong> away

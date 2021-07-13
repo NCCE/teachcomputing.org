@@ -1,35 +1,35 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "3b3818f60d90eacd2575d559ffa2773a17cfde218b14ad47ebfed7d676d2bc64",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 29,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => HubRegionComponent.with_collection(HubsIndex.new(:location => params[:location]).hub_regions), {})",
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "1b52e260e38dfcb324eb69f664c7646fc23b80730eb6225c3b01b61c8f1409bf",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/cms/cms_page.html.erb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Ghost.new.get_single_page(params[:page_slug])[\"html\"]",
       "render_path": [
         {
           "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 4,
-          "file": "app/controllers/hubs_controller.rb",
+          "class": "CmsController",
+          "method": "cms_page",
+          "line": 6,
+          "file": "app/controllers/cms_controller.rb",
           "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
+            "name": "cms/cms_page",
+            "file": "app/views/cms/cms_page.html.erb"
           }
         }
       ],
       "location": {
         "type": "template",
-        "template": "hubs/index"
+        "template": "cms/cms_page"
       },
-      "user_input": "params[:location]",
+      "user_input": "params[:page_slug]",
       "confidence": "Weak",
-      "note": ""
+      "note": "Page slug comes fom config/routes.rb not externally"
     },
     {
       "warning_type": "Redirect",
@@ -69,37 +69,6 @@
       },
       "user_input": "Programme.find_by!(:id => params[:user_programme_enrolment][:programme_id]).path",
       "confidence": "High",
-      "note": ""
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "64885c638a21f5433329b8852fa1409e4022d56a50591b63857f26f22ded950c",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 18,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => HubSearchComponent.new(:location => HubsIndex.new(:location => params[:location]).current_location), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 4,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
       "note": ""
     },
     {
@@ -163,37 +132,6 @@
       "note": "params[:page_slug] is set in config/router.rb"
     },
     {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "ca40a34e17af537a8a12b885dcd8a1cd7b4b31bcaf49dc3d937cc7a66dfc43be",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 30,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => SortedHubsComponent.new(:sorted_hubs => HubsIndex.new(:location => params[:location]).sorted_hubs, :formatted_address => HubsIndex.new(:location => params[:location]).formatted_address), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 4,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 106,
       "fingerprint": "cdfb1541fdcc9cdcf0784ce5bd90013dc39316cb822eedea3f03b2521c06137f",
@@ -210,6 +148,6 @@
       "note": ""
     }
   ],
-  "updated": "2021-06-21 09:12:49 +0100",
+  "updated": "2021-06-17 16:41:22 +0100",
   "brakeman_version": "5.0.0"
 }

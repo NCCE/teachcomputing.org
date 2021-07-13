@@ -1,20 +1,20 @@
 module NavigationHelper
   def header_navigation
     [
-      { text: 'Primary school',
+      { text: 'Primary teachers',
         children: [
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
-          { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
-          { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
+          { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' }
         ] },
-      { text: 'Secondary school',
-        children: [
-          { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
-          { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
-          { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
-          { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
-          { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
-        ] },
+      { text: 'Secondary teachers', children:
+        [{ text: 'Secondary teacher toolkit',
+           link: secondary_teachers_path, label: 'Secondary teachers' },
+         { text: 'Subject knowledge certificate',
+           link: cs_accelerator_path, label: 'Subject knowledge certificate' },
+         { text: 'Secondary certificate',
+           link: secondary_path, label: 'Secondary certificate' },
+         { text: 'A level computer science',
+           link: a_level_computer_science_path, label: 'A level computer science' }] },
       { text: 'Training and support',
         children: [
           { text: 'Courses', link: courses_path, label: 'Courses' },

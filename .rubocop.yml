@@ -70,6 +70,3 @@ RSpec/AnyInstance:
 
 RSpec/FilePath:
   Enabled: false
-
-Lint/MissingSuper:
-  Enabled: false
