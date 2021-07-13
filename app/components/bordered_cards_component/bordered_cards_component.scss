@@ -1,7 +1,7 @@
 .bordered-cards-component {
   display: grid;
   grid-template-columns: auto;
-  gap: 36px;
+  gap: 24px;
 
   @include govuk-media-query($from: tablet) {
     grid-template-columns: repeat(2, 1fr);
@@ -47,6 +47,21 @@
   flex-grow: 1;
 }
 
+.bordered-card__title {
+  text-align: center;
+}
+
+.bordered-card__list {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  flex-grow: 1;
+}
+
+.ways-to-get-involved__section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $grey-light-x;
+}
 .bordered-card__image-wrapper {
   margin-bottom: 12px;
   max-height: 175px;
@@ -54,11 +69,21 @@
   position: relative;
 
   @include govuk-media-query($from: tablet) {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     max-height: unset;
   }
 }
 
+.bordered-card__triple-image {
+  height: 81px;
+}
+
 .bordered-card__image {
   width: 100%;
+}
+
+.bordered-card__get-involved-button {
+  color: white !important;
+  width: 100%;
+  margin-bottom: 0;
 }

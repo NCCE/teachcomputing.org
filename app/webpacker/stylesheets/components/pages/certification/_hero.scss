@@ -5,18 +5,18 @@
   position: relative;
   &:after {
     @include govuk-media-query($from: tablet) {
-    background-image: url(../images/hero/glyph-1.svg);
-    background-position-x: right;
-    background-repeat: no-repeat;
-    background-size: 75%;
-    content: "";
-    display: block;
-    height: 120px;
-    opacity: 0.15;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 140px;
+      background-image: url(../images/hero/glyph-1.svg);
+      background-position-x: right;
+      background-repeat: no-repeat;
+      background-size: 75%;
+      content: "";
+      display: block;
+      height: 120px;
+      opacity: 0.15;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 140px;
     }
     @include govuk-media-query($from: desktop) {
       background-size: 100%;
@@ -88,7 +88,7 @@
 
 .hero--orange,
 .hero--primary-certificate {
-  background-color: $primary-cert-color;
+  background-color: $dixie;
 }
 
 .hero--purple,
