@@ -84,20 +84,22 @@ class User < ApplicationRecord
 
       self[name] = case name.to_sym
                    when :email
-                     "#{id}@forgotten.com"
+                     "#{id}@devnull-ncce.slcs.ac.uk"
                    when :stem_credentials_expires_at
                      DateTime.now
                    when :future_learn_organisation_memberships
                      []
                    when :forgotten
                      true
+                   when :last_sign_in_at
+                     nil
                    else
                      id
                    end
     end
 
-    self.stem_credentials_access_token = id
-    self.stem_credentials_refresh_token = id
+    self.stem_credentials_access_token = SecureRandom.hex(8)
+    self.stem_credentials_refresh_token = SecureRandom.hex(8)
 
     achievements_with_attachments = achievements.with_attachments
     achievements_with_attachments.each do |achievement|
