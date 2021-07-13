@@ -17,7 +17,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion-secondary') do |activity|
   activity.title = 'Contribute to online discussion'
   activity.credit = 5
-  activity.slug = activity.title.parameterize
+  activity.slug = 'contribute-to-online-discussion-secondary'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
@@ -42,7 +42,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting-secondary') do |activity|
   activity.title = 'Attend a CAS Community meeting'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'attend-a-cas-community-meeting-secondary'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
@@ -107,7 +107,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice-secondary') do |activity|
   activity.title = 'Lead a CAS Community of Practice'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'lead-a-cas-community-of-practice-secondary'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
@@ -124,7 +124,7 @@ a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activit
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
-  activity.self_verification_info = "Please give details of the additional support you have provided"
+  activity.self_verification_info = 'Please give details of the additional support you have provided'
   activity.description = 'Go beyond your day to day teaching, and support your local teachers, pupils or parents'
 end
 
@@ -158,7 +158,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference-secondary') do |activity|
   activity.title = 'Lead a session at a regional or national conference'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'lead-a-session-at-a-regional-or-national-conference-secondary'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
