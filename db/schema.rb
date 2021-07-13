@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_145014) do
+ActiveRecord::Schema.define(version: 2021_06_28_083420) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -162,8 +161,6 @@ ActiveRecord::Schema.define(version: 2021_06_28_145014) do
     t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "satellite", default: false
-    t.string "satellite_info"
     t.index ["hub_region_id"], name: "index_hubs_on_hub_region_id"
     t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
