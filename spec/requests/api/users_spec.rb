@@ -41,6 +41,7 @@ RSpec.describe Api::UsersController do
         expect(JSON.parse(response.body)['id']).to eq user.id
         expect(JSON.parse(response.body)['email']).to eq user.email
         expect(JSON.parse(response.body)['stem_achiever_contact_no']).to eq user.stem_achiever_contact_no
+        expect(JSON.parse(response.body)['stem_user_id']).to eq user.stem_user_id
       end
 
       it 'contains the users achievements' do
@@ -64,7 +65,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'updates the email address' do
-        expect(JSON.parse(response.body)['email']).to eq "#{user.id}@forgotten.com"
+        expect(JSON.parse(response.body)['email']).to eq "#{user.id}@devnull-ncce.slcs.ac.uk"
       end
 
       it 'removes the future_learn_organisation_memberships' do
@@ -86,6 +87,10 @@ RSpec.describe Api::UsersController do
 
           expect(value).to eq(user.id)
         end
+      end
+
+      it 'sets last_sign_in_at to nil' do
+        expect(JSON.parse(response.body)['last_sign_in_at']).to be_nil
       end
 
       it 'does not break the relationships' do

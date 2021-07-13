@@ -52,11 +52,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'lists available online activities for a given user' do
-        expect(Activity.available_for(user)).to match_array(online_courses)
+        expect(described_class.available_for(user)).to match_array(online_courses)
       end
 
       it 'does not include activities if a user already has an existing achievement' do
-        expect(Activity.available_for(user)).not_to include(online_activity)
+        expect(described_class.available_for(user)).not_to include(online_activity)
       end
     end
 
@@ -66,11 +66,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only online activities' do
-        expect(Activity.online).to match_array(online_courses)
+        expect(described_class.online).to match_array(online_courses)
       end
 
       it 'does not include actions' do
-        expect(Activity.online).not_to include(face_to_face_courses.first)
+        expect(described_class.online).not_to include(face_to_face_courses.first)
       end
     end
 
@@ -108,11 +108,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only stem-learning activities' do
-        expect(Activity.stem_learning).to match_array(face_to_face_courses)
+        expect(described_class.stem_learning).to match_array(face_to_face_courses)
       end
 
       it 'does not include actions' do
-        expect(Activity.stem_learning).not_to include(online_courses.first)
+        expect(described_class.stem_learning).not_to include(online_courses.first)
       end
     end
 
@@ -122,11 +122,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only community activities' do
-        expect(Activity.community.to_a).to include(community_activity)
+        expect(described_class.community.to_a).to include(community_activity)
       end
 
       it 'does not include actions' do
-        expect(Activity.community).not_to include(online_courses.first)
+        expect(described_class.community).not_to include(online_courses.first)
       end
     end
 
@@ -136,11 +136,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only system activities' do
-        expect(Activity.system).to eq(system_activity)
+        expect(described_class.system).to match_array(system_activity)
       end
 
       it 'does not include actions' do
-        expect(Activity.system).not_to include(activity)
+        expect(described_class.system).not_to include(activity)
       end
     end
 
@@ -150,15 +150,15 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'include future-learn activities' do
-        expect(Activity.user_removable).to include(removable_activity)
+        expect(described_class.user_removable).to include(removable_activity)
       end
 
       it 'does not include stem' do
-        expect(Activity.user_removable).not_to include(activity)
+        expect(described_class.user_removable).not_to include(activity)
       end
 
       it 'does not include diagnostic download' do
-        expect(Activity.user_removable).not_to include(diagnostic_tool_activity)
+        expect(described_class.user_removable).not_to include(diagnostic_tool_activity)
       end
     end
   end
@@ -166,11 +166,11 @@ RSpec.describe Activity, type: :model do
   describe '.cs_accelerator_diagnostic_tool' do
     it 'returns a record if one is found' do
       activity = create(:activity, :cs_accelerator_diagnostic_tool)
-      expect(Activity.cs_accelerator_diagnostic_tool).to eq activity
+      expect(described_class.cs_accelerator_diagnostic_tool).to eq activity
     end
 
     it 'creates a record if one is not found' do
-      expect(Activity.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
+      expect(described_class.cs_accelerator_diagnostic_tool.title).to eq 'Taken diagnostic tool'
     end
   end
 

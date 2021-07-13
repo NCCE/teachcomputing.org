@@ -36,7 +36,7 @@
 
 .ncce-csa-dash__objective-text {
   align-self: center;
-  background-image: url('../images/tick-blue.svg');
+  background-image: url('../images/icons/tick-blue.svg');
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 1.9rem;
@@ -54,12 +54,12 @@
   }
 
   &--incomplete {
-    background-image: url('../images/incomplete-achievement.svg');
+    background-image: url('../images/icons/incomplete-achievement.svg');
   }
 }
 
 .ncce-csa-dash__objective--incomplete {
   .ncce-csa-dash__objective-text {
-    background-image: url('../images/incomplete-achievement.svg');
+    background-image: url('../images/icons/incomplete-achievement.svg');
   }
 }

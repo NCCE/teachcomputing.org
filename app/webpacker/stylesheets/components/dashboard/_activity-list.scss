@@ -50,7 +50,7 @@
 
 .ncce-activity-list__item-text {
   align-self: center;
-  background-image: url('../images/tick-blue.svg');
+  background-image: url('../images/icons/tick-blue.svg');
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 1.9rem;
@@ -67,19 +67,19 @@
   }
 
   &--incomplete {
-    background-image: url('../images/incomplete-achievement.svg');
+    background-image: url('../images/icons/incomplete-achievement.svg');
   }
 }
 
 .ncce-activity-list__item--incomplete {
   .ncce-activity-list__item-text {
-    background-image: url('../images/incomplete-achievement.svg');
+    background-image: url('../images/icons/incomplete-achievement.svg');
   }
 }
 
 .ncce-activity-list__item--inprogress {
   .ncce-activity-list__item-text {
-    background-image: url('../images/incomplete-achievement.svg');
+    background-image: url('../images/icons/incomplete-achievement.svg');
   }
 }
 
@@ -118,7 +118,7 @@
 .activity-list__item {
   align-items: flex-start;
   background-color: $concrete;
-  background-image: url('../images/tick-blue.svg');
+  background-image: url('../images/icons/tick-blue.svg');
   background-position: 8px 8px;
   background-repeat: no-repeat;
   background-size: 24px;
@@ -153,7 +153,7 @@
 
 .activity-list__item--incomplete {
   background-color: $white;
-  background-image: url('../images/incomplete-achievement.svg');
+  background-image: url('../images/icons/incomplete-achievement.svg');
   border: none;
 }
 

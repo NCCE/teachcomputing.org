@@ -9,7 +9,7 @@ class AboutPage
         class_name: 'dixie-bg',
         title: I18n.t('pages.about.hero.title'),
         text: I18n.t('pages.about.hero.text.html'),
-        image_url: 'media/images/pages/about/ncce_staff.png',
+        image_url: 'media/images/pages/about/ncce_staff.jpg',
         image_title: I18n.t('pages.about.hero.image_title')
       }
     end

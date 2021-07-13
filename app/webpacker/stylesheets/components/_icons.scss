@@ -26,19 +26,19 @@
 }
 
 .icon-online {
-  @include icon('../images/laptop.svg', left bottom);
+  @include icon('../images/icons/laptop.svg', left bottom);
 }
 
 .icon-calendar {
-  @include icon('../images/calendar.svg');
+  @include icon('../images/icons/calendar.svg');
 }
 
 .icon-clock {
-  @include icon('../images/clock.svg');
+  @include icon('../images/icons/clock.svg');
 }
 
 .icon-map-pin {
-  @include icon('../images/map-pin.svg');
+  @include icon('../images/icons/map-pin.svg');
 }
 
 .icon-remote {
