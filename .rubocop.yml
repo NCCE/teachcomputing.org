@@ -9,7 +9,7 @@ AllCops:
     - "vendor/**/*"
     - "spec/fixtures/**/*"
     - "tmp/**/*"
-    - "db/schema.rb"
+    - "db/*"
   TargetRubyVersion: 2.7.2
   NewCops: enable
 
