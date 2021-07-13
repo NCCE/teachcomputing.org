@@ -1,3 +1,5 @@
+# rubocop:disable Layout/LineLength Lint/AssignmentInCondition
+
 secondary = Programme.secondary_certificate
 
 puts 'Creating Programme Activity Groupings'

@@ -1,3 +1,5 @@
+# rubocop:disable Layout/LineLength
+
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 
