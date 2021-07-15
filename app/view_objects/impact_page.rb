@@ -69,13 +69,12 @@ class ImpactPage
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_1.html'),
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_2.html'),
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_3.html'),
-          I18n.t('pages.impact-and-evaluation.literacy_report_card.item_4.html')
         ],
         button: {
           button_title: I18n.t('pages.impact-and-evaluation.literacy_report_card.button_title'),
-          button_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
+          button_url: 'https://static.teachcomputing.org/Computer_Systems_&_Networking_Report-Final.pdf',
           tracking_page: tracking_page,
-          tracking_label: 'Digital literacy'
+          tracking_label: 'Systems and networks'
         }
       }
     end
@@ -84,6 +83,17 @@ class ImpactPage
       {
         class_name: 'curriculum-cards',
         cards: [
+          {
+            class_name: 'impact-literacy-card',
+            title_link: {
+              title: I18n.t('pages.impact-and-evaluation.literacy_card.title'),
+              title_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
+              tracking_page: tracking_page,
+              tracking_label: 'Textbook review'
+            },
+            date: I18n.t('pages.impact-and-evaluation.literacy_card.date'),
+            text: I18n.t('pages.impact-and-evaluation.literacy_card.text')
+          },
           {
             class_name: 'impact-textbook-card',
             title_link: {
