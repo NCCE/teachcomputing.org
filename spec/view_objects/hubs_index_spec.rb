@@ -52,6 +52,14 @@ RSpec.describe HubsIndex do
       end
     end
 
+    context 'when no results found' do
+      let(:location) { 'invalid' }
+
+      it 'returns nil' do
+        expect(hub_index.sorted_hubs).to eq(nil)
+      end
+    end
+
     context 'when location is present' do
       let(:location) { 'sheffield' }
 

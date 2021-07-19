@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :hub do
-    name {  Faker::Company.name}
+    name { Faker::Company.name }
     hub_region
     subdeliverer_id { SecureRandom.uuid }
     address { Faker::Address.street_address }
