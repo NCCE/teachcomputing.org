@@ -7,7 +7,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/views/hubs/index.html.erb",
-      "line": 29,
+      "line": 36,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(action => HubRegionComponent.with_collection(HubsIndex.new(:location => params[:location]).hub_regions), {})",
       "render_path": [
@@ -15,7 +15,7 @@
           "type": "controller",
           "class": "HubsController",
           "method": "index",
-          "line": 4,
+          "line": 6,
           "file": "app/controllers/hubs_controller.rb",
           "rendered": {
             "name": "hubs/index",
@@ -86,7 +86,7 @@
           "type": "controller",
           "class": "HubsController",
           "method": "index",
-          "line": 4,
+          "line": 6,
           "file": "app/controllers/hubs_controller.rb",
           "rendered": {
             "name": "hubs/index",
@@ -120,6 +120,37 @@
       },
       "user_input": "UserProgrammeEnrolment.find_by(user_programme_enrolment_params).programme.path",
       "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "697a2e804021d8c56d68bca08cc237e1061f3170586aa660ccc5028ac18962dd",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/hubs/index.html.erb",
+      "line": 38,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => NoHubsComponent.new(:sorted_hubs => HubsIndex.new(:location => params[:location]).sorted_hubs, :hub_regions => HubsIndex.new(:location => params[:location]).hub_regions), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "HubsController",
+          "method": "index",
+          "line": 6,
+          "file": "app/controllers/hubs_controller.rb",
+          "rendered": {
+            "name": "hubs/index",
+            "file": "app/views/hubs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "hubs/index"
+      },
+      "user_input": "params[:location]",
+      "confidence": "Weak",
       "note": ""
     },
     {
@@ -169,7 +200,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/views/hubs/index.html.erb",
-      "line": 30,
+      "line": 37,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(action => SortedHubsComponent.new(:sorted_hubs => HubsIndex.new(:location => params[:location]).sorted_hubs, :formatted_address => HubsIndex.new(:location => params[:location]).formatted_address), {})",
       "render_path": [
@@ -177,7 +208,7 @@
           "type": "controller",
           "class": "HubsController",
           "method": "index",
-          "line": 4,
+          "line": 6,
           "file": "app/controllers/hubs_controller.rb",
           "rendered": {
             "name": "hubs/index",
@@ -210,6 +241,6 @@
       "note": ""
     }
   ],
-  "updated": "2021-06-21 09:12:49 +0100",
-  "brakeman_version": "5.0.0"
+  "updated": "2021-07-19 13:38:01 +0000",
+  "brakeman_version": "5.0.4"
 }
