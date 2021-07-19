@@ -212,7 +212,7 @@ end
 
 group_three = secondary.programme_activity_groupings.find_by(sort_key: 3)
 
-if activity = Activity.find_by(slug: 'contribute-to-online-discussion')
+if activity = Activity.find_by(slug: 'contribute-to-online-discussion-secondary')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_three.programme_activities.include?(programme_activity)
     programme_activity.update(programme_activity_grouping_id: group_three.id)
@@ -256,14 +256,14 @@ if activity = Activity.find_by(slug: 'become-a-mentor')
   end
 end
 
-if activity = Activity.find_by(slug: 'lead-a-session-at-a-regional-or-national-conference')
+if activity = Activity.find_by(slug: 'lead-a-session-at-a-regional-or-national-conference-secondary')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_four.programme_activities.include?(programme_activity)
     programme_activity.update(programme_activity_grouping_id: group_four.id)
   end
 end
 
-if activity = Activity.find_by(slug: 'lead-a-cas-community-of-practice')
+if activity = Activity.find_by(slug: 'lead-a-cas-community-of-practice-secondary')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_four.programme_activities.include?(programme_activity)
     programme_activity.update(programme_activity_grouping_id: group_four.id)
