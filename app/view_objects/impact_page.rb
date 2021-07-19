@@ -47,6 +47,17 @@ class ImpactPage
           {
             class_name: 'impact-graduates-card',
             title_link: {
+              title: I18n.t('pages.impact-and-evaluation.graduates_card_2.title'),
+              title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
+              tracking_page: tracking_page,
+              tracking_label: 'CSA cohort 2'
+            },
+            date: I18n.t('pages.impact-and-evaluation.graduates_card_2.date'),
+            text: I18n.t('pages.impact-and-evaluation.graduates_card_2.text')
+          },
+          {
+            class_name: 'impact-graduates-card',
+            title_link: {
               title: I18n.t('pages.impact-and-evaluation.graduates_card.title'),
               title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
               tracking_page: tracking_page,
