@@ -5,18 +5,18 @@ a:not([class]) {
 
   &:link,
   &:visited {
-    color: $deep-cerulean;
+    color: $hyper-link-blue;
   }
   &:hover {
     color: $grey-dark-x;
   }
   &:focus {
-    background-color: $deep-cerulean;
+    background-color: $hyper-link-blue;
     color: $white;
-    outline-color: $deep-cerulean;
+    outline-color: $hyper-link-blue;
   }
   &:active {
-    background-color: $deep-cerulean;
+    background-color: $hyper-link-blue;
     color: $white;
   }
 }
