@@ -14,7 +14,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
     end
 
     it 'renders the expected number of cards' do
-      expect(rendered_component).to have_css('.document-card', count: 1)
+      expect(rendered_component).to have_css('.document-card', count: 2)
     end
 
     it 'sets show-border data attribute' do
@@ -35,7 +35,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
     end
 
     it 'does not render any dates' do
-      expect(rendered_component).not_to have_css('.document-card__date')
+      expect(rendered_component).to have_css('.document-card__date')
     end
 
     it 'renders the body text' do
