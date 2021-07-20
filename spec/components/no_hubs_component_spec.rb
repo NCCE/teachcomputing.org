@@ -25,7 +25,7 @@ RSpec.describe NoHubsComponent, type: :component do
     end
 
     it 'renders with a button to clear the search' do
-      expect(rendered_component).to have_link('Clear your search', href: '/hubs')
+      expect(rendered_component).to have_link('Clear your search', href: '/hubs#sorted_hubs')
     end
   end
 end
