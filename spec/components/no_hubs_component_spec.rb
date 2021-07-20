@@ -20,7 +20,7 @@ RSpec.describe NoHubsComponent, type: :component do
     end
 
     it 'shows the expected text' do
-      expect(rendered_component).to have_text("Sorry, we couldn't find any hubs that match your search.")
+      expect(rendered_component).to have_text("Sorry, we couldn't find any Hubs that match your search.")
       expect(rendered_component).to have_text('Try modifying or clearing your search to see more results.')
     end
 
