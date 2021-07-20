@@ -38,7 +38,7 @@ RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type:
 
       context 'and the user has done an eligible CSA course' do
         before do
-          eligible_csa_achievement
+          eligible_csa_achievement.transition_to(:complete)
         end
 
         it 'creates creates an achievement for the user' do
