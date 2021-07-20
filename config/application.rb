@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module TeachComputing
   class Application < Rails::Application
+    config.action_dispatch.cookies_same_site_protection = :lax
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
