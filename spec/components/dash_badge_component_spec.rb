@@ -11,7 +11,7 @@ RSpec.describe DashBadgeComponent, type: :component do
     stub_issued_badges(user.id)
   end
 
-  context 'and fixed width is true' do
+  context 'when fixed width is true' do
     before do
       stub_issued_badges(user.id)
       render_inline(fixed_width_dash_badge_component)
