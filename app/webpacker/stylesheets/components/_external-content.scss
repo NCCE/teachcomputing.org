@@ -70,5 +70,7 @@
   button {
     @extend .govuk-button;
     @extend .button;
+    color: $white !important;
+    display: inline-block;
   }
 }
