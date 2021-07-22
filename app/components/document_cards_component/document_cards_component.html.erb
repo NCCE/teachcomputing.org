@@ -9,7 +9,7 @@
       <% unless card[:date].blank? %>
         <p class="govuk-body govuk-body-s document-card__date"><%= card[:date] %></p>
       <% end %>
-      <p class="govuk-body document-card__text"><%= card[:text] %></p>
+      <p class="govuk-body document-card__text"><%= card[:text].html_safe %></p>
     <% end %>
   <% end %>
 <% end %>

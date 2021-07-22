@@ -1,5 +1,7 @@
 class ImpactPage
   class << self
+    include ActionView::Helpers::UrlHelper
+
     def tracking_page
       'Impact'
     end
@@ -48,12 +50,20 @@ class ImpactPage
             class_name: 'impact-graduates-card',
             title_link: {
               title: I18n.t('pages.impact-and-evaluation.graduates_card_2.title'),
-              title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
+              title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf',
               tracking_page: tracking_page,
               tracking_label: 'CSA cohort 2'
             },
             date: I18n.t('pages.impact-and-evaluation.graduates_card_2.date'),
-            text: I18n.t('pages.impact-and-evaluation.graduates_card_2.text')
+            text: I18n.t(
+              'pages.impact-and-evaluation.graduates_card_2.text.html',
+              executive_summary_link: (
+                link_to 'our Executive Summary',
+                        'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
+                        class: 'ncce-link',
+                        data: { event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary' }
+              )
+            )
           },
           {
             class_name: 'impact-graduates-card',
