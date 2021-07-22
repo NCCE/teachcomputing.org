@@ -5,7 +5,10 @@ module Programmes
       enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: Programme.cs_accelerator.id)
       return unless enrolment
 
-      courses = user.achievements.for_programme(Programme.cs_accelerator).where('created_at > ?', enrolment.completed_at?)
+      achievements = user.achievements.for_programme(Programme.cs_accelerator).in_state(:complete)
+      achievements.filter do |achievement|
+        achievement.last_transition.created_at > enrolment.completed_at?
+      end
     end
 
     def diagnostic
@@ -33,7 +36,7 @@ module Programmes
     def enrol_path(opts = {})
       enrol_secondary_certificate_path(opts)
     end
-    
+
     def programme_title
       PROGRAMME_TITLE
     end

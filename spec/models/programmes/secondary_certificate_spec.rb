@@ -15,10 +15,22 @@ RSpec.describe Programmes::SecondaryCertificate do
       end
     end
 
-    it 'returns a collection of eligble courses' do
+    it 'returns a collection of eligible courses' do
       cs_accelerator_enrolment.transition_to(:complete)
       create(:achievement, user_id: user.id, programme_id: cs_accelerator.id).transition_to(:complete)
       expect(secondary_certificate.csa_eligible_courses(user).count).to eq 1
+    end
+
+    it 'does not return an incomplete course' do
+      cs_accelerator_enrolment.transition_to(:complete)
+      create(:achievement, user_id: user.id, programme_id: cs_accelerator.id).transition_to(:pending)
+      expect(secondary_certificate.csa_eligible_courses(user).count).to eq 0
+    end
+
+    it 'does not return courses completed before the programme was completed' do
+      create(:achievement, user_id: user.id, programme_id: cs_accelerator.id).transition_to(:complete)
+      cs_accelerator_enrolment.transition_to(:complete)
+      expect(secondary_certificate.csa_eligible_courses(user).count).to eq 0
     end
   end
 
