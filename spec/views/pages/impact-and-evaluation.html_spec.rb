@@ -40,7 +40,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
     end
 
     it 'has the expected links' do
-      expect(rendered).to have_link('View Digital Literacy Report', href: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf')
+      expect(rendered).to have_link('View Computer Systems and Networks Report', href: 'https://static.teachcomputing.org/Computer_Systems_&_Networking_Report-Final.pdf')
       expect(rendered).to have_link('International Computing Textbook Review', href: 'https://static.teachcomputing.org/International_Textbook_Review.pdf')
     end
   end
