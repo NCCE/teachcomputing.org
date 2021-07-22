@@ -1281,3 +1281,29 @@ a = Activity.find_or_create_by(stem_course_template_no: 'b7f3eb4b-42d3-eb11-bacb
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7d7044f3-c4ea-eb11-bacb-0022481a7a8c') do |activity|
+  activity.title = 'Mentoring support for non-computing mentors'
+  activity.credit = 10
+  activity.slug = 'mentoring-support-for-non-computing-mentors'
+  activity.stem_course_template_no = '7d7044f3-c4ea-eb11-bacb-0022481a7a8c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP401'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb-0022481a422d') do |activity|
+  activity.title = 'Mentoring support for computing leads'
+  activity.credit = 10
+  activity.slug = 'mentoring-support-for-computing-leads'
+  activity.stem_course_template_no = 'b41096d2-c8ea-eb11-bacb-0022481a422d'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP402'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
