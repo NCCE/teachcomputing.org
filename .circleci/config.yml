@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   brakeman:
     docker:
-      - image: 'cimg/ruby:2.7.2'
+      - image: "cimg/ruby:2.7.2"
     steps:
       - checkout
       - ruby/install-deps
@@ -13,7 +13,7 @@ jobs:
 
   rubocop:
     docker:
-      - image: 'cimg/ruby:2.7.2'
+      - image: "cimg/ruby:2.7.2"
     steps:
       - checkout
       - ruby/install-deps
@@ -85,6 +85,9 @@ jobs:
       - run:
           name: Run Lighthouse
           command: lhci autorun
+      - run:
+          name: Inspecting changes with Rubocop
+          command: bundle exec rubocop-changes --format quiet
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
