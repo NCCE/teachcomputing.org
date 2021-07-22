@@ -138,9 +138,6 @@ workflows:
   test:
     jobs:
       - test
-
-  coverage_check:
-    jobs:
       - coverage_check:
           requires:
             - test
