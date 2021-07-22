@@ -61,7 +61,9 @@ class ImpactPage
                 link_to 'our Executive Summary',
                         'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
                         class: 'ncce-link',
-                        data: { event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary' }
+                        data: {
+                          event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary'
+                        }
               )
             )
           },
