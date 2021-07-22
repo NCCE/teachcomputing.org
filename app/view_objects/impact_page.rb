@@ -68,11 +68,11 @@ class ImpactPage
         bullets: [
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_1.html'),
           I18n.t('pages.impact-and-evaluation.literacy_report_card.item_2.html'),
-          I18n.t('pages.impact-and-evaluation.literacy_report_card.item_3.html'),
+          I18n.t('pages.impact-and-evaluation.literacy_report_card.item_3.html')
         ],
         button: {
           button_title: I18n.t('pages.impact-and-evaluation.literacy_report_card.button_title'),
-          button_url: 'https://static.teachcomputing.org/Computer_Systems_&_Networking_Report-Final.pdf',
+          button_url: 'https://static.teachcomputing.org/Computer_Systems_%26_Networking_Report_-_Final.pdf',
           tracking_page: tracking_page,
           tracking_label: 'Systems and networks'
         }
@@ -89,7 +89,7 @@ class ImpactPage
               title: I18n.t('pages.impact-and-evaluation.literacy_card.title'),
               title_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
               tracking_page: tracking_page,
-              tracking_label: 'Textbook review'
+              tracking_label: 'Digital literacy'
             },
             date: I18n.t('pages.impact-and-evaluation.literacy_card.date'),
             text: I18n.t('pages.impact-and-evaluation.literacy_card.text')
