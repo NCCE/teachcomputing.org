@@ -67,10 +67,11 @@
     @extend .ncce-link;
   }
 
-  button {
+  .button {
     @extend .govuk-button;
-    @extend .button;
+    @include ncce_button($deep-cerulean);
     color: $white !important;
     display: inline-block;
+    text-decoration: none;
   }
 }
