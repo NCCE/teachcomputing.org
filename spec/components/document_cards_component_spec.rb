@@ -31,7 +31,10 @@ RSpec.describe DocumentCardsComponent, type: :component do
     end
 
     it 'renders a title' do
-      expect(rendered_component).to have_link('Computer Science Accelerator Graduates Evaluation (cohort 1)', href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf')
+      expect(rendered_component).to have_link(
+        'Computer Science Accelerator Graduates Evaluation (cohort 1)',
+        href: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf'
+      )
     end
 
     it 'does not render any dates' do
@@ -39,8 +42,17 @@ RSpec.describe DocumentCardsComponent, type: :component do
     end
 
     it 'renders the body text' do
-      expect(rendered_component).to have_css('.document-card__text',
-                                             text: 'Reviews feedback from the first graduates of the Computer Science Accelerator')
+      expect(rendered_component).to have_css(
+        '.document-card__text',
+        text: 'Reviews feedback from the first graduates of the Computer Science Accelerator'
+      )
+    end
+
+    it 'renders html in the body text if passed' do
+      expect(rendered_component).to have_link(
+        'our Executive Summary',
+        href: 'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf'
+      )
     end
   end
 
