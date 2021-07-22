@@ -1,7 +1,5 @@
 class FeatureFlagService
-  FLAGS = {
-    badges_enabled: 'BADGES_ENABLED'
-  }.freeze
+  FLAGS = {}.freeze
 
   def initialize(dependencies = {})
     @flags_to_define = dependencies.fetch(:flags) do

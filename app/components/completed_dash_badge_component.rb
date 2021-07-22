@@ -8,7 +8,6 @@ class CompletedDashBadgeComponent < ViewComponent::Base
   end
 
   def render?
-    return false unless FeatureFlagService.new.flags[:badges_enabled]
     return false unless @badge.present?
 
     true

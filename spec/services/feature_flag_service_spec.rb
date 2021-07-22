@@ -47,11 +47,7 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      expect(FeatureFlagService::FLAGS.count).to eq 1
-    end
-
-    it 'sets the badges_enabled flag' do
-      expect(FeatureFlagService::FLAGS.keys).to include(:badges_enabled)
+      expect(FeatureFlagService::FLAGS.count).to eq 0
     end
   end
 end
