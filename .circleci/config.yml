@@ -85,9 +85,6 @@ jobs:
       - run:
           name: Run Lighthouse
           command: lhci autorun
-      - run:
-          name: Inspecting changes with Rubocop
-          command: bundle exec rubocop-changes --format quiet
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
@@ -120,15 +117,18 @@ orbs:
   ruby: circleci/ruby@1
 
 workflows:
-  code_quality:
+  brakeman:
     jobs:
-      - brakeman:
+      - main:
           filters:
             branches:
               ignore:
                 - master
                 - main
-      - rubocop:
+
+  rubocop:
+    jobs:
+      - main:
           filters:
             branches:
               ignore:
@@ -138,7 +138,10 @@ workflows:
   test:
     jobs:
       - test
-      - coverage_check:
+
+  coverage_check:
+    jobs:
+      - main:
           requires:
             - test
           filters:
