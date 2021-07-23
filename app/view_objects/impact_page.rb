@@ -49,34 +49,37 @@ class ImpactPage
           {
             class_name: 'impact-graduates-card',
             title_link: {
-              title: I18n.t('pages.impact-and-evaluation.graduates_card_2.title'),
+              title: 'pages.impact-and-evaluation.graduates_card_2.title',
               title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf',
               tracking_page: tracking_page,
               tracking_label: 'CSA cohort 2'
             },
-            date: I18n.t('pages.impact-and-evaluation.graduates_card_2.date'),
-            text: I18n.t(
-              'pages.impact-and-evaluation.graduates_card_2.text.html',
-              executive_summary_link: (
-                link_to 'our Executive Summary',
-                        'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
-                        class: 'ncce-link',
-                        data: {
-                          event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary'
-                        }
-              )
-            )
+            date: 'pages.impact-and-evaluation.graduates_card_2.date',
+            body: {
+              text: 'pages.impact-and-evaluation.graduates_card_2.text.html',
+              tokens: [
+                executive_summary_link: (
+                  link_to 'our Executive Summary',
+                          'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
+                          class: 'ncce-link', data: {
+                            event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary'
+                          }
+                )
+              ]
+            }
           },
           {
             class_name: 'impact-graduates-card',
             title_link: {
-              title: I18n.t('pages.impact-and-evaluation.graduates_card.title'),
+              title: 'pages.impact-and-evaluation.graduates_card.title',
               title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
               tracking_page: tracking_page,
               tracking_label: 'CSA cohort 1'
             },
-            date: I18n.t('pages.impact-and-evaluation.graduates_card.date'),
-            text: I18n.t('pages.impact-and-evaluation.graduates_card.text')
+            date: 'pages.impact-and-evaluation.graduates_card.date',
+            body: {
+              text: 'pages.impact-and-evaluation.graduates_card.text'
+            }
           }
         ]
       }
@@ -110,13 +113,15 @@ class ImpactPage
           {
             class_name: 'impact-textbook-card',
             title_link: {
-              title: I18n.t('pages.impact-and-evaluation.textbook_card.title'),
+              title: 'pages.impact-and-evaluation.textbook_card.title',
               title_url: 'https://static.teachcomputing.org/International_Textbook_Review.pdf',
               tracking_page: tracking_page,
               tracking_label: 'Textbook review'
             },
-            date: I18n.t('pages.impact-and-evaluation.textbook_card.date'),
-            text: I18n.t('pages.impact-and-evaluation.textbook_card.text')
+            date: 'pages.impact-and-evaluation.textbook_card.date',
+            body: {
+              text: 'pages.impact-and-evaluation.textbook_card.text'
+            }
           }
         ]
       }
