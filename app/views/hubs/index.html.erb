@@ -35,6 +35,7 @@
     <div class="govuk-grid-column-two-thirds">
       <%= render HubRegionComponent.with_collection(@hubs_index.hub_regions) %>
       <%= render SortedHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, formatted_address: @hubs_index.formatted_address) %>
+      <%= render NoHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, hub_regions: @hubs_index.hub_regions) %>
     </div>
   </div>
 </div>

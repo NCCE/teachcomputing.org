@@ -10,32 +10,15 @@ RSpec.describe Credly::IssueBadgeJob, type: :job do
       allow(Credly::Badge).to receive(:issue).and_return(true)
     end
 
-    context 'when the feature flag is enabled' do
+    context 'when the user does not already have the badge' do
       before do
-        stub_feature_flags({ badges_enabled: true })
+        badge
+        stub_issued_badges_empty(user.id)
       end
 
-      after do
-        unstub_feature_flags
-      end
-
-      context 'when the user does not already have the badge' do
-        before do
-          badge
-          stub_issued_badges_empty(user.id)
-        end
-
-        it 'calls Credly::Badge.issue' do
-          described_class.perform_now(user.id, programme.id)
-          expect(Credly::Badge).to have_received(:issue)
-        end
-      end
-    end
-
-    context 'when the feature flag is not enabled' do
-      it 'does not call Credly::Badge.issue' do
+      it 'calls Credly::Badge.issue' do
         described_class.perform_now(user.id, programme.id)
-        expect(Credly::Badge).not_to have_received(:issue)
+        expect(Credly::Badge).to have_received(:issue)
       end
     end
   end

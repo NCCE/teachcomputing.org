@@ -14,7 +14,7 @@ class HubsIndex
   end
 
   def sorted_hubs
-    return nil unless @location.present?
+    return nil unless @location.present? && geocoded_search_location.present?
 
     Hub.near(geocoded_search_location.coordinates, 500)
   end

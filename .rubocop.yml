@@ -35,6 +35,9 @@ Layout/ClassStructure:
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
 
+Layout/LineLength:
+  Enabled: false
+
 Metrics/BlockLength:
   Enabled: false
 

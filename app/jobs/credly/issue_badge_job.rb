@@ -3,8 +3,6 @@ module Credly
     queue_as :default
 
     def perform(user_id, programme_id)
-      return unless FeatureFlagService.new.flags[:badges_enabled]
-
       user = User.find(user_id)
       programme = Programme.find(programme_id)
       badge = programme.badges.active.first
