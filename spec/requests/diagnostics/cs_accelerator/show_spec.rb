@@ -14,10 +14,6 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     end
 
-    after do
-      unstub_feature_flags
-    end
-
     context 'when the user has not completed the diagnostic' do
       before do
         user_programme_enrolment

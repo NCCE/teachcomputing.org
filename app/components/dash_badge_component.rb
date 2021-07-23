@@ -8,11 +8,6 @@ class DashBadgeComponent < ViewComponent::Base
     @tracking_event_label = tracking_event_label
   end
 
-  def render?
-    return false unless FeatureFlagService.new.flags[:badges_enabled]
-    true
-  end
-
   def tracking_data
     return nil unless @tracking_event_category.present? &&
                       @tracking_event_label.present?
