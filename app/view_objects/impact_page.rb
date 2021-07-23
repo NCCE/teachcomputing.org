@@ -112,13 +112,15 @@ class ImpactPage
           {
             class_name: 'impact-literacy-card',
             title_link: {
-              title: I18n.t('pages.impact-and-evaluation.literacy_card.title'),
+              title: 'pages.impact-and-evaluation.literacy_card.title',
               title_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
               tracking_page: tracking_page,
               tracking_label: 'Digital literacy'
             },
-            date: I18n.t('pages.impact-and-evaluation.literacy_card.date'),
-            text: I18n.t('pages.impact-and-evaluation.literacy_card.text')
+            date: 'pages.impact-and-evaluation.literacy_card.date',
+            body: {
+              text: 'pages.impact-and-evaluation.literacy_card.text'
+            }
           },
           {
             class_name: 'impact-textbook-card',

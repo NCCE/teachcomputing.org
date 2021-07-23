@@ -8,6 +8,7 @@ class DocumentCardsComponent < ViewComponent::Base
     @show_border = show_border
   end
 
+  # The assign_ methods are to provide an interface of sorts, with more useful error handling for missing params
   def assign_card(title_link:, body:, class_name: nil, date: nil)
     { title_link: assign_title_link(title_link), body: assign_body(body), class_name: class_name, date: date }
   end
