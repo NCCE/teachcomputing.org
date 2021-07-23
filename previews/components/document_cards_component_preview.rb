@@ -1,4 +1,6 @@
 class DocumentCardsComponentPreview < ViewComponent::Preview
+  include ActionView::Helpers::UrlHelper
+
   def cards_with_border
     params = {
       class_name: 'page-cards-example-component',
@@ -10,7 +12,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is some example text'
+          body: {
+            text: 'This is some example text'
+          }
         },
         {
           date: 'May 2021',
@@ -18,7 +22,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is some example text'
+          body: {
+            text: 'This is some example text'
+          }
         }
       ]
     }
@@ -35,7 +41,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is an example of a card without a date'
+          body: {
+            text: 'This is an example of a card without a date'
+          }
         },
         {
           date: 'June 2021',
@@ -43,7 +51,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          body: {
+            text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          }
         }
       ]
     }
@@ -62,7 +72,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is an example of a card without a date'
+          body: {
+            text: 'This is an example of a card without a date'
+          }
         },
         {
           date: 'June 2021',
@@ -70,7 +82,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          body: {
+            text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          }
         },
         {
           date: 'June 2021',
@@ -78,7 +92,9 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
             title: 'Card 1',
             title_url: '/'
           },
-          text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          body: {
+            text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
+          }
         }
       ]
     }
