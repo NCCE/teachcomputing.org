@@ -128,6 +128,45 @@ class PrimaryLandingPage
     ]
   end
 
+  def contributing_partners
+    {
+      class_name: 'resource-cards',
+      cards_per_row: 3,
+      cards: [
+        {
+          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          title: I18n.t('pages.about.tc_card.title'),
+          text: I18n.t('pages.about.tc_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.tc_card.link_title'),
+            link_url: '/curriculum',
+            tracking_label: 'Teaching resources'
+          }
+        },
+        {
+          image_url: 'media/images/logos/isaac-logo-with-bg.svg',
+          title: I18n.t('pages.about.isaac_card.title'),
+          text: I18n.t('pages.about.isaac_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.isaac_card.link_title'),
+            link_url: '/a-level-computer-science',
+            tracking_label: 'A level resources'
+          }
+        },
+        {
+          image_url: 'media/images/logos/gender-balance-logo-with-bg.svg',
+          title: I18n.t('pages.about.gender_balance_card.title'),
+          text: I18n.t('pages.about.gender_balance_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.gender_balance_card.link_title'),
+            link_url: '/gender-balance',
+            tracking_label: 'Gender balance'
+          }
+        }
+      ]
+    }
+  end
+
   private
 
     def enrolled_on_primary?
