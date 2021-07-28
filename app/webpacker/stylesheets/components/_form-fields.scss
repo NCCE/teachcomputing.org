@@ -93,7 +93,7 @@
   .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before,
   .ncce-checkboxes__input:active + .ncce-checkboxes__label::before,
   .ncce-checkboxes__input[checked='checked'] + .ncce-checkboxes__label::before {
-    background-color: #E3F6FC;
+    background-color: $foam;
     border: 2px solid #007fa2;
     box-shadow: none;
     outline: none;

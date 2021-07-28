@@ -31,11 +31,11 @@
 }
 
 .light-blue-bg {
-  background-color: #e3f6fc;
+  background-color: #E4F9FF;
 }
 
 .light-grey-bg {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .tapestry-bg {
@@ -5560,7 +5560,7 @@ a[class='']:link,
 a[class='']:visited,
 a:not([class]):link,
 a:not([class]):visited {
-  color: #007fa2;
+  color: #007A9C;
 }
 
 .ncce-link:hover,
@@ -5572,15 +5572,15 @@ a:not([class]):hover {
 .ncce-link:focus,
 a[class='']:focus,
 a:not([class]):focus {
-  background-color: #007fa2;
+  background-color: #007A9C;
   color: #ffffff;
-  outline-color: #007fa2;
+  outline-color: #007A9C;
 }
 
 .ncce-link:active,
 a[class='']:active,
 a:not([class]):active {
-  background-color: #007fa2;
+  background-color: #007A9C;
   color: #ffffff;
 }
 
@@ -5818,13 +5818,13 @@ a:not([class]):active {
 }
 
 .govuk-header__link {
-  color: #007fa2;
+  color: #007A9C;
   font-weight: normal !important;
 }
 
 .govuk-header__link:link,
 .govuk-header__link:visited {
-  color: #007fa2;
+  color: #007A9C;
 }
 
 .govuk-header__link:hover {
@@ -5834,9 +5834,9 @@ a:not([class]):active {
 }
 
 .govuk-header__link:focus {
-  background-color: #007fa2;
+  background-color: #007A9C;
   color: #ffffff;
-  outline-color: #007fa2;
+  outline-color: #007A9C;
 }
 
 .govuk-header__menu-button {
@@ -5910,11 +5910,11 @@ a:not([class]):active {
 }
 
 .ncce-header__navigation-item {
-  border-color: #007fa2;
+  border-color: #007A9C;
 }
 
 .ncce-header__certification-item {
-  border-bottom: 1px solid #007fa2;
+  border-bottom: 1px solid #007A9C;
   padding: 10px 0;
 }
 
@@ -5940,7 +5940,7 @@ a:not([class]):active {
 }
 
 .ncce-header__navigation-enrol {
-  background-color: #007fa2;
+  background-color: #007A9C;
   padding: 0.1rem 0.4rem;
   position: relative;
 }
@@ -6032,7 +6032,7 @@ a:not([class]):active {
 }
 
 .ncce-alert--notice {
-  background-color: #e3f6fc;
+  background-color: #E4F9FF;
 }
 
 .ncce-alert--error {
@@ -6326,7 +6326,7 @@ a:not([class]):active {
 
   .card:after,
   .card--blue:after {
-    background-color: #e3f6fc;
+    background-color: #E4F9FF;
     background-position-x: right;
     background-position-y: bottom;
     background-repeat: no-repeat;
@@ -6344,12 +6344,12 @@ a:not([class]):active {
 }
 
 .card--plain {
-  border-left-color: #f2f2f2;
+  border-left-color: #F5F5F5;
 }
 
 @media (min-width: 48.0625em) {
   .card--plain:after {
-    background-color: #f2f2f2;
+    background-color: #F5F5F5;
   }
 }
 
@@ -6435,14 +6435,14 @@ a:not([class]):active {
 }
 
 .card__progress-bar {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
   color: #de01a5;
   height: 13px;
   width: 100%;
 }
 
 .card__progress-bar::-webkit-progress-bar {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .card__progress-bar::-webkit-progress-value {
@@ -6776,7 +6776,7 @@ a:not([class]):active {
 }
 
 .ncce-programmes-activity {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .ncce-programmes-activity__title {
@@ -6871,7 +6871,7 @@ a:not([class]):active {
 }
 
 .hero--plain {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .hero--plain:after {
@@ -7240,7 +7240,7 @@ a:not([class]):active {
 }
 
 .resources-aside {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
   padding: 1rem;
 }
 
@@ -7322,7 +7322,7 @@ a:not([class]):active {
 
 .ncce-courses__locations button {
   all: inherit;
-  background: #e3f6fc;
+  background: #E4F9FF;
   border: 0;
   box-sizing: border-box;
   cursor: pointer;
@@ -7382,7 +7382,7 @@ a:not([class]):active {
 }
 
 .ncce-courses__meta > li {
-  background: #e3f6fc;
+  background: #E4F9FF;
   box-sizing: border-box;
   margin-left: 0;
   margin-right: 0;
@@ -7424,7 +7424,7 @@ a:not([class]):active {
 }
 
 .ncce-courses__filter-container {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
   padding: 0;
 }
 
@@ -7553,7 +7553,7 @@ a:not([class]):active {
 }
 
 .course-details {
-  border: 2px solid #f2f2f2;
+  border: 2px solid #F5F5F5;
   margin-bottom: 1.5rem;
   padding: 1rem 1rem 0 1rem;
 }
@@ -7582,11 +7582,11 @@ a:not([class]):active {
 }
 
 .certification {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .ncce-dashboard-activity {
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 .ncce-activity-list--programme {
@@ -7971,7 +7971,7 @@ a:not([class]):active {
 }
 
 .primary-certificate__complete .ncce-activity-list__item-activity {
-  background-color: #e3f6fc;
+  background-color: #E4F9FF;
 }
 
 @media (min-width: 40.0625em) {

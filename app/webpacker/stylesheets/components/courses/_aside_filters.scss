@@ -218,7 +218,7 @@
   background-repeat: no-repeat;
   background-size: 0.8rem;
   background-position-y: center;
-  color: #007FA2;
+  color: #007A9C;
   padding-left: 1.2rem;
 }
 
@@ -252,7 +252,7 @@
     box-shadow: none;
     outline: none;
     border-color: #007fa2;
-    background-color: #E3F6FC;
+    background-color: $foam;
   }
 
   .ncce-select--filters.filter--active {
