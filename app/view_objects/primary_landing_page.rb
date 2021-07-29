@@ -146,7 +146,7 @@ class PrimaryLandingPage
         },
         {
           image_url: 'pages/primary-teachers/code-club-card.svg',
-          title:  I18n.t('pages.contributing-partners-cards.code-club.title'),
+          title: I18n.t('pages.contributing-partners-cards.code-club.title'),
           text: I18n.t('pages.contributing-partners-cards.code-club.text'),
           link: {
             link_title: I18n.t('pages.contributing-partners-cards.code-club.link_title'),
