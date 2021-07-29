@@ -15,8 +15,7 @@ class HeroComponent < ViewComponent::Base
   def class_list
     ['hero-component',
      color_class,
-     glyph_class
-    ].compact.join(' ')
+     glyph_class].compact.join(' ')
   end
 
   def heading_class_list
@@ -24,8 +23,10 @@ class HeroComponent < ViewComponent::Base
   end
 
   private
+
     def color_class
       return 'hero-component__default' unless @color.present?
+
       "hero-component__#{@color}"
     end
 
@@ -35,6 +36,7 @@ class HeroComponent < ViewComponent::Base
 
     def heading_size_class
       return 'govuk-heading-l' if @small_title
+
       'govuk-heading-xl'
     end
 end

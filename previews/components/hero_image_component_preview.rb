@@ -1,5 +1,5 @@
 class HeroImageComponentPreview < ViewComponent::Preview
-  layout "full-width"
+  layout 'full-width'
 
   def standard
     params = {

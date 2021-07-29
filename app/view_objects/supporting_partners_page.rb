@@ -2,7 +2,7 @@ class SupportingPartnersPage
   class << self
     def hero
       {
-        title: 'Supporting partners',
+        title: 'Supporting partners'
       }
     end
   end

@@ -1,5 +1,5 @@
 class HeroComponentPreview < ViewComponent::Preview
-  layout "full-width"
+  layout 'full-width'
 
   def default
     data = { title: 'Page title' }
@@ -22,16 +22,14 @@ class HeroComponentPreview < ViewComponent::Preview
   end
 
   def default_with_status_and_subtitle
-    data = { title: 'Page title', status: 'User-related status', subtitle: 'A subtitle or date'}
+    data = { title: 'Page title', status: 'User-related status', subtitle: 'A subtitle or date' }
     render(HeroComponent.new(data))
   end
 
   def default_with_small_title_status_and_subtitle
-    data = { title: 'A smaller title can be used if the page titles are long', small_title: true, status: 'User-related status', subtitle: 'A subtitle or date'}
+    data = { title: 'A smaller title can be used if the page titles are long', small_title: true, status: 'User-related status', subtitle: 'A subtitle or date' }
     render(HeroComponent.new(data))
   end
-
-
 
   def primary_color
     data = { title: 'Page title', color: :primary }
@@ -52,5 +50,4 @@ class HeroComponentPreview < ViewComponent::Preview
     # view at /previews/compononets/hero_component_preview/glyphs.html.erb
     # renders all glyphs available
   end
-
 end
