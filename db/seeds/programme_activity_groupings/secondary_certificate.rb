@@ -224,6 +224,13 @@ if activity = Activity.find_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb
   end
 end
 
+if activity = Activity.find_by(stem_course_template_no: '1b149049-2f19-eb11-a813-000d3a86f6ce')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  unless group_two.programme_activities.include?(programme_activity)
+    programme_activity.update(programme_activity_grouping_id: group_two.id)
+  end
+end
+
 group_three = secondary.programme_activity_groupings.find_by(sort_key: 3)
 
 if activity = Activity.find_by(slug: 'contribute-to-online-discussion-secondary')
