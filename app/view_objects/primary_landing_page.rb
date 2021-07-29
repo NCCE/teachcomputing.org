@@ -161,7 +161,7 @@ class PrimaryLandingPage
           text: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.text'),
           link: {
             link_title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.link_title'),
-            link_url: 'https://www.stem.org.uk/',
+            link_url: 'https://www.stem.org.uk/stem-ambassadors',
             tracking_page: event_tracking_category,
             tracking_label: 'STEM Ambassadors'
           }
