@@ -134,33 +134,36 @@ class PrimaryLandingPage
       cards_per_row: 3,
       cards: [
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
-          title: I18n.t('pages.about.tc_card.title'),
-          text: I18n.t('pages.about.tc_card.text'),
+          image_url: 'pages/primary-teachers/barefoot.svg',
+          title: I18n.t('pages.contributing-partners-cards.barefoot.title'),
+          text: I18n.t('pages.contributing-partners-cards.barefoot.text'),
           link: {
-            link_title: I18n.t('pages.about.tc_card.link_title'),
-            link_url: '/curriculum',
-            tracking_label: 'Teaching resources'
+            link_title: I18n.t('pages.contributing-partners-cards.barefoot.link_title'),
+            link_url: 'https://www.barefootcomputing.org/',
+            tracking_page: event_tracking_category,
+            tracking_label: ''
           }
         },
         {
-          image_url: 'media/images/logos/isaac-logo-with-bg.svg',
-          title: I18n.t('pages.about.isaac_card.title'),
-          text: I18n.t('pages.about.isaac_card.text'),
+          image_url: 'pages/primary-teachers/code-club-card.svg',
+          title:  I18n.t('pages.contributing-partners-cards.code-club.title'),
+          text: I18n.t('pages.contributing-partners-cards.code-club.text'),
           link: {
-            link_title: I18n.t('pages.about.isaac_card.link_title'),
-            link_url: '/a-level-computer-science',
-            tracking_label: 'A level resources'
+            link_title: I18n.t('pages.contributing-partners-cards.code-club.link_title'),
+            link_url: 'https://codeclub.org/en/',
+            tracking_page: event_tracking_category,
+            tracking_label: ''
           }
         },
         {
-          image_url: 'media/images/logos/gender-balance-logo-with-bg.svg',
-          title: I18n.t('pages.about.gender_balance_card.title'),
-          text: I18n.t('pages.about.gender_balance_card.text'),
+          image_url: 'pages/primary-teachers/stem-card.svg',
+          title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.title'),
+          text: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.text'),
           link: {
-            link_title: I18n.t('pages.about.gender_balance_card.link_title'),
-            link_url: '/gender-balance',
-            tracking_label: 'Gender balance'
+            link_title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.link_title'),
+            link_url: 'https://www.stem.org.uk/',
+            tracking_page: event_tracking_category,
+            tracking_label: ''
           }
         }
       ]

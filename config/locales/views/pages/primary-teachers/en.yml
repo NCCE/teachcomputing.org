@@ -1,0 +1,15 @@
+en:
+  pages:
+    contributing-partners-cards:
+      barefoot:
+        title: 'Barefoot'
+        text: 'Deliver the computing curriculum brilliantly, with free workshops, helpful online guides and engaging lesson plans and resources. Barefoot makes computing easy to teach and fun to learn, with or without a computer.'
+        link_title: 'Discover Barefoot'
+      code-club:
+        title: 'Code Club'
+        text: 'An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club.'
+        link_title: 'Start or join a club'
+      stem-Ambassadors:
+        title: 'STEM Ambassadors'
+        text: 'Relatable professionals who support learning, raise aspiration and illuminate careers - including those in computing and the digital sector - face to face or virtually, free of charge.'
+        link_title: 'Engage with STEM Ambassadors'
