@@ -1,0 +1,27 @@
+en:
+  pages:
+    supporting_partners:
+      arm:
+        title: "Arm"
+        img_alt: "Arm logo"
+        text_html: "As the world’s leading semiconductor IP company, Arm’s technology is in billions of devices; from supercomputers and cars, to mobile phones and small computers. The Arm School Program is part of its Education team and works with schools and partners to support teaching communities of practice and enabling research into STEM and computing education. They also offer <a class='ncce-link' href='https://www.arm.com/resources/education/schools/content'>a range of free resources</a>, linked to the computer science curriculum."
+      bt:
+        title: "BT"
+        img_alt: "BT logo"
+        text_html: "BT Skills for Tomorrow offers a wide range of free advice, information and support for all ages and abilities, to help people make the most of life in the digital world. As part of this, BT and Computing at School’s (CAS) <a class='ncce-link' href='https://www.barefootcomputing.org/'>Barefoot programme</a> supports primary teachers with the computing curriculum, providing free CPD and classroom resources. BT also offers <a class='ncce-link' href='https://www.bt.com/skillsfortomorrow/families'>free activities and games</a> for parents to use with their children to develop their digital skills."
+      google:
+        title: "Google"
+        img_alt: "Google logo"
+        text_html: "Google is dedicated to closing equity gaps in computer science education by providing the tools, resources, and inspiration to help every educator give their students confidence in Computer Science, advance their skills, and prepare them for the future. This includes <a class='ncce-link' href='https://csfirst.withgoogle.com/s/en/home?utm_source=pdpartner&utm_medium=referral&utm_campaign=20210115-TCUK21--hsms-ins-&src=re-pdp-20210115-TCUK21--hsms-ins-'>CS First</a>: a free computer science curriculum and <a class='ncce-link' href='https://applieddigitalskills.withgoogle.com/s/en-uk/teach?utm_source=partners&utm_medium=website&utm_campaign=10/2/2020-TC-UK--hsms-ins-&src=partners-website-10/2/2020-TC-UK--hsms-ins-'>Applied Digital Skills</a>: free video-based lessons to prepare students for the jobs of today and tomorrow."
+      ibm:
+        title: "IBM"
+        img_alt: "IBM logo"
+        text_html: "IBM supports a more inclusive society by partnering with key organisations in the public and non-profit sectors, providing expertise. technology, and a commitment to help young people build the skills required to succeed. Their free online learning platform, <a class='ncce-link' href='https://www.ptech.org/open-p-tech/'>Open P-TECH</a>, introduces students (13-18 years) and teachers to the technical and professional skills of the future. IBM also offers <a class='ncce-link' href='https://skillsbuild.org/'>SkillsBuild</a>, a free learning platform for adults looking to upskill and reskill."
+      nationwide:
+        title: "Nationwide Building Society"
+        img_alt: "Nationwide logo"
+        text_html: "At Nationwide we’re rethinking technology to build a better society and <a class='ncce-link' href='https://www.nationwide-jobs.co.uk/early-careers/ '>inspire young people to pursue STEM-related subjects and careers.</a> As well as partnering with the Tech Talent Charter, Tech She Can Charter, Code Club and Enthuse, which has inspired over 45,000 underrepresented students to consider a career in tech, we’ve also supported the NCCE with the rewriting of the computer curriculum and reskilling teachers to deliver it, from primary through to A-Level."
+      rolls_royce:
+        title: "Rolls-Royce Schools Prize for Science & Technology"
+        img_alt: "Rolls-Royce logo"
+        text_html: "Rolls-Royce are committed to advancing STEM subjects among the scientists and engineers of tomorrow. One of the ways they are working to help reach and support young people is through the Rolls-Royce Schools Prize for Science &amp; Technology - an annual awards programme that helps teachers’ increase science, mathematics, and technology engagement. The prize is open to all schools and colleges in the UK."

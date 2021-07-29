@@ -1,0 +1,27 @@
+.image-link-card-component {
+  background-color: $white;
+  border-color: $lilly-white;
+  box-shadow: 0 0 5px $box-shadow;
+  padding: 0 1.375rem 1.375rem;
+
+  @include govuk-media-query($from: desktop) {
+    padding: 0.5 * $logo-block;
+  }
+}
+
+.image-link-card-component__image {
+  display: block;
+  height: 136px;
+  margin: auto;
+  max-width: 15rem;
+
+  @include govuk-media-query($from: desktop) {
+    max-width: 22rem;
+    width: auto;
+  }
+}
+
+.image-link-card-component__title {
+  padding-top: 0;
+  text-align: center;
+}
