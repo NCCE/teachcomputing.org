@@ -1307,3 +1307,15 @@ a = Activity.find_or_create_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '1b149049-2f19-eb11-a813-000d3a86f6ce') do |activity|
+  activity.title = 'Assessment and progression in KS3 computing'
+  activity.credit = 10
+  activity.slug = 'assessment-and-progression-in-ks3-computing'
+  activity.stem_course_template_no = '1b149049-2f19-eb11-a813-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP212'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
