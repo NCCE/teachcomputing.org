@@ -1,6 +1,8 @@
 <% meta_tag :title, 'Meet our supporting partners.' %>
 <% meta_tag :description, 'The NCCE relies on financial contributions from businesses to help equip young people with digital skills for the future. Find out how you can help us.' %>
-<%= render 'components/hero', hero_title: 'Supporting partners', colour: 'blue', glyph_num: '1', glyph_position: 'bottom' %>
+
+<%= render HeroComponent.new(SupportingPartnersPage.hero) %>
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--l">
     <div class="govuk-grid-row">

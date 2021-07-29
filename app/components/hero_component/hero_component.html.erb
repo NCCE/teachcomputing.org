@@ -1,0 +1,20 @@
+<div class="<%= class_list %>">
+  <div class="govuk-width-container">
+    <div class="hero-component__wrapper">
+      <% if @status.present? %>
+        <span class="govuk-body-m hero-component__status"><%= @status %></span>
+      <% end %>
+      <div class="hero-component__heading-wrapper">
+        <h1 class="<%= heading_class_list %>">
+          <%= @title %>
+        </h1>
+        <% if @subtitle.present? %>
+          <p class="govuk-body hero-component__subtitle">
+            <%= @subtitle %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
