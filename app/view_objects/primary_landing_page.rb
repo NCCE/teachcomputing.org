@@ -141,7 +141,7 @@ class PrimaryLandingPage
             link_title: I18n.t('pages.contributing-partners-cards.barefoot.link_title'),
             link_url: 'https://www.barefootcomputing.org/',
             tracking_page: event_tracking_category,
-            tracking_label: ''
+            tracking_label: 'Barefoot'
           }
         },
         {
@@ -152,7 +152,7 @@ class PrimaryLandingPage
             link_title: I18n.t('pages.contributing-partners-cards.code-club.link_title'),
             link_url: 'https://codeclub.org/en/',
             tracking_page: event_tracking_category,
-            tracking_label: ''
+            tracking_label: 'Code club'
           }
         },
         {
@@ -163,7 +163,7 @@ class PrimaryLandingPage
             link_title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.link_title'),
             link_url: 'https://www.stem.org.uk/',
             tracking_page: event_tracking_category,
-            tracking_label: ''
+            tracking_label: 'STEM Ambassadors'
           }
         }
       ]
