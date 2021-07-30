@@ -128,6 +128,48 @@ class PrimaryLandingPage
     ]
   end
 
+  def contributing_partners
+    {
+      class_name: 'resource-cards',
+      cards_per_row: 3,
+      cards: [
+        {
+          image_url: 'pages/primary-teachers/barefoot.svg',
+          title: I18n.t('pages.contributing-partners-cards.barefoot.title'),
+          text: I18n.t('pages.contributing-partners-cards.barefoot.text'),
+          link: {
+            link_title: I18n.t('pages.contributing-partners-cards.barefoot.link_title'),
+            link_url: 'https://www.barefootcomputing.org/',
+            tracking_page: event_tracking_category,
+            tracking_label: 'Barefoot'
+          }
+        },
+        {
+          image_url: 'pages/primary-teachers/code-club-card.svg',
+          title: I18n.t('pages.contributing-partners-cards.code-club.title'),
+          text: I18n.t('pages.contributing-partners-cards.code-club.text'),
+          link: {
+            link_title: I18n.t('pages.contributing-partners-cards.code-club.link_title'),
+            link_url: 'https://codeclub.org/en/',
+            tracking_page: event_tracking_category,
+            tracking_label: 'Code club'
+          }
+        },
+        {
+          image_url: 'pages/primary-teachers/stem-card.svg',
+          title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.title'),
+          text: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.text'),
+          link: {
+            link_title: I18n.t('pages.contributing-partners-cards.stem-Ambassadors.link_title'),
+            link_url: 'https://www.stem.org.uk/stem-ambassadors',
+            tracking_page: event_tracking_category,
+            tracking_label: 'STEM Ambassadors'
+          }
+        }
+      ]
+    }
+  end
+
   private
 
     def enrolled_on_primary?
