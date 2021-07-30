@@ -226,6 +226,7 @@
     margin: 0;
 
     @include govuk-media-query($from: desktop) {
+      filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.3));
       background-image: none;
     }
   }
