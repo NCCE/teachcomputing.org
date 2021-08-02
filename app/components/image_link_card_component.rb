@@ -5,7 +5,7 @@ class ImageLinkCardComponent < ViewComponent::Base
     @title_locale = image_link_card[:title_locale]
     @link_url = image_link_card[:link_url]
     @image_path = image_link_card[:image_path]
-    @image_alt_locale = image_link_card[:image_alt_locale]
+    @img_alt_locale = image_link_card[:img_alt_locale]
     @text_locale = image_link_card[:text_locale]
   end
 end

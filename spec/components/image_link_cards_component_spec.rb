@@ -1,13 +1,25 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe ImageLinkCardsComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:cards) do
+    [{
+      title_locale: 'test.image_link_card.title',
+      link_url: 'https://www.example.com',
+      image_path: 'media/images/test/example.svg',
+      img_alt_locale: 'test.image_link_card.img_alt',
+      text_locale: 'test.image_link_card.text_html'
+    },
+     {
+       title_locale: 'test.image_link_card.title',
+       link_url: 'https://www.example.com',
+       image_path: 'media/images/test/example.svg',
+       img_alt_locale: 'test.image_link_card.img_alt',
+       text_locale: 'test.image_link_card.text_html'
+     }]
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'renders a card element for each card' do
+    render_inline(described_class.new(cards: cards))
+    expect(rendered_component).to have_css('.image-link-card-component', count: 2)
+  end
 end

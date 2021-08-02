@@ -3,5 +3,5 @@ en:
     image_link_card:
       title: "Test card title"
       img_alt: "Test image alt text"
-      text_html: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor, odio quis scelerisque auctor, ante mi auctor libero, et accumsan nulla odio sed ipsum. Proin quis blandit mauris. Etiam quis tempus ex. Fusce quis leo turpis. Praesent gravida suscipit pharetra. Aliquam quam dui, commodo non nulla ut, laoreet ultrices libero. Quisque massa arcu, hendrerit eleifend vehicula accumsan, ullamcorper vel orci. Quisque felis orci, tristique in facilisis eu, interdum placerat justo. Vivamus libero ligula, semper a viverra sit amet, tincidunt suscipit velit."
+      text_html: "Lorem ipsum dolor sit amet, <a href='https://www.test.example.com'>consectetur adipiscing elit</a>. Nullam tempor, odio quis scelerisque auctor, ante mi auctor libero, et accumsan nulla odio sed ipsum. Proin quis blandit mauris. Etiam quis tempus ex. Fusce quis leo turpis. Praesent gravida suscipit pharetra. Aliquam quam dui, commodo non nulla ut, laoreet ultrices libero. Quisque massa arcu, hendrerit eleifend vehicula accumsan, ullamcorper vel orci. Quisque felis orci, tristique in facilisis eu, interdum placerat justo. Vivamus libero ligula, semper a viverra sit amet, tincidunt suscipit velit."
 

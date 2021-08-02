@@ -1,6 +1,6 @@
 <div class="image-link-card-component">
   <%= link_to @link_url, class: 'ncce-link' do %>
-    <%= image_pack_tag @image_path, class: 'image-link-card-component__image', alt: t(@image_alt_locale) %>
+    <%= image_pack_tag @image_path, class: 'image-link-card-component__image', alt: t(@img_alt_locale) %>
   <% end %>
   <h2 class="govuk-heading-m image-link-card-component__title">
     <%= link_to t(@title_locale), @link_url, class: 'ncce-link ncce-link--heading' %>
