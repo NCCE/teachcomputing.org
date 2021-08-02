@@ -131,4 +131,14 @@ module CoursesHelper
   def applied_filters_string(course_filter)
     "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), 'filter')} applied"
   end
+
+  def certificate_card_programme_summary(programme)
+    if programme.primary_certificate?
+      'This course is part of Teach primary computing'
+    elsif programme.cs_accelerator?
+      'This course is part of the Subject knowledge certificate'
+    elsif programme.secondary_certificate?
+      'This course is part of Teach secondary computing'
+    end
+  end
 end
