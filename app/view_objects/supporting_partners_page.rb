@@ -49,7 +49,7 @@ class SupportingPartnersPage
           image_path: 'media/images/partners/rolls-royce.svg',
           img_alt_locale: 'pages.supporting_partners.rolls_royce.img_alt',
           text_locale: 'pages.supporting_partners.rolls_royce.text_html'
-        },
+        }
       ]
     end
   end
