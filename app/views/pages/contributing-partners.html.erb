@@ -1,119 +1,16 @@
 <% meta_tag :title, 'Meet our contributing partners, and find out how you and your students can benefit from their complementary programmes.' %>
-<%= render 'components/hero', hero_title: 'Contributing partners', full_width: true %>
+
+<%= render HeroComponent.new(ContributingPartnersPage.hero) %>
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--l">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l govuk-!-padding-bottom-5">These partnerships provide complementary programmes that contribute to the overall offer for teachers and students.</p>
+        <p class="govuk-body-l govuk-!-padding-bottom-5">
+          <%= t('.intro') %>
+        </p>
       </div>
     </div>
-    <div class="landing-page-resources__grid">
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.appsforgood.org/', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/apps-for-good.svg', class: 'dark_card--image', alt: 'Apps for good logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Apps for Good', 'https://www.appsforgood.org/', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">
-          Apps for Good is an education charity teaching students about new technologies
-          while equipping them with the problem solving, creativity and teamwork skills
-          needed to thrive. They work with schools and colleges, supporting teachers to
-          deliver their free courses to students aged 10-18. Their courses empower
-          young people to create tech solutions, Apps, IoT or Machine Learning products
-          to tackle real-world community problems that they care about.
-        </p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.barefootcomputing.org/', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/barefoot.svg', class: 'dark_card--image', alt: 'Barefoot logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Barefoot from Computing at School and BT', 'https://www.barefootcomputing.org/', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">Barefoot empowers primary school teachers to deliver the computing curriculum brilliantly, with free workshops, helpful online guides and engaging lesson plans and resources. Through the BT Skills for Tomorrow programme, Barefoot is helping 5 million children across the UK make the most of life in the digital world.</p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://codeclub.org/en/start-a-code-club', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/code-club.svg', class: 'dark_card--image', alt: 'Code club logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Code Club from Raspberry Pi Foundation', 'https://codeclub.org/en/start-a-code-club', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">Code Club supports a global community of volunteers, educators, and partners to run free coding clubs for 9 to 13 year olds. Our free, step-by-step coding projects offer young people lots of opportunities to be creative and share their creations with each other.</p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.ncsc.gov.uk/cyberfirst/overview', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/cyber-first.svg', class: 'dark_card--image', alt: 'Cyber Security Centre logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'CyberFirst', 'https://www.ncsc.gov.uk/cyberfirst/overview', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">Part of the National Cyber Security Centre, CyberFirst helps young people, aged 11 to 17, to explore their passion for tech by introducing them to the fast-paced world of cyber security. They offer a broad range of activities which are available for teachers and schools to use. Each activity is designed to give learners the support, skills, experience and exposure needed to be the future first line of defence in our CyberFirst world.</p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.stem.org.uk/about-us/enthuse-charitable-trust', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/enthuse.png', class: 'dark_card--image', alt: 'Enthuse logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'ENTHUSE Charitable Trust', 'https://www.stem.org.uk/about-us/enthuse-charitable-trust', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">The objectives of the Charity are to advance the education of the public, by fostering and promoting the continuing professional development (CPD) of STEM teachers and other educators of STEM subjects by the provision of grants and bursaries to schools, education service providers and any organisation that promotes, arranges or organises courses and meetings which provide CPD to STEM educators.</p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://instituteofcoding.org/', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/institute-of-coding.png', class: 'dark_card--image', alt: 'Institute of coding logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Institute of Coding', 'https://instituteofcoding.org/', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">
-          The Institute of Coding brings together employers, educators and outreach
-          partners to engage a diverse group of people into tech careers through
-          higher education. Their consortium has developed a variety of digital skills
-          courses, many of which are free and online, so that more people can find
-          an education pathway to fit their interests and needs. If you are interested
-          in learning more,
-          <%= link_to 'visit our course catalogue', 'https://instituteofcoding.org/courses/search/', class: 'ncce-link' %>
-          to view the full list of our 200+ digital skills courses.
-        </p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://microbit.org', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/microbit.svg', class: 'dark_card--image', alt: 'Microbit logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Micro:bit Educational Foundation', 'https://microbit.org', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">
-        The Micro:bit Educational Foundation is a UK-based not for profit organisation with a mission to ‘inspire every child to create their best digital future’. We help children participate in the digital world, with particular focus on girls and those from disadvantaged groups. We work in collaboration with educators to create and curate exceptional <%= link_to 'curriculum materials', 'https://microbit.org/lessons/', class: 'ncce-link' %>, training programmes, <%= link_to 'classroom tools', 'https://classroom.microbit.org/', class: 'ncce-link' %> and <%= link_to 'free resources', 'https://microbit.org/projects/make-it-code-it/', class: 'ncce-link' %>.
-        </p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.raeng.org.uk/education', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/rae.png', class: 'dark_card--image', alt: 'Royal Academy of Engineering' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'Royal Academy of Engineering', 'https://www.raeng.org.uk/education', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">
-          The education team at the Royal Academy of Engineering aims to address the shortage of engineers
-          and technicians in the UK, as well as the diversity of the workforce,
-          by developing teachers’ knowledge and skills and helping them to incorporate
-          engineering into their lessons. Teachers can join the
-          <%= link_to 'Connecting STEM teachers network', 'https://stemresources.raeng.org.uk/programmes/connecting-stem-teachers/', class: 'ncce-link' %>,
-          to improve perceptions of engineering amongst young people and underrepresented groups, or access
-          <%= link_to 'free curriculum resources', 'https://stemresources.raeng.org.uk/', class: 'ncce-link' %>.
-        </p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.stem.org.uk/stem-ambassadors', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/stem.svg', class: 'dark_card--image', alt: 'Stem Ambassadors logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'STEM Ambassadors', 'https://www.stem.org.uk/stem-ambassadors', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">STEM Ambassadors help you bring computing to life in the classroom. With over 30,000 volunteers, including computing professionals, they are a fantastic free resource for schools. STEM Ambassadors can help in many areas from running code clubs, giving practical demonstrations, or giving a careers talk, to help break down some of the stereotypes around computing professionals.</p>
-      </div>
-
-      <div class="shadow_card dark_card">
-        <%= link_to 'https://www.saferinternet.org.uk/', class: 'ncce-link' do %>
-          <%= image_pack_tag 'media/images/partners/safer-internet.svg', class: 'dark_card--image', alt: 'UK Safer Internet Centre logo' %>
-        <% end %>
-        <h2 class="govuk-heading-m dark_card--title"><%= link_to 'UK Safer Internet Centre', 'https://www.saferinternet.org.uk/', class: 'ncce-link ncce-link--heading' %></h2>
-        <p class="govuk-body govuk-!-margin-bottom-0">UK Safer Internet Centre is a partnership of three charities (SWGfL, IWF and Childnet) with a mission to make the internet a better place for young people. One of the 32 national centres of the <%= link_to 'European Insafe network', ' https://www.betterinternetforkids.eu/web/portal/policy/insafe-inhope', class: 'ncce-link' %> - they provide advice, support, and coordinate Safer Internet Day across the UK. The Centre supports professionals working with young people with online safety issues, and offers a safe place to report and remove child sexual abuse content.</p>
-      </div>
-
-    </div>
+    <%= render ImageLinkCardsComponent.new(cards: ContributingPartnersPage.cards) %>
   </div>
 </div>
