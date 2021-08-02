@@ -1,6 +1,8 @@
 <% meta_tag :title, 'Meet our supporting partners.' %>
 <% meta_tag :description, 'The NCCE relies on financial contributions from businesses to help equip young people with digital skills for the future. Find out how you can help us.' %>
-<%= render 'components/hero', hero_title: 'Supporting partners', colour: 'blue', glyph_num: '1', glyph_position: 'bottom' %>
+
+<%= render HeroComponent.new(SupportingPartnersPage.hero) %>
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--l">
     <div class="govuk-grid-row">
@@ -43,136 +45,7 @@
           We are very grateful to our Supporting Partners who have made the Teach Computing Curriculum and the bursaries for our courses possible.
         </p>
       </div>
-      <div class="landing-page-resources__grid">
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to ' https://www.arm.com/ ', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/arm.svg', class: 'dark_card--image dark_card--image-wide dark_image--supporting-partners', alt: 'Arm logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0"><%= link_to 'Arm', 'https://www.arm.com/', class: 'ncce-link ncce-link--heading' %></h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            As the world’s leading semiconductor IP company, Arm’s technology is
-            in billions of devices; from supercomputers and cars, to mobile phones
-            and small computers. The Arm School Program is part of its Education
-            team and works with schools and partners to support teaching communities
-            of practice and enabling research into STEM and computing education.
-            They also offer <%= link_to 'a range of free resources', 'https://www.arm.com/resources/education/schools/content', class: 'ncce-link' %>,
-            linked to the computer science curriculum.
-          </p>
-        </div>
-
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to 'https://www.bt.com/skillsfortomorrow', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/bt.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'BT logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
-            <%= link_to 'BT', 'https://www.bt.com/skillsfortomorrow', class: 'ncce-link ncce-link--heading' %>
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            BT Skills for Tomorrow offers a wide range of free advice,
-            information and support for all ages and abilities,
-            to help people make the most of life in the digital world.
-            As part of this, BT and Computing at School’s (CAS)
-            <%= link_to 'Barefoot programme', 'https://www.barefootcomputing.org/', class: 'ncce-link' %>
-            supports primary teachers with the computing curriculum,
-            providing free CPD and classroom resources. BT also offers
-            <%= link_to 'free activities and games', 'https://www.bt.com/skillsfortomorrow/families', class: 'ncce-link' %>
-            for parents to use with their children to develop their digital skills.
-          </p>
-        </div>
-
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to 'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/google.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Google logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
-            <%= link_to 'Google', 'https://edu.google.com/teaching-resources/?modal_active=none&topic=coding-and-computer-science', class: 'ncce-link ncce-link--heading' %>
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            Google is dedicated to closing equity gaps in computer science education
-            by providing the tools, resources, and inspiration to help every educator
-            give their students confidence in Computer Science, advance their skills,
-            and prepare them for the future.
-            This includes
-            <%= link_to 'CS First', 'https://csfirst.withgoogle.com/s/en/home?utm_source=pdpartner&utm_medium=referral&utm_campaign=20210115-TCUK21--hsms-ins-&src=re-pdp-20210115-TCUK21--hsms-ins-', class: 'ncce-link' %>: a free computer
-            science curriculum and
-            <%= link_to 'Applied Digital Skills',
-            'https://applieddigitalskills.withgoogle.com/s/en-uk/teach?utm_source=partners&utm_medium=website&utm_campaign=10/2/2020-TC-UK--hsms-ins-&src=partners-website-10/2/2020-TC-UK--hsms-ins-', class: 'ncce-link' %>: free video-based
-            lessons to prepare students for the jobs of today and tomorrow.
-          </p>
-        </div>
-
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to 'https://www.ibm.org/', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/ibm.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'IBM logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
-            <%= link_to 'IBM', 'https://www.ibm.org/', class: 'ncce-link ncce-link--heading' %>
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            IBM supports a more inclusive society by partnering with key organisations in
-            the public and non-profit sectors, providing expertise. technology, and a
-            commitment to help young people build the skills required to succeed.
-            Their free online learning platform, <%= link_to 'Open P-TECH', 'https://www.ptech.org/open-p-tech/', class: 'ncce-link'%>, introduces students (13-18 years)
-            and teachers to the technical and professional skills of the future. IBM also offers
-            <%= link_to 'SkillsBuild', 'https://skillsbuild.org/', class: 'ncce-link' %>, a free learning platform for adults looking to upskill and reskill.
-          </p>
-        </div>
-
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to 'https://www.nationwide-jobs.co.uk/', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/nationwide.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Nationwide logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
-            <%= link_to 'Nationwide Building Society', 'https://www.nationwide-jobs.co.uk/', class: 'ncce-link ncce-link--heading' %>
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            At Nationwide we’re rethinking technology to build a better society and <%= link_to 'inspire young people to pursue STEM-related subjects and careers.', 'https://www.nationwide-jobs.co.uk/early-careers/ ', class: 'ncce-link' %>
-            As well as partnering with the Tech Talent Charter,
-            Tech She Can Charter, Code Club and Enthuse,
-            which has inspired over 45,000 underrepresented
-            students to consider a career in tech, we’ve also
-            supported the NCCE with the rewriting of the computer
-            curriculum and reskilling teachers to deliver it,
-            from primary through to A-Level.
-          </p>
-        </div>
-
-        <%# <div class="shadow_card dark_card"> %>
-          <%# <%= link_to 'https://www.microsoft.com/en-gb', class: 'ncce-link' do %>
-            <%# image_pack_tag 'media/images/partners/microsoft.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Microsoft logo' %>
-          <%# <% end %>
-          <%# <h2 class="govuk-heading-m dark_card--title"> %>
-            <%# <%= link_to 'Microsoft', 'https://www.microsoft.com/en-gb', class: 'ncce-link ncce-link--heading' %>
-          <%# </h2> %>
-          <%# <p class="govuk-body govuk-!-margin-bottom-0"> %>
-            <%# Microsoft has been championing computing education in the UK since 2008, %>
-            <%# when they helped found CAS. They work with governments, educators, %>
-            <%# charities and industry to support a high quality, %>
-            <%# creative and inclusive computing education for all young people. %>
-            <%# In partnership with BCS, Microsoft are funding professional development for %>
-            <%# computing teachers in England and Scotland, and helping the NCCE provide %>
-            <%# bursaries to schools in priority areas. %>
-          <%# </p> %>
-        <%# </div> %>
-
-        <div class="shadow_card dark_card govuk-!-padding-top-0">
-          <%= link_to 'https://www.stem.org.uk/rolls-royce-schools-prize-science-technology', class: 'ncce-link' do %>
-            <%= image_pack_tag 'media/images/partners/rolls-royce.svg', class: 'dark_card--image dark_image--supporting-partners', alt: 'Rolls-Royce logo' %>
-          <% end %>
-          <h2 class="govuk-heading-m dark_card--title govuk-!-padding-top-0">
-            <%= link_to 'Rolls-Royce Schools Prize for Science & Technology', 'https://www.stem.org.uk/rolls-royce-schools-prize-science-technology', class: 'ncce-link ncce-link--heading' %>
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            Rolls-Royce are committed to advancing STEM subjects among the scientists
-            and engineers of tomorrow. One of the ways they are working to help
-            reach and support young people is through the Rolls-Royce Schools Prize
-            for Science &amp; Technology - an annual awards programme that helps teachers’
-            increase science, mathematics, and technology engagement.
-            The prize is open to all schools and colleges in the UK.
-          </p>
-        </div>
-
-      </div>
+      <%= render ImageLinkCardsComponent.new(cards: SupportingPartnersPage.cards) %>
     </div>
   </div>
 </div>

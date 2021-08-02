@@ -1,0 +1,146 @@
+.hero-component {
+  color: $grey-dark-x;
+  position: relative;
+
+  &:after {
+    @include govuk-media-query($from: tablet) {
+      background-position-x: right;
+      background-position-y: bottom;
+      background-repeat: no-repeat;
+      background-size: 75%;
+      bottom: 0;
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+    @include govuk-media-query($from: desktop) {
+      background-size: 90%;
+    }
+  }
+}
+
+.hero-component__default {
+  background-color: $action-color;
+}
+
+.hero-component__primary {
+  background-color: $dixie;
+}
+
+.hero-component__secondary,
+.hero-component__csa {
+  background-color: $secondary-cert-color;
+}
+
+
+.hero-component__wrapper {
+  padding-bottom: $logo_block-mobile;
+  padding-top: $logo_block-mobile;
+  display: flex;
+  flex-direction: column;
+  @include govuk-media-query($from: desktop) {
+    padding-bottom: $logo_block;
+    padding-top: $logo_block;
+  }
+  &:after {
+    content: '';
+    display: table;
+  }
+}
+
+.hero-component__heading-wrapper {
+  background-color: $white;
+  @include govuk-media-query($from: tablet) {
+    align-self: start;
+    max-width: 88%;
+  }
+  @include govuk-media-query($from: desktop) {
+    max-width: 65%;
+  }
+  padding: 10px;
+}
+
+.hero-component__heading {
+  color: $grey-dark-x;
+  margin-bottom: 0;
+}
+
+.hero-component__subtitle {
+  color: $mid-gray;
+  margin-bottom: 0;
+  margin-top: $logo_block-mobile / 4;
+  @include govuk-media-query($from: desktop) {
+    margin-top: $logo_block / 4;
+  }
+}
+
+.hero-component__status {
+  align-self: start;
+  background-color: $grey-dark-x;
+  color: $white;
+  font-weight: 700;
+  margin-bottom: 0;
+  padding: 10px 12px;
+}
+
+@mixin glyph($glyph) {
+  &:after {
+    @include govuk-media-query($from: tablet) {
+      background-image: url("../images/hero/glyph-#{$glyph}.svg");
+      height: 155px;
+      width: 155px;
+    }
+  }
+}
+
+.hero-component__glyph {
+  &-a1 {
+    @include glyph("a1");
+  }
+  &-a2 {
+    @include glyph("a2");
+  }
+  &-a3 {
+    @include glyph("a3");
+  }
+  &-a4 {
+    @include glyph("a4");
+  }
+  &-b1 {
+    @include glyph("b1");
+  }
+  &-b2 {
+    @include glyph("b2");
+  }
+  &-b3 {
+    @include glyph("b3");
+  }
+  &-b4 {
+    @include glyph("b4");
+  }
+  &-c1 {
+    @include glyph("c1");
+  }
+  &-c2 {
+    @include glyph("c2");
+  }
+  &-c3 {
+    @include glyph("c3");
+  }
+  &-c4 {
+    @include glyph("c4");
+  }
+  &-d1 {
+    @include glyph("d1");
+  }
+  &-d2 {
+    @include glyph("d2");
+  }
+  &-d3 {
+    @include glyph("d3");
+  }
+  &-d4 {
+    @include glyph("d4");
+  }
+}

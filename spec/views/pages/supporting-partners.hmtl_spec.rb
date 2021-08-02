@@ -13,10 +13,6 @@ RSpec.describe('pages/supporting-partners', type: :view) do
       expect(rendered).to have_css('.govuk-heading-l', text: 'Thank you to our existing partners')
     end
 
-    it 'has supporting partner cards showing' do
-      expect(rendered).to have_css('.shadow_card', count: 6)
-    end
-
     it 'has external links for each of the supporting_partner cards' do
       current_supporting_partners_logo_links = [
         'https://www.arm.com/',

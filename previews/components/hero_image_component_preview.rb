@@ -1,4 +1,6 @@
 class HeroImageComponentPreview < ViewComponent::Preview
+  layout 'full-width'
+
   def standard
     params = {
       class_name: 'tapestry-bg',
