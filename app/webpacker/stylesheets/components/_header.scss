@@ -184,6 +184,11 @@
   margin-bottom: 0;
   padding-top: 0.5rem;
 
+  @include govuk-media-query($from: desktop) {
+    position: static;
+    z-index: 100;
+  }
+
   &:first-child {
     background-image: none;
     border-top: 1px solid #ced0d2;
