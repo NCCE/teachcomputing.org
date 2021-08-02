@@ -3,10 +3,6 @@
   border-color: $lilly-white;
   box-shadow: 0 0 5px $box-shadow;
   padding: 0 1.375rem 1.375rem;
-
-  @include govuk-media-query($from: desktop) {
-    padding: 0.5 * $logo-block;
-  }
 }
 
 .image-link-card-component__image {
