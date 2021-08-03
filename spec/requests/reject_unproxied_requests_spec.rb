@@ -1,8 +1,9 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe 'Rack::Attack reject unproxied requests' do
+RSpec.describe Rack::Attack do
   subject { get '/primary-teachers', headers: headers }
-  let(:reject_uproxied_requests) { "false" }
+
+  let(:reject_uproxied_requests) { 'false' }
   let(:headers) { {} }
   let(:cloudflare_ips) { [] }
 
@@ -24,7 +25,7 @@ RSpec.describe 'Rack::Attack reject unproxied requests' do
     it { is_expected.to eq 403 }
   end
 
-  context "REJECT_UNPROXIED_REQUESTS is false" do
+  context 'when REJECT_UNPROXIED_REQUESTS is false' do
     it_behaves_like 'a successful request'
 
     describe 'when the last forwarded IP is a non-cloudflare IP' do
@@ -42,8 +43,8 @@ RSpec.describe 'Rack::Attack reject unproxied requests' do
     end
   end
 
-  context "REJECT_UNPROXIED_REQUESTS is TRUE" do
-    let(:reject_uproxied_requests) { "TRUE" }
+  context 'when REJECT_UNPROXIED_REQUESTS is TRUE' do
+    let(:reject_uproxied_requests) { 'TRUE' }
 
     describe 'when no cloudflare IPs are set' do
       it_behaves_like 'a successful request'
@@ -60,7 +61,7 @@ RSpec.describe 'Rack::Attack reject unproxied requests' do
 
       it_behaves_like 'a rejected request'
 
-      context 'x-forwarded-for is set' do
+      context 'when x-forwarded-for is set' do
         let(:headers) { { 'X-Forwarded-For': x_forwarded_for } }
 
         describe 'when X-Forwarded-For is empty' do
