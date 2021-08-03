@@ -78,7 +78,7 @@ class ContributingPartnersPage
           image_path: 'media/images/partners/safer-internet.svg',
           img_alt_locale: 'pages.contributing-partners.cards.safer_internet.img_alt',
           text_locale: 'pages.contributing-partners.cards.safer_internet.text_html'
-        },
+        }
       ]
     end
   end
