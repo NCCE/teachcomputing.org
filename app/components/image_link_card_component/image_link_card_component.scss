@@ -7,12 +7,11 @@
 
 .image-link-card-component__image {
   display: block;
-  height: 136px;
   margin: auto;
-  max-width: 15rem;
+  height: 98px;
 
   @include govuk-media-query($from: desktop) {
-    max-width: 22rem;
+    height: 136px;
     width: auto;
   }
 }

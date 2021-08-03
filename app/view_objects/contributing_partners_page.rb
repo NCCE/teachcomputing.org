@@ -47,7 +47,7 @@ class ContributingPartnersPage
         {
           title_locale: 'pages.contributing-partners.cards.institute_of_coding.title',
           link_url: 'https://instituteofcoding.org/',
-          image_path: 'media/images/partners/institute-of-coding.png',
+          image_path: 'media/images/partners/institute-of-coding.svg',
           img_alt_locale: 'pages.contributing-partners.cards.institute_of_coding.img_alt',
           text_locale: 'pages.contributing-partners.cards.institute_of_coding.text_html'
         },
