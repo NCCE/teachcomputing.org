@@ -183,6 +183,8 @@
   font-weight: 700;
   margin-bottom: 0;
   padding-top: 0.5rem;
+  position: static;
+  z-index: 2;
 
   &:first-child {
     background-image: none;
