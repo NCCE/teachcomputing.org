@@ -53,4 +53,6 @@ Rails.application.configure do
   config.assets.css_compressor = nil
   config.sass.style = :compressed
   config.sass.line_comments = false
+
+  config.middleware.use Rack::Attack
 end
