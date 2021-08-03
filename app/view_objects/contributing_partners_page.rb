@@ -3,7 +3,7 @@ class ContributingPartnersPage
     def hero
       {
         title: 'Contributing partners',
-        glyph: 'c3'
+        glyph: 'c1'
       }
     end
 
