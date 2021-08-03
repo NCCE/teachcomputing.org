@@ -186,7 +186,7 @@
 
   @include govuk-media-query($from: desktop) {
     position: static;
-    z-index: 100;
+    z-index: 2;
   }
 
   &:first-child {
