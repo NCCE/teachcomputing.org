@@ -8,7 +8,7 @@
 .image-link-card-component__image {
   display: block;
   margin: auto;
-  height: 88px;
+  height: 100px;
 
   @include govuk-media-query($from: desktop) {
     height: 136px;
