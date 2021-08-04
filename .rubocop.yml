@@ -77,5 +77,8 @@ RSpec/AnyInstance:
 RSpec/FilePath:
   Enabled: false
 
+RSpec/NestedGroups:
+  Enabled: false
+
 Lint/MissingSuper:
   Enabled: false
