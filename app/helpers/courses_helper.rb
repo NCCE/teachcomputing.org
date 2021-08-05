@@ -132,7 +132,7 @@ module CoursesHelper
     "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), 'filter')} applied"
   end
 
-  def certificate_card_programme_summary(programme)
+  def certificate_card_summary(programme)
     if programme.primary_certificate?
       'This course is part of Teach primary computing'
     elsif programme.cs_accelerator?

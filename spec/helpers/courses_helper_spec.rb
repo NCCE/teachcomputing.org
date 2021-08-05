@@ -338,17 +338,17 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe '#certificate_card_programme_summary' do
+  describe '#certificate_card_summary' do
     it 'renders the correct copy for CSA' do
-      expect(helper.certificate_card_programme_summary(build(:cs_accelerator))).to eq('This course is part of the Subject knowledge certificate')
+      expect(helper.certificate_card_summary(build(:cs_accelerator))).to eq('This course is part of the Subject knowledge certificate')
     end
 
     it 'renders the correct copy for Secondary' do
-      expect(helper.certificate_card_programme_summary(build(:secondary_certificate))).to eq('This course is part of Teach secondary computing')
+      expect(helper.certificate_card_summary(build(:secondary_certificate))).to eq('This course is part of Teach secondary computing')
     end
 
     it 'renders the correct copy for Primary' do
-      expect(helper.certificate_card_programme_summary(build(:primary_certificate))).to eq('This course is part of Teach primary computing')
+      expect(helper.certificate_card_summary(build(:primary_certificate))).to eq('This course is part of Teach primary computing')
     end
   end
 end
