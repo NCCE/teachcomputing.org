@@ -20,8 +20,10 @@
 			<li>free curriculum teaching resources</li>
 			<li>community support and more</li>
 		</ul>
-		<%= link_to('Join for free', '', class: 'govuk-button button button--full-width ')  %>
-		<%= link_to 'About us', '', class: 'govuk-button button button--full-width' %>
+		<%= link_to 'Join for free', '', class: 'govuk-button button button--full-width', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Join' } %>
+		<%= link_to 'About us', '', class: 'govuk-button button button--full-width', data: {
+          event_action: 'click', event_category: 'Homepage', event_label: 'About us'
+        } %>
 	</div>
 </div>
 
