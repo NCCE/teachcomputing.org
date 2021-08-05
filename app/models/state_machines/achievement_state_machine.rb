@@ -10,9 +10,9 @@ class StateMachines::AchievementStateMachine
   transition from: :in_progress, to: %i[complete dropped]
   transition from: :dropped, to: %i[enrolled complete in_progress]
 
-  after_transition(to: :complete) do |achievement, transition|
+  after_transition(to: :complete) do |achievement, _transition|
     CompleteAchievementEmailJob.perform_later(achievement.user_id, achievement.activity_id) if
       [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY].include?(achievement.activity.category)
-    achievement.issue_badge
+    IssueBadgeJob.set(wait: 2.minutes).perform_later(achievement.id)
   end
 end
