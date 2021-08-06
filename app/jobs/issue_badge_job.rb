@@ -1,4 +1,4 @@
-class IssueBadgeJob
+class IssueBadgeJob < ApplicationJob
   queue_as :default
 
   def perform(achievement_id)
