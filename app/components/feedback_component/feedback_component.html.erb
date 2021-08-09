@@ -1,0 +1,11 @@
+<div class="feedback-component">
+  <h2 class="govuk-body feedback-component__heading">
+    <%= @heading %>
+  </h2>
+
+  <%= form_for(FeedbackComment.new, url: feedback_path) do |f| %>
+    <%= f.hidden_field :area, value: @area %>
+    <%= f.text_area :comment, placeholder: 'Your feedback helps us to improve our website', class: 'govuk-textarea feedback-component__textarea', required: true %>
+    <%= f.submit 'Submit', class: 'govuk-button button button--small button--inline' %>
+  <% end %>
+</div>
