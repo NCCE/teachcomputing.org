@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :feedback_comment do
-    area { "MyString" }
-    comment { "MyText" }
+    area { 'feedback_area' }
+    comment { 'A feedback comment' }
   end
 end
