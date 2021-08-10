@@ -475,19 +475,29 @@ RSpec.describe Achievement, type: :model do
         achievement.update_state_for_online_activity(0, nil)
         expect(achievement.in_state?(:enrolled)).to eq(true)
       end
+
+      it 'sets progress to 0' do
+        achievement.update_state_for_online_activity(0, nil)
+        expect(achievement.progress).to eq(0)
+      end
     end
 
     context 'when progress between 1 and 59' do
-      it 'sets to in progress with metadata when progress is 1' do
+      it 'sets to in progress and updates stored progress when progress is 1' do
         achievement.update_state_for_online_activity(1, nil)
         expect(achievement.in_state?(:in_progress)).to eq(true)
-        expect(achievement.last_transition.metadata).to eq({ 'progress' => 1 })
+        expect(achievement.progress).to eq(1)
       end
 
-      it 'sets to in progress with metadata when progress is 59' do
+      it 'sets to in progress and updates stored progress when progress is 59' do
         achievement.update_state_for_online_activity(59, nil)
         expect(achievement.in_state?(:in_progress)).to eq(true)
-        expect(achievement.last_transition.metadata).to eq({ 'progress' => 59 })
+        expect(achievement.progress).to eq(59)
+      end
+
+      it 'sets progress to match value provided' do
+        achievement.update_state_for_online_activity(49, nil)
+        expect(achievement.progress).to eq(49)
       end
     end
 
@@ -498,21 +508,45 @@ RSpec.describe Achievement, type: :model do
         achievement.update_state_for_online_activity(60, nil)
         expect(achievement.complete?).to eq(true)
         expect(achievement.last_transition.metadata)
-          .to eq({ 'credit' => 99.0, 'progress' => 60 })
+          .to eq({ 'credit' => 99.0 })
+        expect(achievement.progress).to eq(60)
       end
 
       it 'sets to complete when progress is 100' do
         achievement.update_state_for_online_activity(100, nil)
         expect(achievement.complete?).to eq(true)
         expect(achievement.last_transition.metadata)
-          .to eq({ 'credit' => 99.0, 'progress' => 100 })
+          .to eq({ 'credit' => 99.0 })
+        expect(achievement.progress).to eq(100)
       end
     end
 
-    it 'does not change state if achievement is complete' do
-      achievement = create(:completed_achievement)
-      achievement.update_state_for_online_activity(40, DateTime.now.to_s)
-      expect(achievement.complete?).to eq(true)
+    context 'when progress is lower than saved progress' do
+      let(:achievement) { create(:achievement, progress: 70) }
+
+      it 'does not change saved progress value' do
+        achievement.update_state_for_online_activity(60, nil)
+        expect(achievement.progress).to eq(70)
+      end
+    end
+
+    context 'when achievement is complete' do
+      let(:achievement) { create(:completed_achievement, progress: 70) }
+
+      it 'does not change state to dropped' do
+        achievement.update_state_for_online_activity(80, DateTime.now.to_s)
+        expect(achievement.complete?).to eq(true)
+      end
+
+      it 'does not revert to in progress' do
+        achievement.update_state_for_online_activity(50, nil)
+        expect(achievement.complete?).to eq(true)
+      end
+
+      it 'does update progress' do
+        achievement.update_state_for_online_activity(75, nil)
+        expect(achievement.progress).to eq(75)
+      end
     end
   end
 
