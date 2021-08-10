@@ -162,7 +162,7 @@ describe CoursesHelper, type: :helper do
     end
 
     it 'returns complete if achievement is complete' do
-      achievement.set_to_complete
+      achievement.complete!
       expect(helper.user_achievement_state(user, activity)).to eq :complete
     end
 

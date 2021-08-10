@@ -33,8 +33,8 @@ RSpec.describe Certificates::CSAcceleratorController do
 
   let(:setup_achievements_for_completed_course) do
     setup_achievements_for_programme
-    online_achievement.set_to_complete
-    face_to_face_achievement.set_to_complete
+    online_achievement.complete!
+    face_to_face_achievement.complete!
     exam_programme_activity
     passed_exam
   end

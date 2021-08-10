@@ -47,7 +47,7 @@ RSpec.describe Certificates::CertificateController do
           allow(CertificateGenerator).to receive(:new) { generator_double }
 
           programme_activity
-          passed_exam.set_to_complete
+          passed_exam.complete!
           user_programme_enrolment.transition_to(:complete, certificate_number: 20)
           get certificate_cs_accelerator_certificate_path
         end

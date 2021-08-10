@@ -15,11 +15,11 @@ module Achiever
 
         case course.attendance_status
         when 'attended'
-          achievement.set_to_complete
+          achievement.complete!
 
           determine_jobs_to_run(programme_slug: achievement.programme.slug) if achievement.programme
         when 'cancelled'
-          achievement.set_to_dropped
+          achievement.drop!
         end
       end
       run_jobs(user.id)
