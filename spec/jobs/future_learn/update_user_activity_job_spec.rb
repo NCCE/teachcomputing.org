@@ -34,7 +34,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         mock_achievement
         run_job
         expect(mock_instance)
-          .to have_received(:update_state_for_online_activity)
+          .to have_received(:update_progress_and_state)
           .with(enrolment[:steps_completed_ratio].to_f * 100,
                 enrolment[:deactivated_at])
       end
@@ -52,7 +52,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         mock_achievement
         run_job
         expect(mock_instance)
-          .to have_received(:update_state_for_online_activity)
+          .to have_received(:update_progress_and_state)
           .with(enrolment[:steps_completed_ratio].to_f * 100,
                 enrolment[:deactivated_at])
       end
@@ -138,7 +138,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
         mock_complete_achievement
         run_job
         expect(mock_instance)
-          .not_to have_received(:update_state_for_online_activity)
+          .not_to have_received(:update_progress_and_state)
       end
     end
   end
@@ -146,7 +146,7 @@ RSpec.describe FutureLearn::UpdateUserActivityJob, type: :job do
   def mock_achievement
     allow(Achievement).to receive(:find_or_create_by).and_return(mock_instance)
     allow(mock_instance).to receive(:complete?)
-    allow(mock_instance).to receive(:update_state_for_online_activity)
+    allow(mock_instance).to receive(:update_progress_and_state)
     allow(mock_instance).to receive(:primary_certificate?)
     allow(mock_instance).to receive(:secondary_certificate?)
     allow(mock_instance).to receive(:cs_accelerator?)

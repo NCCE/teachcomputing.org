@@ -80,9 +80,12 @@ class Achievement < ApplicationRecord
     transition_to(:dropped, metadata)
   end
 
-  def update_state_for_online_activity(progress = 0, left_at = nil)
+  def update_progress_and_state(progress = 0, left_at = nil)
     update_progress(progress.floor)
-    update_state_from_progress(progress.floor, left_at) unless complete?
+
+    return drop!(left_at: left_at) if left_at.present? && (progress < 60)
+
+    update_state_from_progress(progress.floor) unless complete?
   end
 
   def complete?
@@ -146,9 +149,7 @@ class Achievement < ApplicationRecord
       CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 
-    def update_state_from_progress(updated_progress, left_at)
-      return drop!(left_at: left_at) if left_at.present? && (updated_progress < 60)
-
+    def update_state_from_progress(updated_progress)
       case updated_progress
       when 0
         transition_to(:enrolled) if can_transition_to?(:enrolled)
