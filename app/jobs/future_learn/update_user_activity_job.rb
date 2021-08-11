@@ -13,7 +13,7 @@ module FutureLearn
       achievement = fetch_achievement(activity_id: activity.id, user_id: user.id)
       return if achievement.complete?
 
-      achievement.update_state_for_online_activity(
+      achievement.update_progress_and_state(
         enrolment[:steps_completed_ratio].to_f * 100,
         enrolment[:deactivated_at]
       )

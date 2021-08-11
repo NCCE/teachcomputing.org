@@ -67,35 +67,25 @@ class Achievement < ApplicationRecord
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
   end
 
-  def set_to_complete(extra_metadata = {})
+  def complete!(extra_metadata = {})
     return false unless can_transition_to?(:complete)
 
     metadata = extra_metadata.merge(credit: activity.credit)
     transition_to(:complete, metadata)
   end
 
-  def set_to_dropped(metadata = {})
+  def drop!(metadata = {})
     return false unless can_transition_to?(:dropped)
 
     transition_to(:dropped, metadata)
   end
 
-  def update_state_for_online_activity(progress = 0, left_at = nil)
-    return if current_state == :complete.to_s
+  def update_progress_and_state(progress = 0, left_at = nil)
+    update_progress(progress.floor)
 
-    metadata = { progress: progress.floor }
+    return drop!(left_at: left_at) if left_at.present? && (progress < 60)
 
-    return set_to_dropped(left_at: left_at) if left_at.present? && !(progress >= 60)
-
-    case progress
-    when 0
-      transition_to(:enrolled) if can_transition_to?(:enrolled)
-    when 1..59
-      transition_to(:in_progress, metadata) if can_transition_to?(:in_progress)
-      state_machine.last_transition.update(metadata: metadata)
-    when 60..100
-      set_to_complete(metadata)
-    end
+    update_state_from_progress(progress.floor) unless complete?
   end
 
   def complete?
@@ -157,5 +147,22 @@ class Achievement < ApplicationRecord
       return unless user.csa_auto_enrollable?
 
       CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
+    end
+
+    def update_state_from_progress(updated_progress)
+      case updated_progress
+      when 0
+        transition_to(:enrolled) if can_transition_to?(:enrolled)
+      when 1..59
+        transition_to(:in_progress) if can_transition_to?(:in_progress)
+      when 60..100
+        complete!
+      end
+    end
+
+    def update_progress(updated_progress)
+      return if updated_progress < progress
+
+      update(progress: updated_progress)
     end
 end

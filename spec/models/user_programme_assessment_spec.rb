@@ -37,8 +37,8 @@ RSpec.describe UserProgrammeAssessment do
 
   let(:setup_achievements_for_taking_test) do
     setup_achievements_for_programme
-    online_achievement.set_to_complete
-    face_to_face_achievement.set_to_complete
+    online_achievement.complete!
+    face_to_face_achievement.complete!
     activities = [create(:activity, :future_learn, credit: 20), create(:activity, :stem_learning, credit: 20)]
 
     activities.each do |activity|
