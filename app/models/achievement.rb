@@ -57,7 +57,7 @@ class Achievement < ApplicationRecord
 
     issued_badges = Credly::Badge.by_programme_badge_template_ids(user.id, programme.id)
 
-    return unless issued_badges
+    return if issued_badges
 
     first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count >= 1
 
