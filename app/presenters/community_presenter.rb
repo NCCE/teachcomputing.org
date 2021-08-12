@@ -20,7 +20,7 @@ class CommunityPresenter < SimpleDelegator
   end
 
   def button_label
-    'I have done this'
+    'Submit evidence'
   end
 
   def inspect
