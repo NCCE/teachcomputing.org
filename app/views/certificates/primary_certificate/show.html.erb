@@ -6,8 +6,12 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
-          <h2 class="govuk-heading-m">Welcome to the Teach primary computing programme!</h2>
-          <p class="govuk-body-m">To complete your certificate you’ll need to work through the activities below.</p>
+          <h2 class="govuk-heading-m">Welcome to the Teach primary computing programme</h2>
+          <p class="govuk-body-m">
+            To achieve your certificate, you'll need to complete courses and activities to improve
+            your knowledge and skills. You’ll have opportunities to meet other teachers
+            and share teaching practices and ideas to help you deliver the best outcomes for your students.
+          </p>
         </div>
       </div>
       <% unless @user_programme_achievements.face_to_face_achievements.any? { |p| !p.empty? } %>

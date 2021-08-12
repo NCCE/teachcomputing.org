@@ -18,7 +18,7 @@ RSpec.describe CommunityPresenter do
   end
 
   describe('button_label') do
-    it { expect(incomplete_presenter.button_label).to eq('I have done this') }
+    it { expect(incomplete_presenter.button_label).to eq('Submit evidence') }
   end
 
   describe('list_item_classes') do
