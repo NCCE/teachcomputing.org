@@ -1,10 +1,11 @@
 FactoryBot.define do
   factory :pathway do
     range { 1..10 }
-    title { 'Pathway' }
+    sequence(:title) { |n| "Pathway #{n}" }
     description { 'Pathway description' }
-    pdf_link { 'https://example.com/pdf-link.pdf' }
+    sequence(:pdf_link) { |n| "https://example.com/pdf-#{n}-link.pdf" }
     sequence(:slug) { |n| "slug-#{n}" }
+    sequence(:order) { |n| n }
     programme
 
     trait :new_to_computing do
