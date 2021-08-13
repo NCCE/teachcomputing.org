@@ -28,9 +28,7 @@ module Credly
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
 
-    def self.by_programme_badge_template_ids(user_id, programme_id)
-      programme = Programme.find(programme_id)
-      template_ids = programme.badges.pluck(:credly_badge_template_id)
+    def self.by_programme_badge_template_ids(user_id, template_ids)
       issued = Credly::Badge.issued(user_id)
       badges = issued.keep_if { |issued| template_ids.include?(issued[:badge_template][:id]) }
       return unless badges.any?

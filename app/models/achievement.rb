@@ -55,7 +55,7 @@ class Achievement < ApplicationRecord
     badge = programme.badges.active.first
     return unless badge
 
-    issued_badges = Credly::Badge.by_programme_badge_template_ids(user.id, programme.id)
+    issued_badges = Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
 
     return if issued_badges
 

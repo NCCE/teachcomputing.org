@@ -13,8 +13,8 @@ RSpec.describe Credly::Badge do
       templates = described_class.templates
 
       %i[id name state recipient_type image
-        created_at updated_at].each do |key|
-      expect(templates.first.key?(key)).to eq(true)
+         created_at updated_at].each do |key|
+        expect(templates.first.key?(key)).to eq(true)
       end
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe Credly::Badge do
         issue = described_class.issue(user.id, badge.programme.id)
 
         %i[created_by user issuer badge_template].each do |key|
-        expect(issue.key?(key)).to eq(true)
+          expect(issue.key?(key)).to eq(true)
         end
       end
     end
@@ -55,7 +55,7 @@ RSpec.describe Credly::Badge do
         issued = described_class.issued(user.id)
 
         %i[issued_to issued_to_first_name badge_template].each do |key|
-        expect(issued.first.key?(key)).to eq(true)
+          expect(issued.first.key?(key)).to eq(true)
         end
       end
     end
@@ -78,10 +78,10 @@ RSpec.describe Credly::Badge do
       context 'when a user has been issued the badge' do
         it 'returns a badge' do
           stub_issued_badges(user.id)
-          issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)
+          issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.badges.pluck(:credly_badge_template_id))
 
           %i[badge_template issued_to issuer_earner_id].each do |key|
-          expect(issued.key?(key)).to eq(true)
+            expect(issued.key?(key)).to eq(true)
           end
         end
       end
@@ -89,7 +89,7 @@ RSpec.describe Credly::Badge do
       context 'when the user has not been issued the badge' do
         it 'returns nil' do
           stub_issued_badges_empty(user.id)
-          expect(issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.id)).to eq nil
+          expect(issued = described_class.by_programme_badge_template_ids(user.id, badge.programme.badges.pluck(:credly_badge_template_id))).to eq nil
         end
       end
     end
