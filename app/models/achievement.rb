@@ -55,12 +55,13 @@ class Achievement < ApplicationRecord
     badge = programme.badges.active.first
     return unless badge
 
-    issued_badges = Credly::Badge.issued(user.id)
-    return if issued_badges.any? { |b| b[:badge_template][:id] == badge.credly_badge_template_id }
+    issued_badges = Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
 
-    first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
+    return if issued_badges
 
-    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if first_stem_achievement
+    has_first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
+
+    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if has_first_stem_achievement
   end
 
   def state_machine

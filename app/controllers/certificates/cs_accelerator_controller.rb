@@ -29,7 +29,7 @@ module Certificates
       def assign_issued_badge_data
         return unless @programme.badges.any?
 
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.id)
+        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
         @badge_tracking_event_category = 'CSA enrolled'
         @badge_tracking_event_label = 'CSA badge'
       end

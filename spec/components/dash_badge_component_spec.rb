@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DashBadgeComponent, type: :component do
   let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let(:badge) { create(:badge, :active, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
-  let(:awarded_badge) { Credly::Badge.by_programme_badge_template_ids(user.id, badge.programme.id) }
+  let(:awarded_badge) { Credly::Badge.by_programme_badge_template_ids(user.id, badge.programme.badges.pluck(:credly_badge_template_id)) }
   let(:dash_badge_component) { described_class.new(badge: awarded_badge, tracking_event_category: 'category', tracking_event_label: 'label') }
   let(:fixed_width_dash_badge_component) { described_class.new(badge: awarded_badge, fixed_width: true, tracking_event_category: 'category', tracking_event_label: 'label') }
 

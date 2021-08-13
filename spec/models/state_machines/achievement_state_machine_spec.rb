@@ -11,21 +11,21 @@ RSpec.describe StateMachines::AchievementStateMachine do
 
   describe 'guards' do
     it 'can transition from state enrolled to allowed states' do
-      [:in_progress, :complete, :dropped].each do |allowed_state|
+      %i[in_progress complete dropped].each do |allowed_state|
         expect { create(:achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
     end
 
     it 'can transition from state in_progress to allowed states' do
-      [:complete, :dropped].each do |allowed_state|
+      %i[complete dropped].each do |allowed_state|
         expect { create(:in_progress_achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
     end
 
     it 'can transition from state dropped to other states' do
-      [:enrolled, :in_progress, :complete].each do |allowed_state|
+      %i[enrolled in_progress complete].each do |allowed_state|
         expect { create(:dropped_achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
@@ -39,7 +39,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
 
     it 'cannot transition from state complete to other states' do
-      [:enrolled, :in_progress, :dropped].each do |disallowed_state|
+      %i[enrolled in_progress dropped].each do |disallowed_state|
         expect { create(:completed_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
       end
@@ -60,9 +60,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
 
     it 'calls issue_badge' do
-      allow(achievement).to receive(:issue_badge).and_return(true)
-      achievement.transition_to(:complete)
-      expect(achievement).to have_received(:issue_badge)
+      expect { online_achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
     end
   end
 end
