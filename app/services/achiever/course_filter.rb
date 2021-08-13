@@ -119,6 +119,12 @@ module Achiever
       end
     end
 
+    def current_hub_id
+      return nil unless @filter_params[:hub_id].present?
+
+      @current_hub_id ||= @filter_params[:hub_id]
+    end
+
     def current_format
       return nil unless @filter_params[:course_format].present?
 
@@ -176,6 +182,7 @@ module Achiever
 
     def includes_online_or_remote?
       return true if current_format.nil?
+
       current_format.include?('remote') || current_format.include?('online')
     end
 
@@ -191,11 +198,10 @@ module Achiever
 
           courses.each do |course|
             course_occurrences.each do |course_occurrence|
-              if course_occurrence.course_template_no == course.course_template_no
-                course.occurrences.push(course_occurrence)
-              end
+              course.occurrences.push(course_occurrence) if course_occurrence.course_template_no == course.course_template_no
             end
           end
+
           courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
           filter_courses(courses)

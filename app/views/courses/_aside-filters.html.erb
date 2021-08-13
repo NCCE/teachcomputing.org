@@ -89,7 +89,7 @@
           The location was not recognised. Please check it is correct.
         </p>
       </div>
-      <%= hidden_field_tag 'hub_id', @course_filter.current_hub %>
+      <%= hidden_field_tag 'hub_id', @course_filter.current_hub_id %>
       <%= hidden_field_tag 'js_enabled', false %>
 
       <%= submit_tag "Apply filters", class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>
