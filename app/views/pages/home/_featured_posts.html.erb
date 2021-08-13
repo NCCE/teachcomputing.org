@@ -6,7 +6,7 @@
         <% if @main_feature.present? %>
           <img src="<%= @main_feature['feature_image'] %>" alt="" class="ncce-feat__image">
           <p class="govuk-body ncce-feat__date"><%= published_date(@main_feature["published_at"]) %></p>
-          <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature['title'], @main_feature["url"], class: 'ncce-link' %></p>
+          <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature['title'], @main_feature["url"], class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
           <p class="govuk-body ncce-feat__excerpt"><%= @main_feature['custom_excerpt'] %></p>
         <% end %>
       </div>
@@ -15,14 +15,14 @@
         <% @featured_posts.each do |post| %>
           <div class="ncce-feat__panel">
             <p class="govuk-body ncce-feat__date"><%= published_date(post["published_at"]) %></p>
-            <p class="govuk-heading-s ncce-feat__heading"><%= link_to post["title"], post["url"], class: "ncce-link" %></p>
+            <p class="govuk-heading-s ncce-feat__heading"><%= link_to post["title"], post["url"], class: "ncce-link", data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
           </div>
         <% end %>
       </div>
     </div>
     <div class="ncce-feat__button-container">
       <p class="govuk-body">
-        <%= link_to "View all news and updates", news_url, class: "govuk-button button hero-button--home" %>
+        <%= link_to "View all news and updates", news_url, class: "govuk-button button hero-button--home", data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %>
       </p>
     </div>
   </div>

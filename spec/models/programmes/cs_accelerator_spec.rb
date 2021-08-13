@@ -28,7 +28,7 @@ RSpec.describe Programmes::CSAccelerator do
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
       if activity.category == 'online'
         achievement = create(:achievement, user_id: user.id, activity_id: activity.id)
-        achievement.set_to_complete
+        achievement.complete!
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe Programmes::CSAccelerator do
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
       achievement = create(:achievement, user_id: user.id, activity_id: activity.id)
-      achievement.set_to_complete
+      achievement.complete!
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Programmes::CSAccelerator do
     user_programme_enrolment
     short_face_to_face_course
     create(:programme_activity, programme_id: programme.id, activity_id: short_face_to_face_course.id)
-    short_face_to_face_achievement.set_to_complete
+    short_face_to_face_achievement.complete!
   end
 
   let(:setup_two_short_f2f_achievements) do
@@ -58,7 +58,7 @@ RSpec.describe Programmes::CSAccelerator do
     create(:programme_activity, programme_id: programme.id, activity_id: another_short_face_to_face_course.id)
     another_short_face_to_face_achievement = create(:achievement, user_id: user.id,
                                                                   activity_id: another_short_face_to_face_course.id)
-    another_short_face_to_face_achievement.set_to_complete
+    another_short_face_to_face_achievement.complete!
   end
 
   let(:setup_one_online_achievement) do
@@ -66,7 +66,7 @@ RSpec.describe Programmes::CSAccelerator do
     online_courses
     create(:programme_activity, programme_id: programme.id, activity_id: online_courses[0].id)
     online_achievement = create(:achievement, user_id: user.id, activity_id: online_courses[0].id)
-    online_achievement.set_to_complete
+    online_achievement.complete!
   end
 
   let(:setup_short_f2f_and_online_achievement) do
@@ -80,7 +80,7 @@ RSpec.describe Programmes::CSAccelerator do
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
       achievement = create(:achievement, user_id: user.id, activity_id: activity.id)
-      achievement.set_to_complete
+      achievement.complete!
     end
   end
 

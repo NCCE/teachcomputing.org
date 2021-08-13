@@ -128,6 +128,7 @@ Rails.application.configure do
 
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = '/rails/components'
+  config.view_component.show_previews = true
 
   # Enable secure cookies (will only work on https)
   config.session_store :cookie_store,

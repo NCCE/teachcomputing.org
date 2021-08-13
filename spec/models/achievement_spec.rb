@@ -214,10 +214,11 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#set_to_complete' do
+  describe '#complete!' do
     it 'when state is not complete' do
-      achievement.set_to_complete
-      expect(achievement.current_state).to eq 'complete'
+      expect { achievement.complete! }
+        .to change(achievement, :complete?)
+        .from(false).to(true)
     end
 
     it 'will save activity credit to the transition' do
@@ -227,20 +228,27 @@ RSpec.describe Achievement, type: :model do
 
     it 'will save extra meta_data to the transition' do
       test_meta = '123'
-      achievement.set_to_complete(test: test_meta)
+      achievement.complete!(test: test_meta)
       expect(achievement.last_transition.metadata['test']).to eq test_meta
     end
 
     it 'when state is complete' do
       achievement.transition_to(:complete)
-      expect(achievement.set_to_complete).to eq false
+      expect(achievement.complete!).to eq false
     end
   end
 
-  describe '#set_to_dropped' do
+  describe '#drop!' do
     it 'sets state to dropped' do
-      achievement.set_to_dropped
-      expect(achievement.current_state).to eq 'dropped'
+      expect { achievement.drop! }
+        .to change(achievement, :dropped?)
+        .from(false).to(true)
+    end
+
+    it 'adds metadata if provided' do
+      achievement.drop!(left_at: '123456')
+      expect(achievement.last_transition.metadata)
+        .to eq({ 'left_at' => '123456' })
     end
   end
 
@@ -249,7 +257,7 @@ RSpec.describe Achievement, type: :model do
       expect(achievement.complete?).to eq false
     end
 
-    it 'when state is not complete' do
+    it 'when state is complete' do
       expect(completed_achievement.complete?).to eq true
     end
   end
@@ -453,41 +461,66 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#update_state_for_online_activity' do
+  describe '#update_progress_and_state' do
     let(:achievement) { create(:achievement) }
 
     context 'when left_at is present' do
       it 'sets to dropped' do
         left_at = DateTime.now.to_s
-        expect { achievement.update_state_for_online_activity(0, left_at) }
+        expect { achievement.update_progress_and_state(0, left_at) }
           .to change(achievement, :dropped?).to(true)
       end
 
       it 'does not set dropped if progress is 60 or over' do
         left_at = DateTime.now.to_s
-        achievement.update_state_for_online_activity(60, left_at)
+        achievement.update_progress_and_state(60, left_at)
         expect(achievement.dropped?).to eq(false)
       end
     end
 
     context 'when progress is 0' do
       it 'sets to enrolled' do
-        achievement.update_state_for_online_activity(0, nil)
+        achievement.update_progress_and_state(0, nil)
         expect(achievement.in_state?(:enrolled)).to eq(true)
+      end
+
+      it 'sets progress to 0' do
+        achievement.update_progress_and_state(0, nil)
+        expect(achievement.progress).to eq(0)
+      end
+
+      it 'will enrol if achievement was previously dropped' do
+        achievement.transition_to(:dropped)
+        expect(achievement.dropped?).to eq(true)
+        achievement.update_progress_and_state(0, nil)
+        expect(achievement.in_state?(:enrolled)).to eq(true)
+        expect(achievement.progress).to eq(0)
       end
     end
 
     context 'when progress between 1 and 59' do
-      it 'sets to in progress with metadata when progress is 1' do
-        achievement.update_state_for_online_activity(1, nil)
+      it 'sets to in progress and updates stored progress when progress is 1' do
+        achievement.update_progress_and_state(1, nil)
         expect(achievement.in_state?(:in_progress)).to eq(true)
-        expect(achievement.last_transition.metadata).to eq({ 'progress' => 1 })
+        expect(achievement.progress).to eq(1)
       end
 
-      it 'sets to in progress with metadata when progress is 59' do
-        achievement.update_state_for_online_activity(59, nil)
+      it 'sets to in progress and updates stored progress when progress is 59' do
+        achievement.update_progress_and_state(59, nil)
         expect(achievement.in_state?(:in_progress)).to eq(true)
-        expect(achievement.last_transition.metadata).to eq({ 'progress' => 59 })
+        expect(achievement.progress).to eq(59)
+      end
+
+      it 'sets progress to match value provided' do
+        achievement.update_progress_and_state(49, nil)
+        expect(achievement.progress).to eq(49)
+      end
+
+      it 'will set progress if achievement was previously dropped' do
+        achievement.transition_to(:dropped)
+        expect(achievement.dropped?).to eq(true)
+        achievement.update_progress_and_state(49, nil)
+        expect(achievement.in_state?(:in_progress)).to eq(true)
       end
     end
 
@@ -495,24 +528,48 @@ RSpec.describe Achievement, type: :model do
       let(:achievement) { create(:achievement, activity: create(:activity, credit: 99)) }
 
       it 'sets to complete when progress is 60' do
-        achievement.update_state_for_online_activity(60, nil)
+        achievement.update_progress_and_state(60, nil)
         expect(achievement.complete?).to eq(true)
         expect(achievement.last_transition.metadata)
-          .to eq({ 'credit' => 99.0, 'progress' => 60 })
+          .to eq({ 'credit' => 99.0 })
+        expect(achievement.progress).to eq(60)
       end
 
       it 'sets to complete when progress is 100' do
-        achievement.update_state_for_online_activity(100, nil)
+        achievement.update_progress_and_state(100, nil)
         expect(achievement.complete?).to eq(true)
         expect(achievement.last_transition.metadata)
-          .to eq({ 'credit' => 99.0, 'progress' => 100 })
+          .to eq({ 'credit' => 99.0 })
+        expect(achievement.progress).to eq(100)
       end
     end
 
-    it 'does not change state if achievement is complete' do
-      achievement = create(:completed_achievement)
-      achievement.update_state_for_online_activity(40, DateTime.now.to_s)
-      expect(achievement.complete?).to eq(true)
+    context 'when progress is lower than saved progress' do
+      let(:achievement) { create(:achievement, progress: 70) }
+
+      it 'does not change saved progress value' do
+        achievement.update_progress_and_state(60, nil)
+        expect(achievement.progress).to eq(70)
+      end
+    end
+
+    context 'when achievement is complete' do
+      let(:achievement) { create(:completed_achievement, progress: 70) }
+
+      it 'does not change state to dropped' do
+        achievement.update_progress_and_state(80, DateTime.now.to_s)
+        expect(achievement.complete?).to eq(true)
+      end
+
+      it 'does not revert to in progress' do
+        achievement.update_progress_and_state(50, nil)
+        expect(achievement.complete?).to eq(true)
+      end
+
+      it 'does update progress' do
+        achievement.update_progress_and_state(75, nil)
+        expect(achievement.progress).to eq(75)
+      end
     end
   end
 
