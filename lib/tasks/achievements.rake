@@ -1,7 +1,7 @@
 namespace :achievements do
   desc 'Set progress on achievements where it is currently 0, takes value from transition meatadata where it exists'
   task set_progress: :environment do
-    achievements = Achievement.where(progress: 0)
+    achievements = Achievement.includes(:activity).where(progress: 0, activity: { provider: 'future-learn' })
     puts "Updating #{achievements.length} achievements"
 
     achievements.each do |achievement|

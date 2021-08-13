@@ -17,6 +17,7 @@ RSpec.describe Achievement, type: :model do
   let(:community_achievement) { create(:achievement, activity: community_activity) }
 
   let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:primary_certificate) { create(:primary_certificate) }
   let(:achievement_with_passed_programme_id) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
     create(:achievement, programme_id: cs_accelerator.id, activity_id: community_activity.id)
@@ -575,11 +576,7 @@ RSpec.describe Achievement, type: :model do
 
   describe '#queue_auto_enrolment' do
     context 'when course is part of csa' do
-      let!(:achievement) { create(:achievement, activity: activity, user: user) }
-
-      before do
-        create(:programme_activity, programme: cs_accelerator, activity: activity)
-      end
+      let!(:achievement) { create(:achievement, activity: activity, user: user, programme: cs_accelerator) }
 
       it 'queues job' do
         expect do
@@ -601,12 +598,10 @@ RSpec.describe Achievement, type: :model do
     end
 
     context 'when course is part of csa and another programme' do
-      let!(:achievement) { create(:achievement, activity: activity, user: user) }
-
       before do
         create(
           :programme_activity,
-          programme: create(:primary_certificate),
+          programme: primary_certificate,
           activity: activity
         )
 
@@ -617,10 +612,24 @@ RSpec.describe Achievement, type: :model do
         )
       end
 
-      it 'queues job' do
-        expect do
-          achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
+      context 'when achievement is connected to csa' do
+        let!(:achievement) { create(:achievement, activity: activity, user: user, programme: cs_accelerator) }
+
+        it 'queues job' do
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
+        end
+      end
+
+      context 'when achievement not connected to csa' do
+        let!(:achievement) { create(:achievement, activity: activity, user: user, programme: primary_certificate) }
+
+        it 'does not queue job' do
+          expect do
+            achievement.reload.run_callbacks(:save)
+          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
+        end
       end
 
       context 'when user is enrolled on CSAccelerator' do
@@ -636,12 +645,12 @@ RSpec.describe Achievement, type: :model do
     end
 
     context 'when course is not part of csa' do
-      let!(:achievement) { create(:achievement, activity: activity, user: user) }
+      let!(:achievement) { create(:achievement, activity: activity, user: user, programme: primary_certificate) }
 
       before do
         create(
           :programme_activity,
-          programme: create(:primary_certificate),
+          programme: primary_certificate,
           activity: activity
         )
       end
