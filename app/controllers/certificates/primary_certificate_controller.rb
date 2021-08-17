@@ -22,8 +22,8 @@ module Certificates
       return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
 
       @user_programme_achievements = user_programme_achievements
-       @badge_tracking_event_category = 'Primary complete'
-        @badge_tracking_event_label = 'Primary badge'
+      @badge_tracking_event_category = 'Primary complete'
+      @badge_tracking_event_label = 'Primary badge'
       @complete_achievements = complete_achievements
       assign_issued_badge_data
 
