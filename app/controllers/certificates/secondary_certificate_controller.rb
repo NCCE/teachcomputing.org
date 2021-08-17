@@ -22,7 +22,7 @@ module Certificates
       return redirect_to secondary_certificate_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
-      @badge_tracking_event_category = 'Secondary enrolled'
+      @badge_tracking_event_category = 'Secondary complete'
       @badge_tracking_event_label = 'Secondary badge'
       assign_issued_badge_data
 
