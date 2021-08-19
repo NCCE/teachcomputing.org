@@ -402,3 +402,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '7f88c178-9538-4970-b43
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: 'd440d652-4128-4995-9ef7-662a0bc505ed') do |activity|
+  activity.title = 'Teaching Physical Computing to 5-11 year olds'
+  activity.credit = 10
+  activity.slug = 'teaching-physical-computing-to-5-11-year-olds'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '030b2253-40ff-eb11-94ef-0022481b4787'
+  activity.future_learn_course_uuid = 'd440d652-4128-4995-9ef7-662a0bc505ed'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO043'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
