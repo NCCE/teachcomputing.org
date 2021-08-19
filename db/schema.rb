@@ -140,10 +140,12 @@ ActiveRecord::Schema.define(version: 2021_08_10_082950) do
   end
 
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
     t.string "area"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_feedback_comments_on_user_id"
   end
 
   create_table "hub_regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -348,6 +350,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_082950) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
+  add_foreign_key "feedback_comments", "users"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"
   add_foreign_key "pathway_activities", "pathways"
