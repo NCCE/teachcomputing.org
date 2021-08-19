@@ -1,7 +1,7 @@
 class FeedbackController < ApplicationController
   def create
     feedback = FeedbackComment.new(feedback_params)
-    feedback.user = current_user
+    feedback.user_id = current_user.id
 
     if feedback.save
       flash[:notice] = 'Your feedback was successfully submitted'
