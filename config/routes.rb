@@ -81,6 +81,7 @@ Rails.application.routes.draw do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
 
+  resource :feedback, only: %i[create]
   resources :hubs, only: %i[index]
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'

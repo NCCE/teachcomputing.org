@@ -1,0 +1,13 @@
+.feedback-component {
+  background-color: $foam;
+  padding: 14px;
+}
+
+.feedback-component__heading {
+  text-align: center;
+}
+
+.feedback-component__textarea {
+  height: 5rem;
+  margin-bottom: 12px;
+}
