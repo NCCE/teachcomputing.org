@@ -1,4 +1,4 @@
-.hero-image-component {
+.hero-media-component {
   display: grid;
   grid-row-gap: 20px;
   grid-template-areas: 'photo' 'text';
@@ -16,9 +16,10 @@
 
   &__text-wrapper {
     grid-area: text;
+    align-self: center;
 
     @include govuk-media-query($from: desktop) {
-      padding-top: 33px;
+      padding: 33px 0;
     }
 
     .govuk-heading-xl {
@@ -32,10 +33,10 @@
     }
   }
 
-  &__image {
+  &__media {
     grid-area: photo;
 
-    img {
+    img, iframe {
       width: 100%;
       @include govuk-media-query($from: desktop) {
         display: block;

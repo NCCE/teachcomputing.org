@@ -1,3 +1,14 @@
+  <% if @image.present? %>
+    <div class="aside-component__image">
+      <%= link_to image_pack_tag(@image[:url], alt: @link_text, title: @link_text),
+        @link_url,
+        class: 'ncce-link ncce-link--contrast',
+        role: 'button',
+        draggable: 'false',
+        data: tracking_data
+      %>
+    </div>
+  <% end %>
 <div class="aside-component">
   <h2 class="govuk-heading-s">
     <%= @title %>
@@ -8,6 +19,7 @@
   <p class="govuk-body-s aside-component__link">
     <%= link_to @link_text,
       @link_url,
+      title: @link_text,
       class: 'ncce-link ncce-link--contrast',
       role: 'button',
       draggable: 'false',

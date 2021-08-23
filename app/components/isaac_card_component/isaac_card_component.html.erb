@@ -1,0 +1,20 @@
+<div class="isaac-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="isaac-card-component">
+          <%= image_pack_tag 'media/images/logos/isaac-logo.svg', alt: t('.image_alt'), class: 'isaac-card-component__logo' %>
+          <div class="isaac-card-component__description govuk-body">
+            <p><%= t('.text.html') %></p>
+            <%= link_to t('.link_text'), '/a-level-computer-science',
+              class: 'ncce-link isaac-card-component__link',
+              title: t('.link_text'),
+              data: { event_action: 'click',
+                      event_category: @tracking_category,
+                      event_label: 'Isaac CS' }
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

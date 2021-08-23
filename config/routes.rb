@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   get '/courses/:id(/:name)', action: :show, controller: 'courses', as: 'course'
 
   get '/curriculum', to: 'curriculum/key_stages#index', as: :curriculum_key_stages
+  get '/curriculum_v2', to: 'curriculum/key_stages#index_v2', as: :curriculum_key_stages_v2
   get '/curriculum/:key_stage_slug', to: 'curriculum/key_stages#show', as: :curriculum_key_stage_units
   get '/curriculum/:key_stage_slug/:unit_slug', to: 'curriculum/units#show', as: :curriculum_key_stage_unit
   get '/curriculum/:key_stage_slug/:unit_slug/:lesson_slug', to: 'curriculum/lessons#show',

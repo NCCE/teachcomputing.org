@@ -1,0 +1,74 @@
+<% meta_tag :title, 'Curriculum teaching resources' %>
+<% meta_tag :description, 'Curriculum resources contain everything you need to teach computing at key stages 1 to 4. Content is free to access, and has been created by subject experts.' %>
+<% meta_tag :image, asset_pack_path('media/images/curriculum/curriculum.png') %>
+<% meta_tag :url, request.original_url %>
+<%= render HeroMediaComponent.new(
+  title: t('.hero.title'),
+  text: t('.hero.text'),
+  class_name: 'deep-cerulean-bg',
+  video: {
+    url: 'https://www.youtube.com/embed/6VsXL8g4yNs',
+    tracking_page: '',
+    tracking_label: ''
+  }
+) %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m"><%= t('.intro.heading') %></h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><%= t('.intro.bullet_1') %></li>
+          <li><%= t('.intro.bullet_2') %></li>
+          <li><%= t('.intro.bullet_3') %></li>
+          <li><%= t('.intro.bullet_4') %></li>
+          <li><%= t('.intro.bullet_5') %></li>
+        </ul>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <%= render AsideComponent.new(
+          title: t('.aside.title'),
+          text: t('.aside.text'),
+          link_text: t('.aside.link_text'),
+          link_url: 'https://static.teachcomputing.org/curriculum_journey.pdf',
+          tracking_category: '',
+          tracking_label: '',
+          image: {
+            url: 'media/images/icons/curriculum-journey.png',
+            title: t('.aside.title')
+          }
+        ) %>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-0">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m"><%= t('.key_stage_heading') %></h2>
+        <%= render partial: 'key_stages', locals: { key_stages: @key_stages } %>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-0">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <%= render NoticeComponent.new(
+          class_name: 'lime-green-bg',
+          icon: {
+            url: 'media/images/icons/raspberry-pi.svg',
+            title: 'Raspberry Pi'
+          },
+          title: t('.notice.title'),
+          text: t('.notice.text'),
+          link: {
+            url: '/hubs',
+            text: t('.notice.link_text'),
+            tracking_category: '',
+            tracking_label: ''
+          }
+        ) %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render IsaacCardComponent.new(tracking_category: '') %>

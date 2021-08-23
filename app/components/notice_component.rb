@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
-class AsideComponent < ViewComponent::Base
-  def initialize(title:, text:, link_text:, link_url:, **options)
+class NoticeComponent < ViewComponent::Base
+  include ViewComponent::Translatable
+
+  def initialize(icon:, title:, text:, link:, class_name: nil)
+    @icon = icon
     @title = title
     @text = text
-    @link_text = link_text
-    @link_url = link_url
-    @tracking_category = options[:tracking_category]
-    @tracking_label = options[:tracking_label]
-    @image = options[:image]
+    @link = link
+    @tracking_category = link[:tracking_category]
+    @tracking_label = link[:tracking_label]
+    @class_name = class_name
   end
 
   def tracking_data

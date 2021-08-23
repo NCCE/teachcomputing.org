@@ -8,10 +8,14 @@
 
 .aside-component__text {
   margin-bottom: 1rem;
-
 }
 
 .aside-component__link {
   font-weight: bold;
   margin-bottom: 0;
+}
+
+.aside-component__image img {
+  display: block; /* ensure the image uses up all available space */
+  width: 100%;
 }

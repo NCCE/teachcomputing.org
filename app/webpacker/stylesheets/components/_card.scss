@@ -93,8 +93,8 @@
   position: relative;
 
   @include govuk-media-query($from: desktop) {
-    margin-bottom: $logo-block;
-    padding: (0.5 * $logo-block) 0 (0.1 * $logo-block) (0.75 * $logo-block);
+    margin-bottom: 0;
+    padding: 20px 0 4px 30px;
   }
 }
 
