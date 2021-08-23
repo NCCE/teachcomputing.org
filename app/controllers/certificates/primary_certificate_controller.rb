@@ -11,6 +11,8 @@ module Certificates
       return redirect_to complete_primary_certificate_path if @programme.user_completed?(current_user)
 
       @user_programme_achievements = user_programme_achievements
+      @badge_tracking_event_category = 'Primary enrolled'
+      @badge_tracking_event_label = 'Primary badge'
       assign_issued_badge_data
 
       render :show
@@ -20,6 +22,8 @@ module Certificates
       return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
 
       @user_programme_achievements = user_programme_achievements
+      @badge_tracking_event_category = 'Primary complete'
+      @badge_tracking_event_label = 'Primary badge'
       @complete_achievements = complete_achievements
       assign_issued_badge_data
 
@@ -41,8 +45,6 @@ module Certificates
         return unless @programme.badges.any?
 
         @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-        @badge_tracking_event_category = 'Primary enrolled'
-        @badge_tracking_event_label = 'Primary badge'
       end
 
       def user_enrolment

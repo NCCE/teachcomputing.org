@@ -76,6 +76,10 @@ RSpec.describe User, type: :model do
     it 'has_many questionnaire_responses' do
       expect(user).to have_many(:questionnaire_response)
     end
+
+    it 'has_many feedback_comments' do
+      expect(user).to have_many(:feedback_comments)
+    end
   end
 
   describe 'after_create' do
