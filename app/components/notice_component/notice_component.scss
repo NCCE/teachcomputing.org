@@ -4,8 +4,8 @@
   grid-template-rows: auto auto;
   align-items: center;
   justify-items: center;
-  grid-gap: 20px;
-  padding: 10px;
+  grid-gap: 14px;
+  padding: 20px 10px;
 
   @include govuk-media-query($from: tablet) {
     grid-gap: 30px;
@@ -16,13 +16,12 @@
     grid-template-columns: 1fr auto 250px;
     grid-template-rows: auto;
 
-    grid-gap: 60px 50px;
-    padding: 60px 50px;
+    grid-gap: 50px;
+    padding: 50px;
   }
 }
 
 .notice-component__icon {
-  align-self: flex-start;
   width: 50px;
 
   @include govuk-media-query($from: tablet) {
