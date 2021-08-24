@@ -84,17 +84,17 @@
   background-image: none;
 }
 
-@include govuk-media-query($until: tablet) {
-  margin-bottom: 0;
-
   .cards {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
-}
 
 .card--resource {
   background-color: $concrete;
