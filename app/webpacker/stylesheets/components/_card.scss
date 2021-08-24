@@ -84,23 +84,48 @@
   background-image: none;
 }
 
+.cards {
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .card--resource {
   background-color: $concrete;
   border-left-style: solid;
   border-left-width: 9px;
-  margin-bottom: 1rem;
-  padding: 10px 10px 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 20px 10px;
   position: relative;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
-    padding: 20px 0 4px 30px;
+    min-height: 5.5rem;
+  }
+}
+
+.card--resource__details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  flex-direction: row;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: column;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
   }
 }
 
 .card--resource__title {
   font-weight: 500;
-  line-height: 1.75rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
 

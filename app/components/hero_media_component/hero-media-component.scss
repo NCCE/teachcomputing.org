@@ -18,10 +18,6 @@
     grid-area: text;
     align-self: center;
 
-    @include govuk-media-query($from: desktop) {
-      padding: 33px 0;
-    }
-
     .govuk-heading-xl {
       margin-bottom: 20px;
     }
@@ -33,14 +29,27 @@
     }
   }
 
+  &__video {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+
+    iframe {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
   &__media {
     grid-area: photo;
 
     img, iframe {
       width: 100%;
+      height: 100%;
       @include govuk-media-query($from: desktop) {
         display: block;
-        height: 100%;
       }
     }
   }

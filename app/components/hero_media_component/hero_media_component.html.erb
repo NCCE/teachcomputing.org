@@ -3,16 +3,16 @@
     <div class="govuk-main-wrapper">
       <div class="hero-media-component white-bg">
         <div class="hero-media-component__text-wrapper">
-          <h1 class="govuk-heading-xl hero-media-component__title"><%= @title %></h1>
+          <h1 class="govuk-heading-l hero-media-component__title"><%= @title %></h1>
           <p class="govuk-body-l hero-media-component__text"><%= @text.html_safe %></p>
         </div>
-        <div class="hero-media-component__media">
+        <%= content_tag :div, class: ['hero-media-component__media', { "hero-media-component__video": @video.present? }] do %>
           <% if @video.present? %>
             <iframe src="<%= @video[:url] %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-event-action="click" data-event-category="<%= @video[:tracking_page] %>" data-event-label="<%= @video[:tracking_label] %>"></iframe>
           <% else %>
             <%= image_pack_tag @image[:url], alt: @image[:title] %>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

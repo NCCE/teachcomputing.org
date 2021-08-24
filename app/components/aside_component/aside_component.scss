@@ -1,9 +1,18 @@
 .aside-component {
+  @include govuk-media-query($until: tablet) {
+    margin-top: $wrapper-xl-space;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    @include bottom-margined;
+  }
+}
+
+.aside-component__heading {
   border-top-color: $deep-cerulean;
   border-top-style: solid;
   border-top-width: 3px;
   padding-top: 1rem;
-  @include bottom-margined;
 }
 
 .aside-component__text {

@@ -1,3 +1,4 @@
+<div class="aside-component">
   <% if @image.present? %>
     <div class="aside-component__image">
       <%= link_to image_pack_tag(@image[:url], alt: @link_text, title: @link_text),
@@ -9,8 +10,7 @@
       %>
     </div>
   <% end %>
-<div class="aside-component">
-  <h2 class="govuk-heading-s">
+  <h2 class="govuk-heading-s aside-component__heading">
     <%= @title %>
   </h2>
   <p class="govuk-body-s aside-component__text">
