@@ -23,6 +23,14 @@ module CurriculumClient
             }
           }
         }
+        learningObjectives {
+          id
+          description
+          successCriteria {
+            id
+            description
+          }
+        }
       GRAPHQL
 
       def self.all(fields = FIELDS)
