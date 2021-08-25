@@ -157,13 +157,6 @@ class SecondaryLandingPage
         description: 'This unit begins by defining a network and addressing the
           benefits and importance of computer networks, before covering how data
           is transmitted across networks using protocols.'
-      },
-      {
-        title: 'KS4 GCSE: Data representations',
-        url: '/curriculum/key-stage-4/data-representations',
-        description: 'This unit will help your learners to understand binary
-          and hexadecimal numbering systems, how to convert between bases,
-          coding systems and how text, images, and sound are represented in computers.'
       }
     ]
   end
