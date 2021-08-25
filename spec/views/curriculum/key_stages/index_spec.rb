@@ -41,6 +41,11 @@ RSpec.describe('curriculum/key_stages/index_v2', type: :view) do
     expect(rendered).to have_css('.card--resource', text: 'Key Stage 4')
   end
 
+  it 'lists the expected counts' do
+    # expect(rendered).to have_css('.card--resource__unit', text: 'Units: 42')
+    expect(rendered).to have_css('.card--resource__lesson', text: 'Lessons: 84')
+  end
+
   it 'links to the hubs page' do
     expect(rendered).to have_link('Contact your local hub', href: '/hubs')
   end

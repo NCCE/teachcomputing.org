@@ -35,7 +35,9 @@
         ],
         "curriculumMaps": [],
         "teacherGuide": null,
-        "years": "1-3"
+        "years": "1-3",
+        "unit_count": "42",
+        "lesson_count": "84"
       },
       {
         "id": "69be9dd4-ae00-46a6-83d3-c34394cf2b21",

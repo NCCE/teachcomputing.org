@@ -133,6 +133,14 @@
   }
 }
 
+.card--resource__counts {
+  padding-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  flex-direction: column;
+}
+
 .card--resource__title {
   font-weight: 500;
   margin-bottom: 0.5rem;

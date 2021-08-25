@@ -10,6 +10,8 @@
         "years": "1-2",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "lessonCount": "16",
+        "unitCount": "8",
         "yearGroups": [
           {
             "id": "4a2daa4f-d32e-465a-8b59-39af22154939",
@@ -81,6 +83,8 @@
         "years": "3-6",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "lessonCount": "16",
+        "unitCount": "14",
         "yearGroups": [
           {
             "id": "7872a8e2-55be-43eb-a39a-e8e171c9aadd",
@@ -191,6 +195,8 @@
         "years": "7-9",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "lessonCount": "18",
+        "unitCount": "17",
         "yearGroups": [
           {
             "id": "0ec5b2a1-b7b8-417a-8acf-8b26284a814d",
@@ -309,6 +315,8 @@
         "years": "10-11",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "lessonCount": "16",
+        "unitCount": "6",
         "yearGroups": [
           {
             "id": "6ef52bb1-eae0-4ec9-b4f3-3cce787e92f4",

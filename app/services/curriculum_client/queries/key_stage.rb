@@ -22,6 +22,8 @@ module CurriculumClient
           name
           file
         }
+        lessonCount
+        unitCount
         teacherGuide
         years
       GRAPHQL
