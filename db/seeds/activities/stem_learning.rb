@@ -967,11 +967,11 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'afa28241-4d8d-eb11-b1ac-0022481a6ad5') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: 'be2eae05-828c-eb11-b1ac-0022481a6ad5') do |activity|
   activity.title = 'Collaboration in KS3 programming'
   activity.credit = 10
   activity.slug = 'collaboration-in-ks3-programming'
-  activity.stem_course_template_no = 'afa28241-4d8d-eb11-b1ac-0022481a6ad5'
+  activity.stem_course_template_no = 'be2eae05-828c-eb11-b1ac-0022481a6ad5'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP437'
