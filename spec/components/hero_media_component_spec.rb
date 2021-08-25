@@ -33,6 +33,7 @@ RSpec.describe HeroMediaComponent, type: :component do
 
     it 'renders a video' do
       expect(rendered_component).to have_css('.hero-media-component__media iframe')
+      expect(rendered_component).to have_css("iframe[src*='hPpAB-g_9Kc']")
     end
   end
 
@@ -47,6 +48,7 @@ RSpec.describe HeroMediaComponent, type: :component do
 
     it 'renders an image' do
       expect(rendered_component).to have_css('.hero-media-component__media img')
+      expect(rendered_component).to have_css("img[src*='pri-hero']")
     end
   end
 

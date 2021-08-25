@@ -1,0 +1,183 @@
+{
+  "data": {
+    "key_stages": [
+      {
+        "id": "2ddd71e9-b07b-47ac-a4ef-e18dfed6d61e",
+        "title": "Key Stage 1",
+        "slug": "key-stage-1",
+        "shortTitle": "KS1",
+        "level": "1",
+        "ages": "1-3",
+        "description": "This is a KeyStage",
+        "yearGroups": [
+          {
+            "slug": "y1",
+            "yearNumber": "1",
+            "units": [
+              {
+                "id": "6e1154e2-bd0d-4141-b6d4-45b3195a1240",
+                "title": "Unit 1",
+                "slug": "unit-1"
+              }
+            ]
+          },
+          {
+            "slug": "y2",
+            "yearNumber": "2",
+            "units": [
+              {
+                "id": "e36aae18-80e4-413c-b748-45ecc43afa65",
+                "title": "Unit 2",
+                "slug": "unit-2"
+              }
+            ]
+          }
+        ],
+        "curriculumMaps": [],
+        "teacherGuide": null,
+        "years": "1-3"
+      },
+      {
+        "id": "69be9dd4-ae00-46a6-83d3-c34394cf2b21",
+        "title": "Key Stage 2",
+        "slug": "key-stage-2",
+        "shortTitle": "KS2",
+        "level": "2",
+        "ages": "2-4",
+        "description": "This is a KeyStage",
+        "yearGroups": [
+          {
+            "slug": "y3",
+            "yearNumber": "3",
+            "units": [
+              {
+                "id": "de385fa8-c8f7-43c9-8545-8631ed6cf909",
+                "title": "Unit 3",
+                "slug": "unit-3"
+              }
+            ]
+          },
+          {
+            "slug": "y4",
+            "yearNumber": "4",
+            "units": [
+              {
+                "id": "992921f6-c995-4d20-a391-59bc465d4c1a",
+                "title": "Unit 4",
+                "slug": "unit-4"
+              }
+            ]
+          },
+          {
+            "slug": "y5",
+            "yearNumber": "5",
+            "units": [
+              {
+                "id": "e4f66d25-6484-4c2b-8a7b-0b09b7a0b523",
+                "title": "Unit 5",
+                "slug": "unit-5"
+              }
+            ]
+          },
+          {
+            "slug": "y6",
+            "yearNumber": "6",
+            "units": [
+              {
+                "id": "4a47de01-e8dd-4170-bf51-88146141cc82",
+                "title": "Unit 6",
+                "slug": "unit-6"
+              }
+            ]
+          }
+        ],
+        "curriculumMaps": [],
+        "teacherGuide": null,
+        "years": "2-4"
+      },
+      {
+        "id": "681b9b6a-f71f-4683-aad7-9115cf282653",
+        "title": "Key Stage 3",
+        "slug": "key-stage-3",
+        "shortTitle": "KS3",
+        "level": "3",
+        "ages": "3-5",
+        "description": "This is a KeyStage",
+        "yearGroups": [
+          {
+            "slug": "y7",
+            "yearNumber": "7",
+            "units": [
+              {
+                "id": "5cc43284-4aa2-4cda-93a4-2f34e11f4c2a",
+                "title": "Unit 7",
+                "slug": "unit-7"
+              }
+            ]
+          },
+          {
+            "slug": "y8",
+            "yearNumber": "8",
+            "units": [
+              {
+                "id": "94771c35-c536-4177-85d6-c75e21e5647e",
+                "title": "Unit 8",
+                "slug": "unit-8"
+              }
+            ]
+          },
+          {
+            "slug": "y9",
+            "yearNumber": "9",
+            "units": [
+              {
+                "id": "9fb1eb2b-dc4b-47ea-806b-5c443bbdd3c6",
+                "title": "Unit 9",
+                "slug": "unit-9"
+              }
+            ]
+          }
+        ],
+        "curriculumMaps": [],
+        "teacherGuide": null,
+        "years": "3-5"
+      },
+      {
+        "id": "458b7955-2e28-4e9f-9781-5edbb22e4d3d",
+        "title": "Key Stage 4",
+        "slug": "key-stage-4",
+        "shortTitle": "KS4",
+        "level": "4",
+        "ages": "4-6",
+        "description": "This is a KeyStage",
+        "yearGroups": [
+          {
+            "slug": "ynon-gcse",
+            "yearNumber": "Non-GCSE",
+            "units": [
+              {
+                "id": "3c160674-c053-4feb-bfd9-b78aabd0fd9a",
+                "title": "Unit Non-GCSE",
+                "slug": "unit-non-gcse"
+              }
+            ]
+          },
+          {
+            "slug": "ygcse",
+            "yearNumber": "GCSE",
+            "units": [
+              {
+                "id": "827d4111-b038-4f4c-95ff-bbed66262e63",
+                "title": "Unit GCSE",
+                "slug": "unit-gcse"
+              }
+            ]
+          }
+        ],
+        "curriculumMaps": [],
+        "teacherGuide": null,
+        "years": "4-6"
+      }
+    ]
+  }
+}
