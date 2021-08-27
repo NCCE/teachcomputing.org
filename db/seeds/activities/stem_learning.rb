@@ -1358,3 +1358,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
+  activity.title = 'Computing on a budget'
+  activity.credit = 10
+  activity.slug = 'computing-on-a-budget'
+  activity.stem_course_template_no = 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP462'
+  activity.remote_delivered_cpd = true
+end
