@@ -55,3 +55,6 @@ public/sitemap.xml.gz
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# database dumps
+latest.dump
