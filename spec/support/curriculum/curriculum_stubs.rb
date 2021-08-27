@@ -15,6 +15,13 @@ module CurriculumStubs
       .to_return(status: 200, body: SCHEMA)
   end
 
+  def stub_an_invalid_request(status = 404)
+    stub_request(:post, URL)
+      .to_return(
+        { status: status, body: response, headers: {} }
+      )
+  end
+
   def stub_a_valid_request(response = { data: {} }.to_json)
     stub_request(:post, URL)
       .to_return(
