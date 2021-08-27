@@ -1319,3 +1319,53 @@ a = Activity.find_or_create_by(stem_course_template_no: '1b149049-2f19-eb11-a813
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c9409a58-0b07-ec11-b6e6-000d3a86d86c') do |activity|
+  activity.title = 'Getting started in year 3'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-3'
+  activity.stem_course_template_no = 'c9409a58-0b07-ec11-b6e6-000d3a86d86c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP459'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6-000d3a86d86c') do |activity|
+  activity.title = 'Getting started in year 5'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-5'
+  activity.stem_course_template_no = '9dbd1486-0f07-ec11-b6e6-000d3a86d86c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP460'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6-000d3a86d86c') do |activity|
+  activity.title = 'Introduction to the Teach Computing Curriculum'
+  activity.credit = 10
+  activity.slug = 'introduction-to-the-teach-computing-curriculum'
+  activity.stem_course_template_no = '0b5c8499-1307-ec11-b6e6-000d3a86d86c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP461'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
+  activity.title = 'Computing on a budget'
+  activity.credit = 10
+  activity.slug = 'computing-on-a-budget'
+  activity.stem_course_template_no = 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP462'
+  activity.remote_delivered_cpd = true
+end
