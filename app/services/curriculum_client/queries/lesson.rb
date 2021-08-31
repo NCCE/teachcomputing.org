@@ -9,7 +9,6 @@ module CurriculumClient
         title
         slug
         description
-        objectives
         zippedContents
         unit {
           slug
