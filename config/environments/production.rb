@@ -74,7 +74,7 @@ Rails.application.configure do
                          socket_failure_delay: 0.2,
                          down_retry_delay: 60,
                          pool_size: 5,
-                         ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }}
+                         ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter = :sidekiq
@@ -134,7 +134,7 @@ Rails.application.configure do
                        expire_after: 48.hours
 
   config.hosts = [
-  'teachcomputing.org',
-  '.teachcomputing.org'
+    'teachcomputing.org',
+    '.teachcomputing.org'
   ]
 end

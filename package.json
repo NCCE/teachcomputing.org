@@ -52,14 +52,14 @@
     "stop-tunnel": "ssh -S /tmp/.ssh_stem_proxy -O exit proxy",
     "logs": "docker-compose logs -f",
     "web": "docker-compose run --rm --no-deps web",
-    "bundle": "yarn run web bundle",
+    "bundle": "docker-compose run --rm --no-deps web bundle",
+    "exec": "docker-compose run --rm --no-deps web bundle exec",
     "bundle-install": "yarn run bundle install && docker-compose restart web && yarn start",
     "bundle-update": "yarn run bundle update && docker-compose restart web && yarn start",
-    "exec": "yarn run bundle exec",
     "console": "yarn run exec rails c",
-    "shell": "docker-compose exec web sh",
+    "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
-    "test-debug": "docker-compose exec web rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec"
+    "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec"
   },
   "lint-staged": {
     "*.js": [
