@@ -1,0 +1,15 @@
+<h3 class="govuk-heading-m"><%= t('.title') %></h3>
+<% if ['1', '2'].include?(key_stage_level) %>
+  <p class="govuk-body"><%= objectives.first.description %></p>
+  <ul class="govuk-list">
+    <% objectives.first.success_criteria.each do |criterion| %>
+      <li><%= criterion.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul class="govuk-list">
+    <% objectives.each do |objective| %>
+      <li><%= objective.description %></li>
+    <% end %>
+  </ul>
+<% end %>

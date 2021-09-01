@@ -1,23 +1,43 @@
 {
-	"data": {
-		"lesson": {
-			"id": "12",
-			"title": "Lesson 1",
-			"slug": "lesson-1",
-			"description": "This is a Lesson",
-			"objectives": null,
-			"zipped_contents": "https://teachcomputing.org",
-			"unit": {
-					"slug": "unit-2",
-					"title": "Unit 2",
-					"year_group": {
-							"year_number": "2",
-							"key_stage": {
-									"short_title": "KS1",
-									"slug": "key-stage-1"
-							}
-					}
-			}
-		}
+  "data": {
+    "lesson": {
+      "id": "12",
+      "title": "Lesson 1",
+      "slug": "lesson-1",
+      "description": "This is a Lesson",
+      "zipped_contents": "https://teachcomputing.org",
+      "unit": {
+        "slug": "unit-2",
+        "title": "Unit 2",
+        "year_group": {
+          "year_number": "2",
+          "key_stage": {
+            "short_title": "KS1",
+            "slug": "key-stage-1",
+            "level": "1"
+          }
+        }
+      },
+      "learning_objectives": [
+        {
+          "id": "90db7eb4-1a88-44ef-815d-873fca2351cc",
+          "description": "To identify technology",
+          "success_criteria": [
+            {
+              "id": "60eb3fab-dfc1-4290-a47f-64d39ffa7621",
+              "description": "I can explain technology as something that helps us"
+            },
+            {
+              "id": "67c253e7-f4a3-4c13-8171-10059f23b309",
+              "description": "I can locate examples of technology in the classroom"
+            },
+            {
+              "id": "0200cd71-3803-4dcd-a85c-99a81ccea2d9",
+              "description": "I can explain how these technology examples help us"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

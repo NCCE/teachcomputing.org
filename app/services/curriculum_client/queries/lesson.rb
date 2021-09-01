@@ -6,11 +6,9 @@ module CurriculumClient
 
       FIELDS = <<~GRAPHQL.freeze
         id
-        unit
         title
         slug
         description
-        objectives
         zippedContents
         unit {
           slug
@@ -20,6 +18,7 @@ module CurriculumClient
             keyStage {
               shortTitle
               slug
+              level
             }
           }
         }
