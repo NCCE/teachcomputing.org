@@ -20,7 +20,7 @@ fi
 # Brings the stack up and polls for availability
 echo "- Bringing up the stack:"
 docker-compose up -d
-printf %s "- Waiting for the stack to become available (ctrl+c to cancel): "
+printf %s "- Waiting for the stack (ctrl+c to cancel): "
 SECONDS=0
 while (( SECONDS < TIMEOUT )); do
   if ! curl -sSf "$URL_TO_POLL" &> /dev/null; then

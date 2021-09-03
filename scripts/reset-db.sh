@@ -1,5 +1,4 @@
 #!/bin/bash
-
 CONTAINER_NAME="db"
 VOLUME_NAME="teachcomputingorg_pg-data"
 

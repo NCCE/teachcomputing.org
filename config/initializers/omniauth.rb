@@ -58,7 +58,7 @@ end
 OmniAuth.config.logger = Rails.logger if Rails.env.development?
 
 if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
-  puts 'Faking OAuth login for review apps'
+  puts 'Bypassing OAuth login'
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
     provider: 'stem',
