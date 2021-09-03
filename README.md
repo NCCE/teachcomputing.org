@@ -9,7 +9,7 @@
 ### Dependencies:
 
 - [Homebrew](https://brew.sh/)
-- Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox)
+- Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox) > v4.0 (with support for `docker compose`)
 - Node & NPM
 
 ### Setup
@@ -31,7 +31,7 @@ Optionally set a password for postgres by updating the value for `DEV_PASS` in y
 Start the stack:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 Or (this automatically creates the ssh tunnel and waits until the stack is ready to use):
@@ -45,7 +45,7 @@ The app is available at: http://teachcomputing.rpfdev.com
 Stop the stack:
 
 ```
-docker-compose down
+docker compose down
 ```
 
 Or (this also gracefully closes the tunnel):
@@ -97,7 +97,7 @@ yarn run bundle-install
 To reinstall all packages:
 
 ```
-docker-compose build
+docker compose build
 ```
 
 ## Testing
@@ -105,7 +105,7 @@ docker-compose build
 Uses [rspec](https://github.com/rspec/rspec)
 
 ```
-docker-compose run --rm web bin/rspec
+docker compose run --rm web bin/rspec
 ```
 
 Or
@@ -117,7 +117,7 @@ yarn test
 To use [guard](https://github.com/guard/guard) to watch the tests:
 
 ```
-docker-compose run --rm web bin/guard
+docker compose run --rm web bin/guard
 ```
 
 Or
@@ -158,11 +158,11 @@ Run `brakeman -I config/brakeman.ignore .` in the project root and follow the on
 
 ### Debugging
 
-`ruby-debug-ide` is enabled and waiting for connections by default on port `1234`. There is a `launch.json` in the repo and if you're using vscode it should be as easy as going to the 'Run' view, selecting 'Rails Debug' and clicking the green Run button. It's important to note that if you attempt to restart or stop the debug process, this will effectively kill the container, and a `docker-compose up -d` will be necessary to continue - however this is rarely necessary in general use since you'll be debugging individual requests.
+`ruby-debug-ide` is enabled and waiting for connections by default on port `1234`. There is a `launch.json` in the repo and if you're using vscode it should be as easy as going to the 'Run' view, selecting 'Rails Debug' and clicking the green Run button. It's important to note that if you attempt to restart or stop the debug process, this will effectively kill the container, and a `docker compose up -d` will be necessary to continue - however this is rarely necessary in general use since you'll be debugging individual requests.
 
 Calling `yarn run rspec-debug <path to spec>` will start an rspec debug session, this session will wait for a connection on `127.0.0.1:1235`. Add any breakpoints required, then for VSCode there is a launch configuration in `launch.json` called 'RSpec Debug', starting this will glom onto the previously started debug session.
 
-If you prefer to use `byebug` you'll _first_ need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker-compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker-compose up -d` again.
+If you prefer to use `byebug` you'll _first_ need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker compose up -d` again.
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
