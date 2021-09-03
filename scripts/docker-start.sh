@@ -19,7 +19,7 @@ fi
 
 # Brings the stack up and polls for availability
 echo "- Bringing up the stack:"
-docker-compose up -d
+docker compose up -d
 printf %s "- Waiting for the stack (ctrl+c to cancel): "
 SECONDS=0
 while (( SECONDS < TIMEOUT )); do
@@ -43,5 +43,5 @@ if [ $OK_TO_PROCEED = 1 ]; then
 else
   echo "failed"
   echo "- Check the logs:"
-  docker-compose logs --tail 50
+  docker compose logs --tail 50
 fi

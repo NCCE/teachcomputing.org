@@ -2,14 +2,6 @@
 source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
 
-echo "- Adding host envvars to ~/.zshrc"
-target=~/.zshrc
-while IFS= read -r line ; do
-  if ! grep -Fqxe "export $line" "$target" ; then
-    printf "%s\n" "export $line" >> "$target"
-  fi
-done < "$(pwd)/scripts/.env"
-
 echo "- Setting up homebrew"
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew now"; \
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
@@ -31,7 +23,7 @@ fi
 printf %s "- Build the docker image (y/n)? "
 read -r RESP
 if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  docker-compose build
+  docker compose build
 fi
 
 echo "- Install dev-nginx"
