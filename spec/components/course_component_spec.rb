@@ -1,13 +1,15 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe CourseComponent, type: :component do
   let(:course) { build(:achiever_course_template, activity_code: 'abc', title: 'test course') }
+  let(:course_primary) { build(:achiever_course_template, activity_code: 'abc', title: 'primary test course', programmes: ['Primary']) }
+  let(:course_secondary) { build(:achiever_course_template, activity_code: 'abc', title: 'secondary test course', programmes: ['Secondary']) }
   let(:filter) { instance_double(Achiever::CourseFilter) }
 
   before do
     allow(filter).to receive_messages(
-      subjects: { 'Algorithms' => 000000000, 'Other' => 222222222 },
-      age_groups: { 'Key stage 1' => 000000000, 'Key stage 2' => 222222222 }
+      subjects: { 'Algorithms' => 0o00000000, 'Other' => 222_222_222 },
+      age_groups: { 'Key stage 1' => 0o00000000, 'Key stage 2' => 222_222_222 }
     )
   end
 
@@ -26,9 +28,19 @@ RSpec.describe CourseComponent, type: :component do
     expect(rendered_component).to have_text('Algorithms')
   end
 
-  it 'shows programmes' do
+  it 'shows the expected tag for a CSA course' do
     render_inline(described_class.new(course: course, filter: filter))
     expect(rendered_component).to have_text('CS Accelerator')
+  end
+
+  it 'shows the expected tag for a Primary course' do
+    render_inline(described_class.new(course: course_primary, filter: filter))
+    expect(rendered_component).to have_text('Primary certificate')
+  end
+
+  it 'shows the expected tag for a Secondary course' do
+    render_inline(described_class.new(course: course_secondary, filter: filter))
+    expect(rendered_component).to have_text('Secondary certificate')
   end
 
   it 'shows age groups' do
