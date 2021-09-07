@@ -77,10 +77,10 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the expected tag' do
-      expect(rendered).to have_css('.dashboard-tags--primary')
+      expect(rendered).to have_css('.dashboard-tags--primary', text: 'Primary certificate')
     end
 
-    it "does not render an empty list for complete achievements" do
+    it 'does not render an empty list for complete achievements' do
       expect(rendered).to have_css('.ncce-activity-list', count: 1)
     end
   end
@@ -104,10 +104,10 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the expected tag' do
-      expect(rendered).to have_css('.dashboard-tags--secondary')
+      expect(rendered).to have_css('.dashboard-tags--secondary', text: 'Secondary certificate')
     end
 
-    it "does not render an empty list for incomplete achievements" do
+    it 'does not render an empty list for incomplete achievements' do
       expect(rendered).to have_css('.ncce-activity-list', count: 1)
     end
   end
@@ -128,7 +128,7 @@ RSpec.describe('dashboard/show', type: :view) do
     end
 
     it 'shows the expected tag' do
-      expect(rendered).to have_css('.dashboard-tags--cs-accelerator', count: 2)
+      expect(rendered).to have_css('.dashboard-tags--cs-accelerator', count: 2, text: 'CS Accelerator')
     end
   end
 
