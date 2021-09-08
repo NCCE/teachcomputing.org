@@ -22,12 +22,17 @@
               <span class="govuk-body-s lp-resources--featured-outer">
                 <span class="govuk-body-s lp-resources--featured-inner">
                   <span class="icon-star">
-                    Featured
+                    Updated August 2021
                   </span>
                 </span>
               </span>
               <h2 class="card__heading govuk-heading-m">
-                <%= link_to resource[:title], resource[:url], class: 'ncce-link ncce-link--heading lp-resources--heading' %>
+                <%= link_to resource[:title], resource[:url], class: 'ncce-link ncce-link--heading lp-resources--heading',
+                  data: {
+                    event_action: 'click',
+                    event_category: @landing_page.event_tracking_category,
+                    event_label: resource[:link_label]
+                  } %>
               </h2>
               <p class="govuk-body card__text lp-resources--card-text">
                 <%= resource[:description] %>
