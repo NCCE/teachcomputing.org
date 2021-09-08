@@ -125,7 +125,7 @@ class SecondaryLandingPage
       },
       {
         image: 'media/images/landing-pages/lp-sec-crs-2.png',
-        image_title: '',
+        image_title: 'New subject leaders of secondary computing course',
         title: 'New subject leaders of secondary computing',
         url: '/courses/CP411/new-subject-leaders-of-secondary-computing-remote',
         description: 'Develop the leadership skills and management practices to confidently coordinate an effective computing department.',
