@@ -1282,7 +1282,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '7d7044f3-c4ea-eb11-bacb-0022481a7a8c') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '7d7044f3-c4ea-eb11-bacb-0022481a7a8c') do |activity|
   activity.title = 'Mentoring support for non-computing mentors'
   activity.credit = 10
   activity.slug = 'mentoring-support-for-non-computing-mentors'
@@ -1293,9 +1293,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '7d7044f3-c4ea-eb11-bacb
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
-a = Activity.find_or_create_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb-0022481a422d') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb-0022481a422d') do |activity|
   activity.title = 'Mentoring support for computing leads'
   activity.credit = 10
   activity.slug = 'mentoring-support-for-computing-leads'
@@ -1305,8 +1303,6 @@ a = Activity.find_or_create_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb
   activity.stem_activity_code = 'CP402'
   activity.remote_delivered_cpd = true
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '1b149049-2f19-eb11-a813-000d3a86f6ce') do |activity|
   activity.title = 'Assessment and progression in KS3 computing'
@@ -1320,7 +1316,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'c9409a58-0b07-ec11-b6e6-000d3a86d86c') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'c9409a58-0b07-ec11-b6e6-000d3a86d86c') do |activity|
   activity.title = 'Getting started in year 3'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-3'
@@ -1331,9 +1327,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c9409a58-0b07-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
-a = Activity.find_or_create_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6-000d3a86d86c') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6-000d3a86d86c') do |activity|
   activity.title = 'Getting started in year 5'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-5'
@@ -1344,9 +1338,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
-a = Activity.find_or_create_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6-000d3a86d86c') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6-000d3a86d86c') do |activity|
   activity.title = 'Introduction to the Teach Computing Curriculum'
   activity.credit = 10
   activity.slug = 'introduction-to-the-teach-computing-curriculum'
@@ -1357,15 +1349,13 @@ a = Activity.find_or_create_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
-a = Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
   activity.title = 'Computing on a budget'
   activity.credit = 10
   activity.slug = 'computing-on-a-budget'
   activity.stem_course_template_no = 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP462'
+  activity.stem_activity_code = 'CP262'
   activity.remote_delivered_cpd = true
 end
