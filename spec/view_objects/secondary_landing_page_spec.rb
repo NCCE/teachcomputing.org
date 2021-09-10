@@ -185,7 +185,7 @@ RSpec.describe SecondaryLandingPage do
     end
 
     it 'returns correctly shaped data' do
-      keys = %i[image image_title title url description icon_class type duration time_commitment link_label]
+      keys = %i[image image_title title url description icon_class type duration time_commitment event_label]
 
       expect(landing_page.courses.map(&:keys)).to eq(Array.new(3, keys))
     end

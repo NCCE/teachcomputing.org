@@ -81,7 +81,7 @@ class PrimaryLandingPage
         type: 'Live remote training',
         duration: 'days vary',
         time_commitment: '5 hours',
-        link_label: 'Course 1'
+        event_label: 'Course 1'
       },
       {
         image: 'media/images/landing-pages/stem_primary_course.png',
@@ -93,7 +93,7 @@ class PrimaryLandingPage
         type: 'Live remote training',
         duration: 'days vary',
         time_commitment: '10 hours',
-        link_label: 'Course 2'
+        event_label: 'Course 2'
       },
       {
         image: 'media/images/landing-pages/5_to_11_year_olds_course.png',
@@ -105,7 +105,7 @@ class PrimaryLandingPage
         type: 'Online course',
         duration: '3 weeks',
         time_commitment: '2 hours per week',
-        link_label: 'Course 3'
+        event_label: 'Course 3'
       }
     ]
   end
@@ -124,7 +124,7 @@ class PrimaryLandingPage
         learners explore how IT benefits society in places such as shops, libraries,
         and hospitals. Whilst discussing the responsible use of technology,
         and how to make smart choices when using it.',
-        link_label: 'Featured unit 1'
+        event_label: 'Featured unit 1'
       },
       {
         title: 'Year 3: Computing systems and networks – Connecting computers',
@@ -133,7 +133,7 @@ class PrimaryLandingPage
         with an initial focus on inputs, processes, and outputs.
         Start by comparing digital and non-digital devices,
         before introducing them to computer networks.',
-        link_label: 'Featured unit 2'
+        event_label: 'Featured unit 2'
       }
     ]
   end

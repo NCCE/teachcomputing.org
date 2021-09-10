@@ -121,7 +121,7 @@ class SecondaryLandingPage
         type: 'Live remote training',
         duration: 'days vary',
         time_commitment: '5 hours',
-        link_label: 'Course 1'
+        event_label: 'Course 1'
       },
       {
         image: 'media/images/landing-pages/lp-sec-crs-2.png',
@@ -133,7 +133,7 @@ class SecondaryLandingPage
         type: 'Live remote training',
         duration: '2 days',
         time_commitment: '9.5 hours',
-        link_label: 'Course 2'
+        event_label: 'Course 2'
       },
       {
         image: 'media/images/landing-pages/encryption_and_cryptography_course.png',
@@ -145,7 +145,7 @@ class SecondaryLandingPage
         type: 'Online course',
         duration: '3 weeks',
         time_commitment: '2 hours per week',
-        link_label: 'Course 3'
+        event_label: 'Course 3'
       }
     ]
   end

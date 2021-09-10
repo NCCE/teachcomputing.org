@@ -141,4 +141,12 @@ module CoursesHelper
       'This course is part of Teach secondary computing'
     end
   end
+
+  def image_title(course)
+    if course[:image_title].present?
+      course[:image_title]
+    else
+      course[:title]
+    end
+  end
 end
