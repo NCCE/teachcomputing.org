@@ -1359,3 +1359,16 @@ Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000
   activity.stem_activity_code = 'CP262'
   activity.remote_delivered_cpd = true
 end
+
+Activity.find_or_create_by(stem_course_template_no: '576c1f0b-8610-ec11-b6e6-000d3a0cc552') do |activity|
+  activity.title = 'KS3 computing (module 3): Creative curriculum enrichment and inclusion (remote)'
+  activity.credit = 10
+  activity.slug = 'ks3-computing-module-3-creative-curriculum-enrichment-and-inclusion'
+  activity.stem_course_template_no = '576c1f0b-8610-ec11-b6e6-000d3a0cc552'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP449'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
