@@ -210,20 +210,6 @@ if activity = Activity.find_by(stem_course_template_no: 'be2ded42-3fbd-eb11-bacc
   end
 end
 
-if activity = Activity.find_by(stem_course_template_no: '7d7044f3-c4ea-eb11-bacb-0022481a7a8c')
-  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  unless group_two.programme_activities.include?(programme_activity)
-    programme_activity.update(programme_activity_grouping_id: group_two.id)
-  end
-end
-
-if activity = Activity.find_by(stem_course_template_no: 'b41096d2-c8ea-eb11-bacb-0022481a422d')
-  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
-  unless group_two.programme_activities.include?(programme_activity)
-    programme_activity.update(programme_activity_grouping_id: group_two.id)
-  end
-end
-
 if activity = Activity.find_by(stem_course_template_no: '1b149049-2f19-eb11-a813-000d3a86f6ce')
   programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
   unless group_two.programme_activities.include?(programme_activity)
