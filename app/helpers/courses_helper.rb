@@ -143,10 +143,8 @@ module CoursesHelper
   end
 
   def image_title(course)
-    if course[:image_title].present?
-      course[:image_title]
-    else
-      course[:title]
-    end
+    return course[:image_title] if course[:image_title].present?
+
+    course[:title]
   end
 end
