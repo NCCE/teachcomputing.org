@@ -1,24 +1,21 @@
 # frozen_string_literal: true
 
 class AsideComponent < ViewComponent::Base
-  def initialize(title:, text:, link_text:, link_url:, **options)
+  def initialize(text:, title: nil, link: nil, **options)
     @title = title
     @text = text
-    @link_text = link_text
-    @link_url = link_url
-    @tracking_category = options[:tracking_category]
-    @tracking_label = options[:tracking_label]
+    @link = link
     @image = options[:image]
+    @tracking_category = options[:tracking_category]
   end
 
-  def tracking_data
-    return nil unless @tracking_category.present? &&
-                      @tracking_label.present?
+  def tracking_data(label = nil)
+    return nil unless @tracking_category.present? && label.present?
 
     {
       event_action: 'click',
       event_category: @tracking_category,
-      event_label: @tracking_label
+      event_label: label
     }
   end
 end

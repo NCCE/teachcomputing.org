@@ -8,7 +8,7 @@
     <%= link_to @link[:text], @link[:url],
       class: 'govuk-button button govuk-!-margin-bottom-0',
       title: @link[:text],
-      data: tracking_data
+      data: tracking_data(@link[:tracking_label])
     %>
   </p>
 <% end %>

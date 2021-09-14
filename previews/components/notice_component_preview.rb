@@ -13,9 +13,9 @@ class NoticeComponentPreview < ViewComponent::Preview
           link: {
             url: '/',
             text: 'Another place',
-            tracking_category: '',
-            tracking_label: ''
-          }
+            tracking_label: 'Something'
+          },
+          tracking_category: 'Notice'
         }
       )
     )

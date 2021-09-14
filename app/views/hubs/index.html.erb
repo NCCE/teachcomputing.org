@@ -21,11 +21,13 @@
         <%= render AsideComponent.new(
           title: t('.kit_aside_title'),
           text: t('.kit_aside_text'),
-          link_text: t('.kit_aside_link_text'),
-          link_url: 'https://static.teachcomputing.org/Guide-for-physical-computing-kits.pdf',
-          tracking_category: 'Hubs',
-          tracking_label: 'Hubs kit')
-        %>
+          link: {
+            text: t('.kit_aside_link_text'),
+            url: 'https://static.teachcomputing.org/Guide-for-physical-computing-kits.pdf',
+            tracking_label: 'Hubs kit'
+          },
+          tracking_category: 'Hubs'
+        ) %>
       </div>
     </div>
   </div>

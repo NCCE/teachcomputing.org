@@ -26,11 +26,11 @@ RSpec.describe('curriculum/key_stages/index_v2', type: :view) do
   end
 
   it 'links to the journey poster' do
-    expect(rendered).to have_link('View curriculum journey poster', href: 'https://static.teachcomputing.org/curriculum_journey.pdf')
+    expect(rendered).to have_link('viewing our curriculum journey poster', href: 'https://static.teachcomputing.org/curriculum_journey.pdf')
   end
 
   it 'has a section about what we do with bullet points' do
-    expect(rendered).to have_text('Why use our Teach Computing Curriculum:')
+    expect(rendered).to have_text('Why use our Teach Computing Curriculum?')
     expect(rendered).to have_css('.govuk-list li', count: 5)
   end
 

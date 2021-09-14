@@ -3,24 +3,22 @@
 class NoticeComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(icon:, title:, text:, link:, class_name: nil)
+  def initialize(icon:, title:, text:, link:, tracking_category: nil, class_name: nil)
     @icon = icon
     @title = title
     @text = text
     @link = link
-    @tracking_category = link[:tracking_category]
-    @tracking_label = link[:tracking_label]
     @class_name = class_name
+    @tracking_category = tracking_category
   end
 
-  def tracking_data
-    return nil unless @tracking_category.present? &&
-                      @tracking_label.present?
+  def tracking_data(label)
+    return nil unless @tracking_category.present? && label.present?
 
     {
       event_action: 'click',
       event_category: @tracking_category,
-      event_label: @tracking_label
+      event_label: label
     }
   end
 end

@@ -13,9 +13,9 @@ RSpec.describe NoticeComponent, type: :component do
       link: {
         url: 'https://www.example.com',
         text: 'Link text',
-        tracking_category: '',
-        tracking_label: ''
-      }
+        tracking_label: 'Something'
+      },
+      tracking_category: 'Notice'
     }
   end
 

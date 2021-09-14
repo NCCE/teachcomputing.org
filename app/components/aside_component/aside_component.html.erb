@@ -1,29 +1,32 @@
 <div class="aside-component">
   <% if @image.present? %>
     <div class="aside-component__image">
-      <%= link_to image_pack_tag(@image[:url], alt: @link_text, title: @link_text),
-        @link_url,
+      <%= link_to image_pack_tag(@image[:file], alt: @link_text, title: @image[:title]),
+        @image[:url],
         class: 'ncce-link ncce-link--contrast',
         role: 'button',
         draggable: 'false',
-        data: tracking_data
+        data: tracking_data(@image[:tracking_label])
       %>
     </div>
   <% end %>
-  <h2 class="govuk-heading-s aside-component__heading">
-    <%= @title %>
-  </h2>
-  <p class="govuk-body-s aside-component__text">
+  <% if @title.present? %>
+    <h2 class="govuk-heading-s aside-component__heading">
+      <%= @title %>
+    </h2>
+  <% end %>
+  <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
     <%= @text %>
-  </p>
+  <% end %>
+  <% if @link.present? %>
   <p class="govuk-body-s aside-component__link">
-    <%= link_to @link_text,
-      @link_url,
-      title: @link_text,
+    <%= link_to @link[:text],
+      @link[:url],
       class: 'ncce-link ncce-link--contrast',
       role: 'button',
       draggable: 'false',
-      data: tracking_data
+      data: tracking_data(@link[:tracking_label])
     %>
+  <% end %>
   </p>
 </div>
