@@ -27,6 +27,16 @@
           tracking_label: 'Hubs kit')
         %>
       </div>
+      <div class="govuk-grid-column-one-third">
+        <%= render AsideComponent.new(
+          title: t('.sme_section_title'),
+          text: t('.sme_section_text').html_safe,
+          link_text: t('.sme_section_link_text'),
+          link_url: 'https://forms.gle/adouhmFe9QvaTeBPA',
+          tracking_category: 'Hubs',
+          tracking_label: 'SME contact')
+        %>
+      </div>
     </div>
   </div>
 </div>
