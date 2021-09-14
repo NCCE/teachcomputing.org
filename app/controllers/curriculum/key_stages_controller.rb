@@ -6,10 +6,6 @@ module Curriculum
       @key_stages = CurriculumClient::Queries::KeyStage.all.key_stages
     end
 
-    def index_v2
-      @key_stages = CurriculumClient::Queries::KeyStage.all.key_stages
-    end
-
     def show
       @key_stage = CurriculumClient::Queries::KeyStage.one(params[:key_stage_slug]).key_stage
     end

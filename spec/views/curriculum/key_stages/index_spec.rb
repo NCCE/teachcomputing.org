@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('curriculum/key_stages/index_v2', type: :view) do
+RSpec.describe('curriculum/key_stages/index', type: :view) do
   let(:key_stages_json) { File.new('spec/support/curriculum/views/key_stages.json').read }
   let(:user) { create(:user) }
   let(:setup_view) do
