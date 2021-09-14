@@ -73,33 +73,39 @@ class PrimaryLandingPage
     [
       {
         image: 'media/images/landing-pages/lp-pri-crs-1.png',
+        image_title: 'STEM course',
         title: 'Introduction to primary computing',
         url: '/courses/CP454/introduction-to-primary-computing-remote',
         description: 'Ideal for beginners, this course covers the whole computing curriculum at an introductory level, including programming essentials using Scratch.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
         duration: 'days vary',
-        time_commitment: '5 hours'
+        time_commitment: '5 hours',
+        event_label: 'Course 1'
       },
       {
-        image: 'media/images/landing-pages/lp-pri-crs-2.png',
-        title: 'Primary programming and algorithms',
-        url: '/courses/CP455/primary-programming-and-algorithms-remote',
-        description: 'Be prepared to teach algorithms and programming to all ages of children, helping them develop their understanding through effective pedagogy.',
+        image: 'media/images/landing-pages/stem_primary_course.png',
+        image_title: 'STEM course',
+        title: 'Leading primary computing',
+        url: '/courses/CP456/leading-primary-computing-remote',
+        description: 'Lead computing in your school with confidence, making the most of the resources and teaching staff available.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
         duration: 'days vary',
-        time_commitment: '5 hours'
+        time_commitment: '10 hours',
+        event_label: 'Course 2'
       },
       {
-        image: 'media/images/landing-pages/lp-pri-crs-3.png',
-        title: 'Programming pedagogy in primary schools: developing computing teaching',
-        url: '/courses/CO020/programming-pedagogy-in-primary-schools-developing-computing-teaching',
-        description: 'Investigate a range of pedagogical approaches for teaching programming to primary pupils',
+        image: 'media/images/landing-pages/5_to_11_year_olds_course.png',
+        image_title: 'Programming 5 to 11 year olds course',
+        title: 'Teaching Computer Systems and Networks for 5 to 11 year olds',
+        url: '/courses/CO042/teaching-computing-systems-and-networks-to-5-to-11-year-olds',
+        description: 'Improve your subject knowledge and develop your teaching to help young children understand the computing systems and networks around them.',
         icon_class: 'icon-online',
         type: 'Online course',
-        duration: '4 weeks',
-        time_commitment: '2 hours per week'
+        duration: '3 weeks',
+        time_commitment: '2 hours per week',
+        event_label: 'Course 3'
       }
     ]
   end
@@ -112,18 +118,22 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 2: Creating media - Digital photography',
-        url: '/curriculum/key-stage-1/creating-media-digital-photography',
-        description: 'Learners will look at how different devices can be used to take
-        photographs and will capture, edit, and improve photos.
-        They will use this knowledge to recognise that images they see may not be real.'
+        title: 'Year 2: Computing systems and networks – IT around us',
+        url: '/curriculum/key-stage-1/computing-systems-and-networks-it-around-us',
+        description: 'With an initial focus on IT in the home,
+        learners explore how IT benefits society in places such as shops, libraries,
+        and hospitals. Whilst discussing the responsible use of technology,
+        and how to make smart choices when using it.',
+        event_label: 'Featured unit 1'
       },
       {
-        title: 'Year 4: Programming A – Repetition in shapes',
-        url: '/curriculum/key-stage-2/programming-a-repetition-in-shapes',
-        description: 'This unit is the first of the two programming units in Year 4,
-        and looks at repetition and loops within programming. Pupils will create programs by
-        planning, modifying, and testing commands to create shapes and patterns.'
+        title: 'Year 3: Computing systems and networks – Connecting computers',
+        url: '/curriculum/key-stage-2/computing-systems-and-networks-connecting-computers',
+        description: 'Challenge your learners to develop their understanding of digital devices,
+        with an initial focus on inputs, processes, and outputs.
+        Start by comparing digital and non-digital devices,
+        before introducing them to computer networks.',
+        event_label: 'Featured unit 2'
       }
     ]
   end

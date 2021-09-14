@@ -112,34 +112,40 @@ class SecondaryLandingPage
   def courses
     [
       {
-        image: 'media/images/landing-pages/lp-sec-crs-1.png',
-        title: 'Higher attainment in GCSE computer science',
-        url: '/courses/CP439/higher-attainment-in-gcse-computer-science-meeting-the-challenges-of-the-exams-remote',
-        description: 'Explore how to improve attainment in GCSE computer science, look at how students should tackle exam questions, retrieval practice and interleaving, and progression from KS3 to KS4.',
+        image: 'media/images/landing-pages/stem_course.png',
+        image_title: 'STEM course',
+        title: 'Maths in computer science',
+        url: '/courses/CP434/maths-in-computer-science-remote',
+        description: 'Maths is firmly embedded at the core of computer science. During this course you’ll explore the foundational topics at the heart of mathematics and computer science.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
         duration: 'days vary',
-        time_commitment: '5 hours'
+        time_commitment: '5 hours',
+        event_label: 'Course 1'
       },
       {
         image: 'media/images/landing-pages/lp-sec-crs-2.png',
-        title: 'Teaching GCSE computer science: improving student engagement',
-        url: '/courses/CP447/teaching-gcse-computer-science-improving-student-engagement-remote',
-        description: 'Improve student engagement in your GCSE computer science lessons by developing your classroom pedagogy.',
+        image_title: 'New subject leaders of secondary computing course',
+        title: 'New subject leaders of secondary computing',
+        url: '/courses/CP411/new-subject-leaders-of-secondary-computing-remote',
+        description: 'Develop the leadership skills and management practices to confidently coordinate an effective computing department.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
-        duration: 'days vary',
-        time_commitment: '6 hours'
+        duration: '2 days',
+        time_commitment: '9.5 hours',
+        event_label: 'Course 2'
       },
       {
-        image: 'media/images/landing-pages/lp-sec-crs-3.png',
-        title: 'Impact of Technology: How To Lead Classroom Discussions',
-        url: '/courses/CO215/impact-of-technology-how-to-lead-classroom-discussions',
-        description: 'You will explore the ethical, legal, cultural, and environmental concerns surrounding computer science.',
+        image: 'media/images/landing-pages/encryption_and_cryptography_course.png',
+        image_title: 'Introduction to Encryption and Cryptography course',
+        title: 'Introduction to Encryption and Cryptography',
+        url: '/courses/CO220/introduction-to-encryption-and-cryptography',
+        description: "Discover the history of encryption and learn how it's used in the modern world.",
         icon_class: 'icon-online',
         type: 'Online course',
         duration: '3 weeks',
-        time_commitment: '2 hours per week'
+        time_commitment: '2 hours per week',
+        event_label: 'Course 3'
       }
     ]
   end

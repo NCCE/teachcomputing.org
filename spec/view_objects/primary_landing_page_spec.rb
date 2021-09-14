@@ -131,7 +131,7 @@ RSpec.describe PrimaryLandingPage do
     end
 
     it 'returns correctly shaped data' do
-      keys = %i[image title url description icon_class type duration time_commitment]
+      keys = %i[image image_title title url description icon_class type duration time_commitment event_label]
 
       expect(landing_page.courses.map(&:keys)).to eq(Array.new(3, keys))
     end
@@ -149,7 +149,7 @@ RSpec.describe PrimaryLandingPage do
     end
 
     it 'returns correctly shaped data' do
-      keys = %i[title url description]
+      keys = %i[title url description event_label]
 
       expect(landing_page.resources.map(&:keys)).to eq(Array.new(2, keys))
     end

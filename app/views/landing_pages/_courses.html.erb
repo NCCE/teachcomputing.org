@@ -28,7 +28,7 @@
               <div class="lp-courses--course">
 
                 <div class="lp-courses--image-wrapper">
-                  <%= image_pack_tag course[:image], alt: course[:title], class: 'lp-courses--image' %>
+                  <%= image_pack_tag course[:image], alt: image_title(course), class: 'lp-courses--image' %>
                   <span class="govuk-body-s lp-courses--featured">
                     <span class="icon-star ">Featured</span>
                   </span>
@@ -36,7 +36,9 @@
 
                 <p class="govuk-body">
                   <strong>
-                    <%= link_to course[:title], course[:url], class: 'ncce-link' %>
+                    <%= link_to course[:title], course[:url], class: 'ncce-link', data: { event_action: 'click',
+                                                                                          event_category: @landing_page.event_tracking_category,
+                                                                                          event_label: course[:event_label] } %>
                   </strong>
                 </span>
                 <p class="govuk-body">
