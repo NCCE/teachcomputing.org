@@ -416,3 +416,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'd440d652-4128-4995-9ef
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '0fbfa644-501d-4ac0-b3ef-3cc458d33527') do |activity|
+  activity.title = 'Introduction to Machine Learning and AI'
+  activity.credit = 20
+  activity.slug = 'introduction-to-machine-learning-and-ai'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = 'a3fd8b2e-c516-ec11-b6e6-0022481a4e89'
+  activity.future_learn_course_uuid = '0fbfa644-501d-4ac0-b3ef-3cc458d33527'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO231'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
