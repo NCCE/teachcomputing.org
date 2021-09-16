@@ -16,6 +16,7 @@ en:
           text:
             html: "Get a better understanding of progression through each key stage and year group by %{journey_link}."
             journey_link_text: "viewing our curriculum journey poster"
+          title: "View our curriculum journey poster"
         key_stage_heading: "Choose resources by key stage"
         notice:
           title: "Need equipment to help you teach?"
