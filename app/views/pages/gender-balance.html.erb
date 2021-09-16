@@ -3,21 +3,15 @@
 <% meta_tag :url, request.original_url %>
 <% meta_tag :image, asset_pack_path('media/images/pages/gender-balance/hero.jpg') %>
 <% meta_tag :image_alt, 'Gender balance' %>
-<div class="tapestry-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="text-photo-hero white-bg">
-        <div class="text-photo-hero__block--text">
-          <h1 class="govuk-heading-l">Gender Balance in Computing</h1>
-          <p class="govuk-body-l">Help us find the best ways to encourage young women to study Computer Science.</p>
-        </div>
-        <div class="text-photo-hero__block--photo">
-          <%= image_pack_tag 'media/images/pages/gender-balance/hero.jpg', alt: '' %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render HeroMediaComponent.new(
+  title: 'Gender Balance in Computing',
+  text: 'Help us find the best ways to encourage young women to study Computer Science.',
+  class_name: 'tapestry-bg',
+  image: {
+    url: 'media/images/pages/gender-balance/hero.jpg',
+    title: 'Gender Balance in Computing',
+  }
+) %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">

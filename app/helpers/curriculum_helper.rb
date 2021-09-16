@@ -34,4 +34,16 @@ module CurriculumHelper
   def breadcrumb_separator
     ' > '
   end
+
+  def tracking_category
+    'Curriculum landing'
+  end
+
+  def tracking_data(label)
+    {
+      event_action: 'click',
+      event_category: tracking_category,
+      event_label: label
+    }
+  end
 end

@@ -1,21 +1,16 @@
 <% meta_tag :title, 'Isaac Computer Science' %>
 <% meta_tag :description, 'Discover Isaac Computer Science, our free online learning platform for A level computer science teachers and students.' %>
 <% meta_tag :image, asset_pack_path('media/images/pages/isaac/meta-image.jpg') %>
-<div class="tapestry-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="text-photo-hero white-bg">
-        <div class="text-photo-hero__block--text">
-          <h1 class="govuk-heading-l">A level computer science</h1>
-          <p class="govuk-body-l">Discover <strong>Isaac Computer Science</strong>, our online learning programme for <strong>A level computer science teachers and students.</strong></p>
-        </div>
-        <div class="text-photo-hero__block--photo text-photo-hero__block--video">
-					<iframe  src="https://www.youtube.com/embed/nW4J-NVDziw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen data-event-action="click" data-event-category="Isaac Computer Science" data-event-label="Introductory video"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render HeroMediaComponent.new(
+  title: 'A level computer science',
+  text: 'Discover <strong>Isaac Computer Science</strong>, our online learning programme for <strong>A level computer science teachers and students.</strong>',
+  class_name: 'tapestry-bg',
+  video: {
+    url: 'https://www.youtube.com/embed/nW4J-NVDziw',
+    tracking_page: 'Isaac Computer Science',
+    tracking_label: 'Introductory video'
+  }
+) %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">

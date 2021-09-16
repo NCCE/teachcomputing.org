@@ -31,6 +31,7 @@ $scarpa-flow: #575868;
 $tapestry: #a94e91;
 $white: #ffffff;
 $isaac: #feb44c;
+$lime-green: #edf6f3;
 
 $govuk-text-colour: $grey-dark-x;
 $plain-hero-color: $concrete;
@@ -75,6 +76,10 @@ $primary-cert-color: $jaffa;
 
 .foam-bg {
   background-color: $foam;
+}
+
+.lime-green-bg {
+  background-color: $lime-green;
 }
 
 @mixin status_block() {

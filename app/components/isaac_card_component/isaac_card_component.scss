@@ -1,4 +1,4 @@
-.isaac {
+.isaac-card-component {
   display: flex;
   flex-direction: column;
   @include govuk-media-query($from: tablet) {
@@ -6,7 +6,11 @@
   }
 }
 
-.isaac__logo {
+.isaac-card-component__title {
+  color: black;
+}
+
+.isaac-card-component__logo {
   margin-bottom: 20px;
   width: 149px;
 
@@ -22,7 +26,7 @@
   }
 }
 
-.isaac__description {
+.isaac-card-component__description {
   color: $black;
   @include govuk-media-query($from: tablet) {
     margin-right: 70px;
@@ -32,7 +36,7 @@
   }
 }
 
-.isaac__link {
+.isaac-card-component__link {
   font-weight: 700;
   &:link,
   &:visited {

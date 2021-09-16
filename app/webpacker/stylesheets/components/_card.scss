@@ -84,23 +84,65 @@
   background-image: none;
 }
 
+  .cards {
+    margin-bottom: 0;
+
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
 .card--resource {
   background-color: $concrete;
   border-left-style: solid;
   border-left-width: 9px;
-  margin-bottom: 1rem;
-  padding: 10px 10px 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 20px 10px;
   position: relative;
 
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: $logo-block;
-    padding: (0.5 * $logo-block) 0 (0.1 * $logo-block) (0.75 * $logo-block);
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+    min-height: 5.5rem;
   }
+
+  @include govuk-media-query($from: desktop) {
+    padding: 20px 10px 20px 25px;
+    min-height: inherit;
+  }
+}
+
+.card--resource__details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  flex-direction: row;
+
+  @include govuk-media-query($from: tablet) {
+    flex-direction: column;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+  }
+}
+
+.card--resource__counts {
+  padding-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  flex-direction: column;
 }
 
 .card--resource__title {
   font-weight: 500;
-  line-height: 1.75rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
 
