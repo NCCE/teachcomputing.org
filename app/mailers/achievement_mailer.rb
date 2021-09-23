@@ -16,7 +16,7 @@ class AchievementMailer < ApplicationMailer
 
   def completed_online_course
     @user = User.find(params[:user_id])
-    @subject = 'Congratulations on completing an activity'
+    @subject = 'Keep going with your subject knowledge certificate'
 
     mail(to: @user.email, subject: @subject)
   end
