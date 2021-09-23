@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CheckNextStepsJob, type: :job do
-  let!(:user) { create(:user)}
-  let!(:activity) { create(:activity)}
+  let!(:user) { create(:user) }
+  let!(:activity) { create(:activity) }
   let!(:achievement) { create(:achievement, user_id: user.id) }
   let!(:achievement_2) { create(:achievement, user_id: user.id, activity_id: activity.id) }
 

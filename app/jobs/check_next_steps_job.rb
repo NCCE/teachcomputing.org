@@ -2,7 +2,6 @@ class CheckNextStepsJob < ApplicationJob
   queue_as :default
 
   def perform(achievement)
-
     user = User.find(achievement.user_id)
 
     if achievement.activity.category == 'online'

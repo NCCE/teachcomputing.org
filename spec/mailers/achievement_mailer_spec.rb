@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe AchievementMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
-  let(:mail) { AchievementMailer.with(user_id: user.id, activity_id: activity.id).complete }
-  let(:face_to_face_mail) { AchievementMailer.with(user_id: user.id).completed_face_to_face_course }
-  let(:online_mail) { AchievementMailer.with(user_id: user.id).completed_online_course }
+  let(:mail) { described_class.with(user_id: user.id, activity_id: activity.id).complete }
+  let(:face_to_face_mail) { described_class.with(user_id: user.id).completed_face_to_face_course }
+  let(:online_mail) { described_class.with(user_id: user.id).completed_online_course }
   let(:subject) { 'Congratulations on completing an activity' }
   let(:face_to_face_subject) { 'Take the next step on your subject knowledge certificate' }
   let(:online_subject) { 'Keep going with your subject knowledge certificate' }
@@ -31,7 +31,6 @@ RSpec.describe AchievementMailer, type: :mailer do
   end
 
   describe 'completed face to face course email' do
-
     it 'renders the headers' do
       expect(face_to_face_mail.subject).to include(face_to_face_subject)
       expect(face_to_face_mail.to).to eq([user.email])
@@ -48,7 +47,6 @@ RSpec.describe AchievementMailer, type: :mailer do
   end
 
   describe 'completed online course email' do
-
     it 'renders the headers' do
       expect(online_mail.subject).to include(online_subject)
       expect(online_mail.to).to eq([user.email])
