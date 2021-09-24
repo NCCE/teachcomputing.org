@@ -8,6 +8,8 @@ class CheckNextStepsJob < ApplicationJob
       AchievementMailer.with(user_id: user.id).completed_online_course.deliver_now
     elsif achievement.activity.category == 'face-to-face'
       AchievementMailer.with(user_id: user.id).completed_face_to_face_course.deliver_now
+    else
+      next
     end
   end
 end
