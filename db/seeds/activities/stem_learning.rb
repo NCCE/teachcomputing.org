@@ -1381,6 +1381,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '88975226-811c-ec11-b6e7
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP405'
+  activity.remote_delivered_cpd = true
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
