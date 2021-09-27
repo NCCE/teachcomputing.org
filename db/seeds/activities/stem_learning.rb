@@ -1372,3 +1372,16 @@ a = Activity.find_or_create_by(stem_course_template_no: '576c1f0b-8610-ec11-b6e6
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '88975226-811c-ec11-b6e7-0022481a8033') do |activity|
+  activity.title = 'Authentic contexts for primary computing - remote'
+  activity.credit = 10
+  activity.slug = 'authentic-contexts-for-primary-computing-remote'
+  activity.stem_course_template_no = '88975226-811c-ec11-b6e7-0022481a8033'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP405'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
