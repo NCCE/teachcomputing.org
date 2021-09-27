@@ -4,9 +4,10 @@ class CheckNextStepsJob < ApplicationJob
   def perform(achievement)
     user = User.find(achievement.user_id)
 
-    if achievement.activity.category == 'online'
+    case achievement.activity.category
+    when 'online'
       AchievementMailer.with(user_id: user.id).completed_online_course.deliver_now
-    elsif achievement.activity.category == 'face-to-face'
+    when 'face-to-face'
       AchievementMailer.with(user_id: user.id).completed_face_to_face_course.deliver_now
     end
   end
