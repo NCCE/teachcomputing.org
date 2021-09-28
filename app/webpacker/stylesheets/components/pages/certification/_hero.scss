@@ -86,9 +86,13 @@
 	}
 }
 
+.hero--dixie {
+  background-color: $dixie;
+}
+
 .hero--orange,
 .hero--primary-certificate {
-  background-color: $jaffa;
+  background-color: $primary-cert-color;
 }
 
 .hero--purple,
