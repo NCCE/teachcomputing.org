@@ -2,8 +2,13 @@ class SupportingPartnersPage
   class << self
     def hero
       {
-        title: 'Supporting partners',
-        glyph: 'c1'
+        class_name: 'deep-cerulean-bg',
+        title: I18n.t('pages.partnerships.hero.title'),
+        text: I18n.t('pages.partnerships.hero.text.html'),
+        image: {
+          url: 'media/images/pages/supporting_partners/supporting_partners.png',
+          title: I18n.t('pages.about.hero.image_title')
+        }
       }
     end
 
