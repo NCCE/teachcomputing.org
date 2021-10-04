@@ -14,5 +14,7 @@ class StateMachines::AchievementStateMachine
     CompleteAchievementEmailJob.perform_later(achievement.user_id, achievement.activity_id) if
       [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY].include?(achievement.activity.category)
     IssueBadgeJob.set(wait: 2.minutes).perform_later(achievement.id)
+
+    CheckNextStepsJob.set(wait: 2.days).perform_later(achievement.user_id)
   end
 end
