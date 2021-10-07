@@ -5,6 +5,8 @@ class CheckNextStepsJob < ApplicationJob
     achievement = User.find(achievement_id)
     user = achievement.user
 
+    return unless Programme.cs_accelerator.user_enrolled?(user)
+
     case achievement.activity.category
     when 'online'
       AchievementMailer.with(user_id: user.id).completed_online_course.deliver_now
