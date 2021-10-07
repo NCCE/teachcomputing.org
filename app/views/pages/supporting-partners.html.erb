@@ -16,33 +16,24 @@
         <p class="govuk-body">
         The NCCE programme relies on financial contributions from our supporting partners to achieve our mission. Funding is used for:
         </p>
-        <ul class="govuk-list govuk-list--bullet ncce-inside-list">
-          <li class="govuk-!-padding-bottom-5">
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li>
 
           <%= link_to 'Bursaries', '/bursary', class: 'ncce-link' %>: help cover the costs for teachers to attend training courses and to achieve certifications. Professional development in turn helps improve the quality of teaching for learners.
           </li>
 
-          <li class="govuk-!-padding-bottom-5">
+          <li>
             Special projects: we are always looking to expand our offering so it is a comprehensive source of support and resources for teachers.
             Our <%= link_to 'Curriculum resources', curriculum_key_stages_path, class: 'ncce-link' %> is just one of the special projects we were able to deliver through additional funding.
           </li>
 
-          <li class="govuk-!-padding-bottom-5">
-            Support activities and learning, provide sector knowledge, careers inspiration and information and mentoring.
-          </li>
-
-          <li class="govuk-!-padding-bottom-5">
-            Advocate for computing skills and drive awareness of the need for sustained growth in the number of young people with computing skills and qualifications amongst schools, companies and the public sector.​
-          </li>
-
-          <li>
-            Provide venues for training, Computing at School meetings, work placements, visits for students and technology to enhance their curriculum learning.​
-          </li>
         </ul>
 
         <p class="govuk-body">
-          Find out more about how you can help us continue this crucial work, in our <%= link_to 'Power up guide', 'https://s3.eu-west-1.amazonaws.com/static.teachcomputing.org/Power.up.the.digital.generation.pdf' %> and <%=  link_to 'Working Together booklet', 'https://static.teachcomputing.org/BCS%20Working%20Together%20NCCE%20Booklet.pdf', class: 'ncce-link', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Working together' %>. You can also
-          <%= mail_to 'supporters@teachcomputing.org', 'Email us', class: 'ncce-link', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Email' %>
+          Find out more about how you can help us continue this crucial work, in our <%= link_to 'Power up guide', 'https://s3.eu-west-1.amazonaws.com/static.teachcomputing.org/Power.up.the.digital.generation.pdf' %> and <%=  link_to 'Working Together booklet', 'https://static.teachcomputing.org/BCS%20Working%20Together%20NCCE%20Booklet.pdf', class: 'ncce-link', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Working together' %>. You can also:
+          <br>
+          <br>
+          <%= mail_to 'supporters@teachcomputing.org', 'Email us', class: 'govuk-button button ', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Email' %>
         </p>
       </div>
     </div>
