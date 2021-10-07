@@ -129,6 +129,7 @@ Rails.application.routes.draw do
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
+  get '/pedagogy', to: 'pages#page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
   get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
                                    defaults: { page_slug: 'a-level-computer-science' }

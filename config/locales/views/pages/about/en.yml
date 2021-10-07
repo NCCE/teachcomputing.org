@@ -119,4 +119,28 @@ en:
         text: ''
         link_title: "Advocate for us"
         list_items: ["As a governor or trustee, help raise the profile of computing as a subject within schools."]
+    pedagogy:
+      ways_to_teach:
+        lead_with_concepts:
+          title: "Lead with concepts"
+          text: "Support pupils in the acquisition of knowledge,
+            through the use of key concepts, terms, and vocabulary,
+            providing opportunities to build a shared and consistent understanding.
+            Glossaries, concept maps, and displays, along with regular recall and revision,
+            can support this approach."
+          resources:
+            links: ["<b>Quick Read:</b> <a href='#'>Concept maps</a> (PDF)", "<b>Podcast:</b> <a href='#'>What is Computing?</a> (18 October 2019)"]
+      # ways_to_teach:
+      #   lead_with_concepts:
+      #     title: ""
+      #     text:
+      #     resources:
+      #       links: []
+      # ways_to_teach:
+      #   lead_with_concepts:
+      #     title: ""
+      #     text:
+      #     resources:
+      #       links: []
+
 

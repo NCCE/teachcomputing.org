@@ -1,0 +1,6 @@
+<h2 class="govuk-heading-s bursary-component__title"><%= I18n.t('pages.pedagogy.ways_to_teach.lead_with_concepts.title') %></h2>
+<p class="govuk-body"> <%= I18n.t('pages.pedagogy.ways_to_teach.lead_with_concepts.text') %> </p>
+<% I18n.t('pages.pedagogy.ways_to_teach.lead_with_concepts.resources.links').each do |link| %>
+  <p class="govuk-body-s"> <%= link.html_safe %> </p>
+<% end %>
+<hr>
