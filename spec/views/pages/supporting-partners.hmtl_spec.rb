@@ -11,7 +11,7 @@ RSpec.describe('pages/supporting-partners', type: :view) do
     end
 
     it 'has sub section text' do
-      expect(rendered).to have_css('.govuk-body-l', text: 'Power up the digital generation: together we can transform computing education and deliver digital skills for the future.')
+      expect(rendered).to have_css('.govuk-body-l', text: 'Power up the digital generation: deliver digital skills for the future.')
     end
 
     it 'has an image' do
