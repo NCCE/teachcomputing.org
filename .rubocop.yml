@@ -62,6 +62,9 @@ RSpec/MultipleExpectations:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+RSpec/RepeatedDescription:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
