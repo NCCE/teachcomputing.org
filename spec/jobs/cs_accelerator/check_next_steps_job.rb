@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CheckNextStepsJob, type: :job do
+RSpec.describe CS::AcceleratorCheckNextStepsJob, type: :job do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
   let(:cs_accelerator) { create(:cs_accelerator) }
