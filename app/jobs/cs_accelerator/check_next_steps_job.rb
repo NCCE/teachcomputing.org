@@ -3,7 +3,7 @@ module CSAccelerator
     queue_as :default
 
     def perform(achievement_id)
-      achievement = User.find(achievement_id)
+      achievement = Achievement.find(achievement_id)
       user = achievement.user
 
       return unless Programme.cs_accelerator.user_enrolled?(user)
