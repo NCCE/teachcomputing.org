@@ -33,7 +33,7 @@ RSpec.describe CheckNextStepsJob, type: :job do
         .not_to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
-    it 'does not send the online course completion emails' do
+    it 'does not send the face to face course completion emails' do
       expect { described_class.perform_now(achievement.id) }
         .not_to change { ActionMailer::Base.deliveries.count }.by(1)
     end
