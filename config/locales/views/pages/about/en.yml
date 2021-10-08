@@ -69,6 +69,11 @@ en:
         text: "You can play an important role in advocating for computing as a subject within your school."
         link_title: "Advocate for us"
     partnerships:
+      hero:
+        title: "Supporting partners"
+        text:
+          html: "<strong>Power up the digital generation:</strong> deliver digital skills for the future."
+        image_title: "A photo of the team"
       supporting_partner_card:
         title: "Supporting partners"
         text: "Help us continue to remove barriers for teachers in state-funded education in England to access essential CPD."
