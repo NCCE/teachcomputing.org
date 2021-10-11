@@ -120,6 +120,39 @@ en:
         link_title: "Advocate for us"
         list_items: ["As a governor or trustee, help raise the profile of computing as a subject within schools."]
     pedagogy:
+      aside:
+        -
+          title: "Pedagogy Quick Reads"
+          text: "These short monthly documents present a summary of a topic, the key points and considerations, as well as links to the original sources."
+          button: "<a href='#' class='govuk-button button--aside' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Read the latest document</a>"
+          resource_links:
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>See all quick reads</a>"
+        -
+          title: "Research Bytes Newsletter"
+          text: "Our half-termly newsletter provides a bite-sized summary of computing education research, insights from classroom teachers, as well as suggested reading."
+          button: "<a href='#' class='govuk-button button--aside' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Read the latest issue</a>"
+          resource_links:
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>See past articles</a>"
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Receive Research Bytes by email </a>(requires a Teach Computing account)"
+        -
+          title: "Pedagogy Reports"
+          text: "Our teaching and learning reports take a deep dive into progression and pedagogy with the computing curriculum."
+          button: ""
+          resource_links:
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>See our impact</a>"
+        -
+          title: "Action Research Course"
+          text: "Our online course aims to support classroom educators to apply and test new approaches in their context using an action research process."
+          button: ""
+          resource_links:
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Show me more</a>"
+        -
+          title: "Teach Computing Podcast"
+          text: "For 12 episodes our podcast examined different questions,
+            challenges or practice relating to computing education through conversations with classroom teachers and other experts."
+          button: ""
+          resource_links:
+            - "<a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Listen to all 12 episodes</a>"
       ways_to_teach:
         -
           title: "Lead with concepts"

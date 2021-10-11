@@ -14,36 +14,7 @@
         </p>
         <%= render "/pages/how_to_teach_computing.html.erb" %>
       </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside ncce-aside__csa-info-page">
-          <h2 class="govuk-heading-s ncce-aside__title">Enrol on the programme</h2>
-          <ol
-            class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
-            <li>
-              Enrol with the click of a button
-            </li>
-            <li>Complete a questionnaire to assess your subject knowledge</li>
-            <li>Participate in a mix of courses to suit your experience</li>
-            <li>Pass a short test to receive your qualification</li>
-          </ol>
-          <% if current_user %>
-          <p class="govuk-body">
-            <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-          </p>
-          <% else %>
-          <p class="govuk-body">
-            <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-          </p>
-          <% end %>
-        </div>
-        <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
-        <p class="govuk-body-s">
-          <%= link_to 'Computer Science Accelerator brochure', 'https://static.teachcomputing.org/CSA.brochure.pdf', class: 'ncce-link' %>
-        </p>
-        <p class="govuk-body-s">
-          <%= link_to 'GCSE specifications to Computer Science Accelerator course map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %> (September 2020)
-        </p>
-      </div>
+      <%= render "/pages/pedagogy_aside.html.erb" %>
     </div>
   </div>
 </div>
