@@ -1398,3 +1398,47 @@ a = Activity.find_or_create_by(stem_course_template_no: '1f24260d-0725-ec11-b6e6
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a') do |activity|
+  activity.title = 'Getting started in Year 1'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-1'
+  activity.stem_course_template_no = 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP462'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6-000d3a0ca796') do |activity|
+  activity.title = 'Getting started in Year 4'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-4'
+  activity.stem_course_template_no = 'd4183159-1f25-ec11-b6e6-000d3a0ca796'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP465'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '02b58914-2125-ec11-b6e6-000d3a0caf8a') do |activity|
+  activity.title = 'Getting started in Year 2'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-2'
+  activity.stem_course_template_no = '02b58914-2125-ec11-b6e6-000d3a0caf8a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP466'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000d3a0ca796') do |activity|
+  activity.title = 'Getting started in Year 6'
+  activity.credit = 10
+  activity.slug = 'getting-started-in-year-6'
+  activity.stem_course_template_no = '95bd7135-2125-ec11-b6e6-000d3a0ca796'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP467'
+  activity.remote_delivered_cpd = true
+end
