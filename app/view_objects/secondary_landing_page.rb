@@ -158,11 +158,22 @@ class SecondaryLandingPage
   def resources
     [
       {
+        title: 'GCSE: Data representations',
+        url: '/curriculum/key-stage-4/data-representations',
+        description: 'This unit has been re-written based on your feedback, to have more scaffolding,
+          unique lesson activities and content on data compression. For example the escape room activity in lesson 9,
+          the image manipulation activity in lesson 10 and the Huffman coding activities in lesson 17.',
+        event_label: 'Featured unit 1',
+        updated_at: 'Updated October 2021'
+      },
+      {
         title: 'Year 7: Networks from semaphores to the Internet',
         url: '/curriculum/key-stage-3/networks-from-semaphores-to-the-internet',
         description: 'This unit begins by defining a network and addressing the
-          benefits and importance of computer networks, before covering how data
-          is transmitted across networks using protocols.'
+        benefits and importance of computer networks, before covering how data
+        is transmitted across networks using protocols.',
+        event_label: 'Featured unit 2',
+        updated_at: 'Updated August 2021'
       }
     ]
   end
