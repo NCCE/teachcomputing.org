@@ -199,13 +199,13 @@ RSpec.describe SecondaryLandingPage do
 
   describe '#resources' do
     it 'returns 2 resources' do
-      expect(landing_page.resources.length).to eq(1)
+      expect(landing_page.resources.length).to eq(2)
     end
 
     it 'returns correctly shaped data' do
-      keys = %i[title url description]
+      keys = %i[title url description event_label updated_at]
 
-      expect(landing_page.resources.map(&:keys)).to eq(Array.new(1, keys))
+      expect(landing_page.resources.map(&:keys)).to eq(Array.new(2, keys))
     end
   end
 end

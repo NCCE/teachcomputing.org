@@ -1,35 +1,39 @@
 <% meta_tag :title, 'Meet our supporting partners.' %>
 <% meta_tag :description, 'The NCCE relies on financial contributions from businesses to help equip young people with digital skills for the future. Find out how you can help us.' %>
 
-<%= render HeroComponent.new(SupportingPartnersPage.hero) %>
+<%= render HeroMediaComponent.new(SupportingPartnersPage.hero) %>
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--l">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body">
-          The demand for computing expertise is growing - with an estimated 1.2 million more people with specialist digital skills needed by 2022. We are calling on businesses to join us in equipping young people with the necessary skills for the future.
+          The demand for computing expertise is growing - with an estimated 1.2 million more people with specialist digital skills needed by 2022.
+          We are calling on businesses to join us in equipping young people with the necessary skills for the future.
+          Together we can bridge the gap in computing education and digital capability​.
         </p>
         <h2 class="govuk-heading-l">How can you help?</h2>
         <p class="govuk-body">
         The NCCE programme relies on financial contributions from our supporting partners to achieve our mission. Funding is used for:
         </p>
-        <ul class="govuk-list govuk-list--bullet ncce-inside-list">
-          <li class="govuk-!-padding-bottom-5">
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li>
 
           <%= link_to 'Bursaries', '/bursary', class: 'ncce-link' %>: help cover the costs for teachers to attend training courses and to achieve certifications. Professional development in turn helps improve the quality of teaching for learners.
           </li>
 
-          <li class="">
+          <li>
             Special projects: we are always looking to expand our offering so it is a comprehensive source of support and resources for teachers.
             Our <%= link_to 'Curriculum resources', curriculum_key_stages_path, class: 'ncce-link' %> is just one of the special projects we were able to deliver through additional funding.
           </li>
+
         </ul>
 
         <p class="govuk-body">
-          To find out more on how you can help us continue this crucial work, see our <%=  link_to 'Working Together booklet', 'https://static.teachcomputing.org/BCS%20Working%20Together%20NCCE%20Booklet.pdf', class: 'ncce-link' %>, or
-          <br />
-          Contact us on <%= mail_to 'supporters@teachcomputing.org', 'supporters@teachcomputing.org', class: 'ncce-link' %>
+          Find out more about how you can help us continue this crucial work, in our <%= link_to 'Power up guide', 'https://static.teachcomputing.org/Power.up.the.digital.generation.pdf', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Power up'  %> and <%=  link_to 'Working Together booklet', 'https://static.teachcomputing.org/BCS%20Working%20Together%20NCCE%20Booklet.pdf', class: 'ncce-link', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Working together' %>. You can also:
+          <br>
+          <br>
+          <%= mail_to 'powerup@bcs.uk', 'Email us', class: 'govuk-button button ', 'data-event-action' => 'click', 'data-event-category' => 'Supporting partners', 'data-event-label' => 'Email' %>
         </p>
       </div>
     </div>
