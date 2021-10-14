@@ -210,46 +210,51 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
-pathway = Pathway.find_or_initialize_by(slug: 'new-to-computing')
+pathway = Pathway.find_or_initialize_by(slug: 'new-to-computing-pathway')
 pathway.update(
-  title: 'New to computing',
-  slug: 'new-to-computing',
+  title: 'New to computing pathway',
+  slug: 'new-to-computing-pathway',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf',
+  pdf_link: 'https://static.teachcomputing.org/pathways/New_to_computing_pathway.pdf',
   programme_id: prog_id,
   order: 1
 )
 
 # main
 
-activity = Activity.find_by(stem_course_template_no: '526b3a42-b688-ea11-a811-000d3a86d545')
+activity = Activity.find_by(stem_course_template_no: '1f24260d-0725-ec11-b6e6-000d3a0cb7ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1)
 end
 
-activity = Activity.find_by(stem_course_template_no: 'bd6497ad-4386-ea11-a811-000d3a86d545')
+activity = Activity.find_by(stem_course_template_no: '526b3a42-b688-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 2)
 end
 
-activity = Activity.find_by(stem_course_template_no: '935a0639-e87f-ea11-a811-000d3a86f6ce')
+activity = Activity.find_by(stem_course_template_no: 'bd6497ad-4386-ea11-a811-000d3a86d545')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 3)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
+activity = Activity.find_by(stem_course_template_no: '935a0639-e87f-ea11-a811-000d3a86f6ce')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 4)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
+activity = Activity.find_by(future_learn_course_uuid: 'c88099c0-8b44-42a5-aad3-0dd011fe3490')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 5)
 end
 
-activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
+activity = Activity.find_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-8136-7020128ca879')
 if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6)
+end
+
+activity = Activity.find_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c2-e2a9ba366178')
+if activity && !pathway.pathway_activities.include?(activity)
+  pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 7)
 end
 
 # alternative remote
