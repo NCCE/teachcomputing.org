@@ -39,6 +39,7 @@ RSpec.describe Activity, type: :model do
     it { is_expected.to validate_presence_of(:category) }
     it { is_expected.to validate_presence_of(:slug) }
     it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:always_on) }
     it { is_expected.to validate_inclusion_of(:category).in_array(%w[action online face-to-face]) }
     it { is_expected.to validate_uniqueness_of(:future_learn_course_uuid) }
     it { is_expected.to validate_uniqueness_of(:stem_activity_code) }
