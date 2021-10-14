@@ -1,0 +1,9 @@
+<div class="file-card-component">
+  <h3 class="govuk-heading-s file-card-component__heading">
+    <%= link_to @title, generate_download_url(@current_user, @file_path), class: 'govuk-link ncce-link' %>
+  </h3>
+  <div class='govuk-body-s file-card-component__meta-data'>
+    (<%= @file_type %>, <%= @file_size %>)<br>
+    Updated: <%= DateTime.parse(@file_updated).strftime('%d %b %Y') %>
+  </div>
+</div>

@@ -21,10 +21,19 @@ module CurriculumClient
         curriculumMaps {
           name
           file
+          type
+          size
+          created
         }
         lessonCount
         unitCount
-        teacherGuide
+        teacherGuide {
+          file
+          filename
+          type
+          size
+          created
+        }
         years
       GRAPHQL
 
