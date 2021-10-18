@@ -30,6 +30,15 @@
   padding-top: 3.125rem;
 }
 
+.lesson-download-button {
+  white-space: nowrap;
+}
+
+.lesson-download-button__meta-data {
+  font-size: 16px;
+  font-weight: normal;
+}
+
 .curriculum__label {
   background-color: $grey-dark-x;
   color: $white;

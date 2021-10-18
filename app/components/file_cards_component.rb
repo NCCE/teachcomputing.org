@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class FileCardsComponent < ViewComponent::Base
-  def initialize(cards:, title: nil, tracking: nil)
+  def initialize(cards:, tracking: nil)
     @cards = cards
-    @title = title
     @tracking = tracking
   end
 

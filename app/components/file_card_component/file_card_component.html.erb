@@ -4,6 +4,6 @@
   </h3>
   <div class='govuk-body-s file-card-component__meta-data'>
     (<%= @file_type %>, <%= @file_size %>)<br>
-    Updated: <%= DateTime.parse(@file_updated).strftime('%d %b %Y') %>
+    Updated: <%= format_date(@file_updated) %>
   </div>
 </div>

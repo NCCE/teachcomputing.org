@@ -5,7 +5,12 @@
       "title": "Unit 1",
       "slug": "unit-1",
       "description": "This is a Unit",
-      "unit_guide": null,
+      "unit_guide": {
+        "file": "https://teachcomputing.org",
+        "size": "1.1 MB",
+        "created": "15 Oct 1943",
+        "type": "PDF"
+      },
       "summative_assessments": [],
       "summative_answers": [],
       "learning_graphs": [],

@@ -2,7 +2,9 @@
 
 class FileCardComponent < ViewComponent::Base
   def initialize(file_card:, title: nil, tracking: nil)
-    @title = title || file_card[:name] || file_card[:title]
+    return unless file_card.present?
+
+    @title = title || file_card[:name]
     @file_path = file_card[:file]
     @file_type = file_card[:type]
     @file_size = file_card[:size]
@@ -18,11 +20,15 @@ class FileCardComponent < ViewComponent::Base
     contents_url
   end
 
+  def format_date(date)
+    DateTime.parse(date).strftime('%d %b %Y')
+  end
+
   def tracking_data(tracking = nil)
     {
       event_action: 'click',
       event_category: tracking[:category],
-      event_label: tracking[:label]
+      event_label: tracking[:label] || @title
     }
   end
 

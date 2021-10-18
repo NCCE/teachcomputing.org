@@ -5,12 +5,24 @@
       "title": "Representations – from clay to silicon",
       "slug": "representations-from-clay-to-silicon",
       "description": "placeholder description",
-      "unitGuide": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TUdVME1XSXlPUzAxWm1JekxUUmtZMkV0T1RGa05TMWxOak15TXpobU9HTTVNV01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--eaef1b8eebd39042981f80f490fa216198b5964c/Unit%20overview%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.docx",
+      "unitGuide": {
+        "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TUdVME1XSXlPUzAxWm1JekxUUmtZMkV0T1RGa05TMWxOak15TXpobU9HTTVNV01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--eaef1b8eebd39042981f80f490fa216198b5964c/Unit%20overview%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.docx",
+        "name": "Unit Guide",
+        "created": "5 Nov 2016"
+      },
       "summativeAssessments": [],
       "summativeAnswers": [],
       "learningGraphs": [
-        "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTkRJMVpXWTRNUzA1TlRVekxUUmlaR0l0T1ROaFl5MDVZelpsT1dFMVlURXpaV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--076daee23aaf67e91c59b164e571d3e59024f4a7/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20-%20fluid%20%E2%80%93%20Y8.jpg",
-        "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTmpRME9XWTBNUzAwTVRZMUxUUmhZbVl0WWpJMU1TMDBObU16WmpZME5EY3lPV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--43faddb46cc946b951d0aa0d00eee578ae1f6351/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.jpg"
+        {
+          "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTkRJMVpXWTRNUzA1TlRVekxUUmlaR0l0T1ROaFl5MDVZelpsT1dFMVlURXpaV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--076daee23aaf67e91c59b164e571d3e59024f4a7/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20-%20fluid%20%E2%80%93%20Y8.jpg",
+          "name": "Unit Guide",
+          "created": "5 Nov 2016"
+        },
+        {
+          "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTmpRME9XWTBNUzAwTVRZMUxUUmhZbVl0WWpJMU1TMDBObU16WmpZME5EY3lPV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--43faddb46cc946b951d0aa0d00eee578ae1f6351/Learning%20graph%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon%20%E2%80%93%20Y8.jpg",
+          "name": "Unit Guide",
+          "created": "5 Nov 2016"
+        }
       ],
       "rubrics": [],
       "yearGroup": {
@@ -28,42 +40,66 @@
           "description": "placeholder description",
           "slug": "lesson-4-numbers-in-binary",
           "title": "Lesson 4 Numbers in binary",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TW1ReU5UY3hPUzFqWTJGa0xUUTVOVGd0T0dNMlpTMHpaVEl5TXpNeFpHSTNNV1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9af0036d1ed40424e768ba35a8c6d3d5d814c0aa/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L4%20%E2%80%93%20Numbers%20in%20binary.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TW1ReU5UY3hPUzFqWTJGa0xUUTVOVGd0T0dNMlpTMHpaVEl5TXpNeFpHSTNNV1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9af0036d1ed40424e768ba35a8c6d3d5d814c0aa/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L4%20%E2%80%93%20Numbers%20in%20binary.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         },
         {
           "id": "608680c8-4acf-48f7-a754-9d346e7320f9",
           "description": "placeholder description",
           "slug": "lesson-6-turings-mug",
           "title": "Lesson 6 Turings mug",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4T0RCaE1qaG1ZaTAyWmpJeExUUXpZemN0T1RkalppMDVZbVE0WWpFMFlqUmpOMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--613526361b5e67bd6793dbfdea85b7005d56bea0/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L6%20%E2%80%93%20Turing_s%20mug.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4T0RCaE1qaG1ZaTAyWmpJeExUUXpZemN0T1RkalppMDVZbVE0WWpFMFlqUmpOMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--613526361b5e67bd6793dbfdea85b7005d56bea0/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L6%20%E2%80%93%20Turing_s%20mug.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         },
         {
           "id": "76a43193-8299-49cf-8adf-b8ecfd089346",
           "description": "placeholder description",
           "slug": "lesson-2-lights-and-drums",
           "title": "Lesson 2 Lights and drums",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RGa1pqSTNaQzA1WkRobExUUTNNR1V0T0RrME15MDBZV001WmpJd1pqRmlPVFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3d31d1c85205529c7933c066eb5c3a42c6f51634/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L2%20%E2%80%93%20Lights%20and%20drums.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RGa1pqSTNaQzA1WkRobExUUTNNR1V0T0RrME15MDBZV001WmpJd1pqRmlPVFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3d31d1c85205529c7933c066eb5c3a42c6f51634/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L2%20%E2%80%93%20Lights%20and%20drums.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         },
         {
           "id": "17412173-ce58-4f43-a26e-2ee95972f7a4",
           "description": "placeholder description",
           "slug": "lesson-1-across-time-and-space",
           "title": "Lesson 1 Across time and space ",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWW1GaU56RTBPUzFrTkRCakxUUXlaVE10T0dNMk9DMWhaV1ptWlRabU5tSTNNR0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--fc703b98104f346ec2e72e801dfd846c2037f3a2/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L1%20%E2%80%93%20Across%20time%20and%20space%20.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RGa1pqSTNaQzA1WkRobExUUTNNR1V0T0RrME15MDBZV001WmpJd1pqRmlPVFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3d31d1c85205529c7933c066eb5c3a42c6f51634/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L2%20%E2%80%93%20Lights%20and%20drums.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         },
         {
           "id": "4b3e30a0-a1ef-4c5e-b185-ae67624e1d05",
           "description": "placeholder description",
           "slug": "lesson-3-binary-digits",
           "title": "Lesson 3 Binary digits",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0Tm1Nek1tWTNaaTFoTXpRMExUUXlaR010T0RNMk5TMHlNamxqTURBNU16SXpZelVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e9432682b54c9b5e2d15a9b55c351d95a97dfb9d/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L3%20%E2%80%93%20Binary%20digits.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RGa1pqSTNaQzA1WkRobExUUTNNR1V0T0RrME15MDBZV001WmpJd1pqRmlPVFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3d31d1c85205529c7933c066eb5c3a42c6f51634/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L2%20%E2%80%93%20Lights%20and%20drums.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         },
         {
           "id": "6ab3bec0-80da-4045-a755-b137a9438505",
           "description": "placeholder description",
           "slug": "lesson-5-large-quantities",
           "title": "Lesson 5 Large quantities",
-          "zippedContents": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTVRreU56YzFZUzAwTkRZNUxUUTBZall0WVRabE5DMDNZekl3TkdObFpHSTFOamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--80fab9075ec39dbf05eb16769b90dd756541d9d8/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L5%20%E2%80%93%20Large%20quantities.zip"
+          "zippedContents": {
+            "file": "http://staging-curriculum.teachcomputing.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RGa1pqSTNaQzA1WkRobExUUTNNR1V0T0RrME15MDBZV001WmpJd1pqRmlPVFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3d31d1c85205529c7933c066eb5c3a42c6f51634/-app-tmp-years-Y8-Y8%20%E2%80%93%20Representations%20%E2%80%93%20from%20clay%20to%20silicon-L2%20%E2%80%93%20Lights%20and%20drums.zip",
+            "name": "Zipped Contents",
+            "created": "5 Nov 2016"
+          }
         }
       ]
     }

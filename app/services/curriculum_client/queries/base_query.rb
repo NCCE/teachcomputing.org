@@ -30,6 +30,10 @@ module CurriculumClient
           CurriculumClient::Request.run(query: client.parse(one), client: client, params: { "#{key}": value }, cache_key: cache_key)
         end
 
+        def file_fields
+          'name file type size created'
+        end
+
         private
 
           def map_field_type(key)

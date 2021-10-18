@@ -6,6 +6,7 @@ module Curriculum
 
     def show
       @unit = CurriculumClient::Queries::Unit.one(params[:unit_slug]).unit
+      @unit_downloads = [@unit.unit_guide] + @unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers
     end
 
     protected
