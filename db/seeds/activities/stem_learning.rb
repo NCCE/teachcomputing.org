@@ -1442,3 +1442,13 @@ a = Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6
   activity.stem_activity_code = 'CP467'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6-000d3a0caf14') do |activity|
+  activity.title = 'CS Accelerator for all'
+  activity.credit = 10
+  activity.slug = 'cs-accelerator-for-all'
+  activity.stem_course_template_no = '61b89040-5528-ec11-b6e6-000d3a0caf14'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP333'
+end
