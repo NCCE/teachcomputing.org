@@ -103,8 +103,7 @@ class PrimaryLandingPage
         description: 'Improve your subject knowledge and develop your teaching to help young children understand the computing systems and networks around them.',
         icon_class: 'icon-online',
         type: 'Online course',
-        duration: '3 weeks',
-        time_commitment: '2 hours per week',
+        time_commitment: 'Approximately 8 hours of self-study',
         event_label: 'Course 3'
       }
     ]
