@@ -102,7 +102,7 @@ RSpec.describe('courses/_courses-details', type: :view) do
     end
 
     it 'displays the time' do
-      expect(rendered).to have_css('.icon-clock', text: '2 hours per week')
+      expect(rendered).to have_css('.icon-clock', text: 'Approximately 8 hours of self-study')
     end
 
     it 'displays the join now text' do

@@ -143,8 +143,7 @@ class SecondaryLandingPage
         description: "Discover the history of encryption and learn how it's used in the modern world.",
         icon_class: 'icon-online',
         type: 'Online course',
-        duration: '3 weeks',
-        time_commitment: '2 hours per week',
+        time_commitment: 'Approximately 8 hours of self-study',
         event_label: 'Course 3'
       }
     ]
