@@ -430,3 +430,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '0fbfa644-501d-4ac0-b3e
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: 'b2445d09-f3b3-45da-b4ec-6d33bb6cb89b') do |activity|
+  activity.title = 'Teaching Data and Information to 5 - 11 Year Olds'
+  activity.credit = 10
+  activity.slug = 'teaching-data-and-information-to-5-11-year-olds'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '7ee623a1-f02f-ec11-b6e6-000d3a871bbc'
+  activity.future_learn_course_uuid = 'b2445d09-f3b3-45da-b4ec-6d33bb6cb89b'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO044'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
