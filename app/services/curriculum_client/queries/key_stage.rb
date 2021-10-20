@@ -19,12 +19,13 @@ module CurriculumClient
           }
         }
         curriculumMaps {
-          name
-          file
+          #{file_fields}
         }
         lessonCount
         unitCount
-        teacherGuide
+        teacherGuide {
+          #{file_fields}
+        }
         years
       GRAPHQL
 

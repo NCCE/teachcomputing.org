@@ -9,7 +9,9 @@ module CurriculumClient
         title
         slug
         description
-        zippedContents
+        zippedContents {
+          #{file_fields}
+        }
         unit {
           slug
           title
