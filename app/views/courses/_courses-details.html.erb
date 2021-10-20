@@ -14,7 +14,7 @@
   <% else %>
     <span class="govuk-body <%= course_meta_icon_class(@occurrences.first) %>"><%= "#{remote_or_face_to_face(@course)} course" %></span>
     <span class="govuk-body icon-clock"><%= pluralize(@course.duration_value, @course.duration.downcase.chomp('s')) %></span>
-   <%= render 'courses/courses-locations', course: @course %>
+    <%= render 'courses/courses-locations', course: @course %>
   <% end %>
   </div>
 </div>

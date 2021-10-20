@@ -18,6 +18,13 @@
   font-weight: 400;
 }
 
+.govuk-heading-xs {
+  color: $grey-dark-x;
+  font-family: $font-family-body;
+  font-weight: 700;
+  font-size: 16px;
+}
+
 .govuk-body {
   line-height: 1.45;
 }

@@ -42,7 +42,11 @@ class StemBookingPresenter
     "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
   end
 
-  def show_occurrence_list
+  def show_stem_occurrence_list
     true
+  end
+
+  def show_facilitation_periods(_course, _occurrences)
+    false
   end
 end

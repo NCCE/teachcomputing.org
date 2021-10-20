@@ -1,0 +1,15 @@
+.ncce-details {
+  font-size: 15px;
+  margin: 0;
+}
+
+.ncce-details__summary {
+  &-text, &:before {
+    color: $deep-cerulean;
+  }
+
+  &:focus {
+    background: none;
+    box-shadow: none;
+  }
+}

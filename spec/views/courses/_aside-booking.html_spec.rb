@@ -28,36 +28,70 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     end
 
     context 'when its an online course' do
-      before do
-        assign(:booking, online_booking_presenter)
-        assign(:occurrences, occurrences)
-        assign(:activity, activity)
+      describe 'when the course is not always on' do
+        before do
+          assign(:booking, online_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:activity, activity)
 
-        render
+          render
+        end
+
+        it 'prompts the user to join the course' do
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+        end
+
+        it 'does not render the facilitation periods' do
+          expect(rendered).not_to have_css('.ncce-booking-list__facilitation-periods')
+        end
+
+        it 'tells the user who is delivering the course' do
+          expect(rendered).to have_css(
+            '.ncce-aside__text',
+            text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+          )
+        end
+
+        it 'renders link to futurelearn LTI' do
+          expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
+          expect(rendered).to have_link('Join this course', href: expected_link)
+        end
+
+        it "does not show the 'View course' button" do
+          expect(rendered).not_to have_link('View course')
+        end
       end
 
-      it 'prompts the user to join the course' do
-        expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
-      end
+      describe 'when the course is always on' do
+        before do
+          assign(:booking, online_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:activity, activity)
+          assign(:course, course)
+          allow_any_instance_of(OnlineBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
-      it 'does not render the occurence list' do
-        expect(rendered).not_to have_css('.ncce-booking-list')
-      end
+          render
+        end
 
-      it 'tells the user who is delivering the course' do
-        expect(rendered).to have_css(
-          '.ncce-aside__text',
-          text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
-        )
-      end
+        it 'renders the facilitation period list with the expected occurrence count' do
+          expect(rendered).to have_css('.ncce-booking-list__facilitation-periods__list li', count: 3)
+        end
 
-      it 'renders link to futurelearn LTI' do
-        expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
-        expect(rendered).to have_link('Join this course', href: expected_link)
-      end
+        it 'formats the occurrence items correctly' do
+          expect(rendered).to have_text('15 January 00:00—15 February 2099')
+        end
 
-      it "does not show the 'View course' button" do
-        expect(rendered).not_to have_link('View course')
+        it 'renders the title' do
+          expect(rendered).to have_text('View facilitation period(s):')
+        end
+
+        it 'renders the details block heading' do
+          expect(rendered).to have_css('.ncce-details__summary-text', text: 'What does this mean?')
+        end
+
+        it 'renders the details block body' do
+          expect(rendered).to have_css('.ncce-details__text', text: /You can join and complete this course at any time/, visible: false)
+        end
       end
     end
 

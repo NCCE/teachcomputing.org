@@ -13,7 +13,11 @@ class OnlineBookingPresenter
     futurelearn_lti_path(course_id)
   end
 
-  def show_occurrence_list
+  def show_facilitation_periods(course, occurrences)
+    course&.always_on && occurrences&.present?
+  end
+
+  def show_stem_occurrence_list
     false
   end
 end
