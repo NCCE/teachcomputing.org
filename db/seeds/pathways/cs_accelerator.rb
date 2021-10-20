@@ -210,12 +210,12 @@ if activity && !pathway.pathway_activities.include?(activity)
   pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 6, supplementary: true)
 end
 
-pathway = Pathway.find_or_initialize_by(slug: 'new-to-computing-pathway')
+pathway = Pathway.find_or_initialize_by(slug: 'new-to-computing')
 pathway.update(
-  title: 'New to computing pathway',
-  slug: 'new-to-computing-pathway',
+  title: 'New to computing',
+  slug: 'new-to-computing',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/New_to_computing_pathway.pdf',
+  pdf_link: 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf',
   programme_id: prog_id,
   order: 1
 )
