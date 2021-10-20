@@ -90,7 +90,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         end
 
         it 'renders the details block body' do
-          expect(rendered).to have_css('.ncce-details__text', text: /You can join and complete this course at any time/, visible: false)
+          expect(rendered).to have_css('.ncce-details__text', text: /You can join and complete this course at any time/, visible: :hidden)
         end
       end
     end
