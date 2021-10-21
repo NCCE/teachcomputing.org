@@ -42,7 +42,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         end
 
         it 'does not render the facilitation periods' do
-          expect(rendered).not_to have_css('.ncce-booking-list__facilitation-periods')
+          expect(rendered).not_to have_css('.facilitation-periods')
         end
 
         it 'tells the user who is delivering the course' do
@@ -74,11 +74,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         end
 
         it 'renders the facilitation period list with the expected occurrence count' do
-          expect(rendered).to have_css('.ncce-booking-list__facilitation-periods__list li', count: 3)
+          expect(rendered).to have_css('.facilitation-periods .facilitation-periods__list-item', count: 3)
         end
 
         it 'formats the occurrence items correctly' do
-          expect(rendered).to have_text('15 January 00:00—15 February 2099')
+          expect(rendered).to have_text('15 January—15 February 2099')
         end
 
         it 'renders the title' do
