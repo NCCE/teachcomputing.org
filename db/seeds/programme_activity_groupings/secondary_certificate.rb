@@ -177,6 +177,11 @@ if activity = Activity.find_by(stem_course_template_no: '576c1f0b-8610-ec11-b6e6
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
 end
 
+if activity = Activity.find_by(stem_course_template_no: '827dccad-b130-ec11-b6e6-000d3a87150c')
+  programme_activity = secondary.programme_activities.find_by(activity_id: activity.id)
+  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
+end
+
 group_three = secondary.programme_activity_groupings.find_by(sort_key: 3)
 
 if activity = Activity.find_by(slug: 'contribute-to-online-discussion-secondary')
