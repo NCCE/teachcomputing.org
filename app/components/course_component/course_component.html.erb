@@ -10,8 +10,7 @@
         <span class='ncce-courses__locations-name'>Join anytime</span>
       </div>
     </div>
-  <% end %>
-  <% if @course.occurrences.length > 1 %>
+  <% else @course.occurrences.length > 1 %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
       <button aria-expanded="false">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'><%= course_type(@course) %></span>
