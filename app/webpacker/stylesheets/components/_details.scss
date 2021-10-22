@@ -1,6 +1,12 @@
 .ncce-details {
   font-size: 15px;
   margin: 0;
+
+  &__text {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
 
 .ncce-details__summary {
