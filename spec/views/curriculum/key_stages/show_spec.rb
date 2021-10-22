@@ -31,10 +31,6 @@ RSpec.describe('curriculum/key_stages/show', type: :view) do
       expect(rendered).not_to have_css('.curriculum__rating')
     end
 
-    it 'shows the tiles partial' do
-      expect(rendered).to have_css('.curriculum__tiles')
-    end
-
     context 'when it shows the years partial' do
       it 'shows the titles' do
         expect(rendered).to have_text('Year 1')
