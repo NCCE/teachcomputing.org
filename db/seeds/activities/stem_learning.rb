@@ -1454,9 +1454,9 @@ a = Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6
 end
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e2683e1b-1330-ec11-b6e6-000d3a871225') do |activity|
-  activity.title = 'Programming with Python CSA pathway'
+  activity.title = 'Programming with Python – residential'
   activity.credit = 10
-  activity.slug = 'programming-with-python-csa-pathway'
+  activity.slug = 'programming-with-python-residential'
   activity.stem_course_template_no = 'e2683e1b-1330-ec11-b6e6-000d3a871225'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
