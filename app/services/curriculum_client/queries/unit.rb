@@ -37,6 +37,15 @@ module CurriculumClient
           id
           slug
           title
+          description
+          learningObjectives {
+            id
+            description
+            successCriteria {
+              id
+              description
+            }
+          }
         }
       GRAPHQL
 

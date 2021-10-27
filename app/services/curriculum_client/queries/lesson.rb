@@ -6,6 +6,7 @@ module CurriculumClient
 
       FIELDS = <<~GRAPHQL.freeze
         id
+        unit
         title
         slug
         description
