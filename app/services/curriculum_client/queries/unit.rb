@@ -38,6 +38,9 @@ module CurriculumClient
           slug
           title
           description
+          zippedContents {
+            #{file_fields}
+          }
           learningObjectives {
             id
             description
