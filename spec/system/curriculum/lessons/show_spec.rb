@@ -3,11 +3,11 @@ require 'axe/rspec'
 
 RSpec.describe('Curriculum Ratings', type: :system) do
   let(:user) { create(:user) }
-  let(:lesson_json) { File.new('spec/support/curriculum/responses/lesson.json').read }
+  let(:unit_json) { File.new('spec/support/curriculum/responses/unit.json').read }
 
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    stub_a_valid_request(lesson_json)
+    stub_a_valid_request(unit_json)
 
     visit curriculum_key_stage_unit_lesson_path(key_stage_slug: 'key-stage-3',
                                                 unit_slug: 'representations-from-clay-to-silicon', lesson_slug: 'lesson-1-across-time-and-space')
