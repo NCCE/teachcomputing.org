@@ -25,6 +25,13 @@ RSpec.describe CS::AcceleratorCheckNextStepsJob, type: :job do
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
+
+    context 'when the user has completed CSA' do
+      before do
+        user
+        enrolment.transition_to(:complete)
+      end
+    end
   end
 
   context 'when the user is not enrolled on CSA' do
