@@ -10,6 +10,6 @@ class CourseOccurrencesComponent < ViewComponent::Base
   end
 
   def render?
-    @course.occurrences.present?
+    @course.occurrences.present? && !@course.always_on
   end
 end

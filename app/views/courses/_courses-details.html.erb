@@ -7,14 +7,14 @@
   <div class="course-details__icons">
   <% if @course.online_cpd %>
     <span class="govuk-body icon-online">Free online course</span>
-    <% unless @occurrences.empty? %>
+    <% unless @occurrences.empty? || @course.always_on %>
       <span class="govuk-body icon-calendar"><%= online_course_date(@occurrences.first.start_date) %></span>
     <% end %>
     <span class="govuk-body icon-clock">Approximately 8 hours of self-study</span>
   <% else %>
     <span class="govuk-body <%= course_meta_icon_class(@occurrences.first) %>"><%= "#{remote_or_face_to_face(@course)} course" %></span>
     <span class="govuk-body icon-clock"><%= pluralize(@course.duration_value, @course.duration.downcase.chomp('s')) %></span>
-   <%= render 'courses/courses-locations', course: @course %>
+    <%= render 'courses/courses-locations', course: @course %>
   <% end %>
   </div>
 </div>

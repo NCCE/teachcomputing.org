@@ -3,7 +3,7 @@
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-      <% if (@booking.show_occurrence_list) %>
+      <% if (@booking.show_stem_occurrence_list) %>
         <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |occurrence| %>
           <li class="ncce-booking-list__item">
@@ -38,6 +38,7 @@
             target: :_blank
           ) %>
         </p>
+        <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
       <% end %>
     </div>
   <% end %>

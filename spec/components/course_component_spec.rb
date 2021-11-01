@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CourseComponent, type: :component do
   let(:course) { build(:achiever_course_template, activity_code: 'abc', title: 'test course') }
+  let(:always_on_course) { build(:achiever_course_template, activity_code: 'abc', title: 'test course', always_on: true) }
   let(:course_primary) { build(:achiever_course_template, activity_code: 'abc', title: 'primary test course', programmes: ['Primary']) }
   let(:course_secondary) { build(:achiever_course_template, activity_code: 'abc', title: 'secondary test course', programmes: ['Secondary']) }
   let(:filter) { instance_double(Achiever::CourseFilter) }
@@ -11,6 +12,18 @@ RSpec.describe CourseComponent, type: :component do
       subjects: { 'Algorithms' => 0o00000000, 'Other' => 222_222_222 },
       age_groups: { 'Key stage 1' => 0o00000000, 'Key stage 2' => 222_222_222 }
     )
+  end
+
+  it 'does not show the relevant messages if it is not always on' do
+    render_inline(described_class.new(course: course, filter: filter))
+    expect(rendered_component).not_to have_text('Free online course')
+    expect(rendered_component).not_to have_text('Join anytime')
+  end
+
+  it 'shows the relevant messages if it is always on' do
+    render_inline(described_class.new(course: always_on_course, filter: filter))
+    expect(rendered_component).to have_text('Free online course')
+    expect(rendered_component).to have_text('Join anytime')
   end
 
   it 'has a title' do
