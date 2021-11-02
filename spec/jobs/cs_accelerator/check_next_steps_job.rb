@@ -25,6 +25,23 @@ RSpec.describe CS::AcceleratorCheckNextStepsJob, type: :job do
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
+
+    context 'when the user has completed CSA' do
+      before do
+        user
+        enrolment.transition_to(:complete)
+      end
+
+      it 'does not send the online course completion emails' do
+        expect { described_class.perform_now(achievement.id) }
+          .not_to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+
+      it 'does not send the face to face course completion emails' do
+        expect { described_class.perform_now(achievement_2.id) }
+          .not_to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+    end
   end
 
   context 'when the user is not enrolled on CSA' do
