@@ -5,7 +5,7 @@ module CSAccelerator
     def perform(achievement_id)
       achievement = Achievement.find(achievement_id)
       user = achievement.user
-      enrolment = user.user_programme_enrolments.where(programme_id: Programme.cs_accelerator.id)
+      enrolment = user.user_programme_enrolments.find_by(programme_id: Programme.cs_accelerator.id)
 
       return unless enrolment
       return if enrolment.current_state == 'complete'
