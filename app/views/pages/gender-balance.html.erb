@@ -1,14 +1,14 @@
 <% meta_tag :title, 'Gender Balance in Computing' %>
 <% meta_tag :description, 'Help us find the best ways to encourage young women to study Computer Science' %>
 <% meta_tag :url, request.original_url %>
-<% meta_tag :image, asset_pack_path('media/images/pages/gender-balance/hero.jpg') %>
+<% meta_tag :image, asset_pack_path('media/images/pages/gender-balance/hero-teacher.jpg') %>
 <% meta_tag :image_alt, 'Gender balance' %>
 <%= render HeroMediaComponent.new(
   title: 'Gender Balance in Computing',
-  text: 'Help us find the best ways to encourage young women to study Computer Science.',
+  text: 'Researching the best ways to encourage more women to study Computer Science.',
   class_name: 'tapestry-bg',
   image: {
-    url: 'media/images/pages/gender-balance/hero.jpg',
+    url: 'media/images/pages/gender-balance/hero-teacher.jpg',
     title: 'Gender Balance in Computing',
   }
 ) %>
@@ -19,36 +19,30 @@
 				<div class="light-blue-bg padded-box govuk-!-margin-bottom-6">
 					<h2 class="govuk-heading-m">The programme at a glance</h2>
 					<ul class="govuk-list govuk-list--bullet">
-						<li>Six different research interventions</li>
+						<li>Comprised of four research themes, across seven interventions</li>
 						<li>Run across four years</li>
-						<li>In over 1000 state schools in England</li>
+						<li>In 500 primary schools and 250 secondary schools in England</li>
 					</ul>
 				</div>
-				<p class="govuk-body">The Gender Balance in Computing (GBIC) research programme is an amazing opportunity to find out what works to encourage girls to develop an interest during their primary and secondary school years, and increase the number of young women who choose to study Computer Science at GCSE and A level.</p>
-				<p class="govuk-body">GBIC is a collaboration between the Raspberry Pi Foundation; STEM Learning; BCS, The Chartered Institute for IT; the Behavioural Insights Team, Apps for Good and WISE.</p>
-        <p class="govuk-body">
-          Find out more in our <%= link_to 'programme FAQs', 'https://teachcomputing.org/gbiccovidfaqs/', class: 'ncce-link' %>.
-        </p>
+				<p class="govuk-body">Gender Balance in Computing is a collaboration between the Raspberry Pi Foundation; STEM Learning; BCS, The Chartered Institute for IT; the Behavioural Insights Team; Apps for Good; and WISE.</p>
 				<h2 class="govuk-heading-m">Why this research is important</h2>
 				<p class="govuk-body">Sadly, many young women do not see computing-related subjects as an option for their future career. Research suggests that a variety of factors are likely to be responsible, including feeling like they don’t belong in the subject or its community, a lack of sustained encouragement, and a lack of computing role models when they are learning about the subject.</p>
-				<p class="govuk-body">We’re working with schools to find ways to address this disparity.</p>
-				<p class="govuk-body">More than 700 amazing schools have already begun working with us to explore the different approaches to meet this challenge, but we need more!</p>
-				<p class="govuk-body">We’ll provide free teaching and learning materials, as well as training where necessary. All we need you to do is to try the approaches we suggest and provide us with some information through surveys and perhaps a phone call or visit from us. We’d love your school to get involved. <strong>Why not join today?<strong></p>
+				<p class="govuk-body">The Gender Balance in Computing research programme aims to find out what works to encourage girls to develop an interest during their primary and secondary school years, and increase the number of young women who choose to study Computer Science at GCSE and A level. We are running a number of pilot studies and Randomised Control Trials (RCTs) to assess the impact of different types of intervention on female pupil’s engagement in computing. We use standardised surveys measuring different aspects of engagement and attitudes towards computing, as well as intention to study GCSE computing, to measure the impact of the interventions.</p>
+        <h2 class="govuk-heading-m">What’s currently happening with the programme?</h2>
+        <p class="govuk-body"><%= link_to 'Visit our overview page', '/gender-balance-interventions', class: 'ncce-link', data: tracking('interventions') %> to learn about each of the interventions and our key findings as we share them.</p>
+        <p class="govuk-body">We are currently working with schools and teachers to deliver the interventions. All of the trials are now fully recruited, and while some have taken place and the data has been collected, others are still underway. We will start to share the results through a variety of publications once they have been completed, likely starting in the summer of 2022.</p>
 				<div class="light-blue-bg padded-box govuk-!-margin-bottom-3">
-					<h2 class="govuk-heading-m">Join the programme</h2>
-					<ul class="govuk-list govuk-list--number">
-						<li><%= link_to 'Find out more about the different interventions', 'https://blog.teachcomputing.org/gender-balance-in-computing-programme-opens-to-all-schools-in-england/', class: 'ncce-link' %> to decide which ones your school would like to participate in.</li>
-						<li>Register your interest to take part in the interventions and join the GBIC Schools Network</li>
-					</ul>
-					<%= link_to 'Register your interest', 'https://ncce.io/gbicregister', class: 'govuk-button button govuk-!-margin-bottom-3' %>
+					<h2 class="govuk-heading-m">How can I learn more about the research?</h2>
+					<p class='govuk-body'>Over the last two years, we have been writing regular blog posts on issues relating to gender balance in computing, including tips for teachers to try out in their classrooms.</p>
+					<%= link_to 'Discover our research articles', 'https://blog.teachcomputing.org/tag/gbic-article/', class: 'govuk-button button govuk-!-margin-bottom-3', data: tracking('research articles') %>
 				</div>
       </div>
       <div class="govuk-grid-column-one-third">
         <div class="ncce-aside">
-          <p class="govuk-body"><strong>Join this landmark programme<strong>
+          <p class="govuk-body"><strong>Get updates about our programme<strong>
           </p>
-          <p class="govuk-body">Are you a teacher or headteacher at a school who is interested in GBIC?</p>
-      		<%= link_to 'Register your interest', 'https://ncce.io/gbicregister', class: 'govuk-button button button--aside' %>
+          <p class="govuk-body">Want the latest news and updates about our research?</p>
+      		<%= link_to 'Sign up for our newsletter', 'https://raspberrypi.us9.list-manage.com/subscribe?u=54fbc2c9ac9d9dd634725107a&id=400611fc51', class: 'govuk-button button button--aside', data: tracking('newsletter') %>
         </div>
       </div>
     </div>
