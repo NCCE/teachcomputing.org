@@ -1,7 +1,7 @@
 <div class="govuk-grid-column-one-third">
   <% I18n.t(".pages.pedagogy.aside").each do |aside| %>
     <div class="ncce-aside">
-      <h2 class="govuk-heading-s ncce-aside__title report-card-component__title"><%= aside[:title] %> </h2>
+      <h2 class="govuk-heading-s report-card-component__title"><%= aside[:title] %> </h2>
       <p class="govuk-body"> <%= aside[:text] %> </p>
       <% unless aside[:button].empty? %>
         <p class="govuk-body"> <%= aside[:button].html_safe %> </p>
