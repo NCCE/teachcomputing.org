@@ -168,8 +168,8 @@ en:
             can support this approach."
           image: "media/images/icons/idea-icon.svg"
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Concept maps</a> (PDF)"
-            - "<b>Podcast:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>What is Computing?</a> (18 October 2019)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr07' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Concept maps</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc02' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>What is Computing?</a> (18 October 2019)"
         -
           title: "Work together"
           text: "Encourage collaboration, specifically using pair programming and peer instruction,
@@ -177,9 +177,9 @@ en:
             articulation of concepts, and development of shared understanding"
           image: "media/images/icons/connect-icon.svg"
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Pair Programming</a> (PDF)"
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (PDF)"
-            - "<b>Podcast:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (7 May 2020)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr03' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Pair Programming</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr04' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc09' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (7 May 2020)"
         -
           title: "Get hands-on"
           text: "Use physical computing and making activities that offer tactile and sensory experiences to enhance learning.
@@ -187,7 +187,7 @@ en:
             engaging context to explore and apply computing concepts."
           image: "media/images/icons/paint-brush-icon.svg"
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Physical computing</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='https://blog.teachcomputing.org/quick-read-physical-computing/' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Physical computing</a> (PDF)"
         -
           title: "Unplug, unpack, repack"
           text: "Teach new concepts by first unpacking complex terms and ideas,
@@ -195,22 +195,22 @@ en:
             This approach (semantic waves) can help pupils develop a secure understanding of complex concepts."
           image: "media/images/icons/box-icon.svg"
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Semantic Waves</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr06' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Semantic Waves</a> (PDF)"
         -
           title: "Model everything"
           text: "Model processes or practices — everything from debugging code to binary number conversions — using techniques such as worked examples and live coding.
             Modelling is particularly beneficial to novices, providing scaffolding that can be gradually taken away."
           image: "media/images/icons/model-icon.svg"
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Worked Examples</a> (PDF)"
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Live Coding</a> (PDF)"
-            - "<b>Podcast:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Live Coding</a> (19 March 2019)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr02' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Worked Examples</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr05' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Live Coding</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc07' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Live Coding</a> (19 March 2019)"
         -
           title: "Foster program comprehension"
           text: "Use a variety of activities to consolidate knowledge and understanding of the function and structure of programs,
             including debugging, tracing, and Parson’s Problems. Regular comprehension activities will help secure understanding and build connections with new knowledge."
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Programme Comprehension</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr12' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Programme Comprehension</a> (PDF)"
           image: "media/images/icons/head-icon.svg"
         -
           title: "Create projects"
@@ -233,8 +233,8 @@ en:
             Awareness of common misconceptions alongside discussion, concept mapping, peer instruction,
             or simple quizzes can help identify areas of confusion."
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (PDF)"
-            - "<b>Podcast:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (7 May 2019)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr04' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc09' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>Peer Instruction</a> (7 May 2019)"
           image: "media/images/icons/question-icon.svg"
         -
           title: "Make concrete"
@@ -248,8 +248,8 @@ en:
           text: "Use supportive frameworks when planning lessons, such as PRIMM (Predict, Run, Investigate, Modify, Make) and Use-Modify-Create.
             These frameworks are based on research and ensure that differentiation can be built in at various stages of the lesson."
           resource_links:
-            - "<b>Quick Read:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>PRIMM</a> (7 May 2020)"
-            - "<b>Podcast:</b> <a href='#' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>The PRIMM approach</a> (10 December 2020)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr11' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>PRIMM</a> (7 May 2020)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc12' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>The PRIMM approach</a> (10 December 2020)"
           image: "media/images/icons/structure-icon.svg"
         -
           title: "Read and explore code first"
