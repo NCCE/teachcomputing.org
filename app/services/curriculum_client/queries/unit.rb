@@ -37,18 +37,6 @@ module CurriculumClient
           id
           slug
           title
-          description
-          zippedContents {
-            #{file_fields}
-          }
-          learningObjectives {
-            id
-            description
-            successCriteria {
-              id
-              description
-            }
-          }
         }
       GRAPHQL
 
