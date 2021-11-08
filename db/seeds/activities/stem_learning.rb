@@ -1477,3 +1477,15 @@ a = Activity.find_or_create_by(stem_course_template_no: '827dccad-b130-ec11-b6e6
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'eb7c08ea-212a-4d27-8bde-a629f36192f6') do |activity|
+  activity.title = 'NCCE coaching and mentoring'
+  activity.credit = 10
+  activity.slug = 'ncce-coaching-and-mentoring'
+  activity.stem_course_template_no = 'eb7c08ea-212a-4d27-8bde-a629f36192f6'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP760'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
