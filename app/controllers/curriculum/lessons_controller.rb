@@ -5,7 +5,7 @@ module Curriculum
     layout 'full-width'
 
     def show
-      @lesson = CurriculumClient::Queries::Lesson.one(params[:lesson_slug]).lesson
+      @lesson = CurriculumClient::Queries::Lesson.one(params[:lesson_slug], params[:unit_slug]).lesson
       @unit = @lesson.unit
     end
 

@@ -11,16 +11,14 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
     it 'pass the expected params' do
       expect(described_class.one(context: :keyStage,
                                  fields: 'id',
-                                 key: :slug,
-                                 value: 'key-stage-0',
+                                 params: { slug: 'key-stage-0' },
                                  cache_key: 'cache-key'))
         .to have_requested(:post, url)
         .with(body: hash_including({ 'variables': { 'slug': 'key-stage-0' } }))
 
       expect(described_class.one(context: :keyStage,
                                  fields: 'id',
-                                 key: :id,
-                                 value: 'an_id',
+                                 params: { id: 'an_id' },
                                  cache_key: 'cache-key'))
         .to have_requested(:post, url)
         .with(body: hash_including({ 'variables': { 'id': 'an_id' } }))
