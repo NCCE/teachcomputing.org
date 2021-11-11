@@ -138,7 +138,7 @@ en:
           button: "<a href='http://ncce.io/researchbytes' class='govuk-button button--aside' data-event-action='click', data-event-category='Pedagogy', data-event-label='Read latest research'>Read the latest issue</a>"
           resource_links:
             - "<a href='http://ncce.io/pedagogy_blog' data-event-action='click', data-event-category='Pedagogy', data-event-label='See past articles'>See past articles</a>"
-            - "<a href='https://ncce.stem.org.uk/user/register?from=NCCE' data-event-action='click', data-event-category='Pedagogy', data-event-label='Register'>Receive Research Bytes by email </a>(requires a Teach Computing account)"
+            - "<a href='https://ncce.stem.org.uk/user/register?from=NCCE' data-event-action='click', data-event-category='Pedagogy', data-event-label='Register'>Receive Research Bytes by email</a> (requires a Teach Computing account)"
         -
           title: "Pedagogy Reports"
           text: "Our teaching and learning reports take a deep dive into progression and pedagogy with the computing curriculum."
