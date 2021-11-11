@@ -9,11 +9,21 @@ module CurriculumClient
         title
         slug
         description
-        unitGuide
-        summativeAssessments
-        summativeAnswers
-        learningGraphs
-        rubrics
+        unitGuide {
+          #{file_fields}
+        }
+        summativeAssessments {
+          #{file_fields}
+        }
+        summativeAnswers {
+          #{file_fields}
+        }
+        learningGraphs {
+          #{file_fields}
+        }
+        rubrics {
+          #{file_fields}
+        }
         yearGroup {
           yearNumber
           slug
@@ -27,6 +37,18 @@ module CurriculumClient
           id
           slug
           title
+          description
+          zippedContents {
+            #{file_fields}
+          }
+          learningObjectives {
+            id
+            description
+            successCriteria {
+              id
+              description
+            }
+          }
         }
       GRAPHQL
 

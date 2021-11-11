@@ -35,14 +35,20 @@
       "curriculum_maps": [
         {
           "name": "Map 1",
-          "file": "something.somewhere"
+          "file": "something.somewhere",
+          "created": "1 Nov 2020"
         },
         {
           "name": "Map 2",
-          "file": "something_else.somewhere_else"
+          "file": "something_else.somewhere_else",
+          "created": "1 Nov 2020"
         }
       ],
-      "teacher_guide": "https://teachcomputing.org",
+      "teacher_guide": {
+        "name": "Teacher Guide",
+        "file": "https://teachcomputing.org",
+        "created": "1 Nov 2020"
+      },
       "years": "1-3"
     }
   }

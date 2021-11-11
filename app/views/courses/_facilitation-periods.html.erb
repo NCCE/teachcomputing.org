@@ -1,0 +1,22 @@
+<div class='facilitation-periods govuk-!-padding-bottom-3 govuk-!-padding-top-3'>
+  <h3 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+    View facilitation period(s):
+  </h3>
+  <details class="govuk-details ncce-details govuk-!-margin-bottom-2" data-module="govuk-details">
+    <summary class="govuk-details__summary ncce-details__summary">
+      <span class="govuk-details__summary-text ncce-details__summary-text govuk-body-s">
+        What does this mean?
+      </span>
+    </summary>
+    <div class="govuk-details__text ncce-details__text govuk-body-s govuk-!-margin-bottom-0">
+      You can join and complete this course at any time. During facilitation periods a course facilitator will join the course to provide additional support, answer questions and respond to queries.
+    </div>
+  </details>
+  <ul class="govuk-list facilitation-periods__list">
+    <% @occurrences.each do |occurrence| %>
+      <li class="govuk-body-s facilitation-periods__list-item">
+        <%= activity_times(occurrence.start_date, occurrence.end_date, true) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

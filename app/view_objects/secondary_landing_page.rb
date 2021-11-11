@@ -79,11 +79,11 @@ class SecondaryLandingPage
   def testimonials
     [
       {
-        text: '“The online courses let me go through the content at my own pace, while the face to face gave me more hands-on experience with practical programming.”',
-        image: 'media/images/landing-pages/kasim.png',
-        name: 'Kasim Rashid',
-        link_target: 'https://blog.teachcomputing.org/getting-with-the-programming/',
-        bio: 'Maths and Computer Science teacher, London',
+        text: '“We’re teaching kids to use technologies that don’t exist yet for problems that they don’t know. It’s going to be a completely different world when they leave school.”',
+        image: 'media/images/pages/careers-week/helen_brant.jpg',
+        name: 'Helen Brant',
+        link_target: 'https://blog.teachcomputing.org/music-computing',
+        bio: 'Music teacher',
         tracking_event: 'Testimonial 1'
       },
       {
@@ -143,8 +143,7 @@ class SecondaryLandingPage
         description: "Discover the history of encryption and learn how it's used in the modern world.",
         icon_class: 'icon-online',
         type: 'Online course',
-        duration: '3 weeks',
-        time_commitment: '2 hours per week',
+        time_commitment: 'Approximately 8 hours of self-study',
         event_label: 'Course 3'
       }
     ]

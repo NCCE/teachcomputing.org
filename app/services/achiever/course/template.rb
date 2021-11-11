@@ -19,7 +19,8 @@ class Achiever::Course::Template
                 :title,
                 :topics_covered,
                 :who_is_it_for,
-                :workstream
+                :workstream,
+                :always_on
 
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
   QUERY_STRINGS = { Page: '1',
@@ -50,6 +51,7 @@ class Achiever::Course::Template
       t.topics_covered = resource.send('Template.TopicsCovered')
       t.who_is_it_for = resource.send('Template.WhoIsFor')
       t.workstream = resource.send('Template.Workstream')
+      t.always_on = Activity.find_by(stem_course_template_no: t.course_template_no)&.always_on || false
     end
   end
 

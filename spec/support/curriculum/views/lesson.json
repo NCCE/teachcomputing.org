@@ -5,7 +5,11 @@
       "title": "Lesson 1",
       "slug": "lesson-1",
       "description": "This is a Lesson",
-      "zipped_contents": "https://teachcomputing.org",
+      "zipped_contents": {
+        "file": "https://teachcomputing.org",
+        "size": "1.1 MB",
+        "created": "15 Oct 1943"
+      },
       "unit": {
         "slug": "unit-2",
         "title": "Unit 2",

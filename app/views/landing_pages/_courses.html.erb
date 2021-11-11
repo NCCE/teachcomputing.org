@@ -46,16 +46,18 @@
                 </p>
                 <div class="lp-courses--details">
                   <span class="govuk-body-s <%= course[:icon_class] %> lp-courses--type">
-                      <%= course[:type] %>
+                    <%= course[:type] %>
                   </span>
                 </div>
                 <div class="lp-courses--details">
+                  <% if course[:duration].present? %>
                   <span class="govuk-body-s icon-calendar lp-courses--duration">
-                      <%= course[:duration] %>
+                    <%= course[:duration] %>
                   </span>
-                  <span class="govuk-body-s icon-clock lp-courses--time">
-                      <%= course[:time_commitment] %>
-                  </span>
+                  <% end %>
+                  <%= content_tag :span, class: ['govuk-body-s', 'icon-clock', 'lp-courses--time', { 'govuk-!-margin-left-0': course[:duration].blank? }] do %>
+                    <%= course[:time_commitment] %>
+                  <% end %>
                 </div>
               </div>
             <% end %>

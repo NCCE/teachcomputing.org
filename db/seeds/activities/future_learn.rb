@@ -40,6 +40,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'c9fb59cc-6393-4a29-813
   activity.future_learn_course_uuid = 'c9fb59cc-6393-4a29-8136-7020128ca879'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO207'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -93,6 +94,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '6c5bddfb-7dd4-467b-955
   activity.future_learn_course_uuid = '6c5bddfb-7dd4-467b-9554-34f3aedc233f'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO214'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -106,6 +108,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'ffc6793d-5643-40c8-893
   activity.future_learn_course_uuid = 'ffc6793d-5643-40c8-893a-0164844ca62f'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO213'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -119,6 +122,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '04953102-a4cf-485d-a34
   activity.future_learn_course_uuid = '04953102-a4cf-485d-a34e-0c64621033be'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO212'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -145,6 +149,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '3ce9a624-6cc7-4d23-8f5
   activity.future_learn_course_uuid = '3ce9a624-6cc7-4d23-8f5f-95162e360178'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO211'
+  activity.always_on = true
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -159,6 +164,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'e4115d3c-53d0-4538-94c
   activity.future_learn_course_uuid = 'e4115d3c-53d0-4538-94c2-e2a9ba366178'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO215'
+  activity.always_on = true
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
@@ -187,6 +193,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '645ec51f-0b46-4102-a36
   activity.future_learn_course_uuid = '645ec51f-0b46-4102-a364-90647057f4f2'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO217'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -216,6 +223,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '83c939cf-8aa7-43d9-ad0
   activity.future_learn_course_uuid = '83c939cf-8aa7-43d9-ad06-acaa3b859d91'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO218'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -244,6 +252,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '26e9cd23-2d71-4964-9af
   activity.future_learn_course_uuid = '26e9cd23-2d71-4964-9af3-751aa3fdc8e5'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO020'
+  activity.always_on = true
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -430,3 +439,17 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '0fbfa644-501d-4ac0-b3e
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: 'b2445d09-f3b3-45da-b4ec-6d33bb6cb89b') do |activity|
+  activity.title = 'Teaching Data and Information to 5 - 11 Year Olds'
+  activity.credit = 10
+  activity.slug = 'teaching-data-and-information-to-5-11-year-olds'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '7ee623a1-f02f-ec11-b6e6-000d3a871bbc'
+  activity.future_learn_course_uuid = 'b2445d09-f3b3-45da-b4ec-6d33bb6cb89b'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO044'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)

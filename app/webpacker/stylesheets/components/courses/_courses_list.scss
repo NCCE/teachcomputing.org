@@ -41,12 +41,25 @@
   padding: 12px 10px;
 }
 
+.ncce-courses__locations--always-open {
+  background: $concrete;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  border: 0;
+  box-sizing: border-box;
+  padding: 0.6rem 1rem;
+  width: 100%;
+}
+
 .ncce-courses__locations {
   margin-bottom: 0;
 
   &-name {
     font-weight: normal;
     padding-left: 27px;
+    text-align: right;
   }
 
   &-nearest {
@@ -111,10 +124,10 @@
     border: 0;
     box-sizing:border-box;
     cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
     padding: 0.6rem 1rem;
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
 
     @include govuk-media-query($from: tablet) {
       margin-bottom: 2px;

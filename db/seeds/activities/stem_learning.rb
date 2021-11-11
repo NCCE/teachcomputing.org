@@ -1442,3 +1442,50 @@ a = Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6
   activity.stem_activity_code = 'CP467'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6-000d3a0caf14') do |activity|
+  activity.title = 'CS Accelerator for all'
+  activity.credit = 10
+  activity.slug = 'cs-accelerator-for-all'
+  activity.stem_course_template_no = '61b89040-5528-ec11-b6e6-000d3a0caf14'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP333'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e2683e1b-1330-ec11-b6e6-000d3a871225') do |activity|
+  activity.title = 'Programming with Python – residential'
+  activity.credit = 10
+  activity.slug = 'programming-with-python-residential'
+  activity.stem_course_template_no = 'e2683e1b-1330-ec11-b6e6-000d3a871225'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP283'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '827dccad-b130-ec11-b6e6-000d3a87150c') do |activity|
+  activity.title = 'Creative digital media projects'
+  activity.credit = 10
+  activity.slug = 'creative-digital-media-projects'
+  activity.stem_course_template_no = '827dccad-b130-ec11-b6e6-000d3a87150c'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP414'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'eb7c08ea-212a-4d27-8bde-a629f36192f6') do |activity|
+  activity.title = 'NCCE coaching and mentoring'
+  activity.credit = 10
+  activity.slug = 'ncce-coaching-and-mentoring'
+  activity.stem_course_template_no = 'eb7c08ea-212a-4d27-8bde-a629f36192f6'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP760'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)

@@ -26,7 +26,7 @@
 }
 
 .icon-online {
-  @include icon('../images/icons/laptop.svg', left bottom);
+  @include icon('../images/icons/laptop.svg');
 }
 
 .icon-calendar {

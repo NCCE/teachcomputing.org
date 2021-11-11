@@ -8,6 +8,7 @@ FactoryBot.define do
     category { 'face-to-face' }
     provider { 'stem-learning' }
     sequence(:stem_activity_code, 100) { |n| "C#{n}" }
+    always_on { false }
   end
 
   trait :cs_accelerator_diagnostic_tool do
