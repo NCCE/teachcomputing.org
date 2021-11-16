@@ -131,7 +131,7 @@ en:
           text: "These short monthly documents present a summary of a topic, the key points and considerations, as well as links to the original sources."
           button: "<a href='http://ncce.io/quickreads' class='govuk-button button--aside' data-event-action='click', data-event-category='Pedagogy', data-event-label='All quick reads'>Read the latest document</a>"
           resource_links:
-            - "<a href='http://ncce.io/quickreads' data-event-action='click', data-event-category='Pedagogy', data-event-label='Pedagogy'>See all quick reads</a>"
+            - "<a href='http://ncce.io/quickreads' data-event-action='click', data-event-category='Pedagogy', data-event-label='All quick reads'>See all quick reads</a>"
         -
           title: "Research Bytes Newsletter"
           text: "Our half-termly newsletter provides a bite-sized summary of computing education research, insights from classroom teachers, as well as suggested reading."
