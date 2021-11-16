@@ -124,4 +124,139 @@ en:
         text: ''
         link_title: "Advocate for us"
         list_items: ["As a governor or trustee, help raise the profile of computing as a subject within schools."]
+    pedagogy:
+      aside:
+        -
+          title: "Pedagogy Quick Reads"
+          text: "These short monthly documents present a summary of a topic, the key points and considerations, as well as links to the original sources."
+          button: "<a href='http://ncce.io/quickreads' class='govuk-button button--aside' data-event-action='click' data-event-category='Pedagogy' data-event-label='All quick reads'>Read the latest document</a>"
+          resource_links:
+            - "<a href='http://ncce.io/quickreads' data-event-action='click' data-event-category='Pedagogy' data-event-label='All quick reads'>See all quick reads</a>"
+        -
+          title: "Research Bytes Newsletter"
+          text: "Our half-termly newsletter provides a bite-sized summary of computing education research, insights from classroom teachers, as well as suggested reading."
+          button: "<a href='http://ncce.io/researchbytes' class='govuk-button button--aside' data-event-action='click' data-event-category='Pedagogy' data-event-label='Read latest research'>Read the latest issue</a>"
+          resource_links:
+            - "<a href='http://ncce.io/pedagogy_blog' data-event-action='click' data-event-category='Pedagogy' data-event-label='See past articles'>See past articles</a>"
+            - "<a href='https://ncce.stem.org.uk/user/register?from=NCCE' data-event-action='click' data-event-category='Pedagogy' data-event-label='Register'>Receive Research Bytes by email</a> (requires a Teach Computing account)"
+        -
+          title: "Pedagogy Reports"
+          text: "Our teaching and learning reports take a deep dive into progression and pedagogy with the computing curriculum."
+          button: ""
+          resource_links:
+            - "<a href='https://teachcomputing.org/impact-and-evaluation' data-event-action='click' data-event-category='Pedagogy' data-event-label='Read reports'>See our impact</a>"
+        -
+          title: "Action Research Course"
+          text: "Our online course aims to support classroom educators to apply and test new approaches in their context using an action research process."
+          button: ""
+          resource_links:
+            - "<a href='https://teachcomputing.org/courses/CO030/improving-computing-classroom-practice-through-action-research' data-event-action='click' data-event-category='Pedagogy' data-event-label='Action research course'>Show me more</a>"
+        -
+          title: "Teach Computing Podcast"
+          text: "For 12 episodes our podcast examined different questions,
+            challenges or practice relating to computing education through conversations with classroom teachers and other experts."
+          button: ""
+          resource_links:
+            - "<a href='http://ncce.io/podcast' data-event-action='click' data-event-category='Pedagogy' data-event-label='All podcasts'>Listen to all 12 episodes</a>"
+      ways_to_teach:
+        -
+          title: "Lead with concepts"
+          text: "Support pupils in the acquisition of knowledge,
+            through the use of key concepts, terms, and vocabulary,
+            providing opportunities to build a shared and consistent understanding.
+            Glossaries, concept maps, and displays, along with regular recall and revision,
+            can support this approach."
+          image: "media/images/icons/idea-icon.svg"
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr07' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR concepts'>Concept maps</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc02' data-event-action='click' data-event-category='Pedagogy' data-event-label='PC concepts'>What is Computing?</a> (18 October 2019)"
+        -
+          title: "Work together"
+          text: "Encourage collaboration, specifically using pair programming and peer instruction,
+            and also structured group tasks. Working together stimulates classroom dialogue,
+            articulation of concepts, and development of shared understanding"
+          image: "media/images/icons/connect-icon.svg"
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr03' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR work together 1'>Pair Programming</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr04' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR work together 2'>Peer Instruction</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc09' data-event-action='click' data-event-category='Pedagogy' data-event-label='PC work together'>Peer Instruction</a> (7 May 2020)"
+        -
+          title: "Get hands-on"
+          text: "Use physical computing and making activities that offer tactile and sensory experiences to enhance learning.
+            Combining electronics and programming with arts and crafts (especially through exploratory projects) provides pupils with a creative,
+            engaging context to explore and apply computing concepts."
+          image: "media/images/icons/paint-brush-icon.svg"
+          resource_links:
+            - "<b>Quick Read:</b> <a href='https://blog.teachcomputing.org/quick-read-physical-computing/' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR hands on'>Physical computing</a> (PDF)"
+        -
+          title: "Unplug, unpack, repack"
+          text: "Teach new concepts by first unpacking complex terms and ideas,
+            exploring these ideas in unplugged and familiar contexts, then repacking this new understanding into the original concept.
+            This approach (semantic waves) can help pupils develop a secure understanding of complex concepts."
+          image: "media/images/icons/box-icon.svg"
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr06' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR unplug'>Semantic Waves</a> (PDF)"
+        -
+          title: "Model everything"
+          text: "Model processes or practices — everything from debugging code to binary number conversions — using techniques such as worked examples and live coding.
+            Modelling is particularly beneficial to novices, providing scaffolding that can be gradually taken away."
+          image: "media/images/icons/model-icon.svg"
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr02' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR model 1'>Worked Examples</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr05' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR model 2'>Live Coding</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc07' data-event-action='click' data-event-category='Pedagogy' data-event-label='PC model'>Live Coding</a> (19 March 2019)"
+        -
+          title: "Foster program comprehension"
+          text: "Use a variety of activities to consolidate knowledge and understanding of the function and structure of programs,
+            including debugging, tracing, and Parson’s Problems. Regular comprehension activities will help secure understanding and build connections with new knowledge."
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr12' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR comprehension'>Programme Comprehension</a> (PDF)"
+          image: "media/images/icons/head-icon.svg"
+        -
+          title: "Create projects"
+          text: "Use project-based learning activities to provide pupils with the opportunity to apply and consolidate their knowledge and understanding.
+            Design is an important, often overlooked aspect of computing.
+            Pupils can consider how to develop an artefact for a particular user or function,
+            and evaluate it against a set of criteria."
+          resource_links: []
+          image: "media/images/icons/spanner-icon.svg"
+        -
+          title: "Add variety"
+          text: "Provide activities with different levels of direction, scaffolding,
+            and support that promote learning, ranging from highly structured to more exploratory tasks.
+            Adapting your instruction to suit different objectives will help keep all pupils engaged and encourage greater independence."
+          resource_links: []
+          image: "media/images/icons/variety-icon.svg"
+        -
+          title: "Challenge misconceptions"
+          text: "Use formative questioning to uncover misconceptions and adapt teaching to address them as they occur.
+            Awareness of common misconceptions alongside discussion, concept mapping, peer instruction,
+            or simple quizzes can help identify areas of confusion."
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr04' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR misconceptions'>Peer Instruction</a> (PDF)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc09' data-event-action='click' data-event-category='Pedagogy' data-event-label='PC misconceptions'>Peer Instruction</a> (7 May 2019)"
+          image: "media/images/icons/question-icon.svg"
+        -
+          title: "Make concrete"
+          text: "Bring abstract concepts to life with realworld, contextual examples and a focus on interdependencies with other curriculum subjects.
+            This can be achieved through the use of unplugged activities, proposing analogies,
+            storytelling around concepts, and finding examples of the concepts in pupils’ lives."
+          resource_links: []
+          image: "media/images/icons/world-icon.svg"
+        -
+          title: "Structure lessons"
+          text: "Use supportive frameworks when planning lessons, such as PRIMM (Predict, Run, Investigate, Modify, Make) and Use-Modify-Create.
+            These frameworks are based on research and ensure that differentiation can be built in at various stages of the lesson."
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr11' data-event-action='click' data-event-category='QR structure', data-event-label='Pedagogy'>PRIMM</a> (7 May 2020)"
+            - "<b>Podcast:</b> <a href='http://ncce.io/tc12' data-event-action='click' data-event-category='PC structure', data-event-label='Pedagogy'>The PRIMM approach</a> (10 December 2020)"
+          image: "media/images/icons/structure-icon.svg"
+        -
+          title: "Read and explore code first"
+          text: "When teaching programming, focus first on code ‘reading’ activities, before code writing.
+            With both block-based and text-based programming, encourage pupils to review and interpret blocks of code.
+            Research has shown that being able to read, trace, and explain code augments pupils’ ability to write code."
+          resource_links: []
+          image: "media/images/icons/digits-icon.svg"
+
 

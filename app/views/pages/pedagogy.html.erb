@@ -1,0 +1,20 @@
+<% meta_tag :title, 'Pedagogy' %>
+<%= render 'components/hero', hero_title: 'Promoting effective computing pedagogy', colour: 'green-bg', full_width: true %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Effective pedagogy is at the heart of good teaching and learning;
+          successful computing teachers combine their knowledge of the subject with evidence-based teaching practices.
+          As computing is a relatively new discipline, evidence of effective teaching approaches
+          continues to emerge and evolve.</p>
+        <h2 class="govuk-heading-m">How we teach computing</h2>
+        <p class="govuk-body govuk-body govuk-!-padding-bottom-4">The work of the NCCE is underpinned by our 12 principles of
+          Computing Pedagogy, below. They are also available to <%= link_to "download as a poster (PDF, 234Kb)", "https://raspberrypi-education.s3-eu-west-1.amazonaws.com/Pedagogy+Assets/NCCE_pedagogy_principles.pdf", class: "ncce-link", 'data-event-action'=>'click', 'data-event-category'=>'Pedagogy', 'data-event-label'=>'Poster' %>
+        </p>
+        <%= render "/pages/how_to_teach_computing.html.erb" %>
+      </div>
+      <%= render "/pages/pedagogy_aside.html.erb" %>
+    </div>
+  </div>
+</div>
