@@ -1,5 +1,5 @@
 <% I18n.t('.pages.pedagogy.ways_to_teach').each do |way| %>
-  <h2 class="govuk-heading-s ways_to_teach__title govuk-!-padding-left-7" style='background-image: url("<%= asset_pack_path(way[:image]) %>")'><%= way[:title]%></h2>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path(way[:image]) %>")'><%= way[:title]%></h2>
   <p class="govuk-body govuk-!-padding-top-3"> <%= way[:text]%> </p>
   <% way[:resource_links].each do |link| %>
     <p class="govuk-body-s"> <%= link.html_safe %> </p>
