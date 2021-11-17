@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/secondary-certificate', type: :view) do
+RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
 

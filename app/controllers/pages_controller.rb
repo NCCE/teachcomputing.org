@@ -29,6 +29,10 @@ class PagesController < ApplicationController
     @programme = Programme.find_by!(slug: params[:page_slug])
     redirect_to @programme.path and return if @programme.user_enrolled?(current_user)
 
-    render template: "pages/#{params[:page_slug]}"
+    if FeatureFlagService.new.flags[:primary_redesign_enabled]
+      render template: "pages/enrolment/#{params[:page_slug]}"
+    else
+      render template: "pages/#{params[:page_slug]}"
+    end
   end
 end

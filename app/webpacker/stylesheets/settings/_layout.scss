@@ -87,3 +87,8 @@ $v-space-large-mobile: 42px;
     margin: 0 auto;
   }
 }
+
+.ncce-section {
+  @include govuk-responsive-margin(7, "top");
+  @include govuk-responsive-margin(7, "bottom");
+}

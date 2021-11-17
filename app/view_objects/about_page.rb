@@ -16,6 +16,7 @@ class AboutPage
       }
     end
 
+    # Uses NonBorderedCardsComponent
     def resource_cards
       {
         class_name: 'resource-cards',
@@ -58,6 +59,7 @@ class AboutPage
       }
     end
 
+    # Uses ReportCardComponent
     def report_card
       {
         class_name: 'impact-and-evaluation-report-card',
@@ -78,6 +80,7 @@ class AboutPage
       }
     end
 
+    # Uses BorderedCardsComponent
     def programme_cards
       {
         class_name: 'programme-cards',
@@ -108,6 +111,7 @@ class AboutPage
       }
     end
 
+    # Uses BorderedCardsComponent
     def support_cards
       {
         class_name: 'support-cards',

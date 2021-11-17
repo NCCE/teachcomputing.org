@@ -6,6 +6,15 @@ class ImpactPage
       'Impact'
     end
 
+    def tracking_data(label)
+      {
+        event_action: 'click',
+        event_category: tracking_page,
+        event_label: label
+      }
+    end
+
+    # Uses RelatedLinksComponent
     def related_links
       {
         links: [
@@ -19,6 +28,7 @@ class ImpactPage
       }
     end
 
+    # Uses ReportCardComponent
     def impact_report_card
       {
         class_name: 'impact-report-card',
@@ -41,30 +51,28 @@ class ImpactPage
       }
     end
 
+    # Uses DocumentCardsComponent
     def evaluation_cards
       {
         class_name: 'evaluation-cards',
         show_border: true,
+        tracking_category: tracking_page,
         cards: [
           {
             class_name: 'impact-graduates-card',
             title_link: {
               title: 'pages.impact-and-evaluation.graduates_card_2.title',
-              title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf',
-              tracking_page: tracking_page,
+              url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf',
               tracking_label: 'CSA cohort 2'
             },
             date: 'pages.impact-and-evaluation.graduates_card_2.date',
             body: {
               text: 'pages.impact-and-evaluation.graduates_card_2.text.html',
               tokens: [
-                executive_summary_link: (
-                  link_to 'our Executive Summary',
-                          'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
-                          class: 'ncce-link', data: {
-                            event_action: 'click', event_category: tracking_page, event_label: 'CSA 2 exec summary'
-                          }
-                )
+                executive_summary_link: (link_to 'our Executive Summary',
+                                                 'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
+                                                 class: 'ncce-link', data: tracking_data('CSA 2 exec summary')
+                                        )
               ]
             }
           },
@@ -72,8 +80,7 @@ class ImpactPage
             class_name: 'impact-graduates-card',
             title_link: {
               title: 'pages.impact-and-evaluation.graduates_card.title',
-              title_url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
-              tracking_page: tracking_page,
+              url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
               tracking_label: 'CSA cohort 1'
             },
             date: 'pages.impact-and-evaluation.graduates_card.date',
@@ -85,6 +92,7 @@ class ImpactPage
       }
     end
 
+    # Uses ReportCardComponent
     def literacy_report_card
       {
         class_name: 'literacy-report-card',
@@ -105,16 +113,17 @@ class ImpactPage
       }
     end
 
+    # Uses DocumentCardsComponent
     def curriculum_cards
       {
         class_name: 'curriculum-cards',
+        tracking_category: tracking_page,
         cards: [
           {
             class_name: 'impact-literacy-card',
             title_link: {
               title: 'pages.impact-and-evaluation.literacy_card.title',
-              title_url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
-              tracking_page: tracking_page,
+              url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
               tracking_label: 'Digital literacy'
             },
             date: 'pages.impact-and-evaluation.literacy_card.date',
@@ -126,8 +135,7 @@ class ImpactPage
             class_name: 'impact-textbook-card',
             title_link: {
               title: 'pages.impact-and-evaluation.textbook_card.title',
-              title_url: 'https://static.teachcomputing.org/International_Textbook_Review.pdf',
-              tracking_page: tracking_page,
+              url: 'https://static.teachcomputing.org/International_Textbook_Review.pdf',
               tracking_label: 'Textbook review'
             },
             date: 'pages.impact-and-evaluation.textbook_card.date',
@@ -139,6 +147,7 @@ class ImpactPage
       }
     end
 
+    # Uses BorderedCardsComponent
     def research_resource_cards
       {
         class_name: 'research-resource-cards',
@@ -178,6 +187,7 @@ class ImpactPage
       }
     end
 
+    # Uses LogoCardsComponent
     def partner_resources
       {
         class_name: 'partner-resources',
