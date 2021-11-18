@@ -16,6 +16,9 @@ AllCops:
 Layout/EndOfLine:
   EnforcedStyle: lf
 
+Naming/FileName:
+  Enabled: false
+
 Layout/ClassStructure:
   Enabled: true
   Categories:

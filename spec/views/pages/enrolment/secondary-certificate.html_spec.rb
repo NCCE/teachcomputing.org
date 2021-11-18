@@ -6,10 +6,15 @@ RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
 
   context 'when a user is not signed in' do
     before do
+      stub_feature_flags({ primary_redesign_enabled: true })
       @programme = programme
       assign(:current_user, nil)
       allow(view).to receive(:eligible_for_secondary?).and_return(false)
       render
+    end
+
+    after do
+      unstub_feature_flags
     end
 
     it 'has a heading' do
