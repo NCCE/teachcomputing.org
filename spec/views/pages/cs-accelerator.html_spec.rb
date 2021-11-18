@@ -49,7 +49,7 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
 
   context 'useful links and documents' do
     it 'has link to csa brochure' do
-      expect(rendered).to have_css('.ncce-link', text: 'Computer Science Accelerator brochure')
+      expect(rendered).to have_css('.ncce-link', text: 'CS Accelerator Handbook')
     end
     it 'has link to csa course map' do
       expect(rendered).to have_css('.ncce-link', text: 'GCSE specifications to Computer Science Accelerator course map')
