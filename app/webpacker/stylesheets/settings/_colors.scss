@@ -32,6 +32,7 @@ $tapestry: #a94e91;
 $white: #ffffff;
 $isaac: #feb44c;
 $lime-green: #edf6f3;
+$green: #4FA88B;
 
 $govuk-text-colour: $grey-dark-x;
 $plain-hero-color: $concrete;
@@ -44,6 +45,10 @@ $primary-cert-color: $jaffa;
 }
 .dixie-bg {
   background-color: $dixie;
+}
+
+.hero--green-bg {
+  background-color: $green !important;
 }
 
 .jaffa-bg {
