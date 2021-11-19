@@ -11,6 +11,6 @@ RSpec.describe CurriculumClient::Queries::Lesson do
 
   it 'creates valid queries' do
     expect { described_class.all }.not_to raise_error
-    expect { described_class.one('some_id') }.not_to raise_error
+    expect { described_class.one('some_id', 'an_id') }.not_to raise_error
   end
 end

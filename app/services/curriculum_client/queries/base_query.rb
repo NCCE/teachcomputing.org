@@ -18,16 +18,18 @@ module CurriculumClient
           CurriculumClient::Request.run(query: client.parse(all), client: client, cache_key: cache_key)
         end
 
-        def one(context:, fields:, key:, value:, cache_key:)
+        def one(context:, fields:, params:, cache_key:)
+          declared_param_strings = params.map { |k, _v| "$#{k}: #{map_field_type(k)}" }
+          param_strings = params.map { |k, _v| "#{k.to_s.camelize(:lower)}: $#{k}" }
           one = <<~GRAPHQL
-            query($#{key}: #{map_field_type(key)}) {
-              #{context}(#{key}: $#{key}) {
+            query(#{declared_param_strings.join(', ')}) {
+              #{context}(#{param_strings.join(', ')}) {
                 #{fields}
               }
             }
           GRAPHQL
 
-          CurriculumClient::Request.run(query: client.parse(one), client: client, params: { "#{key}": value }, cache_key: cache_key)
+          CurriculumClient::Request.run(query: client.parse(one), client: client, params: params, cache_key: cache_key)
         end
 
         def file_fields
@@ -40,10 +42,8 @@ module CurriculumClient
             case key
             when :id
               'ID'
-            when :slug
-              'String'
             else
-              raise CurriculumClient::Errors::UnsupportedType "No type defined for: #{key}"
+              'String'
             end
           end
       end
