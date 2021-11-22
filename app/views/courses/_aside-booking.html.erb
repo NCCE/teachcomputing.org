@@ -20,6 +20,8 @@
                   @booking.booking_path(occurrence.course_occurrence_no),
                   class: 'govuk-button button button--small',
                   draggable: 'false',
+                  'data-event-category' => 'course details',
+                  'data-event-label' => 'join online course',
                   target: :_blank
                 ) %>
               </span>
@@ -35,6 +37,8 @@
             @booking.booking_path(@activity.future_learn_course_uuid),
             class: 'govuk-button button--aside',
             draggable: 'false',
+          'data-event-category' => 'course details',
+          'data-event-label' => 'join online course',
             target: :_blank
           ) %>
         </p>
@@ -52,6 +56,8 @@
           @booking.booking_path(@activity.future_learn_course_uuid),
           class: 'govuk-button button--aside',
           draggable: 'false',
+          'data-event-category' => 'course details',
+          'data-event-label' => 'continue online course',
           target: :_blank
         ) %>
       </p>
@@ -71,6 +77,8 @@
           @booking.booking_path(@activity.future_learn_course_uuid),
           class: 'govuk-button button--aside',
           draggable: 'false',
+          'data-event-category' => 'course details',
+          'data-event-label' => 'view online course',
           target: :_blank
         ) %>
       </p>
@@ -82,11 +90,11 @@
     <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
     <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
     <p class="govuk-body">
-      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %>
+      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', 'data-event-category' => 'course details' %>
     </p>
     <p class="govuk-body-s ncce-aside__text">
       Not got a STEM Learning account?
-      <br><%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %>
+      <br><%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false', 'data-event-category' => 'course details' %>
     </p>
   </div>
 <% end %>
