@@ -6,7 +6,6 @@ module CurriculumClient
 
       FIELDS = <<~GRAPHQL.freeze
         id
-        unit
         title
         slug
         description
@@ -39,8 +38,8 @@ module CurriculumClient
         super(context: :lessons, fields: fields, cache_key: 'lesson--all')
       end
 
-      def self.one(slug, fields = FIELDS)
-        super(context: :lesson, fields: fields, key: :slug, value: slug, cache_key: "lesson--#{slug}")
+      def self.one(slug, unit_slug, fields = FIELDS)
+        super(context: :lesson, fields: fields, params: { slug: slug, unit_slug: unit_slug }, cache_key: "lesson--#{unit_slug}-#{slug}")
       end
     end
   end

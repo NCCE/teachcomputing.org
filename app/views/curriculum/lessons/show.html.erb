@@ -37,7 +37,7 @@
 						<li>Activities</li>
 					</ul>
           <% if current_user %>
-            <% if @lesson.zipped_contents.file.present? %>
+            <% if @lesson.zipped_contents&.file.present? %>
               <%= link_to generate_download_url(@lesson.zipped_contents.file), class: 'govuk-button button button--aside lesson-download-button govuk-!-margin-bottom-3' do %>
                 Download all lesson files <span class="lesson-download-button__meta-data">(<%= @lesson.zipped_contents.size %>)</span>
               <% end %>

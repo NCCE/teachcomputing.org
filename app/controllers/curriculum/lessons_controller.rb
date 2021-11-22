@@ -5,10 +5,11 @@ module Curriculum
     layout 'full-width'
 
     def show
-      @unit = CurriculumClient::Queries::Unit.one(params[:unit_slug]).unit
-      @lesson = @unit.lessons.select { |lesson| lesson.slug == params[:lesson_slug] }[0]
+      @lesson = CurriculumClient::Queries::Lesson.one(params[:lesson_slug], params[:unit_slug]).lesson
 
       raise ActiveRecord::RecordNotFound if @lesson.nil?
+
+      @unit = @lesson.unit
     end
 
     protected
