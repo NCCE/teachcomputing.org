@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe OnlineBookingPresenter do
-
   let(:course) { Achiever::Course::Template.all.first }
 
   describe 'title' do
