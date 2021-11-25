@@ -41,10 +41,6 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
         end
 
-        it 'does not render the facilitation periods' do
-          expect(rendered).not_to have_css('.facilitation-periods')
-        end
-
         it 'tells the user who is delivering the course' do
           expect(rendered).to have_css(
             '.ncce-aside__text',

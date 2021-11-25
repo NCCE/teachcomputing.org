@@ -46,7 +46,7 @@
       <% end %>
     </div>
     <%= render 'courses/rpf-emblem' %>
-  <% elsif [:enrolled].include? user_achievement_state(current_user, @activity) %>
+  <% elsif user_achievement_state(current_user, @activity) == :enrolled %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.enrolled_introduction %></p>
