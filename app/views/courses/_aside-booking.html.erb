@@ -1,6 +1,6 @@
 <% if current_user %>
   <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
-    <div class="ncce-aside govuk-!-padding-bottom-3">
+    <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
       <% if (@booking.show_stem_occurrence_list) %>
@@ -67,7 +67,7 @@
     <p class='govuk-body-s' >
       Can't see the progress of your course? You may need to rejoin the course.
     </p>
-  <% elsif [:complete].include? user_achievement_state(current_user, @activity) %>
+  <% elsif user_achievement_state(current_user, @activity) == :complete %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.completed_button_introduction %></p>
@@ -96,5 +96,6 @@
       Not got a STEM Learning account?
       <br><%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false', 'data-event-category' => 'course details' %>
     </p>
+    <%= render 'courses/rpf-emblem' %>
   </div>
 <% end %>

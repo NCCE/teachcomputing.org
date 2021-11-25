@@ -2,7 +2,7 @@ class OnlineBookingPresenter
   include Rails.application.routes.url_helpers
 
   def title
-    'Join this course on FutureLearn'
+    'Join on FutureLearn'
   end
 
   def enrolled_title
@@ -22,7 +22,7 @@ class OnlineBookingPresenter
   end
 
   def enrolled_button_title
-    'Continue course on FutureLearn'
+    'Continue on FutureLearn'
   end
 
   def completed_button_title
