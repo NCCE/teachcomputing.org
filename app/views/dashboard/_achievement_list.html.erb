@@ -1,17 +1,39 @@
 <ul class="govuk-list ncce-activity-list" role="list">
   <% achievements.each do |achievement| %>
   <li class="ncce-activity-list__item ncce-activity-list__item--dashboard dashboard-border--<%= get_course_suffix(achievement) %>">
-    <span class="ncce-activity-list__item-text <%= 'ncce-activity-list__item-text--incomplete' unless achievement.current_state == :complete.to_s %>">
-      <%= achievement.activity.title %>
-    </span>
-    <span class="ncce-activity-list__item--dashboard-tags">
-      <% unless get_course_tag(achievement).blank? %>
-        <span class="govuk-body ncce-activity-list__item--dashboard-tags--course dashboard-tags--<%= get_course_suffix(achievement) %>">
-          <strong><%= get_course_tag(achievement) %></strong>
-        </span>
+    <div class="ncce-activity-list__item-text <%= 'ncce-activity-list__item-text--incomplete' unless achievement.current_state == :complete.to_s %>">
+      <% if achievement.activity.stem_activity_code %>
+        <%= link_to achievement.activity.title, course_path(id: achievement.activity&.stem_activity_code, name: achievement.activity.slug), class: 'ncce-link' if achievement.activity.stem_activity_code %>
+      <% else %>
+        <%= achievement.activity.title %>
       <% end %>
-      <span class="govuk-body ncce-activity-list__item--dashboard-tags-date"><%= get_date_string(achievement) %></span>
-    </span>
+    </div>
+    <div class="ncce-activity-list__info">
+      <% unless get_course_tag(achievement).blank? %>
+        <div class="govuk-body ncce-activity-list__tags dashboard-tags--<%= get_course_suffix(achievement) %>">
+          <strong><%= get_course_tag(achievement) %></strong>
+        </div>
+      <% end %>
+      <% if details = course_details(user_courses, achievement.activity.stem_course_template_no) %>
+        <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
+          <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
+        </div>
+        <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--address">
+          <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
+        </div>
+      <% else %>
+        <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
+          <%= t("shared.course_types.#{achievement.activity.category}") %>
+        </div>
+      <% end %>
+      <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date"><%= get_date_string(achievement) %></div>
+      <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--provider"><%= t(
+        ".providers.#{achievement.activity.provider}.html",
+        stem_logo: image_pack_tag('media/images/logos/stem-logo-small.svg', alt: 'Stem learning logo'),
+        fl_logo: image_pack_tag('media/images/logos/fl-logo-small.svg', alt: 'Future learn logo'),
+        rpf_logo: image_pack_tag('media/images/logos/rpf-logo-small.svg', alt: 'Raspberry pi foundation logo')
+      ) %></div>
+    </div>
   </li>
   <% end %>
 </ul>

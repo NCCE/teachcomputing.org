@@ -20,4 +20,23 @@ module DashboardHelper
       "Enrolled on #{achievement.updated_at.strftime('%b %Y')}"
     end
   end
+
+  def course_start_date(start_date)
+    Date.parse(start_date).strftime('%d %B %Y, %A %H:%M')
+  end
+
+  def course_icon_class(activity)
+    case activity.category.to_sym
+    when :online
+      'icon-online'
+    when :remote
+      'icon-remote'
+    else
+      'icon-map-pin'
+    end
+  end
+
+  def course_details(user_courses, template_no)
+    user_courses.find { |course| course.course_template_no == template_no }
+  end
 end

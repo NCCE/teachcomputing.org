@@ -81,6 +81,10 @@ class Achiever::Course::Template
     Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no }
   end
 
+  def self.find_many_by_stem_course_template_nos(stem_course_template_nos)
+    Achiever::Course::Template.all.select { |val| stem_course_template_nos.include?(val.course_template_no) }
+  end
+
   def by_certificate(certificate)
     case certificate
     when 'cs-accelerator'

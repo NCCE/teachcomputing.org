@@ -22,11 +22,11 @@ class Achiever::Request
       end
     end
 
-    def resource(resource_path, query = {}, cache = true)
+    def resource(resource_path, query = {}, cache = true, cache_expiry = 1.day)
       query_string = query_strings(query)
 
       response = if cache
-                   Rails.cache.fetch(resource_path, expires_in: 1.day) do
+                   Rails.cache.fetch(resource_path, expires_in: cache_expiry) do
                      api.get("#{resource_path}&#{query_string}")
                    end
                  else

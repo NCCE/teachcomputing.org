@@ -192,24 +192,15 @@
   }
 }
 
-.ncce-activity-list__item--dashboard-tags {
+.ncce-activity-list__info {
   grid-row: 2;
-}
 
-.ncce-activity-list__item--dashboard-tags-date {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 0 !important;
-  margin-left: 2.8rem;
-  margin-top: 1rem;
-
-  @include govuk-media-query($from: tablet) {
-    float: right;
-    margin-left: 0;
+  div[class*=" icon-"] {
+    background-size: 25px;
   }
 }
 
-.ncce-activity-list__item--dashboard-tags--course {
+.ncce-activity-list__tags {
   color: $white;
   display: inline-block;
   font-size: 1rem;
@@ -228,4 +219,38 @@
 
 .dashboard-tags--secondary {
   background-color: $secondary-cert-color;
+}
+
+.ncce-activity-list__subtext {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0 !important;
+  margin-left: 2.8rem;
+  margin-top: 1rem;
+  padding-left: 2.1em;
+
+  &--provider {
+    @include govuk-media-query($from: tablet) {
+      float: right;
+      margin-left: 0;
+    }
+
+    display: flex;
+    align-items: center;
+
+    margin-top: 0;
+
+    img {
+      padding: 0 0.3em;
+    }
+  }
+
+  &--date {
+    padding-left: 2.1em;
+    margin-top: 0.5rem;
+  }
+
+  &--address {
+    margin-top: 0;
+  }
 }
