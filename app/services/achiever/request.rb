@@ -83,3 +83,5 @@ class Achiever::Request
       end
   end
 end
+
+# rubocop:enable Metrics/AbcSize
