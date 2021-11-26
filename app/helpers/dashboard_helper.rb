@@ -42,10 +42,11 @@ module DashboardHelper
     user_courses&.find { |course| course.course_template_no == template_no }
   end
 
-  def course_type(activity)
+  def course_category(activity)
     if activity.remote_delivered_cpd
       'remote'
     else
+      byebug
       activity.category
     end
   end

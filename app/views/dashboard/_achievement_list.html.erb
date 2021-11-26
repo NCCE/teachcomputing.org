@@ -23,7 +23,7 @@
         </div>
       <% else %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
-          <%= t("shared.course_types.#{course_type(achievement.activity)}") %>
+          <%= t("shared.course_types.#{course_category(achievement.activity)}") %>
         </div>
       <% end %>
       <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date"><%= get_date_string(achievement) %></div>
