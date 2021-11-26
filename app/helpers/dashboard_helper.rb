@@ -46,7 +46,6 @@ module DashboardHelper
     if activity.remote_delivered_cpd
       'remote'
     else
-      byebug
       activity.category
     end
   end
