@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/AbcSize
+
 class Achiever::Request
   class << self
     CACHE = true
