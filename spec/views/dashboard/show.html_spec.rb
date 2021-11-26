@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
+  let!(:online_activity) { create(:activity, :future_learn) }
+  let!(:remote_activity) { create(:activity, :remote) }
+  let!(:face_to_face) { create(:activity, :stem_learning) }
   let!(:primary_certificate) { create(:primary_certificate) }
   let!(:cs_accelerator) { create(:cs_accelerator) }
   let!(:secondary_certificate) { create(:secondary_certificate) }
@@ -83,6 +86,10 @@ RSpec.describe('dashboard/show', type: :view) do
     it 'does not render an empty list for complete achievements' do
       expect(rendered).to have_css('.ncce-activity-list', count: 1)
     end
+
+    it 'shows the expected course type' do
+      expect(rendered).to have_css('.icon-map-pin', text: 'Face to face course')
+    end
   end
 
   context 'when there are only complete achievements' do
@@ -114,8 +121,10 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context 'when there are both complete and incomplete achievements' do
     before do
-      @incomplete_achievements = create_list(:achievement, 2, user: user, programme_id: primary_certificate.id)
-      @completed_achievements = create_list(:completed_achievement, 2, user: user, programme_id: cs_accelerator.id)
+      assign(:incomplete_achievements, create_list(:achievement, 2, user: user, programme_id: primary_certificate.id))
+      assign(:completed_achievements, create_list(:completed_achievement, 2, user: user, programme_id: cs_accelerator.id))
+      assign(:user_courses, [])
+
       render
     end
 
@@ -134,12 +143,103 @@ RSpec.describe('dashboard/show', type: :view) do
 
   context "when there's an achievement not part of a programme" do
     before do
-      @incomplete_achievements = [create(:achievement, user: user)]
+      assign(:incomplete_achievements, [create(:achievement, user: user)])
       render
     end
 
     it 'has an activity list with the expected number of items' do
       expect(rendered).to have_css('.ncce-activity-list li', count: 1)
+    end
+  end
+
+  context "when there's a face to face achievement" do
+    before do
+      assign(:incomplete_achievements, [create(:achievement, activity: face_to_face)])
+      assign(:user_courses, [
+               Achiever::Course::Delegate.new(JSON.parse({
+                 "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                 "Activity.COURSETEMPLATENO": face_to_face.stem_course_template_no,
+                 "Delegate.Is_Fully_Attended": 'True',
+                 "OnlineCPD": false,
+                 "Delegate.Progress": '157420003',
+                 "ActivityVenueAddress.VenueName": 'National STEM Learning Centre',
+                 "ActivityVenueAddress.VenueCode": '',
+                 "ActivityVenueAddress.City": 'York',
+                 "ActivityVenueAddress.PostCode": 'YO10 5DD',
+                 "ActivityVenueAddress.Address.Line1": 'University of York',
+                 "Activity.StartDate": "10\/07\/2019 00:00:00",
+                 "Activity.EndDate": "17\/07\/2019 00:00:00"
+               }.to_json, object_class: OpenStruct)),
+               Achiever::Course::Delegate.new(JSON.parse({
+                 "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                 "Activity.COURSETEMPLATENO": '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae',
+                 "Delegate.Is_Fully_Attended": 'False',
+                 "OnlineCPD": false,
+                 "Delegate.Progress": '157420003',
+                 "ActivityVenueAddress.VenueName": 'Raspberry Pi Foundation',
+                 "ActivityVenueAddress.VenueCode": '',
+                 "ActivityVenueAddress.City": 'Cambridge',
+                 "ActivityVenueAddress.PostCode": 'CB2 1NT',
+                 "ActivityVenueAddress.Address.Line1": '37 Hills Road',
+                 "Activity.StartDate": "10\/07\/2019 00:00:00",
+                 "Activity.EndDate": "17\/07\/2019 00:00:00"
+               }.to_json, object_class: OpenStruct))
+             ])
+
+      render
+    end
+
+    it 'shows the address' do
+      expect(rendered).to have_css(
+        '.ncce-activity-list__subtext--address',
+        text: 'National STEM Learning Centre, University of York, York, YO10 5DD'
+      )
+    end
+
+    it 'shows the provider' do
+      expect(rendered).to have_css('.ncce-activity-list__subtext--provider', text: 'Course delivered by')
+      expect(rendered).to have_css("img[src*='stem-logo-small']")
+    end
+  end
+
+  context "when there's an online achievement" do
+    before do
+      assign(:incomplete_achievements, [create(:achievement, activity: online_activity)])
+      render
+    end
+
+    it 'shows the expected course type' do
+      expect(rendered).to have_css('.icon-online', text: 'Online course')
+    end
+
+    it 'does not show an address' do
+      expect(rendered).not_to have_css('.ncce-activity-list__subtext--address')
+    end
+
+    it 'shows the expect provider text' do
+      expect(rendered).to have_text('Online course with')
+      expect(rendered).to have_css("img[src*='fl-logo-small']")
+      expect(rendered).to have_css("img[src*='rpf-logo-small']")
+    end
+  end
+
+  context "when there's a remote achievement" do
+    before do
+      assign(:incomplete_achievements, [create(:achievement, activity: remote_activity)])
+      render
+    end
+
+    it 'shows the expected course type' do
+      expect(rendered).to have_css('.icon-remote', text: 'Live remote course')
+    end
+
+    it 'does not show an address' do
+      expect(rendered).not_to have_css('.ncce-activity-list__subtext--address')
+    end
+
+    it 'shows the provider' do
+      expect(rendered).to have_css('.ncce-activity-list__subtext--provider', text: 'Course delivered by')
+      expect(rendered).to have_css("img[src*='stem-logo-small']")
     end
   end
 end

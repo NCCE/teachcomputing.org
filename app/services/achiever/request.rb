@@ -1,5 +1,8 @@
 class Achiever::Request
   class << self
+    CACHE = true
+    CACHE_EXPIRY = 1.day
+
     def option_sets(resource_path, query = {})
       query_string = query_strings(query)
 
@@ -22,7 +25,7 @@ class Achiever::Request
       end
     end
 
-    def resource(resource_path, query = {}, cache = true, cache_expiry = 1.day)
+    def resource(resource_path, query = {}, cache = CACHE, cache_expiry = CACHE_EXPIRY)
       query_string = query_strings(query)
 
       response = if cache

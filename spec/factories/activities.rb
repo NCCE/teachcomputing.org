@@ -25,6 +25,13 @@ FactoryBot.define do
     category { 'face-to-face' }
   end
 
+  trait :remote do
+    title { 'STEM' }
+    provider { 'stem-learning' }
+    category { 'face-to-face' }
+    remote_delivered_cpd { true }
+  end
+
   trait :future_learn do
     title { 'future learn' }
     provider { 'future-learn' }

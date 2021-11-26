@@ -29,14 +29,24 @@ module DashboardHelper
     case activity.category.to_sym
     when :online
       'icon-online'
-    when :remote
-      'icon-remote'
     else
-      'icon-map-pin'
+      if activity.remote_delivered_cpd
+        'icon-remote'
+      else
+        'icon-map-pin'
+      end
     end
   end
 
   def course_details(user_courses, template_no)
-    user_courses.find { |course| course.course_template_no == template_no }
+    user_courses&.find { |course| course.course_template_no == template_no }
+  end
+
+  def course_type(activity)
+    if activity.remote_delivered_cpd
+      'remote'
+    else
+      activity.category
+    end
   end
 end
