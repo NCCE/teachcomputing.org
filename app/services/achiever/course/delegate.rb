@@ -3,7 +3,7 @@ class Achiever::Course::Delegate
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
   PROGRAMME_NAME = 'ncce'.freeze
-  CACHE_EXPIRY = 10.minutes
+  CACHE = false
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
     query_strings = {
@@ -12,7 +12,7 @@ class Achiever::Course::Delegate
       'ProgrammeName': PROGRAMME_NAME,
       'CONTACTNO': achiever_contact_no
     }
-    delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE_EXPIRY)
+    delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
     delegate_courses.map { |delegate_course| Achiever::Course::Delegate.new(delegate_course) }
   end
 

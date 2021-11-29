@@ -14,7 +14,7 @@
           <strong><%= get_course_tag(achievement) %></strong>
         </div>
       <% end %>
-      <% details = course_details(user_courses, achievement.activity.stem_course_template_no) %>
+      <% details = stem_course_details(user_courses, achievement.activity.stem_course_template_no) %>
       <% if details.present? %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
           <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
