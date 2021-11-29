@@ -10,8 +10,8 @@ module Programmes
       enrolment = UserProgrammeEnrolment.new(@enrolment_params)
       return false unless enrolment.save
 
-      KickOffEmailsJob.perform_later(enrolment.id)
-      Achiever::ScheduleCertificateSyncJob.perform_later(enrolment.id)
+      # KickOffEmailsJob.perform_later(enrolment.id)
+      # Achiever::ScheduleCertificateSyncJob.perform_later(enrolment.id)
 
       QuestionnaireResponse.create(user_id: @user_id, questionnaire: Questionnaire.cs_accelerator) if enrolment.programme.cs_accelerator?
       set_eligible_achievements_for_programme
