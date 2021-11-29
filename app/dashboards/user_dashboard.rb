@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -29,7 +29,7 @@ class UserDashboard < Administrate::BaseDashboard
     teacher_reference_number: Field::String,
     stem_achiever_organisation_no: Field::String,
     future_learn_organisation_memberships: Field::Text,
-    forgotten: Field::Boolean,
+    forgotten: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
