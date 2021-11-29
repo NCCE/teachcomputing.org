@@ -14,13 +14,16 @@
           <strong><%= get_course_tag(achievement) %></strong>
         </div>
       <% end %>
-      <% if details = course_details(user_courses, achievement.activity.stem_course_template_no) %>
+      <% details = course_details(user_courses, achievement.activity.stem_course_template_no) %>
+      <% if details.present? %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
           <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
         </div>
-        <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--address">
-          <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
-        </div>
+        <% unless achievement.activity.remote_delivered_cpd %>
+          <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--address">
+            <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
+          </div>
+        <% end %>
       <% else %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
           <%= t("shared.course_types.#{course_category(achievement.activity)}") %>
