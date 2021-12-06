@@ -21,13 +21,13 @@ primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Contr
 end
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'develop your teaching practice') do |programme_activity_group|
-  programme_activity_group.sort_key = 3
+  programme_activity_group.sort_key = 4
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
 end
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'develop computing in your community') do |programme_activity_group|
-  programme_activity_group.sort_key = 3
+  programme_activity_group.sort_key = 5
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
 end
@@ -95,7 +95,7 @@ end
 
 # STEM Learning Courses
 
-group_two = programme_activity.programme_activity_groupings.find_by(sort_key: 2)
+group_two = primary_certificate.programme_activity_groupings.find_by(sort_key: 2)
 
 if activity = Activity.find_by(stem_course_template_no: 'e5acc943-4926-ea11-a810-000d3a86d545')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
@@ -167,12 +167,6 @@ if activity = Activity.find_by(stem_course_template_no: '5fdb7188-dd7f-ea11-a811
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
 end
 
-
-if activity = Activity.find_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c')
-  programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
-end
-
 if activity = Activity.find_by(stem_course_template_no: '88975226-811c-ec11-b6e7-0022481a8033')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
@@ -186,7 +180,6 @@ if activity = Activity.find_by(slug: 'contribute-to-online-discussion')
 end
 
 group_four = primary_certificate.programme_activity_groupings.find_by(sort_key: 4)
-
 
 if activity = Activity.find_by(slug: 'review-a-resource-on-cas')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
