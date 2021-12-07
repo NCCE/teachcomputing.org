@@ -43,7 +43,7 @@
         <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
       <% end %>
     </div>
-    <%= render 'courses/rpf-emblem' %>
+    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
   <% elsif user_achievement_state(current_user, @activity) == :enrolled %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
@@ -79,7 +79,7 @@
         ) %>
       </p>
     </div>
-    <%= render 'courses/rpf-emblem' %>
+    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
   <% end %>
 <% else %>
   <div class="ncce-aside" id="booking-list">
@@ -95,6 +95,6 @@
             data: { event_action: 'click', event_category: 'course details'}
           %>
     </p>
-    <%= render 'courses/rpf-emblem' %>
+    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
   </div>
 <% end %>
