@@ -191,7 +191,7 @@ if activity = Activity.find_by(slug: 'host-or-attend-a-barefoot-workshop')
   programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
 end
 
-if activity = Activity.find_by(slug: 'engage-with-stem-ambassadors')
+if activity = Activity.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
 end
