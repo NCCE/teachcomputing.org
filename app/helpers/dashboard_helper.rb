@@ -38,8 +38,8 @@ module DashboardHelper
     end
   end
 
-  def stem_course_details(user_courses, template_no)
-    user_courses&.find { |course| course.course_template_no == template_no }
+  def stem_course_details(user_course_info, template_no)
+    user_course_info&.find { |course| course.course_template_no == template_no }
   end
 
   def course_category(activity)

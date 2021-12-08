@@ -123,7 +123,7 @@ RSpec.describe('dashboard/show', type: :view) do
     before do
       assign(:incomplete_achievements, create_list(:achievement, 2, user: user, programme_id: primary_certificate.id))
       assign(:completed_achievements, create_list(:completed_achievement, 2, user: user, programme_id: cs_accelerator.id))
-      assign(:user_courses, [])
+      assign(:user_course_info, [])
 
       render
     end
@@ -155,7 +155,7 @@ RSpec.describe('dashboard/show', type: :view) do
   context "when there's a face to face achievement" do
     before do
       assign(:incomplete_achievements, [create(:achievement, activity: face_to_face)])
-      assign(:user_courses, [
+      assign(:user_course_info, [
                Achiever::Course::Delegate.new(JSON.parse({
                  "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
                  "Activity.COURSETEMPLATENO": face_to_face.stem_course_template_no,

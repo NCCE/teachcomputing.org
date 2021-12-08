@@ -14,7 +14,7 @@
           <strong><%= get_course_tag(achievement) %></strong>
         </div>
       <% end %>
-      <% details = stem_course_details(user_courses, achievement.activity.stem_course_template_no) %>
+      <% details = stem_course_details(user_course_info, achievement.activity.stem_course_template_no) %>
       <% if details.present? %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
           <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
@@ -29,7 +29,9 @@
           <%= t("shared.course_types.#{course_category(achievement.activity)}") %>
         </div>
       <% end %>
-      <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date"><%= get_date_string(achievement) %></div>
+      <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date">
+        <%= get_date_string(achievement) %>
+      </div>
       <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--provider"><%= t(
         ".providers.#{achievement.activity.provider}.html",
         stem_logo: image_pack_tag('media/images/logos/stem-logo-small.svg', alt: 'Stem learning logo'),
