@@ -1489,3 +1489,14 @@ a = Activity.find_or_create_by(stem_course_template_no: 'eb7c08ea-212a-4d27-8bde
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0') do |activity|
+  activity.title = 'Behaviour for learning in a computing environment'
+  activity.credit = 10
+  activity.slug = 'behaviour-for-learning-in-a-computing-environment'
+  activity.stem_course_template_no = '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP468'
+  activity.remote_delivered_cpd = true
+end
