@@ -1,12 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe('pages/cs-accelerator', type: :view) do
+RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
+    stub_feature_flags({ primary_redesign_enabled: true })
     @programme = programme
     render
+  end
+
+  after do
+    unstub_feature_flags
   end
 
   it 'has diagram' do
@@ -49,8 +54,9 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
 
   context 'useful links and documents' do
     it 'has link to csa brochure' do
-      expect(rendered).to have_css('.ncce-link', text: 'CS Accelerator Handbook')
+      expect(rendered).to have_css('.ncce-link', text: 'Computer Science Accelerator brochure')
     end
+
     it 'has link to csa course map' do
       expect(rendered).to have_css('.ncce-link', text: 'GCSE specifications to Computer Science Accelerator course map')
     end
@@ -60,9 +66,11 @@ RSpec.describe('pages/cs-accelerator', type: :view) do
     it 'has title' do
       expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
     end
+
     it 'has sub title' do
       expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
     end
+
     it 'has video' do
       expect(rendered).to have_css('iframe')
     end

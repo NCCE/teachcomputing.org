@@ -10,7 +10,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
           date: 'May 2021',
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is some example text'
@@ -20,7 +20,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
           date: 'May 2021',
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is some example text'
@@ -39,7 +39,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
         {
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is an example of a card without a date'
@@ -49,7 +49,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
           date: 'June 2021',
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
@@ -70,7 +70,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
         {
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is an example of a card without a date'
@@ -80,7 +80,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
           date: 'June 2021',
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'
@@ -90,7 +90,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
           date: 'June 2021',
           title_link: {
             title: 'Card 1',
-            title_url: '/'
+            url: '/'
           },
           body: {
             text: 'This is some longer example text. It should span multiple lines and provide a useful example of how wrapping works.'

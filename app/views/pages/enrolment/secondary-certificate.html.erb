@@ -1,0 +1,70 @@
+<% meta_tag :title, 'Secondary certificate - Teach Computing' %>
+<%= render 'pages/certification/hero_with_video' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-m">Welcome to the Secondary Computing Programme
+        </h1>
+        <p class="govuk-body">This professional development programme is designed to enhance how you teach secondary computing, and to give you confidence to apply those skills in the classroom. Throughout your learning journey, you'll get the opportunity to develop yourself, your professional community, and your students, by engaging in a range of activities.</p>
+        <p class="govuk-body">The programme is suitable for teachers who have completed <%= link_to 'the Computer Science Accelerator programme', cs_accelerator_path, class: 'ncce-link' %>, and have the required subject knowledge to advance their secondary computing teaching.</p>
+        <h2 class="govuk-heading-s">How the programme works:</h2>
+        <div class="pathway-wrapper light-grey-bg">
+          <ol class="pathway">
+            <li class="pathway__step">
+              <h2 class="govuk-heading-s pathway__step-title"><span class="pathway__step-circle"></span>Explore</h2>
+              <p class="govuk-body">Access your personal dashboard to identify your next steps and discover courses suited to you</p>
+            </li>
+            <li class="pathway__step">
+              <h2 class="govuk-heading-s pathway__step-title"><span class="pathway__step-circle"></span>Participate</h2>
+              <p class="govuk-body">Take part in a programme of CPD to develop your practice</p>
+            </li>
+            <li class="pathway__step">
+              <h2 class="govuk-heading-s pathway__step-title"><span class="pathway__step-circle"></span>Engage</h2>
+              <p class="govuk-body">Carry out a range of activities to demonstrate your commitment to your community</p>
+            </li>
+            <li class="pathway__step">
+              <h2 class="govuk-heading-s pathway__step-title"><span class="pathway__step-circle"></span>Complete</h2>
+              <p class="govuk-body">Finish your learning programme and receive your certificate in Secondary Computing Teaching</p>
+            </li>
+          </ol>
+        </div>
+        <h2 class="govuk-heading-s">Benefits for you:</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>be recognised for your commitment to your professional learning, your subject, and your community</li>
+          <li>update your skills and feel more confident to teach this high-demand subject across the curriculum</li>
+          <li>save time on lesson planning and gain inspirational teaching ideas</li>
+          <li>meet teachers in your area to share best practice</li>
+        </ul>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">How to enrol</h2>
+          <ol
+            class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
+            <% unless eligible_for_secondary?(current_user) %>
+            <li>Successfully complete <%= link_to 'the Computer Science Accelerator programme', cs_accelerator_path, class: 'ncce-link' %></li>
+            <% end %>
+            <li>Enrol with the click of the button</li>
+            <li>Complete the required professional development, engagement, and community activities to receive your qualification</li>
+          </ol>
+          <% if current_user %>
+            <% if eligible_for_secondary?(current_user) %>
+            <p class="govuk-body">
+              <%= link_to 'Enrol on this certificate', enrol_secondary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            </p>
+            <% end %>
+          <% elsif %>
+          <p class="govuk-body">
+            <%= link_to 'Create an account', create_account_url, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+          </p>
+          <p class="govuk-body-s ncce-aside__text">Already have a STEM Learning
+            account? Simply
+            <%= link_to 'log in', auth_url, method: :post, class: 'ncce-link ncce-link__log', role: 'button', draggable: 'false' %>
+          </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

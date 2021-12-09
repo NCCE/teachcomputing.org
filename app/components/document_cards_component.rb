@@ -1,24 +1,12 @@
 # frozen_string_literal: true
 
 class DocumentCardsComponent < ViewComponent::Base
-  def initialize(cards:, class_name: nil, cards_per_row: 3, show_border: false)
-    @cards = cards.collect { |card| assign_card card }
+  def initialize(cards:, class_name: nil, cards_per_row: 3, show_border: false, tracking_category: nil)
+    @cards = cards
     @class_name = class_name
     @cards_per_row = cards_per_row
     @show_border = show_border
-  end
-
-  # The assign_ methods are to provide an interface of sorts, with more useful error handling for missing params
-  def assign_card(title_link:, body:, class_name: nil, date: nil)
-    { title_link: assign_title_link(title_link), body: assign_body(body), class_name: class_name, date: date }
-  end
-
-  def assign_body(text:, tokens: nil)
-    { text: text, tokens: tokens }
-  end
-
-  def assign_title_link(title:, title_url:, tracking_page: nil, tracking_label: nil)
-    { title: title, title_url: title_url, tracking_page: tracking_page, tracking_label: tracking_label }
+    @tracking_category = tracking_category
   end
 
   def css_variables
@@ -29,6 +17,16 @@ class DocumentCardsComponent < ViewComponent::Base
   # way to use a css variable as a bool, and defining the box-shadow width here feels wrong.
   def data_attributes
     { "show-border": @show_border }
+  end
+
+  def tracking_data(label)
+    return nil unless @tracking_category.present? && label.present?
+
+    {
+      event_action: 'click',
+      event_category: @tracking_category,
+      event_label: label
+    }
   end
 
   def render?

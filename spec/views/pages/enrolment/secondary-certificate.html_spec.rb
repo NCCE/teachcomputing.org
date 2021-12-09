@@ -1,15 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe('pages/secondary-certificate', type: :view) do
+RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:programme, slug: 'secondary-certificate') }
 
   context 'when a user is not signed in' do
     before do
+      stub_feature_flags({ primary_redesign_enabled: true })
       @programme = programme
       assign(:current_user, nil)
       allow(view).to receive(:eligible_for_secondary?).and_return(false)
       render
+    end
+
+    after do
+      unstub_feature_flags
     end
 
     it 'has a heading' do

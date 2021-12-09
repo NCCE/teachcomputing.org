@@ -156,11 +156,31 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
+      "fingerprint": "743a8a9481886ef66bb619ffb71df8df37ceb2b62eea52546a4e2a7007025f40",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/pages_controller.rb",
+      "line": 33,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(template => \"pages/enrolment/#{params[:page_slug]}\", {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PagesController",
+        "method": "static_programme_page"
+      },
+      "user_input": "params[:page_slug]",
+      "confidence": "Medium",
+      "note": "This shoud be reinstated when the feature flag is removed"
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
       "fingerprint": "92eb83ef5ef70516174c5008c0c48df19eecf7c740f86bf521f80a3b475cae83",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 32,
+      "line": 35,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -241,6 +261,6 @@
       "note": ""
     }
   ],
-  "updated": "2021-07-19 13:38:01 +0000",
-  "brakeman_version": "5.0.4"
+  "updated": "2021-11-18 10:35:58 +0000",
+  "brakeman_version": "5.1.1"
 }

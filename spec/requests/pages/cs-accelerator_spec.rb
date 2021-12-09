@@ -11,8 +11,13 @@ RSpec.describe PagesController do
 
   describe 'GET #cs-accelerator' do
     before do
+      stub_feature_flags({ primary_redesign_enabled: true })
       user
       programme
+    end
+
+    after do
+      unstub_feature_flags
     end
 
     context 'when user is not logged in' do
@@ -21,7 +26,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/cs-accelerator')
+        expect(response).to render_template('pages/enrolment/cs-accelerator')
       end
     end
 
@@ -32,7 +37,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/cs-accelerator')
+        expect(response).to render_template('pages/enrolment/cs-accelerator')
       end
     end
 
