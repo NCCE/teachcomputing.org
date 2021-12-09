@@ -11,7 +11,7 @@ class Achiever::UpdateUsersDetailsFromAchieverJob < ApplicationJob
       'CONTACTNO': user.stem_achiever_contact_no
     }
 
-    details = Achiever::Request.resource(RESOURCE_PATH, query_strings, cache = CACHE)[0]
+    details = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)[0]
 
     if details
       achiever_organisation_no = details.send('Contact.COMPANYNO')

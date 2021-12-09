@@ -30,7 +30,8 @@ require 'view_component/test_helpers'
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 begin
-  ActiveRecord::Migration.maintain_test_schema!
+  # https://github.com/rails/rails/issues/37407
+  raise ActiveRecord::PendingMigrationError if ActiveRecord::Base.connection.migration_context.needs_migration?
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
@@ -81,7 +82,7 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers, type: :component
 
   config.before(:suite) do
-    Webpacker.compile
+    Webpacker.compile if Webpacker.instance.compiler.stale?
   end
 
   config.before(:each, type: :system) do

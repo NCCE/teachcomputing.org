@@ -1,5 +1,10 @@
+# rubocop:disable Metrics/AbcSize
+
 class Achiever::Request
   class << self
+    CACHE = true
+    CACHE_EXPIRY = 1.day
+
     def option_sets(resource_path, query = {})
       query_string = query_strings(query)
 
@@ -22,11 +27,11 @@ class Achiever::Request
       end
     end
 
-    def resource(resource_path, query = {}, cache = true)
+    def resource(resource_path, query = {}, cache = CACHE, cache_expiry = CACHE_EXPIRY)
       query_string = query_strings(query)
 
       response = if cache
-                   Rails.cache.fetch(resource_path, expires_in: 1.day) do
+                   Rails.cache.fetch(resource_path, expires_in: cache_expiry) do
                      api.get("#{resource_path}&#{query_string}")
                    end
                  else
@@ -78,3 +83,5 @@ class Achiever::Request
       end
   end
 end
+
+# rubocop:enable Metrics/AbcSize

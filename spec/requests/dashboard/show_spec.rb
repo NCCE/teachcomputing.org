@@ -12,6 +12,11 @@ RSpec.describe DashboardController do
   let!(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
   describe '#show' do
+    before do
+      stub_attendance_sets
+      stub_delegate
+    end
+
     describe 'while logged in' do
       before do
         create(:secondary_certificate)
