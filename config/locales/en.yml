@@ -33,4 +33,8 @@ en:
   found_remote_online_courses_html:
     one: Found <strong>1 remote or online course</strong>
     other: Found <strong>%{count} remote or online courses</strong>, displayed alphabetically
-
+  shared:
+    course_types:
+      face-to-face: "Face to face course"
+      remote: "Live remote course"
+      online: "Online course"

@@ -14,7 +14,7 @@ module CurriculumClient
       end
 
       def self.one(slug, fields = FIELDS)
-        super(context: :yearGroup, fields: fields, key: :slug, value: slug, cache_key: "year_group--#{slug}")
+        super(context: :yearGroup, fields: fields, params: { slug: slug }, cache_key: "year_group--#{slug}")
       end
     end
   end

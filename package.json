@@ -59,7 +59,8 @@
     "console": "yarn run exec rails c",
     "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
-    "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec"
+    "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec",
+    "guard": "yarn run bundle exec guard"
   },
   "lint-staged": {
     "*.js": [

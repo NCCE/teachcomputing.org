@@ -34,7 +34,7 @@ module CurriculumClient
       end
 
       def self.one(slug, fields = FIELDS)
-        super(context: :keyStage, fields: fields, key: :slug, value: slug, cache_key: "key_stage--#{slug}")
+        super(context: :keyStage, fields: fields, params: { slug: slug }, cache_key: "key_stage--#{slug}")
       end
     end
   end

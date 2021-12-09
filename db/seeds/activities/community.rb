@@ -285,3 +285,16 @@ a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |act
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit') do |activity|
+  activity.title = 'Raise aspirations with a STEM Ambassador visit  '
+  activity.credit = 10
+  activity.slug = activity.title.parameterize
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
+  activity.self_verification_info = ''
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)

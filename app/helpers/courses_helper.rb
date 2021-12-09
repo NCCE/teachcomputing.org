@@ -60,8 +60,8 @@ module CoursesHelper
   end
 
   def occurrence_meta_location(occurrence)
-    return 'Online course' if occurrence.online_cpd
-    return 'Live remote training' if occurrence.remote_delivered_cpd
+    return 'Online course' if occurrence&.online_cpd
+    return 'Live remote training' if occurrence&.remote_delivered_cpd
 
     occurrence.address_town
   end
