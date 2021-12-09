@@ -118,7 +118,7 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns the correct presenter' do
-        expect(response.body).to include('Join this course')
+        expect(response.body).to include('Join on FutureLearn')
       end
     end
 

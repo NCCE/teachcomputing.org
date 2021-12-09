@@ -20,6 +20,7 @@
                   @booking.booking_path(occurrence.course_occurrence_no),
                   class: 'govuk-button button button--small',
                   draggable: 'false',
+                  data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
                   target: :_blank
                 ) %>
               </span>
@@ -35,23 +36,65 @@
             @booking.booking_path(@activity.future_learn_course_uuid),
             class: 'govuk-button button--aside',
             draggable: 'false',
+            data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
             target: :_blank
           ) %>
         </p>
         <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
       <% end %>
     </div>
+    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
+  <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
+    <div class="ncce-aside">
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.enrolled_introduction %></p>
+      <p class="govuk-body">
+        <%= link_to(
+          @booking.enrolled_button_title,
+          @booking.booking_path(@activity.future_learn_course_uuid),
+          class: 'govuk-button button--aside',
+          draggable: 'false',
+          data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
+          target: :_blank
+        ) %>
+      </p>
+    </div>
+    <%= render 'courses/rpf-emblem' %>
+    <hr>
+    <p class='govuk-body-s' >
+      Can't see the progress of your course? You may need to rejoin the course.
+    </p>
+  <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
+    <div class="ncce-aside">
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.completed_button_introduction %></p>
+      <p class="govuk-body">
+        <%= link_to(
+          @booking.completed_button_title,
+          @booking.booking_path(@activity.future_learn_course_uuid),
+          class: 'govuk-button button--aside',
+          draggable: 'false',
+          data: { event_action: 'click', event_category: 'course details', event_label: 'view online course' },
+          target: :_blank
+        ) %>
+      </p>
+    </div>
+    <%= render 'courses/rpf-emblem' %>
   <% end %>
 <% else %>
   <div class="ncce-aside" id="booking-list">
     <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
     <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
     <p class="govuk-body">
-      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false' %>
+      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
     </p>
     <p class="govuk-body-s ncce-aside__text">
       Not got a STEM Learning account?
-      <br><%= link_to 'Create an account', create_account_url, class: 'ncce-link', draggable: 'false' %>
+      <br><%= link_to 'Create an account', create_account_url,
+            class: 'ncce-link', draggable: 'false',
+            data: { event_action: 'click', event_category: 'course details'}
+          %>
     </p>
+    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
   </div>
 <% end %>

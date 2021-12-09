@@ -20,25 +20,19 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         .to receive(:current_user).and_return(user)
     end
 
-    it 'does not render when the user is enrolled' do
-      allow(view).to receive(:user_achievement_state).and_return(:complete)
-      render
-
-      expect(rendered).not_to have_css('.ncce-aside')
-    end
-
     context 'when its an online course' do
       describe 'when the course is not always on' do
         before do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
+          assign(:course, course)
 
           render
         end
 
         it 'prompts the user to join the course' do
-          expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Join on FutureLearn')
         end
 
         it 'does not render the facilitation periods' do
@@ -54,7 +48,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
         it 'renders link to futurelearn LTI' do
           expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
-          expect(rendered).to have_link('Join this course', href: expected_link)
+          expect(rendered).to have_link('Join on FutureLearn', href: expected_link)
         end
 
         it "does not show the 'View course' button" do
@@ -219,7 +213,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to join this course', href: expected_link)
+        expect(rendered).to have_link('Login to join on futurelearn', href: expected_link)
       end
 
       it 'renders an account creation link' do
