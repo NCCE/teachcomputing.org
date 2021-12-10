@@ -13,8 +13,8 @@ RSpec.describe('pages/certification/_pathway', type: :view) do
   end
 
   it 'renders pathways from database' do
-    pathway1 = create(:pathway)
-    pathway2 = create(:pathway)
+    pathway1 = create(:pathway, programme: programme)
+    pathway2 = create(:pathway, programme: programme)
     render
     expect(rendered).to have_css('.pathway__item', count: 2)
     expect(rendered).to have_text(pathway1.title)
