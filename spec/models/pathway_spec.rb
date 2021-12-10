@@ -23,7 +23,7 @@ RSpec.describe Pathway, type: :model do
       prog = create(:cs_accelerator)
       prog_2 = create(:primary_certificate)
       last_pathway = create(:pathway, order: 3, programme: prog)
-      first_pathway = create(:pathway, order: 1, programme: prog_2)
+      create(:pathway, order: 1, programme: prog_2)
       middle_pathway = create(:pathway, order: 2, programme: prog)
       expect(described_class.ordered('cs-accelerator')).to eq([middle_pathway,
                                                                last_pathway])
