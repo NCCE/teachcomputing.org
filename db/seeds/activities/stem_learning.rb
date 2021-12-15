@@ -1500,3 +1500,51 @@ a = Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f
   activity.stem_activity_code = 'CP468'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000d3a0d0cfb') do |activity|
+  activity.title = 'Teach Computing Conference'
+  activity.credit = 10
+  activity.slug = 'teach-computing-conference'
+  activity.stem_course_template_no = '01d0037f-b859-ec11-8f8f-000d3a0d0cfb'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP310'
+  activity.remote_delivered_cpd = false
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science - residential'
+  activity.credit = 10
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
+  activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP284'
+  activity.remote_delivered_cpd = false
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Online safety through primary computing'
+  activity.credit = 10
+  activity.slug = 'online-safety-through-primary-computing'
+  activity.stem_course_template_no = '6bad2c17-d85c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP469'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Data-driven IT projects in secondary computing'
+  activity.credit = 10
+  activity.slug = 'data-driven-it-projects-in-secondary-computing'
+  activity.stem_course_template_no = 'ab685d74-ec5c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP485'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
