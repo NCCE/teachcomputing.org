@@ -1526,7 +1526,7 @@ end
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9') do |activity|
-  activity.title = 'online-safety-through-primary-computing'
+  activity.title = 'Online safety through primary computing'
   activity.credit = 10
   activity.slug = 'online-safety-through-primary-computing'
   activity.stem_course_template_no = '6bad2c17-d85c-ec11-8f8f-0022481b0af9'
@@ -1537,7 +1537,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f
 end
 
 a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f-0022481b0af9') do |activity|
-  activity.title = 'data-driven-it-projects-in-secondary-computing'
+  activity.title = 'Data-driven IT projects in secondary computing'
   activity.credit = 10
   activity.slug = 'data-driven-it-projects-in-secondary-computing'
   activity.stem_course_template_no = 'ab685d74-ec5c-ec11-8f8f-0022481b0af9'
