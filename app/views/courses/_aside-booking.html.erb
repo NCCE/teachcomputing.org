@@ -58,6 +58,7 @@
           target: :_blank
         ) %>
       </p>
+      <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
     </div>
     <%= render 'courses/rpf-emblem' %>
     <hr>
@@ -78,6 +79,7 @@
           target: :_blank
         ) %>
       </p>
+      <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
     </div>
     <%= render 'courses/rpf-emblem' %>
   <% end %>
