@@ -1512,8 +1512,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
 a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Supporting student attainment in GCSE computer science - residential'
   activity.credit = 10
@@ -1538,8 +1536,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
 a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'data-driven-it-projects-in-secondary-computing'
   activity.credit = 10
@@ -1551,4 +1547,4 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
