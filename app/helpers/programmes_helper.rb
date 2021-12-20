@@ -10,7 +10,7 @@ module ProgrammesHelper
   def to_word_ordinal(number)
     index = number || 0
     ordinals = %w[none first second third fourth fifth sixth seventh eighth ninth tenth]
-    return ordinals[index] if index <= ordinals.length && index > 0
+    return ordinals[index] if index <= ordinals.length && index.positive?
 
     ActiveSupport::Inflector.ordinalize(index)
   end
