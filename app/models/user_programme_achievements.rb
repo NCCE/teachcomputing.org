@@ -26,9 +26,6 @@ class UserProgrammeAchievements
     (0...to_show).to_a.map { |index| CommunityPresenter.new(activities[index], @programme.id) }
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/CyclomaticComplexity
-
   def primary_community_activities(programme_activities:, pathway_activities: nil, complete: nil)
     activities = programme_activities
 
@@ -47,9 +44,6 @@ class UserProgrammeAchievements
       hidden_activities: map_to_community_presenter(hidden_activities)
     }
   end
-
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   def map_to_community_presenter(programme_activities)
     return unless programme_activities
