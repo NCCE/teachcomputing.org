@@ -1,0 +1,8 @@
+en:
+  certificates:
+    primary_certificate_v2:
+      achievement_list:
+        development:
+          title:
+            html: "<strong>Participate in professional development</strong>"
+        all_courses_button: "View all certificate courses"

@@ -1,12 +1,14 @@
-<% presenters.each do |presenter| %>
 <li class="ncce-activity-list__item<%= presenter.list_item_classes(current_user) %>">
-    <span class="ncce-activity-list__item-text">
-      <span><%= presenter.title %></span>
-    </span>
-    <% unless presenter.completed?(current_user) %>
+  <span class="ncce-activity-list__item-text ncce-activity-list__item-text--<%= @programme.slug %>">
+    <span><%= presenter.title %></span>
+  </span>
+  <% if presenter.completed?(current_user) %>
+    <span class='ncce-activity-list__completed_badge'>Completed</span>
+  <% end %>
+  <% unless presenter.completed?(current_user) %>
     <span class="ihavedonethis">
       <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
-      <%= presenter.button_label %>
+        <%= presenter.button_label %>
       </button>
       <span class="ihavedonethis__popup">
         <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' } do |f| %>
@@ -24,4 +26,3 @@
     <span class="ncce-activity-list__item-activity light-blue-bg"><%= presenter.description %></span>
   <% end %>
 </li>
-<% end %>

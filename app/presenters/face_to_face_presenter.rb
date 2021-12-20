@@ -11,7 +11,7 @@ class FaceToFacePresenter < AchievementPresenter
   end
 
   def prompt_text(index)
-    return 'Complete at least one face to face, or remote course' if @programme == Programme.secondary_certificate
+    return t('.prompt_text.html') if FeatureFlagService.new.flags[:primary_redesign_enabled]
 
     "Complete your #{index_to_word_ordinal(index)} face to face, or remote course"
   end

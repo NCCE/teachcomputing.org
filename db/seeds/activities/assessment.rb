@@ -17,4 +17,4 @@ assessment = Assessment.find_or_create_by(programme_id: cs_accelerator.id) do |a
   assessment.class_marker_test_id = '1071279'
 end
 
-puts "Created assessment: #{assessment.activity.title} (#{assessment})"
+puts "Created assessment: #{assessment.activity&.title} (#{assessment})"

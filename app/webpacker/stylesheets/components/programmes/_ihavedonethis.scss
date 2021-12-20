@@ -7,10 +7,12 @@
   background-image: url('../images/icons/tick-self.svg');
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
-  background-size: 1rem;
+  background-size: 0.8rem;
   display: none;
   float: right;
   padding-right: 1.7rem;
+  padding-left: 0.5rem;
+  white-space: nowrap;
 
   &[aria-expanded="true"] {
     background-color: $grey-dark-x;
@@ -88,6 +90,7 @@
 
 .ihavedonethis--progressive {
   position: relative;
+  margin-left: 1rem;
 
   .ihavedonethis__popup {
     margin-top: 1.875rem;

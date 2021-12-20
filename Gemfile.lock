@@ -252,6 +252,7 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
+    humanize (2.5.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -644,6 +645,7 @@ DEPENDENCIES
   graphql (<= 1.10.10)
   guard-rspec (~> 4.7.3)
   htmlentities (~> 4.3)
+  humanize
   ims-lti (= 1.2.4)
   interception
   jwt (~> 2.1.0)

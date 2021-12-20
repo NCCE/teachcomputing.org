@@ -15,7 +15,16 @@ module Certificates
       @badge_tracking_event_label = 'Primary badge'
       assign_issued_badge_data
 
-      render :show
+      if FeatureFlagService.new.flags[:primary_redesign_enabled]
+        assign_programme_activity_groupings
+        assign_pathway_recommendations
+      end
+
+      if FeatureFlagService.new.flags[:primary_redesign_enabled]
+        render template: 'certificates/primary_certificate_v2/show'
+      else
+        render :show
+      end
     end
 
     def complete
@@ -51,11 +60,37 @@ module Certificates
         @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
       end
 
+      def user_pathway
+        @user_pathway ||= user_enrolment&.pathway
+      end
+
+      def assign_programme_activity_groupings
+        @programme_activity_groups_1_to_3 = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+        @programme_activity_group_3 = @programme.programme_activity_groupings.where(sort_key: 3)[0].programme_activities
+        @programme_activity_groups_4_to_5 = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
+      end
+
+      def assign_pathway_recommendations
+        return nil unless user_pathway
+
+        recommended_activities = user_pathway.recommended_activities_for_user(current_user)
+
+        @recommended_activities_for_user = recommended_activities.filter do |pa|
+          pa.activity.category != :community.to_s
+        end
+
+        @recommended_community_activities_for_user = recommended_activities.filter do |pa|
+          pa.activity.category == :community.to_s
+        end
+      end
+
       def find_programme
         @programme = Programme.primary_certificate
       end
 
       def user_completed_diagnostic?
+        # return true if FeatureFlagService.new.flags[:primary_redesign_enabled]
+
         questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
         response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
         return true if response&.current_state == 'complete'

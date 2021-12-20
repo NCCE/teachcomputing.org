@@ -2,10 +2,11 @@
   <% unless presenter.empty? %>
     <% if presenter.complete? %>
       <li class="ncce-activity-list__item">
-        <span class="ncce-activity-list__item-text"><%= presenter.completed_text(index).html_safe %>
+        <span class="ncce-activity-list__item-text ncce-activity-list__item-text--primary-certificate">
+          <%= presenter.prompt_text(index).html_safe %>
         </span>
+        <span class='ncce-activity-list__completed_badge'>Completed</span>
         <span class="ncce-activity-list__item-activity light-blue-bg">
-          <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag" aria-hidden="true">Complete</span>
           <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
         </span>
       </li>
@@ -16,16 +17,20 @@
       <% end %>
     <% else %>
       <li class="ncce-activity-list__item ncce-activity-list__item--inprogress">
-        <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index).html_safe %></span>
+        <span class="ncce-activity-list__item-text ncce-activity-list__item-text--primary-certificate">
+          <%= presenter.prompt_text(index).html_safe %>
+        </span>
+        <span class='ncce-activity-list__completed_badge'>In Progress</span>
         <span class="ncce-activity-list__item-activity light-blue-bg">
-          <span class="govuk-tag govuk-phase-banner__content__tag ncce-activity-list__tag">In progress</span>
           <span class="ncce-activity-list__course"><%= presenter.activity.title %></span>
         <span>
       </li>
     <% end %>
   <% else %>
-    <li class="ncce-activity-list__item ncce-activity-list__item--incomplete">
-      <span class="ncce-activity-list__item-text"><%= presenter.prompt_text(index).html_safe %></span>
+    <li class="ncce-activity-list__item ncce-activity-list__item--no-gap ncce-activity-list__item--incomplete">
+      <span class="ncce-activity-list__item-text ncce-activity-list__item-text--primary-certificate">
+        <%= presenter.prompt_text(index).html_safe %>
+      </span>
       <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__recommendation' %>
       <%=
         render 'certificates/primary_certificate/recommendation',

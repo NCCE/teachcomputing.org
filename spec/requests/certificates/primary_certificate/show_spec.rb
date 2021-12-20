@@ -86,7 +86,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
         it 'renders the correct template' do
           get primary_certificate_path
-          expect(response).to render_template('show')
+          expect(response).to redirect_to('')
         end
 
         it 'assigns the correct programme' do

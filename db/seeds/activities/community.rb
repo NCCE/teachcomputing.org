@@ -2,14 +2,14 @@ primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 
 a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity|
-  activity.title = 'Contribute to an online Computing at School (CAS) discussion'
+  activity.title = 'Contribute to online discussion'
   activity.credit = 5
-  activity.slug = activity.title.parameterize
+  activity.slug = 'contribute-to-online-discussion'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Engage in a CAS online discussion forum or webinar, and share best practice with other teachers. Provide a link to a screenshot or the forum discussion.'
+  activity.description = '<a href="https://community.computingatschool.org.uk/sign_up" data-event-label="Join CAS" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Join the Computing at School (CAS) community</a> to explore teaching ideas, resources and best practice with other teachers, engaging in <a href="https://community.computingatschool.org.uk/forums" data-event-label="Online CAS discussion" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">online discussion forums or webinars</a>. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -28,14 +28,14 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
-  activity.title = 'Attend a CAS Community meeting'
+  activity.title = 'Gain support and share ideas in a CAS Community meeting'
+  activity.slug = 'attend-a-cas-community-meeting'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide the date and venue details of the meeting'
-  activity.description = 'Join <a href="https://community.computingatschool.org.uk/communities" data-event-label="CAS meeting" class="ncce-link">your local CAS Community </a>and attend a session. You’ll meet other teachers in your area and get to share best practice. Provide the date and event details'
+  activity.description = 'By <a href="https://community.computingatschool.org.uk/communities" data-event-label="CAS meeting" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">joining and attending a session at your local Computing at School (CAS) Community</a>, you’ll meet other teachers in similar roles, sharing ideas, resources and insights. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
 end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
@@ -53,14 +53,14 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
-  activity.title = 'Provide feedback on a teaching resource'
+  activity.title = 'Use and feedback on a teaching resource'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'review-a-resource-on-cas'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Download a <a href="https://teachcomputing.org/curriculum/key-stage-1" data-event-label="CAS forum" class="ncce-link">KS1 lesson<a/> or <a href="https://teachcomputing.org/curriculum/key-stage-2" data-event-label="CAS forum" class="ncce-link">KS2 lesson</a> from Teach Computing Curriculum resources, or <a href="https://community.computingatschool.org.uk/resources/2616/single" data-event-label="CAS forum" class="ncce-link">a CAS teaching resource</a> and use it in your classroom. Reflect and share your feedback on how you used and adapted it.'
+  activity.description = 'Download and use a <a href="/curriculum" data-event-label="Curriculum resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Teach Computing Curriculum resource</a>, then reflect on how you used and adapted it in the classroom. You can also use <a href="https://community.computingatschool.org.uk/resources/2616/single" data-event-label="CAS resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">CAS teaching resources</a> or <a href="https://www.stem.org.uk/primary-computing-resources" data-event-label="STEM resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">STEM primary computing resources</a>. Submit a link to your feedback - this can be a document or screenshot on a shared drive, or a direct link to your review.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -73,33 +73,33 @@ a = Activity.find_or_create_by(slug: 'provide-feedback-on-a-cas-resource') do |a
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide a link to your contribution'
-  activity.description = 'Give a full review of a <a href="https://community.computingatschool.org.uk/resources/landing" class="ncce-link" class="ncce-link">CAS resource you’ve downloaded</a> - including how you used it in the classroom'
+  activity.description = 'Give a full review of a <a href="https://community.computingatschool.org.uk/resources/landing" class="ncce-link">CAS resource you’ve downloaded</a> - including how you used it in the classroom'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activity|
-  activity.title = 'Organise a Barefoot Workshop at your school'
+  activity.title = 'Boost the teaching of computing in your school with a free Barefoot Workshop'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'host-or-attend-a-barefoot-workshop'
   activity.category = 'community'
   activity.provider = 'barefoot'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide us with the date and location of the workshop'
-  activity.description = ' Reach out to <a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" class="ncce-link">Barefoot volunteers</a> and get them to present a workshop in your school. Provide the date and location the workshop took place.'
+  activity.description = '<a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Attend a free Barefoot online workshop</a>, designed to boost your subject knowledge and confidence. Workshops are themed around Computational Thinking, Programming in Scratch or Early Years.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activity|
-  activity.title = 'Lead a CAS Community of Practice'
+  activity.title = 'Run a CAS Community of Practice'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'lead-a-cas-community-of-practice'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
-  activity.description = 'Register as <a href="https://community.computingatschool.org.uk/hubs" data-event-label="CAS leader" class="ncce-link">a CAS Community Leader</a> and run 3 meetings per year. Low maintenance and high impact, it should only take 1 to 2 hrs per month to organise each meeting. Provide the name and location of your community.'
+  activity.description = '<a href="https://community.computingatschool.org.uk/hubs" data-event-label="CAS leader" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Register as a CAS Community leader</a> and run 3 meetings per year. Low maintenance and high impact, it should only take 1 to 2 hours a month to organise each meeting. Provide the name and location of your community.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -118,27 +118,27 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
-  activity.title = 'Give additional support to your community'
+  activity.title = 'Support computing in your wider community'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'providing-additional-support'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please give details of the additional support you have provided'
-  activity.description = 'Go beyond your day to day teaching, and support your local teachers, pupils or parents. For example: mentoring another teacher in computing, helping parents to set up and use virtual classroom technology. Provide details of the support.'
+  activity.description = "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
-  activity.title = 'Set up and run a Code Club in your school'
+  activity.title = 'Help children learn to code at a Code Club'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'run-an-after-school-code-club'
   activity.category = 'community'
   activity.provider = 'raspberrypi'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
-  activity.description = '<a href="https://codeclub.org/en/start-a-code-club" data-event-label="Start Code Club" class="ncce-link">Start a Code Club today</a> - free projects, resources and support for you to use with children aged 9 to 13. Already got a club at your school? Become a volunteer and help run it. Provide the name and postcode of your club.'
+  activity.description = "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder to <a href='https://codeclub.org/en/volunteer' data-event-label='Code Club volunteer' data-event-category='Primary enrolled' data-event-action='click' class='ncce-link'>volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://codeclub.org/en/start-a-code-club' data-event-label=' Start a Code Club today' data-event-category='Primary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one</a>."
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -146,11 +146,12 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference') do |activity|
   activity.title = 'Lead a session at a regional or national conference'
   activity.credit = 20
-  activity.slug = activity.title.parameterize
+  activity.slug = 'lead-a-session-at-a-regional-or-national-conference'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.self_certifiable = true
   activity.self_verification_info = 'Please provide us with a link conference programme'
+  activity.description = 'Present a session at a conference, for example <a href="https://community.computingatschool.org.uk/events" data-event-label="CAS showcase" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">the annual CAS Virtual Showcase</a> or through <a href="/hubs" data-event-label="Hub showcase" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">your local Computing Hub</a>.'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -289,7 +290,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit') do |activity|
   activity.title = 'Raise aspirations with a STEM Ambassador visit  '
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'raise-aspirations-with-a-stem-ambassador-visit'
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true

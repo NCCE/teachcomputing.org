@@ -24,6 +24,6 @@ class CommunityPresenter < SimpleDelegator
   end
 
   def inspect
-    "CommunityPresenter - " + super
+    "CommunityPresenter - #{super}"
   end
 end

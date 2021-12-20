@@ -64,6 +64,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '488bed9b-515b-4295-a488
   activity.stem_course_template_no = '488bed9b-515b-4295-a488-62b5bb6bf852'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP001'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -75,6 +76,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '16aeecbd-d202-4f42-bad3
   activity.stem_course_template_no = '16aeecbd-d202-4f42-bad3-f86c8f671547'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP002'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)

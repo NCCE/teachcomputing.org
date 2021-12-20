@@ -1,0 +1,18 @@
+en:
+  certificates:
+    primary_certificate_v2:
+      show:
+        page_title: "Primary certificate - Teach Computing"
+        introduction:
+          html: "These courses and activities have been picked so you can strengthen your subject knowledge, develop your teaching and enrich pupils' experience of the computing curriculum. You will also get the opportunity to engage with the wider support network available in primary computing.<br><br>Through the required training and activities, you'll complete our Primary Computing Teaching certificate, demonstrating your commitment to improving computing education in your school."
+        bursary_aside:
+          title: "Bursary support"
+          text: "To support your learning we offer bursaries to primary teachers working in state-funded education in England."
+          link: "Bursary information"
+        support_aside:
+          title: "Need some help?"
+          text:
+            html: "Contact your local Computing Hub<br>
+              Call: 01904 328 300<br>
+              Email: %{email_link}"
+        feedback_text: "What can we do better?"

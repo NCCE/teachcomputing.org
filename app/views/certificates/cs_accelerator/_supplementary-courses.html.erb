@@ -1,9 +1,9 @@
-<div data-controller='supplementary-courses' class="ncce-csa-dash__section ncce-csa-dash__section-padded">
+<div data-controller='expander' class="ncce-csa-dash__section ncce-csa-dash__section-padded">
   <p class="govuk-body supplementary-courses__header">Want to go the extra mile?
-      <button data-action="supplementary-courses#toggleAll"
-              data-supplementary-courses-target="expanderButton"
+      <button data-action="expander#toggleAll"
+              data-expander-target="expanderButton"
               aria-expanded="true"
-              class="govuk-body supplementary-courses__expander"
+              class="govuk-body expander__button"
               data-event-action="click"
               data-event-label="Show additional courses"
               data-event-category="CSA enrolled">
@@ -11,7 +11,7 @@
       </button>
   </p>
 
-  <div data-supplementary-courses-target="expander" class="expander">
+  <div data-expander-target="expander" class="expander">
     <% supplementary_activities.each do |sa| %>
       <div class="ncce-pathway-courses__course supplementary-courses__course">
         <p class="ncce-pathway-courses__link">

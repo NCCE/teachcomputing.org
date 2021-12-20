@@ -1,0 +1,34 @@
+<% meta_tag :title, t('.page_title') %>
+<% meta_tag :url, request.original_url %>
+<%= render 'pages/certification/hero' %>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-m"><%= t('.introduction.html') %></p>
+          <%= render 'certificates/primary_certificate_v2/achievement_list' %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render BursaryComponent.new(
+            text: t('.bursary_aside.text'),
+            tracking_event_label: 'Bursary support',
+            tracking_event_category: 'Primary enrolled'
+          ) %>
+          <%= render AsideComponent.new(
+            title: t('.support_aside.title'),
+            text: t(
+              '.support_aside.text.html',
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: {
+                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Email us'
+              })
+            )
+          ) %>
+          <div class="ncce-aside--borderless">
+            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :primary_certificate) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

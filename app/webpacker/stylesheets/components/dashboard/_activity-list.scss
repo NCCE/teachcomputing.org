@@ -39,6 +39,14 @@
       grid-row: 1;
     }
   }
+
+  &--no-gap {
+    grid-gap: 0;
+  }
+}
+
+.ncce-activity-list__item--no-gap {
+  grid-row-gap: 0;
 }
 
 .ncce-dashboard-activity {
@@ -59,11 +67,16 @@
   grid-row: 1;
   line-height: 1.9rem;
   margin-bottom: 0;
-  margin-top: 3px;
   padding-left: 2.8rem;
 
   @include govuk-media-query($until: 640px) {
     font-size: 1rem;
+  }
+
+  &--primary-certificate {
+    background: none;
+    background-image: none;
+    padding-left: 0;
   }
 
   &--incomplete {
@@ -71,15 +84,32 @@
   }
 }
 
+.ncce-activity-list__item-text--complete {
+  @extend .ncce-activity-list__item-text;
+  background-image: url('../images/icons/tick-green-dark.svg');
+  margin-bottom: 20px;
+  line-height: 2.2rem;
+}
+
 .ncce-activity-list__item--incomplete {
   .ncce-activity-list__item-text {
     background-image: url('../images/icons/incomplete-achievement.svg');
+  }
+
+  .ncce-activity-list__item-text--primary-certificate {
+    background: none;
+    padding-left: 0;
   }
 }
 
 .ncce-activity-list__item--inprogress {
   .ncce-activity-list__item-text {
     background-image: url('../images/icons/incomplete-achievement.svg');
+
+    &--primary-certificate {
+      background: none;
+      padding-left: 0;
+    }
   }
 }
 
@@ -90,13 +120,22 @@
   margin-left: 2rem;
   padding: 0.7rem;
   overflow-wrap: anywhere;
+  margin-top: 0.5rem;
 
   @include govuk-media-query($from: tablet) {
     grid-column-end: 3;
   }
   @include govuk-media-query($from: 900px) {
-    grid-column-end: 1;
     width: 500px;
+  }
+}
+
+.govuk-grid-column-two-thirds {
+  .ncce-activity-list__item-activity {
+    @include govuk-media-query($from: 900px) {
+      width: auto;
+      margin-left: 0;
+    }
   }
 }
 
@@ -106,6 +145,8 @@
   margin-bottom: 0;
   text-transform: none;
   width: auto;
+  margin-right: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 .ncce-activity-list__course {
@@ -113,6 +154,10 @@
     clear: both;
     float: left;
   }
+}
+
+.ncce-activity-list__button-wrapper {
+  text-align: center;
 }
 
 .activity-list__item {
@@ -253,4 +298,12 @@
   &--address {
     margin-top: 0;
   }
+}
+
+.ncce-activity-list__completed_badge {
+  border: solid 2px #E6A614;
+  padding: 1px 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-left: 1rem;
 }

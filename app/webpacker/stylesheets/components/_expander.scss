@@ -1,0 +1,14 @@
+.expander__button {
+  background-color: $white;
+  background-image: url('../images/icons/expander_down.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 0 1.5rem 0 0;
+}
+
+.expander__button[aria-expanded='true'] {
+  background-image: url('../images/icons/expander_up.svg');
+}

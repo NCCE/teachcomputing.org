@@ -27,7 +27,7 @@
             </p>
           <% end %>
 
-          <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway }%>
+          <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway } %>
 
           <div class="govuk-body ncce-csa-dash__section-unpadded">
             <%= render partial: 'certificates/cs_accelerator/achievements', locals: {
@@ -36,10 +36,13 @@
               non_compulsory_achievements: @csa_dash.non_compulsory_achievements
             } %>
 
-            <%= render partial: 'certificates/cs_accelerator/recommended-courses', locals: {
-              pathway: @csa_dash.user_programme_pathway,
-              recommended_activities: @csa_dash.recommended_activities_for_user
-            } %>
+            <div class="ncce-csa-dash__section ncce-csa-dash__section-padded">
+              <%= render partial: 'certificates/pathways/recommended-courses', locals: {
+                event_category: 'CSA enrolled',
+                pathway: @csa_dash.user_programme_pathway,
+                recommended_activities: @csa_dash.recommended_activities_for_user
+              } %>
+            </div>
           </div>
 
           <% if @csa_dash.user_programme_pathway.present? %>

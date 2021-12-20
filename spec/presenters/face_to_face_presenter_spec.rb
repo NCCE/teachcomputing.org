@@ -26,8 +26,18 @@ RSpec.describe FaceToFacePresenter do
   describe('prompt_text') do
     it { expect(empty_presenter.prompt_text(1)).to eq('Complete your second face to face, or remote course') }
 
-    context 'when the the achievement belongs to secondary certificate' do
-      it { expect(presenter.prompt_text(1)).to eq('Complete at least one face to face, or remote course') }
+    context 'when the primary certificate redesign flag is enabled' do
+      before do
+        stub_feature_flags({ primary_redesign_enabled: true })
+      end
+
+      after do
+        unstub_feature_flags
+      end
+
+      it {
+        expect(presenter.prompt_text(1)).to eq('Complete <strong>at least one</strong> face to face, or remote course')
+      }
     end
   end
 
