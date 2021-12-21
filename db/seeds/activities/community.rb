@@ -295,7 +295,7 @@ a = Activity.find_or_create_by(slug: 'raise-aspirations-with-a-stem-ambassador-v
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
   activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
-  activity.self_verification_info = ''
+  activity.self_verification_info = 'Please provide us with the date and location of the visit'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)

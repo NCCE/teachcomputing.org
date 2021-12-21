@@ -1,4 +1,4 @@
-<div class="aside-component">
+<div class="aside-component<%= " #{@class_name || ''}" %>">
   <% if @image.present? %>
     <div class="aside-component__image">
       <%= link_to image_pack_tag(@image[:file], alt: @link_text, title: @image[:title]),

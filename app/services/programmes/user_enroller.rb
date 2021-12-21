@@ -4,11 +4,14 @@ module Programmes
       @enrolment_params = params
       @user_id = params[:user_id]
       @programme_id = params[:programme_id]
+      @pathway_slug = params[:pathway_slug]
     end
 
     def call
-      enrolment = UserProgrammeEnrolment.new(@enrolment_params)
+      enrolment = UserProgrammeEnrolment.new(user_id: @user_id, programme_id: @programme_id)
       return false unless enrolment.save
+
+      enrolment.assign_pathway(@pathway_slug) if @pathway_slug.present? && enrolment.programme.primary_certificate?
 
       KickOffEmailsJob.perform_later(enrolment.id)
       Achiever::ScheduleCertificateSyncJob.perform_later(enrolment.id)

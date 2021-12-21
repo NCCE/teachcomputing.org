@@ -7,6 +7,7 @@ class AsideComponent < ViewComponent::Base
     @link = link
     @image = options[:image]
     @tracking_category = options[:tracking_category]
+    @class_name = options[:class_name]
   end
 
   def tracking_data(label = nil)

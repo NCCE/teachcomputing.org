@@ -19,7 +19,9 @@
   <% else %>
     <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
       <div class='ncce-activity-list__button-wrapper'>
-        <%= link_to t('.all_courses_button'), courses_path, class: 'govuk-button button button--small' %>
+        <%= link_to t('.all_courses_button'), courses_path(certificate: @programme.slug), class: 'govuk-button button button--small', data: {
+          event_action: 'click', event_category: 'Primary enrolled', event_label: 'View all courses'
+        } %>
       </div>
     </li>
   <% end %>

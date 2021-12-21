@@ -6,6 +6,10 @@ class OnlinePresenter < AchievementPresenter
     courses_path(course_format: [:online], certificate: args[:certificate])
   end
 
+  def tracking_data
+    { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Book online course' }
+  end
+
   def completed_text(index)
     "Completed your #{index_to_word_ordinal(index)} online course"
   end

@@ -10,7 +10,7 @@
       <p class="govuk-body document-card__text"><%= t(card[:body][:text], *card[:body][:tokens]) %></p>
       <% unless card[:button].blank? %>
         <div class='document-card__button'>
-          <%= link_to t(card[:button][:title]), card[:button][:url], class: 'govuk-button button button--small govuk-!-margin-bottom-0', data: tracking_data(card[:button][:tracking_label])  %>
+          <%= link_to t(card[:button][:title]), card[:button][:url], method: card[:button][:method], class: 'govuk-button button button--small govuk-!-margin-bottom-0', data: tracking_data(card[:button][:tracking_label])  %>
         </div>
       <% end %>
     <% end %>

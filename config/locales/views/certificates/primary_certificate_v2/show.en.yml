@@ -11,8 +11,9 @@ en:
           link: "Bursary information"
         support_aside:
           title: "Need some help?"
+          link_text: "Contact your local Computing Hub"
           text:
-            html: "Contact your local Computing Hub<br>
+            html: "%{hub_link}<br>
               Call: 01904 328 300<br>
               Email: %{email_link}"
         feedback_text: "What can we do better?"

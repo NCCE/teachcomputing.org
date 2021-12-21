@@ -45,6 +45,8 @@ task update_primary_data: :environment do
     description: "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
   )
 
+  p.activities.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit').update(self_verification_info: 'Please provide us with the date and location of the visit')
+
   Pathway.find_by(slug: 'developing-in-the-classroom').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf')
   Pathway.find_by(slug: 'specialising-or-leading').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf')
 end

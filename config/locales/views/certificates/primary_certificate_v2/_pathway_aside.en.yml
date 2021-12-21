@@ -1,0 +1,13 @@
+en:
+  certificates:
+    primary_certificate_v2:
+      pathway_aside:
+        heading:
+          html: "Your current pathway is: %{pathway_link} (PDF)"
+        expander_title: "Not sure this is the right pathway for you?"
+        pathway_list_title: "See what our other pathway includes:"
+        input:
+          text: "Select your new pathway"
+          placeholder: "choose a new pathway"
+        button:
+          text: "Change your pathway"

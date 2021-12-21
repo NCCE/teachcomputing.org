@@ -11,17 +11,24 @@
           <%= render 'certificates/primary_certificate_v2/achievement_list' %>
         </div>
         <div class="govuk-grid-column-one-third">
+          <%= render partial: 'certificates/primary_certificate_v2/pathway_aside', locals: {
+            available_pathways_for_user: @available_pathways_for_user
+          } if @user_pathway %>
           <%= render BursaryComponent.new(
             text: t('.bursary_aside.text'),
-            tracking_event_label: 'Bursary support',
+            tracking_event_label: 'Bursary',
             tracking_event_category: 'Primary enrolled'
           ) %>
           <%= render AsideComponent.new(
             title: t('.support_aside.title'),
+            class_name: 'primary-dashboard__help-aside',
             text: t(
               '.support_aside.text.html',
               email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: {
-                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Email us'
+                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Email'
+              }),
+              hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: {
+                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Contact Hub'
               })
             )
           ) %>

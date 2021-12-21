@@ -3,7 +3,11 @@ class FaceToFacePresenter < AchievementPresenter
   include Rails.application.routes.url_helpers
 
   def button_url(args = {})
-    courses_path(course_format: [:face_to_face], certificate: args[:certificate])
+    courses_path(course_format: %i[face_to_face remote], certificate: args[:certificate])
+  end
+
+  def tracking_data
+    { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Book remote or F2F course' }
   end
 
   def completed_text(index)

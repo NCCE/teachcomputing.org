@@ -17,6 +17,7 @@ module Certificates
 
       if FeatureFlagService.new.flags[:primary_redesign_enabled]
         @pathways = Pathway.ordered_by_programme(@programme.slug)
+        @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
         assign_programme_activity_groupings
         assign_pathway_recommendations
       end
