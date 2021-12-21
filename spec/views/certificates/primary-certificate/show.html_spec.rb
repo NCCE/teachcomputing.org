@@ -4,6 +4,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
   let(:user) { create(:user) }
   let!(:primary_certificate) { create(:primary_certificate) }
   let!(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing in the classroom') }
+  let!(:pathways) { create_list(:pathway, 2, programme: primary_certificate) }
   let(:groupings) { create_list(:programme_activity_grouping, 5, programme_id: primary_certificate.id) }
 
   before do
@@ -21,6 +22,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
     assign(:programme_activity_groups_4_to_5, primary_certificate.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key))
 
     assign(:user_programme_achievements, UserProgrammeAchievements.new(primary_certificate, user))
+    assign(:pathways, pathways)
   end
 
   after do
@@ -80,6 +82,29 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
 
     it 'has feedback form' do
       expect(rendered).to have_css('.feedback-component__heading', text: 'What can we do better?')
+    end
+
+    describe 'the pathway selector' do
+      it 'shows the no pathway title' do
+        expect(rendered).to have_css('.ncce-pathway-prompt', text: "You're not currently on a pathway")
+      end
+
+      it 'has the details expander' do
+        expect(rendered).to have_css('.ncce-details__summary-text', text: 'Learn more and select a pathway')
+      end
+
+      it 'has a list of pathways' do
+        expect(rendered).to have_link('Pathway 1', href: 'https://example.com/pdf-2-link.pdf', visible: :hidden)
+        expect(rendered).to have_link('Pathway 2', href: 'https://example.com/pdf-3-link.pdf', visible: :hidden)
+      end
+
+      it 'has an select list' do
+        expect(rendered).to have_css('.ncce-pathway-aside__select', visible: :hidden)
+      end
+
+      it 'has a button' do
+        expect(rendered).to have_button('Select a pathway', visible: :hidden)
+      end
     end
   end
 

@@ -1,5 +1,5 @@
-desc 'updates seeded activity data'
-task update_seeded_data: :environment do
+desc 'updates primary certificate data'
+task update_primary_data: :environment do
   return unless FeatureFlagService.new.flags[:primary_redesign_enabled]
 
   p = Programme.primary_certificate
@@ -44,4 +44,7 @@ task update_seeded_data: :environment do
     title: 'Support computing in your wider community',
     description: "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
   )
+
+  Pathway.find_by(slug: 'developing-in-the-classroom').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf')
+  Pathway.find_by(slug: 'specialising-or-leading').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf')
 end

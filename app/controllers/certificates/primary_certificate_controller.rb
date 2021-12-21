@@ -16,6 +16,7 @@ module Certificates
       assign_issued_badge_data
 
       if FeatureFlagService.new.flags[:primary_redesign_enabled]
+        @pathways = Pathway.ordered_by_programme(@programme.slug)
         assign_programme_activity_groupings
         assign_pathway_recommendations
       end

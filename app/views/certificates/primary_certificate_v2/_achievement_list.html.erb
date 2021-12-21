@@ -1,4 +1,4 @@
-<p class="govuk-body <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_3) %>"><%= t('.development.title.html') %></p>
+<p class="govuk-body govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_3) %>"><%= t('.development.title.html') %></p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <%= render 'certificates/primary_certificate_v2/achievements',
       presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),

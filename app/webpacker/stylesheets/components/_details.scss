@@ -7,6 +7,10 @@
     padding-top: 5px;
     padding-bottom: 5px;
   }
+
+  &--normal {
+    font-size: 19px;
+  }
 }
 
 .ncce-details__summary {
@@ -18,4 +22,8 @@
     background: none;
     box-shadow: none;
   }
+}
+
+.ncce-details__summary-content-wrapper {
+  margin: 0.8rem 1.6rem;
 }
