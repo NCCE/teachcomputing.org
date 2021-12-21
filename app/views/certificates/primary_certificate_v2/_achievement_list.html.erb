@@ -10,7 +10,7 @@
   %>
   <% if @user_pathway.present? %>
     <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
-      <%= render partial: 'certificates/pathways/recommended-courses', locals: {
+      <%= render partial: 'certificates/pathways/recommended_courses', locals: {
         event_category: 'primary enrolled',
         pathway: @user_pathway,
         recommended_activities: @recommended_activities_for_user

@@ -1,7 +1,7 @@
 en:
   certificates:
     pathways:
-      recommended-courses:
+      recommended_courses:
         courses_intro:
           html: "<strong>Recommended courses</strong> based on your pathway"
         all_courses_button: "View all certificate courses"

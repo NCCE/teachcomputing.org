@@ -32,11 +32,6 @@
         <%= presenter.prompt_text(index).html_safe %>
       </span>
       <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__recommendation' %>
-      <%=
-        render 'certificates/primary_certificate/recommendation',
-          category: local_assigns[:category] || 'none',
-          diagnostic_result_percentage: local_assigns[:diagnostic_result_percentage] || 0
-      %>
     </li>
   <% end %>
 <% end %>
