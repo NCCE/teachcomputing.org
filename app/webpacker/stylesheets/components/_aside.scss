@@ -36,6 +36,11 @@ $aside-padding: 1rem;
 
 .ncce-pathway-aside__button {
   padding: 8px 25px;
+
+  @include govuk-media-query($until: desktop) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 .ncce-pathway-aside__button--full {

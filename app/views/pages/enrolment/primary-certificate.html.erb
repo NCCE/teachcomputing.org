@@ -75,7 +75,7 @@
                   },
                   button: {
                     title: 'pages.enrolment.primary-certificate.enrol',
-                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: 'developing-in-the-classroom' }),
+                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'developing-in-the-classroom' }),
                     method: :post,
                     tracking_label: 'Classroom enrol'
                   }
@@ -92,7 +92,7 @@
                   },
                   button: {
                     title: 'pages.enrolment.primary-certificate.enrol',
-                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: 'specialising-or-leading' }),
+                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'specialising-or-leading' }),
                     method: :post,
                     tracking_label: 'Leading enrol'
                   }

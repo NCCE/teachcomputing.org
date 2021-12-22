@@ -10,4 +10,4 @@ en:
           text: "Select your new pathway"
           placeholder: "choose a new pathway"
         button:
-          text: "Change your pathway"
+          text: "Change pathway"

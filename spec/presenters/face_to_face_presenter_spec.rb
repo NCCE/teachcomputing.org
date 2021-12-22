@@ -12,10 +12,10 @@ RSpec.describe FaceToFacePresenter do
   end
 
   describe('button_url') do
-    it { expect(empty_presenter.button_url).to eq('/courses?course_format%5B%5D=face_to_face') }
+    it { expect(empty_presenter.button_url).to eq('/courses?course_format%5B%5D=face_to_face&course_format%5B%5D=remote') }
 
     it {
-      expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq('/courses?certificate=cs-accelerator&course_format%5B%5D=face_to_face')
+      expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq('/courses?certificate=cs-accelerator&course_format%5B%5D=face_to_face&course_format%5B%5D=remote')
     }
   end
 

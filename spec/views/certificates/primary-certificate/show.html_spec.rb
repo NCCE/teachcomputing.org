@@ -115,6 +115,8 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
       assign(:recommended_activities_for_user, recommended_activities.filter { |pa| pa.activity.category != :community.to_s })
       assign(:recommended_activities_for_user, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
       assign(:user_pathway, upe.pathway)
+      assign(:pathways, pathways)
+      assign(:available_pathways_for_user, pathways)
       render
     end
 
@@ -124,6 +126,28 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
 
     it 'has the expected number of toggles' do
       expect(rendered).to have_css('.expander', count: 1)
+    end
+
+    describe 'the pathway selector' do
+      it 'shows the current pathway' do
+        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Your current pathway is: Developing in the classroom (PDF)')
+      end
+
+      it 'has the details expander' do
+        expect(rendered).to have_css('.ncce-details__summary-text', text: 'Not sure this is the right pathway for you?')
+      end
+
+      it 'has a list of pathways' do
+        expect(rendered).to have_link('Pathway 2', href: 'https://example.com/pdf-3-link.pdf', visible: :hidden)
+      end
+
+      it 'has an select list' do
+        expect(rendered).to have_css('.ncce-pathway-aside__select', visible: :hidden)
+      end
+
+      it 'has a button' do
+        expect(rendered).to have_button('Change pathway', visible: :hidden)
+      end
     end
   end
 end
