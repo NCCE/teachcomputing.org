@@ -90,13 +90,13 @@
 
 .ihavedonethis--progressive {
   position: relative;
-  margin-left: 1rem;
+  margin-left: 0;
 
   .ihavedonethis__popup {
     margin-top: 1.875rem;
     position: absolute;
     right: 0;
-    width: calc(100% - 2rem);
+    width: 100%;
     z-index: 1;
 
     &[hidden] {
@@ -114,11 +114,11 @@
 
   .ihavedonethis__button {
     display: inline-block;
-    width: calc(100% - 2rem);
-    margin-left: 2rem;
+    margin-left: 0;
+
     @include govuk-media-query($from: tablet) {
-      width: auto;
-      margin-left: 0;
+      width: calc(100% - 2rem);
+      margin-left: 2rem;
     }
   }
 }
