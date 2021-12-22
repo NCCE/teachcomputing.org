@@ -10,10 +10,11 @@
 
   border-bottom-width: 2px;
   display: grid;
-  grid-row-gap: 10px;
   grid-template-rows: auto auto auto;
   margin-bottom: 0 !important;
   padding: 0.5rem 1.125rem 1.125rem;
+  grid-row-gap: 10px;
+
   @include govuk-media-query($from: tablet) {
     padding-bottom: 0.5rem;
   }
@@ -117,7 +118,6 @@
 .ncce-activity-list__item-activity {
   font-size: 1rem;
   grid-column: 1;
-  grid-row: 2;
   padding: 0.7rem;
   overflow-wrap: anywhere;
 
@@ -125,6 +125,7 @@
     grid-column-end: 3;
     margin-left: 2rem;
     margin-top: 0.5rem;
+    grid-row: 2;
   }
   @include govuk-media-query($from: 900px) {
     width: 500px;
@@ -276,18 +277,23 @@
   padding-left: 2.1em;
 
   &--provider {
+    display: block;
+    align-items: center;
+    margin-top: 0.5rem;
+
+    img {
+      padding: 0.3em;
+    }
+
     @include govuk-media-query($from: tablet) {
       float: right;
       margin-left: 0;
-    }
+      display: flex;
+      margin-top: 0;
 
-    display: flex;
-    align-items: center;
-
-    margin-top: 0;
-
-    img {
-      padding: 0 0.3em;
+      img {
+        padding: 0 0.3em;
+      }
     }
   }
 
@@ -306,5 +312,10 @@
   padding: 1px 10px;
   font-weight: bold;
   font-size: 0.9em;
-  margin-left: 1rem;
+  width: 4.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: 1rem;
+    width: auto;
+  }
 }
