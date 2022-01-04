@@ -1,7 +1,6 @@
 module Programmes
   class UserEnroller
     def initialize(params)
-      @enrolment_params = params
       @user_id = params[:user_id]
       @programme_id = params[:programme_id]
       @pathway_slug = params[:pathway_slug]

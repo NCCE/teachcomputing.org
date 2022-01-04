@@ -47,8 +47,7 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
       end
 
       it 'queues ScheduleCertificateCompletionJob job' do
-        # https://github.com/rspec/rspec-rails/pull/2206
-        expect(ScheduleCertificateCompletionJob).to have_been_enqueued.exactly(:once) # .at(a_value_within(1.minute).of(7.days.from_now))
+        expect(ScheduleCertificateCompletionJob).to have_been_enqueued.exactly(:once).at(a_value_within(1.minute).of(7.days.from_now))
       end
     end
   end

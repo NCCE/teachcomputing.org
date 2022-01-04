@@ -91,7 +91,7 @@ module Certificates
       end
 
       def user_completed_diagnostic?
-        # return true if FeatureFlagService.new.flags[:primary_redesign_enabled]
+        return true if FeatureFlagService.new.flags[:primary_redesign_enabled]
 
         questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
         response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
