@@ -2,7 +2,7 @@
   <% @cards.each do | card | %>
     <%= content_tag :div, class: ['document-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
       <p class="govuk-body document-card__title">
-        <%= link_to t(card[:title_link][:title]), card[:title_link][:url], class: 'ncce-link', data: tracking_data(card[:title_link][:tracking_label]) %>
+        <%= link_to t(card[:title_link][:title]), card[:title_link][:url], class: 'ncce-link', data: tracking_data(card[:title_link][:tracking_label]) %> <%= card[:title_link][:file_type] if card[:title_link][:file_type].present? %>
       </p>
       <% unless card[:date].blank? %>
         <p class="govuk-body govuk-body-s document-card__date"><%= t(card[:date]) %></p>

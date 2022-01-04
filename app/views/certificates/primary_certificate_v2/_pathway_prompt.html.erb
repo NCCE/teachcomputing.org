@@ -15,7 +15,7 @@
         <ul class="govuk-list ncce-details__pathway-list">
           <% @pathways.each do |pathway| %>
             <li class="govuk-body-s">
-              <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{pathway.title} PDF" } %>
+              <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{pathway.title} PDF" } %> (PDF)
             </li>
           <% end %>
         </ul>

@@ -21,9 +21,9 @@ en:
           html: "%{create_link} or %{login_link} to your existing account"
         programme_list_2: "see which of our pathways best matches your needs and enrol on the right one for you"
         programme_list_3: "complete a tailored selection of courses and engagement activities"
-        developing_title: "Developing in the classroom (PDF)"
+        developing_title: "Developing in the classroom"
         developing_text: "Do you currently teach computing but want to strengthen your subject knowledge and teaching practice? This pathway will help you to develop the understanding and skills to teach computing effectively."
-        specialising_title: "Specialising or leading (PDF)"
+        specialising_title: "Specialising or leading"
         specialising_text: "Are you taking on a subject leadership role or looking to specialise in computing teaching? This pathway will support you to build the confidence to lead computing effectively in your primary school."
         enrol: "Enrol on this pathway"
         hub_aside:

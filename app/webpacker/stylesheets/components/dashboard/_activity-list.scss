@@ -67,9 +67,10 @@
   font-size: 1.188rem;
   grid-column: 1;
   grid-row: 1;
-  line-height: 1.9rem;
+  line-height: 1.45rem;
   margin-bottom: 0;
   padding-left: 2.8rem;
+  padding-top: 0.1rem;
 
   @include govuk-media-query($until: 640px) {
     font-size: 1rem;
