@@ -1548,3 +1548,36 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e714988b-b55d-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Preparing to take the CSA test - short course'
+  activity.credit = 10
+  activity.slug = 'preparing-to-take-the-csa-test'
+  activity.stem_course_template_no = 'e714988b-b55d-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP350'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '890f2dfd-b85d-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Getting started with Python programming - short course'
+  activity.credit = 10
+  activity.slug = 'getting-started-with-python-programming'
+  activity.stem_course_template_no = '890f2dfd-b85d-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP351'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '87c4cf4b-3c5f-ec11-8f8f-0022481b0426') do |activity|
+  activity.title = 'Preparing for Ofsted in primary computing - short course'
+  activity.credit = 10
+  activity.slug = 'preparing-for-ofsted-in-primary-computing'
+  activity.stem_course_template_no = '87c4cf4b-3c5f-ec11-8f8f-0022481b0426'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP486'
+  activity.remote_delivered_cpd = true
+end
