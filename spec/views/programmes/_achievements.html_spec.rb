@@ -21,7 +21,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
     end
 
     it 'has a start courses buttons' do
-      expect(rendered).to have_link('Book your course', count: 2)
+      expect(rendered).to have_link('Book a course', count: 2)
     end
 
     it 'has prompt text' do
@@ -45,7 +45,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
     end
 
     it 'has one start courses button' do
-      expect(rendered).to have_link('Book your course', count: 1)
+      expect(rendered).to have_link('Book a course', count: 1)
     end
 
     it 'has the activity title' do
@@ -66,7 +66,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
     end
 
     it 'has no start courses buttons' do
-      expect(rendered).to have_link('Book your course', count: 0)
+      expect(rendered).to have_link('Book a course', count: 0)
     end
 
     it 'has the 2nd activity title' do
@@ -89,7 +89,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
     end
 
     it 'has no start courses buttons' do
-      expect(rendered).to have_link('Book your course', count: 0)
+      expect(rendered).to have_link('Book a course', count: 0)
     end
 
     it 'has the first activity as complete' do
@@ -114,7 +114,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
     end
 
     it 'has no start courses buttons' do
-      expect(rendered).to have_link('Book your course', count: 0)
+      expect(rendered).to have_link('Book a course', count: 0)
     end
 
     it 'has both activities as complete' do

@@ -15,7 +15,7 @@ RSpec.describe AchievementPresenter do
   end
 
   describe('button_label') do
-    it { expect(empty_presenter.button_label).to eq('Book your course') }
+    it { expect(empty_presenter.button_label).to eq('Book a course') }
   end
 
   describe('button_url') do

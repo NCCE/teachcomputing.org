@@ -13,7 +13,7 @@ class AchievementPresenter < SimpleDelegator
   end
 
   def button_label(*)
-    'Book your course'
+    'Book a course'
   end
 
   def button_url(*)
