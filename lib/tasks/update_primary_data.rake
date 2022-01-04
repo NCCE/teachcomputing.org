@@ -16,12 +16,12 @@ task update_primary_data: :environment do
 
   p.activities.find_by(slug: 'host-or-attend-a-barefoot-workshop').update(
     title: 'Boost the teaching of computing in your school with a free Barefoot Workshop',
-    description: '<a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Attend a free Barefoot online workshop</a>, designed to boost your subject knowledge and confidence. Workshops are themed around Computational Thinking, Programming in Scratch or Early Years.'
+    description: '<a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Attend a free Barefoot online workshop</a>, designed to boost your subject knowledge and confidence. Workshops are themed around Computational Thinking, Programming in Scratch or Early Years.',
+    self_verification_info: 'Please provide us with details of the workshop'
   )
 
   p.activities.find_by(slug: 'attend-a-cas-community-meeting').update(
     title: 'Gain support and share ideas in a CAS Community meeting',
-    credit: 10,
     description: 'By <a href="https://www.computingatschool.org.uk/about-cas-communities" data-event-label="CAS meeting" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">joining and attending a session at your local Computing at School (CAS) Community</a>, you’ll meet other teachers in similar roles, sharing ideas, resources and insights. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
   )
 

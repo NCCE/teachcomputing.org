@@ -85,7 +85,7 @@ a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |a
   activity.category = 'community'
   activity.provider = 'barefoot'
   activity.self_certifiable = true
-  activity.self_verification_info = 'Please provide us with the date and location of the workshop'
+  activity.self_verification_info = 'Please provide us with details of the workshop'
   activity.description = '<a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Attend a free Barefoot online workshop</a>, designed to boost your subject knowledge and confidence. Workshops are themed around Computational Thinking, Programming in Scratch or Early Years.'
 end
 
