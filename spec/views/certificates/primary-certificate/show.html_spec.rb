@@ -130,7 +130,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
 
     describe 'the pathway selector' do
       it 'shows the current pathway' do
-        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Your current pathway is: Developing in the classroom (PDF)')
+        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Developing in the classroom (PDF)')
       end
 
       it 'has the details expander' do
