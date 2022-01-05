@@ -1,6 +1,7 @@
 <div class="ncce-aside ncce-pathway-prompt ncce-pathway-prompt--aside">
-  <h2 class="govuk-heading-s">
-    <%= t('.heading.html', pathway_link: link_to(@user_pathway.title, @user_pathway.pdf_link, class: "ncce-link")) %>
+  <h2 class="govuk-body">
+    <strong><%= t('.heading') %></strong>
+    <p class='govuk-body-s'><%= link_to(@user_pathway.title, @user_pathway.pdf_link, class: "ncce-link") %> (PDF)</p>
   </h2>
   <details class="govuk-details ncce-details" data-module="govuk-details">
     <summary class="govuk-details__summary ncce-details__summary">
@@ -9,7 +10,7 @@
       </span>
     </summary>
     <div class='ncce-details__summary-content-wrapper'>
-      <p class="govuk-body"><strong><%= t('.pathway_list_title') %></strong></p>
+      <p class="govuk-body-s"><strong><%= t('.pathway_list_title') %></strong></p>
       <ul class="govuk-list ncce-details__pathway-list">
         <% available_pathways_for_user.each do |pathway| %>
           <li class="govuk-body-s">
@@ -17,9 +18,7 @@
           </li>
         <% end %>
       </ul>
-      <h2 class="govuk-heading-s">
-        <%= t('.input.text') %>
-      </h2>
+      <p class="govuk-body-s"><%= t('.input.text') %></p>
       <%= form_tag update_user_pathway_primary_certificate_path, { method: :put, class: '' } do %>
           <%= select_tag :pathway_id,
             options_for_select(available_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),

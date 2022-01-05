@@ -53,7 +53,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
     end
 
     it 'has no recommendation list' do
-      expect(rendered).not_to have_css('.recommended-courses-wrapper', text: 'Recommended courses based on your pathway')
+      expect(rendered).not_to have_css('.recommended-courses-wrapper', text: 'Courses based on your pathway')
     end
 
     it 'shows all activities' do
@@ -121,7 +121,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
     end
 
     it 'has a recommendation list' do
-      expect(rendered).to have_css('.recommended-courses-wrapper .expander__button', text: 'Recommended courses based on your pathway')
+      expect(rendered).to have_css('.recommended-courses-wrapper .expander__button', text: 'Courses based on your pathway')
     end
 
     it 'has the expected number of toggles' do

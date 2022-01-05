@@ -2,8 +2,7 @@ en:
   certificates:
     primary_certificate_v2:
       pathway_aside:
-        heading:
-          html: "Your current pathway is: %{pathway_link} (PDF)"
+        heading: "Your current pathway is: "
         expander_title: "Not sure this is the right pathway for you?"
         pathway_list_title: "See what our other pathway includes:"
         input:

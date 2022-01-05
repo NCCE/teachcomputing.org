@@ -117,8 +117,8 @@
     margin-left: 0;
 
     @include govuk-media-query($from: tablet) {
-      width: calc(100% - 2rem);
-      margin-left: 2rem;
+      width: calc(100% - 1rem);
+      margin-left: 1rem;
     }
   }
 }

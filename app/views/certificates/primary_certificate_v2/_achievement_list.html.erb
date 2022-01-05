@@ -1,4 +1,4 @@
-<p class="govuk-body govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_3) %>"><%= t('.development.title.html') %></p>
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_3) %>"><%= t('.development.title.html') %></p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <%= render 'certificates/primary_certificate_v2/achievements',
       presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
@@ -32,7 +32,7 @@
 
 <% @programme_activity_groups_4_to_5.each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-    <p class="govuk-body <%= add_group_complete_icon_class(current_user, group) %>">
+    <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title %>
     </p>
     <%= render 'certificates/pathways/community_achievements', presenters: @user_programme_achievements.primary_community_activities(

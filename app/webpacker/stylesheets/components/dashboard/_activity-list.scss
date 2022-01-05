@@ -2,16 +2,28 @@
   margin-bottom: 60px;
 }
 
+.ncce-activity-list__title {
+  font-size: 22px;
+  line-height: 1.5rem;
+
+  &--complete {
+    background-image: url('../images/icons/tick-green-dark.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 1.9rem;
+    padding-left: 2.2rem;
+    padding-top: 0.3rem;
+  }
+}
+
 .ncce-activity-list__item {
   align-items: flex-start;
   background-color: $white;
-  border-bottom-color: $lavender-light;
-  border-bottom-style: solid;
 
   border-bottom-width: 2px;
   display: grid;
   grid-template-rows: auto auto auto;
-  margin-bottom: 0 !important;
+  margin-bottom: 2px !important;
   padding: 0.5rem 1.125rem 1.125rem;
   grid-row-gap: 10px;
 
@@ -20,11 +32,11 @@
   }
 
   &:last-child {
-    border-bottom: 0;
+    margin-bottom: 0;
   }
 
-  &--non-bordered {
-    border: none;
+  &--separate {
+    margin-top: 8px;
   }
 
   @include govuk-media-query($from: tablet) {
@@ -85,13 +97,6 @@
   &--incomplete {
     background-image: url('../images/icons/incomplete-achievement.svg');
   }
-}
-
-.ncce-activity-list__item-text--complete {
-  @extend .ncce-activity-list__item-text;
-  background-image: url('../images/icons/tick-green-dark.svg');
-  margin-bottom: 20px;
-  line-height: 2.2rem;
 }
 
 .ncce-activity-list__item--incomplete {
