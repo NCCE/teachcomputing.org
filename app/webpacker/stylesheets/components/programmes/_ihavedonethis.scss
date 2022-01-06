@@ -116,6 +116,10 @@
     display: inline-block;
     margin-left: 0;
 
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 0.5rem;
+    }
+
     @include govuk-media-query($from: tablet) {
       width: calc(100% - 1rem);
       margin-left: 1rem;

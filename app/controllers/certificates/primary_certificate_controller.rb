@@ -75,15 +75,9 @@ module Certificates
       def assign_pathway_recommendations
         return nil unless user_pathway
 
-        recommended_activities = user_pathway.recommended_activities_for_user(current_user)
-
-        @recommended_activities_for_user = recommended_activities.filter do |pa|
-          pa.activity.category != :community.to_s
-        end
-
-        @recommended_community_activities_for_user = recommended_activities.filter do |pa|
-          pa.activity.category == :community.to_s
-        end
+        recommended_activities = user_pathway.pathway_activities
+        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category === :community.to_s }
+        @recommended_activities = recommended_activities - @recommended_community_activities
       end
 
       def find_programme

@@ -13,13 +13,13 @@
       <%= render partial: 'certificates/pathways/recommended_courses', locals: {
         event_category: 'primary enrolled',
         pathway: @user_pathway,
-        recommended_activities: @recommended_activities_for_user
+        recommended_activities: @recommended_activities
       } %>
     </li>
   <% else %>
     <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
       <div class='ncce-activity-list__button-wrapper'>
-        <%= link_to t('.all_courses_button'), courses_path(certificate: @programme.slug), class: 'govuk-button button button--small', data: {
+        <%= link_to t('.all_courses_button'), courses_path(certificate: @programme.slug), class: 'govuk-button button', data: {
           event_action: 'click', event_category: 'Primary enrolled', event_label: 'View all courses'
         } %>
       </div>
@@ -37,7 +37,7 @@
     </p>
     <%= render 'certificates/pathways/community_achievements', presenters: @user_programme_achievements.primary_community_activities(
       programme_activities: group.programme_activities,
-      pathway_activities: @recommended_community_activities_for_user,
+      pathway_activities: @recommended_community_activities,
       complete: group.user_complete?(current_user)
     ) %>
   </ul>

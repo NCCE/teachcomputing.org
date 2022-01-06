@@ -31,7 +31,7 @@
       <span class="ncce-activity-list__item-text ncce-activity-list__item-text--primary-certificate">
         <%= presenter.prompt_text(index).html_safe %>
       </span>
-      <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__achievements', data: presenter.tracking_data %>
+      <%= link_to presenter.button_label, presenter.button_url(certificate: @programme.slug, current_user: current_user), class: 'govuk-button button button--small ncce-button__achievements govuk-!-margin-top-2', data: presenter.tracking_data %>
     </li>
   <% end %>
 <% end %>

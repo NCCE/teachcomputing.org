@@ -103,7 +103,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
       end
 
       it 'has a button' do
-        expect(rendered).to have_button('Select a pathway', visible: :hidden)
+        expect(rendered).to have_button('Select pathway', visible: :hidden)
       end
     end
   end
@@ -111,9 +111,9 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
   describe 'when the user has a pathway' do
     before do
       upe = create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id)
-      recommended_activities = upe.pathway.recommended_activities_for_user(user)
-      assign(:recommended_activities_for_user, recommended_activities.filter { |pa| pa.activity.category != :community.to_s })
-      assign(:recommended_activities_for_user, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
+      recommended_activities = upe.pathway.pathway_activities
+      assign(:recommended_activities, recommended_activities.filter { |pa| pa.activity.category != :community.to_s })
+      assign(:recommended_community_activities, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
       assign(:user_pathway, upe.pathway)
       assign(:pathways, pathways)
       assign(:available_pathways_for_user, pathways)
@@ -125,7 +125,7 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
     end
 
     it 'has the expected number of toggles' do
-      expect(rendered).to have_css('.expander', count: 1)
+      expect(rendered).to have_css('.expander', count: 3)
     end
 
     describe 'the pathway selector' do

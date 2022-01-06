@@ -29,11 +29,10 @@ class UserProgrammeAchievements
   def primary_community_activities(programme_activities:, pathway_activities: nil, complete: nil)
     activities = programme_activities
 
-    if pathway_activities && !complete
-      pathway_activities = programme_activities.select do |programme_activity|
-        pathway_activities.pluck(:activity_id).include?(programme_activity.activity.id)
-      end
-      hidden_activities = programme_activities - pathway_activities
+    if pathway_activities
+      pathway_activity_ids = pathway_activities.pluck(:activity_id)
+      pathway_activities = activities.select { |programme_activity| pathway_activity_ids.include?(programme_activity.activity.id) }
+      hidden_activities = activities - pathway_activities
       activities = pathway_activities
     end
 
@@ -48,10 +47,6 @@ class UserProgrammeAchievements
   def map_to_community_presenter(programme_activities)
     return unless programme_activities
 
-    programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity, @programme.id) }
-  end
-
-  def secondary_activities(programme_activities)
     programme_activities.to_a.map { |programme_activity| CommunityPresenter.new(programme_activity.activity, @programme.id) }
   end
 end

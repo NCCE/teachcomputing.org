@@ -1,10 +1,10 @@
 <% presenters[:activities].each do |presenter| %>
-  <%= render 'certificates/pathways/community_achievement', presenter: presenter %>
+  <%= render 'certificates/community_achievement', presenter: presenter %>
 <% end %>
 <% if presenters[:hidden_activities].present? %>
   <div data-controller='expander'>
     <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
-      <p class="govuk-body govuk-!-margin-bottom-0">
+      <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-0">
           <button data-action="expander#toggleAll"
                   data-expander-target="expanderButton"
                   aria-expanded="true"
@@ -18,7 +18,7 @@
     </li>
     <div data-expander-target="expander" class="expander">
       <% presenters[:hidden_activities].each do |presenter| %>
-        <%= render 'certificates/pathways/community_achievement', presenter: presenter %>
+        <%= render 'certificates/community_achievement', presenter: presenter %>
       <% end %>
     </div>
   </div>

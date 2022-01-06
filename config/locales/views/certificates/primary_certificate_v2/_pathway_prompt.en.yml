@@ -7,7 +7,6 @@ en:
         expander_title: "Learn more and select a pathway"
         pathway_list_title: "Learning pathways for teachers"
         input:
-          text: "Select your pathway"
-          placeholder: "choose a pathway"
+          placeholder: "choose your pathway"
         button:
-          text: "Select a pathway"
+          text: "Select pathway"
