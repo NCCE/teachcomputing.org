@@ -38,10 +38,6 @@ module Programmes
       75
     end
 
-    def user_meets_completion_requirement?(user)
-      super
-    end
-
     def path
       primary_certificate_path
     end

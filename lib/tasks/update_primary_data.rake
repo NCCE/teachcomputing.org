@@ -2,6 +2,7 @@ desc 'updates primary certificate data'
 task update_primary_data: :environment do
   p = Programme.primary_certificate
 
+  # Update title and descriptions
   p.activities.find_by(slug: 'contribute-to-online-discussion').update(
     title: 'Contribute to online discussion',
     description: '<a href="https://www.computingatschool.org.uk/account/new-member-application" data-event-label="Join CAS" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Join the Computing at School (CAS) community</a> to explore teaching ideas, resources and best practice with other teachers, engaging in <a href="https://forum.computingatschool.org.uk" data-event-label="Online CAS discussion" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">online discussion forums or webinars</a>. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
@@ -43,8 +44,22 @@ task update_primary_data: :environment do
     description: "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
   )
 
+  # Add computing-on-a-budget to primary and make face-to-face
+  a = Activity.find_by(slug: 'computing-on-a-budget')
+  a.update(remote_delivered_cpd: false)
+  a.programmes << p unless a.programmes.include?(p)
+
+  # Add verification info
   p.activities.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit').update(self_verification_info: 'Please provide us with the date and location of the visit')
 
+  # Add pathway pdfs
   Pathway.find_by(slug: 'developing-in-the-classroom').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf')
   Pathway.find_by(slug: 'specialising-or-leading').update(pdf_link: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf')
+
+  # Add missing activity code
+  p.activities.find_by(slug: 'primary-programming-and-algorithms').update(stem_activity_code: 'CP003')
+
+  # Re create pathways
+  PathwayActivity.delete_all
+  require_relative '../../db/seeds/pathways/primary_certificate'
 end

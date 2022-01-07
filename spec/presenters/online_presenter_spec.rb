@@ -20,7 +20,7 @@ RSpec.describe OnlinePresenter do
   end
 
   describe('prompt_text') do
-    it { expect(presenter.prompt_text(1)).to eq('Complete at least one online course') }
+    it { expect(presenter.prompt_text(1)).to eq('Complete <strong>at least one</strong> online course') }
   end
 
   describe('inspect') do

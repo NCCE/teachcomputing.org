@@ -14,7 +14,7 @@ pathway.update(
 
 # face to face / remote / online
 
-activity = Activity.find_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811-000d3a86d545')
+activity = Activity.find_by(stem_course_template_no: '68f5b6c5-556d-4b66-8159-7cd6019da6f3')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, order: 1) if activity && !pathway.pathway_activities.include?(activity)
 
 activity = Activity.find_by(stem_course_template_no: '488bed9b-515b-4295-a488-62b5bb6bf852')

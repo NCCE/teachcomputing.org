@@ -61,7 +61,7 @@ module Certificates
 
       def assign_programme_activity_groupings
         @programme_activity_groups_1_to_3 = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
-        @programme_activity_group_3 = @programme.programme_activity_groupings.where(sort_key: 3)[0].programme_activities
+        @programme_activity_group_3 = @programme.programme_activity_groupings.where(sort_key: 3)[0]&.programme_activities
         @programme_activity_groups_4_to_5 = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
       end
 

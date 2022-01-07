@@ -18,7 +18,7 @@
         <% recommended_activities.each do |pa| %>
           <div class="ncce-pathway-courses__course">
             <p class="ncce-pathway-courses__link">
-              <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' %>
+              <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
             </p>
 
             <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %>">
