@@ -1,16 +1,16 @@
 namespace :always_on_flag do
-  task enable_group_1: :environment do
+  task enable: :environment do
     %w[
-      8a38adaf-9a03-414a-ad9f-c0b5a9f347f1
-      d440d652-4128-4995-9ef7-662a0bc505ed
-      b19646a7-d78b-4a92-ad36-d4b3a11a3df1
-      6cd40c14-adbf-4da7-af81-849d0f74a2fe
-      d9fe6126-298f-48ed-8be3-b82e1c473566
-      ceb5e1b6-6f1d-4e53-9cd3-3fddb2509fa8
-      a1520b0c-8c99-49e5-8c65-f025f3431ab0
-      e290318f-ba23-4c95-8f18-584946233af9
-      ecf78d20-2966-4798-af5f-0f869c1818e2
-      3ce9a624-6cc7-4d23-8f5f-95162e360178
+      0fbfa644-501d-4ac0-b3ef-3cc458d33527
+      c88099c0-8b44-42a5-aad3-0dd011fe3490
+      030261f8-1e96-4a70-a329-e3eb8b868915
+      147b3adf-9f26-4ffa-a95f-6c1720ca4d27
+      66ceead6-5641-485c-9d10-40a35b8e465e
+      3574403e-a63f-4230-9f4b-3f5b6cd4ddb7
+      2e1e3f69-b200-4fc7-a6bd-dff682bdd228
+      88ad7443-d27a-482c-b2a9-83ddc1357532
+      0adab04d-f1b5-4110-839d-76f9faf7b819
+      7f88c178-9538-4970-b438-ab80e6125d5e
     ].each do |template_no|
       activity = Activity.find_by(future_learn_course_uuid: template_no)
       activity.update(always_on: true)
