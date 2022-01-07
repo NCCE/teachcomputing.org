@@ -3,6 +3,9 @@
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <% if !@course.online_cpd %>
+        <%= render 'courses/stem-and-tc-emblems' %>
+      <% end %>
       <% if (@booking.show_stem_occurrence_list) %>
         <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |occurrence| %>
@@ -65,6 +68,44 @@
     <p class='govuk-body-s' >
       Can't see the progress of your course? You may need to rejoin the course.
     </p>
+  <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
+    <div class="ncce-aside">
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <hr>
+      <div class='govuk-body-s ncce-booking-list__date'>
+        <% @occurrences.each do |oc| %>
+          <p> <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %> </p>
+          <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+           <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
+            <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode}".html_safe %> <br>
+            <%= link_to 'Go to course', '#', class: 'govuk-!-font-weight-bold ncce-link' %>
+          </span>
+        <% end %>
+      </div>
+      <hr class='govuk-!-margin-top-4 govuk-!-margin-bottom-4'>
+      <p class='govuk-body-s'> This course is from Teach Computing and delivered by STEM Learning </p>
+      <%= render 'courses/stem-and-tc-emblems' %>
+    </div>
+  <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
+    <div class="ncce-aside">
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <hr>
+      <div class='govuk-body-s ncce-booking-list__date'>
+        <% @occurrences.each do |oc| %>
+          <p> <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %> </p>
+          <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+           <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
+            <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode}".html_safe %> <br>
+            <%= link_to 'Go to course', '#', class: 'govuk-!-font-weight-bold ncce-link' %>
+          </span>
+        <% end %>
+      </div>
+      <hr class='govuk-!-margin-top-4 govuk-!-margin-bottom-4'>
+      <p class='govuk-body-s'> This course is from Teach Computing and delivered by STEM Learning </p>
+      <%= render 'courses/stem-and-tc-emblems' %>
+    </div>
   <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
