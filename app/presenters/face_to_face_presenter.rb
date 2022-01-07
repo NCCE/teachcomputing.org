@@ -10,14 +10,8 @@ class FaceToFacePresenter < AchievementPresenter
     { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Book remote or F2F course' }
   end
 
-  def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} face to face, or remote course"
-  end
-
   def prompt_text(index)
-    return t('.prompt_text.html') if FeatureFlagService.new.flags[:primary_redesign_enabled]
-
-    "Complete your #{index_to_word_ordinal(index)} face to face, or remote course"
+    return t('.prompt_text.html')
   end
 
   def inspect

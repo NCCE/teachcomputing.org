@@ -39,27 +39,7 @@ module Programmes
     end
 
     def user_meets_completion_requirement?(user)
-      if FeatureFlagService.new.flags[:primary_redesign_enabled]
-        super
-      else
-        complete_achievements = user.achievements
-                                    .for_programme(self)
-                                    .in_state('complete')
-
-        complete_achievements.with_category('online')
-                             .any? &&
-          complete_achievements.with_category('face-to-face')
-                               .any? &&
-          complete_achievements.with_category('community')
-                               .with_credit('5')
-                               .any? &&
-          complete_achievements.with_category('community')
-                               .with_credit('10')
-                               .any? &&
-          complete_achievements.with_category('community')
-                               .with_credit('20')
-                               .any?
-      end
+      super
     end
 
     def path

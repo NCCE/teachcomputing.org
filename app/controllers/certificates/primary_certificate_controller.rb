@@ -4,7 +4,6 @@ module Certificates
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete pending]
     before_action :user_enrolled?, only: %i[show complete pending]
-    before_action :user_completed_diagnostic?, only: %i[show]
     before_action :user_programme_enrolment_pending?, only: %i[show complete]
 
     def show
@@ -15,18 +14,12 @@ module Certificates
       @badge_tracking_event_label = 'Primary badge'
       assign_issued_badge_data
 
-      if FeatureFlagService.new.flags[:primary_redesign_enabled]
-        @pathways = Pathway.ordered_by_programme(@programme.slug)
-        @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
-        assign_programme_activity_groupings
-        assign_pathway_recommendations
-      end
+      @pathways = Pathway.ordered_by_programme(@programme.slug)
+      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
+      assign_programme_activity_groupings
+      assign_pathway_recommendations
 
-      if FeatureFlagService.new.flags[:primary_redesign_enabled]
-        render template: 'certificates/primary_certificate_v2/show'
-      else
-        render :show
-      end
+      render :show
     end
 
     def complete
@@ -82,17 +75,6 @@ module Certificates
 
       def find_programme
         @programme = Programme.primary_certificate
-      end
-
-      def user_completed_diagnostic?
-        return true if FeatureFlagService.new.flags[:primary_redesign_enabled]
-
-        questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
-        response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
-        return true if response&.current_state == 'complete'
-
-        question = response&.current_question ? "question_#{response.current_question}" : 'question_1'
-        redirect_to diagnostic_primary_certificate_path(question.to_sym)
       end
 
       def user_enrolled?

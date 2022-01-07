@@ -20,7 +20,7 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
         primary_certificate
       end
 
-      it 'doesn\'t cause errors' do
+      it "doesn't cause errors" do
         expect do
           described_class.perform_now(primary_certificate, user.id, some_value: '10')
         end.not_to raise_error

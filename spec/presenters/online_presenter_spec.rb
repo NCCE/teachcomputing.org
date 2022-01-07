@@ -19,26 +19,8 @@ RSpec.describe OnlinePresenter do
     }
   end
 
-  describe('completed_text') do
-    it { expect(empty_presenter.completed_text(0)).to eq('Completed your first online course') }
-  end
-
   describe('prompt_text') do
-    it { expect(empty_presenter.prompt_text(1)).to eq('Complete your second online course') }
-
-    context 'when the the achievement belongs to secondary certificate' do
-      before do
-        stub_feature_flags({ primary_redesign_enabled: true })
-      end
-
-      after do
-        unstub_feature_flags
-      end
-
-      it {
-        expect(presenter.prompt_text(1)).to eq('Complete <strong>at least one</strong> online course')
-      }
-    end
+    it { expect(presenter.prompt_text(1)).to eq('Complete at least one online course') }
   end
 
   describe('inspect') do

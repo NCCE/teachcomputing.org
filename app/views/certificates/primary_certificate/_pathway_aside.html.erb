@@ -1,7 +1,7 @@
 <div class="ncce-aside ncce-pathway-prompt ncce-pathway-prompt--aside">
   <h2 class="govuk-body ncce-pathway-prompt__title">
     <strong><%= t('.heading') %></strong>
-    <p class='govuk-body-s'><%= link_to(@user_pathway.title, @user_pathway.pdf_link, class: "ncce-link") %> (PDF)</p>
+    <p class='govuk-body-s'><%= link_to(@user_pathway.title, @user_pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{@user_pathway.title} PDF" }) %> (PDF)</p>
   </h2>
   <details class="govuk-details ncce-details" data-module="govuk-details">
     <summary class="govuk-details__summary ncce-details__summary">

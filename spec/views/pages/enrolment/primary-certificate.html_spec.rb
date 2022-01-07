@@ -5,12 +5,7 @@ RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
   let(:programme) { create(:programme, slug: 'primary-certificate') }
 
   before do
-    stub_feature_flags({ primary_redesign_enabled: true })
     @programme = programme
-  end
-
-  after do
-    unstub_feature_flags
   end
 
   context 'when a user is not signed in' do

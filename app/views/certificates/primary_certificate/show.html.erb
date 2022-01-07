@@ -1,23 +1,42 @@
-<% meta_tag :title, 'Primary certificate - Teach Computing' %>
+<% meta_tag :title, t('.page_title') %>
 <% meta_tag :url, request.original_url %>
 <%= render 'pages/certification/hero' %>
 <div class="ncce-programmes-activity">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters">
-          <h2 class="govuk-heading-m">Welcome to the Teach primary computing programme</h2>
-          <p class="govuk-body-m">
-            To achieve your certificate, you'll need to complete courses and activities to improve
-            your knowledge and skills. You'll have opportunities to meet other teachers
-            and share teaching practices and ideas to help you deliver the best outcomes for your students.
-          </p>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-m"><%= t('.introduction.html') %></p>
+          <%= render partial: 'certificates/primary_certificate/pathway_prompt' unless @user_pathway %>
+          <%= render 'certificates/primary_certificate/achievement_list' %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render partial: 'certificates/primary_certificate/pathway_aside', locals: {
+            available_pathways_for_user: @available_pathways_for_user
+          } if @user_pathway %>
+          <%= render BursaryComponent.new(
+            text: t('.bursary_aside.text'),
+            tracking_event_label: 'Bursary',
+            tracking_event_category: 'Primary enrolled'
+          ) %>
+          <%= render AsideComponent.new(
+            title: t('.support_aside.title'),
+            class_name: 'primary-dashboard__help-aside',
+            text: t(
+              '.support_aside.text.html',
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: {
+                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Email'
+              }),
+              hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: {
+                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Contact Hub'
+              })
+            )
+          ) %>
+          <div class="ncce-aside--borderless">
+            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :primary_certificate) %>
+          </div>
         </div>
       </div>
-      <% unless @user_programme_achievements.face_to_face_achievements.any? { |p| !p.empty? } %>
-        <%= render 'certificates/primary_certificate/bursary-info' %>
-      <% end %>
-      <%= render 'achievement_list' %>
     </div>
   </div>
 </div>

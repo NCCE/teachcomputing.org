@@ -1,7 +1,5 @@
 class FeatureFlagService
-  FLAGS = {
-    primary_redesign_enabled: 'PRIMARY_REDESIGN_ENABLED'
-  }.freeze
+  FLAGS = {}.freeze
 
   def initialize(dependencies = {})
     @flags_to_define = dependencies.fetch(:flags) do

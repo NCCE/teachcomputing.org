@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('certificates/_community_achievements', type: :view) do
+RSpec.describe('certificates/_community_achievement', type: :view) do
   let(:programme) { create(:programme) }
   let(:user) { create(:user) }
   let(:community_activity) { create(:activity, :community) }
@@ -11,24 +11,26 @@ RSpec.describe('certificates/_community_achievements', type: :view) do
     [CommunityPresenter.new(community_activity, programme.id), CommunityPresenter.new(second_community_activity, programme.id)]
   end
 
+  before do
+    assign(:programme, programme)
+  end
+
   context 'when user has not completed any achievements' do
     before do
       allow(view).to receive(:current_user).and_return(user)
-      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievement', locals: { presenter: presenters[0] }
     end
 
-    it 'both achievements are  marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 2)
+    it 'both achievements are marked as incomplete' do
+      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
     end
 
     it 'has the buttons to self verify' do
-      expect(rendered).to have_css('.ihavedonethis__button', count: 2)
+      expect(rendered).to have_css('.ihavedonethis__button', count: 1)
     end
 
     it 'has different ids for each form\'s input' do
-      presenters.each do |presenter|
-        expect(rendered).to have_field('self_verification_info', id: /#{presenter.id}/)
-      end
+      expect(rendered).to have_field('self_verification_info', id: /#{presenters[0].id}/)
     end
   end
 
@@ -36,14 +38,10 @@ RSpec.describe('certificates/_community_achievements', type: :view) do
     before do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
-      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievement', locals: { presenter: presenters[1] }
     end
 
-    it 'one achievement is  marked as incomplete' do
-      expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 1)
-    end
-
-    it 'has one button to self verify' do
+    it 'has a button to self verify' do
       expect(rendered).to have_css('.ihavedonethis__button', count: 1)
     end
   end
@@ -53,10 +51,10 @@ RSpec.describe('certificates/_community_achievements', type: :view) do
       allow(view).to receive(:current_user).and_return(user)
       complete_achievement
       second_complete_achievement
-      render partial: 'certificates/community_achievements', locals: { presenters: presenters }
+      render partial: 'certificates/community_achievement', locals: { presenter: presenters[0] }
     end
 
-    it 'no achievements are  marked as incomplete' do
+    it 'no achievements are marked as incomplete' do
       expect(rendered).to have_css('.ncce-activity-list__item--incomplete', count: 0)
     end
 

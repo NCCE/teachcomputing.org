@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
+RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:user) { create(:user) }
   let!(:primary_certificate) { create(:primary_certificate) }
   let!(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing in the classroom') }
@@ -8,7 +8,6 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
   let(:groupings) { create_list(:programme_activity_grouping, 5, programme_id: primary_certificate.id) }
 
   before do
-    stub_feature_flags({ primary_redesign_enabled: true })
     FactoryBot.rewind_sequences
 
     assign(:programme, primary_certificate)
@@ -23,10 +22,6 @@ RSpec.describe('certificates/primary_certificate_v2/show', type: :view) do
 
     assign(:user_programme_achievements, UserProgrammeAchievements.new(primary_certificate, user))
     assign(:pathways, pathways)
-  end
-
-  after do
-    unstub_feature_flags
   end
 
   describe 'when the user has no pathway' do

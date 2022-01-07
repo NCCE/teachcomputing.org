@@ -10,14 +10,8 @@ class OnlinePresenter < AchievementPresenter
     { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Book online course' }
   end
 
-  def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} online course"
-  end
-
   def prompt_text(index)
-    return t('.prompt_text.html') if FeatureFlagService.new.flags[:primary_redesign_enabled]
-
-    "Complete your #{index_to_word_ordinal(index)} online course"
+    return t('.prompt_text.html')
   end
 
   def inspect

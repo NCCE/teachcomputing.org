@@ -64,46 +64,6 @@ RSpec.describe Programmes::PrimaryCertificate do
     end
   end
 
-  describe '#user_meets_completion_requirement?' do
-    before do
-      user_programme_enrolment
-    end
-
-    context 'when user is not passed in' do
-      it 'raises error if user is nil' do
-        expect do
-          programme.user_meets_completion_requirement?(nil)
-        end.to raise_error(NoMethodError)
-      end
-    end
-
-    context 'when user has not done any activities' do
-      it 'returns false' do
-        expect(programme.user_meets_completion_requirement?(user)).to eq false
-      end
-    end
-
-    context 'when user has partly completed programme' do
-      before do
-        setup_achievements_for_partial_completion
-      end
-
-      it 'returns false' do
-        expect(programme.user_meets_completion_requirement?(user)).to eq false
-      end
-    end
-
-    context 'when user has completed programme' do
-      before do
-        setup_achievements_for_completion
-      end
-
-      it 'returns true' do
-        expect(programme.user_meets_completion_requirement?(user)).to eq true
-      end
-    end
-  end
-
   describe '#credits_achieved_for_certificate' do
     context 'when the user has not done any activities' do
       it 'returns 0' do

@@ -1,6 +1,6 @@
 en:
   certificates:
-    primary_certificate_v2:
+    primary_certificate:
       pathway_aside:
         heading: "Your current pathway: "
         expander_title: "Not sure this is the right pathway for you?"

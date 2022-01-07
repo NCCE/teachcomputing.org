@@ -77,17 +77,15 @@
 .ncce-activity-list__item-text {
   align-self: center;
   background-image: url('../images/icons/tick-blue.svg');
-  background-position: left top;
+  background-position: left center;
   background-repeat: no-repeat;
   background-size: 1.9rem;
   font-size: 1.188rem;
   grid-column: 1;
   grid-row: 1;
-  line-height: 1.45rem;
+  line-height: 2rem;
   margin-bottom: 0;
   padding-left: 2.8rem;
-
-
 
   @include govuk-media-query($until: tablet) {
     font-size: 1.1rem;
@@ -95,8 +93,10 @@
 
   &--primary-certificate {
     background: none;
+    background-position: left top;
     background-image: none;
     padding-left: 0;
+    line-height: 1.45rem;
   }
 
   &--incomplete {

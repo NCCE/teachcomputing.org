@@ -1,7 +1,5 @@
 desc 'updates primary certificate data'
 task update_primary_data: :environment do
-  return unless FeatureFlagService.new.flags[:primary_redesign_enabled]
-
   p = Programme.primary_certificate
 
   p.activities.find_by(slug: 'contribute-to-online-discussion').update(

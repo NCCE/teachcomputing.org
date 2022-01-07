@@ -1,6 +1,6 @@
 en:
   certificates:
-    primary_certificate_v2:
+    primary_certificate:
       show:
         page_title: "Primary certificate - Teach Computing"
         introduction:
