@@ -15,6 +15,18 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
       end
     end
 
+    context 'when user is valid but not enrolled' do
+      before do
+        primary_certificate
+      end
+
+      it "doesn't cause errors" do
+        expect do
+          described_class.perform_now(primary_certificate, user.id, some_value: '10')
+        end.not_to raise_error
+      end
+    end
+
     context 'when user is valid and enrolled' do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
