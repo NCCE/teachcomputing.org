@@ -70,10 +70,6 @@ class Programme < ApplicationRecord
     enrolment.present? && !enrolment.in_state?(:unenrolled)
   end
 
-  def user_meets_completion_requirement?(user)
-    programme_activity_groupings.all? { |group| group.user_complete?(user) }
-  end
-
   def diagnostic_result(*)
     nil
   end

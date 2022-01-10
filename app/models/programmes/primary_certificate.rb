@@ -38,6 +38,10 @@ module Programmes
       75
     end
 
+    def user_meets_completion_requirement?(user)
+      programme_activity_groupings.all? { |group| group.user_complete?(user) }
+    end
+
     def path
       primary_certificate_path
     end
