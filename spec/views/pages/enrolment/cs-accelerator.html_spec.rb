@@ -5,13 +5,8 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
   before do
-    stub_feature_flags({ primary_redesign_enabled: true })
     @programme = programme
     render
-  end
-
-  after do
-    unstub_feature_flags
   end
 
   it 'has diagram' do

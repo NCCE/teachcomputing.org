@@ -11,13 +11,8 @@ RSpec.describe PagesController do
 
   describe 'GET #cs-accelerator' do
     before do
-      stub_feature_flags({ primary_redesign_enabled: true })
       user
       programme
-    end
-
-    after do
-      unstub_feature_flags
     end
 
     context 'when user is not logged in' do

@@ -3,6 +3,8 @@ module PagesHelper
     case params[:page_slug]
     when 'gender-balance'
       'GBIC'
+    when 'primary-certificate'
+      'Primary unenrolled'
     end
   end
 

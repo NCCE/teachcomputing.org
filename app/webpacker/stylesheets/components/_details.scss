@@ -2,10 +2,16 @@
   font-size: 15px;
   margin: 0;
 
+  font-size: 1rem;
+
   &__text {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    font-size: 1.18rem;
   }
 }
 
@@ -14,8 +20,18 @@
     color: $deep-cerulean;
   }
 
+  &:before {
+    margin: 0.4rem 0 0 0;
+  }
+
   &:focus {
     background: none;
     box-shadow: none;
   }
+
+  text-decoration: underline !important;
+}
+
+.ncce-details__summary-content-wrapper {
+  margin: 0.8rem 1.6rem;
 }

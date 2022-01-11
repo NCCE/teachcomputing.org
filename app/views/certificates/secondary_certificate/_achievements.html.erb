@@ -27,7 +27,7 @@
           </span>
         </span>
       <% else %>
-        <%= link_to 'Book your course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button button--small' %>
+        <%= link_to 'Book a course', courses_path(certificate: Programme.cs_accelerator.slug), class: 'govuk-button button button--small' %>
       <% end %>
   <% end %>
   <% if presenter.description.present? %>

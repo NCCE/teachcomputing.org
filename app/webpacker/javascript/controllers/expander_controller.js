@@ -4,12 +4,15 @@ export default class extends Controller {
   static targets = ['expander', 'expanderButton']
 
   connect() {
-    this.collapse()
+    const startExpanded = this.expanderButtonTarget.getAttribute('start-expanded');
+    if (!startExpanded || startExpanded == 'false') {
+      this.collapse()
+    }
   }
 
   collapse() {
     let classes = this.expanderTarget.classList
-    if(!classes.contains('hidden')) {
+    if (!classes.contains('hidden')) {
       classes.add('hidden')
     }
     this.expanderButtonTarget.setAttribute('aria-expanded', 'false')
@@ -23,7 +26,7 @@ export default class extends Controller {
 
   toggleAll() {
     let expanded = this.expanderButtonTarget.getAttribute('aria-expanded')
-    if(expanded === 'true') {
+    if (expanded === 'true') {
       this.collapse()
     } else {
       this.expand()

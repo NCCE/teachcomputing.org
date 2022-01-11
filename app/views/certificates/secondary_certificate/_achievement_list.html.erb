@@ -15,6 +15,6 @@
 <% @programme_activity_groupings.where(sort_key: 3..5).order(:sort_key).each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
     <p class="govuk-body"><strong><%= group.title %> - complete <%= group.required_for_completion %> of the following activities:</strong></p>
-    <%= render 'achievements', presenters: @user_programme_achievements.secondary_activities(group.programme_activities) %>
+    <%= render 'achievements', presenters: @user_programme_achievements.map_to_community_presenter(group.programme_activities) %>
   </ul>
 <% end %>

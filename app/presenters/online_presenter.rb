@@ -6,14 +6,12 @@ class OnlinePresenter < AchievementPresenter
     courses_path(course_format: [:online], certificate: args[:certificate])
   end
 
-  def completed_text(index)
-    "Completed your #{index_to_word_ordinal(index)} online course"
+  def tracking_data
+    { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Book online course' }
   end
 
   def prompt_text(index)
-    return 'Complete at least one online course' if @programme == Programme.secondary_certificate
-
-    "Complete your #{index_to_word_ordinal(index)} online course"
+    return t('.prompt_text.html')
   end
 
   def inspect

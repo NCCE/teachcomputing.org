@@ -63,15 +63,15 @@ class Programme < ApplicationRecord
     user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
   end
 
+  def user_meets_completion_requirement?(user)
+    programme_activity_groupings.all? { |group| group.user_complete?(user) }
+  end
+
   def user_enrolled?(user)
     return false if user.nil?
 
     enrolment = user_programme_enrolments.find_by(user_id: user.id)
     enrolment.present? && !enrolment.in_state?(:unenrolled)
-  end
-
-  def user_meets_completion_requirement?(user)
-    programme_activity_groupings.all? { |group| group.user_complete?(user) }
   end
 
   def diagnostic_result(*)

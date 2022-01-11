@@ -15,6 +15,10 @@ class CommunityPresenter < SimpleDelegator
     ' ncce-activity-list__item--incomplete' unless completed?(user)
   end
 
+  def show_separator_class
+    ' ncce-activity-list__item--separate' if slug == 'contribute-to-online-discussion'
+  end
+
   def description
     (super || '').html_safe
   end
@@ -24,6 +28,6 @@ class CommunityPresenter < SimpleDelegator
   end
 
   def inspect
-    "CommunityPresenter - " + super
+    "CommunityPresenter - #{super}"
   end
 end

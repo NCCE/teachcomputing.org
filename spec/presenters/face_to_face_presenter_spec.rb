@@ -12,23 +12,15 @@ RSpec.describe FaceToFacePresenter do
   end
 
   describe('button_url') do
-    it { expect(empty_presenter.button_url).to eq('/courses?course_format%5B%5D=face_to_face') }
+    it { expect(empty_presenter.button_url).to eq('/courses?course_format%5B%5D=face_to_face&course_format%5B%5D=remote') }
 
     it {
-      expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq('/courses?certificate=cs-accelerator&course_format%5B%5D=face_to_face')
+      expect(empty_presenter.button_url({ certificate: 'cs-accelerator' })).to eq('/courses?certificate=cs-accelerator&course_format%5B%5D=face_to_face&course_format%5B%5D=remote')
     }
   end
 
-  describe('completed_text') do
-    it { expect(empty_presenter.completed_text(0)).to eq('Completed your first face to face, or remote course') }
-  end
-
   describe('prompt_text') do
-    it { expect(empty_presenter.prompt_text(1)).to eq('Complete your second face to face, or remote course') }
-
-    context 'when the the achievement belongs to secondary certificate' do
-      it { expect(presenter.prompt_text(1)).to eq('Complete at least one face to face, or remote course') }
-    end
+    it { expect(presenter.prompt_text(1)).to eq('Complete <strong>at least one</strong> face to face, or remote course') }
   end
 
   describe('inspect') do

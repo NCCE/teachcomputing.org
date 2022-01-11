@@ -4,7 +4,6 @@ module Certificates
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete pending]
     before_action :user_enrolled?, only: %i[show complete pending]
-    before_action :user_completed_diagnostic?, only: %i[show]
     before_action :user_programme_enrolment_pending?, only: %i[show complete]
 
     def show
@@ -14,6 +13,11 @@ module Certificates
       @badge_tracking_event_category = 'Primary enrolled'
       @badge_tracking_event_label = 'Primary badge'
       assign_issued_badge_data
+
+      @pathways = Pathway.ordered_by_programme(@programme.slug)
+      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
+      assign_programme_activity_groupings
+      assign_pathway_recommendations
 
       render :show
     end
@@ -51,17 +55,26 @@ module Certificates
         @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
       end
 
-      def find_programme
-        @programme = Programme.primary_certificate
+      def user_pathway
+        @user_pathway ||= user_enrolment&.pathway
       end
 
-      def user_completed_diagnostic?
-        questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
-        response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
-        return true if response&.current_state == 'complete'
+      def assign_programme_activity_groupings
+        @programme_activity_groups_1_to_3 = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+        @programme_activity_group_3 = @programme.programme_activity_groupings.where(sort_key: 3)[0]&.programme_activities
+        @programme_activity_groups_4_to_5 = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
+      end
 
-        question = response&.current_question ? "question_#{response.current_question}" : 'question_1'
-        redirect_to diagnostic_primary_certificate_path(question.to_sym)
+      def assign_pathway_recommendations
+        return nil unless user_pathway
+
+        recommended_activities = user_pathway.pathway_activities
+        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category === :community.to_s }
+        @recommended_activities = recommended_activities - @recommended_community_activities
+      end
+
+      def find_programme
+        @programme = Programme.primary_certificate
       end
 
       def user_enrolled?

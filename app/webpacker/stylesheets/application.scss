@@ -36,6 +36,7 @@
 @import 'components/_external-content.scss';
 @import 'components/_supplementary-courses.scss';
 @import 'components/_details.scss';
+@import 'components/_expander.scss';
 @import 'components/landing_pages/_certificates.scss';
 @import 'components/landing_pages/_courses.scss';
 @import 'components/landing_pages/_resources.scss';
@@ -74,6 +75,7 @@
 @import 'components/programmes/_recommendation.scss';
 @import 'components/programmes/_complete.scss';
 @import 'components/certificates/_csa_dashboard.scss';
+@import 'components/certificates/primary_dashboard';
 @import 'components/certificates/_pathway_prompt.scss';
 
 // import ViewComponent styles

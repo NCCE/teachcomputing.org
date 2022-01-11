@@ -126,14 +126,14 @@ workflows:
                 - master
                 - main
 
-  rubocop:
-    jobs:
-      - rubocop:
-          filters:
-            branches:
-              ignore:
-                - master
-                - main
+  # rubocop:
+  #   jobs:
+  #     - rubocop:
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - main
 
   test:
     jobs:

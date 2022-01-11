@@ -24,6 +24,11 @@ class UserProgrammeEnrolment < ApplicationRecord
     last_transition.created_at
   end
 
+  def assign_pathway(pathway_slug)
+    pathway = Pathway.find_by(programme_id: programme.id, slug: pathway_slug)
+    update(pathway_id: pathway.id)
+  end
+
   def assign_recommended_pathway(questionnaire_response)
     recommender = Programmes::CSAccelerator::PathwayRecommender.new(questionnaire_response: questionnaire_response)
     update(pathway_id: recommender.recommended_pathway&.id)

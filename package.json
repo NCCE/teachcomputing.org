@@ -56,7 +56,7 @@
     "exec": "docker compose run --rm --no-deps web bundle exec",
     "bundle-install": "yarn run bundle install && docker compose restart web && yarn start",
     "bundle-update": "yarn run bundle update && docker compose restart web && yarn start",
-    "console": "yarn run exec rails c",
+    "console": "yarn run web rails c",
     "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
     "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec",

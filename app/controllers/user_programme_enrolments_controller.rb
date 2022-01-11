@@ -35,11 +35,11 @@ class UserProgrammeEnrolmentsController < ApplicationController
   private
 
     def user_programme_enrolment_params
-      params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
+      params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
     end
 
     def user_has_existing_enrolment?
-      enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
+      enrolment = UserProgrammeEnrolment.find_by(user_id: user_programme_enrolment_params[:user_id], programme_id: user_programme_enrolment_params[:programme_id])
       return unless enrolment
 
       if enrolment.in_state?(:unenrolled)
