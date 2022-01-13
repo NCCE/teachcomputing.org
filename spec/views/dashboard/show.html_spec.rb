@@ -196,9 +196,8 @@ RSpec.describe('dashboard/show', type: :view) do
       )
     end
 
-    it 'shows the provider' do
-      expect(rendered).to have_css('.ncce-activity-list__subtext--provider', text: 'Course delivered by')
-      expect(rendered).to have_css("img[src*='stem-logo-small']")
+    it 'shows the providers component' do
+      expect(rendered).to have_css('.provider-logos-component')
     end
   end
 
@@ -216,10 +215,8 @@ RSpec.describe('dashboard/show', type: :view) do
       expect(rendered).not_to have_css('.ncce-activity-list__subtext--address')
     end
 
-    it 'shows the expect provider text' do
-      expect(rendered).to have_text('Online course with')
-      expect(rendered).to have_css("img[src*='fl-logo-small']")
-      expect(rendered).to have_css("img[src*='rpf-logo-small']")
+    it 'shows the providers component' do
+      expect(rendered).to have_css('.provider-logos-component')
     end
   end
 
@@ -237,9 +234,8 @@ RSpec.describe('dashboard/show', type: :view) do
       expect(rendered).not_to have_css('.ncce-activity-list__subtext--address')
     end
 
-    it 'shows the provider' do
-      expect(rendered).to have_css('.ncce-activity-list__subtext--provider', text: 'Course delivered by')
-      expect(rendered).to have_css("img[src*='stem-logo-small']")
+    it 'shows the providers component' do
+      expect(rendered).to have_css('.provider-logos-component')
     end
   end
 end
