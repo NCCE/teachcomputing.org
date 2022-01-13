@@ -1,0 +1,9 @@
+<%= content_tag :div, class: ['govuk-body-s', 'govuk-!-margin-bottom-0', 'provider-logos-component', { "provider-logos-component--inline": @inline }, { "#{@class_name}": @class_name.present? }] do %>
+  <div class='govuk-body-s provider-logos-component__copy'><%= t(".#{@org_prefix}_provider_text") %></div>
+  <div class='provider-logos-component__logo-left'><%= image_pack_tag 'media/images/logos/tc-logo-small.svg', alt: 'Teachcomputing logo' %></div>
+  <% if @online %>
+    <div class='provider-logos-component__logo-right'><%= image_pack_tag 'media/images/logos/rpf-logo-small.svg', alt: 'Raspberry Pi Foundation logo' %></div>
+  <% else %>
+    <div class='provider-logos-component__logo-right'><%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: 'Stem Learning logo' %></div>
+  <% end %>
+<% end %>

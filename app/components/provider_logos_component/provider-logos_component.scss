@@ -1,0 +1,26 @@
+.provider-logos-component {
+  border-top: solid 1px #CCCCCC;
+  display: grid;
+  grid-template-areas:
+    'copy copy'
+    'left right';
+  padding: 1rem 0;
+  grid-template-columns: 5rem;
+
+  &__copy {
+    grid-area: copy
+  }
+
+  &__logo-left {
+    grid-area: left
+  }
+
+  &__logo-right {
+    grid-area: right
+  }
+
+  &--inline {
+    border-top: none;
+    padding-bottom: 0;
+  }
+}
