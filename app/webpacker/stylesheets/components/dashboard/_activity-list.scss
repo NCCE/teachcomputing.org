@@ -256,6 +256,7 @@
 
   div[class*=" icon-"] {
     background-size: 25px;
+    padding-left: 2rem;
   }
 }
 
@@ -286,7 +287,6 @@
   margin-bottom: 0 !important;
   margin-left: 2.8rem;
   margin-top: 1rem;
-  padding-left: 2.1em;
 
   &--provider {
     display: block;
@@ -310,7 +310,6 @@
   }
 
   &--date {
-    padding-left: 2.1em;
     margin-top: 0.5rem;
   }
 
