@@ -5,12 +5,20 @@ class StemBookingPresenter
     'Book this course'
   end
 
+  def authenticated_title
+    title
+  end
+
   def introduction
     'You will be taken to the STEM Learning website to see further details and book.'
   end
 
   def booking_button_title
     'Book'
+  end
+
+  def unauthenticated_booking_button_title
+    "Login to #{title.downcase}"
   end
 
   def activity_date(start_date)

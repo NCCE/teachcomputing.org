@@ -2,6 +2,10 @@ class OnlineBookingPresenter
   include Rails.application.routes.url_helpers
 
   def title
+    'Join this course'
+  end
+
+  def authenticated_title
     'Join on FutureLearn'
   end
 
@@ -10,7 +14,7 @@ class OnlineBookingPresenter
   end
 
   def completed_title
-    'You’ve completed this course'
+    "You've completed this course"
   end
 
   def enrolled_introduction
@@ -19,6 +23,10 @@ class OnlineBookingPresenter
 
   def introduction
     'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+  end
+
+  def unauthenticated_booking_button_title
+    'Login to join'
   end
 
   def enrolled_button_title

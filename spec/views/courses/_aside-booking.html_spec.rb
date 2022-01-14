@@ -221,9 +221,13 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         render
       end
 
+      it 'has the expected title' do
+        expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+      end
+
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to join on futurelearn', href: expected_link)
+        expect(rendered).to have_link('Login to join', href: expected_link)
       end
 
       it 'renders the facilitation period list with the expected occurrence count' do

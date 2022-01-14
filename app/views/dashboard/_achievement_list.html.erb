@@ -32,7 +32,9 @@
       <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date">
         <%= get_date_string(achievement) %>
       </div>
-      <%= render ProviderLogosComponent.new(online: achievement.activity.category.to_sym == :online, inline: true) %>
+      <div class="ncce-activity-list__subtext govuk-!-margin-top-0">
+        <%= render ProviderLogosComponent.new(online: achievement.activity.category.to_sym == :online, dashboard: true) %>
+      </div>
     </div>
   </li>
   <% end %>
