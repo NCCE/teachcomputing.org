@@ -110,6 +110,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         )
       end
 
+      it 'does not render the facilitation periods' do
+        expect(rendered).not_to have_css('.facilitation-periods')
+      end
+
       context 'when it renders the list' do
         it 'shows the expected number of occurences' do
           expect(rendered).to have_css('.ncce-booking-list__item', count: 3)
@@ -152,6 +156,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         assign(:activity, activity)
 
         render
+      end
+
+      it 'does not render the facilitation periods' do
+        expect(rendered).not_to have_css('.facilitation-periods')
       end
 
       context 'when it renders the list' do
@@ -206,14 +214,24 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     context 'when its an online course' do
       before do
         assign(:course, course)
+        assign(:occurrences, occurrences)
         assign(:booking, online_booking_presenter)
+        allow_any_instance_of(OnlineBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
         render
       end
 
+      it 'has the expected title' do
+        expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+      end
+
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to join on futurelearn', href: expected_link)
+        expect(rendered).to have_link('Login to join', href: expected_link)
+      end
+
+      it 'renders the facilitation period list with the expected occurrence count' do
+        expect(rendered).to have_css('.facilitation-periods .facilitation-periods__list-item', count: 3)
       end
 
       it 'renders an account creation link' do
@@ -232,6 +250,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
         expect(rendered).to have_link('Login to book this course', href: expected_link)
+      end
+
+      it 'does not render the facilitation periods' do
+        expect(rendered).not_to have_css('.facilitation-periods')
       end
     end
   end

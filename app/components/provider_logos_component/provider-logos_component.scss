@@ -1,0 +1,21 @@
+.provider-logos-component {
+  border-top: solid 1px #CCCCCC;
+  padding: 1rem 0;
+
+  &__logo-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  &--dashboard {
+    .provider-logos-component__copy {
+      font-size: 1rem;
+    }
+
+    border-top: none;
+    padding-bottom: 0;
+  }
+}

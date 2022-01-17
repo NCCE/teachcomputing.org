@@ -1,7 +1,7 @@
 <% if current_user %>
   <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
     <div class="ncce-aside">
-      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
       <% if (@booking.show_stem_occurrence_list) %>
         <ul class="govuk-list ncce-booking-list">
@@ -20,7 +20,7 @@
                   @booking.booking_path(occurrence.course_occurrence_no),
                   class: 'govuk-button button button--small',
                   draggable: 'false',
-                  data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+                  data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
                   target: :_blank
                 ) %>
               </span>
@@ -32,7 +32,7 @@
       <% else %>
         <p class="govuk-body">
           <%= link_to(
-            @booking.title,
+            @booking.authenticated_title,
             @booking.booking_path(@activity.future_learn_course_uuid),
             class: 'govuk-button button--aside',
             draggable: 'false',
@@ -41,9 +41,9 @@
           ) %>
         </p>
         <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
+        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
       <% end %>
     </div>
-    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
   <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
@@ -59,12 +59,11 @@
         ) %>
       </p>
       <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
+      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
+      <p class='govuk-body-s ncce-booking-list__progress'>
+        Can't see the progress of your course? You may need to rejoin the course.
+      </p>
     </div>
-    <%= render 'courses/rpf-emblem' %>
-    <hr>
-    <p class='govuk-body-s' >
-      Can't see the progress of your course? You may need to rejoin the course.
-    </p>
   <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
@@ -80,23 +79,24 @@
         ) %>
       </p>
       <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
+      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
     </div>
-    <%= render 'courses/rpf-emblem' %>
   <% end %>
 <% else %>
   <div class="ncce-aside" id="booking-list">
     <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
     <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
     <p class="govuk-body">
-      <%= link_to "Login to #{@booking.title.downcase}", "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
+      <%= link_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
     </p>
     <p class="govuk-body-s ncce-aside__text">
       Not got a STEM Learning account?
-      <br><%= link_to 'Create an account', create_account_url,
-            class: 'ncce-link', draggable: 'false',
-            data: { event_action: 'click', event_category: 'course details'}
-          %>
+      <br>
+      <%= link_to 'Create an account', create_account_url,
+        class: 'ncce-link', draggable: 'false',
+        data: { event_action: 'click', event_category: 'course details'}%>
     </p>
-    <%= render 'courses/rpf-emblem' if @course.online_cpd %>
+    <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
+    <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
   </div>
 <% end %>

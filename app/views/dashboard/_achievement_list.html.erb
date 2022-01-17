@@ -32,12 +32,9 @@
       <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--date">
         <%= get_date_string(achievement) %>
       </div>
-      <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--provider"><%= t(
-        ".providers.#{achievement.activity.provider}.html",
-        stem_logo: image_pack_tag('media/images/logos/stem-logo-small.svg', alt: 'Stem learning logo'),
-        fl_logo: image_pack_tag('media/images/logos/fl-logo-small.svg', alt: 'Future learn logo'),
-        rpf_logo: image_pack_tag('media/images/logos/rpf-logo-small.svg', alt: 'Raspberry pi foundation logo')
-      ) %></div>
+      <div class="ncce-activity-list__subtext govuk-!-margin-top-0">
+        <%= render ProviderLogosComponent.new(online: achievement.activity.category.to_sym == :online, dashboard: true) %>
+      </div>
     </div>
   </li>
   <% end %>
