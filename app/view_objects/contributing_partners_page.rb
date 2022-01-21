@@ -26,7 +26,7 @@ class ContributingPartnersPage
         {
           title_locale: 'pages.contributing-partners.cards.bebras.title',
           link_url: 'https://www.bebras.uk/',
-          image_path: 'media/images/partners/bebras.svg',
+          image_path: 'media/images/partners/bebras.png',
           img_alt_locale: 'pages.contributing-partners.cards.bebras.img_alt',
           text_locale: 'pages.contributing-partners.cards.bebras.text_html'
         },
