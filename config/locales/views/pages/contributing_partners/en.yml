@@ -11,6 +11,10 @@ en:
           title: "Barefoot from Computing at School"
           img_alt: "Barefoot logo"
           text_html: "Barefoot empowers primary school teachers to deliver the computing curriculum brilliantly, with free workshops, helpful online guides and engaging lesson plans and resources. Barefoot makes computing easy to teach and fun to learn, with or without a computer."
+        bebras:
+          title: "Bebras UK"
+          img_alt: "Bebras logo"
+          text_html: "This exciting initiative offers a series of fun and fiendish challenges that introduce students to computational thinking. The questions start (relatively) easy and get progressively more difficult. There are different levels of the challenge available for different school phases, and no previous programming knowledge is required."
         code_club:
           title: "Code Club from Raspberry Pi Foundation"
           img_alt: "Code club logo"
