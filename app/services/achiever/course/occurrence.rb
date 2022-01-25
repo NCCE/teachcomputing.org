@@ -21,8 +21,9 @@ class Achiever::Course::Occurrence
                 :coordinates,
                 :distance
 
-  FACE_TO_FACE_RESOURCE_PATH = 'Get?cmd=CourseListingFutureByProgrammeId'.freeze
-  ONLINE_RESOURCE_PATH = 'Get?cmd=FutureOnlineCoursesByProgrammeId'.freeze
+  FACE_TO_FACE_RESOURCE_PATH = "Get?cmd=#{ENV['ACHIEVER_F2F_METHOD']}".freeze
+  ONLINE_RESOURCE_PATH = "Get?cmd=#{ENV['ACHIEVER_ONLINE_METHOD']}".freeze
+
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
                     EndDate: Time.zone.today.strftime('%F'),
