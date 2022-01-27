@@ -1,0 +1,63 @@
+<% meta_tag :title, 'Isaac Computer Science' %>
+<% meta_tag :description, 'Discover Isaac Computer Science, our free online learning platform for A level computer science teachers and students.' %>
+<% meta_tag :image, asset_pack_path('media/images/pages/isaac/meta-image.jpg') %>
+<%= render HeroMediaComponent.new(
+  title: 'Isaac Computer Science',
+  text: 'Discover <strong>Isaac Computer Science</strong>, our online learning programme for <strong>A level computer science teachers and students.</strong>',
+  class_name: 'tapestry-bg',
+  video: {
+    url: 'https://www.youtube.com/embed/nW4J-NVDziw',
+    tracking_page: 'Isaac Computer Science',
+    tracking_label: 'Introductory video'
+  }
+) %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Access our range of GCSE computer science learning materials that currently cover around 20% of the GCSE computer science curriculum — all for free. More content will be made available at the start of each term:</p>
+        <ul class="govuk-list govuk-list--bullet" role="list">
+          <li>April 2022: 50% of the curriculum covered</li>
+          <li>September 2022: 100% of the curriculum covered</li>
+        </ul>
+        <p class="govuk-body">The new GCSE computer science topics have introductory videos to help your students to preview the topic. The videos also provide the context for the topic explaining how and why it is relevant in today's world. Each topic also signposts related classroom resources from our Teach Computing Curriculum, and suggests professional development opportunities to deepen your subject knowledge.</p>
+        <p class="govuk-body">The GCSE level content is seamlessly integrated with our A level content and allows you to toggle each level either on or off, as needed.</p>
+        <p class="govuk-body">This gives you the flexibility to:</p>
+        <ul class="govuk-list govuk-list--bullet" role="list">
+          <li>Set GCSE level content to support A level students who need a bit of help</li>
+          <li>Set A level content to stretch GCSE students who want to learn more</li>
+        </ul>
+				<h2 class="govuk-heading-m">Isaac Computer Science GCSE offers:</h2>
+				<ul class="govuk-list govuk-list--bullet" role="list">
+					<li>Time-saving GCSE computer science resources that are high quality and written by experienced teachers</li>
+					<li>Coverage of the AQA, Edexcel, Eduqas, OCR, and WJEC specifications for GCSE computer science</li>
+					<li>Sets of self-marking questions </li>
+					<li>CPD training for teachers</li>
+					<li>live online workshops for students</li>
+				</ul>
+				<h2 class="govuk-heading-m">Students can:</h2>
+				<ul class="govuk-list govuk-list--bullet" role="list">
+					<li>Use the platform for structured, self-paced study and progress tracking</li>
+					<li>Prepare for their GCSE computer science examinations according to their exam body</li>
+					<li>Get instant feedback from the interactive questions to guide further study</li>
+					<li>Explore areas of interest more deeply</li>
+				</ul>
+				<h2 class="govuk-heading-m">Teachers can:</h2>
+        <ul class="govuk-list govuk-list--bullet" role="list">
+          <li>Use the content and examples on the platform as the basis for classroom work</li>
+          <li>Direct their students to topics to read as homework</li>
+          <li>Set self-marking questions as homework or in the classroom as formative assessment to identify areas where additional support is required</li>
+          <li>Track students' progress</li>
+        </ul>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Why sign up?</h2>
+          <p class="govuk-body-s ncce-aside__text">Benefit from a wide range of GCSE computer science resources and online events. Register with Isaac Computer Science and create your free account.</p>
+          <p class="govuk-body-s"><%= link_to 'Visit Isaac Computer Science', 'https://isaaccomputerscience.org/', class: 'govuk-button button button--aside', data: { event_action: 'click', event_category: 'Isaac Computer Science', event_label: 'Visit Isaac Computer Science' } %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
