@@ -135,6 +135,8 @@ Rails.application.routes.draw do
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
   get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
                                    defaults: { page_slug: 'a-level-computer-science' }
+  get '/gcse-revision', to: 'pages#page', as: "gcse-revision",
+                                   defaults: { page_slug: 'gcse-revision' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
