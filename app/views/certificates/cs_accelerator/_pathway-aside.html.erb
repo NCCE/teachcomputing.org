@@ -24,7 +24,17 @@
       Select your new pathway:
     </h2>
 
-    <%= form_tag update_user_pathway_cs_accelerator_certificate_path, { method: :put, class: '' } do %>
+    <%= form_tag update_user_pathway_cs_accelerator_certificate_path,
+      {
+        method: :put,
+        class: '',
+        id: 'csa-pathway-form',
+        data: {
+          event_action: 'click',
+          event_category: 'CSA enrolled',
+          event_label: 'Change pathway'
+        }
+      } do %>
         <%= select_tag :pathway_id,
           options_for_select(other_programme_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
           {
@@ -34,7 +44,7 @@
             required: true
           }
         %>
-        <%= submit_tag 'Change your pathway', class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Change pathway' } %>
+        <%= submit_tag 'Change your pathway', class: 'govuk-button button govuk-!-margin-bottom-0' %>
     <% end %>
   <% end %>
 </div>
