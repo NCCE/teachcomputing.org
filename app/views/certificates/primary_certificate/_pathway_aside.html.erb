@@ -18,7 +18,17 @@
           </li>
         <% end %>
       </ul>
-      <%= form_tag update_user_pathway_primary_certificate_path, { method: :put, class: '' } do %>
+      <%= form_tag update_user_pathway_primary_certificate_path,
+        {
+          method: :put,
+          class: '',
+          id: 'primary-pathway-form',
+          data: {
+            event_action: 'click',
+            event_category: 'Primary enrolled',
+            event_label: 'Change pathway'
+          }
+        } do %>
           <%= select_tag :pathway_id,
             options_for_select(available_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
             {
