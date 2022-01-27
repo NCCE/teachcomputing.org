@@ -72,18 +72,20 @@
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-      <hr>
-      <div class='govuk-body-s ncce-booking-list__date'>
+      <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |oc| %>
-          <p> <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %> </p>
-          <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
-           <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
-            <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode}".html_safe %> <br>
-            <%= link_to 'Go to course', '#', class: 'govuk-!-font-weight-bold ncce-link' %>
-          </span>
+          <li class="ncce-booking-list__item">
+            <div class='govuk-body-s ncce-booking-list__date'>
+              <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %>
+            </div>
+            <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+            <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+              <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode} <br>".html_safe unless oc.remote_delivered_cpd %>
+              <%= link_to 'Go to course', @booking.booking_path(oc.course_occurrence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+            </span>
+          </li>
         <% end %>
-      </div>
-      <hr class='govuk-!-margin-top-4 govuk-!-margin-bottom-4'>
+      </ul>
       <p class='govuk-body-s'> This course is from Teach Computing and delivered by STEM Learning </p>
       <%= render 'courses/stem-and-tc-emblems' %>
     </div>
@@ -91,18 +93,20 @@
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-      <hr>
-      <div class='govuk-body-s ncce-booking-list__date'>
+      <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |oc| %>
-          <p> <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %> </p>
-          <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
-           <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
-            <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode}".html_safe %> <br>
-            <%= link_to 'Go to course', '#', class: 'govuk-!-font-weight-bold ncce-link' %>
-          </span>
+          <li class="ncce-booking-list__item">
+            <div class='govuk-body-s ncce-booking-list__date'>
+              <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %>
+            </div>
+            <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+            <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+              <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode} <br>".html_safe unless oc.remote_delivered_cpd %>
+              <%= link_to 'Go to course', @booking.booking_path(oc.course_occurrence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+            </span>
+          </li>
         <% end %>
-      </div>
-      <hr class='govuk-!-margin-top-4 govuk-!-margin-bottom-4'>
+      </ul>
       <p class='govuk-body-s'> This course is from Teach Computing and delivered by STEM Learning </p>
       <%= render 'courses/stem-and-tc-emblems' %>
     </div>
