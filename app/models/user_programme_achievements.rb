@@ -6,13 +6,15 @@ class UserProgrammeAchievements
                         .for_programme(programme).sort_complete_first
   end
 
-  def online_achievements(to_show = 1)
+  def online_achievements(to_show = nil)
     online_achievements = @achievements.not_in_state(:dropped).with_category(Activity::ONLINE_CATEGORY).order('created_at ASC')
+    to_show ||= online_achievements.length
     (0...to_show).to_a.map { |index| OnlinePresenter.new(online_achievements[index], @programme) }
   end
 
-  def face_to_face_achievements(to_show = 1)
+  def face_to_face_achievements(to_show = nil)
     face_to_face_achievements = @achievements.not_in_state(:dropped).with_category(Activity::FACE_TO_FACE_CATEGORY).order('created_at ASC')
+    to_show ||= face_to_face_achievements.length
     (0...to_show).to_a.map { |index| FaceToFacePresenter.new(face_to_face_achievements[index], @programme) }
   end
 

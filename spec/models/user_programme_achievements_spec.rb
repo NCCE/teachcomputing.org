@@ -19,7 +19,7 @@ RSpec.describe UserProgrammeAchievements do
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
   let(:community_activity) { create(:activity, :community_5) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -49,22 +49,62 @@ RSpec.describe UserProgrammeAchievements do
   let(:user_programme_achievements) { UserProgrammeAchievements.new(programme, user) }
 
   describe 'online_achievements' do
+    before do
+      activities = create_list(:activity, 4, :online)
+      activities.each do |activity|
+        create(:programme_activity, programme: programme, activity: activity)
+        create(:achievement, user_id: user.id, activity: activity)
+      end
+    end
+
     it 'returns an Array' do
       expect(user_programme_achievements.online_achievements).to be_an(Array)
     end
 
-    it 'returns the correct number of items' do
-      expect(user_programme_achievements.online_achievements(2).count).to eq(2)
+    it 'contains OnlinePresenters' do
+      expect(user_programme_achievements.online_achievements.first).to be_an(OnlinePresenter)
+    end
+
+    context 'when to_show not set' do
+      it 'returns all items' do
+        expect(user_programme_achievements.online_achievements.count).to eq(4)
+      end
+    end
+
+    context 'when to_show is set' do
+      it 'returns the specified number of items' do
+        expect(user_programme_achievements.online_achievements(2).count).to eq(2)
+      end
     end
   end
 
   describe 'face_to_face_achievements' do
+    before do
+      activities = create_list(:activity, 4)
+      activities.each do |activity|
+        create(:programme_activity, programme: programme, activity: activity)
+        create(:achievement, user_id: user.id, activity: activity)
+      end
+    end
+
     it 'returns an Array' do
       expect(user_programme_achievements.face_to_face_achievements).to be_an(Array)
     end
 
-    it 'returns the correct number of items' do
-      expect(user_programme_achievements.face_to_face_achievements(2).count).to eq(2)
+    it 'returns FaceToFacePresenters' do
+      expect(user_programme_achievements.face_to_face_achievements.first).to be_a(FaceToFacePresenter)
+    end
+
+    context 'when to_show not set' do
+      it 'returns all items' do
+        expect(user_programme_achievements.face_to_face_achievements.count).to eq(4)
+      end
+    end
+
+    context 'when to_show is set' do
+      it 'returns the correct number of items' do
+        expect(user_programme_achievements.face_to_face_achievements(2).count).to eq(2)
+      end
     end
   end
 
@@ -75,14 +115,6 @@ RSpec.describe UserProgrammeAchievements do
   end
 
   describe 'presenters are correct' do
-    it 'online_achievements contains OnlinePresenters' do
-      expect(user_programme_achievements.online_achievements.first).to be_an(OnlinePresenter)
-    end
-
-    it 'face_to_face_achievements contains FaceToFacePresenters' do
-      expect(user_programme_achievements.face_to_face_achievements.first).to be_a(FaceToFacePresenter)
-    end
-
     it 'diagnostic_achievements contains DiagnosticPresenters' do
       expect(user_programme_achievements.diagnostic_achievements.first).to be_a(DiagnosticPresenter)
     end
@@ -120,7 +152,7 @@ RSpec.describe UserProgrammeAchievements do
     end
 
     it 'doesn\'t show in-progress achievements' do
-      expect(user_programme_achievements.online_achievements(2)).to_not include(online_achievement)
+      expect(user_programme_achievements.online_achievements(2)).not_to include(online_achievement)
     end
 
     it 'only shows complete achievements' do
