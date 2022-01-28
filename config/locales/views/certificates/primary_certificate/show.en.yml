@@ -13,7 +13,6 @@ en:
           title: "Need some help?"
           link_text: "Contact your local Computing Hub"
           text:
-            html: "%{hub_link}<br>
-              Call: 01904 328 300<br>
-              Email: %{email_link}"
+            html: "For support with this certificate: <br> %{hub_link}<br> <br>
+              Technical issue? %{email_link}"
         feedback_text: "What can we do better?"
