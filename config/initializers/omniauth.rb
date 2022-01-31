@@ -62,14 +62,14 @@ if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
     provider: 'stem',
-    uid: '24675886-34f0-45be-a3f3-52d4970186ed',
+    uid: '864302',
     credentials: {
       expires_at: 1_546_601_180,
       refresh_token: '27266366070255897068',
       token: '14849048797785647933'
     },
     info: {
-      achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
+      achiever_contact_no: '89085e3f-d60e-eb11-a813-000d3a86f6ce',
       first_name: 'Web',
       last_name: 'Raspberry Pi',
       email: 'web@raspberrypi.org'
