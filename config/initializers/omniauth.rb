@@ -69,7 +69,7 @@ if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
       token: '14849048797785647933'
     },
     info: {
-      achiever_contact_no: '94c52a7c-5001-45e3-82bd-949a882f5fb6',
+      achiever_contact_no: '89085e3f-d60e-eb11-a813-000d3a86f6ce',
       first_name: 'Web',
       last_name: 'Raspberry Pi',
       email: 'web@raspberrypi.org'
