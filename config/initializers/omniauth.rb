@@ -62,7 +62,7 @@ if ActiveModel::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', false))
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
     provider: 'stem',
-    uid: '24675886-34f0-45be-a3f3-52d4970186ed',
+    uid: '864302',
     credentials: {
       expires_at: 1_546_601_180,
       refresh_token: '27266366070255897068',
