@@ -13,6 +13,7 @@ module NavigationHelper
           { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
           { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
           { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
+          { text: 'GCSE revision', link: gcse_revision_path, label: 'GCSE revision' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
         ] },
       { text: 'Training and support',
