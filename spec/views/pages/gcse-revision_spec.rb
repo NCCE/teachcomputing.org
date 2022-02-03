@@ -13,8 +13,8 @@ RSpec.describe('pages/gcse-revision', type: :view) do
     expect(rendered).to have_css('.ncce-aside', count: 1)
   end
 
-  it 'has five lists' do
-    expect(rendered).to have_css('.govuk-list', count: 5)
+  it 'has six lists' do
+    expect(rendered).to have_css('.govuk-list', count: 6)
   end
 
   it 'has three headings' do
