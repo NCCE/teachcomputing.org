@@ -453,3 +453,18 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'b2445d09-f3b3-45da-b4e
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '56c90f6c-c741-4796-88d1-549c0d625ca7') do |activity|
+  activity.title = 'Introduction to Programming with Scratch'
+  activity.credit = 20
+  activity.slug = 'introduction-to-programming-with-scratch'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = 'f8f2b9d3-5483-ec11-8d21-0022481b4871'
+  activity.future_learn_course_uuid = '56c90f6c-c741-4796-88d1-549c0d625ca7'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO232'
+  activity.always_on = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
