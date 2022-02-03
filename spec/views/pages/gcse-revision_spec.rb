@@ -6,7 +6,7 @@ RSpec.describe('pages/gcse-revision', type: :view) do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-l', text: 'GCSE revision')
+    expect(rendered).to have_css('.govuk-heading-l', text: 'Isaac Computer Science for GCSE')
   end
 
   it 'has aside secton' do
