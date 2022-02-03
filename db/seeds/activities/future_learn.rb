@@ -13,6 +13,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'ecf78d20-2966-4798-af5
   activity.future_learn_course_uuid = 'ecf78d20-2966-4798-af5f-0f869c1818e2'
   activity.provider = 'future-learn'
   activity.stem_activity_code = 'CO205'
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
