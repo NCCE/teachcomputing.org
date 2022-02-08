@@ -11,3 +11,9 @@
     border-bottom: none;
   }
 }
+
+// fixes for Ghost CMS image sizes
+.kg-image-card img {
+  width: 100%;
+  height: auto;
+}
