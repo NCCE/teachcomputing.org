@@ -1645,3 +1645,15 @@ a = Activity.find_or_create_by(stem_course_template_no: 'bd1a110a-6778-ec11-8d21
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '4245beee-d584-ec11-8d21-0022481b4bf9') do |activity|
+  activity.title = 'Foundation knowledge of computer science for KS3 and GCSE (face to face)'
+  activity.credit = 10
+  activity.slug = 'foundation-knowledge-of-computer-science-for-ks3-and-gcse-face-to-face'
+  activity.stem_course_template_no = '4245beee-d584-ec11-8d21-0022481b4bf9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP226'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
