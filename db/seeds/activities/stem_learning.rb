@@ -1459,7 +1459,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e2683e1b-1330-ec11-b6e6-000d3a871225') do |activity|
   activity.title = 'Programming with Python – residential'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'programming-with-python-residential'
   activity.stem_course_template_no = 'e2683e1b-1330-ec11-b6e6-000d3a871225'
   activity.category = 'face-to-face'
