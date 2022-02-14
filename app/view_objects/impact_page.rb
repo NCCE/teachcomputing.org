@@ -106,9 +106,9 @@ class ImpactPage
         ],
         button: {
           button_title: I18n.t('pages.impact-and-evaluation.literacy_report_card.button_title'),
-          button_url: 'https://static.teachcomputing.org/Computer_Systems_%26_Networking_Report_-_Final.pdf',
+          button_url: 'https://static.teachcomputing.org/Programming+and+Algorithms+Report.pdf',
           tracking_page: tracking_page,
-          tracking_label: 'Systems and networks'
+          tracking_label: 'Programming and Algorithms'
         }
       }
     end
@@ -119,6 +119,18 @@ class ImpactPage
         class_name: 'curriculum-cards',
         tracking_category: tracking_page,
         cards: [
+          {
+            class_name: 'computer-systems',
+            title_link: {
+              title: 'pages.impact-and-evaluation.computer_systems.title',
+              url: 'https://static.teachcomputing.org/Computer_Systems_%26_Networking_Report_-_Final.pdf',
+              tracking_label: 'computer systems'
+            },
+            date: 'pages.impact-and-evaluation.computer_systems.date',
+            body: {
+              text: 'pages.impact-and-evaluation.computer_systems.text'
+            }
+          },
           {
             class_name: 'impact-literacy-card',
             title_link: {

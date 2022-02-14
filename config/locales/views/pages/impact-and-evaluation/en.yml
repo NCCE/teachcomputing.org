@@ -31,15 +31,15 @@ en:
           html: "Read the experiences of our second cohort of graduates and the impact of completing the Computer Science Accelerator on them, their students and colleagues. You can also read %{executive_summary_link}."
       curriculum_reports_title: "Research and curriculum reports"
       literacy_report_card:
-        title: "Computer Systems and Networks Report"
-        date: "Published July 2021"
-        text: "This report explores the importance and progression of the computer systems and networks strands of the English computing curriculum, and how these strands are covered in the Teach Computing Curriculum."
+        title: "Programming and Algorithms Report"
+        date: "Published January 2022"
+        text: "This report explores the importance and progression of the programming and algorithm strands of the English computing curriculum, and how these strands are covered in the Teach Computing Curriculum."
         item_1:
-          html: "Learners' understanding of these areas, which are rich in abstract concepts, will help develop their foundational knowledge."
+          html: "All learners should have the opportunity to develop computer programs to solve problems in a range of contexts."
         item_2:
-          html: "In general, learners begin with abstract representations of the concepts and progress to increasingly detailed models."
+          html: "Programming encompasses several levels of abstraction (including writing code) which learners should be familiar with and comfortable switching between."
         item_3:
-          html: "Modelling, the use of semantics waves, and actively challenging misconceptions are particularly useful teaching approaches to apply to this area of the curriculum."
+          html: "Through practice, learners can become familiar with a range of common programming patterns, recalling them and applying to new and varied contexts."
         button_title: "View Computer Systems and Networks Report"
       textbook_card:
         title: "International Computing Textbook Review"
@@ -49,6 +49,10 @@ en:
         title: "Digital Literacy Report"
         date: "Published January 2021"
         text: "The importance of digital literacy was highlighted during the COVID-19 pandemic and consequent home learning. This report explores its role within the curriculum."
+      computer_systems:
+        title: "Computer Systems and Networks report"
+        date: "Published July 2021"
+        text: "Explores the strands of computer systems and networks emphasising the foundational nature of these topics and the role they play in supporting learning across other strands of computing."
       research_resources_title: "Our research resources"
       gender_balance_card:
         title: "Gender Balance in Computing"
