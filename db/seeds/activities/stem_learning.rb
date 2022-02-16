@@ -1657,3 +1657,27 @@ a = Activity.find_or_create_by(stem_course_template_no: '4245beee-d584-ec11-8d21
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e719d34b-03a4-ea11-a812-000d3a86f6ce') do |activity|
+  activity.title = 'Beginners summer school for early-career secondary computing teachers - face to face'
+  activity.credit = 40
+  activity.slug = 'beginners-summer-school-for-early-career-secondary-computing-teachers-face-to-face'
+  activity.stem_course_template_no = 'e719d34b-03a4-ea11-a812-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP245'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c698f5dd-33c1-ea11-a812-000d3a86f6ce') do |activity|
+  activity.title = 'Summer school for computer-specialist trainee teachers'
+  activity.credit = 40
+  activity.slug = 'summer-school-for-computer-specialist-trainee-teachers'
+  activity.stem_course_template_no = 'c698f5dd-33c1-ea11-a812-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP246'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
