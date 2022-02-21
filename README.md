@@ -32,6 +32,14 @@ If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your 
 
 Optionally set a password for postgres by updating the value for `DEV_PASS` in your `.env` file.
 
+In order to load achiever resources (i.e. courses), you'll need to add staging credentials to `.env` (find in lastpass: TC Achiever creds):
+```
+# STAGING
+ACHIEVER_V2_PASSWORD=...
+ACHIEVER_V2_USERNAME=...
+ACHIEVER_V2_ENDPOINT=...
+```
+
 ### Starting and stopping the stack
 
 Start the stack:
