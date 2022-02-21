@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uri:</strong>
+  <%= @download.uri %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @download.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_download_path(@download) %> |
+<%= link_to 'Back', downloads_path %>

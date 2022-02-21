@@ -1,0 +1,32 @@
+<%= form_with(model: download) do |form| %>
+  # TODO: 21Feb NS: reconsider below; how do we want to handle errors?
+  <% if download.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(download.errors.count, "error") %> prohibited this download from being saved:</h2>
+
+      <ul>
+        <% download.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style='display: none; visibility: hidden' >
+    <%= form.text_field :uri, value: link%>
+    <%= form.text_field :user_id, value: current_user.id if current_user.present? %>
+  </div>
+
+  <%= form.submit( # TODO: 21Feb NS: This is quite a mess; rework
+        name,
+        style: '
+        background: none!important;
+         border: none;
+          padding: 0!important;
+           text-decoration: underline;
+            cursor: pointer;
+             color: #069;',
+        class: style
+      )%>
+
+<% end %>
