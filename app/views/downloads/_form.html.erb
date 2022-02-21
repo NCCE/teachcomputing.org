@@ -1,5 +1,5 @@
 <%= form_with(model: download) do |form| %>
-  # TODO: 21Feb NS: reconsider below; how do we want to handle errors?
+  <!--  # TODO: 21Feb NS: reconsider below; how do we want to handle errors?-->
   <% if download.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(download.errors.count, "error") %> prohibited this download from being saved:</h2>
