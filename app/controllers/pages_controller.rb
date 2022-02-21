@@ -26,6 +26,7 @@ class PagesController < ApplicationController
   end
 
   def static_programme_page
+    @download = Download.new
     @programme = Programme.find_by!(slug: params[:page_slug])
     redirect_to @programme.path and return if @programme.user_enrolled?(current_user)
 

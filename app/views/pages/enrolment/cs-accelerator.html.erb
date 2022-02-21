@@ -43,6 +43,7 @@
         <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
         <p class="govuk-body-s">
           <%= link_to 'CSA Handbook', 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link' %>
+          <%= render 'downloads/form', download: @download, name: 'CSA Handbook', link: 'https://rubyonrails.org', style: 'ncce-link'%>
         </p>
         <p class="govuk-body-s">
           <%= link_to 'GCSE specifications to Computer Science Accelerator course map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %> (September 2020)

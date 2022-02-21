@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :downloads
   root to: 'pages#home', action: :home
 
   resources :achievements, only: %i[create destroy]
