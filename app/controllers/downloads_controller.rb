@@ -1,48 +1,20 @@
 class DownloadsController < ApplicationController
   before_action :set_download, only: [:show, :edit, :update, :destroy]
 
-  # GET /downloads
-  def index
-    @downloads = Download.all
-  end
-
-  # GET /downloads/1
-  def show
-  end
-
-  # GET /downloads/new
-  def new
-    @download = Download.new
-  end
-
-  # GET /downloads/1/edit
-  def edit
-  end
-
-  # POST /downloads
+  # @name POST /downloads
+  # @note Allows downloads of static assets to be recorded
+  # @example
+  # Usage in a view: <%= link_to 'CSA Handbook', downloads_path(name: 'CSA Handbook', uri: 'https://static.../,,.pdf'),method: :post %>
   def create
-    @download = Download.new(download_params)
+    @download = Download.new
+    @download.uri = params[:uri]
+    @download.user_id = current_user.id if current_user.present?
 
     if @download.save
-      redirect_to @download, notice: 'Download was successfully created.'
+      redirect_to @download.uri, notice: 'Download was successfully created.'
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /downloads/1
-  def update
-    if @download.update(download_params)
-      redirect_to @download, notice: 'Download was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /downloads/1
-  def destroy
-    @download.destroy
-    redirect_to downloads_url, notice: 'Download was successfully destroyed.'
   end
 
   private
