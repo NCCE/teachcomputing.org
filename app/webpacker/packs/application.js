@@ -31,4 +31,3 @@ require.context('../fonts', true)
 require.context('../images', true)
 
 Rails.start()
-Turbolinks.start()

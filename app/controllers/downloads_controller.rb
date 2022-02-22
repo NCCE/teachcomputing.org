@@ -11,7 +11,7 @@ class DownloadsController < ApplicationController
     @download.user_id = current_user.id if current_user.present?
 
     if @download.save
-      redirect_to @download.uri, notice: 'Download was successfully created.'
+      redirect_to @download.uri
     else
       render :new
     end
