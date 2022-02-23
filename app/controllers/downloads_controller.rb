@@ -13,7 +13,7 @@ class DownloadsController < ApplicationController
     if @download.save
       redirect_to @download.uri
     else
-      render :new
+      flash[:error] = 'There was a problem creating download. Please contact support'
     end
   end
 
@@ -25,6 +25,6 @@ class DownloadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def download_params
-      params.require(:download).permit(:uri, :user_id)
+      params.require(:download).permit(:uri)
     end
 end

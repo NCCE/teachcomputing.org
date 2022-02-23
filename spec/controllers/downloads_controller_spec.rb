@@ -20,7 +20,7 @@ RSpec.describe DownloadsController, type: :controller do
 
     it 'redirects to uri after creation' do
       post :create, params: { uri: uri }
-      assert_redirected_to 'https://rubyonrails.org'
+      assert_redirected_to uri
     end
   end
 end
