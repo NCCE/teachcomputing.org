@@ -1735,7 +1735,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'aab9499f-e993-ec11-b400
   activity.credit = 20
   activity.slug = 'python-programming-constructs-sequencing,-selection-and-iteration-for-the-ocr-gcse-specification'
   activity.stem_course_template_no = 'aab9499f-e993-ec11-b400-0022481ac687'
-  activity.category = 'face-to-face'
+  activity.category = 'remote'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP423A'
 end
