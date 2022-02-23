@@ -1681,3 +1681,76 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c698f5dd-33c1-ea11-a812
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd464a4fe-2193-ec11-b400-0022481acff4') do |activity|
+  activity.title = 'New to computing - intensive CPD'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-intensive-cpd'
+  activity.stem_course_template_no = 'd464a4fe-2193-ec11-b400-0022481acff4'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP285'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '3cde8ee2-2493-ec11-b400-0022481acff4') do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science – intensive CPD'
+  activity.credit = 40
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-–-intensive-cpd'
+  activity.stem_course_template_no = '3cde8ee2-2493-ec11-b400-0022481acff4'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP288'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7ab41d8f-c093-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Preparing to teach GCSE computer science – intensive CPD'
+  activity.credit = 40
+  activity.slug = 'preparing-to-teach-gcse-computer-science-–-intensive-cpd'
+  activity.stem_course_template_no = '7ab41d8f-c093-ec11-b400-0022481ac687'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP286'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+
+a = Activity.find_or_create_by(stem_course_template_no: 'a1d05263-fb92-ec11-b400-0022481acfa6') do |activity|
+  activity.title = 'Programming with Python – intensive CPD'
+  activity.credit = 40
+  activity.slug = 'programming-with-python-–-intensive-cpd'
+  activity.stem_course_template_no = 'a1d05263-fb92-ec11-b400-0022481acfa6'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP287'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'aab9499f-e993-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration for the OCR GCSE specification'
+  activity.credit = 20
+  activity.slug = 'python-programming-constructs-sequencing,-selection-and-iteration-for-the-ocr-gcse-specification'
+  activity.stem_course_template_no = 'aab9499f-e993-ec11-b400-0022481ac687'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423A'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '922e1a75-d493-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration for the AQA GCSE specification'
+  activity.credit = 20
+  activity.slug = 'python-programming-constructs-sequencing,-selection-and-iteration-for-the-aqa-gcse-specification'
+  activity.stem_course_template_no = '922e1a75-d493-ec11-b400-0022481ac687'
+  activity.category = 'remote'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423B'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
