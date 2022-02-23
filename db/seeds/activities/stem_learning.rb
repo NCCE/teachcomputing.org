@@ -1718,7 +1718,6 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-
 a = Activity.find_or_create_by(stem_course_template_no: 'a1d05263-fb92-ec11-b400-0022481acfa6') do |activity|
   activity.title = 'Programming with Python – intensive CPD'
   activity.credit = 40
