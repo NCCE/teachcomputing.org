@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(version: 2022_02_21_151216) do
     t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
   end
 
+  create_table "aggregate_downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "uri"
+    t.integer "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "assessment_attempt_transitions", force: :cascade do |t|
     t.string "to_state", null: false
     t.json "metadata", default: {}
@@ -141,10 +148,14 @@ ActiveRecord::Schema.define(version: 2022_02_21_151216) do
   end
 
   create_table "downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "aggregate_download_id"
     t.string "uri"
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["aggregate_download_id"], name: "index_downloads_on_aggregate_download_id"
+    t.index ["uri"], name: "index_downloads_on_uri"
+    t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -358,6 +369,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_151216) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
+  add_foreign_key "downloads", "aggregate_downloads"
   add_foreign_key "feedback_comments", "users"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"

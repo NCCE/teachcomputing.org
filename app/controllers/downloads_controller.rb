@@ -6,11 +6,18 @@ class DownloadsController < ApplicationController
   # @example
   # Usage in a view: <%= link_to 'CSA Handbook', downloads_path(name: 'CSA Handbook', uri: 'https://static.../,,.pdf'),method: :post %>
   def create
-    @download = Download.new
-    @download.uri = params[:uri]
-    @download.user_id = current_user.id if current_user.present?
+    aggregate_download = AggregateDownload.create(uri: params[:uri])
 
-    if @download.save
+    aggregate_download.with_lock do
+      aggregate_download.increment(:count)
+      aggregate_download.save
+    end
+
+    @download = Download.new
+    @download.user_id = current_user.id if current_user.present?
+    aggregate_download.downloads << @download
+
+    if @download.save!
       redirect_to @download.uri
     else
       flash[:error] = 'There was a problem creating download. Please contact support'
@@ -18,13 +25,14 @@ class DownloadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_download
-      @download = Download.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def download_params
-      params.require(:download).permit(:uri)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_download
+    @download = Download.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def download_params
+    params.require(:download).permit(:uri)
+  end
 end
