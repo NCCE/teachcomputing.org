@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_151216) do
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uri"], name: "index_aggregate_downloads_on_uri"
   end
 
   create_table "assessment_attempt_transitions", force: :cascade do |t|
@@ -149,12 +150,10 @@ ActiveRecord::Schema.define(version: 2022_02_21_151216) do
 
   create_table "downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "aggregate_download_id"
-    t.string "uri"
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["aggregate_download_id"], name: "index_downloads_on_aggregate_download_id"
-    t.index ["uri"], name: "index_downloads_on_uri"
     t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
