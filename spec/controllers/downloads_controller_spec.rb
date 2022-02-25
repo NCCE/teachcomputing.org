@@ -8,13 +8,24 @@ RSpec.describe DownloadsController, type: :controller do
     it 'creates download, recording logged in user' do
       allow(controller).to receive(:current_user) { user }
       post :create, params: { uri: uri }
-      expect(Download.first.uri).to eq uri
       expect(Download.first.user_id).to eq user.id
+    end
+
+    it 'creates aggregate download' do
+      allow(controller).to receive(:current_user) { user }
+      post :create, params: { uri: uri }
+      expect(AggregateDownload.first.uri).to eq uri
+    end
+
+    it 'increments aggregate download' do
+      allow(controller).to receive(:current_user) { user }
+      post :create, params: { uri: uri }
+      post :create, params: { uri: uri }
+      expect(AggregateDownload.find_by(uri: uri).count).to eq 2
     end
 
     it 'creates download without logged in user' do
       post :create, params: { uri: uri }
-      expect(Download.first.uri).to eq uri
       expect(Download.first.user_id).to eq nil
     end
 
