@@ -1,2 +1,0 @@
-class AggregateDownloadsController < ApplicationController
-end
