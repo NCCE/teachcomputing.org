@@ -1,7 +1,11 @@
-require "test_helper"
+require 'rails_helper'
 
-class AggregateDownloadSpec < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe AggregateDownload, type: :model do
+  let(:aggregate_download) { create(:aggregate_download) }
+
+  describe 'associations' do
+    it 'has many downloads' do
+      expect(aggregate_download).to have_many(:downloads)
+    end
+  end
 end
