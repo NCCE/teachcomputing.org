@@ -3,26 +3,6 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "3bcd0421a6a245cb6c88513e6f17d6c8fdd220f86425673cbef033910943e5bb",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/downloads_controller.rb",
-      "line": 14,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(params[:uri], :notice => \"Download was successfully created.\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "DownloadsController",
-        "method": "create"
-      },
-      "user_input": "params[:uri]",
-      "confidence": "High",
-      "note": "Static assets live outside the app; redirecting to them is expected. Also, it is the responsibility of the view to provide a valid URL; we will not verify it's validity here (because this controller will provide no useful error handling anyways)"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
       "fingerprint": "40947d3dbf33d0b0535f87b2d8bef5f38b6b626b133f8cf47691a6f0d84f9b42",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
@@ -119,8 +99,28 @@
       "user_input": "params[:page_slug]",
       "confidence": "Medium",
       "note": "params[:page_slug] is set in config/router.rb"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "c27f6c4296858c85b1eed32c73ae7603bc3327516731d873bf912ce68c339fb6",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/downloads_controller.rb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DownloadsController",
+        "method": "create"
+      },
+      "user_input": "AggregateDownload.find_or_create_by(:uri => params[:uri]).uri",
+      "confidence": "High",
+      "note": "Static assets live outside the app; redirecting to them is expected. Also, it is the responsibility of the view to provide a valid URL; we will not verify it's validity here (because this controller will provide no useful error handling anyways)"
     }
   ],
-  "updated": "2022-02-22 16:30:45 +0000",
+  "updated": "2022-02-28 16:57:02 +0000",
   "brakeman_version": "5.2.1"
 }
