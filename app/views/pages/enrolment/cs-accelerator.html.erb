@@ -42,7 +42,11 @@
         </div>
         <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
         <p class="govuk-body-s">
-          <%= link_to 'Computer Science Accelerator brochure', 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link' %>
+          <%= link_to 'CSA Handbook',
+                      downloads_path(name: 'CSA Handbook', uri: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf'),
+                      method: :post,
+                      class: 'ncce-link'
+          %>
         </p>
         <p class="govuk-body-s">
           <%= link_to 'GCSE specifications to Computer Science Accelerator course map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %> (September 2020)

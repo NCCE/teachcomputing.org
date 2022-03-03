@@ -84,6 +84,7 @@ Rails.application.routes.draw do
 
   resource :feedback, only: %i[create]
   resources :hubs, only: %i[index]
+  resources :downloads, only: %i[create]
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'

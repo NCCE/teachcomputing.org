@@ -187,5 +187,14 @@ To do so without needing to change password you can set the `USER_TO_IMPERSONATE
 
 ### Troubleshooting
 
+##### General
 - `yarn start` will timeout if it fails to reach the site after a period of time, it will then output the docker logs so you can see the most recent output.
 - If you can access the site at `localhost:3000` but not at `teachcomputing.rpfdev.com`, the nginx instance used by dev-nginx may have gone down, just run `dev-nginx restart` to bring it up again.
+
+##### Turbolinks
+Turbolinks was disabled because it stopped a bunch of critical page reporting and also download data from being captured. Avoid turning it back on.
+Without turbolinks, this will break; the browser will complain that Turbolinks is missing:
+```ruby
+      redirect_to @foo, notice: 'Foo was successfully created.'
+```
+Resolve by removing `notice: 'Foo was successfully created.'`

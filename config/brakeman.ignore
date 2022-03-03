@@ -1,37 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "3b3818f60d90eacd2575d559ffa2773a17cfde218b14ad47ebfed7d676d2bc64",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 36,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => HubRegionComponent.with_collection(HubsIndex.new(:location => params[:location]).hub_regions), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 6,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
       "warning_type": "Redirect",
       "warning_code": 18,
       "fingerprint": "40947d3dbf33d0b0535f87b2d8bef5f38b6b626b133f8cf47691a6f0d84f9b42",
@@ -74,93 +43,11 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "64885c638a21f5433329b8852fa1409e4022d56a50591b63857f26f22ded950c",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 18,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => HubSearchComponent.new(:location => HubsIndex.new(:location => params[:location]).current_location), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 6,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "65bd29be1b5d8c3a54efd127f8ae735236356af593072b2dda4a7e20af39571b",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 51,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(UserProgrammeEnrolment.find_by(user_programme_enrolment_params).programme.path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "UserProgrammeEnrolmentsController",
-        "method": "user_has_existing_enrolment?"
-      },
-      "user_input": "UserProgrammeEnrolment.find_by(user_programme_enrolment_params).programme.path",
-      "confidence": "High",
-      "note": ""
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "697a2e804021d8c56d68bca08cc237e1061f3170586aa660ccc5028ac18962dd",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 38,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => NoHubsComponent.new(:sorted_hubs => HubsIndex.new(:location => params[:location]).sorted_hubs, :hub_regions => HubsIndex.new(:location => params[:location]).hub_regions), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 6,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
       "fingerprint": "743a8a9481886ef66bb619ffb71df8df37ceb2b62eea52546a4e2a7007025f40",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 33,
+      "line": 32,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/enrolment/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -196,26 +83,6 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "92eb83ef5ef70516174c5008c0c48df19eecf7c740f86bf521f80a3b475cae83",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/controllers/pages_controller.rb",
-      "line": 35,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(template => \"pages/#{params[:page_slug]}\", {})",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "PagesController",
-        "method": "static_programme_page"
-      },
-      "user_input": "params[:page_slug]",
-      "confidence": "Medium",
-      "note": "params[:page_slug] is set in config/router.rb"
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
       "fingerprint": "bd20acdf9794a47896c7b7801031ca34eb7e296d7fd59c95af40ec6d767a5c2b",
       "check_name": "Render",
       "message": "Render path contains parameter value",
@@ -234,53 +101,26 @@
       "note": "params[:page_slug] is set in config/router.rb"
     },
     {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "ca40a34e17af537a8a12b885dcd8a1cd7b4b31bcaf49dc3d937cc7a66dfc43be",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/hubs/index.html.erb",
-      "line": 37,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => SortedHubsComponent.new(:sorted_hubs => HubsIndex.new(:location => params[:location]).sorted_hubs, :formatted_address => HubsIndex.new(:location => params[:location]).formatted_address), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "HubsController",
-          "method": "index",
-          "line": 6,
-          "file": "app/controllers/hubs_controller.rb",
-          "rendered": {
-            "name": "hubs/index",
-            "file": "app/views/hubs/index.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "hubs/index"
-      },
-      "user_input": "params[:location]",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 106,
-      "fingerprint": "cdfb1541fdcc9cdcf0784ce5bd90013dc39316cb822eedea3f03b2521c06137f",
-      "check_name": "SanitizeMethods",
-      "message": "loofah gem 2.10.0 is vulnerable (CVE-2018-8048). Upgrade to 2.2.1",
-      "file": "Gemfile.lock",
-      "line": 288,
-      "link": "https://github.com/flavorjones/loofah/issues/144",
-      "code": null,
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "c27f6c4296858c85b1eed32c73ae7603bc3327516731d873bf912ce68c339fb6",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/downloads_controller.rb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri)",
       "render_path": null,
-      "location": null,
-      "user_input": null,
+      "location": {
+        "type": "method",
+        "class": "DownloadsController",
+        "method": "create"
+      },
+      "user_input": "AggregateDownload.find_or_create_by(:uri => params[:uri]).uri",
       "confidence": "High",
-      "note": ""
+      "note": "Static assets live outside the app; redirecting to them is expected. Also, it is the responsibility of the view to provide a valid URL; we will not verify it's validity here (because this controller will provide no useful error handling anyways)"
     }
   ],
-  "updated": "2021-12-22 10:05:44 +0000",
-  "brakeman_version": "5.1.1"
+  "updated": "2022-02-28 16:57:02 +0000",
+  "brakeman_version": "5.2.1"
 }
