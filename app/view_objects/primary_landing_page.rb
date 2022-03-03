@@ -117,21 +117,19 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 2: Computing systems and networks – IT around us',
-        url: '/curriculum/key-stage-1/computing-systems-and-networks-it-around-us',
-        description: 'With an initial focus on IT in the home,
-        learners explore how IT benefits society in places such as shops, libraries,
-        and hospitals. Whilst discussing the responsible use of technology,
-        and how to make smart choices when using it.',
+        title: 'Year 1: Grouping Data',
+        url: '/curriculum/key-stage-1/data-and-information-grouping-data',
+        description: 'Begin exploring the exciting world of Data and Information.
+                      Explore object labels, then using them to sort and group objects
+                      by properties.',
         event_label: 'Featured unit 1'
       },
       {
-        title: 'Year 3: Computing systems and networks – Connecting computers',
-        url: '/curriculum/key-stage-2/computing-systems-and-networks-connecting-computers',
-        description: 'Challenge your learners to develop their understanding of digital devices,
-        with an initial focus on inputs, processes, and outputs.
-        Start by comparing digital and non-digital devices,
-        before introducing them to computer networks.',
+        title: 'Year 6: Introduction to Spreadsheets',
+        url: '/curriculum/key-stage-2/data-and-information-spreadsheets',
+        description: 'Give learners the chance to solve real world problems
+                      by using spreadsheets to organise and calculate data.
+                      They can ask questions and find their own answers.',
         event_label: 'Featured unit 2'
       }
     ]
