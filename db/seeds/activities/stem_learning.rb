@@ -1768,3 +1768,25 @@ a = Activity.find_or_create_by(stem_course_template_no: '2c337ed1-bb94-ec11-b400
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+Activity.find_or_create_by(stem_course_template_no: '0e132344-139a-ec11-b400-000d3a0cb821') do |activity|
+  activity.title = 'CSA Celebration events 2022'
+  activity.credit = 10
+  activity.slug = 'csa-celebration-events-2022'
+  activity.stem_course_template_no = '0e132344-139a-ec11-b400-000d3a0cb821'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP334'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '2f2379c9-2e9a-ec11-b400-000d3a0cb821') do |activity|
+  activity.title = ' Preparing to teach GCSE computer science - residential'
+  activity.credit = 40
+  activity.slug = 'preparing-to-teach-gcse-computer-science-residential'
+  activity.stem_course_template_no = '2f2379c9-2e9a-ec11-b400-000d3a0cb821'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP289'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
