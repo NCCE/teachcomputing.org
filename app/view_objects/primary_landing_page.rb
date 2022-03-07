@@ -122,15 +122,17 @@ class PrimaryLandingPage
         description: 'Begin exploring the exciting world of Data and Information.
                       Explore object labels, then using them to sort and group objects
                       by properties.',
-        event_label: 'Featured unit 1'
+        event_label: 'Featured unit 1',
+        updated_at: 'Featured unit'
       },
       {
         title: 'Year 6: Introduction to Spreadsheets',
         url: '/curriculum/key-stage-2/data-and-information-spreadsheets',
         description: 'Give learners the chance to solve real world problems
-                      by using spreadsheets to organise and calculate data.
-                      They can ask questions and find their own answers.',
-        event_label: 'Featured unit 2'
+        by using spreadsheets to organise and calculate data.
+        They can ask questions and find their own answers.',
+        event_label: 'Featured unit 2',
+        updated_at: 'Updated February 2022'
       }
     ]
   end
