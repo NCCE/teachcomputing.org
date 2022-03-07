@@ -149,7 +149,7 @@ RSpec.describe PrimaryLandingPage do
     end
 
     it 'returns correctly shaped data' do
-      keys = %i[title url description event_label]
+      keys = %i[title url description event_label updated_at]
 
       expect(landing_page.resources.map(&:keys)).to eq(Array.new(2, keys))
     end
