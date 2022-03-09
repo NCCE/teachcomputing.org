@@ -1805,7 +1805,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'da3c3300-cc9e-ec11-b400-0022481b0068') do |activity|
   activity.title = 'Computing for specialist teachers of autistic students'
-  activity.credit = 10
+  activity.credit = 20
   activity.slug = 'computing-for-specialist-teachers-of-autistic-students'
   activity.stem_course_template_no = 'da3c3300-cc9e-ec11-b400-0022481b0068'
   activity.category = 'face-to-face'
