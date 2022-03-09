@@ -41,7 +41,7 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
     end
 
     it 'has the expected links' do
-      expect(rendered).to have_link('View Computer Systems and Networks Report', href: 'https://static.teachcomputing.org/Programming+and+Algorithms+Report.pdf')
+      expect(rendered).to have_link('View Programming and Algorithms Report', href: 'https://static.teachcomputing.org/Programming+and+Algorithms+Report.pdf')
       expect(rendered).to have_link('International Computing Textbook Review', href: 'https://static.teachcomputing.org/International_Textbook_Review.pdf')
     end
   end
