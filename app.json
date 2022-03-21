@@ -108,9 +108,6 @@
     "FL_PARTNERS_CONSUMER_SECRET": {
       "required": true
     },
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
     "USER_ACHIEVEMENTS_API_SECRET": {
       "required": true,
       "value": "secret"
