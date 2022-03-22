@@ -9,6 +9,7 @@ module CurriculumClient
         title
         slug
         description
+        Isaac_url
         unitGuide {
           #{file_fields}
         }
@@ -39,6 +40,8 @@ module CurriculumClient
           title
         }
       GRAPHQL
+
+      puts FIELDS
 
       def self.all(fields = FIELDS)
         super(context: :units, fields: fields, cache_key: 'unit--all')
