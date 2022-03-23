@@ -11,6 +11,10 @@ $aside-padding: 1rem;
   &__text--s {
     font-size: 1.0625rem;
   }
+
+  &--tapestry-color {
+    border-top-color: $tapestry;
+  }
 }
 
 .ncce-aside--borderless {
