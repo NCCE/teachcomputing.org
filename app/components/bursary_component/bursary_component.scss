@@ -1,4 +1,4 @@
-.bursary-component {
+.gcse-revision, .bursary-component {
   @include bottom-margined;
 }
 
@@ -13,7 +13,7 @@
   }
 }
 
-.bursary-component__link {
+.gcse-revision__link, .bursary-component__link {
   font-weight: bold;
   margin-bottom: 0;
 }
