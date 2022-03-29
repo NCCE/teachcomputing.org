@@ -67,16 +67,16 @@
                 {
                   class_name: 'developing-in-the-classroom',
                   title_link: {
-                    title: 'pages.enrolment.primary-certificate.developing_title',
+                    title: t('.developing_title'),
                     url: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf',
                     tracking_label: 'Classroom PDF',
                     file_type: '(PDF)'
                   },
                   body: {
-                    text: 'pages.enrolment.primary-certificate.developing_text'
+                    text: t('.developing_text')
                   },
                   button: {
-                    title: 'pages.enrolment.primary-certificate.enrol',
+                    title: t('.enrol'),
                     url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'developing-in-the-classroom' }),
                     method: :post,
                     tracking_label: 'Classroom enrol'
@@ -85,16 +85,16 @@
                 {
                   class_name: 'specialising-or-leading',
                   title_link: {
-                    title: 'pages.enrolment.primary-certificate.specialising_title',
+                    title: t('.specialising_title'),
                     url: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf',
                     tracking_label: 'Leading PDF',
                     file_type: '(PDF)'
                   },
                   body: {
-                    text: 'pages.enrolment.primary-certificate.specialising_text'
+                    text: t('.specialising_text')
                   },
                   button: {
-                    title: 'pages.enrolment.primary-certificate.enrol',
+                    title: t('.enrol'),
                     url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'specialising-or-leading' }),
                     method: :post,
                     tracking_label: 'Leading enrol'

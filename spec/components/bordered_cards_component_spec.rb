@@ -1,7 +1,49 @@
 require 'rails_helper'
 
 RSpec.describe BorderedCardsComponent, type: :component do
-  let(:test_data) { AboutPage.support_cards }
+  let(:test_data) do
+    {
+      class_name: 'support-cards',
+      cards: [
+        {
+          class_name: 'supporting-partners-card',
+          title: I18n.t('pages.about.supporting_partners_card.title'),
+          text: I18n.t('pages.about.supporting_partners_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.supporting_partners_card.link_title'),
+            link_url: '/supporting-partners'
+          }
+        },
+        {
+          class_name: 'involvement-card',
+          title: I18n.t('pages.about.involvement_card.title'),
+          text: I18n.t('pages.about.involvement_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.involvement_card.link_title'),
+            link_url: '/get-involved'
+          }
+        },
+        {
+          class_name: 'contributing-partners-card',
+          title: I18n.t('pages.about.contributing_partners_card.title'),
+          text: I18n.t('pages.about.contributing_partners_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.contributing_partners_card.link_title'),
+            link_url: '/contributing-partners'
+          }
+        },
+        {
+          class_name: 'governors-card',
+          title: I18n.t('pages.about.governors_card.title'),
+          text: I18n.t('pages.about.governors_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.governors_card.link_title'),
+            link_url: '/governors-and-trustees/'
+          }
+        }
+      ]
+    }
+  end
 
   context 'without an image' do
     before do

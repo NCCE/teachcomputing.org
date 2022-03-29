@@ -10,7 +10,16 @@
           </p>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render RelatedLinksComponent.new(ImpactPage.related_links) %>
+          <%= render RelatedLinksComponent.new(
+            links: [
+              {
+                link_title: t('pages.about.hero.title'),
+                link_url: '/about',
+                tracking_page: tracking_category,
+                tracking_label: 'about'
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
@@ -20,12 +29,63 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class='govuk-heading-l'><%= t('.impact_reports_title') %></h2>
-          <%= render ReportCardComponent.new(ImpactPage.impact_report_card) %>
+          <%= render ImageReportCardComponent.new(
+            class_name: 'impact-report-card',
+            show_border: true,
+            title: t('.impact_report_card.title'),
+            date: t('.impact_report_card.date'),
+            text: t('.impact_report_card.text'),
+            image: {
+              path: 'media/images/pages/impact/impact_report.png',
+              alt: t('.impact_report_card.image_alt')
+            },
+            button: {
+              button_title: t('.impact_report_card.button_title'),
+              button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf',
+              tracking_page: tracking_category,
+              tracking_label: 'Impact report'
+            }
+          ) %>
         </div>
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
         <div class="govuk-grid-column-full">
-          <%= render DocumentCardsComponent.new(ImpactPage.evaluation_cards) %>
+          <%= render DocumentCardsComponent.new(
+            class_name: 'evaluation-cards',
+            show_border: true,
+            tracking_category: tracking_category,
+            cards: [
+              {
+                class_name: 'impact-graduates-card',
+                title_link: {
+                  title: t('.graduates_card_2.title'),
+                  url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf',
+                  tracking_label: 'CSA cohort 2'
+                },
+                date: t('.graduates_card_2.date'),
+                body: {
+                  text: t('.graduates_card_2.text.html', executive_summary_link: (
+                    link_to 'our Executive Summary',
+                            'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf',
+                            class: 'ncce-link', data: tracking('CSA 2 exec summary')
+                    )
+                  ),
+                }
+              },
+              {
+                class_name: 'impact-graduates-card',
+                title_link: {
+                  title: t('.graduates_card.title'),
+                  url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf',
+                  tracking_label: 'CSA cohort 1'
+                },
+                date: t('.graduates_card.date'),
+                body: {
+                  text: t('.graduates_card.text')
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
@@ -35,12 +95,69 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class='govuk-heading-l'><%= t('.curriculum_reports_title') %></h2>
-          <%= render ReportCardComponent.new(ImpactPage.literacy_report_card) %>
+          <%= render ReportCardComponent.new(
+            class_name: 'literacy-report-card',
+            title: t('.literacy_report_card.title'),
+            date: t('.literacy_report_card.date'),
+            text: t('.literacy_report_card.text'),
+            bullets: [
+              t('.literacy_report_card.item_1.html'),
+              t('.literacy_report_card.item_2.html'),
+              t('.literacy_report_card.item_3.html')
+            ],
+            button: {
+              button_title: t('.literacy_report_card.button_title'),
+              button_url: 'https://static.teachcomputing.org/Programming+and+Algorithms+Report.pdf',
+              tracking_page: tracking_category,
+              tracking_label: 'Programming and Algorithms'
+            }
+          ) %>
         </div>
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
         <div class="govuk-grid-column-full">
-          <%= render DocumentCardsComponent.new(ImpactPage.curriculum_cards) %>
+          <%= render DocumentCardsComponent.new(
+            class_name: 'curriculum-cards',
+            tracking_category: tracking_category,
+            cards: [
+              {
+                class_name: 'computer-systems',
+                title_link: {
+                  title: t('.computer_systems.title'),
+                  url: 'https://static.teachcomputing.org/Computer_Systems_%26_Networking_Report_-_Final.pdf',
+                  tracking_label: 'computer systems'
+                },
+                date: t('.computer_systems.date'),
+                body: {
+                  text: t('.computer_systems.text')
+                }
+              },
+              {
+                class_name: 'impact-literacy-card',
+                title_link: {
+                  title: t('.literacy_card.title'),
+                  url: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf',
+                  tracking_label: 'Digital literacy'
+                },
+                date: t('.literacy_card.date'),
+                body: {
+                  text: t('.literacy_card.text')
+                }
+              },
+              {
+                class_name: 'impact-textbook-card',
+                title_link: {
+                  title: t('.textbook_card.title'),
+                  url: 'https://static.teachcomputing.org/International_Textbook_Review.pdf',
+                  tracking_label: 'Textbook review'
+                },
+                date: t('.textbook_card.date'),
+                body: {
+                  text: t('.textbook_card.text')
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
@@ -54,7 +171,42 @@
       </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <%= render BorderedCardsComponent.new(ImpactPage.research_resource_cards) %>
+          <%= render BorderedCardsComponent.new(
+            class_name: 'research-resource-cards',
+            cards_per_row: 3,
+            cards: [
+              {
+                title: t('.gender_balance_card.title'),
+                text: t('.gender_balance_card.text'),
+                link: {
+                  link_title: t('.gender_balance_card.link_title'),
+                  link_url: '/gender-balance',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.gender_balance_card.title')
+                }
+              },
+              {
+                title: t('.practitioners_card.title'),
+                text: t('.practitioners_card.text'),
+                link: {
+                  link_title: t('.practitioners_card.link_title'),
+                  link_url: '/subject-practitioners',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.practitioners_card.title')
+                }
+              },
+              {
+                title: t('.pedagogy_card.title'),
+                text: t('.pedagogy_card.text'),
+                link: {
+                  link_title: t('.pedagogy_card.link_title'),
+                  link_url: '/pedagogy',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.pedagogy_card.title')
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
@@ -71,7 +223,39 @@
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
         <div class="govuk-grid-column-full">
-          <%= render LogoCardsComponent.new(ImpactPage.partner_resources) %>
+          <%= render LogoCardsComponent.new(
+            class_name: 'partner-resources',
+            cards_per_row: 3,
+            cards: [
+              {
+                image_url: 'media/images/logos/stem-logo-with-bg.svg',
+                title_link: {
+                  title: t('.stem_card.link_title'),
+                  title_url: 'https://www.stem.org.uk/impact-and-evaluation',
+                  tracking_page: tracking_category,
+                  tracking_label: 'STEM'
+                }
+              },
+              {
+                image_url: 'media/images/logos/rpf-logo-with-bg.svg',
+                title_link: {
+                  title: t('.rpf_card.link_title'),
+                  title_url: 'https://www.raspberrypi.org/computing-education-research-online-seminars/',
+                  tracking_page: tracking_category,
+                  tracking_label: 'RPF'
+                }
+              },
+              {
+                image_url: 'media/images/logos/bcs-logo-with-bg.svg',
+                title_link: {
+                  title: t('.bcs_card.link_title'),
+                  title_url: 'https://www.bcs.org/more/learned-publishing/',
+                  tracking_page: tracking_category,
+                  tracking_label: 'BCS'
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>

@@ -1,7 +1,36 @@
 require 'rails_helper'
 
 RSpec.describe DocumentCardsComponent, type: :component do
-  let(:test_data) { ImpactPage.evaluation_cards }
+  let(:test_data) do
+    {
+      class_name: 'evaluation-cards',
+      show_border: true,
+      cards: [
+        {
+          class_name: 'impact-graduates-card',
+          title_link: {
+            title: 'Computer Science Accelerator Graduates Evaluation (cohort 2)',
+            url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort_2_Evaluation.pdf'
+          },
+          date: 'Published July 2021',
+          body: {
+            text: 'Read the experiences of our second cohort of graduates and the impact of completing the Computer Science Accelerator on them, their students and colleagues.'
+          }
+        },
+        {
+          class_name: 'impact-graduates-card',
+          title_link: {
+            title: 'Computer Science Accelerator Graduates Evaluation (cohort 1)',
+            url: 'https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf'
+          },
+          date: 'Published October 2020',
+          body: {
+            text: 'Reviews feedback from the first graduates of the Computer Science Accelerator programme, covering programme quality, value, impact, and overall experience.'
+          }
+        }
+      ]
+    }
+  end
 
   context 'with no date' do
     before do
@@ -45,13 +74,6 @@ RSpec.describe DocumentCardsComponent, type: :component do
       expect(rendered_component).to have_css(
         '.document-card__text',
         text: 'Reviews feedback from the first graduates of the Computer Science Accelerator'
-      )
-    end
-
-    it 'renders html in the body text if passed' do
-      expect(rendered_component).to have_link(
-        'our Executive Summary',
-        href: 'https://static.teachcomputing.org/CSA_Graduates_Evaluation_Executive_Summary.pdf'
       )
     end
   end

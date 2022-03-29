@@ -7,7 +7,7 @@
   <div class='report-card-component__list-wrapper'>
     <ul class='govuk-list govuk-list--bullet report-card-component__list' role='list'>
       <% @bullets.each do | bullet | %>
-      <li><%= bullet.html_safe %></li>
+      <li><%= bullet %></li>
       <% end %>
     </ul>
     <% unless @stats_date.blank? %>
