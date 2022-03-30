@@ -1,0 +1,73 @@
+.image-report-card-component__wrapper {
+  background-color: $white;
+  box-shadow: none;
+
+  @include govuk-media-query($from: desktop) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto auto;
+  }
+}
+
+.image-report-card-component__wrapper[data-show-border='true'] {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.image-report-card-component__title {
+  background-image: url('../images/icons/resources-black.svg');
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  padding-left: 2em !important;
+  padding-top: 0.35em;
+  padding-bottom: 0.5em;
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.8rem;
+    padding-left: 1.7em !important;
+    padding-top: 0;
+  }
+}
+
+.image-report-card-component__date {
+  margin: 0.2em 0 0 2.6em;
+}
+
+.image-report-card-component__text {
+  margin: 20px 0;
+}
+
+.image-report-card-component__image-wrapper {
+  text-align: center;
+  background-color: #E3F6FC;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+
+    @include govuk-media-query($from: 445px) {
+      width: 420px;
+    }
+  }
+}
+
+.image-report-card-component__text-wrapper {
+  padding: $component-padding-mobile;
+
+  @include govuk-media-query($from: tablet) {
+    padding: $component-padding;
+  }
+}
+
+@include govuk-media-query($from: desktop) {
+  .image-report-card-component__title,
+  .image-report-card-component__text,
+  .image-report-card-component__button {
+    grid-column: 1;
+  }
+
+  .image-report-card-component__button {
+    grid-row: 4;
+  }
+}

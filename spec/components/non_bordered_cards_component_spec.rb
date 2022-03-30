@@ -1,7 +1,31 @@
 require 'rails_helper'
 
 RSpec.describe NonBorderedCardsComponent, type: :component do
-  let(:test_data) { AboutPage.programme_cards }
+  let(:test_data) do
+    {
+      class_name: 'programme-cards',
+      cards: [
+        {
+          class_name: 'bordered-card--primary-cert',
+          title: I18n.t('pages.about.primary_card.title'),
+          text: I18n.t('pages.about.primary_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.primary_card.link_title'),
+            link_url: '/primary-teachers'
+          }
+        },
+        {
+          class_name: 'bordered-card--secondary-cert',
+          title: I18n.t('pages.about.secondary_card.title'),
+          text: I18n.t('pages.about.secondary_card.text'),
+          link: {
+            link_title: I18n.t('pages.about.secondary_card.link_title'),
+            link_url: '/secondary-teachers'
+          }
+        }
+      ]
+    }
+  end
 
   context 'without an image' do
     before do
