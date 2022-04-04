@@ -6,6 +6,8 @@
 
 ## Development
 
+IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clone git@github.com:NCCE/teachcomputing.org.git teachcomputing` (one or two scripts right now expect the docker project name to be `teachcomputing`, so for now this is the easiest approach)
+
 ### Dependencies:
 
 - [Homebrew](https://brew.sh/)
