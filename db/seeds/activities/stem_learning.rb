@@ -1815,3 +1815,25 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee') do |activity|
+  activity.title = 'Introduction to the micro:bit in key stage 2 - short course'
+  activity.credit = 10
+  activity.slug = 'introduction-to-the-micro-bit-in-key-stage-2'
+  activity.stem_course_template_no = '5178b539-29b0-ec11-983f-0022480078ee'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP292'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '726ece56-27b0-ec11-983f-002248006a24') do |activity|
+  activity.title = 'Implementing the Teach Computing Curriculum in your school'
+  activity.credit = 20
+  activity.slug = 'implementing-the-teach-computing-curriculum-in-your-school'
+  activity.stem_course_template_no = '726ece56-27b0-ec11-983f-002248006a24'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP255'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
