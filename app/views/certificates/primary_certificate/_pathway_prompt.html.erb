@@ -15,7 +15,7 @@
         <ul class="govuk-list ncce-details__pathway-list">
           <% @pathways.each do |pathway| %>
             <li class="govuk-body-s">
-              <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{pathway.title} PDF" } %> (PDF)
+              <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: tracking_data("#{pathway.title} PDF") %> (PDF)
             </li>
           <% end %>
         </ul>
@@ -24,11 +24,7 @@
             method: :put,
             class: '',
             id: 'primary-pathway-form',
-            data: {
-              event_action: 'click',
-              event_category: 'Primary enrolled',
-              event_label: 'Opt in pathway'
-            }
+            data: tracking_data('Opt in pathway')
           } do %>
           <%= select_tag :pathway_id,
             options_for_select(@pathways.collect {|p| [ p['title'], p['id'] ] }),

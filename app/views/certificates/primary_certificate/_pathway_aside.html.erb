@@ -1,7 +1,7 @@
 <div class="ncce-aside ncce-pathway-prompt ncce-pathway-prompt--aside">
   <h2 class="govuk-body ncce-pathway-prompt__title">
     <strong><%= t('.heading') %></strong>
-    <p class='govuk-body-s'><%= link_to(@user_pathway.title, @user_pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{@user_pathway.title} PDF" }) %> (PDF)</p>
+    <p class='govuk-body-s'><%= link_to @user_pathway.title, @user_pathway.pdf_link, class: "ncce-link", data: tracking_data("#{@user_pathway.title} PDF") %> (PDF)</p>
   </h2>
   <details class="govuk-details ncce-details" data-module="govuk-details">
     <summary class="govuk-details__summary ncce-details__summary">
@@ -14,7 +14,7 @@
       <ul class="govuk-list ncce-details__pathway-list">
         <% available_pathways_for_user.each do |pathway| %>
           <li class="govuk-body-s">
-            <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: { event_action: 'click', event_category: 'Primary enrolled', event_label: "#{pathway.title} PDF" } %> (PDF)
+            <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: tracking_data("#{pathway.title} PDF") %> (PDF)
           </li>
         <% end %>
       </ul>
@@ -23,11 +23,7 @@
           method: :put,
           class: '',
           id: 'primary-pathway-form',
-          data: {
-            event_action: 'click',
-            event_category: 'Primary enrolled',
-            event_label: 'Change pathway'
-          }
+          data: tracking_data('Change pathway')
         } do %>
           <%= select_tag :pathway_id,
             options_for_select(available_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
@@ -38,7 +34,7 @@
               required: true
             }
           %>
-          <%= submit_tag t('.button.text'), class: 'govuk-button button button--small ncce-pathway-aside__button ncce-pathway-aside__button--full govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: 'Primary enrolled', event_label: 'Switch pathway' } %>
+          <%= submit_tag t('.button.text'), class: 'govuk-button button button--small ncce-pathway-aside__button ncce-pathway-aside__button--full govuk-!-margin-bottom-0', data: tracking_data('Switch pathway') %>
       <% end %>
     </div>
   </details>
