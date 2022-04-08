@@ -17,19 +17,15 @@
           <%= render BursaryComponent.new(
             text: t('.bursary_aside.text'),
             tracking_event_label: 'Bursary',
-            tracking_event_category: 'Primary enrolled'
+            tracking_event_category: tracking_category
           ) %>
           <%= render AsideComponent.new(
             title: t('.support_aside.title'),
             class_name: 'primary-dashboard__help-aside',
             text: t(
               '.support_aside.text.html',
-              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: {
-                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Email'
-              }),
-              hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: {
-                event_action: 'click', event_category: 'Primary enrolled', event_label: 'Contact Hub'
-              })
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email')),
+              hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub'))
             )
           ) %>
           <div class="ncce-aside--borderless">
