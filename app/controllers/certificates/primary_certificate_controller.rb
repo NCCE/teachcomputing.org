@@ -69,7 +69,7 @@ module Certificates
         return nil unless user_pathway
 
         recommended_activities = user_pathway.pathway_activities
-        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category === :community.to_s }
+        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
         @recommended_activities = recommended_activities - @recommended_community_activities
       end
 
@@ -86,6 +86,7 @@ module Certificates
       end
 
       def complete_achievements
+        # Diagnostic may still exist for some users, so we must continue excluding it
         current_user.achievements.without_category('action')
                     .without_category('diagnostic')
                     .for_programme(@programme).sort_complete_first

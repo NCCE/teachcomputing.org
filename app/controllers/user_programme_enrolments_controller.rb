@@ -7,14 +7,8 @@ class UserProgrammeEnrolmentsController < ApplicationController
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
     if enroller.call
-      case programme.slug
-      when 'primary-certificate'
-        redirect_to diagnostic_primary_certificate_path(:question_1)
-      else
-        flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
-        redirect_to programme.path
-      end
-
+      flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
+      redirect_to programme.path
     else
       flash[:error] = 'Whoops something went wrong'
       redirect_to dashboard_path
