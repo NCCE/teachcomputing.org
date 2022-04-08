@@ -30,6 +30,14 @@ describe TrackingHelper, type: :helper do
     end
   end
 
+  it "returns nil if the category isn't found" do
+    request.path = 'an_undefined_route'
+    controller.request = request
+    allow(helper).to receive(:request).and_return(request)
+
+    expect(tracking_data('test_3')).to be_nil
+  end
+
   it 'overrides the category when one is passed' do
     expect(tracking_data('test_2', 'test_category')).to eq(
       { event_action: 'click', event_category: 'test_category', event_label: 'test_2' }
