@@ -3,7 +3,7 @@ module ApplicationHelper
     content_for :"meta_#{tag}", text
   end
 
-  def yield_meta_tag(tag, default_text='')
+  def yield_meta_tag(tag, default_text = '')
     content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
   end
 
@@ -27,19 +27,19 @@ module ApplicationHelper
 
   def safe_redirect_url(url)
     allowed_redirect_urls = [
-      /^https:\/\/teachcomputing.rpfdev.com/,
-      /^https:\/\/teachcomputing.org/,
-      /^https:\/\/staging.teachcomputing.org/,
-      /^https:\/\/stem.org.uk/,
-      /^https:\/\/www.stem.org.uk/,
-      /^https:\/\/www-stage.stem.org.uk/,
-      /^https:\/\/teachcomputing-staging-pr-([0-9]+).herokuapp.com/,
-      /^https:\/\/ncce.io/
+      %r{^https://teachcomputing.rpfdev.com},
+      %r{^https://teachcomputing.org},
+      %r{^https://staging.teachcomputing.org},
+      %r{^https://stem.org.uk},
+      %r{^https://www.stem.org.uk},
+      %r{^https://www-stage.stem.org.uk},
+      %r{^https://teachcomputing-staging-pr-([0-9]+).herokuapp.com},
+      %r{^https://ncce.io}
     ]
-    allowed_redirect_urls.push(/^http:\/\/localhost:3000/) if ENV['RAILS_ENV'] == 'development'
+    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV['RAILS_ENV'] == 'development'
     allowed_redirect_urls.each do |regex|
       return url if url =~ regex
     end
-    return nil
+    nil
   end
 end

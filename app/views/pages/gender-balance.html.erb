@@ -27,19 +27,19 @@
 				<p class="govuk-body">Gender Balance in Computing is a collaboration between the Raspberry Pi Foundation; STEM Learning; BCS, The Chartered Institute for IT; the Behavioural Insights Team; Apps for Good; and WISE.</p>
 				<h2 class="govuk-heading-m">Why this research is important</h2>
 				<p class="govuk-body">Sadly, many young women do not see computing-related subjects as an option for their future career. Research suggests that a variety of factors are likely to be responsible, including feeling like they don’t belong in the subject or its community, a lack of sustained encouragement, and a lack of computing role models when they are learning about the subject.</p>
-				<p class="govuk-body">The Gender Balance in Computing research programme aims to find out what works to encourage girls to develop an interest during their primary and secondary school years, and increase the number of young women who choose to study Computer Science at GCSE and A level. We are running a number of pilot studies and Randomised Control Trials (RCTs) to assess the impact of different types of intervention on female pupil’s engagement in computing. We use standardised surveys measuring different aspects of engagement and attitudes towards computing, as well as intention to study GCSE computing, to measure the impact of the interventions.</p>
+				<p class="govuk-body">The Gender Balance in Computing research programme aims to find out what works to encourage girls to develop an interest during their primary and secondary school years, and increase the number of young women who choose to study Computer Science at GCSE and A level. We are running a number of pilot studies and Randomised Control Trials (RCTs) to assess the impact of different types of intervention on female pupil's engagement in computing. We use standardised surveys measuring different aspects of engagement and attitudes towards computing, as well as intention to study GCSE computing, to measure the impact of the interventions.</p>
         <h2 class="govuk-heading-m">Interventions</h2>
         <p class="govuk-body"><%= link_to 'Teaching Approach', 'https://teachcomputing.org/teaching-approach/', class: 'ncce-link' %>: Trialling pair programming, peer instruction and storytelling as approaches to teaching Computing.</p>
         <p class="govuk-body"><%= link_to 'Belonging', 'https://teachcomputing.org/belonging/', class: 'ncce-link' %>: Encouraging a sense of belonging in the subject, including work with role models and involving parents and carers.</p>
         <p class="govuk-body"><%= link_to 'Informal learning', 'https://teachcomputing.org/informal-learning/', class: 'ncce-link' %>: Making the link between non formal activities and future opportunities in computing.</p>
         <p class="govuk-body"><%= link_to 'Relevance', 'https://teachcomputing.org/relevance/', class: 'ncce-link' %>: Supporting teachers to bring students interest and things they care about into their teaching.</p>
         <p class="govuk-body"><%= link_to 'Subject choice and options materials', 'https://teachcomputing.org/subject-choice-exploratory-research/', class: 'ncce-link' %>: Exploratory research into potential barriers to choosing to study the subject further.</p>
-        <h2 class="govuk-heading-m">What’s currently happening with the programme?</h2>
+        <h2 class="govuk-heading-m">What's currently happening with the programme?</h2>
         <p class="govuk-body">Several interventions are close to completion and others are underway in schools now. Our independent evaluators will be reporting on the results of the trials as they are completed.</p>
 				<div class="light-blue-bg padded-box govuk-!-margin-bottom-3">
 					<h2 class="govuk-heading-m">How can I learn more about the research?</h2>
 					<p class='govuk-body'>Over the last two years, we have been writing regular blog posts on issues relating to gender balance in computing, including tips for teachers to try out in their classrooms.</p>
-					<%= link_to 'Discover our research articles', 'https://blog.teachcomputing.org/tag/gbic-article/', class: 'govuk-button button govuk-!-margin-bottom-3', data: tracking('research articles') %>
+					<%= link_to 'Discover our research articles', 'https://blog.teachcomputing.org/tag/gbic-article/', class: 'govuk-button button govuk-!-margin-bottom-3', data: tracking_data('research articles') %>
 				</div>
       </div>
       <div class="govuk-grid-column-one-third">
@@ -47,7 +47,7 @@
           <p class="govuk-body"><strong>Get updates about our programme<strong>
           </p>
           <p class="govuk-body">Want the latest news and updates about our research?</p>
-      		<%= link_to 'Sign up for our newsletter', 'https://raspberrypi.us9.list-manage.com/subscribe?u=54fbc2c9ac9d9dd634725107a&id=400611fc51', class: 'govuk-button button button--aside', data: tracking('newsletter') %>
+      		<%= link_to 'Sign up for our newsletter', 'https://raspberrypi.us9.list-manage.com/subscribe?u=54fbc2c9ac9d9dd634725107a&id=400611fc51', class: 'govuk-button button button--aside', data: tracking_data('newsletter') %>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
 								Just Eat
               </p>
 							<p class="govuk-body-s testimonial__bio-cell--span-2">
-              <strong><%= link_to 'Read Swetha’s interview', 'https://blog.teachcomputing.org/researching-the-right-career', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+              <strong><%= link_to "Read Swetha's interview", 'https://blog.teachcomputing.org/researching-the-right-career', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
             </p>
             </div>
           </div>
@@ -94,7 +94,7 @@
 								Amazon
               </p>
 							<p class="govuk-body-s testimonial__bio-cell--span-2">
-              <strong><%= link_to 'Read Beth’s interview', 'https://blog.teachcomputing.org/alexa-can-you-tell-me-more-about-digital-careers', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+              <strong><%= link_to "Read Beth's interview", 'https://blog.teachcomputing.org/alexa-can-you-tell-me-more-about-digital-careers', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
             </p>
             </div>
           </div>
@@ -112,7 +112,7 @@
 								British Antarctic Survey
               </p>
 							<p class="govuk-body-s testimonial__bio-cell--span-2">
-              <strong><%= link_to 'Read Risa’s interview', 'https://blog.teachcomputing.org/using-computational-thinking-to-tackle-real-world-problems', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
+              <strong><%= link_to "Read Risa's interview", 'https://blog.teachcomputing.org/using-computational-thinking-to-tackle-real-world-problems', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong>
             </p>
             </div>
           </div>
