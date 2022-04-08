@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+class CourseActivityComponent < ViewComponent::Base
+  include ViewComponent::Translatable
+
+  renders_one :badge, DashBadgeComponent
+
+  delegate :activity_icon_class,
+           :activity_type,
+           to: :helpers
+
+  def initialize(description:, booking:, achievements: nil, class_name: nil, tracking_category: nil)
+    @description = description
+    @achievements = achievements
+    @booking = booking
+    @class_name = class_name
+    @tracking_category = tracking_category
+  end
+
+  def tracking_data(label)
+    return nil unless @tracking_category.present? && label.present?
+
+    {
+      event_action: 'click',
+      event_category: @tracking_category,
+      event_label: label
+    }
+  end
+end

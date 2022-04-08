@@ -9,7 +9,9 @@ module TrackingHelper
       hubs_path => 'Hubs',
       impact_path => 'Impact',
       primary_path => 'Primary unenrolled',
-      primary_certificate_path => 'Primary enrolled'
+      primary_certificate_path => 'Primary enrolled',
+      secondary_path => 'Secondary unenrolled',
+      secondary_certificate_path => 'Secondary enrolled'
     }
   end
 
