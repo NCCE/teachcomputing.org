@@ -117,22 +117,21 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 1: Grouping Data',
-        url: '/curriculum/key-stage-1/data-and-information-grouping-data',
-        description: 'Begin exploring the exciting world of Data and Information.
-                      Explore object labels, then using them to sort and group objects
-                      by properties.',
+        title: 'Year 2: Creating media - Making Music',
+        url: '/curriculum/key-stage-1/creating-media-making-music',
+        description: 'Get creative using technology as a digital device to allow you to make music.
+                      Use a computer as a tool to explore rhythms and melodies,
+                      before creating a musical composition.',
         event_label: 'Featured unit 1',
-        updated_at: 'Featured unit'
+        updated_at: 'Updated April 2022'
       },
       {
-        title: 'Year 6: Introduction to Spreadsheets',
-        url: '/curriculum/key-stage-2/data-and-information-spreadsheets',
-        description: 'Give learners the chance to solve real world problems
-        by using spreadsheets to organise and calculate data.
-        They can ask questions and find their own answers.',
+        title: 'Year 5: Creating media - Vector Drawing',
+        url: '/curriculum/key-stage-2/creating-media-vector-drawing',
+        description: 'Download the latest version of our Vector Drawing unit to create images using layers and groups of objects.
+                      Recognise how complex-looking vector images are really just made by combining 2D shapes!',
         event_label: 'Featured unit 2',
-        updated_at: 'Updated February 2022'
+        updated_at: 'Featured unit'
       }
     ]
   end
