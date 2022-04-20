@@ -46,7 +46,7 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     end
   end
 
-  context 'when a unit has a isaac url present' do
+  context 'when a lesson has a isaac url present' do
     before do
       setup_view
       allow(view).to receive(:current_user).and_return(user)
@@ -58,7 +58,7 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     end
   end
 
-  context 'when a unit has NO isaac url present' do
+  context 'when a lesson has NO isaac url present' do
     before do
       setup_view_without_isaac_url
       allow(view).to receive(:current_user).and_return(user)
