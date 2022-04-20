@@ -9,6 +9,7 @@ module CurriculumClient
         title
         slug
         description
+        isaacUrl
         zippedContents {
           #{file_fields}
         }
