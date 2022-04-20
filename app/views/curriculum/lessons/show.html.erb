@@ -43,7 +43,7 @@
               <% end %>
               <div class="govuk-body-s govuk-!-margin-bottom-7">Updated: <%= DateTime.parse(@lesson.zipped_contents.created).strftime('%d %b %Y') %></div>
               <% if @lesson.isaac_url.present? %>
-                <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url} %>
+                <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" } %>
               <% end %>
               <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: @lesson.id, user_id: current_user.id } %>
             <% end %>
