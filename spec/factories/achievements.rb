@@ -14,8 +14,20 @@ FactoryBot.define do
       end
     end
 
+    trait :face_to_face do
+      activity { association :activity, :stem_learning, title: 'Face to face activity' }
+    end
+
+    trait :remote do
+      activity { association :activity, :remote, title: 'Remote activity' }
+    end
+
+    trait :remote_no_activity_code do
+      activity { association :activity, :remote, title: 'Remote activity', stem_activity_code: nil }
+    end
+
     trait :online do
-      activity { association :activity, :online }
+      activity { association :activity, :future_learn, title: 'Online activity' }
     end
 
     factory :completed_achievement do

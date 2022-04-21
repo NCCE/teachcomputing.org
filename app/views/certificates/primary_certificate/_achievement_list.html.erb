@@ -1,8 +1,10 @@
-<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_3) %>"><%= t('.development.title.html') %></p>
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_2) %>">
+  <%= t('.development.title.html') %>
+</p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
     <%= render CourseActivityComponent.new(
-      description: t('.face_to_face_prompt.html'),
+      objective: t('.face_to_face_prompt.html'),
       booking: {
         path: courses_path(course_format: %i[face_to_face remote], certificate: @programme.slug),
         tracking_label: 'Book remote or F2F course'
@@ -15,7 +17,7 @@
     <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
       <%= render DashBadgeComponent.new(
         badge: @issued_badge,
-        fixed_width: true,
+        fixed_width: false,
         tracking_event_category: @badge_tracking_event_category,
         tracking_event_label: @badge_tracking_event_label
       ) %>
@@ -23,7 +25,7 @@
   <% end %>
   <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
     <%= render CourseActivityComponent.new(
-      description: t('.online_prompt.html'),
+      objective: t('.online_prompt.html'),
       booking: {
         path: courses_path(course_format: %i[online], certificate: @programme.slug),
         tracking_label: 'Book online course'

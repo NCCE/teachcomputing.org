@@ -46,9 +46,17 @@ module Certificates
     private
 
       def assign_issued_badge_data
-        return unless @programme.badges.any?
+        # return unless @programme.badges.any?
 
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+        # @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+        issued_badge_json = {
+          state: 'complete',
+          badge_template: {
+            url: '/',
+            image_url: 'https://images.credly.com/images/1ba160e0-1adb-486d-b11d-af450401e33a/STEM_certificate_badges_CPD.png'
+          }
+        }
+        @issued_badge = OpenStruct.new(issued_badge_json)
       end
 
       def user_enrolment
@@ -60,7 +68,7 @@ module Certificates
       end
 
       def assign_programme_activity_groupings
-        @programme_activity_groups_1_to_3 = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+        @programme_activity_groups_1_to_2 = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
         @programme_activity_group_3 = @programme.programme_activity_groupings.where(sort_key: 3)[0]&.programme_activities
         @programme_activity_groups_4_to_5 = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
       end

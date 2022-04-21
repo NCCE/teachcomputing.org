@@ -3,16 +3,14 @@
 class CourseActivityComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  renders_one :badge, DashBadgeComponent
-
   delegate :activity_icon_class,
            :activity_type,
            to: :helpers
 
-  def initialize(description:, booking:, achievements: nil, class_name: nil, tracking_category: nil)
-    @description = description
-    @achievements = achievements
+  def initialize(objective:, booking:, achievements: nil, class_name: nil, tracking_category: nil)
+    @objective = objective
     @booking = booking
+    @achievements = achievements
     @class_name = class_name
     @tracking_category = tracking_category
   end

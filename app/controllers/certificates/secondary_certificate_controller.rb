@@ -9,7 +9,7 @@ module Certificates
     def show
       return redirect_to complete_secondary_certificate_path if @programme.user_completed?(current_user)
 
-      @programme_activity_groupings = @programme.programme_activity_groupings
+      @programme_activity_groupings = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
       @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
       @badge_tracking_event_category = 'Secondary enrolled'
       @badge_tracking_event_label = 'Secondary badge'

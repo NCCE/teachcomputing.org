@@ -2,23 +2,21 @@ require 'rails_helper'
 
 RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:user) { create(:user) }
-  let!(:primary_certificate) { create(:primary_certificate) }
-  let!(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing in the classroom') }
-  let!(:pathways) { create_list(:pathway, 2, programme: primary_certificate) }
-  let(:groupings) { create_list(:programme_activity_grouping, 5, programme_id: primary_certificate.id) }
+  let(:primary_certificate) { create(:primary_certificate) }
+  let(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing', pdf_link: 'developing.pdf') }
+  let(:pathway_2) { create(:pathway, programme: primary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
+  let(:pathways) { [pathway, pathway_2] }
+  let(:programme_activity_groups_1_to_2) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
+  let(:programme_activity_group_3) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
+  let(:programme_activity_groups_4_to_5) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
 
   before do
-    FactoryBot.rewind_sequences
-
-    assign(:programme, primary_certificate)
     assign(:current_user, user)
-    groupings.each do |grouping|
-      create_list(:programme_activity, 3, programme_id: primary_certificate.id, programme_activity_grouping_id: grouping.id)
-    end
+    assign(:programme, primary_certificate)
 
-    assign(:programme_activity_groups_1_to_3, primary_certificate.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key))
-    assign(:programme_activity_group_3, primary_certificate.programme_activity_groupings.where(sort_key: 3)[0].programme_activities)
-    assign(:programme_activity_groups_4_to_5, primary_certificate.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key))
+    assign(:programme_activity_groups_1_to_2, programme_activity_groups_1_to_2)
+    assign(:programme_activity_group_3, programme_activity_group_3.programme_activities)
+    assign(:programme_activity_groups_4_to_5, programme_activity_groups_4_to_5)
 
     assign(:user_programme_achievements, UserProgrammeAchievements.new(primary_certificate, user))
     assign(:pathways, pathways)
@@ -52,7 +50,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'shows all activities' do
-      expect(rendered).to have_css('.ncce-activity-list__item', count: 12)
+      expect(rendered).to have_css('.ncce-activity-list__item', count: 6)
     end
 
     it 'shows no hidden activity title' do
@@ -63,7 +61,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       expect(rendered).not_to have_css('.expander')
     end
 
-    it 'has view all courses button ' do
+    it 'has view all courses button' do
       expect(rendered).to have_link('View all certificate courses')
     end
 
@@ -89,8 +87,8 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       end
 
       it 'has a list of pathways' do
-        expect(rendered).to have_link('Pathway 1', href: 'https://example.com/pdf-2-link.pdf', visible: :hidden)
-        expect(rendered).to have_link('Pathway 2', href: 'https://example.com/pdf-3-link.pdf', visible: :hidden)
+        expect(rendered).to have_link('Developing', href: 'developing.pdf', visible: :hidden)
+        expect(rendered).to have_link('Specialising', href: 'specialising.pdf', visible: :hidden)
       end
 
       it 'has an select list' do
@@ -111,7 +109,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       assign(:recommended_community_activities, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
       assign(:user_pathway, upe.pathway)
       assign(:pathways, pathways)
-      assign(:available_pathways_for_user, pathways)
+      assign(:available_pathways_for_user, [pathways[1]])
       render
     end
 
@@ -125,7 +123,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
 
     describe 'the pathway selector' do
       it 'shows the current pathway' do
-        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Developing in the classroom (PDF)')
+        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Developing (PDF)')
       end
 
       it 'has the details expander' do
@@ -133,7 +131,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       end
 
       it 'has a list of pathways' do
-        expect(rendered).to have_link('Pathway 2', href: 'https://example.com/pdf-3-link.pdf', visible: :hidden)
+        expect(rendered).to have_link('Specialising', href: 'specialising.pdf', visible: :hidden)
       end
 
       it 'has an select list' do
