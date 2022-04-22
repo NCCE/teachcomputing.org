@@ -42,7 +42,10 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
 
     it 'has the expected links' do
       expect(rendered).to have_link('View Programming and Algorithms Report', href: 'https://static.teachcomputing.org/Programming+and+Algorithms+Report.pdf')
+      expect(rendered).to have_link('Computer Systems and Networks report', href: 'https://static.teachcomputing.org/Computer_Systems_%26_Networking_Report_-_Final.pdf')
+      expect(rendered).to have_link('Digital Literacy Report', href: 'https://raspberrypi-education.s3-eu-west-1.amazonaws.com/NCCE+Reports/Digital+Literacy+Within+the+Computing+Curriculum+(Final).pdf')
       expect(rendered).to have_link('International Computing Textbook Review', href: 'https://static.teachcomputing.org/International_Textbook_Review.pdf')
+      expect(rendered).to have_link('Practical programming white paper', href: 'https://static.teachcomputing.org/Practical+Work+in+Computing+Apr+22.pdf')
     end
   end
 

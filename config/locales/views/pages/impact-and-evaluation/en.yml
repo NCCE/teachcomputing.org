@@ -46,6 +46,10 @@ en:
         title: "International Computing Textbook Review"
         date: "Published December 2020"
         text: "Reviews the nature and use of textbooks in the teaching of computing to 5 to 16-year-olds in a number of countries around the world, including China, Israel, Japan, South Korea and the USA."
+      practical_programming_card:
+        title: "Practical programming white paper"
+        date: "Published April 2022"
+        text: "Written by members of the NCCE Academic Board, this highlights the importance of practical programming in young people's computing education."
       literacy_card:
         title: "Digital Literacy Report"
         date: "Published January 2021"
