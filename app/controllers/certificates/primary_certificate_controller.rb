@@ -46,17 +46,9 @@ module Certificates
     private
 
       def assign_issued_badge_data
-        # return unless @programme.badges.any?
+        return unless @programme.badges.any?
 
-        # @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-        issued_badge_json = {
-          state: 'complete',
-          badge_template: {
-            url: '/',
-            image_url: 'https://images.credly.com/images/1ba160e0-1adb-486d-b11d-af450401e33a/STEM_certificate_badges_CPD.png'
-          }
-        }
-        @issued_badge = OpenStruct.new(issued_badge_json)
+        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
       end
 
       def user_enrolment
