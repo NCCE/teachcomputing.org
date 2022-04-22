@@ -1,5 +1,5 @@
 <li class="ncce-activity-list__item<%= presenter.list_item_classes(current_user) %><%= presenter.show_separator_class %>">
-  <span class="ncce-activity-list__item-text ncce-activity-list__item-text--<%= @programme.slug %>">
+  <span class="ncce-activity-list__item-text ncce-activity-list__item-text--<%= @programme.slug %> <%='ncce-activity-list__item-text--complete' if presenter.completed?(current_user) && presenter.title == 'Contribute to online discussion' %>">
     <span><%= presenter.title %></span>
   </span>
   <% if presenter.completed?(current_user) %>

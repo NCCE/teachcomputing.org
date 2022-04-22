@@ -15,6 +15,12 @@ class CourseActivityComponent < ViewComponent::Base
     @tracking_category = tracking_category
   end
 
+  def achievements_complete?
+    return unless @achievements
+
+    @achievements.any? { |ach| ach.in_state? :complete }
+  end
+
   def tracking_data(label)
     return nil unless @tracking_category.present? && label.present?
 

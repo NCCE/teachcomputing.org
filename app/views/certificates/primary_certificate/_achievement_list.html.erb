@@ -1,4 +1,4 @@
-<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @programme_activity_groups_1_to_2) %>">
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
   <%= t('.development.title.html') %>
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
@@ -54,12 +54,12 @@
       </div>
     </li>
   <% end %>
-  <%= render 'certificates/pathways/community_achievements', presenters: @user_programme_achievements.primary_community_activities(
-    programme_activities: @programme_activity_group_3
-  ) %>
+  <%= render 'certificates/pathways/community_achievements',
+    presenters: @user_programme_achievements.primary_community_activities(programme_activities: @online_discussion_activity)
+  %>
 </ul>
 
-<% @programme_activity_groups_4_to_5.each do |group| %>
+<% @community_groups.each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
     <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title %>

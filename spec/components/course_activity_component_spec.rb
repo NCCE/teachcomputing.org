@@ -23,8 +23,8 @@ RSpec.describe CourseActivityComponent, type: :component do
       )
     end
 
-    it 'has the incomplete class' do
-      expect(rendered_component).to have_css('.course-activity-component__objective-text--incomplete')
+    it 'does not render the complete class' do
+      expect(rendered_component).not_to have_css('.course-activity-component__objective-text--complete')
     end
 
     it 'renders with the expected objective' do
@@ -46,7 +46,27 @@ RSpec.describe CourseActivityComponent, type: :component do
     end
   end
 
-  describe 'with different categories of achievements' do
+  describe 'with only incomplete achievements' do
+    before do
+      render_inline(
+        described_class.new(
+          {
+            objective: 'I describe things',
+            booking: {
+              path: 'https://example.com/book'
+            },
+            achievements: [remote_achievement, online_achievement]
+          }
+        )
+      )
+    end
+
+    it 'does not render the complete class' do
+      expect(rendered_component).not_to have_css('.course-activity-component__objective-text--complete')
+    end
+  end
+
+  describe 'with various categories and a completed achievement' do
     before do
       render_inline(
         described_class.new(
@@ -65,8 +85,8 @@ RSpec.describe CourseActivityComponent, type: :component do
       expect(rendered_component).to have_css('.course-activity-component__course', count: 3)
     end
 
-    it 'does not have the incomplete class' do
-      expect(rendered_component).not_to have_css('.course-activity-component__objective-text--incomplete')
+    it 'renders the complete class' do
+      expect(rendered_component).to have_css('.course-activity-component__objective-text--complete')
     end
 
     context 'with a face to face achievement' do

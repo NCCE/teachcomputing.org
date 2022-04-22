@@ -6,17 +6,17 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing', pdf_link: 'developing.pdf') }
   let(:pathway_2) { create(:pathway, programme: primary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
   let(:pathways) { [pathway, pathway_2] }
-  let(:programme_activity_groups_1_to_2) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
-  let(:programme_activity_group_3) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
-  let(:programme_activity_groups_4_to_5) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
+  let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
+  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
+  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
 
   before do
     assign(:current_user, user)
     assign(:programme, primary_certificate)
 
-    assign(:programme_activity_groups_1_to_2, programme_activity_groups_1_to_2)
-    assign(:programme_activity_group_3, programme_activity_group_3.programme_activities)
-    assign(:programme_activity_groups_4_to_5, programme_activity_groups_4_to_5)
+    assign(:professional_development_groups, professional_development_groups)
+    assign(:online_discussion_activity, online_development_group.programme_activities)
+    assign(:community_groups, community_groups)
 
     assign(:user_programme_achievements, UserProgrammeAchievements.new(primary_certificate, user))
     assign(:pathways, pathways)

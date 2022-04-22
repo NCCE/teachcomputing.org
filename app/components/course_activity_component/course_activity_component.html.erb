@@ -1,6 +1,6 @@
 <%= content_tag :div, class: ['course-activity-component', { "#{@class_name}": @class_name.present? }] do %>
   <span class="course-activity-component__objective">
-    <%= content_tag :div, class: ['course-activity-component__objective-text', { "course-activity-component__objective-text--incomplete": @achievements.blank? }] do %>
+    <%= content_tag :div, class: ['course-activity-component__objective-text', { "course-activity-component__objective-text--complete": achievements_complete? }] do %>
       <%= @objective %>
     <% end %>
     <%= link_to t('.book_button_text'), @booking[:path], class: 'govuk-button button button--small course-activity-component__objective-button', data: tracking_data(@booking[:tracking_label]) %>

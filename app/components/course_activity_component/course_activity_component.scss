@@ -7,24 +7,23 @@
 
 .course-activity-component__objective-text {
   align-self: center;
-  background-image: url('../images/icons/tick-green-dark.svg');
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-size: 1.9rem;
-  padding-left: 2.2rem;
   font-size: 1.188rem;
-  line-height: 2.1rem;
+  line-height: 2.2rem;
   grid-column: 1;
-
+  background: none;
+  padding-left: 0;
 
   @include govuk-media-query($until: 640px) {
     font-size: 1rem;
     line-height: 1.2rem;
   }
 
-  &--incomplete {
-    background: none;
-    padding-left: 0;
+  &--complete {
+    background-image: url('../images/icons/tick-green-dark.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 1.9rem;
+    padding-left: 2.2rem;
   }
 }
 
