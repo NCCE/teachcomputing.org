@@ -2,15 +2,7 @@ class UserProgrammeAchievements
   def initialize(programme, user)
     @user = user
     @programme = programme
-    @achievements = user.achievements.without_category('action').for_programme(programme).order('created_at ASC')
-  end
-
-  def online_achievements
-    @achievements.not_in_state(:dropped).with_category(Activity::ONLINE_CATEGORY)
-  end
-
-  def face_to_face_achievements
-    @achievements.not_in_state(:dropped).with_category(Activity::FACE_TO_FACE_CATEGORY)
+    @achievements = user.achievements.without_category('action').for_programme(programme).order('updated_at ASC')
   end
 
   def community_activities(to_show = 1, credit = 5)

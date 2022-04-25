@@ -12,6 +12,8 @@ module Certificates
       @user_programme_achievements = user_programme_achievements
       @badge_tracking_event_category = 'Primary enrolled'
       @badge_tracking_event_label = 'Primary badge'
+
+      assign_achievements
       assign_issued_badge_data
 
       @pathways = Pathway.ordered_by_programme(@programme.slug)
@@ -22,18 +24,6 @@ module Certificates
       render :show
     end
 
-    def complete
-      return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
-
-      @user_programme_achievements = user_programme_achievements
-      @badge_tracking_event_category = 'Primary complete'
-      @badge_tracking_event_label = 'Primary badge'
-      @complete_achievements = complete_achievements
-      assign_issued_badge_data
-
-      render :complete
-    end
-
     def pending
       return redirect_to complete_primary_certificate_path if user_enrolment.in_state?(:complete)
 
@@ -41,6 +31,19 @@ module Certificates
       @enrolment = user_enrolment
 
       render :pending
+    end
+
+    def complete
+      return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
+
+      @user_programme_achievements = user_programme_achievements
+      @badge_tracking_event_category = 'Primary complete'
+      @badge_tracking_event_label = 'Primary badge'
+      @complete_achievements = complete_achievements
+
+      assign_issued_badge_data
+
+      render :complete
     end
 
     private
@@ -57,6 +60,11 @@ module Certificates
 
       def user_pathway
         @user_pathway ||= user_enrolment&.pathway
+      end
+
+      def assign_achievements
+        @online_achievements = online_achievements
+        @face_to_face_achievements = face_to_face_achievements
       end
 
       def assign_programme_activity_groupings
@@ -85,11 +93,28 @@ module Certificates
         redirect_to pending_primary_certificate_path if user_enrolment.in_state?(:pending)
       end
 
+      def online_achievements
+        current_user.achievements.for_programme(@programme)
+                    .with_category(Activity::ONLINE_CATEGORY)
+                    .without_category(:action)
+                    .not_in_state(:dropped)
+                    .order('updated_at ASC')
+      end
+
+      def face_to_face_achievements
+        current_user.achievements.for_programme(@programme)
+                    .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                    .without_category(:action)
+                    .not_in_state(:dropped)
+                    .order('updated_at ASC')
+      end
+
       def complete_achievements
         # Diagnostic may still exist for some users, so we must continue excluding it
-        current_user.achievements.without_category('action')
+        current_user.achievements.for_programme(@programme)
+                    .without_category('action')
                     .without_category('diagnostic')
-                    .for_programme(@programme).sort_complete_first
+                    .sort_complete_first
       end
 
       def user_programme_achievements

@@ -6,7 +6,7 @@
         path: courses_path(course_format: %i[face_to_face remote], certificate: @programme.slug),
         tracking_label: 'Book remote or F2F course'
       },
-      achievements: @user_programme_achievements.face_to_face_achievements,
+      achievements: @face_to_face_achievements,
       tracking_category: tracking_category
     ) %>
   </li>
@@ -26,7 +26,7 @@
         path: courses_path(course_format: %i[online], certificate: @programme.slug),
         tracking_label: 'Book online course'
       },
-      achievements: @user_programme_achievements.online_achievements,
+      achievements: @online_achievements,
       tracking_category: tracking_category
     ) %>
   </li>
