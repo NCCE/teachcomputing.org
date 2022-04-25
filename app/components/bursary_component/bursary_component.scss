@@ -1,5 +1,9 @@
-.gcse-revision, .bursary-component {
+.bursary-component {
   @include bottom-margined;
+}
+
+.gcse-revision {
+  margin-bottom: 1.75rem;
 }
 
 .bursary-component__title {
