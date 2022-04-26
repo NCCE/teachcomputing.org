@@ -42,7 +42,7 @@
                   </strong>
                 </span>
                 <p class="govuk-body">
-                  <%= course[:description] %>
+                  <%= course[:description].html_safe %>
                 </p>
                 <div class="lp-courses--details">
                   <span class="govuk-body-s <%= course[:icon_class] %> lp-courses--type">
