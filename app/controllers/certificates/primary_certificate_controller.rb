@@ -98,7 +98,7 @@ module Certificates
                     .with_category(Activity::ONLINE_CATEGORY)
                     .without_category(:action)
                     .not_in_state(:dropped)
-                    .order('updated_at ASC')
+                    .sort_complete_first
       end
 
       def face_to_face_achievements
@@ -106,14 +106,14 @@ module Certificates
                     .with_category(Activity::FACE_TO_FACE_CATEGORY)
                     .without_category(:action)
                     .not_in_state(:dropped)
-                    .order('updated_at ASC')
+                    .sort_complete_first
       end
 
       def complete_achievements
         # Diagnostic may still exist for some users, so we must continue excluding it
         current_user.achievements.for_programme(@programme)
-                    .without_category('action')
-                    .without_category('diagnostic')
+                    .without_category(:action)
+                    .without_category(:diagnostic)
                     .sort_complete_first
       end
 

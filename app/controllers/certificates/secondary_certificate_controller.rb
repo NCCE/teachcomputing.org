@@ -60,7 +60,7 @@ module Certificates
                     .with_category(Activity::ONLINE_CATEGORY)
                     .without_category(:action)
                     .not_in_state(:dropped)
-                    .order('updated_at ASC')
+                    .sort_complete_first
       end
 
       def face_to_face_achievements
@@ -68,12 +68,13 @@ module Certificates
                     .with_category(Activity::FACE_TO_FACE_CATEGORY)
                     .without_category(:action)
                     .not_in_state(:dropped)
-                    .order('updated_at ASC')
+                    .sort_complete_first
       end
 
       def complete_achievements
-        current_user.achievements.without_category('action')
-                    .for_programme(@programme).sort_complete_first
+        current_user.achievements.for_programme(@programme)
+                    .without_category(:action)
+                    .sort_complete_first
       end
 
       def find_programme
