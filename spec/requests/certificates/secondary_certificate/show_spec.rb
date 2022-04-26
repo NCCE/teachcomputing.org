@@ -30,7 +30,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
         end
 
         it 'assigns programme_activity_groupings' do
-          expect(assigns(:programme_activity_groupings)).to eq(secondary_certificate.programme_activity_groupings.where(sort_key: 3))
+          expect(assigns(:programme_activity_groupings)).to all(be_a(ProgrammeActivityGrouping))
         end
 
         it 'assigns programme' do
