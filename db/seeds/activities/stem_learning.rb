@@ -1518,7 +1518,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Supporting student attainment in GCSE computer science - residential'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
   activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
   activity.category = 'face-to-face'

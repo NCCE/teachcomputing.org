@@ -8,9 +8,7 @@ class CompletedDashBadgeComponent < ViewComponent::Base
   end
 
   def render?
-    return false unless @badge.present?
-
-    true
+    @badge.present?
   end
 
   def tracking_data

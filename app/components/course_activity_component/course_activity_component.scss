@@ -1,0 +1,64 @@
+.course-activity-component__objective {
+  align-items: flex-start;
+  background-color: $white;
+  display: grid;
+  grid-template-columns: auto 8.5rem;
+}
+
+.course-activity-component__objective-text {
+  align-self: center;
+  font-size: 1.188rem;
+  line-height: 2.2rem;
+  grid-column: 1;
+  background: none;
+  padding-left: 0;
+
+  @include govuk-media-query($until: 640px) {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+
+  &--complete {
+    background-image: url('../images/icons/tick-green-dark.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 1.9rem;
+    padding-left: 2.2rem;
+  }
+}
+
+.course-activity-component__objective-button {
+  width: auto;
+  grid-row: auto;
+  grid-column: 2;
+  position: relative;
+  top: 0.15rem;
+}
+
+.course-activity-component__course-wrapper {
+  background-color: $white;
+}
+
+.course-activity-component__course {
+  background: $foam;
+  margin-top: 20px;
+  padding: 2px 18px;
+}
+
+.course-activity-component__buttons {
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.course-activity-component__status {
+  bottom: 8px;
+  position: relative;
+  font-size: 1.05rem;
+}
+
+.course-activity-component__link {
+  @include govuk-media-query($until: desktop) {
+    line-height: 1.2rem;
+  }
+}
