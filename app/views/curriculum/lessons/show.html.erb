@@ -48,7 +48,7 @@
               <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: @lesson.id, user_id: current_user.id } %>
             <% end %>
           <% else %>
-            <%= link_to 'Log in to downloads', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+            <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
             <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
             <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
             <% if @lesson.isaac_url.present? %>

@@ -2,10 +2,6 @@
   @include bottom-margined;
 }
 
-.gcse-revision {
-  margin-bottom: 1.75rem;
-}
-
 .bursary-component__title {
   background-image: url('../images/icons/icon-pound.svg');
   background-repeat: no-repeat;
@@ -17,7 +13,7 @@
   }
 }
 
-.gcse-revision__link, .bursary-component__link {
+.bursary-component__link {
   font-weight: bold;
   margin-bottom: 0;
 }
