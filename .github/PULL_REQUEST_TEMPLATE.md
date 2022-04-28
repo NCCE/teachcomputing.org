@@ -2,6 +2,9 @@
 
 * Current Status: WIP / Ready for (front-end / tech) review
 * Review App link(s): *populate this with links to the relevant parts of the review app*
+* Closes *add issue number or delete*
+* Resolves *add issue number*, resolves *add another issue number* (*or delete*)
+* Fixes *add external repo (org/repo) or delete*
 * Related to *add issue numbers or delete*
 
 ## Review progress:
