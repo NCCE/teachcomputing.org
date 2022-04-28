@@ -43,7 +43,7 @@
               <% end %>
               <div class="govuk-body-s govuk-!-margin-bottom-7">Updated: <%= DateTime.parse(@lesson.zipped_contents.created).strftime('%d %b %Y') %></div>
               <% if @lesson.isaac_url.present? %>
-                <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside govuk-!-margin-bottom-' %>
+                <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside' %>
               <% end %>
               <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, id: @lesson.id, user_id: current_user.id } %>
             <% end %>
@@ -52,7 +52,7 @@
             <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
             <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
             <% if @lesson.isaac_url.present? %>
-              <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside govuk-!-margin-bottom-' %>
+              <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside' %>
             <% end %>
           <% end %>
 				</div>
