@@ -55,7 +55,7 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 
     it 'shows the gcse revision partial' do
       expect(rendered).to have_css('.gcse-revision__link')
-      expect(rendered).to have_link('Log in to download', href: 'https://teachcomputing.org')
+      expect(rendered).to have_link('View on Isaac Computer Science', href: 'https://www.raspberrypi.com/')
     end
   end
 
