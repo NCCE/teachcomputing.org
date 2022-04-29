@@ -11,6 +11,15 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     assign(:lesson, json.lesson)
   end
 
+  let(:setup_view_without_isaac_url) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json, object_class: OpenStruct).data
+    json.lesson.isaac_url = ""
+    assign(:lesson, json.lesson)
+  end
+
+
   context 'when a user is not signed in' do
     before do
       setup_view
@@ -34,6 +43,32 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 
     it 'does not show the rating partial' do
       expect(rendered).not_to have_css('.curriculum__rating')
+    end
+  end
+
+  context 'when a lesson has a isaac url present' do
+    before do
+      setup_view
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'shows the gcse revision partial' do
+      expect(rendered).to have_css('.gcse-revision__link')
+      expect(rendered).to have_link('View on Isaac Computer Science', href: 'https://www.raspberrypi.com/')
+    end
+  end
+
+  context 'when a lesson has NO isaac url present' do
+    before do
+      setup_view_without_isaac_url
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it 'does not show the gcse revision partial' do
+      expect(rendered).not_to have_css('.gcse-revision__link')
+      expect(rendered).not_to have_link('Log in to download', href: 'https://teachcomputing.org')
     end
   end
 
