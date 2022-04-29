@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe StateMachines::AchievementStateMachine do
   let(:achievement) { create(:achievement) }
-  let(:online_achievement) { create(:achievement, activity: create(:activity, category: Activity::ONLINE_CATEGORY)) }
-  let(:face_to_face_achievement) { create(:achievement, activity: create(:activity, category: Activity::FACE_TO_FACE_CATEGORY)) }
+  let(:online_achievement) { create(:achievement, activity: create(:activity, category: Activity::FACE_TO_FACE_CATEGORY)) }
+  let(:face_to_face_achievement) { create(:achievement, activity: create(:activity, category: Activity::ONLINE_CATEGORY)) }
   let(:action_achievement) { create(:achievement, activity: create(:activity, category: Activity::ACTION_CATEGORY)) }
   let(:assessment_achievement) { create(:achievement, activity: create(:activity, category: Activity::ASSESSMENT_CATEGORY)) }
   let(:community_achievement) { create(:achievement, activity: create(:activity, category: Activity::COMMUNITY_CATEGORY)) }
@@ -60,7 +60,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
 
     it 'calls issue_badge' do
-      expect { achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
+      expect { face_to_face_achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
     end
   end
 end
