@@ -106,7 +106,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       it 'tells the user who is delivering the course' do
         expect(rendered).to have_css(
           '.ncce-aside__text',
-          text: 'You will be taken to the STEM Learning website to see further details and book.'
+          text: 'You will be taken to the STEM Learning website to see further details.'
         )
       end
 
