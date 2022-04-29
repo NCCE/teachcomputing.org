@@ -30,6 +30,10 @@ FactoryBot.define do
       activity { association :activity, :future_learn, title: 'Online activity' }
     end
 
+    trait :community do
+      activity { association :activity, :community, title: 'Commmunity activity' }
+    end
+
     factory :completed_achievement do
       after(:create) do |achievement|
         achievement.transition_to(:complete, { credit: 100 })
