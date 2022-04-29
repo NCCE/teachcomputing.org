@@ -49,7 +49,7 @@ class Achievement < ApplicationRecord
       .order('current_state')
   }
 
-  def issued_badges?
+  def user_has_badge?
     Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
   end
 
@@ -60,7 +60,7 @@ class Achievement < ApplicationRecord
   def issue_badge
     return unless programme&.badgeable? && programme&.user_enrolled?(user)
     return unless programme.badges.active.first
-    return if issued_badges?
+    return if user_has_badge?
 
     Credly::IssueBadgeJob.perform_later(user.id, programme.id) if first_stem_achievement?
   end
