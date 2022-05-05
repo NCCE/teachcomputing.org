@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.2.6
+  ruby: circleci/ruby@1
+
 jobs:
   brakeman:
     docker:
@@ -113,10 +117,8 @@ jobs:
           command: bash -ue scripts/record_coverage.sh
           when: always
 
-orbs:
-  ruby: circleci/ruby@1
-
 workflows:
+  version: 2
   brakeman:
     jobs:
       - brakeman:
@@ -126,16 +128,7 @@ workflows:
                 - master
                 - main
 
-  # rubocop:
-  #   jobs:
-  #     - rubocop:
-  #         filters:
-  #           branches:
-  #             ignore:
-  #               - master
-  #               - main
-
-  test:
+  build_test_and_deploy:
     jobs:
       - test
       - coverage_check:
@@ -146,3 +139,10 @@ workflows:
               ignore:
                 - master
                 - main
+      - heroku/deploy-via-git:
+          app-name: teachcomputing-staging
+          requires:
+            - test
+          filters:
+            branches:
+              only: main              
