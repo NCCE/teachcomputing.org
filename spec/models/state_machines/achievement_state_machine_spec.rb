@@ -60,7 +60,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
 
     it 'calls issue_badge' do
-      expect { online_achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
+      expect { face_to_face_achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
     end
   end
 end

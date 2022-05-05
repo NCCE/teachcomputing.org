@@ -61,7 +61,7 @@ RSpec.describe Achievement, type: :model do
         achievement.supporting_evidence.attach(
           io: File.open('spec/support/active_storage/supporting_evidence_test_upload.png'), filename: 'test.png', content_type: 'image/png'
         )
-        expect(achievement.valid?).to eq true
+        expect(achievement.valid?).to be true
       end
     end
 
@@ -70,14 +70,14 @@ RSpec.describe Achievement, type: :model do
         achievement.supporting_evidence.attach(
           io: File.open('spec/support/active_storage/supporting_evidence_invalid_test_upload.txt'), filename: 'test.txt', content_type: 'text/plain'
         )
-        expect(achievement.valid?).to eq false
+        expect(achievement.valid?).to be false
       end
     end
   end
 
   describe '#before_create' do
     it 'when activity has no programme does not set the programme_id' do
-      expect(achievement.programme_id).to be(nil)
+      expect(achievement.programme_id).to be_nil
     end
 
     it 'when programme_id is set, it is not overwritten' do
@@ -110,12 +110,12 @@ RSpec.describe Achievement, type: :model do
         create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
         create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
         achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
-        expect(achievement.programme_id).to eq(nil)
+        expect(achievement.programme_id).to be_nil
       end
     end
 
     it 'when we update the programme, the id is saved' do
-      expect(diagnostic_achievement.programme).to eq(nil)
+      expect(diagnostic_achievement.programme).to be_nil
       diagnostic_achievement.programme = cs_accelerator
       diagnostic_achievement.save
       diagnostic_achievement.reload
@@ -235,7 +235,7 @@ RSpec.describe Achievement, type: :model do
 
     it 'when state is complete' do
       achievement.transition_to(:complete)
-      expect(achievement.complete!).to eq false
+      expect(achievement.complete!).to be false
     end
   end
 
@@ -255,22 +255,22 @@ RSpec.describe Achievement, type: :model do
 
   describe '#complete?' do
     it 'when state is not complete' do
-      expect(achievement.complete?).to eq false
+      expect(achievement.complete?).to be false
     end
 
     it 'when state is complete' do
-      expect(completed_achievement.complete?).to eq true
+      expect(completed_achievement.complete?).to be true
     end
   end
 
   describe '#dropped?' do
     it 'returns false if not dropped' do
-      expect(achievement.dropped?).to eq false
+      expect(achievement.dropped?).to be false
     end
 
     it 'returns true if dropped' do
       dropped_achievement = create(:dropped_achievement)
-      expect(dropped_achievement.dropped?).to eq true
+      expect(dropped_achievement.dropped?).to be true
     end
   end
 
@@ -316,7 +316,7 @@ RSpec.describe Achievement, type: :model do
       it 'returns true' do
         programme = build(:primary_certificate)
         achievement = build(:achievement, programme: programme)
-        expect(achievement.primary_certificate?).to eq(true)
+        expect(achievement.primary_certificate?).to be(true)
       end
     end
 
@@ -324,14 +324,14 @@ RSpec.describe Achievement, type: :model do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme-slug')
         achievement = build(:achievement, programme: programme)
-        expect(achievement.primary_certificate?).to eq(false)
+        expect(achievement.primary_certificate?).to be(false)
       end
     end
 
     context 'when programme is nil' do
       it 'returns false' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.primary_certificate?).to eq(false)
+        expect(achievement.primary_certificate?).to be(false)
       end
     end
   end
@@ -341,7 +341,7 @@ RSpec.describe Achievement, type: :model do
       it 'returns true' do
         programme = build(:cs_accelerator)
         achievement = build(:achievement, programme: programme)
-        expect(achievement.cs_accelerator?).to eq(true)
+        expect(achievement.cs_accelerator?).to be(true)
       end
     end
 
@@ -349,14 +349,14 @@ RSpec.describe Achievement, type: :model do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme-slug')
         achievement = build(:achievement, programme: programme)
-        expect(achievement.cs_accelerator?).to eq(false)
+        expect(achievement.cs_accelerator?).to be(false)
       end
     end
 
     context 'when programme is nil' do
       it 'returns false' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.cs_accelerator?).to eq(false)
+        expect(achievement.cs_accelerator?).to be(false)
       end
     end
   end
@@ -366,7 +366,7 @@ RSpec.describe Achievement, type: :model do
       it 'returns true' do
         programme = build(:secondary_certificate)
         achievement = build(:achievement, programme: programme)
-        expect(achievement.secondary_certificate?).to eq(true)
+        expect(achievement.secondary_certificate?).to be(true)
       end
     end
 
@@ -374,23 +374,23 @@ RSpec.describe Achievement, type: :model do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme-slug')
         achievement = build(:achievement, programme: programme)
-        expect(achievement.secondary_certificate?).to eq(false)
+        expect(achievement.secondary_certificate?).to be(false)
       end
     end
 
     context 'when programme is nil' do
       it 'returns false' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.secondary_certificate?).to eq(false)
+        expect(achievement.secondary_certificate?).to be(false)
       end
     end
   end
 
   describe '#issue_badge' do
-    context 'with badgeable is false' do
-      it 'returns false' do
+    context 'with badgeable is nil' do
+      it 'returns nil' do
         achievement = build(:achievement, programme: nil)
-        expect(achievement.issue_badge).to eq false
+        expect(achievement.issue_badge).to be_nil
       end
     end
 
@@ -410,11 +410,24 @@ RSpec.describe Achievement, type: :model do
         clear_enqueued_jobs
       end
 
-      it 'queues Credly::IssueBadgeJob' do
+      it 'queues Credly::IssueBadgeJob when the achievement is face-to-face' do
         stub_issue_badge(user.id, badge.credly_badge_template_id)
         stub_issued_badges_empty(user.id)
 
-        achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
+        achievement = create(:achievement, :face_to_face, programme_id: cs_accelerator.id, user_id: user.id)
+        achievement.transition_to(:complete)
+        create(:user_programme_enrolment,
+               user: user,
+               programme: cs_accelerator)
+        achievement.issue_badge
+        expect(Credly::IssueBadgeJob).to have_been_enqueued
+      end
+
+      it 'queues Credly::IssueBadgeJob when the achievement is remote' do
+        stub_issue_badge(user.id, badge.credly_badge_template_id)
+        stub_issued_badges_empty(user.id)
+
+        achievement = create(:achievement, :remote, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
                user: user,
@@ -427,6 +440,30 @@ RSpec.describe Achievement, type: :model do
         stub_issued_badges(user.id)
 
         achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
+        achievement.transition_to(:complete)
+        create(:user_programme_enrolment,
+               user: user,
+               programme: cs_accelerator)
+        achievement.issue_badge
+        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
+      end
+
+      it 'does not queue if the achievement is online' do
+        stub_issued_badges(user.id)
+
+        achievement = create(:achievement, :online, programme_id: cs_accelerator.id, user_id: user.id)
+        achievement.transition_to(:complete)
+        create(:user_programme_enrolment,
+               user: user,
+               programme: cs_accelerator)
+        achievement.issue_badge
+        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
+      end
+
+      it 'does not queue if the achievement is community' do
+        stub_issued_badges(user.id)
+
+        achievement = create(:achievement, :community, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
                user: user,
@@ -475,14 +512,14 @@ RSpec.describe Achievement, type: :model do
       it 'does not set dropped if progress is 60 or over' do
         left_at = DateTime.now.to_s
         achievement.update_progress_and_state(60, left_at)
-        expect(achievement.dropped?).to eq(false)
+        expect(achievement.dropped?).to be(false)
       end
     end
 
     context 'when progress is 0' do
       it 'sets to enrolled' do
         achievement.update_progress_and_state(0, nil)
-        expect(achievement.in_state?(:enrolled)).to eq(true)
+        expect(achievement.in_state?(:enrolled)).to be(true)
       end
 
       it 'sets progress to 0' do
@@ -492,9 +529,9 @@ RSpec.describe Achievement, type: :model do
 
       it 'will enrol if achievement was previously dropped' do
         achievement.transition_to(:dropped)
-        expect(achievement.dropped?).to eq(true)
+        expect(achievement.dropped?).to be(true)
         achievement.update_progress_and_state(0, nil)
-        expect(achievement.in_state?(:enrolled)).to eq(true)
+        expect(achievement.in_state?(:enrolled)).to be(true)
         expect(achievement.progress).to eq(0)
       end
     end
@@ -502,13 +539,13 @@ RSpec.describe Achievement, type: :model do
     context 'when progress between 1 and 59' do
       it 'sets to in progress and updates stored progress when progress is 1' do
         achievement.update_progress_and_state(1, nil)
-        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.in_state?(:in_progress)).to be(true)
         expect(achievement.progress).to eq(1)
       end
 
       it 'sets to in progress and updates stored progress when progress is 59' do
         achievement.update_progress_and_state(59, nil)
-        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.in_state?(:in_progress)).to be(true)
         expect(achievement.progress).to eq(59)
       end
 
@@ -519,9 +556,9 @@ RSpec.describe Achievement, type: :model do
 
       it 'will set progress if achievement was previously dropped' do
         achievement.transition_to(:dropped)
-        expect(achievement.dropped?).to eq(true)
+        expect(achievement.dropped?).to be(true)
         achievement.update_progress_and_state(49, nil)
-        expect(achievement.in_state?(:in_progress)).to eq(true)
+        expect(achievement.in_state?(:in_progress)).to be(true)
       end
     end
 
@@ -530,7 +567,7 @@ RSpec.describe Achievement, type: :model do
 
       it 'sets to complete when progress is 60' do
         achievement.update_progress_and_state(60, nil)
-        expect(achievement.complete?).to eq(true)
+        expect(achievement.complete?).to be(true)
         expect(achievement.last_transition.metadata)
           .to eq({ 'credit' => 99.0 })
         expect(achievement.progress).to eq(60)
@@ -538,7 +575,7 @@ RSpec.describe Achievement, type: :model do
 
       it 'sets to complete when progress is 100' do
         achievement.update_progress_and_state(100, nil)
-        expect(achievement.complete?).to eq(true)
+        expect(achievement.complete?).to be(true)
         expect(achievement.last_transition.metadata)
           .to eq({ 'credit' => 99.0 })
         expect(achievement.progress).to eq(100)
@@ -559,12 +596,12 @@ RSpec.describe Achievement, type: :model do
 
       it 'does not change state to dropped' do
         achievement.update_progress_and_state(80, DateTime.now.to_s)
-        expect(achievement.complete?).to eq(true)
+        expect(achievement.complete?).to be(true)
       end
 
       it 'does not revert to in progress' do
         achievement.update_progress_and_state(50, nil)
-        expect(achievement.complete?).to eq(true)
+        expect(achievement.complete?).to be(true)
       end
 
       it 'does update progress' do
