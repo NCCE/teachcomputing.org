@@ -140,5 +140,6 @@ Rails.application.configure do
   config.hosts << /teachcomputing-staging-pr-[a-z0-9-]+\.herokuapp\.com/
   config.hosts << 'staging.teachcomputing.org'
   config.hosts << 'teachcomputing-staging.herokuapp.com'
+  config.hosts << 'qa.teachcomputing.org'
   config.hosts << 'teachcomputing-qa.herokuapp.com'
 end
