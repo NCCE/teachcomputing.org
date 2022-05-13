@@ -137,7 +137,7 @@ GEM
     combine_pdf (1.0.22)
       matrix
       ruby-rc4 (>= 0.1.5)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crack (0.4.5)
       rexml
@@ -583,7 +583,7 @@ GEM
     unf_ext (0.0.8.1)
     unicode-display_width (2.1.0)
     vcr (6.1.0)
-    view_component (2.50.0)
+    view_component (2.55.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     virtus (1.0.5)
@@ -701,7 +701,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   uglifier (>= 4.2)
   vcr
-  view_component
+  view_component (~> 2.55)
   web-console (>= 3.3.0)
   webmock
   webpacker (~> 5.4.3)
