@@ -1,22 +1,6 @@
 module Programmes
   class PrimaryCertificate < Programme
     PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
-    DIAGNOSTIC_TOTAL = 80
-
-    def diagnostic
-      activities.find_by!(category: 'diagnostic')
-    end
-
-    def diagnostic_result(user)
-      questionnaire = Questionnaire.find_by(slug: 'primary-certificate-enrolment-questionnaire')
-      response = QuestionnaireResponse.find_by(user: user, questionnaire: questionnaire)
-
-      response.score
-    end
-
-    def diagnostic_result_percentage(user)
-      (diagnostic_result(user).to_f / DIAGNOSTIC_TOTAL * 100).ceil
-    end
 
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements

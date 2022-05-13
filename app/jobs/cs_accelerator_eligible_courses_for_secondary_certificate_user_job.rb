@@ -18,7 +18,7 @@ class CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob < ApplicationJo
       metadata[:self_verification_info] = eligible_courses.map { |achievement| achievement.activity.title }
       achievement.transition_to(:complete, metadata)
       CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(programme, user.id,
-                                          source: 'CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob')
+                                                                        source: 'CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob')
     end
   end
 end
