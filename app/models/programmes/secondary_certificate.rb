@@ -2,6 +2,12 @@ module Programmes
   class SecondaryCertificate < Programme
     PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
 
+    def user_is_eligible?(user)
+      programme = Programme.find_by(slug: 'cs-accelerator')
+      enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)
+      enrolment&.current_state == :complete.to_s
+    end
+
     def csa_eligible_courses(user)
       programme = Programme.cs_accelerator
       enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
@@ -11,12 +17,6 @@ module Programmes
       achievements.filter do |achievement|
         achievement.last_transition.created_at > enrolment.completed_at?
       end
-    end
-
-    def user_is_eligible?(user)
-      programme = Programme.find_by(slug: 'cs-accelerator')
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)
-      enrolment&.current_state == :complete.to_s
     end
 
     def path
