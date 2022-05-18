@@ -1,6 +1,6 @@
 <div class="course-details">
   <% @course.subjects.each do |subject| %>
-    <% if @course_filter.subjects&.has_value?(subject.to_i) %>
+    <% if @course_filter&.subjects&.has_value?(subject.to_i) %>
       <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.subjects.key(subject.to_i) %></strong>
     <% end %>
   <% end %>
