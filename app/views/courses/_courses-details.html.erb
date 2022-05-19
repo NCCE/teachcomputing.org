@@ -9,6 +9,9 @@
       <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
     <% end %>
   <% end %>
+  <% @course.programmes.each do |programme| %>
+    <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= programme %></strong>
+  <% end %>
   <div class="course-details__icons">
   <% if @course.online_cpd %>
     <span class="govuk-body icon-online">Free online course</span>
