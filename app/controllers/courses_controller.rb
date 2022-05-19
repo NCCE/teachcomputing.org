@@ -39,9 +39,12 @@ class CoursesController < ApplicationController
 
     @booking = @course.online_cpd ? ::OnlineBookingPresenter.new : ::StemBookingPresenter.new
 
+    # Get the user's course attempts
     user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user.stem_achiever_contact_no)
-    user_occurrences = user_course_info.select { |course| %w[enrolled attended].include?(course.attendance_status) }
-    @user_course_occurrence = user_occurrences&.find { |course| course.course_template_no == template_no }
+    user_course_info = user_course_info.select { |course| %w[enrolled attended].include?(course.attendance_status) }
+
+    # Grab the one for the current course
+    @user_occurrence = user_course_info&.find { |user_occurrence| user_occurrence.course_template_no == @course.course_template_no }
 
     render :show
   end
