@@ -95,16 +95,18 @@
           <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
           <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
           <ul class="govuk-list ncce-booking-list">
-            <% @occurrences.each do |oc| %>
+            <% if  @user_course_occurrence.present? %>
               <li class="ncce-booking-list__item">
                 <div class='govuk-body-s ncce-booking-list__date'>
-                  <%=  activity_times(oc.start_date, oc.end_date, oc.online_cpd) %>
+                  <%=  course_start_date(@user_course_occurrence.start_date) %>
                 </div>
                 <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
-                <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
-                  <%= "#{oc.address_venue_name}, <br> #{oc.address_town}, <br> #{oc.address_postcode} <br>".html_safe unless oc.remote_delivered_cpd %>
-                  <%= link_to 'Go to course', @booking.booking_path(oc.course_occurrence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
-                </span>
+                  <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+                    <% unless achievement.activity.remote_delivered_cpd %>
+                      <%= "#{@user_course_occurrence.address_venue_name}, #{@user_course_occurrence.address_line_one}, #{@user_course_occurrence.address_town}, #{@user_course_occurrence.address_postcode}" %>
+                    <% end %>
+                    <%= link_to 'Go to course', @booking.booking_path(oc.course_occurrence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                  </span>
               </li>
             <% end %>
           </ul>

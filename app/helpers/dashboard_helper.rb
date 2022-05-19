@@ -21,10 +21,6 @@ module DashboardHelper
     end
   end
 
-  def course_start_date(start_date)
-    Date.parse(start_date).strftime('%d %B %Y, %A %H:%M')
-  end
-
   def course_icon_class(activity)
     case activity.category.to_sym
     when :online
