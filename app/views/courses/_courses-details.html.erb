@@ -1,7 +1,7 @@
 <div class="course-details">
   <% @course.subjects.each do |subject| %>
-    <% if @course_filter&.subjects&.has_value?(subject.to_i) %>
-      <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.subjects.key(subject.to_i) %></strong>
+    <% if @subjects&.has_value?(subject.to_i) %>
+      <strong class="govuk-tag ncce-courses__tag"><%= @subjects.key(subject.to_i) %></strong>
     <% end %>
   <% end %>
    <% @course.age_groups.each do |group| %>
