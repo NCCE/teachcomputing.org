@@ -22,4 +22,12 @@ module ProgrammesHelper
   def csa_programme_title
     'Subject knowledge certificate'
   end
+
+  def append_certificate(programme)
+    if programme == 'Primary' || programme == 'Secondary'
+      "#{programme} certificate"
+    else
+      programme
+    end
+  end
 end
