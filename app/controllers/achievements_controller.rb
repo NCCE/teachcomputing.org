@@ -7,22 +7,17 @@ class AchievementsController < ApplicationController
       flash[:error] = "You must provide supporting evidence for '#{@achievement.activity.title}'"
     elsif @achievement.save
       flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
+
       metadata = { credit: @achievement.activity.credit }
       metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      if achievement_params[:supporting_evidence].present?
-        metadata[:self_verification_info] =
-          url_for(@achievement.supporting_evidence)
-      end
+      metadata[:self_verification_info] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
 
       @achievement.transition_to(:complete, metadata)
 
       if @achievement.programme
         case @achievement.programme.slug
-        when 'cs-accelerator'
-          AssesmentEligibilityJob.perform_now(current_user.id, source: 'AchievementsController.create')
         when 'primary-certificate', 'secondary-certificate'
-          CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id,
-                                                                            source: 'AchievementsController.create')
+          CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id, source: 'AchievementsController.create')
         end
       end
     else
