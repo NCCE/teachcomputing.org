@@ -11,7 +11,8 @@ module TrackingHelper
       primary_path => 'Primary unenrolled',
       primary_certificate_path => 'Primary enrolled',
       secondary_path => 'Secondary unenrolled',
-      secondary_certificate_path => 'Secondary enrolled'
+      secondary_certificate_path => 'Secondary enrolled',
+      courses_path => 'Courses'
     }
   end
 
