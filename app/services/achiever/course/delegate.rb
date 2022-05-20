@@ -12,63 +12,7 @@ class Achiever::Course::Delegate
       ProgrammeName: PROGRAMME_NAME,
       CONTACTNO: achiever_contact_no
     }
-    # delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
-    # START HACK...
-    delegate_courses = [
-      JSON.parse({
-        'Productlines.COURSEOCCURRENCENO': 'cf8903f9-91a2-4d08-ba41-596ea05b498c',
-        'Productlines.PRODLINENO': '7f7751ef-ffbf-4d2e-ba36-dfa359371b1b',
-        'Activity.ActivityTitle': 'Scratch course',
-        ENQUIRYNO: '068178a1-b069-4f61-a2fc-857ef6f3a931',
-        'Productlines.Type': '157420000',
-        'Delegate.BookerFirstName': '',
-        'Delegate.BookerSurname': '',
-        'Delegate.Is_Fully_Attended': 'True',
-        'ActivityVenueAddress.PostCode': '',
-        'ActivityVenueAddress.City': 'Nodnol',
-        'ActivityVenueAddress.Address.Line1': 'A place',
-        'ActivityVenueAddress.ADDRESSNO': '8ca5e149-111e-4c59-9f69-c5d175bd80c6',
-        'ActivityVenueAddress.VenueName': 'The centre of somewhere',
-        'Activity.StartDate': "10\/07\/2019 00:00:00",
-        'Activity.EndDate': "17\/07\/2019 00:00:00",
-        'Delegate.FirstName': '',
-        'Delegate.CalculatedSurname': '',
-        'Delegate.CalculatedEmailAddress': 'user2@example.com',
-        'Delegate.Progress': '157420003',
-        'Activity.ImportedToITK': false,
-        'Activity.COURSEOCCURRENCENO': 'cf8903f9-91a2-4d08-ba41-596ea05b498c',
-        OnlineCPD: true,
-        'Activity.COURSETEMPLATENO': '526b3a42-b688-ea11-a811-000d3a86d545'
-      }.to_json, object_class: OpenStruct),
-      JSON.parse({
-        'Productlines.COURSEOCCURRENCENO': 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
-        'Productlines.PRODLINENO': '7f7751ef-ffbf-4d2e-ba36-dfa359371b1b',
-        'Activity.ActivityTitle': 'Python course',
-        ENQUIRYNO: '068178a1-b069-4f61-a2fc-857ef6f3a931',
-        'Productlines.Type': '157420000',
-        'Delegate.BookerFirstName': '',
-        'Delegate.BookerSurname': '',
-        'Delegate.Is_Fully_Attended': 'False',
-        'ActivityVenueAddress.PostCode': '',
-        'ActivityVenueAddress.City': '',
-        'ActivityVenueAddress.Address.Line1': 'Another place',
-        'ActivityVenueAddress.Address.Line2': 'Somewhere else',
-        'ActivityVenueAddress.Address.Line3': 'Even Far away',
-        'ActivityVenueAddress.ADDRESSNO': '8ca5e149-111e-4c59-9f69-c5d175bd80c6',
-        'ActivityVenueAddress.VenueName': '',
-        'Activity.StartDate': "10\/07\/2019 00:00:00",
-        'Activity.EndDate': "17\/07\/2019 00:00:00",
-        'Delegate.FirstName': '',
-        'Delegate.CalculatedSurname': '',
-        'Delegate.CalculatedEmailAddress': 'user1@example.com',
-        'Delegate.Progress': '157420003',
-        'Activity.ImportedToITK': false,
-        'Activity.COURSEOCCURRENCENO': 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
-        OnlineCPD: false,
-        'Activity.COURSETEMPLATENO': '17d78590-4268-ea11-a811-000d3a86d7a3'
-      }.to_json, object_class: OpenStruct)
-    ]
-    # ...END HACK
+    delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
     delegate_courses.map { |delegate_course| Achiever::Course::Delegate.new(delegate_course) }
   end
 
