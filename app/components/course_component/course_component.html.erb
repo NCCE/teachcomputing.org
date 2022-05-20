@@ -10,7 +10,7 @@
         <span class='ncce-courses__locations-name'>Join anytime</span>
       </div>
     </div>
-  <% else @course.occurrences.length > 1 %>
+  <% elsif @course.occurrences.present? %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
       <button aria-expanded="false">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'><%= course_type(@course) %></span>
@@ -23,6 +23,10 @@
         </span>
       </div>
       </button>
+    </div>
+  <% else %>
+    <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations--always-open">
+      <span><%= t('.no_occurrences_html', hubs_link: link_to('your local Computing Hub', '/hubs', class: 'ncce-link', data: tracking_data('Coming soon'))) %></span>
     </div>
   <% end %>
   <%= render CourseOccurrencesComponent.new(course: @course) %>

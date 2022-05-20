@@ -18,7 +18,7 @@ RSpec.describe UserProgrammeAssessment do
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
-  let(:exam_activity) { create(:activity, :cs_accelerator_exam )}
+  let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:exam_programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -75,23 +75,23 @@ RSpec.describe UserProgrammeAssessment do
     end
 
     it 'assigns the test gate correctly' do
-      expect(user_programme_asessment.enough_credits_for_test?).to eq (false)
+      expect(user_programme_asessment.enough_credits_for_test?).to be(false)
     end
 
     it 'assign the time until user can take the test correctly' do
-      expect(user_programme_asessment.can_take_test_at).to eq (0)
+      expect(user_programme_asessment.can_take_test_at).to eq(0)
     end
 
     it 'assign whether user is currently doing a test correctly' do
-      expect(user_programme_asessment.currently_taking_test?).to eq (false)
+      expect(user_programme_asessment.currently_taking_test?).to be(false)
     end
 
     it 'assigns the number of attempts at test correctly' do
-      expect(user_programme_asessment.num_attempts).to eq (0)
+      expect(user_programme_asessment.num_attempts).to eq(0)
     end
 
     it 'assigns the new test gate correctly' do
-      expect(user_programme_asessment.enough_activities_for_test?).to eq (false)
+      expect(user_programme_asessment.enough_activities_for_test?).to be(false)
     end
 
     context 'when user can take the test' do
@@ -100,23 +100,23 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
       it 'assigns the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (0)
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
       it 'assigns that user is not currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test?).to eq (false)
+        expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
       it 'assigns the number of attempts at test correctly' do
-        expect(user_programme_asessment.num_attempts).to eq (0)
+        expect(user_programme_asessment.num_attempts).to eq(0)
       end
 
       it 'assigns the new test gate correctly' do
-        expect(user_programme_asessment.enough_activities_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_activities_for_test?).to be(true)
       end
     end
 
@@ -126,19 +126,19 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
       it 'assigns the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (0)
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
       it 'assigns whether user is currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test?).to eq (true)
+        expect(user_programme_asessment.currently_taking_test?).to be(true)
       end
 
       it 'assigns the number of attempts at test correctly' do
-        expect(user_programme_asessment.num_attempts).to eq (1)
+        expect(user_programme_asessment.num_attempts).to eq(1)
       end
     end
 
@@ -148,19 +148,19 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
       it 'assigns the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (0)
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
       it 'assigns whether user is currently doing a test' do
-        expect(user_programme_asessment.currently_taking_test?).to eq (false)
+        expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
       it 'assigns the number of attempts at test correctly' do
-        expect(user_programme_asessment.num_attempts).to eq (1)
+        expect(user_programme_asessment.num_attempts).to eq(1)
       end
     end
 
@@ -170,15 +170,15 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the test gate correctly' do
-        expect(user_programme_asessment.enough_credits_for_test?).to eq (true)
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
       it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
-        expect(user_programme_asessment.can_take_test_at).to_not eq 0
+        expect(user_programme_asessment.can_take_test_at).not_to eq 0
       end
 
       it 'assigns the number of attempts at test correctly' do
-        expect(user_programme_asessment.num_attempts).to eq (2)
+        expect(user_programme_asessment.num_attempts).to eq(2)
       end
     end
 
@@ -188,11 +188,11 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'assigns the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (0)
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
       it 'assigns the number of attempts at test correctly' do
-        expect(user_programme_asessment.num_attempts).to eq (2)
+        expect(user_programme_asessment.num_attempts).to eq(2)
       end
     end
 
@@ -203,7 +203,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it 'doesn\'t set the time until user can take the test' do
-        expect(user_programme_asessment.can_take_test_at).to eq (0)
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
     end
   end

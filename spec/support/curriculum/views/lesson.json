@@ -5,6 +5,7 @@
       "title": "Lesson 1",
       "slug": "lesson-1",
       "description": "This is a Lesson",
+      "isaac_url": "https://www.raspberrypi.com/",
       "zipped_contents": {
         "file": "https://teachcomputing.org",
         "size": "1.1 MB",

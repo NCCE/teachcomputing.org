@@ -5,6 +5,6 @@ module PrimaryCertificateHelper
 
   def add_groups_complete_icon_class(current_user, groups)
     complete = groups.all? { |group| group.user_complete?(current_user) }
-    complete ? 'ncce-activity-list__item-text--complete' : ''
+    complete ? 'ncce-activity-list__title--complete' : ''
   end
 end

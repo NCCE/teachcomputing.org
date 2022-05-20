@@ -7,3 +7,11 @@
     margin-bottom: 15px;
   }
 }
+
+.recommended-courses-wrapper_expander-button {
+  font-size: 1.188rem;
+
+  @include govuk-media-query($until: tablet) {
+    font-size: 1rem;
+  }
+}

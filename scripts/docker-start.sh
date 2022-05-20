@@ -3,7 +3,7 @@ source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
 URL="http://${nginx_mappings__prefix[0]}.${nginx_domain_root}"
 URL_TO_POLL="http://localhost:${nginx_mappings__port[0]}"
-TIMEOUT=45
+TIMEOUT=75
 OK_TO_PROCEED=0
 
 # Create a tunnel
@@ -20,7 +20,7 @@ fi
 # Brings the stack up and polls for availability
 echo "- Bringing up the stack:"
 docker compose up -d
-printf %s "- Waiting for the stack (ctrl+c to cancel): "
+printf %s "- trying for ${TIMEOUT}s (ctrl+c to cancel): "
 SECONDS=0
 while (( SECONDS < TIMEOUT )); do
   if ! curl -sSf "$URL_TO_POLL" &> /dev/null; then

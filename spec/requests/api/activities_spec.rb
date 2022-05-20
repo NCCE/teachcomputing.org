@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Api::ActivitiesController do
-  let(:activities) { create_list(:activity, 10) }
-  let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
+  let!(:activities) { create_list(:activity, 10) }
+  let(:token_headers) do
+    { HTTP_AUTHORIZATION: 'Bearer secret', HTTP_CONTENT_TYPE: 'application/json' }
+  end
 
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        activities
-        get "/api/activities/", { headers: nil }
+        get '/api/activities/', { headers: nil }
       end
 
       it 'returns 401 status' do
@@ -20,8 +21,7 @@ RSpec.describe Api::ActivitiesController do
   context 'when the correct token is passed' do
     describe 'GET #show' do
       before do
-        activities
-        get "/api/activities/", { headers: token_headers }
+        get '/api/activities/', { headers: token_headers }
       end
 
       it 'returns 201 status' do

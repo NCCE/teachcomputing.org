@@ -1,20 +1,41 @@
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <%= render 'certificates/achievements',
-      presenters: @user_programme_achievements.online_achievements(to_show = 1),
-      category: Activity::ONLINE_CATEGORY,
-      diagnostic_result_percentage: 'none'
-  %>
-
-  <%= render 'certificates/achievements',
-      presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
-      category: Activity::FACE_TO_FACE_CATEGORY,
-      diagnostic_result_percentage: 'none'
-  %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
+    <%= render CourseActivityComponent.new(
+      objective: t('.face_to_face_prompt.html'),
+      booking: {
+        path: courses_path(course_format: %i[face_to_face remote], certificate: @programme.slug),
+        tracking_label: 'Book remote or F2F course'
+      },
+      achievements: @face_to_face_achievements,
+      tracking_category: tracking_category
+    ) %>
+  </li>
+  <% if @issued_badge.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render DashBadgeComponent.new(
+        badge: @issued_badge,
+        tracking_event_category: @badge_tracking_event_category,
+        tracking_event_label: @badge_tracking_event_label
+      ) %>
+    </li>
+  <% end %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--no-gap">
+    <%= render CourseActivityComponent.new(
+      objective: t('.online_prompt.html'),
+      booking: {
+        path: courses_path(course_format: %i[online], certificate: @programme.slug),
+        tracking_label: 'Book online course'
+      },
+      achievements: @online_achievements,
+      tracking_category: tracking_category
+    ) %>
+  </li>
 </ul>
 
-<% @programme_activity_groupings.where(sort_key: 3..5).order(:sort_key).each do |group| %>
+<% @programme_activity_groupings.each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
     <p class="govuk-body"><strong><%= group.title %> - complete <%= group.required_for_completion %> of the following activities:</strong></p>
     <%= render 'achievements', presenters: @user_programme_achievements.map_to_community_presenter(group.programme_activities) %>
   </ul>
 <% end %>
+

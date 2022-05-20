@@ -1518,7 +1518,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Supporting student attainment in GCSE computer science - residential'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
   activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
   activity.category = 'face-to-face'
@@ -1837,3 +1837,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '726ece56-27b0-ec11-983f
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5be69f65-60c1-ec11-983e-0022481b16a0') do |activity|
+  activity.title = 'Preparing for Ofsted in secondary computing'
+  activity.credit = 10
+  activity.slug = 'preparing-for-ofsted-in-secondary-computing'
+  activity.stem_course_template_no = '5be69f65-60c1-ec11-983e-0022481b16a0'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP444'
+  activity.remote_delivered_cpd = true
+end
