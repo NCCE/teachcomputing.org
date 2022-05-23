@@ -31,5 +31,6 @@ en:
         Track students' progress
       aside:
         title: "Why sign up?"
-        text: Benefit from a wide range of GCSE computer science resources and online events. Register with Isaac Computer Science and create your free account.
+        text:
+          html: "Benefit from a wide range of GCSE computer science resources and online events.<br><br>Register with Isaac Computer Science and create your free account."
         link_title: "Visit Isaac Computer Science"
