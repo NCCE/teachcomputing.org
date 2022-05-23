@@ -81,13 +81,4 @@ describe ProgrammesHelper, type: :helper do
       expect(index_to_word_ordinal(6)).to eq('seventh')
     end
   end
-
-  describe('#append_certificate') do
-    it 'appends the word certificate for primary and secondary tags' do
-      secondary_certificate = 'Secondary'
-      primary_certificate = 'Primary'
-      expect(append_certificate(secondary_certificate)).to eq('Secondary certificate')
-      expect(append_certificate(primary_certificate)).to eq('Primary certificate')
-    end
-  end
 end
