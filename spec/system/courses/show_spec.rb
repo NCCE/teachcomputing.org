@@ -15,6 +15,7 @@ RSpec.describe('Course Details page', type: :system) do
     stub_subjects
     stub_age_groups
     stub_course_templates
+    stub_attendance_sets
     stub_delegate
   end
 
