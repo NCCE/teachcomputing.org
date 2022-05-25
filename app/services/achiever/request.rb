@@ -82,11 +82,14 @@ class Achiever::Request
 
       def local_response(resource_path)
         matches = /Get\?cmd=(.*)/.match(resource_path)
-        endpoint = local_template_mappings.fetch(matches[1]&.to_sym)
+        endpoint = matches[1]&.to_sym
 
         begin
-          path = "spec/support/achiever/courses/#{endpoint}.json"
+          template = local_template_mappings.fetch(endpoint)
+          path = "spec/support/achiever/courses/#{template}.json"
           OpenStruct.new(body: File.new(path).read, status: 200)
+        rescue KeyError
+          raise KeyError, "No mapping exists for #{matches[1]}"
         rescue Errno::ENOENT
           raise Errno::ENOENT, "No local template could be found for the achiever endpoint '#{endpoint}' in '#{path}'"
         end
