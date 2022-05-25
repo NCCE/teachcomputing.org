@@ -102,8 +102,7 @@ class Achiever::Request
           CoursesForCurrentDelegateByProgramme: 'delegate',
           ENV['ACHIEVER_F2F_METHOD'].to_sym => 'face_to_face_occurrences',
           ENV['ACHIEVER_ONLINE_METHOD'].to_sym => 'online_occurrences',
-          CourseDetails: 'occurrence_details',
-          ContactDetails: 'maybe'
+          CourseDetails: 'occurrence_details'
         }
       end
   end
