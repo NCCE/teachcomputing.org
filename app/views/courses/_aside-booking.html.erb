@@ -4,10 +4,7 @@
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
       <% if !@course.online_cpd %>
-        <div class='govuk-body-s ncce-aside__text ncce-booking-list__stem-and-tc-emblems'>
-          <div class='govuk-!-padding-top-1'> <%= image_pack_tag 'media/images/logos/tc-logo-small.svg', alt: 'Raspberry pi foundation logo' %> </div>
-          <div> <%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: 'Raspberry pi foundation logo' %> </div>
-        </div>
+        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
       <% end %>
       <% if (@booking.show_stem_occurrence_list) %>
         <ul class="govuk-list ncce-booking-list">
