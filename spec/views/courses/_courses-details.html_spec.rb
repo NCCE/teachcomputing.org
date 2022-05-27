@@ -4,11 +4,13 @@ RSpec.describe('courses/_courses-details', type: :view) do
   let(:user) { create(:user) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:age_groups) { Achiever::Course::AgeGroup.all }
+  let(:subjects) { Achiever::Course::Subject.all }
 
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     stub_duration_units
     stub_age_groups
+    stub_subjects
     stub_face_to_face_occurrences
     stub_course_templates
 
@@ -22,12 +24,22 @@ RSpec.describe('courses/_courses-details', type: :view) do
     before do
       assign(:age_groups, age_groups)
       assign(:occurrences, occurrences)
+      assign(:subjects, subjects)
 
       render
     end
 
     it 'has an age tag' do
       expect(rendered).to have_css('.ncce-courses__tag', text: 'Key stage 4')
+    end
+
+    it 'has a subject tag' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Programming')
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Data & information')
+    end
+
+    it 'has a programme tag' do
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
     end
 
     it 'displays the course type' do
