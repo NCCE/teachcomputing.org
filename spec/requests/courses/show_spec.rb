@@ -38,7 +38,7 @@ RSpec.describe CoursesController do
       end
 
       it 'sets the age_groups' do
-        expect(assigns(:age_groups)).not_to eq(nil)
+        expect(assigns(:age_groups)).not_to be_nil
       end
 
       it 'sets the course correctly' do
@@ -50,15 +50,15 @@ RSpec.describe CoursesController do
       end
 
       it 'assigns list of occurrences' do
-        expect(assigns(:occurrences)).not_to eq(nil)
+        expect(assigns(:occurrences)).not_to be_nil
       end
 
       it 'assigns list of other_courses' do
-        expect(assigns(:other_courses)).not_to eq(nil)
+        expect(assigns(:other_courses)).not_to be_nil
       end
 
       it 'the single course is not in the list of other_courses' do
-        expect(assigns(:other_courses).map(&:course_template_no).include?(course.course_template_no)).to eq(false)
+        expect(assigns(:other_courses).map(&:course_template_no).include?(course.course_template_no)).to be(false)
       end
 
       it 'sets the activity' do

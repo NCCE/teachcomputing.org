@@ -6,6 +6,7 @@ class AsideComponent < ViewComponent::Base
     @text = text
     @link = link
     @image = options[:image]
+    @use_button = options[:use_button]
     @tracking_category = options[:tracking_category]
     @class_name = options[:class_name]
   end

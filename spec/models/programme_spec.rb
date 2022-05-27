@@ -9,7 +9,7 @@ RSpec.describe Programme, type: :model do
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
-  let(:badge) { create(:badge, :active, programme_id: programme.id)}
+  let(:badge) { create(:badge, :active, programme_id: programme.id) }
 
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
@@ -35,23 +35,8 @@ RSpec.describe Programme, type: :model do
       end
 
       it 'contains only programmes that are enrollable' do
-        expect(Programme.enrollable).to eq programmes
-        expect(Programme.enrollable).not_to include non_enrollable_programme
-      end
-    end
-  end
-
-  describe '#diagnostic' do
-    context 'when an associated diagnostic activity exists' do
-      it 'returns record' do
-        generic_programme.activities << diagnostic
-        expect(generic_programme.diagnostic).to eq diagnostic
-      end
-    end
-
-    context 'when an associated diagnostic activity exists' do
-      it 'returns nil' do
-        expect(generic_programme.diagnostic).to eq nil
+        expect(described_class.enrollable).to eq programmes
+        expect(described_class.enrollable).not_to include non_enrollable_programme
       end
     end
   end
@@ -59,20 +44,20 @@ RSpec.describe Programme, type: :model do
   describe '#user_enrolled?' do
     it 'returns true if user is enrolled on the programme' do
       user_programme_enrolment
-      expect(programme.user_enrolled?(user)).to eq(true)
+      expect(programme.user_enrolled?(user)).to be(true)
     end
 
     it 'returns false if user is not enrolled on the programme' do
-      expect(programme.user_enrolled?(user)).to eq(false)
+      expect(programme.user_enrolled?(user)).to be(false)
     end
 
     it 'returns false if user not defined' do
-      expect(programme.user_enrolled?(nil)).to eq(false)
+      expect(programme.user_enrolled?(nil)).to be(false)
     end
 
     it 'returns false if user unenrolled' do
       user_programme_enrolment.transition_to(:unenrolled)
-      expect(programme.user_enrolled?(user)).to eq(false)
+      expect(programme.user_enrolled?(user)).to be(false)
     end
   end
 
@@ -82,7 +67,7 @@ RSpec.describe Programme, type: :model do
     end
 
     it 'returns the cs-accelerator record' do
-      expect(Programme.cs_accelerator).to eq programme
+      expect(described_class.cs_accelerator).to eq programme
     end
   end
 
@@ -92,11 +77,11 @@ RSpec.describe Programme, type: :model do
     end
 
     it 'returns the primary record' do
-      expect(Programme.primary_certificate).to eq primary_programme
+      expect(described_class.primary_certificate).to eq primary_programme
     end
 
     it 'returns the correct type' do
-      expect(Programme.primary_certificate).to be_a(Programmes::PrimaryCertificate)
+      expect(described_class.primary_certificate).to be_a(Programmes::PrimaryCertificate)
     end
   end
 
@@ -106,11 +91,11 @@ RSpec.describe Programme, type: :model do
     end
 
     it 'returns the secondary record' do
-      expect(Programme.secondary_certificate).to eq secondary_programme
+      expect(described_class.secondary_certificate).to eq secondary_programme
     end
 
     it 'returns the correct type' do
-      expect(Programme.secondary_certificate).to be_a(Programmes::SecondaryCertificate)
+      expect(described_class.secondary_certificate).to be_a(Programmes::SecondaryCertificate)
     end
   end
 
@@ -119,63 +104,51 @@ RSpec.describe Programme, type: :model do
       programme
     end
 
-   context 'with a programme but without a badge' do
-     it 'returns false' do
-        expect(programme.badgeable?).to eq false
-     end
-   end
+    context 'with a programme but without a badge' do
+      it 'returns false' do
+        expect(programme.badgeable?).to be false
+      end
+    end
 
-   context 'with a programme that has a badge' do
-     it 'returns true when active' do
-      badge
-      expect(programme.badgeable?).to eq true
-     end
+    context 'with a programme that has a badge' do
+      it 'returns true when active' do
+        badge
+        expect(programme.badgeable?).to be true
+      end
 
-     it 'returns false when active is false' do
-       badge.update(active: false)
-       expect(programme.badgeable?).to eq false
-     end
-   end
- end
+      it 'returns false when active is false' do
+        badge.update(active: false)
+        expect(programme.badgeable?).to be false
+      end
+    end
+  end
 
   describe '#user_completed?' do
     context 'when the user is enrolled' do
       it 'returns false' do
         user_programme_enrolment
-        expect(programme.user_completed?(user)).to eq false
+        expect(programme.user_completed?(user)).to be false
       end
     end
 
     context 'when the user is pending' do
       it 'returns false' do
         user_programme_enrolment.transition_to(:pending)
-        expect(programme.user_completed?(user)).to eq false
+        expect(programme.user_completed?(user)).to be false
       end
     end
 
     context 'when the user is complete' do
       it 'returns true' do
         user_programme_enrolment.transition_to(:complete)
-        expect(programme.user_completed?(user)).to eq true
+        expect(programme.user_completed?(user)).to be true
       end
-    end
-  end
-
-  describe '#credits_achieved_for_certificate' do
-    it 'returns 0' do
-      expect(programmes[0].credits_achieved_for_certificate(user)).to eq 0
-    end
-  end
-
-  describe '#max_credits_for_certificate' do
-    it 'returns 0' do
-      expect(programmes[0].max_credits_for_certificate).to eq 0
     end
   end
 
   describe '#enough_activities_for_test?' do
     it 'returns 0' do
-      expect(programmes[0].enough_activities_for_test?(user)).to eq false
+      expect(programmes[0].enough_activities_for_test?(user)).to be false
     end
   end
 
@@ -183,14 +156,14 @@ RSpec.describe Programme, type: :model do
     context 'when programme is primary certificate' do
       it 'returns true' do
         programme = build(:primary_certificate)
-        expect(programme.primary_certificate?).to eq(true)
+        expect(programme.primary_certificate?).to be(true)
       end
     end
 
     context 'when programme is not primary certificate' do
       it 'returns false' do
         programme = build(:programme, slug: nil)
-        expect(programme.primary_certificate?).to eq(false)
+        expect(programme.primary_certificate?).to be(false)
       end
     end
   end
@@ -199,14 +172,14 @@ RSpec.describe Programme, type: :model do
     context 'when programme is cs accelerator' do
       it 'returns true' do
         programme = build(:cs_accelerator)
-        expect(programme.cs_accelerator?).to eq(true)
+        expect(programme.cs_accelerator?).to be(true)
       end
     end
 
     context 'when programme is not cs accelerator' do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme')
-        expect(programme.cs_accelerator?).to eq(false)
+        expect(programme.cs_accelerator?).to be(false)
       end
     end
   end
@@ -215,14 +188,14 @@ RSpec.describe Programme, type: :model do
     context 'when programme is secondary certificate' do
       it 'returns true' do
         programme = build(:secondary_certificate)
-        expect(programme.secondary_certificate?).to eq(true)
+        expect(programme.secondary_certificate?).to be(true)
       end
     end
 
     context 'when programme is not secondary certificate' do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme')
-        expect(programme.secondary_certificate?).to eq(false)
+        expect(programme.secondary_certificate?).to be(false)
       end
     end
   end
