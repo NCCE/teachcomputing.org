@@ -5,7 +5,7 @@
   font-size: 1rem;
 
   &__text {
-    padding-left: 10px;
+    padding-left: 12px;
     padding-top: 5px;
     padding-bottom: 5px;
   }
@@ -16,12 +16,10 @@
 }
 
 .ncce-details__summary {
-  &-text, &:before {
-    color: $deep-cerulean;
-  }
 
+  &-text,
   &:before {
-    margin: 0.4rem 0 0 0;
+    color: $deep-cerulean;
   }
 
   &:focus {
@@ -30,6 +28,18 @@
   }
 
   text-decoration: underline !important;
+  padding-left: 17px;
+}
+
+.ncce-details[closed]>.ncce-details__summary::before {
+  margin: 0.4rem 0 0 0;
+}
+
+/* Ensure expander icon is aligned vertically when open on desktop */
+@include govuk-media-query($from: desktop) {
+  .ncce-details[open]>.ncce-details__summary::before {
+    margin: 0.5rem 0 0 0;
+  }
 }
 
 .ncce-details__summary-content-wrapper {

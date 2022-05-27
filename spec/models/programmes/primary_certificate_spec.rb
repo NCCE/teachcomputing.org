@@ -6,9 +6,7 @@ RSpec.describe Programmes::PrimaryCertificate do
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
-  let(:community_10_activity) { create(:activity, :community) }
   let(:community_5_activity) { create(:activity, :community_5) }
-  let(:community_20_activity) { create(:activity, :community_20) }
 
   let(:setup_achievements_for_partial_completion) do
     user_programme_enrolment
@@ -22,79 +20,11 @@ RSpec.describe Programmes::PrimaryCertificate do
 
   let(:setup_achievements_for_completion) do
     user_programme_enrolment
-    activities = [online_course, face_to_face_course, community_5_activity, community_10_activity,
-                  community_20_activity]
+    activities = [online_course, face_to_face_course, community_5_activity]
 
     activities.each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
       create(:completed_achievement, user_id: user.id, activity_id: activity.id)
-    end
-  end
-
-  let(:setup_diagnostic_score) do
-    user_programme_enrolment
-    create(:primary_enrolment_score_15, user: user)
-  end
-
-  describe '#diagnostic_result' do
-    before do
-      user_programme_enrolment
-    end
-
-    context 'when user has not done the diagnostic' do
-      it 'raises error if called' do
-        expect do
-          programme.diagnostic_result(user)
-        end.to raise_error(NoMethodError)
-      end
-    end
-
-    context 'when user has done the diagnostic with a score of 15' do
-      before do
-        setup_diagnostic_score
-      end
-
-      it 'returns correct score' do
-        expect(programme.diagnostic_result(user)).to eq(15)
-      end
-
-      it 'returns the expected percentage' do
-        expect(programme.diagnostic_result_percentage(user)).to eq(19)
-      end
-    end
-  end
-
-  describe '#credits_achieved_for_certificate' do
-    context 'when the user has not done any activities' do
-      it 'returns 0' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 0
-      end
-    end
-
-    context 'when the user has done 2 online activities' do
-      before do
-        setup_achievements_for_partial_completion
-      end
-
-      it 'returns 45' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 45
-      end
-    end
-
-    context 'when the user has done enough activities' do
-      before do
-        setup_achievements_for_completion
-      end
-
-      it 'returns 75' do
-        expect(programme.credits_achieved_for_certificate(user)).to eq 75
-      end
-    end
-  end
-
-  describe '#max_credits_for_certificate' do
-    it 'returns 75' do
-      expect(programme.max_credits_for_certificate).to eq 75
     end
   end
 
