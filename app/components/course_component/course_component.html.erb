@@ -34,12 +34,12 @@
   <% unless @course.subjects.nil? && @course.key_stages.nil? && @course.workstream.nil?%>
     <h3 class="screen-reader-only">Tags for this course:</h3>
       <% @course.subjects.each do |subject| %>
-        <% if @course_filter.subjects&.has_value?(subject.to_i) %>
+        <% if @course_filter&.subjects&.has_value?(subject.to_i) %>
           <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.subjects.key(subject.to_i) %></strong>
         <% end %>
       <% end %>
       <% @course.age_groups.each do |group| %>
-          <% if @course_filter.age_groups&.has_value?(group.to_i) %>
+          <% if @course_filter&.age_groups&.has_value?(group.to_i) %>
             <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.age_groups.key(group.to_i) %></strong>
           <% end %>
       <% end %>

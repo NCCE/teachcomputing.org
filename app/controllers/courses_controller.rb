@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
   def show
     @age_groups = Achiever::Course::AgeGroup.all
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    @subjects = Achiever::Course::Subject.all
 
     return redirect_to course_path(id: @course.activity_code, name: @course.title.parameterize) if params[:name].nil?
 

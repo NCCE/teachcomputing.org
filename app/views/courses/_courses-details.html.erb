@@ -1,8 +1,16 @@
 <div class="course-details">
+  <% @course.subjects.each do |subject| %>
+    <% if @subjects&.has_value?(subject.to_i) %>
+      <strong class="govuk-tag ncce-courses__tag"><%= @subjects.key(subject.to_i) %></strong>
+    <% end %>
+  <% end %>
    <% @course.age_groups.each do |group| %>
     <% if @age_groups.has_value?(group.to_i) %>
       <strong class="govuk-tag ncce-courses__tag"><%= @age_groups.key(group.to_i) %></strong>
     <% end %>
+  <% end %>
+  <% @course.programmes.each do |programme| %>
+    <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= display_programme_tag programme %></strong>
   <% end %>
   <div class="course-details__icons">
   <% if @course.online_cpd %>
