@@ -17,6 +17,7 @@
 
 .ncce-details__summary {
 
+
   &-text,
   &:before {
     color: $deep-cerulean;
@@ -27,21 +28,24 @@
     box-shadow: none;
   }
 
+  &:before {
+    bottom: initial;
+    top: 5.5px;
+
+    @include govuk-media-query($until: tablet) {
+      top: 3px;
+    }
+  }
+
   text-decoration: underline !important;
   padding-left: 17px;
 }
 
-.ncce-details[closed]>.ncce-details__summary::before {
-  margin: 0.4rem 0 0 0;
-}
-
 /* Ensure expander icon is aligned vertically when open on desktop */
-@include govuk-media-query($from: desktop) {
-  .ncce-details[open]>.ncce-details__summary::before {
-    margin: 0.5rem 0 0 0;
-  }
+.ncce-details[open]>.ncce-details__summary::before {
+  margin: 0.1rem 0 0 0;
 }
 
 .ncce-details__summary-content-wrapper {
-  margin: 0.8rem 1.6rem;
+  margin: 0.8rem 1.1rem;
 }
