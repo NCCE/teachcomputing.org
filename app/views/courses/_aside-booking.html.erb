@@ -72,7 +72,7 @@
           <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
           <ul class="govuk-list ncce-booking-list">
             <% if  @user_occurrence.present? %>
-              <li class="ncce-booking-list__item">
+              <li class="ncce-booking-details">
                 <div class='govuk-body-s ncce-booking-list__date'>
                   <%=  course_start_date(@user_occurrence.start_date) %>
                 </div>
@@ -95,7 +95,7 @@
           <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
           <ul class="govuk-list ncce-booking-list">
             <% if  @user_occurrence.present? %>
-              <li class="ncce-booking-list__item">
+              <li class="ncce-booking-details">
                 <div class='govuk-body-s ncce-booking-list__date'>
                   <%=  course_start_date(@user_occurrence.start_date) %>
                 </div>
