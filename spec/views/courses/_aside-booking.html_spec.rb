@@ -184,8 +184,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_text('Face to face course')
         end
 
-        it 'displays the address' do
-          expect(rendered).to have_text('National STEM Learning Centre, University of York, York, YO10 5DD')
+        it 'displays all parts of the address' do
+          expect(rendered).to have_text('National STEM Learning Centre')
+          expect(rendered).to have_text('University of York')
+          expect(rendered).to have_text('York')
+          expect(rendered).to have_text('YO10 5DD')
         end
 
 
@@ -247,8 +250,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_text('Face to face course')
         end
 
-        it 'displays the address' do
-          expect(rendered).to have_text('National STEM Learning Centre, University of York, York, YO10 5DD')
+        it 'displays all parts of the address' do
+          expect(rendered).to have_text('National STEM Learning Centre')
+          expect(rendered).to have_text('University of York')
+          expect(rendered).to have_text('York')
+          expect(rendered).to have_text('YO10 5DD')
         end
 
 
