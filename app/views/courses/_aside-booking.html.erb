@@ -79,8 +79,9 @@
                 <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
                   <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
                     <% unless @course.remote_delivered_cpd %>
-                      <%= "#{@user_occurrence.address_venue_name}, #{@user_occurrence.address_line_one}, #{@user_occurrence.address_town}, #{@user_occurrence.address_postcode}" %>
+                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                     <% end %>
+                    <br>
                     <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
                   </span>
               </li>
@@ -101,8 +102,9 @@
                 <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
                   <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
                     <% unless @course.remote_delivered_cpd %>
-                      <%= "#{@user_occurrence.address_venue_name}, #{@user_occurrence.address_line_one}, #{@user_occurrence.address_town}, #{@user_occurrence.address_postcode}" %>
+                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                     <% end %>
+                    <br>
                     <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
                   </span>
               </li>
