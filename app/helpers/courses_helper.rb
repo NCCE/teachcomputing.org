@@ -18,6 +18,10 @@ module CoursesHelper
     link_to 'Book Activity', booking_url.to_s, class: 'govuk-button'
   end
 
+  def course_start_date(start_date)
+    Date.parse(start_date).strftime('%d %B %Y, %A %H:%M')
+  end
+
   def activity_dates(start_date, end_date)
     return if start_date.blank? || end_date.blank?
 

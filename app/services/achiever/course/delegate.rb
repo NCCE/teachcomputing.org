@@ -7,10 +7,10 @@ class Achiever::Course::Delegate
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
     query_strings = {
-      'Page': '1',
-      'RecordCount': '1000',
-      'ProgrammeName': PROGRAMME_NAME,
-      'CONTACTNO': achiever_contact_no
+      Page: '1',
+      RecordCount: '1000',
+      ProgrammeName: PROGRAMME_NAME,
+      CONTACTNO: achiever_contact_no
     }
     delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
     delegate_courses.map { |delegate_course| Achiever::Course::Delegate.new(delegate_course) }
