@@ -81,32 +81,19 @@ class Achiever::Request
       end
 
       def local_response(resource_path)
+        raise Error, 'Missing ACHIEVER_LOCAL_TEMPLATE_PATH' unless ENV['ACHIEVER_LOCAL_TEMPLATE_PATH'].present?
+
         matches = /Get\?cmd=(.*)/.match(resource_path)
         endpoint = matches[1]&.to_sym
 
         begin
-          template = local_template_mappings.fetch(endpoint)
-          path = "spec/support/achiever/courses/#{template}.json"
+          path = "#{ENV['ACHIEVER_LOCAL_TEMPLATE_PATH']}/#{endpoint&.downcase}.json"
           OpenStruct.new(body: File.new(path).read, status: 200)
         rescue KeyError
           raise KeyError, "No mapping exists for #{matches[1]}"
         rescue Errno::ENOENT
           raise Errno::ENOENT, "No local template could be found for the achiever endpoint '#{endpoint}' in '#{path}'"
         end
-      end
-
-      def local_template_mappings
-        {
-          OptionsetAgeGroups: 'age_groups',
-          OptionsetAttendanceStatus: 'attendance',
-          OptionsetDurationUnit: 'duration_units',
-          OptionsetSubject: 'subjects',
-          CourseTemplatesListingByProgramme: 'templates',
-          CoursesForCurrentDelegateByProgramme: 'delegate',
-          ENV['ACHIEVER_F2F_METHOD'].to_sym => 'face_to_face_occurrences',
-          ENV['ACHIEVER_ONLINE_METHOD'].to_sym => 'online_occurrences',
-          CourseDetails: 'occurrence_details'
-        }
       end
   end
 end
