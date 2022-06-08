@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      return true if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_ADMINISTRATE_CF_AUTH'])
+      return true if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_ADMINISTRATE_CF_AUTH']) && Rails.env.development?
 
       if cookies[:CF_Authorization].nil?
         flash[:error] = 'Whoops something went wrong'
