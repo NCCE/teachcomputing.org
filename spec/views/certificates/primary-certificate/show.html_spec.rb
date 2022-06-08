@@ -9,21 +9,23 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
   let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
+  let(:community_activity) { create(:activity, :community) }
 
   before do
-    assign(:current_user, user)
     assign(:programme, primary_certificate)
-
-    assign(:professional_development_groups, professional_development_groups)
-    assign(:online_discussion_activity, online_development_group.programme_activities)
-    assign(:community_groups, community_groups)
-
-    assign(:user_programme_achievements, UserProgrammeAchievements.new(primary_certificate, user))
-    assign(:pathways, pathways)
   end
 
   describe 'when the user has no pathway' do
     before do
+      assign(:current_user, user)
+      assign(:user_pathway, nil)
+
+      assign(:professional_development_groups, professional_development_groups)
+      assign(:online_discussion_activity, community_activity)
+      assign(:community_groups, community_groups)
+
+      assign(:pathways, pathways)
+
       render
     end
 
@@ -37,6 +39,14 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
 
     it 'has an intro' do
       expect(rendered).to have_css('.govuk-body-m', text: 'These courses and activities')
+    end
+
+    it 'has a community activity component' do
+      expect(rendered).to have_css('.community-activity-component')
+    end
+
+    it 'has a course activity component' do
+      expect(rendered).to have_css('.course-activity-component')
     end
 
     it 'has the expected section titles' do
@@ -54,11 +64,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'shows no hidden activity title' do
-      expect(rendered).not_to have_css('.ncce-activity-list__item', text: 'View more activity options')
-    end
-
-    it 'has no toggles' do
-      expect(rendered).not_to have_css('.expander')
+      expect(rendered).not_to have_text('View more activity options')
     end
 
     it 'has view all courses button' do
@@ -103,6 +109,12 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
 
   describe 'when the user has a pathway' do
     before do
+      assign(:current_user, user)
+
+      assign(:professional_development_groups, professional_development_groups)
+      assign(:online_discussion_activity, community_activity)
+      assign(:community_groups, community_groups)
+
       upe = create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id)
       recommended_activities = upe.pathway.pathway_activities
       assign(:recommended_activities, recommended_activities.filter { |pa| pa.activity.category != :community.to_s })
@@ -117,8 +129,8 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       expect(rendered).to have_css('.recommended-courses-wrapper .expander__button', text: 'Courses based on your pathway')
     end
 
-    it 'has the expected number of toggles' do
-      expect(rendered).to have_css('.expander', count: 3)
+    it 'has hidden activities' do
+      expect(rendered).not_to have_text('View more activity options')
     end
 
     describe 'the pathway selector' do

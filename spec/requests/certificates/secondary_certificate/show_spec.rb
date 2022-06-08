@@ -32,10 +32,6 @@ RSpec.describe Certificates::SecondaryCertificateController do
         it 'assigns programme_activity_groupings' do
           expect(assigns(:programme_activity_groupings)).to all(be_a(ProgrammeActivityGrouping))
         end
-
-        it 'assigns programme' do
-          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
-        end
       end
 
       context 'when user is not enrolled' do

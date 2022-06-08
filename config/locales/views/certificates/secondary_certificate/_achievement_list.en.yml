@@ -2,6 +2,7 @@ en:
   certificates:
     secondary_certificate:
       achievement_list:
+        all_courses_button: "View all certificate courses"
         face_to_face_prompt:
           html: "Complete <strong>at least one</strong> face to face, or remote course"
         online_prompt:

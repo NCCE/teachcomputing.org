@@ -18,7 +18,7 @@
           </p>
           <div class="ncce-flex__space-between">
             <span class="govuk-body-s course-activity-component__course_type <%= activity_icon_class(achievement.activity) %>"><%= activity_type(achievement.activity) %> course</span>
-            <strong class="govuk-tag course-activity-component__status ncce-courses__tag"><%= achievement.complete? ? 'Completed' : 'In progress' %></strong>
+            <strong class="govuk-tag course-activity-component__status ncce-courses__tag"><%= achievement.complete? ? t('.complete') : t('.in_progress') %></strong>
           </div>
         </div>
       <% end %>

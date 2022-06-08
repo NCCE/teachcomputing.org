@@ -87,11 +87,6 @@ RSpec.describe Certificates::PrimaryCertificateController do
         it 'assigns the programme' do
           expect(assigns(:programme)).to eq(programme)
         end
-
-        it 'assigns the programme achievements' do
-          expect(assigns(:user_programme_achievements))
-            .to be_a(UserProgrammeAchievements)
-        end
       end
     end
 

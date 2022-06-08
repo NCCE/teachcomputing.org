@@ -2,7 +2,13 @@
   align-items: flex-start;
   background-color: $white;
   display: grid;
+  grid-template-rows: auto auto;
   grid-template-columns: auto 8.5rem;
+
+  @include govuk-media-query($until: tablet) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
 }
 
 .course-activity-component__objective-text {
@@ -31,8 +37,12 @@
   width: auto;
   grid-row: auto;
   grid-column: 2;
-  position: relative;
-  top: 0.15rem;
+  margin-top: 0.15rem;
+
+  @include govuk-media-query($until: tablet) {
+    margin-top: 0.8rem;
+    grid-column: 1;
+  }
 }
 
 .course-activity-component__course-wrapper {
