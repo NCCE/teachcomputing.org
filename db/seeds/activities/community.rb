@@ -283,6 +283,7 @@ a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |act
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.description = 'Complete an additional <a href="https://teachcomputing.org/courses?certificate=cs-accelerator" class="ncce-link">CS Accelerator course</a> and expand your subject knowledge'
+  activity.booking_programme_slug = 'cs-accelerator'
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
