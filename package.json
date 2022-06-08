@@ -60,7 +60,7 @@
     "console": "yarn run web rails c",
     "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
-    "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec",
+    "test-debug": "docker-compose exec web rdebug-ide --host 0.0.0.0 --port 1235 ./bin/rspec",
     "guard": "yarn run bundle exec guard"
   },
   "lint-staged": {
