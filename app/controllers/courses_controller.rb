@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
   def show
     @age_groups = Achiever::Course::AgeGroup.all
     @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    @subjects = Achiever::Course::Subject.all
 
     return redirect_to course_path(id: @course.activity_code, name: @course.title.parameterize) if params[:name].nil?
 
@@ -38,6 +39,13 @@ class CoursesController < ApplicationController
     course_programmes
 
     @booking = @course.online_cpd ? ::OnlineBookingPresenter.new : ::StemBookingPresenter.new
+
+    # Get the user's course attempts
+    user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user&.stem_achiever_contact_no)
+    user_course_info = user_course_info.select { |course| %w[enrolled attended].include?(course.attendance_status) }
+
+    # Grab the one for the current course
+    @user_occurrence = user_course_info&.find { |user_occurrence| user_occurrence.course_template_no == @course.course_template_no }
 
     render :show
   end

@@ -22,4 +22,12 @@ module ProgrammesHelper
   def csa_programme_title
     'Subject knowledge certificate'
   end
+
+  def display_programme_tag(programme)
+    if programme == 'Secondary' || programme == 'Primary'
+      "#{programme} certificate"
+    else
+      programme
+    end
+  end
 end

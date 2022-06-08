@@ -6,4 +6,14 @@ class IsaacCardComponent < ViewComponent::Base
   def initialize(tracking_category: nil)
     @tracking_category = tracking_category
   end
+
+  def tracking_data(tracking_label)
+    return nil unless @tracking_category.present?
+
+    {
+      event_action: 'click',
+      event_category: @tracking_category,
+      event_label: tracking_label
+    }
+  end
 end

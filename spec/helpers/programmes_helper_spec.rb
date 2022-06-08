@@ -81,4 +81,15 @@ describe ProgrammesHelper, type: :helper do
       expect(index_to_word_ordinal(6)).to eq('seventh')
     end
   end
+
+  describe('#display_programme_tag') do
+    it 'appends the word certificate for primary and secondary tags' do
+      secondary_certificate = 'Secondary'
+      primary_certificate = 'Primary'
+      cs_accelerator = 'CS Accelerator'
+      expect(display_programme_tag(secondary_certificate)).to eq('Secondary certificate')
+      expect(display_programme_tag(primary_certificate)).to eq('Primary certificate')
+      expect(display_programme_tag(cs_accelerator)).to eq('CS Accelerator')
+    end
+  end
 end
