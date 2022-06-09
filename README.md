@@ -34,7 +34,10 @@ If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your 
 
 Optionally set a password for postgres by updating the value for `DEV_PASS` in your `.env` file.
 
-In order to load achiever resources (i.e. courses), you'll need to add staging credentials to `.env` (find in lastpass: TC Achiever creds):
+### Dynamics (referred to in the codebase as Achiever for historic reasons)
+
+By default the development environment expects to be able to communicate with Stem's staging Dynamics API which is used to populate the course list, and user enrolments etc. You'll need to add staging credentials to `.env` (find in lastpass: TC Achiever creds):
+
 ```
 # STAGING
 ACHIEVER_V2_PASSWORD=...
@@ -42,37 +45,46 @@ ACHIEVER_V2_USERNAME=...
 ACHIEVER_V2_ENDPOINT=...
 ```
 
+You will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
+
+There are two commands `yarn start-tunnel` and `yarn stop-tunnel` that are wrappers to manage the proxy locally, `yarn start` (below) utilises this to create the tunnel when the stack is brought up. It is important to have this setup for testing, however please see the 'Offline Dynamics' section below for how to run this offline.
+
 ### Starting and stopping the stack
 
-Start the stack:
+Start the stack (this automatically creates the ssh tunnel and waits until the stack is ready to use):
 
-```
-docker compose up -d
-```
-
-Or (this automatically creates the ssh tunnel and waits until the stack is ready to use):
 
 ```
 yarn start
 ```
 
-The app is available at: http://teachcomputing.rpfdev.com
+The app is then available at: http://teachcomputing.rpfdev.com
 
-Stop the stack:
-
-```
-docker compose down
-```
-
-Or (this also gracefully closes the tunnel):
+Stop the stack (this also gracefully closes the tunnel):
 
 ```
 yarn stop
 ```
 
-In order to access the achiever API you will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 Sidekiq is used to process background jobs. You can view the admin UI for this by visiting `/admin/sidekiq` and using GSuite account to authenticate.
+
+### Offline Dynamics
+
+To develop offline, removing the need for the proxy and a third party API, you can set the following environment variables in your `.env`:
+
+```
+ACHIEVER_USE_LOCAL_TEMPLATES=true
+ACHIEVER_LOCAL_TEMPLATE_PATH='spec/support/achiever/local_templates'
+```
+
+Data already exists in the path defined above, but it can be moved if you prefer.
+
+This is useful if you want to create your own test data, for example by changing the data in the `coursesforcurrentdelegatebyprogramme.json` and linking the `stem_achiever_contact_no` to your local user and updating the `COURSETEMPLATENO`, you could generate enrolments in order to test course bookings (without this the test data needs to exist in Stem's API).
+
+A task has been created to refresh this data from the api, run this with:
+
+`yarn run exec rake achiever:refresh_local_templates`
 
 ### Database
 
@@ -89,7 +101,7 @@ yarn run reset-db
 To perform migrations manually (without restarting the container) run:
 
 ```
-yarn run exec rails db:migrate
+yarn run web rails db:migrate
 ```
 
 #### Seeding the database
@@ -97,23 +109,17 @@ yarn run exec rails db:migrate
 To seed manually run:
 
 ```
-yarn run exec rails db:seed
+yarn run web rails db:seed
 ```
 
 ### Install new Dependencies / Updates
 
 The bundle has now been moved to a separate volume and once the initial build has taken place the bundle directory is mapped to a volume and persisted.
 
-To install/update a new gem, first update the Gemfile and run `docker-compose run web bundle install` or `docker-compose run web bundle update`, then:
+To install/update a new gem, first update the Gemfile and run
 
 ```
-yarn run bundle-install
-```
-
-To reinstall all packages:
-
-```
-docker compose build
+yarn run web bundle install
 ```
 
 ## Testing
@@ -121,22 +127,11 @@ docker compose build
 Uses [rspec](https://github.com/rspec/rspec)
 
 ```
-docker compose run --rm web bin/rspec
-```
-
-Or
-
-```
 yarn test
 ```
 
 To use [guard](https://github.com/guard/guard) to watch the tests:
 
-```
-docker compose run --rm web bin/guard
-```
-
-Or
 
 ```
 yarn run exec guard
@@ -152,7 +147,7 @@ Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled ta
 
 Used for linting ERB / HTML files
 
-Run with `bundle exec erblint --lint-all`
+Run with `yarn run exec erblint --lint-all`
 
 https://github.com/Shopify/erb-lint
 
@@ -160,7 +155,7 @@ https://github.com/Shopify/erb-lint
 
 Used for detecting 'code smell' in your app.
 
-Run with `bundle exec reek`
+Run with `yarn run exec reek`
 
 ### Brakeman
 
