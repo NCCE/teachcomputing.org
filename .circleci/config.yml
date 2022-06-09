@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@1.2.6
   ruby: circleci/ruby@1
 
 jobs:
@@ -128,7 +127,7 @@ workflows:
                 - master
                 - main
 
-  build_test_and_deploy:
+  build_and_test:
     jobs:
       - test
       - coverage_check:
@@ -138,11 +137,4 @@ workflows:
             branches:
               ignore:
                 - master
-                - main
-      - heroku/deploy-via-git:
-          app-name: teachcomputing-staging
-          requires:
-            - test
-          filters:
-            branches:
-              only: main              
+                - main          
