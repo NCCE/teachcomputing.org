@@ -22,7 +22,7 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   end
 
   it 'has an intro' do
-    expect(rendered).to have_css('.govuk-body-m', text: 'Welcome to the Teach secondary computing programme')
+    expect(rendered).to have_css('.govuk-body-m', text: 'These courses and activities have been picked so you can develop')
   end
 
   it 'has the expected section titles' do
