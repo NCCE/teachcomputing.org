@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_140353) do
+ActiveRecord::Schema.define(version: 2022_06_13_104145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_140353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
+    t.integer "order"
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end

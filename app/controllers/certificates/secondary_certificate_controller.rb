@@ -56,8 +56,7 @@ module Certificates
       end
 
       def user_achievements(category)
-        current_user.achievements.for_programme(@programme)
-                    .with_category(category)
+        current_user.achievements.for_programme(@programme).with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
                     .sort_complete_first

@@ -1,7 +1,7 @@
 import '@rails/activestorage'
 import { onPageLoad } from './utilities/loaders';
 
-function closeOtherPopups(currentWrapper = null) {
+function closePopups(currentWrapper = null) {
   const wrappers = document.querySelectorAll('.ihavedonethis')
   Array.prototype.forEach.call(wrappers, function iterateWrappers(wrapper) {
     if (wrapper != currentWrapper) {
@@ -23,7 +23,7 @@ function initialiseIHaveDoneThisPopup() {
     wrapper.classList.toggle('ihavedonethis--progressive')
 
     const listener = () => {
-      closeOtherPopups(wrapper);
+      closePopups(wrapper);
       const expanded = button.getAttribute('aria-expanded') === 'true'
       button.setAttribute('aria-expanded', !expanded)
       target.hidden = expanded
@@ -35,5 +35,11 @@ function initialiseIHaveDoneThisPopup() {
 
 onPageLoad(() => {
   initialiseIHaveDoneThisPopup()
-  closeOtherPopups()
+  closePopups() // Ensure no popups are open on page load
+
+  // Close popups when clicking anywhere outside of a popup
+  window.onclick = ev => {
+    if (ev.target.closest('.ihavedonethis')) return
+    closePopups()
+  }
 })
