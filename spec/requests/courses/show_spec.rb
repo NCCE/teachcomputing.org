@@ -23,6 +23,7 @@ RSpec.describe CoursesController do
       stub_subjects
       stub_age_groups
       stub_course_templates
+      stub_attendance_sets
       stub_delegate
       activity
     end

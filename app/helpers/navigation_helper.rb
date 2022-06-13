@@ -4,6 +4,7 @@ module NavigationHelper
       { text: 'Primary school',
         children: [
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
+          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'School primary glossary' },
           { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
           { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
         ] },
@@ -25,6 +26,7 @@ module NavigationHelper
       { text: 'Teaching resources',
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
+          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'Resources primary glossary' },
           { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' }
         ] },
       { text: 'About us',

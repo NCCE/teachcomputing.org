@@ -3,6 +3,9 @@
     <div class="ncce-aside">
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <% if !@course.online_cpd %>
+        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
+      <% end %>
       <% if (@booking.show_stem_occurrence_list) %>
         <ul class="govuk-list ncce-booking-list">
         <% @occurrences.each do |occurrence| %>
@@ -63,6 +66,51 @@
       <p class='govuk-body-s ncce-booking-list__progress'>
         Can't see the progress of your course? You may need to rejoin the course.
       </p>
+      <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
+          <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+          <ul class="govuk-list ncce-booking-list">
+            <% if  @user_occurrence.present? %>
+              <li class="ncce-booking-details">
+                <div class='govuk-body-s ncce-booking-list__date'>
+                  <%=  course_start_date(@user_occurrence.start_date) %>
+                </div>
+                <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+                  <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+                    <% unless @course.remote_delivered_cpd %>
+                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
+                    <% end %>
+                    <br>
+                    <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                  </span>
+              </li>
+            <% end %>
+          </ul>
+          <%= render ProviderLogosComponent.new(online: false) %>
+        </div>
+      <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
+          <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+          <ul class="govuk-list ncce-booking-list">
+            <% if  @user_occurrence.present? %>
+              <li class="ncce-booking-details">
+                <div class='govuk-body-s ncce-booking-list__date'>
+                  <%=  course_start_date(@user_occurrence.start_date) %>
+                </div>
+                <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+                  <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+                    <% unless @course.remote_delivered_cpd %>
+                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
+                    <% end %>
+                    <br>
+                    <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                  </span>
+              </li>
+            <% end %>
+          </ul>
+          <%= render ProviderLogosComponent.new(online: false) %>
     </div>
   <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
     <div class="ncce-aside">
