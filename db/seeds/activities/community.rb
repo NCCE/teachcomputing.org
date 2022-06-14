@@ -68,7 +68,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-a-cas-resource') do |activity|
   activity.title = 'Use and feedback on a CAS or STEM Learning resource'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'provide-feedback-on-a-cas-resource'
   activity.category = 'community'
   activity.provider = 'cas'
   activity.description = 'Download and use a <a href="https://www.computingatschool.org.uk/teaching-resources" data-event-label="CAS resource" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">CAS teaching resource</a>, or a <a href="https://www.stem.org.uk/secondary-alevel-computing" data-event-label="STEM resource" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">STEM Learning secondary computing resource</a>, then reflect on how you used and adapted it in the classroom. Submit a link to your feedback - this can be a document or screenshot on a shared drive, or a direct link to your review.'
@@ -172,7 +172,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-our-curriculum-resources') do |activity|
   activity.title = 'Use and feedback on our curriculum resources'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'provide-feedback-on-our-curriculum-resource'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
@@ -186,7 +186,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school') do |activity|
   activity.title = 'Provide computing CPD in your school or to another local school'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'provide-computing-cpd-in-your-school-or-to-another-local-school'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
@@ -199,7 +199,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'become-a-mentor') do |activity|
   activity.title = 'Become a mentor'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'become-a-mentor'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
@@ -212,7 +212,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'give-additional-support-to-your-community') do |activity|
   activity.title = 'Give additional support to your community'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'give-additional-support-to-your-community'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
@@ -225,7 +225,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'join-gender-balance-in-computing-programme') do |activity|
   activity.title = 'Gender Balance in Computing Programme (closed to new registrations)'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'join-gender-balance-in-computing-programme'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
@@ -239,7 +239,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-science') do |activity|
   activity.title = 'Answer 5 questions on Isaac Computer Science'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'answer-5-questions-on-isaac-computer-science'
   activity.category = 'community'
   activity.provider = 'isaac'
   activity.self_certifiable = true
@@ -253,7 +253,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activity|
   activity.title = 'Raise aspirations with a STEM Ambassador visit'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'engage-with-stem-ambassadors'
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
@@ -266,7 +266,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activity|
   activity.title = 'Help children learn to code at a Code Club'
   activity.credit = 10
-  activity.slug = activity.title.parameterize
+  activity.slug = 'run-a-code-club-or-coder-dojo'
   activity.category = 'community'
   activity.provider = 'raspberrypi'
   activity.self_certifiable = true
