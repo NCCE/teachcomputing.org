@@ -172,7 +172,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-our-curriculum-resources') do |activity|
   activity.title = 'Use and feedback on our curriculum resources'
   activity.credit = 10
-  activity.slug = 'provide-feedback-on-our-curriculum-resource'
+  activity.slug = 'provide-feedback-on-our-curriculum-resources'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
