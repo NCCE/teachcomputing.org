@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProgrammeActivityGrouping, type: :model do
   let(:programme) { create(:programme) }
-  let(:programme_activity_grouping) { create(:programme_activity_grouping)}
+  let(:programme_activity_grouping) { create(:programme_activity_grouping) }
   let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 3, :with_activities, programme: programme) }
   let(:user) { create(:user) }
 
@@ -25,7 +25,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
     context 'when the user has not completed the required number of activities' do
       it 'returns false' do
         grouping = programme_activity_groupings.first
-        expect(grouping.user_complete?(user)).to eq nil
+        expect(grouping.user_complete?(user)).to be_nil
       end
     end
 
@@ -34,9 +34,10 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
         achievement = create(:achievement, user_id: user.id, programme_id: programme.id, activity_id: programme_activity_groupings.first.programme_activities.first.activity.id)
         achievement.transition_to(:complete)
       end
+
       it 'returns true' do
         grouping = programme_activity_groupings.first
-        expect(grouping.user_complete?(user)).to eq true
+        expect(grouping.user_complete?(user)).to be true
       end
     end
   end

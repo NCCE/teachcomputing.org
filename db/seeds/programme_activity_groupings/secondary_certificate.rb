@@ -14,19 +14,19 @@ secondary.programme_activity_groupings.find_or_create_by(title: 'Face to face or
   programme_activity_group.programme_id = secondary.id
 end
 
-secondary.programme_activity_groupings.find_or_create_by(title: 'Develop yourself') do |programme_activity_group|
+secondary.programme_activity_groupings.find_or_create_by(title: 'Develop your subject knowledge') do |programme_activity_group|
   programme_activity_group.sort_key = 3
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = secondary.id
 end
 
-secondary.programme_activity_groupings.find_or_create_by(title: 'Develop your students') do |programme_activity_group|
+secondary.programme_activity_groupings.find_or_create_by(title: 'Develop your teaching practice') do |programme_activity_group|
   programme_activity_group.sort_key = 4
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = secondary.id
 end
 
-secondary.programme_activity_groupings.find_or_create_by(title: 'Develop your professional community') do |programme_activity_group|
+secondary.programme_activity_groupings.find_or_create_by(title: 'Develop computing in your community') do |programme_activity_group|
   programme_activity_group.sort_key = 5
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = secondary.id

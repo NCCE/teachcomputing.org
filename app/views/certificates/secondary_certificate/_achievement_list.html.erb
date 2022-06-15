@@ -1,3 +1,6 @@
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
+  <%= t('.development.title.html') %>
+</p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
     <%= render CourseActivityComponent.new(
@@ -44,7 +47,7 @@
 </ul>
 
 <!-- Remember additional course handling -->
-<% @programme_activity_groupings.each do |group| %>
+<% @community_groups.each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
     <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>

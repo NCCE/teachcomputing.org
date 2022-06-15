@@ -210,7 +210,7 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'give-additional-support-to-your-community') do |activity|
-  activity.title = 'Give additional support to your community'
+  activity.title = 'Support computing in your wider community'
   activity.credit = 10
   activity.slug = 'give-additional-support-to-your-community'
   activity.category = 'community'
@@ -243,7 +243,7 @@ a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-scien
   activity.category = 'community'
   activity.provider = 'isaac'
   activity.self_certifiable = true
-  activity.description = "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections. <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Screenshot your progress dashboard</a> as evidence you have completed this activity."
+  activity.description = "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections. Screenshot <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>your progress dashboard</a> as evidence you have completed this activity."
   activity.self_verification_info = 'Provide screenshot of your progress dashboard'
   activity.uploadable = true
 end
@@ -270,7 +270,7 @@ a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activi
   activity.category = 'community'
   activity.provider = 'raspberrypi'
   activity.self_certifiable = true
-  activity.description = "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder <a href='https://teachcomputing.org/courses?certificate=cs-accelerator' data-event-label='Code Club volunteer' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>to volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://teachcomputing.org/courses?certificate=cs-accelerator' data-event-label='Start a Code Club today' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one.</a>"
+  activity.description = "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder <a href='https://codeclub.org/en/volunteer' data-event-label='Code Club volunteer' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>to volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://codeclub.org/en/start-a-code-club' data-event-label='Start a Code Club today' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one.</a>"
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
 end
 

@@ -8,7 +8,8 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   before do
     assign(:current_user, user)
     assign(:programme, secondary_certificate)
-    assign(:programme_activity_groupings, programme_activity_groupings)
+    assign(:professional_development_groups, programme_activity_groupings)
+    assign(:community_groups, programme_activity_groupings)
 
     render
   end

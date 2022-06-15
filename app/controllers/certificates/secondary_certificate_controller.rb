@@ -10,7 +10,8 @@ module Certificates
       return redirect_to complete_secondary_certificate_path if @programme.user_completed?(current_user)
 
       assign_achievements
-      @programme_activity_groupings = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
+      @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+      @community_groups = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
       @badge_tracking_event_category = 'Secondary enrolled'
       @badge_tracking_event_label = 'Secondary badge'
       assign_issued_badge_data

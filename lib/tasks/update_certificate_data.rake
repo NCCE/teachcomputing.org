@@ -3,6 +3,11 @@ task update_certificate_data: :environment do
   # Secondary
   p = Programme.secondary_certificate
 
+  # Groupings
+  p.programme_activity_groupings.find_by_title('Develop yourself').update(title: 'Develop your subject knowledge')
+  p.programme_activity_groupings.find_by_title('Develop your students').update(title: 'Develop your teaching practice')
+  p.programme_activity_groupings.find_by_title('Develop your professional community').update(title: 'Develop computing in your community')
+
   p.activities.find_by(slug: 'complete-a-cs-accelerator-course').update(booking_programme_slug: 'cs-accelerator')
 
   p.activities.find_by(slug: 'provide-feedback-on-our-curriculum-resources').update(
@@ -36,12 +41,12 @@ task update_certificate_data: :environment do
   )
 
   p.activities.find_by(slug: 'answer-5-questions-on-isaac-computer-science').update(
-    description: "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections. <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Screenshot your progress dashboard</a> as evidence you have completed this activity."
+    description: "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections. Screenshot <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>your progress dashboard</a> as evidence you have completed this activity."
   )
 
   p.activities.find_by(slug: 'run-a-code-club-or-coder-dojo').update(
     title: 'Help children learn to code at a Code Club',
-    description: "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder <a href='https://teachcomputing.org/courses?certificate=cs-accelerator' data-event-label='Code Club volunteer' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>to volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://teachcomputing.org/courses?certificate=cs-accelerator' data-event-label='Start a Code Club today' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one.</a>",
+    description: "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder <a href='https://codeclub.org/en/volunteer' data-event-label='Code Club volunteer' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>to volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://codeclub.org/en/start-a-code-club' data-event-label='Start a Code Club today' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one.</a>",
     self_verification_info: 'Please provide us with the name and postcode of your Code Club'
   )
 
