@@ -41,7 +41,7 @@ task update_certificate_data: :environment do
   )
 
   p.activities.find_by(slug: 'answer-5-questions-on-isaac-computer-science').update(
-    description: "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections. Screenshot <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>your progress dashboard</a> as evidence you have completed this activity."
+    description: "<a href='https://isaaccomputerscience.org/teachers' data-event-label='Register Isaac CS' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>Log in or register for Isaac Computer Science</a> and <a href='https://isaaccomputerscience.org/topics' data-event-label='Isaac CS topics' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>answer any 5 questions from across the topic sections</a>. Screenshot <a href='https://isaaccomputerscience.org/progress' data-event-label='Isaac CS dashboard' data-event-category='Secondary enrolled' data-event-action='click' class='ncce-link'>your progress dashboard</a> as evidence you have completed this activity."
   )
 
   p.activities.find_by(slug: 'run-a-code-club-or-coder-dojo').update(
