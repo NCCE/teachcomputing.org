@@ -4,9 +4,9 @@ task update_certificate_data: :environment do
   p = Programme.secondary_certificate
 
   # Groupings
-  p.programme_activity_groupings.find_by_title('Develop yourself').update(title: 'Develop your subject knowledge')
-  p.programme_activity_groupings.find_by_title('Develop your students').update(title: 'Develop your teaching practice')
-  p.programme_activity_groupings.find_by_title('Develop your professional community').update(title: 'Develop computing in your community')
+  p.programme_activity_groupings.find_by_title('Develop yourself')&.update(title: 'Develop your subject knowledge')
+  p.programme_activity_groupings.find_by_title('Develop your students')&.update(title: 'Develop your teaching practice')
+  p.programme_activity_groupings.find_by_title('Develop your professional community')&.update(title: 'Develop computing in your community')
 
   p.activities.find_by(slug: 'complete-a-cs-accelerator-course').update(booking_programme_slug: 'cs-accelerator')
 
