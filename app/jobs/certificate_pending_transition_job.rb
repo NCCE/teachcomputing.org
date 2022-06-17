@@ -3,8 +3,7 @@ class CertificatePendingTransitionJob < ApplicationJob
 
   def perform(programme, user_id, meta)
     user = find_user(user_id)
-    return unless programme
-    return unless programme.user_meets_completion_requirement?(user)
+    return unless programme&.user_meets_completion_requirement?(user)
 
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
