@@ -30,7 +30,7 @@
   grid-template-rows: auto auto auto;
   margin-bottom: 2px !important;
   padding: 1.125rem;
-  grid-row-gap: 10px;
+  grid-gap: 0;
 
   @include govuk-media-query($from: tablet) {
     padding-bottom: 0.5rem;
@@ -59,13 +59,9 @@
     }
   }
 
-  &--no-gap {
-    grid-gap: 0;
+  &--with-gap {
+    grid-row-gap: 10px;
   }
-}
-
-.ncce-activity-list__item--no-gap {
-  grid-row-gap: 0;
 }
 
 .ncce-dashboard-activity {
@@ -328,7 +324,7 @@
   }
 
   &--address {
-    margin-top: 0;
+    margin-top: 0.5rem;
   }
 }
 

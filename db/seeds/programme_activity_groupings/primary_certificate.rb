@@ -20,13 +20,13 @@ primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Contr
   programme_activity_group.programme_id = primary_certificate.id
 end
 
-primary_certificate.programme_activity_groupings.find_or_create_by(title: 'develop your teaching practice') do |programme_activity_group|
+primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop your teaching practice') do |programme_activity_group|
   programme_activity_group.sort_key = 4
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
 end
 
-primary_certificate.programme_activity_groupings.find_or_create_by(title: 'develop computing in your community') do |programme_activity_group|
+primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop computing in your community') do |programme_activity_group|
   programme_activity_group.sort_key = 5
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
@@ -66,42 +66,42 @@ group_four = primary_certificate.programme_activity_groupings.find_by(sort_key: 
 
 if activity = Activity.find_by(slug: 'review-a-resource-on-cas')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 1) unless group_four.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'host-or-attend-a-barefoot-workshop')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 2) unless group_four.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 3) unless group_four.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'attend-a-cas-community-meeting')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id) unless group_four.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 4) unless group_four.programme_activities.include?(programme_activity)
 end
 
 group_five = primary_certificate.programme_activity_groupings.find_by(sort_key: 5)
 
 if activity = Activity.find_by(slug: 'run-an-after-school-code-club')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_five.id) unless group_five.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_five.id, order: 1) unless group_five.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'lead-a-session-at-a-regional-or-national-conference')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_five.id) unless group_five.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_five.id, order: 2) unless group_five.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'lead-a-cas-community-of-practice')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_five.id) unless group_five.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_five.id, order: 3) unless group_five.programme_activities.include?(programme_activity)
 end
 
 if activity = Activity.find_by(slug: 'providing-additional-support')
   programme_activity = primary_certificate.programme_activities.find_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_five.id) unless group_five.programme_activities.include?(programme_activity)
+  programme_activity.update(programme_activity_grouping_id: group_five.id, order: 4) unless group_five.programme_activities.include?(programme_activity)
 end

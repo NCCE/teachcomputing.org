@@ -21,9 +21,8 @@
           ) %>
           <%= render AsideComponent.new(
             title: t('.support_aside.title'),
-            class_name: 'primary-dashboard__help-aside',
-            text: t(
-              '.support_aside.text.html',
+            class_name: 'help-aside',
+            text: t('.support_aside.text.html',
               email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email')),
               hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub'))
             )

@@ -9,7 +9,6 @@ module Certificates
     def show
       return redirect_to complete_primary_certificate_path if @programme.user_completed?(current_user)
 
-      @user_programme_achievements = user_programme_achievements
       @badge_tracking_event_category = 'Primary enrolled'
       @badge_tracking_event_label = 'Primary badge'
 
@@ -19,6 +18,7 @@ module Certificates
       @pathways = Pathway.ordered_by_programme(@programme.slug)
       @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
       assign_programme_activity_groupings
+      @online_discussion_activity = Activity.find(@online_discussion_group.first&.programme_activities&.first&.activity_id)
       assign_pathway_recommendations
 
       render :show
@@ -36,7 +36,6 @@ module Certificates
     def complete
       return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
 
-      @user_programme_achievements = user_programme_achievements
       @badge_tracking_event_category = 'Primary complete'
       @badge_tracking_event_label = 'Primary badge'
       @complete_achievements = complete_achievements
@@ -62,14 +61,9 @@ module Certificates
         @user_pathway ||= user_enrolment&.pathway
       end
 
-      def assign_achievements
-        @online_achievements = online_achievements
-        @face_to_face_achievements = face_to_face_achievements
-      end
-
       def assign_programme_activity_groupings
         @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..3).order(:sort_key)
-        @online_discussion_activity = @programme.programme_activity_groupings.where(sort_key: 3).first&.programme_activities
+        @online_discussion_group = @programme.programme_activity_groupings.where(sort_key: 3)
         @community_groups = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
       end
 
@@ -93,32 +87,26 @@ module Certificates
         redirect_to pending_primary_certificate_path if user_enrolment.in_state?(:pending)
       end
 
-      def online_achievements
-        current_user.achievements.for_programme(@programme)
-                    .with_category(Activity::ONLINE_CATEGORY)
-                    .without_category(:action)
-                    .not_in_state(:dropped)
-                    .sort_complete_first
+      def assign_achievements
+        @online_achievements = user_achievements(Activity::ONLINE_CATEGORY)
+        @face_to_face_achievements = user_achievements(Activity::FACE_TO_FACE_CATEGORY)
+        @community_achievements = user_achievements(Activity::COMMUNITY_CATEGORY)
       end
 
-      def face_to_face_achievements
+      def user_achievements(category)
         current_user.achievements.for_programme(@programme)
-                    .with_category(Activity::FACE_TO_FACE_CATEGORY)
+                    .with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
                     .sort_complete_first
       end
 
       def complete_achievements
-        # Diagnostic may still exist for some users, so we must continue excluding it
+        # Diagnostic may still exist for some users, so we must exclude it
         current_user.achievements.for_programme(@programme)
                     .without_category(:action)
                     .without_category(:diagnostic)
-                    .sort_complete_first
-      end
-
-      def user_programme_achievements
-        UserProgrammeAchievements.new(@programme, current_user)
+                    .in_state(:complete)
       end
   end
 end

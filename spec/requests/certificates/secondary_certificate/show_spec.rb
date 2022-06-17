@@ -30,11 +30,8 @@ RSpec.describe Certificates::SecondaryCertificateController do
         end
 
         it 'assigns programme_activity_groupings' do
-          expect(assigns(:programme_activity_groupings)).to all(be_a(ProgrammeActivityGrouping))
-        end
-
-        it 'assigns programme' do
-          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
+          expect(assigns(:community_groups)).to all(be_a(ProgrammeActivityGrouping))
+          expect(assigns(:professional_development_groups)).to all(be_a(ProgrammeActivityGrouping))
         end
       end
 

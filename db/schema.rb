@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_140353) do
+ActiveRecord::Schema.define(version: 2022_06_14_102651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -199,7 +199,6 @@ ActiveRecord::Schema.define(version: 2022_06_07_140353) do
   create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "pathway_id", null: false
     t.uuid "activity_id", null: false
-    t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "supplementary", default: false
@@ -227,6 +226,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_140353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
+    t.integer "order"
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end

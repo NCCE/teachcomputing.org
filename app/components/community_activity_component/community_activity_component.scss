@@ -1,0 +1,76 @@
+.community-activity-component__objective {
+  align-items: flex-start;
+  background-color: $white;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto 8.5rem;
+
+  @include govuk-media-query($until: tablet) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+
+  .ihavedonethis {
+    align-self: center;
+
+    .button {
+      width: 100%;
+      align-self: center;
+      grid-row: 3;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      @include govuk-media-query($from: tablet) {
+        width: auto;
+        grid-row: 1;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+.community-activity-component__objective-text {
+  align-self: center;
+  grid-column: 1;
+  background: none;
+  padding-left: 0;
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 0.5rem;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    margin-right: 1.7rem;
+    font-size: 1.188rem;
+    line-height: 1.45rem;
+  }
+}
+
+.community-activity-component__completed-badge {
+  border: solid 2px #E6A614;
+  padding: 2px 0;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 2px 8px;
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 1rem;
+    width: 99%;
+    padding: 2px 0;
+  }
+}
+
+
+.community-activity-component__description {
+  font-size: 1rem;
+  grid-column: 1;
+  padding: 0.7rem;
+
+  @include govuk-media-query($from: tablet) {
+    grid-column-end: 3;
+    margin-top: 1rem;
+    grid-row: 2;
+  }
+}

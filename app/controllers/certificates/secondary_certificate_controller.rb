@@ -10,8 +10,8 @@ module Certificates
       return redirect_to complete_secondary_certificate_path if @programme.user_completed?(current_user)
 
       assign_achievements
-      @programme_activity_groupings = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
-      @user_programme_achievements = UserProgrammeAchievements.new(@programme, current_user)
+      @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+      @community_groups = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
       @badge_tracking_event_category = 'Secondary enrolled'
       @badge_tracking_event_label = 'Secondary badge'
       assign_issued_badge_data
@@ -51,21 +51,13 @@ module Certificates
       end
 
       def assign_achievements
-        @online_achievements = online_achievements
-        @face_to_face_achievements = face_to_face_achievements
+        @online_achievements = user_achievements(Activity::ONLINE_CATEGORY)
+        @face_to_face_achievements = user_achievements(Activity::FACE_TO_FACE_CATEGORY)
+        @community_achievements = user_achievements(Activity::COMMUNITY_CATEGORY)
       end
 
-      def online_achievements
-        current_user.achievements.for_programme(@programme)
-                    .with_category(Activity::ONLINE_CATEGORY)
-                    .without_category(:action)
-                    .not_in_state(:dropped)
-                    .sort_complete_first
-      end
-
-      def face_to_face_achievements
-        current_user.achievements.for_programme(@programme)
-                    .with_category(Activity::FACE_TO_FACE_CATEGORY)
+      def user_achievements(category)
+        current_user.achievements.for_programme(@programme).with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
                     .sort_complete_first
@@ -74,7 +66,7 @@ module Certificates
       def complete_achievements
         current_user.achievements.for_programme(@programme)
                     .without_category(:action)
-                    .sort_complete_first
+                    .in_state(:complete)
       end
 
       def find_programme

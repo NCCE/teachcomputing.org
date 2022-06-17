@@ -85,6 +85,17 @@ FactoryBot.define do
     credit { 20 }
   end
 
+  trait :community_bookable do
+    title { 'Community Activity' }
+    slug { 'community-activity' }
+    category { 'community' }
+    provider { 'cas' }
+    description { 'this is a community activity' }
+    credit { 10 }
+    self_verification_info { 'Please provide a link to your contribution' }
+    booking_programme_slug { 'cs-accelerator' }
+  end
+
   trait :online do
     category { 'online' }
   end

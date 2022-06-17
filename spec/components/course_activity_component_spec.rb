@@ -99,7 +99,7 @@ RSpec.describe CourseActivityComponent, type: :component do
       end
 
       it 'has the expected icon' do
-        expect(element).to have_css('.icon-map-pin', text: 'Face to face course')
+        expect(element).to have_css('.icon-map-pin', text: 'Face to face')
       end
 
       it 'has the expected status' do
@@ -115,7 +115,7 @@ RSpec.describe CourseActivityComponent, type: :component do
       end
 
       it 'has the expected icon' do
-        expect(element).to have_css('.icon-remote', text: 'Remote course')
+        expect(element).to have_css('.icon-remote', text: 'Remote')
       end
 
       it 'has the expected status' do
@@ -131,7 +131,7 @@ RSpec.describe CourseActivityComponent, type: :component do
       end
 
       it 'has the expected icon' do
-        expect(element).to have_css('.icon-online', text: 'Online course')
+        expect(element).to have_css('.icon-online', text: 'Online')
       end
 
       it 'has the expected status' do

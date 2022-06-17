@@ -1,0 +1,40 @@
+<%= content_tag :div, class: ['community-activity-component', { "#{@class_name}": @class_name.present? }] do %>
+  <span class="community-activity-component__objective">
+    <span class="community-activity-component__objective-text">
+      <span><%= @activity.title %></span>
+    </span>
+    <% if achievement_complete? %>
+      <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+    <% else %>
+      <% if @activity.booking_programme_slug.present? %>
+        <%= link_to t('.book_button_text'), courses_path(certificate: @activity.booking_programme_slug), class: 'govuk-button button button--small course-activity-component__objective-button', data: tracking_data('Book a course') %>
+      <% else%>
+        <span class="ihavedonethis">
+          <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
+            <%= t('.evidence_button_label') %>
+          </button>
+          <span class="ihavedonethis__popup">
+            <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' }, :html => { :multipart => true } do |f| %>
+              <span class="govuk-form-group ihavedonethis__group">
+                <%= label_tag "#{:self_verification_info.to_s}_#{@activity.id}", @activity.self_verification_info, class: 'govuk-label ihavedonethis__text' %>
+                <% if @activity.uploadable? %>
+                  <div class="ihavedonethis__upload-container">
+                    <%= file_field :achievement, :supporting_evidence, class: 'govuk-input' %>
+                  </div>
+                <% else %>
+                  <%= text_field_tag "#{:self_verification_info.to_s}_#{@activity.id}", '', class: 'govuk-input', name: :self_verification_info %>
+                <% end %>
+                <%= f.hidden_field :activity_id, value: @activity.id %>
+              </span>
+              <%= f.submit t('.evidence_submit_label'), class: 'govuk-button button button--small button--focus-white' %>
+            <% end %>
+          </span>
+        </span>
+      <% end %>
+    <% end %>
+  </span>
+  <% if @activity.description.present? %>
+    <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
+  <% end %>
+<% end %>
+
