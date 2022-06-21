@@ -162,11 +162,11 @@ en:
           button: ""
           resource_links:
             - "<a href='https://teachcomputing.org/impact-and-evaluation' data-event-action='click' data-event-category='Pedagogy' data-event-label='Read reports'>See our impact</a>"
-        - title: "Action Research Course"
-          text: "Our online course aims to support classroom educators to apply and test new approaches in their context using an action research process."
+        - title: "Pedagogy Focused Courses"
+          text: "We offer a number of courses that specifically focus on exploring and developing effective pedagogical practices within computing."
           button: ""
           resource_links:
-            - "<a href='https://teachcomputing.org/courses/CO030/improving-computing-classroom-practice-through-action-research' data-event-action='click' data-event-category='Pedagogy' data-event-label='Action research course'>Show me more</a>"
+            - "<a href='https://teachcomputing.org/courses?topic=Pedagogy' data-event-action='click' data-event-category='Pedagogy' data-event-label='pedagogy courses'>View courses</a>"
         - title: "Teach Computing Podcast"
           text: "For 12 episodes our podcast examined different questions,
             challenges or practice relating to computing education through conversations with classroom teachers and other experts."
@@ -223,7 +223,7 @@ en:
             "Use a variety of activities to consolidate knowledge and understanding of the function and structure of programs,
             including debugging, tracing, and Parson’s Problems. Regular comprehension activities will help secure understanding and build connections with new knowledge."
           resource_links:
-            - "<b>Quick Read:</b> <a href='http://ncce.io/qr12' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR comprehension'>Programme Comprehension</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr12' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR comprehension'>Program Comprehension</a> (PDF)"
           image: "media/images/icons/head-icon.svg"
         - title: "Create projects"
           text:
@@ -231,14 +231,16 @@ en:
             Design is an important, often overlooked aspect of computing.
             Pupils can consider how to develop an artefact for a particular user or function,
             and evaluate it against a set of criteria."
-          resource_links: []
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr15' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Create projects'>Project based learning</a> (PDF)"
           image: "media/images/icons/spanner-icon.svg"
         - title: "Add variety"
           text:
             "Provide activities with different levels of direction, scaffolding,
             and support that promote learning, ranging from highly structured to more exploratory tasks.
             Adapting your instruction to suit different objectives will help keep all pupils engaged and encourage greater independence."
-          resource_links: []
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr17' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Variety'>Variety within teaching and assessment</a> (PDF)"
           image: "media/images/icons/variety-icon.svg"
         - title: "Challenge misconceptions"
           text:
@@ -246,6 +248,7 @@ en:
             Awareness of common misconceptions alongside discussion, concept mapping, peer instruction,
             or simple quizzes can help identify areas of confusion."
           resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr19' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Misconceptions alternate conceptions'>Addressing learners’ alternate conceptions</a> (PDF)"
             - "<b>Quick Read:</b> <a href='http://ncce.io/qr04' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR misconceptions'>Peer Instruction</a> (PDF)"
             - "<b>Podcast:</b> <a href='http://ncce.io/tc09' data-event-action='click' data-event-category='Pedagogy' data-event-label='PC misconceptions'>Peer Instruction</a> (7 May 2019)"
           image: "media/images/icons/question-icon.svg"
@@ -254,14 +257,15 @@ en:
             "Bring abstract concepts to life with realworld, contextual examples and a focus on interdependencies with other curriculum subjects.
             This can be achieved through the use of unplugged activities, proposing analogies,
             storytelling around concepts, and finding examples of the concepts in pupils’ lives."
-          resource_links: []
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr18' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Make concrete'>Culturally relevant pedagogy</a> (PDF)"
           image: "media/images/icons/world-icon.svg"
         - title: "Structure lessons"
           text:
             "Use supportive frameworks when planning lessons, such as PRIMM (Predict, Run, Investigate, Modify, Make) and Use-Modify-Create.
             These frameworks are based on research and ensure that differentiation can be built in at various stages of the lesson."
           resource_links:
-            - "<b>Quick Read:</b> <a href='http://ncce.io/qr11' data-event-action='click' data-event-category='QR structure', data-event-label='Pedagogy'>PRIMM</a> (7 May 2020)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr11' data-event-action='click' data-event-label='QR structure', data-event-category='Pedagogy'>PRIMM</a> (PDF)"
             - "<b>Podcast:</b> <a href='http://ncce.io/tc12' data-event-action='click' data-event-category='PC structure', data-event-label='Pedagogy'>The PRIMM approach</a> (10 December 2020)"
           image: "media/images/icons/structure-icon.svg"
         - title: "Read and explore code first"
@@ -269,5 +273,7 @@ en:
             "When teaching programming, focus first on code ‘reading’ activities, before code writing.
             With both block-based and text-based programming, encourage pupils to review and interpret blocks of code.
             Research has shown that being able to read, trace, and explain code augments pupils’ ability to write code."
-          resource_links: []
+          resource_links:
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr14' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Read and explore code tracing'>Code Tracing</a> (PDF)"
+            - "<b>Quick Read:</b> <a href='http://ncce.io/qr11' data-event-action='click' data-event-category='Pedagogy' data-event-label='QR Read and explore PRIMM'>PRIMM</a> (PDF)"
           image: "media/images/icons/digits-icon.svg"
