@@ -10,7 +10,7 @@ module Api
         when 'cs-accelerator'
           AssessmentEligibilityJob.perform_now(user.id, nil)
         when 'primary-certificate'
-          CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(achievement.programme, user.id, nil)
+          CertificatePendingTransitionJob.perform_now(achievement.programme, user.id, nil)
         end
         render json: as_json(achievement), status: 201
       else
@@ -27,8 +27,8 @@ module Api
       when 'cs-accelerator'
         AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
       when 'primary-certificate', 'secondary-certificate'
-        CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(achievement.programme, user.id,
-                                            source: 'AdminAchievementsController.complete')
+        CertificatePendingTransitionJob.perform_now(achievement.programme, user.id,
+                                                    source: 'AdminAchievementsController.complete')
       end
 
       render json: as_json(achievement), status: 201

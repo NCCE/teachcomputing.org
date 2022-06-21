@@ -62,5 +62,5 @@ module Achiever
           user_id, source: 'AchievementsController.create'
         )
       end
-    end
   end
+end

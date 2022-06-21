@@ -3,11 +3,6 @@ task update_certificate_data: :environment do
   # Secondary
   p = Programme.secondary_certificate
 
-  # Groupings
-  p.programme_activity_groupings.find_by_title('Develop yourself')&.update(title: 'Develop your subject knowledge')
-  p.programme_activity_groupings.find_by_title('Develop your students')&.update(title: 'Develop your teaching practice')
-  p.programme_activity_groupings.find_by_title('Develop your professional community')&.update(title: 'Develop computing in your community')
-
   p.activities.find_by(slug: 'complete-a-cs-accelerator-course').update(booking_programme_slug: 'cs-accelerator')
 
   p.activities.find_by(slug: 'provide-feedback-on-our-curriculum-resources').update(
@@ -80,59 +75,6 @@ task update_certificate_data: :environment do
     description: '<a href="https://www.computingatschool.org.uk/about-cas-communities/cas-community-leaders" data-event-label="CAS leader" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">Register as a CAS Community leader</a> and run 3 meetings per year. Low maintenance and high impact, it should only take 1 to 2 hours a month to organise each meeting. Provide the name and location of your community.'
   )
 
-  # Update the programme activities to add order
-  if activity = Activity.find_by(slug: 'provide-feedback-on-our-curriculum-resources')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 1)
-  end
-
-  if activity = Activity.find_by(slug: 'provide-feedback-on-a-cas-resource')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 2)
-  end
-
-  if activity = Activity.find_by(slug: 'complete-a-cs-accelerator-course')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 3)
-  end
-
-  if activity = Activity.find_by(slug: 'contribute-to-online-discussion-secondary')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 4)
-  end
-
-  if activity = Activity.find_by(slug: 'engage-with-stem-ambassadors')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 1)
-  end
-
-  if activity = Activity.find_by(slug: 'answer-5-questions-on-isaac-computer-science')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 2)
-  end
-
-  if activity = Activity.find_by(slug: 'run-a-code-club-or-coder-dojo')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 3)
-  end
-
-  if activity = Activity.find_by(slug: 'join-gender-balance-in-computing-programme')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 4)
-  end
-
-  if activity = Activity.find_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 1)
-  end
-
-  if activity = Activity.find_by(slug: 'become-a-mentor')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 2)
-  end
-
-  if activity = Activity.find_by(slug: 'give-additional-support-to-your-community')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 3)
-  end
-
-  if activity = Activity.find_by(slug: 'lead-a-session-at-a-regional-or-national-conference-secondary')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 4)
-  end
-
-  if activity = Activity.find_by(slug: 'lead-a-cas-community-of-practice-secondary')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 5)
-  end
-
   # Primary
   p = Programme.primary_certificate
 
@@ -140,35 +82,9 @@ task update_certificate_data: :environment do
     description: '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" data-event-label="STEM Ambassadors" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
   )
 
-  if activity = Activity.find_by(slug: 'review-a-resource-on-cas')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 1)
-  end
-
-  if activity = Activity.find_by(slug: 'host-or-attend-a-barefoot-workshop')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 2)
-  end
-
-  if activity = Activity.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 3)
-  end
-
-  if activity = Activity.find_by(slug: 'attend-a-cas-community-meeting')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 4)
-  end
-
-  if activity = Activity.find_by(slug: 'run-an-after-school-code-club')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 1)
-  end
-
-  if activity = Activity.find_by(slug: 'lead-a-session-at-a-regional-or-national-conference')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 2)
-  end
-
-  if activity = Activity.find_by(slug: 'lead-a-cas-community-of-practice')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 3)
-  end
-
-  if activity = Activity.find_by(slug: 'providing-additional-support')
-    p.programme_activities.find_by(activity_id: activity.id).update(order: 4)
-  end
+  # Clear out ProgrammeActivities and ProgrammeActivityGroupings
+  ProgrammeActivity.destroy_all
+  ProgrammeActivityGrouping.destroy_all
+  require_relative '../../db/seeds/programme_activity_groupings/primary_certificate'
+  require_relative '../../db/seeds/programme_activity_groupings/secondary_certificate'
 end

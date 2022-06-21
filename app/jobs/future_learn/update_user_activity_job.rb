@@ -30,7 +30,7 @@ module FutureLearn
       end
 
       def needs_cert_transition_job?(achievement)
-        achievement.primary_certificate? || achievement.secondary_certificate? && achievement.complete?
+        achievement.primary_certificate? || (achievement.secondary_certificate? && achievement.complete?)
       end
 
       def queue_cert_transition_job(programme, user_id)

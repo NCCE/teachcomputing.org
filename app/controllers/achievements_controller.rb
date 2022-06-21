@@ -17,7 +17,7 @@ class AchievementsController < ApplicationController
       if @achievement.programme
         case @achievement.programme.slug
         when 'primary-certificate', 'secondary-certificate'
-          CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(@achievement.programme, current_user.id, source: 'AchievementsController.create')
+          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
         end
       end
     else

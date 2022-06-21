@@ -14,7 +14,7 @@
 .course-activity-component__objective-text {
   align-self: center;
   font-size: 1.188rem;
-  line-height: 1.45rem;
+  line-height: 2rem;
   grid-column: 1;
   background: none;
   padding-left: 0;
@@ -41,7 +41,7 @@
   width: auto;
   grid-row: auto;
   grid-column: 2;
-  align-self: center;
+  align-self: top;
 
   @include govuk-media-query($until: tablet) {
     grid-column: 1;
