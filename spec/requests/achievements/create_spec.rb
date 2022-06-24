@@ -82,7 +82,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'shows a flash error' do
-        expect(flash[:error]).to match(/something went wrong adding/)
+        expect(flash[:error]).to match(/Activity must exist/)
       end
     end
 
@@ -179,7 +179,7 @@ RSpec.describe AchievementsController do
         end
 
         it 'renders a flash error' do
-          expect(flash[:error]).to match(/something went wrong adding/)
+          expect(flash[:error]).to match(/Supporting evidence is not a valid file format/)
         end
       end
     end
