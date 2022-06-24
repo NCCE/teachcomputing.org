@@ -21,7 +21,8 @@ class AchievementsController < ApplicationController
         end
       end
     else
-      flash[:error] = 'Whoops something went wrong adding the activity'
+      flash[:error] = 'Whoops something went wrong adding the activity' unless @achievement.errors.present?
+      flash[:error] = @achievement.errors.full_messages.to_sentence
     end
 
     redirect_to self_verification_url || dashboard_path
