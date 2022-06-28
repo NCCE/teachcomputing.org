@@ -9,6 +9,14 @@ class StemBookingPresenter
     title
   end
 
+  def no_occurrences_title
+    'Dates coming soon'
+  end
+
+  def no_occurrences_introduction
+    'Contact your local Computing hub for more information'
+  end
+
   def introduction
     'You will be taken to the STEM Learning website to see further details.'
   end
