@@ -307,11 +307,23 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           end
         end
 
-        it "shows the 'See more dates' button if there are more than 20 items" do
-          expect(rendered).to have_link(
-            'See more dates',
-            href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
-          )
+        context 'when there are no occurances' do
+          it "shows the 'Dates coming soon' button" do
+            allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
+            assign(:course, course)
+            assign(:booking, stem_booking_presenter)
+            assign(:occurrences, [])
+            assign(:activity, activity)
+            allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
+
+            render
+
+            expect(rendered).to have_link(
+              'Find your local Hub',
+              href: "/hubs"
+            )
+          end
         end
       end
 
@@ -408,7 +420,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
 
-    it "shows the 'View Course' button if there are no occurrences" do
+    it "shows the 'Dates coming soon' button if there are no occurrences" do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
       assign(:course, course)
@@ -419,8 +431,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       render
 
       expect(rendered).to have_link(
-        'View course',
-        href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
+        'Find your local Hub',
+        href: "/hubs"
       )
     end
   end
@@ -455,21 +467,24 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     end
 
     context 'when its a stem course' do
-      before do
+
+      it "shows the 'Dates coming soon' button if there are no occurrences" do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
         assign(:course, course)
         assign(:booking, stem_booking_presenter)
+        assign(:occurrences, [])
+        assign(:activity, activity)
+        allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
         render
+
+        expect(rendered).to have_link(
+          'Find your local Hub',
+          href: "/hubs"
+        )
       end
 
-      it 'renders link to log in' do
-        expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to book this course', href: expected_link)
-      end
-
-      it 'does not render the facilitation periods' do
-        expect(rendered).not_to have_css('.facilitation-periods')
-      end
     end
   end
 end
