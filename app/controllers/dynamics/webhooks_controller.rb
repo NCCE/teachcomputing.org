@@ -4,9 +4,10 @@ module Dynamics
     before_action :verify_bearer_token
 
     def user
-      user = User.find_by(stem_achiever_contact_no: request[:stem_achiever_contact_no])
+      stem_achiever_contact_no = request[:stem_achiever_contact_no]&.downcase
+      user = User.find_by(stem_achiever_contact_no: stem_achiever_contact_no)
 
-      Sentry.capture_message("Dynamics webhook failed as no user found with contact_no: #{request[:stem_achiever_contact_no] || 'nil'}") unless user
+      Sentry.capture_message("Dynamics webhook failed as no user found with contact_no: #{stem_achiever_contact_no || 'nil'}") unless user
 
       Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user) if user
 
