@@ -1621,11 +1621,11 @@ a = Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943
   activity.stem_activity_code = 'CP352'
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: 'f695862e6-6578-ec11-8d21-000d3a0cb2ab') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: '695862e6-6578-ec11-8d21-000d3a0cb2ab') do |activity|
   activity.title = 'New to computing pathway - Face to face'
   activity.credit = 10
   activity.slug = 'new-to-computing-pathway-face-to-face'
-  activity.stem_course_template_no = 'f695862e6-6578-ec11-8d21-000d3a0cb2ab'
+  activity.stem_course_template_no = '695862e6-6578-ec11-8d21-000d3a0cb2ab'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP279'
