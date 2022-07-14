@@ -6,7 +6,7 @@ secondary_certificate = Programme.secondary_certificate
 
 a = Activity.find_or_create_by(stem_course_template_no: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'algorithms-in-gcse-computer-science'
   activity.stem_course_template_no = 'a6b10502-6788-4ebc-b465-41eafb1e2a18'
   activity.category = 'face-to-face'
@@ -17,7 +17,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '7159562d-4b1a-44f3-b4d7-3e677b9898f2') do |activity|
   activity.title = 'Data and computer systems in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'data-and-computer-systems-in-gcse-computer-science'
   activity.stem_course_template_no = '7159562d-4b1a-44f3-b4d7-3e677b9898f2'
   activity.category = 'face-to-face'
@@ -48,7 +48,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '0650b45c-e4b3-4c8b-bd90-7a1428fe2986') do |activity|
   activity.title = 'Networks and Cyber Security in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'networks-and-cyber-security-in-gcse-computer-science'
   activity.stem_course_template_no = '0650b45c-e4b3-4c8b-bd90-7a1428fe2986'
   activity.category = 'face-to-face'
@@ -95,7 +95,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 
 a = Activity.find_or_create_by(stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') do |activity|
   activity.title = 'Python programming essentials for GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'python-programming-essentials-for-gcse-computer-science'
   activity.stem_course_template_no = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
   activity.category = 'face-to-face'
@@ -160,7 +160,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '87bf64c2-6517-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Introduction to GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'introduction-to-gcse-computer-science'
   activity.stem_course_template_no = '87bf64c2-6517-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
@@ -1621,11 +1621,11 @@ a = Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943
   activity.stem_activity_code = 'CP352'
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: 'f695862e6-6578-ec11-8d21-000d3a0cb2ab') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: '695862e6-6578-ec11-8d21-000d3a0cb2ab') do |activity|
   activity.title = 'New to computing pathway - Face to face'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'new-to-computing-pathway-face-to-face'
-  activity.stem_course_template_no = 'f695862e6-6578-ec11-8d21-000d3a0cb2ab'
+  activity.stem_course_template_no = '695862e6-6578-ec11-8d21-000d3a0cb2ab'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP279'
@@ -1732,7 +1732,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'aab9499f-e993-ec11-b400-0022481ac687') do |activity|
   activity.title = 'Python programming constructs: sequencing, selection & iteration for the OCR GCSE specification'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'python-programming-constructs-sequencing-selection-and-iteration-for-the-ocr-gcse-specification'
   activity.stem_course_template_no = 'aab9499f-e993-ec11-b400-0022481ac687'
   activity.category = 'face-to-face'
@@ -1745,7 +1745,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '922e1a75-d493-ec11-b400-0022481ac687') do |activity|
   activity.title = 'Python programming constructs: sequencing, selection & iteration for the AQA GCSE specification'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'python-programming-constructs-sequencing-selection-and-iteration-for-the-aqa-gcse-specification'
   activity.stem_course_template_no = '922e1a75-d493-ec11-b400-0022481ac687'
   activity.category = 'face-to-face'
@@ -1758,7 +1758,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '2c337ed1-bb94-ec11-b400-0022481af1b2') do |activity|
   activity.title = 'Python programming constructs: sequencing, selection & iteration for Pearson specification'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'python-programming-constructs-sequencing-selection-iteration-for-pearson-specification'
   activity.stem_course_template_no = '2c337ed1-bb94-ec11-b400-0022481af1b2'
   activity.category = 'face-to-face'
