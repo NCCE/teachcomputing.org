@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :hubs
     resources :hub_regions
     resources :users
-    resources :user_programme_enrolments
-    resources :achievements
+    resources :user_programme_enrolments, only: %i[index show]
+    resources :achievements, only: %i[index show]
     resources :assessment_attempts, only: %i[index show]
   end
 
