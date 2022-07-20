@@ -9,11 +9,9 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     achievements: Field::HasMany,
-    activities: Field::HasMany,
     assessment_attempts: Field::HasMany,
     feedback_comments: Field::HasMany,
     user_programme_enrolments: Field::HasMany,
-    programmes: Field::HasMany,
     resource_users: Field::HasMany,
     questionnaire_response: Field::HasMany,
     id: Field::String,
@@ -48,10 +46,8 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     achievements
-    activities
     assessment_attempts
     user_programme_enrolments
-    programmes
     id
     first_name
     last_name
@@ -72,10 +68,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     achievements
-    activities
     assessment_attempts
     user_programme_enrolments
-    programmes
     first_name
     last_name
     email
@@ -83,7 +77,6 @@ class UserDashboard < Administrate::BaseDashboard
     stem_user_id
     stem_achiever_contact_no
     stem_achiever_organisation_no
-    forgotten
   ].freeze
 
   # COLLECTION_FILTERS
@@ -102,6 +95,6 @@ class UserDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(user)
-    "User ##{user.email}"
+    "User #{user.email}"
   end
 end

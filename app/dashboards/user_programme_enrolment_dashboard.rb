@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -11,12 +11,12 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     programme: Field::BelongsTo,
     pathway: Field::BelongsTo,
-    user_programme_enrolment_transitions: Field::HasMany,
+    current_state: Field::String.with_options(searchable: false),
     id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     flagged: Field::Boolean,
-    auto_enrolled: Field::Boolean,
+    auto_enrolled: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +28,6 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user
     programme
     pathway
-    user_programme_enrolment_transitions
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,7 +36,7 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user
     programme
     pathway
-    user_programme_enrolment_transitions
+    current_state
     id
     created_at
     updated_at
@@ -52,7 +51,6 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user
     programme
     pathway
-    user_programme_enrolment_transitions
     flagged
     auto_enrolled
   ].freeze
@@ -72,7 +70,9 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how user programme enrolments are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user_programme_enrolment)
-  #   "UserProgrammeEnrolment ##{user_programme_enrolment.id}"
-  # end
+  def display_resource(upe)
+    p = Programme.find_by(id: upe.programme_id)
+    title = p&.title || 'Unknown programme'
+    "#{title} (#{upe.current_state})"
+  end
 end

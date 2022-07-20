@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :hubs
     resources :hub_regions
     resources :users
+    resources :user_programme_enrolments
+    resources :achievements
+    resources :assessment_attempts, only: %i[index show]
   end
 
   namespace :api do

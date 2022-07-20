@@ -25,7 +25,6 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     pathway
     activity
-    id
     supplementary
   ].freeze
 
@@ -34,7 +33,6 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     pathway
     activity
-    id
     supplementary
     order
     created_at

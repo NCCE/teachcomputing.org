@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class AchievementDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,11 +13,11 @@ class AchievementDashboard < Administrate::BaseDashboard
     programme: Field::BelongsTo,
     supporting_evidence_attachment: Field::HasOne,
     supporting_evidence_blob: Field::HasOne,
-    achievement_transitions: Field::HasMany,
+    current_state: Field::String.with_options(searchable: false),
     id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    progress: Field::Number,
+    progress: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -38,9 +38,9 @@ class AchievementDashboard < Administrate::BaseDashboard
     activity
     user
     programme
+    current_state
     supporting_evidence_attachment
     supporting_evidence_blob
-    achievement_transitions
     id
     created_at
     updated_at
@@ -56,7 +56,6 @@ class AchievementDashboard < Administrate::BaseDashboard
     programme
     supporting_evidence_attachment
     supporting_evidence_blob
-    achievement_transitions
     progress
   ].freeze
 
@@ -75,7 +74,9 @@ class AchievementDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how achievements are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(achievement)
-  #   "Achievement ##{achievement.id}"
-  # end
+  def display_resource(achievement)
+    a = Activity.find_by(id: achievement.activity_id)
+    title = a&.title || 'Unknown activity'
+    "#{title} (#{achievement.current_state})"
+  end
 end
