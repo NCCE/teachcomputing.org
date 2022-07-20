@@ -36,20 +36,8 @@ class Programme < ApplicationRecord
     badges.active.exists?
   end
 
-  def credits_achieved_for_certificate(_user)
-    0
-  end
-
-  def max_credits_for_certificate
-    0
-  end
-
   def enough_activities_for_test?(_user)
     false
-  end
-
-  def diagnostic
-    activities.find_by(category: 'diagnostic')
   end
 
   def user_completed?(user)
@@ -59,8 +47,8 @@ class Programme < ApplicationRecord
     enrolment.in_state?(:complete)
   end
 
-  def user_completed_diagnostic?(user)
-    user.achievements.in_state(:complete).where(activity_id: diagnostic.id).exists?
+  def user_meets_completion_requirement?(user)
+    programme_activity_groupings.all? { |group| group.user_complete?(user) }
   end
 
   def user_enrolled?(user)
@@ -68,10 +56,6 @@ class Programme < ApplicationRecord
 
     enrolment = user_programme_enrolments.find_by(user_id: user.id)
     enrolment.present? && !enrolment.in_state?(:unenrolled)
-  end
-
-  def diagnostic_result(*)
-    nil
   end
 
   def primary_certificate?
@@ -93,6 +77,6 @@ class Programme < ApplicationRecord
   def programme_title; end
 
   def pathways_excluding(pathway)
-    pathways.where.not(id: pathway&.id).ordered
+    pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
   end
 end

@@ -13,10 +13,6 @@ RSpec.describe('pages/gender-balance', type: :view) do
     expect(rendered).to have_css('.govuk-body-l', count: 1)
   end
 
-  it 'has a link to the overview page' do
-    expect(rendered).to have_link('Visit our overview page', href: '/gender-balance-interventions')
-  end
-
   it 'has 4 images' do
     expect(rendered).to have_css('img', count: 4)
   end

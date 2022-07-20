@@ -39,13 +39,13 @@ module AchieverStubs
 
   def stub_face_to_face_occurrences
     json_response = File.new('spec/support/achiever/courses/face_to_face_occurrences.json')
-    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseListingFutureByProgrammeId'
+    uri_template = Addressable::Template.new "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=#{ENV['ACHIEVER_F2F_METHOD']}"
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
   def stub_online_occurrences
     json_response = File.new('spec/support/achiever/courses/online_occurrences.json')
-    uri_template = Addressable::Template.new 'https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=FutureOnlineCoursesByProgrammeId'
+    uri_template = Addressable::Template.new "https://stemapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=#{ENV['ACHIEVER_ONLINE_METHOD']}"
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 

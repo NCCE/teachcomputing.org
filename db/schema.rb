@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_165611) do
+ActiveRecord::Schema.define(version: 2022_06_14_102651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -92,10 +92,19 @@ ActiveRecord::Schema.define(version: 2021_10_14_165611) do
     t.string "stem_activity_code"
     t.boolean "remote_delivered_cpd", default: false
     t.boolean "always_on", default: false
+    t.string "booking_programme_slug"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
+  end
+
+  create_table "aggregate_downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "uri"
+    t.integer "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uri"], name: "index_aggregate_downloads_on_uri"
   end
 
   create_table "assessment_attempt_transitions", force: :cascade do |t|
@@ -140,6 +149,15 @@ ActiveRecord::Schema.define(version: 2021_10_14_165611) do
     t.index ["programme_id"], name: "index_badges_on_programme_id"
   end
 
+  create_table "downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "aggregate_download_id"
+    t.string "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["aggregate_download_id"], name: "index_downloads_on_aggregate_download_id"
+    t.index ["user_id"], name: "index_downloads_on_user_id"
+  end
+
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "area"
@@ -181,7 +199,6 @@ ActiveRecord::Schema.define(version: 2021_10_14_165611) do
   create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "pathway_id", null: false
     t.uuid "activity_id", null: false
-    t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "supplementary", default: false
@@ -209,6 +226,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_165611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
+    t.integer "order"
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
@@ -351,6 +369,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_165611) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
+  add_foreign_key "downloads", "aggregate_downloads"
   add_foreign_key "feedback_comments", "users"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"

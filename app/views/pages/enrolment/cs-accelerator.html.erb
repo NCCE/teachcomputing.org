@@ -1,0 +1,58 @@
+<% meta_tag :title, 'CS Accelerator - Teach Computing' %>
+<%= render 'pages/certification/hero_with_video', full_width: true %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Computer Science Accelerator is a professional development programme for teachers, funded by the Department for Education, leading to a national certificate in computer science subject knowledge.</p>
+				<p class="govuk-body">The programme will help you develop or refresh your subject knowledge up to GCSE, with bursary funding available for state-funded schools and colleges to support your learning.</p>
+        <h2 class="govuk-heading-m">Who is eligible?</h2>
+        <ul class="govuk-list govuk-list--bullet govuk-body">
+          <li>current and aspiring computing teachers</li>
+          <li>suitable for all abilities, from little or no experience in teaching computer science to experienced teachers looking to deepen their subject knowledge</li>
+        </ul>
+        <h2 class="govuk-heading-m">How do I get started?</h2>
+        <%= render 'pages/certification/pathway' %>
+				<h2 class="govuk-heading-m">How much does it cost?</h2>
+        <p class="govuk-body">There are no fees to pay for teachers in England who work in state-funded schools and colleges and trainee teachers, supply teachers or teachers returning to the state sector.</p>
+        <p class="govuk-body">If you are a teacher in state-funded education, you will also be eligible to apply for <%= link_to 'bursary funding', '/bursary', class: 'govuk-link ncce-link' %> to support your learning, paid to your school or college. Deferred bursaries are also available for teachers who do not currently work in state education who meet our eligibility criteria.</p>
+        </p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside ncce-aside__csa-info-page">
+          <h2 class="govuk-heading-s ncce-aside__title">Enrol on the programme</h2>
+          <ol
+            class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
+            <li>
+              Enrol with the click of a button
+            </li>
+            <li>Complete a questionnaire to assess your subject knowledge</li>
+            <li>Participate in a mix of courses to suit your experience</li>
+            <li>Pass a short test to receive your qualification</li>
+          </ol>
+          <% if current_user %>
+          <p class="govuk-body">
+            <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+          </p>
+          <% else %>
+          <p class="govuk-body">
+            <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+          </p>
+          <% end %>
+        </div>
+        <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
+        <p class="govuk-body-s">
+          <%= link_to 'CSA Handbook',
+                      downloads_path(name: 'CSA Handbook', uri: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf'),
+                      method: :post,
+                      class: 'ncce-link'
+          %>
+        </p>
+        <p class="govuk-body-s">
+          <%= link_to 'GCSE specifications to Computer Science Accelerator course map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %> (September 2020)
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'pages/certification/statement' %>

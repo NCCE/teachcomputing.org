@@ -2,15 +2,24 @@
   font-size: 15px;
   margin: 0;
 
+  font-size: 1rem;
+
   &__text {
-    padding-left: 10px;
+    padding-left: 12px;
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    font-size: 1.18rem;
   }
 }
 
 .ncce-details__summary {
-  &-text, &:before {
+
+
+  &-text,
+  &:before {
     color: $deep-cerulean;
   }
 
@@ -18,4 +27,25 @@
     background: none;
     box-shadow: none;
   }
+
+  &:before {
+    bottom: initial;
+    top: 5.5px;
+
+    @include govuk-media-query($until: tablet) {
+      top: 3px;
+    }
+  }
+
+  text-decoration: underline !important;
+  padding-left: 17px;
+}
+
+/* Ensure expander icon is aligned vertically when open on desktop */
+.ncce-details[open]>.ncce-details__summary::before {
+  margin: 0.1rem 0 0 0;
+}
+
+.ncce-details__summary-content-wrapper {
+  margin: 0.8rem 1.1rem;
 }

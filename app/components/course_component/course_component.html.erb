@@ -10,7 +10,7 @@
         <span class='ncce-courses__locations-name'>Join anytime</span>
       </div>
     </div>
-  <% else @course.occurrences.length > 1 %>
+  <% elsif @course.occurrences.present? %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
       <button aria-expanded="false">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'><%= course_type(@course) %></span>
@@ -24,18 +24,22 @@
       </div>
       </button>
     </div>
+  <% else %>
+    <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations--always-open">
+      <span><%= t('.no_occurrences_html', hubs_link: link_to('your local Computing Hub', '/hubs', class: 'ncce-link', data: tracking_data('Coming soon'))) %></span>
+    </div>
   <% end %>
   <%= render CourseOccurrencesComponent.new(course: @course) %>
 
   <% unless @course.subjects.nil? && @course.key_stages.nil? && @course.workstream.nil?%>
     <h3 class="screen-reader-only">Tags for this course:</h3>
       <% @course.subjects.each do |subject| %>
-        <% if @course_filter.subjects&.has_value?(subject.to_i) %>
+        <% if @course_filter&.subjects&.has_value?(subject.to_i) %>
           <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.subjects.key(subject.to_i) %></strong>
         <% end %>
       <% end %>
       <% @course.age_groups.each do |group| %>
-          <% if @course_filter.age_groups&.has_value?(group.to_i) %>
+          <% if @course_filter&.age_groups&.has_value?(group.to_i) %>
             <strong class="govuk-tag ncce-courses__tag"><%= @course_filter.age_groups.key(group.to_i) %></strong>
           <% end %>
       <% end %>

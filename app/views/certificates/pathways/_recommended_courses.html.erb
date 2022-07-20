@@ -1,0 +1,39 @@
+<div class='recommended-courses-wrapper'>
+  <% if pathway.present? %>
+    <div data-controller='expander'>
+      <p class="govuk-!-margin-top-0">
+          <button data-action="expander#toggleAll"
+                  data-expander-target="expanderButton"
+                  start-expanded="true"
+                  aria-expanded="true"
+                  class="govuk-body expander__button recommended-courses-wrapper_expander-button"
+                  data-event-action="click"
+                  data-event-label="Show additional courses"
+                  data-event-category="CSA enrolled">
+              <strong><%= t('.courses_intro.html') %></strong>
+          </button>
+      </p>
+
+      <div data-expander-target="expander" class="expander">
+        <% recommended_activities.each do |pa| %>
+          <div class="ncce-pathway-courses__course">
+            <p class="ncce-pathway-courses__link">
+              <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
+            </p>
+
+            <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %>">
+              <%= activity_type(pa) %>
+            </p>
+          </div>
+        <% end %>
+        <p class='govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0'><%= t('.other_formats') %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="ncce-pathway-courses__buttons">
+    <%= link_to t('.all_courses_button'),
+      courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0',
+      data: { event_action: 'click', event_category: event_category, event_label: 'View all certificate courses' } %>
+  </div>
+</div>

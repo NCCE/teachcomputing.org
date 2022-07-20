@@ -49,19 +49,20 @@ class Achievement < ApplicationRecord
       .order('current_state')
   }
 
+  def user_has_badge?
+    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
+  end
+
+  def first_stem_achievement?
+    user.achievements.in_state(:complete).with_category(Activity::FACE_TO_FACE_CATEGORY).for_programme(programme).count >= 1
+  end
+
   def issue_badge
-    return false unless programme&.badgeable? && programme&.user_enrolled?(user)
+    return unless programme&.badgeable? && programme&.user_enrolled?(user)
+    return unless programme.badges.active.first
+    return if user_has_badge?
 
-    badge = programme.badges.active.first
-    return unless badge
-
-    issued_badges = Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
-
-    return if issued_badges
-
-    has_first_stem_achievement = user.achievements.in_state(:complete).with_provider('stem-learning').for_programme(programme).count == 1
-
-    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if has_first_stem_achievement
+    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if first_stem_achievement?
   end
 
   def state_machine

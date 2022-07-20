@@ -9,21 +9,21 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
     include ActiveJob::TestHelper
     context 'when user is invalid' do
       it 'raises error if user is not found' do
-        expect {
-          CertificatePendingTransitionJob.perform_now(primary_certificate, '123', some_value: '10')
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        expect do
+          described_class.perform_now(primary_certificate, '123', some_value: '10')
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
-    context 'when user is valid but mot enrolled' do
+    context 'when user is valid but not enrolled' do
       before do
         primary_certificate
       end
 
-      it 'doesn\'t cause errors' do
-        expect {
-          CertificatePendingTransitionJob.perform_now(primary_certificate, user.id, some_value: '10')
-        }.not_to raise_error
+      it "doesn't cause errors" do
+        expect do
+          described_class.perform_now(primary_certificate, user.id, some_value: '10')
+        end.not_to raise_error
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
         user_programme_enrolment
-        CertificatePendingTransitionJob.perform_now(primary_certificate, user.id, some_value: '10')
+        described_class.perform_now(primary_certificate, user.id, some_value: '10')
       end
 
       after do
@@ -44,11 +44,6 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
 
       it 'metadata is stored' do
         expect(user_programme_enrolment.last_transition.metadata['some_value']).to eq '10'
-      end
-
-      it 'queues ScheduleCertificateCompletionJob job' do
-        #https://github.com/rspec/rspec-rails/pull/2206
-        expect(ScheduleCertificateCompletionJob).to have_been_enqueued.exactly(:once)#.at(a_value_within(1.minute).of(7.days.from_now))
       end
     end
   end

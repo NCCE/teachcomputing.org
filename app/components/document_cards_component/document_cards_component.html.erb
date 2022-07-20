@@ -2,14 +2,17 @@
   <% @cards.each do | card | %>
     <%= content_tag :div, class: ['document-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
       <p class="govuk-body document-card__title">
-        <%= link_to t(card[:title_link][:title]), card[:title_link][:title_url], class: 'ncce-link', data: {
-          event_action: 'click', event_category: card[:title_link][:tracking_page], event_label: card[:title_link][:tracking_label]
-        } %>
+        <%= link_to card[:title_link][:title], card[:title_link][:url], class: 'ncce-link', data: tracking_data(card[:title_link][:tracking_label]) %> <%= card[:title_link][:file_type] if card[:title_link][:file_type].present? %>
       </p>
       <% unless card[:date].blank? %>
-        <p class="govuk-body govuk-body-s document-card__date"><%= t(card[:date]) %></p>
+        <p class="govuk-body govuk-body-s document-card__date"><%= card[:date] %></p>
       <% end %>
-      <p class="govuk-body document-card__text"><%= t(card[:body][:text], *card[:body][:tokens]) %></p>
+      <p class="govuk-body document-card__text"><%= card[:body][:text] %></p>
+      <% unless card[:button].blank? %>
+        <div class='document-card__button'>
+          <%= link_to card[:button][:title], card[:button][:url], method: card[:button][:method], class: 'govuk-button button button--small govuk-!-margin-bottom-0', data: tracking_data(card[:button][:tracking_label])  %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

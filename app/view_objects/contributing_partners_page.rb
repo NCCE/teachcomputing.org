@@ -24,6 +24,13 @@ class ContributingPartnersPage
           text_locale: 'pages.contributing-partners.cards.barefoot.text_html'
         },
         {
+          title_locale: 'pages.contributing-partners.cards.bebras.title',
+          link_url: 'https://www.bebras.uk/',
+          image_path: 'media/images/partners/bebras.png',
+          img_alt_locale: 'pages.contributing-partners.cards.bebras.img_alt',
+          text_locale: 'pages.contributing-partners.cards.bebras.text_html'
+        },
+        {
           title_locale: 'pages.contributing-partners.cards.code_club.title',
           link_url: 'https://codeclub.org/en/start-a-code-club',
           image_path: 'media/images/partners/code-club.svg',

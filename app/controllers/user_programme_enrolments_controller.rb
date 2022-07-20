@@ -7,14 +7,8 @@ class UserProgrammeEnrolmentsController < ApplicationController
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
 
     if enroller.call
-      case programme.slug
-      when 'primary-certificate'
-        redirect_to diagnostic_primary_certificate_path(:question_1)
-      else
-        flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
-        redirect_to programme.path
-      end
-
+      flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
+      redirect_to programme.path
     else
       flash[:error] = 'Whoops something went wrong'
       redirect_to dashboard_path
@@ -35,11 +29,11 @@ class UserProgrammeEnrolmentsController < ApplicationController
   private
 
     def user_programme_enrolment_params
-      params.require(:user_programme_enrolment).permit(:user_id, :programme_id)
+      params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
     end
 
     def user_has_existing_enrolment?
-      enrolment = UserProgrammeEnrolment.find_by(user_programme_enrolment_params)
+      enrolment = UserProgrammeEnrolment.find_by(user_id: user_programme_enrolment_params[:user_id], programme_id: user_programme_enrolment_params[:programme_id])
       return unless enrolment
 
       if enrolment.in_state?(:unenrolled)

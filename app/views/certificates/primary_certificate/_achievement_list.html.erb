@@ -1,23 +1,79 @@
- <p class="govuk-body"><strong>Complete all</strong> of the following activities:</p>
- <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <% diagnostic_result_percentage = @programme.diagnostic_result_percentage(current_user) %>
-  <%= render 'certificates/achievements',
-      presenters: @user_programme_achievements.online_achievements(to_show = 1),
-      category: Activity::ONLINE_CATEGORY,
-      diagnostic_result_percentage: diagnostic_result_percentage
-  %>
-  <%= render 'certificates/achievements',
-      presenters: @user_programme_achievements.face_to_face_achievements(to_show = 1),
-      category: Activity::FACE_TO_FACE_CATEGORY,
-      diagnostic_result_percentage: diagnostic_result_percentage
-  %>
-  <%= render 'certificates/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 1, credit = 5) %>
-</ul>
-<p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
+  <%= t('.development.title.html') %>
+</p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <%= render 'certificates/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 3, credit = 10) %>
+  <li class="ncce-activity-list__item">
+    <%= render CourseActivityComponent.new(
+      objective: t('.face_to_face_prompt.html'),
+      booking: {
+        path: courses_path(course_format: %i[face_to_face remote], certificate: @programme.slug),
+        tracking_label: 'Book remote or F2F course'
+      },
+      achievements: @face_to_face_achievements,
+      tracking_category: tracking_category
+    ) %>
+  </li>
+  <% if @issued_badge.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render DashBadgeComponent.new(
+        badge: @issued_badge,
+        tracking_event_category: @badge_tracking_event_category,
+        tracking_event_label: @badge_tracking_event_label
+      ) %>
+    </li>
+  <% end %>
+  <li class="ncce-activity-list__item">
+    <%= render CourseActivityComponent.new(
+      objective: t('.online_prompt.html'),
+      booking: {
+        path: courses_path(course_format: %i[online], certificate: @programme.slug),
+        tracking_label: 'Book online course'
+      },
+      achievements: @online_achievements,
+      tracking_category: tracking_category
+    ) %>
+  </li>
+  <% if @user_pathway.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+        event_category: 'primary enrolled',
+        pathway: @user_pathway,
+        recommended_activities: @recommended_activities
+      } %>
+    </li>
+  <% else %>
+    <li class="ncce-activity-list__item">
+      <div class='ncce-activity-list__button-wrapper'>
+        <%= link_to t('.all_courses_button'),
+          courses_path(certificate: @programme.slug),
+          class: 'govuk-button button govuk-!-margin-bottom-0',
+          data: {
+            event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
+          }
+        %>
+      </div>
+    </li>
+  <% end %>
+  <li class="ncce-activity-list__item ncce-activity-list__item--separate">
+    <%= render CommunityActivityComponent.new(
+        achievement: @community_achievements&.find_by(activity_id: @online_discussion_activity.id),
+        activity: Activity.find(@online_discussion_activity.id),
+        tracking_category: tracking_category
+    ) %>
+  </li>
 </ul>
-<p class="govuk-body"><strong>Complete one</strong> of the following activities:</p>
-<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-  <%= render 'certificates/community_achievements', presenters: @user_programme_achievements.community_activities(to_show = 4, credit = 20) %>
-</ul>
+
+<% @community_groups.each do |group| %>
+  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+    <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
+      <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title %>
+    </p>
+    <%= render 'certificates/pathways/community_achievements',
+      programme_activities: split_community_pathway_activities_by_visibility(
+        group: group,
+        pathway_activities: @recommended_community_activities,
+      ),
+      community_achievements: @community_achievements
+    %>
+  </ul>
+<% end %>

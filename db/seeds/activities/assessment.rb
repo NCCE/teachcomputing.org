@@ -3,7 +3,7 @@ cs_accelerator = Programme.cs_accelerator
 a = Activity.find_or_create_by(slug: 'cs-accelerator-assessment') do |activity|
   activity.title = 'CS Accelerator Assessment'
   activity.credit = 30
-  activity.slug = activity.title.parameterize
+  activity.slug = 'cs-accelerator-assessment'
   activity.category = 'assessment'
   activity.provider = 'classmarker'
 end
@@ -17,4 +17,4 @@ assessment = Assessment.find_or_create_by(programme_id: cs_accelerator.id) do |a
   assessment.class_marker_test_id = '1071279'
 end
 
-puts "Created assessment: #{assessment.activity.title} (#{assessment})"
+puts "Created assessment: #{assessment.activity&.title} (#{assessment})"

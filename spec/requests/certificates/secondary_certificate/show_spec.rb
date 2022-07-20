@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Certificates::SecondaryCertificateController do
   let(:user) { create(:user) }
   let(:secondary_certificate) { create(:secondary_certificate) }
-  let(:secondary_certificate_groupings) { create_list(:programme_activity_grouping, 3, programme_id: secondary_certificate.id)}
+  let(:secondary_certificate_groupings) { create_list(:programme_activity_grouping, 3, programme_id: secondary_certificate.id) }
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id) }
 
   describe '#show' do
@@ -15,7 +15,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
           .to receive(:current_user).and_return(user)
       end
 
-      context 'when user is  enrolled' do
+      context 'when user is enrolled' do
         before do
           secondary_enrolment
           get secondary_certificate_path
@@ -30,11 +30,8 @@ RSpec.describe Certificates::SecondaryCertificateController do
         end
 
         it 'assigns programme_activity_groupings' do
-          expect(assigns(:programme_activity_groupings)).to eq(secondary_certificate.programme_activity_groupings)
-        end
-
-        it 'assigns programme' do
-          expect(assigns(:user_programme_achievements)).to be_a(UserProgrammeAchievements)
+          expect(assigns(:community_groups)).to all(be_a(ProgrammeActivityGrouping))
+          expect(assigns(:professional_development_groups)).to all(be_a(ProgrammeActivityGrouping))
         end
       end
 

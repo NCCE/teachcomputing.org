@@ -16,13 +16,12 @@
   margin-top: 0.5rem;
 }
 
-.ncce-button__recommendation {
-    grid-row: 4;
-    margin-left: 2rem;
-    width: auto;
-    @include govuk-media-query($from: tablet) {
-        grid-row: auto;
-        margin-left: 0;
-    }
+.ncce-button__achievements {
+  grid-row: 4;
+  width: auto;
 
+  @include govuk-media-query($from: tablet) {
+      grid-row: auto;
+      margin-left: 1rem;
+  }
 }

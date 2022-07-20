@@ -74,6 +74,7 @@ Rails.application.configure do
                          socket_failure_delay: 0.2,
                          down_retry_delay: 60,
                          pool_size: 5,
+                         value_max_bytes: 10485760,
                          ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)

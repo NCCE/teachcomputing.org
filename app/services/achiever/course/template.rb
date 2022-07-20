@@ -28,7 +28,7 @@ class Achiever::Course::Template
                     HideFromweb: '0',
                     ProgrammeName: 'ncce' }.freeze
 
-  def self.from_resource(resource)
+  def self.from_resource(resource, activities)
     new.tap do |t|
       t.activity_code = resource.send('Template.ActivityCode')
       t.age_groups = resource.send('Template.AgeGroups').split(';')
@@ -51,7 +51,9 @@ class Achiever::Course::Template
       t.topics_covered = resource.send('Template.TopicsCovered')
       t.who_is_it_for = resource.send('Template.WhoIsFor')
       t.workstream = resource.send('Template.Workstream')
-      t.always_on = Activity.find_by(stem_course_template_no: t.course_template_no)&.always_on || false
+
+      activity = activities.select { |activity| activity.stem_course_template_no == t.course_template_no }&.first
+      t.always_on = activity&.always_on || false
     end
   end
 
@@ -61,8 +63,9 @@ class Achiever::Course::Template
   end
 
   def self.all
+    activities ||= Activity.all
     templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
-    templates.map { |course| Achiever::Course::Template.from_resource(course) }
+    templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
   end
 
   def self.find_by_activity_code(activity_code)
@@ -79,6 +82,10 @@ class Achiever::Course::Template
 
   def self.without(course)
     Achiever::Course::Template.all.reject { |c| c.course_template_no == course.course_template_no }
+  end
+
+  def self.find_many_by_stem_course_template_nos(stem_course_template_nos)
+    Achiever::Course::Template.all.select { |val| stem_course_template_nos.include?(val.course_template_no) }
   end
 
   def by_certificate(certificate)

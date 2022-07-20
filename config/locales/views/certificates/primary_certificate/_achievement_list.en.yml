@@ -1,0 +1,12 @@
+en:
+  certificates:
+    primary_certificate:
+      achievement_list:
+        development:
+          title:
+            html: "<strong>Participate in professional development</strong>"
+        all_courses_button: "View all certificate courses"
+        face_to_face_prompt:
+          html: "Complete <strong>at least one</strong> face to face, or remote course"
+        online_prompt:
+          html: "Complete <strong>at least one</strong> online course"

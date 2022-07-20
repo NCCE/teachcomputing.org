@@ -5,8 +5,40 @@ class OnlineBookingPresenter
     'Join this course'
   end
 
+  def authenticated_title
+    'Join on FutureLearn'
+  end
+
+  def enrolled_title
+    'You are enrolled on this course'
+  end
+
+  def completed_title
+    "You've completed this course"
+  end
+
+  def enrolled_introduction
+    'You will be taken to the FutureLearn website for further details.'
+  end
+
   def introduction
     'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+  end
+
+  def unauthenticated_booking_button_title
+    'Login to join'
+  end
+
+  def enrolled_button_title
+    'Continue on FutureLearn'
+  end
+
+  def completed_button_title
+    'View course on FutureLearn'
+  end
+
+  def completed_button_introduction
+    'You will be taken to the FutureLearn website for further details.'
   end
 
   def booking_path(course_id)

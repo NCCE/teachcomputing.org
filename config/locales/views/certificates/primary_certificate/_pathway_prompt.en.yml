@@ -1,0 +1,12 @@
+en:
+  certificates:
+    primary_certificate:
+      pathway_prompt:
+        title: "You're not currently on a pathway"
+        text: "Our learning pathways provide a set of recommended courses and activities to help get the right outcomes for you. You won't lose any progress when you opt-in to a pathway."
+        expander_title: "Learn more and select a pathway"
+        pathway_list_title: "Learning pathways for teachers"
+        input:
+          placeholder: "choose your pathway"
+        button:
+          text: "Select pathway"

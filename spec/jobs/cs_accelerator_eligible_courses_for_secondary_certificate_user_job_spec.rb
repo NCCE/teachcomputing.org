@@ -45,11 +45,6 @@ RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type:
           expect { described_class.perform_now(user.id) }
             .to change { user.achievements.count }.by(1)
         end
-
-        it 'schedules CertificatePendingTransitionJob' do
-          expect { described_class.perform_now(user.id) }
-            .to have_enqueued_job(CertificatePendingTransitionJob)
-        end
       end
 
       context 'but the user has not done an eligible CSA course' do

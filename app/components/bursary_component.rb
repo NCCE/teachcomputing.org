@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class BursaryComponent < ViewComponent::Base
-  def initialize(tracking_event_category: nil, tracking_event_label: nil)
+  include ViewComponent::Translatable
+
+  def initialize(text: nil, tracking_event_category: nil, tracking_event_label: nil)
+    @text = text
     @tracking_event_category = tracking_event_category
     @tracking_event_label = tracking_event_label
   end

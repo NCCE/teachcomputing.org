@@ -117,22 +117,21 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 2: Computing systems and networks – IT around us',
-        url: '/curriculum/key-stage-1/computing-systems-and-networks-it-around-us',
-        description: 'With an initial focus on IT in the home,
-        learners explore how IT benefits society in places such as shops, libraries,
-        and hospitals. Whilst discussing the responsible use of technology,
-        and how to make smart choices when using it.',
-        event_label: 'Featured unit 1'
+        title: 'Year 2: Creating media - Making Music',
+        url: '/curriculum/key-stage-1/creating-media-making-music',
+        description: 'Get creative using technology as a digital device to allow you to make music.
+                      Use a computer as a tool to explore rhythms and melodies,
+                      before creating a musical composition.',
+        event_label: 'Featured unit 1',
+        updated_at: 'Updated April 2022'
       },
       {
-        title: 'Year 3: Computing systems and networks – Connecting computers',
-        url: '/curriculum/key-stage-2/computing-systems-and-networks-connecting-computers',
-        description: 'Challenge your learners to develop their understanding of digital devices,
-        with an initial focus on inputs, processes, and outputs.
-        Start by comparing digital and non-digital devices,
-        before introducing them to computer networks.',
-        event_label: 'Featured unit 2'
+        title: 'Year 5: Creating media - Vector Drawing',
+        url: '/curriculum/key-stage-2/creating-media-vector-drawing',
+        description: 'Download the latest version of our Vector Drawing unit to create images using layers and groups of objects.
+                      Recognise how complex-looking vector images are really just made by combining 2D shapes!',
+        event_label: 'Featured unit 2',
+        updated_at: 'Featured unit'
       }
     ]
   end

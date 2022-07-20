@@ -1,5 +1,5 @@
 class ProgrammeActivityGrouping < ApplicationRecord
-  has_many :programme_activities
+  has_many :programme_activities, -> { order(:order) }
   belongs_to :programme
 
   def user_complete?(user)

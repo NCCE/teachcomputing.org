@@ -3,31 +3,52 @@ require 'rails_helper'
 RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   let(:user) { create(:user) }
   let(:secondary_certificate) { create(:secondary_certificate) }
-  let(:cs_accelerator) { create(:cs_accelerator) }
-  let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 5, programme_id: secondary_certificate.id) }
+  let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: secondary_certificate) }
 
   before do
-    FactoryBot.rewind_sequences
-    cs_accelerator
-    @current_user = user
-    @programme = secondary_certificate
-    programme_activity_groupings.each do |grouping|
-      create_list(:programme_activity, 3, programme_id: @programme.id, programme_activity_grouping_id: grouping.id)
-    end
-    @programme_activity_groupings = @programme.programme_activity_groupings
-    @user_programme_achievements = UserProgrammeAchievements.new(@programme, @current_user)
+    assign(:current_user, user)
+    assign(:programme, secondary_certificate)
+    assign(:professional_development_groups, programme_activity_groupings)
+    assign(:community_groups, programme_activity_groupings)
+
     render
   end
 
   it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: @programme.title)
+    expect(rendered).to have_css('.hero__heading', text: secondary_certificate.title)
   end
-  
+
   it 'has correct list setup' do
-    expect(rendered).to have_css('.ncce-activity-list--programme', count: 4)
+    expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
+  end
+
+  it 'has an intro' do
+    expect(rendered).to have_css('.govuk-body-m', text: 'These courses and activities have been picked so you can develop')
+  end
+
+  it 'has the expected section titles' do
+    expect(rendered).to have_text('Complete at least one online course')
+    expect(rendered).to have_text('Complete at least one face to face, or remote course')
+    expect(rendered).to have_text('Choose at least one activity to a group name', count: 2)
+  end
+
+  it 'has a community activity component' do
+    expect(rendered).to have_css('.community-activity-component')
+  end
+
+  it 'has a course activity component' do
+    expect(rendered).to have_css('.course-activity-component')
+  end
+
+  it 'has view all courses button' do
+    expect(rendered).to have_link('View all certificate courses')
   end
 
   it 'has support information' do
-    expect(rendered).to have_css('.ncce-aside__title', text: 'Support')
+    expect(rendered).to have_css('.aside-component__heading', text: 'Need some help?')
+  end
+
+  it 'has feedback form' do
+    expect(rendered).to have_css('.feedback-component__heading', text: 'What can we do better?')
   end
 end

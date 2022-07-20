@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  ruby: circleci/ruby@1
+
 jobs:
   brakeman:
     docker:
@@ -113,10 +116,8 @@ jobs:
           command: bash -ue scripts/record_coverage.sh
           when: always
 
-orbs:
-  ruby: circleci/ruby@1
-
 workflows:
+  version: 2
   brakeman:
     jobs:
       - brakeman:
@@ -126,16 +127,7 @@ workflows:
                 - master
                 - main
 
-  rubocop:
-    jobs:
-      - rubocop:
-          filters:
-            branches:
-              ignore:
-                - master
-                - main
-
-  test:
+  build_and_test:
     jobs:
       - test
       - coverage_check:
@@ -145,4 +137,4 @@ workflows:
             branches:
               ignore:
                 - master
-                - main
+                - main          

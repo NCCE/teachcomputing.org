@@ -4,6 +4,7 @@ module NavigationHelper
       { text: 'Primary school',
         children: [
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
+          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'School primary glossary' },
           { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
           { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
         ] },
@@ -13,6 +14,7 @@ module NavigationHelper
           { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
           { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
           { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
+          { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
         ] },
       { text: 'Training and support',
@@ -24,6 +26,7 @@ module NavigationHelper
       { text: 'Teaching resources',
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
+          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'Resources primary glossary' },
           { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' }
         ] },
       { text: 'About us',

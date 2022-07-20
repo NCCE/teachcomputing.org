@@ -9,6 +9,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
   let(:activity) { create(:activity) }
   let(:online_booking_presenter) { OnlineBookingPresenter.new }
   let(:stem_booking_presenter) { StemBookingPresenter.new }
+  let!(:face_to_face) { create(:activity, :stem_learning) }
+  let(:remote_course) { Achiever::Course::Template.find_by_activity_code('CP428') }
 
   before do
     stub_course_templates
@@ -20,25 +22,19 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         .to receive(:current_user).and_return(user)
     end
 
-    it 'does not render when the user is enrolled' do
-      allow(view).to receive(:user_achievement_state).and_return(:complete)
-      render
-
-      expect(rendered).not_to have_css('.ncce-aside')
-    end
-
     context 'when its an online course' do
       describe 'when the course is not always on' do
         before do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
+          assign(:course, course)
 
           render
         end
 
         it 'prompts the user to join the course' do
-          expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Join on FutureLearn')
         end
 
         it 'does not render the facilitation periods' do
@@ -54,7 +50,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
         it 'renders link to futurelearn LTI' do
           expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
-          expect(rendered).to have_link('Join this course', href: expected_link)
+          expect(rendered).to have_link('Join on FutureLearn', href: expected_link)
         end
 
         it "does not show the 'View course' button" do
@@ -96,102 +92,335 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     end
 
     context 'when its a face to face course' do
-      before do
-        assign(:booking, stem_booking_presenter)
-        assign(:occurrences, occurrences)
-        assign(:course, course)
-        assign(:activity, activity)
+      context 'when a user is not enrolled on a course' do
+        before do
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, course)
+          assign(:activity, activity)
 
-        render
-      end
-
-      it 'prompts the user to book the course' do
-        expect(rendered).to have_css('.ncce-aside__title', text: 'Book this course')
-      end
-
-      it 'tells the user who is delivering the course' do
-        expect(rendered).to have_css(
-          '.ncce-aside__text',
-          text: 'You will be taken to the STEM Learning website to see further details and book.'
-        )
-      end
-
-      context 'when it renders the list' do
-        it 'shows the expected number of occurences' do
-          expect(rendered).to have_css('.ncce-booking-list__item', count: 3)
+          render
         end
 
-        it 'shows items with the expected content' do
-          occurrences.each do |occurrence|
-            expect(rendered).to have_css(
-              '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
-            )
+        it 'prompts the user to book the course' do
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Book this course')
+        end
 
-            expect(rendered).to have_css(
-              '.ncce-booking-list__address', text: stem_booking_presenter.address(occurrence)
-            )
+        it 'tells the user who is delivering the course' do
+          expect(rendered).to have_css(
+            '.ncce-aside__text',
+            text: 'You will be taken to the STEM Learning website to see further details.'
+          )
+        end
 
-            expect(rendered).to have_link(
-              'Book',
-              href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
-            )
+        it 'does not render the facilitation periods' do
+          expect(rendered).not_to have_css('.facilitation-periods')
+        end
+
+        context 'when it renders the list' do
+          it 'shows the expected number of occurences' do
+            expect(rendered).to have_css('.ncce-booking-list__item', count: 3)
+          end
+
+          it 'shows items with the expected content' do
+            occurrences.each do |occurrence|
+              expect(rendered).to have_css(
+                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+              )
+
+              expect(rendered).to have_css(
+                '.ncce-booking-list__address', text: stem_booking_presenter.address(occurrence)
+              )
+
+              expect(rendered).to have_link(
+                'Book',
+                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+              )
+            end
+          end
+
+          it "does not show the 'See more dates' button if there are less than 20 items" do
+            expect(rendered).not_to have_link('See more dates')
+          end
+
+          it "does not show the 'View course' button if there are occurences" do
+            expect(rendered).not_to have_link('View course')
           end
         end
+      end
 
-        it "does not show the 'See more dates' button if there are less than 20 items" do
-          expect(rendered).not_to have_link('See more dates')
+      context 'when the user is enrolled on a course' do
+        before do
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, course)
+          assign(:activity, activity)
+          assign(:user_occurrence,
+            Achiever::Course::Delegate.new(JSON.parse({
+              "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Delegate.Is_Fully_Attended": 'True',
+              "OnlineCPD": false,
+              "Delegate.Progress": '157420003',
+              "ActivityVenueAddress.VenueName": 'National STEM Learning Centre',
+              "ActivityVenueAddress.VenueCode": '',
+              "ActivityVenueAddress.City": 'York',
+              "ActivityVenueAddress.PostCode": 'YO10 5DD',
+              "ActivityVenueAddress.Address.Line1": 'University of York',
+              "Activity.StartDate": "10\/07\/2019 00:00:00",
+              "Activity.EndDate": "17\/07\/2019 00:00:00"
+            }.to_json, object_class: OpenStruct)))
+          allow(view).to receive(:user_achievement_state).and_return(:enrolled)
+          allow(view).to receive(:course_start_date).and_return('15th January 2099, Thursday 00:00')
+
+          render
         end
 
-        it "does not show the 'View course' button if there are occurences" do
-          expect(rendered).not_to have_link('View course')
+        it 'displays the date of the occurance' do
+          expect(rendered).to have_text('15th January 2099, Thursday 00:00')
+        end
+
+        it 'displays course type' do
+          expect(rendered).to have_text('Face to face course')
+        end
+
+        it 'displays all parts of the address' do
+          expect(rendered).to have_text('National STEM Learning Centre')
+          expect(rendered).to have_text('University of York')
+          expect(rendered).to have_text('York')
+          expect(rendered).to have_text('YO10 5DD')
+        end
+
+
+        it 'display a booking path' do
+          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
+
+        it 'displays aside title' do
+          expect(rendered).to have_text('You’re booked on this course')
+        end
+
+        it 'displays more stem learning and teach computing text' do
+          expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
+          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
         end
       end
+
+      context 'when a user has completed a course' do
+        before do
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, course)
+          assign(:activity, activity)
+          assign(:user_occurrence,
+            Achiever::Course::Delegate.new(JSON.parse({
+              "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Delegate.Is_Fully_Attended": 'True',
+              "OnlineCPD": false,
+              "Delegate.Progress": '157420003',
+              "ActivityVenueAddress.VenueName": 'National STEM Learning Centre',
+              "ActivityVenueAddress.VenueCode": '',
+              "ActivityVenueAddress.City": 'York',
+              "ActivityVenueAddress.PostCode": 'YO10 5DD',
+              "ActivityVenueAddress.Address.Line1": 'University of York',
+              "Activity.StartDate": "10\/07\/2019 00:00:00",
+              "Activity.EndDate": "17\/07\/2019 00:00:00"
+            }.to_json, object_class: OpenStruct)))
+          allow(view).to receive(:user_achievement_state).and_return(:complete)
+          allow(view).to receive(:course_start_date).and_return('15th January 2099, Thursday 00:00')
+
+          render
+        end
+
+        it 'displays aside title' do
+          expect(rendered).to have_text("You’ve completed this course")
+        end
+
+        it 'displays more stem learning and teach computing text' do
+          expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
+          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
+        end
+
+        it 'displays the date of the occurance' do
+          expect(rendered).to have_text('15th January 2099, Thursday 00:00')
+        end
+
+        it 'displays course type' do
+          expect(rendered).to have_text('Face to face course')
+        end
+
+        it 'displays all parts of the address' do
+          expect(rendered).to have_text('National STEM Learning Centre')
+          expect(rendered).to have_text('University of York')
+          expect(rendered).to have_text('York')
+          expect(rendered).to have_text('YO10 5DD')
+        end
+
+
+        it 'display a booking path' do
+          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
+      end
+
     end
+
 
     context 'when its a remote course' do
-      before do
-        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
-        assign(:course, course)
-        assign(:booking, stem_booking_presenter)
-        assign(:occurrences, occurrences_remote)
-        assign(:activity, activity)
+      context 'when a user is not enrolled on a course' do
+        before do
+          allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
-        render
-      end
+          assign(:course, course)
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences_remote)
+          assign(:activity, activity)
 
-      context 'when it renders the list' do
-        it 'shows the expected number of occurences' do
-          expect(rendered).to have_css('.ncce-booking-list__item', count: 25)
+          render
         end
 
-        it 'shows items with the expected content' do
-          occurrences_remote.each do |occurrence|
-            expect(rendered).to have_css(
-              '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
-            )
+        it 'does not render the facilitation periods' do
+          expect(rendered).not_to have_css('.facilitation-periods')
+        end
 
-            expect(rendered).to have_css(
-              '.ncce-booking-list__address', text: 'Live remote training'
-            )
+        context 'when it renders the list' do
+          it 'shows the expected number of occurences' do
+            expect(rendered).to have_css('.ncce-booking-list__item', count: 25)
+          end
+
+          it 'shows items with the expected content' do
+            occurrences_remote.each do |occurrence|
+              expect(rendered).to have_css(
+                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+              )
+
+              expect(rendered).to have_css(
+                '.ncce-booking-list__address', text: 'Live remote training'
+              )
+
+              expect(rendered).to have_link(
+                'Book',
+                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+              )
+            end
+          end
+        end
+
+        context 'when there are no occurances' do
+          it "shows the 'Dates coming soon' button" do
+            allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
+            assign(:course, course)
+            assign(:booking, stem_booking_presenter)
+            assign(:occurrences, [])
+            assign(:activity, activity)
+            allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
+
+            render
 
             expect(rendered).to have_link(
-              'Book',
-              href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+              'Find your local Hub',
+              href: "/hubs"
             )
           end
         end
       end
 
-      it "shows the 'See more dates' button if there are more than 20 items" do
-        expect(rendered).to have_link(
-          'See more dates',
-          href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
-        )
+      context 'when a user is enrolled on a course' do
+        before do
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, remote_course)
+          assign(:activity, activity)
+          assign(:user_occurrence,
+            Achiever::Course::Delegate.new(JSON.parse({
+              "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Delegate.Is_Fully_Attended": 'True',
+              "OnlineCPD": false,
+              "Delegate.Progress": '157420003',
+              "ActivityVenueAddress.VenueName": 'National STEM Learning Centre',
+              "ActivityVenueAddress.VenueCode": '',
+              "ActivityVenueAddress.City": 'York',
+              "ActivityVenueAddress.PostCode": 'YO10 5DD',
+              "ActivityVenueAddress.Address.Line1": 'University of York',
+              "Activity.StartDate": "10\/07\/2019 00:00:00",
+              "Activity.EndDate": "17\/07\/2019 00:00:00"
+            }.to_json, object_class: OpenStruct)))
+          allow(view).to receive(:user_achievement_state).and_return(:enrolled)
+          allow(view).to receive(:course_start_date).and_return('15th January 2099, Thursday 00:00')
+
+          render
+        end
+
+        it 'displays the date of the occurance' do
+          expect(rendered).to have_text('15th January 2099, Thursday 00:00')
+        end
+
+        it 'displays course type' do
+          expect(rendered).to have_text('Live remote training course')
+        end
+
+        it 'does not displays the address' do
+          expect(rendered).to have_no_text('National STEM Learning Centre, University of York, York, YO10 5DD')
+        end
+
+
+        it 'display a booking path' do
+          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
+      end
+
+      context 'when a user has completed a course' do
+        before do
+          assign(:booking, stem_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, remote_course)
+          assign(:activity, activity)
+          assign(:user_occurrence,
+            Achiever::Course::Delegate.new(JSON.parse({
+              "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+              "Delegate.Is_Fully_Attended": 'True',
+              "OnlineCPD": false,
+              "Delegate.Progress": '157420003',
+              "ActivityVenueAddress.VenueName": 'National STEM Learning Centre',
+              "ActivityVenueAddress.VenueCode": '',
+              "ActivityVenueAddress.City": 'York',
+              "ActivityVenueAddress.PostCode": 'YO10 5DD',
+              "ActivityVenueAddress.Address.Line1": 'University of York',
+              "Activity.StartDate": "10\/07\/2019 00:00:00",
+              "Activity.EndDate": "17\/07\/2019 00:00:00"
+            }.to_json, object_class: OpenStruct)))
+          allow(view).to receive(:user_achievement_state).and_return(:complete)
+          allow(view).to receive(:course_start_date).and_return('15th January 2099, Thursday 00:00')
+
+          render
+        end
+
+        it 'displays the date of the occurance' do
+          expect(rendered).to have_text('15th January 2099, Thursday 00:00')
+        end
+
+        it 'displays course type' do
+          expect(rendered).to have_text('Live remote training course')
+        end
+
+        it 'does not displays the address' do
+          expect(rendered).to have_no_text('National STEM Learning Centre, University of York, York, YO10 5DD')
+        end
+
+
+        it 'display a booking path' do
+          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
       end
     end
 
-    it "shows the 'View Course' button if there are no occurrences" do
+
+
+    it "shows the 'Dates coming soon' button if there are no occurrences" do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
       assign(:course, course)
@@ -202,8 +431,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       render
 
       expect(rendered).to have_link(
-        'View course',
-        href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{course.course_template_no}"
+        'Find your local Hub',
+        href: "/hubs"
       )
     end
   end
@@ -212,14 +441,24 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     context 'when its an online course' do
       before do
         assign(:course, course)
+        assign(:occurrences, occurrences)
         assign(:booking, online_booking_presenter)
+        allow_any_instance_of(OnlineBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
         render
       end
 
+      it 'has the expected title' do
+        expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+      end
+
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to join this course', href: expected_link)
+        expect(rendered).to have_link('Login to join', href: expected_link)
+      end
+
+      it 'renders the facilitation period list with the expected occurrence count' do
+        expect(rendered).to have_css('.facilitation-periods .facilitation-periods__list-item', count: 3)
       end
 
       it 'renders an account creation link' do
@@ -228,17 +467,24 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     end
 
     context 'when its a stem course' do
-      before do
+
+      it "shows the 'Dates coming soon' button if there are no occurrences" do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
         assign(:course, course)
         assign(:booking, stem_booking_presenter)
+        assign(:occurrences, [])
+        assign(:activity, activity)
+        allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
         render
+
+        expect(rendered).to have_link(
+          'Find your local Hub',
+          href: "/hubs"
+        )
       end
 
-      it 'renders link to log in' do
-        expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
-        expect(rendered).to have_link('Login to book this course', href: expected_link)
-      end
     end
   end
 end

@@ -3,11 +3,12 @@ class CertificatePendingTransitionJob < ApplicationJob
 
   def perform(programme, user_id, meta)
     user = find_user(user_id)
-    return unless programme
-    return unless programme.user_meets_completion_requirement?(user)
+    return unless programme&.user_meets_completion_requirement?(user)
 
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
-    return if enrolment.current_state == :complete.to_s
+
+    return unless enrolment.present?
+    return if enrolment&.current_state == :complete.to_s
 
     enrolment.transition_to(:pending, meta)
     ScheduleCertificateCompletionJob.set(wait: 7.days).perform_later(enrolment)

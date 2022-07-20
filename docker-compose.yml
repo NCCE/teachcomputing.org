@@ -9,7 +9,7 @@ services:
           - curriculum.teachcomputing.rpfdev.com
 
   db:
-    image: postgres
+    image: postgres:13
     volumes:
       - pg-data:/var/lib/postgresql/data
     ports:
@@ -33,8 +33,6 @@ services:
     command: bundle exec sidekiq
     depends_on:
       - redis
-    environment:
-      - REDIS_URL=redis://redis:6379/1
     env_file:
       - .env
 
@@ -76,6 +74,6 @@ services:
       - WEBPACKER_DEV_SERVER_HOST=webpack
 
 volumes:
-  bundle:
-  pg-data:
-  node_modules:
+  bundle: null
+  pg-data: null
+  node_modules: null

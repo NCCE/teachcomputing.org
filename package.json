@@ -11,6 +11,7 @@
     "@rails/activestorage": "^6.1.3",
     "@rails/ujs": "^6.1.3",
     "@rails/webpacker": "^5.4.3",
+    "ansi-html-community": "0.0.8",
     "channels": "^0.0.4",
     "cookieconsent": "^3.1.0",
     "core-js": "^3.12.0",
@@ -56,10 +57,11 @@
     "exec": "docker compose run --rm --no-deps web bundle exec",
     "bundle-install": "yarn run bundle install && docker compose restart web && yarn start",
     "bundle-update": "yarn run bundle update && docker compose restart web && yarn start",
-    "console": "yarn run exec rails c",
+    "console": "yarn run web rails c",
     "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
-    "test-debug": "yarn run exec rdebug-ide --h 0.0.0.0 --p 1235 -- ./bin/rspec"
+    "test-debug": "docker-compose exec web rdebug-ide --host 0.0.0.0 --port 1235 ./bin/rspec",
+    "guard": "yarn run bundle exec guard"
   },
   "lint-staged": {
     "*.js": [
@@ -71,5 +73,8 @@
       "git add"
     ]
   },
-  "pre-commit": "lint:staged"
+  "pre-commit": "lint:staged",
+  "resolutions": {
+    "ansi-html": "https://registry.yarnpkg.com/ansi-html-community/-/ansi-html-community-0.0.8.tgz#69fbc4d6ccbe383f9736934ae34c3f8290f1bf41"
+  }
 }

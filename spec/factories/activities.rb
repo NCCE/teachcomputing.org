@@ -3,11 +3,11 @@ FactoryBot.define do
     sequence(:title, 100) { |n| "activity#{n}" }
     sequence(:credit, 100) { |n| n }
     sequence(:slug, 100) { |n| "activity-#{n}" }
-    sequence(:future_learn_course_uuid, 100) { |n| "future_learn_course_uuid-#{n}" }
-    sequence(:stem_course_template_no, 100) { |n| "stem_course_template_no-#{n}" }
+    sequence(:future_learn_course_uuid) { SecureRandom.uuid }
+    sequence(:stem_course_template_no) { SecureRandom.uuid }
     category { 'face-to-face' }
     provider { 'stem-learning' }
-    sequence(:stem_activity_code, 100) { |n| "C#{n}" }
+    sequence(:stem_activity_code) { |n| "CP#{n}" }
     always_on { false }
   end
 
@@ -23,6 +23,13 @@ FactoryBot.define do
     title { 'STEM' }
     provider { 'stem-learning' }
     category { 'face-to-face' }
+  end
+
+  trait :remote do
+    title { 'STEM' }
+    provider { 'stem-learning' }
+    category { 'face-to-face' }
+    remote_delivered_cpd { true }
   end
 
   trait :future_learn do
@@ -76,6 +83,17 @@ FactoryBot.define do
     provider { 'cas' }
     description { 'this is a 20 credit community activity' }
     credit { 20 }
+  end
+
+  trait :community_bookable do
+    title { 'Community Activity' }
+    slug { 'community-activity' }
+    category { 'community' }
+    provider { 'cas' }
+    description { 'this is a community activity' }
+    credit { 10 }
+    self_verification_info { 'Please provide a link to your contribution' }
+    booking_programme_slug { 'cs-accelerator' }
   end
 
   trait :online do

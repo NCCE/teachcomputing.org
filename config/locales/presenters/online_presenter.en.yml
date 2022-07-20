@@ -1,0 +1,5 @@
+en:
+  presenters:
+    online_presenter:
+      prompt_text:
+        html: "Complete <strong>at least one</strong> online course"

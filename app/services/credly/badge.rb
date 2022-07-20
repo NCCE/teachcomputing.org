@@ -30,7 +30,7 @@ module Credly
 
     def self.by_programme_badge_template_ids(user_id, template_ids)
       issued = Credly::Badge.issued(user_id)
-      badges = issued.keep_if { |issued| template_ids.include?(issued[:badge_template][:id]) }
+      badges = issued.keep_if { |badge| template_ids.include?(badge[:badge_template][:id]) }
       return unless badges.any?
 
       badges.last

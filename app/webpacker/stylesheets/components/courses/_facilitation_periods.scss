@@ -1,9 +1,8 @@
 .facilitation-periods {
   border-top: 1px solid #CCCCCC;
-  border-bottom: 1px solid #CCCCCC;
 }
 
 .facilitation-periods__list,
-.facilitation-periods__list-item {
+.facilitation-periods__list-item:last-child {
   margin-bottom: 0;
 }

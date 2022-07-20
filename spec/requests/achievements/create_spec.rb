@@ -4,6 +4,7 @@ RSpec.describe AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :stem_learning) }
   let(:referrer) { 'https://testing123.com' }
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
   let(:programme) { create(:primary_certificate) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
@@ -33,7 +34,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'creates the Achievement' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
+        expect(user.achievements.where(activity_id: activity.id).exists?).to be true
       end
 
       it 'creates an achievement with the correct complete state' do
@@ -54,8 +55,8 @@ RSpec.describe AchievementsController do
         expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
       end
 
-      it 'queues CertificatePendingTransitionJob' do
-        expect(CertificatePendingTransitionJob).to have_been_enqueued
+      it 'does not transition to pending' do
+        expect(user_programme_enrolment.current_state).to eq 'enrolled'
       end
     end
 
@@ -77,11 +78,11 @@ RSpec.describe AchievementsController do
       end
 
       it 'does not create an Achievement' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+        expect(user.achievements.where(activity_id: activity.id).exists?).to be false
       end
 
       it 'shows a flash error' do
-        expect(flash[:error]).to match(/something went wrong adding/)
+        expect(flash[:error]).to match(/Activity must exist/)
       end
     end
 
@@ -102,7 +103,7 @@ RSpec.describe AchievementsController do
       end
 
       it 'does not create an Achievement' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+        expect(user.achievements.where(activity_id: activity.id).exists?).to be false
       end
 
       it 'shows a flash error' do
@@ -151,12 +152,12 @@ RSpec.describe AchievementsController do
         end
 
         it 'uploads the attachment to the achievement' do
-          expect(user.achievements.where(activity_id: activity.id).first.supporting_evidence.attached?).to eq true
+          expect(user.achievements.where(activity_id: activity.id).first.supporting_evidence.attached?).to be true
         end
 
         it 'sets supporting_evidence metadata' do
           transition = user.achievements.where(activity_id: activity.id).first.last_transition
-          expect(transition.metadata['self_verification_info']).not_to be(nil)
+          expect(transition.metadata['self_verification_info']).not_to be_nil
         end
       end
 
@@ -174,11 +175,11 @@ RSpec.describe AchievementsController do
         end
 
         it 'does not create the achievement' do
-          expect(user.achievements.where(activity_id: activity.id).exists?).to eq false
+          expect(user.achievements.where(activity_id: activity.id).exists?).to be false
         end
 
         it 'renders a flash error' do
-          expect(flash[:error]).to match(/something went wrong adding/)
+          expect(flash[:error]).to match(/Supporting evidence is not a valid file format/)
         end
       end
     end

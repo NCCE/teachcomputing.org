@@ -6,7 +6,7 @@ secondary_certificate = Programme.secondary_certificate
 
 a = Activity.find_or_create_by(stem_course_template_no: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'algorithms-in-gcse-computer-science'
   activity.stem_course_template_no = 'a6b10502-6788-4ebc-b465-41eafb1e2a18'
   activity.category = 'face-to-face'
@@ -17,7 +17,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '7159562d-4b1a-44f3-b4d7-3e677b9898f2') do |activity|
   activity.title = 'Data and computer systems in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'data-and-computer-systems-in-gcse-computer-science'
   activity.stem_course_template_no = '7159562d-4b1a-44f3-b4d7-3e677b9898f2'
   activity.category = 'face-to-face'
@@ -48,7 +48,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '0650b45c-e4b3-4c8b-bd90-7a1428fe2986') do |activity|
   activity.title = 'Networks and Cyber Security in GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'networks-and-cyber-security-in-gcse-computer-science'
   activity.stem_course_template_no = '0650b45c-e4b3-4c8b-bd90-7a1428fe2986'
   activity.category = 'face-to-face'
@@ -64,6 +64,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '488bed9b-515b-4295-a488
   activity.stem_course_template_no = '488bed9b-515b-4295-a488-62b5bb6bf852'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP001'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -75,6 +76,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '16aeecbd-d202-4f42-bad3
   activity.stem_course_template_no = '16aeecbd-d202-4f42-bad3-f86c8f671547'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP002'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
@@ -86,13 +88,14 @@ a = Activity.find_or_create_by(stem_course_template_no: '68f5b6c5-556d-4b66-8159
   activity.stem_course_template_no = '68f5b6c5-556d-4b66-8159-7cd6019da6f3'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP003'
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') do |activity|
   activity.title = 'Python programming essentials for GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'python-programming-essentials-for-gcse-computer-science'
   activity.stem_course_template_no = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
   activity.category = 'face-to-face'
@@ -157,7 +160,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: '87bf64c2-6517-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Introduction to GCSE computer science'
-  activity.credit = 20
+  activity.credit = 10
   activity.slug = 'introduction-to-gcse-computer-science'
   activity.stem_course_template_no = '87bf64c2-6517-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
@@ -1357,8 +1360,9 @@ Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP262'
-  activity.remote_delivered_cpd = true
 end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '576c1f0b-8610-ec11-b6e6-000d3a0cc552') do |activity|
   activity.title = 'KS3 computing (module 3): Creative curriculum enrichment and inclusion (remote)'
@@ -1455,7 +1459,7 @@ end
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e2683e1b-1330-ec11-b6e6-000d3a871225') do |activity|
   activity.title = 'Programming with Python – residential'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'programming-with-python-residential'
   activity.stem_course_template_no = 'e2683e1b-1330-ec11-b6e6-000d3a871225'
   activity.category = 'face-to-face'
@@ -1489,3 +1493,358 @@ a = Activity.find_or_create_by(stem_course_template_no: 'eb7c08ea-212a-4d27-8bde
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0') do |activity|
+  activity.title = 'Behaviour for learning in a computing environment'
+  activity.credit = 10
+  activity.slug = 'behaviour-for-learning-in-a-computing-environment'
+  activity.stem_course_template_no = '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP468'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000d3a0d0cfb') do |activity|
+  activity.title = 'Teach Computing Conference'
+  activity.credit = 10
+  activity.slug = 'teach-computing-conference'
+  activity.stem_course_template_no = '01d0037f-b859-ec11-8f8f-000d3a0d0cfb'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP310'
+  activity.remote_delivered_cpd = false
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science - residential'
+  activity.credit = 40
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
+  activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP284'
+  activity.remote_delivered_cpd = false
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Online safety through primary computing'
+  activity.credit = 10
+  activity.slug = 'online-safety-through-primary-computing'
+  activity.stem_course_template_no = '6bad2c17-d85c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP469'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Data-driven IT projects in secondary computing'
+  activity.credit = 10
+  activity.slug = 'data-driven-it-projects-in-secondary-computing'
+  activity.stem_course_template_no = 'ab685d74-ec5c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP485'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e714988b-b55d-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Preparing to take the CSA test - short course'
+  activity.credit = 10
+  activity.slug = 'preparing-to-take-the-csa-test'
+  activity.stem_course_template_no = 'e714988b-b55d-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP350'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '890f2dfd-b85d-ec11-8f8f-0022481b0af9') do |activity|
+  activity.title = 'Getting started with Python programming - short course'
+  activity.credit = 10
+  activity.slug = 'getting-started-with-python-programming'
+  activity.stem_course_template_no = '890f2dfd-b85d-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP351'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '87c4cf4b-3c5f-ec11-8f8f-0022481b0426') do |activity|
+  activity.title = 'Preparing for Ofsted in primary computing - short course'
+  activity.credit = 10
+  activity.slug = 'preparing-for-ofsted-in-primary-computing'
+  activity.stem_course_template_no = '87c4cf4b-3c5f-ec11-8f8f-0022481b0426'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP486'
+  activity.remote_delivered_cpd = true
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '8dc126b0-6569-ec11-8943-000d3a8700352') do |activity|
+  activity.title = 'Assessment and progression in KS3 computing - Blended'
+  activity.credit = 10
+  activity.slug = 'assessment-and-progression-in-ks3-computing-blended'
+  activity.stem_course_template_no = '8dc126b0-6569-ec11-8943-000d3a8700352'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP213'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c53a5ed2-3c6e-ec11-8943-000d3a874094') do |activity|
+  activity.title = 'Supporting GCSE computer science students at grades 1 to 3'
+  activity.credit = 10
+  activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-to-3'
+  activity.stem_course_template_no = 'c53a5ed2-3c6e-ec11-8943-000d3a874094'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP478'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943-000d3a8740da') do |activity|
+  activity.title = 'Introduction to Isaac GCSE computer science - short course'
+  activity.credit = 10
+  activity.slug = 'introduction-to-isaac-gcse-computer-science'
+  activity.stem_course_template_no = 'da297734-046f-ec11-8943-000d3a8740da'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP352'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '695862e6-6578-ec11-8d21-000d3a0cb2ab') do |activity|
+  activity.title = 'New to computing pathway - Face to face'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-pathway-face-to-face'
+  activity.stem_course_template_no = '695862e6-6578-ec11-8d21-000d3a0cb2ab'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP279'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'bd1a110a-6778-ec11-8d21-000d3a0cb2ab') do |activity|
+  activity.title = 'New to computing pathway - Remote'
+  activity.credit = 10
+  activity.slug = 'new-to-computing-pathway-remote'
+  activity.stem_course_template_no = 'bd1a110a-6778-ec11-8d21-000d3a0cb2ab'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP479'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '4245beee-d584-ec11-8d21-0022481b4bf9') do |activity|
+  activity.title = 'Foundation knowledge of computer science for KS3 and GCSE (face to face)'
+  activity.credit = 10
+  activity.slug = 'foundation-knowledge-of-computer-science-for-ks3-and-gcse-face-to-face'
+  activity.stem_course_template_no = '4245beee-d584-ec11-8d21-0022481b4bf9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP226'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e719d34b-03a4-ea11-a812-000d3a86f6ce') do |activity|
+  activity.title = 'Beginners summer school for early-career secondary computing teachers - face to face'
+  activity.credit = 40
+  activity.slug = 'beginners-summer-school-for-early-career-secondary-computing-teachers-face-to-face'
+  activity.stem_course_template_no = 'e719d34b-03a4-ea11-a812-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP245'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'c698f5dd-33c1-ea11-a812-000d3a86f6ce') do |activity|
+  activity.title = 'Summer school for computer-specialist trainee teachers'
+  activity.credit = 40
+  activity.slug = 'summer-school-for-computer-specialist-trainee-teachers'
+  activity.stem_course_template_no = 'c698f5dd-33c1-ea11-a812-000d3a86f6ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP246'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'd464a4fe-2193-ec11-b400-0022481acff4') do |activity|
+  activity.title = 'New to computing - intensive CPD'
+  activity.credit = 40
+  activity.slug = 'new-to-computing-intensive-cpd'
+  activity.stem_course_template_no = 'd464a4fe-2193-ec11-b400-0022481acff4'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP285'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '3cde8ee2-2493-ec11-b400-0022481acff4') do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science - intensive CPD'
+  activity.credit = 40
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-intensive-cpd'
+  activity.stem_course_template_no = '3cde8ee2-2493-ec11-b400-0022481acff4'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP288'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '7ab41d8f-c093-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Preparing to teach GCSE computer science - intensive CPD'
+  activity.credit = 40
+  activity.slug = 'preparing-to-teach-gcse-computer-science-intensive-cpd'
+  activity.stem_course_template_no = '7ab41d8f-c093-ec11-b400-0022481ac687'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP286'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'a1d05263-fb92-ec11-b400-0022481acfa6') do |activity|
+  activity.title = 'Programming with Python - intensive CPD'
+  activity.credit = 40
+  activity.slug = 'programming-with-python-intensive-cpd'
+  activity.stem_course_template_no = 'a1d05263-fb92-ec11-b400-0022481acfa6'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP287'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'aab9499f-e993-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration for the OCR GCSE specification'
+  activity.credit = 10
+  activity.slug = 'python-programming-constructs-sequencing-selection-and-iteration-for-the-ocr-gcse-specification'
+  activity.stem_course_template_no = 'aab9499f-e993-ec11-b400-0022481ac687'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423A'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '922e1a75-d493-ec11-b400-0022481ac687') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration for the AQA GCSE specification'
+  activity.credit = 10
+  activity.slug = 'python-programming-constructs-sequencing-selection-and-iteration-for-the-aqa-gcse-specification'
+  activity.stem_course_template_no = '922e1a75-d493-ec11-b400-0022481ac687'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423B'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '2c337ed1-bb94-ec11-b400-0022481af1b2') do |activity|
+  activity.title = 'Python programming constructs: sequencing, selection & iteration for Pearson specification'
+  activity.credit = 10
+  activity.slug = 'python-programming-constructs-sequencing-selection-iteration-for-pearson-specification'
+  activity.stem_course_template_no = '2c337ed1-bb94-ec11-b400-0022481af1b2'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP423C'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+Activity.find_or_create_by(stem_course_template_no: '0e132344-139a-ec11-b400-000d3a0cb821') do |activity|
+  activity.title = 'CSA Celebration events 2022'
+  activity.credit = 10
+  activity.slug = 'csa-celebration-events-2022'
+  activity.stem_course_template_no = '0e132344-139a-ec11-b400-000d3a0cb821'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP334'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '2f2379c9-2e9a-ec11-b400-000d3a0cb821') do |activity|
+  activity.title = 'Preparing to teach GCSE computer science - residential'
+  activity.credit = 40
+  activity.slug = 'preparing-to-teach-gcse-computer-science-residential'
+  activity.stem_course_template_no = '2f2379c9-2e9a-ec11-b400-000d3a0cb821'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP289'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '53842003-ca9e-ec11-b400-0022481b0068') do |activity|
+  activity.title = 'Foundation knowledge of KS3/4 computer science: for non-specialists and supply teachers'
+  activity.credit = 40
+  activity.slug = 'foundation-knowledge-of-ks34-computer-science-for-nonspecialists-and-supply-teachers'
+  activity.stem_course_template_no = '53842003-ca9e-ec11-b400-0022481b0068'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP290'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'da3c3300-cc9e-ec11-b400-0022481b0068') do |activity|
+  activity.title = 'Computing for specialist teachers of autistic students'
+  activity.credit = 20
+  activity.slug = 'computing-for-specialist-teachers-of-autistic-students'
+  activity.stem_course_template_no = 'da3c3300-cc9e-ec11-b400-0022481b0068'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP291'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee') do |activity|
+  activity.title = 'Introduction to the micro:bit in key stage 2 - short course'
+  activity.credit = 10
+  activity.slug = 'introduction-to-the-micro-bit-in-key-stage-2'
+  activity.stem_course_template_no = '5178b539-29b0-ec11-983f-0022480078ee'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP292'
+end
+
+a = Activity.find_or_create_by(stem_course_template_no: '726ece56-27b0-ec11-983f-002248006a24') do |activity|
+  activity.title = 'Implementing the Teach Computing Curriculum in your school'
+  activity.credit = 20
+  activity.slug = 'implementing-the-teach-computing-curriculum-in-your-school'
+  activity.stem_course_template_no = '726ece56-27b0-ec11-983f-002248006a24'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP255'
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '5be69f65-60c1-ec11-983e-0022481b16a0') do |activity|
+  activity.title = 'Preparing for Ofsted in secondary computing'
+  activity.credit = 10
+  activity.slug = 'preparing-for-ofsted-in-secondary-computing'
+  activity.stem_course_template_no = '5be69f65-60c1-ec11-983e-0022481b16a0'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP444'
+  activity.remote_delivered_cpd = true
+end

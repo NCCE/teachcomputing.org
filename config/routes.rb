@@ -40,11 +40,10 @@ Rails.application.routes.draw do
     resource 'primary_certificate', controller: 'primary_certificate', path: 'primary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
-      get '/questionnaire/:id', to: '/diagnostics/primary_certificate#show', as: :diagnostic
-      put '/questionnaire/:id', to: '/diagnostics/primary_certificate#update', as: :update_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'primary-certificate' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      put '/pathway', action: :update, controller: 'primary_certificate/user_programme_pathway', as: :update_user_pathway
     end
 
     resource 'secondary_certificate', controller: 'secondary_certificate', path: 'secondary-certificate',
@@ -84,6 +83,7 @@ Rails.application.routes.draw do
 
   resource :feedback, only: %i[create]
   resources :hubs, only: %i[index]
+  resources :downloads, only: %i[create]
 
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'
@@ -135,6 +135,8 @@ Rails.application.routes.draw do
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
   get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
                                    defaults: { page_slug: 'a-level-computer-science' }
+  get '/gcse-revision', to: 'pages#page', as: 'gcse-revision',
+                        defaults: { page_slug: 'gcse-revision' }
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }

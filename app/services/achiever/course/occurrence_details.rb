@@ -18,10 +18,10 @@ class Achiever::Course::OccurrenceDetails
 
   def self.find(id)
     query_strings = {
-      'Page': '1',
-      'RecordCount': '1000',
-      'ProgrammeName': PROGRAMME_NAME,
-      'ID': id
+      Page: '1',
+      RecordCount: '1000',
+      ProgrammeName: PROGRAMME_NAME,
+      ID: id
     }
     occurrence_details = Achiever::Request.resource(RESOURCE_PATH, query_strings)
     Achiever::Course::OccurrenceDetails.new(occurrence_details.first)

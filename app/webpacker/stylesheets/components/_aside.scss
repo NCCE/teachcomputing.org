@@ -11,6 +11,10 @@ $aside-padding: 1rem;
   &__text--s {
     font-size: 1.0625rem;
   }
+
+  &--tapestry-color {
+    border-top-color: $tapestry;
+  }
 }
 
 .ncce-aside--borderless {
@@ -28,4 +32,21 @@ $aside-padding: 1rem;
 
 .ncce-pathway-aside__select {
   margin-bottom: 1.5rem;
+}
+
+.ncce-pathway-aside__select--inline {
+  width: auto;
+}
+
+.ncce-pathway-aside__button {
+  padding: 8px 25px;
+
+  @include govuk-media-query($until: desktop) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.ncce-pathway-aside__button--full {
+  width: 100%;
 }

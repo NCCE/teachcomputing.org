@@ -5,12 +5,36 @@ class StemBookingPresenter
     'Book this course'
   end
 
+  def authenticated_title
+    title
+  end
+
+  def no_occurrences_title
+    'Dates coming soon'
+  end
+
+  def no_occurrences_introduction
+    'Contact your local Computing hub for more information'
+  end
+
   def introduction
-    'You will be taken to the STEM Learning website to see further details and book.'
+    'You will be taken to the STEM Learning website to see further details.'
   end
 
   def booking_button_title
     'Book'
+  end
+
+  def enrolled_title
+    'You’re booked on this course'
+  end
+
+  def completed_title
+    'You’ve completed this course'
+  end
+
+  def unauthenticated_booking_button_title
+    "Login to #{title.downcase}"
   end
 
   def activity_date(start_date)

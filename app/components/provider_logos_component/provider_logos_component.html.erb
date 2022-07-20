@@ -1,0 +1,8 @@
+<%= content_tag :div, class: ['govuk-body', 'govuk-!-margin-bottom-0', 'provider-logos-component', { "provider-logos-component--dashboard": @dashboard }, { "#{@class_name}": @class_name.present? }] do %>
+  <div class='govuk-body-s provider-logos-component__copy'><%= t(".#{@org_prefix}_provider_text") %></div>
+  <div class='govuk-body-s provider-logos-component__logo-wrapper'>
+    <% @logos.each do | logo | %>
+      <div class='provider-logos-component__logo'><%= image_pack_tag "media/images/logos/#{logo[:filename]}", alt: logo[:alt] %></div>
+    <% end %>
+  </div>
+<% end %>

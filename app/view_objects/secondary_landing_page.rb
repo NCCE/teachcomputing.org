@@ -79,7 +79,7 @@ class SecondaryLandingPage
   def testimonials
     [
       {
-        text: '“We’re teaching kids to use technologies that don’t exist yet for problems that they don’t know. It’s going to be a completely different world when they leave school.”',
+        text: '"We\'re teaching kids to use technologies that don\'t exist yet for problems that they don\'t know. It\'s going to be a completely different world when they leave school."',
         image: 'media/images/pages/careers-week/helen_brant.jpg',
         name: 'Helen Brant',
         link_target: 'https://blog.teachcomputing.org/music-computing',
@@ -87,7 +87,7 @@ class SecondaryLandingPage
         tracking_event: 'Testimonial 1'
       },
       {
-        text: '“As a result of the programme, I am now a computer science teacher! The programme has given me the confidence to realise the skills that I have.”',
+        text: '"As a result of the programme, I am now a computer science teacher! The programme has given me the confidence to realise the skills that I have."',
         image: 'media/images/landing-pages/nigel.png',
         name: 'Nigel Ferry',
         link_target: 'https://blog.teachcomputing.org/from-design-to-digital-technology/',
@@ -95,7 +95,7 @@ class SecondaryLandingPage
         tracking_event: 'Testimonial 2'
       },
       {
-        text: '“Completing the Computer Science Accelerator has honestly changed my career. It has given me the confidence to do so many new things.”',
+        text: '"Completing the Computer Science Accelerator has honestly changed my career. It has given me the confidence to do so many new things."',
         image: 'media/images/landing-pages/annie.png',
         name: 'Annie Cuffe Davies',
         link_target: 'https://blog.teachcomputing.org/how-cpd-changed-my-career/',
@@ -113,34 +113,34 @@ class SecondaryLandingPage
     [
       {
         image: 'media/images/landing-pages/stem_course.png',
-        image_title: 'STEM course',
-        title: 'Maths in computer science',
-        url: '/courses/CP434/maths-in-computer-science-remote',
-        description: 'Maths is firmly embedded at the core of computer science. During this course you’ll explore the foundational topics at the heart of mathematics and computer science.',
+        image_title: 'Python programming constructs: sequencing, selection & iteration for OCR specification',
+        title: 'Python programming constructs: sequencing, selection & iteration for OCR specification',
+        url: '/courses/CP423A/python-programming-constructs-sequencing-selection-iteration-for-ocr-specification',
+        description: "Learn how to write code to input, process and output data, and how to manipulate data stored in variables. Also available for <a href='/courses/CP423B/python-programming-constructs-sequencing-selection-iteration-for-aqa-specification'>AQA</a> and <a href='/courses/CP423C/python-programming-constructs-sequencing-selection-iteration-for-pearson-specification'>Pearson</a> specifications.",
         icon_class: 'icon-remote',
         type: 'Live remote training',
-        duration: 'days vary',
-        time_commitment: '5 hours',
+        duration: 'Days vary',
+        time_commitment: '6 hours',
         event_label: 'Course 1'
       },
       {
         image: 'media/images/landing-pages/lp-sec-crs-2.png',
-        image_title: 'New subject leaders of secondary computing course',
-        title: 'New subject leaders of secondary computing',
+        image_title: 'Supporting GCSE computer science students at grades 1 to 3',
+        title: 'Supporting GCSE computer science students at grades 1 to 3',
         url: '/courses/CP411/new-subject-leaders-of-secondary-computing-remote',
-        description: 'Develop the leadership skills and management practices to confidently coordinate an effective computing department.',
+        description: 'This evidence-based CPD explores how to improve attainment in Computer Science for students working towards grades 1 to 3.',
         icon_class: 'icon-remote',
         type: 'Live remote training',
-        duration: '2 days',
-        time_commitment: '9.5 hours',
+        duration: 'Days vary',
+        time_commitment: '6 hours',
         event_label: 'Course 2'
       },
       {
-        image: 'media/images/landing-pages/encryption_and_cryptography_course.png',
-        image_title: 'Introduction to Encryption and Cryptography course',
-        title: 'Introduction to Encryption and Cryptography',
-        url: '/courses/CO220/introduction-to-encryption-and-cryptography',
-        description: "Discover the history of encryption and learn how it's used in the modern world.",
+        image: 'media/images/landing-pages/studying.png',
+        image_title: 'Understanding Maths and Logic in Computer Science',
+        title: 'Understanding Maths and Logic in Computer Science',
+        url: '/courses/CO213/understanding-maths-and-logic-in-computer-science',
+        description: 'Improve your understanding and ability to teach maths and logic in computing while building elements of an escape room.',
         icon_class: 'icon-online',
         type: 'Online course',
         time_commitment: 'Approximately 8 hours of self-study',

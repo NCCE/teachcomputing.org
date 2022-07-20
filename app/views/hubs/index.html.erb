@@ -26,18 +26,20 @@
             url: 'https://static.teachcomputing.org/Guide-for-physical-computing-kits.pdf',
             tracking_label: 'Hubs kit'
           },
-          tracking_category: 'Hubs'
+          tracking_category: tracking_category
         ) %>
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render AsideComponent.new(
           title: t('.sme_section_title'),
-          text: t('.sme_section_text').html_safe,
-          link_text: t('.sme_section_link_text'),
-          link_url: 'https://forms.gle/adouhmFe9QvaTeBPA',
-          tracking_category: 'Hubs',
-          tracking_label: 'SME contact')
-        %>
+          text: t('.sme_section_text_html'),
+          link: {
+            text: t('.sme_section_link_text'),
+            url: 'https://forms.gle/adouhmFe9QvaTeBPA',
+            tracking_label: 'SME contact'
+          },
+          tracking_category: tracking_category
+        ) %>
       </div>
     </div>
   </div>

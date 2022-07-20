@@ -7,10 +7,12 @@
   background-image: url('../images/icons/tick-self.svg');
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
-  background-size: 1rem;
+  background-size: 0.8rem;
   display: none;
   float: right;
   padding-right: 1.7rem;
+  padding-left: 0.5rem;
+  white-space: nowrap;
 
   &[aria-expanded="true"] {
     background-color: $grey-dark-x;
@@ -88,12 +90,13 @@
 
 .ihavedonethis--progressive {
   position: relative;
+  margin-left: 0;
 
   .ihavedonethis__popup {
     margin-top: 1.875rem;
     position: absolute;
     right: 0;
-    width: calc(100% - 2rem);
+    width: 100%;
     z-index: 1;
 
     &[hidden] {
@@ -111,11 +114,15 @@
 
   .ihavedonethis__button {
     display: inline-block;
-    width: calc(100% - 2rem);
-    margin-left: 2rem;
+    margin-left: 0;
+
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 0.5rem;
+    }
+
     @include govuk-media-query($from: tablet) {
-      width: auto;
-      margin-left: 0;
+      width: calc(100% - 1rem);
+      margin-left: 1rem;
     }
   }
 }

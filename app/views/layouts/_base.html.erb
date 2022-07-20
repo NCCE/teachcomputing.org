@@ -64,7 +64,7 @@
   <% end %>
 
   <%= render 'components/header' %>
-  <%= render 'components/notice' %>
+  <%= render 'components/notice' if request.path == '/bursary' %>
   <%= yield :content %>
 
   <%= render 'components/footer' %>

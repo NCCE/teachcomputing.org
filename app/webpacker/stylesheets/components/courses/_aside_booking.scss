@@ -7,6 +7,13 @@
   }
 }
 
+.ncce-booking-details {
+  &:first-child {
+    border-top: 1px solid #CCCCCC;
+    padding-top: 1rem;
+  }
+}
+
 .ncce-booking-list__date {
   font-weight: bold;
   margin-bottom: 0.25rem;
@@ -35,4 +42,14 @@
     display: none;
     visibility: hidden;
   }
+}
+
+.ncce-booking-list__progress {
+  border-top: solid 1px #CCCCCC;
+  padding-top: 1rem;
+}
+
+.ncce-booking-list__stem-and-tc-emblems {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
 }

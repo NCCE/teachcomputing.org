@@ -271,20 +271,6 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(future_learn_course_uuid: '6cd40c14-adbf-4da7-af81-849d0f74a2fe') do |activity|
-  activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
-  activity.credit = 20
-  activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
-  activity.category = 'online'
-  activity.self_certifiable = false
-  activity.stem_course_template_no = '50c5bbf7-8f25-ea11-a810-000d3a86d7a3'
-  activity.future_learn_course_uuid = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
-  activity.provider = 'future-learn'
-  activity.stem_activity_code = 'CO220'
-end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(future_learn_course_uuid: '3574403e-a63f-4230-9f4b-3f5b6cd4ddb7') do |activity|
   activity.title = 'Introduction to Web Development'
   activity.credit = 20
@@ -453,3 +439,32 @@ a = Activity.find_or_create_by(future_learn_course_uuid: 'b2445d09-f3b3-45da-b4e
 end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '56c90f6c-c741-4796-88d1-549c0d625ca7') do |activity|
+  activity.title = 'Introduction to Programming with Scratch'
+  activity.credit = 20
+  activity.slug = 'introduction-to-programming-with-scratch'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = 'f8f2b9d3-5483-ec11-8d21-0022481b4871'
+  activity.future_learn_course_uuid = '56c90f6c-c741-4796-88d1-549c0d625ca7'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO232'
+  activity.always_on = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+a = Activity.find_or_create_by(future_learn_course_uuid: '6cd40c14-adbf-4da7-af81-849d0f74a2fe') do |activity|
+  activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
+  activity.credit = 20
+  activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.stem_course_template_no = '50c5bbf7-8f25-ea11-a810-000d3a86d7a3'
+  activity.future_learn_course_uuid = '6cd40c14-adbf-4da7-af81-849d0f74a2fe'
+  activity.provider = 'future-learn'
+  activity.stem_activity_code = 'CO222'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)

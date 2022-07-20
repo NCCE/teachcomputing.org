@@ -9,9 +9,11 @@ require_relative './seeds/activities/future_learn'
 require_relative './seeds/activities/assessment'
 require_relative './seeds/activities/community'
 
+require_relative './seeds/programme_activity_groupings/primary_certificate'
 require_relative './seeds/programme_activity_groupings/secondary_certificate'
 
 require_relative './seeds/pathways/cs_accelerator'
+require_relative './seeds/pathways/primary_certificate'
 
 Programme.all.each do |p|
   puts "\nProgramme: #{p.title} activities:\n\n"

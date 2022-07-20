@@ -1,7 +1,7 @@
-<div class="aside-component">
+<div class="aside-component<%= " #{@class_name || ''}" %>">
   <% if @image.present? %>
     <div class="aside-component__image">
-      <%= link_to image_pack_tag(@image[:file], alt: @link_text, title: @image[:title]),
+      <%= link_to image_pack_tag(@image[:file], alt: @image[:alt], title: @image[:title]),
         @image[:url],
         class: 'ncce-link ncce-link--contrast',
         role: 'button',
@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <% if @title.present? %>
-    <h2 class="govuk-heading-s aside-component__heading">
+    <h2 class="<%= @use_button? 'govuk-heading-m' : 'govuk-heading-s' %> aside-component__heading">
       <%= @title %>
     </h2>
   <% end %>
@@ -22,7 +22,7 @@
   <p class="govuk-body-s aside-component__link">
     <%= link_to @link[:text],
       @link[:url],
-      class: 'ncce-link ncce-link--contrast',
+      class: @use_button ? 'govuk-button button button--aside' : 'ncce-link ncce-link--contrast',
       role: 'button',
       draggable: 'false',
       data: tracking_data(@link[:tracking_label])

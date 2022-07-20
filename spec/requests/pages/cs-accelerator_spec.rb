@@ -21,7 +21,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/cs-accelerator')
+        expect(response).to render_template('pages/enrolment/cs-accelerator')
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/cs-accelerator')
+        expect(response).to render_template('pages/enrolment/cs-accelerator')
       end
     end
 

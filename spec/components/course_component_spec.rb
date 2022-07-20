@@ -61,6 +61,20 @@ RSpec.describe CourseComponent, type: :component do
     expect(rendered_component).to have_text('Key stage 1')
   end
 
+  context 'when there are no face-to-face or remote occurrences' do
+    before do
+      render_inline(described_class.new(course: course, filter: filter))
+    end
+
+    it 'shows the expected message' do
+      expect(rendered_component).to have_text('Dates coming soon. Contact your local Computing Hub for more information.')
+    end
+
+    it 'shows the expected link' do
+      expect(rendered_component).to have_link('your local Computing Hub', href: '/hubs')
+    end
+  end
+
   context 'when multiple course occurrences are present' do
     let(:occurrences) { build_list(:achiever_course_occurrence, 2) }
     let(:course) { build(:achiever_course_template, occurrences: occurrences) }

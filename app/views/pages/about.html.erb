@@ -1,5 +1,13 @@
 <% meta_tag :title, 'About Us - Teach Computing' %>
-<%= render HeroMediaComponent.new(AboutPage.hero) %>
+<%= render HeroMediaComponent.new(
+  class_name: 'dixie-bg',
+  title: t('.hero.title'),
+  text: t('.hero.text.html'),
+  image: {
+    url: 'media/images/pages/about/ncce_staff.jpg',
+    title: t('.hero.image_title')
+  }
+) %>
 <div class='ncce-about__wrapper'>
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
@@ -16,7 +24,45 @@
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
         <div class="govuk-grid-column-full">
-          <%= render NonBorderedCardsComponent.new(AboutPage.resource_cards) %>
+          <%= render NonBorderedCardsComponent.new(
+            class_name: 'resource-cards',
+            cards_per_row: 3,
+            cards: [
+              {
+                image_url: 'media/images/logos/tc-logo-with-bg.svg',
+                title: t('.tc_card.title'),
+                text: t('.tc_card.text'),
+                link: {
+                  link_title: t('.tc_card.link_title'),
+                  link_url: '/curriculum',
+                  tracking_page: tracking_category,
+                  tracking_label: 'Teaching resources'
+                }
+              },
+              {
+                image_url: 'media/images/logos/isaac-logo-with-bg.svg',
+                title: t('.isaac_card.title'),
+                text: t('.isaac_card.text'),
+                link: {
+                  link_title: t('.isaac_card.link_title'),
+                  link_url: '/a-level-computer-science',
+                  tracking_page: tracking_category,
+                  tracking_label: 'A level resources'
+                }
+              },
+              {
+                image_url: 'media/images/logos/gender-balance-logo-with-bg.svg',
+                title: t('.gender_balance_card.title'),
+                text: t('.gender_balance_card.text'),
+                link: {
+                  link_title: t('.gender_balance_card.link_title'),
+                  link_url: '/gender-balance',
+                  tracking_page: tracking_category,
+                  tracking_label: 'Gender balance'
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
@@ -31,7 +77,24 @@
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-7">
         <div class="govuk-grid-column-full">
-          <%= render ReportCardComponent.new(AboutPage.report_card) %>
+          <%= render ReportCardComponent.new(
+            class_name: 'impact-and-evaluation-report-card',
+            title: t('.report_card.title'),
+            text: t('.report_card.text'),
+            bullets: [
+              t('.report_card.engagements.html'),
+              t('.report_card.enrolments.html'),
+              t('.report_card.downloads.html'),
+              t('.report_card.isaac.html')
+            ],
+            stats_date: t('.report_card.stats_date'),
+            button: {
+              button_title: t('.report_card.button_title'),
+              button_url: '/impact-and-evaluation',
+              tracking_page: tracking_category,
+              tracking_label: 'Impact and evaluation'
+            }
+          ) %>
         </div>
       </div>
       <div class="govuk-grid-row govuk-!-margin-top-8">
@@ -52,16 +115,42 @@
           <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
           <p class='govuk-body govuk-!-margin-bottom-0'>
             <%= t('.programmes.text.html',
-              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Resources' }),
-              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Courses' }),
-              bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: { event_action: 'click', event_category: AboutPage.tracking_page, event_label: 'Bursaries' })
+              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: tracking_data('Resources')),
+              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: tracking_data('Courses')),
+              bursaries_link: (link_to 'bursaries', '/bursary', class: 'ncce-link', data: tracking_data('Bursaries'))
             ) %>
           </p>
         </div>
       </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-!-margin-top-7">
-          <%= render BorderedCardsComponent.new(AboutPage.programme_cards) %>
+          <%= render BorderedCardsComponent.new(
+            class_name: 'programme-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.primary_card.title'),
+                text: t('.primary_card.text'),
+                link: {
+                  link_title: t('.primary_card.link_title'),
+                  link_url: '/primary-teachers',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.primary_card.title')
+                }
+              },
+              {
+                class_name: 'bordered-card--secondary-cert',
+                title: t('.secondary_card.title'),
+                text: t('.secondary_card.text'),
+                link: {
+                  link_title: t('.secondary_card.link_title'),
+                  link_url: '/secondary-teachers',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.secondary_card.title')
+                }
+              }
+            ]
+          ) %>
         </div>
         </div>
     </div>
@@ -76,7 +165,55 @@
       </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-!-margin-top-7">
-          <%= render BorderedCardsComponent.new(AboutPage.support_cards) %>
+          <%= render BorderedCardsComponent.new(
+            class_name: 'support-cards',
+            cards: [
+              {
+                class_name: 'supporting-partners-card',
+                title: t('.supporting_partners_card.title'),
+                text: t('.supporting_partners_card.text'),
+                link: {
+                  link_title: t('.supporting_partners_card.link_title'),
+                  link_url: '/supporting-partners',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.supporting_partners_card.title')
+                }
+              },
+              {
+                class_name: 'involvement-card',
+                title: t('.involvement_card.title'),
+                text: t('.involvement_card.text'),
+                link: {
+                  link_title: t('.involvement_card.link_title'),
+                  link_url: '/get-involved',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.involvement_card.title')
+                }
+              },
+              {
+                class_name: 'contributing-partners-card',
+                title: t('.contributing_partners_card.title'),
+                text: t('.contributing_partners_card.text'),
+                link: {
+                  link_title: t('.contributing_partners_card.link_title'),
+                  link_url: '/contributing-partners',
+                  tracking_page: tracking_category,
+                  tracking_label: t('.contributing_partners_card.title')
+                }
+              },
+              {
+                class_name: 'governors-card',
+                title: t('.governors_card.title'),
+                text: t('.governors_card.text'),
+                link: {
+                  link_title: t('.governors_card.link_title'),
+                  link_url: '/governors-and-trustees/',
+                  tracking_page: tracking_category,
+                  tracking_label: 'Governors'
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>

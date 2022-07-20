@@ -2,7 +2,9 @@
   <% key_stages.each do |key_stage| %>
     <div class="govuk-grid-column-one-quarter cards">
       <div class="<%= ['1', '2'].include?(key_stage.level) ? 'card--orange' : 'card--purple' %> card--resource">
-        <h3 class="govuk-heading-m card--resource__title"><%= link_to key_stage.title, curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), class: 'govuk-link ncce-link', data: tracking_data(key_stage.title) %></h3>
+        <h3 class="govuk-heading-m card--resource__title">
+          <%= link_to key_stage.title, curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), class: 'govuk-link ncce-link', data: tracking_data(key_stage.title) %>
+        </h3>
         <p class="govuk-body-s card--resource__details">
           <span class='card--resource__year'><strong>Year <%= key_stage.years %></strong>,&nbsp;</span>
           <span class='card--resource__age'>Age <%= key_stage.ages %></span>
