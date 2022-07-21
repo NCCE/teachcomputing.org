@@ -9,6 +9,10 @@ module CurriculumClient
         title
         slug
         description
+        redirects {
+          from
+          to
+        }
         isaacUrl
         unitGuide {
           #{file_fields}
