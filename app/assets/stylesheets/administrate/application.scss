@@ -65,4 +65,9 @@
   }
 }
 
+.field-unit--nested-has-many .nested-fields {
+  border: solid 1px #dfe0e1;
+  padding: 1.5em;
+}
+
 @import "flatpickr/dist/flatpickr.min";
