@@ -69,6 +69,8 @@ class HubDashboard < Administrate::BaseDashboard
     website
     twitter
     facebook
+    latitude
+    longitude
   ].freeze
 
   # COLLECTION_FILTERS
