@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :pathway_activities
     resources :hubs
     resources :hub_regions
-    resources :users
+    resources :users, only: %i[index create show]
     resources :user_programme_enrolments, only: %i[index show]
     resources :achievements, only: %i[index show]
     resources :assessment_attempts, only: %i[index show]
