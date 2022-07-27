@@ -5,17 +5,20 @@ module Curriculum
     layout 'full-width'
 
     def show
-      # redirects_params = params[:redirects]
-      # redirects_params.each do |redirect|
-      #   redirect_to redirect.from
-      # end
       @lesson = CurriculumClient::Queries::Lesson.one(params[:lesson_slug], params[:unit_slug]).lesson
-
-      # TODO: Add redirect handling...almost identical to the unit_controller but passing through the unit_slug as well as the lesson slug for uniqueness
 
       raise ActiveRecord::RecordNotFound if @lesson.nil?
 
       @unit = @lesson.unit
+      
+      # TODO: Add redirect handling...almost identical to the unit_controller but passing through the unit_slug as well as the lesson slug for uniqueness
+
+      redirect = CurriculumClient::Queries::Redirect.one(params[:lesson_slug], params[:unit_slug], @lesson.slug)&.redirect
+
+      return unless redirect.present?
+
+      redirect_to curriculum_key_stage_unit_path(lesson_slug: @lesson.slug, unit_slug: redirect[:to]) if params[:unit_slug] == redirect[:from]
+
     end
 
     protected
