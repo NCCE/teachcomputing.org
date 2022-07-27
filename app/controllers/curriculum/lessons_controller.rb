@@ -10,14 +10,14 @@ module Curriculum
       raise ActiveRecord::RecordNotFound if @lesson.nil?
 
       @unit = @lesson.unit
-      
+
       # TODO: Add redirect handling...almost identical to the unit_controller but passing through the unit_slug as well as the lesson slug for uniqueness
 
-      redirect = CurriculumClient::Queries::Redirect.one(params[:lesson_slug], params[:unit_slug], @lesson.slug)&.redirect
+      redirect = CurriculumClient::Queries::Redirect.one(params[:lesson_slug], @unit.year_group.key_stage.slug)&.redirect
 
       return unless redirect.present?
 
-      redirect_to curriculum_key_stage_unit_path(lesson_slug: @lesson.slug, unit_slug: redirect[:to]) if params[:unit_slug] == redirect[:from]
+      redirect_to curriculum_key_stage_unit_lesson_path(key_stage_slug: @unit.year_group.key_stage.slug, unit_slug: @unit.year_group.key_stage.slug, lesson_slug: @lesson.slug) if params[:lesson_slug] == redirect[:from]
 
     end
 
