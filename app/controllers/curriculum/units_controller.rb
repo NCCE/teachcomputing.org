@@ -6,6 +6,7 @@ module Curriculum
 
     def show
       @unit = CurriculumClient::Queries::Unit.one(params[:unit_slug]).unit
+      
       redirect = CurriculumClient::Queries::Redirect.one(params[:unit_slug], @unit.year_group.key_stage.slug)&.redirect
 
       return unless redirect.present?
