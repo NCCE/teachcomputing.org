@@ -42,6 +42,8 @@ module CurriculumClient
           id
           slug
           title
+          order
+          range
         }
       GRAPHQL
 
