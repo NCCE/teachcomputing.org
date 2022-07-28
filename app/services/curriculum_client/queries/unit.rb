@@ -7,6 +7,10 @@ module CurriculumClient
       FIELDS = <<~GRAPHQL.freeze
         id
         title
+        order
+        redirects {
+          from
+        }
         slug
         description
         isaacUrl
@@ -38,6 +42,8 @@ module CurriculumClient
           id
           slug
           title
+          order
+          range
         }
       GRAPHQL
 
