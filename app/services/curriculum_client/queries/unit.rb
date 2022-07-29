@@ -44,6 +44,9 @@ module CurriculumClient
           title
           order
           range
+          redirects {
+            from
+          }
         }
       GRAPHQL
 
