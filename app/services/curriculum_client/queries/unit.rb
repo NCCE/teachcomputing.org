@@ -13,6 +13,7 @@ module CurriculumClient
         isaacUrl
         redirects {
           from
+          to
         }
         unitGuide {
           #{file_fields}
@@ -46,6 +47,7 @@ module CurriculumClient
           range
           redirects {
             from
+            to
           }
         }
       GRAPHQL
