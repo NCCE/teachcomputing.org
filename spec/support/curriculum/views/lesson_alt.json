@@ -5,6 +5,7 @@
       "title": "Kicking rocks",
       "slug": "lesson-1",
       "order": "2",
+      "range": "3",
       "description": "This is a Lesson",
       "isaac_url": "https://www.raspberrypi.com/",
       "zipped_contents": {
