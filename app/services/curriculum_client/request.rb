@@ -20,6 +20,8 @@ module CurriculumClient
         ) do
           fetch_data(query, client, params)
         end
+      rescue Graphlient::Errors::ExecutionError => e
+
       rescue Graphlient::Errors::ServerError => e
         case e.status_code
         when 404
