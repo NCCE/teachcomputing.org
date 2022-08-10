@@ -5,8 +5,8 @@ module CurriculumClient
 
       FIELDS = <<~GRAPHQL.freeze
         from
-        fromContext
         to
+        toContext
       GRAPHQL
 
       def self.all(fields = FIELDS)
