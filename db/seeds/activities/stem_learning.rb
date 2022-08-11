@@ -1848,3 +1848,27 @@ a = Activity.find_or_create_by(stem_course_template_no: '5be69f65-60c1-ec11-983e
   activity.stem_activity_code = 'CP444'
   activity.remote_delivered_cpd = true
 end
+
+a = Activity.find_or_create_by(stem_course_template_no: '54cfbac3-3b13-ed11-b83d-000d3a875742') do |activity|
+  activity.title = 'Understanding algorithms for KS3 and GCSE computer science - residential'
+  activity.credit = 40
+  activity.slug = 'understanding-algorithms-for-ks3-and-gcse-computer-science'
+  activity.stem_course_template_no = '54cfbac3-3b13-ed11-b83d-000d3a875742'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP293'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'eb73651b-3a13-ed11-b83d-000d3a875742') do |activity|
+  activity.title = 'Computer systems and networking for GCSE computer science - residential'
+  activity.credit = 40
+  activity.slug = 'computer-systems-and-networking-for-gcse-computer-science'
+  activity.stem_course_template_no = 'eb73651b-3a13-ed11-b83d-000d3a875742'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP294'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
