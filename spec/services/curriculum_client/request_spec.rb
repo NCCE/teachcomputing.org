@@ -45,6 +45,26 @@ RSpec.describe CurriculumClient::Request do
         .to raise_error(CurriculumClient::Errors::ConnectionError, /Unable to connect to/)
     end
 
+    it 'raises a 404 for an invalid record' do
+      client = CurriculumClient::Connection.connect
+
+      response = JSON.parse(null_error_response_json, object_class: OpenStruct)
+
+      stub_request(:post, url)
+        .to_raise(Graphlient::Errors::ExecutionError.new(response))
+
+      query = <<~GRAPHQL
+        query {
+          keyStage(slug: "nonsense") {
+            id
+          }
+        }
+      GRAPHQL
+
+      expect { described_class.run(query: client.parse(query), client: client) }
+        .to raise_error(ActiveRecord::RecordNotFound)
+    end
+
     it "doesn't block other execution errors" do
       client = CurriculumClient::Connection.connect
 
