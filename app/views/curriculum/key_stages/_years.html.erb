@@ -22,7 +22,11 @@
       <% else %>
         <% year.units.each do |unit| %>
           <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>">
-            <%= link_to unit.title, curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
+            <% if unit.order.present? %>
+              <%= link_to "#{unit.order}. #{unit.title}", curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
+            <% else %>
+              <%= link_to "#{unit.title}", curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
+            <% end %>
           </li>
         <% end %>
       <% end %>

@@ -8,8 +8,13 @@ module CurriculumClient
         id
         title
         slug
+        order
         description
         isaacUrl
+        redirects {
+          from
+          to
+        }
         unitGuide {
           #{file_fields}
         }
@@ -38,6 +43,12 @@ module CurriculumClient
           id
           slug
           title
+          order
+          range
+          redirects {
+            from
+            to
+          }
         }
       GRAPHQL
 

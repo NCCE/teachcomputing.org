@@ -16,6 +16,7 @@ module CurriculumClient
             id
             title
             slug
+            order
           }
         }
         curriculumMaps {

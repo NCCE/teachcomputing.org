@@ -2,12 +2,20 @@ require 'rails_helper'
 
 RSpec.describe('curriculum/lessons/show', type: :view) do
   let(:lesson_json) { File.new('spec/support/curriculum/views/lesson.json').read }
+  let(:lesson_json_alt) { File.new('spec/support/curriculum/views/lesson_alt.json').read }
   let(:unit_json) { File.new('spec/support/curriculum/views/unit.json').read }
   let(:user) { create(:user) }
   let(:setup_view) do
     json = JSON.parse(unit_json, object_class: OpenStruct).data
     assign(:unit, json.unit)
     json = JSON.parse(lesson_json, object_class: OpenStruct).data
+    assign(:lesson, json.lesson)
+  end
+
+  let(:setup_view_with_range) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json_alt, object_class: OpenStruct).data
     assign(:lesson, json.lesson)
   end
 
@@ -33,8 +41,8 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
       expect(rendered).to have_css('.curriculum__breadcrumb', text: 'Lesson')
     end
 
-    it 'has a title' do
-      expect(rendered).to have_css('.hero__heading', text: 'Lesson 1')
+    it 'has a title in the correct formart' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 Kicking rocks')
     end
 
     it 'does not have a download button' do
@@ -43,6 +51,17 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 
     it 'does not show the rating partial' do
       expect(rendered).not_to have_css('.curriculum__rating')
+    end
+  end
+
+  context 'when a lesson has a range' do
+    before do
+      setup_view_with_range
+      render
+    end
+
+    it 'has a title in the correct formart reflacting the presense of a range' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 and 3 Kicking rocks')
     end
   end
 
