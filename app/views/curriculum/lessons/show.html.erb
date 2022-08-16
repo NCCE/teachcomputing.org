@@ -26,10 +26,12 @@
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds external-content">
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @lesson.description %></p>
-        <%= render partial: 'curriculum/lessons/learning_objectives', locals: {
-          objectives: @lesson.learning_objectives,
-          key_stage_level: @unit.year_group.key_stage.level
-        } %>
+        <% unless @lesson.learning_objectives.empty? %>
+          <%= render partial: 'curriculum/lessons/learning_objectives', locals: {
+            objectives: @lesson.learning_objectives,
+            key_stage_level: @unit.year_group.key_stage.level
+          } %>
+        <% end %>
 			</div>
 			<div class="govuk-grid-column-one-third govuk-!-padding-left-0">
 				<div class="ncce-aside">
