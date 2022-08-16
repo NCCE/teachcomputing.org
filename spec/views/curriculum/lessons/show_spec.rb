@@ -109,4 +109,15 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
       expect(rendered).to have_css('.curriculum__rating')
     end
   end
+
+  context 'when there are no objectives present' do
+      before do
+        setup_view_with_range
+        render
+      end
+
+    it 'does not render the learning objectives partial' do
+      expect(rendered).not_to have_text('Learning objectives')
+    end
+  end
 end

@@ -45,24 +45,6 @@ RSpec.describe('curriculum/lessons/_learning_objectives', type: :view) do
     end
   end
 
-  context 'when there are no objectives present' do
-    before do
-      json = { "objectives": [] }.to_json
-
-      data = JSON.parse(json, object_class: OpenStruct)
-
-      render partial: 'curriculum/lessons/learning_objectives',
-             locals: {
-               key_stage_level: '1',
-               objectives: data.objectives
-             }
-    end
-
-    it 'does not render the learning objectives partial' do
-      expect(rendered).not_to have_text('Learning objectives')
-    end
-  end
-
   context 'when the key stage 3 or 4' do
     before do
       json =
