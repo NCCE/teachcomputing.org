@@ -36,10 +36,6 @@ module CurriculumHelper
   end
 
   def lesson_with_range_wording(lesson_order, lesson_range)
-    if lesson_range.to_i - lesson_order.to_i >= 2
-      "Lesson #{lesson_order} to #{lesson_range}"
-    else
-      "Lesson #{lesson_order} and #{lesson_range}"
-    end
+    "Lesson #{lesson_order.to_i} #{lesson_range.to_i - lesson_order.to_i > 1 ? 'to' : 'and'} #{lesson_range.to_i}"
   end
 end
