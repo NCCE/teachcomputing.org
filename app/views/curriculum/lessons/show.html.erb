@@ -7,7 +7,7 @@
 			<p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <% if @lesson.range.present? %>
-          <h1 class="govuk-heading-xl hero__heading"><%= "Lesson #{@lesson.order} and #{@lesson.range} #{@lesson.title}" %></h1>
+          <h1 class="govuk-heading-xl hero__heading"><%= "#{lesson_with_range_wording(@lesson.order, @lesson.range)} #{@lesson.title}" %></h1>
         <% else %>
           <h1 class="govuk-heading-xl hero__heading"><%= "Lesson #{@lesson.order} #{@lesson.title}" %></h1>
         <% end %>
