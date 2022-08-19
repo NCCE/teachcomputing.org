@@ -4,7 +4,7 @@
 			<ul class="govuk-list govuk-body govuk-!-padding-bottom-7">
         <% lessons.each do |lesson| %>
           <% if lesson.range.present? %>
-            <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>"><%= link_to "Lesson #{lesson.order} and #{lesson.range} #{lesson.title}", curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
+            <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>"><%= link_to "#{lesson_with_range_wording(lesson.order, lesson.range)} #{lesson.title}", curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
           <% else %>
             <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>"><%= link_to "Lesson #{lesson.order} #{lesson.title}", curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
           <% end %>
