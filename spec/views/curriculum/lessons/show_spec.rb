@@ -19,6 +19,14 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     assign(:lesson, json.lesson)
   end
 
+  let(:setup_view_with_range_alt) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json_alt, object_class: OpenStruct).data
+    json.lesson.range = "5"
+    assign(:lesson, json.lesson)
+  end
+
   let(:setup_view_without_isaac_url) do
     json = JSON.parse(unit_json, object_class: OpenStruct).data
     assign(:unit, json.unit)
@@ -56,11 +64,17 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
 
   context 'when a lesson has a range' do
     before do
-      setup_view_with_range
+      setup_view_with_range_alt
       render
     end
 
-    it 'has a title in the correct formart reflacting the presense of a range' do
+    it 'returns to in title when difference in range is greater that 1' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 to 5 Kicking rocks')
+    end
+
+    it 'returns and in title when difference in range is equal or less than 1' do
+      setup_view_with_range
+      render
       expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 and 3 Kicking rocks')
     end
   end

@@ -80,23 +80,4 @@ describe CurriculumHelper, type: :helper do
                ])
     end
   end
-
-  describe('#lesson_with_range_wording') do
-
-    context 'when a lesson has a range' do
-      it 'returns to wording' do
-        lesson_order = 42
-        lesson_range = 45
-        expect(helper.lesson_with_range_wording(lesson_order, lesson_range)).to eq('Lesson 42 to 45')
-      end
-    end
-
-    context 'when a lesson does not have a range' do
-      it 'returns and wording' do
-        lesson_order = 42
-        lesson_range =
-        expect(helper.lesson_with_range_wording(lesson_order, lesson_range)).to eq('Lesson 42')
-      end
-    end
-  end
 end

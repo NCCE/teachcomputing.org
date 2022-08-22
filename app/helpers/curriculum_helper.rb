@@ -35,7 +35,11 @@ module CurriculumHelper
     ' > '
   end
 
-  def lesson_with_range_wording(lesson_order, lesson_range)
-    "Lesson #{lesson_order.to_i} #{lesson_range.to_i - lesson_order.to_i > 1 ? 'to' : 'and'} #{lesson_range.to_i}"
+  def lesson_title_wording(lesson)
+    if lesson.range.present?
+      "Lesson #{lesson.order.to_i} #{lesson.range.to_i - lesson.order.to_i > 1 ? 'to' : 'and'} #{lesson.range.to_i} #{lesson.title}"
+    else
+      "Lesson #{lesson.order.to_i} #{lesson.title}"
+    end
   end
 end
