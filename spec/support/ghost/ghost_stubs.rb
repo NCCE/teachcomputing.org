@@ -14,7 +14,7 @@ module GhostStubs
 
   def stub_cms_page
     raw_page_json = File.new('spec/support/ghost/page.json')
-    stub_request(:get, "#{ENV['GHOST_API_ENDPOINT']}/content/pages/slug/bursary/")
+    stub_request(:get, "#{ENV['GHOST_API_ENDPOINT']}/content/pages/slug/funding/")
       .with(query: hash_including({ 'key' => (ENV['GHOST_CONTENT_API_KEY']).to_s }))
       .to_return(body: raw_page_json)
   end

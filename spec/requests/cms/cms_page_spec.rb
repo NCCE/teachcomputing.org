@@ -5,7 +5,7 @@ RSpec.describe CmsController do
     context 'with a valid page' do
       before do
         stub_cms_page
-        get '/bursary'
+        get '/funding'
       end
 
       it 'assigns @page' do
@@ -21,7 +21,7 @@ RSpec.describe CmsController do
       end
 
       it 'has the expected class' do
-        expect(assigns(:style_slug)).to eq('bursary')
+        expect(assigns(:style_slug)).to eq('funding')
       end
     end
 
