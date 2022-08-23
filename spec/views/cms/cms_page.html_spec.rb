@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('cms/cms_page', type: :view) do
   before do
     stub_cms_page
-    @page = Ghost.new.get_single_page('bursary')
+    @page = Ghost.new.get_single_page('funding')
     render
   end
 
