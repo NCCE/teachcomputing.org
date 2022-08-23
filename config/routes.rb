@@ -88,6 +88,7 @@ Rails.application.routes.draw do
   resources :hubs, only: %i[index]
   resources :downloads, only: %i[create]
 
+  get '/bursary', to: redirect('/funding')
   get '/courses', action: :index, controller: 'courses', as: 'courses'
   get '/courses/filter', action: :filter, controller: 'courses', as: 'course_filter'
   get '/courses/hubs/:hub_id', action: :index, controller: 'courses', as: 'hub'
