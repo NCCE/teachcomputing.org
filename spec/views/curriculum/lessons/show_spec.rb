@@ -19,6 +19,14 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     assign(:lesson, json.lesson)
   end
 
+  let(:setup_view_with_range_alt) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json_alt, object_class: OpenStruct).data
+    json.lesson.range = "5"
+    assign(:lesson, json.lesson)
+  end
+
   let(:setup_view_without_isaac_url) do
     json = JSON.parse(unit_json, object_class: OpenStruct).data
     assign(:unit, json.unit)
@@ -54,14 +62,36 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     end
   end
 
-  context 'when a lesson has a range' do
+  context 'when a lesson has no range ' do
+    before do
+      setup_view
+      render
+    end
+
+    it 'returns correct title' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2')
+    end
+  end
+
+  context 'when a lesson has a range of one' do
     before do
       setup_view_with_range
       render
     end
 
-    it 'has a title in the correct formart reflacting the presense of a range' do
+    it 'returns correct title' do
       expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 and 3 Kicking rocks')
+    end
+  end
+
+  context 'when a lesson has a range greater than one' do
+    before do
+      setup_view_with_range_alt
+      render
+    end
+
+    it 'returns correct title' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 to 5 Kicking rocks')
     end
   end
 
