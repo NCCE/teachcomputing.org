@@ -62,20 +62,36 @@ RSpec.describe('curriculum/lessons/show', type: :view) do
     end
   end
 
-  context 'when a lesson has a range' do
+  context 'when a lesson has no range ' do
+    before do
+      setup_view
+      render
+    end
+
+    it 'returns correct title' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2')
+    end
+  end
+
+  context 'when a lesson has a range of one' do
+    before do
+      setup_view_with_range
+      render
+    end
+
+    it 'returns correct title' do
+      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 and 3 Kicking rocks')
+    end
+  end
+
+  context 'when a lesson has a range greater than one' do
     before do
       setup_view_with_range_alt
       render
     end
 
-    it 'returns to in title when difference in range is greater that 1' do
+    it 'returns correct title' do
       expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 to 5 Kicking rocks')
-    end
-
-    it 'returns and in title when difference in range is equal or less than 1' do
-      setup_view_with_range
-      render
-      expect(rendered).to have_css('.hero__heading', text: 'Lesson 2 and 3 Kicking rocks')
     end
   end
 
