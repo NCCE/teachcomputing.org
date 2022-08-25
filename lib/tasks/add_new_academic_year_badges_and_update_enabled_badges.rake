@@ -7,7 +7,7 @@ task add_new_academic_year_badges_and_update_enabled_badges: :environment do
   latest_primary_badge.update_attribute(active: false)
   latest_csa_badge.update_attribute(active: false)
 
-  Badge.create(credly_badge_template_id: '3e58c413-e9e0-4bb2-a6b8-4f7f064d0273', academic_year: '2021-22', active: true, programme_id: Programme.secondary_certificate.id)
-  Badge.create(credly_badge_template_id: '217479bf-039b-45a8-a61f-34c317b7f672', academic_year: '2021-22', active: true, programme_id: Programme.primary_certificate.id)
-  Badge.create(credly_badge_template_id: 'dc86853e-0878-4346-9156-63d2162fb0e1', academic_year: '2021-22', active: true, programme_id: Programme.cs_accelerator.id)
+  Badge.create(credly_badge_template_id: '6bff81ba-fabd-4854-8285-12c7bc3f38af', academic_year: '2022-23', active: true, programme_id: Programme.secondary_certificate.id)
+  Badge.create(credly_badge_template_id: 'b3d46899-7dc9-4431-8f6d-2b66e8b15902', academic_year: '2022-23', active: true, programme_id: Programme.primary_certificate.id)
+  Badge.create(credly_badge_template_id: '3d9fb0d9-99de-40f3-a97f-9829028d45d4', academic_year: '2022-23', active: true, programme_id: Programme.cs_accelerator.id)
 end
