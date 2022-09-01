@@ -12,11 +12,12 @@ IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clo
 
 - [Homebrew](https://brew.sh/)
 - Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox) > v4.0 (with support for `docker compose`)
+- Python 2.7 (not 3.x yet)
 - asdf (https://asdf-vm.com/guide/getting-started.html#_3-install-asdf)
 
 ### Setup
 
-Install the depedencies in `.tool-versions`:
+Install the dependencies in `.tool-versions`:
 
 ```
 asdf install
