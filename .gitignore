@@ -44,7 +44,6 @@ spec/examples.txt
 public/sitemap1.xml.gz
 public/sitemap.xml.gz
 
-.vscode
 .standard.yml
 .idea
 .history
