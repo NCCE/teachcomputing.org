@@ -57,3 +57,10 @@ yarn-debug.log*
 
 # database dumps
 latest.dump
+
+# yarn https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
