@@ -10,8 +10,7 @@ echo "- Setting up yarn"
 if command -v yarn >/dev/null 2>&1; then
   echo '...skipping as already installed'
 else
-  brew extract --version 1.22.4 yarn homebrew/cask
-  brew install yarn@1.22.4
+  brew install yarn
   yarn install
 fi
 
