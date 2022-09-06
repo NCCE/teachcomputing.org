@@ -8,6 +8,7 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 ENV BUNDLER_VERSION=2.1.4
+RUN bundle config set force_ruby_platform true
 RUN bundle update --bundler
 RUN bundle install
 COPY package.json yarn.lock ./
