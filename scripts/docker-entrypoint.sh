@@ -14,6 +14,9 @@ fi
 echo "- Configuring databases:"
 bundle exec rake db:prepare
 
+echo "Installing node packinges with yarn"
+yarn install
+
 echo "-Updating the bundle (this may take a little if the volume is empty)"
 bundle install
 
