@@ -31,8 +31,12 @@ services:
   sidekiq:
     build: .
     command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
     depends_on:
       - redis
+      - web
     env_file:
       - .env
 
@@ -50,7 +54,6 @@ services:
     depends_on:
       - db
       - redis
-      - webpack
       - docker-host
     environment:
       - PROXY_URL=http://host.docker.internal:8888
@@ -64,6 +67,8 @@ services:
   webpack:
     build: .
     command: ./bin/webpack-dev-server
+    depends_on:
+      - web
     volumes:
       - .:/app
       - node_modules:/app/node_modules

@@ -7,9 +7,8 @@ RUN mkdir /app
 RUN mkdir /app/node_modules
 WORKDIR /app
 COPY Gemfile /app/Gemfile
-ENV BUNDLER_VERSION=2.1.4
-RUN bundle config set force_ruby_platform true
-RUN bundle install
-RUN bundle update --bundler
-COPY . /app
-RUN yarn
+# ENV BUNDLER_VERSION=2.1.4
+# RUN bundle config set force_ruby_platform true
+# RUN bundle install
+# RUN bundle update --bundler
+# RUN yarn install
