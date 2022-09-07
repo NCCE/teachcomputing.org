@@ -4,13 +4,13 @@
       <div class="govuk-grid-column-two-thirds lp-courses--intro">
         <h2 class="govuk-heading-l">Courses</h2>
         <p class="govuk-body-l"><%=  @landing_page.courses_intro %>
-        We offer <%= link_to 'bursaries', '/bursary',
+        We offer <%= link_to 'subsidies', '/funding',
           class: 'ncce-link',
           data: { event_action: 'click',
                   event_category: @landing_page.event_tracking_category,
                   event_label: 'Bursaries courses' }
           %>
-          to teachers working in state-funded education in England.
+          to state-funded schools to support supply cover.
         </p>
         <%= link_to 'Browse our courses', courses_path,
           class: 'button govuk-button' ,
