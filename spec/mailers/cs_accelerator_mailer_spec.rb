@@ -10,7 +10,6 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
   end
   let(:eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
   let(:manual_enrolled_welcome_mail) { CSAcceleratorMailer.with(user: user).manual_enrolled_welcome }
-  let(:newly_eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).new_assessment_eligibility }
   let(:eligible_subject) { "#{user.first_name} your CS Accelerator test is ready." }
   let(:non_enrolled_csa_user_mail) { described_class.with(user: user, programme: programme).non_enrolled_csa_user }
   let(:non_enrolled_csa_user_subject) { 'Time to finish what you’ve started and achieve your qualification' }
@@ -66,22 +65,6 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
     end
   end
 
-  describe '#new_assessment_eligibility' do
-    it 'renders the headers' do
-      expect(newly_eligible_mail.subject).to include(eligible_subject)
-      expect(newly_eligible_mail.to).to eq([user.email])
-      expect(newly_eligible_mail.from).to eq(['noreply@teachcomputing.org'])
-    end
-
-    it 'renders the body' do
-      expect(newly_eligible_mail.body.encoded).to include(user.first_name.to_s)
-    end
-
-    it 'includes the subject in the email' do
-      expect(newly_eligible_mail.body.encoded).to include("<title>#{eligible_subject}</title>")
-    end
-  end
-
   describe '#auto_enrolled_welcome' do
     let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
     let(:mail_subject) { 'Achieve your subject knowledge certificate with the Computer Science Accelerator' }
@@ -111,17 +94,9 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
         .to have_link('Explore your dashboard', href: cs_accelerator_certificate_url)
     end
 
-    it 'contains link to bursary' do
+    it 'contains link to funding' do
       expect(mail.html_part.body)
-        .to have_link('Check your eligibility', href: 'https://teachcomputing.org/bursary')
-    end
-
-    it 'contains mail_to link' do
-      expect(mail.html_part.body)
-        .to have_link(
-          'CSChampionSupport@stem.org.uk',
-          href: 'mailto:CSChampionSupport@stem.org.uk'
-        )
+        .to have_link('eligible for a subsidy', href: '/funding')
     end
 
     it 'contains opt-out link' do
@@ -161,12 +136,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to bursary' do
         expect(mail.text_part.body)
-          .to match(%r{Check your eligibility \(https://teachcomputing.org/bursary\)})
-      end
-
-      it 'contains mail_to link' do
-        expect(mail.text_part.body)
-          .to match(/Contact (CSChampionSupport@stem.org.uk)/)
+          .to match(%r{eligible for a subsidy \(https://teachcomputing.org/funding\)})
       end
 
       it 'contains opt-out link' do

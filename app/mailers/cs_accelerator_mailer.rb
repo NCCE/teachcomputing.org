@@ -29,14 +29,6 @@ class CSAcceleratorMailer < ApplicationMailer
     mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
   end
 
-  def new_assessment_eligibility
-    @user = params[:user]
-    @programme = Programme.cs_accelerator
-    @subject = "#{@user.first_name} your CS Accelerator test is ready."
-
-    mail(to: @user.email, subject: @subject)
-  end
-
   def manual_enrolled_welcome
     @user = params[:user]
     @programme = Programme.cs_accelerator
