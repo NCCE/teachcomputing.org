@@ -4,6 +4,7 @@ RUN apk --update add less
 RUN pip install --upgrade pip
 RUN pip3 install -U selenium
 RUN mkdir /app
+RUN mkdir /app/node_modules
 WORKDIR /app
 COPY Gemfile /app/Gemfile
 ENV BUNDLER_VERSION=2.1.4
