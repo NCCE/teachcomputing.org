@@ -13,20 +13,13 @@ IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clo
 - [Homebrew](https://brew.sh/)
 - Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox) > v4.0 (with support for `docker compose`)
 - Python 2.7 (not 3.x yet)
-- asdf (https://asdf-vm.com/guide/getting-started.html#_3-install-asdf)
 
 ### Setup
 
-Install the dependencies in `.tool-versions`:
+This script builds the docker image, sets up environment variables and adds a nicer local hostname:
 
 ```
-asdf install
-```
-
-Builds the docker image, sets up environment variables and adds nicer a local hostname:
-
-```
-yarn run setup
+sh ./scripts/setup.sh
 ```
 
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
