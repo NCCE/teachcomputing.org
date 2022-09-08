@@ -20,7 +20,7 @@ module NavigationHelper
       { text: 'Training and support',
         children: [
           { text: 'Courses', link: courses_path, label: 'Courses' },
-          { text: 'Bursaries', link: '/bursary', label: 'Bursaries' },
+          { text: 'Funding', link: '/funding', label: 'Bursaries' },
           { text: 'Computing Hubs', link: '/hubs', label: 'Computing hubs' }
         ] },
       { text: 'Teaching resources',
