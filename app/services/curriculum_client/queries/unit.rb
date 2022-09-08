@@ -11,10 +11,6 @@ module CurriculumClient
         order
         description
         isaacUrl
-        redirects {
-          from
-          to
-        }
         unitGuide {
           #{file_fields}
         }

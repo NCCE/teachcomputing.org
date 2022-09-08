@@ -5,9 +5,7 @@ module Curriculum
     layout 'full-width'
 
     def show
-      begin
-        redirect = CurriculumClient::Queries::Redirect.one(params[:unit_slug], params[:key_stage_slug])&.redirect
-      rescue ActiveRecord::RecordNotFound; end
+      redirect = CurriculumClient::Queries::Redirect.one(params[:unit_slug], params[:key_stage_slug])&.redirect
 
       if redirect.present?
         redirect_to curriculum_key_stage_unit_path(

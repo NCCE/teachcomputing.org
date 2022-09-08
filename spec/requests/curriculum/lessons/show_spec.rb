@@ -5,7 +5,8 @@ RSpec.describe Curriculum::LessonsController do
 
   describe 'GET #show' do
     it 'renders the show template' do
-      stub_a_valid_request(lesson_json_response)
+      stub_a_valid_request_with_redirect(lesson_json_response)
+
       get curriculum_key_stage_unit_lesson_path(
         key_stage_slug: 'key-stage-3',
         unit_slug: 'representations-from-clay-to-silicon',

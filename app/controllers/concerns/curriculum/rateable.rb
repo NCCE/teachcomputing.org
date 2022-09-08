@@ -3,7 +3,7 @@ module Curriculum
     extend ActiveSupport::Concern
 
     included do
-      before_action :authenticate_user!, only: [:rate, :comment]
+      before_action :authenticate_user!, only: %i[rate comment]
     end
 
     def rate
@@ -34,7 +34,8 @@ module Curriculum
 
       response = client.comment(
         id: request[:rating_id],
-        comment: request[:comment]
+        comment: request[:comment],
+        context: 'update_rating'
       )
 
       render json: {

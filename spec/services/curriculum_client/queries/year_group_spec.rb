@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe CurriculumClient::Queries::YearGroup do
   before do
@@ -7,6 +7,6 @@ RSpec.describe CurriculumClient::Queries::YearGroup do
 
   it 'creates valid queries' do
     expect { described_class.all }.not_to raise_error
-    expect { described_class.one('some_id') }.not_to raise_error
+    expect { described_class.one('a-slippery-slug') }.not_to raise_error
   end
 end

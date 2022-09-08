@@ -1,13 +1,13 @@
 module CurriculumClient
   class Request
+    SKIP_NOT_FOUND = [:redirect]
+
     def self.run(query:, context:, client: nil, params: {}, cache_key: nil)
       raise CurriculumClient::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect' unless client.is_a?(Graphlient::Client)
 
       raise CurriculumClient::Errors::UnparsedQuery, 'Invalid query, it must be parsed prior to making a request' unless query.is_a?(GraphQL::Client::OperationDefinition)
 
       begin
-        return fetch_data(query, client, params) unless query.definition_node.operation_type == 'query'
-
         Rails.cache.fetch(
           cache_key,
           expires_in: 12.hours,
@@ -15,7 +15,7 @@ module CurriculumClient
           namespace: 'curriculum'
         ) do
           response = fetch_data(query, client, params)
-          raise CurriculumClient::Errors::RecordNotFound if response[context.to_sym].blank?
+          raise CurriculumClient::Errors::RecordNotFound if response[context.to_s.underscore]&.blank? && !SKIP_NOT_FOUND.include?(context)
 
           response
         end
@@ -43,6 +43,7 @@ module CurriculumClient
                             .to_h
                             .deep_transform_keys { |key| key.to_s.underscore }
                             .to_json
+
       JSON.parse(json_response, object_class: OpenStruct)
     end
   end

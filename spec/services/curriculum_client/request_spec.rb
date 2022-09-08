@@ -11,7 +11,7 @@ RSpec.describe CurriculumClient::Request do
     end
 
     it 'raises an error if an unexpected or empty client instance is passed' do
-      expect { described_class.run(query: nil, client: {}) }
+      expect { described_class.run(context: :key_stage, query: nil, client: {}) }
         .to raise_error(CurriculumClient::Errors::ConnectionError)
     end
 
@@ -22,7 +22,7 @@ RSpec.describe CurriculumClient::Request do
         query {}
       GRAPHQL
 
-      expect { described_class.run(query: query, client: client) }
+      expect { described_class.run(context: :key_stage, query: query, client: client) }
         .to raise_error(CurriculumClient::Errors::UnparsedQuery)
     end
 
@@ -41,7 +41,7 @@ RSpec.describe CurriculumClient::Request do
           }
         }
       GRAPHQL
-      expect { described_class.run(query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
         .to raise_error(CurriculumClient::Errors::ConnectionError, /Unable to connect to/)
     end
 
@@ -61,7 +61,7 @@ RSpec.describe CurriculumClient::Request do
         }
       GRAPHQL
 
-      expect { described_class.run(query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
         .to raise_error(ActiveRecord::RecordNotFound)
     end
 
@@ -81,7 +81,7 @@ RSpec.describe CurriculumClient::Request do
         }
       GRAPHQL
 
-      expect { described_class.run(query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
         .to raise_error(Graphlient::Errors::ExecutionError)
     end
   end

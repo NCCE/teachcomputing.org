@@ -24,7 +24,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, ratin
     end
 
     it 'creates cookies with the expected ids' do
-      stub_a_valid_request
+      stub_a_valid_request({ data: { add_negative_unit_rating: {}, add_negative_lesson_rating: {} } }.to_json)
 
       post send(path, polarity: :negative, id: :an_id, user_id: user.id)
       post send(path, polarity: :negative, id: :another_id, user_id: user.id)
@@ -34,13 +34,13 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, ratin
     end
 
     it 'prevents re-rating' do
-      stub_a_valid_request
+      stub_a_valid_request({ data: { add_negative_unit_rating: {}, add_negative_lesson_rating: {} } }.to_json)
 
       post send(path, polarity: :negative, id: :an_id, user_id: user.id) # First request
       post send(path, polarity: :negative, id: :an_id, user_id: user.id) # Second request
       body = JSON.parse(response.body)
       expect(response).to have_http_status(:conflict)
-      expect(body['data']).to eq(nil)
+      expect(body['data']).to be_nil
     end
   end
 
@@ -51,7 +51,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, ratin
     end
 
     it 'adds a comment to a rating' do
-      stub_a_valid_request
+      stub_a_valid_request({ data: { update_rating: {} } }.to_json)
       post send(comment_path, rating_id: rating_id, comment: 'This is a test')
       expect(response).to have_http_status(:ok)
     end

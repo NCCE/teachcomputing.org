@@ -22,10 +22,6 @@ module CurriculumClient
           slug
           title
           order
-          redirects {
-            from
-            to
-          }
           yearGroup {
             yearNumber
             keyStage {

@@ -13,7 +13,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(query: client.parse(rating), client: client)
+        CurriculumClient::Request.run(query: client.parse(rating), client: client, context: rating_type)
       end
 
       def add_positive_rating(id:, stem_achiever_contact_no:, fields: nil)
@@ -32,7 +32,7 @@ module CurriculumClient
         "add_#{polarity}_#{self::CONTEXT}_rating"
       end
 
-      def comment(id:, comment:, fields: nil)
+      def comment(id:, comment:, context:, fields: nil)
         fields = fields ? "{#{fields}}" : ''
         update = <<~GRAPHQL
           mutation {
@@ -44,7 +44,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(query: client.parse(update), client: client)
+        CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
       end
     end
   end

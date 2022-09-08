@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 RSpec.shared_examples_for 'rateable_query' do |context|
+  let(:url) {CurriculumClient::Connection::CURRICULUM_APP_URL}
+
   describe '.add_positive_rating' do
     before do
       allow(described_class).to receive(:rate)
