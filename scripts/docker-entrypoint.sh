@@ -21,6 +21,9 @@ bundle exec rake db:prepare
 echo "- Installing node packages with yarn"
 yarn install
 
+echo "- Precompile webpacker (as this doesn't seem to happen as expected)"
+bundle exec rails webpacker:compile
+
 echo "- Starting rails (with debugging enabled):"
 rdebug-ide --skip_wait_for_start -h $HOST -p $DEBUG_PORT --dispatcher-port $DISPATCHER_PORT -- ./bin/rails s -b $HOST -p $PORT
 # ./bin/rails s -b $HOST -p $PORT
