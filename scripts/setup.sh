@@ -23,7 +23,7 @@ fi
 printf %s "- Build the docker image (y/n)? "
 read -r RESP
 if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  docker compose build
+  docker compose build --no-cache
 fi
 
 echo "- Install dev-nginx"
@@ -45,9 +45,3 @@ brew install shared-mime-info
 
 echo "- Setup mapping"
 dev-nginx setup-app nginx-mapping.yml
-
-printf %s "- Build assets (recommended for the first run, y/n)? "
-read -r RESP
-if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  yarn run exec rails assets:precompile
-fi
