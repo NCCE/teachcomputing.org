@@ -117,21 +117,18 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 2: Creating media - Making Music',
-        url: '/curriculum/key-stage-1/creating-media-making-music',
-        description: 'Get creative using technology as a digital device to allow you to make music.
-                      Use a computer as a tool to explore rhythms and melodies,
-                      before creating a musical composition.',
+        title: 'Computing systems and networks - Systems and searching',
+        url: '/curriculum/key-stage-2/computing-systems-and-networks-sharing-information',
+        description: 'Check out our newly re-structured year 5 unit. Where do we find Computing Systems in the world and how do they help us find the information which we need online?',
         event_label: 'Featured unit 1',
-        updated_at: 'Updated April 2022'
+        updated_at: 'Updated June 2022'
       },
       {
-        title: 'Year 5: Creating media - Vector Drawing',
-        url: '/curriculum/key-stage-2/creating-media-vector-drawing',
-        description: 'Download the latest version of our Vector Drawing unit to create images using layers and groups of objects.
-                      Recognise how complex-looking vector images are really just made by combining 2D shapes!',
+        title: 'Computing systems and networks - Communication and collaboration',
+        url: '/curriculum/key-stage-2/computing-systems-and-networks-communication',
+        description: 'Check our our newly re-structured year 6 unit. The internet has had a huge impact on opportunities to communicate and collaborate with others. Learn how this works and how to do so safely!',
         event_label: 'Featured unit 2',
-        updated_at: 'Featured unit'
+        updated_at: 'Updated June 2022'
       }
     ]
   end
