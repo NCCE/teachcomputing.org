@@ -19,10 +19,6 @@ class CSAcceleratorMailerPreview < ActionMailer::Preview
     CSAcceleratorMailer.with(user: user, enrolment_id: enrolment.id).getting_started_prompt
   end
 
-  def new_assessment_eligibility
-    CSAcceleratorMailer.with(user: User.first).new_assessment_eligibility
-  end
-
   def manual_enrolled_welcome
     SentEmail.where(user_id: User.first.id, mailer_type: CSAcceleratorMailer::CSA_MANUAL_ENROLLED_WELCOME).destroy_all
     CSAcceleratorMailer.with(user: User.first).manual_enrolled_welcome

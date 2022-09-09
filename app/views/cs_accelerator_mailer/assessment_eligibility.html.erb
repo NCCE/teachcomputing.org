@@ -1,43 +1,33 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
 
-  <p class='govuk-body'>Congratulations <%= @user.first_name %>, you are now eligible to take the CS Accelerator test and receive your certificate.</p>
+  <p class='govuk-body'>Congratulations, you are now eligible to take the test and obtain your Subject knowledge certificate.</p>
 
-  <p class='govuk-body'>This means you are able to complete your learning
-    programme by carrying out a short test based on the computer science
-    curriculum.</p>
+  <p class='govuk-body'>To determine your next step, you can take our mock test to assess your subject knowledge and identify any areas from the curriculum where you need further support. We also have resources to help you prepare for your test, including:</p>
+
+  <ul>
+    <li><%= link_to 'Preparing to take the test (short course)', course_url(id: 'CP350', name: 'preparing-to-take-the-csa-test-short-course'), class: 'ncce-link' %></li>
+    <li><%= link_to 'CSA Handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link' %></li>
+  </ul>
 
   <p class='govuk-body'><strong>Ready to take the test?</strong></p>
 
-  <p class='govuk-body'>You are one step away from receiving your qualification
-    and being recognised for your subject knowledge.
-    <br>Plus, if you are eligible for the CS Accelerator bursary, this will be paid to your school or college on successful completion of the test.</p>
+  <p class='govuk-body'>You are one step away from receiving your certificate and being recognised for your subject knowledge. If you are eligible for <%= link_to 'funding for supply cover', '/funding', class: 'ncce-link' %>, it will be paid to your school or college once you pass the test.</p>
 
   <p class='govuk-body'><strong>How does it work?</strong></p>
 
   <ul>
-    <li>25 multiple-choice questions
-    </li>
-    <li>30 minute time limit
-    </li>
-    <li>Pass mark of 65% required
-    </li>
+    <li>the test is timed and multiple choice</li>
+    <li>it should be taken under exam conditions, and you'll need to provide contact details of a member of your leadership team who can confirm this</li>
   </ul>
+
   <p class='govuk-body'>
     <%= link_to 'Take the test', cs_accelerator_url, class: 'govuk-button button' %>
   </p>
 
   <p class='govuk-body'><strong>Not quite ready?</strong></p>
 
-  <p class='govuk-body'>If you don't feel comfortable enough to take the test
-    just yet, we have a range of remote and online CPD to help you bridge any
-    knowledge gaps and help to build your confidence in teaching computing.
-    Plus, you can contact our
-    <%= mail_to 'CSChampionSupport@stem.org.uk', 'Computer Science Champions', class: 'ncce-link' %>
-    for guidance and one-to-one revision support.</p>
+  <p class='govuk-body'>Before taking the test, we recommend you complete all courses on your chosen pathway. Depending on your starting point, you may also benefit from engaging in CPD from one of our other pathways, which you can access via your <%= link_to 'certificate dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %>. Alternatively, you can browse our full range of training via <%= link_to 'our courses page', courses_url(certificate: @programme.slug), class: 'ncce-link' %>.</p>
 
-  <p class='govuk-body'>
-    <%= link_to 'Browse our courses', courses_url(certificate: @programme.slug), class: 'govuk-button button' %>
-  </p>
-
+  <p class='govuk-body'>Plus, your local <%= link_to 'Computing Hub', hubs_url, class: 'ncce-link' %> is on-hand to provide guidance and support at any time.</p>
 </div>
