@@ -1,7 +1,5 @@
 module CurriculumClient
   class Request
-    SKIP_NOT_FOUND = [:redirect]
-
     def self.run(query:, context:, client: nil, params: {}, cache_key: nil)
       raise CurriculumClient::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect' unless client.is_a?(Graphlient::Client)
 
@@ -14,16 +12,13 @@ module CurriculumClient
           race_condition_ttl: 20.seconds,
           namespace: 'curriculum'
         ) do
-          response = fetch_data(query, client, params)
-          raise CurriculumClient::Errors::RecordNotFound if response[context.to_s.underscore]&.blank? && !SKIP_NOT_FOUND.include?(context)
-
-          response
+          fetch_data(query, client, params)
         end
       rescue Graphlient::Errors::ExecutionError => e
         # Graphlient does not support the graphql extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
         original_hash = e.response.original_hash
         extensions = original_hash['errors'][0]['extensions']
-        raise ActiveRecord::RecordNotFound, e.message if extensions && extensions['code'] == :not_found.to_s
+        raise CurriculumClient::Errors::RecordNotFound, e.message if extensions && extensions['code'] == :not_found.to_s
 
         raise # Don't prevent other ExecutionErrors from being raised
       rescue Graphlient::Errors::ServerError => e
