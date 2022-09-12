@@ -91,3 +91,6 @@ RSpec/NestedGroups:
 
 Lint/MissingSuper:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false

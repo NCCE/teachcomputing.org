@@ -9,9 +9,6 @@ module CurriculumClient
         title
         order
         range
-        redirects {
-          from
-        }
         slug
         description
         isaacUrl
@@ -22,10 +19,6 @@ module CurriculumClient
           slug
           title
           order
-          redirects {
-            from
-            to
-          }
           yearGroup {
             yearNumber
             keyStage {

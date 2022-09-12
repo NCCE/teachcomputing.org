@@ -1,6 +1,7 @@
 module CurriculumStubs
   URL = CurriculumClient::Connection::CURRICULUM_APP_URL
   SCHEMA = File.new('spec/support/curriculum/curriculum_schema.json').read.freeze
+  DEFAULT_BODY = { data: {} }.to_json
 
   # Validates schema requests (only useful in conjunction with calling `Curriculum.connect` directly)
   def stub_a_valid_schema_request_strict
@@ -22,9 +23,19 @@ module CurriculumStubs
       )
   end
 
-  def stub_a_valid_request(response = { data: {} }.to_json)
+  def stub_a_valid_request(response = DEFAULT_BODY)
     stub_request(:post, URL)
       .to_return(
+        { status: 200, body: response, headers: {} }
+      )
+  end
+
+  def stub_a_valid_request_with_redirect(response = DEFAULT_BODY)
+    stub_request(:post, URL)
+      .to_return( # First return an empty redirect
+        { status: 200, body: { data: { redirect: [] } }.to_json, headers: {} }
+      )
+      .to_return( # ...then the lesson
         { status: 200, body: response, headers: {} }
       )
   end

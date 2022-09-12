@@ -25,10 +25,10 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
     end
 
     it 'use only the specified fields' do
-      expect(described_class.all(context: :yearGroup,
+      expect(described_class.all(context: :yearGroups,
                                  fields: 'id slug units { id }',
                                  cache_key: 'cache-key')).to have_requested(:post, url)
-        .with(body: /yearGroup\s\{\\n\s+id\\n\s+slug\\n\s+units\s\{\\n\s+id\\n\s+\}\\n\s+\}\\n\}/)
+        .with(body: /yearGroups\s\{\\n\s+id\\n\s+slug\\n\s+units\s\{\\n\s+id\\n\s+\}\\n\s+\}\\n\}/)
     end
   end
 end

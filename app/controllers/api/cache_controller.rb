@@ -12,7 +12,7 @@ module Api
     private
 
       def cache_params
-        params.permit(:resource, :identifier)
+        params.permit(:resource, :identifier, identifier: [], cache: {})
       end
   end
 end

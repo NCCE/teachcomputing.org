@@ -15,10 +15,10 @@ module CurriculumClient
             }
           GRAPHQL
 
-          CurriculumClient::Request.run(query: client.parse(all), client: client, cache_key: cache_key)
+          CurriculumClient::Request.run(query: client.parse(all), client: client, cache_key: cache_key, context: context)
         end
 
-        def one(context:, fields:, params:, cache_key:)
+        def one(context:, fields:, params:, cache_key: nil)
           declared_param_strings = params.map { |k, _v| "$#{k}: #{map_field_type(k)}" }
           param_strings = params.map { |k, _v| "#{k.to_s.camelize(:lower)}: $#{k}" }
           one = <<~GRAPHQL
@@ -29,7 +29,7 @@ module CurriculumClient
             }
           GRAPHQL
 
-          CurriculumClient::Request.run(query: client.parse(one), client: client, params: params, cache_key: cache_key)
+          CurriculumClient::Request.run(query: client.parse(one), client: client, params: params, cache_key: cache_key, context: context)
         end
 
         def file_fields

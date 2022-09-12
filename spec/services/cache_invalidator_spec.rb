@@ -45,5 +45,20 @@ RSpec.describe CacheInvalidator do
           .with('unit--all', namespace: 'curriculum')
       end
     end
+
+    context 'when a list of identifiers are passed' do
+      let(:resource) { 'redirect' }
+      let(:identifier) { %w[a-lesson another-lesson] }
+
+      it 'invalidates the relevant cached unit' do
+        expect(fake_store)
+          .to have_received(:delete)
+          .with('redirect--another-lesson', namespace: 'curriculum')
+
+        expect(fake_store)
+          .to have_received(:delete)
+          .with('redirect--a-lesson', namespace: 'curriculum')
+      end
+    end
   end
 end

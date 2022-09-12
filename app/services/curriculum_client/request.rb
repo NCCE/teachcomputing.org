@@ -1,17 +1,11 @@
 module CurriculumClient
   class Request
-    def self.run(query:, client: nil, params: {}, cache_key: nil)
-      unless client.is_a?(Graphlient::Client)
-        raise CurriculumClient::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect'
-      end
+    def self.run(query:, context:, client: nil, params: {}, cache_key: nil)
+      raise CurriculumClient::Errors::ConnectionError, 'Invalid or missing Graphlient::Client, unable to connect' unless client.is_a?(Graphlient::Client)
 
-      unless query.is_a?(GraphQL::Client::OperationDefinition)
-        raise CurriculumClient::Errors::UnparsedQuery, 'Invalid query, it must be parsed prior to making a request'
-      end
+      raise CurriculumClient::Errors::UnparsedQuery, 'Invalid query, it must be parsed prior to making a request' unless query.is_a?(GraphQL::Client::OperationDefinition)
 
       begin
-        return fetch_data(query, client, params) unless query.definition_node.operation_type == 'query'
-
         Rails.cache.fetch(
           cache_key,
           expires_in: 12.hours,
@@ -24,7 +18,7 @@ module CurriculumClient
         # Graphlient does not support the graphql extensions hash. See: http://spec.graphql.org/June2018/#example-fce18
         original_hash = e.response.original_hash
         extensions = original_hash['errors'][0]['extensions']
-        raise ActiveRecord::RecordNotFound, e.message if extensions && extensions['code'] == :not_found.to_s
+        raise CurriculumClient::Errors::RecordNotFound, e.message if extensions && extensions['code'] == :not_found.to_s
 
         raise # Don't prevent other ExecutionErrors from being raised
       rescue Graphlient::Errors::ServerError => e
@@ -40,10 +34,11 @@ module CurriculumClient
 
     def self.fetch_data(query, client, params)
       json_response = client.execute(query, params)
-            .data
-            .to_h
-            .deep_transform_keys { |key| key.to_s.underscore }
-            .to_json
+                            .data
+                            .to_h
+                            .deep_transform_keys { |key| key.to_s.underscore }
+                            .to_json
+
       JSON.parse(json_response, object_class: OpenStruct)
     end
   end
