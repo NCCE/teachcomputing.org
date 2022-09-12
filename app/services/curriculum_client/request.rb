@@ -6,6 +6,8 @@ module CurriculumClient
       raise CurriculumClient::Errors::UnparsedQuery, 'Invalid query, it must be parsed prior to making a request' unless query.is_a?(GraphQL::Client::OperationDefinition)
 
       begin
+        return fetch_data(query, client, params) unless cache_key.present?
+
         Rails.cache.fetch(
           cache_key,
           expires_in: 12.hours,
