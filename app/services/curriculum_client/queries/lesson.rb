@@ -9,9 +9,6 @@ module CurriculumClient
         title
         order
         range
-        redirects {
-          from
-        }
         slug
         description
         isaacUrl
