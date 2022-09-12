@@ -62,7 +62,7 @@ RSpec.describe CurriculumClient::Request do
       GRAPHQL
 
       expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
-        .to raise_error(ActiveRecord::RecordNotFound)
+        .to raise_error(CurriculumClient::Errors::RecordNotFound)
     end
 
     it "doesn't block other execution errors" do
