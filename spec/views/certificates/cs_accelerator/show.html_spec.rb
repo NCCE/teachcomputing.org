@@ -24,6 +24,6 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
   end
 
   it 'has the expected bursary info' do
-    expect(rendered).to have_css('.ncce-bursary-aside', text: /secondary teacher/)
+    expect(rendered).to have_css('.ncce-bursary-aside', text: /financial support/)
   end
 end
