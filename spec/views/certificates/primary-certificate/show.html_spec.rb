@@ -72,7 +72,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'has bursary information' do
-      expect(rendered).to have_css('.bursary-component__title', text: 'Bursary support')
+      expect(rendered).to have_css('.bursary-component__title', text: 'Funding')
     end
 
     it 'has support information' do

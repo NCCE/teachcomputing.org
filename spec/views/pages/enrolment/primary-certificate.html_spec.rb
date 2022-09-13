@@ -39,7 +39,7 @@ RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
     end
 
     it 'has a bursary support aside' do
-      expect(rendered).to have_css('.bursary-component__title', text: 'Bursary support')
+      expect(rendered).to have_css('.bursary-component__title', text: 'Funding')
     end
 
     it 'has a hub aside' do
