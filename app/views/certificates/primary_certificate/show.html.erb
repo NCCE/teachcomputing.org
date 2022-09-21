@@ -15,7 +15,6 @@
             available_pathways_for_user: @available_pathways_for_user
           } if @user_pathway %>
           <%= render BursaryComponent.new(
-            text: t('.bursary_aside.text'),
             tracking_event_label: 'Bursary',
             tracking_event_category: tracking_category
           ) %>
