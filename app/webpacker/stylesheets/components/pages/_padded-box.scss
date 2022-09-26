@@ -1,11 +1,9 @@
 .padded-box {
   margin: 50px 0;
   padding: 1rem 1rem 0.2rem;
-  display: grid;
   @include govuk-media-query($from: tablet) {
     margin: 0;
     padding: 1.5rem 1.5rem 0.5rem;
-    grid-template-columns: 1fr 5fr;
   }
   img,
   video {
@@ -35,9 +33,4 @@
 
 .padded-box--button {
   margin-bottom: 10px;
-}
-
-.padded-box__img {
-  height: 96px;
-  width: 91px;
 }
