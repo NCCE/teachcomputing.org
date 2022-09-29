@@ -1,5 +1,5 @@
 .padded-box {
-  margin: 20px 0;
+  margin: 50px 0;
   padding: 1rem 1rem 0.2rem;
   @include govuk-media-query($from: tablet) {
     margin: 0;
@@ -23,14 +23,17 @@
 }
 
 .padded-box--resources {
-  padding: 1.5rem 1rem 1rem 2rem;
+  padding: 1rem;
 
   @include govuk-media-query($from: tablet) {
-    margin-top: 2.2rem;
-    padding: 2rem 2rem 1rem 4rem;
+    padding: 2rem;
   }
 }
 
 .padded-box--button {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 1.5rem;
+  }
 }
