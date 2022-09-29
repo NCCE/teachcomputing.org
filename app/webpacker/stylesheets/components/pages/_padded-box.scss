@@ -32,4 +32,8 @@
 
 .padded-box--button {
   margin-bottom: 1rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 1.5rem;
+  }
 }
