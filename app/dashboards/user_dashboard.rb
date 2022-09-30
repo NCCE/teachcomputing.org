@@ -45,9 +45,6 @@ class UserDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    achievements
-    assessment_attempts
-    user_programme_enrolments
     id
     first_name
     last_name
@@ -55,28 +52,25 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_at
     stem_user_id
     stem_achiever_contact_no
+    teacher_reference_number
+    future_learn_organisation_memberships
     created_at
     updated_at
-    teacher_reference_number
-    stem_achiever_organisation_no
-    future_learn_organisation_memberships
     forgotten
+    user_programme_enrolments
+    achievements
+    assessment_attempts
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    achievements
-    assessment_attempts
-    user_programme_enrolments
     first_name
     last_name
     email
-    last_sign_in_at
     stem_user_id
     stem_achiever_contact_no
-    stem_achiever_organisation_no
   ].freeze
 
   # COLLECTION_FILTERS
@@ -95,6 +89,6 @@ class UserDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(user)
-    "User #{user.email}"
+    "#{user.email}"
   end
 end

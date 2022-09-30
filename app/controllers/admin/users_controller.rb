@@ -8,6 +8,16 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def perform_sync
+      user_id = params[:user_id]
+      Support::UserUtilities.sync(user_id)
+
+      redirect_back(
+        fallback_location: admin_users_path(user_id: user_id),
+        flash: { notice: I18n.t('admin.application.actions.sync.complete') }
+      )
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
