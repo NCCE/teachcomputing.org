@@ -6,7 +6,7 @@ table {
 
   a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
 
@@ -14,8 +14,20 @@ thead {
   font-weight: $bold-font-weight;
 }
 
+tr>th {
+  background-color: white;
+}
+
 tr {
   border-bottom: $base-border;
+}
+
+tr:nth-child(even) {
+  background: rgb(250, 250, 250)
+}
+
+tr:nth-child(odd) {
+  background-color: white;
 }
 
 tbody tr {

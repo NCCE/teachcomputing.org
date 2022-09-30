@@ -18,7 +18,6 @@ class PathwayDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
-
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,6 +27,7 @@ class PathwayDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
+    programme
     order
     range
   ].freeze

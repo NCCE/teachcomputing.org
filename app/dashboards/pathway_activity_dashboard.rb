@@ -12,7 +12,6 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     activity: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
     supplementary: Field::Boolean,
-    order: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -34,7 +33,6 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway
     activity
     supplementary
-    order
     created_at
     updated_at
   ].freeze
@@ -46,7 +44,6 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     pathway
     activity
     supplementary
-    order
   ].freeze
 
   # COLLECTION_FILTERS
