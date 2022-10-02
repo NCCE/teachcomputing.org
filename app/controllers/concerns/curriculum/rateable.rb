@@ -44,6 +44,21 @@ module Curriculum
       }, status: :ok
     end
 
+    def choices
+      raise NoMethodError unless respond_to?(:client, true)
+
+      response = client.choices(
+        id: request[:rating_id],
+        choices: request[:choices],
+        context: 'update_rating'
+      )
+
+      render json: {
+        origin: __method__.to_s,
+        data: response
+      }, status: :ok
+    end
+
     def add_rating(id, polarity, user)
       achiever_contact_no = user.stem_achiever_contact_no
 

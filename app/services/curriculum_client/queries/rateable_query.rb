@@ -46,6 +46,23 @@ module CurriculumClient
 
         CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
       end
+
+      def choices(id:, choices:, context:, fields: nil)
+        fields = fields ? "{#{fields}}" : ''
+        update = <<~GRAPHQL
+          mutation {
+            updateRating(
+              id: "#{id}"
+              choices: "#{choices}"
+            )
+            #{fields}
+          }
+        GRAPHQL
+
+        CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
+      end
+
+
     end
   end
 end
