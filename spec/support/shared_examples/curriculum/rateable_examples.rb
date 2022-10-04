@@ -56,4 +56,17 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, ratin
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe 'GET #choices' do
+    before do
+      allow_any_instance_of(AuthenticationHelper)
+        .to receive(:current_user).and_return(user)
+    end
+
+    it 'adds a choices to a rating' do
+      stub_a_valid_request({ data: { update_rating: {} } }.to_json)
+      post send(comment_path, rating_id: rating_id, choices: ['first choice','second choice','third choice'])
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
