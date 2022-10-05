@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, rating_id|
+RSpec.shared_examples_for 'rateable' do |path, comment_path, update_curriculum_lesson_rating_choices_path, _context, id, rating_id|
   let(:user) { create(:user, stem_achiever_contact_no: 'achieverid') }
 
   describe 'POST #rate' do
@@ -65,7 +65,7 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, _context, id, ratin
 
     it 'adds a choices to a rating' do
       stub_a_valid_request({ data: { update_rating: {} } }.to_json)
-      post send(comment_path, rating_id: rating_id, choices: ['first choice','second choice','third choice'])
+      post send(update_curriculum_lesson_rating_choices_path, rating_id: rating_id, choices: "['first choice','second choice','third choice']")
       expect(response).to have_http_status(:ok)
     end
   end
