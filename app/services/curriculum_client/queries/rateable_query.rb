@@ -32,33 +32,17 @@ module CurriculumClient
         "add_#{polarity}_#{self::CONTEXT}_rating"
       end
 
-      def comment(id:, comment:, context:, fields: nil)
+      def update_rating(id:, key:, value:, context:, fields: nil)
         fields = fields ? "{#{fields}}" : ''
         update = <<~GRAPHQL
           mutation {
             updateRating(
               id: "#{id}"
-              comment: "#{comment}"
+              #{key}: "#{value}"
             )
             #{fields}
           }
-        GRAPHQL
-
-        CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
-      end
-
-      def choices(id:, choices:, context:, fields: nil)
-        fields = fields ? "{#{fields}}" : ''
-        update = <<~GRAPHQL
-          mutation {
-            updateRating(
-              id: "#{id}"
-              choices: "#{choices}"
-            )
-            #{fields}
-          }
-        GRAPHQL
-
+          GRAPHQL
         CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
       end
 

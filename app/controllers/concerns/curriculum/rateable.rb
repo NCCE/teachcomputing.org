@@ -32,9 +32,10 @@ module Curriculum
     def comment
       raise NoMethodError unless respond_to?(:client, true)
 
-      response = client.comment(
+      response = client.update_rating(
         id: request[:rating_id],
-        comment: request[:comment],
+        key: :comment,
+        value: request[:comment],
         context: 'update_rating'
       )
 
@@ -47,9 +48,10 @@ module Curriculum
     def choices
       raise NoMethodError unless respond_to?(:client, true)
 
-      response = client.choices(
+      response = client.update_rating(
         id: request[:rating_id],
-        choices: request[:choices],
+        key: :choices,
+        value: request[:choices],
         context: 'update_rating'
       )
 
