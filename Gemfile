@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.1.2'
 
 gem 'activestorage-validator'
 gem 'administrate', '~> 0.18.0'
@@ -57,7 +57,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'debase', '~> 0.2.4'
+  gem 'debase', '>=0.2.5.beta2'
   gem 'dotenv-rails'
   gem 'interception'
   gem 'pry'
@@ -67,7 +67,7 @@ group :development, :test do
   gem 'rubocop-changes'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'ruby-debug-ide'
+  gem 'ruby-debug-ide', '~> 0.7.3'
 end
 
 group :development do
