@@ -103,8 +103,10 @@ Rails.application.routes.draw do
                                                              as: :curriculum_key_stage_unit_lesson
   post '/curriculum/rating/units/:polarity/:id/:user_id', to: 'curriculum/units#rate', as: :create_curriculum_unit_rating
   post '/curriculum/rating/comment', to: 'curriculum/units#comment', as: :update_curriculum_unit_rating
+  post '/curriculum/rating/choices', to: 'curriculum/units#choices', as: :update_curriculum_unit_rating_choices
   post '/curriculum/rating/lessons/:polarity/:id/:user_id', to: 'curriculum/lessons#rate', as: :create_curriculum_lesson_rating
   post '/curriculum/rating/comment', to: 'curriculum/lessons#comment', as: :update_curriculum_lesson_rating
+  post '/curriculum/rating/choices', to: 'curriculum/lessons#choices', as: :update_curriculum_lesson_rating_choices
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
