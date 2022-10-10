@@ -717,7 +717,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   uglifier (>= 4.2)
   vcr
-  view_component (~> 2.55)
+  view_component (~> 2.74)
   web-console (>= 3.3.0)
   webmock
   webpacker (~> 5.4.3)

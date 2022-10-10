@@ -50,7 +50,7 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'statesman', '~> 4.1.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 4.2'
-gem 'view_component', '~> 2.55'
+gem 'view_component', '~>2.74'
 gem 'webpacker', '~> 5.4.3'
 gem 'wicked', '~> 1.3.4'
 # must match the version used to generate the schema
