@@ -16,7 +16,7 @@ RSpec.describe HeroMediaComponent, type: :component do
         page: 'A Page',
         label: 'Some video'
       }
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'adds the wrapper class' do
