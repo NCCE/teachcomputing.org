@@ -1,4 +1,4 @@
-Sidekiq.default_worker_options = { retry: false }
+Sidekiq.default_job_options = { retry: false }
 Sidekiq.logger.level = Logger::WARN
 
 Sidekiq.configure_client do |config|
