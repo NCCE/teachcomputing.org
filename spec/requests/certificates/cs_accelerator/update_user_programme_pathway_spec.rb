@@ -22,24 +22,24 @@ RSpec.describe 'Updating user programme pathway', type: :request do
     context 'When pathway id is valid' do
       it 'updates the pathway ID on the users enrolment' do
         expect(user_programme_enrolment.pathway_id).to eq(pathway_1.id)
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: pathway_2.id
-        } }
+        }
 
         expect(user_programme_enrolment.reload.pathway_id).to eq(pathway_2.id)
       end
 
       it 'redirects to dashboard' do
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: pathway_2.id
-        } }
+        }
         expect(response).to redirect_to(cs_accelerator_certificate_path)
       end
 
       it 'displays a flash message' do
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: pathway_2.id
-        } }
+        }
         expect(flash[:notice]).to match(/Your pathway was changed successfully/)
       end
     end
@@ -47,24 +47,24 @@ RSpec.describe 'Updating user programme pathway', type: :request do
     context 'When pathway id is invalid' do
       it 'does not update the pathway ID on the users enrolment' do
         expect(user_programme_enrolment.pathway_id).to eq(pathway_1.id)
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: '1111111111111111111'
-        } }
+        }
 
         expect(user_programme_enrolment.reload.pathway_id).to eq(pathway_1.id)
       end
 
       it 'redirects to dashboard' do
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: '1111111111111111111'
-        } }
+        }
         expect(response).to redirect_to(cs_accelerator_certificate_path)
       end
 
       it 'displays a flash error message' do
-        put update_user_pathway_cs_accelerator_certificate_path, { params: {
+        put update_user_pathway_cs_accelerator_certificate_path, params: {
           pathway_id: '1111111111111111111'
-        } }
+        }
         expect(flash[:error]).to match(/Something went wrong updating the pathway/)
       end
     end
