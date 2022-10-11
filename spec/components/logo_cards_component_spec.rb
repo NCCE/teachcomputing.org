@@ -32,7 +32,7 @@ RSpec.describe LogoCardsComponent, type: :component do
   end
 
   before do
-    render_inline(described_class.new(test_data))
+    render_inline(described_class.new(**test_data))
   end
 
   it 'adds the wrapper class' do

@@ -20,6 +20,6 @@ class LogoCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(LogoCardsComponent.new(params))
+    render(LogoCardsComponent.new(**params))
   end
 end
