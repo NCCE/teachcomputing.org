@@ -575,7 +575,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    statesman (4.1.4)
+    statesman (10.0.0)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -713,7 +713,7 @@ DEPENDENCIES
   solargraph
   spring
   spring-watcher-listen (~> 2.0.0)
-  statesman (~> 4.1.0)
+  statesman (~> 10.0.0)
   turbolinks (~> 5)
   uglifier (>= 4.2)
   vcr
