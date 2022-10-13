@@ -43,7 +43,7 @@ RSpec.describe HeroMediaComponent, type: :component do
         url: 'media/images/landing-pages/pri-hero.png',
         title: 'Image title'
       }
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'renders an image' do
@@ -54,7 +54,7 @@ RSpec.describe HeroMediaComponent, type: :component do
 
   describe 'when no media is passed' do
     it 'throws an error' do
-      expect { render_inline(described_class.new(data)) }.to raise_error ArgumentError
+      expect { render_inline(described_class.new(**data)) }.to raise_error ArgumentError
     end
   end
 end
