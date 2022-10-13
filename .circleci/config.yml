@@ -45,7 +45,6 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
-      - browser-tools/install-browser-tools
       - attach_workspace:
           at: ~/teachcomputing
       - run:
@@ -79,6 +78,7 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+      - browser-tools/install-browser-tools
       - run:
           name: Run rspec
           command: |
