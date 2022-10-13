@@ -70,13 +70,11 @@ RSpec.describe CourseActivityComponent, type: :component do
     before do
       render_inline(
         described_class.new(
-          {
-            objective: 'I describe things',
-            booking: {
-              path: 'https://example.com/book'
-            },
-            achievements: [face_to_face_achievement, remote_achievement, online_achievement]
-          }
+          objective: 'I describe things',
+          booking: {
+            path: 'https://example.com/book'
+          },
+          achievements: [face_to_face_achievement, remote_achievement, online_achievement]
         )
       )
     end
