@@ -10,7 +10,7 @@ RSpec.describe Api::AchievementsController do
   context 'token is not passed' do
     describe 'POST #create' do
       before do
-        post "/api/users/#{user.id}/achievements/", { params: { activity_id: activity.id }, headers: nil }
+        post "/api/users/#{user.id}/achievements/", params: { activity_id: activity.id }, headers: nil
       end
 
       it 'returns 401 status' do
