@@ -58,7 +58,7 @@
               <li><%= t('.programme_list_3') %></li>
             </ul>
 
-            <%= render DocumentCardsComponent.new({
+            <%= render DocumentCardsComponent.new(
               class_name: 'pathway-cards',
               show_border: false,
               cards_per_row: 1,
@@ -101,7 +101,7 @@
                   },
                 }
               ]
-            }) %>
+            ) %>
           </div>
         </section>
       </div>
