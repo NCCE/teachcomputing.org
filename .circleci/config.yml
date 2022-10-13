@@ -45,6 +45,7 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
+      - browser-tools/install-browser-tools
       - attach_workspace:
           at: ~/teachcomputing
       - run:
