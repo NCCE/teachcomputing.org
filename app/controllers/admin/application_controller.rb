@@ -20,6 +20,10 @@ module Admin
       end
     end
 
+    def authenticated_user
+      @admin_email || User.first.email
+    end
+
     private
 
       def decode_cookie(token)

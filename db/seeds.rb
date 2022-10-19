@@ -15,6 +15,8 @@ require_relative './seeds/programme_activity_groupings/secondary_certificate'
 require_relative './seeds/pathways/cs_accelerator'
 require_relative './seeds/pathways/primary_certificate'
 
+require_relative './seeds/admin/authorisers'
+
 Programme.all.each do |p|
   puts "\nProgramme: #{p.title} activities:\n\n"
   p.activities.each do |a|

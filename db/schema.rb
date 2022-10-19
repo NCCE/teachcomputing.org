@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_102651) do
+ActiveRecord::Schema.define(version: 2022_10_14_130919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -137,6 +137,38 @@ ActiveRecord::Schema.define(version: 2022_06_14_102651) do
     t.string "class_marker_test_id"
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.uuid "auditable_id"
+    t.string "auditable_type"
+    t.uuid "associated_id"
+    t.string "associated_type"
+    t.uuid "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.jsonb "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.uuid "ticket_id"
+    t.uuid "authoriser_id"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["authoriser_id"], name: "index_audits_on_authoriser_id"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "authorisers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "organisation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "badges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

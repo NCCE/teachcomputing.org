@@ -38,7 +38,7 @@ module CurriculumClient
           mutation {
             updateRating(
               id: "#{id}"
-              comment: "#{comment}"
+              #{comment}: "#{comment}"
             )
             #{fields}
           }
