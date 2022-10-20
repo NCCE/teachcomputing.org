@@ -9,7 +9,7 @@ RSpec.describe Api::ActivitiesController do
   context 'token is not passed' do
     describe 'GET #show' do
       before do
-        get '/api/activities/', { headers: nil }
+        get '/api/activities/', headers: nil
       end
 
       it 'returns 401 status' do
@@ -21,7 +21,7 @@ RSpec.describe Api::ActivitiesController do
   context 'when the correct token is passed' do
     describe 'GET #show' do
       before do
-        get '/api/activities/', { headers: token_headers }
+        get '/api/activities/', headers: token_headers
       end
 
       it 'returns 201 status' do

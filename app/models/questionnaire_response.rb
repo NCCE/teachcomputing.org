@@ -1,5 +1,8 @@
 class QuestionnaireResponse < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: QuestionnaireResponseTransition,
+    initial_state: StateMachines::QuestionnaireResponseStateMachine.initial_state
+  ]
 
   belongs_to :questionnaire
   belongs_to :user

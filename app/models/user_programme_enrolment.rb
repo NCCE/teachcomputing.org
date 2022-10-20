@@ -1,5 +1,8 @@
 class UserProgrammeEnrolment < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: UserProgrammeEnrolmentTransition,
+    initial_state: StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
+  ]
 
   belongs_to :user
   belongs_to :programme

@@ -32,9 +32,26 @@ module Curriculum
     def comment
       raise NoMethodError unless respond_to?(:client, true)
 
-      response = client.comment(
+      response = client.update_rating(
         id: request[:rating_id],
-        comment: request[:comment],
+        key: :comment,
+        value: request[:comment],
+        context: 'update_rating'
+      )
+
+      render json: {
+        origin: __method__.to_s,
+        data: response
+      }, status: :ok
+    end
+
+    def choices
+      raise NoMethodError unless respond_to?(:client, true)
+
+      response = client.update_rating(
+        id: request[:rating_id],
+        key: :choices,
+        value: request[:choices],
         context: 'update_rating'
       )
 
