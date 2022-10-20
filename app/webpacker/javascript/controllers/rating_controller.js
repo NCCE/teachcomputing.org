@@ -10,7 +10,7 @@ export default class extends Controller {
     this.showPage(0)
   }
 
-  onRatingSuccess(ev) {
+  onRatingSuccessPositive(ev) {
     const { origin, rating_id } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.rate) return
 
@@ -19,6 +19,17 @@ export default class extends Controller {
     this.ratingIdTarget.value = rating_id
 
     this.showPage(1)
+  }
+
+  onRatingSuccessNegative(ev) {
+    const { origin, rating_id } = ev.detail[0]
+    if (origin !== this.AJAX_LISTENERS.rate) return
+
+    if (!rating_id) console.error('No rating ID returned')
+    this.retrievedRatingId = rating_id
+    this.ratingIdTarget.value = rating_id
+
+    this.showPage(3)
   }
 
   onCommentBeforeSend(ev) {
@@ -42,7 +53,15 @@ export default class extends Controller {
     const { origin } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.comment) return
 
+    this.showPage(5)
+  }
+
+  onChoicesSuccess() {
     this.showPage(2)
+  }
+
+  onChoicesSuccessNegative() {
+    this.showPage(4)
   }
 
   showPage(index) {

@@ -1,83 +1,3 @@
-<div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
-  <p class="govuk-body cirriculum__rating-choices--padding">What did you like?</p>
-  <p class="govuk-body-s ncce-label--s cirriculum__rating-choices--padding">Choose as many choices as relevant</p>
-  <div class="govuk-checkboxes">
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Felt supported', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Reduced workload', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Reduced workload', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Increased confidence', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Increased confidence', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Pupil engagment', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Pupil engagment', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <br>
-    <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
-    <br>
-  </div>
-</div>
-
-<div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
-  <p class="govuk-body cirriculum__rating-choices--padding">What did you dislike?</p>
-  <p class="govuk-body-s ncce-label--s cirriculum__rating-choices--padding">Choose as many choices as relevant</p>
-  <div class="govuk-checkboxes">
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <div class="govuk-checkboxes__item ncce-checkboxes__item">
-      <%= check_box_tag 'rating_choice', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
-      <%= label_tag "rating_choice}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-    </div>
-    <br>
-    <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
-    <br>
-  </div>
-</div>
-
-<div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
-  <p class="govuk-body cirriculum__rating-choices--padding">What did you like?</p>
-  <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Other - Tell us more to help us improve.</p>
-  <%= form_with(url: comment_path, method: 'post') do %>
-    <%= hidden_field_tag :rating_id, :rating_id, value: '' %>
-    <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
-    <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
-  <% end %>
-</div>
-
-<div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
-  <p class="govuk-body cirriculum__rating-choices--padding">What did you dislike?</p>
-  <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Other - Tell us more to help us improve.</p>
-  <%= form_with(url: comment_path, method: 'post') do %>
-    <%= hidden_field_tag :rating_id, :rating_id, value: '' %>
-    <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
-    <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
-  <% end %>
-</div>
-
 <% if user_has_rated?(id) %>
   <div class="curriculum__rating page">
     <p class="govuk-body curriculum__rating--text-only">You have already provided a rating, thank you!</p>
@@ -94,7 +14,7 @@
           class: "curriculum__rating--thumb-up",
           remote: true, 'aria-label': 'Thumbs up',
           method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
+          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessPositive' }
         ) %>
         <%= link_to(
           image_pack_tag("media/images/resources/thumb_down.svg"),
@@ -104,12 +24,86 @@
           'aria-label': 'Thumbs down',
           remote: true,
           method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
+          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessNegative' }
         ) %>
       </p>
     </div>
+    <div class="rating_page" data-rating-target="page">
+      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
+        <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you like?</p>
+        <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'I felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'I felt supported', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Reduced workload', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Reduced workload', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Increased my confidence', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Increased my confidence', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Better pupil engagement', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Better pupil engagement', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <br>
+          <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row',  data: { disable_with: true, action: 'click->rating#onChoicesSuccess' } %>
+          <br>
+        </div>
+      </div>
+    </div>
+
     <div class="rating_page rating_page--rows" data-rating-target="page">
-      <p class="govuk-body curriculum__rating--text row">Thanks for your rating!</p>
+      <p class="govuk-body govuk-!-margin-bottom-0">Thanks for your rating!</p>
+      <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Tell us more about what you liked.</p>
+      <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
+        <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
+        <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
+        <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
+      <% end %>
+    </div>
+
+    <div class="rating_page" data-rating-target="page">
+      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices">
+        <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you dislike?</p>
+        <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <div class="govuk-checkboxes__item ncce-checkboxes__item">
+            <%= check_box_tag 'rating_choice', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->course-filter#filter  change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format" %>
+            <%= label_tag "rating_choice}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+          </div>
+          <br>
+          <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row',  data: { disable_with: true, action: 'click->rating#onChoicesSuccessNegative' } %>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="rating_page rating_page--rows" data-rating-target="page">
+      <p class="govuk-body govuk-!-margin-bottom-0">Tell us more, what did you dislike?</p>
+      <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Tell us more about to help us improve.</p>
       <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
         <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
         <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
@@ -117,7 +111,7 @@
       <% end %>
     </div>
     <div class="rating_page" data-rating-target="page">
-      <p class="govuk-body curriculum__rating--text-only">Thank you for your feedback!</p>
+      <p class="govuk-body curriculum__rating--text-only"> &#128075; Thank you for your feedback!</p>
     </div>
   </div>
 <% end %>
