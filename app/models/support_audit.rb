@@ -3,7 +3,8 @@ class SupportAudit < Audited::Audit
   
   belongs_to :authoriser, :foreign_key => 'authoriser_id', required: false
 
-  validates :comment, :authoriser_id, presence: true, on: :update
+  validates :authoriser_id, presence: true, on: :update
+  validates :comment, presence: true, on: :update
 
   def add_actuating_user_details
     user = User.find_by_email(username)
