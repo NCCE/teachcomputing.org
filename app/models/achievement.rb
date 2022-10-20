@@ -1,5 +1,8 @@
 class Achievement < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: AchievementTransition,
+    initial_state: StateMachines::AchievementStateMachine.initial_state
+  ]
 
   belongs_to :activity
   belongs_to :user

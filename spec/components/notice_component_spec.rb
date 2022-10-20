@@ -20,7 +20,7 @@ RSpec.describe NoticeComponent, type: :component do
   end
 
   before do
-    render_inline(described_class.new(data))
+    render_inline(described_class.new(**data))
   end
 
   it 'adds the wrapper class' do

@@ -3,7 +3,7 @@
     <%= link_to @title, generate_download_url(@current_user, @file_path), class: 'govuk-link ncce-link' %>
   </h3>
   <div class='govuk-body-s file-card-component__meta-data'>
-    (<%= @file_type %>, <%= @file_size %>)<br>
+    (<%= @file_type %> <%= ", #{@file_size}" if @file_size.present? %>)<br>
     Updated: <%= format_date(@file_updated) %>
   </div>
 </div>

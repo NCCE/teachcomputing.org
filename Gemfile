@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.1.2'
 
 gem 'activestorage-validator'
 gem 'administrate', '~> 0.18.0'
@@ -14,7 +14,7 @@ gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'cloudflare-rails', '~> 1.1'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
-gem 'connection_pool', '~> 2.2.2'
+gem 'connection_pool', '~> 2.3.0'
 gem 'dalli', '~> 2.7.9'
 gem 'enumerize', '~> 2.5'
 gem 'faraday', '~> 1.0', require: false
@@ -23,11 +23,14 @@ gem 'geocoder', '~> 1.6', '>= 1.6.6'
 gem 'graphlient', '~> 0.4'
 gem 'htmlentities', '~> 4.3'
 gem 'humanize'
-gem 'ims-lti', '1.2.4'
+gem 'ims-lti', '2.3.2'
 gem 'jwt', '~> 2.1.0'
 gem 'lograge'
 gem 'memcachier'
 gem 'mimemagic', '~> 0.3.7'
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
 gem 'nokogiri', '~> 1.13.8'
 gem 'oauth2', '~> 1.4.4'
 gem 'omniauth', '~> 1.9.1'
@@ -40,17 +43,16 @@ gem 'puma', '~> 4.3'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.1.4.1'
-gem 'redis-rails', '~> 5.0.2'
 gem 'rest-client', '~> 2.0.2'
 gem 'scout_apm'
 gem 'sentry-rails', '~> 5.2.0'
 gem 'sentry-ruby', '~> 5.2.0'
-gem 'sidekiq', '~> 6.4.0'
+gem 'sidekiq', '~> 6.5.7'
 gem 'sitemap_generator', '~> 6.0.2'
-gem 'statesman', '~> 4.1.0'
+gem 'statesman', '~> 10.0.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 4.2'
-gem 'view_component', '~> 2.55'
+gem 'view_component', '~>2.74'
 gem 'webpacker', '~> 5.4.3'
 gem 'wicked', '~> 1.3.4'
 # must match the version used to generate the schema
@@ -60,7 +62,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'debase', '~> 0.2.4'
+  gem 'debase', '>=0.2.5.beta2'
   gem 'dotenv-rails'
   gem 'interception'
   gem 'pry'
@@ -70,7 +72,7 @@ group :development, :test do
   gem 'rubocop-changes'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'ruby-debug-ide'
+  gem 'ruby-debug-ide', '~> 0.7.3'
 end
 
 group :development do

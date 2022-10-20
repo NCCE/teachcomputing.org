@@ -35,7 +35,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
   context 'with no date' do
     before do
       test_data[:cards][0][:date] = nil
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'adds the wrapper class' do
@@ -80,7 +80,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
 
   context 'with a date' do
     before do
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'renders a date' do

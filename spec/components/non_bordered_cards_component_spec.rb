@@ -29,7 +29,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
 
   context 'without an image' do
     before do
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'adds the wrapper class' do
@@ -71,7 +71,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
   context 'with an image' do
     before do
       test_data[:cards][0][:image_url] = 'media/images/logos/isaac-logo-with-bg.svg'
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'renders an image' do
@@ -83,7 +83,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
     before do
       test_data[:cards][0][:text] = nil
       test_data[:cards][1][:text] = nil
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'does have the expected text' do
