@@ -11,7 +11,7 @@ RSpec.describe ProviderLogosComponent, type: :component do
 
   context 'when options are all false' do
     before do
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'adds the wrapper class' do
@@ -35,7 +35,7 @@ RSpec.describe ProviderLogosComponent, type: :component do
   context 'when online is true' do
     before do
       data[:online] = true
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'uses the rpf org_prefix' do
@@ -51,7 +51,7 @@ RSpec.describe ProviderLogosComponent, type: :component do
   context 'when dashboard is true and online is false' do
     before do
       data[:dashboard] = true
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'adds the modifier' do
@@ -68,7 +68,7 @@ RSpec.describe ProviderLogosComponent, type: :component do
     before do
       data[:dashboard] = true
       data[:online] = true
-      render_inline(described_class.new(data))
+      render_inline(described_class.new(**data))
     end
 
     it 'adds the modifier' do

@@ -15,7 +15,7 @@
           </p>
         </div>
         <div class="govuk-grid-column-full">
-          <%= render NonBorderedCardsComponent.new(@landing_page.contributing_partners) %>
+          <%= render NonBorderedCardsComponent.new(**@landing_page.contributing_partners) %>
         </div>
       </div>
   </div>

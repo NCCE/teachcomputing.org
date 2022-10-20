@@ -29,7 +29,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(DocumentCardsComponent.new(params))
+    render(DocumentCardsComponent.new(**params))
   end
 
   def two_cards_no_border
@@ -58,7 +58,7 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(DocumentCardsComponent.new(params))
+    render(DocumentCardsComponent.new(**params))
   end
 
   def three_cards_in_row
@@ -99,6 +99,6 @@ class DocumentCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(DocumentCardsComponent.new(params))
+    render(DocumentCardsComponent.new(**params))
   end
 end

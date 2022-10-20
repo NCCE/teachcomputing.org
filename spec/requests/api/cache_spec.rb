@@ -6,7 +6,7 @@ RSpec.describe Api::CacheController do
   context 'token is not passed' do
     describe 'DELETE #destroy' do
       before do
-        delete '/api/cache/', { params: { resource: 'unit', identifier: 'unit1' }, headers: nil }
+        delete '/api/cache/', params: { resource: 'unit', identifier: 'unit1' }, headers: nil
       end
 
       it 'returns 401 status' do
@@ -18,7 +18,7 @@ RSpec.describe Api::CacheController do
   context 'when the correct token is passed' do
     describe 'GET #show' do
       before do
-        delete '/api/cache/', { params: { resource: 'unit', identifier: 'unit1' }, headers: token_headers }
+        delete '/api/cache/', params: { resource: 'unit', identifier: 'unit1' }, headers: token_headers
       end
 
       it 'returns 204 status' do

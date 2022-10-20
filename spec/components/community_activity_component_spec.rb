@@ -10,12 +10,10 @@ RSpec.describe CommunityActivityComponent, type: :component do
     before do
       render_inline(
         described_class.new(
-          {
-            achievement: incomplete_achievement,
-            activity: activity,
-            class_name: 'custom_css_class',
-            tracking_category: 'some category'
-          }
+          achievement: incomplete_achievement,
+          activity: activity,
+          class_name: 'custom_css_class',
+          tracking_category: 'some category'
         )
       )
     end
@@ -57,12 +55,10 @@ RSpec.describe CommunityActivityComponent, type: :component do
     before do
       render_inline(
         described_class.new(
-          {
-            achievement: incomplete_achievement,
-            activity: bookable_community_activity,
-            class_name: 'custom_css_class',
-            tracking_category: 'some category'
-          }
+          achievement: incomplete_achievement,
+          activity: bookable_community_activity,
+          class_name: 'custom_css_class',
+          tracking_category: 'some category'
         )
       )
     end
@@ -76,12 +72,10 @@ RSpec.describe CommunityActivityComponent, type: :component do
     before do
       render_inline(
         described_class.new(
-          {
-            achievement: completed_achievement,
-            activity: activity,
-            class_name: 'custom_css_class',
-            tracking_category: 'some category'
-          }
+          achievement: completed_achievement,
+          activity: activity,
+          class_name: 'custom_css_class',
+          tracking_category: 'some category'
         )
       )
     end

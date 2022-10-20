@@ -16,7 +16,7 @@ class ImageReportCardComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(ImageReportCardComponent.new(params))
+    render(ImageReportCardComponent.new(**params))
   end
 
   def with_date
@@ -35,6 +35,6 @@ class ImageReportCardComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(ImageReportCardComponent.new(params))
+    render(ImageReportCardComponent.new(**params))
   end
 end

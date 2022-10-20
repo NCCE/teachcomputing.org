@@ -1,12 +1,12 @@
 require "rails_helper"
 
 RSpec.describe BorderedListCardsComponent, type: :component do
-  let(:test_data) { GetInvolved.other_ways_to_get_involved_cards}
+  let(:test_data) { GetInvolved.other_ways_to_get_involved_cards }
 
   context 'other ways to get involved cards' do
     before do
       test_data[:cards][0][:image_url] = 'media/images/logos/isaac-logo-with-bg.svg'
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'has the expected links' do

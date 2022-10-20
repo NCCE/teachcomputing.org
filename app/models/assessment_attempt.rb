@@ -1,5 +1,9 @@
 class AssessmentAttempt < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: AssessmentAttemptTransition,
+    initial_state: StateMachines::AssessmentAttemptStateMachine.initial_state
+  ]
+
   belongs_to :user
   belongs_to :assessment
 
