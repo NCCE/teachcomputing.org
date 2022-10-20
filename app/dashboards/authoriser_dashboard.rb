@@ -57,6 +57,6 @@ class AuthoriserDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(authoriser)
-    "#{authoriser.first_name} #{authoriser.last_name}"
+    "#{authoriser.first_name} #{authoriser.last_name} (#{authoriser.organisation.upcase})"
   end
 end

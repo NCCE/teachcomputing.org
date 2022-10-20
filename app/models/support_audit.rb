@@ -2,7 +2,7 @@ class SupportAudit < Audited::Audit
   before_create :add_actuating_user_details
   
   belongs_to :authoriser, :foreign_key => 'authoriser_id', required: false
-.
+
   validates :comment, :authoriser_id, presence: true, on: :update
 
   def add_actuating_user_details
