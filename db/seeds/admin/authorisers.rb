@@ -2,3 +2,6 @@ Authoriser.find_or_create_by(first_name: 'Sam', last_name: 'Cahill', organisatio
 Authoriser.find_or_create_by(first_name: 'Max', last_name: 'Slinn', organisation: :bcs)
 Authoriser.find_or_create_by(first_name: 'Steve', last_name: 'Clarke', organisation: :stem)
 Authoriser.find_or_create_by(first_name: 'Matt', last_name: 'Holmes', organisation: :stem)
+Authoriser.find_or_create_by(first_name: 'Sally', last_name: 'Hill', organisation: :stem)
+Authoriser.find_or_create_by(first_name: 'CST', organisation: :stem)
+Authoriser.find_or_create_by(first_name: 'RPF Digital', organisation: :rpf)
