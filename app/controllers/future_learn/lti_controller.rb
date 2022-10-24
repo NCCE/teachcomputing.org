@@ -6,7 +6,7 @@ module FutureLearn
       @message_authenticator = IMS::LTI::Services::MessageAuthenticator.new(
         launch_url: ENV['FL_LTI_URL'],
         params: { 
-          consumer_key: ENV['FL_LTI_CONSUMER_KEY']
+          consumer_key: ENV['FL_LTI_CONSUMER_KEY'],
           lis_person_sourcedid: current_user.id,
           lti_message_type: 'basic-lti-launch-request',
           lti_version: 'LTI-1p0',
