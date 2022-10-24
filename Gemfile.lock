@@ -120,7 +120,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bindata (2.4.12)
+    bindata (2.4.13)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
