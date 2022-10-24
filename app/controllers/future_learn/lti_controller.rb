@@ -11,8 +11,8 @@ module FutureLearn
           lti_message_type: 'basic-lti-launch-request',
           lti_version: 'LTI-1p0',
           resource_link_id: '',
-          fl_course_uuid: params[:fl_id],
-          fl_external_learner_id: current_user.id
+          custom_fl_course_uuid: params[:fl_id],
+          custom_fl_external_learner_id: current_user.id
         },
         ENV.fetch('FL_LTI_CONSUMER_SECRET')
       )
