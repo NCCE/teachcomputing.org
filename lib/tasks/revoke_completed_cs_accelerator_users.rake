@@ -18,8 +18,8 @@ namespace :csa do
   end
 
   def revoke_csa(user_details:, dry_run:, verbose:)
-    return unless user = matching_user(user_details:, verbose:)
-    
+    return unless (user = matching_user(user_details:, verbose:))
+
     remove_assessment_attempts(user:, user_details:, dry_run:, verbose:)
     unset_completed_enrolment(user:, user_details:, dry_run:, verbose:)
   end
@@ -30,14 +30,14 @@ namespace :csa do
     end
 
     user = User.find_by(stem_achiever_contact_no: user_details['STEM ID'].downcase)
-    if user == nil
+    if user.nil?
       puts "user with stem_achiever_contact_no #{user_details['STEM ID']} not found" if verbose
       return nil
     end
-    return nil unless def check_user(key: 'name', user:, user_details:, verbose:)
+    return nil unless check_user(key: 'name', user:, user_details:, verbose:)
 
-    return nil unless def check_user(key: 'email', user:, user_details:, verbose:)
-    
+    return nil unless check_user(key: 'email', user:, user_details:, verbose:)
+
     user
   end
 
@@ -60,7 +60,7 @@ namespace :csa do
 
   def unset_completed_enrolment(user:, user_details:, dry_run:, verbose:)
     user_programme_enrolment = user.user_programme_enrolment.find_by(programme_id: Programme.cs_accelerator.id)
-    if user_programme_enrolment == nil
+    if user_programme_enrolment.nil?
       puts "CSA programme enrolment not found for #{user_details['STEM ID']}" if verbose
       return
     end
