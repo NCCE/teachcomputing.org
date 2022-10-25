@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      return true if ActiveRecord::Type::Boolean.new.cast(ENV['BYPASS_ADMINISTRATE_CF_AUTH']) && (Rails.env.development? || Rails.env.test?)
+      return true if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_ADMINISTRATE_CF_AUTH', false)) && !Rails.env.production?
 
       if cookies[:CF_Authorization].nil?
         flash[:error] = 'Whoops something went wrong'
@@ -18,6 +18,10 @@ module Admin
         decoded_token = decode_cookie(cookies[:CF_Authorization])
         @admin_email = decoded_token.first['email']
       end
+    end
+
+    def authenticated_user
+      @admin_email || User.first.email
     end
 
     private
