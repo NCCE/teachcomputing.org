@@ -25,24 +25,28 @@ namespace :csa do
   end
 
   def matching_user(user_details:, verbose:)
-    ['name', 'STEM ID', 'email'].each do |expected_key|
+    ['name', 'STEM ID', 'email'].foreach do |expected_key|
       raise ArgumentError, "CSV does not contain '#{expected_key}' column" unless user_details.key?(expected_key)
+    end
 
-    prefix = "user with stem_achiever_contact_no #{user_details['STEM ID']}"
     user = User.find_by(stem_achiever_contact_no: user_details['STEM ID'].downcase)
     if user == nil
-      puts "#{prefix} not found" if verbose
-      return 0
+      puts "user with stem_achiever_contact_no #{user_details['STEM ID']} not found" if verbose
+      return nil
     end
-    if user.name.downcase != user_details['name'].downcase
-      puts "#{prefix} has the name #{user.name} in the database not #{user_details['name']} as in the CSV" if verbose
-      return 0
-    end
-    if user.email.downcase != user_details['email'].downcase
-      puts "#{prefix} has the email #{user.email} in the database not #{user_details['email']} as in the CSV" if verbose
-      return 0
-    end
+    return nil unless def check_user(key: 'name', user:, user_details:, verbose:)
+
+    return nil unless def check_user(key: 'email', user:, user_details:, verbose:)
+    
     user
+  end
+
+  def check_user(key:, user:, user_details:, verbose:)
+    if user[key].downcase != user_details[key].downcase
+      puts "#{user_details['STEM ID']} has the #{key} #{user[key]} in the database not #{user_details[key]} as in the CSV" if verbose
+      return false
+    end
+    true
   end
 
   def remove_assessment_attempts(user:, user_details:, dry_run:, verbose:)
