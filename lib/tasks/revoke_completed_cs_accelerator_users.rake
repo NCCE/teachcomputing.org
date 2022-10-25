@@ -35,16 +35,24 @@ namespace :csa do
       puts "user with stem_achiever_contact_no #{user_details['STEM ID']} not found" if verbose
       return nil
     end
-    return nil unless check_user(key: 'name', user:, user_details:, verbose:)
+    return nil unless check_user_name(user:, user_details:, verbose:)
 
-    return nil unless check_user(key: 'email', user:, user_details:, verbose:)
+    return nil unless check_user_email(user:, user_details:, verbose:)
 
     user
   end
 
-  def check_user(key:, user:, user_details:, verbose:)
-    if user[key].downcase != user_details[key].downcase
-      puts "#{user_details['STEM ID']} has the #{key} #{user[key]} in the database not #{user_details[key]} as in the CSV" if verbose
+  def check_user_name(user:, user_details:, verbose:)
+    unless (user_details['name'].downcase.include? user.first_name.downcase) && (user_details['name'].downcase.include? user.last_name.downcase)
+      puts "#{user_details['STEM ID']} has the names #{user.first_name} #{user.last_name} in the database not #{user_details['name']} as in the CSV" if verbose
+      return false
+    end
+    true
+  end
+
+  def check_user_email(user:, user_details:, verbose:)
+    if user.email.downcase != user_details['email'].downcase
+      puts "#{user_details['STEM ID']} has the email #{user.email} in the database not #{user_details['email']} as in the CSV" if verbose
       return false
     end
     true
