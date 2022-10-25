@@ -5,6 +5,7 @@ require 'csv'
 namespace :csa do
   desc 'revoke CSA completion so that teacher may be asked to take the test again. Accepts DRYRUN (false) & VERBOSE (true) vars.'
   task revoke: :environment do |_argv|
+    # Example invocation `rake csa:revoke DRYRUN=true`
     data_csv = 'csa_revoke.csv'
     dryrun = ActiveModel::Type::Boolean.new.cast(ENV.fetch('DRYRUN', 'false'))
     verbose = ActiveModel::Type::Boolean.new.cast(ENV.fetch('VERBOSE', 'true'))
