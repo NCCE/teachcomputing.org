@@ -10,7 +10,7 @@ namespace :csa do
     verbose = ActiveModel::Type::Boolean.new.cast(ENV.fetch('VERBOSE', 'true'))
     ActiveRecord::Base.transaction do
       CSV.foreach(data_csv, headers: true, skip_blanks: true) do |row|
-        revoke_csa(user_details: row, dryrun: dryrun, verbose: verbose)
+        revoke_csa(user_details: row, dryrun:, verbose:)
       end
     rescue ArgumentError => e
       log.warning "Failed to revoke CSA completion: #{e.inspect}"
