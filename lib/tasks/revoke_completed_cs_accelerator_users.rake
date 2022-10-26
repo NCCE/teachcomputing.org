@@ -68,7 +68,7 @@ namespace :csa do
   end
 
   def unset_completed_enrolment(user:, user_details:, dry_run:, verbose:)
-    user_programme_enrolment = user.user_programme_enrolment.find_by(programme_id: Programme.cs_accelerator.id)
+    user_programme_enrolment = user.user_programme_enrolments.find_by(programme_id: Programme.cs_accelerator.id)
     if user_programme_enrolment.nil?
       puts "CSA programme enrolment not found for #{user_details['STEM ID']}" if verbose
       return
