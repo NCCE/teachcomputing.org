@@ -22,8 +22,12 @@ RSpec.describe 'rake csa:revoke', type: :task do
   let(:eligible_csa_achievement) { create(:achievement, user_id: user.id, programme_id: cs_accelerator.id) }
 
   before do
+    pp cs_enrolment
     cs_enrolment.transition_to(:complete)
+    pp cs_enrolment
+    pp eligible_csa_achievement
     eligible_csa_achievement.transition_to(:complete)
+    pp eligible_csa_achievement
   end
 
   after do
@@ -41,6 +45,16 @@ RSpec.describe 'rake csa:revoke', type: :task do
     it 'removes assesment attempt' do
       task.execute
       expect(User.find(user.id).assessment_attempts).to be_empty
+    end
+
+    it 'unsets enrolment' do
+      task.execute
+      pp User.find(user.id).achievements.find(eligible_csa_achievement.id)
+      pp cs_enrolment
+      pp eligible_csa_achievement
+      expect(User.find(user.id).user_programme_enrolments.find_by(programme_id: Programme.cs_accelerator.id).complete?).to be_false
+      # puts cs_enrolment
+      # expect(cs_enrolment.complete?).to be_false
     end
   end
 end
