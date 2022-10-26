@@ -14,7 +14,7 @@ namespace :csa do
         revoke_csa(user_details: row, dryrun:, verbose:)
       end
     rescue ArgumentError => e
-      log.warning "Failed to revoke CSA completion: #{e.inspect}"
+      Rails.logger.warn "Failed to revoke CSA completion: #{e.inspect}"
     end
   end
 
