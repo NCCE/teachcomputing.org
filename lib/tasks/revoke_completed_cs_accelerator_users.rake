@@ -26,7 +26,7 @@ namespace :csa do
   end
 
   def matching_user(user_details:, verbose:)
-    ['name', 'STEM ID', 'email'].foreach do |expected_key|
+    ['name', 'STEM ID', 'email'].each do |expected_key|
       raise ArgumentError, "CSV does not contain '#{expected_key}' column" unless user_details.key?(expected_key)
     end
 
@@ -60,7 +60,7 @@ namespace :csa do
 
   def remove_assessment_attempts(user:, user_details:, dry_run:, verbose:)
     if verbose
-      user.assessment_attempts.foreach do |assessment_attempt|
+      user.assessment_attempts.each do |assessment_attempt|
         puts "#{user_details['STEM ID']}: destroying #{assessment_attempt}"
       end
     end
