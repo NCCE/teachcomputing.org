@@ -1,0 +1,52 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-dockerfile
+{
+  "name": "Teachcomputing",
+  // Sets the run context to one level up instead of the .devcontainer folder.
+  "workspaceFolder": "/app",
+  // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Uncomment the next line to run commands after the container is created - for example installing curl.
+  "postCreateCommand": "apk --no-cache add bash bash-completion sudo openssh docker",
+  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=vscode_extensions,target=/root/.vscode-server/extensions,type=volume",
+    "source=ssh,target=/root/.ssh,type=volume"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ninoseki.vscode-gem-lens",
+        "rebornix.ruby",
+        "tabnine.tabnine-vscode",
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "connorshea.vscode-ruby-test-adapter",
+        "castwide.solargraph",
+        "wmaurer.change-case",
+        "aliariff.auto-add-brackets",
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "kumar-harsh.graphql-for-vscode",
+        "hashicorp.terraform",
+        "ivangabriele.vscode-heroku",
+        "pkosta2005.heroku-command",
+        "lokalise.i18n-ally",
+        "yzhang.markdown-all-in-one",
+        "humao.rest-client",
+        "dzannotti.vscode-babel-coloring",
+        "mikestead.dotenv",
+        "wingrunr21.vscode-ruby"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "shutdownAction": "stopCompose"
+}
