@@ -35,7 +35,6 @@ gem 'omniauth-oauth2', '~> 1.6.0'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'pg', '~> 1.1'
 gem 'prawn', '~> 2.3'
-gem 'pretender', '~> 0.3.4', require: false
 gem 'puma', '~> 4.3'
 gem 'rack-attack', '~> 5.4.2'
 gem 'rack-cors', require: 'rack/cors'
