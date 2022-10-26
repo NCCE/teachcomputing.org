@@ -57,4 +57,20 @@ RSpec.describe 'rake csa:revoke', type: :task do
       # expect(cs_enrolment.complete?).to be_false
     end
   end
+
+  context 'with a mismatched stem_achiever_contact_no' do
+    before do
+      CSV.open(csv_path, 'w', write_headers: true,
+                              headers: ['name', 'STEM ID', 'email']) do |writer|
+        writer << ["#{user.first_name} #{user.last_name}", SecureRandom.uuid.upcase, user.email]
+      end
+    end
+
+    it 'removes logs a warning' do
+      allow(Rails.logger).to receive(:warn).at_least(:once)
+      task.execute
+      #expect(Rails.logger).to have_received(:warn)
+      expect(User.find(user.id).assessment_attempts).to be_empty
+    end
+  end
 end
