@@ -3,10 +3,11 @@
 require 'rails_helper'
 require 'csv'
 require 'rake'
+require 'securerandom'
 
 RSpec.describe 'rake csa:revoke', type: :task do
   let(:csv_path) { 'csa_revoke.csv' }
-  let(:user) { create(:user) }
+  let(:user) { create(:user, stem_achiever_contact_no: SecureRandom.uuid) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:cs_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id) }
@@ -39,7 +40,7 @@ RSpec.describe 'rake csa:revoke', type: :task do
 
     it 'removes assesment attempt' do
       task.execute
-      expect(user.assessment_attempts).to be_empty
+      expect(User.find_by(user.id).assessment_attempts).to be_empty
     end
   end
 end
