@@ -10,7 +10,7 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Uncomment the next line to run commands after the container is created - for example installing curl.
-  "postCreateCommand": "apk --no-cache add bash bash-completion sudo openssh docker",
+  "postCreateCommand": "apk --no-cache add git less bash-completion sudo openssh docker",
   // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
