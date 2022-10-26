@@ -27,7 +27,6 @@
         "eamodio.gitlens",
         "github.vscode-pull-request-github",
         "connorshea.vscode-ruby-test-adapter",
-        "castwide.solargraph",
         "wmaurer.change-case",
         "aliariff.auto-add-brackets",
         "editorconfig.editorconfig",
@@ -44,7 +43,10 @@
         "wingrunr21.vscode-ruby"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "ruby.lint": {
+          "rubocop": true
+        }
       }
     }
   },

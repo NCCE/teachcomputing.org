@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
   before_action :authenticate
-  impersonates :user if ENV['USER_TO_IMPERSONATE'].present?
 
   def authenticate
     return unless ENV['BASIC_AUTH_PASSWORD']

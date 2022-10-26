@@ -171,11 +171,6 @@ If you prefer to use `byebug` you'll _first_ need to attach to the container whi
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
-### User Impersonation
-
-When debugging it is sometimes desirable to see the site from a users perspective.
-To do so without needing to change password you can set the `USER_TO_IMPERSONATE` environment variable in the `.env` file to the desired users ID.
-
 ### Troubleshooting
 
 ##### General
