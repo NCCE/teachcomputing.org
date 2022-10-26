@@ -40,7 +40,7 @@ RSpec.describe 'rake csa:revoke', type: :task do
 
     it 'removes assesment attempt' do
       task.execute
-      expect(User.find_by(user.id).assessment_attempts).to be_empty
+      expect(User.find(user.id).assessment_attempts).to be_empty
     end
   end
 end
