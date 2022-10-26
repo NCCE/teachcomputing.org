@@ -7,11 +7,11 @@ namespace :csa do
   task revoke: :environment do |_argv|
     # Example invocation `rake csa:revoke DRYRUN=true`
     data_csv = 'csa_revoke.csv'
-    dryrun = ActiveModel::Type::Boolean.new.cast(ENV.fetch('DRYRUN', 'false'))
+    dry_run = ActiveModel::Type::Boolean.new.cast(ENV.fetch('DRYRUN', 'false'))
     verbose = ActiveModel::Type::Boolean.new.cast(ENV.fetch('VERBOSE', 'true'))
     ActiveRecord::Base.transaction do
       CSV.foreach(data_csv, headers: true, skip_blanks: true) do |row|
-        revoke_csa(user_details: row, dryrun:, verbose:)
+        revoke_csa(user_details: row, dry_run:, verbose:)
       end
     rescue ArgumentError => e
       Rails.logger.warn "Failed to revoke CSA completion: #{e.inspect}"
