@@ -1611,11 +1611,10 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-# TODO: Why is this new course titled the same as the one above?
 a = Activity.find_or_create_by(stem_course_template_no: '16aa21f9-9d53-ed11-9562-0022481b5a27') do |activity|
   activity.title = 'Supporting GCSE computer science students at grades 1 to 3'
   activity.credit = 10
-  activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-to-3'
+  activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-to-3-face-to-face'
   activity.stem_course_template_no = '16aa21f9-9d53-ed11-9562-0022481b5a27'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
