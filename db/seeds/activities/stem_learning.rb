@@ -1611,6 +1611,20 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
+# TODO: Why is this new course titled the same as the one above?
+a = Activity.find_or_create_by(stem_course_template_no: '16aa21f9-9d53-ed11-9562-0022481b5a27') do |activity|
+  activity.title = 'Supporting GCSE computer science students at grades 1 to 3'
+  activity.credit = 20
+  activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-to-3'
+  activity.stem_course_template_no = '16aa21f9-9d53-ed11-9562-0022481b5a27'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP278'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+# TODO: Why, in this next fragment of code, is the variable `a` never used. What's the code do?
 a = Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943-000d3a8740da') do |activity|
   activity.title = 'Introduction to Isaac GCSE computer science - short course'
   activity.credit = 10
