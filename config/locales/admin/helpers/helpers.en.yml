@@ -1,0 +1,6 @@
+en:
+  helpers:
+    label:
+      support_audit:
+        auditable: "Affected user"
+        username: "Changed by"

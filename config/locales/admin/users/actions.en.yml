@@ -1,6 +1,6 @@
 en:
   admin:
-    application:
+    users:
       actions:
         title: "Actions"
         sync:

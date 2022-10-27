@@ -6,14 +6,17 @@ ruby '3.1.2'
 gem 'activestorage-validator'
 gem 'administrate', '~> 0.18.0'
 gem 'administrate-field-active_storage', '~> 0.3.4'
+gem 'administrate-field-jsonb'
 gem 'administrate-field-nested_has_many', '~> 1.3.0'
 gem 'attr_encrypted', '~> 3.1.0'
+gem 'audited', '~> 5.0'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'cloudflare-rails', '~> 1.1'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.3.0'
 gem 'dalli', '~> 2.7.9'
+gem 'enumerize', '~> 2.5'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
@@ -58,7 +61,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'debase', '>=0.2.5.beta2'
+  gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'
   gem 'pry'
@@ -68,7 +71,7 @@ group :development, :test do
   gem 'rubocop-changes'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'ruby-debug-ide', '~> 0.7.3'
+  gem 'ruby-debug-ide'
 end
 
 group :development do
