@@ -10,6 +10,18 @@ export default class extends Controller {
     this.showPage(0)
   }
 
+  filter(ev) {
+
+    try {
+      Object.values(this.formTarget).find(field => field.name == 'js_enabled').value = true;
+      Rails.fire(this.formTarget, 'submit');
+    } catch (err) {
+      clearInterval(this.intervalId);
+      this.loadingBarTarget.innerText = "An error has occurred, please refresh the page and try again.";
+      this.handleError(err);
+    }
+  }
+
   onRatingSuccessPositive(ev) {
     const { origin, rating_id } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.rate) return
@@ -45,7 +57,7 @@ export default class extends Controller {
     const comment = ev.currentTarget.elements.namedItem('comment')
     if (comment && !comment.value) {
       this.preventFormSubmission(ev)
-      this.showPage(2)
+      this.showPage(5)
     }
   }
 
