@@ -37,7 +37,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '88715914-72ee-4b26-a22b-4f2d610ed267') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '88715914-72ee-4b26-a22b-4f2d610ed267') do |activity|
   activity.title = 'NCCE Train the Trainer'
   activity.credit = 0
   activity.slug = 'ncce-train-the-trainer'
@@ -149,7 +149,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '46c07f3e-b9b2-4f0c-ba56-52319aadb955') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '46c07f3e-b9b2-4f0c-ba56-52319aadb955') do |activity|
   activity.title = 'Key stage 3 computing for non-specialists'
   activity.credit = 0
   activity.slug = 'key-stage-3-computing-for-non-specialists'
@@ -433,7 +433,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811-000d3a86d545') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'dbb7808c-b888-ea11-a811-000d3a86d545') do |activity|
   activity.title = 'Key Stage 3 computing for the non-specialist teacher'
   activity.credit = 10
   activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher-remote'
@@ -503,7 +503,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce') do |activity|
   activity.title = 'Key Stage 3 computing for the non-specialist teacher'
   activity.credit = 10
   activity.slug = 'key-stage-3-computing-for-the-non-specialist-teacher'
@@ -621,7 +621,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '952bb189-4239-eb11-a813-000d3a86d545') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '952bb189-4239-eb11-a813-000d3a86d545') do |activity|
   activity.title = 'An introduction to teaching robotics using VEXcode VR'
   activity.credit = 0
   activity.slug = 'an-introduction-to-teaching-robotics-using-vexcode-vr'
@@ -655,7 +655,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'f12d0fbd-993b-eb11-a813-000d3a86d545') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'f12d0fbd-993b-eb11-a813-000d3a86d545') do |activity|
   activity.title = 'Enriching secondary computing with STEM Ambassadors'
   activity.credit = 10
   activity.slug = 'enriching-secondary-computing-with-stem-ambassadors'
@@ -737,7 +737,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '7ab53294-7a6c-eb11-a812-000d3a872800') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '7ab53294-7a6c-eb11-a812-000d3a872800') do |activity|
   activity.title = 'Computing as a second subject for non-specialist teachers'
   activity.credit = 10
   activity.slug = 'computing-as-a-second-subject-for-non-specialist-teachers'
@@ -1007,7 +1007,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'b9af812f-4b8d-eb11-b1ac-0022481a6ad5') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'b9af812f-4b8d-eb11-b1ac-0022481a6ad5') do |activity|
   activity.title = 'Assessment in secondary computing'
   activity.credit = 10
   activity.slug = 'assessment-in-secondary-computing'
@@ -1031,7 +1031,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
   activity.title = 'Encouraging girls into GCSE computer science'
   activity.credit = 10
   activity.slug = 'encouraging-girls-into-gcse-computer-science'
@@ -1055,7 +1055,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '039c98c5-3c91-eb11-b1ac-000d3a86ec4a') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '039c98c5-3c91-eb11-b1ac-000d3a86ec4a') do |activity|
   activity.title = 'Careers and enrichment in primary computing with STEM Ambassadors in your region'
   activity.credit = 10
   activity.slug = 'careers-and-enrichment-in-primary-computing-with-stem-ambassadors-in-your-region'
@@ -1117,7 +1117,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000d3a8747c3') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS2 Crumble'
   activity.credit = 10
   activity.slug = 'physical-computing-kit-ks2-crumble'
@@ -1127,7 +1127,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236
   activity.stem_activity_code = 'CP252'
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS4 Raspberry Pi Pico'
   activity.credit = 10
   activity.slug = 'physical-computing-kit-ks4-raspberry-pi-pico'
@@ -1137,7 +1137,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236
   activity.stem_activity_code = 'CP254'
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236-000d3a8747c3') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '07ddd6da-55b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS3 micro:bit'
   activity.credit = 10
   activity.slug = 'physical-computing-kit-ks3-micro-bit'
@@ -1236,7 +1236,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'e4cc4e34-329d-eb11-b1ac-000d3a86e608') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'e4cc4e34-329d-eb11-b1ac-000d3a86e608') do |activity|
   activity.title = 'Diagnostic assessment for GCSE computer science'
   activity.credit = 10
   activity.slug = 'diagnostic-assessment-for-gcse-computer-science'
@@ -1403,7 +1403,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a') do |activity|
   activity.title = 'Getting started in Year 1'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-1'
@@ -1414,7 +1414,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6-000d3a0ca796') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6-000d3a0ca796') do |activity|
   activity.title = 'Getting started in Year 4'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-4'
@@ -1425,7 +1425,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '02b58914-2125-ec11-b6e6-000d3a0caf8a') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '02b58914-2125-ec11-b6e6-000d3a0caf8a') do |activity|
   activity.title = 'Getting started in Year 2'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-2'
@@ -1436,7 +1436,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '02b58914-2125-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000d3a0ca796') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000d3a0ca796') do |activity|
   activity.title = 'Getting started in Year 6'
   activity.credit = 10
   activity.slug = 'getting-started-in-year-6'
@@ -1447,7 +1447,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6-000d3a0caf14') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6-000d3a0caf14') do |activity|
   activity.title = 'CS Accelerator for all'
   activity.credit = 10
   activity.slug = 'cs-accelerator-for-all'
@@ -1494,7 +1494,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f-000d3a0cf2a0') do |activity|
   activity.title = 'Behaviour for learning in a computing environment'
   activity.credit = 10
   activity.slug = 'behaviour-for-learning-in-a-computing-environment'
@@ -1505,7 +1505,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '331f7ac5-6f56-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000d3a0d0cfb') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000d3a0d0cfb') do |activity|
   activity.title = 'Teach Computing Conference'
   activity.credit = 10
   activity.slug = 'teach-computing-conference'
@@ -1529,7 +1529,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Online safety through primary computing'
   activity.credit = 10
   activity.slug = 'online-safety-through-primary-computing'
@@ -1553,7 +1553,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: 'e714988b-b55d-ec11-8f8f-0022481b0af9') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'e714988b-b55d-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Preparing to take the CSA test - short course'
   activity.credit = 10
   activity.slug = 'preparing-to-take-the-csa-test'
@@ -1564,7 +1564,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'e714988b-b55d-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '890f2dfd-b85d-ec11-8f8f-0022481b0af9') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '890f2dfd-b85d-ec11-8f8f-0022481b0af9') do |activity|
   activity.title = 'Getting started with Python programming - short course'
   activity.credit = 10
   activity.slug = 'getting-started-with-python-programming'
@@ -1575,7 +1575,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '890f2dfd-b85d-ec11-8f8f
   activity.remote_delivered_cpd = true
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '87c4cf4b-3c5f-ec11-8f8f-0022481b0426') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '87c4cf4b-3c5f-ec11-8f8f-0022481b0426') do |activity|
   activity.title = 'Preparing for Ofsted in primary computing - short course'
   activity.credit = 10
   activity.slug = 'preparing-for-ofsted-in-primary-computing'
@@ -1624,8 +1624,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-# TODO: Why, in this next fragment of code, is the variable `a` never used. What's the code do?
-a = Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943-000d3a8740da') do |activity|
+Activity.find_or_create_by(stem_course_template_no: 'da297734-046f-ec11-8943-000d3a8740da') do |activity|
   activity.title = 'Introduction to Isaac GCSE computer science - short course'
   activity.credit = 10
   activity.slug = 'introduction-to-isaac-gcse-computer-science'
@@ -1830,7 +1829,7 @@ end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee') do |activity|
   activity.title = 'Introduction to the micro:bit in key stage 2 - short course'
   activity.credit = 10
   activity.slug = 'introduction-to-the-micro-bit-in-key-stage-2'
@@ -1852,7 +1851,7 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '5be69f65-60c1-ec11-983e-0022481b16a0') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '5be69f65-60c1-ec11-983e-0022481b16a0') do |activity|
   activity.title = 'Preparing for Ofsted in secondary computing'
   activity.credit = 10
   activity.slug = 'preparing-for-ofsted-in-secondary-computing'
