@@ -674,7 +674,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
-  nokogiri (~> 1.13.8)
+  nokogiri (~> 1.13.9)
   oauth2 (~> 1.4.4)
   omniauth (~> 1.9.1)
   omniauth-oauth2 (~> 1.6.0)
