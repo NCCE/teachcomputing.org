@@ -117,18 +117,18 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Computing systems and networks - Systems and searching',
-        url: '/curriculum/key-stage-2/computing-systems-and-networks-sharing-information',
-        description: 'Check out our newly re-structured year 5 unit. Where do we find Computing Systems in the world and how do they help us find the information which we need online?',
+        title: 'Year 1: Creating media – Digital painting',
+        url: '/curriculum/key-stage-1/creating-media-digital-painting',
+        description: 'Help learners develop their mouse-skills as they create digital paintings. Recreate famous artwork digitally and recognise how technology can be used for creative expression.',
         event_label: 'Featured unit 1',
-        updated_at: 'Updated June 2022'
+        updated_at: 'Updated November 2022'
       },
       {
-        title: 'Computing systems and networks - Communication and collaboration',
-        url: '/curriculum/key-stage-2/computing-systems-and-networks-communication',
-        description: 'Check our our newly re-structured year 6 unit. The internet has had a huge impact on opportunities to communicate and collaborate with others. Learn how this works and how to do so safely!',
+        title: 'Year 5: Creating media – Introduction to vector graphics',
+        url: '/curriculum/key-stage-2/creating-media-vector-drawing',
+        description: 'Using a range of drawing tools, learners create vector graphics. They develop their understanding of combining shapes to make images by using layering and grouping.',
         event_label: 'Featured unit 2',
-        updated_at: 'Updated June 2022'
+        updated_at: 'Updated November 2022'
       }
     ]
   end
