@@ -34,24 +34,24 @@
         <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
         <div class="govuk-checkboxes">
           <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'I felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_1" %>
-            <%= label_tag "rating_choice_1}", 'I felt supported', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            <%= check_box_tag 'rating_choices[]', 'I felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1" %>
+            <%= label_tag "rating_choice_1", 'I felt supported', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
           </div>
           <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Reduced workload', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_2" %>
-            <%= label_tag "rating_choice_2}", 'Reduced workload', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            <%= check_box_tag 'rating_choices[]', 'Reduced workload', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2" %>
+            <%= label_tag "rating_choice_2", 'Reduced workload', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
           </div>
           <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Increased my confidence', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_3" %>
-            <%= label_tag "rating_choice_3}", 'Increased my confidence', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            <%= check_box_tag 'rating_choices[]', 'Increased my confidence', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3" %>
+            <%= label_tag "rating_choice_3", 'Increased my confidence', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
           </div>
           <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Better pupil engagement', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_4" %>
-            <%= label_tag "rating_choice_4}", 'Better pupil engagement', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            <%= check_box_tag 'rating_choices[]', 'Better pupil engagement', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4" %>
+            <%= label_tag "rating_choice_4", 'Better pupil engagement', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
           </div>
           <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_5" %>
-            <%= label_tag "rating_choice_5}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5" %>
+            <%= label_tag "rating_choice_5", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
           </div>
           <br>
           <%= submit_tag 'Submit',
@@ -80,33 +80,33 @@
         <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you dislike?</p>
         <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
         <div class="govuk-checkboxes">
-          <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_1" %>
-            <%= label_tag "rating_choice_1}", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-          </div>
-          <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_2" %>
-            <%= label_tag "rating_choice_2}", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-          </div>
-          <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_3" %>
-            <%= label_tag "rating_choice_3}", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-          </div>
-          <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_4" %>
-            <%= label_tag "rating_choice_4}", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-          </div>
-          <div class="govuk-checkboxes__item ncce-checkboxes__item">
-            <%= check_box_tag 'rating_choice[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { action: 'change->rating#filter  change->course-filter#toggleActiveCheckbox' }, id: "rating_choice_5" %>
-            <%= label_tag "rating_choice_5}", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
-          </div>
-          <br>
-          <%= submit_tag 'Submit',
-            class: 'govuk-button button button--small button--inline row',
-            data: {
-              action: 'change->rating#filter click->rating#onChoicesSuccessNegative'
-              }
-          %>
+          <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1" %>
+              <%= label_tag "rating_choice_1", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2" %>
+              <%= label_tag "rating_choice_2", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3" %>
+              <%= label_tag "rating_choice_3", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4" %>
+              <%= label_tag "rating_choice_4", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5" %>
+              <%= label_tag "rating_choice_5", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <br>
+            <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingIdChoices' %>
+            <%= submit_tag 'Submit',
+              class: 'govuk-button button button--small button--inline row'
+            %>
+            <% end %>
           <br>
         </div>
       </div>

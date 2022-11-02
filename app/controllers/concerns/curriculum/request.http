@@ -1,0 +1,11 @@
+POST https://staging-curriculum.teachcomputing.org/graphql
+Content-Type: application/json
+Response-Type: application/json
+Authorization: Bearer d7a4b57283f0438083fb0a7424ae48cc
+X-REQUEST-TYPE: GraphQL
+
+query {
+  units {
+    isaac_url
+  }
+}

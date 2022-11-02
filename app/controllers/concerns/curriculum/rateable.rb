@@ -51,7 +51,7 @@ module Curriculum
       response = client.update_rating(
         id: request[:rating_id],
         key: :choices,
-        value: request[:choices],
+        value: request[:rating_choices],
         context: 'update_rating'
       )
 

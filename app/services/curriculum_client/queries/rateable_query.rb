@@ -38,7 +38,7 @@ module CurriculumClient
           mutation {
             updateRating(
               id: "#{id}"
-              #{key}: "#{value}"
+              #{key}: ["#{value.join('","')}"]
             )
             #{fields}
           }

@@ -1,25 +1,13 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  AJAX_LISTENERS = { rate: 'rate', comment: 'comment' }
-  static targets = ['page', 'ratingId']
+  AJAX_LISTENERS = { rate: 'rate', choices: 'choices', comment: 'comment' }
+  static targets = ['page', 'ratingId', 'ratingIdChoices']
   clearText = true
   retrievedRatingId = ''
 
   initialize() {
     this.showPage(0)
-  }
-
-  filter(ev) {
-
-    try {
-      Object.values(this.formTarget).find(field => field.name == 'js_enabled').value = true;
-      Rails.fire(this.formTarget, 'submit');
-    } catch (err) {
-      clearInterval(this.intervalId);
-      this.loadingBarTarget.innerText = "An error has occurred, please refresh the page and try again.";
-      this.handleError(err);
-    }
   }
 
   onRatingSuccessPositive(ev) {
@@ -39,23 +27,38 @@ export default class extends Controller {
 
     if (!rating_id) console.error('No rating ID returned')
     this.retrievedRatingId = rating_id
-    this.ratingIdTarget.value = rating_id
+    this.ratingIdChoicesTarget.value = rating_id
 
     this.showPage(3)
   }
 
-  onCommentBeforeSend(ev) {
-    if (this.ratingIdTarget.value !== this.retrievedRatingId) {
+  checkForMismatch(ev, target) {
+    if (this[target].value !== this.retrievedRatingId) {
       this.preventFormSubmission(ev)
-      this.ratingIdTarget.value = this.retrievedRatingId
+      this[target].value = this.retrievedRatingId
       console.error(
         'There is a mismatch between the id retrieved and the id sent, the request has been aborted and the id reset.'
       )
     }
+  }
+
+  onCommentBeforeSend(ev) {
+    this.checkForMismatch(ev, 'ratingIdTarget')
 
     // Allow users to submit an empty response, but prevent a db call
     const comment = ev.currentTarget.elements.namedItem('comment')
     if (comment && !comment.value) {
+      this.preventFormSubmission(ev)
+      this.showPage(5)
+    }
+  }
+
+  onChoicesBeforeSend(ev) {
+    this.checkForMismatch(ev, 'ratingIdChoicesTarget')
+
+    // Allow users to submit an empty response, but prevent a db call
+    const choices = ev.currentTarget.elements.namedItem('choices')
+    if (choices && !choices.value) {
       this.preventFormSubmission(ev)
       this.showPage(5)
     }
@@ -68,13 +71,16 @@ export default class extends Controller {
     this.showPage(5)
   }
 
-  onChoicesSuccess() {
-    this.showPage(2)
-  }
-
-  onChoicesSuccessNegative() {
+  onChoicesSuccess(ev) {
+    debugger
+    const { origin, rating_choice, rating_id } = ev.detail[0]
+    if (origin !== this.AJAX_LISTENERS.choices) return
     this.showPage(4)
   }
+
+  // onChoicesSuccessNegative() {
+  //   this.showPage(5)
+  // }
 
   showPage(index) {
     this.index = index
