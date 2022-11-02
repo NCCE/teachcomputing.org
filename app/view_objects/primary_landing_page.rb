@@ -121,14 +121,14 @@ class PrimaryLandingPage
         url: '/curriculum/key-stage-1/creating-media-digital-painting',
         description: 'Help learners develop their mouse-skills as they create digital paintings. Recreate famous artwork digitally and recognise how technology can be used for creative expression.',
         event_label: 'Featured unit 1',
-        updated_at: 'Updated November 2022'
+        updated_at: 'Featured unit'
       },
       {
         title: 'Year 5: Creating media – Introduction to vector graphics',
         url: '/curriculum/key-stage-2/creating-media-vector-drawing',
         description: 'Using a range of drawing tools, learners create vector graphics. They develop their understanding of combining shapes to make images by using layering and grouping.',
         event_label: 'Featured unit 2',
-        updated_at: 'Updated November 2022'
+        updated_at: 'Featured unit'
       }
     ]
   end
