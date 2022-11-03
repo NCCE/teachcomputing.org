@@ -25,52 +25,6 @@
 @import "administrate/components/search";
 @import "administrate/components/actions";
 
+@import "administrate/fields/audited_json_viewer";
+
 @import "administrate/utilities/text-color";
-
-@import "trix/dist/trix";
-@import "selectize";
-
-// We need to override trix.css’s image gallery styles to accommodate the
-// <action-text-attachment> element we wrap around attachments. Otherwise,
-// images in galleries will be squished by the max-width: 33%; rule.
-.trix-content {
-  .attachment-gallery {
-
-    >action-text-attachment,
-    >.attachment {
-      flex: 1 0 33%;
-      padding: 0 0.5em;
-      max-width: 33%;
-    }
-
-    &.attachment-gallery--2,
-    &.attachment-gallery--4 {
-
-      >action-text-attachment,
-      >.attachment {
-        flex-basis: 50%;
-        max-width: 50%;
-      }
-    }
-  }
-
-  action-text-attachment {
-    .attachment {
-      padding: 0 !important;
-      max-width: 100% !important;
-    }
-  }
-}
-
-.field-unit--rich-text-area-field {
-  .field-unit__field {
-    width: 80%;
-  }
-}
-
-.field-unit--nested-has-many .nested-fields {
-  border: solid 1px #dfe0e1;
-  padding: 1.5em;
-}
-
-@import "flatpickr/dist/flatpickr.min";

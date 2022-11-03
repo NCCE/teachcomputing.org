@@ -13,7 +13,7 @@ class ReportCardComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(ReportCardComponent.new(params))
+    render(ReportCardComponent.new(**params))
   end
 
   def with_date
@@ -30,7 +30,7 @@ class ReportCardComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(ReportCardComponent.new(params))
+    render(ReportCardComponent.new(**params))
   end
 
   def with_stats_date
@@ -46,6 +46,6 @@ class ReportCardComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(ReportCardComponent.new(params))
+    render(ReportCardComponent.new(**params))
   end
 end

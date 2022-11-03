@@ -24,7 +24,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(NonBorderedCardsComponent.new(params))
+    render(NonBorderedCardsComponent.new(**params))
   end
 
   def two_cards
@@ -52,6 +52,6 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(NonBorderedCardsComponent.new(params))
+    render(NonBorderedCardsComponent.new(**params))
   end
 end

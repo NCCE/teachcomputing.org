@@ -10,7 +10,7 @@ AllCops:
     - "spec/fixtures/**/*"
     - "tmp/**/*"
     - "db/**/*"
-  TargetRubyVersion: 2.7.2
+  TargetRubyVersion: 3.1.2
   NewCops: enable
 
 Layout/EndOfLine:

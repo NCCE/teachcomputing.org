@@ -1,8 +1,0 @@
-en:
-  admin:
-    application:
-      actions:
-        title: "Actions"
-        sync:
-          label: "Sync with Stem"
-          complete: "Sync complete"

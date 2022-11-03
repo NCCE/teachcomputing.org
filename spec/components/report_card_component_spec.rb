@@ -18,7 +18,7 @@ RSpec.describe ReportCardComponent, type: :component do
 
   context 'with no date' do
     before do
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'adds the wrapper class' do
@@ -53,7 +53,7 @@ RSpec.describe ReportCardComponent, type: :component do
   context 'with a date' do
     before do
       test_data[:date] = 'May 2021'
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'renders a date' do
@@ -64,7 +64,7 @@ RSpec.describe ReportCardComponent, type: :component do
   context 'with a stats date' do
     before do
       test_data[:stats_date] = 'These stats are not accurate'
-      render_inline(described_class.new(test_data))
+      render_inline(described_class.new(**test_data))
     end
 
     it 'renders a stats date' do

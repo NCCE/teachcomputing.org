@@ -16,6 +16,6 @@ class RelatedLinksComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(RelatedLinksComponent.new(params))
+    render(RelatedLinksComponent.new(**params))
   end
 end

@@ -1,3 +1,5 @@
+require 'audited'
+
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -27,6 +29,9 @@ class User < ApplicationRecord
   after_create :schedule_fetching_of_course_bookings
 
   scope :without_forgotten, -> { where(forgotten: false) }
+
+  audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
+  alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
     where(stem_user_id: id).first_or_initialize.tap do |user|

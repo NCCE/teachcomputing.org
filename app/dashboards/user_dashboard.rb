@@ -27,7 +27,8 @@ class UserDashboard < Administrate::BaseDashboard
     teacher_reference_number: Field::String,
     stem_achiever_organisation_no: Field::String,
     future_learn_organisation_memberships: Field::Text,
-    forgotten: Field::Boolean
+    forgotten: Field::Boolean,
+    audits: Field::HasMany.with_options(sort_by: 'created_at', direction: 'desc')
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -46,19 +47,20 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    email
     first_name
     last_name
-    email
+    audits
     last_sign_in_at
     stem_user_id
     stem_achiever_contact_no
-    teacher_reference_number
     future_learn_organisation_memberships
     created_at
     updated_at
     forgotten
     user_programme_enrolments
     achievements
+    teacher_reference_number
     assessment_attempts
   ].freeze
 
@@ -89,6 +91,6 @@ class UserDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(user)
-    "#{user.email}"
+    user.email.to_s
   end
 end

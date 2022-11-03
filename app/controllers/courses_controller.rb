@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
   def assign_params
     @filter_params = filter_params
     @course_filter = Achiever::CourseFilter.new(
-      filter_params: filter_params
+      filter_params:
     )
   end
 

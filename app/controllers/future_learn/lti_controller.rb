@@ -3,21 +3,19 @@ module FutureLearn
     before_action :authenticate_user!
 
     def show
-      @consumer = IMS::LTI::ToolConsumer.new(
-        ENV['FL_LTI_CONSUMER_KEY'],
-        ENV['FL_LTI_CONSUMER_SECRET'],
-        'launch_url' => ENV['FL_LTI_URL']
+      @message_authenticator = IMS::LTI::Services::MessageAuthenticator.new(
+        ENV.fetch('FL_LTI_URL'),
+        {
+          consumer_key: ENV.fetch('FL_LTI_CONSUMER_KEY'),
+          lis_person_sourcedid: current_user.id,
+          lti_message_type: 'basic-lti-launch-request',
+          lti_version: 'LTI-1p0',
+          resource_link_id: '',
+          custom_fl_course_uuid: params[:fl_id],
+          custom_fl_external_learner_id: current_user.id
+        },
+        ENV.fetch('FL_LTI_CONSUMER_SECRET')
       )
-
-      @consumer.custom_params = {
-        fl_course_uuid: params[:fl_id],
-        fl_external_learner_id: current_user.id
-      }
-
-      @consumer.lis_person_sourcedid = current_user.id
-      @consumer.lti_message_type = 'basic-lti-launch-request'
-      @consumer.lti_version = 'LTI-1p0'
-      @consumer.resource_link_id = ''
 
       render :show, layout: false
     end

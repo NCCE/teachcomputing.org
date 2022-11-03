@@ -12,7 +12,7 @@ class HeroMediaComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(HeroMediaComponent.new(params))
+    render(HeroMediaComponent.new(**params))
   end
 
   def with_video
@@ -27,6 +27,6 @@ class HeroMediaComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(HeroMediaComponent.new(params))
+    render(HeroMediaComponent.new(**params))
   end
 end
