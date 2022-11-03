@@ -52,9 +52,10 @@ module Curriculum
         id: request[:rating_id],
         key: :choices,
         value: request[:rating_choices],
-        context: 'update_rating'
+        context: 'update_rating',
+        fields: 'id'
       )
-
+      # response.rating_id = request[:rating_id]
       render json: {
         origin: __method__.to_s,
         data: response

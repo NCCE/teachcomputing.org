@@ -43,6 +43,7 @@ export default class extends Controller {
   }
 
   onCommentBeforeSend(ev) {
+    debugger
     this.checkForMismatch(ev, 'ratingIdTarget')
 
     // Allow users to submit an empty response, but prevent a db call
@@ -64,20 +65,22 @@ export default class extends Controller {
     }
   }
 
+  onChoicesSuccess(ev) {
+    const { origin, data: {table: {rating_id}} } = ev.detail[0]
+    if (origin !== this.AJAX_LISTENERS.choices) return
+    debugger
+    if (!rating_id) console.error('No rating ID returned')
+    this.retrievedRatingId = rating_id
+    this.ratingIdTarget.value = rating_id
+    this.showPage(4)
+  }
+
   onCommentSuccess(ev) {
     const { origin } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.comment) return
 
     this.showPage(5)
   }
-
-  onChoicesSuccess(ev) {
-    debugger
-    const { origin, rating_choice, rating_id } = ev.detail[0]
-    if (origin !== this.AJAX_LISTENERS.choices) return
-    this.showPage(4)
-  }
-
   // onChoicesSuccessNegative() {
   //   this.showPage(5)
   // }
