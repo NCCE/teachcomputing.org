@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 
 export default class extends Controller {
   AJAX_LISTENERS = { rate: 'rate', choices: 'choices', comment: 'comment' }
-  static targets = ['page', 'ratingId', 'ratingIdChoices']
+  static targets = ['page', 'ratingId']
   clearText = true
   retrievedRatingId = ''
 
@@ -13,10 +13,9 @@ export default class extends Controller {
   onRatingSuccessPositive(ev) {
     const { origin, rating_id } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.rate) return
-
     if (!rating_id) console.error('No rating ID returned')
-    this.retrievedRatingId = rating_id
-    this.ratingIdTarget.value = rating_id
+
+    this.assignId(rating_id)
 
     this.showPage(1)
   }
@@ -24,18 +23,22 @@ export default class extends Controller {
   onRatingSuccessNegative(ev) {
     const { origin, rating_id } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.rate) return
-
     if (!rating_id) console.error('No rating ID returned')
-    this.retrievedRatingId = rating_id
-    this.ratingIdChoicesTarget.value = rating_id
+
+    this.assignId(rating_id)
 
     this.showPage(3)
   }
 
-  checkForMismatch(ev, target) {
-    if (this[target].value !== this.retrievedRatingId) {
+  assignId(id) {
+    this.retrievedRatingId = id
+    this.ratingIdTargets.forEach(target => target.value = id)
+  }
+
+  checkForMismatch(ev) {
+    if (this.ratingIdTarget.value !== this.retrievedRatingId) {
       this.preventFormSubmission(ev)
-      this[target].value = this.retrievedRatingId
+      this.ratingIdTarget.value = this.retrievedRatingId
       console.error(
         'There is a mismatch between the id retrieved and the id sent, the request has been aborted and the id reset.'
       )
@@ -43,8 +46,7 @@ export default class extends Controller {
   }
 
   onCommentBeforeSend(ev) {
-    debugger
-    this.checkForMismatch(ev, 'ratingIdTarget')
+    this.checkForMismatch(ev)
 
     // Allow users to submit an empty response, but prevent a db call
     const comment = ev.currentTarget.elements.namedItem('comment')
@@ -55,7 +57,7 @@ export default class extends Controller {
   }
 
   onChoicesBeforeSend(ev) {
-    this.checkForMismatch(ev, 'ratingIdChoicesTarget')
+    this.checkForMismatch(ev)
 
     // Allow users to submit an empty response, but prevent a db call
     const choices = ev.currentTarget.elements.namedItem('choices')
@@ -66,12 +68,9 @@ export default class extends Controller {
   }
 
   onChoicesSuccess(ev) {
-    const { origin, data: {table: {rating_id}} } = ev.detail[0]
+    const { origin } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.choices) return
-    debugger
-    if (!rating_id) console.error('No rating ID returned')
-    this.retrievedRatingId = rating_id
-    this.ratingIdTarget.value = rating_id
+
     this.showPage(4)
   }
 
@@ -81,9 +80,6 @@ export default class extends Controller {
 
     this.showPage(5)
   }
-  // onChoicesSuccessNegative() {
-  //   this.showPage(5)
-  // }
 
   showPage(index) {
     this.index = index
