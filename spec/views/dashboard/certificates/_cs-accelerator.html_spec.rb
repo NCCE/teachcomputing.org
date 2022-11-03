@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
+RSpec.describe('dashboard/certificates/_cs-accelerator') do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:cs_accelerator) }
@@ -18,16 +18,16 @@ RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
     [programme, @programmes = programmes, activity]
     programme_activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    create(:achievement, user: user)
+    create(:achievement, user:)
     @achievements = user.achievements
-    render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
+    render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: }
   end
 
   context 'when the user has enrolled onto the CS Accelerator programme' do
     before do
       user_programme_enrolment
       user.reload
-      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: }
     end
 
     it 'shows the certificate link' do
@@ -40,7 +40,7 @@ RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
       user_programme_enrolment.transition_to(:pending)
       passed_exam
       user.reload
-      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: }
     end
 
     it 'shows the completed text' do
@@ -53,7 +53,7 @@ RSpec.describe('dashboard/certificates/_cs-accelerator', type: :view) do
       user_programme_enrolment.transition_to(:complete)
       passed_exam
       user.reload
-      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: programme }
+      render template: 'dashboard/certificates/_cs-accelerator', locals: { programme: }
     end
 
     it 'shows the completed text' do

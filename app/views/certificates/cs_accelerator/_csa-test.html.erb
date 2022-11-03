@@ -1,30 +1,44 @@
-<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded" id="csa-test" >
+<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded" id="csa-test">
   <p class="govuk-body govuk-!-margin-0">
     Want to practice for the test?
-    <%= link_to 'Take our mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Take mock test' } %>
+    <%= link_to 'Take our mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link', data: tracking_data('Take mock test') %>
   </p>
 </div>
 
-<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded">
+<div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded" data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled">
   <p class="govuk-body">
     Ready to take your test?
   </p>
 
+  <div class="ncce-csa-dash__sub-section">
+    <ul class='govuk-list--bullet govuk-body-s'>
+      <li>You'll have 30 minutes to answer 25 multiple-choice questions and you must complete the test in one sitting.</li>
+      <li>The test must be taken under exam conditions (i.e: no notes or text books, in isolation without communicating with others, no other open tabs on any internet enabled device(s), and all answers must be your own). See <%= link_to 'full details of exam conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.</li>
+      <li>If you have a disability, impairment or sensory loss, or an additional need such as a dyslexia or a requirement for assistive technology to enable you to complete the test, we can extend the test time to 45 minutes. To request this, please <%= mail_to 'certificationqueries@bcs.uk', 'email us', class: 'ncce-link' %> and we'd be happy to help.</li>
+      <li>Once you start the test, you'll be required to provide the email address of a Senior Leader or course leader in your school who can confirm you have completed the test under exam conditions.</li>
+      <li>The pass mark is 65%. You're allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt.</li>
+    </ul>
+  </div>
+
   <% if user_programme_assessment.currently_taking_test? %>
     <p class="govuk-body govuk-!-margin-0">
-      You are currently taking the test.  If you have recently failed, please come back in 2 hours.
+      You are currently taking the test. If you have recently failed, please come back in 2 hours.
     </p>
   <% elsif user_programme_assessment.can_take_test_at != 0 %>
     <p class="govuk-body govuk-!-margin-0">
       Your <%= to_word_ordinal(user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>, please come back then!
     </p>
   <% else %>
-    <%= form_for(current_user,
-                method: :post,
-                url: assessment_attempts_path(assessment_attempt: {
-                  assessment_id: @programme.assessment.id,
-                  user_id: current_user
-                })) do |f| %>
+    <%= form_for(current_user, method: :post, url: assessment_attempts_path) do |f| %>
+      <div class="govuk-checkboxes">
+        <div class='govuk-checkboxes__item ncce-checkboxes__item govuk-!-margin-bottom-3'>
+          <%= check_box_tag 'assessment_attempt[accepted_conditions]', true, false, class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { 'aria-label': 'Accept our terms', action: 'change->toggle-attribute#toggleAttribute' } %>
+          <%= label_tag 'assessment_attempt[accepted_conditions]', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' do %>
+            I have read and accept <%= link_to 'the full terms and conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
+          <% end %>
+        </div>
+      </div>
+
       <p class="govuk-body-s">
         <strong>Teacher reference number (TRN)</strong> <%= link_to "what's this?", 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>
       </p>
@@ -36,16 +50,10 @@
             placeholder: 'optional',
             value: current_user.teacher_reference_number
         %>
-        <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Take our test' } %>
+        <%= hidden_field_tag 'assessment_attempt[user_id]', current_user.id %>
+        <%= hidden_field_tag 'assessment_attempt[assessment_id]', @programme.assessment.id %>
+        <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-4', data: tracking_data('Take our test').merge({'toggle-attribute-target' => 'submit'}) %>
       </div>
     <% end %>
-    <div class="ncce-csa-dash__sub-section">
-      <p class="govuk-body-s">
-        You’ll have 30 minutes to answer 25 multiple-choice questions and you must complete it in one sitting.
-        If you have a disability we can extend the test time to 45 minutes. To request this, please <%= mail_to 'certificationqueries@bcs.uk', 'email us', class: 'ncce-link' %> and we'd be happy to help.
-        Once you start the test, you’ll be required to provide the email address of a Senior Leader in your school who can confirm you have completed the test under exam conditions.
-        The pass mark is 65%. You’re allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt. Good luck!
-      </p>
-    </div>
   <% end %>
 </div>

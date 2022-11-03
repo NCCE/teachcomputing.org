@@ -4,12 +4,14 @@ class AssessmentAttempt < ApplicationRecord
     initial_state: StateMachines::AssessmentAttemptStateMachine.initial_state
   ]
 
+  validates :accepted_conditions, presence: true
+
   belongs_to :user
   belongs_to :assessment
 
   has_many :assessment_attempt_transitions, autosave: false, dependent: :destroy
 
-  scope :for_user, ->(user) {
+  scope :for_user, lambda { |user|
     where(user_id: user.id).order(:created_at)
   }
 
@@ -24,6 +26,7 @@ class AssessmentAttempt < ApplicationRecord
   def self.initial_state
     StateMachines::AssessmentAttemptStateMachine.initial_state
   end
+
   private_class_method :initial_state
 
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine

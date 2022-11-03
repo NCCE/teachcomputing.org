@@ -38,3 +38,14 @@ en:
       face-to-face: "Face to face course"
       remote: "Live remote course"
       online: "Online course"
+  activerecord:
+    attributes:
+      assessment_attempt:
+        accepted_conditions: "The terms and conditions"
+    errors:
+      models:
+        assessment_attempt:
+          attributes:
+            accepted_conditions:
+              blank: "must be accepted"
+      default: 'Whoops something went wrong'

@@ -42,10 +42,9 @@ module CurriculumClient
             )
             #{fields}
           }
-          GRAPHQL
+        GRAPHQL
         CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
       end
-
 
     end
   end

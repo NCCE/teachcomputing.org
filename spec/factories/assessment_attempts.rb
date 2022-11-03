@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :assessment_attempt do
     assessment
     user
+    accepted_conditions { true }
 
     factory :failed_assessment_attempt do
       after(:create) do |assessment_attempt|
