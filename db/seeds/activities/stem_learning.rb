@@ -1884,3 +1884,15 @@ a = Activity.find_or_create_by(stem_course_template_no: 'eb73651b-3a13-ed11-b83d
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '9df6f61f-555b-ed11-9562-0022481b545f') do |activity|
+  activity.title = 'KS3 creative computing curriculum - residential'
+  activity.credit = 10
+  activity.slug = 'ks3-creative-computing-curriculum-residential'
+  activity.stem_course_template_no = '9df6f61f-555b-ed11-9562-0022481b545f'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP295'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
