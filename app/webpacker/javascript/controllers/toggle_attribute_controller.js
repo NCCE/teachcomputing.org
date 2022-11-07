@@ -1,19 +1,39 @@
 import ApplicationController from "./application_controller";
 
 export default class extends ApplicationController {
-  static values = { name: String }
+  static values = { name: String, value: Boolean }
 
-  static targets = ['submit']
+  static targets = ['source', 'button']
 
-  initialize() {
-    this.submitTarget.setAttribute(this.nameValue, true)
+  removeAttribute() {
+    this.buttonTarget.removeAttribute(this.nameValue)
+  }
+
+  addAttribute() {
+    this.buttonTarget.setAttribute(this.nameValue, this.valueValue)
   }
 
   toggleAttribute() {
-    if (this.submitTarget.getAttribute(this.nameValue)) {
-      this.submitTarget.removeAttribute(this.nameValue)
+    const attributeExists = this.buttonTarget.getAttribute(this.nameValue)
+
+    if (attributeExists) {
+      this.removeAttribute()
     } else {
-      this.submitTarget.setAttribute(this.nameValue, true)
+      this.addAttribute()
     }
   }
+
+  /**
+   * Workaround to reset the checked state if the browser history
+   * is used, suggested solution is part way down this comment:
+   * https://github.com/hotwired/stimulus/issues/328#issuecomment-722040944
+   */
+  resetCheckboxState() {
+    if (this.sourceTarget.type !== 'checkbox') return
+
+    if (this.sourceTarget.checked) {
+      this.sourceTarget.checked = false
+    }
+  }
+  pageShow() { this.resetCheckboxState() }
 }
