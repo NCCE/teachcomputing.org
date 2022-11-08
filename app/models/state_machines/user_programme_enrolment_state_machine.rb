@@ -15,10 +15,6 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
     !programme_enrolment.flagged?
   end
 
-  after_transition(to: :enrolled) do |programme_enrolment|
-    EnrolledCertificateEmailJob.perform_later(programme_enrolment.user, programme_enrolment.programme)
-  end
-
   after_transition(to: :complete) do |programme_enrolment|
     CompleteCertificateEmailJob.perform_later(programme_enrolment.user, programme_enrolment.programme)
     ClearAchievementAttachmentsJob.perform_later(programme_enrolment)

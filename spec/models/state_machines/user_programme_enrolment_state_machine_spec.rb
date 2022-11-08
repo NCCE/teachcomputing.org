@@ -30,11 +30,5 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
         user_programme_enrolment.transition_to(:complete)
       end.to have_enqueued_job(CompleteCertificateEmailJob)
     end
-
-    it 'queues EnrolledCertificateEmailJob job' do
-      expect do
-        user_programme_enrolment.transition_to(:enrolled)
-      end.to have_enqueued_job(EnrolledCertificateEmailJob)
-    end
   end
 end
