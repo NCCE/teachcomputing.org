@@ -85,3 +85,4 @@ volumes:
   bundle: null
   pg-data: null
   node_modules: null
+  ssh: null
