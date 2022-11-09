@@ -49,6 +49,7 @@ public/sitemap.xml.gz
 .standard.yml
 .idea
 .history
+*.code-workspace
 
 /public/packs
 /public/packs-test
