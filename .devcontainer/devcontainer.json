@@ -10,7 +10,7 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Uncomment the next line to run commands after the container is created - for example installing curl.
-  "postCreateCommand": "apk --no-cache add git less bash-completion sudo openssh docker",
+  "postCreateCommand": "",
   // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
@@ -23,10 +23,8 @@
         "ms-azuretools.vscode-docker",
         "ninoseki.vscode-gem-lens",
         "rebornix.ruby",
-        "tabnine.tabnine-vscode",
         "eamodio.gitlens",
         "github.vscode-pull-request-github",
-        "connorshea.vscode-ruby-test-adapter",
         "wmaurer.change-case",
         "aliariff.auto-add-brackets",
         "editorconfig.editorconfig",
@@ -35,18 +33,20 @@
         "hashicorp.terraform",
         "ivangabriele.vscode-heroku",
         "pkosta2005.heroku-command",
-        "lokalise.i18n-ally",
         "yzhang.markdown-all-in-one",
         "humao.rest-client",
         "dzannotti.vscode-babel-coloring",
         "mikestead.dotenv",
-        "wingrunr21.vscode-ruby"
+        "wingrunr21.vscode-ruby",
+        "fooo.ruby-spec-runner",
+        "shanehofstetter.rails-i18n"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
         "ruby.lint": {
           "rubocop": true
-        }
+        },
+        "ruby-spec-runner.rspecCommand": "rdebug-ide --skip_wait_for_start --host 0.0.0.0 --port 1235 -- bin/rspec"
       }
     }
   },

@@ -6,7 +6,8 @@
       "request": "launch",
       "type": "chrome",
       "url": "http://teachcomputing.rpfdev.com",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "cwd": "${workspaceRoot}",
     },
     {
       "name": "Rails Debug",
