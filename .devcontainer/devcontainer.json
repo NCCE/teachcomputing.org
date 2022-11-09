@@ -13,9 +13,7 @@
   "postCreateCommand": "",
   // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
   "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-    "source=vscode_extensions,target=/root/.vscode-server/extensions,type=volume",
-    "source=ssh,target=/root/.ssh,type=volume"
+    "source=vscode_extensions,target=/root/.vscode-server/extensions,type=volume"
   ],
   "customizations": {
     "vscode": {
