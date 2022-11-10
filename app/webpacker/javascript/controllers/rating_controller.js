@@ -27,7 +27,7 @@ export default class extends Controller {
 
     this.assignId(rating_id)
 
-    this.showPage(3)
+    this.showPage(2)
   }
 
   assignId(id) {
@@ -63,7 +63,7 @@ export default class extends Controller {
     const choices = ev.currentTarget.elements.namedItem('choices')
     if (choices && !choices.value) {
       this.preventFormSubmission(ev)
-      this.showPage(5)
+      this.showPage(4)
     }
   }
 
@@ -71,14 +71,14 @@ export default class extends Controller {
     const { origin } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.choices) return
 
-    this.showPage(4)
+    this.showPage(3)
   }
 
   onCommentSuccess(ev) {
     const { origin } = ev.detail[0]
     if (origin !== this.AJAX_LISTENERS.comment) return
 
-    this.showPage(5)
+    this.showPage(4)
   }
 
   showPage(index) {

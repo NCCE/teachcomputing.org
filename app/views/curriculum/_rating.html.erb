@@ -29,7 +29,7 @@
       </p>
     </div>
     <div class="rating_page" data-rating-target="page">
-      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices govuk-!-padding-bottom-2 govuk-!-padding-top-2">
+      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
         <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you like?</p>
         <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
         <div class="govuk-checkboxes">
@@ -65,18 +65,8 @@
       </div>
     </div>
 
-    <div class="rating_page rating_page--rows" data-rating-target="page">
-      <p class="govuk-body govuk-!-margin-bottom-0">Thanks for your rating!</p>
-      <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Tell us more about what you liked.</p>
-      <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
-        <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
-        <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
-        <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row govuk-!-margin-top-1' %>
-      <% end %>
-    </div>
-
     <div class="rating_page" data-rating-target="page">
-      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices govuk-!-padding-bottom-2 govuk-!-padding-top-2">
+      <div class="ncce-courses__filters-wrapper cirriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
         <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you dislike?</p>
         <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
         <div class="govuk-checkboxes">
@@ -111,6 +101,7 @@
         </div>
       </div>
     </div>
+
     <div class="rating_page rating_page--rows" data-rating-target="page">
       <p class="govuk-body govuk-!-margin-bottom-0">Tell us more</p>
       <p class="govuk-body-s ncce-label--s govuk-!-margin-bottom-0">Tell us more about to help us improve.</p>
