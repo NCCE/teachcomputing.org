@@ -44,6 +44,8 @@ RSpec.describe('Curriculum Ratings', type: :system) do
 
       describe 'after interacting with choices component' do 
         before do 
+          check('rating_choice_1_neg', visible: false)
+          check('rating_choice_2_neg', visible: false)
           find('[name=commit]').click
         end 
 
@@ -100,6 +102,9 @@ RSpec.describe('Curriculum Ratings', type: :system) do
 
       describe 'after interacting with choices component' do 
         before do 
+          check('rating_choice_1', visible: false)
+          check('rating_choice_2', visible: false)
+          check('rating_choice_5', visible: false)
           find('[name=commit]').click
         end 
 
