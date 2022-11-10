@@ -22,58 +22,115 @@ RSpec.describe('Curriculum Ratings', type: :system) do
       expect(page).to have_css('.curriculum__rating', text: 'Did you find these resources useful?')
     end
 
-    describe 'when a negative rating is given' do
+    context 'when a negative rating is given' do
       before do
         click_on class: 'curriculum__rating--thumb-down'
       end
 
-      it 'does not show the thumbs buttons' do
-        expect(page).not_to have_css('.curriculum__rating--thumb-up')
-        expect(page).not_to have_css('.curriculum__rating--thumb-down')
-      end
+      describe 'after clicking thumbs down' do 
+        it 'does not show the thumbs buttons' do
+          expect(page).not_to have_css('.curriculum__rating--thumb-up')
+          expect(page).not_to have_css('.curriculum__rating--thumb-down')
+        end
 
-      it 'shows the expected text' do
-        expect(page).to have_css('.curriculum__rating--text', text: 'Thanks for your rating!')
-      end
+        it 'shows the choices component' do
+          expect(page).to have_css('.cirriculum__rating-choices')
+        end
+  
+        it 'shows the expected text' do
+          expect(page).to have_text('Tell us more, what did you dislike?')
+        end
+      end 
 
-      it 'shows a textarea' do
-        expect(page).to have_css('.curriculum__rating-textarea')
-      end
+      describe 'after interacting with choices component' do 
+        before do 
+          find('[name=commit]').click
+        end 
+
+        it 'does not show choices component' do 
+          expect(page).not_to have_css('.cirriculum__rating-choices')
+        end 
+
+        it 'shows the expected text' do
+          expect(page).to have_text('Tell us more about to help us improve')
+        end
+
+        it 'shows the text area' do 
+          expect(page).to have_css('.curriculum__rating-textarea')
+        end 
+      end 
+
+      describe 'after interacting with the comment component' do
+        before do
+          find('[name=commit]').click
+          fill_in id: 'comment', with: 'I am not a fan'
+          find('[name=commit]').click
+        end
+
+        it 'does not show the textarea' do 
+          expect(page).not_to have_css('.curriculum__rating-textarea')
+        end 
+
+        it 'shows the expected text' do
+          expect(page).to have_css('.curriculum__rating--text-only', text: 'Thank you for your feedback!')
+        end
+      end 
     end
 
-    describe 'when a reason is given for a negative rating' do
-      before do
-        click_on class: 'curriculum__rating--thumb-down'
-        fill_in id: 'comment', with: 'No, I just came here to criticise'
-        click_on 'Submit'
-      end
-
-      it 'does not show the textarea' do
-        expect(page).not_to have_css('.curriculum__rating-textarea')
-      end
-
-      it 'shows the expected text' do
-        expect(page).to have_css('.curriculum__rating--text-only', text: 'Thanks for your feedback!')
-      end
-    end
-
-    describe 'when a positive rating is given' do
+    context 'when a positive rating is given' do
       before do
         click_on class: 'curriculum__rating--thumb-up'
       end
 
-      it 'does not show the thumbs buttons' do
-        expect(page).not_to have_css('.curriculum__rating--thumb-up')
-        expect(page).not_to have_css('.curriculum__rating--thumb-down')
+      describe 'after clicking thumbs up' do
+  
+        it 'does not show the thumbs buttons' do
+          expect(page).not_to have_css('.curriculum__rating--thumb-up')
+          expect(page).not_to have_css('.curriculum__rating--thumb-down')
+        end
+  
+        it 'shows the choices component' do
+          expect(page).to have_css('.cirriculum__rating-choices')
+        end
+        
+        it 'shows the expected text' do
+          expect(page).to have_text('Tell us more, what did you like?')
+        end
       end
 
-      it 'shows the textarea' do
-        expect(page).to have_css('.curriculum__rating-textarea')
+      describe 'after interacting with choices component' do 
+        before do 
+          find('[name=commit]').click
+        end 
+
+        it 'does not show choices component' do 
+          expect(page).not_to have_css('.cirriculum__rating-choices')
+        end 
+
+        it 'shows the expected text' do
+          expect(page).to have_text('Tell us more about to help us improve')
+        end
+
+        it 'shows the text area' do 
+          expect(page).to have_css('.curriculum__rating-textarea')
+        end 
       end
 
-      it 'shows the expected text' do
-        expect(page).to have_css('.curriculum__rating--text', text: 'Thanks for your rating!')
-      end
-    end
+      describe 'when a reason is given for a positive rating' do
+        before do
+          find('[name=commit]').click
+          fill_in id: 'comment', with: 'I just loves it here soo much'
+          find('[name=commit]').click
+        end
+  
+        it 'does not show the textarea' do
+          expect(page).not_to have_css('.curriculum__rating-textarea')
+        end
+  
+        it 'shows the expected text' do
+          expect(page).to have_css('.curriculum__rating--text-only', text: 'Thank you for your feedback!')
+        end
+      end 
+    end 
   end
 end

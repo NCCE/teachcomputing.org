@@ -82,24 +82,24 @@
         <div class="govuk-checkboxes">
           <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
-              <%= check_box_tag 'rating_choices[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1" %>
-              <%= label_tag "rating_choice_1", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+              <%= check_box_tag 'rating_choices[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1_neg" %>
+              <%= label_tag "rating_choice_1_neg", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
             </div>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
-              <%= check_box_tag 'rating_choices[]', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2" %>
-              <%= label_tag "rating_choice_2", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+              <%= check_box_tag 'rating_choices[]', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2_neg" %>
+              <%= label_tag "rating_choice_2_neg", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
             </div>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
-              <%= check_box_tag 'rating_choices[]', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3" %>
-              <%= label_tag "rating_choice_3", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+              <%= check_box_tag 'rating_choices[]', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3_neg" %>
+              <%= label_tag "rating_choice_3_neg", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
             </div>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
-              <%= check_box_tag 'rating_choices[]', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4" %>
-              <%= label_tag "rating_choice_4", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+              <%= check_box_tag 'rating_choices[]', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4_neg" %>
+              <%= label_tag "rating_choice_4_neg", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
             </div>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
-              <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5" %>
-              <%= label_tag "rating_choice_5", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+              <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5_neg" %>
+              <%= label_tag "rating_choice_neg", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
             </div>
             <br>
             <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
