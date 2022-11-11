@@ -27,15 +27,9 @@ require 'rspec/json_expectations'
 require 'capybara/rspec'
 require 'view_component/test_helpers'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-begin
-  # https://github.com/rails/rails/issues/37407
-  raise ActiveRecord::PendingMigrationError if ActiveRecord::Base.connection.migration_context.needs_migration?
-rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
-  exit 1
-end
+ActiveRecord::Migration.maintain_test_schema!
 
 selenium_driver = :local_chrome_headless
 Capybara.server = :puma, { Silent: true }
@@ -50,7 +44,7 @@ Capybara.register_driver selenium_driver do |app|
   options.add_argument('--window-size=1400,1400')
   options.add_argument('--verbose')
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
 end
 Capybara.javascript_driver = selenium_driver
 
@@ -89,7 +83,7 @@ RSpec.configure do |config|
     driven_by selenium_driver
   end
 
-  config.after(:each, type: :system, js: true) do |_spec|
+  config.after(:each, js: true, type: :system) do |_spec|
     errors = page.driver.browser.manage.logs.get(:browser)
                  .select { |e| e.level == 'SEVERE' && e.message.present? }
                  .map(&:message)
