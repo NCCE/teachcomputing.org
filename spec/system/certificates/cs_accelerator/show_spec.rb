@@ -52,11 +52,5 @@ RSpec.describe('CS Accelerator certificate page') do
         expect(page).to have_button('commit', disabled: false)
       end
     end
-
-    describe 'after an assessment has been attempted' do
-      it 'has the text' do
-        expect(page).to have_content('huh?')
-      end
-    end
   end
 end
