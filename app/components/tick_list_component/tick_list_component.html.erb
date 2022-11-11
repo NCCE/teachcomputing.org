@@ -1,0 +1,14 @@
+<%= content_tag :div, class: ['tick-list-component__wrapper', { "#{@class_name}": @class_name.present? } ], data: { show_border: @show_border } do %>
+  <h2 class="govuk-heading-m tick-list-component__title"><%= @title %></h2>
+  <p class="govuk-body tick-list-component__text"><%= @text %></p>
+  <div class='report-card-component__list-wrapper'>
+    <ul class='govuk-list govuk-list--bullet' role='list'>
+      <% @bullets.each do | bullet | %>
+      <li><%= bullet %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='tick-list-component__button'>
+    <%= link_to @button[:button_title], @button[:button_url], class: 'govuk-button button govuk-!-margin-bottom-0', data: { event_action: 'click', event_category: @button[:tracking_page], event_label: @button[:tracking_label] }  %>
+  </div>
+<% end %>

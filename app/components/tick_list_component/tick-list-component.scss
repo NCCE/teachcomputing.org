@@ -1,0 +1,29 @@
+.tick-list-component__wrapper {
+  background-color: $white;
+  padding: $component-padding-mobile;
+  box-shadow: none;
+
+  @include govuk-media-query($from: tablet) {
+    padding: $component-padding;
+  }
+}
+
+.tick-list-component__title {
+  background-image: url('../images/icons/resources-black.svg');
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  padding-left: 2em !important;
+  padding-top: 0.35em;
+  padding-bottom: 0.5em;
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.8rem;
+    padding-left: 1.7em !important;
+    padding-top: 0;
+  }
+}
+
+.tick-list-component__text {
+  margin: 20px 0;
+}
