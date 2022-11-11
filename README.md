@@ -8,7 +8,7 @@
 
 IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clone git@github.com:NCCE/teachcomputing.org.git teachcomputing` (one or two scripts right now expect the docker project name to be `teachcomputing`, so for now this is the easiest approach)
 
-### Dependencies:
+### Dependencies
 
 - [Homebrew](https://brew.sh/)
 - Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox) > v4.0 (with support for `docker compose`)
@@ -115,6 +115,13 @@ To install/update a new gem, first update the Gemfile and run
 ```
 yarn run web bundle install
 ```
+
+### Components
+
+Components etc. can be rendered using the local/review/staging app urls:
+
+- http://teachcomputing.rpfdev.com/rails/components
+- http://teachcomputing.rpfdev.com/rails/mailers
 
 ## Testing
 
