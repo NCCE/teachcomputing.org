@@ -2,7 +2,7 @@
   <h2 class="govuk-heading-m tick-list-component__title"><%= @title %></h2>
   <p class="govuk-body tick-list-component__text"><%= @text %></p>
   <div class='report-card-component__list-wrapper'>
-    <ul class='govuk-list govuk-list--bullet' role='list'>
+    <ul class='govuk-list govuk-list--bullet  tick-list-component__list' role='list'>
       <% @bullets.each do | bullet | %>
       <li><%= bullet %></li>
       <% end %>

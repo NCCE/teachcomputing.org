@@ -9,9 +9,6 @@
 }
 
 .tick-list-component__title {
-  background-image: url('../images/icons/resources-black.svg');
-  background-repeat: no-repeat;
-  background-size: 1.6rem;
   padding-left: 2em !important;
   padding-top: 0.35em;
   padding-bottom: 0.5em;
@@ -26,4 +23,32 @@
 
 .tick-list-component__text {
   margin: 20px 0;
+}
+
+.tick-list-component__list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+    padding-left: 1em;
+  }
+
+  li {
+    background-image: url('../images/icons/tick-plain.svg');
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    padding: 0 0 0.5em 1.7em;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      background-size: 1.6rem;
+      padding-left: 2em !important;
+    }
+  }
 }
