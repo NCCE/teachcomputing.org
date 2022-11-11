@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('certificates/cs_accelerator/_csa-test') do
   let(:user) { create(:user) }
-  let!(:programme) { create(:cs_accelerator) }
+  let(:programme) { create(:cs_accelerator) }
   let!(:assessment) { create(:assessment, programme_id: programme.id) }
 
   before do
@@ -58,14 +58,14 @@ RSpec.describe('certificates/cs_accelerator/_csa-test') do
   describe 'when an assessment attempt has failed' do
     it 'renders the expected text' do
       user_programme_assessment = instance_double(UserProgrammeAssessment)
-      now = Time.now + 1.day
+      time = Time.new(2020, 11, 11, 12, 22)
       allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
-      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(now)
+      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(time)
       allow(user_programme_assessment).to receive(:num_attempts).and_return(1)
 
       render partial: 'csa-test', locals: { user_programme_assessment: }
 
-      expect(rendered).to have_content('Your second attempt at the test can be done after 12am on Monday.')
+      expect(rendered).to have_content('Your second attempt at the test can be done after 1am on Friday.')
     end
   end
 end
