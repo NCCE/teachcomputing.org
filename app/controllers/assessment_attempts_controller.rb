@@ -12,8 +12,7 @@ class AssessmentAttemptsController < ApplicationController
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to assessment_url(assessment_attempt.user)
     else
-      has_not_accepted_conditions = assessment_attempt.errors.all? { |error| error.attribute == :accepted_conditions }
-      flash[:error] = has_not_accepted_conditions ? assessment_attempt.errors.full_messages.to_sentence : I18n.t('.activerecord.errors.default')
+      flash[:error] = assessment_attempt.errors.full_messages.to_sentence if assessment_attempt&.errors&.any?
 
       redirect_back fallback_location: @assessment.programme
     end
