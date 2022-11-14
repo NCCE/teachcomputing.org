@@ -1,0 +1,12 @@
+.tick-list-collection-component {
+  margin-top: 2.75rem;
+  padding-bottom: 1.375rem;
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    padding-bottom: 3rem;
+  }
+}
