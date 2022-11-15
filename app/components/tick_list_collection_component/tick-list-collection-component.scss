@@ -9,10 +9,10 @@
 .tick-list-collection-component__title {
   padding-left: 0;
   @include govuk-media-query($from: tablet) {
-    width: 90%;
+    width: 94%;
   }
 
   @include govuk-media-query($from: desktop) {
-    width: 80%;
+    width: 84%;
   }
 }
