@@ -1,7 +1,5 @@
 <div class="light-grey-bg tick-list-collection-component">
-  <div class="tick-list-collection-component__title">
-    <h2 class="govuk-heading-l"><%= @title %></h2>
-  </div>
+  <h2 class="govuk-heading-l tick-list-collection-component__title"><%= @title %></h2>
   <% @tick_list_collection.each do |tick_list| %>
     <%= render TickListComponent.new(tick_list:) %>
   <% end %>
