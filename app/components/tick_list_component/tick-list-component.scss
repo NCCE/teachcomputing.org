@@ -1,9 +1,13 @@
 .tick-list-component__wrapper {
   background-color: $white;
-  width: 80%;
+  padding: $component-padding;
 
   @include govuk-media-query($from: tablet) {
-    padding: $component-padding;
+    width: 90%;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    width: 80%;
   }
 }
 
