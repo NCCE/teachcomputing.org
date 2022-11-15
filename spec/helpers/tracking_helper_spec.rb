@@ -35,7 +35,7 @@ describe TrackingHelper, type: :helper do
     controller.request = request
     allow(helper).to receive(:request).and_return(request)
 
-    expect(tracking_data('test_3')).to be_nil
+    expect(tracking_data('test_3')).to be_a(Hash)
   end
 
   it 'overrides the category when one is passed' do

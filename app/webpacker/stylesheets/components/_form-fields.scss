@@ -9,7 +9,7 @@
   font-size: 1rem;
 }
 
-.govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+.govuk-checkboxes__input:focus+.govuk-checkboxes__label::before {
   box-shadow: 0 0 0 3px $deep-cerulean;
 }
 
@@ -32,7 +32,7 @@
   outline: none;
 }
 
-.govuk-radios__input:focus + .govuk-radios__label::before {
+.govuk-radios__input:focus+.govuk-radios__label::before {
   box-shadow: 0 0 0 3px $deep-cerulean;
 }
 
@@ -52,6 +52,7 @@
   @include govuk-media-query($until: 900px) {
     margin: 0 20px 20px 0;
   }
+
   @include govuk-media-query($until: tablet) {
     margin: 0 0 20px;
   }
@@ -67,9 +68,14 @@
   line-height: 2rem;
 }
 
+.ncce-label--multiline {
+  line-height: 2rem;
+}
+
 /* govuk checkboxes use the label hack, so we need to style that */
 .ncce-checkboxes__item {
   min-height: 28px;
+
   .ncce-checkboxes__label {
     line-height: 0.8rem;
     padding: 8px 0 0 0;
@@ -88,11 +94,31 @@
       height: 11px;
       width: 19px;
     }
+
+    &--multiline {
+      line-height: normal;
+      padding: 0;
+      vertical-align: middle;
+
+      &::before,
+      &::after {
+        top: 0.55rem;
+      }
+
+      &::after {
+        margin-top: 0.45rem;
+      }
+    }
   }
 
-  .ncce-checkboxes__input:focus + .ncce-checkboxes__label::before,
-  .ncce-checkboxes__input:active + .ncce-checkboxes__label::before,
-  .ncce-checkboxes__input[checked='checked'] + .ncce-checkboxes__label::before {
+  &--multiline {
+    display: flex;
+    align-items: center;
+  }
+
+  .ncce-checkboxes__input:focus+.ncce-checkboxes__label::before,
+  .ncce-checkboxes__input:active+.ncce-checkboxes__label::before,
+  .ncce-checkboxes__input[checked='checked']+.ncce-checkboxes__label::before {
     background-color: $foam;
     border: 2px solid #007fa2;
     box-shadow: none;

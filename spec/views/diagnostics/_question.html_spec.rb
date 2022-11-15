@@ -56,9 +56,5 @@ RSpec.describe('diagnostics/question', type: :view) do
     it 'shows the back link' do
       expect(rendered).to have_css('.govuk-back-link')
     end
-
-    it 'checks the expected answer' do
-      test = 'test'
-    end
   end
 end

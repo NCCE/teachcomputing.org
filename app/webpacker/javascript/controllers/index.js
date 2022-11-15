@@ -12,3 +12,19 @@ application.load(
     definitionsFromContext(contextComponents)
   )
 )
+
+// Support defining methods to be called on pageshow and pagehide events
+window.addEventListener('pageshow', event => {
+  application.controllers.forEach(controller => {
+    if (typeof controller.pageShow === 'function') {
+      controller.pageShow(event.persisted)
+    }
+  })
+})
+window.addEventListener('pagehide', () => {
+  application.controllers.forEach(controller => {
+    if (typeof controller.pageHide === 'function') {
+      controller.pageHide()
+    }
+  })
+})
