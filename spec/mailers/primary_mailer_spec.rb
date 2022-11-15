@@ -22,6 +22,11 @@ RSpec.describe PrimaryMailer, type: :mailer do
     it 'includes the subject in the email' do
       expect(enrolled_mail.body.encoded).to include("<title>#{enrolled_subject}</title>")
     end
+
+    it 'includes the correct links in the email' do
+      expect(enrolled_mail.body.encoded).to have_link(href: 'https://teachcomputing.org/dashboard')
+      expect(enrolled_mail.body.encoded).to have_link(href: 'https://teachcomputing.org/hubs')
+    end
   end
 
   describe 'completed certificate email' do
