@@ -12,14 +12,12 @@
 }
 
 .tick-list-component__title {
-  padding-left: 2em !important;
   padding-top: 0.35em;
   padding-bottom: 0.5em;
   margin: 0;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.8rem;
-    padding-left: 1.7em !important;
     padding-top: 0;
   }
 }
