@@ -1,7 +1,6 @@
 .tick-list-component__wrapper {
   background-color: $white;
-  padding: $component-padding-mobile;
-  box-shadow: none;
+  width: 80%;
 
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
