@@ -1,18 +1,18 @@
 .tick-list-collection-component {
-  padding: 1.5rem;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-
-  // @include govuk-media-query($from: tablet) {
-  //   margin-top: 0;
-  // }
-
-  // @include govuk-media-query($from: desktop) {
-  //   padding-bottom: 3rem;
-  // }
+  gap: 24px;
 }
 
-// .tick-list-collection-component__title {
-// }
+.tick-list-collection-component__title {
+  padding-left: 0;
+  @include govuk-media-query($from: tablet) {
+    width: 90%;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    width: 80%;
+  }
+}
