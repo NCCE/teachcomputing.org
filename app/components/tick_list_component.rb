@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class TickListComponent < ViewComponent::Base
-  # QUESTION: Functionally (but not sematically) similar to ReportCardComponent
-  # so should we subclass that instead?
+  def initialize(tick_list:, title: nil, text: nil, bullets: nil, button: nil,
+                 class_name: nil)
+    return unless tick_list.present?
 
-  def initialize(title:, text:, bullets:, button:, class_name: nil,
-                 show_border: false)
-    @title = title
-    @text = text
-    @bullets = bullets
-    @button = button
-    @class_name = class_name
-    @show_border = show_border
+    @title = title || tick_list[:title]
+    @text = text || tick_list[:text]
+    @bullets = bullets || tick_list[:bullets]
+    @button = button || tick_list[:button]
+    @class_name = class_name || tick_list[:class_name]
   end
 end

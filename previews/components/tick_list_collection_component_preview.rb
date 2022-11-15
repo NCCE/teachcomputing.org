@@ -1,5 +1,6 @@
 class TickListCollectionComponentPreview < ViewComponent::Preview
   def default
+    title = 'Tick List Collection Component'
     tick_list_collection = [
       {
         class_name: 'tick-list-example-component',
@@ -28,6 +29,6 @@ class TickListCollectionComponentPreview < ViewComponent::Preview
         }
       }
     ]
-    render(TickListCollectionComponent.new(tick_list_collection:))
+    render(TickListCollectionComponent.new(tick_list_collection:, title:))
   end
 end

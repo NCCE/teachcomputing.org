@@ -1,3 +1,4 @@
 <div class="tick-list-collection-component">
-  <%= render TickListCollectionComponent.with_collection(@tick_list_collection, title: @title) %>
+  <h2 class="govuk-heading-m tick-list-collection-component__title"><%= @title %></h2>
+  <%= render TickListComponent.with_collection(@tick_list_collection) %>
 </div>
