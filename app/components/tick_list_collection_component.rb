@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class TickListCollectionComponent < ViewComponent::Base
-  def initialize(tick_lists:)
-    @tick_lists = tick_lists
+  def initialize(tick_list_collection:)
+    @tick_list_collection = tick_list_collection
   end
 
   def render?
-    @tick_lists.present?
+    @tick_list_collection.present?
   end
 end
