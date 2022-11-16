@@ -31,7 +31,7 @@
     <div class="rating_page" data-rating-target="page">
       <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
         <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you like?</p>
-        <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
+        <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
         <div class="govuk-checkboxes">
           <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
@@ -68,7 +68,7 @@
     <div class="rating_page" data-rating-target="page">
       <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
         <p class="govuk-body govuk-!-margin-bottom-1">Tell us more, what did you dislike?</p>
-        <p class="govuk-body-s ncce-label--s">Choose as many choices as relevant</p>
+        <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
         <div class="govuk-checkboxes">
           <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
