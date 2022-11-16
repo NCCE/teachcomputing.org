@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TickListComponent, type: :component do
-  let(:test_data) do
+  let(:tick_list) do
     {
       class_name: 'quality-framework-tick-list',
       title: 'The Computing Quality Framework',
@@ -21,38 +21,38 @@ RSpec.describe TickListComponent, type: :component do
 
   context 'with no date' do
     before do
-      render_inline(described_class.new(**test_data))
+      render_inline(described_class.new(tick_list:))
     end
 
     it 'adds the wrapper class' do
-      expect(rendered_component).to have_css(".#{test_data[:class_name]}")
+      expect(rendered_component).to have_css(".#{tick_list[:class_name]}")
     end
 
     it 'renders a title' do
       expect(rendered_component).to have_css(
         '.tick-list-component__title',
-        text: test_data[:title]
+        text: tick_list[:title]
       )
     end
 
     it 'renders the body text' do
       expect(rendered_component).to have_css(
         '.tick-list-component__text',
-        text: test_data[:text]
+        text: tick_list[:text]
       )
     end
 
     it 'renders a button' do
       expect(rendered_component).to have_link(
-        test_data[:button][:button_title],
-        href: test_data[:button][:button_url]
+        tick_list[:button][:button_title],
+        href: tick_list[:button][:button_url]
       )
     end
 
     it 'renders a list with the expected number of items' do
       expect(rendered_component).to have_css(
         '.tick-list-component__list li',
-        count: test_data[:bullets].count
+        count: tick_list[:bullets].count
       )
     end
   end
