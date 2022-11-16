@@ -1,40 +1,88 @@
 <% meta_tag :title, 'Secondary Senior Leaders' %>
 <% meta_tag :description, 'Visit our Secondary senior leaders page to see what CPD and support we offer, and our guide to delivering the computing curriculum' %>
 <% meta_tag :url, request.original_url %>
-<%= render 'components/hero', hero_title: 'Support for Secondary Senior Leaders', subtitle: 'Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for schools and colleges, including free resources and high-impact training, to drive school improvement and pupil outcomes.', full_width: true, glyph_position: 'bottom', colour: 'purple' %>
 
-<div class="govuk-grid-column-full">
-    <%= render TickListCollectionComponent.new(
-      title: 'How we can help you and your school or college',
-      tick_list_collection: [
-        {
-          title: 'The Computing Quality Framework',
-          text: 'The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:',
-          bullets: [
-            'Identify strengths and weaknesses in your computing curriculum',
-            'Gain feedback and suggested actions, including relevant resources',
-            'Track progress towards achieving our accredited Computing Quality Mark'
-          ],
-          button: {
-            button_title: 'Register for the Computing Quality Framework',
-            button_url: 'https://computingqualityframework.org/'
-          }
-        },
-        {
-          title: 'Guidance for offering computing',
-          text: 'We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to: ',
-          bullets: [
-            'Identify your specific needs',
-            'Develop an action plan',
-            'Recommend courses to support progression'
-          ],
-          button: {
-            button_title: 'Contact your local Computing Hub',
-            button_url: 'https://teachcomputing.org/hubs'
-          }
-        }
-      ]
-    ) %>
+<%= render 'components/hero',
+           hero_title: t('.hero.title'),
+           subtitle: t('.hero.subtitle'),
+           full_width: true,
+           glyph_position: 'bottom',
+           colour: 'purple'
+%>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <%= render TickListCollectionComponent.new(
+          title: 'How we can help you and your school or college',
+          tick_list_collection: [
+            {
+              title: t('.quality-framework-tick-list.title'),
+              text: t('.quality-framework-tick-list.text'),
+              bullets: [
+                t('.quality-framework-tick-list.bullets.identify'),
+                t('.quality-framework-tick-list.bullets.feedback'),
+                t('.quality-framework-tick-list.bullets.track')
+              ],
+              button: {
+                button_title: t('.quality-framework-tick-list.button.title'),
+                button_url: t('.quality-framework-tick-list.button.url'),
+                tracking_page: t('.quality-framework-tick-list.button.event-category'),
+                tracking_label: t('.quality-framework-tick-list.button.event-label')
+              }
+            },
+            {
+              title: t('.guidance-tick-list.title'),
+              text: t('.guidance-tick-list.text'),
+              bullets: [
+                t('.guidance-tick-list.bullets.identify'),
+                t('.guidance-tick-list.bullets.develop'),
+                t('.guidance-tick-list.bullets.recommend')
+              ],
+              button: {
+                button_title: t('.guidance-tick-list.button.title'),
+                button_url: t('.guidance-tick-list.button.url'),
+                tracking_page: t('.guidance-tick-list.button.event-category'),
+                tracking_label: t('.guidance-tick-list.button.event-label')
+              }
+            }
+          ]
+        ) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class='govuk-heading-l'><%= t('.how-we-help.title') %></h2>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full govuk-!-margin-top-7">
+        <%= render BorderedCardsComponent.new(
+          cards_per_row: 1,
+          class_name: 'teacher-help-cards',
+          cards: [
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: 'Professional development courses',
+              text: "<p>Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.</p> <p>To support teacher participation, we offer financial support to state-funded schools and colleges across England. <a href='/courses' data-event-label='courses' data-event-category='Secondary SLT'>All courses</href> are fully-funded or low-cost, with generous subsidies for supply cover.</p>",
+              link: {
+                link_title: 'Check your eligibility',
+                link_url: '/funding',
+                tracking_page: 'Secondary SLT',
+                tracking_label: 'Funding'
+              }
+            }
+          ]
+        ) %>
+      </div>
+      </div>
+  </div>
 </div>
 
 <div class="govuk-width-container">

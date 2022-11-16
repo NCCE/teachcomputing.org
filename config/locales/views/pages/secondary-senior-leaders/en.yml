@@ -1,0 +1,34 @@
+en:
+  pages:
+    secondary-senior-leaders:
+      hero:
+        title: "Support for Secondary Senior Leaders"
+        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for schools and colleges, including free resources and high-impact training, to drive school improvement and pupil outcomes."
+      quality-framework-tick-list:
+        title: "The Computing Quality Framework"
+        text: "The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:"
+        bullets:
+          identify: "Identify strengths and weaknesses in your computing curriculum"
+          feedback: "Gain feedback and suggested actions, including relevant resources"
+          track: "Track progress towards achieving our accredited Computing Quality Mark"
+        button:
+          title: "Register for the Computing Quality Framework"
+          url: "https://computingqualityframework.org/"
+          event-category: "Secondary SLT"
+          event-label: "Computing Quality Framework"
+      guidance-tick-list:
+        title: "Guidance for offering computing"
+        text: "We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to:"
+        bullets:
+          identify: "Identify your specific needs"
+          develop: "Develop an action plan"
+          recommend: "Recommend courses to support progression"
+        button:
+          title: "Contact your local Computing Hub"
+          url: "/hubs"
+          event-category: "Secondary SLT"
+          event-label: "Computing Hubs"
+      how-we-help:
+        title: "How we can help your teachers"
+
+
