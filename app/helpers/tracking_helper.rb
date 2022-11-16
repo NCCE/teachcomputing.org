@@ -12,7 +12,8 @@ module TrackingHelper
       primary_certificate_path => 'Primary enrolled',
       secondary_path => 'Secondary unenrolled',
       secondary_certificate_path => 'Secondary enrolled',
-      courses_path => 'Courses'
+      courses_path => 'Courses',
+      cs_accelerator_certificate_path => 'CSA enrolled'
     }
   end
 
@@ -22,7 +23,7 @@ module TrackingHelper
 
   def tracking_data(label, category = nil)
     category ||= tracking_category
-    return unless category
+    return {} unless category
 
     { event_action: 'click', event_category: category, event_label: label }
   end

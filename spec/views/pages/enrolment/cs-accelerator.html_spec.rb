@@ -53,7 +53,7 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
     end
 
     it 'has link to csa course map' do
-      expect(rendered).to have_css('.ncce-link', text: 'GCSE specifications to Computer Science Accelerator course map')
+      expect(rendered).to have_css('.ncce-link', text: 'GCSE specification map')
     end
   end
 

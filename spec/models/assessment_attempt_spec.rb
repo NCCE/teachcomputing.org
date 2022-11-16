@@ -1,12 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe AssessmentAttempt, type: :model do
-  let(:assessment) { create(:assessment)}
+RSpec.describe AssessmentAttempt do
+  let(:assessment) { create(:assessment) }
   let(:assessment_attempt) { create(:assessment_attempt, assessment_id: assessment.id) }
   let(:user) { create(:user) }
   let(:passed_attempt) { create(:completed_assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
   let(:failing_user) { create(:user) }
   let(:failed_attempt) { create(:failed_assessment_attempt, user_id: failing_user.id, assessment_id: assessment.id) }
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:accepted_conditions) }
+  end
 
   describe 'associations' do
     it 'belongs to assessment' do
@@ -29,12 +33,12 @@ RSpec.describe AssessmentAttempt, type: :model do
     it 'when user has attempted the assessment' do
       user
       passed_attempt
-      expect(AssessmentAttempt.for_user(user)).to include(passed_attempt)
+      expect(described_class.for_user(user)).to include(passed_attempt)
     end
 
     it 'when user has not attempted the assessment' do
       failed_attempt
-      expect(AssessmentAttempt.for_user(user)).not_to include(failed_attempt)
+      expect(described_class.for_user(user)).not_to include(failed_attempt)
     end
   end
 end

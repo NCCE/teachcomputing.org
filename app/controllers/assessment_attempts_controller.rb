@@ -12,8 +12,9 @@ class AssessmentAttemptsController < ApplicationController
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to assessment_url(assessment_attempt.user)
     else
-      flash[:error] = 'Whoops something went wrong'
-      redirect_to programme_path(@assessment.programme.slug)
+      flash[:error] = assessment_attempt.errors.full_messages.to_sentence if assessment_attempt&.errors&.any?
+
+      redirect_back fallback_location: @assessment.programme
     end
   end
 
@@ -24,7 +25,7 @@ class AssessmentAttemptsController < ApplicationController
     end
 
     def assessment_attempts_params
-      params.require(:assessment_attempt).permit(:assessment_id, :user_id)
+      params.require(:assessment_attempt).permit(:assessment_id, :user_id, :accepted_conditions)
     end
 
     def assessment_url(user)
