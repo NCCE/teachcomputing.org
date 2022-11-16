@@ -3,6 +3,40 @@
 <% meta_tag :url, request.original_url %>
 <%= render 'components/hero', hero_title: 'Support for Secondary Senior Leaders', subtitle: 'Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for schools and colleges, including free resources and high-impact training, to drive school improvement and pupil outcomes.', full_width: true, glyph_position: 'bottom', colour: 'purple' %>
 
+<div class="govuk-grid-column-full">
+    <%= render TickListCollectionComponent.new(
+      title: 'How we can help you and your school or college',
+      tick_list_collection: [
+        {
+          title: 'The Computing Quality Framework',
+          text: 'The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:',
+          bullets: [
+            'Identify strengths and weaknesses in your computing curriculum',
+            'Gain feedback and suggested actions, including relevant resources',
+            'Track progress towards achieving our accredited Computing Quality Mark'
+          ],
+          button: {
+            button_title: 'Register for the Computing Quality Framework',
+            button_url: '/'
+          }
+        },
+        {
+          title: 'Guidance for offering computing',
+          text: 'We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to: ',
+          bullets: [
+            'Identify your specific needs',
+            'Develop an action plan',
+            'Recommend courses to support progression'
+          ],
+          button: {
+            button_title: 'Contact your local Computing Hub',
+            button_url: '/'
+          }
+        }
+      ]
+    ) %>
+</div>
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
