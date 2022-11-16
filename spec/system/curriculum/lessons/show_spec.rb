@@ -34,12 +34,18 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end
 
         it 'shows the choices component' do
-          expect(page).to have_css('.cirriculum__rating-choices')
+          expect(page).to have_css('.curriculum__rating-choices')
         end
   
         it 'shows the expected text' do
           expect(page).to have_text('Tell us more, what did you dislike?')
         end
+
+        it 'displays all 5 checkboxes' do
+          (1..5).each do |check_box|
+            expect(page.body).to have_css("#rating_choice_#{check_box}_neg")
+          end 
+        end 
       end 
 
       describe 'after interacting with choices component' do 
@@ -50,11 +56,11 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end 
 
         it 'does not show choices component' do 
-          expect(page).not_to have_css('.cirriculum__rating-choices')
+          expect(page).not_to have_css('.curriculum__rating-choices')
         end 
 
         it 'shows the expected text' do
-          expect(page).to have_text('Tell us more about to help us improve')
+          expect(page).to have_text('Tell us more to help us improve.')
         end
 
         it 'shows the text area' do 
@@ -92,12 +98,18 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end
   
         it 'shows the choices component' do
-          expect(page).to have_css('.cirriculum__rating-choices')
+          expect(page).to have_css('.curriculum__rating-choices')
         end
         
         it 'shows the expected text' do
           expect(page).to have_text('Tell us more, what did you like?')
         end
+
+        it 'displays all 5 checkboxes' do
+          (1..5).each do |check_box|
+            expect(page.body).to have_css("#rating_choice_#{check_box}")
+          end 
+        end 
       end
 
       describe 'after interacting with choices component' do 
@@ -109,11 +121,11 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end 
 
         it 'does not show choices component' do 
-          expect(page).not_to have_css('.cirriculum__rating-choices')
+          expect(page).not_to have_css('.curriculum__rating-choices')
         end 
 
         it 'shows the expected text' do
-          expect(page).to have_text('Tell us more about to help us improve')
+          expect(page).to have_text('Tell us more to help us improve.')
         end
 
         it 'shows the text area' do 
