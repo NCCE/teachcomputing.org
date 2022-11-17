@@ -14,7 +14,6 @@ en:
         button:
           title: "Register for the Computing Quality Framework"
           url: "https://computingqualityframework.org/"
-          event-category: "Secondary SLT"
           event-label: "Computing Quality Framework"
       guidance-tick-list:
         title: "Guidance for offering computing"
@@ -26,7 +25,6 @@ en:
         button:
           title: "Contact your local Computing Hub"
           url: "/hubs"
-          event-category: "Secondary SLT"
           event-label: "Computing Hubs"
       how-we-help:
         title: "How we can help your teachers"
@@ -38,12 +36,10 @@ en:
               all-courses-link:
                 title: "All courses"
                 url: "/courses"
-                event-category: "Secondary SLT"
                 event-label: "courses"
             link:
               title: "Check your eligibility"
               url: "/funding"
-              event-category: "Secondary SLT"
               event-label: "Funding"
           certification:
             title: "Nationally-recognised certification"
@@ -51,7 +47,6 @@ en:
             link:
               title: "Download senior leader guide"
               url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
-              event-category: "Secondary SLT"
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"
@@ -59,5 +54,4 @@ en:
             link:
               title: "Browse our teaching resources"
               url: "/curriculum"
-              event-category: "Secondary SLT"
               event-label: "Curriculum resources"
