@@ -64,18 +64,40 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full govuk-!-margin-top-7">
         <%= render BorderedCardsComponent.new(
-          cards_per_row: 1,
+          cards_per_row: 3,
           class_name: 'teacher-help-cards',
           cards: [
             {
               class_name: 'bordered-card--secondary-cert',
-              title: 'Professional development courses',
-              text: "<p>Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.</p> <p>To support teacher participation, we offer financial support to state-funded schools and colleges across England. <a href='/courses' data-event-label='courses' data-event-category='Secondary SLT'>All courses</href> are fully-funded or low-cost, with generous subsidies for supply cover.</p>",
+              title: t('.how-we-help.cards.courses.title'),
+              text: t('.how-we-help.cards.courses.text'),
               link: {
-                link_title: 'Check your eligibility',
-                link_url: '/funding',
-                tracking_page: 'Secondary SLT',
-                tracking_label: 'Funding'
+                link_title: t('.how-we-help.cards.courses.link.title'),
+                link_url: t('.how-we-help.cards.courses.link.url'),
+                tracking_page: t('.how-we-help.cards.courses.link.event-category'),
+                tracking_label: t('.how-we-help.cards.courses.link.event-label')
+              }
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.how-we-help.cards.certification.title'),
+              text: t('.how-we-help.cards.certification.text'),
+              link: {
+                link_title: t('.how-we-help.cards.certification.link.title'),
+                link_url: t('.how-we-help.cards.certification.link.url'),
+                tracking_page: t('.how-we-help.cards.certification.link.event-category'),
+                tracking_label: t('.how-we-help.cards.certification.link.event-label')
+              }
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.how-we-help.cards.resources.title'),
+              text: t('.how-we-help.cards.resources.text'),
+              link: {
+                link_title: t('.how-we-help.cards.resources.link.title'),
+                link_url: t('.how-we-help.cards.resources.link.url'),
+                tracking_page: t('.how-we-help.cards.resources.link.event-category'),
+                tracking_label: t('.how-we-help.cards.resources.link.event-label')
               }
             }
           ]

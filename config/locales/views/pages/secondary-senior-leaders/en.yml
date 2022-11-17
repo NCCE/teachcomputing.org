@@ -30,5 +30,28 @@ en:
           event-label: "Computing Hubs"
       how-we-help:
         title: "How we can help your teachers"
-
-
+        cards:
+          courses:
+            title: "Professional development courses"
+            text: "Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.\nTo support teacher participation, we offer financial support to state-funded schools and colleges across England. All courses are fully-funded or low-cost, with generous subsidies for supply cover."
+            link:
+              title: "Check your eligibility"
+              url: "/funding"
+              event-category: "Secondary SLT"
+              event-label: "Funding"
+          certification:
+            title: "Nationally-recognised certification"
+            text: "Help your staff attain their career goals and meet the rise in student demand, with our Computer Science Accelerator. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.\nOur follow-on Secondary certificate builds on this, as well as advancing pedagogy."
+            link:
+              title: "Download senior leader guide"
+              url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
+              event-category: "Secondary SLT"
+              event-label: "Senior leader guide"
+          resources:
+            title: "Full curriculum resources for Key Stages 3 and 4"
+            text: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.\nIt includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+            link:
+              title: "Browse our teaching resources"
+              url: "/curriculum"
+              event-category: "Secondary SLT"
+              event-label: "Curriculum resources"
