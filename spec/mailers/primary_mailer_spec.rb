@@ -5,8 +5,10 @@ RSpec.describe PrimaryMailer, type: :mailer do
   let(:programme) { create(:primary_certificate) }
   let(:mail) { PrimaryMailer.with(user: user, programme: programme).completed }
   let(:enrolled_mail) { PrimaryMailer.with(user: user, programme: programme).enrolled }
+  let(:inactive_prompt_mail) { PrimaryMailer.with(user: user, programme: programme).inactive_prompt }
   let(:subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in Primary Computing Teaching' }
   let(:enrolled_subject) { 'Welcome to Teach primary computing' }
+  let(:inactive_prompt_subject) { 'Kick-start your development and achieve a national qualification' }
 
   describe 'enrolled certificate email' do
     it 'renders the headers' do
@@ -36,12 +38,31 @@ RSpec.describe PrimaryMailer, type: :mailer do
       expect(mail.from).to eq(['noreply@teachcomputing.org'])
     end
 
+    it 'renders the headers' do
+      expect(inactive_prompt_mail.subject).to include(inactive_prompt_subject)
+      expect(inactive_prompt_mail.to).to eq([user.email])
+      expect(inactive_prompt_mail.from).to eq(['noreply@teachcomputing.org'])
+    end
+
     it 'renders the body' do
       expect(mail.body.encoded).to include(user.first_name.to_s)
     end
 
+    it 'renders the body' do
+      expect(inactive_prompt_mail.body.encoded).to include(user.first_name.to_s)
+    end
+
     it 'includes the subject in the email' do
       expect(mail.body.encoded).to include("Congratulations on completing your certificate!")
+    end
+
+    it 'includes the subject in the email' do
+      expect(inactive_prompt_mail.body.encoded).to include("<title>#{inactive_prompt_subject}</title>")
+    end
+
+    it 'includes the correct links in the inactive prompt email' do
+      expect(inactive_prompt_mail.body.encoded).to have_link(href: primary_certificate_url)
+      expect(inactive_prompt_mail.body.encoded).to have_link(href: '/bursary')
     end
   end
 end
