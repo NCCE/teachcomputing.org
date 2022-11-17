@@ -148,3 +148,24 @@
 </div>
 
 <%# Explore our partners %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds bottom-margin">
+          <h2 class="govuk-heading-l"><%= t('.partners.title') %></h2>
+          <p class="govuk-body-l"><%= t(
+              '.partners.text.html',
+              educational_partners_link: (link_to(
+                  t('.partners.text.educational-partners-link.title'),
+                  t('.partners.text.educational-partners-link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.text.educational-partners-link.event-label')
+              ))
+          </p>
+        </div>
+        <div class="govuk-grid-column-full">
+          <%= render NonBorderedCardsComponent.new(**@landing_page.contributing_partners) %>
+        </div>
+      </div>
+  </div>
+</div>

@@ -71,3 +71,12 @@ en:
           title: "Discover Isaac Computer Science"
           url: "https://isaaccomputerscience.org/"
           event-label: "Isaac CS"
+      partners:
+        title: "Explore our partners"
+        text:
+          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our %{educational_partners_link} offer complementary programmes to help your school or college provide inspirational computing activities and extra-curricular experiences for your students."
+          educational-partners-link:
+            title: "educational partners"
+            url: "/contributing-partners"
+            event-label: "Partners"
+
