@@ -79,4 +79,25 @@ en:
             title: "educational partners"
             url: "/contributing-partners"
             event-label: "Partners"
-
+        cards:
+          stem:
+            title: "STEM Ambassadors"
+            text: "Relatable professionals who support learning, raise aspirations and illuminate careers - including those in computing and the digital sector - face to face or virtually, free of charge."
+            link:
+              title: "Engage with STEM Ambassadors"
+              url: "https://www.stem.org.uk/stem-ambassadors"
+              event-label: "STEM Ambassadors"
+          code-club:
+            title: "Code Club"
+            text: "An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club."
+            link:
+              title: "Start or join a ciub"
+              url: "https://codeclub.org/en/"
+              event-label: "Code Club"
+          bebras:
+            title: "Bebras UK"
+            text: "The Bebras Computing Challenge introduces computational thinking to students. It is organized in over 50 countries and designed to get students all over the world excited about computing."
+            link:
+              title: "Work with us"
+              url: "https://www.bebras.uk/"
+              event-label: "Bebras"

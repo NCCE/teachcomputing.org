@@ -160,11 +160,49 @@
                   t('.partners.text.educational-partners-link.url'),
                   tracking_page: 'Secondary SLT',
                   tracking_label: t('.partners.text.educational-partners-link.event-label')
-              ))
-          </p>
+              )))
+          %></p>
         </div>
         <div class="govuk-grid-column-full">
-          <%= render NonBorderedCardsComponent.new(**@landing_page.contributing_partners) %>
+          <%= render NonBorderedCardsComponent.new(
+            class_name: 'resource-cards',
+            cards_per_row: 3,
+            cards: [
+              {
+                image_url: 'pages/primary-teachers/stem-card.svg',
+                title: t('.partners.cards.stem.title'),
+                text: t('.partners.cards.stem.text'),
+                link: {
+                  link_title: t('.partners.cards.stem.link.title'),
+                  link_url: t('.partners.cards.stem.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.stem.link.event-label'),
+                }
+              },
+              {
+                image_url: 'pages/primary-teachers/code-club-card.svg',
+                title: t('.partners.cards.stem.title'),
+                text: t('.partners.cards.stem.text'),
+                link: {
+                  link_title: t('.partners.cards.stem.link.title'),
+                  link_url: t('.partners.cards.stem.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.stem.link.event-label'),
+                }
+              },
+              {
+                image_url: 'partners/bebras.png',
+                title: t('.partners.cards.bebras.title'),
+                text: t('.partners.cards.bebras.text'),
+                link: {
+                  link_title: t('.partners.cards.bebras.link.title'),
+                  link_url: t('.partners.cards.bebras.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.bebras.link.event-label'),
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
   </div>
