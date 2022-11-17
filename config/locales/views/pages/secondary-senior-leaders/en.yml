@@ -33,7 +33,13 @@ en:
         cards:
           courses:
             title: "Professional development courses"
-            text: "Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.\nTo support teacher participation, we offer financial support to state-funded schools and colleges across England. All courses are fully-funded or low-cost, with generous subsidies for supply cover."
+            text:
+              html: "<p>Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.</p><p>To support teacher participation, we offer financial support to state-funded schools and colleges across England. %{all_courses_link} are fully-funded or low-cost, with generous subsidies for supply cover.</p>"
+              all-courses-link:
+                title: "All courses"
+                url: "/courses"
+                event-category: "Secondary SLT"
+                event-label: "courses"
             link:
               title: "Check your eligibility"
               url: "/funding"
