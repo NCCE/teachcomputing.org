@@ -64,3 +64,10 @@ en:
               title: "Browse our teaching resources"
               url: "/curriculum"
               event-label: "Curriculum resources"
+      student-help:
+        title: "How we can help you and your students"
+        text: "Isaac Computer Science is our free online learning programme for A level and GCSE computer science students and teachers, providing learning materials that cover the AQA, Edexcel, Eduqas, OCR and WJEC curriculums."
+        button:
+          title: "Discover Isaac Computer Science"
+          url: "https://isaaccomputerscience.org/"
+          event-label: "Isaac CS"
