@@ -1,0 +1,8 @@
+<%= content_tag :div, class: ['logo-button-image-card-component', { "#{@class_name}": @class_name.present? } ] %>
+  <%= image_pack_tag @image[:path], class: 'logo-button-image-card-component__image', alt: @image[:alt] %>
+  <%= image_pack_tag @logo[:path], class: 'logo-button-image-card-component__logo', alt: @logo[:alt] %>
+  <h2 class="govuk-heading-m logo-button-image-card-component__title"> <%= @title %> </h2>
+  <p class="govuk-body govuk-!-margin-bottom-0">
+    <%= @text %>
+  </p>
+</div>
