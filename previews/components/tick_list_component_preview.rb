@@ -2,7 +2,7 @@
 
 class TickListComponentPreview < ViewComponent::Preview
   def standard
-    params = {
+    tick_list = {
       class_name: 'tick-list-example-component',
       title: 'Tick List Component',
       text: 'This is an example of a tick list component. This is the main ' \
@@ -16,6 +16,6 @@ class TickListComponentPreview < ViewComponent::Preview
       }
     }
 
-    render(TickListComponent.new(**params))
+    render(TickListComponent.new(tick_list:))
   end
 end
