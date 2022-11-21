@@ -60,6 +60,7 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end 
 
         it 'shows the expected text' do
+          expect(page).to have_text('What did you dislike?')
           expect(page).to have_text('Tell us more to help us improve.')
         end
 
@@ -125,6 +126,7 @@ RSpec.describe('Curriculum Ratings', type: :system) do
         end 
 
         it 'shows the expected text' do
+          expect(page).to have_text('What did you like?')
           expect(page).to have_text('Tell us more to help us improve.')
         end
 
