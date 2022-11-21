@@ -1,9 +1,9 @@
 <%= content_tag :div, class: "logo-button-image-card-component #{@class_name.present? ? @class_name : ''}" do %>
   <div class="govuk-grid-row govuk-!-margin-top-8">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-third">
       <%= image_pack_tag @image[:path], class: 'logo-button-image-card-component__image', alt: @image[:alt] %>
     </div>
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-two-thirds">
       <%= image_pack_tag @logo[:path], class: 'logo-button-image-card-component__logo', alt: @logo[:alt] %>
       <h2 class="govuk-heading-m logo-button-image-card-component__title"> <%= @title %> </h2>
       <p class="govuk-body govuk-!-margin-bottom-0">
