@@ -9,6 +9,7 @@
       <p class="govuk-body govuk-!-margin-bottom-0">
         <%= @text %>
       </p>
+      <%= link_to @button[:button_title], @button[:button_url], class: 'govuk-button button logo-button-image-card-component__button', data: { event_action: 'click', event_category: @button[:tracking_page], event_label: @button[:tracking_label] }  %>
     </div>
   </div>
 <% end %>
