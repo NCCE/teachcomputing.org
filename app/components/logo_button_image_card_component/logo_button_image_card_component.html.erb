@@ -6,7 +6,7 @@
     <div class="govuk-grid-column-two-thirds">
       <%= image_pack_tag @logo[:path], class: 'logo-button-image-card-component__logo', alt: @logo[:alt] %>
       <h2 class="govuk-heading-m logo-button-image-card-component__title"> <%= @title %> </h2>
-      <p class="govuk-body govuk-!-margin-bottom-0">
+      <p class="govuk-body govuk-!-margin-bottom-0 logo-button-image-card-component__text">
         <%= @text %>
       </p>
       <%= link_to @button[:button_title], @button[:button_url], class: 'govuk-button button logo-button-image-card-component__button', data: { event_action: 'click', event_category: @button[:tracking_page], event_label: @button[:tracking_label] }  %>

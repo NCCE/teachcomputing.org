@@ -2,57 +2,57 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe LogoButtonImageCardComponent, type: :component do
-  let(:tick_list) do
+  let(:params) do
     {
-      class_name: Faker::Lorem.unique.words.join('-'),
+      logo: { path: 'media/images/logos/isaac-logo.svg', alt: Faker::Lorem.unique.sentence },
+      image: {
+        path: 'media/images/pages/secondary-senior-leaders/teaching.png',
+        alt: Faker::Lorem.unique.sentence
+      },
       title: Faker::Lorem.unique.sentence,
       text: Faker::Lorem.unique.paragraph,
-      bullets: [
-        Faker::Lorem.unique.sentence,
-        Faker::Lorem.unique.sentence,
-        Faker::Lorem.unique.sentence,
-        Faker::Lorem.unique.sentence
-      ],
       button: {
         button_title: Faker::Lorem.unique.sentence,
-        button_url: Faker::Internet.url(scheme: 'https')
-      }
+        button_url: Faker::Internet.url(scheme: 'https'),
+        tracking_page: Faker::Lorem.unique.word,
+        tracking_label: Faker::Lorem.unique.word
+      },
+      class_name: Faker::Lorem.unique.words.join('-')
     }
   end
 
   before do
-    render_inline(described_class.new(tick_list:))
+    render_inline(described_class.new(**params))
   end
 
   it 'adds the wrapper class' do
-    expect(rendered_component).to have_css(".#{tick_list[:class_name]}")
+    expect(rendered_component).to have_css(".#{params[:class_name]}")
   end
 
   it 'renders a title' do
     expect(rendered_component).to have_css(
-      '.tick-list-component__title',
-      text: tick_list[:title]
+      '.logo-button-image-card-component__title',
+      text: params[:title]
     )
   end
 
   it 'renders the body text' do
     expect(rendered_component).to have_css(
-      '.tick-list-component__text',
-      text: tick_list[:text]
+      '.logo-button-image-card-component__text',
+      text: params[:text]
     )
   end
 
   it 'renders a button' do
     expect(rendered_component).to have_link(
-      tick_list[:button][:button_title],
-      href: tick_list[:button][:button_url]
+      params[:button][:button_title],
+      href: params[:button][:button_url]
     )
   end
 
-  it 'renders a list with the expected number of items' do
-    expect(rendered_component).to have_css(
-      '.tick-list-component__list li',
-      count: tick_list[:bullets].count
-    )
+  it 'adds the GA tag' do
+    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-action='click']")
+    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-category='#{params[:button][:tracking_page]}']")
+    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-label='#{params[:button][:tracking_label]}']")
   end
 end
