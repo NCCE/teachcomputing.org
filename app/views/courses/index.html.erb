@@ -13,7 +13,10 @@
           </p>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render BursaryComponent.new(tracking_event_category: 'Courses', tracking_event_label: 'Bursaries') %>
+          <%= render BursaryComponent.new(
+            tracking_event_category: 'Courses',
+            tracking_event_label: 'Bursaries',
+            bottom_margin: false) %>
         </div>
       </div>
     </div>
