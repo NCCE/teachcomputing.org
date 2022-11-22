@@ -153,7 +153,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    dalli (2.7.11)
+    dalli (3.2.3)
     debase (0.2.5.beta2)
       debase-ruby_core_source (>= 0.10.12)
     debase-ruby_core_source (0.10.17)
@@ -649,7 +649,7 @@ DEPENDENCIES
   cloudflare-rails (~> 1.1)
   combine_pdf (~> 1.0, >= 1.0.18)
   connection_pool (~> 2.3.0)
-  dalli (~> 2.7.9)
+  dalli (~> 3.2.3)
   debase
   dotenv-rails
   enumerize (~> 2.5)
