@@ -35,8 +35,8 @@ services:
       - .:/app
       - bundle:/usr/local/bundle
     depends_on:
+      - db
       - redis
-      - web
     env_file:
       - .env
 
@@ -58,6 +58,7 @@ services:
       - db
       - redis
       - docker-host
+      - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
@@ -70,12 +71,10 @@ services:
   webpack:
     build: .
     command: ./bin/webpack-dev-server
-    depends_on:
-      - web
     volumes:
       - .:/app
       - node_modules:/app/node_modules
-      - bundle:/usr/local/bundle
+      # - bundle:/usr/local/bundle
     ports:
       - "3035:3035"
     environment:
