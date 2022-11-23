@@ -12,7 +12,7 @@ COPY Gemfile Gemfile.lock /app/
 RUN bundle install
 
 COPY package.json yarn.lock /app/
-RUN yarn policies set-version 3.2
+RUN yarn set version 3.2.x
 RUN yarn install
 
 COPY scripts/templates/* /root/
