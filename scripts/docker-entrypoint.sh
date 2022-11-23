@@ -1,4 +1,5 @@
 #!/bin/sh
+
 set -e
 
 HOST=0.0.0.0
@@ -10,6 +11,9 @@ PID="tmp/pids/server.pid"
 if [ -f $PID ]; then
   rm $PID
 fi
+
+echo "- Copying .env-example to .env if there is no existing .env"
+[ -e yarn.lock ] && cp .env-example .env
 
 echo "-Installing the bundle (this may take a little while if the volume is empty)"
 bundle config set force_ruby_platform true
