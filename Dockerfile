@@ -5,9 +5,14 @@ RUN pip install --upgrade pip
 RUN pip3 install -U selenium
 RUN curl https://cli-assets.heroku.com/install.sh | sh
 RUN mkdir -p /app/node_modules
+WORKDIR /app
 RUN bundle config set force_ruby_platform true
+
+COPY Gemfile Gemfile.lock /app/
 RUN bundle install
+
+COPY package.json yarn.lock /app/
+RUN yarn policies set-version 3.2
 RUN yarn install
 
-WORKDIR /app
 COPY scripts/templates/* /root/
