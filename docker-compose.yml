@@ -61,6 +61,12 @@ services:
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 25s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     env_file:
       - ${ENV_FILE:-.env.defaults}
 
@@ -73,6 +79,8 @@ services:
       - bundle:/usr/local/bundle
     ports:
       - "3035:3035"
+    env_file:
+      - ${ENV_FILE:-.env.defaults}
 
 volumes:
   bundle: null
