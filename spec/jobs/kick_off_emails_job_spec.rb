@@ -36,10 +36,10 @@ RSpec.describe KickOffEmailsJob, type: :job do
     it 'sends jobs to be delivered a month later job' do
       expect do
         described_class.perform_now(cs_accelerator_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month)).with(cs_accelerator_enrolment.id)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id)
       expect do
         described_class.perform_now(primary_certificate_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month)).with(primary_certificate_enrolment.id)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id)
     end
   end
 end
