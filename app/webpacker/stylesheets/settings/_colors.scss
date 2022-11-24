@@ -23,6 +23,7 @@ $jaffa: #f47c31;
 $karry: #ffe7d2;
 $lavender-light: #e6e5f3;
 $lilly-white: #ebebeb;
+$light-blue: #E4F8FF;
 $mid-gray: #5c5d6d;
 $pink: #de01a5;
 $purple-dark: #593e8e;
@@ -89,6 +90,10 @@ $primary-cert-color: $jaffa;
 
 .lime-green-bg {
   background-color: $lime-green;
+}
+
+.choices-bg {
+  background-color: $light-blue;
 }
 
 @mixin status_block() {

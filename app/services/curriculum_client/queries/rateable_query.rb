@@ -34,11 +34,12 @@ module CurriculumClient
 
       def update_rating(id:, key:, value:, context:, fields: nil)
         fields = fields ? "{#{fields}}" : ''
+        value = value.is_a?(Array) ? "[\"#{value.join('","')}\"]" : "\"#{value}\""
         update = <<~GRAPHQL
           mutation {
             updateRating(
               id: "#{id}"
-              #{key}: "#{value}"
+              #{key}: #{value}
             )
             #{fields}
           }
