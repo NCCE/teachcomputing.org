@@ -74,12 +74,6 @@ export default class extends Controller {
     // Allows us to alter comment section text based on like or dislike
     const pageIndex = this.index
     this.showPage(3)
-    if (pageIndex === 1) {
-      document.getElementById("comment_title").innerHTML = 'What did you like?'
-      document.getElementByClass("rating_comment_placeholder").innerHTML= 'Tell us more so that we can continue to create useful resources'
-    } else {
-      document.getElementById("comment_title").innerHTML = 'What did you dislike?'
-    }
   }
 
   onCommentSuccess(ev) {
