@@ -5,6 +5,8 @@ class KickOffEmailsJob < ApplicationJob
     enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
     case enrolment.programme.slug
+    when 'primary-certificate'
+      PrimaryMailer.with(user: enrolment.user).enrolled.deliver_now
     when 'secondary-certificate'
       SecondaryMailer.with(user: enrolment.user).welcome.deliver_now
     when 'cs-accelerator'

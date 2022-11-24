@@ -5,7 +5,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
   def create
     enroller = Programmes::UserEnroller.new(user_programme_enrolment_params)
     programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
-
     if enroller.call
       flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
       redirect_to programme.path
