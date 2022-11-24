@@ -1,0 +1,445 @@
+root@3706a23deb37 /app - (2216-fix-n+1-queries) $ rspec
+
+Randomized with seed 47273
+..................................................................................................................................................................................................................................................................................................................................................................................................................................................*........................................................*........*.................................................................................F............................................................................FF............F..........9EE2BFF1-9180-4C4B-90B5-350DA8A0BB1C: destroying #<AssessmentAttempt:0x00007f7c8f304b30>
+Resetting CSA programme enrolment for 9EE2BFF1-9180-4C4B-90B5-350DA8A0BB1C from completed to enrolled
+.DAFD6C94-9C31-47E0-9382-DCE5B9ADD68A: destroying #<AssessmentAttempt:0x00007f7c8f25c890>
+Resetting CSA programme enrolment for DAFD6C94-9C31-47E0-9382-DCE5B9ADD68A from completed to enrolled
+..................................................DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:84)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:116)
+DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:117)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:121)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:72)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:59)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:55)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:96)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:23)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:27)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:35)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:19)
+.DEPRECATION WARNING: `rendered_component` is deprecated and will be removed in v3.0.0. Use `page` instead. (called from block (3 levels) in <top (required)> at /app/spec/components/aside_component_spec.rb:31)
+.................................................................................................................................................................F.F.F.F............................................................................................................................................................................*.........................................................................................................F.F................F...................................................................................................................................................................*.................................................F..............*......................................................................................................................................................................................................................................................*..................................F.............................................................................................................................................................................................................................................................F..
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) BorderedListCardsComponent other ways to get involved cards sets the expected properties
+     # Add test that checks custom properties are set correctly
+     Failure/Error: expect(page).to have_css('--cards-per-row: 3;')
+
+     Nokogiri::CSS::SyntaxError:
+       unexpected '-' after ''
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:86:in `on_error'
+     # (eval):3:in `_racc_do_parse_c'
+     # (eval):3:in `do_parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:68:in `parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:78:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css.rb:46:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:246:in `block in xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `block in css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:206:in `css_internal'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:129:in `css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:176:in `find_css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:253:in `find_nodes_by_selector_format'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:166:in `block in resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:165:in `resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:844:in `block in _verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:843:in `_verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:110:in `assert_selector'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/have_selector.rb:18:in `element_matches?'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/base.rb:51:in `matches?'
+     # ./spec/components/bordered_list_cards_component_spec.rb:22:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  2) DocumentCardsComponent with no date sets the expected properties
+     # Add test that checks custom properties are set correctly
+     Failure/Error: expect(page).to have_css('--cards-per-row: 3;')
+
+     Nokogiri::CSS::SyntaxError:
+       unexpected '-' after ''
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:86:in `on_error'
+     # (eval):3:in `_racc_do_parse_c'
+     # (eval):3:in `do_parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:68:in `parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:78:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css.rb:46:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:246:in `block in xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `block in css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:206:in `css_internal'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:129:in `css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:176:in `find_css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:253:in `find_nodes_by_selector_format'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:166:in `block in resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:165:in `resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:844:in `block in _verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:843:in `_verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:110:in `assert_selector'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/have_selector.rb:18:in `element_matches?'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/base.rb:51:in `matches?'
+     # ./spec/components/document_cards_component_spec.rb:55:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  3) PagesController GET #secondary-senior-leaders shows the page
+     # No reason given
+     # ./spec/requests/pages/secondary_senior_leaders_spec.rb:9
+
+  4) NonBorderedCardsComponent without an image sets the expected properties
+     # Add test that checks custom properties are set correctly
+     Failure/Error: expect(page).to have_css('--cards-per-row: 3;')
+
+     Nokogiri::CSS::SyntaxError:
+       unexpected '-' after ''
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:86:in `on_error'
+     # (eval):3:in `_racc_do_parse_c'
+     # (eval):3:in `do_parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:68:in `parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:78:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css.rb:46:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:246:in `block in xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `block in css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:206:in `css_internal'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:129:in `css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:176:in `find_css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:253:in `find_nodes_by_selector_format'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:166:in `block in resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:165:in `resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:844:in `block in _verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:843:in `_verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:110:in `assert_selector'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/have_selector.rb:18:in `element_matches?'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/base.rb:51:in `matches?'
+     # ./spec/components/non_bordered_cards_component_spec.rb:45:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  5) FailedAssessmentEmailJob#perform sends an email
+     # Pending email content
+     Failure/Error:
+       expect { described_class.perform_now(user.id) }
+         .to change { ActionMailer::Base.deliveries.count }.by(1)
+
+       expected `ActionMailer::Base.deliveries.count` to have changed by 1, but was changed by 0
+     # ./spec/jobs/failed_assessment_email_job_spec.rb:11:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  6) BorderedCardsComponent without an image sets the expected properties
+     # Add test that checks custom properties are set correctly
+     Failure/Error: expect(page).to have_css('--cards-per-row: 3;')
+
+     Nokogiri::CSS::SyntaxError:
+       unexpected '-' after ''
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:86:in `on_error'
+     # (eval):3:in `_racc_do_parse_c'
+     # (eval):3:in `do_parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:68:in `parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:78:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css.rb:46:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:246:in `block in xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `block in css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:206:in `css_internal'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:129:in `css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:176:in `find_css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:253:in `find_nodes_by_selector_format'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:166:in `block in resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:165:in `resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:844:in `block in _verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:843:in `_verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:110:in `assert_selector'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/have_selector.rb:18:in `element_matches?'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/base.rb:51:in `matches?'
+     # ./spec/components/bordered_cards_component_spec.rb:63:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  7) LogoCardsComponent sets the expected properties
+     # Add test that checks custom properties are set correctly
+     Failure/Error: expect(page).to have_css('--cards-per-row: 3;')
+
+     Nokogiri::CSS::SyntaxError:
+       unexpected '-' after ''
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:86:in `on_error'
+     # (eval):3:in `_racc_do_parse_c'
+     # (eval):3:in `do_parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:68:in `parse'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css/parser_extras.rb:78:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/css.rb:46:in `xpath_for'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:246:in `block in xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:245:in `xpath_query_from_css_rule'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `block in css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `map'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:237:in `css_rules_to_xpath'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:206:in `css_internal'
+     # /usr/local/bundle/gems/nokogiri-1.13.9/lib/nokogiri/xml/searchable.rb:129:in `css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:176:in `find_css'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:253:in `find_nodes_by_selector_format'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:166:in `block in resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/queries/selector_query.rb:165:in `resolve_for'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:844:in `block in _verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/simple.rb:156:in `synchronize'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:843:in `_verify_selector_result'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/node/matchers.rb:110:in `assert_selector'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/have_selector.rb:18:in `element_matches?'
+     # /usr/local/bundle/gems/capybara-3.37.1/lib/capybara/rspec/matchers/base.rb:51:in `matches?'
+     # ./spec/components/logo_cards_component_spec.rb:44:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+Failures:
+
+  1) CourseOccurrencesComponent does not render if there are no occurrences
+     Failure/Error: expect(page).to eq('')
+
+       expected: ""
+            got: #<Capybara::Node::Simple tag="" path="/">
+
+       (compared using ==)
+
+       Diff:
+       @@ -1 +1 @@
+       -""
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/course_occurrences_component_spec.rb:8:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  2) HubSearchComponent shows location if present
+     Failure/Error: expect(page).to include('sheffield')
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "sheffield", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["sheffield"]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_search_component_spec.rb:6:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  3) HubSearchComponent shows placeholder if no location
+     Failure/Error: expect(page).to include('Town, city or postcode')
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "Town, city or postcode", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["Town, city or postcode"]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_search_component_spec.rb:11:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  4) SortedHubsComponent does not render when sorted_hubs is nil
+     Failure/Error: expect(page).to eq ''
+
+       expected: ""
+            got: #<Capybara::Node::Simple tag="" path="/">
+
+       (compared using ==)
+
+       Diff:
+       @@ -1 +1 @@
+       -""
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/sorted_hubs_component_spec.rb:19:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  5) HubSocialLinkComponent does not render when value is empty
+     Failure/Error: expect(page).to eq ''
+
+       expected: ""
+            got: #<Capybara::Node::Simple tag="" path="/">
+
+       (compared using ==)
+
+       Diff:
+       @@ -1 +1 @@
+       -""
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_social_link_component_spec.rb:6:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  6) HubSocialLinkComponent when type is website renders correct image
+     Failure/Error: expect(page).to include('packs-test/media/images/social-media/website-')
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "packs-test/media/images/social-media/website-", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["packs-test/media/images/social-media/website-"]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_social_link_component_spec.rb:40:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  7) HubSocialLinkComponent when type is facebook renders correct image
+     Failure/Error: expect(page).to include('packs-test/media/images/social-media/facebook-')
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "packs-test/media/images/social-media/facebook-", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["packs-test/media/images/social-media/facebook-"]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_social_link_component_spec.rb:26:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  8) HubSocialLinkComponent when type is twitter renders correct image
+     Failure/Error: expect(page).to include('packs-test/media/images/social-media/twitter_round-')
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "packs-test/media/images/social-media/twitter_round-", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["packs-test/media/images/social-media/twitter_round-"]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/hub_social_link_component_spec.rb:12:in `block (3 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  9) ImageLinkCardComponent renders text from locale passed in
+     Failure/Error: expect(page).to include(I18n.t('test.image_link_card.text_html'))
+
+       expected #<Capybara::Node::Simple tag="" path="/"> to include "Lorem ipsum dolor sit amet, <a href='https://www.test.example.com'>consectetur adipiscing elit</a>. ...nterdum placerat justo. Vivamus libero ligula, semper a viverra sit amet, tincidunt suscipit velit.", but it does not respond to `include?`
+       Diff:
+       @@ -1 +1 @@
+       -["Lorem ipsum dolor sit amet, <a href='https://www.test.example.com'>consectetur adipiscing elit</a>. Nullam tempor, odio quis scelerisque auctor, ante mi auctor libero, et accumsan nulla odio sed ipsum. Proin quis blandit mauris. Etiam quis tempus ex. Fusce quis leo turpis. Praesent gravida suscipit pharetra. Aliquam quam dui, commodo non nulla ut, laoreet ultrices libero. Quisque massa arcu, hendrerit eleifend vehicula accumsan, ullamcorper vel orci. Quisque felis orci, tristique in facilisis eu, interdum placerat justo. Vivamus libero ligula, semper a viverra sit amet, tincidunt suscipit velit."]
+       +#<Capybara::Node::Simple tag="" path="/">
+
+     # ./spec/components/image_link_card_component_spec.rb:21:in `block (2 levels) in <top (required)>'
+     # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  10) ImageLinkCardComponent includes image alt from locale passed in
+      Failure/Error: expect(page).to include(I18n.t('test.image_link_card.img_alt'))
+
+        expected #<Capybara::Node::Simple tag="" path="/"> to include "Test image alt text", but it does not respond to `include?`
+        Diff:
+        @@ -1 +1 @@
+        -["Test image alt text"]
+        +#<Capybara::Node::Simple tag="" path="/">
+
+      # ./spec/components/image_link_card_component_spec.rb:26:in `block (2 levels) in <top (required)>'
+      # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  11) NoHubsComponent when there are no hubs does not render
+      Failure/Error: expect(page).to eq('')
+
+        expected: ""
+             got: #<Capybara::Node::Simple tag="" path="/">
+
+        (compared using ==)
+
+        Diff:
+        @@ -1 +1 @@
+        -""
+        +#<Capybara::Node::Simple tag="" path="/">
+
+      # ./spec/components/no_hubs_component_spec.rb:9:in `block (3 levels) in <top (required)>'
+      # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  12) CompletedDashBadgeComponent when badge is not present does not render
+      Failure/Error: expect(page).to eq ''
+
+        expected: ""
+             got: #<Capybara::Node::Simple tag="" path="/">
+
+        (compared using ==)
+
+        Diff:
+        @@ -1 +1 @@
+        -""
+        +#<Capybara::Node::Simple tag="" path="/">
+
+      # ./spec/components/completed_dash_badge_component_spec.rb:16:in `block (3 levels) in <top (required)>'
+      # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  13) LocationSearchResultsComponent does not render if not location search
+      Failure/Error: expect(page).to eq('')
+
+        expected: ""
+             got: #<Capybara::Node::Simple tag="" path="/">
+
+        (compared using ==)
+
+        Diff:
+        @@ -1 +1 @@
+        -""
+        +#<Capybara::Node::Simple tag="" path="/">
+
+      # ./spec/components/location_search_results_component_spec.rb:9:in `block (2 levels) in <top (required)>'
+      # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+  14) HubRegionComponent shows name
+      Failure/Error: expect(page).to include(hub_region.name)
+
+        expected #<Capybara::Node::Simple tag="" path="/"> to include "Maryland", but it does not respond to `include?`
+        Diff:
+        @@ -1 +1 @@
+        -["Maryland"]
+        +#<Capybara::Node::Simple tag="" path="/">
+
+      # ./spec/components/hub_region_component_spec.rb:8:in `block (2 levels) in <top (required)>'
+      # /usr/local/bundle/gems/webmock-3.18.1/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
+
+Top 5 slowest examples (56.08 seconds, 12.6% of total time):
+  Static pages Privacy page main is accessible
+    11.88 seconds ./spec/system/pages/static_pages_spec.rb:65
+  Teacher Landing pages Primary Teachers page main is accessible
+    11.33 seconds ./spec/system/landing_pages/teacher_pages_spec.rb:19
+  Static pages About page main is accessible
+    11.02 seconds ./spec/system/pages/static_pages_spec.rb:16
+  Static pages header is accessible
+    10.96 seconds ./spec/system/pages/home_spec.rb:14
+  Dashboard page main is accessible
+    10.89 seconds ./spec/system/dashboard/show_spec.rb:22
+
+Top 5 slowest example groups:
+  Static pages
+    8.25 seconds average (32.99 seconds / 4 examples) ./spec/system/pages/home_spec.rb:4
+  Dashboard page
+    5.76 seconds average (11.53 seconds / 2 examples) ./spec/system/dashboard/show_spec.rb:4
+  Static pages
+    5.66 seconds average (67.96 seconds / 12 examples) ./spec/system/pages/static_pages_spec.rb:4
+  Courses page
+    4.76 seconds average (90.47 seconds / 19 examples) ./spec/system/courses/index_spec.rb:4
+  Teacher Landing pages
+    4.12 seconds average (12.36 seconds / 3 examples) ./spec/system/landing_pages/teacher_pages_spec.rb:4
+
+Finished in 7 minutes 27 seconds (files took 45.86 seconds to load)
+1979 examples, 14 failures, 7 pending
+
+Failed examples:
+
+rspec ./spec/components/course_occurrences_component_spec.rb:4 # CourseOccurrencesComponent does not render if there are no occurrences
+rspec ./spec/components/hub_search_component_spec.rb:4 # HubSearchComponent shows location if present
+rspec ./spec/components/hub_search_component_spec.rb:9 # HubSearchComponent shows placeholder if no location
+rspec ./spec/components/sorted_hubs_component_spec.rb:17 # SortedHubsComponent does not render when sorted_hubs is nil
+rspec ./spec/components/hub_social_link_component_spec.rb:4 # HubSocialLinkComponent does not render when value is empty
+rspec ./spec/components/hub_social_link_component_spec.rb:38 # HubSocialLinkComponent when type is website renders correct image
+rspec ./spec/components/hub_social_link_component_spec.rb:24 # HubSocialLinkComponent when type is facebook renders correct image
+rspec ./spec/components/hub_social_link_component_spec.rb:10 # HubSocialLinkComponent when type is twitter renders correct image
+rspec ./spec/components/image_link_card_component_spec.rb:19 # ImageLinkCardComponent renders text from locale passed in
+rspec ./spec/components/image_link_card_component_spec.rb:24 # ImageLinkCardComponent includes image alt from locale passed in
+rspec ./spec/components/no_hubs_component_spec.rb:7 # NoHubsComponent when there are no hubs does not render
+rspec ./spec/components/completed_dash_badge_component_spec.rb:15 # CompletedDashBadgeComponent when badge is not present does not render
+rspec ./spec/components/location_search_results_component_spec.rb:6 # LocationSearchResultsComponent does not render if not location search
+rspec ./spec/components/hub_region_component_spec.rb:6 # HubRegionComponent shows name

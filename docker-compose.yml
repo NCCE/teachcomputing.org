@@ -64,10 +64,10 @@ services:
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
-      interval: 25s
-      timeout: 10s
+      interval: 10s
+      timeout: 15s
       retries: 3
-      start_period: 40s
+      start_period: 45s
     env_file:
       - ${ENV_FILE:-.env.defaults}
 
