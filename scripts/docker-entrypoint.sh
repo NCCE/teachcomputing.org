@@ -7,9 +7,6 @@ PORT=3000
 DEBUG_PORT=1234
 DISPATCHER_PORT=26162
 
-# cp -n .env-example .env
-# export $(grep -v '^#' .env | xargs)
-
 PID="tmp/pids/server.pid"
 if [ -f $PID ]; then
   rm $PID
