@@ -58,6 +58,7 @@ services:
       - db
       - redis
       - docker-host
+      - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=${DEV_PASS}
@@ -69,9 +70,7 @@ services:
 
   webpack:
     build: .
-    command: ./bin/webpack-dev-server
-    depends_on:
-      - web
+    command: ./scripts/webpack-docker-entrypoint.sh
     volumes:
       - .:/app
       - node_modules:/app/node_modules
