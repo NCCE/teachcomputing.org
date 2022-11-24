@@ -3,11 +3,11 @@
 class BursaryComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(text: nil, tracking_event_category: nil, tracking_event_label: nil, bottom_margin: true)
+  def initialize(text: nil, tracking_event_category: nil, tracking_event_label: nil, class_name: nil)
     @text = text
     @tracking_event_category = tracking_event_category
     @tracking_event_label = tracking_event_label
-    @bottom_margin = bottom_margin
+    @class_name = class_name
   end
 
   def tracking_data

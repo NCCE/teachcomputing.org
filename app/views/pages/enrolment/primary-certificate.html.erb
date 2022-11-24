@@ -107,7 +107,11 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        <%= render BursaryComponent.new(tracking_event_category: 'Primary unenrolled', tracking_event_label: 'Bursary') %>
+        <%= render BursaryComponent.new(
+          tracking_event_category: 'Primary unenrolled',
+          tracking_event_label: 'Bursary',
+          class_name: 'bursary-component'
+        ) %>
         <%= render AsideComponent.new(
           title: t('.hub_aside.title'),
           text: t('.hub_aside.text'),
