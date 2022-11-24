@@ -17,8 +17,6 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
     restart: unless-stopped
-    env_file:
-      - ${ENV_FILE:-.env.defaults}
 
   redis:
     image: "redis:alpine"
@@ -35,8 +33,6 @@ services:
     depends_on:
       - redis
       - web
-    env_file:
-      - ${ENV_FILE:-.env.defaults}
 
   web:
     build: .
@@ -77,8 +73,6 @@ services:
       - bundle:/usr/local/bundle
     ports:
       - "3035:3035"
-    env_file:
-      - ${ENV_FILE:-.env.defaults}
 
 volumes:
   bundle: null
