@@ -41,7 +41,7 @@ RSpec.describe PrimaryMailer, type: :mailer do
     end
 
     it 'includes the subject in the email' do
-      expect(mail.body.encoded).to include("<title>#{subject}</title>")
+      expect(mail.body.encoded).to include("Congratulations on completing your certificate!")
     end
   end
 end
