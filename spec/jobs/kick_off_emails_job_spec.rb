@@ -11,14 +11,14 @@ RSpec.describe KickOffEmailsJob, type: :job do
   let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id) }
 
   describe '#perform' do
-  
+
     context 'when the programme is cs accelerator' do
       it 'sends an email' do
         expect { described_class.perform_now(cs_accelerator_enrolment.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
-  
+
     context 'when the programme is primary' do
       it 'sends an email' do
         expect { described_class.perform_now(primary_enrolment.id) }
@@ -33,13 +33,13 @@ RSpec.describe KickOffEmailsJob, type: :job do
       end
     end
 
-    it 'sends an queues the getting started job' do
+    it 'sends jobs to be delivered a month later job' do
       expect do
         described_class.perform_now(cs_accelerator_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month)).with(cs_accelerator_enrolment.id)
       expect do
         described_class.perform_now(primary_certificate_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month)).with(primary_certificate_enrolment.id)
     end
   end
 end
