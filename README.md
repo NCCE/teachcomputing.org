@@ -116,7 +116,7 @@ To install/update a new gem, first update the Gemfile and run
 yarn run web bundle install
 ```
 
-### Components
+### Previews
 
 Components etc. can be rendered using the local/review/staging app urls:
 
