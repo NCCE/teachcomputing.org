@@ -38,31 +38,25 @@ RSpec.describe PrimaryMailer, type: :mailer do
       expect(mail.from).to eq(['noreply@teachcomputing.org'])
     end
 
-    it 'renders the headers' do
-      expect(inactive_prompt_mail.subject).to include(inactive_prompt_subject)
-      expect(inactive_prompt_mail.to).to eq([user.email])
-      expect(inactive_prompt_mail.from).to eq(['noreply@teachcomputing.org'])
-    end
-
     it 'renders the body' do
       expect(mail.body.encoded).to include(user.first_name.to_s)
-    end
-
-    it 'renders the body' do
-      expect(inactive_prompt_mail.body.encoded).to include(user.first_name.to_s)
     end
 
     it 'includes the subject in the email' do
       expect(mail.body.encoded).to include("Congratulations on completing your certificate!")
     end
-
-    it 'includes the subject in the email' do
-      expect(inactive_prompt_mail.body.encoded).to include("<title>#{inactive_prompt_subject}</title>")
-    end
-
-    it 'includes the correct links in the inactive prompt email' do
-      expect(inactive_prompt_mail.body.encoded).to have_link(href: primary_certificate_url)
-      expect(inactive_prompt_mail.body.encoded).to have_link(href: '/bursary')
-    end
   end
+  
+  describe 'inactive certificate email' do 
+    it 'renders the headers' do
+      expect(inactive_prompt_mail.subject).to include(inactive_prompt_subject)
+      expect(inactive_prompt_mail.to).to eq([user.email])
+      expect(inactive_prompt_mail.from).to eq(['noreply@teachcomputing.org'])
+    end
+  
+    it 'renders the body' do
+      expect(inactive_prompt_mail.body.encoded).to include(user.first_name.to_s)
+      expect(inactive_prompt_mail.body.encoded).to include("Not sure where to start?")
+    end
+  end 
 end
