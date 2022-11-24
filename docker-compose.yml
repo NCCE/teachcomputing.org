@@ -15,18 +15,14 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=${DEV_PASS}
+      - POSTGRES_PASSWORD=password
     restart: unless-stopped
-    env_file:
-      - .env
 
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
     restart: unless-stopped
-    env_file:
-      - .env
 
   sidekiq:
     build: .
@@ -37,8 +33,6 @@ services:
     depends_on:
       - redis
       - web
-    env_file:
-      - .env
 
   web:
     build: .
@@ -61,7 +55,7 @@ services:
       - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
-      - RAILS_DEV_DB_PASS=${DEV_PASS}
+      - RAILS_DEV_DB_PASS=password
       - WEBPACKER_DEV_SERVER_HOST=webpack
       - DOCKER_LOGS=true
     stdin_open: true
