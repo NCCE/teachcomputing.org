@@ -15,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=${DEV_PASS}
+      - POSTGRES_PASSWORD=password
     restart: unless-stopped
 
   redis:
@@ -56,8 +56,8 @@ services:
       - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
-      - RAILS_DEV_DB_PASS=${DEV_PASS}
-      - WEBPACKER_DEV_SERVER_HOST=${WEBPACKER_HOST}
+      - RAILS_DEV_DB_PASS=password
+      - WEBPACKER_DEV_SERVER_HOST=webpack
       - DOCKER_LOGS=true
     stdin_open: true
     tty: true # Allow interactive byebug sessions
@@ -81,7 +81,7 @@ services:
     ports:
       - "3035:3035"
     environment:
-      - WEBPACKER_DEV_SERVER_HOST=${WEBPACKER_HOST}
+      - WEBPACKER_DEV_SERVER_HOST=webpack
 
 volumes:
   bundle: null
