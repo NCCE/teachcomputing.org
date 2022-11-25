@@ -27,7 +27,7 @@
           <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @unit.isaac_url, category: "Unit" } %>
         <% end %>
         <% if current_user %>
-				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, comment_path: :update_curriculum_unit_rating, id: @unit.id, user_id: current_user.id } %>
+				  <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_unit_rating_path, comment_path: :update_curriculum_unit_rating, choices_path: :update_curriculum_unit_rating_choices, id: @unit.id, user_id: current_user.id } %>
         <% end %>
 			</div>
 		</div>

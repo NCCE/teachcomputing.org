@@ -1,6 +1,6 @@
 <% if user_has_rated?(id) %>
   <div class="curriculum__rating page">
-    <p class="govuk-body curriculum__rating--text-only">You have already provided a rating, thanks!</p>
+    <p class="govuk-body curriculum__rating--text-only">You have already provided a rating, thank you!</p>
   </div>
 <% else %>
   <div class="curriculum__rating" data-controller="rating">
@@ -14,7 +14,7 @@
           class: "curriculum__rating--thumb-up",
           remote: true, 'aria-label': 'Thumbs up',
           method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
+          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessPositive' }
         ) %>
         <%= link_to(
           image_pack_tag("media/images/resources/thumb_down.svg"),
@@ -24,20 +24,94 @@
           'aria-label': 'Thumbs down',
           remote: true,
           method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccess' }
+          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessNegative' }
         ) %>
       </p>
     </div>
+    <div class="rating_page" data-rating-target="page">
+      <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
+        <p class="govuk-body govuk-!-margin-bottom-1">What did you like?</p>
+        <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
+        <div class="govuk-checkboxes">
+          <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'I felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1" %>
+              <%= label_tag "rating_choice_1", 'I felt supported', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Reduced workload', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2" %>
+              <%= label_tag "rating_choice_2", 'Reduced workload', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Increased my confidence', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3" %>
+              <%= label_tag "rating_choice_3", 'Increased my confidence', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Better pupil engagement', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4" %>
+              <%= label_tag "rating_choice_4", 'Better pupil engagement', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5" %>
+              <%= label_tag "rating_choice_5", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <br>
+            <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
+            <%= submit_tag 'Submit',
+              class: 'govuk-button button button--small button--inline row'
+            %>
+            <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="rating_page" data-rating-target="page">
+      <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-bottom-1 govuk-!-padding-top-2 govuk-!-margin-bottom-0">
+        <p class="govuk-body govuk-!-margin-bottom-1">What did you dislike?</p>
+        <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
+        <div class="govuk-checkboxes">
+          <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1_neg" %>
+              <%= label_tag "rating_choice_1_neg", 'Resource error', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Download issue', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_2_neg" %>
+              <%= label_tag "rating_choice_2_neg", 'Download issue', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Software problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_3_neg" %>
+              <%= label_tag "rating_choice_3_neg", 'Software problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Hardware problem', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_4_neg" %>
+              <%= label_tag "rating_choice_4_neg", 'Hardware problem', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <div class="govuk-checkboxes__item ncce-checkboxes__item">
+              <%= check_box_tag 'rating_choices[]', 'Other', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_5_neg" %>
+              <%= label_tag "rating_choice_neg", 'Other', class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+            </div>
+            <br>
+            <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
+            <%= submit_tag 'Submit',
+              class: 'govuk-button button button--small button--inline row'
+            %>
+            <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+
     <div class="rating_page rating_page--rows" data-rating-target="page">
-      <p class="govuk-body curriculum__rating--text row">Thanks for your rating!</p>
+      <p class="govuk-body govuk-!-margin-bottom-0" id="comment_title">Tell us more</p>
       <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
         <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
-        <%= text_area_tag :comment, nil, placeholder: 'Tell us more to help us improve the quality of our resources', class: 'govuk-textarea curriculum__rating-textarea row' %>
-        <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row' %>
+        <%= text_area_tag :comment, nil, placeholder: 'Your feedback helps improve our resource.', class: 'govuk-textarea curriculum__rating-textarea row rating_comment_placeholder' %>
+        <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row govuk-!-margin-top-1' %>
       <% end %>
     </div>
     <div class="rating_page" data-rating-target="page">
-      <p class="govuk-body curriculum__rating--text-only">Thanks for your feedback!</p>
+      <p class="govuk-body curriculum__rating--text-only"> Thank you for your feedback!</p>
     </div>
   </div>
 <% end %>
