@@ -14,7 +14,9 @@ module CertificateHelper
 
     if pathway_activities.present? && group_activities.present?
       pathway_activity_ids = pathway_activities.pluck(:activity_id)
-      visible_activities = group_activities.select { |group_activity| pathway_activity_ids.include?(group_activity.activity.id) }
+      visible_activities = group_activities.includes(:activity).select do |group_activity|
+        pathway_activity_ids.include?(group_activity.activity.id)
+      end
       hidden_activities = group_activities - visible_activities
     else
       visible_activities = group_activities
@@ -25,7 +27,7 @@ module CertificateHelper
         activities: visible_activities,
         complete: group.user_complete?(current_user)
       ),
-      hidden_activities: hidden_activities
+      hidden_activities:
     }
   end
 

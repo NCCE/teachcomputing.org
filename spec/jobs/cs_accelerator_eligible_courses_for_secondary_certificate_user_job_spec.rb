@@ -1,14 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type: :job do
+RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob do
   let(:user) { create(:user) }
-  let(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:cs_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id) }
-  let(:secondary_enrolment) do
-    create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id)
-  end
-  let(:additional_csa_activity) { create(:activity, slug: 'complete-a-cs-accelerator-course') }
+  let!(:additional_csa_activity) { create(:activity, slug: 'complete-a-cs-accelerator-course') }
   let(:additional_csa_achievement_for_secondary) do
     create(:achievement, activity_id: additional_csa_activity.id, user_id: user.id,
                          programme_id: secondary_certificate.id)
@@ -17,17 +14,13 @@ RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type:
 
   describe '#perform' do
     before do
-      user
-      additional_csa_activity
-      cs_enrolment
-      secondary_enrolment
+      create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id)
     end
 
     context 'when the user already has the additional CSA achievement' do
       it 'does not create an achievement for the user' do
         additional_csa_achievement_for_secondary
-        expect { described_class.perform_now(user.id) }
-          .not_to change { user.achievements.count }
+        expect { described_class.perform_now(user.id) }.not_to change(user.achievements, :count)
       end
     end
 
@@ -36,21 +29,19 @@ RSpec.describe CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob, type:
         cs_enrolment.transition_to(:complete)
       end
 
-      context 'and the user has done an eligible CSA course' do
+      context 'when the user has done an eligible CSA course' do
         before do
           eligible_csa_achievement.transition_to(:complete)
         end
 
         it 'creates creates an achievement for the user' do
-          expect { described_class.perform_now(user.id) }
-            .to change { user.achievements.count }.by(1)
+          expect { described_class.perform_now(user.id) }.to change { user.achievements.count }.by(1)
         end
       end
 
-      context 'but the user has not done an eligible CSA course' do
+      context 'when the user has not done an eligible CSA course' do
         it 'does not create an achievement for the user' do
-          expect { described_class.perform_now(user.id) }
-            .not_to change { user.achievements.count }
+          expect { described_class.perform_now(user.id) }.not_to change(user.achievements, :count)
         end
       end
     end

@@ -6,7 +6,7 @@ class HubsIndex
   def hub_regions
     return nil if @location.present?
 
-    HubRegion.order(:order)
+    HubRegion.order(:order).includes(:hubs)
   end
 
   def current_location

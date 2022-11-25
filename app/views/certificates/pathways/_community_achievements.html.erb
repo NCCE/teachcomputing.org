@@ -1,7 +1,7 @@
 <% programme_activities[:visible_activities].each do |pa| %>
   <li class="ncce-activity-list__item">
     <%= render CommunityActivityComponent.new(
-      activity: Activity.find(pa.activity_id),
+      activity: pa.activity,
       achievement: community_achievements&.find_by(activity_id: pa.activity_id),
       tracking_category: tracking_category
     ) %>
@@ -26,7 +26,7 @@
       <% programme_activities[:hidden_activities].each do |pa| %>
         <li class="ncce-activity-list__item">
           <%= render CommunityActivityComponent.new(
-            activity: Activity.find(pa.activity_id),
+            activity: pa.activity,
             achievement: community_achievements&.find_by(activity_id: pa.activity_id),
             tracking_category: tracking_category
           ) %>

@@ -13,6 +13,6 @@ class AssessmentEligibilityJob < ApplicationJob
 
     return if SentEmail.mailer_type_for_user(user, CSAcceleratorMailer::CSA_ASSESSMENT_ELIGIBILITY_EMAIL).any?
 
-    CSAcceleratorMailer.with(user: user).assessment_eligibility.deliver_now
+    CSAcceleratorMailer.with(user:).assessment_eligibility.deliver_now
   end
 end

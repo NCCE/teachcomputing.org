@@ -26,7 +26,7 @@ module FutureLearn
     private
 
       def fetch_achievement(activity_id:, user_id:)
-        Achievement.find_or_create_by(activity_id: activity_id, user_id: user_id)
+        Achievement.find_or_create_by(activity_id:, user_id:)
       end
 
       def needs_cert_transition_job?(achievement)
