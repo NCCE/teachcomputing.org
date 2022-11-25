@@ -26,8 +26,6 @@ In order for OAuth to work with STEM you will need to make sure you have an `id`
 
 If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
 
-Optionally set a password for postgres by updating the value for `DEV_PASS` in your `.env` file.
-
 ### Dynamics (referred to in the codebase as Achiever for historic reasons)
 
 By default the development environment expects to be able to communicate with Stem's staging Dynamics API which is used to populate the course list, and user enrolments etc. You'll need to add staging credentials to `.env` (find in lastpass: TC Achiever creds):

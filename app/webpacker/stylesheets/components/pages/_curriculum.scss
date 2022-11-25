@@ -101,6 +101,23 @@
   }
 }
 
+.curriculum__rating-choices {
+  background-color: $light-blue;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 20px;
+  text-align: left !important;
+}
+
+.curriculum__rating-choices--padding {
+  padding-bottom: 24px;
+  margin-bottom: 0px;
+}
+
+
+
 .curriculum__rating--text {
   margin: 0;
 
@@ -161,13 +178,11 @@
 }
 
 .curriculum__rating--thumb-up:hover {
-  filter: invert(58%) sepia(96%) saturate(435%) hue-rotate(45deg)
-    brightness(93%) contrast(107%);
+  filter: brightness(45%);
 }
 
 .curriculum__rating--thumb-down:hover {
-  filter: invert(25%) sepia(64%) saturate(5006%) hue-rotate(1deg)
-    brightness(99%) contrast(84%);
+  filter: brightness(45%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

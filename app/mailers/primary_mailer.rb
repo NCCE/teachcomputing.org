@@ -1,4 +1,12 @@
 class PrimaryMailer < ApplicationMailer
+  def enrolled
+    @user = params[:user]
+    @programme = Programme.primary_certificate
+    @subject = 'Welcome to Teach primary computing'
+
+    mail(to: @user.email, subject: @subject)
+  end
+
   def completed
     @user = params[:user]
     @programme = Programme.primary_certificate

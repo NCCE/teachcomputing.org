@@ -15,18 +15,14 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=${DEV_PASS}
+      - POSTGRES_PASSWORD=password
     restart: unless-stopped
-    env_file:
-      - .env
 
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
     restart: unless-stopped
-    env_file:
-      - .env
 
   sidekiq:
     build: .
@@ -37,8 +33,6 @@ services:
     depends_on:
       - redis
       - web
-    env_file:
-      - .env
 
   web:
     build: .
@@ -50,6 +44,7 @@ services:
       - bundle:/usr/local/bundle
       - /var/run/docker.sock:/var/run/docker.sock
       - ssh:/root/.ssh
+      - bash_history:/root/.bash_history
     ports:
       - "1234:1234"
       - "1235:1235"
@@ -58,20 +53,27 @@ services:
       - db
       - redis
       - docker-host
+      - webpack
     environment:
       - PROXY_URL=http://host.docker.internal:8888
-      - RAILS_DEV_DB_PASS=${DEV_PASS}
+      - RAILS_DEV_DB_PASS=password
       - WEBPACKER_DEV_SERVER_HOST=webpack
       - DOCKER_LOGS=true
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 10s
+      timeout: 15s
+      retries: 3
+      start_period: 45s
+    env_file:
+      - ${ENV_FILE:-.env.defaults}
 
   webpack:
     build: .
-    command: ./bin/webpack-dev-server
-    depends_on:
-      - web
+    command: ./scripts/webpack-docker-entrypoint.sh
     volumes:
       - .:/app
       - node_modules:/app/node_modules
@@ -86,3 +88,4 @@ volumes:
   pg-data: null
   node_modules: null
   ssh: null
+  bash_history: null

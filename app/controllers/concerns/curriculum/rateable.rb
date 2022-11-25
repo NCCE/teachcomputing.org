@@ -51,10 +51,10 @@ module Curriculum
       response = client.update_rating(
         id: request[:rating_id],
         key: :choices,
-        value: request[:choices],
+        value: request[:rating_choices],
         context: 'update_rating'
       )
-
+      response.rating_id = request[:rating_id]
       render json: {
         origin: __method__.to_s,
         data: response
