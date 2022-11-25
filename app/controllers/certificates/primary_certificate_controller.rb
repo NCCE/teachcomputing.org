@@ -18,7 +18,7 @@ module Certificates
       @pathways = Pathway.ordered_by_programme(@programme.slug)
       @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
       assign_programme_activity_groupings
-      @online_discussion_activity = Activity.find(@online_discussion_group.first&.programme_activities&.first&.activity_id)
+      @online_discussion_activity = @online_discussion_group.first.programme_activities.first.activity
       assign_pathway_recommendations
 
       render :show
@@ -70,7 +70,7 @@ module Certificates
       def assign_pathway_recommendations
         return nil unless user_pathway
 
-        recommended_activities = user_pathway.pathway_activities
+        recommended_activities = user_pathway.pathway_activities.includes(:activity)
         @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
         @recommended_activities = recommended_activities - @recommended_community_activities
       end

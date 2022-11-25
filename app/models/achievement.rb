@@ -27,11 +27,11 @@ class Achievement < ApplicationRecord
   scope :with_attachments, -> { joins(:activity).where(activities: { uploadable: true }) }
 
   scope :with_category, lambda { |category|
-    joins(:activity).where(activities: { category: category })
+    joins(:activity).where(activities: { category: })
   }
 
   scope :with_provider, lambda { |provider|
-    joins(:activity).where(activities: { provider: provider })
+    joins(:activity).where(activities: { provider: })
   }
 
   scope :with_courses, lambda {
@@ -39,11 +39,11 @@ class Achievement < ApplicationRecord
                        }
 
   scope :with_credit, lambda { |credit|
-    joins(:activity).where(activities: { credit: credit })
+    joins(:activity).where(activities: { credit: })
   }
 
   scope :without_category, lambda { |category|
-    joins(:activity).where.not(activities: { category: category })
+    joins(:activity).where.not(activities: { category: })
   }
 
   scope :sort_complete_first, lambda {
@@ -88,7 +88,7 @@ class Achievement < ApplicationRecord
   def update_progress_and_state(progress = 0, left_at = nil)
     update_progress(progress.floor)
 
-    return drop!(left_at: left_at) if left_at.present? && (progress < 60)
+    return drop!(left_at:) if left_at.present? && (progress < 60)
 
     update_state_from_progress(progress.floor) unless complete?
   end
