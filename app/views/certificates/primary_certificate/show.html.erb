@@ -16,8 +16,7 @@
           } if @user_pathway %>
           <%= render BursaryComponent.new(
             tracking_event_label: 'Bursary',
-            tracking_event_category: tracking_category,
-            class_name: 'bursary-component'
+            tracking_event_category: tracking_category
           ) %>
           <%= render AsideComponent.new(
             title: t('.support_aside.title'),

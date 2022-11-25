@@ -1,4 +1,4 @@
-<%= content_tag :div, class: ['ncce-aside', { "#{@class_name}": @class_name.present? }] do %>
+<%= content_tag :div, class: ['ncce-aside', { 'bursary-component': @bottom_margin, "#{@class_name}": @class_name.present? }] do %>
   <h2 class="govuk-heading-s bursary-component__title"><%= t('.title') %></h2>
     <p class="govuk-body-s ncce-aside__text">
       <%= @text || t('.text') %>
