@@ -11,10 +11,22 @@ RSpec.describe BursaryComponent, type: :component do
     expect(rendered_component).to have_link('Funding information', href: '/funding')
   end
 
+  it 'renders a bottom margin' do
+    render_inline(described_class.new)
+    expect(rendered_component).not_to have_css('.bursary-component--no-margin')
+  end
+
   it 'adds data attributes when passed' do
     render_inline(described_class.new(tracking_event_category: 'category', tracking_event_label: 'label'))
     expect(rendered_component).to have_selector("a[href='/funding'][data-event-category='category']")
     expect(rendered_component).to have_selector("a[href='/funding'][data-event-label='label']")
     expect(rendered_component).to have_selector("a[href='/funding'][data-event-action='click']")
+  end
+
+  context 'when we set the no_margin flag' do
+    it 'does not render a bottom margin' do
+      render_inline(described_class.new(bottom_margin: false))
+      expect(rendered_component).to have_css('.bursary-component--no-margin')
+    end
   end
 end

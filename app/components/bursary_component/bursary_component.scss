@@ -1,5 +1,8 @@
 .bursary-component {
   @include bottom-margined;
+  &--no-margin {
+    margin-bottom: 0;
+  }
 }
 
 .bursary-component__title {
