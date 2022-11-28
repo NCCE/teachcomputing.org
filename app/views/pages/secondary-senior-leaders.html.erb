@@ -77,8 +77,11 @@
                 all_courses_link: (link_to(
                   t('.how-we-help.cards.courses.text.all-courses-link.title'),
                   t('.how-we-help.cards.courses.text.all-courses-link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
+                  }
                 ))
               ),
               link: {
@@ -96,14 +99,20 @@
                 our_accelerator_link: (link_to(
                   t('.how-we-help.cards.certification.text.accelerator-link.title'),
                   t('.how-we-help.cards.certification.text.accelerator-link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.how-we-help.cards.certification.text.accelerator-link.event-label')
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.certification.text.accelerator-link.event-label')
+                  }
                 )),
                 secondary_certificate_link: (link_to(
                   t('.how-we-help.cards.certification.text.certificate-link.title'),
                   t('.how-we-help.cards.certification.text.certificate-link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.how-we-help.cards.certification.text.certificate-link.event-label')
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.certification.text.certificate-link.event-label')
+                  }
                 ))
               ),
               link: {
