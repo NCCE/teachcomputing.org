@@ -14,9 +14,6 @@ RSpec.describe('pages/secondary-senior-leaders') do
   end
 
   it 'has a title' do
-    # TODO: either of the next two fail, why?
-    # expect(rendered).to have_css('.title', text: hero_title)
-    # expect(rendered).to have_title(hero_title)
     expect(rendered).to have_css('h1', text: hero_title)
   end
 
