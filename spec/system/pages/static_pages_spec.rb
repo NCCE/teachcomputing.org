@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'axe/rspec'
 
-RSpec.describe('Static pages', type: :system) do
+RSpec.describe('Static pages') do
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
 
-  context 'About page' do
+  context 'when visiting the about page' do
     before do
       visit about_path
     end
@@ -18,7 +18,7 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Accessibility statement page' do
+  context 'when visiting the accessibility statement page' do
     before do
       visit accessibility_statement_path
     end
@@ -32,14 +32,7 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'CS Accelerator page' do
-    before do
-      programme
-      visit cs_accelerator_path
-    end
-  end
-
-  context 'Get involved page' do
+  context 'when visiting the getting involved page' do
     before do
       visit get_involved_path
     end
@@ -53,7 +46,7 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Privacy page' do
+  context 'when visitng the privacy page' do
     before do
       visit privacy_path
     end
@@ -67,7 +60,7 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context 'Terms page' do
+  context 'when visiting the terms page' do
     before do
       visit terms_conditions_path
     end
@@ -81,7 +74,7 @@ RSpec.describe('Static pages', type: :system) do
     end
   end
 
-  context '404 page' do
+  context 'when triggering a 404 error' do
     before do
       visit '/404'
     end

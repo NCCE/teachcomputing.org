@@ -26,27 +26,33 @@ require 'webmock/rspec'
 require 'rspec/json_expectations'
 require 'capybara/rspec'
 require 'view_component/test_helpers'
+require 'capybara/cuprite'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-selenium_driver = :local_chrome_headless
-Capybara.server = :puma, { Silent: true }
-Capybara.default_max_wait_time = 10
-Capybara.register_driver selenium_driver do |app|
-  options = ::Selenium::WebDriver::Chrome::Options.new
+# selenium_driver = :local_chrome_headless
+# Capybara.server = :puma, { Silent: true }
+# Capybara.default_max_wait_time = 10
+# Capybara.register_driver selenium_driver do |app|
+#   options = ::Selenium::WebDriver::Chrome::Options.new
 
-  options.add_argument('--headless')
-  options.add_argument('--disable-extensions')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--window-size=1400,1400')
-  options.add_argument('--verbose')
+#   options.add_argument('--headless')
+#   options.add_argument('--disable-extensions')
+#   options.add_argument('--no-sandbox')
+#   options.add_argument('--disable-gpu')
+#   options.add_argument('--window-size=1400,1400')
+#   options.add_argument('--verbose')
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+# end
+# Capybara.javascript_driver = selenium_driver
+
+Capybara.javascript_driver = :cuprite
+Capybara.register_driver(:cuprite) do |app|
+  Capybara::Cuprite::Driver.new(app, window_size: [1200, 800], browser_options: { 'no-sandbox': nil })
 end
-Capybara.javascript_driver = selenium_driver
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -80,15 +86,15 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system) do
-    driven_by selenium_driver
+    driven_by :cuprite
   end
 
-  config.after(:each, js: true, type: :system) do |_spec|
-    errors = page.driver.browser.manage.logs.get(:browser)
-                 .select { |e| e.level == 'SEVERE' && e.message.present? }
-                 .map(&:message)
-                 .to_a
+  # config.after(:each, js: true, type: :system) do |_spec|
+  #   errors = page.driver.browser.manage.logs.get(:browser)
+  #                .select { |e| e.level == 'SEVERE' && e.message.present? }
+  #                .map(&:message)
+  #                .to_a
 
-    raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
-  end
+  #   raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
+  # end
 end

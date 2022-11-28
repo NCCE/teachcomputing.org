@@ -61,6 +61,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'cuprite'
   gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'
@@ -88,8 +89,8 @@ group :development do
 end
 
 group :test do
-  gem 'axe-matchers', '>= 2.5.0', require: false
-  gem 'capybara', '~> 3.32'
+  gem 'axe-matchers', '>= 2.6.1', require: false
+  gem 'capybara', '~> 3.38'
   gem 'climate_control'
   gem 'factory_bot_rails'
   gem 'faker'
@@ -98,10 +99,9 @@ group :test do
   gem 'rspec-json_expectations'
   gem 'rspec_junit_formatter', '~> 0.4.1'
   gem 'rspec-mocks'
-  gem 'rspec-rails', '~> 4.0'
-  gem 'selenium-webdriver', '~> 3.142.7'
+  gem 'rspec-rails', '~> 6.0'
   gem 'shoulda-callback-matchers'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 5.2'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
