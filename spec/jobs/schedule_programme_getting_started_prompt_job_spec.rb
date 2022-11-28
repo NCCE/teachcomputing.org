@@ -15,6 +15,11 @@ RSpec.describe ScheduleProgrammeGettingStartedPromptJob, type: :job do
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
+    it 'sends emails on a specific date when wait time/date is added to the scheduling method' do
+      expect { ScheduleProgrammeGettingStartedPromptJob.set(:wait_until => Date.tomorrow.noon).perform_later(enrolment_2.id) }
+      .to have_enqueued_job.at(Date.tomorrow.noon)
+    end
+
     it 'sends a primary certificate inactive prompt email' do
       expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment_2.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
