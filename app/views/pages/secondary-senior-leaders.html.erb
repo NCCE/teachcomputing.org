@@ -174,8 +174,11 @@
               educational_partners_link: (link_to(
                   t('.partners.text.educational-partners-link.title'),
                   t('.partners.text.educational-partners-link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.partners.text.educational-partners-link.event-label')
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.partners.text.educational-partners-link.event-label')
+                  }
               )))
           %></p>
         </div>
