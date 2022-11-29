@@ -59,9 +59,10 @@ en:
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"
-            text: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.\nIt includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+            text:
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br/><br/>It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
             link:
-              title: "Browse our teaching resources"
+              title: "Browse teaching resources"
               url: "/curriculum"
               event-label: "Curriculum resources"
       student-help:
