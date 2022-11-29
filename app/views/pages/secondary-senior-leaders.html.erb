@@ -1,94 +1,228 @@
-<% meta_tag :title, 'Secondary Senior Leaders' %>
+<% meta_tag :title, t('.hero.title') %>
 <% meta_tag :description, 'Visit our Secondary senior leaders page to see what CPD and support we offer, and our guide to delivering the computing curriculum' %>
 <% meta_tag :url, request.original_url %>
-<%= render 'components/hero', hero_title: 'Support for Secondary Senior Leaders', full_width: true %>
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">
-          Future proof your computing department
-        </h2>
-        <p class="govuk-body">
-We offer free, flexible support to a challenge faced by many school and college senior leadership teams - recruiting teachers with the skills to provide high quality delivery of the computing curriculum.
-        </p>
-        <h2 class="govuk-heading-m">
-          Computer Science Accelerator
-        </h2>
-        <p class="govuk-body">
-          The <%= link_to 'Computer Science Accelerator', cs_accelerator_path, class: 'ncce-link' %> offers high impact, professional development which can upskill your staff, increase the number of computer science teachers in your school and improve the quality of teaching, which could lead to improved student attainment.
-        </p>
-        <%= link_to 'Download guide for senior leaders', 'https://static.teachcomputing.org/Senior_leaders_guide.pdf', class: 'govuk-button button button--margin-bottom' %>
-        <p class="govuk-body">
-          Over 1,000 teachers with all levels of experience have taken advantage of our wide range of courses, fully funded by the Department for Education and available to start immediately.
-        </p>
-        <p class="govuk-body"><strong>Programme benefits</strong></p>
-        <ul class="govuk-body govuk-list govuk-list--bullet">
-          <li>Fully-funded - bursaries are available for state-funded secondary schools and colleges, with up to £1,800 available for every teacher who completes the programme.</li>
-          <li>Flexible - teachers can learn face-to-face, online or remotely, during or outside of school hours.</li>
-          <li> For everyone - teachers in any subject have the opportunity to develop the subject knowledge to teach GCSE computer science - from non-specialists to those already teaching at this level.</li>
-          <li>Grow your curriculum - our programme can help you to strengthen your computing offer, whether your school already offers GCSE computer science or is looking to enhance KS3 provision first.</li>
-        </ul>
-        <%= link_to 'Find out more about the programme', cs_accelerator_path, class: 'govuk-button button' %>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">Related Links</h2>
-					<ul class="govuk-list">
-						<li><%= link_to 'Senior leaders guide', 'https://static.teachcomputing.org/Senior_leaders_guide.pdf', class: 'ncce-link' %></li>
-						<li><%= link_to 'Bursaries', '/bursary', class: 'ncce-link' %></li>
-						<li><%= link_to 'Courses', courses_path, class: 'ncce-link' %></li>
-					</ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%# Hero: Support for secondary senior leaders %>
+<%= render HeroComponent.new(
+  title: t('.hero.title'),
+  subtitle: t('.hero.subtitle'),
+  glyph: :c1,
+  color: 'secondary'
+) %>
 
+<%# How we can help you and your school or college %>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">
-            What do teachers say?
-          </h2>
-          <div class="testimonial-wide">
-            <div class="testimonial-wide__quote">
-              <p class="govuk-body-s testimonial__text">
-                “The bursary has had a real, visible impact. We have been able to invest in our department, getting laptop computers for our students and robots for our coding clubs. We’ve also now got so many resources for our lessons that have come from all of the courses I took, which my colleagues are using now too.”
-              </p>
-            </div>
-            <div class="testimonial-wide__bio">
-              <%= image_pack_tag 'media/images/pages/secondary-senior-leaders/anne-cuffe-davies.jpg', alt: 'Anne Cuffe Davies', class: 'testimonial-wide__image' %>
-              <div class="">
-                <p class="govuk-body-s">
-                  <strong><%= link_to 'Anne Cuffe Davies', 'https://blog.teachcomputing.org/how-cpd-changed-my-career/', class: 'ncce-link ncce-link--contrast axe-skip-a11y-test' %></strong><br>
-                  Computer Science Teacher
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render TickListCollectionComponent.new(
+          title: 'How we can help you and your school or college',
+          tick_list_collection: [
+            {
+              title: t('.quality-framework-tick-list.title'),
+              text: t('.quality-framework-tick-list.text'),
+              bullets: [
+                t('.quality-framework-tick-list.bullets.identify'),
+                t('.quality-framework-tick-list.bullets.feedback'),
+                t('.quality-framework-tick-list.bullets.track')
+              ],
+              button: {
+                button_title: t('.quality-framework-tick-list.button.title'),
+                button_url: t('.quality-framework-tick-list.button.url'),
+                tracking_page: 'Secondary SLT',
+                tracking_label: t('.quality-framework-tick-list.button.event-label')
+              }
+            },
+            {
+              title: t('.guidance-tick-list.title'),
+              text: t('.guidance-tick-list.text'),
+              bullets: [
+                t('.guidance-tick-list.bullets.identify'),
+                t('.guidance-tick-list.bullets.develop'),
+                t('.guidance-tick-list.bullets.recommend')
+              ],
+              button: {
+                button_title: t('.guidance-tick-list.button.title'),
+                button_url: t('.guidance-tick-list.button.url'),
+                tracking_page: 'Secondary SLT',
+                tracking_label: t('.guidance-tick-list.button.event-label')
+              }
+            }
+          ]
+        ) %>
       </div>
     </div>
   </div>
 </div>
 
+<%# How we can help your teachers %>
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
+  <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-
-        <h2 class="govuk-heading-m">
-          Teach Computing Curriculum
-        </h2>
-        <p class="govuk-body">
-          Your school or college can also benefit from our curriculum, which contains everything you need to teach computing at key stages 1 to 4, including lesson plans, homework, assessment and an innovative progression framework.
-        </p>
-        <%= link_to 'Browse teaching resources', curriculum_key_stages_path, class: 'govuk-button button' %>
+        <h2 class='govuk-heading-l'><%= t('.how-we-help.title') %></h2>
       </div>
     </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full govuk-!-margin-top-7">
+        <%= render BorderedCardsComponent.new(
+          cards_per_row: 3,
+          class_name: 'teacher-help-cards',
+          cards: [
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.how-we-help.cards.courses.title'),
+              text: t(
+                '.how-we-help.cards.courses.text.html',
+                all_courses_link: (link_to(
+                  t('.how-we-help.cards.courses.text.all-courses-link.title'),
+                  t('.how-we-help.cards.courses.text.all-courses-link.url'),
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
+                  }
+                ))
+              ),
+              link: {
+                link_title: t('.how-we-help.cards.courses.link.title'),
+                link_url: t('.how-we-help.cards.courses.link.url'),
+                tracking_page: 'Secondary SLT',
+                tracking_label: t('.how-we-help.cards.courses.link.event-label')
+              }
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.how-we-help.cards.certification.title'),
+              text: t(
+                '.how-we-help.cards.certification.text.html',
+                our_accelerator_link: (link_to(
+                  t('.how-we-help.cards.certification.text.accelerator-link.title'),
+                  t('.how-we-help.cards.certification.text.accelerator-link.url'),
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.certification.text.accelerator-link.event-label')
+                  }
+                )),
+                secondary_certificate_link: (link_to(
+                  t('.how-we-help.cards.certification.text.certificate-link.title'),
+                  t('.how-we-help.cards.certification.text.certificate-link.url'),
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.how-we-help.cards.certification.text.certificate-link.event-label')
+                  }
+                ))
+              ),
+              link: {
+                link_title: t('.how-we-help.cards.certification.link.title'),
+                link_url: t('.how-we-help.cards.certification.link.url'),
+                tracking_page: 'Secondary SLT',
+                tracking_label: t('.how-we-help.cards.certification.link.event-label')
+              }
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.how-we-help.cards.resources.title'),
+              text: t('.how-we-help.cards.resources.text.html'),
+              link: {
+                link_title: t('.how-we-help.cards.resources.link.title'),
+                link_url: t('.how-we-help.cards.resources.link.url'),
+                tracking_page: 'Secondary SLT',
+                tracking_label: t('.how-we-help.cards.resources.link.event-label')
+              }
+            }
+          ]
+        ) %>
+      </div>
+      </div>
+  </div>
+</div>
+
+<%# How we can help your students %>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <%= render LogoButtonImageCardComponent.new(
+        logo: { path: 'media/images/logos/isaac-logo.svg', alt: t('.student-help.logo.alt') },
+        image: {
+          path: 'media/images/pages/secondary-senior-leaders/teaching.png',
+          alt: t('.student-help.image.alt')
+        },
+        title: t('.student-help.title'),
+        text: t('.student-help.text'),
+        button: {
+          button_title: t('.student-help.button.title'),
+          button_url: t('.student-help.button.url'),
+          tracking_page: 'Secondary SLT',
+          tracking_label: t('.student-help.button.event-label')
+        }
+      ) %>
+    </div>
+  </div>
+</div>
+
+<%# Explore our partners %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+        <div class="govuk-grid-column bottom-margin ncce-eop">
+          <h2 class="govuk-heading-l"><%= t('.partners.title') %></h2>
+          <p class="govuk-body-l"><%= t(
+              '.partners.text.html',
+              educational_partners_link: (link_to(
+                  t('.partners.text.educational-partners-link.title'),
+                  t('.partners.text.educational-partners-link.url'),
+                  data: {
+                    event_action: 'click',
+                    tracking_page: 'Secondary SLT',
+                    tracking_label: t('.partners.text.educational-partners-link.event-label')
+                  }
+              )))
+          %></p>
+        </div>
+        <div class="govuk-grid-column-full">
+          <%= render NonBorderedCardsComponent.new(
+            class_name: 'resource-cards',
+            cards_per_row: 3,
+            cards: [
+              {
+                image_url: 'pages/primary-teachers/stem-card.svg',
+                title: t('.partners.cards.stem.title'),
+                text: t('.partners.cards.stem.text'),
+                link: {
+                  link_title: t('.partners.cards.stem.link.title'),
+                  link_url: t('.partners.cards.stem.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.stem.link.event-label'),
+                }
+              },
+              {
+                image_url: 'pages/primary-teachers/code-club-card.svg',
+                title: t('.partners.cards.code-club.title'),
+                text: t('.partners.cards.code-club.text'),
+                link: {
+                  link_title: t('.partners.cards.code-club.link.title'),
+                  link_url: t('.partners.cards.code-club.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.code-club.link.event-label'),
+                }
+              },
+              {
+                image_url: 'partners/bebras-card.svg',
+                title: t('.partners.cards.bebras.title'),
+                text: t('.partners.cards.bebras.text'),
+                link: {
+                  link_title: t('.partners.cards.bebras.link.title'),
+                  link_url: t('.partners.cards.bebras.link.url'),
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.partners.cards.bebras.link.event-label'),
+                }
+              }
+            ]
+          ) %>
+        </div>
+      </div>
   </div>
 </div>
