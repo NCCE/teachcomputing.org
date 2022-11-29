@@ -117,16 +117,16 @@ class PrimaryLandingPage
   def resources
     [
       {
-        title: 'Year 1: Creating media – Digital painting',
-        url: '/curriculum/key-stage-1/creating-media-digital-painting',
-        description: 'Help learners develop their mouse-skills as they create digital paintings. Recreate famous artwork digitally and recognise how technology can be used for creative expression.',
+        title: 'Year 2: Programming A – Robot algorithms',
+        url: '/curriculum/key-stage-1/programming-a-robot-algorithms',
+        description: 'Learners will use logical reasoning to predict the outcome of sequences of commands and test their prediction with floor robots. They will then create different algorithms to reach the same outcome.',
         event_label: 'Featured unit 1',
         updated_at: 'Featured unit'
       },
       {
-        title: 'Year 5: Creating media – Introduction to vector graphics',
-        url: '/curriculum/key-stage-2/creating-media-vector-drawing',
-        description: 'Using a range of drawing tools, learners create vector graphics. They develop their understanding of combining shapes to make images by using layering and grouping.',
+        title: 'Year 5: Programming A – Selection in physical computing',
+        url: '/curriculum/key-stage-2/programming-a-selection-in-physical-computing',
+        description: 'Using Crumbles, learners will control physical components such as LEDs and motors. They will create programs which use selection to respond to inputs and explore program flow.',
         event_label: 'Featured unit 2',
         updated_at: 'Featured unit'
       }
