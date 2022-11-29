@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.5.1', require: false
 gem 'cloudflare-rails', '~> 1.1'
 gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.3.0'
-gem 'dalli', '~> 2.7.9'
+gem 'dalli', '~> 3.2.3'
 gem 'enumerize', '~> 2.5'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
