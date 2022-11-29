@@ -119,7 +119,7 @@ class PrimaryLandingPage
       {
         title: 'Year 2: Programming A – Robot algorithms',
         url: '/curriculum/key-stage-1/programming-a-robot-algorithms',
-        description: 'Learners will use logical reasoning predict the outcome of sequences of commands and test their prediction with floor robots. They will then create different algorithms to reach the same outcome.',
+        description: 'Learners will use logical reasoning to predict the outcome of sequences of commands and test their prediction with floor robots. They will then create different algorithms to reach the same outcome.',
         event_label: 'Featured unit 1',
         updated_at: 'Featured unit'
       },
