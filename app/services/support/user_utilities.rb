@@ -7,7 +7,7 @@ module Support
 
     def self.reset_tests(user_id)
       user = User.find(user_id)
-      user&.achievements&.each { |ach| ach.transition_to(:enrolled) }
+      user&.assessment_attempts&.destroy_all
     end
   end
 end
