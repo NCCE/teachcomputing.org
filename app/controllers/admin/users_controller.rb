@@ -5,8 +5,18 @@ module Admin
       Support::UserUtilities.sync(user_id)
 
       redirect_back(
-        fallback_location: admin_users_path(user_id: user_id),
+        fallback_location: admin_users_path(user_id:),
         flash: { notice: I18n.t('admin.users.actions.sync.complete') }
+      )
+    end
+
+    def perform_reset_tests
+      user_id = params[:user_id]
+      Support::UserUtilities.reset_tests(user_id)
+
+      redirect_back(
+        fallback_location: admin_users_path(user_id:),
+        flash: { notice: I18n.t('admin.users.actions.reset.complete') }
       )
     end
 

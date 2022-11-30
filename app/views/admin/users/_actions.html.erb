@@ -5,4 +5,9 @@
     admin_user_perform_sync_path(user_id: resource.id),
     class: "button"
   ) if accessible_action?(resource, :perform_sync) %>
+    <%= link_to(
+    t(".reset.label"),
+    admin_user_perform_reset_path(user_id: resource.id),
+    class: "button"
+  ) if accessible_action?(resource, :perform_reset) %>
 </dd>
