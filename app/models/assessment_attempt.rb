@@ -1,3 +1,5 @@
+require 'audited'
+
 class AssessmentAttempt < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries[
     transition_class: AssessmentAttemptTransition,
@@ -14,6 +16,9 @@ class AssessmentAttempt < ApplicationRecord
   scope :for_user, lambda { |user|
     where(user_id: user.id).order(:created_at)
   }
+
+  audited on: :destroy, comment_required: false
+  alias_attribute :support_audits, :audits
 
   def state_machine
     @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)
