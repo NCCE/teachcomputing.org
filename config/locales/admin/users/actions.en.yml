@@ -6,3 +6,6 @@ en:
         sync:
           label: "Sync with Stem"
           complete: "Sync complete"
+        reset:
+          label: "Remove Assessment Attempts"
+          complete: "Assessment attempts removed"
