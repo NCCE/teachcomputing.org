@@ -6,8 +6,7 @@ module Support
     end
 
     def self.reset_tests(user_id)
-      user = User.find(user_id)
-      user&.assessment_attempts&.destroy_all
+      AssessmentAttempt.where(user_id:).destroy_all
     end
   end
 end
