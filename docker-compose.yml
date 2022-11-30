@@ -33,6 +33,8 @@ services:
     depends_on:
       - redis
       - web
+    env_file:
+      - ${ENV_FILE:-.env.defaults}
 
   web:
     build: .
