@@ -11,6 +11,7 @@ RSpec.describe 'User reset tests' do
       click_link user.email
       click_link 'Remove Assessment Attempts'
       user.reload
+      # TODO: Why do the next two tests pass? Shouldn't we be taken to an audit page?
       expect(page).to have_text('Assessment attempts removed')
       expect(page).to have_text("Show #{user.email}")
       expect(user.assessment_attempts.count).to eq(0)
