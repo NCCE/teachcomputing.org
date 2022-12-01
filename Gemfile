@@ -66,6 +66,7 @@ group :development, :test do
   gem 'interception'
   gem 'pry'
   gem 'pry-byebug', '~> 3.9.0'
+  gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rubocop'
   gem 'rubocop-changes'

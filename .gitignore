@@ -50,6 +50,7 @@ public/sitemap.xml.gz
 .idea
 .history
 *.code-workspace
+.irb_history
 
 /public/packs
 /public/packs-test
