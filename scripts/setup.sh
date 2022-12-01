@@ -3,8 +3,15 @@ source ./scripts/yaml-parser.sh
 create_variables ./nginx-mapping.yml 'nginx_'
 
 echo "- Setting up homebrew"
-command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew now"; \
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+if command -v brew >/dev/null 2>&1; then
+  echo '...skipping as already installed'
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo '# Set PATH, MANPATH, etc., for Homebrew.' >> ~/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  source ~/.zprofile
+fi
 
 echo "- Setting up yarn"
 if command -v yarn >/dev/null 2>&1; then
@@ -12,12 +19,6 @@ if command -v yarn >/dev/null 2>&1; then
 else
   brew install yarn
   yarn install
-fi
-
-printf %s "- Copy .env-example? WARNING this will overwrite any existing environment variables (y/n)? "
-read -r RESP
-if [ "$RESP" != "${RESP#[Yy]}" ]; then
-  cp .env-example .env
 fi
 
 printf %s "- Build the docker image (y/n)? "
@@ -45,3 +46,6 @@ brew install shared-mime-info
 
 echo "- Setup mapping"
 dev-nginx setup-app nginx-mapping.yml
+
+echo "- Setup heroku cli"
+brew tap heroku/brew && brew install heroku
