@@ -8,10 +8,10 @@ RSpec.describe 'User reset tests' do
     it 'allows resetting assesment tests for a user' do
       visit admin_users_path(user.id)
       click_link user.email
-      expect(user.assessment_attempts.count).to equal(5)
+      expect(user.assessment_attempts.count).to eq(5)
       click_link 'Remove Assessment Attempts'
       user.reload
-      expect(user.assessment_attempts.count).to equal(0)
+      expect(user.assessment_attempts.count).to eq(0)
       # expect(page).to have_text('Assessment attempts removed')
       # expect(page).to have_text("Show #{u.email}")
     end
