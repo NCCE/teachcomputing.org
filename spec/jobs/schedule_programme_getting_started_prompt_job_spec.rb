@@ -20,11 +20,6 @@ RSpec.describe ScheduleProgrammeGettingStartedPromptJob, type: :job do
       .to have_enqueued_job.at(Date.tomorrow.noon)
     end
 
-    it 'sends a primary certificate inactive prompt email' do
-      expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment_2.id) }
-        .to change { ActionMailer::Base.deliveries.count }.by(1)
-    end
-
     it 'doesn\'t send an email if they have an achievement' do
       achievement
       expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment.id) }
