@@ -35,18 +35,22 @@ RSpec.describe KickOffEmailsJob, type: :job do
   end
   
   describe 'jobs to be delivered a month after enrolment' do 
-    let(:time) { Time.new(2020, 11, 11, 12, 22) }
-
     before do
-      allow(Time).to receive(:at).and_return(time)
+      freeze_time
+      allow(Time).to receive(:now).and_return(Time.new(2020, 11, 11, 12, 22))
     end
+
+    after do
+      unfreeze_time
+    end
+    
     it 'enques jobs to be delivered later' do
       expect do
         described_class.perform_now(cs_accelerator_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id).at(time)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(cs_accelerator_enrolment.id).at(Time.new(2020, 12, 11, 22, 51, 6))
       expect do
         described_class.perform_now(primary_certificate_enrolment.id)
-      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id).at(time)
+      end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id).at(Time.new(2020, 12, 11, 22, 51, 6))
     end
   end 
 end
