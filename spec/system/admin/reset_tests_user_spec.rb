@@ -11,10 +11,9 @@ RSpec.describe 'User reset tests' do
       click_link user.email
       click_link 'Remove Assessment Attempts'
       user.reload
+      expect(page).to have_text('Assessment attempts removed')
+      expect(page).to have_text("Show #{user.email}")
       expect(user.assessment_attempts.count).to eq(0)
-
-      # expect(page).to have_text('Assessment attempts removed')
-      # expect(page).to have_text("Show #{u.email}")
     end
   end
 end
