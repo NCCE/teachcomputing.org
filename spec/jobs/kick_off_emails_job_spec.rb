@@ -36,14 +36,9 @@ RSpec.describe KickOffEmailsJob, type: :job do
   
   describe 'prompt jobs to be delivered a month after enrolment' do 
     before do
-      freeze_time
       allow(Time).to receive(:now).and_return(Time.new(2020, 11, 11, 12, 22))
     end
 
-    after do
-      unfreeze_time
-    end
-    
     it 'enques jobs to be delivered later' do
       expect do
         described_class.perform_now(cs_accelerator_enrolment.id)
