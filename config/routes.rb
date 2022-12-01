@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :support_audits, only: %i[index show update edit]
     resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get '/perform_sync/:user_id', to: 'users#perform_sync', as: :perform_sync
-      get '/perform_reset/:user_id', to: 'users#perform_reset', as: :perform_reset
+      get '/perform_reset/:user_id', to: 'users#perform_reset_tests', as: :perform_reset
     end
     resources :user_programme_enrolments, only: %i[index show]
     resources :achievements, only: %i[index show]
