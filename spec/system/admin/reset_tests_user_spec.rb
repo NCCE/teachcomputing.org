@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User reset tests' do
   context 'with assesment attempts' do
     let(:user) { create(:user) }
-
-    before do
-      create_list(:assessment_attempt, 5, user:)
-    end
+    let!(:attempts) { create_list(:assessment_attempt, 5, user:) }
 
     it 'allows resetting assesment tests for a user' do
       click_remove_attempts
@@ -17,7 +14,9 @@ RSpec.describe 'User reset tests' do
     end
 
     it 'provides an audit record of the reset' do
-      expect { click_remove_attempts }.to change { SupportAudit.all.count }.from(0).to(1)
+      click_remove_attempts
+      expect(page).to have_text('Assessment attempts removed')
+      expect(SupportAudit.all.count).to eq(attempts.count)
     end
 
     def click_remove_attempts
