@@ -14,4 +14,12 @@ class PrimaryMailer < ApplicationMailer
 
     mail(to: @user.email, subject: @subject)
   end
+
+  def inactive_prompt
+    @user = params[:user]
+    @programme = Programme.primary_certificate
+    @subject = 'Kick-start your development and achieve a national qualification'
+
+    mail(to: @user.email, subject: @subject)
+  end 
 end
