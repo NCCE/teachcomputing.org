@@ -7,22 +7,18 @@ RSpec.describe 'User reset tests' do
 
     it 'allows resetting assesment tests for a user' do
       click_remove_attempts
-      # TODO: Why do the next two tests pass? Shouldn't we be taken to an audit page?
-      expect(page).to have_text('Assessment attempts removed')
-      expect(page).to have_text("Show #{user.email}")
       expect(user.assessment_attempts.count).to eq(0)
     end
 
     it 'provides an audit record of the reset' do
-      click_remove_attempts
-      expect(page).to have_text('Assessment attempts removed')
-      expect(SupportAudit.all.count).to eq(attempts.count)
+      expect { click_remove_attempts }.to change { SupportAudit.all.count }.by(attempts.count)
     end
 
     def click_remove_attempts
       visit admin_users_path(user.id)
       click_link user.email
       click_link 'Remove Assessment Attempts'
+      expect(page).to have_text('Edit SupportAudit')
     end
   end
 end
