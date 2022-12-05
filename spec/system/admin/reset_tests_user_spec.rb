@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'User reset tests' do
+  before do
+    ENV['BYPASS_ADMINISTRATE_CF_AUTH'] = 'true'
+    stub_delegate
+  end
+
+  after do
+    ENV['BYPASS_ADMINISTRATE_CF_AUTH'] = 'false'
+  end
+
   context 'with assesment attempts' do
     let(:user) { create(:user) }
     let!(:attempts) { create_list(:assessment_attempt, 5, user:) }
