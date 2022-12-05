@@ -11,21 +11,14 @@ module Admin
     end
 
     def perform_reset_tests
-      user_id = params[:user_id]
-      Support::UserUtilities.reset_tests(user_id)
+      Support::UserUtilities.reset_tests(params[:user_id])
 
-      redirect_to(
-        edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
-      )
-      # redirect_back(
-      #   fallback_location: admin_users_path(user_id:),
-      #   flash: { notice: I18n.t('admin.users.actions.reset.complete') }
-      # )
+      redirect_to edit_admin_support_audit_path(id: SupportAudit.last.id)
     end
 
-    # def after_resource_updated_path(requested_resource)
-    #   edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
-    # end
+    def after_resource_updated_path(requested_resource)
+      edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
+    end
 
     def authorized_action?(resource, action_name)
       return false if resource.instance_of?(SupportAudit) && action_name == :edit
