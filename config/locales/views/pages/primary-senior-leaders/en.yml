@@ -62,12 +62,6 @@ en:
           alt: 'A teacher teaching'
         logo:
           alt: 'Isaac logo'
-        title: "How we can help you and your students"
-        text: "Isaac Computer Science is our free online learning programme for A level and GCSE computer science students and teachers, providing learning materials that cover the AQA, Edexcel, Eduqas, OCR and WJEC curriculums."
-        button:
-          title: "Discover Isaac Computer Science"
-          url: "https://isaaccomputerscience.org/"
-          event-label: "Isaac CS"
       partners:
         title: "How we can help your pupils"
         text:
@@ -91,7 +85,7 @@ en:
               title: "Start or join a ciub"
               url: "https://codeclub.org/en/"
               event-label: "Code Club"
-          bebras:
+          barefoot:
             title: "Barefoot"
             text: "Deliver computing brilliantly, with free workshops, helpful online guides and engaging resources. Barefoot makes computing easy to teach and fun to learn, with or without a computer."
             link:
