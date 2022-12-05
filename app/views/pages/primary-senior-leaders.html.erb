@@ -1,8 +1,8 @@
 <% meta_tag :title, t('.hero.title') %>
-<% meta_tag :description, 'Visit our Secondary senior leaders page to see what CPD and support we offer, and our guide to delivering the computing curriculum' %>
+<% meta_tag :description, 'Visit our Primary senior leaders page to see what CPD and support we offer, and our guide to delivering the computing curriculum' %>
 <% meta_tag :url, request.original_url %>
 
-<%# Hero: Support for secondary senior leaders %>
+<%# Hero: Support for primary senior leaders %>
 <%= render HeroComponent.new(
   title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
@@ -29,7 +29,7 @@
               button: {
                 button_title: t('.quality-framework-tick-list.button.title'),
                 button_url: t('.quality-framework-tick-list.button.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.quality-framework-tick-list.button.event-label')
               }
             },
@@ -44,7 +44,7 @@
               button: {
                 button_title: t('.guidance-tick-list.button.title'),
                 button_url: t('.guidance-tick-list.button.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.guidance-tick-list.button.event-label')
               }
             }
@@ -79,7 +79,7 @@
                   t('.how-we-help.cards.courses.text.all-courses-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
                   }
                 ))
@@ -87,7 +87,7 @@
               link: {
                 link_title: t('.how-we-help.cards.courses.link.title'),
                 link_url: t('.how-we-help.cards.courses.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.courses.link.event-label')
               }
             },
@@ -101,16 +101,16 @@
                   t('.how-we-help.cards.certification.text.accelerator-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.certification.text.accelerator-link.event-label')
                   }
                 )),
-                secondary_certificate_link: (link_to(
+                primary_certificate_link: (link_to(
                   t('.how-we-help.cards.certification.text.certificate-link.title'),
                   t('.how-we-help.cards.certification.text.certificate-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.certification.text.certificate-link.event-label')
                   }
                 ))
@@ -118,7 +118,7 @@
               link: {
                 link_title: t('.how-we-help.cards.certification.link.title'),
                 link_url: t('.how-we-help.cards.certification.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.certification.link.event-label')
               }
             },
@@ -129,7 +129,7 @@
               link: {
                 link_title: t('.how-we-help.cards.resources.link.title'),
                 link_url: t('.how-we-help.cards.resources.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.resources.link.event-label')
               }
             }
@@ -154,7 +154,7 @@
                     t('.partners.text.educational-partners-link.url'),
                     data: {
                       event_action: 'click',
-                      tracking_page: 'Secondary SLT',
+                      tracking_page: 'Primary SLT',
                       tracking_label: t('.partners.text.educational-partners-link.event-label')
                     }
                 )))
@@ -172,7 +172,7 @@
                   link: {
                     link_title: t('.partners.cards.stem.link.title'),
                     link_url: t('.partners.cards.stem.link.url'),
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.partners.cards.stem.link.event-label'),
                   }
                 },
@@ -183,7 +183,7 @@
                   link: {
                     link_title: t('.partners.cards.code-club.link.title'),
                     link_url: t('.partners.cards.code-club.link.url'),
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.partners.cards.code-club.link.event-label'),
                   }
                 },
@@ -194,7 +194,7 @@
                   link: {
                     link_title: t('.partners.cards.barefoot.link.title'),
                     link_url: t('.partners.cards.barefoot.link.url'),
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.partners.cards.barefoot.link.event-label'),
                   }
                 }
