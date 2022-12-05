@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'User reset tests' do
   before do
     ENV['BYPASS_ADMINISTRATE_CF_AUTH'] = 'true'
-    stub_delegate
   end
 
   after do
