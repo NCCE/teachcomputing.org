@@ -6,7 +6,7 @@ RSpec.describe('pages/primary-senior-leaders') do
   let(:quality_framework_tick_list_title) { 'How we can help you and your school' }
   let(:stem_partner_title) { 'STEM Ambassadors' }
   let(:code_club_partner_title) { 'Code Club' }
-  let(:bebras_partner_title) { 'Barefoot' }
+  let(:barefoot_title) { 'Barefoot' }
 
   before do
     render
@@ -27,6 +27,6 @@ RSpec.describe('pages/primary-senior-leaders') do
   it 'has the partners listed' do
     expect(rendered).to have_css('.non-bordered-card__title', text: stem_partner_title)
     expect(rendered).to have_css('.non-bordered-card__title', text: code_club_partner_title)
-    expect(rendered).to have_css('.non-bordered-card__title', text: bebras_partner_title)
+    expect(rendered).to have_css('.non-bordered-card__title', text: barefoot_title)
   end
 end

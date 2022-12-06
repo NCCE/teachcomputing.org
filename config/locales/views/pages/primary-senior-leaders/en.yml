@@ -46,7 +46,7 @@ en:
             text:
               html: "Our training can support your staff throughout their career, with learning pathways available to guide teachers through our courses, enrichment and resources, leading to our accredited Primary certificate.<br/><br/>Those teaching computing for the first time can access a range of support, including introductory courses and teaching resources."
             link:
-              title: "Download senior leader guide"
+              title: "Discover our Primary certificate"
               url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
               event-label: "Senior leader guide"
           resources:
@@ -65,7 +65,7 @@ en:
       partners:
         title: "How we can help your pupils"
         text:
-          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our educational partners offer complementary programmes to help your school provide inspirational computing activities and extra-curricular experiences for your pupils."
+          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our %{educational_partners_link} offer complementary programmes to help your school provide inspirational computing activities and extra-curricular experiences for your pupils."
           educational-partners-link:
             title: "educational partners"
             url: "/contributing-partners"
@@ -82,7 +82,7 @@ en:
             title: "Code Club"
             text: "An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club."
             link:
-              title: "Start or join a ciub"
+              title: "Start or join a club"
               url: "https://codeclub.org/en/"
               event-label: "Code Club"
           barefoot:
