@@ -11,9 +11,9 @@ module Admin
     end
 
     def perform_reset_tests
-      Support::UserUtilities.reset_tests(params[:user_id])
+      audit = Support::UserUtilities.reset_tests(params[:user_id])
 
-      redirect_to edit_admin_support_audit_path(id: SupportAudit.last.id)
+      redirect_to edit_admin_support_audit_path(id: audit.id)
     end
 
     def after_resource_updated_path(requested_resource)
