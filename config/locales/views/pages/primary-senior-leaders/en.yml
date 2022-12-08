@@ -47,8 +47,8 @@ en:
               html: "Our training can support your staff throughout their career, with learning pathways available to guide teachers through our courses, enrichment and resources, leading to our accredited Primary certificate.<br/><br/>Those teaching computing for the first time can access a range of support, including introductory courses and teaching resources."
             link:
               title: "Discover our Primary certificate"
-              url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
-              event-label: "Senior leader guide"
+              url: "/primary-certificate"
+              event-label: "primary certificate"
           resources:
             title: "Full curriculum resources for Key Stages 1 and 2"
             text:
