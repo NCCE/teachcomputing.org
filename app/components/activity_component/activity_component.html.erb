@@ -1,0 +1,17 @@
+<%= content_tag :div, class: ['activity-component', { "#{@class_name}": @class_name.present? }] do %>
+  <span class="activity-component__objective">
+    <span class="activity-component__objective-text">
+      <span><%= @objective %></span>
+    </span>
+    <%= link_to @button[:text],
+      @button[:path],
+      class: 'govuk-button button button--small activity-component__objective-button',
+      data: tracking_data(@button[:tracking_label]),
+      **@button[:opts]
+    %>
+  </span>
+  <% if @description.present? %>
+    <div class="activity-component__description light-blue-bg"><%= @description %></div>
+  <% end %>
+<% end %>
+

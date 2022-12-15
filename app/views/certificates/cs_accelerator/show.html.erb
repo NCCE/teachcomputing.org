@@ -62,10 +62,12 @@
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'certificates/cs_accelerator/bursary-aside' %>
-          <%= render partial: 'certificates/cs_accelerator/pathway-aside', locals: {
-            other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
-            user_pathway: @csa_dash.user_programme_pathway,
-          } %>
+          <div class='ncce-aside ncce-pathway-aside'>
+            <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
+              other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
+              user_pathway: @csa_dash.user_programme_pathway,
+            } %>
+          </div>
           <%= render 'components/support-aside' %>
           <div class="ncce-aside--borderless">
             <%= render FeedbackComponent.new(heading: 'Help us improve our certificate experience', area: :cs_accelerator) %>

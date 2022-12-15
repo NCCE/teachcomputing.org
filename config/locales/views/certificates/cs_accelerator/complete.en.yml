@@ -1,0 +1,44 @@
+en:
+  certificates:
+    cs_accelerator:
+      complete:
+        subsidy_aside:
+          title: "Subsidy payment"
+          link_text: "this form"
+          text:
+            html: "If your school or college is eligible for funding, this is usually paid within six to eight weeks of activity completion. To claim a subsidy for your organisation, please complete %{form_link} and return it to %{email_link}."
+        support_aside:
+          title: "Support"
+          text:
+            html: "We're always happy to support our graduates. Call 019 0432 8300 or email %{email_link}"
+        documents_aside:
+          title: "Useful documents"
+          text:
+            html: "%{handbook_link}<br><br>%{spec_link}"
+          handbook_link_text: "Download our Handbook"
+          spec_link_text: "Download our GCSE Specification Map"
+        share_aside:
+          title: "Share your success"
+          text:
+            html: "Do you know someone who would benefit from this programme? Invite them to join, and discuss what you've learnt with someone you know.<br><br>
+            Follow us on %{twitter_follow_link}, %{facebook_follow_link} or %{linkedin_follow_link} and tag us when sharing your achievement<br><br>
+            %{twitter_share_link}%{facebook_share_link}%{linkedin_share_link}"
+          follow:
+            twitter: "Twitter"
+            facebook: "Facebook"
+            linkedin: "LinkedIn"
+          share:
+            twitter: "Share on Twitter"
+            facebook: "Share on Facebook"
+            linkedin: "Share on LinkedIn"
+        next_steps:
+          objective: "Teach secondary computing certificate"
+          description:
+            html: "By completing the Subject knowledge certificate, you are now eligible for our follow-on %{certificate_link}. This qualification will help you to further your knowledge and enhance your pedagogical development. It can also support your progress to chartered status."
+          certificate_link_title: "Secondary computing certificate"
+          button_text: "Enrol"
+        recommended_courses:
+          courses_intro:
+            html: "Courses based on %{pathway_pdf_link} (PDF)"
+          pathway_pdf_link_title: "your pathway"
+
