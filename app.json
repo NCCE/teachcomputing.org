@@ -128,8 +128,8 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic",
-    "heroku-redis:hobby-dev"
+    "heroku-postgresql:mini",
+    "heroku-redis:mini"
   ],
   "buildpacks": [
     {
