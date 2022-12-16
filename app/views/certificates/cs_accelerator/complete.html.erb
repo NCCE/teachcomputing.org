@@ -46,26 +46,26 @@
           </ul>
           <h3 class="govuk-heading-m">Expand your subject knowledge</h3>
           <p class="govuk-body">You can now participate in any of our CS Accelerator courses for free, providing you teach in a secondary state-funded school or college. Just use the code <strong>"CSAGraduate"</strong> when booking your next course.</p>
-          <% if @user_pathway&.recommended_activities_for_user(@current_user).present? %>
-            <div class="govuk-body ncce-csa-dash__section-unpadded">
-              <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
-                <%= render partial: 'certificates/pathways/recommended_courses', locals: {
-                  event_category: 'CSA enrolled',
-                  pathway: @user_pathway,
-                  recommended_activities: @user_pathway&.recommended_activities_for_user(@current_user),
-                  title: t('.recommended_courses.courses_intro.html',
-                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
-                  )
-                } %>
-              </div>
-              <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-                <%= render partial: 'certificates/cs_accelerator/supplementary-courses', locals: {
-                  pathway: @user_pathway,
-                  supplementary_activities: @user_pathway&.supplementary_activities_for_user(@current_user)
-                } %>
-              </div>
+
+          <div class="govuk-body ncce-csa-dash__section-unpadded">
+            <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
+              <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+                event_category: 'CSA enrolled',
+                pathway: @user_pathway,
+                recommended_activities: @user_pathway&.recommended_activities,
+                title: t('.recommended_courses.courses_intro.html',
+                  pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
+                )
+              } %>
             </div>
-          <% end %>
+            <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
+              <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
+                pathway: @user_pathway,
+                supplementary_activities: @user_pathway&.supplementary_activities
+              } %>
+            </div>
+          </div>
+
           <div class="ncce-csa-dash__pathway-switcher">
             <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
               other_programme_pathways_for_user: @other_programme_pathways_for_user,
@@ -156,6 +156,36 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <h2 class="govuk-heading-l ncce-programmes-activity__title">What else can you do?</h2>
+        <%= render BorderedCardsComponent.new(
+          cards_per_row: 2,
+          class_name: 'further-activity-cards',
+          cards: [
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.what_else.cards.after_school.title'),
+              text: t('.what_else.cards.after_school.text.html',
+                code_club_link: link_to(t('.what_else.cards.after_school.text.code_club_link_title'), 'https://codeclub.org/en/start-a-code-club', class: 'ncce-link', data: tracking_data('Code Club'))
+              ),
+              link: {
+                link_title: t('.what_else.cards.after_school.link.title'),
+                link_url: 'https://codeclub.org/en/start-a-code-club',
+                tracking_page: nil,
+                tracking_label: 'After school learn more'
+              }
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.what_else.cards.cas.title'),
+              text: t('.what_else.cards.cas.text'),
+              link: {
+                link_title: t('.what_else.cards.cas.link.title'),
+                link_url: 'https://community.computingatschool.org.uk/events',
+                tracking_page: nil,
+                tracking_label: 'CAS find out more'
+              }
+            }
+          ]
+        ) %>
       </div>
     </div>
   </div>
