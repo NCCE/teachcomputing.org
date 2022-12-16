@@ -1,22 +1,22 @@
 <% meta_tag :title, t('.hero.title') %>
-<% meta_tag :description, 'We support school and college leaders to drive school improvement and pupil outcomes through an inspirational computing education. Discover resources, CPD and enrichment.' %>
+<% meta_tag :description, 'Guidance and support for primary schools to drive school improvement and pupil outcomes through inspirational computing teaching. Explore resources, CPD and enrichment.' %>
 <% meta_tag :url, request.original_url %>
 
-<%# Hero: Support for secondary senior leaders %>
+<%# Hero: Support for primary senior leaders %>
 <%= render HeroComponent.new(
   title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
   glyph: :c1,
-  color: 'secondary'
+  color: 'primary'
 ) %>
 
-<%# How we can help you and your school or college %>
+<%# How we can help you and your school %>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <%= render TickListCollectionComponent.new(
-          title: 'How we can help you and your school or college',
+          title: 'How we can help you and your school',
           tick_list_collection: [
             {
               title: t('.quality-framework-tick-list.title'),
@@ -29,7 +29,7 @@
               button: {
                 button_title: t('.quality-framework-tick-list.button.title'),
                 button_url: t('.quality-framework-tick-list.button.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.quality-framework-tick-list.button.event-label')
               }
             },
@@ -44,7 +44,7 @@
               button: {
                 button_title: t('.guidance-tick-list.button.title'),
                 button_url: t('.guidance-tick-list.button.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.guidance-tick-list.button.event-label')
               }
             }
@@ -70,7 +70,7 @@
           class_name: 'teacher-help-cards',
           cards: [
             {
-              class_name: 'bordered-card--secondary-cert',
+              class_name: 'bordered-card--primary-cert',
               title: t('.how-we-help.cards.courses.title'),
               text: t(
                 '.how-we-help.cards.courses.text.html',
@@ -79,7 +79,7 @@
                   t('.how-we-help.cards.courses.text.all-courses-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
                   }
                 ))
@@ -87,12 +87,12 @@
               link: {
                 link_title: t('.how-we-help.cards.courses.link.title'),
                 link_url: t('.how-we-help.cards.courses.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.courses.link.event-label')
               }
             },
             {
-              class_name: 'bordered-card--secondary-cert',
+              class_name: 'bordered-card--primary-cert',
               title: t('.how-we-help.cards.certification.title'),
               text: t(
                 '.how-we-help.cards.certification.text.html',
@@ -101,16 +101,16 @@
                   t('.how-we-help.cards.certification.text.accelerator-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.certification.text.accelerator-link.event-label')
                   }
                 )),
-                secondary_certificate_link: (link_to(
+                primary_certificate_link: (link_to(
                   t('.how-we-help.cards.certification.text.certificate-link.title'),
                   t('.how-we-help.cards.certification.text.certificate-link.url'),
                   data: {
                     event_action: 'click',
-                    tracking_page: 'Secondary SLT',
+                    tracking_page: 'Primary SLT',
                     tracking_label: t('.how-we-help.cards.certification.text.certificate-link.event-label')
                   }
                 ))
@@ -118,18 +118,18 @@
               link: {
                 link_title: t('.how-we-help.cards.certification.link.title'),
                 link_url: t('.how-we-help.cards.certification.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.certification.link.event-label')
               }
             },
             {
-              class_name: 'bordered-card--secondary-cert',
+              class_name: 'bordered-card--primary-cert',
               title: t('.how-we-help.cards.resources.title'),
               text: t('.how-we-help.cards.resources.text.html'),
               link: {
                 link_title: t('.how-we-help.cards.resources.link.title'),
                 link_url: t('.how-we-help.cards.resources.link.url'),
-                tracking_page: 'Secondary SLT',
+                tracking_page: 'Primary SLT',
                 tracking_label: t('.how-we-help.cards.resources.link.event-label')
               }
             }
@@ -140,89 +140,68 @@
   </div>
 </div>
 
-<%# How we can help your students %>
+<%# Explore our partners %>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
-      <%= render LogoButtonImageCardComponent.new(
-        logo: { path: 'media/images/logos/isaac-logo.svg', alt: t('.student-help.logo.alt') },
-        image: {
-          path: 'media/images/pages/secondary-senior-leaders/teaching.png',
-          alt: t('.student-help.image.alt')
-        },
-        title: t('.student-help.title'),
-        text: t('.student-help.text'),
-        button: {
-          button_title: t('.student-help.button.title'),
-          button_url: t('.student-help.button.url'),
-          tracking_page: 'Secondary SLT',
-          tracking_label: t('.student-help.button.event-label')
-        }
-      ) %>
-    </div>
-  </div>
-</div>
-
-<%# Explore our partners %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-     <div class="govuk-grid-row">
-        <div class="govuk-grid-column bottom-margin ncce-eop">
-          <h2 class="govuk-heading-l"><%= t('.partners.title') %></h2>
-          <p class="govuk-body-l"><%= t(
-              '.partners.text.html',
-              educational_partners_link: (link_to(
-                  t('.partners.text.educational-partners-link.title'),
-                  t('.partners.text.educational-partners-link.url'),
-                  data: {
-                    event_action: 'click',
-                    tracking_page: 'Secondary SLT',
-                    tracking_label: t('.partners.text.educational-partners-link.event-label')
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column bottom-margin ncce-eop">
+            <h2 class="govuk-heading-l"><%= t('.partners.title') %></h2>
+            <p class="govuk-body-l"><%= t(
+                '.partners.text.html',
+                educational_partners_link: (link_to(
+                    t('.partners.text.educational-partners-link.title'),
+                    t('.partners.text.educational-partners-link.url'),
+                    data: {
+                      event_action: 'click',
+                      tracking_page: 'Primary SLT',
+                      tracking_label: t('.partners.text.educational-partners-link.event-label')
+                    }
+                )))
+            %></p>
+          </div>
+          <div class="govuk-grid-column-full">
+            <%= render NonBorderedCardsComponent.new(
+              class_name: 'resource-cards',
+              cards_per_row: 3,
+              cards: [
+                {
+                  image_url: 'pages/primary-teachers/stem-card.svg',
+                  title: t('.partners.cards.stem.title'),
+                  text: t('.partners.cards.stem.text'),
+                  link: {
+                    link_title: t('.partners.cards.stem.link.title'),
+                    link_url: t('.partners.cards.stem.link.url'),
+                    tracking_page: 'Primary SLT',
+                    tracking_label: t('.partners.cards.stem.link.event-label'),
                   }
-              )))
-          %></p>
+                },
+                {
+                  image_url: 'pages/primary-teachers/code-club-card.svg',
+                  title: t('.partners.cards.code-club.title'),
+                  text: t('.partners.cards.code-club.text'),
+                  link: {
+                    link_title: t('.partners.cards.code-club.link.title'),
+                    link_url: t('.partners.cards.code-club.link.url'),
+                    tracking_page: 'Primary SLT',
+                    tracking_label: t('.partners.cards.code-club.link.event-label'),
+                  }
+                },
+                {
+                  image_url: 'pages/primary-teachers/barefoot.svg',
+                  title: t('.partners.cards.barefoot.title'),
+                  text: t('.partners.cards.barefoot.text'),
+                  link: {
+                    link_title: t('.partners.cards.barefoot.link.title'),
+                    link_url: t('.partners.cards.barefoot.link.url'),
+                    tracking_page: 'Primary SLT',
+                    tracking_label: t('.partners.cards.barefoot.link.event-label'),
+                  }
+                }
+              ]
+            ) %>
+          </div>
         </div>
-        <div class="govuk-grid-column-full">
-          <%= render NonBorderedCardsComponent.new(
-            class_name: 'resource-cards',
-            cards_per_row: 3,
-            cards: [
-              {
-                image_url: 'pages/primary-teachers/stem-card.svg',
-                title: t('.partners.cards.stem.title'),
-                text: t('.partners.cards.stem.text'),
-                link: {
-                  link_title: t('.partners.cards.stem.link.title'),
-                  link_url: t('.partners.cards.stem.link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.partners.cards.stem.link.event-label'),
-                }
-              },
-              {
-                image_url: 'pages/primary-teachers/code-club-card.svg',
-                title: t('.partners.cards.code-club.title'),
-                text: t('.partners.cards.code-club.text'),
-                link: {
-                  link_title: t('.partners.cards.code-club.link.title'),
-                  link_url: t('.partners.cards.code-club.link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.partners.cards.code-club.link.event-label'),
-                }
-              },
-              {
-                image_url: 'partners/bebras-card.svg',
-                title: t('.partners.cards.bebras.title'),
-                text: t('.partners.cards.bebras.text'),
-                link: {
-                  link_title: t('.partners.cards.bebras.link.title'),
-                  link_url: t('.partners.cards.bebras.link.url'),
-                  tracking_page: 'Secondary SLT',
-                  tracking_label: t('.partners.cards.bebras.link.event-label'),
-                }
-              }
-            ]
-          ) %>
-        </div>
-      </div>
+    </div>
   </div>
 </div>
