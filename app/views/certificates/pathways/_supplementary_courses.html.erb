@@ -12,7 +12,7 @@
   </p>
 
   <div data-expander-target="expander" class="expander">
-    <% supplementary_activities.each do |sa| %>
+    <% supplementary_activities&.each do |sa| %>
       <div class="ncce-pathway-courses__course supplementary-courses__course">
         <p class="ncce-pathway-courses__link">
           <%= link_to sa.title, course_path(id: sa.stem_activity_code, name: sa.slug), class: 'ncce-link' %>

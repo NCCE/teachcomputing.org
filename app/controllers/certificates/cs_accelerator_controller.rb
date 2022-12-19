@@ -22,7 +22,6 @@ module Certificates
 
       user_pathway
       other_programme_pathways_for_user
-      @teach_secondary_computing = Activity.find_by_slug('teach-secondary-computing-certificate')
 
       assign_assessment_and_achievements
       @badge_tracking_event_category = 'CSA complete'

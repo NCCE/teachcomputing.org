@@ -12,7 +12,7 @@
   </p>
 <% end %>
 <ul class="govuk-list govuk-body-s">
-  <% other_programme_pathways_for_user.each do |pathway| %>
+  <% other_programme_pathways_for_user&.each do |pathway| %>
     <li>
       <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
     </li>
@@ -35,7 +35,7 @@
       }
     } do %>
       <%= select_tag :pathway_id,
-        options_for_select(other_programme_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
+        options_for_select(other_programme_pathways_for_user&.collect {|p| [ p['title'], p['id'] ] }),
         {
           include_blank: 'choose your new pathway',
           class: 'govuk-select ncce-select ncce-pathway-aside__select',

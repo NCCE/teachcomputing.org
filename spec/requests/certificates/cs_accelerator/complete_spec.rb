@@ -72,7 +72,7 @@ RSpec.describe Certificates::CSAcceleratorController do
         end
 
         it 'shows the page if complete' do
-          expect(response.status).to eq(200)
+          expect(response).to have_http_status(:ok)
         end
 
         it 'renders the correct template' do
@@ -90,11 +90,8 @@ RSpec.describe Certificates::CSAcceleratorController do
     end
 
     describe 'while logged out' do
-      before do
-        get complete_cs_accelerator_certificate_path
-      end
-
       it 'redirects to login' do
+        get complete_cs_accelerator_certificate_path
         expect(response).to redirect_to(/register/)
       end
     end

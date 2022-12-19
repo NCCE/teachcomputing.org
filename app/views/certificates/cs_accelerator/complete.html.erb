@@ -54,7 +54,7 @@
                 pathway: @user_pathway,
                 recommended_activities: @user_pathway&.recommended_activities,
                 title: t('.recommended_courses.courses_intro.html',
-                  pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
+                  pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
                 )
               } %>
             </div>

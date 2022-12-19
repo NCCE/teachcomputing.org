@@ -25,23 +25,19 @@ RSpec.describe('certificates/cs_accelerator/complete', type: :view) do
   end
 
   it 'has the download button' do
-    expect(rendered).to have_link('View your certificate', href: '/certificate/cs-accelerator/view-certificate')
+    expect(rendered).to have_link('Download your certificate (PDF)', href: '/certificate/cs-accelerator/view-certificate')
   end
 
   it 'has a link to the secondary certificate page' do
-    expect(rendered).to have_link('Teach secondary computing certificate', href: '/certificate/secondary-certificate')
+    expect(rendered).to have_link('Secondary computing certificate', href: '/certificate/secondary-certificate')
   end
 
   it 'has a button to enrol on the secondary certificate' do
-    expect(rendered).to have_link('Enrol on Teach secondary computing', href: "/certificate/secondary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=#{secondary_certificate.id}&user_programme_enrolment%5Buser_id%5D=#{user.id}")
-  end
-
-  it 'has the journey section' do
-    expect(rendered).to have_css('.ncce-programmes-activity__title', text: 'Your learning journey')
+    expect(rendered).to have_link('Enrol', href: "/certificate/secondary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=#{secondary_certificate.id}&user_programme_enrolment%5Buser_id%5D=#{user.id}")
   end
 
   it 'has the Twitter section' do
-    expect(rendered).to have_css('.ncce-aside__title', text: 'Share your success')
+    expect(rendered).to have_css('.share-aside .aside-component__heading', text: 'Share your success')
   end
 
   it 'has the Twitter share button' do
