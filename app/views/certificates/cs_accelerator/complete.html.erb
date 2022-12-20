@@ -155,7 +155,7 @@
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h2 class="govuk-heading-l ncce-programmes-activity__title">What else can you do?</h2>
+        <h3 class="govuk-heading-m">What else can you do?</h3>
         <%= render BorderedCardsComponent.new(
           cards_per_row: 2,
           class_name: 'further-activity-cards',
@@ -165,13 +165,7 @@
               title: t('.what_else.cards.after_school.title'),
               text: t('.what_else.cards.after_school.text.html',
                 code_club_link: link_to(t('.what_else.cards.after_school.text.code_club_link_title'), 'https://codeclub.org/en/start-a-code-club', class: 'ncce-link', data: tracking_data('Code Club'))
-              ),
-              link: {
-                link_title: t('.what_else.cards.after_school.link.title'),
-                link_url: 'https://codeclub.org/en/start-a-code-club',
-                tracking_page: nil,
-                tracking_label: 'After school learn more'
-              }
+              )
             },
             {
               class_name: 'bordered-card--secondary-cert',

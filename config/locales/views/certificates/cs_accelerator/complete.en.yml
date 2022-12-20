@@ -48,8 +48,6 @@ en:
               text:
                 html: "Use your skills and confidence to run a %{code_club_link}, hackathon, or school programme to encourage more pupils to engage with computing."
                 code_club_link_title: "Code Club"
-              link:
-                title: "Learn more"
             cas:
               title: "Join a CAS Community meeting"
               text: "CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers."

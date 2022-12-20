@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::CSAcceleratorController do
-  let!(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@raspberrypi.org') }
   let!(:programme) { create(:cs_accelerator) }
   let(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
@@ -77,7 +77,7 @@ RSpec.describe Certificates::CSAcceleratorController do
     describe 'while logged out' do
       it 'redirects to login' do
         get complete_cs_accelerator_certificate_path
-        expect(response).to redirect_to(/register/)
+        expect(response).to redirect_to(/login/)
       end
     end
   end
