@@ -10,7 +10,8 @@ describe ApplicationHelper do
   describe('#create_account_url') do
     it 'returns the correct url' do
       allow(ENV).to receive(:[]).with('BYPASS_OAUTH').and_return('false')
-      expect(helper.create_account_url).to match(%r{http.+/user/register\?from=NCCE})
+      allow(ENV).to receive(:[]).with('STEM_OAUTH_SITE').and_return('')
+      expect(helper.create_account_url).to match(/register/)
     end
 
     it 'returns the login url when we are faking login' do

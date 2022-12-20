@@ -23,7 +23,11 @@
               %>
             </p>
           </div>
-          <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+          <% if @issued_badge.present? %>
+            <div class='govuk-body'>
+              <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+            </div>
+          <% end %>
           <h2 class="govuk-heading-m">Next steps</h2>
           <ul class="govuk-list ncce-activity-list ncce-activity-list--programme govuk-!-margin-bottom-4" role="list">
             <li class="ncce-activity-list__item">
