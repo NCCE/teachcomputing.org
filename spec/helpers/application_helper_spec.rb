@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationHelper, type: :helper do
-
+describe ApplicationHelper do
   describe('#auth_url') do
     it 'returns the correct url' do
       expect(helper.auth_url).to eq '/auth/stem'
