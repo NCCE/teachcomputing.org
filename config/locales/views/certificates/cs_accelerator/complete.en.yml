@@ -2,6 +2,7 @@ en:
   certificates:
     cs_accelerator:
       complete:
+        all_courses_button: 'Browse all of our courses'
         subsidy_aside:
           title: "Subsidy payment"
           link_text: "this form"

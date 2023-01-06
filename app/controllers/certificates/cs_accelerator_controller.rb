@@ -51,14 +51,8 @@ module Certificates
         @user_pathway ||= user_enrolment&.pathway
       end
 
-      def user_programme_pathway
-        return @user_programme_pathway if defined? @user_programme_pathway
-
-        @user_programme_pathway = current_user.programme_pathway(@programme)
-      end
-
       def other_programme_pathways_for_user
-        @other_programme_pathways_for_user ||= @programme.pathways_excluding(user_programme_pathway)
+        @other_programme_pathways_for_user ||= @programme.pathways_excluding(user_pathway)
       end
 
       def user_enrolled?

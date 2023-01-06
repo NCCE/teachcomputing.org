@@ -9,18 +9,13 @@
           <div class="card card--no-glyph card--cs-accelerator card--landing-page lp-certs--card">
             <div class="lp-certs--card-header">
               <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Your certificate is ready!</h2>
-              <span class="govuk-body-m status-block status-block--completed">Certificate Awarded</span>
+              <span class="govuk-body-m status-block status-block--completed">Certificate awarded</span>
             </div>
             <p class="govuk-body card__text card__text-landing-page">
               Congratulations on completing your learning programme and reaching this important milestone in your professional development.
             </p>
             <p class="govuk-body govuk-!-margin-bottom-0">
-              <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path,
-                class: 'button govuk-button lp-certs--button',
-                data: { event_action: 'click',
-                        event_category: '',
-                        event_label: '' }
-              %>
+              <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path, class: 'button govuk-button lp-certs--button', data: tracking_data('Secondary certificate download link') %>
             </p>
           </div>
           <% if @issued_badge.present? %>
@@ -34,7 +29,7 @@
               <%= render ActivityComponent.new(
                 objective: t('.next_steps.objective'),
                 description: t('.next_steps.description.html',
-                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate link'))
+                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info link'))
                 ),
                 button: {
                   text: t('.next_steps.button_text'),
@@ -52,28 +47,35 @@
           <p class="govuk-body">You can now participate in any of our CS Accelerator courses for free, providing you teach in a secondary state-funded school or college. Just use the code <strong>"CSAGraduate"</strong> when booking your next course.</p>
 
           <div class="govuk-body ncce-csa-dash__section-unpadded">
-            <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
-              <%= render partial: 'certificates/pathways/recommended_courses', locals: {
-                event_category: 'CSA enrolled',
-                pathway: @user_pathway,
-                recommended_activities: @user_pathway&.recommended_activities,
-                title: t('.recommended_courses.courses_intro.html',
-                  pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
-                )
-              } %>
-            </div>
-            <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-              <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
-                pathway: @user_pathway,
-                supplementary_activities: @user_pathway&.supplementary_activities
-              } %>
-            </div>
+            <% if @user_pathway&.present? %>
+              <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
+                <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+                  event_category: 'CSA enrolled',
+                  pathway: @user_pathway,
+                  recommended_activities: @user_pathway&.recommended_activities,
+                  title: t('.recommended_courses.courses_intro.html',
+                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
+                  )
+                } %>
+              </div>
+              <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
+                <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
+                  pathway: @user_pathway,
+                  supplementary_activities: @user_pathway&.supplementary_activities
+                } %>
+              </div>
+            <% else %>
+              <%= link_to t('.all_courses_button'),
+                courses_path(certificate: @programme.slug), class: 'govuk-button button',
+                data: tracking_data('View all certificate courses') %>
+            <% end %>
           </div>
 
           <div class="ncce-csa-dash__pathway-switcher">
             <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
               other_programme_pathways_for_user: @other_programme_pathways_for_user,
-              user_pathway: @user_programme_pathway,
+              user_pathway: @user_pathway,
+              completed: @programme.user_completed?(current_user)
             } %>
           </div>
         </div>

@@ -38,11 +38,9 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def state_machine
-    @state_machine ||= begin
-      StateMachines::UserProgrammeEnrolmentStateMachine.new(
-        self, transition_class: UserProgrammeEnrolmentTransition
-      )
-    end
+    @state_machine ||= StateMachines::UserProgrammeEnrolmentStateMachine.new(
+      self, transition_class: UserProgrammeEnrolmentTransition
+    )
   end
 
   private_class_method :initial_state, :transition_class

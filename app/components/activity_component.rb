@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class ActivityComponent < ViewComponent::Base
-  def initialize(objective:, description:, button:, tracking_category: nil)
+  def initialize(objective:, button:, description: nil, tracking_category: nil, class_name: nil)
     @objective = objective
     @description = description
     @button = button
     @tracking_category = tracking_category
+    @class_name = class_name
   end
 
   def tracking_data(label)

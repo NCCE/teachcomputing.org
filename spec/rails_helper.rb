@@ -16,6 +16,7 @@ SimpleCov.start 'rails' do
   end
 end
 
+ENV['BYPASS_OAUTH'] = 'false' # Must be false for tests
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 

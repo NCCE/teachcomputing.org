@@ -21,5 +21,5 @@ class PrimaryMailer < ApplicationMailer
     @subject = 'Kick-start your development and achieve a national qualification'
 
     mail(to: @user.email, subject: @subject)
-  end 
+  end
 end
