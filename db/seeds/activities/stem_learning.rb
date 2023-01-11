@@ -1896,3 +1896,27 @@ a = Activity.find_or_create_by(stem_course_template_no: '9df6f61f-555b-ed11-9562
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'ebce5f46-907c-ed11-81ad-0022481b5949') do |activity|
+  activity.title = 'Developing secondary leadership - residential'
+  activity.credit = 10
+  activity.slug = 'developing-secondary-leadership-residential'
+  activity.stem_course_template_no = 'ebce5f46-907c-ed11-81ad-0022481b5949'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP296'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: '9ded59c5-4c7d-ed11-81ad-0022481b5a10') do |activity|
+  activity.title = 'Teaching GCSE computer science - residential'
+  activity.credit = 10
+  activity.slug = 'teaching-gcse-computer-science-residential'
+  activity.stem_course_template_no = '9ded59c5-4c7d-ed11-81ad-0022481b5a10'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP297'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
