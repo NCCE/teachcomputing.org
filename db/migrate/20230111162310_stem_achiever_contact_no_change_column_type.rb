@@ -4,6 +4,6 @@ class StemAchieverContactNoChangeColumnType < ActiveRecord::Migration[6.1]
   end
 
   def down
-      change_column :users, :stem_achiever_contact_no, :string
+    change_column :users, :stem_achiever_contact_no, :string
   end
 end
