@@ -16,6 +16,13 @@ IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clo
 
 ### Setup
 
+Stop any other web servers running on port 80.
+
+To stop puma-dev with homebrew's lunchy comand
+```
+lunchy stop io.puma.dev
+```
+
 This script builds the docker image, sets up environment variables and adds a nicer local hostname:
 
 ```
