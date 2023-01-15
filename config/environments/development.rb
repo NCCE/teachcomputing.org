@@ -79,6 +79,7 @@ Rails.application.configure do
   # Allow nicer hostname
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
   config.hosts << 'web'
+  config.hosts << 'teachcomputing.test'
   config.autoload_paths << 'lib'
 
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
