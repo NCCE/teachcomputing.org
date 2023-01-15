@@ -61,7 +61,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'debase'
+#   gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'
   gem 'pry'
@@ -72,7 +72,7 @@ group :development, :test do
   gem 'rubocop-changes'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'ruby-debug-ide'
+#   gem 'ruby-debug-ide'
 end
 
 group :development do
