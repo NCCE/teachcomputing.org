@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.shared_examples_for 'rateable' do |path, comment_path, choices_path, _context, id, rating_id|
-  let(:user) { create(:user, stem_achiever_contact_no: 'achieverid') }
+  let(:user) { create(:user) }
 
   describe 'POST #rate' do
     before do
