@@ -6,8 +6,10 @@ task detect_unlinked_achievements: :environment do
 
   # For each programme...
   Programme.all.each do |p|
-    # Collect those that should have one (i.e. they have a programme_activity)
-    achs_missing_programme = achs.select { |ach| ProgrammeActivity.find_by(activity_id: ach.activity_id, programme_id: p.id) }
+    # Collect those that should have one (i.e. they have a programme_activity), and are on that programme
+    achs_missing_programme = achs.select do |ach|
+      ProgrammeActivity.find_by(activity_id: ach.activity_id, programme_id: p.id) && UserProgrammeEnrolment.find_by(user_id: ach.user_id, programme_id: p.id)
+    end
 
     next unless achs_missing_programme.present?
 
