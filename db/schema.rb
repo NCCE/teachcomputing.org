@@ -380,6 +380,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_162310) do
     t.string "email"
     t.datetime "last_sign_in_at"
     t.string "stem_user_id"
+    t.uuid "stem_achiever_contact_no"
     t.datetime "stem_credentials_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -391,7 +392,6 @@ ActiveRecord::Schema.define(version: 2023_01_11_162310) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
-    t.uuid "stem_achiever_contact_no"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end

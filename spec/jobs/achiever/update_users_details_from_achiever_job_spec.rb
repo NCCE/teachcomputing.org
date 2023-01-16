@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Achiever::UpdateUsersDetailsFromAchieverJob, type: :job do
-  let!(:user) { create(:user) }
-  # let!(:user_invalid) { create(:user, stem_achiever_contact_no: 'contact-invalid', stem_achiever_organisation_no: 'abc') }
-  # let!(:user_no_org) { create(:user, stem_achiever_contact_no: 'contact-no-org') }
+  let(:user) { create(:user) }
 
   before do
     stub_valid_contact_details
@@ -22,22 +20,6 @@ RSpec.describe Achiever::UpdateUsersDetailsFromAchieverJob, type: :job do
         expect do
           Achiever::UpdateUsersDetailsFromAchieverJob.perform_now(user)
         end.to change(user, :stem_achiever_organisation_no).from(nil).to('company-no')
-      end
-    end
-
-    xcontext 'when a user doesn\'t exist' do
-      it 'does not change the users org details' do
-        expect do
-          Achiever::UpdateUsersDetailsFromAchieverJob.perform_now(user_invalid)
-        end.not_to change(user_invalid, :stem_achiever_organisation_no).from('abc')
-      end
-    end
-
-    xcontext 'when a user doesn\'t have an org' do
-      it 'does not change the users org details' do
-        expect do
-          Achiever::UpdateUsersDetailsFromAchieverJob.perform_now(user_no_org)
-        end.not_to change(user_no_org, :stem_achiever_organisation_no)
       end
     end
   end
