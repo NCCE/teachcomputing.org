@@ -1,24 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:stem_credentials) do
-    OmniAuth::AuthHash.new(expires: true,
-                           expires_at: Time.zone.now.to_i,
-                           refresh_token: '123-refresh-token',
-                           token: '123-token')
-  end
-  let(:stem_info) do
-    OmniAuth::AuthHash::InfoHash.new(stem_achiever_contact_no: '123456',
-                                     email: 'user@example.com',
-                                     first_name: 'Jane',
-                                     last_name: 'Doe')
-  end
-  let(:uid) { '987654321abcDEF' }
-  let(:user) do
-    User.from_auth(uid,
-                   stem_credentials,
-                   stem_info)
-  end
+  
+  let(:user) { create(:user, stem_user_id: "id-stem_user", email: 'user@example.com')}
 
   describe 'validations' do
     before do
@@ -93,7 +77,7 @@ RSpec.describe User, type: :model do
 
   describe '#from_auth' do
     it 'has the correct id' do
-      expect(user.stem_user_id).to eq uid
+      expect(user.stem_user_id).to eq 'id-stem_user'
     end
 
     it 'has the correct first name' do
@@ -109,15 +93,15 @@ RSpec.describe User, type: :model do
     end
 
     it 'has the correct achiver contact number' do
-      expect(user.stem_achiever_contact_no).to eq '123456'
+      expect(user.stem_achiever_contact_no).to eq  'ca432eb9-9b34-46db-afbb-fbd1efa89e6b'
     end
 
     it 'has the correct token' do
-      expect(user.stem_credentials_access_token).to eq '123-token'
+      expect(user.stem_credentials_access_token).to eq 'CD355FC7DCCD9C7BB7E2C29F4BE3F'
     end
 
     it 'has the correct refresh token' do
-      expect(user.stem_credentials_refresh_token).to eq '123-refresh-token'
+      expect(user.stem_credentials_refresh_token).to eq '7BF7E7C2EB515FBC5BA4D2F7B3E8B'
     end
 
     it 'has the correct expires at' do
