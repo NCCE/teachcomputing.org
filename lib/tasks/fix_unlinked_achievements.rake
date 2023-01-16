@@ -6,14 +6,18 @@ task fix_unlinked_achievements: :environment do
   Programme.all.each do |p|
     puts "Checking: #{p.slug}"
 
-    # Collect those that should have one (i.e. they have a programme_activity)
-    achs_missing_programme = achs.select { |ach| ProgrammeActivity.find_by(activity_id: ach.activity_id, programme_id: p.id) }
+    # Collect those that should have one (i.e. they have a programme_activity), and are on that programme
+    achs_missing_programme = achs.select do |ach|
+      ProgrammeActivity.find_by(activity_id: ach.activity_id, programme_id: p.id) && UserProgrammeEnrolment.find_by(user_id: ach.user_id, programme_id: p.id)
+    end
+
+    next unless achs_missing_programme.present?
 
     # Assign the correct programme_id
     achs_missing_programme.each do |ach|
       ach.update(programme_id: p.id)
     end
 
-    puts "Fixed: #{achs_missing_programme.count}"
+    Rails.logger.warn "Fixed: #{achs_missing_programme.count}"
   end
 end
