@@ -41,10 +41,10 @@ RSpec.describe TickListCollectionComponent, type: :component do
   end
 
   it 'renders a collection element' do
-    expect(rendered_component).to have_css('.tick-list-collection-component', count: 1)
+    expect(page).to have_css('.tick-list-collection-component', count: 1)
   end
 
   it 'renders an element for each tick list' do
-    expect(rendered_component).to have_css('.tick-list-component__wrapper', count: 2)
+    expect(page).to have_css('.tick-list-component__wrapper', count: 2)
   end
 end

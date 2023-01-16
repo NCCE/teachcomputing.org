@@ -6,6 +6,9 @@ RSpec.describe('Curriculum Ratings', type: :system) do
   let(:lesson_json) { File.new('spec/support/curriculum/responses/lesson.json').read }
 
   before do
+    client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
+    allow(CurriculumClient::Connection).to receive(:connect).and_return(client)
+
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     stub_a_valid_request(lesson_json)
 

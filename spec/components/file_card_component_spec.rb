@@ -17,26 +17,26 @@ RSpec.describe FileCardComponent, type: :component do
     end
 
     it 'renders with the expected link' do
-      expect(rendered_component).to have_link('Example file 1', href: 'https://www.example.com/')
+      expect(page).to have_link('Example file 1', href: 'https://www.example.com/')
     end
 
     it 'renders with the expected file type' do
-      expect(rendered_component).to have_text('JPG')
+      expect(page).to have_text('JPG')
     end
 
     it 'renders with the expected file size' do
-      expect(rendered_component).to have_text('1 Megabyte')
+      expect(page).to have_text('1 Megabyte')
     end
 
     it 'renders with the expected created date' do
-      expect(rendered_component).to have_text('14 Oct 2021')
+      expect(page).to have_text('14 Oct 2021')
     end
   end
 
   describe 'with a title defined' do
     it 'renders with the expected link' do
       render_inline(described_class.new(file_card: file_card, title: 'I have a more important title'))
-      expect(rendered_component).to have_link('I have a more important title', href: 'https://www.example.com/')
+      expect(page).to have_link('I have a more important title', href: 'https://www.example.com/')
     end
   end
 end

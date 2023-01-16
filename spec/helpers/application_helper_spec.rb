@@ -15,7 +15,7 @@ describe ApplicationHelper do
     end
 
     it 'returns the login url when we are faking login' do
-      allow(ENV).to receive(:[]).with('BYPASS_OAUTH').and_return('true')
+      allow(ENV).to receive(:fetch).with('BYPASS_OAUTH').and_return('true')
       expect(helper.create_account_url).to match(login_path)
     end
   end

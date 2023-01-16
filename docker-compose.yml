@@ -33,6 +33,8 @@ services:
     depends_on:
       - redis
       - web
+    environment:
+      - ENV_FILE=.env
     env_file:
       - ${ENV_FILE:-.env.defaults}
 
@@ -61,6 +63,7 @@ services:
       - RAILS_DEV_DB_PASS=password
       - WEBPACKER_DEV_SERVER_HOST=webpack
       - DOCKER_LOGS=true
+      - ENV_FILE=.env
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     restart: unless-stopped

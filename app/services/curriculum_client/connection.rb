@@ -2,38 +2,30 @@ module CurriculumClient
   class Connection
     CURRICULUM_APP_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql".freeze
 
-    def self.connect(schema_path = ENV['CURRICULUM_TEST_SCHEMA_PATH'], url = CURRICULUM_APP_URL)
-      schema = Rails.cache.fetch('curriculum_schema') || schema_path
-      store_schema = schema_path || !schema
+    def self.connect(schema_path = nil, url = CURRICULUM_APP_URL)
+      store_schema = !schema_path || Rails.cache.fetch('curriculum_schema').blank?
 
       @client = Graphlient::Client.new(
         url,
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          'Authorization' => "Bearer #{ENV['CURRICULUM_API_KEY']}"
+          Authorization: "Bearer #{ENV.fetch('CURRICULUM_API_KEY')}"
         },
-        http_options: {
-          read_timeout: 20,
-          write_timeout: 30
-        },
-        schema_path: schema
+        http_options: { read_timeout: 20, write_timeout: 30 },
+        schema_path:
       )
 
-      begin
-        raise CurriculumClient::Errors::SchemaLoadError unless @client.schema.present?
-      rescue KeyError # Workaround to more gracefully error when no schema on initial request
-        raise CurriculumClient::Errors::SchemaLoadError
-      end
+      raise CurriculumClient::Errors::SchemaLoadError, 'Unable to retrieve the schema' unless @client.schema.present?
 
+      # Only cache if a schema_path isn't defined (typically for testing) or the cache was empty
       Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours) if store_schema
 
       @client
     end
 
     def self.dump_schema
-      new_schema = GraphQL::Client.dump_schema(@client.schema)
-      new_schema&.to_json
+      GraphQL::Client.dump_schema(@client.schema)&.to_json
     end
   end
 end

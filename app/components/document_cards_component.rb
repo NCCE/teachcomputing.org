@@ -10,13 +10,13 @@ class DocumentCardsComponent < ViewComponent::Base
   end
 
   def css_variables
-    "--cards-per-row: #{@cards_per_row}"
+    "--cards-per-row: #{@cards_per_row};"
   end
 
   # The difference in approach here is to allow for a boolean, as I can't find a sensible
   # way to use a css variable as a bool, and defining the box-shadow width here feels wrong.
   def data_attributes
-    { "show-border": @show_border }
+    { 'show-border': @show_border }
   end
 
   def tracking_data(label)

@@ -1,6 +1,7 @@
 require 'spec_helper'
-require 'simplecov'
 require 'vcr'
+require 'dotenv'
+require 'simplecov'
 
 SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
 SimpleCov.start 'rails' do
@@ -16,12 +17,12 @@ SimpleCov.start 'rails' do
   end
 end
 
-ENV['BYPASS_OAUTH'] = 'false' # Must be false for tests
 ENV['RAILS_ENV'] ||= 'test'
+Dotenv.overload('.env.test') # Ensure .env.test is used in dev environments
+
 require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'rspec/json_expectations'
@@ -58,7 +59,7 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
 end
 
-VCR.turn_off!
+VCR.turn_off! # Only turn on as and when needed
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true

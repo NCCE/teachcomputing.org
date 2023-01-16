@@ -21,6 +21,12 @@ else
   yarn install
 fi
 
+printf %s "- Create a new .env file from the defaults - WARNING this will overwrite any existing environment variables (y/n)? "
+read -r RESP
+if [ "$RESP" != "${RESP#[Yy]}" ]; then
+  cp .env.defaults .env
+fi
+
 printf %s "- Build the docker image (y/n)? "
 read -r RESP
 if [ "$RESP" != "${RESP#[Yy]}" ]; then
