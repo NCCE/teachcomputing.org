@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
                            token: '123-token')
   end
   let(:stem_info) do
-    OmniAuth::AuthHash::InfoHash.new(achiever_contact_no: '123456',
+    OmniAuth::AuthHash::InfoHash.new(stem_achiever_contact_no: '123456',
                                      email: 'user@example.com',
                                      first_name: 'Jane',
                                      last_name: 'Doe')
