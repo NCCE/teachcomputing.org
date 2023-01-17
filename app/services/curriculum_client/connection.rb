@@ -2,7 +2,7 @@ module CurriculumClient
   class Connection
     CURRICULUM_APP_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql".freeze
 
-    def self.connect(schema_path = ENV['CURRICULUM_SCHEMA_PATH'], url = CURRICULUM_APP_URL)
+    def self.connect(schema_path = ENV['CURRICULUM_TEST_SCHEMA_PATH'], url = CURRICULUM_APP_URL)
       schema = Rails.cache.fetch('curriculum_schema') || schema_path
       store_schema = schema_path || !schema
 
