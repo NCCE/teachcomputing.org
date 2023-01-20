@@ -9,24 +9,23 @@ class SupportAuditDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::String,
-    auditable: Field::Polymorphic,
-    username: Field::String,
+    user: Field::BelongsTo,
+    auditable_type: Field::String,
+    affected_user: Field::BelongsTo,
     action: Field::String,
     audited_changes: AuditedJsonViewerField,
     comment: Field::Text,
     authoriser: Field::BelongsTo.with_options(include_blank: false, searchable: true),
     ticket_id: Field::String,
-    created_at: Field::Date
+    created_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
-  #
-  # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    username
-    auditable
+    user
+    affected_user
+    auditable_type
     action
     authoriser
     created_at
@@ -35,8 +34,9 @@ class SupportAuditDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    username
-    auditable
+    user
+    affected_user
+    auditable_type
     action
     audited_changes
     comment

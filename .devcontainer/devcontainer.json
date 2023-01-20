@@ -39,7 +39,8 @@
         "fooo.ruby-spec-runner",
         "shanehofstetter.rails-i18n",
         "ms-vscode.remote-repositories",
-        "github.remotehub"
+        "github.remotehub",
+        "castwide.solargraph"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",

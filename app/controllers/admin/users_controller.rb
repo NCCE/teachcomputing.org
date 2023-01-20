@@ -11,11 +11,14 @@ module Admin
     end
 
     def perform_reset_tests
-      audit = Support::UserUtilities.reset_tests(params[:user_id])
+      admin_user = User.find_by_email(ENV.fetch('DEFAULT_ADMIN_EMAIL'))
+      Support::UserUtilities.reset_tests(params[:user_id])
 
-      redirect_to edit_admin_support_audit_path(id: audit.id)
+      last_audit = SupportAudit.where(user_id: admin_user.id).last
+      redirect_to edit_admin_support_audit_path(id: last_audit.id)
     end
 
+    # redirect to the audit to add an authoriser after it's created
     def after_resource_updated_path(requested_resource)
       edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
     end

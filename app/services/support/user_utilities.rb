@@ -7,7 +7,6 @@ module Support
 
     def self.reset_tests(user_id)
       AssessmentAttempt.where(user_id:).destroy_all
-      SupportAudit.where(user_id:).last
     end
   end
 end

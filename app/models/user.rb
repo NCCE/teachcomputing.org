@@ -25,10 +25,13 @@ class User < ApplicationRecord
   has_many :programmes, through: :user_programme_enrolments
   has_many :resource_users, dependent: :nullify
   has_many :questionnaire_response, dependent: :nullify
+  # has_many :support_audits, -> { joins(:audits).where(affected_user_id: id) }
 
   after_create :schedule_fetching_of_course_bookings
 
   scope :without_forgotten, -> { where(forgotten: false) }
+
+  # TODO: Only from adminstrate!!
 
   audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
   alias_attribute :support_audits, :audits
@@ -63,7 +66,7 @@ class User < ApplicationRecord
   end
 
   def programme_enrolment_state(programme_id)
-    enrolment = user_programme_enrolments.find_by(programme_id: programme_id)
+    enrolment = user_programme_enrolments.find_by(programme_id:)
     return 'Not enrolled' unless enrolment
 
     enrolment.current_state
@@ -74,7 +77,7 @@ class User < ApplicationRecord
   end
 
   def programme_pathway(programme)
-    enrolment = user_programme_enrolments.find_by(programme: programme)
+    enrolment = user_programme_enrolments.find_by(programme:)
     enrolment&.pathway
   end
 
