@@ -35,7 +35,7 @@ module Curriculum
       response = client.update_rating(
         id: request[:rating_id],
         key: :comment,
-        value: request[:comment].gsub('"', '&quote;'),
+        value: request[:comment].gsub('"', '\"'),
         context: 'update_rating'
       )
 
