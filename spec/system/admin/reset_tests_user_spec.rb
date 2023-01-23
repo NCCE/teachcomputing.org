@@ -9,11 +9,11 @@ RSpec.describe 'User reset tests' do
     ENV['BYPASS_ADMINISTRATE_CF_AUTH'] = 'false'
   end
 
-  context 'with assesment attempts' do
-    let(:user) { create(:user) }
+  context 'with assessment attempts' do
+    let(:user) { create(:user, email: ENV.fetch('DEFAULT_ADMIN_EMAIL')) }
     let!(:attempts) { create_list(:assessment_attempt, 5, user:) }
 
-    it 'allows resetting assesment tests for a user' do
+    it 'allows resetting assessment tests for a user' do
       click_remove_attempts
       expect(user.assessment_attempts.count).to eq(0)
     end

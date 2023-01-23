@@ -17,7 +17,7 @@ class AssessmentAttempt < ApplicationRecord
     where(user_id: user.id).order(:created_at)
   }
 
-  audited only: %i[id], on: :destroy, comment_required: false
+  audited only: %i[id user_id], on: :destroy, comment_required: false
   alias_attribute :support_audits, :audits
 
   def state_machine
