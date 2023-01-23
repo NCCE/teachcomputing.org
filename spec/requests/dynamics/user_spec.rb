@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Dynamics::WebhooksController do
   let(:body) { { stem_achiever_contact_no: "01df05c0-7c04-11eb-9439-0242ac130002" } }
-  let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
+  let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer token', 'HTTP_CONTENT_TYPE': 'application/json' } }
   let(:user) { create(:user, stem_achiever_contact_no: '01df05c0-7c04-11eb-9439-0242ac130002') }
 
   describe '#assessment' do
