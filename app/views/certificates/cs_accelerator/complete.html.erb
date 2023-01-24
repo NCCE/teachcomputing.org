@@ -1,80 +1,192 @@
 <% meta_tag :title, 'CS Accelerator - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true  %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-				<h2 class="govuk-heading-m">Your certificate is ready!</h2>
-        <p class="govuk-body">Congratulations on completing your learning programme and reaching this important milestone in your professional development.</p>
-        <p class="govuk-body">
-          <%= link_to 'View your certificate', certificate_cs_accelerator_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
-        </p>
-        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
-        <h2 class="govuk-heading-m govuk-!-margin-top-6">Your recommended next steps</h2>
-        <h3 class="govuk-heading-s">Improve your teaching confidence</h3>
-        <p class="govuk-body">Take your professional development to the next level and start our new <%= link_to 'Teach secondary computing certificate', secondary_certificate_path, class: 'govuk-link ncce-link' %>. This qualification will help you to build on your subject knowledge and give you the practical skills for the classroom. It also supports your progress to chartered status.</p>
-        <p class="govuk-body">
-          <%= link_to 'Enrol on Teach secondary computing', Programme.secondary_certificate.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }), method: :post, class: 'govuk-button button', role: 'button', draggable: 'false' %>
-        </p>
-        <h3 class="govuk-heading-s">Continue learning</h3>
-        <p class="govuk-body">As a graduate of the Computer Science Accelerator, you can participate in any of our huge range of professional development courses for free, if you work in secondary state education. Just use the code “CSAGraduate” when booking your next course. The courses you take can also contribute towards your Teach secondary computing certificate.</p>
-        <p class="govuk-body"><em>Note</em>, this code can only be used on bookings for teachers working in secondary state education. We reserve the right to charge the full course fee if the code is used by anyone who does not fall into this criteria. Teachers from independent schools will continue to pay a fee of £220 per course for any of our face-to-face or remote courses.</p>
-				<p class="govuk-body"><strong><%= link_to 'Browse all courses', courses_path, class: 'govuk-link ncce-link' %></strong></p>
-        <h3 class="govuk-heading-s">Subsidy payment</h3>
-        <p class="govuk-body">If your school or college is eligible for funding, this is usually paid within six to eight weeks of activity completion. To claim a subsidy for your organisation, please <%= link_to 'complete this form', 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'govuk-link ncce-link' %> and return it to <%= mail_to 'finance@stem.org.uk', 'finance@stem.org.uk', class: 'govuk-link ncce-link' %>.</p>
-        <p class="govuk-body"><strong><%= link_to 'Find out more', '/funding', class: 'govuk-link ncce-link' %></strong></p>
-        <h3 class="govuk-heading-s">Support an after school club</h3>
-        <p class="govuk-body">Use your skills and confidence to run a <%= link_to 'Code Club', 'https://codeclub.org/en', class: 'govuk-link ncce-link' %>, hackathon, or school programme to encourage more pupils to engage with computing.</p>
-        <p class="govuk-body">
-          <strong><%= link_to 'Learn more', 'https://www.raspberrypi.org/community', class: 'govuk-link ncce-link' %></strong>
-				<h3 class="govuk-heading-s">Join a CAS Community meeting</h3>
-				<p class="govuk-body">CAS Communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experience with other teachers.</p>
-				<p class="govuk-body"><strong><%= link_to 'Find out more', 'https://www.computingatschool.org.uk', class: 'govuk-link ncce-link' %></strong></p>
-				</p>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
-          <p class="govuk-body ncce-aside__text">Do you know someone who would
-            benefit from this programme? Invite them to join, and discuss what
-            you’ve learnt with someone you know.</p>
-          <p class="govuk-body ncce-aside__text">Follow us on
-            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
-              class="ncce-link" data-related="WeAreComputing" data-lang="en"
-              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
-              class="ncce-link" data-related="WeAreComputing" data-lang="en"
-              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
-              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
-           and tag us when sharing your achievement</p>
-          <p class="govuk-body govuk-!-margin-bottom-2">
-            <a href="https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator"
-              class="govuk-link ncce-link complete__social complete__social--twitter" data-size="large"
-              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on Twitter</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </p>
-					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator" target="_blank" class="govuk-link ncce-link complete__social complete__social--facebook">Share on Facebook</a></p>
-					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator" rel="noopener" target="_blank"class="govuk-link ncce-link complete__social complete__social--linkedin">Share on LinkedIn</a></p>
-          <h2 class="govuk-heading-m ncce-aside__title">Support</h2>
-          <p class="govuk-body ncce-aside__text">We're always happy to support our graduates. Call 019 0432 8300 or email <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'govuk-link ncce-link' %>.</p>
-          <h2 class="govuk-heading-m ncce-aside__title">Useful documents</h2>
-          <p class="govuk-body-s govuk-!-margin-bottom-2"><%= link_to 'Download our Handbook', 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'govuk-link ncce-link' %></p>
-          <p class="govuk-body-s"><%= link_to 'Download our GCSE Specification Map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'govuk-link ncce-link' %></p>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="card card--no-glyph card--cs-accelerator card--landing-page lp-certs--card">
+            <div class="lp-certs--card-header">
+              <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Your certificate is ready!</h2>
+              <span class="govuk-body-m status-block status-block--completed">Certificate awarded</span>
+            </div>
+            <p class="govuk-body card__text card__text-landing-page">
+              Congratulations on completing your learning programme and reaching this important milestone in your professional development.
+            </p>
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path, class: 'button govuk-button lp-certs--button', data: tracking_data('Secondary certificate download link') %>
+            </p>
+          </div>
+          <% if @issued_badge.present? %>
+            <div class='govuk-body'>
+              <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+            </div>
+          <% end %>
+          <h2 class="govuk-heading-m">Next steps</h2>
+          <ul class="govuk-list ncce-activity-list ncce-activity-list--programme govuk-!-margin-bottom-4" role="list">
+            <li class="ncce-activity-list__item">
+              <%= render ActivityComponent.new(
+                objective: t('.next_steps.objective'),
+                description: t('.next_steps.description.html',
+                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info link'))
+                ),
+                button: {
+                  text: t('.next_steps.button_text'),
+                  path: Programme.secondary_certificate.enrol_path(
+                    user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }
+                  ),
+                  opts: { method: :post },
+                  tracking_label: 'Enrol'
+                },
+                tracking_category: nil
+              ) %>
+            </li>
+          </ul>
+          <h3 class="govuk-heading-m">Expand your subject knowledge</h3>
+          <p class="govuk-body">You can now participate in any of our NCCE courses for free, providing you teach in a secondary state-funded school or college. Just use the code <strong>"CSAGraduate"</strong> when booking your next course.</p>
+
+          <div class="govuk-body ncce-csa-dash__section-unpadded">
+            <% if @user_pathway&.present? %>
+              <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
+                <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+                  event_category: 'CSA enrolled',
+                  pathway: @user_pathway,
+                  recommended_activities: @user_pathway&.recommended_activities,
+                  title: t('.recommended_courses.courses_intro.html',
+                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
+                  )
+                } %>
+              </div>
+              <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
+                <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
+                  pathway: @user_pathway,
+                  supplementary_activities: @user_pathway&.supplementary_activities
+                } %>
+              </div>
+            <% else %>
+              <%= link_to t('.all_courses_button'),
+                courses_path(certificate: @programme.slug), class: 'govuk-button button',
+                data: tracking_data('View all certificate courses') %>
+            <% end %>
+          </div>
+
+          <div class="ncce-csa-dash__pathway-switcher">
+            <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
+              other_programme_pathways_for_user: @other_programme_pathways_for_user,
+              user_pathway: @user_pathway,
+              completed: @programme.user_completed?(current_user)
+            } %>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new(
+            title: t('.subsidy_aside.title'),
+            class_name: 'subsidy-aside',
+            text: t('.subsidy_aside.text.html',
+              form_link: link_to(t('.subsidy_aside.link_text'), 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'ncce-link', data: tracking_data('BACS form')),
+              email_link: mail_to('finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link', data: tracking_data('Email')),
+            )
+          ) %>
+          <%= render AsideComponent.new(
+            title: t('.share_aside.title'),
+            class_name: 'share-aside',
+            text: t('.share_aside.text.html',
+              twitter_follow_link: link_to(
+                t('.share_aside.follow.twitter'),
+                'https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw',
+                class: 'ncce-link',
+                data: tracking_data('Follow on twitter').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                target: '_blank'
+              ),
+              facebook_follow_link: link_to(
+                t('.share_aside.follow.facebook'),
+                'https://www.facebook.com/WeAreComputing/',
+                class: 'ncce-link',
+                data: tracking_data('Follow on facebook').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                target: '_blank'
+              ),
+              linkedin_follow_link: link_to(
+                t('.share_aside.follow.linkedin'),
+                'https://www.linkedin.com/company/national-centre-for-computing-education',
+                class: 'ncce-link',
+                data: tracking_data('Follow on linkedin').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                target: '_blank'
+              ),
+              twitter_share_link: link_to(
+                t('.share_aside.share.twitter'),
+                'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator',
+                class: 'govuk-link ncce-link complete_social complete_social--twitter',
+                data: tracking_data('Share on twitter').merge(related: 'WeAreComputing', dnt: true, lang: 'en', size: 'large'),
+                target: '_blank'
+              ),
+              facebook_share_link: link_to(
+                t('.share_aside.share.facebook'),
+                'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator',
+                class: 'govuk-link ncce-link complete_social complete_social--facebook',
+                data: tracking_data('Share on facebook').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                target: '_blank',
+              ),
+              linkedin_share_link: link_to(
+                t('.share_aside.share.linkedin'),
+                'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator',
+                class: 'govuk-link ncce-link complete_social complete_social--linkedin',
+                data: tracking_data('Share on linkedin').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                target: '_blank',
+                rel: 'noopener'
+              )
+            )
+          ) %>
+          <%= render AsideComponent.new(
+            title: t('.support_aside.title'),
+            class_name: 'help-aside',
+            text: t('.support_aside.text.html',
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
+            )
+          ) %>
+          <%= render AsideComponent.new(
+            title: t('.documents_aside.title'),
+            class_name: 'documents-aside',
+            text: t('.documents_aside.text.html',
+              handbook_link: link_to(t('.documents_aside.handbook_link_text'), 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link', data: tracking_data('Handbook')),
+              spec_link: link_to(t('.documents_aside.spec_link_text'), 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link', data: tracking_data('Specifications'))
+            )
+          ) %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="ncce-programmes-activity">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l ncce-programmes-activity__title">Your learning journey</h2>
-        </div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h3 class="govuk-heading-m">What else can you do?</h3>
+        <%= render BorderedCardsComponent.new(
+          cards_per_row: 2,
+          class_name: 'further-activity-cards',
+          cards: [
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.what_else.cards.after_school.title'),
+              text: t('.what_else.cards.after_school.text.html',
+                code_club_link: link_to(t('.what_else.cards.after_school.text.code_club_link_title'), 'https://codeclub.org/en/start-a-code-club', class: 'ncce-link', data: tracking_data('Code Club'))
+              )
+            },
+            {
+              class_name: 'bordered-card--secondary-cert',
+              title: t('.what_else.cards.cas.title'),
+              text: t('.what_else.cards.cas.text'),
+              link: {
+                link_title: t('.what_else.cards.cas.link.title'),
+                link_url: 'https://community.computingatschool.org.uk/events',
+                tracking_page: nil,
+                tracking_label: 'CAS find out more'
+              }
+            }
+          ]
+        ) %>
       </div>
-      <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-        <%= render 'certificates/cs_accelerator/completed-achievements' %>
-      </ul>
     </div>
   </div>
 </div>

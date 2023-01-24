@@ -32,6 +32,7 @@
 
 # Ignore .env file
 .env
+.env.old
 
 # test files
 coverage

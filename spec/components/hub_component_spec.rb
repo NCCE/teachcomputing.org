@@ -5,14 +5,14 @@ RSpec.describe HubComponent, type: :component do
 
   it 'shows hub name' do
     render_inline(described_class.new(hub: hub))
-    expect(rendered_component).to have_css('.hub-component__heading', text: hub.name)
+    expect(page).to have_css('.hub-component__heading', text: hub.name)
   end
 
   context 'when hub is not a satellite' do
     it 'shows address and postcode' do
       render_inline(described_class.new(hub: hub))
-      expect(rendered_component).to have_text(hub.address)
-      expect(rendered_component).to have_text(hub.postcode)
+      expect(page).to have_text(hub.address)
+      expect(page).to have_text(hub.postcode)
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe HubComponent, type: :component do
 
     it 'shows satellite_info' do
       render_inline(described_class.new(hub: hub))
-      expect(rendered_component)
+      expect(page)
         .to have_text(hub.satellite_info)
     end
   end

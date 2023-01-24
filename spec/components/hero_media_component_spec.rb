@@ -20,20 +20,20 @@ RSpec.describe HeroMediaComponent, type: :component do
     end
 
     it 'adds the wrapper class' do
-      expect(rendered_component).to have_css('.dixie-bg')
+      expect(page).to have_css('.dixie-bg')
     end
 
     it 'renders the title' do
-      expect(rendered_component).to have_css('.hero-media-component__title', text: 'About us')
+      expect(page).to have_css('.hero-media-component__title', text: 'About us')
     end
 
     it 'renders the body text' do
-      expect(rendered_component).to have_css('.hero-media-component__text', text: 'This is example text')
+      expect(page).to have_css('.hero-media-component__text', text: 'This is example text')
     end
 
     it 'renders a video' do
-      expect(rendered_component).to have_css('.hero-media-component__media iframe')
-      expect(rendered_component).to have_css("iframe[src*='hPpAB-g_9Kc']")
+      expect(page).to have_css('.hero-media-component__media iframe')
+      expect(page).to have_css("iframe[src*='hPpAB-g_9Kc']")
     end
   end
 
@@ -47,8 +47,8 @@ RSpec.describe HeroMediaComponent, type: :component do
     end
 
     it 'renders an image' do
-      expect(rendered_component).to have_css('.hero-media-component__media img')
-      expect(rendered_component).to have_css("img[src*='pri-hero']")
+      expect(page).to have_css('.hero-media-component__media img')
+      expect(page).to have_css("img[src*='pri-hero']")
     end
   end
 

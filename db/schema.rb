@@ -368,6 +368,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_162310) do
     t.boolean "flagged", default: false
     t.boolean "auto_enrolled", default: false
     t.uuid "pathway_id"
+    t.uuid "completed_pathway_id"
     t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"

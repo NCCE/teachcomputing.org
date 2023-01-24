@@ -1,29 +1,28 @@
-.complete__social {
+.complete_social {
 
   align-self: center;
-  background-position: left top;
+  background-position: left center;
   background-repeat: no-repeat;
   background-size: 1rem;
-  margin-bottom: 10px;
-  margin-top: 3px;
   padding-left: 1.8rem;
+  display: inline-block;
 
   @include govuk-media-query($from: tablet) {
     background-size: 1.5rem;
-    line-height: 1.9rem;
+    line-height: 2.1rem;
     margin-bottom: 0;
     padding-left: 2.2rem;
   }
 }
 
-.complete__social--facebook {
+.complete_social--facebook {
   background-image: url('../images/social-media/facebook.svg');
 }
 
-.complete__social--twitter {
+.complete_social--twitter {
 	background-image: url('../images/social-media/twitter.svg');
 }
 
-.complete__social--linkedin {
+.complete_social--linkedin {
 	background-image: url('../images/social-media/linkedin.svg');
 }

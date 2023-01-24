@@ -16,18 +16,18 @@ RSpec.describe CurriculumClient::Request do
     end
 
     it 'raises an error for an unparsed query' do
-      client = CurriculumClient::Connection.connect
+      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
 
       query = <<~GRAPHQL
         query {}
       GRAPHQL
 
-      expect { described_class.run(context: :key_stage, query: query, client: client) }
+      expect { described_class.run(context: :key_stage, query:, client:) }
         .to raise_error(CurriculumClient::Errors::UnparsedQuery)
     end
 
     it "raises an error if a connection isn't possible" do
-      client = CurriculumClient::Connection.connect
+      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
 
       stub_request(:post, url)
         .to_raise(Errno::ECONNREFUSED)
@@ -41,12 +41,12 @@ RSpec.describe CurriculumClient::Request do
           }
         }
       GRAPHQL
-      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client:) }
         .to raise_error(CurriculumClient::Errors::ConnectionError, /Unable to connect to/)
     end
 
     it 'raises a 404 for an invalid record' do
-      client = CurriculumClient::Connection.connect
+      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
 
       response = JSON.parse(null_error_response_json, object_class: OpenStruct)
 
@@ -61,12 +61,12 @@ RSpec.describe CurriculumClient::Request do
         }
       GRAPHQL
 
-      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client:) }
         .to raise_error(CurriculumClient::Errors::RecordNotFound)
     end
 
     it "doesn't block other execution errors" do
-      client = CurriculumClient::Connection.connect
+      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
 
       response = JSON.parse(other_error_response_json, object_class: OpenStruct)
 
@@ -81,7 +81,7 @@ RSpec.describe CurriculumClient::Request do
         }
       GRAPHQL
 
-      expect { described_class.run(context: :key_stage, query: client.parse(query), client: client) }
+      expect { described_class.run(context: :key_stage, query: client.parse(query), client:) }
         .to raise_error(Graphlient::Errors::ExecutionError)
     end
   end

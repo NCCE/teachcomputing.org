@@ -4,6 +4,8 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
   let(:url) { CurriculumClient::Connection::CURRICULUM_APP_URL }
 
   before do
+    client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
+    allow(described_class).to receive(:client).and_return(client)
     stub_a_valid_request
   end
 
@@ -14,14 +16,14 @@ RSpec.describe CurriculumClient::Queries::BaseQuery do
                                  params: { slug: 'key-stage-0' },
                                  cache_key: 'cache-key'))
         .to have_requested(:post, url)
-        .with(body: hash_including({ 'variables': { 'slug': 'key-stage-0' } }))
+        .with(body: hash_including({ variables: { slug: 'key-stage-0' } }))
 
       expect(described_class.one(context: :keyStage,
                                  fields: 'id',
                                  params: { id: 'an_id' },
                                  cache_key: 'cache-key'))
         .to have_requested(:post, url)
-        .with(body: hash_including({ 'variables': { 'id': 'an_id' } }))
+        .with(body: hash_including({ variables: { id: 'an_id' } }))
     end
 
     it 'use only the specified fields' do

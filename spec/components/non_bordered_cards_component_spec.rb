@@ -4,6 +4,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
   let(:test_data) do
     {
       class_name: 'programme-cards',
+      cards_per_row: 1,
       cards: [
         {
           class_name: 'bordered-card--primary-cert',
@@ -33,38 +34,36 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
     end
 
     it 'adds the wrapper class' do
-      expect(rendered_component).to have_css('.programme-cards')
+      expect(page).to have_css('.programme-cards')
     end
 
     it 'renders the expected number of cards' do
-      expect(rendered_component).to have_css('.non-bordered-card', count: 2)
+      expect(page).to have_css('.non-bordered-card', count: 2)
     end
 
     it 'sets the expected properties' do
-      pending('Add test that checks custom properties are set correctly')
-      expect(rendered_component).to have_css('--cards-per-row: 3;')
+      expect(page).to have_xpath('//div[contains(@class, "non-bordered-card")][contains(@style, "--cards-per-row: 1;")]')
     end
 
     it 'does not render an image' do
-      expect(rendered_component).not_to have_css('non-bordered-card__image-wrapper')
+      expect(page).not_to have_css('non-bordered-card__image-wrapper')
     end
 
     it 'has the expected titles' do
-      expect(rendered_component).to have_css('.govuk-heading-m', text: 'Primary teachers')
+      expect(page).to have_css('.govuk-heading-m', text: 'Primary teachers')
     end
 
     it 'has the expected custom classes' do
-      expect(rendered_component).to have_css('.bordered-card--primary-cert')
-      expect(rendered_component).to have_css('.bordered-card--secondary-cert')
+      expect(page).to have_css('.bordered-card--primary-cert')
+      expect(page).to have_css('.bordered-card--secondary-cert')
     end
 
     it 'has the expected text' do
-      expect(rendered_component).to have_css('.non-bordered-card__text',
-                                             text: 'Resources and training for primary teachers.')
+      expect(page).to have_css('.non-bordered-card__text', text: 'Resources and training for primary teachers.')
     end
 
     it 'has the expected link' do
-      expect(rendered_component).to have_link('Primary teachers toolkit', href: '/primary-teachers')
+      expect(page).to have_link('Primary teachers toolkit', href: '/primary-teachers')
     end
   end
 
@@ -75,7 +74,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
     end
 
     it 'renders an image' do
-      expect(rendered_component).to have_css('.non-bordered-card__image-wrapper')
+      expect(page).to have_css('.non-bordered-card__image-wrapper')
     end
   end
 
@@ -87,7 +86,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
     end
 
     it 'does have the expected text' do
-      expect(rendered_component).not_to have_css('.non-bordered-card__text')
+      expect(page).not_to have_css('.non-bordered-card__text')
     end
   end
 end

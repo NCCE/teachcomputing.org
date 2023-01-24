@@ -26,33 +26,33 @@ RSpec.describe LogoButtonImageCardComponent, type: :component do
   end
 
   it 'adds the wrapper class' do
-    expect(rendered_component).to have_css(".#{params[:class_name]}")
+    expect(page).to have_css(".#{params[:class_name]}")
   end
 
   it 'renders a title' do
-    expect(rendered_component).to have_css(
+    expect(page).to have_css(
       '.logo-button-image-card-component__title',
       text: params[:title]
     )
   end
 
   it 'renders the body text' do
-    expect(rendered_component).to have_css(
+    expect(page).to have_css(
       '.logo-button-image-card-component__text',
       text: params[:text]
     )
   end
 
   it 'renders a button' do
-    expect(rendered_component).to have_link(
+    expect(page).to have_link(
       params[:button][:button_title],
       href: params[:button][:button_url]
     )
   end
 
   it 'adds the GA tag' do
-    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-action='click']")
-    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-category='#{params[:button][:tracking_page]}']")
-    expect(rendered_component).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-label='#{params[:button][:tracking_label]}']")
+    expect(page).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-action='click']")
+    expect(page).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-category='#{params[:button][:tracking_page]}']")
+    expect(page).to have_selector("a[href='#{params[:button][:button_url]}'][data-event-label='#{params[:button][:tracking_label]}']")
   end
 end

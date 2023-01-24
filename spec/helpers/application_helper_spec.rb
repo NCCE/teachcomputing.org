@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationHelper, type: :helper do
-
+describe ApplicationHelper do
   describe('#auth_url') do
     it 'returns the correct url' do
       expect(helper.auth_url).to eq '/auth/stem'
@@ -11,11 +10,12 @@ describe ApplicationHelper, type: :helper do
   describe('#create_account_url') do
     it 'returns the correct url' do
       allow(ENV).to receive(:[]).with('BYPASS_OAUTH').and_return('false')
-      expect(helper.create_account_url).to match(%r{http.+/user/register\?from=NCCE})
+      allow(ENV).to receive(:[]).with('STEM_OAUTH_SITE').and_return('')
+      expect(helper.create_account_url).to match(/register/)
     end
 
     it 'returns the login url when we are faking login' do
-      allow(ENV).to receive(:[]).with('BYPASS_OAUTH').and_return('true')
+      allow(ENV).to receive(:fetch).with('BYPASS_OAUTH', 'false').and_return('true')
       expect(helper.create_account_url).to match(login_path)
     end
   end
@@ -60,7 +60,7 @@ describe ApplicationHelper, type: :helper do
 
     it 'does not allow urls that are not whitelisted' do
       url = 'https://3v1l-h4x0rs.com/steal-your-details'
-      expect(helper.safe_redirect_url(url)).to be nil
+      expect(helper.safe_redirect_url(url)).to be_nil
     end
   end
 

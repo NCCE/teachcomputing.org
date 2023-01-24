@@ -22,15 +22,15 @@ RSpec.describe CourseActivityComponent, type: :component do
     end
 
     it 'does not render the complete class' do
-      expect(rendered_component).not_to have_css('.course-activity-component__objective-text--complete')
+      expect(page).not_to have_css('.course-activity-component__objective-text--complete')
     end
 
     it 'renders with the expected objective' do
-      expect(rendered_component).to have_css('.course-activity-component__objective-text', text: 'I describe things')
+      expect(page).to have_css('.course-activity-component__objective-text', text: 'I describe things')
     end
 
     it 'renders the expected link' do
-      expect(rendered_component).to have_link('Book a course', href: 'https://example.com/book')
+      expect(page).to have_link('Book a course', href: 'https://example.com/book')
     end
 
     it 'renders the expected tracking data' do
@@ -40,7 +40,7 @@ RSpec.describe CourseActivityComponent, type: :component do
     end
 
     it 'renders the custom class' do
-      expect(rendered_component).to have_css('.custom_css_class')
+      expect(page).to have_css('.custom_css_class')
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe CourseActivityComponent, type: :component do
     end
 
     it 'does not render the complete class' do
-      expect(rendered_component).not_to have_css('.course-activity-component__objective-text--complete')
+      expect(page).not_to have_css('.course-activity-component__objective-text--complete')
     end
   end
 
@@ -76,11 +76,11 @@ RSpec.describe CourseActivityComponent, type: :component do
     end
 
     it 'renders a list of achievements' do
-      expect(rendered_component).to have_css('.course-activity-component__course', count: 3)
+      expect(page).to have_css('.course-activity-component__course', count: 3)
     end
 
     it 'renders the complete class' do
-      expect(rendered_component).to have_css('.course-activity-component__objective-text--complete')
+      expect(page).to have_css('.course-activity-component__objective-text--complete')
     end
 
     context 'with a face to face achievement' do
