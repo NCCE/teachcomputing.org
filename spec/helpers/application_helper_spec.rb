@@ -15,7 +15,7 @@ describe ApplicationHelper do
     end
 
     it 'returns the login url when we are faking login' do
-      allow(ENV).to receive(:fetch).with('BYPASS_OAUTH').and_return('true')
+      allow(ENV).to receive(:fetch).with('BYPASS_OAUTH', 'false').and_return('true')
       expect(helper.create_account_url).to match(login_path)
     end
   end
@@ -60,7 +60,7 @@ describe ApplicationHelper do
 
     it 'does not allow urls that are not whitelisted' do
       url = 'https://3v1l-h4x0rs.com/steal-your-details'
-      expect(helper.safe_redirect_url(url)).to be nil
+      expect(helper.safe_redirect_url(url)).to be_nil
     end
   end
 
