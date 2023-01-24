@@ -33,16 +33,14 @@ class UserProgrammeEnrolment < ApplicationRecord
   end
 
   def assign_recommended_pathway(questionnaire_response)
-    recommender = Programmes::CSAccelerator::PathwayRecommender.new(questionnaire_response: questionnaire_response)
+    recommender = Programmes::CSAccelerator::PathwayRecommender.new(questionnaire_response:)
     update(pathway_id: recommender.recommended_pathway&.id)
   end
 
   def state_machine
-    @state_machine ||= begin
-      StateMachines::UserProgrammeEnrolmentStateMachine.new(
-        self, transition_class: UserProgrammeEnrolmentTransition
-      )
-    end
+    @state_machine ||= StateMachines::UserProgrammeEnrolmentStateMachine.new(
+      self, transition_class: UserProgrammeEnrolmentTransition
+    )
   end
 
   private_class_method :initial_state, :transition_class

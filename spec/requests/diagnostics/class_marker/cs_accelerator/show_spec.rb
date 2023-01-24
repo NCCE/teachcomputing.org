@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Diagnostics::ClassMarker::CSAcceleratorController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:diagnostic_url) { ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') }
 
   describe 'GET show' do
     before do
@@ -17,11 +16,11 @@ RSpec.describe Diagnostics::ClassMarker::CSAcceleratorController do
       end
 
       it 'creates an Achievement if one does not exist already' do
-        expect(user.achievements.where(activity_id: activity.id).exists?).to eq true
+        expect(user.achievements.where(activity_id: activity.id).exists?).to be true
       end
 
       it 'redirects to the value of the CLASS_MARKER_DIAGNOSTIC_URL variable' do
-        expect(response).to redirect_to(/^#{diagnostic_url}/)
+        expect(response).to redirect_to(ENV.fetch('CLASS_MARKER_DIAGNOSTIC_URL') + "&cm_e=#{user.email}&cm_user_id=#{user.id}")
       end
 
       it 'creates an achievement in a state of complete' do

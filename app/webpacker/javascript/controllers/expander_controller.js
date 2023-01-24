@@ -23,7 +23,6 @@ export default class extends Controller {
     this.expanderButtonTarget.setAttribute('aria-expanded', 'true')
   }
 
-
   toggleAll() {
     let expanded = this.expanderButtonTarget.getAttribute('aria-expanded')
     if (expanded === 'true') {
@@ -31,5 +30,9 @@ export default class extends Controller {
     } else {
       this.expand()
     }
+  }
+
+  stopEventBubbling(ev) {
+    ev.stopPropagation()
   }
 }

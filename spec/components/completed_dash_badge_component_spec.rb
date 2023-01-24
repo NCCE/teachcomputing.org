@@ -13,7 +13,7 @@ RSpec.describe CompletedDashBadgeComponent, type: :component do
     end
 
     it 'does not render' do
-      expect(rendered_component).to eq ''
+      expect(page).not_to have_css('.completed-dash-badge-component')
     end
   end
 
@@ -24,21 +24,21 @@ RSpec.describe CompletedDashBadgeComponent, type: :component do
     end
 
     it 'the badges image' do
-      expect(rendered_component).to have_css('.completed-dash-badge-component__badge')
+      expect(page).to have_css('.completed-dash-badge-component__badge')
     end
 
     it 'a link to the badge' do
-      expect(rendered_component).to have_css('.ncce-link')
+      expect(page).to have_css('.ncce-link')
     end
 
     it 'the congratulatory copy' do
-      expect(rendered_component).to have_css('.completed-dash-badge-component__content')
+      expect(page).to have_css('.completed-dash-badge-component__content')
     end
 
     it 'adds data attributes when passed' do
-      expect(rendered_component).to have_selector("a[data-event-category='category']")
-      expect(rendered_component).to have_selector("a[data-event-label='label']")
-      expect(rendered_component).to have_selector("a[data-event-action='click']")
+      expect(page).to have_selector("a[data-event-category='category']")
+      expect(page).to have_selector("a[data-event-label='label']")
+      expect(page).to have_selector("a[data-event-action='click']")
     end
   end
 end

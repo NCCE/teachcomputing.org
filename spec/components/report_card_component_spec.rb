@@ -22,31 +22,31 @@ RSpec.describe ReportCardComponent, type: :component do
     end
 
     it 'adds the wrapper class' do
-      expect(rendered_component).to have_css('.impact-and-evaluation-report-card')
+      expect(page).to have_css('.impact-and-evaluation-report-card')
     end
 
     it 'sets show-border data attribute' do
-      expect(rendered_component).to have_css(".impact-and-evaluation-report-card[data-show-border='false']")
+      expect(page).to have_css(".impact-and-evaluation-report-card[data-show-border='false']")
     end
 
     it 'renders a title' do
-      expect(rendered_component).to have_css('.report-card-component__title', text: 'Impact and evaluation')
+      expect(page).to have_css('.report-card-component__title', text: 'Impact and evaluation')
     end
 
     it 'does not render any dates' do
-      expect(rendered_component).not_to have_css('.report-card-component__date')
+      expect(page).not_to have_css('.report-card-component__date')
     end
 
     it 'renders the body text' do
-      expect(rendered_component).to have_css('.report-card-component__text', text: 'View our latest impact reports.')
+      expect(page).to have_css('.report-card-component__text', text: 'View our latest impact reports.')
     end
 
     it 'renders a button' do
-      expect(rendered_component).to have_link('Impact and evaluation', href: '/impact-and-evaluation')
+      expect(page).to have_link('Impact and evaluation', href: '/impact-and-evaluation')
     end
 
     it 'renders a list with the expected number of items' do
-      expect(rendered_component).to have_css('.report-card-component__list li', count: 4)
+      expect(page).to have_css('.report-card-component__list li', count: 4)
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe ReportCardComponent, type: :component do
     end
 
     it 'renders a date' do
-      expect(rendered_component).to have_css('.report-card-component__date', text: 'May 2021')
+      expect(page).to have_css('.report-card-component__date', text: 'May 2021')
     end
   end
 
@@ -68,7 +68,7 @@ RSpec.describe ReportCardComponent, type: :component do
     end
 
     it 'renders a stats date' do
-      expect(rendered_component).to have_css('.report-card-component__date',
+      expect(page).to have_css('.report-card-component__date',
                                              text: 'These stats are not accurate')
     end
   end

@@ -53,7 +53,7 @@ RSpec.describe Certificates::CertificateController do
         end
 
         it 'shows the page if complete' do
-          expect(response.status).to eq(200)
+          expect(response).to have_http_status(:ok)
         end
 
         it 'responds with inline pdf file' do

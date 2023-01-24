@@ -1,4 +1,4 @@
-.community-activity-component__objective {
+.activity-component__objective {
   align-items: flex-start;
   background-color: $white;
   display: grid;
@@ -9,27 +9,9 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
   }
-
-  .ihavedonethis {
-    align-self: center;
-
-    .button {
-      width: 100%;
-      align-self: center;
-      grid-row: 3;
-      margin-bottom: 1rem;
-      text-align: center;
-
-      @include govuk-media-query($from: tablet) {
-        width: auto;
-        grid-row: 1;
-        margin-bottom: 0;
-      }
-    }
-  }
 }
 
-.community-activity-component__objective-button {
+.activity-component__objective-button {
   width: auto;
   grid-row: auto;
   grid-column: 2;
@@ -40,7 +22,7 @@
   }
 }
 
-.community-activity-component__objective-text {
+.activity-component__objective-text {
   align-self: center;
   grid-column: 1;
   background: none;
@@ -57,23 +39,7 @@
   }
 }
 
-.community-activity-component__completed-badge {
-  border: solid 2px #E6A614;
-  padding: 2px 0;
-  font-weight: bold;
-  font-size: 0.9em;
-  text-align: center;
-  padding: 2px 8px;
-
-  @include govuk-media-query($until: tablet) {
-    margin-bottom: 1rem;
-    width: 99%;
-    padding: 2px 0;
-  }
-}
-
-
-.community-activity-component__description {
+.activity-component__description {
   font-size: 1rem;
   grid-column: 1;
   padding: 0.7rem;

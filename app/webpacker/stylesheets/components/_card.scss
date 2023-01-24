@@ -38,6 +38,10 @@
       width: 54px;
     }
   }
+
+  &--no-glyph {
+    mask-image: none;
+  }
 }
 
 .card--plain {
@@ -157,6 +161,20 @@
   margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 15px;
+  }
+
+  &--completed {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+    font-size: 1em;
+
+    background-image: url('../images/icons/tick-plain.svg');
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    background-position: 0.4rem 0.15rem;
+
+    padding: 0.15rem 0.7rem 0 2rem;
   }
 }
 
