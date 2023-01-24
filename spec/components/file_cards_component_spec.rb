@@ -23,10 +23,10 @@ RSpec.describe FileCardsComponent, type: :component do
   end
 
   it 'renders a wrapper element' do
-    expect(rendered_component).to have_css('.file-cards-component', count: 1)
+    expect(page).to have_css('.file-cards-component', count: 1)
   end
 
   it 'renders an element for each card' do
-    expect(rendered_component).to have_css('.file-card-component', count: 2)
+    expect(page).to have_css('.file-card-component', count: 2)
   end
 end

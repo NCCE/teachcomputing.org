@@ -28,41 +28,41 @@ RSpec.describe TickListComponent, type: :component do
     end
 
     it 'adds the wrapper class' do
-      expect(rendered_component).to have_css(".#{tick_list[:class_name]}")
+      expect(page).to have_css(".#{tick_list[:class_name]}")
     end
 
     it 'renders a title' do
-      expect(rendered_component).to have_css(
+      expect(page).to have_css(
         '.tick-list-component__title',
         text: tick_list[:title]
       )
     end
 
     it 'renders the body text' do
-      expect(rendered_component).to have_css(
+      expect(page).to have_css(
         '.tick-list-component__text',
         text: tick_list[:text]
       )
     end
 
     it 'renders a button' do
-      expect(rendered_component).to have_link(
+      expect(page).to have_link(
         tick_list[:button][:button_title],
         href: tick_list[:button][:button_url]
       )
     end
 
     it 'renders a list with the expected number of items' do
-      expect(rendered_component).to have_css(
+      expect(page).to have_css(
         '.tick-list-component__list li',
         count: tick_list[:bullets].count
       )
     end
 
     it 'adds the GA tag' do
-      expect(rendered_component).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-action='click']")
-      expect(rendered_component).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-category='#{tick_list[:button][:tracking_page]}']")
-      expect(rendered_component).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-label='#{tick_list[:button][:tracking_label]}']")
+      expect(page).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-action='click']")
+      expect(page).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-category='#{tick_list[:button][:tracking_page]}']")
+      expect(page).to have_selector("a[href='#{tick_list[:button][:button_url]}'][data-event-label='#{tick_list[:button][:tracking_label]}']")
     end
   end
 

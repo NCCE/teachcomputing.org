@@ -11,21 +11,14 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator!</h2>
-          <% if @csa_dash.has_enough_activities_for_test %>
-            <p class="govuk-body-m bottom-margin-l">
-              You’ve completed enough courses to access the test.
-              You should continue to complete any courses you think are right for you.
-              When you are ready, you can
-              <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View test and mock test' } %>.
-            </p>
-          <% else %>
-            <p class="govuk-body-m">
-              To access our test and get your certificate, you’ll need to complete
-              at least one face to face or remote course, and one additional CS
-              Accelerator course. But we encourage you to complete as many courses
-              as you need to gain the subject knowledge to confidently teach computer science.
-            </p>
-          <% end %>
+          <p class="govuk-body-m govuk-!-margin-bottom-7">
+            <% if @csa_dash.has_enough_activities_for_test %>
+              You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View test and mock test' } %>.
+              </p>
+            <% else %>
+              To access our test and get your certificate, you'll need to complete at least one face to face or remote course, and one additional CS Accelerator course. But we encourage you to complete as many courses as you need to gain the subject knowledge to confidently teach computer science.
+            <% end %>
+          </p>
 
           <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway } %>
 
@@ -47,7 +40,7 @@
 
           <% if @csa_dash.user_programme_pathway.present? %>
             <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-              <%= render partial: 'certificates/cs_accelerator/supplementary-courses', locals: {
+              <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
                 pathway: @csa_dash.user_programme_pathway ,
                 supplementary_activities: @csa_dash.supplementary_activities_for_user
               } %>
@@ -62,10 +55,13 @@
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'certificates/cs_accelerator/bursary-aside' %>
-          <%= render partial: 'certificates/cs_accelerator/pathway-aside', locals: {
-            other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
-            user_pathway: @csa_dash.user_programme_pathway,
-          } %>
+          <div class='ncce-aside ncce-pathway-aside'>
+            <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
+              other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
+              user_pathway: @csa_dash.user_programme_pathway,
+              completed: @programme.user_completed?(current_user)
+            } %>
+          </div>
           <%= render 'components/support-aside' %>
           <div class="ncce-aside--borderless">
             <%= render FeedbackComponent.new(heading: 'Help us improve our certificate experience', area: :cs_accelerator) %>

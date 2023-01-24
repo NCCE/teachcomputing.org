@@ -16,17 +16,17 @@ RSpec.describe SortedHubsComponent, type: :component do
 
   it 'does not render when sorted_hubs is nil' do
     render_inline(described_class.new(sorted_hubs: nil, formatted_address: nil))
-    expect(rendered_component).to eq ''
+    expect(page).not_to have_css('.sorted-hubs-component__displaying')
   end
 
   it 'renders formatted address' do
     render_inline(described_class.new(sorted_hubs: [hub], formatted_address: 'Amazing place'))
-    expect(rendered_component).to have_text('Displaying Hubs by distance from Amazing place')
+    expect(page).to have_text('Displaying Hubs by distance from Amazing place')
   end
 
   it 'has link to clear location' do
     render_inline(described_class.new(sorted_hubs: [hub], formatted_address: 'Amazing place'))
-    expect(rendered_component).to have_link('clear location', href: '/hubs')
+    expect(page).to have_link('clear location', href: '/hubs')
   end
 
   context 'when hub is satellite' do
@@ -36,7 +36,7 @@ RSpec.describe SortedHubsComponent, type: :component do
 
     it 'renders satellite_info' do
       render_inline(described_class.new(sorted_hubs: [hub], formatted_address: nil))
-      expect(rendered_component).to have_text(hub.satellite_info)
+      expect(page).to have_text(hub.satellite_info)
     end
   end
 end

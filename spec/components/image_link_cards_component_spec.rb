@@ -20,6 +20,6 @@ RSpec.describe ImageLinkCardsComponent, type: :component do
 
   it 'renders a card element for each card' do
     render_inline(described_class.new(cards: cards))
-    expect(rendered_component).to have_css('.image-link-card-component', count: 2)
+    expect(page).to have_css('.image-link-card-component', count: 2)
   end
 end
