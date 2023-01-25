@@ -176,6 +176,16 @@ If you prefer to use `byebug` you'll _first_ need to attach to the container whi
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
 
+### ERD generation
+
+`erd.pdf` will be [generated automatically whenever new migrations are run](https://github.com/voormedia/rails-erd#auto-generation).
+
+To generate `erd.pdf` manually:
+
+```
+docker-compose run web bundle exec erd
+```
+
 ### Troubleshooting
 
 ##### General
