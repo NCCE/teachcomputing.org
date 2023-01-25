@@ -81,12 +81,12 @@ group :development do
   gem 'erb_lint', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rack-mini-profiler', '~> 2.3.1'
+  gem 'rails-healthcheck'
   gem 'reek'
   gem 'solargraph'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'rails-healthcheck'
 end
 
 group :test do
