@@ -38,6 +38,12 @@ FactoryBot.define do
     category { 'online' }
   end
 
+  trait :my_learning do
+    title { 'MyLearning Moodle course' }
+    provider { 'stem-learning' }
+    category { 'online' }
+  end
+
   trait :cs_accelerator_exam do
     slug { 'cs-accelerator-assessment' }
     title { 'CSA exam' }
