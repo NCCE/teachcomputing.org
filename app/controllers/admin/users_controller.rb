@@ -12,10 +12,18 @@ module Admin
 
     def perform_reset_tests
       admin_user = User.find_by_email(ENV.fetch('DEFAULT_ADMIN_EMAIL'))
-      Support::UserUtilities.reset_tests(params[:user_id])
+      result = Support::UserUtilities.reset_tests(params[:user_id])
 
-      last_audit = SupportAudit.where(user_id: admin_user.id).last
-      redirect_to edit_admin_support_audit_path(id: last_audit.id)
+      if result.empty?
+        redirect_back(
+          fallback_location: admin_users_path(params[:user_id]),
+          flash: { notice: I18n.t('admin.users.actions.reset.empty') }
+        )
+      else
+        last_audit = SupportAudit.where(user_id: admin_user.id).last
+        redirect_to edit_admin_support_audit_path(id: last_audit.id)
+      end
+
     end
 
     # redirect to the audit to add an authoriser after it's created
