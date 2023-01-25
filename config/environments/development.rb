@@ -84,10 +84,12 @@ Rails.application.configure do
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = '/rails/components'
 
-  if ENV['DOCKER_LOGS']
-    config.log_level = :debug
-    logger = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  config.lograge.enabled = true
+  config.lograge.ignore_actions = [Healthcheck::CONTROLLER_ACTION]
+  config.lograge.custom_options = lambda do |event|
+    {
+      exception: event.payload[:exception], # ["ExceptionClass", "the message"]
+      exception_object: event.payload[:exception_object] # the exception instance
+    }
   end
 end
