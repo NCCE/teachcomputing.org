@@ -11,11 +11,15 @@ class SupportAuditDashboard < Administrate::BaseDashboard
     id: Field::String,
     user: Field::BelongsTo,
     auditable_type: Field::String,
-    affected_user: Field::BelongsTo,
+    affected_user: Field::BelongsTo.with_options(
+      searchable: true, searchable_fields: %w[email first_name last_name]
+    ),
     action: Field::String,
     audited_changes: AuditedJsonViewerField,
     comment: Field::Text,
-    authoriser: Field::BelongsTo.with_options(include_blank: false, searchable: true),
+    authoriser: Field::BelongsTo.with_options(
+      searchable: true, searchable_fields: %w[first_name last_name organisation]
+    ),
     ticket_id: Field::String,
     created_at: Field::DateTime
   }.freeze
