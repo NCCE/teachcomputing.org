@@ -1,0 +1,13 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
+  <p class='govuk-body'>It's been a while since you last engaged with us. To help you get the most from your learning journey, we’re here to help you take the next step towards gaining your certificate in primary computing teaching.</p>
+  <p class='govuk-body'><strong>Not sure where to start?</strong></p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Explore your <%= link_to 'dashboard', primary_certificate_url %> to identify your next steps and discover recommended courses and activities from your chosen pathway (you can opt to switch pathways at any time)</li>
+    <li>Participate in CPD to develop your practice, either face-to-face, online or remotely</li>
+    <li>Engage in a range of activities to demonstrate your commitment to your professional development and your community</li>
+    <li>Successfully complete the programme and receive your qualification</li>
+  </ul>
+  <p class='govuk-body'><strong>Financial support</strong></p>
+  <p class='govuk-body'>Funded by the Department for Education, the majority of our support is free, with financial support available for state-funded schools across England for participating in CPD, including <a href="/bursary" class="ncce-link">subsidies</a>.</p>
+</div>

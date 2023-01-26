@@ -41,6 +41,9 @@
     "STEM_OAUTH_CLIENT_SECRET": {
       "required": true
     },
+    "DEFAULT_ADMIN_EMAIL": {
+      "required": true
+    },
     "AWS_ACCESS_KEY_ID": {
       "required": true
     },
@@ -128,8 +131,8 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-basic",
-    "heroku-redis:hobby-dev"
+    "heroku-postgresql:mini",
+    "heroku-redis:mini"
   ],
   "buildpacks": [
     {

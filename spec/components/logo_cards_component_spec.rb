@@ -36,23 +36,22 @@ RSpec.describe LogoCardsComponent, type: :component do
   end
 
   it 'adds the wrapper class' do
-    expect(rendered_component).to have_css('.partner-resources')
+    expect(page).to have_css('.partner-resources')
   end
 
   it 'sets the expected properties' do
-    pending('Add test that checks custom properties are set correctly')
-    expect(rendered_component).to have_css('--cards-per-row: 3;')
+    expect(page).to have_xpath('//div[contains(@class, "logo-cards-component")][contains(@style, "--cards-per-row: 3;")]')
   end
 
   it 'renders the expected number of cards' do
-    expect(rendered_component).to have_css('.logo-card', count: 3)
+    expect(page).to have_css('.logo-card', count: 3)
   end
 
   it 'renders an image' do
-    expect(rendered_component).to have_css('.logo-card__image-wrapper')
+    expect(page).to have_css('.logo-card__image-wrapper')
   end
 
   it 'has the expected link' do
-    expect(rendered_component).to have_link('Impact and evaluation', href: 'https://www.stem.org.uk/impact-and-evaluation')
+    expect(page).to have_link('Impact and evaluation', href: 'https://www.stem.org.uk/impact-and-evaluation')
   end
 end

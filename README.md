@@ -8,7 +8,7 @@
 
 IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clone git@github.com:NCCE/teachcomputing.org.git teachcomputing` (one or two scripts right now expect the docker project name to be `teachcomputing`, so for now this is the easiest approach)
 
-### Dependencies:
+### Dependencies
 
 - [Homebrew](https://brew.sh/)
 - Docker (incl. Docker Compose, which already part of Docker for Mac and Docker Toolbox) > v4.0 (with support for `docker compose`)
@@ -114,6 +114,13 @@ To install/update a new gem, first update the Gemfile and run
 yarn run web bundle install
 ```
 
+### Previews
+
+Components etc. can be rendered using the local/review/staging app urls:
+
+- http://teachcomputing.rpfdev.com/rails/components
+- http://teachcomputing.rpfdev.com/rails/mailers
+
 ## Testing
 
 Uses [rspec](https://github.com/rspec/rspec)
@@ -168,6 +175,16 @@ Calling `yarn run rspec-debug <path to spec>` will start an rspec debug session,
 If you prefer to use `byebug` you'll _first_ need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker compose up -d` again.
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
+
+### ERD generation
+
+`erd.pdf` will be [generated automatically whenever new migrations are run](https://github.com/voormedia/rails-erd#auto-generation).
+
+To generate `erd.pdf` manually:
+
+```
+docker-compose run web bundle exec erd
+```
 
 ### Troubleshooting
 

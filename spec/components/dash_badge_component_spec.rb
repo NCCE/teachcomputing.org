@@ -18,7 +18,7 @@ RSpec.describe DashBadgeComponent, type: :component do
     end
 
     it 'has the full width class applied' do
-      expect(rendered_component).to have_css('.dash-badge-component-fixed-width')
+      expect(page).to have_css('.dash-badge-component-fixed-width')
     end
   end
 
@@ -28,25 +28,25 @@ RSpec.describe DashBadgeComponent, type: :component do
     end
 
     it 'the badges image' do
-      expect(rendered_component).to have_css('.dash-badge-component__badge')
+      expect(page).to have_css('.dash-badge-component__badge')
     end
 
     it 'a link to the badge' do
-      expect(rendered_component).to have_css('.ncce-link')
+      expect(page).to have_css('.ncce-link')
     end
 
     it 'the congratulatory copy' do
-      expect(rendered_component).to have_css('.dash-badge-component__content')
+      expect(page).to have_css('.dash-badge-component__content')
     end
 
     it 'adds data attributes when passed' do
-      expect(rendered_component).to have_selector("a[data-event-category='category']")
-      expect(rendered_component).to have_selector("a[data-event-label='label']")
-      expect(rendered_component).to have_selector("a[data-event-action='click']")
+      expect(page).to have_selector("a[data-event-category='category']")
+      expect(page).to have_selector("a[data-event-label='label']")
+      expect(page).to have_selector("a[data-event-action='click']")
     end
 
     it 'does not have the full width class applied' do
-      expect(rendered_component).not_to have_css('.dash-badge-component-fixed-width')
+      expect(page).not_to have_css('.dash-badge-component-fixed-width')
     end
   end
 end

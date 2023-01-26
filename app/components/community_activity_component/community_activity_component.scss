@@ -27,7 +27,17 @@
       }
     }
   }
+}
 
+.community-activity-component__objective-button {
+  width: auto;
+  grid-row: auto;
+  grid-column: 2;
+  align-self: top;
+
+  @include govuk-media-query($until: tablet) {
+    grid-column: 1;
+  }
 }
 
 .community-activity-component__objective-text {

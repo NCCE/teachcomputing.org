@@ -23,10 +23,6 @@ RSpec.describe('landing_pages/show', type: :view) do
       expect(rendered).to have_css('.govuk-heading-l', text: 'Resources')
     end
 
-    it 'renders a knowledge assessment aside' do
-      expect(rendered).to have_link('View assessments', href: 'https://eedi.com/projects/teach-computing')
-    end
-
     it 'renders a contributing partners aside' do
       expect(rendered).to have_link('Meet our contributing partners', href: '/contributing-partners')
     end

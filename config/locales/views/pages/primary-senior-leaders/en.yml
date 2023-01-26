@@ -1,0 +1,94 @@
+en:
+  pages:
+    primary-senior-leaders:
+      hero:
+        title: "Support for Primary Senior Leaders"
+        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for primary schools, including free resources and high-impact training, to drive school improvement and pupil outcomes."
+      quality-framework-tick-list:
+        title: "The Computing Quality Framework"
+        text: "The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:"
+        bullets:
+          identify: "Identify strengths and weaknesses in your computing curriculum"
+          feedback: "Gain feedback and suggested actions, including relevant resources"
+          track: "Track progress towards achieving our accredited Computing Quality Mark"
+        button:
+          title: "Register for the Computing Quality Framework"
+          url: "https://computingqualityframework.org/"
+          event-label: "Computing Quality Framework"
+      guidance-tick-list:
+        title: "Guidance for offering computing"
+        text: "We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to:"
+        bullets:
+          identify: "Identify your specific needs"
+          develop: "Develop an action plan"
+          recommend: "Recommend courses to support progression"
+        button:
+          title: "Contact your local Computing Hub"
+          url: "/hubs"
+          event-label: "Computing Hubs"
+      how-we-help:
+        title: "How we can help your teachers"
+        cards:
+          courses:
+            title: "Professional development courses"
+            text:
+              html: "Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.<br/><br/>To support teacher participation, we offer financial support to state-funded schools and colleges across England. %{all_courses_link} are fully-funded or low-cost, with generous subsidies for supply cover"
+              all-courses-link:
+                title: "All courses"
+                url: "/courses"
+                event-label: "courses"
+            link:
+              title: "Check your eligibility"
+              url: "/funding"
+              event-label: "Funding"
+          certification:
+            title: "Nationally-recognised certification"
+            text:
+              html: "Our training can support your staff throughout their career, with learning pathways available to guide teachers through our courses, enrichment and resources, leading to our accredited Primary certificate.<br/><br/>Those teaching computing for the first time can access a range of support, including introductory courses and teaching resources."
+            link:
+              title: "Discover our Primary certificate"
+              url: "/primary-certificate"
+              event-label: "primary certificate"
+          resources:
+            title: "Full curriculum resources for Key Stages 1 and 2"
+            text:
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br/><br/>It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+            link:
+              title: "Browse teaching resources"
+              url: "/curriculum"
+              event-label: "Curriculum resources"
+      student-help:
+        image:
+          alt: 'A teacher teaching'
+        logo:
+          alt: 'Isaac logo'
+      partners:
+        title: "How we can help your pupils"
+        text:
+          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our %{educational_partners_link} offer complementary programmes to help your school provide inspirational computing activities and extra-curricular experiences for your pupils."
+          educational-partners-link:
+            title: "educational partners"
+            url: "/contributing-partners"
+            event-label: "Partners"
+        cards:
+          stem:
+            title: "STEM Ambassadors"
+            text: "Relatable professionals who support learning, raise aspirations and illuminate careers - including those in computing and the digital sector - face to face or virtually, free of charge."
+            link:
+              title: "Engage with STEM Ambassadors"
+              url: "https://www.stem.org.uk/stem-ambassadors"
+              event-label: "STEM Ambassadors"
+          code-club:
+            title: "Code Club"
+            text: "An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club."
+            link:
+              title: "Start or join a club"
+              url: "https://codeclub.org/en/"
+              event-label: "Code Club"
+          barefoot:
+            title: "Barefoot"
+            text: "Deliver computing brilliantly, with free workshops, helpful online guides and engaging resources. Barefoot makes computing easy to teach and fun to learn, with or without a computer."
+            link:
+              title: "Discover Barefoot"
+              url: "https://www.barefootcomputing.org/"
+              event-label: "Barefoot"

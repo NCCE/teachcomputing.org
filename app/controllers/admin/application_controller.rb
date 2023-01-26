@@ -20,20 +20,10 @@ module Admin
       end
     end
 
-    def authenticated_user
-      @admin_email || User.first.email
-    end
-
     private
 
       def decode_cookie(token)
         JWT.decode token, nil, false
       end
-
-    # Override this value to specify the number of elements to display at a time
-    # on index pages. Defaults to 20.
-    # def records_per_page
-    #   params[:per_page] || 20
-    # end
   end
 end

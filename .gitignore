@@ -32,6 +32,7 @@
 
 # Ignore .env file
 .env
+.env.old
 
 # test files
 coverage
@@ -50,6 +51,7 @@ public/sitemap.xml.gz
 .idea
 .history
 *.code-workspace
+.irb_history
 
 /public/packs
 /public/packs-test

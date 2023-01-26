@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  Healthcheck.routes(self)
   root to: 'pages#home', action: :home
 
   resources :achievements, only: %i[create destroy]
@@ -11,8 +12,9 @@ Rails.application.routes.draw do
     resources :hubs
     resources :hub_regions
     resources :support_audits, only: %i[index show update edit]
-    resources :users, only: %i[index create show edit perform_sync update] do
+    resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get '/perform_sync/:user_id', to: 'users#perform_sync', as: :perform_sync
+      get '/perform_reset/:user_id', to: 'users#perform_reset_tests', as: :perform_reset
     end
     resources :user_programme_enrolments, only: %i[index show]
     resources :achievements, only: %i[index show]
@@ -164,8 +166,10 @@ Rails.application.routes.draw do
       constraints: lambda { |_request|
                      Programme.secondary_certificate.enrollable?
                    }
-  # get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders,
-  #                                  defaults: { page_slug: 'secondary-senior-leaders' }
+  get '/secondary-senior-leaders', to: 'pages#page', as: :secondary_senior_leaders,
+                                   defaults: { page_slug: 'secondary-senior-leaders' }
+  get '/primary-senior-leaders', to: 'pages#page', as: :primary_senior_leaders,
+                                   defaults: { page_slug: 'primary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }

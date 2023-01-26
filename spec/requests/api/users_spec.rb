@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Api::UsersController do
-  let(:user) { create(:user) }
-  let(:achievement) { create(:achievement, user: user) }
+  let(:user) { create(:user, email: ENV.fetch('DEFAULT_ADMIN_EMAIL')) }
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
-  let(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+  let(:enrolment) { create(:user_programme_enrolment, user:, programme:) }
   let(:uploadable_activity) { create(:activity, uploadable: true) }
   let(:achievement) do
     create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id,
@@ -13,14 +12,14 @@ RSpec.describe Api::UsersController do
   end
   let(:token_headers) { { HTTP_AUTHORIZATION: 'Bearer secret', HTTP_CONTENT_TYPE: 'application/json' } }
 
-  context 'token is not passed' do
+  context 'when token is not passed' do
     describe 'GET #show' do
       before do
         get '/api/users/', params: { email: user.email }, headers: nil
       end
 
       it 'returns 401 status' do
-        expect(response.status).to eq 401
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end
@@ -34,7 +33,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'returns 201 status' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status(:ok)
       end
 
       it 'returns the users information' do
@@ -61,7 +60,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'returns 200 status' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status(:ok)
       end
 
       it 'updates the email address' do
@@ -69,7 +68,7 @@ RSpec.describe Api::UsersController do
       end
 
       it 'removes the future_learn_organisation_memberships' do
-        expect(JSON.parse(response.body)['future_learn_organisation_memberships']).to eq nil
+        expect(JSON.parse(response.body)['future_learn_organisation_memberships']).to be_nil
       end
 
       it 'scrubs the credentials' do
@@ -105,7 +104,7 @@ RSpec.describe Api::UsersController do
 
       it 'removes any supporting evidence' do
         achievement.reload
-        expect(achievement.supporting_evidence.attached?).to eq false
+        expect(achievement.supporting_evidence.attached?).to be false
       end
     end
   end

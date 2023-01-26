@@ -15,7 +15,7 @@ module CurriculumClient
             }
           GRAPHQL
 
-          CurriculumClient::Request.run(query: client.parse(all), client: client, cache_key: cache_key, context: context)
+          CurriculumClient::Request.run(query: client.parse(all), client:, cache_key:, context:)
         end
 
         def one(context:, fields:, params:, cache_key: nil)
@@ -29,7 +29,7 @@ module CurriculumClient
             }
           GRAPHQL
 
-          CurriculumClient::Request.run(query: client.parse(one), client: client, params: params, cache_key: cache_key, context: context)
+          CurriculumClient::Request.run(query: client.parse(one), client:, params:, cache_key:, context:)
         end
 
         def file_fields

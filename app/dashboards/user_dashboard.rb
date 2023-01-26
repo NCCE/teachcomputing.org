@@ -50,7 +50,6 @@ class UserDashboard < Administrate::BaseDashboard
     email
     first_name
     last_name
-    audits
     last_sign_in_at
     stem_user_id
     stem_achiever_contact_no

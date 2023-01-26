@@ -24,7 +24,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(BorderedCardsComponent.new(params))
+    render(BorderedCardsComponent.new(**params))
   end
 
   def two_cards
@@ -51,7 +51,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(BorderedCardsComponent.new(params))
+    render(BorderedCardsComponent.new(**params))
   end
 
   def more_cards
@@ -115,6 +115,6 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
       ]
     }
 
-    render(BorderedCardsComponent.new(params))
+    render(BorderedCardsComponent.new(**params))
   end
 end

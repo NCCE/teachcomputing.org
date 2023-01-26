@@ -1,0 +1,55 @@
+.tick-list-component__wrapper {
+  background-color: $white;
+  padding: $component-padding;
+
+  @include govuk-media-query($from: tablet) {
+    width: 90%;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    width: 80%;
+  }
+}
+
+.tick-list-component__title {
+  padding-top: 0.35em;
+  padding-bottom: 0.5em;
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    background-size: 1.8rem;
+    padding-top: 0;
+  }
+}
+
+.tick-list-component__text {
+  margin: 24px 0;
+}
+
+.tick-list-component__list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+    padding-left: 1em;
+  }
+
+  li {
+    background-image: url('../images/icons/tick-plain.svg');
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    padding: 0 0 0.5em 1.7em;
+
+    &:last-child {
+      margin-bottom: 20px;
+      padding-bottom: 0;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      background-size: 1.6rem;
+      padding-left: 2em !important;
+    }
+  }
+}

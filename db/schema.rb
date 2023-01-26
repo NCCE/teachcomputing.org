@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_31_172249) do
+ActiveRecord::Schema.define(version: 2023_01_20_090745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 2022_10_31_172249) do
     t.datetime "created_at"
     t.uuid "ticket_id"
     t.uuid "authoriser_id"
+    t.uuid "affected_user_id"
     t.index ["associated_type", "associated_id"], name: "associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
     t.index ["authoriser_id"], name: "index_audits_on_authoriser_id"
@@ -368,6 +369,7 @@ ActiveRecord::Schema.define(version: 2022_10_31_172249) do
     t.boolean "flagged", default: false
     t.boolean "auto_enrolled", default: false
     t.uuid "pathway_id"
+    t.uuid "completed_pathway_id"
     t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"

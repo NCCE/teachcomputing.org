@@ -6,7 +6,7 @@ RSpec.describe LocationSearchResultsComponent, type: :component do
   it 'does not render if not location search' do
     allow(filter_double).to receive(:location_search?).and_return(false)
     render_inline(described_class.new(course_filter: filter_double))
-    expect(rendered_component).to eq('')
+    expect(page).not_to have_css('.location-search-results-component')
   end
 
   it 'shows error message if no results at all' do
@@ -20,7 +20,6 @@ RSpec.describe LocationSearchResultsComponent, type: :component do
     end
     allow(filter_double).to receive(:location_based_results).and_return(search_results)
     render_inline(described_class.new(course_filter: filter_double))
-    expect(rendered_component).to have_text("Sorry, we couldn't find any courses")
-
+    expect(page).to have_text("Sorry, we couldn't find any courses")
   end
 end

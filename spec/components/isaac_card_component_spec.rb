@@ -6,18 +6,18 @@ RSpec.describe IsaacCardComponent, type: :component do
   end
 
   it 'has the expected bg' do
-    expect(rendered_component).to have_css('.isaac-bg')
+    expect(page).to have_css('.isaac-bg')
   end
 
   it 'renders the isaac logo' do
-    expect(rendered_component).to have_css("img[src*='isaac-logo']")
+    expect(page).to have_css("img[src*='isaac-logo']")
   end
 
   it 'renders the body text' do
-    expect(rendered_component).to have_css('.isaac-card-component__description', text: 'Isaac Computer Science is our free online learning programme for')
+    expect(page).to have_css('.isaac-card-component__description', text: 'Isaac Computer Science is our free online learning programme for')
   end
 
   it 'renders a link' do
-    expect(rendered_component).to have_link('Discover Isaac Computer Science', href: '/a-level-computer-science')
+    expect(page).to have_link('Discover Isaac Computer Science', href: '/a-level-computer-science')
   end
 end

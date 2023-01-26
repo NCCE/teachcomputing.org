@@ -13,12 +13,19 @@ class CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob < ApplicationJo
 
     return unless eligible_courses&.any?
 
-    achievement = Achievement.create(activity_id: additional_csa_course_activity.id, user_id: user.id,
-                                     programme_id: programme.id)
+    achievement = Achievement.create(
+      activity_id: additional_csa_course_activity.id,
+      user_id: user.id,
+      programme_id: programme.id
+    )
 
     metadata[:self_verification_info] = eligible_courses.map { |ach| ach.activity.title }
     achievement.transition_to(:complete, metadata)
-    CertificatePendingTransitionJob.perform_now(programme, user.id,
-                                                source: 'CSAcceleratorEligibleCoursesForSecondaryCertificateUserJob')
+
+    CertificatePendingTransitionJob.perform_now(
+      programme,
+      user.id,
+      source: self.class.name
+    )
   end
 end

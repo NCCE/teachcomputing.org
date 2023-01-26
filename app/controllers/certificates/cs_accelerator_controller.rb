@@ -20,6 +20,9 @@ module Certificates
     def complete
       return redirect_to cs_accelerator_certificate_path unless @programme.user_completed?(current_user)
 
+      user_pathway
+      other_programme_pathways_for_user
+
       assign_assessment_and_achievements
       @badge_tracking_event_category = 'CSA complete'
       @badge_tracking_event_label = 'CSA badge'
@@ -40,13 +43,25 @@ module Certificates
         @programme = Programme.cs_accelerator
       end
 
+      def user_enrolment
+        @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
+      end
+
+      def user_pathway
+        @user_pathway ||= user_enrolment&.pathway
+      end
+
+      def other_programme_pathways_for_user
+        @other_programme_pathways_for_user ||= @programme.pathways_excluding(user_pathway)
+      end
+
       def user_enrolled?
         redirect_to cs_accelerator_path unless @programme.user_enrolled?(current_user)
       end
 
       def user_completed_diagnostic?
         questionnaire = Questionnaire.cs_accelerator
-        questionnaire_response = QuestionnaireResponse.find_by(user: current_user, questionnaire: questionnaire)
+        questionnaire_response = QuestionnaireResponse.find_by(user: current_user, questionnaire:)
         return if questionnaire_response.nil?
         return true if questionnaire_response&.current_state == 'complete'
 

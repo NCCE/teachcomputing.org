@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CSADash do
   let!(:csa) { instance_double(Programmes::CSAccelerator) }
-  let(:dash) { described_class.new(user: user, programme: csa) }
+  let(:dash) { described_class.new(user:, programme: csa) }
   let(:user) { instance_double(User) }
 
   describe '#user_programme_pathway' do

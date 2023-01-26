@@ -37,7 +37,13 @@
         "mikestead.dotenv",
         "wingrunr21.vscode-ruby",
         "fooo.ruby-spec-runner",
-        "shanehofstetter.rails-i18n"
+        "shanehofstetter.rails-i18n",
+        "ms-vscode.remote-repositories",
+        "github.remotehub",
+        "castwide.solargraph",
+        "circleci.circleci"
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
