@@ -396,7 +396,7 @@ RSpec.describe Achievement, type: :model do
 
     context 'without an enrolment' do
       it 'returns nil' do
-        achievement = build(:achievement, programme: programme)
+        achievement = build(:achievement, programme:)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
       end
@@ -417,7 +417,7 @@ RSpec.describe Achievement, type: :model do
         achievement = create(:achievement, :face_to_face, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).to have_been_enqueued
@@ -430,7 +430,7 @@ RSpec.describe Achievement, type: :model do
         achievement = create(:achievement, :remote, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).to have_been_enqueued
@@ -442,7 +442,7 @@ RSpec.describe Achievement, type: :model do
         achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
@@ -454,7 +454,7 @@ RSpec.describe Achievement, type: :model do
         achievement = create(:achievement, :online, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
@@ -466,7 +466,7 @@ RSpec.describe Achievement, type: :model do
         achievement = create(:achievement, :community, programme_id: cs_accelerator.id, user_id: user.id)
         achievement.transition_to(:complete)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
@@ -477,7 +477,7 @@ RSpec.describe Achievement, type: :model do
       it 'returns nil and does not queue Credly::IssueBadgeJob' do
         achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued
@@ -491,7 +491,7 @@ RSpec.describe Achievement, type: :model do
           achievement.transition_to(:complete)
         end
         create(:user_programme_enrolment,
-               user: user,
+               user:,
                programme: cs_accelerator)
         achievement.issue_badge
         expect(Credly::IssueBadgeJob).not_to have_been_enqueued

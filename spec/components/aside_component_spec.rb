@@ -16,23 +16,23 @@ RSpec.describe AsideComponent, type: :component do
     end
 
     it 'renders the title text' do
-      expect(rendered_component).to have_text('Test title')
+      expect(page).to have_text('Test title')
     end
 
     it 'renders the expected class on the title' do
-      expect(rendered_component).to have_css('h2.govuk-heading-s')
+      expect(page).to have_css('h2.govuk-heading-s')
     end
 
     it 'renders the body text' do
-      expect(rendered_component).to have_text('The body text')
+      expect(page).to have_text('The body text')
     end
 
     it 'renders the expected link' do
-      expect(rendered_component).to have_link('The link text', href: 'http://example.com')
+      expect(page).to have_link('The link text', href: 'http://example.com')
     end
 
     it 'renders the expected classes on the link' do
-      expect(rendered_component).to have_css('a.ncce-link')
+      expect(page).to have_css('a.ncce-link')
     end
   end
 
@@ -52,11 +52,11 @@ RSpec.describe AsideComponent, type: :component do
     end
 
     it 'renders the expected class on the title' do
-      expect(rendered_component).to have_css('h2.govuk-heading-m')
+      expect(page).to have_css('h2.govuk-heading-m')
     end
 
     it 'renders the expected classes on the link' do
-      expect(rendered_component).to have_css('a.govuk-button')
+      expect(page).to have_css('a.govuk-button')
     end
   end
 
@@ -69,7 +69,7 @@ RSpec.describe AsideComponent, type: :component do
         )
       )
 
-      expect(rendered_component).not_to have_css('.aside-component__link')
+      expect(page).not_to have_css('.aside-component__link')
     end
   end
 
@@ -81,7 +81,7 @@ RSpec.describe AsideComponent, type: :component do
         )
       )
 
-      expect(rendered_component).not_to have_css('.aside-component__heading')
+      expect(page).not_to have_css('.aside-component__heading')
     end
   end
 
@@ -93,7 +93,7 @@ RSpec.describe AsideComponent, type: :component do
         )
       )
 
-      expect(rendered_component).not_to have_css('.aside-component__image')
+      expect(page).not_to have_css('.aside-component__image')
     end
   end
 
@@ -113,12 +113,12 @@ RSpec.describe AsideComponent, type: :component do
     end
 
     it 'renders an image' do
-      expect(rendered_component).to have_css('.aside-component__image')
-      expect(rendered_component).to have_css("img[src*='curriculum-journey']")
+      expect(page).to have_css('.aside-component__image')
+      expect(page).to have_css("img[src*='curriculum-journey']")
     end
 
     it 'renders a link' do
-      expect(rendered_component).to have_link('', href: 'https://static.teachcomputing.org/curriculum_journey.pdf')
+      expect(page).to have_link('', href: 'https://static.teachcomputing.org/curriculum_journey.pdf')
     end
   end
 end

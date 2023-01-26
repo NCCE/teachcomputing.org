@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Curriculum::LessonsController do
+  before do
+    client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
+    allow(CurriculumClient::Connection).to receive(:connect).and_return(client)
+  end
+
   include_examples 'rateable',
                    :create_curriculum_lesson_rating_path,
                    :update_curriculum_lesson_rating_path,

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ActivitiesHelper, type: :helper do
+describe ActivitiesHelper do
   let(:user) { create(:user) }
 
   describe('#class_marker_diagnostic_url') do

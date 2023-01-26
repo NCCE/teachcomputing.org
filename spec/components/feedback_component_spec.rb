@@ -7,11 +7,11 @@ RSpec.describe FeedbackComponent, type: :component do
   end
 
   it 'renders the provided heading' do
-    expect(rendered_component).to have_text('Test heading')
+    expect(page).to have_text('Test heading')
   end
 
   it 'adds area to form' do
-    expect(rendered_component)
+    expect(page)
       .to have_field('feedback_comment_area', type: :hidden, with: 'test_area')
   end
 end

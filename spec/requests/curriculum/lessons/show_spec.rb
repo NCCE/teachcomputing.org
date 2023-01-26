@@ -4,6 +4,11 @@ RSpec.describe Curriculum::LessonsController do
   let(:lesson_json_response) { File.new('spec/support/curriculum/responses/lesson.json').read }
 
   describe 'GET #show' do
+    before do
+      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
+      allow(CurriculumClient::Connection).to receive(:connect).and_return(client)
+    end
+
     it 'renders the show template' do
       stub_a_valid_request_with_redirect(lesson_json_response)
 
