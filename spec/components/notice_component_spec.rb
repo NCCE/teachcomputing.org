@@ -24,22 +24,22 @@ RSpec.describe NoticeComponent, type: :component do
   end
 
   it 'adds the wrapper class' do
-    expect(rendered_component).to have_css('.lime-green-bg')
+    expect(page).to have_css('.lime-green-bg')
   end
 
   it 'renders an icon' do
-    expect(rendered_component).to have_css("img[src*='raspberry-pi']")
+    expect(page).to have_css("img[src*='raspberry-pi']")
   end
 
   it 'renders the title' do
-    expect(rendered_component).to have_css('.notice-component__title', text: 'Test title')
+    expect(page).to have_css('.notice-component__title', text: 'Test title')
   end
 
   it 'renders the body text' do
-    expect(rendered_component).to have_css('.notice-component__text', text: 'Test text')
+    expect(page).to have_css('.notice-component__text', text: 'Test text')
   end
 
   it 'renders a link' do
-    expect(rendered_component).to have_link('Link text', href: 'https://www.example.com')
+    expect(page).to have_link('Link text', href: 'https://www.example.com')
   end
 end

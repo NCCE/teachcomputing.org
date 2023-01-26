@@ -1,0 +1,42 @@
+<% if user_pathway.present? %>
+  <h2 class="govuk-heading-s">Not sure this is the right pathway for you? See what our other pathways include:</h2>
+<% else %>
+  <% if completed %>
+    <h2 class="govuk-heading-s">Get course recommendations with pathways</h2>
+  <% else %>
+    <h2 class="govuk-heading-s">Learning pathways for teachers</h2>
+    <p class="govuk-body-s">
+      Are you an aspiring computing teacher or are you unsure about your level of experience?
+      Our learning pathways will help you to get started and offer a structured route through the programme:
+    </p>
+  <% end %>
+<% end %>
+<ul class="govuk-list govuk-list--bullet govuk-body-s">
+  <% other_programme_pathways_for_user&.each do |pathway| %>
+    <li>
+      <%= link_to pathway.title, pathway.pdf_link, class: "ncce-link" %>
+    </li>
+  <% end %>
+</ul>
+<% if user_pathway.present? || completed %>
+  <h2 class="govuk-heading-s">Select your new pathway:</h2>
+
+  <%= form_tag update_user_pathway_cs_accelerator_certificate_path,
+    {
+      method: :put,
+      class: '',
+      id: 'csa-pathway-form',
+      data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'Change pathway' }
+    } do %>
+      <%= select_tag :pathway_id,
+        options_for_select(other_programme_pathways_for_user&.collect {|p| [ p['title'], p['id'] ] }),
+        {
+          include_blank: completed ? 'choose your pathway' : 'choose your new pathway',
+          class: 'govuk-select ncce-select ncce-pathway-aside__select',
+          'aria-label': completed ? 'choose your pathway' : 'choose your new pathway',
+          required: true
+        }
+      %>
+      <%= submit_tag (completed ? 'Select pathway' : 'Change your pathway'), class: 'govuk-button button govuk-!-margin-bottom-0' %>
+  <% end %>
+<% end %>

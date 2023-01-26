@@ -16,49 +16,49 @@ RSpec.describe CourseComponent, type: :component do
 
   it 'does not show the relevant messages if it is not always on' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).not_to have_text('Free online course')
-    expect(rendered_component).not_to have_text('Join anytime')
+    expect(page).not_to have_text('Free online course')
+    expect(page).not_to have_text('Join anytime')
   end
 
   it 'shows the relevant messages if it is always on' do
     render_inline(described_class.new(course: always_on_course, filter: filter))
-    expect(rendered_component).to have_text('Free online course')
-    expect(rendered_component).to have_text('Join anytime')
+    expect(page).to have_text('Free online course')
+    expect(page).to have_text('Join anytime')
   end
 
   it 'has a title' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).to have_text(course.title)
+    expect(page).to have_text(course.title)
   end
 
   it 'shows link to course' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).to have_link(course.title, href: '/courses/abc/test-course')
+    expect(page).to have_link(course.title, href: '/courses/abc/test-course')
   end
 
   it 'shows subjects' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).to have_text('Algorithms')
+    expect(page).to have_text('Algorithms')
   end
 
   it 'shows the expected tag for a CSA course' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).to have_text('CS Accelerator')
+    expect(page).to have_text('CS Accelerator')
   end
 
   it 'shows the expected tag for a Primary course' do
     render_inline(described_class.new(course: course_primary, filter: filter))
-    expect(rendered_component).to have_text('Primary certificate')
+    expect(page).to have_text('Primary certificate')
   end
 
   it 'shows the expected tag for a Secondary course' do
     render_inline(described_class.new(course: course_secondary, filter: filter))
-    expect(rendered_component).to have_text('Secondary certificate')
+    expect(page).to have_text('Secondary certificate')
   end
 
   it 'shows age groups' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(rendered_component).to have_text('Key stage 1')
+    expect(page).to have_text('Key stage 1')
   end
 
   context 'when there are no face-to-face or remote occurrences' do
@@ -67,11 +67,11 @@ RSpec.describe CourseComponent, type: :component do
     end
 
     it 'shows the expected message' do
-      expect(rendered_component).to have_text('Dates coming soon. Contact your local Computing Hub for more information.')
+      expect(page).to have_text('Dates coming soon. Contact your local Computing Hub for more information.')
     end
 
     it 'shows the expected link' do
-      expect(rendered_component).to have_link('your local Computing Hub', href: '/hubs')
+      expect(page).to have_link('your local Computing Hub', href: '/hubs')
     end
   end
 
@@ -81,7 +81,7 @@ RSpec.describe CourseComponent, type: :component do
 
     it 'shows locations' do
       render_inline(described_class.new(course: course, filter: filter))
-      expect(rendered_component).to have_css('.ncce-courses__locations', count: 1)
+      expect(page).to have_css('.ncce-courses__locations', count: 1)
     end
 
     context 'when distance information present' do
@@ -90,7 +90,7 @@ RSpec.describe CourseComponent, type: :component do
 
       it 'shows nearest distance' do
         render_inline(described_class.new(course: course, filter: filter))
-        expect(rendered_component).to have_text('Nearest 3 miles away')
+        expect(page).to have_text('Nearest 3 miles away')
       end
     end
   end

@@ -11,7 +11,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
       render_inline(
         described_class.new(
           achievement: incomplete_achievement,
-          activity: activity,
+          activity:,
           class_name: 'custom_css_class',
           tracking_category: 'some category'
         )
@@ -19,35 +19,35 @@ RSpec.describe CommunityActivityComponent, type: :component do
     end
 
     it 'does not render the complete class' do
-      expect(rendered_component).not_to have_css('.community-activity-component__objective-text--complete')
+      expect(page).not_to have_css('.community-activity-component__objective-text--complete')
     end
 
     it 'renders with the expected objective' do
-      expect(rendered_component).to have_css('.community-activity-component__objective-text', text: 'Community Activity')
+      expect(page).to have_css('.community-activity-component__objective-text', text: 'Community Activity')
     end
 
     it 'renders the evidence button' do
-      expect(rendered_component).to have_button('Submit evidence')
+      expect(page).to have_button('Submit evidence')
     end
 
     it 'has the buttons to self verify' do
-      expect(rendered_component).to have_css('.ihavedonethis__button', count: 1)
+      expect(page).to have_css('.ihavedonethis__button', count: 1)
     end
 
     it 'has different ids for each form\'s input' do
-      expect(rendered_component).to have_field('self_verification_info', id: /#{activity.id}/)
+      expect(page).to have_field('self_verification_info', id: /#{activity.id}/)
     end
 
     it 'renders a description' do
-      expect(rendered_component).to have_css('.community-activity-component__description', text: 'this is a community activity')
+      expect(page).to have_css('.community-activity-component__description', text: 'this is a community activity')
     end
 
     it 'renders the custom class' do
-      expect(rendered_component).to have_css('.custom_css_class')
+      expect(page).to have_css('.custom_css_class')
     end
 
     it 'renders a booking link' do
-      expect(rendered_component).not_to have_link('Book a course')
+      expect(page).not_to have_link('Book a course')
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
     end
 
     it 'renders a booking link' do
-      expect(rendered_component).to have_link('Book a course', href: '/courses?certificate=cs-accelerator')
+      expect(page).to have_link('Book a course', href: '/courses?certificate=cs-accelerator')
     end
   end
 
@@ -81,11 +81,11 @@ RSpec.describe CommunityActivityComponent, type: :component do
     end
 
     it 'renders the complete class' do
-      expect(rendered_component).to have_css('.community-activity-component__completed-badge', text: 'Completed')
+      expect(page).to have_css('.community-activity-component__completed-badge', text: 'Completed')
     end
 
     it 'does not render the evidence button' do
-      expect(rendered_component).not_to have_button('Submit evidence')
+      expect(page).not_to have_button('Submit evidence')
     end
   end
 end
