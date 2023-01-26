@@ -430,6 +430,9 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-healthcheck (1.4.0)
+      actionpack
+      railties
     rails-erd (1.7.2)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
@@ -701,6 +704,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.3.1)
   rails (~> 6.1.4.1)
   rails-controller-testing
+  rails-healthcheck
   rails-erd
   reek
   rest-client (~> 2.0.2)

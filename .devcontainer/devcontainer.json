@@ -40,6 +40,8 @@
         "shanehofstetter.rails-i18n",
         "ms-vscode.remote-repositories",
         "github.remotehub",
+        "castwide.solargraph",
+        "circleci.circleci"
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg"
       ],

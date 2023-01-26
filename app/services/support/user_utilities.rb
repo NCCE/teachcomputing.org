@@ -4,5 +4,9 @@ module Support
       user = User.find(user_id)
       Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_now(user)
     end
+
+    def self.reset_tests(user_id)
+      AssessmentAttempt.where(user_id:).destroy_all
+    end
   end
 end

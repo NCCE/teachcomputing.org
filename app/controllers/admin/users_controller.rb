@@ -5,11 +5,28 @@ module Admin
       Support::UserUtilities.sync(user_id)
 
       redirect_back(
-        fallback_location: admin_users_path(user_id: user_id),
+        fallback_location: admin_users_path(user_id:),
         flash: { notice: I18n.t('admin.users.actions.sync.complete') }
       )
     end
 
+    def perform_reset_tests
+      admin_user = User.find_by_email(ENV.fetch('DEFAULT_ADMIN_EMAIL'))
+      result = Support::UserUtilities.reset_tests(params[:user_id])
+
+      if result.empty?
+        redirect_back(
+          fallback_location: admin_users_path(params[:user_id]),
+          flash: { notice: I18n.t('admin.users.actions.reset.empty') }
+        )
+      else
+        last_audit = SupportAudit.where(user_id: admin_user.id).last
+        redirect_to edit_admin_support_audit_path(id: last_audit.id)
+      end
+
+    end
+
+    # redirect to the audit to add an authoriser after it's created
     def after_resource_updated_path(requested_resource)
       edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
     end

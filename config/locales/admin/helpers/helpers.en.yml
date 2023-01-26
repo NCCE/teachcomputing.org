@@ -2,5 +2,7 @@ en:
   helpers:
     label:
       support_audit:
-        auditable: "Affected user"
-        username: "Changed by"
+        auditable: "Affected record"
+        auditable_type: "Record type"
+        user: "Changed by"
+        authoriser: "Authorised by"

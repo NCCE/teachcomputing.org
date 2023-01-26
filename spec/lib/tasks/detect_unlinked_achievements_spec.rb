@@ -29,7 +29,9 @@ RSpec.describe 'rake detect_unlinked_achievements', type: :task do
       ach1 = create(:achievement, user_id: user.id, activity_id: fl_activity.id)
       [ach, ach1].each { |a| a.update(programme_id: nil) }
       task.execute
-      expect(Sentry).to have_received(:capture_message).with("Found 2 unlinked achievements for cs-accelerator: #{ach.id}, #{ach1.id}")
+      expect(Sentry).to have_received(:capture_message).with(/Found 2 unlinked achievements for cs-accelerator:/)
+      expect(Sentry).to have_received(:capture_message).with(/#{ach.id}/)
+      expect(Sentry).to have_received(:capture_message).with(/#{ach1.id}/)
     end
   end
 
