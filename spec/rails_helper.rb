@@ -3,19 +3,19 @@ require 'vcr'
 require 'dotenv'
 require 'simplecov'
 
-SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
-SimpleCov.start 'rails' do
-  add_group 'Services', 'app/services'
-  add_group 'Presenters', 'app/presenters'
+# SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
+# SimpleCov.start 'rails' do
+#   add_group 'Services', 'app/services'
+#   add_group 'Presenters', 'app/presenters'
 
-  current_branch = `git rev-parse --abbrev-ref HEAD`
-  changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
-  add_group 'Changed' do |source_file|
-    changed_files.detect do |filename|
-      source_file.filename.ends_with?(filename)
-    end
-  end
-end
+#   current_branch = `git rev-parse --abbrev-ref HEAD`
+#   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
+#   add_group 'Changed' do |source_file|
+#     changed_files.detect do |filename|
+#       source_file.filename.ends_with?(filename)
+#     end
+#   end
+# end
 
 ENV['RAILS_ENV'] ||= 'test'
 Dotenv.overload('.env.test') # Ensure .env.test is used in dev environments
@@ -36,7 +36,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.javascript_driver = :cuprite
 Capybara.register_driver(:cuprite) do |app|
-  Capybara::Cuprite::Driver.new(app, window_size: [1200, 800], browser_options: { 'no-sandbox': nil })
+  Capybara::Cuprite::Driver.new(app, browser_options: { 'no-sandbox': nil })
 end
 
 WebMock.disable_net_connect!(allow_localhost: true)

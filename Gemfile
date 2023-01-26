@@ -62,7 +62,6 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'cuprite'
   gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'
@@ -95,8 +94,10 @@ group :test do
   gem 'axe-matchers', '>= 2.6.1', require: false
   gem 'capybara', '~> 3.38'
   gem 'climate_control'
+  gem 'cuprite'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'ferrum'
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
