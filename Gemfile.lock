@@ -430,14 +430,14 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-healthcheck (1.4.0)
-      actionpack
-      railties
     rails-erd (1.7.2)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
+    rails-healthcheck (1.4.0)
+      actionpack
+      railties
     rails-html-sanitizer (1.4.4)
       loofah (~> 2.19, >= 2.19.1)
     railties (6.1.4.7)
@@ -704,8 +704,8 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.3.1)
   rails (~> 6.1.4.1)
   rails-controller-testing
-  rails-healthcheck
   rails-erd
+  rails-healthcheck
   reek
   rest-client (~> 2.0.2)
   rspec-json_expectations
