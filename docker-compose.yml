@@ -60,7 +60,6 @@ services:
       - docker-host
       - webpack
     environment:
-      - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=password
       - WEBPACKER_DEV_SERVER_HOST=webpack
     stdin_open: true
