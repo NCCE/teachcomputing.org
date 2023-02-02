@@ -6,6 +6,7 @@ require_relative './seeds/activities/action'
 require_relative './seeds/activities/diagnostic'
 require_relative './seeds/activities/stem_learning'
 require_relative './seeds/activities/future_learn'
+require_relative './seeds/activities/moodle'
 require_relative './seeds/activities/assessment'
 require_relative './seeds/activities/community'
 

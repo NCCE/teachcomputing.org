@@ -1,4 +1,7 @@
-# This file contains seeds for Activities faciliated by STEM Learning
+# This file contains seeds for Activities faciliated by STEM Learning that are face-to-face and remote live
+# For its online courses, see 'moodle.rb'
+
+puts 'Seeding Stem Learning face-to-face and remote live activities'
 
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
