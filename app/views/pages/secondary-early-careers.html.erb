@@ -1,56 +1,40 @@
-<% meta_tag :title, 'Get involved - Teach Computing' %>
+<% meta_tag :title, 'secondary early careers' %>
 <%= render 'components/hero', hero_title: 'Secondary early career teachers and trainees', subtitle: 'We support early career teachers and trainees to develop their computing subject knowledge and pedagogy through professional development, resources and local communities.', colour: 'tapestry', full_width: true %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
-        <h2 class="govuk-heading-l">Professional developent</h2>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds ncce-about__content">
-          <p class="govuk-body govuk-!-margin-bottom-0">Strong subject knowledge is paramount to successfully delivering any area of the curriculum.
-                                                          Your first step to success is to access our Computer Science Accelerator,
-                                                          which will develop your subject knowledge up to GCSE.
-          <a href="https://static.teachcomputing.org/pathways/01_New_to_computing.pdf">Our new to computing pathway</a> is a great way for non-specialist trainees or early career teachers to engage with the programme.</p>
-        </div>
-      </div>
-    </div>
-    <br>
-    <a class="govuk-button button hero-button--home" href="/cs-accelerator">Join the Computer Science Accelerator</a>
-
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
-        <h2 class="govuk-heading-l">Develop your teaching practice</h2>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds ncce-about__content">
-          <p class="govuk-body govuk-!-margin-bottom-0">Once you’ve completed the Computer Science Accelerator, you will receive free access to all NCCE courses if you work in secondary state-funded education.
-          Our follow-on Secondary certificate will enhance how you teach secondary computing, bringing together your
-          subject knowledge, pedagogy skills, assessment and progression, curriculum design and leadership.</p>
-        </div>
-      </div>
-    </div>
-    <br>
-    <a class="govuk-button button hero-button--home" href="/cs-accelerator">Discover the Teach secondary certificate</a>
-  </div>
-
-  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
-      <h2 class="govuk-heading-m">Funding</h2>
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds ncce-about__content">
-        <p class="govuk-body govuk-!-margin-bottom-0">Our Computer Science Accelerator courses are free for trainees and teachers working in state-funded education.
-        We also offer subsidies to state-funded schools for supply cover to help teachers participate in CPD during the school day.</p>
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Professional developent</h2>
+          <p class="govuk-body">Strong subject knowledge is paramount to successfully delivering any area of the curriculum. Your first step to success is to access our Computer Science Accelerator, which will develop your subject knowledge up to GCSE.
+          <a href="https://static.teachcomputing.org/pathways/01_New_to_computing.pdf">Our new to computing pathway</a> is a great way for non-specialist trainees or early career teachers to engage with the programme.</p>
+        <a class="govuk-button button hero-button--home bottom-margin" href="/cs-accelerator">Join the Computer Science Accelerator</a>
+        <br> <br><br>
+        <h2 class="govuk-heading-l">Develop your teaching practice</h2>
+            <p class="govuk-body">Once you’ve completed the Computer Science Accelerator, you will receive free access to all NCCE courses if you work in secondary state-funded education.
+            Our follow-on Secondary certificate will enhance how you teach secondary computing, bringing together your
+            subject knowledge, pedagogy skills, assessment and progression, curriculum design and leadership.</p>
+        <a class="govuk-button button hero-button--home" href="/cs-accelerator">Discover the Teach secondary certificate</a>
+      </div>
+      
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-s bursary-component__title">Funding</h2>
+              <p class="govuk-body-s">Our Computer Science Accelerator courses are free for trainees and teachers working in state-funded education.
+              We also offer subsidies to state-funded schools for supply cover to help teachers participate in CPD during the school day.</p>
+        </div>
+        <p class="govuk-body-s bursary-component__link"> 
+          <a class="ncce-link axe-skip-a11y-test" href="/cs-accelerator">Check your eligibility</a>
+        </p>
+        </div>
       </div>
     </div>
   </div>
-  <br>
-  <a class="ncce-link" href="/cs-accelerator">Check your eligibility</a>
-</div>
 
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l">Certificates</h2>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Resources</h2>
           <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
             <div class="lp-certs--card-header">
               <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
@@ -96,23 +80,8 @@
                 <a class="ncce-link" href="/pedagogy">Discover pedagogy resources</a>
               </p>
           </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class='govuk-main-wrapper govuk-main-wrapper--xl'>
-    <div class="govuk-width-container">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class='govuk-heading-l'>Communities</h2>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-!-margin-top-7">
-          <%= render BorderedListCardsComponent.new(**(SecondaryEarlyCareers.communities)) %>
-        </div>
-      </div>
-    </div>
-  </div>
+<%= render 'communities' %>

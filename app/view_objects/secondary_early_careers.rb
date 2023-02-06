@@ -8,7 +8,7 @@ class SecondaryEarlyCareers
             class_name: 'computing_hubs',
             title: I18n.t('pages.secondary_early_careers.computing_hubs.title'),
             text: I18n.t('pages.secondary_early_careers.computing_hubs.text'),
-            image_url: 'get-involved/stem.svg',
+            image_url: 'secondary_early_careers/computing_hubs.svg',
             link: {
               link_title: I18n.t('pages.secondary_early_careers.computing_hubs.link_title'),
               link_url: 'https://codeclub.org/en/volunteer',
@@ -20,7 +20,7 @@ class SecondaryEarlyCareers
             class_name: 'stem-card',
             title: I18n.t('pages.secondary_early_careers.stem_community.title'),
             text: I18n.t('pages.secondary_early_careers.stem_community.text'),
-            image_url: 'get-involved/stem.svg',
+            image_url: 'secondary_early_careers/stem_community.svg',
             link: {
               link_title: I18n.t('pages.secondary_early_careers.stem_community.link_title'),
               link_url: 'https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme',
@@ -32,7 +32,7 @@ class SecondaryEarlyCareers
             class_name: 'isac-computer-card',
             title: I18n.t('pages.secondary_early_careers.csa_communities.title'),
             text: I18n.t('pages.secondary_early_careers.csa_communities.text'),
-            image_url: 'get-involved/stem.svg',
+            image_url: 'get-involved/cas.svg',
             link: {
               link_title: I18n.t('pages.secondary_early_careers.csa_communities.link_title'),
               link_url: 'https://isaaccomputerscience.org/pages/getintouch_events',
