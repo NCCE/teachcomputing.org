@@ -32,6 +32,7 @@ class Activity < ApplicationRecord
   scope :face_to_face, -> { where(category: FACE_TO_FACE_CATEGORY) }
   scope :future_learn, -> { where(provider: 'future-learn') }
   scope :stem_learning, -> { where(provider: 'stem-learning') }
+  scope :my_learning, -> { stem_learning.online }
   scope :community, -> { where(category: COMMUNITY_CATEGORY) }
   scope :non_action, -> { where.not(category: ACTION_CATEGORY) }
   scope :self_certifiable, -> { where(self_certifiable: true) }
