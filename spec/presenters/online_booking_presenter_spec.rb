@@ -8,7 +8,7 @@ RSpec.describe OnlineBookingPresenter do
   end
 
   describe 'authenticated_title' do
-    it { expect(described_class.new.authenticated_title).to eq('Join on FutureLearn') }
+    it { expect(described_class.new.authenticated_title).to eq('Join this course') }
   end
 
   describe 'enrolled_title' do
@@ -20,11 +20,11 @@ RSpec.describe OnlineBookingPresenter do
   end
 
   describe 'enrolled_introduction' do
-    it { expect(described_class.new.enrolled_introduction).to eq('You will be taken to the FutureLearn website for further details.') }
+    it { expect(described_class.new.enrolled_introduction).to eq('You will be taken to the MyLearning website for further details.') }
   end
 
   describe 'introduction' do
-    it { expect(described_class.new.introduction).to eq('You will be taken to the FutureLearn website to create an account and sign up for online courses.') }
+    it { expect(described_class.new.introduction).to eq('You will be taken to the STEM Learning website to sign up for the online course.') }
   end
 
   describe 'unauthenticated_booking_button_title' do
@@ -32,14 +32,14 @@ RSpec.describe OnlineBookingPresenter do
   end
 
   describe 'enrolled_button_title' do
-    it { expect(described_class.new.enrolled_button_title).to eq('Continue on FutureLearn') }
+    it { expect(described_class.new.enrolled_button_title).to eq('Continue on MyLearning') }
   end
 
   describe 'completed_button_title' do
-    it { expect(described_class.new.completed_button_title).to eq('View course on FutureLearn') }
+    it { expect(described_class.new.completed_button_title).to eq('View course on MyLearning') }
   end
 
   describe 'completed_button_introduction' do
-    it { expect(described_class.new.completed_button_introduction).to eq('You will be taken to the FutureLearn website for further details.') }
+    it { expect(described_class.new.completed_button_introduction).to eq('You will be taken to the MyLearning website for further details.') }
   end
 end

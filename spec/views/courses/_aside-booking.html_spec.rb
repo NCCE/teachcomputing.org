@@ -34,7 +34,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         end
 
         it 'prompts the user to join the course' do
-          expect(rendered).to have_css('.ncce-aside__title', text: 'Join on FutureLearn')
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
         end
 
         it 'does not render the facilitation periods' do
@@ -44,13 +44,13 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         it 'tells the user who is delivering the course' do
           expect(rendered).to have_css(
             '.ncce-aside__text',
-            text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+            text: 'You will be taken to the STEM Learning website to sign up for the online course.'
           )
         end
 
         it 'renders link to futurelearn LTI' do
-          expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
-          expect(rendered).to have_link('Join on FutureLearn', href: expected_link)
+          expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}" # TODO: link to STEM
+          expect(rendered).to have_link('Join this course', href: expected_link)
         end
 
         it "does not show the 'View course' button" do
