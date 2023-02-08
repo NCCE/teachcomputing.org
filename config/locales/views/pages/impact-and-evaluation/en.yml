@@ -6,11 +6,11 @@ en:
       intro_text:
         html: "<strong>Our vision</strong> is for every child in every school in England to have a world-leading computing education. We continually evaluate the impact that our programmes, services and resources are having on improving the quality of teaching computing in schools, and the learning experience for young people."
       impact_reports_title: "Impact and evaluation reports"
-      impact_report_card:
-        title: "NCCE Impact Report"
-        date: "Published November 2020"
-        text: "Impact Report published to mark the two-year anniversary of the NCCE. Covers all aspects of the NCCE programme, including key statistics on engagement and reach."
-        image_alt: "Impact Report"
+      impact_report_card_2:
+        title: "NCCE Impact report 2018 to 2022"
+        date: "Published January 2023"
+        text: "Impact report published to mark the key achievements of the NCCE between 2018 and 2022. Features information about the impact of the NCCE’s programmes, including key statistics on engagement and reach, testimonies from teachers and students and an overview of our future goals."
+        image_alt: "Image of Impact Report 2018 to 2022"
         engagements:
           html: "<strong>29,500 teachers engaged</strong> across 11,500 schools in England"
         cpd:
@@ -30,6 +30,10 @@ en:
         date: "Published July 2021"
         text:
           html: "Read the experiences of our second cohort of graduates and the impact of completing the Computer Science Accelerator on them, their students and colleagues. You can also read %{executive_summary_link}."
+      impact_report_card:
+        title: "NCCE Impact Report 2020"
+        date: "Published November 2020"
+        text: "Impact Report published to mark the two-year anniversary of the NCCE. Covers all aspects of the NCCE programme, including key statistics on engagement and reach."
       curriculum_reports_title: "Research and curriculum reports"
       literacy_report_card:
         title: "Programming and Algorithms Report"

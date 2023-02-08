@@ -27,14 +27,14 @@ en:
         title: "Impact and evaluation"
         text: "View our latest impact and evaluation reports to find out how the NCCE is improving the quality of teaching computing in schools."
         engagements:
-          html: "<strong>39,000+ teachers engaged</strong> across more than 20,000 schools in England"
+          html: "<strong>60,000+ teachers and educators across England</strong> have engaged in CPD with us"
         enrolments:
-          html: "<strong>12,000+ teachers have taken CPD with us</strong>"
+          html: "<strong>1M+ Teach Computing Curriculum resources</strong> have been downloaded by schools in England"
         downloads:
-          html: "<strong>640,000+ lessons downloaded</strong> from the Teach Computing Curriculum since launch"
+          html: "<strong>1,600+ schools engaged</strong> with the Computing Quality Framework"
         isaac:
-          html: "<strong>2.4 million+ questions answered</strong> through Isaac Computer Science"
-        stats_date: "Figures as at October 2021"
+          html: "<strong>3.5 million+ questions answered</strong> through Isaac Computer Science"
+        stats_date: "Figures as at December 2022"
         button_title: "Impact and evaluation"
       diversity:
         title: "Diversity and inclusion"
