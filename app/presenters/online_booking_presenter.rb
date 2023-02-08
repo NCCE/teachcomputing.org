@@ -1,3 +1,4 @@
+# TODO: should this appear differently between 20th Feb and 1st April 2023?
 class OnlineBookingPresenter
   include Rails.application.routes.url_helpers
 
@@ -6,7 +7,19 @@ class OnlineBookingPresenter
   end
 
   def authenticated_title
-    'Join on FutureLearn'
+    'Join this course'
+  end
+
+  def no_occurrences_title
+    raise NotImplementedError
+  end
+
+  def no_occurrence_introductions
+    raise NotImplementedError
+  end
+
+  def booking_button_title
+    'Book'
   end
 
   def enrolled_title
@@ -18,11 +31,11 @@ class OnlineBookingPresenter
   end
 
   def enrolled_introduction
-    'You will be taken to the FutureLearn website for further details.'
+    'You will be taken to the MyLearning website for further details.'
   end
 
   def introduction
-    'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+    'You will be taken to the STEM Learning website to sign up for the online course.'
   end
 
   def unauthenticated_booking_button_title
@@ -30,15 +43,15 @@ class OnlineBookingPresenter
   end
 
   def enrolled_button_title
-    'Continue on FutureLearn'
+    'Continue on MyLearning'
   end
 
   def completed_button_title
-    'View course on FutureLearn'
+    'View course on MyLearning'
   end
 
   def completed_button_introduction
-    'You will be taken to the FutureLearn website for further details.'
+    'You will be taken to the MyLearning website for further details.'
   end
 
   def booking_path(course_id)
