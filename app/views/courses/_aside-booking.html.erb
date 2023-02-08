@@ -41,18 +41,7 @@
             data_event_label: 'Coming soon')
         %>
       <% else %>
-        <p class="govuk-body">
-          <%= link_to(
-            @booking.authenticated_title,
-            @booking.booking_path(@activity.future_learn_course_uuid),
-            class: 'govuk-button button--aside',
-            draggable: 'false',
-            data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
-            target: :_blank
-          ) %>
-        </p>
-        <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
-        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
+        <%= render 'aside-booking-online' %>
       <% end %>
     </div>
   <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>

@@ -21,6 +21,10 @@ class StemBookingPresenter
     'You will be taken to the STEM Learning website to see further details.'
   end
 
+  def enrolled_introduction
+    raise NotImplementedError
+  end
+
   def booking_button_title
     'Book'
   end
