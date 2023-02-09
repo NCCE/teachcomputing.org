@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OnlineBookingPresenter do
-  let(:course) { Achiever::Course::Template.all.first }
+  let(:course) { Achiever::Course::Template.all.first } # this course has online_cpd: true
 
   describe 'title' do
     it { expect(described_class.new.title).to eq('Join this course') }
