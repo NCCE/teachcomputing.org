@@ -48,8 +48,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           )
         end
 
-        it 'renders link to futurelearn LTI' do
-          expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}" # TODO: link to STEM
+        it 'renders link to STEM Learning booking page' do
+          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
           expect(rendered).to have_link('Join this course', href: expected_link)
         end
 
@@ -83,6 +83,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
         it 'renders the details block heading' do
           expect(rendered).to have_css('.ncce-details__summary-text', text: 'What does this mean?')
+        end
+
+        it 'renders link to STEM Learning booking page' do
+          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+          expect(rendered).to have_link('Join this course', href: expected_link)
         end
 
         it 'renders the details block body' do

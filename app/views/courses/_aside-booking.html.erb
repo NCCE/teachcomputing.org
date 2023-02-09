@@ -51,7 +51,7 @@
       <p class="govuk-body">
         <%= link_to(
           @booking.enrolled_button_title,
-          @booking.booking_path(@activity.future_learn_course_uuid),
+          @booking.booking_path(@activity.stem_course_template_no),
           class: 'govuk-button button--aside',
           draggable: 'false',
           data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
@@ -116,7 +116,7 @@
       <p class="govuk-body">
         <%= link_to(
           @booking.completed_button_title,
-          @booking.booking_path(@activity.future_learn_course_uuid),
+          @booking.booking_path(@activity.stem_course_template_no),
           class: 'govuk-button button--aside',
           draggable: 'false',
           data: { event_action: 'click', event_category: 'course details', event_label: 'view online course' },
