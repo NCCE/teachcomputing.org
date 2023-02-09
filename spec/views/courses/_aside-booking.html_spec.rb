@@ -8,7 +8,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
   let(:occurrences_remote) { build_list(:achiever_course_occurrence, 25, remote_delivered_cpd: true) }
   let(:activity) { create(:activity) }
   let(:online_booking_presenter) { OnlineBookingPresenter.new }
-  let(:stem_booking_presenter) { StemBookingPresenter.new }
+  let(:live_booking_presenter) { LiveBookingPresenter.new }
   let!(:face_to_face) { create(:activity, :stem_learning) }
   let(:remote_course) { Achiever::Course::Template.find_by_activity_code('CP428') }
 
@@ -94,7 +94,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     context 'when its a face to face course' do
       context 'when a user is not enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -125,11 +125,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           it 'shows items with the expected content' do
             occurrences.each do |occurrence|
               expect(rendered).to have_css(
-                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+                '.ncce-booking-list__date', text: live_booking_presenter.activity_date(occurrence.start_date)
               )
 
               expect(rendered).to have_css(
-                '.ncce-booking-list__address', text: stem_booking_presenter.address(occurrence)
+                '.ncce-booking-list__address', text: live_booking_presenter.address(occurrence)
               )
 
               expect(rendered).to have_link(
@@ -151,7 +151,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       context 'when the user is enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -193,7 +193,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
 
         it 'displays aside title' do
@@ -208,7 +208,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       context 'when a user has completed a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -259,7 +259,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
       end
 
@@ -273,7 +273,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
           assign(:course, course)
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences_remote)
           assign(:activity, activity)
 
@@ -292,7 +292,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           it 'shows items with the expected content' do
             occurrences_remote.each do |occurrence|
               expect(rendered).to have_css(
-                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+                '.ncce-booking-list__date', text: live_booking_presenter.activity_date(occurrence.start_date)
               )
 
               expect(rendered).to have_css(
@@ -312,10 +312,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
             allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
             assign(:course, course)
-            assign(:booking, stem_booking_presenter)
+            assign(:booking, live_booking_presenter)
             assign(:occurrences, [])
             assign(:activity, activity)
-            allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
+            allow_any_instance_of(LiveBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
             render
 
@@ -329,7 +329,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       context 'when a user is enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, remote_course)
           assign(:activity, activity)
@@ -368,13 +368,13 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
       end
 
       context 'when a user has completed a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, remote_course)
           assign(:activity, activity)
@@ -413,7 +413,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
       end
     end
@@ -424,7 +424,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
       assign(:course, course)
-      assign(:booking, stem_booking_presenter)
+      assign(:booking, live_booking_presenter)
       assign(:occurrences, [])
       assign(:activity, activity)
 
@@ -466,16 +466,16 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       end
     end
 
-    context 'when its a stem course' do
+    context 'when its a live course' do
 
       it "shows the 'Dates coming soon' button if there are no occurrences" do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
         assign(:course, course)
-        assign(:booking, stem_booking_presenter)
+        assign(:booking, live_booking_presenter)
         assign(:occurrences, [])
         assign(:activity, activity)
-        allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
+        allow_any_instance_of(LiveBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
         render
 

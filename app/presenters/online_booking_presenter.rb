@@ -1,4 +1,8 @@
-# TODO: should this appear differently between 20th Feb and 1st April 2023?
+# text and links to help a user find and enrol on a self-service online course
+#
+# has a similar API to LiveBookingPresenter, though a few of those instance methods aren't implemented here
+#
+# TODO: should online booking tools appear differently between 20th Feb and 1st April 2023?
 class OnlineBookingPresenter
   include Rails.application.routes.url_helpers
 

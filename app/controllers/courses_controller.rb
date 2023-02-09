@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
     @other_courses = Achiever::Course::Template.without(@course)
     course_programmes
 
-    @booking = @course.online_cpd ? ::OnlineBookingPresenter.new : ::StemBookingPresenter.new
+    @booking = @course.online_cpd ? ::OnlineBookingPresenter.new : ::LiveBookingPresenter.new
 
     # Get the user's course attempts
     user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user&.stem_achiever_contact_no)
