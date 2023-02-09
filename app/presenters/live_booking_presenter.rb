@@ -1,4 +1,7 @@
-class StemBookingPresenter
+# text and links to help a user find and book a face-to-face or live remote course
+#
+# has a similar API to OnlineBookingPresenter, though a few of those instance methods aren't implemented here
+class LiveBookingPresenter
   include ActionView::Helpers::UrlHelper
 
   def title
@@ -41,6 +44,18 @@ class StemBookingPresenter
     "Login to #{title.downcase}"
   end
 
+  def enrolled_button_title
+    raise NotImplementedError
+  end
+
+  def completed_button_introduction
+    raise NotImplementedError
+  end
+
+  def completed_button_title
+    raise NotImplementedError
+  end
+
   def activity_date(start_date)
     return if start_date.blank?
 
@@ -70,10 +85,12 @@ class StemBookingPresenter
     "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
   end
 
+  # @return [Boolean] false, as they only apply to always on online courses
   def show_facilitation_periods(_course, _occurrences)
     false
   end
 
+  # @return [Boolean] true: always show this
   def show_stem_occurrence_list
     true
   end
