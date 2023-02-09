@@ -14,7 +14,7 @@ class StemBookingPresenter
   end
 
   def no_occurrences_introduction
-    'Contact your local Computing hub for more information'
+    'Contact your local Computing Hub for more information'
   end
 
   def introduction
