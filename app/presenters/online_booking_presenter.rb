@@ -58,8 +58,8 @@ class OnlineBookingPresenter
     'You will be taken to the MyLearning website for further details.'
   end
 
-  def booking_path(course_id)
-    futurelearn_lti_path(course_id)
+  def booking_path(stem_course_id)
+    "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{stem_course_id}"
   end
 
   def show_facilitation_periods(course, occurrences)
