@@ -1920,3 +1920,15 @@ a = Activity.find_or_create_by(stem_course_template_no: '9ded59c5-4c7d-ed11-81ad
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'a4d9e01a-79ab-ed11-83ff-0022481b547a') do |activity|
+  activity.title = 'Hide from web NCCE test'
+  activity.credit = 40
+  activity.slug = 'hide-from-web-ncce-test'
+  activity.stem_course_template_no = 'a4d9e01a-79ab-ed11-83ff-0022481b547a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'HFW'
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
