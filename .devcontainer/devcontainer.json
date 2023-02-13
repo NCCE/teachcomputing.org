@@ -41,7 +41,7 @@
         "ms-vscode.remote-repositories",
         "github.remotehub",
         "castwide.solargraph",
-        "circleci.circleci"
+        "circleci.circleci",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg"
       ],
