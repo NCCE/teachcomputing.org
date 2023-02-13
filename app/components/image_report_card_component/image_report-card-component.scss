@@ -39,15 +39,16 @@
 
 .image-report-card-component__image-wrapper {
   text-align: center;
-  background-color: #E3F6FC;
+  background-color: #EEEEF6;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   img {
     width: 100%;
 
-    @include govuk-media-query($from: 445px) {
-      width: 420px;
+    @include govuk-media-query($from: 900px) {
+      width: auto;
     }
   }
 }
