@@ -144,22 +144,6 @@ en:
           [
             "As a governor or trustee, help raise the profile of computing as a subject within schools.",
           ]
-    secondary_early_careers:
-      computing_hubs:
-        title: "Computing hubs"
-        text: "Providing local training and support for teachers across England, our Computing Hubs are led by schools and colleges with an exceptional track record in teaching computing."
-        link_title: "Contact your local hub"
-
-      stem_community:
-        title: "STEM Community "
-        text: "Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time."
-        link_title: "Join STEM Community"
-
-      csa_communities:
-        title: "CAS Communities of Practice"
-        text: "Local networks of computing teachers who share expertise and best practice. They provide peer support, especially in your early career, and information to help you embed computing concepts in the classroom."
-        link_title: "Find a CAS Community"
-
     pedagogy:
       aside:
         - title: "Pedagogy Quick Reads"

@@ -1,53 +1,34 @@
-<div class='govuk-width-container'>
-  <div class='govuk-main-wrapper'>
-    <h2 class='govuk-heading-l'>Communities</h2>
-    <div class='ncce-confidence__grid'>
-      <div class='ncce-confidence__grid-col1'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container communities--computing_hubs'>
-              <%= image_pack_tag 'media/images/secondary_early_careers/computing_hubs.svg', class: 'ncce-confidence__icon', alt: '' %>
+  <div class='govuk-width-container'>
+    <div class='govuk-main-wrapper'>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-xl'>Communities</h2>
+          <div class="non-bordered-cards-component resource-cards" style="--cards-per-row: 3;">
+            <div class="non-bordered-card">
+              <div class="non-bordered-card__image-wrapper">
+                <%= image_pack_tag 'media/images/secondary_early_careers/computing_hubs.svg', class: 'non-bordered-card__image', alt: '' %>
+              </div>
+              <h3 class='govuk-heading-m non-bordered-card__title'>Computing hubs</h3>
+              <p class='govuk-body non-bordered-card__text'>Providing local training and support for teachers across England, our Computing Hubs are led by schools and colleges with an exceptional track record in teaching computing.</p>
+              <%= link_to 'Contact your local Hub', 'https://teachcomputing.org/hubs', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'Hubs'} %>
             </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>Computing hubs</h3>
-          </div>
-          <p class='govuk-body'>
-            Providing local training and support for teachers across England, our Computing Hubs are led by schools and colleges with an exceptional track record in teaching computing.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Contact your local Hub', 'https://teachcomputing.org/hubs', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'Hubs'} %>
-          </p>
-        </div>
-      </div>
-      <div class='ncce-confidence__grid-col2'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container communities--stem-community'>
-              <%= image_pack_tag 'media/images/secondary_early_careers/stem_community.svg', class: 'ncce-confidence__icon', alt: '' %>
+            <div class="non-bordered-card">
+              <div class="non-bordered-card__image-wrapper">
+                <%= image_pack_tag 'media/images/secondary_early_careers/stem_community.svg', class: 'non-bordered-card__image', alt: '' %>
+              </div>
+              <h3 class='govuk-heading-m non-bordered-card__title'>STEM community</h3>
+              <p class='govuk-body non-bordered-card__text'>Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time.</p>
+              <%= link_to 'Join STEM community', 'https://community.stem.org.uk/communities/community-home?CommunityKey=f5ffc29d-73bb-49b0-a966-d9848562a518', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'STEM Community'} %>
             </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>STEM community</h3>
-          </div>
-          <p class='govuk-body'>
-            Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Join STEM community', 'https://community.stem.org.uk/communities/community-home?CommunityKey=f5ffc29d-73bb-49b0-a966-d9848562a518', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'STEM Community'}  %>
-          </p>
-        </div>
-      </div>
-      <div class='ncce-confidence__grid-col3'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container communities-cas-communities-of-practice'>
-                <%= image_pack_tag 'media/images/secondary_early_careers/cas.svg', class: 'ncce-confidence__icon', alt: '' %>
+            <div class="non-bordered-card">
+              <div class="non-bordered-card__image-wrapper">
+                <%= image_pack_tag 'media/images/secondary_early_careers/cas.svg', class: 'non-bordered-card__image', alt: '' %>
+              </div>
+              <h3 class='govuk-heading-m non-bordered-card__title'>CAS communities of Practice</h3>
+              <p class='govuk-body non-bordered-card__text'>Local networks of computing teachers who share expertise and best practice. They provide peer support, especially in your early career, and information to help you embed computing concepts in the classroom.</p>
+              <%= link_to 'Find a CAS community', 'https://community.stem.org.uk/communities/community-home', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'CAS Community'} %>
             </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>CAS communities of Practice</h3>
           </div>
-          <p class='govuk-body'>
-            Local networks of computing teachers who share expertise and best practice. They provide peer support, especially in your early career, and information to help you embed computing concepts in the classroom.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Find a CAS community', 'https://community.stem.org.uk/communities/community-home', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'CAS Community'}  %>
-          </p>
         </div>
       </div>
     </div>
