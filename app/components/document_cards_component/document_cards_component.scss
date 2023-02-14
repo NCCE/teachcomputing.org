@@ -35,6 +35,12 @@
   }
 }
 
+.document-card_title-wrapper {
+  @include govuk-media-query($from: tablet) {
+    min-height: 7em;
+  }
+}
+
 .document-card__title {
   background-image: url('../images/icons/resources-black.svg');
   background-repeat: no-repeat;

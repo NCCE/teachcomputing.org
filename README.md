@@ -37,7 +37,7 @@ ACHIEVER_V2_USERNAME=...
 ACHIEVER_V2_ENDPOINT=...
 ```
 
-You will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
+If your IP address is whitelisted, set `PROXY_URL=''` in `.env`. If not, you will need to ensure you have a proxy setup that tunnels to a whitelisted IP. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 There are two commands `yarn start-tunnel` and `yarn stop-tunnel` that are wrappers to manage the proxy locally, `yarn start` (below) utilises this to create the tunnel when the stack is brought up. It is important to have this setup for testing, however please see the 'Offline Dynamics' section below for how to run this offline.
 

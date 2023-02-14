@@ -32,18 +32,18 @@
           <%= render ImageReportCardComponent.new(
             class_name: 'impact-report-card',
             show_border: true,
-            title: t('.impact_report_card.title'),
-            date: t('.impact_report_card.date'),
-            text: t('.impact_report_card.text'),
+            title: t('.impact_report_card_2.title'),
+            date: t('.impact_report_card_2.date'),
+            text: t('.impact_report_card_2.text'),
             image: {
               path: 'media/images/pages/impact/impact_report.png',
-              alt: t('.impact_report_card.image_alt')
+              alt: t('.impact_report_card_2.image_alt')
             },
             button: {
-              button_title: t('.impact_report_card.button_title'),
-              button_url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf',
+              button_title: t('.impact_report_card_2.button_title'),
+              button_url: 'https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf',
               tracking_page: tracking_category,
-              tracking_label: 'Impact report'
+              tracking_label: 'Impact report 2018 to 2022'
             }
           ) %>
         </div>
@@ -70,6 +70,18 @@
                             class: 'ncce-link', data: tracking_data('CSA 2 exec summary')
                     )
                   ),
+                }
+              },
+              {
+                class_name: 'impact-report-card',
+                title_link: {
+                  title: t('.impact_report_card.title'),
+                  url: 'https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf',
+                  tracking_label: 'Impact report'
+                },
+                date: t('.impact_report_card.date'),
+                body: {
+                  text: t('.impact_report_card.text')
                 }
               },
               {
