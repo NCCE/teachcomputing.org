@@ -24,8 +24,6 @@ module Certificates
       other_programme_pathways_for_user
 
       assign_assessment_and_achievements
-      @badge_tracking_event_category = 'CSA complete'
-      @badge_tracking_event_label = 'CSA badge'
       assign_issued_badge_data
 
       render :complete

@@ -15,12 +15,12 @@
               Congratulations on completing your learning programme and reaching this important milestone in your professional development.
             </p>
             <p class="govuk-body govuk-!-margin-bottom-0">
-              <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path, class: 'button govuk-button lp-certs--button', data: tracking_data('Secondary certificate download link') %>
+              <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path, class: 'button govuk-button lp-certs--button', data: tracking_data('CSA certificate') %>
             </p>
           </div>
           <% if @issued_badge.present? %>
             <div class='govuk-body'>
-              <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+              <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: tracking_category, tracking_event_label: 'CSA badge') %>
             </div>
           <% end %>
           <h2 class="govuk-heading-m">Next steps</h2>
@@ -29,7 +29,7 @@
               <%= render ActivityComponent.new(
                 objective: t('.next_steps.objective'),
                 description: t('.next_steps.description.html',
-                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info link'))
+                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info'))
                 ),
                 button: {
                   text: t('.next_steps.button_text'),
@@ -37,9 +37,9 @@
                     user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }
                   ),
                   opts: { method: :post },
-                  tracking_label: 'Enrol'
+                  tracking_label: 'Secondary certificate enrol'
                 },
-                tracking_category: nil
+                tracking_category:
               ) %>
             </li>
           </ul>
@@ -54,7 +54,7 @@
                   pathway: @user_pathway,
                   recommended_activities: @user_pathway&.recommended_activities,
                   title: t('.recommended_courses.courses_intro.html',
-                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('Pathway pdf link').merge(action: "expander#stopEventBubbling"))
+                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('current path pdf').merge(action: "expander#stopEventBubbling"))
                   )
                 } %>
               </div>
@@ -84,8 +84,8 @@
             title: t('.subsidy_aside.title'),
             class_name: 'subsidy-aside',
             text: t('.subsidy_aside.text.html',
-              form_link: link_to(t('.subsidy_aside.link_text'), 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'ncce-link', data: tracking_data('BACS form')),
-              email_link: mail_to('finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link', data: tracking_data('Email')),
+              form_link: link_to(t('.subsidy_aside.link_text'), 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'ncce-link', data: tracking_data('funding form')),
+              email_link: mail_to('finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link', data: tracking_data('finance mailbox')),
             )
           ) %>
           <%= render AsideComponent.new(
@@ -96,42 +96,42 @@
                 t('.share_aside.follow.twitter'),
                 'https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw',
                 class: 'ncce-link',
-                data: tracking_data('Follow on twitter').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                data: tracking_data('follow on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank'
               ),
               facebook_follow_link: link_to(
                 t('.share_aside.follow.facebook'),
                 'https://www.facebook.com/WeAreComputing/',
                 class: 'ncce-link',
-                data: tracking_data('Follow on facebook').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                data: tracking_data('follow on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank'
               ),
               linkedin_follow_link: link_to(
                 t('.share_aside.follow.linkedin'),
                 'https://www.linkedin.com/company/national-centre-for-computing-education',
                 class: 'ncce-link',
-                data: tracking_data('Follow on linkedin').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                data: tracking_data('follow on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank'
               ),
               twitter_share_link: link_to(
                 t('.share_aside.share.twitter'),
                 'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator',
                 class: 'govuk-link ncce-link complete_social complete_social--twitter',
-                data: tracking_data('Share on twitter').merge(related: 'WeAreComputing', dnt: true, lang: 'en', size: 'large'),
+                data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en', size: 'large'),
                 target: '_blank'
               ),
               facebook_share_link: link_to(
                 t('.share_aside.share.facebook'),
                 'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator',
                 class: 'govuk-link ncce-link complete_social complete_social--facebook',
-                data: tracking_data('Share on facebook').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank',
               ),
               linkedin_share_link: link_to(
                 t('.share_aside.share.linkedin'),
                 'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator',
                 class: 'govuk-link ncce-link complete_social complete_social--linkedin',
-                data: tracking_data('Share on linkedin').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
+                data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank',
                 rel: 'noopener'
               )
@@ -141,15 +141,15 @@
             title: t('.support_aside.title'),
             class_name: 'help-aside',
             text: t('.support_aside.text.html',
-              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('support mailbox'))
             )
           ) %>
           <%= render AsideComponent.new(
             title: t('.documents_aside.title'),
             class_name: 'documents-aside',
             text: t('.documents_aside.text.html',
-              handbook_link: link_to(t('.documents_aside.handbook_link_text'), 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link', data: tracking_data('Handbook')),
-              spec_link: link_to(t('.documents_aside.spec_link_text'), 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link', data: tracking_data('Specifications'))
+              handbook_link: link_to(t('.documents_aside.handbook_link_text'), 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf', class: 'ncce-link', data: tracking_data('Handbook PDF')),
+              spec_link: link_to(t('.documents_aside.spec_link_text'), 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link', data: tracking_data('GCSE specs map'))
             )
           ) %>
         </div>
@@ -180,8 +180,8 @@
               link: {
                 link_title: t('.what_else.cards.cas.link.title'),
                 link_url: 'https://community.computingatschool.org.uk/events',
-                tracking_page: nil,
-                tracking_label: 'CAS find out more'
+                tracking_page: tracking_category,
+                tracking_label: 'CAS community'
               }
             }
           ]
