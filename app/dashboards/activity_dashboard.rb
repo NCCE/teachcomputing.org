@@ -18,6 +18,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     category: Field::String,
     stem_course_template_no: Field::String,
     self_certifiable: Field::Boolean,
+    always_on: Field::Boolean,
     provider: Field::String,
     future_learn_course_uuid: Field::String,
     description: Field::Text,
@@ -48,6 +49,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     category
     stem_course_template_no
     self_certifiable
+    always_on
     provider
     future_learn_course_uuid
     description
