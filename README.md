@@ -37,7 +37,7 @@ ACHIEVER_V2_USERNAME=...
 ACHIEVER_V2_ENDPOINT=...
 ```
 
-You will need to ensure you have a proxy setup. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
+If your IP address is whitelisted, set `PROXY_URL=''` in `.env`. If not, you will need to ensure you have a proxy setup that tunnels to a whitelisted IP. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 There are two commands `yarn start-tunnel` and `yarn stop-tunnel` that are wrappers to manage the proxy locally, `yarn start` (below) utilises this to create the tunnel when the stack is brought up. It is important to have this setup for testing, however please see the 'Offline Dynamics' section below for how to run this offline.
 
@@ -175,6 +175,16 @@ Calling `yarn run rspec-debug <path to spec>` will start an rspec debug session,
 If you prefer to use `byebug` you'll _first_ need to attach to the container which can be done with the command: `docker attach teachcomputingorg_web_1` (the container name can be checked with `docker compose ps`, but mostly it'll be the one here), then add your breakpoint and trigger your request. Again ending the session by quitting byebug or hitting `ctrl+c` will kill the container, so you'll need to run `docker compose up -d` again.
 
 Set `OAUTH_DEBUG=true` in your `.env` file for more useful OAUTH logging.
+
+### ERD generation
+
+`erd.pdf` will be [generated automatically whenever new migrations are run](https://github.com/voormedia/rails-erd#auto-generation).
+
+To generate `erd.pdf` manually:
+
+```
+docker-compose run web bundle exec erd
+```
 
 ### Troubleshooting
 

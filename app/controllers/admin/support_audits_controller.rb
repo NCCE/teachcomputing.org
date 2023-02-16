@@ -1,7 +1,15 @@
 module Admin
   class SupportAuditsController < Admin::ApplicationController
-    def after_resource_updated_path(requested_resource)
-      admin_user_path(id: requested_resource.auditable_id)
+    def default_sorting_attribute
+      :created_at
+    end
+
+    def default_sorting_direction
+      :desc
+    end
+
+    def after_resource_updated_path(_requested_resource)
+      admin_users_path
     end
 
     def authorized_action?(resource, action_name)

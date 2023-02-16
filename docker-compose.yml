@@ -3,6 +3,7 @@ services:
   docker-host:
     image: qoomon/docker-host
     cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    restart: unless-stopped
     networks:
       default:
         aliases:
@@ -34,10 +35,9 @@ services:
     depends_on:
       - redis
       - web
-    environment:
-      - ENV_FILE=.env
     env_file:
       - ${ENV_FILE:-.env.defaults}
+    restart: unless-stopped
 
   web:
     build: .
@@ -60,17 +60,14 @@ services:
       - docker-host
       - webpack
     environment:
-      - PROXY_URL=http://host.docker.internal:8888
       - RAILS_DEV_DB_PASS=password
       - WEBPACKER_DEV_SERVER_HOST=webpack
-      - DOCKER_LOGS=true
-      - ENV_FILE=.env
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
-      interval: 10s
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/healthcheck" ]
+      interval: 15s
       timeout: 15s
       retries: 3
       start_period: 45s
@@ -88,6 +85,7 @@ services:
       - "3035:3035"
     environment:
       - WEBPACKER_DEV_SERVER_HOST=webpack
+    restart: unless-stopped
 
 volumes:
   bundle: null

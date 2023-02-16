@@ -13,7 +13,7 @@
           <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator!</h2>
           <p class="govuk-body-m govuk-!-margin-bottom-7">
             <% if @csa_dash.has_enough_activities_for_test %>
-              You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: { event_action: 'click', event_category: 'CSA enrolled', event_label: 'View test and mock test' } %>.
+              You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: tracking_data('View test and mock test') %>
               </p>
             <% else %>
               To access our test and get your certificate, you'll need to complete at least one face to face or remote course, and one additional CS Accelerator course. But we encourage you to complete as many courses as you need to gain the subject knowledge to confidently teach computer science.

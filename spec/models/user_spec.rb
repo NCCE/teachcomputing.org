@@ -1,8 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  
-  let(:user) { create(:user, stem_user_id: "id-stem_user", email: 'user@example.com')}
+RSpec.describe User do
+  let(:stem_credentials) do
+    OmniAuth::AuthHash.new(expires: true,
+                           expires_at: Time.zone.now.to_i,
+                           refresh_token: '7bf7e7c2eb515fbc5ba4d2f7b3e8bn',
+                           token: 'cd355fc7dccd9c7bb7e2c29f4be3f')
+  end
+  let(:stem_info) do
+    OmniAuth::AuthHash::InfoHash.new(
+      achiever_contact_no: 'ca432eb9-9b34-46db-afbb-fbd1efa89e6b',
+      email: 'user@example.com',
+      first_name: 'Jane',
+      last_name: 'Doe'
+    )
+  end
+  let(:uid) { 'id-stem-user' }
+  let(:user) { described_class.from_auth(uid, stem_credentials, stem_info) }
 
   describe 'validations' do
     before do
@@ -77,7 +91,7 @@ RSpec.describe User, type: :model do
 
   describe '#from_auth' do
     it 'has the correct id' do
-      expect(user.stem_user_id).to eq 'id-stem_user'
+      expect(user.stem_user_id).to eq 'id-stem-user'
     end
 
     it 'has the correct first name' do
@@ -93,15 +107,15 @@ RSpec.describe User, type: :model do
     end
 
     it 'has the correct achiver contact number' do
-      expect(user.stem_achiever_contact_no).to eq  'ca432eb9-9b34-46db-afbb-fbd1efa89e6b'
+      expect(user.stem_achiever_contact_no).to eq 'ca432eb9-9b34-46db-afbb-fbd1efa89e6b'
     end
 
     it 'has the correct token' do
-      expect(user.stem_credentials_access_token).to eq 'CD355FC7DCCD9C7BB7E2C29F4BE3F'
+      expect(user.stem_credentials_access_token).to eq 'cd355fc7dccd9c7bb7e2c29f4be3f'
     end
 
     it 'has the correct refresh token' do
-      expect(user.stem_credentials_refresh_token).to eq '7BF7E7C2EB515FBC5BA4D2F7B3E8B'
+      expect(user.stem_credentials_refresh_token).to eq '7bf7e7c2eb515fbc5ba4d2f7b3e8bn'
     end
 
     it 'has the correct expires at' do
@@ -123,40 +137,38 @@ RSpec.describe User, type: :model do
   describe '#csa_auto_enrollable?' do
     context 'when user is enrolled on CSA programme' do
       let!(:enrolment) do
-        create(:user_programme_enrolment,
-               user: user,
-               programme: create(:cs_accelerator))
+        create(:user_programme_enrolment, user:, programme: create(:cs_accelerator))
       end
 
       it 'returns false' do
-        expect(user.csa_auto_enrollable?).to eq(false)
+        expect(user.csa_auto_enrollable?).to be false
       end
 
       context 'when user has unenrolled' do
         it 'returns false' do
           enrolment.transition_to(:unenrolled)
-          expect(user.csa_auto_enrollable?).to eq(false)
+          expect(user.csa_auto_enrollable?).to be false
         end
       end
 
       context 'when user has completed' do
         it 'returns false' do
           enrolment.transition_to(:complete)
-          expect(user.csa_auto_enrollable?).to eq(false)
+          expect(user.csa_auto_enrollable?).to be false
         end
       end
 
       context 'when user enrolment is in pending state' do
         it 'returns false' do
           enrolment.transition_to(:pending)
-          expect(user.csa_auto_enrollable?).to eq(false)
+          expect(user.csa_auto_enrollable?).to be false
         end
       end
     end
 
     context 'when user is not enrolled on CSA programme' do
       it 'returns true' do
-        expect(user.csa_auto_enrollable?).to eq(true)
+        expect(user.csa_auto_enrollable?).to be true
       end
     end
   end
@@ -182,18 +194,18 @@ RSpec.describe User, type: :model do
     let(:programme) { create(:cs_accelerator) }
 
     it 'returns false when user not enrolled' do
-      expect(user.on_programme_pathway?(programme)).to eq(false)
+      expect(user.on_programme_pathway?(programme)).to be false
     end
 
     it 'returns false when user is not on a pathway for that programme' do
       create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
-      expect(user.on_programme_pathway?(programme)).to eq(false)
+      expect(user.on_programme_pathway?(programme)).to be false
     end
 
     it 'returns true when user is on a pathway for that programme' do
-      pathway = create(:pathway, programme: programme)
+      pathway = create(:pathway, programme:)
       create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway_id: pathway.id)
-      expect(user.on_programme_pathway?(programme)).to eq(true)
+      expect(user.on_programme_pathway?(programme)).to be true
     end
   end
 
@@ -201,18 +213,18 @@ RSpec.describe User, type: :model do
     let(:programme) { create(:cs_accelerator) }
 
     it 'returns nil when user not enrolled' do
-      expect(user.programme_pathway(programme)).to eq(nil)
+      expect(user.programme_pathway(programme)).to be_nil
     end
 
     it 'returns nil when user is not on a pathway for that programme' do
       create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway: nil)
-      expect(user.programme_pathway(programme)).to eq(nil)
+      expect(user.programme_pathway(programme)).to be_nil
     end
 
     it 'returns pathway when user is on a pathway for that programme' do
-      pathway = create(:pathway, programme: programme)
+      pathway = create(:pathway, programme:)
       create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway_id: pathway.id)
-      expect(user.programme_pathway(programme)).not_to eq(nil)
+      expect(user.programme_pathway(programme)).not_to be_nil
       expect(user.programme_pathway(programme)).to eq(pathway)
     end
   end

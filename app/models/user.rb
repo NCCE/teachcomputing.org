@@ -7,12 +7,9 @@ class User < ApplicationRecord
   validates :stem_credentials_access_token, presence: true
   validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
-  validates :stem_user_id, presence: true
-  validates :stem_user_id, uniqueness: true
-  validates :email, presence: true
-  validates :email, uniqueness: true
-  validates :teacher_reference_number, uniqueness: true,
-                                       if: proc { |u| u.teacher_reference_number.present? }
+  validates :stem_user_id, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :teacher_reference_number, uniqueness: true, if: proc { |u| u.teacher_reference_number.present? }
 
   attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
   attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch('STEM_CREDENTIALS_REFRESH_TOKEN_KEY')
@@ -63,7 +60,7 @@ class User < ApplicationRecord
   end
 
   def programme_enrolment_state(programme_id)
-    enrolment = user_programme_enrolments.find_by(programme_id: programme_id)
+    enrolment = user_programme_enrolments.find_by(programme_id:)
     return 'Not enrolled' unless enrolment
 
     enrolment.current_state
@@ -74,7 +71,7 @@ class User < ApplicationRecord
   end
 
   def programme_pathway(programme)
-    enrolment = user_programme_enrolments.find_by(programme: programme)
+    enrolment = user_programme_enrolments.find_by(programme:)
     enrolment&.pathway
   end
 

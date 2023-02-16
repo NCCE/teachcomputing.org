@@ -7,7 +7,7 @@ require 'securerandom'
 
 RSpec.describe 'rake csa:revoke', type: :task do
   let(:csv_path) { 'csa_revoke.csv' }
-  let(:user) { create(:user, stem_achiever_contact_no: SecureRandom.uuid) }
+  let(:user) { create(:user, stem_achiever_contact_no: SecureRandom.uuid, email: ENV.fetch('DEFAULT_ADMIN_EMAIL')) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id) }
   let(:eligible_csa_achievement) { create(:achievement, user_id: user.id, programme_id: cs_accelerator.id) }

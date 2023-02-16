@@ -3,6 +3,6 @@
     <dt class='attribute-label attribute--inline'>Field</dt>
     <dd class='attribute-data attribute-data--reduce-margin attribute--inline'><%= "#{v.first.humanize}" %></dd>
     <dt class='attribute-label attribute--inline'>Change</dt>
-    <dd class='attribute-data attribute-data--reduce-margin attribute--inline'><%= "#{v.last.join(' => ')}" %></dd>
+    <dd class='attribute-data attribute-data--reduce-margin attribute--inline'><%= "#{v.last.kind_of?(Array) ? v.last.join(' => ') : v.last.to_s + ' => nil'}" %></dd>
   <% end %>
 <% end %>

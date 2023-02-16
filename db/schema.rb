@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_11_162310) do
+ActiveRecord::Schema.define(version: 2023_01_20_090745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_162310) do
     t.datetime "created_at"
     t.uuid "ticket_id"
     t.uuid "authoriser_id"
+    t.uuid "affected_user_id"
     t.index ["associated_type", "associated_id"], name: "associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
     t.index ["authoriser_id"], name: "index_audits_on_authoriser_id"
@@ -381,7 +382,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_162310) do
     t.string "email"
     t.datetime "last_sign_in_at"
     t.string "stem_user_id"
-    t.uuid "stem_achiever_contact_no"
+    t.string "stem_achiever_contact_no"
     t.datetime "stem_credentials_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

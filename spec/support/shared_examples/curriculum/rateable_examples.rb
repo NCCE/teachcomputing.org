@@ -55,6 +55,12 @@ RSpec.shared_examples_for 'rateable' do |path, comment_path, choices_path, _cont
       post send(comment_path, rating_id: rating_id, comment: 'This is a test')
       expect(response).to have_http_status(:ok)
     end
+
+    it 'allows comments with double quotes to be escaped and submitted' do
+      stub_a_valid_request({ data: { update_rating: {} } }.to_json)
+      post send(comment_path, rating_id: rating_id, comment: '"<body style="background-color:powderblue;">')
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   describe 'GET #choices' do
