@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/secondary-early-careers', type: :view) do
+RSpec.describe('pages/secondary-early-careers') do
   before do
     render
   end
@@ -19,8 +19,8 @@ RSpec.describe('pages/secondary-early-careers', type: :view) do
 
   it 'has a Develop your teaching practice section' do
     expect(rendered).to have_css('.govuk-heading-l', text: 'Develop your teaching practice')
-	end
-	
+  end
+
   it 'has a funding section' do
     expect(rendered).to have_css('.govuk-heading-s', text: 'Funding')
   end
@@ -28,18 +28,16 @@ RSpec.describe('pages/secondary-early-careers', type: :view) do
   it 'has a Resources section' do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Resources')
   end
-  
+
   it 'has four resources cards' do
     expect(rendered).to have_css('.card', count: 3)
-	end
+  end
 
-	
   it 'has a Communities section' do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Communities')
   end
-	
-	it 'has four community cards' do
-		expect(rendered).to have_css('.non-bordered-card', count: 3)
-	end
 
+  it 'has four community cards' do
+    expect(rendered).to have_css('.non-bordered-card', count: 3)
+  end
 end
