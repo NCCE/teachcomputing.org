@@ -34,7 +34,8 @@ module ApplicationHelper
       %r{^https://www.stem.org.uk},
       %r{^https://www-stage.stem.org.uk},
       %r{^https://teachcomputing-staging-pr-([0-9]+).herokuapp.com},
-      %r{^https://ncce.io}
+      %r{^https://ncce.io},
+      %r{^https://qa.teachcomputing.org}
     ]
     allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV['RAILS_ENV'] == 'development'
     allowed_redirect_urls.each do |regex|
