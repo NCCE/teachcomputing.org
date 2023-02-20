@@ -29,7 +29,7 @@ RSpec.describe('pages/secondary-early-careers') do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Resources')
   end
 
-  it 'has four resources cards' do
+  it 'has three resources cards' do
     expect(rendered).to have_css('.card', count: 3)
   end
 
@@ -37,7 +37,7 @@ RSpec.describe('pages/secondary-early-careers') do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'Communities')
   end
 
-  it 'has four community cards' do
+  it 'has three community cards' do
     expect(rendered).to have_css('.non-bordered-card', count: 3)
   end
 end

@@ -3,32 +3,48 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class='govuk-heading-xl'>Communities</h2>
-          <div class="non-bordered-cards-component resource-cards" style="--cards-per-row: 3;">
-            <div class="non-bordered-card">
-              <div class="non-bordered-card__image-wrapper">
-                <%= image_pack_tag 'media/images/secondary_early_careers/computing_hubs.svg', class: 'non-bordered-card__image', alt: '' %>
-              </div>
-              <h3 class='govuk-heading-m non-bordered-card__title'>Computing hubs</h3>
-              <p class='govuk-body non-bordered-card__text'>Providing local training and support for teachers across England, our Computing Hubs are led by schools and colleges with an exceptional track record in teaching computing.</p>
-              <%= link_to 'Contact your local Hub', 'https://teachcomputing.org/hubs', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'Hubs'} %>
-            </div>
-            <div class="non-bordered-card">
-              <div class="non-bordered-card__image-wrapper">
-                <%= image_pack_tag 'media/images/secondary_early_careers/stem_community.svg', class: 'non-bordered-card__image', alt: '' %>
-              </div>
-              <h3 class='govuk-heading-m non-bordered-card__title'>STEM community</h3>
-              <p class='govuk-body non-bordered-card__text'>Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time.</p>
-              <%= link_to 'Join STEM community', 'https://community.stem.org.uk/communities/community-home?CommunityKey=f5ffc29d-73bb-49b0-a966-d9848562a518', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'STEM Community'} %>
-            </div>
-            <div class="non-bordered-card">
-              <div class="non-bordered-card__image-wrapper">
-                <%= image_pack_tag 'media/images/secondary_early_careers/cas.svg', class: 'non-bordered-card__image', alt: '' %>
-              </div>
-              <h3 class='govuk-heading-m non-bordered-card__title'>CAS communities of Practice</h3>
-              <p class='govuk-body non-bordered-card__text'>Local networks of computing teachers who share expertise and best practice. They provide peer support, especially in your early career, and information to help you embed computing concepts in the classroom.</p>
-              <%= link_to 'Find a CAS community', 'https://community.stem.org.uk/communities/community-home', class: 'govuk-button button', data: { event_action: 'click', event_category: 'ECT secondary', event_label: 'CAS Community'} %>
-            </div>
-          </div>
+          <%= render NonBorderedCardsComponent.new(
+            class_name: 'resource-cards',
+            cards_per_row: 3,
+            cards: [
+              {
+                image_url: 'media/images/secondary_early_careers/computing_hubs.svg',
+                title: 'Computing hubs',
+                text: 'Providing local training and support for teachers across England, our Computing Hubs are led by schools and colleges with an exceptional track record in teaching computing.',
+                link: {
+                  link_title: 'Contact your local Hub',
+                  link_url: hubs_path,
+                  button: true,
+                  tracking_page: tracking_category,
+                  tracking_label: 'Hubs'
+                }
+              },
+              {
+                image_url: 'media/images/secondary_early_careers/stem_community.jpg',
+                title: 'STEM community',
+                text: 'Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time.',
+                link: {
+                  link_title: 'Join STEM community',
+                  link_url: 'https://www.stem.org.uk/stem-community',
+                  button: true,
+                  tracking_page: tracking_category,
+                  tracking_label: 'STEM Community'
+                }
+              },
+              {
+                image_url: 'media/images/secondary_early_careers/cas.png',
+                title: 'CAS communities of Practice',
+                text: 'Local networks of computing teachers who share expertise and best practice. They provide peer support, especially in your early career, and information to help you embed computing concepts in the classroom.',
+                link: {
+                  link_title: 'Find a CAS community',
+                  link_url: 'https://community.computingatschool.org.uk/events',
+                  button: true,
+                  tracking_page: tracking_category,
+                  tracking_label: 'CAS Community'
+                }
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>

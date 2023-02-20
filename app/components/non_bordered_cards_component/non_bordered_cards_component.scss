@@ -44,4 +44,10 @@
   padding-bottom: 0;
 }
 
+.non-bordered-card__image--auto-width {
+  .non-bordered-card__image {
+    width: auto;
+  }
+}
+
 

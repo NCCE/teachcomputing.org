@@ -4,7 +4,7 @@
       <%= @text || t('.text') %>
     </p>
     <p class="govuk-body-s bursary-component__link">
-      <%= link_to 'Funding information', '/funding',
+      <%= link_to @link_title || 'Funding information', '/funding',
         class: 'ncce-link axe-skip-a11y-test',
         data: tracking_data
       %>
