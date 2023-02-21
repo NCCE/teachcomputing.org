@@ -117,10 +117,6 @@ RSpec.describe('courses/_courses-details', type: :view) do
       expect(rendered).to have_css('.icon-clock', text: 'Approximately 8 hours of self-study')
     end
 
-    it 'displays the join now text' do
-      expect(rendered).to have_css('.icon-calendar', text: 'Register now (Starts on 15 January 2099)')
-    end
-
     it 'does not display occurrences' do
       expect(rendered).not_to have_css('.ncce-courses__locations')
     end

@@ -29,7 +29,7 @@ RSpec.describe LiveBookingPresenter do
 
   describe '#enrolled_introduction' do
     it 'is not implemented' do
-      expect { described_class.new.enrolled_introduction }.to raise_error (NotImplementedError)
+      expect { described_class.new.enrolled_introduction(nil) }.to raise_error (NotImplementedError)
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe LiveBookingPresenter do
 
   describe '#enrolled_button_title' do
     it 'is not implemented' do
-      expect { described_class.new.enrolled_button_title }.to raise_error (NotImplementedError)
+      expect { described_class.new.enrolled_button_title(nil) }.to raise_error (NotImplementedError)
     end
   end
 
@@ -134,14 +134,8 @@ RSpec.describe LiveBookingPresenter do
     end
   end
 
-  describe '#show_facilitation_periods' do
-    it 'is false' do
-      expect(described_class.new.show_facilitation_periods(nil, nil)).to be false
-    end
-  end
-
   describe '#show_stem_occurrence_list' do
-    it 'is false' do
+    it 'is true' do
       expect(described_class.new.show_stem_occurrence_list).to be true
     end
   end
