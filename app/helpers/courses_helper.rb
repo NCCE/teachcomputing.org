@@ -70,11 +70,9 @@ module CoursesHelper
     occurrence.address_town
   end
 
-  def online_course_date(start_date)
-    date = Date.parse(start_date)
-    return "Register now (Starts on #{date.strftime('%-d %B %Y')})" if date.future?
-
-    'Join now'
+  # @param start_date [Date]
+  def online_course_availability(start_date)
+    "Available from #{start_date.strftime('%d %B %Y')}."
   end
 
   def user_achievement_state(user, activity)
