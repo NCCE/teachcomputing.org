@@ -16,6 +16,10 @@ class LiveBookingPresenter
     'Dates coming soon'
   end
 
+  def unauthenticated_introduction
+    'You need to be logged in to start the course.'
+  end
+
   def no_occurrences_introduction
     'Contact your local Computing Hub for more information'
   end
@@ -24,7 +28,7 @@ class LiveBookingPresenter
     'You will be taken to the STEM Learning website to see further details.'
   end
 
-  def enrolled_introduction
+  def enrolled_introduction(_course)
     raise NotImplementedError
   end
 
@@ -44,7 +48,7 @@ class LiveBookingPresenter
     "Login to #{title.downcase}"
   end
 
-  def enrolled_button_title
+  def enrolled_button_title(_start_date)
     raise NotImplementedError
   end
 
@@ -83,11 +87,6 @@ class LiveBookingPresenter
     return 'Live remote training' if occurrence.remote_delivered_cpd
 
     "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
-  end
-
-  # @return [Boolean] false, as they only apply to always on online courses
-  def show_facilitation_periods(_course, _occurrences)
-    false
   end
 
   # @return [Boolean] true: always show this

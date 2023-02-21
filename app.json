@@ -111,6 +111,9 @@
     "FL_PARTNERS_CONSUMER_SECRET": {
       "required": true
     },
+    "MYLEARNING_DASHBOARD_URL": {
+      "required": true
+    },
     "USER_ACHIEVEMENTS_API_SECRET": {
       "required": true,
       "value": "secret"

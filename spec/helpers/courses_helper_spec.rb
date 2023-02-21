@@ -128,18 +128,10 @@ describe CoursesHelper, type: :helper do
     end
   end
 
-  describe('#online_course_date') do
-    context 'when the date is past' do
-      it 'returns Join Now' do
-        expect(helper.online_course_date(DateTime.now.to_s)).to eq 'Join now'
-      end
-    end
-
-    context 'when the date is in the future' do
-      it 'returns correctly' do
-        expect(helper.online_course_date(DateTime.new(3020, 10, 1).to_s))
-          .to eq('Register now (Starts on 1 October 3020)')
-      end
+  describe('#online_course_availability') do
+    it 'formats a start date' do
+      expect(helper.online_course_availability(DateTime.new(3020, 10, 1)))
+        .to eq('Available from 01 October 3020.')
     end
   end
 
