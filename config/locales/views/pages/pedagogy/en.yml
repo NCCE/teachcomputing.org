@@ -5,8 +5,7 @@ en:
         quick_reads:
           title: "Pedagogy Quick Reads"
           text: "These short monthly documents present a summary of a topic, the key points and considerations, as well as links to the original sources."
-          button_text: "Read the latest document"
-          link_1: "See all quick reads"
+          button_text: "See all quick reads"
         research_bytes:
           title: "Research Bytes Newsletter"
           text: "Our half-termly newsletter provides a bite-sized summary of computing education research, insights from classroom teachers, as well as suggested reading."
