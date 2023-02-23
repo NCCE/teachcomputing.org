@@ -382,7 +382,7 @@ ActiveRecord::Schema.define(version: 2023_02_16_090745) do
     t.string "email"
     t.datetime "last_sign_in_at"
     t.string "stem_user_id"
-    t.uuid "stem_achiever_contact_no"
+    t.string "stem_achiever_contact_no"
     t.datetime "stem_credentials_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
