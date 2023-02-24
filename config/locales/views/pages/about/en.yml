@@ -7,7 +7,7 @@ en:
           html: "<strong>Our vision</strong> is for every child in every school in England to have a world-leading computing education."
         image_title: "A photo of the team"
       intro_text:
-        html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and supporting partners, and marks a significant investment in improving the provision of computing education in England. The NCCE is run by a consortium made up of %{stem_link}, the %{rpi_link} and %{bcs_link}. It is made up of the following programmes:"
+        html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and supporting partners and marks a significant investment in improving the provision of computing education in England. It is delivered by %{stem_link} and is made up of the following programmes:"
       tc_card:
         title: "Teach Computing"
         text: "Discover training, resources and guidance to help you teach computing with confidence."
