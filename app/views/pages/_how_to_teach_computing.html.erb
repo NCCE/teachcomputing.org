@@ -1,8 +1,164 @@
-<% I18n.t('.pages.pedagogy.ways_to_teach').each do |way| %>
-  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path(way[:image]) %>")'><%= way[:title]%></h2>
-  <p class="govuk-body govuk-!-padding-top-3"> <%= way[:text]%> </p>
-  <% way[:resource_links].each do |link| %>
-    <p class="govuk-body-s"> <%= link.html_safe %> </p>
-  <% end %>
-  <hr class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-<% end %>
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/idea-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.lead_with_concepts.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.lead_with_concepts.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.lead_with_concepts.link_1"), 'https://static.teachcomputing.org/pedagogy/QR7-Concept-maps.pdf', class: 'ncce-link', data: tracking_data('QR concepts')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.lead_with_concepts.link_2"), 'https://blog.teachcomputing.org/podcast_ep2_what_is_computing/', class: 'ncce-link', data: tracking_data('PC concepts')) %> (18 October 2019)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/connect-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.work_together.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.work_together.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.work_together.link_1"), 'https://static.teachcomputing.org/pedagogy/QR3-Pair-programming.pdf', class: 'ncce-link', data: tracking_data('QR work together 1')) %> (PDF)</li>
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.work_together.link_2"), 'https://static.teachcomputing.org/pedagogy/QR4-Peer-instruction.pdf', class: 'ncce-link', data: tracking_data('QR work together 2')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.work_together.link_2"), 'https://blog.teachcomputing.org/podcast-9-peer-instruction/', class: 'ncce-link', data: tracking_data('PC work together')) %> (7 May 2020)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/paint-brush-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.hands_on.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.hands_on.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.hands_on.link_1"), 'https://static.teachcomputing.org/pedagogy/QR16-Physical-computing.pdf', class: 'ncce-link', data: tracking_data('QR hands on')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/box-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.unplug.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.unplug.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.unplug.link_1"), 'https://static.teachcomputing.org/pedagogy/QR6-Semantic-waves.pdf', class: 'ncce-link', data: tracking_data('QR unplug')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/model-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.model_everything.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.model_everything.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.model_everything.link_1"), 'https://static.teachcomputing.org/pedagogy/QR2-Worked-examples.pdf', class: 'ncce-link', data: tracking_data('QR model 1')) %> (PDF)</li>
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.model_everything.link_2"), 'https://static.teachcomputing.org/pedagogy/QR5-Live-coding.pdf', class: 'ncce-link', data: tracking_data('QR model 2')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.model_everything.link_2"), 'https://blog.teachcomputing.org/modelling-the-programming-process-through-live-coding/', class: 'ncce-link', data: tracking_data('PC model')) %> (19 March 2019)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/box-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.comprehension.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.comprehension.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.comprehension.link_1"), 'https://static.teachcomputing.org/pedagogy/QR12-Block-model.pdf', class: 'ncce-link', data: tracking_data('QR comprehension')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/spanner-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.create_projects.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.create_projects.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.create_projects.link_1"), 'https://static.teachcomputing.org/pedagogy/QR15-Project-based-learning.pdf', class: 'ncce-link', data: tracking_data('QR Create projects')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/variety-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.add_variety.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.add_variety.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.add_variety.link_1"), 'https://static.teachcomputing.org/pedagogy/QR17-Variety-in-teaching-and-assessment.pdf', class: 'ncce-link', data: tracking_data('QR Variety')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/question-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.misconceptions.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.misconceptions.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.misconceptions.link_1"), 'https://static.teachcomputing.org/pedagogy/QR19-Alternate-Conceptions.pdf', class: 'ncce-link', data: tracking_data('QR Misconceptions alternate conceptions')) %> (PDF)</li>
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.misconceptions.link_2"), 'https://static.teachcomputing.org/pedagogy/QR4-Peer-instruction.pdf', class: 'ncce-link', data: tracking_data('QR misconceptions')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.misconceptions.link_2"), 'https://blog.teachcomputing.org/podcast-9-peer-instruction/', class: 'ncce-link', data: tracking_data('PC misconceptions')) %> (7 May 2019)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/world-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.concrete.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.concrete.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.concrete.link_1"), 'https://static.teachcomputing.org/pedagogy/QR18-Culturally-relevant-pedagogy.pdf', class: 'ncce-link', data: tracking_data('QR Make concrete')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/structure-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.structure.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.structure.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.structure.link_1"), 'https://static.teachcomputing.org/pedagogy/QR11-PRIMM.pdf', class: 'ncce-link', data: tracking_data('QR structure')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.structure.link_2"), 'https://blog.teachcomputing.org/tc-podcast-ep12-the-primm-approach/', class: 'ncce-link', data: tracking_data('PC structure')) %> (10 December 2020)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
+
+<div class='ways_to_teach'>
+  <h2 class="govuk-heading-s ways_to_teach__title" style='background-image: url("<%= asset_pack_path('media/images/icons/digits-icon.svg') %>")'>
+    <%= t("#{tr8_prefix}.read_and_explore.title") %>
+  </h2>
+  <p class="govuk-body govuk-!-padding-top-3">
+    <%= t("#{tr8_prefix}.read_and_explore.text") %>
+  </p>
+  <ul class="govuk-list govuk-list--ncce govuk-body-s">
+    <li><strong>Quick Read:</strong> <%= link_to(t("#{tr8_prefix}.read_and_explore.link_1"), 'https://static.teachcomputing.org/pedagogy/QR14-Code-tracing.pdf', class: 'ncce-link', data: tracking_data('QR Read and explore code tracing')) %> (PDF)</li>
+    <li><strong>Podcast:</strong> <%= link_to(t("#{tr8_prefix}.read_and_explore.link_2"), 'https://static.teachcomputing.org/pedagogy/QR11-PRIMM.pdf', class: 'ncce-link', data: tracking_data('PC Read and explore PRIMM')) %> (PDF)</li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+</div>
