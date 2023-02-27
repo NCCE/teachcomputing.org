@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
     online = @course.online_cpd
 
     @occurrences = @course.with_occurrences
-    @start_date = start_date(@occurrences) if online
+    assign_start_date if online
 
 
     @other_courses = Achiever::Course::Template.without(@course)
@@ -64,6 +64,11 @@ class CoursesController < ApplicationController
 
     def filter_params
       params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
+    end
+
+    def assign_start_date
+      @start_date = start_date(@occurrences)
+      @started = (@start_date <= Date.today)
     end
 
     # @param occurrences [Array<Achiever::Course::Occurrence>]
