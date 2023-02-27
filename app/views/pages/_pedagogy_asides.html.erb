@@ -1,0 +1,33 @@
+<div class="ncce-aside govuk-body govuk-!-padding-top-6">
+  <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.quick_reads.title") %></h2>
+  <p class="govuk-body"><%= t("#{tr8_prefix}.quick_reads.text") %></p>
+  <%= link_to(t("#{tr8_prefix}.quick_reads.button_text"), 'https://blog.teachcomputing.org/tag/quickread', class: 'govuk-button button govuk-!-margin-bottom-2', data: tracking_data('All quick reads')) %>
+</div>
+
+<div class="ncce-aside govuk-body govuk-!-padding-top-6">
+  <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.research_bytes.title") %></h2>
+  <p class="govuk-body"><%= t("#{tr8_prefix}.research_bytes.text") %></p>
+  <%= link_to(t("#{tr8_prefix}.research_bytes.button_text"), 'https://email.teachcomputing.org/q/119zKWEGEfJa/wv', class: 'govuk-button button', data: tracking_data('Read latest research')) %>
+  <ul class="govuk-list govuk-list--ncce">
+    <li><%= link_to(t("#{tr8_prefix}.research_bytes.link_1"), 'https://blog.teachcomputing.org/tag/pedagogy/', class: 'ncce-link', data: tracking_data('See past articles')) %></li>
+    <li><%= link_to(t("#{tr8_prefix}.research_bytes.link_2"), 'https://ncce.stem.org.uk/user/register?from=NCCE', class: 'ncce-link', data: tracking_data('Register')) %> <%= t("#{tr8_prefix}.research_bytes.link_2_extra") %></li>
+  </ul>
+</div>
+
+<div class="ncce-aside govuk-body govuk-!-padding-top-6">
+  <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.pedagogy_reports.title") %></h2>
+  <p class="govuk-body govuk-!-margin-bottom-2"><%= t("#{tr8_prefix}.pedagogy_reports.text") %></p>
+  <%= link_to(t("#{tr8_prefix}.pedagogy_reports.link_1"), '/impact-and-evaluation', class: 'ncce-link', data: tracking_data('Read reports')) %>
+</div>
+
+<div class="ncce-aside govuk-body govuk-!-padding-top-6">
+  <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.pedagogy_courses.title") %></h2>
+  <p class="govuk-body govuk-!-margin-bottom-2"><%= t("#{tr8_prefix}.pedagogy_courses.text") %></p>
+  <%= link_to(t("#{tr8_prefix}.pedagogy_courses.link_1"), courses_path(topic: 'Pedagogy'), class: 'ncce-link', data: tracking_data('pedagogy courses')) %>
+</div>
+
+<div class="ncce-aside govuk-body govuk-!-padding-top-6">
+  <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.podcast.title") %></h2>
+  <p class="govuk-body govuk-!-margin-bottom-2"><%= t("#{tr8_prefix}.podcast.text") %></p>
+  <%= link_to(t("#{tr8_prefix}.podcast.link_1"), 'https://anchor.fm/teachcomputing', class: 'ncce-link', data: tracking_data('All podcasts')) %>
+</div>
