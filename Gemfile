@@ -77,6 +77,12 @@ group :development, :test do
   gem 'ruby-debug-ide'
 end
 
+# For component previews
+group :staging do
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'awesome_print'
