@@ -68,13 +68,11 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
 
     it 'has an introduction' do
       expect(rendered).to have_css('.govuk-body-m',
-                                   text: 'Our consortium partners have additional content around impact, evaluation and research you may find valuable.')
+                                   text: 'STEM Learning has additional content around impact, evaluation and research you may find valuable.')
     end
 
     it 'has the expected links' do
       expect(rendered).to have_link('Impact and evaluation', href: 'https://www.stem.org.uk/impact-and-evaluation')
-      expect(rendered).to have_link('Computing education research seminars', href: 'https://www.raspberrypi.org/computing-education-research-online-seminars/')
-      expect(rendered).to have_link('Academic publications', href: 'https://www.bcs.org/more/learned-publishing/')
     end
   end
 end
