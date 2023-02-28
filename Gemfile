@@ -17,7 +17,6 @@ gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.3.0'
 gem 'dalli', '~> 3.2.3'
 gem 'enumerize', '~> 2.5'
-gem 'faker'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
@@ -78,6 +77,12 @@ group :development, :test do
   gem 'ruby-debug-ide'
 end
 
+# For component previews
+group :staging do
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'awesome_print'
@@ -95,7 +100,6 @@ group :test do
   gem 'axe-matchers', '>= 2.5.0', require: false
   gem 'capybara', '~> 3.32'
   gem 'climate_control'
-  gem 'factory_bot_rails'
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
