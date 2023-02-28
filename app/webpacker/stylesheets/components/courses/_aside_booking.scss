@@ -53,3 +53,20 @@
   display: grid;
   grid-template-columns: 0.4fr 1fr;
 }
+
+.provider-logos {
+  border-top: solid 1px #CCCCCC;
+  padding: 1rem 0;
+
+  &__logo-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-self: center;
+    margin-bottom: 0;
+    img {
+      height: 43px;
+      width: auto;
+    }
+  }
+}

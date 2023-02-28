@@ -1,6 +1,6 @@
+<div class="ncce-aside" id="booking-list">
 <% if current_user %>
   <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
-    <div class="ncce-aside">
       <% if !@course.online_cpd && @occurrences.empty? %>
         <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
         <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
@@ -52,7 +52,6 @@
               ) %>
         </p>
         <%= render('courses/start-date', date: @start_date) unless @started %>
-        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
       <% end %>
     </div>
   <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
@@ -74,10 +73,6 @@
       <% end %>
 
       <%= render('courses/start-date', date: @start_date) unless @started %>
-      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
-      <p class='govuk-body-s ncce-booking-list__progress'>
-        Can't see the progress of your course? You may need to rejoin the course.
-      </p>
       <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
         <div class="ncce-aside">
           <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
@@ -99,7 +94,6 @@
               </li>
             <% end %>
           </ul>
-          <%= render ProviderLogosComponent.new(online: false) %>
         </div>
       <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
         <div class="ncce-aside">
@@ -122,7 +116,6 @@
               </li>
             <% end %>
           </ul>
-          <%= render ProviderLogosComponent.new(online: false) %>
     </div>
   <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
     <div class="ncce-aside">
@@ -138,11 +131,9 @@
           target: :_blank
         ) %>
       </p>
-      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
     </div>
   <% end %>
 <% else # not logged in %>
-  <div class="ncce-aside" id="booking-list">
     <% if !@course.online_cpd && @occurrences.empty? %>
         <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
         <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
@@ -167,7 +158,21 @@
             data: { event_action: 'click', event_category: 'course details'} %>
         </p>
         <%= render('courses/start-date', date: @start_date) if (@course.online_cpd && !@started) %>
-        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
       <% end %>
-  </div>
 <% end %>
+
+  <div class='govuk-body govuk-!-margin-bottom-0 provider-logos' %>
+    <div class='govuk-body-s'>
+      This course is from the National Centre for Computing Education and is delivered by STEM Learning.
+    </div>
+    <div class='govuk-body-s provider-logos__logo-wrapper'>
+      <%= image_pack_tag 'media/images/logos/ncce-logo.svg', alt: '' %>
+      <%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: '', class: '' %>
+    </div>
+  </div>
+  <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
+    <p class='govuk-body-s ncce-booking-list__progress'>
+      Can't see the progress of your course? You may need to rejoin the course.
+    </p>
+  <% end %>
+</div>
