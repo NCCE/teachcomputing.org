@@ -17,6 +17,7 @@ gem 'combine_pdf', '~> 1.0', '>= 1.0.18'
 gem 'connection_pool', '~> 2.3.0'
 gem 'dalli', '~> 3.2.3'
 gem 'enumerize', '~> 2.5'
+gem 'faker'
 gem 'faraday', '~> 1.0', require: false
 gem 'fog-aws', '~> 3.3'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
@@ -95,7 +96,6 @@ group :test do
   gem 'capybara', '~> 3.32'
   gem 'climate_control'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'rails-controller-testing'
   gem 'rspec-json_expectations'
