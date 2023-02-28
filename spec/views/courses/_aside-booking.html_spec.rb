@@ -342,9 +342,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_text('You’re booked on this course')
         end
 
-        it 'displays more stem learning and teach computing text' do
+        it 'displays more stem learning text' do
           expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
-          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
         end
       end
 
@@ -379,9 +378,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_text("You’ve completed this course")
         end
 
-        it 'displays more stem learning and teach computing text' do
+        it 'displays more stem learning text' do
           expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
-          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
         end
 
         it 'displays the date of the occurance' do
@@ -402,6 +400,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
         it 'display a booking path' do
           expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
+
+        it 'lists the providers' do
+          expect(rendered).to have_text('This course is from the National Centre for Computing Education and is delivered by STEM Learning.')
         end
       end
 
