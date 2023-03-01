@@ -13,7 +13,7 @@ RSpec.describe('pages/about', type: :view) do
     expect(rendered).to have_link('STEM Learning', href: 'https://www.stem.org.uk/')
     expect(rendered).to have_link('Discover our teaching resources', href: '/curriculum')
     expect(rendered).to have_link('Explore our A level resources', href: '/a-level-computer-science')
-    expect(rendered).to have_link('Learn about our research', href: '/gender-balance')
+    expect(rendered).to have_link('Visit Computing Quality Framework', href: 'https://computingqualityframework.org/')
   end
 
   it 'has an ambition section' do
