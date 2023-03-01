@@ -67,8 +67,13 @@ class CoursesController < ApplicationController
     end
 
     def assign_start_date
-      @start_date = start_date(@occurrences)
-      @started = (@start_date <= Date.today)
+      if @occurrences.any?
+        @start_date = start_date(@occurrences)
+        @started = (@start_date <= Date.today)
+      else # This shouldn't happen but some test data has no occurrences
+        @start_date = Date.new(3001, 1, 1)
+        @started = false
+      end
     end
 
     # @param occurrences [Array<Achiever::Course::Occurrence>]
