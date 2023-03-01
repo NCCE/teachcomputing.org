@@ -13,7 +13,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example.',
           link: {
@@ -32,7 +32,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
       class_name: 'page-cards-example-component',
       cards: [
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 1',
           text: 'This is an example of a page card component.',
           link: {
@@ -41,7 +41,7 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example of a page card component with a bit more text than the other.',
           link: {
