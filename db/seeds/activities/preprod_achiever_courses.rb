@@ -32,3 +32,17 @@ a = Activity.find_or_create_by(stem_course_template_no: '616b340e-ffb1-ed11-83ff
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: '94196e7f-47b8-ed11-b597-0022481b547a') do |activity|
+  activity.title = 'NCCE Online Course 3'
+  activity.credit = 20
+  activity.slug = 'ncce-online-course-3'
+  activity.category = 'online'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'OCT'
+  activity.always_on = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
