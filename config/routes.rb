@@ -142,7 +142,6 @@ Rails.application.routes.draw do
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/secondary-early-careers', to: 'pages#page', as: :secondary_early_careers, defaults: { page_slug: 'secondary-early-careers' }
-  get '/primary-early-careers', to: 'pages#page', as: :secondary_early_careers, defaults: { page_slug: 'primary-early-careers' }
   get '/primary-early-careers', to: 'pages#page', as: :primary_early_careers, defaults: { page_slug: 'primary-early-careers' }
   get '/powerupthedigitalgeneration', to: redirect('/supporting-partners')
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
