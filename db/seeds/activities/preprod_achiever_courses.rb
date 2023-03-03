@@ -46,3 +46,17 @@ a = Activity.find_or_create_by(stem_course_template_no: '94196e7f-47b8-ed11-b597
 end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f3f69e74-11b9-ed11-b597-0022481b5082') do |activity|
+  activity.title = 'NCCE F2F Course'
+  activity.credit = 10
+  activity.slug = 'ncce-f2f-course'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'OC124'
+  activity.always_on = false
+end
+
+########################################################################################################################
