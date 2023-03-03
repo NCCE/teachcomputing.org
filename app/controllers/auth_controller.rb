@@ -14,6 +14,11 @@ class AuthController < ApplicationController
       flash[:notice] = 'Hello and welcome to the National Centre for Computing Education'
       redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : dashboard_path(firstLogin: true)
     end
+
+  rescue ActiveRecord::RecordNotFound => e
+    Sentry.capture_exception(e)
+
+    raise e
   end
 
   def failure
