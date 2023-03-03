@@ -10,7 +10,7 @@ services:
           - curriculum.teachcomputing.rpfdev.com
 
   db:
-    image: postgres:13
+    image: postgres:14
     volumes:
       - pg-data:/var/lib/postgresql/data
     ports:
