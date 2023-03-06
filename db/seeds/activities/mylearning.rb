@@ -55,7 +55,6 @@ a = Activity.find_or_create_by(stem_course_template_no: 'ac3bf599-a6b6-ed11-b597
   activity.credit = 20
   activity.slug = 'programming-102-think-like-a-computer-scientist'
   activity.category = 'online'
-  activity.future_learn_course_uuid = 'd9fe6126-298f-48ed-8be3-b82e1c473566'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO208'
   activity.always_on = true
@@ -70,7 +69,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '55cc7b90-a5b6-ed11-b597
   activity.credit = 20
   activity.slug = 'representing-data-with-images-and-sound-bringing-data-to-life'
   activity.category = 'online'
-  activity.
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO209'
   activity.always_on = true
