@@ -8,9 +8,10 @@ RSpec.describe('courses/_aside-booking', type: :view) do
   let(:occurrences_remote) { build_list(:achiever_course_occurrence, 25, remote_delivered_cpd: true) }
   let(:activity) { create(:activity) }
   let(:online_booking_presenter) { OnlineBookingPresenter.new }
-  let(:stem_booking_presenter) { StemBookingPresenter.new }
+  let(:live_booking_presenter) { LiveBookingPresenter.new }
   let!(:face_to_face) { create(:activity, :stem_learning) }
   let(:remote_course) { Achiever::Course::Template.find_by_activity_code('CP428') }
+  let(:online_course) { Achiever::Course::Template.find_by_activity_code('CO225') }
 
   before do
     stub_course_templates
@@ -24,33 +25,32 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
     context 'when its an online course' do
       describe 'when the course is not always on' do
+        # TODO: As of Q1 2023, the always_on flag is true for all visible(*) online course, so these code paths are no longer used
+        # and should be retired. (*) Course CO010 is retired and not visible and always_on is false
         before do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
-          assign(:course, course)
+          assign(:course, online_course)
+          assign(:start_date, Date.tomorrow)
 
           render
         end
 
         it 'prompts the user to join the course' do
-          expect(rendered).to have_css('.ncce-aside__title', text: 'Join on FutureLearn')
-        end
-
-        it 'does not render the facilitation periods' do
-          expect(rendered).not_to have_css('.facilitation-periods')
+          expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
         end
 
         it 'tells the user who is delivering the course' do
           expect(rendered).to have_css(
             '.ncce-aside__text',
-            text: 'You will be taken to the FutureLearn website to create an account and sign up for online courses.'
+            text: 'You will be taken to the STEM Learning website to enrol onto the online course.'
           )
         end
 
-        it 'renders link to futurelearn LTI' do
-          expected_link = "/futurelearn/lti/#{activity.future_learn_course_uuid}"
-          expect(rendered).to have_link('Join on FutureLearn', href: expected_link)
+        it 'renders link to STEM Learning booking page' do
+          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+          expect(rendered).to have_link('Join this course', href: expected_link)
         end
 
         it "does not show the 'View course' button" do
@@ -63,30 +63,172 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
-          assign(:course, course)
-          allow_any_instance_of(OnlineBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
-
-          render
+          assign(:course, online_course)
         end
 
-        it 'renders the facilitation period list with the expected occurrence count' do
-          expect(rendered).to have_css('.facilitation-periods .facilitation-periods__list-item', count: 3)
+        context 'when the course starts tomorrow' do
+          before do
+            assign(:start_date, Date.tomorrow)
+            assign(:started, false)
+            render
+          end
+
+          it 'prompts the user to join the course' do
+            expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
+          end
+
+          it 'tells the user who is delivering the course' do
+            expect(rendered)
+              .to have_css(
+                    '.ncce-aside__text',
+                    text: 'You will be taken to the STEM Learning website to enrol onto the online course.'
+                  )
+          end
+
+          it "does not show the 'View course' button" do
+            expect(rendered).not_to have_link('View course')
+          end
+
+          it 'renders link to STEM Learning booking page' do
+            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expect(rendered).to have_link('Join this course', href: expected_link)
+          end
+
+          it 'shows the start date' do
+            expect(rendered).to have_css('.ncce-aside', text: "Available from #{Date.tomorrow.strftime('%d %B %Y')}")
+          end
         end
 
-        it 'formats the occurrence items correctly' do
-          expect(rendered).to have_text('15 January—15 February 2099')
+        context 'when the course started today' do
+          before do
+            assign(:start_date, Date.today)
+            assign(:started, true)
+
+            render
+          end
+
+          it 'renders link to STEM Learning booking page' do
+            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expect(rendered).to have_link('Join this course', href: expected_link)
+          end
+
+          it 'does not show the start date' do
+            expect(rendered).not_to have_text 'Available from'
+            expect(rendered).not_to have_text (Date.tomorrow.year % 100).to_s
+          end
         end
 
-        it 'renders the title' do
-          expect(rendered).to have_text('View facilitation period(s):')
+        context 'when the user is enrolled on a course' do
+          before do
+            assign(:booking, online_booking_presenter)
+            assign(:occurrences, occurrences)
+            assign(:course, online_course)
+            assign(:activity, activity)
+            assign(
+              :user_occurrence,
+              Achiever::Course::Delegate.new(
+                JSON.parse(
+                  {
+                    "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                   "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                   "Delegate.Is_Fully_Attended": 'True',
+                   "OnlineCPD": true,
+                   "Delegate.Progress": '157420003'
+                  }.to_json, object_class: OpenStruct)))
+            allow(view).to receive(:user_achievement_state).and_return(:enrolled)
+          end
+
+          context 'when the course is in the future' do
+            before do
+              assign(:start_date, Date.new(2023, 4, 1))
+              assign(:started, false)
+            end
+
+            it 'tells the user they are enrolled' do
+              render
+              expect(rendered).to have_text 'You are enrolled on this course'
+            end
+
+            it 'reminds the user about the email' do
+              render
+              expect(rendered).to have_text 'Check your email'
+            end
+
+            it 'shows the start date' do
+              render
+              expect(rendered).to have_text 'Available from 01 April 2023'
+            end
+          end
+
+          context 'when the course has started' do
+            before do
+              assign(:start_date, Date.new(2023, 4, 1))
+              assign(:started, true)
+            end
+
+            it 'tells the user they are enrolled' do
+              render
+              expect(rendered).to have_text 'You are enrolled on this course'
+            end
+
+            it 'does not mention email' do
+              render
+              expect(rendered).not_to have_text 'Check your email'
+            end
+
+            it 'does not show the start date' do
+              render
+              expect(rendered).not_to have_text 'Available from'
+              expect(rendered).not_to have_text 'April'
+            end
+
+            it 'links to MyLearning' do
+              render
+              expect(rendered).to have_link('Continue on MyLearning', href: 'https://moodle.example.com/my/')
+            end
+          end
         end
 
-        it 'renders the details block heading' do
-          expect(rendered).to have_css('.ncce-details__summary-text', text: 'What does this mean?')
-        end
+        context 'when the user has completed the course' do
+          before do
+            assign(:booking, online_booking_presenter)
+            assign(:occurrences, occurrences)
+            assign(:course, online_course)
+            assign(:activity, activity)
+            assign(
+              :user_occurrence,
+              Achiever::Course::Delegate.new(
+                JSON.parse(
+                  {
+                    "Activity.COURSEOCCURRENCENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                   "Activity.COURSETEMPLATENO": 'cf8903f9-91a2-4d08-ba41-596ea05b498d',
+                   "Delegate.Is_Fully_Attended": 'True',
+                   "OnlineCPD": true,
+                   "Delegate.Progress": '157420003'
+                  }.to_json, object_class: OpenStruct)))
+            allow(view).to receive(:user_achievement_state).and_return(:complete)
+          end
 
-        it 'renders the details block body' do
-          expect(rendered).to have_css('.ncce-details__text', text: /You can join and complete this course at any time/, visible: :hidden)
+          it 'tells the user they have completed it' do
+            render
+            expect(rendered).to have_text "You've completed this course"
+          end
+
+          it 'does not mention email' do
+            render
+            expect(rendered).not_to have_text 'Check your email'
+          end
+
+          it 'does not show the start date' do
+            render
+            expect(rendered).not_to have_text 'Available from'
+            expect(rendered).not_to have_text 'April'
+          end
+
+          it 'links to MyLearning' do
+            render
+            expect(rendered).to have_link('Visit MyLearning', href: 'https://moodle.example.com/my/')
+          end
         end
       end
     end
@@ -94,7 +236,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
     context 'when its a face to face course' do
       context 'when a user is not enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -125,11 +267,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           it 'shows items with the expected content' do
             occurrences.each do |occurrence|
               expect(rendered).to have_css(
-                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+                '.ncce-booking-list__date', text: live_booking_presenter.activity_date(occurrence.start_date)
               )
 
               expect(rendered).to have_css(
-                '.ncce-booking-list__address', text: stem_booking_presenter.address(occurrence)
+                '.ncce-booking-list__address', text: live_booking_presenter.address(occurrence)
               )
 
               expect(rendered).to have_link(
@@ -151,7 +293,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       context 'when the user is enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -193,22 +335,21 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
 
         it 'displays aside title' do
           expect(rendered).to have_text('You’re booked on this course')
         end
 
-        it 'displays more stem learning and teach computing text' do
+        it 'displays more stem learning text' do
           expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
-          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
         end
       end
 
       context 'when a user has completed a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, course)
           assign(:activity, activity)
@@ -237,9 +378,8 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           expect(rendered).to have_text("You’ve completed this course")
         end
 
-        it 'displays more stem learning and teach computing text' do
+        it 'displays more stem learning text' do
           expect(rendered).to have_text('You will be taken to the STEM Learning website to see further details.')
-          expect(rendered).to have_text('This course is from Teach Computing and delivered by STEM Learning')
         end
 
         it 'displays the date of the occurance' do
@@ -259,7 +399,11 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+        end
+
+        it 'lists the providers' do
+          expect(rendered).to have_text('This course is from the National Centre for Computing Education and is delivered by STEM Learning.')
         end
       end
 
@@ -273,7 +417,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
           assign(:course, course)
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences_remote)
           assign(:activity, activity)
 
@@ -292,7 +436,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
           it 'shows items with the expected content' do
             occurrences_remote.each do |occurrence|
               expect(rendered).to have_css(
-                '.ncce-booking-list__date', text: stem_booking_presenter.activity_date(occurrence.start_date)
+                '.ncce-booking-list__date', text: live_booking_presenter.activity_date(occurrence.start_date)
               )
 
               expect(rendered).to have_css(
@@ -312,10 +456,9 @@ RSpec.describe('courses/_aside-booking', type: :view) do
             allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
             assign(:course, course)
-            assign(:booking, stem_booking_presenter)
+            assign(:booking, live_booking_presenter)
             assign(:occurrences, [])
             assign(:activity, activity)
-            allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
 
             render
 
@@ -329,7 +472,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
       context 'when a user is enrolled on a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, remote_course)
           assign(:activity, activity)
@@ -368,13 +511,13 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
       end
 
       context 'when a user has completed a course' do
         before do
-          assign(:booking, stem_booking_presenter)
+          assign(:booking, live_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:course, remote_course)
           assign(:activity, activity)
@@ -413,7 +556,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
 
 
         it 'display a booking path' do
-          expect(rendered).to have_link('Go to course', href: stem_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
+          expect(rendered).to have_link('Go to course', href: live_booking_presenter.booking_path('cf8903f9-91a2-4d08-ba41-596ea05b498d'))
         end
       end
     end
@@ -424,7 +567,7 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
       assign(:course, course)
-      assign(:booking, stem_booking_presenter)
+      assign(:booking, live_booking_presenter)
       assign(:occurrences, [])
       assign(:activity, activity)
 
@@ -438,12 +581,13 @@ RSpec.describe('courses/_aside-booking', type: :view) do
   end
 
   describe 'when not logged in' do
-    context 'when its an online course' do
+    context 'when its an online course that has not started' do
       before do
-        assign(:course, course)
+        assign(:course, online_course)
         assign(:occurrences, occurrences)
         assign(:booking, online_booking_presenter)
-        allow_any_instance_of(OnlineBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
+        assign(:started, false)
+        assign(:start_date, Date.new(2023,4,1))
 
         render
       end
@@ -452,13 +596,17 @@ RSpec.describe('courses/_aside-booking', type: :view) do
         expect(rendered).to have_css('.ncce-aside__title', text: 'Join this course')
       end
 
+      it 'says that need to be logged in' do
+        expect(rendered).to have_text 'You need to be logged in to join the course.'
+      end
+
       it 'renders link to log in' do
         expected_link = "/auth/stem?source_uri=#{CGI.escape('http://test.host/courses')}"
         expect(rendered).to have_link('Login to join', href: expected_link)
       end
 
-      it 'renders the facilitation period list with the expected occurrence count' do
-        expect(rendered).to have_css('.facilitation-periods .facilitation-periods__list-item', count: 3)
+      it 'renders the start date' do
+        expect(rendered).to have_text('Available from 01 April 2023')
       end
 
       it 'renders an account creation link' do
@@ -466,23 +614,47 @@ RSpec.describe('courses/_aside-booking', type: :view) do
       end
     end
 
-    context 'when its a stem course' do
+    context 'when its an online course that has started' do
+      before do
+        assign(:course, course)
+        assign(:occurrences, occurrences)
+        assign(:booking, online_booking_presenter)
+        assign(:started, true)
+        assign(:start_date, Date.new(2023, 4, 1))
+
+        render
+      end
+
+      it 'does not render the start date' do
+        expect(rendered).not_to have_text 'April'
+      end
+
+    end
+
+
+    context 'when its a remote course' do
+
+      before do
+        assign(:course, remote_course)
+        assign(:booking, live_booking_presenter)
+        assign(:activity, activity)
+      end
 
       it "shows the 'Dates coming soon' button if there are no occurrences" do
-        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
-        assign(:course, course)
-        assign(:booking, stem_booking_presenter)
         assign(:occurrences, [])
-        assign(:activity, activity)
-        allow_any_instance_of(StemBookingPresenter).to receive(:show_facilitation_periods).with(course, occurrences).and_return(true)
-
         render
 
         expect(rendered).to have_link(
           'Find your local Hub',
           href: "/hubs"
         )
+      end
+
+      it 'and when there is at least one occurrence, says that need to be logged in, ' do
+        assign(:occurrences, [build(:achiever_course_occurrence)])
+        render
+
+        expect(rendered).to have_text 'You need to be logged in to start the course.'
       end
 
     end

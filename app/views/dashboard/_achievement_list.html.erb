@@ -19,7 +19,7 @@
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
           <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
         </div>
-        <% unless achievement.activity.remote_delivered_cpd %>
+        <% unless achievement.activity.remote_delivered_cpd || achievement.activity.online? %>
           <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--address">
             <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
           </div>

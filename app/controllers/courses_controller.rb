@@ -34,11 +34,16 @@ class CoursesController < ApplicationController
 
     return redirect_to course_path(id: @course.activity_code, name: @course.title.parameterize) if params[:name].nil?
 
+    online = @course.online_cpd
+
     @occurrences = @course.with_occurrences
+    assign_start_date if online
+
+
     @other_courses = Achiever::Course::Template.without(@course)
     course_programmes
 
-    @booking = @course.online_cpd ? ::OnlineBookingPresenter.new : ::StemBookingPresenter.new
+    @booking = online ? ::OnlineBookingPresenter.new : ::LiveBookingPresenter.new
 
     # Get the user's course attempts
     user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user&.stem_achiever_contact_no)
@@ -59,5 +64,21 @@ class CoursesController < ApplicationController
 
     def filter_params
       params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
+    end
+
+    def assign_start_date
+      if @occurrences.any?
+        @start_date = start_date(@occurrences)
+        @started = (@start_date <= Date.today)
+      else # This shouldn't happen but some test data has no occurrences
+        @start_date = Date.new(3001, 1, 1)
+        @started = false
+      end
+    end
+
+    # @param occurrences [Array<Achiever::Course::Occurrence>]
+    # @return [Date]
+    def start_date(occurrences)
+      occurrences.collect { |occurrence| occurrence.start_date.to_date }.sort.first
     end
 end
