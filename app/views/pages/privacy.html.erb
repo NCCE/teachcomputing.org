@@ -2,17 +2,16 @@
 <%= render 'components/hero', hero_title: 'Privacy Notice' %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <h2 class="govuk-heading-m">Updated 3rd of February 2022</h2>
-    <p class="govuk-body">The National Centre for Computing Education is a
-      Government run programme of support for computing teachers in England. It
-      is delivered by a consortium of three partners: STEM Learning, the
-      Raspberry Pi Foundation and BCS, the Chartered Institute for IT.</p>
-    <p class="govuk-body">We take the care of your personal data seriously. This
-      privacy notice is here to explain how the personal data you supply to us
-      is collected and used.</p>
-    <p class="govuk-body">We ensure that we use your information in accordance
-      with all applicable laws concerning the protection of personal
-      information. In this document we will explain:</p>
+    <p class="govuk-body"><b>We</b> means the National Centre for Computing Education (NCCE), run by Department for Education (DfE) and STEM Learning.</p>
+<p class="govuk-body"><b>Website</b> means the Teach Computing website: teachcomputing.org.</p>
+<p class="govuk-body"><b>You</b> and <b>Your</b> is the user connecting to the website using a web browser.</p>
+<p class="govuk-body"><b>Your IP Address</b> is a numerical identifier assigned by the computer network to allow the website to communicate with your computer.</p>
+<p class="govuk-body"><b>Cookie</b> is a small piece of information sent by the website, stored by your web browser, and returned by your web browser to the website whenever your use our website.</p>
+
+    <p class="govuk-body">The Teach Computing website, part of the NCCE, is a Government run programme to support computer science teachers and students in England. It is delivered by STEM Learning on behalf of the Department of Education</p>
+    <p class="govuk-body">The overall aim of the NCCE, is to raise the quality of Computing related teaching.  This is achieved by providing quality CPD, support, Teacher certification, enrichment and industry outreach programmes to teachers in England.  NCCE also engage at school level, promoting planning, consultancy and collaboration (school engagement).  </p>
+    <p class="govuk-body">We take the care of your personal data seriously. This privacy notice is here to explain how the personal data you supply to us is collected and used  in accordance with data protection law, including the General Data Protection Regulation (GDPR).</p>
+    <p class="govuk-body">We ensure that we use your information in accordance with all applicable laws concerning the protection of personal information. In this document we will explain:</p>
     <ul class="govuk-body">
       <li>Who we are</li>
       <li>What information we collect about you</li>
@@ -27,77 +26,23 @@
       <li>About changes to our privacy policy</li>
       <li>How to contact us about your data</li>
     </ul>
-    <p class="govuk-body">If you have any questions at any time about data
-      privacy with the National Centre for Computing Education please contact us
-      at
-      <%= mail_to 'datasecurity@stem.org.uk', 'datasecurity@stem.org.uk', class: 'ncce-link' %>
-      or write to: The Data Protection Officer, STEM Learning, University of
-      York, York, YO10 5DD.</p>
     <h2 class="govuk-heading-m">1. Who we are</h2>
-    <p class="govuk-body">The National Centre for Computing Education is a
-      programme funded by the Department for Education. The Department for
-      Education is the data controller for all information collected as part of
-      this programme of work. A consortium has been contracted by the Department
-      for Education to deliver this programme.</p>
-    <p class="govuk-body">The Consortium comprises:</p>
-    <ul class="govuk-body">
-      <li>STEM Learning Ltd is the UK’s largest provider of education and
-        careers support in science, technology, engineering and mathematics
-        (STEM). It has a mission to improve lives through world-leading STEM
-        education. For more information, visit
-        <%= link_to 'www.stem.org.uk', 'https://www.stem.org.uk/', class: 'ncce-link' %>
-      </li>
-      <li>The Raspberry Pi Foundation creates world class educational resources
-        for computing and computer science used by millions of people each year,
-        and has developed online courses that have supported tens of thousands
-        of computing educators. For more information, visit
-        <%= link_to 'www.raspberrypi.org', 'https://www.raspberrypi.org/', class: 'ncce-link' %>
-        Registered Charity 1129409</li>
-      <li>BCS, The Chartered Institute for IT is the professional body for
-        computing and, as part of its Royal Charter, sets and maintains academic
-        and professional standards in computing. For more information, visit
-        <%= link_to 'www.bcs.org', 'https://www.bcs.org/', class: 'ncce-link' %>
-        Registered Charity 292786</li>
-    </ul>
+    <p class="govuk-body">The NCCE is a programme funded by the Department for Education. The Department for Education is the data controller for all information collected as part of this programme of work. STEM Learning has been contracted by the Department for Education to deliver this programme as the data processor.</p>
+
     <h2 class="govuk-heading-m">2. What information we collect about you</h2>
-    <p class="govuk-body">We aim to collect only the information that we think
-      is required for the purpose for which we collect it.</p>
-    <p class="govuk-body">We collect and process personal data about you when
-      you interact with us and our products or participate in any of our
-      programmes. The personal data we process may include:</p>
+    <p class="govuk-body">We aim to collect only the information that we think is required for the purpose for which we collect it, and to process this information in accordance with the terms of this Privacy Notice.</p>
+    <p class="govuk-body">We collect and process personal data about you when you interact with Isaac and our other products, or participate in any of our programmes. The personal data we process includes:</p>
     <ul class="govuk-body">
-      <li>name;</li>
-      <li>work address, email address and/or phone number;</li>
-      <li>job title / areas of interest;</li>
-      <li>your image and audio;</li>
-      <li>payment and invoicing details, including information required to
-        support application;</li>
-      <li>dietary requirements;</li>
+      <li>Personal information required to create an account, i.e., name; email address and/or phone number. This might also include your work address, job title and areas of interest</li>
+      <li>teacher/pupil unique identifiers – optional</li>
+      <li>dietary and accessibility requirements (when attending an event in person)</li>
+      <li>your image and audio data will be processed during participation in online courses</li>
+      <li>payment and invoicing details, including information required to support application</li>
       <li>technical information as described below</li>
     </ul>
-    <p class="govuk-body">For those participating in the Gender Balance in
-      Computing Research Programme only, we additionally collect:</p>
-    <ul class="govuk-body">
-      <li>from / about students: name, gender, date of birth, FSM status, UPN,
-        school name, school URN, school year, interview responses, observation 
-        notes of school options evenings, KS2 attainment, GCSE and A level 
-        subject choice and survey responses to the Computer Attitudes survey;
-      </li>
-      <li>from / about parents / guardians: name, gender, age range, contact details, 
-      name of student, gender of student and school URN of student, interview responses 
-      and observation notes of school options evenings;</li>
-      <li>from / about teachers: name, gender, age range, school name, school URN and contact
-        details, interview responses and observation notes of school options evenings</li>
-    </ul>
-    <p class="govuk-body">When you visit our website, we may collect technical
-      information relating to your use of our website, including your browser
-      type or the Internet Protocol (IP) address used to connect your computer
-      to the internet. For more on this, see section 10, “Information about
-      cookies”.</p>
-    <p class="govuk-body">As the information we collect about you will be stored
-      on our IT infrastructures, it may also be shared with our data processors
-      who provide email, relationship management, anonymous analytics and
-      storage services.</p>
+    <p class="govuk-body">When you visit our website, we may collect technical information relating to your use of our website, including your browser type or the Internet Protocol (IP) address used to connect your computer to the internet. For more on this, see section 10, “Information about cookies”.</p>
+
+    <p class="govuk-body">As the information we collect about you will be stored on our IT infrastructures, it may also be shared with our data processors who provide email, relationship management, anonymous analytics and storage services.</p>
     <h2 class="govuk-heading-m">3. When we collect that information</h2>
     <p class="govuk-body">We collect your information when you:
     </p>
@@ -111,71 +56,34 @@
       <li>have made a request for information from us</li>
       <li>are providing a service to us</li>
     </ul>
-    <p class="govuk-body">For those participating in the Gender Balance in
-      Computing Research Programme only we collect your information when you:</p>
-    <ul class="govuk-body">
-      <li>are involved in the implementation of interventions to increase the 
-      likelihood that girls are interested in taking computing as an academic subject</li>
-      <li>are involved in determining the effect of a suite of interventions 
-      designed to increase the number of female pupils who opt to study computing 
-      for GCSE and A level</li>
-    </ul>
+
     <h2 class="govuk-heading-m">4. How we collect and store that information
     </h2>
-    <p class="govuk-body">We take appropriate technical and organisational
-      measures to ensure that the information disclosed to us is kept secure,
-      accurate, and up to date, and that it is kept only for as long as is
-      necessary for the purposes for which it is used.
-      You should be aware that the use of the internet is not entirely secure,
-      and although we will do our best to protect your personal data, we cannot
-      guarantee the security or integrity of any personal information that is
-      transferred from you or to you via the internet. Any transmission is at
-      your own risk. Once we have received your information, we will use strict
-      procedures and security features such as encryption to try to prevent
-      unauthorised access.</p>
+    <p class="govuk-body">We take appropriate technical and organisational measures to ensure that the information disclosed to us is kept secure, accurate, and up to date, and that it is kept only for as long as is necessary for the purposes for which it is used. You should be aware that the use of the internet is not entirely secure, and although we will do our best to protect your personal data, we cannot guarantee the security or integrity of any personal information that is transferred from you or to you via the internet. Any transmission is at your own risk. Once we have received your information, we will use strict procedures and security features such as encryption to try to prevent unauthorised access.</p>
     <h2 class="govuk-heading-m">5. What we use your information for</h2>
     <p class="govuk-body">We use the information we have collected:</p>
     <ul class="govuk-body">
       <li>To deliver activities, information, events or services connected with NCCE</li>
       <li>Administer any user accounts you have with us</li>
-      <li>Send you information about our services and other related activities which may be of interest to you via marketing emails you subscribe to</li>
-      <li>Where we have asked for your consent, we may use your image or quotes in our marketing materials. Please note that where information has been used in printed material, it will not be possible for this to be withdrawn</li>
-      <li>To carry out surveys/research, for example to measure our impact, and to evaluate/report on outcomes</li>
-      <li>Where you have agreed, we may provide your information to our trusted partners for research purposes</li>
-      <li>Ensure that content from our site is presented in the most effective manner for you</li>
-      <li>Where you are providing a service to us we will use your information for administrative, reporting and management purposes</li>
-      <li>Process a request that you have made for information from us</li>
-      <li>Safeguarding purposes - keeping young people and vulnerable adults safe</li>
+      <li>Send you information about our services and other related activities which may be of interest to you via marketing emails you subscribe to.</li>
+      <li>Where we have asked for your consent, we may use your image or quotes in our marketing materials. Please note that where information has been used in printed material, it will not be possible for this to be withdrawn.</li>
+      <li>To carry out surveys/research, for example to measure our impact, and to evaluate/report on outcomes.</li>
+      <li>Where you have agreed, we may provide your information to our trusted partners for research purposes.</li>
+      <li>Ensure that content from our site is presented in the most effective manner for you.</li>
+      <li>Where you are providing a service to us, we will use your information for administrative, reporting and management purposes.</li>
+      <li>Process a request that you have made for information from us.</li>
+      <li>Safeguarding purposes - keeping young people and vulnerable adults safe.</li>
     </ul>
-    <p class="govuk-body">For those participating in the Gender Balance in Computing Research Programme only:</p>
-    <ul class="govuk-body">
-      <li>to implement interventions and conduct exploratory research to increase the likelihood that girls are interested in taking computing as an academic subject</li>
-      <li>to determine the effect of a suite of interventions designed to increase the number of female pupils who opt to study computing for GCSE and A level</li>
-    </ul>
-    
+
     <h2 class="govuk-heading-m">6. On what legal basis we use your information</h2>
-    <p class="govuk-body">We have a lawful basis for collecting your data as set
-      out in section 3, “Why we collect that Information”, and for using the
-      data for the purposes described in section 5, “What we use your
-      information for”.</p>
-    <p class="govuk-body">Lawful basis may include:</p>
-    <ul class="govuk-body">
-      <li>Where we have your consent.</li>
-      <li>Where processing is necessary for the performance of a contract to
-        which you are a party. If you fail to provide this information, we may
-        be unable to perform the contract.</li>
-      <li>Where it is within legitimate interests to process your information.
-        We know that under this basis of processing, we have a heightened
-        responsibility to keep your interests central and to make sure that your
-        rights as a data subject override our legitimate interest.</li>
-      <li>Where we need to comply with a legal obligation.</li>
-    </ul>
+    <p class="govuk-body">We have a lawful basis for collecting your data as set out in section 6, “On what legal basis we use your information”, and for using the data for the purposes described in section 5, “What we use your information for”.</p>
+    <p class="govuk-body">We use several legal bases when processing your personal data. These are:</p>
+    <p class="govuk-body"><b>Consent:</b> We may ask for your consent to process and share your personal information. For example, you can use a sharing code you receive from a coach (e.g. teacher) to grant the coach access to your personal information. You may withdraw your consent for us to process or share your personal data in this manner at any time. This can be done through the website interface.</p>
+    <p class="govuk-body"><b>Public interest:</b> As a Public Authority as defined in the Freedom of Information Act. As such, we may receive requests which require us to process your personal data in fulfilment of our duties as either a government department (DfE). For example, a member of the public may ask us to calculate the total number of active users on the website in any given year.</p>
+
     <h2 class="govuk-heading-m">7. Who we share your information with</h2>
     <p class="govuk-body">We never sell your information to any third party.</p>
-    <p class="govuk-body">We do use third parties to process your personal data
-      on our behalf. These third party processors are listed below. We do change
-      these processors from time to time and will do what we can to update this
-      table regularly.</p>
+    <p class="govuk-body">We do use third parties to process your personal data on our behalf. These third-party processors are listed below. We do change these processors from time to time and will do what we can to update this table regularly.</p>
     <table class="govuk-table">
       <col width="30%">
       <col width="70%">
@@ -192,18 +100,7 @@
           <td class="govuk-table__cell">Business processing, marketing and
             reporting</td>
         </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">
-            Raspberry Pi Foundation</th>
-          <td class="govuk-table__cell">Business processing, marketing and
-            reporting</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">British
-            Computing Society</th>
-          <td class="govuk-table__cell">Business processing, marketing and
-            reporting</td>
-        </tr>
+
         <tr class="govuk-table__row">
           <th class="govuk-table__header ncce-table__header" scope="row">
             Computing Hubs, CS Champions, Subject Matter Experts</th>
@@ -259,89 +156,29 @@
           <th class="govuk-table__header ncce-table__header" scope="row">Service providers</th>
           <td class="govuk-table__cell">Suppliers and consultants we use to help us to deliver our services to you, for example: IT service providers, marketing support providers</td>
         </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">For
-            those participating in the Gender Balance in Computing Research
-            Programme only:</th>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">Apps
-            for Good</th>
-          <td class="govuk-table__cell">Implementing identified interventions
-            for those who wish to participate </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">
-            Behavioural Insights Ltd</th>
-          <td class="govuk-table__cell">Implementing identified interventions
-            for those who wish to participate and evaluation of the
-            effectiveness of the programme</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header ncce-table__header" scope="row">WISE
-            Campaign</th>
-          <td class="govuk-table__cell">Implementing identified interventions
-            for those who wish to participate</td>
-        </tr>
+
       </tbody>
     </table>
     <p class="govuk-body">We may share your information with other relevant
       organisations if you are asked and you agree that your information can be
       shared in that way.</p>
-    <p class="govuk-body">As the information we collect about you will be stored
-      on our IT infrastructure, it may also be shared with the data processors who
-      provide us with email, relationship management, anonymous analytics, document
-      management, and storage services.</p>
-    <p class="govuk-body">As part of the services offered to you through the National Centre
-      for Computing Education, the information you provide may be transferred to countries
-      outside the European Economic Area. These countries may not have similar data protection
-      laws to the UK. By submitting your personal data, you’re agreeing to this transfer,
-      storing or processing. When transferring your information outside of the EU in this way,
-      we take steps to ensure that appropriate security measures are taken with the aim of
-      ensuring that your privacy rights continue to be protected.</p>
+    <p class="govuk-body">As the information we collect about you will be stored on our IT infrastructure, it may also be shared with the data processors who provide us with email, relationship management, anonymous analytics, document management, and storage services.</p>
+    <p class="govuk-body">As part of the services offered to you through the National Centre for Computing Education, the information you provide may be transferred to countries outside the European Economic Area. These countries may not have similar data protection laws to the UK. By submitting your personal data, you’re agreeing to this transfer, storing or processing. When transferring your information outside of the EU in this way, we take steps to ensure that appropriate security measures are taken with the aim of ensuring that  your privacy rights continue to be protected.</p>
     <h2 class="govuk-heading-m">8. How long we keep your information for</h2>
-    <p class="govuk-body">We keep your information for no longer than is
-      necessary for our purposes, or for any period required by law, for example
-      for compliance with HMRC requirements, if this is longer. What is
-      necessary will depend on the reason for which the information was
-      collected. We are developing a data retention schedule and will share this
-      in due course.</p>
-    <p class="govuk-body">Your account: we will delete your STEM and NCCE Teach Computing
-    account if you have not signed in to either website during a 2 year period.
-    Any personal information we hold about you will be removed at this stage.
-    We will email you to notify you before this happens and give you the opportunity
-    to keep your account.</p>
-    <p class="govuk-body">Activity data: we will retain any activity information we
-    hold - such as course bookings, STEM Ambassador activities and impact data, for
-    up to 8 years after the end of the activity. If we have deleted your account due
-    to inactivity, then this data will be held anonymously.</p>
-    <p class="govuk-body">Regulatory lifetime data: for regulatory data,
-    normally related to finance or HR, we will retain data in compliance with
-    other legislation or regulatory requirements.</p>
-    <p class="govuk-body">Online courses: if you have a Futurelearn account,
-    and have taken any of our online courses through Futurelearn, then please
-    see <%= link_to 'Futurelearn’s privacy policy', 'https://www.futurelearn.com/info/terms/privacy-policy', class: 'ncce-link' %> for information about their data retention policy.</p>
+    <p class="govuk-body">The Department for Education will keep your personal data for the purposes of evaluation of the Isaac Computer Science programme until 31/08/2027, which is two years after the end of the current programme.</p>
+    <p class="govuk-body">We keep your information for no longer than is necessary for our purposes, or for any period required by law, for example for compliance with HMRC requirements, if this is longer. What is necessary will depend on the reason for which the information was collected. We are developing a data retention schedule and will share this in due course.</p>
+    <p class="govuk-body">Your account: we will delete your STEM and NCCE Teach Computing account if you have not signed in to either website during a 2 year period. Any personal information we hold about you will be removed at this stage. We will email you to notify you before this happens and give you the opportunity to keep your account.
+.</p>
+    <p class="govuk-body">Activity data: we will retain any activity information we hold - such as course bookings, STEM Ambassador activities and impact data, for up to 8 years after the end of the activity. If we have deleted your account due to inactivity, then this data will be held anonymously.</p>
+    <p class="govuk-body">Regulatory lifetime data: for regulatory data, normally related to finance or HR, we will retain data in compliance with other legislation or regulatory requirements.</p>
     <p class="govuk-body">If you have any questions about how long we keep your
       information, contact us at
       <%= mail_to 'datasecurity@stem.org.uk', 'datasecurity@stem.org.uk', class: 'ncce-link' %>
     </p>
     <h2 class="govuk-heading-m">9. Your rights</h2>
-    <p class="govuk-body"><strong>Right of access</strong> — you have a right to
-      ask us to confirm whether we are processing information about you, and to
-      request access to this information.</p>
-    <p class="govuk-body"><strong>Right to rectification</strong> — it is your
-      responsibility to see that the information held on the website is up to
-      date. We may also update some information if we identify it is out of
-      date, for example a school closes and reopens with a different name. You
-      may ask us to rectify information you think is inaccurate, and you may
-      also ask us to remove information which is inaccurate or incomplete. If
-      you inform us that your personal data is inaccurate, we will inform
-      relevant third parties with whom we have shared your data so that they may
-      update their own records.</p>
-    <p class="govuk-body">In order to ensure we do not hold any out of date
-      information for individuals we regularly remove registered users for whom
-      we do not have a valid email address; this includes those accounts to
-      which the email address has been reported as undeliverable.</p>
+    <p class="govuk-body"><strong>Right of access</strong> — you have a right to ask us to confirm whether we are processing information about you, and to request access to this information.</p>
+    <p class="govuk-body"><strong>Right to rectification</strong> — it is your responsibility to see that the information held on the website is up to date. We may also update some information if we identify it is out of date, for example a school closes and reopens with a different name. You may ask us to rectify information you think is inaccurate, and you may also ask us to remove information which is inaccurate or incomplete. If you inform us that your personal data is inaccurate, we will inform relevant third parties with whom we have shared your data so that they may update their own records.</p>
+    <p class="govuk-body">In order to ensure we do not hold any out of date information for individuals we regularly remove registered users for whom we do not have a valid email address; this includes those accounts to which the email address has been reported as undeliverable.</p>
     <p class="govuk-body"><strong>Right of portability</strong> — you have a
       right to obtain your personal data from us and reuse it for your own
       purposes.</p>
@@ -382,25 +219,18 @@
     </ul>
     <p class="govuk-body">To make a request for any personal information we may
       hold or exercise any of your rights, you need to put the request in
-      writing addressing it to: The Data Protection Officer, STEM Learning,
-      University of York, York, YO10 5DD.</p>
-    <p class="govuk-body">We may ask for your help in locating specific
-      information and confirming your identity. We will act in accordance with
-      your instructions as soon as reasonably possible, and there will be no
-      charge.</p>
-    <p class="govuk-body">If you agree, we will try to deal with your request
-      informally, for example by providing you with the specific information you
-      need over the telephone.</p>
-    <p class="govuk-body">Our use of your data processed in the UK is regulated
-      by the Information Commissioner. You have a right to report any of your
-      concerns about our use of your data to the Information Commissioner’s
-      Office.</p>
+      writing addressing it to:</p>
+
+      <p class="govuk-body">The Data Protection Officer, STEM Learning, University of York, York, YO10 5DD or emailing <%= mail_to 'datasecurity@stem.org.uk', 'datasecurity@stem.org.uk', class: 'ncce-link' %>.</p>
+    <p class="govuk-body">We may ask for your help in locating specific information and confirming your identity. We will act in accordance with your instructions as soon as reasonably possible, and there will be no charge.</p>
+    <p class="govuk-body">If you agree, we will try to deal with your request informally, for example by providing you with the specific information you need over the telephone.</p>
+    <p class="govuk-body">Alternatively, you can make a subject access request in writing or through the <%= link_to "DfE contact form", 'https://form.education.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-f1453496-7d8a-463f-9f33-1da2ac47ed76/AF-Stage-1e64d4cc-25fb-499a-a8d7-74e98203ac00/definition.json&redirectlink=/en&cancelRedirectLink=/en', class: 'ncce-link' %>. </p>
+
+    <p class="govuk-body">To make your request in writing, post your request to:</p>
+    <p class="govuk-body">Data Protection Officer<br/>Department for Education (B2.28)<br/>7 & 8 Wellington Place<br/>Wellington Street<br/>Leeds<br/>LS1 4AW</p>
+    <p class="govuk-body">Our use of your data processed in the UK is regulated by the Information Commissioner. You have a right to report any of your concerns about our use of your data to the Information Commissioner’s Office.</p>
     <h2 class="govuk-heading-m">10. Cookies</h2>
-    <p class="govuk-body">Cookies are small text files that are placed on your
-      computer by websites that you visit. They are widely used in order to make
-      websites work, or work more efficiently, as well as to provide information
-      to the owners of the site. In this policy the term “cookie” describes a
-      range of technologies, including cookies, web beacons and pixel tags.</p>
+    <p class="govuk-body">Cookies are small text files that are placed on your computer by websites that you visit. They are widely used in order to make websites work, or work more efficiently, as well as to provide information to the owners of the site. In this policy the term “cookie” describes a range of technologies, including cookies, web beacons and pixel tags.</p>
     <p class="govuk-body">There are two main types of cookies that are used on
       the website:</p>
     <table class="govuk-table">
@@ -446,13 +276,8 @@
     </table>
     <h3 class="govuk-heading-s">Use of cookies by this website </h3>
 
-    <p class="govuk-body">A number of the cookies that we use on the website are
-      essential for parts of the site to operate
-      and some have already been set. You may delete and block all cookies from
-      the site, but parts of
-      the site will not work.</p>
-    <p class="govuk-body">There are a number of different types of cookies which
-      have different purposes:</p>
+    <p class="govuk-body">A number of the cookies that we use on the website are essential for parts of the site to operate and some have already been set. You may delete and block all cookies from the site, but parts of the site will not work.</p>
+    <p class="govuk-body">There are a number of different types of cookies which have different purposes:</p>
     <ul class="govuk-body">
       <li>Necessary – enable you to use our site and services</li>
       <li>Functional – remember choices you make to improve site experience
@@ -465,9 +290,7 @@
     </ul>
     <p class="govuk-body">The following cookies are used by the website:</p>
     <h3 class="govuk-heading-s">Necessary and Functional Cookies </h3>
-    <p class="govuk-body">These are necessary and/or functional types of
-      cookies. Disabling these would affect the
-      functionality and may restrict access to certain parts of the website.</p>
+    <p class="govuk-body">These are necessary and/or functional types of cookies. Disabling these would affect the functionality and may restrict access to certain parts of the website.</p>
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -765,12 +588,13 @@
         you with a prominent notice e.g by displaying a notice on the website.
       </p>
       <h2 class="govuk-heading-m">12. How to contact us about your data</h2>
-      <p class="govuk-body">Data rights are human rights and we are determined
-        to fairly and fully honour yours. You can unsubscribe at any time or
-        just get in touch with any questions, comments, or instructions
-        regarding your information by writing to
-        <%= mail_to 'datasecurity@stem.org.uk', 'datasecurity@stem.org.uk', class: 'ncce-link' %>
-        or writing to: The Data Protection Officer, STEM Learning, University of
-        York, York, YO10 5DD</p>
+      <p class="govuk-body">If you have a question, or feel your data has been mishandled, you can contact us by: using our secure <%= link_to "DfE contact form", 'https://form.education.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-f1453496-7d8a-463f-9f33-1da2ac47ed76/AF-Stage-1e64d4cc-25fb-499a-a8d7-74e98203ac00/definition.json&redirectlink=/en&cancelRedirectLink=/en', class: 'ncce-link' %>.</p>
+
+          <p class="govuk-body">Or writing to:</p>
+    <p class="govuk-body">Data Protection Officer<br/>Department for Education (B2.28)<br/>7 & 8 Wellington Place<br/>Wellington Street<br/>Leeds<br/>LS1 4AW</p>
+          <p class="govuk-body">You can also complain to the ICO by writing to:</p>
+    <p class="govuk-body">Information Commissioner’s Office <br/>Wycliffe House Water Lane<br/>Wilmslow<br/>Cheshire<br/>SK9 5AF</p>
+    <p class="govuk-body">Helpline number: 0303 123 1113. Or use the online <%= link_to "ICO contact form", 'https://ico.org.uk/global/contact-us/contact-us-public/', class: 'ncce-link' %>.</p>
+    <h2 class="govuk-heading-m">Last Updated: 28th February 2023</h2>
   </div>
 </div>
