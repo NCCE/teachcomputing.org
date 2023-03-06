@@ -20,7 +20,7 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
-activity = Activity.find_or_create_by(stem_course_template_no: '83e7b049-a5b6-ed11-b597-0022481b59ce')
+activity = Activity.find_by(stem_course_template_no: '83e7b049-a5b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
 activity = Activity.find_by(stem_course_template_no: '7ffcf8be-a6b6-ed11-b597-0022481b59ce')
