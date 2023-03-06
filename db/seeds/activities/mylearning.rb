@@ -129,7 +129,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '83e7b049-a5b6-ed11-b597
   activity.slug = 'programming-with-guis'
   activity.category = 'online'
   activity.self_certifiable = false
-  activity.future_learn_course_uuid = '645ec51f-0b46-4102-a364-90647057f4f2'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO217'
   activity.always_on = true
