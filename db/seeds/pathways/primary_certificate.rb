@@ -29,16 +29,13 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(future_learn_course_uuid: '147b3adf-9f26-4ffa-a95f-6c1720ca4d27')
+activity = Activity.find_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(future_learn_course_uuid: '7f88c178-9538-4970-b438-ab80e6125d5e')
+activity = Activity.find_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(future_learn_course_uuid: 'b2445d09-f3b3-45da-b4ec-6d33bb6cb89b')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
-activity = Activity.find_by(future_learn_course_uuid: 'b19646a7-d78b-4a92-ad36-d4b3a11a3df1')
+activity = Activity.find_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
 # develop your teaching practice
@@ -82,16 +79,10 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(future_learn_course_uuid: '26e9cd23-2d71-4964-9af3-751aa3fdc8e5')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
-activity = Activity.find_by(future_learn_course_uuid: '440d652-4128-4995-9ef7-662a0bc505ed')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
-activity = Activity.find_by(future_learn_course_uuid: '7e5ae100-f4fc-425b-a53b-c81cb6eb4abc')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
 activity = Activity.find_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
+
+activity = Activity.find_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
 # develop your teaching practice
