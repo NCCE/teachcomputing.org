@@ -16,7 +16,12 @@ module CurriculumClient
         schema_path:
       )
 
-      raise CurriculumClient::Errors::SchemaLoadError, 'Unable to retrieve the schema' unless @client.schema.present?
+      # Trigger a schema request and rescue to provide some clarity on what's happening
+      begin
+        @client.schema # trigger a schema request
+      rescue Faraday::ParsingError
+        raise CurriculumClient::Errors::SchemaLoadError, 'Unable to retrieve the schema'
+      end
 
       # Only cache if a schema_path isn't defined (typically for testing) or the cache was empty
       Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours) if store_schema

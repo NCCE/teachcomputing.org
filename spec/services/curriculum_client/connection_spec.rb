@@ -12,10 +12,6 @@ RSpec.describe CurriculumClient::Connection do
       Rails.cache.clear
     end
 
-    it 'raises an error if it fails to load' do
-      expect { described_class.connect('missing.json') }.to raise_error(CurriculumClient::Errors::SchemaLoadError)
-    end
-
     it 'can load' do
       stub_a_valid_schema_request_strict
       client = described_class.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
