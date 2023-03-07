@@ -1,170 +1,171 @@
-<% if current_user %>
-  <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
-    <div class="ncce-aside">
-      <% if !@course.online_cpd && @occurrences.empty? %>
-        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
-        <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
-      <% else %>
-        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
-        <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-      <% end %>
-      <% if (@booking.show_stem_occurrence_list) %>
-        <ul class="govuk-list ncce-booking-list">
-        <% @occurrences.each do |occurrence| %>
-          <li class="ncce-booking-list__item">
-            <div class='govuk-body-s ncce-booking-list__date'>
-              <%= @booking.activity_date(occurrence.start_date) %>
-            </div>
-            <div class='ncce-booking-list__details-wrapper'>
-              <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
-                <%= @booking.address(occurrence) %>
-              </span>
-              <span class='ncce-booking-list__button_wrapper'>
-                <%= link_to(
-                  @booking.booking_button_title,
-                  @booking.booking_path(occurrence.course_occurrence_no),
-                  class: 'govuk-button button button--small',
-                  draggable: 'false',
-                  data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
-                  target: :_blank
-                ) %>
-              </span>
-            </div>
-          </li>
+<div class="ncce-aside" id="booking-list">
+  <% if current_user %>
+    <% if [:not_enrolled, :dropped].include? user_achievement_state(current_user, @activity) %>
+        <% if !@course.online_cpd && @occurrences.empty? %>
+          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
+          <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
+        <% else %>
+          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
+          <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
         <% end %>
-        </ul>
-        <%= link_to('Find your local Hub', '/hubs',
-            class: 'govuk-button button button--full-width',
-            draggable: 'false',
-            target: :_blank, data_event_action: 'click',
-            data_event_category: 'course details',
-            data_event_label: 'Coming soon')
-        %>
-      <% else %>
+        <% if (@booking.show_stem_occurrence_list) %>
+          <ul class="govuk-list ncce-booking-list">
+          <% @occurrences.each do |occurrence| %>
+            <li class="ncce-booking-list__item">
+              <div class='govuk-body-s ncce-booking-list__date'>
+                <%= @booking.activity_date(occurrence.start_date) %>
+              </div>
+              <div class='ncce-booking-list__details-wrapper'>
+                <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
+                  <%= @booking.address(occurrence) %>
+                </span>
+                <span class='ncce-booking-list__button_wrapper'>
+                  <%= link_to(
+                    @booking.booking_button_title,
+                    @booking.booking_path(occurrence.course_occurrence_no),
+                    class: 'govuk-button button button--small',
+                    draggable: 'false',
+                    data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
+                    target: :_blank
+                  ) %>
+                </span>
+              </div>
+            </li>
+          <% end %>
+          </ul>
+          <%= link_to('Find your local Hub', '/hubs',
+              class: 'govuk-button button button--full-width',
+              draggable: 'false',
+              target: :_blank, data_event_action: 'click',
+              data_event_category: 'course details',
+              data_event_label: 'Coming soon')
+          %>
+        <% else %>
+          <p class="govuk-body">
+            <%= link_to(
+                @booking.authenticated_title,
+                @booking.booking_path(@activity.stem_course_template_no),
+                class: 'govuk-button button--aside',
+                draggable: 'false',
+                data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+                target: :_blank
+                ) %>
+          </p>
+          <%= render('courses/start-date', date: @start_date) unless @started %>
+        <% end %>
+      </div>
+    <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
+      <%= @booking.enrolled_introduction(@started) %></p>
+
+      <% if @booking.enrolled_button_title(@start_date) %>
         <p class="govuk-body">
           <%= link_to(
-            @booking.authenticated_title,
-            @booking.booking_path(@activity.future_learn_course_uuid),
+            @booking.enrolled_button_title(@start_date),
+            Rails.configuration.mylearning_dashboard_url,
             class: 'govuk-button button--aside',
             draggable: 'false',
-            data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+            data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
             target: :_blank
           ) %>
         </p>
-        <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
-        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
       <% end %>
-    </div>
-  <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
-    <div class="ncce-aside">
-      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
-      <p class="govuk-body-s ncce-aside__text"><%= @booking.enrolled_introduction %></p>
-      <p class="govuk-body">
-        <%= link_to(
-          @booking.enrolled_button_title,
-          @booking.booking_path(@activity.future_learn_course_uuid),
-          class: 'govuk-button button--aside',
-          draggable: 'false',
-          data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
-          target: :_blank
-        ) %>
-      </p>
-      <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
-      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
-      <p class='govuk-body-s ncce-booking-list__progress'>
-        Can't see the progress of your course? You may need to rejoin the course.
-      </p>
-      <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
-          <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-          <ul class="govuk-list ncce-booking-list">
-            <% if  @user_occurrence.present? %>
-              <li class="ncce-booking-details">
-                <div class='govuk-body-s ncce-booking-list__date'>
-                  <%=  course_start_date(@user_occurrence.start_date) %>
-                </div>
-                <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
-                  <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
-                    <% unless @course.remote_delivered_cpd %>
-                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
-                    <% end %>
-                    <br>
-                    <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
-                  </span>
-              </li>
-            <% end %>
-          </ul>
-          <%= render ProviderLogosComponent.new(online: false) %>
-        </div>
-      <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
-        <div class="ncce-aside">
-          <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
-          <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
-          <ul class="govuk-list ncce-booking-list">
-            <% if  @user_occurrence.present? %>
-              <li class="ncce-booking-details">
-                <div class='govuk-body-s ncce-booking-list__date'>
-                  <%=  course_start_date(@user_occurrence.start_date) %>
-                </div>
-                <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
-                  <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
-                    <% unless @course.remote_delivered_cpd %>
-                      <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
-                    <% end %>
-                    <br>
-                    <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
-                  </span>
-              </li>
-            <% end %>
-          </ul>
-          <%= render ProviderLogosComponent.new(online: false) %>
-    </div>
-  <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
-    <div class="ncce-aside">
+
+      <%= render('courses/start-date', date: @start_date) unless @started %>
+    <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
+       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
+       <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+       <ul class="govuk-list ncce-booking-list">
+         <% if  @user_occurrence.present? %>
+           <li class="ncce-booking-details">
+             <div class='govuk-body-s ncce-booking-list__date'>
+               <%=  course_start_date(@user_occurrence.start_date) %>
+             </div>
+             <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+               <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+                 <% unless @course.remote_delivered_cpd %>
+                   <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
+                 <% end %>
+                 <br>
+                 <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+               </span>
+           </li>
+         <% end %>
+       </ul>
+    <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
+      <ul class="govuk-list ncce-booking-list">
+        <% if  @user_occurrence.present? %>
+          <li class="ncce-booking-details">
+            <div class='govuk-body-s ncce-booking-list__date'>
+              <%=  course_start_date(@user_occurrence.start_date) %>
+            </div>
+            <p class='govuk-body-s'> <%= course_subtitle_text(@course) %> </p>
+              <span class='govuk-body-s govuk-!-margin-top-1 ncce-booking-list__address'>
+                <% unless @course.remote_delivered_cpd %>
+                  <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
+                <% end %>
+                <br>
+                <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+              </span>
+          </li>
+        <% end %>
+      </ul>
+    <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.completed_button_introduction %></p>
       <p class="govuk-body">
         <%= link_to(
           @booking.completed_button_title,
-          @booking.booking_path(@activity.future_learn_course_uuid),
+          Rails.configuration.mylearning_dashboard_url,
           class: 'govuk-button button--aside',
           draggable: 'false',
           data: { event_action: 'click', event_category: 'course details', event_label: 'view online course' },
           target: :_blank
         ) %>
       </p>
-      <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
-      <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
-    </div>
-  <% end %>
-<% else %>
-  <div class="ncce-aside" id="booking-list">
+    <% end %>
+  <% else # not logged in %>
     <% if !@course.online_cpd && @occurrences.empty? %>
-        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
-        <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
-        <%= link_to('Find your local Hub', '/hubs',
-            class: 'govuk-button button button--full-width',
-            draggable: 'false',
-            target: :_blank, data_event_action: 'click',
-            data_event_category: 'course details',
-            data_event_label: 'Coming soon')
-        %>
-      <% else %>
-        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
-        <p class="govuk-body-s ncce-aside__text"> You need to be logged in to start the course.</p>
-        <p class="govuk-body">
-          <%= link_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
-        </p>
-        <p class="govuk-body-s ncce-aside__text">
-          Not got a STEM Learning account?
-          <br>
-          <%= link_to 'Create an account', create_account_url,
-            class: 'ncce-link', draggable: 'false',
-            data: { event_action: 'click', event_category: 'course details'} %>
-        </p>
-        <%= render 'courses/facilitation-periods', course: @course if @booking.show_facilitation_periods(@course, @occurrences) %>
-        <%= render ProviderLogosComponent.new(online: @course.online_cpd) %>
-      <% end %>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
+      <%= link_to('Find your local Hub', '/hubs',
+          class: 'govuk-button button button--full-width',
+          draggable: 'false',
+          target: :_blank, data_event_action: 'click',
+          data_event_category: 'course details',
+          data_event_label: 'Coming soon')
+      %>
+    <% else %>
+      <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
+      <p class="govuk-body-s ncce-aside__text"><%= @booking.unauthenticated_introduction %></p>
+      <p class="govuk-body">
+        <%= link_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
+      </p>
+      <p class="govuk-body-s ncce-aside__text">
+        Not got a STEM Learning account?
+        <br>
+        <%= link_to 'Create an account', create_account_url,
+          class: 'ncce-link', draggable: 'false',
+          data: { event_action: 'click', event_category: 'course details'} %>
+      </p>
+      <%= render('courses/start-date', date: @start_date) if (@course.online_cpd && !@started) %>
+    <% end %>
+  <% end %>
+
+  <div class='govuk-body govuk-!-margin-bottom-0 provider-logos' %>
+    <div class='govuk-body-s'>
+      This course is from the National Centre for Computing Education and is delivered by STEM Learning.
+    </div>
+    <div class='govuk-body-s provider-logos__logo-wrapper'>
+      <%= image_pack_tag 'media/images/logos/ncce-logo.svg', alt: '' %>
+      <%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: '', class: '' %>
+    </div>
   </div>
-<% end %>
+  <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
+    <p class='govuk-body-s ncce-booking-list__progress'>
+      Can't see the progress of your course? You may need to rejoin the course.
+    </p>
+  <% end %>
+</div>
