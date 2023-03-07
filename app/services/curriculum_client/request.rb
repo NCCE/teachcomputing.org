@@ -15,9 +15,13 @@ module CurriculumClient
       ) do
         fetch_data(query, client, params)
       end
+    # Handle 404s gracefully...
     rescue Graphlient::Errors::ExecutionError => e
-      # Make a 404 a routing error, for consistency
       raise ActionController::RoutingError, e.message if e.message.include?('not found')
+
+      raise
+    rescue Graphlient::Errors::FaradayServerError => e
+      raise ActionController::RoutingError, e.message if e.status_code == 404
 
       raise
     end
