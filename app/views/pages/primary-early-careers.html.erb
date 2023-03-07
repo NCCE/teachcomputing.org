@@ -1,7 +1,7 @@
 <% meta_tag :title, 'Primary early career and trainee teachers' %>
 <% meta_tag :description, 'We support early career and trainee teachers to develop their teaching of primary computing through professional development, resources and local communities.' %>
 
-<%= render 'components/hero', hero_title: 'Primary early career and trainee teachers', subtitle: 'We support early career teachers and trainees to develop their computing subject knowledge and pedagogy through professional development, resources and local communities.', colour: 'jaffa-bg', full_width: true %>
+<%= render 'components/hero', hero_title: 'Primary early career and trainee teachers', subtitle: 'We support early career and trainee teachers to develop their teaching of primary computing through professional development, resources and local communities.', colour: 'jaffa-bg', full_width: true %>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
@@ -10,7 +10,7 @@
         <p class="govuk-body">
           If you’re starting out teaching computing, our introductory courses and resources will build your knowledge and skills to enable you to confidently deliver computing lessons at key stage 1 and 2.
         </p>
-        <%= link_to 'Access our introductory support', '/starting-out', class: 'govuk-button button', data: tracking_data('Primary certificate') %>
+        <%= link_to 'Access our introductory support', '/starting-out', class: 'govuk-button button', data: {event_action: 'click', event_category: 'Primary ECT', event_label: 'Introductory support'} %>
 
         <hr class="govuk-section-break govuk-section-break--m">
 
@@ -18,15 +18,15 @@
         <p class="govuk-body">
           Our courses grow your knowledge and offer practical and effective ways to teach computing. We offer learning pathways for subject specialists and those developing their practice, leading to national certification.
         </p>
-        <%= link_to 'Browse all courses', '/courses', class: 'govuk-button button', data: tracking_data('primary certificate') %>
+        <%= link_to 'Browse all courses', '/courses', class: 'govuk-button button', data: {event_action: 'click', event_category: 'Primary ECT', event_label: 'Browse courses'} %>
       </div>
 
       <div class="govuk-grid-column-one-third">
         <%= render BursaryComponent.new(
           text: 'We offer financial support to state-funded schools across England, including subsidies for supply cover to enable you to participate in professional development.',
           link_title: 'Check your eligibility',
-          tracking_event_category: 'Courses',
-          tracking_event_label: 'Bursaries',
+          tracking_event_category: 'Primary ECT',
+          tracking_event_label: 'Funding',
           bottom_margin: false
         ) %>
       </div>
@@ -40,7 +40,7 @@
       <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-xl">Resources</h2>
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
+            <div class="card card--primary-certificate card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Early career support guide</h2>
               </div>
@@ -52,7 +52,7 @@
               </p>
             </div>
 
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
+            <div class="card card--primary-certificate card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Teach Computing Curriculum</h2>
               </div>
@@ -64,7 +64,7 @@
               </p>
             </div>
 
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
+            <div class="card card--primary-certificate card--bottom-glyph card--landing-page lp-certs--card lp-certs__card--wide">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Pedagogy</h2>
               </div>
