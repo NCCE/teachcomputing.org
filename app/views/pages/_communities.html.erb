@@ -22,7 +22,7 @@
               {
                 image_url: 'media/images/secondary_early_careers/stem_community.jpg',
                 title: 'STEM community',
-                text: 'Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to secondary computing group caters for teachers joining the profession or teaching computing for the first time.',
+                text: "Discuss computing education with like-minded professionals and share ideas, practices and resources. The New to #{request.path == '/primary-early-careers'? 'primary' : 'secondary'} computing group caters for teachers joining the profession or teaching computing for the first time.",
                 link: {
                   link_title: 'Join STEM community',
                   link_url: 'https://www.stem.org.uk/stem-community',
