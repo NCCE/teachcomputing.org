@@ -28,7 +28,7 @@ class PrimaryLandingPage
   end
 
   def hero_class
-    'jaffa-bg'
+    'lime-green-bg'
   end
 
   def event_tracking_category
