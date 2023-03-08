@@ -28,7 +28,7 @@ RSpec.describe Curriculum::LessonsController do
           unit_slug: 'representations-from-clay-to-silicon',
           lesson_slug: 'a-dud'
         )
-      end.to raise_error(CurriculumClient::Errors::RecordNotFound)
+      end.to raise_error(Graphlient::Errors::FaradayServerError)
     end
   end
 end

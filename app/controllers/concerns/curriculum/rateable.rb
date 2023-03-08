@@ -25,8 +25,8 @@ module Curriculum
 
       render json: {
         origin: __method__.to_s,
-        rating_id: rating_id
-      }, status: status
+        rating_id:
+      }, status:
     end
 
     def comment
@@ -35,8 +35,7 @@ module Curriculum
       response = client.update_rating(
         id: request[:rating_id],
         key: :comment,
-        value: request[:comment].gsub('"', '\"'),
-        context: 'update_rating'
+        value: request[:comment].gsub('"', '\"')
       )
 
       render json: {
@@ -51,8 +50,7 @@ module Curriculum
       response = client.update_rating(
         id: request[:rating_id],
         key: :choices,
-        value: request[:rating_choices],
-        context: 'update_rating'
+        value: request[:rating_choices]
       )
       response.rating_id = request[:rating_id]
       render json: {
@@ -67,13 +65,13 @@ module Curriculum
       case polarity.to_sym
       when :positive
         response = client.add_positive_rating(
-          id: id,
+          id:,
           stem_achiever_contact_no: achiever_contact_no,
           fields: 'id'
         )
       when :negative
         response = client.add_negative_rating(
-          id: id,
+          id:,
           stem_achiever_contact_no: achiever_contact_no,
           fields: 'id'
         )

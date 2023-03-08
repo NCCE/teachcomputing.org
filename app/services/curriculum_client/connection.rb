@@ -3,8 +3,6 @@ module CurriculumClient
     CURRICULUM_APP_URL = "#{ENV.fetch('CURRICULUM_APP_URL')}/graphql".freeze
 
     def self.connect(schema_path = nil, url = CURRICULUM_APP_URL)
-      store_schema = !schema_path || Rails.cache.fetch('curriculum_schema').blank?
-
       @client = Graphlient::Client.new(
         url,
         headers: {
@@ -16,10 +14,13 @@ module CurriculumClient
         schema_path:
       )
 
-      raise CurriculumClient::Errors::SchemaLoadError, 'Unable to retrieve the schema' unless @client.schema.present?
-
-      # Only cache if a schema_path isn't defined (typically for testing) or the cache was empty
-      Rails.cache.write('curriculum_schema', dump_schema, expires_in: 24.hours) if store_schema
+      # Trigger a schema request and rescue to provide some clarity on what's happening, this issue appears to have
+      # been fixed in 0.7 of Graphlient, however a dependency issue prevents the update (08/03/23).
+      begin
+        @client.schema # trigger a schema request
+      rescue Faraday::ParsingError
+        raise CurriculumClient::Errors::SchemaLoadError, 'Unable to retrieve the schema'
+      end
 
       @client
     end
