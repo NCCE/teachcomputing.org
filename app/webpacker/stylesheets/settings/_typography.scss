@@ -13,8 +13,20 @@
   .govuk-heading-l,
   .govuk-heading-xl,
   .heading-generic,
-  .govuk-body {
+  .govuk-body,
+  .govuk-body-l {
     color: $white;
+  }
+}
+.white-bg {
+  .govuk-heading-s,
+  .govuk-heading-m,
+  .govuk-heading-l,
+  .govuk-heading-xl,
+  .heading-generic,
+  .govuk-body,
+  .govuk-body-l {
+    color: $grey-dark-x;
   }
 }
 
@@ -46,9 +58,12 @@
 }
 .govuk-body,
 .govuk-body-s,
-.govuk-body-m,
-.govuk-body-l {
+.govuk-body-m {
   color: $grey-storm;
+}
+
+.govuk-body-l {
+  color: $grey-dark-x;
 }
 
 .govuk-list--ncce li {
