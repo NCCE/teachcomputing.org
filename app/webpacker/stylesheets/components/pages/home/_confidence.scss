@@ -35,27 +35,22 @@
 
 .ncce-confidence__icon-container {
   width: 84px;
+  margin-right: 1rem;
   @include govuk-media-query($from: tablet) {
-    background-color: $concrete;
-    border-bottom: 3px solid $deep-cerulean;
+    background-color: $purple-dark;
+    border-bottom: 3px solid $lime-green;
     margin-bottom: 1rem;
-    padding: 18px 0;
+    margin-right: 0;
+    padding: 0;
     text-align: center;
     width: 100%;
-  }
-  @include govuk-media-query($from: desktop) {
-    padding: 24px 0;
   }
 }
 
 .ncce-confidence__icon {
-  width: 68px;
-  @include govuk-media-query($from: tablet) {
-    width: 106px;
-  }
-  @include govuk-media-query($from: desktop) {
-    width: 138px;
-  }
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
 
 .ncce-confidence__panel-header {
