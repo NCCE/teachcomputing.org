@@ -3,7 +3,7 @@ class HeroMediaComponentPreview < ViewComponent::Preview
 
   def with_image
     params = {
-      class_name: 'tapestry-bg',
+      class_name: 'lime-green-bg',
       title: 'About us',
       text: "This is an example of a hero image component. It's a hero and it has an image, it also has some text.",
       image: {
@@ -17,7 +17,7 @@ class HeroMediaComponentPreview < ViewComponent::Preview
 
   def with_video
     params = {
-      class_name: 'tapestry-bg',
+      class_name: 'lime-green-bg',
       title: 'About us',
       text: "This is an example of a hero image component. It's a hero and it has an image, it also has some text.",
       video: {

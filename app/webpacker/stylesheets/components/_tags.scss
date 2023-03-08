@@ -3,7 +3,7 @@
 }
 
 .govuk-phase-banner__content__tag {
-  background-color: $deep-cerulean;
+  background-color: $purple-dark;
 }
 
 
@@ -14,7 +14,7 @@
   letter-spacing: 0;
   background-color: $white;
   color: $grey-dark-x;
-  border: 2px solid $dixie;
+  border: 2px solid $orange;
 }
 
 .ncce-courses__filter-tag {
@@ -24,12 +24,12 @@
 .ncce-courses__filter-tag--primary {
   background-color: $primary-cert-color;
   border-color: $primary-cert-color;
-  color: $white;
+  color: $grey-dark-x;
 }
 
 .ncce-courses__filter-tag--cs-accelerator,
 .ncce-courses__filter-tag--secondary {
   background-color: $secondary-cert-color;
   border-color: $secondary-cert-color;
-  color: $white;
+  color: $grey-dark-x;
 }

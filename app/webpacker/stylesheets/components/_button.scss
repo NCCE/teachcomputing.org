@@ -66,14 +66,14 @@
   }
 }
 
-.button--small {
-  font-size: 14px;
-  margin-bottom: 0;
-  padding: 0.3125rem 0.875rem;
-  @include govuk-media-query($from: tablet) {
-    font-size: 16px;
-  }
-}
+// .button--small {
+//   font-size: 14px;
+//   margin-bottom: 0;
+//   padding: 0.3125rem 0.875rem;
+//   @include govuk-media-query($from: tablet) {
+//     font-size: 16px;
+//   }
+// }
 
 .button--medium {
   padding: 0.75rem 0.9375rem;
@@ -93,7 +93,7 @@
 }
 
 .button--aside {
-  @include ncce_button($deep-cerulean);
+  @include ncce_button($lime-green);
   @include govuk-media-query($from: desktop) {
     margin-bottom: 0;
   }
