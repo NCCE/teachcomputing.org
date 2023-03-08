@@ -176,6 +176,10 @@ if activity
   end
 end
 
+# CO206/how-computers-work-demystifying-computation
+activity = Activity.find_by(stem_course_template_no: '249f1bc2-a5b6-ed11-b597-0022481b59ce')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
+
 activity = Activity.find_by(stem_course_template_no: '9187d975-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
