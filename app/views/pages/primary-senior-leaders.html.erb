@@ -6,7 +6,6 @@
 <%= render HeroComponent.new(
   title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
-  glyph: :c1,
   color: 'primary'
 ) %>
 
@@ -156,7 +155,8 @@
                       event_action: 'click',
                       tracking_page: 'Primary SLT',
                       tracking_label: t('.partners.text.educational-partners-link.event-label')
-                    }
+                    },
+                    class: 'ncce-link govuk-link--no-underline'
                 )))
             %></p>
           </div>

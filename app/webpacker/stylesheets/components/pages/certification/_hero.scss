@@ -1,26 +1,10 @@
-.hero,
-.hero--blue {
-  background-color: $action-color;
+.hero {
+  background-color: $lime-green;
   color: $grey-dark-x;
   position: relative;
-  &:after {
-    @include govuk-media-query($from: tablet) {
-      background-image: url(../images/hero/glyph-1.svg);
-      background-position-x: right;
-      background-repeat: no-repeat;
-      background-size: 75%;
-      content: "";
-      display: block;
-      height: 120px;
-      opacity: 0.15;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 140px;
-    }
-    @include govuk-media-query($from: desktop) {
-      background-size: 100%;
-    }
+  &--blue {
+    background-color: $action-color;
+
   }
 }
 
