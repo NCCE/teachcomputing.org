@@ -9,6 +9,7 @@
     border-radius: 10px;
     line-height: 1.4;
     padding: 10px;
+    color: $govuk-text-colour !important;
     @include govuk-media-query($from: tablet) {
       padding: 18px;
     }
@@ -30,7 +31,7 @@
     margin-bottom: 0;
   }
   &__image {
-    border: 2px solid $dixie;
+    border: 2px solid $orange;
     border-radius: 24px;
     height: 48px;
     width: 48px;
@@ -58,7 +59,7 @@
   &__quote {
   }
   &__image {
-    border: 2px solid $dixie;
+    border: 2px solid $orange;
     border-radius: 50%;
     margin-left: 12px;
     width: 48px;

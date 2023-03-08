@@ -14,10 +14,12 @@
   .govuk-heading-xl,
   .heading-generic,
   .govuk-body,
-  .govuk-body-l {
+  .govuk-body-l,
+  .govuk-body-s {
     color: $white;
   }
 }
+
 .white-bg {
   .govuk-heading-s,
   .govuk-heading-m,
@@ -25,7 +27,8 @@
   .govuk-heading-xl,
   .heading-generic,
   .govuk-body,
-  .govuk-body-l {
+  .govuk-body-l,
+  .govuk-body-s  {
     color: $grey-dark-x;
   }
 }
@@ -52,10 +55,6 @@
   line-height: 1.45;
 }
 
-
-.govuk-body-xs {
-
-}
 .govuk-body,
 .govuk-body-s,
 .govuk-body-m {
