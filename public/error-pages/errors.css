@@ -6974,7 +6974,7 @@ a:not([class]):active {
 
 .pathway__step-circle {
   background: #ffffff;
-  border: solid 3px #007fa2;
+  border: solid 3px ;
   border-radius: 100px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

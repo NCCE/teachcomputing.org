@@ -28,7 +28,7 @@
 
   .ncce-link {
     font-weight: bold;
-  } 
+  }
 
   &--primary-cert {
     border-top: solid 9px $primary-cert-color;
@@ -45,6 +45,10 @@
 
 .bordered-card__text {
   flex-grow: 1;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .bordered-card__title {
