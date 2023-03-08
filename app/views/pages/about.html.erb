@@ -1,6 +1,6 @@
 <% meta_tag :title, 'About Us - Teach Computing' %>
 <%= render HeroMediaComponent.new(
-  class_name: 'dixie-bg',
+  class_name: 'lime-green-bg',
   title: t('.hero.title'),
   text: t('.hero.text.html'),
   image: {
@@ -15,7 +15,7 @@
         <div class="govuk-grid-column-two-thirds">
           <p class="govuk-body-l govuk-!-margin-bottom-0">
             <%= t('.intro_text.html',
-              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link')
+              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link govuk-link--no-underline')
             ) %>
           </p>
         </div>
@@ -113,9 +113,9 @@
           <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
           <p class='govuk-body govuk-!-margin-bottom-0'>
             <%= t('.programmes.text.html',
-              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: tracking_data('Resources')),
-              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: tracking_data('Courses')),
-              funding_link: (link_to ' Funding is available', '/funding', class: 'ncce-link', data: tracking_data('Bursaries'))
+              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Resources')),
+              training_link: (link_to 'training courses', '/courses', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Courses')),
+              funding_link: (link_to ' Funding is available', '/funding', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Bursaries'))
             ) %>
           </p>
         </div>

@@ -3,7 +3,7 @@
     <div class="aside-component__image">
       <%= link_to image_pack_tag(@image[:file], alt: @image[:alt], title: @image[:title]),
         @image[:url],
-        class: 'ncce-link ncce-link--contrast',
+        class: 'ncce-link ncce-link--on-dark',
         role: 'button',
         draggable: 'false',
         data: tracking_data(@image[:tracking_label])
@@ -22,7 +22,7 @@
   <p class="govuk-body-s aside-component__link">
     <%= link_to @link[:text],
       @link[:url],
-      class: @use_button ? 'govuk-button button button--aside' : 'ncce-link ncce-link--contrast',
+      class: @use_button ? 'govuk-button button button--aside' : 'ncce-link ncce-link--on-dark',
       role: 'button',
       draggable: 'false',
       data: tracking_data(@link[:tracking_label])
