@@ -29,7 +29,7 @@ class SecondaryLandingPage
   end
 
   def hero_class
-    'tapestry-bg'
+    'lime-green-bg'
   end
 
   def event_tracking_category
