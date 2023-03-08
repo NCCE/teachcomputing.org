@@ -1,5 +1,6 @@
 @mixin ncce_button($background_color) {
   background-color: $background_color;
+  font-family: $font-family-heading;
   box-shadow: none;
   font-size: 1rem;
   font-weight: 500;

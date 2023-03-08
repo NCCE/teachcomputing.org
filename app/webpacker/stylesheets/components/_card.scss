@@ -10,7 +10,7 @@
 .card,
 .card--blue {
   background-color: $white;
-  border-left: 9px solid $action-color;
+  border-left: 9px solid $lime-green;
   box-shadow: 0 0 5px $box-shadow;
   margin-bottom: $logo-block-mobile;
   padding: 20px 20px 30px 20px;
@@ -22,7 +22,7 @@
     padding: (0.75 * $logo-block) (2 * $logo-block) (0.75 * $logo-block)
       (0.75 * $logo-block);
     &:after {
-      background-color: $foam;
+      background-color: $lime-green;
       background-position-x: right;
       background-position-y: bottom;
       background-repeat: no-repeat;
@@ -30,12 +30,12 @@
       bottom: 0;
       content: '';
       display: block;
-      height: 62px;
-      -webkit-mask-image: url(../images/card/glyph-1.svg);
-      mask-image: url(../images/card/glyph-1.svg);
+      height: 40px;
+      -webkit-mask-image: url(../images/card/glyph-2.svg);
+      mask-image: url(../images/card/glyph-2.svg);
       position: absolute;
       right: 0;
-      width: 54px;
+      width: 40px;
     }
   }
 
@@ -53,8 +53,7 @@
   }
 }
 
-.card--purple,
-.card--cs-accelerator {
+.card--purple {
   border-left-color: $secondary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
@@ -63,8 +62,7 @@
   }
 }
 
-.card--yellow,
-.card--secondary-certificate {
+.card--yellow {
   border-left-color: $secondary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
@@ -73,8 +71,7 @@
   }
 }
 
-.card--orange,
-.card--primary-certificate {
+.card--orange {
   border-left-color: $primary-cert-color;
   @include govuk-media-query($from: desktop) {
     &:after {
