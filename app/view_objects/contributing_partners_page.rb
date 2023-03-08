@@ -2,8 +2,7 @@ class ContributingPartnersPage
   class << self
     def hero
       {
-        title: 'Contributing partners',
-        glyph: 'c1'
+        title: 'Contributing partners'
       }
     end
 
