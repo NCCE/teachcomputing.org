@@ -1,7 +1,7 @@
 .lp-testimonials {
   display: grid;
   grid-template-columns: auto;
-  padding: 30px 0 0;
+  padding: 30px 16px 0;
 
   @include govuk-media-query($from: tablet) {
     column-gap: 30px;
