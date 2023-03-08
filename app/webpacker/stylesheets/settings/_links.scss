@@ -11,14 +11,15 @@ a:not([class]) {
     color: $grey-dark-x;
   }
   &:focus {
-    background-color: $hyper-link-blue;
-    color: $white;
-    outline-color: $hyper-link-blue;
+    background-color: transparent;
+    color: $grey-dark-x;
   }
   &:active {
-    background-color: $hyper-link-blue;
-    color: $white;
+    background-color: transparent;
+    color: $grey-dark-x;
   }
+
+
 }
 
 a:focus {
