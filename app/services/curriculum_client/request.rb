@@ -20,10 +20,6 @@ module CurriculumClient
       raise ActionController::RoutingError, e.message if e.message.include?('not found')
 
       raise
-    rescue Graphlient::Errors::FaradayServerError => e
-      raise ActionController::RoutingError, e.message if e.status_code == 404
-
-      raise
     end
 
     def self.fetch_data(query, client, params)

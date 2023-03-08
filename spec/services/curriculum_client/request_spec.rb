@@ -26,24 +26,6 @@ RSpec.describe CurriculumClient::Request do
         .to raise_error(CurriculumClient::Errors::UnparsedQuery)
     end
 
-    it 'raises a 404 for an invalid record' do
-      client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
-
-      stub_request(:post, url)
-        .to_return(status: 404)
-
-      query = <<~GRAPHQL
-        query {
-          keyStage(slug: "nonsense") {
-            id
-          }
-        }
-      GRAPHQL
-
-      expect { described_class.run(query: client.parse(query), client:) }
-        .to raise_error(ActionController::RoutingError)
-    end
-
     it "doesn't block other execution errors" do
       client = CurriculumClient::Connection.connect(ENV.fetch('CURRICULUM_TEST_SCHEMA_PATH'))
 
