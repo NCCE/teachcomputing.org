@@ -20,4 +20,8 @@ RSpec.describe('pages/privacy', type: :view) do
   it 'has the Twitter opt-out link' do
     expect(rendered).to have_link('How to opt out', href: 'https://help.twitter.com/en/safety-and-security/privacy-controls-for-tailored-ads')
   end
+
+  it 'has the DfE form link' do
+    expect(rendered).to have_link('DfE contact form', href: 'https://form.education.gov.uk/service/Contact_the_Department_for_Education', count: 2)
+  end
 end
