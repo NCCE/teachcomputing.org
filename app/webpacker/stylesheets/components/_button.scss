@@ -2,10 +2,12 @@
   background-color: $background_color;
   box-shadow: none;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
   margin: 0;
-  padding: 12px 25px;
-
+  padding: 10px 24px;
+  border-color: $govuk-button-text-colour;
+  border-width: 2px;
+  border-bottom-width: 4px;
   &[disabled] {
     background-color: $background_color;
   }
@@ -13,6 +15,7 @@
   &:hover,
   &[disabled]:hover {
     background-color: $black;
+    color: $white;
   }
 
   &[disabled]:active {
@@ -45,7 +48,8 @@
 }
 
 .button {
-  @include ncce_button($deep-cerulean);
+  @include ncce_button($lime-green);
+  color: $govuk-text-colour;
 }
 
 .button--focus-white {
@@ -76,9 +80,10 @@
 
 .button--inverted {
   background-color: $white;
-  border-color: $deep-cerulean;
-  border-width: 3px;
-  color: $deep-cerulean !important;
+  border-color: $lime-green;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  color: $govuk-button-text-colour !important;
   padding: 0.69rem;
   &:hover {
     border-color: $black;
@@ -144,6 +149,19 @@
 
   &:active {
     background-color: $deep-cerulean;
+    color: $white;
+  }
+}
+
+
+.govuk-button {
+  &:visited,
+  &:active,
+  &:link {
+    color: $govuk-button-text-colour;
+  }
+
+  &:hover {
     color: $white;
   }
 }
