@@ -3,6 +3,12 @@
   border-color: $lilly-white;
   box-shadow: 0 0 5px $box-shadow;
   padding: 0 1.375rem 1.375rem;
+
+  p {
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 .image-link-card-component__image {
@@ -20,3 +26,6 @@
   padding-top: 0;
   text-align: center;
 }
+
+
+
