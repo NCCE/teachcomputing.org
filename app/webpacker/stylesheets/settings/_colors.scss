@@ -38,13 +38,14 @@ $green: #4FA88B;
 $orange: #FF8300;
 
 $govuk-text-colour: $grey-dark-x;
-$govuk-button-text-colour: $grey-dark-x;
+$govuk-button-text-colour
+: $grey-dark-x;
 
 $plain-hero-color: $concrete;
 $action-color: $hyper-link-blue;
-$primary-cert-color: $jaffa;
-$secondary-cert-color: $tapestry;
-$primary-cert-color: $jaffa;
+$primary-cert-color: $lime-green;
+$secondary-cert-color: $lime-green;
+$primary-cert-color: $lime-green;
 
 .deep-cerulean-bg {
   background-color: $deep-cerulean;
@@ -75,6 +76,11 @@ $primary-cert-color: $jaffa;
 
 .light-grey-bg {
   background-color: $ncce-grey;
+}
+
+.purple-bg {
+  background-color: $purple-dark;
+  color: $white;
 }
 
 .tapestry-bg {
