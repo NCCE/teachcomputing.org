@@ -28,6 +28,12 @@
 .govuk-body {
   line-height: 1.45;
 }
+.govuk-body,
+.govuk-body-s,
+.govuk-body-m,
+.govuk-body-l {
+  color: $grey-storm;
+}
 
 .govuk-list--ncce li {
   margin-bottom: 12px;
