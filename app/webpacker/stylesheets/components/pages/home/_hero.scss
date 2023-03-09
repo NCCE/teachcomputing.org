@@ -67,11 +67,6 @@
 
 .ncce-home-hero__button {
   margin-bottom: 0;
-  padding: 6px 0;
-  width: 46%;
-  @include govuk-media-query($from: tablet) {
-    padding: 12px 0;
-  }
 }
 
 .ncce-home-hero__list {
