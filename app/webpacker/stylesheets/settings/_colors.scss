@@ -27,7 +27,7 @@ $light-blue: #E4F8FF;
 $mid-gray: #5c5d6d;
 $pink: #de01a5;
 $purple-dark: #120540;
-$purple: #6919CE;
+$purple: #1C0F5F;
 $scarpa-flow: #575868;
 $tapestry: #a94e91;
 $white: #ffffff;
@@ -116,7 +116,7 @@ $primary-cert-color: $lime-green;
 }
 
 @mixin status_block() {
-  background-color: $purple-dark;
+  background-color: $purple;
   color: $white;
   font-weight: bold;
   padding: 2px 12px;
