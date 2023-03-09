@@ -6,11 +6,11 @@ RSpec.describe('pages/secondary-early-careers') do
   end
 
   it 'has a title' do
-    expect(rendered).to have_css('.hero__text', text: 'We support early career teachers and trainees to develop their computing subject knowledge and pedagogy through professional development, resources and local communities.')
+    expect(rendered).to have_css('.hero__text', text: 'We support early career and trainee teachers to develop their computing subject knowledge and pedagogy through professional development, resources and local communities.')
   end
 
   it 'has a hero heading' do
-    expect(rendered).to have_css('.govuk-heading-xl', text: 'Secondary early career teachers and trainees')
+    expect(rendered).to have_css('.govuk-heading-xl', text: 'Secondary early career and trainee teachers')
   end
 
   it 'has a Professional development section' do
