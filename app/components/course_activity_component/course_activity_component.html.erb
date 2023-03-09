@@ -3,7 +3,7 @@
     <%= content_tag :div, class: ['course-activity-component__objective-text', { "course-activity-component__objective-text--complete": achievements_complete? }] do %>
       <%= @objective %>
     <% end %>
-    <%= link_to t('.book_button_text'), @booking[:path], class: 'govuk-button button button--small course-activity-component__objective-button', data: tracking_data(@booking[:tracking_label]) %>
+    <%= link_to t('.book_button_text'), @booking[:path], class: 'govuk-button button course-activity-component__objective-button', data: tracking_data(@booking[:tracking_label]) %>
   </span>
   <% unless @achievements.blank? %>
     <%= content_tag :div, class: 'course-activity-component__course-wrapper' do %>

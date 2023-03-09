@@ -23,7 +23,7 @@
                   <%= link_to(
                     @booking.booking_button_title,
                     @booking.booking_path(occurrence.course_occurrence_no),
-                    class: 'govuk-button button button--small',
+                    class: 'govuk-button button',
                     draggable: 'false',
                     data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
                     target: :_blank

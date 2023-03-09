@@ -32,7 +32,7 @@
   }
 
   @include govuk-media-query($from: tablet) {
-    font-size: 1.188rem;
+    font-size: 1.1125rem;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -85,7 +85,6 @@
   border-width: 2px;
   border-bottom-width: 4px;
   color: $govuk-button-text-colour !important;
-  padding: 0.69rem;
   &:hover {
     border-color: $black;
     color: $white !important;

@@ -11,7 +11,7 @@
     <div class='ncce-courses__clear-filters <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
       <%= link_to 'Clear all filters',
         courses_path(anchor: 'results-top', hub_id: @filter_params[:hub_id]),
-        class: 'govuk-button button button--small govuk-body-m',
+        class: 'govuk-button button govuk-body-m',
         method: :get, # force a reload
         data: {
           action: 'click->course-filter#clearFilters',

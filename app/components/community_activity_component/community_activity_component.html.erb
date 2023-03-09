@@ -9,12 +9,12 @@
       <% if @activity.booking_programme_slug.present? %>
         <%= link_to t('.book_button_text'),
           courses_path(certificate: @activity.booking_programme_slug),
-          class: 'govuk-button button button--small community-activity-component__objective-button',
+          class: 'govuk-button button community-activity-component__objective-button',
           data: tracking_data('Book a course')
         %>
       <% else%>
         <span class="ihavedonethis">
-          <button aria-expanded="true" class="govuk-button button button--small ihavedonethis__button">
+          <button aria-expanded="true" class="govuk-button button ihavedonethis__button">
             <%= t('.evidence_button_label') %>
           </button>
           <span class="ihavedonethis__popup">
@@ -33,7 +33,7 @@
                 <% end %>
                 <%= f.hidden_field :activity_id, value: @activity.id %>
               </span>
-              <%= f.submit t('.evidence_submit_label'), class: 'govuk-button button button--small button--focus-white' %>
+              <%= f.submit t('.evidence_submit_label'), class: 'govuk-button button button--focus-white' %>
             <% end %>
           </span>
         </span>
