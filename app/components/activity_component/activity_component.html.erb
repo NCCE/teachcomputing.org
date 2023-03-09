@@ -3,7 +3,7 @@
     <span class="activity-component__objective-text"><%= @objective %></span>
     <%= link_to @button[:text],
       @button[:path],
-      class: 'govuk-button button button--small activity-component__objective-button',
+      class: 'govuk-button button activity-component__objective-button',
       data: tracking_data(@button[:tracking_label]),
       **(@button[:opts] || {})
     %>
