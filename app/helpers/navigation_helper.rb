@@ -6,15 +6,17 @@ module NavigationHelper
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
           { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'School primary glossary' },
           { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
+          { text: 'Early career and trainee teachers', link: '/primary-early-careers', label: 'Primary ECT' },
           { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
-        ] },
-      { text: 'Secondary school',
-        children: [
-          { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
-          { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
-          { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
-          { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
-          { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' },
+          ] },
+          { text: 'Secondary school',
+            children: [
+              { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
+              { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
+              { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
+              { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
+              { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' },
+              { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
         ] },
       { text: 'Training and support',
