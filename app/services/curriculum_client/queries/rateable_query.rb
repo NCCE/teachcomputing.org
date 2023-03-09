@@ -13,7 +13,7 @@ module CurriculumClient
           }
         GRAPHQL
 
-        CurriculumClient::Request.run(query: client.parse(rating), client: client, context: rating_type)
+        CurriculumClient::Request.run(query: client.parse(rating), client:)
       end
 
       def add_positive_rating(id:, stem_achiever_contact_no:, fields: nil)
@@ -32,7 +32,7 @@ module CurriculumClient
         "add_#{polarity}_#{self::CONTEXT}_rating"
       end
 
-      def update_rating(id:, key:, value:, context:, fields: nil)
+      def update_rating(id:, key:, value:, fields: nil)
         fields = fields ? "{#{fields}}" : ''
         value = value.is_a?(Array) ? "[\"#{value.join('","')}\"]" : "\"#{value}\""
         update = <<~GRAPHQL
@@ -44,7 +44,7 @@ module CurriculumClient
             #{fields}
           }
         GRAPHQL
-        CurriculumClient::Request.run(query: client.parse(update), client: client, context: context)
+        CurriculumClient::Request.run(query: client.parse(update), client:)
       end
 
     end

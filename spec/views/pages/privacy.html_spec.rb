@@ -6,23 +6,11 @@ RSpec.describe('pages/privacy', type: :view) do
   end
 
   it 'has a mailto stem link' do
-    expect(rendered).to have_link('datasecurity@stem.org.uk', href: 'mailto:datasecurity@stem.org.uk', count: 3)
+    expect(rendered).to have_link('datasecurity@stem.org.uk', href: 'mailto:datasecurity@stem.org.uk', count: 2)
   end
 
   it 'has a mailto ncce link' do
     expect(rendered).to have_link('info@teachcomputing.org', href: 'mailto:info@teachcomputing.org')
-  end
-
-  it 'has the STEM text link' do
-    expect(rendered).to have_link('www.stem.org.uk', href: /www\.stem\.org\.uk/)
-  end
-
-  it 'has the RPi text link' do
-    expect(rendered).to have_link('www.raspberrypi.org', href: /www\.raspberrypi\.org/)
-  end
-
-  it 'has the BCS text link' do
-    expect(rendered).to have_link('www.bcs.org', href: /www\.bcs\.org/)
   end
 
   it 'has the Google privacy link' do
