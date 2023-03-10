@@ -104,7 +104,6 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-
 ########################################################################################################################
 
 a = Activity.find_or_create_by(stem_course_template_no: '63c44113-a4b6-ed11-b597-0022481b59ce') do |activity|

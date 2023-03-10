@@ -26,6 +26,10 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: '7ffcf8be-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
+# CP478/supporting-gcse-computer-science-students-at-grades-1-3
+activity = Activity.find_by(stem_course_template_no: 'c53a5ed2-3c6e-ec11-8943-000d3a874094')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
+
 # alternative remote
 
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
@@ -39,12 +43,15 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplemen
 
 # alternative online
 
+# CO221/introduction-to-web-development
 activity = Activity.find_by(stem_course_template_no: '0bccfb49-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
+# CO210/object-oriented-programming-in-python-create-your-own-adventure-game
 activity = Activity.find_by(stem_course_template_no: 'a46bc181-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
+# CO225/introduction-to-databases-and-sql
 activity = Activity.find_by(stem_course_template_no: 'ed5a3948-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
@@ -77,15 +84,21 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: '9187d975-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
-# alternative remote
+# CP439/higher-attainment-in-computer-science-meeting-the-challenges-of-the-exams-remote
+activity = Activity.find_by(stem_course_template_no: '03fb0a52-a712-eb11-a813-000d3a86d545')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
-activity = Activity.find_by(stem_course_template_no: '65fe83ad-b188-ea11-a811-000d3a86d545')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
+
+# alternative remote
 
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
 activity = Activity.find_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813-000d3a86f6ce')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
+
+# CP478/supporting-gcse-computer-science-students-at-grades-1-3
+activity = Activity.find_by(stem_course_template_no: 'c53a5ed2-3c6e-ec11-8943-000d3a874094')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
 # alternative online
@@ -122,18 +135,24 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: 'ac3bf599-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
+# CP420/representing-algorithms-using-flowcharts-and-pseudocode-remote
+activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
+
 # alternative remote
 
 activity = Activity.find_by(stem_course_template_no: '67a21143-4886-ea11-a811-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
-activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
-
-activity = Activity.find_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d54')
+# CP463/python-programming-advanced-subject-knowledge-implementation-and-testing-remote
+activity = Activity.find_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
 activity = Activity.find_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce')
+pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
+
+# CP430/search-and-sort-algorithms-remote
+activity = Activity.find_by(stem_course_template_no: 'ce24e77f-d312-eb11-a813-000d3a86f6ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
 # alternative online
@@ -143,7 +162,6 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplemen
 
 activity = Activity.find_by(stem_course_template_no: '55cc7b90-a5b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
-
 
 ########################################################################################################################
 
@@ -194,9 +212,6 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplemen
 activity = Activity.find_by(stem_course_template_no: '07e76ffd-e17f-ea11-a811-000d3a86f6ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
-activity = Activity.find_by(stem_course_template_no: '65fe83ad-b188-ea11-a811-000d3a86d545')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
-
 # alternative online
 
 activity = Activity.find_by(stem_course_template_no: '55cc7b90-a5b6-ed11-b597-0022481b59ce')
@@ -204,6 +219,8 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplemen
 
 activity = Activity.find_by(stem_course_template_no: 'e9cb65af-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
+
+########################################################################################################################
 
 pathway = Pathway.find_or_initialize_by(slug: 'new-to-computer-systems')
 pathway.update(
@@ -223,16 +240,14 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(stem_course_template_no: '55cc7b90-a5b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
-activity = Activity.find_by(stem_course_template_no: '65fe83ad-b188-ea11-a811-000d3a86d545')
+# CP422/fundamentals-of-computer-networks-remote
+activity = Activity.find_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811-000d3a86f6ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
 activity = Activity.find_by(stem_course_template_no: 'e9cb65af-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity
 
 # alternative remote
-
-activity = Activity.find_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811-000d3a86f6ce')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
 
 activity = Activity.find_by(stem_course_template_no: '770d8136-3d86-ea11-a811-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id, supplementary: true) if activity
