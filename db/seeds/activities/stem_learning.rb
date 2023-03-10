@@ -574,7 +574,7 @@ end
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e1e54959-db12-eb11-a813-000d3a86d545') do |activity|
-  activity.title = 'Python programming projects - advanced subject knowledge, implementation and testing a program - Remote'
+  activity.title = 'Python programming: advanced subject knowledge, implementation and testing - remote'
   activity.credit = 10
   activity.slug = 'python-programming-projects-advanced-subject-knowledge-implementation-and-testing-a-program-remote'
   activity.stem_course_template_no = 'e1e54959-db12-eb11-a813-000d3a86d545'
@@ -610,7 +610,7 @@ end
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'ad8580c0-2915-eb11-a813-000d3a86f6ce') do |activity|
-  activity.title = 'Python programming projects - analysing, designing and evaluating a program - Remote'
+  activity.title = 'Python programming: analysis, design and evaluation - remote'
   activity.credit = 10
   activity.slug = 'python-programming-projects-analysing-designing-and-evaluating-a-program-remote'
   activity.stem_course_template_no = 'ad8580c0-2915-eb11-a813-000d3a86f6ce'
