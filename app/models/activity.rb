@@ -3,8 +3,8 @@ class Activity < ApplicationRecord
   ASSESSMENT_CATEGORY = 'assessment'.freeze
   COMMUNITY_CATEGORY = 'community'.freeze
   DIAGNOSTIC_CATEGORY = 'diagnostic'.freeze
-  FACE_TO_FACE_CATEGORY = 'face-to-face'.freeze
-  ONLINE_CATEGORY = 'online'.freeze
+  FACE_TO_FACE_CATEGORY = 'face-to-face'.freeze # includes live remove courses
+  ONLINE_CATEGORY = 'online'.freeze # self-paced
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :users, through: :achievements

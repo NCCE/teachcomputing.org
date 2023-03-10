@@ -1,4 +1,4 @@
-# This file contains seeds for Activities faciliated by STEM Learning
+# This file contains seeds for live (F2F and remote) Activities facilitated by STEM Learning
 
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
