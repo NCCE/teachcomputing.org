@@ -140,7 +140,7 @@ a = Activity.find_or_create_by(future_learn_course_uuid: '4ec560a3-6435-46bc-90b
   activity.stem_course_template_no = '497f57fd-bfaa-4b32-99b9-04f83805eb4c'
   activity.future_learn_course_uuid = '4ec560a3-6435-46bc-90b7-75cfdcf7e72d'
   activity.provider = 'future-learn'
-  activity.stem_activity_code = 'CO210R'
+  activity.stem_activity_code = 'CO010R'
   activity.always_on = true
 end
 
