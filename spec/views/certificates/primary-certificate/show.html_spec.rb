@@ -20,6 +20,9 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       assign(:current_user, user)
       assign(:user_pathway, nil)
 
+      assign(:face_to_face_achievements, [])
+      assign(:online_achievements, [])
+
       assign(:professional_development_groups, professional_development_groups)
       assign(:online_discussion_activity, community_activity)
       assign(:community_groups, community_groups)
@@ -50,8 +53,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'has the expected section titles' do
-      expect(rendered).to have_text('Complete at least one online course')
-      expect(rendered).to have_text('Complete at least one face to face, or remote course')
+      expect(rendered).to have_text('Complete any course from this certificate')
       expect(rendered).to have_text('Choose at least one activity to A group name', count: 2)
     end
 
@@ -60,7 +62,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'shows all activities' do
-      expect(rendered).to have_css('.ncce-activity-list__item', count: 6)
+      expect(rendered).to have_css('.ncce-activity-list__item', count: 5)
     end
 
     it 'shows no hidden activity title' do
@@ -68,7 +70,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'has view all courses button' do
-      expect(rendered).to have_link('View all certificate courses')
+      expect(rendered).to have_link('View and book courses')
     end
 
     it 'has bursary information' do
@@ -110,6 +112,9 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   describe 'when the user has a pathway' do
     before do
       assign(:current_user, user)
+
+      assign(:face_to_face_achievements, [])
+      assign(:online_achievements, [])
 
       assign(:professional_development_groups, professional_development_groups)
       assign(:online_discussion_activity, community_activity)

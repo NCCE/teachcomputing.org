@@ -28,6 +28,7 @@ class Activity < ApplicationRecord
   scope :available_for, lambda { |user|
     where('id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)', user.id)
   }
+  scope :courses, -> { where(category: [FACE_TO_FACE_CATEGORY, ONLINE_CATEGORY]) }
   scope :online, -> { where(category: ONLINE_CATEGORY) }
   scope :face_to_face, -> { where(category: FACE_TO_FACE_CATEGORY) }
   scope :future_learn, -> { where(provider: 'future-learn') }
