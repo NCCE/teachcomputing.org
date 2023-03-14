@@ -4,12 +4,9 @@
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
     <%= render CourseActivityComponent.new(
-      objective: t('.face_to_face_prompt.html'),
-      booking: {
-        path: courses_path(course_format: %i[face_to_face remote], certificate: @programme.slug),
-        tracking_label: 'Book remote or F2F course'
-      },
-      achievements: @face_to_face_achievements,
+      objective: t('.any_course_prompt'),
+      booking: nil,
+      achievements: @face_to_face_achievements + @online_achievements,
       tracking_category: tracking_category
     ) %>
   </li>
@@ -22,17 +19,6 @@
       ) %>
     </li>
   <% end %>
-  <li class="ncce-activity-list__item">
-    <%= render CourseActivityComponent.new(
-      objective: t('.online_prompt.html'),
-      booking: {
-        path: courses_path(course_format: %i[online], certificate: @programme.slug),
-        tracking_label: 'Book online course'
-      },
-      achievements: @online_achievements,
-      tracking_category: tracking_category
-    ) %>
-  </li>
   <li class="ncce-activity-list__item">
     <div class='ncce-activity-list__button-wrapper'>
       <%= link_to t('.all_courses_button'),

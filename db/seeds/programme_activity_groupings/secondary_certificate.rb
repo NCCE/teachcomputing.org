@@ -2,13 +2,10 @@ secondary = Programme.secondary_certificate
 
 puts 'Creating Programme Activity Groupings'
 
-secondary.programme_activity_groupings.find_or_create_by(title: 'Online courses') do |programme_activity_group|
-  programme_activity_group.sort_key = 1
-  programme_activity_group.required_for_completion = 1
-  programme_activity_group.programme_id = secondary.id
-end
+## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
+## to complete 2 courses, one from each of groups 1 and 2.
 
-secondary.programme_activity_groupings.find_or_create_by(title: 'Face to face or remote courses') do |programme_activity_group|
+secondary.programme_activity_groupings.find_or_create_by(title: 'All courses') do |programme_activity_group|
   programme_activity_group.sort_key = 2
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = secondary.id
@@ -34,21 +31,11 @@ end
 
 puts 'Seeding Programme Activity Groupings for Secondary'
 
-# Online/Future Learn courses
-
-group_one = secondary.programme_activity_groupings.find_by(sort_key: 1)
-
-secondary.activities.online.each do |activity|
-  programme_activity = secondary.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_one.id) unless group_one.programme_activities.include?(programme_activity)
-end
-
-# STEM Learning Courses
+# Courses
 
 group_two = secondary.programme_activity_groupings.find_by(sort_key: 2)
 
-# The face_to_face category covers remote too (as we have no specific remote category)
-secondary.activities.face_to_face.each do |activity|
+secondary.activities.courses.each do |activity|
   programme_activity = secondary.programme_activities.find_or_create_by(activity_id: activity.id)
   programme_activity.update(programme_activity_grouping_id: group_two.id) unless group_two.programme_activities.include?(programme_activity)
 end

@@ -8,6 +8,8 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   before do
     assign(:current_user, user)
     assign(:programme, secondary_certificate)
+    assign(:face_to_face_achievements, [])
+    assign(:online_achievements, [])
     assign(:professional_development_groups, programme_activity_groupings)
     assign(:community_groups, programme_activity_groupings)
 
@@ -27,8 +29,7 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   end
 
   it 'has the expected section titles' do
-    expect(rendered).to have_text('Complete at least one online course')
-    expect(rendered).to have_text('Complete at least one face to face, or remote course')
+    expect(rendered).to have_text('Complete any course from this certificate')
     expect(rendered).to have_text('Choose at least one activity to a group name', count: 2)
   end
 
@@ -41,7 +42,11 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   end
 
   it 'has view all courses button' do
-    expect(rendered).to have_link('View all certificate courses')
+    expect(rendered).to have_link('View and book courses')
+  end
+
+  it 'shows all activities' do
+    expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
   end
 
   it 'has support information' do

@@ -28,6 +28,10 @@
     margin-bottom: 0.5rem;
   }
 
+  &:only-child {
+    grid-column: 1 / span 2;
+  }
+
   &--complete {
     background-image: url('../images/icons/tick-green-dark.svg');
     background-position: left top;
