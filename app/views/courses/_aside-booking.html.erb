@@ -154,15 +154,8 @@
     <% end %>
   <% end %>
 
-  <div class='govuk-body govuk-!-margin-bottom-0 provider-logos' %>
-    <div class='govuk-body-s'>
-      This course is from the National Centre for Computing Education and is delivered by STEM Learning.
-    </div>
-    <div class='govuk-body-s provider-logos__logo-wrapper'>
-      <%= image_pack_tag 'media/images/logos/ncce-logo.svg', alt: '' %>
-      <%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: '', class: '' %>
-    </div>
-  </div>
+  <%= render ProviderLogosComponent.new(dashboard: false)%>
+
   <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <p class='govuk-body-s ncce-booking-list__progress'>
       Can't see the progress of your course? You may need to rejoin the course.
