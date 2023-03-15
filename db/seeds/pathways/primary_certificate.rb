@@ -12,29 +12,23 @@ pathway.update(
   order: 1
 )
 
-# face to face / remote / online
+# face to face / remote
 
-activity = Activity.find_by(stem_course_template_no: '68f5b6c5-556d-4b66-8159-7cd6019da6f3')
+# CP454/introduction-to-primary-computing-remote
+activity = Activity.find_by(stem_course_template_no: 'bb7a0f31-5086-ea11-a811-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(stem_course_template_no: '488bed9b-515b-4295-a488-62b5bb6bf852')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
+# online
 
-activity = Activity.find_by(stem_course_template_no: '16aeecbd-d202-4f42-bad3-f86c8f671547')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
-activity = Activity.find_by(stem_course_template_no: '88975226-811c-ec11-b6e7-0022481a8033')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
-activity = Activity.find_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545')
-pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
-
+# CO041/teaching-programming-to-5-to-11-year-olds
 activity = Activity.find_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
+# CO700/creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing
 activity = Activity.find_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
+# CO232/introduction-to-programming-with-scratch
 activity = Activity.find_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
@@ -60,6 +54,8 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 activity = Activity.find_by(slug: 'providing-additional-support')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
+########################################################################################################################
+
 pathway = programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading')
 pathway.update(
   title: 'Specialising or leading',
@@ -70,18 +66,23 @@ pathway.update(
   order: 1
 )
 
+# CP008/leading-primary-computing-face-to-face
 activity = Activity.find_by(stem_course_template_no: 'e3c14378-3015-eb11-a813-000d3a86f6ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(stem_course_template_no: '11f58c3f-3341-eb11-a813-000d3a86d545')
+# CP456/leading-primary-computing-remote
+activity = Activity.find_by(stem_course_template_no: '3bff03fd-256d-eb11-a812-000d3a872640')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
+# CP005/outstanding-primary-computing-for-all-face-to-face
 activity = Activity.find_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
-activity = Activity.find_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c')
+# CP255/implementing-the-teach-computing-curriculum-in-your-school
+activity = Activity.find_by(stem_course_template_no: '726ece56-27b0-ec11-983f-002248006a24')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
+# CO700/creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing
 activity = Activity.find_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
 
