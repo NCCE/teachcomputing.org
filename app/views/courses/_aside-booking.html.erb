@@ -51,7 +51,7 @@
                 target: :_blank
                 ) %>
           </p>
-          <%= render('courses/start-date', date: @start_date) unless @started %>
+          <%= render('start-date', date: @start_date) unless @started %>
         <% end %>
       </div>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
@@ -71,7 +71,7 @@
         </p>
       <% end %>
 
-      <%= render('courses/start-date', date: @start_date) unless @started %>
+      <%= render('start-date', date: @start_date) unless @started %>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
        <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
@@ -150,7 +150,7 @@
           class: 'ncce-link', draggable: 'false',
           data: { event_action: 'click', event_category: 'course details'} %>
       </p>
-      <%= render('courses/start-date', date: @start_date) if (@course.online_cpd && !@started) %>
+      <%= render('start-date', date: @start_date) if (@course.online_cpd && !@started) %>
     <% end %>
   <% end %>
 
