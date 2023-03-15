@@ -1,17 +1,14 @@
 class ProviderLogosComponentPreview < ViewComponent::Preview
-  def dashboard_online
-    render(ProviderLogosComponent.new(online: true, dashboard: true))
+  def booking_aside
+    render(ProviderLogosComponent.new(dashboard: false))
   end
 
-  def dashboard_other
-    render(ProviderLogosComponent.new(online: false, dashboard: true))
+  def dashboard_default
+    # provided by stem_learning
+    render(ProviderLogosComponent.new)
   end
 
-  def online
-    render(ProviderLogosComponent.new(online: true, dashboard: false))
-  end
-
-  def other
-    render(ProviderLogosComponent.new(online: false))
+  def dashboard_retired
+    render(ProviderLogosComponent.new(dashboard: true, provider: 'future-learn'))
   end
 end
