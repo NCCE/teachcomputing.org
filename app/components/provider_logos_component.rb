@@ -3,37 +3,22 @@
 class ProviderLogosComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(online:, dashboard: false, class_name: nil)
-    @online = online
-    @org_prefix = @online ? 'rpf' : 'stem'
+  def initialize(provider: 'stem-learning', dashboard: true, class_name: nil)
+    @provider = provider
     @dashboard = dashboard
 
-    standard_logos = online ? online_logos : other_logos
-    dashboard_logos = online ? dashboard_online_logos : other_logos
-    @logos = dashboard ? dashboard_logos : standard_logos
+    # Won't display logos for retired course providers to minimize untested layouts and stale logos. 'future-learn' courses were
+    # retired in February 2023.
+    @logos = (provider == 'stem-learning') ? logos : []
 
     @class_name = class_name
   end
 
-  def online_logos
+  def logos
+    # no alt texts as they don't add to the information in provider_text
     [
-      { filename: 'tc-logo-small.svg', alt: 'Teachcomputing logo' },
-      { filename: 'rpf-logo-small.svg', alt: 'Raspberry Pi Foundation logo' }
-    ]
-  end
-
-  def dashboard_online_logos
-    [
-      { filename: 'tc-logo-small.svg', alt: 'Teachcomputing logo' },
-      { filename: 'rpf-logo-small.svg', alt: 'Raspberry Pi Foundation logo' },
-      { filename: 'fl-logo-small.svg', alt: 'Futurelearn logo' }
-    ]
-  end
-
-  def other_logos
-    [
-      { filename: 'tc-logo-small.svg', alt: 'Teachcomputing logo' },
-      { filename: 'stem-logo-small.svg', alt: 'STEM Learning logo' }
+      { filename: 'ncce-logo.svg', alt: '' },
+      { filename: 'stem-logo-small.svg', alt: '' }
     ]
   end
 end
