@@ -55,6 +55,8 @@ if [ "${coverage}" = "null" ] ; then
   exit 0
 fi
 
+echo "Running curl on circleci api"
+
 artifacts_response=$(curl $CURL_ARGS -H "Circle-Token: $CIRCLE_API_TOKEN" https://circleci.com/api/v1.1/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts)
 coverage_url=$(echo ${artifacts_response} | jq -r '. | map(select(.path == "coverage/index.html"))[0].url')
 
