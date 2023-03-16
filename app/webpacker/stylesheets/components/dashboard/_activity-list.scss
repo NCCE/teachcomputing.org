@@ -74,7 +74,7 @@
 
 .ncce-activity-list__item-text {
   align-self: center;
-  background-image: url('../images/icons/tick-blue.svg');
+  background-image: url('../images/icons/tick-plain.svg');
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 1.9rem;
@@ -185,7 +185,7 @@
 .activity-list__item {
   align-items: flex-start;
   background-color: $concrete;
-  background-image: url('../images/icons/tick-blue.svg');
+  background-image: url('../images/icons/tick-plain.svg');
   background-position: 8px 8px;
   background-repeat: no-repeat;
   background-size: 24px;
@@ -234,7 +234,7 @@
 
 .ncce-activity-list__item--dashboard {
   border-bottom: none;
-  border-left: 9px solid $deep-cerulean;
+  border-left: 9px solid $lime-green;
   border-radius: 5px !important;
   /* Temporary fix until curved borders are discussed */
   grid-row-gap: 0.5rem;
