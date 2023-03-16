@@ -27,6 +27,7 @@ function graceful_exit() {
 function gh_query() {
   # Build and escape our JSON
   json=$(jq -n --arg q "$*" '{query: $q}')
+  echo $json
   curl $CURL_ARGS -H "Authorization: bearer $GITHUB_TOKEN" -X POST -d "$json" https://api.github.com/graphql
 }
 
