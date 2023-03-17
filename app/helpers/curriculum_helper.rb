@@ -4,7 +4,7 @@ module CurriculumHelper
   end
 
   def key_stage_list_color(level)
-    %w[1 2].include?(level) ? 'curriculum__list--item-orange' : 'curriculum__list--item-purple'
+    %w[1 2].include?(level) ? 'curriculum__list--item-green' : 'curriculum__list--item-green'
   end
 
   def generate_download_url(contents_url)

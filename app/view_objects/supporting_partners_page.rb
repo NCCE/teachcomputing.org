@@ -2,7 +2,7 @@ class SupportingPartnersPage
   class << self
     def hero
       {
-        class_name: 'deep-cerulean-bg',
+        class_name: 'lime-green-bg',
         title: I18n.t('pages.partnerships.hero.title'),
         text: I18n.t('pages.partnerships.hero.text.html'),
         image: {
