@@ -26,8 +26,16 @@ FactoryBot.define do
       activity { association :activity, :remote, title: 'Remote activity', stem_activity_code: nil }
     end
 
+    trait :future_learn do
+      activity { association :activity, :future_learn, title: 'FutureLearn online activity' }
+    end
+
     trait :online do
-      activity { association :activity, :future_learn, title: 'Online activity' }
+      activity { association :activity, :my_learning, title: 'MyLearning online activity' }
+    end
+
+    trait :my_learning do
+      online
     end
 
     trait :community do

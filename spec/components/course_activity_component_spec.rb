@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe CourseActivityComponent, type: :component do
   let(:face_to_face_achievement) { create(:completed_achievement, :face_to_face) }
   let(:remote_achievement) { create(:achievement, :remote_no_activity_code) }
-  let(:online_achievement) { create(:achievement, :online) }
+  let(:online_activity) { create(:activity, :online, title: 'Online activity') }
+  let(:online_achievement) { create(:achievement, :online, activity: online_activity) }
 
   describe 'with no achievements' do
     before do
