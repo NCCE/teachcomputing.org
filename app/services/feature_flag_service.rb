@@ -26,7 +26,7 @@ class FeatureFlagService
   #
   # TODO: rm this method when remove ncce2 flag
   #
-  # note: set NCCE2_START_DATE to 2nd April "2023-04-02T00:00:00+00:00" to allow the jobs to run a final time on 1st April and
+  # note: set NCCE2_START_DATE to 2nd April "2023-04-02" to allow the jobs to run a final time on 1st April and
   # pick up the last end of the month course completions.
   def ncce2_live
     start_date_string = ENV['NCCE2_START_DATE']
