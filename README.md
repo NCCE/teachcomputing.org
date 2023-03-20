@@ -103,12 +103,18 @@ To perform migrations manually (without restarting the container) run:
 yarn run web rails db:migrate
 ```
 
-#### Seeding the database
+#### Seeding the database
 
 To seed manually run:
 
 ```
 yarn run web rails db:seed
+```
+
+To add the computing hubs to the database (and so populate http://teachcomputing.rpfdev.com/hubs ):
+
+```
+yarn run web bin/rails hubs:populate_regions && yarn run web bin/rails hubs:populate_hubs
 ```
 
 ### Install new Dependencies / Updates
