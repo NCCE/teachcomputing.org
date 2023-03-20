@@ -4,7 +4,12 @@
   position: relative;
   &--blue {
     background-color: $action-color;
+  }
 
+  /* remove all glyphs for the time being */
+  &:after {
+    background-image: none;
+    display: none;
   }
 }
 
