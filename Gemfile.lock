@@ -591,6 +591,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
+    timecop (0.9.6)
     timeout (0.3.0)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
@@ -730,6 +731,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   statesman (~> 10.0.0)
+  timecop (~> 0.9.6)
   turbolinks (~> 5)
   uglifier (>= 4.2)
   vcr

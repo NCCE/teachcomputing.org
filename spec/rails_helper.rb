@@ -94,3 +94,5 @@ RSpec.configure do |config|
     raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
   end
 end
+
+Timecop.safe_mode = true
