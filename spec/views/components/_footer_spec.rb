@@ -32,11 +32,6 @@ RSpec.describe('components/_footer', type: :view) do
   it 'has a terms and conditions link' do
     expect(rendered).to have_link('Terms and Conditions', href: '/terms-conditions')
   end
-
-  it 'has a press link' do
-    expect(rendered).to have_link('Press', href: 'https://blog.teachcomputing.org/tag/press/')
-  end
-
   it 'has an accessibility statement link' do
     expect(rendered).to have_link('Accessibility', href: '/accessibility-statement')
   end
@@ -53,16 +48,8 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('Pedagogy', href: '/pedagogy')
   end
 
-  it 'has a home teaching link' do
-    expect(rendered).to have_link('Home teaching', href: '/home-teaching')
-  end
-
   it 'has a Computing hubs link' do
     expect(rendered).to have_link('Computing hubs', href: '/hubs')
-  end
-
-  it 'has a Contributing partners link' do
-    expect(rendered).to have_link('Contributing partners', href: '/contributing-partners')
   end
 
   it 'has a ITE providers link' do
