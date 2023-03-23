@@ -15,53 +15,38 @@ class CertificateGenerator
 
   def generate_pdf
     user_name = "#{@user.first_name} #{@user.last_name}"
-    date_awarded = @transition.created_at.strftime('%d/%m/%Y')
+    date_awarded = @transition.created_at.strftime('%d %B %Y')
     cert_number = certificate_number
     slug = @programme.slug
     teacher_ref_no = @user.teacher_reference_number
 
-    Prawn::Document.generate(@output_path) do
+    Prawn::Document.generate(@output_path, page_size: 'A4') do
       font_families.update('Roboto' => {
                              normal: Rails.root.join('app', 'webpacker', 'fonts', 'Roboto-Regular.ttf').to_s,
                              bold: Rails.root.join('app', 'webpacker', 'fonts', 'Roboto-Bold.ttf').to_s
                            })
       font 'Roboto'
 
-      move_down 115
+      # stroke_axis at: [200,0], step_length: 10, color: 'FF0000' # ruler for debugging
+
+      move_down 224
       text user_name, align: :center, size: 18, color: '333448'
 
-      text_box date_awarded,
-               at: [392, 134],
-               width: 100,
-               height: 24,
-               size: 16,
-               valign: :bottom,
-               style: :bold
-
-      text_box cert_number,
-               at: [370, 114],
-               width: 120,
-               height: 24,
-               size: 16,
-               valign: :bottom,
-               style: :bold
-
-      if slug == 'cs-accelerator' && teacher_ref_no
-        text_box 'Teacher Reference Number:',
-                 at: [297, 97],
-                 width: 150,
-                 height: 44,
-                 size: 14,
-                 valign: :bottom
-
-        text_box teacher_ref_no,
-                 at: [360, 76],
-                 width: 130,
-                 height: 24,
+      move_down 320
+      translate(-36, 0) do
+        text_box date_awarded,
+                 at: [81, 190],
+                 width: 200,
+                 align: :center,
                  size: 16,
-                 valign: :bottom,
-                 style: :bold,
-                 overflow: :shrink_to_fit
+                 style: :bold
+
+        text_box cert_number,
+                 at: [314, 190],
+                 width: 200,
+                 align: :center,
+                 size: 16,
+                 style: :bold
       end
     end
 
