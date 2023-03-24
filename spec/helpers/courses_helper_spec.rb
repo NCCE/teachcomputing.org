@@ -135,6 +135,20 @@ describe CoursesHelper, type: :helper do
     end
   end
 
+  describe '#started?' do
+    it 'is true on start date' do
+      Timecop.freeze(2023, 12, 31) do
+        expect(helper.started?("31\/12\/2023 00:00:00")).to be(true)
+      end
+    end
+
+    it 'is false before start date' do
+      Timecop.freeze(2023, 12, 30) do
+        expect(helper.started?("31\/12\/2023 00:00:00")).to be(false)
+      end
+    end
+  end
+
   describe('user_achievement_state') do
     it 'throws error if user is not supplied' do
       expect { helper.user_achievement_state(nil, activity) }.to raise_error(NoMethodError)

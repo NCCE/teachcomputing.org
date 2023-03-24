@@ -75,6 +75,11 @@ module CoursesHelper
     "Available from #{start_date.strftime('%d %B %Y')}."
   end
 
+  # @param start_date [String] parsable by Date#parse, such as '2023-04-01'
+  def started?(start_date)
+    Date.parse(start_date) <= Date.today
+  end
+
   def user_achievement_state(user, activity)
     achievement = Achievement.find_by(user_id: user.id, activity_id: activity&.id)
 
