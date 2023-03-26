@@ -538,7 +538,7 @@ end
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 a = Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545') do |activity|
-  activity.title = 'Outstanding primary computing for all - face to face'
+  activity.title = 'Primary computing for all - face to face'
   activity.credit = 10
   activity.slug = 'outstanding-primary-computing-for-all-face-to-face'
   activity.stem_course_template_no = '34ff2768-a7fc-ea11-a813-000d3a86d545'
@@ -550,7 +550,7 @@ end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: 'e3c14378-3015-eb11-a813-000d3a86f6ce') do |activity|
-  activity.title = 'Leading Primary Computing - Face to Face'
+  activity.title = 'Leading primary computing - module 1 - face to face'
   activity.credit = 10
   activity.slug = 'leading-primary-computing-face-to-face'
   activity.stem_course_template_no = 'e3c14378-3015-eb11-a813-000d3a86f6ce'
@@ -760,7 +760,7 @@ end
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(stem_course_template_no: '3bff03fd-256d-eb11-a812-000d3a872640') do |activity|
-  activity.title = 'Leading primary computing (remote)'
+  activity.title = 'Leading primary computing - module 2 - remote'
   activity.credit = 10
   activity.slug = 'leading-primary-computing-remote'
   activity.stem_course_template_no = '3bff03fd-256d-eb11-a812-000d3a872640'
