@@ -95,7 +95,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 
 a = Activity.find_or_create_by(stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae') do |activity|
   activity.title = 'Python programming essentials for GCSE computer science'
-  activity.credit = 10
+  activity.credit = 40
   activity.slug = 'python-programming-essentials-for-gcse-computer-science'
   activity.stem_course_template_no = '92f4f86e-0237-4ecc-a905-2f6c62d6b5ae'
   activity.category = 'face-to-face'
