@@ -15,7 +15,7 @@ class UpdateHubs < ActiveRecord::Migration[6.1]
       Hub.create(
         hub_region: north_west,
         name: 'Lancashire Satellite',
-        subdeliverer_id: '82d50652-4cca-ed11-b595-002248c6bd96', # preprod FIXME: change to production value before merge
+        subdeliverer_id: '89318b0c-ecce-ed11-a7c6-002248c6b31a',
         address: 'Priestley College, Loushers Lane, Warrington',
         postcode: 'WA4 6RD',
         email: 'teachcomputing@bca.warrington.ac.uk',
@@ -31,7 +31,7 @@ class UpdateHubs < ActiveRecord::Migration[6.1]
       Hub.create(
         hub_region: east_midlands,
         name: 'Leicestershire and Nottinghamshire',
-        subdeliverer_id: '30c44ca3-4eca-ed11-b595-002248c6bd96', # preprod FIXME: change to production value before merge
+        subdeliverer_id: '80823238-ecce-ed11-a7c6-002248c6b31a',
         address: 'Beauchamp College, Ridge Way, Oadby',
         postcode: 'LE2 5TP',
         phone: '01162 986234',
@@ -46,7 +46,7 @@ class UpdateHubs < ActiveRecord::Migration[6.1]
       Hub.create(
         hub_region: south_east,
         name: 'Oxfordshire, Buckinghamshire and West Berkshire',
-        subdeliverer_id: '4165b0c1-4eca-ed11-b595-002248c6bd96', # preprod FIXME: change to production value before merge
+        subdeliverer_id: '3e81f571-ecce-ed11-a7c6-002248c6b31a',
         address: 'St Clement Danes School, Chenies Road, Chorleywood',
         postcode: 'WD3 6EW',
         email: 'teachcomputing@scd.herts.sch.uk',
@@ -61,7 +61,7 @@ class UpdateHubs < ActiveRecord::Migration[6.1]
       Hub.create(
         hub_region: east,
         name: 'London, Hertfordshire and Hampshire',
-        subdeliverer_id: '6d46cbd3-4eca-ed11-b595-002248c6bd96', # preprod FIXME: change to production value before merge
+        subdeliverer_id: '5f4c768a-ecce-ed11-a7c6-002248c6b31a',
         address: 'Sandringham School, The Ridgeway, St Albans',
         postcode: 'AL4 9NX',
         phone: '01727 799560',
