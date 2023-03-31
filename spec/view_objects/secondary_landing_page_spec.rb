@@ -54,7 +54,7 @@ RSpec.describe SecondaryLandingPage do
   end
 
   describe '#event_tracking_category' do
-    it 'returns lime-green-bg' do
+    it 'is "Secondary teachers"' do
       expect(landing_page.event_tracking_category).to eq('Secondary teachers')
     end
   end
