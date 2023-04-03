@@ -21,11 +21,11 @@
 }
 
 .hero-component__default {
-  background-color: $action-color;
+  background-color: $lime-green;
 }
 
 .hero-component__primary {
-  background-color: $jaffa;
+  background-color: $lime-green;
 }
 
 .hero-component__secondary,
@@ -142,5 +142,8 @@
   }
   &-d4 {
     @include glyph("d4");
+  }
+  &-f1 {
+    @include glyph("f1");
   }
 }

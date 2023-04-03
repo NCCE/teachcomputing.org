@@ -17,7 +17,12 @@
       <% details = stem_course_details(user_course_info, achievement.activity.stem_course_template_no) %>
       <% if details.present? %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">
-          <%= t("shared.course_types.#{achievement.activity.category}") %>: <strong><%= course_start_date(details.start_date) %></strong>
+          <%= t("shared.course_types.#{achievement.activity.category}") %>:
+            <% if achievement.activity.online? %>
+              <%= online_course_availability(Date.parse(details.start_date)) %>
+            <% else %>
+              <strong><%= course_start_date(details.start_date) %></strong>
+            <% end %>
         </div>
         <% unless achievement.activity.remote_delivered_cpd || achievement.activity.online? %>
           <div class="govuk-body ncce-activity-list__subtext ncce-activity-list__subtext--address">
@@ -33,7 +38,7 @@
         <%= get_date_string(achievement) %>
       </div>
       <div class="ncce-activity-list__subtext govuk-!-margin-top-0">
-        <%= render ProviderLogosComponent.new(online: achievement.activity.category.to_sym == :online, dashboard: true) %>
+        <%= render ProviderLogosComponent.new(dashboard: true, provider: achievement.provider) %>
       </div>
     </div>
   </li>

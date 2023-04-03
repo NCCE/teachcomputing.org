@@ -42,11 +42,18 @@
 }
 
 .ncce-feat__date {
+  text-transform: uppercase;
+  font-family: $font-family-heading;
+  font-weight: 700;
   font-size: 14px;
+  color: #333448;
   margin-bottom: 0;
 }
 
 .ncce-feat__heading {
+  text-decoration: underline;
+  font-weight: 700;
+  color: $hyper-link-blue;
   margin: 2px 0 10px;
 }
 

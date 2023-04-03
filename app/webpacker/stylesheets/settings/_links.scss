@@ -11,27 +11,23 @@ a:not([class]) {
     color: $grey-dark-x;
   }
   &:focus {
-    background-color: $hyper-link-blue;
-    color: $white;
-    outline-color: $hyper-link-blue;
+    background-color: transparent;
+    color: $grey-dark-x;
   }
   &:active {
-    background-color: $hyper-link-blue;
-    color: $white;
+    background-color: transparent;
+    color: $grey-dark-x;
   }
-}
 
-a:focus {
-  outline-offset: initial;
-  box-shadow: none !important;
+
 }
 
 .ncce-link--on-dark {
   &:link {
-    color: $grey-x-light;
+    color: $white;
   }
   &:visited {
-    color: $grey;
+    color: $white;
   }
   &:hover {
     color: $white;
@@ -40,7 +36,7 @@ a:focus {
     color: $white;
   }
   &:active {
-    color: $grey-dark-x;
+    color: $ncce-grey;
   }
 }
 
@@ -57,7 +53,7 @@ a:focus {
 
 .ncce-link--heading {
   font-family: $font-family-heading;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .ncce-link--emph {

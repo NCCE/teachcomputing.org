@@ -23,7 +23,7 @@
                   <%= link_to(
                     @booking.booking_button_title,
                     @booking.booking_path(occurrence.course_occurrence_no),
-                    class: 'govuk-button button button--small',
+                    class: 'govuk-button button',
                     draggable: 'false',
                     data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
                     target: :_blank
@@ -51,7 +51,7 @@
                 target: :_blank
                 ) %>
           </p>
-          <%= render('courses/start-date', date: @start_date) unless @started %>
+          <%= render('start-date', date: @start_date) unless @started %>
         <% end %>
       </div>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
@@ -71,7 +71,7 @@
         </p>
       <% end %>
 
-      <%= render('courses/start-date', date: @start_date) unless @started %>
+      <%= render('start-date', date: @start_date) unless @started %>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
        <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
@@ -150,19 +150,12 @@
           class: 'ncce-link', draggable: 'false',
           data: { event_action: 'click', event_category: 'course details'} %>
       </p>
-      <%= render('courses/start-date', date: @start_date) if (@course.online_cpd && !@started) %>
+      <%= render('start-date', date: @start_date) if (@course.online_cpd && !@started) %>
     <% end %>
   <% end %>
 
-  <div class='govuk-body govuk-!-margin-bottom-0 provider-logos' %>
-    <div class='govuk-body-s'>
-      This course is from the National Centre for Computing Education and is delivered by STEM Learning.
-    </div>
-    <div class='govuk-body-s provider-logos__logo-wrapper'>
-      <%= image_pack_tag 'media/images/logos/ncce-logo.svg', alt: '' %>
-      <%= image_pack_tag 'media/images/logos/stem-logo-small.svg', alt: '', class: '' %>
-    </div>
-  </div>
+  <%= render ProviderLogosComponent.new(dashboard: false)%>
+
   <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <p class='govuk-body-s ncce-booking-list__progress'>
       Can't see the progress of your course? You may need to rejoin the course.

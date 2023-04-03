@@ -57,7 +57,7 @@
             <br>
             <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
             <%= submit_tag 'Submit',
-              class: 'govuk-button button button--small button--inline row'
+              class: 'govuk-button button button--inline row'
             %>
             <% end %>
           <br>
@@ -94,7 +94,7 @@
             <br>
             <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
             <%= submit_tag 'Submit',
-              class: 'govuk-button button button--small button--inline row'
+              class: 'govuk-button button button--inline row'
             %>
             <% end %>
           <br>
@@ -107,7 +107,7 @@
       <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
         <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
         <%= text_area_tag :comment, nil, placeholder: 'Your feedback helps improve our resource.', class: 'govuk-textarea curriculum__rating-textarea row rating_comment_placeholder' %>
-        <%= submit_tag 'Submit', class: 'govuk-button button button--small button--inline row govuk-!-margin-top-1' %>
+        <%= submit_tag 'Submit', class: 'govuk-button button button--inline row govuk-!-margin-top-1' %>
       <% end %>
     </div>
     <div class="rating_page" data-rating-target="page">

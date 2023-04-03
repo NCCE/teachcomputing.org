@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe ProviderLogosComponent, type: :component do
-  let(:data) do
-    {
-      online: false,
-      dashboard: false,
-      class_name: 'custom-class'
-    }
-  end
+  context 'outside dashboard' do
+    let(:data) do
+      {
+        dashboard: false,
+        class_name: 'custom-class',
+      }
+    end
 
-  context 'when options are all false' do
     before do
       render_inline(described_class.new(**data))
     end
@@ -18,67 +17,79 @@ RSpec.describe ProviderLogosComponent, type: :component do
       expect(page).to have_css('.custom-class')
     end
 
-    it 'does not add the modifier' do
+    it 'does not add the dashboard modifier' do
       expect(page).not_to have_css('.provider-logos-component--dashboard')
     end
 
-    it 'falls back to stem org_prefix' do
-      expect(page).to have_text('This course is from Teach Computing and delivered by STEM Learning')
+    it 'falls back to stem-learning copy' do
+      expect(page).to have_text('This course is from the National Centre for Computing Education and is delivered by STEM Learning.')
     end
 
     it 'has the expected logos' do
-      expect(page).to have_css("img[src*='tc-logo-small']")
+      expect(page).to have_css("img[src*='ncce-logo']")
       expect(page).to have_css("img[src*='stem-logo-small']")
     end
   end
 
-  context 'when online is true' do
+  context 'when provider is not stem-learning' do
+    let(:data) do
+      {
+        provider: 'future-learn',
+        dashboard: false,
+        class_name: 'custom-class'
+      }
+    end
+
     before do
-      data[:online] = true
       render_inline(described_class.new(**data))
     end
 
-    it 'uses the rpf org_prefix' do
-      expect(page).to have_text('This course is from Teach Computing and delivered by Raspberry Pi Foundation')
+    it 'uses the text for the retired Raspberry Pi/FutureLearn online courses' do
+      expect(page).to have_text('This course is from Teach Computing and delivered by Raspberry Pi Foundation.')
     end
 
-    it 'has the expected logos' do
-      expect(page).to have_css("img[src*='tc-logo-small']")
-      expect(page).to have_css("img[src*='rpf-logo-small']")
+    it 'does not display logos' do
+      expect(page).not_to have_css('img')
     end
   end
 
-  context 'when dashboard is true and online is false' do
+  context 'on the dashboard' do
+    let(:data) do
+      {
+        dashboard: true,
+        class_name: 'custom-class',
+      }
+    end
+
     before do
-      data[:dashboard] = true
       render_inline(described_class.new(**data))
     end
 
     it 'adds the modifier' do
       expect(page).to have_css('.provider-logos-component--dashboard')
     end
-
-    it 'has the expected logos' do
-      expect(page).to have_css("img[src*='tc-logo-small']")
-      expect(page).to have_css("img[src*='stem-logo-small']")
-    end
   end
 
-  context 'when dashboard is true and online is true' do
+  context 'when provider is stem-learning' do
+    let(:data) do
+      {
+        provider: 'stem-learning',
+        dashboard: false,
+        class_name: 'custom-class'
+      }
+    end
+
     before do
-      data[:dashboard] = true
-      data[:online] = true
       render_inline(described_class.new(**data))
     end
 
-    it 'adds the modifier' do
-      expect(page).to have_css('.provider-logos-component--dashboard')
+    it 'shows the stem-learning copy' do
+      expect(page).to have_text('This course is from the National Centre for Computing Education and is delivered by STEM Learning.')
     end
 
     it 'has the expected logos' do
-      expect(page).to have_css("img[src*='tc-logo-small']")
-      expect(page).to have_css("img[src*='rpf-logo-small']")
-      expect(page).to have_css("img[src*='fl-logo-small']")
+      expect(page).to have_css("img[src*='ncce-logo']")
+      expect(page).to have_css("img[src*='stem-logo-small']")
     end
   end
 end

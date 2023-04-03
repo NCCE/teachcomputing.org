@@ -224,7 +224,7 @@
       #templateHeader .mcnTextContent,
       #templateHeader .mcnTextContent p {
       /*@editable*/
-      color: #202020;
+      color: #554759;
       /*@editable*/
       font-family: "Roboto", Helvetica,Arial,sans-serif;
       /*@editable*/
@@ -247,6 +247,15 @@
       font-weight: normal;
       /*@editable*/
       text-decoration: underline;
+      }
+      /*
+      @tab Header
+      @section Header Image
+      @tip Set the styling for your email's header image.
+      */
+      #templateHeader #mcnImageContent img {
+        width: 220px;
+        height: 61px;
       }
       /*
       @tab Body
@@ -279,7 +288,7 @@
       #templateBody .mcnTextContent,
       #templateBody .mcnTextContent p {
       /*@editable*/
-      color: #202020;
+      color: #554759;
       /*@editable*/
       font-family: "Roboto", Helvetica,Arial,sans-serif;
       /*@editable*/
@@ -289,6 +298,12 @@
       /*@editable*/
       text-align: left;
       margin-bottom: 20px;
+      }
+
+      #templateBody .mcnTextContent p strong,
+      #templateBody .mcnTextContent h3,
+      #templateBody .mcnTextContent h4 {
+        color: #130019;
       }
       /*
       @tab Body
@@ -308,7 +323,7 @@
       */
       #templateFooter {
       /*@editable*/
-      background-color: #F5F5F5;
+      background-color: #F0F5F4;
       /*@editable*/
       background-image: none;
       /*@editable*/
@@ -621,7 +636,7 @@
       a[class=""]:visited,
       a:not([class]):link,
       a:not([class]):visited {
-        color: #007A9C;
+        color: #1D70B8;
       }
 
       .ncce-link:hover,
@@ -633,15 +648,15 @@
       .ncce-link:focus,
       a[class=""]:focus,
       a:not([class]):focus {
-        background-color: #007A9C;
+        background-color: #1D70B8;
         color: #ffffff;
-        outline-color: #007A9C;
+        outline-color: #1D70B8;
       }
 
       .ncce-link:active,
       a[class=""]:active,
       a:not([class]):active {
-        background-color: #007A9C;
+        background-color: #1D70B8;
         color: #ffffff;
       }
       .govuk-button {
@@ -660,16 +675,17 @@
         margin-top: 0;
         margin-bottom: 22px;
         padding: 7px 10px;
-        border: 2px solid transparent;
+        border: 2px solid #000000;
+        border-bottom-width: 4px;
         border-radius: 0;
-        color: #ffffff;
+        color: #130019;
         text-align: center;
         vertical-align: top;
         cursor: pointer;
         -webkit-appearance: none;
       }
       .button {
-        background-color: #007A9C;
+        background-color: #59FF69;
         box-shadow: none;
         font-size: 1.188rem;
         font-weight: bold;
@@ -746,7 +762,7 @@
                                   <tbody>
                                     <tr>
                                       <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0;">
-                                        <%= image_pack_tag('media/images/logos/teach-computing-logo.png', alt: '') %>
+                                        <%= image_pack_tag('media/images/logos/ncce-logo.png', alt: '', width: 220) %>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -840,8 +856,7 @@
                                                   <tbody>
                                                     <tr>
                                                       <td class="mcnTextContent" valign="top" style="padding: 10px 0 0 0;">
-                                                        <p>These emails are sent on behalf of the National Centre for Computing Education, a consortium of STEM Learning, Raspberry Pi and BCS, The Chartered Institute for IT.</p>
-
+                                                        <p>These emails are sent by STEM Learning, on behalf of the National Centre for Computing Education.</p>
                                                         <p>STEM Learning Limited<br>
                                                         University of York, Heslington, York, North Yorkshire, YO10 5DD<br>
                                                         Company registered in England and Wales. Company Number 05081097</p>

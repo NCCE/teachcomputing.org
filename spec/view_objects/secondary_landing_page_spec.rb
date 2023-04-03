@@ -48,13 +48,13 @@ RSpec.describe SecondaryLandingPage do
   end
 
   describe '#hero_class' do
-    it 'returns tapestry-bg' do
-      expect(landing_page.hero_class).to eq('tapestry-bg')
+    it 'returns lime-green-bg' do
+      expect(landing_page.hero_class).to eq('lime-green-bg')
     end
   end
 
   describe '#event_tracking_category' do
-    it 'returns tapestry-bg' do
+    it 'returns lime-green-bg' do
       expect(landing_page.event_tracking_category).to eq('Secondary teachers')
     end
   end

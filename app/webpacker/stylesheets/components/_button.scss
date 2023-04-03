@@ -1,11 +1,14 @@
 @mixin ncce_button($background_color) {
   background-color: $background_color;
+  font-family: $font-family-heading;
   box-shadow: none;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
   margin: 0;
-  padding: 12px 25px;
-
+  padding: 10px 24px;
+  border-color: $govuk-button-text-colour;
+  border-width: 2px;
+  border-bottom-width: 4px;
   &[disabled] {
     background-color: $background_color;
   }
@@ -13,6 +16,7 @@
   &:hover,
   &[disabled]:hover {
     background-color: $black;
+    color: $white;
   }
 
   &[disabled]:active {
@@ -28,7 +32,7 @@
   }
 
   @include govuk-media-query($from: tablet) {
-    font-size: 1.188rem;
+    font-size: 1.1125rem;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -45,7 +49,8 @@
 }
 
 .button {
-  @include ncce_button($deep-cerulean);
+  @include ncce_button($lime-green);
+  color: $govuk-text-colour;
 }
 
 .button--focus-white {
@@ -61,14 +66,14 @@
   }
 }
 
-.button--small {
-  font-size: 14px;
-  margin-bottom: 0;
-  padding: 0.3125rem 0.875rem;
-  @include govuk-media-query($from: tablet) {
-    font-size: 16px;
-  }
-}
+// .button--small {
+//   font-size: 14px;
+//   margin-bottom: 0;
+//   padding: 0.3125rem 0.875rem;
+//   @include govuk-media-query($from: tablet) {
+//     font-size: 16px;
+//   }
+// }
 
 .button--medium {
   padding: 0.75rem 0.9375rem;
@@ -76,10 +81,10 @@
 
 .button--inverted {
   background-color: $white;
-  border-color: $deep-cerulean;
-  border-width: 3px;
-  color: $deep-cerulean !important;
-  padding: 0.69rem;
+  border-color: $lime-green;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  color: $govuk-button-text-colour !important;
   &:hover {
     border-color: $black;
     color: $white !important;
@@ -87,7 +92,7 @@
 }
 
 .button--aside {
-  @include ncce_button($deep-cerulean);
+  @include ncce_button($lime-green);
   @include govuk-media-query($from: desktop) {
     margin-bottom: 0;
   }
@@ -144,6 +149,19 @@
 
   &:active {
     background-color: $deep-cerulean;
+    color: $white;
+  }
+}
+
+
+.govuk-button {
+  &:visited,
+  &:active,
+  &:link {
+    color: $govuk-button-text-colour;
+  }
+
+  &:hover {
     color: $white;
   }
 }

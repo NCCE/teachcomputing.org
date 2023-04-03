@@ -7,7 +7,7 @@ en:
           html: "<strong>Our vision</strong> is for every child in every school in England to have a world-leading computing education."
         image_title: "A photo of the team"
       intro_text:
-        html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and supporting partners, and marks a significant investment in improving the provision of computing education in England. The NCCE is run by a consortium made up of %{stem_link}, the %{rpi_link} and %{bcs_link}. It is made up of the following programmes:"
+        html: "The <strong>National Centre for Computing Education (NCCE)</strong> is funded by the Department for Education and supporting partners and marks a significant investment in improving the provision of computing education in England. It is delivered by %{stem_link} and is made up of the following programmes:"
       tc_card:
         title: "Teach Computing"
         text: "Discover training, resources and guidance to help you teach computing with confidence."
@@ -20,6 +20,10 @@ en:
         title: "Gender Balance in Computing"
         text: "Help us find the best ways to encourage young women to study Computer Science."
         link_title: "Learn about our research"
+      computing_quality_framework_card:
+        title: "Computing Quality Framework"
+        text: "Use our guided journey to assess your school's computing offer."
+        link_title: "Visit Computing Quality Framework"
       ambition:
         title: "Our ambition"
         text: "We aim to transform the way computing is taught in schools across the country – and enable more young people to benefit from studying this important subject. Through this, we believe that their skills and career opportunities will be enhanced."

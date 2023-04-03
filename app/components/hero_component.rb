@@ -3,9 +3,8 @@
 class HeroComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(title:, color: nil, glyph: :a1, small_title: false, subtitle: nil, status: nil)
+  def initialize(title:, color: nil, small_title: false, subtitle: nil, status: nil)
     @title = title
-    @glyph = glyph
     @color = color
     @small_title = small_title
     @subtitle = subtitle
@@ -14,8 +13,7 @@ class HeroComponent < ViewComponent::Base
 
   def class_list
     ['hero-component',
-     color_class,
-     glyph_class].compact.join(' ')
+     color_class].compact.join(' ')
   end
 
   def heading_class_list
@@ -28,10 +26,6 @@ class HeroComponent < ViewComponent::Base
       return 'hero-component__default' unless @color.present?
 
       "hero-component__#{@color}"
-    end
-
-    def glyph_class
-      "hero-component__glyph-#{@glyph}"
     end
 
     def heading_size_class

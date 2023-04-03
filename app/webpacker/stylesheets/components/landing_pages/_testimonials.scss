@@ -1,8 +1,7 @@
 .lp-testimonials {
-  background-color: hsla(193, 100%, 32%, 0.1);
   display: grid;
   grid-template-columns: auto;
-  padding: 30px 15px 0;
+  padding: 30px 16px 0;
 
   @include govuk-media-query($from: tablet) {
     column-gap: 30px;
@@ -14,7 +13,7 @@
     column-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 48px;
-    padding: 24px 20px;
+    padding: 24px 0;
   }
 }
 
@@ -41,4 +40,8 @@
 
 .lp-testimonials__testimonial-bio-text {
   margin-left: 12px;
+  strong {
+    display: block;
+    margin-bottom: .25rem;
+  }
 }

@@ -10,12 +10,18 @@
     margin-bottom: 0;
   }
 
-  &--dashboard {
-    .provider-logos-component__copy {
-      font-size: 1rem;
-    }
+  img {
+    height: 43px;
+    width: auto;
+  }
 
+  &--dashboard {
     border-top: none;
     padding-bottom: 0;
+
+    img {
+      height: 30px;
+      width: auto;
+    }
   }
 }

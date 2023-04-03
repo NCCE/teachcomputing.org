@@ -1,10 +1,10 @@
 <% meta_tag :title, 'About Us - Teach Computing' %>
 <%= render HeroMediaComponent.new(
-  class_name: 'dixie-bg',
+  class_name: 'lime-green-bg',
   title: t('.hero.title'),
   text: t('.hero.text.html'),
   image: {
-    url: 'media/images/pages/about/ncce_staff.jpg',
+    url: 'media/images/pages/about/enfield-primary.jpg',
     title: t('.hero.image_title')
   }
 ) %>
@@ -15,9 +15,7 @@
         <div class="govuk-grid-column-two-thirds">
           <p class="govuk-body-l govuk-!-margin-bottom-0">
             <%= t('.intro_text.html',
-              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link'),
-              rpi_link: (link_to 'Raspberry Pi Foundation', 'https://www.raspberrypi.org/', class: 'ncce-link'),
-              bcs_link: (link_to 'BCS, The Chartered Institute for IT', 'https://www.bcs.org/', class: 'ncce-link')
+              stem_link: (link_to 'STEM Learning', 'https://www.stem.org.uk/', class: 'ncce-link govuk-link--no-underline')
             ) %>
           </p>
         </div>
@@ -29,7 +27,7 @@
             cards_per_row: 3,
             cards: [
               {
-                image_url: 'media/images/logos/tc-logo-with-bg.svg',
+                image_url: 'media/images/logos/ncce-logo-with-bg.svg',
                 title: t('.tc_card.title'),
                 text: t('.tc_card.text'),
                 link: {
@@ -51,14 +49,14 @@
                 }
               },
               {
-                image_url: 'media/images/logos/gender-balance-logo-with-bg.svg',
-                title: t('.gender_balance_card.title'),
-                text: t('.gender_balance_card.text'),
+                image_url: 'media/images/logos/computing-quality-framework-logo-with-bg.svg',
+                title: t('.computing_quality_framework_card.title'),
+                text: t('.computing_quality_framework_card.text'),
                 link: {
-                  link_title: t('.gender_balance_card.link_title'),
-                  link_url: '/gender-balance',
+                  link_title: t('.computing_quality_framework_card.link_title'),
+                  link_url: 'https://computingqualityframework.org/',
                   tracking_page: tracking_category,
-                  tracking_label: 'Gender balance'
+                  tracking_label: 'Computing Quality Framework'
                 }
               }
             ]
@@ -115,9 +113,9 @@
           <h2 class='govuk-heading-l'><%= t('.programmes.title') %></h2>
           <p class='govuk-body govuk-!-margin-bottom-0'>
             <%= t('.programmes.text.html',
-              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link', data: tracking_data('Resources')),
-              training_link: (link_to 'training courses', '/courses', class: 'ncce-link', data: tracking_data('Courses')),
-              funding_link: (link_to ' Funding is available', '/funding', class: 'ncce-link', data: tracking_data('Bursaries'))
+              resources_link: (link_to 'resources', '/curriculum', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Resources')),
+              training_link: (link_to 'training courses', '/courses', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Courses')),
+              funding_link: (link_to ' Funding is available', '/funding', class: 'ncce-link govuk-link--no-underline', data: tracking_data('Bursaries'))
             ) %>
           </p>
         </div>

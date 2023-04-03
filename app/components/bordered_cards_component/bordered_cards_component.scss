@@ -28,7 +28,7 @@
 
   .ncce-link {
     font-weight: bold;
-  } 
+  }
 
   &--primary-cert {
     border-top: solid 9px $primary-cert-color;
@@ -45,6 +45,10 @@
 
 .bordered-card__text {
   flex-grow: 1;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .bordered-card__title {
@@ -83,7 +87,6 @@
 }
 
 .bordered-card__get-involved-button {
-  color: white !important;
   width: 100%;
   margin-bottom: 0;
 }

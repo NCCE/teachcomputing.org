@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('components/_hero', type: :view) do
   let(:hero_title) { 'Page title' }
-  let(:colour) { 'blue' }
+  let(:colour) { 'lime-green' }
   let(:status) { 'You are amazing' }
   let(:subtitle) { 'Some text here everybody' }
 
@@ -23,8 +23,8 @@ RSpec.describe('components/_hero', type: :view) do
       expect(rendered).to have_css('.hero__heading', text: hero_title)
     end
 
-    it 'is the blue hero' do
-      expect(rendered).to have_css('.hero--blue', count: 1)
+    it 'is the lime green hero' do
+      expect(rendered).to have_css('.hero--lime-green', count: 1)
     end
 
     it 'doesn\'t show the status message' do

@@ -7,12 +7,12 @@ $blue: #4c43c5;
 $box-shadow: rgba(0, 0, 0, 0.1);
 $concrete: #F5F5F5;
 $deep-cerulean: #007fa2;
-$hyper-link-blue: #007A9C;
+$hyper-link-blue: #1D70B8;
 $dixie: #e7a615;
 $egg-white: #ffeec3;
-$foam: #E4F9FF;
-$grey-dark-x: #333448;
-$grey-storm: #696b8f;
+$foam: #DDFEFF;
+$grey-dark-x: #130019;
+$grey-storm: #554759;
 $grey-x-light: #e3e2f3;
 $grey: #e0e0e0;
 $grey-light: #dddddd;
@@ -26,21 +26,25 @@ $lilly-white: #ebebeb;
 $light-blue: #E4F8FF;
 $mid-gray: #5c5d6d;
 $pink: #de01a5;
-$purple-dark: #593e8e;
-$purple: #7b1ec0;
+$purple-dark: #120540;
+$purple: #1C0F5F;
 $scarpa-flow: #575868;
 $tapestry: #a94e91;
 $white: #ffffff;
-$isaac: #feb44c;
-$lime-green: #edf6f3;
+$isaac: #FFC000;
+$ncce-grey: #F0F5F4;
+$lime-green: #59FF69;
 $green: #4FA88B;
+$orange: #FF8300;
 
 $govuk-text-colour: $grey-dark-x;
+$govuk-button-text-colour: $grey-dark-x;
+
 $plain-hero-color: $concrete;
-$action-color: $deep-cerulean;
-$primary-cert-color: $jaffa;
-$secondary-cert-color: $tapestry;
-$primary-cert-color: $jaffa;
+$action-color: $hyper-link-blue;
+$primary-cert-color: $lime-green;
+$secondary-cert-color: $lime-green;
+$primary-cert-color: $lime-green;
 
 .deep-cerulean-bg {
   background-color: $deep-cerulean;
@@ -69,9 +73,23 @@ $primary-cert-color: $jaffa;
   border: 3px solid $hyper-link-blue;
 }
 
-.light-grey-bg {
-  background-color: $concrete;
+.border-green {
+  border: 3px solid $lime-green;
 }
+
+.light-grey-bg {
+  background-color: $ncce-grey;
+}
+
+.purple-bg {
+  background-color: $purple-dark;
+  color: $white;
+}
+
+.lime-green-bg {
+  background-color: $lime-green;
+}
+
 
 .tapestry-bg {
   background-color: $tapestry;
@@ -102,7 +120,7 @@ $primary-cert-color: $jaffa;
 }
 
 @mixin status_block() {
-  background-color: $grey-dark-x;
+  background-color: $purple;
   color: $white;
   font-weight: bold;
   padding: 2px 12px;

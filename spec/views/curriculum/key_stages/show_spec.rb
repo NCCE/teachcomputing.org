@@ -24,7 +24,7 @@ RSpec.describe('curriculum/key_stages/show', type: :view) do
     end
 
     it 'links to feedback form' do
-      expect(rendered).to have_link('Provide your feedback', href: 'https://forms.gle/qT2XqoCecYjLLohC6')
+      expect(rendered).to have_link('Provide your feedback', href: 'https://survey.alchemer.eu/s3/90535031/National-Centre-for-Computing-Education-Teach-Computing-Curriculum-Feedback')
     end
 
     it 'does not show the rating partial' do

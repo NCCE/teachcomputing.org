@@ -1,3 +1,4 @@
 en:
-  rpf_provider_text: "This course is from Teach Computing and delivered by Raspberry Pi Foundation"
-  stem_provider_text: "This course is from Teach Computing and delivered by STEM Learning"
+  provider_text:
+    future-learn: "This course is from Teach Computing and delivered by Raspberry Pi Foundation."
+    stem-learning: "This course is from the National Centre for Computing Education and is delivered by STEM Learning."

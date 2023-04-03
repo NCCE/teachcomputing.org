@@ -10,13 +10,18 @@
 
 .curriculum__list--item {
   background-color: $concrete;
-  border-left-color: $jaffa;
+  border-left-color: $lime-green;
   border-left-style: solid;
   border-left-width: 0.5625rem;
   font-weight: 500;
   margin-bottom: 1rem !important;
   padding: 1.3rem;
 }
+
+.curriculum__list--item-green {
+  border-left-color: $lime-green;
+}
+
 
 .curriculum__list--item-purple {
   border-left-color: $tapestry;

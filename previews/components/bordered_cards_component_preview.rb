@@ -13,7 +13,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced.',
           link: {
@@ -40,7 +40,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example of a page card component.',
           link: {
@@ -59,7 +59,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
       class_name: 'page-cards-example-component',
       cards: [
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 1',
           text: 'This is an example of a page card component.',
           link: {
@@ -68,7 +68,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 2',
           text: 'This is an example of a page card component.',
           link: {
@@ -77,7 +77,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 3',
           text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced.',
           link: {
@@ -86,7 +86,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 4',
           text: 'This is an example of a page card component.',
           link: {
@@ -95,7 +95,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 5',
           text: 'This is an example of a page card component. It has more text than the other to display how elements are evenly spaced. This one has even more text which should provide some variation.',
           link: {
@@ -104,7 +104,7 @@ class BorderedCardsComponentPreview < ViewComponent::Preview
           }
         },
         {
-          image_url: 'media/images/logos/tc-logo-with-bg.svg',
+          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
           title: 'Card 6',
           text: 'This is an example of a page card component.',
           link: {

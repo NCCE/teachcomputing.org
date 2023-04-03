@@ -4,13 +4,39 @@
 .heading-generic {
   color: $grey-dark-x;
   font-family: $font-family-heading;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.purple-bg {
+  .govuk-heading-s,
+  .govuk-heading-m,
+  .govuk-heading-l,
+  .govuk-heading-xl,
+  .heading-generic,
+  .govuk-body,
+  .govuk-body-l,
+  .govuk-body-s {
+    color: $white;
+  }
+}
+
+.white-bg {
+  .govuk-heading-s,
+  .govuk-heading-m,
+  .govuk-heading-l,
+  .govuk-heading-xl,
+  .heading-generic,
+  .govuk-body,
+  .govuk-body-l,
+  .govuk-body-s  {
+    color: $grey-dark-x;
+  }
 }
 
 .govuk-heading-s {
   color: $grey-dark-x;
   font-family: $font-family-body;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .govuk-heading-s--objectivity {
@@ -27,6 +53,16 @@
 
 .govuk-body {
   line-height: 1.45;
+}
+
+.govuk-body,
+.govuk-body-s,
+.govuk-body-m {
+  color: $grey-dark-x;
+}
+
+.govuk-body-l {
+  color: $grey-dark-x;
 }
 
 .govuk-list--ncce li {

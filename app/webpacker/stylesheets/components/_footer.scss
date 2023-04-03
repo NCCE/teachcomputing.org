@@ -1,8 +1,18 @@
 .ncce-footer {
-  background-color: $grey-dark-x;
-  border-top: none;
+  background-color: $purple-dark;
+  border-top: 8px solid $lime-green;
   padding: 2rem 0;
+  background-image: url('../images/icons/footer-flourish.svg');
+  background-repeat: no-repeat;
+  background-size: 46px;
+  background-position: bottom right;
+  @include govuk-media-query($from: tablet) {
+    background-size: 64px;
+  }
 
+  @include govuk-media-query($from: desktop) {
+    background-size: 82px;
+  }
   &__grid {
     display: grid;
     grid-row-gap: 25px;
