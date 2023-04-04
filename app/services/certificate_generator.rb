@@ -17,8 +17,6 @@ class CertificateGenerator
     user_name = "#{@user.first_name} #{@user.last_name}"
     date_awarded = @transition.created_at.strftime('%d %B %Y')
     cert_number = certificate_number
-    slug = @programme.slug
-    teacher_ref_no = @user.teacher_reference_number
 
     Prawn::Document.generate(@output_path, page_size: 'A4') do
       font_families.update('Roboto' => {
