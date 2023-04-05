@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('certificates/secondary_certificate/complete', type: :view) do
-  let(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let(:secondary_certificate) { create(:secondary_certificate) }
 
   before do

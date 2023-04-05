@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DownloadsController, type: :request do
   describe 'POST' do
-    let(:user) { create(:user, email: 'web@raspberrypi.org') }
+    let(:user) { create(:user, email: 'web@teachcomputing.org') }
     let(:uri) { 'https://rubyonrails.org' }
 
     context 'with logged in user' do

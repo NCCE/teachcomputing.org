@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Certificates::CSAcceleratorController do
-  let(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let!(:programme) { create(:cs_accelerator) }
   let(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }

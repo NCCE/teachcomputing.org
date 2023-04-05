@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Credly::IssueBadgeJob, type: :job do
-  let(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let(:programme) { create(:cs_accelerator) }
   let(:badge) { create(:badge, :active, programme_id: programme.id, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
 

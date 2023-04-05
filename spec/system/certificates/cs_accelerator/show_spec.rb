@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('CS Accelerator certificate page') do
-  let(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let(:programme) { create(:cs_accelerator) }
   let!(:assessment) { create(:assessment, programme_id: programme.id) }
   let!(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }

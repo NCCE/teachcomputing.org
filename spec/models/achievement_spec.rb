@@ -403,7 +403,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     context 'with a programme, enrolment and an achievement count of 1' do
-      let(:user) { create(:user, email: 'web@raspberrypi.org') }
+      let(:user) { create(:user, email: 'web@teachcomputing.org') }
       let(:badge) { create(:badge, :active, programme_id: cs_accelerator.id) }
 
       after do
