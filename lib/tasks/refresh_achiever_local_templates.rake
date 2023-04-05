@@ -37,10 +37,10 @@ namespace :achiever do
       { path: Achiever::Course::Occurrence::ONLINE_RESOURCE_PATH, params: Achiever::Course::Occurrence::QUERY_STRINGS },
       { path: Achiever::Course::OccurrenceDetails::RESOURCE_PATH, params: {
         Page: '1', RecordCount: '1000', ProgrammeName: 'ncce', ID: '5e91e211-cd0a-ea11-a811-000d3a86d545'
-      } }, # contact_no here is for the staging web@raspberrypi.org account
+      } }, # this is a random course
       { path: Achiever::Course::Delegate::RESOURCE_PATH, params: {
         Page: '1', RecordCount: '1000', ProgrammeName: 'ncce', CONTACTNO: '89085e3f-d60e-eb11-a813-000d3a86f6ce'
-      } } # this is a random course
+      } } # contact_no here is arbitrary
     ]
 
     resources.each do |resource|
