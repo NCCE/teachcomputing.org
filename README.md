@@ -24,7 +24,7 @@ sh ./scripts/setup.sh
 
 In order for OAuth to work with STEM you will need to make sure you have an `id` and `secret` set. You get these from [here](https://github.com/NCCE/private-documentation/blob/master/OAuth2/stem-oauth2.md).
 
-If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@raspberrypi.org`.
+If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your `.env` file. This will log you in as `web@teachcomputing.org`.
 
 ### Dynamics (referred to in the codebase as Achiever for historic reasons)
 
