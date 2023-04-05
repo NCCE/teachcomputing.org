@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Certificates::CSAcceleratorController do
   let!(:questionnaire) { create(:csa_enrolment_questionnaire, programme: programme) }
-  let(:user) { create(:user, email: 'web@raspberrypi.org') }
+  let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let!(:programme) { create(:cs_accelerator) }
   let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
 
