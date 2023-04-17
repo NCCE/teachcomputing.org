@@ -98,9 +98,9 @@ class PrimaryLandingPage
       {
         image: 'media/images/landing-pages/5_to_11_year_olds_course.png',
         image_title: 'Programming 5 to 11 year olds course',
-        title: 'Teaching Computer Systems and Networks for 5 to 11 year olds',
-        url: '/courses/CO042/teaching-computing-systems-and-networks-to-5-to-11-year-olds',
-        description: 'Improve your subject knowledge and develop your teaching to help young children understand the computing systems and networks around them.',
+        title: 'Teaching Programming to 5- to 11-year-olds',
+        url: '/courses/CO041/teaching-programming-to-5-to-11-year-olds',
+        description: 'Build your subject knowledge and develop your skills in teaching programming.',
         icon_class: 'icon-online',
         type: 'Online course',
         time_commitment: 'Approximately 8 hours of self-study',
