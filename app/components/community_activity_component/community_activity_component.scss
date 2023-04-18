@@ -3,7 +3,7 @@
   background-color: $white;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: auto 8.5rem;
+  grid-template-columns: auto 11.5rem;
 
   @include govuk-media-query($until: tablet) {
     grid-template-columns: auto;
@@ -40,6 +40,16 @@
   }
 }
 
+.community_activity_component__completed_badge_container {
+  display: block;
+  width: 100%;
+
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
+    width: auto;
+  }
+}
+
 .community-activity-component__objective-text {
   align-self: center;
   grid-column: 1;
@@ -64,6 +74,8 @@
   font-size: 0.9em;
   text-align: center;
   padding: 2px 8px;
+  width: auto;
+  display: inline-block;
 
   @include govuk-media-query($until: tablet) {
     margin-bottom: 1rem;
