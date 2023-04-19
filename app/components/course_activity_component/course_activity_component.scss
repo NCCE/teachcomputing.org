@@ -3,7 +3,7 @@
   background-color: $white;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: auto 8.5rem;
+  grid-template-columns: auto 11.5rem;
 
   @include govuk-media-query($until: tablet) {
     grid-template-columns: auto;
@@ -46,6 +46,7 @@
   grid-row: auto;
   grid-column: 2;
   align-self: top;
+  margin-bottom: 0;
 
   @include govuk-media-query($until: tablet) {
     grid-column: 1;

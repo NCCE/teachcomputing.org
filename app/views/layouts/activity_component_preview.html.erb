@@ -1,0 +1,25 @@
+<% content_for :content do -%>
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <div class="ncce-programmes-activity">
+        <div class="govuk-width-container">
+          <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+                  <li class="ncce-activity-list__item">
+                    <%= yield %>
+                  </li>
+                </ul>
+              </div>
+              <div class="govuk-grid-column-one-third">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+<% end -%>
+
+<%= render 'layouts/base' %>

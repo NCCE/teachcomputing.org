@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CourseActivityComponentPreview < ViewComponent::Preview
+  layout 'activity_component_preview'
+
   def default
     objective = 'Complete in <strong>at least one</strong> <em>certificate</em> course.'.html_safe
     booking = {

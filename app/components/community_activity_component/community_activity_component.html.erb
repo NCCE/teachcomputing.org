@@ -4,7 +4,9 @@
       <span><%= @activity.title %></span>
     </span>
     <% if achievement_complete? %>
-      <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+      <span class="community_activity_component__completed_badge_container" >
+        <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+      </span>
     <% else %>
       <% if @activity.booking_programme_slug.present? %>
         <%= link_to t('.book_button_text'),
