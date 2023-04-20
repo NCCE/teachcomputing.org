@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe Achievement, type: :model do
   include ActiveJob::TestHelper
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, category: 'online', provider: 'future-learn') }
+  let(:activity) { create(:activity, :my_learning) }
   let(:face_to_face_activity) { create(:activity, category: 'face-to-face') }
   let(:programme) { create(:programme) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: activity.id) }
 
   let(:achievement) { create(:achievement, activity_id: activity.id) }
   let(:achievement2) { create(:achievement, activity_id: face_to_face_activity.id) }
+  let(:future_learn_achievement) { create(:achievement, :future_learn) }
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
@@ -202,8 +203,8 @@ RSpec.describe Achievement, type: :model do
 
   describe '#with_provider' do
     before do
-      achievement
       achievement2
+      future_learn_achievement
     end
 
     it 'returns the achievements which match the provider' do
@@ -211,7 +212,7 @@ RSpec.describe Achievement, type: :model do
     end
 
     it 'omits the achievements which don\'t match the provider' do
-      expect(Achievement.with_provider('stem-learning')).not_to include(achievement)
+      expect(Achievement.with_provider('stem-learning')).not_to include(future_learn_achievement)
     end
   end
 

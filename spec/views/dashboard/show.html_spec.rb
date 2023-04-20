@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('dashboard/show', type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let!(:online_activity) { create(:activity, :future_learn) }
+  let!(:online_activity) { create(:activity, :my_learning) }
   let!(:remote_activity) { create(:activity, :remote) }
   let!(:face_to_face) { create(:activity, :stem_learning) }
   let!(:primary_certificate) { create(:primary_certificate) }

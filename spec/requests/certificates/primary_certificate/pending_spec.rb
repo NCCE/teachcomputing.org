@@ -13,7 +13,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, user_id: user.id, activity_id: diagnostic_tool_activity.id) }
-  let(:online_course) { create(:activity, :future_learn, credit: 20) }
+  let(:online_course) { create(:activity, :my_learning, credit: 20) }
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:face_to_face_achievement) { create(:achievement, user_id: user.id, activity_id: face_to_face_course.id) }
