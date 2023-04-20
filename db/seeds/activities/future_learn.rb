@@ -1,4 +1,5 @@
-# This file contains seeds for Activities faciliated by Future Learn
+# This file contains seeds for Activities facilitated by Future Learn, that have since been retired, but we keep in our database
+# for the benefit of those users who completed FL courses before 1st April 2023
 
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
