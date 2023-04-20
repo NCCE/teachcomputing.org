@@ -41,7 +41,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
 
   # Background jobs
   watch(%r{^app/jobs/(.+)\.rb$}) { |m| "spec/jobs/#{m[1]}_spec.rb" }
-  # FactoryGirl factories
+  # FactoryBot factories
   begin
     require 'active_support/inflector'
     watch(%r{^spec/factories/(.+)\.rb$}) do |m|
