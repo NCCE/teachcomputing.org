@@ -5,6 +5,9 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
+  ## Production CSPs below are temporarily commented until a workaround for Google Tag Manager can be found
+  ## https://github.com/NCCE/teachcomputing.org/pull/1160 (Feb 2021)
+
 #   policy.default_src :self, :https, 'youtube.com', 'www.youtube.com'
 #   policy.font_src    :self, :https, :data, 'fonts.gstatic.com'
 #   policy.img_src     :self, :https, :data, 'view.vzaar.com', 'blog.teachcomputing.org'
