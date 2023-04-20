@@ -4,7 +4,9 @@ RSpec.describe Activity, type: :model do
   let(:activity) { create(:activity) }
   let(:online_activity) { create(:activity, :future_learn) }
   let(:face_to_face_activity) { create(:activity, :face_to_face) }
-  let(:online_courses) { create_list(:activity, 3, :future_learn) }
+  let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
+  let(:my_learning_courses) { create_list(:activity, 3, :my_learning) }
+  let(:online_courses) { future_learn_courses + my_learning_courses }
   let(:face_to_face_courses) { create_list(:activity, 3, :stem_learning) }
   let(:community_activity) { create(:activity, :community) }
   let(:system_activity) { create_list(:activity, 3, :system) }
@@ -69,7 +71,7 @@ RSpec.describe Activity, type: :model do
         expect(described_class.online).to match_array(online_courses)
       end
 
-      it 'does not include actions' do
+      it 'does not include face-to-face courses' do
         expect(described_class.online).not_to include(face_to_face_courses.first)
       end
     end
@@ -83,22 +85,44 @@ RSpec.describe Activity, type: :model do
         expect(Activity.face_to_face).to match_array(face_to_face_courses)
       end
 
-      it 'does not include actions' do
+      it 'does not include online courses' do
         expect(Activity.face_to_face).not_to include(online_courses.first)
       end
     end
 
-    describe 'future-learn' do
+    describe 'future_learn' do
       before do
-        [online_courses, activity]
+        [future_learn_courses, my_learning_courses, activity]
       end
 
       it 'includes only future-learn activities' do
-        expect(Activity.future_learn).to match_array(online_courses)
+        expect(Activity.future_learn).to match_array(future_learn_courses)
       end
 
       it 'does not include actions' do
         expect(Activity.future_learn).not_to include(activity)
+      end
+    end
+
+    describe 'my_learning' do
+      before do
+        [future_learn_courses, my_learning_courses, activity]
+      end
+
+      it 'includes only MyLearning activities' do
+        expect(Activity.my_learning).to match_array(my_learning_courses)
+      end
+
+      it 'does not include actions' do
+        expect(Activity.my_learning).not_to include(activity)
+      end
+
+      it 'does not include FutureLearn courses' do
+        expect(Activity.my_learning).not_to include(future_learn_courses.first)
+      end
+
+      it 'does not include face-to-face courses' do
+        expect(Activity.my_learning).not_to include(face_to_face_courses.first)
       end
     end
 
@@ -108,11 +132,11 @@ RSpec.describe Activity, type: :model do
       end
 
       it 'includes only stem-learning activities' do
-        expect(described_class.stem_learning).to match_array(face_to_face_courses)
+        expect(described_class.stem_learning).to match_array(face_to_face_courses + my_learning_courses)
       end
 
-      it 'does not include actions' do
-        expect(described_class.stem_learning).not_to include(online_courses.first)
+      it 'does not include future-learn courses' do
+        expect(described_class.stem_learning).not_to include(future_learn_courses.first)
       end
     end
 
