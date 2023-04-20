@@ -1,8 +1,0 @@
-en:
-  dashboard:
-    achievement_list:
-      providers:
-        stem-learning:
-          html: "Course delivered by %{stem_logo}"
-        future-learn:
-          html: "Online course with %{fl_logo} %{rpf_logo}"
