@@ -102,15 +102,6 @@
     "CURRICULUM_API_KEY": {
       "required": true
     },
-    "FL_PARTNERS_URL": {
-      "required": true
-    },
-    "FL_PARTNERS_CONSUMER_KEY": {
-      "required": true
-    },
-    "FL_PARTNERS_CONSUMER_SECRET": {
-      "required": true
-    },
     "MYLEARNING_DASHBOARD_URL": {
       "required": true
     },
