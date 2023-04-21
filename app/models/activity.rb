@@ -56,6 +56,6 @@ class Activity < ApplicationRecord
   end
 
   def is_not_retired?
-    self.stem_activity_code && self.retired == false
+    self.stem_activity_code.present? && self.retired == false
   end 
 end

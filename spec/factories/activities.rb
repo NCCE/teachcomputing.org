@@ -9,6 +9,7 @@ FactoryBot.define do
     provider { 'stem-learning' }
     sequence(:stem_activity_code) { |n| "CP#{n}" }
     always_on { false }
+    retired { false }
   end
 
   trait :cs_accelerator_diagnostic_tool do

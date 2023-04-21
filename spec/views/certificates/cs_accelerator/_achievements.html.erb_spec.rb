@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe('certificates/_achievements', type: :view) do
   let(:stem_id_activity) { create(:activity, stem_activity_code: 'CP123') }
   let(:stem_id_achievement) { create(:achievement, activity: stem_id_activity) }
+  
+  let(:retired_activity) { create(:activity, stem_activity_code: 'CP126', retired: true) }
+  let(:retired_achievement) { create(:achievement, activity: retired_activity) }
 
   let(:no_stem_id_activity) { create(:activity, stem_activity_code: nil) }
   let(:no_stem_id_achievement) { create(:achievement, activity: no_stem_id_activity) }
@@ -26,4 +29,14 @@ RSpec.describe('certificates/_achievements', type: :view) do
            }
     expect(rendered).to include(no_stem_id_achievement.title)
   end
+  
+  it 'does not link if achievement has been retired' do 
+    render partial: 'certificates/cs_accelerator/achievements',
+           locals: {
+             non_compulsory_achievements: [retired_achievement],
+             compulsory_achievement: nil,
+             user_completed_non_compulsory_achievement: false
+           }
+    expect(rendered).to include(retired_achievement.title)
+  end 
 end
