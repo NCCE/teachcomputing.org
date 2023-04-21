@@ -64,7 +64,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
 
   # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  config.i18n.raise_on_missing_translations = true
 
   # config.web_console.whitelisted_ips = '172.25.0.0/16'
   config.web_console.whiny_requests = false
