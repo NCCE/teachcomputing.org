@@ -2,7 +2,7 @@
   <% achievements.each do |achievement| %>
   <li class="ncce-activity-list__item ncce-activity-list__item--dashboard dashboard-border--<%= get_course_suffix(achievement) %>">
     <div class="ncce-activity-list__item-text <%= 'ncce-activity-list__item-text--incomplete' unless achievement.current_state == :complete.to_s %>">
-      <% if achievement.activity.stem_activity_code %>
+      <% if achievement.active_course? %>
         <%= link_to achievement.activity.title, course_path(id: achievement.activity&.stem_activity_code, name: achievement.activity.slug), class: 'ncce-link' if achievement.activity.stem_activity_code %>
       <% else %>
         <%= achievement.activity.title %>

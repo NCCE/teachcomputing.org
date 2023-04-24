@@ -185,4 +185,21 @@ RSpec.describe Activity, type: :model do
       expect(activity.online?).to eq(false)
     end
   end
+  
+  describe '#active_course?' do 
+    it 'returns true when stem acitivity code present and not retired courses' do 
+      activity = build(:activity)
+      expect(activity.active_course?).to eq(true)
+    end 
+
+    it 'returns false when course activity marked as retired' do 
+      activity = build(:activity, retired: true)
+      expect(activity.active_course?).to eq(false)
+    end 
+
+    it 'returns false when the course stem acitivity code not present' do 
+      activity = build(:activity, stem_activity_code: nil)
+      expect(activity.active_course?).to eq(false)
+    end 
+  end 
 end

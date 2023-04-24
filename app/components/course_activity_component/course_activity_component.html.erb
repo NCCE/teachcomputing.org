@@ -14,7 +14,7 @@
       <% @achievements.each do |achievement| %>
         <div class="course-activity-component__course">
           <p>
-            <% if achievement.stem_activity_code.present? %>
+            <% if achievement.active_course? %>
               <%= link_to(achievement.title, course_path(id: achievement.stem_activity_code, name: achievement.slug), class: 'ncce-link') %>
             <% else %>
               <%= achievement.title %>

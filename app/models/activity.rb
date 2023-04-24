@@ -54,4 +54,8 @@ class Activity < ApplicationRecord
   def online?
     category == ONLINE_CATEGORY
   end
+
+  def active_course?
+    self.stem_activity_code.present? && self.retired == false
+  end 
 end
