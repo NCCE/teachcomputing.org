@@ -9,7 +9,7 @@
   <div class="ncce-pathway-courses__short">
     <div class="ncce-pathway-courses__course">
       <p>
-        <% if compulsory_achievement.stem_activity_code.present? %>
+        <% if compulsory_achievement.active_course? %>
           <%= link_to compulsory_achievement.title,
                       course_path(id: compulsory_achievement.stem_activity_code,
                                   name: compulsory_achievement.slug),
