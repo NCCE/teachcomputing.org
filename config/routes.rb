@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   namespace :api do
     delete '/cache', to: 'cache#destroy'
     get '/users', to: 'users#show'
-    get '/users/forget', to: 'users#forget'
+    delete '/users/forget', to: 'users#forget'
     resources :users, only: %i[] do
       resources :achievements, only: %i[create] do
         post 'complete', action: :complete
