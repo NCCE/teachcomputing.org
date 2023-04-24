@@ -27,7 +27,7 @@ RSpec.describe('certificates/_achievements', type: :view) do
              compulsory_achievement: nil,
              user_completed_non_compulsory_achievement: false
            }
-    expect(rendered).to include(no_stem_id_achievement.title)
+    expect(rendered).not_to have_link(no_stem_id_achievement.title)
   end
   
   it 'does not link if achievement has been retired' do 
@@ -37,6 +37,6 @@ RSpec.describe('certificates/_achievements', type: :view) do
              compulsory_achievement: nil,
              user_completed_non_compulsory_achievement: false
            }
-    expect(rendered).to include(retired_achievement.title)
+    expect(rendered).not_to have_link(retired_achievement.title)
   end 
 end

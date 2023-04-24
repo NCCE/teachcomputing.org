@@ -55,7 +55,7 @@ class Activity < ApplicationRecord
     category == ONLINE_CATEGORY
   end
 
-  def is_not_retired?
+  def active_course?
     self.stem_activity_code.present? && self.retired == false
   end 
 end
