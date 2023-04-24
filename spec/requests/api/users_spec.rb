@@ -52,11 +52,11 @@ RSpec.describe Api::UsersController do
       end
     end
 
-    describe 'GET #forget' do
+    describe 'DELETE #forget' do
       before do
         enrolment
         achievement
-        get '/api/users/forget', params: { stem_user_id: user.stem_user_id }, headers: token_headers
+        delete '/api/users/forget', params: { stem_user_id: user.stem_user_id }, headers: token_headers
       end
 
       it 'returns 200 status' do
