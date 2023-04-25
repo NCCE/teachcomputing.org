@@ -34,7 +34,7 @@ FactoryBot.define do
   end
 
   trait :future_learn do
-    title { 'future learn' }
+    title { 'FutureLearn' }
     provider { 'future-learn' }
     category { 'online' }
   end
