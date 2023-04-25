@@ -22,8 +22,8 @@ namespace :hubs do
     Hub.destroy_all
     east_midlands = HubRegion.find_by(name: 'East Midlands')
     east_midlands_hubs = [
-      { hub_name: 'Leicester and East Midlands',
-        subdeliverer_id: '52f37f29-32de-e911-a812-000d3a86d6ce',
+      { hub_name: 'Leicestershire, Nottinghamshire and Rutland',
+        subdeliverer_id: 'c04b44d6-81e2-ed11-8846-002248c6b31a',
         address: 'Beauchamp College, Ridge Way, Oadby',
         postcode: 'LE2 5TP',
         email: 'teachcomputing@lionhearttrust.org.uk',
