@@ -9,7 +9,7 @@ gem 'administrate-field-active_storage', '~> 0.3.4'
 gem 'administrate-field-jsonb'
 gem 'administrate-field-nested_has_many', '~> 1.3.0'
 gem 'attr_encrypted', '~> 3.1.0'
-gem 'audited', '~> 5.0'
+gem 'audited', '~> 5.3'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'cloudflare-rails', '~> 1.1'
