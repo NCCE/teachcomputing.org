@@ -28,6 +28,7 @@ module NavigationHelper
       { text: 'Teaching resources',
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
+          { text: 'Secondary-question-banks', link: secondary_question_banks_path, label: 'Teaching resources' },
           { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'Resources primary glossary' },
           { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' }
         ] },
