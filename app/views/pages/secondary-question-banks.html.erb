@@ -17,9 +17,6 @@
       <div class="govuk-grid-column-one-third">
         <%= render SecondaryQuestionBanksComponent.new(
           text: 'Use the links below to duplicate the forms into your own Google/Microsoft account. Once duplicated, they will be shareable with your students, with results only viewable by you.',
-          link_title: '',
-          tracking_event_category: 'Courses',
-          tracking_event_label: 'Bursaries',
           bottom_margin: false
         ) %>
       </div>
@@ -33,7 +30,7 @@
 				<div class="govuk-grid-column-full">
 				  <h4 class="govuk-heading-m">Topics</h4>
             <ul class="govuk-list govuk-body govuk-!-padding-bottom-4 govuk-!-padding-top-2">
-              <%= render "secondary-question-resources", resources: t('pages.secondary_question_banks') %>
+              <%= render "secondary_question_resource", resources: t('pages.secondary_question_banks') %>
             </ul>
 				</div>
 		</div>
