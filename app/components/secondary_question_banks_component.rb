@@ -12,19 +12,7 @@ class SecondaryQuestionBanksComponent < ViewComponent::Base
       @text = text
       @link_title = link_title
       @tracking_event_category = tracking_event_category
-      @tracking_event_label = tracking_event_label
       @bottom_margin = bottom_margin
       @class_name = class_name
-    end
-  
-    def tracking_data
-      return nil unless @tracking_event_category.present? &&
-                        @tracking_event_label.present?
-  
-      {
-        event_action: 'click',
-        event_category: @tracking_event_category,
-        event_label: @tracking_event_label
-      }
     end
   end

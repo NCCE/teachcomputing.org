@@ -33,21 +33,7 @@
 				<div class="govuk-grid-column-full">
 				  <h4 class="govuk-heading-m">Topics</h4>
             <ul class="govuk-list govuk-body govuk-!-padding-bottom-4 govuk-!-padding-top-2">
-              <% t('pages.secondary_question_banks').each do |resource|%>
-                <li class="curriculum__list--item">
-                    <h2 class="govuk-heading-s"><%= resource[:title] %></h2>
-                    <span class="govuk-!-display-inline-block govuk-!-padding-right-9">
-                      <span class="govuk-!-padding-right-6 govuk-!-font-weight-bold">Google Form:</span> 
-                      <span class="govuk-!-padding-right-6"><%= link_to "Set A", "#{resource[:google_form_set_a_link]}", class: "govuk-link ncce-link"%></span> 
-                      <span class="govuk-!-padding-bottom-0"><%= link_to "Set B", "#{resource[:google_form_set_b_link]}", class: "govuk-link ncce-link" %></span>
-                    </span>
-                    <span class="govuk-!-display-inline-block">
-                      <span class="govuk-!-padding-right-6 govuk-!-font-weight-bold">Microsoft Form:</span> 
-                      <span class="govuk-!-padding-right-6"><%= link_to "Set A", "#{resource[:microsoft_form_set_a_link]}", class: "govuk-link ncce-link"%></span> 
-                      <span><%= link_to "Set B", "#{resource[:microsoft_form_set_b_link]}", class: "govuk-link ncce-link" %></span>
-                    </span>
-                </li>
-              <% end %>
+              <%= render "secondary-question-resources", resources: t('pages.secondary_question_banks') %>
             </ul>
 				</div>
 		</div>

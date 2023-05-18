@@ -1,0 +1,15 @@
+<% resources.each do |resource|%>
+	<li class="curriculum__list--item">
+		<h2 class="govuk-heading-s"><%= resource[:title] %></h2>
+		<span class="govuk-!-display-inline-block govuk-!-padding-right-9">
+			<span class="govuk-!-padding-right-6 govuk-!-font-weight-bold">Google Form:</span> 
+			<span class="govuk-!-padding-right-6"><%= link_to "Set A", "#{resource[:google_form_set_a_link]}", class: "govuk-link ncce-link"%></span> 
+			<span class="govuk-!-padding-bottom-0"><%= link_to "Set B", "#{resource[:google_form_set_b_link]}", class: "govuk-link ncce-link" %></span>
+		</span>
+		<span class="govuk-!-display-inline-block">
+			<span class="govuk-!-padding-right-6 govuk-!-font-weight-bold">Microsoft Form:</span> 
+			<span class="govuk-!-padding-right-6"><%= link_to "Set A", "#{resource[:microsoft_form_set_a_link]}", class: "govuk-link ncce-link"%></span> 
+			<span><%= link_to "Set B", "#{resource[:microsoft_form_set_b_link]}", class: "govuk-link ncce-link" %></span>
+		</span>
+	</li>
+<% end %>
