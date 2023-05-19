@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'primary-certificate') }
+  let(:programme) { create(:primary_certificate) }
 
   before do
     @programme = programme
@@ -53,6 +53,20 @@ RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
 
     it 'has a log in link' do
       expect(rendered).to have_link('log in', href: '/auth/stem')
+    end
+
+    describe 'hero section' do
+      it 'has title' do
+        expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
+      end
+
+      it 'has sub title' do
+        expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
+      end
+
+      it 'has BCS logo' do
+        expect(rendered).to have_css('.text-certificate-hero__area--logo img')
+      end
     end
   end
 

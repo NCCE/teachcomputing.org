@@ -30,5 +30,9 @@ module Programmes
     def programme_title
       PROGRAMME_TITLE
     end
+
+    def bcs_logo
+      'media/images/logos/secondary-bcs.svg'
+    end
   end
 end
