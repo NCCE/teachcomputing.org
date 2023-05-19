@@ -76,6 +76,10 @@ class Programme < ApplicationRecord
 
   def programme_title; end
 
+  def bcs_logo
+    raise NotImplementedError
+  end
+
   def pathways_excluding(pathway)
     pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
   end

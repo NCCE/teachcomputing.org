@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'secondary-certificate') }
+  let(:programme) { create(:secondary_certificate) }
 
   context 'when a user is not signed in' do
     before do
@@ -59,6 +59,24 @@ RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
 
     it 'has no Login button' do
       expect(rendered).not_to have_link('log in', href: '/auth/stem')
+    end
+
+    it 'has no Account button' do
+      expect(rendered).not_to have_text('Create an account')
+    end
+
+    describe 'hero section' do
+      it 'has title' do
+        expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
+      end
+
+      it 'has sub title' do
+        expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
+      end
+
+      it 'has BCS logo' do
+        expect(rendered).to have_css('.text-certificate-hero__area--logo img')
+      end
     end
   end
 

@@ -54,6 +54,10 @@ module Programmes
       PROGRAMME_TITLE
     end
 
+    def bcs_logo
+      'media/images/logos/subject-knowledge-bcs.svg'
+    end
+
     def compulsory_achievement(user)
       achievements = user
                      .achievements

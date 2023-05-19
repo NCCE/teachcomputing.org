@@ -133,7 +133,7 @@ To use [guard](https://github.com/guard/guard) to watch the tests:
 
 
 ```
-yarn run exec guard
+yarn run guard
 ```
 
 ## Sitemaps

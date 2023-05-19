@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
   let(:user) { create(:user) }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:cs_accelerator) }
 
   before do
     @programme = programme
@@ -57,7 +57,7 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
     end
   end
 
-  context 'hero section' do
+  describe 'hero section' do
     it 'has title' do
       expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
     end
@@ -66,8 +66,8 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
       expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
     end
 
-    it 'has video' do
-      expect(rendered).to have_css('iframe')
+    it 'has BCS logo' do
+      expect(rendered).to have_css('.text-certificate-hero__area--logo img')
     end
   end
 end

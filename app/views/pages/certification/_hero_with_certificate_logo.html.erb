@@ -1,0 +1,18 @@
+<div class="hero">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+      <div class="text-certificate-hero__wrapper">
+          <div class="text-certificate-hero__area--text">
+            <h1 class="govuk-heading-l"><%= @programme.title %></h1>
+            <p class="govuk-body-l">
+              Certificate awarded by BCS, The Chartered Institute for IT
+            </p>
+          </div>
+          <div class="text-certificate-hero__area--logo">
+            <%= image_pack_tag(@programme.bcs_logo, alt: '') %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
