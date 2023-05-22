@@ -56,7 +56,6 @@ RSpec.describe('pages/impact-and-evaluation', type: :view) do
 
     it 'has the expected links' do
       expect(rendered).to have_link('Take part in our research', href: '/gender-balance')
-      expect(rendered).to have_link('Meet our panels', href: '/subject-practitioners')
       expect(rendered).to have_link('Pedagogy resources', href: '/pedagogy')
     end
   end

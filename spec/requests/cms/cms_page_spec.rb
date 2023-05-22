@@ -34,17 +34,6 @@ RSpec.describe CmsController do
         expect { get '/eggs' }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
-
-    context 'with a nested page' do
-      before do
-        stub_nested_cms_page
-        get '/subject-practitioners/primary'
-      end
-
-      it 'has the expected class' do
-        expect(assigns(:style_slug)).to eq('subject-practitioners')
-      end
-    end
   end
 
   describe 'GET #clear_page_cache' do
