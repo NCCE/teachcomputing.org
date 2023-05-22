@@ -38,8 +38,7 @@ module NavigationHelper
           { text: 'News', link: 'https://blog.teachcomputing.org/', label: 'News' },
           { text: 'Impact and evaluation', link: impact_path, label: 'Impact' },
           { text: 'Get involved', link: get_involved_path, label: 'Get involved' },
-          { text: 'Gender Balance research', link: gender_balance_path, label: 'Gender Balance research' },
-          { text: 'Subject practitioners', link: '/subject-practitioners', label: 'Subject practitioners' }
+          { text: 'Gender Balance research', link: gender_balance_path, label: 'Gender Balance research' }
         ] }
     ]
   end
