@@ -19,6 +19,14 @@ module GhostStubs
       .to_return(body: raw_page_json)
   end
 
+  def stub_nested_cms_page
+    raw_page_json = File.new('spec/support/ghost/page.json')
+    stub_request(:get,
+                 "#{ENV['GHOST_API_ENDPOINT']}/content/pages/slug/subject-practitioners-primary/")
+      .with(query: hash_including({ 'key' => (ENV['GHOST_CONTENT_API_KEY']).to_s }))
+      .to_return(body: raw_page_json)
+  end
+
   def stub_missing_cms_page
     raw_missing_page_json = File.new('spec/support/ghost/missing_page.json')
     stub_request(:get, "#{ENV['GHOST_API_ENDPOINT']}/content/pages/slug/eggs/")
