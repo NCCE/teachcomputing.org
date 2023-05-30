@@ -27,6 +27,10 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       it 'renders the first question' do
         expect(response.body).to include('Question 1 of 5')
       end
+
+      it 'asks client not to cache private pages' do
+        expect(response.headers['cache-control']).to eq('no-store')
+      end
     end
 
     context 'when the user has completed the diagnostic' do

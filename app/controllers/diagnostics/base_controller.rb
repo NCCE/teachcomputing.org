@@ -3,6 +3,8 @@ module Diagnostics
     layout 'full-width'
     include Wicked::Wizard
 
+    after_action :discourage_caching
+
     def programme
       raise NotImplementedError
     end
