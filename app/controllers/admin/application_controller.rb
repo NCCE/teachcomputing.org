@@ -6,7 +6,7 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    before_action :authenticate_admin
+    before_action :authenticate_admin, :discourage_caching
 
     def authenticate_admin
       return true if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_ADMINISTRATE_CF_AUTH', false)) && !Rails.env.production?
@@ -18,6 +18,10 @@ module Admin
         decoded_token = decode_cookie(cookies[:CF_Authorization])
         @admin_email = decoded_token.first['email']
       end
+    end
+
+    def discourage_caching
+      response.headers['cache-control'] = 'no-store'
     end
 
     private
