@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe PagesController do
   describe 'GET #home _news' do
+    it 'asks the browser not to sniff MIME types' do
+      stub_featured_posts
+      get root_path
+      expect(response.headers['X-Content-Type-Options']).to eq('nosniff')
+    end
+
     context 'featured posts' do
       before do
         stub_featured_posts
