@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   layout 'full-width'
+  after_action :discourage_caching, only: :show
 
   def index
     assign_params

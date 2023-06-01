@@ -61,6 +61,10 @@ RSpec.describe Certificates::CertificateController do
           expect(response.headers['Content-Disposition'])
             .to eq("inline; filename=\"test-certificate.pdf\"; filename*=UTF-8''test-certificate.pdf")
         end
+
+        it 'asks client not to cache private pages' do
+          expect(response.headers['cache-control']).to eq('no-store')
+        end
       end
     end
 

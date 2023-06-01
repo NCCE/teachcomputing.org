@@ -100,6 +100,10 @@ RSpec.describe Certificates::CSAcceleratorController do
             expect(response)
               .to redirect_to(complete_cs_accelerator_certificate_path)
           end
+
+          it 'asks client not to cache a private page' do
+            expect(response.headers['cache-control']).to eq('no-store')
+          end
         end
 
         context 'when the user does not have a diagnostic response' do

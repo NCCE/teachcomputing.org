@@ -5,6 +5,7 @@ module Certificates
     before_action :find_programme, only: %i[show complete]
     before_action :user_enrolled?, only: %i[show complete]
     before_action :user_completed_diagnostic?, only: %i[show]
+    after_action :discourage_caching
 
     def show
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)

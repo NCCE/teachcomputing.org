@@ -111,6 +111,11 @@ RSpec.describe CoursesController do
           expect(response.body).not_to include('You are enrolled')
         end
       end
+
+      it 'asks client not to cache private progress' do
+        get course_path(course.activity_code, name: 'this-is-a-dud')
+        expect(response.headers['cache-control']).to eq('no-store')
+      end
     end
 
     context 'when the course is online' do

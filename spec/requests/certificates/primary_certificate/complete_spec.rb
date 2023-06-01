@@ -87,6 +87,10 @@ RSpec.describe Certificates::PrimaryCertificateController do
         it 'assigns the programme' do
           expect(assigns(:programme)).to eq(programme)
         end
+
+        it 'asks client not to cache a private page' do
+          expect(response.headers['cache-control']).to eq('no-store')
+        end
       end
     end
 

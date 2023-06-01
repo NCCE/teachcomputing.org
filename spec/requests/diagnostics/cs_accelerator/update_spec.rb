@@ -18,7 +18,7 @@ RSpec.describe Diagnostics::CSAcceleratorController do
   let!(:new_to_computing_pathway) { create(:new_to_computing) }
   let!(:preparing_to_teach_pathway) { create(:prepare_to_teach_gcse_computer_science) }
 
-  describe 'GET update' do
+  describe 'PUT update' do
     before do
       cs_accelerator_enrolment_unanswered
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
