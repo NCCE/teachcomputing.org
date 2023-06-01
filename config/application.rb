@@ -27,5 +27,8 @@ module TeachComputing
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
 
     config.mylearning_dashboard_url = ENV['MYLEARNING_DASHBOARD_URL']
+
+    # default is true
+    config.secure_cookies = ENV['SECURE_COOKIES'] != 'off'
   end
 end
