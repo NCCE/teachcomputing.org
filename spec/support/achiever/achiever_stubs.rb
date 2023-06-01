@@ -49,6 +49,12 @@ module AchieverStubs
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
+  def stub_course_listing
+    json_response = File.new('spec/support/achiever/courses/online_occurrences.json')
+    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?EndDate=2023-06-01&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseListingFutureByProgrammeIdV2ConciseHfW"
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
   def stub_subjects
     json_response = File.new('spec/support/achiever/courses/subjects.json')
     stub_request(:get,

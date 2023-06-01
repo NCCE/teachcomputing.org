@@ -1,6 +1,7 @@
 desc 'updates certificate data'
 task update_certificate_data: :environment do
   # Secondary
+  Rails.logger.warn "Updating secondary certificate activity data"
   p = Programme.secondary_certificate
 
   p.activities.find_by(slug: 'complete-a-cs-accelerator-course').update(booking_programme_slug: 'cs-accelerator')
@@ -76,13 +77,16 @@ task update_certificate_data: :environment do
   )
 
   # Primary
+  Rails.logger.warn "Updating primary certificate activity data"
   p = Programme.primary_certificate
 
   p.activities.find_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit').update(
     description: '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" data-event-label="STEM Ambassadors" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
   )
 
+
   # Clear out ProgrammeActivities and ProgrammeActivityGroupings
+  Rails.logger.warn "Updating programme activity groupings for primary and secondary certificate"
   ProgrammeActivity.destroy_all
   ProgrammeActivityGrouping.destroy_all
   require_relative '../../db/seeds/programme_activity_groupings/primary_certificate'

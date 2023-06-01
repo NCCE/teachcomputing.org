@@ -46,5 +46,7 @@ namespace :achiever do
     resources.each do |resource|
       query_and_write_file resource
     end
+
+    Rails.logger.warn("Local course templates now refreshed")
   end
 end

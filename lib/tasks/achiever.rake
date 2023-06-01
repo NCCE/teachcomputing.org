@@ -1,5 +1,6 @@
 namespace :achiever do
   task get_course_info: :environment do
+    Rails.logger.warn "Getting current Achiever courses info"
     methods = [Achiever::Course::Template::RESOURCE_PATH,
                Achiever::Course::Occurrence::FACE_TO_FACE_RESOURCE_PATH,
                Achiever::Course::Occurrence::ONLINE_RESOURCE_PATH,
