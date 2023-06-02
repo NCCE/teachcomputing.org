@@ -70,6 +70,10 @@ RSpec.describe Certificates::CSAcceleratorController do
           it 'assigns the assessments' do
             expect(assigns(:user_programme_assessment)).to be_a(UserProgrammeAssessment)
           end
+
+          it 'asks client not to cache a private page' do
+            expect(response.headers['cache-control']).to eq('no-store')
+          end
         end
       end
     end

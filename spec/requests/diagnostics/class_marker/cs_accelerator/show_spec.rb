@@ -37,7 +37,7 @@ RSpec.describe Diagnostics::ClassMarker::CSAcceleratorController do
         expect(response).to redirect_to(/register/)
       end
 
-      it 'creates an Achievement if one does not exist already' do
+      it 'does not create an Achievement' do
         expect(Achievement.count).to eq 0
       end
     end

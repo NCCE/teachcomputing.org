@@ -1,6 +1,7 @@
 module Certificates
   class CertificateController < ApplicationController
     before_action :authenticate_user!
+    after_action :discourage_caching
 
     def show
       return redirect_to programme.path unless programme.user_completed?(current_user)

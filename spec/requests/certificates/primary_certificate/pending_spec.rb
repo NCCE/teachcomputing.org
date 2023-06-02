@@ -65,6 +65,11 @@ RSpec.describe Certificates::PrimaryCertificateController do
           expect(assigns(:programme)).to eq(Programme.primary_certificate)
         end
 
+        it 'asks client not to cache a private page' do
+          subject
+          expect(response.headers['cache-control']).to eq('no-store')
+        end
+
         it 'redirects to complete when course complete' do
           user_programme_enrolment.transition_to(:complete)
           subject

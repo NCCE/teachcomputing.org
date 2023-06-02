@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :programme_activity_grouping do
     title { 'A group name' }
     required_for_completion { 1 }
-    sequence(:sort_key, 1) { |n| n }
+    sort_key { 1 }
     programme
 
     trait :with_activities do

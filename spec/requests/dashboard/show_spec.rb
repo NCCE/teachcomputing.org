@@ -49,6 +49,10 @@ RSpec.describe DashboardController do
       it 'renders the correct template' do
         expect(response).to render_template('show')
       end
+
+      it 'asks client not to cache a private page' do
+        expect(response.headers['cache-control']).to eq('no-store')
+      end
     end
 
     describe 'while logged out' do

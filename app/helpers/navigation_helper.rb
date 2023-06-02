@@ -23,7 +23,8 @@ module NavigationHelper
         children: [
           { text: 'Courses', link: courses_path, label: 'Courses' },
           { text: 'Funding', link: '/funding', label: 'Bursaries' },
-          { text: 'Computing Hubs', link: '/hubs', label: 'Computing hubs' }
+          { text: 'Computing Hubs', link: '/hubs', label: 'Computing hubs' },
+          { text: 'Computing Clusters', link: '/computing-clusters', label: 'Computing clusters' },
         ] },
       { text: 'Teaching resources',
         children: [

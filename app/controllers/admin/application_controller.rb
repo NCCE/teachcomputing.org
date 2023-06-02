@@ -6,7 +6,10 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include HttpHeaders
+
     before_action :authenticate_admin
+    after_action :discourage_caching
 
     def authenticate_admin
       return true if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_ADMINISTRATE_CF_AUTH', false)) && !Rails.env.production?
