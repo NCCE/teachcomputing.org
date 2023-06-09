@@ -17,7 +17,11 @@ RSpec.describe('pages/gcse-revision', type: :view) do
     expect(rendered).to have_css('.govuk-list', count: 4)
   end
 
-  it 'has three headings' do
-    expect(rendered).to have_css('.govuk-heading-s', count: 3)
+  it 'has three medium headings' do
+    expect(rendered).to have_css('.govuk-heading-m', count: 3)
+  end
+
+  it 'has one s heading' do
+    expect(rendered).to have_css('.govuk-heading-s', count: 1)
   end
 end
