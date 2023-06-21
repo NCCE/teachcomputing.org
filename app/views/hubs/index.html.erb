@@ -19,24 +19,25 @@
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render AsideComponent.new(
-          title: t('.kit_aside_title'),
-          text: t('.kit_aside_text'),
+          title: t('.sme_section_title'),
+          text: t('.sme_section_text_html'),
+          use_button: true,
           link: {
-            text: t('.kit_aside_link_text'),
-            url: 'https://static.teachcomputing.org/Guide-for-physical-computing-kits.pdf',
-            tracking_label: 'Hubs kit'
+            text: t('.sme_section_link_text'),
+            url: t('.sme_section_link_url'),
+            tracking_label: 'SME contact'
           },
           tracking_category: tracking_category
         ) %>
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render AsideComponent.new(
-          title: t('.sme_section_title'),
-          text: t('.sme_section_text_html'),
+          title: t('.kit_aside_title'),
+          text: t('.kit_aside_text'),
           link: {
-            text: t('.sme_section_link_text'),
-            url: t('.sme_section_link_url'),
-            tracking_label: 'SME contact'
+            text: t('.kit_aside_link_text'),
+            url: t('.kit_aside_link_url'),
+            tracking_label: 'Hubs kit'
           },
           tracking_category: tracking_category
         ) %>

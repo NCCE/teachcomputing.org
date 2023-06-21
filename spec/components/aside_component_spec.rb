@@ -52,7 +52,7 @@ RSpec.describe AsideComponent, type: :component do
     end
 
     it 'renders the expected class on the title' do
-      expect(page).to have_css('h2.govuk-heading-m')
+      expect(page).to have_css('h2.govuk-heading-s')
     end
 
     it 'renders the expected classes on the link' do
