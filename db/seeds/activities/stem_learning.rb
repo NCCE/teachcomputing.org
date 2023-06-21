@@ -309,6 +309,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'b1197da7-1dd2-ed11-a7c6
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP420A'
+  activity.remote_delivered_cpd = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
