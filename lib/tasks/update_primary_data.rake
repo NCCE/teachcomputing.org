@@ -1,5 +1,6 @@
 desc 'updates primary certificate data'
 task update_primary_data: :environment do
+  Rails.logger.warn "Updating primary certificate data"
   p = Programme.primary_certificate
 
   # Update title and descriptions

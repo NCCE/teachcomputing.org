@@ -61,6 +61,7 @@ group :development, :test do
   gem 'brakeman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'database_cleaner'
   gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'

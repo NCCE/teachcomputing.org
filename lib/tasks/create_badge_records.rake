@@ -8,6 +8,7 @@ task create_badge_records: :environment do
   csa_2020_2021 = 'b013421f-1a8f-4630-8c3c-17b3bfc58463'
   secondary_2020_21 = 'a03f3f66-72ec-400f-9935-17477a5c1192'
 
+  Rails.logger.warn "Creating badge records"
   Badge.create(credly_badge_template_id: primary_2019_2020, academic_year: '2019-20', active: false, programme_id: primary_certificate.id)
   Badge.create(credly_badge_template_id: primary_2020_2021, academic_year: '2020-21', active: true, programme_id: primary_certificate.id)
   Badge.create(credly_badge_template_id: csa_2019_2020, academic_year: '2019-20', active: false, programme_id: cs_accelerator.id)
