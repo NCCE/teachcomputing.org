@@ -301,6 +301,32 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
+a = Activity.find_or_create_by(stem_course_template_no: 'b1197da7-1dd2-ed11-a7c6-002248c6b833') do |activity|
+  activity.title = 'Representing algorithms using flowcharts and pseudocode for OCR specification'
+  activity.credit = 10
+  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode-for-ocr-specification'
+  activity.stem_course_template_no = 'b1197da7-1dd2-ed11-a7c6-002248c6b833'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP420A'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+a = Activity.find_or_create_by(stem_course_template_no: '779021a6-1dd2-ed11-a7c6-002248c6bde0') do |activity|
+  activity.title = 'Representing algorithms using flowcharts and pseudocode for AQA specification'
+  activity.credit = 10
+  activity.slug = 'representing-algorithms-using-flowcharts-and-pseudocode-for-aqa-specification'
+  activity.stem_course_template_no = '779021a6-1dd2-ed11-a7c6-002248c6bde0'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP420B'
+  activity.remote_delivered_cpd = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
 a = Activity.find_or_create_by(stem_course_template_no: 'dd8a8433-e57f-ea11-a811-000d3a86f6ce') do |activity|
   activity.title = 'Fundamentals of Computer Networks'
   activity.credit = 10
