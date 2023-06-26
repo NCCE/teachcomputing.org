@@ -86,7 +86,7 @@ module Curriculum
       raw_cookie = cookies.encrypted[:ratings]
       ratings = raw_cookie.nil? ? [] : JSON.parse(raw_cookie)
       ratings << id
-      cookies.encrypted[:ratings] = { value: JSON.generate(ratings), expires: 1.month }
+      cookies.encrypted[:ratings] = { value: JSON.generate(ratings), expires: 1.month, httponly: true, secure: Rails.configuration.secure_cookies }
     end
   end
 end
