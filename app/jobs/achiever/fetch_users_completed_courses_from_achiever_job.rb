@@ -59,7 +59,8 @@ module Achiever
 
         CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
           @programme,
-          user_id, source: 'AchievementsController.create'
+          user_id,
+          { source: 'FetchUsersCompletedCoursesFromAchieverJob' }
         )
       end
   end
