@@ -1,3 +1,7 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -64,6 +68,7 @@ group :development, :test do
   gem 'debase'
   gem 'dotenv-rails'
   gem 'interception'
+  gem 'next_rails', '~> 1.2' # toolkit to upgrade Rails
   gem 'pry'
   gem 'pry-byebug', '~> 3.9.0'
   gem 'pry-rails'
