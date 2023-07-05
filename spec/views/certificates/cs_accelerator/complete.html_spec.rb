@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('certificates/cs_accelerator/complete') do
   let(:user) { create(:user, email: 'web@teachcomputing.org') }
-  let!(:online_activity) { create(:activity, :future_learn) }
+  let!(:online_activity) { create(:activity, :future_learn, stem_activity_code: "CP228") }
   let(:programme) { create(:programme, slug: 'cs-accelerator') }
   let!(:secondary_certificate) { create(:secondary_certificate) }
   let(:pathway) { create(:pathway, pdf_link: 'http://example.com') }
@@ -117,7 +117,8 @@ RSpec.describe('certificates/cs_accelerator/complete') do
     before do
       assign(:user_pathway, pathway)
       assign(:recommended_activities, [online_activity])
-
+      stub_course_templates
+      stub_duration_units
       render
     end
 

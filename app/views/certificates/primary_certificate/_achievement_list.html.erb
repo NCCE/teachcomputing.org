@@ -3,15 +3,7 @@
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
-    <%= render CourseActivityComponent.new(
-      objective: t('.any_course_prompt'),
-      booking: {
-        path: courses_path(certificate: @programme.slug),
-        tracking_label: 'Book remote or F2F course'
-      },
-      achievements: @face_to_face_achievements + @online_achievements,
-      tracking_category: tracking_category
-    ) %>
+    <%= t('.any_course_prompt') %>
   </li>
   <% if @issued_badge.present? %>
     <li class="ncce-activity-list__item">

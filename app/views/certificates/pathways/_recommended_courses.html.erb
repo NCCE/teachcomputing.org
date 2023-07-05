@@ -21,9 +21,13 @@
               <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
             </p>
 
-            <div class="ncce-flex__space-between">
+            <div class="ncce-grid__no-space-between">
               <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">
                 <%= activity_type(pa) %>
+              </p>
+              <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
+                <% course = Achiever::Course::Template.find_by_activity_code(pa.stem_activity_code)%>
+                <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %> 
               </p>
               <% if @current_user.achievements.find_by_activity_id(pa.activity_id) %>
                 <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
@@ -40,7 +44,7 @@
 
   <div class="ncce-pathway-courses__buttons">
     <%= link_to t('.all_courses_button'),
-      courses_path(certificate: @programme.slug), class: 'govuk-button button govuk-!-margin-bottom-0',
+      courses_path(certificate: @programme.slug), class: 'govuk-button button--inverted button govuk-!-margin-bottom-0',
       data: { event_action: 'click', event_category: event_category, event_label: 'View all certificate courses' } %>
   </div>
 </div>

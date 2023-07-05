@@ -48,10 +48,6 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       expect(rendered).to have_css('.community-activity-component')
     end
 
-    it 'has a course activity component' do
-      expect(rendered).to have_css('.course-activity-component')
-    end
-
     it 'has the expected section titles' do
       expect(rendered).to have_text('Complete any course from this certificate')
       expect(rendered).to have_text('Choose at least one activity to A group name', count: 2)
