@@ -1,14 +1,12 @@
 <%= content_tag :div, class: ['document-cards-component', { "#{@class_name}": @class_name.present? }], data: data_attributes, style: css_variables do %>
   <% @cards.each do | card | %>
     <%= content_tag :div, class: ['document-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
-      <div class='document-card_title-wrapper'>
         <p class="govuk-body document-card__title">
           <%= link_to card[:title_link][:title], card[:title_link][:url], class: 'ncce-link', data: tracking_data(card[:title_link][:tracking_label]) %> <%= card[:title_link][:file_type] if card[:title_link][:file_type].present? %>
         </p>
         <% unless card[:date].blank? %>
           <p class="govuk-body govuk-body-s document-card__date"><%= card[:date] %></p>
         <% end %>
-      </div>
       <p class="govuk-body document-card__text"><%= card[:body][:text] %></p>
       <% unless card[:button].blank? %>
         <div class='document-card__button'>

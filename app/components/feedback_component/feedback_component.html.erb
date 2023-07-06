@@ -6,6 +6,6 @@
   <%= form_for(FeedbackComment.new, url: feedback_path) do |f| %>
     <%= f.hidden_field :area, value: @area %>
     <%= f.text_area :comment, placeholder: t('.form.placeholder'), class: 'govuk-textarea feedback-component__textarea', required: true %>
-    <%= f.submit 'Submit', class: 'govuk-button button button--inline' %>
+    <%= f.submit 'Submit', class: 'govuk-button button--inverted button button--inline' %>
   <% end %>
 </div>

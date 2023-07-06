@@ -2,3 +2,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.ncce-grid__no-space-between {
+  display: grid;
+  grid-template-columns: 0.3fr 0.3fr;
+}
