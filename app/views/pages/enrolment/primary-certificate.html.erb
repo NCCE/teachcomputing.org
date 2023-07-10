@@ -19,15 +19,6 @@
           </ul>
         </section>
 
-        <section class='ncce-section govuk-!-padding-5 light-blue-bg'>
-          <h2 class="govuk-heading-m"><%= t('.first-time_heading') %></h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            <%= t(
-              '.first-time_text.html',
-              introductory_link: link_to(t('.introductory'), '/starting-out', class: 'ncce-link ncce-link__log govuk-link--no-underline', role: 'button', draggable: 'false', data: tracking_data('First time teaching')),
-            ) %>
-          </p>
-        </section>
 
         <section class='ncce-section'>
           <h2 class="govuk-heading-m"><%= t('.what_heading') %></h2>
@@ -103,6 +94,16 @@
               ]
             ) %>
           </div>
+        </section>
+        
+        <section class='ncce-section govuk-!-padding-5 light-blue-bg'>
+          <h2 class="govuk-heading-m"><%= t('.first-time_heading') %></h2>
+          <p class="govuk-body govuk-!-margin-bottom-0">
+            <%= t(
+              '.first-time_text.html',
+              introductory_link: link_to(t('.introductory'), '/starting-out', class: 'ncce-link ncce-link__log govuk-link--no-underline', role: 'button', draggable: 'false', data: tracking_data('First time teaching')),
+            ) %>
+          </p>
         </section>
       </div>
 
