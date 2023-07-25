@@ -1,0 +1,21 @@
+<div class="govuk-width-container">
+  <div class="hero__heading-wrapper hero__heading-wrapper--full-width govuk-body govuk-!-margin-top-3"> 
+    <h4><strong>Your certificate progress</strong></h4>
+    <p class="govuk-body-s ncce-progress-section--description">
+      <strong>Complete the below training and activities to receive your <%= @programme.title %> certificate.
+      You can complete these at your own pace and in any order.</strong>
+    </p>
+    <p class="govuk-body-s">Choose your first step to accreditation:</p>
+    <div class="ncce-progress-section">
+      <% PROG_TITLE_TO_GROUPINGS[@programme.title].each_with_index do |grouping_title, index| %>
+        <% class_name = @class_names["class_name_#{index + 1}"] %>
+        <a href="#" class="<%= class_name %> ncce-link ncce-progress-section--text">
+          <%= grouping_title %>
+        </a>
+        <% if index < PROG_TITLE_TO_GROUPINGS[@programme.title].size - 1 %>
+          <div class="icon-dotted-line"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

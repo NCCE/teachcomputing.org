@@ -37,6 +37,31 @@
   @include icon('../images/icons/clock.svg');
 }
 
+.icon-blank-circle {
+  @include icon('../images/icons/circle.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
+.icon-ticked-circle {
+  @include icon('../images/icons/complete-icon.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
+.icon-dotted-line {
+  @include icon('../images/icons/vertical_dotted_line.svg');
+  height: 70px;
+  background-size: 5px;
+  margin-left: 13px;
+  
+  @include govuk-media-query($from: tablet) {
+    @include icon('../images/icons/dotted_line.svg');
+    background-size: 100px;
+    width: 70px;
+  }
+}
+
 .icon-map-pin {
   @include icon('../images/icons/map-pin.svg');
 }
