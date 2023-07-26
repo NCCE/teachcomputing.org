@@ -19,3 +19,25 @@
 .expander__button[aria-expanded='true'] {
   background-image: url('../images/icons/expander_up.svg');
 }
+
+.expander__button-round {
+  background-image: url('../images/icons/expander_round_down.svg');
+  background-color: transparent;
+  background-position: left center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 0 0 0 1.75rem;
+  text-align: left;
+
+  font-size: 1.1rem;
+
+  @include govuk-media-query($until: tablet) {
+    font-size: 1rem;
+  }
+}
+
+.expander__button-round[aria-expanded='true'] {
+  background-image: url('../images/icons/expander_round_up.svg');
+}

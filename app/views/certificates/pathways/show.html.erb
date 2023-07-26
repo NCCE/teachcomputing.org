@@ -14,17 +14,17 @@
           <hr class="ncce-pathway__hr">
           <div class="ncce-pathway__course-list govuk-body-s">
             <% if @pathway.present? %>
-              <div data-controller='expander'>
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
                             data-expander-target="expanderButton"
                             start-expanded="true"
                             aria-expanded="true"
-                            class="govuk-body expander__button recommended-courses-wrapper_expander-button"
+                            class="govuk-body expander__button-round recommended-courses-wrapper_expander-button"
                             data-event-action="click"
                             data-event-label="Show additional courses"
                             data-event-category="CSA enrolled">
-                        <strong>Hide</strong>
+                        <strong data-expander-target="expanderButtonText">Hide</strong>
                     </button>
                 </p>
 
@@ -54,17 +54,17 @@
           <hr class="ncce-pathway__hr">
           <div class="ncce-pathway__course-list">
             <% @community_groups.each do |group| %>
-              <div data-controller='expander'>
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
                             data-expander-target="expanderButton"
-                            start-expanded="true"
-                            aria-expanded="true"
-                            class="govuk-body expander__button recommended-courses-wrapper_expander-button"
+                            start-expanded="false"
+                            aria-expanded="false"
+                            class="govuk-body expander__button-round recommended-courses-wrapper_expander-button"
                             data-event-action="click"
                             data-event-label="Show additional courses"
                             data-event-category="CSA enrolled">
-                        <strong>Hide</strong>
+                        <strong data-expander-target="expanderButtonText">Hide</strong>
                     </button>
                 </p>
 
