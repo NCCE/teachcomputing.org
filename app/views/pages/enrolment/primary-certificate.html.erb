@@ -5,104 +5,51 @@
 
     <div class="govuk-grid-row">
 
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
         <section class='ncce-section govuk-!-margin-top-0'>
-          <p class="govuk-body"><%= t('.intro') %></p>
-          <p class="govuk-body"><%= t('.intro_time') %></p>
+          <p class="govuk-body"><%= t('.intro_1') %></p>
+          <p class="govuk-body"><%= t('.intro_2') %></p>
         </section>
 
         <section class='ncce-section'>
-          <h2 class="govuk-heading-m"><%= t('.who_heading') %></h2>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><%= t('.who_list_1') %></li>
-            <li><%= t('.who_list_2') %></li>
-          </ul>
+          <%= render BorderedCardsComponent.new(
+            cards: programme_pathway_card_data(@programme),
+            cards_per_row: 3,
+            class_name: 'bordered-cards__green-tops'
+          ) %>
         </section>
 
-        <section class='ncce-section govuk-!-padding-5 light-blue-bg'>
-          <h2 class="govuk-heading-m"><%= t('.first-time_heading') %></h2>
-          <p class="govuk-body govuk-!-margin-bottom-0">
-            <%= t(
-              '.first-time_text.html',
-              introductory_link: link_to(t('.introductory'), '/starting-out', class: 'ncce-link ncce-link__log govuk-link--no-underline', role: 'button', draggable: 'false', data: tracking_data('First time teaching')),
-            ) %>
-          </p>
-        </section>
+        <hr class="ncce-pathway__hr">
+      </div>
 
+      <div class="govuk-grid-column-two-thirds">
         <section class='ncce-section'>
-          <h2 class="govuk-heading-m"><%= t('.what_heading') %></h2>
+          <h2 class="govuk-heading-m"><%= t('.benefits_to_you') %></h2>
           <ul class="govuk-list govuk-list--bullet">
-            <li><%= t('.what_list_1') %></li>
-            <li><%= t('.what_list_2') %></li>
-            <li><%= t('.what_list_3') %></li>
-            <li><%= t('.what_list_4') %></li>
+            <li><%= t('.benefits_1') %></li>
+            <li><%= t('.benefits_2') %></li>
+            <li><%= t('.benefits_3') %></li>
+            <li><%= t('.benefits_4') %></li>
           </ul>
         </section>
 
         <section class='ncce-section'>
-          <div class="pathway-wrapper govuk-!-margin-top-0 light-grey-bg">
-            <h2 class="govuk-heading-s pathway__step-title"><%= t('.programme_heading') %></h2>
-            <p class="govuk-body"><%= t('.programme_body') %></p>
-
-            <ul class="govuk-list govuk-list--bullet">
-              <% unless current_user %>
-                <li>
-                  <%= t(
-                    '.programme_list_1.html',
-                    create_link: link_to(t('.create'), create_account_url, method: :post, class: 'ncce-link ncce-link__log govuk-link--no-underline', role: 'button', draggable: 'false', data: tracking_data('Create account')),
-                    login_link: link_to(t('.log_in'), auth_url, method: :post, class: 'ncce-link ncce-link__log govuk-link--no-underline', role: 'button', draggable: 'false', data: tracking_data('Log in'))
-                  ) %>
-                </li>
-              <% end %>
-              <li><%= t('.programme_list_2') %></li>
-              <li><%= t('.programme_list_3') %></li>
-            </ul>
-
-            <%= render DocumentCardsComponent.new(
-              class_name: 'pathway-cards',
-              show_border: false,
-              cards_per_row: 1,
-              tracking_category: 'Primary unenrolled',
-              cards: [
-                {
-                  class_name: 'developing-in-the-classroom',
-                  title_link: {
-                    title: t('.developing_title'),
-                    url: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf',
-                    tracking_label: 'Classroom PDF',
-                    file_type: '(PDF)'
-                  },
-                  body: {
-                    text: t('.developing_text')
-                  },
-                  button: {
-                    title: t('.enrol'),
-                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'developing-in-the-classroom' }),
-                    method: :post,
-                    tracking_label: 'Classroom enrol'
-                  }
-                },
-                {
-                  class_name: 'specialising-or-leading',
-                  title_link: {
-                    title: t('.specialising_title'),
-                    url: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf',
-                    tracking_label: 'Leading PDF',
-                    file_type: '(PDF)'
-                  },
-                  body: {
-                    text: t('.specialising_text')
-                  },
-                  button: {
-                    title: t('.enrol'),
-                    url: enrol_primary_certificate_path(user_programme_enrolment: { user_id: current_user&.id, programme_id: @programme.id, pathway_slug: 'specialising-or-leading' }),
-                    method: :post,
-                    tracking_label: 'Leading enrol'
-                  },
-                }
-              ]
-            ) %>
-          </div>
+          <h2 class="govuk-heading-m"><%= t('.how_does_it_work') %></h2>
+          <p class="govuk-body"><b><%= t(
+            '.how_does_it_work_subheading',
+          ) %></b></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <%= t(
+                    '.how_does_it_work_1',
+                    create_an_account: link_to('Create an account', '#'),
+                    log_in: link_to('log in', '#')
+              ).html_safe %>
+            </li>
+            <li><%= t('.how_does_it_work_2') %></li>
+            <li><%= t('.how_does_it_work_3') %></li>
+            <li><%= t('.how_does_it_work_4') %></li>
+          </ul>
         </section>
       </div>
 

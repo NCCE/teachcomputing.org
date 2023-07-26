@@ -15,8 +15,12 @@
       <%= @title %>
     </h2>
   <% end %>
-  <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
-    <%= @text %>
+  <% if @text %>
+    <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
+      <%= @text %>
+    <% end %>
+  <% elsif body? %>
+    <%= body %>
   <% end %>
   <% if @link.present? %>
   <p class="govuk-body-s aside-component__link">
