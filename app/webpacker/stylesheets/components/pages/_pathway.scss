@@ -1,0 +1,22 @@
+.ncce-pathway__learning-pathway-section {
+  background-color: $foam;
+
+  padding: 18px;
+}
+
+.ncce-pathway__hr {
+  border-top: 1px black solid !important;
+  margin: 18px 0;
+}
+
+.ncce-pathway__course-list {
+  .ncce-pathway-courses__course {
+    background-color: $white;
+
+    margin-bottom: 8px;
+
+    .ncce-pathway-courses__link {
+      font-size: 19px;
+    }
+  }
+}

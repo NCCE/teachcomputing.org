@@ -92,6 +92,8 @@ Rails.application.routes.draw do
         get '/unenroll', action: :destroy
       end
     end
+
+    resources :pathways, param: :slug, only: %i[show]
   end
 
   namespace 'class_marker' do
