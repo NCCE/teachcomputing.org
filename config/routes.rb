@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :user_programme_enrolments, only: %i[show] do
       resources :activities, only: %i[index]
       post '/complete', action: :complete
-      post '/enrolled', action: :enrolled
+      post '/enrolled', action: :enrolledrouter
       post '/flag', action: :flag
     end
   end
@@ -77,6 +77,14 @@ Rails.application.routes.draw do
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
       get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
+    end
+
+    resource 'i_belong', controller: 'i_belong', path: 'i-belong-certificate', only: :show, as: :i_belong_certificate do
+      get '/complete', action: :complete, as: :complete
+      get '/pending', action: :pending, as: :pending
+      get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
+                               defaults: { slug: 'i-belong-certificate' }
+      post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
     namespace 'cs_accelerator' do
