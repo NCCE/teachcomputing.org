@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'vcr'
 require 'dotenv'
 require 'simplecov'
 
@@ -51,15 +50,6 @@ end
 Capybara.javascript_driver = selenium_driver
 
 WebMock.disable_net_connect!(allow_localhost: true)
-
-VCR.configure do |config|
-  config.default_cassette_options = { record: :new_episodes }
-  config.cassette_library_dir = 'spec/vcr'
-  config.hook_into :webmock
-  config.allow_http_connections_when_no_cassette = true
-end
-
-VCR.turn_off! # Only turn on as and when needed
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
