@@ -5,9 +5,9 @@ i_belong = Programmes::IBelongCertificate.find_or_create_by(slug: 'i-belong-cert
   programme.enrollable = true
 end
 
-puts "Created Programme: #{secondary.title} (#{secondary})"
+puts "Created Programme: #{i_belong.title} (#{i_belong})"
 
 ProgrammeCompleteCounter.find_or_create_by(programme_id: i_belong.id) do |programme_complete_counter|
-  programme_complete_counter.programme_id = secondary.id
+  programme_complete_counter.programme_id = i_belong.id
   programme_complete_counter.counter = 0
 end

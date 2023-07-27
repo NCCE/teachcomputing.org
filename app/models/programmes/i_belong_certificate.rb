@@ -13,9 +13,5 @@ module Programmes
     def programme_title
       PROGRAMME_TITLE
     end
-
-    def brand_color_name
-      'orange'
-    end
   end
 end

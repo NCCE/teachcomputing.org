@@ -1,0 +1,16 @@
+<div class="certification">
+	<div class="shadow_card card--dashboard card--dashboard--i-belong">
+		<%= render 'dashboard/programme-enrolment-status', programme: programme %>
+			<h3 class="govuk-heading-m card__heading">
+				<%= link_to 'I Belong: encouraging girls into computer science', i_belong_certificate_path, class: 'ncce-link ncce-link--heading' %>
+			</h3>
+		<div class="card--dashboard--content">
+			<ul class="govuk-list govuk-list--bullet">
+				<li>support girls’ participation in computer science</li>
+				<li>curated resources to help your school</li>
+				<li>become an I Belong champion</li>
+			</ul>
+			<%= render 'dashboard/enrolment-status', programme: programme %>
+		</div>
+	</div>
+</div>
