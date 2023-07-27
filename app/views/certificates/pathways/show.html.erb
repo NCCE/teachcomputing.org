@@ -6,7 +6,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <section class="ncce-section govuk-!-margin-top-0">
-          <p class="govuk-body-s">I need to get the intro copy text into here. I deally this would be done by pulling it from the database because ahrd coding it would be daft</p>
+          <p class="govuk-body-s"><%= @pathway.description %></p>
         </section>
         <section class="ncce-section ncce-pathway__learning-pathway-section">
           <h2 class="govuk-heading-m"><%= t('.learning_pathway.title') %></h2>
@@ -88,9 +88,7 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        <%= render AsideComponent.new(
-          title: 'How to enrol'
-        ) do |component| %>
+        <%= render AsideComponent.new(title: t('.how_to_enrol')) do |component| %>
           <% component.with_body do %>
             <ol class="govuk-body-s">
               <li>
@@ -104,32 +102,40 @@
                 Complete the required professional development, engagement, and community activities to recieve your qualification
               </li>
             </ol>
+            <%= link_to 'Create an account', create_account_url, class: 'govuk-button button button--aside button--margin-bottom' %>
             <p class="govuk-body-s">
               Already have a STEM learning account? Simply
               <%= link_to 'log in', '#' %>
             </p>
           <% end %>
         <% end %>
-        <%= render AsideComponent.new(
-          title: 'Teachers following this pathway will contribute to improving:'
-        ) do |component| %>
-          <% component.with_body do %>
-            <ul class="govuk-body-s">
-              <li>Staff Development</li>
-              <li>Teaching, Learning and Assesment</li>
-            </ul>
-            <p class="govuk-body-s">
-              As defined in the
-              <%= link_to 'Computing Quality Framework', '#' %>
-              .
-            </p>
+        <% if @pathway.has_improvement_copy? %>
+          <%= render AsideComponent.new(
+            title: 'Teachers following this pathway will contribute to improving:'
+          ) do |component| %>
+            <% component.with_body do %>
+              <ul class="govuk-body-s">
+                <% @pathway.improvement_bullets.each do |bullet| %>
+                  <li><%= bullet %></li>
+                <% end %>
+              </ul>
+              <p class="govuk-body-s">
+                <%= @pathway.improvement_cta.html_safe %>
+              </p>
+            <% end %>
           <% end %>
         <% end %>
         <%= render AsideComponent.new(
           title: 'Download the pathway PDF'
         ) do |component| %>
           <% component.with_body do %>
-            Download our <b>supporting other teachers</b> pathway PDF to reference as you progress through the certificate.
+            <p class="govuk-body-s">
+              <%= t('.download_pdf', title: @pathway.title.downcase).html_safe %>
+              <br>
+            </p>
+            <p class="govuk-body ncce-pathways__download-cta icon-resources">
+              <%= t('.download_pdf_cta', link: link_to(@pathway.title, @pathway.pdf_link, class: 'govuk-link ncce-link')).html_safe %>
+            </p>
           <% end %>
         <% end %>
         <%= render BursaryComponent.new %>

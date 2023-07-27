@@ -53,6 +53,12 @@
   color: $govuk-text-colour;
 }
 
+.ncce-button__white {
+  @include ncce_button($white);
+
+  border-color: $lime-green;
+}
+
 .button--focus-white {
   &:hover,
   &[disabled]:hover {
