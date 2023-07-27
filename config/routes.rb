@@ -79,7 +79,7 @@ Rails.application.routes.draw do
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
     end
 
-    resource 'i_belong', controller: 'i_belong', path: 'i-belong-certificate', only: :show, as: :i_belong_certificate do
+    resource 'i_belong_certificate', controller: 'i_belong_certificate', path: 'i-belong-certificate', only: :show, as: :i_belong_certificate do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,

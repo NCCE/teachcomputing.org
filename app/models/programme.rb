@@ -32,7 +32,7 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def self.secondary_certificate
+  def self.i_belong_certificate
     @secondary_certificate ||= Programme.find_by(slug: 'i-belong-certificate')
   end
 
@@ -90,9 +90,5 @@ class Programme < ApplicationRecord
 
   def pathways_excluding(pathway)
     pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
-  end
-
-  def brand_color_name
-    'lime-green'
   end
 end

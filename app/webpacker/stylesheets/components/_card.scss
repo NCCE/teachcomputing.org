@@ -257,12 +257,16 @@
   justify-content: space-between;
 }
 
-.card--dashboard--cs-accelerator,
+.card--dashboard--accelerator,
 .card--dashboard--secondary {
   border-top-color: $secondary-cert-color;
 }
 .card--dashboard--primary {
   border-top-color: $primary-cert-color;
+}
+
+.card--dashboard--i-belong {
+  border-top-color: $i-belong-cert-color;
 }
 
 .dark_card {
