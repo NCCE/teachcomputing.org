@@ -110,6 +110,5 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
   gem 'timecop', '~> 0.9.6'
-  gem 'vcr'
   gem 'webmock'
 end
