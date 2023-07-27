@@ -42,7 +42,8 @@ module ProgrammesHelper
     pathways.map do |pathway|
       {
         title: pathway.title,
-        text: 'Description please',
+        text: pathway.description,
+        button: :white,
         link: {
           link_url: pathway_path(pathway.slug),
           link_title: "Discover #{pathway.title.downcase} pathway"

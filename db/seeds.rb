@@ -24,6 +24,7 @@ require_relative './seeds/programme_activity_groupings/i_belong'
 
 require_relative './seeds/pathways/cs_accelerator'
 require_relative './seeds/pathways/primary_certificate'
+require_relative './seeds/pathways/secondary_certificate'
 
 require_relative './seeds/admin/authorisers'
 

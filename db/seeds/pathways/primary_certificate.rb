@@ -6,6 +6,7 @@ pathway = programme.pathways.find_or_initialize_by(slug: 'developing-in-the-clas
 pathway.update(
   title: 'Developing in the classroom',
   slug: 'developing-in-the-classroom',
+  description: 'Are you a classroom teacher who wants to strengthen your knowledge of primary computing and develop your teaching of the subject? This pathway will help you to develop the understanding and skills to teach computing effectively.',
   range: 0..0,
   pdf_link: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf',
   programme_id: programme.id,
@@ -60,6 +61,7 @@ pathway = programme.pathways.find_or_initialize_by(slug: 'specialising-or-leadin
 pathway.update(
   title: 'Specialising or leading',
   slug: 'specialising-or-leading',
+  description: 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence to lead computing effectively in your primary school.',
   range: 0..0,
   pdf_link: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf',
   programme_id: programme.id,
