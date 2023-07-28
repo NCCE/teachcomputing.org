@@ -19,6 +19,7 @@ SitemapGenerator::Sitemap.create do
   add '/cs-accelerator', changefreq: 'monthly'
   add '/contact', changefreq: 'monthly'
   add '/gender-balance', changefreq: 'monthly'
+  add '/i-belong', changefreq: 'monthly'
   add '/get-involved', changefreq: 'monthly'
   add '/home-teaching', changefreq: 'weekly'
   add '/home-teaching-key-stage-1', changefreq: 'daily'
