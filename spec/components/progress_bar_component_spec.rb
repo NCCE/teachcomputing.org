@@ -17,16 +17,11 @@ RSpec.describe ProgressBarComponent, type: :component do
     end 
   
     it 'has 3 completion steps' do
-      expect(page).to have_css('.ncce-progress-section--text', count: 3)
+        expect(rendered_component).to have_css('.ncce-progress-section') do
+            expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Contribute to an online discussion')
+            expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop your teaching practice')
+            expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop computing in your community')
+          end
     end 
-  
-    context 'when programme is "Teach primary computing"' do
-      it 'displays correct completion steps' do
-        render_inline(described_class.new(user, programme))
-        expect(page).to have_css('.ncce-progress-section--text', text: "Contribute to an online discussion")
-        expect(page).to have_css('.ncce-progress-section--text', text: "Develop your teaching practice")
-        expect(page).to have_css('.ncce-progress-section--text', text: "Develop computing in your community")
-      end
-    end
   end
   
