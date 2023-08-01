@@ -33,7 +33,7 @@ class Programme < ApplicationRecord
   end
 
   def self.i_belong_certificate
-    @secondary_certificate ||= Programme.find_by(slug: 'i-belong-certificate')
+    Programme.find_by(slug: 'i-belong-certificate')
   end
 
   def badgeable?

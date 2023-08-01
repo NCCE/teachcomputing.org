@@ -1,6 +1,6 @@
 module Programmes
   class IBelongCertificate < Programme
-    PROGRAMME_TITLE = 'I Belong'.freeze
+    PROGRAMME_TITLE = 'I Belong: encouraging girls into computer science'.freeze
 
     def path
       i_belong_certificate_path

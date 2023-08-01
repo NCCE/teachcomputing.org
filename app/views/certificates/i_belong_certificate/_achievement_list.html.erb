@@ -1,0 +1,41 @@
+<p class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
+  <%= t('.development.title.html') %>
+</p>
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <li class="ncce-activity-list__item">
+    <% @cpd_courses.each do |pa| %>
+      <%= render CpdCourseComponent.new(current_user: @current_user, programme_activity: pa, last_margin: false) %>
+    <% end %>
+  </li>
+  <% if @issued_badge.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render DashBadgeComponent.new(
+        badge: @issued_badge,
+        tracking_event_category: @badge_tracking_event_category,
+        tracking_event_label: @badge_tracking_event_label
+      ) %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Remember additional course handling -->
+<% @community_groups.each do |group| %>
+  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+    <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
+    <%= format_activity_title(group) %>
+    </p>
+    <% sort_complete_first(
+      activities: group.programme_activities,
+      complete: group.user_complete?(current_user)
+    ).each do |programme_activity| %>
+      <li class="ncce-activity-list__item">
+        <%= render CommunityActivityComponent.new(
+          activity: Activity.find(programme_activity.activity_id),
+          achievement: @community_achievements&.find_by(activity_id: programme_activity.activity_id),
+          tracking_category: tracking_category
+        ) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+

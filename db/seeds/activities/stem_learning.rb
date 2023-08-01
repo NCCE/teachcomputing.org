@@ -3,6 +3,7 @@
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
+i_belong_certificate = Programme.i_belong_certificate
 
 a = Activity.find_or_create_by(stem_course_template_no: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
@@ -1057,7 +1058,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
   activity.title = 'Encouraging girls into GCSE computer science'
   activity.credit = 10
   activity.slug = 'encouraging-girls-into-gcse-computer-science'
@@ -1067,6 +1068,8 @@ Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-002
   activity.stem_activity_code = 'CP440'
   activity.remote_delivered_cpd = true
 end
+
+a.programmes |= [i_belong_certificate]
 
 a = Activity.find_or_create_by(stem_course_template_no: '3fd9b792-af8c-eb11-b1ac-0022481a6ad5') do |activity|
   activity.title = 'New to computing pathway for Maths teachers'

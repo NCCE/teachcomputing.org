@@ -3,5 +3,6 @@ en:
   complete: "Completed"
   evidence_button_label: "Submit evidence"
   evidence_submit_label: "Complete activity"
+  mark_complete_label: "Mark complete"
   book_button_text: "Book a course"
   supported_file_types: "jpg, png"
