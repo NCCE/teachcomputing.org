@@ -1,8 +1,10 @@
-i_belong = Programmes::IBelongCertificate.find_or_create_by(slug: 'i-belong-certificate') do |programme|
+Programmes::IBelongCertificate.find_or_initialize_by(slug: 'i-belong-certificate').tap do |programme|
   programme.title = 'I Belong: encouraging girls into computer science'
   programme.slug = 'i-belong-certificate'
   programme.description = 'Encouraging girls into computer science'
   programme.enrollable = true
+
+  programme.save
 end
 
 puts "Created Programme: #{i_belong.title} (#{i_belong})"
