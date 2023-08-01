@@ -1,10 +1,15 @@
+<%
+  sub_header_disabled ||= false
+%>
 <div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
       <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
       <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
-        <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+        <% unless sub_header_disabled %>
+          <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,0 +1,8 @@
+en:
+  certificates:
+    i_belong_certificate:
+      achievement_list:
+        development:
+          title:
+            html: "<strong>Understand</strong> the factors affecting girls' participation in computer science"
+        any_course_prompt: "Complete the Encouraging girls into GCSE computer science short course"

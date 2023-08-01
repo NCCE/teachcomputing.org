@@ -17,6 +17,12 @@
   &:last-child {
     margin-bottom: 20px;
   }
+
+  &-no-last-margin {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .ncce-pathway-courses__buttons {

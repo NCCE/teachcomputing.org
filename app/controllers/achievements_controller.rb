@@ -42,7 +42,7 @@ class AchievementsController < ApplicationController
   private
 
     def invalid_params?
-      (params[:self_verification_info].nil? || params[:self_verification_info].empty?) &&
+      (params[:self_verification_info].blank? && @achievement.activity.self_verification_info.present?) &&
         achievement_params[:supporting_evidence].nil?
     end
 

@@ -1,0 +1,66 @@
+<% meta_tag :title, 'Secondary certificate - Teach Computing' %>
+<%= render 'pages/certification/hero' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-l">Your certificate is ready!</p>
+        <p class="govuk-body">Congratulations on completing your programme and reaching this important milestone in your professional development.</p>
+        <p class="govuk-body">
+          <%= link_to 'Download your certificate', certificate_secondary_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+        </p>
+        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
+        <p class="govuk-body-l">Next steps for you</p>
+        <p class="govuk-body-l">Discover our teaching resources</p>
+        <p class="govuk-body">Access over 500 hours of teaching materials through the Teach Computing Curriculum, which contains everything you need to teach computing at key stages 1 to 4.</p>
+        <p class="govuk-body">
+          <%= link_to 'Explore teaching resources', curriculum_key_stages_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+        </p>
+        <p class="govuk-body-l">Continue learning</p>
+        <p class="govuk-body">Enhance your learning by participating in courses from our growing programme of CPD. Plus, if you work in a state-funded secondary school or college, you can access any of these courses for free.</p>
+        <p class="govuk-body">
+          <%= link_to 'Browse all courses', courses_path, class: 'govuk-button button' %>
+        </p>
+        <p class="govuk-body-l">Share your experience at a CAS Community meeting</p>
+        <p class="govuk-body">CAS communities offer a supportive environment to reflect on your professional learning and encourage others. Think about attending one of your local meetings to share your experiences with other teachers.</p>
+        <%= link_to 'Find out more', 'https://community.computingatschool.org.uk/events', class: 'govuk-button button' %>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Share your success</h2>
+          <p class="govuk-body ncce-aside__text--s">Do you know someone who would benefit from this programme? Invite them to join and discuss what you’ve learnt with someone you know.</p>
+          <p class="govuk-body ncce-aside__text">Follow us on
+            <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en"
+              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
+           and tag us when sharing your achievement</p>
+           <p class="govuk-body govuk-!-margin-bottom-2">
+            <a href="https://twitter.com/intent/tweet?text=<%=CGI.escape "I have completed the Teach secondary computing programme from @WeAreComputing. Find out more #{secondary_url}"%>"
+              class="govuk-link ncce-link complete__social complete__social--twitter" data-size="large"
+              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on Twitter</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.facebook.com/sharer/sharer.php?u=<%=CGI.escape secondary_url %>" target="_blank" class="govuk-link ncce-link complete__social complete__social--facebook">Share on Facebook</a></p>
+					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<%=CGI.escape secondary_url %>" rel="noopener" target="_blank"class="govuk-link ncce-link complete__social complete__social--linkedin">Share on LinkedIn</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m ncce-programmes-activity__title">Your learning journey</h2>
+        </div>
+      </div>
+      <div class="secondary-certificate__complete">
+        <%= render 'certificates/achievement_list_complete' %>
+      </div>
+    </div>
+  </div>
+</div>

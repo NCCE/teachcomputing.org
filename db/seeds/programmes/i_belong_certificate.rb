@@ -1,7 +1,7 @@
 i_belong = Programmes::IBelongCertificate.find_or_create_by(slug: 'i-belong-certificate') do |programme|
-  programme.title = 'I Belong'
+  programme.title = 'I Belong: encouraging girls into computer science'
   programme.slug = 'i-belong-certificate'
-  programme.description = 'I Belong: encouraging girls into computer science'
+  programme.description = 'Encouraging girls into computer science'
   programme.enrollable = true
 end
 
