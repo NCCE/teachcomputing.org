@@ -116,7 +116,6 @@ class Achiever::Course::Template
     when 'primary-certificate'
       @programmes.include?('Primary')
     when 'i-belong-certificate'
-      raise @programmes.inspect
       @programmes.include?('I Belong')
     end
   end
