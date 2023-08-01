@@ -1947,8 +1947,6 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-########################################################################################################################
-
 Activity.find_or_create_by(stem_course_template_no: '5a945373-7d1a-ee11-8f6d-002248c6f9ce') do |activity|
   activity.title = 'Physical computing kits - KS1 BeeBots'
   activity.slug = 'physical-computing-kits-ks1-beebots'
@@ -1956,8 +1954,6 @@ Activity.find_or_create_by(stem_course_template_no: '5a945373-7d1a-ee11-8f6d-002
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP256'
 end
-
-########################################################################################################################
 
 Activity.find_or_create_by(stem_course_template_no: '5dcbf737-121b-ee11-8f6d-002248c6f524') do |activity|
   activity.title = 'Physical computing kits - KS2 data loggers'
@@ -1967,8 +1963,6 @@ Activity.find_or_create_by(stem_course_template_no: '5dcbf737-121b-ee11-8f6d-002
   activity.stem_activity_code = 'CP257'
 end
 
-########################################################################################################################
-
 Activity.find_or_create_by(stem_course_template_no: '7b4a4c4b-a920-ee11-9966-002248c6f9ce') do |activity|
   activity.title = 'Computing Quality Framework – driving change within your school - short course'
   activity.slug = 'computing-quality-framework--driving-change-within-your-school--short-course'
@@ -1977,5 +1971,3 @@ Activity.find_or_create_by(stem_course_template_no: '7b4a4c4b-a920-ee11-9966-002
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP403'
 end
-
-########################################################################################################################
