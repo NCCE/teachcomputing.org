@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, :stem_learning) }
+  let(:activity) { create(:activity, :stem_learning, self_verification_info: self_verification_info) }
+  let(:self_verification_info) { 'Please provide a link to your contribution' }
   let(:referrer) { 'https://testing123.com' }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
   let(:programme) { create(:primary_certificate) }
@@ -108,6 +109,33 @@ RSpec.describe AchievementsController do
 
       it 'shows a flash error' do
         expect(flash[:error]).to match(/You must provide supporting evidence for/)
+      end
+
+      context 'when the activity has no self_verification_info' do
+        let(:self_verification_info) { nil }
+
+        subject do
+          post achievements_path,
+               params: {
+                 achievement: { activity_id: activity.id }
+               }
+        end
+
+        before do
+          subject
+        end
+
+        it 'redirects to the dashboard path by default' do
+          expect(response).to redirect_to(dashboard_path)
+        end
+
+        it 'creates an Achievement' do
+          expect(user.achievements.where(activity_id: activity.id).exists?).to be true
+        end
+
+        it 'shows a flash success' do
+          expect(flash[:notice]).to match(/'#{activity.title}' has been added/)
+        end
       end
     end
 
