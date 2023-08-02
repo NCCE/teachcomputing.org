@@ -10,7 +10,8 @@ pathway.update(
   range: 0..0,
   pdf_link: 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf',
   programme_id: programme.id,
-  order: 1
+  order: 1,
+  legacy: true
 )
 
 # face to face / remote
@@ -65,7 +66,8 @@ pathway.update(
   range: 0..0,
   pdf_link: 'https://static.teachcomputing.org/primary-pathways/Specialising-or-leading.pdf',
   programme_id: programme.id,
-  order: 1
+  order: 1,
+  legacy: true
 )
 
 # CP008/leading-primary-computing-face-to-face
@@ -112,3 +114,27 @@ pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activi
 
 activity = Activity.find_by(slug: 'providing-additional-support')
 pathway.pathway_activities.find_or_create_by(activity_id: activity.id) if activity && !pathway.pathway_activities.include?(activity)
+
+programme.pathways.find_or_initialize_by(slug: 'developing-your-teaching-practice').tap do |pathway|
+  pathway.title = 'Developing your teaching practice'
+  pathway.slug = 'developing-your-teaching-practice'
+  pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
+  pathway.range = 0..0
+  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.programme_id = programme.id
+  pathway.order = 3
+
+  pathway.save
+
+  # Develop your teaching practice
+  maybe_attach_activity_to_pathway(pathway, 'raise-aspirations-with-a-stem-ambassador-visit')
+  maybe_attach_activity_to_pathway(pathway, 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity')
+  maybe_attach_activity_to_pathway(pathway, 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit')
+  maybe_attach_activity_to_pathway(pathway, 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom')
+
+  # Develop computing in your community
+  maybe_attach_activity_to_pathway(pathway, 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community')
+  maybe_attach_activity_to_pathway(pathway, 'support-other-teachers-and-earn-a-stem-community-participation-badge')
+  maybe_attach_activity_to_pathway(pathway, 'run-or-support-a-code-club-in-your-school')
+  maybe_attach_activity_to_pathway(pathway, 'run-an-enrichment-activity-in-your-classroom')
+end

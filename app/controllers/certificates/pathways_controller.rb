@@ -9,6 +9,7 @@ class Certificates::PathwaysController < ApplicationController
 
     recommended_activities = @pathway.pathway_activities.includes(:activity)
     @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
+    @recommended_community_activity_ids = @recommended_community_activities.map { _1.activity.id }
     @recommended_activities = recommended_activities - @recommended_community_activities
 
     # FUTURE: we should talk about how we want to organise activity groupings.
@@ -18,6 +19,6 @@ class Certificates::PathwaysController < ApplicationController
   end
 
   def set_pathway
-    @pathway = Pathway.find_by!(slug: params[:slug])
+    @pathway = Pathway.not_legacy.find_by!(slug: params[:slug])
   end
 end

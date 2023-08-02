@@ -34,9 +34,9 @@ module ProgrammesHelper
   def programme_pathway_card_data(programme, exclude: nil)
     pathways =
       if exclude.present?
-        programme.pathways.where.not(id: exclude.id)
+        programme.pathways.not_legacy.where.not(id: exclude.id)
       else
-        programme.pathways
+        programme.pathways.not_legacy
       end
 
     pathways.map do |pathway|

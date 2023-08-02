@@ -69,13 +69,13 @@
                 </p>
 
                 <div data-expander-target="expander" class="expander">
-                  <% group.programme_activities.includes(:activity).each do |programme_activity| %>
+                  <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
                       <p class="ncce-pathway-courses__link">
                         <%= link_to programme_activity.activity.title, '#', class: 'ncce-link' %>
                       </p>
                       <p class="govuk-body-s">
-                        <%= programme_activity.activity.description.html_safe %>
+                        <%= programme_activity.activity.public_copy_description %>
                       </p>
                     </div>
                   <% end %>
