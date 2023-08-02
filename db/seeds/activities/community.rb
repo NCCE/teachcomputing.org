@@ -290,18 +290,125 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit') do |activity|
+Activity.find_or_initialize_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit').tap do |activity|
   activity.title = 'Raise aspirations with a STEM Ambassador visit'
   activity.credit = 10
   activity.slug = 'raise-aspirations-with-a-stem-ambassador-visit'
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" data-event-label="STEM Ambassadors" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
+  activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors">Arrange a visit</a> for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities.'
+  activity.public_copy_description = 'Arrange a visit for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities.'
+  activity.public_copy_title_url = 'https://www.stem.org.uk/stem-ambassadors'
   activity.self_verification_info = 'Please provide us with the date and location of the visit'
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity').tap do |activity|
+  activity.title = 'Participate fully in an NCCE curriculum enrichment opportunity'
+  activity.credit = 10
+  activity.slug = 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Encourage young people to develop important life skills through <a href="https://teachcomputing.org/primary-enrichment">enrichment</a> and engage with the wider community in practical, enjoyable, and meaningful ways.'
+  activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways'
+  activity.public_copy_title_url = 'http://www.teachcomputing.org/primary-enrichment'
+  activity.self_verification_info = 'Please provide us with evidence of delivery'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit').tap do |activity|
+  activity.title = 'Implement your professional development in the classroom and evaluate via the Impact Toolkit'
+  activity.credit = 10
+  activity.slug = 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Think about not only your actions but also <a href="https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit">collecting evidence</a> of how the changes you make impact you, your colleagues, and your students.'
+  activity.public_copy_description = 'Think about not only your actions but also collecting evidence of how the changes you make impact you, your colleagues, and your students.'
+  activity.public_copy_title_url = 'https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'
+  activity.self_verification_info = 'Please provide us with evidence of delivery'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom').tap do |activity|
+  activity.title = 'Download and use the NCCE teaching and assessment resources in your classroom'
+  activity.credit = 10
+  activity.slug = 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Download and use a <a href="https://teachcomputing.org/curriculum">Teach Computing Curriculum resource</a>, then reflect on how you used and adapted it in the classroom.'
+  activity.public_copy_description = 'Download and use a Teach Computing Curriculum resource, then reflect on how you used and adapted it in the classroom.'
+  activity.public_copy_title_url = 'https://teachcomputing.org/curriculum'
+  activity.self_verification_info = 'Please provide us with evidence of delivery'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community').tap do |activity|
+  activity.title = 'Share tips on using an NCCE resource in your classroom, with colleagues on STEM Community'
+  activity.credit = 10
+  activity.slug = 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'By joining <a href="https://community.stem.org.uk/home">STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights.'
+  activity.public_copy_description = 'By joining STEM Community you’ll meet other teachers in similar roles and be able to share ideas, resources and insights.'
+  activity.public_copy_title_url = 'https://community.stem.org.uk/home'
+  activity.self_verification_info = 'Please provide us with evidence of registration'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge').tap do |activity|
+  activity.title = 'Support other teachers and earn a STEM Community participation badge'
+  activity.credit = 10
+  activity.slug = 'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'You’ll earn points for your activities on the <a href="https://community.stem.org.uk/helpfaqs/points">STEM Community</a>. Your points add up, and over time you will be <a href="https://community.stem.org.uk/helpfaqs/points">rewarded with badges</a> in recognition of your activity and participation in the community.'
+  activity.public_copy_description = 'You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community.'
+  activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
+  activity.self_verification_info = 'Please provide us with evidence of participation'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'run-or-support-a-code-club-in-your-school').tap do |activity|
+  activity.title = 'Run or support a Code Club in your school'
+  activity.credit = 10
+  activity.slug = 'run-or-support-a-code-club-in-your-school'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://codeclub.org/en/start-a-code-club">Code Club sessions</a> use free step-by-step project guides to enrich young people’s experience of programming. If there isn’t a club set up already at your school, it’s easy to start one.'
+  activity.public_copy_description = 'Code Club sessions use free step-by-step project guides to enrich young people’s experience of programming. If there isn’t a club set up already at your school, it’s easy to start one.'
+  activity.public_copy_title_url = 'https://codeclub.org/en/start-a-code-club'
+  activity.self_verification_info = 'Please provide us with evidence of guide usage'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'run-an-enrichment-activity-in-your-classroom').tap do |activity|
+  activity.title = 'Run an enrichment activity in your classroom'
+  activity.credit = 10
+  activity.slug = 'run-an-enrichment-activity-in-your-classroom'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Enrich the curriculum with <a href="https://teachcomputing.org/primary-enrichment">fun and engaging activities</a>, bringing computing learning to life for your pupils.'
+  activity.public_copy_description = 'Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils.'
+  activity.public_copy_title_url = 'https://teachcomputing.org/primary-enrichment'
+  activity.self_verification_info = 'Please provide us with evidence of participation'
+
+  activity.programmes = [primary_certificate]
+end.save
 
 Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').tap do |activity|
   activity.title = 'Download and use the I Belong handbook'

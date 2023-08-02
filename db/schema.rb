@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.string "booking_programme_slug"
     t.boolean "retired", default: false
     t.boolean "coming_soon", default: false
+    t.jsonb "public_copy"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -253,6 +254,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.uuid "programme_id", null: false
     t.integer "order"
     t.jsonb "web_copy"
+    t.boolean "legacy", default: false
     t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end

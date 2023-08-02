@@ -74,6 +74,10 @@ if activity = Activity.find_by(slug: 'attend-a-cas-community-meeting')
   programme_activity.update(programme_activity_grouping_id: group_four.id, order: 4) unless group_four.programme_activities.include?(programme_activity)
 end
 
+maybe_attach_activity_to_grouping(group_four, 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity', 5)
+maybe_attach_activity_to_grouping(group_four, 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit', 6)
+maybe_attach_activity_to_grouping(group_four, 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom', 7)
+
 group_five = primary_certificate.programme_activity_groupings.find_by(sort_key: 5)
 
 if activity = Activity.find_by(slug: 'run-an-after-school-code-club')

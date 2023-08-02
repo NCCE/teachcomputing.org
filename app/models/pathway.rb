@@ -9,6 +9,8 @@ class Pathway < ApplicationRecord
     where(programme_id: Programme.find_by_slug(programme_slug)).order('pathways.order')
   }
 
+  scope :not_legacy, -> { where(legacy: false) }
+
   def has_improvement_copy?
     improvement_bullets.present? && improvement_cta
   end
