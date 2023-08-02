@@ -393,9 +393,9 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competi
 end.save
 
 Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recommendations-from-the-handbook').tap do |activity|
+  activity.title = 'Any other activity which aligns with recommendations from the handbook'
   activity.credit = 10
-    activity.slug = 'anyctivity-other-activity-which-aligns-with-recommendations-from-the-handbook'
-end.save
+  activity.slug = 'any-other-activity-which-aligns-with-recommendations-from-the-handbook'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true

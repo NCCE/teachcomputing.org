@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :user_programme_enrolments, only: %i[show] do
       resources :activities, only: %i[index]
       post '/complete', action: :complete
-      post '/enrolled', action: :enrolledrouter
+      post '/enrolled', action: :enrolled
       post '/flag', action: :flag
     end
   end
