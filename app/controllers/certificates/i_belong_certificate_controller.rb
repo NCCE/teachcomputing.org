@@ -5,6 +5,7 @@ module Certificates
     before_action :find_programme, only: %i[show complete pending]
     before_action :user_enrolled?, only: %i[show complete pending]
     before_action :user_programme_enrolment_pending?, only: %i[show complete]
+    after_action :discourage_caching
 
     def show
       return redirect_to complete_i_belong_certificate_path if @programme.user_completed?(current_user)
