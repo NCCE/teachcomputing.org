@@ -10,6 +10,7 @@ FactoryBot.define do
     sequence(:stem_activity_code) { |n| "CP#{n}" }
     always_on { false }
     retired { false }
+    self_verification_info { nil }
   end
 
   trait :cs_accelerator_diagnostic_tool do
