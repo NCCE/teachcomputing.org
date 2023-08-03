@@ -40,8 +40,8 @@ module NavigationHelper
           { text: 'News', link: 'https://blog.teachcomputing.org/', label: 'News' },
           { text: 'Impact and evaluation', link: impact_path, label: 'Impact' },
           { text: 'Get involved', link: get_involved_path, label: 'Get involved' },
-          { text: 'Gender Balance research', link: gender_balance_path, label: 'Gender Balance research' }
-        ] }
+          (FeatureFlagService.new.flags[:ibelong_programme_feature] ? nil : { text: 'Gender Balance research', link: gender_balance_path, label: 'Gender Balance research' })
+        ].compact }
     ]
   end
 end
