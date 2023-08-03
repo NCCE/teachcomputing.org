@@ -7,10 +7,10 @@
     </p>
     <p class="govuk-body-s">Choose your first step to accreditation:</p>
     <div class="ncce-progress-section">
-      <% @programme.programme_activity_groupings.map(&:title).drop(1).each_with_index do |activity_grouping, index| %>
-        <% class_name = @class_names["class_name_#{index + 1}"] %>
+      <% @programme.programme_activity_groupings.drop(1).each_with_index do |grouping, index| %>
+        <% class_name = grouping&.user_complete?(@current_user) ? "icon-ticked-circle" : "icon-blank-circle" %>
         <a href="#" class="<%= class_name %> ncce-link ncce-progress-section--text">
-          <%= activity_grouping %>
+          <%= grouping.title %>
         </a>
         <% unless index == @programme.programme_activity_groupings.size - 2 %>
           <div class="icon-dotted-line"></div>
