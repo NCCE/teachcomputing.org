@@ -24,9 +24,9 @@ module NavigationHelper
           { text: 'Courses', link: courses_path, label: 'Courses' },
           { text: 'Funding', link: '/funding', label: 'Bursaries' },
           { text: 'Computing Hubs', link: '/hubs', label: 'Computing hubs' },
-          { text: 'I Belong programme', link: '/i-belong', label: 'i-belong' },
+          (FeatureFlagService.new.flags[:ibelong_programme_feature] ? { text: 'I Belong programme', link: '/i-belong', label: 'i-belong' } : nil),
           { text: 'Computing Clusters', link: '/computing-clusters', label: 'Computing clusters' },
-        ] },
+        ].compact },
       { text: 'Teaching resources',
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
