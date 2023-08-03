@@ -28,12 +28,4 @@ RSpec.describe('pages/i-belong', type: :view) do
   it 'has 3 resource cards' do
     expect(rendered).to have_css('.non-bordered-card', count: 3)
   end
-
-#   it '2 grey boxes' do
-#     expect(rendered).to have_css('.padded-box', count: 2)
-#   end
-
-#   it 'has a learn more button' do
-#     expect(rendered).to have_link('Discover our research articles', href: 'https://blog.teachcomputing.org/tag/gbic-article/')
-#   end
 end

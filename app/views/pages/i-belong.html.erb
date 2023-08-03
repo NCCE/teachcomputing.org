@@ -43,18 +43,18 @@
                 </div>
                 <div class="lp-support__card white-bg lp-support__card--bordered">
                     <div>
-                    <h2 class="govuk-heading-m">
-                        Where to start?
-                    </h2>
-                    <ol class="govuk-body">
-                        <li>Enrol on the programme</li>
-                        <li>Obtain your free handbook and posters</li>
-                        <li>Explore the programme</li>
-                    </ol>
-                    <%= link_to 'Log into your account',
-                    login_path,
-                    class: 'button govuk-button govuk-!-margin-bottom-0'
-                    %>
+                        <h2 class="govuk-heading-m">
+                            Where to start?
+                        </h2>
+                        <ol class="govuk-body">
+                            <li>Enrol on the programme</li>
+                            <li>Obtain your free handbook and posters</li>
+                            <li>Explore the programme</li>
+                        </ol>
+                        <%= link_to 'Log into your account',
+                        login_path,
+                        class: 'button govuk-button govuk-!-margin-bottom-0'
+                        %>
                     </div>
                     <p class="govuk-body">Don't have a STEM Learning account? Simply <%= link_to "Sign up", login_path %></p>
                 </div>
@@ -87,7 +87,6 @@
                                     text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake computer science by girls in your school.',
                                     link: {
                                     link_title: 'Coming soon',
-                                    link_url: '#',
                                     }
                                 },
                                 {
@@ -105,7 +104,7 @@
                                     text: 'Read our reports from the Gender Balance in computing research project.',
                                     link: {
                                     link_title: 'Explore the research',
-                                    link_url: '/login',
+                                    link_url: gender_balance_path,
                                     }
                                 }
                                 ]
