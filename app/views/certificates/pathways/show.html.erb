@@ -39,10 +39,12 @@
                         <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">
                           <%= activity_type(pa) %>
                         </p>
-                        <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
-                          <% course = Achiever::Course::Template.find_by_activity_code(pa.stem_activity_code)%>
-                          <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %>
-                        </p>
+                        <% course = Achiever::Course::Template.maybe_find_by_activity_code(pa.stem_activity_code)%>
+                        <% if course %>
+                          <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
+                            <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %>
+                          </p>
+                        <% end %>
                       </div>
                     </div>
                   <% end %>
@@ -140,11 +142,11 @@
         <% end %>
         <%= render BursaryComponent.new %>
       </div>
-      <% if true # should_show_other_pathways?(@programme) %>
+      <% if should_show_other_pathways?(@programme) %>
         <div class="govuk-grid-column-full">
           <hr class="ncce-pathways__hr">
           <%= render BorderedCardsComponent.new(
-            cards: programme_pathway_card_data(@programme, exclude: @pathway),
+            cards: programme_pathway_card_data(@programme, exclude: @pathway).sample(3),
             cards_per_row: 3,
             class_name: 'bordered-cards__green-tops'
           ) %>

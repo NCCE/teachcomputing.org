@@ -95,6 +95,11 @@ class Achiever::Course::Template
     template
   end
 
+  def self.maybe_find_by_activity_code(activity_code)
+    templates = all
+    templates.find { |val| val.activity_code == activity_code.upcase }
+  end
+
   def self.find_many_by_activity_codes(activity_codes)
     all.select { |val| activity_codes.include?(val.activity_code) }
   end

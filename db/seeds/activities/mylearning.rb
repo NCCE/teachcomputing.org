@@ -6,8 +6,8 @@ secondary_certificate = Programme.secondary_certificate
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597-0022481b59ce') do |activity|
-  activity.title = 'Teaching Programming to 5 - 11 year olds'
+Activity.find_or_initialize_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597-0022481b59ce').tap do |activity|
+  activity.title = 'Teaching Programming to 5- to 11-year-olds'
   activity.credit = 10
   activity.slug = 'teaching-programming-to-5-11-year-olds'
   activity.category = 'online'
@@ -15,9 +15,9 @@ a = Activity.find_or_create_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO041'
   activity.always_on = true
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
 
 ########################################################################################################################
 

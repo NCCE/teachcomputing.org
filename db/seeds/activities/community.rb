@@ -511,4 +511,78 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
+end
+
+Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-development-leader').tap do |activity|
+  activity.title = 'Gain accreditation as a professional development leader'
+  activity.credit = 10
+  activity.slug = 'gain-accreditation-as-a-professional-development-leader'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href="https://www.stem.org.uk/professional-development-leaders">leading learning</a> with adults.'
+  activity.public_copy_description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults.'
+  activity.public_copy_title_url = 'https://www.stem.org.uk/professional-development-leaders'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework').tap do |activity|
+  activity.title = 'Undertake the initial assessment of your school using Computing Quality Framework'
+  activity.credit = 10
+  activity.slug = 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Review your <a href="https://computingqualityframework.org/">school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href="https://computingqualityframework.org/accreditation/ncce-computing-quality-mark/">Computing Quality Mark</a>.'
+  activity.public_copy_description = 'Review your school’s progress in developing an exemplary computing curriculum and work towards achieving the Computing Quality Mark.'
+  activity.public_copy_title_url = 'https://computingqualityframework.org/'
+  activity.self_verification_info = 'Please provide us with evidence of review'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development').tap do |activity|
+  activity.title = 'Work with your local Computing Hub to develop a school-level action plan for professional development'
+  activity.credit = 10
+  activity.slug = 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu">Computing Hubs support</a> school’s in the area with their journey in developing the computing curriculum.'
+  activity.public_copy_description = 'Computing Hubs support school’s in the area with their journey in developing the computing curriculum.'
+  activity.public_copy_title_url = 'https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu'
+  activity.self_verification_info = 'Please provide us with evidence of your action plan'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor').tap do |activity|
+  activity.title = 'Lead your school into a Computing Cluster, and develop an action plan with a Cluster advisor'
+  activity.credit = 10
+  activity.slug = 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://teachcomputing.org/computing-clusters">Join a group of 3-6 eligible schools</a>, which receive targeted support in professional learning to make progress within the <a href="https://teachcomputing.org/computing-clusters">Computing Quality Framework</a> over a 12-month period'
+  activity.public_copy_description = 'Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period'
+  activity.public_copy_title_url = 'https://teachcomputing.org/computing-clusters'
+  activity.self_verification_info = 'Please provide us with evidence of joining'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'join-and-present-at-your-local-computing-at-school-community').tap do |activity|
+  activity.title = 'Join and present at your local Computing at School Community'
+  activity.credit = 10
+  activity.slug = 'join-and-present-at-your-local-computing-at-school-community'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://www.computingatschool.org.uk/cas-communities">CAS Communities</a> are the hearts, hands, and minds of Computing at School activity across the UK. Join a local event and offer your insights, ideas and expertise to colleagues.'
+  activity.public_copy_description = 'CAS Communities are the hearts, hands, and minds of Computing at School activity across the UK. Join a local event and offer your insights, ideas and expertise to colleagues.'
+  activity.public_copy_title_url = 'https://www.computingatschool.org.uk/cas-communities'
+  activity.self_verification_info = 'Please provide us with evidence of your presentation'
+
+  activity.programmes = [primary_certificate]
 end.save
