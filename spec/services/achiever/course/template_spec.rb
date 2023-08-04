@@ -144,6 +144,50 @@ RSpec.describe Achiever::Course::Template do
     end
   end
 
+  describe '#duration_present?' do
+    before do
+      stub_duration_units
+      stub_course_templates
+    end
+
+    context 'when present' do
+      it 'is true' do
+        expect(described_class.all.second.duration_present?).to be true
+      end
+    end
+
+    context 'when absent' do
+      it 'is false' do
+        expect(described_class.maybe_find_by_activity_code('cp007').duration_present?).to be false
+      end
+    end
+  end
+
+  describe '#formatted_duration' do
+    before do
+      stub_duration_units
+      stub_course_templates
+    end
+
+    it 'is pluralized correctly' do
+      expect(described_class.maybe_find_by_activity_code('cp428')
+               .formatted_duration)
+        .to eq '5 hours'
+    end
+
+    it 'is singular when needed' do
+      expect(described_class.maybe_find_by_activity_code('cp228')
+               .formatted_duration)
+        .to eq '1 day'
+    end
+
+    it 'is empty when source data missing' do
+      expect(described_class.maybe_find_by_activity_code('cp007')
+               .formatted_duration)
+        .to eq ''
+    end
+  end
+
   describe '#with_occurrences' do
     before do
       stub_course_templates
