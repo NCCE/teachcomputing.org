@@ -494,17 +494,17 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811-000d3a86d545') do |activity|
-  activity.title = 'Primary programming and algorithms'
+Activity.find_or_initialize_by(stem_course_template_no: '6bc40e34-4c86-ea11-a811-000d3a86d545').tap do |activity|
+  activity.title = 'Teaching programming using Scratch and Scratch Jr'
   activity.credit = 10
   activity.slug = 'primary-programming-and-algorithms-remote'
   activity.stem_course_template_no = '6bc40e34-4c86-ea11-a811-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP455'
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '41a77207-c4c2-ea11-a812-000d3a86d545') do |activity|
   activity.title = 'Higher attainment in GCSE computer science - meeting the challenge of exams'
@@ -1147,7 +1147,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000d3a8747c3') do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000d3a8747c3').tap do |activity|
   activity.title = 'Physical computing kit - KS2 Crumble'
   activity.credit = 10
   activity.slug = 'physical-computing-kit-ks2-crumble'
@@ -1155,7 +1155,7 @@ Activity.find_or_create_by(stem_course_template_no: 'de77674a-51b2-eb11-8236-000
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP252'
-end
+end.save
 
 Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
   activity.title = 'Physical computing kit - KS4 Raspberry Pi Pico'
@@ -1859,15 +1859,17 @@ end
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-Activity.find_or_create_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee') do |activity|
-  activity.title = 'Introduction to the micro:bit in key stage 2 - short course'
+Activity.find_or_initialize_by(stem_course_template_no: '5178b539-29b0-ec11-983f-0022480078ee').tap do |activity|
+  activity.title = 'Introduction to the micro:bit in KS2'
   activity.credit = 10
   activity.slug = 'introduction-to-the-micro-bit-in-key-stage-2'
   activity.stem_course_template_no = '5178b539-29b0-ec11-983f-0022480078ee'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP292'
-end
+
+  activity.programmes = [primary_certificate]
+end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '726ece56-27b0-ec11-983f-002248006a24') do |activity|
   activity.title = 'Implementing the Teach Computing Curriculum in your school'
