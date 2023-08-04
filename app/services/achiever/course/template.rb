@@ -1,4 +1,6 @@
 class Achiever::Course::Template
+  include ActionView::Helpers::TextHelper
+
   attr_accessor :activity_code,
                 :age_groups,
                 :booking_url,
@@ -122,5 +124,16 @@ class Achiever::Course::Template
 
   def nearest_occurrence_distance
     occurrences.map(&:distance).compact.min
+  end
+
+  def duration_present?
+    duration_unit.present? && duration_value.present?
+  end
+
+  # For example, "8 hours" or "1 week"
+  def formatted_duration
+    return '' unless duration_present?
+
+    pluralize(duration_value, duration.downcase.chomp('s'))
   end
 end
