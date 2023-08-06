@@ -1,48 +1,41 @@
 <%= render 'components/hero', hero_title: 'I Belong: encouraging girls into computer science', colour: 'jaffa-bg', full_width: true %>
-<div class="light-grey-bg">
+<div class="light-grey-bg govuk-!-padding-bottom-9">
     <div class="govuk-width-container">
-    <main class="govuk-main-wrapper govuk-main-wrapper--xl">
-
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <section class='ncce-section govuk-!-margin-top-0'>
-                <p class="govuk-body">We offer a curated package of training, resources and implementation support for teachers and school leaders to raise understanding of the barriers to girls’ participation in computer science.</p>
-                <p class="govuk-body">Although computer science is growing in popularity amongst students, girls are consistently outnumbered by their male counterparts. In 2022, only one in five GCSE Computer Science and 15.2% of all A level Computer Science entries, were from female students in England. Our evidence-informed programme aims to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and support them.</p>
-                </section>
-            </div>
-            <div class="govuk-grid-column-one-third">
-                <div class="aside-component__image">
-                    <%= image_pack_tag("media/images/pages/i-belong/students.jpg") %>
+        <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <section class='ncce-section govuk-!-margin-top-0'>
+                        <p class="govuk-body">We offer a curated package of training, resources and implementation support for teachers and school leaders to raise understanding of the barriers to girls’ participation in computer science.</p>
+                        <p class="govuk-body">Although computer science is growing in popularity amongst students, girls are consistently outnumbered by their male counterparts. In 2022, only one in five GCSE Computer Science and 15.2% of all A level Computer Science entries, were from female students in England. Our evidence-informed programme aims to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and support them.</p>
+                    </section>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <div class="aside-component__image">
+                        <%= image_pack_tag("media/images/pages/i-belong/students.jpg") %>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="govuk-grid-row">
-            <div class="">
+            <div class="govuk-grid-row">
                 <div class="lp-support__cards">
-                <div class="lp-support__card white-bg lp-support__card--bordered">
-                    <div>
-                    <h2 class="govuk-heading-m">
-                        Who is it for?
-                    </h2>
-                    <ul class="govuk-body">
-                        <li>Educators aspiring to narrow the gender gap in computing education.</li>
-                        <li>Our resources are currently focused on key stage 3 but teachers of other key stages are welcome to access and use the materials.</li>
-                    </ul>
+                    <div class="lp-support__card white-bg lp-support__card--bordered">
+                        <h2 class="govuk-heading-m">
+                            Who is it for?
+                        </h2>
+                        <ul class="govuk-body">
+                            <li>Educators aspiring to narrow the gender gap in computing education.</li>
+                            <li>Our resources are currently focused on key stage 3 but teachers of other key stages are welcome to access and use the materials.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="lp-support__card white-bg lp-support__card--bordered">
-                    <div>
-                    <h2 class="govuk-heading-m">
-                        What are the benefits?
-                    </h2>
-                    <ul class="govuk-body">
-                        <li>Develop an understanding of the factors affecting girls’ participation in computer science.</li>
-                        <li>Work with colleagues to produce an action plan with strategies to make computer science in your school more inclusive.</li>
-                    </ul>
+                    <div class="lp-support__card white-bg lp-support__card--bordered">
+                        <h2 class="govuk-heading-m">
+                            What are the benefits?
+                        </h2>
+                        <ul class="govuk-body">
+                            <li>Develop an understanding of the factors affecting girls’ participation in computer science.</li>
+                            <li>Work with colleagues to produce an action plan with strategies to make computer science in your school more inclusive.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="lp-support__card white-bg lp-support__card--bordered">
-                    <div>
+                    <div class="lp-support__card white-bg lp-support__card--bordered">
                         <h2 class="govuk-heading-m">
                             Where to start?
                         </h2>
@@ -55,10 +48,11 @@
                         login_path,
                         class: 'button govuk-button govuk-!-margin-bottom-0'
                         %>
+                        <p class="govuk-body">Don't have a STEM Learning account? Simply <%= link_to "Sign up", login_path %></p>
                     </div>
-                    <p class="govuk-body">Don't have a STEM Learning account? Simply <%= link_to "Sign up", login_path %></p>
                 </div>
-                </div>
+            </div>
+            <div class="govuk-grid-row">
                 <section class="ncce-section govuk-grid-column-full">
                     <h2 class="govuk-heading-m">
                         I Belong Champions
@@ -72,11 +66,14 @@
                     %>
                 </section>
             </div>
+        </main>
+    </div>
+    <div class="white-bg">
+        <div class=" govuk-main-wrapper">
             <div class="govuk-width-container">
-                <div class=" govuk-main-wrapper">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-full white-bg govuk-!-padding-9">
-                            <h2 class="govuk-heading-l ncce-heading-l__centered">Resources to support you</h2>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                        <h2 class="govuk-heading-l ncce-heading-l__centered">Resources to support you</h2>
                             <%= render NonBorderedCardsComponent.new(
                                 class_name: 'resource-cards',
                                 cards_per_row: 3,
@@ -109,7 +106,6 @@
                                 }
                                 ]
                             ) %>
-                        </div>
                     </div>
                 </div>
             </div>
