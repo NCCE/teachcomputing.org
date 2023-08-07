@@ -45,6 +45,7 @@ RSpec.describe ProgressBarComponent, type: :component do
 
     context "when se certificate" do
       it 'has 3 completion steps' do
+        secondary_programme_activity_groupings
           expect(rendered_component).to have_css('.ncce-progress-section') do
               expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop your subject knowledge')
               expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop your teaching practice')
