@@ -312,7 +312,7 @@ Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').t
   activity.self_certifiable = true
   activity.description = 'Download and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives.'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'request-your-i-belong-in-computer-science-posters').tap do |activity|
@@ -324,7 +324,7 @@ Activity.find_or_initialize_by(slug: 'request-your-i-belong-in-computer-science-
   activity.self_certifiable = true
   activity.description = '<a href="https://forms.office.com/e/x1FMMzjxhg">Request</a> and display your set of ‘I Belong in Computer Science’ posters. Consider using with the <a href="https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all">interview series</a> to stimulate discussion about computer science related pathways.'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-computing-curriculum-resources').tap do |activity|
@@ -337,7 +337,7 @@ Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-compu
   activity.description = 'Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls’ engagement (see handbook for guidance). Evidence delivery of at least one of these.'
   activity.self_verification_info = 'Please provide us with evidence of delivery of at least one of these'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-activity').tap do |activity|
@@ -350,7 +350,7 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-a
   activity.description = 'Visit our <a href="#">website</a> for upcoming student events. Consider targeting whole or weighted KS3 female student groups.'
   activity.self_verification_info = 'Please provide us with evidence of participation'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'start-or-deliver-a-computing-related-club').tap do |activity|
@@ -363,7 +363,7 @@ Activity.find_or_initialize_by(slug: 'start-or-deliver-a-computing-related-club'
   activity.description = 'Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the handbook. '
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity').tap do |activity|
@@ -376,7 +376,7 @@ Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity'
   activity.description = 'Host a computing <a href="https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador">STEM Ambassador</a> in your school to help students understand real-world applications of their learning and raise their career aspirations. Consider the diversity of roles available in computing.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competition').tap do |activity|
@@ -389,7 +389,7 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competi
   activity.description = 'Participate in a competition to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted KS3 female student groups. '
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recommendations-from-the-handbook').tap do |activity|
@@ -402,5 +402,5 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.description = 'Complete any other student activity which aligns with recommendations from the handbook. Let us know what you’ve done using the evidence button.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
-  activity.programmes |= [i_belong_certificate]
+  activity.programmes = [i_belong_certificate]
 end

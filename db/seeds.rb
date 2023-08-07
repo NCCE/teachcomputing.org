@@ -15,6 +15,7 @@ if ENV['PREPROD_ACHIEVER_COURSES'] == 'on'
   require_relative './seeds/activities/preprod_achiever_courses'
 end
 
+require_relative './seeds/programme_activity_groupings_helper'
 require_relative './seeds/programme_activity_groupings/primary_certificate'
 require_relative './seeds/programme_activity_groupings/secondary_certificate'
 require_relative './seeds/programme_activity_groupings/i_belong_certificate'
