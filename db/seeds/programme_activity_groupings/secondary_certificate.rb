@@ -29,6 +29,53 @@ secondary.programme_activity_groupings.find_or_create_by(title: 'Develop computi
   programme_activity_group.programme_id = secondary.id
 end
 
+secondary.programme_activity_groupings.find_or_initialize_by(title: 'Make a positive impact on young people in computing').tap do |group|
+  group.title = 'Make a positive impact on young people in computing'
+  group.sort_key = 6
+  group.required_for_completion = 1
+  group.programme_id = secondary.id
+  group.community = true
+
+  group.save
+
+  activities = [
+    'raise-aspirations-with-a-stem-ambassador-visit',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
+    'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
+    'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc'
+  ]
+
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
+end.save
+
+secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support your professional community').tap do |group|
+  group.title = 'Support your professional community'
+  group.sort_key = 7
+  group.required_for_completion = 1
+  group.programme_id = secondary.id
+  group.community = true
+
+  group.save
+
+  activities = [
+    'gain-accreditation-as-a-professional-development-leader',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
+    'gain-accreditation-as-an-i-belong-champion',
+    'work-with-local-business-and-industry-to-inspire-inclusive-computing',
+    'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development',
+    'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
+    'join-and-present-at-your-local-computing-at-school-community'
+  ]
+
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
+end.save
+
 puts 'Seeding Programme Activity Groupings for Secondary'
 
 # Courses

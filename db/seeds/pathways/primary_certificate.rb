@@ -124,6 +124,11 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   pathway.programme_id = programme.id
   pathway.order = 4
 
+  pathway.enrol_copy = [
+    'Enrol with the click of the button',
+    'Complete the required professional development, engagement, and community activities to receive your qualification'
+  ]
+
   pathway.save
 
   # CPDs
@@ -167,6 +172,11 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
   pathway.programme_id = programme.id
   pathway.order = 3
+
+  pathway.enrol_copy = [
+    'Enrol with the click of the button',
+    'Complete the required professional development, engagement, and community activities to receive your qualification'
+  ]
 
   pathway.save
 

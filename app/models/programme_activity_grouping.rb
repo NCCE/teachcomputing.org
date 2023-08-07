@@ -5,6 +5,8 @@ class ProgrammeActivityGrouping < ApplicationRecord
   belongs_to :programme
 
   scope :progress_bar_groupings, -> { where.not(progress_bar_title: nil) }
+  scope :community, -> { where(community: true) }
+  scope :not_community, -> { where(community: false) }
 
   def achievements(user)
     user.achievements.in_state(:complete).for_programme(programme)

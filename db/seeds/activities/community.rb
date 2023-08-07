@@ -377,7 +377,7 @@ Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-com
   activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
   activity.self_verification_info = 'Please provide us with evidence of participation'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'run-or-support-a-code-club-in-your-school').tap do |activity|
@@ -524,7 +524,7 @@ Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-devel
   activity.public_copy_description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/professional-development-leaders'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework').tap do |activity|
@@ -539,7 +539,7 @@ Activity.find_or_initialize_by(slug: 'undertake-the-initial-assessment-of-your-s
   activity.public_copy_title_url = 'https://computingqualityframework.org/'
   activity.self_verification_info = 'Please provide us with evidence of review'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development').tap do |activity|
@@ -554,7 +554,7 @@ Activity.find_or_initialize_by(slug: 'work-with-your-local-computing-hub-to-deve
   activity.public_copy_title_url = 'https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu'
   activity.self_verification_info = 'Please provide us with evidence of your action plan'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor').tap do |activity|
@@ -569,7 +569,7 @@ Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-
   activity.public_copy_title_url = 'https://teachcomputing.org/computing-clusters'
   activity.self_verification_info = 'Please provide us with evidence of joining'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'join-and-present-at-your-local-computing-at-school-community').tap do |activity|
@@ -584,5 +584,65 @@ Activity.find_or_initialize_by(slug: 'join-and-present-at-your-local-computing-a
   activity.public_copy_title_url = 'https://www.computingatschool.org.uk/cas-communities'
   activity.self_verification_info = 'Please provide us with evidence of your presentation'
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc').tap do |activity|
+  activity.title = 'Join the I Belong: Encouraging Girls into Computer Science programme, and become an I Belong Champion'
+  activity.credit = 10
+  activity.slug = 'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = '<a href="https://teachcomputing.org/I-Belong">I Belong</a> is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
+  activity.public_copy_description = 'I Belong is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
+  activity.public_copy_title_url = 'https://teachcomputing.org/I-Belong'
+  activity.self_verification_info = 'Please provide us with evidence of your registration'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'download-and-use-isaac-computer-science-classroom-resources-and-displays').tap do |activity|
+  activity.title = 'Download and use Isaac Computer Science classroom resources and displays'
+  activity.credit = 10
+  activity.slug = 'download-and-use-isaac-computer-science-classroom-resources-and-displays'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Bring learning to life with <a href="https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all">Computer Science Journeys</a> and request printed versions of the ‘I Belong in Computer Science’ posters from the NCCE to put in your classroom.'
+  activity.public_copy_description = 'Bring learning to life with Computer Science Journeys and request printed versions of the ‘I Belong in Computer Science’ posters from the NCCE to put in your classroom.'
+  activity.public_copy_title_url = 'https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all'
+  activity.self_verification_info = 'Please provide us with evidence of your posters'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'work-with-local-business-and-industry-to-inspire-inclusive-computing').tap do |activity|
+  activity.title = 'Work with local business and industry to inspire inclusive computing'
+  activity.credit = 10
+  activity.slug = 'work-with-local-business-and-industry-to-inspire-inclusive-computing'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Establish <a href="https://www.stem.org.uk/resources/elibrary/resource/169379/project-enthuse-why-your-business-should-go-back-school-how-yourelationships">relationships with businesses</a> in your local area, that can support development of inclusive computing in your school.'
+  activity.public_copy_description = 'Establish relationships with businesses in your local area, that can support development of inclusive computing in your school.'
+  activity.public_copy_title_url = 'https://www.stem.org.uk/resources/elibrary/resource/169379/project-enthuse-why-your-business-should-go-back-school-how-you'
+  activity.self_verification_info = 'Please provide us with evidence of your relationships with local businesses'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'gain-accreditation-as-an-i-belong-champion').tap do |activity|
+  activity.title = 'Gain accreditation as an I Belong Champion'
+  activity.credit = 10
+  activity.slug = 'gain-accreditation-as-an-i-belong-champion'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Become an <a href="https://teachcomputing.org/I-Belong">I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
+  activity.public_copy_description = 'Become an I Belong Champion to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
+  activity.public_copy_title_url = 'https://teachcomputing.org/I-Belong'
+  activity.self_verification_info = 'Please provide us with evidence of completion'
+
+  activity.programmes = [secondary_certificate]
 end.save

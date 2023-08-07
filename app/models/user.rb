@@ -60,6 +60,10 @@ class User < ApplicationRecord
     true
   end
 
+  def enrolled_on_programme_pathway?(programme:, pathway:)
+    user_programme_enrolments.find_by(programme:, pathway:).present?
+  end
+
   def programme_enrolment_state(programme_id)
     enrolment = user_programme_enrolments.find_by(programme_id:)
     return 'Not enrolled' unless enrolment
