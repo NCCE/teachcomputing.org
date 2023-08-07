@@ -16,10 +16,9 @@ module Certificates
       assign_achievements
       assign_issued_badge_data
 
-      @pathways = Pathway.ordered_by_programme(@programme.slug)
+      @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
       @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
       assign_programme_activity_groupings
-      @online_discussion_activity = @online_discussion_group.first.programme_activities.first.activity
       assign_pathway_recommendations
 
       render :show
@@ -63,9 +62,8 @@ module Certificates
       end
 
       def assign_programme_activity_groupings
-        @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..3).order(:sort_key)
-        @online_discussion_group = @programme.programme_activity_groupings.where(sort_key: 3)
-        @community_groups = @programme.programme_activity_groupings.where(sort_key: 4..5).order(:sort_key)
+        @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
+        @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
       end
 
       def assign_pathway_recommendations

@@ -35,13 +35,6 @@
       </div>
     </li>
   <% end %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--separate">
-    <%= render CommunityActivityComponent.new(
-        achievement: @community_achievements&.find_by(activity_id: @online_discussion_activity.id),
-        activity: Activity.find(@online_discussion_activity.id),
-        tracking_category: tracking_category
-    ) %>
-  </li>
 </ul>
 
 <% @community_groups.each do |group| %>
