@@ -36,49 +36,33 @@
                         </ul>
                     </div>
                     <div class="lp-support__card white-bg lp-support__card--bordered">
-                        <%  if current_user && Programme.primary_certificate.user_enrolled?(current_user) %>
-                            <ol class="govuk-body">
-                            <h2 class="govuk-heading-m">
-                                Completing the programme
-                            </h2>
-                                <li> Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+                       <% if current_user %>
+                            <% if Programme.i_belong_certificate.user_enrolled?(current_user) %>
+                                <h2 class="govuk-heading-m">Completing the programme</h2>
+                                <ol class="govuk-body">
+                                <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
                                 <li>Participate in a range of recommended activity</li>
                                 <li>Claim your school certificate</li>
-                            </ol>
-                            <%= link_to 'Visit dashboard',
-                            "/dashboard",
-                            # enrol_i_belong_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.i_belongr.id }), method: :post
-                             class: 'button govuk-button govuk-!-margin-bottom-0'
-                             %>
-                        <% elsif current_user %> 
-                             <h2 class="govuk-heading-m">
-                                Where to start?
-                            </h2>
-                            <ol class="govuk-body">
-                                <li> Enrol on the programme</li>
+                                </ol>
+                                <%= link_to 'Visit dashboard', '/dashboard', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+                            <% else %>
+                                <h2 class="govuk-heading-m">Where to start?</h2>
+                                <ol class="govuk-body">
+                                <li>Enrol on the programme</li>
                                 <li>Obtain your free handbook and posters</li>
                                 <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
                                 <li>Participate in a range of recommended activity</li>
-                            </ol>
-                            <%= link_to 'Enrol on the programme',
-                            "#",
-                            # enrol_i_belong_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.i_belongr.id }), method: :post
-                             class: 'button govuk-button govuk-!-margin-bottom-0'
-                             %>
-                        <% else %>
-                             <h2 class="govuk-heading-m">
-                                Where to start?
-                            </h2>
+                                </ol>
+                                <%= link_to 'Enrol on the programme', '#', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+                            <% end %>
+                            <% else %>
+                            <h2 class="govuk-heading-m">Where to start?</h2>
                             <ol class="govuk-body">
                                 <li>Enrol on the programme</li>
                                 <li>Obtain your free handbook and posters</li>
                                 <li>Explore the programme</li>
                             </ol>
-                            <%= link_to 'Log into your account',
-                            login_path,
-                            class: 'button govuk-button govuk-!-margin-bottom-0'
-                            %>
-                            <p class="govuk-body">Don't have a STEM Learning account? Simply <%= link_to "Sign up", login_path %></p>
+                            <%= link_to 'Log into your account', login_path, class: 'button govuk-button govuk-!-margin-bottom-0' %>
                         <% end %>
                     </div>
                 </div>
