@@ -278,6 +278,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "progress_bar_title"
+    t.boolean "community", default: false
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 

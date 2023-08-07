@@ -84,6 +84,8 @@ class Programme < ApplicationRecord
 
   def path; end
 
+  def public_path; end
+
   def enrol_path(opts = {}); end
 
   def programme_title; end

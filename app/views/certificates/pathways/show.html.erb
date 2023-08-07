@@ -1,7 +1,7 @@
 <% meta_tag :title, 'Primary certificate - Teach Computing' %>
 <%= render partial: 'hero' %>
 <div class="govuk-width-container">
-  <%= render BreadcrumbComponent.new(ancestors: [[@programme.path, @programme.title]], current_page_name: @pathway.title) %>
+  <%= render BreadcrumbComponent.new(ancestors: [[@programme.public_path, @programme.title]], current_page_name: @pathway.title) %>
   <main class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -14,6 +14,7 @@
           <hr class="ncce-pathway__hr">
           <div class="ncce-pathway__course-list govuk-body-s">
             <% if @pathway.present? %>
+              <h3 class="govuk-heading-s">Develop your professional knowledge</h3>
               <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
@@ -56,6 +57,7 @@
           <hr class="ncce-pathway__hr">
           <div class="ncce-pathway__course-list">
             <% @community_groups.each do |group| %>
+              <h3 class="govuk-heading-s"><%= group.title %></h3>
               <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
@@ -90,27 +92,7 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        <%= render AsideComponent.new(title: t('.how_to_enrol')) do |component| %>
-          <% component.with_body do %>
-            <ol class="govuk-body-s">
-              <li>
-                Successfully complete
-                <%= link_to 'the Computer Science Accelerator programme', '#' %>
-              </li>
-              <li>
-                Enrol with the click of a button
-              </li>
-              <li>
-                Complete the required professional development, engagement, and community activities to recieve your qualification
-              </li>
-            </ol>
-            <%= link_to 'Create an account', create_account_url, class: 'govuk-button button button--aside button--margin-bottom' %>
-            <p class="govuk-body-s">
-              Already have a STEM learning account? Simply
-              <%= link_to 'log in', '#' %>
-            </p>
-          <% end %>
-        <% end %>
+        <%= render PathwayEnrolComponent.new(programme: @programme, pathway: @pathway, current_user: @current_user) %>
         <% if @pathway.has_improvement_copy? %>
           <%= render AsideComponent.new(
             title: 'Teachers following this pathway will contribute to improving:'
@@ -140,7 +122,9 @@
             </p>
           <% end %>
         <% end %>
-        <%= render BursaryComponent.new %>
+        <% if should_show_funding?(@programme) %>
+          <%= render BursaryComponent.new %>
+        <% end %>
       </div>
       <% if should_show_other_pathways?(@programme) %>
         <div class="govuk-grid-column-full">

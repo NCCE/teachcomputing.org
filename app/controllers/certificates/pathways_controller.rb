@@ -12,10 +12,7 @@ class Certificates::PathwaysController < ApplicationController
     @recommended_community_activity_ids = @recommended_community_activities.map { _1.activity.id }
     @recommended_activities = recommended_activities - @recommended_community_activities
 
-    # FUTURE: we should talk about how we want to organise activity groupings.
-    @community_groups = @programme.programme_activity_groupings.where(sort_key: 4...).order(:sort_key)
-
-    @other_pathways = @programme.pathways.where.not(id: @programme.id).sample(3)
+    @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
   end
 
   def set_pathway
