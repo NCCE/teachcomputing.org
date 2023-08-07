@@ -16,7 +16,7 @@
   flex: wrap;
   flex-direction: column;
 
-  @include govuk-media-query($from: 770px) {
+  @include govuk-media-query($from: desktop) {
     flex-direction: row;
   }
 }
