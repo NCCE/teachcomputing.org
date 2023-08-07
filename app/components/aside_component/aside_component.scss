@@ -26,4 +26,8 @@
 .aside-component__image img {
   display: block; /* ensure the image uses up all available space */
   width: 100%;
+
+  @include govuk-media-query(mobile) {
+    margin-bottom: 20px;
+  }
 }

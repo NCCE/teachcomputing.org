@@ -1,4 +1,6 @@
 class Achiever::Course::Template
+  include ActionView::Helpers::TextHelper
+
   attr_accessor :activity_code,
                 :age_groups,
                 :booking_url,
@@ -68,10 +70,27 @@ class Achiever::Course::Template
     templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
   end
 
+  # @return [Achiever::Course::Template] !!raises ActiveRecord::RecordNotFound!! if none . Use this method if you are using
+  # untrusted data such as a URL path to show a page for a course, otherwise use #maybe_find_by_activity_code.
   def self.find_by_activity_code(activity_code)
     templates = all
     template = templates.find { |val| val.activity_code == activity_code.upcase }
-    raise ActiveRecord::RecordNotFound unless template
+    raise ActiveRecord::RecordNotFound, "Could not find template #{activity_code} in Smart Connector" unless template
+
+    template
+  end
+
+  # @return [Achiever::Course::Template|nil] nil if not found. Silently logs and reports an error if not found, so use this method
+  # if you know the course should exist (because you have a matching course Activity)
+  def self.maybe_find_by_activity_code(activity_code)
+    templates = all
+    template = templates.find { |val| val.activity_code == activity_code.upcase }
+
+    unless template
+      message = "Could not find template #{activity_code} in Smart Connector"
+      Rails.logger.error(message)
+      Sentry.capture_message(message, level: :error)
+    end
 
     template
   end
@@ -105,5 +124,16 @@ class Achiever::Course::Template
 
   def nearest_occurrence_distance
     occurrences.map(&:distance).compact.min
+  end
+
+  def duration_present?
+    duration_unit.present? && duration_value.present?
+  end
+
+  # For example, "8 hours" or "1 week"
+  def formatted_duration
+    return '' unless duration_present?
+
+    pluralize(duration_value, duration.downcase.chomp('s'))
   end
 end

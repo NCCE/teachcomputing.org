@@ -25,10 +25,12 @@
               <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">
                 <%= activity_type(pa) %>
               </p>
-              <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
-                <% course = Achiever::Course::Template.find_by_activity_code(pa.stem_activity_code)%>
-                <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %> 
-              </p>
+              <% course = Achiever::Course::Template.maybe_find_by_activity_code(pa.stem_activity_code)%>
+              <% if course&.duration_present? %>
+                <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
+                  <%=  course.formatted_duration %>
+                </p>
+              <% end %>
               <% if @current_user.achievements.find_by_activity_id(pa.activity_id) %>
                 <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
                   <%= @current_user.achievements.find_by_activity_id(pa.activity_id).complete? ? 'Completed' : 'In progress' %>
