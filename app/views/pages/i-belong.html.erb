@@ -53,7 +53,7 @@
                                 <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
                                 <li>Participate in a range of recommended activity</li>
                                 </ol>
-                                <%= link_to 'Enrol on the programme', '#', class: 'button govuk-button govuk-!-margin-bottom-0' %>
+                                <%= link_to 'Enrol on the programme', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), class: 'button govuk-button govuk-!-margin-bottom-0' %>
                             <% end %>
                             <% else %>
                             <h2 class="govuk-heading-m">Where to start?</h2>
