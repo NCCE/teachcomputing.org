@@ -251,7 +251,6 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.string "pdf_link"
     t.uuid "programme_id", null: false
     t.integer "order"
-    t.jsonb "web_copy"
     t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end

@@ -5,80 +5,53 @@ puts 'Creating Programme Activity Groupings'
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: 'all courses').tap do |programme_activity_group|
-  programme_activity_group.sort_key = 2
-  programme_activity_group.required_for_completion = 1
-  programme_activity_group.programme_id = i_belong.id
-  programme_activity_group.save
-end
+i_belong.programme_activity_groupings.find_or_initialize_by(title: 'all courses').tap do |group|
+  group.sort_key = 2
+  group.required_for_completion = 1
+  group.programme_id = i_belong.id
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the following resources to support you').tap do |programme_activity_group|
-  programme_activity_group.sort_key = 3
-  programme_activity_group.required_for_completion = 3
-  programme_activity_group.programme_id = i_belong.id
-  programme_activity_group.save
-end
+  group.save
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Increase girls\' engagement').tap do |programme_activity_group|
-  programme_activity_group.sort_key = 4
-  programme_activity_group.required_for_completion = 1
-  programme_activity_group.programme_id = i_belong.id
-  programme_activity_group.save
-end
+  i_belong.activities.courses.each do |activity|
+    programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
+    programme_activity.update(programme_activity_grouping_id: group.id)
+  end
+end.save
 
-puts 'Seeding Programme Activity Groupings for I Belong'
+i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the following resources to support you').tap do |group|
+  group.sort_key = 3
+  group.required_for_completion = 3
+  group.programme_id = i_belong.id
 
-# Courses
+  activities = [
+    'download-and-use-the-i-belong-handbook',
+    'request-your-i-belong-in-computer-science-posters',
+    'implement-selected-key-stage-3-teach-computing-curriculum-resources'
+  ]
 
-group_two = i_belong.programme_activity_groupings.find_by(sort_key: 2)
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
 
-i_belong.activities.courses.each do |activity|
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_two.id)
-end
+  group.save
+end.save
 
-# Community Achievements
+i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Increase girls\' engagement').tap do |group|
+  group.sort_key = 4
+  group.required_for_completion = 1
+  group.programme_id = i_belong.id
 
-group_three = i_belong.programme_activity_groupings.find_by(sort_key: 3)
+  group.save
 
-if activity = Activity.find_by(slug: 'download-and-use-the-i-belong-handbook')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_three.id, order: 1)
-end
+  activities = [
+    'participate-in-a-ncce-student-enrichment-activity',
+    'start-or-deliver-a-computing-related-club',
+    'host-a-computing-stem-ambassador-activity',
+    'participate-in-a-computing-related-competition',
+    'any-other-activity-which-aligns-with-recommendations-from-the-handbook'
+  ]
 
-if activity = Activity.find_by(slug: 'request-your-i-belong-in-computer-science-posters')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_three.id, order: 2)
-end
-
-if activity = Activity.find_by(slug: 'implement-selected-key-stage-3-teach-computing-curriculum-resources')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_three.id, order: 3)
-end
-
-group_four = i_belong.programme_activity_groupings.find_by(sort_key: 4)
-
-if activity = Activity.find_by(slug: 'participate-in-a-ncce-student-enrichment-activity')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 1)
-end
-
-if activity = Activity.find_by(slug: 'start-or-deliver-a-computing-related-club')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 2)
-end
-
-if activity = Activity.find_by(slug: 'host-a-computing-stem-ambassador-activity')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 3)
-end
-
-if activity = Activity.find_by(slug: 'participate-in-a-computing-related-competition')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 4)
-end
-
-if activity = Activity.find_by(slug: 'any-other-activity-which-aligns-with-recommendations-from-the-handbook')
-  programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-  programme_activity.update(programme_activity_grouping_id: group_four.id, order: 5)
-end
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
+end.save
