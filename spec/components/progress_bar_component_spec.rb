@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ProgressBarComponent, type: :component do
     let(:user) { create(:user) }
-    let(:programme) { create(:primary_certificate) }
-    let!(:primary_programme_activity_groupings) do
-      create_list(:programme_activity_grouping, 4, programme: programme).tap do |groupings|
+    let(:primary_programme_activity_groupings) do
+      create_list(:programme_activity_grouping, 4, programme: create(:primary_certificate) ).tap do |groupings|
         groupings[0].update(title: 'All courses')
         groupings[1].update(title: 'Contribute to an online discussion')
         groupings[2].update(title: 'Develop your teaching practice')
