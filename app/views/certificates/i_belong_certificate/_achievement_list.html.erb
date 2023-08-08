@@ -4,7 +4,7 @@
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
     <% @cpd_courses.each do |pa| %>
-      <%= render CpdCourseComponent.new(current_user: @current_user, programme_activity: pa, last_margin: false) %>
+      <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
     <% end %>
   </li>
   <% if @issued_badge.present? %>
