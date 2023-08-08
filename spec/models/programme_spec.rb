@@ -7,6 +7,7 @@ RSpec.describe Programme, type: :model do
   let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
+  let(:i_belong_programme) { create(:i_belong_certificate) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
   let(:badge) { create(:badge, :active, programme_id: programme.id) }
@@ -96,6 +97,20 @@ RSpec.describe Programme, type: :model do
 
     it 'returns the correct type' do
       expect(described_class.secondary_certificate).to be_a(Programmes::SecondaryCertificate)
+    end
+  end
+
+  describe '#i_belong_certificate' do
+    before do
+      i_belong_programme
+    end
+
+    it 'returns the i belong record' do
+      expect(described_class.i_belong_certificate).to eq i_belong_programme
+    end
+
+    it 'returns the correct type' do
+      expect(described_class.i_belong_certificate).to be_a(Programmes::IBelongCertificate)
     end
   end
 
@@ -196,6 +211,22 @@ RSpec.describe Programme, type: :model do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme')
         expect(programme.secondary_certificate?).to be(false)
+      end
+    end
+  end
+
+  describe '#i_belong_certificate?' do
+    context 'when programme is an i belong certificate' do
+      it 'returns true' do
+        programme = build(:i_belong_certificate)
+        expect(programme.i_belong_certificate?).to be(true)
+      end
+    end
+
+    context 'when programme is not an i belong certificate' do
+      it 'returns false' do
+        programme = build(:programme, slug: 'another-programme')
+        expect(programme.i_belong_certificate?).to be(false)
       end
     end
   end

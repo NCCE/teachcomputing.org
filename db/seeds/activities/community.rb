@@ -341,13 +341,13 @@ Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-compu
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-activity').tap do |activity|
-  activity.title = 'Participate in a National Centre for Computing Education student enrichment activity'
+  activity.title = 'Participate in a National Centre for Computing Education student activity'
   activity.credit = 10
   activity.slug = 'participate-in-a-ncce-student-enrichment-activity'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Visit our <a href="#">website</a> for upcoming student events. Consider targeting whole or weighted KS3 female student groups.'
+  activity.description = 'Connect with your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> and enable marketing permissions via your Teach Computing profile to be informed of upcoming student events.'
   activity.self_verification_info = 'Please provide us with evidence of participation'
 
   activity.programmes = [i_belong_certificate]

@@ -4,7 +4,7 @@ RSpec.describe Certificates::IBelongCertificateController do
   let(:user) { create(:user) }
   let(:certificate) { create(:i_belong_certificate) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: certificate) }
- 
+
   describe '#show' do
     before do
       stub_attendance_sets
@@ -18,7 +18,7 @@ RSpec.describe Certificates::IBelongCertificateController do
       end
 
       it 'redirects to I Belong public page' do
-        pending 'public page branch not merged yet, so i_belong_path not defined'
+        skip 'public page branch not merged yet, so i_belong_path not defined'
 
         expect {
           get '/certificate/i-belong-certificate'
