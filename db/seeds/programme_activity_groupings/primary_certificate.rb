@@ -9,24 +9,28 @@ primary_certificate.programme_activity_groupings.find_or_create_by(title: 'All c
   programme_activity_group.sort_key = 2
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
+  programme_activity_group.progress_bar_title = nil
 end
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Contribute to an online discussion') do |programme_activity_group|
   programme_activity_group.sort_key = 3
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
+  programme_activity_group.progress_bar_title = 'Complete professional development'
 end
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop your teaching practice') do |programme_activity_group|
   programme_activity_group.sort_key = 4
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
+  programme_activity_group.progress_bar_title = 'Develop your teaching practice'
 end
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop computing in your community') do |programme_activity_group|
   programme_activity_group.sort_key = 5
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
+  programme_activity_group.progress_bar_title = 'Develop computing in your community'
 end
 
 puts 'Seeding Programme Activity Groupings for Primary Certificate'
