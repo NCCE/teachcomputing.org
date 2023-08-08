@@ -16,7 +16,7 @@
         %>
       <% else %>
         <% if @activity.self_verification_info.blank? %>
-          <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' } do |f| %>
+          <%= form_for Achievement.new, url: achievements_path do |f| %>
             <%= f.hidden_field :activity_id, value: @activity.id %>
             <%= f.submit t('.mark_complete_label'), class: 'govuk-button button' %>
           <% end %>
@@ -26,7 +26,7 @@
               <%= t('.evidence_button_label') %>
             </button>
             <span class="ihavedonethis__popup">
-              <%= form_for Achievement.new, url: { controller: '/achievements', action: 'create' }, :html => { :multipart => true } do |f| %>
+              <%= form_for Achievement.new, url: achievements_path, :html => { :multipart => true } do |f| %>
                 <span class="govuk-form-group ihavedonethis__group">
                   <%= label_tag "#{:self_verification_info.to_s}_#{@activity.id}",
                     @activity.self_verification_info&.concat(@activity.uploadable? ? " (#{t('.supported_file_types')})" : ""),

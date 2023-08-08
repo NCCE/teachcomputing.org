@@ -49,6 +49,34 @@ RSpec.describe CommunityActivityComponent, type: :component do
     it 'renders a booking link' do
       expect(page).not_to have_link('Book a course')
     end
+
+    context 'with an activity with no self verification info' do
+      let(:activity) { create(:activity, :community, self_verification_info: nil) }
+
+      it 'does not render the complete class' do
+        expect(page).not_to have_css('.community-activity-component__objective-text--complete')
+      end
+
+      it 'renders with the expected objective' do
+        expect(page).to have_css('.community-activity-component__objective-text', text: 'Community Activity')
+      end
+
+      it 'renders the mark complete button' do
+        expect(page).to have_button('Mark complete')
+      end
+
+      it 'renders a description' do
+        expect(page).to have_css('.community-activity-component__description', text: 'this is a community activity')
+      end
+
+      it 'renders the custom class' do
+        expect(page).to have_css('.custom_css_class')
+      end
+
+      it 'renders a booking link' do
+        expect(page).not_to have_link('Book a course')
+      end
+    end
   end
 
   describe 'with a booking_programme_slug' do
