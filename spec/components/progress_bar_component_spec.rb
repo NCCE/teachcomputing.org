@@ -21,15 +21,6 @@ RSpec.describe ProgressBarComponent, type: :component do
         groupings[3].update(title: 'Develop computing in your community')
       end
     end
-  
-    
-    # it 'has a title' do
-    #   expect(page).to have_css('h4', text: 'Your certificate progress')
-    # end 
-    
-    # it 'has a description' do
-    #   expect(page).to have_css('.ncce-progress-section--description', count: 1)
-    # end 
     
     context "when primary certificate" do
 
@@ -55,7 +46,7 @@ RSpec.describe ProgressBarComponent, type: :component do
       end 
     end
     
-    context "when se certificate" do
+    context "when secondary certificate" do
 
       before(:each) do 
         secondary_programme_activity_groupings
