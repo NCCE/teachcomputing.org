@@ -1,11 +1,11 @@
 <div class="ncce-pathway-courses__course <%= 'ncce-pathway-courses__course-no-last-margin' unless last_margin %>">
   <p class="ncce-pathway-courses__link">
-    <%= link_to programme_activity.title, course_path(id: programme_activity.stem_activity_code, name: programme_activity.slug), class: 'ncce-link' if programme_activity.stem_activity_code %>
+    <%= link_to activity.title, course_path(id: activity.stem_activity_code, name: activity.slug), class: 'ncce-link' if activity.stem_activity_code %>
   </p>
 
   <div class="ncce-grid__no-space-between">
-    <p class="ncce-pathway-courses__location <%= activity_icon_class(programme_activity) %> govuk-!-margin-top-0">
-      <%= activity_type(programme_activity) %>
+    <p class="ncce-pathway-courses__location <%= activity_icon_class(activity) %> govuk-!-margin-top-0">
+      <%= activity_type(activity) %>
     </p>
     <% if course&.duration_present? %>
       <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
