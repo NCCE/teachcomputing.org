@@ -75,7 +75,7 @@ class Programme < ApplicationRecord
   end
 
   def i_belong_certificate?
-    slug == 'i-belong-certficate'
+    slug == 'i-belong-certificate'
   end
 
   def path; end
