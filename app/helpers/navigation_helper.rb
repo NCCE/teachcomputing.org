@@ -4,7 +4,6 @@ module NavigationHelper
       { text: 'Primary school',
         children: [
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
-          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'School primary glossary' },
           { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
           { text: 'Early career and trainee teachers', link: '/primary-early-careers', label: 'Primary ECT' },
           { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
