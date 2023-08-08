@@ -195,6 +195,17 @@ ActiveRecord::Schema.define(version: 2023_08_25_175926) do
     t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
+  create_table "enrichment_groupings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "programme_id"
+    t.string "type"
+    t.string "title"
+    t.datetime "term_start"
+    t.datetime "term_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["programme_id"], name: "index_enrichment_groupings_on_programme_id"
+  end
+
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "area"
@@ -302,6 +313,7 @@ ActiveRecord::Schema.define(version: 2023_08_25_175926) do
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
     t.string "type"
+    t.jsonb "web_copy"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
