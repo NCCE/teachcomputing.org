@@ -3,15 +3,17 @@
     <%= link_to activity.title, course_path(id: activity.stem_activity_code, name: activity.slug), class: 'ncce-link' if activity.stem_activity_code %>
   </p>
 
-  <div class="ncce-grid__no-space-between">
-    <p class="ncce-pathway-courses__location <%= activity_icon_class(activity) %> govuk-!-margin-top-0">
-      <%= activity_type(activity) %>
-    </p>
-    <% if course&.duration_present? %>
-      <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
-        <%=  course.formatted_duration %>
+  <div class="ncce-flex__space-between">
+    <div class="ncce-grid__no-space-between ncce-flex__grow-1">
+      <p class="ncce-pathway-courses__location <%= activity_icon_class(activity) %> govuk-!-margin-top-0">
+        <%= activity_type(activity) %>
       </p>
-    <% end %>
+      <% if course&.duration_present? %>
+        <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
+          <%=  course.formatted_duration %>
+        </p>
+      <% end %>
+    </div>
     <% if achievement %>
       <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
         <%= achievement.complete? ? 'Completed' : 'In progress' %>

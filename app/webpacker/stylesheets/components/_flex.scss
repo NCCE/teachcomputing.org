@@ -3,6 +3,10 @@
   justify-content: space-between;
 }
 
+.ncce-flex__grow-1 {
+  flex-grow: 1
+}
+
 .ncce-grid__no-space-between {
   display: grid;
   grid-template-columns: 0.3fr 0.3fr;
