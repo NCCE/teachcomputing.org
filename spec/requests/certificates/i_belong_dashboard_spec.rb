@@ -15,16 +15,11 @@ RSpec.describe Certificates::IBelongCertificateController do
       before do
         certificate
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+        get '/certificate/i-belong-certificate'
       end
 
       it 'redirects to I Belong public page' do
-        skip 'public page branch not merged yet, so i_belong_path not defined'
-
-        expect {
-          get '/certificate/i-belong-certificate'
-        }.not_to raise_error(NameError) # TODO: this expectation will be redundant when you expect the redirect
-
-        # TODO:   expect(response).to redirect_to(/i-belong/)
+        expect(response).to redirect_to(i_belong_path)
       end
     end
 
@@ -42,8 +37,6 @@ RSpec.describe Certificates::IBelongCertificateController do
       it 'asks client not to cache a private page' do
         expect(response.headers['cache-control']).to eq('no-store')
       end
-
-      pending 'spec(s) for displaying achievements in groups'
     end
 
     describe 'while logged out' do
