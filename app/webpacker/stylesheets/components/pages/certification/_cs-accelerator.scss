@@ -11,8 +11,18 @@
   background-color: $concrete;
 }
 
-.ncce-programmes-activity__title {
-  color: unset;
+.ncce-progress-section {
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+  }
+}
+
+.ncce-progress-section--text {
+  width: 200px;
 }
 
 .cs-accelerator__intro-text {

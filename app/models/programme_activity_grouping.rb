@@ -2,6 +2,8 @@ class ProgrammeActivityGrouping < ApplicationRecord
   has_many :programme_activities, -> { order(:order) }
   belongs_to :programme
 
+  scope :progress_bar_groupings, -> { where.not(progress_bar_title: nil) }
+  
   def achievements(user)
     user.achievements.in_state(:complete).for_programme(programme)
   end

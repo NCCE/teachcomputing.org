@@ -3,6 +3,7 @@
 <%= render 'pages/certification/hero' %>
 <div class="ncce-programmes-activity">
   <div class="govuk-width-container">
+    <%= render ProgressBarComponent.new(current_user, @programme) %>
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
