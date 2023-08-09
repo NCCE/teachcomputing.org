@@ -36,4 +36,42 @@ module CertificateHelper
 
     activities.sort_by { |a| current_user.achievements.find_by(activity_id: a.activity_id)&.complete? ? 0 : 1 }
   end
+
+  def format_activity_title(group)
+    words = group.title.split
+
+    output = String.new
+    output << content_tag(:strong, words.first)
+    output << ' '
+    output << words[1..].join(' ')
+
+    if group.required_for_completion != group.programme_activities.size
+      output << ' by completing '
+      output << content_tag(:strong, "at least #{group.required_for_completion.humanize}")
+      output << ' '
+      output << 'activity'.pluralize(group.required_for_completion)
+    end
+
+    output.html_safe
+  end
+
+  def sort_community_activities_with_legacy_pathway(programme_activities:, pathway: nil)
+    if pathway.nil?
+      programme_activities.legacy
+    else
+      completed_activity_ids = current_user.achievements.in_state(:complete).pluck(:activity_id)
+
+      completed_non_legacy_activities, non_completed_non_legacy_activities = programme_activities
+        .not_legacy
+        .includes(activity: :pathway_activities)
+        .where(activity: { pathway_activity: { pathway: pathway } } )
+        .partition { completed_activity_ids.include?(_1.activity_id) }
+
+      completed_legacy_activities = programme_activities
+        .legacy
+        .select { completed_activity_ids.include?(_1.activity_id) }
+
+      completed_legacy_activities + completed_non_legacy_activities + non_legacy_non_legacy_activities
+    end
+  end
 end

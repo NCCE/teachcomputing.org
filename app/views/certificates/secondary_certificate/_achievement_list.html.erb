@@ -38,9 +38,9 @@
     <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>
     </p>
-    <% sort_complete_first(
-      activities: group.programme_activities,
-      complete: group.user_complete?(current_user)
+    <% sort_community_activities_with_legacy_pathway(
+      programme_activities: group.programme_activities,
+      pathway: @user_pathway
     ).each do |programme_activity| %>
       <li class="ncce-activity-list__item">
         <%= render CommunityActivityComponent.new(

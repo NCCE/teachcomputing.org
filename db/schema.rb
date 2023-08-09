@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
     t.integer "order"
+    t.boolean "legacy", default: false
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
