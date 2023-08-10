@@ -121,4 +121,18 @@ RSpec.describe AsideComponent, type: :component do
       expect(page).to have_link('', href: 'https://static.teachcomputing.org/curriculum_journey.pdf')
     end
   end
+
+  context 'when a block is passed' do
+    before do
+      render_inline(described_class.new(title: 'Teachers following this pathway will contribute to improving:')) do |component|
+        component.with_body do
+          '<p class="test">Hello there world!</p>'.html_safe
+        end
+      end
+    end
+
+    it 'renders the body' do
+      expect(page).to have_text('Hello there world!')
+    end
+  end
 end
