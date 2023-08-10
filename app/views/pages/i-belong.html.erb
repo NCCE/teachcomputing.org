@@ -1,3 +1,27 @@
+<% if current_user %>
+  <% programme = Programme.i_belong_certificate %>
+  <% state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled %>
+  <% enrol_path = programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }) %>
+<% end %>
+
+<% case state %>
+<% when :enrolled %>
+  <% champion_path = '/i-belong-champions-pack' %>
+  <% posters_link_title = 'Request your posters' %>
+  <% posters_path = i_belong_certificate_path %>
+  <% link_method = :get %>
+<% when :unenrolled %>
+  <% champion_path = enrol_path %>
+  <% posters_link_title = 'Enrol to request' %>
+  <% posters_path = enrol_path %>
+  <% link_method = :post %>
+<% else %>
+  <% champion_path = login_path %>
+  <% posters_link_title = 'Log in to request' %>
+  <% posters_path = login_path %>
+  <% link_method = :get %>
+<% end %>
+
 <%= render 'components/hero', hero_title: 'I Belong: encouraging girls into computer science', colour: 'jaffa-bg', full_width: true %>
 <div class="light-grey-bg govuk-!-padding-bottom-9">
   <div class="govuk-width-container">
@@ -36,25 +60,24 @@
             </ul>
           </div>
           <div class="lp-support__card white-bg lp-support__card--bordered">
-            <% if current_user %>
-              <% if Programme.i_belong_certificate.user_enrolled?(current_user) %>
-                <h2 class="govuk-heading-m">Completing the programme</h2>
-                <ol class="govuk-body">
-                  <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
-                  <li>Participate in a range of recommended activity</li>
-                  <li>Claim your school certificate</li>
-                </ol>
-                <%= link_to 'Visit dashboard', dashboard_path, class: 'button govuk-button govuk-!-margin-bottom-0' %>
-              <% else %>
-                <h2 class="govuk-heading-m">Where to start?</h2>
-                <ol class="govuk-body">
-                  <li>Enrol on the programme</li>
-                  <li>Obtain your free handbook and posters</li>
-                  <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
-                  <li>Participate in a range of recommended activity</li>
-                </ol>
-                <%= link_to 'Enrol on the programme', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), class: 'button govuk-button govuk-!-margin-bottom-0' %>
-              <% end %>
+            <% case state %>
+            <% when :enrolled  %>
+              <h2 class="govuk-heading-m">Completing the programme</h2>
+              <ol class="govuk-body">
+                <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+                <li>Participate in a range of recommended activity</li>
+                <li>Claim your school certificate</li>
+              </ol>
+              <%= link_to 'Visit dashboard', i_belong_certificate_path, class: 'button govuk-button govuk-!-margin-bottom-0' %>
+            <% when :unenrolled %>
+              <h2 class="govuk-heading-m">Where to start?</h2>
+              <ol class="govuk-body">
+                <li>Enrol on the programme</li>
+                <li>Obtain your free handbook and posters</li>
+                <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+                <li>Participate in a range of recommended activity</li>
+              </ol>
+              <%= link_to 'Enrol on the programme', enrol_path, method: :post, class: 'button govuk-button govuk-!-margin-bottom-0' %>
             <% else %>
               <h2 class="govuk-heading-m">Where to start?</h2>
               <ol class="govuk-body">
@@ -76,8 +99,9 @@
             Join our champions initiative, which recognises teachers paving the way for girls in computer science and supports them to create wider change.
           </p>
           <%= link_to 'Become a champion',
-            login_path,
-            class: 'button govuk-button govuk-!-margin-bottom-0'
+                      champion_path,
+                      method: link_method,
+                      class: 'button govuk-button govuk-!-margin-bottom-0'
           %>
         </section>
       </div>
@@ -106,8 +130,9 @@
                     title: 'I Belong in computer science posters',
                     text: "Printed 'I Belong in computer science' posters are available on request!​",
                     link: {
-                    link_title: 'Log in to request',
-                    link_url: login_path,
+                    link_title: posters_link_title,
+                    link_url: posters_path,
+                    link_method: link_method
                     }
                 },
                 {
