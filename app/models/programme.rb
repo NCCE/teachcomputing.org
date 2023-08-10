@@ -109,4 +109,8 @@ class Programme < ApplicationRecord
   def certificate_name_for_user(user)
     user.full_name
   end
+
+  def user_is_eligible?(user)
+    true
+  end
 end
