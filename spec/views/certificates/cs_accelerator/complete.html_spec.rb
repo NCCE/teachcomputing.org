@@ -42,8 +42,8 @@ RSpec.describe('certificates/cs_accelerator/complete') do
       expect(rendered).to have_link('Secondary computing certificate', href: '/certificate/secondary-certificate')
     end
 
-    it 'has a button to enrol on the secondary certificate' do
-      expect(rendered).to have_link('Enrol', href: "/certificate/secondary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=#{secondary_certificate.id}&user_programme_enrolment%5Buser_id%5D=#{user.id}")
+    it 'has a button to find out more about the secondary certificate' do
+      expect(rendered).to have_link('Find out more')
     end
 
     it 'has two further activity cards' do

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   let(:user) { create(:user) }
   let(:secondary_certificate) { create(:secondary_certificate) }
-  let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
-  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: primary_certificate) }
+  let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: secondary_certificate) }
+  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: secondary_certificate) }
   let(:pathway) { create(:pathway, programme: secondary_certificate, title: 'Developing', pdf_link: 'developing.pdf') }
   let(:pathway_2) { create(:pathway, programme: secondary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
   let(:pathways) { [pathway, pathway_2] }
@@ -42,10 +42,6 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   it 'has the expected section titles' do
     expect(rendered).to have_text('Complete any course from this certificate')
     expect(rendered).to have_text('Choose at least one activity to a group name', count: 2)
-  end
-
-  it 'has a community activity component' do
-    expect(rendered).to have_css('.community-activity-component')
   end
 
   it 'has view all courses button' do
