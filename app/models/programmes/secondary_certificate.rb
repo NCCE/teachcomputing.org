@@ -42,5 +42,9 @@ module Programmes
     def bcs_logo
       'media/images/logos/secondary-bcs.svg'
     end
+
+    def pathways?
+      true
+    end
   end
 end

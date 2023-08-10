@@ -63,15 +63,15 @@ module CertificateHelper
 
       completed_non_legacy_activities, non_completed_non_legacy_activities = programme_activities
         .not_legacy
-        .includes(activity: :pathway_activities)
-        .where(activity: { pathway_activity: { pathway: pathway } } )
+        .joins(activity: :pathway_activities)
+        .where(activity: { pathway_activities: { pathway: pathway } } )
         .partition { completed_activity_ids.include?(_1.activity_id) }
 
       completed_legacy_activities = programme_activities
         .legacy
         .select { completed_activity_ids.include?(_1.activity_id) }
 
-      completed_legacy_activities + completed_non_legacy_activities + non_legacy_non_legacy_activities
+      completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
     end
   end
 end

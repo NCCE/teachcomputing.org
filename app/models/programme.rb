@@ -82,6 +82,10 @@ class Programme < ApplicationRecord
     slug == 'i-belong'
   end
 
+  def pathways?
+    false
+  end
+
   def path; end
 
   def public_path; end

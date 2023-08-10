@@ -25,5 +25,9 @@ module Programmes
     def bcs_logo
       'media/images/logos/primary-bcs.svg'
     end
+
+    def pathways?
+      true
+    end
   end
 end
