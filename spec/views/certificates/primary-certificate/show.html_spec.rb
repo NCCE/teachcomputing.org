@@ -7,8 +7,8 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:pathway_2) { create(:pathway, programme: primary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
   let(:pathways) { [pathway, pathway_2] }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
-  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
-  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
+  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, community: true, programme: primary_certificate) }
+  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: primary_certificate) }
   let(:community_activity) { create(:activity, :community) }
 
   before do
