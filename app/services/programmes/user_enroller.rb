@@ -10,7 +10,7 @@ module Programmes
       enrolment = UserProgrammeEnrolment.new(user_id: @user_id, programme_id: @programme_id)
       return false unless enrolment.save
 
-      enrolment.assign_pathway(@pathway_slug) if @pathway_slug.present? && enrolment.programme.primary_certificate?
+      enrolment.assign_pathway(@pathway_slug) if @pathway_slug.present? && enrolment.programme.pathways?
 
       KickOffEmailsJob.perform_later(enrolment.id)
       Achiever::ScheduleCertificateSyncJob.perform_later(enrolment.id)

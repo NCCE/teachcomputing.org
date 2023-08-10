@@ -18,6 +18,7 @@ module Certificates
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
       @badge_tracking_event_category = 'Secondary enrolled'
       @badge_tracking_event_label = 'Secondary badge'
+      assign_recommended_activities
       assign_issued_badge_data
 
       render :show
@@ -48,6 +49,14 @@ module Certificates
         return unless @programme.badges.any?
 
         @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+      end
+
+      def assign_recommended_activities
+        return if user_pathway.nil?
+
+        recommended_activities = user_pathway.pathway_activities.includes(:activity)
+        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
+        @recommended_activities = recommended_activities - @recommended_community_activities
       end
 
       def enrolment
