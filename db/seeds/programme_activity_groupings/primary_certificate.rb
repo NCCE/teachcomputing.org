@@ -5,33 +5,32 @@ puts 'Creating Programme Activity Groupings for Primary certificate'
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
 
-primary_certificate.programme_activity_groupings.find_or_create_by(title: 'All courses') do |programme_activity_group|
+primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'All courses').tap do |programme_activity_group|
   programme_activity_group.sort_key = 2
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
-  programme_activity_group.progress_bar_title = nil
-end
+  programme_activity_group.progress_bar_title = 'Complete professional development'
+end.save
 
 primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Contribute to an online discussion') do |programme_activity_group|
   programme_activity_group.sort_key = 3
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
-  programme_activity_group.progress_bar_title = 'Complete professional development'
 end
 
-primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop your teaching practice') do |programme_activity_group|
+primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'Develop your teaching practice').tap do |programme_activity_group|
   programme_activity_group.sort_key = 4
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
   programme_activity_group.progress_bar_title = 'Develop your teaching practice'
-end
+end.save
 
-primary_certificate.programme_activity_groupings.find_or_create_by(title: 'Develop computing in your community') do |programme_activity_group|
+primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'Develop computing in your community').tap do |programme_activity_group|
   programme_activity_group.sort_key = 5
   programme_activity_group.required_for_completion = 1
   programme_activity_group.programme_id = primary_certificate.id
   programme_activity_group.progress_bar_title = 'Develop computing in your community'
-end
+end.save
 
 puts 'Seeding Programme Activity Groupings for Primary Certificate'
 

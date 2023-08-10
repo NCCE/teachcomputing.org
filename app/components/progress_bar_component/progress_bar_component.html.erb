@@ -1,5 +1,5 @@
 <div class="govuk-width-container">
-  <div class="hero__heading-wrapper hero__heading-wrapper--full-width govuk-body govuk-!-margin-top-3"> 
+  <div class="hero__heading-wrapper hero__heading-wrapper--full-width govuk-body govuk-!-margin-top-3">
     <h4><strong>Your certificate progress</strong></h4>
     <p class="govuk-body-s ncce-progress-section--description">
       <strong>Complete the below training and activities to receive your <%= @programme.title %> certificate.
@@ -7,12 +7,12 @@
     </p>
     <p class="govuk-body-s">Choose your first step to accreditation:</p>
     <div class="ncce-progress-section">
-      <% @programme.programme_activity_groupings.progress_bar_groupings.each_with_index do |grouping, index| %>
+      <% @programme_activity_groupings.each_with_index do |grouping, index| %>
         <% class_name = grouping&.user_complete?(@current_user) ? "icon-ticked-circle" : "icon-blank-circle" %>
         <a href="#" class="<%= class_name %> ncce-link ncce-progress-section--text">
           <%= grouping.progress_bar_title %>
         </a>
-        <% unless index == @programme.programme_activity_groupings.size - 2 %>
+        <% unless index == @programme_activity_groupings.size - 1 %>
           <div class="icon-dotted-line"></div>
         <% end %>
       <% end %>
