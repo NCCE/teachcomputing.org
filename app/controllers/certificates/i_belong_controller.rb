@@ -11,9 +11,9 @@ module Certificates
       return redirect_to complete_i_belong_path if @programme.user_completed?(current_user)
 
       assign_achievements
-      @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
+      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
-      @community_groups = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
+      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
       @badge_tracking_event_category = 'I belong enrolled'
       @badge_tracking_event_label = 'I belong badge'
       assign_issued_badge_data

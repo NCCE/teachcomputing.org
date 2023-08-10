@@ -120,7 +120,7 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   pathway.slug = 'specialising-or-leading-2'
   pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-Classroom.pdf'
   pathway.programme_id = programme.id
   pathway.order = 4
 
@@ -132,36 +132,48 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   pathway.save
 
   # CPDs
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP008')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP456')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP007')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP005')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP225')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP003')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO040')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO042')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO700')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP486')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP469')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP441')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP252')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP292')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP461')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP457')
+  cpds = [
+    'CP008',
+    'CP456',
+    'CP007',
+    'CP005',
+    'CP225',
+    'CP003',
+    'CO040',
+    'CO042',
+    'CO700',
+    'CP486',
+    'CP469',
+    'CP441',
+    'CP252',
+    'CP292',
+    'CP461',
+    'CP457'
+  ]
 
+  cpds.each do |cpd|
+    maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
+  end
+
+  activities = [
   # Develop your teaching practice
-  maybe_attach_activity_to_pathway(pathway, slug: 'raise-aspirations-with-a-stem-ambassador-visit')
-  maybe_attach_activity_to_pathway(pathway, slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity')
-  maybe_attach_activity_to_pathway(pathway, slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit')
-  maybe_attach_activity_to_pathway(pathway, slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom')
+    'raise-aspirations-with-a-stem-ambassador-visit',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
+    'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
 
   # Develop computing in your community
-  maybe_attach_activity_to_pathway(pathway, slug: 'gain-accreditation-as-a-professional-development-leader')
-  maybe_attach_activity_to_pathway(pathway, slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge')
-  maybe_attach_activity_to_pathway(pathway, slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework')
-  maybe_attach_activity_to_pathway(pathway, slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development')
-  maybe_attach_activity_to_pathway(pathway, slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor')
-  maybe_attach_activity_to_pathway(pathway, slug: 'join-and-present-at-your-local-computing-at-school-community')
+    'gain-accreditation-as-a-professional-development-leader',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
+    'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development',
+    'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
+    'join-and-present-at-your-local-computing-at-school-community',
+  ]
+
+  activities.each do |activity|
+    maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
 end
 
 programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').tap do |pathway|
@@ -169,7 +181,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   pathway.slug = 'developing-in-the-classroom-2'
   pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-Classroom.pdf'
   pathway.programme_id = programme.id
   pathway.order = 3
 
@@ -181,30 +193,42 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   pathway.save
 
   # CPDs
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP454')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP455')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO232')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO700')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO041')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CO042')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP462')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP466')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP459')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP465')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP460')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP467')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP252')
-  maybe_attach_activity_to_pathway(pathway, stem_activity_code: 'CP292')
+  cpds = [
+    'CP454',
+    'CP455',
+    'CO232',
+    'CO700',
+    'CO041',
+    'CO042',
+    'CP462',
+    'CP466',
+    'CP459',
+    'CP465',
+    'CP460',
+    'CP467',
+    'CP252',
+    'CP292'
+  ]
 
-  # Develop your teaching practice
-  maybe_attach_activity_to_pathway(pathway, slug: 'raise-aspirations-with-a-stem-ambassador-visit')
-  maybe_attach_activity_to_pathway(pathway, slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity')
-  maybe_attach_activity_to_pathway(pathway, slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit')
-  maybe_attach_activity_to_pathway(pathway, slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom')
+  cpds.each do |cpd|
+    maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
+  end
 
-  # Develop computing in your community
-  maybe_attach_activity_to_pathway(pathway, slug: 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community')
-  maybe_attach_activity_to_pathway(pathway, slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge')
-  maybe_attach_activity_to_pathway(pathway, slug: 'run-or-support-a-code-club-in-your-school')
-  maybe_attach_activity_to_pathway(pathway, slug: 'run-an-enrichment-activity-in-your-classroom')
+  activities = [
+    # Develop your teaching practice
+    'raise-aspirations-with-a-stem-ambassador-visit',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
+    'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
+
+    # Develop computing in your community
+    'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'run-or-support-a-code-club-in-your-school',
+    'run-an-enrichment-activity-in-your-classroom'
+  ]
+
+  activities.each do |activity|
+    maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
 end
