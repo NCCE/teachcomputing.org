@@ -7,7 +7,7 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
   pathway.slug = 'curriculum-leadership'
   pathway.description = 'Are you currently a Computing Lead or are looking to progress into the role? This pathway will support you to build the confidence to lead computing effectively in your school.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_01_Curriculum_leadership.pdf'
   pathway.programme_id = programme.id
   pathway.order = 1
 
@@ -57,7 +57,7 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
   pathway.slug = 'supporting-other-teachers'
   pathway.description = 'Are you looking to support your colleagues through mentoring, collaborative working and sharing expertise? This pathway will help you aid your colleagues to deliver excellent computer science education to students.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_02_Supporting_other_teachers.pdf'
   pathway.programme_id = programme.id
   pathway.order = 2
 
@@ -102,7 +102,7 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
   pathway.slug = 'championing-diversity-and-inclusion'
   pathway.description = 'Are you looking to champion diversity and inclusion in their classrooms as well as computing as a subject? This pathway will give you knowledge of teaching interventions, encouraging girls into computer science and how to support SEND students in their learning of computing.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_03_Championing_deversity_and_inclusion.pdf'
   pathway.programme_id = programme.id
   pathway.order = 3
 
@@ -147,7 +147,7 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
   pathway.slug = 'raising-student-attainment'
   pathway.description = 'Are you looking to champion diversity and inclusion in their classrooms as well as computing as a subject? This pathway will give you knowledge of teaching interventions, encouraging girls into computer science and how to support SEND students in their learning of computing.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_04_Raising_student_attainment.pdf'
   pathway.programme_id = programme.id
   pathway.order = 4
 
@@ -195,7 +195,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
   pathway.slug = 'developing-teachers'
   pathway.description = 'Are you looking to develop your teaching after the Early Career Framework? This pathways will support your development goals and will help increase your knowledge of the subject and pedagogy.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/primary-pathways/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_05_Developing_teachers.pdf	'
   pathway.programme_id = programme.id
   pathway.order = 5
 
