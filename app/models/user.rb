@@ -1,5 +1,6 @@
 require 'audited'
 
+# #school_name is the school or college name to print onto the I Belong certificate PDF
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
