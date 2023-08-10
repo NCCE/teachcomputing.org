@@ -58,7 +58,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'shows all activities' do
-      expect(rendered).to have_css('.ncce-activity-list__item', count: 5)
+      expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
     end
 
     it 'shows no hidden activity title' do
