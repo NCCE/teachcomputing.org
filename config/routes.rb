@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'secondary-certificate' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      put '/pathway', action: :update, controller: 'secondary_certificate/user_programme_pathway', as: :update_user_pathway
     end
 
     resource 'cs_accelerator', controller: 'cs_accelerator', path: 'cs-accelerator', only: %i[show],
