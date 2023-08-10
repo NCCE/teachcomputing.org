@@ -1,0 +1,20 @@
+<div class='mailer__content'>
+  <p class="govuk-body">Dear <%= @user.first_name %></p>
+  <p class="govuk-body">Thank you for signing up and taking your first step towards inspiring more girls to choose computer science. We look forward to supporting you and your school as you progress through your journey.</p>
+  <p class="govuk-body"><strong>Next steps...</strong></p>
+  <ol class="govuk-list govuk-list govuk-list--number">
+    <li>
+      Explore your <%= link_to 'personal dashboard', i_belong_certificate_url, class: 'ncce-link' %> and discover activities and resources to support you
+    </li>
+    <li>
+      Participate in our <%= link_to 'Encouraging girls into GCSE Computer Science course', course_url('CP440', 'encouraging-girls-into-gcse-computer-science'), class: 'ncce-link' %>
+    </li>
+    <li>
+      Engage in a range of activities to translate your learning into action
+    </li>
+    <li>
+      Successfully complete the programme and receive your certificate
+    </li>
+  </ol>
+  <p class="govuk-body">For support with this programme contact <%= link_to 'your local Computing Hub', 'http://website-email.stem.org.uk/track/click/30657053/teachcomputing.org?p=eyJzIjoiSnJzYi1zbkhjdnRBc1pXRXRPRTNUMWN5MU5VIiwidiI6MSwicCI6IntcInVcIjozMDY1NzA1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3RlYWNoY29tcHV0aW5nLm9yZ1xcXC9odWJzXCIsXCJpZFwiOlwiNmM5ZTMyYjUwNjVjNDJiNjlkNmZkMWZiMTg3YjU5NmJcIixcInVybF9pZHNcIjpbXCIzYjY1ZmY5NDYxOWMxNDgzZWMyYmM5YjZkMDFiODI3OGMxZjlhOWRiXCJdfSJ9', class: 'ncce-link' %>.</p>
+</div>

@@ -2,6 +2,10 @@ module Programmes
   class PrimaryCertificate < Programme
     PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
 
+    def mailer
+      PrimaryMailer
+    end
+
     def path
       primary_certificate_path
     end

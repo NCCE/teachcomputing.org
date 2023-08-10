@@ -40,6 +40,10 @@ class Programme < ApplicationRecord
     badges.active.exists?
   end
 
+  def mailer
+    raise NotImplementedError
+  end
+
   def enough_activities_for_test?(_user)
     false
   end
@@ -86,6 +90,10 @@ class Programme < ApplicationRecord
 
   def bcs_logo
     raise NotImplementedError
+  end
+
+  def send_pending_mail?
+    false
   end
 
   def pathways_excluding(pathway)

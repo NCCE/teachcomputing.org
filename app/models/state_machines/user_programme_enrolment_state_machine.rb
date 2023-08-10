@@ -15,6 +15,12 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
     !programme_enrolment.flagged?
   end
 
+  after_transition(to: :pending) do |enrolment|
+    next unless enrolment.programme.send_pending_mail?
+
+    enrolment.programme.mailer.with(user: enrolment.user).pending.deliver_later
+  end
+
   after_transition(to: :complete) do |programme_enrolment|
     # Keep track of the pathway the user was on at completion
     programme_enrolment.update(completed_pathway_id: programme_enrolment.pathway.id) unless programme_enrolment.pathway.blank?

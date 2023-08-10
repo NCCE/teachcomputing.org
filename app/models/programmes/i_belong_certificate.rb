@@ -2,6 +2,10 @@ module Programmes
   class IBelongCertificate < Programme
     PROGRAMME_TITLE = 'I Belong: encouraging girls into computer science'.freeze
 
+    def mailer
+      IBelongMailer
+    end
+
     def path
       i_belong_certificate_path
     end
@@ -12,6 +16,10 @@ module Programmes
 
     def programme_title
       PROGRAMME_TITLE
+    end
+
+    def send_pending_mail?
+      true
     end
   end
 end
