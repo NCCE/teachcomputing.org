@@ -9,6 +9,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'All courses
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = secondary.id
+  group.progress_bar_title = 'Complete professional development'
 
   group.save
 
@@ -28,6 +29,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Make a posi
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = true
+  group.progress_bar_title = 'Make an impact on young people in computing'
 
   group.save
 
@@ -55,6 +57,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support you
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = true
+  group.progress_bar_title = 'Support your professional community'
 
   group.save
 
