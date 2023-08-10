@@ -52,11 +52,13 @@ module Certificates
       end
 
       def assign_recommended_activities
-        return if user_pathway.nil?
-
-        recommended_activities = user_pathway.pathway_activities.includes(:activity)
-        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
-        @recommended_activities = recommended_activities - @recommended_community_activities
+        if user_pathway.nil?
+          @recommended_activities = nil
+        else
+          recommended_activities = user_pathway.pathway_activities.includes(:activity)
+          @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
+          @recommended_activities = recommended_activities - @recommended_community_activities
+        end
       end
 
       def enrolment
