@@ -23,6 +23,8 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the f
   group.required_for_completion = 3
   group.programme_id = i_belong.id
 
+  group.save
+
   activities = [
     'download-and-use-the-i-belong-handbook',
     'request-your-i-belong-in-computer-science-posters',
@@ -32,8 +34,6 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the f
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity, index + 1)
   end
-
-  group.save
 end.save
 
 i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Increase girls\' engagement').tap do |group|
