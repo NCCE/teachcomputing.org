@@ -30,6 +30,48 @@ RSpec.describe Pathway, type: :model do
     end
   end
 
+  describe '.not_legacy' do
+    let!(:legacy) { create(:pathway, legacy: true) }
+    let!(:not_legacy) { create(:pathway) }
+
+    it 'returns only pathways which have legacy: false' do
+      expect(described_class.not_legacy.to_a).to eq [not_legacy]
+    end
+  end
+
+  describe '#has_improvement_copy?' do
+    context 'when neither improvement bulletse and improvemenet_cta are present' do
+      it 'returns false' do
+        expect(pathway.has_improvement_copy?).to be false
+      end
+    end
+
+    context 'when only improvement bullets are present' do
+      it 'returns false' do
+        pathway.improvement_bullets = [['foo']]
+
+        expect(pathway.has_improvement_copy?).to be false
+      end
+    end
+
+    context 'when only improvemenet_cta are present' do
+      it 'returns false' do
+        pathway.improvement_cta = 'asdf'
+
+        expect(pathway.has_improvement_copy?).to be false
+      end
+    end
+
+    context 'when both improvement bullets and improvemenet_cta are present' do
+      it 'returns true' do
+        pathway.improvement_bullets = [['foo']]
+        pathway.improvement_cta = 'asdf'
+
+        expect(pathway.has_improvement_copy?).to be true
+      end
+    end
+  end
+
   describe '#recommended_activities' do
     it 'returns pathway_activities not set as supplementary' do
       recommended = create_list(:pathway_activity, 3, pathway: pathway, supplementary: false)
