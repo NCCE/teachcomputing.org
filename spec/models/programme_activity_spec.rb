@@ -16,4 +16,22 @@ RSpec.describe ProgrammeActivity, type: :model do
       expect(programme_activity).to belong_to(:programme_activity_grouping)
     end
   end
+
+  describe '.legacy' do
+    let!(:legacy) { create(:programme_activity, legacy: true) }
+    let!(:not_legacy) { create(:programme_activity) }
+
+    it 'should return just legacy PAs' do
+      expect(described_class.legacy.to_a).to eq [legacy]
+    end
+  end
+
+  describe '.not_legacy' do
+    let!(:legacy) { create(:programme_activity, legacy: true) }
+    let!(:not_legacy) { create(:programme_activity) }
+
+    it 'should return just legacy PAs' do
+      expect(described_class.not_legacy.to_a).to eq [not_legacy]
+    end
+  end
 end
