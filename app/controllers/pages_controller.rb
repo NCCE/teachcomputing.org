@@ -19,12 +19,51 @@ class PagesController < ApplicationController
     render template: 'pages/home/index'
   end
 
+  def i_belong
+    programme = Programme.i_belong_certificate
+    if current_user
+      session_state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled
+      enrol_path = programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id })
+    else
+      session_state = :guest
+      enrol_path = ''
+    end
+
+    case session_state
+    when :enrolled
+      champion_path = '/i-belong-champions-pack'
+      posters_link_title = 'Request your posters'
+      cta_link_path = i_belong_certificate_path
+      cta_link_method = :get
+    when :unenrolled
+      champion_path = enrol_path
+      posters_link_title = 'Enrol to request'
+      cta_link_path = enrol_path
+      cta_link_method = :post
+    else
+      champion_path = login_path
+      posters_link_title = 'Log in to request'
+      cta_link_path = login_path
+      cta_link_method = :get
+    end
+
+    render(
+      template: 'pages/enrolment/i_belong',
+      locals: { session_state:,
+                cta_link_path:,
+                cta_link_method:,
+                champion_path:,
+                posters_link_title: }
+    )
+  end
+
   def login
     auth_uri = '/auth/stem'
     auth_uri += "?source_uri=#{params[:source_uri]}" if params[:source_uri].present?
-    render template: 'pages/login', locals: { auth_uri: auth_uri }
+    render template: 'pages/login', locals: { auth_uri: }
   end
 
+  # static programme pages except I Belong
   def static_programme_page
     @programme = Programme.find_by!(slug: params[:page_slug])
     redirect_to @programme.path and return if @programme.user_enrolled?(current_user)
