@@ -228,4 +228,22 @@ RSpec.describe User do
       expect(user.programme_pathway(programme)).to eq(pathway)
     end
   end
+
+  describe '#enrolled_on_programme_pathway?' do
+    let(:programme) { create(:programme) }
+    let(:pathway) { create(:pathway) }
+
+    context 'when the user is enrolled' do
+      let!(:user_programme_enrolemnt) { create(:user_programme_enrolment, programme:, pathway:, user:) }
+      it 'should return true' do
+        expect(user.enrolled_on_programme_pathway?(programme:, pathway:)).to be true
+      end
+    end
+
+    context 'when the user is not enrolled' do
+      it 'should return true' do
+        expect(user.enrolled_on_programme_pathway?(programme:, pathway:)).to be false
+      end
+    end
+  end
 end
