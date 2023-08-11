@@ -120,7 +120,7 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   pathway.slug = 'specialising-or-leading-2'
   pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Specialising-or-leading.pdf'
   pathway.programme_id = programme.id
   pathway.order = 4
 
@@ -181,7 +181,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   pathway.slug = 'developing-in-the-classroom-2'
   pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-Classroom.pdf'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-classroom.pdf'
   pathway.programme_id = programme.id
   pathway.order = 3
 
