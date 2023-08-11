@@ -1,8 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe('pages/i_belong', type: :view) do
+RSpec.describe('pages/enrolment/i_belong', type: :view) do
   before do
-    render
+    render(
+      template: 'pages/enrolment/i_belong',
+      locals:
+        { session_state: :unenrolled,
+          cta_link_path: '/',
+          cta_link_method: :post,
+          champion_path: '/',
+          posters_link_title: 'Request posters' }
+    )
   end
 
   it 'has a title section' do
