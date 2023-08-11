@@ -278,8 +278,9 @@ RSpec.describe Programme, type: :model do
   describe '#user_is_eligible?' do
     it 'should return true' do
       programme = create(:programme)
+      user = create(:user)
 
-      expect(programme.user_is_eligible?).to be true
+      expect(programme.user_is_eligible?(user)).to be true
     end
   end
 end

@@ -23,6 +23,7 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
     assign(:recommended_community_activities, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
     assign(:user_pathway, upe.pathway)
     assign(:pathways, pathways)
+    assign(:available_pathways_for_user, pathways)
 
     render
   end
