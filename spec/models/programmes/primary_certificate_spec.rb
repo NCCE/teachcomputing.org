@@ -47,4 +47,16 @@ RSpec.describe Programmes::PrimaryCertificate do
         .to eq('Primary Computing Teaching')
     end
   end
+
+  describe '#public_path' do
+    it 'should return public path' do
+      expect(programme.public_path).to eq '/primary-certificate'
+    end
+  end
+
+  describe '#pathways?' do
+    it 'should return true' do
+      expect(programme.pathways?).to be true
+    end
+  end
 end
