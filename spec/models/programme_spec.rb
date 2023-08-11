@@ -258,4 +258,28 @@ RSpec.describe Programme, type: :model do
       expect(programme.certificate_name_for_user(user)).to eq user.full_name
     end
   end
+
+  describe '#public_path' do
+    it 'should return nil' do
+      programme = create(:programme)
+
+      expect(programme.public_path).to be nil
+    end
+  end
+
+  describe '#pathways?' do
+    it 'should return false' do
+      programme = create(:programme)
+
+      expect(programme.pathways?).to be false
+    end
+  end
+
+  describe '#user_is_eligible?' do
+    it 'should return true' do
+      programme = create(:programme)
+
+      expect(programme.user_is_eligible?).to be true
+    end
+  end
 end
