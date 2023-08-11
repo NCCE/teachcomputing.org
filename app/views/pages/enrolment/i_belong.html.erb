@@ -40,25 +40,6 @@
             <ol class="govuk-body"><%= t(".#{session_state}.where_to_start_card.body_html")%></ol>
             <%= link_to t(".#{session_state}.where_to_start_card.link_text"), cta_link_path, method: cta_link_method, class: 'button govuk-button govuk-!-margin-bottom-0' %>
           </div>
-            <% case false %>
-            <% when :enrolled  %>
-              <h2 class="govuk-heading-m">Completing the programme</h2>
-              <ol class="govuk-body">
-                <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
-                <li>Participate in a range of recommended activity</li>
-                <li>Claim your school certificate</li>
-              </ol>
-              <%= link_to 'Visit dashboard', i_belong_certificate_path, class: 'button govuk-button govuk-!-margin-bottom-0' %>
-            <% when :unenrolled %>
-            <% when :guest %>
-              <h2 class="govuk-heading-m">Where to start?</h2>
-              <ol class="govuk-body">
-                <li>Enrol on the programme</li>
-                <li>Obtain your free handbook and posters</li>
-                <li>Explore the programme</li>
-              </ol>
-              <%= link_to 'Log into your account', login_path, class: 'button govuk-button govuk-!-margin-bottom-0' %>
-            <% end %>
         </div>
       </div>
       <div class="govuk-grid-row">
