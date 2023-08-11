@@ -90,4 +90,16 @@ RSpec.describe Programmes::SecondaryCertificate do
         .to eq('Secondary Computing Teaching')
     end
   end
+
+  describe '#public_path' do
+    it 'should return public path' do
+      expect(secondary_certificate.public_path).to eq '/secondary-certificate'
+    end
+  end
+
+  describe '#pathways?' do
+    it 'should return true' do
+      expect(secondary_certificate.pathways?).to be true
+    end
+  end
 end
