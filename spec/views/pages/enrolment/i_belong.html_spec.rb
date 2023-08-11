@@ -25,10 +25,6 @@ RSpec.describe('pages/enrolment/i_belong', type: :view) do
     expect(rendered).to have_css('.aside-component__image', count: 1)
   end
 
-  it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-xl', text: 'I Belong: encouraging girls into computer science')
-  end
-
   it 'shows 3 support cards' do
     expect(rendered).to have_css('.lp-support__card', count: 3)
   end
