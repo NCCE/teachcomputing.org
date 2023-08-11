@@ -12,7 +12,7 @@ class Pathway < ApplicationRecord
   scope :not_legacy, -> { where(legacy: false) }
 
   def has_improvement_copy?
-    improvement_bullets.present? && improvement_cta
+    improvement_bullets.present? && improvement_cta.present?
   end
 
   def recommended_activities
