@@ -55,7 +55,7 @@ module CertificateHelper
     output.html_safe
   end
 
-  def sort_community_activities_with_legacy_pathway(programme_activities:, pathway: nil)
+  def sort_community_activities_with_legacy_pathway(programme_activities:, pathway: nil, current_user:)
     if pathway.nil?
       programme_activities.legacy
     else

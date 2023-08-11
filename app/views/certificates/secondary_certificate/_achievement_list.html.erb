@@ -46,7 +46,8 @@
     </p>
     <% sort_community_activities_with_legacy_pathway(
       programme_activities: group.programme_activities,
-      pathway: @user_pathway
+      pathway: @user_pathway,
+      current_user:
     ).each do |programme_activity| %>
       <li class="ncce-activity-list__item">
         <%= render CommunityActivityComponent.new(
