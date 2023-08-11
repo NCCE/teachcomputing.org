@@ -14,4 +14,10 @@ class NonBorderedCardsComponent < ViewComponent::Base
   def render?
     @cards.present?
   end
+
+  private
+
+    def link_method(card)
+      card[:link][:link_method].presence || :get
+    end
 end
