@@ -90,4 +90,22 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
       end
     end
   end
+
+  describe '.community' do
+    let!(:community) { create(:programme_activity_grouping, community: true) }
+    let!(:not_community) { create(:programme_activity_grouping) }
+
+    it 'should return just community PAGs' do
+      expect(described_class.community.to_a).to eq [community]
+    end
+  end
+
+  describe '.not_community' do
+    let!(:community) { create(:programme_activity_grouping, community: true) }
+    let!(:not_community) { create(:programme_activity_grouping) }
+
+    it 'should return just not community PAGs' do
+      expect(described_class.not_community.to_a).to eq [not_community]
+    end
+  end
 end
