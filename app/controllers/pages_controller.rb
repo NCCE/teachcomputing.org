@@ -20,8 +20,8 @@ class PagesController < ApplicationController
   end
 
   def i_belong
-    programme = Programme.i_belong_certificate
     if current_user
+      programme = Programme.i_belong_certificate
       session_state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled
       enrol_path = programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id })
     else
