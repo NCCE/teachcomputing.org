@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'axe/rspec'
 
-RSpec.describe('Static pages', type: :system) do
+RSpec.describe('Home page', type: :system) do
   before do
     stub_featured_posts
     visit root_path

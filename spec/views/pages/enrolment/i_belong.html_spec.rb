@@ -1,24 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe('pages/i-belong', type: :view) do
+RSpec.describe('pages/enrolment/i_belong', type: :view) do
   before do
-    render
+    render(
+      template: 'pages/enrolment/i_belong',
+      locals:
+        { session_state: :unenrolled,
+          cta_link_path: '/',
+          cta_link_method: :post,
+          champion_path: '/',
+          posters_link_title: 'Request posters' }
+    )
   end
 
-  it 'has a title section' do 
+  it 'has a title section' do
     expect(rendered).to have_css('.govuk-heading-xl', text: 'I Belong: encouraging girls into computer science')
-  end 
+  end
 
-  it 'has a description section' do 
+  it 'has a description section' do
     expect(rendered).to have_content('We offer a curated package of training')
-  end 
+  end
 
-  it 'has a side image' do 
+  it 'has a side image' do
     expect(rendered).to have_css('.aside-component__image', count: 1)
-  end 
-
-  it 'has a title' do
-    expect(rendered).to have_css('.govuk-heading-xl', text: 'I Belong: encouraging girls into computer science')
   end
 
   it 'shows 3 support cards' do

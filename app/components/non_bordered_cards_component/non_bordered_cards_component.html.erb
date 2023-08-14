@@ -12,7 +12,7 @@
       <% end %>
       <p class="govuk-body">
         <% if card[:link][:link_url].present? %>
-          <%= link_to card[:link][:link_title], card[:link][:link_url], class: [{ 'ncce-link': card[:link][:button].blank?, "govuk-button button button--full-width": card[:link][:button].present? }], data: {
+          <%= link_to card[:link][:link_title], card[:link][:link_url], method: link_method(card) ,class: [{ 'ncce-link': card[:link][:button].blank?, "govuk-button button button--full-width": card[:link][:button].present? }], data: {
             event_action: 'click', event_category: card[:link][:tracking_page], event_label: card[:link][:tracking_label]
           } %>
         <% else %>

@@ -1,0 +1,30 @@
+---
+en:
+  pages:
+    enrolment:
+      i_belong:
+        guest:
+          where_to_start_card:
+            heading: Where to start?
+            body_html: >-
+              <li>Enrol on the programme</li>
+              <li>Obtain your free handbook and posters</li>
+              <li>Explore the programme</li>
+            link_text: Log into your account
+        unenrolled:
+          where_to_start_card:
+            heading: Where to start?
+            body_html: >-
+              <li>Enrol on the programme</li>
+              <li>Obtain your free handbook and posters</li>
+              <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+              <li>Participate in a range of recommended activity</li>
+            link_text: Enrol on the programme
+        enrolled:
+          where_to_start_card:
+            heading: Completing the programme
+            body_html: >-
+              <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+              <li>Participate in a range of recommended activity</li>
+              <li>Claim your school certificate</li>
+            link_text: Visit dashboard
