@@ -69,3 +69,6 @@ latest.dump
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+
+# rdoc / YARD
+doc/*
