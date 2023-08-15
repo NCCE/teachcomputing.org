@@ -35,7 +35,11 @@ If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your 
 
 ### Dynamics (referred to in the codebase as Achiever for historic reasons)
 
-By default the development environment expects to be able to communicate with Stem's staging Dynamics API which is used to populate the course list, and user enrolments etc. You'll need to add staging credentials to `.env` (find in the nonprod section of the heroku project in the terraform repo, or in RPF's lastpass: TC Achiever creds):
+Teachcomputing communicates with Stem's staging Dynamics API which is used to populate the course list, and user enrolments etc.
+
+By default the development environment doesn't connect to Dynamics: instead it stubs those responses thanks to this variable `ACHIEVER_USE_LOCAL_TEMPLATES=true`  in `.env.defaults`. See [Offline Dynamics below.](#Offline Dynamics)
+
+If you have access to connect to a real Dynamics Smart Connector API installation, you'll need to add credentials to `.env` (find staging and preprod credentials in the nonprod section of the heroku project in the terraform repo)
 
 ```
 # STAGING
@@ -44,9 +48,26 @@ ACHIEVER_V2_USERNAME=...
 ACHIEVER_V2_ENDPOINT=...
 ```
 
-If your IP address is whitelisted, set `PROXY_URL=''` in `.env`. If not, you will need to ensure you have a proxy setup that tunnels to a whitelisted IP. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
+If your IP address is whitelisted, set `PROXY_URL=''` in `.env`. If not, one option is a proxy that tunnels to a whitelisted IP. You can do this [here](https://github.com/NCCE/private-documentation/blob/master/APIs/rpf-proxy.md)
 
 There are two commands `yarn start-tunnel` and `yarn stop-tunnel` that are wrappers to manage the proxy locally, `yarn start` (below) utilises this to create the tunnel when the stack is brought up. It is important to have this setup for testing, however please see the 'Offline Dynamics' section below for how to run this offline.
+
+### Offline Dynamics
+
+To develop offline, removing the need for the proxy and a third party API, you can set the following environment variables in your `.env`:
+
+```
+ACHIEVER_USE_LOCAL_TEMPLATES=true
+ACHIEVER_LOCAL_TEMPLATE_PATH='spec/support/achiever/local_templates'
+```
+
+Data already exists in the path defined above, but it can be moved if you prefer.
+
+This is useful if you want to create your own test data, for example by changing the data in the `coursesforcurrentdelegatebyprogramme.json` and linking the `stem_achiever_contact_no` to your local user and updating the `COURSETEMPLATENO`, you could generate enrolments in order to test course bookings (without this the test data needs to exist in Stem's API).
+
+A task has been created to refresh this data from the api, run this with:
+
+`yarn run exec rake achiever:refresh_local_templates`
 
 ### Starting and stopping the stack
 
@@ -67,23 +88,6 @@ yarn stop
 
 
 Sidekiq is used to process background jobs. You can view the admin UI for this by visiting `/admin/sidekiq` and using GSuite account to authenticate.
-
-### Offline Dynamics
-
-To develop offline, removing the need for the proxy and a third party API, you can set the following environment variables in your `.env`:
-
-```
-ACHIEVER_USE_LOCAL_TEMPLATES=true
-ACHIEVER_LOCAL_TEMPLATE_PATH='spec/support/achiever/local_templates'
-```
-
-Data already exists in the path defined above, but it can be moved if you prefer.
-
-This is useful if you want to create your own test data, for example by changing the data in the `coursesforcurrentdelegatebyprogramme.json` and linking the `stem_achiever_contact_no` to your local user and updating the `COURSETEMPLATENO`, you could generate enrolments in order to test course bookings (without this the test data needs to exist in Stem's API).
-
-A task has been created to refresh this data from the api, run this with:
-
-`yarn run exec rake achiever:refresh_local_templates`
 
 ### Database
 
