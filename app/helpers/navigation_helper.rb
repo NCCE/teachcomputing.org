@@ -13,8 +13,6 @@ module NavigationHelper
               { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
               { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
               { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
-              { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
-              { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' },
               { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
         ] },
@@ -31,7 +29,9 @@ module NavigationHelper
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
           { text: 'Secondary question banks', link: secondary_question_banks_path, label: 'Teaching resources' },
           { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'Resources primary glossary' },
-          { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' }
+          { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' },
+          { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
+          { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' }
         ] },
       { text: 'About us',
         children: [
