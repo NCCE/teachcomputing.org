@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_08_25_175926) do
-=======
-ActiveRecord::Schema.define(version: 2023_08_18_093958) do
->>>>>>> 76417c3d (IB certificate completion and certificate award (#1761))
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -99,10 +95,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.string "booking_programme_slug"
     t.boolean "retired", default: false
     t.boolean "coming_soon", default: false
-<<<<<<< HEAD
     t.jsonb "public_copy"
-=======
->>>>>>> 76417c3d (IB certificate completion and certificate award (#1761))
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"

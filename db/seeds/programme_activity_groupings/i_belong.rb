@@ -46,10 +46,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
   group.required_for_completion = 1
   group.programme_id = i_belong.id
   group.progress_bar_title = '<strong>Increase</strong> girls’ engagement by completing at least one activity'
-<<<<<<< HEAD
   group.community = true
-=======
->>>>>>> 76417c3d (IB certificate completion and certificate award (#1761))
 
   group.save
 
