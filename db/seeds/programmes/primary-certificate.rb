@@ -1,9 +1,9 @@
-primary = Programmes::PrimaryCertificate.find_or_create_by(slug: 'primary-certificate') do |programme|
+primary = Programmes::PrimaryCertificate.find_or_initialize_by(slug: 'primary-certificate').tap do |programme|
   programme.title = 'Teach primary computing'
   programme.slug = 'primary-certificate'
   programme.description = 'Teach primary computing'
   programme.enrollable = true
-end
+end.save
 
 puts "Created Programme: #{primary.title} (#{primary})"
 

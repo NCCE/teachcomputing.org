@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :achievements, only: %i[index show]
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transition
+    resources :enrichment_groupings
+    resources :enrichment_entries
   end
 
   namespace :api do
@@ -191,6 +193,7 @@ Rails.application.routes.draw do
   get '/welcome', to: 'welcome#show', as: :welcome
 
   resources :user, only: :update, param: :uuid
+  resources :enrichment, only: :show, param: :slug
 
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')

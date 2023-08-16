@@ -1,0 +1,19 @@
+<% meta_tag :title, 'Pathways - Teach Computing' %>
+<%= render HeroComponent.new(title: programme_t('hero.title'), subtitle: programme_t('hero.subtitle')) %>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body"><%= programme_t('intro') %></p>
+          <p class="govuk-body"><%= programme_t('taking_part') %></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <% programme_t('taking_part_steps').each do |step| %>
+              <li><%= step %></li>
+            <% end %>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

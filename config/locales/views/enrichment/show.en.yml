@@ -1,0 +1,25 @@
+en:
+  enrichment:
+    show:
+      primary-certificate:
+        hero:
+          title: Primary computing enrichment activities
+          subtitle: Encourage young people to develop life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.
+        intro: Explore a variety of activities, challenges and opportunities provided by the National Centre for Computing Education (NCCE) and our partners. All are designed to enrich learning in computing and provide opportunities to broaden young people’s educational experience, inspire their curiosity and expand on what computing means to them in a fun hands-on way.
+        taking_part: "Taking part in enrichment activities champions computing by:"
+        taking_part_steps:
+          - Giving your class an opportunity to try new activities that may not strictly fit into the curriculum
+          - Encouraging your class to pursue wider educational and further career goals
+          - Providing examples of how computing can be applied to real-world experiences
+        footer: Our termly as well as year-round enrichment offer provides activities which are always accessible. Keep informed on upcoming enrichment activities by being part of the STEM Community.
+      secondary-certificate:
+        hero:
+          title: Secondary computing enrichment activities
+          subtitle: Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.
+        intro: The National Centre for Computing Education (NCCE) enrichment activities will help inspire curiosity in your students and broaden their educational experience with fun hands-on learning.
+        taking_part: "Taking part in enrichment activities champions computing by:"
+        taking_part_steps:
+          - Providing an opportunity for students to pursue their learning in their own area of interest and strength
+          - Studying concepts to a greater depth and complexity
+          - Providing examples of how computing can be applied to real-world experiences
+        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the STEM Community.
