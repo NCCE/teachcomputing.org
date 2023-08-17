@@ -63,7 +63,8 @@
     "shell": "yarn run web sh",
     "test": "yarn run exec rspec",
     "test-debug": "docker-compose exec web rdebug-ide --host 0.0.0.0 --port 1235 ./bin/rspec",
-    "guard": "yarn run bundle exec guard"
+    "guard": "yarn run bundle exec guard",
+    "attach": "docker exec -it teachcomputingorg-web-1"
   },
   "lint-staged": {
     "*.js": [

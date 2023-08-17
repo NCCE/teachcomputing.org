@@ -189,6 +189,8 @@ Rails.application.routes.draw do
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/welcome', to: 'welcome#show', as: :welcome
 
+  resources :user, only: :update, param: :uuid
+
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')
   get '/home-teaching/:page_slug' => redirect('/home-teaching')

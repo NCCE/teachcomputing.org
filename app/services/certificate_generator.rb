@@ -14,9 +14,9 @@ class CertificateGenerator
   end
 
   def generate_pdf
-    user_name = "#{@user.first_name} #{@user.last_name}"
     date_awarded = @transition.created_at.strftime('%d %B %Y')
     cert_number = certificate_number
+    name = certificate_name
 
     Prawn::Document.generate(@output_path, page_size: 'A4') do
       font_families.update('Roboto' => {
@@ -28,7 +28,7 @@ class CertificateGenerator
       # stroke_axis at: [200,0], step_length: 10, color: 'FF0000' # ruler for debugging
 
       move_down 224
-      text user_name, align: :center, size: 18, color: '333448'
+      text name, align: :center, size: 18, color: '333448'
 
       move_down 320
       translate(-36, 0) do
@@ -60,6 +60,14 @@ class CertificateGenerator
   end
 
   private
+
+    def certificate_name
+      if @programme.i_belong_certificate?
+        @user.school_name
+      else
+        "#{@user.first_name} #{@user.last_name}"
+      end
+    end
 
     def certificate_number
       cert_number = @transition.metadata['certificate_number']

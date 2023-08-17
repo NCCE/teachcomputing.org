@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_10_111841) do
+ActiveRecord::Schema.define(version: 2023_08_11_134106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -193,6 +193,30 @@ ActiveRecord::Schema.define(version: 2023_08_10_111841) do
     t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
+  create_table "enrichment_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "enrichment_grouping_id"
+    t.string "title"
+    t.string "title_url"
+    t.string "image_url"
+    t.string "body"
+    t.boolean "published"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enrichment_grouping_id"], name: "index_enrichment_entries_on_enrichment_grouping_id"
+  end
+
+  create_table "enrichment_groupings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id"
+    t.string "type"
+    t.string "title"
+    t.datetime "term_start"
+    t.datetime "term_end"
+    t.boolean "published"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["programme_id"], name: "index_enrichment_groupings_on_programme_id"
+  end
+
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "area"
@@ -293,6 +317,7 @@ ActiveRecord::Schema.define(version: 2023_08_10_111841) do
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
     t.string "type"
+    t.jsonb "web_copy"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 
@@ -408,6 +433,8 @@ ActiveRecord::Schema.define(version: 2023_08_10_111841) do
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
   add_foreign_key "downloads", "aggregate_downloads"
+  add_foreign_key "enrichment_entries", "enrichment_groupings"
+  add_foreign_key "enrichment_groupings", "programmes"
   add_foreign_key "feedback_comments", "users"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"
