@@ -9,6 +9,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'all courses'
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = i_belong.id
+  group.progress_bar_title = 'Understand factors affecting girl\'s participation'
 
   group.save
 
@@ -22,6 +23,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the f
   group.sort_key = 3
   group.required_for_completion = 3
   group.programme_id = i_belong.id
+  group.progress_bar_title = 'Access resources to support you'
 
   group.save
 
@@ -40,6 +42,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Increase gir
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id
+  group.progress_bar_title = 'Increase girls’ engagement by completing at least one activity'
 
   group.save
 
