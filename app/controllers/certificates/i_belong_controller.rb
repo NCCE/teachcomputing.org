@@ -1,5 +1,5 @@
 module Certificates
-  class IBelongCertificateController < ApplicationController
+  class IBelongController < ApplicationController
     layout 'full-width'
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete pending]
@@ -8,7 +8,7 @@ module Certificates
     after_action :discourage_caching
 
     def show
-      return redirect_to complete_i_belong_certificate_path if @programme.user_completed?(current_user)
+      return redirect_to complete_i_belong_path if @programme.user_completed?(current_user)
 
       assign_achievements
       @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
@@ -22,7 +22,7 @@ module Certificates
     end
 
     def pending
-      return redirect_to complete_i_belong_certificate_path if enrolment.current_state == 'complete'
+      return redirect_to complete_i_belong_path if enrolment.current_state == 'complete'
 
       @complete_achievements = complete_achievements
 
@@ -30,7 +30,7 @@ module Certificates
     end
 
     def complete
-      return redirect_to i_belong_certificate_path unless @programme.user_completed?(current_user)
+      return redirect_to i_belong_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
       @badge_tracking_event_category = 'I belong complete'
@@ -72,15 +72,15 @@ module Certificates
       end
 
       def find_programme
-        @programme = Programme.i_belong_certificate
+        @programme = Programme.i_belong
       end
 
       def user_enrolled?
-        redirect_to i_belong_path unless @programme.user_enrolled?(current_user)
+        redirect_to about_i_belong_path unless @programme.user_enrolled?(current_user)
       end
 
       def user_programme_enrolment_pending?
-        redirect_to pending_i_belong_certificate_path if enrolment.in_state?(:pending)
+        redirect_to pending_i_belong_path if enrolment.in_state?(:pending)
       end
   end
 end

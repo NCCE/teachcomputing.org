@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe('certificates/i_belong_certificate/show', type: :view) do
+RSpec.describe('certificates/i_belong/show', type: :view) do
   let(:user) { create(:user) }
-  let(:i_belong_certificate) { create(:i_belong_certificate) }
-  let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: i_belong_certificate) }
-  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: i_belong_certificate) }
-  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: i_belong_certificate) }
+  let(:i_belong) { create(:i_belong) }
+  let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: i_belong) }
+  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: i_belong) }
+  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: i_belong) }
   let(:community_activity) { create(:activity, :community) }
 
   before do
     stub_course_templates
     stub_duration_units
 
-    assign(:programme, i_belong_certificate)
+    assign(:programme, i_belong)
 
     assign(:current_user, user)
 
@@ -28,7 +28,7 @@ RSpec.describe('certificates/i_belong_certificate/show', type: :view) do
   end
 
   it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: i_belong_certificate.title)
+    expect(rendered).to have_css('.hero__heading', text: i_belong.title)
   end
 
   it 'has correct list setup' do

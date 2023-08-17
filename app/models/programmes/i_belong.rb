@@ -1,5 +1,5 @@
 module Programmes
-  class IBelongCertificate < Programme
+  class IBelong < Programme
     PROGRAMME_TITLE = 'I Belong: encouraging girls into computer science'.freeze
 
     def mailer
@@ -7,11 +7,11 @@ module Programmes
     end
 
     def path
-      i_belong_certificate_path
+      about_i_belong_path
     end
 
     def enrol_path(opts = {})
-      enrol_i_belong_certificate_path(opts)
+      enrol_i_belong_path(opts)
     end
 
     def programme_title

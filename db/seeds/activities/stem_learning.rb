@@ -3,7 +3,7 @@
 cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
-i_belong_certificate = Programme.i_belong_certificate
+i_belong = Programme.i_belong
 
 a = Activity.find_or_create_by(stem_course_template_no: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
@@ -1068,7 +1068,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac
   activity.stem_activity_code = 'CP440'
   activity.remote_delivered_cpd = true
 
-  activity.programmes = [i_belong_certificate]
+  activity.programmes = [i_belong]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '3fd9b792-af8c-eb11-b1ac-0022481a6ad5') do |activity|

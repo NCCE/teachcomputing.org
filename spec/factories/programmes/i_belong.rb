@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :i_belong_certificate, class: 'Programmes::IBelongCertificate' do
+  factory :i_belong, class: 'Programmes::IBelong' do
     title { 'I Belong: encouraging girls into computer science' }
-    slug { 'i-belong-certificate' }
+    slug { 'i-belong' }
     description { 'Encouraging girls into computer science' }
     enrollable { true }
 

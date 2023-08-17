@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
   def i_belong
     if current_user
-      programme = Programme.i_belong_certificate
+      programme = Programme.i_belong
       session_state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled
       enrol_path = programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id })
     else
@@ -33,7 +33,7 @@ class PagesController < ApplicationController
     when :enrolled
       champion_path = '/i-belong-champions-pack'
       posters_link_title = 'Request your posters'
-      cta_link_path = i_belong_certificate_path
+      cta_link_path = i_belong_path
       cta_link_method = :get
     when :unenrolled
       champion_path = enrol_path

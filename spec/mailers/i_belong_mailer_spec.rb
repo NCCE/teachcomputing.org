@@ -22,7 +22,7 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     it 'contains the certificate dashboard link' do
-      expect(mail.body.encoded).to have_link('personal dashboard', href: %r{/certificate/i-belong-certificate})
+      expect(mail.body.encoded).to have_link('personal dashboard', href: %r{/certificate/i-belong})
     end
 
     context 'when viewing plain text' do

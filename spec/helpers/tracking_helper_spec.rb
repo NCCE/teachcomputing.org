@@ -15,7 +15,7 @@ describe TrackingHelper, type: :helper do
       { route: '/impact-and-evaluation', category: 'Impact' },
       { route: '/primary-certificate', category: 'Primary unenrolled' },
       { route: '/certificate/primary-certificate', category: 'Primary enrolled' },
-      { route: '/certificate/i-belong-certificate', category: 'I Belong enrolled' }
+      { route: '/certificate/i-belong', category: 'I Belong enrolled' }
     ]
   end
 

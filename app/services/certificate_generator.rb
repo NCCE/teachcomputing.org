@@ -62,7 +62,7 @@ class CertificateGenerator
   private
 
     def certificate_name
-      if @programme.i_belong_certificate?
+      if @programme.i_belong?
         @user.school_name
       else
         "#{@user.first_name} #{@user.last_name}"

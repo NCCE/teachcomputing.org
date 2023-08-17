@@ -46,7 +46,7 @@ module Achiever
         case programme_slug
         when 'cs-accelerator'
           @assess_eligibility_job = true
-        when 'primary-certificate', 'secondary-certificate', 'i-belong-certificate'
+        when 'primary-certificate', 'secondary-certificate', 'i-belong'
           @programme = Programme.find_by(slug: programme_slug)
           @pending_transition_job = true
         end

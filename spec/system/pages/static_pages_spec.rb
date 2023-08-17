@@ -43,7 +43,7 @@ RSpec.describe('Static pages', type: :system) do
 
   describe 'I Belong page', js: false do
     let(:user) { create(:user, email: 'web@teachcomputing.org') }
-    let(:programme) { create(:i_belong_certificate) }
+    let(:programme) { create(:i_belong) }
     let(:enrolment) { create(:user_programme_enrolment, user:, programme:)}
 
     context 'as a guest' do
@@ -72,7 +72,7 @@ RSpec.describe('Static pages', type: :system) do
         expect(page).to have_css('li', text: 'Complete our ‘Encouraging Girls into GCSE Computer Science’ short course')
         expect(page).to have_css('li', text: 'Participate in a range of recommended activity')
         expect(page).to have_link('Enrol on the programme')
-        expect(page).to have_link('Become a champion', href: %r{/i-belong-certificate/enrol})
+        expect(page).to have_link('Become a champion', href: %r{/i-belong/enrol})
         expect(page).to have_link('Enrol to request')
       end
     end

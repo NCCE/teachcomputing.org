@@ -32,8 +32,8 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def self.i_belong_certificate
-    Programme.find_by(slug: 'i-belong-certificate')
+  def self.i_belong
+    Programme.find_by(slug: 'i-belong')
   end
 
   def badgeable?
@@ -78,8 +78,8 @@ class Programme < ApplicationRecord
     slug == 'cs-accelerator'
   end
 
-  def i_belong_certificate?
-    slug == 'i-belong-certificate'
+  def i_belong?
+    slug == 'i-belong'
   end
 
   def path; end

@@ -79,11 +79,11 @@ Rails.application.routes.draw do
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
     end
 
-    resource 'i_belong_certificate', controller: 'i_belong_certificate', path: 'i-belong-certificate', only: :show, as: :i_belong_certificate do
+    resource 'i_belong', controller: 'i_belong', path: 'i-belong', only: :show, as: :i_belong do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
-                               defaults: { slug: 'i-belong-certificate' }
+                               defaults: { slug: 'i-belong' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
@@ -147,7 +147,7 @@ Rails.application.routes.draw do
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
 
   if FeatureFlagService.new.flags[:ibelong_programme_feature]
-    get '/i-belong', to: 'pages#i_belong', as: :i_belong, defaults: { page_slug: 'i-belong' }
+    get '/i-belong', to: 'pages#i_belong', as: :about_i_belong, defaults: { page_slug: 'i-belong' }
   end
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }

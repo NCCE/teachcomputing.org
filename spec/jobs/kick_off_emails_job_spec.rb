@@ -6,7 +6,7 @@ RSpec.describe KickOffEmailsJob, type: :job do
   let(:primary) { create(:primary_certificate) }
   let(:secondary) { create(:secondary_certificate) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id) }
-  let(:i_belong_enrolment) { create(:user_programme_enrolment, programme: create(:i_belong_certificate)) }
+  let(:i_belong_enrolment) { create(:user_programme_enrolment, programme: create(:i_belong)) }
   let(:primary_enrolment) { create(:user_programme_enrolment, programme_id: primary.id) }
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary.id) }
   let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id) }

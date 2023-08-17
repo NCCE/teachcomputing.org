@@ -16,7 +16,7 @@ class AchievementsController < ApplicationController
 
       if @achievement.programme
         case @achievement.programme.slug
-        when 'i-belong-certificate', 'primary-certificate', 'secondary-certificate'
+        when 'i-belong', 'primary-certificate', 'secondary-certificate'
           CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
         end
       end

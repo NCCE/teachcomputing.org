@@ -7,7 +7,7 @@ class KickOffEmailsJob < ApplicationJob
     case enrolment.programme.slug
     when 'primary-certificate'
       PrimaryMailer.with(user: enrolment.user).enrolled.deliver_now
-    when 'i-belong-certificate', 'secondary-certificate'
+    when 'i-belong', 'secondary-certificate'
       enrolment.programme.mailer.with(user: enrolment.user).welcome.deliver_now
     when 'cs-accelerator'
       CSAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now unless enrolment.auto_enrolled

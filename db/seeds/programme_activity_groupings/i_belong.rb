@@ -1,4 +1,4 @@
-i_belong = Programme.i_belong_certificate
+i_belong = Programme.i_belong
 
 puts 'Creating Programme Activity Groupings'
 

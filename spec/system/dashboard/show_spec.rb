@@ -21,7 +21,7 @@ RSpec.describe('Dashboard page', type: :system) do
     create(:primary_certificate)
     create(:cs_accelerator)
     create(:secondary_certificate)
-    create(:i_belong_certificate)
+    create(:i_belong)
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
   end
 

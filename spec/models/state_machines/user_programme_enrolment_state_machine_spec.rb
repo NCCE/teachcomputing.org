@@ -33,7 +33,7 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
 
     it 'queues a Pending email for I Belong certificate' do
       user = create(:user)
-      user_programme_enrolment = create(:user_programme_enrolment, programme: create(:i_belong_certificate), user:)
+      user_programme_enrolment = create(:user_programme_enrolment, programme: create(:i_belong), user:)
       expect do
         user_programme_enrolment.transition_to(:pending)
       end.to have_enqueued_mail(IBelongMailer, :pending)
