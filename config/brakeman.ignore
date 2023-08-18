@@ -190,7 +190,7 @@
       "cwe_id": [
         79
       ],
-      "note": ""
+      "note": "Pathways can only be edited by admins"
     },
     {
       "warning_type": "Cross-Site Scripting",
@@ -224,7 +224,7 @@
       "cwe_id": [
         79
       ],
-      "note": ""
+      "note": "Pathways can only be edited by admins"
     }
   ],
   "updated": "2023-08-11 08:05:27 +0000",
