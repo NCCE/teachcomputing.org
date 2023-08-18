@@ -8,7 +8,7 @@ class UserController < ApplicationController
       flash[:error] = 'Failed to update user details.'
     end
 
-    redirect_to helpers.safe_redirect_url(request.referrer)
+    redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path
   end
 
   def teacher_reference_number
