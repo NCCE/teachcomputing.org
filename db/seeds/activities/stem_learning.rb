@@ -1955,6 +1955,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '6b34e2c1-3035-ee11-bdf4
   activity.slug = 'assembly-language-in-a-level-computer-science'
   activity.stem_course_template_no = '6b34e2c1-3035-ee11-bdf4-002248c6f9ce'
   activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP501'
 end
