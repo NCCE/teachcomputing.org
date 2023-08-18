@@ -1950,6 +1950,39 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
+a = Activity.find_or_create_by(stem_course_template_no: '6b34e2c1-3035-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'Assembly language in A Level computer science'
+  activity.slug = 'assembly-language-in-a-level-computer-science'
+  activity.stem_course_template_no = '6b34e2c1-3035-ee11-bdf4-002248c6f9ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP501'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'a27d2bea-bf32-ee11-bdf3-002248c6f9ce') do |activity|
+  activity.title = 'Supporting GCSE computer science students at grades 1-3'
+  activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-3'
+  activity.stem_course_template_no = 'a27d2bea-bf32-ee11-bdf3-002248c6f9ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP478'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f5fe1676-bf32-ee11-bdf3-002248c6f9ce') do |activity|
+  activity.title = 'Higher attainment in computer science - meeting the challenges of the exams - remote'
+  activity.slug = 'higher-attainment-in-computer-science-meeting-the-challenges-of-the-exams-remote'
+  activity.stem_course_template_no = 'f5fe1676-bf32-ee11-bdf3-002248c6f9ce'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP439'
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
 Activity.find_or_create_by(stem_course_template_no: '5a945373-7d1a-ee11-8f6d-002248c6f9ce') do |activity|
   activity.title = 'Physical computing kits - KS1 BeeBots'
   activity.slug = 'physical-computing-kits-ks1-beebots'
