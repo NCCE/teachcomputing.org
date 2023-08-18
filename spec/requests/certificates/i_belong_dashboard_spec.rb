@@ -19,7 +19,7 @@ RSpec.describe Certificates::IBelongController do
       end
 
       it 'redirects to I Belong public page' do
-        expect(response).to redirect_to(i_belong_path)
+        expect(response).to redirect_to(about_i_belong_path)
       end
     end
 

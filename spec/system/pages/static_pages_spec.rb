@@ -52,7 +52,6 @@ RSpec.describe('Static pages', type: :system) do
         expect(page).to have_css('h1', text: 'I Belong: encouraging girls into computer science')
         expect(page).to have_css('li', text: 'Explore the programme')
         expect(page).to have_link('Log into your account')
-        expect(page).to have_link('Become a champion', href: %r{/login})
         expect(page).to have_link('Log in to request')
       end
 
@@ -72,7 +71,6 @@ RSpec.describe('Static pages', type: :system) do
         expect(page).to have_css('li', text: 'Complete our ‘Encouraging Girls into GCSE Computer Science’ short course')
         expect(page).to have_css('li', text: 'Participate in a range of recommended activity')
         expect(page).to have_link('Enrol on the programme')
-        expect(page).to have_link('Become a champion', href: %r{/i-belong/enrol})
         expect(page).to have_link('Enrol to request')
       end
     end
@@ -90,7 +88,6 @@ RSpec.describe('Static pages', type: :system) do
         expect(page).to have_css('li', text: 'Complete our ‘Encouraging Girls into GCSE Computer Science’ short course')
         expect(page).to have_css('li', text: 'Participate in a range of recommended activity')
         expect(page).to have_css('li', text: 'Claim your school certificate')
-        expect(page).to have_link('Become a champion', href: %r{/i-belong-champions-pack})
       end
     end
   end

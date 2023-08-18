@@ -7,7 +7,7 @@ module Programmes
     end
 
     def path
-      about_i_belong_path
+      i_belong_path
     end
 
     def enrol_path(opts = {})
