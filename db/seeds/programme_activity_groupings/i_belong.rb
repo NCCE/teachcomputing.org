@@ -21,7 +21,7 @@ end.save
 
 i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Access the following resources to support you').tap do |group|
   group.sort_key = 3
-  group.required_for_completion = 3
+  group.required_for_completion = 2
   group.programme_id = i_belong.id
   group.progress_bar_title = 'Access resources to support you'
 

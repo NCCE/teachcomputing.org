@@ -311,6 +311,7 @@ Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').t
   activity.provider = 'ncce'
   activity.self_certifiable = true
   activity.description = 'Download and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives.'
+  activity.coming_soon = true
 
   activity.programmes = [i_belong]
 end.save
