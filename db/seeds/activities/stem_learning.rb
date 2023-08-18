@@ -1967,6 +1967,7 @@ a = Activity.find_or_create_by(stem_course_template_no: 'a27d2bea-bf32-ee11-bdf3
   activity.slug = 'supporting-gcse-computer-science-students-at-grades-1-3'
   activity.stem_course_template_no = 'a27d2bea-bf32-ee11-bdf3-002248c6f9ce'
   activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP478'
 end
