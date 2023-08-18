@@ -2,6 +2,9 @@ en:
   certificates:
     i_belong:
       show:
+        progress:
+          title: "Your progress"
+          body: "Complete the below training and activities and claim a certificate recognising your school’s commitment to improving girls’ uptake of computer science."
         page_title: "I Belong - Teach Computing"
         introduction:
           html: "Our CPD and activities are selected based on research and evidence around what can contribute to increasing girls’ uptake of computer science. Some elements of this programme are compulsory, while others have different options, enabling you to choose those that best suit your school. Refer to the handbook (coming soon) for additional guidance and recommended initiatives.<br><br>To progress through this programme, when prompted submit evidence of your activities such as a student or teacher’s reflections, social media posts or blog/news items. Consider the impact on girls that have taken part."
@@ -10,7 +13,7 @@ en:
           hub_link_text: "Contact your local Computing Hub"
           title: "Need some help?"
           text:
-            html: "For support with this certificate:
+            html: "For support with this programme:
               <br>%{hub_link}<br><br>
               Technical issue?
               %{email_link}"

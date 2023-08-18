@@ -9,7 +9,7 @@
         <p class="govuk-body">Thank you for participating in the I Belong programme. You’ve reached an important milestone in improving girls’ uptake of computer science.</p>
         <% if current_user.school_name.present? %>
           <p class="govuk-body">
-            <%= link_to 'Download your certificate', certificate_i_belong_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
+            <%= link_to 'Download your certificate', certificate_i_belong_path, class: 'govuk-button button', role: 'button', draggable: 'false', data: { turbolinks: false } %>
           </p>
         <% else %>
           <%= render ModalComponent.new(

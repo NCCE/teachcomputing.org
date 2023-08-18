@@ -354,14 +354,14 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-a
   activity.programmes = [i_belong]
 end.save
 
-Activity.find_or_initialize_by(slug: 'start-or-deliver-a-computing-related-club').tap do |activity|
-  activity.title = 'Start or deliver a computing related club'
+Activity.find_or_initialize_by(slug: 'provide-access-to-a-computing-related-extracurricular-club').tap do |activity|
+  activity.title = 'Provide access to a computing-related extracurricular club'
   activity.credit = 10
-  activity.slug = 'start-or-deliver-a-computing-related-club'
+  activity.slug = 'provide-access-to-a-computing-related-extracurricular-club'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the handbook. '
+  activity.description = 'Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the handbook.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -374,7 +374,7 @@ Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity'
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = 'Host a computing <a href="https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador">STEM Ambassador</a> in your school to help students understand real-world applications of their learning and raise their career aspirations. Consider the diversity of roles available in computing.'
+  activity.description = 'Host a female computing <a href="https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador">STEM Ambassador</a> in your school to help students understand real-world applications of their learning and raise their career aspirations. Consider the diversity of roles available in computing.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -404,4 +404,4 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
-end
+end.save

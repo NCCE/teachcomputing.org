@@ -2,7 +2,7 @@
 <% meta_tag :url, request.original_url %>
 <%= render 'pages/certification/hero', sub_header_disabled: true %>
 <div class="ncce-programmes-activity">
-  <%= render ProgressBarComponent.new(current_user, @programme) %>
+  <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body'), steps_to_accreditation: false) %>
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
