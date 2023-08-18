@@ -18,7 +18,7 @@ RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
   end
 
   it 'has a benefits section' do
-    expect(rendered).to have_css('.govuk-heading-m', text: 'Benifits to you')
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Benefits to you')
   end
 
   it 'has a pathway wrapper' do
