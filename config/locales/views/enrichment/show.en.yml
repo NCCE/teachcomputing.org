@@ -11,7 +11,7 @@ en:
           - Giving your class an opportunity to try new activities that may not strictly fit into the curriculum
           - Encouraging your class to pursue wider educational and further career goals
           - Providing examples of how computing can be applied to real-world experiences
-        footer: Our termly as well as year-round enrichment offer provides activities which are always accessible. Keep informed on upcoming enrichment activities by being part of the STEM Community.
+        footer: Our termly as well as year-round enrichment offer provides activities which are always accessible. Keep informed on upcoming enrichment activities by being part of the %{stem_community}.
       secondary-certificate:
         hero:
           title: Secondary computing enrichment activities
@@ -22,4 +22,4 @@ en:
           - Providing an opportunity for students to pursue their learning in their own area of interest and strength
           - Studying concepts to a greater depth and complexity
           - Providing examples of how computing can be applied to real-world experiences
-        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the STEM Community.
+        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the %{stem_community}.

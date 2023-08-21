@@ -1,4 +1,4 @@
-programme = Programme.primary_certificate
+programme = Programme.secondary_certificate
 
 programme.enrichment_groupings.find_or_initialize_by(title: 'Autumn term').becomes(EnrichmentGroupings::Term).tap do |g|
   g.title = 'Autumn term'

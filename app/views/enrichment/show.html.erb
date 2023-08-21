@@ -13,6 +13,35 @@
             <% end %>
           </ul>
         </section>
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body ncce-enrichment-this-term"><strong>This term</strong></p>
+          <div class="ncce-enrichment-cards"%>
+            <% @groupings.each do |grouping| %>
+              <div class="ncce-enrichment-card">
+                <h3 class="govuk-heading-m"><%= grouping.title %></h3>
+                <div class="ncce-enrichment-card--entries">
+                  <% grouping.enrichment_entries.each do |entry| %>
+                    <div class="ncce-enrichment-card--entry">
+                      <div class="ncce-enrichment-card--entry-copy">
+                        <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                        <p class="govuk-body-s"><%= entry.body %></p>
+                      </div>
+                      <img src="<%= entry.image_url %>"/>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body">
+            <%= programme_t(
+              'footer',
+              stem_community: link_to('STEM Community', 'https://community.stem.org.uk/')
+            ).html_safe %>
+          </p>
+        </section>
       </div>
     </div>
   </main>
