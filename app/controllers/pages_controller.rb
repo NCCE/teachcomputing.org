@@ -33,16 +33,22 @@ class PagesController < ApplicationController
     when :enrolled
       champion_path = '/i-belong-champions-pack'
       posters_link_title = 'Request your posters'
+      posters_link = 'https://forms.office.com/e/x1FMMzjxhg'
+      posters_link_method = :get
       cta_link_path = i_belong_path
       cta_link_method = :get
     when :unenrolled
       champion_path = enrol_path
       posters_link_title = 'Enrol to request'
+      posters_link = enrol_path
+      posters_link_method = :post
       cta_link_path = enrol_path
       cta_link_method = :post
     else
       champion_path = login_path
       posters_link_title = 'Log in to request'
+      posters_link = login_path
+      posters_link_method = :get
       cta_link_path = login_path
       cta_link_method = :get
     end
@@ -53,7 +59,10 @@ class PagesController < ApplicationController
                 cta_link_path:,
                 cta_link_method:,
                 champion_path:,
-                posters_link_title: }
+                posters_link_title:,
+                posters_link:,
+                posters_link_method:
+      }
     )
   end
 

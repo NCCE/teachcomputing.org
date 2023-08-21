@@ -50,10 +50,9 @@
           <p class="govuk-body">
             Join our champions initiative, which recognises teachers paving the way for girls in computer science and supports them to create wider change.
           </p>
-          <%= button_to 'Coming soon',
-                      '#',
-                      class: 'button govuk-button govuk-!-margin-bottom-0',
-                      disabled: true
+          <%= link_to 'Become a champion',
+                      'https://static.teachcomputing.org/IBelong_InfoPack.pdf',
+                      class: 'button govuk-button govuk-!-margin-bottom-0'
           %>
         </section>
       </div>
@@ -83,8 +82,8 @@
                     text: "Printed 'I Belong in computer science' posters are available on request!​",
                     link: {
                     link_title: posters_link_title,
-                    link_url: cta_link_path,
-                    link_method: cta_link_method
+                    link_url: posters_link,
+                    link_method: posters_link_method
                     }
                 },
                 {

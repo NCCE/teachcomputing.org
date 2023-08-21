@@ -9,7 +9,10 @@ RSpec.describe('pages/enrolment/i_belong', type: :view) do
           cta_link_path: '/',
           cta_link_method: :post,
           champion_path: '/',
-          posters_link_title: 'Request posters' }
+          posters_link_title: 'Request posters',
+          posters_link: 'https://forms.office.com/e/x1FMMzjxhg',
+          posters_link_method: :get
+        }
     )
   end
 
