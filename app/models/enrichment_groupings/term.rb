@@ -20,6 +20,8 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
     end
   end
 
+  private
+
   def normalised_start
     normalised_start = term_start.change(year: 2000)
   end

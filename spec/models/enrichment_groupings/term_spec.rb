@@ -7,17 +7,23 @@ RSpec.describe EnrichmentGroupings::Term do
 
   context 'when term_start is missing' do
     it 'should not be valid' do
-      term.term_start = nil
+      subject.term_start = nil
 
-      expect(term).to_not be_valid
+      expect(subject).to_not be_valid
     end
   end
 
   context 'when term_end is missing' do
     it 'should not be valid' do
-      term.term_end = nil
+      subject.term_end = nil
 
-      expect(term).to_not be_valid
+      expect(subject).to_not be_valid
     end
+  end
+
+  describe '#is_current_term?' do
+  end
+
+  describe '#days_till_term' do
   end
 end

@@ -21,8 +21,6 @@ class Programme < ApplicationRecord
 
   scope :enrollable, -> { where(enrollable: true) }
 
-  store_accessor :web_copy, %i[enrichment_intro enrichment_footer], prefix: true
-
   def self.cs_accelerator
     Programme.find_by(slug: 'cs-accelerator')
   end

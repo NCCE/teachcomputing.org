@@ -323,33 +323,10 @@ RSpec.describe Programme, type: :model do
   end
 
   describe '#enrichment_enabled?' do
-    let(:programme) { create(:programme, web_copy_enrichment_intro: intro, web_copy_enrichment_footer: footer) }
-    let(:intro) { nil }
-    let(:footer) { nil }
+    let(:programme) { create(:programme) }
 
-    context 'when both enrichment intro and footer are set' do
-      let(:intro) { 'intro' }
-      let(:footer) { 'footer' }
-
-      it 'returns true' do
-        expect(programme.enrichment_enabled?).to be true
-      end
-    end
-
-    context 'when intro is nil' do
-      let(:footer) { 'footer' }
-
-      it 'returns false' do
-        expect(programme.enrichment_enabled?).to be false
-      end
-    end
-
-    context 'when footer is nil' do
-      let(:intro) { 'intro' }
-
-      it 'returns false' do
-        expect(programme.enrichment_enabled?).to be false
-      end
+    it 'should return false' do
+      expect(programme.enrichment_enabled?).to be false
     end
   end
 end

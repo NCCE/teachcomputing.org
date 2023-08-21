@@ -326,7 +326,6 @@ ActiveRecord::Schema.define(version: 2023_08_25_175926) do
     t.datetime "updated_at", null: false
     t.boolean "enrollable", default: false
     t.string "type"
-    t.jsonb "web_copy"
     t.index ["slug"], name: "index_programmes_on_slug", unique: true
   end
 

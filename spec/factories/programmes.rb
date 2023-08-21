@@ -4,8 +4,6 @@ FactoryBot.define do
     sequence(:slug, 100) { |n| "programme-#{n}" }
     description { 'This is a programme to learn some cool 101' }
     enrollable { true }
-    web_copy_enrichment_intro { nil }
-    web_copy_enrichment_footer { nil }
 
     trait :with_badge do
       badge { association :badge }

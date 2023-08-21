@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     resources :achievements, only: %i[index show]
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transition
-    resources :enrichment_groupings
-    resources :enrichment_entries
   end
 
   namespace :api do
