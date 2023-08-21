@@ -37,6 +37,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'i-belong')
   end
 
+  def self.a_level
+    Programme.find_by(slug: 'a-level')
+  end
+
   def badgeable?
     badges.active.exists?
   end

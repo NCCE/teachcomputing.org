@@ -4,6 +4,7 @@ cs_accelerator = Programme.cs_accelerator
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 i_belong = Programme.i_belong
+a_level = Programme.a_level
 
 a = Activity.find_or_create_by(stem_course_template_no: 'a6b10502-6788-4ebc-b465-41eafb1e2a18') do |activity|
   activity.title = 'Algorithms in GCSE computer science'
@@ -1990,7 +1991,7 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: '6b34e2c1-3035-ee11-bdf4-002248c6f9ce') do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: '6b34e2c1-3035-ee11-bdf4-002248c6f9ce').tap do |activity|
   activity.title = 'Assembly language in A Level computer science'
   activity.slug = 'assembly-language-in-a-level-computer-science'
   activity.stem_course_template_no = '6b34e2c1-3035-ee11-bdf4-002248c6f9ce'
@@ -1998,9 +1999,9 @@ a = Activity.find_or_create_by(stem_course_template_no: '6b34e2c1-3035-ee11-bdf4
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP501'
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate, a_level]
+end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'a27d2bea-bf32-ee11-bdf3-002248c6f9ce').tap do |activity|
   activity.title = 'Supporting GCSE computer science students at grades 1-3'
