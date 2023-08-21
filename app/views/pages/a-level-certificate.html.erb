@@ -1,0 +1,45 @@
+<div class="hero">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="text-certificate-hero__wrapper">
+        <div class="text-certificate-hero__area--text">
+          <h1 class="govuk-heading-l">A level subject knowledge</h1>
+          <p class="govuk-body hero_text">
+            Certificate awarded by BCS, The Chartered Institute for IT.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-m">Your certificate is ready!</h1>
+        <p class="govuk-body">Thank you for completing the A level subject knowledge certificate. Congratulations on your achievement, demonstrating your broad knowledge of computer science and commitment to your professional development. </p>
+        <%= link_to 'Download your certificate',
+          '#',
+          class: 'button govuk-button govuk-!-margin-bottom-4'
+        %>
+        <h1 class="govuk-heading-m">Next steps for your development</h1>
+        <ol class="govuk-list govuk-list--bullet">
+            <li>Complete more <a href="#">A level CPD</a> to improve pedagogy and teaching approaches, alongside enhancing your subject knowledge</li>
+            <li>Enrol and complete the <a href="#">Secondary Computing certificate</a> to demonstrate commitment and practice in teaching and learning, curriculum enrichment, subject leadership and more</li>
+            <li>Register on the <a href="#">Isaac Computer Science</a> platform and encourage your students to attend events to improve their engagement and attainment</li>
+          <ol>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Share your achievement</h2>
+          <p class="govuk-body">Share your certificate and badge on social media. Follow us on <a href="#">Twitter</a>, <a href="#">Facebook</a> and <a href="#">LinkedIn</a> and tag us when sharing news of your achievement.</p>
+          <p><a class="ncce-link" href="#">Share on Twitter</a></p>
+          <p><a class="ncce-link" href="#">Share on Facebook</a></p>
+          <p><a class="ncce-link" href="#">Share on LinkedIn</a></p>
+            <%= render FeedbackComponent.new(heading: "What can we do better?", area: :a_level_subject_knowledge_certificate) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

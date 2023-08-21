@@ -149,6 +149,7 @@ Rails.application.routes.draw do
   if FeatureFlagService.new.flags[:ibelong_programme_feature]
     get '/i-belong', to: 'pages#i_belong', as: :i_belong, defaults: { page_slug: 'i-belong' }
   end
+  get '/certificate/a-level', to: 'pages#page', as: :a_level_certificate, defaults: { page_slug: 'a-level-certificate'}
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/secondary-early-careers', to: 'pages#page', as: :secondary_early_careers, defaults: { page_slug: 'secondary-early-careers' }
