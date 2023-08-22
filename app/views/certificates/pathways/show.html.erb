@@ -15,7 +15,7 @@
           <div class="ncce-pathway__course-list govuk-body-s">
             <% if @pathway.present? %>
               <h3 class="govuk-heading-s">Develop your professional knowledge</h3>
-              <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-collapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
                             data-expander-target="expanderButton"
@@ -58,7 +58,7 @@
           <div class="ncce-pathway__course-list">
             <% @community_groups.each do |group| %>
               <h3 class="govuk-heading-s"><%= group.title %></h3>
-              <div data-controller='expander' data-expander-expand-value="Show" data-expander-colapse-value="Hide">
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-collapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
                             data-expander-target="expanderButton"

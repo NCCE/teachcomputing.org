@@ -11,6 +11,8 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'A
   group.programme_id = primary_certificate.id
   group.progress_bar_title = 'Complete professional development'
 
+  group.save
+
   primary_certificate.activities.courses.each do |activity|
     programme_activity = primary_certificate.programme_activities.find_or_create_by(activity_id: activity.id)
     programme_activity.update(programme_activity_grouping_id: group.id) unless group.programme_activities.include?(programme_activity)
