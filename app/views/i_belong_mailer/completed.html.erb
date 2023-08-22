@@ -1,0 +1,25 @@
+<div class='mailer__content'>
+  <p class="govuk-body">Dear <%= @user.first_name %>,</p>
+  <p class="govuk-body">
+    <strong>
+      Thank you for participating in the I Belong programme!
+    </strong>
+  </p>
+  <p class="govuk-body">
+    You’ve made great progress towards encouraging more girls into computer science.
+  </p>
+  <p class="govuk-body">
+    Log into your dashboard to claim your certificate for your school
+    and share your success. Don’t forget that you can continue to
+    access our resources and opportunities through your profile on
+    teachcomputing.org at any time. If you haven’t done so already,
+    you can also browse and sign up to our range of accredited
+    professional development programmes.
+  </p>
+
+  <p class="govuk-body">
+    <%= link_to 'Log in now', certificate_i_belong_url, class: 'govuk-button button' %>
+  </p>
+  <p class="govuk-body">Any questions?</p>
+  <p class="govuk-body">Please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %> </p>
+<div class='mailer__content'>

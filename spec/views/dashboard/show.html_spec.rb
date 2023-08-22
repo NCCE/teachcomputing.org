@@ -9,7 +9,7 @@ RSpec.describe('dashboard/show', type: :view) do
   let!(:primary_certificate) { create(:primary_certificate) }
   let!(:cs_accelerator) { create(:cs_accelerator) }
   let!(:secondary_certificate) { create(:secondary_certificate) }
-  let!(:i_belong_certificate) { create(:i_belong_certificate) }
+  let!(:i_belong) { create(:i_belong) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,

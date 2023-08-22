@@ -32,12 +32,16 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'secondary-certificate')
   end
 
-  def self.i_belong_certificate
-    Programme.find_by(slug: 'i-belong-certificate')
+  def self.i_belong
+    Programme.find_by(slug: 'i-belong')
   end
 
   def badgeable?
     badges.active.exists?
+  end
+
+  def mailer
+    raise NotImplementedError
   end
 
   def enough_activities_for_test?(_user)
@@ -74,8 +78,8 @@ class Programme < ApplicationRecord
     slug == 'cs-accelerator'
   end
 
-  def i_belong_certificate?
-    slug == 'i-belong-certificate'
+  def i_belong?
+    slug == 'i-belong'
   end
 
   def path; end
@@ -88,7 +92,15 @@ class Programme < ApplicationRecord
     raise NotImplementedError
   end
 
+  def send_pending_mail?
+    false
+  end
+
   def pathways_excluding(pathway)
     pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
+  end
+
+  def certificate_name_for_user(user)
+    user.full_name
   end
 end

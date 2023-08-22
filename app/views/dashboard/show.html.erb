@@ -18,7 +18,7 @@
           <%= render 'dashboard/certificates/secondary', programme: Programme.secondary_certificate %>
           <% if FeatureFlagService.new.flags[:ibelong_programme_feature] %>
 					  <%= render 'dashboard/certificates/a_level', programme: nil %>
-					  <%= render 'dashboard/certificates/i_belong', programme: Programme.i_belong_certificate %>
+					  <%= render 'dashboard/certificates/i_belong', programme: Programme.i_belong %>
           <% end %>
 				</div>
 			<%= render 'dashboard/courses' %>

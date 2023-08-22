@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_140609) do
+ActiveRecord::Schema.define(version: 2023_08_18_093958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.boolean "always_on", default: false
     t.string "booking_programme_slug"
     t.boolean "retired", default: false
+    t.boolean "coming_soon", default: false
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -396,6 +397,7 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
+    t.string "school_name"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end

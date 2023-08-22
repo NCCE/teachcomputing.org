@@ -48,11 +48,10 @@
             I Belong Champions
           </h2>
           <p class="govuk-body">
-            Join our champions initiative, which recognises teachers paving the way for girls in computer science and supports them to create wider change.
+            We're looking for teachers who are paving the way for girls in computer science to join our mission by becoming I Belong Champions. Once you've completed our 'Encouraging girls into GCSE computer science' course, you can claim your digital badge to become a champion. Learn more about becoming a champion.
           </p>
           <%= link_to 'Become a champion',
-                      champion_path,
-                      method: cta_link_method,
+                      'https://static.teachcomputing.org/IBelong_InfoPack.pdf',
                       class: 'button govuk-button govuk-!-margin-bottom-0'
           %>
         </section>
@@ -72,7 +71,7 @@
                 {
                     image_url: 'pages/i-belong/book_icon.png',
                     title: 'I Belong handbook',
-                    text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake computer science by girls in your school.',
+                    text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake of computer science by girls in your school.',
                     link: {
                     link_title: 'Coming soon',
                     }
@@ -83,8 +82,8 @@
                     text: "Printed 'I Belong in computer science' posters are available on request!​",
                     link: {
                     link_title: posters_link_title,
-                    link_url: cta_link_path,
-                    link_method: cta_link_method
+                    link_url: posters_link,
+                    link_method: posters_link_method
                     }
                 },
                 {

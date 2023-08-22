@@ -2,6 +2,10 @@ module Programmes
   class SecondaryCertificate < Programme
     PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
 
+    def mailer
+      SecondaryMailer
+    end
+
     def user_is_eligible?(user)
       programme = Programme.find_by(slug: 'cs-accelerator')
       enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)

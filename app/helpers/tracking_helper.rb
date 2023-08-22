@@ -12,7 +12,7 @@ module TrackingHelper
       primary_certificate_path => 'Primary enrolled',
       secondary_path => 'Secondary unenrolled',
       secondary_certificate_path => 'Secondary enrolled',
-      i_belong_certificate_path => 'I Belong enrolled',
+      i_belong_path => 'I Belong enrolled',
       courses_path => 'Courses',
       cs_accelerator_certificate_path => 'CSA enrolled',
       complete_cs_accelerator_certificate_path => 'CSA Complete',

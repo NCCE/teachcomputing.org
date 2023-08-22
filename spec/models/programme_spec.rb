@@ -7,7 +7,7 @@ RSpec.describe Programme, type: :model do
   let(:diagnostic) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
-  let(:i_belong_programme) { create(:i_belong_certificate) }
+  let(:i_belong_programme) { create(:i_belong) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
   let(:badge) { create(:badge, :active, programme_id: programme.id) }
@@ -100,17 +100,17 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#i_belong_certificate' do
+  describe '#i_belong' do
     before do
       i_belong_programme
     end
 
     it 'returns the i belong record' do
-      expect(described_class.i_belong_certificate).to eq i_belong_programme
+      expect(described_class.i_belong).to eq i_belong_programme
     end
 
     it 'returns the correct type' do
-      expect(described_class.i_belong_certificate).to be_a(Programmes::IBelongCertificate)
+      expect(described_class.i_belong).to be_a(Programmes::IBelong)
     end
   end
 
@@ -215,18 +215,18 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#i_belong_certificate?' do
+  describe '#i_belong?' do
     context 'when programme is an i belong certificate' do
       it 'returns true' do
-        programme = build(:i_belong_certificate)
-        expect(programme.i_belong_certificate?).to be(true)
+        programme = build(:i_belong)
+        expect(programme.i_belong?).to be(true)
       end
     end
 
     context 'when programme is not an i belong certificate' do
       it 'returns false' do
         programme = build(:programme, slug: 'another-programme')
-        expect(programme.i_belong_certificate?).to be(false)
+        expect(programme.i_belong?).to be(false)
       end
     end
   end
@@ -248,6 +248,14 @@ RSpec.describe Programme, type: :model do
       p3 = create(:pathway, programme: programme, order: 2)
 
       expect(programme.pathways_excluding(nil)).to eq([p2, p3, p1])
+    end
+  end
+
+  describe '#certificate_name_for_user' do
+    it 'should return the user\'s full name' do
+      programme = create(:programme)
+
+      expect(programme.certificate_name_for_user(user)).to eq user.full_name
     end
   end
 end

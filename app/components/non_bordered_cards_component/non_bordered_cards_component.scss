@@ -16,6 +16,9 @@
 .non-bordered-card {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+
   > *:last-child {
     margin-bottom: 0;
   }
@@ -48,4 +51,8 @@
   .non-bordered-card__image {
     width: auto;
   }
+}
+
+.non-bordered-card__text {
+  flex-grow: 1;
 }
