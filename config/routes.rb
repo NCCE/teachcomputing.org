@@ -150,7 +150,7 @@ Rails.application.routes.draw do
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
 
   if FeatureFlagService.new.flags[:ibelong_programme_feature]
-    get '/i-belong', to: 'pages#i_belong', as: :i_belong, defaults: { page_slug: 'i-belong' }
+    get '/i-belong', to: 'pages#i_belong', as: :about_i_belong, defaults: { page_slug: 'i-belong' }
   end
   get '/a-level', to: 'pages#page', as: :a_level, defaults: { page_slug: 'a-level' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
