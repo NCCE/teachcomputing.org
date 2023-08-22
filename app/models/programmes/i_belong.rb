@@ -21,5 +21,9 @@ module Programmes
     def send_pending_mail?
       true
     end
+
+    def certificate_name_for_user(user)
+      user.school_name
+    end
   end
 end

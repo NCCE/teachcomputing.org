@@ -22,4 +22,12 @@ RSpec.describe Programmes::IBelong do
         .to eq('I Belong: encouraging girls into computer science')
     end
   end
+
+  describe '#certificate_name_for_user' do
+    it 'should return the user\'s school name' do
+      user = create(:user, school_name: 'test school name')
+
+      expect(programme.certificate_name_for_user(user)).to eq user.school_name
+    end
+  end
 end

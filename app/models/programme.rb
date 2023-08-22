@@ -99,4 +99,8 @@ class Programme < ApplicationRecord
   def pathways_excluding(pathway)
     pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
   end
+
+  def certificate_name_for_user(user)
+    user.full_name
+  end
 end

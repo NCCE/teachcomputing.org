@@ -250,4 +250,12 @@ RSpec.describe Programme, type: :model do
       expect(programme.pathways_excluding(nil)).to eq([p2, p3, p1])
     end
   end
+
+  describe '#certificate_name_for_user' do
+    it 'should return the user\'s full name' do
+      programme = create(:programme)
+
+      expect(programme.certificate_name_for_user(user)).to eq user.full_name
+    end
+  end
 end
