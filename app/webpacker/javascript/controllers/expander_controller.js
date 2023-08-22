@@ -3,7 +3,7 @@ import { Controller } from 'stimulus'
 export default class extends Controller {
   static values = {
     expand: String,
-    colapse: String
+    collapse: String
   }
 
   static targets = ['expander', 'expanderButton', 'expanderButtonText']
@@ -32,7 +32,7 @@ export default class extends Controller {
     this.expanderButtonTarget.setAttribute('aria-expanded', 'true')
 
     if (this.hasExpanderButtonTextTarget) {
-      this.expanderButtonTextTarget.innerText = this.colapseValue
+      this.expanderButtonTextTarget.innerText = this.collapseValue
     }
   }
 
