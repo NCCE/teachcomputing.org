@@ -8,6 +8,7 @@ RSpec.describe Programme, type: :model do
   let(:primary_programme) { create(:primary_certificate) }
   let(:secondary_programme) { create(:secondary_certificate) }
   let(:i_belong_programme) { create(:i_belong) }
+  let(:a_level) { create(:a_level) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
   let(:badge) { create(:badge, :active, programme_id: programme.id) }
@@ -111,6 +112,20 @@ RSpec.describe Programme, type: :model do
 
     it 'returns the correct type' do
       expect(described_class.i_belong).to be_a(Programmes::IBelong)
+    end
+  end
+
+  describe '#a_level' do
+    before do
+      a_level
+    end
+
+    it 'returns the a level record' do
+      expect(described_class.a_level).to eq a_level
+    end
+
+    it 'returns the correct type' do
+      expect(described_class.a_level).to be_a(Programmes::ALevel)
     end
   end
 
