@@ -11,32 +11,6 @@
   background-color: $concrete;
 }
 
-.ncce-progress-section {
-  display: flex;
-  flex: wrap;
-  flex-direction: column;
-
-  @include govuk-media-query($from: desktop) {
-    flex-direction: row;
-    .icon-dotted-line {
-      flex-shrink: 0;
-    }
-  }
-}
-
-.ncce-progress-section--text {
-  flex-grow: 1;
-  min-height: 3rem;
-
-  display: flex;
-  align-items: center;
-
-  @include govuk-media-query($from: desktop) {
-    background-position-y: 8px;
-    display: block;
-  }
-}
-
 .cs-accelerator__intro-text {
   background-color: $white;
   margin-bottom: $logo-block-mobile * 1.5;
