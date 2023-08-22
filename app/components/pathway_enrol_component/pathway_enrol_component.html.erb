@@ -9,7 +9,7 @@
       <%= link_to 'Create an account', create_account_url, class: 'govuk-button button button--aside button--margin-bottom' %>
       <p class="govuk-body-s">
         Already have a STEM learning account? Simply
-        <%= link_to 'log in', login_path %>
+        <%= link_to 'log in', auth_url, method: :post %>
       </p>
     <% elsif programme.user_is_eligible?(current_user) %>
       <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id, pathway_slug: pathway.slug }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
