@@ -10,6 +10,7 @@ RSpec.describe('dashboard/show', type: :view) do
   let!(:cs_accelerator) { create(:cs_accelerator) }
   let!(:secondary_certificate) { create(:secondary_certificate) }
   let!(:i_belong) { create(:i_belong) }
+  let!(:a_level) { create(:a_level) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
            user_id: user.id,

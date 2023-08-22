@@ -8,7 +8,7 @@
       <% @cpd_courses.each do |pa| %>
         <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
       <% end %>
-      <p class="govuk-body govuk-!-margin-top-3"><%= t('.other_formats') %></p>
+      <p class="govuk-body govuk-!-margin-top-4"><%= t('.other_formats') %></p>
 
       <div class='ncce-activity-list__button-wrapper'>
         <%= link_to t('.all_courses_button'),
