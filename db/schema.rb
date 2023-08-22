@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_18_093958) do
+ActiveRecord::Schema.define(version: 2023_08_22_113148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.uuid "programme_id", null: false
     t.integer "order"
     t.jsonb "web_copy"
-    t.boolean "legacy", default: false
+    t.boolean "legacy", default: false, null: false
     t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
@@ -266,7 +266,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_093958) do
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
     t.integer "order"
-    t.boolean "legacy", default: false
+    t.boolean "legacy", default: false, null: false
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
