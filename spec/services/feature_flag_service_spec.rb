@@ -54,7 +54,8 @@ RSpec.describe FeatureFlagService do
 
   describe 'FLAGS' do
     it 'defines hash of flags correctly' do
-      expect(FeatureFlagService::FLAGS.count).to eq 1
+      # This should be the number of feature flags currently built into the app
+      expect(FeatureFlagService::FLAGS.count).to eq 0
     end
   end
 end
