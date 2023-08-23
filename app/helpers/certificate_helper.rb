@@ -47,7 +47,9 @@ module CertificateHelper
     output << ' '
     output << words[1..].join(' ')
 
-    if group.required_for_completion != group.programme_activities.size
+    completable_activity_count = group.programme_activities.includes(:activity).where(activity: { coming_soon: false }).count
+
+    if group.required_for_completion != completable_activity_count
       output << ' by completing '
       output << content_tag(:strong, "at least #{group.required_for_completion.humanize}")
       output << ' '
