@@ -595,7 +595,8 @@ a = Activity.find_or_create_by(stem_course_template_no: '03fb0a52-a712-eb11-a813
   activity.stem_course_template_no = '03fb0a52-a712-eb11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP439'
+  activity.stem_activity_code = 'CP439W'
+  activity.retired = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -1634,8 +1635,9 @@ a = Activity.find_or_create_by(stem_course_template_no: 'c53a5ed2-3c6e-ec11-8943
   activity.stem_course_template_no = 'c53a5ed2-3c6e-ec11-8943-000d3a874094'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP478'
+  activity.stem_activity_code = 'CP478W'
   activity.remote_delivered_cpd = true
+  activity.retired = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
