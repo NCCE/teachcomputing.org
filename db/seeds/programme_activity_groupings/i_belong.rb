@@ -20,7 +20,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'all courses'
 end.save
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
-  group.title = 'Access and complete all of the following activities'
+  group.title = '<strong>Access</strong> and <strong>complete all</strong> of the following activities'
   group.sort_key = 3
   group.required_for_completion = 2
   group.programme_id = i_belong.id
@@ -39,7 +39,8 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
   end
 end.save
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: 'Increase girls\' engagement').tap do |group|
+i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
+  group.title = '<strong>Increase</strong> girls\' engagement'
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id
