@@ -32,9 +32,9 @@
                 <div data-expander-target="expander" class="expander">
                   <% @recommended_activities.each do |pa| %>
                     <div class="ncce-pathway-courses__course">
-                      <p class="ncce-pathway-courses__link">
+                      <h3 class="ncce-pathway-courses__link govuk-heading-s">
                         <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
-                      </p>
+                      </h3>
 
                       <div class="ncce-grid__no-space-between">
                         <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">

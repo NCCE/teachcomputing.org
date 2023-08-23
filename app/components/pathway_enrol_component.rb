@@ -1,7 +1,7 @@
 class PathwayEnrolComponent < ViewComponent::Base
   attr_reader :programme, :pathway, :current_user
 
-  delegate :create_account_url, to: :helpers
+  delegate :create_account_url, :auth_url, to: :helpers
 
   def initialize(programme:, pathway:, current_user: nil)
     @programme = programme

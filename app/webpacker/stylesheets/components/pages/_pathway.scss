@@ -1,26 +1,26 @@
 .ncce-pathway__learning-pathway-section {
   background-color: $foam;
 
-  padding: 18px;
+  padding: 1.37rem;
 }
 
 .ncce-pathway__hr {
   border-top: 1px black solid !important;
-  margin: 18px 0;
+  margin: 1.37rem 0;
 }
 
 .ncce-pathway__course-list {
   .ncce-pathway-courses__course {
     background-color: $white;
 
-    margin-bottom: 8px;
+    margin-bottom: 0.62rem;
 
-    .ncce-pathway-courses__link {
-      font-size: 19px;
+    h3 {
+      margin-top: 0.93rem;
     }
   }
 }
 
 .ncce-pathways__download-cta {
-  font-size: 18px;
+  font-size: 1.37rem;
 }
