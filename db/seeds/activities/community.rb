@@ -313,7 +313,7 @@ Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-en
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
   activity.description = 'Encourage young people to develop important life skills through <a href="https://teachcomputing.org/primary-enrichment">enrichment</a> and engage with the wider community in practical, enjoyable, and meaningful ways.'
-  activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways'
+  activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.'
   activity.public_copy_title_url = 'http://www.teachcomputing.org/primary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
@@ -565,7 +565,7 @@ Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
   activity.description = '<a href="https://teachcomputing.org/computing-clusters">Join a group of 3-6 eligible schools</a>, which receive targeted support in professional learning to make progress within the <a href="https://teachcomputing.org/computing-clusters">Computing Quality Framework</a> over a 12-month period'
-  activity.public_copy_description = 'Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period'
+  activity.public_copy_description = 'Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period.'
   activity.public_copy_title_url = 'https://teachcomputing.org/computing-clusters'
   activity.self_verification_info = 'Please provide us with evidence of joining'
 

@@ -179,7 +179,7 @@ end
 programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').tap do |pathway|
   pathway.title = 'Developing in the classroom'
   pathway.slug = 'developing-in-the-classroom-2'
-  pathway.description = 'Are you taking on a subject leadership role or looking to specialise in computing? This pathway will support you to build the confidence and expertise to lead computing effectively in your primary school.'
+  pathway.description = 'Are you a classroom teacher who wants to strengthen your knowledge of primary computing and develop your teaching of the subject? This pathway will help you to develop the understanding and skills to teach computing effectively.'
   pathway.range = 0..0
   pathway.pdf_link = 'https://static.teachcomputing.org/Developing-in-the-classroom.pdf'
   pathway.programme_id = programme.id

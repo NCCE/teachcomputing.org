@@ -100,7 +100,7 @@ end.save
 programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclusion').tap do |pathway|
   pathway.title = 'Championing diversity and inclusion'
   pathway.slug = 'championing-diversity-and-inclusion'
-  pathway.description = 'Are you looking to champion diversity and inclusion in their classrooms as well as computing as a subject? This pathway will give you knowledge of teaching interventions, encouraging girls into computer science and how to support SEND students in their learning of computing.'
+  pathway.description = 'Are you looking to champion diversity and inclusion in your classrooms as well as computing as a subject? This pathway will give you knowledge of teaching interventions, encouraging girls into computer science and how to support SEND students in their learning of computing.'
   pathway.range = 0..0
   pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_03_Championing_deversity_and_inclusion.pdf'
   pathway.programme_id = programme.id
@@ -145,7 +145,7 @@ end.save
 programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap do |pathway|
   pathway.title = 'Raising student attainment'
   pathway.slug = 'raising-student-attainment'
-  pathway.description = 'Are you looking to champion diversity and inclusion in their classrooms as well as computing as a subject? This pathway will give you knowledge of teaching interventions, encouraging girls into computer science and how to support SEND students in their learning of computing.'
+  pathway.description = 'Are you looking to raise attainment amongst different groups of students? This pathway will help you support young people to overcome challenges, champion diversity in your school and increase student engagement in the subject of computing.'
   pathway.range = 0..0
   pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_04_Raising_student_attainment.pdf'
   pathway.programme_id = programme.id
@@ -195,7 +195,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
   pathway.slug = 'developing-teachers'
   pathway.description = 'Are you looking to develop your teaching after the Early Career Framework? This pathways will support your development goals and will help increase your knowledge of the subject and pedagogy.'
   pathway.range = 0..0
-  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_05_Developing_teachers.pdf	'
+  pathway.pdf_link = 'https://static.teachcomputing.org/Secondary_Pathway_05_Developing_teachers.pdf'
   pathway.programme_id = programme.id
   pathway.order = 5
 
