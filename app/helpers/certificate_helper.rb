@@ -54,24 +54,4 @@ module CertificateHelper
 
     output.html_safe
   end
-
-  def sort_community_activities_with_legacy_pathway(programme_activities:, pathway: nil, current_user:)
-    if pathway.nil?
-      programme_activities.legacy
-    else
-      completed_activity_ids = current_user.achievements.in_state(:complete).pluck(:activity_id)
-
-      completed_non_legacy_activities, non_completed_non_legacy_activities = programme_activities
-        .not_legacy
-        .joins(activity: :pathway_activities)
-        .where(activity: { pathway_activities: { pathway: pathway } } )
-        .partition { completed_activity_ids.include?(_1.activity_id) }
-
-      completed_legacy_activities = programme_activities
-        .legacy
-        .select { completed_activity_ids.include?(_1.activity_id) }
-
-      completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
-    end
-  end
 end
