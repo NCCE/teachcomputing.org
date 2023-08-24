@@ -26,19 +26,6 @@ services:
       - "6379:6379"
     restart: unless-stopped
 
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq
-    volumes:
-      - .:/app
-      - bundle:/usr/local/bundle
-    depends_on:
-      - redis
-      - web
-    env_file:
-      - ${ENV_FILE:-.env.defaults}
-    restart: unless-stopped
-
   web:
     build: .
     command: ./scripts/docker-entrypoint.sh
@@ -54,14 +41,14 @@ services:
       - "1234:1234"
       - "1235:1235"
       - "3000:3000"
+      - "3035:3035"
     depends_on:
       - db
       - redis
       - docker-host
-      - webpack
     environment:
       - RAILS_DEV_DB_PASS=password
-      - WEBPACKER_DEV_SERVER_HOST=webpack
+      - WEBPACKER_DEV_SERVER_HOST=web
     stdin_open: true
     tty: true # Allow interactive byebug sessions
     restart: unless-stopped
@@ -73,19 +60,6 @@ services:
       start_period: 45s
     env_file:
       - ${ENV_FILE:-.env.defaults}
-
-  webpack:
-    build: .
-    command: ./scripts/webpack-docker-entrypoint.sh
-    volumes:
-      - .:/app
-      - node_modules:/app/node_modules
-      - bundle:/usr/local/bundle
-    ports:
-      - "3035:3035"
-    environment:
-      - WEBPACKER_DEV_SERVER_HOST=webpack
-    restart: unless-stopped
 
 volumes:
   bundle: null
