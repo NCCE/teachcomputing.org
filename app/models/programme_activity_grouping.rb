@@ -1,9 +1,11 @@
 class ProgrammeActivityGrouping < ApplicationRecord
+  include ActionView::Helpers::TagHelper
+
   has_many :programme_activities, -> { order(:order) }
   belongs_to :programme
 
   scope :progress_bar_groupings, -> { where.not(progress_bar_title: nil) }
-  
+
   def achievements(user)
     user.achievements.in_state(:complete).for_programme(programme)
   end
@@ -17,5 +19,20 @@ class ProgrammeActivityGrouping < ApplicationRecord
       return true if completed_activity_count >= required_for_completion
     end
     nil
+  end
+
+  def formatted_title
+    output = title.dup
+
+    completable_activity_count = programme_activities.includes(:activity).where(activity: { coming_soon: false }).count
+
+    if required_for_completion != completable_activity_count
+      output << ' by completing '
+      output << content_tag(:strong, "at least #{required_for_completion.humanize}")
+      output << ' '
+      output << 'activity'.pluralize(required_for_completion)
+    end
+
+    output.html_safe
   end
 end

@@ -57,5 +57,5 @@ class Activity < ApplicationRecord
 
   def active_course?
     self.stem_activity_code.present? && self.retired == false
-  end 
+  end
 end
