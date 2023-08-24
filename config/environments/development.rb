@@ -99,4 +99,6 @@ Rails.application.configure do
       exception_object: event.payload[:exception_object] # the exception instance
     }
   end
+
+  config.active_job.queue_adapter = :sidekiq
 end
