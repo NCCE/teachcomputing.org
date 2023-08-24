@@ -60,7 +60,7 @@
   .button {
     margin-bottom: 20px;
 
-    &:focus {
+    &:focus, &:hover {
       background-color: $white !important;
       color: $black !important;
     }
