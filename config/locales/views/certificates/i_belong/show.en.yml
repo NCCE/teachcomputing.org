@@ -7,7 +7,8 @@ en:
           body: "Complete the below training and activities and claim a certificate recognising your school’s commitment to improving girls’ uptake of computer science."
         page_title: "I Belong - Teach Computing"
         introduction:
-          html: "Our CPD and activities are selected based on research and evidence around what can contribute to increasing girls’ uptake of computer science. Some elements of this programme are compulsory, while others have different options, enabling you to choose those that best suit your school. Refer to the handbook (coming soon) for additional guidance and recommended initiatives.<br><br>To progress through this programme, when prompted submit evidence of your activities such as a student or teacher’s reflections, social media posts or blog/news items. Consider the impact on girls that have taken part."
+          html: "Our CPD and activities are selected based on research and evidence around what can contribute to increasing girls’ uptake of computer science. Some elements of this programme are compulsory, while others have different options, enabling you to choose those that best suit your school. Refer to the handbook (coming soon) for additional guidance and recommended initiatives.<br><br>To progress through this programme, when prompted submit evidence of your activities, such as a student or teacher's reflections, social media posts, press release or blog/news items. Consider the impact on girls that have taken part. If you want to share an external link as part of your evidence, please add this to the relevant activity box.
+Please %{get_in_touch} if you have any queries."
         feedback_text: "What can we do better?"
         support_aside:
           hub_link_text: "Contact your local Computing Hub"

@@ -7,7 +7,9 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <p class="govuk-body-m"><%= t('.introduction.html') %></p>
+          <p class="govuk-body-m">
+            <%= t('.introduction.html', get_in_touch: link_to('get in touch', 'mailto:info@teachcomputing.org')) %>
+          </p>
         </div>
         <div class="govuk-grid-column-two-thirds">
           <%= render 'achievement_list' %>
