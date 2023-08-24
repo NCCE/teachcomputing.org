@@ -93,22 +93,7 @@
 
       <div class="govuk-grid-column-one-third">
         <%= render PathwayEnrolComponent.new(programme: @programme, pathway: @pathway, current_user: @current_user) %>
-        <% if @pathway.has_improvement_copy? %>
-          <%= render AsideComponent.new(
-            title: 'Teachers following this pathway will contribute to improving:'
-          ) do |component| %>
-            <% component.with_body do %>
-              <ul class="govuk-body-s">
-                <% @pathway.improvement_bullets.each do |bullet| %>
-                  <li><%= bullet %></li>
-                <% end %>
-              </ul>
-              <p class="govuk-body-s">
-                <%= @pathway.improvement_cta.html_safe %>
-              </p>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render PathwayImprovementsComponent.new(pathway: @pathway) %>
         <%= render AsideComponent.new(
           title: 'Download the pathway PDF'
         ) do |component| %>
