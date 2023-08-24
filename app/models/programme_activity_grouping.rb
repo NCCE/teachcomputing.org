@@ -37,4 +37,24 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
     output.html_safe
   end
+
+  def order_programme_activities_for_user(user)
+    pathway = user.user_programme_enrolments.find_by(programme:).pathway
+
+    return programme_activities.legacy unless pathway
+
+    completed_activity_ids = user.achievements.in_state(:complete).pluck(:activity_id)
+
+    completed_non_legacy_activities, non_completed_non_legacy_activities = programme_activities
+      .not_legacy
+      .joins(activity: :pathway_activities)
+      .where(activity: { pathway_activities: { pathway: pathway } } )
+      .partition { completed_activity_ids.include?(_1.activity_id) }
+
+    completed_legacy_activities = programme_activities
+      .legacy
+      .select { completed_activity_ids.include?(_1.activity_id) }
+
+    completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
+  end
 end
