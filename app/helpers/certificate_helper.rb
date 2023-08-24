@@ -36,22 +36,4 @@ module CertificateHelper
 
     activities.sort_by { |a| current_user.achievements.find_by(activity_id: a.activity_id)&.complete? ? 0 : 1 }
   end
-
-  def format_activity_title(group)
-    words = group.title.split
-
-    output = String.new
-    output << content_tag(:strong, words.first)
-    output << ' '
-    output << words[1..].join(' ')
-
-    if group.required_for_completion != group.programme_activities.size
-      output << ' by completing '
-      output << content_tag(:strong, "at least #{group.required_for_completion.humanize}")
-      output << ' '
-      output << 'activity'.pluralize(group.required_for_completion)
-    end
-
-    output.html_safe
-  end
 end

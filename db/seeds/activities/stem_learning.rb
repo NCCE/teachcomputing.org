@@ -1061,8 +1061,8 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_initialize_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5').tap do |activity|
   activity.title = 'Encouraging girls into GCSE computer science - remote - short course'
-  activity.credit = 15
-  activity.slug = 'encouraging-girls-into-gcse-computer-science-remote-short-course'
+  activity.credit = 10
+  activity.slug = 'encouraging-girls-into-gcse-computer-science'
   activity.stem_course_template_no = '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'

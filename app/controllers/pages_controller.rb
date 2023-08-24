@@ -44,10 +44,10 @@ class PagesController < ApplicationController
       cta_link_method = :post
     else
       posters_link_title = 'Log in to request'
-      posters_link = login_path
-      posters_link_method = :get
-      cta_link_path = login_path
-      cta_link_method = :get
+      posters_link = helpers.auth_url
+      posters_link_method = :post
+      cta_link_path = helpers.auth_url
+      cta_link_method = :post
     end
 
     render(
@@ -55,7 +55,6 @@ class PagesController < ApplicationController
       locals: { session_state:,
                 cta_link_path:,
                 cta_link_method:,
-                champion_path:,
                 posters_link_title:,
                 posters_link:,
                 posters_link_method:

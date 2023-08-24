@@ -58,4 +58,19 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
     completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
   end
+
+  def formatted_title
+    output = title.dup
+
+    completable_activity_count = programme_activities.includes(:activity).where(activity: { coming_soon: false }).count
+
+    if required_for_completion != completable_activity_count
+      output << ' by completing '
+      output << content_tag(:strong, "at least #{required_for_completion.humanize}")
+      output << ' '
+      output << 'activity'.pluralize(required_for_completion)
+    end
+
+    output.html_safe
+  end
 end
