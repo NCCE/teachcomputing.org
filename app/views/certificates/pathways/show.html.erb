@@ -8,7 +8,7 @@
         <section class="ncce-section govuk-!-margin-top-0">
           <p class="govuk-body-s"><%= @pathway.description %></p>
         </section>
-        <section class="ncce-section ncce-pathway__learning-pathway-section">
+        <section class="ncce-section ncce-pathway__learning-pathway-section govuk-!-margin-bottom-6">
           <h2 class="govuk-heading-m"><%= t('.learning_pathway.title') %></h2>
           <p class="govuk-body-s"><%= t('.learning_pathway.description') %></p>
           <hr class="ncce-pathway__hr">
@@ -30,6 +30,7 @@
                 </p>
 
                 <div data-expander-target="expander" class="expander">
+                  <p class="govuk-body-s govuk-!-margin-top-5"><%= @cpd_group.web_copy_course_requirements %></p>
                   <% @recommended_activities.each do |pa| %>
                     <div class="ncce-pathway-courses__course">
                       <h3 class="ncce-pathway-courses__link govuk-heading-s">
@@ -73,6 +74,7 @@
                 </p>
 
                 <div data-expander-target="expander" class="expander">
+                  <p class="govuk-body-s govuk-!-margin-top-5"><%= group.web_copy_course_requirements %></p>
                   <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
                       <p class="ncce-pathway-courses__link">
@@ -102,7 +104,7 @@
               <%= t('.download_pdf', title: @pathway.title.downcase).html_safe %>
               <br>
             </p>
-            <p class="govuk-body ncce-pathways__download-cta icon-resources">
+            <p class="govuk-body icon-resources">
               <%= t('.download_pdf_cta', link: link_to(@pathway.title, @pathway.pdf_link, class: 'govuk-link ncce-link')).html_safe %>
             </p>
           <% end %>
@@ -113,7 +115,7 @@
       </div>
       <% if should_show_other_pathways?(@programme) %>
         <div class="govuk-grid-column-full">
-          <hr class="ncce-pathways__hr">
+          <hr class="ncce-pathways__hr govuk-!-margin-bottom-7">
           <%= render BorderedCardsComponent.new(
             cards: programme_pathway_card_data(@programme, exclude: @pathway).sample(3),
             cards_per_row: 3,

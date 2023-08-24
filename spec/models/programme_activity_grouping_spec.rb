@@ -116,6 +116,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
       let(:legacy_programme_activities) { create_list(:programme_activity, 4, legacy: true, programme_activity_grouping:) }
       let(:programme_activities) { create_list(:programme_activity, 4, programme_activity_grouping:) }
       let(:user) { create(:user) }
+      let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
 
       it 'should return just the legacy programme activities' do
         expect(
@@ -125,6 +126,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
 
       context 'when pathway is present' do
         let(:pathway) { create(:pathway, programme:) }
+        let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:, pathway:) }
 
         before do
           (legacy_programme_activities.first(3) + programme_activities.first(3)).each do |programme_activity|
@@ -146,7 +148,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
           end
 
           it 'should return completed activity before non-completed' do
-            ouptut = programme_activity_grouping.order_programme_activities_for_user(user)
+            output = programme_activity_grouping.order_programme_activities_for_user(user)
 
             expect(output.first).to eq programme_activities.third
             expect(output[1..]).to match_array programme_activities[0..1]

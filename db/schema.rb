@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_22_113148) do
+ActiveRecord::Schema.define(version: 2023_08_24_224225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -280,6 +280,7 @@ ActiveRecord::Schema.define(version: 2023_08_22_113148) do
     t.datetime "updated_at", null: false
     t.string "progress_bar_title"
     t.boolean "community", default: false
+    t.jsonb "web_copy"
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
