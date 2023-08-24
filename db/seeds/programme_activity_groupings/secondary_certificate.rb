@@ -10,6 +10,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'All courses
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.progress_bar_title = 'Complete professional development'
+  group.web_copy_course_requirements = 'Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development.'
 
   group.save
 
@@ -30,6 +31,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Make a posi
   group.programme_id = secondary.id
   group.community = true
   group.progress_bar_title = 'Make an impact on young people in computing'
+  group.web_copy_course_requirements = 'Choose at least one activity'
 
   group.save
 
@@ -58,6 +60,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support you
   group.programme_id = secondary.id
   group.community = true
   group.progress_bar_title = 'Support your professional community'
+  group.web_copy_course_requirements = 'Choose at least one activity'
 
   group.save
 

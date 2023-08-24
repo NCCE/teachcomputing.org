@@ -12,6 +12,7 @@ class Certificates::PathwaysController < ApplicationController
     @recommended_community_activity_ids = @recommended_community_activities.map { _1.activity.id }
     @recommended_activities = recommended_activities - @recommended_community_activities
 
+    @cpd_group = @programme.programme_activity_groupings.not_community.first
     @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
   end
 

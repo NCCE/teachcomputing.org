@@ -8,6 +8,8 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :community, -> { where(community: true) }
   scope :not_community, -> { where(community: false) }
 
+  store_accessor :web_copy, %i[course_requirements], prefix: true
+
   def achievements(user)
     user.achievements.in_state(:complete).for_programme(programme)
   end
