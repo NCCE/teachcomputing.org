@@ -23,5 +23,9 @@ echo "- Installing node packages with yarn:"
 yarn install
 
 echo "- Starting rails (with debugging enabled):"
-rdebug-ide --skip_wait_for_start -h $HOST -p $DEBUG_PORT --dispatcher-port $DISPATCHER_PORT -- ./bin/rails s -b $HOST -p $PORT
+(trap 'kill 0' SIGINT;
+  rdebug-ide --skip_wait_for_start -h $HOST -p $DEBUG_PORT --dispatcher-port $DISPATCHER_PORT -- ./bin/rails s -b $HOST -p $PORT &
+  bundle exec sidekiq &
+  ./scripts/webpack-docker-entrypoint.sh
+)
 # ./bin/rails s -b $HOST -p $PORT
