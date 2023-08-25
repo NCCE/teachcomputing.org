@@ -64,6 +64,48 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
+a = Activity.find_or_create_by(stem_course_template_no: '5dee2821-ce3d-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'Introduction to Cybersecurity for Teachers'
+  activity.credit = 20
+  activity.slug = 'introduction-to-cybersecurity-for-teachers'
+  activity.category = 'online'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO216'
+  activity.always_on = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: '3879268d-ce3d-ee11-bdf4-002248c6f783') do |activity|
+  activity.title = 'Design and Prototype Embedded Computer Systems'
+  activity.credit = 20
+  activity.slug = 'design-and-prototype-embedded-computer-systems'
+  activity.category = 'online'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO218'
+  activity.always_on = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f670dfa1-ce3d-ee11-bdf4-002248c6f783') do |activity|
+  activity.title = 'Introduction to Encryption and Cryptography'
+  activity.credit = 20
+  activity.slug = 'design-and-prototype-embedded-computer-systems'
+  activity.category = 'online'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO220'
+  activity.always_on = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+########################################################################################################################
+
 a = Activity.find_or_create_by(stem_course_template_no: '55cc7b90-a5b6-ed11-b597-0022481b59ce') do |activity|
   activity.title = 'Data Representation in Computing: Bring Data to Life'
   activity.credit = 20
@@ -182,6 +224,66 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 ########################################################################################################################
 
+a = Activity.find_or_create_by(stem_course_template_no: '8dbe73ec-cd3d-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'Understanding Maths and Logic in Computer Science'
+  activity.credit = 20
+  activity.slug = 'understanding-maths-and-logic-in-computer-science'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO213'
+  activity.always_on = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: '716d350d-ce3d-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'An Introduction to Computer Networking for Teachers'
+  activity.credit = 20
+  activity.slug = 'an-introduction-to-computer-networking-for-teachers'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO214'
+  activity.always_on = true
+end
+
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e83971ba-ce3d-ee11-bdf4-002248c6f783') do |activity|
+  activity.title = 'How to utilise the teach computing curriculum effectively (Key Stages 3 and 4)'
+  activity.credit = 20
+  activity.slug = 'how-to-utilise-the-teach-computing-curriculum-effectively-key-stages-3-and-4)'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO230'
+  activity.always_on = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: 'e9a303e0-ce3d-ee11-bdf4-002248c6f783') do |activity|
+  activity.title = 'Introduction to Machine Learning and AI'
+  activity.credit = 20
+  activity.slug = 'introduction-to-machine-learning-and-ai'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO231'
+  activity.always_on = true
+end
+
+a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+
+########################################################################################################################
+
 a = Activity.find_or_create_by(stem_course_template_no: 'ed5a3948-a4b6-ed11-b597-0022481b59ce') do |activity|
   activity.title = 'Introduction to Databases and SQL'
   activity.credit = 20
@@ -205,6 +307,36 @@ a = Activity.find_or_create_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597
   activity.self_certifiable = false
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO232'
+  activity.always_on = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: 'f6a9f913-cd3d-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'Get started with the Teach Computing Curriculum in your primary school'
+  activity.credit = 20
+  activity.slug = 'get-started-with-the-teach-computing-curriculum-in-your-primary-school'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO040'
+  activity.always_on = true
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
+########################################################################################################################
+
+a = Activity.find_or_create_by(stem_course_template_no: '0a70f9ad-cd3d-ee11-bdf4-002248c6f9ce') do |activity|
+  activity.title = 'Teaching Computing Systems and Networks to 5 to 11 year olds'
+  activity.credit = 20
+  activity.slug = 'teaching-computing-systems-and-networks-to-5-to-11-year-olds'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO042'
   activity.always_on = true
 end
 
