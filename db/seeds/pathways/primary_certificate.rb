@@ -139,8 +139,6 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
     'CP005',
     'CP225',
     'CP003',
-    'CO040',
-    'CO042',
     'CO700',
     'CP486',
     'CP469',
@@ -153,6 +151,15 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
 
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
+  end
+
+  remove_cpds = [
+    'CO040',
+    'CO042'
+  ]
+
+  remove_cpds.each do |cpd|
+    maybe_detach_activity_from_pathway(pathway, stem_activity_code: cpd)
   end
 
   activities = [
@@ -199,7 +206,6 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
     'CO232',
     'CO700',
     'CO041',
-    'CO042',
     'CP462',
     'CP466',
     'CP459',
@@ -212,6 +218,14 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
 
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
+  end
+
+  remove_cpds = [
+    'CO042'
+  ]
+
+  remove_cpds.each do |cpd|
+    maybe_detach_activity_from_pathway(pathway, stem_activity_code: cpd)
   end
 
   activities = [
