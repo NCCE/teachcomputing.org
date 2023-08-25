@@ -5,12 +5,13 @@ puts 'Creating Programme Activity Groupings'
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
 
-secondary.programme_activity_groupings.find_or_initialize_by(title: 'All courses').tap do |group|
+secondary.programme_activity_groupings.find_or_initialize_by(title: 'All courses').becomes!(ProgrammeActivityGroupings::CreditCounted).tap do |group|
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.progress_bar_title = 'Complete professional development'
   group.web_copy_course_requirements = 'Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development.'
+  group.required_credit_count = 50
 
   group.save
 

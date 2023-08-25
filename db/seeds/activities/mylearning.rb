@@ -8,7 +8,7 @@ secondary_certificate = Programme.secondary_certificate
 
 Activity.find_or_initialize_by(stem_course_template_no: '563c4bde-a6b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Teaching Programming to 5- to 11-year-olds'
-  activity.credit = 10
+  activity.credit = 50
   activity.slug = 'teaching-programming-to-5-11-year-olds'
   activity.category = 'online'
   activity.self_certifiable = false
@@ -148,7 +148,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: '63c44113-a4b6-ed11-b597-0022481b59ce') do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: '63c44113-a4b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Impact of Technology: How To Lead Classroom Discussions'
   activity.credit = 20
   activity.slug = 'impact-of-technology-how-to-lead-classroom-discussions'
@@ -156,11 +156,9 @@ a = Activity.find_or_create_by(stem_course_template_no: '63c44113-a4b6-ed11-b597
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO215'
   activity.always_on = true
+
+  activity.programmes = [cs_accelerator, secondary_certificate]
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
 
 ########################################################################################################################
 
@@ -209,18 +207,18 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: '0d17c907-a5b6-ed11-b597-0022481b59ce') do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: '0d17c907-a5b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Programming Pedagogy in Secondary Schools: Inspiring Computing Teaching'
-  activity.credit = 20
+  activity.credit = 50
   activity.slug = 'programming-pedagogy-in-secondary-schools-inspiring-computing-teaching'
   activity.category = 'online'
   activity.self_certifiable = false
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO222'
   activity.always_on = true
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save
 
 ########################################################################################################################
 
@@ -299,18 +297,18 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce') do |activity|
+a = Activity.find_or_initialize_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Introduction to Programming with Scratch'
-  activity.credit = 20
+  activity.credit = 50
   activity.slug = 'introduction-to-programming-with-scratch'
   activity.category = 'online'
   activity.self_certifiable = false
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO232'
   activity.always_on = true
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
 
 ########################################################################################################################
 
@@ -344,18 +342,17 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce') do |activity|
+a = Activity.find_or_initialize_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Creating an Inclusive Classroom: Approaches to Supporting Learners with SEND in Computing'
-  activity.credit = 20
+  activity.credit = 50
   activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
   activity.category = 'online'
   activity.self_certifiable = false
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CO700'
   activity.always_on = true
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save
 
 ########################################################################################################################
