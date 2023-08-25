@@ -25,7 +25,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
     context 'when the user has not completed the required number of activities' do
       it 'returns false' do
         grouping = programme_activity_groupings.first
-        expect(grouping.user_complete?(user)).to be_nil
+        expect(grouping.user_complete?(user)).to be false
       end
     end
 

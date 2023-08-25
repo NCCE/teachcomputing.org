@@ -1,5 +1,6 @@
 class ProgrammeActivityGrouping < ApplicationRecord
   include ActionView::Helpers::TagHelper
+  include StiPreload
 
   has_many :programme_activities, -> { order(:order) }
   belongs_to :programme
@@ -15,14 +16,12 @@ class ProgrammeActivityGrouping < ApplicationRecord
   end
 
   def user_complete?(user)
-    completed_activity_count = 0
-    user_achievements = achievements(user).to_a
-    programme_activities.each do |programme_activity|
-      completed_activity = user_achievements.find { _1.activity_id == programme_activity.activity_id }
-      completed_activity_count += 1 if completed_activity
-      return true if completed_activity_count >= required_for_completion
-    end
-    nil
+    user_achievement_activity_ids = achievements(user).pluck(:activity_id)
+
+    completed_activity_count = programme_activities
+      .count { _1.activity_id.in? user_achievement_activity_ids }
+
+    completed_activity_count >= required_for_completion
   end
 
   def formatted_title
