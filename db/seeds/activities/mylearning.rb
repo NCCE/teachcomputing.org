@@ -235,7 +235,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '8dbe73ec-cd3d-ee11-bdf4
   activity.always_on = true
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
@@ -250,7 +250,7 @@ a = Activity.find_or_create_by(stem_course_template_no: '716d350d-ce3d-ee11-bdf4
   activity.always_on = true
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
