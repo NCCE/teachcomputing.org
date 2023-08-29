@@ -16,8 +16,21 @@
 					<%= render 'dashboard/certificates/primary', programme: Programme.primary_certificate %>
 					<%= render 'dashboard/certificates/cs-accelerator', programme: Programme.cs_accelerator %>
           <%= render 'dashboard/certificates/secondary', programme: Programme.secondary_certificate %>
-          <%= render 'dashboard/certificates/a_level', programme: nil %>
+          <% if FeatureFlagService.new.flags[:alevel_programme_feature] %>
+            <%= render 'dashboard/certificates/a_level', programme: Programme.a_level %>
+          <% else %>
+            <%= render(
+              'dashboard/certificates/coming_soon',
+              bullets: [
+                'subject knowledge test',
+                'suggested courses and resources to support your development',
+                'accredited by BCS'
+              ],
+              title: 'A level computer science certificate'
+            ) %>
+          <% end %>
           <%= render 'dashboard/certificates/i_belong', programme: Programme.i_belong %>
+
 				</div>
 			<%= render 'dashboard/courses' %>
 		</div>
