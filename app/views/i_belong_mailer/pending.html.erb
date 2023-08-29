@@ -1,0 +1,5 @@
+<div class='mailer__content'>
+  <p class="govuk-body">Dear <%= @user.first_name %>,</p>
+  <p class="govuk-body">Thank you for participating in the I Belong programme. Your activities are currently being reviewed, and we will keep you updated by email on the outcome and when your school’s certificate has been awarded.</p>
+  <p class="govuk-body">Any questions? Get in touch by emailing <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>.</p>
+</div>

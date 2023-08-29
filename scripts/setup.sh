@@ -53,5 +53,9 @@ brew install shared-mime-info
 echo "- Setup mapping"
 dev-nginx setup-app nginx-mapping.yml
 
-echo "- Setup heroku cli"
-brew tap heroku/brew && brew install heroku
+if command -v heroku &> /dev/null; then
+  echo '...skipping heroku cli as already installed'
+else
+  echo "- Setup heroku cli https://devcenter.heroku.com/articles/heroku-cli"
+  brew tap heroku/brew && brew install heroku
+fi

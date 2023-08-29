@@ -3,81 +3,48 @@ require 'rails_helper'
 RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
+  let!(:pathways) { create_list(:pathway, 2, programme:) }
 
   before do
     @programme = programme
   end
 
-  context 'when a user is not signed in' do
-    before do
-      allow(view).to receive(:current_user).and_return(nil)
-      render
-    end
-
-    it 'has an opening paragraph' do
-      expect(rendered).to have_text('We expect it to take around 20 hours to complete.')
-    end
-
-    it 'has a who section' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'Who is it for?')
-    end
-
-    it 'has a first time section' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'First time teaching computing?')
-    end
-
-    it 'has a benefits section' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'What are the benefits?')
-    end
-
-    it 'has a pathway wrapper' do
-      expect(rendered).to have_css('.pathway__step-title', text: 'How does the programme work?')
-    end
-
-    it 'has the expected number of enrol buttons' do
-      expect(rendered).to have_css('.govuk-button', count: 2, text: 'Enrol on this pathway')
-    end
-
-    it 'has a bursary support aside' do
-      expect(rendered).to have_css('.bursary-component__title', text: 'Funding')
-    end
-
-    it 'has a hub aside' do
-      expect(rendered).to have_css('.aside-component__heading', text: 'Get support')
-      expect(rendered).to have_link('Find your local hub', href: '/hubs')
-    end
-
-    it 'has a create account link' do
-      expect(rendered).to have_link('create an account', href: 'https://ncce-www-stage-int.stem.org.uk/user/register?from=NCCE')
-    end
-
-    it 'has a log in link' do
-      expect(rendered).to have_link('log in', href: '/auth/stem')
-    end
-
-    describe 'hero section' do
-      it 'has title' do
-        expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
-      end
-
-      it 'has sub title' do
-        expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
-      end
-
-      it 'has BCS logo' do
-        expect(rendered).to have_css('.text-certificate-hero__area--logo img')
-      end
-    end
+  before do
+    render
   end
 
-  context 'when a user is signed in' do
-    before do
-      allow(view).to receive(:current_user).and_return(user)
-      render
+  it 'has an opening paragraph' do
+    expect(rendered).to have_text('We expect it to take around 20 hours to complete.')
+  end
+
+  it 'has a benefits section' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Benefits to you')
+  end
+
+  it 'has a pathway wrapper' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'How does the programme work?')
+  end
+
+  it 'has pathway cards' do
+    expect(rendered).to have_css('.bordered-card')
+    expect(rendered).to have_css('.govuk-heading-m', text: pathways.first.title)
+  end
+
+  it 'has a bursary support aside' do
+    expect(rendered).to have_css('.bursary-component__title', text: 'Funding')
+  end
+
+  describe 'hero section' do
+    it 'has title' do
+      expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
     end
 
-    it 'does not have a create account link' do
-      expect(rendered).not_to have_css('.govuk-list li', text: 'create an account or log in to your existing account')
+    it 'has sub title' do
+      expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
+    end
+
+    it 'has BCS logo' do
+      expect(rendered).to have_css('.text-certificate-hero__area--logo img')
     end
   end
 end

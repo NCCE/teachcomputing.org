@@ -42,6 +42,12 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # deliver to mailhog (`brew install mailhog` and visit http://localhost:8025 to see mails)
+  config.action_mailer.smtp_settings = {
+    address: 'host.docker.internal',
+    port: 1025
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -79,6 +85,7 @@ Rails.application.configure do
   # Allow nicer hostname
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
   config.hosts << 'web'
+  config.hosts << 'teachcomputing.test'
   config.autoload_paths << 'lib'
 
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
@@ -92,4 +99,6 @@ Rails.application.configure do
       exception_object: event.payload[:exception_object] # the exception instance
     }
   end
+
+  config.active_job.queue_adapter = :sidekiq
 end

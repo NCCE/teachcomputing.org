@@ -12,8 +12,11 @@ class BorderedCardsComponent < ViewComponent::Base
   end
 
   def link_class(button)
-    if button
+    case button
+    when :lime, true
       'govuk-button button bordered-card__get-involved-button'
+    when :white
+      'govuk-button ncce-button__white bordered-card__get-involved-button'
     else
       'ncce-link'
     end

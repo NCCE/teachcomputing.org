@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Certificates::IBelongCertificateController do
+RSpec.describe Certificates::IBelongController do
   let(:user) { create(:user) }
-  let(:certificate) { create(:i_belong_certificate) }
+  let(:certificate) { create(:i_belong) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: certificate) }
 
   describe '#show' do
@@ -15,11 +15,11 @@ RSpec.describe Certificates::IBelongCertificateController do
       before do
         certificate
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get '/certificate/i-belong-certificate'
+        get '/certificate/i-belong'
       end
 
       it 'redirects to I Belong public page' do
-        expect(response).to redirect_to(i_belong_path)
+        expect(response).to redirect_to(about_i_belong_path)
       end
     end
 
@@ -27,7 +27,7 @@ RSpec.describe Certificates::IBelongCertificateController do
       before do
         enrolment
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get '/certificate/i-belong-certificate'
+        get '/certificate/i-belong'
       end
 
       it 'renders the correct template' do
@@ -41,7 +41,7 @@ RSpec.describe Certificates::IBelongCertificateController do
 
     describe 'while logged out' do
       before do
-        get '/certificate/i-belong-certificate'
+        get '/certificate/i-belong'
       end
 
       it 'redirects to login' do

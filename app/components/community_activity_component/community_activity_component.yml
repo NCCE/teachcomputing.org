@@ -1,5 +1,6 @@
 en:
   in_progress: "In progress"
+  coming_soon: "Coming soon"
   complete: "Completed"
   evidence_button_label: "Submit evidence"
   evidence_submit_label: "Complete activity"

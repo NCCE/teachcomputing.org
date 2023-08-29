@@ -3,101 +3,48 @@ require 'rails_helper'
 RSpec.describe('pages/enrolment/secondary-certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:secondary_certificate) }
+  let!(:pathways) { create_list(:pathway, 5, programme:) }
 
-  context 'when a user is not signed in' do
-    before do
-      @programme = programme
-      assign(:current_user, nil)
-      allow(view).to receive(:eligible_for_secondary?).and_return(false)
-      render
-    end
-
-    it 'has a heading' do
-      expect(rendered).to have_css('.govuk-heading-m', text: 'Welcome to the Secondary Computing Programme')
-    end
-
-    it 'has diagram' do
-      expect(rendered).to have_css('.pathway-wrapper', count: 1)
-    end
-
-    it 'has aside section' do
-      expect(rendered).to have_css('.ncce-aside', count: 1)
-    end
-
-    it 'has expected title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: 'How to enrol')
-    end
-
-    it 'has csa enrolment link' do
-      expect(rendered).to have_link('the Computer Science Accelerator programme', href: '/cs-accelerator', count: 2)
-    end
-
-    it 'has Account button' do
-      expect(rendered).to have_css('.button--aside', text: 'Create an account')
-    end
-
-    it 'has Login button' do
-      expect(rendered).to have_link('log in', href: '/auth/stem')
-    end
+  before do
+    @programme = programme
   end
 
-  context 'when a user is signed in but not enrolled' do
-    before do
-      @programme = programme
-      assign(:current_user, user)
-      allow(view).to receive(:eligible_for_secondary?).and_return(false)
-      render
-    end
-
-    it 'has csa enrolment link' do
-      expect(rendered).to have_link('the Computer Science Accelerator programme', href: '/cs-accelerator', count: 2)
-    end
-
-    it 'has no Enrol button' do
-      expect(rendered).not_to have_css('.button--aside', text: 'Enrol on this certificate')
-    end
-
-    it 'has no Login button' do
-      expect(rendered).not_to have_link('log in', href: '/auth/stem')
-    end
-
-    it 'has no Account button' do
-      expect(rendered).not_to have_text('Create an account')
-    end
-
-    describe 'hero section' do
-      it 'has title' do
-        expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
-      end
-
-      it 'has sub title' do
-        expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
-      end
-
-      it 'has BCS logo' do
-        expect(rendered).to have_css('.text-certificate-hero__area--logo img')
-      end
-    end
+  before do
+    render
   end
 
-  context 'when a user is signed in and enrolled' do
-    before do
-      @programme = programme
-      assign(:current_user, user)
-      allow(view).to receive(:eligible_for_secondary?).and_return(true)
-      render
+  it 'has an opening paragraph' do
+    expect(rendered).to have_text('This professional development programme is designed to enhance how you teach secondary computing')
+  end
+
+  it 'has a benefits section' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'Benefits to you')
+  end
+
+  it 'has a pathway wrapper' do
+    expect(rendered).to have_css('.govuk-heading-m', text: 'How does the programme work?')
+  end
+
+  it 'has pathway cards' do
+    expect(rendered).to have_css('.bordered-card')
+    expect(rendered).to have_css('.govuk-heading-m', text: pathways.first.title)
+  end
+
+  it 'has subject expert support' do
+    expect(rendered).to have_css('.govuk-heading-s', text: 'Subject Expert support')
+  end
+
+  describe 'hero section' do
+    it 'has title' do
+      expect(rendered).to have_css('.govuk-heading-l', text: @programme.title)
     end
 
-    it 'has no csa enrolment link' do
-      expect(rendered).not_to have_text(/Successfully complete the Computer Science Accelerator programme/)
+    it 'has sub title' do
+      expect(rendered).to have_css('.govuk-body-l', text: 'Certificate awarded by BCS, The Chartered Institute for IT')
     end
 
-    it 'has Enrol button' do
-      expect(rendered).to have_css('.button--aside', text: 'Enrol on this certificate')
-    end
-
-    it 'has no Login button' do
-      expect(rendered).not_to have_link('log in', href: '/auth/stem')
+    it 'has BCS logo' do
+      expect(rendered).to have_css('.text-certificate-hero__area--logo img')
     end
   end
 end

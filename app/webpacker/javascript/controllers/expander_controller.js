@@ -1,10 +1,15 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = ['expander', 'expanderButton']
+  static values = {
+    expand: String,
+    collapse: String
+  }
+
+  static targets = ['expander', 'expanderButton', 'expanderButtonText']
 
   connect() {
-    const startExpanded = this.expanderButtonTarget.getAttribute('start-expanded');
+    const startExpanded = this.expanderButtonTarget.getAttribute('start-expanded')
     if (!startExpanded || startExpanded == 'false') {
       this.collapse()
     }
@@ -16,11 +21,19 @@ export default class extends Controller {
       classes.add('hidden')
     }
     this.expanderButtonTarget.setAttribute('aria-expanded', 'false')
+
+    if (this.hasExpanderButtonTextTarget) {
+      this.expanderButtonTextTarget.innerText = this.expandValue
+    }
   }
 
   expand() {
     this.expanderTarget.classList.remove('hidden')
     this.expanderButtonTarget.setAttribute('aria-expanded', 'true')
+
+    if (this.hasExpanderButtonTextTarget) {
+      this.expanderButtonTextTarget.innerText = this.collapseValue
+    }
   }
 
   toggleAll() {

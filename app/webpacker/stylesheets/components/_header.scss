@@ -234,11 +234,6 @@
   }
 }
 
-.ncce-header__certification-item:not(.dropdown__expander--closed) {
-  background-color: $white;
-  border: none;
-  margin: 0;
-}
 
 .ncce-header__certification-item--text,
 .ncce-header__certification-item--text:hover {
@@ -263,18 +258,6 @@
   padding-left: 2px;
 
   @include govuk-media-query($from: desktop) {
-    padding-bottom: 0;
-    padding-left: unset;
-  }
-}
-
-.ncce-header__certification-item:not(.dropdown__expander--closed) .ncce-header__certification-item--text  {
-  padding-bottom: 0.5rem;
-  padding-left: 2px;
-  color: $purple-dark;
-
-  @include govuk-media-query($from: desktop) {
-    color: $white;
     padding-bottom: 0;
     padding-left: unset;
   }

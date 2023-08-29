@@ -7,8 +7,8 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:pathway_2) { create(:pathway, programme: primary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
   let(:pathways) { [pathway, pathway_2] }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
-  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, programme: primary_certificate) }
-  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: primary_certificate) }
+  let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, community: true, programme: primary_certificate) }
+  let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: primary_certificate) }
   let(:community_activity) { create(:activity, :community) }
 
   before do
@@ -49,7 +49,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'has the expected section titles' do
-      expect(rendered).to have_text('Complete any course from this certificate')
+      expect(rendered).to have_text('Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development.')
       expect(rendered).to have_text('Choose at least one activity to A group name', count: 2)
     end
 
@@ -58,7 +58,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
     end
 
     it 'shows all activities' do
-      expect(rendered).to have_css('.ncce-activity-list__item', count: 5)
+      expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
     end
 
     it 'shows no hidden activity title' do

@@ -1,0 +1,25 @@
+en:
+  pages:
+    enrolment:
+      secondary-certificate:
+        title_text: "Certificate awarded by BCS, The Chartered Institute for IT"
+        intro:
+         - "This professional development programme is designed to enhance how you teach secondary computing, and to give you confidence to apply those skills in the classroom. Throughout your learning journey, you'll get the opportunity to develop yourself, your professional community, and your students, by engaging in a range of activities."
+         - "There are five pathways under which we have gathered relevant courses and activities to help you advance your knowledge and experience of teaching GCSE and A level computer science."
+        benefits_to_you: "Benefits to you"
+        benefits:
+         - "be recognised for your commitment to your professional learning, your subject, and your community"
+         - "upgrade your skills and feel confident to teach this high-demand subject across the curriculum"
+         - "save time on lesson planning and gain inspirational teaching ideas"
+         - "meet teachers in your area to share best practice and ideas"
+        how_does_it_work: "How does the programme work?"
+        how_does_it_work_subheading: "Our learning pathways provide a set of recommended courses and activities to help get the right outcomes for you."
+        how_does_it_work_1: "%{create_an_account} or %{log_in} to your existing account"
+        how_does_it_work_2: "see which of our pathways best matches your needs and enrol on the right one for you"
+        how_does_it_work_3: "complete a tailored selection of courses and engagement activities"
+        how_does_it_work_4: "successfully complete the %{link}"
+        how_does_it_work_5: "receive a nationally recognised certificate, awarded by BCS, The Chartered Institute for IT"
+        hub_aside:
+          title: "Subject Expert support"
+          text: "Our network of Computing Hubs are here to help you, providing local training and support for teachers across England."
+          link_title: "Find your local hub"

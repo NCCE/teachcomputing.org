@@ -92,4 +92,22 @@ describe ProgrammesHelper, type: :helper do
       expect(display_programme_tag(cs_accelerator)).to eq('CS Accelerator')
     end
   end
+
+  describe '#programme_pathway_card_data' do
+    let(:programme) { create(:programme) }
+    let!(:legacy_pathway) { create(:pathway, legacy: true, programme:) }
+    let!(:pathways) { create_list(:pathway, 2, programme:) }
+
+    it 'should return data for the non-legacy pathways' do
+      expect(helper.programme_pathway_card_data(programme).map { _1[:title] }).to match_array pathways.map(&:title)
+    end
+
+    context 'when asked to exclude a particular pathway' do
+      it 'should not return it' do
+        exclude = pathways.first
+        pathways.second.update(title: 'test test')
+        expect(helper.programme_pathway_card_data(programme, exclude:).map { _1[:title] }).to match_array ['test test']
+      end
+    end
+  end
 end

@@ -40,6 +40,8 @@ class Activity < ApplicationRecord
   scope :system, -> { where(provider: 'system') }
   scope :user_removable, -> { self_certifiable.non_action }
 
+  store_accessor :public_copy, %i[title_url description], prefix: true
+
   def self.cs_accelerator_diagnostic_tool
     Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
       activity.title = 'Taken diagnostic tool'
@@ -57,5 +59,5 @@ class Activity < ApplicationRecord
 
   def active_course?
     self.stem_activity_code.present? && self.retired == false
-  end 
+  end
 end

@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
   def i_belong
     if current_user
-      programme = Programme.i_belong_certificate
+      programme = Programme.i_belong
       session_state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled
       enrol_path = programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id })
     else
@@ -31,20 +31,23 @@ class PagesController < ApplicationController
 
     case session_state
     when :enrolled
-      champion_path = '/i-belong-champions-pack'
       posters_link_title = 'Request your posters'
-      cta_link_path = i_belong_certificate_path
+      posters_link = 'https://forms.office.com/e/x1FMMzjxhg'
+      posters_link_method = :get
+      cta_link_path = i_belong_path
       cta_link_method = :get
     when :unenrolled
-      champion_path = enrol_path
       posters_link_title = 'Enrol to request'
+      posters_link = enrol_path
+      posters_link_method = :post
       cta_link_path = enrol_path
       cta_link_method = :post
     else
-      champion_path = login_path
       posters_link_title = 'Log in to request'
-      cta_link_path = login_path
-      cta_link_method = :get
+      posters_link = helpers.auth_url
+      posters_link_method = :post
+      cta_link_path = helpers.auth_url
+      cta_link_method = :post
     end
 
     render(
@@ -52,8 +55,10 @@ class PagesController < ApplicationController
       locals: { session_state:,
                 cta_link_path:,
                 cta_link_method:,
-                champion_path:,
-                posters_link_title: }
+                posters_link_title:,
+                posters_link:,
+                posters_link_method:
+      }
     )
   end
 
@@ -65,8 +70,8 @@ class PagesController < ApplicationController
 
   # static programme pages except I Belong
   def static_programme_page
-    @programme = Programme.find_by!(slug: params[:page_slug])
-    redirect_to @programme.path and return if @programme.user_enrolled?(current_user)
+    @programme = Programme.includes(:pathways).find_by!(slug: params[:page_slug])
+    redirect_to(@programme.path) and return if @programme.user_enrolled?(current_user)
 
     render template: "pages/enrolment/#{params[:page_slug]}"
   end

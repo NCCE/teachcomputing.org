@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'secondary-certificate' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
+      put '/pathway', action: :update, controller: 'secondary_certificate/user_programme_pathway', as: :update_user_pathway
     end
 
     resource 'cs_accelerator', controller: 'cs_accelerator', path: 'cs-accelerator', only: %i[show],
@@ -79,11 +80,11 @@ Rails.application.routes.draw do
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
     end
 
-    resource 'i_belong_certificate', controller: 'i_belong_certificate', path: 'i-belong-certificate', only: :show, as: :i_belong_certificate do
+    resource 'i_belong', controller: 'i_belong', path: 'i-belong', only: :show, as: :i_belong do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
-                               defaults: { slug: 'i-belong-certificate' }
+                               defaults: { slug: 'i-belong' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
@@ -92,6 +93,8 @@ Rails.application.routes.draw do
         get '/unenroll', action: :destroy
       end
     end
+
+    resources :pathways, param: :slug, only: %i[show]
   end
 
   namespace 'class_marker' do
@@ -146,10 +149,8 @@ Rails.application.routes.draw do
                          defaults: { page_slug: 'cs-accelerator' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
 
-  if FeatureFlagService.new.flags[:ibelong_programme_feature]
-    get '/i-belong', to: 'pages#i_belong', as: :i_belong, defaults: { page_slug: 'i-belong' }
-  end
   get '/certificate/a-level', to: 'pages#page', as: :a_level_certificate, defaults: { page_slug: 'a-level-certificate'}
+  get '/i-belong', to: 'pages#i_belong', as: :about_i_belong, defaults: { page_slug: 'i-belong' }
   get '/gender-balance', to: 'pages#page', as: :gender_balance, defaults: { page_slug: 'gender-balance' }
   get '/get-involved', to: 'pages#page', as: :get_involved, defaults: { page_slug: 'get-involved' }
   get '/secondary-early-careers', to: 'pages#page', as: :secondary_early_careers, defaults: { page_slug: 'secondary-early-careers' }
@@ -189,6 +190,8 @@ Rails.application.routes.draw do
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/welcome', to: 'welcome#show', as: :welcome
+
+  resources :user, only: :update, param: :uuid
 
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')

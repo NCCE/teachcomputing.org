@@ -2,6 +2,7 @@
 <% meta_tag :url, request.original_url %>
 <%= render 'pages/certification/hero' %>
 <div class="ncce-programmes-activity">
+  <%= render ProgressBarComponent.new(current_user, @programme) %>
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
@@ -10,6 +11,9 @@
           <%= render 'achievement_list' %>
         </div>
         <div class="govuk-grid-column-one-third">
+          <%= render partial: 'pathway_aside', locals: {
+            available_pathways_for_user: @available_pathways_for_user
+          } if @user_pathway %>
           <%= render AsideComponent.new(
             title: t('.support_aside.title'),
             class_name: 'help-aside',

@@ -115,7 +115,7 @@ class Achiever::Course::Template
       @programmes.include?('Secondary')
     when 'primary-certificate'
       @programmes.include?('Primary')
-    when 'i-belong-certificate'
+    when 'i-belong'
       @programmes.include?('I Belong')
     end
   end

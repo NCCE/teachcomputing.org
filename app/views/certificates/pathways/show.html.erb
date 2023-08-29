@@ -1,0 +1,128 @@
+<% meta_tag :title, 'Pathways - Teach Computing' %>
+<%= render partial: 'hero' %>
+<div class="govuk-width-container">
+  <%= render BreadcrumbComponent.new(ancestors: [[@programme.public_path, @programme.title]], current_page_name: @pathway.title) %>
+  <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body-s"><%= @pathway.description %></p>
+        </section>
+        <section class="ncce-section ncce-pathway__learning-pathway-section govuk-!-margin-bottom-6">
+          <h2 class="govuk-heading-m"><%= t('.learning_pathway.title') %></h2>
+          <p class="govuk-body-s"><%= t('.learning_pathway.description') %></p>
+          <hr class="ncce-pathway__hr">
+          <div class="ncce-pathway__course-list govuk-body-s">
+            <% if @pathway.present? %>
+              <h3 class="govuk-heading-s">Develop your professional knowledge</h3>
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-collapse-value="Hide">
+                <p class="govuk-!-margin-top-0">
+                    <button data-action="expander#toggleAll"
+                            data-expander-target="expanderButton"
+                            start-expanded="true"
+                            aria-expanded="true"
+                            class="govuk-body expander__button-round recommended-courses-wrapper_expander-button"
+                            data-event-action="click"
+                            data-event-label="Show additional courses"
+                            data-event-category="CSA enrolled">
+                        <strong data-expander-target="expanderButtonText">Hide</strong>
+                    </button>
+                </p>
+
+                <div data-expander-target="expander" class="expander">
+                  <p class="govuk-body-s govuk-!-margin-top-5"><%= @cpd_group.web_copy_course_requirements %></p>
+                  <% @recommended_activities.each do |pa| %>
+                    <div class="ncce-pathway-courses__course">
+                      <h3 class="ncce-pathway-courses__link govuk-heading-s">
+                        <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
+                      </h3>
+
+                      <div class="ncce-grid__no-space-between">
+                        <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">
+                          <%= activity_type(pa) %>
+                        </p>
+                        <% course = Achiever::Course::Template.maybe_find_by_activity_code(pa.stem_activity_code)%>
+                        <% if course %>
+                          <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
+                            <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %>
+                          </p>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <p class="govuk-body-s">More courses can be found in the <%= link_to 'pathway PDF', @pathway.pdf_link %></p>
+          </div>
+          <hr class="ncce-pathway__hr">
+          <div class="ncce-pathway__course-list">
+            <% @community_groups.each do |group| %>
+              <h3 class="govuk-heading-s"><%= group.title %></h3>
+              <div data-controller='expander' data-expander-expand-value="Show" data-expander-collapse-value="Hide">
+                <p class="govuk-!-margin-top-0">
+                    <button data-action="expander#toggleAll"
+                            data-expander-target="expanderButton"
+                            start-expanded="false"
+                            aria-expanded="false"
+                            class="govuk-body expander__button-round recommended-courses-wrapper_expander-button"
+                            data-event-action="click"
+                            data-event-label="Show additional courses"
+                            data-event-category="CSA enrolled">
+                        <strong data-expander-target="expanderButtonText">Hide</strong>
+                    </button>
+                </p>
+
+                <div data-expander-target="expander" class="expander">
+                  <p class="govuk-body-s govuk-!-margin-top-5"><%= group.web_copy_course_requirements %></p>
+                  <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
+                    <div class="ncce-pathway-courses__course">
+                      <p class="ncce-pathway-courses__link">
+                        <%= link_to programme_activity.activity.title, '#', class: 'ncce-link' %>
+                      </p>
+                      <p class="govuk-body-s">
+                        <%= programme_activity.activity.public_copy_description %>
+                      </p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <hr class="ncce-pathway__hr">
+            <% end %>
+          <div>
+        </section>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <%= render PathwayEnrolComponent.new(programme: @programme, pathway: @pathway, current_user: @current_user) %>
+        <%= render PathwayImprovementsComponent.new(pathway: @pathway) %>
+        <%= render AsideComponent.new(
+          title: 'Download the pathway PDF'
+        ) do |component| %>
+          <% component.with_body do %>
+            <p class="govuk-body-s">
+              <%= t('.download_pdf', title: @pathway.title.downcase).html_safe %>
+              <br>
+            </p>
+            <p class="govuk-body icon-resources">
+              <%= t('.download_pdf_cta', link: link_to(@pathway.title, @pathway.pdf_link, class: 'govuk-link ncce-link')).html_safe %>
+            </p>
+          <% end %>
+        <% end %>
+        <% if should_show_funding?(@programme) %>
+          <%= render BursaryComponent.new %>
+        <% end %>
+      </div>
+      <% if should_show_other_pathways?(@programme) %>
+        <div class="govuk-grid-column-full">
+          <hr class="ncce-pathways__hr govuk-!-margin-bottom-7">
+          <%= render BorderedCardsComponent.new(
+            cards: programme_pathway_card_data(@programme, exclude: @pathway).sample(3),
+            cards_per_row: 3,
+            class_name: 'bordered-cards__green-tops'
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

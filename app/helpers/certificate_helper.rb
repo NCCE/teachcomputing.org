@@ -1,6 +1,4 @@
 module CertificateHelper
-  include ActionView::Helpers::TagHelper
-
   def add_group_complete_icon_class(current_user, group)
     group.user_complete?(current_user) ? 'ncce-activity-list__title--complete' : ''
   end

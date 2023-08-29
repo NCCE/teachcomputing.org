@@ -90,3 +90,9 @@
   width: 100%;
   margin-bottom: 0;
 }
+
+.bordered-cards__green-tops {
+  .bordered-card {
+    border-top: solid 9px $lime_green;
+  }
+}

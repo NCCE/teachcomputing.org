@@ -1,0 +1,33 @@
+<% meta_tag :title, t('.page_title') %>
+<% meta_tag :url, request.original_url %>
+<%= render 'pages/certification/hero', sub_header_disabled: true %>
+<div class="ncce-programmes-activity">
+  <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body'), steps_to_accreditation: false) %>
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <p class="govuk-body-m">
+            <%= t('.introduction.html', get_in_touch: link_to('get in touch', 'mailto:info@teachcomputing.org')) %>
+          </p>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <%= render 'achievement_list' %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new(
+            title: t('.support_aside.title'),
+            class_name: 'help-aside',
+            text: t('.support_aside.text.html',
+              hub_link: link_to(t('.support_aside.hub_link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub')),
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
+            ))
+          %>
+          <div class="ncce-aside--borderless">
+            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :secondary_certificate) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

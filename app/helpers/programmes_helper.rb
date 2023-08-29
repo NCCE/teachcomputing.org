@@ -30,4 +30,25 @@ module ProgrammesHelper
       programme
     end
   end
+
+  def programme_pathway_card_data(programme, exclude: nil)
+    pathways =
+      if exclude.present?
+        programme.pathways.not_legacy.where.not(id: exclude.id)
+      else
+        programme.pathways.not_legacy
+      end
+
+    pathways.map do |pathway|
+      {
+        title: pathway.title,
+        text: pathway.description,
+        button: :white,
+        link: {
+          link_url: pathway_path(pathway.slug),
+          link_title: "Discover #{pathway.title.downcase} pathway"
+        }
+      }
+    end
+  end
 end

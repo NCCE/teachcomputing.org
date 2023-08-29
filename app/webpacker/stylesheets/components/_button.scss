@@ -53,6 +53,12 @@
   color: $govuk-text-colour;
 }
 
+.ncce-button__white {
+  @include ncce_button($white);
+
+  border-color: $lime-green;
+}
+
 .button--focus-white {
   &:hover,
   &[disabled]:hover {
@@ -153,7 +159,6 @@
   }
 }
 
-
 .govuk-button {
   &:visited,
   &:active,
@@ -164,4 +169,11 @@
   &:hover {
     color: $white;
   }
+}
+
+.modal-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }

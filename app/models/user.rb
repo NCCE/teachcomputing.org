@@ -1,5 +1,6 @@
 require 'audited'
 
+# #school_name is the school or college name to print onto the I Belong certificate PDF
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -59,6 +60,10 @@ class User < ApplicationRecord
     true
   end
 
+  def enrolled_on_programme_pathway?(programme:, pathway:)
+    user_programme_enrolments.find_by(programme:, pathway:).present?
+  end
+
   def programme_enrolment_state(programme_id)
     enrolment = user_programme_enrolments.find_by(programme_id:)
     return 'Not enrolled' unless enrolment
@@ -110,5 +115,9 @@ class User < ApplicationRecord
     end
 
     save!
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

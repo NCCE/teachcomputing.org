@@ -3,12 +3,7 @@
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
-    <%= render CourseActivityComponent.new(
-      objective: t('.any_course_prompt'),
-      booking: nil,
-      achievements: @face_to_face_achievements + @online_achievements,
-      tracking_category: tracking_category
-    ) %>
+    <%= t('.any_course_prompt') %>
   </li>
   <% if @issued_badge.present? %>
     <li class="ncce-activity-list__item">
@@ -19,17 +14,28 @@
       ) %>
     </li>
   <% end %>
-  <li class="ncce-activity-list__item">
-    <div class='ncce-activity-list__button-wrapper'>
-      <%= link_to t('.all_courses_button'),
-        courses_path(certificate: @programme.slug),
-        class: 'govuk-button button govuk-!-margin-bottom-0',
-        data: {
-          event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
-        }
-      %>
-    </div>
-  </li>
+  <% if @user_pathway.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+        event_category: 'primary enrolled',
+        pathway: @user_pathway,
+        recommended_activities: @recommended_activities
+      } %>
+    </li>
+  <% else %>
+    <li class="ncce-activity-list__item">
+      <div class='ncce-activity-list__button-wrapper'>
+        <%= link_to t('.all_courses_button'),
+          courses_path(certificate: @programme.slug),
+          class: 'govuk-button button govuk-!-margin-bottom-0',
+          data: {
+            event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
+          }
+        %>
+      </div>
+    </li>
+  <% end %>
+</ul>
 </ul>
 
 <!-- Remember additional course handling -->
@@ -38,10 +44,7 @@
     <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>
     </p>
-    <% sort_complete_first(
-      activities: group.programme_activities,
-      complete: group.user_complete?(current_user)
-    ).each do |programme_activity| %>
+    <% group.order_programme_activities_for_user(current_user).each do |programme_activity| %>
       <li class="ncce-activity-list__item">
         <%= render CommunityActivityComponent.new(
           activity: Activity.find(programme_activity.activity_id),

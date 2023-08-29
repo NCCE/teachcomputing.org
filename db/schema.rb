@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_140609) do
+ActiveRecord::Schema.define(version: 2023_08_24_224225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.boolean "always_on", default: false
     t.string "booking_programme_slug"
     t.boolean "retired", default: false
+    t.boolean "coming_soon", default: false
+    t.jsonb "public_copy"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -251,6 +253,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.string "pdf_link"
     t.uuid "programme_id", null: false
     t.integer "order"
+    t.jsonb "web_copy"
+    t.boolean "legacy", default: false, null: false
     t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
@@ -262,6 +266,7 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
     t.integer "order"
+    t.boolean "legacy", default: false, null: false
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
@@ -274,6 +279,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "progress_bar_title"
+    t.boolean "community", default: false
+    t.jsonb "web_copy"
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
@@ -396,6 +403,7 @@ ActiveRecord::Schema.define(version: 2023_08_08_140609) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
+    t.string "school_name"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end

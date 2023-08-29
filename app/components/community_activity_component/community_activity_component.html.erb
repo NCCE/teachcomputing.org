@@ -7,6 +7,12 @@
       <span class="community_activity_component__completed_badge_container" >
         <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
       </span>
+    <% elsif @activity.coming_soon? %>
+      <%= button_to t('.coming_soon'),
+        '#',
+        class: 'govuk-button button community-activity-component__objective-button button--full-width',
+        disabled: true
+      %>
     <% elsif @activity.booking_programme_slug.present? %>
       <%= link_to t('.book_button_text'),
         courses_path(certificate: @activity.booking_programme_slug),

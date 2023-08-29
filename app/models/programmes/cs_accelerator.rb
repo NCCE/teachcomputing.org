@@ -2,6 +2,10 @@ module Programmes
   class CSAccelerator < Programme
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
 
+    def mailer
+      CSAcceleratorMailer
+    end
+
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
                                   .for_programme(self)

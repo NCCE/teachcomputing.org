@@ -10,10 +10,15 @@ module Certificates
       return redirect_to complete_secondary_certificate_path if @programme.user_completed?(current_user)
 
       assign_achievements
-      @professional_development_groups = @programme.programme_activity_groupings.where(sort_key: 1..2).order(:sort_key)
-      @community_groups = @programme.programme_activity_groupings.where(sort_key: 3..5).order(:sort_key)
+
+      @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
+      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
+
+      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
+      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
       @badge_tracking_event_category = 'Secondary enrolled'
       @badge_tracking_event_label = 'Secondary badge'
+      assign_recommended_activities
       assign_issued_badge_data
 
       render :show
@@ -46,6 +51,16 @@ module Certificates
         @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
       end
 
+      def assign_recommended_activities
+        if user_pathway.nil?
+          @recommended_activities = nil
+        else
+          recommended_activities = user_pathway.pathway_activities.includes(:activity)
+          @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
+          @recommended_activities = recommended_activities - @recommended_community_activities
+        end
+      end
+
       def enrolment
         current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
       end
@@ -75,6 +90,14 @@ module Certificates
 
       def user_enrolled?
         redirect_to secondary_path unless @programme.user_enrolled?(current_user)
+      end
+
+      def user_enrolment
+        @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
+      end
+
+      def user_pathway
+        @user_pathway ||= user_enrolment&.pathway
       end
 
       def user_programme_enrolment_pending?

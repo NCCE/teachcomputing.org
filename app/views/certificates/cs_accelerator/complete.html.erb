@@ -33,11 +33,9 @@
                 ),
                 button: {
                   text: t('.next_steps.button_text'),
-                  path: Programme.secondary_certificate.enrol_path(
-                    user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.secondary_certificate.id }
-                  ),
+                  path: Programme.secondary_certificate.public_path,
                   opts: { method: :post },
-                  tracking_label: 'Secondary certificate enrol'
+                  tracking_label: 'Secondary certificate find out more'
                 },
                 tracking_category:
               ) %>

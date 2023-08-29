@@ -1,0 +1,45 @@
+.ncce-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10000;
+
+  display: none;
+
+  &.ncce-modal--expanded {
+    display: flex;
+  }
+
+  .ncee-modal--header {
+    display: flex;
+
+    .icon-close {
+      height: 24px;
+    }
+  }
+
+  .ncce-modal--body {
+    padding: 2rem;
+    padding-top: 2.5rem;
+    margin: 1rem;
+
+    background-color: $white;
+    max-width: 45rem;
+
+    background-image: url('../images/icons/footer-flourish.svg');
+    background-repeat: no-repeat;
+    background-size: 82px;
+    background-position: bottom right;
+  }
+}
+
+.ncce-modal--reopen {
+  display: block;
+}
