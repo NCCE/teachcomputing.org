@@ -1,0 +1,16 @@
+<div class="certification">
+  <div class="shadow_card card--dashboard card--dashboard--a-level">
+    <span class="govuk-body-m status-block-light">Not enrolled</span>
+    <h3 class="govuk-heading-m card__heading">
+      <span class="ncce-link ncce-link--heading"><%= title %></span>
+    </h3>
+    <div class="card--dashboard--content">
+      <ul class="govuk-list govuk-list--bullet">
+        <% bullets.each do |bullet| %>
+          <li><%= bullet %></li>
+        <% end %>
+      </ul>
+      <span class="govuk-button button button--full-width">Coming soon</span>
+    </div>
+  </div>
+</div>
