@@ -58,14 +58,14 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Activities througho
     e.title = 'Bebras Challenge'
     e.title_url = 'https://www.bebras.uk/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/bebras.png'
-    e.body = 'A computational thinking challenge that aims to enthuse students in all things computer science and promote computational thinking.'
+    e.body = 'A computational thinking challenge that aims to enthuse students in all things computer science and promote computational thinking.<br><br>Part of <a href="/i-belong">I Belong: Encouraging girls into computer science</a>'
   end.save
 
   g.enrichment_entries.find_or_initialize_by(title: 'FIRST® LEGO® League').tap do |e|
     e.title = 'FIRST® LEGO® League'
     e.title_url = 'https://education.theiet.org/first-lego-league-programmes/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/first_lego_leauge.png'
-    e.body = 'This is a global STEM programme where young people work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions.<br><br>Part of I Belong: Encouraging girls into computer science'
+    e.body = 'This is a global STEM programme where young people work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions.<br><br>Part of <a href="/i-belong">I Belong: Encouraging girls into computer science</a>'
   end.save
 
   g.enrichment_entries.find_or_initialize_by(title: 'Cyber Security Challenge UK').tap do |e|

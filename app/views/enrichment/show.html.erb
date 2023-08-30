@@ -42,7 +42,9 @@
                             <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
                             <p class="govuk-body-s"><%= entry.body.html_safe %></p>
                           </div>
-                          <img src="<%= entry.image_url %>"/>
+                          <%= link_to entry.title_url do %>
+                            <img src="<%= entry.image_url %>"/>
+                          <% end %>
                         </div>
                       <% end %>
                     <% end %>
