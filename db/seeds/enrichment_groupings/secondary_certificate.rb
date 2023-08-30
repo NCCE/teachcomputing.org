@@ -4,6 +4,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Autumn term').becom
   g.title = 'Autumn term'
   g.term_start = DateTime.new(2023, 9, 4)
   g.term_end = DateTime.new(2024, 12, 21)
+  g.coming_soon = false
 
   g.save
 
@@ -49,6 +50,7 @@ end.save
 
 programme.enrichment_groupings.find_or_initialize_by(title: 'Activities throughout the year').becomes!(EnrichmentGroupings::AllYear).tap do |g|
   g.title = 'Activities throughout the year'
+  g.coming_soon = false
 
   g.save
 
