@@ -284,44 +284,6 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#web_copy' do
-    let(:programme) { create(:programme) }
-
-    it 'should be an optional property' do
-      programme.web_copy = nil
-
-      expect(programme).to be_valid
-    end
-
-    it 'should be a jsonb property' do
-      programme.update(web_copy: { 'foo' => 'bar' })
-
-      expect(programme.web_copy).to eq({ 'foo' => 'bar'})
-    end
-  end
-
-  context 'web copy' do
-    let(:programme) { create(:programme) }
-
-    describe '#web_copy_enrichment_intro' do
-      it 'should be an store_accessor' do
-        intro = 'hello world'
-        programme.update(web_copy_enrichment_intro: intro)
-
-        expect(programme.web_copy_enrichment_intro).to eq intro
-      end
-    end
-
-    describe '#web_copy_enrichment_footer' do
-      it 'should be an store_accessor' do
-        footer = 'hello world'
-        programme.update(web_copy_enrichment_footer: footer)
-
-        expect(programme.web_copy_enrichment_footer).to eq footer
-      end
-    end
-  end
-
   describe '#enrichment_enabled?' do
     let(:programme) { create(:programme) }
 
