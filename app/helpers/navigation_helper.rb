@@ -6,15 +6,17 @@ module NavigationHelper
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
           { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
           { text: 'Early career and trainee teachers', link: '/primary-early-careers', label: 'Primary ECT' },
-          { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' }
-          ] },
-          { text: 'Secondary school',
-            children: [
-              { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
-              { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
-              { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
-              { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
-          { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
+          { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' },
+          { text: 'Enrichment', link: enrichment_path(slug: Programme.primary_certificate.slug), label: 'Enrichment' }
+        ] },
+      { text: 'Secondary school',
+        children: [
+          { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
+          { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
+          { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
+          { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
+          { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' },
+          { text: 'Enrichment', link: enrichment_path(slug: Programme.secondary_certificate.slug), label: 'Enrichment' }
         ] },
       { text: 'Training and support',
         children: [
