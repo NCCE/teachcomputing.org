@@ -7,7 +7,7 @@ pathway.update(
   title: 'Advanced GCSE Computer Science',
   slug: 'advanced-gcse-computer-science',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/05_Teaching_advanced_GCSE_computer_science.pdf',
+  pdf_link: 'https://static.teachcomputing.org/05_Teaching_advanced_GCSE_computer_science.pdf',
   programme_id: prog_id,
   order: 5
 )
@@ -62,7 +62,7 @@ pathway.update(
   title: 'Preparing to teach GCSE computer science',
   slug: 'prepare-to-teach-gcse-computer-science',
   range: 2..10,
-  pdf_link: 'https://static.teachcomputing.org/pathways/02_Preparing_to_teach_GCSE_computer_science.pdf',
+  pdf_link: 'https://static.teachcomputing.org/02_Preparing_to_teach_GCSE_computer_science.pdf',
   programme_id: prog_id,
   order: 4
 )
@@ -116,7 +116,7 @@ pathway.update(
   title: 'New to algorithms and programming',
   slug: 'new-to-algorithms-and-programming',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/03_New_to_algorithms_and_programming.pdf',
+  pdf_link: 'https://static.teachcomputing.org/03_New_to_algorithms_and_programming.pdf',
   programme_id: prog_id,
   order: 2
 )
@@ -170,7 +170,7 @@ pathway.update(
   title: 'New to computing',
   slug: 'new-to-computing',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/01_New_to_computing.pdf',
+  pdf_link: 'https://static.teachcomputing.org/01_New_to_computing.pdf',
   programme_id: prog_id,
   order: 1
 )
@@ -227,7 +227,7 @@ pathway.update(
   title: 'New to computer systems',
   slug: 'new-to-computer-systems',
   range: 0..0,
-  pdf_link: 'https://static.teachcomputing.org/pathways/04_New_to_computer_systems.pdf',
+  pdf_link: 'https://static.teachcomputing.org/04_New_to_computer_systems.pdf',
   programme_id: prog_id,
   order: 3
 )
