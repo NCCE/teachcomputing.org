@@ -17,7 +17,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Autumn term').becom
 
   g.enrichment_entries.find_or_initialize_by(title: 'Astro Pi').tap do |e|
     e.title = 'Astro Pi'
-    e.title_url = 'Apps for good showcase'
+    e.title_url = 'https://astro-pi.org/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/astro_pi.png'
     e.body = 'An opportunity for young people to carry out their own scientific investigations in space, writing computer programs that will run aboard the International Space Station.'
   end.save
