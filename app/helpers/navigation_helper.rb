@@ -13,6 +13,7 @@ module NavigationHelper
               { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
               { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
               { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
+              { text: 'A level subject knowledge', link: a_level_path, label: 'A level subject knowledge' },
               { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' }
         ] },

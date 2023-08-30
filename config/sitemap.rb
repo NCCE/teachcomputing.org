@@ -20,6 +20,7 @@ SitemapGenerator::Sitemap.create do
   add '/contact', changefreq: 'monthly'
   add '/gender-balance', changefreq: 'monthly'
   add '/i-belong', changefreq: 'monthly'
+  add '/a-level', changefreq: 'monthly'
   add '/get-involved', changefreq: 'monthly'
   add '/home-teaching', changefreq: 'weekly'
   add '/home-teaching-key-stage-1', changefreq: 'daily'

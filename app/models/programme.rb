@@ -36,6 +36,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'i-belong')
   end
 
+  def self.a_level_subject_knowledge
+    Programme.find_by(slug: 'a-level-subject-knowledge')
+  end
+
   def badgeable?
     badges.active.exists?
   end
@@ -84,6 +88,10 @@ class Programme < ApplicationRecord
 
   def pathways?
     false
+  end
+
+  def a_level_subject_knowledge?
+    slug == 'a-level-subject-knowledge'
   end
 
   def path; end
