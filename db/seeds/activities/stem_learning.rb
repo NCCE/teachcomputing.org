@@ -564,17 +564,17 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545') do |activity|
+Activity.find_or_create_by(stem_course_template_no: '34ff2768-a7fc-ea11-a813-000d3a86d545') do |activity|
   activity.title = 'Primary computing for all - face to face'
-  activity.credit = 10
+  activity.credit = 50
   activity.slug = 'outstanding-primary-computing-for-all-face-to-face'
   activity.stem_course_template_no = '34ff2768-a7fc-ea11-a813-000d3a86d545'
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP005'
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'e3c14378-3015-eb11-a813-000d3a86f6ce').tap do |activity|
   activity.title = 'Leading primary computing - module 1 - face to face'
@@ -703,7 +703,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '11f58c3f-3341-eb11-a813
   activity.stem_activity_code = 'CP007'
 
   activity.programmes = [primary_certificate]
-end
+end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '3b2957a3-3541-eb11-a813-000d3a86d545').tap do |activity|
   activity.title = 'KS3 computing (module 1): Creative curriculum design principles'
@@ -1094,6 +1094,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '039c98c5-3c91-eb11-b1ac
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP441'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: 'aafe379e-9e8c-eb11-b1ac-0022481a6ffe') do |activity|
@@ -1155,6 +1157,8 @@ Activity.find_or_initialize_by(stem_course_template_no: 'de77674a-51b2-eb11-8236
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP252'
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_create_by(stem_course_template_no: '3e42eddb-54b2-eb11-8236-000d3a8747c3') do |activity|
@@ -1358,6 +1362,8 @@ Activity.find_or_initialize_by(stem_course_template_no: 'c9409a58-0b07-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP459'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6-000d3a86d86c').tap do |activity|
@@ -1369,6 +1375,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '9dbd1486-0f07-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP460'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6-000d3a86d86c').tap do |activity|
@@ -1380,6 +1388,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP461'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
@@ -1442,6 +1452,8 @@ Activity.find_or_initialize_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP462'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6-000d3a0ca796').tap do |activity|
@@ -1453,6 +1465,8 @@ Activity.find_or_initialize_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP465'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '02b58914-2125-ec11-b6e6-000d3a0caf8a').tap do |activity|
@@ -1464,6 +1478,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '02b58914-2125-ec11-b6e6
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP466'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end
 
 Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000d3a0ca796') do |activity|
@@ -1475,6 +1491,8 @@ Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP467'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_create_by(stem_course_template_no: '61b89040-5528-ec11-b6e6-000d3a0caf14') do |activity|
@@ -1568,6 +1586,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP469'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: 'ab685d74-ec5c-ec11-8f8f-0022481b0af9') do |activity|
@@ -1614,6 +1634,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '87c4cf4b-3c5f-ec11-8f8f
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP486'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '8dc126b0-6569-ec11-8943-000d3a8700352') do |activity|
@@ -1892,6 +1914,8 @@ Activity.find_or_initialize_by(stem_course_template_no: '5be69f65-60c1-ec11-983e
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP444'
   activity.remote_delivered_cpd = true
+
+  activity.programmes = [secondary_certificate]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '54cfbac3-3b13-ed11-b83d-000d3a875742') do |activity|

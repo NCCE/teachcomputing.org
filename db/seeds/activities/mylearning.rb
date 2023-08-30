@@ -297,7 +297,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_initialize_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce').tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: '06e59bb7-a1b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Introduction to Programming with Scratch'
   activity.credit = 50
   activity.slug = 'introduction-to-programming-with-scratch'
@@ -342,7 +342,7 @@ a.programmes << primary_certificate unless a.programmes.include?(primary_certifi
 
 ########################################################################################################################
 
-a = Activity.find_or_initialize_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce').tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597-0022481b59ce').tap do |activity|
   activity.title = 'Creating an Inclusive Classroom: Approaches to Supporting Learners with SEND in Computing'
   activity.credit = 50
   activity.slug = 'creating-an-inclusive-classroom-approaches-to-supporting-learners-with-send-in-computing'
