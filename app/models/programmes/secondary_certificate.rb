@@ -46,5 +46,9 @@ module Programmes
     def pathways?
       true
     end
+
+    def enrichment_enabled?
+      true
+    end
   end
 end

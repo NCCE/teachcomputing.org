@@ -1,0 +1,68 @@
+.ncce-enrichment {
+  &-this-term {
+    background-color: $purple-dark;
+    color: $white;
+    width: fit-content;
+    padding: 1px 0.81rem;
+    margin-bottom: 0;
+  }
+
+  &-no-this-term {
+    height: 29px;
+    width: 10px;
+  }
+
+  &-cards {
+    display: grid;
+    @include govuk-media-query($from: desktop) {
+      grid-template-columns: 1fr 1fr;
+    }
+    gap: 1.25rem 2.5rem;
+  }
+
+  &-card {
+    background-color: $light-blue;
+    padding: 0.63rem;
+
+    &--entries {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &--entry {
+      background-color: white;
+      padding: 0.63rem;
+      display: flex;
+      align-items: center;
+
+      > div {
+        flex-grow: 1;
+
+        > p {
+          margin-bottom: 0;
+        }
+      }
+
+      @include govuk-media-query($until: tablet) {
+        a img {
+          display: none;
+          width: 100px;
+        }
+      }
+
+      a img {
+        width: 100px;
+      }
+    }
+
+    &--coming-soon {
+      background-color: white;
+      padding: 0.63rem;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

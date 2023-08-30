@@ -283,4 +283,12 @@ RSpec.describe Programme, type: :model do
       expect(programme.user_is_eligible?(user)).to be true
     end
   end
+
+  describe '#enrichment_enabled?' do
+    let(:programme) { create(:programme) }
+
+    it 'should return false' do
+      expect(programme.enrichment_enabled?).to be false
+    end
+  end
 end

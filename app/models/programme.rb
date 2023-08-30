@@ -15,6 +15,7 @@ class Programme < ApplicationRecord
   has_many :questionnaires, dependent: :nullify
   has_many :pathways, dependent: :nullify
   has_many :badges
+  has_many :enrichment_groupings
 
   validates :title, :description, :slug, presence: true
 
@@ -112,5 +113,9 @@ class Programme < ApplicationRecord
 
   def user_is_eligible?(user)
     true
+  end
+
+  def enrichment_enabled?
+    false
   end
 end

@@ -191,6 +191,10 @@ Rails.application.routes.draw do
   get '/welcome', to: 'welcome#show', as: :welcome
 
   resources :user, only: :update, param: :uuid
+  resources :enrichment, only: :show, param: :slug
+
+  get '/primary-enrichment', to: 'enrichment#show', defaults: { slug: 'primary-certificate' }
+  get '/secondary-enrichment', to: 'enrichment#show', defaults: { slug: 'secondary-certificate' }
 
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')
