@@ -7,6 +7,11 @@
     margin-bottom: 0;
   }
 
+  &-no-this-term {
+    height: 29px;
+    width: 10px;
+  }
+
   &-cards {
     display: grid;
     @include govuk-media-query($from: desktop) {
@@ -39,8 +44,24 @@
         }
       }
 
+      @include govuk-media-query($until: tablet) {
+        > img {
+          display: none;
+          width: 100px;
+        }
+      }
+
       > img {
         width: 100px;
+      }
+    }
+
+    &--coming-soon {
+      background-color: white;
+      padding: 0.63rem;
+
+      p {
+        margin-bottom: 0;
       }
     }
   }

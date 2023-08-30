@@ -8,7 +8,7 @@ class CreateEnrichmentGroupings < ActiveRecord::Migration[6.1]
       t.datetime :term_start
       t.datetime :term_end
       t.boolean :published
-      t.boolean :coming_soon
+      t.boolean :coming_soon, null: false, default: false
 
       t.timestamps
     end
