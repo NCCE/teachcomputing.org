@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1
-  browser-tools: circleci/browser-tools@1.4.3
+  browser-tools: circleci/browser-tools@1.4.4
 
 jobs:
   brakeman:
@@ -78,7 +78,8 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-      - browser-tools/install-browser-tools
+      - browser-tools/install-browser-tools:
+          chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed
       - run:
           name: Run rspec
           command: |
@@ -139,4 +140,4 @@ workflows:
             branches:
               ignore:
                 - master
-                - main          
+                - main
