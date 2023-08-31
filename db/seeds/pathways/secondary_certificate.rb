@@ -33,7 +33,6 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
   end
 
   remove_cpds = [
-    'CO230'
   ]
 
   remove_cpds.each do |cpd|
