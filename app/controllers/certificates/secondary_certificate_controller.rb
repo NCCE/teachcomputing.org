@@ -12,7 +12,7 @@ module Certificates
       assign_achievements
 
       @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
-      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
+      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug }
 
       @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
@@ -52,13 +52,9 @@ module Certificates
       end
 
       def assign_recommended_activities
-        if user_pathway.nil?
-          @recommended_activities = nil
-        else
-          recommended_activities = user_pathway.pathway_activities.includes(:activity)
-          @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
-          @recommended_activities = recommended_activities - @recommended_community_activities
-        end
+        recommended_activities = user_pathway.pathway_activities.includes(:activity)
+        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
+        @recommended_activities = recommended_activities - @recommended_community_activities
       end
 
       def enrolment

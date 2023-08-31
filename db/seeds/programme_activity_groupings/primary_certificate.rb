@@ -75,7 +75,6 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
     'join-and-present-at-your-local-computing-at-school-community'
   ]
 
-
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity, index + 1)
   end

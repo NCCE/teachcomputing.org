@@ -17,7 +17,7 @@ module Certificates
       assign_issued_badge_data
 
       @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
-      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug } if user_pathway.present?
+      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug }
       assign_programme_activity_groupings
       assign_pathway_recommendations
 
@@ -67,8 +67,6 @@ module Certificates
       end
 
       def assign_pathway_recommendations
-        return nil unless user_pathway
-
         recommended_activities = user_pathway.pathway_activities.includes(:activity)
         @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
         @recommended_activities = recommended_activities - @recommended_community_activities
