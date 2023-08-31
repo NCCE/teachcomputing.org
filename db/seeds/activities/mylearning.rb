@@ -356,3 +356,18 @@ Activity.find_or_initialize_by(stem_course_template_no: 'ded270cb-a4b6-ed11-b597
 end.save
 
 ########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: 'e83971ba-ce3d-ee11-bdf4-002248c6f783').tap do |activity|
+  activity.title = 'How to utilise the teach computing curriculum effectively (Key Stages 3 and 4)'
+  activity.credit = 50
+  activity.slug = 'how-to-utilise-the-teach-computing-curriculum-effectively-key-stages-3-and-4'
+  activity.category = 'online'
+  activity.self_certifiable = false
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CO230'
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+########################################################################################################################
