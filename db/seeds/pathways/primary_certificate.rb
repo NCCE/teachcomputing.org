@@ -146,7 +146,9 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
     'CP252',
     'CP292',
     'CP461',
-    'CP457'
+    'CP457',
+    'CO040',
+    'CO042'
   ]
 
   cpds.each do |cpd|
@@ -154,8 +156,6 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   end
 
   remove_cpds = [
-    'CO040',
-    'CO042'
   ]
 
   remove_cpds.each do |cpd|
@@ -213,6 +213,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
     'CP460',
     'CP467',
     'CP252',
+    'CO042',
     'CP292'
   ]
 
@@ -221,7 +222,6 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   end
 
   remove_cpds = [
-    'CO042'
   ]
 
   remove_cpds.each do |cpd|
