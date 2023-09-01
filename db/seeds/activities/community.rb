@@ -1,3 +1,4 @@
+include S3LinkHelper
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 i_belong = Programme.i_belong
@@ -417,8 +418,8 @@ Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').t
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Download and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives.'
-  activity.coming_soon = true
+  activity.description = "<a href=\"#{i_belong_handbook_url}\">Download</a> and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives."
+  activity.coming_soon = false
 
   activity.programmes = [i_belong]
 end.save
