@@ -22,7 +22,7 @@ end.save
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
   group.title = '<strong>Access</strong> and <strong>complete all</strong> of the following activities'
   group.sort_key = 3
-  group.required_for_completion = 2
+  group.required_for_completion = 3
   group.programme_id = i_belong.id
   group.progress_bar_title = '<strong>Access</strong> resources to support you'
   group.community = true
