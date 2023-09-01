@@ -165,7 +165,7 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   activities = [
   # Develop your teaching practice
     'raise-aspirations-with-a-stem-ambassador-visit',
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary',
     'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
 
@@ -180,6 +180,14 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end
 
@@ -231,7 +239,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   activities = [
     # Develop your teaching practice
     'raise-aspirations-with-a-stem-ambassador-visit',
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary',
     'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
 
@@ -246,6 +254,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   end
 
   remove_activities = [
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
     'run-or-support-a-code-club-in-your-school'
   ]
 
