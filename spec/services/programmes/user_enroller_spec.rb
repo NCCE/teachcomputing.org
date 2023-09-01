@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Programmes::UserEnroller do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:enroller) { described_class.new({ user_id: user.id, programme_id: programme.id }) }
+  let(:enroller) { described_class.new({ user_id: user.id, programme_id: programme.id, pathway_slug: programme.pathways.first&.slug }) }
 
   describe '#call' do
     it 'creates the user programme enrolment' do

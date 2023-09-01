@@ -12,6 +12,7 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   validates :user, :programme, presence: true
   validates :user, uniqueness: { scope: [:programme] }
+  validates :pathway, presence: true, if: -> { programme&.pathways? }
 
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
