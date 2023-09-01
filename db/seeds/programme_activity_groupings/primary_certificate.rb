@@ -39,6 +39,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
     'raise-aspirations-with-a-stem-ambassador-visit',
     'attend-a-cas-community-meeting',
     'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary',
     'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom'
   ]

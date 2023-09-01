@@ -318,6 +318,21 @@ Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-en
   activity.public_copy_title_url = 'http://www.teachcomputing.org/secondary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary').tap do |activity|
+  activity.title = 'Participate fully in an NCCE curriculum enrichment opportunity'
+  activity.credit = 10
+  activity.slug = 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = 'Encourage young people to develop important life skills through <a href="https://teachcomputing.org/primary-enrichment">enrichment</a> and engage with the wider community in practical, enjoyable, and meaningful ways.'
+  activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.'
+  activity.public_copy_title_url = 'http://www.teachcomputing.org/primary-enrichment'
+  activity.self_verification_info = 'Please provide us with evidence of delivery'
+
   activity.programmes = [primary_certificate]
 end.save
 
