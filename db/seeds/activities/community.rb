@@ -313,9 +313,9 @@ Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-en
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = 'Encourage young people to develop important life skills through <a href="https://teachcomputing.org/primary-enrichment">enrichment</a> and engage with the wider community in practical, enjoyable, and meaningful ways.'
+  activity.description = 'Encourage young people to develop important life skills through <a href="https://teachcomputing.org/secondary-enrichment">enrichment</a> and engage with the wider community in practical, enjoyable, and meaningful ways.'
   activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.'
-  activity.public_copy_title_url = 'http://www.teachcomputing.org/primary-enrichment'
+  activity.public_copy_title_url = 'http://www.teachcomputing.org/secondary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [primary_certificate]
@@ -595,9 +595,9 @@ Activity.find_or_initialize_by(slug: 'join-the-ib-encouraging-girls-into-cs-prog
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = '<a href="https://teachcomputing.org/I-Belong">I Belong</a> is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
+  activity.description = '<a href="https://teachcomputing.org/i-belong">I Belong</a> is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
   activity.public_copy_description = 'I Belong is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
-  activity.public_copy_title_url = 'https://teachcomputing.org/I-Belong'
+  activity.public_copy_title_url = 'https://teachcomputing.org/i-belong'
   activity.self_verification_info = 'Please provide us with evidence of your registration'
 
   activity.programmes = [secondary_certificate]
@@ -640,9 +640,9 @@ Activity.find_or_initialize_by(slug: 'gain-accreditation-as-an-i-belong-champion
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = 'Become an <a href="https://teachcomputing.org/I-Belong">I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
+  activity.description = 'Become an <a href="https://teachcomputing.org/i-belong">I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
   activity.public_copy_description = 'Become an I Belong Champion to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
-  activity.public_copy_title_url = 'https://teachcomputing.org/I-Belong'
+  activity.public_copy_title_url = 'https://teachcomputing.org/i-belong'
   activity.self_verification_info = 'Please provide us with evidence of completion'
 
   activity.programmes = [secondary_certificate]
