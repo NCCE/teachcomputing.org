@@ -238,11 +238,18 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
     # Develop computing in your community
     'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community',
     'support-other-teachers-and-earn-a-stem-community-participation-badge',
-    'run-or-support-a-code-club-in-your-school',
     'run-an-enrichment-activity-in-your-classroom'
   ]
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'run-or-support-a-code-club-in-your-school'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end
