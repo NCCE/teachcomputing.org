@@ -8,9 +8,9 @@ module Programmes
 
     def call
       enrolment = UserProgrammeEnrolment.new(user_id: @user_id, programme_id: @programme_id)
-      return false unless enrolment.save
+      enrolment.assign_pathway(@pathway_slug) if @pathway_slug.present?
 
-      enrolment.assign_pathway(@pathway_slug) if @pathway_slug.present? && enrolment.programme.pathways?
+      return false unless enrolment.save
 
       KickOffEmailsJob.perform_later(enrolment.id)
       Achiever::ScheduleCertificateSyncJob.perform_later(enrolment.id)

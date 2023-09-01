@@ -46,11 +46,24 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
     completed_activity_ids = user.achievements.in_state(:complete).pluck(:activity_id)
 
-    completed_non_legacy_activities, non_completed_non_legacy_activities = programme_activities
+    completed_non_legacy_activities = []
+    non_completed_non_legacy_activities = []
+
+    programme_activities
       .not_legacy
-      .joins(activity: :pathway_activities)
-      .where(activity: { pathway_activities: { pathway: pathway } } )
-      .partition { completed_activity_ids.include?(_1.activity_id) }
+      .includes(activity: :pathway_activities)
+      .each do |programme_activity|
+        completed = completed_activity_ids.include?(programme_activity.activity_id)
+
+        next completed_non_legacy_activities << programme_activity if completed
+
+        belongs_to_pathway = programme_activity
+          .activity
+          .pathway_activities
+          .any? { _1.pathway == pathway }
+
+        next non_completed_non_legacy_activities << programme_activity if belongs_to_pathway
+      end
 
     completed_legacy_activities = programme_activities
       .legacy

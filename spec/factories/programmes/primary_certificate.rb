@@ -4,6 +4,7 @@ FactoryBot.define do
     slug { 'primary-certificate' }
     description { 'This is the Primary programme' }
     enrollable { true }
+    pathways { create_list(:pathway, 3) }
 
     trait :with_activity_groupings do
       after(:create) do |programme|

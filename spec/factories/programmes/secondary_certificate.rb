@@ -4,5 +4,6 @@ FactoryBot.define do
       slug { 'secondary-certificate' }
       description { 'This is the Secondary programme' }
       enrollable { true }
+      pathways { create_list(:pathway, 3) }
     end
   end
