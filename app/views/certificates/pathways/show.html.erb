@@ -78,7 +78,7 @@
                   <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
                       <p class="ncce-pathway-courses__link">
-                        <%= link_to programme_activity.activity.title, '#', class: 'ncce-link' %>
+                        <%= link_to programme_activity.activity.title, programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
                       </p>
                       <p class="govuk-body-s">
                         <%= programme_activity.activity.public_copy_description %>
