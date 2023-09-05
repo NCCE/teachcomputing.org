@@ -64,7 +64,6 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
             <h2 class="govuk-heading-l ncce-heading-l__centered">Resources to support you</h2>
-            <% download_info = download_message_and_link %>
               <%= render NonBorderedCardsComponent.new(
                 class_name: 'resource-cards',
                 cards_per_row: 3,
@@ -74,8 +73,8 @@
                     title: 'I Belong handbook',
                     text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake of computer science by girls in your school.',
                     link: {
-                      link_url: download_info[:link_url],
-                      link_title: download_info[:download_message],
+                      link_title: handbook_download_title,
+                      link_url: handbook_download_url
                     }
                 },
                 {
