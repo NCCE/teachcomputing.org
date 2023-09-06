@@ -54,8 +54,8 @@ en:
                 url: "/secondary-certificate"
                 event-label: "Secondary certificate"
             link:
-              title: "Download senior leader guide"
-              url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
+              title: "View Subject knowledge certificate"
+              url: "/cs-accelerator"
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"
