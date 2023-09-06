@@ -36,7 +36,7 @@ class PagesController < ApplicationController
       posters_link_method = :get
       cta_link_path = i_belong_path
       cta_link_method = :get
-      handbook_download_url = 'https://static.teachcomputing.org/I+Belong+Handbook.pdf'
+      handbook_download_url = helpers.i_belong_handbook_url
       handbook_download_title = 'Download your handbook'
     when :unenrolled
       posters_link_title = 'Enrol to request'
