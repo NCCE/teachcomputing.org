@@ -36,18 +36,24 @@ class PagesController < ApplicationController
       posters_link_method = :get
       cta_link_path = i_belong_path
       cta_link_method = :get
+      handbook_download_url = helpers.i_belong_handbook_url
+      handbook_download_title = 'Download your handbook'
     when :unenrolled
       posters_link_title = 'Enrol to request'
       posters_link = enrol_path
       posters_link_method = :post
       cta_link_path = enrol_path
       cta_link_method = :post
+      handbook_download_url = dashboard_path
+      handbook_download_title = 'Enrol to download'
     else
       posters_link_title = 'Log in to request'
       posters_link = helpers.auth_url
       posters_link_method = :post
       cta_link_path = helpers.auth_url
       cta_link_method = :post
+      handbook_download_url = login_path
+      handbook_download_title = 'Log in to download'
     end
 
     render(
@@ -57,7 +63,9 @@ class PagesController < ApplicationController
                 cta_link_method:,
                 posters_link_title:,
                 posters_link:,
-                posters_link_method:
+                posters_link_method:,
+                handbook_download_url:,
+                handbook_download_title:
       }
     )
   end
