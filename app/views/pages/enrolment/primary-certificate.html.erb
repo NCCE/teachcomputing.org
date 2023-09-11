@@ -43,7 +43,7 @@
               <%= t(
                     '.how_does_it_work_1',
                     create_an_account: link_to('create an account', create_account_url, data: { event_action: 'click', event_category: 'primary enrolment', event_label: 'create an account' }),
-                    log_in: link_to('log in', auth_url, data: { event_action: 'click', event_category: 'primary enrolment', event_label: 'log in' })
+                    log_in: link_to('log in', auth_url, data: { event_action: 'click', event_category: 'primary enrolment', event_label: 'log in' }, method: :post)
               ).html_safe %>
             </li>
             <li><%= t('.how_does_it_work_2') %></li>

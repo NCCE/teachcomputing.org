@@ -46,7 +46,7 @@ RSpec.describe Achievement, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:activity) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:programme) }
+    it { is_expected.to belong_to(:programme).optional(true) }
     it { is_expected.to have_many(:achievement_transitions) }
   end
 

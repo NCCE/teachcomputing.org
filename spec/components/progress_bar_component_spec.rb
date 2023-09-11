@@ -11,29 +11,29 @@ RSpec.describe ProgressBarComponent, type: :component do
         groupings[3].update(progress_bar_title: 'Develop computing in your community')
       end
     end
-    
+
     context "when primary certificate" do
 
-      before(:each) do 
+      before(:each) do
         primary_programme_activity_groupings
         render_inline(described_class.new(user, primary_certificate))
-      end 
-      
+      end
+
       it 'has a title' do
         expect(page).to have_css('h4', text: 'Your certificate progress')
-      end 
-    
+      end
+
       it 'has a description' do
         expect(page).to have_css('.ncce-progress-section--description', count: 1)
-      end 
-      
+      end
+
       it 'has 3 completion steps' do
-        expect(rendered_component).to have_css('.ncce-progress-section') do
-          expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Complete professional development')
-          expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop your teaching practice')
-          expect(rendered_component).to have_css('.ncce-progress-section--text', text: 'Develop computing in your community')
+        expect(page).to have_css('.ncce-progress-section') do
+          expect(page).to have_css('.ncce-progress-section--text', text: 'Complete professional development')
+          expect(page).to have_css('.ncce-progress-section--text', text: 'Develop your teaching practice')
+          expect(page).to have_css('.ncce-progress-section--text', text: 'Develop computing in your community')
         end
-      end 
-    end 
+      end
+    end
   end
-  
+
