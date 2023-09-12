@@ -10,7 +10,6 @@ module Certificates
     def show
       return redirect_to complete_a_level_path if @programme.user_completed?(current_user)
 
-      assign_achievements
       @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
       @badge_tracking_event_category = 'A Level enrolled'
@@ -18,14 +17,6 @@ module Certificates
       assign_issued_badge_data
 
       render :show
-    end
-
-    def pending
-      return redirect_to complete_a_level_path if enrolment.current_state == 'complete'
-
-      @complete_achievements = complete_achievements
-
-      render :pending
     end
 
     def complete
@@ -49,12 +40,6 @@ module Certificates
 
       def enrolment
         current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
-      end
-
-      def assign_achievements
-        @online_achievements = user_achievements(Activity::ONLINE_CATEGORY)
-        @face_to_face_achievements = user_achievements(Activity::FACE_TO_FACE_CATEGORY)
-        @community_achievements = user_achievements(Activity::COMMUNITY_CATEGORY)
       end
 
       def user_achievements(category)
