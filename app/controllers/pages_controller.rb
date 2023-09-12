@@ -81,6 +81,6 @@ class PagesController < ApplicationController
     @programme = Programme.includes(:pathways).find_by!(slug: params[:page_slug])
     redirect_to(@programme.path) and return if @programme.user_enrolled?(current_user)
 
-    render template: "pages/enrolment/#{params[:page_slug]}"
+    render template: "pages/enrolment/#{params[:page_slug].underscore}"
   end
 end
