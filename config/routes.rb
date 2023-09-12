@@ -90,7 +90,6 @@ Rails.application.routes.draw do
 
     resource 'a_level', controller: 'a_level', path: 'a-level', only: :show, as: :a_level do
       get '/complete', action: :complete, as: :complete
-      get '/pending', action: :pending, as: :pending
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
                                defaults: { slug: 'a-level' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
