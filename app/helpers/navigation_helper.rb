@@ -30,8 +30,9 @@ module NavigationHelper
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
           { text: 'Secondary question banks', link: secondary_question_banks_path, label: 'Teaching resources' },
-          { text: 'Primary computing glossary', link: '/primary-computing-glossary', label: 'Resources primary glossary' },
-          { text: 'Pedagogy', link: '/pedagogy', label: 'Pedagogy' },
+          { text: 'Artificial Intelligence', link: cms_page_path(page_slug: 'artificial-intelligence'), label: 'Artificial Intelligence' },
+          { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' },
+          { text: 'Pedagogy', link: cms_page_path(page_slug: '/pedagogy'), label: 'Pedagogy' },
           { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
           { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' }
         ] },
