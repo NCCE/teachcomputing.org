@@ -1,3 +1,5 @@
+include ExternalLinkHelper
+
 programme = Programme.primary_certificate
 
 programme.enrichment_groupings.find_or_initialize_by(title: 'Autumn term').becomes!(EnrichmentGroupings::Term).tap do |g|
@@ -12,21 +14,21 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Autumn term').becom
     e.title = 'Moon Camp'
     e.title_url = 'https://mooncampchallenge.org/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/moon_camp.png'
-    e.body = 'In the Moon Camp Challenge pupils can explore and design their own Moon settlement with a 3D modelling tool.'
+    e.body = "In the Moon Camp Challenge pupils can explore and design their own Moon settlement with a 3D modelling tool.<br><br><a href=\"#{primary_mooncamp_webinar_url}\">Join the webinar to find out more</a>"
   end.save
 
   g.enrichment_entries.find_or_initialize_by(title: 'Astro Pi').tap do |e|
     e.title = 'Astro Pi'
     e.title_url = 'https://astro-pi.org/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/astro_pi.png'
-    e.body = 'An opportunity for young people to carry out their own scientific investigations in space, writing computer programs that will run aboard the International Space Station.'
+    e.body = "An opportunity for young people to carry out their own scientific investigations in space, writing computer programs that will run aboard the International Space Station.<br><br><a href=\"#{primary_astro_pi_webinar_url}\">Join the webinar to find out more</a>"
   end.save
 
   g.enrichment_entries.find_or_initialize_by(title: 'Climate Detectives').tap do |e|
     e.title = 'Climate Detectives'
     e.title_url = 'https://www.stem.org.uk/esero/primary/competitions-and-challenges/climate-detectives'
     e.image_url = 'https://static.teachcomputing.org/enrichment/climate_detectives.png'
-    e.body = 'Teams of pupils are called to make a difference by identifying a climate problem, investigating it by using available Earth Observation data or taking measurements on the ground, and then proposing a way to help reduce the problem.'
+    e.body = "Teams of pupils are called to make a difference by identifying a climate problem, investigating it by using available Earth Observation data or taking measurements on the ground, and then proposing a way to help reduce the problem.<br><br><a href=\"#{climate_detectives_webinar_url}\">Join the webinar to find out more</a>"
   end.save
 end.save
 
