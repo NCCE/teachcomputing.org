@@ -1,7 +1,7 @@
 en:
   pages:
     enrolment:
-      primary-certificate:
+      primary_certificate:
         title_text: "Certificate awarded by BCS, The Chartered Institute for IT"
         intro:
           - "This professional development programme has been designed to guide primary teachers through our comprehensive offer of courses, enrichment and resources and leads to a nationally recognised certificate. We expect it to take around 20 hours to complete."

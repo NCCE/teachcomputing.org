@@ -60,7 +60,7 @@ module Certificates
       end
 
       def user_enrolled?
-        redirect_to i_belong_path unless @programme.user_enrolled?(current_user)
+        redirect_to about_a_level_path unless @programme.user_enrolled?(current_user)
       end
 
       def user_programme_enrolment_pending?
