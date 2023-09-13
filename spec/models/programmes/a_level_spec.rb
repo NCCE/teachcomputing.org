@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe Programmes::ALevel do
   subject { create(:a_level) }
 
+  describe '#mailer' do
+    it 'returns the ALevelMailer' do
+      expect(subject.mailer).to eq(ALevelMailer)
+    end
+  end
+
   describe '#path' do
     it 'returns the path for the programme' do
       expect(subject.path).to eq('/certificate/a-level')

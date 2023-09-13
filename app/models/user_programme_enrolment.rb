@@ -9,6 +9,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   belongs_to :pathway, optional: true
 
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
+  has_many :achiever_sync_records, dependent: :destroy
 
   validates :user, :programme, presence: true
   validates :user, uniqueness: { scope: [:programme] }

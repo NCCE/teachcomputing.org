@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/enrolment/primary-certificate', type: :view) do
+RSpec.describe('pages/enrolment/primary_certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
   let!(:pathways) { create_list(:pathway, 2, programme:) }
