@@ -56,16 +56,16 @@ RSpec.describe('components/_footer', type: :view) do
     expect(rendered).to have_link('ITE providers', href: '/support-for-ite-providers')
   end
 
-  it 'has a twitter link' do
-    expect(rendered).to have_link('Twitter', href: %r{twitter.com/WeAreComputing})
+  it 'has an X link' do
+    expect(rendered).to have_link('X', href: %r{twitter.com/WeAreComputing})
   end
 
   it 'has a facebook link' do
     expect(rendered).to have_link('Facebook', href: %r{facebook.com/WeAreComputing})
   end
 
-  it 'has a twitter icon' do
-    expect(rendered).to have_xpath('//img[contains(@class, "ncce-link__icon--footer")][contains(@alt, "Twitter logo")]')
+  it 'has an X icon' do
+    expect(rendered).to have_xpath('//img[contains(@class, "ncce-link__icon--footer")][contains(@alt, "X logo")]')
   end
 
   it 'has a facebook icon' do

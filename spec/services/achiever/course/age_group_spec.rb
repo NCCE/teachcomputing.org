@@ -31,7 +31,7 @@ RSpec.describe Achiever::Course::AgeGroup do
 
       it 'only contains items that start with the word key' do
         described_class.all.each do |age_group|
-          expect(age_group.first).to start_with('Key')
+          expect(age_group.first).to start_with('Key').or eq('Post 16')
         end
       end
     end

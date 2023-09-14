@@ -1,4 +1,4 @@
-include S3LinkHelper
+include ExternalLinkHelper
 primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 i_belong = Programme.i_belong
