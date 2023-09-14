@@ -22,7 +22,7 @@ RSpec.describe('pages/enrolment/i_belong', type: :view) do
   end
 
   it 'has a description section' do
-    expect(rendered).to have_content('We offer a curated package of training')
+    expect(rendered).to have_content('Computer science is the fastest-growing STEM subject, and yet, despite its popularity, girls are consistently outnumbered by boys.')
   end
 
   it 'has a side image' do
