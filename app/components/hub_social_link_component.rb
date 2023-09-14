@@ -12,7 +12,7 @@ class HubSocialLinkComponent < ViewComponent::Base
       @value
     when 'facebook'
       "https://facebook.com/#{@value}"
-    when 'twitter'
+    when 'twitter', 'x'
       "https://twitter.com/#{@value}"
     end
   end
@@ -29,8 +29,8 @@ class HubSocialLinkComponent < ViewComponent::Base
     case @type
     when 'website', 'facebook'
       "media/images/social-media/#{@type}.svg"
-    when 'twitter'
-      'media/images/social-media/twitter_round.svg'
+    when 'twitter', 'x'
+      "media/images/social-media/x_grey.svg"
     end
   end
 

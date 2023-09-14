@@ -10,12 +10,26 @@ RSpec.describe HubSocialLinkComponent, type: :component do
     it 'renders correct image' do
       render_inline(described_class.new(type: 'twitter', value: '@twithandle'))
       expect(page).to have_xpath(
-        '//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "twitter icon")][contains(@src, "packs-test/media/images/social-media/twitter_round-")]'
+        '//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "twitter icon")][contains(@src, "packs-test/media/images/social-media/x_grey-")]'
       )
     end
 
     it 'displays link to twitter' do
       render_inline(described_class.new(type: 'twitter', value: '@twithandle'))
+      expect(page).to have_link('', href: 'https://twitter.com/@twithandle')
+    end
+  end
+
+  context 'when type is x' do
+    it 'renders correct image' do
+      render_inline(described_class.new(type: 'x', value: '@twithandle'))
+      expect(page).to have_xpath(
+        '//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "x icon")][contains(@src, "packs-test/media/images/social-media/x_grey-")]'
+      )
+    end
+
+    it 'displays link to twitter' do
+      render_inline(described_class.new(type: 'x', value: '@twithandle'))
       expect(page).to have_link('', href: 'https://twitter.com/@twithandle')
     end
   end

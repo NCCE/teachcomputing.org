@@ -10,4 +10,8 @@ class HubSocialLinkComponentPreview < ViewComponent::Preview
   def twitter
     render(HubSocialLinkComponent.new(type: 'twitter', value: 'faketwitaccount'))
   end
+
+  def x
+    render(HubSocialLinkComponent.new(type: 'x', value: 'faketwitaccount'))
+  end
 end
