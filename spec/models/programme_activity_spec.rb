@@ -13,7 +13,7 @@ RSpec.describe ProgrammeActivity, type: :model do
     end
 
     it 'belongs to programme activity grouping' do
-      expect(programme_activity).to belong_to(:programme_activity_grouping)
+      expect(programme_activity).to belong_to(:programme_activity_grouping).optional(true)
     end
   end
 

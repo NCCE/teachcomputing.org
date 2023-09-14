@@ -82,6 +82,18 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
+a = Activity.find_or_create_by(stem_course_template_no: 'c9df7e7f-6146-ee11-be6e-002248c6f524') do |activity|
+  activity.title = 'Adapting the Teach Computing Curriculum for mixed-year classes'
+  activity.slug = 'adapting-the-teach-computing-curriculum-for-mixed-year-classes'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP404'
+  activity.credit = 15
+end
+
+a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+
 a = Activity.find_or_create_by(stem_course_template_no: '68f5b6c5-556d-4b66-8159-7cd6019da6f3') do |activity|
   activity.title = 'Primary programming and algorithms'
   activity.credit = 40
