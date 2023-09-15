@@ -6,23 +6,6 @@ module Programmes
       SecondaryMailer
     end
 
-    def user_is_eligible?(user)
-      programme = Programme.find_by(slug: 'cs-accelerator')
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)
-      enrolment&.current_state == :complete.to_s
-    end
-
-    def csa_eligible_courses(user)
-      programme = Programme.cs_accelerator
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
-      return unless enrolment
-
-      achievements = user.achievements.for_programme(programme).in_state(:complete)
-      achievements.filter do |achievement|
-        achievement.last_transition.created_at > enrolment.completed_at?
-      end
-    end
-
     def path
       secondary_certificate_path
     end

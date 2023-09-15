@@ -39,9 +39,11 @@ RSpec.describe PathwayEnrolComponent, type: :component do
     end
 
     context 'when user doesn\'t meet enrolment requirements' do
-      let(:programme) { create(:secondary_certificate) }
-
       it 'doesn\'t render an Enrol button' do
+        allow(programme).to receive(:user_is_eligible?).with(user).and_return(false)
+
+        render_inline(described_class.new(programme:, pathway:, current_user: user))
+
         expect(page).not_to have_css('.govuk-button', text: 'Enrol')
       end
     end
