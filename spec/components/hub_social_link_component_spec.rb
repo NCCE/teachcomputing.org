@@ -61,4 +61,18 @@ RSpec.describe HubSocialLinkComponent, type: :component do
       expect(page).to have_link('', href: 'https://www.example.com')
     end
   end
+
+  context 'when type is linkedin' do
+    it 'renders correct image' do
+      render_inline(described_class.new(type: 'linkedin', value: 'https://linkedin.com'))
+      expect(page).to have_xpath(
+        '//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "linkedin icon")][contains(@src, "packs-test/media/images/social-media/linkedin-")]'
+      )
+    end
+
+    it 'displays link to linkedin' do
+      render_inline(described_class.new(type: 'linkedin', value: 'https://linkedin.com'))
+      expect(page).to have_link('', href: 'https://linkedin.com')
+    end
+  end
 end
