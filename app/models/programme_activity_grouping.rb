@@ -49,7 +49,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
     programme_activities
       .not_legacy
-      .includes(activity: { pathway_activities: :pathway })
+      .includes(activity: :pathway_activities)
       .each do |programme_activity|
         completed = completed_activity_ids.include?(programme_activity.activity_id)
 
@@ -58,7 +58,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
         belongs_to_pathway = programme_activity
           .activity
           .pathway_activities
-          .any? { _1.pathway == pathway }
+          .any? { _1.pathway_id == pathway.id }
 
         next non_completed_non_legacy_activities << programme_activity if belongs_to_pathway
       end
