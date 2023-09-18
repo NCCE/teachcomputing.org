@@ -2052,3 +2052,30 @@ Activity.find_or_create_by(stem_course_template_no: '7b4a4c4b-a920-ee11-9966-002
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP403'
 end
+
+Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Encouraging girls into GCSE computer science refresher - remote - short course – invite only'
+  activity.slug = 'encouraging-girls-into-gcse-computer-science-refresher-remote-short-course–invite-only'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CY440 A01'
+end
+
+Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Encouraging girls into GCSE computer science refresher - remote - short course – invite only'
+  activity.slug = 'encouraging-girls-into-gcse-computer-science-refresher-remote-short-course–invite-only'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CY440 A02'
+end
+
+Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-0022481a6ad5') do |activity|
+  activity.title = 'Encouraging girls into GCSE computer science refresher - remote - short course – invite only'
+  activity.slug = 'encouraging-girls-into-gcse-computer-science-refresher-remote-short-course–invite-only'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CY440 A03'
+end
