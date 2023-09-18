@@ -120,7 +120,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
 
       it 'should return just the legacy programme activities' do
         expect(
-          programme_activity_grouping.order_programme_activities_for_user(user)
+          programme_activity_grouping.order_programme_activities_for_user(user, nil)
         ).to match_array legacy_programme_activities
       end
 
@@ -137,7 +137,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
         context 'when the user has not completed any activities' do
           it 'should only return non legacy activities belonging to the pathway' do
             expect(
-              programme_activity_grouping.order_programme_activities_for_user(user)
+              programme_activity_grouping.order_programme_activities_for_user(user, pathway)
             ).to match_array programme_activities.first(3)
           end
         end
@@ -148,7 +148,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
           end
 
           it 'should return completed activity before non-completed' do
-            output = programme_activity_grouping.order_programme_activities_for_user(user)
+            output = programme_activity_grouping.order_programme_activities_for_user(user, pathway)
 
             expect(output.first).to eq programme_activities.third
             expect(output[1..]).to match_array programme_activities[0..1]
@@ -162,7 +162,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
           end
 
           it 'should return legacy before completed activity before non-completed' do
-            output = programme_activity_grouping.order_programme_activities_for_user(user)
+            output = programme_activity_grouping.order_programme_activities_for_user(user, pathway)
 
             expect(output.first).to eq legacy_programme_activities.third
             expect(output.second).to eq programme_activities.third
