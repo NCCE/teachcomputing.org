@@ -3,22 +3,25 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "40947d3dbf33d0b0535f87b2d8bef5f38b6b626b133f8cf47691a6f0d84f9b42",
+      "fingerprint": "0253a05ba9866ed1bb1ae30092d6fccc72dd62a57cd77abeede8438abfcd8067",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
-      "file": "app/controllers/pages_controller.rb",
-      "line": 30,
+      "file": "app/controllers/user_programme_enrolments_controller.rb",
+      "line": 37,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Programme.find_by!(:slug => params[:page_slug]).path)",
+      "code": "redirect_to(Programme.primary_certificate.path)",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "PagesController",
-        "method": "static_programme_page"
+        "class": "UserProgrammeEnrolmentsController",
+        "method": "destroy_message_flags_primary_pathway_migrated"
       },
-      "user_input": "Programme.find_by!(:slug => params[:page_slug]).path",
+      "user_input": "Programme.primary_certificate.path",
       "confidence": "High",
-      "note": ""
+      "cwe_id": [
+        601
+      ],
+      "note": "This is a method defined on the controller and can be considered safe"
     },
     {
       "warning_type": "Redirect",
@@ -50,7 +53,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 32,
+      "line": 84,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/enrolment/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -73,7 +76,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 44,
+      "line": 56,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(UserProgrammeEnrolment.find_by(:user_id => user_programme_enrolment_params[:user_id], :programme_id => user_programme_enrolment_params[:programme_id]).programme.path)",
       "render_path": null,
@@ -96,7 +99,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/pages_controller.rb",
-      "line": 30,
+      "line": 82,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(Programme.includes(:pathways).find_by!(:slug => params[:page_slug]).path)",
       "render_path": null,
@@ -161,45 +164,11 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "dcb3e96a664b3f5013032f95ddfe95e7a797e9b47b7bdad885a63a379393cf28",
-      "check_name": "CrossSiteScripting",
-      "message": "Unescaped model attribute",
-      "file": "app/views/certificates/pathways/show.html.erb",
-      "line": 107,
-      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Pathway.not_legacy.find_by!(:slug => params[:slug]).improvement_cta",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "Certificates::PathwaysController",
-          "method": "show",
-          "line": 16,
-          "file": "app/controllers/certificates/pathways_controller.rb",
-          "rendered": {
-            "name": "certificates/pathways/show",
-            "file": "app/views/certificates/pathways/show.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "certificates/pathways/show"
-      },
-      "user_input": null,
-      "confidence": "Medium",
-      "cwe_id": [
-        79
-      ],
-      "note": "Pathways can only be edited by admins"
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 2,
       "fingerprint": "f744582e81aa51ea008411b831ac898315aef1bc3038ed9e6b59703c16df647a",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
       "file": "app/views/certificates/pathways/show.html.erb",
-      "line": 117,
+      "line": 104,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "t(\".download_pdf\", :title => Pathway.not_legacy.find_by!(:slug => params[:slug]).title.downcase)",
       "render_path": [
@@ -207,7 +176,7 @@
           "type": "controller",
           "class": "Certificates::PathwaysController",
           "method": "show",
-          "line": 16,
+          "line": 17,
           "file": "app/controllers/certificates/pathways_controller.rb",
           "rendered": {
             "name": "certificates/pathways/show",
@@ -227,6 +196,6 @@
       "note": "Pathways can only be edited by admins"
     }
   ],
-  "updated": "2023-08-11 08:05:27 +0000",
-  "brakeman_version": "6.0.0"
+  "updated": "2023-09-18 20:59:16 +0000",
+  "brakeman_version": "6.0.1"
 }

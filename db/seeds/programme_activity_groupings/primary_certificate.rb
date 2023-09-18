@@ -34,11 +34,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
   group.save
 
   activities = [
-    'review-a-resource-on-cas',
-    'host-or-attend-a-barefoot-workshop',
     'raise-aspirations-with-a-stem-ambassador-visit',
-    'attend-a-cas-community-meeting',
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
     'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary',
     'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom'
@@ -46,6 +42,17 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
 
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
+
+  remove_activities = [
+    'review-a-resource-on-cas',
+    'host-or-attend-a-barefoot-workshop',
+    'attend-a-cas-community-meeting',
+    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_grouping(group, activity)
   end
 end.save
 
@@ -60,10 +67,6 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
   group.save
 
   activities = [
-    'run-an-after-school-code-club',
-    'lead-a-session-at-a-regional-or-national-conference',
-    'lead-a-cas-community-of-practice',
-    'providing-additional-support',
     'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community',
     'gain-accreditation-as-a-professional-development-leader',
     'support-other-teachers-and-earn-a-stem-community-participation-badge',
@@ -78,5 +81,16 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
 
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity, index + 1)
+  end
+
+  remove_activities = [
+    'run-an-after-school-code-club',
+    'lead-a-session-at-a-regional-or-national-conference',
+    'lead-a-cas-community-of-practice',
+    'providing-additional-support'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_grouping(group, activity)
   end
 end.save
