@@ -19,6 +19,7 @@ class HubDashboard < Administrate::BaseDashboard
     website: Field::String,
     twitter: Field::String,
     facebook: Field::String,
+    linkedin: Field::String,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
     created_at: Field::DateTime,
@@ -49,6 +50,7 @@ class HubDashboard < Administrate::BaseDashboard
     website
     twitter
     facebook
+    linkedin
     latitude
     longitude
     created_at
@@ -69,6 +71,7 @@ class HubDashboard < Administrate::BaseDashboard
     website
     twitter
     facebook
+    linkedin
     latitude
     longitude
   ].freeze
