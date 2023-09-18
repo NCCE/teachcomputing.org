@@ -25,6 +25,18 @@ class UserProgrammeEnrolmentsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def destroy_message_flags_primary_pathway_migrated
+    enrolment = current_user
+      .user_programme_enrolments
+      .find_by!(programme: Programme.primary_certificate)
+
+    unless enrolment.update(message_flags_primary_pathway_migrated: nil)
+      flash[:error] = "Failed to clear information popup"
+    end
+
+    redirect_to Programme.primary_certificate.path
+  end
+
   private
 
     def user_programme_enrolment_params

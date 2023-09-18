@@ -1,5 +1,6 @@
 class ModalComponent < ViewComponent::Base
   renders_one :body
+  renders_one :close_button
 
   attr_reader :expanded, :title, :reopen_button_text
 

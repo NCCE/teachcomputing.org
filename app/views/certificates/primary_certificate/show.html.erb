@@ -9,6 +9,7 @@
         <div class="govuk-grid-column-two-thirds">
           <p class="govuk-body-m"><%= t('.introduction.html') %></p>
           <%= render partial: 'certificates/primary_certificate/pathway_prompt' unless @user_pathway %>
+          <%= render partial: 'flagged_messages' %>
           <%= render 'certificates/primary_certificate/achievement_list' %>
         </div>
         <div class="govuk-grid-column-one-third">

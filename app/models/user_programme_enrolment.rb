@@ -14,6 +14,8 @@ class UserProgrammeEnrolment < ApplicationRecord
   validates :user, uniqueness: { scope: [:programme] }
   validates :pathway, presence: true, if: -> { programme&.pathways? }
 
+  store_accessor :message_flags, %i[primary_pathway_migrated], prefix: true
+
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state
   end

@@ -17,8 +17,9 @@
     display: flex;
   }
 
-  .ncee-modal--header {
+  .ncce-modal--header {
     display: flex;
+    justify-content: space-between;
 
     .icon-close {
       height: 24px;
