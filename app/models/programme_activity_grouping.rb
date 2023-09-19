@@ -39,9 +39,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
     output.html_safe
   end
 
-  def order_programme_activities_for_user(user)
-    pathway = user.user_programme_enrolments.find_by(programme:).pathway
-
+  def order_programme_activities_for_user(user, pathway)
     return programme_activities.legacy unless pathway
 
     completed_activity_ids = user.achievements.in_state(:complete).pluck(:activity_id)
@@ -60,7 +58,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
         belongs_to_pathway = programme_activity
           .activity
           .pathway_activities
-          .any? { _1.pathway == pathway }
+          .any? { _1.pathway_id == pathway.id }
 
         next non_completed_non_legacy_activities << programme_activity if belongs_to_pathway
       end
