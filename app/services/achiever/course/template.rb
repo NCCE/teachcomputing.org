@@ -117,6 +117,8 @@ class Achiever::Course::Template
       @programmes.include?('Primary')
     when 'i-belong'
       @programmes.include?('I Belong')
+    when 'a-level'
+      @programmes.include?('A Level')
     end
   end
 
