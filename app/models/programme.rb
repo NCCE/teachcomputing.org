@@ -87,6 +87,10 @@ class Programme < ApplicationRecord
     slug == 'i-belong'
   end
 
+  def a_level?
+    slug == 'a-level'
+  end
+
   def pathways?
     false
   end

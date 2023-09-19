@@ -7,6 +7,7 @@ class Achiever::Request
       query_string = query_strings(query)
 
       response = perform_request(query_string, resource_path, CACHE, 1.day, 20.seconds)
+
       parsed_response = parse_response(response.body)
 
       if success?(response, parsed_response)
