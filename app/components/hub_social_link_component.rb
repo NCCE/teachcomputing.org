@@ -8,7 +8,7 @@ class HubSocialLinkComponent < ViewComponent::Base
 
   def social_link
     case @type
-    when 'website'
+    when 'website', 'linkedin'
       @value
     when 'facebook'
       "https://facebook.com/#{@value}"
@@ -31,6 +31,17 @@ class HubSocialLinkComponent < ViewComponent::Base
       "media/images/social-media/#{@type}.svg"
     when 'twitter', 'x'
       "media/images/social-media/x_grey.svg"
+    when 'linkedin'
+      "media/images/social-media/linkedin.png"
+    end
+  end
+
+  def image_class
+    case @type
+    when 'x'
+      'hub-social-link-component__x'
+    when 'linkedin'
+      'hub-social-link-component__linkedin'
     end
   end
 

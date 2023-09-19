@@ -1,5 +1,5 @@
 <%= link_to social_link,
     class: 'hub-social-link-component__link',
     data: tracking_data do %>
-  <%= image_pack_tag image_path, alt: "#{@type} icon", class: 'hub-social-link-component__image' %>
+    <%= image_pack_tag image_path, alt: "#{@type} icon", class: "hub-social-link-component__image #{image_class}" %>
 <% end %>
