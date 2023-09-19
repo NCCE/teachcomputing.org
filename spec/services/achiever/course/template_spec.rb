@@ -52,10 +52,6 @@ RSpec.describe Achiever::Course::Template do
       it 'contains hide from web' do
         expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:HideFromweb)
       end
-
-      it 'contains programme id' do
-        expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:ProgrammeName)
-      end
     end
   end
 

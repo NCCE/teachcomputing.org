@@ -2053,3 +2053,15 @@ Activity.find_or_create_by(stem_course_template_no: '7b4a4c4b-a920-ee11-9966-002
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP403'
 end
+
+Activity.find_or_initialize_by(stem_course_template_no: 'd38639b4-4d2d-ee11-9965-002248c6f524').tap do |activity|
+  activity.title = 'Supporting the I belong programme'
+  activity.slug = 'supporting-the-i-belong-programme'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 30
+  activity.stem_activity_code = 'FD022'
+
+  activity.programmes = [i_belong]
+end.save

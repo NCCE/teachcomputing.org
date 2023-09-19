@@ -3,9 +3,11 @@
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
-    <% @cpd_courses.each do |pa| %>
-      <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
-    <% end %>
+    <div>
+      <% @cpd_courses.each do |pa| %>
+        <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
+      <% end %>
+    </div>
   </li>
   <% if @issued_badge.present? %>
     <li class="ncce-activity-list__item">
@@ -30,8 +32,8 @@
     ).each do |programme_activity| %>
       <li class="ncce-activity-list__item">
         <%= render CommunityActivityComponent.new(
-          activity: Activity.find(programme_activity.activity_id),
-          achievement: @community_achievements&.find_by(activity_id: programme_activity.activity_id),
+          activity: programme_activity.activity,
+          achievement: @community_achievements.to_a.find { _1.activity_id == programme_activity.activity_id },
           tracking_category: tracking_category
         ) %>
       </li>

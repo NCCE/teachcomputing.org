@@ -56,7 +56,7 @@ class Achiever::Request
         return api.get("#{resource_path}&#{query_string}") unless cache
 
         Rails.cache.fetch(
-          resource_path,
+          "#{resource_path}&#{query_string}",
           expires_in: cache_expiry,
           race_condition_ttl:,
           namespace: 'achiever'

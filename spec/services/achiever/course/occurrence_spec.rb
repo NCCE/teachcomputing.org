@@ -56,10 +56,6 @@ RSpec.describe Achiever::Course::Occurrence do
       it 'contains end date' do
         expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:EndDate)
       end
-
-      it 'contains id' do
-        expect(Achiever::Course::Occurrence::QUERY_STRINGS).to have_key(:ProgrammeName)
-      end
     end
 
     describe '.face_to_face' do

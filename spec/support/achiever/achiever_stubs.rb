@@ -23,11 +23,47 @@ module AchieverStubs
     json_response = File.new('spec/support/achiever/courses/templates.json')
     stub_request(:get,
                  'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
+    json_response = %{
+      {
+        "GetJsonResult": {
+          "EntityName": "sic_eventtemplate",
+          "FailureReason": "",
+          "Counter": 0,
+          "MoreRecords": false,
+          "OptionSetName": null,
+          "Success": true,
+          "OptionSetsClean": null,
+          "OptionSets": null,
+          "Entities": []
+        }
+      }
+    }
+
+    stub_request(:get,
+                 'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=CourseTemplatesListingByProgramme').to_return(body: json_response)
   end
 
   def stub_delegate
     json_response = File.new('spec/support/achiever/courses/delegate.json')
     uri_template = Addressable::Template.new 'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO={contact_no}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CoursesForCurrentDelegateByProgramme'
+    stub_request(:get, uri_template).to_return(body: json_response)
+
+    json_response = %{
+      {
+        "GetJsonResult": {
+          "EntityName": "si_eventdelegate",
+          "FailureReason": "",
+          "Counter": 1,
+          "MoreRecords": false,
+          "OptionSetName": null,
+          "Success": true,
+          "OptionSetsClean": null,
+          "OptionSets": null,
+          "Entities": []
+        }
+      }
+    }
+    uri_template = Addressable::Template.new 'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO={contact_no}&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=CoursesForCurrentDelegateByProgramme'
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
@@ -41,11 +77,47 @@ module AchieverStubs
     json_response = File.new('spec/support/achiever/courses/face_to_face_occurrences.json')
     uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=#{ENV['ACHIEVER_F2F_METHOD']}"
     stub_request(:get, uri_template).to_return(body: json_response)
+
+    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Date={date}&EndDate={end_date}&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=#{ENV['ACHIEVER_F2F_METHOD']}"
+    json_response = %{
+      {
+        "GetJsonResult": {
+          "EntityName": "si_event",
+          "FailureReason": "",
+          "Counter": 0,
+          "MoreRecords": false,
+          "OptionSetName": null,
+          "Success": true,
+          "OptionSetsClean": null,
+          "OptionSets": null,
+          "Entities": []
+        }
+      }
+    }
+    stub_request(:get, uri_template).to_return(body: json_response)
   end
 
   def stub_online_occurrences
     json_response = File.new('spec/support/achiever/courses/online_occurrences.json')
     uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?EndDate={end_date}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=#{ENV['ACHIEVER_ONLINE_METHOD']}"
+    stub_request(:get, uri_template).to_return(body: json_response)
+
+    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?EndDate={end_date}&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=#{ENV['ACHIEVER_ONLINE_METHOD']}"
+    json_response = %{
+      {
+        "GetJsonResult": {
+          "EntityName": "si_event",
+          "FailureReason": "",
+          "Counter": 0,
+          "MoreRecords": false,
+          "OptionSetName": null,
+          "Success": true,
+          "OptionSetsClean": null,
+          "OptionSets": null,
+          "Entities": []
+        }
+      }
+    }
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
@@ -58,6 +130,24 @@ module AchieverStubs
   def stub_occurrence_details
     json_response = File.new('spec/support/achiever/courses/occurrence_details.json')
     uri_template = Addressable::Template.new 'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseDetails'
+    stub_request(:get, uri_template).to_return(body: json_response)
+
+    json_response = %{
+      {
+        "GetJsonResult": {
+          "EntityName": "si_event",
+          "FailureReason": "",
+          "Counter": 0,
+          "MoreRecords": false,
+          "OptionSetName": null,
+          "Success": true,
+          "OptionSetsClean": null,
+          "OptionSets": null,
+          "Entities": []
+        }
+      }
+    }
+    uri_template = Addressable::Template.new 'https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=CourseDetails'
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
