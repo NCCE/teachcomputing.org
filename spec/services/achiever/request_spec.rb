@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Achiever::Request do
   let(:option_set_query_strings) { Achiever::Course::AgeGroup::QUERY_STRINGS }
-  let(:template_query_strings) { Achiever::Course::Template::QUERY_STRINGS }
+  let(:template_query_strings) { Achiever::Course::Template::QUERY_STRINGS.merge(ProgrammeName: 'ncce') }
   let(:successful_json_response) { File.read('spec/support/achiever/courses/face_to_face_occurrences.json') }
   let(:successful_parsed_response) { described_class.send(:parse_response, successful_json_response) }
   let(:unsuccessful_json_response) { File.read('spec/support/achiever/failure.json') }

@@ -11,9 +11,9 @@ module Certificates
       return redirect_to complete_i_belong_path if @programme.user_completed?(current_user)
 
       assign_achievements
-      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
-      @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
-      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
+      @professional_development_groups = @programme.programme_activity_groupings.not_community.includes(programme_activities: :activity).order(:sort_key)
+      set_cpd_courses
+      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key).includes(programme_activities: :activity)
       @badge_tracking_event_category = 'I belong enrolled'
       @badge_tracking_event_label = 'I belong badge'
       assign_issued_badge_data
@@ -81,6 +81,25 @@ module Certificates
 
       def user_programme_enrolment_pending?
         redirect_to pending_i_belong_path if enrolment.in_state?(:pending)
+      end
+
+      def set_cpd_courses
+        user_achievement_activity_ids = current_user
+          .achievements
+          .in_state(:complete)
+          .for_programme(@programme)
+          .pluck(:activity_id)
+
+        completed_courses, not_completed_courses = @professional_development_groups
+          .flat_map(&:programme_activities)
+          .partition { _1.activity_id.in? user_achievement_activity_ids }
+
+        @cpd_courses =
+          if completed_courses.empty?
+            not_completed_courses.first(1)
+          else
+            completed_courses
+          end
       end
   end
 end

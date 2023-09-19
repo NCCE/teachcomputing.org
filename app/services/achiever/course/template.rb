@@ -27,8 +27,8 @@ class Achiever::Course::Template
   RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
-                    HideFromweb: '0',
-                    ProgrammeName: 'ncce' }.freeze
+                    HideFromweb: '0' }.freeze
+  PROGRAMME_NAMES = %w[ncce PDLP].freeze
 
   def self.from_resource(resource, activities)
     new.tap do |t|
@@ -66,7 +66,9 @@ class Achiever::Course::Template
 
   def self.all
     activities ||= Activity.all
-    templates = Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS)
+    templates = PROGRAMME_NAMES.flat_map do |programme_name|
+      Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name))
+    end
     templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
   end
 

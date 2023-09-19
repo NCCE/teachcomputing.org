@@ -2,17 +2,20 @@ class Achiever::Course::Delegate
   attr_accessor :course_occurence_no, :course_template_no, :is_fully_attended, :online_cpd, :progress, :address_venue_name, :address_venue_code, :address_town, :address_postcode, :address_line_one, :start_date, :end_date
 
   RESOURCE_PATH = 'Get?cmd=CoursesForCurrentDelegateByProgramme'.freeze
-  PROGRAMME_NAME = 'ncce'.freeze
+  PROGRAMME_NAMES = %w[ncce PDLP].freeze
   CACHE = false
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
-    query_strings = {
-      Page: '1',
-      RecordCount: '1000',
-      ProgrammeName: PROGRAMME_NAME,
-      CONTACTNO: achiever_contact_no
-    }
-    delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
+    delegate_courses = PROGRAMME_NAMES.flat_map do |programme_name|
+      query_strings = {
+        Page: '1',
+        RecordCount: '1000',
+        ProgrammeName: programme_name,
+        CONTACTNO: achiever_contact_no
+      }
+
+      delegate_courses = Achiever::Request.resource(RESOURCE_PATH, query_strings, CACHE)
+    end
     delegate_courses.map { |delegate_course| Achiever::Course::Delegate.new(delegate_course) }
   end
 

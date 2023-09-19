@@ -13,9 +13,13 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: 'all courses'
 
   group.save
 
-  i_belong.activities.courses.each do |activity|
-    programme_activity = i_belong.programme_activities.find_or_create_by(activity_id: activity.id)
-    programme_activity.update(programme_activity_grouping_id: group.id)
+  activities = [
+    'encouraging-girls-into-gcse-computer-science-remote-short-course',
+    'supporting-the-i-belong-programme'
+  ]
+
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity, index + 1)
   end
 end.save
 

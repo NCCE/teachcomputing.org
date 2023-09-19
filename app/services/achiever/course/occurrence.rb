@@ -26,19 +26,30 @@ class Achiever::Course::Occurrence
 
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
-                    EndDate: Time.zone.today.strftime('%F'),
-                    ProgrammeName: 'ncce' }.freeze
+                    EndDate: Time.zone.today.strftime('%F') }.freeze
+  PROGRAMME_NAMES = %w[ncce PDLP].freeze
 
   def self.face_to_face(search_location_coordinates: nil)
-    occurrences = Achiever::Request.resource(FACE_TO_FACE_RESOURCE_PATH,
-                                             QUERY_STRINGS.merge(Date: Time.zone.today.strftime('%F')))
+    occurrences = PROGRAMME_NAMES.flat_map do |programme_name|
+      Achiever::Request.resource(
+        FACE_TO_FACE_RESOURCE_PATH,
+        QUERY_STRINGS.merge(Date: Time.zone.today.strftime('%F'), ProgrammeName: programme_name)
+      )
+    end
+
     occurrences.map do |occurrence|
       Achiever::Course::Occurrence.from_resource(occurrence, comparison_coords: search_location_coordinates)
     end
   end
 
   def self.online
-    occurrences = Achiever::Request.resource(ONLINE_RESOURCE_PATH, QUERY_STRINGS)
+    occurrences = PROGRAMME_NAMES.flat_map do |programme_name|
+      Achiever::Request.resource(
+        ONLINE_RESOURCE_PATH,
+        QUERY_STRINGS.merge(ProgrammeName: programme_name)
+      )
+    end
+
     occurrences.map { |occurrence| Achiever::Course::Occurrence.from_resource(occurrence) }
   end
 
