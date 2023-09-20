@@ -52,6 +52,9 @@
                 user_programme_assessment: @csa_dash.user_programme_assessment
             } %>
           <% end %>
+          <h3 class="govuk-heading-m"><%= t('.take_development_further') %></h3>
+          <p class="govuk-body"><%= t('.take_development_further_body') %></p>
+          <%= link_to t('.take_development_further_cta'), secondary_path, class: 'govuk-button button' %>
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'certificates/cs_accelerator/bursary-aside' %>
