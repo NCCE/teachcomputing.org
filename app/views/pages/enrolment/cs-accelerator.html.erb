@@ -51,6 +51,16 @@
         <p class="govuk-body-s">
           <%= link_to 'GCSE specification map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %>
         </p>
+        <%= render AsideComponent.new(
+          title: 'Develop your teaching further',
+          text: 'Develop your pedagogy and leadership skills alongside increasing your subject knowledge with our Teaching secondary computing certificate.',
+          link: {
+            text: 'Find out more',
+            url: secondary_path,
+            class: 'govuk-button button button--inverted',
+          },
+          use_button: true
+        ) %>
       </div>
     </div>
   </div>

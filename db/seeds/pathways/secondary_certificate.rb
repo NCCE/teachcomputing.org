@@ -20,9 +20,11 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
   pathway.improvement_cta = 'As defined in the <a href="https://computingqualityframework.org/">Computing Quality Framework</a>'
 
   pathway.enrol_copy = [
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Computer Science Accelerator programme</a>',
     'Enrol with the click of the button',
-    'Complete the required professional development, engagement, and community activities to receive your qualification'
+    'Complete the required professional development',
+    'Complete engagement activities to support your learning',
+    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Receive your certificate'
   ]
 
   pathway.save
@@ -75,9 +77,11 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
   pathway.improvement_cta = 'As defined in the <a href="https://computingqualityframework.org/">Computing Quality Framework</a>'
 
   pathway.enrol_copy = [
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Computer Science Accelerator programme</a>',
     'Enrol with the click of the button',
-    'Complete the required professional development, engagement, and community activities to receive your qualification'
+    'Complete the required professional development',
+    'Complete engagement activities to support your learning',
+    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Receive your certificate'
   ]
 
   pathway.save
@@ -119,9 +123,11 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
   pathway.improvement_cta = 'As defined in the <a href="https://computingqualityframework.org/">Computing Quality Framework</a>'
 
   pathway.enrol_copy = [
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Computer Science Accelerator programme</a>',
     'Enrol with the click of the button',
-    'Complete the required professional development, engagement, and community activities to receive your qualification'
+    'Complete the required professional development',
+    'Complete engagement activities to support your learning',
+    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Receive your certificate'
   ]
 
   pathway.save
@@ -166,9 +172,11 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
   pathway.improvement_cta = 'As defined in the <a href="https://computingqualityframework.org/">Computing Quality Framework</a>'
 
   pathway.enrol_copy = [
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Computer Science Accelerator programme</a>',
     'Enrol with the click of the button',
-    'Complete the required professional development, engagement, and community activities to receive your qualification'
+    'Complete the required professional development',
+    'Complete engagement activities to support your learning',
+    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Receive your certificate'
   ]
 
   pathway.save
@@ -212,9 +220,11 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
   pathway.improvement_cta = 'As defined in the <a href="https://computingqualityframework.org/">Computing Quality Framework</a>'
 
   pathway.enrol_copy = [
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Computer Science Accelerator programme</a>',
     'Enrol with the click of the button',
-    'Complete the required professional development, engagement, and community activities to receive your qualification'
+    'Complete the required professional development',
+    'Complete engagement activities to support your learning',
+    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Receive your certificate'
   ]
 
   pathway.save
