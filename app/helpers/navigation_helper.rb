@@ -29,13 +29,11 @@ module NavigationHelper
       { text: 'Teaching resources',
         children: [
           { text: 'Teaching resources', link: curriculum_key_stages_path, label: 'Teaching resources' },
+          { text: 'Isaac Computer Science', link: about_isaac_computer_science_path, label: 'Isaac Computer Science' },
           { text: 'Secondary question banks', link: secondary_question_banks_path, label: 'Teaching resources' },
           { text: 'Artificial Intelligence', link: cms_page_path(page_slug: 'artificial-intelligence'), label: 'Artificial Intelligence' },
           { text: 'Pedagogy', link: cms_page_path(page_slug: '/pedagogy'), label: 'Pedagogy' },
-          { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' },
-          # The following are to be removed when Isaac page is added
-          { text: 'A level computer science', link: a_level_computer_science_path, label: 'A level computer science' },
-          { text: 'GCSE computer science', link: gcse_revision_path, label: 'GCSE revision' }
+          { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' }
         ] },
       { text: 'About us',
         children: [
