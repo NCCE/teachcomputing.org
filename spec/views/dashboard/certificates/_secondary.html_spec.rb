@@ -17,7 +17,7 @@ RSpec.describe('dashboard/certificates/_secondary', type: :view) do
   context 'when the user has not enrolled on Secondary programme' do
     it 'the link to find out more' do
       render template: 'dashboard/certificates/_secondary', locals: { programme: programme }
-      expect(rendered).to have_link('Find out more', href: secondary_path)
+      expect(rendered).to have_link('Choose a pathway', href: secondary_path)
     end
   end
 

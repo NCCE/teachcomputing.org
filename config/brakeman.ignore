@@ -26,6 +26,29 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
+      "fingerprint": "40947d3dbf33d0b0535f87b2d8bef5f38b6b626b133f8cf47691a6f0d84f9b42",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/pages_controller.rb",
+      "line": 85,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Programme.find_by!(:slug => params[:page_slug]).path)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PagesController",
+        "method": "static_programme_page"
+      },
+      "user_input": "Programme.find_by!(:slug => params[:page_slug]).path",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
       "fingerprint": "5c6e1a97288d4bb7695b11a2e1ba6e4f8db81fd515d3d6f3d630334e3dae14b3",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
@@ -53,7 +76,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 84,
+      "line": 87,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/enrolment/#{params[:page_slug]}\", {})",
       "render_path": null,
@@ -90,30 +113,7 @@
       "cwe_id": [
         601
       ],
-      "note": ""
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "8624aa70522eb5581550385e678353e8a33c6d9ba975b181bab22f46a96d321d",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/pages_controller.rb",
-      "line": 82,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Programme.includes(:pathways).find_by!(:slug => params[:page_slug]).path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "PagesController",
-        "method": "static_programme_page"
-      },
-      "user_input": "Programme.includes(:pathways).find_by!(:slug => params[:page_slug]).path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": ""
+      "note": "This has been safly constrained to only valid programmes"
     },
     {
       "warning_type": "Dynamic Render Path",
@@ -196,6 +196,6 @@
       "note": "Pathways can only be edited by admins"
     }
   ],
-  "updated": "2023-09-18 20:59:16 +0000",
+  "updated": "2023-09-21 15:00:09 +0000",
   "brakeman_version": "6.0.1"
 }

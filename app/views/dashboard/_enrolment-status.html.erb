@@ -6,10 +6,8 @@
       <%= link_to 'View certificate', programme.path, class: 'govuk-button button button--full-width' %>
     <% end %>
 <% else %>
-  <% if programme.primary_certificate? %>
-    <%= link_to 'Find out more', primary_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
-  <% elsif programme.secondary_certificate? %>
-    <%= link_to 'Find out more', secondary_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
+  <% if programme.primary_certificate? || programme.secondary_certificate? %>
+    <%= link_to 'Choose a pathway', programme.public_path, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
   <% else %>
     <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
   <% end %>

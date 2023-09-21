@@ -71,7 +71,7 @@ class PagesController < ApplicationController
   end
 
   def isaac_computer_science
-  end 
+  end
 
   def login
     auth_uri = '/auth/stem'
@@ -81,7 +81,7 @@ class PagesController < ApplicationController
 
   # static programme pages except I Belong
   def static_programme_page
-    @programme = Programme.includes(:pathways).find_by!(slug: params[:page_slug])
+    @programme = Programme.find_by!(slug: params[:page_slug])
     redirect_to(@programme.path) and return if @programme.user_enrolled?(current_user)
 
     render template: "pages/enrolment/#{params[:page_slug]}"
