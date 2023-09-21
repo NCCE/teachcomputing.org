@@ -1,9 +1,13 @@
 <div data-controller="modal">
   <div class="ncce-modal <%= 'ncce-modal--expanded' if expanded %>" data-modal-target="modal">
     <div class="ncce-modal--body">
-      <div class="ncee-modal--header">
+      <div class="ncce-modal--header">
         <h2 class="govuk-heading-m"><%= title %></h2>
-        <div class="icon-close" data-action="click->modal#toggle"></div>
+        <% if close_button? %>
+          <%= close_button %>
+        <% else %>
+          <div class="icon-close" data-action="click->modal#toggle"></div>
+        <% end %>
       </div>
       <%= body %>
     </div>

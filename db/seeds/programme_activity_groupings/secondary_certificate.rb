@@ -42,15 +42,21 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Make a posi
     { slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit', legacy: false },
     { slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom', legacy: false },
     { slug: 'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc', legacy: false },
+  ]
 
+  activities.each_with_index do |activity, index|
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
+  end
+
+  remove_activities = [
     { slug: 'provide-feedback-on-our-curriculum-resources', legacy: true },
     { slug: 'provide-feedback-on-a-cas-resource', legacy: true },
     { slug: 'complete-a-cs-accelerator-course', legacy: true },
     { slug: 'contribute-to-online-discussion-secondary', legacy: true },
   ]
 
-  activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_grouping(group, activity[:slug])
   end
 end.save
 
@@ -74,19 +80,20 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support you
     { slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development', legacy: false },
     { slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor', legacy: false },
     { slug: 'join-and-present-at-your-local-computing-at-school-community', legacy: false },
-
-    { slug: 'engage-with-stem-ambassadors', legacy: true },
-    { slug: 'answer-5-questions-on-isaac-computer-science', legacy: true },
-    { slug: 'run-a-code-club-or-coder-dojo', legacy: true },
-    { slug: 'join-gender-balance-in-computing-programme', legacy: true },
-    { slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school', legacy: true },
-    { slug: 'become-a-mentor', legacy: true },
-    { slug: 'give-additional-support-to-your-community', legacy: true },
-    { slug: 'lead-a-session-at-a-regional-or-national-conference-secondary', legacy: true },
-    { slug: 'lead-a-cas-community-of-practice-secondary', legacy: true }
   ]
 
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
+  end
+
+  remove_activities = [
+    { slug: 'provide-feedback-on-our-curriculum-resources', legacy: true },
+    { slug: 'provide-feedback-on-a-cas-resource', legacy: true },
+    { slug: 'complete-a-cs-accelerator-course', legacy: true },
+    { slug: 'contribute-to-online-discussion-secondary', legacy: true },
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_grouping(group, activity[:slug])
   end
 end.save
