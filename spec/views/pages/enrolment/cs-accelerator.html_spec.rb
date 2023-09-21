@@ -14,7 +14,7 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
   end
 
   it 'has aside section' do
-    expect(rendered).to have_css('.ncce-aside', count: 1)
+    expect(rendered).to have_css('.aside-component', count: 3)
   end
 
   context 'when a user is signed in' do
@@ -24,7 +24,7 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
     end
 
     it 'has Enrol title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: 'Enrol')
+      expect(rendered).to have_css('.aside-component__heading', text: 'Enrol')
     end
 
     it 'has Enrol button' do
@@ -39,7 +39,7 @@ RSpec.describe('pages/enrolment/cs-accelerator', type: :view) do
     end
 
     it 'has How to enrol title' do
-      expect(rendered).to have_css('.ncce-aside__title', text: 'Enrol on the programme')
+      expect(rendered).to have_css('.aside-component__heading', text: 'Enrol on the programme')
     end
 
     it 'has a button to log in' do
