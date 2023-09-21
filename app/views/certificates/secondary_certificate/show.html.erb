@@ -7,7 +7,10 @@
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m"><%= t('.introduction.html') %></p>
+          <p class="govuk-body-m"><%= t(
+            '.introduction.html',
+            subject_knowledge: link_to('Subject knowledge certificate', cs_accelerator_path)
+          ) %></p>
           <%= render 'achievement_list' %>
         </div>
         <div class="govuk-grid-column-one-third">

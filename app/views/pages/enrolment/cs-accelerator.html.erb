@@ -19,38 +19,52 @@
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
-        <div class="ncce-aside ncce-aside__csa-info-page">
-          <h2 class="govuk-heading-s ncce-aside__title">Enrol on the programme</h2>
-          <ol
-            class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
-            <li>
-              Enrol with the click of a button
-            </li>
-            <li>Complete a questionnaire to assess your subject knowledge</li>
-            <li>Participate in a mix of courses to suit your experience</li>
-            <li>Pass a short test to receive your qualification</li>
-          </ol>
-          <% if current_user %>
-          <p class="govuk-body">
-            <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-          </p>
-          <% else %>
-          <p class="govuk-body">
-            <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-          </p>
+        <%= render AsideComponent.new(title: 'Enrol on the programme') do |component| %>
+          <% component.with_body do %>
+            <ol
+              class="govuk-list govuk-list--number ncce-aside__text govuk-body-s cs-accelerator-aside__list">
+              <li>
+                Enrol with the click of a button
+              </li>
+              <li>Complete a questionnaire to assess your subject knowledge</li>
+              <li>Participate in a mix of courses to suit your experience</li>
+              <li>Pass a short test to receive your certificate</li>
+            </ol>
+            <% if current_user %>
+            <p class="govuk-body">
+              <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            </p>
+            <% else %>
+            <p class="govuk-body">
+              <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            </p>
+            <% end %>
           <% end %>
-        </div>
-        <h2 class="govuk-heading-s ncce-aside__title">Useful documents</h2>
-        <p class="govuk-body-s">
-          <%= link_to 'CSA Handbook',
-                      downloads_path(name: 'CSA Handbook', uri: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf'),
-                      method: :post,
-                      class: 'ncce-link'
-          %>
-        </p>
-        <p class="govuk-body-s">
-          <%= link_to 'GCSE specification map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %>
-        </p>
+        <% end %>
+        <%= render AsideComponent.new(
+          title: 'Develop your teaching further',
+          text: 'Develop your pedagogy and leadership skills alongside increasing your subject knowledge with our Teaching secondary computing certificate.',
+          link: {
+            text: 'Find out more',
+            url: secondary_path,
+            class: 'govuk-button button button--inverted govuk-!-margin-bottom-0',
+          },
+          use_button: true
+        ) %>
+        <%= render AsideComponent.new(title: 'Userful documents') do |component| %>
+          <% component.with_body do %>
+            <p class="govuk-body-s">
+              <%= link_to 'CSA Handbook',
+                          downloads_path(name: 'CSA Handbook', uri: 'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf'),
+                          method: :post,
+                          class: 'ncce-link'
+              %>
+            </p>
+            <p class="govuk-body-s">
+              <%= link_to 'GCSE specification map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %>
+            </p>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
