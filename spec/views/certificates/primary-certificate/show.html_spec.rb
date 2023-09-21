@@ -10,6 +10,8 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, community: true, programme: primary_certificate) }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: primary_certificate) }
   let(:community_activity) { create(:activity, :community) }
+  let(:upe) { create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id) }
+
 
   before do
     assign(:programme, primary_certificate)
@@ -26,13 +28,13 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       assign(:online_discussion_activity, community_activity)
       assign(:community_groups, community_groups)
 
-      upe = create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id)
       recommended_activities = upe.pathway.pathway_activities
       assign(:recommended_activities, recommended_activities.filter { |pa| pa.activity.category != :community.to_s })
       assign(:recommended_community_activities, recommended_activities.filter { |pa| pa.activity.category == :community.to_s })
       assign(:user_pathway, upe.pathway)
       assign(:pathways, pathways)
       assign(:available_pathways_for_user, [pathways[1]])
+      assign(:user_enrolment, upe)
       render
     end
 
@@ -63,6 +65,18 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
 
       it 'has a button' do
         expect(rendered).to have_button('Change pathway', visible: :hidden)
+      end
+    end
+
+    context 'when the user has a primary_pathway_migrated messages flag' do
+      let(:upe) { create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id, message_flags_primary_pathway_migrated: true) }
+
+      it 'has in info modal with the message on it' do
+        expect(rendered).to have_css('.govuk-heading-m', text: 'Updates to your primary certificate pathway')
+      end
+
+      it 'has a close button' do
+        expect(rendered).to have_css('a[href="/user_programme_enrolments/destroy_message_flags_primary_pathway_migrated"]')
       end
     end
   end

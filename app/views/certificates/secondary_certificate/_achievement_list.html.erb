@@ -36,22 +36,20 @@
     </li>
   <% end %>
 </ul>
-</ul>
 
 <% @community_groups.each do |group| %>
   <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
     <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
       <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>
     </p>
-    <% group.order_programme_activities_for_user(current_user).each do |programme_activity| %>
+    <% group.order_programme_activities_for_user(current_user, @user_pathway).each do |programme_activity| %>
       <li class="ncce-activity-list__item">
         <%= render CommunityActivityComponent.new(
-          activity: Activity.find(programme_activity.activity_id),
-          achievement: @community_achievements&.find_by(activity_id: programme_activity.activity_id),
+          activity: programme_activity.activity,
+          achievement: @community_achievements.to_a.find { _1.activity_id == programme_activity.activity_id },
           tracking_category: tracking_category
         ) %>
       </li>
     <% end %>
   </ul>
 <% end %>
-

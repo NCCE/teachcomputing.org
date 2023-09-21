@@ -46,7 +46,7 @@ en:
             text:
               html: "Help your staff attain their career goals and meet the rise in student demand, with %{our_accelerator_link}. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.<br/><br/>Our follow-on %{secondary_certificate_link} builds on this, as well as advancing pedagogy."
               accelerator-link:
-                title: "our Computer Science Accelerator"
+                title: "our Subject knowledge certificate"
                 url: "/cs-accelerator"
                 event-label: "CSA certificate"
               certificate-link:
@@ -54,8 +54,8 @@ en:
                 url: "/secondary-certificate"
                 event-label: "Secondary certificate"
             link:
-              title: "Download senior leader guide"
-              url: "https://static.teachcomputing.org/Senior_leaders_guide.pdf"
+              title: "View Subject knowledge certificate"
+              url: "/cs-accelerator"
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"

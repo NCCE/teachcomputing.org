@@ -126,6 +126,9 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.0.1)
     builder (3.2.4)
+    bullet (7.0.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (3.39.2)
       addressable
@@ -617,6 +620,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    uniform_notifier (1.16.0)
     version_gem (1.1.3)
     view_component (3.5.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -667,6 +671,7 @@ DEPENDENCIES
   axe-matchers (>= 2.5.0)
   bootsnap (>= 1.5.1)
   brakeman
+  bullet
   byebug
   capybara
   climate_control
