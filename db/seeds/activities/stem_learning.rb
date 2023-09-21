@@ -2059,6 +2059,7 @@ Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-002
   activity.category = 'face-to-face'
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
+  activity.credit = 10
   activity.stem_activity_code = 'CY440 A01'
 end
 
@@ -2068,6 +2069,7 @@ Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-002
   activity.category = 'face-to-face'
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
+  activity.credit = 10
   activity.stem_activity_code = 'CY440 A02'
 end
 
@@ -2077,5 +2079,6 @@ Activity.find_or_create_by(stem_course_template_no: '22ee67ba-4f8d-eb11-b1ac-002
   activity.category = 'face-to-face'
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
+  activity.credit = 10
   activity.stem_activity_code = 'CY440 A03'
 end
