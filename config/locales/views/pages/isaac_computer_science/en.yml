@@ -1,0 +1,37 @@
+en:
+  pages:
+    isaac_computer_science:
+      hero:
+        title: "Isaac Computer Science"
+        intro_text: "Discover the free online textbook for A level and GCSE computer science teachers and students."
+      description:
+        intro: "Access a huge range of time-saving learning materials that cover the full A level and GCSE Computer Science curriculum for the AQA, OCR, EDEXCEL, and EDUQAS exam specifications — all for free!"
+        text: "Set questions for your students and the system will mark them and give you a detailed breakdown of their progress. Isaac Computer Science is great for supporting remote teaching, homework and revision sessions, and helps you to quickly identify areas where students can improve."
+      aside:
+        title: "Why sign up?"
+        text: "Benefit from a wide range of computer science resources and online events."
+        button_text: "Create your free account"
+      teacher_benefits_card:
+        title: "Benefits to teachers:"
+        benefit_list:
+          - "seamless integration of GCSE and A level content"
+          - "save time on lesson planning and marking"
+          - "high quality resources written by experienced teachers"
+          - "create personalised sets of questions for your class"
+          - "pinpoint areas to work on with your students"
+          - "manage students’ progress in your personal markbook"
+      student_benefits_card:
+        title: "Benefits to students:"
+        benefit_list:
+          - "structured, self-paced study and progress tracking"
+          - "topics covering all exam boards – perfect for revision"
+          - "live online workshops and career events"
+          - "instant feedback from the interactive questions to guide further study"
+          - "deep dive into specific areas of interest"
+          - "smooth progression from GCSE to A level"
+      topic_description:
+        html: "Each topic on the platform also signposts to related classroom resources from our <a class='ncce-link' href=\"/curriculum\">Teach Computing Curriculum</a>, and suggests <a class='ncce-link' href='courses'>professional development opportunities</a> to deepen your subject knowledge."
+      i_belong_section:
+        title: "I Belong in Computer Science journeys"
+        description: "Explore interviews and learn from passionate educators within the Isaac community as well as recently-graduated computer scientists who are doing amazing things in a huge range of computing-related fields. Inspire your student into various careers linked to computer science."
+        button_text: "Discover Isaac Computer Science"

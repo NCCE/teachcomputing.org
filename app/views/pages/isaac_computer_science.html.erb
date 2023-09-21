@@ -1,0 +1,103 @@
+<div class="hero hero--dixie-bg govuk-!-padding-2">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="text-certificate-hero__wrapper govuk-!-padding-2">
+          <div class="text-certificate-hero__area--text">
+            <h1 class="govuk-heading-l"><%= t('.hero.title')%></h1>
+            <p class="govuk-body-l">
+              <%= t('.hero.intro_text')%>
+            </p>
+          </div>
+          <div class="text-certificate-hero__area--logo">
+            <%= image_pack_tag('media/images/pages/isaac/isaac-Image.jpg') %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-bg">
+  <div class="govuk-width-container">
+      <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-bottom-2">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body-l">
+              <%= t('.description.intro')%>
+            </p>
+            <p class="govuk-body">
+              <%= t('.description.text')%>
+            </p>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="ncce-aside">
+              <h2 class="govuk-heading-s ncce-aside__title"><%= t('.aside.title')%></h2>
+              <p class="govuk-body-s"><%= t('.aside.text')%></p>
+              <p class="govuk-body">
+                <%= link_to t('.aside.button_text'),  'https://isaaccomputerscience.org/register', class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+  </div>
+</div>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-bottom-2">
+      <div class="govuk-grid-row">
+        <div class="lp-support__cards_2">
+          <div class="lp-support__card white-bg lp-support__card--bordered_2">
+            <h2 class="govuk-heading-m">
+              <%= t('.teacher_benefits_card.title')%>
+            </h2>
+            <ul class="govuk-body">
+              <% t('.teacher_benefits_card.benefit_list').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="lp-support__card white-bg lp-support__card--bordered_2">
+            <h2 class="govuk-heading-m">
+              <%= t('.student_benefits_card.title')%>
+            </h2>
+            <ul class="govuk-body">
+              <% t('.student_benefits_card.benefit_list').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <p class="govuk-body-s">
+          <%= t(".topic_description.html") %>
+        </p>
+      </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+            <div class="aside-component__image">
+              <%= image_pack_tag("media/images/pages/i-belong/faces.png") %>
+            </div>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-l">
+            <%= t(".i_belong_section.title") %>
+          </p>
+          <p class="govuk-body">
+            <%= t(".i_belong_section.description") %>
+          </p>
+          <p class="govuk-body">
+            <%= link_to t(".i_belong_section.button_text"),  'https://isaaccomputerscience.org/register', class: 'govuk-button button button--inverted dedicated-pages--button', role: 'button', draggable: 'false' %>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
