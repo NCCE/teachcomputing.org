@@ -44,7 +44,7 @@
       "cwe_id": [
         601
       ],
-      "note": ""
+      "note": "This has been safely constrained to only valid programmes"
     },
     {
       "warning_type": "Redirect",
