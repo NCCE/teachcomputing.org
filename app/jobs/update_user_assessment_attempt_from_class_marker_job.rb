@@ -7,7 +7,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
     achievement = find_achievement(user, assessment)
     latest_attempt = user.assessment_attempts.where(assessment_id: assessment.id).last
 
-    if percentage.to_f >= 65.0
+    if percentage.to_f >= Programmes::CSAccelerator::REQUIRED_ASSESSMENT_PERCENTAGE
       latest_attempt.transition_to(:passed, percentage: percentage.to_f)
       certificate_number = assessment.programme.programme_complete_counter.get_next_number
       achievement.complete!

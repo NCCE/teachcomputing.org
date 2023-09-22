@@ -1,6 +1,7 @@
 module Programmes
   class CSAccelerator < Programme
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
+    REQUIRED_ASSESSMENT_PERCENTAGE = 65.0
 
     def mailer
       CSAcceleratorMailer

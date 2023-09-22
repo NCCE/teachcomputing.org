@@ -6,6 +6,12 @@ module Programmes
       SecondaryMailer
     end
 
+    def user_meets_completion_requirement?(user)
+      return false unless Programme.cs_accelerator.user_completed?(user)
+
+      super(user)
+    end
+
     def path
       secondary_certificate_path
     end
