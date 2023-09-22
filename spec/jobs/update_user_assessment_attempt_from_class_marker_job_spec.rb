@@ -4,6 +4,7 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   let(:user) { create(:user, email: 'john@example.com') }
   let(:activity) { create(:activity) }
   let(:programme) { create(:programme) }
+  let!(:secondary) { create(:secondary_certificate) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
   let(:assessment) do
     create(:assessment, class_marker_test_id: '100', activity_id: activity.id, programme_id: programme.id)

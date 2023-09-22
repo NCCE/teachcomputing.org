@@ -10,6 +10,7 @@ RSpec.describe Programmes::SecondaryCertificate do
   describe '#user_meets_completion_requirement?' do
     before do
       user
+      cs_accelerator
       programme_activity_groupings
     end
 
@@ -19,13 +20,29 @@ RSpec.describe Programmes::SecondaryCertificate do
       end
     end
 
-    context 'when the user has completed one activity from each group' do
-      it 'returns true' do
-        programme_activity_groupings.each do |group|
-          create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
-        end
+    context 'when the user hasn\'t completed CSA' do
+      context 'when the user has completed one activity from each group' do
+        it 'returns false' do
+          programme_activity_groupings.each do |group|
+            create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+          end
 
-        expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
+          expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq false
+        end
+      end
+    end
+
+    context 'when the user has completed CSA' do
+      context 'when the user has completed one activity from each group' do
+        it 'returns true' do
+          cs_accelerator_enrolment.transition_to :complete
+
+          programme_activity_groupings.each do |group|
+            create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+          end
+
+          expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
+        end
       end
     end
   end
