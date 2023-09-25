@@ -22,8 +22,62 @@ RSpec.describe EnrichmentGroupings::Term do
   end
 
   describe '#is_current_term?' do
+    context 'when is comming soon' do
+      subject { create(:enrichment_groupings_term, coming_soon: true) }
+
+      it 'should return false' do
+        expect(subject.is_current_term?).to be false
+      end
+    end
+
+    context 'when is not comming soon' do
+      context 'when the curent date is in the range' do
+        it 'should return true' do
+          expect(subject.is_current_term?).to be true
+        end
+      end
+
+      context 'when the curent date is not in the range' do
+        subject { create(:enrichment_groupings_term, term_start: 10.days.from_now, term_end: 20.days.from_now) }
+
+        it 'should return false' do
+          expect(subject.is_current_term?).to be false
+        end
+      end
+    end
   end
 
   describe '#days_till_term' do
+    context 'when is current term' do
+      it 'returns 0' do
+        expect(subject.days_till_term).to eq 0
+      end
+    end
+
+    context 'when current term is false' do
+      context 'when is comming_soon' do
+        subject { create(:enrichment_groupings_term, coming_soon: true) }
+
+        it 'should return infinity' do
+          expect(subject.days_till_term).to be Float::INFINITY
+        end
+      end
+
+      context 'when days till start is ahead in the year' do
+        subject { create(:enrichment_groupings_term, term_start: 10.days.from_now, term_end: 20.days.from_now) }
+
+        it 'should return 9' do
+          expect(subject.days_till_term).to eq 9
+        end
+      end
+
+      context 'when days till start is behind in the year' do
+        subject { create(:enrichment_groupings_term, term_start: 2.days.ago, term_end: 1.days.ago) }
+
+        it 'should return 364' do
+          expect(subject.days_till_term).to eq 367
+        end
+      end
+    end
   end
 end

@@ -7,6 +7,9 @@ SimpleCov.start 'rails' do
   add_group 'Services', 'app/services'
   add_group 'Presenters', 'app/presenters'
 
+  add_filter '/app/dashboards/'
+  add_filter '/app/controllers/admin/'
+
   current_branch = `git rev-parse --abbrev-ref HEAD`
   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
   add_group 'Changed' do |source_file|

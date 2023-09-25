@@ -14,7 +14,7 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
     return 0 if is_current_term?
     return Float::INFINITY if coming_soon
 
-    difference_in_days = normalised_start.to_datetime - normalised_current_date
+    difference_in_days = (normalised_start.to_datetime - normalised_current_date).to_i
 
     if difference_in_days.negative?
       365 - difference_in_days
