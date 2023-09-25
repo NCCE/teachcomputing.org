@@ -2,6 +2,10 @@ module Programmes
   class SecondaryCertificate < Programme
     PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
 
+    def pending_delay
+      7.days
+    end
+
     def mailer
       SecondaryMailer
     end

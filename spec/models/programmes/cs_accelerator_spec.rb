@@ -84,6 +84,12 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
+  describe '#pending_delay' do
+    it 'should return 7 days' do
+      expect(programme.pending_delay).to eq 7.days
+    end
+  end
+
   describe '#diagnostic' do
     context 'when an associated diagnostic activity exists' do
       it 'returns record' do

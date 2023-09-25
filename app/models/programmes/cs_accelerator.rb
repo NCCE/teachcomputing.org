@@ -3,6 +3,10 @@ module Programmes
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
     REQUIRED_ASSESSMENT_PERCENTAGE = 65.0
 
+    def pending_delay
+      7.days
+    end
+
     def mailer
       CSAcceleratorMailer
     end

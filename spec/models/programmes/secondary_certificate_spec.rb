@@ -7,6 +7,12 @@ RSpec.describe Programmes::SecondaryCertificate do
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 3, :with_activities, programme: secondary_certificate) }
 
+  describe '#pending_delay' do
+    it 'should return 7 days' do
+      expect(secondary_certificate.pending_delay).to eq 7.days
+    end
+  end
+
   describe '#user_meets_completion_requirement?' do
     before do
       user

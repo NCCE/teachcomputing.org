@@ -9,6 +9,12 @@ RSpec.describe Programmes::IBelong do
     end
   end
 
+  describe '#pending_delay' do
+    it 'should return 14 days' do
+      expect(programme.pending_delay).to eq 14.days
+    end
+  end
+
   describe '#enrol_path' do
     it 'returns the path for the enrol' do
       expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id',
