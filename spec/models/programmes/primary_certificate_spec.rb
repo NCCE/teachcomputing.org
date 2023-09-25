@@ -28,6 +28,12 @@ RSpec.describe Programmes::PrimaryCertificate do
     end
   end
 
+  describe '#pending_delay' do
+    it 'should return 7 days' do
+      expect(programme.pending_delay).to eq 7.days
+    end
+  end
+
   describe '#path' do
     it 'returns the path for the programme' do
       expect(programme.path).to eq('/certificate/primary-certificate')

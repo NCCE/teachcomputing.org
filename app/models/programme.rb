@@ -41,6 +41,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'a-level')
   end
 
+  def pending_delay
+    raise NotImplementedError
+  end
+
   def badgeable?
     badges.active.exists?
   end

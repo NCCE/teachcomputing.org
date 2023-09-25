@@ -43,6 +43,12 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe '#pending_delay' do
+    it 'should raise NotImplementedError' do
+      expect { generic_programme.pending_delay }.to raise_error(NotImplementedError)
+    end
+  end
+
   describe '#user_enrolled?' do
     it 'returns true if user is enrolled on the programme' do
       user_programme_enrolment
