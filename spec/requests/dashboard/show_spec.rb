@@ -22,6 +22,7 @@ RSpec.describe DashboardController do
         create(:secondary_certificate)
         create(:cs_accelerator)
         create(:i_belong)
+        create(:a_level)
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get dashboard_path
       end

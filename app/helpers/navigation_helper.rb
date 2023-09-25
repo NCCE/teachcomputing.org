@@ -16,8 +16,11 @@ module NavigationHelper
           { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
           { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
           { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' },
-          { text: 'Enrichment', link: secondary_enrichment_path, label: 'Enrichment' }
-        ] },
+          { text: 'Enrichment', link: secondary_enrichment_path, label: 'Enrichment' },
+          if FeatureFlagService.new.flags[:alevel_programme_feature]
+            { text: 'A level knowledge certificate', link: about_a_level_path, label: 'A Level' }
+          end
+        ].compact },
       { text: 'Training and support',
         children: [
           { text: 'Courses', link: courses_path, label: 'Courses' },

@@ -1,0 +1,36 @@
+<% meta_tag :title, t('.page_title') %>
+<% meta_tag :url, request.original_url %>
+<%= render 'pages/certification/hero', sub_header_disabled: true %>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <section class="ncce-section">
+            <h2 class="govuk-heading-m"><%= t('.page_title') %></h2>
+            <p class="govuk-body"><%= t('.introduction') %></p>
+          </section>
+          <%= render 'achievement_list' %>
+          <section class="ncce-section">
+            <h2 class="govuk-heading-m"><%= t('.practice_knowledge.title') %></h2>
+            <p class="govuk-body"><%= t('.practice_knowledge.body') %></p>
+            <%= link_to t('.practice_knowledge.cta'), 'https://isaaccomputerscience.org/', class: 'govuk-button button button-constrained' %>
+          </section>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new(
+            title: t('.support_aside.title'),
+            class_name: 'help-aside',
+            text: t('.support_aside.text.html',
+              hub_link: link_to(t('.support_aside.hub_link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub')),
+              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
+            ))
+          %>
+          <div class="ncce-aside--borderless">
+            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :secondary_certificate) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

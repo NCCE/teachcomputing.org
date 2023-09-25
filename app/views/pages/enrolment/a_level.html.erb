@@ -1,0 +1,87 @@
+<div class="hero">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="text-certificate-hero__wrapper">
+        <div class="text-certificate-hero__area--text">
+          <h1 class="govuk-heading-l">A level subject knowledge</h1>
+          <p class="govuk-body-l">
+            Certificate awarded by BCS, The Chartered Institute for IT.
+          </p>
+        </div>
+        <div class="text-certificate-hero__area--logo govuk-!-padding-2">
+          <%= image_pack_tag("media/images/pages/a-level/a-level-certificate.svg")%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-body-l">Demonstrate your A level Computer Science knowledge and your commitment to the subject.</div>
+        <h1 class="govuk-heading-m">Who is it for?</h1>
+        <p class="govuk-body">This certificate is for anyone planning to teach A level Computer Science or currently doing so. It is particularly valuable to teachers without qualifications in the subject who wish to demonstrate the capability to teach at this level.</p>
+        <h1 class="govuk-heading-m">How do I get started?</h1>
+        <p class="govuk-body">If you are confident in your A level subject knowledge, once you've enrolled you can complete the test to achieve your certificate. If you are less experienced, we recommend you access CPD to strengthen your knowledge in preparation for the test.</p>
+        <% if current_user %>
+          <% if @programme.user_enrolled?(current_user) %>
+            <%= link_to 'Visit dashboard',
+              a_level_path,
+              class: 'button govuk-button govuk-!-margin-bottom-4'
+            %>
+          <% else %>
+            <%= link_to 'Enrol to gain access to the test',
+              @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id }),
+              method: :post,
+              class: 'button govuk-button govuk-!-margin-bottom-4'
+            %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Log in to enrol',
+            auth_url,
+            method: :post,
+            class: 'button govuk-button govuk-!-margin-bottom-4'
+          %>
+        <% end %>
+        <h1 class="govuk-heading-m">Benefits for you</h1>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>receive a nationally recognised qualification</li>
+          <li>showcase your A level Computer Science knowledge with a digital badge</li>
+          <li>be recognised for your commitment to your professional learning and your subject</li>
+          <li>gain confidence in teaching computer science at A level</li>
+        </ul>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <div class="ncce-aside">
+          <h2 class="govuk-heading-m ncce-aside__title">Enrol on the programme</h2>
+          <ol class="govuk-list govuk-list--bullet">
+            <li>Enrol with the click of a button</li>
+            <li>Review your CPD needs and attend relevant courses</li>
+            <li>Pass a subject knowledge test</li>
+            <li>Receive your qualification</li>
+          <ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="light-grey-bg">
+  <div class=" govuk-main-wrapper">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third govuk-!-padding-bottom-3"><%= image_pack_tag("media/images/pages/a-level/a-level-footer-image.png", class: 'a-level-footer-image')%></div>
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-grid-row govuk-!-padding-bottom-3"><%= image_pack_tag("media/images/pages/a-level/i_c_s.svg")%></div>
+          <h1 class="govuk-heading-m">How we can help you and your students</h1>
+          <p class="govuk-body">Isaac Computer Science is our free online learning programme for A level and GCSE computer science students and teachers, providing learning materials that cover the AQA, Edexcel, Eduqas, OCR and WJEC curriculums.</p>
+          <%= link_to 'Discover Isaac Computer Science',
+          'https://isaaccomputerscience.org/',
+          class: 'button govuk-button button--inverted'
+        %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

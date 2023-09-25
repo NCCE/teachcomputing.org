@@ -7,6 +7,7 @@
 class FeatureFlagService
   FLAGS = {
     # example_feature: 'FLAG_EXAMPLE_FEATURE'
+    alevel_programme_feature: 'FLAG_ALEVEL_PROGRAMME'
   }.freeze
 
   def initialize(dependencies = {})

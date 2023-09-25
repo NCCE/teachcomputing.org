@@ -1,7 +1,7 @@
 class CertificateGenerator
   def initialize(user:, programme:, transition:, dependencies: {})
     @src_path = dependencies.fetch(:src_path) do
-      File.join(Rails.root, 'app', 'webpacker', 'pdf', "#{programme.slug}-src.pdf")
+      File.join(Rails.root, 'app', 'webpacker', 'pdf', "#{programme.slug.underscore}_src.pdf")
     end
 
     @output_path = dependencies.fetch(:output_path) do

@@ -72,25 +72,25 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "743a8a9481886ef66bb619ffb71df8df37ceb2b62eea52546a4e2a7007025f40",
+      "fingerprint": "5e65006d8ec8144ba77093fe60adfd9861e26b76416f5cd0ee9d9c4503776f75",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
       "line": 87,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(template => \"pages/enrolment/#{params[:page_slug]}\", {})",
+      "code": "render(template => \"pages/enrolment/#{params[:page_slug].underscore}\", {})",
       "render_path": null,
       "location": {
         "type": "method",
         "class": "PagesController",
         "method": "static_programme_page"
       },
-      "user_input": "params[:page_slug]",
+      "user_input": "params[:page_slug].underscore",
       "confidence": "Medium",
       "cwe_id": [
         22
       ],
-      "note": "This shoud be reinstated when the feature flag is removed"
+      "note": "The parameter is constrained to just the courses available"
     },
     {
       "warning_type": "Redirect",

@@ -1,0 +1,33 @@
+<p class="govuk-heading-m govuk-!-margin-top-8">
+  <%= t('.development.title') %>
+</p>
+<p class="govuk-body"><%= t('.development.courses') %></p>
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+  <li class="ncce-activity-list__item">
+    <div>
+      <% @cpd_courses.each do |pa| %>
+        <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
+      <% end %>
+      <p class="govuk-body govuk-!-margin-top-4"><%= t('.other_formats') %></p>
+
+      <div class='ncce-activity-list__button-wrapper'>
+        <%= link_to t('.all_courses_button'),
+          courses_path(level: 'Post 16'),
+          class: 'govuk-button button govuk-!-margin-bottom-0 button--inverted',
+          data: {
+            event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
+          }
+        %>
+      </div>
+    </div>
+  </li>
+  <% if @issued_badge.present? %>
+    <li class="ncce-activity-list__item">
+      <%= render DashBadgeComponent.new(
+        badge: @issued_badge,
+        tracking_event_category: @badge_tracking_event_category,
+        tracking_event_label: @badge_tracking_event_label
+      ) %>
+    </li>
+  <% end %>
+</ul>
