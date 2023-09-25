@@ -22,22 +22,16 @@
 
 <!-- Remember additional course handling -->
 <% @community_groups.each do |group| %>
-  <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
-    <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
+  <p class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
     <%= group.formatted_title %>
-    </p>
-    <% sort_complete_first(
+  </p>
+  <%= render CommunityActivityListComponent.new(
+    programme_activities: sort_complete_first(
       activities: group.programme_activities,
       complete: group.user_complete?(current_user)
-    ).each do |programme_activity| %>
-      <li class="ncce-activity-list__item">
-        <%= render CommunityActivityComponent.new(
-          activity: programme_activity.activity,
-          achievement: @community_achievements.to_a.find { _1.activity_id == programme_activity.activity_id },
-          tracking_category: tracking_category
-        ) %>
-      </li>
-    <% end %>
-  </ul>
+    ),
+    community_achievements: @community_achievements,
+    tracking_category:
+  ) %>
 <% end %>
 

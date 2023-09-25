@@ -1,0 +1,29 @@
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list" data-controller="community-activity-list">
+  <% first_activities.each do |activity| %>
+    <li class="ncce-activity-list__item">
+      <%= render CommunityActivityComponent.new(
+        activity: activity[:programme_activity].activity,
+        achievement: activity[:achievement],
+        tracking_category: tracking_category
+      ) %>
+    </li>
+  <% end %>
+
+  <% if second_activities.present? %>
+    <div class="community-activity-list--show-hide">
+      <h5 class="govuk-heading-s" data-action="click->community-activity-list#toggle" data-community-activity-list-target="toggler"><b>View more activity options</b></h5>
+    </div>
+    <div class="community-activity-list--hidden" data-community-activity-list-target="list">
+      <% second_activities.each do |activity| %>
+        <li class="ncce-activity-list__item">
+          <%= render CommunityActivityComponent.new(
+            activity: activity[:programme_activity].activity,
+            achievement: activity[:achievement],
+            tracking_category: tracking_category
+          ) %>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+</ul>
+
