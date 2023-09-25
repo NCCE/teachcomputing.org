@@ -53,8 +53,7 @@ module Certificates
 
       def assign_recommended_activities
         recommended_activities = user_pathway.pathway_activities.includes(:activity)
-        @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
-        @recommended_activities = recommended_activities - @recommended_community_activities
+        @recommended_community_activities, @recommended_activities = recommended_activities.partition { _1.activity.category == 'community' }
       end
 
       def enrolment

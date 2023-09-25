@@ -7,10 +7,8 @@ class Certificates::PathwaysController < ApplicationController
     @programme = @pathway.programme
     @current_user = current_user
 
-    recommended_activities = @pathway.pathway_activities.includes(:activity)
-    @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
-    @recommended_community_activity_ids = @recommended_community_activities.map { _1.activity.id }
-    @recommended_activities = recommended_activities - @recommended_community_activities
+    @recommended_community_activity_ids = @pathway.pathway_activities.distinct.joins(:activity).where(activity: { category: :community }).pluck(:id)
+    @recommended_activities = @pathway.pathway_activities.includes(:activity).where.not(activity: { category: :community })
 
     @cpd_group = @programme.programme_activity_groupings.not_community.first
     @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
