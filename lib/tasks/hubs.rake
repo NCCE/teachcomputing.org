@@ -1,6 +1,6 @@
-namespace :hubs do
+namespace :dev do
   desc 'Adds hub regions to database'
-  task populate_regions: :environment do
+  task populate_hub_regions: :environment do
     regions = [
       ['East Midlands', 1],
       ['East of England', 2],
