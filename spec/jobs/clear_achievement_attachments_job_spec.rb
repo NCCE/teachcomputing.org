@@ -4,10 +4,9 @@ RSpec.describe ClearAchievementAttachmentsJob, type: :job do
   let(:user) { create(:user) }
   let(:programme) { create(:secondary_certificate) }
   let(:enrolment) { create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id) }
-  let(:uploadable_activity) { create(:activity, uploadable: true) }
+  let(:uploadable_activity) { create(:activity, uploadable: true, programme_activities: [create(:programme_activity, programme:)]) }
   let(:achievement) do
-    create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id, programme_id: programme.id,
-                                                    user_id: user.id)
+    create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id, user_id: user.id)
   end
 
   describe '#perform' do

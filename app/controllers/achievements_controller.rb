@@ -14,12 +14,7 @@ class AchievementsController < ApplicationController
 
       @achievement.transition_to(:complete, metadata)
 
-      if @achievement.programme
-        case @achievement.programme.slug
-        when 'i-belong', 'primary-certificate', 'secondary-certificate'
-          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
-        end
-      end
+      CertificatePendingTransitionJob.perform_now(current_user, { source: 'AchievementsController.create' })
     else
       flash[:error] = 'Whoops something went wrong adding the activity' unless @achievement.errors.present?
       flash[:error] = @achievement.errors.full_messages.to_sentence

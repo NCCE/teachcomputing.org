@@ -27,16 +27,6 @@ RSpec.describe Programmes::UserEnroller do
       expect { enroller.call }.not_to change(QuestionnaireResponse, :count)
     end
 
-    it 'sets eligible achievements for the programme' do
-      achievements = create_list(:achievement, 2, user: user)
-      Activity.all.each do |activity|
-        create(:programme_activity, programme: programme, activity: activity)
-      end
-
-      enroller.call
-      expect(user.achievements.pluck(:programme_id).uniq).to include programme.id
-    end
-
     context 'when enrolling on cs_accelerator' do
       let(:programme) { create(:cs_accelerator) }
 

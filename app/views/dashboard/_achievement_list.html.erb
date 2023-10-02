@@ -1,6 +1,6 @@
 <ul class="govuk-list ncce-activity-list" role="list">
   <% achievements.each do |achievement| %>
-  <li class="ncce-activity-list__item ncce-activity-list__item--dashboard dashboard-border--<%= get_course_suffix(achievement) %>">
+  <li class="ncce-activity-list__item ncce-activity-list__item--dashboard dashboard-border %>">
     <div class="ncce-activity-list__item-text <%= 'ncce-activity-list__item-text--incomplete' unless achievement.current_state == :complete.to_s %>">
       <% if achievement.active_course? %>
         <%= link_to achievement.activity.title, course_path(id: achievement.activity&.stem_activity_code, name: achievement.activity.slug), class: 'ncce-link' if achievement.activity.stem_activity_code %>
@@ -9,11 +9,11 @@
       <% end %>
     </div>
     <div class="ncce-activity-list__info">
-      <% unless get_course_tag(achievement).blank? %>
-        <div class="govuk-body ncce-activity-list__tags dashboard-tags--<%= get_course_suffix(achievement) %>">
-          <strong><%= get_course_tag(achievement) %></strong>
-        </div>
-      <% end %>
+      <div class="govuk-body ncce-activity-list__tags">
+        <% achievement.activity.programmes.select { _1.user_enrolled?(current_user) }.each do |programme| %>
+          <strong class="dashboard-tags--<%= programme.slug %>"><%= programme.short_name %></strong>
+        <% end %>
+      </div>
       <% details = stem_course_details(user_course_info, achievement.activity.stem_course_template_no) %>
       <% if details.present? %>
         <div class="govuk-body ncce-activity-list__subtext <%= course_icon_class(achievement.activity) %>">

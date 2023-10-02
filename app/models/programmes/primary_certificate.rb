@@ -2,6 +2,10 @@ module Programmes
   class PrimaryCertificate < Programme
     PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
 
+    def short_name
+      'Primary certificate'
+    end
+
     def pending_delay
       7.days
     end

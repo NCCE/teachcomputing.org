@@ -28,4 +28,10 @@ RSpec.describe Programmes::ALevel do
         .to eq('A level subject knowledge')
     end
   end
+
+  describe '#short_name' do
+    it 'should return its short name' do
+      expect(subject.short_name).to eq 'A Level'
+    end
+  end
 end

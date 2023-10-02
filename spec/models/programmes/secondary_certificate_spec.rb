@@ -30,7 +30,7 @@ RSpec.describe Programmes::SecondaryCertificate do
       context 'when the user has completed one activity from each group' do
         it 'returns false' do
           programme_activity_groupings.each do |group|
-            create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+            create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
           end
 
           expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq false
@@ -44,7 +44,7 @@ RSpec.describe Programmes::SecondaryCertificate do
           cs_accelerator_enrolment.transition_to :complete
 
           programme_activity_groupings.each do |group|
-            create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+            create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
           end
 
           expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
@@ -76,6 +76,12 @@ RSpec.describe Programmes::SecondaryCertificate do
   describe '#pathways?' do
     it 'should return true' do
       expect(secondary_certificate.pathways?).to be true
+    end
+  end
+
+  describe '#short_name' do
+    it 'should return its short name' do
+      expect(secondary_certificate.short_name).to eq 'Secondary certificate'
     end
   end
 end

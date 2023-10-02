@@ -2,13 +2,22 @@ require 'rails_helper'
 
 RSpec.describe Api::UsersController do
   let(:user) { create(:user, email: ENV.fetch('DEFAULT_ADMIN_EMAIL')) }
-  let(:activity) { create(:activity) }
+  let(:activity) {
+    create(
+      :activity,
+      programme_activities: [create(:programme_activity, programme:, activity:)]
+    )
+  }
   let(:programme) { create(:programme) }
   let(:enrolment) { create(:user_programme_enrolment, user:, programme:) }
   let(:uploadable_activity) { create(:activity, uploadable: true) }
   let(:achievement) do
-    create(:achievement, :with_supporting_evidence, activity_id: uploadable_activity.id,
-                                                    programme_id: programme.id, user_id: user.id)
+    create(
+      :achievement,
+      :with_supporting_evidence,
+      activity_id: uploadable_activity.id,
+      user_id: user.id,
+    )
   end
   let(:token_headers) { { HTTP_AUTHORIZATION: 'Bearer secret', HTTP_CONTENT_TYPE: 'application/json' } }
 

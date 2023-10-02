@@ -3,8 +3,7 @@ module Achiever
     queue_as :default
 
     def perform(user)
-      @assess_eligibility_job = false
-      @pending_transition_job = false
+      any_marked_as_attended = false
       Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no).each do |course|
         activity = course_activity(stem_course_template_no: course.course_template_no, user_id: user.id)
         Rails.logger.warn "Could not find activity with template #{course.course_template_no} and occ #{course.course_occurence_no} for user #{user.stem_achiever_contact_no}" unless activity
@@ -15,14 +14,15 @@ module Achiever
 
         case course.attendance_status
         when 'attended'
-          achievement.complete!
+          any_marked_as_attended = true
 
-          determine_jobs_to_run(programme_slug: achievement.programme.slug) if achievement.programme
+          achievement.complete!
         when 'cancelled'
           achievement.drop!
         end
       end
-      run_jobs(user.id)
+
+      run_jobs(user) if any_marked_as_attended
     end
 
     private
@@ -42,24 +42,10 @@ module Achiever
         end
       end
 
-      def determine_jobs_to_run(programme_slug:)
-        case programme_slug
-        when 'cs-accelerator'
-          @assess_eligibility_job = true
-        when 'primary-certificate', 'secondary-certificate', 'i-belong'
-          @programme = Programme.find_by(slug: programme_slug)
-          @pending_transition_job = true
-        end
-      end
-
-      def run_jobs(user_id)
-        AssessmentEligibilityJob.perform_later(user_id) if @assess_eligibility_job
-
-        return unless @pending_transition_job
-
+      def run_jobs(user)
+        AssessmentEligibilityJob.perform_later(user.id)
         CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
-          @programme,
-          user_id,
+          user,
           { source: 'FetchUsersCompletedCoursesFromAchieverJob' }
         )
       end

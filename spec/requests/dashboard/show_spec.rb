@@ -2,12 +2,11 @@ require 'rails_helper'
 
 RSpec.describe DashboardController do
   let(:user) { create(:user) }
-  let(:primary_certificate) { create(:primary_certificate) }
-  let!(:completed_achievement_1) { create(:completed_achievement, user: user, programme_id: primary_certificate.id, updated_at: '2020-12-15 11:28:34') }
-  let!(:completed_achievement_2) { create(:completed_achievement, user: user, programme_id: primary_certificate.id, updated_at: '2020-12-15 09:28:34') }
-  let!(:completed_achievement_3) { create(:completed_achievement, user: user, programme_id: primary_certificate.id, updated_at: '2020-12-15 12:28:34') }
-  let!(:incomplete_achievement_1) { create(:achievement, user: user, programme_id: primary_certificate.id, created_at: '2020-12-15 12:28:34') }
-  let!(:incomplete_achievement_2) { create(:achievement, user: user, programme_id: primary_certificate.id, created_at: '2020-12-15 13:28:34') }
+  let!(:completed_achievement_1) { create(:completed_achievement, user: user, updated_at: '2020-12-15 11:28:34') }
+  let!(:completed_achievement_2) { create(:completed_achievement, user: user, updated_at: '2020-12-15 09:28:34') }
+  let!(:completed_achievement_3) { create(:completed_achievement, user: user, updated_at: '2020-12-15 12:28:34') }
+  let!(:incomplete_achievement_1) { create(:achievement, user: user, created_at: '2020-12-15 12:28:34') }
+  let!(:incomplete_achievement_2) { create(:achievement, user: user, created_at: '2020-12-15 13:28:34') }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let!(:diagnostic_achievement) { create(:achievement, user: user, activity: activity) }
 
@@ -19,6 +18,7 @@ RSpec.describe DashboardController do
 
     describe 'while logged in' do
       before do
+        create(:primary_certificate)
         create(:secondary_certificate)
         create(:cs_accelerator)
         create(:i_belong)

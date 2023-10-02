@@ -9,7 +9,7 @@ RSpec.describe('certificates/primary_certificate/complete', type: :view) do
     stub_issued_badges(user.id)
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    assign(:complete_achievements, user.achievements.for_programme(programme).sort_complete_first)
+    assign(:complete_achievements, user.achievements.belongs_to_programme(programme).sort_complete_first)
     enrolment.transition_to(:complete)
     render
   end
