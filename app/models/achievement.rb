@@ -6,23 +6,15 @@ class Achievement < ApplicationRecord
 
   belongs_to :activity
   belongs_to :user
-  belongs_to :programme, optional: true
 
   has_one_attached :supporting_evidence
 
   validates :supporting_evidence, blob: { content_type: :image }
   validates :user_id, uniqueness: { scope: [:activity_id] }
 
-  before_create :fill_in_programme_id,
-                unless: proc { |achievement| achievement.programme_id }
-
   after_save :queue_auto_enrolment
 
   has_many :achievement_transitions, autosave: false, dependent: :destroy
-
-  scope :for_programme, lambda { |programme|
-    where(programme_id: programme.id)
-  }
 
   scope :with_attachments, -> { joins(:activity).where(activities: { uploadable: true }) }
 
@@ -52,21 +44,8 @@ class Achievement < ApplicationRecord
       .order('current_state')
   }
 
-  def user_has_badge?
-    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
-  end
-
-  def first_stem_achievement?
-    user.achievements.in_state(:complete).with_category(Activity::FACE_TO_FACE_CATEGORY).for_programme(programme).count >= 1
-  end
-
-  def issue_badge
-    return unless programme&.badgeable? && programme&.user_enrolled?(user)
-    return unless programme.badges.active.first
-    return if user_has_badge?
-
-    Credly::IssueBadgeJob.perform_later(user.id, programme.id) if first_stem_achievement?
-  end
+  scope :belongs_to_programme, ->(programme) { joins(activity: { programme_activities: :programme }).where(activities: { programme_activities: { programme: }}) }
+  scope :belongs_to_pathway, ->(pathway) { joins(activity: { pathway_activities: :pathway }).where(activities: { pathway_activities: { pathway: } }) }
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
@@ -109,18 +88,6 @@ class Achievement < ApplicationRecord
     AchievementTransition
   end
 
-  def primary_certificate?
-    programme.present? && programme.primary_certificate?
-  end
-
-  def secondary_certificate?
-    programme.present? && programme.secondary_certificate?
-  end
-
-  def cs_accelerator?
-    programme.present? && programme.cs_accelerator?
-  end
-
   private_class_method :initial_state, :transition_class
 
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
@@ -128,29 +95,7 @@ class Achievement < ApplicationRecord
 
   private
 
-    def fill_in_programme_id
-      programmes = activity.programmes
-
-      return if programmes.empty?
-
-      self.programme_id = find_matching_programme_id(programmes)
-    end
-
-    def find_matching_programme_id(programmes)
-      return programmes.first.id if programmes.size == 1
-
-      user_programme_ids = user.user_programme_enrolments
-                               .where(programme_id: programmes.pluck(:id))
-                               .not_in_state(:unenrolled)
-                               .order(created_at: :desc)
-                               .pluck(:programme_id)
-      user_programme_ids.first
-    end
-
     def queue_auto_enrolment
-      return unless programme&.cs_accelerator?
-      return unless user.csa_auto_enrollable?
-
       CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 

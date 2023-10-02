@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_18_211850) do
+ActiveRecord::Schema.define(version: 2023_10_02_084137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,10 +33,8 @@ ActiveRecord::Schema.define(version: 2023_09_18_211850) do
     t.uuid "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "programme_id"
     t.integer "progress", default: 0, null: false
     t.index ["activity_id", "user_id"], name: "index_achievements_on_activity_id_and_user_id", unique: true
-    t.index ["programme_id", "user_id"], name: "index_achievements_on_programme_id_and_user_id"
   end
 
   create_table "achiever_sync_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

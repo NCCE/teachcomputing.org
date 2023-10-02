@@ -21,7 +21,7 @@ RSpec.describe Achievement, type: :model do
   let(:primary_certificate) { create(:primary_certificate) }
   let(:achievement_with_passed_programme_id) do
     create(:programme_activity, programme_id: programme.id, activity_id: community_activity.id)
-    create(:achievement, programme_id: cs_accelerator.id, activity_id: community_activity.id)
+    create(:achievement, activity_id: community_activity.id)
   end
 
   let(:achievement_with_programme) do
@@ -39,14 +39,12 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe 'callbacks' do
-    it { is_expected.to callback(:fill_in_programme_id).before(:create) }
     it { is_expected.to callback(:queue_auto_enrolment).after(:save) }
   end
 
   describe 'associations' do
     it { is_expected.to belong_to(:activity) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:programme).optional(true) }
     it { is_expected.to have_many(:achievement_transitions) }
   end
 
@@ -73,68 +71,6 @@ RSpec.describe Achievement, type: :model do
         )
         expect(achievement.valid?).to be false
       end
-    end
-  end
-
-  describe '#before_create' do
-    it 'when activity has no programme does not set the programme_id' do
-      expect(achievement.programme_id).to be_nil
-    end
-
-    it 'when programme_id is set, it is not overwritten' do
-      expect(achievement_with_passed_programme_id.programme).to eq(cs_accelerator)
-    end
-
-    it 'when activity has a single programme it is used' do
-      expect(achievement_with_programme.programme_id).to eq(programme.id)
-    end
-
-    context 'when activity has multiple programmes' do
-      it 'gets the most recently enrolled one' do
-        expect(achievement_with_two_programmes.programme).to eq(cs_accelerator)
-      end
-
-      it 'ignores a programme the user has unenrolled from' do
-        face_to_face_activity = create(:activity, :stem_learning)
-        create(:user_programme_enrolment, programme_id: programme.id, user_id: user.id)
-        csa_enrolment = create(:user_programme_enrolment, programme_id: cs_accelerator.id, user_id: user.id)
-        csa_enrolment.transition_to(:unenrolled)
-
-        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
-        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
-        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
-        expect(achievement.programme_id).to eq(programme.id)
-      end
-
-      it 'does not set id if user not enrolled on any programmes' do
-        face_to_face_activity = create(:activity, :stem_learning)
-        create(:programme_activity, programme_id: programme.id, activity_id: face_to_face_activity.id)
-        create(:programme_activity, programme_id: cs_accelerator.id, activity_id: face_to_face_activity.id)
-        achievement = create(:achievement, activity_id: face_to_face_activity.id, user_id: user.id)
-        expect(achievement.programme_id).to be_nil
-      end
-    end
-
-    it 'when we update the programme, the id is saved' do
-      expect(diagnostic_achievement.programme).to be_nil
-      diagnostic_achievement.programme = cs_accelerator
-      diagnostic_achievement.save
-      diagnostic_achievement.reload
-      expect(diagnostic_achievement.programme_id).to eq(cs_accelerator.id)
-    end
-  end
-
-  describe '#for_programme' do
-    before do
-      programme_activity
-    end
-
-    it 'when programme has matching activity it returns the achievement' do
-      expect(Achievement.for_programme(programme)).to include(achievement)
-    end
-
-    it 'when programme doesn\'t have matching activity it doesn\'t return the achievement' do
-      expect(Achievement.for_programme(programme)).not_to include(achievement2)
     end
   end
 
@@ -312,194 +248,6 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#primary_certificate?' do
-    context 'when programme is primary certificate' do
-      it 'returns true' do
-        programme = build(:primary_certificate)
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.primary_certificate?).to be(true)
-      end
-    end
-
-    context 'when programme is not primary certificate' do
-      it 'returns false' do
-        programme = build(:programme, slug: 'another-programme-slug')
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.primary_certificate?).to be(false)
-      end
-    end
-
-    context 'when programme is nil' do
-      it 'returns false' do
-        achievement = build(:achievement, programme: nil)
-        expect(achievement.primary_certificate?).to be(false)
-      end
-    end
-  end
-
-  describe '#cs_accelerator?' do
-    context 'when programme is cs accelerator' do
-      it 'returns true' do
-        programme = build(:cs_accelerator)
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.cs_accelerator?).to be(true)
-      end
-    end
-
-    context 'when programme is not cs accelerator' do
-      it 'returns false' do
-        programme = build(:programme, slug: 'another-programme-slug')
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.cs_accelerator?).to be(false)
-      end
-    end
-
-    context 'when programme is nil' do
-      it 'returns false' do
-        achievement = build(:achievement, programme: nil)
-        expect(achievement.cs_accelerator?).to be(false)
-      end
-    end
-  end
-
-  describe '#secondary_certificate?' do
-    context 'when programme is secondary certificate' do
-      it 'returns true' do
-        programme = build(:secondary_certificate)
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.secondary_certificate?).to be(true)
-      end
-    end
-
-    context 'when programme is not secondary certificate' do
-      it 'returns false' do
-        programme = build(:programme, slug: 'another-programme-slug')
-        achievement = build(:achievement, programme: programme)
-        expect(achievement.secondary_certificate?).to be(false)
-      end
-    end
-
-    context 'when programme is nil' do
-      it 'returns false' do
-        achievement = build(:achievement, programme: nil)
-        expect(achievement.secondary_certificate?).to be(false)
-      end
-    end
-  end
-
-  describe '#issue_badge' do
-    context 'with badgeable is nil' do
-      it 'returns nil' do
-        achievement = build(:achievement, programme: nil)
-        expect(achievement.issue_badge).to be_nil
-      end
-    end
-
-    context 'without an enrolment' do
-      it 'returns nil' do
-        achievement = build(:achievement, programme:)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-    end
-
-    context 'with a programme, enrolment and an achievement count of 1' do
-      let(:user) { create(:user, email: 'web@teachcomputing.org') }
-      let(:badge) { create(:badge, :active, programme_id: cs_accelerator.id) }
-
-      after do
-        clear_enqueued_jobs
-      end
-
-      it 'queues Credly::IssueBadgeJob when the achievement is face-to-face' do
-        stub_issue_badge(user.id, badge.credly_badge_template_id)
-        stub_issued_badges_empty(user.id)
-
-        achievement = create(:achievement, :face_to_face, programme_id: cs_accelerator.id, user_id: user.id)
-        achievement.transition_to(:complete)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).to have_been_enqueued
-      end
-
-      it 'queues Credly::IssueBadgeJob when the achievement is remote' do
-        stub_issue_badge(user.id, badge.credly_badge_template_id)
-        stub_issued_badges_empty(user.id)
-
-        achievement = create(:achievement, :remote, programme_id: cs_accelerator.id, user_id: user.id)
-        achievement.transition_to(:complete)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).to have_been_enqueued
-      end
-
-      it 'does not queue if a badge already exists' do
-        stub_issued_badges(user.id)
-
-        achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
-        achievement.transition_to(:complete)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-
-      it 'does not queue if the achievement is online' do
-        stub_issued_badges(user.id)
-
-        achievement = create(:achievement, :online, programme_id: cs_accelerator.id, user_id: user.id)
-        achievement.transition_to(:complete)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-
-      it 'does not queue if the achievement is community' do
-        stub_issued_badges(user.id)
-
-        achievement = create(:achievement, :community, programme_id: cs_accelerator.id, user_id: user.id)
-        achievement.transition_to(:complete)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-    end
-
-    context 'with a programme, enrolment and an achievement count of 0' do
-      it 'returns nil and does not queue Credly::IssueBadgeJob' do
-        achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-    end
-
-    context 'with a programme, enrolment and an achievement count greater than 1' do
-      it 'returns nil and does not queue Credly::IssueBadgeJob' do
-        3.times do
-          achievement = create(:achievement, programme_id: cs_accelerator.id, user_id: user.id)
-          achievement.transition_to(:complete)
-        end
-        create(:user_programme_enrolment,
-               user:,
-               programme: cs_accelerator)
-        achievement.issue_badge
-        expect(Credly::IssueBadgeJob).not_to have_been_enqueued
-      end
-    end
-  end
-
   describe '#update_progress_and_state' do
     let(:achievement) { create(:achievement) }
 
@@ -613,91 +361,13 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe '#queue_auto_enrolment' do
-    context 'when course is part of csa' do
-      let!(:achievement) { create(:achievement, activity: activity, user: user, programme: cs_accelerator) }
+    let!(:achievement) { create(:achievement, activity: activity, user: user) }
 
-      it 'queues job' do
-        expect do
-          achievement.reload.run_callbacks(:save)
-        end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-          .with(achievement_id: achievement.id)
-      end
-
-      context 'when user is enrolled on CSAccelerator' do
-        it 'does not queue job' do
-          create(:user_programme_enrolment,
-                 user: user,
-                 programme: cs_accelerator)
-          expect do
-            achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-        end
-      end
-    end
-
-    context 'when course is part of csa and another programme' do
-      before do
-        create(
-          :programme_activity,
-          programme: primary_certificate,
-          activity: activity
-        )
-
-        create(
-          :programme_activity,
-          programme: cs_accelerator,
-          activity: activity
-        )
-      end
-
-      context 'when achievement is connected to csa' do
-        let!(:achievement) { create(:achievement, activity: activity, user: user, programme: cs_accelerator) }
-
-        it 'queues job' do
-          expect do
-            achievement.reload.run_callbacks(:save)
-          end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-        end
-      end
-
-      context 'when achievement not connected to csa' do
-        let!(:achievement) { create(:achievement, activity: activity, user: user, programme: primary_certificate) }
-
-        it 'does not queue job' do
-          expect do
-            achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-        end
-      end
-
-      context 'when user is enrolled on CSAccelerator' do
-        it 'does not queue job' do
-          create(:user_programme_enrolment,
-                 user: user,
-                 programme: cs_accelerator)
-          expect do
-            achievement.reload.run_callbacks(:save)
-          end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-        end
-      end
-    end
-
-    context 'when course is not part of csa' do
-      let!(:achievement) { create(:achievement, activity: activity, user: user, programme: primary_certificate) }
-
-      before do
-        create(
-          :programme_activity,
-          programme: primary_certificate,
-          activity: activity
-        )
-      end
-
-      it 'does not queue job' do
-        expect do
-          achievement.reload.run_callbacks(:save)
-        end.not_to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-      end
+    it 'queues job' do
+      expect do
+        achievement.reload.run_callbacks(:save)
+      end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
+        .with(achievement_id: achievement.id)
     end
   end
 end

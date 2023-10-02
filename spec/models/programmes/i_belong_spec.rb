@@ -36,4 +36,10 @@ RSpec.describe Programmes::IBelong do
       expect(programme.certificate_name_for_user(user)).to eq user.school_name
     end
   end
+
+  describe '#short_name' do
+    it 'should return its short name' do
+      expect(programme.short_name).to eq 'I belong'
+    end
+  end
 end

@@ -6,8 +6,10 @@ RSpec.describe ScheduleProgrammeGettingStartedPromptJob, type: :job do
   let(:enrolment_2) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme_2.id) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_2) { create(:primary_certificate) }
-  let(:achievement) { create(:achievement, programme: programme, user: user) }
-  let(:achievement_2) { create(:achievement, programme: programme_2, user: user) }
+  let(:activity) { create(:activity, programme_activities: [create(:programme_activity, programme:)]) }
+  let(:activity_2) { create(:activity, programme_activities: [create(:programme_activity, programme: programme_2)]) }
+  let(:achievement) { create(:achievement, activity:, user: user) }
+  let(:achievement_2) { create(:achievement, activity: activity_2, user: user) }
 
   describe '#perform' do
     it 'sends an email' do

@@ -31,7 +31,7 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
 
     context 'when the user has completed the required number of activities' do
       before do
-        achievement = create(:achievement, user_id: user.id, programme_id: programme.id, activity_id: programme_activity_groupings.first.programme_activities.first.activity.id)
+        achievement = create(:achievement, user_id: user.id, activity_id: programme_activity_groupings.first.programme_activities.first.activity.id)
         achievement.transition_to(:complete)
       end
 

@@ -251,14 +251,7 @@
 }
 
 .dashboard-border {
-  &--primary {
-    border-left-color: $primary-cert-color;
-  }
-
-  &--cs-accelerator,
-  &--secondary {
-    border-left-color: $secondary-cert-color;
-  }
+  border-left-color: $primary-cert-color;
 }
 
 .ncce-activity-list__info {
@@ -272,23 +265,33 @@
 
 .ncce-activity-list__tags {
   color: $grey-dark-x;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   font-size: 1rem;
   margin-bottom: 0;
   margin-left: 2.8rem;
-  padding: 5px 16px;
+
+  strong {
+    width: fit-content;
+    padding: 5px 16px;
+  }
 }
 
 .dashboard-tags--cs-accelerator {
   background-color: $secondary-cert-color;
 }
 
-.dashboard-tags--primary {
+.dashboard-tags--primary-certificate {
   background-color: $primary-cert-color;
 }
 
-.dashboard-tags--secondary {
+.dashboard-tags--secondary-certificate {
   background-color: $secondary-cert-color;
+}
+
+.dashboard-tags--i-belong {
+  background-color: $i-belong-cert-color;
 }
 
 .ncce-activity-list__subtext {

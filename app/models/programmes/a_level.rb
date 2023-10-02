@@ -2,6 +2,10 @@ module Programmes
   class ALevel < Programme
     PROGRAMME_TITLE = 'A level subject knowledge'.freeze
 
+    def short_name
+      'A Level'
+    end
+
     def mailer
       ALevelMailer
     end

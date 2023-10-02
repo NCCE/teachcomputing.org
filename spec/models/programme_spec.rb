@@ -312,4 +312,10 @@ RSpec.describe Programme, type: :model do
       expect(programme.enrichment_enabled?).to be false
     end
   end
+
+  describe '#short_name' do
+    it 'should return not implemented error' do
+      expect { generic_programme.short_name }.to raise_error(NotImplementedError)
+    end
+  end
 end

@@ -13,7 +13,7 @@ RSpec.describe('certificates/cs_accelerator/complete') do
 
     create(:pathway_activity, pathway_id: pathway.id, activity_id: online_activity.id)
     create(:completed_enrolment, programme_id: programme.id, user_id: user.id)
-    create(:completed_achievement, user_id: user.id, activity_id: online_activity.id, programme_id: programme.id)
+    create(:completed_achievement, user_id: user.id, activity_id: online_activity.id)
 
     assign(:current_user, user)
     assign(:programme, programme)

@@ -257,23 +257,32 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when user has single f2f achievement' do
       it 'returns the achievement' do
-        achievement = create(:achievement, programme: programme, user: user)
+        achievement = create(:achievement, user: user)
+        create(:programme_activity, programme:, activity: achievement.activity)
         expect(programme.compulsory_achievement(user)).to eq(achievement)
       end
 
       it 'ignores dropped achievements' do
-        achievement = create(:achievement, programme: programme, user: user)
+        achievement = create(:achievement, user: user)
         achievement.transition_to(:dropped)
+        create(:programme_activity, programme:, activity: achievement.activity)
         expect(programme.compulsory_achievement(user)).to eq(nil)
       end
     end
 
     context 'when user has multiple f2f achievements' do
       let!(:earliest_achievement) do
-        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        create(:achievement, user: user, created_at: Time.now - 7.days)
       end
-      let!(:another_achievement) { create(:achievement, programme: programme, user: user) }
-      let!(:further_achievement) { create(:achievement, programme: programme, user: user) }
+
+      let!(:another_achievement) { create(:achievement, user: user) }
+      let!(:further_achievement) { create(:achievement, user: user) }
+
+      before do
+        [earliest_achievement, another_achievement, further_achievement].each do
+          create(:programme_activity, programme:, activity: _1.activity)
+        end
+      end
 
       it 'returns the first achievement if none are complete' do
         expect(programme.compulsory_achievement(user)).to eq(earliest_achievement)
@@ -294,8 +303,8 @@ RSpec.describe Programmes::CSAccelerator do
     context 'when user has no f2f achievements but has online achievements' do
       it 'returns nil' do
         activity = create(:activity, :online)
-        achievement = create(:achievement, programme: programme, user: user,
-                                           activity: activity)
+        create(:programme_activity, programme_id: programme.id, activity:)
+        achievement = create(:achievement, user: user, activity: activity)
         expect(programme.compulsory_achievement(user)).to eq(nil)
       end
     end
@@ -310,50 +319,57 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when user has non course achievements' do
       it 'does not return other types of achievements' do
-        create(:achievement, activity: create(:activity, category: 'action'),
-                             programme: programme, user: user)
-        create(:achievement, activity: create(:activity, category: 'assessment'),
-                             programme: programme, user: user)
-        create(:achievement, activity: create(:activity, category: 'community'),
-                             programme: programme, user: user)
-        create(:achievement, activity: create(:activity, category: 'diagnostic'),
-                             programme: programme, user: user)
+        [
+          create(:achievement, activity: create(:activity, category: 'action'), user: user),
+          create(:achievement, activity: create(:activity, category: 'assessment'), user: user),
+          create(:achievement, activity: create(:activity, category: 'community'), user: user),
+          create(:achievement, activity: create(:activity, category: 'diagnostic'), user: user)
+        ].each { create(:programme_activity, programme: programme, activity: _1.activity) }
+
         expect(programme.non_compulsory_achievements(user)).to eq([])
       end
     end
 
     context 'when user has compulsory achievement but no others' do
       it 'returns empty list' do
-        achievement = create(:achievement, programme: programme, user: user)
+        achievement = create(:achievement, user: user)
+        create(:programme_activity, programme_id: programme.id, activity: achievement.activity)
         expect(programme.non_compulsory_achievements(user)).to eq([])
       end
     end
 
     context 'when user has no f2f achievements but does have online achievements' do
       it 'returns online achievements' do
-        achievements = create_list(:achievement, 2, :online,
-                                   programme: programme, user: user)
+        achievements = [
+          create(:achievement,:online, user: user),
+          create(:achievement,:online, user: user)
+        ]
+        achievements.each { create(:programme_activity, activity: _1.activity, programme: ) }
         expect(programme.non_compulsory_achievements(user)).to match_array(achievements)
       end
     end
 
     context 'when user has f2f achievements and online achievements' do
       it 'returns online achievements and f2f achievements except the first one' do
-        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
-        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
-        online_achievements = create_list(:achievement, 2, :online,
-                                          programme: programme, user: user)
+        f2f_achievements = create_list(:achievement, 2, user: user)
+        first = create(:achievement, user: user, created_at: Time.now - 7.days)
+        online_achievements = create_list(:achievement, 2, :online, user: user)
+        [*f2f_achievements, first, *online_achievements].each do
+          create(:programme_activity, activity: _1.activity, programme: )
+        end
         results = programme.non_compulsory_achievements(user)
         expect(results).to match_array(f2f_achievements + online_achievements)
       end
 
       it 'ignores dropped achievements' do
-        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
-        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
-        online_achievements = create_list(:achievement, 2, :online,
-                                          programme: programme, user: user)
-        dropped_achievement = create(:achievement, programme: programme, user: user)
+        f2f_achievements = create_list(:achievement, 2, user: user)
+        first = create(:achievement, user: user, created_at: Time.now - 7.days)
+        online_achievements = create_list(:achievement, 2, :online, user: user)
+        dropped_achievement = create(:achievement, user: user)
         dropped_achievement.transition_to(:dropped)
+        [*f2f_achievements, first, *online_achievements, dropped_achievement].each do
+          create(:programme_activity, activity: _1.activity, programme: )
+        end
         results = programme.non_compulsory_achievements(user)
         expect(results).not_to include(dropped_achievement)
       end
@@ -369,8 +385,7 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when user has no complete non compulsory achievement' do
       it 'returns false' do
-        achievements = create_list(:achievement, 2, :online,
-                                   programme: programme, user: user)
+        achievements = create_list(:achievement, 2, :online, user: user)
         expect(programme.user_completed_non_compulsory_achievement?(user))
           .to eq(false)
       end
@@ -378,10 +393,14 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when user at least one complete non compulsory achievement' do
       it 'returns true' do
-        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
-        create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
-        online_achievement = create(:achievement, :online, programme: programme, user: user)
+        f2f_achievements = create_list(:achievement, 2, user: user)
+        compulsory_achievement = create(:achievement, user: user, created_at: Time.now - 7.days)
+        compulsory_achievement.transition_to(:complete)
+        online_achievement = create(:achievement, :online, user: user)
         online_achievement.transition_to(:complete)
+        [*f2f_achievements, compulsory_achievement, online_achievement].each do
+          create(:programme_activity, activity: _1.activity, programme: )
+        end
         expect(programme.user_completed_non_compulsory_achievement?(user))
           .to eq(true)
       end
@@ -389,13 +408,22 @@ RSpec.describe Programmes::CSAccelerator do
 
     context 'when user completed compulsory but not non compulsory achievement' do
       it 'returns false' do
-        f2f_achievements = create_list(:achievement, 2, programme: programme, user: user)
-        compulsory_achievement = create(:achievement, programme: programme, user: user, created_at: Time.now - 7.days)
+        f2f_achievements = create_list(:achievement, 2, user: user)
+        compulsory_achievement = create(:achievement, user: user, created_at: Time.now - 7.days)
         compulsory_achievement.transition_to(:complete)
-        create(:achievement, :online, programme: programme, user: user)
+        online_achievement = create(:achievement, :online, user: user)
+        [*f2f_achievements, compulsory_achievement, online_achievement].each do
+          create(:programme_activity, activity: _1.activity, programme: )
+        end
         expect(programme.user_completed_non_compulsory_achievement?(user))
           .to eq(false)
       end
+    end
+  end
+
+  describe '#short_name' do
+    it 'should return its short name' do
+      expect(programme.short_name).to eq 'CS Accelerator'
     end
   end
 end

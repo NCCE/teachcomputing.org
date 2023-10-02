@@ -11,7 +11,7 @@ RSpec.describe CSAcceleratorEnrolmentTransitionJob, type: :job do
   describe '#perform' do
     before do
       user_programme_enrolment
-      described_class.perform_now(user, certificate_number: '10')
+      described_class.perform_now(user, { certificate_number: '10' })
       secondary_user_programme_enrolment
       programme_activity_groupings
     end
@@ -35,7 +35,7 @@ RSpec.describe CSAcceleratorEnrolmentTransitionJob, type: :job do
     context 'when the user has completed all secondary PAGs' do
       it 'secondary should be pending' do
         programme_activity_groupings.each do |group|
-          create(:achievement, user_id: user.id, programme_id: secondary_certificate.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
+          create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
         end
 
         described_class.perform_now(user, certificate_number: '10')

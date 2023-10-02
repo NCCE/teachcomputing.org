@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Api::AchievementsController do
   let(:user) { create(:user) }
   let(:activity) { create(:activity) }
-  let(:programme) { create(:programme) }
-	let(:achievement) { create(:achievement, user: user, programme: programme) }
+	let(:achievement) { create(:achievement, user: user) }
   let(:token_headers) { { 'HTTP_AUTHORIZATION': 'Bearer secret', 'HTTP_CONTENT_TYPE': 'application/json' } }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
 
   context 'token is not passed' do
     describe 'POST #create' do

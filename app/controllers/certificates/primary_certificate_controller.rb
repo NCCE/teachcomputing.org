@@ -91,7 +91,7 @@ module Certificates
       end
 
       def user_achievements(category)
-        current_user.achievements.for_programme(@programme)
+        current_user.achievements.belongs_to_programme(@programme)
                     .with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
@@ -100,7 +100,7 @@ module Certificates
 
       def complete_achievements
         # Diagnostic may still exist for some users, so we must exclude it
-        current_user.achievements.for_programme(@programme)
+        current_user.achievements.belongs_to_programme(@programme)
                     .without_category(:action)
                     .without_category(:diagnostic)
                     .in_state(:complete)

@@ -41,6 +41,10 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: 'a-level')
   end
 
+  def short_name
+    raise NotImplementedError
+  end
+
   def pending_delay
     raise NotImplementedError
   end
