@@ -43,14 +43,14 @@ module Certificates
       end
 
       def user_achievements(category)
-        current_user.achievements.belongs_to_programme(@programme).with_category(category)
+        current_user.achievements.belonging_to_programme(@programme).with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
                     .sort_complete_first
       end
 
       def complete_achievements
-        current_user.achievements.belongs_to_programme(@programme)
+        current_user.achievements.belonging_to_programme(@programme)
                     .without_category(:action)
                     .in_state(:complete)
       end

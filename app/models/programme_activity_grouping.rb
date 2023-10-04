@@ -12,7 +12,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   store_accessor :web_copy, %i[course_requirements], prefix: true
 
   def achievements(user)
-    user.achievements.in_state(:complete).belongs_to_programme(programme)
+    user.achievements.in_state(:complete).belonging_to_programme(programme)
   end
 
   def user_complete?(user)

@@ -4,7 +4,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
   let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id) }
-  let(:complete_achievements) { user.achievements.without_category('action').belongs_to_programme(secondary_certificate).sort_complete_first }
+  let(:complete_achievements) { user.achievements.without_category('action').belonging_to_programme(secondary_certificate).sort_complete_first }
 
   describe '#complete' do
     context 'when user is logged in' do

@@ -4,7 +4,7 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
   def perform(enrolment_id)
     enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
-    return if enrolment.user.achievements.belongs_to_programme(enrolment.programme).count.positive?
+    return if enrolment.user.achievements.belonging_to_programme(enrolment.programme).count.positive?
 
     case enrolment.programme.slug
     when 'cs-accelerator'

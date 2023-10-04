@@ -75,13 +75,13 @@ module Certificates
       end
 
       def online_achievements
-        current_user.achievements.belongs_to_programme(@programme)
+        current_user.achievements.belonging_to_programme(@programme)
                     .not_in_state(:dropped)
                     .with_category(Activity::ONLINE_CATEGORY)
       end
 
       def face_to_face_achievements
-        current_user.achievements.belongs_to_programme(@programme)
+        current_user.achievements.belonging_to_programme(@programme)
                     .not_in_state(:dropped)
                     .with_category(Activity::FACE_TO_FACE_CATEGORY)
       end

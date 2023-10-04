@@ -44,8 +44,8 @@ class Achievement < ApplicationRecord
       .order('current_state')
   }
 
-  scope :belongs_to_programme, ->(programme) { joins(activity: { programme_activities: :programme }).where(activities: { programme_activities: { programme: }}) }
-  scope :belongs_to_pathway, ->(pathway) { joins(activity: { pathway_activities: :pathway }).where(activities: { pathway_activities: { pathway: } }) }
+  scope :belonging_to_programme, ->(programme) { joins(activity: { programme_activities: :programme }).where(activities: { programme_activities: { programme: }}) }
+  scope :belonging_to_pathway, ->(pathway) { joins(activity: { pathway_activities: :pathway }).where(activities: { pathway_activities: { pathway: } }) }
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)

@@ -17,7 +17,7 @@ module Programmes
 
     def credits_achieved_for_certificate(user)
       complete_achievements = user.achievements
-                                  .belongs_to_programme(self)
+                                  .belonging_to_programme(self)
                                   .in_state('complete')
 
       total = 0
@@ -35,7 +35,7 @@ module Programmes
 
     def enough_activities_for_test?(user)
       complete_achievements = user.achievements
-                                  .belongs_to_programme(self)
+                                  .belonging_to_programme(self)
                                   .in_state('complete')
 
       total_face_to_face = complete_achievements.with_category('face-to-face').sum(:credit)
@@ -74,7 +74,7 @@ module Programmes
     def compulsory_achievement(user)
       achievements = user
                      .achievements
-                     .belongs_to_programme(self)
+                     .belonging_to_programme(self)
                      .with_category(Activity::FACE_TO_FACE_CATEGORY)
                      .not_in_state(:dropped)
                      .order(:created_at)
@@ -86,7 +86,7 @@ module Programmes
     end
 
     def non_compulsory_achievements(user)
-      user.achievements.belongs_to_programme(self)
+      user.achievements.belonging_to_programme(self)
           .with_category([Activity::FACE_TO_FACE_CATEGORY,
                           Activity::ONLINE_CATEGORY])
           .where.not(id: compulsory_achievement(user)&.id)
