@@ -1,6 +1,6 @@
 en:
   title: "Looking for A level resources?"
   text:
-    html: "Isaac Computer Science is our free online learning programme for <strong>A level</strong> & <strong>%{gcse_link}</strong> teachers and students. Access our time-saving learning materials that cover the AQA, Edexcel, Eduqas, OCR and WJEC curriculums."
+    html: "Isaac Computer Science is our free online learning programme for <strong>A level</strong> & <strong>%{gcse_link}</strong> teachers and students. Access our time-saving learning materials with topics covering all exam board specifications."
   link_text: "Discover Isaac Computer Science"
   image_alt: "Isaac computer science logo"
