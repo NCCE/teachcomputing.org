@@ -59,14 +59,14 @@ module Certificates
       end
 
       def user_achievements(category)
-        current_user.achievements.belongs_to_programme(@programme).with_category(category)
+        current_user.achievements.belonging_to_programme(@programme).with_category(category)
                     .without_category(:action)
                     .not_in_state(:dropped)
                     .sort_complete_first
       end
 
       def complete_achievements
-        current_user.achievements.belongs_to_programme(@programme)
+        current_user.achievements.belonging_to_programme(@programme)
                     .without_category(:action)
                     .in_state(:complete)
       end
@@ -87,7 +87,7 @@ module Certificates
         user_achievement_activity_ids = current_user
           .achievements
           .in_state(:complete)
-          .belongs_to_programme(@programme)
+          .belonging_to_programme(@programme)
           .pluck(:activity_id)
 
         completed_courses, not_completed_courses = @professional_development_groups

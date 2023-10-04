@@ -30,7 +30,7 @@ class IssueBadgeJob < ApplicationJob
       .achievements
       .in_state(:complete)
       .with_category(Activity::FACE_TO_FACE_CATEGORY)
-      .belongs_to_programme(programme)
+      .belonging_to_programme(programme)
       .count >= 1
   end
 end

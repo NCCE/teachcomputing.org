@@ -6,7 +6,7 @@ RSpec.describe('certificates/secondary_certificate/pending', type: :view) do
 
   before do
     @programme = secondary_certificate
-    assign(:complete_achievements, user.achievements.belongs_to_programme(secondary_certificate).sort_complete_first)
+    assign(:complete_achievements, user.achievements.belonging_to_programme(secondary_certificate).sort_complete_first)
     render
   end
 
