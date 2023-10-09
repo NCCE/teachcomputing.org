@@ -7,11 +7,11 @@ class IssueBadgeJob < ApplicationJob
     achievement.activity.programmes.each do |programme|
       badge = programme.badges.active.first
 
-      next unless badge &&
-        programme.badgeable? &&
-        programme.user_enrolled?(user) &&
-        !user_has_badge?(user, programme) &&
-        !stem_achievement?(user, programme)
+      next if !badge ||
+        !programme.badgeable? ||
+        !programme.user_enrolled?(user) ||
+        user_has_badge?(user, programme) ||
+        !has_face_to_face_achievements?(user, programme)
 
 
       Credly::Badge.issue(user.id, badge.credly_badge_template_id)
@@ -25,12 +25,12 @@ class IssueBadgeJob < ApplicationJob
     Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
   end
 
-  def stem_achievement?(user, programme)
+  def has_face_to_face_achievements?(user, programme)
     user
       .achievements
       .in_state(:complete)
       .with_category(Activity::FACE_TO_FACE_CATEGORY)
       .belonging_to_programme(programme)
-      .count >= 1
+      .count >0 0
   end
 end

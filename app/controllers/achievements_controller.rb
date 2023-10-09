@@ -13,8 +13,6 @@ class AchievementsController < ApplicationController
       metadata[:self_verification_info] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
 
       @achievement.transition_to(:complete, metadata)
-
-      CertificatePendingTransitionJob.perform_now(current_user, { source: 'AchievementsController.create' })
     else
       flash[:error] = 'Whoops something went wrong adding the activity' unless @achievement.errors.present?
       flash[:error] = @achievement.errors.full_messages.to_sentence

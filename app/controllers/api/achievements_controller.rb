@@ -6,9 +6,6 @@ module Api
       achievement = Achievement.new(activity_id: activity.id, user_id: user.id)
 
       if achievement.save
-        AssessmentEligibilityJob.perform_now(user.id)
-        CertificatePendingTransitionJob.perform_now(user, { source: 'AdminAchievementsController.create' })
-
         render json: as_json(achievement), status: 201
       else
         render json: { error: achievement.errors.inspect }, status: 409
@@ -19,9 +16,6 @@ module Api
       user = User.find(params[:user_id])
       achievement = user.achievements.find(params[:achievement_id])
       achievement.transition_to(:complete)
-
-      AssessmentEligibilityJob.perform_later(user.id)
-      CertificatePendingTransitionJob.perform_now(user, { source: 'AdminAchievementsController.complete' })
 
       render json: as_json(achievement), status: 201
     end
