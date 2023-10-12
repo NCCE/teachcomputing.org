@@ -2065,3 +2065,99 @@ Activity.find_or_initialize_by(stem_course_template_no: 'd38639b4-4d2d-ee11-9965
 
   activity.programmes = [i_belong]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '833AFFBA-5159-EE11-BE6F-002248C6F783').tap do |activity|
+  activity.title = 'Bring computing to life using a context-based approach - residential'
+  activity.slug = 'bring-computing-to-life-using-a-context-based-approach-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 100
+  activity.stem_activity_code = 'CP010'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '8A5514BC-A362-EE11-8DF0-002248C6F783').tap do |activity|
+  activity.title = 'Help! How do I teach primary computing? - residential'
+  activity.slug = 'help-how-do-i-teach-primary-computing-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 100
+  activity.stem_activity_code = 'CP011'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'DB18E7DB-B862-EE11-8DF0-002248C6F9CE').tap do |activity|
+  activity.title = 'Teaching an inclusive context rich primary computing curriculum – residential'
+  activity.slug = 'teaching-an-inclusive-context-rich-primary-computing-curriculum-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 100
+  activity.stem_activity_code = 'CP012'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '215CC372-C362-EE11-8DF0-002248C6F524').tap do |activity|
+  activity.title = 'Developing the established primary computing leader - residential'
+  activity.slug = 'developing-the-established-primary-computing-leader-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 100
+  activity.stem_activity_code = 'CP013'
+
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '64E5E630-2B64-EE11-8DF0-002248C6F979').tap do |activity|
+  activity.title = 'Algorithms and programming for OCR GCSE specification - residential'
+  activity.slug = 'algorithms-and-programming-for-ocr-gcse-specification-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 40
+  activity.stem_activity_code = 'CP269'
+
+  activity.programmes = [cs_accelerator]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '38100ECE-2764-EE11-8DF0-002248C6F524').tap do |activity|
+  activity.title = 'Algorithms and programming for AQA GCSE specification - residential'
+  activity.slug = 'algorithms-and-programming-for-aqa-gcse-specification-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 40
+  activity.stem_activity_code = 'CP299'
+
+  activity.programmes = [cs_accelerator]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'A70C147D-6067-EE11-9AE7-002248C6F524').tap do |activity|
+  activity.title = 'Boolean logic in A Level computer science'
+  activity.slug = 'boolean-logic-in-a-level-computer-science'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 25
+  activity.stem_activity_code = 'CP503'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'D3F7BF7D-DA68-EE11-9AE7-002248C6F9CE').tap do |activity|
+  activity.title = 'Pathfinding algorithms in A Level computer science'
+  activity.slug = 'pathfinding-algorithms-in-a-level-computer-science'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 20
+  activity.stem_activity_code = 'CP504'
+
+  activity.programmes = [secondary_certificate]
+end.save
