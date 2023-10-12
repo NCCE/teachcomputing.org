@@ -10,6 +10,9 @@ RSpec.describe ExternalLinkHelper do
       secondary_astro_pi_webinar_url
       climate_detectives_webinar_url
       cyber_centurion_webinar_url
+      secondary_stem_community_url
+      primary_stem_community_url
+      stem_community_points_help_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it 'should return a string' do

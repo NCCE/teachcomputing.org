@@ -30,4 +30,16 @@ module ExternalLinkHelper
   def cyber_centurion_webinar_url
     'https://www.stem.org.uk/cpd/527935/cyber-centurion-competition-cyber-security'
   end
+
+  def primary_stem_community_url
+    'https://community.stem.org.uk/communities/community-home?communitykey=1238654a-fe3d-4173-99e1-4ecf11c98cdc'
+  end
+
+  def secondary_stem_community_url
+    'https://community.stem.org.uk/communities/community-home?CommunityKey=f5098030-41d2-43f9-8f5d-67b536b18b97'
+  end
+
+  def stem_community_points_help_url
+    'https://community.stem.org.uk/helpfaqs/points'
+  end
 end
