@@ -6,6 +6,6 @@ class ProgressBarComponent < ViewComponent::Base
       @body = body
       @steps_to_accreditation = steps_to_accreditation
 
-      @programme_activity_groupings = @programme.programme_activity_groupings.progress_bar_groupings.includes(:programme_activities)
+      @programme_activity_groupings = @programme.programme_activity_groupings.progress_bar_groupings.includes(:programme_activities).order(:sort_key)
     end
   end

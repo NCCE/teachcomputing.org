@@ -42,4 +42,16 @@ module ExternalLinkHelper
   def stem_community_points_help_url
     'https://community.stem.org.uk/helpfaqs/points'
   end
+
+  def i_belong_poster_request_url
+    'https://forms.office.com/e/x1FMMzjxhg'
+  end
+
+  def isaac_posters_brochure_url
+    'https://static.teachcomputing.org/NCCE_Secondary_Brochure_Digital_September.pdf'
+  end
+
+  def stem_request_ambassador_url
+    'https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador'
+  end
 end

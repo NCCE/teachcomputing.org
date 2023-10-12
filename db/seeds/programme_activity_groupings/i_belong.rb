@@ -56,6 +56,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
 
   activities = [
     'participate-in-a-ncce-student-enrichment-activity',
+    'provide-access-to-a-computing-related-extracurricular-club',
     'start-or-deliver-a-computing-related-club',
     'host-a-computing-stem-ambassador-activity',
     'participate-in-a-computing-related-competition',
