@@ -1,51 +1,90 @@
 class AchievementsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_achievement, only: %i[destroy update]
+
   def create
-    @achievement = Achievement.new(achievement_params)
-    @achievement.user_id = current_user.id
+    @achievement = current_user.achievements.build(achievement_params)
 
-    if invalid_params?
-      flash[:error] = "You must provide supporting evidence for '#{@achievement.activity.title}'"
-    elsif @achievement.save
-      flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
-
-      metadata = { credit: @achievement.activity.credit }
-      metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      metadata[:self_verification_info] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
-
-      @achievement.transition_to(:complete, metadata)
-
-      CertificatePendingTransitionJob.perform_now(current_user, { source: 'AchievementsController.create' })
+    if @achievement.save
+      flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
     else
-      flash[:error] = 'Whoops something went wrong adding the activity' unless @achievement.errors.present?
-      flash[:error] = @achievement.errors.full_messages.to_sentence
+      flash[:error] =
+        if @achievement.errors.present?
+          @achievement.errors.full_messages.to_sentence
+        else
+          'Sorry something went wrong saving your progress'
+        end
     end
 
-    redirect_to self_verification_url || dashboard_path
+    redirect_to self_verification_url
+  end
+
+  def update
+    if @achievement.update(achievement_params)
+      flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
+    else
+      flash[:error] =
+        if @achievement.errors.present?
+          @achievement.errors.full_messages.to_sentence
+        else
+          'Sorry something went wrong saving your progress'
+        end
+    end
+
+    redirect_to self_verification_url
   end
 
   def destroy
     begin
-      @achievement = Achievement.find_by!(id: params[:id])
       flash[:notice] = "'#{@achievement.activity.title}' has been removed" if @achievement.destroy!
     rescue StandardError
       flash[:error] = 'Whoops something went wrong removing the activity'
     end
 
-    redirect_to dashboard_path
+    redirect_to self_verification_url
+  end
+
+  def submit
+    @achievement = current_user
+      .achievements
+      .create_with(achievement_params)
+      .find_or_create_by(activity_id: achievement_params[:activity_id])
+
+    unless @achievement.persisted?
+      flash[:error] =
+        if @achievement.errors.present?
+          @achievement.errors.full_messages.to_sentence
+        else
+          'Whoops something went wrong'
+        end
+
+      return redirect_to self_verification_url
+    end
+
+    unless @achievement.adequate_evidence_provided?
+      flash[:notice] = 'Inadequate evidence provided'
+
+      return redirect_to self_verification_url
+    end
+
+    @achievement.transition_community_to_complete
+    CertificatePendingTransitionJob.perform_now(current_user, { source: 'AchievementsController.create' })
+
+    flash[:notice] = "'#{@achievement.activity.title}' was succesfully submitted"
+    redirect_to self_verification_url
   end
 
   private
 
-    def invalid_params?
-      (params[:self_verification_info].blank? && @achievement.activity.self_verification_info.present?) &&
-        achievement_params[:supporting_evidence].nil?
+    def set_achievement
+      @achievement = current_user.achievements.find(params[:id])
     end
 
     def achievement_params
-      params.require(:achievement).permit(:activity_id, :supporting_evidence)
+      params.require(:achievement).permit(:id, :activity_id, :supporting_evidence, :self_verification_info)
     end
 
     def self_verification_url
-      helpers.safe_redirect_url(request.referrer)
+      helpers.safe_redirect_url(request.referrer) || dashboard_path
     end
 end

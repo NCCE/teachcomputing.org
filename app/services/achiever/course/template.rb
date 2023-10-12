@@ -65,11 +65,19 @@ class Achiever::Course::Template
   end
 
   def self.all
+    Bullet.enable = false if defined? Bullet
+
     activities ||= Activity.all
+
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name))
     end
-    templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
+
+    templates = templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
+
+    Bullet.enable = true if defined? Bullet
+
+    templates
   end
 
   # @return [Achiever::Course::Template] !!raises ActiveRecord::RecordNotFound!! if none . Use this method if you are using
@@ -90,7 +98,6 @@ class Achiever::Course::Template
 
     unless template
       message = "Could not find template #{activity_code} in Smart Connector"
-      Rails.logger.error(message)
       Sentry.capture_message(message, level: :error)
     end
 

@@ -51,8 +51,6 @@ class Achiever::Request
     private
 
       def perform_request(query_string, resource_path, cache, cache_expiry, race_condition_ttl = nil)
-        return local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('ACHIEVER_USE_LOCAL_TEMPLATES', 'false')) && Rails.env.development?
-
         return api.get("#{resource_path}&#{query_string}") unless cache
 
         Rails.cache.fetch(
@@ -61,6 +59,7 @@ class Achiever::Request
           race_condition_ttl:,
           namespace: 'achiever'
         ) do
+          next local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('ACHIEVER_USE_LOCAL_TEMPLATES', 'false')) && Rails.env.development?
           api.get("#{resource_path}&#{query_string}")
         end
       end

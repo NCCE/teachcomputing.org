@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   Healthcheck.routes(self)
   root to: 'pages#home', action: :home
 
-  resources :achievements, only: %i[create destroy]
+  resources :achievements, only: %i[create destroy update] do
+    collection do
+      post :submit
+    end
+  end
   namespace :admin do
     root to: 'pathways#index'
     resources :badges

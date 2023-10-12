@@ -1,6 +1,6 @@
-<div data-controller="modal">
+<div data-controller="modal" class="<%= class_name %>">
   <div class="ncce-modal <%= 'ncce-modal--expanded' if expanded %>" data-modal-target="modal">
-    <div class="ncce-modal--body">
+    <div class="ncce-modal--body <%= 'corner-decoration' if show_corner_decoration %>">
       <div class="ncce-modal--header">
         <h2 class="govuk-heading-m"><%= title %></h2>
         <% if close_button? %>
