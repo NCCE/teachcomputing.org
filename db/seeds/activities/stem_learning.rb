@@ -1405,7 +1405,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '0b5c8499-1307-ec11-b6e6
   activity.programmes = [primary_certificate]
 end.save
 
-Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c') do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000d3a86d86c').tap do |activity|
   activity.title = 'Computing on a budget'
   activity.credit = 10
   activity.slug = 'computing-on-a-budget'
@@ -1413,9 +1413,22 @@ Activity.find_or_create_by(stem_course_template_no: 'ee8a70b8-1607-ec11-b6e6-000
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP262'
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a').tap do |activity|
+  activity.title = 'Getting started in Year 1'
+  activity.credit = 30
+  activity.slug = 'getting-started-in-year-1-short-course'
+  activity.stem_course_template_no = 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP462'
+  activity.remote_delivered_cpd = true
+
+  activity.programmes = [primary_certificate]
+end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: '576c1f0b-8610-ec11-b6e6-000d3a0cc552') do |activity|
   activity.title = 'KS3 computing (module 3): Creative curriculum enrichment and inclusion (remote)'
@@ -1455,19 +1468,6 @@ a = Activity.find_or_create_by(stem_course_template_no: '1f24260d-0725-ec11-b6e6
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
-
-Activity.find_or_initialize_by(stem_course_template_no: 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a').tap do |activity|
-  activity.title = 'Getting started in Year 1'
-  activity.credit = 30
-  activity.slug = 'getting-started-in-year-1'
-  activity.stem_course_template_no = 'bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a'
-  activity.category = 'face-to-face'
-  activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP462'
-  activity.remote_delivered_cpd = true
-
-  activity.programmes = [primary_certificate]
-end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'd4183159-1f25-ec11-b6e6-000d3a0ca796').tap do |activity|
   activity.title = 'Getting started in Year 4'
