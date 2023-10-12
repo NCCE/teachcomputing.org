@@ -22,11 +22,11 @@
     <% elsif @activity.self_verification_info.blank? %>
       <%= form_for Achievement.new, url: achievements_path do |f| %>
         <%= f.hidden_field :activity_id, value: @activity.id %>
-        <%= f.submit t('.mark_complete_label'), class: 'govuk-button button' %>
+        <%= f.submit t('.mark_complete_label'), class: 'govuk-button button button--no-margin-bottom' %>
       <% end %>
     <% else %>
       <span class="ihavedonethis">
-        <button aria-expanded="true" class="govuk-button button ihavedonethis__button">
+        <button aria-expanded="true" class="govuk-button button ihavedonethis__button button--no-margin-bottom">
           <%= t('.evidence_button_label') %>
         </button>
         <span class="ihavedonethis__popup">

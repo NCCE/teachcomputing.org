@@ -10,6 +10,7 @@ class CommunityActivityListComponent < ViewComponent::Base
     end
 
     complete, non_complete = activities_with_achievements.partition { _1[:achievement]&.in_state? :complete }
+    Rails.logger.info activities_with_achievements.size
 
     if complete.empty?
       @first_activities = non_complete.first(4)

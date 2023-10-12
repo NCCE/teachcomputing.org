@@ -461,7 +461,7 @@ Activity.find_or_initialize_by(slug: 'request-your-i-belong-in-computer-science-
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = '<a href="https://forms.office.com/e/x1FMMzjxhg">Request</a> and display your set of ‘I Belong in Computer Science’ posters. Consider using with the <a href="https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all">interview series</a> to stimulate discussion about computer science related pathways.'
+  activity.description = "<a href=\"#{i_belong_poster_request_url}\">Request</a> and display your set of ‘I Belong in Computer Science’ posters to create an inclusive classroom environment. Consider using with the <a href=\"#{isaac_posters_brochure_url}\">interview series</a> to stimulate discussion about computer science related pathways."
 
   activity.programmes = [i_belong]
 end.save
@@ -473,20 +473,20 @@ Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-compu
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls’ engagement (see handbook for guidance). Evidence delivery of at least one of these.'
+  activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
   activity.self_verification_info = 'Please provide us with evidence of delivery of at least one of these'
 
   activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-activity').tap do |activity|
-  activity.title = 'Participate in a National Centre for Computing Education student activity'
+  activity.title = 'Participate in an I Belong student event'
   activity.credit = 10
   activity.slug = 'participate-in-a-ncce-student-enrichment-activity'
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Connect with your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> and enable marketing permissions via your Teach Computing profile to be informed of upcoming student events.'
+  activity.description = 'Record evidence of any I Belong student events your key stage 3 students have attended. Find out about the upcoming events and activities in your area from your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> by ensuring you enable marketing communications in your account settings on our website.'
   activity.self_verification_info = 'Please provide us with evidence of participation'
 
   activity.programmes = [i_belong]
@@ -506,13 +506,13 @@ Activity.find_or_initialize_by(slug: 'provide-access-to-a-computing-related-extr
 end.save
 
 Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity').tap do |activity|
-  activity.title = 'Host a computing STEM Ambassador activity'
+  activity.title = 'Host a Computing Ambassador activity'
   activity.credit = 10
   activity.slug = 'host-a-computing-stem-ambassador-activity'
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = 'Host a female computing <a href="https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador">STEM Ambassador</a> in your school to help students understand real-world applications of their learning and raise their career aspirations. Consider the diversity of roles available in computing.'
+  activity.description = "Host a Computing Ambassador in your school to support raising gender and career aspirations and to help students understand the real-world applications of their learning. Evidence must showcase the <a href=\"#{stem_request_ambassador_url}\">Computing Ambassador</a> visit to your school from April 2023 onwards."
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -525,7 +525,7 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competi
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Participate in a competition to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted KS3 female student groups. '
+  activity.description = 'Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted KS3 female student groups.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -542,7 +542,21 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
-end
+end.save
+
+
+Activity.find_or_initialize_by(slug: 'start-or-deliver-a-computing-related-club').tap do |activity|
+  activity.title = 'Start or deliver a computing related club'
+  activity.credit = 10
+  activity.slug = 'start-or-deliver-a-computing-related-club'
+  activity.category = 'community'
+  activity.provider = 'ncce'
+  activity.self_certifiable = true
+  activity.description = "Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Evidence must showcase club activities hosted from April 2023 onwards."
+  activity.self_verification_info = 'Please provide us with evidence of delivery'
+
+  activity.programmes = [i_belong]
+end.save
 
 Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-development-leader').tap do |activity|
   activity.title = 'Gain accreditation as a professional development leader'

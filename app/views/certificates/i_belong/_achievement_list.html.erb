@@ -26,10 +26,7 @@
     <%= group.formatted_title %>
   </p>
   <%= render CommunityActivityListComponent.new(
-    programme_activities: sort_complete_first(
-      activities: group.programme_activities,
-      complete: group.user_complete?(current_user)
-    ),
+    programme_activities: group.programme_activities,
     community_achievements: @community_achievements,
     tracking_category:
   ) %>
