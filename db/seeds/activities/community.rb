@@ -381,6 +381,21 @@ Activity.find_or_initialize_by(slug: 'share-tips-on-using-an-ncce-resource-in-yo
   activity.programmes = [primary_certificate]
 end.save
 
+Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary').tap do |activity|
+  activity.title = 'Support other teachers and earn a STEM Community participation badge'
+  activity.credit = 10
+  activity.slug = 'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary'
+  activity.category = 'community'
+  activity.provider = 'stem-learning'
+  activity.self_certifiable = true
+  activity.description = "You’ll earn points for your activities on the <a href=\"#{secondary_stem_community_url}\">STEM Community</a>. Your points add up, and over time you will be <a href=\"#{stem_community_points_help_url}\">rewarded with badges</a> in recognition of your activity and participation in the community."
+  activity.public_copy_description = 'You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community.'
+  activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
+  activity.self_verification_info = 'Please provide us with evidence of participation'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
 Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge').tap do |activity|
   activity.title = 'Support other teachers and earn a STEM Community participation badge'
   activity.credit = 10
@@ -388,12 +403,12 @@ Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-com
   activity.category = 'community'
   activity.provider = 'stem-learning'
   activity.self_certifiable = true
-  activity.description = 'You’ll earn points for your activities on the <a href="https://community.stem.org.uk/helpfaqs/points">STEM Community</a>. Your points add up, and over time you will be <a href="https://community.stem.org.uk/helpfaqs/points">rewarded with badges</a> in recognition of your activity and participation in the community.'
+  activity.description = "You’ll earn points for your activities on the <a href=\"#{primary_stem_community_url}\">STEM Community</a>. Your points add up, and over time you will be <a href=\"#{stem_community_points_help_url}\">rewarded with badges</a> in recognition of your activity and participation in the community."
   activity.public_copy_description = 'You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community.'
   activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
   activity.self_verification_info = 'Please provide us with evidence of participation'
 
-  activity.programmes = [primary_certificate, secondary_certificate]
+  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'run-or-support-a-code-club-in-your-school').tap do |activity|

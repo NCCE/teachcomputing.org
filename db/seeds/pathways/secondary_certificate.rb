@@ -49,7 +49,7 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
     # Support your professional community
     'gain-accreditation-as-a-professional-development-leader',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary',
     'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
     'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development',
     'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
@@ -58,6 +58,14 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end.save
 
@@ -100,11 +108,19 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
     'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
     'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
     'join-and-present-at-your-local-computing-at-school-community',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+    'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary'
   ]
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end.save
 
@@ -144,7 +160,7 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
     'download-and-use-isaac-computer-science-classroom-resources-and-displays',
     # Support your professional community
     'gain-accreditation-as-a-professional-development-leader',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary',
     'work-with-local-business-and-industry-to-inspire-inclusive-computing',
     'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
     'join-and-present-at-your-local-computing-at-school-community'
@@ -152,6 +168,14 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end.save
 
@@ -193,7 +217,7 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
     'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom',
     # Support your local professional community
     'gain-accreditation-as-a-professional-development-leader',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary',
     'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
     'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development',
     'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
@@ -202,6 +226,14 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end.save
 
@@ -240,12 +272,20 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
     'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
     # Support your lcal professional community
     'gain-accreditation-as-a-professional-development-leader',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
+    'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary',
     'gain-accreditation-as-an-i-belong-champion',
     'work-with-local-business-and-industry-to-inspire-inclusive-computing'
   ]
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, slug: activity)
+  end
+
+  remove_activities = [
+    'support-other-teachers-and-earn-a-stem-community-participation-badge'
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
 end.save

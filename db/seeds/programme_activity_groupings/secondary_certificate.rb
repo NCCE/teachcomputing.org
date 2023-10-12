@@ -73,7 +73,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support you
 
   activities = [
     { slug: 'gain-accreditation-as-a-professional-development-leader', legacy: false },
-    { slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge', legacy: false },
+    { slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary', legacy: false },
     { slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework', legacy: false },
     { slug: 'gain-accreditation-as-an-i-belong-champion', legacy: false },
     { slug: 'work-with-local-business-and-industry-to-inspire-inclusive-computing', legacy: false },
@@ -87,6 +87,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Support you
   end
 
   remove_activities = [
+    { slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge', legacy: false },
     { slug: 'provide-feedback-on-our-curriculum-resources', legacy: true },
     { slug: 'provide-feedback-on-a-cas-resource', legacy: true },
     { slug: 'complete-a-cs-accelerator-course', legacy: true },
