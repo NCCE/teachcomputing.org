@@ -5,15 +5,11 @@ class AchievementsController < ApplicationController
   def create
     @achievement = current_user.achievements.build(achievement_params)
 
-    if @achievement.save
+    if @achievement.save && @achievement.transition_to(:drafted)
       flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
     else
-      flash[:error] =
-        if @achievement.errors.present?
-          @achievement.errors.full_messages.to_sentence
-        else
-          'Sorry something went wrong saving your progress'
-        end
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Sorry something went wrong saving your progress#{specifics}"
     end
 
     redirect_to self_verification_url
@@ -23,12 +19,8 @@ class AchievementsController < ApplicationController
     if @achievement.update(achievement_params)
       flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
     else
-      flash[:error] =
-        if @achievement.errors.present?
-          @achievement.errors.full_messages.to_sentence
-        else
-          'Sorry something went wrong saving your progress'
-        end
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Sorry something went wrong saving your progress#{specifics}"
     end
 
     redirect_to self_verification_url
@@ -51,12 +43,8 @@ class AchievementsController < ApplicationController
       .find_or_create_by(activity_id: achievement_params[:activity_id])
 
     unless @achievement.persisted?
-      flash[:error] =
-        if @achievement.errors.present?
-          @achievement.errors.full_messages.to_sentence
-        else
-          'Whoops something went wrong'
-        end
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Whoops something went wrong#{specifics}"
 
       return redirect_to self_verification_url
     end
@@ -81,7 +69,7 @@ class AchievementsController < ApplicationController
     end
 
     def achievement_params
-      params.require(:achievement).permit(:id, :activity_id, :supporting_evidence, :self_verification_info)
+      params.require(:achievement).permit(:activity_id, :supporting_evidence, :self_verification_info)
     end
 
     def self_verification_url

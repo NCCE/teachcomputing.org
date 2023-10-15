@@ -90,7 +90,7 @@ class Achievement < ApplicationRecord
   end
 
   def self_verification_info
-    super.presence || state_machine.latest_transition.metadata['self_verification_info']
+    super.presence || state_machine.last_transition&.metadata&.dig('self_verification_info')
   end
 
   def adequate_evidence_provided?
@@ -101,8 +101,10 @@ class Achievement < ApplicationRecord
 
   def transition_community_to_complete
     metadata = { credit: activity.credit }
-    metadata[:self_verification_info] = self_verification_info if self_verification_info.present?
-    metadata[:self_verification_info] = url_for(supporting_evidence) if supporting_evidence.present?
+
+    if self_verification_info.present? || supporting_evidence.present?
+      metadata[:self_verification_info] = "#{self_verification_info} #{url_for(supporting_evidence) if supporting_evidence.present?}"
+    end
 
     transition_to(:complete, metadata)
   end
