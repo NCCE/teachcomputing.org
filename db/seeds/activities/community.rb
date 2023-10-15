@@ -499,7 +499,7 @@ Activity.find_or_initialize_by(slug: 'provide-access-to-a-computing-related-extr
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the handbook.'
+  activity.description = 'Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -525,7 +525,7 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competi
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted KS3 female student groups.'
+  activity.description = 'Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted key stage 3 female student groups.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
@@ -538,7 +538,7 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.category = 'community'
   activity.provider = 'ncce'
   activity.self_certifiable = true
-  activity.description = 'Complete any other student activity which aligns with recommendations from the handbook. Let us know what you’ve done using the evidence button.'
+  activity.description = 'Complete any other student activity which aligns with recommendations from the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Let us know what you’ve done using the evidence button.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
 
   activity.programmes = [i_belong]
