@@ -370,4 +370,56 @@ RSpec.describe Achievement, type: :model do
         .with(achievement_id: achievement.id)
     end
   end
+
+  describe '#adequate_evidence_provided?' do
+    let(:self_verification_info) { nil }
+    let(:activity) { create(:activity, self_verification_info:) }
+    let(:achievement_self_verification_info) { nil }
+    let(:achievement) { create(:achievement, activity:, user:, self_verification_info: achievement_self_verification_info) }
+
+    context 'when the activity has no specified requirements' do
+      it 'should return true' do
+        expect(achievement.adequate_evidence_provided?).to be true
+      end
+    end
+
+    context 'when the activity requires evidience but none is provided' do
+      let(:self_verification_info) { 'please provide evidence' }
+
+      it 'should return false' do
+        expect(achievement.adequate_evidence_provided?).to be false
+      end
+    end
+
+    context 'when the activity requires evidience and it is provided' do
+      let(:self_verification_info) { 'please provide evidence' }
+      let(:achievement_self_verification_info) { 'Evidence? I don\'t need no evidence!' }
+
+      it 'should return true' do
+        expect(achievement.adequate_evidence_provided?).to be true
+      end
+    end
+  end
+
+  describe '#transition_community_to_complete' do
+    let(:self_verification_info) { nil }
+    let(:activity) { create(:activity, self_verification_info:) }
+    let(:achievement_self_verification_info) { nil }
+    let(:achievement) { create(:achievement, activity:, user:, self_verification_info: achievement_self_verification_info) }
+
+    it 'transitions an achievement to complete' do
+      achievement.transition_community_to_complete
+
+      expect(achievement.complete?).to be true
+    end
+
+    context 'when self verification info is provided' do
+      let(:achievement_self_verification_info) { 'hello world' }
+      it 'is included in the metadata' do
+        achievement.transition_community_to_complete
+
+        expect(achievement.last_transition.metadata['self_verification_info'].present?).to be true
+      end
+    end
+  end
 end

@@ -31,11 +31,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
     end
 
     it 'has the buttons to self verify' do
-      expect(page).to have_css('.ihavedonethis__button', count: 1)
-    end
-
-    it 'has different ids for each form\'s input' do
-      expect(page).to have_field('self_verification_info', id: /#{activity.id}/)
+      expect(page).to have_css('button', text: 'Submit evidence')
     end
 
     it 'renders a description' do
