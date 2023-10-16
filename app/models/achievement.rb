@@ -85,10 +85,6 @@ class Achievement < ApplicationRecord
     in_state?(:drafted)
   end
 
-  def supporting_evidence_sufficient?
-    supporting_evidence.present? || activity.self_verification_info.blank?
-  end
-
   def self_verification_info
     super.presence || state_machine.last_transition&.metadata&.dig('self_verification_info')
   end
