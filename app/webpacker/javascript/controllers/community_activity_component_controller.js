@@ -38,9 +38,7 @@ export default class extends ApplicationController {
         }
       })
     }).then((response) => {
-      if (response.redirected) {
-        location.href = response.url
-      }
+      location.reload()
     })
   }
 
@@ -58,9 +56,7 @@ export default class extends ApplicationController {
         }
       })
     }).then((response) => {
-      if (response.redirected) {
-        location.href = response.url
-      }
+      location.reload()
     })
   }
 }
