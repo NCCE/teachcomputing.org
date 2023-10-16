@@ -14,9 +14,6 @@ export default class extends ApplicationController {
     let path = ''
     let method = ''
 
-    console.log(this.createPathValue)
-    console.log(this.updatePathValue)
-
     if (this.achievementIdValue === '') {
       path = this.createPathValue
       method = 'POST'
@@ -51,7 +48,7 @@ export default class extends ApplicationController {
       },
       body: JSON.stringify({
         achievement: {
-          self_verification_info: this.textareaTarget.value,
+          self_verification_info: this.hasTextareaTarget ? this.textareaTarget.value : '',
           activity_id: this.activityIdValue
         }
       })
