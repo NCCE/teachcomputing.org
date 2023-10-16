@@ -1,4 +1,12 @@
-<%= content_tag :div, class: ['community-activity-component', { "#{@class_name}": @class_name.present? }] do %>
+<div
+  class="community-activity-component <%= @class_name %>"
+  data-controller="community-activity-component"
+  data-community-activity-component-create-path-value="<%= achievements_path %>"
+  data-community-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
+  data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
+  data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
+  data-community-activity-component-activity-id-value="<%= @activity.id %>"
+>
   <span class="community-activity-component__objective">
     <span class="community-activity-component__objective-text">
       <span><%= @activity.title %></span>
@@ -25,53 +33,44 @@
         <%= f.submit t('.mark_complete_label'), class: 'govuk-button button button--no-margin-bottom' %>
       <% end %>
     <% else %>
-      <div
-        data-controller="community-activity-component"
-        data-community-activity-component-create-path-value="<%= achievements_path %>"
-        data-community-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
-        data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
-        data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
-        data-community-activity-component-activity-id-value="<%= @activity.id %>"
-      >
-        <%= render ModalComponent.new(
-          title: 'Submit evidence',
-          reopen_button_text: 'Submit evidence',
-          show_corner_decoration: false,
-          class_name: 'community-activity-component--modal'
-        ) do |component| %>
-          <% component.with_body do %>
-            <h3 class="govuk-heading-s">Participate fully in an NCCE curriculum enrichment opportunity</h3>
-            <p class="govuk-body-s">
-              Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways
-            </p>
-            <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.self_verification_info %></textarea>
-            <div class="draft-actions">
-              <button class="govuk-button button button--inverted" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
-              <%= render ModalComponent.new(
-                title: 'Are you sure you want to submit this evidence?',
-                reopen_button_text: 'Submit evidence',
-                show_corner_decoration: false,
-                class_name: 'confirmation-modal'
-              ) do |component| %>
-                <% component.with_body do %>
-                  <p class="govuk-body-s">
-                    You will not be able to change or add to this evidence once submitted.
-                  </p>
-                  <div class="submit-actions">
-                    <button class="govuk-button button button--inverted" data-action="click->modal#toggle">Back to draft</button>
-                    <button class="govuk-button button" data-action="click->community-activity-component#submit">Submit evidence</button>
-                  </div>
-                <% end %>
-                <% component.with_close_button do %>
-                <% end %>
+      <%= render ModalComponent.new(
+        title: 'Submit evidence',
+        reopen_button_text: 'Submit evidence',
+        show_corner_decoration: false,
+        class_name: 'community-activity-component--modal'
+      ) do |component| %>
+        <% component.with_body do %>
+          <h3 class="govuk-heading-s">Participate fully in an NCCE curriculum enrichment opportunity</h3>
+          <p class="govuk-body-s">
+            Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways
+          </p>
+          <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.self_verification_info %></textarea>
+          <div class="draft-actions">
+            <button class="govuk-button button button--inverted" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
+            <%= render ModalComponent.new(
+              title: 'Are you sure you want to submit this evidence?',
+              reopen_button_text: 'Submit evidence',
+              show_corner_decoration: false,
+              class_name: 'confirmation-modal'
+            ) do |component| %>
+              <% component.with_body do %>
+                <p class="govuk-body-s">
+                  You will not be able to change or add to this evidence once submitted.
+                </p>
+                <div class="submit-actions">
+                  <button class="govuk-button button button--inverted" data-action="click->modal#toggle">Back to draft</button>
+                  <button class="govuk-button button" data-action="click->community-activity-component#submit">Submit evidence</button>
+                </div>
               <% end %>
-            </div>
-          <% end %>
+              <% component.with_close_button do %>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
   </span>
   <% if @activity.description.present? %>
     <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
   <% end %>
-<% end %>
+</div>
