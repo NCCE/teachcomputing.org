@@ -175,10 +175,8 @@ Rails.application.routes.draw do
   get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/pedagogy', to: 'pages#page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
-  get '/a-level-computer-science', to: 'pages#page', as: :a_level_computer_science,
-                                   defaults: { page_slug: 'a-level-computer-science' }
-  get '/gcse-revision', to: 'pages#page', as: 'gcse-revision',
-                        defaults: { page_slug: 'gcse-revision' }
+  get '/a-level-computer-science', to: redirect('/isaac-computer-science')
+  get '/gcse-revision', to: redirect('/isaac-computer-science')
   get '/login', to: 'pages#login', as: :login
   get '/logout', to: 'auth#logout', as: :logout
   get '/maintenance', to: 'pages#page', as: :maintenance, defaults: { page_slug: 'maintenance' }
