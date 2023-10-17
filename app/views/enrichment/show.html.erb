@@ -1,8 +1,8 @@
 <% meta_tag :title, 'Enrichment - Teach Computing' %>
 <%= render HeroComponent.new(title: programme_t('hero.title'), subtitle: programme_t('hero.subtitle')) %>
 
-  <main class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-width-container">
+<main class="govuk-main-wrapper govuk-main-wrapper--xl">
+  <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <section class="ncce-section govuk-!-margin-top-0">
@@ -68,31 +68,28 @@
         </section>
       </div>
     </div>
-</div>
-
-<div class="purple-bg ambassador-banner">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          <%= image_pack_tag 'media/images/pages/enrichment/amb-banner-square.jpg', alt: '', class: 'ambassador-banner__image' %>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Bring a Computing Ambassador into your classroom</h2>
-          <p class="govuk-body">
-            Computing Ambassadors are part of the STEM Ambassadors volunteers – people from a wide range of industries who can help bring your computing lessons to life and provide real-world examples of careers in computing, creating an invaluable link between schools and industry.
-          </p>
-          <p class="govuk-body-s">You can request a Computing Ambassador to visit your school, introduce a topic, join an event and more. These volunteers are an invaluable resource to enrich your teaching and inspire young people to choose careers in computing.
-          </p>
-
-                <%= link_to 'Find out more', 'http://www.stem.org.uk/stem-ambassadors/computing-ambassadors',
-                  class: 'button govuk-button govuk-!-margin-bottom-0',
-                  target: '_blank'
-                %>
+  </div>
+  <div class="purple-bg ambassador-banner">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <%= image_pack_tag 'media/images/pages/enrichment/amb-banner-square.jpg', alt: '', class: 'ambassador-banner__image' %>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Bring a Computing Ambassador into your classroom</h2>
+            <p class="govuk-body">
+              Computing Ambassadors are part of the STEM Ambassadors volunteers – people from a wide range of industries who can help bring your computing lessons to life and provide real-world examples of careers in computing, creating an invaluable link between schools and industry.
+            </p>
+            <p class="govuk-body-s">You can request a Computing Ambassador to visit your school, introduce a topic, join an event and more. These volunteers are an invaluable resource to enrich your teaching and inspire young people to choose careers in computing.
+            </p>
+            <%= link_to 'Find out more', 'http://www.stem.org.uk/stem-ambassadors/computing-ambassadors',
+              class: 'button govuk-button govuk-!-margin-bottom-0',
+              target: '_blank'
+            %>
+          </div>
         </div>
       </div>
-    </div>
-  </div>  
-</div>
-
+    </div>  
+  </div>
 </main>
