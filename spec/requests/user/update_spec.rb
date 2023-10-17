@@ -11,7 +11,7 @@ RSpec.describe UserController do
 
     context 'with valid params' do
       before do
-        put user_path(user), params: { user: { school_name: 'bob' } }
+        put user_path(user), params: { user: { school: 'bob' } }
       end
 
       it 'redirects to the dashboard_path' do
@@ -20,7 +20,7 @@ RSpec.describe UserController do
 
       it 'updates the school name' do
         user.reload
-        expect(user.school_name).to eq 'bob'
+        expect(user.school).to eq 'bob'
       end
 
 
@@ -36,7 +36,7 @@ RSpec.describe UserController do
     context 'if the update failed' do
       before do
         allow(user).to receive(:update).and_return(false)
-        put user_path(user), params: { user: { school_name: 'bob' } }
+        put user_path(user), params: { user: { school: 'bob' } }
       end
 
       it 'redirects to the dashboard_path' do

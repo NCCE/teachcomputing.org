@@ -7,7 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body-l">Your certificate is ready!</p>
         <p class="govuk-body">Thank you for participating in the I Belong programme. You’ve reached an important milestone in improving girls’ uptake of computer science.</p>
-        <% if current_user.school_name.present? %>
+        <% if @programme.certificate_name_for_user(current_user).present? %>
           <p class="govuk-body">
             <%= link_to 'Download your certificate', certificate_i_belong_path, class: 'govuk-button button', role: 'button', draggable: 'false', data: { turbolinks: false } %>
           </p>
@@ -20,8 +20,8 @@
           <% c.with_body do %>
             <p class="govuk-body">To obtain your school’s certificate, please enter the name of your school. The name provided will be printed onto the certificate.</p>
             <%= form_with model: current_user do |f| %>
-              <%= f.label :school_name, 'Name of school/college', class: 'govuk-body-s ncce-label ncce-label--bold' %>
-              <%= f.text_field :school_name, class: 'govuk-input' %>
+              <%= f.label :school, 'Name of school/college', class: 'govuk-body-s ncce-label ncce-label--bold' %>
+              <%= f.text_field :school, class: 'govuk-input' %>
               <div class="modal-button-container">
                 <%= f.submit 'Submit for certificate', class: 'govuk-button button' %>
               </div>
