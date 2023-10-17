@@ -30,10 +30,10 @@ RSpec.describe Programmes::IBelong do
   end
 
   describe '#certificate_name_for_user' do
-    it 'should return the user\'s school name' do
-      user = create(:user, school_name: 'test school name')
+    it 'should return the user\'s i_belong_certificate_name' do
+      user = create(:user, i_belong_certificate_name: 'test school name')
 
-      expect(programme.certificate_name_for_user(user)).to eq user.school_name
+      expect(programme.certificate_name_for_user(user)).to eq user.i_belong_certificate_name
     end
   end
 

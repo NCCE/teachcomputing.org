@@ -30,7 +30,7 @@ class UserController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :school_name
+        :school
       )
     end
 end

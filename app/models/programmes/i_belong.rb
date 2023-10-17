@@ -31,7 +31,7 @@ module Programmes
     end
 
     def certificate_name_for_user(user)
-      user.school_name
+      user.i_belong_certificate_name
     end
   end
 end
