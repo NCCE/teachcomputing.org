@@ -66,3 +66,43 @@
     }
   }
 }
+
+.ambassador-banner {
+  position: relative;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 40px;
+      &:before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 282px;
+        width: 280px;
+        content: '';
+        display: block;
+        background-image: url('../images/pages/enrichment/banner-flourish.svg');
+
+    }
+  }
+  &__image {
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  .govuk-grid-row {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .govuk-grid-column-one-third, .govuk-grid-column-two-thirds {
+    padding-left: 24px;
+    padding-right: 24px;
+    
+  }
+
+  @include govuk-media-query($until: tablet) {
+    .govuk-grid-column-one-third {
+      margin-bottom: 24px;
+    }
+  }
+}
