@@ -318,4 +318,16 @@ RSpec.describe Programme, type: :model do
       expect { generic_programme.short_name }.to raise_error(NotImplementedError)
     end
   end
+
+  describe '#mailer' do
+    it 'should return not implemented error' do
+      expect { generic_programme.mailer }.to raise_error(NotImplementedError)
+    end
+  end
+
+  describe '#bcs_logo' do
+    it 'should return not implemented error' do
+      expect { generic_programme.bcs_logo }.to raise_error(NotImplementedError)
+    end
+  end
 end

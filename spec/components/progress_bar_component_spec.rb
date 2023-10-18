@@ -4,11 +4,10 @@ RSpec.describe ProgressBarComponent, type: :component do
     let(:user) { create(:user) }
     let(:primary_certificate) { create(:primary_certificate) }
     let(:primary_programme_activity_groupings) do
-      create_list(:programme_activity_grouping, 4, programme: primary_certificate).tap do |groupings|
-        groupings[0].update(progress_bar_title: nil)
-        groupings[1].update(progress_bar_title: 'Complete professional development')
-        groupings[2].update(progress_bar_title: 'Develop your teaching practice')
-        groupings[3].update(progress_bar_title: 'Develop computing in your community')
+      create_list(:programme_activity_grouping, 3, programme: primary_certificate).tap do |groupings|
+        groupings[0].update(progress_bar_title: 'Complete professional development')
+        groupings[1].update(progress_bar_title: 'Develop your teaching practice')
+        groupings[2].update(progress_bar_title: 'Develop computing in your community')
       end
     end
 

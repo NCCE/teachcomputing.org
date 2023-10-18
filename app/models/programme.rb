@@ -69,7 +69,7 @@ class Programme < ApplicationRecord
   end
 
   def user_meets_completion_requirement?(user)
-    programme_activity_groupings.all? { |group| group.user_complete?(user) }
+    programme_objectives.all? { |group| group.user_complete?(user) }
   end
 
   def user_enrolled?(user)
@@ -133,5 +133,13 @@ class Programme < ApplicationRecord
 
   def enrichment_enabled?
     false
+  end
+
+  def programme_objectives
+    programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+  end
+
+  def programme_objectives_displayed_in(position)
+    programme_objectives.select { _1.objective_displayed_in? position }
   end
 end
