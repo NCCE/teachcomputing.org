@@ -1,3 +1,4 @@
+# Plays "ProgrammeObjective" role app/lib/programme_objectives/readme.md
 class ProgrammeActivityGrouping < ApplicationRecord
   include ActionView::Helpers::TagHelper
   include StiPreload
@@ -68,5 +69,13 @@ class ProgrammeActivityGrouping < ApplicationRecord
       .select { completed_activity_ids.include?(_1.activity_id) }
 
     completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
+  end
+
+  def objective_displayed_in?(role)
+    role.in? %i[progress_bar body]
+  end
+
+  def progress_bar_path
+    "##{id}"
   end
 end

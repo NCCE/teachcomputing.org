@@ -6,6 +6,11 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
   let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 3, :with_activities, programme: programme) }
   let(:user) { create(:user) }
 
+  subject { programme_activity_grouping }
+
+  it_behaves_like 'plays programme objective role'
+  it_behaves_like 'plays programme objective progress bar role'
+
   describe 'associations' do
     it 'has_many programme_activities' do
       expect(programme_activity_grouping).to have_many(:programme_activities)

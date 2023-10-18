@@ -84,4 +84,24 @@ RSpec.describe Programmes::SecondaryCertificate do
       expect(secondary_certificate.short_name).to eq 'Secondary certificate'
     end
   end
+
+  describe '#enrol_path' do
+    it 'returns the path for the enrol' do
+      expect(secondary_certificate.enrol_path(user_programme_enrolment: { user_id: 'user_id',
+                                                              programme_id: 'programme_id' })).to eq('/certificate/secondary-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
+    end
+  end
+
+  describe '#programme_objectives' do
+    it 'returns one PO::PCR and any PAGs' do
+      pags = create_list(:programme_activity_grouping, 3, programme: secondary_certificate)
+
+      pags.each_with_index do |pag, index|
+        pag.update(sort_key: index + 1)
+      end
+
+      expect(secondary_certificate.programme_objectives.first).to be_a ProgrammeObjectives::ProgrammeCompletionRequired
+      expect(secondary_certificate.programme_objectives[1..]).to eq pags
+    end
+  end
 end
