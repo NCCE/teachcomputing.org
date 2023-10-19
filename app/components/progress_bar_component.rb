@@ -6,6 +6,6 @@ class ProgressBarComponent < ViewComponent::Base
       @body = body
       @steps_to_accreditation = steps_to_accreditation
 
-      @programme_objectives = programme.programme_objectives_displayed_in(:progress_bar)
+      @programme_objectives = programme.programme_objectives_displayed_in_progress_bar
     end
   end

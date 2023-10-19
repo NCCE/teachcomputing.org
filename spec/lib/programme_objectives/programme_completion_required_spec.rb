@@ -19,10 +19,4 @@ RSpec.describe ProgrammeObjectives::ProgrammeCompletionRequired do
       subject.user_complete?(user)
     end
   end
-
-  describe '#objective_displayed_in?' do
-    it 'should return true when passed progress_bar' do
-      expect(subject.objective_displayed_in?(:progress_bar)).to be true
-    end
-  end
 end
