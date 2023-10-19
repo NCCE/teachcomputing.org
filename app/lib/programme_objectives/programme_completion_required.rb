@@ -12,8 +12,12 @@ class ProgrammeObjectives::ProgrammeCompletionRequired
     required_programme.user_completed?(user)
   end
 
-  def objective_displayed_in?(role)
-    role.in? %i[progress_bar]
+  def objective_displayed_in_progress_bar?
+    true
+  end
+
+  def objective_displayed_in_body?
+    false
   end
 
   private

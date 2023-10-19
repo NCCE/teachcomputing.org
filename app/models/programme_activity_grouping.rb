@@ -71,8 +71,12 @@ class ProgrammeActivityGrouping < ApplicationRecord
     completed_legacy_activities + completed_non_legacy_activities + non_completed_non_legacy_activities
   end
 
-  def objective_displayed_in?(role)
-    role.in? %i[progress_bar body]
+  def objective_displayed_in_progress_bar?
+    true
+  end
+
+  def objective_displayed_in_body?
+    true
   end
 
   def progress_bar_path

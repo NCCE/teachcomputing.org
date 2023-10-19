@@ -1,7 +1,7 @@
 RSpec.shared_examples 'plays programme objective progress bar role' do
-  describe '#objective_displayed_in?(:progress_bar)' do
+  describe '#objective_displayed_in_progress_bar?' do
     it 'should return true' do
-      expect(subject.objective_displayed_in?(:progress_bar)).to be true
+      expect(subject.objective_displayed_in_progress_bar?).to be true
     end
   end
 
