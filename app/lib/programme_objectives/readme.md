@@ -10,14 +10,12 @@ dispite the strong "is_a" type relationship. My reason behind this is to allow
 many objects of different shapes and sizes to play this role. Especially as we
 already have objects like ProgrammeActivityGroupings which play this role well.
 
-Each item which needs completed shall be encapsulated in an object playing the
+Each item which needs completed shall be represented by an object playing the
 "ProgrammeObjective" role. ProgrammeObjectives will respond to
-`user_complete?(user)`. It will also respond to
-`objective_displayed_in?(location)` which can be used to decided where on the
-page it should be shown.
+`user_complete?(user)`.
 
 ## Progress Bar
 
-Programme objectives that are to be displayed in the `progress_bar` must play
-the role of "ProgressBarObjective" and respond to `progress_bar_title` and
-`progress_bar_path`
+Programme objectives that are to be displayed in the `progress_bar` will have
+"objective_displayed_in_progress_bar?" return true and respond to
+`progress_bar_title` and `progress_bar_path`

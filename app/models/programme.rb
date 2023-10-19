@@ -139,7 +139,11 @@ class Programme < ApplicationRecord
     programme_activity_groupings.includes(:programme_activities).order(:sort_key)
   end
 
-  def programme_objectives_displayed_in(position)
-    programme_objectives.select { _1.objective_displayed_in? position }
+  def programme_objectives_displayed_in_progress_bar
+    programme_objectives.select { _1.objective_displayed_in_progress_bar? }
+  end
+
+  def programme_objectives_displayed_in_body
+    programme_objectives.select { _1.objective_displayed_in_body? }
   end
 end
