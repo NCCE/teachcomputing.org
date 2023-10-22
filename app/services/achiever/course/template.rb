@@ -30,31 +30,30 @@ class Achiever::Course::Template
                     HideFromweb: '0' }.freeze
   PROGRAMME_NAMES = %w[ncce PDLP].freeze
 
-  def self.from_resource(resource, activities)
+  def self.from_resource(resource, activity)
     new.tap do |t|
-      t.activity_code = resource.send('Template.ActivityCode')
-      t.age_groups = resource.send('Template.AgeGroups').split(';')
-      t.booking_url = resource.send('Template.BookingURL')
-      t.course_leaders = resource.send('Template.CourseLeaders')
-      t.course_template_no = resource.send('Template.COURSETEMPLATENO')
-      t.duration_unit = resource.send('Template.DurationUnit')
-      t.duration_value = resource.send('Template.Duration')
-      t.how_long_is_the_course = resource.send('Template.HowLongCourse')
-      t.how_will_you_learn = resource.send('Template.HowYouWillLearn')
-      t.meta_description = resource.send('Template.MetaDescription')
+      t.activity_code = resource['Template.ActivityCode']
+      t.age_groups = resource['Template.AgeGroups'].split(';')
+      t.booking_url = resource['Template.BookingURL']
+      t.course_leaders = resource['Template.CourseLeaders']
+      t.course_template_no = resource['Template.COURSETEMPLATENO']
+      t.duration_unit = resource['Template.DurationUnit']
+      t.duration_value = resource['Template.Duration']
+      t.how_long_is_the_course = resource['Template.HowLongCourse']
+      t.how_will_you_learn = resource['Template.HowYouWillLearn']
+      t.meta_description = resource['Template.MetaDescription']
       t.occurrences = []
-      t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource.send('Template.OnlineCPD').downcase)
-      t.outcomes = resource.send('Template.Outcomes')
-      t.programmes = resource.send('Template.TCProgrammeTag').split(',')
-      t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource.send('Template.RemoteDeliveredCPD')&.downcase)
-      t.subjects = resource.send('Template.AdditionalSubjects').split(';')
-      t.summary = resource.send('Template.Summary')
-      t.title = resource.send('Template.TemplateTitle')
-      t.topics_covered = resource.send('Template.TopicsCovered')
-      t.who_is_it_for = resource.send('Template.WhoIsFor')
-      t.workstream = resource.send('Template.Workstream')
+      t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.OnlineCPD'].downcase)
+      t.outcomes = resource['Template.Outcomes']
+      t.programmes = resource['Template.TCProgrammeTag'].split(',')
+      t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.RemoteDeliveredCPD']&.downcase)
+      t.subjects = resource['Template.AdditionalSubjects'].split(';')
+      t.summary = resource['Template.Summary']
+      t.title = resource['Template.TemplateTitle']
+      t.topics_covered = resource['Template.TopicsCovered']
+      t.who_is_it_for = resource['Template.WhoIsFor']
+      t.workstream = resource['Template.Workstream']
 
-      activity = activities.select { |activity| activity.stem_course_template_no == t.course_template_no }&.first
       t.always_on = activity&.always_on || false
     end
   end
@@ -64,12 +63,36 @@ class Achiever::Course::Template
     occurrences.select { |occurrence| occurrence.course_template_no == course_template_no }
   end
 
-  def self.all
-    activities ||= Activity.all
+  def self._all
+    activities = Activity.all.map { [_1.stem_course_template_no, _1] }.to_h
+
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
-      Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name))
+      Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
     end
-    templates.map { |course| Achiever::Course::Template.from_resource(course, activities) }
+
+    templates.filter_map do |template|
+      activity = activities[template['Template.COURSETEMPLATENO']]
+
+      # Allow tests to find courses which don't have activity records
+      next unless activity || Rails.env.test?
+
+      Achiever::Course::Template.from_resource(template, activity)
+    end
+  end
+
+  def self.all
+    # Rails will refuse to cache Achiever::Course::Template when cache_classes = false
+    if Rails.env.production? || Rails.env.staging?
+      Rails.cache.fetch(
+        'achiever-templates',
+        expires_in: 12.hours,
+        namespace: 'achiever'
+      ) do
+        _all
+      end
+    else
+      _all
+    end
   end
 
   # @return [Achiever::Course::Template] !!raises ActiveRecord::RecordNotFound!! if none . Use this method if you are using
