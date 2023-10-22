@@ -148,7 +148,7 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
 
   pathway.save
 
-  cpds = %w[CP440 CO700 CP448 CP437 CPCP291 CP414 CP249]
+  cpds = %w[CP440 CO700 CP448 CP437 CP291 CP414 CP249]
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
   end

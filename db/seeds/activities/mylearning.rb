@@ -158,7 +158,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '63c44113-a4b6-ed11-b597
   activity.always_on = true
 
   activity.programmes = [cs_accelerator, secondary_certificate]
-end
+end.save
 
 ########################################################################################################################
 
