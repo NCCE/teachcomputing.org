@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_02_084137) do
+ActiveRecord::Schema.define(version: 2023_10_17_092710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -430,7 +430,8 @@ ActiveRecord::Schema.define(version: 2023_10_02_084137) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
-    t.string "school_name"
+    t.string "i_belong_certificate_name"
+    t.string "school"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end

@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
   resources :assessment_attempts, only: %i[create]
 
+  resources :programmes, only: %[show], param: :slug
+
   namespace 'certificates', path: 'certificate', as: '' do
     resource 'primary_certificate', controller: 'primary_certificate', path: 'primary-certificate', only: %i[show] do
       get '/complete', action: :complete, as: :complete

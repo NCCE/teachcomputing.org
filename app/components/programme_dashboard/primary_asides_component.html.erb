@@ -1,0 +1,56 @@
+<div class="ncce-aside ncce-pathway-prompt ncce-pathway-prompt--aside">
+  <h2 class="govuk-body ncce-pathway-prompt__title">
+    <strong><%= t('.pathway_aside.heading') %></strong>
+    <p class='govuk-body-s'><%= link_to pathway.title, pathway.pdf_link, class: "ncce-link", data: tracking_data("#{pathway.title} PDF") %> (PDF)</p>
+  </h2>
+  <details class="govuk-details ncce-details" data-module="govuk-details">
+    <summary class="govuk-details__summary ncce-details__summary">
+      <span class="govuk-details__summary-text ncce-details__summary-text">
+        <%= t('.pathway_aside.expander_title') %>
+      </span>
+    </summary>
+    <div class='ncce-details__summary-content-wrapper'>
+      <p class="govuk-body-s govuk-!-margin-bottom-1"><strong><%= t('.pathway_aside.pathway_list_title') %></strong></p>
+      <ul class="govuk-list ncce-details__pathway-list">
+        <% available_pathways_for_user.each do |available_pathway| %>
+          <li class="govuk-body-s">
+            <%= link_to available_pathway.title, available_pathway.pdf_link, class: "ncce-link", data: tracking_data("#{available_pathway.title} PDF") %> (PDF)
+          </li>
+        <% end %>
+      </ul>
+      <%= form_tag update_user_pathway_primary_certificate_path,
+        {
+          method: :put,
+          class: '',
+          id: 'primary-pathway-form',
+          data: tracking_data('Change pathway')
+        } do %>
+          <%= select_tag :pathway_id,
+            options_for_select(available_pathways_for_user.collect {|p| [ p['title'], p['id'] ] }),
+            {
+              include_blank: t('.pathway_aside.input.placeholder'),
+              class: 'govuk-select ncce-select ncce-pathway-aside__select govuk-!-margin-bottom-2',
+              'aria-label': t('.pathway_aside.input.placeholder'),
+              required: true
+            }
+          %>
+          <%= submit_tag t('.pathway_aside.button.text'), class: 'govuk-button button ncce-pathway-aside__button ncce-pathway-aside__button--full govuk-!-margin-bottom-0', data: tracking_data('Switch pathway') %>
+      <% end %>
+    </div>
+  </details>
+</div>
+<%= render BursaryComponent.new(
+  tracking_event_label: 'Bursary',
+  tracking_event_category: tracking_category
+) %>
+<%= render AsideComponent.new(
+  title: t('.support_aside.title'),
+  class_name: 'help-aside',
+  text: t('.support_aside.text.html',
+    email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email')),
+    hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub'))
+  )
+) %>
+<div class="ncce-aside--borderless">
+  <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :primary_certificate) %>
+</div>

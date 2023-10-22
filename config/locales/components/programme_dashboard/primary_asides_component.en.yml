@@ -1,0 +1,19 @@
+en:
+  programme_dashboard:
+    primary_asides_component:
+      support_aside:
+        title: "Need some help?"
+        link_text: "Contact your local Computing Hub"
+        text:
+          html: "For support with this certificate: <br> %{hub_link}<br> <br>
+            Technical issue? %{email_link}"
+      feedback_text: "What can we do better?"
+      pathway_aside:
+        heading: "Your current pathway: "
+        expander_title: "Not sure this is the right pathway for you?"
+        pathway_list_title: "See what our other pathway includes:"
+        input:
+          text: "Select your new pathway"
+          placeholder: "choose a new pathway"
+        button:
+          text: "Change pathway"

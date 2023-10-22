@@ -2,6 +2,7 @@ class Pathway < ApplicationRecord
   belongs_to :programme
   has_many   :user_programme_enrolments
   has_many   :pathway_activities, dependent: :destroy
+  has_many :activities, through: :pathway_activities
 
   store_accessor :web_copy, %i[improvement_bullets improvement_cta enrol_copy]
 

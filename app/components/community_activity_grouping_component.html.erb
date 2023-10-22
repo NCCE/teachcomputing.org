@@ -1,0 +1,8 @@
+<p id="<%= programme_activity_grouping.id %>" class="govuk-body ncce-activity-list__title <%= 'ncce-activity-list__title--complete' if user_completed %>">
+  <%= programme_activity_grouping.web_copy_body_heading.html_safe %>
+</p>
+<%= render CommunityActivityListComponent.new(
+  programme_activities:,
+  community_achievements:,
+  tracking_category: 'foo bar'
+) %>

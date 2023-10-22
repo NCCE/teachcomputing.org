@@ -41,5 +41,13 @@ module Programmes
     def enrichment_enabled?
       true
     end
+
+    def dashboard_asides_component
+      ProgrammeDashboard::PrimaryAsidesComponent
+    end
+
+    def dashboard_introduction_component
+      ProgrammeDashboard::PrimaryIntroductionComponent
+    end
   end
 end

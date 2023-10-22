@@ -85,6 +85,7 @@ class Achiever::Course::Template
   # @return [Achiever::Course::Template|nil] nil if not found. Silently logs and reports an error if not found, so use this method
   # if you know the course should exist (because you have a matching course Activity)
   def self.maybe_find_by_activity_code(activity_code)
+    return nil
     templates = all
     template = templates.find { |val| val.activity_code == activity_code.upcase }
 

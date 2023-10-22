@@ -10,7 +10,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :community, -> { where(community: true) }
   scope :not_community, -> { where(community: false) }
 
-  store_accessor :web_copy, %i[course_requirements], prefix: true
+  store_accessor :web_copy, %i[body_heading course_requirements], prefix: true
 
   def achievements(user)
     user.achievements.in_state(:complete).belonging_to_programme(programme)
@@ -81,5 +81,13 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
   def progress_bar_path
     "##{id}"
+  end
+
+  def body_component
+    if community
+      CommunityActivityGroupingComponent
+    else
+      NonCommunityActivityGroupingComponent
+    end
   end
 end

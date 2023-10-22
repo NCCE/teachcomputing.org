@@ -10,6 +10,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'A
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.progress_bar_title = 'Complete professional development'
+  group.web_copy_body_heading = '<strong>Participate in professional development</strong>'
   group.web_copy_course_requirements = 'Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development.'
   group.required_credit_count = 50
 
@@ -28,6 +29,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
+  group.web_copy_body_heading = '<strong>Choose at least one activity</strong> to develop your teaching practice'
   group.progress_bar_title = 'Develop your teaching practice'
   group.web_copy_course_requirements = 'Choose at least one activity'
 
@@ -61,6 +63,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
+  group.web_copy_body_heading = '<strong>Choose at least one activity</strong> to develop computing in your community'
   group.progress_bar_title = 'Develop computing in your community'
   group.web_copy_course_requirements = 'Choose at least one activity'
 

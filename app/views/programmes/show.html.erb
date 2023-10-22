@@ -1,0 +1,21 @@
+<% meta_tag :title, "#{@programme.short_name} - Teach Computing" %>
+<% meta_tag :url, request.original_url %>
+<%= render 'pages/certification/hero' %>
+<div class="ncce-programmes-activity">
+  <div class="govuk-width-container">
+    <%= render ProgressBarComponent.new(current_user, @programme) %>
+    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= render @programme.dashboard_introduction_component.new %>
+          <% @programme.programme_objectives_displayed_in_body.each do |programme_objective| %>
+            <%= render programme_objective.body_component.new(programme_objective) %>
+          <% end %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render @programme.dashboard_asides_component.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
