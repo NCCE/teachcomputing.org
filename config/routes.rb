@@ -92,10 +92,10 @@ Rails.application.routes.draw do
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
-    resource 'a_level', controller: 'a_level', path: 'a-level', only: :show, as: :a_level do
+    resource 'a_level', controller: 'a_level', path: 'a-level-certificate', only: :show, as: :a_level do
       get '/complete', action: :complete, as: :complete
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
-                               defaults: { slug: 'a-level' }
+                               defaults: { slug: 'a-level-certificate' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
     end
 
@@ -164,8 +164,8 @@ Rails.application.routes.draw do
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
                          defaults: { page_slug: 'cs-accelerator' }
-  get '/a-level', to: 'pages#static_programme_page', as: :about_a_level,
-                         defaults: { page_slug: 'a-level' }
+  get '/a-level-certificate', to: 'pages#static_programme_page', as: :about_a_level,
+                         defaults: { page_slug: 'a-level-certificate' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
 
   get '/i-belong', to: 'pages#i_belong', as: :about_i_belong, defaults: { page_slug: 'i-belong' }

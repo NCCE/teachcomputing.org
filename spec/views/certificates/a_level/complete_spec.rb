@@ -19,7 +19,7 @@ RSpec.describe('certificates/a_level/complete', type: :view) do
   end
 
   it 'has the download button' do
-    expect(rendered).to have_link('Download your certificate', href: '/certificate/a-level/view-certificate')
+    expect(rendered).to have_link('Download your certificate', href: '/certificate/a-level-certificate/view-certificate')
   end
 
   it 'has the next steps section' do

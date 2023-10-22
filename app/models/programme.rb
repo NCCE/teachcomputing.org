@@ -38,7 +38,7 @@ class Programme < ApplicationRecord
   end
 
   def self.a_level
-    Programme.find_by(slug: 'a-level')
+    Programme.find_by(slug: 'a-level-certificate')
   end
 
   def short_name
@@ -96,7 +96,7 @@ class Programme < ApplicationRecord
   end
 
   def a_level?
-    slug == 'a-level'
+    slug == 'a-level-certificate'
   end
 
   def pathways?
