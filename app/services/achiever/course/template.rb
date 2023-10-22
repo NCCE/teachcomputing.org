@@ -119,7 +119,7 @@ class Achiever::Course::Template
       @programmes.include?('Primary')
     when 'i-belong'
       @programmes.include?('I Belong')
-    when 'a-level'
+    when 'a-level-certificate'
       @programmes.include?('A Level')
     end
   end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :a_level, class: 'Programmes::ALevel' do
     title { 'A level subject knowledge' }
-    slug { 'a-level' }
+    slug { 'a-level-certificate' }
     description { 'A level subject knowledge' }
     enrollable { true }
 

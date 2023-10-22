@@ -1,6 +1,8 @@
-a_level = Programmes::ALevel.find_or_initialize_by(slug: 'a-level').tap do |programme|
+Programmes::ALevel.where(slug: 'a-level').update(slug: 'a-level-certificate')
+
+a_level = Programmes::ALevel.find_or_initialize_by(slug: 'a-level-certificate').tap do |programme|
   programme.title = 'A level subject knowledge'
-  programme.slug = 'a-level'
+  programme.slug = 'a-level-certificate'
   programme.description = 'A level subject knowledege'
   programme.enrollable = true
 
