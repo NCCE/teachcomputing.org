@@ -32,11 +32,11 @@ class Achiever::Course::Template
 
   def self.from_resource(resource, activity)
     new.tap do |t|
-      t.activity_code = resource['Template.ActivityCode']
+      t.activity_code = resource['Template.ActivityCode'].upcase
       t.age_groups = resource['Template.AgeGroups'].split(';')
       t.booking_url = resource['Template.BookingURL']
       t.course_leaders = resource['Template.CourseLeaders']
-      t.course_template_no = resource['Template.COURSETEMPLATENO']
+      t.course_template_no = resource['Template.COURSETEMPLATENO'].downcase
       t.duration_unit = resource['Template.DurationUnit']
       t.duration_value = resource['Template.Duration']
       t.how_long_is_the_course = resource['Template.HowLongCourse']
@@ -65,14 +65,14 @@ class Achiever::Course::Template
 
 
   def self._all
-    activities = Activity.all.map { [_1.stem_course_template_no, _1] }.to_h
+    activities = Activity.all.map { [_1.stem_course_template_no.downcase, _1] }.to_h
 
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
     end
 
     templates.filter_map do |template|
-      activity = activities[template['Template.COURSETEMPLATENO']]
+      activity = activities[template['Template.COURSETEMPLATENO'].downcase]
 
       # Allow tests to find courses which don't have activity records
       next unless activity || Rails.env.test?
