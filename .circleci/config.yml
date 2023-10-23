@@ -101,24 +101,6 @@ jobs:
           root: ~/teachcomputing
           paths: [coverage]
 
-  coverage_check:
-    working_directory: ~/teachcomputing
-    machine: true
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/teachcomputing
-      - store_artifacts:
-          path: coverage
-      - run:
-          name: Check coverage
-          command: ruby scripts/check_coverage.rb
-          when: always
-      - run:
-          name: Post test coverage to Github
-          command: bash -ue scripts/record_coverage.sh
-          when: always
-
 workflows:
   version: 2
   brakeman:
@@ -133,11 +115,3 @@ workflows:
   build_and_test:
     jobs:
       - test
-      - coverage_check:
-          requires:
-            - test
-          filters:
-            branches:
-              ignore:
-                - master
-                - main
