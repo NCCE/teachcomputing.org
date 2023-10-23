@@ -18,12 +18,6 @@ RSpec.describe UserController do
         expect(response).to redirect_to(dashboard_path)
       end
 
-      it 'updates the school name' do
-        user.reload
-        expect(user.school).to eq 'bob'
-      end
-
-
       it 'shows a flash notice' do
         expect(flash[:notice]).to be_present
       end

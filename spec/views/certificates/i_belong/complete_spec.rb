@@ -43,7 +43,8 @@ RSpec.describe('certificates/i_belong/complete', type: :view) do
   end
 
   context 'when the user has their school set' do
-    let(:user) { create(:user, email: 'web@teachcomputing.org', i_belong_certificate_name: 'forest school') }
+    let(:user) { create(:user, email: 'web@teachcomputing.org') }
+    let(:enrolment) { create(:user_programme_enrolment, programme:, user:, certificate_name: 'foobar') }
 
     it 'has the download button' do
       expect(rendered).to have_link('Download your certificate', href: '/certificate/i-belong/view-certificate')

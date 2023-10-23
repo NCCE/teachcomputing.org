@@ -272,14 +272,6 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe '#certificate_name_for_user' do
-    it 'should return the user\'s full name' do
-      programme = create(:programme)
-
-      expect(programme.certificate_name_for_user(user)).to eq user.full_name
-    end
-  end
-
   describe '#public_path' do
     it 'should return nil' do
       programme = create(:programme)
