@@ -11,23 +11,6 @@ Pathway.find_or_initialize_by(slug: 'advanced-gcse-computer-science').tap do |pa
   pathway.order = 5
   pathway.save!
 
-  activities = %w[
-    CP463
-    CP464
-    CO217
-    CO219
-
-    CP420
-    CP433
-    CO221
-    CO210
-    CO231
-  ]
-
-  activities.each do |activity|
-    maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
-  end
-
   remove_activities = [
     '03fb0a52-a712-eb11-a813-000d3a86d545',
     'e1e54959-db12-eb11-a813-000d3a86d545',
@@ -45,6 +28,23 @@ Pathway.find_or_initialize_by(slug: 'advanced-gcse-computer-science').tap do |pa
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
   end
+
+  activities = %w[
+    CP463
+    CP464
+    CO217
+    CO219
+
+    CP420
+    CP433
+    CO221
+    CO210
+    CO231
+  ]
+
+  activities.each do |activity|
+    maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
+  end
 end.save!
 
 
@@ -56,6 +56,24 @@ Pathway.find_or_initialize_by(slug: 'prepare-to-teach-gcse-computer-science').ta
   pathway.programme_id = prog_id
   pathway.order = 4
   pathway.save!
+
+  remove_activities = [
+    '935a0639-e87f-ea11-a811-000d3a86f6ce',
+    '770d8136-3d86-ea11-a811-000d3a86d545',
+    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
+    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
+    '9187d975-a6b6-ed11-b597-0022481b59ce',
+    '03fb0a52-a712-eb11-a813-000d3a86d545',
+    '67a21143-4886-ea11-a811-000d3a86d545',
+    'ce24e77f-d312-eb11-a813-000d3a86f6ce',
+    'c53a5ed2-3c6e-ec11-8943-000d3a874094',
+    '63c44113-a4b6-ed11-b597-0022481b59ce',
+    'ac3bf599-a6b6-ed11-b597-0022481b59ce',
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
+  end
 
   activities = %w[
     CP223
@@ -77,24 +95,6 @@ Pathway.find_or_initialize_by(slug: 'prepare-to-teach-gcse-computer-science').ta
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
   end
-
-  remove_activities = [
-    '935a0639-e87f-ea11-a811-000d3a86f6ce',
-    '770d8136-3d86-ea11-a811-000d3a86d545',
-    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
-    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
-    '9187d975-a6b6-ed11-b597-0022481b59ce',
-    '03fb0a52-a712-eb11-a813-000d3a86d545',
-    '67a21143-4886-ea11-a811-000d3a86d545',
-    'ce24e77f-d312-eb11-a813-000d3a86f6ce',
-    'c53a5ed2-3c6e-ec11-8943-000d3a874094',
-    '63c44113-a4b6-ed11-b597-0022481b59ce',
-    'ac3bf599-a6b6-ed11-b597-0022481b59ce',
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
-  end
 end.save!
 
 ########################################################################################################################
@@ -107,6 +107,24 @@ Pathway.find_or_initialize_by(slug: 'new-to-algorithms-and-programming').tap do 
   pathway.programme_id = prog_id
   pathway.order = 2
   pathway.save!
+
+  remove_activities = [
+    '526b3a42-b688-ea11-a811-000d3a86d545',
+    '935a0639-e87f-ea11-a811-000d3a86f6ce',
+    '9187d975-a6b6-ed11-b597-0022481b59ce',
+    'ac3bf599-a6b6-ed11-b597-0022481b59ce',
+    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
+    '67a21143-4886-ea11-a811-000d3a86d545',
+    'e1e54959-db12-eb11-a813-000d3a86d545',
+    'ad8580c0-2915-eb11-a813-000d3a86f6ce',
+    'ce24e77f-d312-eb11-a813-000d3a86f6ce',
+    '7ffcf8be-a6b6-ed11-b597-0022481b59ce',
+    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
+  end
 
   activities = %w[
     CP228
@@ -127,24 +145,6 @@ Pathway.find_or_initialize_by(slug: 'new-to-algorithms-and-programming').tap do 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
   end
-
-  remove_activities = [
-    '526b3a42-b688-ea11-a811-000d3a86d545',
-    '935a0639-e87f-ea11-a811-000d3a86f6ce',
-    '9187d975-a6b6-ed11-b597-0022481b59ce',
-    'ac3bf599-a6b6-ed11-b597-0022481b59ce',
-    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
-    '67a21143-4886-ea11-a811-000d3a86d545',
-    'e1e54959-db12-eb11-a813-000d3a86d545',
-    'ad8580c0-2915-eb11-a813-000d3a86f6ce',
-    'ce24e77f-d312-eb11-a813-000d3a86f6ce',
-    '7ffcf8be-a6b6-ed11-b597-0022481b59ce',
-    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
-  end
 end.save!
 
 ########################################################################################################################
@@ -157,6 +157,24 @@ Pathway.find_or_initialize_by(slug: 'new-to-computing').tap do |pathway|
   pathway.programme_id = prog_id
   pathway.order = 1
   pathway.save!
+
+  remove_activities = [
+    '1f24260d-0725-ec11-b6e6-000d3a0cb7ce',
+    '526b3a42-b688-ea11-a811-000d3a86d545',
+    'bd6497ad-4386-ea11-a811-000d3a86d545',
+    '935a0639-e87f-ea11-a811-000d3a86f6ce',
+    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
+    '9187d975-a6b6-ed11-b597-0022481b59ce',
+    '63c44113-a4b6-ed11-b597-0022481b59ce',
+    'dd8a8433-e57f-ea11-a811-000d3a86f6ce',
+    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
+    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
+    'e9cb65af-a4b6-ed11-b597-0022481b59ce',
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
+  end
 
   activities = %w[
     CP226
@@ -181,24 +199,6 @@ Pathway.find_or_initialize_by(slug: 'new-to-computing').tap do |pathway|
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
   end
-
-  remove_activities = [
-    '1f24260d-0725-ec11-b6e6-000d3a0cb7ce',
-    '526b3a42-b688-ea11-a811-000d3a86d545',
-    'bd6497ad-4386-ea11-a811-000d3a86d545',
-    '935a0639-e87f-ea11-a811-000d3a86f6ce',
-    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
-    '9187d975-a6b6-ed11-b597-0022481b59ce',
-    '63c44113-a4b6-ed11-b597-0022481b59ce',
-    'dd8a8433-e57f-ea11-a811-000d3a86f6ce',
-    '07e76ffd-e17f-ea11-a811-000d3a86f6ce',
-    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
-    'e9cb65af-a4b6-ed11-b597-0022481b59ce',
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
-  end
 end.save!
 
 ########################################################################################################################
@@ -211,6 +211,19 @@ Pathway.find_or_initialize_by(slug: 'new-to-computer-systems').tap do |pathway|
   pathway.programme_id = prog_id
   pathway.order = 3
   pathway.save!
+
+  remove_activities = [
+    'bd6497ad-4386-ea11-a811-000d3a86d545',
+    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
+    'dd8a8433-e57f-ea11-a811-000d3a86f6ce',
+    'e9cb65af-a4b6-ed11-b597-0022481b59ce',
+    '770d8136-3d86-ea11-a811-000d3a86d545',
+    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
+  ]
+
+  remove_activities.each do |activity|
+    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
+  end
 
   activities = %w[
     CP238
@@ -228,18 +241,5 @@ Pathway.find_or_initialize_by(slug: 'new-to-computer-systems').tap do |pathway|
 
   activities.each do |activity|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: activity)
-  end
-
-  remove_activities = [
-    'bd6497ad-4386-ea11-a811-000d3a86d545',
-    '55cc7b90-a5b6-ed11-b597-0022481b59ce',
-    'dd8a8433-e57f-ea11-a811-000d3a86f6ce',
-    'e9cb65af-a4b6-ed11-b597-0022481b59ce',
-    '770d8136-3d86-ea11-a811-000d3a86d545',
-    '249f1bc2-a5b6-ed11-b597-0022481b59ce',
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_pathway(pathway, stem_course_template_no: activity)
   end
 end.save!
