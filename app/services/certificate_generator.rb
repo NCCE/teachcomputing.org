@@ -17,7 +17,7 @@ class CertificateGenerator
   def generate_pdf
     date_awarded = @transition.created_at.strftime('%d %B %Y')
     cert_number = certificate_number
-    name = @enrolment.certificate_Name
+    name = @enrolment.certificate_name
 
     Prawn::Document.generate(@output_path, page_size: 'A4') do
       font_families.update('Roboto' => {

@@ -7,7 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body-l">Your certificate is ready!</p>
         <p class="govuk-body">Thank you for participating in the I Belong programme. You’ve reached an important milestone in improving girls’ uptake of computer science.</p>
-        <% if @programme.certificate_name_for_user(current_user).present? %>
+        <% if current_user.user_programme_enrolments.find_by(programme: Programme.i_belong).certificate_name.present? %>
           <p class="govuk-body">
             <%= link_to 'Download your certificate', certificate_i_belong_path, class: 'govuk-button button', role: 'button', draggable: 'false', data: { turbolinks: false } %>
           </p>

@@ -112,7 +112,7 @@ Rails.application.routes.draw do
     post '/webhook', to: 'webhooks#assessment', as: 'assessment_webhook'
   end
 
-  resources :user_programme_enrolments, only: [] do
+  resources :user_programme_enrolments, only: %i[update] do
     collection do
       delete :destroy_message_flags_primary_pathway_migrated
     end
