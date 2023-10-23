@@ -71,7 +71,7 @@
   position: relative;
 
     @include govuk-media-query($from: tablet) {
-      margin-bottom: 40px;
+      
       &:before {
         position: absolute;
         bottom: 0;
