@@ -123,10 +123,6 @@ class Programme < ApplicationRecord
     pathways.where.not(id: pathway&.id).ordered_by_programme(slug)
   end
 
-  def certificate_name_for_user(user)
-    user.full_name
-  end
-
   def user_is_eligible?(user)
     true
   end
@@ -145,5 +141,9 @@ class Programme < ApplicationRecord
 
   def programme_objectives_displayed_in_body
     programme_objectives.select { _1.objective_displayed_in_body? }
+  end
+
+  def set_user_programme_enrolment_complete_data(enrolment)
+    enrolment.certificate_name = enrolment.user.full_name
   end
 end

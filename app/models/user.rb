@@ -43,7 +43,7 @@ class User < ApplicationRecord
       user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
       user.stem_achiever_organisation_no = info.achiever_organisation_no
       user.last_sign_in_at = Time.current
-      user.school = info.school
+      user.school_name = info.school_name
       user.save!
     end
   end
