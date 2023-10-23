@@ -568,6 +568,7 @@ Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-devel
   activity.description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href="https://www.stem.org.uk/professional-development-leaders">leading learning</a> with adults.'
   activity.public_copy_description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/professional-development-leaders'
+  activity.self_verification_info = 'Provide evidence of exploration.'
 
   activity.programmes = [primary_certificate, secondary_certificate]
 end.save
