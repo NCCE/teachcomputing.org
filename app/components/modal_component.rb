@@ -2,11 +2,13 @@ class ModalComponent < ViewComponent::Base
   renders_one :body
   renders_one :close_button
 
-  attr_reader :expanded, :title, :reopen_button_text
+  attr_reader :expanded, :title, :reopen_button_text, :show_corner_decoration, :class_name
 
-  def initialize(expanded: false, title:, reopen_button_text: nil)
+  def initialize(expanded: false, title:, reopen_button_text: nil, show_corner_decoration: true, class_name: nil)
     @expanded = expanded
     @title = title
     @reopen_button_text = reopen_button_text
+    @show_corner_decoration = show_corner_decoration
+    @class_name = class_name
   end
 end

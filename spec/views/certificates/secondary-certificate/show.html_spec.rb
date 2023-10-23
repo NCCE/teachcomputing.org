@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   let(:user) { create(:user) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: secondary_certificate) }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: secondary_certificate) }

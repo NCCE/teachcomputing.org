@@ -14,12 +14,6 @@ module Programmes
       SecondaryMailer
     end
 
-    def user_meets_completion_requirement?(user)
-      return false unless Programme.cs_accelerator.user_completed?(user)
-
-      super(user)
-    end
-
     def path
       secondary_certificate_path
     end
@@ -46,6 +40,17 @@ module Programmes
 
     def enrichment_enabled?
       true
+    end
+
+    def programme_objectives
+      [
+        ProgrammeObjectives::ProgrammeCompletionRequired.new(
+          required_programme: Programme.cs_accelerator,
+          progress_bar_title: 'Complete the Secondary subject knowledge',
+          progress_bar_path: cs_accelerator_path
+        ),
+        *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+      ]
     end
   end
 end

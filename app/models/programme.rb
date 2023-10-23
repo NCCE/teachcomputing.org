@@ -38,7 +38,7 @@ class Programme < ApplicationRecord
   end
 
   def self.a_level
-    Programme.find_by(slug: 'a-level')
+    Programme.find_by(slug: 'a-level-certificate')
   end
 
   def short_name
@@ -69,7 +69,7 @@ class Programme < ApplicationRecord
   end
 
   def user_meets_completion_requirement?(user)
-    programme_activity_groupings.all? { |group| group.user_complete?(user) }
+    programme_objectives.all? { |group| group.user_complete?(user) }
   end
 
   def user_enrolled?(user)
@@ -96,7 +96,7 @@ class Programme < ApplicationRecord
   end
 
   def a_level?
-    slug == 'a-level'
+    slug == 'a-level-certificate'
   end
 
   def pathways?
@@ -133,5 +133,17 @@ class Programme < ApplicationRecord
 
   def enrichment_enabled?
     false
+  end
+
+  def programme_objectives
+    programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+  end
+
+  def programme_objectives_displayed_in_progress_bar
+    programme_objectives.select { _1.objective_displayed_in_progress_bar? }
+  end
+
+  def programme_objectives_displayed_in_body
+    programme_objectives.select { _1.objective_displayed_in_body? }
   end
 end

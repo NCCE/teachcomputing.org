@@ -11,14 +11,14 @@ RSpec.describe Programmes::ALevel do
 
   describe '#path' do
     it 'returns the path for the programme' do
-      expect(subject.path).to eq('/certificate/a-level')
+      expect(subject.path).to eq('/certificate/a-level-certificate')
     end
   end
 
   describe '#enrol_path' do
     it 'returns the path for the enrol' do
       expect(subject.enrol_path(user_programme_enrolment: { user_id: 'user_id',
-                                                              programme_id: 'programme_id' })).to eq('/certificate/a-level/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
+                                                              programme_id: 'programme_id' })).to eq('/certificate/a-level-certificate/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
     end
   end
 

@@ -4,10 +4,7 @@ FactoryBot.define do
     required_for_completion { 1 }
     sort_key { 1 }
     programme
-
-    trait :progress_bar_title do
-      progress_bar_title { 'Progress Bar Title' }
-    end
+    progress_bar_title { 'Progress Bar Title' }
 
     trait :with_activities do
       after(:create) do |programme_activity_grouping|

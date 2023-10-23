@@ -3,6 +3,7 @@ class Achievement < ApplicationRecord
     transition_class: AchievementTransition,
     initial_state: StateMachines::AchievementStateMachine.initial_state
   ]
+  include ActionView::Helpers::UrlHelper
 
   belongs_to :activity
   belongs_to :user
@@ -78,6 +79,30 @@ class Achievement < ApplicationRecord
 
   def dropped?
     in_state?(:dropped)
+  end
+
+  def drafted?
+    in_state?(:drafted)
+  end
+
+  def self_verification_info
+    super.presence || state_machine.last_transition&.metadata&.dig('self_verification_info')
+  end
+
+  def adequate_evidence_provided?
+    activity.self_verification_info.nil? ||
+      self_verification_info.present? ||
+      supporting_evidence.present?
+  end
+
+  def transition_community_to_complete
+    metadata = { credit: activity.credit }
+
+    if self_verification_info.present? || supporting_evidence.present?
+      metadata[:self_verification_info] = "#{self_verification_info} #{url_for(supporting_evidence) if supporting_evidence.present?}"
+    end
+
+    transition_to(:complete, metadata)
   end
 
   def self.initial_state

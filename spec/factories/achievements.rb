@@ -59,5 +59,11 @@ FactoryBot.define do
         achievement.transition_to(:in_progress, { credit: 29 })
       end
     end
+
+    factory :drafted_achievement do
+      after(:create) do |achievement|
+        achievement.transition_to :drafted
+      end
+    end
   end
 end

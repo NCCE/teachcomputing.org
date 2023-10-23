@@ -1,11 +1,30 @@
 <div class='mailer__content'>
-  <p class="govuk-body">Dear <%= @user.first_name %></p>
-  <p class="govuk-body">Thank you for signing up and taking your first step towards inspiring more girls to choose computer science. We look forward to supporting you and your school as you progress through your journey.</p>
-  <p class="govuk-body"><strong>Next steps...</strong></p>
-  <ol class="govuk-list govuk-list govuk-list--number">
-    <li>
-      Explore your <%= link_to 'personal dashboard', a_level_url, class: 'ncce-link' %> and discover activities and resources to support you
-    </li>
-  </ol>
-  <p class="govuk-body">For support with this programme contact <%= link_to 'your local Computing Hub', 'http://website-email.stem.org.uk/track/click/30657053/teachcomputing.org?p=eyJzIjoiSnJzYi1zbkhjdnRBc1pXRXRPRTNUMWN5MU5VIiwidiI6MSwicCI6IntcInVcIjozMDY1NzA1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3RlYWNoY29tcHV0aW5nLm9yZ1xcXC9odWJzXCIsXCJpZFwiOlwiNmM5ZTMyYjUwNjVjNDJiNjlkNmZkMWZiMTg3YjU5NmJcIixcInVybF9pZHNcIjpbXCIzYjY1ZmY5NDYxOWMxNDgzZWMyYmM5YjZkMDFiODI3OGMxZjlhOWRiXCJdfSJ9', class: 'ncce-link' %>.</p>
+  <p class="govuk-body">
+    Welcome <%= @user.first_name %>
+    <br><br>
+    You have successfully signed up and taken your first step towards completing the A level Computer Science subject knowledge certificate, as awarded by BCS, The Chartered Institute for IT.
+    <br><br>
+    <strong>Next Steps</strong>
+    <br><br>
+    You can take the subject knowledge test as soon as you feel ready. However, we have a range of recommended courses to help you enhance your subject knowledge before taking the test, available to browse from your dashboard.
+  </p>
+
+  <div>
+    <%= link_to 'View your dashboard', a_level_url, class: 'govuk-button button' %>
+  </div>
+
+  <p class="govuk-body">
+    All our courses are available at no cost to teachers in state-funded schools and colleges.
+    <br><br>
+    <strong>Get help from your local Computing Hub</strong>
+    <br><br>
+    Your local Computing Hub is here to support you and can provide a targeted programme of support to help you achieve your aims.
+    <%= link_to 'Find your nearest Hub', hubs_url %>
+    .
+    <br><br>
+    <strong>Any questions?</strong>
+    <br><br>
+    Get in touch by mailing
+    <%= link_to 'info@teachcomputing.org', 'mailto:info@teachcomputing.org' %>
+  </p>
 </div>

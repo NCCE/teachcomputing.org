@@ -15,7 +15,7 @@ RSpec.describe Certificates::ALevelController do
       before do
         certificate
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get '/certificate/a-level'
+        get '/certificate/a-level-certificate'
       end
 
       it 'redirects to A Level public page' do
@@ -28,7 +28,7 @@ RSpec.describe Certificates::ALevelController do
       before do
         enrolment
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get '/certificate/a-level'
+        get '/certificate/a-level-certificate'
       end
 
       it 'renders the correct template' do
@@ -42,7 +42,7 @@ RSpec.describe Certificates::ALevelController do
 
     describe 'while logged out' do
       before do
-        get '/certificate/a-level'
+        get '/certificate/a-level-certificate'
       end
 
       it 'redirects to login' do

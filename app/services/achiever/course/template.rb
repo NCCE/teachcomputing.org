@@ -63,6 +63,7 @@ class Achiever::Course::Template
     occurrences.select { |occurrence| occurrence.course_template_no == course_template_no }
   end
 
+
   def self._all
     activities = Activity.all.map { [_1.stem_course_template_no, _1] }.to_h
 
@@ -113,7 +114,6 @@ class Achiever::Course::Template
 
     unless template
       message = "Could not find template #{activity_code} in Smart Connector"
-      Rails.logger.error(message)
       Sentry.capture_message(message, level: :error)
     end
 
@@ -142,7 +142,7 @@ class Achiever::Course::Template
       @programmes.include?('Primary')
     when 'i-belong'
       @programmes.include?('I Belong')
-    when 'a-level'
+    when 'a-level-certificate'
       @programmes.include?('A Level')
     end
   end
