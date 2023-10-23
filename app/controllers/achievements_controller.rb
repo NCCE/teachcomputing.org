@@ -45,10 +45,11 @@ class AchievementsController < ApplicationController
   def submit
     @achievement = current_user
       .achievements
-      .create_with(achievement_params)
-      .find_or_create_by(activity_id: achievement_params[:activity_id])
+      .find_or_initialize_by(activity_id: achievement_params[:activity_id])
 
-    unless @achievement.persisted?
+    @achievement.assign_attributes(achievement_params)
+
+    unless @achievement.save
       specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
       flash[:error] = "Whoops something went wrong#{specifics}"
 
