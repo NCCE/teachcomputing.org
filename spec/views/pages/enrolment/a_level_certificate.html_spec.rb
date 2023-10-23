@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('pages/enrolment/a_level', type: :view) do
+RSpec.describe('pages/enrolment/a_level_certificate', type: :view) do
   let(:user) { create(:user) }
   let(:programme) { create(:a_level) }
 
@@ -10,7 +10,7 @@ RSpec.describe('pages/enrolment/a_level', type: :view) do
 
   before do
     render(
-      template: 'pages/enrolment/a_level',
+      template: 'pages/enrolment/a_level_certificate',
       locals: { current_user: user }
     )
   end
