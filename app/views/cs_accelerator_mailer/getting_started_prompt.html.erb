@@ -1,16 +1,19 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
-  <p class='govuk-body'><strong>Gain your subject knowledge certificate with the Computer Science Accelerator</strong></p>
-  <p class='govuk-body'>Take your first step towards gaining your subject knowledge certificate with the Computer Science Accelerator.</p>
-  <p class='govuk-body'>This qualification is awarded by BCS, the Chartered Institute for IT, and accredited by the Royal Academy of Engineering, and can even set you on the path towards chartered status.</p>
+  <p class="govuk-body">You are now on the journey to gain your Key stage 3 and 4 subject knowledge certificate! This nationally recognised certificate is awarded by BCS, The Chartered Institute for IT.</p>
+  
   <p class='govuk-body'><strong>Not sure where to start?</strong></p>
   <ul class='govuk-list'>
-    <li>Not sure what courses are right for you? Complete our short questionnaire to assess your confidence and subject knowledge. We'll then update your <%= link_to 'personal dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %> to show you recommended courses, based on the learning pathway we think is right for you</li>
-    <li>Use our mock test to check what you've learnt</li>
+    <li>Choose the courses that are right for you. Complete our short questionnaire to assess your confidence and subject knowledge. We'll then update your <%= link_to 'personal dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %> to show you recommended courses, based on the learning pathway we think is right for you</li>
+    <li>Use our mock test to check what you’ve learnt</li>
     <li>When you're ready, take and pass our test to receive your certificate</li>
     <li>Our <%= link_to 'handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link' %> provides a great overview of the programme, and useful guidance</li>
   </ul>
-  <p class='govuk-body'><strong>Get help from your local Computing Hub</strong></p>
-  <p class='govuk-body'>If you're a teacher from a state-funded school or college in England, start your journey by booking a course. A subject expert from your local Computing Hub will be in touch to support you. Need help now? <%= link_to 'Find your nearest Hub.', hubs_url, class: 'ncce-link' %></p>
+  <p class='govuk-body'><strong>Funding and spport</strong></p>
+  <p class='govuk-body'>If you're a teacher from a state-funded school or college in England, start your journey by booking a course. Subsidies are also available to support with  <%= link_to 'classroom cover', '/funding#secondary-subsidy', class: 'ncce-link' %></p>
+  <p class='govuk-body'>Your local Computing Hub is also here to support you on your journey. <%= link_to 'Find your nearest Hub.', hubs_url, class: 'ncce-link' %></p>
+
+  <p class='govuk-body'><strong>Funding and spport</strong></p>
+
   <p class='govuk-body'>If you don't want to continue on the programme at this time, then <%= link_to 'let us know', unenrol_cs_accelerator_certificate_url(@enrolment_id), class: 'ncce-link' %> and we'll update our records. You can still re-enrol yourself in the future <%= link_to 'on our website', cs_accelerator_url, class: 'ncce-link' %>.<p>
 </div>

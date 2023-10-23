@@ -22,4 +22,20 @@ class PrimaryMailer < ApplicationMailer
 
     mail(to: @user, subject: @subject)
   end
+
+  def pending_completion
+    @user = params[:user]
+    @programme = Programme.primary_certificate
+    @subject = 'Well done - you’ve completed Teach primary computing and we’re checking your activities'
+
+    mail(to: @user.email, subject: @subject)
+  end
+
+  def completed_cpd_not_activities
+    @user = params[:user]
+    @programme = Programme.primary_certificate
+    @subject = ''
+
+    mail(to: @user.email, subject: @subject)
+  end
 end
