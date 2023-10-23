@@ -16,6 +16,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   validates :pathway, presence: true, if: -> { programme&.pathways? }
 
   store_accessor :message_flags, %i[primary_pathway_migrated], prefix: true
+  store_accessor :completed_certificate_metadata, %i[:certificate_name]
 
   def self.initial_state
     StateMachines::UserProgrammeEnrolmentStateMachine.initial_state

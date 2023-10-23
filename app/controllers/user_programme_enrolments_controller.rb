@@ -14,6 +14,18 @@ class UserProgrammeEnrolmentsController < ApplicationController
     end
   end
 
+  def update
+    user_programme_enrolment = current_user.user_programme_enrolments.find(params[:id])
+
+    if user_programme_enrolment.update(user_prgoramme_enrolment_update_params)
+      flash[:notice] = 'Successfully updated user details.'
+    else
+      flash[:error] = 'Failed to update user details.'
+    end
+
+    redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path
+  end
+
   def destroy
     enrolment = UserProgrammeEnrolment.find_by!(id: params[:id])
 
@@ -41,6 +53,10 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
     def user_programme_enrolment_params
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
+    end
+
+    def user_prgoramme_enrolment_update_params
+      params.require(:user_programme_enrolment).permit(:certificate_name)
     end
 
     def user_has_existing_enrolment?

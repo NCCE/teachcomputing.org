@@ -19,9 +19,9 @@
           ) do |c| %>
           <% c.with_body do %>
             <p class="govuk-body">To obtain your school’s certificate, please enter the name of your school. The name provided will be printed onto the certificate.</p>
-            <%= form_with model: current_user do |f| %>
-              <%= f.label :school, 'Name of school/college', class: 'govuk-body-s ncce-label ncce-label--bold' %>
-              <%= f.text_field :school, class: 'govuk-input' %>
+            <%= form_with model: current_user.user_programme_enrolments.find_by(programme: Programme.i_belong) do |f| %>
+              <%= f.label :certificate_name, 'Name of school/college', class: 'govuk-body-s ncce-label ncce-label--bold' %>
+              <%= f.text_field :certificate_name, class: 'govuk-input' %>
               <div class="modal-button-container">
                 <%= f.submit 'Submit for certificate', class: 'govuk-button button' %>
               </div>

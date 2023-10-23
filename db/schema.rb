@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_17_092710) do
+ActiveRecord::Schema.define(version: 2023_10_17_092604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -407,6 +407,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_092710) do
     t.uuid "pathway_id"
     t.uuid "completed_pathway_id"
     t.jsonb "message_flags"
+    t.jsonb "complete_certificate_metadata", default: {}
     t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
@@ -431,8 +432,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_092710) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
-    t.string "i_belong_certificate_name"
-    t.string "school"
+    t.string "school_name"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end

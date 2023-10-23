@@ -30,8 +30,8 @@ module Programmes
       true
     end
 
-    def certificate_name_for_user(user)
-      user.i_belong_certificate_name
+    def set_user_programme_enrolment_complete_data(enrolment)
+      enrolment.certificate_name = enrolment.user.school_name
     end
   end
 end
