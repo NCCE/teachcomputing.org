@@ -28,10 +28,9 @@
         data: tracking_data('Book a course')
       %>
     <% elsif @activity.self_verification_info.blank? %>
-      <%= form_for Achievement.new, url: submit_achievements_path do |f| %>
-        <%= f.hidden_field :activity_id, value: @activity.id %>
-        <%= f.submit t('.mark_complete_label'), class: 'govuk-button button button--no-margin-bottom' %>
-      <% end %>
+      <div>
+        <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+      </div>
     <% else %>
       <%= render ModalComponent.new(
         title: 'Submit evidence',
