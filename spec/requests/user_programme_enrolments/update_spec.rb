@@ -1,17 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe UserController do
+RSpec.describe UserProgrammeEnrolmentsController do
   let(:user) { create(:user) }
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user:) }
 
   describe 'PUT #update' do
     before do
       user
+      user_programme_enrolment
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     end
 
     context 'with valid params' do
       before do
-        put user_path(user), params: { user: { school: 'bob' } }
+        put user_programme_enrolment_path(user_programme_enrolment), params: { user_programme_enrolment: { certificate_name: 'bob' } }
       end
 
       it 'redirects to the dashboard_path' do
@@ -29,8 +31,8 @@ RSpec.describe UserController do
 
     context 'if the update failed' do
       before do
-        allow(user).to receive(:update).and_return(false)
-        put user_path(user), params: { user: { school: 'bob' } }
+        allow_any_instance_of(UserProgrammeEnrolment).to receive(:update).and_return(false)
+        put user_programme_enrolment_path(user_programme_enrolment), params: { user_programme_enrolment: { certificate_name: 'bob' } }
       end
 
       it 'redirects to the dashboard_path' do

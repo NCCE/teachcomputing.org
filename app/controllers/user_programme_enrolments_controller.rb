@@ -17,7 +17,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
   def update
     user_programme_enrolment = current_user.user_programme_enrolments.find(params[:id])
 
-    if user_programme_enrolment.update(user_prgoramme_enrolment_update_params)
+    if user_programme_enrolment.update(user_programme_enrolment_update_params)
       flash[:notice] = 'Successfully updated user details.'
     else
       flash[:error] = 'Failed to update user details.'
@@ -55,7 +55,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
     end
 
-    def user_prgoramme_enrolment_update_params
+    def user_programme_enrolment_update_params
       params.require(:user_programme_enrolment).permit(:certificate_name)
     end
 
