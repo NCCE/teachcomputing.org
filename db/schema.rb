@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_10_141218) do
+ActiveRecord::Schema.define(version: 2023_10_17_092604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -407,6 +407,7 @@ ActiveRecord::Schema.define(version: 2023_10_10_141218) do
     t.uuid "pathway_id"
     t.uuid "completed_pathway_id"
     t.jsonb "message_flags"
+    t.jsonb "complete_certificate_metadata", default: {}
     t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"

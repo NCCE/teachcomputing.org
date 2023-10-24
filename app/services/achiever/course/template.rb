@@ -65,7 +65,11 @@ class Achiever::Course::Template
 
 
   def self._all
-    activities = Activity.all.map { [_1.stem_course_template_no.downcase, _1] }.to_h
+    activities = Activity
+      .where
+      .not(stem_course_template_no: nil)
+      .map { [_1.stem_course_template_no.downcase, _1] }
+      .to_h
 
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
