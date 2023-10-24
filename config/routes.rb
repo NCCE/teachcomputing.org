@@ -208,7 +208,6 @@ Rails.application.routes.draw do
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
   get '/welcome', to: 'welcome#show', as: :welcome
 
-  resources :user, only: :update, param: :uuid
   resources :enrichment, only: :show, param: :slug
 
   get '/primary-enrichment', to: 'enrichment#show', defaults: { slug: 'primary-certificate' }
