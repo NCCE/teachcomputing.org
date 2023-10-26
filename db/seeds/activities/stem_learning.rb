@@ -1056,7 +1056,9 @@ Activity.find_or_initialize_by(stem_course_template_no: 'b9af812f-4b8d-eb11-b1ac
   activity.category = 'face-to-face'
   activity.provider = 'stem-learning'
   activity.stem_activity_code = 'CP413'
-  activity.remote_delivered_cpd = true
+  activity.remote_delivered_cpd = false
+
+  activity.programmes = [secondary_certificate]
 end.save
 
 a = Activity.find_or_create_by(stem_course_template_no: 'afa28241-4d8d-eb11-b1ac-0022481a6ad5') do |activity|
