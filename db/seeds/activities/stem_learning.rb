@@ -2161,3 +2161,39 @@ Activity.find_or_initialize_by(stem_course_template_no: 'D3F7BF7D-DA68-EE11-9AE7
 
   activity.programmes = [secondary_certificate]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '51fb6f4c-2105-ee11-8f6e-002248c6f9ce').tap do |activity|
+  activity.title = 'Getting started with Python programming - residential'
+  activity.slug = 'getting-started-with-python-programming-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 40
+  activity.stem_activity_code = 'CP298'
+
+  activity.programmes = [cs_accelerator]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'd940561a-2d4e-ee11-be6f-002248c6f979').tap do |activity|
+  activity.title = 'Data structures in A Level Computer Science'
+  activity.slug = 'data-structures-in-a-level-computer-science'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 50
+  activity.stem_activity_code = 'CP502'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'cf1b9feb-11a4-eb11-b1ac-000d3a86dcd6').tap do |activity|
+  activity.title = 'Assessing computational thinking in primary schools - short course'
+  activity.slug = 'assessing-computational-thinking-in-primary-schools-short-course'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CP457'
+
+  activity.programmes = [primary_certificate]
+end.save
