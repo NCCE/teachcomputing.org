@@ -6,16 +6,21 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
     assessment = Assessment.find_by!(class_marker_test_id: test_id)
     latest_attempt = assessment.latest_attempt_for(user:)
 
-    return latest_attempt.transition_to(:failed, percentage: percentage.to_f) if percentage.to_f < assessment.required_assessment_percentage
+    if percentage.to_f < assessment.required_pass_percentage
+      latest_attempt.transition_to(:failed, percentage: percentage.to_f)
+
+      return
+    end
 
     latest_attempt.transition_to(:passed, percentage: percentage.to_f)
 
     if assessment.programme.cs_accelerator?
-      transition_cs_accelerator(user, assessment, programme)
+      transition_cs_accelerator(user, assessment)
     else
       CertificatePendingTransitionJob.perform_now(user, { source: 'UpdateUserAssessmentAttemptFromClassMarkerJob#perform' })
     end
   rescue StandardError => e
+    Rails.logger.error(e) if Rails.env.development?
     Sentry.capture_exception(e)
   end
 

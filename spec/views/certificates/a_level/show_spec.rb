@@ -4,12 +4,14 @@ RSpec.describe('certificates/a_level/show', type: :view) do
   let(:user) { create(:user) }
   let(:a_level) { create(:a_level) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: a_level) }
+  let(:assessment) { create(:assessment, programme: a_level) }
 
   before do
     stub_course_templates
     stub_duration_units
 
     assign(:programme, a_level)
+    assign(:assessment, assessment)
 
     assign(:current_user, user)
 

@@ -12,7 +12,8 @@
 
             <%= render ModalComponent.new(
               title: 'Ready to take your test?',
-              reopen_button_text: 'Complete the test'
+              reopen_button_text: 'Complete the test',
+              show_corner_decoration: false
             ) do |component| %>
               <% component.with_body do %>
                 <%= render partial: 'assessment' %>

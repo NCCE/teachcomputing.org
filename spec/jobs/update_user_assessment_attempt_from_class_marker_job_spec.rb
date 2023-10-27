@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   let(:user) { create(:user, email: 'john@example.com') }
   let(:activity) { create(:activity) }
-  let(:programme) { create(:programme) }
+  let(:programme) { create(:cs_accelerator) }
   let!(:secondary) { create(:secondary_certificate) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
   let(:assessment) do
@@ -33,11 +33,22 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         expect(achievement.current_state).to eq('complete')
       end
 
-      it 'queues CSAcceleratorEnrolmentTransitionJob job' do
-        expect do
+      it 'calls CSAcceleratorEnrolmentTransitionJob job' do
+        expect(CSAcceleratorEnrolmentTransitionJob).to receive(:perform_now)
+
+        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                  passing_result[:result][:percentage])
+      end
+
+      context 'when the programme is not csa' do
+        let(:programme) { create(:a_level) }
+
+        it 'calls CertificatePendingTransitionJob job' do
+          expect(CertificatePendingTransitionJob).to receive(:perform_now)
+
           UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
                                                                     passing_result[:result][:percentage])
-        end.to have_enqueued_job(CSAcceleratorEnrolmentTransitionJob)
+        end
       end
     end
 

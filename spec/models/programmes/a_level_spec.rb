@@ -34,4 +34,14 @@ RSpec.describe Programmes::ALevel do
       expect(subject.short_name).to eq 'A Level'
     end
   end
+
+  describe '#programme_objectives' do
+    let!(:assessment) { create(:assessment, programme: subject) }
+    it 'should return a AssessmentPassRequired followed by PAGs' do
+      pags = create_list(:programme_activity_grouping, 2, programme: subject)
+
+      expect(subject.programme_objectives.first).to be_a ProgrammeObjectives::AssessmentPassRequired
+      expect(subject.programme_objectives[1..]).to match_array(pags)
+    end
+  end
 end

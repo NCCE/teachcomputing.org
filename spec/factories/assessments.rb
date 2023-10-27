@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:class_marker_test_id, 100) { |n| n }
     activity
     programme
+    required_pass_percentage { 65 }
   end
 end

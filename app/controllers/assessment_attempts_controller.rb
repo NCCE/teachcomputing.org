@@ -10,7 +10,7 @@ class AssessmentAttemptsController < ApplicationController
       unless achievement.save
         flash[:error] = 'Failed to create achievement'
 
-        redirect_back fallback_location: @assessment.programme
+        return redirect_back fallback_location: @assessment.programme.path
       end
     end
 
@@ -20,9 +20,14 @@ class AssessmentAttemptsController < ApplicationController
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to assessment_url(assessment_attempt.user)
     else
-      flash[:error] = assessment_attempt.errors.full_messages.to_sentence if assessment_attempt&.errors&.any?
+      flash[:error] =
+        if assessment_attempt&.errors&.any?
+          assessment_attempt.errors.full_messages.to_sentence
+        else
+          'Failed to create assessment attempt'
+        end
 
-      redirect_back fallback_location: @assessment.programme
+      redirect_back fallback_location: @assessment.programme.path
     end
   end
 

@@ -2,10 +2,6 @@ module Programmes
   class CSAccelerator < Programme
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
 
-    def required_assessment_percentage
-      65.0
-    end
-
     def short_name
       'CS Accelerator'
     end
