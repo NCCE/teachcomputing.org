@@ -1,0 +1,33 @@
+<% if @assessment.latest_attempt_for(user: current_user)&.in_state?(:commenced) %>
+  <p class="govuk-body govuk-!-margin-0">
+    You are currently taking the test. If you have recently failed, please come back in 2 hours.
+  </p>
+<% else %>
+  <%= form_for(current_user, method: :post, url: assessment_attempts_path) do |f| %>
+    <p class="govuk-body-s govuk-!-margin-bottom-2">
+      <strong>Teacher reference number (TRN)</strong> <%= link_to "what's this?", 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>
+    </p>
+    <p class="govuk-body-s govuk-!-margin-bottom-5">
+      <%= f.text_field :teacher_reference_number,
+          class: 'govuk-input ncce-input ncce-csa-dash__trn',
+          'aria-label': 'Enter your teacher reference number',
+          placeholder: 'optional',
+          value: current_user.teacher_reference_number
+      %>
+    </p>
+
+    <div class="ncce-flex__space-between" data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled" data-toggle-attribute-value-value="true">
+      <%= fields_for :assessment_attempt do |sf| %>
+        <div class='govuk-checkboxes__item ncce-checkboxes__item ncce-checkboxes__item--multiline'>
+          <%= sf.check_box :accepted_conditions, { class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { 'aria-label': 'Accept our exam conditions', action: 'change->toggle-attribute#toggleAttribute', 'toggle-attribute-target' => 'source' } }, '1', '0' %>
+          <%= sf.label :accepted_conditions, class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
+            I have read and accept <%= link_to 'the full exam conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
+          <% end %>
+        </div>
+        <%= sf.hidden_field 'user_id', value: current_user.id %>
+        <%= sf.hidden_field 'assessment_id', value: @assessment.id %>
+      <% end %>
+      <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-0', disabled: true, data: tracking_data('Take our test').merge('toggle-attribute-target' => 'button') %>
+    </div>
+  <% end %>
+<% end %>

@@ -34,5 +34,5 @@ class AssessmentAttempt < ApplicationRecord
 
   private_class_method :initial_state
 
-  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
 end

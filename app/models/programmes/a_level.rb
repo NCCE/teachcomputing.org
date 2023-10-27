@@ -21,5 +21,14 @@ module Programmes
     def programme_title
       PROGRAMME_TITLE
     end
+
+    def programme_objectives
+      [
+        ProgrammeObjectives::AssessmentPassRequired.new(
+          assessment: Assessment.find_by(programme: self)
+        ),
+        *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+      ]
+    end
   end
 end

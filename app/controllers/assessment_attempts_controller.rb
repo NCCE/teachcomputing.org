@@ -4,11 +4,19 @@ class AssessmentAttemptsController < ApplicationController
   before_action :teacher_reference_number, only: [:create]
 
   def create
+    if @assessment.activity
+      achievement = @assessment.activity.achievements.find_or_initialize_by(user_id: params[:assessment_attempt][:user_id])
+
+      unless achievement.save
+        flash[:error] = 'Failed to create achievement'
+
+        redirect_back fallback_location: @assessment.programme
+      end
+    end
+
     assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
-    achievement = @assessment.activity.achievements.find_or_initialize_by(user_id: params[:assessment_attempt][:user_id])
-    if assessment_attempt.valid? && achievement.valid?
-      assessment_attempt.save
-      achievement.save
+
+    if assessment_attempt.save
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
       redirect_to assessment_url(assessment_attempt.user)
     else

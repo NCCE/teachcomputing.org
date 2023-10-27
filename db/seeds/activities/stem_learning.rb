@@ -2149,7 +2149,7 @@ Activity.find_or_initialize_by(stem_course_template_no: 'A70C147D-6067-EE11-9AE7
   activity.credit = 25
   activity.stem_activity_code = 'CP503'
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [secondary_certificate, a_level]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'D3F7BF7D-DA68-EE11-9AE7-002248C6F9CE').tap do |activity|
@@ -2161,7 +2161,7 @@ Activity.find_or_initialize_by(stem_course_template_no: 'D3F7BF7D-DA68-EE11-9AE7
   activity.credit = 20
   activity.stem_activity_code = 'CP504'
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [secondary_certificate, a_level]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '51fb6f4c-2105-ee11-8f6e-002248c6f9ce').tap do |activity|
@@ -2185,7 +2185,7 @@ Activity.find_or_initialize_by(stem_course_template_no: 'd940561a-2d4e-ee11-be6f
   activity.credit = 50
   activity.stem_activity_code = 'CP502'
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [secondary_certificate, a_level]
 end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'cf1b9feb-11a4-eb11-b1ac-000d3a86dcd6').tap do |activity|

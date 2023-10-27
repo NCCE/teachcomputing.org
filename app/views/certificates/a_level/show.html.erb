@@ -9,12 +9,21 @@
           <section class="ncce-section">
             <h2 class="govuk-heading-m"><%= t('.page_title') %></h2>
             <p class="govuk-body"><%= t('.introduction') %></p>
+
+            <%= render ModalComponent.new(
+              title: 'Ready to take your test?',
+              reopen_button_text: 'Complete the test'
+            ) do |component| %>
+              <% component.with_body do %>
+                <%= render partial: 'assessment' %>
+              <% end %>
+            <% end %>
           </section>
           <%= render 'achievement_list' %>
           <section class="ncce-section">
             <h2 class="govuk-heading-m"><%= t('.practice_knowledge.title') %></h2>
             <p class="govuk-body"><%= t('.practice_knowledge.body') %></p>
-            <%= link_to t('.practice_knowledge.cta'), 'https://isaaccomputerscience.org/', class: 'govuk-button button button-constrained' %>
+            <%= link_to t('.practice_knowledge.cta'), 'https://isaaccomputerscience.org/', class: 'govuk-button button' %>
           </section>
         </div>
         <div class="govuk-grid-column-one-third">

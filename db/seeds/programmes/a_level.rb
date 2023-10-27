@@ -15,3 +15,10 @@ ProgrammeCompleteCounter.find_or_create_by(programme_id: a_level.id) do |program
   programme_complete_counter.programme_id = a_level.id
   programme_complete_counter.counter = 0
 end
+
+Assessment.find_or_initialize_by(programme: a_level) do |assessment|
+  assessment.link = 'https://www.classmarker.com/online-test/start/?quiz=ax765118814b3236'
+  assessment.class_marker_test_id = '2130199'
+  assessment.programme = a_level
+  assessment.required_pass_percentage = 65.0
+end.save!
