@@ -7,7 +7,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 37,
+      "line": 49,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(Programme.primary_certificate.path)",
       "render_path": null,
@@ -22,6 +22,52 @@
         601
       ],
       "note": "This is a method defined on the controller and can be considered safe"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "2d6c6f659ab693984bd811e34d23bb3d5c18b561c774c712de629214fdca6dbc",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/assessment_attempts_controller.rb",
+      "line": 13,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_back(:fallback_location => Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AssessmentAttemptsController",
+        "method": "create"
+      },
+      "user_input": "Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": "These are records which are safe to be queried from the params"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "2d6c6f659ab693984bd811e34d23bb3d5c18b561c774c712de629214fdca6dbc",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/assessment_attempts_controller.rb",
+      "line": 30,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_back(:fallback_location => Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AssessmentAttemptsController",
+        "method": "create"
+      },
+      "user_input": "Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": "These are records which are safe to be queried from the params"
     },
     {
       "warning_type": "Redirect",
@@ -99,7 +145,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 56,
+      "line": 72,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(UserProgrammeEnrolment.find_by(:user_id => user_programme_enrolment_params[:user_id], :programme_id => user_programme_enrolment_params[:programme_id]).programme.path)",
       "render_path": null,
@@ -196,6 +242,6 @@
       "note": "Pathways can only be edited by admins"
     }
   ],
-  "updated": "2023-09-21 15:00:09 +0000",
+  "updated": "2023-10-27 13:04:32 +0000",
   "brakeman_version": "6.0.1"
 }
