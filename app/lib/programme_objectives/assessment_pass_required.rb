@@ -1,10 +1,6 @@
 class ProgrammeObjectives::AssessmentPassRequired
-  attr_reader :progress_bar_title, :progress_bar_path
-
-  def initialize(assessment:, progress_bar_title:, progress_bar_path:)
+  def initialize(assessment:)
     @assessment = assessment
-    @progress_bar_title = progress_bar_title
-    @progress_bar_path = progress_bar_path
   end
 
   def user_complete?(user)
@@ -12,7 +8,7 @@ class ProgrammeObjectives::AssessmentPassRequired
   end
 
   def objective_displayed_in_progress_bar?
-    true
+    false
   end
 
   def objective_displayed_in_body?

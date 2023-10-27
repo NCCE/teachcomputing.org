@@ -7,9 +7,5 @@ RSpec.describe Assessment, type: :model do
     it 'belongs to programme' do
       expect(assessment).to belong_to(:programme)
     end
-
-    it 'belongs to activity' do
-      expect(assessment).to belong_to(:activity)
-    end
   end
 end

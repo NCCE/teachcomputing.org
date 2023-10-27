@@ -49,6 +49,32 @@ RSpec.describe AssessmentAttemptsController do
         }
         expect(user.teacher_reference_number).to eq('abc123')
       end
+
+      context 'if the achievement fails to save' do
+        it 'should add a flash error' do
+          allow_any_instance_of(Achievement).to receive(:save).and_return(false)
+          allow_any_instance_of(Programme).to receive(:path).and_return(a_level_path)
+
+          post assessment_attempts_path(
+            assessment_attempt: { assessment_id: assessment.id, user_id: user.id, accepted_conditions: true }
+          )
+
+          expect(flash[:error]).to be_present
+        end
+      end
+
+      context 'if the assessment_attempt fails to save' do
+        it 'should add a flash error' do
+          allow_any_instance_of(AssessmentAttempt).to receive(:save).and_return(false)
+          allow_any_instance_of(Programme).to receive(:path).and_return(a_level_path)
+
+          post assessment_attempts_path(
+            assessment_attempt: { assessment_id: assessment.id, user_id: user.id, accepted_conditions: true }
+          )
+
+          expect(flash[:error]).to be_present
+        end
+      end
     end
 
     context 'with invalid params' do
