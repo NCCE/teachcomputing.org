@@ -10,11 +10,13 @@ module Certificates
     def show
       return redirect_to complete_a_level_path if @programme.user_completed?(current_user)
 
-      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
+      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key).includes(programme_activities: :activity)
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
       @badge_tracking_event_category = 'A Level enrolled'
       @badge_tracking_event_label = 'A Level badge'
       assign_issued_badge_data
+
+      @assessment = Assessment.find_by(programme: @programme)
 
       render :show
     end

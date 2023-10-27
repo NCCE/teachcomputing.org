@@ -1,7 +1,7 @@
 class CertificatePendingTransitionJob < ApplicationJob
   queue_as :default
 
-  def perform(user, meta = {}, programmes: [Programme.i_belong, Programme.secondary_certificate, Programme.primary_certificate])
+  def perform(user, meta = {}, programmes: [Programme.i_belong, Programme.secondary_certificate, Programme.primary_certificate, Programme.a_level])
     programmes.each do |programme|
       next unless programme&.user_meets_completion_requirement?(user)
 
