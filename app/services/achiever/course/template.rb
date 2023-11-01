@@ -88,11 +88,24 @@ class Achiever::Course::Template
   def self.all
     # Rails will refuse to cache Achiever::Course::Template when cache_classes = false
     if Rails.env.production? || Rails.env.staging?
-      Rails.cache.fetch(
+      cached_templates = Rails.cache.fetch(
         'achiever-templates',
         expires_in: 12.hours,
         namespace: 'achiever'
       ) do
+        templates_to_cache = _all
+
+        # prompt a developer to check the caching context
+        Sentry.capture_message("Caching #{templates_to_cache.size} achiever template cache(s)", level: :error)
+
+        templates_to_cache
+      end
+
+      if cached_templates.size > 10
+        cached_templates
+      else
+        # temporary mitigation for caching truncated course lists
+        Rails.cache.delete('achiever-templates')
         _all
       end
     else
