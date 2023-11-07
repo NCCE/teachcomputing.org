@@ -33,7 +33,7 @@ RSpec.describe('certificates/a_level/show', type: :view) do
   end
 
   it 'has the expected section titles' do
-    expect(rendered).to have_text('Welcome to your A level subject knowledge certificate!')
+    expect(rendered).to have_text('Welcome to your A level Computer Science subject knowledge certificate!')
     expect(rendered).to have_text('Need more support?')
     expect(rendered).to have_text('Practice your knowledge and get your students involved')
   end

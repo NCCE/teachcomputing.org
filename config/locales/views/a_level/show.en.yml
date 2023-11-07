@@ -2,7 +2,7 @@ en:
   certificates:
     a_level:
       show:
-        page_title: Welcome to your A level subject knowledge certificate!
+        page_title: Welcome to your A level Computer Science subject knowledge certificate!
         introduction: To receive your nationally recognised certificate in A level subject knowledge, you need to complete the subject knowledge test. Composed of questions based on a range of A level topics, you will answer 40 questions in an hour, demonstrating your broad knowledge of computer science.
         feedback_text: "What can we do better?"
         support_aside:
