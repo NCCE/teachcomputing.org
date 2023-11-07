@@ -20,7 +20,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
       CertificatePendingTransitionJob.perform_now(user, { source: 'UpdateUserAssessmentAttemptFromClassMarkerJob#perform' })
     end
   rescue StandardError => e
-    Rails.logger.error(e) if Rails.env.development?
+    Rails.logger.error(e) if Rails.env.development? || Rails.env.test?
     Sentry.capture_exception(e)
   end
 

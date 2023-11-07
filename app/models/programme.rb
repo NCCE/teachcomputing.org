@@ -45,9 +45,7 @@ class Programme < ApplicationRecord
     raise NotImplementedError
   end
 
-  def pending_delay
-    raise NotImplementedError
-  end
+  def pending_delay; end
 
   def badgeable?
     badges.active.exists?

@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CertificatePendingTransitionJob, type: :job do
   let!(:primary_certificate) { create(:primary_certificate) }
+  let!(:secondary_certificate) { create(:secondary_certificate) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:i_belong) { create(:i_belong) }
+  let!(:a_level) { create(:a_level) }
+  let!(:assessment) {create(:assessment, class_marker_test_id: '100', programme: a_level) }
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id, user_id: user.id) }
 

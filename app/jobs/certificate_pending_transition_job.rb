@@ -11,7 +11,12 @@ class CertificatePendingTransitionJob < ApplicationJob
       next if enrolment&.current_state == :complete.to_s
 
       enrolment.transition_to(:pending, meta)
-      ScheduleCertificateCompletionJob.set(wait: programme.pending_delay).perform_later(enrolment)
+
+      if programme.pending_delay
+        ScheduleCertificateCompletionJob.set(wait: programme.pending_delay).perform_later(enrolment)
+      else
+        ScheduleCertificateCompletionJob.perform_now(enrolment)
+      end
     end
   end
 end
