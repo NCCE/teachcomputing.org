@@ -137,7 +137,6 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
     'CP456',
     'CP007',
     'CP005',
-    'CP225',
     'CP003',
     'CO700',
     'CP486',
@@ -184,7 +183,6 @@ programme.pathways.find_or_initialize_by(slug: 'specialising-or-leading-2').tap 
   end
 
   remove_activities = [
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity'
   ]
 
   remove_activities.each do |activity|
@@ -255,8 +253,6 @@ programme.pathways.find_or_initialize_by(slug: 'developing-in-the-classroom-2').
   end
 
   remove_activities = [
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity',
-    'run-or-support-a-code-club-in-your-school'
   ]
 
   remove_activities.each do |activity|

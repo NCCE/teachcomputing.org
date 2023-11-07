@@ -61,7 +61,6 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
   end
 
   remove_activities = [
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
   ]
 
   remove_activities.each do |activity|
@@ -116,7 +115,6 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
   end
 
   remove_activities = [
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
   ]
 
   remove_activities.each do |activity|
@@ -171,7 +169,6 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
   end
 
   remove_activities = [
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
   ]
 
   remove_activities.each do |activity|
@@ -229,7 +226,6 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
   end
 
   remove_activities = [
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
   ]
 
   remove_activities.each do |activity|
@@ -282,7 +278,6 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
   end
 
   remove_activities = [
-    'support-other-teachers-and-earn-a-stem-community-participation-badge'
   ]
 
   remove_activities.each do |activity|
