@@ -16,7 +16,7 @@ RSpec.describe('pages/enrolment/a_level_certificate', type: :view) do
   end
 
   it 'has open heading' do
-    expect(rendered).to have_text('Demonstrate your A level Computer Science knowledge and your commitment to the subject.')
+    expect(rendered).to have_text('Demonstrate your A level Computer Science subject knowledge and your commitment to the subject.')
   end
 
   it 'has a who is it for section' do
