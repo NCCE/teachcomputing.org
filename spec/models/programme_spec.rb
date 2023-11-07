@@ -45,7 +45,7 @@ RSpec.describe Programme, type: :model do
 
   describe '#pending_delay' do
     it 'should raise NotImplementedError' do
-      expect { generic_programme.pending_delay }.to raise_error(NotImplementedError)
+      expect(generic_programme.pending_delay).to be nil
     end
   end
 

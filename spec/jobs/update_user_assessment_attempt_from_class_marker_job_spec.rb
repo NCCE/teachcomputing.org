@@ -41,13 +41,39 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       end
 
       context 'when the programme is not csa' do
-        let(:programme) { create(:a_level) }
+        let(:programme) { create(:programme) }
 
         it 'calls CertificatePendingTransitionJob job' do
           expect(CertificatePendingTransitionJob).to receive(:perform_now)
 
           UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
                                                                     passing_result[:result][:percentage])
+        end
+      end
+
+      context 'when the programme is a level' do
+        let!(:programme) { create(:a_level) }
+        let!(:cs_accelerator) { create(:cs_accelerator) }
+        let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
+
+        it 'calls CertificatePendingTransitionJob job' do
+          expect(CertificatePendingTransitionJob).to receive(:perform_now)
+
+          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                    passing_result[:result][:percentage])
+        end
+
+        it 'transitions assessment_attempt to complete' do
+          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                    passing_result[:result][:percentage])
+          expect(assessment_attempt.current_state).to eq('passed')
+        end
+
+        it 'transitions user_programme_enrolment to complete' do
+          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+                                                                    passing_result[:result][:percentage])
+
+          expect(user_programme_enrolment.in_state?(:complete)).to be true
         end
       end
     end
