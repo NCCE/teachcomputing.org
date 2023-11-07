@@ -16,6 +16,7 @@ RSpec.describe ExternalLinkHelper do
       i_belong_poster_request_url
       isaac_posters_brochure_url
       stem_request_ambassador_url
+      a_level_test_conditions_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it 'should return a string' do
