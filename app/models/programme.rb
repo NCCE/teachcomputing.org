@@ -142,6 +142,6 @@ class Programme < ApplicationRecord
   end
 
   def set_user_programme_enrolment_complete_data(enrolment)
-    enrolment.certificate_name = enrolment.user.full_name
+    enrolment.update(certificate_name: enrolment.user.full_name)
   end
 end
