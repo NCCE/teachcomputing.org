@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 2023_10_26_234552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "class_marker_test_id"
-    t.float "required_pass_percentage", null: false
+    t.float "required_pass_percentage", default: 65.0, null: false
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
   end

@@ -54,4 +54,8 @@ module ExternalLinkHelper
   def stem_request_ambassador_url
     'https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador'
   end
+
+  def a_level_test_conditions_url
+    'https://static.teachcomputing.org/alevel-test-conditions.pdf'
+  end
 end

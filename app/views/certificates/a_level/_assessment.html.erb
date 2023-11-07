@@ -21,7 +21,7 @@
         <div class='govuk-checkboxes__item ncce-checkboxes__item ncce-checkboxes__item--multiline'>
           <%= sf.check_box :accepted_conditions, { class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { 'aria-label': 'Accept our exam conditions', action: 'change->toggle-attribute#toggleAttribute', 'toggle-attribute-target' => 'source' } }, '1', '0' %>
           <%= sf.label :accepted_conditions, class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
-            I have read and accept <%= link_to 'the full exam conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
+            I have read and accept <%= link_to 'the full exam conditions', a_level_test_conditions_url, class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
           <% end %>
         </div>
         <%= sf.hidden_field 'user_id', value: current_user.id %>
