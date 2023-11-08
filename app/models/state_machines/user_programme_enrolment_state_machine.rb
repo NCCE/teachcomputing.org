@@ -22,6 +22,9 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   end
 
   after_transition(to: :complete) do |programme_enrolment|
+    # Set the name that should display on the certificate
+    programme_enrolment.programme.set_user_programme_enrolment_complete_data(programme_enrolment)
+
     # Keep track of the pathway the user was on at completion
     programme_enrolment.update(completed_pathway_id: programme_enrolment.pathway.id) unless programme_enrolment.pathway.blank?
 

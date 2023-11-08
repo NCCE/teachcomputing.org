@@ -10,5 +10,6 @@ FactoryBot.define do
     stem_credentials_refresh_token { '7BF7E7C2EB515FBC5BA4D2F7B3E8B' }
     stem_credentials_expires_at { Time.now }
     last_sign_in_at { Time.now }
+    school_name { nil }
   end
 end

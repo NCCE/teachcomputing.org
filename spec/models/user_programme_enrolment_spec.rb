@@ -54,4 +54,14 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
     it { is_expected.to delegate_method(:last_transition).to(:state_machine).as(:last_transition) }
     it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
+
+  describe 'after transitioning to complete' do
+    subject { create(:user_programme_enrolment) }
+
+    it 'should call Programme#set_user_programme_enrolment_complete_data' do
+      expect(subject.programme).to receive(:set_user_programme_enrolment_complete_data).with(subject)
+
+      subject.transition_to :complete
+    end
+  end
 end
