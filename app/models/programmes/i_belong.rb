@@ -31,7 +31,8 @@ module Programmes
     end
 
     def set_user_programme_enrolment_complete_data(enrolment)
-      enrolment.update(certificate_name: enrolment.user.school_name)
+      enrolment.certificate_name = enrolment.user.school_name
+      enrolment.save
     end
   end
 end
