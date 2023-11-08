@@ -360,17 +360,6 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe '#queue_auto_enrolment' do
-    let!(:achievement) { create(:achievement, activity: activity, user: user) }
-
-    it 'queues job' do
-      expect do
-        achievement.reload.run_callbacks(:save)
-      end.to have_enqueued_job(CSAccelerator::AutoEnrolJob)
-        .with(achievement_id: achievement.id)
-    end
-  end
-
   describe '#adequate_evidence_provided?' do
     let(:self_verification_info) { nil }
     let(:activity) { create(:activity, self_verification_info:) }
@@ -419,6 +408,32 @@ RSpec.describe Achievement, type: :model do
         achievement.transition_community_to_complete
 
         expect(achievement.last_transition.metadata['self_verification_info'].present?).to be true
+      end
+    end
+  end
+
+  describe 'after save' do
+    context 'when the achievement belongs to cs_accelerator' do
+      let!(:activity) { create(:activity) }
+      let!(:cs_accelerator) { create(:cs_accelerator) }
+      let!(:programme_activity) { create(:programme_activity, programme: cs_accelerator, activity:) }
+      let!(:achievement) { build(:achievement, activity:) }
+
+      it 'should trigger auto enroll job' do
+        expect(CSAccelerator::AutoEnrolJob).to receive(:perform_later)
+        achievement.save
+      end
+    end
+
+    context 'when the achievement doesn\'t belong to cs_accelerator' do
+      let!(:activity) { create(:activity) }
+      let!(:i_belong) { create(:i_belong) }
+      let!(:programme_activity) { create(:programme_activity, programme: i_belong, activity:) }
+      let!(:achievement) { build(:achievement, activity:) }
+
+      it 'should trigger auto enroll job' do
+        expect(CSAccelerator::AutoEnrolJob).not_to receive(:perform_later)
+        achievement.save
       end
     end
   end

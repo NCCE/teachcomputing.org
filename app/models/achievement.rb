@@ -118,9 +118,17 @@ class Achievement < ApplicationRecord
   delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
   delegate :provider, :title, :stem_activity_code, :slug, :active_course?, to: :activity
 
+  def belonging_to_programme?(programme)
+    return false unless programme
+
+    activity.programme_activities.exists?(programme:)
+  end
+
   private
 
     def queue_auto_enrolment
+      return unless belonging_to_programme?(Programme.cs_accelerator)
+
       CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
     end
 
