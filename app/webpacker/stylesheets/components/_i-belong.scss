@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   grid-template-areas: 'text'; // no logo in mobile
   background: $white;
+  padding: 0 !important;
   @include govuk-media-query($from: desktop) {
     grid-template-areas: 'text logo';
     grid-row-gap: 0;
@@ -11,6 +12,7 @@
 }
 
 .i-belong-hero {
+  
   &__area--text {
     align-self: center;
     grid-area: text;
