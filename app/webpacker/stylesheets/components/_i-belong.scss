@@ -1,0 +1,77 @@
+.i-belong-hero__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'text'; // no logo in mobile
+  background: $white;
+  @include govuk-media-query($from: desktop) {
+    grid-template-areas: 'text logo';
+    grid-row-gap: 0;
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.i-belong-hero {
+  &__area--text {
+    align-self: center;
+    grid-area: text;
+    padding: 10px 10px 10px 10px;
+    @include govuk-media-query($from: desktop) {
+      padding-left: 30px;
+      .govuk-heading-l {
+        font-size: 3.5vw;
+      }
+      .govuk-body-l {
+        font-size: 2vw;
+      }
+      > p {
+        width: 67%;
+      }
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @include govuk-media-query($from: 1000px) {
+      .govuk-heading-l {
+        font-size: 2.25rem;
+      }
+      .govuk-body-l {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__area--logo {
+    display: none; // no logo in mobile
+    grid-area: logo;
+    @include govuk-media-query($from: desktop) {
+      display: block;
+      text-align: right;
+      img {
+        margin: 0 2rem 2rem auto;
+      }
+    }
+
+    img {
+      display: block;
+    }
+  }
+}
+
+
+
+.i-belong-flag {
+  position: absolute;
+  top: 0;
+}
+
+.curriculum__list--item {
+  position: relative;
+  .i-belong-flag {
+    right: 1rem;
+    img {
+      width: 32px;
+      height: auto
+    }
+
+  }
+}
