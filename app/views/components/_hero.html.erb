@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<%# If I Belong show this version instead %>
+<%# Only show if in I Belong %>
 <% colour = 'lime-green' if local_assigns[:colour].nil? %>
 <div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
   <div class="govuk-width-container">
