@@ -63,12 +63,20 @@ $i-belong-cert-color: $orange;
   background-color: $green !important;
 }
 
+.orange-bg {
+  background-color: $orange;
+}
+
 .jaffa-bg {
   background-color: $jaffa;
 }
 
 .hero--jaffa-bg {
   background-color: $jaffa !important;
+}
+
+.hero--orange-bg {
+  background-color: $orange !important;
 }
 
 .light-blue-bg {
