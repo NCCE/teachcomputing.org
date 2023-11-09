@@ -14,3 +14,23 @@
     </div>
   </div>
 </div>
+
+<%# If I Belong show this version instead %>
+<div class="hero hero hero--<%= @programme.slug %> hero--orange-bg hero--bottom-glyph">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+      <div class="i-belong-hero__wrapper hero__heading-wrapper i-belong hero__heading-wrapper--full-width">
+          <div class="i-belong-hero__area--text">
+            <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
+            <% unless sub_header_disabled %>
+          <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+        <% end %>
+          </div>
+          <div class="i-belong-hero__area--logo">
+            <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
