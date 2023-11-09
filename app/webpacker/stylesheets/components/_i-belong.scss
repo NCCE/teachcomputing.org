@@ -77,3 +77,26 @@
 
   }
 }
+
+.curriculum__label__wrapper {
+  display: flex;
+}
+   .i-belong__label {
+    
+      position: relative;
+      background-color: $orange;
+      color: $white;
+      margin: 0;
+      padding: 0.3rem 0.675rem;
+      width: fit-content;
+      width: -moz-fit-content;
+      @include govuk-media-query($from: desktop) {
+        padding: 0.5rem 1rem;
+      }
+      
+      img {
+        height: 28px;
+        margin: 0;
+        display: block;
+      }
+  }
