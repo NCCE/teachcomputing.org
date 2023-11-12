@@ -9,6 +9,10 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds external-content <%= @style_slug %>">
+        <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home'], [cms_posts_path, 'Articles']], current_page_name: 'This Article') %>
+        <% if @page['feature_image'].present? %>
+          <%= image_tag @page['feature_image'], alt: @page['feature_image_alt'] %>
+        <% end %>
         <%= @page['html']&.html_safe %>
       </div>
     </div>

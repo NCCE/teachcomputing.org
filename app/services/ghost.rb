@@ -5,6 +5,51 @@ class Ghost
     @ghost_api_key = ENV['GHOST_CONTENT_API_KEY']
   end
 
+  def get_posts(page: 0, limit: 20, tag: nil)
+    request = "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/posts"
+    params = {
+      key: @ghost_api_key,
+      limit:,
+      filter: ("tag:#{tag}" if tag.present?),
+      fields: 'title,slug,feature_image,custom_excerpt,published_at',
+      page:
+    }.compact
+
+    begin
+      result = RestClient.get(request, params: params).body
+
+      ActiveSupport::JSON.decode(result)
+    rescue RestClient::NotFound, RestClient::UnprocessableEntity, URI::InvalidURIError
+      raise ActiveRecord::RecordNotFound
+    rescue StandardError => e
+      Sentry.capture_exception(e)
+      raise e if Rails.env.development?
+      raise ActiveRecord::RecordNotFound
+    end
+  end
+
+  def get_single_post(slug)
+    request = "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/posts/slug/#{slug}/"
+    params = {
+      key: @ghost_api_key
+    }
+
+    begin
+      result = Rails.cache.fetch("get_single_post-#{slug}", expires_in: 1.day) do
+        RestClient.get(request, params: params).body
+      end
+
+      posts = ActiveSupport::JSON.decode(result)
+      posts['posts'][0]
+    rescue RestClient::NotFound, RestClient::UnprocessableEntity, URI::InvalidURIError
+      raise ActiveRecord::RecordNotFound
+    rescue StandardError => e
+      Sentry.capture_exception(e)
+      raise e if Rails.env.development?
+      raise ActiveRecord::RecordNotFound
+    end
+  end
+
   def get_single_page(slug)
     request = "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/pages/slug/#{slug}/"
     params = {
