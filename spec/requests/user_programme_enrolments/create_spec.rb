@@ -33,6 +33,10 @@ RSpec.describe UserProgrammeEnrolmentsController do
         expect(flash[:notice]).to match(/Congratulations, you have enrolled on our #{programme.title}/)
       end
 
+      it 'fetches courses from dynamics' do
+        expect { enrol }.to have_enqueued_job(Achiever::FetchUsersCompletedCoursesFromAchieverJob)
+      end
+
       context 'when user has unenrolled from certificate after auto enrolment' do
         let(:enrolment) do
           UserProgrammeEnrolment.create(user: user,
