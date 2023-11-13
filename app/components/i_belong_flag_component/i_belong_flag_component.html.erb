@@ -1,0 +1,18 @@
+<%if @label %>
+<p class="govuk-body i-belong__label tooltip">
+  <%= image_pack_tag('media/images/pages/i-belong/i_belong_icon.svg') %>
+  <span class="tooltiptext">
+    <%= link_to 'I Belong: encouraging girls into computer science', i_belong_path, class: 'govuk-link--no-underline ncce-link' %>
+  </span>
+</p>
+
+<% else %>
+<div class="i-belong-flag">
+  <div class="tooltip">
+  <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+  <span class="tooltiptext">
+    <%= link_to 'I Belong: encouraging girls into computer science', i_belong_path, class: 'govuk-link--no-underline ncce-link' %>
+  </span>
+  </div>
+</div>
+<% end %>
