@@ -16,9 +16,7 @@
               <%= link_to "#{unit.title}", curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
             <% end %>
             <%# Only show if in I Belong %>
-            <div class="i-belong-flag">
-              <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
-            </div>
+            <%= render(IBelongFlagComponent.new(label: false)) %>
           </li>
         <% end %>
       </ul>

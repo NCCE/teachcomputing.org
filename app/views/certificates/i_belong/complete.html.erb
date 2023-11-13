@@ -9,7 +9,7 @@
             <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
           </div>
           <div class="i-belong-hero__area--logo">
-            <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+            <%= render(IBelongFlagComponent.new(label: false)) %>
           </div>
       </div>
     </div>

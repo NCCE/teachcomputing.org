@@ -45,6 +45,9 @@
   &__area--logo {
     display: none; // no logo in mobile
     grid-area: logo;
+    .i-belong-flag {
+      position: relative;
+    }
     @include govuk-media-query($from: desktop) {
       display: block;
       text-align: right;
@@ -58,45 +61,3 @@
     }
   }
 }
-
-
-
-.i-belong-flag {
-  position: absolute;
-  top: 0;
-}
-
-.curriculum__list--item {
-  position: relative;
-  .i-belong-flag {
-    right: 1rem;
-    img {
-      width: 32px;
-      height: auto
-    }
-
-  }
-}
-
-.curriculum__label__wrapper {
-  display: flex;
-}
-   .i-belong__label {
-    
-      position: relative;
-      background-color: $orange;
-      color: $white;
-      margin: 0;
-      padding: 0.3rem 0.675rem;
-      width: fit-content;
-      width: -moz-fit-content;
-      @include govuk-media-query($from: desktop) {
-        padding: 0.5rem 1rem;
-      }
-      
-      img {
-        height: 28px;
-        margin: 0;
-        display: block;
-      }
-  }
