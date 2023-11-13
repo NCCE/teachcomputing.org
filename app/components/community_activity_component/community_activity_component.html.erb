@@ -34,7 +34,7 @@
     <% else %>
       <%= render ModalComponent.new(
         title: 'Submit evidence',
-        reopen_button_text: 'Submit evidence',
+        reopen_button_text: @achievement&.self_verification_info.present? ? 'Continue editing' : 'Submit evidence',
         show_corner_decoration: false,
         class_name: 'community-activity-component--modal'
       ) do |component| %>
