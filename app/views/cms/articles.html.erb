@@ -1,45 +1,25 @@
 <% meta_tag(:title, "News & Updates - Teach Computing") %>
 <% meta_tag(:url, request.original_url) %>
-<%= render 'components/hero', hero_title: 'News & Updates', small_title: true %>
+<%= render 'components/hero', hero_title: params[:tag]&.titlecase || 'News & Updates', small_title: true %>
 <div class="govuk-width-container">
+  <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: 'Articles') %>
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds external-content <%= @style_slug %>">
-        <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: 'Articles') %>
-        <% @posts_data['posts'].each do |post| %>
-          <div>
-            <%= image_tag post['feature_image'] || 'media/images/blog/blog_cover_placeholder.png', alt: post['feature_image_alt'] %>
+      <div class="govuk-grid-column-full external-content <%= @style_slug %>">
+        <% @articles_data['posts'].each do |post| %>
+          <div class="article-index-entry">
+            <% if post['feature_image'].present? %>
+              <%= image_tag post['feature_image'], alt: post['feature_image_alt'] %>
+            <% else %>
+              <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png' %>
+            <% end %>
             <div>
-              <h2 class="govuk-heading-s"><%= link_to post['title'], cms_post_path(post['slug']) %></h2>
+              <h3 class="govuk-heading-s"><%= link_to post['title'], cms_post_path(post['slug']) %></h3>
               <p class="govuk-body"><%= post['custom_excerpt'] %></p>
+              <p class="govuk-body-s govuk-!-font-size-14"><b><%= DateTime.iso8601(post['published_at']).strftime('%d %^B %Y') %><b></p>
             </div>
           </div>
         <% end %>
-        <nav class="govuk-pagination" role="navigation" aria-label="results">
-          <% if @posts_data['meta']['pagination']['prev'] %>
-            <%= link_to 'Previous', cms_posts_path(page: @posts_data['meta']['pagination']['prev'], tag: params[:tag]) %>
-
-          <% end %>
-          <div class="govuk-pagination__prev">
-            <%= link_to cms_posts_path(page: @posts_data['meta']['pagination']['prev'], tag: params[:tag]) do %>
-              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-              </svg>
-              <span class="govuk-pagination__link-title">Previous</span>
-            <% end %>
-          </div>
-          <%= @posts_data['meta']['pagination']['page'] %>
-          <ul class="govuk-pagination__list">
-            <% if @posts_data['meta']['pagination']['page'] == 1 %>
-            <% if @posts_data['meta']['pagination']['page'] == 2 %>
-            <% if @posts_data['meta']['pagination']['page'] == @posts_data['meta']['pagination']['total'] - 1 &&  %>
-            <% if @posts_data['meta']['pagination']['page'] == @posts_data['meta']['pagination']['total'] %>
-          </ul>
-          <% if @posts_data['meta']['pagination']['next'] %>
-            <%= link_to 'Next', cms_posts_path(page: @posts_data['meta']['pagination']['next'], tag: params[:tag]) %>
-            <%= link_to 'Last', cms_posts_path(page: @posts_data['meta']['pagination']['total'], tag: params[:tag]) %>
-          <% end %>
-        </nav>
       </div>
     </div>
   </div>

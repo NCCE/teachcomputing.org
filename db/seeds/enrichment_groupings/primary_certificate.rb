@@ -72,7 +72,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Activities througho
 
   g.enrichment_entries.find_or_initialize_by(title: 'Micro:bit the Next Gen').tap do |e|
     e.title = 'Micro:bit the Next Gen'
-    e.title_url = 'https://www.bbc.co.uk/teach/microbit?ref=blog.teachcomputing.org'
+    e.title_url = 'https://www.bbc.co.uk/teach/microbit?ref=www.teachcomputing.org/blog'
     e.image_url = 'https://static.teachcomputing.org/enrichment/micro_bit.png'
     e.body = 'Register for free Micro:bits before December 2023 and training on how to use them in the Next Gen Campaign.'
   end.save

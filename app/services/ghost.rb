@@ -5,7 +5,7 @@ class Ghost
     @ghost_api_key = ENV['GHOST_CONTENT_API_KEY']
   end
 
-  def get_posts(page: 0, limit: 20, tag: nil)
+  def get_posts(page: 0, limit: :all, tag: nil)
     request = "#{ENV.fetch('GHOST_API_ENDPOINT')}/content/posts"
     params = {
       key: @ghost_api_key,
@@ -16,10 +16,13 @@ class Ghost
     }.compact
 
     begin
-      result = RestClient.get(request, params: params).body
+      result = Rails.cache.fetch("get_pages-#{tag}-#{page}-#{limit}", expires_in: 30.minutes) do
+        RestClient.get(request, params: params).body
+      end
 
       ActiveSupport::JSON.decode(result)
-    rescue RestClient::NotFound, RestClient::UnprocessableEntity, URI::InvalidURIError
+    rescue RestClient::NotFound, RestClient::UnprocessableEntity, URI::InvalidURIError => e
+      raise e if Rails.env.development?
       raise ActiveRecord::RecordNotFound
     rescue StandardError => e
       Sentry.capture_exception(e)
@@ -35,7 +38,7 @@ class Ghost
     }
 
     begin
-      result = Rails.cache.fetch("get_single_post-#{slug}", expires_in: 1.day) do
+      result = Rails.cache.fetch("get_single_post-#{slug}", expires_in: 30.minutes) do
         RestClient.get(request, params: params).body
       end
 
@@ -57,7 +60,7 @@ class Ghost
     }
 
     begin
-      result = Rails.cache.fetch("get_single_page-#{slug}", expires_in: 1.day) do
+      result = Rails.cache.fetch("get_single_page-#{slug}", expires_in: 30.minutes) do
         RestClient.get(request, params: params).body
       end
 
@@ -81,7 +84,7 @@ class Ghost
       key: @ghost_api_key,
       filter: 'featured:true',
       limit: how_many,
-      fields: 'title,url,feature_image,custom_excerpt,published_at'
+      fields: 'title,slug,feature_image,custom_excerpt,published_at'
     }
 
     begin

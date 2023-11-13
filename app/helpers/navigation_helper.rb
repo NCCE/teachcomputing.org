@@ -41,7 +41,7 @@ module NavigationHelper
       { text: 'About us',
         children: [
           { text: 'About the NCCE', link: about_path, label: 'About the NCCE' },
-          { text: 'News', link: 'https://blog.teachcomputing.org/', label: 'News' },
+          { text: 'News', link: cms_posts_path, label: 'News' },
           { text: 'Impact and evaluation', link: impact_path, label: 'Impact' },
           { text: 'Get involved', link: get_involved_path, label: 'Get involved' }
         ] }

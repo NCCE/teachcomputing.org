@@ -18,11 +18,11 @@ module ApplicationHelper
   end
 
   def news_url
-    'https://blog.teachcomputing.org/tag/news/'
+    cms_posts_url(tag: :news)
   end
 
   def press_url
-    'https://blog.teachcomputing.org/tag/press/'
+    cms_posts_url(tag: :press)
   end
 
   def safe_redirect_url(url)

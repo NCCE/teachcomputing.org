@@ -9,20 +9,22 @@ class CmsController < ApplicationController
         1
       end
 
-    @posts_data = Ghost.new.get_posts(page:, tag: params[:tag])
+    @articles_data = Ghost.new.get_posts(page:, tag: params[:tag])
     @style_slug = style_slug
   end
 
   def cms_post
-    @page = Ghost.new.get_single_post(build_slug_from_params)
+    @article = Ghost.new.get_single_post(build_slug_from_params)
     @style_slug = style_slug
-    render :cms_page
+    @article_type = :post
+    render :article
   end
 
   def cms_page
-    @page = Ghost.new.get_single_page(build_slug_from_params)
+    @article = Ghost.new.get_single_page(build_slug_from_params)
     @style_slug = style_slug
-    render :cms_page
+    @article_type = :page
+    render :article
   end
 
   def style_slug

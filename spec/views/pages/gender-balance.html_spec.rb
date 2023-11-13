@@ -22,6 +22,6 @@ RSpec.describe('pages/gender-balance', type: :view) do
   end
 
   it 'has a learn more button' do
-    expect(rendered).to have_link('Discover our research articles', href: 'https://blog.teachcomputing.org/tag/gbic-article/')
+    expect(rendered).to have_link('Discover our research articles', href: cms_posts_path(tag: 'gbic-article'))
   end
 end
