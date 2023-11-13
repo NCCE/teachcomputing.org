@@ -2199,3 +2199,15 @@ Activity.find_or_initialize_by(stem_course_template_no: 'cf1b9feb-11a4-eb11-b1ac
 
   activity.programmes = [primary_certificate]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '198e5e11-ef7e-ee11-8179-002248c6f524').tap do |activity|
+  activity.title = 'Systems architecture in A Level computer science'
+  activity.slug = 'systems-architecture-in-a-level-computer-science'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 25
+  activity.stem_activity_code = 'CP505'
+
+  activity.programmes = [secondary_certificate, a_level]
+end.save
