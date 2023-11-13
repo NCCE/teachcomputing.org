@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe('cms/cms_page', type: :view) do
+RSpec.describe('cms/article', type: :view) do
   before do
     stub_cms_page
-    @page = Ghost.new.get_single_page('funding')
+    @article = Ghost.new.get_single_page('funding')
     render
   end
 
   it('renders the title') do
-    expect(rendered).to have_css('.hero__heading', text: @page['meta_title'])
+    expect(rendered).to have_css('.hero__heading', text: @article['meta_title'])
   end
 
   it('renders the content') do

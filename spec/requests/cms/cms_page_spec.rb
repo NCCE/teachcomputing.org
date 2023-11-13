@@ -8,16 +8,16 @@ RSpec.describe CmsController do
         get '/funding'
       end
 
-      it 'assigns @page' do
-        expect(assigns(:page)).to be_a(Object)
+      it 'assigns @article' do
+        expect(assigns(:article)).to be_a(Object)
       end
 
-      it '@page has a title' do
-        expect(assigns(:page)['title']).to eq('Test')
+      it '@article has a title' do
+        expect(assigns(:article)['title']).to eq('Test')
       end
 
       it 'renders the template' do
-        expect(response).to render_template('cms_page')
+        expect(response).to render_template('article')
       end
 
       it 'has the expected class' do

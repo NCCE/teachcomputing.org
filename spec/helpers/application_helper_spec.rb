@@ -22,13 +22,13 @@ describe ApplicationHelper do
 
   describe('#news_url') do
     it 'returns the correct url' do
-      expect(helper.news_url).to eq('https://blog.teachcomputing.org/tag/news/')
+      expect(helper.news_url).to eq(cms_posts_url(tag: :news))
     end
   end
 
   describe('#press_url') do
     it 'returns the correct url' do
-      expect(helper.press_url).to eq('https://blog.teachcomputing.org/tag/press/')
+      expect(helper.press_url).to eq(cms_posts_url(tag: :press))
     end
   end
 

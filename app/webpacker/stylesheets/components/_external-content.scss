@@ -1,6 +1,12 @@
 .external-content {
   @extend .govuk-body;
 
+  .article-cover-image {
+    width: 100%;
+    aspect-ratio: 3/2;
+    margin-bottom: 2rem;
+  }
+
   p {
     @extend .govuk-body;
   }

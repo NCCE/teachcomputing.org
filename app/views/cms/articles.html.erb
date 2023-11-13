@@ -1,0 +1,26 @@
+<% meta_tag(:title, "News & Updates - Teach Computing") %>
+<% meta_tag(:url, request.original_url) %>
+<%= render 'components/hero', hero_title: params[:tag]&.titlecase || 'News & Updates', small_title: true %>
+<div class="govuk-width-container">
+  <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: 'Articles') %>
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full external-content <%= @style_slug %>">
+        <% @articles_data['posts'].each do |post| %>
+          <div class="article-index-entry">
+            <% if post['feature_image'].present? %>
+              <%= image_tag post['feature_image'], alt: post['feature_image_alt'] %>
+            <% else %>
+              <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png' %>
+            <% end %>
+            <div>
+              <h3 class="govuk-heading-s"><%= link_to post['title'], cms_post_path(post['slug']) %></h3>
+              <p class="govuk-body"><%= post['custom_excerpt'] %></p>
+              <p class="govuk-body-s govuk-!-font-size-14"><b><%= DateTime.iso8601(post['published_at']).strftime('%d %^B %Y') %><b></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

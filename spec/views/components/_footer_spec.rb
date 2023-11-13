@@ -22,7 +22,7 @@ RSpec.describe('components/_footer', type: :view) do
   end
 
   it 'has a news link' do
-    expect(rendered).to have_link('News', href: 'https://blog.teachcomputing.org/tag/news/')
+    expect(rendered).to have_link('News', href: cms_posts_url(tag: :news))
   end
 
   it 'has a privacy link' do

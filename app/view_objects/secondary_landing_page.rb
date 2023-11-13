@@ -82,7 +82,7 @@ class SecondaryLandingPage
         text: '"We\'re teaching kids to use technologies that don\'t exist yet for problems that they don\'t know. It\'s going to be a completely different world when they leave school."',
         image: 'media/images/pages/careers-week/helen_brant.jpg',
         name: 'Helen Brant',
-        link_target: 'https://blog.teachcomputing.org/music-computing',
+        link_target: 'https://www.teachcomputing.org/blog/music-computing',
         bio: 'Music teacher',
         tracking_event: 'Testimonial 1'
       },
@@ -90,7 +90,7 @@ class SecondaryLandingPage
         text: '"As a result of the programme, I am now a computer science teacher! The programme has given me the confidence to realise the skills that I have."',
         image: 'media/images/landing-pages/nigel.png',
         name: 'Nigel Ferry',
-        link_target: 'https://blog.teachcomputing.org/from-design-to-digital-technology/',
+        link_target: 'https://www.teachcomputing.org/blog/from-design-to-digital-technology/',
         bio: 'D&T to Computer Science teacher, Gateshead',
         tracking_event: 'Testimonial 2'
       },
@@ -98,7 +98,7 @@ class SecondaryLandingPage
         text: '"Completing the Computer Science Accelerator has honestly changed my career. It has given me the confidence to do so many new things."',
         image: 'media/images/landing-pages/annie.png',
         name: 'Annie Cuffe Davies',
-        link_target: 'https://blog.teachcomputing.org/how-cpd-changed-my-career/',
+        link_target: 'https://www.teachcomputing.org/blog/how-cpd-changed-my-career/',
         bio: 'ICT and Computing teacher, London',
         tracking_event: 'Testimonial 3'
       }
