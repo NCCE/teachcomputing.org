@@ -220,7 +220,8 @@ Rails.application.routes.draw do
   get '/:page_slug/refresh', to: 'cms#clear_page_cache'
 
   constraints ->(req) { req.format == :html } do
-    get '/blog/articles', to: 'cms#articles', as: :cms_posts
+    get '/blog', to: 'cms#articles', as: :cms_posts
+    get '/blog/articles', to: redirect(path: '/blog')
     get '/blog/:page_slug', to: 'cms#cms_post', as: :cms_post
     get '/:parent_slug/:page_slug', to: 'cms#cms_page', as: :nested_cms_page
     get '/:page_slug', to: 'cms#cms_page', as: :cms_page
