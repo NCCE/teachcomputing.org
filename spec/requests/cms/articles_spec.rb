@@ -5,7 +5,7 @@ RSpec.describe CmsController do
     context 'with a valid page' do
       before do
         stub_cms_articles
-        get '/blog/articles'
+        get '/blog'
       end
 
       it 'renders the template' do
