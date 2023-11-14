@@ -15,6 +15,7 @@ class AuthController < ApplicationController
       redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : dashboard_path(firstLogin: true)
     end
 
+    Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue ActiveRecord::RecordNotFound => e
     Sentry.capture_exception(e)
 
