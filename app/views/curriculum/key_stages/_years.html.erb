@@ -15,8 +15,7 @@
             <% else %>
               <%= link_to "#{unit.title}", curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
             <% end %>
-            <%# Only show if in I Belong %>
-            <%= render(IBelongFlagComponent.new(label: false)) %>
+            <%= render(IBelongFlagComponent.new(label: false)) if unit.display_i_belong_flag %>
           </li>
         <% end %>
       </ul>

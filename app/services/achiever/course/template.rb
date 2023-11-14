@@ -182,4 +182,8 @@ class Achiever::Course::Template
 
     pluralize(duration_value, duration.downcase.chomp('s'))
   end
+
+  def activity
+    Activity.find_by(stem_activity_code: activity_code)
+  end
 end

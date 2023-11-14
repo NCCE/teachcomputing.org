@@ -1,6 +1,6 @@
 <% meta_tag :title, t('.page_title') %>
 <% meta_tag :url, request.original_url %>
-<%= render 'pages/certification/hero', sub_header_disabled: true %>
+<%= render 'pages/certification/hero', sub_header_disabled: true, display_i_belong_flag: true %>
 
 <div class="ncce-programmes-activity">
   <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body'), steps_to_accreditation: false) %>

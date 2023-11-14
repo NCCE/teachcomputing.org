@@ -1,6 +1,6 @@
 <% meta_tag :title, "#{@course.title} - Teach Computing" %>
 <% meta_tag :description, @course&.meta_description %>
-<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{course_subtitle_text(@course)}", glyph_position: 'bottom', colour: 'lime-green', small_title: true %>
+<%= render 'components/hero', hero_title: "#{@course.title}", subtitle: "#{@course.activity_code} #{course_subtitle_text(@course)}", glyph_position: 'bottom', colour: 'lime-green', small_title: true, display_i_belong_flag: @course.activity.programme_activities.exists?(programme: Programme.i_belong) %>
 <% meta_tag :image, asset_pack_path('media/images/courses/courses.png') %>
 
 <div class="govuk-width-container">

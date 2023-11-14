@@ -6,8 +6,7 @@
     <div class="govuk-main-wrapper hero__wrapper">
       <div class="curriculum__label__wrapper">
         <p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
-        <%# Only show if in I Belong %>
-        <%= render(IBelongFlagComponent.new(label: true)) %>
+        <%= render(IBelongFlagComponent.new(label: true)) if @unit.display_i_belong_flag %>
       </div>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @unit.title %></h1>
