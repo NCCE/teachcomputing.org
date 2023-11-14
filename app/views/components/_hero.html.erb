@@ -1,39 +1,44 @@
-<% colour = 'lime-green' if local_assigns[:colour].nil? %>
-<div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper hero__wrapper">
-      <% unless local_assigns[:status_message].nil? %>
-        <span class="govuk-body-m hero__status"><%= status_message %></span>
-      <% end %>
-      <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
-        <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
-        <% unless local_assigns[:subtitle].nil? %>
-          <p class="govuk-body hero__text"><%= subtitle %></p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<% if local_assigns[:display_i_belong_flag] %>
 
-<%# Only show if in I Belong %>
-<% colour = 'lime-green' if local_assigns[:colour].nil? %>
-<div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper hero__wrapper">
-      <% unless local_assigns[:status_message].nil? %>
-        <span class="govuk-body-m hero__status"><%= status_message %></span>
-      <% end %>
-      <div class="i-belong-hero__wrapper hero__heading-wrapper hero__heading-wrapper--full-width">
-          <div class="i-belong-hero__area--text">
-             <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
-              <% unless local_assigns[:subtitle].nil? %>
-          <p class="govuk-body hero__text"><%= subtitle %></p>
+  <% colour = 'lime-green' if local_assigns[:colour].nil? %>
+  <div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper hero__wrapper">
+        <% unless local_assigns[:status_message].nil? %>
+          <span class="govuk-body-m hero__status"><%= status_message %></span>
         <% end %>
-          </div>
-          <div class="i-belong-hero__area--logo">
-            <%= render(IBelongFlagComponent.new(label: false)) %>
-          </div>
+        <div class="i-belong-hero__wrapper hero__heading-wrapper hero__heading-wrapper--full-width">
+            <div class="i-belong-hero__area--text">
+               <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
+                <% unless local_assigns[:subtitle].nil? %>
+            <p class="govuk-body hero__text"><%= subtitle %></p>
+          <% end %>
+            </div>
+            <div class="i-belong-hero__area--logo">
+              <%= render(IBelongFlagComponent.new(label: false)) %>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% else %>
+
+  <% colour = 'lime-green' if local_assigns[:colour].nil? %>
+  <div class="hero<%= " hero--#{colour}" %><%= " hero--#{glyph_position}-glyph" unless local_assigns[:glyph_position].nil? %><%= " hero--glyph-#{glyph_num}" unless local_assigns[:glyph_num].nil? %>">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper hero__wrapper">
+        <% unless local_assigns[:status_message].nil? %>
+          <span class="govuk-body-m hero__status"><%= status_message %></span>
+        <% end %>
+        <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
+          <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
+          <% unless local_assigns[:subtitle].nil? %>
+            <p class="govuk-body hero__text"><%= subtitle %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

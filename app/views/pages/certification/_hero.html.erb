@@ -1,36 +1,42 @@
 <%
   sub_header_disabled ||= false
 %>
-<div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper hero__wrapper">
-      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
-      <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
-        <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
-        <% unless sub_header_disabled %>
-          <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 
-<%# If I Belong show this version instead %>
-<div class="hero hero hero--<%= @programme.slug %> hero--orange-bg hero--bottom-glyph">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper hero__wrapper">
-      <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
-      <div class="i-belong-hero__wrapper hero__heading-wrapper i-belong hero__heading-wrapper--full-width">
-          <div class="i-belong-hero__area--text">
-            <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
-            <% unless sub_header_disabled %>
-          <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
-        <% end %>
-          </div>
-          <div class="i-belong-hero__area--logo">
-            <%= render(IBelongFlagComponent.new(label: false)) %>
-          </div>
+<% if local_assigns[:display_i_belong_flag] %>
+
+  <div class="hero hero hero--<%= @programme.slug %> hero--orange-bg hero--bottom-glyph">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper hero__wrapper">
+        <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+          <div class="i-belong-hero__wrapper hero__heading-wrapper i-belong hero__heading-wrapper--full-width">
+            <div class="i-belong-hero__area--text">
+              <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
+              <% unless sub_header_disabled %>
+                <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+              <% end %>
+            </div>
+            <div class="i-belong-hero__area--logo">
+              <%= render(IBelongFlagComponent.new(label: false)) %>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% else %>
+
+  <div class="hero hero--<%= @programme.slug %> hero--bottom-glyph">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper hero__wrapper">
+        <%= render 'pages/certification/programme-enrolment-status', programme: @programme %>
+        <div class="hero__heading-wrapper <%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
+          <h1 class="govuk-heading-xl hero__heading"><%= @programme.title %></h1>
+          <% unless sub_header_disabled %>
+            <p class="govuk-body hero__text">Certificate awarded by BCS, The Chartered Institute for IT</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

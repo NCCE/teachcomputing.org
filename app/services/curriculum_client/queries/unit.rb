@@ -11,6 +11,7 @@ module CurriculumClient
         order
         description
         isaacUrl
+        displayIBelongFlag
         unitGuide {
           #{file_fields}
         }
