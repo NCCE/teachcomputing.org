@@ -37,7 +37,7 @@ module NavigationHelper
           { text: 'Artificial Intelligence', link: cms_page_path(page_slug: 'artificial-intelligence'), label: 'Artificial Intelligence' },
           { text: 'Pedagogy', link: cms_page_path(page_slug: '/pedagogy'), label: 'Pedagogy' },
           { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' },
-          { text: 'Physical computing kits', link: cms_post_path('physical-computing-kit'), label: 'Physical computing kits' }
+          { text: 'Physical computing kits', link: cms_page_path('physical-computing-kit'), label: 'Physical computing kits' }
         ] },
       { text: 'About us',
         children: [
