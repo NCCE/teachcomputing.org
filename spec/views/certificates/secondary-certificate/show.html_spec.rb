@@ -51,7 +51,7 @@ RSpec.describe('certificates/secondary_certificate/show', type: :view) do
   end
 
   it 'shows all activities' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 2)
+    expect(rendered).to have_css('.ncce-activity-list__item', count: 4)
   end
 
   it 'has support information' do
