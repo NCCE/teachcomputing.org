@@ -3,6 +3,10 @@ primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 i_belong = Programme.i_belong
 
+# We shouldn't define activity relations in this file
+ProgrammeActivity.joins(:activity).where(activity: { category: 'community' }).destroy_all
+PathwayActivity.joins(:activity).where(activity: { category: 'community' }).destroy_all
+
 a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |activity|
   activity.title = 'Contribute to online discussion'
   activity.credit = 5
@@ -13,8 +17,6 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion') do |acti
   activity.self_verification_info = 'Please provide a link to your contribution'
   activity.description = '<a href="https://www.computingatschool.org.uk/account/new-member-application" data-event-label="Join CAS" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Join the Computing at School (CAS) community</a> to explore teaching ideas, resources and best practice with other teachers, engaging in <a href="https://forum.computingatschool.org.uk" data-event-label="Online CAS discussion" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">online discussion forums or webinars</a>. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
 end
-
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion-secondary') do |activity|
   activity.title = 'Contribute to online discussion'
@@ -27,8 +29,6 @@ a = Activity.find_or_create_by(slug: 'contribute-to-online-discussion-secondary'
   activity.description = '<a href="https://www.computingatschool.org.uk/account/new-member-application" data-event-label="Join CAS" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">Join the Computing at School (CAS) community</a> to explore teaching ideas, resources and best practice with other teachers, engaging in <a href="https://forum.computingatschool.org.uk" data-event-label="Online CAS discussion" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">online discussion forums or webinars</a>. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activity|
   activity.title = 'Gain support and share ideas in a CAS Community meeting'
   activity.slug = 'attend-a-cas-community-meeting'
@@ -39,7 +39,6 @@ a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting') do |activ
   activity.self_verification_info = 'Please provide the date and venue details of the meeting'
   activity.description = 'By <a href="https://www.computingatschool.org.uk/about-cas-communities" data-event-label="CAS meeting" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">joining and attending a session at your local Computing at School (CAS) Community</a>, you’ll meet other teachers in similar roles, sharing ideas, resources and insights. CAS is a grass-roots community of computing educators, offering free, informal sessions for teachers.'
 end
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting-secondary') do |activity|
   activity.title = 'Attend a CAS Community meeting'
@@ -52,8 +51,6 @@ a = Activity.find_or_create_by(slug: 'attend-a-cas-community-meeting-secondary')
   activity.description = 'Join <a href="https://community.computingatschool.org.uk/communities" data-event-label="CAS meeting" class="ncce-link">your local CAS Community </a>and attend a session. You’ll meet other teachers in your area and get to share best practice. Provide the date and event details'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.title = 'Use and feedback on a teaching resource'
   activity.credit = 10
@@ -64,8 +61,6 @@ a = Activity.find_or_create_by(slug: 'review-a-resource-on-cas') do |activity|
   activity.self_verification_info = 'Please provide a link to your contribution'
   activity.description = 'Download and use a <a href="/curriculum" data-event-label="Curriculum resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Teach Computing Curriculum resource</a>, then reflect on how you used and adapted it in the classroom. You can also use <a href="https://www.computingatschool.org.uk/teaching-resources" data-event-label="CAS resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">CAS teaching resources</a> or <a href="https://www.stem.org.uk/primary-computing-resources" data-event-label="STEM resource" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">STEM primary computing resources</a>. Submit a link to your feedback - this can be a document or screenshot on a shared drive, or a direct link to your review.'
 end
-
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-a-cas-resource') do |activity|
   activity.title = 'Use and feedback on a CAS or STEM Learning resource'
@@ -78,8 +73,6 @@ a = Activity.find_or_create_by(slug: 'provide-feedback-on-a-cas-resource') do |a
   activity.uploadable = false
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |activity|
   activity.title = 'Boost the teaching of computing in your school with a free Barefoot Workshop'
   activity.credit = 10
@@ -90,8 +83,6 @@ a = Activity.find_or_create_by(slug: 'host-or-attend-a-barefoot-workshop') do |a
   activity.self_verification_info = 'Please provide us with details of the workshop'
   activity.description = '<a href="https://www.barefootcomputing.org/primary-computing-workshops" data-event-label="Barefoot workshop" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Attend a free Barefoot online workshop</a>, designed to boost your subject knowledge and confidence. Workshops are themed around Computational Thinking, Programming in Scratch or Early Years.'
 end
-
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |activity|
   activity.title = 'Run a CAS Community of Practice'
@@ -104,8 +95,6 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice') do |act
   activity.description = '<a href="https://www.computingatschool.org.uk/about-cas-communities/cas-community-leaders" data-event-label="CAS leader" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Register as a CAS Community leader</a> and run 3 meetings per year. Low maintenance and high impact, it should only take 1 to 2 hours a month to organise each meeting. Provide the name and location of your community.'
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
 a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice-secondary') do |activity|
   activity.title = 'Run a CAS Community of Practice'
   activity.credit = 20
@@ -116,8 +105,6 @@ a = Activity.find_or_create_by(slug: 'lead-a-cas-community-of-practice-secondary
   activity.self_verification_info = "Please provide us with the name and postcode of the CAS community you're leading"
   activity.description = '<a href="https://www.computingatschool.org.uk/about-cas-communities/cas-community-leaders" data-event-label="CAS leader" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">Register as a CAS Community leader</a> and run 3 meetings per year. Low maintenance and high impact, it should only take 1 to 2 hours a month to organise each meeting. Provide the name and location of your community.'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activity|
   activity.title = 'Support computing in your wider community'
@@ -130,8 +117,6 @@ a = Activity.find_or_create_by(slug: 'providing-additional-support') do |activit
   activity.description = "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
 a = Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activity|
   activity.title = 'Help children learn to code at a Code Club'
   activity.credit = 20
@@ -142,8 +127,6 @@ a = Activity.find_or_create_by(slug: 'run-an-after-school-code-club') do |activi
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
   activity.description = "Code Club sessions use free step-by-step project guides to enrich young people's experience of programming. You don't need to be an experienced coder to <a href='https://codeclub.org/en/volunteer' data-event-label='Code Club volunteer' data-event-category='Primary enrolled' data-event-action='click' class='ncce-link'>volunteer</a>, and resources and support are on-hand to help you. If there isn't a club set up already at your school, <a href='https://codeclub.org/en/start-a-code-club' data-event-label=' Start a Code Club today' data-event-category='Primary enrolled' data-event-action='click' class='ncce-link'>it's easy to start one</a>."
 end
-
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
 a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference') do |activity|
   activity.title = 'Lead a session at a regional or national conference'
@@ -156,8 +139,6 @@ a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-c
   activity.description = 'Present a session at a conference, for example <a href="https://www.computingatschool.org.uk/events" data-event-label="CAS showcase" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">the annual CAS Virtual Showcase</a> or through <a href="/hubs" data-event-label="Hub showcase" data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">your local Computing Hub</a>.'
 end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-
 a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-conference-secondary') do |activity|
   activity.title = 'Lead a session at a regional or national conference'
   activity.credit = 20
@@ -168,8 +149,6 @@ a = Activity.find_or_create_by(slug: 'lead-a-session-at-a-regional-or-national-c
   activity.description = 'Present a session at a conference, for example <a href="https://www.computingatschool.org.uk/events" data-event-label="CAS showcase" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">the annual CAS Virtual Showcase</a> or through <a href="/hubs" data-event-label="Hub showcase" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">your local Computing Hub</a>.'
   activity.self_verification_info = 'Please provide us with a link conference programme'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'provide-feedback-on-our-curriculum-resources') do |activity|
   activity.title = 'Use and feedback on our curriculum resources'
@@ -183,8 +162,6 @@ a = Activity.find_or_create_by(slug: 'provide-feedback-on-our-curriculum-resourc
   activity.uploadable = false
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school') do |activity|
   activity.title = 'Provide computing CPD in your school or to another local school'
   activity.credit = 10
@@ -195,8 +172,6 @@ a = Activity.find_or_create_by(slug: 'provide-computing-cpd-in-your-school-or-to
   activity.description = 'Deliver computing CPD in your school, or another local school. Provide details of the training including the date training took place.'
   activity.self_verification_info = 'Provide details of the training including date training took place'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'become-a-mentor') do |activity|
   activity.title = 'Become a mentor'
@@ -209,8 +184,6 @@ a = Activity.find_or_create_by(slug: 'become-a-mentor') do |activity|
   activity.self_verification_info = 'Provide the role of the person you helped, and details of how you supported them.'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'give-additional-support-to-your-community') do |activity|
   activity.title = 'Support computing in your wider community'
   activity.credit = 10
@@ -221,8 +194,6 @@ a = Activity.find_or_create_by(slug: 'give-additional-support-to-your-community'
   activity.description = "There are lots of ways you can help improve computing education, such as helping parents set up and use virtual classrooms, working collaboratively with teachers in your school, or arranging a computing-themed event in your community. Let us know how you've gone the extra mile in computing."
   activity.self_verification_info = 'Please give details of the additional support you have provided'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'join-gender-balance-in-computing-programme') do |activity|
   activity.title = 'Gender Balance in Computing Programme (closed to new registrations)'
@@ -236,8 +207,6 @@ a = Activity.find_or_create_by(slug: 'join-gender-balance-in-computing-programme
   activity.uploadable = true
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-science') do |activity|
   activity.title = 'Answer 5 questions on Isaac Computer Science'
   activity.credit = 10
@@ -250,8 +219,6 @@ a = Activity.find_or_create_by(slug: 'answer-5-questions-on-isaac-computer-scien
   activity.uploadable = true
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activity|
   activity.title = 'Raise aspirations with a STEM Ambassador visit'
   activity.credit = 10
@@ -262,8 +229,6 @@ a = Activity.find_or_create_by(slug: 'engage-with-stem-ambassadors') do |activit
   activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" data-event-label="STEM Ambassadors" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">Arrange a visit for your school</a> to help pupils understand real-world applications of computing, and raise their career aspirations through engaging activities. STEM Ambassadors are inspiring and relatable role models who volunteer to support schools.'
   activity.self_verification_info = 'Please provide us with the date and location of the visit'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activity|
   activity.title = 'Help children learn to code at a Code Club'
@@ -276,8 +241,6 @@ a = Activity.find_or_create_by(slug: 'run-a-code-club-or-coder-dojo') do |activi
   activity.self_verification_info = 'Please provide us with the name and postcode of your Code Club'
 end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
-
 a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |activity|
   activity.title = 'Complete an additional CS Accelerator course'
   activity.credit = 10
@@ -288,8 +251,6 @@ a = Activity.find_or_create_by(slug: 'complete-a-cs-accelerator-course') do |act
   activity.description = 'Complete an additional <a href="https://teachcomputing.org/courses?certificate=cs-accelerator" data-event-label="CSA course" data-event-category="Secondary enrolled" data-event-action="click" class="ncce-link">CS Accelerator course</a> and expand your subject knowledge'
   activity.booking_programme_slug = 'cs-accelerator'
 end
-
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
 Activity.find_or_initialize_by(slug: 'raise-aspirations-with-a-stem-ambassador-visit').tap do |activity|
   activity.title = 'Raise aspirations with a STEM Ambassador visit'
@@ -302,8 +263,6 @@ Activity.find_or_initialize_by(slug: 'raise-aspirations-with-a-stem-ambassador-v
   activity.public_copy_description = 'Arrange a visit for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/stem-ambassadors'
   activity.self_verification_info = 'Please provide us with the date and location of the visit'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity').tap do |activity|
@@ -317,8 +276,6 @@ Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-en
   activity.public_copy_description = 'Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.'
   activity.public_copy_title_url = 'http://www.teachcomputing.org/secondary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary').tap do |activity|
@@ -332,8 +289,6 @@ Activity.find_or_initialize_by(slug: 'participate-fully-in-an-ncce-curriculum-en
   activity.public_copy_description = 'Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom.'
   activity.public_copy_title_url = 'http://www.teachcomputing.org/primary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit').tap do |activity|
@@ -347,8 +302,6 @@ Activity.find_or_initialize_by(slug: 'implement-your-professional-development-in
   activity.public_copy_description = 'Think about not only your actions but also collecting evidence of how the changes you make impact you, your colleagues, and your students.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom').tap do |activity|
@@ -362,8 +315,6 @@ Activity.find_or_initialize_by(slug: 'download-and-use-the-ncce-teaching-and-ass
   activity.public_copy_description = 'Download and use a Teach Computing Curriculum resource, then reflect on how you used and adapted it in the classroom.'
   activity.public_copy_title_url = 'https://teachcomputing.org/curriculum'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community').tap do |activity|
@@ -377,8 +328,6 @@ Activity.find_or_initialize_by(slug: 'share-tips-on-using-an-ncce-resource-in-yo
   activity.public_copy_description = 'By joining STEM Community you’ll meet other teachers in similar roles and be able to share ideas, resources and insights.'
   activity.public_copy_title_url = 'https://community.stem.org.uk/home'
   activity.self_verification_info = 'Please provide us with evidence of registration'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge-secondary').tap do |activity|
@@ -392,8 +341,6 @@ Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-com
   activity.public_copy_description = 'You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community.'
   activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
   activity.self_verification_info = 'Please provide us with evidence of participation'
-
-  activity.programmes = [secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge').tap do |activity|
@@ -407,8 +354,6 @@ Activity.find_or_initialize_by(slug: 'support-other-teachers-and-earn-a-stem-com
   activity.public_copy_description = 'You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community.'
   activity.public_copy_title_url = 'https://community.stem.org.uk/helpfaqs/points'
   activity.self_verification_info = 'Please provide us with evidence of participation'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'run-or-support-a-code-club-in-your-school').tap do |activity|
@@ -437,8 +382,6 @@ Activity.find_or_initialize_by(slug: 'run-an-enrichment-activity-in-your-classro
   activity.public_copy_description = 'Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils.'
   activity.public_copy_title_url = 'https://teachcomputing.org/primary-enrichment'
   activity.self_verification_info = 'Please provide us with evidence of participation'
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').tap do |activity|
@@ -450,8 +393,6 @@ Activity.find_or_initialize_by(slug: 'download-and-use-the-i-belong-handbook').t
   activity.self_certifiable = true
   activity.description = "<a href=\"#{i_belong_handbook_url}\">Download</a> and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives."
   activity.coming_soon = false
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'request-your-i-belong-in-computer-science-posters').tap do |activity|
@@ -462,8 +403,6 @@ Activity.find_or_initialize_by(slug: 'request-your-i-belong-in-computer-science-
   activity.provider = 'ncce'
   activity.self_certifiable = true
   activity.description = "<a href=\"#{i_belong_poster_request_url}\">Request</a> and display your set of ‘I Belong in Computer Science’ posters to create an inclusive classroom environment. Consider using with the <a href=\"#{isaac_posters_brochure_url}\">interview series</a> to stimulate discussion about computer science related pathways."
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-computing-curriculum-resources').tap do |activity|
@@ -475,8 +414,6 @@ Activity.find_or_initialize_by(slug: 'implement-selected-key-stage-3-teach-compu
   activity.self_certifiable = true
   activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
   activity.self_verification_info = 'Please provide us with evidence of delivery of at least one of these'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-activity').tap do |activity|
@@ -488,8 +425,6 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-ncce-student-enrichment-a
   activity.self_certifiable = true
   activity.description = 'Record evidence of any I Belong student events your key stage 3 students have attended. Find out about the upcoming events and activities in your area from your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> by ensuring you enable marketing communications in your account settings on our website.'
   activity.self_verification_info = 'Please provide us with evidence of participation'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'provide-access-to-a-computing-related-extracurricular-club').tap do |activity|
@@ -501,8 +436,6 @@ Activity.find_or_initialize_by(slug: 'provide-access-to-a-computing-related-extr
   activity.self_certifiable = true
   activity.description = 'Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity').tap do |activity|
@@ -514,8 +447,6 @@ Activity.find_or_initialize_by(slug: 'host-a-computing-stem-ambassador-activity'
   activity.self_certifiable = true
   activity.description = "Host a Computing Ambassador in your school to support raising gender and career aspirations and to help students understand the real-world applications of their learning. Evidence must showcase the <a href=\"#{stem_request_ambassador_url}\">Computing Ambassador</a> visit to your school from April 2023 onwards."
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competition').tap do |activity|
@@ -527,8 +458,6 @@ Activity.find_or_initialize_by(slug: 'participate-in-a-computing-related-competi
   activity.self_certifiable = true
   activity.description = 'Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted key stage 3 female student groups.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recommendations-from-the-handbook').tap do |activity|
@@ -540,8 +469,6 @@ Activity.find_or_initialize_by(slug: 'any-other-activity-which-aligns-with-recom
   activity.self_certifiable = true
   activity.description = 'Complete any other student activity which aligns with recommendations from the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Let us know what you’ve done using the evidence button.'
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [i_belong]
 end.save
 
 
@@ -554,8 +481,6 @@ Activity.find_or_initialize_by(slug: 'start-or-deliver-a-computing-related-club'
   activity.self_certifiable = true
   activity.description = "Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Evidence must showcase club activities hosted from April 2023 onwards."
   activity.self_verification_info = 'Please provide us with evidence of delivery'
-
-  activity.programmes = [i_belong]
 end.save
 
 Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-development-leader').tap do |activity|
@@ -569,8 +494,6 @@ Activity.find_or_initialize_by(slug: 'gain-accreditation-as-a-professional-devel
   activity.public_copy_description = 'Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/professional-development-leaders'
   activity.self_verification_info = 'Provide evidence of exploration.'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework').tap do |activity|
@@ -584,8 +507,6 @@ Activity.find_or_initialize_by(slug: 'undertake-the-initial-assessment-of-your-s
   activity.public_copy_description = 'Review your school’s progress in developing an exemplary computing curriculum and work towards achieving the Computing Quality Mark.'
   activity.public_copy_title_url = 'https://computingqualityframework.org/'
   activity.self_verification_info = 'Please provide us with evidence of review'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development').tap do |activity|
@@ -599,8 +520,6 @@ Activity.find_or_initialize_by(slug: 'work-with-your-local-computing-hub-to-deve
   activity.public_copy_description = 'Computing Hubs support school’s in the area with their journey in developing the computing curriculum.'
   activity.public_copy_title_url = 'https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu'
   activity.self_verification_info = 'Please provide us with evidence of your action plan'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor').tap do |activity|
@@ -614,8 +533,6 @@ Activity.find_or_initialize_by(slug: 'lead-your-school-into-a-computing-cluster-
   activity.public_copy_description = 'Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period.'
   activity.public_copy_title_url = 'https://teachcomputing.org/computing-clusters'
   activity.self_verification_info = 'Please provide us with evidence of joining'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'join-and-present-at-your-local-computing-at-school-community').tap do |activity|
@@ -629,8 +546,6 @@ Activity.find_or_initialize_by(slug: 'join-and-present-at-your-local-computing-a
   activity.public_copy_description = 'CAS Communities are the hearts, hands, and minds of Computing at School activity across the UK. Join a local event and offer your insights, ideas and expertise to colleagues.'
   activity.public_copy_title_url = 'https://www.computingatschool.org.uk/cas-communities'
   activity.self_verification_info = 'Please provide us with evidence of your presentation'
-
-  activity.programmes = [primary_certificate, secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc').tap do |activity|
@@ -644,8 +559,6 @@ Activity.find_or_initialize_by(slug: 'join-the-ib-encouraging-girls-into-cs-prog
   activity.public_copy_description = 'I Belong is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them.'
   activity.public_copy_title_url = 'https://teachcomputing.org/i-belong'
   activity.self_verification_info = 'Please provide us with evidence of your registration'
-
-  activity.programmes = [secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'download-and-use-isaac-computer-science-classroom-resources-and-displays').tap do |activity|
@@ -659,8 +572,6 @@ Activity.find_or_initialize_by(slug: 'download-and-use-isaac-computer-science-cl
   activity.public_copy_description = 'Bring learning to life with Computer Science Journeys and request printed versions of the ‘I Belong in Computer Science’ posters from the NCCE to put in your classroom.'
   activity.public_copy_title_url = 'https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all'
   activity.self_verification_info = 'Please provide us with evidence of your posters'
-
-  activity.programmes = [secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'work-with-local-business-and-industry-to-inspire-inclusive-computing').tap do |activity|
@@ -674,8 +585,6 @@ Activity.find_or_initialize_by(slug: 'work-with-local-business-and-industry-to-i
   activity.public_copy_description = 'Establish relationships with businesses in your local area, that can support development of inclusive computing in your school.'
   activity.public_copy_title_url = 'https://www.stem.org.uk/resources/elibrary/resource/169379/project-enthuse-why-your-business-should-go-back-school-how-you'
   activity.self_verification_info = 'Please provide us with evidence of your relationships with local businesses'
-
-  activity.programmes = [secondary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: 'gain-accreditation-as-an-i-belong-champion').tap do |activity|
@@ -689,6 +598,4 @@ Activity.find_or_initialize_by(slug: 'gain-accreditation-as-an-i-belong-champion
   activity.public_copy_description = 'Become an I Belong Champion to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science.'
   activity.public_copy_title_url = 'https://teachcomputing.org/i-belong'
   activity.self_verification_info = 'Please provide us with evidence of completion'
-
-  activity.programmes = [secondary_certificate]
 end.save

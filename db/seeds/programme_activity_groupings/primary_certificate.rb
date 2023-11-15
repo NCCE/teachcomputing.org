@@ -33,26 +33,22 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
 
   group.save
 
+  # Activities should never be removed, only marked as legacy
   activities = [
-    'raise-aspirations-with-a-stem-ambassador-visit',
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary',
-    'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit',
-    'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom'
+    { slug: 'raise-aspirations-with-a-stem-ambassador-visit', legacy: false },
+    { slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary', legacy: false },
+    { slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit', legacy: false },
+    { slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom', legacy: false },
+
+    # Legacy activities
+    { slug: 'review-a-resource-on-cas', legacy: true },
+    { slug: 'host-or-attend-a-barefoot-workshop', legacy: true },
+    { slug: 'attend-a-cas-community-meeting', legacy: true },
+    { slug: 'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity', legacy: true },
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
-  end
-
-  remove_activities = [
-    'review-a-resource-on-cas',
-    'host-or-attend-a-barefoot-workshop',
-    'attend-a-cas-community-meeting',
-    'participate-fully-in-an-ncce-curriculum-enrichment-oppertunity'
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_grouping(group, activity)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save
 
@@ -66,31 +62,42 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: 'D
 
   group.save
 
+  # Activities should never be removed, only marked as legacy
   activities = [
-    'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community',
-    'gain-accreditation-as-a-professional-development-leader',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
-    'run-or-support-a-code-club-in-your-school',
-    'run-an-enrichment-activity-in-your-classroom',
-    'support-other-teachers-and-earn-a-stem-community-participation-badge',
-    'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework',
-    'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development',
-    'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor',
-    'join-and-present-at-your-local-computing-at-school-community'
+    { slug: 'share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community', legacy: false },
+    { slug: 'gain-accreditation-as-a-professional-development-leader', legacy: false },
+    { slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge', legacy: false },
+    { slug: 'run-or-support-a-code-club-in-your-school', legacy: false },
+    { slug: 'run-an-enrichment-activity-in-your-classroom', legacy: false },
+    { slug: 'support-other-teachers-and-earn-a-stem-community-participation-badge', legacy: false },
+    { slug: 'undertake-the-initial-assessment-of-your-school-using-computing-quality-framework', legacy: false },
+    { slug: 'work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development', legacy: false },
+    { slug: 'lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor', legacy: false },
+    { slug: 'join-and-present-at-your-local-computing-at-school-community', legacy: true },
+
+    # Legacy activities
+    { slug: 'run-an-after-school-code-club', legacy: true },
+    { slug: 'lead-a-session-at-a-regional-or-national-conference', legacy: true },
+    { slug: 'lead-a-cas-community-of-practice', legacy: true },
+    { slug: 'providing-additional-support', legacy: true },
+
+    { slug: 'provide-feedback-on-our-curriculum-resources', legacy: true },
+    { slug: 'provide-feedback-on-a-cas-resource', legacy: true },
+    { slug: 'attend-a-cas-community-meeting-secondary', legacy: true },
+    { slug: 'contribute-to-online-discussion-secondary', legacy: true },
+    { slug: 'complete-a-cs-accelerator-course', legacy: true },
+
+    { slug: 'provide-computing-cpd-in-your-school-or-to-another-local-school', legacy: true },
+    { slug: 'become-a-mentor', legacy: true },
+    { slug: 'give-additional-support-to-your-community', legacy: true },
+    { slug: 'join-gender-balance-in-computing-programme', legacy: true },
+    { slug: 'answer-5-questions-on-isaac-computer-science', legacy: true },
+    { slug: 'engage-with-stem-ambassadors', legacy: true },
+    { slug: 'run-a-code-club-or-coder-dojo', legacy: true },
+    { slug: 'answer-5-questions-on-isaac-computer-science', legacy: true },
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
-  end
-
-  remove_activities = [
-    'run-an-after-school-code-club',
-    'lead-a-session-at-a-regional-or-national-conference',
-    'lead-a-cas-community-of-practice',
-    'providing-additional-support'
-  ]
-
-  remove_activities.each do |activity|
-    maybe_detach_activity_from_grouping(group, activity)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save

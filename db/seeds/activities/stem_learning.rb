@@ -541,7 +541,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '22880db7-78e8-ea11-a817
   activity.stem_activity_code = 'CP211'
 
   activity.programmes = [secondary_certificate]
-end
+end.save
 
 Activity.find_or_create_by(stem_course_template_no: '6ed470e0-75e8-ea11-a817-000d3a86f6ce') do |activity|
   activity.title = 'Key Stage 3 computing for the non-specialist teacher'
@@ -1495,7 +1495,7 @@ Activity.find_or_initialize_by(stem_course_template_no: '02b58914-2125-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end
+end.save
 
 Activity.find_or_create_by(stem_course_template_no: '95bd7135-2125-ec11-b6e6-000d3a0ca796') do |activity|
   activity.title = 'Getting started in Year 6'
@@ -2016,7 +2016,7 @@ Activity.find_or_initialize_by(stem_course_template_no: 'a27d2bea-bf32-ee11-bdf3
   activity.credit = 50
 
   activity.programmes = [secondary_certificate]
-end
+end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'f5fe1676-bf32-ee11-bdf3-002248c6f9ce').tap do |activity|
   activity.title = 'Higher attainment in computer science - meeting the challenges of the exams - remote'
