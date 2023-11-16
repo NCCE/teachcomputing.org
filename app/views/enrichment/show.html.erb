@@ -18,45 +18,41 @@
           <div class="ncce-enrichment-cards"%>
             <% @groupings.each_with_index do |grouping, index| %>
               <div>
-                  <% if grouping.coming_soon %>
-                    <p class="govuk-body ncce-enrichment-this-term">
-                      <%= 'Coming soon' %>
-                    </p>
-                  <% elsif index == 0 %>
-                    <p class="govuk-body ncce-enrichment-this-term">
-                      <%= 'This term' %>
-                    </p>
-                  <% else %>
-                    <div class="ncce-enrichment-no-this-term"></div>
-                  <% end %>
+                <% if index == 0 %>
+                  <p class="govuk-body ncce-enrichment-this-term">
+                    <%= 'This term' %>
+                  </p>
+                <% else %>
+                  <div class="ncce-enrichment-no-this-term"></div>
+                <% end %>
                 <div class="ncce-enrichment-card">
                   <h3 class="govuk-heading-m"><%= grouping.title %></h3>
                   <div class="ncce-enrichment-card--entries">
+                    <% grouping.enrichment_entries.each do |entry| %>
+                      <div class="ncce-enrichment-card--entry">
+                        <div class="ncce-enrichment-card--entry-copy">
+                          <% if entry.i_belong %>
+                            <div class="i_belong_container">
+                              <span class="i_belong_flag">
+                                <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+                              </span>
+                              <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                            </div>
+                          <% else %>
+                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                          <% end %>
+                          <p class="govuk-body-s"><%= entry.body.html_safe %></p>
+                        </div>
+                        <%= link_to entry.title_url do %>
+                          <img src="<%= entry.image_url %>"/>
+                        <% end %>
+                      </div>
+                    <% end %>
                     <% if grouping.coming_soon %>
                       <div class="ncce-enrichment-card--coming-soon">
-                        <p class="govuk-body-s">More enrichment activities coming soon!</p>
+                        <p class="govuk-body-s">More activities coming soon!</p>
                       </div>
                     <% else %>
-                      <% grouping.enrichment_entries.each do |entry| %>
-                        <div class="ncce-enrichment-card--entry">
-                          <div class="ncce-enrichment-card--entry-copy">
-                            <% if entry.i_belong %>
-                              <div class="i_belong_container">
-                                <span class="i_belong_flag">
-                                  <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
-                                </span>
-                                <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
-                              </div>
-                            <% else %>
-                              <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
-                            <% end %>
-                            <p class="govuk-body-s"><%= entry.body.html_safe %></p>
-                          </div>
-                          <%= link_to entry.title_url do %>
-                            <img src="<%= entry.image_url %>"/>
-                          <% end %>
-                        </div>
-                      <% end %>
                     <% end %>
                   </div>
                 </div>

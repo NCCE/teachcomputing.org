@@ -67,7 +67,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Summer term').becom
   g.title = 'Summer term'
   g.term_start = DateTime.new(2024, 4, 15)
   g.term_end = DateTime.new(2024, 9, 3)
-  g.coming_soon = false
+  g.coming_soon = true
 
   g.save
 
