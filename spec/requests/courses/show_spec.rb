@@ -4,7 +4,8 @@ RSpec.describe CoursesController do
   let(:user) { create(:user) }
   let(:course) { Achiever::Course::Template.find_by_activity_code('CP228') }
   let(:online_course) { Achiever::Course::Template.find_by_activity_code('CO214') }
-  let(:activity) { create(:activity, stem_course_template_no: course.course_template_no) }
+  let(:activity) { create(:activity, stem_course_template_no: course.course_template_no, stem_activity_code: course.activity_code) }
+  let(:activity2) { create(:activity, stem_course_template_no: online_course.course_template_no, stem_activity_code: online_course.activity_code) }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) do
     programme.activities << activity
@@ -121,6 +122,7 @@ RSpec.describe CoursesController do
     context 'when the course is online' do
       before do
         user_programme_enrolment
+        activity2
         get course_path(id: online_course.activity_code, name: online_course.title.parameterize)
       end
 

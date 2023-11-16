@@ -5,8 +5,10 @@ RSpec.describe('Course Details page', type: :system) do
   let(:user) { create(:user) }
   let(:course_id) { 'CP428' }
   let(:course_slug) { 'an-introduction-to-algorithms-programming-and-data-in-gcse-computer-science-remote' }
+  let(:activity) { create(:activity, :stem_learning, stem_activity_code: course_id) }
 
   before do
+    activity
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
     stub_duration_units

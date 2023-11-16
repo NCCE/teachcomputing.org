@@ -41,19 +41,16 @@
                         <div class="ncce-enrichment-card--entry">
                           <div class="ncce-enrichment-card--entry-copy">
                             <% if entry.i_belong %>
-                            <div class="i_belong_container">
-                            <span class="i_belong_flag">
-                                <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
-                            </span>
-                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
-                            
-                            
-                            </div>
+                              <div class="i_belong_container">
+                                <span class="i_belong_flag">
+                                  <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+                                </span>
+                                <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                              </div>
                             <% else %>
-                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                              <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                            <% end %>
                             <p class="govuk-body-s"><%= entry.body.html_safe %></p>
-                          <% end %>
-                          <p class="govuk-body-s"><%= entry.body.html_safe %></p>
                           </div>
                           <%= link_to entry.title_url do %>
                             <img src="<%= entry.image_url %>"/>
@@ -102,6 +99,6 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </main>

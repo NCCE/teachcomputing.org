@@ -3,11 +3,14 @@ require 'rails_helper'
 RSpec.describe('courses/show', type: :view) do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:course) { Achiever::Course::Template.all.first }
+  let(:activity) { create(:activity, :stem_learning, stem_activity_code: course.activity_code) }
 
   before do
     cs_accelerator
     stub_duration_units
     stub_course_templates
+
+    activity
 
     assign(:course, course)
     assign(:other_courses, [])
