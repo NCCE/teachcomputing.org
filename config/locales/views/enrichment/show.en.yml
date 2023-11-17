@@ -9,10 +9,9 @@ en:
         taking_part: "Taking part in enrichment activities champions computing by:"
         taking_part_steps:
           - giving your class an opportunity to try new activities that may not strictly fit into the curriculum
-          - encouraging your class to pursue wider educational and further career goals
           - providing examples of how computing can be applied to real-world experiences
-          - supporting you to achieve the primary computing certificate
-        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your pupils to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience.<br><br> Keep informed on upcoming enrichment activities by being part of the %{stem_community}.
+          - supporting you to achieve the %{primary_certificate}
+        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your pupils to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the %{primary_stem_community}.
       secondary-certificate:
         hero:
           title: Secondary computing enrichment activities
@@ -22,5 +21,6 @@ en:
         taking_part_steps:
           - providing an opportunity for students to pursue their learning in their own area of interest and strength
           - studying concepts to a greater depth and complexity
-          - providing examples of how computing can be applied to real-world experiences
-        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience.<br><br> Keep informed on upcoming enrichment activities by being part of the %{stem_community}.
+          - encouraging your class to pursue wider educational and further career goals
+          - supporting you to achieve the %{secondary_certificate}
+        footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the %{secondary_stem_community}.

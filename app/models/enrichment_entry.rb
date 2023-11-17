@@ -6,5 +6,6 @@ class EnrichmentEntry < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :body
+    validates :order
   end
 end
