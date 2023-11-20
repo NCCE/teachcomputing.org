@@ -4,13 +4,13 @@ class ALevelMailer < ApplicationMailer
   def completed
     @subject = "Congratulations on your achievement #{@user.full_name}"
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 
   def welcome
     @subject = 'Welcome to A level subject knowledge!'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 
   private

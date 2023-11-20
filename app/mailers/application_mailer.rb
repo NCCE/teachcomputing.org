@@ -9,15 +9,16 @@ class ApplicationMailer < ActionMailer::Base
       mailer_type: args[:mailer_type],
       subject: args[:subject]
     )
+
+    args[:to] = args[:to].email
+
     super(**args) if should_send
   end
 
   def record_sent_mail(record_sent_mail: false, to:, mailer_type: nil, subject:)
     return true unless record_sent_mail
 
-    user = User.find_by!(email: to)
-
-    sent_email = SentEmail.new(user: user,
+    sent_email = SentEmail.new(user: to,
                                mailer_type: mailer_type,
                                subject: subject)
     sent_email.save!

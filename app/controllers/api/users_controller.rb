@@ -1,6 +1,9 @@
 module Api
   class UsersController < ApiController
     def show
+      # As we don't intigrate with Future Learn anymore, to the best of my
+      # knowledge this endpoint isn't used. If it is, we will need to revisit
+      # the fetching of users by email as they are no longer unique
       user = User.find_by!(email: params[:email].downcase)
       render json: as_json(user)
     end
