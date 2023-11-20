@@ -9,7 +9,9 @@ class User < ApplicationRecord
   validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
   validates :stem_user_id, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  # WARNING: We are consiously choosing not to have a unique constraint on
+  # emails
+  validates :email, presence: true
   validates :teacher_reference_number, uniqueness: true, if: proc { |u| u.teacher_reference_number.present? }
 
   attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
@@ -32,20 +34,35 @@ class User < ApplicationRecord
   alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    where(stem_user_id: id).first_or_initialize.tap do |user|
-      user.stem_user_id = id
-      user.first_name = info.first_name
-      user.last_name = info.last_name
-      user.email = info.email.downcase
-      user.stem_achiever_contact_no = info.achiever_contact_no
-      user.stem_credentials_access_token = credentials.token
-      user.stem_credentials_refresh_token = credentials.refresh_token
-      user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
-      user.stem_achiever_organisation_no = info.achiever_organisation_no
-      user.last_sign_in_at = Time.current
-      user.school_name = info.school_name
-      user.save!
+    user = where(stem_user_id: id).first_or_initialize
+
+    users_with_new_email_count = User.where(email: info.email.downcase).count
+
+    if user.persisted?
+      if user.email == info.email.downcase
+        Sentry.capture_message("User #{user.email}-#{id} logged in with duplicate email", level: :log) if users_with_new_email_count >= 2
+      else
+        Sentry.capture_message("User #{user.email}-#{id} logged renaming to duplicated email #{info.email.downcase}", level: :warning) if users_with_new_email_count >= 1
+      end
+    else
+      Sentry.capture_message("User #{id} created with duplicated email #{info.email.downcase}", level: :warning) if users_with_new_email_count >= 1
     end
+
+    user.stem_user_id = id
+    user.first_name = info.first_name
+    user.last_name = info.last_name
+    user.email = info.email.downcase
+    user.stem_achiever_contact_no = info.achiever_contact_no
+    user.stem_credentials_access_token = credentials.token
+    user.stem_credentials_refresh_token = credentials.refresh_token
+    user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
+    user.stem_achiever_organisation_no = info.achiever_organisation_no
+    user.last_sign_in_at = Time.current
+    user.school_name = info.school_name
+
+    user.save!
+
+    user
   end
 
   def enrolments

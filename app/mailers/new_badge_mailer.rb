@@ -6,6 +6,6 @@ class NewBadgeMailer < ApplicationMailer
     @programme = programme
     @subject = 'You’ve been awarded a new digital badge'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 end

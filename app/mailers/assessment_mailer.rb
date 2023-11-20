@@ -3,6 +3,6 @@ class AssessmentMailer < ApplicationMailer
     @user = User.find(params[:user_id])
     @subject = 'Unfortunately your assessment was unsuccessful'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 end

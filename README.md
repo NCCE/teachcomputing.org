@@ -4,6 +4,14 @@
 
 [Partners API integration](./doc/partners_api_integration.md)
 
+## Important notes
+
+We do not enforce unique constraints on emails. This is valid due to our SSO
+only setup. While we should try to resolve any duplicate emails introduced
+into our database. It makes sense to allow this as we are mirroring the profile
+of users from STEM rather than taking an initial set of data, and then letting
+users deviate from their profile.
+
 ## Development
 
 IMPORTANT: Checkout this branch to a folder named `teachcomputing` with `git clone git@github.com:NCCE/teachcomputing.org.git teachcomputing` (one or two scripts right now expect the docker project name to be `teachcomputing`, so for now this is the easiest approach)
