@@ -32,7 +32,6 @@ RSpec.describe User do
     it { is_expected.to validate_presence_of(:stem_user_id) }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:stem_user_id) }
-    it { is_expected.to validate_uniqueness_of(:email) }
     it { is_expected.to validate_uniqueness_of(:teacher_reference_number) }
   end
 

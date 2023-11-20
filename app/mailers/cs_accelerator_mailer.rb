@@ -10,7 +10,7 @@ class CSAcceleratorMailer < ApplicationMailer
     @programme = Programme.cs_accelerator
     @subject = 'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 
   def assessment_eligibility
@@ -18,7 +18,7 @@ class CSAcceleratorMailer < ApplicationMailer
     @programme = Programme.cs_accelerator
     @subject = "#{@user.first_name} your CS Accelerator test is ready."
 
-    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
+    mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
   end
 
   def getting_started_prompt
@@ -26,7 +26,7 @@ class CSAcceleratorMailer < ApplicationMailer
     @enrolment_id = params[:enrolment_id]
     @subject = 'Kick-start your CPD and achieve a national qualification'
 
-    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
+    mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
   end
 
   def manual_enrolled_welcome
@@ -34,13 +34,13 @@ class CSAcceleratorMailer < ApplicationMailer
     @programme = Programme.cs_accelerator
     @subject = 'Welcome to our subject knowledge certificate'
 
-    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
+    mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
   end
 
   def auto_enrolled_welcome
     @user = params[:user]
     @subject = 'Achieve your subject knowledge certificate with the Computer Science Accelerator'
 
-    mail(to: @user.email, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
+    mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
   end
 end

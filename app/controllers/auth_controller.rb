@@ -16,7 +16,7 @@ class AuthController < ApplicationController
     end
 
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
-  rescue ActiveRecord::RecordNotFound => e
+  rescue => e
     Sentry.capture_exception(e)
 
     raise e
