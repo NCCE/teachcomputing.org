@@ -10,7 +10,7 @@ class EnrichmentController < ApplicationController
     term_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::Term.name).sort_by(&:days_till_term)
     all_year_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::AllYear.name)
 
-    @groupings = term_groupings + all_year_groupings
+    @groupings = (term_groupings[0..0] || []) + all_year_groupings + (term_groupings[1..] || [])
   end
 
   private

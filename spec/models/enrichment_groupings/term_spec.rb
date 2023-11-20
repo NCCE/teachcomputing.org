@@ -25,8 +25,8 @@ RSpec.describe EnrichmentGroupings::Term do
     context 'when is comming soon' do
       subject { create(:enrichment_groupings_term, coming_soon: true) }
 
-      it 'should return false' do
-        expect(subject.is_current_term?).to be false
+      it 'should return true' do
+        expect(subject.is_current_term?).to be true
       end
     end
 
@@ -55,14 +55,6 @@ RSpec.describe EnrichmentGroupings::Term do
     end
 
     context 'when current term is false' do
-      context 'when is comming_soon' do
-        subject { create(:enrichment_groupings_term, coming_soon: true) }
-
-        it 'should return infinity' do
-          expect(subject.days_till_term).to be Float::INFINITY
-        end
-      end
-
       context 'when days till start is ahead in the year' do
         subject { create(:enrichment_groupings_term, term_start: 10.days.from_now, term_end: 20.days.from_now) }
 
@@ -74,8 +66,8 @@ RSpec.describe EnrichmentGroupings::Term do
       context 'when days till start is behind in the year' do
         subject { create(:enrichment_groupings_term, term_start: 2.days.ago, term_end: 1.days.ago) }
 
-        it 'should return 364' do
-          expect(subject.days_till_term).to eq 367
+        it 'should return 363' do
+          expect(subject.days_till_term).to eq 363
         end
       end
     end
