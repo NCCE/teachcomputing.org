@@ -102,7 +102,12 @@ module ExternalLinkHelper
   def first_lego_leauge_url
     'https://www.stem.org.uk/cpd/530463/first%C2%AE-lego%C2%AE-league'
   end
+
   def cansat_webinar_url
     'https://www.stem.org.uk/cpd/530430/introduction-uk-cansat-competition'
+  end
+
+  def structuring_your_i_belong_evidence_url
+    'https://static.teachcomputing.org/Structuring+your+evidence+for+I+Belong.docx'
   end
 end

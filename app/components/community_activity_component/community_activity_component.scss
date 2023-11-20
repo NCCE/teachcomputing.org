@@ -182,3 +182,21 @@
     }
   }
 }
+
+.community-activity-component--what-evidence {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  p {
+    margin-bottom: 6px;
+  }
+
+  .tooltiptext {
+    text-align: left;
+    width: min(380px, 90vw);
+  }
+
+  margin-bottom: 0.5rem;
+}

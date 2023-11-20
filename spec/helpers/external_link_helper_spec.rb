@@ -29,6 +29,7 @@ RSpec.describe ExternalLinkHelper do
       arm_webinar_url
       first_lego_leauge_url
       cansat_webinar_url
+      structuring_your_i_belong_evidence_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it 'should return a string' do
