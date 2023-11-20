@@ -43,6 +43,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: 'Make a posi
     { slug: 'implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit', legacy: false },
     { slug: 'download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom', legacy: false },
     { slug: 'join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc', legacy: false },
+    { slug: 'download-and-use-isaac-computer-science-classroom-resources-and-displays', legacy: false },
 
     # Legacy activities
     { slug: 'provide-feedback-on-our-curriculum-resources', legacy: true },

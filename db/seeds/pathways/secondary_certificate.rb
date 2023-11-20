@@ -115,6 +115,7 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
   end
 
   remove_activities = [
+    'raise-aspirations-with-a-stem-ambassador-visit'
   ]
 
   remove_activities.each do |activity|
