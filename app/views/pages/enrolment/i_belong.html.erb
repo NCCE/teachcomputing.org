@@ -1,4 +1,17 @@
-<%= render 'components/hero', hero_title: 'I Belong: encouraging girls into computer science', colour: 'jaffa-bg', full_width: true %>
+<div class="hero hero hero--orange-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="i-belong-hero__wrapper i-belong hero__heading-wrapper--full-width">
+          <div class="i-belong-hero__area--text">
+            <h1 class="govuk-heading-xl hero__heading">I Belong: encouraging girls into computer science</h1>
+          </div>
+          <div class="i-belong-hero__area--logo">
+            <%= render(IBelongFlagComponent.new(label: false)) %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="light-grey-bg govuk-!-padding-bottom-9">
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper govuk-main-wrapper--xl">

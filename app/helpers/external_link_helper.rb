@@ -27,6 +27,22 @@ module ExternalLinkHelper
     'https://www.stem.org.uk/cpd/527944/climate-detectives'
   end
 
+  def do_your_bit_webinar_url
+    'https://www.stem.org.uk/cpd/530215/do-your-bit-microbit-digital-challenge-global-goals'
+  end
+
+  def tech_she_can_webinar_url
+    'https://www.stem.org.uk/cpd/529634/tech-she-can-how-inspire-children-consider-future-career-technology-using-freely'
+  end
+
+  def into_film_webinar_url
+    'https://www.stem.org.uk/cpd/530461/introduction-film-and-stop-motion-animation'
+  end
+
+  def micro_bit_webinar_url
+    'https://www.stem.org.uk/cpd/530205/take-part-bbc-microbit-playground-survey'
+  end
+
   def cyber_centurion_webinar_url
     'https://www.stem.org.uk/cpd/527935/cyber-centurion-competition-cyber-security'
   end
@@ -57,5 +73,36 @@ module ExternalLinkHelper
 
   def a_level_test_conditions_url
     'https://static.teachcomputing.org/alevel-test-conditions.pdf'
+  end
+
+  def stem_club_url
+    'https://www.youtube.com/playlist?list=PLhgK74tFscGVGGQRG8OeSlqavB7dUV1NM'
+  end
+
+  def apps_for_good_showcase_webinar_url
+    'https://www.stem.org.uk/cpd/ondemand/528383/apps-good-design-app'
+  end
+
+  def cisco_cyber_camps_url
+    'https://www.stem.org.uk/cpd/530230/cisco-cyber-camps-industry-aligned-cyber-security-course'
+  end
+
+  def digdata_webinar_url
+    'https://www.stem.org.uk/cpd/530959/digdata-developing-key-employability-skills-career-data'
+  end
+
+  def teen_tech_url
+    'https://www.stem.org.uk/cpd/530908/teentech-inspiring-tomorrow%E2%80%99s-innovators'
+  end
+
+  def arm_webinar_url
+    'https://www.stem.org.uk/cpd/527983/arm-play-project-%E2%80%93-shaping-learning-project-based-learning-computing'
+  end
+
+  def first_lego_leauge_url
+    'https://www.stem.org.uk/cpd/530463/first%C2%AE-lego%C2%AE-league'
+  end
+  def cansat_webinar_url
+    'https://www.stem.org.uk/cpd/530430/introduction-uk-cansat-competition'
   end
 end

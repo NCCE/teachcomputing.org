@@ -17,6 +17,18 @@ RSpec.describe ExternalLinkHelper do
       isaac_posters_brochure_url
       stem_request_ambassador_url
       a_level_test_conditions_url
+      do_your_bit_webinar_url
+      tech_she_can_webinar_url
+      into_film_webinar_url
+      micro_bit_webinar_url
+      stem_club_url
+      apps_for_good_showcase_webinar_url
+      cisco_cyber_camps_url
+      digdata_webinar_url
+      teen_tech_url
+      arm_webinar_url
+      first_lego_leauge_url
+      cansat_webinar_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it 'should return a string' do

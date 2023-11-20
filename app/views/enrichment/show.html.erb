@@ -9,8 +9,12 @@
           <p class="govuk-body"><%= programme_t('intro') %></p>
           <p class="govuk-body"><%= programme_t('taking_part') %></p>
           <ul class="govuk-list govuk-list--bullet">
-            <% programme_t('taking_part_steps').each do |step| %>
-              <li><%= step %></li>
+          <% programme_t(
+            'taking_part_steps',
+            primary_certificate: link_to('secondary computing certificate', secondary_certificate_path),
+            secondary_certificate: link_to('secondary computing certificate', secondary_certificate_path)
+          ).each do |step| %>
+              <li><%= step.html_safe %></li>
             <% end %>
           </ul>
         </section>
@@ -18,36 +22,46 @@
           <div class="ncce-enrichment-cards"%>
             <% @groupings.each_with_index do |grouping, index| %>
               <div>
-                  <% if grouping.coming_soon %>
-                    <p class="govuk-body ncce-enrichment-this-term">
-                      <%= 'Coming soon' %>
-                    </p>
-                  <% elsif index == 0 %>
-                    <p class="govuk-body ncce-enrichment-this-term">
-                      <%= 'This term' %>
-                    </p>
-                  <% else %>
-                    <div class="ncce-enrichment-no-this-term"></div>
-                  <% end %>
+                <% if index == 0 %>
+                  <p class="govuk-body ncce-enrichment-this-term">
+                    <%= 'This term' %>
+                  </p>
+                <% else %>
+                  <div class="ncce-enrichment-no-this-term"></div>
+                <% end %>
                 <div class="ncce-enrichment-card">
                   <h3 class="govuk-heading-m"><%= grouping.title %></h3>
                   <div class="ncce-enrichment-card--entries">
+                    <% grouping.enrichment_entries.each do |entry| %>
+                      <div class="ncce-enrichment-card--entry">
+                        <div class="ncce-enrichment-card--entry-copy">
+                          <% if entry.i_belong %>
+                            <div class="i_belong_container">
+                              <div class="tooltip i_belong_flag">
+                                <%= link_to i_belong_path do %>
+                                  <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+                                <% end %>
+                                <span class="tooltiptext">
+                                  <%= link_to 'I Belong: encouraging girls into computer science', i_belong_path, class: 'govuk-link--no-underline ncce-link' %>
+                                </span>
+                              </div>
+                              <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                            </div>
+                          <% else %>
+                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                          <% end %>
+                          <p class="govuk-body-s"><%= entry.body.html_safe %></p>
+                        </div>
+                        <%= link_to entry.title_url do %>
+                          <img src="<%= entry.image_url %>"/>
+                        <% end %>
+                      </div>
+                    <% end %>
                     <% if grouping.coming_soon %>
                       <div class="ncce-enrichment-card--coming-soon">
-                        <p class="govuk-body-s">More enrichment activities coming soon!</p>
+                        <p class="govuk-body-s">More activities coming soon!</p>
                       </div>
                     <% else %>
-                      <% grouping.enrichment_entries.each do |entry| %>
-                        <div class="ncce-enrichment-card--entry">
-                          <div class="ncce-enrichment-card--entry-copy">
-                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
-                            <p class="govuk-body-s"><%= entry.body.html_safe %></p>
-                          </div>
-                          <%= link_to entry.title_url do %>
-                            <img src="<%= entry.image_url %>"/>
-                          <% end %>
-                        </div>
-                      <% end %>
                     <% end %>
                   </div>
                 </div>
@@ -59,11 +73,11 @@
           <p class="govuk-body">
             <%= programme_t(
               'footer',
-              stem_community: link_to('STEM Community', 'https://community.stem.org.uk/')
+              primary_stem_community: link_to('STEM Community: Teaching & Leading Primary Computing', primary_stem_community_url),
+              secondary_stem_community: link_to('STEM Community: Teaching & Leading Secondary Computing', secondary_stem_community_url)
             ).html_safe %>
           </p>
         </section>
-
         <section>
         </section>
       </div>
@@ -90,6 +104,6 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </main>

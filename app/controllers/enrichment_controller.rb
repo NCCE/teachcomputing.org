@@ -7,11 +7,10 @@ class EnrichmentController < ApplicationController
     @programme = Programme.includes(enrichment_groupings: :enrichment_entries).find_by!(slug: params[:slug])
     raise ActiveRecord::RecordNotFound unless @programme.enrichment_enabled?
 
-    term_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::Term.name, coming_soon: false).sort_by(&:days_till_term)
-    all_year_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::AllYear.name, coming_soon: false)
-    coming_soon_groupings = @programme.enrichment_groupings.where(coming_soon: true)
+    term_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::Term.name).sort_by(&:days_till_term)
+    all_year_groupings = @programme.enrichment_groupings.where(type: EnrichmentGroupings::AllYear.name)
 
-    @groupings = term_groupings + all_year_groupings + coming_soon_groupings
+    @groupings = (term_groupings[0..0] || []) + all_year_groupings + (term_groupings[1..] || [])
   end
 
   private

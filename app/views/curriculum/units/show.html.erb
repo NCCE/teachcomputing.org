@@ -4,7 +4,10 @@
 <div class="hero hero--resources <%= ['1', '2'].include?(@unit.year_group.key_stage.level) ? 'hero--orange' : 'hero--purple' %> hero--bottom-glyph">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper hero__wrapper">
-			<p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
+      <div class="curriculum__label__wrapper">
+        <p class="govuk-body curriculum__label"><%= year_group_title(@unit.year_group.year_number) %></p>
+        <%= render(IBelongFlagComponent.new(label: true)) if @unit.display_i_belong_flag %>
+      </div>
       <div class="hero__heading-wrapper hero__heading-wrapper--unit<%= 'hero__heading-wrapper--full-width' if local_assigns[:full_width] %>">
         <h1 class="govuk-heading-xl hero__heading"><%= @unit.title %></h1>
       </div>

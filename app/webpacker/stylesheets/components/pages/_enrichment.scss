@@ -54,6 +54,27 @@
       a img {
         width: 100px;
       }
+
+      .i_belong_container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+          margin-bottom: 0;
+        }
+        margin-bottom: 20px;
+      }
+      .i_belong_flag {
+        width: 32px;
+        margin-top: -0.63rem;
+        img {
+          width: 32px;
+          height: auto;
+          display: block;
+        }
+      }
+
     }
 
     &--coming-soon {
