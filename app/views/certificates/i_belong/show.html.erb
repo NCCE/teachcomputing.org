@@ -17,6 +17,16 @@
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render AsideComponent.new(
+            title: 'Support on submitting evidence'
+          ) do |component| %>
+            <% component.with_body do %>
+              <p class="govuk-body-s icon-resources">
+                <%= link_to 'Structuring your I Belong evidence', structuring_your_i_belong_evidence_url, class: 'govuk-link ncce-link' %>
+                (PDF, 1.01MB) Updated: 2 Nov 2023
+              </p>
+            <% end %>
+          <% end %>
+          <%= render AsideComponent.new(
             title: t('.support_aside.title'),
             class_name: 'help-aside',
             text: t('.support_aside.text.html',

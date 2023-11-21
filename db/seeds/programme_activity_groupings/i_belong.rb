@@ -34,13 +34,13 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
   group.save
 
   activities = [
-    'download-and-use-the-i-belong-handbook',
-    'request-your-i-belong-in-computer-science-posters',
-    'implement-selected-key-stage-3-teach-computing-curriculum-resources'
+    { slug: 'download-and-use-the-i-belong-handbook', legacy: false },
+    { slug: 'request-your-i-belong-in-computer-science-posters', legacy: false },
+    { slug: 'implement-selected-key-stage-3-teach-computing-curriculum-resources', legacy: false },
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save
 
@@ -55,15 +55,15 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
   group.save
 
   activities = [
-    'participate-in-a-ncce-student-enrichment-activity',
-    'provide-access-to-a-computing-related-extracurricular-club',
-    'start-or-deliver-a-computing-related-club',
-    'host-a-computing-stem-ambassador-activity',
-    'participate-in-a-computing-related-competition',
-    'any-other-activity-which-aligns-with-recommendations-from-the-handbook'
+    { slug: 'participate-in-a-ncce-student-enrichment-activity', legacy: false },
+    { slug: 'provide-access-to-a-computing-related-extracurricular-club', legacy: false },
+    { slug: 'start-or-deliver-a-computing-related-club', legacy: true },
+    { slug: 'host-a-computing-stem-ambassador-activity', legacy: false },
+    { slug: 'participate-in-a-computing-related-competition', legacy: false },
+    { slug: 'any-other-activity-which-aligns-with-recommendations-from-the-handbook', legacy: false },
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save

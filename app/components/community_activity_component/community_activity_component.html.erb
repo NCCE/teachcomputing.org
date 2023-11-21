@@ -41,8 +41,23 @@
         <% component.with_body do %>
           <h3 class="govuk-heading-s">Participate fully in an NCCE curriculum enrichment opportunity</h3>
           <p class="govuk-body-s">
-            Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways
+            <%= @activity.public_copy_evidence_brief.presence || @activity.public_copy_description || t('.evidence') %>
           </p>
+          <% if @activity.public_copy_evidence_bullets.present? %>
+            <div class="community-activity-component--what-evidence">
+              <p class="govuk-body-s">What evidence could I give?</p>
+              <div class="tooltip">
+                <%= image_pack_tag('media/images/icons/info.svg') %>
+                <div class="tooltiptext">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <% @activity.public_copy_evidence_bullets.each do |bullet| %>
+                      <li class="govuk-body-s"><%= bullet %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %>
           <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.self_verification_info %></textarea>
           <div class="draft-actions">
             <button class="govuk-button button button--inverted" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
