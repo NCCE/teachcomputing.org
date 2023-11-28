@@ -41,5 +41,9 @@ module Programmes
     def enrichment_enabled?
       true
     end
+
+    def send_pending_mail?
+      true
+    end
   end
 end

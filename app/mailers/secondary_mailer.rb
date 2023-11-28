@@ -24,14 +24,13 @@ class SecondaryMailer < ApplicationMailer
     @user = params[:user]
     @subject = 'Kick-start your development and achieve a national qualification'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
 
   def completed_cpd_not_activities
     @user = params[:user]
-    @subject = ''
+    @subject = 'You\'re so close!'
 
-    mail(to: @user.email, subject: @subject)
+    mail(to: @user, subject: @subject)
   end
-  
 end
