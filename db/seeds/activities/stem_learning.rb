@@ -2211,3 +2211,15 @@ Activity.find_or_initialize_by(stem_course_template_no: '198e5e11-ef7e-ee11-8179
 
   activity.programmes = [secondary_certificate, a_level]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '5ea78227-4889-ee11-be36-002248c6f783').tap do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science - residential'
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 120
+  activity.stem_activity_code = 'CP284'
+
+  activity.programmes = [secondary_certificate]
+end.save
