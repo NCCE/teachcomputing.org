@@ -160,7 +160,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Activities througho
     e.i_belong = true
     e.title_url = 'https://education.theiet.org/first-lego-league-programmes/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/first_lego_leauge.png'
-    e.body = 'This is a global STEM programme where young people work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions.<br><br>Part of <a href="/i-belong">I Belong: Encouraging girls into computer science</a>'
+    e.body = 'This is a global STEM programme where young people work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions.'
     e.order = 3
   end.save
 
@@ -169,7 +169,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Activities througho
     e.i_belong = true
     e.title_url = 'https://www.bebras.uk/'
     e.image_url = 'https://static.teachcomputing.org/enrichment/bebras.png'
-    e.body = 'A computational thinking challenge that aims to enthuse students in all things computer science and promote computational thinking.<br><br>Part of <a href="/i-belong">I Belong: Encouraging girls into computer science</a>'
+    e.body = 'A computational thinking challenge that aims to enthuse students in all things computer science and promote computational thinking.'
     e.order = 4
   end.save
 end.save

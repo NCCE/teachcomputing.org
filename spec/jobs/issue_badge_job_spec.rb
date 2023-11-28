@@ -5,7 +5,7 @@ RSpec.describe IssueBadgeJob, type: :job do
   let!(:programme) { create(:cs_accelerator) }
   let(:badge) { create(:badge, :active, programme_id: programme.id, credly_badge_template_id: '00cd7d3b-baca-442b-bce5-f20666ed591b') }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
-  let!(:achievement) { create(:achievement, user:) }
+  let!(:achievement) { create(:completed_achievement, user:) }
   let!(:programme_activity) { create(:programme_activity, activity: achievement.activity, programme:) }
 
   describe '#perform' do
