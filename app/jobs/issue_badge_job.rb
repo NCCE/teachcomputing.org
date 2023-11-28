@@ -7,12 +7,11 @@ class IssueBadgeJob < ApplicationJob
     achievement.activity.programmes.each do |programme|
       badge = programme.badges.active.first
 
-      next unless badge &&
-        programme.badgeable? &&
-        programme.user_enrolled?(user) &&
-        !user_has_badge?(user, programme) &&
-        !stem_achievement?(user, programme)
-
+      next unless badge
+      next unless programme.badgeable?
+      next if user_has_badge?(user, programme)
+      next unless stem_achievement?(user, programme)
+      next unless user.user_programme_enrolments.any? { _1.programme_id == programme.id }
 
       Credly::Badge.issue(user.id, badge.credly_badge_template_id)
       NewBadgeMailer.new_badge_email(user, programme).deliver_now
