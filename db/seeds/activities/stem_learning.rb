@@ -1579,7 +1579,18 @@ Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000
   activity.remote_delivered_cpd = false
 end
 
-Activity.find_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9')&.destroy
+Activity.find_or_initialize_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9').tap do |activity|
+  activity.title = 'Supporting student attainment in GCSE computer science - residential - old'
+  activity.credit = 40
+  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential-old'
+  activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
+  activity.category = 'face-to-face'
+  activity.provider = 'stem-learning'
+  activity.stem_activity_code = 'CP284-OLD'
+  activity.remote_delivered_cpd = false
+
+  activity.programmes = []
+end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9').tap do |activity|
   activity.title = 'Online safety through primary computing'
