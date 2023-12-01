@@ -1579,18 +1579,7 @@ Activity.find_or_create_by(stem_course_template_no: '01d0037f-b859-ec11-8f8f-000
   activity.remote_delivered_cpd = false
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9') do |activity|
-  activity.title = 'Supporting student attainment in GCSE computer science - residential'
-  activity.credit = 40
-  activity.slug = 'supporting-student-attainment-in-gcse-computer-science-residential'
-  activity.stem_course_template_no = '8cdf9608-d65c-ec11-8f8f-0022481b0af9'
-  activity.category = 'face-to-face'
-  activity.provider = 'stem-learning'
-  activity.stem_activity_code = 'CP284'
-  activity.remote_delivered_cpd = false
-end
-
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+Activity.find_by(stem_course_template_no: '8cdf9608-d65c-ec11-8f8f-0022481b0af9')&.destroy
 
 Activity.find_or_initialize_by(stem_course_template_no: '6bad2c17-d85c-ec11-8f8f-0022481b0af9').tap do |activity|
   activity.title = 'Online safety through primary computing'
@@ -2220,6 +2209,18 @@ Activity.find_or_initialize_by(stem_course_template_no: '5ea78227-4889-ee11-be36
   activity.provider = 'stem-learning'
   activity.credit = 120
   activity.stem_activity_code = 'CP284'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'b67cb11d-d28d-ee11-be36-002248c6f9ce').tap do |activity|
+  activity.title = 'Computing Quality Framework – driving change within your secondary school - short course'
+  activity.slug = 'computing-quality-framework-driving-change-within-your-secondary-school-short-course'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = false
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CP406'
 
   activity.programmes = [secondary_certificate]
 end.save
