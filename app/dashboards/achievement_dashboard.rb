@@ -10,7 +10,7 @@ class AchievementDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     activity: Field::BelongsTo,
     user: Field::BelongsTo,
-    programme: Field::BelongsTo,
+    programmes: Field::HasMany,
     supporting_evidence_attachment: Field::HasOne,
     supporting_evidence_blob: Field::HasOne,
     current_state: Field::String.with_options(searchable: false),
@@ -28,7 +28,7 @@ class AchievementDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     user
     activity
-    programme
+    programmes
     current_state
   ].freeze
 
@@ -37,7 +37,7 @@ class AchievementDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     user
     activity
-    programme
+    programmes
     supporting_evidence_attachment
     supporting_evidence_blob
     id

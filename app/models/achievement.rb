@@ -8,6 +8,8 @@ class Achievement < ApplicationRecord
   belongs_to :activity
   belongs_to :user
 
+  has_many :programmes, through: :activity
+
   has_one_attached :supporting_evidence
 
   validates :supporting_evidence, blob: { content_type: :image }
