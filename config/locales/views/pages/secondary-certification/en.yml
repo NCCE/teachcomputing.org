@@ -16,27 +16,32 @@ en:
 
       nationally-recognised:
         title: "Our nationally recognised certificates"
+      subject-knowledge:
+        title: "Subject knowledge"
         cards:
           ks-subject-knowledge:
-            title: "Key stage 3 and 4 subject knowledge"
+            title: "Key stage 3 and GCSE Computer Science subject knowledge"
             text:
-              html: "You are planning to teach computer science or currently do so and are looking to develop a broad understanding of the Key Stage 3 computing curriculum and/or GCSE Computer Science.<br/><br/>We recommend beginning your professional development journey with us here to build a solid foundation to underpin your teaching."
+              html: "Are you teaching or planning to teach key stage 3 and/or GCSE Computer Science?<br/><br/>If so, we recommend beginning your professional development journey with us here. Strong subject knowledge is a foundation for great teaching, helping to build student understanding and tackle misconceptions."
             link:
               title: "Explore this certificate"
               url: "/secondary-certificate"
               event-label: "Secondary Certificate"
           teach-secondary-computing:
-            title: "Teach secondary computing"
+            title: "A level Computer Science subject knowledge"
             text:
-              html: "You want to enhance your specialist practical skills and leadership, and develop your computing department.<br/><br/>To maximise your professional development, we recommend  progressing through this certificate at the same time as the Secondary subject knowledge certificate, which you will need to complete first."
+              html: "Are you teaching or planning to teach A level Computer Science and looking to demonstrate your subject knowledge at this advanced standard?<br/><br/>Our certificate will help you benchmark your computer science knowledge and identify gaps in understanding to address through CPD."
             link:
               title: "Explore this certificate"
               url: "/cs-accelerator"
               event-label: "Senior leader guide"
+      pedagogy-and-leadership:
+        title: "Pedagogy and leadership"
+        cards:
           a-level-subject-knowledge:
-            title: "A level subject knowledge"
+            title: "Teach secondary computing"
             text:
-              html: "You teach A level Computer Science or are planning to, and would like to demonstrate your subject knowledge.<br/><br/>This certificate will validate your competence teaching at this level and the value you bring to your department, and identify recommended development."
+              html: "Do you want to improve your pedagogy and teaching effectiveness across secondary computing?<br/><br/>We recommend progressing through this certificate alongside the KS3 and GCSE Computer Science subject knowledge certificate to put your strengthening subject knowledge into classroom practice that raises student attainment. "
             link:
               title: "Explore this certificate"
               url: "/cs-accelerator"
