@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_17_110316) do
+ActiveRecord::Schema.define(version: 2023_12_07_174530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -376,6 +376,16 @@ ActiveRecord::Schema.define(version: 2023_11_17_110316) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "resource_year"], name: "resource_year_user", unique: true
     t.index ["user_id"], name: "index_resource_users_on_user_id"
+  end
+
+  create_table "searchable_pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.string "title", null: false
+    t.text "excerpt", null: false
+    t.datetime "published_at"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

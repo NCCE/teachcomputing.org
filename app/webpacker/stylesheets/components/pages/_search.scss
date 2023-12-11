@@ -1,0 +1,27 @@
+.search__results {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.search__sort-by {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    margin: 0;
+  }
+
+  select {
+    width: 180px;
+  }
+}
+
+.search__paging {
+  text-decoration-color: $hyper-link-blue;
+
+  p {
+    color: $hyper-link-blue;
+  }
+}

@@ -43,10 +43,20 @@
   padding-left: 40px;
 }
 
-.icon-ticked-circle {
-  @include icon('../images/icons/complete-icon.svg');
-  background-size: 32px;
-  padding-left: 40px;
+.icon-arrow-left {
+  @include icon('../images/icons/arrow_left.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
+}
+
+.icon-arrow-right {
+  @include icon('../images/icons/arrow_right.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
 }
 
 .icon-dotted-line {
