@@ -3,8 +3,8 @@ module NavigationHelper
     [
       { text: 'Primary school',
         children: [
-          { text: 'Teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
-          { text: 'Certificate', link: primary_path, label: 'Primary certificate' },
+          { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
+          { text: 'Primary teacher certificate', link: primary_path, label: 'Primary teacher certificate' },
           { text: 'Early career and trainee teachers', link: '/primary-early-careers', label: 'Primary ECT' },
           { text: 'Senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' },
           { text: 'Enrichment', link: primary_enrichment_path, label: 'Enrichment' }

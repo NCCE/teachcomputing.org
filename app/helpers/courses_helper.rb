@@ -143,7 +143,7 @@ module CoursesHelper
     if programme.primary_certificate?
       'This course is part of Teach primary computing'
     elsif programme.cs_accelerator?
-      'This course is part of the Subject knowledge certificate'
+      'This course is part of the KS3 and GCSE Computer Science subject knowledge certificate'
     elsif programme.secondary_certificate?
       'This course is part of Teach secondary computing'
     end

@@ -61,7 +61,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#manual_enrolled_welcome' do
     it 'renders the headers' do
-      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to our subject knowledge certificate')
+      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to our KS3 and GCSE Computer Science subject knowledge certificate')
       expect(manual_enrolled_welcome_mail.to).to eq([user.email])
       expect(manual_enrolled_welcome_mail.from).to eq(['noreply@teachcomputing.org'])
     end
