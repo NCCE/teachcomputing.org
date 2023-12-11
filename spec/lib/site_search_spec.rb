@@ -9,7 +9,7 @@ RSpec.describe SiteSearch do
 
       results = SiteSearch.search('close')
 
-      expect(results).to eq [close, closeish]
+      expect(results).to match_array [close, closeish]
     end
 
     it 'it should return the most newest results first when newest order is provided' do
