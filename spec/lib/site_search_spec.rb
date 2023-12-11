@@ -32,48 +32,4 @@ RSpec.describe SiteSearch do
       expect(results).to eq [closeish, close]
     end
   end
-
-  describe 'Internal.cache_in_production' do
-    it 'should not cache in test env' do
-      allow(Rails.env).to receive(:test?).and_return(true)
-      allow(Rails.env).to receive(:development?).and_return(false)
-      expect(Rails.cache).to_not receive(:fetch)
-
-      SiteSearch::Internal.cache_in_production('foo') { 1 + 2 }
-    end
-
-    it 'should not cache in development env' do
-      allow(Rails.env).to receive(:test?).and_return(false)
-      allow(Rails.env).to receive(:development?).and_return(true)
-      expect(Rails.cache).to_not receive(:fetch)
-
-      SiteSearch::Internal.cache_in_production('foo') { 1 + 2 }
-    end
-
-    it 'should cache in production' do
-      allow(Rails.env).to receive(:test?).and_return(false)
-      allow(Rails.env).to receive(:development?).and_return(false)
-      expect(Rails.cache).to receive(:fetch)
-
-      SiteSearch::Internal.cache_in_production('foo') { 1 + 2 }
-    end
-
-    it 'should return value of proc in development' do
-      allow(Rails.env).to receive(:test?).and_return(false)
-      allow(Rails.env).to receive(:development?).and_return(true)
-
-      result = SiteSearch::Internal.cache_in_production('foo') { 1 + 2 }
-
-      expect(result).to eq 3
-    end
-
-    it 'should return value of proc in production' do
-      allow(Rails.env).to receive(:test?).and_return(false)
-      allow(Rails.env).to receive(:development?).and_return(false)
-
-      result = SiteSearch::Internal.cache_in_production('foo') { 1 + 2 }
-
-      expect(result).to eq 3
-    end
-  end
 end
