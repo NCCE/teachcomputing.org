@@ -18,7 +18,7 @@ class SearchablePageIndexingJob < ApplicationJob
     end
 
     SearchablePages::GhostPost.delete_all
-    SearchablePages::GhostPost.insert_all(ghost_post_documents)
+    SearchablePages::GhostPost.insert_all(ghost_post_documents) unless ghost_post_documents.empty?
 
     ghost_pages = ghost.get_pages
 
@@ -35,6 +35,6 @@ class SearchablePageIndexingJob < ApplicationJob
     end
 
     SearchablePages::GhostPage.delete_all
-    SearchablePages::GhostPage.insert_all(ghost_page_documents)
+    SearchablePages::GhostPage.insert_all(ghost_page_documents) unless ghost_page_documents.empty?
   end
 end

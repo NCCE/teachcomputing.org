@@ -22,7 +22,7 @@ module SiteSearch
 
   module Internal
     def self.cache_in_production(*args, **options, &block)
-      if Rails.env.development?
+      if Rails.env.development? || Rails.env.test?
         block.call
       else
         Rails.cache.fetch(*args, **options, &block)

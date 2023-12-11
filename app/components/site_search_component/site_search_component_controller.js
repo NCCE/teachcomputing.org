@@ -4,7 +4,13 @@ export default class extends ApplicationController {
   static targets = ['input']
 
   connect() {
+    this.inputTarget.addEventListener('keydown', this.onKeyDown.bind(this))
+  }
 
+  onKeyDown(event) {
+    if (!event.shiftKey && event.key == 'Enter') {
+      this.click()
+    }
   }
 
   click() {
