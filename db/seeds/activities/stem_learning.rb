@@ -2262,7 +2262,7 @@ end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'f276e2d4-a678-ee11-8179-002248c6f524').tap do |activity|
   activity.title = 'CPD Implementation: Networks, Safety & Security'
-  activity.slug = 'cpd-implementation-networks,-safety-and-security'
+  activity.slug = 'cpd-implementation-networks-safety-and-security'
   activity.category = 'face-to-face'
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
@@ -2346,7 +2346,7 @@ end.save
 
 Activity.find_or_initialize_by(stem_course_template_no: 'dd02839f-b278-ee11-8179-002248c6f9ce').tap do |activity|
   activity.title = 'CPD Implementation: Collaboration, Cross Curriculum and Enrichment'
-  activity.slug = 'cpd-implementation-collaboration,-cross-curriculum-and-enrichment'
+  activity.slug = 'cpd-implementation-collaboration-cross-curriculum-and-enrichment'
   activity.category = 'face-to-face'
   activity.remote_delivered_cpd = true
   activity.provider = 'stem-learning'
