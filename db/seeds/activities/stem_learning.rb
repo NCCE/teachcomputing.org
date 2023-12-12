@@ -2235,3 +2235,183 @@ Activity.find_or_initialize_by(stem_course_template_no: 'b67cb11d-d28d-ee11-be36
 
   activity.programmes = [secondary_certificate]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'a51219a3-b078-ee11-8179-002248c6f783').tap do |activity|
+  activity.title = 'CPD Implementation: Secondary Algorithms and Algorithmic thinking'
+  activity.slug = 'cpd-implementation-secondary-algorithms-and-algorithmic-thinking'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ100D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '25d083db-bd78-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Secondary Computing Systems and Data & Information'
+  activity.slug = 'cpd-implementation-secondary-computing-systems-and-data-and-information'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ101D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'f276e2d4-a678-ee11-8179-002248c6f524').tap do |activity|
+  activity.title = 'CPD Implementation: Networks, Safety & Security'
+  activity.slug = 'cpd-implementation-networks,-safety-and-security'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ102D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'd8a77423-b578-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Primary Programming'
+  activity.slug = 'cpd-implementation-primary-programming'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ103D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'ab99ad3c-b478-ee11-8179-002248c6f783').tap do |activity|
+  activity.title = 'CPD Implementation: Creating Media and Design & Development'
+  activity.slug = 'cpd-implementation-creating-media-and-design-and-development'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ104D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '608de9cd-b778-ee11-8179-002248c6f783').tap do |activity|
+  activity.title = 'CPD Implementation: Secondary Curriculum Design'
+  activity.slug = 'cpd-implementation-secondary-curriculum-design'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ105D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'd818a79d-b278-ee11-8179-002248c6f524').tap do |activity|
+  activity.title = 'CPD Implementation: Secondary Programming'
+  activity.slug = 'cpd-implementation-secondary-programming'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ106D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '74f3021d-c478-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Primary Algorithms and Algorithmic thinking'
+  activity.slug = 'cpd-implementation-primary-algorithms-and-algorithmic-thinking'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ107D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '8b1cece9-c278-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Assessment & Qualifications'
+  activity.slug = 'cpd-implementation-assessment-and-qualifications'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ108D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'dd02839f-b278-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Collaboration, Cross Curriculum and Enrichment'
+  activity.slug = 'cpd-implementation-collaboration,-cross-curriculum-and-enrichment'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ109D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '5d6d42ef-be78-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: EDI and SEND'
+  activity.slug = 'cpd-implementation-edi-and-send'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ110D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '35b356d6-b578-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Primary Curriculum Design'
+  activity.slug = 'cpd-implementation-primary-curriculum-design'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ111D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '5e3c08b0-c178-ee11-8179-002248c6f9ce').tap do |activity|
+  activity.title = 'CPD Implementation: Secondary Leadership'
+  activity.slug = 'cpd-implementation-secondary-leadership'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ112D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: '91feb65a-b978-ee11-8179-002248c6f783').tap do |activity|
+  activity.title = 'CPD Implementation: Primary Leadership'
+  activity.slug = 'cpd-implementation-primary-leadership'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ113D'
+
+  activity.programmes = [secondary_certificate]
+end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: 'c01511de-8d79-ee11-8179-002248c6f524').tap do |activity|
+  activity.title = 'CPD Implementation: Primary Computing Systems and Data & Information'
+  activity.slug = 'cpd-implementation-primary-computing-systems-and-data-and-information'
+  activity.category = 'face-to-face'
+  activity.remote_delivered_cpd = true
+  activity.provider = 'stem-learning'
+  activity.credit = 15
+  activity.stem_activity_code = 'CZ114D'
+
+  activity.programmes = [secondary_certificate]
+end.save
