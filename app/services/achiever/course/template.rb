@@ -28,7 +28,7 @@ class Achiever::Course::Template
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
                     HideFromweb: '0' }.freeze
-  PROGRAMME_NAMES = %w[ncce PDLP].freeze
+  PROGRAMME_NAMES = ['ncce', 'PDLP', 'Computing Clusters'].freeze
 
   def self.from_resource(resource, activity)
     new.tap do |t|

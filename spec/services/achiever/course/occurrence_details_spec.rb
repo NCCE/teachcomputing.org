@@ -32,12 +32,6 @@ RSpec.describe Achiever::Course::OccurrenceDetails do
       end
     end
 
-    describe 'QUERY_STRINGS' do
-      it 'is not nil' do
-        expect(Achiever::Course::OccurrenceDetails::PROGRAMME_NAME).not_to eq nil
-      end
-    end
-
     describe 'class methods' do
       describe '#find' do
         before do

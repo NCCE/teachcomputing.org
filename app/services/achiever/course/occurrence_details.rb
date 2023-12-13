@@ -14,13 +14,11 @@ class Achiever::Course::OccurrenceDetails
                 :title
 
   RESOURCE_PATH = 'Get?cmd=CourseDetails'.freeze
-  PROGRAMME_NAME = 'ncce'.freeze
 
   def self.find(id)
     query_strings = {
       Page: '1',
       RecordCount: '1000',
-      ProgrammeName: PROGRAMME_NAME,
       ID: id
     }
     occurrence_details = Achiever::Request.resource(RESOURCE_PATH, query_strings)
