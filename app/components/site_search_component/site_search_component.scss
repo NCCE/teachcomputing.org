@@ -24,13 +24,28 @@
     height: 40px;
 
     border: none;
+    cursor: pointer;
 
-    background-image: url('../images/icons/search.svg');
-    background-color: transparent;
-    background-position: center center;
-    background-repeat: no-repeat;
     background-color: $lime-green;
 
-    font-size: 0;
+    span {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: $black;
+      mask: url('../images/icons/search.svg') no-repeat 50% 50%;
+
+      font-size: 0;
+    }
+
+    &:hover {
+      background-color: $black;
+
+      span {
+        background-color: $white;
+      }
+    }
   }
 }

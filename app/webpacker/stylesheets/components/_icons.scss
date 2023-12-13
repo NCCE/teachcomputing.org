@@ -43,6 +43,12 @@
   padding-left: 40px;
 }
 
+.icon-ticked-circle {
+  @include icon('../images/icons/complete-icon.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
 .icon-arrow-left {
   @include icon('../images/icons/arrow_left.svg');
   padding-left: 30px;

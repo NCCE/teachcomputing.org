@@ -53,8 +53,8 @@ module GhostStubs
     stub_request(:get, "#{ENV['GHOST_API_ENDPOINT']}/content/posts?fields=title,slug,feature_image,custom_excerpt,excerpt,published_at&key=key&limit=all&page=1")
       .to_return(body: raw_post_json)
 
-    raw_post_json = File.new('spec/support/ghost/page.json')
+    raw_page_json = File.new('spec/support/ghost/page.json')
     stub_request(:get, "#{ENV['GHOST_API_ENDPOINT']}/content/pages?fields=title,slug,feature_image,custom_excerpt,excerpt,published_at&key=key&limit=all&page=1")
-      .to_return(body: raw_post_json)
+      .to_return(body: raw_page_json)
   end
 end
