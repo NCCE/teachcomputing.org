@@ -41,3 +41,6 @@ Programme.all.each do |p|
   end
   puts "\n"
 end
+
+SearchablePageIndexingJob.perform_now
+puts 'Reindexed searchable pages'
