@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticationHelper
   include HttpHeaders
+  include Pagy::Backend
 
   before_action :authenticate
 

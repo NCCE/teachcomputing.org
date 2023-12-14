@@ -213,6 +213,8 @@ Rails.application.routes.draw do
   get '/primary-enrichment', to: 'enrichment#show', defaults: { slug: 'primary-certificate' }
   get '/secondary-enrichment', to: 'enrichment#show', defaults: { slug: 'secondary-certificate' }
 
+  resource :search, only: :show
+
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')
   get '/home-teaching/:page_slug' => redirect('/home-teaching')
