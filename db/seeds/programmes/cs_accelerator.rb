@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 cs_accelerator = Programmes::CSAccelerator.find_or_create_by(slug: 'cs-accelerator') do |programme|
   programme.title = 'KS3 and GCSE Computer Science subject knowledge certificate'
+=======
+cs_accelerator = Programmes::CSAccelerator.find_or_initialize_by(slug: 'cs-accelerator').tap do |programme|
+  programme.title = 'Key stage 3 and GCSE Computer Science'
+>>>>>>> 17713b65 (updated cs accelerator course names)
   programme.slug = 'cs-accelerator'
-  programme.description = 'If you’re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
+  programme.description = 'If you\'re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
   programme.enrollable = true
-end
+end.save
 
 puts "Created Programme: #{cs_accelerator.title} (#{cs_accelerator})"
 

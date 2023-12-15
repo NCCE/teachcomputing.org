@@ -8,7 +8,7 @@ class SecondaryMailer < ApplicationMailer
 
   def completed
     @user = params[:user]
-    @subject = 'Congratulations you have completed the National Centre for Computing Education Certificate in Secondary Computing Teaching'
+    @subject = 'Congratulations you have completed the Teach secondary computing certificate from the National Centre for Computing Education'
 
     mail(to: @user, subject: @subject)
   end

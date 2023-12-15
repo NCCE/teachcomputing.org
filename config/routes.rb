@@ -69,7 +69,7 @@ Rails.application.routes.draw do
       put '/pathway', action: :update, controller: 'secondary_certificate/user_programme_pathway', as: :update_user_pathway
     end
 
-    resource 'cs_accelerator', controller: 'cs_accelerator', path: 'cs-accelerator', only: %i[show],
+    resource 'cs_accelerator', controller: 'cs_accelerator', path: 'subject-knowledge', only: %i[show],
                                as: :cs_accelerator_certificate do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
@@ -162,7 +162,7 @@ Rails.application.routes.draw do
   get '/careers-week', to: redirect('/careers')
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
-  get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
+  get '/subject-knowledge', to: 'pages#static_programme_page', as: :cs_accelerator,
                          defaults: { page_slug: 'cs-accelerator' }
   get '/a-level-certificate', to: 'pages#static_programme_page', as: :about_a_level,
                          defaults: { page_slug: 'a-level-certificate' }

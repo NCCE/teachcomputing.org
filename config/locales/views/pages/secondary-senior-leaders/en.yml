@@ -46,7 +46,7 @@ en:
             text:
               html: "Help your staff reach their career goals and meet the rise in student demand, with %{our_accelerator_link}. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.<br/><br/>Our Teach secondary computing certificate builds on this, as well as advancing pedagogy. View KS3 and GCSE subject knowledge certificate"
               accelerator-link:
-                title: "our KS3 and GCSE Computer Science subject knowledge certificate"
+                title: "our Key stage 3 and GCSE Computer Science Subject knowledge certificate"
                 url: "/cs-accelerator"
                 event-label: "CSA certificate"
               certificate-link:
@@ -54,7 +54,7 @@ en:
                 url: "/secondary-certificate"
                 event-label: "Secondary certificate"
             link:
-              title: "View Subject knowledge certificate"
+              title: "View Key stage 3 and GCSE Computer Science Subject knowledge certificate"
               url: "/cs-accelerator"
               event-label: "Senior leader guide"
           resources:
