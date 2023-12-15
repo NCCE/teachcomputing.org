@@ -62,7 +62,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: 'Spring term').becom
   g.enrichment_entries.find_or_initialize_by(title: 'Micro:bit the Next Gen').tap do |e|
     e.title = 'Micro:bit the Next Gen'
     e.title_url = 'https://www.bbc.co.uk/teach/microbit?ref=blog.teachcomputing.org'
-    e.image_url = 'https://static.teachcomputing.org/enrichment/do_your_bit.png'
+    e.image_url = 'https://static.teachcomputing.org/enrichment/micro_bit.png'
     e.body = "As part of the BBC micro:bit - the next gen campaign, your primary school pupils can get involved in a large-scale playground survey during the summer term next year.<br><br><a href=\"#{micro_bit_webinar_url}\">Join the webinar to find out more</a>"
     e.order = 3
   end.save
