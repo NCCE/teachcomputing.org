@@ -25,7 +25,6 @@ en:
               html: "Are you teaching or planning to teach key stage 3 and/or GCSE Computer Science?<br/><br/>If so, we recommend beginning your professional development journey with us here. Strong subject knowledge is a foundation for great teaching, helping to build student understanding and tackle misconceptions."
             link:
               title: "Explore this certificate"
-              url: "/secondary-certificate"
               event-label: "Secondary Certificate"
           teach-secondary-computing:
             title: "A level Computer Science subject knowledge"
@@ -33,7 +32,6 @@ en:
               html: "Are you teaching or planning to teach A level Computer Science and looking to demonstrate your subject knowledge at this advanced standard?<br/><br/>Our certificate will help you benchmark your computer science knowledge and identify gaps in understanding to address through CPD."
             link:
               title: "Explore this certificate"
-              url: "/cs-accelerator"
               event-label: "Senior leader guide"
       pedagogy-and-leadership:
         title: "Pedagogy and leadership"
@@ -44,5 +42,4 @@ en:
               html: "Do you want to improve your pedagogy and teaching effectiveness across secondary computing?<br/><br/>We recommend progressing through this certificate alongside the KS3 and GCSE Computer Science subject knowledge certificate to put your strengthening subject knowledge into classroom practice that raises student attainment. "
             link:
               title: "Explore this certificate"
-              url: "/cs-accelerator"
               event-label: "Curriculum resources"
