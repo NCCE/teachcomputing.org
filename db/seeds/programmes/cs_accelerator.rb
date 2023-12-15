@@ -1,5 +1,5 @@
 cs_accelerator = Programmes::CSAccelerator.find_or_initialize_by(slug: 'cs-accelerator').tap do |programme|
-  programme.title = 'Key stage 3 and GCSE Computer Science'
+  programme.title = 'Key stage 3 and GCSE Computer Science certificate'
   programme.slug = 'cs-accelerator'
   programme.description = 'If you\'re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
   programme.enrollable = true

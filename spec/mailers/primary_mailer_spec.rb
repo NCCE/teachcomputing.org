@@ -6,7 +6,7 @@ RSpec.describe PrimaryMailer, type: :mailer do
   let(:mail) { PrimaryMailer.with(user: user, programme: programme).completed }
   let(:enrolled_mail) { PrimaryMailer.with(user: user, programme: programme).enrolled }
   let(:inactive_prompt_mail) { PrimaryMailer.with(user: user, programme: programme).inactive_prompt }
-  let(:subject) { 'Congratulations you have completed the National Centre for Computing Education Certificate in Primary Computing Teaching' }
+  let(:subject) { 'Congratulations you have completed the Teach primary computing certificate from the National Centre for Computing Education' }
   let(:enrolled_subject) { 'Welcome to Teach primary computing' }
   let(:inactive_prompt_subject) { 'Kick-start your development and achieve a national qualification' }
 
