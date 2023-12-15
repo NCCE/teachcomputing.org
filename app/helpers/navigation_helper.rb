@@ -35,7 +35,7 @@ module NavigationHelper
           { text: 'Isaac Computer Science', link: about_isaac_computer_science_path, label: 'Isaac Computer Science' },
           { text: 'Secondary question banks', link: secondary_question_banks_path, label: 'Teaching resources' },
           { text: 'Artificial Intelligence', link: cms_page_path(page_slug: 'artificial-intelligence'), label: 'Artificial Intelligence' },
-          { text: 'Pedagogy', link: cms_page_path(page_slug: '/pedagogy'), label: 'Pedagogy' },
+          { text: 'Pedagogy', link: cms_page_path(page_slug: 'pedagogy'), label: 'Pedagogy' },
           { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' },
           { text: 'Physical computing kits', link: cms_page_path('physical-computing-kit'), label: 'Physical computing kits' }
         ] },
