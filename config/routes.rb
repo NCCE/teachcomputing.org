@@ -202,6 +202,7 @@ Rails.application.routes.draw do
   get '/primary-senior-leaders', to: 'pages#page', as: :primary_senior_leaders,
                                  defaults: { page_slug: 'primary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
+  get '/secondary-certification', to: 'pages#secondary-certification', as: :secondary_certification
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
