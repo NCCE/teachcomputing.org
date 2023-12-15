@@ -155,6 +155,7 @@
 .card .status-block {
   @include status_block();
   display: inline-block;
+  flex-shrink: 0;
   margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 15px;
