@@ -6,7 +6,6 @@
   border: solid 2px $black;
 
   input {
-    flex-grow: 1;
     font-family: Roboto;
     font-size: 19px;
     font-style: normal;
@@ -17,6 +16,9 @@
 
     border: none;
     outline: none;
+
+    flex-grow: 1;
+    min-width: 0;
   }
 
   button {

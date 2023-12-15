@@ -176,7 +176,6 @@ Rails.application.routes.draw do
   get '/secondary-question-banks', to: 'pages#page', as: :secondary_question_banks, defaults: { page_slug: 'secondary-question-banks' }
   get '/primary-early-careers', to: 'pages#page', as: :primary_early_careers, defaults: { page_slug: 'primary-early-careers' }
   get '/powerupthedigitalgeneration', to: redirect('/supporting-partners')
-  get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/pedagogy', to: 'pages#page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
   get '/a-level-computer-science', to: redirect('/isaac-computer-science')
@@ -206,9 +205,6 @@ Rails.application.routes.draw do
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
-  get '/welcome', to: 'welcome#show', as: :welcome
-
-  resources :enrichment, only: :show, param: :slug
 
   get '/primary-enrichment', to: 'enrichment#show', defaults: { slug: 'primary-certificate' }
   get '/secondary-enrichment', to: 'enrichment#show', defaults: { slug: 'secondary-certificate' }
