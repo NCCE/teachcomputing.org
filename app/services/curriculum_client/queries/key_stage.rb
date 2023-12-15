@@ -18,6 +18,7 @@ module CurriculumClient
             slug
             order
             displayIBelongFlag
+            description
           }
         }
         curriculumMaps {

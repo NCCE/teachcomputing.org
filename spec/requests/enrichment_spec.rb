@@ -9,7 +9,7 @@ RSpec.describe EnrichmentController do
 
       before do
         programme
-        get enrichment_path(slug: programme.slug)
+        get primary_enrichment_path
       end
 
       it 'shows the page' do
@@ -22,7 +22,7 @@ RSpec.describe EnrichmentController do
 
       before do
         programme
-        get enrichment_path(slug: programme.slug)
+        get secondary_enrichment_path
       end
 
       it 'shows the page' do

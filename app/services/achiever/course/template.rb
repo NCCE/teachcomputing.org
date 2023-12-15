@@ -73,7 +73,7 @@ class Achiever::Course::Template
 
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
-    end
+    end.uniq { _1['Template.COURSETEMPLATENO'].downcase }
 
     templates.filter_map do |template|
       activity = activities[template['Template.COURSETEMPLATENO'].downcase]
