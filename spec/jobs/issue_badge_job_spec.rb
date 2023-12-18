@@ -16,7 +16,7 @@ RSpec.describe IssueBadgeJob, type: :job do
     end
 
     it 'should skip as user is not enrolled' do
-      described_class.perform_now(achievement)
+      described_class.perform_now(achievement:)
       expect(Credly::Badge).not_to have_received(:issue)
     end
 
@@ -26,8 +26,28 @@ RSpec.describe IssueBadgeJob, type: :job do
       end
 
       it 'calls Credly::Badge.issue' do
-        described_class.perform_now(achievement)
+        described_class.perform_now(achievement:)
         expect(Credly::Badge).to have_received(:issue)
+      end
+    end
+
+    context 'when a assessment_attempt is passed' do
+      it 'should skip as user is not enrolled' do
+        a_level = create(:a_level)
+        assessment = create(:assessment, programme: a_level)
+        assessment_attempt = create(:assessment_attempt, assessment:, user:)
+
+        described_class.perform_now(assessment_attempt:)
+        expect(Credly::Badge).not_to have_received(:issue)
+      end
+
+      context 'when the user is enrolled' do
+        it 'calls Credly::Badge.issue' do
+          user_programme_enrolment
+
+          described_class.perform_now(achievement:)
+          expect(Credly::Badge).to have_received(:issue)
+        end
       end
     end
   end
