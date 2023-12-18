@@ -50,20 +50,20 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       end
 
       it 'redirects to the programme page' do
-        expect(response).to redirect_to '/certificate/cs-accelerator'
+        expect(response).to redirect_to '/certificate/subject-knowledge'
       end
     end
 
     it 'redirects to the first unanswered question after answering the final question' do
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_4, diagnostic: { question_4: '20' })
-      expect(response).to redirect_to '/certificate/cs-accelerator/questionnaire/question_1'
+      expect(response).to redirect_to '/certificate/subject-knowledge/questionnaire/question_1'
     end
 
     it 'redirects to the next sequential question after editing an answer' do
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_1, diagnostic: { question_1: '3' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_2, diagnostic: { question_2: '2' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_1, diagnostic: { question_1: '4' })
-      expect(response).to redirect_to '/certificate/cs-accelerator/questionnaire/question_2'
+      expect(response).to redirect_to '/certificate/subject-knowledge/questionnaire/question_2'
     end
 
     it 'redirects after the final question' do
@@ -73,7 +73,7 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_4, diagnostic: { question_4: '4' })
       put update_diagnostic_cs_accelerator_certificate_path(id: :question_5, diagnostic: { question_5: '4' })
       user_programme_enrolment.reload
-      expect(response).to redirect_to '/certificate/cs-accelerator'
+      expect(response).to redirect_to '/certificate/subject-knowledge'
     end
 
     # Further coverage provided by primary_certificate update spec

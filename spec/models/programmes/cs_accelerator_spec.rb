@@ -231,14 +231,14 @@ RSpec.describe Programmes::CSAccelerator do
 
   describe '#path' do
     it 'returns the path for the programme' do
-      expect(programme.path).to eq('/certificate/cs-accelerator')
+      expect(programme.path).to eq('/certificate/subject-knowledge')
     end
   end
 
   describe '#enrol_path' do
     it 'returns the path for the enrol' do
       expect(programme.enrol_path(user_programme_enrolment: { user_id: 'user_id',
-                                                              programme_id: 'programme_id' })).to eq('/certificate/cs-accelerator/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
+                                                              programme_id: 'programme_id' })).to eq('/certificate/subject-knowledge/enrol?user_programme_enrolment%5Bprogramme_id%5D=programme_id&user_programme_enrolment%5Buser_id%5D=user_id')
     end
   end
 
@@ -423,7 +423,7 @@ RSpec.describe Programmes::CSAccelerator do
 
   describe '#short_name' do
     it 'should return its short name' do
-      expect(programme.short_name).to eq 'CS Accelerator'
+      expect(programme.short_name).to eq 'Subject knowledge'
     end
   end
 end

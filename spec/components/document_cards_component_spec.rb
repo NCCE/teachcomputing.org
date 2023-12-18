@@ -73,7 +73,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
     it 'renders the body text' do
       expect(page).to have_css(
         '.document-card__text',
-        text: 'Reviews feedback from the first graduates of the Computer Science Accelerator'
+        text: 'Reviews feedback from the first graduates of the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate), covering programme quality, value, impact, and overall experience.'
       )
     end
   end

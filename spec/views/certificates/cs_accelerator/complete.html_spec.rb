@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('certificates/cs_accelerator/complete') do
   let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let!(:online_activity) { create(:activity, :future_learn, stem_activity_code: "CP228") }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:programme, slug: 'subject-knowledge') }
   let!(:secondary_certificate) { create(:secondary_certificate) }
   let(:pathway) { create(:pathway, pdf_link: 'http://example.com') }
 
@@ -35,7 +35,7 @@ RSpec.describe('certificates/cs_accelerator/complete') do
     end
 
     it 'has the download button' do
-      expect(rendered).to have_link('Download your certificate (PDF)', href: '/certificate/cs-accelerator/view-certificate')
+      expect(rendered).to have_link('Download your certificate (PDF)', href: '/certificate/subject-knowledge/view-certificate')
     end
 
     it 'has a link to the secondary certificate page' do
