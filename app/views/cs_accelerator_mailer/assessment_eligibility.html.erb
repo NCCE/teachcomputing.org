@@ -1,10 +1,10 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
 
-  <p class='govuk-body'>Congratulations on your professional development progress! You have now completed the required hours of CPD to unlock the Key stage 3 and 4 subject knowledge certificate test.</p>
+  <p class='govuk-body'>Congratulations on your professional development progress! You have now completed the required hours of CPD to unlock the Key Stage 3 and GCSE Computer Science subject knowledge certificate test.</p>
 
   <p class='govuk-body'>Take the test now (approximately 30 minutes) and obtain your accredited certificate.</p>
-  
+
   <p class='govuk-body'>
     <%= link_to 'Take the test', cs_accelerator_url, class: 'govuk-button button' %>
   </p>
@@ -20,7 +20,7 @@
 
   <p class="govuk-body">Take our  <%= link_to 'mock test', 'https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b', class: 'ncce-link' %> to assess your subject knowledge and identify any areas from the curriculum where you need further support. We also have resources to help you prepare for your test, including:</p>
   <ul>
-  
+
     <li><%= link_to 'Preparing to take the test (short course)', course_url(id: 'CP350', name: 'preparing-to-take-the-csa-test-short-course'), class: 'ncce-link' %></li>
     <li><%= link_to 'Certificate handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link' %></li>
   </ul>

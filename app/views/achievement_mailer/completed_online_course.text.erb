@@ -1,17 +1,13 @@
 Hello <%= @user.first_name %>,
 
-Thanks for taking part in the Computer Science Accelerator programme. You're making great progress towards achieving your subject knowledge certificate.
+Thanks for taking part in our CPD programme. You're making great progress towards achieving one of our nationally recognised certificates.
 
-Once you have completed your next face to face or remote course, you will have reached ten hours of CPD and become eligible to take the test and achieve your qualification.
+To check your progress or access further support, explore your personalised dashboard (<%= cs_accelerator_certificate_url %>) which shows you the learning pathway and courses we recommend you take.
+
+Choose your next course to enhance your skills and knowledge further.
+
+Browse all courses (<%= courses_url(certificate: 'cs-accelerator', emailTrigger: 'CSA4') %>)
 
 Funding
 
 If you work in state-funded education, you may be eligible for a subsidy (https://teachcomputing.org/funding) to support supply cover for continuing professional development, paid to your school or college.
-
-Next steps
-
-Choose from any of our face to face or remote Computer Science Accelerator courses.
-
-Browse all courses (<%= courses_url(certificate: 'cs-accelerator', emailTrigger: 'CSA4') %>)
-
-To check your progress or access further support, explore your personalised dashboard (<%= cs_accelerator_certificate_url %>) which shows you the learning pathway and courses we recommend you take.
