@@ -26,7 +26,7 @@ module Programmes
 
       # we only need to call the job with the first achievement as you can only
       # have one badge per programme.
-      IssueBadgeJob.perform_later(applicable_achievements.first) if applicable_achievements.size >= 1
+      IssueBadgeJob.perform_later(achievement: applicable_achievements.first) if applicable_achievements.size >= 1
 
       QuestionnaireResponse.create(user_id: @user_id, questionnaire: Questionnaire.cs_accelerator) if enrolment.programme.cs_accelerator?
       true
