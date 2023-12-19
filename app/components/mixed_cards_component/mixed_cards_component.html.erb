@@ -1,0 +1,10 @@
+<div class="mixed-cards-component">
+  <% @cards.each do |card| %>
+    <% case card[:type] %>
+    <% when :file %>
+      <%= render FileCardComponent.new(file_card: card[:details], title: @title, tracking: @tracking) %>
+    <% when :external_link %>
+      <%= render ExternalLinkCardComponent.new(external_link_card: card[:details]) %>
+    <% end %>
+  <% end %>
+</div>
