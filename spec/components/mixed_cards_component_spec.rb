@@ -21,8 +21,8 @@ RSpec.describe MixedCardsComponent, type: :component do
 
   describe 'with only external_link_card defined' do
     before do
-      render_inline(described_class.new(card_groups: [
-        { type: :external_link, cards: [link_card] }
+      render_inline(described_class.new(cards: [
+        { type: :external_link, details: link_card }
       ]))
     end
 
@@ -34,9 +34,9 @@ RSpec.describe MixedCardsComponent, type: :component do
   describe 'should render all with mixed types' do
 
     before do
-      render_inline(described_class.new(card_groups: [
-        { type: :external_link, cards: [link_card] },
-        { type: :file, cards: [file_card]}
+      render_inline(described_class.new(cards: [
+        { type: :external_link, details: link_card },
+        { type: :file, details: file_card}
       ]))
     end
 

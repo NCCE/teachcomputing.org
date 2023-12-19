@@ -36,12 +36,13 @@
 		</div>
     <div class="govuk-grid-row">
 	    <div class="govuk-grid-column-full">
-          <% card_groups = [
-            { type: :file, cards: [@unit.unit_guide] + @unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers},
-            { type: :external_link, cards: [{ title: 'Digital Summative <br /> Assesment'.html_safe, link: @unit.digital_summative_assessment }]}
-          ] %>
-
-          <%= render MixedCardsComponent.new(card_groups: card_groups) %>
+          <%
+            cards = [
+              { type: :file, details: @unit.unit_guide },
+            ] + (@unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers).map{ { type: :file, details: _1 } } +
+            [{ type: :external_link, details: { title: 'Digital Summative <br /> Assesment'.html_safe, link: @unit.digital_summative_assessment_url } }]
+          %>
+          <%= render MixedCardsComponent.new(cards: cards) %>
 
       </div>
     </div>

@@ -2086,7 +2086,7 @@
               "deprecationReason": null
             },
             {
-              "name": "digitalSummativeAssessment",
+              "name": "digitalSummativeAssessmentUrl",
               "description": null,
               "args": [
 

@@ -1,10 +1,10 @@
 <div class="mixed-cards-component">
-  <% @card_groups.each do |card_group| %>
-    <% case card_group[:type] %>
+  <% @cards.each do |card| %>
+    <% case card[:type] %>
     <% when :file %>
-      <%= render FileCardComponent.with_collection(card_group[:cards], title: @title, tracking: @tracking) %>
+      <%= render FileCardComponent.new(file_card: card[:details], title: @title, tracking: @tracking) %>
     <% when :external_link %>
-      <%= render ExternalLinkCardComponent.with_collection(card_group[:cards]) %>
+      <%= render ExternalLinkCardComponent.new(external_link_card: card[:details]) %>
     <% end %>
   <% end %>
 </div>

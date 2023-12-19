@@ -12,7 +12,7 @@ module CurriculumClient
         description
         isaacUrl
         displayIBelongFlag
-        digitalSummativeAssessment
+        digitalSummativeAssessmentUrl
         unitGuide {
           #{file_fields}
         }

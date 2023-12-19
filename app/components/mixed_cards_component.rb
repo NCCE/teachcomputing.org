@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class MixedCardsComponent < ViewComponent::Base
-  def initialize(card_groups:)
-    @card_groups = card_groups
+  def initialize(cards:)
+    @cards = cards
   end
 
   def render?
-    @card_groups.present?
+    @cards.present?
   end
 end
 
