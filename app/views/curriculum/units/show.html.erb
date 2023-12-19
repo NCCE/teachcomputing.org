@@ -36,7 +36,13 @@
 		</div>
     <div class="govuk-grid-row">
 	    <div class="govuk-grid-column-full">
-          <%= render FileCardsComponent.new(cards: [@unit.unit_guide] + @unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers) %>
+          <% card_groups = [
+            { type: :file, cards: [@unit.unit_guide] + @unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers},
+            { type: :external_link, cards: [{ title: 'Digital Summative <br /> Assesment'.html_safe, link: @unit.digital_summative_assessment }]}
+          ] %>
+
+          <%= render MixedCardsComponent.new(card_groups: card_groups) %>
+
       </div>
     </div>
     <%= render partial: 'lessons', locals: { key_stage: @unit.year_group.key_stage, unit: @unit, lessons: @unit.lessons } %>
