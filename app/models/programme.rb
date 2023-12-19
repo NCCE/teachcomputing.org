@@ -154,6 +154,6 @@ class Programme < ApplicationRecord
       .belonging_to_programme(self)
       .count >= 1
 
-    user_enrolled?(user) && (has_a_f2f_achievement || user_completed?(user))
+    user_enrolled?(user) && (has_a_f2f_achievement || user_meets_completion_requirement?(user))
   end
 end

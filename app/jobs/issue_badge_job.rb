@@ -6,7 +6,7 @@ class IssueBadgeJob < ApplicationJob
       user = achievement.user
       programmes = achievement.activity.programmes
     elsif assessment_attempt
-      user = assessment_attempt
+      user = assessment_attempt.user
       programmes = [assessment_attempt.assessment.programme]
     end
 
