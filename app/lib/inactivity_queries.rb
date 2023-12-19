@@ -7,6 +7,18 @@ module InactivityQueries
     "i-belong-inactivity-only-completed-one-section"
   end
 
+  def self.i_belong_all_but_understanding_factors_type
+    "i-belong-inactivity-all-but-understanding-factors"
+  end
+
+  def self.i_belong_all_but_access_resources_type
+    "i-belong-inactivity-all-but-understanding-factors"
+  end
+
+  def self.i_belong_all_but_increase_engagement_type
+    "i-belong-inactivity-all-but-increase-engagement"
+  end
+
   def self.completed_cpds_but_no_community_activities_type(slug)
     "#{slug}-completed-cpds-but-no-community-activities"
   end
@@ -51,7 +63,7 @@ module InactivityQueries
     User.where(id: user_achievements.keys)
   end
 
-  def self.i_belong_only_completed_understand_factors
+  def self.i_belong_completed_appart_from_understand_factors
     i_belong = Programme.i_belong
 
     objective_1 = i_belong.programme_objectives.first.activities.pluck(:id) # Understand factors
@@ -68,13 +80,13 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-        .having("every(achievemets.updated_at < :old_age and achievements.id in (:objective_1) and achievements.id not in (:objective_2) and achievements.id not in (:objective_3)", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_1)) and sum((achievements.id in (:objective_2))::int) >= 3 and sum((achievements.id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)
   end
 
-  def self.i_belong_only_completed_access_resources
+  def self.i_belong_completed_appart_from_access_resources
     i_belong = Programme.i_belong
 
     objective_1 = i_belong.programme_objectives.first.activities.pluck(:id) # Understand factors
@@ -91,13 +103,13 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-        .having("every(achievemets.updated_at < :old_age and achievements.id not in (:objective_1) and achievements.id in (:objective_2) and achievements.id not in (:objective_3)", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_2)) and sum((achievements.id in (:objective_1))::int) >= 1 and sum((achievements.id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)
   end
 
-  def self.i_belong_only_completed_increase_engagement
+  def self.i_belong_completed_appart_from_increase_engagement
     i_belong = Programme.i_belong
 
     objective_1 = i_belong.programme_objectives.first.activities.pluck(:id) # Understand factors
@@ -114,7 +126,7 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-        .having("every(achievemets.updated_at < :old_age and achievements.id not in (:objective_1) and achievements.id not in (:objective_2) and achievements.id in (:objective_3)", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_3)) and sum((achievements.id in (:objective_1))::int) >= 1 and sum((achievements.id in (:objective_2))::int) >= 3", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)

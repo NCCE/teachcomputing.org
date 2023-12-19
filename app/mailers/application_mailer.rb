@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
+  helper :external_link
+
   default from: '"Teach Computing" <noreply@teachcomputing.org>'
   layout 'mailer'
 
