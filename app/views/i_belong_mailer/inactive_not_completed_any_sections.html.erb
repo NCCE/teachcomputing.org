@@ -1,0 +1,23 @@
+<div class='mailer__content'>
+  <p class="govuk-body">Hi <%= @user.first_name %>,</p>
+  <p class="govuk-body">It's been a while since you updated your dashboard to show your progress on the I Belong: encouraging girls into computer science programme. To help you identify the next steps to achieving this nationally recognised certificate for your school, review our checklist below.</p>
+  <ol class="govuk-list govuk-list govuk-list--number">
+    <li>
+      Book our short course, Encouraging girls into GCSE Computer Science, and discover evidence-informed resources <%= link_to 'in your dashboard', i_belong_url %> to support your progress.
+    </li>
+    <li>
+      Encourage engagement across your school in a range of activities, with guidance available to help you select those with the most impact on your school.
+    </li>
+    <li>
+      Complete the programme and achieve our certificate recognising your school’s commitment to improving girls’ participation in computer science.
+    </li>
+  </ol>
+  <p class="govuk-body"><strong>Need more support?</strong></p>
+  <p class="govuk-body">
+    Go to your
+    <%= link_to 'dashboard', i_belong_url %>
+    to browse all recommended activities from the I Belong programme. Guidance is available in the
+    <%= link_to 'programme handbook', i_belong_handbook_url %>
+    to help you and your colleagues choose meaningful activities for your school.
+  </p>
+</div>

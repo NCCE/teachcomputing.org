@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :programmes, through: :user_programme_enrolments
   has_many :resource_users, dependent: :nullify
   has_many :questionnaire_response, dependent: :nullify
+  has_many :sent_emails
 
   after_create :schedule_fetching_of_course_bookings
 
