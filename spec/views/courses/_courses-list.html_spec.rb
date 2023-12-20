@@ -22,7 +22,7 @@ RSpec.describe('courses/_courses-list', type: :view) do
   end
   let(:certificates) do
     {
-      'cs-accelerator': 'CS Accelerator',
+      'subject-knowledge': 'Subject Knowledge',
       'secondary-certificate': 'Secondary Certificate',
       'primary-certificate': 'Primary Certificate'
     }
@@ -91,7 +91,7 @@ RSpec.describe('courses/_courses-list', type: :view) do
     end
 
     it 'renders the programme tag' do
-      expect(rendered).to have_css('.ncce-courses__filter-tag--cs-accelerator', text: 'CS Accelerator')
+      expect(rendered).to have_css('.ncce-courses__filter-tag--subject-knowledge', text: 'Subject Knowledge')
     end
   end
 

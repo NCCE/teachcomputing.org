@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('certificates/cs_accelerator/complete') do
   let(:user) { create(:user, email: 'web@teachcomputing.org') }
   let!(:online_activity) { create(:activity, :future_learn, stem_activity_code: "CP228") }
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:programme, slug: 'subject-knowledge') }
   let!(:secondary_certificate) { create(:secondary_certificate) }
   let(:pathway) { create(:pathway, pdf_link: 'http://example.com') }
 
@@ -35,7 +35,7 @@ RSpec.describe('certificates/cs_accelerator/complete') do
     end
 
     it 'has the download button' do
-      expect(rendered).to have_link('Download your certificate (PDF)', href: '/certificate/cs-accelerator/view-certificate')
+      expect(rendered).to have_link('Download your certificate (PDF)', href: '/certificate/subject-knowledge/view-certificate')
     end
 
     it 'has a link to the secondary certificate page' do
@@ -86,15 +86,15 @@ RSpec.describe('certificates/cs_accelerator/complete') do
     end
 
     it 'has the Twitter share button' do
-      expect(rendered).to have_link('Share on Twitter', href: 'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator')
+      expect(rendered).to have_link('Share on Twitter', href: 'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fsubject-knowledge')
     end
 
     it 'has the Facebook share button' do
-      expect(rendered).to have_link('Share on Facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator')
+      expect(rendered).to have_link('Share on Facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fsubject-knowledge')
     end
 
     it 'has the LinkedIn share button' do
-      expect(rendered).to have_link('Share on LinkedIn', href: 'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator')
+      expect(rendered).to have_link('Share on LinkedIn', href: 'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/subject-knowledge')
     end
 
     context 'when it renders the pathway switcher' do

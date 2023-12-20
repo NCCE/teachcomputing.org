@@ -23,7 +23,7 @@ programme.pathways.find_or_initialize_by(slug: 'curriculum-leadership').tap do |
     'Enrol with the click of the button',
     'Complete the required professional development',
     'Complete engagement activities to support your learning',
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Successfully complete the <a href="https://teachcomputing.org/subject-knowledge">Subject knowledge certificate</a>',
     'Receive your certificate'
   ]
 
@@ -87,7 +87,7 @@ programme.pathways.find_or_initialize_by(slug: 'supporting-other-teachers').tap 
     'Enrol with the click of the button',
     'Complete the required professional development',
     'Complete engagement activities to support your learning',
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Successfully complete the <a href="https://teachcomputing.org/subject-knowledge">Subject knowledge certificate</a>',
     'Receive your certificate'
   ]
 
@@ -141,7 +141,7 @@ programme.pathways.find_or_initialize_by(slug: 'championing-diversity-and-inclus
     'Enrol with the click of the button',
     'Complete the required professional development',
     'Complete engagement activities to support your learning',
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Successfully complete the <a href="https://teachcomputing.org/subject-knowledge">Subject knowledge certificate</a>',
     'Receive your certificate'
   ]
 
@@ -197,7 +197,7 @@ programme.pathways.find_or_initialize_by(slug: 'raising-student-attainment').tap
     'Enrol with the click of the button',
     'Complete the required professional development',
     'Complete engagement activities to support your learning',
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Successfully complete the <a href="https://teachcomputing.org/subject-knowledge">Subject knowledge certificate</a>',
     'Receive your certificate'
   ]
 
@@ -252,7 +252,7 @@ programme.pathways.find_or_initialize_by(slug: 'developing-teachers').tap do |pa
     'Enrol with the click of the button',
     'Complete the required professional development',
     'Complete engagement activities to support your learning',
-    'Successfully complete the <a href="https://teachcomputing.org/cs-accelerator">Subject knowledge certificate</a>',
+    'Successfully complete the <a href="https://teachcomputing.org/subject-knowledge">Subject knowledge certificate</a>',
     'Receive your certificate'
   ]
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe('diagnostics/cs_accelerator/questions', type: :view) do
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:programme, slug: 'subject-knowledge') }
 
   before do
     stub_template 'diagnostics/_question.html.erb' => "<div class='ncce-diagnostic__question'></div>"

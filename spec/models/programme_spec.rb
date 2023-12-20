@@ -74,7 +74,7 @@ RSpec.describe Programme, type: :model do
       programme
     end
 
-    it 'returns the cs-accelerator record' do
+    it 'returns the subject-knowledge record' do
       expect(described_class.cs_accelerator).to eq programme
     end
   end

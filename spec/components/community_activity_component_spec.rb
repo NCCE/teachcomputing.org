@@ -88,7 +88,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
     end
 
     it 'renders a booking link' do
-      expect(page).to have_link('Book a course', href: '/courses?certificate=cs-accelerator')
+      expect(page).to have_link('Book a course', href: '/courses?certificate=subject-knowledge')
     end
   end
 

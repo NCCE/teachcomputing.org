@@ -1,16 +1,12 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Hello <%= @user.first_name %>,</p>
 
-  <p class='govuk-body'>Thanks for taking part in our CPD programme. You're making great progress towards achieving one of our nationally recognised certificates.</p>
-
-  <p class='govuk-body'>To check your progress or access further support, explore your <%= link_to 'personalised dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %> which shows you the learning pathway and courses we recommend you take.</p>
-
-  <p class='govuk-body'>Choose your next course to enhance your skills and knowledge further.</p>
-
-  <%= link_to 'Browse all courses', courses_url(certificate: 'cs-accelerator', emailTrigger: 'CSA4'), class: 'govuk-button button' %>
-
+  <p class='govuk-body'>Thanks for engaging with the KS3 and GCSE Computer Science subject knowledge certificate. You're making great progress towards achieving your subject knowledge certificate.</p>
+  <p class='govuk-body'>Once you have completed your next face to face or remote course, you will have reached ten hours of CPD and become <b>eligible to take the test and achieve your qualification.</b></p>
   <h3 class="govuk-heading-s">Funding</h3>
-
   <p class='govuk-body'>If you work in state-funded education, you may be <%= link_to 'eligible for a subsidy', '/funding', class: 'ncce-link' %> to support supply cover for continuing professional development, paid to your school or college.</p>
-
+  <h3 class="govuk-heading-s">Next steps</h3>
+  <p class='govuk-body'>Choose from any of our face to face or remote Computer Science Accelerator courses.</p>
+  <%= link_to 'Browse all courses', courses_url(certificate: 'subject-knowledge', emailTrigger: 'CSA4'), class: 'govuk-button button' %>
+  <p class='govuk-body'>To check your progress or access further support, explore your <%= link_to 'personalised dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %> which shows you the learning pathway and courses we recommend you take.</p>
 </div>

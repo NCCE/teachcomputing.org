@@ -22,7 +22,7 @@ class Programme < ApplicationRecord
   scope :enrollable, -> { where(enrollable: true) }
 
   def self.cs_accelerator
-    Programme.find_by(slug: 'cs-accelerator')
+    Programme.find_by(slug: 'subject-knowledge')
   end
 
   def self.primary_certificate
@@ -86,7 +86,7 @@ class Programme < ApplicationRecord
   end
 
   def cs_accelerator?
-    slug == 'cs-accelerator'
+    slug == 'subject-knowledge'
   end
 
   def i_belong?

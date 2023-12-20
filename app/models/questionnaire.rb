@@ -4,6 +4,6 @@ class Questionnaire < ApplicationRecord
   has_many :questionnaire_responses, dependent: :destroy
 
   def self.cs_accelerator
-    find_by(slug: 'cs-accelerator-enrolment-questionnaire')
+    find_by(slug: 'subject-knowledge-enrolment-questionnaire')
   end
 end

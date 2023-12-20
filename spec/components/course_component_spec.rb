@@ -43,7 +43,7 @@ RSpec.describe CourseComponent, type: :component do
 
   it 'shows the expected tag for a CSA course' do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(page).to have_text('CS Accelerator')
+    expect(page).to have_text('Subject Knowledge')
   end
 
   it 'shows the expected tag for a Primary course' do

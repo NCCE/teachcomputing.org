@@ -2,7 +2,7 @@
   <h2 class="govuk-heading-s">Choose a pathway</h2>
   <p class="govuk-body">Are you an aspiring computer science teacher, or are you unsure which courses support your development objectives? Our learning pathways are designed for teachers at different levels and provide a set of recommended courses to help you get started.</p>
   <ul class="govuk-list">
-    <% Pathway.ordered_by_programme('cs-accelerator').each do |pathway| %>
+    <% Pathway.ordered_by_programme('subject-knowledge').each do |pathway| %>
       <li class="pathway__item">
         <%= link_to pathway.title, pathway.pdf_link, class: 'govuk-link ncce-link icon-resources' %>
         <span class="pathway__item--pdf">PDF</span>

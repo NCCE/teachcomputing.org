@@ -1,9 +1,9 @@
 cs_accelerator = Programme.cs_accelerator
 
-a = Activity.find_or_create_by(slug: 'cs-accelerator-assessment') do |activity|
+a = Activity.find_or_create_by(slug: 'subject-knowledge-assessment') do |activity|
   activity.title = 'CS Accelerator Assessment'
   activity.credit = 30
-  activity.slug = 'cs-accelerator-assessment'
+  activity.slug = 'subject-knowledge-assessment'
   activity.category = 'assessment'
   activity.provider = 'classmarker'
 end

@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2023_12_07_174530) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["achievement_id", "sort_key"], name: "index_achievement_transitions_parent_sort", unique: true
   end
 
-  create_table "achievements", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "achievements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "activity_id", null: false
     t.datetime "created_at", null: false
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["activity_id", "user_id"], name: "index_achievements_on_activity_id_and_user_id", unique: true
   end
 
-  create_table "achiever_sync_records", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "achiever_sync_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "state", null: false
     t.uuid "user_programme_enrolment_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_programme_enrolment_id"], name: "index_achiever_sync_records_on_user_programme_enrolment_id"
   end
 
-  create_table "active_storage_attachments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.uuid "record_id", null: false
@@ -57,7 +56,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "active_storage_blobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -69,13 +68,13 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "active_storage_variant_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "activities", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.float "credit"
     t.datetime "created_at", null: false
@@ -102,7 +101,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
   end
 
-  create_table "aggregate_downloads", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "aggregate_downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "uri"
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
@@ -122,7 +121,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["assessment_attempt_id", "sort_key"], name: "index_assessment_attempt_transitions_parent_sort", unique: true
   end
 
-  create_table "assessment_attempts", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "assessment_attempts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "assessment_id", null: false
     t.datetime "created_at", null: false
@@ -132,7 +131,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_id"], name: "index_assessment_attempts_on_user_id"
   end
 
-  create_table "assessments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "assessments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "link"
     t.uuid "programme_id", null: false
     t.uuid "activity_id"
@@ -169,7 +168,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
-  create_table "authorisers", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "authorisers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "organisation"
@@ -177,7 +176,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "badges", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "badges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.boolean "active", default: false
     t.string "academic_year", null: false
@@ -187,7 +186,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id"], name: "index_badges_on_programme_id"
   end
 
-  create_table "downloads", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "aggregate_download_id"
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -223,7 +222,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id"], name: "index_enrichment_groupings_on_programme_id"
   end
 
-  create_table "feedback_comments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "area"
     t.text "comment"
@@ -232,7 +231,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_id"], name: "index_feedback_comments_on_user_id"
   end
 
-  create_table "hub_regions", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "hub_regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "order", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -240,7 +239,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["order"], name: "index_hub_regions_on_order", unique: true
   end
 
-  create_table "hubs", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "hubs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.uuid "hub_region_id", null: false
     t.uuid "subdeliverer_id", null: false
@@ -262,7 +261,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
 
-  create_table "pathway_activities", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "pathway_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "pathway_id", null: false
     t.uuid "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -272,7 +271,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["pathway_id"], name: "index_pathway_activities_on_pathway_id"
   end
 
-  create_table "pathways", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "pathways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.int4range "range", null: false
     t.string "title", null: false
     t.text "description"
@@ -288,7 +287,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
 
-  create_table "programme_activities", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "programme_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.uuid "activity_id", null: false
     t.datetime "created_at", null: false
@@ -300,7 +299,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
 
-  create_table "programme_activity_groupings", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "programme_activity_groupings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.integer "sort_key"
     t.integer "required_for_completion"
@@ -315,7 +314,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
-  create_table "programme_complete_counters", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "programme_complete_counters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.integer "counter"
     t.datetime "created_at", null: false
@@ -323,7 +322,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id"], name: "index_programme_complete_counters_on_programme_id"
   end
 
-  create_table "programmes", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "programmes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.string "slug"
     t.text "description"
@@ -346,7 +345,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["questionnaire_response_id", "sort_key"], name: "index_questionnaire_response_transitions_parent_sort", unique: true
   end
 
-  create_table "questionnaire_responses", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "questionnaire_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "questionnaire_id", null: false
     t.uuid "user_id", null: false
     t.integer "current_question", default: 1
@@ -358,7 +357,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_id"], name: "index_questionnaire_responses_on_user_id"
   end
 
-  create_table "questionnaires", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "programme_id", null: false
     t.string "title"
     t.string "slug"
@@ -369,7 +368,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
   end
 
-  create_table "resource_users", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "resource_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.integer "resource_year", null: false
     t.integer "counter", default: 0
@@ -411,7 +410,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_programme_enrolment_id", "sort_key"], name: "index_user_programme_enrolment_transitions_parent_sort", unique: true
   end
 
-  create_table "user_programme_enrolments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "user_programme_enrolments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "programme_id", null: false
     t.datetime "created_at", null: false
@@ -428,7 +427,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"

@@ -1,6 +1,6 @@
 module Programmes
   class SecondaryCertificate < Programme
-    PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
+    PROGRAMME_TITLE = 'Teach Secondary Computing'.freeze
 
     def short_name
       'Secondary certificate'

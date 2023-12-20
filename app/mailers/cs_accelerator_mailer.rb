@@ -10,7 +10,7 @@ class CSAcceleratorMailer < ApplicationMailer
   def completed
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = 'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge'
+    @subject = 'Congratulations you have completed the Key stage 3 and GCSE Computer Science certificate from the National Centre for Computing Education'
 
     mail(to: @user, subject: @subject)
   end
@@ -18,7 +18,7 @@ class CSAcceleratorMailer < ApplicationMailer
   def assessment_eligibility
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = "#{@user.first_name} your CS Accelerator test is ready."
+    @subject = "#{@user.first_name} your Key stage 3 and GCSE Computer Science test is ready."
 
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_ASSESSMENT_ELIGIBILITY_EMAIL)
   end
@@ -34,14 +34,14 @@ class CSAcceleratorMailer < ApplicationMailer
   def manual_enrolled_welcome
     @user = params[:user]
     @programme = Programme.cs_accelerator
-    @subject = 'Welcome to our subject knowledge certificate'
+    @subject = 'Welcome to our KS3 and GCSE Computer Science subject knowledge certificate'
 
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
   end
 
   def auto_enrolled_welcome
     @user = params[:user]
-    @subject = 'Achieve your subject knowledge certificate with the Computer Science Accelerator'
+    @subject = 'Achieve your subject knowledge certificate with the Key stage 3 and GCSE Computer Science certificate'
 
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_AUTO_ENROLLED_WELCOME)
   end

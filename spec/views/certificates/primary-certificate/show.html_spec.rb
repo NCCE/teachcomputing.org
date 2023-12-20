@@ -72,7 +72,7 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       let(:upe) { create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id, message_flags_primary_pathway_migrated: true) }
 
       it 'has in info modal with the message on it' do
-        expect(rendered).to have_css('.govuk-heading-m', text: 'Updates to your primary certificate pathway')
+        expect(rendered).to have_css('.govuk-heading-m', text: 'Updates to your Teach primary computing certificate pathway')
       end
 
       it 'has a close button' do
