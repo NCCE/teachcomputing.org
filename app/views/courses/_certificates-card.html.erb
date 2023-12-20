@@ -1,7 +1,7 @@
 <div class="light-blue-bg govuk-!-padding-5 govuk-!-margin-bottom-6">
   <% @programmes.each do |programme| %>
     <p class="govuk-body"><%= certificate_card_summary(programme) %></p>
-    <div class="card card--cs-accelerator card--bottom-glyph">
+    <div class="card card--subject-knowledge card--bottom-glyph">
       <%= render 'pages/certification/programme-enrolment-status', programme: programme %>
       <h2 class="govuk-heading-m card__heading"><%= programme.title %></h2>
       <% if programme.primary_certificate? %>

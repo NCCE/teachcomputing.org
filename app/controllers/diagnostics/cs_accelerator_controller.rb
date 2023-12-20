@@ -31,11 +31,11 @@ module Diagnostics
     private
 
       def programme
-        @programme ||= Programme.find_by(slug: 'cs-accelerator')
+        @programme ||= Programme.find_by(slug: 'subject-knowledge')
       end
 
       def questionnaire
-        @questionnaire ||= Questionnaire.find_by!(slug: 'cs-accelerator-enrolment-questionnaire')
+        @questionnaire ||= Questionnaire.find_by!(slug: 'subject-knowledge-enrolment-questionnaire')
       end
 
       def recommend_pathway

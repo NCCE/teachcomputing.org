@@ -9,7 +9,7 @@ class KickOffEmailsJob < ApplicationJob
       PrimaryMailer.with(user: enrolment.user).enrolled.deliver_now
     when 'i-belong', 'secondary-certificate', 'a-level-certificate'
       enrolment.programme.mailer.with(user: enrolment.user).welcome.deliver_now
-    when 'cs-accelerator'
+    when 'subject-knowledge'
       CSAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now unless enrolment.auto_enrolled
       CSAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
     end

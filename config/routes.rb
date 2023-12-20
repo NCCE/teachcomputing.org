@@ -78,7 +78,7 @@ Rails.application.routes.draw do
       get '/class_marker_diagnostic/:id', to: '/diagnostics/class_marker/cs_accelerator#show',
                                           as: :class_marker_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
-                               defaults: { slug: 'cs-accelerator' }
+                               defaults: { slug: 'subject-knowledge' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
       get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
@@ -153,7 +153,7 @@ Rails.application.routes.draw do
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  get '/accelerator', to: redirect('/cs-accelerator')
+  get '/accelerator', to: redirect('/subject-knowledge')
   get '/accessibility-statement', to: 'pages#page', as: :accessibility_statement,
                                   defaults: { page_slug: 'accessibility-statement' }
   get '/auth/stem', to: redirect('/login')
@@ -163,7 +163,7 @@ Rails.application.routes.draw do
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
   get '/subject-knowledge', to: 'pages#static_programme_page', as: :cs_accelerator,
-                         defaults: { page_slug: 'cs-accelerator' }
+                         defaults: { page_slug: 'subject-knowledge' }
   get '/a-level-certificate', to: 'pages#static_programme_page', as: :about_a_level,
                          defaults: { page_slug: 'a-level-certificate' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint

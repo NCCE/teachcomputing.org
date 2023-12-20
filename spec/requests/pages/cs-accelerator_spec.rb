@@ -9,7 +9,7 @@ RSpec.describe PagesController do
            programme_id: programme.id)
   end
 
-  describe 'GET #cs-accelerator' do
+  describe 'GET #subject-knowledge' do
     before do
       user
       programme
@@ -21,7 +21,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/enrolment/cs_accelerator')
+        expect(response).to render_template('pages/enrolment/subject_knowledge')
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe PagesController do
       end
 
       it 'shows the page' do
-        expect(response).to render_template('pages/enrolment/cs_accelerator')
+        expect(response).to render_template('pages/enrolment/subject_knowledge')
       end
     end
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'axe/rspec'
 
 RSpec.describe('Teacher Landing pages', type: :system) do
-  let(:cs_accelerator) { create(:programme, slug: 'cs-accelerator') }
+  let(:cs_accelerator) { create(:programme, slug: 'subject-knowledge') }
   let(:secondary_certificate) { create(:programme, slug: 'secondary-certificate') }
   let(:primary_certificate) { create(:programme, slug: 'primary-certificate') }
 

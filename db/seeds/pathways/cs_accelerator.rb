@@ -1,6 +1,6 @@
 puts 'Creating Pathways for CSA'
 
-prog_id = Programmes::CSAccelerator.find_by(slug: 'cs-accelerator').id
+prog_id = Programmes::CSAccelerator.find_by(slug: 'subject-knowledge').id
 
 Pathway.find_or_initialize_by(slug: 'advanced-gcse-computer-science').tap do |pathway|
   pathway.title = 'Advanced GCSE Computer Science'

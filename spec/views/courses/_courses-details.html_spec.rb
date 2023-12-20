@@ -39,7 +39,7 @@ RSpec.describe('courses/_courses-details', type: :view) do
     end
 
     it 'has a programme tag' do
-      expect(rendered).to have_css('.ncce-courses__tag', text: 'CS Accelerator')
+      expect(rendered).to have_css('.ncce-courses__tag', text: 'Subject Knowledge')
     end
 
     it 'displays the course type' do

@@ -30,6 +30,10 @@ class Achiever::Course::Template
                     HideFromweb: '0' }.freeze
   PROGRAMME_NAMES = ['ncce', 'PDLP', 'Computing Clusters'].freeze
 
+  TS_PROGRAMME_MAPPING = {
+    'CS Accelerator' => 'Subject Knowledge'
+  }
+
   def self.from_resource(resource, activity)
     new.tap do |t|
       t.activity_code = resource['Template.ActivityCode'].upcase
@@ -46,6 +50,9 @@ class Achiever::Course::Template
       t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.OnlineCPD'].downcase)
       t.outcomes = resource['Template.Outcomes']
       t.programmes = resource['Template.TCProgrammeTag'].split(',')
+
+      t.programmes.map! { TS_PROGRAMME_MAPPING[_1] || _1 }
+
       t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.RemoteDeliveredCPD']&.downcase)
       t.subjects = resource['Template.AdditionalSubjects'].split(';')
       t.summary = resource['Template.Summary']
@@ -151,8 +158,8 @@ class Achiever::Course::Template
 
   def by_certificate(certificate)
     case certificate
-    when 'cs-accelerator'
-      @programmes.include?('CS Accelerator')
+    when 'subject-knowledge'
+      @programmes.include?('Subject Knowledge')
     when 'secondary-certificate'
       @programmes.include?('Secondary')
     when 'primary-certificate'

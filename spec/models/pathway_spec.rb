@@ -15,7 +15,7 @@ RSpec.describe Pathway, type: :model do
       last_pathway = create(:pathway, order: 3, programme: prog)
       first_pathway = create(:pathway, order: 1, programme: prog)
       middle_pathway = create(:pathway, order: 2, programme: prog)
-      expect(described_class.ordered_by_programme('cs-accelerator')).to eq([first_pathway, middle_pathway,
+      expect(described_class.ordered_by_programme('subject-knowledge')).to eq([first_pathway, middle_pathway,
                                                                             last_pathway])
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Pathway, type: :model do
       last_pathway = create(:pathway, order: 3, programme: prog)
       create(:pathway, order: 1, programme: prog_2)
       middle_pathway = create(:pathway, order: 2, programme: prog)
-      expect(described_class.ordered_by_programme('cs-accelerator')).to eq([middle_pathway,
+      expect(described_class.ordered_by_programme('subject-knowledge')).to eq([middle_pathway,
                                                                             last_pathway])
     end
   end

@@ -389,7 +389,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "sent_emails", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "mailer_type", null: false
     t.string "subject", null: false

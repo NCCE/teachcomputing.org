@@ -15,7 +15,7 @@ FactoryBot.define do
 
   trait :cs_accelerator_diagnostic_tool do
     title { 'Taken diagnostic tool' }
-    slug { 'cs-accelerator-diagnostic-tool' }
+    slug { 'subject-knowledge-diagnostic-tool' }
     category { 'diagnostic' }
     provider { 'system' }
     credit { 0 }
@@ -47,7 +47,7 @@ FactoryBot.define do
   end
 
   trait :cs_accelerator_exam do
-    slug { 'cs-accelerator-assessment' }
+    slug { 'subject-knowledge-assessment' }
     title { 'CSA exam' }
     provider { 'classmarker' }
     category { 'assessment' }
@@ -101,7 +101,7 @@ FactoryBot.define do
     description { 'this is a community activity' }
     credit { 10 }
     self_verification_info { 'Please provide a link to your contribution' }
-    booking_programme_slug { 'cs-accelerator' }
+    booking_programme_slug { 'subject-knowledge' }
   end
 
   trait :online do

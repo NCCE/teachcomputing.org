@@ -1,6 +1,8 @@
-cs_accelerator = Programmes::CSAccelerator.find_or_initialize_by(slug: 'cs-accelerator').tap do |programme|
+Programmes::CSAccelerator.find_by(slug: 'cs-accelerator')&.update(slug: 'subject-knowledge')
+
+cs_accelerator = Programmes::CSAccelerator.find_or_initialize_by(slug: 'subject-knowledge').tap do |programme|
   programme.title = 'Key stage 3 and GCSE Computer Science certificate'
-  programme.slug = 'cs-accelerator'
+  programme.slug = 'subject-knowledge'
   programme.description = 'If you\'re a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you.'
   programme.enrollable = true
   programme.save
@@ -15,9 +17,10 @@ end
 
 puts "Created programme_complete_counter: #{programme_complete_counter}"
 
-questionnaire = Questionnaire.find_or_create_by(slug: 'cs-accelerator-enrolment-questionnaire') do |q|
+Programmes::CSAccelerator.find_by(slug: 'cs-accelerator-enrolment-questionnaire')&.update(slug: 'subject-knowledge-enrolment-questionnaire')
+questionnaire = Questionnaire.find_or_create_by(slug: 'subject-knowledge-enrolment-questionnaire') do |q|
   q.title = 'Enrolment questionnaire'
-  q.slug = 'cs-accelerator-enrolment-questionnaire'
+  q.slug = 'subject-knowledge-enrolment-questionnaire'
   q.description = 'Questionnaire description'
   q.programme = cs_accelerator
 end

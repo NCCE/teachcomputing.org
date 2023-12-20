@@ -42,14 +42,14 @@ RSpec.describe Diagnostics::CSAcceleratorController do
       end
 
       it 'redirects to the programme page' do
-        expect(response).to redirect_to '/certificate/cs-accelerator'
+        expect(response).to redirect_to '/certificate/subject-knowledge'
       end
     end
 
     context 'when the user is not enrolled' do
       it 'redirects back to the certificate page' do
         get diagnostic_cs_accelerator_certificate_path(:question_1)
-        expect(response).to redirect_to '/cs-accelerator'
+        expect(response).to redirect_to '/subject-knowledge'
       end
     end
   end

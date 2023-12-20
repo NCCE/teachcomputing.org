@@ -68,7 +68,7 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
       end
     end
 
-    context 'with cs-accelerator courses' do
+    context 'with subject-knowledge courses' do
       it 'queues AssessmentEligibilityJob job once for complete courses' do
         cs_activity1 = create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b522')
         cs_activity2 = create(:activity, stem_course_template_no: '92f4f86e-0237-4ecc-a905-2f6c62d6b533')

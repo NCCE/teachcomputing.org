@@ -7,5 +7,6 @@
   <p class='govuk-body'>If you work in state-funded education, you may be <%= link_to 'eligible for a subsidy', '/funding', class: 'ncce-link' %> to support supply cover for continuing professional development, paid to your school or college.</p>
   <h3 class="govuk-heading-s">Next steps</h3>
   <p class='govuk-body'>Choose from any of our face to face or remote Computer Science Accelerator courses.</p>
-  <%= link_to 'Browse all courses', courses_url(certificate: 'cs-accelerator', emailTrigger: 'CSA4'), class: 'govuk-button button' %>
+  <%= link_to 'Browse all courses', courses_url(certificate: 'subject-knowledge', emailTrigger: 'CSA4'), class: 'govuk-button button' %>
+  <p class='govuk-body'>To check your progress or access further support, explore your <%= link_to 'personalised dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %> which shows you the learning pathway and courses we recommend you take.</p>
 </div>

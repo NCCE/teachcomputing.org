@@ -13,7 +13,7 @@ RSpec.describe('courses/_aside-filters', type: :view) do
   let(:filter_stub) { instance_double(Achiever::CourseFilter) }
   let(:subjects) { { 'Algorithmic thinking': 100_000_011, Biology: 157_430_000, Careers: 157_430_001 } }
   let(:age_groups) { { 'Key stage 1': 157_430_008, 'Key stage 2': 157_430_009 } }
-  let(:certificates) { { 'CS Accelerator': 'cs-accelerator' } }
+  let(:certificates) { { 'CS Accelerator': 'subject-knowledge' } }
 
   describe 'courses' do
     context 'with no filters applied' do
@@ -107,14 +107,14 @@ RSpec.describe('courses/_aside-filters', type: :view) do
           current_location: nil,
           current_topic: nil,
           current_format: [],
-          current_certificate: 'cs-accelerator',
-          applied_filters: %w[bla cs-accelerator],
+          current_certificate: 'subject-knowledge',
+          applied_filters: %w[bla subject-knowledge],
           search_radii: [20, 30, 40, 50, 60],
           current_radius: 40,
           total_results_count: 3
         )
 
-        @filter_params = { hub_id: 'bla', certificate: 'cs-accelerator' }
+        @filter_params = { hub_id: 'bla', certificate: 'subject-knowledge' }
         @course_filter = filter_stub
         render
       end
