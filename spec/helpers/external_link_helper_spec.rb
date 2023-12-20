@@ -31,6 +31,8 @@ RSpec.describe ExternalLinkHelper do
     cansat_webinar_url
     structuring_your_i_belong_evidence_url
     csa_handbook_url
+    i_belong_action_plan_url
+    stem_ambassadors_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it 'should return a string' do
