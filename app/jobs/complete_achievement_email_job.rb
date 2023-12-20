@@ -2,13 +2,8 @@ class CompleteAchievementEmailJob < ApplicationJob
   queue_as :default
 
   def perform(user, activity)
-    completed_community_achievement_count = user.achievements.joins(:activity).where(activity: { category: Activity::COMMUNITY_CATEGORY }).count
+    # To be enabled once email content received
 
-    if completed_community_achievement_count.zero?
-      user
-        .user_programme_enrolments
-        .where(programme: [Programme.primary_certificate, Programme.secondary_certificate])
-        .in_state(:enrolled)
-    end
+    # AchievementMailer.with(user_id: user_id, activity_id: activity_id).complete.deliver_now
   end
 end
