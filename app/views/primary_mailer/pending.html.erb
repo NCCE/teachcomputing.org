@@ -1,0 +1,8 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
+  <p class='govuk-body'>Congratulations on completing the NCCE certificate to Teach primary computing. Your activities are currently being checked and we’ll let you know by email when your certificate has been awarded.</p>
+
+  <p class='govuk-body'><strong>Any questions?</strong></p>
+
+  <p class='govuk-body'>Get in touch by emailing <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>.</p>
+</div>

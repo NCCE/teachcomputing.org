@@ -10,4 +10,13 @@ class SecondaryMailerPreview < ActionMailer::Preview
   def pending
     SecondaryMailer.with(user: User.first).pending
   end
+
+  def inactive_prompt
+    SecondaryMailer.with(user: User.first).inactive_prompt
+  end
+
+  def completed_cpd_not_activities
+    SecondaryMailer.with(user: User.first).completed_cpd_not_activities
+  end
+  
 end

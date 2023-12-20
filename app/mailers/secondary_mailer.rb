@@ -19,4 +19,18 @@ class SecondaryMailer < ApplicationMailer
 
     mail(to: @user, subject: @subject)
   end
+
+  def inactive_prompt
+    @user = params[:user]
+    @subject = 'Kick-start your development and achieve a national qualification'
+
+    mail(to: @user, subject: @subject)
+  end
+
+  def completed_cpd_not_activities
+    @user = params[:user]
+    @subject = 'You\'re so close!'
+
+    mail(to: @user, subject: @subject)
+  end
 end

@@ -14,7 +14,7 @@ RSpec.describe SecondaryMailer, type: :mailer do
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to match(/Welcome to Teach secondary computing Tobias/)
+      expect(mail.body.encoded).to match(/Welcome to Teach secondary computing certificate, Tobias/)
     end
 
     it 'contains mail_to link' do
@@ -27,7 +27,7 @@ RSpec.describe SecondaryMailer, type: :mailer do
 
     context 'when viewing plain text' do
       it 'greets the user' do
-        expect(mail.text_part.body.to_s).to match(/Welcome to Teach secondary computing Tobias/)
+        expect(mail.text_part.body.to_s).to match(/Welcome to Teach secondary computing certificate, Tobias/)
       end
 
       it 'includes email address' do
@@ -102,6 +102,40 @@ RSpec.describe SecondaryMailer, type: :mailer do
       it 'includes email address' do
         expect(mail.text_part.body.to_s)
           .to match(/Get in touch by emailing info@teachcomputing.org./)
+      end
+    end
+  end
+
+  describe 'completed_cpd_not_activities' do
+    let(:mail) { SecondaryMailer.with(user: user).completed_cpd_not_activities }
+    let(:mail_subject) { "You're so close!" }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq(mail_subject)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(['noreply@teachcomputing.org'])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to match(/Dear Tobias/)
+    end
+
+    it 'includes the subject in the email' do
+      expect(mail.html_part.body.to_s).to include("<title>#{CGI::escape_html(mail_subject)}</title>")
+    end
+
+    it 'contains link to dashboard' do
+      expect(mail.html_part.body.to_s).to have_link('Check your dashboard', href: secondary_certificate_url)
+    end
+
+    context 'when viewing plain text' do
+      it 'greets the user' do
+        expect(mail.text_part.body.to_s).to match(/Dear Tobias,/)
+      end
+
+      it 'includes email address' do
+        expect(mail.text_part.body.to_s)
+          .to include("Check your dashboard (#{secondary_certificate_url})")
       end
     end
   end

@@ -11,6 +11,8 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
       CSAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
     when 'primary-certificate'
       PrimaryMailer.with(user: enrolment.user, enrolment_id: enrolment.id).inactive_prompt.deliver_now
+    when 'secondary-certificate'
+      SecondaryMailer.with(user: enrolment.user, enrolment_id: enrolment.id).inactive_prompt.deliver_now
     end
   end
 end
