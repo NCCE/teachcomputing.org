@@ -155,6 +155,7 @@
 .card .status-block {
   @include status_block();
   display: inline-block;
+  flex-shrink: 0;
   margin-bottom: 10px;
   @include govuk-media-query($from: desktop) {
     margin-bottom: 15px;
@@ -257,7 +258,7 @@
   justify-content: space-between;
 }
 
-.card--dashboard--cs-accelerator,
+.card--dashboard--subject-knowledge,
 .card--dashboard--secondary {
   border-top-color: $secondary-cert-color;
 }

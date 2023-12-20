@@ -1,16 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe CSAcceleratorMailer, type: :mailer do
+  include ExternalLinkHelper
+
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
   let(:enrolment) { create(:user_programme_enrolment, programme: programme, user: user) }
   let(:completed_mail) { CSAcceleratorMailer.with(user: user, programme: programme).completed }
   let(:completed_subject) do
-    'Congratulations you have completed the National Centre for Computing Education Certificate in GCSE Computing Subject Knowledge'
+    'Congratulations you have completed the Key stage 3 and GCSE Computer Science certificate from the National Centre for Computing Education'
   end
   let(:eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
   let(:manual_enrolled_welcome_mail) { CSAcceleratorMailer.with(user: user).manual_enrolled_welcome }
-  let(:eligible_subject) { "#{user.first_name} your CS Accelerator test is ready." }
+  let(:eligible_subject) { "#{user.first_name} your Key stage 3 and GCSE Computer Science test is ready." }
   let(:non_enrolled_csa_user_mail) { described_class.with(user: user, programme: programme).non_enrolled_csa_user }
   let(:non_enrolled_csa_user_subject) { 'Time to finish what you’ve started and achieve your qualification' }
   let(:getting_started_prompt) do
@@ -59,7 +61,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#manual_enrolled_welcome' do
     it 'renders the headers' do
-      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to our subject knowledge certificate')
+      expect(manual_enrolled_welcome_mail.subject).to include('Welcome to our KS3 and GCSE Computer Science subject knowledge certificate')
       expect(manual_enrolled_welcome_mail.to).to eq([user.email])
       expect(manual_enrolled_welcome_mail.from).to eq(['noreply@teachcomputing.org'])
     end
@@ -67,7 +69,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
   describe '#auto_enrolled_welcome' do
     let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
-    let(:mail_subject) { 'Achieve your subject knowledge certificate with the Computer Science Accelerator' }
+    let(:mail_subject) { 'Achieve your subject knowledge certificate with the Key stage 3 and GCSE Computer Science certificate' }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(mail_subject)
@@ -81,12 +83,12 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
     it 'contains link to teachcomputing' do
       expect(mail.html_part.body)
-        .to have_link('TeachComputing.org', href: 'https://teachcomputing.org/')
+        .to have_link('TeachComputing.org', href: root_url)
     end
 
     it 'contains link to handbook' do
       expect(mail.html_part.body)
-        .to have_link('handbook', href: 'http://ncce.io/csa-handbook')
+        .to have_link('handbook', href: csa_handbook_url)
     end
 
     it 'contains link to dashboard' do
@@ -96,7 +98,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
     it 'contains link to funding' do
       expect(mail.html_part.body)
-        .to have_link('eligible for a subsidy', href: '/funding')
+        .to have_link('for a subsidy', href: cms_post_url('funding'))
     end
 
     it 'contains opt-out link' do
@@ -121,12 +123,12 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to teachcomputing' do
         expect(mail.text_part.body)
-          .to match(%r{TeachComputing.org \(https://teachcomputing.org/\)})
+          .to include("TeachComputing.org (#{root_url})")
       end
 
       it 'contains link to handbook' do
         expect(mail.text_part.body)
-          .to match(%r{handbook \(http://ncce.io/csa-handbook\)})
+          .to include("handbook (#{csa_handbook_url})")
       end
 
       it 'contains link to dashboard' do
@@ -136,7 +138,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it 'contains link to bursary' do
         expect(mail.text_part.body)
-          .to match(%r{eligible for a subsidy \(https://teachcomputing.org/funding\)})
+          .to include("eligible for a subsidy \(#{cms_post_url('funding', anchor: 'secondary-subsidy')})")
       end
 
       it 'contains opt-out link' do

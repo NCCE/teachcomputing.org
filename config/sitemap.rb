@@ -16,7 +16,7 @@ SitemapGenerator::Sitemap.create do
   add '/careers-week', changefreq: 'monthly'
   add '/certification', changefreq: 'monthly'
   add '/courses', changefreq: 'daily'
-  add '/cs-accelerator', changefreq: 'monthly'
+  add '/subject-knowledge', changefreq: 'monthly'
   add '/contact', changefreq: 'monthly'
   add '/gender-balance', changefreq: 'monthly'
   add '/i-belong', changefreq: 'monthly'

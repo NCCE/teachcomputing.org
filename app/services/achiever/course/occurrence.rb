@@ -27,7 +27,7 @@ class Achiever::Course::Occurrence
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
                     EndDate: Time.zone.today.strftime('%F') }.freeze
-  PROGRAMME_NAMES = %w[ncce PDLP].freeze
+  PROGRAMME_NAMES = ['ncce', 'PDLP', 'Computing Clusters'].freeze
 
   def self.face_to_face(search_location_coordinates: nil)
     occurrences = PROGRAMME_NAMES.flat_map do |programme_name|

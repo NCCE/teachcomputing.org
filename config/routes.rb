@@ -69,7 +69,7 @@ Rails.application.routes.draw do
       put '/pathway', action: :update, controller: 'secondary_certificate/user_programme_pathway', as: :update_user_pathway
     end
 
-    resource 'cs_accelerator', controller: 'cs_accelerator', path: 'cs-accelerator', only: %i[show],
+    resource 'cs_accelerator', controller: 'cs_accelerator', path: 'subject-knowledge', only: %i[show],
                                as: :cs_accelerator_certificate do
       get '/complete', action: :complete, as: :complete
       get '/pending', action: :pending, as: :pending
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
       get '/class_marker_diagnostic/:id', to: '/diagnostics/class_marker/cs_accelerator#show',
                                           as: :class_marker_diagnostic
       get '/view-certificate', action: :show, controller: 'certificate', as: :certificate,
-                               defaults: { slug: 'cs-accelerator' }
+                               defaults: { slug: 'subject-knowledge' }
       post '/enrol', action: :create, controller: '/user_programme_enrolments', as: :enrol
       get '/unenrol/:id', action: :destroy, controller: '/user_programme_enrolments', as: :unenrol
       put '/pathway', action: :update, controller: 'cs_accelerator/user_programme_pathway', as: :update_user_pathway
@@ -153,7 +153,7 @@ Rails.application.routes.draw do
   get '/422', to: 'pages#exception', defaults: { status: 422 }
   get '/500', to: 'pages#exception', defaults: { status: 500 }
   get '/about', to: 'pages#page', as: :about, defaults: { page_slug: 'about' }
-  get '/accelerator', to: redirect('/cs-accelerator')
+  get '/accelerator', to: redirect('/subject-knowledge')
   get '/accessibility-statement', to: 'pages#page', as: :accessibility_statement,
                                   defaults: { page_slug: 'accessibility-statement' }
   get '/auth/stem', to: redirect('/login')
@@ -162,8 +162,8 @@ Rails.application.routes.draw do
   get '/careers-week', to: redirect('/careers')
   get '/competition-terms-and-conditions', to: 'pages#page', as: :competition_terms_and_conditions,
                                            defaults: { page_slug: 'competition-terms-and-conditions' }
-  get '/cs-accelerator', to: 'pages#static_programme_page', as: :cs_accelerator,
-                         defaults: { page_slug: 'cs-accelerator' }
+  get '/subject-knowledge', to: 'pages#static_programme_page', as: :cs_accelerator,
+                         defaults: { page_slug: 'subject-knowledge' }
   get '/a-level-certificate', to: 'pages#static_programme_page', as: :about_a_level,
                          defaults: { page_slug: 'a-level-certificate' }
   get '/external/assets/ncce.css', to: 'asset_endpoint#css_endpoint', as: :css_endpoint
@@ -176,7 +176,6 @@ Rails.application.routes.draw do
   get '/secondary-question-banks', to: 'pages#page', as: :secondary_question_banks, defaults: { page_slug: 'secondary-question-banks' }
   get '/primary-early-careers', to: 'pages#page', as: :primary_early_careers, defaults: { page_slug: 'primary-early-careers' }
   get '/powerupthedigitalgeneration', to: redirect('/supporting-partners')
-  get '/hero-demo', to: 'pages#page', as: :hero_demo, defaults: { page_slug: 'hero-demo' }
   get '/pedagogy', to: 'pages#page', as: :pedagogy, defaults: { page_slug: 'pedagogy' }
   get '/impact-and-evaluation', to: 'pages#page', as: :impact, defaults: { page_slug: 'impact-and-evaluation' }
   get '/a-level-computer-science', to: redirect('/isaac-computer-science')
@@ -203,15 +202,15 @@ Rails.application.routes.draw do
   get '/primary-senior-leaders', to: 'pages#page', as: :primary_senior_leaders,
                                  defaults: { page_slug: 'primary-senior-leaders' }
   get '/secondary-teachers', to: 'landing_pages#secondary_teachers', as: :secondary_teachers
+  get '/secondary-certification', to: 'pages#secondary-certification', as: :secondary_certification
   get '/signup-confirmation', to: 'pages#page', as: :signup_confirmation, defaults: { page_slug: 'signup-confirmation' }
   get '/supporting-partners', to: 'pages#page', as: :supporting_partners, defaults: { page_slug: 'supporting-partners' }
   get '/terms-conditions', to: 'pages#page', as: :terms_conditions, defaults: { page_slug: 'terms-conditions' }
-  get '/welcome', to: 'welcome#show', as: :welcome
-
-  resources :enrichment, only: :show, param: :slug
 
   get '/primary-enrichment', to: 'enrichment#show', defaults: { slug: 'primary-certificate' }
   get '/secondary-enrichment', to: 'enrichment#show', defaults: { slug: 'secondary-certificate' }
+
+  resource :search, only: :show
 
   # CMS ROUTES
   get '/home-teaching-resources' => redirect('/home-teaching')

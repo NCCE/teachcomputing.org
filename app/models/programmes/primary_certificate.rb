@@ -1,6 +1,6 @@
 module Programmes
   class PrimaryCertificate < Programme
-    PROGRAMME_TITLE = 'Primary Computing Teaching'.freeze
+    PROGRAMME_TITLE = 'Teach Primary Computing'.freeze
 
     def short_name
       'Primary certificate'
@@ -39,6 +39,10 @@ module Programmes
     end
 
     def enrichment_enabled?
+      true
+    end
+
+    def send_pending_mail?
       true
     end
   end

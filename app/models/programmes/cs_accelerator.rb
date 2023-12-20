@@ -3,7 +3,7 @@ module Programmes
     PROGRAMME_TITLE = 'GCSE Computer Science Subject Knowledge'.freeze
 
     def short_name
-      'CS Accelerator'
+      'Subject knowledge'
     end
 
     def pending_delay

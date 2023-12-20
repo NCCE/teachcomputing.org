@@ -1,4 +1,4 @@
-<% meta_tag :title, 'CS Accelerator - Teach Computing' %>
+<% meta_tag :title, 'KS3 and GCSE - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true  %>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="light-grey-bg">
@@ -6,7 +6,7 @@
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <div class="card card--no-glyph card--cs-accelerator card--landing-page lp-certs--card">
+          <div class="card card--no-glyph card--subject-knowledge card--landing-page lp-certs--card">
             <div class="lp-certs--card-header">
               <h2 class="govuk-heading-m card__heading lp-certs--card-heading">Your certificate is ready!</h2>
               <span class="govuk-body-m status-block status-block--completed">Certificate awarded</span>
@@ -113,21 +113,21 @@
               ),
               twitter_share_link: link_to(
                 t('.share_aside.share.twitter'),
-                'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fcs-accelerator',
+                'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fsubject-knowledge',
                 class: 'govuk-link ncce-link complete_social complete_social--x',
                 data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en', size: 'large'),
                 target: '_blank'
               ),
               facebook_share_link: link_to(
                 t('.share_aside.share.facebook'),
-                'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fcs-accelerator',
+                'https://www.facebook.com/sharer/sharer.php?u=https://teachcomputing.org%2Fsubject-knowledge',
                 class: 'govuk-link ncce-link complete_social complete_social--facebook',
                 data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank',
               ),
               linkedin_share_link: link_to(
                 t('.share_aside.share.linkedin'),
-                'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/cs-accelerator',
+                'https://www.linkedin.com/shareArticle?mini=true&url=https://teachcomputing.org/subject-knowledge',
                 class: 'govuk-link ncce-link complete_social complete_social--linkedin',
                 data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
                 target: '_blank',

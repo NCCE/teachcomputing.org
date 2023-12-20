@@ -22,7 +22,7 @@ class Programme < ApplicationRecord
   scope :enrollable, -> { where(enrollable: true) }
 
   def self.cs_accelerator
-    Programme.find_by(slug: 'cs-accelerator')
+    Programme.find_by(slug: 'subject-knowledge')
   end
 
   def self.primary_certificate
@@ -86,7 +86,7 @@ class Programme < ApplicationRecord
   end
 
   def cs_accelerator?
-    slug == 'cs-accelerator'
+    slug == 'subject-knowledge'
   end
 
   def i_belong?
@@ -144,5 +144,16 @@ class Programme < ApplicationRecord
   def set_user_programme_enrolment_complete_data(enrolment)
     enrolment.certificate_name = enrolment.user.full_name
     enrolment.save
+  end
+
+  def user_qualifies_for_credly_badge?(user)
+    has_a_f2f_achievement = user
+      .achievements
+      .in_state(:complete)
+      .with_category(Activity::FACE_TO_FACE_CATEGORY)
+      .belonging_to_programme(self)
+      .count >= 1
+
+    user_enrolled?(user) && (has_a_f2f_achievement || user_meets_completion_requirement?(user))
   end
 end

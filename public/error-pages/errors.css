@@ -6354,13 +6354,13 @@ a:not([class]):active {
 }
 
 .card--purple,
-.card--cs-accelerator {
+.card--subject-knowledge {
   border-left-color: #a94e91;
 }
 
 @media (min-width: 48.0625em) {
   .card--purple:after,
-  .card--cs-accelerator:after {
+  .card--subject-knowledge:after {
     background-color: #f7e0f1;
   }
 }
@@ -6767,11 +6767,11 @@ a:not([class]):active {
   }
 }
 
-.cs-accelerator {
+.subject-knowledge {
   background-color: #e3e2f3;
 }
 
-.cs-accelerator-aside__list > li {
+.subject-knowledge-aside__list > li {
   margin-bottom: 10px;
 }
 
@@ -6886,7 +6886,7 @@ a:not([class]):active {
 
 .hero--purple,
 .hero--secondary-certificate,
-.hero--cs-accelerator {
+.hero--subject-knowledge {
   background-color: #a94e91;
 }
 

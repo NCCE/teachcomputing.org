@@ -28,7 +28,11 @@ class Achiever::Course::Template
   QUERY_STRINGS = { Page: '1',
                     RecordCount: '1000',
                     HideFromweb: '0' }.freeze
-  PROGRAMME_NAMES = %w[ncce PDLP].freeze
+  PROGRAMME_NAMES = ['ncce', 'PDLP', 'Computing Clusters'].freeze
+
+  TS_PROGRAMME_MAPPING = {
+    'CS Accelerator' => 'Subject Knowledge'
+  }
 
   def self.from_resource(resource, activity)
     new.tap do |t|
@@ -46,6 +50,9 @@ class Achiever::Course::Template
       t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.OnlineCPD'].downcase)
       t.outcomes = resource['Template.Outcomes']
       t.programmes = resource['Template.TCProgrammeTag'].split(',')
+
+      t.programmes.map! { TS_PROGRAMME_MAPPING[_1] || _1 }
+
       t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.RemoteDeliveredCPD']&.downcase)
       t.subjects = resource['Template.AdditionalSubjects'].split(';')
       t.summary = resource['Template.Summary']
@@ -73,7 +80,7 @@ class Achiever::Course::Template
 
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
-    end
+    end.uniq { _1['Template.COURSETEMPLATENO'].downcase }
 
     templates.filter_map do |template|
       activity = activities[template['Template.COURSETEMPLATENO'].downcase]
@@ -151,8 +158,8 @@ class Achiever::Course::Template
 
   def by_certificate(certificate)
     case certificate
-    when 'cs-accelerator'
-      @programmes.include?('CS Accelerator')
+    when 'subject-knowledge'
+      @programmes.include?('Subject Knowledge')
     when 'secondary-certificate'
       @programmes.include?('Secondary')
     when 'primary-certificate'

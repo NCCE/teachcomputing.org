@@ -41,6 +41,10 @@
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
   }
+
+  &.full-width {
+    grid-column: 1 / 3;
+  }
 }
 
 .bordered-card__text {
@@ -91,6 +95,14 @@
   margin-bottom: 0;
 }
 
+
+.secondary-certification-cards {
+  gap: 40px;
+  .bordered-card__get-involved-button {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
 .bordered-cards__green-tops {
   .bordered-card {
     border-top: solid 9px $lime_green;

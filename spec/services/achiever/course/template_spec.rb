@@ -116,7 +116,7 @@ RSpec.describe Achiever::Course::Template do
     context 'when the programme is cs accelerator' do
       it 'returns true when the template is part of the programme' do
         template = described_class.all.first
-        expect(template.by_certificate('cs-accelerator')).to eq true
+        expect(template.by_certificate('subject-knowledge')).to eq true
       end
     end
 

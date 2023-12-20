@@ -110,4 +110,16 @@ module ExternalLinkHelper
   def structuring_your_i_belong_evidence_url
     'https://static.teachcomputing.org/Structuring+your+evidence+for+I+Belong.docx'
   end
+
+  def csa_handbook_url
+    'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf'
+  end
+
+  def i_belong_action_plan_url
+    'https://impact.stem.org.uk/'
+  end
+
+  def stem_ambassadors_url
+    'https://www.stem.org.uk/stem-ambassadors/computing-ambassadors'
+  end
 end

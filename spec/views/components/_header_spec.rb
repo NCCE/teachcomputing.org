@@ -20,7 +20,7 @@ RSpec.describe('components/_header', type: :view) do
 
   it 'shows a link to Secondary teachers' do
     render
-    expect(rendered).to have_link('Secondary teacher toolkit', href: '/secondary-teachers')
+    expect(rendered).to have_link('Teacher certification', href: '/secondary-certification')
   end
 
   context 'when a user is signed in' do

@@ -4,22 +4,18 @@ module NavigationHelper
       { text: 'Primary school',
         children: [
           { text: 'Primary teacher toolkit', link: primary_teachers_path, label: 'Primary teachers' },
-          { text: 'Primary certificate', link: primary_path, label: 'Primary certificate' },
+          { text: 'Primary teacher certificate', link: primary_path, label: 'Primary teacher certificate' },
           { text: 'Early career and trainee teachers', link: '/primary-early-careers', label: 'Primary ECT' },
-          { text: 'Primary senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' },
+          { text: 'Senior leaders', link: '/primary-senior-leaders', label: 'Primary SLT' },
           { text: 'Enrichment', link: primary_enrichment_path, label: 'Enrichment' }
         ] },
       { text: 'Secondary school',
         children: [
-          { text: 'Secondary teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
-          { text: 'Subject knowledge certificate', link: cs_accelerator_path, label: 'Subject knowledge certificate' },
-          { text: 'Secondary certificate', link: secondary_path, label: 'Secondary certificate' },
-          { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
-          { text: 'Secondary senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' },
+          { text: 'Teacher toolkit', link: secondary_teachers_path, label: 'Secondary teachers' },
+          { text: 'Teacher certification', link: secondary_certification_path, label: 'Secondary teachers certification' },
           { text: 'Enrichment', link: secondary_enrichment_path, label: 'Enrichment' },
-          if FeatureFlagService.new.flags[:alevel_programme_feature]
-            { text: 'A level knowledge certificate', link: about_a_level_path, label: 'A Level' }
-          end
+          { text: 'Early career and trainee teachers', link: '/secondary-early-careers', label: 'Secondary ECT' },
+          { text: 'Senior leaders', link: '/secondary-senior-leaders', label: 'Secondary SLT' },
         ].compact },
       { text: 'Training and support',
         children: [
@@ -35,7 +31,7 @@ module NavigationHelper
           { text: 'Isaac Computer Science', link: about_isaac_computer_science_path, label: 'Isaac Computer Science' },
           { text: 'Secondary question banks', link: secondary_question_banks_path, label: 'Teaching resources' },
           { text: 'Artificial Intelligence', link: cms_page_path(page_slug: 'artificial-intelligence'), label: 'Artificial Intelligence' },
-          { text: 'Pedagogy', link: cms_page_path(page_slug: '/pedagogy'), label: 'Pedagogy' },
+          { text: 'Pedagogy', link: cms_page_path(page_slug: 'pedagogy'), label: 'Pedagogy' },
           { text: 'Primary computing glossary', link: cms_page_path(page_slug: '/primary-computing-glossary'), label: 'Resources primary glossary' },
           { text: 'Physical computing kits', link: cms_page_path('physical-computing-kit'), label: 'Physical computing kits' }
         ] },

@@ -15,7 +15,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
           },
           date: 'Published July 2021',
           body: {
-            text: 'Read the experiences of our second cohort of graduates and the impact of completing the Computer Science Accelerator on them, their students and colleagues.'
+            text: 'Read the experiences of our second cohort of graduates and the impact of completing the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate) on themselves, their students and colleagues. '
           }
         },
         {
@@ -26,7 +26,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
           },
           date: 'Published October 2020',
           body: {
-            text: 'Reviews feedback from the first graduates of the Computer Science Accelerator programme, covering programme quality, value, impact, and overall experience.'
+            text: 'Reviews feedback from the first graduates of the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate), covering programme quality, value, impact, and overall experience.'
           }
         }
       ]
@@ -73,7 +73,7 @@ RSpec.describe DocumentCardsComponent, type: :component do
     it 'renders the body text' do
       expect(page).to have_css(
         '.document-card__text',
-        text: 'Reviews feedback from the first graduates of the Computer Science Accelerator'
+        text: 'Reviews feedback from the first graduates of the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate), covering programme quality, value, impact, and overall experience.'
       )
     end
   end

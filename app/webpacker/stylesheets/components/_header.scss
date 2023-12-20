@@ -103,6 +103,21 @@
   padding: 0;
 }
 
+.ncce-header__site-search {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 12px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 56px;
+    width: 275px;
+  }
+}
+
+
 ///user navigation
 .ncce-header__user {
   @include govuk-media-query($from: desktop) {

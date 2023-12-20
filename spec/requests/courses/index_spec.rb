@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController do
-  let(:programme) { create(:programme, slug: 'cs-accelerator', title: 'CS Accelerator') }
+  let(:programme) { create(:programme, slug: 'subject-knowledge', title: 'CS Accelerator') }
 
   describe 'GET #index' do
     before do
@@ -36,7 +36,7 @@ RSpec.describe CoursesController do
         get courses_path, params: {
           level: 'Key stage 1',
           topic: 'Computing',
-          certificate: 'cs-accelerator'
+          certificate: 'subject-knowledge'
         }
       end
 
@@ -44,7 +44,7 @@ RSpec.describe CoursesController do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ['Key stage 1', 'Computing', 'cs-accelerator']
+            ['Key stage 1', 'Computing', 'subject-knowledge']
           )
       end
     end

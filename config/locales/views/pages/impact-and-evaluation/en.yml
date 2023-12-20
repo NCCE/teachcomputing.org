@@ -24,12 +24,12 @@ en:
       graduates_card:
         title: "Computer Science Accelerator Graduates Evaluation (cohort 1)"
         date: "Published October 2020"
-        text: "Reviews feedback from the first graduates of the Computer Science Accelerator programme, covering programme quality, value, impact, and overall experience."
+        text: "Reviews feedback from the first graduates of the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate), covering programme quality, value, impact, and overall experience."
       graduates_card_2:
         title: "Computer Science Accelerator Graduates Evaluation (cohort 2)"
         date: "Published July 2021"
         text:
-          html: "Read the experiences of our second cohort of graduates and the impact of completing the Computer Science Accelerator on them, their students and colleagues. You can also read %{executive_summary_link}."
+          html: "Read the experiences of our second cohort of graduates and the impact of completing the programme (now known as KS3 and GCSE Computer Science subject knowledge certificate) on themselves, their students and colleagues. You can also read %{executive_summary_link}."
       impact_report_card:
         title: "NCCE Impact Report 2020"
         date: "Published November 2020"

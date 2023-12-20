@@ -43,10 +43,10 @@ class Activity < ApplicationRecord
   store_accessor :public_copy, %i[title_url description evidence_brief evidence_bullets], prefix: true
 
   def self.cs_accelerator_diagnostic_tool
-    Activity.find_or_create_by(slug: 'cs-accelerator-diagnostic-tool') do |activity|
+    Activity.find_or_create_by(slug: 'subject-knowledge-diagnostic-tool') do |activity|
       activity.title = 'Taken diagnostic tool'
       activity.credit = 10
-      activity.slug = 'cs-accelerator-diagnostic-tool'
+      activity.slug = 'subject-knowledge-diagnostic-tool'
       activity.category = DIAGNOSTIC_CATEGORY
       activity.self_certifiable = false
       activity.provider = 'system'

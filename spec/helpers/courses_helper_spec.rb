@@ -346,7 +346,7 @@ describe CoursesHelper, type: :helper do
 
   describe '#certificate_card_summary' do
     it 'renders the correct copy for CSA' do
-      expect(helper.certificate_card_summary(build(:cs_accelerator))).to eq('This course is part of the Subject knowledge certificate')
+      expect(helper.certificate_card_summary(build(:cs_accelerator))).to eq('This course is part of the KS3 and GCSE Computer Science subject knowledge certificate')
     end
 
     it 'renders the correct copy for Secondary' do

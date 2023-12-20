@@ -1,0 +1,45 @@
+en:
+  pages:
+    secondary-certification:
+      hero:
+        title: "Secondary Teacher Certification"
+      intro:
+        text: "Develop your subject knowledge and classroom practice with a National Centre for Computing Education certificate; improve your confidence and take your career to the next level."
+        bullets:
+          recognised: "Nationally recognised certification accredited by BCS, The Chartered Institute for IT"
+          developed: "Developed by education specialists, aligned to the curriculum at key stage 3, GCSE and A level"
+          pathways: "Pathways to help you develop relevant computing skills, from beginner to expert level"
+        button:
+          title: "Register for the Computing Quality Framework"
+          url: "https://computingqualityframework.org/"
+          event-label: "Computing Quality Framework"
+
+      nationally-recognised:
+        title: "Our nationally recognised certificates"
+      subject-knowledge:
+        title: "Subject knowledge"
+        cards:
+          ks-subject-knowledge:
+            title: "Key stage 3 and GCSE Computer Science subject knowledge"
+            text:
+              html: "Are you teaching or planning to teach key stage 3 and/or GCSE Computer Science?<br/><br/>If so, we recommend beginning your professional development journey with us here. Strong subject knowledge is a foundation for great teaching, helping to build student understanding and tackle misconceptions."
+            link:
+              title: "Explore this certificate"
+              event-label: "Secondary Certificate"
+          teach-secondary-computing:
+            title: "A level Computer Science subject knowledge"
+            text:
+              html: "Are you teaching or planning to teach A level Computer Science and looking to demonstrate your subject knowledge at this advanced standard?<br/><br/>Our certificate will help you benchmark your computer science knowledge and identify gaps in understanding to address through CPD."
+            link:
+              title: "Explore this certificate"
+              event-label: "Senior leader guide"
+      pedagogy-and-leadership:
+        title: "Pedagogy and leadership"
+        cards:
+          a-level-subject-knowledge:
+            title: "Teach secondary computing"
+            text:
+              html: "Do you want to improve your pedagogy and teaching effectiveness across secondary computing?<br/><br/>We recommend progressing through this certificate alongside the KS3 and GCSE Computer Science subject knowledge certificate to put your strengthening subject knowledge into classroom practice that raises student attainment. "
+            link:
+              title: "Explore this certificate"
+              event-label: "Curriculum resources"

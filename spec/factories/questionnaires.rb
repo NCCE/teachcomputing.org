@@ -10,11 +10,11 @@ FactoryBot.define do
     end
 
     trait :cs_accelerator_enrolment_questionnaire do
-      slug { 'cs-accelerator-enrolment-questionnaire' }
+      slug { 'subject-knowledge-enrolment-questionnaire' }
     end
 
     factory :csa_enrolment_questionnaire do
-      slug { 'cs-accelerator-enrolment-questionnaire' }
+      slug { 'subject-knowledge-enrolment-questionnaire' }
     end
   end
 end

@@ -4,6 +4,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   include StiPreload
 
   has_many :programme_activities, -> { order(:order) }
+  has_many :activities, through: :programme_activities
   belongs_to :programme
 
   scope :progress_bar_groupings, -> { where.not(progress_bar_title: nil) }

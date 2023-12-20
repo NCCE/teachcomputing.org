@@ -1,26 +1,26 @@
 Dear <%= @user.first_name %>,
 
-Congratulations, you are now eligible to take the test and obtain your Subject knowledge certificate.
+Congratulations on your professional development progress! You have now completed the required hours of CPD to unlock the Key Stage 3 and GCSE Computer Science subject knowledge certificate test
 
-To determine your next step, you can take our mock test to assess your subject knowledge and identify any areas from the curriculum where you need further support. We also have resources to help you prepare for your test, including:
+Take the test now (approximately 30 minutes) and obtain your accredited certificate.
+
+How does it work?
+
+-  The test is timed and multiple choice
+- It should be taken under exam conditions, and you'll need to provide contact details of a member of your leadership team who can confirm this
+
+Need more support?
+
+Take our mock test (https://www.classmarker.com/online-test/start/?quiz=gq36013dee29b07b) to assess your subject knowledge and identify any areas from the curriculum where you need further support. We also have resources to help you prepare for your test, including:
 
 - Preparing to take the test (short course) (<%= course_url(id: 'CP350', name: 'preparing-to-take-the-csa-test-short-course') %>)
 - CSA Handbook (https://ncce.io/csa-handbook)
 
-Ready to take the test?
+We also recommend you complete more courses on your chosen pathway to ensure you possess well-rounded subject knowledge before attempting to take the test.
 
-You are one step away from receiving your certificate and being recognised for your subject knowledge. If you are eligible for funding for supply cover (https://teachcomputing.org/funding), it will be paid to your school or college once you pass the test.
+Depending on your starting point, you may also benefit from engaging in CPD from one of our other pathways, which you can access via your certificate dashboard (<%= cs_accelerator_certificate_url %>). Alternatively, you can browse our full range of training via our courses page (<%= courses_url(certificate: @programme.slug) %>).
 
-How does it work?
 
-- the test is timed and multiple choice
-- it should be taken under exam conditions, and you'll need to provide contact details of a member of your leadership team who can confirm this
+If you work in state-funded education, you may also be eligible for a subsidy (https://teachcomputing.org/funding#secondary-subsidy) to support supply cover for continuing professional development, paid to your school or college.Plus, your local Computing Hub (<%= hubs_url %>) is on-hand to provide guidance and support at any time.
 
-Take the test (<%= cs_accelerator_url %>)
-
-Not quite ready?
-
-Before taking the test, we recommend you complete all courses on your chosen pathway. Depending on your starting point, you may also benefit from engaging in CPD from one of our other pathways, which you can access via your certificate dashboard (<%= cs_accelerator_certificate_url %>). Alternatively, you can browse our full range of training via our courses page (<%= courses_url(certificate: @programme.slug) %>).
-
-Plus, your local Computing Hub (<%= hubs_url %>) is on-hand to provide guidance and support at any time.
-
+Good luck!

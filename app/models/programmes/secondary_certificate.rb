@@ -1,6 +1,6 @@
 module Programmes
   class SecondaryCertificate < Programme
-    PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
+    PROGRAMME_TITLE = 'Teach Secondary Computing'.freeze
 
     def short_name
       'Secondary certificate'
@@ -51,6 +51,10 @@ module Programmes
         ),
         *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
       ]
+    end
+
+    def send_pending_mail?
+      true
     end
   end
 end

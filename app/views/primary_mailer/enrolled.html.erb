@@ -1,13 +1,13 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Welcome <%= @user.first_name %>, to Teach primary computing!</p>
-  <p class='govuk-body'>You have successfully signed up and taken your first step towards completing your certification programme. We look forward to supporting you through your professional learning journey.</p>
+  <p class='govuk-body'>You have successfully signed up and taken your first step towards achieving your Teach primary computing certificate, awarded by BCS, The Chartered Institute for IT. We look forward to supporting you through your professional learning journey.</p>
   <p class='govuk-body'><strong>Next steps...</strong></p>
   <ol class="govuk-list govuk-list--number">
     <li>Explore your <%= link_to "personal dashboard", primary_certificate_url, class: "ncce-link" %> and discover recommended courses and activities from your chosen pathway (you can opt to switch pathways at any time)</li>
     <li>Participate in CPD to develop your practice, either face-to-face, online or remotely</li>
     <li>Engage in a range of activities to demonstrate your commitment to your professional development and your community</li>
-    <li>Successfully complete the programme and receive your qualification</li>
+    <li>Successfully complete the programme and receive your nationally recognised certificate</li>
   </ol>
   <p class='govuk-body'><strong>Need some help?</strong></p>
-  <p class='govuk-body'>For support with this certificate contact <a href="https://teachcomputing.org/hubs" class="ncce-link">your local Computing Hub</a>.</p>
+  <p class='govuk-body'>For support with this certificate contact your <%= link_to 'local Computing Hub', hubs_url, class: 'ncce-link' %>. <%= link_to 'Subsidies', cms_page_url('funding', anchor: '#primary-subsidy') %> are also available to eligible primary schools to support with classroom cover.</p>
 </div>

@@ -20,7 +20,7 @@ module ProgrammesHelper
   end
 
   def csa_programme_title
-    'Subject knowledge certificate'
+    'KS3 and GCSE Computer Science subject knowledge'
   end
 
   def display_programme_tag(programme)

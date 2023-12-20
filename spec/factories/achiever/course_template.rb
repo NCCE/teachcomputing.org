@@ -8,7 +8,7 @@ FactoryBot.define do
     meta_description { 'Course meta description' }
     online_cpd { false }
     outcomes { '' }
-    programmes { ['CS Accelerator'] }
+    programmes { ['Subject Knowledge'] }
     remote_delivered_cpd { false }
     subjects { %w[000000000] }
     summary { '' }

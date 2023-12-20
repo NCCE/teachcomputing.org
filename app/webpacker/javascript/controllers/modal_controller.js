@@ -16,7 +16,6 @@ export default class extends ApplicationController {
   }
 
   onKeyDown(event) {
-    console.log('hi')
     if (event.key === 'Escape') {
       if (this.modalTarget.classList.contains('ncce-modal--expanded')) {
         if (!this.modalTarget.querySelector('ncce-modal--expanded')) {

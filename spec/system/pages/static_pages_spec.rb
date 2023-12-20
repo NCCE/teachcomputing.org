@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'axe/rspec'
 
 RSpec.describe('Static pages', type: :system) do
-  let(:programme) { create(:programme, slug: 'cs-accelerator') }
+  let(:programme) { create(:programme, slug: 'subject-knowledge') }
 
   context 'About page' do
     before do
@@ -35,7 +35,7 @@ RSpec.describe('Static pages', type: :system) do
   describe 'CS Accelerator page' do
     before do
       programme
-      visit '/cs-accelerator'
+      visit '/subject-knowledge'
     end
 
     pending 'no tests written yet'

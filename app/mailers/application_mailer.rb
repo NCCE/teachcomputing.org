@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
+  helper :external_link
+
   default from: '"Teach Computing" <noreply@teachcomputing.org>'
   layout 'mailer'
 
@@ -10,7 +12,9 @@ class ApplicationMailer < ActionMailer::Base
       subject: args[:subject]
     )
 
-    args[:to] = args[:to].email
+    if args[:to].is_a? User
+      args[:to] = args[:to].email
+    end
 
     super(**args) if should_send
   end
