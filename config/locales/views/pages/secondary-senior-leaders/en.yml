@@ -55,7 +55,7 @@ en:
                 event-label: "Secondary certificate"
             link:
               title: "View our secondary teacher certification"
-              url: "/secondary-certificate"
+              url: "/secondary-certification"
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"
