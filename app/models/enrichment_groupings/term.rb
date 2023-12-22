@@ -5,13 +5,13 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
   end
 
   def is_current_term?
-    (normalised_start..normalised_end).cover?(normalised_current_date)
+    (term_start..term_end).cover?(DateTime.now)
   end
 
   def days_till_term
     return 0 if is_current_term?
 
-    difference_in_days = (normalised_start.to_datetime - normalised_current_date).to_i
+    difference_in_days = (term_start.to_datetime - DateTime.now).to_i
 
     if difference_in_days.negative?
       365 + difference_in_days
@@ -20,17 +20,4 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
     end
   end
 
-  private
-
-  def normalised_start
-    normalised_start = term_start.change(year: 2000)
-  end
-
-  def normalised_end
-    normalised_end = term_end.change(year: 2000)
-  end
-
-  def normalised_current_date
-    DateTime.now.change(year: 2000)
-  end
 end
