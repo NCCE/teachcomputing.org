@@ -44,9 +44,9 @@ en:
           certification:
             title: "Nationally-recognised certification"
             text:
-              html: "Help your staff reach their career goals and meet the rise in student demand, with %{our_accelerator_link}. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.<br/><br/>Our Teach secondary computing certificate builds on this, as well as advancing pedagogy. View KS3 and GCSE subject knowledge certificate"
+              html: "Help your staff reach their career goals and meet the rise in student demand, with %{our_accelerator_link}. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.<br/><br/>Our Teach secondary computing certificate builds on this, as well as advancing pedagogy."
               accelerator-link:
-                title: "our Key stage 3 and GCSE Computer Science Subject knowledge certificate"
+                title: "our KS3 and GCSE Computer Science Subject knowledge certificate"
                 url: "/subject-knowledge"
                 event-label: "CSA certificate"
               certificate-link:
@@ -54,8 +54,8 @@ en:
                 url: "/secondary-certificate"
                 event-label: "Secondary certificate"
             link:
-              title: "View Key stage 3 and GCSE Computer Science Subject knowledge certificate"
-              url: "/subject-knowledge"
+              title: "View our secondary teacher certification"
+              url: "/secondary-certification"
               event-label: "Senior leader guide"
           resources:
             title: "Full curriculum resources for Key Stages 3 and 4"
