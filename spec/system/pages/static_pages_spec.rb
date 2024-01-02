@@ -33,12 +33,20 @@ RSpec.describe('Static pages', type: :system) do
   end
 
   describe 'CS Accelerator page' do
+    let(:programme) { create(:cs_accelerator) }
+
     before do
       programme
       visit '/subject-knowledge'
     end
 
-    pending 'no tests written yet'
+    it 'is the correct page' do
+      expect(page).to have_css('.text-certificate-hero__area--text', text: 'Key stage 3 and GCSE Computer Science certificate')
+    end
+
+    it 'main is accessible' do
+      expect(page).to be_accessible.within('#main-content')
+    end
   end
 
   describe 'I Belong page', js: false do
