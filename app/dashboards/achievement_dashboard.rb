@@ -28,7 +28,6 @@ class AchievementDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     user
     activity
-    programmes
     current_state
   ].freeze
 
@@ -37,7 +36,6 @@ class AchievementDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     user
     activity
-    programmes
     supporting_evidence_attachment
     supporting_evidence_blob
     id
@@ -53,7 +51,6 @@ class AchievementDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     activity
     user
-    programme
     supporting_evidence_attachment
     supporting_evidence_blob
     progress
