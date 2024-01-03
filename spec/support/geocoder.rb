@@ -6,7 +6,14 @@ Geocoder::Lookup::Test.set_default_stub(
       'address' => 'Sheffield',
       'state' => 'South Yorkshire',
       'country' => 'United Kingdom',
-      'country_code' => 'UK'
+      'country_code' => 'UK',
+      'address_components' => [
+        {
+          "long_name" => "York",
+          "short_name" => "York",
+          "types" => ["postal_town"]
+        },
+      ]
     }
   ]
 )
