@@ -10,7 +10,6 @@ class AchievementDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     activity: Field::BelongsTo,
     user: Field::BelongsTo,
-    programmes: Field::HasMany,
     supporting_evidence_attachment: Field::HasOne,
     supporting_evidence_blob: Field::HasOne,
     current_state: Field::String.with_options(searchable: false),
