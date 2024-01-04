@@ -66,7 +66,7 @@ RSpec.describe 'Admin::UserProgrammeEnrolmentsController' do
 
       it 'should redirect to the show page' do
         expect(response).to redirect_to(admin_user_path(user))
-        expect(flash[:error]).not_to be_present
+        expect(flash[:alert]).to be_present
       end
     end
 
