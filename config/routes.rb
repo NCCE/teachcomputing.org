@@ -20,10 +20,10 @@ Rails.application.routes.draw do
       get '/perform_sync/:user_id', to: 'users#perform_sync', as: :perform_sync
       get '/perform_reset/:user_id', to: 'users#perform_reset_tests', as: :perform_reset
     end
-    resources :user_programme_enrolments, only: %i[index show]
-    resources :achievements, only: %i[index show]
+    resources :user_programme_enrolments, only: %i[index show edit update]
+    resources :achievements, only: %i[index show destroy]
     resources :assessment_attempts, only: %i[index show]
-    resources :assessment_attempt_transition
+    resources :assessment_attempt_transitions
   end
 
   namespace :api do

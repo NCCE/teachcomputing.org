@@ -1,0 +1,16 @@
+require "administrate/field/base"
+
+class StatePickerField < Administrate::Field::Base
+
+  def valid_states_for_change
+    data.allowed_transitions
+  end
+
+  def name
+    'Current State'
+  end
+
+  def to_s
+    data.current_state.to_s
+  end
+end

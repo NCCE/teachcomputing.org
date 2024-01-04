@@ -6,3 +6,5 @@ en:
         auditable_type: "Record type"
         user: "Changed by"
         authoriser: "Authorised by"
+      user_programme_enrolment:
+        state_machine: "Current State"

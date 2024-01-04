@@ -6,9 +6,7 @@ SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
 SimpleCov.start 'rails' do
   add_group 'Services', 'app/services'
   add_group 'Presenters', 'app/presenters'
-
-  add_filter '/app/dashboards/'
-  add_filter '/app/controllers/admin/'
+  add_group 'Components', 'app/components'
 
   current_branch = `git rev-parse --abbrev-ref HEAD`
   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")

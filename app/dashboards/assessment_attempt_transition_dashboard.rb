@@ -61,9 +61,9 @@ class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how assessment attempts are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(assessment_attempt)
-    a = Assessment.find_by(id: assessment_attempt.assessment_id)
+  def display_resource(assessment_transition)
+    a = Assessment.find_by(id: assessment_transition.assessment_attempt.assessment_id)
     p = Programme.find_by(id: a.programme_id)
-    "#{p.title} assessment (#{assessment_attempt.current_state})"
+    "#{p.title} assessment (#{assessment_transition.assessment_attempt.current_state})"
   end
 end

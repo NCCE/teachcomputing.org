@@ -11,7 +11,7 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     programme: Field::BelongsTo,
     pathway: Field::BelongsTo,
-    current_state: Field::String.with_options(searchable: false),
+    state_machine: StatePickerField,
     id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -28,7 +28,7 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user
     programme
     pathway
-    current_state
+    state_machine
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,18 +42,14 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     updated_at
     flagged
     auto_enrolled
-    current_state
+    state_machine
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    user
-    programme
-    pathway
-    flagged
-    auto_enrolled
+    state_machine
   ].freeze
 
   # COLLECTION_FILTERS
