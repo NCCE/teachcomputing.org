@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    root to: 'pathways#index'
-    resources :badges
+    root to: 'activities#index'
     resources :activities
+    resources :badges
+    resources :programmes, only: %i[index show]
     resources :pathways
     resources :pathway_activities
     resources :hubs

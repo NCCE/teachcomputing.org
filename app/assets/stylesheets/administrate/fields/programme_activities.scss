@@ -1,0 +1,19 @@
+
+div.programme-assignments {
+
+  div.programme-assignment {
+    border: 1px solid blue;
+
+    div.programme-title {
+      padding: 3px;
+    }
+
+    div.groupings {
+      padding: 2px 4px;
+
+      div.group-list {
+        padding: 3px;
+      }
+    }
+  }
+}

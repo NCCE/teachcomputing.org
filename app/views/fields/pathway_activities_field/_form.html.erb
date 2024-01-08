@@ -1,0 +1,34 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <table id="table-for-pathway">
+    <thead>
+      <tr>
+        <th>Programme</th>
+        <th>Pathway</th>
+        <th>Supplementary</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for field.attribute do |attribute_fields| %>
+
+        <tr>
+          <td><%= attribute_fields.object.pathway.programme.title %></td>
+          <td><%= attribute_fields.object.pathway.title %></td>
+          <td><%= attribute_fields.check_box :supplementary  %></td>
+          <td><%= attribute_fields.check_box :_destroy  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="add-field">
+    <p>Add to Pathway</p>
+    <%= select_tag :new_pathway, grouped_options_for_select(field.new_pathway_options),
+                { prompt: 'Select Pathway' } %>
+    <button data-form-id="<%= f.options[:html][:id] %>" type="button" id='pathway-add-new'>Add</button>
+  </div>
+</div>
+

@@ -13,6 +13,8 @@ class Activity < ApplicationRecord
   has_many :pathway_activities, dependent: :destroy
   has_one  :assessment
 
+  accepts_nested_attributes_for :pathway_activities, allow_destroy: true
+
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [
     ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY,

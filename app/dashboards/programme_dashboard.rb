@@ -27,6 +27,7 @@ class ProgrammeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     title
     slug
+    enrollable
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

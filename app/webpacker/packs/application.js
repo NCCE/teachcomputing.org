@@ -16,6 +16,7 @@ import 'cookieconsent'
 
 // JS
 import '../javascript/controllers'
+import '../javascript/controllers'
 import '../javascript/cookie_notice'
 import '../javascript/courses'
 import '../javascript/dropdown__expander'
