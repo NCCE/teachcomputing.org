@@ -8,8 +8,8 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
-    def after_resource_destroyed_path(_achievement)
-      { action: :show, controller: :users, id: _achievement.user.id }
+    def after_resource_destroyed_path(achievement)
+      { action: :show, controller: :users, id: achievement.user.id }
     end
 
 
