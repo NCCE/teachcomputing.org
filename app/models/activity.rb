@@ -14,6 +14,7 @@ class Activity < ApplicationRecord
   has_one  :assessment
 
   accepts_nested_attributes_for :pathway_activities, allow_destroy: true
+  accepts_nested_attributes_for :programme_activities, allow_destroy: true
 
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: { in: [

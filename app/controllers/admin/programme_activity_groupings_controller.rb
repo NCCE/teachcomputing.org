@@ -1,5 +1,5 @@
 module Admin
-  class ProgrammesController < Admin::ApplicationController
+  class ProgrammeActivityGroupingsController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
@@ -15,14 +15,6 @@ module Admin
     # def find_resource(param)
     #   Foo.find_by!(slug: param)
     # end
-
-    def groups
-      respond_to do |format|
-        format.json{
-          render json: requested_resource.programme_activity_groupings.map{ { id: _1.id, title: _1.title } }
-        }
-      end
-    end
 
     # The result of this lookup will be available as `requested_resource`
 

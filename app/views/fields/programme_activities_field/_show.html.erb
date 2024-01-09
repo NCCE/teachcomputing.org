@@ -1,24 +1,11 @@
 
 <div class="programme-assignments">
-  <% if field.assigned_programmes_with_groupings.any? %>
-    <% field.assigned_programmes_with_groupings.each do |programme, groupings| %>
-      <div class="programme-assignment">
-        <div class="programme-title">
-          <%= programme.title %>
-        </div>
-        <% if groupings.any? %>
-          <div class="groupings">
-            <div class="groupings-header">In Groups</div>
-            <div class="group-list">
-              <% groupings.each do |group| %>
-                <%= group.title %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  <% else %>
-    None
+  <% field.data.each do |programme_activity| %>
+    <div class="programme-assignment">
+      <%= programme_activity.programme.title %>
+      <% if programme_activity.programme_activity_grouping %>
+          - (<%= programme_activity.programme_activity_grouping.title %>)
+      <% end %>
+    </div>
   <% end %>
 </div>

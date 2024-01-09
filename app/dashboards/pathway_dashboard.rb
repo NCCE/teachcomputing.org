@@ -15,6 +15,7 @@ class PathwayDashboard < Administrate::BaseDashboard
     title: Field::String,
     slug: Field::String,
     order: Field::Number,
+    legacy: Field::Boolean,
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -28,8 +29,10 @@ class PathwayDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     title
     programme
+    slug
     order
     range
+    legacy
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

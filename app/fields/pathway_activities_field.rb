@@ -16,7 +16,7 @@ class PathwayActivitiesField < Administrate::Field::Base
 
   def available_pathways
     resource.programmes.map do |programme|
-      [ programme, programme.pathways ]
+      [ programme, programme.pathways.not_legacy ]
     end
   end
 
@@ -24,13 +24,12 @@ class PathwayActivitiesField < Administrate::Field::Base
     resource.programmes.map do |programme|
       [
         programme.title,
-        programme.pathways.map{ [ _1.title, _1.id, 'data-title': _1.title, 'data-programme-title': programme.title ] unless pathways.include?(_1) }.compact
+        programme.pathways.not_legacy.map{ [ _1.title, _1.id, 'data-title': _1.title, 'data-programme-title': programme.title ] unless pathways.include?(_1) }.compact
       ]
     end
   end
 
   def self.permitted_attribute(attr, _options = {})
-    # Taken from the HasMany field of Administrate
     { "#{attr.to_s}_attributes".to_sym => {} }
   end
 

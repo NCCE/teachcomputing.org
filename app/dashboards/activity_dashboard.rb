@@ -8,7 +8,6 @@ class ActivityDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pathway_activities: PathwayActivitiesField,
     id: Field::String.with_options(searchable: false),
     title: Field::String,
     created_at: Field::DateTime,
@@ -27,7 +26,8 @@ class ActivityDashboard < Administrate::BaseDashboard
     stem_activity_code: Field::String,
     remote_delivered_cpd: Field::Boolean,
     retired: Field::Boolean,
-    programme_activities: ProgrammeActivitiesField
+    programme_activities: ProgrammeActivitiesField,
+    pathway_activities: PathwayActivitiesField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -44,8 +44,6 @@ class ActivityDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    pathway_activities
-    programme_activities
     title
     created_at
     updated_at
@@ -62,13 +60,14 @@ class ActivityDashboard < Administrate::BaseDashboard
     stem_activity_code
     remote_delivered_cpd
     retired
+    pathway_activities
+    programme_activities
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    pathway_activities
     title
     credit
     slug
@@ -83,6 +82,8 @@ class ActivityDashboard < Administrate::BaseDashboard
     stem_activity_code
     remote_delivered_cpd
     retired
+    programme_activities
+    pathway_activities
   ].freeze
 
   # COLLECTION_FILTERS

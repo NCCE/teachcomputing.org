@@ -1,6 +1,6 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
-class ProgrammeDashboard < Administrate::BaseDashboard
+class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,15 +8,20 @@ class ProgrammeDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pathways: Field::HasMany,
-    id: Field::String.with_options(searchable: false),
+    id: Field::String,
+    activities: Field::HasMany,
+    community: Field::Boolean,
+    metadata: Field::String.with_options(searchable: false),
+    programme: Field::BelongsTo,
+    programme_activities: Field::HasMany,
+    progress_bar_title: Field::String,
+    required_for_completion: Field::Number,
+    sort_key: Field::Number,
     title: Field::String,
-    slug: Field::String,
-    description: Field::Text,
-    enrollable: Field::Boolean,
-    type: Field::Text,
+    type: Field::String,
+    web_copy: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,20 +30,26 @@ class ProgrammeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
     title
-    slug
-    enrollable
+    programme
+    activities
+    community
+    sort_key
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
     title
-    slug
-    description
-    enrollable
+    community
+    metadata
+    programme
+    progress_bar_title
+    required_for_completion
+    sort_key
+    type
+    web_copy
+    activities
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -46,9 +57,14 @@ class ProgrammeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     title
-    slug
-    description
-    pathways
+    community
+    metadata
+    programme
+    progress_bar_title
+    required_for_completion
+    sort_key
+    type
+    web_copy
   ].freeze
 
   # COLLECTION_FILTERS
@@ -63,10 +79,10 @@ class ProgrammeDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how programmes are displayed
+  # Overwrite this method to customize how programme activity groupings are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(programme)
-    programme.title
-  end
+  # def display_resource(programme_activity_grouping)
+  #   "ProgrammeActivityGrouping ##{programme_activity_grouping.id}"
+  # end
 end

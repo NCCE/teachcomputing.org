@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     root to: 'activities#index'
     resources :activities
     resources :badges
-    resources :programmes, only: %i[index show]
+    resources :programmes, only: %i[index show] do
+      member do
+        get 'groups'
+      end
+    end
+    resources :programme_activity_groupings
     resources :pathways
     resources :pathway_activities
     resources :hubs

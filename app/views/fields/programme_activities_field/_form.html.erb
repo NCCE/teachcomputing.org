@@ -1,6 +1,37 @@
+
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute %>
+  <table id="activity-programme-table">
+    <thead>
+      <tr>
+        <th>Programme</th>
+        <th>Group</th>
+        <th>Legacy</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for field.attribute do |attribute_fields| %>
+        <tr>
+          <td><%= attribute_fields.object.programme.title %></td>
+
+          <td><%= attribute_fields.collection_select :programme_activity_grouping_id,
+                      attribute_fields.object.programme.programme_activity_groupings, :id, :title,
+                      { include_blank: 'No Group' } %></td>
+
+          <td><%= attribute_fields.check_box :legacy %></td>
+          <td><%= attribute_fields.check_box :_destroy  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="assign-activity-to-programme">
+    <p>Add to Programme</p>
+    <%= select_tag :new_programme_assignment, options_for_select(field.programme_select_options),
+                { prompt: 'Select Programme' } %>
+    <button data-form-id="<%= f.options[:html][:id] %>" type="button" id='assign-activity-to-programme'>Add</button>
+  </div>
 </div>
