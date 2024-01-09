@@ -80,6 +80,11 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
 
     context "when the user has failed the test" do
       before do
+        user
+        activity
+        achievement
+        assessment
+        assessment_attempt
         failing_result = JSON.parse(failed_json_body, symbolize_names: true)
         UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(failing_result[:test][:test_id], user.id,
           failing_result[:result][:percentage])
