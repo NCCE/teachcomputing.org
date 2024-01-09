@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe EnrichmentEntry, type: :model do
   subject { create(:enrichment_entry) }
 
   it { is_expected.to be_valid }
 
-  context 'when title is nil' do
+  context "when title is nil" do
     it do
       subject.title = nil
 
@@ -13,7 +13,7 @@ RSpec.describe EnrichmentEntry, type: :model do
     end
   end
 
-  context 'when body is nil' do
+  context "when body is nil" do
     it do
       subject.body = nil
 

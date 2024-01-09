@@ -25,7 +25,7 @@ class CourseComponentPreview < ViewComponent::Preview
       :achiever_course_template,
       online_cpd: true,
       always_on: false,
-      title: 'This should not happen as online courses should always be on',
+      title: "This should not happen as online courses should always be on"
     )
     course.occurrences = FactoryBot.build_list(:achiever_course_occurrence, 2)
 

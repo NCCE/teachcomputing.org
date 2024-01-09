@@ -1,7 +1,7 @@
 class Certificates::PathwaysController < ApplicationController
   before_action :set_pathway
 
-  layout 'full-width'
+  layout "full-width"
 
   def show
     @programme = @pathway.programme

@@ -2,7 +2,7 @@ class ApplicationMailer < ActionMailer::Base
   helper :external_link
 
   default from: '"Teach Computing" <noreply@teachcomputing.org>'
-  layout 'mailer'
+  layout "mailer"
 
   def mail(**args)
     should_send = record_sent_mail(
@@ -19,15 +19,15 @@ class ApplicationMailer < ActionMailer::Base
     super(**args) if should_send
   end
 
-  def record_sent_mail(record_sent_mail: false, to:, mailer_type: nil, subject:)
+  def record_sent_mail(to:, subject:, record_sent_mail: false, mailer_type: nil)
     return true unless record_sent_mail
 
     sent_email = SentEmail.new(user: to,
-                               mailer_type: mailer_type,
-                               subject: subject)
+      mailer_type: mailer_type,
+      subject: subject)
     sent_email.save!
     true
-  rescue StandardError => e
+  rescue => e
     Sentry.capture_message("Error recording email sending: #{e}")
     false
   end

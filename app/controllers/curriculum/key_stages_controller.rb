@@ -1,6 +1,6 @@
 module Curriculum
   class KeyStagesController < ApplicationController
-    layout 'full-width'
+    layout "full-width"
 
     def index
       @key_stages = CurriculumClient::Queries::KeyStage.all.key_stages

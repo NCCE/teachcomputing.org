@@ -35,7 +35,7 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
   end
 
   def normalise_date(date)
-    this_year = Date.today.year
+    this_year = Time.zone.today.year
     date_year = date.year
 
     year_to_normalise_to = this_year + (date_year - this_year)

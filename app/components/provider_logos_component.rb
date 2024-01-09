@@ -3,13 +3,13 @@
 class ProviderLogosComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(provider: 'stem-learning', dashboard: true, class_name: nil)
+  def initialize(provider: "stem-learning", dashboard: true, class_name: nil)
     @provider = provider
     @dashboard = dashboard
 
     # Won't display logos for retired course providers to minimize untested layouts and stale logos. 'future-learn' courses were
     # retired in February 2023.
-    @logos = (provider == 'stem-learning') ? logos : []
+    @logos = (provider == "stem-learning") ? logos : []
 
     @class_name = class_name
   end
@@ -17,8 +17,8 @@ class ProviderLogosComponent < ViewComponent::Base
   def logos
     # no alt texts as they don't add to the information in provider_text
     [
-      { filename: 'ncce-logo.svg', alt: '' },
-      { filename: 'stem-logo-small.svg', alt: '' }
+      {filename: "ncce-logo.svg", alt: ""},
+      {filename: "stem-logo-small.svg", alt: ""}
     ]
   end
 end

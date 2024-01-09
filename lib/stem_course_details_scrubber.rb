@@ -23,7 +23,7 @@ class StemCourseDetailsScrubber < Rails::Html::PermitScrubber
   end
 
   def strip_nbsp(node)
-    node.text.gsub(/\u00a0/, '').strip
+    node.text.delete("\u00a0").strip
   end
 
   def skip_node?(node)

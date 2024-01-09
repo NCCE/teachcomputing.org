@@ -5,11 +5,11 @@ class KickOffEmailsJob < ApplicationJob
     enrolment = UserProgrammeEnrolment.find(enrolment_id)
 
     case enrolment.programme.slug
-    when 'primary-certificate'
+    when "primary-certificate"
       PrimaryMailer.with(user: enrolment.user).enrolled.deliver_now
-    when 'i-belong', 'secondary-certificate', 'a-level-certificate'
+    when "i-belong", "secondary-certificate", "a-level-certificate"
       enrolment.programme.mailer.with(user: enrolment.user).welcome.deliver_now
-    when 'subject-knowledge'
+    when "subject-knowledge"
       CSAcceleratorMailer.with(user: enrolment.user).manual_enrolled_welcome.deliver_now unless enrolment.auto_enrolled
       CSAcceleratorMailer.with(user: enrolment.user).auto_enrolled_welcome.deliver_later(wait: delay.hours)
     end
@@ -19,9 +19,9 @@ class KickOffEmailsJob < ApplicationJob
   def delay
     now = Time.now
     delay = if (9 - now.hour).negative?
-              0
-            else
-              9 - now.hour
-            end
+      0
+    else
+      9 - now.hour
+    end
   end
 end

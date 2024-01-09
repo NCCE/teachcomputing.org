@@ -21,12 +21,12 @@ class FileCardComponent < ViewComponent::Base
   end
 
   def format_date(date)
-    DateTime.parse(date).strftime('%d %b %Y')
+    DateTime.parse(date).strftime("%d %b %Y")
   end
 
   def tracking_data(tracking = nil)
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: tracking[:category],
       event_label: tracking[:label] || @title
     }

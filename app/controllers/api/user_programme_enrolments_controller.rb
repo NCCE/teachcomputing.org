@@ -31,15 +31,15 @@ module Api
 
     private
 
-      def as_json(enrolment)
-        enrolment.as_json(
-          methods: :current_state,
-          include: [
-            { user: { only: %i[email stem_achiever_contact_no] } },
-            { programme: { only: [:title] },
-              user_programme_enrolment_transitions: {} }
-          ]
-        )
-      end
+    def as_json(enrolment)
+      enrolment.as_json(
+        methods: :current_state,
+        include: [
+          {user: {only: %i[email stem_achiever_contact_no]}},
+          {programme: {only: [:title]},
+           user_programme_enrolment_transitions: {}}
+        ]
+      )
+    end
   end
 end

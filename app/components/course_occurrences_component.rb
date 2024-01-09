@@ -2,9 +2,9 @@
 
 class CourseOccurrencesComponent < ViewComponent::Base
   delegate :course_meta_icon_class,
-           :occurrence_meta_location,
-           :activity_times,
-           to: :helpers
+    :occurrence_meta_location,
+    :activity_times,
+    to: :helpers
   def initialize(course:)
     @course = course
   end

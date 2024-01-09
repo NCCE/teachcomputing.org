@@ -1,15 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SentEmail, type: :model do
   let(:sent_email) { create(:sent_email) }
 
-  describe 'associations' do
-    it 'belongs to user' do
+  describe "associations" do
+    it "belongs to user" do
       expect(sent_email).to belong_to(:user)
     end
   end
 
-  describe 'validations' do
+  describe "validations" do
     before do
       sent_email
     end

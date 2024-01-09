@@ -1,5 +1,5 @@
 class CmsController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
 
   def articles
     page =
@@ -33,14 +33,14 @@ class CmsController < ApplicationController
 
   def clear_page_cache
     Ghost.new.clear_page_cache(build_slug_from_params)
-    redirect_to request.fullpath.sub(%r{/refresh$}, '')
+    redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 
   private
 
-    def build_slug_from_params
-      return params[:page_slug] unless params[:parent_slug].present?
+  def build_slug_from_params
+    return params[:page_slug] unless params[:parent_slug].present?
 
-      "#{params[:parent_slug]}-#{params[:page_slug]}"
-    end
+    "#{params[:parent_slug]}-#{params[:page_slug]}"
+  end
 end

@@ -1,4 +1,4 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
 class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -73,7 +73,7 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
   #
   def display_resource(upe)
     p = Programme.find_by(id: upe.programme_id)
-    title = p&.title || 'Unknown programme'
+    title = p&.title || "Unknown programme"
     "#{title} (#{upe.current_state})"
   end
 end

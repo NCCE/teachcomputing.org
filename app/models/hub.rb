@@ -7,7 +7,7 @@ class Hub < ApplicationRecord
   def geocodable_address
     return postcode unless address.present?
 
-    [address, postcode].join(', ')
+    [address, postcode].join(", ")
   end
 
   def needs_geocoding?

@@ -1,4 +1,4 @@
-require 'audited'
+require "audited"
 
 class AssessmentAttempt < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries[

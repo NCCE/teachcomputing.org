@@ -36,7 +36,7 @@ module Admin
     #
     def resource_params
       params.require(resource_class.model_name.param_key)
-            .permit(dashboard.permitted_attributes).compact_blank
+        .permit(dashboard.permitted_attributes).compact_blank
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions

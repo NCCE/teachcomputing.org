@@ -10,7 +10,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
       redirect_to programme.path
     else
-      flash[:error] = 'Whoops something went wrong'
+      flash[:error] = "Whoops something went wrong"
       redirect_to dashboard_path
     end
   end
@@ -19,9 +19,9 @@ class UserProgrammeEnrolmentsController < ApplicationController
     user_programme_enrolment = current_user.user_programme_enrolments.find(params[:id])
 
     if user_programme_enrolment.update(user_programme_enrolment_update_params)
-      flash[:notice] = 'Successfully updated user details.'
+      flash[:notice] = "Successfully updated user details."
     else
-      flash[:error] = 'Failed to update user details.'
+      flash[:error] = "Failed to update user details."
     end
 
     redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path
@@ -52,24 +52,24 @@ class UserProgrammeEnrolmentsController < ApplicationController
 
   private
 
-    def user_programme_enrolment_params
-      params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
+  def user_programme_enrolment_params
+    params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
+  end
+
+  def user_programme_enrolment_update_params
+    params.require(:user_programme_enrolment).permit(:certificate_name)
+  end
+
+  def user_has_existing_enrolment?
+    enrolment = UserProgrammeEnrolment.find_by(user_id: user_programme_enrolment_params[:user_id], programme_id: user_programme_enrolment_params[:programme_id])
+    return unless enrolment
+
+    if enrolment.in_state?(:unenrolled)
+      enrolment.transition_to(:enrolled)
+      enrolment.update_attribute(:auto_enrolled, false)
+      flash[:notice] = "Congratulations, you have enrolled on our #{enrolment.programme.title}"
     end
 
-    def user_programme_enrolment_update_params
-      params.require(:user_programme_enrolment).permit(:certificate_name)
-    end
-
-    def user_has_existing_enrolment?
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user_programme_enrolment_params[:user_id], programme_id: user_programme_enrolment_params[:programme_id])
-      return unless enrolment
-
-      if enrolment.in_state?(:unenrolled)
-        enrolment.transition_to(:enrolled)
-        enrolment.update_attribute(:auto_enrolled, false)
-        flash[:notice] = "Congratulations, you have enrolled on our #{enrolment.programme.title}"
-      end
-
-      redirect_to enrolment.programme.path
-    end
+    redirect_to enrolment.programme.path
+  end
 end

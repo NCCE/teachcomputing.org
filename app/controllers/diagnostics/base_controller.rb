@@ -1,6 +1,6 @@
 module Diagnostics
   class BaseController < ApplicationController
-    layout 'full-width'
+    layout "full-width"
     include Wicked::Wizard
 
     after_action :discourage_caching

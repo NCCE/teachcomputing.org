@@ -25,10 +25,10 @@ class HubsIndex
 
   private
 
-    def geocoded_search_location
-      return nil unless @location.present?
-      return @geocoded_search_location if defined? @geocoded_search_location
+  def geocoded_search_location
+    return nil unless @location.present?
+    return @geocoded_search_location if defined? @geocoded_search_location
 
-      @geocoded_search_location = Geocoder.search(@location, params: { region: 'GB' }).first
-    end
+    @geocoded_search_location = Geocoder.search(@location, params: {region: "GB"}).first
+  end
 end

@@ -1,5 +1,5 @@
 class Achiever::Course::DurationUnit
-  RESOURCE_PATH = 'Get?cmd=OptionsetDurationUnit'.freeze
+  RESOURCE_PATH = "Get?cmd=OptionsetDurationUnit".freeze
 
   def self.all
     duration_units = Achiever::Request.option_sets(RESOURCE_PATH)

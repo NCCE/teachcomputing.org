@@ -1,4 +1,4 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -28,7 +28,7 @@ class UserDashboard < Administrate::BaseDashboard
     stem_achiever_organisation_no: Field::String,
     future_learn_organisation_memberships: Field::Text,
     forgotten: Field::Boolean,
-    audits: Field::HasMany.with_options(sort_by: 'created_at', direction: 'desc')
+    audits: Field::HasMany.with_options(sort_by: "created_at", direction: "desc")
   }.freeze
 
   # COLLECTION_ATTRIBUTES

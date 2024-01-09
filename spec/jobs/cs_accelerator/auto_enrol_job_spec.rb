@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CSAccelerator::AutoEnrolJob, type: :job do
-  describe '.perform' do
+  describe ".perform" do
     subject(:enrol_job) { described_class.perform_now(achievement_id: achievement.id) }
 
     let(:user) { create(:user) }
@@ -12,54 +12,54 @@ RSpec.describe CSAccelerator::AutoEnrolJob, type: :job do
       create(:achievement, activity: activity, user: user)
     end
 
-    it 'enrols user in csa' do
+    it "enrols user in csa" do
       expect { enrol_job }
         .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
         .by(1)
     end
 
-    it 'sets auto_enrolled flag' do
+    it "sets auto_enrolled flag" do
       enrol_job
       expect(UserProgrammeEnrolment.last.auto_enrolled).to eq(true)
     end
 
-    context 'when user is enrolled in csa' do
+    context "when user is enrolled in csa" do
       before do
         create(:user_programme_enrolment, user: user, programme: cs_accelerator)
       end
 
-      it 'does not enrol user' do
+      it "does not enrol user" do
         expect { enrol_job }
           .not_to change(UserProgrammeEnrolment, :count)
       end
     end
 
-    context 'when activity is in multiple programmes' do
+    context "when activity is in multiple programmes" do
       let(:primary_certificate) { create(:primary_certificate) }
 
       before do
         create(:programme_activity, activity: activity, programme: primary_certificate)
       end
 
-      context 'when user is enrolled in non csa programme' do
-        context 'when non csa enrolment is not complete' do
+      context "when user is enrolled in non csa programme" do
+        context "when non csa enrolment is not complete" do
           before do
             create(:user_programme_enrolment, user: user, programme: primary_certificate)
           end
 
-          it 'does not enrol user' do
+          it "does not enrol user" do
             expect { enrol_job }
               .not_to change(UserProgrammeEnrolment, :count)
           end
         end
 
-        context 'when non csa enrolment is complete' do
+        context "when non csa enrolment is complete" do
           before do
             enrolment = create(:user_programme_enrolment, user: user, programme: primary_certificate)
             enrolment.transition_to(:complete)
           end
 
-          it 'enrols user' do
+          it "enrols user" do
             expect { enrol_job }
               .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
               .by(1)
@@ -67,8 +67,8 @@ RSpec.describe CSAccelerator::AutoEnrolJob, type: :job do
         end
       end
 
-      context 'when user is not enrolled in any programme linked to activity' do
-        it 'enrols user to csa' do
+      context "when user is not enrolled in any programme linked to activity" do
+        it "enrols user to csa" do
           expect { enrol_job }
             .to change { UserProgrammeEnrolment.where(programme: cs_accelerator).count }
             .by(1)

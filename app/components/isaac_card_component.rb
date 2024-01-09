@@ -11,7 +11,7 @@ class IsaacCardComponent < ViewComponent::Base
     return nil unless @tracking_category.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_category,
       event_label: tracking_label
     }

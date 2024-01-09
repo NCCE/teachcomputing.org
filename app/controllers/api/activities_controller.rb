@@ -7,8 +7,8 @@ module Api
 
     private
 
-      def as_json(user)
-        user.as_json(include: :programmes)
-      end
+    def as_json(user)
+      user.as_json(include: :programmes)
+    end
   end
 end

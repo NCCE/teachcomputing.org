@@ -17,19 +17,19 @@ module Certificates
       send_file(
         pdf_details[:path],
         filename: pdf_details[:filename],
-        type: 'application/pdf',
-        disposition: 'inline'
+        type: "application/pdf",
+        disposition: "inline"
       )
     end
 
     private
 
-      def programme
-        @programme ||= Programme.enrollable.find_by!(slug: params[:slug])
-      end
+    def programme
+      @programme ||= Programme.enrollable.find_by!(slug: params[:slug])
+    end
 
-      def enrolment
-        current_user.user_programme_enrolments.find_by(programme: @programme)
-      end
+    def enrolment
+      current_user.user_programme_enrolments.find_by(programme: @programme)
+    end
   end
 end

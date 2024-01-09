@@ -13,8 +13,8 @@ class Achiever::Request
       if success?(response, parsed_response)
         parsed_response.GetJsonResult.OptionSetsClean
       else
-        raise Achiever::Error.new(failure: { status: response.status,
-                                             reason: parsed_response.GetJsonResult.FailureReason })
+        raise Achiever::Error.new(failure: {status: response.status,
+                                            reason: parsed_response.GetJsonResult.FailureReason})
       end
     end
 
@@ -41,8 +41,8 @@ class Achiever::Request
       parsed_response = parse_response(response.body)
 
       unless parsed_response.FailureReason.blank?
-        raise Achiever::Error.new(failure: { status: response.status,
-                                             reason: parsed_response.FailureReason })
+        raise Achiever::Error.new(failure: {status: response.status,
+                                            reason: parsed_response.FailureReason})
       end
 
       parsed_response
@@ -50,50 +50,50 @@ class Achiever::Request
 
     private
 
-      def perform_request(query_string, resource_path, cache, cache_expiry, race_condition_ttl = nil)
-        return local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('ACHIEVER_USE_LOCAL_TEMPLATES', 'false')) && Rails.env.development?
-        return api.get("#{resource_path}&#{query_string}") unless cache
+    def perform_request(query_string, resource_path, cache, cache_expiry, race_condition_ttl = nil)
+      return local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("ACHIEVER_USE_LOCAL_TEMPLATES", "false")) && Rails.env.development?
+      return api.get("#{resource_path}&#{query_string}") unless cache
 
-        Rails.cache.fetch(
-          "#{resource_path}&#{query_string}",
-          expires_in: cache_expiry,
-          race_condition_ttl:,
-          namespace: 'achiever'
-        ) do
-          api.get("#{resource_path}&#{query_string}")
-        end
+      Rails.cache.fetch(
+        "#{resource_path}&#{query_string}",
+        expires_in: cache_expiry,
+        race_condition_ttl:,
+        namespace: "achiever"
+      ) do
+        api.get("#{resource_path}&#{query_string}")
       end
+    end
 
-      def success?(response, parsed_response)
-        response.status == 200 && parsed_response.GetJsonResult.FailureReason.blank?
+    def success?(response, parsed_response)
+      response.status == 200 && parsed_response.GetJsonResult.FailureReason.blank?
+    end
+
+    def query_strings(query)
+      query.map { |k, v| "#{k}=#{v}" }.join("&")
+    end
+
+    def parse_response(response_body)
+      JSON.parse(response_body, object_class: OpenStruct)
+    end
+
+    def api
+      Achiever::Connection.api
+    end
+
+    def local_response(resource_path)
+      raise Error, "Missing ACHIEVER_LOCAL_TEMPLATE_PATH" unless ENV["ACHIEVER_LOCAL_TEMPLATE_PATH"].present?
+
+      matches = /Get\?cmd=(.*)/.match(resource_path)
+      endpoint = matches[1]&.to_sym
+
+      begin
+        path = "#{ENV.fetch("ACHIEVER_LOCAL_TEMPLATE_PATH")}/#{endpoint&.downcase}.json"
+        OpenStruct.new(body: File.new(path).read, status: 200)
+      rescue KeyError
+        raise KeyError, "No mapping exists for #{matches[1]}"
+      rescue Errno::ENOENT
+        raise Errno::ENOENT, "No local template could be found for the achiever endpoint '#{endpoint}' in '#{path}'"
       end
-
-      def query_strings(query)
-        query.map { |k, v| "#{k}=#{v}" }.join('&')
-      end
-
-      def parse_response(response_body)
-        JSON.parse(response_body, object_class: OpenStruct)
-      end
-
-      def api
-        Achiever::Connection.api
-      end
-
-      def local_response(resource_path)
-        raise Error, 'Missing ACHIEVER_LOCAL_TEMPLATE_PATH' unless ENV['ACHIEVER_LOCAL_TEMPLATE_PATH'].present?
-
-        matches = /Get\?cmd=(.*)/.match(resource_path)
-        endpoint = matches[1]&.to_sym
-
-        begin
-          path = "#{ENV.fetch('ACHIEVER_LOCAL_TEMPLATE_PATH')}/#{endpoint&.downcase}.json"
-          OpenStruct.new(body: File.new(path).read, status: 200)
-        rescue KeyError
-          raise KeyError, "No mapping exists for #{matches[1]}"
-        rescue Errno::ENOENT
-          raise Errno::ENOENT, "No local template could be found for the achiever endpoint '#{endpoint}' in '#{path}'"
-        end
-      end
+    end
   end
 end
