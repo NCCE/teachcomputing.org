@@ -329,10 +329,10 @@ RSpec.describe Programme, type: :model do
       create(:programme_activity_grouping, programme:, required_for_completion: 1)
       activity = create(:activity) # is face to face
       user = create(:user)
-      programme_activity = create(:programme_activity, programme:, activity:)
+      create(:programme_activity, programme:, activity:)
 
-      user_programme_enrolment = create(:user_programme_enrolment, user:, programme:)
-      achievement = create(:completed_achievement, user:, activity:)
+      create(:user_programme_enrolment, user:, programme:)
+      create(:completed_achievement, user:, activity:)
 
       expect(programme.user_qualifies_for_credly_badge?(user)).to be true
     end
@@ -342,9 +342,9 @@ RSpec.describe Programme, type: :model do
       create(:programme_activity_grouping, programme:, required_for_completion: 1)
       activity = create(:activity) # is face to face
       user = create(:user)
-      programme_activity = create(:programme_activity, programme:, activity:)
+      create(:programme_activity, programme:, activity:)
 
-      achievement = create(:completed_achievement, user:, activity:)
+      create(:completed_achievement, user:, activity:)
 
       expect(programme.user_qualifies_for_credly_badge?(user)).to be false
     end
@@ -354,9 +354,9 @@ RSpec.describe Programme, type: :model do
       programme_activity_grouping = create(:programme_activity_grouping, programme:, required_for_completion: 1)
       activity = create(:activity) # is face to face
       user = create(:user)
-      programme_activity = create(:programme_activity, programme:, activity:, programme_activity_grouping:)
+      create(:programme_activity, programme:, activity:, programme_activity_grouping:)
 
-      user_programme_enrolment = create(:user_programme_enrolment, user:, programme:)
+      create(:user_programme_enrolment, user:, programme:)
 
       allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
 
@@ -369,8 +369,8 @@ RSpec.describe Programme, type: :model do
       activity = create(:activity) # is face to face
       user = create(:user)
 
-      user_programme_enrolment = create(:user_programme_enrolment, user:, programme:)
-      achievement = create(:completed_achievement, user:, activity:)
+      create(:user_programme_enrolment, user:, programme:)
+      create(:completed_achievement, user:, activity:)
 
       expect(programme.user_qualifies_for_credly_badge?(user)).to be false
     end

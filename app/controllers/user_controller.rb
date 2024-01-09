@@ -4,7 +4,7 @@ class UserController < ApplicationController
   def teacher_reference_number
     trn = params[:user][:teacher_reference_number]
 
-    if !trn.present?
+    if trn.blank?
       flash[:error] = "Please enter your teacher reference number"
     elsif current_user.update!(teacher_reference_number: trn)
       flash[:notice] = "Teacher reference number added"

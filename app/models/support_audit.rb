@@ -11,7 +11,7 @@ class SupportAudit < Audited::Audit
   # always use the default admin user
   def add_actuating_user_details
     admin_user = User.find_by_email(ENV.fetch("DEFAULT_ADMIN_EMAIL"))
-    return unless admin_user.present?
+    return if admin_user.blank?
 
     self.user_id = admin_user.id
     self.username = admin_user.email

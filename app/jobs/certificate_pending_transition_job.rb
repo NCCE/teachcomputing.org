@@ -7,7 +7,7 @@ class CertificatePendingTransitionJob < ApplicationJob
 
       enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
-      next unless enrolment.present?
+      next if enrolment.blank?
       next if enrolment&.current_state == :complete.to_s
 
       enrolment.transition_to(:pending, meta)

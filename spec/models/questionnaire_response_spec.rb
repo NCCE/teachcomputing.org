@@ -24,9 +24,7 @@ RSpec.describe QuestionnaireResponse, type: :model do
       questionnaire_response
     end
 
-    it { is_expected.to validate_presence_of(:questionnaire_id) }
     it { is_expected.to validate_uniqueness_of(:user_id).case_insensitive.scoped_to(:questionnaire_id) }
-    it { is_expected.to validate_presence_of(:user_id) }
   end
 
   describe "#add_answer" do

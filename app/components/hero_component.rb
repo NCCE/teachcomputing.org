@@ -23,7 +23,7 @@ class HeroComponent < ViewComponent::Base
   private
 
   def color_class
-    return "hero-component__default" unless @color.present?
+    return "hero-component__default" if @color.blank?
 
     "hero-component__#{@color}"
   end

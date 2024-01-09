@@ -14,7 +14,6 @@ RSpec.describe SentEmail, type: :model do
       sent_email
     end
 
-    it { is_expected.to validate_presence_of(:user) }
     it { is_expected.to validate_presence_of(:mailer_type) }
     it { is_expected.to validate_uniqueness_of(:user).case_insensitive.scoped_to(:mailer_type) }
   end

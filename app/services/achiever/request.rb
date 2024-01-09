@@ -81,7 +81,7 @@ class Achiever::Request
     end
 
     def local_response(resource_path)
-      raise Error, "Missing ACHIEVER_LOCAL_TEMPLATE_PATH" unless ENV["ACHIEVER_LOCAL_TEMPLATE_PATH"].present?
+      raise Error, "Missing ACHIEVER_LOCAL_TEMPLATE_PATH" if ENV["ACHIEVER_LOCAL_TEMPLATE_PATH"].blank?
 
       matches = /Get\?cmd=(.*)/.match(resource_path)
       endpoint = matches[1]&.to_sym

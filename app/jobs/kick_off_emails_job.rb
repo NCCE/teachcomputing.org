@@ -18,7 +18,7 @@ class KickOffEmailsJob < ApplicationJob
 
   def delay
     now = Time.now
-    delay = if (9 - now.hour).negative?
+    if (9 - now.hour).negative?
       0
     else
       9 - now.hour

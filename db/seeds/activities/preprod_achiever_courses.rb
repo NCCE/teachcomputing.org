@@ -2,7 +2,7 @@
 # the preprod Smart Connector (Achiever)
 
 cs_accelerator = Programme.cs_accelerator
-primary_certificate = Programme.primary_certificate
+# primary_certificate = Programme.primary_certificate
 secondary_certificate = Programme.secondary_certificate
 
 ########################################################################################################################
@@ -49,7 +49,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: "f3f69e74-11b9-ed11-b597-0022481b5082") do |activity|
+Activity.find_or_create_by(stem_course_template_no: "f3f69e74-11b9-ed11-b597-0022481b5082") do |activity|
   activity.title = "NCCE F2F Course"
   activity.credit = 10
   activity.slug = "ncce-f2f-course"

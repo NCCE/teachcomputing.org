@@ -93,7 +93,7 @@ RSpec.describe Achiever::Course::Occurrence do
     end
 
     it "is set to true if the API sets it so" do
-      expect(described_class.face_to_face.select { |o| o.remote_delivered_cpd }.size).to eq(203)
+      expect(described_class.face_to_face.count { |o| o.remote_delivered_cpd }).to eq(203)
     end
   end
 

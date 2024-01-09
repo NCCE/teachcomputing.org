@@ -88,43 +88,43 @@ module Achiever
     end
 
     def current_certificate
-      return nil unless @filter_params[:certificate].present?
+      return nil if @filter_params[:certificate].blank?
 
       @current_certificate ||= @filter_params[:certificate]
     end
 
     def current_topic
-      return nil unless @filter_params[:topic].present?
+      return nil if @filter_params[:topic].blank?
 
       @current_topic ||= @filter_params[:topic]
     end
 
     def current_level
-      return nil unless @filter_params[:level].present?
+      return nil if @filter_params[:level].blank?
 
       @current_level ||= @filter_params[:level]
     end
 
     def current_location
-      return nil unless @filter_params[:location].present?
+      return nil if @filter_params[:location].blank?
 
       @current_location ||= @filter_params[:location]
     end
 
     def current_hub
-      return nil unless @filter_params[:hub_id].present?
+      return nil if @filter_params[:hub_id].blank?
 
       @current_hub ||= course_occurrences.map(&:hub_name).compact.first || :no_courses
     end
 
     def current_hub_id
-      return nil unless @filter_params[:hub_id].present?
+      return nil if @filter_params[:hub_id].blank?
 
       @current_hub_id ||= @filter_params[:hub_id]
     end
 
     def current_format
-      return nil unless @filter_params[:course_format].present?
+      return nil if @filter_params[:course_format].blank?
 
       @current_format ||= @filter_params[:course_format]
     end
@@ -216,7 +216,7 @@ module Achiever
     end
 
     def filter_course_occurences(course_occurrences)
-      return course_occurrences unless @filter_params[:hub_id].present?
+      return course_occurrences if @filter_params[:hub_id].blank?
 
       course_occurrences.select { |co| co.hub_id == @filter_params[:hub_id] }
     end

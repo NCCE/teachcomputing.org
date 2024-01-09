@@ -80,6 +80,6 @@ class CoursesController < ApplicationController
   # @param occurrences [Array<Achiever::Course::Occurrence>]
   # @return [Date]
   def start_date(occurrences)
-    occurrences.collect { |occurrence| occurrence.start_date.to_date }.sort.first
+    occurrences.collect { |occurrence| occurrence.start_date.to_date }.min
   end
 end

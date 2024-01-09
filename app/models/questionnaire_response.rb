@@ -9,7 +9,6 @@ class QuestionnaireResponse < ApplicationRecord
 
   has_many :questionnaire_response_transitions, autosave: false, dependent: :destroy
 
-  validates :questionnaire_id, :user_id, presence: true
   validates :user_id, uniqueness: {scope: %i[questionnaire_id]}
 
   def answer_current_question(step_index, answer, next_step_index)

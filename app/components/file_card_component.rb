@@ -2,7 +2,7 @@
 
 class FileCardComponent < ViewComponent::Base
   def initialize(file_card:, title: nil, tracking: nil)
-    return unless file_card.present?
+    return if file_card.blank?
 
     @title = title || file_card[:name]
     @file_path = file_card[:file]

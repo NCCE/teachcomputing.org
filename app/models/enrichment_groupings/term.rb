@@ -23,11 +23,11 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
   private
 
   def normalised_start
-    normalised_start = normalise_date(term_start)
+    normalise_date(term_start)
   end
 
   def normalised_end
-    normalised_end = normalise_date(term_end)
+    normalise_date(term_end)
   end
 
   def normalised_current_date

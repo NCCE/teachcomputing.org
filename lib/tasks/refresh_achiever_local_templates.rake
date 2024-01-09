@@ -1,6 +1,6 @@
 namespace :achiever do
   task refresh_local_templates: :environment do
-    raise Error, "Missing ACHIEVER_LOCAL_TEMPLATE_PATH" unless ENV["ACHIEVER_LOCAL_TEMPLATE_PATH"].present?
+    raise Error, "Missing ACHIEVER_LOCAL_TEMPLATE_PATH" if ENV["ACHIEVER_LOCAL_TEMPLATE_PATH"].blank?
 
     def friendly_name(path)
       matches = /Get\?cmd=(.*)/.match(path)

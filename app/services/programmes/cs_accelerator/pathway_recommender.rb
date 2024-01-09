@@ -47,7 +47,7 @@ module Programmes
       end
 
       def single_a_or_b_response?
-        @answers.values.select { |answer| [1, 2].include?(answer) }.length == 1
+        @answers.values.count { |answer| [1, 2].include?(answer) } == 1
       end
 
       def any_a_or_b_responses?
@@ -55,7 +55,7 @@ module Programmes
       end
 
       def multiple_a_or_b_responses?
-        @answers.values.select { |answer| [1, 2].include?(answer) }.length > 1
+        @answers.values.count { |answer| [1, 2].include?(answer) } > 1
       end
 
       def specific_questions_have_possible_answer?(questions:, possible_answers:)

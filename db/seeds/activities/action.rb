@@ -1,5 +1,5 @@
 cs_accelerator = Programme.cs_accelerator
-primary_certificate = Programme.primary_certificate
+# primary_certificate = Programme.primary_certificate
 # secondary_certificate = Programme.secondary_certificate
 
 a = Activity.find_or_create_by(slug: "ncce-coaching-and-mentoring") do |activity|

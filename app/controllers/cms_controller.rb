@@ -39,7 +39,7 @@ class CmsController < ApplicationController
   private
 
   def build_slug_from_params
-    return params[:page_slug] unless params[:parent_slug].present?
+    return params[:page_slug] if params[:parent_slug].blank?
 
     "#{params[:parent_slug]}-#{params[:page_slug]}"
   end

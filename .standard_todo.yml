@@ -1,0 +1,116 @@
+# Auto generated files with errors to ignore.
+# Remove from this list as you refactor files.
+---
+ignore:
+- app/controllers/admin/application_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/admin/users_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/api_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/application_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/auth_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/class_marker/webhooks_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/controllers/dynamics/webhooks_controller.rb:
+  - Rails/EnvironmentVariableAccess
+- app/helpers/activities_helper.rb:
+  - Rails/EnvironmentVariableAccess
+- app/helpers/application_helper.rb:
+  - Rails/EnvironmentVariableAccess
+- app/helpers/courses_helper.rb:
+  - Rails/EnvironmentVariableAccess
+- app/helpers/curriculum_helper.rb:
+  - Style/IdenticalConditionalBranches
+- app/models/support_audit.rb:
+  - Rails/EnvironmentVariableAccess
+- app/models/user.rb:
+  - Rails/EnvironmentVariableAccess
+- app/presenters/live_booking_presenter.rb:
+  - Rails/EnvironmentVariableAccess
+- app/presenters/online_booking_presenter.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/achiever/connection.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/achiever/course/occurrence.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/achiever/request.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/credly/badge.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/credly/connection.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/curriculum_client/connection.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/feature_flag_service.rb:
+  - Rails/EnvironmentVariableAccess
+- app/services/ghost.rb:
+  - Rails/EnvironmentVariableAccess
+- db/migrate/20190208094751_add_self_certifiable_to_activity_model.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20190410152324_create_achievement_transitions.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20190423131914_create_assessment_attempt_transitions.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20190703083822_adde_erollable_to_programme_model.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20191031143324_create_user_programme_enrolment_transitions.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20200309141031_create_questionnaire_response_transitions.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20200921125646_add_flagged_to_user_programme_enrolments.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20201116135522_add_upload_able_field_to_activity_model.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20201116163017_add_auto_enrolled_flag_to_user_programme_enrolments.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20210107161518_add_service_name_to_active_storage_blobs.active_storage.rb:
+  - Lint/AssignmentInCondition
+- db/migrate/20210107161519_create_active_storage_variant_records.active_storage.rb:
+  - Rails/CreateTableWithTimestamps
+- db/migrate/20210111103449_re_create_active_storage_tables.rb:
+  - Rails/CreateTableWithTimestamps
+- db/migrate/20210111104616_re_add_service_name_to_active_storage_blobs.rb:
+  - Lint/AssignmentInCondition
+- db/migrate/20210211084146_add_supplementary_boolean_to_pathway_activities_model.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20210225090132_add_remote_delivered_cpd_true_to_activity_model.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20210618071048_create_badges.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20210625095824_add_forgotten_boolean_to_users.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20210628145014_add_satellite_to_hubs.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20211014165611_add_always_on_to_activity.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20221010104714_install_audited.rb:
+  - Rails/CreateTableWithTimestamps
+- db/migrate/20221031172249_add_accepted_conditions_to_assessment_attempt.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20230421125728_add_retired_to_activities.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20230818093958_add_coming_soon_to_activities.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20230822112931_add_community_to_programme_activity_groupings.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20230830134105_create_enrichment_groupings.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20230830134106_create_enrichment_entry.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/migrate/20231113112540_add_i_belong_to_enrichment_entry.rb:
+  - Rails/ThreeStateBooleanColumn
+- db/seeds/activities/community.rb:
+  - Style/MixinUsage
+- db/seeds/enrichment_groupings/primary_certificate.rb:
+  - Style/MixinUsage
+- db/seeds/enrichment_groupings/secondary_certificate.rb:
+  - Style/MixinUsage
+- db/seeds/programme_activity_groupings_helper.rb:
+  - Lint/AssignmentInCondition
+- scripts/change_activity_codes.rb:
+  - Lint/UnreachableCode
+- spec/models/enrichment_groupings/term_spec.rb:
+  - Lint/ConstantDefinitionInBlock

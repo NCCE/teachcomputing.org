@@ -14,9 +14,6 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   end
 
   describe "validations" do
-    it { is_expected.to validate_presence_of(:user) }
-    it { is_expected.to validate_presence_of(:programme) }
-
     it "ensures user can only be enrolled on a programme once" do
       create(:user_programme_enrolment, user: user, programme: cs_accelerator)
       enrolment = build(:user_programme_enrolment, user: user, programme: cs_accelerator)

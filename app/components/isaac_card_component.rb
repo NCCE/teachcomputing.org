@@ -8,7 +8,7 @@ class IsaacCardComponent < ViewComponent::Base
   end
 
   def tracking_data(tracking_label)
-    return nil unless @tracking_category.present?
+    return nil if @tracking_category.blank?
 
     {
       event_action: "click",

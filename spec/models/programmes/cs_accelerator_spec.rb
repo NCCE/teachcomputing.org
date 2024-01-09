@@ -304,7 +304,7 @@ RSpec.describe Programmes::CSAccelerator do
       it "returns nil" do
         activity = create(:activity, :online)
         create(:programme_activity, programme_id: programme.id, activity:)
-        achievement = create(:achievement, user: user, activity: activity)
+        create(:achievement, user: user, activity: activity)
         expect(programme.compulsory_achievement(user)).to eq(nil)
       end
     end
@@ -385,7 +385,7 @@ RSpec.describe Programmes::CSAccelerator do
 
     context "when user has no complete non compulsory achievement" do
       it "returns false" do
-        achievements = create_list(:achievement, 2, :online, user: user)
+        create_list(:achievement, 2, :online, user: user)
         expect(programme.user_completed_non_compulsory_achievement?(user))
           .to eq(false)
       end
