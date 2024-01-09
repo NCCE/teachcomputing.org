@@ -167,6 +167,20 @@ Sitemaps are generated via `sitemap:refresh`, which is managed by a scheduled ta
 
 ## Tooling
 
+### Standard RB
+
+Run with `standardrb` to check for errors
+Run with `standardrb --fix` to fix safe errors
+Run with `standardrb --fix-unsafely` to fix potentially breaking issues
+
+Standardrb has been on the entire project and all the automatic fixes have been
+applied. The rest of the issues that have been added to the standardrb_todo list
+should be approached incrementally.
+
+Standardrb has many [editor
+integrations](https://github.com/standardrb/standard?tab=readme-ov-file#editor-support)
+available if you like that sort of thing
+
 ### ERB Lint
 
 Used for linting ERB / HTML files
