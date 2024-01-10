@@ -80,7 +80,7 @@ module ExternalLinkHelper
   end
 
   def apps_for_good_showcase_webinar_url
-    "https://www.stem.org.uk/cpd/ondemand/528383/apps-good-design-app"
+    "https://www.stem.org.uk/cpd/530365/apps-good-design-app"
   end
 
   def cisco_cyber_camps_url
