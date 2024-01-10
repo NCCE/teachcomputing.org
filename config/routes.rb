@@ -212,6 +212,9 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
+  get "/certificate/cs-accelerator", to: redirect("/certificate/subject-knowledge")
+  get "/cs-accelerator", to: redirect("/subject-knowledge")
+
   # CMS ROUTES
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
