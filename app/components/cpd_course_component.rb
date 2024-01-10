@@ -2,8 +2,8 @@ class CpdCourseComponent < ViewComponent::Base
   attr_reader :activity, :current_user, :course, :last_margin, :achievement
 
   delegate :activity_icon_class,
-           :activity_type,
-           to: :helpers
+    :activity_type,
+    to: :helpers
 
   def initialize(activity:, current_user:, last_margin: true)
     @activity = activity

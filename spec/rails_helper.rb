@@ -1,52 +1,52 @@
-require 'spec_helper'
-require 'dotenv'
-require 'simplecov'
+require "spec_helper"
+require "dotenv"
+require "simplecov"
 
-SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
-SimpleCov.start 'rails' do
-  add_group 'Services', 'app/services'
-  add_group 'Presenters', 'app/presenters'
+SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
+SimpleCov.start "rails" do
+  add_group "Services", "app/services"
+  add_group "Presenters", "app/presenters"
 
-  add_filter '/app/dashboards/'
-  add_filter '/app/controllers/admin/'
+  add_filter "/app/dashboards/"
+  add_filter "/app/controllers/admin/"
 
   current_branch = `git rev-parse --abbrev-ref HEAD`
   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
-  add_group 'Changed' do |source_file|
+  add_group "Changed" do |source_file|
     changed_files.detect do |filename|
       source_file.filename.ends_with?(filename)
     end
   end
 end
 
-ENV['RAILS_ENV'] ||= 'test'
-Dotenv.overload('.env.test') # Ensure .env.test is used in dev environments
+ENV["RAILS_ENV"] ||= "test"
+Dotenv.overload(".env.test") # Ensure .env.test is used in dev environments
 
-require File.expand_path('../config/environment', __dir__)
+require File.expand_path("../config/environment", __dir__)
 
-abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'rspec/rails'
-require 'webmock/rspec'
-require 'rspec/json_expectations'
-require 'capybara/rspec'
-require 'view_component/test_helpers'
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require "rspec/rails"
+require "webmock/rspec"
+require "rspec/json_expectations"
+require "capybara/rspec"
+require "view_component/test_helpers"
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
 selenium_driver = :local_chrome_headless
-Capybara.server = :puma, { Silent: true }
+Capybara.server = :puma, {Silent: true}
 Capybara.default_max_wait_time = 5
 Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
-  options.add_argument('--headless')
-  options.add_argument('--disable-extensions')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--window-size=1400,1400')
-  options.add_argument('--verbose')
+  options.add_argument("--headless")
+  options.add_argument("--disable-extensions")
+  options.add_argument("--no-sandbox")
+  options.add_argument("--disable-gpu")
+  options.add_argument("--window-size=1400,1400")
+  options.add_argument("--verbose")
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
 end
@@ -80,11 +80,11 @@ RSpec.configure do |config|
 
   config.after(:each, js: true, type: :system) do |_spec|
     errors = page.driver.browser.manage.logs.get(:browser)
-                 .select { |e| e.level == 'SEVERE' && e.message.present? }
-                 .map(&:message)
-                 .to_a
+      .select { |e| e.level == "SEVERE" && e.message.present? }
+      .map(&:message)
+      .to_a
 
-    raise JavascriptError errors.join("\n\n") if errors.present? && ENV['RAISE_CONSOLE_ERRORS']
+    raise JavascriptError errors.join("\n\n") if errors.present? && ENV["RAISE_CONSOLE_ERRORS"]
   end
 end
 

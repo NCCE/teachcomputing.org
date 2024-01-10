@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Certificates::PrimaryCertificateController do
-  let(:user) { create(:user, email: 'web@teachcomputing.org') }
+  let(:user) { create(:user, email: "web@teachcomputing.org") }
   let(:programme) { create(:primary_certificate) }
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
-           user_id: user.id,
-           programme_id: programme.id)
+      user_id: user.id,
+      programme_id: programme.id)
   end
   let(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
@@ -38,10 +38,10 @@ RSpec.describe Certificates::PrimaryCertificateController do
     passed_exam
   end
 
-  describe '#complete' do
+  describe "#complete" do
     subject { get complete_primary_certificate_path }
 
-    describe 'while logged in' do
+    describe "while logged in" do
       before do
         stub_issued_badges(user.id)
         programme
@@ -49,26 +49,26 @@ RSpec.describe Certificates::PrimaryCertificateController do
           .to receive(:current_user).and_return(user)
       end
 
-      it 'redirects if not enrolled' do
+      it "redirects if not enrolled" do
         subject
         expect(response).to redirect_to(primary_path)
       end
 
-      describe 'and enrolled' do
-        it 'redirects to pending when course pending' do
+      describe "and enrolled" do
+        it "redirects to pending when course pending" do
           user_programme_enrolment.transition_to(:pending)
           subject
           expect(response).to redirect_to(pending_primary_certificate_path)
         end
 
-        it 'redirects if not complete' do
+        it "redirects if not complete" do
           user_programme_enrolment
           subject
           expect(response).to redirect_to(primary_certificate_path)
         end
       end
 
-      describe 'and complete' do
+      describe "and complete" do
         before do
           stub_issued_badges(user.id)
           user_programme_enrolment.transition_to(:complete)
@@ -76,30 +76,30 @@ RSpec.describe Certificates::PrimaryCertificateController do
           subject
         end
 
-        it 'shows the page if complete' do
+        it "shows the page if complete" do
           expect(response.status).to eq(200)
         end
 
-        it 'renders the correct template' do
-          expect(response).to render_template('complete')
+        it "renders the correct template" do
+          expect(response).to render_template("complete")
         end
 
-        it 'assigns the programme' do
+        it "assigns the programme" do
           expect(assigns(:programme)).to eq(programme)
         end
 
-        it 'asks client not to cache a private page' do
-          expect(response.headers['cache-control']).to eq('no-store')
+        it "asks client not to cache a private page" do
+          expect(response.headers["cache-control"]).to eq("no-store")
         end
       end
     end
 
-    describe 'while logged out' do
+    describe "while logged out" do
       before do
         subject
       end
 
-      it 'redirects to login' do
+      it "redirects to login" do
         expect(response).to redirect_to(/register/)
       end
     end

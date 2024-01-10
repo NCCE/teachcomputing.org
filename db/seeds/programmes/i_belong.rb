@@ -1,9 +1,9 @@
-Programme.where(type: 'Programmes::IBelongCertificate').update_all(type: 'Programmes::IBelong', slug: 'i-belong')
+Programme.where(type: "Programmes::IBelongCertificate").update_all(type: "Programmes::IBelong", slug: "i-belong")
 
-i_belong = Programmes::IBelong.find_or_initialize_by(slug: 'i-belong').tap do |programme|
-  programme.title = 'I Belong: encouraging girls into computer science'
-  programme.slug = 'i-belong'
-  programme.description = 'Encouraging girls into computer science'
+i_belong = Programmes::IBelong.find_or_initialize_by(slug: "i-belong").tap do |programme|
+  programme.title = "I Belong: encouraging girls into computer science"
+  programme.slug = "i-belong"
+  programme.description = "Encouraging girls into computer science"
   programme.enrollable = true
 
   programme.save

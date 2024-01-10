@@ -1,16 +1,16 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Certificates::CSAcceleratorController do
   let!(:questionnaire) { create(:csa_enrolment_questionnaire, programme: programme) }
-  let(:user) { create(:user, email: 'web@teachcomputing.org') }
+  let(:user) { create(:user, email: "web@teachcomputing.org") }
   let!(:programme) { create(:cs_accelerator) }
-  let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
+  let(:non_enrollable_programme) { create(:programme, slug: "non-enrollable", enrollable: false) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
-           user_id: user.id,
-           programme_id: programme.id)
+      user_id: user.id,
+      programme_id: programme.id)
   end
 
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
@@ -38,34 +38,34 @@ RSpec.describe Certificates::CSAcceleratorController do
     face_to_face_achievement
   end
 
-  describe '#show' do
-    context 'when user is logged in' do
+  describe "#show" do
+    context "when user is logged in" do
       before do
         stub_issued_badges(user.id)
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
 
-      it 'redirects if not enrolled' do
+      it "redirects if not enrolled" do
         get cs_accelerator_certificate_path
         expect(response).to redirect_to(cs_accelerator_path)
       end
 
-      context 'when user is enrolled' do
+      context "when user is enrolled" do
         before do
           setup_achievements_for_programme
           get cs_accelerator_certificate_path
         end
 
-        context 'when the user has not completed the diagnostic' do
-          it 'redirects to the diagnostic path' do
+        context "when the user has not completed the diagnostic" do
+          it "redirects to the diagnostic path" do
             create(:questionnaire_response, user: user, questionnaire: questionnaire)
             get cs_accelerator_certificate_path
             expect(response)
               .to redirect_to(diagnostic_cs_accelerator_certificate_path(:question_1))
           end
 
-          it 'redirects to last question completed' do
+          it "redirects to last question completed" do
             user_response = create(:questionnaire_response, user: user, questionnaire: questionnaire)
             user_response.update(current_question: 3)
 
@@ -75,7 +75,7 @@ RSpec.describe Certificates::CSAcceleratorController do
           end
         end
 
-        context 'when the user has completed the diagnostic' do
+        context "when the user has completed the diagnostic" do
           before do
             create(:activity, :community_5)
             create_list(:activity, 3, :community)
@@ -85,15 +85,15 @@ RSpec.describe Certificates::CSAcceleratorController do
             get cs_accelerator_certificate_path
           end
 
-          it 'renders the correct template' do
-            expect(response).to render_template('show')
+          it "renders the correct template" do
+            expect(response).to render_template("show")
           end
 
-          it 'assigns the correct programme' do
+          it "assigns the correct programme" do
             expect(assigns(:programme)).to eq programme
           end
 
-          it 'redirects to complete_path on completion' do
+          it "redirects to complete_path on completion" do
             user_programme_enrolment.transition_to(:complete)
 
             get cs_accelerator_certificate_path
@@ -101,26 +101,26 @@ RSpec.describe Certificates::CSAcceleratorController do
               .to redirect_to(complete_cs_accelerator_certificate_path)
           end
 
-          it 'asks client not to cache a private page' do
-            expect(response.headers['cache-control']).to eq('no-store')
+          it "asks client not to cache a private page" do
+            expect(response.headers["cache-control"]).to eq("no-store")
           end
         end
 
-        context 'when the user does not have a diagnostic response' do
-          it 'renders the correct template' do
+        context "when the user does not have a diagnostic response" do
+          it "renders the correct template" do
             get cs_accelerator_certificate_path
-            expect(response).to render_template('show')
+            expect(response).to render_template("show")
           end
         end
       end
     end
 
-    describe 'while logged out' do
+    describe "while logged out" do
       before do
         get cs_accelerator_certificate_path
       end
 
-      it 'redirects to login' do
+      it "redirects to login" do
         expect(response).to redirect_to(/register/)
       end
     end

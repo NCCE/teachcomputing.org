@@ -7,7 +7,7 @@
 class FeatureFlagService
   FLAGS = {
     # example_feature: 'FLAG_EXAMPLE_FEATURE'
-    alevel_programme_feature: 'FLAG_ALEVEL_PROGRAMME'
+    alevel_programme_feature: "FLAG_ALEVEL_PROGRAMME"
   }.freeze
 
   def initialize(dependencies = {})
@@ -17,14 +17,12 @@ class FeatureFlagService
   end
 
   def flags
-    @flags ||= begin
-      @flags_to_define.transform_values { |v| cast_boolean(ENV[v]) }
-    end
+    @flags ||= @flags_to_define.transform_values { |v| cast_boolean(ENV[v]) }
   end
 
   private
 
-    def cast_boolean(string_value)
-      string_value == 'on'
-    end
+  def cast_boolean(string_value)
+    string_value == "on"
+  end
 end

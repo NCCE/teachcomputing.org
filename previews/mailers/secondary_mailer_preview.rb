@@ -18,5 +18,4 @@ class SecondaryMailerPreview < ActionMailer::Preview
   def completed_cpd_not_activities
     SecondaryMailer.with(user: User.first).completed_cpd_not_activities
   end
-  
 end

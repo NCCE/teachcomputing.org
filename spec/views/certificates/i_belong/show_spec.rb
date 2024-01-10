@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe('certificates/i_belong/show', type: :view) do
+RSpec.describe("certificates/i_belong/show", type: :view) do
   let(:user) { create(:user) }
   let(:i_belong) { create(:i_belong) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: i_belong) }
@@ -27,40 +27,40 @@ RSpec.describe('certificates/i_belong/show', type: :view) do
     render
   end
 
-  it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: i_belong.title)
+  it "has the hero" do
+    expect(rendered).to have_css(".hero__heading", text: i_belong.title)
   end
 
-  it 'has correct list setup' do
-    expect(rendered).to have_css('.ncce-activity-list--programme', count: 3)
+  it "has correct list setup" do
+    expect(rendered).to have_css(".ncce-activity-list--programme", count: 3)
   end
 
-  it 'has a community activity component' do
-    expect(rendered).to have_css('.community-activity-component')
+  it "has a community activity component" do
+    expect(rendered).to have_css(".community-activity-component")
   end
 
-  it 'has the expected section titles' do
-    expect(rendered).to have_text('Understand the factors affecting girls\' participation in computer science')
-    expect(rendered).to have_text('A group name', count: 2)
+  it "has the expected section titles" do
+    expect(rendered).to have_text("Understand the factors affecting girls' participation in computer science")
+    expect(rendered).to have_text("A group name", count: 2)
   end
 
-  it 'has no recommendation list' do
-    expect(rendered).not_to have_css('.recommended-courses-wrapper', text: 'Courses based on your pathway')
+  it "has no recommendation list" do
+    expect(rendered).not_to have_css(".recommended-courses-wrapper", text: "Courses based on your pathway")
   end
 
-  it 'shows all activities' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 3)
+  it "shows all activities" do
+    expect(rendered).to have_css(".ncce-activity-list__item", count: 3)
   end
 
-  it 'shows no hidden activity title' do
-    expect(rendered).not_to have_text('View more activity options')
+  it "shows no hidden activity title" do
+    expect(rendered).not_to have_text("View more activity options")
   end
 
-  it 'has support information' do
-    expect(rendered).to have_css('.aside-component__heading', text: 'Need some help?')
+  it "has support information" do
+    expect(rendered).to have_css(".aside-component__heading", text: "Need some help?")
   end
 
-  it 'has feedback form' do
-    expect(rendered).to have_css('.feedback-component__heading', text: 'What can we do better?')
+  it "has feedback form" do
+    expect(rendered).to have_css(".feedback-component__heading", text: "What can we do better?")
   end
 end

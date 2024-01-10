@@ -16,13 +16,13 @@ module Api
 
     private
 
-      def as_json(user)
-        user.as_json(only: %i[id email created_at updated_at stem_achiever_contact_no stem_user_id], include: [
-                       { achievements: { except: %i[user_id activity_id], include: :activity,
-                                         methods: :current_state } },
-                       { enrolments: { except: %i[user_id programme_id], include: :programme,
-                                       methods: :current_state } }
-                     ])
-      end
+    def as_json(user)
+      user.as_json(only: %i[id email created_at updated_at stem_achiever_contact_no stem_user_id], include: [
+        {achievements: {except: %i[user_id activity_id], include: :activity,
+                        methods: :current_state}},
+        {enrolments: {except: %i[user_id programme_id], include: :programme,
+                      methods: :current_state}}
+      ])
+    end
   end
 end

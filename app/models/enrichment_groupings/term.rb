@@ -23,11 +23,11 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
   private
 
   def normalised_start
-    normalised_start = normalise_date(term_start)
+    normalise_date(term_start)
   end
 
   def normalised_end
-    normalised_end = normalise_date(term_end)
+    normalise_date(term_end)
   end
 
   def normalised_current_date
@@ -35,7 +35,7 @@ class EnrichmentGroupings::Term < EnrichmentGrouping
   end
 
   def normalise_date(date)
-    this_year = Date.today.year
+    this_year = Time.zone.today.year
     date_year = date.year
 
     year_to_normalise_to = this_year + (date_year - this_year)

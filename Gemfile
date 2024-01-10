@@ -1,120 +1,115 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby "3.1.2"
 
-gem 'activestorage-validator'
-gem 'administrate', '~> 0.18.0'
-gem 'administrate-field-active_storage', '~> 0.3.4'
-gem 'administrate-field-jsonb'
-gem 'administrate-field-nested_has_many', '~> 1.3.0'
-gem 'attr_encrypted'
-gem 'audited'
-gem 'aws-sdk-s3', require: false
-gem 'bootsnap', '>= 1.5.1', require: false
-gem 'cloudflare-rails', '~> 1.1'
-gem 'combine_pdf', '>= 1.0.18'
-gem 'connection_pool'
-gem 'dalli'
-gem 'enumerize'
-gem 'faraday', '~> 1.0', require: false # Graphlient requires faraday v1
-gem 'fog-aws'
-gem 'geocoder', '>= 1.6.6'
-gem 'graphlient', '= 0.6.0' # v0.7 causes issues with stubbed requests https://github.com/ashkan18/graphlient/issues/100
-gem 'htmlentities'
-gem 'humanize'
-gem 'jwt'
-gem 'lograge'
-gem 'memcachier'
-gem 'mimemagic'
-gem 'net-imap'
-gem 'net-pop'
-gem 'net-smtp'
-gem 'nokogiri'
-gem 'oauth2'
-gem 'omniauth'
-gem 'omniauth-oauth2'
-gem 'omniauth-rails_csrf_protection'
-gem 'pagy'
-gem 'pg'
-gem 'pg_search'
-gem 'prawn'
-gem 'puma'
-gem 'rack-attack'
-gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 6.1.7'
-gem 'rails-healthcheck'
-gem 'rest-client'
-gem 'scout_apm'
-gem 'sentry-rails'
-gem 'sentry-ruby'
-gem 'sidekiq'
-gem 'sitemap_generator'
-gem 'statesman', '= 10.0.0' # Pinned due to bug https://github.com/gocardless/statesman/issues/509
-gem 'turbolinks'
-gem 'uglifier'
-gem 'view_component'
-gem 'webpacker'
-gem 'wicked'
+gem "activestorage-validator"
+gem "administrate", "~> 0.18.0"
+gem "administrate-field-active_storage", "~> 0.3.4"
+gem "administrate-field-jsonb"
+gem "administrate-field-nested_has_many", "~> 1.3.0"
+gem "attr_encrypted"
+gem "audited"
+gem "aws-sdk-s3", require: false
+gem "bootsnap", ">= 1.5.1", require: false
+gem "cloudflare-rails", "~> 1.1"
+gem "combine_pdf", ">= 1.0.18"
+gem "connection_pool"
+gem "dalli"
+gem "enumerize"
+gem "faraday", "~> 1.0", require: false # Graphlient requires faraday v1
+gem "fog-aws"
+gem "geocoder", ">= 1.6.6"
+gem "graphlient", "= 0.6.0" # v0.7 causes issues with stubbed requests https://github.com/ashkan18/graphlient/issues/100
+gem "htmlentities"
+gem "humanize"
+gem "jwt"
+gem "lograge"
+gem "memcachier"
+gem "mimemagic"
+gem "net-imap"
+gem "net-pop"
+gem "net-smtp"
+gem "nokogiri"
+gem "oauth2"
+gem "omniauth"
+gem "omniauth-oauth2"
+gem "omniauth-rails_csrf_protection"
+gem "pagy"
+gem "pg"
+gem "pg_search"
+gem "prawn"
+gem "puma"
+gem "rack-attack"
+gem "rack-cors", require: "rack/cors"
+gem "rails", "~> 6.1.7"
+gem "rails-healthcheck"
+gem "rest-client"
+gem "scout_apm"
+gem "sentry-rails"
+gem "sentry-ruby"
+gem "sidekiq"
+gem "sitemap_generator"
+gem "statesman", "= 10.0.0" # Pinned due to bug https://github.com/gocardless/statesman/issues/509
+gem "turbolinks"
+gem "uglifier"
+gem "view_component"
+gem "webpacker"
+gem "wicked"
 # must match the version used to generate the schema
-gem 'graphql', '<= 1.10.10'
-
-group :development do
-  gem 'bullet'
-end
+gem "graphql", "<= 1.10.10"
 
 group :development, :test do
-  gem 'brakeman'
+  gem "brakeman"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'debase'
-  gem 'dotenv-rails'
-  gem 'interception'
-  gem 'pry'
-  gem 'pry-byebug', '~> 3.9.0'
-  gem 'pry-rails'
-  gem 'pry-rescue'
-  gem 'rails-erd'
-  gem 'rubocop'
-  gem 'rubocop-changes'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
-  gem 'ruby-debug-ide'
+  gem "byebug"
+  gem "debase"
+  gem "dotenv-rails"
+  gem "interception"
+  gem "pry"
+  gem "pry-byebug", "~> 3.9.0"
+  gem "pry-rails"
+  gem "pry-rescue"
+  gem "rails-erd"
+  gem "ruby-debug-ide"
 end
 
 # For component previews
 group :staging, :test do
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'awesome_print'
-  gem 'erb_lint', require: false
-  gem 'listen'
-  gem 'rack-mini-profiler'
-  gem 'reek'
-  gem 'solargraph'
-  gem 'spring'
-  gem 'spring-watcher-listen'
-  gem 'web-console', '>= 3.3.0'
+  gem "awesome_print"
+  gem "erb_lint", require: false
+  gem "listen"
+  gem "rack-mini-profiler"
+  gem "reek"
+  gem "solargraph"
+  gem "spring"
+  gem "spring-watcher-listen"
+  gem "web-console", ">= 3.3.0"
+  gem "bullet"
+  gem "standard"
+  gem "standard-rails"
 end
 
 group :test do
-  gem 'axe-matchers', '>= 2.5.0', require: false
-  gem 'capybara'
-  gem 'climate_control'
-  gem 'guard-rspec', require: false
-  gem 'rails-controller-testing'
-  gem 'rspec-json_expectations'
-  gem 'rspec_junit_formatter'
-  gem 'rspec-mocks'
-  gem 'rspec-rails'
-  gem 'selenium-webdriver', '~> 3.142.7'
-  gem 'shoulda-callback-matchers'
-  gem 'shoulda-matchers'
-  gem 'simplecov'
-  gem 'timecop'
-  gem 'webmock'
+  gem "axe-matchers", ">= 2.5.0", require: false
+  gem "capybara"
+  gem "climate_control"
+  gem "guard-rspec", require: false
+  gem "rails-controller-testing"
+  gem "rspec-json_expectations"
+  gem "rspec_junit_formatter"
+  gem "rspec-mocks"
+  gem "rspec-rails"
+  gem "selenium-webdriver", "~> 3.142.7"
+  gem "shoulda-callback-matchers"
+  gem "shoulda-matchers"
+  gem "simplecov"
+  gem "timecop"
+  gem "webmock"
 end

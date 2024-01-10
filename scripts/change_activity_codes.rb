@@ -18,7 +18,7 @@ def help_message
 end
 
 def change_codes(path)
-  undo_file = File.open("#{Rails.root}/tmp/change_activity_codes_undo_data_#{Time.now.utc.iso8601}.tsv", 'a')
+  undo_file = File.open("#{Rails.root}/tmp/change_activity_codes_undo_data_#{Time.now.utc.iso8601}.tsv", "a")
   undo_data = CSV.new(undo_file, col_sep: "\t")
 
   puts "Reading from TSV file #{path}"
@@ -48,7 +48,7 @@ ensure
   puts "Read #{row_count} rows and updated #{update_count} records"
 
   if undo_file
-    puts "\nYou have a brief window to undo this by running bin/rails runner #{0} #{undo_file.path} (before the temporary file gets deleted)"
+    puts "\nYou have a brief window to undo this by running bin/rails runner 0 #{undo_file.path} (before the temporary file gets deleted)"
     undo_file.close
   end
 end

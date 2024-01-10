@@ -2,64 +2,64 @@ class Achiever::Course::Template
   include ActionView::Helpers::TextHelper
 
   attr_accessor :activity_code,
-                :age_groups,
-                :booking_url,
-                :course_leaders,
-                :course_template_no,
-                :duration_unit,
-                :duration_value,
-                :how_long_is_the_course,
-                :how_will_you_learn,
-                :meta_description,
-                :occurrences,
-                :online_cpd,
-                :outcomes,
-                :programmes,
-                :remote_delivered_cpd,
-                :subjects,
-                :summary,
-                :title,
-                :topics_covered,
-                :who_is_it_for,
-                :workstream,
-                :always_on
+    :age_groups,
+    :booking_url,
+    :course_leaders,
+    :course_template_no,
+    :duration_unit,
+    :duration_value,
+    :how_long_is_the_course,
+    :how_will_you_learn,
+    :meta_description,
+    :occurrences,
+    :online_cpd,
+    :outcomes,
+    :programmes,
+    :remote_delivered_cpd,
+    :subjects,
+    :summary,
+    :title,
+    :topics_covered,
+    :who_is_it_for,
+    :workstream,
+    :always_on
 
-  RESOURCE_PATH = 'Get?cmd=CourseTemplatesListingByProgramme'.freeze
-  QUERY_STRINGS = { Page: '1',
-                    RecordCount: '1000',
-                    HideFromweb: '0' }.freeze
-  PROGRAMME_NAMES = ['ncce', 'PDLP', 'Computing Clusters'].freeze
+  RESOURCE_PATH = "Get?cmd=CourseTemplatesListingByProgramme".freeze
+  QUERY_STRINGS = {Page: "1",
+                   RecordCount: "1000",
+                   HideFromweb: "0"}.freeze
+  PROGRAMME_NAMES = ["ncce", "PDLP", "Computing Clusters"].freeze
 
   TS_PROGRAMME_MAPPING = {
-    'CS Accelerator' => 'Subject Knowledge'
+    "CS Accelerator" => "Subject Knowledge"
   }
 
   def self.from_resource(resource, activity)
     new.tap do |t|
-      t.activity_code = resource['Template.ActivityCode'].upcase
-      t.age_groups = resource['Template.AgeGroups'].split(';')
-      t.booking_url = resource['Template.BookingURL']
-      t.course_leaders = resource['Template.CourseLeaders']
-      t.course_template_no = resource['Template.COURSETEMPLATENO'].downcase
-      t.duration_unit = resource['Template.DurationUnit']
-      t.duration_value = resource['Template.Duration']
-      t.how_long_is_the_course = resource['Template.HowLongCourse']
-      t.how_will_you_learn = resource['Template.HowYouWillLearn']
-      t.meta_description = resource['Template.MetaDescription']
+      t.activity_code = resource["Template.ActivityCode"].upcase
+      t.age_groups = resource["Template.AgeGroups"].split(";")
+      t.booking_url = resource["Template.BookingURL"]
+      t.course_leaders = resource["Template.CourseLeaders"]
+      t.course_template_no = resource["Template.COURSETEMPLATENO"].downcase
+      t.duration_unit = resource["Template.DurationUnit"]
+      t.duration_value = resource["Template.Duration"]
+      t.how_long_is_the_course = resource["Template.HowLongCourse"]
+      t.how_will_you_learn = resource["Template.HowYouWillLearn"]
+      t.meta_description = resource["Template.MetaDescription"]
       t.occurrences = []
-      t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.OnlineCPD'].downcase)
-      t.outcomes = resource['Template.Outcomes']
-      t.programmes = resource['Template.TCProgrammeTag'].split(',')
+      t.online_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource["Template.OnlineCPD"].downcase)
+      t.outcomes = resource["Template.Outcomes"]
+      t.programmes = resource["Template.TCProgrammeTag"].split(",")
 
       t.programmes.map! { TS_PROGRAMME_MAPPING[_1] || _1 }
 
-      t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource['Template.RemoteDeliveredCPD']&.downcase)
-      t.subjects = resource['Template.AdditionalSubjects'].split(';')
-      t.summary = resource['Template.Summary']
-      t.title = resource['Template.TemplateTitle']
-      t.topics_covered = resource['Template.TopicsCovered']
-      t.who_is_it_for = resource['Template.WhoIsFor']
-      t.workstream = resource['Template.Workstream']
+      t.remote_delivered_cpd = ActiveRecord::Type::Boolean.new.deserialize(resource["Template.RemoteDeliveredCPD"]&.downcase)
+      t.subjects = resource["Template.AdditionalSubjects"].split(";")
+      t.summary = resource["Template.Summary"]
+      t.title = resource["Template.TemplateTitle"]
+      t.topics_covered = resource["Template.TopicsCovered"]
+      t.who_is_it_for = resource["Template.WhoIsFor"]
+      t.workstream = resource["Template.Workstream"]
 
       t.always_on = activity&.always_on || false
     end
@@ -70,7 +70,6 @@ class Achiever::Course::Template
     occurrences.select { |occurrence| occurrence.course_template_no == course_template_no }
   end
 
-
   def self._all
     activities = Activity
       .where
@@ -80,10 +79,10 @@ class Achiever::Course::Template
 
     templates = PROGRAMME_NAMES.flat_map do |programme_name|
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
-    end.uniq { _1['Template.COURSETEMPLATENO'].downcase }
+    end.uniq { _1["Template.COURSETEMPLATENO"].downcase }
 
     templates.filter_map do |template|
-      activity = activities[template['Template.COURSETEMPLATENO'].downcase]
+      activity = activities[template["Template.COURSETEMPLATENO"].downcase]
 
       # Allow tests to find courses which don't have activity records
       next unless activity || Rails.env.test?
@@ -96,9 +95,9 @@ class Achiever::Course::Template
     # Rails will refuse to cache Achiever::Course::Template when cache_classes = false
     if Rails.env.production? || Rails.env.staging?
       cached_templates = Rails.cache.fetch(
-        'achiever-templates',
+        "achiever-templates",
         expires_in: 12.hours,
-        namespace: 'achiever'
+        namespace: "achiever"
       ) do
         templates_to_cache = _all
 
@@ -112,7 +111,7 @@ class Achiever::Course::Template
         cached_templates
       else
         # temporary mitigation for caching truncated course lists
-        Rails.cache.delete('achiever-templates')
+        Rails.cache.delete("achiever-templates")
         _all
       end
     else
@@ -158,16 +157,16 @@ class Achiever::Course::Template
 
   def by_certificate(certificate)
     case certificate
-    when 'subject-knowledge'
-      @programmes.include?('Subject Knowledge')
-    when 'secondary-certificate'
-      @programmes.include?('Secondary')
-    when 'primary-certificate'
-      @programmes.include?('Primary')
-    when 'i-belong'
-      @programmes.include?('I Belong')
-    when 'a-level-certificate'
-      @programmes.include?('A Level')
+    when "subject-knowledge"
+      @programmes.include?("Subject Knowledge")
+    when "secondary-certificate"
+      @programmes.include?("Secondary")
+    when "primary-certificate"
+      @programmes.include?("Primary")
+    when "i-belong"
+      @programmes.include?("I Belong")
+    when "a-level-certificate"
+      @programmes.include?("A Level")
     end
   end
 
@@ -185,9 +184,9 @@ class Achiever::Course::Template
 
   # For example, "8 hours" or "1 week"
   def formatted_duration
-    return '' unless duration_present?
+    return "" unless duration_present?
 
-    pluralize(duration_value, duration.downcase.chomp('s'))
+    pluralize(duration_value, duration.downcase.chomp("s"))
   end
 
   def activity

@@ -1,11 +1,11 @@
 # When hosted on Heroku set ENV["REJECT_UNPROXIED_REQUESTS"] to TRUE to prevent responding to requests via *.herokuapp.com domain
 module Rack
   class Attack
-    blocklist('reject unproxied requests') do |request|
-      next false unless ENV.fetch('REJECT_UNPROXIED_REQUESTS', 'FALSE').upcase == 'TRUE'
+    blocklist("reject unproxied requests") do |request|
+      next false unless ENV.fetch("REJECT_UNPROXIED_REQUESTS", "FALSE").upcase == "TRUE"
 
       # Block requests that go straight to heroku.
-      if request.host.include?('herokuapp')
+      if request.host.include?("herokuapp")
         ::Rails.logger.warn "Rack Attack filtering: rejected request to #{request.url} as it went direct to #{request.host}"
         next true
       end
@@ -14,7 +14,7 @@ module Rack
       # empty then don't reject anything.
       next false if ::Rails.application.config.cloudflare.ips.empty?
 
-      forwarded_for_header = request.get_header('HTTP_X_FORWARDED_FOR').to_s
+      forwarded_for_header = request.get_header("HTTP_X_FORWARDED_FOR").to_s
       last_forwarded_for_ip = forwarded_for_header.split(/[,\s]+/).last
 
       # If we've not got a forwarded IP, reject

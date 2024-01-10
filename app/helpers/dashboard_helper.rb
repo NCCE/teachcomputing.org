@@ -1,21 +1,21 @@
 module DashboardHelper
   def get_date_string(achievement)
     if achievement.current_state == :complete.to_s
-      "Completed on #{achievement.created_at.strftime('%b %Y')}"
+      "Completed on #{achievement.created_at.strftime("%b %Y")}"
     else
-      "Enrolled on #{achievement.updated_at.strftime('%b %Y')}"
+      "Enrolled on #{achievement.updated_at.strftime("%b %Y")}"
     end
   end
 
   def course_icon_class(activity)
     case activity.category.to_sym
     when :online
-      'icon-online'
+      "icon-online"
     else
       if activity.remote_delivered_cpd
-        'icon-remote'
+        "icon-remote"
       else
-        'icon-map-pin'
+        "icon-map-pin"
       end
     end
   end
@@ -26,7 +26,7 @@ module DashboardHelper
 
   def course_category(activity)
     if activity.remote_delivered_cpd
-      'remote'
+      "remote"
     else
       activity.category
     end

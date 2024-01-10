@@ -1,4 +1,4 @@
-require 'sti_preload'
+require "sti_preload"
 
 class EnrichmentGrouping < ApplicationRecord
   include StiPreload

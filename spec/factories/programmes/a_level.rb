@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :a_level, class: 'Programmes::ALevel' do
-    title { 'A level Computer Science subject knowledge' }
-    slug { 'a-level-certificate' }
-    description { 'A level Computer Science subject knowledge' }
+  factory :a_level, class: "Programmes::ALevel" do
+    title { "A level Computer Science subject knowledge" }
+    slug { "a-level-certificate" }
+    description { "A level Computer Science subject knowledge" }
     enrollable { true }
 
     trait :with_activity_groupings do
@@ -12,4 +12,3 @@ FactoryBot.define do
     end
   end
 end
-
