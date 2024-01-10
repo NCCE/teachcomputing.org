@@ -1,15 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe UserProgrammeAssessment do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
-  let(:non_enrollable_programme) { create(:programme, slug: 'non-enrollable', enrollable: false) }
+  let(:non_enrollable_programme) { create(:programme, slug: "non-enrollable", enrollable: false) }
 
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
-           user_id: user.id,
-           programme_id: programme.id)
+      user_id: user.id,
+      programme_id: programme.id)
   end
 
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
@@ -69,140 +69,140 @@ RSpec.describe UserProgrammeAssessment do
 
   let(:user_programme_asessment) { UserProgrammeAssessment.new(programme, user) }
 
-  describe 'and enrolled' do
+  describe "and enrolled" do
     before do
       setup_achievements_for_programme
     end
 
-    it 'assigns the test gate correctly' do
+    it "assigns the test gate correctly" do
       expect(user_programme_asessment.enough_credits_for_test?).to be(false)
     end
 
-    it 'assign the time until user can take the test correctly' do
+    it "assign the time until user can take the test correctly" do
       expect(user_programme_asessment.can_take_test_at).to eq(0)
     end
 
-    it 'assign whether user is currently doing a test correctly' do
+    it "assign whether user is currently doing a test correctly" do
       expect(user_programme_asessment.currently_taking_test?).to be(false)
     end
 
-    it 'assigns the number of attempts at test correctly' do
+    it "assigns the number of attempts at test correctly" do
       expect(user_programme_asessment.num_attempts).to eq(0)
     end
 
-    it 'assigns the new test gate correctly' do
+    it "assigns the new test gate correctly" do
       expect(user_programme_asessment.enough_activities_for_test?).to be(false)
     end
 
-    context 'when user can take the test' do
+    context "when user can take the test" do
       before do
         setup_achievements_for_taking_test
       end
 
-      it 'assigns the test gate correctly' do
+      it "assigns the test gate correctly" do
         expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
-      it 'assigns the time until user can take the test' do
+      it "assigns the time until user can take the test" do
         expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
-      it 'assigns that user is not currently doing a test' do
+      it "assigns that user is not currently doing a test" do
         expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
-      it 'assigns the number of attempts at test correctly' do
+      it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(0)
       end
 
-      it 'assigns the new test gate correctly' do
+      it "assigns the new test gate correctly" do
         expect(user_programme_asessment.enough_activities_for_test?).to be(true)
       end
     end
 
-    context 'when user started the test' do
+    context "when user started the test" do
       before do
         one_commenced_test_attempt
       end
 
-      it 'assigns the test gate correctly' do
+      it "assigns the test gate correctly" do
         expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
-      it 'assigns the time until user can take the test' do
+      it "assigns the time until user can take the test" do
         expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
-      it 'assigns whether user is currently doing a test' do
+      it "assigns whether user is currently doing a test" do
         expect(user_programme_asessment.currently_taking_test?).to be(true)
       end
 
-      it 'assigns the number of attempts at test correctly' do
+      it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(1)
       end
     end
 
-    context 'when user failed the test' do
+    context "when user failed the test" do
       before do
         one_failed_test_attempt
       end
 
-      it 'assigns the test gate correctly' do
+      it "assigns the test gate correctly" do
         expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
-      it 'assigns the time until user can take the test' do
+      it "assigns the time until user can take the test" do
         expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
-      it 'assigns whether user is currently doing a test' do
+      it "assigns whether user is currently doing a test" do
         expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
-      it 'assigns the number of attempts at test correctly' do
+      it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(1)
       end
     end
 
-    context 'when user failed the test twice' do
+    context "when user failed the test twice" do
       before do
         two_failed_test_attempts
       end
 
-      it 'assigns the test gate correctly' do
+      it "assigns the test gate correctly" do
         expect(user_programme_asessment.enough_credits_for_test?).to be(true)
       end
 
-      it 'assigns the time until user can take the test - 48 hours - 172800 seconds' do
+      it "assigns the time until user can take the test - 48 hours - 172800 seconds" do
         expect(user_programme_asessment.can_take_test_at).not_to eq 0
       end
 
-      it 'assigns the number of attempts at test correctly' do
+      it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(2)
       end
     end
 
-    context 'when user failed the test twice a while ago' do
+    context "when user failed the test twice a while ago" do
       before do
         two_old_failed_test_attempts
       end
 
-      it 'assigns the time until user can take the test' do
+      it "assigns the time until user can take the test" do
         expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
 
-      it 'assigns the number of attempts at test correctly' do
+      it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(2)
       end
     end
 
-    context 'when assessment has been completed' do
+    context "when assessment has been completed" do
       before do
         exam_programme_activity
         passed_exam
       end
 
-      it 'doesn\'t set the time until user can take the test' do
+      it "doesn't set the time until user can take the test" do
         expect(user_programme_asessment.can_take_test_at).to eq(0)
       end
     end

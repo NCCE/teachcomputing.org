@@ -11,8 +11,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
   has_many :achiever_sync_records, dependent: :destroy
 
-  validates :user, :programme, presence: true
-  validates :user, uniqueness: { scope: [:programme] }
+  validates :user, uniqueness: {scope: [:programme]}
   validates :pathway, presence: true, if: -> { programme&.pathways? }
 
   store_accessor :message_flags, %i[primary_pathway_migrated], prefix: true

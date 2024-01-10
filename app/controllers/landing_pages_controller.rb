@@ -1,5 +1,5 @@
 class LandingPagesController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
 
   def primary_teachers
     @landing_page = PrimaryLandingPage.new(current_user: current_user)

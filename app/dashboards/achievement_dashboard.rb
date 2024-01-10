@@ -1,4 +1,4 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
 class AchievementDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -75,7 +75,7 @@ class AchievementDashboard < Administrate::BaseDashboard
   #
   def display_resource(achievement)
     a = Activity.find_by(id: achievement.activity_id)
-    title = a&.title || 'Unknown activity'
+    title = a&.title || "Unknown activity"
     "#{title} (#{achievement.current_state})"
   end
 end

@@ -1,5 +1,5 @@
 class Achiever::User::Enrolment
-  RESOURCE_PATH = 'Set?Cmd=CreateNCCECertificate'.freeze
+  RESOURCE_PATH = "Set?Cmd=CreateNCCECertificate".freeze
 
   def initialize(enrolment)
     @enrolment = enrolment
@@ -13,13 +13,13 @@ class Achiever::User::Enrolment
 
   def request_body
     {
-      'Entities' => [
-        { 'CONTACTNO' => @enrolment.user.stem_achiever_contact_no,
-          'From' => last_enrolment_date.strftime('%Y-%m-%d'),
-          'Type' => @enrolment.programme.slug,
-          'State' => @enrolment.current_state,
-          'Notes' => @enrolment.try(:last_transition).try(:metadata),
-          'Title' => @enrolment.programme.title }
+      "Entities" => [
+        {"CONTACTNO" => @enrolment.user.stem_achiever_contact_no,
+         "From" => last_enrolment_date.strftime("%Y-%m-%d"),
+         "Type" => @enrolment.programme.slug,
+         "State" => @enrolment.current_state,
+         "Notes" => @enrolment.try(:last_transition).try(:metadata),
+         "Title" => @enrolment.programme.title}
       ]
     }.to_json
   end

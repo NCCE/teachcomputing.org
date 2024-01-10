@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe('certificates/cs_accelerator/show', type: :view) do
+RSpec.describe("certificates/cs_accelerator/show", type: :view) do
   let(:user) { create(:user) }
   let!(:programme) { create(:cs_accelerator) }
 
@@ -11,19 +11,19 @@ RSpec.describe('certificates/cs_accelerator/show', type: :view) do
     render
   end
 
-  it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: programme.title)
+  it "has the hero" do
+    expect(rendered).to have_css(".hero__heading", text: programme.title)
   end
 
-  it 'has a heading' do
-    expect(rendered).to have_css('.govuk-heading-m')
+  it "has a heading" do
+    expect(rendered).to have_css(".govuk-heading-m")
   end
 
-  it 'has an activity heading' do
-    expect(rendered).to have_css('.govuk-heading-s')
+  it "has an activity heading" do
+    expect(rendered).to have_css(".govuk-heading-s")
   end
 
-  it 'has the expected bursary info' do
-    expect(rendered).to have_css('.ncce-bursary-aside', text: /financial support/)
+  it "has the expected bursary info" do
+    expect(rendered).to have_css(".ncce-bursary-aside", text: /financial support/)
   end
 end

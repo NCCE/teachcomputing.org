@@ -5,7 +5,7 @@ class LiveBookingPresenter
   include ActionView::Helpers::UrlHelper
 
   def title
-    'Book this course'
+    "Book this course"
   end
 
   def authenticated_title
@@ -13,19 +13,19 @@ class LiveBookingPresenter
   end
 
   def no_occurrences_title
-    'Dates coming soon'
+    "Dates coming soon"
   end
 
   def unauthenticated_introduction
-    'You need to be logged in to start the course.'
+    "You need to be logged in to start the course."
   end
 
   def no_occurrences_introduction
-    'Contact your local Computing Hub for more information'
+    "Contact your local Computing Hub for more information"
   end
 
   def introduction
-    'You will be taken to the STEM Learning website to see further details.'
+    "You will be taken to the STEM Learning website to see further details."
   end
 
   def enrolled_introduction(_course)
@@ -33,15 +33,15 @@ class LiveBookingPresenter
   end
 
   def booking_button_title
-    'Book'
+    "Book"
   end
 
   def enrolled_title
-    'You’re booked on this course'
+    "You’re booked on this course"
   end
 
   def completed_title
-    'You’ve completed this course'
+    "You’ve completed this course"
   end
 
   def unauthenticated_booking_button_title
@@ -71,20 +71,20 @@ class LiveBookingPresenter
     return unless occurrences.blank? || occurrences.count >= 20
 
     link_to(
-      occurrences.blank? ? 'View course' : 'See more dates',
+      occurrences.blank? ? "View course" : "See more dates",
       booking_path(course_template_no),
-      class: 'govuk-button button button--full-width',
-      draggable: 'false',
+      class: "govuk-button button button--full-width",
+      draggable: "false",
       target: :_blank
     )
   end
 
   def booking_path(occurrence_id)
-    "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{occurrence_id}"
+    "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{occurrence_id}"
   end
 
   def address(occurrence)
-    return 'Live remote training' if occurrence.remote_delivered_cpd
+    return "Live remote training" if occurrence.remote_delivered_cpd
 
     "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
   end

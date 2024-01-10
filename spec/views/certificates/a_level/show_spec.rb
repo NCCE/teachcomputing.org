@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe('certificates/a_level/show', type: :view) do
+RSpec.describe("certificates/a_level/show", type: :view) do
   let(:user) { create(:user) }
   let(:a_level) { create(:a_level) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: a_level) }
@@ -24,37 +24,37 @@ RSpec.describe('certificates/a_level/show', type: :view) do
     render
   end
 
-  it 'has the hero' do
-    expect(rendered).to have_css('.hero__heading', text: a_level.title)
+  it "has the hero" do
+    expect(rendered).to have_css(".hero__heading", text: a_level.title)
   end
 
-  it 'has correct list setup' do
-    expect(rendered).to have_css('.ncce-activity-list--programme', count: 1)
+  it "has correct list setup" do
+    expect(rendered).to have_css(".ncce-activity-list--programme", count: 1)
   end
 
-  it 'has the expected section titles' do
-    expect(rendered).to have_text('Welcome to your A level Computer Science subject knowledge certificate!')
-    expect(rendered).to have_text('Need more support?')
-    expect(rendered).to have_text('Practice your knowledge and get your students involved')
+  it "has the expected section titles" do
+    expect(rendered).to have_text("Welcome to your A level Computer Science subject knowledge certificate!")
+    expect(rendered).to have_text("Need more support?")
+    expect(rendered).to have_text("Practice your knowledge and get your students involved")
   end
 
-  it 'has no recommendation list' do
-    expect(rendered).not_to have_css('.recommended-courses-wrapper', text: 'Courses based on your pathway')
+  it "has no recommendation list" do
+    expect(rendered).not_to have_css(".recommended-courses-wrapper", text: "Courses based on your pathway")
   end
 
-  it 'shows all activities' do
-    expect(rendered).to have_css('.ncce-activity-list__item', count: 1)
+  it "shows all activities" do
+    expect(rendered).to have_css(".ncce-activity-list__item", count: 1)
   end
 
-  it 'shows no hidden activity title' do
-    expect(rendered).not_to have_text('View more activity options')
+  it "shows no hidden activity title" do
+    expect(rendered).not_to have_text("View more activity options")
   end
 
-  it 'has support information' do
-    expect(rendered).to have_css('.aside-component__heading', text: 'Need some help?')
+  it "has support information" do
+    expect(rendered).to have_css(".aside-component__heading", text: "Need some help?")
   end
 
-  it 'has feedback form' do
-    expect(rendered).to have_css('.feedback-component__heading', text: 'What can we do better?')
+  it "has feedback form" do
+    expect(rendered).to have_css(".feedback-component__heading", text: "What can we do better?")
   end
 end

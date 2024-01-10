@@ -12,21 +12,21 @@ module Admin
     after_action :discourage_caching
 
     def authenticate_admin
-      return true if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_ADMINISTRATE_CF_AUTH', false)) && !Rails.env.production?
+      return true if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("BYPASS_ADMINISTRATE_CF_AUTH", false)) && !Rails.env.production?
 
       if cookies[:CF_Authorization].nil?
-        flash[:error] = 'Whoops something went wrong'
+        flash[:error] = "Whoops something went wrong"
         redirect_to root_path
       else
         decoded_token = decode_cookie(cookies[:CF_Authorization])
-        @admin_email = decoded_token.first['email']
+        @admin_email = decoded_token.first["email"]
       end
     end
 
     private
 
-      def decode_cookie(token)
-        JWT.decode token, nil, false
-      end
+    def decode_cookie(token)
+      JWT.decode token, nil, false
+    end
   end
 end

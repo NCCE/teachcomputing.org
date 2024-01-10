@@ -1,9 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CoursesController do
-  let(:programme) { create(:programme, slug: 'subject-knowledge', title: 'CS Accelerator') }
+  let(:programme) { create(:programme, slug: "subject-knowledge", title: "CS Accelerator") }
 
-  describe 'GET #index' do
+  describe "GET #index" do
     before do
       stub_age_groups
       stub_course_templates
@@ -12,17 +12,17 @@ RSpec.describe CoursesController do
       stub_subjects
     end
 
-    context 'when there is no filtering' do
+    context "when there is no filtering" do
       before do
         get courses_path
       end
 
-      it 'assigns @course_filter' do
+      it "assigns @course_filter" do
         expect(assigns(:course_filter)).to be_a(Achiever::CourseFilter)
       end
 
-      it 'renders the correct template' do
-        expect(response).to render_template('index')
+      it "renders the correct template" do
+        expect(response).to render_template("index")
       end
 
       it "doesn't show a flash notice" do
@@ -30,21 +30,21 @@ RSpec.describe CoursesController do
       end
     end
 
-    context 'when using filtering' do
+    context "when using filtering" do
       before do
         programme
         get courses_path, params: {
-          level: 'Key stage 1',
-          topic: 'Computing',
-          certificate: 'subject-knowledge'
+          level: "Key stage 1",
+          topic: "Computing",
+          certificate: "subject-knowledge"
         }
       end
 
-      it 'passes params through to course filter as expected' do
+      it "passes params through to course filter as expected" do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ['Key stage 1', 'Computing', 'subject-knowledge']
+            ["Key stage 1", "Computing", "subject-knowledge"]
           )
       end
     end

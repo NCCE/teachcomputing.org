@@ -16,14 +16,14 @@ class DocumentCardsComponent < ViewComponent::Base
   # The difference in approach here is to allow for a boolean, as I can't find a sensible
   # way to use a css variable as a bool, and defining the box-shadow width here feels wrong.
   def data_attributes
-    { 'show-border': @show_border }
+    {"show-border": @show_border}
   end
 
   def tracking_data(label)
     return nil unless @tracking_category.present? && label.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_category,
       event_label: label
     }

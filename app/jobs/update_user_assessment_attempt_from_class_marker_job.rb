@@ -17,9 +17,9 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
     if assessment.programme.cs_accelerator?
       transition_cs_accelerator(user, assessment)
     else
-      CertificatePendingTransitionJob.perform_now(user, { source: 'UpdateUserAssessmentAttemptFromClassMarkerJob#perform' })
+      CertificatePendingTransitionJob.perform_now(user, {source: "UpdateUserAssessmentAttemptFromClassMarkerJob#perform"})
     end
-  rescue StandardError => e
+  rescue => e
     Rails.logger.error(e) if Rails.env.development? || Rails.env.test?
     Sentry.capture_exception(e)
   end

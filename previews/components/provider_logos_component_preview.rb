@@ -9,6 +9,6 @@ class ProviderLogosComponentPreview < ViewComponent::Preview
   end
 
   def dashboard_retired
-    render(ProviderLogosComponent.new(dashboard: true, provider: 'future-learn'))
+    render(ProviderLogosComponent.new(dashboard: true, provider: "future-learn"))
   end
 end

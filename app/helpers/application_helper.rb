@@ -5,18 +5,18 @@ module ApplicationHelper
     content_for :"meta_#{tag}", text
   end
 
-  def yield_meta_tag(tag, default_text = '')
+  def yield_meta_tag(tag, default_text = "")
     content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
   end
 
   def create_account_url
-    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', 'false'))
+    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("BYPASS_OAUTH", "false"))
 
-    "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
+    "#{ENV.fetch("STEM_OAUTH_SITE")}/user/register?from=NCCE"
   end
 
   def auth_url
-    '/auth/stem'
+    "/auth/stem"
   end
 
   def news_url
@@ -41,9 +41,9 @@ module ApplicationHelper
       %r{^https://ncce.io},
       %r{^https://qa.teachcomputing.org}
     ]
-    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV['RAILS_ENV'] == 'development'
+    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV["RAILS_ENV"] == "development"
     allowed_redirect_urls.each do |regex|
-      return url if url =~ regex
+      return url if url&.match?(regex)
     end
     nil
   end

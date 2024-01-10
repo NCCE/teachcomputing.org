@@ -2,7 +2,7 @@ module Curriculum
   class LessonsController < ApplicationController
     include Curriculum::Rateable
 
-    layout 'full-width'
+    layout "full-width"
 
     def show
       redirect = CurriculumClient::Queries::Redirect.one(params[:lesson_slug], params[:unit_slug])&.redirect
@@ -21,8 +21,8 @@ module Curriculum
 
     protected
 
-      def client
-        CurriculumClient::Queries::Lesson
-      end
+    def client
+      CurriculumClient::Queries::Lesson
+    end
   end
 end

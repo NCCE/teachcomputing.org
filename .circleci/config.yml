@@ -81,6 +81,10 @@ jobs:
       - browser-tools/install-browser-tools:
           chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed
       - run:
+          name: Run standardrb
+          command: |
+            bundle exec standardrb
+      - run:
           name: Run rspec
           command: |
             mkdir ~/rspec

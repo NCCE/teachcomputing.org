@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,11 +24,11 @@ module TeachComputing
       g.orm :active_record, primary_key_type: :uuid
     end
 
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**/*.{rb,yml}").to_s]
 
-    config.mylearning_dashboard_url = ENV['MYLEARNING_DASHBOARD_URL']
+    config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]
 
     # default is true
-    config.secure_cookies = ENV['SECURE_COOKIES'] != 'off'
+    config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
   end
 end

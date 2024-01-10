@@ -7,11 +7,11 @@ module Api
 
       if achievement.save
         AssessmentEligibilityJob.perform_now(user.id)
-        CertificatePendingTransitionJob.perform_now(user, { source: 'AdminAchievementsController.create' })
+        CertificatePendingTransitionJob.perform_now(user, {source: "AdminAchievementsController.create"})
 
         render json: as_json(achievement), status: 201
       else
-        render json: { error: achievement.errors.inspect }, status: 409
+        render json: {error: achievement.errors.inspect}, status: 409
       end
     end
 
@@ -21,19 +21,19 @@ module Api
       achievement.transition_to(:complete)
 
       AssessmentEligibilityJob.perform_later(user.id)
-      CertificatePendingTransitionJob.perform_now(user, { source: 'AdminAchievementsController.complete' })
+      CertificatePendingTransitionJob.perform_now(user, {source: "AdminAchievementsController.complete"})
 
       render json: as_json(achievement), status: 201
     end
 
     private
 
-      def as_json(achievement)
-        achievement.as_json(methods: :current_state,
-                            include: [
-                              { activity: { only: %i[title provider] } },
-                              { user: { only: [:email] } }
-                            ])
-      end
+    def as_json(achievement)
+      achievement.as_json(methods: :current_state,
+        include: [
+          {activity: {only: %i[title provider]}},
+          {user: {only: [:email]}}
+        ])
+    end
   end
 end

@@ -18,7 +18,7 @@ class DownloadsController < ApplicationController
     if download.save
       redirect_to aggregate_download.uri
     else
-      flash[:error] = 'There was a problem creating download. Please contact support'
+      flash[:error] = "There was a problem creating download. Please contact support"
     end
   end
 end

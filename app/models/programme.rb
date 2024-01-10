@@ -1,4 +1,4 @@
-require 'sti_preload'
+require "sti_preload"
 
 class Programme < ApplicationRecord
   include StiPreload
@@ -9,8 +9,8 @@ class Programme < ApplicationRecord
   has_many :user_programme_enrolments, dependent: :restrict_with_exception
   has_many :users, through: :user_programme_enrolments
   has_many :programme_activity_groupings
-  has_one  :assessment, dependent: :destroy
-  has_one  :programme_complete_counter, dependent: :destroy
+  has_one :assessment, dependent: :destroy
+  has_one :programme_complete_counter, dependent: :destroy
   has_many :achievements, dependent: :nullify
   has_many :questionnaires, dependent: :nullify
   has_many :pathways, dependent: :nullify
@@ -22,30 +22,31 @@ class Programme < ApplicationRecord
   scope :enrollable, -> { where(enrollable: true) }
 
   def self.cs_accelerator
-    Programme.find_by(slug: 'subject-knowledge')
+    Programme.find_by(slug: "subject-knowledge")
   end
 
   def self.primary_certificate
-    Programme.find_by(slug: 'primary-certificate')
+    Programme.find_by(slug: "primary-certificate")
   end
 
   def self.secondary_certificate
-    Programme.find_by(slug: 'secondary-certificate')
+    Programme.find_by(slug: "secondary-certificate")
   end
 
   def self.i_belong
-    Programme.find_by(slug: 'i-belong')
+    Programme.find_by(slug: "i-belong")
   end
 
   def self.a_level
-    Programme.find_by(slug: 'a-level-certificate')
+    Programme.find_by(slug: "a-level-certificate")
   end
 
   def short_name
     raise NotImplementedError
   end
 
-  def pending_delay; end
+  def pending_delay
+  end
 
   def badgeable?
     badges.active.exists?
@@ -78,36 +79,40 @@ class Programme < ApplicationRecord
   end
 
   def primary_certificate?
-    slug == 'primary-certificate'
+    slug == "primary-certificate"
   end
 
   def secondary_certificate?
-    slug == 'secondary-certificate'
+    slug == "secondary-certificate"
   end
 
   def cs_accelerator?
-    slug == 'subject-knowledge'
+    slug == "subject-knowledge"
   end
 
   def i_belong?
-    slug == 'i-belong'
+    slug == "i-belong"
   end
 
   def a_level?
-    slug == 'a-level-certificate'
+    slug == "a-level-certificate"
   end
 
   def pathways?
     false
   end
 
-  def path; end
+  def path
+  end
 
-  def public_path; end
+  def public_path
+  end
 
-  def enrol_path(opts = {}); end
+  def enrol_path(opts = {})
+  end
 
-  def programme_title; end
+  def programme_title
+  end
 
   def bcs_logo
     raise NotImplementedError

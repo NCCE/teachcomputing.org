@@ -17,13 +17,13 @@ class CreateUserProgrammeEnrolmentTransitions < ActiveRecord::Migration[5.2]
     add_foreign_key :user_programme_enrolment_transitions, :user_programme_enrolments
 
     add_index(:user_programme_enrolment_transitions,
-              %i(user_programme_enrolment_id sort_key),
-              unique: true,
-              name: "index_user_programme_enrolment_transitions_parent_sort")
+      %i[user_programme_enrolment_id sort_key],
+      unique: true,
+      name: "index_user_programme_enrolment_transitions_parent_sort")
     add_index(:user_programme_enrolment_transitions,
-              %i(user_programme_enrolment_id most_recent),
-              unique: true,
-              where: "most_recent",
-              name: "index_user_programme_enrolment_transitions_parent_most_recent")
+      %i[user_programme_enrolment_id most_recent],
+      unique: true,
+      where: "most_recent",
+      name: "index_user_programme_enrolment_transitions_parent_most_recent")
   end
 end

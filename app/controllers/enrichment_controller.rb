@@ -1,5 +1,5 @@
 class EnrichmentController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
 
   helper_method :programme_t
 
@@ -15,7 +15,7 @@ class EnrichmentController < ApplicationController
 
   private
 
-    def programme_t(key, **options)
-      I18n.t(".enrichment.show.#{@programme.slug}.#{key}", **options)
-    end
+  def programme_t(key, **options)
+    I18n.t(".enrichment.show.#{@programme.slug}.#{key}", **options)
+  end
 end

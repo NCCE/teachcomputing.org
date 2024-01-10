@@ -14,7 +14,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   store_accessor :web_copy, %i[course_requirements], prefix: true
 
   def achievements(user)
-    user.achievements.in_state(:complete).belonging_to_programme(programme).joins(activity: :programme_activities).where(activities: { programme_activities: { legacy: false } })
+    user.achievements.in_state(:complete).belonging_to_programme(programme).joins(activity: :programme_activities).where(activities: {programme_activities: {legacy: false}})
   end
 
   def user_complete?(user)
@@ -29,13 +29,13 @@ class ProgrammeActivityGrouping < ApplicationRecord
   def formatted_title
     output = title.dup
 
-    completable_activity_count = programme_activities.includes(:activity).where(activity: { coming_soon: false }).count
+    completable_activity_count = programme_activities.includes(:activity).where(activity: {coming_soon: false}).count
 
     if required_for_completion != completable_activity_count
-      output << ' by completing '
+      output << " by completing "
       output << content_tag(:strong, "at least #{required_for_completion.humanize}")
-      output << ' '
-      output << 'activity'.pluralize(required_for_completion)
+      output << " "
+      output << "activity".pluralize(required_for_completion)
     end
 
     output.html_safe

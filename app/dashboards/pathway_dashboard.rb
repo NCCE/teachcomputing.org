@@ -1,4 +1,4 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
 class PathwayDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -11,7 +11,7 @@ class PathwayDashboard < Administrate::BaseDashboard
     pathway_activities: Field::HasMany,
     programme: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    range: Field::Select.with_options(searchable: false, collection: { '1..10': '[1, 10)', '11..20': '[11, 20)' }),
+    range: Field::Select.with_options(searchable: false, collection: {"1..10": "[1, 10)", "11..20": "[11, 20)"}),
     title: Field::String,
     slug: Field::String,
     order: Field::Number,

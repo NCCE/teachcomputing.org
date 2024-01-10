@@ -20,11 +20,11 @@ module CSAccelerator
 
     private
 
-      def user_incomplete_enrolment_on_non_csa_activity_programme(user, activity)
-        non_csa_programmes = activity.programmes.where.not(id: Programme.cs_accelerator.id)
-        non_csa_programmes.any? do |programme|
-          programme.user_enrolled?(user) && !programme.user_completed?(user)
-        end
+    def user_incomplete_enrolment_on_non_csa_activity_programme(user, activity)
+      non_csa_programmes = activity.programmes.where.not(id: Programme.cs_accelerator.id)
+      non_csa_programmes.any? do |programme|
+        programme.user_enrolled?(user) && !programme.user_completed?(user)
       end
+    end
   end
 end
