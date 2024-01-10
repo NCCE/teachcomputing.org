@@ -8,7 +8,8 @@ RSpec.describe OmniAuth::Strategies::Stem do
       "firstName" => ["Keymaster of"],
       "lastName" => ["Gozer"],
       "mail" => ["vince@gozer.com"],
-      "achieverContactNo" => ["abc123"]
+      "achieverContactNo" => ["abc123"],
+      "school" => ["St Johns", "St Peters"]
     }
   }
 
@@ -38,6 +39,10 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
     it "achieverContactNo" do
       expect(strategy.info[:achiever_contact_no]).to eq("abc123")
+    end
+
+    it "should take the last email" do
+      expect(strategy.info[:school_name]).to eq("St Peters")
     end
   end
 
