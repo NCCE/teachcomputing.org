@@ -15,15 +15,15 @@ jobs:
           name: Inspecting with Brakeman
           command: bundle exec brakeman
 
-  rubocop:
+  standardrb:
     docker:
       - image: "cimg/ruby:3.1.2"
     steps:
       - checkout
       - ruby/install-deps
       - run:
-          name: Inspecting changes with Rubocop
-          command: bundle exec rubocop-changes --format quiet
+          name: Inspecting code with standardrb
+          command: bundle exec standardrb
 
   test:
     working_directory: ~/teachcomputing
@@ -81,10 +81,6 @@ jobs:
       - browser-tools/install-browser-tools:
           chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed
       - run:
-          name: Run standardrb
-          command: |
-            bundle exec standardrb
-      - run:
           name: Run rspec
           command: |
             mkdir ~/rspec
@@ -113,7 +109,14 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                - main
+
+  standardrb:
+    jobs:
+      - standardrb:
+          filters:
+            branches:
+              ignore:
                 - main
 
   build_and_test:
