@@ -114,20 +114,6 @@ RSpec.describe("Static pages", type: :system) do
     end
   end
 
-  context "Privacy page" do
-    before do
-      visit privacy_path
-    end
-
-    it "is the correct page" do
-      expect(page).to have_content("Privacy Notice")
-    end
-
-    it "main is accessible" do
-      expect(page).to be_accessible.within("#main-content")
-    end
-  end
-
   context "Terms page" do
     before do
       visit terms_conditions_path

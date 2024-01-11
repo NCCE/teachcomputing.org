@@ -26,7 +26,7 @@ RSpec.describe("components/_footer", type: :view) do
   end
 
   it "has a privacy link" do
-    expect(rendered).to have_link("Privacy", href: "/privacy")
+    expect(rendered).to have_link("Privacy", href: "/privacy/")
   end
 
   it "has a terms and conditions link" do
