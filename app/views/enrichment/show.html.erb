@@ -11,8 +11,8 @@
           <ul class="govuk-list govuk-list--bullet">
           <% programme_t(
             'taking_part_steps',
-            primary_certificate: link_to('secondary computing certificate', secondary_certificate_path),
-            secondary_certificate: link_to('secondary computing certificate', secondary_certificate_path)
+            primary_certificate: link_to('primary computing certificate', primary_certificate_path),
+            secondary_certificates: link_to('secondary certificates', secondary_certification_path)
           ).each do |step| %>
               <li><%= step.html_safe %></li>
             <% end %>
