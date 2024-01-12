@@ -1,4 +1,5 @@
-.home-teaching, .pedagogy {
+.home-teaching,
+.pedagogy {
   img,
   video {
     margin-bottom: 20px;
@@ -10,23 +11,4 @@
 .kg-image-card img {
   width: 100%;
   height: auto;
-}
-
-.article-index-entry {
-  display: flex;
-  width: 100%;
-  gap: 24px;
-
-  margin-bottom: 32px;
-
-  img {
-    width: 336px;
-    aspect-ratio: 3/2;
-    object-fit: cover;
-    flex-grow: 0;
-  }
-
-  h3 {
-    margin-bottom: 11px;
-  }
 }
