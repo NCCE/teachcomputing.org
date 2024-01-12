@@ -20,7 +20,7 @@ module OmniAuth::Strategies
         achiever_organisation_no: "achieverOrganisationNo",
         school_name: "school"
       }.each_pair do |key, stem_key|
-        our_info[key] = user_info["attributes"][stem_key].last if user_info["attributes"].has_key?(stem_key)
+        our_info[key] = user_info["attributes"][stem_key][0] if user_info["attributes"].has_key?(stem_key)
       end
       our_info
     end
