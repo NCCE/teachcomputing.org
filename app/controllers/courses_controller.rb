@@ -63,7 +63,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params
-    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
+    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [], date_range: {})
   end
 
   def assign_start_date
