@@ -47,13 +47,13 @@
           <%= link_to 'Accessibility', accessibility_statement_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Accessibility' }%>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Privacy', '/privacy/', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Privacy' } %>
+          <%= link_to 'Privacy', cms_page_path('privacy'), class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Privacy' } %>
         </li>
         <li class="ncce-footer__list-item">
           <%= link_to 'Terms and Conditions', terms_conditions_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Terms and Conditions' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Safeguarding', '/safeguarding/', class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Safeguarding' } %>
+          <%= link_to 'Safeguarding', cms_page_path('safeguarding'), class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Safeguarding' } %>
         </li>
       </ul>
     </nav>
