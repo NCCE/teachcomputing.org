@@ -189,7 +189,6 @@ Rails.application.routes.draw do
     defaults: {page_slug: "primary-certificate"}
   get "/primary-teachers", to: "landing_pages#primary_teachers", as: :primary_teachers,
     defaults: {slug: "primary-certificate"}
-  get "/privacy", to: "pages#page", as: :privacy, defaults: {page_slug: "privacy"}
   get "/secondary-certificate",
     to: "pages#static_programme_page",
     as: :secondary,
