@@ -15,7 +15,7 @@ class AchievementDashboard < Administrate::BaseDashboard
     self_verification_info: Field::String,
     current_state: Field::String.with_options(searchable: false),
     id: Field::String,
-    created_at: Field::DateTime.with_options(format: '%d/%m/%Y %H:%M'),
+    created_at: Field::DateTime.with_options(format: "%d/%m/%Y %H:%M"),
     updated_at: Field::DateTime,
     progress: Field::Number
   }.freeze

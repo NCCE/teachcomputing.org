@@ -9,9 +9,8 @@ module Admin
     # end
 
     def after_resource_destroyed_path(achievement)
-      { action: :show, controller: :users, id: achievement.user.id }
+      {action: :show, controller: :users, id: achievement.user.id}
     end
-
 
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`

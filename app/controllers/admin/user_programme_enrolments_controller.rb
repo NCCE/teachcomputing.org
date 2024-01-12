@@ -50,7 +50,7 @@ module Admin
       if result
         flash[:notice] = "State changed to #{user_programme_enrolment.current_state} for #{user_programme_enrolment.programme.title}"
       else
-        flash[:alert] = 'Unable to change state'
+        flash[:alert] = "Unable to change state"
       end
       redirect_to controller: :users, action: :show, id: user_programme_enrolment.user.id
     end

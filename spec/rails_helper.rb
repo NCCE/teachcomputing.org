@@ -2,11 +2,11 @@ require "spec_helper"
 require "dotenv"
 require "simplecov"
 
-SimpleCov.minimum_coverage ENV['SIMPLECOV_MIN_COVERAGE'].to_i
-SimpleCov.start 'rails' do
-  add_group 'Services', 'app/services'
-  add_group 'Presenters', 'app/presenters'
-  add_group 'Components', 'app/components'
+SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
+SimpleCov.start "rails" do
+  add_group "Services", "app/services"
+  add_group "Presenters", "app/presenters"
+  add_group "Components", "app/components"
 
   current_branch = `git rev-parse --abbrev-ref HEAD`
   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")

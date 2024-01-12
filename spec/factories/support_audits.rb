@@ -3,7 +3,7 @@ FactoryBot.define do
     user
     associated { association :assessment_attempt }
     authoriser
-    comment { 'Changed something' }
+    comment { "Changed something" }
     audited_changes {
       {
         accepted_conditions: false
