@@ -95,5 +95,9 @@ module Programmes
     def user_completed_non_compulsory_achievement?(user)
       non_compulsory_achievements(user).any? { |a| a.complete? }
     end
+
+    def auto_enrollable?
+      true
+    end
   end
 end

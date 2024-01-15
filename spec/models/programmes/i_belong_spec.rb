@@ -34,4 +34,16 @@ RSpec.describe Programmes::IBelong do
       expect(programme.certificate_name).to eq "I Belong"
     end
   end
+
+  describe "#auto_enrollable?" do
+    it "should return true" do
+      expect(programme.auto_enrollable?).to be true
+    end
+  end
+
+  describe "#auto_enrollment_ignored_activity_codes" do
+    it "should return [\"FD022\"]" do
+      expect(programme.auto_enrollment_ignored_activity_codes).to eq ["FD022"]
+    end
+  end
 end

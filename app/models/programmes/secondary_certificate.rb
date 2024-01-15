@@ -56,5 +56,9 @@ module Programmes
     def send_pending_mail?
       true
     end
+
+    def auto_enrollable?
+      true
+    end
   end
 end

@@ -413,28 +413,14 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe "after save" do
-    context "when the achievement belongs to cs_accelerator" do
-      let!(:activity) { create(:activity) }
-      let!(:cs_accelerator) { create(:cs_accelerator) }
-      let!(:programme_activity) { create(:programme_activity, programme: cs_accelerator, activity:) }
-      let!(:achievement) { build(:achievement, activity:) }
+    let!(:activity) { create(:activity) }
+    let!(:cs_accelerator) { create(:cs_accelerator) }
+    let!(:programme_activity) { create(:programme_activity, programme: cs_accelerator, activity:) }
+    let!(:achievement) { build(:achievement, activity:) }
 
-      it "should trigger auto enroll job" do
-        expect(CSAccelerator::AutoEnrolJob).to receive(:perform_later)
-        achievement.save
-      end
-    end
-
-    context "when the achievement doesn't belong to cs_accelerator" do
-      let!(:activity) { create(:activity) }
-      let!(:i_belong) { create(:i_belong) }
-      let!(:programme_activity) { create(:programme_activity, programme: i_belong, activity:) }
-      let!(:achievement) { build(:achievement, activity:) }
-
-      it "should trigger auto enroll job" do
-        expect(CSAccelerator::AutoEnrolJob).not_to receive(:perform_later)
-        achievement.save
-      end
+    it "should trigger auto enroll job" do
+      expect(AutoEnrolJob).to receive(:perform_later)
+      achievement.save
     end
   end
 end

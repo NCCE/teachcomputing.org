@@ -71,4 +71,10 @@ RSpec.describe Programmes::PrimaryCertificate do
       expect(programme.certificate_name).to eq "Teach primary computing certificate"
     end
   end
+
+  describe "#auto_enrollable?" do
+    it "should return true" do
+      expect(programme.auto_enrollable?).to be true
+    end
+  end
 end

@@ -3,8 +3,12 @@ class UserProgrammeEnrolmentsController < ApplicationController
   before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
-    enroller = Programmes::UserEnroller.new(user_programme_enrolment_params)
-    programme = Programme.find_by!(id: params[:user_programme_enrolment][:programme_id])
+    enroller = Programmes::UserEnroller.new(
+      user_id: user_programme_enrolment_params[:user_id],
+      programme_id: user_programme_enrolment_params[:programme_id],
+      pathway_slug: user_programme_enrolment_params[:pathway_slug]
+    )
+    programme = Programme.find_by!(id: user_programme_enrolment_params[:programme_id])
     if enroller.call
       Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(current_user)
       flash[:notice] = "Congratulations, you have enrolled on our #{programme.title}"
