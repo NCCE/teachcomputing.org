@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class PathwayActivityDashboard < Administrate::BaseDashboard
+class PathwayActivityDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,8 +10,8 @@ class PathwayActivityDashboard < Administrate::BaseDashboard
     activity: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
     supplementary: Field::Boolean,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

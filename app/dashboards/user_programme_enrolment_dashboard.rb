@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
+class UserProgrammeEnrolmentDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,10 +9,10 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     programme: Field::BelongsTo,
     pathway: Field::BelongsTo,
-    current_state: Field::String.with_options(searchable: false),
+    current_state: StatePickerField,
     id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME,
     flagged: Field::Boolean,
     auto_enrolled: Field::Boolean
   }.freeze
@@ -49,11 +47,7 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    user
-    programme
-    pathway
-    flagged
-    auto_enrolled
+    current_state
   ].freeze
 
   # COLLECTION_FILTERS

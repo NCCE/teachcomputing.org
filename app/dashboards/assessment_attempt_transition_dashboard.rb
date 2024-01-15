@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
+class AssessmentAttemptTransitionDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,8 +10,8 @@ class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
     to_state: Field::String,
     most_recent: Field::Boolean,
     id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -61,9 +59,9 @@ class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how assessment attempts are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(assessment_attempt)
-    a = Assessment.find_by(id: assessment_attempt.assessment_id)
+  def display_resource(assessment_transition)
+    a = Assessment.find_by(id: assessment_transition.assessment_attempt.assessment_id)
     p = Programme.find_by(id: a.programme_id)
-    "#{p.title} assessment (#{assessment_attempt.current_state})"
+    "#{p.title} assessment (#{assessment_transition.assessment_attempt.current_state})"
   end
 end

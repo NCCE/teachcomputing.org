@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class AchievementDashboard < Administrate::BaseDashboard
+class AchievementDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,10 +10,11 @@ class AchievementDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     supporting_evidence_attachment: Field::HasOne,
     supporting_evidence_blob: Field::HasOne,
+    self_verification_info: Field::String,
     current_state: Field::String.with_options(searchable: false),
     id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME,
     progress: Field::Number
   }.freeze
 
@@ -28,6 +27,7 @@ class AchievementDashboard < Administrate::BaseDashboard
     user
     activity
     current_state
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,6 +37,7 @@ class AchievementDashboard < Administrate::BaseDashboard
     activity
     supporting_evidence_attachment
     supporting_evidence_blob
+    self_verification_info
     id
     created_at
     updated_at

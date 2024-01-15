@@ -49,5 +49,5 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
+  delegate :allowed_transitions, :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
 end

@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class SupportAuditDashboard < Administrate::BaseDashboard
+class SupportAuditDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -21,7 +19,7 @@ class SupportAuditDashboard < Administrate::BaseDashboard
       searchable: true, searchable_fields: %w[first_name last_name organisation]
     ),
     ticket_id: Field::String,
-    created_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

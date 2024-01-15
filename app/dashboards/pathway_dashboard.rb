@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class PathwayDashboard < Administrate::BaseDashboard
+class PathwayDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -16,8 +14,8 @@ class PathwayDashboard < Administrate::BaseDashboard
     slug: Field::String,
     order: Field::Number,
     description: Field::Text,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES
