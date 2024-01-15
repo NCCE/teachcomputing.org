@@ -2415,3 +2415,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "c01511de-8d79-ee11-8179
 
   activity.programmes = [secondary_certificate]
 end.save
+
+Activity.find_or_initialize_by(stem_course_template_no: "fa051bb1-c5af-ee11-a569-002248c6f783").tap do |activity|
+  activity.title = "Object oriented programming (OOP) in A Level computer science"
+  activity.slug = "object-oriented-programming-oop-in-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 50
+  activity.stem_activity_code = "CP506"
+
+  activity.programmes = [secondary_certificate, a_level]
+end
