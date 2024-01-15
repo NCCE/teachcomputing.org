@@ -2422,7 +2422,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "fa051bb1-c5af-ee11-a569
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
-  activity.credit = 50
+  activity.credit = 60
   activity.stem_activity_code = "CP506"
 
   activity.programmes = [secondary_certificate, a_level]
