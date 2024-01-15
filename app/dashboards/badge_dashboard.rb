@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class BadgeDashboard < Administrate::BaseDashboard
+class BadgeDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -13,8 +11,8 @@ class BadgeDashboard < Administrate::BaseDashboard
     academic_year: Field::String,
     active: Field::Boolean,
     credly_badge_template_id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

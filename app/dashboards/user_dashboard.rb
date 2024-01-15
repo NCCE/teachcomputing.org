@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class UserDashboard < Administrate::BaseDashboard
+class UserDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -18,12 +16,12 @@ class UserDashboard < Administrate::BaseDashboard
     first_name: Field::String,
     last_name: Field::String,
     email: Field::String,
-    last_sign_in_at: Field::DateTime,
+    last_sign_in_at: FORMATTED_DATE_TIME,
     stem_user_id: Field::String,
     stem_achiever_contact_no: Field::String,
-    stem_credentials_expires_at: Field::DateTime,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    stem_credentials_expires_at: FORMATTED_DATE_TIME,
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME,
     teacher_reference_number: Field::String,
     stem_achiever_organisation_no: Field::String,
     future_learn_organisation_memberships: Field::Text,

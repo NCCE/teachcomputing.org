@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class HubDashboard < Administrate::BaseDashboard
+class HubDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -22,8 +20,8 @@ class HubDashboard < Administrate::BaseDashboard
     linkedin: Field::String,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

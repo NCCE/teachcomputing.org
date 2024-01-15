@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
+class UserProgrammeEnrolmentDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -13,8 +11,8 @@ class UserProgrammeEnrolmentDashboard < Administrate::BaseDashboard
     pathway: Field::BelongsTo,
     current_state: StatePickerField,
     id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME,
     flagged: Field::Boolean,
     auto_enrolled: Field::Boolean
   }.freeze

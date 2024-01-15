@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
+class AssessmentAttemptTransitionDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,8 +10,8 @@ class AssessmentAttemptTransitionDashboard < Administrate::BaseDashboard
     to_state: Field::String,
     most_recent: Field::Boolean,
     id: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

@@ -1,6 +1,5 @@
-require "administrate/base_dashboard"
 
-class AchievementDashboard < Administrate::BaseDashboard
+class AchievementDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -15,8 +14,8 @@ class AchievementDashboard < Administrate::BaseDashboard
     self_verification_info: Field::String,
     current_state: Field::String.with_options(searchable: false),
     id: Field::String,
-    created_at: Field::DateTime.with_options(format: "%d/%m/%Y %H:%M"),
-    updated_at: Field::DateTime,
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME,
     progress: Field::Number
   }.freeze
 
