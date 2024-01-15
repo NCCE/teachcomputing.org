@@ -1,4 +1,3 @@
-
 class AchievementDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
