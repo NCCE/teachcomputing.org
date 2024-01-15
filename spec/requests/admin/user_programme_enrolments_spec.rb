@@ -42,7 +42,7 @@ RSpec.describe "Admin::UserProgrammeEnrolmentsController" do
     context "with valid status" do
       before do
         put admin_user_programme_enrolment_path(user_programme_enrolment, params: {
-          user_programme_enrolment: {state_machine: :pending}
+          user_programme_enrolment: {current_state: :pending}
         })
       end
 
@@ -55,12 +55,12 @@ RSpec.describe "Admin::UserProgrammeEnrolmentsController" do
     context "with invalid status" do
       before do
         put admin_user_programme_enrolment_path(user_programme_enrolment, params: {
-          user_programme_enrolment: {state_machine: :random}
+          user_programme_enrolment: {current_state: :random}
         })
       end
 
       it "should redirect to the show page" do
-        expect(response).to redirect_to(admin_user_path(user))
+        expect(response).to redirect_to(edit_admin_user_path(user))
         expect(flash[:alert]).to be_present
       end
     end

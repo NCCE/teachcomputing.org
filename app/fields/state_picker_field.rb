@@ -2,7 +2,7 @@ require "administrate/field/base"
 
 class StatePickerField < Administrate::Field::Base
   def valid_states_for_change
-    data.allowed_transitions
+    resource.allowed_transitions
   end
 
   def name
@@ -10,6 +10,6 @@ class StatePickerField < Administrate::Field::Base
   end
 
   def to_s
-    data.current_state.to_s
+    data.to_s
   end
 end
