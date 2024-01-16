@@ -1,14 +1,14 @@
 class IBelongMailerPreview < ActionMailer::Preview
   def welcome
-    IBelongMailer.with(user: User.first).welcome
+    IBelongMailer.with(user: User.first, preview: true).welcome
   end
 
   def pending
-    IBelongMailer.with(user: User.first).pending
+    IBelongMailer.with(user: User.first, preview: true).pending
   end
 
   def completed
-    IBelongMailer.with(user: User.first).completed
+    IBelongMailer.with(user: User.first, preview: true).completed
   end
 
   def inactive_not_completed_any_sections
