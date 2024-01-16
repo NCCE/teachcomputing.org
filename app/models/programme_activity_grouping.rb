@@ -14,7 +14,12 @@ class ProgrammeActivityGrouping < ApplicationRecord
   store_accessor :web_copy, %i[course_requirements], prefix: true
 
   def achievements(user)
-    user.achievements.in_state(:complete).belonging_to_programme(programme).joins(activity: :programme_activities).where(activities: {programme_activities: {legacy: false}})
+    user
+      .achievements
+      .in_state(:complete)
+      .belonging_to_programme(programme)
+      .joins(activity: :programme_activities)
+      .where(activities: {programme_activities: {legacy: false}})
   end
 
   def user_complete?(user)
