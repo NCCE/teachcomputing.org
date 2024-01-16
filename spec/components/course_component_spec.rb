@@ -3,11 +3,14 @@ require "rails_helper"
 RSpec.describe CourseComponent, type: :component do
   let(:course) { build(:achiever_course_template, activity_code: "abc", title: "test course") }
   let(:always_on_course) { build(:achiever_course_template, activity_code: "abc", title: "test course", always_on: true) }
-  let(:course_primary) { build(:achiever_course_template, activity_code: "abc", title: "primary test course", programmes: ["Primary"]) }
-  let(:course_secondary) { build(:achiever_course_template, activity_code: "abc", title: "secondary test course", programmes: ["Secondary"]) }
+  let(:course_primary) { build(:achiever_course_template, activity_code: "abc", title: "primary test course", programmes: ["primary-certificate"]) }
+  let(:course_secondary) { build(:achiever_course_template, activity_code: "abc", title: "secondary test course", programmes: ["secondary-certificate"]) }
   let(:filter) { instance_double(Achiever::CourseFilter) }
 
   before do
+    create(:primary_certificate)
+    create(:secondary_certificate)
+    create(:cs_accelerator)
     allow(filter).to receive_messages(
       subjects: {"Algorithms" => 0o00000000, "Other" => 222_222_222},
       age_groups: {"Key stage 1" => 0o00000000, "Key stage 2" => 222_222_222}
@@ -43,17 +46,17 @@ RSpec.describe CourseComponent, type: :component do
 
   it "shows the expected tag for a CSA course" do
     render_inline(described_class.new(course: course, filter: filter))
-    expect(page).to have_text("Subject Knowledge")
+    expect(page).to have_text(Programme.cs_accelerator.certificate_name)
   end
 
   it "shows the expected tag for a Primary course" do
     render_inline(described_class.new(course: course_primary, filter: filter))
-    expect(page).to have_text("Primary certificate")
+    expect(page).to have_text(Programme.primary_certificate.certificate_name)
   end
 
   it "shows the expected tag for a Secondary course" do
     render_inline(described_class.new(course: course_secondary, filter: filter))
-    expect(page).to have_text("Secondary certificate")
+    expect(page).to have_text(Programme.secondary_certificate.certificate_name)
   end
 
   it "shows age groups" do
