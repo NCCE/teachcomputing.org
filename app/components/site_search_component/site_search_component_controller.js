@@ -16,6 +16,7 @@ export default class extends ApplicationController {
   click() {
     const urlParams = new URLSearchParams(window.location.search)
     urlParams.set('q', this.inputTarget.value)
+    urlParams.delete('page')
     window.location.href = `/search?${urlParams.toString()}`
   }
 }

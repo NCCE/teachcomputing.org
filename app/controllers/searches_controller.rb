@@ -8,7 +8,11 @@ class SearchesController < ApplicationController
 
     @results = SiteSearch.search(@query, order: sort_symbol)
 
-    @pagy, @paged_results = pagy(@results)
+    begin
+      @pagy, @paged_results = pagy(@results)
+    rescue Pagy::OverflowError
+      redirect_to search_path(q: @query)
+    end
   end
 
   private
