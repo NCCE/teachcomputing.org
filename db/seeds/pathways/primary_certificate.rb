@@ -173,8 +173,7 @@ programme.pathways.find_or_initialize_by(slug: "specialising-or-leading-2").tap 
     "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework",
     "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community",
-    "run-an-enrichment-activity-in-your-classroom"
+    "join-and-present-at-your-local-computing-at-school-community"
   ]
 
   activities.each do |activity|

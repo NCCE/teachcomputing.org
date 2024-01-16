@@ -1,7 +1,4 @@
 include ExternalLinkHelper
-primary_certificate = Programme.primary_certificate
-# secondary_certificate = Programme.secondary_certificate
-# i_belong = Programme.i_belong
 
 # We shouldn't define activity relations in this file
 ProgrammeActivity.joins(:activity).where(activity: {category: "community"}).destroy_all
@@ -367,8 +364,6 @@ Activity.find_or_initialize_by(slug: "run-or-support-a-code-club-in-your-school"
   activity.public_copy_description = "Code Club sessions use free step-by-step project guides to enrich young people’s experience of programming. If there isn’t a club set up already at your school, it’s easy to start one."
   activity.public_copy_title_url = "https://codeclub.org/en/start-a-code-club"
   activity.self_verification_info = "Please provide us with evidence of guide usage"
-
-  activity.programmes = [primary_certificate]
 end.save
 
 Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classroom").tap do |activity|
