@@ -23,12 +23,10 @@ module ProgrammesHelper
     "KS3 and GCSE Computer Science subject knowledge"
   end
 
-  def display_programme_tag(programme)
-    if programme == "Secondary" || programme == "Primary"
-      "#{programme} certificate"
-    else
-      programme
-    end
+  def display_programme_tag(programme_slug)
+    programme = Programme.find_by(slug: programme_slug)
+    return programme.certificate_name if programme
+    programme_slug.titlecase
   end
 
   def programme_pathway_card_data(programme, exclude: nil)

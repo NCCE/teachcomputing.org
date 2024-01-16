@@ -6,6 +6,10 @@ module Programmes
       "Secondary certificate"
     end
 
+    def certificate_name
+      "Teach secondary computing certificate"
+    end
+
     def pending_delay
       7.days
     end

@@ -2,6 +2,7 @@
 
 class CourseComponent < ViewComponent::Base
   include ViewComponent::Translatable
+  include ProgrammesHelper
 
   delegate :stripped_summary,
     :course_meta_icon_class,
@@ -16,8 +17,6 @@ class CourseComponent < ViewComponent::Base
   end
 
   def get_course_tag(programme)
-    return "#{programme} certificate" if %w[Primary Secondary].include?(programme)
-
-    programme
+    display_programme_tag programme
   end
 end

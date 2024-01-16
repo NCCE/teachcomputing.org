@@ -45,6 +45,9 @@ class Programme < ApplicationRecord
     raise NotImplementedError
   end
 
+  def certificate_name
+  end
+
   def pending_delay
   end
 

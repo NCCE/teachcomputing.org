@@ -31,7 +31,11 @@ class Achiever::Course::Template
   PROGRAMME_NAMES = ["ncce", "PDLP", "Computing Clusters"].freeze
 
   TS_PROGRAMME_MAPPING = {
-    "CS Accelerator" => "Subject Knowledge"
+    "CS Accelerator" => "subject-knowledge",
+    "Secondary" => "secondary-certificate",
+    "Primary" => "primary-certificate",
+    "I Belong" => "i-belong",
+    "A Level" => "a-level-certificate"
   }
 
   def self.from_resource(resource, activity)
@@ -156,18 +160,7 @@ class Achiever::Course::Template
   end
 
   def by_certificate(certificate)
-    case certificate
-    when "subject-knowledge"
-      @programmes.include?("Subject Knowledge")
-    when "secondary-certificate"
-      @programmes.include?("Secondary")
-    when "primary-certificate"
-      @programmes.include?("Primary")
-    when "i-belong"
-      @programmes.include?("I Belong")
-    when "a-level-certificate"
-      @programmes.include?("A Level")
-    end
+    @programmes.include?(certificate)
   end
 
   def duration

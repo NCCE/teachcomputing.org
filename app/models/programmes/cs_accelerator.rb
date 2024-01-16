@@ -6,6 +6,10 @@ module Programmes
       "Subject knowledge"
     end
 
+    def certificate_name
+      "KS3 and GCSE subject knowledge certificate"
+    end
+
     def pending_delay
       7.days
     end

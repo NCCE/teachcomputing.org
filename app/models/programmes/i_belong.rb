@@ -6,6 +6,10 @@ module Programmes
       "I belong"
     end
 
+    def certificate_name
+      "I Belong"
+    end
+
     def pending_delay
       14.days
     end

@@ -6,6 +6,10 @@ module Programmes
       "A Level"
     end
 
+    def certificate_name
+      "A Level subject knowledge certificate"
+    end
+
     def mailer
       ALevelMailer
     end

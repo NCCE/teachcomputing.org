@@ -83,7 +83,7 @@ module Achiever
       @certificates ||= Programme.all.each_with_object({}) do |item, hash|
         next if !FeatureFlagService.new.flags[:alevel_programme_feature] && item.a_level?
 
-        hash[item.slug.titlecase] = item.slug
+        hash[item.certificate_name] = item.slug
       end
     end
 
