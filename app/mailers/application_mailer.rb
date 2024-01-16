@@ -20,7 +20,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def record_sent_mail(to:, subject:, record_sent_mail: false, mailer_type: nil)
-    return true if params[:preview]
+    return true if params&.dig(:preview)
     return true unless record_sent_mail
 
     sent_email = SentEmail.new(user: to,
