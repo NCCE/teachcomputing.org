@@ -45,6 +45,21 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
         expect(grouping.user_complete?(user)).to be true
       end
     end
+
+    context "when the user has completed the an activity that is legacy" do
+      before do
+        programme_activity = programme_activity_groupings.first.programme_activities.first
+        achievement = create(:achievement, user_id: user.id, activity_id: programme_activity.activity.id)
+        achievement.transition_to(:complete)
+
+        programme_activity.update(legacy: true)
+      end
+
+      it "returns false" do
+        grouping = programme_activity_groupings.first
+        expect(grouping.user_complete?(user)).to be false
+      end
+    end
   end
 
   describe "#formatted_title" do
