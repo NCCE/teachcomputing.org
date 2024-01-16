@@ -30,6 +30,7 @@ class User < ApplicationRecord
   after_create :schedule_fetching_of_course_bookings
 
   scope :without_forgotten, -> { where(forgotten: false) }
+  scope :enrolled_in_programme, ->(programme) { joins(:user_programme_enrollment).where(user_programme_enrollment: {programme:}) }
 
   audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
   alias_attribute :support_audits, :audits
