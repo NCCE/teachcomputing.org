@@ -260,7 +260,7 @@ Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-v
   activity.public_copy_description = "Arrange a visit for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities."
   activity.public_copy_title_url = "https://www.stem.org.uk/stem-ambassadors"
   activity.self_verification_info = "Please provide us with the date and location of the visit"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity").tap do |activity|
   activity.title = "Participate fully in an NCCE curriculum enrichment opportunity"
@@ -273,7 +273,7 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   activity.public_copy_description = "Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
   activity.public_copy_title_url = "http://www.teachcomputing.org/secondary-enrichment"
   activity.self_verification_info = "Please provide us with evidence of delivery"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary").tap do |activity|
   activity.title = "Participate fully in an NCCE curriculum enrichment opportunity"
@@ -286,7 +286,7 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   activity.public_copy_description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
   activity.public_copy_title_url = "http://www.teachcomputing.org/primary-enrichment"
   activity.self_verification_info = "Please provide us with evidence of delivery"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit").tap do |activity|
   activity.title = "Implement your professional development in the classroom and evaluate via the Impact Toolkit"
@@ -299,7 +299,7 @@ Activity.find_or_initialize_by(slug: "implement-your-professional-development-in
   activity.public_copy_description = "Think about not only your actions but also collecting evidence of how the changes you make impact you, your colleagues, and your students."
   activity.public_copy_title_url = "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
   activity.self_verification_info = "Please provide us with evidence of delivery"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom").tap do |activity|
   activity.title = "Download and use the NCCE teaching and assessment resources in your classroom"
@@ -312,7 +312,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-ass
   activity.public_copy_description = "Download and use a Teach Computing Curriculum resource, then reflect on how you used and adapted it in the classroom."
   activity.public_copy_title_url = "https://teachcomputing.org/curriculum"
   activity.self_verification_info = "Please provide us with evidence of delivery"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community").tap do |activity|
   activity.title = "Share tips on using an NCCE resource in your classroom, with colleagues on STEM Community"
@@ -325,7 +325,7 @@ Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-yo
   activity.public_copy_description = "By joining STEM Community you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
   activity.public_copy_title_url = "https://community.stem.org.uk/home"
   activity.self_verification_info = "Please provide us with evidence of registration"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary").tap do |activity|
   activity.title = "Support other teachers and earn a STEM Community participation badge"
@@ -338,7 +338,7 @@ Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-com
   activity.public_copy_description = "You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community."
   activity.public_copy_title_url = "https://community.stem.org.uk/helpfaqs/points"
   activity.self_verification_info = "Please provide us with evidence of participation"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-community-participation-badge").tap do |activity|
   activity.title = "Support other teachers and earn a STEM Community participation badge"
@@ -351,7 +351,7 @@ Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-com
   activity.public_copy_description = "You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community."
   activity.public_copy_title_url = "https://community.stem.org.uk/helpfaqs/points"
   activity.self_verification_info = "Please provide us with evidence of participation"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "run-or-support-a-code-club-in-your-school").tap do |activity|
   activity.title = "Run or support a Code Club in your school"
@@ -364,7 +364,7 @@ Activity.find_or_initialize_by(slug: "run-or-support-a-code-club-in-your-school"
   activity.public_copy_description = "Code Club sessions use free step-by-step project guides to enrich young people’s experience of programming. If there isn’t a club set up already at your school, it’s easy to start one."
   activity.public_copy_title_url = "https://codeclub.org/en/start-a-code-club"
   activity.self_verification_info = "Please provide us with evidence of guide usage"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classroom").tap do |activity|
   activity.title = "Run an enrichment activity in your classroom"
@@ -377,7 +377,7 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
   activity.public_copy_description = "Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils."
   activity.public_copy_title_url = "https://teachcomputing.org/primary-enrichment"
   activity.self_verification_info = "Please provide us with evidence of participation"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").tap do |activity|
   activity.title = "Download and use the I Belong handbook"
@@ -388,7 +388,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
   activity.self_certifiable = true
   activity.description = "<a href=\"#{i_belong_handbook_url}\">Download</a> and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives."
   activity.coming_soon = false
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-posters").tap do |activity|
   activity.title = "Request your ‘I Belong in Computer Science’ posters"
@@ -398,7 +398,7 @@ Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-
   activity.provider = "ncce"
   activity.self_certifiable = true
   activity.description = "<a href=\"#{i_belong_poster_request_url}\">Request</a> and display your set of ‘I Belong in Computer Science’ posters to create an inclusive classroom environment. Consider using with the <a href=\"#{isaac_posters_brochure_url}\">interview series</a> to stimulate discussion about computer science related pathways."
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources").tap do |activity|
   activity.title = "Implement selected key stage 3 Teach Computing Curriculum resources"
@@ -415,7 +415,7 @@ Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-compu
     "Professional reflection as a written piece",
     "Anonymised student voice statements, collated in a written or audio format"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-activity").tap do |activity|
   activity.title = "Participate in an I Belong student event"
@@ -432,7 +432,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
     "Student feedback as summarised survey data",
     "Anonymised participation or options take-up data"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extracurricular-club").tap do |activity|
   activity.title = "Provide access to a computing-related extracurricular club"
@@ -450,7 +450,7 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
     "Student or family feedback as survey data",
     "Options take-up data"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity").tap do |activity|
   activity.title = "Host a Computing Ambassador activity"
@@ -467,7 +467,7 @@ Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity"
     "Student feedback as summarised survey data",
     "Share an engagement story or a link to a photograph posted on the school’s website or social media"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competition").tap do |activity|
   activity.title = "Participate in a computing related competition"
@@ -485,7 +485,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competi
     "Student feedback as summarised survey data",
     "Share an engagement story or a link to a photograph posted on the school’s website or social media"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook").tap do |activity|
   activity.title = "Any other activity which aligns with recommendations from the handbook"
@@ -502,7 +502,7 @@ Activity.find_or_initialize_by(slug: "any-other-activity-which-aligns-with-recom
     "Student feedback as summarised survey data",
     "Share an engagement story or a link to a photograph posted on the school’s website or social media"
   ]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club").tap do |activity|
   activity.title = "Start or deliver a computing related club"
@@ -513,7 +513,7 @@ Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club"
   activity.self_certifiable = true
   activity.description = "Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Evidence must showcase club activities hosted from April 2023 onwards."
   activity.self_verification_info = "Please provide us with evidence of delivery"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-development-leader").tap do |activity|
   activity.title = "Gain accreditation as a professional development leader"
@@ -526,7 +526,7 @@ Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-devel
   activity.public_copy_description = "Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults."
   activity.public_copy_title_url = "https://www.stem.org.uk/professional-development-leaders"
   activity.self_verification_info = "Provide evidence of exploration."
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework").tap do |activity|
   activity.title = "Undertake the initial assessment of your school using Computing Quality Framework"
@@ -539,7 +539,7 @@ Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-s
   activity.public_copy_description = "Review your school’s progress in developing an exemplary computing curriculum and work towards achieving the Computing Quality Mark."
   activity.public_copy_title_url = "https://computingqualityframework.org/"
   activity.self_verification_info = "Please provide us with evidence of review"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development").tap do |activity|
   activity.title = "Work with your local Computing Hub to develop a school-level action plan for professional development"
@@ -552,7 +552,7 @@ Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-deve
   activity.public_copy_description = "Computing Hubs support school’s in the area with their journey in developing the computing curriculum."
   activity.public_copy_title_url = "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
   activity.self_verification_info = "Please provide us with evidence of your action plan"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor").tap do |activity|
   activity.title = "Lead your school into a Computing Cluster, and develop an action plan with a Cluster advisor"
@@ -565,7 +565,7 @@ Activity.find_or_initialize_by(slug: "lead-your-school-into-a-computing-cluster-
   activity.public_copy_description = "Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period."
   activity.public_copy_title_url = "https://teachcomputing.org/computing-clusters"
   activity.self_verification_info = "Please provide us with evidence of joining"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-at-school-community").tap do |activity|
   activity.title = "Join and present at your local Computing at School Community"
@@ -578,7 +578,7 @@ Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-a
   activity.public_copy_description = "CAS Communities are the hearts, hands, and minds of Computing at School activity across the UK. Join a local event and offer your insights, ideas and expertise to colleagues."
   activity.public_copy_title_url = "https://www.computingatschool.org.uk/cas-communities"
   activity.self_verification_info = "Please provide us with evidence of your presentation"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc").tap do |activity|
   activity.title = "Join the I Belong: Encouraging Girls into Computer Science programme, and become an I Belong Champion"
@@ -591,7 +591,7 @@ Activity.find_or_initialize_by(slug: "join-the-ib-encouraging-girls-into-cs-prog
   activity.public_copy_description = "I Belong is an evidence-based programme which aims to support more girls into computer science qualifications and careers by providing you with the knowledge and tools to support them."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
   activity.self_verification_info = "Please provide us with evidence of your registration"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays").tap do |activity|
   activity.title = "Download and use Isaac Computer Science classroom resources and displays"
@@ -604,7 +604,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-isaac-computer-science-cl
   activity.public_copy_description = "Bring learning to life with Computer Science Journeys and request printed versions of the ‘I Belong in Computer Science’ posters from the NCCE to put in your classroom."
   activity.public_copy_title_url = "https://isaaccomputerscience.org/pages/computer_science_journeys_gallery?examBoard=all&stage=all"
   activity.self_verification_info = "Please provide us with evidence of your posters"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing").tap do |activity|
   activity.title = "Work with local business and industry to inspire inclusive computing"
@@ -617,7 +617,7 @@ Activity.find_or_initialize_by(slug: "work-with-local-business-and-industry-to-i
   activity.public_copy_description = "Establish relationships with businesses in your local area, that can support development of inclusive computing in your school."
   activity.public_copy_title_url = "https://www.stem.org.uk/resources/elibrary/resource/169379/project-enthuse-why-your-business-should-go-back-school-how-you"
   activity.self_verification_info = "Please provide us with evidence of your relationships with local businesses"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(slug: "gain-accreditation-as-an-i-belong-champion").tap do |activity|
   activity.title = "Gain accreditation as an I Belong Champion"
@@ -630,4 +630,4 @@ Activity.find_or_initialize_by(slug: "gain-accreditation-as-an-i-belong-champion
   activity.public_copy_description = "Become an I Belong Champion to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
   activity.self_verification_info = "Please provide us with evidence of completion"
-end.save
+end.save!

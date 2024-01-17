@@ -5,7 +5,7 @@ cs_accelerator = Programmes::CSAccelerator.find_or_initialize_by(slug: "subject-
   programme.slug = "subject-knowledge"
   programme.description = "If you're a secondary school teacher without a post A level qualification in computer science or a related subject then the Computer Science Accelerator Programme is specifically designed to help you."
   programme.enrollable = true
-  programme.save
+  programme.save!
 end
 
 puts "Created Programme: #{cs_accelerator.title} (#{cs_accelerator})"

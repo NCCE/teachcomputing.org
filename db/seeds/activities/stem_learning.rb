@@ -59,29 +59,29 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "488bed9b-515b-4295-a488-62b5bb6bf852") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "488bed9b-515b-4295-a488-62b5bb6bf852").tap do |activity|
   activity.title = "Teaching and leading key stage 1 computing"
-  activity.credit = 40
+  activity.credit = 160
   activity.slug = "teaching-and-leading-key-stage-1-computing"
   activity.stem_course_template_no = "488bed9b-515b-4295-a488-62b5bb6bf852"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP001"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
-a = Activity.find_or_create_by(stem_course_template_no: "16aeecbd-d202-4f42-bad3-f86c8f671547") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "16aeecbd-d202-4f42-bad3-f86c8f671547").tap do |activity|
   activity.title = "Teaching and leading key stage 2 computing"
-  activity.credit = 40
+  activity.credit = 160
   activity.slug = "teaching-and-leading-key-stage-2-computing"
   activity.stem_course_template_no = "16aeecbd-d202-4f42-bad3-f86c8f671547"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP002"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "c9df7e7f-6146-ee11-be6e-002248c6f524") do |activity|
   activity.title = "Adapting the Teach Computing Curriculum for mixed-year classes"
@@ -95,17 +95,17 @@ end
 
 a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: "68f5b6c5-556d-4b66-8159-7cd6019da6f3") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "68f5b6c5-556d-4b66-8159-7cd6019da6f3").tap do |activity|
   activity.title = "Primary programming and algorithms"
-  activity.credit = 40
+  activity.credit = 80
   activity.slug = "primary-programming-and-algorithms"
   activity.stem_course_template_no = "68f5b6c5-556d-4b66-8159-7cd6019da6f3"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP003"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae") do |activity|
   activity.title = "Python programming essentials for GCSE computer science"
@@ -142,7 +142,7 @@ a.programmes << secondary_certificate unless a.programmes.include?(secondary_cer
 
 Activity.find_or_initialize_by(stem_course_template_no: "258c93cc-69e2-46f6-bf39-fbce27cb8fc2").tap do |activity|
   activity.title = "KS4 computing for all"
-  activity.credit = 0
+  activity.credit = 80
   activity.slug = "ks4-computing-for-all"
   activity.stem_course_template_no = "258c93cc-69e2-46f6-bf39-fbce27cb8fc2"
   activity.category = "face-to-face"
@@ -150,7 +150,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "258c93cc-69e2-46f6-bf39
   activity.stem_activity_code = "CP207"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "f7fefbae-53aa-4c28-bbd2-b3d3b1bf7bbd") do |activity|
   activity.title = "Pre January 2019 CSA Face to Face CPD"
@@ -439,7 +439,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_initialize_by(stem_course_template_no: "770d8136-3d86-ea11-a811-000d3a86d545").tap do |activity|
   activity.title = "The Internet and Cyber Security"
-  activity.credit = 50
+  activity.credit = 60
   activity.slug = "the-internet-and-cyber-security-remote"
   activity.stem_course_template_no = "770d8136-3d86-ea11-a811-000d3a86d545"
   activity.category = "face-to-face"
@@ -447,7 +447,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "770d8136-3d86-ea11-a811
   activity.stem_activity_code = "CP432"
 
   activity.programmes = [cs_accelerator, secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "67a21143-4886-ea11-a811-000d3a86d545") do |activity|
   activity.title = "Python programming: working with data"
@@ -483,29 +483,29 @@ Activity.find_or_create_by(stem_course_template_no: "dbb7808c-b888-ea11-a811-000
   activity.stem_activity_code = "CP445"
 end
 
-a = Activity.find_or_create_by(stem_course_template_no: "e5acc943-4926-ea11-a810-000d3a86d545") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "e5acc943-4926-ea11-a810-000d3a86d545").tap do |activity|
   activity.title = "Introduction to primary computing"
-  activity.credit = 10
+  activity.credit = 80
   activity.slug = "introduction-to-primary-computing"
   activity.stem_course_template_no = "e5acc943-4926-ea11-a810-000d3a86d545"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP004"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
-a = Activity.find_or_create_by(stem_course_template_no: "bb7a0f31-5086-ea11-a811-000d3a86d545") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "bb7a0f31-5086-ea11-a811-000d3a86d545").tap do |activity|
   activity.title = "Introduction to primary computing"
-  activity.credit = 10
+  activity.credit = 50
   activity.slug = "introduction-to-primary-computing-remote"
   activity.stem_course_template_no = "bb7a0f31-5086-ea11-a811-000d3a86d545"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP454"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "6bc40e34-4c86-ea11-a811-000d3a86d545").tap do |activity|
   activity.title = "Teaching programming using Scratch and Scratch Jr"
@@ -517,7 +517,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "6bc40e34-4c86-ea11-a811
   activity.stem_activity_code = "CP455"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "41a77207-c4c2-ea11-a812-000d3a86d545") do |activity|
   activity.title = "Higher attainment in GCSE computer science - meeting the challenge of exams"
@@ -533,7 +533,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_initialize_by(stem_course_template_no: "22880db7-78e8-ea11-a817-000d3a86f6ce").tap do |activity|
   activity.title = "New subject leaders of secondary computing"
-  activity.credit = 50
+  activity.credit = 160
   activity.slug = "new-subject-leaders-of-secondary-computing"
   activity.stem_course_template_no = "22880db7-78e8-ea11-a817-000d3a86f6ce"
   activity.category = "face-to-face"
@@ -541,7 +541,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "22880db7-78e8-ea11-a817
   activity.stem_activity_code = "CP211"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "6ed470e0-75e8-ea11-a817-000d3a86f6ce") do |activity|
   activity.title = "Key Stage 3 computing for the non-specialist teacher"
@@ -579,7 +579,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_create_by(stem_course_template_no: "34ff2768-a7fc-ea11-a813-000d3a86d545") do |activity|
   activity.title = "Primary computing for all - face to face"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "outstanding-primary-computing-for-all-face-to-face"
   activity.stem_course_template_no = "34ff2768-a7fc-ea11-a813-000d3a86d545"
   activity.category = "face-to-face"
@@ -587,11 +587,11 @@ Activity.find_or_create_by(stem_course_template_no: "34ff2768-a7fc-ea11-a813-000
   activity.stem_activity_code = "CP005"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "e3c14378-3015-eb11-a813-000d3a86f6ce").tap do |activity|
   activity.title = "Leading primary computing - module 1 - face to face"
-  activity.credit = 10
+  activity.credit = 80
   activity.slug = "leading-primary-computing-face-to-face"
   activity.stem_course_template_no = "e3c14378-3015-eb11-a813-000d3a86f6ce"
   activity.category = "face-to-face"
@@ -599,7 +599,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "e3c14378-3015-eb11-a813
   activity.stem_activity_code = "CP008"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "03fb0a52-a712-eb11-a813-000d3a86d545") do |activity|
   activity.title = "Higher attainment in GCSE computer science - meeting the challenge of exams"
@@ -704,11 +704,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "f12d0fbd-993b-eb11-a813
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP446"
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "11f58c3f-3341-eb11-a813-000d3a86d545").tap do |activity|
   activity.title = "Assessment of primary computing"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "assessment-of-primary-computing"
   activity.stem_course_template_no = "11f58c3f-3341-eb11-a813-000d3a86d545"
   activity.category = "face-to-face"
@@ -716,11 +716,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "11f58c3f-3341-eb11-a813
   activity.stem_activity_code = "CP007"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "3b2957a3-3541-eb11-a813-000d3a86d545").tap do |activity|
   activity.title = "KS3 computing (module 1): Creative curriculum design principles"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "ks3-computing-module-1-creative-curriculum-design-principles"
   activity.stem_course_template_no = "3b2957a3-3541-eb11-a813-000d3a86d545"
   activity.category = "face-to-face"
@@ -728,11 +728,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "3b2957a3-3541-eb11-a813
   activity.stem_activity_code = "CP247"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "c9957d36-3841-eb11-a813-000d3a86d545").tap do |activity|
   activity.title = "KS3 computing (module 2): Creative curriculum content, sequencing and pedagogy"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "ks3-computing-module-2-creative-curriculum-content-sequencing-and-pedagogy"
   activity.stem_course_template_no = "c9957d36-3841-eb11-a813-000d3a86d545"
   activity.category = "face-to-face"
@@ -740,11 +740,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "c9957d36-3841-eb11-a813
   activity.stem_activity_code = "CP248"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "15040292-3941-eb11-a813-000d3a86d545").tap do |activity|
   activity.title = "KS3 computing (module 3): Creative curriculum enrichment and inclusion"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "ks3-computing-module-3-creative-curriculum-enrichment-and-inclusion"
   activity.stem_course_template_no = "15040292-3941-eb11-a813-000d3a86d545"
   activity.category = "face-to-face"
@@ -752,11 +752,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "15040292-3941-eb11-a813
   activity.stem_activity_code = "CP249"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "6e8bfcd4-df50-eb11-a812-000d3a86f6ce").tap do |activity|
   activity.title = "Teaching GCSE Computer Science: improving student engagement - remote"
-  activity.credit = 50
+  activity.credit = 60
   activity.slug = "teaching-gcse-computer-science-improving-student-engagement-remote"
   activity.stem_course_template_no = "6e8bfcd4-df50-eb11-a812-000d3a86f6ce"
   activity.category = "face-to-face"
@@ -764,7 +764,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "6e8bfcd4-df50-eb11-a812
   activity.stem_activity_code = "CP447"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "1a81f632-a255-eb11-a812-000d3a874628") do |activity|
   activity.title = "Teaching GCSE computer science: improving student engagement"
@@ -790,7 +790,7 @@ end
 
 Activity.find_or_initialize_by(stem_course_template_no: "5b1b5967-7c6c-eb11-a812-000d3a872800").tap do |activity|
   activity.title = "New subject leaders of secondary computing (remote)"
-  activity.credit = 50
+  activity.credit = 160
   activity.slug = "new-subject-leaders-of-secondary-computing-remote"
   activity.stem_course_template_no = "5b1b5967-7c6c-eb11-a812-000d3a872800"
   activity.category = "face-to-face"
@@ -798,7 +798,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "5b1b5967-7c6c-eb11-a812
   activity.stem_activity_code = "CP411"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "3bff03fd-256d-eb11-a812-000d3a872640").tap do |activity|
   activity.title = "Leading primary computing - module 2 - remote"
@@ -810,7 +810,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "3bff03fd-256d-eb11-a812
   activity.stem_activity_code = "CP456"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "1b0d5b9c-c97d-eb11-a812-0022481a889a") do |activity|
   activity.title = "New to computing pathway for humanities and PSHE teachers"
@@ -963,7 +963,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_initialize_by(stem_course_template_no: "bacc4ebb-eb8a-eb11-b1ac-0022481a662d").tap do |activity|
   activity.title = "Teaching GCSE Computer Science: developing knowledge and understanding"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "teaching-gcse-computer-science-developing-knowledge-and-understanding-face-to-face"
   activity.stem_course_template_no = "bacc4ebb-eb8a-eb11-b1ac-0022481a662d"
   activity.category = "face-to-face"
@@ -971,11 +971,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "bacc4ebb-eb8a-eb11-b1ac
   activity.stem_activity_code = "CP241"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "d35ce2c2-e78a-eb11-b1ac-0022481a662d").tap do |activity|
   activity.title = "Teaching GCSE Computer Science pedagogy for programming"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "teaching-gcse-computer-science-pedagogy-for-programming-face-to-face"
   activity.stem_course_template_no = "d35ce2c2-e78a-eb11-b1ac-0022481a662d"
   activity.category = "face-to-face"
@@ -983,7 +983,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d35ce2c2-e78a-eb11-b1ac
   activity.stem_activity_code = "CP242"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "4044cbf0-776c-eb11-a812-000d3a872800") do |activity|
   activity.title = "New to computing - Spring into the Computer Science Accelerator Easter 2021"
@@ -1011,18 +1011,18 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "be2eae05-828c-eb11-b1ac-0022481a6ad5") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "be2eae05-828c-eb11-b1ac-0022481a6ad5").tap do |activity|
   activity.title = "Collaboration in KS3 programming"
-  activity.credit = 10
+  activity.credit = 50
   activity.slug = "collaboration-in-ks3-programming"
   activity.stem_course_template_no = "be2eae05-828c-eb11-b1ac-0022481a6ad5"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP437"
   activity.remote_delivered_cpd = true
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "2c724a38-768d-eb11-b1ac-0022481a6ad5") do |activity|
   activity.title = "New to computing pathway for Maths teachers"
@@ -1059,7 +1059,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "b9af812f-4b8d-eb11-b1ac
   activity.remote_delivered_cpd = false
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "afa28241-4d8d-eb11-b1ac-0022481a6ad5") do |activity|
   activity.title = "Maths in computer science - remote"
@@ -1076,7 +1076,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 Activity.find_or_initialize_by(stem_course_template_no: "22ee67ba-4f8d-eb11-b1ac-0022481a6ad5").tap do |activity|
   activity.title = "Encouraging girls into GCSE computer science - remote - short course"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "encouraging-girls-into-gcse-computer-science-remote-short-course"
   activity.stem_course_template_no = "22ee67ba-4f8d-eb11-b1ac-0022481a6ad5"
   activity.category = "face-to-face"
@@ -1085,7 +1085,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "22ee67ba-4f8d-eb11-b1ac
   activity.remote_delivered_cpd = true
 
   activity.programmes = [i_belong, secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "3fd9b792-af8c-eb11-b1ac-0022481a6ad5") do |activity|
   activity.title = "New to computing pathway for Maths teachers"
@@ -1111,7 +1111,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "039c98c5-3c91-eb11-b1ac
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "aafe379e-9e8c-eb11-b1ac-0022481a6ffe") do |activity|
   activity.title = "KS3 computing (module 1): Creative curriculum design principles"
@@ -1126,17 +1126,17 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: "6172f084-b38c-eb11-b1ac-0022481a6ffe") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "6172f084-b38c-eb11-b1ac-0022481a6ffe").tap do |activity|
   activity.title = "Solving computational problems in KS3 computing"
-  activity.credit = 10
+  activity.credit = 50
   activity.slug = "solving-computational-problems-in-ks3-computing"
   activity.stem_course_template_no = "6172f084-b38c-eb11-b1ac-0022481a6ffe"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP436"
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "4a06856d-7977-eb11-a812-0022481a9648") do |activity|
   activity.title = "New to computing pathway for Business teachers"
@@ -1174,7 +1174,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "de77674a-51b2-eb11-8236
   activity.stem_activity_code = "CP252"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "3e42eddb-54b2-eb11-8236-000d3a8747c3") do |activity|
   activity.title = "Physical computing kit - KS4 Raspberry Pi Pico"
@@ -1294,11 +1294,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "e4cc4e34-329d-eb11-b1ac
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP412"
   activity.remote_delivered_cpd = true
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "be2ded42-3fbd-eb11-bacc-0022481a6a2c").tap do |activity|
   activity.title = "Adapted teaching and effective learning interventions in secondary computing"
-  activity.credit = 50
+  activity.credit = 60
   activity.slug = "adapted-teaching-and-effective-learning-interventions-in-secondary-computing"
   activity.stem_course_template_no = "be2ded42-3fbd-eb11-bacc-0022481a6a2c"
   activity.category = "face-to-face"
@@ -1307,7 +1307,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "be2ded42-3fbd-eb11-bacc
   activity.remote_delivered_cpd = true
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "f5f6db3c-29be-eb11-bacc-0022481a663f") do |activity|
   activity.title = "CSA in the summer - preparing to teach GCSE computer science track"
@@ -1358,7 +1358,7 @@ end
 
 Activity.find_or_initialize_by(stem_course_template_no: "1b149049-2f19-eb11-a813-000d3a86f6ce").tap do |activity|
   activity.title = "Assessment and progression in KS3 computing"
-  activity.credit = 15
+  activity.credit = 60
   activity.slug = "assessment-and-progression-in-ks3-computing"
   activity.stem_course_template_no = "1b149049-2f19-eb11-a813-000d3a86f6ce"
   activity.category = "face-to-face"
@@ -1366,7 +1366,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "1b149049-2f19-eb11-a813
   activity.stem_activity_code = "CP212"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "c9409a58-0b07-ec11-b6e6-000d3a86d86c") do |activity|
   activity.title = "Getting started in Year 3"
@@ -1379,7 +1379,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "c9409a58-0b07-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "9dbd1486-0f07-ec11-b6e6-000d3a86d86c").tap do |activity|
   activity.title = "Getting started in Year 5"
@@ -1392,7 +1392,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "9dbd1486-0f07-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "0b5c8499-1307-ec11-b6e6-000d3a86d86c").tap do |activity|
   activity.title = "Introduction to the Teach Computing Curriculum"
@@ -1405,7 +1405,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "0b5c8499-1307-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "ee8a70b8-1607-ec11-b6e6-000d3a86d86c").tap do |activity|
   activity.title = "Computing on a budget"
@@ -1417,7 +1417,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "ee8a70b8-1607-ec11-b6e6
   activity.stem_activity_code = "CP262"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "bd90e3f5-1d25-ec11-b6e6-000d3a0caf8a").tap do |activity|
   activity.title = "Getting started in Year 1"
@@ -1430,7 +1430,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "bd90e3f5-1d25-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "576c1f0b-8610-ec11-b6e6-000d3a0cc552") do |activity|
   activity.title = "KS3 computing (module 3): Creative curriculum enrichment and inclusion (remote)"
@@ -1445,18 +1445,18 @@ end
 
 a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
 
-a = Activity.find_or_create_by(stem_course_template_no: "88975226-811c-ec11-b6e7-0022481a8033") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "88975226-811c-ec11-b6e7-0022481a8033").tap do |activity|
   activity.title = "Authentic contexts for primary computing - remote"
-  activity.credit = 10
+  activity.credit = 60
   activity.slug = "authentic-contexts-for-primary-computing-remote"
   activity.stem_course_template_no = "88975226-811c-ec11-b6e7-0022481a8033"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP405"
   activity.remote_delivered_cpd = true
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
+  activity.programmes = [primary_certificate]
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "1f24260d-0725-ec11-b6e6-000d3a0cb7ce") do |activity|
   activity.title = "Foundation knowledge of computer science for KS3 and GCSE"
@@ -1482,7 +1482,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d4183159-1f25-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "02b58914-2125-ec11-b6e6-000d3a0caf8a").tap do |activity|
   activity.title = "Getting started in Year 2"
@@ -1495,7 +1495,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "02b58914-2125-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "95bd7135-2125-ec11-b6e6-000d3a0ca796") do |activity|
   activity.title = "Getting started in Year 6"
@@ -1508,7 +1508,7 @@ Activity.find_or_create_by(stem_course_template_no: "95bd7135-2125-ec11-b6e6-000
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "61b89040-5528-ec11-b6e6-000d3a0caf14") do |activity|
   activity.title = "CS Accelerator for all"
@@ -1543,7 +1543,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "827dccad-b130-ec11-b6e6
   activity.remote_delivered_cpd = true
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "eb7c08ea-212a-4d27-8bde-a629f36192f6") do |activity|
   activity.title = "NCCE coaching and mentoring"
@@ -1566,7 +1566,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "331f7ac5-6f56-ec11-8f8f
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP468"
   activity.remote_delivered_cpd = true
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "01d0037f-b859-ec11-8f8f-000d3a0d0cfb") do |activity|
   activity.title = "Teach Computing Conference"
@@ -1590,7 +1590,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "8cdf9608-d65c-ec11-8f8f
   activity.remote_delivered_cpd = false
 
   activity.programmes = []
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "6bad2c17-d85c-ec11-8f8f-0022481b0af9").tap do |activity|
   activity.title = "Online safety through primary computing"
@@ -1603,20 +1603,20 @@ Activity.find_or_initialize_by(stem_course_template_no: "6bad2c17-d85c-ec11-8f8f
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
-a = Activity.find_or_create_by(stem_course_template_no: "ab685d74-ec5c-ec11-8f8f-0022481b0af9") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "ab685d74-ec5c-ec11-8f8f-0022481b0af9").tap do |activity|
   activity.title = "Data-driven IT projects in secondary computing"
-  activity.credit = 10
+  activity.credit = 60
   activity.slug = "data-driven-it-projects-in-secondary-computing"
   activity.stem_course_template_no = "ab685d74-ec5c-ec11-8f8f-0022481b0af9"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP485"
   activity.remote_delivered_cpd = true
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "e714988b-b55d-ec11-8f8f-0022481b0af9") do |activity|
   activity.title = "Preparing to take the CSA test - short course"
@@ -1651,7 +1651,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "87c4cf4b-3c5f-ec11-8f8f
   activity.remote_delivered_cpd = true
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "8dc126b0-6569-ec11-8943-000d3a8700352") do |activity|
   activity.title = "Assessment and progression in KS3 computing - Blended"
@@ -1883,18 +1883,17 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "da3c3300-cc9e-ec11-b400-0022481b0068") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "da3c3300-cc9e-ec11-b400-0022481b0068").tap do |activity|
   activity.title = "Computing for specialist teachers of autistic students"
-  activity.credit = 20
+  activity.credit = 50
   activity.slug = "computing-for-specialist-teachers-of-autistic-students"
   activity.stem_course_template_no = "da3c3300-cc9e-ec11-b400-0022481b0068"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP291"
-end
 
-a.programmes << primary_certificate unless a.programmes.include?(primary_certificate)
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "5178b539-29b0-ec11-983f-0022480078ee").tap do |activity|
   activity.title = "Introduction to the micro:bit in KS2"
@@ -1906,11 +1905,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "5178b539-29b0-ec11-983f
   activity.stem_activity_code = "CP292"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "726ece56-27b0-ec11-983f-002248006a24").tap do |activity|
   activity.title = "Implementing the Teach Computing Curriculum in your school"
-  activity.credit = 50
+  activity.credit = 80
   activity.slug = "implementing-the-teach-computing-curriculum-in-your-school"
   activity.stem_course_template_no = "726ece56-27b0-ec11-983f-002248006a24"
   activity.category = "face-to-face"
@@ -1918,11 +1917,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "726ece56-27b0-ec11-983f
   activity.stem_activity_code = "CP255"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "5be69f65-60c1-ec11-983e-0022481b16a0").tap do |activity|
   activity.title = "Preparing for Ofsted in secondary computing"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "preparing-for-ofsted-in-secondary-computing"
   activity.stem_course_template_no = "5be69f65-60c1-ec11-983e-0022481b16a0"
   activity.category = "face-to-face"
@@ -1931,7 +1930,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "5be69f65-60c1-ec11-983e
   activity.remote_delivered_cpd = true
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "54cfbac3-3b13-ed11-b83d-000d3a875742") do |activity|
   activity.title = "Understanding algorithms for KS3 and GCSE computer science - residential"
@@ -1957,41 +1956,41 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "9df6f61f-555b-ed11-9562-0022481b545f") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "9df6f61f-555b-ed11-9562-0022481b545f").tap do |activity|
   activity.title = "KS3 creative computing curriculum - residential"
-  activity.credit = 10
+  activity.credit = 160
   activity.slug = "ks3-creative-computing-curriculum-residential"
   activity.stem_course_template_no = "9df6f61f-555b-ed11-9562-0022481b545f"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP295"
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
-a = Activity.find_or_create_by(stem_course_template_no: "ebce5f46-907c-ed11-81ad-0022481b5949") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "ebce5f46-907c-ed11-81ad-0022481b5949").tap do |activity|
   activity.title = "Developing secondary leadership - residential"
-  activity.credit = 10
+  activity.credit = 160
   activity.slug = "developing-secondary-leadership-residential"
   activity.stem_course_template_no = "ebce5f46-907c-ed11-81ad-0022481b5949"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP296"
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
-a = Activity.find_or_create_by(stem_course_template_no: "9ded59c5-4c7d-ed11-81ad-0022481b5a10") do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "9ded59c5-4c7d-ed11-81ad-0022481b5a10").tap do |activity|
   activity.title = "Teaching GCSE computer science - residential"
-  activity.credit = 10
+  activity.credit = 160
   activity.slug = "teaching-gcse-computer-science-residential"
   activity.stem_course_template_no = "9ded59c5-4c7d-ed11-81ad-0022481b5a10"
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP297"
-end
 
-a.programmes << secondary_certificate unless a.programmes.include?(secondary_certificate)
+  activity.programmes = [secondary_certificate]
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "6b34e2c1-3035-ee11-bdf4-002248c6f9ce").tap do |activity|
   activity.title = "Assembly language in A Level computer science"
@@ -2001,9 +2000,10 @@ Activity.find_or_initialize_by(stem_course_template_no: "6b34e2c1-3035-ee11-bdf4
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP501"
+  activity.credit = 30
 
   activity.programmes = [secondary_certificate, a_level]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "a27d2bea-bf32-ee11-bdf3-002248c6f9ce").tap do |activity|
   activity.title = "Supporting GCSE computer science students at grades 1-3"
@@ -2013,10 +2013,10 @@ Activity.find_or_initialize_by(stem_course_template_no: "a27d2bea-bf32-ee11-bdf3
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP478"
-  activity.credit = 50
+  activity.credit = 60
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "f5fe1676-bf32-ee11-bdf3-002248c6f9ce").tap do |activity|
   activity.title = "Higher attainment in computer science - meeting the challenges of the exams - remote"
@@ -2029,7 +2029,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "f5fe1676-bf32-ee11-bdf3
   activity.credit = 50
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_create_by(stem_course_template_no: "5a945373-7d1a-ee11-8f6d-002248c6f9ce") do |activity|
   activity.title = "Physical computing kits - KS1 BeeBots"
@@ -2066,7 +2066,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d38639b4-4d2d-ee11-9965
   activity.stem_activity_code = "FD022"
 
   activity.programmes = [i_belong]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "833AFFBA-5159-EE11-BE6F-002248C6F783").tap do |activity|
   activity.title = "Bring computing to life using a context-based approach - residential"
@@ -2074,11 +2074,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "833AFFBA-5159-EE11-BE6F
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 100
+  activity.credit = 160
   activity.stem_activity_code = "CP010"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "8A5514BC-A362-EE11-8DF0-002248C6F783").tap do |activity|
   activity.title = "Help! How do I teach primary computing? - residential"
@@ -2086,11 +2086,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "8A5514BC-A362-EE11-8DF0
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 100
+  activity.credit = 160
   activity.stem_activity_code = "CP011"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "DB18E7DB-B862-EE11-8DF0-002248C6F9CE").tap do |activity|
   activity.title = "Teaching an inclusive context rich primary computing curriculum – residential"
@@ -2098,11 +2098,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "DB18E7DB-B862-EE11-8DF0
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 100
+  activity.credit = 160
   activity.stem_activity_code = "CP012"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "215CC372-C362-EE11-8DF0-002248C6F524").tap do |activity|
   activity.title = "Developing the established primary computing leader - residential"
@@ -2110,11 +2110,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "215CC372-C362-EE11-8DF0
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 100
+  activity.credit = 160
   activity.stem_activity_code = "CP013"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "64E5E630-2B64-EE11-8DF0-002248C6F979").tap do |activity|
   activity.title = "Algorithms and programming for OCR GCSE specification - residential"
@@ -2126,7 +2126,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "64E5E630-2B64-EE11-8DF0
   activity.stem_activity_code = "CP269"
 
   activity.programmes = [cs_accelerator]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "38100ECE-2764-EE11-8DF0-002248C6F524").tap do |activity|
   activity.title = "Algorithms and programming for AQA GCSE specification - residential"
@@ -2138,7 +2138,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "38100ECE-2764-EE11-8DF0
   activity.stem_activity_code = "CP299"
 
   activity.programmes = [cs_accelerator]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "A70C147D-6067-EE11-9AE7-002248C6F524").tap do |activity|
   activity.title = "Boolean logic in A Level computer science"
@@ -2146,11 +2146,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "A70C147D-6067-EE11-9AE7
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
-  activity.credit = 25
+  activity.credit = 30
   activity.stem_activity_code = "CP503"
 
   activity.programmes = [secondary_certificate, a_level]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "D3F7BF7D-DA68-EE11-9AE7-002248C6F9CE").tap do |activity|
   activity.title = "Pathfinding algorithms in A Level computer science"
@@ -2162,7 +2162,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "D3F7BF7D-DA68-EE11-9AE7
   activity.stem_activity_code = "CP504"
 
   activity.programmes = [secondary_certificate, a_level]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "51fb6f4c-2105-ee11-8f6e-002248c6f9ce").tap do |activity|
   activity.title = "Getting started with Python programming - residential"
@@ -2174,7 +2174,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "51fb6f4c-2105-ee11-8f6e
   activity.stem_activity_code = "CP298"
 
   activity.programmes = [cs_accelerator]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "d940561a-2d4e-ee11-be6f-002248c6f979").tap do |activity|
   activity.title = "Data structures in A Level Computer Science"
@@ -2186,7 +2186,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d940561a-2d4e-ee11-be6f
   activity.stem_activity_code = "CP502"
 
   activity.programmes = [secondary_certificate, a_level]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "cf1b9feb-11a4-eb11-b1ac-000d3a86dcd6").tap do |activity|
   activity.title = "Assessing computational thinking in primary schools - short course"
@@ -2198,7 +2198,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "cf1b9feb-11a4-eb11-b1ac
   activity.stem_activity_code = "CP457"
 
   activity.programmes = [primary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "198e5e11-ef7e-ee11-8179-002248c6f524").tap do |activity|
   activity.title = "Systems architecture in A Level computer science"
@@ -2206,11 +2206,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "198e5e11-ef7e-ee11-8179
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
-  activity.credit = 25
+  activity.credit = 30
   activity.stem_activity_code = "CP505"
 
   activity.programmes = [secondary_certificate, a_level]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "5ea78227-4889-ee11-be36-002248c6f783").tap do |activity|
   activity.title = "Supporting student attainment in GCSE computer science - residential"
@@ -2218,11 +2218,11 @@ Activity.find_or_initialize_by(stem_course_template_no: "5ea78227-4889-ee11-be36
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 120
+  activity.credit = 160
   activity.stem_activity_code = "CP284"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "b67cb11d-d28d-ee11-be36-002248c6f9ce").tap do |activity|
   activity.title = "Computing Quality Framework – driving change within your secondary school - short course"
@@ -2234,7 +2234,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "b67cb11d-d28d-ee11-be36
   activity.stem_activity_code = "CP406"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "a51219a3-b078-ee11-8179-002248c6f783").tap do |activity|
   activity.title = "CPD Implementation: Secondary Algorithms and Algorithmic thinking"
@@ -2246,7 +2246,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "a51219a3-b078-ee11-8179
   activity.stem_activity_code = "CZ100D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "25d083db-bd78-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Secondary Computing Systems and Data & Information"
@@ -2258,7 +2258,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "25d083db-bd78-ee11-8179
   activity.stem_activity_code = "CZ101D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "f276e2d4-a678-ee11-8179-002248c6f524").tap do |activity|
   activity.title = "CPD Implementation: Networks, Safety & Security"
@@ -2270,7 +2270,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "f276e2d4-a678-ee11-8179
   activity.stem_activity_code = "CZ102D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "d8a77423-b578-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Primary Programming"
@@ -2282,7 +2282,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d8a77423-b578-ee11-8179
   activity.stem_activity_code = "CZ103D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "ab99ad3c-b478-ee11-8179-002248c6f783").tap do |activity|
   activity.title = "CPD Implementation: Creating Media and Design & Development"
@@ -2294,7 +2294,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "ab99ad3c-b478-ee11-8179
   activity.stem_activity_code = "CZ104D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "608de9cd-b778-ee11-8179-002248c6f783").tap do |activity|
   activity.title = "CPD Implementation: Secondary Curriculum Design"
@@ -2306,7 +2306,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "608de9cd-b778-ee11-8179
   activity.stem_activity_code = "CZ105D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "d818a79d-b278-ee11-8179-002248c6f524").tap do |activity|
   activity.title = "CPD Implementation: Secondary Programming"
@@ -2318,7 +2318,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d818a79d-b278-ee11-8179
   activity.stem_activity_code = "CZ106D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "74f3021d-c478-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Primary Algorithms and Algorithmic thinking"
@@ -2330,7 +2330,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "74f3021d-c478-ee11-8179
   activity.stem_activity_code = "CZ107D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "8b1cece9-c278-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Assessment & Qualifications"
@@ -2342,7 +2342,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "8b1cece9-c278-ee11-8179
   activity.stem_activity_code = "CZ108D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "dd02839f-b278-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Collaboration, Cross Curriculum and Enrichment"
@@ -2354,7 +2354,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "dd02839f-b278-ee11-8179
   activity.stem_activity_code = "CZ109D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "5d6d42ef-be78-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: EDI and SEND"
@@ -2366,7 +2366,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "5d6d42ef-be78-ee11-8179
   activity.stem_activity_code = "CZ110D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "35b356d6-b578-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Primary Curriculum Design"
@@ -2378,7 +2378,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "35b356d6-b578-ee11-8179
   activity.stem_activity_code = "CZ111D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "5e3c08b0-c178-ee11-8179-002248c6f9ce").tap do |activity|
   activity.title = "CPD Implementation: Secondary Leadership"
@@ -2390,7 +2390,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "5e3c08b0-c178-ee11-8179
   activity.stem_activity_code = "CZ112D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "91feb65a-b978-ee11-8179-002248c6f783").tap do |activity|
   activity.title = "CPD Implementation: Primary Leadership"
@@ -2402,7 +2402,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "91feb65a-b978-ee11-8179
   activity.stem_activity_code = "CZ113D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "c01511de-8d79-ee11-8179-002248c6f524").tap do |activity|
   activity.title = "CPD Implementation: Primary Computing Systems and Data & Information"
@@ -2414,7 +2414,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "c01511de-8d79-ee11-8179
   activity.stem_activity_code = "CZ114D"
 
   activity.programmes = [secondary_certificate]
-end.save
+end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "fa051bb1-c5af-ee11-a569-002248c6f783").tap do |activity|
   activity.title = "Object oriented programming (OOP) in A Level computer science"

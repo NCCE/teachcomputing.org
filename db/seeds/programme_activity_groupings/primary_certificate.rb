@@ -13,13 +13,13 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "A
   group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
   group.required_credit_count = 50
 
-  group.save
+  group.save!
 
   primary_certificate.activities.courses.each do |activity|
     programme_activity = primary_certificate.programme_activities.find_or_create_by(activity_id: activity.id)
     programme_activity.update(programme_activity_grouping_id: group.id) unless group.programme_activities.include?(programme_activity)
   end
-end.save
+end.save!
 
 ProgrammeActivityGrouping.find_by(title: "Contribute to an online discussion")&.destroy
 
@@ -31,7 +31,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.progress_bar_title = "Develop your teaching practice"
   group.web_copy_course_requirements = "Choose at least one activity"
 
-  group.save
+  group.save!
 
   # Activities should never be removed, only marked as legacy
   activities = [
@@ -50,7 +50,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "Develop computing in your community").tap do |group|
   group.sort_key = 4
@@ -60,7 +60,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.progress_bar_title = "Develop computing in your community"
   group.web_copy_course_requirements = "Choose at least one activity"
 
-  group.save
+  group.save!
 
   # Activities should never be removed, only marked as legacy
   activities = [
@@ -100,4 +100,4 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!

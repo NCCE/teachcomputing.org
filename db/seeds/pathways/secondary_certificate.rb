@@ -27,7 +27,7 @@ programme.pathways.find_or_initialize_by(slug: "curriculum-leadership").tap do |
     "Receive your certificate"
   ]
 
-  pathway.save
+  pathway.save!
 
   cpds = %w[CP439 CP478 CP411 CP211 CP448 CP440 CP444 CO700 CP446 CO222 CP468 CP413 CP212 CP247 CP248 CP249 CO230]
   cpds.each do |cpd|
@@ -64,7 +64,7 @@ programme.pathways.find_or_initialize_by(slug: "curriculum-leadership").tap do |
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
-end.save
+end.save!
 
 programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap do |pathway|
   pathway.title = "Supporting other teachers"
@@ -89,7 +89,7 @@ programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap 
     "Receive your certificate"
   ]
 
-  pathway.save
+  pathway.save!
 
   cpds = %w[CP207 CP437 CP447 CP448 CO222 CO215 CP468 CP440 CP446]
   cpds.each do |cpd|
@@ -119,7 +119,7 @@ programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap 
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
-end.save
+end.save!
 
 programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclusion").tap do |pathway|
   pathway.title = "Championing diversity and inclusion"
@@ -143,7 +143,7 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
     "Receive your certificate"
   ]
 
-  pathway.save
+  pathway.save!
 
   cpds = %w[CP440 CO700 CP448 CP437 CP291 CP414 CP249]
   cpds.each do |cpd|
@@ -172,7 +172,7 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
-end.save
+end.save!
 
 programme.pathways.find_or_initialize_by(slug: "raising-student-attainment").tap do |pathway|
   pathway.title = "Raising student attainment"
@@ -198,7 +198,7 @@ programme.pathways.find_or_initialize_by(slug: "raising-student-attainment").tap
     "Receive your certificate"
   ]
 
-  pathway.save
+  pathway.save!
 
   cpds = %w[CP439 CP447 CP241 CP207 CP478 CP212 CP242 CP446 CP468 CP413 CP412 CP212]
   cpds.each do |cpd|
@@ -228,7 +228,7 @@ programme.pathways.find_or_initialize_by(slug: "raising-student-attainment").tap
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
-end.save
+end.save!
 
 programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pathway|
   pathway.title = "Developing teachers"
@@ -252,7 +252,7 @@ programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pa
     "Receive your certificate"
   ]
 
-  pathway.save
+  pathway.save!
 
   cpds = %w[CP439 CP478 CP448 CO700 CO222 CP446 CP468]
   cpds.each do |cpd|
@@ -279,4 +279,4 @@ programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pa
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
   end
-end.save
+end.save!

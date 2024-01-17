@@ -6,7 +6,7 @@ i_belong = Programmes::IBelong.find_or_initialize_by(slug: "i-belong").tap do |p
   programme.description = "Encouraging girls into computer science"
   programme.enrollable = true
 
-  programme.save
+  programme.save!
 end
 
 puts "Created Programme: #{i_belong.title} (#{i_belong})"
