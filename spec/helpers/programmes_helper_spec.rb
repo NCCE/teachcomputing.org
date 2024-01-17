@@ -82,13 +82,17 @@ describe ProgrammesHelper, type: :helper do
   end
 
   describe("#display_programme_tag") do
-    it "appends the word certificate for primary and secondary tags" do
-      secondary_certificate = "Secondary"
-      primary_certificate = "Primary"
-      cs_accelerator = "CS Accelerator"
-      expect(display_programme_tag(secondary_certificate)).to eq("Secondary certificate")
-      expect(display_programme_tag(primary_certificate)).to eq("Primary certificate")
-      expect(display_programme_tag(cs_accelerator)).to eq("CS Accelerator")
+    let(:secondary_programme) { create(:secondary_certificate) }
+    let(:primary_programme) { create(:primary_certificate) }
+    let(:a_level_programme) { create(:a_level) }
+    let(:i_belong) { create(:i_belong) }
+    let(:subject_knowledge) { create(:cs_accelerator) }
+    it "returns the programmes certificate name when provided with valid slug" do
+      expect(display_programme_tag(secondary_programme.slug)).to eq(Programme.secondary_certificate.certificate_name)
+      expect(display_programme_tag(primary_programme.slug)).to eq(Programme.primary_certificate.certificate_name)
+      expect(display_programme_tag(a_level_programme.slug)).to eq(Programme.a_level.certificate_name)
+      expect(display_programme_tag(i_belong.slug)).to eq(Programme.i_belong.certificate_name)
+      expect(display_programme_tag(subject_knowledge.slug)).to eq(Programme.cs_accelerator.certificate_name)
     end
   end
 

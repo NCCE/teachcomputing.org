@@ -29,9 +29,9 @@ RSpec.describe Programmes::ALevel do
     end
   end
 
-  describe "#short_name" do
-    it "should return its short name" do
-      expect(subject.short_name).to eq "A Level"
+  describe "#certificate_name" do
+    it "should return its certificate name" do
+      expect(subject.certificate_name).to eq "A Level subject knowledge certificate"
     end
   end
 

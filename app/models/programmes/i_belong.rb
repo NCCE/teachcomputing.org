@@ -2,8 +2,8 @@ module Programmes
   class IBelong < Programme
     PROGRAMME_TITLE = "I Belong: encouraging girls into computer science".freeze
 
-    def short_name
-      "I belong"
+    def certificate_name
+      "I Belong"
     end
 
     def pending_delay

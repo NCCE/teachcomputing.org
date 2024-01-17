@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe CoursesController do
-  let(:programme) { create(:programme, slug: "subject-knowledge", title: "CS Accelerator") }
+  let(:programme) { create(:cs_accelerator, title: "CS Accelerator") }
 
   describe "GET #index" do
     before do

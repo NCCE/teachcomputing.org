@@ -421,9 +421,9 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
-  describe "#short_name" do
-    it "should return its short name" do
-      expect(programme.short_name).to eq "Subject knowledge"
+  describe "#certificate_name" do
+    it "should return its certificate name" do
+      expect(programme.certificate_name).to eq "KS3 and GCSE subject knowledge certificate"
     end
   end
 end

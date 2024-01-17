@@ -8,16 +8,11 @@ class CourseComponent < ViewComponent::Base
     :course_type,
     :view_course_phrase,
     :tracking_data,
+    :display_programme_tag,
     to: :helpers
 
   def initialize(course:, filter:)
     @course = course
     @course_filter = filter
-  end
-
-  def get_course_tag(programme)
-    return "#{programme} certificate" if %w[Primary Secondary].include?(programme)
-
-    programme
   end
 end

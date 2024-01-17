@@ -41,7 +41,7 @@ class Programme < ApplicationRecord
     Programme.find_by(slug: "a-level-certificate")
   end
 
-  def short_name
+  def certificate_name
     raise NotImplementedError
   end
 

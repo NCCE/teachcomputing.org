@@ -19,7 +19,7 @@ RSpec.describe Achiever::CourseFilter do
     build(:achiever_course_occurrence, online_cpd: true, course_template_no: online_template.course_template_no)
   end
   let(:no_occ_template) { build(:achiever_course_template, title: "No occurrence template") }
-  let(:secondary_template) { build(:achiever_course_template, programmes: ["Secondary"], title: "Secondary template") }
+  let(:secondary_template) { build(:achiever_course_template, programmes: ["secondary-certificate"], title: "Secondary template") }
   let(:secondary_occurrence) do
     build(:achiever_course_occurrence, course_template_no: secondary_template.course_template_no, distance: 50)
   end

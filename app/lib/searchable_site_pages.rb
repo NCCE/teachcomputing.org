@@ -57,7 +57,7 @@ class SearchableSitePages
 
   def build_pathway_pages
     Pathway.all.where(programme: [Programme.primary_certificate, Programme.secondary_certificate], legacy: false).includes(:programme).each do |pathway|
-      path pathway_path(pathway.slug), "#{pathway.programme.short_name} pathway - #{pathway.title}", pathway.enrol_copy
+      path pathway_path(pathway.slug), "#{pathway.programme.certificate_name} pathway - #{pathway.title}", pathway.enrol_copy
     end
   end
 
