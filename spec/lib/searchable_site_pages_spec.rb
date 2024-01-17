@@ -32,8 +32,8 @@ RSpec.describe SearchableSitePages do
 
       results = SearchableSitePages.all
 
-      expect(results.include?({title: "Primary certificate pathway - Foo pathway", excerpt: "Foo pathway enrol copy", path: pathway_path("asdf")})).to be true
-      expect(results.include?({title: "Secondary certificate pathway - Bar pathway", excerpt: "Bar pathway enrol copy", path: pathway_path("fdsa")})).to be true
+      expect(results.include?({title: "Teach primary computing certificate pathway - Foo pathway", excerpt: "Foo pathway enrol copy", path: pathway_path("asdf")})).to be true
+      expect(results.include?({title: "Teach secondary computing certificate pathway - Bar pathway", excerpt: "Bar pathway enrol copy", path: pathway_path("fdsa")})).to be true
     end
 
     it "creates entries for curriculum key stages" do

@@ -79,9 +79,9 @@ RSpec.describe Programmes::SecondaryCertificate do
     end
   end
 
-  describe "#short_name" do
-    it "should return its short name" do
-      expect(secondary_certificate.short_name).to eq "Secondary certificate"
+  describe "#certificate_name" do
+    it "should return its certificate name" do
+      expect(secondary_certificate.certificate_name).to eq "Teach secondary computing certificate"
     end
   end
 

@@ -305,9 +305,9 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe "#short_name" do
+  describe "#certificate_name" do
     it "should return not implemented error" do
-      expect { generic_programme.short_name }.to raise_error(NotImplementedError)
+      expect { generic_programme.certificate_name }.to raise_error(NotImplementedError)
     end
   end
 

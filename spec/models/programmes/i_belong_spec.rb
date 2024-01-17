@@ -29,9 +29,9 @@ RSpec.describe Programmes::IBelong do
     end
   end
 
-  describe "#short_name" do
-    it "should return its short name" do
-      expect(programme.short_name).to eq "I belong"
+  describe "#certificate_name" do
+    it "should return its certificate name" do
+      expect(programme.certificate_name).to eq "I Belong"
     end
   end
 end

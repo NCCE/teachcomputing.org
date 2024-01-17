@@ -2,10 +2,6 @@ module Programmes
   class CSAccelerator < Programme
     PROGRAMME_TITLE = "GCSE Computer Science Subject Knowledge".freeze
 
-    def short_name
-      "Subject knowledge"
-    end
-
     def certificate_name
       "KS3 and GCSE subject knowledge certificate"
     end
