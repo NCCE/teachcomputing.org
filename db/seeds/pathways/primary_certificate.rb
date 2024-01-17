@@ -129,7 +129,7 @@ programme.pathways.find_or_initialize_by(slug: "specialising-or-leading-2").tap 
     "Complete the required professional development, engagement, and community activities to receive your qualification"
   ]
 
-  pathway.save
+  pathway.save!
 
   # CPDs
   cpds = [
@@ -201,7 +201,7 @@ programme.pathways.find_or_initialize_by(slug: "developing-in-the-classroom-2").
     "Complete the required professional development, engagement, and community activities to receive your qualification"
   ]
 
-  pathway.save
+  pathway.save!
 
   # CPDs
   cpds = [

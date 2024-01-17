@@ -10,10 +10,10 @@ a_level.programme_activity_groupings.find_or_initialize_by(title: "all courses")
   group.required_for_completion = 0
   group.programme_id = a_level.id
 
-  group.save
+  group.save!
 
   a_level.activities.courses.each do |activity|
     programme_activity = a_level.programme_activities.find_or_create_by(activity_id: activity.id)
     programme_activity.update(programme_activity_grouping_id: group.id)
   end
-end.save
+end.save!

@@ -18,6 +18,6 @@ assessment = Assessment.find_or_initialize_by(programme_id: cs_accelerator.id).t
   assessment.required_pass_percentage = 65.0
 end
 
-assessment.save
+assessment.save!
 
 puts "Created assessment: #{assessment.activity&.title} (#{assessment})"

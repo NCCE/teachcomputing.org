@@ -6,7 +6,7 @@ a_level = Programmes::ALevel.find_or_initialize_by(slug: "a-level-certificate").
   programme.description = "A level subject Computer Science knowledege"
   programme.enrollable = true
 
-  programme.save
+  programme.save!
 end
 
 puts "Created Programme: #{a_level.title} (#{a_level})"

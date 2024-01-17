@@ -13,13 +13,13 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "All courses
   group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
   group.required_credit_count = 50
 
-  group.save
+  group.save!
 
   secondary.activities.courses.each do |activity|
     programme_activity = secondary.programme_activities.find_or_create_by(activity_id: activity.id)
     programme_activity.update(programme_activity_grouping_id: group.id) unless group.programme_activities.include?(programme_activity)
   end
-end.save
+end.save!
 
 secondary.programme_activity_groupings.find_by(title: "Develop your subject knowledge")&.destroy
 secondary.programme_activity_groupings.find_by(title: "Develop your teaching practice")&.destroy
@@ -34,7 +34,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
   group.progress_bar_title = "Make an impact on young people in computing"
   group.web_copy_course_requirements = "Choose at least one activity"
 
-  group.save
+  group.save!
 
   # Activities should never be removed, only marked as legacy
   activities = [
@@ -55,7 +55,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!
 
 secondary.programme_activity_groupings.find_or_initialize_by(title: "Support your professional community").tap do |group|
   group.title = "Support your professional community"
@@ -66,7 +66,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
   group.progress_bar_title = "Support your professional community"
   group.web_copy_course_requirements = "Choose at least one activity"
 
-  group.save
+  group.save!
 
   # Activities should never be removed, only marked as legacy
   activities = [
@@ -90,4 +90,4 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!

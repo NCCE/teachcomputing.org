@@ -11,7 +11,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses"
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Understand</strong> factors affecting girl's participation"
 
-  group.save
+  group.save!
 
   activities = [
     "encouraging-girls-into-gcse-computer-science-remote-short-course",
@@ -21,7 +21,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses"
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity, index + 1)
   end
-end.save
+end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
   group.title = "<strong>Access</strong> and <strong>complete all</strong> of the following activities"
@@ -31,7 +31,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
   group.progress_bar_title = "<strong>Access</strong> resources to support you"
   group.community = true
 
-  group.save
+  group.save!
 
   activities = [
     {slug: "download-and-use-the-i-belong-handbook", legacy: false},
@@ -42,7 +42,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
   group.title = "<strong>Increase</strong> girls' engagement"
@@ -52,7 +52,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
   group.progress_bar_title = "<strong>Increase</strong> girls’ engagement by completing at least one activity"
   group.community = true
 
-  group.save
+  group.save!
 
   activities = [
     {slug: "participate-in-a-ncce-student-enrichment-activity", legacy: false},
@@ -66,4 +66,4 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
   activities.each_with_index do |activity, index|
     maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
-end.save
+end.save!
