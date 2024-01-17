@@ -53,6 +53,33 @@ RSpec.describe Achiever::Course::Template do
         expect(Achiever::Course::Template::QUERY_STRINGS).to have_key(:HideFromweb)
       end
     end
+
+    describe "TS_PROGRAMME_MAPPING" do
+      it "maps Subject Knowledge" do
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("CS Accelerator")
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["CS Accelerator"]).to eq("subject-knowledge")
+      end
+
+      it "maps Primary Certificate" do
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("Primary")
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["Primary"]).to eq("primary-certificate")
+      end
+
+      it "maps Secondary Certificate" do
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("Secondary")
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["Secondary"]).to eq("secondary-certificate")
+      end
+
+      it "maps I Belong" do
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("I Belong")
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["I Belong"]).to eq("i-belong")
+      end
+
+      it "maps A Level" do
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("A Level")
+        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["A Level"]).to eq("a-level-certificate")
+      end
+    end
   end
 
   describe ".all" do
