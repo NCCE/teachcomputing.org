@@ -20,6 +20,10 @@ module CurriculumClient
       raise ActionController::RoutingError, e.message if e.message.include?("not found")
 
       raise
+    rescue Graphlient::Errors::FaradayServerError
+      Sentry.capture_exception(e)
+      raise e if Rails.env.development?
+      raise ActiveRecord::RecordNotFound
     end
 
     def self.fetch_data(query, client, params)
