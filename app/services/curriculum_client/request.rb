@@ -16,14 +16,10 @@ module CurriculumClient
         fetch_data(query, client, params)
       end
     # Handle 404s gracefully...
-    rescue Graphlient::Errors::ExecutionError => e
-      raise ActionController::RoutingError, e.message if e.message.include?("not found")
-
-      raise
-    rescue Graphlient::Errors::FaradayServerError
+    rescue Graphlient::Errors::ExecutionError, Graphlient::Errors::FaradayServerError => e
       Sentry.capture_exception(e)
       raise e if Rails.env.development?
-      raise ActiveRecord::RecordNotFound
+      raise ActionController::RoutingError, e.message
     end
 
     def self.fetch_data(query, client, params)
