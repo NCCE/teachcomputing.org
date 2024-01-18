@@ -21,13 +21,3 @@ end
 assessment.save!
 
 puts "Created assessment: #{assessment.activity&.title} (#{assessment})"
-
-assessment = Assessment.find_or_initialize_by(programme_id: cs_accelerator.id).tap do |assessment|
-  assessment.programme_id = cs_accelerator.id
-  assessment.activity_id = a.id
-  assessment.link = "https://www.classmarker.com/online-test/start/?quiz=7jq5caf0e6ab8da3"
-  assessment.class_marker_test_id = "1071279"
-  assessment.required_pass_percentage = 65.0
-end
-
-assessment.save!
