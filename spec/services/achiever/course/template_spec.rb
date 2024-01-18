@@ -60,11 +60,6 @@ RSpec.describe Achiever::Course::Template do
         expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["CS Accelerator"]).to eq("subject-knowledge")
       end
 
-      it "maps Subject Knowledge duplicated" do
-        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("CS Accelerator")
-        expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["CS Accelerator"]).to eq("subject-knowledge")
-      end
-
       it "maps Primary Certificate" do
         expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING).to have_key("Primary")
         expect(Achiever::Course::Template::TS_PROGRAMME_MAPPING["Primary"]).to eq("primary-certificate")
