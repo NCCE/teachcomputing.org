@@ -29,6 +29,6 @@ RSpec.describe Curriculum::LessonsController do
           lesson_slug: "a-dud"
         )
       end.to raise_error(ActiveRecord::RecordNotFound)
-
+    end
   end
 end
