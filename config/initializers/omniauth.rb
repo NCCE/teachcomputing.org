@@ -23,6 +23,7 @@ module OmniAuth::Strategies
         our_info[key] = user_info["attributes"][stem_key][0] if user_info["attributes"].has_key?(stem_key)
       end
       Rails.logger.info "User #{user_info["attributes"]["mail"]} IDP Response - School: #{user_info["attributes"]["school"]}" if user_info["attributes"].has_key?("school")
+      Rails.logger.info "User #{user_info["attributes"]["mail"]} IDP Response - School: #{user_info["attributes"]["achieverOrganisationNo"]}" if user_info["attributes"].has_key?("achieverOrganisationNo")
       our_info
     end
 
