@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_07_174530) do
+ActiveRecord::Schema.define(version: 2024_01_18_102807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -425,6 +425,19 @@ ActiveRecord::Schema.define(version: 2023_12_07_174530) do
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
+  end
+
+  create_table "user_report_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "programme_slug", null: false
+    t.string "user_email", null: false
+    t.string "user_stem_user_id", null: false
+    t.boolean "user_enrolled", default: false, null: false
+    t.datetime "enrolled_at"
+    t.datetime "last_active_at"
+    t.boolean "completed_cpd_component", default: false, null: false
+    t.boolean "completed_certificate", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
