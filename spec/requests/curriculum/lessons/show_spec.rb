@@ -28,7 +28,7 @@ RSpec.describe Curriculum::LessonsController do
           unit_slug: "representations-from-clay-to-silicon",
           lesson_slug: "a-dud"
         )
-      end.to raise_error(Graphlient::Errors::FaradayServerError)
+      end.to raise_error(ActionController::RoutingError)
     end
   end
 end

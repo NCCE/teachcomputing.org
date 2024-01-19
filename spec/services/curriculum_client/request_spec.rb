@@ -32,7 +32,7 @@ RSpec.describe CurriculumClient::Request do
       response = JSON.parse(other_error_response_json, object_class: OpenStruct)
 
       stub_request(:post, url)
-        .to_raise(Graphlient::Errors::ExecutionError.new(response))
+        .to_raise(ActionController::RoutingError.new(response))
 
       query = <<~GRAPHQL
         query {
@@ -43,7 +43,7 @@ RSpec.describe CurriculumClient::Request do
       GRAPHQL
 
       expect { described_class.run(query: client.parse(query), client:) }
-        .to raise_error(Graphlient::Errors::ExecutionError)
+        .to raise_error(ActionController::RoutingError)
     end
   end
 end
