@@ -4,6 +4,11 @@ module Achiever
 
     SEARCH_RADII = [20, 30, 40, 50, 60].freeze
 
+    # match a from date, optionally followed by a to date. if there
+    # is only a from date, then it is the range beginning and ending
+    # on the same day.
+    DATE_RANGE_PATTERN = /^(?<from>[\d-]+)(?: to (?<to>[\d-]+))?$/
+
     def initialize(filter_params:)
       @filter_params = filter_params
 
@@ -117,17 +122,28 @@ module Achiever
       @current_hub ||= course_occurrences.map(&:hub_name).compact.first || :no_courses
     end
 
-    def date_range
+    def current_date_range
       return nil if @filter_params[:date_range].blank?
-      return nil if @filter_params[:date_range][:start][:year].blank?
 
-      start_params = @filter_params[:date_range][:start]
-      end_params = @filter_params[:date_range][:end]
+      @date_range ||= @filter_params[:date_range]
+    end
 
-      @date_range ||= {
-        start_date: Date.new(start_params[:year].to_i, start_params[:month].to_i, start_params[:day].to_i),
-        end_date: Date.new(end_params[:year].to_i, end_params[:month].to_i, end_params[:day].to_i)
-      }
+    def current_date_range_from
+      return unless current_date_range
+
+      matched = DATE_RANGE_PATTERN.match current_date_range
+      raise ArgumentError.new("Not a valid date range: #{current_date_range}") if matched.nil?
+
+      Date.parse(matched[:from])
+    end
+
+    def current_date_range_to
+      return unless current_date_range
+
+      matched = DATE_RANGE_PATTERN.match current_date_range
+      raise ArgumentError.new("Not a valid date range: #{current_date_range}") if matched.nil?
+
+      Date.parse(matched[:to] || matched[:from])
     end
 
     def current_hub_id
@@ -204,7 +220,6 @@ module Achiever
     def courses
       @courses ||= begin
         courses = all_courses
-
         courses.each do |course|
           course_occurrences.each do |course_occurrence|
             course.occurrences.push(course_occurrence) if course_occurrence.course_template_no == course.course_template_no
@@ -234,7 +249,7 @@ module Achiever
         in_range = true
 
         at_hub = co.hub_id == current_hub_id if current_hub_id
-        in_range = Date.parse(co.start_date).between?(date_range[:start_date], date_range[:end_date]) if date_range
+        in_range = Date.parse(co.start_date).between?(current_date_range_from, current_date_range_to) if current_date_range
 
         at_hub && in_range
       end

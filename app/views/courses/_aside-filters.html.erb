@@ -62,47 +62,13 @@
       </div>
 
       <%= label_tag :date_range, 'Between Dates:', class: 'govuk-body-s ncce-label--s' %>
-      <div class="govuk-date-input" id="course-filter-start-date">
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[start][day]', 'Day', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[start][day]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-2'], inputmode: 'numeric' %>
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[start][month]', 'Month', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[start][month]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-2'], inputmode: 'numeric' %>
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[start][year]', 'Year', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[start][year]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-4'], inputmode: 'numeric' %>
-          </div>
-        </div>
-      </div>
-
-        <div class="govuk-date-input" id="course-filter-end-date">
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[end][day]', 'Day', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[end][day]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-2'], inputmode: 'numeric' %>
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[end][month]', 'Month', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[end][month]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-2'], inputmode: 'numeric' %>
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <%= label_tag 'date_range[end][year]', 'Year', class:['govuk-label govuk-date-input__label'] %>
-            <%= text_field_tag 'date_range[end][year]', nil, class: ['govuk-input', 'govuk-date0input__input', 'govuk-input--width-4'], inputmode: 'numeric' %>
-          </div>
-        </div>
-      </div>
+      <%= render DatepickerComponent.new(
+          "date_range",
+          nil,
+          flatpickr: { mode: "range" },
+          options: { data: { action: "changeRange->course-filter#filter"} }
+        ) 
+      %>
 
       <div class="ncce-aside--filters-geo">
         <%= label_tag :format, 'Find face to face courses near you:', class: 'govuk-body-s ncce-label--s' %>
