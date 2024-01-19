@@ -148,7 +148,7 @@ class Programme < ApplicationRecord
 
   def set_user_programme_enrolment_complete_data(enrolment)
     enrolment.certificate_name = enrolment.user.full_name
-    enrolment.save
+    enrolment.save!
   end
 
   def user_qualifies_for_credly_badge?(user)

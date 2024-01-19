@@ -57,6 +57,24 @@ module Admin
       end
     end
 
+    def generate_certificate
+      user_programme_enrolment = UserProgrammeEnrolment.find(params[:id])
+      generator = CertificateGenerator.new(
+        user: user_programme_enrolment.user,
+        programme: user_programme_enrolment.programme,
+        transition: user_programme_enrolment.last_transition
+      )
+
+      pdf_details = generator.generate_pdf
+
+      send_file(
+        pdf_details[:path],
+        filename: pdf_details[:filename],
+        type: "application/pdf",
+        disposition: "inline"
+      )
+    end
+
     private
 
     def user_programme_enrolment_params
