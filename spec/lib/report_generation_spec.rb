@@ -93,5 +93,43 @@ RSpec.describe ReportGeneration do
         expect(secondary_report_entry.user_enrolled).to be false
       end
     end
+
+    context "If the user is enrollend and completed" do
+      it "Should appear on in the report" do
+        user = create(:user)
+
+        upe = create(:user_programme_enrolment, programme: primary_certificate, user:)
+        upe.transition_to :complete
+
+        ReportGeneration.generate_user_report
+
+        primary_report_entry = UserReportEntry.find_by(programme_slug: "primary-certificate")
+        secondary_report_entry = UserReportEntry.find_by(programme_slug: "secondary-certificate")
+
+        expect(primary_report_entry.user_enrolled).to be true
+        expect(primary_report_entry.completed_certificate).to be true
+        expect(secondary_report_entry.user_enrolled).to be false
+        expect(secondary_report_entry.completed_certificate).to be false
+      end
+    end
+
+    context "If the user is enrollend and pending" do
+      it "Should appear on in the report" do
+        user = create(:user)
+
+        upe = create(:user_programme_enrolment, programme: primary_certificate, user:)
+        upe.transition_to :pending
+
+        ReportGeneration.generate_user_report
+
+        primary_report_entry = UserReportEntry.find_by(programme_slug: "primary-certificate")
+        secondary_report_entry = UserReportEntry.find_by(programme_slug: "secondary-certificate")
+
+        expect(primary_report_entry.user_enrolled).to be true
+        expect(primary_report_entry.pending_certificate).to be true
+        expect(secondary_report_entry.user_enrolled).to be false
+        expect(secondary_report_entry.pending_certificate).to be false
+      end
+    end
   end
 end
