@@ -126,4 +126,8 @@ module ExternalLinkHelper
   def stem_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
   end
+
+  def computing_quality_framework_url
+    "https://computingqualityframework.org"
+  end
 end

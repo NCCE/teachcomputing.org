@@ -7,7 +7,7 @@ class ALevelMailer < ApplicationMailer
     mail(to: @user, subject: @subject)
   end
 
-  def welcome
+  def enrolled
     @subject = "Welcome to A level subject knowledge!"
 
     mail(to: @user, subject: @subject)

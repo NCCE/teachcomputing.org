@@ -11,7 +11,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
     "Congratulations you have completed the Key stage 3 and GCSE Computer Science certificate from the National Centre for Computing Education"
   end
   let(:eligible_mail) { CSAcceleratorMailer.with(user: user, programme: programme).assessment_eligibility }
-  let(:manual_enrolled_welcome_mail) { CSAcceleratorMailer.with(user: user).manual_enrolled_welcome }
+  let(:enrolled_mail) { CSAcceleratorMailer.with(user: user).enrolled }
   let(:eligible_subject) { "#{user.first_name} your Key stage 3 and GCSE Computer Science test is ready." }
   let(:non_enrolled_csa_user_mail) { described_class.with(user: user, programme: programme).non_enrolled_csa_user }
   let(:non_enrolled_csa_user_subject) { "Time to finish what you’ve started and achieve your qualification" }
@@ -59,16 +59,16 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
     end
   end
 
-  describe "#manual_enrolled_welcome" do
+  describe "#enrolled" do
     it "renders the headers" do
-      expect(manual_enrolled_welcome_mail.subject).to include("Welcome to our KS3 and GCSE Computer Science subject knowledge certificate")
-      expect(manual_enrolled_welcome_mail.to).to eq([user.email])
-      expect(manual_enrolled_welcome_mail.from).to eq(["noreply@teachcomputing.org"])
+      expect(enrolled_mail.subject).to include("Welcome to our KS3 and GCSE Computer Science subject knowledge certificate")
+      expect(enrolled_mail.to).to eq([user.email])
+      expect(enrolled_mail.from).to eq(["noreply@teachcomputing.org"])
     end
   end
 
-  describe "#auto_enrolled_welcome" do
-    let(:mail) { described_class.with(user: user).auto_enrolled_welcome }
+  describe "#auto_enrolled" do
+    let(:mail) { described_class.with(user: user).auto_enrolled }
     let(:mail_subject) { "Achieve your subject knowledge certificate with the Key stage 3 and GCSE Computer Science certificate" }
 
     it "renders the headers" do

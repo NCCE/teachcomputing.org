@@ -31,7 +31,7 @@ class CSAcceleratorMailer < ApplicationMailer
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_GETTING_STARTED_PROMPT_EMAIL)
   end
 
-  def manual_enrolled_welcome
+  def enrolled
     @user = params[:user]
     @programme = Programme.cs_accelerator
     @subject = "Welcome to our KS3 and GCSE Computer Science subject knowledge certificate"
@@ -39,7 +39,7 @@ class CSAcceleratorMailer < ApplicationMailer
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: CSA_MANUAL_ENROLLED_WELCOME)
   end
 
-  def auto_enrolled_welcome
+  def auto_enrolled
     @user = params[:user]
     @subject = "Achieve your subject knowledge certificate with the Key stage 3 and GCSE Computer Science certificate"
 

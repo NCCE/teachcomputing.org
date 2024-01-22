@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe SecondaryMailer, type: :mailer do
   let(:user) { create(:user, first_name: "Tobias") }
 
-  describe "welcome" do
-    let(:mail) { SecondaryMailer.with(user: user).welcome }
+  describe "enrolled" do
+    let(:mail) { SecondaryMailer.with(user: user).enrolled }
     let(:mail_subject) { "Welcome to Teach secondary computing" }
 
     it "renders the headers" do

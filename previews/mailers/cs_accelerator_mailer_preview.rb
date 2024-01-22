@@ -19,15 +19,15 @@ class CSAcceleratorMailerPreview < ActionMailer::Preview
     CSAcceleratorMailer.with(user: user, enrolment_id: enrolment.id, preview: true).getting_started_prompt
   end
 
-  def manual_enrolled_welcome
+  def enrolled
     SentEmail.where(user_id: User.first.id, mailer_type: CSAcceleratorMailer::CSA_MANUAL_ENROLLED_WELCOME).destroy_all
-    CSAcceleratorMailer.with(user: User.first, preview: true).manual_enrolled_welcome
+    CSAcceleratorMailer.with(user: User.first, preview: true).enrolled
   end
 
-  def auto_enrolled_welcome
+  def auto_enrolled
     SentEmail.where(user_id: User.first.id,
       mailer_type: CSAcceleratorMailer::CSA_AUTO_ENROLLED_WELCOME)
       .destroy_all
-    CSAcceleratorMailer.with(user: User.first, preview: true).auto_enrolled_welcome
+    CSAcceleratorMailer.with(user: User.first, preview: true).auto_enrolled
   end
 end

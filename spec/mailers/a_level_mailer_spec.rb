@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe ALevelMailer, type: :mailer do
   let(:user) { create(:user, first_name: "Tobias", last_name: "Doe") }
 
-  describe "welcome" do
-    let(:mail) { ALevelMailer.with(user: user).welcome }
+  describe "enrolled" do
+    let(:mail) { ALevelMailer.with(user: user).enrolled }
     let(:mail_subject) { "Welcome to A level subject knowledge!" }
 
     it "renders the headers" do
