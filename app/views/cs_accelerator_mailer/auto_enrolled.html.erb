@@ -1,0 +1,37 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
+  <p class='govuk-body'>Did you know that you're already well on your way to gaining a nationally recognised certificate?</p>
+  <p class='govuk-body'>
+   We can see you've been working on your professional development, by engaging in courses that are part of the Key Stage 3 and GCSE Computer Science subject knowledge certificate on <%= link_to 'TeachComputing.org', root_url, class: 'ncce-link' %>. To help you take the next step towards achieving this national accreditation in computer science subject knowledge, which is awarded by BCS, the Chartered Institute for IT, we've enrolled you on the certificate.
+  </p>
+  <p class='govuk-body'>
+    This means that you'll now be able to access your own personal dashboard, where you can find out more about the certificate and explore a range of resources and support, including our <%= link_to 'handbook', csa_handbook_url, class: 'ncce-link' %>, which will walk you through what to expect over the course of your learning.
+  </p>
+  <p class='govuk-body'>
+    <%= link_to 'Explore your dashboard', cs_accelerator_certificate_url, class: 'govuk-button button' %>
+  </p>
+  <p class='govuk-body'>
+    <strong>Next steps...</strong>
+  </p>
+  <ul class="govuk-list govuk-list govuk-list--number">
+    <li>Ccomplete our short questionnaire to assess your confidence and subject knowledge
+    <li>Explore your personalised dashboard which shows you the learning pathway and courses we recommend you take</li>
+    <li>Complete a minimum of ten hours of CPD, which must include a face to face or remote course – you might already be half-way there</li>
+    <li>Use our mock test to check what you've learnt</li>
+    <li>When you're ready, take and pass our test to receive your certificate and badge</li>
+  </ul>
+  <p class='govuk-body'><strong>Funding</strong></p>
+  <p class='govuk-body'>
+    If you work in state-funded education, you may be eligible <%= link_to 'for a subsidy', cms_post_url('funding'), class: 'ncce-link' %> to support supply cover for continuing professional development, paid to your school or college.
+  </p>
+  <p class='govuk-body'><strong>Get help from your local Computing Hub</strong></p>
+  <p class='govuk-body'>
+    Your local Computing Hub is here to support you – they will work with you to identify
+your computing needs and provide a targeted programme of support to help embed computing in your school. <%= link_to 'Find your nearest Hub.', hubs_url, class: 'ncce-link' %>
+  </p>
+  <p class='govuk-body'><strong>Not the right time?</strong></p>
+  <p class='govuk-body'>
+    If you don't want to continue on the programme at this time, <%= link_to 'let us know', unenroll__cs_accelerator_auto_enrolment_url, class: 'ncce-link' %>
+    and we'll update our records. You can still re-enrol yourself in the future <%= link_to 'on our website', cs_accelerator_url, class: 'ncce-link' %>.
+  </p>
+</div>
