@@ -18,4 +18,8 @@ class PrimaryMailerPreview < ActionMailer::Preview
   def completed_cpd_not_activities
     PrimaryMailer.with(user: User.first, preview: true).completed_cpd_not_activities
   end
+
+  def auto_enrolled
+    PrimaryMailer.with(user: User.first, preview: true).auto_enrolled
+  end
 end

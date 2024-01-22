@@ -55,6 +55,10 @@ module ExternalLinkHelper
     "https://community.stem.org.uk/communities/community-home?CommunityKey=f5098030-41d2-43f9-8f5d-67b536b18b97"
   end
 
+  def stem_community_url
+    "https://community.stem.org.uk/home"
+  end
+
   def stem_community_points_help_url
     "https://community.stem.org.uk/helpfaqs/points"
   end
