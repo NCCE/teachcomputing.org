@@ -13,7 +13,7 @@ class IBelongMailer < ApplicationMailer
     mail(to: @user, subject: @subject)
   end
 
-  def welcome
+  def enrolled
     @subject = "Welcome to I Belong: Encouraging girls into computer science!"
 
     mail(to: @user, subject: @subject)

@@ -38,4 +38,11 @@ class PrimaryMailer < ApplicationMailer
 
     mail(to: @user, subject: @subject)
   end
+
+  def auto_enrolled
+    @user = params[:user]
+    @subject = "Welcome to Teach primary computing"
+
+    mail(to: @user, subject: @subject)
+  end
 end

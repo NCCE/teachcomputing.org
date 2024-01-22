@@ -133,45 +133,6 @@ RSpec.describe User do
     end
   end
 
-  describe "#csa_auto_enrollable?" do
-    context "when user is enrolled on CSA programme" do
-      let!(:enrolment) do
-        create(:user_programme_enrolment, user:, programme: create(:cs_accelerator))
-      end
-
-      it "returns false" do
-        expect(user.csa_auto_enrollable?).to be false
-      end
-
-      context "when user has unenrolled" do
-        it "returns false" do
-          enrolment.transition_to(:unenrolled)
-          expect(user.csa_auto_enrollable?).to be false
-        end
-      end
-
-      context "when user has completed" do
-        it "returns false" do
-          enrolment.transition_to(:complete)
-          expect(user.csa_auto_enrollable?).to be false
-        end
-      end
-
-      context "when user enrolment is in pending state" do
-        it "returns false" do
-          enrolment.transition_to(:pending)
-          expect(user.csa_auto_enrollable?).to be false
-        end
-      end
-    end
-
-    context "when user is not enrolled on CSA programme" do
-      it "returns true" do
-        expect(user.csa_auto_enrollable?).to be true
-      end
-    end
-  end
-
   describe "#programme_enrolment_state" do
     context "when user is enrolled to the programme" do
       it "returns programme enrolment state" do

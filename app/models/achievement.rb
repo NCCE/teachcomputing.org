@@ -127,9 +127,7 @@ class Achievement < ApplicationRecord
   private
 
   def queue_auto_enrolment
-    return unless belonging_to_programme?(Programme.cs_accelerator)
-
-    CSAccelerator::AutoEnrolJob.perform_later(achievement_id: id)
+    AutoEnrolJob.perform_later(achievement: self)
   end
 
   def update_state_from_progress(updated_progress)

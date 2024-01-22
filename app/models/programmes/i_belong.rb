@@ -34,5 +34,9 @@ module Programmes
       enrolment.certificate_name = enrolment.user.school_name
       enrolment.save
     end
+
+    def auto_enrollment_ignored_activity_codes
+      ["FD022"]
+    end
   end
 end

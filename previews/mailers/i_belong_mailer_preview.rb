@@ -1,6 +1,6 @@
 class IBelongMailerPreview < ActionMailer::Preview
-  def welcome
-    IBelongMailer.with(user: User.first, preview: true).welcome
+  def enrolled
+    IBelongMailer.with(user: User.first, preview: true).enrolled
   end
 
   def pending
