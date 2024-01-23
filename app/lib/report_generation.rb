@@ -36,7 +36,12 @@ module ReportGeneration
 
         users_completed_programme = UserProgrammeEnrolment
           .in_state(:complete)
-          .where(user: users)
+          .where(user: users, programme:)
+          .pluck(:user_id)
+
+        users_pending_programme = UserProgrammeEnrolment
+          .in_state(:pending)
+          .where(user: users, programme:)
           .pluck(:user_id)
 
         users_achievements = Achievement
@@ -65,6 +70,7 @@ module ReportGeneration
             last_active_at: last_achievement&.updated_at,
             completed_cpd_component: users_completed_cpd_component&.dig(user.id) || false,
             completed_certificate: user.id.in?(users_completed_programme),
+            pending_certificate: user.id.in?(users_pending_programme),
             created_at: now,
             updated_at: now
           }

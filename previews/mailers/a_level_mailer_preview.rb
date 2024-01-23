@@ -1,6 +1,6 @@
 class ALevelMailerPreview < ActionMailer::Preview
-  def welcome
-    ALevelMailer.with(user: User.first, preview: true).welcome
+  def enrolled
+    ALevelMailer.with(user: User.first, preview: true).enrolled
   end
 
   def completed

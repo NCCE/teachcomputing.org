@@ -104,4 +104,10 @@ RSpec.describe Programmes::SecondaryCertificate do
       expect(secondary_certificate.programme_objectives[1..]).to eq pags
     end
   end
+
+  describe "#auto_enrollable?" do
+    it "should return true" do
+      expect(secondary_certificate.auto_enrollable?).to be true
+    end
+  end
 end

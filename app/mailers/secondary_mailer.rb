@@ -1,5 +1,5 @@
 class SecondaryMailer < ApplicationMailer
-  def welcome
+  def enrolled
     @user = params[:user]
     @subject = "Welcome to Teach secondary computing"
 
@@ -30,6 +30,13 @@ class SecondaryMailer < ApplicationMailer
   def completed_cpd_not_activities
     @user = params[:user]
     @subject = "You're so close!"
+
+    mail(to: @user, subject: @subject)
+  end
+
+  def auto_enrolled
+    @user = params[:user]
+    @subject = "Welcome to Teach secondary computing"
 
     mail(to: @user, subject: @subject)
   end

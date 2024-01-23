@@ -426,4 +426,10 @@ RSpec.describe Programmes::CSAccelerator do
       expect(programme.certificate_name).to eq "KS3 and GCSE subject knowledge certificate"
     end
   end
+
+  describe "#auto_enrollable?" do
+    it "should return true" do
+      expect(programme.auto_enrollable?).to be true
+    end
+  end
 end

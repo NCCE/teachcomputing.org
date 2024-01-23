@@ -57,6 +57,10 @@ class Activity < ApplicationRecord
     category == ONLINE_CATEGORY
   end
 
+  def community?
+    category == COMMUNITY_CATEGORY
+  end
+
   def active_course?
     stem_activity_code.present? && retired == false
   end

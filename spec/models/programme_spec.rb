@@ -375,4 +375,20 @@ RSpec.describe Programme, type: :model do
       expect(programme.user_qualifies_for_credly_badge?(user)).to be false
     end
   end
+
+  describe "#auto_enrollable?" do
+    it "should return false" do
+      programme = create(:programme)
+
+      expect(programme.auto_enrollable?).to be false
+    end
+  end
+
+  describe "#auto_enrollment_ignored_activity_codes" do
+    it "should return []" do
+      programme = create(:programme)
+
+      expect(programme.auto_enrollment_ignored_activity_codes).to eq []
+    end
+  end
 end

@@ -161,4 +161,12 @@ class Programme < ApplicationRecord
 
     user_enrolled?(user) && (has_a_f2f_achievement || user_meets_completion_requirement?(user))
   end
+
+  def auto_enrollable?
+    false
+  end
+
+  def auto_enrollment_ignored_activity_codes
+    []
+  end
 end

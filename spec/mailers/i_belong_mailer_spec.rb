@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe IBelongMailer, type: :mailer do
   let(:user) { create(:user, first_name: "Tobias", last_name: "Doe") }
 
-  describe "welcome" do
-    let(:mail) { IBelongMailer.with(user: user).welcome }
+  describe "enrolled" do
+    let(:mail) { IBelongMailer.with(user: user).enrolled }
     let(:mail_subject) { "Welcome to I Belong: Encouraging girls into computer science!" }
 
     it "renders the headers" do
