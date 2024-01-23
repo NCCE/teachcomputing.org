@@ -2426,4 +2426,4 @@ Activity.find_or_initialize_by(stem_course_template_no: "fa051bb1-c5af-ee11-a569
   activity.stem_activity_code = "CP506"
 
   activity.programmes = [secondary_certificate, a_level]
-end
+end.save!
