@@ -6,7 +6,7 @@ class UserDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    achievements: Field::HasMany,
+    achievements: AchievementListField,
     assessment_attempts: Field::HasMany,
     feedback_comments: Field::HasMany,
     user_programme_enrolments: Field::HasMany,

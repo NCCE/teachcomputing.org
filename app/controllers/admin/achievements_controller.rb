@@ -46,5 +46,24 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def reject_evidence
+      achievement = requested_resource
+      if achievement.transition_to(:rejected)
+        flash_messages = ["Evidence rejected"]
+        achievement.activity.programmes.each do |programme|
+          enrolment = programme.user_programme_enrolments.find_by(user: achievement.user)
+          if enrolment.current_state == "pending"
+            if enrolment.transition_to(:enrolled)
+              flash_messages << "#{programme.title} rolled back"
+            end
+          end
+        end
+        flash[:notice] = flash_messages.join("<br />")
+      else
+        flash[:alert] = "Unable to reject the evidence"
+      end
+      redirect_to action: :show, controller: :users, id: achievement.user.id
+    end
   end
 end

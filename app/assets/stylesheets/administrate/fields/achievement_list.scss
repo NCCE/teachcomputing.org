@@ -1,0 +1,59 @@
+
+
+div.achievement-list {
+  div.achievement {
+    border: 1px solid gray;
+    margin-bottom: 10px; 
+    padding: 5px;
+
+    div.achievement-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    div.achievement-subheader {
+      display: flex;
+      flex-direction: column;
+
+      div.tag-list {
+        display: flex;
+        flex-direction: row;
+        gap: 3px;
+
+        div {
+          padding: 2px 4px;
+          border: 1px solid gray;
+          border-radius: 5px;
+
+          &.category {
+            background-color: lightseagreen;
+          }
+
+          &.programme {
+            background-color: lightyellow;
+          }
+        }
+      }
+    }
+
+    div.achievement-evidence {
+      margin-top: 5px;
+      border: 1px solid black;
+      background-color: lightgray;
+
+      div.evidence_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        padding: 5px;
+
+      }
+
+      div.supplied-evidence {
+        padding: 10px;
+      }
+    }
+  }
+}

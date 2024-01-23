@@ -1,0 +1,34 @@
+
+<div class="achievement-list">
+  <% field.data.includes(activity: [:programmes]).each do |achievement| %>
+    <div class="achievement">
+      <div class="achievement-header">
+        <h1><%= achievement.activity.title %></h1>
+        <div><%= achievement.current_state %> <%= achievement.last_transition&.created_at&.strftime("%d/%m/%Y %H:%M") %></div>
+      </div>
+      <div class="achievement-subheader">
+        <div class="tag-list">
+          <div class="category"><%= achievement.activity.category %></div>
+        <% achievement.activity.programmes.each do |programme| %>
+          <div class="programme"><%= programme.title %></div>
+        <% end %>
+        </div>
+      </div>
+      <% if achievement.current_state == "complete" && achievement.self_verification_info.present? %>
+        <div class="achievement-evidence">
+          <div class="evidence_header">
+            <h3>Supplied Evidence</h3>
+            <%= link_to(
+                  "Reject Evidence",
+                  reject_evidence_admin_achievement_path(achievement),
+                  class: "button button--danger",
+                  method: :reject_evidence,
+                  data: { confirm: t("administrate.actions.confirm") }
+                ) %>             
+            </div>
+          <div class="supplied-evidence"><%= achievement.self_verification_info %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

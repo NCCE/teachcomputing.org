@@ -21,7 +21,11 @@ Rails.application.routes.draw do
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
     end
     resources :user_programme_enrolments, only: %i[index show edit update]
-    resources :achievements, only: %i[index show destroy]
+    resources :achievements, only: %i[index show] do
+      member do
+        post :reject_evidence
+      end
+    end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
   end
