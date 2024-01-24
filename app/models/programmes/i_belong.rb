@@ -31,8 +31,10 @@ module Programmes
     end
 
     def set_user_programme_enrolment_complete_data(enrolment)
-      enrolment.certificate_name = enrolment.user.school_name
-      enrolment.save
+      # Commented out as this should enabled the old work flow for I Belong.
+      # Needs to be restored when fix is in place.
+      # enrolment.certificate_name = enrolment.user.school_name
+      # enrolment.save
     end
 
     def auto_enrollment_ignored_activity_codes
