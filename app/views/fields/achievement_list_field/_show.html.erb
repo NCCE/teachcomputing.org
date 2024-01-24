@@ -1,12 +1,27 @@
 
-<div class="achievement-list">
+<div data-controller="achievement-list-field--achievement-list-field" class="achievement-list">
+  <div class="filters">
+    <div>
+      <%= label_tag :state_filter, "Filter By State" %>
+      <%= select_tag :state_filter, options_for_select(field.state_list), {
+        include_blank: "All",
+        data: {
+          "achievement-list-field--achievement-list-field-target": "stateFilter",
+          action: "change->achievement-list-field--achievement-list-field#filter"
+        }
+      } %>
+    </div>
+  </div>
   <% field.data.includes(activity: [:programmes]).each do |achievement| %>
-    <div class="achievement">
+    <div class="achievement"
+      data-achievement-list-field--achievement-list-field-target="achievement"
+      data-current-state="<%= achievement.current_state %>">
       <div class="achievement-header">
         <h1><%= achievement.activity.title %></h1>
         <div><%= achievement.current_state %> <%= achievement.last_transition&.created_at&.strftime("%d/%m/%Y %H:%M") %></div>
       </div>
       <div class="achievement-subheader">
+        <div data-achievement-list-field--achievement-list-field-target="testing"></div>
         <div class="tag-list">
           <div class="category"><%= achievement.activity.category %></div>
         <% achievement.activity.programmes.each do |programme| %>

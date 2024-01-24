@@ -1,6 +1,25 @@
 
 
 div.achievement-list {
+
+  div.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+    
+      label {
+        white-space: nowrap;
+      }
+    }
+  }
+
   div.achievement {
     border: 1px solid gray;
     margin-bottom: 10px; 
