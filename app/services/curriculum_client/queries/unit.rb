@@ -47,6 +47,9 @@ module CurriculumClient
             from
             to
           }
+          zippedContents {
+            #{file_fields}
+          }
         }
       GRAPHQL
 

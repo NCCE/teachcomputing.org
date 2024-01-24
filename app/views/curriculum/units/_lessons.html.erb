@@ -3,7 +3,19 @@
 		<h3 class="govuk-heading-m">Lessons</h3>
 			<ul class="govuk-list govuk-body govuk-!-padding-bottom-7">
         <% lessons.each do |lesson| %>
-            <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>"><%= link_to lesson_title_wording(lesson), curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %></li>
+					<li class="curriculum__list--item curriculum__list--item-with-download <%= key_stage_list_color(key_stage.level) %>">
+						<%= link_to lesson_title_wording(lesson), curriculum_key_stage_unit_lesson_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug, lesson_slug: lesson.slug), class: 'govuk-link ncce-link' %>
+
+						<% if current_user %>
+							<% if lesson.zipped_contents&.file.present? %>
+								<%= link_to generate_download_url(lesson.zipped_contents.file), class: 'govuk-button button button--aside lesson-download-button' do %>
+									Download all lesson files <span class="lesson-download-button__meta-data">(<%= lesson.zipped_contents.size %>)</span>
+								<% end %>
+							<% end %>
+						<% else %>
+							<%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside' %>
+						<% end %>
+					</li>
         <% end %>
 			</ul>
 	</div>
