@@ -31,8 +31,7 @@ module Programmes
     end
 
     def set_user_programme_enrolment_complete_data(enrolment)
-      # Commented out as this should enabled the old work flow for I Belong.
-      # Needs to be restored when fix is in place.
+      # Prevent auto setting of certificate name to enable school name question on certificate for I Belong.
       # enrolment.certificate_name = enrolment.user.school_name
       # enrolment.save
     end
