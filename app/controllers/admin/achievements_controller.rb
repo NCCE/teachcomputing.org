@@ -52,11 +52,9 @@ module Admin
       if achievement.transition_to(:rejected)
         flash_messages = ["Evidence rejected"]
         achievement.activity.programmes.each do |programme|
-          enrolment = programme.user_programme_enrolments.find_by(user: achievement.user)
-          if enrolment.current_state == "pending"
-            if enrolment.transition_to(:enrolled)
-              flash_messages << "#{programme.title} rolled back"
-            end
+          enrolment = programme.user_programme_enrolments.in_state(:pending).find_by(user: achievement.user)
+          if enrolment&.transition_to(:enrolled)
+            flash_messages << "#{programme.title} rolled back"
           end
         end
         flash[:notice] = flash_messages.join("<br />")
