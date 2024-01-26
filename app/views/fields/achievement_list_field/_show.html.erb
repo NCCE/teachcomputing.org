@@ -2,6 +2,17 @@
 <div data-controller="achievement-list-field--achievement-list-field" class="achievement-list">
   <div class="filters">
     <div>
+      <%= label_tag :programme_filter, "Filter By Programme" %>
+      <%= select_tag :programme_filter, options_from_collection_for_select(Programme.all, :slug, :title), {
+        include_blank: "All",
+        data: {
+          "achievement-list-field--achievement-list-field-target": "programmeFilter",
+          action: "change->achievement-list-field--achievement-list-field#filter"
+        }
+      } %>
+    </div>
+
+    <div>
       <%= label_tag :state_filter, "Filter By State" %>
       <%= select_tag :state_filter, options_for_select(field.state_list), {
         include_blank: "All",
@@ -12,10 +23,13 @@
       } %>
     </div>
   </div>
-  <% field.data.includes(activity: [:programmes]).each do |achievement| %>
-    <div class="achievement"
-      data-achievement-list-field--achievement-list-field-target="achievement"
-      data-current-state="<%= achievement.current_state %>">
+  <% field.data.includes(activity: [:programmes]).order(updated_at: :desc).each do |achievement| %>
+  
+   <%= content_tag(:div, class: "achievement", data: {
+      programmes: achievement.activity.programmes.map{ _1.slug },
+      "achievement-list-field--achievement-list-field-target": "achievement",
+      "current-state": achievement.current_state
+   }) do  %>
       <div class="achievement-header">
         <h1><%= achievement.activity.title %></h1>
         <div><%= achievement.current_state %> <%= achievement.last_transition&.created_at&.strftime("%d/%m/%Y %H:%M") %></div>
@@ -44,6 +58,6 @@
           <div class="supplied-evidence"><%= achievement.self_verification_info %></div>
         </div>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
 </div>
