@@ -2,6 +2,9 @@ require "rails_helper"
 
 RSpec.describe Programmes::ALevel do
   subject { create(:a_level) }
+  let(:user) { create(:user) }
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: subject.id) }
+  let!(:assessment) { create(:assessment, programme: subject) }
 
   describe "#mailer" do
     it "returns the ALevelMailer" do
@@ -36,12 +39,36 @@ RSpec.describe Programmes::ALevel do
   end
 
   describe "#programme_objectives" do
-    let!(:assessment) { create(:assessment, programme: subject) }
     it "should return a AssessmentPassRequired followed by PAGs" do
       pags = create_list(:programme_activity_grouping, 2, programme: subject)
 
       expect(subject.programme_objectives.first).to be_a ProgrammeObjectives::AssessmentPassRequired
       expect(subject.programme_objectives[1..]).to match_array(pags)
+    end
+  end
+
+  describe "#user_qualifies_for_credly_badge" do
+    let(:setup_completed_programme) {
+      user_programme_enrolment
+      create_list(:programme_activity_grouping, 2, :with_activities, programme: subject)
+      create(:completed_assessment_attempt, user:, assessment:)
+      subject.programme_activity_groupings.each do |pag|
+        create(:completed_achievement, user:, activity: pag.activities.first)
+      end
+    }
+
+    it "should be false if not enrolled" do
+      expect(subject.user_qualifies_for_credly_badge?(user)).to be false
+    end
+
+    it "should return false if not meeting completion requirements" do
+      user_programme_enrolment
+      expect(subject.user_qualifies_for_credly_badge?(user)).to be false
+    end
+
+    it "should return true when complete" do
+      setup_completed_programme
+      expect(subject.user_qualifies_for_credly_badge?(user)).to be true
     end
   end
 end

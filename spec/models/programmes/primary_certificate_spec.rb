@@ -8,6 +8,16 @@ RSpec.describe Programmes::PrimaryCertificate do
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
   let(:community_5_activity) { create(:activity, :community_5) }
 
+  let(:setup_achievements_for_no_face_to_face) do
+    user_programme_enrolment
+    activities = [online_course, community_5_activity]
+
+    activities.each do |activity|
+      create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
+      create(:completed_achievement, user_id: user.id, activity_id: activity.id)
+    end
+  end
+
   let(:setup_achievements_for_partial_completion) do
     user_programme_enrolment
     activities = [online_course, face_to_face_course, community_5_activity]
@@ -75,6 +85,18 @@ RSpec.describe Programmes::PrimaryCertificate do
   describe "#auto_enrollable?" do
     it "should return true" do
       expect(programme.auto_enrollable?).to be true
+    end
+  end
+
+  describe "#user_qualifies_for_credly_badge" do
+    it "should return false if no face-to-face" do
+      setup_achievements_for_no_face_to_face
+      expect(programme.user_qualifies_for_credly_badge?(user)).to be false
+    end
+
+    it "should return true with face-to-face" do
+      setup_achievements_for_partial_completion
+      expect(programme.user_qualifies_for_credly_badge?(user)).to be true
     end
   end
 end

@@ -68,6 +68,7 @@ class Programme < ApplicationRecord
   end
 
   def user_meets_completion_requirement?(user)
+    return false if programme_objectives.empty?
     programme_objectives.all? { |group| group.user_complete?(user) }
   end
 
