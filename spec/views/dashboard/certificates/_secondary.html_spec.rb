@@ -31,6 +31,7 @@ RSpec.describe("dashboard/certificates/_secondary", type: :view) do
 
   context "when the user has completed the Secondary programme" do
     it "shows the certificate link" do
+      allow_any_instance_of(Programmes::SecondaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
       user_programme_enrolment.transition_to(:complete)
       render template: "dashboard/certificates/_secondary", locals: {programme: programme}
       expect(rendered).to have_link("View certificate", href: programme.path)

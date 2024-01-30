@@ -93,6 +93,7 @@ RSpec.describe Certificates::ALevelController do
       before do
         assessment
         enrolment
+        allow_any_instance_of(Programmes::ALevel).to receive(:user_meets_completion_requirement?).and_return(true)
         enrolment.transition_to(:complete)
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get "/certificate/a-level-certificate/complete"

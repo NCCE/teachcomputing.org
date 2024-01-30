@@ -10,17 +10,46 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
   end
 
   describe "guards" do
-    before do
-      user_programme_enrolment
-    end
+    let(:user) { create(:user) }
+    let(:programme) { create(:primary_certificate, :with_activity_groupings) }
+    let(:enrolment) { create(:user_programme_enrolment, user:, programme:) }
+
+    let(:setup_incomplete_enrolment) {
+      enrolment
+      pag = programme.programme_activity_groupings.first
+      act = pag.activities.first
+      create(:completed_achievement, user:, activity: act)
+    }
+
+    let(:setup_completed_enrolment) {
+      enrolment
+      programme.programme_activity_groupings.each do |pag|
+        act = pag.activities.first
+        create(:completed_achievement, user:, activity: act)
+      end
+    }
 
     it "can transition to complete when not flagged" do
+      setup_completed_enrolment
       expect(user_programme_enrolment.transition_to(:complete)).to eq true
     end
 
-    it "cannot transition to complete if flagged" do
-      user_programme_enrolment.update(flagged: true)
-      expect(user_programme_enrolment.transition_to(:complete)).to eq false
+    it "cannot transition to complete unless user has completed programme" do
+      setup_incomplete_enrolment
+      expect(enrolment.programme.user_meets_completion_requirement?(user)).to eq false
+      expect(enrolment.transition_to(:complete)).to eq false
+    end
+
+    it "cannot transition to complete if flagged even when complete" do
+      setup_completed_enrolment
+      enrolment.update(flagged: true)
+      expect(enrolment.transition_to(:complete)).to eq false
+    end
+
+    it "cannot transition to complete if flagged and not complete" do
+      setup_incomplete_enrolment
+      enrolment.update(flagged: true)
+      expect(enrolment.transition_to(:complete)).to eq false
     end
   end
 
