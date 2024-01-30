@@ -3,7 +3,7 @@
 class DatepickerComponent < ViewComponent::Base
   # flatpickr: options to be forwarded to flatpickr
   # options: override html options
-  def initialize(name, value = nil, flatpickr: {}, options: {}) 
+  def initialize(name, value = nil, flatpickr: {}, options: {})
     @name = name
     @value = value
     @flatpickr = flatpickr
@@ -14,7 +14,7 @@ class DatepickerComponent < ViewComponent::Base
     {
       data: {
         controller: "flatpickr",
-        flatpickr_options_value: @flatpickr.to_json,
+        flatpickr_options_value: @flatpickr.to_json
       },
       class: "govuk-input"
     }.deep_merge!(@options)
