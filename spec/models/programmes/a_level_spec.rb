@@ -49,12 +49,9 @@ RSpec.describe Programmes::ALevel do
 
   describe "#user_qualifies_for_credly_badge" do
     let(:setup_completed_programme) {
+      create(:programme_activity_grouping, :with_activities, programme: subject, required_for_completion: 0)
       user_programme_enrolment
-      create_list(:programme_activity_grouping, 2, :with_activities, programme: subject)
       create(:completed_assessment_attempt, user:, assessment:)
-      subject.programme_activity_groupings.each do |pag|
-        create(:completed_achievement, user:, activity: pag.activities.first)
-      end
     }
 
     it "should be false if not enrolled" do
