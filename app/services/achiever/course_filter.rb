@@ -164,6 +164,7 @@ module Achiever
       filter_strings.push(ERB::Util.html_escape(current_topic).to_s) if current_topic
       filter_strings.push(ERB::Util.html_escape(current_certificate).to_s) if current_certificate
       filter_strings.push(ERB::Util.html_escape(current_format).to_s) if current_format
+      filter_strings.push(ERB::Util.html_escape(current_date_range).to_s) if current_date_range
       filter_strings.push(current_hub) if current_hub
 
       return if filter_strings.empty?
@@ -226,7 +227,7 @@ module Achiever
           end
         end
 
-        courses.reject! { |c| c.occurrences.count.zero? }
+        courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
 
         filter_courses(courses)
       end

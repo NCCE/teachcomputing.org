@@ -36,6 +36,7 @@ export default class extends ApplicationController {
   openModifier = '';
   intervalId = null;
   locationFiltering = false;
+  rangeFiltering = false;
   didScroll = false;
 
   initialize() {
@@ -115,6 +116,10 @@ export default class extends ApplicationController {
     this.sendGTMEvent('click', 'Search location');
   }
 
+  dateRangeSearched(ev) {
+    this.sendGTMEvent('click', 'Search date range')
+  }
+
   sendSelectEvent(ev, type) {
     const { currentTarget } = ev;
     this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
@@ -144,6 +149,13 @@ export default class extends ApplicationController {
       gtmEvent = 'checked';
     }
     this.sendGTMEvent(gtmEvent, currentTarget.value);
+  }
+
+  addRangeFilter(ev) {
+    if (this.rangeFiltering === false) {
+      this.filterCount++;
+      this.rangeFiltering = true;
+    }
   }
 
   addLocationFilter(ev) {
@@ -260,6 +272,7 @@ export default class extends ApplicationController {
     this.toggleLoadingBar();
     this.resultsCountTarget.innerText = this.defaultResultsCountString;
     this.locationFiltering = false;
+    this.rangeFiltering = false;
   }
 
   openFilterForm() {
