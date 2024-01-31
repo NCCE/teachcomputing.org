@@ -1,4 +1,4 @@
-class BadgeAssignmentCheck < ApplicationJob
+class BadgeAssignmentCheckJob < ApplicationJob
   queue_as :default
 
   def perform(days_to_check: 31)
