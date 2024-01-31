@@ -428,11 +428,6 @@ RSpec.describe Programmes::CSAccelerator do
   end
 
   describe "#user_qualifies_for_credly_badge" do
-    it "user_meets_completion_requirement should fail as cs_accelerator has no programme_activity_groupings" do
-      expect(programme.programme_activity_groupings.count).to eq(0)
-      expect(programme.user_meets_completion_requirement?(user)).to be false
-    end
-
     it "should return false if no face-to-face" do
       setup_one_online_achievement
       expect(programme.user_qualifies_for_credly_badge?(user)).to be false

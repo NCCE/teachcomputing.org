@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Programmes::PrimaryCertificate do
   let(:user) { create(:user) }
-  let(:programme) { create(:primary_certificate) }
+  let(:programme) { create(:primary_certificate, :with_activity_groupings) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:face_to_face_course) { create(:activity, :stem_learning, credit: 20) }
