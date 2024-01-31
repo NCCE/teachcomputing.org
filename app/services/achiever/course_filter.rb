@@ -227,7 +227,7 @@ module Achiever
           end
         end
 
-        courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present?
+        courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present? || current_date_range.present?
 
         filter_courses(courses)
       end
