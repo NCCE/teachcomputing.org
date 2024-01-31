@@ -101,14 +101,7 @@ module Programmes
     end
 
     def user_qualifies_for_credly_badge?(user)
-      has_a_f2f_achievement = user
-        .achievements
-        .in_state(:complete)
-        .with_category(Activity::FACE_TO_FACE_CATEGORY)
-        .belonging_to_programme(self)
-        .count >= 1
-
-      user_enrolled?(user) && has_a_f2f_achievement
+      user_enrolled?(user) && user_has_f2f_achievement?(user)
     end
   end
 end
