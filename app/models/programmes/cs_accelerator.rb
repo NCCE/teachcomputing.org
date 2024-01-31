@@ -100,8 +100,12 @@ module Programmes
       true
     end
 
-    def user_qualifies_for_credly_badge?(user)
-      user_enrolled?(user) && user_has_f2f_achievement?(user)
+    def programme_objectives
+      [
+        ProgrammeObjectives::AssessmentPassRequired.new(
+          assessment: Assessment.find_by(programme: self)
+        )
+      ]
     end
   end
 end

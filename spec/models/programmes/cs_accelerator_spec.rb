@@ -6,6 +6,7 @@ RSpec.describe Programmes::CSAccelerator do
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
+  let!(:assessment) { create(:assessment, programme:, activity: exam_activity) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
