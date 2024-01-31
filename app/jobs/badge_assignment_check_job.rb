@@ -15,7 +15,7 @@ class BadgeAssignmentCheck < ApplicationJob
         next unless programme.user_qualifies_for_credly_badge?(user)
         next if user_has_badge?(user, programme)
 
-        missing_badges << [user.email, programme.title]
+        missing_badges << [user, programme]
       end
     end
 
