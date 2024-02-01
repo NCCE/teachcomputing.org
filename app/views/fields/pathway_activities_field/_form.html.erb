@@ -1,8 +1,8 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field">
-  <table id="table-for-pathway">
+<div class="field-unit__field" data-controller="pathway-activities-field--pathway-activities-field">
+  <table data-pathway-activities-field--pathway-activities-field-target="pathwayTable">
     <thead>
       <tr>
         <th>Programme</th>
@@ -27,8 +27,13 @@
   <div class="add-field">
     <p>Add to Pathway</p>
     <%= select_tag :new_pathway, grouped_options_for_select(field.new_pathway_options),
-                { prompt: 'Select Pathway' } %>
-    <button data-form-id="<%= f.options[:html][:id] %>" type="button" id='pathway-add-new'>Add</button>
+      { 
+        prompt: 'Select Pathway',
+        data: {
+          'pathway-activities-field--pathway-activities-field-target': 'pathwaySelect'
+        }
+      } %>
+    <button data-action="click->pathway-activities-field--pathway-activities-field#addNewPathway" type="button">Add</button>
   </div>
 </div>
 

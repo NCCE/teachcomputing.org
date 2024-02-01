@@ -2,8 +2,8 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<div class="field-unit__field">
-  <table id="activity-programme-table">
+<div class="field-unit__field" data-controller="programme-activities-field--programme-activities-field">
+  <table data-programme-activities-field--programme-activities-field-target="programmeTable">
     <thead>
       <tr>
         <th>Programme</th>
@@ -31,7 +31,14 @@
   <div class="assign-activity-to-programme">
     <p>Add to Programme</p>
     <%= select_tag :new_programme_assignment, options_for_select(field.programme_select_options),
-                { prompt: 'Select Programme' } %>
-    <button data-form-id="<%= f.options[:html][:id] %>" type="button" id='assign-activity-to-programme'>Add</button>
+      { 
+        prompt: 'Select Programme',
+        data: {
+          "programme-activities-field--programme-activities-field-target": "programmeSelect"
+        } 
+      } %>
+    <button type="button" 
+      data-action="click->programme-activities-field--programme-activities-field#addNewProgramme"
+    >Add</button>
   </div>
 </div>
