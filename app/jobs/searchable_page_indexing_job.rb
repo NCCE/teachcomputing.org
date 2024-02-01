@@ -8,13 +8,13 @@ class SearchablePageIndexingJob < ApplicationJob
     now = DateTime.now
 
     ghost_posts = ghost.get_posts
-    ghost_post_documents = ghost_posts['posts'].map do |post|
+    ghost_post_documents = ghost_posts["posts"].map do |post|
       {
         type: SearchablePages::GhostPost.name,
-        title: post['title'],
-        excerpt: post['custom_excerpt'] || post['excerpt'],
-        metadata: { slug: post['slug'] },
-        published_at: post['published_at'],
+        title: post["title"],
+        excerpt: post["custom_excerpt"] || post["excerpt"],
+        metadata: {slug: post["slug"]},
+        published_at: post["published_at"],
         created_at: now,
         updated_at: now
       }
@@ -25,13 +25,13 @@ class SearchablePageIndexingJob < ApplicationJob
 
     ghost_pages = ghost.get_pages
 
-    ghost_page_documents = ghost_pages['pages'].map do |post|
+    ghost_page_documents = ghost_pages["pages"].map do |post|
       {
         type: SearchablePages::GhostPage.name,
-        title: post['title'],
-        excerpt: post['custom_excerpt'] || post['excerpt'],
-        metadata: { slug: post['slug'] },
-        published_at: post['published_at'],
+        title: post["title"],
+        excerpt: post["custom_excerpt"] || post["excerpt"],
+        metadata: {slug: post["slug"]},
+        published_at: post["published_at"],
         created_at: now,
         updated_at: now
       }
@@ -46,8 +46,8 @@ class SearchablePageIndexingJob < ApplicationJob
       {
         type: SearchablePages::Course.name,
         title: course.title,
-        excerpt: stripped_summary(course.meta_description) || '',
-        metadata: { stem_activity_code: course.activity_code },
+        excerpt: stripped_summary(course.meta_description) || "",
+        metadata: {stem_activity_code: course.activity_code},
         published_at: nil,
         created_at: now,
         updated_at: now
@@ -64,7 +64,7 @@ class SearchablePageIndexingJob < ApplicationJob
         type: SearchablePages::SitePage.name,
         title: site_page[:title],
         excerpt: site_page[:excerpt],
-        metadata: { url: site_page[:path] },
+        metadata: {url: site_page[:path]},
         published_at: nil,
         created_at: now,
         updated_at: now

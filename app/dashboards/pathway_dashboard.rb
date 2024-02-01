@@ -1,6 +1,4 @@
-require 'administrate/base_dashboard'
-
-class PathwayDashboard < Administrate::BaseDashboard
+class PathwayDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,14 +9,14 @@ class PathwayDashboard < Administrate::BaseDashboard
     pathway_activities: Field::HasMany,
     programme: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    range: Field::Select.with_options(searchable: false, collection: { '1..10': '[1, 10)', '11..20': '[11, 20)' }),
+    range: Field::Select.with_options(searchable: false, collection: {"1..10": "[1, 10)", "11..20": "[11, 20)"}),
     title: Field::String,
     slug: Field::String,
     order: Field::Number,
     legacy: Field::Boolean,
     description: Field::Text,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    created_at: FORMATTED_DATE_TIME,
+    updated_at: FORMATTED_DATE_TIME
   }.freeze
 
   # COLLECTION_ATTRIBUTES

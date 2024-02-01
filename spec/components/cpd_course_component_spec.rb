@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CpdCourseComponent, type: :component do
   let(:user) { create(:user) }
-  let(:stem_activity_code) { 'CPXXX' }
+  let(:stem_activity_code) { "CPXXX" }
   let(:activity) { create(:activity, stem_activity_code:) }
   let(:achievement) { nil }
   let(:last_margin) { true }
@@ -22,58 +22,58 @@ RSpec.describe CpdCourseComponent, type: :component do
     )
   end
 
-  context 'when last_margin is true' do
-    it 'shouldn\'t have the no-last-margin class' do
-      expect(page).not_to have_css('.courses__course-no-last-margin')
+  context "when last_margin is true" do
+    it "shouldn't have the no-last-margin class" do
+      expect(page).not_to have_css(".courses__course-no-last-margin")
     end
   end
 
-  context 'when last_margin is false' do
+  context "when last_margin is false" do
     let(:last_margin) { false }
 
-    it 'shouldn\'t have the no-last-margin class' do
-      expect(page).to have_css('.ncce-pathway-courses__course-no-last-margin')
+    it "shouldn't have the no-last-margin class" do
+      expect(page).to have_css(".ncce-pathway-courses__course-no-last-margin")
     end
   end
 
-  context 'when stem_activity_code is not found' do
-    it 'shouldn\'t display the date' do
-      expect(page).not_to have_css('.icon-clock')
+  context "when stem_activity_code is not found" do
+    it "shouldn't display the date" do
+      expect(page).not_to have_css(".icon-clock")
     end
   end
 
-  context 'when stem_activity_code is found' do
-    let(:stem_activity_code) { 'CP228' }
-    it 'shouldn\'t display the date' do
-      expect(page).to have_css('.icon-clock')
+  context "when stem_activity_code is found" do
+    let(:stem_activity_code) { "CP228" }
+    it "shouldn't display the date" do
+      expect(page).to have_css(".icon-clock")
     end
   end
 
-  context 'when there is no achievement found' do
-    it 'shouldn\'t display a status' do
-      expect(page).not_to have_css('.ncce-pathway-courses__status')
+  context "when there is no achievement found" do
+    it "shouldn't display a status" do
+      expect(page).not_to have_css(".ncce-pathway-courses__status")
     end
   end
 
-  context 'when there is an in progress achievement' do
+  context "when there is an in progress achievement" do
     let(:achievement) { create(:achievement, user:, activity:) }
 
-    it 'should display an in progress status' do
-      expect(page).to have_css('.ncce-pathway-courses__status', text: 'In progress')
+    it "should display an in progress status" do
+      expect(page).to have_css(".ncce-pathway-courses__status", text: "In progress")
     end
   end
 
-  context 'when there is no stem_activity_code' do
+  context "when there is no stem_activity_code" do
     let(:stem_activity_code) { nil }
 
-    it 'should not display the link' do
-      expect(page).not_to have_css('.ncce-link')
+    it "should not display the link" do
+      expect(page).not_to have_css(".ncce-link")
     end
   end
 
-  context 'when there is a stem_activity_code' do
-    it 'should display the link' do
-      expect(page).to have_css('.ncce-link')
+  context "when there is a stem_activity_code" do
+    it "should display the link" do
+      expect(page).to have_css(".ncce-link")
     end
   end
 end

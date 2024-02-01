@@ -1,53 +1,49 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe MixedCardsComponent, type: :component do
-
   let(:file_card) do
     {
-      name: 'Example file 1',
-      file: 'https://www.example.com/',
-      type: 'JPG',
-      size: '1 Megabyte',
-      created: '14 Oct 2021'
+      name: "Example file 1",
+      file: "https://www.example.com/",
+      type: "JPG",
+      size: "1 Megabyte",
+      created: "14 Oct 2021"
     }
   end
 
   let(:link_card) do
     {
-      title: 'Testing',
-      link: 'https://www.example.com'
+      title: "Testing",
+      link: "https://www.example.com"
     }
   end
 
-  describe 'with only external_link_card defined' do
+  describe "with only external_link_card defined" do
     before do
       render_inline(described_class.new(cards: [
-        { type: :external_link, details: link_card }
+        {type: :external_link, details: link_card}
       ]))
     end
 
-    it 'renders with the expected link' do
-      expect(page).to have_link('Testing', href: 'https://www.example.com')
+    it "renders with the expected link" do
+      expect(page).to have_link("Testing", href: "https://www.example.com")
     end
   end
 
-  describe 'should render all with mixed types' do
-
+  describe "should render all with mixed types" do
     before do
       render_inline(described_class.new(cards: [
-        { type: :external_link, details: link_card },
-        { type: :file, details: file_card}
+        {type: :external_link, details: link_card},
+        {type: :file, details: file_card}
       ]))
     end
 
-    it 'renders with the expected external link' do
-      expect(page).to have_link('Testing', href: 'https://www.example.com')
+    it "renders with the expected external link" do
+      expect(page).to have_link("Testing", href: "https://www.example.com")
     end
 
-    it 'renders with the expected file card' do
-      expect(page).to have_link('Example file 1', href: 'https://www.example.com/')
+    it "renders with the expected file card" do
+      expect(page).to have_link("Example file 1", href: "https://www.example.com/")
     end
-
   end
-
 end

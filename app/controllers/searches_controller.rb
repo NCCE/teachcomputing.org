@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
 
   helper_method :sort_options
 
@@ -8,16 +8,18 @@ class SearchesController < ApplicationController
 
     @results = SiteSearch.search(@query, order: sort_symbol)
 
-    @pagy, @paged_results = pagy(@results)
+    begin
+      @pagy, @paged_results = pagy(@results)
+    rescue Pagy::OverflowError
+      redirect_to search_path(q: @query)
+    end
   end
 
   private
 
   def sort_symbol
-    if params[:order].in? ['published_newest', 'published_oldest']
+    if params[:order].in? ["published_newest", "published_oldest"]
       params[:order].to_sym
-    else
-      nil
     end
   end
 
@@ -25,15 +27,15 @@ class SearchesController < ApplicationController
     return @sort_options if @sort_options.present?
 
     @sort_options = {
-      'default' => 'Relevance',
-      'published_newest' => 'Newest First',
-      'published_oldest' => 'Oldest First'
+      "default" => "Relevance",
+      "published_newest" => "Newest First",
+      "published_oldest" => "Oldest First"
     }
 
     if params[:order].in? @sort_options.keys
       @sort_options = {
         params[:order] => @sort_options[params[:order]],
-        **@sort_options.excluding(params[:order]),
+        **@sort_options.excluding(params[:order])
       }
     end
 

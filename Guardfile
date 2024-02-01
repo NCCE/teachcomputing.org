@@ -1,7 +1,7 @@
 # configures the guard gem
 
-guard :rspec, cmd: 'bundle exec rspec' do
-  require 'guard/rspec/dsl'
+guard :rspec, cmd: "bundle exec rspec" do
+  require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
   # RSpec files
@@ -28,12 +28,12 @@ guard :rspec, cmd: 'bundle exec rspec' do
   end
 
   # Rails config changes
-  watch(rails.spec_helper)     { rspec.spec_dir }
+  watch(rails.spec_helper) { rspec.spec_dir }
   # watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
-  watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
+  watch(rails.app_controller) { "#{rspec.spec_dir}/controllers" }
 
   # Capybara features specs
-  watch(rails.view_dirs) { |m| rspec.spec.call(m[0].sub('app/', '').sub('.erb', '').to_s) }
+  watch(rails.view_dirs) { |m| rspec.spec.call(m[0].sub("app/", "").sub(".erb", "").to_s) }
   # watch(rails.layouts) do |m|
   #   puts "rails.layouts #{m.inspect}"
   #   rspec.spec.call("views/layouts//#{m[1]}")
@@ -43,7 +43,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(%r{^app/jobs/(.+)\.rb$}) { |m| "spec/jobs/#{m[1]}_spec.rb" }
   # FactoryBot factories
   begin
-    require 'active_support/inflector'
+    require "active_support/inflector"
     watch(%r{^spec/factories/(.+)\.rb$}) do |m|
       ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"]
     end

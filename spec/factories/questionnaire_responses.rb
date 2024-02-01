@@ -13,11 +13,11 @@ FactoryBot.define do
     end
 
     trait :score_of_15 do
-      answers { { '1' => 0, '2' => 5, '3' => 5, '4' => 5 } }
+      answers { {"1" => 0, "2" => 5, "3" => 5, "4" => 5} }
     end
 
     trait :score_of_1 do
-      answers { { '1' => 1 } }
+      answers { {"1" => 1} }
     end
 
     factory :primary_enrolment_score_15, traits: %i[primary_enrolment_questionnaire_response score_of_15]

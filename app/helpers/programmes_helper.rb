@@ -1,6 +1,6 @@
 module ProgrammesHelper
   def certificate_number(certificate_number, passed_date)
-    "#{passed_date.strftime('%Y%m')}-#{format('%03d', certificate_number || 0)}"
+    "#{passed_date.strftime("%Y%m")}-#{format("%03d", certificate_number || 0)}"
   end
 
   def index_to_word_ordinal(index = 0)
@@ -20,15 +20,13 @@ module ProgrammesHelper
   end
 
   def csa_programme_title
-    'KS3 and GCSE Computer Science subject knowledge'
+    "KS3 and GCSE Computer Science subject knowledge"
   end
 
-  def display_programme_tag(programme)
-    if programme == 'Secondary' || programme == 'Primary'
-      "#{programme} certificate"
-    else
-      programme
-    end
+  def display_programme_tag(programme_slug)
+    programme = Programme.find_by(slug: programme_slug)
+    return programme.certificate_name if programme
+    programme_slug.titlecase
   end
 
   def programme_pathway_card_data(programme, exclude: nil)

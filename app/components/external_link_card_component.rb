@@ -2,7 +2,7 @@
 
 class ExternalLinkCardComponent < ViewComponent::Base
   def initialize(external_link_card:, title: nil, link: nil)
-    @title = title ||= external_link_card[:title]
+    @title = title || external_link_card[:title]
     @link = link || external_link_card[:link]
   end
 

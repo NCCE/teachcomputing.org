@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ProgrammeActivityGroupings::CreditCounted, type: :model do
   let(:programme) { create(:programme) }
@@ -15,22 +15,22 @@ RSpec.describe ProgrammeActivityGroupings::CreditCounted, type: :model do
   end
   let(:user) { create(:user) }
 
-  describe '#user_complete?' do
+  describe "#user_complete?" do
     before do
       programme_activity_grouping
       activities
       user
     end
 
-    context 'when the user has not completed the required number of credits' do
-      it 'returns false' do
+    context "when the user has not completed the required number of credits" do
+      it "returns false" do
         create(:achievement, user:, activity: activities.first.activity).transition_to :complete
         expect(programme_activity_grouping.user_complete?(user)).to be false
       end
     end
 
-    context 'when the user has completed a number of credits equal to the required credits' do
-      it 'returns true' do
+    context "when the user has completed a number of credits equal to the required credits" do
+      it "returns true" do
         create(:achievement, user:, activity: activities.first.activity).transition_to :complete
         create(:achievement, user:, activity: activities.second.activity).transition_to :complete
         create(:achievement, user:, activity: activities.third.activity).transition_to :complete
@@ -38,8 +38,8 @@ RSpec.describe ProgrammeActivityGroupings::CreditCounted, type: :model do
       end
     end
 
-    context 'when the user has completed a number of credits greader than to the required credits' do
-      it 'returns true' do
+    context "when the user has completed a number of credits greader than to the required credits" do
+      it "returns true" do
         create(:achievement, user:, activity: activities.first.activity).transition_to :complete
         create(:achievement, user:, activity: activities.second.activity).transition_to :complete
         create(:achievement, user:, activity: activities.third.activity).transition_to :complete

@@ -16,9 +16,9 @@
 # end
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym 'CS'
-  inflect.acronym 'CSA'
-  inflect.acronym 'GBIC'
-  inflect.irregular 'is', 'are'
-  inflect.irregular 'feedback', 'feedback'
+  inflect.acronym "CS"
+  inflect.acronym "CSA"
+  inflect.acronym "GBIC"
+  inflect.irregular "is", "are"
+  inflect.irregular "feedback", "feedback"
 end

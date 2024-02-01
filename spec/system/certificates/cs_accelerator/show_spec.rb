@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe('CS Accelerator certificate page') do
-  let(:user) { create(:user, email: 'web@teachcomputing.org') }
+RSpec.describe("CS Accelerator certificate page") do
+  let(:user) { create(:user, email: "web@teachcomputing.org") }
   let(:programme) { create(:cs_accelerator) }
   let!(:assessment) { create(:assessment, programme_id: programme.id) }
   let!(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
@@ -19,37 +19,37 @@ RSpec.describe('CS Accelerator certificate page') do
     visit cs_accelerator_certificate_path
   end
 
-  describe 'feedback form' do
-    it 'renders the form' do
-      expect(page).to have_content('Help us improve our certificate experience')
+  describe "feedback form" do
+    it "renders the form" do
+      expect(page).to have_content("Help us improve our certificate experience")
     end
 
-    it 'shows success message when feedback submitted' do
-      fill_in id: 'feedback_comment_comment', with: 'Feedback about things'
-      click_on 'Submit'
-      expect(page).to have_content('Your feedback was successfully submitted')
+    it "shows success message when feedback submitted" do
+      fill_in id: "feedback_comment_comment", with: "Feedback about things"
+      click_on "Submit"
+      expect(page).to have_content("Your feedback was successfully submitted")
     end
   end
 
-  describe 'test attempts' do
-    it 'renders the exam conditions form' do
-      expect(page).to have_content('I have read and accept the full exam conditions.')
+  describe "test attempts" do
+    it "renders the exam conditions form" do
+      expect(page).to have_content("I have read and accept the full exam conditions.")
     end
 
-    describe 'the initial state of the form' do
-      it 'has a disabled checkbox' do
-        expect(page).to have_unchecked_field('assessment_attempt[accepted_conditions]', visible: :hidden)
+    describe "the initial state of the form" do
+      it "has a disabled checkbox" do
+        expect(page).to have_unchecked_field("assessment_attempt[accepted_conditions]", visible: :hidden)
       end
 
-      it 'has a disabled submit button' do
-        expect(page).to have_button('commit', disabled: true)
+      it "has a disabled submit button" do
+        expect(page).to have_button("commit", disabled: true)
       end
     end
 
-    describe 'the state of the form after conditions are accepted' do
-      it 'has an enabled submit button' do
-        check('assessment_attempt[accepted_conditions]', visible: false)
-        expect(page).to have_button('commit', disabled: false)
+    describe "the state of the form after conditions are accepted" do
+      it "has an enabled submit button" do
+        check("assessment_attempt[accepted_conditions]", visible: false)
+        expect(page).to have_button("commit", disabled: false)
       end
     end
   end

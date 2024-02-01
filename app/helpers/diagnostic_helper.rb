@@ -10,41 +10,41 @@ module DiagnosticHelper
   def cs_accelerator_questions(question)
     shared_answers = [
       {
-        text: 'Not at all confident',
+        text: "Not at all confident",
         value: 1
       },
       {
-        text: 'A little confident',
+        text: "A little confident",
         value: 2
       },
       {
-        text: 'Fairly confident',
+        text: "Fairly confident",
         value: 3
       },
       {
-        text: 'Very confident',
+        text: "Very confident",
         value: 4
       }
     ]
 
     questions = {
       question_1: {
-        text: 'What is your computer science curriculum subject knowledge confidence level?',
+        text: "What is your computer science curriculum subject knowledge confidence level?",
         answers: [
           {
-            text: 'Not at all confident',
+            text: "Not at all confident",
             value: 1
           },
           {
-            text: 'Confident up to KS3',
+            text: "Confident up to KS3",
             value: 2
           },
           {
-            text: 'Confident up to KS4',
+            text: "Confident up to KS4",
             value: 3
           },
           {
-            text: 'Confident teaching beyond KS4',
+            text: "Confident teaching beyond KS4",
             value: 4
           }
         ],

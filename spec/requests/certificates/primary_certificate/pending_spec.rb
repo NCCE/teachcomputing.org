@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
@@ -7,8 +7,8 @@ RSpec.describe Certificates::PrimaryCertificateController do
   let(:assessment) { create(:assessment, programme_id: programme.id) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
-           user_id: user.id,
-           programme_id: programme.id)
+      user_id: user.id,
+      programme_id: programme.id)
   end
 
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
@@ -33,44 +33,44 @@ RSpec.describe Certificates::PrimaryCertificateController do
     face_to_face_achievement
   end
 
-  describe '#show' do
+  describe "#show" do
     subject { get pending_primary_certificate_path }
 
-    context 'when user is logged in' do
+    context "when user is logged in" do
       before do
         programme
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
 
-      context 'when user is not enrolled' do
-        it 'redirects if not enrolled' do
+      context "when user is not enrolled" do
+        it "redirects if not enrolled" do
           subject
           expect(response).to redirect_to(primary_path)
         end
       end
 
-      context 'when user is enrolled' do
+      context "when user is enrolled" do
         before do
           setup_achievements_for_programme
         end
 
-        it 'renders the correct template' do
+        it "renders the correct template" do
           subject
           expect(response).to render_template(:pending)
         end
 
-        it 'assigns the correct programme' do
+        it "assigns the correct programme" do
           subject
           expect(assigns(:programme)).to eq(Programme.primary_certificate)
         end
 
-        it 'asks client not to cache a private page' do
+        it "asks client not to cache a private page" do
           subject
-          expect(response.headers['cache-control']).to eq('no-store')
+          expect(response.headers["cache-control"]).to eq("no-store")
         end
 
-        it 'redirects to complete when course complete' do
+        it "redirects to complete when course complete" do
           user_programme_enrolment.transition_to(:complete)
           subject
           expect(response).to redirect_to(complete_primary_certificate_path)
@@ -78,12 +78,12 @@ RSpec.describe Certificates::PrimaryCertificateController do
       end
     end
 
-    describe 'while logged out' do
+    describe "while logged out" do
       before do
         subject
       end
 
-      it 'redirects to login' do
+      it "redirects to login" do
         expect(response).to redirect_to(/register/)
       end
     end

@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :primary_certificate, class: 'Programmes::PrimaryCertificate' do
-    title { 'Teach primary computing' }
-    slug { 'primary-certificate' }
-    description { 'This is the Primary programme' }
+  factory :primary_certificate, class: "Programmes::PrimaryCertificate" do
+    title { "Teach primary computing" }
+    slug { "primary-certificate" }
+    description { "This is the Primary programme" }
     enrollable { true }
     pathways { create_list(:pathway, 3) }
 

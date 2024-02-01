@@ -2,7 +2,7 @@ class CacheInvalidator
   def initialize(resource:, identifier:)
     @resource = resource
     @identifier = identifier
-    @namespace = 'curriculum'
+    @namespace = "curriculum"
   end
 
   def run
@@ -14,25 +14,25 @@ class CacheInvalidator
 
   private
 
-    def clear_multiple_keys
-      @identifier.each do |identifier|
-        Rails.cache.delete(resource_single_key(identifier), namespace: @namespace)
-      end
+  def clear_multiple_keys
+    @identifier.each do |identifier|
+      Rails.cache.delete(resource_single_key(identifier), namespace: @namespace)
     end
+  end
 
-    def multiple_keys?
-      @identifier.is_a? Array
-    end
+  def multiple_keys?
+    @identifier.is_a? Array
+  end
 
-    def resource_single_key(identifier = nil)
-      "#{@resource}--#{identifier || @identifier}"
-    end
+  def resource_single_key(identifier = nil)
+    "#{@resource}--#{identifier || @identifier}"
+  end
 
-    def resource_list_key
-      "#{@resource}--all"
-    end
+  def resource_list_key
+    "#{@resource}--all"
+  end
 
-    def resource_list_cached?
-      @resource == 'key_stage'
-    end
+  def resource_list_cached?
+    @resource == "key_stage"
+  end
 end

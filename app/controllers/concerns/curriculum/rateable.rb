@@ -67,13 +67,13 @@ module Curriculum
         response = client.add_positive_rating(
           id:,
           stem_achiever_contact_no: achiever_contact_no,
-          fields: 'id'
+          fields: "id"
         )
       when :negative
         response = client.add_negative_rating(
           id:,
           stem_achiever_contact_no: achiever_contact_no,
-          fields: 'id'
+          fields: "id"
         )
       else
         raise ArgumentError, "Unexpected polarity: #{polarity}"
@@ -86,7 +86,7 @@ module Curriculum
       raw_cookie = cookies.encrypted[:ratings]
       ratings = raw_cookie.nil? ? [] : JSON.parse(raw_cookie)
       ratings << id
-      cookies.encrypted[:ratings] = { value: JSON.generate(ratings), expires: 1.month, httponly: true, secure: Rails.configuration.secure_cookies }
+      cookies.encrypted[:ratings] = {value: JSON.generate(ratings), expires: 1.month, httponly: true, secure: Rails.configuration.secure_cookies}
     end
   end
 end

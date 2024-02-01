@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :i_belong, class: 'Programmes::IBelong' do
-    title { 'I Belong: encouraging girls into computer science' }
-    slug { 'i-belong' }
-    description { 'Encouraging girls into computer science' }
+  factory :i_belong, class: "Programmes::IBelong" do
+    title { "I Belong: encouraging girls into computer science" }
+    slug { "i-belong" }
+    description { "Encouraging girls into computer science" }
     enrollable { true }
 
     trait :with_activity_groupings do
@@ -12,4 +12,3 @@ FactoryBot.define do
     end
   end
 end
-

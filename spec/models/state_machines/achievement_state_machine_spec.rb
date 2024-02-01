@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe StateMachines::AchievementStateMachine do
   let(:achievement) { create(:achievement) }
@@ -9,36 +9,36 @@ RSpec.describe StateMachines::AchievementStateMachine do
   let(:community_achievement) { create(:achievement, activity: create(:activity, category: Activity::COMMUNITY_CATEGORY)) }
   let(:diagnostic_achievement) { create(:achievement, activity: create(:activity, category: Activity::DIAGNOSTIC_CATEGORY)) }
 
-  describe 'guards' do
-    it 'can transition from state enrolled to allowed states' do
+  describe "guards" do
+    it "can transition from state enrolled to allowed states" do
       %i[in_progress complete dropped].each do |allowed_state|
         expect { create(:achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
     end
 
-    it 'can transition from state in_progress to allowed states' do
+    it "can transition from state in_progress to allowed states" do
       %i[complete dropped].each do |allowed_state|
         expect { create(:in_progress_achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
     end
 
-    it 'can transition from state dropped to other states' do
+    it "can transition from state dropped to other states" do
       %i[enrolled in_progress complete].each do |allowed_state|
         expect { create(:dropped_achievement).state_machine.transition_to!(allowed_state) }
           .not_to raise_error
       end
     end
 
-    it 'cannot transition from state in_progress to other states' do
+    it "cannot transition from state in_progress to other states" do
       [:enrolled].each do |disallowed_state|
         expect { create(:in_progress_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
       end
     end
 
-    it 'cannot transition from state complete to other states' do
+    it "cannot transition from state complete to other states" do
       %i[enrolled in_progress dropped].each do |disallowed_state|
         expect { create(:completed_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
@@ -46,8 +46,8 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
   end
 
-  describe 'after_transition hooks' do
-    it 'queues CompleteAchievementEmailJob when state complete for the expected categories' do
+  describe "after_transition hooks" do
+    it "queues CompleteAchievementEmailJob when state complete for the expected categories" do
       [online_achievement, face_to_face_achievement].each do |allowed_achievement|
         expect { allowed_achievement.transition_to(:complete) }.to have_enqueued_job(CompleteAchievementEmailJob)
       end
@@ -59,7 +59,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
       end
     end
 
-    it 'calls issue_badge' do
+    it "calls issue_badge" do
       expect { face_to_face_achievement.transition_to(:complete) }.to have_enqueued_job(IssueBadgeJob)
     end
   end

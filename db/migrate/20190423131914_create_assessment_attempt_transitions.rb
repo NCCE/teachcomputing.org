@@ -13,13 +13,13 @@ class CreateAssessmentAttemptTransitions < ActiveRecord::Migration[5.2]
     add_foreign_key :assessment_attempt_transitions, :assessment_attempts
 
     add_index(:assessment_attempt_transitions,
-              %i[assessment_attempt_id sort_key],
-              unique: true,
-              name: 'index_assessment_attempt_transitions_parent_sort')
+      %i[assessment_attempt_id sort_key],
+      unique: true,
+      name: "index_assessment_attempt_transitions_parent_sort")
     add_index(:assessment_attempt_transitions,
-              %i[assessment_attempt_id most_recent],
-              unique: true,
-              where: 'most_recent',
-              name: 'index_assessment_attempt_transitions_parent_most_recent')
+      %i[assessment_attempt_id most_recent],
+      unique: true,
+      where: "most_recent",
+      name: "index_assessment_attempt_transitions_parent_most_recent")
   end
 end

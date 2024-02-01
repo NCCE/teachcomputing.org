@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe('certificates/primary_certificate/show', type: :view) do
+RSpec.describe("certificates/primary_certificate/show", type: :view) do
   let(:user) { create(:user) }
   let(:primary_certificate) { create(:primary_certificate) }
-  let(:pathway) { create(:pathway, programme: primary_certificate, title: 'Developing', pdf_link: 'developing.pdf') }
-  let(:pathway_2) { create(:pathway, programme: primary_certificate, title: 'Specialising', pdf_link: 'specialising.pdf') }
+  let(:pathway) { create(:pathway, programme: primary_certificate, title: "Developing", pdf_link: "developing.pdf") }
+  let(:pathway_2) { create(:pathway, programme: primary_certificate, title: "Specialising", pdf_link: "specialising.pdf") }
   let(:pathways) { [pathway, pathway_2] }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: primary_certificate) }
   let(:online_development_group) { create(:programme_activity_grouping, :with_activities, sort_key: 3, community: true, programme: primary_certificate) }
@@ -12,12 +12,11 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
   let(:community_activity) { create(:activity, :community) }
   let(:upe) { create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id) }
 
-
   before do
     assign(:programme, primary_certificate)
   end
 
-  describe 'when the user has a pathway' do
+  describe "when the user has a pathway" do
     before do
       assign(:current_user, user)
 
@@ -38,44 +37,44 @@ RSpec.describe('certificates/primary_certificate/show', type: :view) do
       render
     end
 
-    it 'has a recommendation list' do
-      expect(rendered).to have_css('.recommended-courses-wrapper .expander__button', text: 'Courses based on your pathway')
+    it "has a recommendation list" do
+      expect(rendered).to have_css(".recommended-courses-wrapper .expander__button", text: "Courses based on your pathway")
     end
 
-    it 'has hidden activities' do
-      expect(rendered).not_to have_text('View more activity options')
+    it "has hidden activities" do
+      expect(rendered).not_to have_text("View more activity options")
     end
 
-    describe 'the pathway selector' do
-      it 'shows the current pathway' do
-        expect(rendered).to have_css('.ncce-pathway-prompt', text: 'Developing (PDF)')
+    describe "the pathway selector" do
+      it "shows the current pathway" do
+        expect(rendered).to have_css(".ncce-pathway-prompt", text: "Developing (PDF)")
       end
 
-      it 'has the details expander' do
-        expect(rendered).to have_css('.ncce-details__summary-text', text: 'Not sure this is the right pathway for you?')
+      it "has the details expander" do
+        expect(rendered).to have_css(".ncce-details__summary-text", text: "Not sure this is the right pathway for you?")
       end
 
-      it 'has a list of pathways' do
-        expect(rendered).to have_link('Specialising', href: 'specialising.pdf', visible: :hidden)
+      it "has a list of pathways" do
+        expect(rendered).to have_link("Specialising", href: "specialising.pdf", visible: :hidden)
       end
 
-      it 'has an select list' do
-        expect(rendered).to have_css('.ncce-pathway-aside__select', visible: :hidden)
+      it "has an select list" do
+        expect(rendered).to have_css(".ncce-pathway-aside__select", visible: :hidden)
       end
 
-      it 'has a button' do
-        expect(rendered).to have_button('Change pathway', visible: :hidden)
+      it "has a button" do
+        expect(rendered).to have_button("Change pathway", visible: :hidden)
       end
     end
 
-    context 'when the user has a primary_pathway_migrated messages flag' do
+    context "when the user has a primary_pathway_migrated messages flag" do
       let(:upe) { create(:user_programme_enrolment, user_id: user.id, programme_id: primary_certificate.id, pathway_id: pathway.id, message_flags_primary_pathway_migrated: true) }
 
-      it 'has in info modal with the message on it' do
-        expect(rendered).to have_css('.govuk-heading-m', text: 'Updates to your Teach primary computing certificate pathway')
+      it "has in info modal with the message on it" do
+        expect(rendered).to have_css(".govuk-heading-m", text: "Updates to your Teach primary computing certificate pathway")
       end
 
-      it 'has a close button' do
+      it "has a close button" do
         expect(rendered).to have_css('a[href="/user_programme_enrolments/destroy_message_flags_primary_pathway_migrated"]')
       end
     end

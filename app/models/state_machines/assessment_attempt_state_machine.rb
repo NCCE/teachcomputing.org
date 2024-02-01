@@ -12,7 +12,7 @@ class StateMachines::AssessmentAttemptStateMachine
   transition from: STATE_COMMENCED, to: STATE_PASSED
   transition from: STATE_COMMENCED, to: STATE_FAILED
 
-  after_transition(to: :failed) do |assessment_attempt, _transition|
+  after_transition(to: :passed) do |assessment_attempt, _transition|
     IssueBadgeJob.perform_later(assessment_attempt:)
   end
 end

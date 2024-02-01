@@ -1,7 +1,7 @@
 class AssessmentAttemptTransition < ApplicationRecord
   belongs_to :assessment_attempt, inverse_of: :assessment_attempt_transitions
 
-  validates :to_state, inclusion: { in: StateMachines::AssessmentAttemptStateMachine.states }
+  validates :to_state, inclusion: {in: StateMachines::AssessmentAttemptStateMachine.states}
 
   after_destroy :update_most_recent, if: :most_recent?
 

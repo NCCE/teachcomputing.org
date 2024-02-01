@@ -9,4 +9,3 @@ class MixedCardsComponent < ViewComponent::Base
     @cards.present?
   end
 end
-

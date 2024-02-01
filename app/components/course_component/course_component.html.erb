@@ -44,7 +44,7 @@
           <% end %>
       <% end %>
       <% @course.programmes.each do |programme| %>
-        <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= get_course_tag programme %></strong>
+        <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= display_programme_tag programme %></strong>
       <% end %>
   <% end %>
 </div>

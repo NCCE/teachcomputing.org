@@ -4,8 +4,8 @@ class CourseActivityComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
   delegate :activity_icon_class,
-           :activity_type,
-           to: :helpers
+    :activity_type,
+    to: :helpers
 
   def initialize(objective:, booking:, achievements: nil, class_name: nil, tracking_category: nil)
     @objective = objective
@@ -25,7 +25,7 @@ class CourseActivityComponent < ViewComponent::Base
     return nil unless @tracking_category.present? && label.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_category,
       event_label: label
     }

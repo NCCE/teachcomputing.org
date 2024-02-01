@@ -17,7 +17,7 @@ class AsideComponent < ViewComponent::Base
     return nil unless @tracking_category.present? && label.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_category,
       event_label: label
     }

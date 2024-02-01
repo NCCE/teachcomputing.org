@@ -1,12 +1,12 @@
 FactoryBot.define do
-  factory :programme_activity_groupings_credit_counted, class: 'ProgrammeActivityGroupings::CreditCounted' do
-    title { 'A group name' }
+  factory :programme_activity_groupings_credit_counted, class: "ProgrammeActivityGroupings::CreditCounted" do
+    title { "A group name" }
     required_for_completion { 1 }
     sort_key { 1 }
     programme
 
     trait :progress_bar_title do
-      progress_bar_title { 'Progress Bar Title' }
+      progress_bar_title { "Progress Bar Title" }
     end
 
     trait :with_activities do

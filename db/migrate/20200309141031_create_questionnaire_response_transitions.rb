@@ -17,13 +17,13 @@ class CreateQuestionnaireResponseTransitions < ActiveRecord::Migration[5.2]
     add_foreign_key :questionnaire_response_transitions, :questionnaire_responses
 
     add_index(:questionnaire_response_transitions,
-              %i(questionnaire_response_id sort_key),
-              unique: true,
-              name: "index_questionnaire_response_transitions_parent_sort")
+      %i[questionnaire_response_id sort_key],
+      unique: true,
+      name: "index_questionnaire_response_transitions_parent_sort")
     add_index(:questionnaire_response_transitions,
-              %i(questionnaire_response_id most_recent),
-              unique: true,
-              where: "most_recent",
-              name: "index_questionnaire_response_transitions_parent_most_recent")
+      %i[questionnaire_response_id most_recent],
+      unique: true,
+      where: "most_recent",
+      name: "index_questionnaire_response_transitions_parent_most_recent")
   end
 end

@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
   after_action :discourage_caching, only: :show
 
   def index
@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
     assign_params
     if ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
       render json: {
-        results: render_to_string('courses/_courses-list', layout: false),
+        results: render_to_string("courses/_courses-list", layout: false),
         geocoded_location: @course_filter.search_location_formatted_address,
         location_search: @course_filter.location_search?,
         geocoded_successfully: @course_filter.geocoded_successfully?
@@ -40,7 +40,6 @@ class CoursesController < ApplicationController
     @occurrences = @course.with_occurrences
     assign_start_date if online
 
-
     @other_courses = Achiever::Course::Template.without(@course)
     course_programmes
 
@@ -58,29 +57,29 @@ class CoursesController < ApplicationController
 
   private
 
-    def course_programmes
-      @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
-      @programmes = @activity.programmes.enrollable if @activity
-    end
+  def course_programmes
+    @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
+    @programmes = @activity.programmes.enrollable if @activity
+  end
 
-    def filter_params
-      params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
-    end
+  def filter_params
+    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, course_format: [])
+  end
 
-    def assign_start_date
-      if @occurrences.any?
-        @start_date = start_date(@occurrences)
-        @started = (@start_date <= Date.today)
-      else # This shouldn't happen but some test data has no occurrences
-        Sentry.capture_message('Attempted to determine start date of a course with no occurrences', extra: { course_template_no:  @course&.course_template_no })
-        @start_date = Date.new(3001, 1, 1)
-        @started = false
-      end
+  def assign_start_date
+    if @occurrences.any?
+      @start_date = start_date(@occurrences)
+      @started = (@start_date <= Time.zone.today)
+    else # This shouldn't happen but some test data has no occurrences
+      Sentry.capture_message("Attempted to determine start date of a course with no occurrences", extra: {course_template_no: @course&.course_template_no})
+      @start_date = Date.new(3001, 1, 1)
+      @started = false
     end
+  end
 
-    # @param occurrences [Array<Achiever::Course::Occurrence>]
-    # @return [Date]
-    def start_date(occurrences)
-      occurrences.collect { |occurrence| occurrence.start_date.to_date }.sort.first
-    end
+  # @param occurrences [Array<Achiever::Course::Occurrence>]
+  # @return [Date]
+  def start_date(occurrences)
+    occurrences.collect { |occurrence| occurrence.start_date.to_date }.min
+  end
 end

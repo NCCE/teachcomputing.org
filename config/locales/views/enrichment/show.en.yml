@@ -22,5 +22,11 @@ en:
           - providing an opportunity for students to pursue their learning in their own area of interest and strength
           - studying concepts to a greater depth and complexity
           - encouraging your class to pursue wider educational and further career goals
-          - supporting you to achieve the %{secondary_certificate}
+          - |
+            supporting you to achieve the following %{secondary_certificates}
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the Key stage 3 and GCSE Computer Science subject knowledge</li>
+              <li>the secondary computing certificate</li>
+              <li>the A level Computer Science subject knowledge</li>
+            </ul>
         footer: With our termly, as well as year-round offer, supported by partners from the world of computing education, find activities that interest you and your students to learn computing in a fun way. Activities are supported by our quality assured CPD and resources, to help you provide the most enriching experience. Keep informed on upcoming enrichment activities by being part of the %{secondary_stem_community}.

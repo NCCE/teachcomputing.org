@@ -6,17 +6,26 @@
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full external-content <%= @style_slug %>">
+      <div class="ncce-news-archive">
         <% @articles_data['posts'].each do |post| %>
-          <div class="article-index-entry">
-            <% if post['feature_image'].present? %>
-              <%= image_tag post['feature_image'], alt: post['feature_image_alt'] %>
-            <% else %>
-              <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png' %>
-            <% end %>
-            <div>
-              <h3 class="govuk-heading-s"><%= link_to post['title'], cms_post_path(post['slug']) %></h3>
-              <p class="govuk-body"><%= post['custom_excerpt'] %></p>
-              <p class="govuk-body-s govuk-!-font-size-14"><b><%= DateTime.iso8601(post['published_at']).strftime('%d %^B %Y') %><b></p>
+          <div class="ncce-news-archive__item">
+            <div class="ncce-news-archive__item-image">
+              <% if post['feature_image'].present? %>
+                <%= image_tag post['feature_image'], alt: post['feature_image_alt'], class: 'ncce-news-and-updates__image' %>
+              <% else %>
+                <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png', class: 'ncce-news-and-updates__image' %>
+              <% end %>
+            </div>
+            <div class="ncce-news-archive__item-content">
+              <div class="ncce-news-archive__item-title">
+              <h3 class="govuk-heading-s"><%= link_to post['title'], cms_post_path(post['slug']), class: 'ncce-link ncce-link--heading' %></h3>
+              </div>
+              <div class="ncce-news-archive__item-description">
+                <p class="govuk-body"><%= post['custom_excerpt'] %></p>
+              </div>
+              <div class="ncce-news-archive__item-date">
+              <p class="govuk-body-s govuk-!-font-size-14"><%= DateTime.iso8601(post['published_at']).strftime('%d %^B %Y') %></p>
+              </div>
             </div>
           </div>
         <% end %>

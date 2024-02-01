@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ScheduleProgrammeGettingStartedPromptJob, type: :job do
   let(:user) { create(:user) }
@@ -11,19 +11,19 @@ RSpec.describe ScheduleProgrammeGettingStartedPromptJob, type: :job do
   let(:achievement) { create(:achievement, activity:, user: user) }
   let(:achievement_2) { create(:achievement, activity: activity_2, user: user) }
 
-  describe '#perform' do
-    it 'sends an email' do
+  describe "#perform" do
+    it "sends an email" do
       expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
-    it 'doesn\'t send an email if they have an achievement' do
+    it "doesn't send an email if they have an achievement" do
       achievement
       expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment.id) }
         .not_to change { ActionMailer::Base.deliveries.count }
     end
 
-    it 'doesn\'t send a primary certificate inactive prompt email if they have an achievement' do
+    it "doesn't send a primary certificate inactive prompt email if they have an achievement" do
       achievement_2
       expect { ScheduleProgrammeGettingStartedPromptJob.perform_now(enrolment_2.id) }
         .not_to change { ActionMailer::Base.deliveries.count }

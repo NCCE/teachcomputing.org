@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe PathwayActivity, type: :model do
-  let(:activity) { create(:activity, category: 'online') }
+  let(:activity) { create(:activity, category: "online") }
   let(:pathway_activity) { create(:pathway_activity, activity_id: activity.id) }
 
   it { is_expected.to belong_to(:pathway) }

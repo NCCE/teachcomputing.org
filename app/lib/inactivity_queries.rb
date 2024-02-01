@@ -24,7 +24,7 @@ module InactivityQueries
   end
 
   def self.no_activities_completed(certificate)
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: no_activities_completed_type(certificate.slug) })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: no_activities_completed_type(certificate.slug)})
 
     User.where(
       user_programme_enrolments: UserProgrammeEnrolment
@@ -40,7 +40,7 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Required for completion == 3
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id)
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: i_belong_only_one_section_completed_type })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
 
     # Is one objective completed but the others not yet?
     objective_1_completed = "sum((achievements.activity_id in (:objective_1))::int) >= 1 and sum((achievements.activity_id in (:objective_2))::int) < 3 and sum((achievements.activity_id in (:objective_3))::int) = 0"
@@ -53,11 +53,11 @@ module InactivityQueries
       .joins(user: :user_programme_enrolments)
       .where.not(user: users_already_sent)
       .where(
-        user: { user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled) },
+        user: {user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled)},
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-        .having("((#{objective_1_completed}) or (#{objective_2_completed}) or (#{objective_3_completed})) and #{every_achievement_is_old}", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("((#{objective_1_completed}) or (#{objective_2_completed}) or (#{objective_3_completed})) and #{every_achievement_is_old}", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)
@@ -70,13 +70,13 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: i_belong_only_one_section_completed_type })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)
       .where.not(user: users_already_sent)
       .where(
-        user: { user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled) },
+        user: {user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled)},
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
@@ -93,13 +93,13 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: i_belong_only_one_section_completed_type })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)
       .where.not(user: users_already_sent)
       .where(
-        user: { user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled) },
+        user: {user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled)},
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
@@ -116,13 +116,13 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: i_belong_only_one_section_completed_type })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)
       .where.not(user: users_already_sent)
       .where(
-        user: { user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled) },
+        user: {user_programme_enrolments: UserProgrammeEnrolment.where(programme: i_belong).in_state(:enrolled)},
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
@@ -136,7 +136,7 @@ module InactivityQueries
     cpd_activities = certificate.programme_objectives.first.activities
     community_activities = certificate.programme_objectives[1..].flat_map(&:activities)
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: { mailer_type: completed_cpds_but_no_community_activities_type(certificate.slug) })
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: completed_cpds_but_no_community_activities_type(certificate.slug)})
 
     # User has not completed any community activities, and all their CPD
     # activities are older than 1 month
@@ -144,7 +144,7 @@ module InactivityQueries
       .joins(user: :user_programme_enrolments)
       .where.not(user: users_already_sent)
       .where(
-        user: { user_programme_enrolments: UserProgrammeEnrolment.where(programme: certificate).in_state(:enrolled) },
+        user: {user_programme_enrolments: UserProgrammeEnrolment.where(programme: certificate).in_state(:enrolled)},
         activity: cpd_activities + community_activities
       )
       .group(:user_id)

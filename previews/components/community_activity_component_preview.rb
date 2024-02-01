@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'factory_bot_rails'
-require 'faker'
+require "factory_bot_rails"
+require "faker"
 
 class CommunityActivityComponentPreview < ViewComponent::Preview
-  layout 'activity_component_preview'
+  layout "activity_component_preview"
 
   def default
     activity = demo_activity
@@ -21,7 +21,7 @@ class CommunityActivityComponentPreview < ViewComponent::Preview
 
   def demo_activity
     activity = Activity.last.presence || FactoryBot.create(:activity)
-    activity.title = 'Very long title such as take on a very difficult task, work very hard on it, and publish some evidence about it'
+    activity.title = "Very long title such as take on a very difficult task, work very hard on it, and publish some evidence about it"
     activity.description = <<~HTML
       <a href="https://www.stem.org.uk/stem-ambassadors/schools-and-colleges" data-event-label="STEM Ambassadors"
       data-event-category="Primary enrolled" data-event-action="click" class="ncce-link">Arrange a visit for your school</a> to

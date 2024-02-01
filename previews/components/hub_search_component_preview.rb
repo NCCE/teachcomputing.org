@@ -4,6 +4,6 @@ class HubSearchComponentPreview < ViewComponent::Preview
   end
 
   def with_location
-    render(HubSearchComponent.new(location: 'cambridge'))
+    render(HubSearchComponent.new(location: "cambridge"))
   end
 end

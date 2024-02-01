@@ -10,14 +10,14 @@ module Achiever
         next unless activity
 
         achievement = fetch_achievement(activity_id: activity.id, user_id: user.id)
-        next if achievement.current_state == 'complete'
+        next if achievement.current_state == "complete"
 
         case course.attendance_status
-        when 'attended'
+        when "attended"
           any_marked_as_attended = true
 
           achievement.complete!
-        when 'cancelled'
+        when "cancelled"
           achievement.drop!
         end
       end
@@ -27,27 +27,27 @@ module Achiever
 
     private
 
-      def course_activity(stem_course_template_no:, user_id:)
-        Activity.find_by!(stem_course_template_no: stem_course_template_no)
-      rescue ActiveRecord::RecordNotFound => e
-        Sentry.set_tags(stem_course_template_no: stem_course_template_no, user_id: user_id)
-        Sentry.capture_exception(e)
-        nil
-      end
+    def course_activity(stem_course_template_no:, user_id:)
+      Activity.find_by!(stem_course_template_no: stem_course_template_no)
+    rescue ActiveRecord::RecordNotFound => e
+      Sentry.set_tags(stem_course_template_no: stem_course_template_no, user_id: user_id)
+      Sentry.capture_exception(e)
+      nil
+    end
 
-      def fetch_achievement(activity_id:, user_id:)
-        Achievement.find_or_create_by(activity_id: activity_id, user_id: user_id) do |achievement|
-          achievement.activity_id = activity_id
-          achievement.user_id = user_id
-        end
+    def fetch_achievement(activity_id:, user_id:)
+      Achievement.find_or_create_by(activity_id: activity_id, user_id: user_id) do |achievement|
+        achievement.activity_id = activity_id
+        achievement.user_id = user_id
       end
+    end
 
-      def run_jobs(user)
-        AssessmentEligibilityJob.perform_later(user.id)
-        CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
-          user,
-          { source: 'FetchUsersCompletedCoursesFromAchieverJob' }
-        )
-      end
+    def run_jobs(user)
+      AssessmentEligibilityJob.perform_later(user.id)
+      CertificatePendingTransitionJob.set(wait: 1.minute).perform_later(
+        user,
+        {source: "FetchUsersCompletedCoursesFromAchieverJob"}
+      )
+    end
   end
 end

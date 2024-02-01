@@ -11,8 +11,7 @@ class UserProgrammeEnrolment < ApplicationRecord
   has_many :user_programme_enrolment_transitions, autosave: false, dependent: :destroy
   has_many :achiever_sync_records, dependent: :destroy
 
-  validates :user, :programme, presence: true
-  validates :user, uniqueness: { scope: [:programme] }
+  validates :user, uniqueness: {scope: [:programme]}
   validates :pathway, presence: true, if: -> { programme&.pathways? }
 
   store_accessor :message_flags, %i[primary_pathway_migrated], prefix: true
@@ -50,5 +49,5 @@ class UserProgrammeEnrolment < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
+  delegate :allowed_transitions, :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
 end

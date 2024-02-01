@@ -17,7 +17,7 @@ class NonBorderedCardsComponent < ViewComponent::Base
 
   private
 
-    def link_method(card)
-      card[:link][:link_method] unless card[:link][:link_method].in? %i[get GET]
-    end
+  def link_method(card)
+    card[:link][:link_method] unless card[:link][:link_method].in? %i[get GET]
+  end
 end

@@ -7,11 +7,11 @@ class ScheduleProgrammeGettingStartedPromptJob < ApplicationJob
     return if enrolment.user.achievements.belonging_to_programme(enrolment.programme).count.positive?
 
     case enrolment.programme.slug
-    when 'subject-knowledge'
+    when "subject-knowledge"
       CSAcceleratorMailer.with(user: enrolment.user, enrolment_id: enrolment.id).getting_started_prompt.deliver_now
-    when 'primary-certificate'
+    when "primary-certificate"
       PrimaryMailer.with(user: enrolment.user, enrolment_id: enrolment.id).inactive_prompt.deliver_now
-    when 'secondary-certificate'
+    when "secondary-certificate"
       SecondaryMailer.with(user: enrolment.user, enrolment_id: enrolment.id).inactive_prompt.deliver_now
     end
   end

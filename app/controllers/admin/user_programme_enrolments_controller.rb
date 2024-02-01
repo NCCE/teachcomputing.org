@@ -42,5 +42,26 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+      user_programme_enrolment = UserProgrammeEnrolment.find(params[:id])
+
+      if user_programme_enrolment.transition_to(user_programme_enrolment_params[:current_state].to_sym)
+        flash[:notice] = "State changed to #{user_programme_enrolment.current_state} for #{user_programme_enrolment.programme.title}"
+
+        redirect_to controller: :users, action: :show, id: user_programme_enrolment.user.id
+      else
+        flash[:alert] = "Unable to change state"
+
+        redirect_to controller: :users, action: :edit, id: user_programme_enrolment.user.id
+      end
+    end
+
+    private
+
+    def user_programme_enrolment_params
+      params.require(:user_programme_enrolment)
+        .permit(:current_state)
+    end
   end
 end

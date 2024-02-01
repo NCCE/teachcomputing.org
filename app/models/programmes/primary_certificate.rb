@@ -1,9 +1,9 @@
 module Programmes
   class PrimaryCertificate < Programme
-    PROGRAMME_TITLE = 'Teach Primary Computing'.freeze
+    PROGRAMME_TITLE = "Teach Primary Computing".freeze
 
-    def short_name
-      'Primary certificate'
+    def certificate_name
+      "Teach primary computing certificate"
     end
 
     def pending_delay
@@ -31,7 +31,7 @@ module Programmes
     end
 
     def bcs_logo
-      'media/images/logos/primary-bcs.svg'
+      "media/images/logos/primary-bcs.svg"
     end
 
     def pathways?
@@ -43,6 +43,10 @@ module Programmes
     end
 
     def send_pending_mail?
+      true
+    end
+
+    def auto_enrollable?
       true
     end
   end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ExternalLinkHelper do
   %i[
@@ -35,12 +35,12 @@ RSpec.describe ExternalLinkHelper do
     stem_ambassadors_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
-      it 'should return a string' do
+      it "should return a string" do
         expect(helper.public_send(external_link_method)).to be_a String
       end
 
-      it 'should start with https' do
-        expect(helper.public_send(external_link_method)).to start_with 'https'
+      it "should start with https" do
+        expect(helper.public_send(external_link_method)).to start_with "https"
       end
     end
   end

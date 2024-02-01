@@ -10,30 +10,30 @@ class ClassMarker::WebhooksController < ApplicationController
 
   private
 
-    class InvalidHMACError < StandardError
-      def initialize
-        super 'Invalid HMAC signature'
-      end
+  class InvalidHMACError < StandardError
+    def initialize
+      super "Invalid HMAC signature"
     end
+  end
 
-    def calculate_signature(raw_request)
-      secret = ENV.fetch('CLASS_MARKER_WEBHOOK_SECRET_PHRASE')
+  def calculate_signature(raw_request)
+    secret = ENV.fetch("CLASS_MARKER_WEBHOOK_SECRET_PHRASE")
 
-      digest = OpenSSL::Digest.new('sha256')
-      Base64.encode64(OpenSSL::HMAC.digest(digest, secret, raw_request)).strip
-    end
+    digest = OpenSSL::Digest.new("sha256")
+    Base64.encode64(OpenSSL::HMAC.digest(digest, secret, raw_request)).strip
+  end
 
-    def hmac_header_valid?
-      header_val = request.headers['HTTP_X_CLASSMARKER_HMAC_SHA256']
-      return false if header_val.blank?
+  def hmac_header_valid?
+    header_val = request.headers["HTTP_X_CLASSMARKER_HMAC_SHA256"]
+    return false if header_val.blank?
 
-      expected = header_val.split(/,/).first
-      actual = calculate_signature(request.raw_post)
+    expected = header_val.split(",").first
+    actual = calculate_signature(request.raw_post)
 
-      ActiveSupport::SecurityUtils.secure_compare(actual, expected)
-    end
+    ActiveSupport::SecurityUtils.secure_compare(actual, expected)
+  end
 
-    def verify_hmac_signature
-      raise InvalidHMACError unless hmac_header_valid?
-    end
+  def verify_hmac_signature
+    raise InvalidHMACError unless hmac_header_valid?
+  end
 end

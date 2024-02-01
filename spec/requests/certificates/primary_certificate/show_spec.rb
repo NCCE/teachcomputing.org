@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
@@ -7,21 +7,21 @@ RSpec.describe Certificates::PrimaryCertificateController do
     create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
   end
   let(:online_discussion_grouping) do
-    create(:programme_activity_grouping, sort_key: 3, title: 'online discussion activities', programme: programme)
+    create(:programme_activity_grouping, sort_key: 3, title: "online discussion activities", programme: programme)
   end
   let(:online_discussion_programme_activity) do
     create(:programme_activity, programme: programme, programme_activity_grouping: online_discussion_grouping)
   end
 
-  describe '#show' do
-    context 'when user is logged in' do
+  describe "#show" do
+    context "when user is logged in" do
       before do
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
 
-      context 'when user is not enrolled' do
-        it 'redirects if not enrolled' do
+      context "when user is not enrolled" do
+        it "redirects if not enrolled" do
           programme
 
           get primary_certificate_path
@@ -29,19 +29,19 @@ RSpec.describe Certificates::PrimaryCertificateController do
         end
       end
 
-      context 'when user is enrolled' do
-        it 'asks client not to cache a private page' do
+      context "when user is enrolled" do
+        it "asks client not to cache a private page" do
           user_programme_enrolment
           online_discussion_programme_activity
 
           get primary_certificate_path
-          expect(response.headers['cache-control']).to eq('no-store')
+          expect(response.headers["cache-control"]).to eq("no-store")
         end
       end
     end
 
-    describe 'while logged out' do
-      it 'redirects to login' do
+    describe "while logged out" do
+      it "redirects to login" do
         get primary_certificate_path
         expect(response).to redirect_to(/register/)
       end
