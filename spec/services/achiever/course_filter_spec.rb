@@ -42,6 +42,17 @@ RSpec.describe Achiever::CourseFilter do
       address_town: "Cambridge",
       distance: 20)
   end
+  let(:date_range_template) { build(:achiever_course_template, title: "Date range template") }
+  let(:date_range_occurrence_in_range) {
+    build(:achiever_course_occurrence,
+      course_template_no: date_range_template.course_template_no,
+      start_date: (DateTime.now + 10.days).strftime("%d/%m/%Y %H:%M:%S"))
+  }
+  let(:date_rage_occurrence_out_of_range) {
+    build(:achiever_course_occurrence,
+      course_template_no: date_range_template.course_template_no,
+      start_date: (DateTime.now + 40.days).strftime("%d/%m/%Y %H:%M:%S"))
+  }
   let(:algorithms_template) do
     build(:achiever_course_template, subjects: [subjects["Algorithms"]], title: "Algorithms template")
   end
@@ -92,13 +103,15 @@ RSpec.describe Achiever::CourseFilter do
         multi_filter_template,
         no_occ_template,
         online_template,
-        secondary_template
+        secondary_template,
+        date_range_template
       ])
     allow(Achiever::Course::Occurrence)
       .to receive(:face_to_face)
       .and_return([f2f_occurrence, secondary_occurrence, ks2_occurrence,
         location_occurrence_other_location, location_occurrence_matching_location,
-        algorithms_occurrence, multi_filter_occurrence, hub_occurrence_other_hub, hub_occurrence_matching_hub])
+        algorithms_occurrence, multi_filter_occurrence, hub_occurrence_other_hub, hub_occurrence_matching_hub,
+        date_range_occurrence_in_range, date_rage_occurrence_out_of_range])
     allow(Achiever::Course::Occurrence)
       .to receive(:online)
       .and_return([online_occurrence])
@@ -247,6 +260,58 @@ RSpec.describe Achiever::CourseFilter do
     end
   end
 
+  describe "#date_range" do
+    context "when not filtering" do
+      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", course_format: "", date_range: ""} }
+
+      it "should return nil" do
+        expect(course_filter.current_date_range).to eq(nil)
+      end
+    end
+
+    context "when filtering a range" do
+      let(:filter_params) {
+        {
+          certificate: "", level: "", location: "", topic: "", course_format: "",
+          date_range: "#{Date.today.strftime("%Y-%m-%d")} to #{(Date.today + 20.days).strftime("%Y-%m-%d")}"
+        }
+      }
+
+      it "should current_date_range" do
+        expect(course_filter.current_date_range).to eq("#{Date.today.strftime("%Y-%m-%d")} to #{(Date.today + 20.days).strftime("%Y-%m-%d")}")
+      end
+
+      it "should set the current_date_range_from" do
+        expect(course_filter.current_date_range_from).to eq(Date.today)
+      end
+
+      it "should set the current_date_range_to" do
+        expect(course_filter.current_date_range_to).to eq((Date.today + 20.days))
+      end
+    end
+
+    context "when filtering a single date" do
+      let(:filter_params) {
+        {
+          certificate: "", level: "", location: "", topic: "", course_format: "",
+          date_range: Date.today.strftime("%Y-%m-%d")
+        }
+      }
+
+      it "should current_date_range" do
+        expect(course_filter.current_date_range).to eq(Date.today.strftime("%Y-%m-%d"))
+      end
+
+      it "should set the current_date_range_from" do
+        expect(course_filter.current_date_range_from).to eq(Date.today)
+      end
+
+      it "should set the current_date_range_to" do
+        expect(course_filter.current_date_range_to).to eq(Date.today)
+      end
+    end
+  end
+
   describe "#non_location_based_results" do
     context "when no filters are present" do
       it "returns all achiever courses and their occurrences if present" do
@@ -265,7 +330,8 @@ RSpec.describe Achiever::CourseFilter do
               multi_filter_template,
               hub_template,
               secondary_template,
-              no_occ_template
+              no_occ_template,
+              date_range_template
             ]
           )
         expect(f2f_template.occurrences).to eq([f2f_occurrence])
@@ -328,7 +394,8 @@ RSpec.describe Achiever::CourseFilter do
             algorithms_template,
             hub_template,
             secondary_template,
-            no_occ_template])
+            no_occ_template,
+            date_range_template])
       end
     end
 
@@ -353,7 +420,8 @@ RSpec.describe Achiever::CourseFilter do
           hub_template,
           secondary_template,
           no_occ_template,
-          online_template
+          online_template,
+          date_range_template
         ])
       end
     end
@@ -406,6 +474,19 @@ RSpec.describe Achiever::CourseFilter do
               multi_filter_template
             ]
           )
+      end
+    end
+
+    context "when using date range" do
+      let(:filter_params) {
+        {
+          date_range: "#{Date.today.strftime("%Y-%m-%d")} to #{(Date.today + 20.days).strftime("%Y-%m-%d")}",
+          certificate: "", level: "", location: "", topic: ""
+        }
+      }
+
+      it "should include course in range" do
+        expect(course_filter.non_location_based_results).to match_array([date_range_template])
       end
     end
   end
@@ -640,7 +721,7 @@ RSpec.describe Achiever::CourseFilter do
 
   describe "#total_results_count" do
     it "returns total results" do
-      expect(course_filter.total_results_count).to eq(9)
+      expect(course_filter.total_results_count).to eq(10)
     end
 
     context "when searching by location" do
