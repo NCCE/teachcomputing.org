@@ -1,21 +1,23 @@
 class BadgeAssignmentCheckJob < ApplicationJob
   queue_as :default
 
-  def perform(days_to_check: 31)
-    recent_achievements = Achievement.in_state(:complete).where("most_recent_achievement_transition.updated_at": days_to_check.days.ago..)
-
+  def perform(days_to_check: 31, programmes_to_check: [])
     missing_badges = []
-    recent_achievements.each do |achievement|
-      achievement.activity.programmes.each do |programme|
-        user = achievement.user
-        badge = programme.badges.active.first
+    programmes_to_check.each do |programme|
+      recent_achievements = Achievement.in_state(:complete)
+        .belonging_to_programme(programme)
+        .where(most_recent_achievement_transition: {updated_at: days_to_check.days.ago..})
+      badge = programme.badges.active.first
 
-        next unless badge
-        next unless programme.badgeable?
-        next unless programme.user_qualifies_for_credly_badge?(user)
-        next if user_has_badge?(user, programme)
+      if badge
+        recent_achievements.includes(:user).find_each do |achievement|
+          user = achievement.user
 
-        missing_badges << [user, programme]
+          next unless programme.user_qualifies_for_credly_badge?(user)
+          next if user_has_badge?(user, programme)
+
+          missing_badges << [user, programme]
+        end
       end
     end
 
@@ -25,6 +27,6 @@ class BadgeAssignmentCheckJob < ApplicationJob
   private
 
   def user_has_badge?(user, programme)
-    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id))
+    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id)).present?
   end
 end

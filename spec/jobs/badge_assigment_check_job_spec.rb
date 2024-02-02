@@ -30,17 +30,17 @@ RSpec.describe BadgeAssignmentCheckJob, type: :job do
 
     it "should not match user with existing badge" do
       expect(primary_certificate.user_qualifies_for_credly_badge?(user_with_badge)).to be true
-      matches = described_class.perform_now(days_to_check: 10)
+      matches = described_class.perform_now(days_to_check: 10, programmes_to_check: [primary_certificate])
       expect(matches.include?([user_with_badge, primary_certificate])).to be false
     end
 
     it "should include user without a badge" do
-      matches = described_class.perform_now(days_to_check: 10)
+      matches = described_class.perform_now(days_to_check: 10, programmes_to_check: [primary_certificate])
       expect(matches.include?([user_without_badge, primary_certificate])).to be true
     end
 
     it "should not include user without f2f activity" do
-      matches = described_class.perform_now(days_to_check: 10)
+      matches = described_class.perform_now(days_to_check: 10, programmes_to_check: [primary_certificate])
       expect(matches.include?([user_no_activity, primary_certificate])).to be false
     end
   end
