@@ -1,0 +1,10 @@
+<div class="ncce-top-filter">
+  <%= label_tag :date_range, 'Select date/s:', class: 'govuk-body-m ncce-label--m ncce-top-filter__title' %>
+  <%= render DatepickerComponent.new(
+      "date_range",
+      nil,
+      flatpickr: { mode: "range" },
+      options: { data: { action: "changeRange->course-filter#filter changeRange->course-filter#addRangeFilter changeRange->course-filter#dateRangeSearched"} }
+    ) 
+  %>
+</div>

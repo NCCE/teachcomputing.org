@@ -1,0 +1,17 @@
+.ncce-top-filter {
+  background-color: $concrete;
+  border: none;
+  margin-bottom: 20px;
+  padding: 13px;
+
+  .ncce-top-filter__title {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .flatpickr-input {
+    width: 15rem;
+  }
+
+
+}
