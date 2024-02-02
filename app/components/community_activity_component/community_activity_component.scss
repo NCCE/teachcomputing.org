@@ -1,9 +1,28 @@
+.community-activity-component {
+
+}
+
+.community-activity-component__content{
+  padding: 1.25rem 1.125rem;
+}
+
+.community-activity-component__rejected {
+  width: 100%;
+  background-color: $red;
+  padding: 1.25rem 1.125rem;
+
+  .community-activity-component__rejected-text {
+    color: $white !important;
+  }
+
+}
+
 .community-activity-component__objective {
   align-items: flex-start;
   background-color: $white;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: auto 11.5rem;
+  grid-template-columns: auto 13rem;
 
   @include govuk-media-query($until: tablet) {
     grid-template-columns: auto;
