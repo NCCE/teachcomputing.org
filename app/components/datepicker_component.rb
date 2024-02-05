@@ -10,17 +10,21 @@ class DatepickerComponent < ViewComponent::Base
     @options = options
   end
 
-  def options
+  def controllerOptions
     {
       data: {
         controller: "flatpickr",
         flatpickr_options_value: @flatpickr.to_json
-      },
-      class: "govuk-input"
+      }
     }.deep_merge!(@options)
   end
 
-  def call
-    text_field_tag(@name, @value, options)
+  def inputOptions
+    {
+      data: {
+        flatpickr_target: "input"
+      },
+      class: "govuk-input"
+    }
   end
 end
