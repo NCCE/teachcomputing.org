@@ -99,5 +99,13 @@ module Programmes
     def auto_enrollable?
       true
     end
+
+    def programme_objectives
+      [
+        ProgrammeObjectives::AssessmentPassRequired.new(
+          assessment: Assessment.find_by(programme: self)
+        )
+      ]
+    end
   end
 end

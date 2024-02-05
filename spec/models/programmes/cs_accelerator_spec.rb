@@ -6,6 +6,7 @@ RSpec.describe Programmes::CSAccelerator do
   let(:user) { create(:user) }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
+  let!(:assessment) { create(:assessment, programme:, activity: exam_activity) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
@@ -424,6 +425,18 @@ RSpec.describe Programmes::CSAccelerator do
   describe "#certificate_name" do
     it "should return its certificate name" do
       expect(programme.certificate_name).to eq "KS3 and GCSE subject knowledge certificate"
+    end
+  end
+
+  describe "#user_qualifies_for_credly_badge" do
+    it "should return false if no face-to-face" do
+      setup_one_online_achievement
+      expect(programme.user_qualifies_for_credly_badge?(user)).to be false
+    end
+
+    it "should return true if completed face-to-face course" do
+      setup_one_short_f2f_achievement
+      expect(programme.user_qualifies_for_credly_badge?(user)).to be true
     end
   end
 
