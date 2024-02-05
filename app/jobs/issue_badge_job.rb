@@ -15,8 +15,8 @@ class IssueBadgeJob < ApplicationJob
 
       next unless badge
       next unless programme.badgeable?
-      next if user_has_badge?(user, programme)
       next unless programme.user_qualifies_for_credly_badge?(user)
+      next if user_has_badge?(user, programme)
 
       Credly::Badge.issue(user.id, badge.credly_badge_template_id)
       NewBadgeMailer.new_badge_email(user, programme).deliver_now
