@@ -3,6 +3,7 @@ import flatpickr from "flatpickr"
 
 export default class extends Controller {
   static values = { options: Object }
+  static targets = ['input']
 
   connect() {
     const options = {
@@ -13,14 +14,17 @@ export default class extends Controller {
       onChange: (selectedDates, _dateStr, _instance) => {
         if (selectedDates.length == 1) return
 
-        this.element.dispatchEvent(new CustomEvent("changeRange", {
+        this.inputTarget.dispatchEvent(new CustomEvent("changeRange", {
           bubbles: true,
         }))
       },
       ...this.optionsValue,
     }
+    this.flatpickr = flatpickr(this.inputTarget, options)
+  }
 
-    this.flatpickr = flatpickr(this.element, options)
+  clear() {
+    this.flatpickr.clear();
   }
 
   disconnect() {

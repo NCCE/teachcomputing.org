@@ -12,7 +12,7 @@
     </div>
   <% elsif @course.occurrences.present? %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
-      <button aria-expanded="false">
+      <button type="button" aria-expanded="false">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'><%= course_type(@course) %></span>
       <div class='ncce-courses__locations-info'>
         <% if @course.nearest_occurrence_distance.present? %>
