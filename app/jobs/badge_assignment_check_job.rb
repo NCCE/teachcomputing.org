@@ -1,27 +1,23 @@
+# This job is used for debugging to check if there are any outstanding badges for a given programme, it will not assign badges, just returns list of missing
 class BadgeAssignmentCheckJob < ApplicationJob
   queue_as :default
 
-  def perform(days_to_check: 31, programmes_to_check: [])
-    missing_badges = []
-    programmes_to_check.each do |programme|
+  def perform(programmes_to_check, days_to_check: 31)
+    programmes_to_check.each_with_object([]) do |programme, missing_badges|
+      next unless programme.badges.active.any?
       recent_achievements = Achievement.in_state(:complete)
         .belonging_to_programme(programme)
         .where(most_recent_achievement_transition: {updated_at: days_to_check.days.ago..})
-      badge = programme.badges.active.first
 
-      if badge
-        recent_achievements.includes(:user).find_each do |achievement|
-          user = achievement.user
+      recent_achievements.includes(:user).find_each do |achievement|
+        user = achievement.user
 
-          next unless programme.user_qualifies_for_credly_badge?(user)
-          next if user_has_badge?(user, programme)
+        next unless programme.user_qualifies_for_credly_badge?(user)
+        next if user_has_badge?(user, programme)
 
-          missing_badges << [user, programme]
-        end
+        missing_badges << [user, programme]
       end
     end
-
-    missing_badges
   end
 
   private
