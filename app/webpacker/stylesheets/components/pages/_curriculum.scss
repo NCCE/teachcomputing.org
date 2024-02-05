@@ -23,6 +23,10 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+  
+  .lesson-download-button {
+    width: 19em;
+  }
 
   @include govuk-media-query($from: desktop) {
     justify-content: space-between;
