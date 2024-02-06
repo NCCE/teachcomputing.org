@@ -20,7 +20,7 @@ class AutoEnrolJob < ApplicationJob
 
       Programmes::UserEnroller.new(
         programme_id: programme.id,
-        pathway_slug: pathway.slug,
+        pathway_slug: pathway&.slug,
         user_id: user.id,
         auto_enrolled: true
       ).call
