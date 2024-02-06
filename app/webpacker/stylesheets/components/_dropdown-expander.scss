@@ -36,11 +36,6 @@
   font-size: 1rem;
   padding-bottom: 1rem;
 
-  &:first-child {
-    font-size: 1.125rem;
-    font-weight: 700;
-  }
-
   &:last-child {
     padding-bottom: 0;
   }
@@ -56,9 +51,5 @@
 
   @include govuk-media-query($from: desktop) {
     font-size: 1.125rem;
-
-    &:first-child {
-      font-size: 1.25rem;
-    }
   }
 }
