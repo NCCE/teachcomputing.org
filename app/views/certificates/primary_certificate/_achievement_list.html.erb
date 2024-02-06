@@ -3,35 +3,43 @@
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
-    <%= t('.any_course_prompt') %>
+    <div class="ncce-activity-list__item-content">
+      <%= t('.any_course_prompt') %>
+    </div>
   </li>
   <% if @issued_badge.present? %>
     <li class="ncce-activity-list__item">
-      <%= render DashBadgeComponent.new(
-        badge: @issued_badge,
-        tracking_event_category: @badge_tracking_event_category,
-        tracking_event_label: @badge_tracking_event_label
-      ) %>
+      <div class="ncce-activity-list__item-content">
+        <%= render DashBadgeComponent.new(
+          badge: @issued_badge,
+          tracking_event_category: @badge_tracking_event_category,
+          tracking_event_label: @badge_tracking_event_label
+        ) %>
+      </div>
     </li>
   <% end %>
   <% if @user_pathway.present? %>
     <li class="ncce-activity-list__item">
-      <%= render partial: 'certificates/pathways/recommended_courses', locals: {
-        event_category: 'primary enrolled',
-        pathway: @user_pathway,
-        recommended_activities: @recommended_activities
-      } %>
+      <div class="ncce-activity-list__item-content">
+        <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+          event_category: 'primary enrolled',
+          pathway: @user_pathway,
+          recommended_activities: @recommended_activities
+        } %>
+      </div>
     </li>
   <% else %>
     <li class="ncce-activity-list__item">
-      <div class='ncce-activity-list__button-wrapper'>
-        <%= link_to t('.all_courses_button'),
-          courses_path(certificate: @programme.slug),
-          class: 'govuk-button button govuk-!-margin-bottom-0',
-          data: {
-            event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
-          }
-        %>
+      <div class="ncce-activity-list__item-content">
+        <div class='ncce-activity-list__button-wrapper'>
+          <%= link_to t('.all_courses_button'),
+            courses_path(certificate: @programme.slug),
+            class: 'govuk-button button govuk-!-margin-bottom-0',
+            data: {
+              event_action: 'click', event_category: tracking_category, event_label: 'View all courses'
+            }
+          %>
+        </div>
       </div>
     </li>
   <% end %>

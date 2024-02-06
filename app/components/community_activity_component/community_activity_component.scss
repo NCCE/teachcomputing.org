@@ -7,7 +7,6 @@
 }
 
 .community-activity-component__rejected {
-  width: 100%;
   background-color: $red;
   padding: 1.25rem 1.125rem;
 
@@ -67,6 +66,11 @@
     text-align: right;
     width: auto;
   }
+}
+
+.community-activity-component__objective-button-container {
+  display: grid;
+  justify-content: flex-end;
 }
 
 .community-activity-component__objective-text {
@@ -143,6 +147,10 @@
     padding-right: 1.7rem;
     padding-left: 0.6rem;
     white-space: nowrap;
+
+    &.green-chevron {
+      background-image: url('../images/icons/submit_evidence_chevron_green.svg');
+    }
   }
 
   .govuk-textarea {

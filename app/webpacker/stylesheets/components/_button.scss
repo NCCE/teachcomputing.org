@@ -59,6 +59,10 @@
   border-color: $lime-green;
 }
 
+.ncce-button__white_black_border {
+  @include ncce_button($white);
+}
+
 .button--focus-white {
   &:hover,
   &[disabled]:hover {

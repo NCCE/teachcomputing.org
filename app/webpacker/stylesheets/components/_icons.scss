@@ -103,3 +103,7 @@
 
   background-size: 24px 24px;
 }
+
+.icon-feedback {
+  @include icon('../images/icons/feedback.svg');
+}
