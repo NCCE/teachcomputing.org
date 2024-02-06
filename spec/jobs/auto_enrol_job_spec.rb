@@ -7,17 +7,19 @@ RSpec.describe AutoEnrolJob, type: :job do
 
       secondary_certificate = create(:secondary_certificate)
       primary_certificate = create(:primary_certificate)
+      subject_knowledge = create(:cs_accelerator)
 
       activity = create(:activity)
       create(:programme_activity, activity:, programme: secondary_certificate)
       create(:programme_activity, activity:, programme: primary_certificate)
+      create(:programme_activity, activity:, programme: subject_knowledge)
 
       achievement = create(:achievement, user:, activity:)
 
       callable = double(:callable)
       allow(callable).to receive(:call)
 
-      expect(Programmes::UserEnroller).to receive(:new).twice.and_return(callable)
+      expect(Programmes::UserEnroller).to receive(:new).exactly(3).times.and_return(callable)
 
       AutoEnrolJob.perform_now(achievement:)
     end

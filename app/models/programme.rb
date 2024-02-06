@@ -71,6 +71,15 @@ class Programme < ApplicationRecord
     programme_objectives.all? { |group| group.user_complete?(user) }
   end
 
+  def user_has_f2f_achievement?(user)
+    user
+      .achievements
+      .in_state(:complete)
+      .with_category(Activity::FACE_TO_FACE_CATEGORY)
+      .belonging_to_programme(self)
+      .count >= 1
+  end
+
   def user_enrolled?(user)
     return false if user.nil?
 
@@ -152,14 +161,7 @@ class Programme < ApplicationRecord
   end
 
   def user_qualifies_for_credly_badge?(user)
-    has_a_f2f_achievement = user
-      .achievements
-      .in_state(:complete)
-      .with_category(Activity::FACE_TO_FACE_CATEGORY)
-      .belonging_to_programme(self)
-      .count >= 1
-
-    user_enrolled?(user) && (has_a_f2f_achievement || user_meets_completion_requirement?(user))
+    user_enrolled?(user) && (user_has_f2f_achievement?(user) || user_meets_completion_requirement?(user))
   end
 
   def auto_enrollable?
