@@ -49,6 +49,13 @@ class IBelongMailer < ApplicationMailer
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: InactivityQueries.i_belong_all_but_increase_engagement_type)
   end
 
+  def auto_enrolled
+    @user = params[:user]
+    @subject = "Welcome to I Belong"
+
+    mail(to: @user, subject: @subject)
+  end
+
   private
 
   def assign_user

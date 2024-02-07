@@ -36,6 +36,10 @@ module Programmes
       # enrolment.save
     end
 
+    def auto_enrollable?
+      true
+    end
+
     def auto_enrollment_ignored_activity_codes
       ["FD022"]
     end
