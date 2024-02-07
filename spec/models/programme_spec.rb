@@ -176,6 +176,7 @@ RSpec.describe Programme, type: :model do
 
     context "when the user is complete" do
       it "returns true" do
+        allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
         user_programme_enrolment.transition_to(:complete)
         expect(programme.user_completed?(user)).to be true
       end

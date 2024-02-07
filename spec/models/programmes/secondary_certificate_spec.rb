@@ -41,6 +41,7 @@ RSpec.describe Programmes::SecondaryCertificate do
     context "when the user has completed CSA" do
       context "when the user has completed one activity from each group" do
         it "returns true" do
+          allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
           cs_accelerator_enrolment.transition_to :complete
 
           programme_activity_groupings.each do |group|

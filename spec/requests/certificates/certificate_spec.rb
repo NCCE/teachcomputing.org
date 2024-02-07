@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Certificates::CertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
-  let(:assessment) { create(:assessment, programme_id: programme.id) }
+  let(:assessment) { create(:assessment, programme: programme) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
       user_id: user.id,
@@ -47,6 +47,7 @@ RSpec.describe Certificates::CertificateController do
           allow(CertificateGenerator).to receive(:new) { generator_double }
 
           programme_activity
+          passed_attempt
           passed_exam.complete!
           user_programme_enrolment.transition_to(:complete, certificate_number: 20)
           get certificate_cs_accelerator_certificate_path

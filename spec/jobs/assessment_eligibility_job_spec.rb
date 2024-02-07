@@ -19,6 +19,7 @@ RSpec.describe AssessmentEligibilityJob, type: :job do
 
     it "does not call CSAcceleratorMailer when the enrolment is already in a state of complete" do
       allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
       cs_accelerator_enrolment.transition_to(:complete)
       expect { described_class.perform_now(user.id) }
         .to change { ActionMailer::Base.deliveries.count }.by(0)

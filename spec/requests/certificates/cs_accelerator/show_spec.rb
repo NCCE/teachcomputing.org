@@ -24,6 +24,7 @@ RSpec.describe Certificates::CSAcceleratorController do
     create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id)
   end
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
+  let(:completed_assessment_attempt) { create(:completed_assessment_attempt, user:, assessment:) }
 
   let(:setup_achievements_for_programme) do
     assessment
@@ -94,6 +95,7 @@ RSpec.describe Certificates::CSAcceleratorController do
           end
 
           it "redirects to complete_path on completion" do
+            completed_assessment_attempt
             user_programme_enrolment.transition_to(:complete)
 
             get cs_accelerator_certificate_path
