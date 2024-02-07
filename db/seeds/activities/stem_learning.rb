@@ -2429,7 +2429,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "fa051bb1-c5af-ee11-a569
 end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "8f4f5edb-b3c1-ee11-9079-002248c6f979").tap do |activity|
-  activity.title = "Literacy via primary computing – building vocabulary and embedding literacy skills"
+  activity.title = "Literacy via primary computing - building vocabulary and embedding literacy skills"
   activity.slug = "literacy-via-primary-computing-building-vocabulary-and-embedding-literacy-skills"
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = true
