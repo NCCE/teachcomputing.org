@@ -8,10 +8,11 @@
       <% end %>
       <h2 class="govuk-heading-m"><%= card[:title] %></h2>
       <p class="govuk-body bordered-card__text"><%= card[:text] %></p>
-      <% if card[:link].present? %>
+
+      <% card[:links].each do |link| %>
         <p class="govuk-body">
-          <%= link_to card[:link][:link_title], card[:link][:link_url], class: link_class(card[:button]), data: {
-            event_action: 'click', event_category: card[:link][:tracking_page], event_label: card[:link][:tracking_label]
+          <%= link_to link[:link_title], link[:link_url], class: link_class(card[:button]), data: {
+            event_action: "click", event_category: link[:tracking_page], event_label: link[:tracking_label]
           } %>
         </p>
       <% end %>
