@@ -1,6 +1,6 @@
 secondary = Programme.secondary_certificate
 
-puts "Creating Programme Activity Groupings"
+puts "Creating Programme Activity Groupings for Secondary"
 
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
@@ -44,6 +44,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
     {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
     {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: false},
     {slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays", legacy: false},
+    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
 
     # Legacy activities
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
@@ -78,6 +79,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
+    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
 
     # Legacy activities
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
