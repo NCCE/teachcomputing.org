@@ -20,6 +20,10 @@ module CurriculumHelper
     "Year #{year_number}"
   end
 
+  def year_group_anchor(year_number)
+    year_group_title(year_number).parameterize
+  end
+
   def user_has_rated?(id)
     raw_cookie = cookies.encrypted[:ratings]
     ratings = JSON.parse(raw_cookie) unless raw_cookie.nil?
