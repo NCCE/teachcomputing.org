@@ -23,7 +23,8 @@ module NavigationHelper
          {text: "Funding", link: "/funding", label: "Bursaries"},
          {text: "Computing Hubs", link: "/hubs", label: "Computing hubs"},
          {text: "I Belong programme", link: "/i-belong", label: "i-belong"},
-         {text: "Computing Clusters", link: "/computing-clusters", label: "Computing clusters"}
+         {text: "GCSE Computer Science support", link: "/gcse-cs-support", label: "GCSE support"},
+         {text: "Computing Clusters", link: "/computing-clusters", label: "Computing clusters"},
        ]},
       {text: "Teaching resources",
        children: [

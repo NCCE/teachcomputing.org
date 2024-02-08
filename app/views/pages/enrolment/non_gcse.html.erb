@@ -1,0 +1,106 @@
+<%= render HeroComponent.new(title: "Expanding Key Stage 4 qualifications: introducing GCSE Computer Science", small_title: true) %>
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <p class="govuk-body-m">
+            We are dedicated to work with schools that don’t currently offer GCSE
+            Computer Science to their students. You can get fully-funded support
+            from a dedicated Subject Matter Expert (SME) who will work with you for
+            up to three full days to determine the next steps, create an action plan
+            and support you on your journey.
+          </p>
+
+          <a href="https://forms.office.com/e/VHwFA9aS3g" class="govuk-button button">Request SME support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--lg">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Start your journey towards offering GCSE Computer Science</h2>
+          <p class="govuk-body-m">
+            Our support will help you ensure a sustainable computing department,
+            improve provision and build confidence – ultimately getting you in a
+            better position to offer this key subject to your students.
+          </p>
+
+          <%= render BorderedCardsComponent.new(
+            cards: non_gcse_card_data_2,
+            cards_per_row: 3,
+            class_name: "bordered-cards--logos bordered-cards--tops",
+          ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--lg">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Not quite ready to offer GCSE Computer Science?</h2>
+          <p class="govuk-body-m">We offer support to all computing teachers to help build confidence, advance your subject knowledge and get support you with your workload and capacity.</p>
+        </div>
+      </div>
+      <%= render BorderedCardsComponent.new(
+        cards: non_gcse_card_data,
+        cards_per_row: 3,
+        class_name: "bordered-cards--tops")
+      %>
+    </div>
+  </div>
+</div>
+
+<%= render TestimonialsComponent.new(
+  testimonials: non_gcse_testimonials_data,
+  testimonials_per_row: 2,
+  event_tracking_category: "",
+) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-right-8">
+        <h2 class="govuk-heading-m">Subject Matter Expert support</h2>
+        <p class="govuk-body-s">
+          The National Centre for Computing Education Subject Matter Experts (SMEs)
+          will support you at every step of your journey to begin offering Computer
+          Science GCSE to students in your school.
+        </p>
+        <p class="govuk-body-s">
+          Through consultation with an SME you will understand the wide range of
+          support available. Our SMEs will help you and your team create an action
+          plan for working towards delivering the subject effectively, identify professional
+          development needs and receive up to three full days of bespoke support.
+        </p>
+        <a href="https://forms.office.com/e/VHwFA9aS3g" class="govuk-button button">Request support</a>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <%= render BursaryComponent.new(title: "Funding and local support") do %>
+          <p class="govuk-body-s">
+            Schools that are committed to work on their computing provision ultimately
+            ending in offering Computer Science GCSE within the two full academic years,
+            will receive additional <a href="/funding#school-support">funding and support</a> to help upskill their teachers, as
+            well as extra funding for materials like computer science textbooks and substitute teacher support. 
+          </p>
+          <p class="govuk-body-s">
+            Our network of <a href="/hubs">Computing Hubs</a> is also on hand to help with curriculum
+            design, subject knowledge, physical computing kits and expert guidance.
+            Your local Hub will work with you to identify your computing needs and
+            provide a targeted programme of support to help embed computer science in your school.
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
