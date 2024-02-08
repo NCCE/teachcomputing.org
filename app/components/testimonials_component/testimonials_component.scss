@@ -10,9 +10,7 @@
     line-height: 1.4;
     padding: 10px;
     color: $govuk-text-colour !important;
-    @include govuk-media-query($from: tablet) {
-      padding: 18px;
-    }
+    padding: 18px;
   }
   &__bio {
     display: grid;
@@ -30,11 +28,13 @@
   &__bio > *:last-child {
     margin-bottom: 0;
   }
+
   &__image {
     border: 2px solid $orange;
     border-radius: 24px;
     height: 48px;
     width: 48px;
+    object-fit: cover;
   }
 }
 
@@ -55,8 +55,6 @@
     @include govuk-media-query($from: desktop) {
       padding-left: 45px;
     }
-  }
-  &__quote {
   }
   &__image {
     border: 2px solid $orange;
@@ -84,3 +82,63 @@
     border-radius: 0;
   }
 }
+
+.lp-testimonials {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 30px 16px 30px;
+  gap: 24px;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: repeat(var(--testimonials-per-row, 2), 1fr);
+  }
+
+}
+
+.lp-testimonials__testimonial{
+  display: none;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  align-self: self-start;
+  row-gap: 0;
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+  }
+}
+
+.lp-testimonials__testimonial:first-of-type{
+  display: grid;
+}
+
+.lp-testimonials__testimonial:not(:last-of-type){
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+  }
+}
+
+.lp-testimonials__testimonial-bio {
+  padding: 0;
+}
+
+.lp-testimonials__testimonial-bio-text {
+  margin-left: 12px;
+  strong {
+    display: block;
+    margin-bottom: .25rem;
+  }
+}
+
+.careers-week__testimonials {
+  display: grid;
+  grid-row-gap: 1.5 * $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    grid-column-gap: 30px;
+    grid-row-gap: 1.5 * $logo-block;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+ }
