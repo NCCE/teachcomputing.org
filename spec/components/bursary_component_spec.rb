@@ -1,9 +1,23 @@
 require "rails_helper"
 
 RSpec.describe BursaryComponent, type: :component do
+  include ActionView::Helpers::TagHelper
+
   it "has a title" do
     render_inline(described_class.new)
     expect(page).to have_css(".bursary-component__title", text: "Funding")
+  end
+
+  it "renders a custom title" do
+    render_inline(described_class.new(title: "Foo"))
+    expect(page).to have_css(".bursary-component__title", text: "Foo")
+  end
+
+  it "renders custom content" do
+    render_inline(described_class.new) do
+      content_tag :div, "Foo"
+    end
+    expect(page).to have_css(".bursary-component div", text: "Foo")
   end
 
   it "renders a link" do
