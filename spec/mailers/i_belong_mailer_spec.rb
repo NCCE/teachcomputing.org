@@ -90,6 +90,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       expect(mail.body.encoded).to include("<title>#{mail_subject}</title>")
     end
 
+    it "includes link to press pack" do
+      expect(mail.html_part.body.to_s).to have_link("Access the pack here",
+        href: "https://static.teachcomputing.org/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf")
+    end
+
     context "when viewing plain text" do
       it "greets the user" do
         expect(mail.text_part.body.to_s).to match(/Dear Tobias,/)
@@ -98,6 +103,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       it "includes email address" do
         expect(mail.text_part.body.to_s)
           .to match(/Any questions\?\s*Please contact info@teachcomputing.org/)
+      end
+
+      it "includes url to press pack" do
+        expect(mail.text_part.body.to_s)
+          .to match(/https:\/\/static.teachcomputing.org\/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf/)
       end
     end
   end
