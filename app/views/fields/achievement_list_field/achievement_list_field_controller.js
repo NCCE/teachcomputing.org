@@ -5,9 +5,6 @@ export default class extends ApplicationController {
   currentStateFilter = null;
   currentProgrammeFilter = null;
 
-  initialize() {
-  }
-  
   filter() {
     this.currentStateFilter = this.stateFilterTarget.value;
     this.currentProgrammeFilter = this.programmeFilterTarget.value;
