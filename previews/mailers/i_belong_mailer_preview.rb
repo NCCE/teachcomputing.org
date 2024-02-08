@@ -30,4 +30,8 @@ class IBelongMailerPreview < ActionMailer::Preview
   def inactive_everything_but_increase_engagement
     IBelongMailer.with(user: User.first, preview: true).inactive_everything_but_increase_engagement
   end
+
+  def auto_enrolled
+    IBelongMailer.with(user: User.first, preview: true).auto_enrolled
+  end
 end

@@ -32,6 +32,39 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
   end
 
+  describe "auto_enrolled" do
+    let(:mail) { IBelongMailer.with(user: user).auto_enrolled }
+    let(:mail_subject) { "Welcome to I Belong: Encouraging girls into computer science!" }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(mail_subject)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@teachcomputing.org"])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(/Hi Tobias,\s*We can see you've been working/)
+    end
+
+    it "includes the subject in the email" do
+      expect(mail.body.encoded).to include("<title>#{mail_subject}</title>")
+    end
+
+    it "contains the certificate dashboard link" do
+      expect(mail.body.encoded).to have_link("Explore activities in your dashboard", href: %r{/certificate/i-belong})
+    end
+
+    it "contains the unenroll link" do
+      expect(mail.body.encoded).to have_link("Unenrol me from the programme", href: %r{/i_belong/auto_enrolment/unenroll})
+    end
+
+    context "when viewing plain text" do
+      it "greets the user" do
+        expect(mail.text_part.body.to_s).to match(/Hi Tobias,\s*We can see you've been working/)
+      end
+    end
+  end
+
   describe "pending" do
     let(:mail) { IBelongMailer.with(user: user).pending }
     let(:mail_subject) { "Thank you for participating in the I Belong programme" }

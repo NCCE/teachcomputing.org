@@ -1,5 +1,6 @@
 class IBelongMailer < ApplicationMailer
   before_action :assign_user
+  helper ApplicationHelper
 
   def completed
     @subject = "Congratulations on your achievement #{@user.full_name}"
@@ -51,7 +52,7 @@ class IBelongMailer < ApplicationMailer
 
   def auto_enrolled
     @user = params[:user]
-    @subject = "Welcome to I Belong"
+    @subject = "Welcome to I Belong: Encouraging girls into computer science!"
 
     mail(to: @user, subject: @subject)
   end
