@@ -183,6 +183,7 @@ Rails.application.routes.draw do
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
   get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  get "/gcse-cs-support", to: "pages#non_gcse", as: :non_gcse, defaults: {page_slug: "gcse-cs-support"}
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}

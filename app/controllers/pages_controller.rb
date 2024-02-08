@@ -19,6 +19,10 @@ class PagesController < ApplicationController
     render template: "pages/home/index"
   end
 
+  def non_gcse
+    render template: "pages/enrolment/non_gcse"
+  end
+
   def i_belong
     if current_user
       programme = Programme.i_belong
