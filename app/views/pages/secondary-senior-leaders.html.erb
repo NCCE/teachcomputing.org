@@ -1,5 +1,5 @@
 <% meta_tag :title, t('.hero.title') %>
-<% meta_tag :description, 'We support school and college leaders to drive school improvement and pupil outcomes through an inspirational computing education. Discover resources, CPD and enrichment.' %>
+<% meta_tag :description, t('.hero.subtitle') %>
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
@@ -88,10 +88,10 @@
               link: { link_url: secondary_certification_url, link_title: t('.objectives.cards.certification.link_text')}
             },
             {
-              title: t('.objectives.cards.download_brochure.title'),
-              text: t('.objectives.cards.download_brochure.text.html'),
+              title: t('.objectives.cards.download-brochure.title'),
+              text: t('.objectives.cards.download-brochure.text.html'),
               image_url: 'media/images/pages/secondary-senior-leaders/secondary_brochure.svg',
-              link: { link_url: 'https://static.teachcomputing.org/NCCE_Secondary_Brochure_Digital_September.pdf', link_title: t('.objectives.cards.download_brochure.link_text')}
+              link: { link_url: 'https://static.teachcomputing.org/NCCE_Secondary_Brochure_Digital_September.pdf', link_title: t('.objectives.cards.download-brochure.link_text')}
             },
           ]
         )%>
@@ -114,7 +114,7 @@
 
           <%= render BorderedCardsComponent.new(
             cards_per_row: 3,
-            class_name: 'teacher-help-cards',
+            class_name: 'resources-help-cards',
             cards: [
               {
                 class_name: 'bordered-card--secondary-cert',

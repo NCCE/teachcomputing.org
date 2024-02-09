@@ -20,7 +20,7 @@ en:
             text:
               html: "Help your staff attain their career goals and meet the rise in student demand by building your teachers’ skills and knowledge.<br /><br />Our certificates are accredited by BCS, the Chartered Institute for IT, and provide a full programme of courses and activities to upskill your staff in various areas of computing teaching."
             link_text: "Find out more"
-          download_brochure:
+          download-brochure:
             title: "Download our Secondary brochure"
             text:
               html: "Find out more about the full National Centre for Computing Education offer, including how our CPD can aid your teachers' development, the certificates they can gain, and all the programmes that would benefit your school in developing your computing provision."

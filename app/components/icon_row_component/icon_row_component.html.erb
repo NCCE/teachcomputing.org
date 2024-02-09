@@ -1,10 +1,10 @@
 
-<div class="icon-row">
+<div class="icon-row-component">
   <% @icons.each do |icon| %>
-    <div class="icon-row_icon">
+    <div class="icon-row-component_icon">
 
       <%= image_pack_tag icon[:image_url] if icon[:image_url] %>
-      <div class="icon-row_icon_content">
+      <div class="icon-row-component-icon_content">
         <p class="govuk-body govuk-!-text-align-centre"><%= icon[:text] %></p>
       </div>
 

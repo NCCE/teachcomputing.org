@@ -1,5 +1,5 @@
 <% meta_tag :title, t('.hero.title') %>
-<% meta_tag :description, 'Guidance and support for primary schools to drive school improvement and pupil outcomes through inspirational computing teaching. Explore resources, CPD and enrichment.' %>
+<% meta_tag :description, t('.hero.subtitle') %>
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
@@ -74,16 +74,16 @@
               link: { link_url: courses_url, link_title: t('.objectives.cards.confidence.link_text')}
             },
             {
-              title: t('.objectives.cards.teach_primary.title'),
-              text: t('.objectives.cards.teach_primary.text.html'),
+              title: t('.objectives.cards.teach-primary.title'),
+              text: t('.objectives.cards.teach-primary.text.html'),
               image_url: 'media/images/pages/primary-senior-leaders/teach_primary_computing.svg',
-              link: { link_url: primary_certificate_url, link_title: t('.objectives.cards.teach_primary.link_text')}
+              link: { link_url: primary_certificate_url, link_title: t('.objectives.cards.teach-primary.link_text')}
             },
             {
-              title: t('.objectives.cards.download_brochure.title'),
-              text: t('.objectives.cards.download_brochure.text.html'),
+              title: t('.objectives.cards.download-brochure.title'),
+              text: t('.objectives.cards.download-brochure.text.html'),
               image_url: 'media/images/pages/primary-senior-leaders/download_brochure.svg',
-              link: { link_url: 'https://static.teachcomputing.org/NCCE_Primary_Brochure_Digital_September.pdf', link_title: t('.objectives.cards.download_brochure.link_text')}
+              link: { link_url: 'https://static.teachcomputing.org/NCCE_Primary_Brochure_Digital_September.pdf', link_title: t('.objectives.cards.download-brochure.link_text')}
             },
           ]
         )%>
@@ -106,7 +106,7 @@
 
           <%= render BorderedCardsComponent.new(
             cards_per_row: 3,
-            class_name: 'teacher-help-cards',
+            class_name: 'resources-help-cards',
             cards: [
               {
                 class_name: 'bordered-card--primary-cert',
