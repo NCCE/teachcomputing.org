@@ -103,3 +103,11 @@
 
   background-size: 24px 24px;
 }
+
+.icon-link-external {
+  @include icon('../images/icons/link-external.svg');
+}
+
+.in-link {
+  margin-left: 0.5rem;
+}

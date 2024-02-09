@@ -2,107 +2,54 @@ en:
   pages:
     secondary-senior-leaders:
       hero:
-        title: "Support for Secondary Senior Leaders"
-        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for schools and colleges, including free resources and high-impact training, to drive school improvement and pupil outcomes."
-      quality-framework-tick-list:
-        title: "The Computing Quality Framework"
-        text: "The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:"
-        bullets:
-          identify: "Identify strengths and weaknesses in your computing curriculum"
-          feedback: "Gain feedback and suggested actions, including relevant resources"
-          track: "Track progress towards achieving our accredited Computing Quality Mark"
-        button:
-          title: "Register for the Computing Quality Framework"
-          url: "https://computingqualityframework.org/"
-          event-label: "Computing Quality Framework"
-      guidance-tick-list:
-        title: "Guidance for offering computing"
-        text: "We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to:"
-        bullets:
-          identify: "Identify your specific needs"
-          develop: "Develop an action plan"
-          recommend: "Recommend courses to support progression"
-        button:
-          title: "Contact your local Computing Hub"
-          url: "/hubs"
-          event-label: "Computing Hubs"
-      how-we-help:
-        title: "How we can help your teachers"
+        title: "Supporting secondary schools and colleges to teach computing"
+        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for schools and colleges, including free resources and high-impact training, to drive school improvement and student outcomes."
+      support:
+        title: "Support for senior leaders"
+        paragraph_1: "Prepare young people for the future by providing excellent computing education in your school. We are here to support senior leaders and their leadership teams to upskills your staff, incorporate good practice and bring the subject to life."
+        paragraph_2: "Growth begins with identifying areas for improvement and working on them. Our comprehensive offer and support will help identify your computing needs and provide a targeted programme of support to help embed this key subject in your school or college. The NCCE can help you with:"
+      objectives:
         cards:
-          courses:
-            title: "Professional development courses"
+          invest: 
+            title: "Invest in your teachers’ development"
+            text: 
+              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD.<br /><br />All courses are delivered free of charge for state-funded education, with subsidies available to eligible schools."
+            link_text: "Explore all courses"
+          certification: 
+            title: "Nationally recognised certification"
             text:
-              html: "Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.<br/><br/>To support teacher participation, we offer financial support to state-funded schools and colleges across England. %{all_courses_link} are fully-funded or low-cost, with generous subsidies for supply cover"
-              all-courses-link:
-                title: "All courses"
-                url: "/courses"
-                event-label: "courses"
-            link:
-              title: "Check your eligibility"
-              url: "/funding"
-              event-label: "Funding"
-          certification:
-            title: "Nationally-recognised certification"
+              html: "Help your staff attain their career goals and meet the rise in student demand by building your teachers’ skills and knowledge.<br /><br />Our certificates are accredited by BCS, the Chartered Institute for IT, and provide a full programme of courses and activities to upskill your staff in various areas of computing teaching."
+            link_text: "Find out more"
+          download_brochure:
+            title: "Download our Secondary brochure"
             text:
-              html: "Help your staff reach their career goals and meet the rise in student demand, with %{our_accelerator_link}. It supports current and aspiring computing teachers to develop the knowledge to teach computer science up to GCSE.<br/><br/>Our Teach secondary computing certificate builds on this, as well as advancing pedagogy."
-              accelerator-link:
-                title: "our KS3 and GCSE Computer Science Subject knowledge certificate"
-                url: "/subject-knowledge"
-                event-label: "CSA certificate"
-              certificate-link:
-                title: "Secondary certificate"
-                url: "/secondary-certificate"
-                event-label: "Secondary certificate"
-            link:
-              title: "View our secondary teacher certification"
-              url: "/secondary-certification"
-              event-label: "Senior leader guide"
-          resources:
-            title: "Full curriculum resources for Key Stages 3 and 4"
+              html: "Find out more about the full National Centre for Computing Education offer, including how our CPD can aid your teachers' development, the certificates they can gain, and all the programmes that would benefit your school in developing your computing provision."
+            link_text: "Read our Brochure"
+      resources:
+        title: "Resources"
+        description: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. We have a wide range of free resources available to help your team support student development and hone their computing skill and knowledge, effectively preparing them for the world of tech and computing career opportunities."
+        cards:
+          curriculum:
+            title: "Curriculum resources for Key Stages 3 and 4"
             text:
-              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br/><br/>It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br /><br />It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
             link:
               title: "Browse teaching resources"
               url: "/curriculum"
-              event-label: "Curriculum resources"
-      student-help:
-        image:
-          alt: 'A teacher teaching'
-        logo:
-          alt: 'Isaac logo'
-        title: "How we can help you and your students"
-        text: "Isaac Computer Science is our free online learning programme for A level and GCSE computer science students and teachers, providing learning materials that cover the AQA, Edexcel, Eduqas, OCR and WJEC curriculums."
-        button:
-          title: "Discover Isaac Computer Science"
-          url: "https://isaaccomputerscience.org/"
-          event-label: "Isaac CS"
-      partners:
-        title: "Explore our partners"
-        text:
-          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our %{educational_partners_link} offer complementary programmes to help your school or college provide inspirational computing activities and extra-curricular experiences for your students."
-          educational-partners-link:
-            title: "educational partners"
-            url: "/contributing-partners"
-            event-label: "Partners"
-        cards:
-          stem:
-            title: "STEM Ambassadors"
-            text: "Relatable professionals who support learning, raise aspirations and illuminate careers - including those in computing and the digital sector - face to face or virtually, free of charge."
+              event-label: "curriculum"
+          isaac:
+            title: "Isaac Computer Science"
+            text:
+              html: "The free online textbook for GCSE and A level Computer Science teachers and students with resources covering the full English curriculum and all exam specifications.<br /><br />Isaac Computer Science is great for supporting remote teaching, homework and revision sessions, and helps you to quickly identify areas where students can improve."
             link:
-              title: "Engage with STEM Ambassadors"
-              url: "https://www.stem.org.uk/stem-ambassadors"
-              event-label: "STEM Ambassadors"
-          code-club:
-            title: "Code Club"
-            text: "An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club."
+              title: "Discover Isaac Computer Science"
+              url: "/issac_computer_science"
+              event-label: "issac computer science"
+          enrichment:
+            title: "Enrichment"
+            text:
+              html: "Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.<br /><br />Running an enrichment activity also supports teachers' progress through the %{teaching_link}."
             link:
-              title: "Start or join a club"
-              url: "https://codeclub.org/en/"
-              event-label: "Code Club"
-          bebras:
-            title: "Bebras UK"
-            text: "The Bebras Computing Challenge introduces computational thinking to students. It is organized in over 50 countries and designed to get students all over the world excited about computing."
-            link:
-              title: "Work with us"
-              url: "https://www.bebras.uk/"
-              event-label: "Bebras"
+              title: "Explore enrichment activities"
+              url: "/secondary-enrichment"
+              event-label: "secondary enrichment"

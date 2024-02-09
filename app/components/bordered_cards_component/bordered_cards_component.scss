@@ -38,6 +38,10 @@
     border-top: solid 9px $secondary-cert-color;
   }
 
+  &--isaac {
+    border-top: solid 9px $isaac;
+  }
+
   @include govuk-media-query($from: tablet) {
     padding: $component-padding;
   }

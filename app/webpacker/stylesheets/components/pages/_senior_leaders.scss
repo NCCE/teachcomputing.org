@@ -1,0 +1,15 @@
+
+
+.senior-leaders {
+  &.non-bordered-cards-component {
+    .non-bordered-card__text {
+      flex-grow: 0;
+    }
+  }
+
+}
+
+.senior-aside-button {
+  width: 100%;
+  line-height: 1.4rem;
+}

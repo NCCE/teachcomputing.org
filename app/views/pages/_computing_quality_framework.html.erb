@@ -1,0 +1,30 @@
+<div class="card--simple">
+  <div>
+    <h2 class="govuk-heading-m card__heading">
+      Computing Quality Framework
+    </h2>
+  </div>
+  <p class="govuk-body card__text">
+    Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>identify strengths and weaknesses in your computing curriculum</li>
+    <li>gain feedback and suggested actions, including relevant resources</li>
+    <li>
+      track progress towards achieving our accredited 
+      <%= link_to "Computing Quality Mark<i class='icon-link-external in-link'></i>".html_safe, "https://computingqualityframework.org/accreditation/ncce-computing-quality-mark/",
+        target: "_blank" %>
+    </li>
+  </ul>
+  <p class="govuk-body card__text">
+    You can also join a <%= link_to 'Computing Cluster', cms_page_path("computing-clusters") %> to work collaboratively with other schools to improve your computing provision.
+  </p>
+  <p class="govuk-body govuk-!-margin-bottom-0">
+    <%= link_to 'Register now', '',
+      class: 'button govuk-button',
+      data: { event_action: 'click',
+              event_category: '',
+              event_label: '' }
+    %>
+  </p>
+</div>
