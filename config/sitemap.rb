@@ -1,10 +1,16 @@
+# test this file in development with bin/rails sitemap:refresh:no_ping
+
 SitemapGenerator::Sitemap.default_host = "https://teachcomputing.org"
 SitemapGenerator::Sitemap.public_path = "tmp/"
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider: "AWS",
-  aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-  aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-  fog_directory: ENV["AWS_S3_SITEMAP_BUCKET"],
-  fog_region: ENV["AWS_S3_REGION"])
+if Rails.env.production?
+  SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider: "AWS",
+    aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+    fog_directory: ENV["AWS_S3_SITEMAP_BUCKET"],
+    fog_region: ENV["AWS_S3_REGION"])
+end
+# otherwise implicitly use a file adapter
+
 SitemapGenerator::Sitemap.sitemaps_host = "https://s3-#{ENV["AWS_S3_REGION"]}.amazonaws.com/#{ENV["AWS_S3_SITEMAP_BUCKET"]}/"
 SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/"
 SitemapGenerator::Sitemap.create_index = false
@@ -43,5 +49,14 @@ SitemapGenerator::Sitemap.create do
 
   Achiever::Course::Template.all.each do |course|
     add course_path(id: course.activity_code, name: course.title.parameterize), changefreq: "weekly"
+  end
+
+  require_relative "../app/helpers/curriculum_helper"
+  extend ::CurriculumHelper
+  CurriculumClient::Queries::KeyStage.all.key_stages.each do |key_stage|
+    add curriculum_key_stage_units_path(key_stage.slug)
+    key_stage.year_groups.each do |year_group|
+      add curriculum_key_stage_units_path(key_stage.slug, anchor: year_group_anchor(year_group.year_number))
+    end
   end
 end
