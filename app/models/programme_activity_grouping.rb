@@ -14,10 +14,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   store_accessor :web_copy, %i[course_requirements], prefix: true
 
   def user_complete?(user)
-    ProgrammeActivityGroupingCompletion.users_completed_completion_counted(
-      programme_activity_grouping: self,
-      users: [user]
-    ).values.first
+    users_completed(users: [user]).values.first
   end
 
   def formatted_title
@@ -45,5 +42,32 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
   def progress_bar_path
     "##{id}"
+  end
+
+  # completion counted
+  def users_completed(users:)
+    users_achievement_activity_ids = fetch_users_achievement_activity_ids(users:)
+
+    activities = programme_activities.includes(:activity).map(&:activity)
+
+    users.map do |user|
+      completed_activity_count = activities
+        .count { _1.id.in?(users_achievement_activity_ids[user.id] || []) }
+
+      [user.id, completed_activity_count >= required_for_completion]
+    end.to_h
+  end
+
+  protected def fetch_users_achievement_activity_ids(users:)
+    Achievement
+      .in_state(:complete)
+      .belonging_to_programme(programme)
+      .joins(activity: :programme_activities)
+      .where(
+        activities: {programme_activities: {legacy: false}},
+        user: users
+      )
+      .group_by(&:user_id)
+      .transform_values { _1.map(&:activity_id) }
   end
 end

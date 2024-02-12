@@ -20,19 +20,22 @@ module ReportGeneration
         .group_by(&:user_id)
 
       programmes.each do |programme|
-        if programme.primary_certificate?
-          users_completed_cpd_component = ProgrammeActivityGroupingCompletion.users_completed_credit_counted(
-            programme_activity_grouping: programme.programme_objectives.first,
-            users:
-          )
-        end
+        cpd_index = programme.secondary_certificate? ? 1 : 0
 
-        if programme.secondary_certificate?
-          users_completed_cpd_component = ProgrammeActivityGroupingCompletion.users_completed_credit_counted(
-            programme_activity_grouping: programme.programme_objectives.second,
-            users:
-          )
-        end
+        users_completed_cpd_component =
+          programme
+            .programme_objectives[cpd_index]
+            &.users_completed(users:)
+
+        users_completed_first_community_component =
+          programme
+            .programme_objectives[cpd_index + 1]
+            &.users_completed(users:)
+
+        users_completed_second_community_component =
+          programme
+            .programme_objectives[cpd_index + 2]
+            &.users_completed(users:)
 
         users_completed_programme = UserProgrammeEnrolment
           .in_state(:complete)
@@ -69,6 +72,8 @@ module ReportGeneration
             enrolled_at: user_programme_enrolment&.created_at,
             last_active_at: last_achievement&.updated_at,
             completed_cpd_component: users_completed_cpd_component&.dig(user.id) || false,
+            completed_first_community_component: users_completed_first_community_component&.dig(user.id) || false,
+            completed_second_community_component: users_completed_second_community_component&.dig(user.id) || false,
             completed_certificate: user.id.in?(users_completed_programme),
             pending_certificate: user.id.in?(users_pending_programme),
             created_at: now,
