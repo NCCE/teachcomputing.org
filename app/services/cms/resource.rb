@@ -5,9 +5,9 @@ module Cms
     def initialize(id:, attributes:)
       @id = id
       @attributes = attributes
-      @createdAt = DateTime.parse(@attributes[:createdAt])
-      @updatedAt = DateTime.parse(@attributes[:updatedAt])
-      @publishedAt = DateTime.parse(@attributes[:publishedAt])
+      @created_t = DateTime.parse(@attributes[:createdAt])
+      @updated_at = DateTime.parse(@attributes[:updatedAt])
+      @published_at = DateTime.parse(@attributes[:publishedAt])
     end
 
     def self.attribute_mappings
@@ -19,8 +19,8 @@ module Cms
     end
 
     def self.get(params: {})
-      populateParams = attribute_mappings.keys.to_h { ["populate[#{_1}]", "*"] }
-      data = Cms::Request.one(resource_key(params:), populateParams)
+      populate_params = attribute_mappings.keys.to_h { ["populate[#{_1}]", "*"] }
+      data = Cms::Request.one(resource_key(params:), populate_params)
       new(**data)
     end
   end

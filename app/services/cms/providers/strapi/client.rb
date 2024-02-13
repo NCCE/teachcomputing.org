@@ -14,10 +14,12 @@ module Cms
           response = @connection.get(collection_key, params)
           body = JSON.parse(response.body, symbolize_names: true)
           {
-            resources: body[:data].map{ {
-              id: _1[:id],
-              attributes: _1[:attributes]
-            } },
+            resources: body[:data].map {
+              {
+                id: _1[:id],
+                attributes: _1[:attributes]
+              }
+            },
             page: body[:meta][:pagination][:page],
             page_size: body[:meta][:pagination][:pageSize],
             page_number: body[:meta][:pagination][:pageCount],

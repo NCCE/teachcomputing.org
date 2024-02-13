@@ -1,7 +1,6 @@
 module Cms
   module Collections
     class PrimaryComputingGlossaryTable < CollectionResource
-
       def self.attribute_mappings
         {
           Alogrithm: {
