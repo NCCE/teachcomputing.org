@@ -13,7 +13,7 @@ en:
           invest: 
             title: "Invest in your teachers’ development"
             text: 
-              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD.<br /><br />All courses are delivered free of charge for state-funded education, with subsidies available to eligible schools."
+              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD.<br /><br />All courses are delivered free of charge for state-funded education, with %{subsidies_link} available to eligible schools."
             link_text: "Explore all courses"
           certification: 
             title: "Nationally recognised certification"

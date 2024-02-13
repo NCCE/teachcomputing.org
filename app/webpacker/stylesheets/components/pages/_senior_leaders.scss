@@ -6,10 +6,15 @@
       flex-grow: 0;
     }
   }
-
 }
 
 .senior-aside-button {
   width: 100%;
   line-height: 1.4rem;
+}
+
+.resources-help-cards {
+  .bordered-card__text a {
+    text-decoration: underline;
+  }
 }
