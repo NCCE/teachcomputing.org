@@ -1,7 +1,6 @@
 module Cms
   module Pages
     class PrivacyNotice < Resource
-
       def self.attribute_mappings
         {
           title: {
@@ -16,7 +15,6 @@ module Cms
       def self.resource_key(params: nil)
         "privacy-notice"
       end
-
     end
   end
 end
