@@ -41,12 +41,12 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
     {slug: "raise-aspirations-with-a-stem-ambassador-visit", legacy: false},
     {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity", legacy: false},
     {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: false},
-    {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
-    {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: false},
     {slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays", legacy: false},
-    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
+    {slug: "complete-the-i-belong-programme-as-a-school", legacy: false},
 
     # Legacy activities
+    {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: true},
+    {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: true},
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
     {slug: "complete-a-cs-accelerator-course", legacy: true},
@@ -72,21 +72,21 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
   # Activities should never be removed, only marked as legacy
   activities = [
     {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
-    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
-    {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
-    {slug: "gain-accreditation-as-an-i-belong-champion", legacy: false},
+    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
     {slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing", legacy: false},
-    {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
-    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
+    {slug: "become-an-i-belong-champion", legacy: false},
 
     # Legacy activities
-    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
+    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: true},
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
     {slug: "complete-a-cs-accelerator-course", legacy: true},
-    {slug: "contribute-to-online-discussion-secondary", legacy: true}
+    {slug: "contribute-to-online-discussion-secondary", legacy: true},
+    {slug: "gain-accreditation-as-an-i-belong-champion", legacy: true},
+    {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: true},
+    {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|

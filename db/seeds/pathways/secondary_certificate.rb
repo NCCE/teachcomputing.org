@@ -155,7 +155,6 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit",
     "download-and-use-isaac-computer-science-classroom-resources-and-displays",
-    "encouraging-girls-into-gcse-computer-science-remote-short-course", # in both categories
     # Support your professional community
     "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
