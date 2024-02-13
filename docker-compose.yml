@@ -9,6 +9,7 @@ services:
         aliases:
           - curriculum.teachcomputing.test
           - curriculum.teachcomputing.rpfdev.com
+          - strapi.teachcomputing.rpfdev.com
 
   db:
     image: postgres:14
