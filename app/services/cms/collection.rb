@@ -10,5 +10,4 @@ module Cms
       @total_records = total_records
     end
   end
-
 end
