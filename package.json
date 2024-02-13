@@ -37,6 +37,7 @@
     "install": "^0.13.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
+    "purgecss": "^5.0.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "stylelint": "^13.13",
     "stylelint-config-prettier": "^8.0.2",
@@ -64,7 +65,8 @@
     "test": "yarn run exec rspec",
     "test-debug": "docker-compose exec web rdebug-ide --host 0.0.0.0 --port 1235 ./bin/rspec",
     "guard": "yarn run bundle exec guard",
-    "attach": "docker exec -it teachcomputingorg-web-1"
+    "attach": "docker exec -it teachcomputingorg-web-1",
+    "purge-error-css": "yarn purgecss -con public/error-pages/application-error.html -css public/error-pages/errors.css -o public/error-pages/errors.css"
   },
   "lint-staged": {
     "*.js": [
