@@ -67,7 +67,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "interception"
   gem "pry"
-  gem "pry-byebug", "~> 3.9.0"
+  gem "pry-byebug", "~> 3.10.1"
   gem "pry-rails"
   gem "pry-rescue"
   gem "rails-erd"
