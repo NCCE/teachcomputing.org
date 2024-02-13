@@ -17,7 +17,10 @@ module Cms
             resources: body[:data].map {
               {
                 id: _1[:id],
-                attributes: _1[:attributes]
+                attributes: _1[:attributes],
+                created_at: _1[:attributes][:createdAt],
+                updated_at: _1[:attributes][:updatedAt],
+                published_at: _1[:attributes][:publishedAt]
               }
             },
             page: body[:meta][:pagination][:page],
