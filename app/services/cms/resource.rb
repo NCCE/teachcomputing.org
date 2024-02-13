@@ -18,9 +18,9 @@ module Cms
       raise NotImplementedError
     end
 
-    def self.get
-      params = attribute_mappings.keys.to_h { ["populate[#{_1}]", "*"] }
-      data = Cms::Request.one(resource_key, params)
+    def self.get(params: {})
+      populateParams = attribute_mappings.keys.to_h { ["populate[#{_1}]", "*"] }
+      data = Cms::Request.one(resource_key(params:), populateParams)
       new(**data)
     end
   end
