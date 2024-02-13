@@ -32,7 +32,10 @@ module Cms
           body = JSON.parse(response.body, symbolize_names: true)[:data]
           {
             id: body[:id],
-            attributes: body[:attributes]
+            attributes: body[:attributes],
+            created_at: body[:attributes][:createdAt],
+            updated_at: body[:attributes][:updatedAt],
+            published_at: body[:attributes][:publishedAt]
           }
         end
       end
