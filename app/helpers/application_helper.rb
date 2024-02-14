@@ -27,6 +27,10 @@ module ApplicationHelper
     cms_posts_url(tag: :press)
   end
 
+  def static_asset_url(filename)
+    "#{ENV.fetch("STATIC_FILE_PATH")}/#{filename}"
+  end
+
   def safe_redirect_url(url)
     allowed_redirect_urls = [
       %r{^https://teachcomputing.rpfdev.com},

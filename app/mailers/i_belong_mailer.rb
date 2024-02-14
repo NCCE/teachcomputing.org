@@ -1,5 +1,6 @@
 class IBelongMailer < ApplicationMailer
   before_action :assign_user
+  helper ApplicationHelper
 
   def completed
     @subject = "Congratulations on your achievement #{@user.full_name}"
@@ -47,6 +48,13 @@ class IBelongMailer < ApplicationMailer
     @subject = "You're almost there"
 
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: InactivityQueries.i_belong_all_but_increase_engagement_type)
+  end
+
+  def auto_enrolled
+    @user = params[:user]
+    @subject = "Welcome to I Belong: Encouraging girls into computer science!"
+
+    mail(to: @user, subject: @subject)
   end
 
   private

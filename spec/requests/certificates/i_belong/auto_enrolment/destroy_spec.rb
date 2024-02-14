@@ -2,16 +2,16 @@ require "rails_helper"
 
 RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator) }
+  let(:programme) { create(:i_belong) }
 
   describe "GET #destroy" do
-    subject(:unenroll) { get unenroll__cs_accelerator_auto_enrolment_path }
+    subject(:unenroll) { get unenroll__i_belong_auto_enrolment_path }
 
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     end
 
-    context "when user is enrolled on cs_accelerator" do
+    context "when user is enrolled on i_belong" do
       let!(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
       it "redirects to the dashboard path" do
@@ -35,7 +35,7 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
 
       it "flash notice has correct info" do
         unenroll
-        expect(flash[:notice]).to match(/You have successfully opted out of the KS3 and GCSE subject knowledge programme/)
+        expect(flash[:notice]).to match(/You have successfully opted out of I Belong/)
       end
     end
 
