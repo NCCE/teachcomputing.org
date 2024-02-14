@@ -2,93 +2,54 @@ en:
   pages:
     primary-senior-leaders:
       hero:
-        title: "Support for Primary Senior Leaders"
-        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for primary schools, including free resources and high-impact training, to drive school improvement and pupil outcomes."
-      quality-framework-tick-list:
-        title: "The Computing Quality Framework"
-        text: "The Computing Quality Framework helps you and your leadership team assess your computing offer. Use our guided journey to:"
-        bullets:
-          identify: "Identify strengths and weaknesses in your computing curriculum"
-          feedback: "Gain feedback and suggested actions, including relevant resources"
-          track: "Track progress towards achieving our accredited Computing Quality Mark"
-        button:
-          title: "Register for the Computing Quality Framework"
-          url: "https://computingqualityframework.org/"
-          event-label: "Computing Quality Framework"
-      guidance-tick-list:
-        title: "Guidance for offering computing"
-        text: "We offer guidance to schools finding it challenging to offer computing, and those in priority areas. Our subject matter experts will work with you to:"
-        bullets:
-          identify: "Identify your specific needs"
-          develop: "Develop an action plan"
-          recommend: "Recommend courses to support progression"
-        button:
-          title: "Contact your local Computing Hub"
-          url: "/hubs"
-          event-label: "Computing Hubs"
-      how-we-help:
-        title: "How we can help your teachers"
+        title: "Supporting primary schools to teach computing"
+        subtitle: "Funded by the Department for Education, the National Centre for Computing Education offers a comprehensive range of support for primary schools, including free classroom resources and high-impact teacher training, to drive school improvement and pupil outcomes."
+      support:
+        title: "Support for primary senior leaders"
+        paragraph_1: "Prepare young people for the future by providing excellent computing education in your school. We are here to support senior leaders and your computing subject leads to upskills your staff, incorporate good practice and bring the subject to life."
+        paragraph_2: "Growth begins with identifying areas for improvement and working on them. Our comprehensive offer and support will help identify your computing needs and provide a targeted programme of support to help embed this key subject in your school. The NCCE can help you with:"
+      objectives:
         cards:
-          courses:
-            title: "Professional development courses"
+          confidence: 
+            title: "Build confidence in your teachers"
+            text: 
+              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD. <br /><br />All courses are delivered free of charge for state-funded education, with %{subsidies_link} available to eligible schools."
+            link_text: "Explore all courses"
+          teach-primary: 
+            title: "Teach primary computing certificate"
             text:
-              html: "Our courses help you and your staff to develop outstanding computing teaching, build confidence and reduce teacher workload.<br/><br/>To support teacher participation, we offer financial support to state-funded schools and colleges across England. %{all_courses_link} are fully-funded or low-cost, with generous subsidies for supply cover"
-              all-courses-link:
-                title: "All courses"
-                url: "/courses"
-                event-label: "courses"
-            link:
-              title: "Check your eligibility"
-              url: "/funding"
-              event-label: "Funding"
-          certification:
-            title: "Nationally-recognised certification"
+              html: "Help your staff attain their career goals and meet the rise in pupil demand by building your teachers’ skills and knowledge. <br /><br />Our learning pathways will guide teachers through our courses, enrichment and resources, leading to them achieving a certificate accredited by BCS, the Chartered Institute for IT. <br /><br />Those teaching computing for the first time can also access a range of support, including introductory courses and teaching resources."
+            link_text: "Discover our Primary certificate"
+          download-brochure:
+            title: "Download our Primary brochure"
             text:
-              html: "Our training can support your staff throughout their career, with learning pathways available to guide teachers through our courses, enrichment and resources, leading to our accredited Teach primary computing certificate.<br/><br/>Those teaching computing for the first time can access a range of support, including introductory courses and teaching resources. Explore our certificate"
-            link:
-              title: "Discover our Primary certificate"
-              url: "/primary-certificate"
-              event-label: "primary certificate"
-          resources:
-            title: "Full curriculum resources for Key Stages 1 and 2"
+              html: "Find out more about the full National Centre for Computing Education offer, including how our CPD can aid your teachers' development, the certificates they can gain, and all the programmes that would benefit your school in developing your computing provision. "
+            link_text: "Read our brochure"
+      resources:
+        title: "Resources"
+        description: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. We have a wide range of free resources available to help your team support student development and hone their computing skill and knowledge, effectively preparing them for the world of tech and computing career opportunities."
+        cards:
+          curriculum:
+            title: "Curriculum resources for Key Stages 1 and 2"
             text:
-              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br/><br/>It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br /><br />It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
             link:
               title: "Browse teaching resources"
               url: "/curriculum"
-              event-label: "Curriculum resources"
-      student-help:
-        image:
-          alt: 'A teacher teaching'
-        logo:
-          alt: 'Isaac logo'
-      partners:
-        title: "How we can help your pupils"
-        text:
-          html: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. Our %{educational_partners_link} offer complementary programmes to help your school provide inspirational computing activities and extra-curricular experiences for your pupils."
-          educational-partners-link:
-            title: "educational partners"
-            url: "/contributing-partners"
-            event-label: "Partners"
-        cards:
-          stem:
-            title: "STEM Ambassadors"
-            text: "Relatable professionals who support learning, raise aspirations and illuminate careers - including those in computing and the digital sector - face to face or virtually, free of charge."
+              event-label: "curriculum"
+          glossary:
+            title: "Glossary of Primary computing terms"
+            text:
+              html: "Vocabulary is an important part of teaching and learning. We have designed this glossary as a tool to support and enhance teachers’ professional knowledge.<br /><br />For a teacher, a regular and consistent use of accurate, technical vocabulary can support pupils’ conceptual understanding."
             link:
-              title: "Engage with STEM Ambassadors"
-              url: "https://www.stem.org.uk/stem-ambassadors"
-              event-label: "STEM Ambassadors"
-          code-club:
-            title: "Code Club"
-            text: "An extracurricular club for young people aged 9 to 13. Clubs are organised by teachers and volunteers, and supported by free projects and resources from Code Club."
+              title: "Explore the primary glossary"
+              url: "/primary-computing-glossary"
+              event-label: "primary computing glossary"
+          enrichment:
+            title: "Enrichment"
+            text:
+              html: "Encourage your pupils to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways.<br /><br />Our enrichment activities will help inspire curiosity in your pupils and broaden their educational experience with fun hands-on learning."
             link:
-              title: "Start or join a club"
-              url: "https://codeclub.org/en/"
-              event-label: "Code Club"
-          barefoot:
-            title: "Barefoot"
-            text: "Deliver computing brilliantly, with free workshops, helpful online guides and engaging resources. Barefoot makes computing easy to teach and fun to learn, with or without a computer."
-            link:
-              title: "Discover Barefoot"
-              url: "https://www.barefootcomputing.org/"
-              event-label: "Barefoot"
+              title: "Explore enrichment activities"
+              url: "/primary-enrichment"
+              event-label: "primary enrichment"

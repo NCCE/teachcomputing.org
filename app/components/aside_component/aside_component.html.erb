@@ -23,14 +23,14 @@
     <%= body %>
   <% end %>
   <% if @link.present? %>
-  <p class="govuk-body-s aside-component__link">
-    <%= link_to @link[:text],
-      @link[:url],
-      class: @link[:class] || (@use_button ? 'govuk-button button button--aside' : 'ncce-link'),
-      role: 'button',
-      draggable: 'false',
-      data: tracking_data(@link[:tracking_label])
-    %>
+    <p class="govuk-body-s aside-component__link">
+      <%= link_to @link[:text],
+        @link[:url],
+        class: @link[:class] || (@use_button ? 'govuk-button button button--aside' : 'ncce-link'),
+        role: 'button',
+        draggable: 'false',
+        data: tracking_data(@link[:tracking_label])
+      %>
+    </p>
   <% end %>
-  </p>
 </div>
