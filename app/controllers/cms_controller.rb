@@ -27,6 +27,22 @@ class CmsController < ApplicationController
     render :article
   end
 
+  def cms_new_page
+    @resource = params[:page].get
+    render :resource
+  end
+
+  def collection
+    page =
+      if params[:page].present?
+        params[:page].to_i
+      else
+        1
+      end
+    @collection = params[:collection].all(page, 25)
+    render :collection
+  end
+
   def style_slug
     params[:parent_slug] || params[:page_slug]
   end
