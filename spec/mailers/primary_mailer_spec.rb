@@ -28,7 +28,7 @@ RSpec.describe PrimaryMailer, type: :mailer do
     it "includes the correct links in the email" do
       expect(enrolled_mail.body.encoded).to have_link(href: primary_certificate_url)
       expect(enrolled_mail.body.encoded).to have_link(href: hubs_url)
-      expect(enrolled_mail.body.encoded).to have_link(href: cms_page_url("funding", anchor: "#primary-subsidy"))
+      expect(enrolled_mail.body.encoded).to have_link(href: cms_page_url("funding", anchor: "primary-subsidy"))
     end
   end
 

@@ -24,7 +24,7 @@ en:
             title: "Download our Secondary brochure"
             text:
               html: "Find out more about the full National Centre for Computing Education offer, including how our CPD can aid your teachers' development, the certificates they can gain, and all the programmes that would benefit your school in developing your computing provision."
-            link_text: "Read our Brochure"
+            link_text: "Read our brochure"
       resources:
         title: "Resources"
         description: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. We have a wide range of free resources available to help your team support student development and hone their computing skill and knowledge, effectively preparing them for the world of tech and computing career opportunities."
@@ -43,8 +43,8 @@ en:
               html: "The free online textbook for GCSE and A level Computer Science teachers and students with resources covering the full English curriculum and all exam specifications.<br /><br />Isaac Computer Science is great for supporting remote teaching, homework and revision sessions, and helps you to quickly identify areas where students can improve."
             link:
               title: "Discover Isaac Computer Science"
-              url: "/issac_computer_science"
-              event-label: "issac computer science"
+              url: "/isaac-computer-science"
+              event-label: "isaac computer science"
           enrichment:
             title: "Enrichment"
             text:

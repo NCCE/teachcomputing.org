@@ -51,7 +51,7 @@
         <div class="govuk-grid-column-one-third">
           <%= render AsideComponent.new(
             title: "Not currently offering GCSE Computer Science?",
-            text: "We have additional funding and subject matter expert support available to schools and colleges with an ambition to add GCSE Computer Science as an option to their students. #{link_to 'Find our more', cms_page_url('computing-teaching-schools-support'), class: "govuk-button ncce-button__white senior-aside-button govuk-!-margin-top-3"}".html_safe
+            text: "We have additional funding and subject matter expert support available to schools and colleges with an ambition to add GCSE Computer Science as an option to their students. #{link_to 'Find out more', cms_page_url('computing-teaching-schools-support'), class: "govuk-button ncce-button__white senior-aside-button govuk-!-margin-top-3"}".html_safe
           ) %>
 
           <%= render AsideComponent.new(
@@ -78,7 +78,7 @@
             {
               title: t('.objectives.cards.invest.title'),
               text: t('.objectives.cards.invest.text.html',
-                  subsidies_link: (link_to('subsidies', cms_page_url('funding#secondary-subsidies')))),
+                  subsidies_link: (link_to('subsidies', cms_page_url('funding', anchor: 'secondary-subsidy')))),
               image_url: 'media/images/pages/secondary-senior-leaders/invest_in_your_teachers.svg',
 
               link: { link_url: courses_url, link_title: t('.objectives.cards.invest.link_text')}
