@@ -229,6 +229,8 @@ Rails.application.routes.draw do
   get "/cs-accelerator", to: redirect("/subject-knowledge")
 
   # CMS ROUTES
+  get "/privacy", to: "cms#cms_new_page", defaults: {page: Cms::Pages::PrivacyNotice}
+  get "/deep-test", to: "cms#cms_new_page", defaults: {page: Cms::Pages::DeepTest}
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/:parent_slug/:page_slug/refresh", to: "cms#clear_page_cache"
