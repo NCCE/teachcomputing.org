@@ -9,9 +9,9 @@ module Cms
         def all(collection_class, page, page_size, params)
           params[:pagination] = {
             page:,
-            pageSize: page_size,
-            fields: collection_class.collection_view_fields + collection_class.required_fields
+            pageSize: page_size
           }
+          params[:fields] = collection_class.collection_view_fields + collection_class.required_fields
           response = @connection.get(collection_class.resource_key, params)
           body = JSON.parse(response.body, symbolize_names: true)
           pagination = body[:meta][:pagination]
@@ -54,9 +54,8 @@ module Cms
         end
 
         def generate_url resource_key, params
-          url = resource_key
-          url += "/#{params[:resource_id]}" if params[:resource_id]
-          url
+          return "#{resource_key}/#{params[:resource_id]}" if params[:resource_id]
+          resource_key
         end
 
         def map_resource(data)

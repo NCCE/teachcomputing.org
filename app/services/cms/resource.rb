@@ -10,15 +10,14 @@ module Cms
       @published_at = DateTime.parse(published_at)
     end
 
-    def resource_view(attribute_key)
-      mapping = self.class.resource_attribute_mappings[attribute_key]
+    def resource_view(component)
       values = {}
-      values[mapping[:value_param]] = attribute_value(attribute_key)
-      mapping[:component].new(**values)
+      values[component[:value_param]] = attribute_value(component)
+      component[:component].new(**values)
     end
 
-    def attribute_value(attribute_key)
-      attributes[attribute_key]
+    def attribute_value(component)
+      attributes[component[:attribute]]
     end
 
     def self.resource_attribute_mappings
