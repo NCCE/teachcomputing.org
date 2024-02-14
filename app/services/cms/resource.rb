@@ -10,18 +10,32 @@ module Cms
       @published_at = DateTime.parse(published_at)
     end
 
-    def self.attribute_mappings
+    def resource_view(attribute_key)
+      mapping = self.class.resource_attribute_mappings[attribute_key]
+      values = {}
+      values[mapping[:value_param]] = attribute_value(attribute_key)
+      mapping[:component].new(**values)
+    end
+
+    def attribute_value(attribute_key)
+      attributes[attribute_key]
+    end
+
+    def self.resource_attribute_mappings
       raise NotImplementedError
     end
 
-    def self.resource_key(params: {})
+    def self.resource_key
       raise NotImplementedError
     end
 
     def self.get(params: {})
-      populate_params = attribute_mappings.keys.to_h { ["populate[#{_1}]", "*"] }
-      data = Cms::Request.one(resource_key(params:), populate_params)
+      data = Cms::Request.one(self, params)
       new(**data)
+    end
+
+    def self.required_fields
+      [:created_at, :updated_at, :published_at]
     end
   end
 end

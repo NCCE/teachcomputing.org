@@ -229,13 +229,15 @@ Rails.application.routes.draw do
   get "/cs-accelerator", to: redirect("/subject-knowledge")
 
   # CMS ROUTES
+  get "/privacy", to: "cms#cms_new_page", defaults: {page: Cms::Pages::PrivacyNotice}
+  get "/deep-test", to: "cms#cms_new_page", defaults: {page: Cms::Pages::DeepTest}
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/:parent_slug/:page_slug/refresh", to: "cms#clear_page_cache"
   get "/:page_slug/refresh", to: "cms#clear_page_cache"
 
   constraints ->(req) { req.format == :html } do
-    get "/blog", to: "cms#articles", as: :cms_posts
+    get "/blog", to: "cms#collection", defaults: {collection: Cms::Collections::Blog}, as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
     get "/blog/:page_slug", to: "cms#cms_post", as: :cms_post
     get "/:parent_slug/:page_slug", to: "cms#cms_page", as: :nested_cms_page
