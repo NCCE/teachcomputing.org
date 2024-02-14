@@ -2,16 +2,18 @@ module Cms
   module Pages
     class PrivacyNotice < Resource
       def self.resource_attribute_mappings
-        {
-          title: {
+        [
+          {
+            attribute: :title,
             component: HeroComponent,
             value_param: :title
           },
-          content: {
+          {
+            attribute: :content,
             component: CmsRichTextBlockComponent,
             value_param: :blocks
           }
-        }
+        ]
       end
 
       def self.resource_key

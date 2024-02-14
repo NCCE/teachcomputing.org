@@ -1,7 +1,6 @@
 module Cms
   module Pages
     class DeepTest < Resource
-
       def self.resource_attribute_mappings
         [
           {
@@ -29,12 +28,15 @@ module Cms
             fields: [{
               attribute: :cardHeaderImage
             }]
+          },
+          {
+            attribute: :anotherTest,
+            component: nil,
+            fields: [
+              {attribute: :footerImage},
+              {attribute: :headerImages}
+            ]
           }
-#          {
-#            attribute: :anotherTest,
-#            component: nil,
-#            fields: [:footerImage, :headerImages]
-#          }
         ]
       end
 
