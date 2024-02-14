@@ -9,8 +9,7 @@ module Cms
         def all(collection_class, page, page_size, params)
           params[:pagination] = {
             page:,
-            pageSize: page_size,
-            fields: collection_class.collection_view_fields + collection_class.required_fields
+            pageSize: page_size
           }
           params[:fields] = collection_view_fields(collection_class) + collection_class.required_fields
           params[:populate] = collection_view_populate(collection_class)
