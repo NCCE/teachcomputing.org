@@ -16,6 +16,7 @@
   padding: 1.125rem 1rem 1rem 1rem;
   visibility: hidden;
   width: stretch;
+  min-width: 10rem;
 
   @include govuk-media-query($from: desktop) {
     border-bottom: unset;
