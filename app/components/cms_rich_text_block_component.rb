@@ -11,13 +11,14 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       in { type: "list" } then List
       in { type: "list-item" } then ListItem
       in { type: "image" } then Image
+      in { type: "quote"} then Quote
       end
 
     klass.new(obj)
   end
 
   erb_template <<~ERB
-    <div class="govuk-width-container">
+    <div class="govuk-width-container cms-rich-text-block-component">
       <% @obj.each do |child| %>
         <%= render build(child) %>
       <% end %>
@@ -41,7 +42,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Heading < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <h1 class="govuk-heading-l">
+      <h1 class="<%= classes %>">
         <% @obj[:children].each do |child| %>
           <%= render build(child) %>
         <% end %>
@@ -50,6 +51,14 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
     def classes
       classes = []
+      classes <<
+        if @obj[:level] == 1
+          "govuk-heading-l"
+        elsif @obj[:level] == 2
+          "govuk-heading-m"
+        else
+          "govuk-heading-s"
+        end
       classes.join(" ")
     end
   end
@@ -63,11 +72,12 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
     def classes
       classes = []
-      classes << "govuk-!-font-weight-bold" if @obj.key?("bold")
-      # the CMS can attach text styles that we currently ignore:
-      # classes << "" if @obj.key?("code")
-      # classes << "" if @obj.key?("italic")
-      # classes << "" if @obj.key?("underline")
+      classes << "cms-rich-text-block-component__text--bold" if @obj.key?(:bold)
+      classes << "cms-rich-text-block-component__text--italic" if @obj.key?(:italic)
+      classes << "cms-rich-text-block-component__text--strikethrough" if @obj.key?(:strikethrough)
+      classes << "cms-rich-text-block-component__text--code" if @obj.key?(:code)
+      classes << "cms-rich-text-block-component__text--underline" if @obj.key?(:underline)
+
       classes.join(" ")
     end
   end
@@ -115,6 +125,16 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   class Image < CmsRichTextBlockComponent
     erb_template <<~ERB
       <%= image_tag(@obj.dig(:image, :url)) %>
+    ERB
+  end
+
+  class Quote < CmsRichTextBlockComponent
+    erb_template <<~ERB
+      <blockquote class="govuk-body-m">
+        <% @obj[:children].each do |child| %>
+          <%= render build(child) %>
+        <% end %>
+      </blockquote>
     ERB
   end
 end
