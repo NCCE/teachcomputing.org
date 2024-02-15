@@ -43,6 +43,11 @@ class CmsController < ApplicationController
     render :collection
   end
 
+  def collection_resource
+    @resource = params[:collection].get(params: {resource_id: params[:page_slug]})
+    render :resource
+  end
+
   def style_slug
     params[:parent_slug] || params[:page_slug]
   end

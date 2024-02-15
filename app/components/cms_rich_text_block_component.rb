@@ -6,6 +6,6 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   end
 
   def call
-    @blocks.to_s
+    ""
   end
 end

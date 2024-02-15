@@ -239,7 +239,7 @@ Rails.application.routes.draw do
   constraints ->(req) { req.format == :html } do
     get "/blog", to: "cms#collection", defaults: {collection: Cms::Collections::Blog}, as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
-    get "/blog/:page_slug", to: "cms#cms_post", as: :cms_post
+    get "/blog/:page_slug", to: "cms#collection_resource", as: :cms_post, defaults: {collection: Cms::Collections::Blog}
     get "/:parent_slug/:page_slug", to: "cms#cms_page", as: :nested_cms_page
     get "/:page_slug", to: "cms#cms_page", as: :cms_page
   end
