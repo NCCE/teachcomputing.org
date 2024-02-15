@@ -8,7 +8,6 @@ export default class extends ApplicationController {
     'form',
     'loadingBar',
     'courseList',
-    'clearFilters',
     'resultsCount',
     'resultsContainer',
     'hubMessage',
@@ -178,14 +177,6 @@ export default class extends ApplicationController {
     this.filterCount2Target.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
   }
 
-  toggleClearFilter() {
-    if (this.filterCount > 0) {
-      this.clearFiltersTarget.classList.remove(this.hiddenClass);
-    } else {
-      this.clearFiltersTarget.classList.add(this.hiddenClass);
-    }
-  }
-
   toggleLoadingBar() {
     const loadingBar = this.loadingBarTarget.classList;
     const courseList = this.courseListTarget.classList;
@@ -265,14 +256,6 @@ export default class extends ApplicationController {
 
 
     this.updateFilterCount();
-    this.toggleClearFilter();
-  }
-
-  clearFilters() {
-    this.toggleLoadingBar();
-    this.resultsCountTarget.innerText = this.defaultResultsCountString;
-    this.locationFiltering = false;
-    this.rangeFiltering = false;
   }
 
   openFilterForm() {
