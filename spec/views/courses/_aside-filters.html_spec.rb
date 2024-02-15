@@ -53,10 +53,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
         expect(rendered).to have_css(".ncce-courses__filter-form-toggle-applied.hidden")
       end
 
-      it "does not render the clear filters button" do
-        expect(rendered).to have_css(".ncce-courses__clear-filters.hidden")
-      end
-
       it "renders the filter aside closed by default" do
         expect(rendered).to have_css(".ncce-courses__filter-form-toggle")
       end
@@ -122,13 +118,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
       it "renders the filters applied count" do
         expect(rendered).not_to have_css(".ncce-courses__filter-form-toggle-applied.hidden")
         expect(rendered).to have_css(".ncce-courses__filter-form-toggle-applied", text: "1 filter applied")
-      end
-
-      it "renders the clear all filters link" do
-        expect(rendered).to have_link(
-          "Clear all filters",
-          href: courses_path(hub_id: "bla", anchor: "results-top")
-        )
       end
 
       it "selects the filter" do

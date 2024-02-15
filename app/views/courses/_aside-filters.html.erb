@@ -1,28 +1,25 @@
 <% unless @course_filter.nil? %>
-<div class="ncce-aside ncce-aside--filters" data-action="resize@window->course-filter#openFilterFormOnDesktop" data-course-filter-target="filterFormHeader">
+<h2 class="govuk-heading-s">Filter courses</h2>
+<div class="ncce-aside ncce-aside--filters govuk-!-margin-top-2">
+  <%= label_tag :date_range, 'Have a specific date?', class: 'govuk-body-m ncce-label--s' %>
+  <%= render DatepickerComponent.new(
+      "date_range",
+      nil,
+      flatpickr: { mode: "range" },
+      options: { data: { action: "changeRange->course-filter#filter changeRange->course-filter#addRangeFilter changeRange->course-filter#dateRangeSearched"} },
+      input_options: { placeholder: "Select a date or date range" }
+    ) 
+  %>
+</div>
+
+<div class="ncce-aside ncce-aside--filters govuk-!-margin-top-2" data-action="resize@window->course-filter#openFilterFormOnDesktop" data-course-filter-target="filterFormHeader">
   <div class="ncce-aside--filters-header">
-    <h2 class="govuk-body-m ncce-aside__title ncce-aside--filters__title">Filter courses</h2>
     <button type="button" class="ncce-courses__filter-form-toggle" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
       <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %></span>
       Filter courses
     </button>
   </div>
   <div class="ncce-courses__filter hidden" id="course-filter" data-course-filter-target="filterForm">
-    <div class='ncce-courses__clear-filters <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>' data-course-filter-target="clearFilters">
-      <%= link_to 'Clear all filters',
-        courses_path(anchor: 'results-top', hub_id: @filter_params[:hub_id]),
-        class: 'govuk-button button govuk-body-m',
-        method: :get, # force a reload
-        data: {
-          action: 'click->course-filter#clearFilters',
-          event_action: 'click',
-          event_category: 'Courses',
-          event_label: 'Clear all filters'
-        } %>
-    </div>
-
-
-
     <%= label_tag :level, 'Key Stage:', class: 'govuk-body-s ncce-label--s' %>
     <%= select_tag :level,
       options_for_select(@course_filter.age_groups.keys, @course_filter.current_level),

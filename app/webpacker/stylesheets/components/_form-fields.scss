@@ -43,6 +43,7 @@
   background-image: url('../images/icons/chevron.svg');
   background-position: calc(100% - 10px) 50%;
   background-repeat: no-repeat;
+  background-color: $white;
   font-size: 1rem;
   height: 2.5rem;
   margin-right: 20px;
@@ -132,9 +133,8 @@
 }
 
 .ncce-search-input {
-  background-image: url('../images/icons/search.svg');
   background-position: 6px 7px;
   background-repeat: no-repeat;
   background-size: 1.5rem;
-  padding-left: 40px;
+  font-size: 1rem;
 }

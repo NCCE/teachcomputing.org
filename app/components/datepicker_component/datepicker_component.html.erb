@@ -1,7 +1,5 @@
 
 <%= content_tag(:div, controllerOptions) do %>
   <%= text_field_tag(@name, @value, inputOptions) %>
-  <button type="button" class="govuk-button govuk-button--secondary flatpickr__clear" data-action="click->flatpickr#clear">
-    <i class="icon-close"></i>
-  </button>
+  <div class="govuk-!-padding-bottom-2"></div>
 <% end %>
