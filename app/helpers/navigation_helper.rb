@@ -1,7 +1,7 @@
 module NavigationHelper
   def header_navigation
     [
-      {text: "Primary school",
+      {text: "Primary",
        children: [
          {text: "Teacher toolkit", link: primary_teachers_path, label: "Primary teachers"},
          {text: "Teacher certificate", link: primary_path, label: "Primary teacher certificate"},
@@ -9,7 +9,7 @@ module NavigationHelper
          {text: "Senior leaders", link: "/primary-senior-leaders", label: "Primary SLT"},
          {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"}
        ]},
-      {text: "Secondary school",
+      {text: "Secondary",
        children: [
          {text: "Teacher toolkit", link: secondary_teachers_path, label: "Secondary teachers"},
          {text: "Teacher certification", link: secondary_certification_path, label: "Secondary teachers certification"},
