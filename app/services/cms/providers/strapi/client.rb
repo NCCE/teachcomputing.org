@@ -13,6 +13,7 @@ module Cms
           }
           params[:fields] = collection_class.collection_view_fields + collection_class.required_fields
           response = @connection.get(collection_class.resource_key, params)
+          raise ActiveRecord::RecordNotFound unless response.status == 200
           body = JSON.parse(response.body, symbolize_names: true)
           pagination = body[:meta][:pagination]
           {
@@ -26,7 +27,8 @@ module Cms
 
         def one(resource_class, params)
           params[:populate] = generate_populate_params(resource_class)
-          response = @connection.get(generate_url(resource_class.resource_key, params), params)
+          response = @connection.get(generate_url(resource_class.resource_key, params), params.except(:resource_id))
+          raise ActiveRecord::RecordNotFound unless response.status == 200
           body = JSON.parse(response.body, symbolize_names: true)[:data]
           map_resource(body)
         end
