@@ -7,7 +7,8 @@ module Cms
           fields: [
             {attribute: :title},
             {attribute: :excerpt},
-            {attribute: :featuredImage}
+            {attribute: :publishDate},
+            {attribute: :featuredImage, populate: true}
           ]
         }
       end

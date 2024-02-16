@@ -1,0 +1,106 @@
+require "rails_helper"
+
+RSpec.describe Cms::Providers::Strapi::Client do
+  let(:page_class) {
+    dbl = class_double("Cms::Pages::TestPage")
+    allow(dbl).to receive(:resource_attribute_mappings).and_return([
+      {
+        attribute: :title,
+        component: HeroComponent,
+        value_param: :title
+      },
+      {
+        attribute: :container,
+        component: nil,
+        fields: [
+          {
+            attribute: :cardSection,
+            fields: [
+              {
+                attribute: :cardHeaderImage
+              }
+            ]
+          }
+        ]
+      }
+    ])
+    allow(dbl).to receive(:resource_key).and_return("test-page")
+    dbl
+  }
+
+  let(:collection_class) {
+    dbl = class_double("Cms::Collections::TestCollection")
+    allow(dbl).to receive(:resource_attribute_mappings).and_return([
+      {
+        attribute: :title,
+        component: HeroComponent,
+        value_param: :title
+      }
+    ])
+    allow(dbl).to receive(:resource_key).and_return("test-collection")
+    allow(dbl).to receive(:required_fields).and_return(["createdAt", "updatedAt", "publishedAt"])
+    allow(dbl).to receive(:collection_attribute_mappings).and_return({
+      fields: [
+        {attribute: :title},
+        {attribute: :featuredImage, populate: true}
+      ]
+    })
+    dbl
+  }
+
+  before do
+  end
+
+  it "calls one and returns mapped resource" do
+    stub_strapi_get_single_entity("test-page")
+    client = described_class.new
+    response = client.one(page_class, {})
+    expect(response[:id]).to eq(1)
+    expect(response[:attributes]).to be_a Hash
+  end
+
+  it "raises RecordNotFound for missing resource" do
+    stub_strapi_not_found("test-page")
+    client = described_class.new
+    expect do
+      client.one(page_class, {})
+    end.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it "class all and returns mapped resource" do
+    stub_strapi_get_collection_entity("test-collection")
+    client = described_class.new
+    response = client.all(collection_class, 1, 10, {})
+    expect(response[:total_records]).to eq(2)
+    expect(response[:page_size]).to eq(10)
+    expect(response[:page_number]).to eq(1)
+    expect(response[:resources]).to be_a Array
+    expect(response[:resources].length).to eq(2)
+  end
+
+  context "creates populate params" do
+    it "for single depth attributes" do
+      client = described_class.new
+      params = client.send(:generate_populate_params, page_class)
+      expect(params).to have_value(:title)
+    end
+
+    it "for second level attributes" do
+      client = described_class.new
+      params = client.send(:generate_populate_params, page_class)
+      expect(params).to have_key(:container)
+      container_params = params[:container]
+      expect(container_params).to have_key(:populate)
+      expect(container_params[:populate]).to have_value(:cardSection)
+    end
+
+    it "for third level attributes" do
+      client = described_class.new
+      params = client.send(:generate_populate_params, page_class)
+      card_section_params = params[:container][:populate]
+      expect(card_section_params).to have_key(:cardSection)
+      expect(card_section_params[:cardSection]).to have_key(:populate)
+      expect(card_section_params[:cardSection][:populate]).to have_value(:cardHeaderImage)
+    end
+  end
+end

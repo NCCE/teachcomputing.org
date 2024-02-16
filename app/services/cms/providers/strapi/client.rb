@@ -11,7 +11,8 @@ module Cms
             page:,
             pageSize: page_size
           }
-          params[:fields] = collection_class.collection_view_fields + collection_class.required_fields
+          params[:fields] = collection_view_fields(collection_class) + collection_class.required_fields
+          params[:populate] = collection_view_populate(collection_class)
           response = @connection.get(collection_class.resource_key, params)
           raise ActiveRecord::RecordNotFound unless response.status == 200
           body = JSON.parse(response.body, symbolize_names: true)
@@ -34,6 +35,16 @@ module Cms
         end
 
         private
+
+        def collection_view_fields(collection_class)
+          collection_class.collection_attribute_mappings[:fields].select { !_1.has_key?(:populate) || _1[:populate] == false }.map { _1[:attribute] }
+        end
+
+        def collection_view_populate(collection_class)
+          collection_class.collection_attribute_mappings[:fields].select { _1.has_key?(:populate) && _1[:populate] == true }.each_with_object({}).with_index do |(field, hsh), index|
+            hsh[index] = field[:attribute]
+          end
+        end
 
         def generate_populate_params resource_class
           populate_params = {}
