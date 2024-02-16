@@ -486,7 +486,8 @@ RSpec.describe Achiever::CourseFilter do
       }
 
       it "should include course in range" do
-        expect(course_filter.non_location_based_results).to match_array([date_range_template])
+        # online/remote courses are excluded from date filtering
+        expect(course_filter.non_location_based_results).to match_array([date_range_template, online_template])
       end
     end
   end
