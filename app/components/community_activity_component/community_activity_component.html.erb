@@ -49,7 +49,7 @@
             reopen_button_text: reopen_button_text,
             show_corner_decoration: false,
             class_name: 'community-activity-component--modal',
-            button_class: achievement_rejected? ? 'ncce-button__white_black_border green-chevron' : nil
+            reopen_button_class: achievement_rejected? ? 'ncce-button__white_black_border green-chevron' : nil
           ) do |component| %>
             <% component.with_body do %>
               <h3 class="govuk-heading-s"><%= @activity.title %></h3>
