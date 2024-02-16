@@ -44,6 +44,21 @@
   }
 }
 
+.card--simple {
+  background-color: $white;
+  border-left: 9px solid $lime-green;
+  box-shadow: 0 0 5px $box-shadow;
+  margin-bottom: $logo-block-mobile;
+  padding: 20px 20px 30px 20px;
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    border-left-width: 13px;
+    margin-bottom: $logo-block;
+    padding: (0.75 * $logo-block); 
+  }
+}
+
 .card--plain {
   border-left-color: $plain-hero-color;
   @include govuk-media-query($from: desktop) {

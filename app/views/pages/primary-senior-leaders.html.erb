@@ -1,186 +1,151 @@
 <% meta_tag :title, t('.hero.title') %>
-<% meta_tag :description, 'Guidance and support for primary schools to drive school improvement and pupil outcomes through inspirational computing teaching. Explore resources, CPD and enrichment.' %>
+<% meta_tag :description, t('.hero.subtitle') %>
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
 <%= render HeroComponent.new(
   title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
-  color: 'primary'
+  color: 'primary',
+  small_title: true
 ) %>
 
 <%# How we can help you and your school %>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
+
       <div class="govuk-grid-row">
-        <%= render TickListCollectionComponent.new(
-          title: 'How we can help you and your school',
-          tick_list_collection: [
-            {
-              title: t('.quality-framework-tick-list.title'),
-              text: t('.quality-framework-tick-list.text'),
-              bullets: [
-                t('.quality-framework-tick-list.bullets.identify'),
-                t('.quality-framework-tick-list.bullets.feedback'),
-                t('.quality-framework-tick-list.bullets.track')
-              ],
-              button: {
-                button_title: t('.quality-framework-tick-list.button.title'),
-                button_url: t('.quality-framework-tick-list.button.url'),
-                tracking_page: 'Primary SLT',
-                tracking_label: t('.quality-framework-tick-list.button.event-label')
-              }
-            },
-            {
-              title: t('.guidance-tick-list.title'),
-              text: t('.guidance-tick-list.text'),
-              bullets: [
-                t('.guidance-tick-list.bullets.identify'),
-                t('.guidance-tick-list.bullets.develop'),
-                t('.guidance-tick-list.bullets.recommend')
-              ],
-              button: {
-                button_title: t('.guidance-tick-list.button.title'),
-                button_url: t('.guidance-tick-list.button.url'),
-                tracking_page: 'Primary SLT',
-                tracking_label: t('.guidance-tick-list.button.event-label')
-              }
-            }
-          ]
-        ) %>
+        <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l"><%= t(".support.title") %></h2>
+
+          <p class="govuk-body">
+            <%= t(".support.paragraph_1") %>
+          </p>
+          <p class="govuk-body">
+            <%= t(".support.paragraph_2") %>
+          </p>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row govuk-!-margin-top-6">
+        <div class="govuk-grid-column-full">
+          <%= render IconRowComponent.new(
+            icons: [
+              { image_url: "media/images/icons/curriculum.svg", text: "Curriculum design"},
+              { image_url: "media/images/icons/subject_knowledge.svg", text: "Subject knowledge"},
+              { image_url: "media/images/icons/physical_computing_kits.svg", text: "Physical computing kits"},
+              { image_url: "media/images/icons/real_world.svg", text: "Real-world contexts"},
+              { image_url: "media/images/icons/subject_matter_experts.svg", text: "Subject matter experts support"},
+            ]
+          ) %>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row govuk-!-margin-top-6">
+        <div class="govuk-grid-column-two-thirds senior-leaders">
+
+          <%= render partial: 'pages/computing_quality_framework' %>
+         
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new(
+            title: "Guidance for offering computing",
+            text: "Our network of #{link_to('Computing Hubs', hubs_url)} is there to support you and your school to offer exemplary computing education for all.".html_safe
+          ) %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<%# How we can help your teachers %>
 <div class="govuk-width-container">
-  <div class='govuk-main-wrapper govuk-main-wrapper--xl'>
+  <div class='govuk-main-wrapper'>
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class='govuk-heading-l'><%= t('.how-we-help.title') %></h2>
-      </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full govuk-!-margin-top-7">
-        <%= render BorderedCardsComponent.new(
+      <div class="govuk-grid-column-full">
+        <%= render NonBorderedCardsComponent.new(
+          class_name: 'senior-leaders',
           cards_per_row: 3,
-          class_name: 'teacher-help-cards',
           cards: [
             {
-              class_name: 'bordered-card--primary-cert',
-              title: t('.how-we-help.cards.courses.title'),
-              text: t(
-                '.how-we-help.cards.courses.text.html',
-                all_courses_link: (link_to(
-                  t('.how-we-help.cards.courses.text.all-courses-link.title'),
-                  t('.how-we-help.cards.courses.text.all-courses-link.url'),
-                  data: {
-                    event_action: 'click',
-                    tracking_page: 'Primary SLT',
-                    tracking_label: t('.how-we-help.cards.courses.text.all-courses-link.event-label')
-                  }
-                ))
-              ),
-              link: {
-                link_title: t('.how-we-help.cards.courses.link.title'),
-                link_url: t('.how-we-help.cards.courses.link.url'),
-                tracking_page: 'Primary SLT',
-                tracking_label: t('.how-we-help.cards.courses.link.event-label')
-              }
+              title: t('.objectives.cards.confidence.title'),
+              text: t('.objectives.cards.confidence.text.html',
+                  subsidies_link: (link_to('subsidies', cms_page_url('funding', anchor: 'primary-subsidy')))),
+              image_url: 'media/images/pages/primary-senior-leaders/build_confidence_in_your_teachers.svg',
+
+              link: { link_url: courses_url, link_title: t('.objectives.cards.confidence.link_text')}
             },
             {
-              class_name: 'bordered-card--primary-cert',
-              title: t('.how-we-help.cards.certification.title'),
-              text: t('.how-we-help.cards.certification.text.html'),
-              link: {
-                link_title: t('.how-we-help.cards.certification.link.title'),
-                link_url: t('.how-we-help.cards.certification.link.url'),
-                tracking_page: 'Primary SLT',
-                tracking_label: t('.how-we-help.cards.certification.link.event-label')
-              }
+              title: t('.objectives.cards.teach-primary.title'),
+              text: t('.objectives.cards.teach-primary.text.html'),
+              image_url: 'media/images/pages/primary-senior-leaders/teach_primary_computing.svg',
+              link: { link_url: primary_certificate_url, link_title: t('.objectives.cards.teach-primary.link_text')}
             },
             {
-              class_name: 'bordered-card--primary-cert',
-              title: t('.how-we-help.cards.resources.title'),
-              text: t('.how-we-help.cards.resources.text.html'),
-              link: {
-                link_title: t('.how-we-help.cards.resources.link.title'),
-                link_url: t('.how-we-help.cards.resources.link.url'),
-                tracking_page: 'Primary SLT',
-                tracking_label: t('.how-we-help.cards.resources.link.event-label')
-              }
-            }
+              title: t('.objectives.cards.download-brochure.title'),
+              text: t('.objectives.cards.download-brochure.text.html'),
+              image_url: 'media/images/pages/primary-senior-leaders/download_brochure.svg',
+              link: { link_url: 'https://static.teachcomputing.org/NCCE_Primary_Brochure_Digital_September.pdf', link_title: t('.objectives.cards.download-brochure.link_text')}
+            },
           ]
-        ) %>
+        )%>
       </div>
-      </div>
+    </div>
   </div>
 </div>
 
-<%# Explore our partners %>
+<%= render partial: "pages/inspire_with_computing_ambassador" %>
+
 <div class="light-grey-bg">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
+    <div class='govuk-main-wrapper'>
       <div class="govuk-grid-row">
-          <div class="govuk-grid-column bottom-margin ncce-eop">
-            <h2 class="govuk-heading-l"><%= t('.partners.title') %></h2>
-            <p class="govuk-body-l"><%= t(
-                '.partners.text.html',
-                educational_partners_link: (link_to(
-                    t('.partners.text.educational-partners-link.title'),
-                    t('.partners.text.educational-partners-link.url'),
-                    data: {
-                      event_action: 'click',
-                      tracking_page: 'Primary SLT',
-                      tracking_label: t('.partners.text.educational-partners-link.event-label')
-                    },
-                    class: 'ncce-link govuk-link--no-underline'
-                )))
-            %></p>
-          </div>
-          <div class="govuk-grid-column-full">
-            <%= render NonBorderedCardsComponent.new(
-              class_name: 'resource-cards',
-              cards_per_row: 3,
-              cards: [
-                {
-                  image_url: 'pages/primary-teachers/stem-card.svg',
-                  title: t('.partners.cards.stem.title'),
-                  text: t('.partners.cards.stem.text'),
-                  link: {
-                    link_title: t('.partners.cards.stem.link.title'),
-                    link_url: t('.partners.cards.stem.link.url'),
-                    tracking_page: 'Primary SLT',
-                    tracking_label: t('.partners.cards.stem.link.event-label'),
-                  }
-                },
-                {
-                  image_url: 'pages/primary-teachers/code-club-card.svg',
-                  title: t('.partners.cards.code-club.title'),
-                  text: t('.partners.cards.code-club.text'),
-                  link: {
-                    link_title: t('.partners.cards.code-club.link.title'),
-                    link_url: t('.partners.cards.code-club.link.url'),
-                    tracking_page: 'Primary SLT',
-                    tracking_label: t('.partners.cards.code-club.link.event-label'),
-                  }
-                },
-                {
-                  image_url: 'pages/primary-teachers/barefoot.svg',
-                  title: t('.partners.cards.barefoot.title'),
-                  text: t('.partners.cards.barefoot.text'),
-                  link: {
-                    link_title: t('.partners.cards.barefoot.link.title'),
-                    link_url: t('.partners.cards.barefoot.link.url'),
-                    tracking_page: 'Primary SLT',
-                    tracking_label: t('.partners.cards.barefoot.link.event-label'),
-                  }
+        <div class="govuk-grid-column-full">
+
+          <h1 class="govuk-heading-l"><%= t(".resources.title") %></h1>
+
+          <p class="govuk-body"><%= t(".resources.description") %></p>
+
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 3,
+            class_name: 'resources-help-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.curriculum.title'),
+                text: t('.resources.cards.curriculum.text.html'),
+                link: {
+                  link_title: t('.resources.cards.curriculum.link.title'),
+                  link_url: t('.resources.cards.curriculum.link.url'),
+                  tracking_page: 'Primary SLT',
+                  tracking_label: t('.resources.cards.curriculum.link.event-label')
                 }
-              ]
-            ) %>
-          </div>
+              },
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.glossary.title'),
+                text: t('.resources.cards.glossary.text.html'),
+                link: {
+                  link_title: t('.resources.cards.glossary.link.title'),
+                  link_url: t('.resources.cards.glossary.link.url'),
+                  tracking_page: 'Primary SLT',
+                  tracking_label: t('.resources.cards.glossary.link.event-label')
+                }
+              },
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.enrichment.title'),
+                text: t('.resources.cards.enrichment.text.html'),
+                link: {
+                  link_title: t('.resources.cards.enrichment.link.title'),
+                  link_url: t('.resources.cards.enrichment.link.url'),
+                  tracking_page: 'Primary SLT',
+                  tracking_label: t('.resources.cards.enrichment.link.event-label')
+                }
+              }
+            ]
+          ) %>
+        </div>
         </div>
     </div>
   </div>

@@ -35,6 +35,14 @@ RSpec.describe("curriculum/lessons/show", type: :view) do
     assign(:lesson, json.lesson)
   end
 
+  let(:setup_view_without_file) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json, object_class: OpenStruct).data
+    json.lesson.zipped_contents = nil
+    assign(:lesson, json.lesson)
+  end
+
   context "when a user is not signed in" do
     before do
       setup_view
@@ -56,8 +64,23 @@ RSpec.describe("curriculum/lessons/show", type: :view) do
       expect(rendered).not_to have_link("Download all lesson files", href: "https://teachcomputing.org")
     end
 
+    it "should have a login button" do
+      expect(rendered).to have_css(".govuk-button", text: "Log in to download")
+    end
+
     it "does not show the rating partial" do
       expect(rendered).not_to have_css(".curriculum__rating")
+    end
+  end
+
+  context "when there is no file" do
+    before do
+      setup_view_without_file
+      render
+    end
+
+    it "does not show login button" do
+      expect(rendered).not_to have_css(".govuk-button", text: "Log in to download")
     end
   end
 
@@ -121,21 +144,42 @@ RSpec.describe("curriculum/lessons/show", type: :view) do
   end
 
   context "when a user is signed in" do
-    before do
-      setup_view
-      allow(view).to receive(:current_user).and_return(user)
-      render
+    context "lesson has file" do
+      before do
+        setup_view
+        allow(view).to receive(:current_user).and_return(user)
+        render
+      end
+
+      it "has a download button" do
+        expect(rendered).to have_link(
+          "Download all lesson files",
+          href: "https://teachcomputing.org?user_stem_achiever_contact_no=#{user.stem_achiever_contact_no}"
+        )
+      end
+
+      it "shows the rating partial" do
+        expect(rendered).to have_css(".curriculum__rating")
+      end
     end
 
-    it "has a download button" do
-      expect(rendered).to have_link(
-        "Download all lesson files",
-        href: "https://teachcomputing.org?user_stem_achiever_contact_no=#{user.stem_achiever_contact_no}"
-      )
-    end
+    context "lesson has no file" do
+      before do
+        setup_view_without_file
+        allow(view).to receive(:current_user).and_return(user)
+        render
+      end
 
-    it "shows the rating partial" do
-      expect(rendered).to have_css(".curriculum__rating")
+      it "does not have a download button" do
+        expect(rendered).not_to have_link(
+          "Download all lesson files",
+          href: "https://teachcomputing.org?user_stem_achiever_contact_no=#{user.stem_achiever_contact_no}"
+        )
+      end
+
+      it "does not show the rating partial" do
+        expect(rendered).not_to have_css(".curriculum__rating")
+      end
     end
   end
 

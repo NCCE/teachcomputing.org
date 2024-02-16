@@ -49,6 +49,16 @@ describe CurriculumHelper, type: :helper do
     end
   end
 
+  describe("#year_group_anchor") do
+    context "when the year number contains GCSE" do
+      it { expect(helper.year_group_anchor("GCSE")).to eq "gcse" }
+    end
+
+    context "when the year number contains anything but GCSE" do
+      it { expect(helper.year_group_anchor("1")).to eq "year-1" }
+    end
+  end
+
   describe(".sorted_years") do
     before do
       stub_const("Year", Struct.new(:year, :year_number))

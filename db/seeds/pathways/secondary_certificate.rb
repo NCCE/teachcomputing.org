@@ -155,12 +155,14 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit",
     "download-and-use-isaac-computer-science-classroom-resources-and-displays",
+    "complete-the-i-belong-programme-as-a-school",
     # Support your professional community
     "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
     "work-with-local-business-and-industry-to-inspire-inclusive-computing",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community"
+    "join-and-present-at-your-local-computing-at-school-community",
+    "become-an-i-belong-champion"
   ]
 
   activities.each do |activity|

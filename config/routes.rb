@@ -109,6 +109,12 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace "i_belong" do
+      resource "auto_enrolment", only: [] do
+        get "/unenroll", action: :destroy
+      end
+    end
+
     resources :pathways, param: :slug, only: %i[show]
   end
 

@@ -31,7 +31,11 @@
           "id": "308e4ad1-55c6-4f36-83f1-8a74c1b202ae",
           "slug": "lesson-1",
           "description": "This is a Lesson",
-          "zipped_contents": null,
+          "zipped_contents": {
+            "file": "https://teachcomputing.org",
+            "size": "1.1 MB",
+            "created": "15 Oct 1943"
+          },
           "title": "Lesson 1"
         }
       ]

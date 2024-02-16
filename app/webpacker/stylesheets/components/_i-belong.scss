@@ -61,3 +61,49 @@
     }
   }
 }
+
+.i-belong-banner {
+  display: flex;
+  background-color: $white;
+
+  .i-belong-banner_image {
+    flex: 0 0 auto;
+    position: relative;
+
+    img {
+      width: 150px;
+      height: 100%;
+      object-fit: cover;
+
+      @include govuk-media-query($from: tablet) {
+        width: 295px;
+      }
+
+    }
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 5px;
+      height: 97px;
+      width: 79px;
+      content: "";
+      display: block;
+      background-image: url('../images/pages/i-belong/i_belong_flag.svg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .i-belong-banner_content {
+    padding: 1.25rem;
+
+    h2 {
+      color: $black !important;
+    }
+    p {
+      color: $grey-storm !important;
+    }
+  }
+
+
+}
