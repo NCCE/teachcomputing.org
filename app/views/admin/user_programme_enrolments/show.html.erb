@@ -25,6 +25,15 @@ as well as a link to its edit page.
 
   <div>
     <%= link_to(
+      'Download Certificate',
+      [:generate_certificate, namespace, page.resource],
+      class: "button mr-2",
+      target: "_blank",
+    ) if page.resource.current_state == "complete" %>
+  </div>
+
+  <div>
+    <%= link_to(
       'Edit State',
       [:edit, namespace, page.resource],
       class: "button",
