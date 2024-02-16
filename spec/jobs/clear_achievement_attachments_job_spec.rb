@@ -12,6 +12,7 @@ RSpec.describe ClearAchievementAttachmentsJob, type: :job do
   describe "#perform" do
     context "when the enrolment is in a state of complete" do
       before do
+        allow_any_instance_of(Programme).to receive(:user_meets_completion_requirement?).and_return(true)
         enrolment.transition_to(:complete)
         achievement
         ClearAchievementAttachmentsJob.perform_now(enrolment)

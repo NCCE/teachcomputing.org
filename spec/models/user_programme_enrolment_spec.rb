@@ -4,6 +4,8 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
   let(:user) { create(:user) }
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user: user, programme: cs_accelerator) }
+  let(:assessment) { create(:assessment, programme: cs_accelerator) }
+  let(:successful_assessment_attempt) { create(:completed_assessment_attempt, user:, assessment:) }
   let(:questionnaire_response) { create(:cs_accelerator_enrolment_score_1) }
   let!(:new_to_computing_pathway) { create(:new_to_computing) }
 
@@ -29,6 +31,7 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
 
     context "when complete" do
       it "returns the date of transition" do
+        successful_assessment_attempt
         cs_accelerator_enrolment.transition_to(:complete)
         expect(cs_accelerator_enrolment.created_at?).not_to eq nil
       end

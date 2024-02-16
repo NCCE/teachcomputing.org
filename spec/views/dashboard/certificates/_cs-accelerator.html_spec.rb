@@ -4,6 +4,7 @@ RSpec.describe("dashboard/certificates/_cs-accelerator") do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:programme) { create(:cs_accelerator) }
+  let(:assessment) { create(:assessment, programme:) }
   let(:programmes) { Programme.enrollable }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment,
@@ -13,6 +14,7 @@ RSpec.describe("dashboard/certificates/_cs-accelerator") do
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
   let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
+  let(:completed_assessment_attempt) { create(:completed_assessment_attempt, user: user, assessment:) }
 
   before do
     programme_activity
@@ -49,8 +51,9 @@ RSpec.describe("dashboard/certificates/_cs-accelerator") do
 
   context "when the user has been awarded the CS Accelerator certificate" do
     before do
-      user_programme_enrolment.transition_to(:complete)
+      completed_assessment_attempt
       passed_exam
+      user_programme_enrolment.transition_to(:complete)
       user.reload
       render template: "dashboard/certificates/_cs-accelerator", locals: {programme:}
     end

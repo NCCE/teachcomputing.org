@@ -65,5 +65,12 @@ FactoryBot.define do
         achievement.transition_to :drafted
       end
     end
+
+    factory :rejected_achievement do
+      after(:create) do |achievement|
+        achievement.transition_to :complete
+        achievement.transition_to :rejected
+      end
+    end
   end
 end

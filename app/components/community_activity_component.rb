@@ -16,6 +16,17 @@ class CommunityActivityComponent < ViewComponent::Base
     @achievement.in_state? :complete
   end
 
+  def achievement_rejected?
+    return unless @achievement
+
+    @achievement.in_state? :rejected
+  end
+
+  def reopen_button_text
+    return "Add more evidence" if achievement_rejected?
+    @achievement&.self_verification_info.present? ? "Continue editing" : "Submit evidence"
+  end
+
   def tracking_data(label)
     return nil unless @tracking_category.present? && label.present?
 

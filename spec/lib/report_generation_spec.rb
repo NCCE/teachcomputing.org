@@ -301,6 +301,7 @@ RSpec.describe ReportGeneration do
         user = create(:user)
 
         upe = create(:user_programme_enrolment, programme: primary_certificate, user:)
+        allow_any_instance_of(Programme).to receive(:user_meets_completion_requirement?).and_return(true)
         upe.transition_to :complete
 
         ReportGeneration.generate_user_report

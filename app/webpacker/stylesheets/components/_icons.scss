@@ -104,6 +104,11 @@
   background-size: 24px 24px;
 }
 
+
+.icon-feedback {
+  @include icon('../images/icons/feedback.svg');
+}
+
 .icon-link-external {
   @include icon('../images/icons/link-external.svg');
 }

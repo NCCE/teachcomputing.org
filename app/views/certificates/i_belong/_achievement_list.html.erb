@@ -3,19 +3,23 @@
 </p>
 <ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
   <li class="ncce-activity-list__item">
-    <div>
-      <% @cpd_courses.each do |pa| %>
-        <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
-      <% end %>
+    <div class="ncce-activity-list__item-content">
+      <div>
+        <% @cpd_courses.each do |pa| %>
+          <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
+        <% end %>
+      </div>
     </div>
   </li>
   <% if @issued_badge.present? %>
     <li class="ncce-activity-list__item">
-      <%= render DashBadgeComponent.new(
-        badge: @issued_badge,
-        tracking_event_category: @badge_tracking_event_category,
-        tracking_event_label: @badge_tracking_event_label
-      ) %>
+      <div class="ncce-activity-list__item-content">
+        <%= render DashBadgeComponent.new(
+          badge: @issued_badge,
+          tracking_event_category: @badge_tracking_event_category,
+          tracking_event_label: @badge_tracking_event_label
+        ) %>
+      </div>
     </li>
   <% end %>
 </ul>

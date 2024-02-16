@@ -25,7 +25,11 @@ Rails.application.routes.draw do
         get :generate_certificate
       end
     end
-    resources :achievements, only: %i[index show destroy]
+    resources :achievements, only: %i[index show] do
+      member do
+        post :reject_evidence
+      end
+    end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
   end

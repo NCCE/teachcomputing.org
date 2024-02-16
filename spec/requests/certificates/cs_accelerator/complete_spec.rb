@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Certificates::CSAcceleratorController do
   let(:user) { create(:user, email: "web@teachcomputing.org") }
   let!(:programme) { create(:cs_accelerator) }
+  let(:assessment) { create(:assessment, programme: programme) }
   let(:diagostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:online_course) { create(:activity, :future_learn, credit: 20) }
   let(:online_achievement) { create(:achievement, user_id: user.id, activity_id: online_course.id) }
@@ -11,8 +12,7 @@ RSpec.describe Certificates::CSAcceleratorController do
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
 
   let(:setup_achievements_for_completed_course) do
-    create(:assessment, programme_id: programme.id)
-
+    assessment
     [online_course, face_to_face_course, diagostic_activity].each do |activity|
       create(:programme_activity, programme_id: programme.id, activity_id: activity.id)
     end
@@ -22,6 +22,7 @@ RSpec.describe Certificates::CSAcceleratorController do
 
     create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id)
     create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id)
+    create(:completed_assessment_attempt, user:, assessment:)
   end
 
   describe "#complete" do
@@ -50,8 +51,8 @@ RSpec.describe Certificates::CSAcceleratorController do
 
         context "when user has completed certificate" do
           before do
-            user_programme_enrolment.transition_to(:complete)
             setup_achievements_for_completed_course
+            user_programme_enrolment.transition_to(:complete)
             get complete_cs_accelerator_certificate_path
           end
 

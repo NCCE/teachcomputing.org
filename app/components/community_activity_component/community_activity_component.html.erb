@@ -7,84 +7,100 @@
   data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
   data-community-activity-component-activity-id-value="<%= @activity.id %>"
 >
-  <span class="community-activity-component__objective">
-    <span class="community-activity-component__objective-text">
-      <span><%= @activity.title %></span>
-    </span>
-    <% if achievement_complete? %>
-      <span class="community_activity_component__completed_badge_container" >
-        <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+  <% if achievement_rejected? %>
+    <div class="community-activity-component__rejected">
+    <i class="icon-feedback"></i>
+      <span class="community-activity-component__rejected-text govuk-body-s">
+        Please provide more evidence to this activity for review.
       </span>
-    <% elsif @activity.coming_soon? %>
-      <%= button_to t('.coming_soon'),
-        '#',
-        class: 'govuk-button button community-activity-component__objective-button button--full-width',
-        disabled: true
-      %>
-    <% elsif @activity.booking_programme_slug.present? %>
-      <%= link_to t('.book_button_text'),
-        courses_path(certificate: @activity.booking_programme_slug),
-        class: 'govuk-button button community-activity-component__objective-button',
-        data: tracking_data('Book a course')
-      %>
-    <% elsif @activity.self_verification_info.blank? %>
-      <div>
-        <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
-      </div>
-    <% else %>
-      <%= render ModalComponent.new(
-        title: 'Submit evidence',
-        reopen_button_text: @achievement&.self_verification_info.present? ? 'Continue editing' : 'Submit evidence',
-        show_corner_decoration: false,
-        class_name: 'community-activity-component--modal'
-      ) do |component| %>
-        <% component.with_body do %>
-          <h3 class="govuk-heading-s"><%= @activity.title %></h3>
-          <p class="govuk-body-s">
-            <%= @activity.public_copy_evidence_brief.presence || @activity.public_copy_description || t('.evidence') %>
-          </p>
-          <% if @activity.public_copy_evidence_bullets.present? %>
-            <div class="community-activity-component--what-evidence">
-              <p class="govuk-body-s">What evidence could I give?</p>
-              <div class="tooltip">
-                <%= image_pack_tag('media/images/icons/info.svg') %>
-                <div class="tooltiptext">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <% @activity.public_copy_evidence_bullets.each do |bullet| %>
-                      <li class="govuk-body-s"><%= bullet %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.self_verification_info %></textarea>
-          <div class="draft-actions">
-            <button class="govuk-button button button--inverted" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
-            <%= render ModalComponent.new(
-              title: 'Are you sure you want to submit this evidence?',
-              reopen_button_text: 'Submit evidence',
-              show_corner_decoration: false,
-              class_name: 'confirmation-modal'
-            ) do |component| %>
-              <% component.with_body do %>
-                <p class="govuk-body-s">
-                  You will not be able to change or add to this evidence once submitted.
-                </p>
-                <div class="submit-actions">
-                  <button class="govuk-button button button--inverted" data-action="click->modal#toggle">Back to draft</button>
-                  <button class="govuk-button button" data-action="click->community-activity-component#submit">Submit evidence</button>
-                </div>
-              <% end %>
-              <% component.with_close_button do %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-  </span>
-  <% if @activity.description.present? %>
-    <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
+    </div>
   <% end %>
+
+  <div class="community-activity-component__content">
+
+    <span class="community-activity-component__objective">
+      <span class="community-activity-component__objective-text">
+        <span><%= @activity.title %></span>
+      </span>
+      <% if achievement_complete? %>
+        <span class="community_activity_component__completed_badge_container" >
+          <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+        </span>
+      <% elsif @activity.coming_soon? %>
+        <%= button_to t('.coming_soon'),
+          '#',
+          class: 'govuk-button button community-activity-component__objective-button button--full-width',
+          disabled: true
+        %>
+      <% elsif @activity.booking_programme_slug.present? %>
+        <%= link_to t('.book_button_text'),
+          courses_path(certificate: @activity.booking_programme_slug),
+          class: 'govuk-button button community-activity-component__objective-button',
+          data: tracking_data('Book a course')
+        %>
+      <% elsif @activity.self_verification_info.blank? %>
+        <div class="community-activity-component__objective-button-container">
+          <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+        </div>
+      <% else %>
+        <div class="community-activity-component__objective-button-container">
+          <%= render ModalComponent.new(
+            title: 'Submit evidence',
+            reopen_button_text: reopen_button_text,
+            show_corner_decoration: false,
+            class_name: 'community-activity-component--modal',
+            reopen_button_class: achievement_rejected? ? 'ncce-button__white_black_border green-chevron' : nil
+          ) do |component| %>
+            <% component.with_body do %>
+              <h3 class="govuk-heading-s"><%= @activity.title %></h3>
+              <p class="govuk-body-s">
+                <%= @activity.public_copy_evidence_brief.presence || @activity.public_copy_description || t('.evidence') %>
+              </p>
+              <% if @activity.public_copy_evidence_bullets.present? %>
+                <div class="community-activity-component--what-evidence">
+                  <p class="govuk-body-s">What evidence could I give?</p>
+                  <div class="tooltip">
+                    <%= image_pack_tag('media/images/icons/info.svg') %>
+                    <div class="tooltiptext">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <% @activity.public_copy_evidence_bullets.each do |bullet| %>
+                          <li class="govuk-body-s"><%= bullet %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.self_verification_info %></textarea>
+              <div class="draft-actions">
+                <button class="govuk-button button button--inverted" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
+                <%= render ModalComponent.new(
+                  title: 'Are you sure you want to submit this evidence?',
+                  reopen_button_text: 'Submit evidence',
+                  show_corner_decoration: false,
+                  class_name: 'confirmation-modal'
+                ) do |component| %>
+                  <% component.with_body do %>
+                    <p class="govuk-body-s">
+                      You will not be able to change or add to this evidence once submitted.
+                    </p>
+                    <div class="submit-actions">
+                      <button class="govuk-button button button--inverted" data-action="click->modal#toggle">Back to draft</button>
+                      <button class="govuk-button button" data-action="click->community-activity-component#submit">Submit evidence</button>
+                    </div>
+                  <% end %>
+                  <% component.with_close_button do %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </span>
+    <% if @activity.description.present? %>
+      <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
+    <% end %>
+  </div>
+
 </div>

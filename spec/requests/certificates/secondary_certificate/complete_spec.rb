@@ -17,6 +17,8 @@ RSpec.describe Certificates::SecondaryCertificateController do
 
       context "when user is enrolled and that enrolment is in a complete state" do
         before do
+          allow_any_instance_of(Programmes::SecondaryCertificate)
+            .to receive(:user_meets_completion_requirement?).and_return(true)
           secondary_enrolment.transition_to(:complete)
           get complete_secondary_certificate_path
         end

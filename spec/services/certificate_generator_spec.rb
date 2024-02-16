@@ -4,13 +4,12 @@ RSpec.describe CertificateGenerator do
   let(:output_path) { "tmp/test_generated_certificate.pdf" }
   let(:user) { create(:user) }
   let(:programme) { create(:cs_accelerator) }
-  let(:user_programme_enrolment) do
-    create(:user_programme_enrolment,
-      user_id: user.id,
-      programme_id: programme.id)
-  end
+  let(:assessment) { create(:assessment, programme:) }
+  let(:successful_assessment_attempt) { create(:completed_assessment_attempt, user:, assessment:) }
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
 
   let(:transition) do
+    successful_assessment_attempt
     user_programme_enrolment.transition_to(:complete, certificate_number: 20)
     transition = user_programme_enrolment.reload.last_transition
     transition.update_attribute(:created_at, Date.new(2020, 10, 1))

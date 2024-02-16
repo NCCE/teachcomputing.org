@@ -32,7 +32,7 @@ RSpec.describe StateMachines::AchievementStateMachine do
     end
 
     it "cannot transition from state in_progress to other states" do
-      [:enrolled].each do |disallowed_state|
+      %i[enrolled rejected drafted].each do |disallowed_state|
         expect { create(:in_progress_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
       end
@@ -42,6 +42,20 @@ RSpec.describe StateMachines::AchievementStateMachine do
       %i[enrolled in_progress dropped].each do |disallowed_state|
         expect { create(:completed_achievement).state_machine.transition_to!(disallowed_state) }
           .to raise_error(Statesman::TransitionFailedError)
+      end
+    end
+
+    it "can transition from complete to other states" do
+      %i[rejected].each do |allowed_state|
+        expect { create(:completed_achievement).state_machine.transition_to!(allowed_state) }
+          .not_to raise_error
+      end
+    end
+
+    it "can transition from rejected to other states" do
+      %i[complete drafted].each do |allowed_state|
+        expect { create(:rejected_achievement).state_machine.transition_to!(allowed_state) }
+          .not_to raise_error
       end
     end
   end

@@ -22,19 +22,9 @@
 }
 
 .ncce-activity-list__item {
-  align-items: flex-start;
   background-color: $white;
-
-  border-bottom-width: 2px;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  margin-bottom: 2px !important;
-  padding: 1.125rem;
-  grid-gap: 0;
-
-  @include govuk-media-query($from: tablet) {
-    padding-bottom: 0.5rem;
-  }
+  align-items: flex-start;
+  
 
   &:last-child {
     margin-bottom: 0;
@@ -44,11 +34,6 @@
     margin-top: 8px;
   }
 
-  @include govuk-media-query($from: tablet) {
-    grid-template-columns: 3fr auto;
-    grid-template-rows: auto auto;
-    padding: 1.25rem 1.125rem;
-  }
 
   .button {
     align-self: right;
@@ -61,6 +46,27 @@
 
   &--with-gap {
     grid-row-gap: 10px;
+  }
+  
+  .ncce-activity-list__item-content {
+    align-items: flex-start;
+  
+    border-bottom-width: 2px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    margin-bottom: 2px !important;
+    padding: 1.125rem;
+    grid-gap: 0;
+  
+    @include govuk-media-query($from: tablet) {
+      padding-bottom: 0.5rem;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 3fr auto;
+      grid-template-rows: auto auto;
+      padding: 1.25rem 1.125rem;
+    }
   }
 }
 

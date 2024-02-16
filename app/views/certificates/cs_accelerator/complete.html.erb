@@ -26,19 +26,21 @@
           <h2 class="govuk-heading-m">Next steps</h2>
           <ul class="govuk-list ncce-activity-list ncce-activity-list--programme govuk-!-margin-bottom-4" role="list">
             <li class="ncce-activity-list__item">
-              <%= render ActivityComponent.new(
-                objective: t('.next_steps.objective'),
-                description: t('.next_steps.description.html',
-                  certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info'))
-                ),
-                button: {
-                  text: t('.next_steps.button_text'),
-                  path: Programme.secondary_certificate.public_path,
-                  opts: { method: :post },
-                  tracking_label: 'Secondary certificate find out more'
-                },
-                tracking_category:
-              ) %>
+              <div class="ncce-activity-list__item-content">
+                <%= render ActivityComponent.new(
+                  objective: t('.next_steps.objective'),
+                  description: t('.next_steps.description.html',
+                    certificate_link: link_to(t('.next_steps.certificate_link_title'), secondary_certificate_path, class: 'ncce-link', data: tracking_data('Secondary certificate info'))
+                  ),
+                  button: {
+                    text: t('.next_steps.button_text'),
+                    path: Programme.secondary_certificate.public_path,
+                    opts: { method: :post },
+                    tracking_label: 'Secondary certificate find out more'
+                  },
+                  tracking_category:
+                ) %>
+              </div>
             </li>
           </ul>
           <h3 class="govuk-heading-m">Expand your subject knowledge</h3>

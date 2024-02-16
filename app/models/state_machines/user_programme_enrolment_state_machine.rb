@@ -12,7 +12,7 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   transition from: :complete, to: %i[pending enrolled]
 
   guard_transition(to: :complete) do |programme_enrolment|
-    !programme_enrolment.flagged?
+    !programme_enrolment.flagged? && programme_enrolment.programme.user_meets_completion_requirement?(programme_enrolment.user)
   end
 
   after_transition(to: :pending) do |enrolment|
