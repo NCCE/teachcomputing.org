@@ -35,7 +35,7 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
 
       it "flash notice has correct info" do
         unenroll
-        expect(flash[:notice]).to match(/You have successfully opted out of the Computer Science Accelerator/)
+        expect(flash[:notice]).to match(/You have successfully opted out of the KS3 and GCSE subject knowledge programme/)
       end
     end
 

@@ -37,7 +37,7 @@ RSpec.describe Programmes::IBelong do
 
   describe "#auto_enrollable?" do
     it "should return false" do
-      expect(programme.auto_enrollable?).to be false
+      expect(programme.auto_enrollable?).to be true
     end
   end
 

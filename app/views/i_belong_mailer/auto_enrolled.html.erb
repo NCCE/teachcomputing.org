@@ -1,0 +1,51 @@
+<div class='mailer__content'>
+  <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
+  <p class='govuk-body'>
+    We can see you've been working on your professional development by engaging in our Encouraging girls into GCSE computer science course. 
+    We're assuming from your interest in this course that you would be interested in our <%= link_to 'I Belong: encouraging girls into computer science', '/i-belong' %> programme. 
+  </p>
+  <p class='govuk-body'>
+    As such, we've enrolled you on the programme, giving you access to a wider range of resources designed to help your school achieve your goals. 
+    If you don't want to continue the programme at this time, let us know, and we will update our records. You can still re-enrol yourself in the future on our <%= link_to 'website', '/i-belong' %>. 
+  </p>
+  <p class='govuk-body'>
+    <%= link_to 'Unenrol me from the programme', unenroll__i_belong_auto_enrolment_url, class: 'govuk-button button' %>
+  </p>
+  <p class='govuk-body'>
+    <strong>Next steps</strong>
+  </p>
+  <p class='govuk-body'>
+    Did you know that completing the Encouraging girls into GCSE computer science course means you're already on the way to achieving the I Belong certificate for your school? 
+  </p>
+  <p class='govuk-body'>
+    Now you're enrolled, you will be able to access your personal dashboard, where you can find out more about the certificate and the next steps required to achieve it.  
+  </p>
+
+  <p class='govuk-body'>
+    <%= link_to 'Explore activities in your dashboard', i_belong_url, class: 'govuk-button button' %>
+  </p>
+
+  <p class='govuk-body'>
+    Has your school already completed some of the activities required to achieve the certificate? Tick them off by submitting evidence in your dashboard.  
+  </p>
+ 
+  <p class='govuk-body'>
+    Ideas to get you started 
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+  	<li>Maximise our recommended key stage 3 curriculum resources, aligned to evidence-based approaches supporting girls' engagement in computer science. 
+    Examples include 
+    <%= link_to 'Clear messaging in digital media, Developing for the Web', '/curriculum/key-stage-3/clear-messaging-in-digital-media' %>, 
+    and 
+    <%= link_to 'Media - Animations', 'https://teachcomputing.org/curriculum/key-stage-3/media-animations' %>.</li>
+    <li>Provide access for students to a computing-related STEM lunchtime or after-school club and show how your approach is gender responsive. You and your colleagues may be doing this already and be ready to submit your evidence.</li>
+  </ul>
+ 
+  <p class='govuk-body'>
+    <strong>Need more support?</strong>
+  </p>
+ 
+  <p class='govuk-body'>
+    Guidance is available in the <%= link_to 'programme handbook', static_asset_url('I+Belong+Handbook.pdf') %> to help you and your colleagues choose meaningful activities for your school. 
+  </p>
+</div>
