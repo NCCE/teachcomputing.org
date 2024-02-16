@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
     end
     resources :user_programme_enrolments, only: %i[index show edit update] do
-       member do
+      member do
         get :generate_certificate
       end
     end
