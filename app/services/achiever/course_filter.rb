@@ -243,7 +243,7 @@ module Achiever
         filter_course_occurences(course_occurrences)
       end
     end
-    
+
     def occurrence_online_or_remote?(occurrence)
       # remote_delivered_cpd: live remote
       # online_cpd: mooc

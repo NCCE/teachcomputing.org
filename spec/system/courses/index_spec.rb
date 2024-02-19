@@ -42,7 +42,6 @@ RSpec.describe("Courses page", type: :system) do
       it "shows the expected number of results" do
         expect(page).to have_css(".ncce-courses__count", text: "Showing 30 results")
       end
-
     end
 
     describe "with a select filter" do
@@ -53,7 +52,6 @@ RSpec.describe("Courses page", type: :system) do
       it "shows the expected number of results" do
         expect(page).to have_css(".ncce-courses__count", text: "Showing 14 results")
       end
-
     end
   end
 
