@@ -42,10 +42,6 @@ RSpec.describe("Courses page", type: :system) do
       it "shows the expected number of results" do
         expect(page).to have_css(".ncce-courses__count", text: "Showing 30 results")
       end
-
-      it "shows the clear all filters button" do
-        expect(page).to have_link("Clear all filters", href: courses_path(anchor: "results-top"))
-      end
     end
 
     describe "with a select filter" do
@@ -55,29 +51,6 @@ RSpec.describe("Courses page", type: :system) do
 
       it "shows the expected number of results" do
         expect(page).to have_css(".ncce-courses__count", text: "Showing 14 results")
-      end
-
-      it "shows the clear all filters button" do
-        expect(page).to have_link("Clear all filters", href: courses_path(anchor: "results-top"))
-      end
-    end
-
-    describe "when clearing filters" do
-      before do
-        check("course_format_1", visible: false)
-        click_on("Clear all filters")
-      end
-
-      it "shows the expected number of results" do
-        expect(page).to have_css(".ncce-courses__count", text: "Showing 79 results")
-      end
-
-      it "hides the clear all filters button" do
-        expect(page).not_to have_link("Clear all filters")
-      end
-
-      it "removes filters" do
-        expect(page).to have_unchecked_field("course_format_1", visible: :hidden)
       end
     end
   end
@@ -127,10 +100,6 @@ RSpec.describe("Courses page", type: :system) do
       it "increases the filter count when another filter is clicked" do
         check("course_format_2", visible: false)
         expect(page).to have_css(".ncce-courses__filter-form-toggle-applied", text: "2 filters applied")
-      end
-
-      it "shows the clear all filters button" do
-        expect(page).to have_link("Clear all filters", href: courses_path(anchor: "results-top"))
       end
 
       it "shows the expected number of filters when the menu is closed" do

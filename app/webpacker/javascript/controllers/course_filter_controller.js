@@ -8,7 +8,6 @@ export default class extends ApplicationController {
     'form',
     'loadingBar',
     'courseList',
-    'clearFilters',
     'resultsCount',
     'resultsContainer',
     'hubMessage',
@@ -36,6 +35,7 @@ export default class extends ApplicationController {
   openModifier = '';
   intervalId = null;
   locationFiltering = false;
+  rangeFiltering = false;
   didScroll = false;
 
   initialize() {
@@ -115,6 +115,10 @@ export default class extends ApplicationController {
     this.sendGTMEvent('click', 'Search location');
   }
 
+  dateRangeSearched(ev) {
+    this.sendGTMEvent('click', 'Search date range')
+  }
+
   sendSelectEvent(ev, type) {
     const { currentTarget } = ev;
     this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
@@ -146,6 +150,13 @@ export default class extends ApplicationController {
     this.sendGTMEvent(gtmEvent, currentTarget.value);
   }
 
+  addRangeFilter(ev) {
+    if (this.rangeFiltering === false) {
+      this.filterCount++;
+      this.rangeFiltering = true;
+    }
+  }
+
   addLocationFilter(ev) {
     if (this.locationFiltering === false) {
       this.filterCount++;
@@ -164,14 +175,6 @@ export default class extends ApplicationController {
 
     this.filterCountTarget.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
     this.filterCount2Target.innerText = `${this.filterCount} ${this.filterCount == 1 ? 'filter' : 'filters'} applied`;
-  }
-
-  toggleClearFilter() {
-    if (this.filterCount > 0) {
-      this.clearFiltersTarget.classList.remove(this.hiddenClass);
-    } else {
-      this.clearFiltersTarget.classList.add(this.hiddenClass);
-    }
   }
 
   toggleLoadingBar() {
@@ -253,13 +256,6 @@ export default class extends ApplicationController {
 
 
     this.updateFilterCount();
-    this.toggleClearFilter();
-  }
-
-  clearFilters() {
-    this.toggleLoadingBar();
-    this.resultsCountTarget.innerText = this.defaultResultsCountString;
-    this.locationFiltering = false;
   }
 
   openFilterForm() {
