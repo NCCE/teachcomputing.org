@@ -20,6 +20,8 @@ module EnrolmentHelper
   end
 
   def non_gcse_card_data_2
+    find_out_more = "Find out more"
+
     [
       {
         title: "KS3 & GCSE Subject Knowledge certificate",
@@ -30,7 +32,7 @@ module EnrolmentHelper
         links: [
           {
             link_url: "/certificate/subject-knowledge",
-            link_title: "Find out more"
+            link_title: find_out_more
           }
         ]
       },
@@ -43,7 +45,7 @@ module EnrolmentHelper
         links: [
           {
             link_url: "/i-belong",
-            link_title: "Find out more"
+            link_title: find_out_more
           }
         ]
       },
@@ -56,7 +58,7 @@ module EnrolmentHelper
         links: [
           {
             link_url: "https://isaaccomputerscience.org/",
-            link_title: "Find out more"
+            link_title: find_out_more
           }
         ]
       }
