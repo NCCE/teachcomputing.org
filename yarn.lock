@@ -7631,7 +7631,7 @@ __metadata:
     node-sass-glob-importer: ^5.3.2
     prettier: ^2.2.1
     purgecss: ^5.0.0
-    sass: ^1.32.12
+    sass: ^1.71.0
     sass-loader: ^10.1.1
     speed-measure-webpack-plugin: ^1.5.0
     stimulus: ^2.0
@@ -10062,7 +10062,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.32.12, sass@npm:^1.38.0":
+"sass@npm:^1.38.0":
   version: 1.56.1
   resolution: "sass@npm:1.56.1"
   dependencies:
@@ -10072,6 +10072,19 @@ __metadata:
   bin:
     sass: sass.js
   checksum: 78e693e5992b149574c95d5adfe39ca3e5b97d80befa11191a20d1daa41fe201a98ac099beab726cd3095e2d2e7991a2c408ba0fcc3fa9f525879de7eee18dad
+  languageName: node
+  linkType: hard
+
+"sass@npm:^1.71.0":
+  version: 1.71.0
+  resolution: "sass@npm:1.71.0"
+  dependencies:
+    chokidar: ">=3.0.0 <4.0.0"
+    immutable: ^4.0.0
+    source-map-js: ">=0.6.2 <2.0.0"
+  bin:
+    sass: sass.js
+  checksum: 5ba6b4b994c7ae94286919d8be8a3692038c27175b4ad3a3ac43f51a91188590d3ddd3a0ef1022135503b9d70d0732efdbedfd56f3ee1a4651549f5b13f8942f
   languageName: node
   linkType: hard
 
