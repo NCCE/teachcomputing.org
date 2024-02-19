@@ -1,16 +1,18 @@
 <%= content_tag :div, class: ['bordered-cards-component', { "#{@class_name}": @class_name.present? }], style: custom_properties do %>
   <% @cards.each do | card | %>
-    <%= content_tag :div, class: ['bordered-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
+    <%= content_tag :div, class: ['bordered-card', { "#{card[:class_name]}": card[:class_name].present? }], style: custom_card_properties(card) do %>
       <% if card[:image_url].present? %>
         <div class="bordered-card__image-wrapper">
           <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image' %>
         </div>
       <% end %>
-      <h2 class="govuk-heading-m"><%= card[:title] %></h2>
-      <p class="govuk-body bordered-card__text"><%= card[:text] %></p>
+      <h2 class="govuk-heading-m bordered-card__title"><%= card[:title] %></h2>
+      <p class="govuk-body bordered-card__text">
+        <%= card[:text] %>
+      </p>
 
       <% card[:links].each do |link| %>
-        <p class="govuk-body">
+        <p class="govuk-body bordered-card__link">
           <%= link_to link[:link_title], link[:link_url], class: link_class(card[:button]), data: {
             event_action: "click", event_category: link[:tracking_page], event_label: link[:tracking_label]
           } %>
