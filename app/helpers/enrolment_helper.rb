@@ -3,16 +3,16 @@ module EnrolmentHelper
     [
       {
         title: "Building confidence",
-        text: "Our <a href='/courses' class='govuk-link'>high-quality CPD</a> and nationally accredited certification can help you feel more confident and advance your skills to teach computing at secondary. By <a href='/secondary-certification' class='govuk-link'>developing your subject knowledge</a> and classroom practice, you will help build student understanding and be able to tackle misconceptions.".html_safe,
+        text: "Our <a href='/courses' class='govuk-link'>high-quality CPD</a> and nationally accredited certification can help you feel more confident and advance your skills to teach computing at secondary. By <a href='/secondary-certification' class='govuk-link'>developing your subject knowledge</a> and classroom practice, you will help build student understanding and be able to tackle misconceptions.".html_safe
       },
       {
         title: "Improving capacity",
-        text: "Created by subject experts using the latest pedagogical research and teacher feedback, our <a href='/curriculum' class='govuk-link'>free curriculum resources</a> can help you tackle the workload effectively. The 
-        time-saving learning materials from <a href='/isaac-computer-science' class='govuk-link'>Isaac Computer Science</a> will also make marking, homework and monitoring students’ progress easier.".html_safe,
+        text: "Created by subject experts using the latest pedagogical research and teacher feedback, our <a href='/curriculum' class='govuk-link'>free curriculum resources</a> can help you tackle the workload effectively. The
+        time-saving learning materials from <a href='/isaac-computer-science' class='govuk-link'>Isaac Computer Science</a> will also make marking, homework and monitoring students’ progress easier.".html_safe
       },
       {
         title: "Ensuring sustainability",
-        text: "We will support you to take important steps in ensuring sustainable development of your school’s computing department. We can help you improve diversity and gender balance in computing as well as identify areas of your provision to focus on in more detail through the <a href='https://computingqualityframework.org/' class='govuk-link'>Computing Quality Framework</a>.".html_safe,
+        text: "We will support you to take important steps in ensuring sustainable development of your school’s computing department. We can help you improve diversity and gender balance in computing as well as identify areas of your provision to focus on in more detail through the <a href='https://computingqualityframework.org/' class='govuk-link'>Computing Quality Framework</a>.".html_safe
       }
     ].map! do |card|
       card.merge!(button: :blank)
@@ -30,8 +30,8 @@ module EnrolmentHelper
         links: [
           {
             link_url: "/certificate/subject-knowledge",
-            link_title: "Find out more",
-          },
+            link_title: "Find out more"
+          }
         ]
       },
       {
@@ -43,8 +43,8 @@ module EnrolmentHelper
         links: [
           {
             link_url: "/i-belong",
-            link_title: "Find out more",
-          },
+            link_title: "Find out more"
+          }
         ]
       },
       {
@@ -56,13 +56,12 @@ module EnrolmentHelper
         links: [
           {
             link_url: "https://isaaccomputerscience.org/",
-            link_title: "Find out more",
-          },
+            link_title: "Find out more"
+          }
         ]
       }
     ]
   end
-
 
   def non_gcse_testimonials_data
     [
@@ -78,7 +77,7 @@ module EnrolmentHelper
         image: "media/images/pages/non-gcse/richard.png",
         name: "Richard Berryman",
         link_target: "",
-        bio: "Computing Lead",
+        bio: "Computing Lead"
       }
     ]
   end
