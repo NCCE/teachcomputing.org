@@ -1,6 +1,11 @@
 class CmsController < ApplicationController
   layout "full-width"
 
+  CMS_MAPPINGS = {
+    "privacy" => Cms::Pages::PrivacyNotice,
+    "deep-test" => Cms::Pages::DeepTest
+  }
+
   def articles
     page =
       if params[:page].present?
@@ -28,7 +33,9 @@ class CmsController < ApplicationController
   end
 
   def cms_new_page
-    @resource = params[:page].get
+    permitted_params = cms_page_params
+    raise ActiveRecord::RecordNotFound unless CMS_MAPPINGS.key?(permitted_params["page_slug"])
+    @resource = CMS_MAPPINGS[permitted_params["page_slug"]].get
     render :resource
   end
 
@@ -63,5 +70,9 @@ class CmsController < ApplicationController
     return params[:page_slug] if params[:parent_slug].blank?
 
     "#{params[:parent_slug]}-#{params[:page_slug]}"
+  end
+
+  def cms_page_params
+    params.permit(:page_slug)
   end
 end

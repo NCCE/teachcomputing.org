@@ -7,6 +7,6 @@ class BlogPreview < ViewComponent::Base
   end
 
   def call
-    @title.to_s
+    @title.to_s.html_safe
   end
 end

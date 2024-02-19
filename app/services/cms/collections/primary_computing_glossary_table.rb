@@ -15,10 +15,8 @@ module Cms
         }
       end
 
-      def self.resource_key(params: {})
-        url = "primary-computing-glossary-tables"
-        url += "/#{params[:id]}" if params[:id]
-        url
+      def self.resource_key
+        "primary-computing-glossary-tables"
       end
     end
   end

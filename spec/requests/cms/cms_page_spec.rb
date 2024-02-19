@@ -4,24 +4,20 @@ RSpec.describe CmsController do
   describe "GET #cms_page" do
     context "with a valid page" do
       before do
-        stub_cms_page
-        get "/funding"
+        stub_strapi_get_single_entity("privacy-notice")
+        get "/privacy"
       end
 
-      it "assigns @article" do
-        expect(assigns(:article)).to be_a(Object)
+      it "assigns @resource" do
+        expect(assigns(:resource)).to be_a(Object)
       end
 
-      it "@article has a title" do
-        expect(assigns(:article)["title"]).to eq("Test")
+      it "@resource has a title" do
+        expect(assigns(:resource).attributes[:title]).to eq("Test Page")
       end
 
       it "renders the template" do
-        expect(response).to render_template("article")
-      end
-
-      it "has the expected class" do
-        expect(assigns(:style_slug)).to eq("funding")
+        expect(response).to render_template("resource")
       end
     end
 
@@ -32,17 +28,6 @@ RSpec.describe CmsController do
 
       it "raises an error" do
         expect { get "/eggs" }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-
-    context "with a nested page" do
-      before do
-        stub_nested_cms_page
-        get "/subject-practitioners/primary"
-      end
-
-      it "has the expected class" do
-        expect(assigns(:style_slug)).to eq("subject-practitioners")
       end
     end
   end

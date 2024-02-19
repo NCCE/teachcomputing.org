@@ -4,30 +4,26 @@ RSpec.describe CmsController do
   describe "GET #cms_post" do
     context "with a valid page" do
       before do
-        stub_cms_post
+        stub_strapi_get_single_entity("blogs/funding")
         get "/blog/funding"
       end
 
-      it "assigns @article" do
-        expect(assigns(:article)).to be_a(Object)
+      it "assigns @resource" do
+        expect(assigns(:resource)).to be_a(Object)
       end
 
-      it "@article has a title" do
-        expect(assigns(:article)["title"]).to eq("Test")
+      it "@resource has a title" do
+        expect(assigns(:resource).attributes[:title]).to eq("Test Page")
       end
 
       it "renders the template" do
-        expect(response).to render_template("article")
-      end
-
-      it "has the expected class" do
-        expect(assigns(:style_slug)).to eq("funding")
+        expect(response).to render_template("resource")
       end
     end
 
     context "with a missing page" do
       before do
-        stub_missing_cms_post
+        stub_strapi_not_found("blogs/eggs")
       end
 
       it "raises an error" do

@@ -42,10 +42,12 @@ SitemapGenerator::Sitemap.create do
   add "/press", changefreq: "daily"
   add "/primary-certificate", changefreq: "monthly"
   add "/primary-teachers", changefreq: "monthly"
-  add "/privacy", changefreq: "monthly"
   add "/secondary-certificate", changefreq: "monthly"
   add "/secondary-teachers", changefreq: "monthly"
   add "/terms-conditions", changefreq: "monthly"
+
+  # CMS Routes
+  add "/privacy", changefreq: "monthly"
 
   Achiever::Course::Template.all.each do |course|
     add course_path(id: course.activity_code, name: course.title.parameterize), changefreq: "weekly"
