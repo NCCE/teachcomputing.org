@@ -1,9 +1,5 @@
-<%# meta_tag :title, t('.hero.title') %>
-<%# meta_tag :description, 'Develop your subject knowledge and classroom practice with a National Centre for Computing Education certificate; improve your confidence and take your career to the next level.' %>
-<%# meta_tag :url, request.original_url %>
-
-  <%#= JSON.pretty_generate(@resource.attributes) %>
+<% meta_tag :url, request.original_url %>
 
 <% @resource.class.resource_attribute_mappings.each do |mapping| %>
-  <%= render @resource.resource_view(mapping) if mapping[:component] %>
+<%= render @resource.resource_view(mapping) if mapping[:component] %>
 <% end %>

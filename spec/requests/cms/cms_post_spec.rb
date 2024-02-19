@@ -4,7 +4,7 @@ RSpec.describe CmsController do
   describe "GET #cms_post" do
     context "with a valid page" do
       before do
-        stub_strapi_get_single_entity("blogs/funding")
+        stub_strapi_get_single_blog_post("blogs/funding")
         get "/blog/funding"
       end
 
@@ -13,7 +13,7 @@ RSpec.describe CmsController do
       end
 
       it "@resource has a title" do
-        expect(assigns(:resource).attributes[:title]).to eq("Test Page")
+        expect(assigns(:resource).attributes[:title]).to eq("Education and industry unite at key event championing gender equity in computer science")
       end
 
       it "renders the template" do

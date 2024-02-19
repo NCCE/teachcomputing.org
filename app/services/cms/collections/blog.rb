@@ -3,11 +3,12 @@ module Cms
     class Blog < CollectionResource
       def self.collection_attribute_mappings
         {
-          component: BlogPreview,
+          component: BlogPreviewComponent,
           fields: [
             {attribute: :title},
             {attribute: :excerpt},
             {attribute: :publishDate},
+            {attribute: :slug},
             {attribute: :featuredImage, populate: true}
           ]
         }
@@ -22,12 +23,16 @@ module Cms
           },
           {
             attribute: :featuredImage,
-            component: nil
+            component: FeaturedImageComponent
           },
           {
             attribute: :content,
             component: CmsRichTextBlockComponent,
             value_param: :blocks
+          },
+          {
+            attribute: :seo,
+            component: SeoBlockComponent
           }
         ]
       end

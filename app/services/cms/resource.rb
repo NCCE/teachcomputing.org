@@ -12,7 +12,11 @@ module Cms
 
     def resource_view(component)
       values = {}
-      values[component[:value_param]] = attribute_value(component)
+      if component[:value_param]
+        values[component[:value_param]] = attribute_value(component)
+      else
+        values = attribute_value(component)
+      end
       component[:component].new(**values)
     end
 

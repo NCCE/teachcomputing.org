@@ -1,4 +1,14 @@
-
-<% @collection.resources.each do |resource| %>
-  <%= render resource.collection_view %>
-<% end %>
+<%= render 'components/hero', hero_title: @title.titlecase, small_title: true %>
+<div class="govuk-width-container">
+  <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: @page_name) %>
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full <%= @style_slug %>">
+      <div class="<%= @collection_wrapper_class %>">
+        <% @collection.resources.each do |resource| %>
+          <%= render resource.collection_view %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

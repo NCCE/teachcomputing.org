@@ -46,6 +46,9 @@ class CmsController < ApplicationController
       else
         1
       end
+    @title = params[:title] || "News & Updates"
+    @page_name = params[:page_name] || "Articles"
+    @collection_wrapper_class = params[:collection_wrapper] || "ncce-news-archive"
     @collection = params[:collection].all(page, 25)
     render :collection
   end

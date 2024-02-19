@@ -237,7 +237,7 @@ Rails.application.routes.draw do
   get "/deep-test", to: "cms#cms_new_page", defaults: {page_slug: "deep-test"} if Rails.env.development?
 
   constraints ->(req) { req.format == :html } do
-    get "/blog", to: "cms#collection", defaults: {collection: Cms::Collections::Blog}, as: :cms_posts
+    get "/blog", to: "cms#collection", defaults: {collection: Cms::Collections::Blog, collection_wrapper: "ncce-news-archive"}, as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
     get "/blog/:page_slug", to: "cms#collection_resource", as: :cms_post, defaults: {collection: Cms::Collections::Blog}
     get "/:page_slug", to: "cms#cms_new_page", as: :cms_page # Left in till migration complete
