@@ -244,12 +244,6 @@ module Achiever
       end
     end
 
-    def occurrence_online_or_remote?(occurrence)
-      # remote_delivered_cpd: live remote
-      # online_cpd: mooc
-      occurrence.remote_delivered_cpd || occurrence.online_cpd
-    end
-
     def filter_course_occurences(course_occurrences)
       course_occurrences.select do |co|
         at_hub = true
@@ -257,7 +251,7 @@ module Achiever
 
         at_hub = co.hub_id == current_hub_id if current_hub_id
 
-        if !occurrence_online_or_remote?(co) && current_date_range.present?
+        unless co.online_cpd
           in_range = Date.parse(co.start_date).between?(current_date_range_from, current_date_range_to) if current_date_range
         end
 
