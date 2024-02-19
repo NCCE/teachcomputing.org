@@ -20,6 +20,19 @@ class BorderedCardsComponent < ViewComponent::Base
     "--cards-per-row: #{@cards_per_row};"
   end
 
+  def custom_card_properties(card)
+    case card[:top_color]
+    in :green
+      "--top-color: var(--green);"
+    in :orange
+      "--top-color: var(--orange);"
+    in :yellow
+      "--top-color: var(--yellow);"
+    else
+      ""
+    end
+  end
+
   def link_class(button)
     case button
     when :lime, true
