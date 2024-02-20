@@ -31,7 +31,7 @@ module EnrolmentHelper
         top_color: :green,
         links: [
           {
-            link_url: "/certificate/subject-knowledge",
+            link_url: "/subject-knowledge",
             link_title: find_out_more
           }
         ]
