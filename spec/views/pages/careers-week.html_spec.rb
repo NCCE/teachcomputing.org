@@ -6,8 +6,8 @@ RSpec.describe("pages/careers-week", type: :view) do
     expect(rendered).to have_css(".govuk-heading-l", text: "Careers in computing")
   end
 
-  it "has six testimonials" do
+  it "has eight testimonials" do
     render
-    expect(rendered).to have_css(".careers-week__testimonials>div", count: 8)
+    expect(rendered).to have_css(".testimonial", count: 8)
   end
 end
