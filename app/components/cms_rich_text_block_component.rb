@@ -32,7 +32,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   ERB
 
   def initialize(resource, blocks:)
-    #obj = obj[:blocks] if obj.key?(:blocks) # we only need to do this at the root level
+    # obj = obj[:blocks] if obj.key?(:blocks) # we only need to do this at the root level
     @resource = resource
     @obj = blocks
   end

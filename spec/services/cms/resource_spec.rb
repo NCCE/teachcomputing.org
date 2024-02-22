@@ -32,7 +32,6 @@ RSpec.describe Cms::Resource do
       end
     end
 
-
     it "calling get returns an object" do
       stub_strapi_get_single_entity("cms-resource-test")
       response = test_class.get

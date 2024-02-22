@@ -78,5 +78,4 @@ class CmsController < ApplicationController
 
     "#{params[:parent_slug]}-#{params[:page_slug]}"
   end
-
 end
