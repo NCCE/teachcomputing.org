@@ -20,7 +20,6 @@ RSpec.describe CmsController do
         expect(response).to render_template("resource")
       end
     end
-
   end
 
   describe "GET #clear_page_cache" do
