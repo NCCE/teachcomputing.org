@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CmsRichTextBlockComponent < ViewComponent::Base
-  def build(obj)
+  def build(resource, obj)
     klass =
       case obj
       in { type: "paragraph" } then Paragraph
@@ -14,27 +14,34 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       in { type: "quote"} then Quote
       end
 
-    klass.new(obj)
+    klass.new(resource, blocks: obj)
   end
 
   erb_template <<~ERB
     <div class="govuk-width-container cms-rich-text-block-component">
-      <% @obj.each do |child| %>
-        <%= render build(child) %>
-      <% end %>
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <% @obj.each do |child| %>
+              <%= render build(@resource, child) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   ERB
 
-  def initialize(obj)
-    obj = obj[:blocks] if obj.key?(:blocks) # we only need to do this at the root level
-    @obj = obj
+  def initialize(resource, blocks:)
+    #obj = obj[:blocks] if obj.key?(:blocks) # we only need to do this at the root level
+    @resource = resource
+    @obj = blocks
   end
 
   class Paragraph < CmsRichTextBlockComponent
     erb_template <<~ERB
       <p class="govuk-body-m">
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       </p>
     ERB
@@ -44,7 +51,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     erb_template <<~ERB
       <h1 class="<%= classes %>">
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       </h1>
     ERB
@@ -64,12 +71,6 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   end
 
   class Text < CmsRichTextBlockComponent
-    erb_template <<~ERB
-      <span class="<%= classes %>">
-        <%= @obj[:text] %>
-      </span>
-    ERB
-
     def classes
       classes = []
       classes << "cms-rich-text-block-component__text--bold" if @obj.key?(:bold)
@@ -80,13 +81,25 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
       classes.join(" ")
     end
+
+    def call
+      table_matches = /\[table:([a-z\-_]+)\]/.match(@obj[:text])
+      if table_matches
+        table_key = table_matches[1]
+        render CmsTableComponent.new(@resource, table_key)
+      elsif @obj[:text] == "---"
+        content_tag(:hr)
+      else
+        content_tag(:span, @obj[:text], class: classes)
+      end
+    end
   end
 
   class Link < CmsRichTextBlockComponent
     erb_template <<~ERB
       <%= link_to @obj[:url], class: "ncce-link" do %>
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       <% end %>
     ERB
@@ -96,7 +109,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     erb_template <<~ERB
       <%= content_tag(tag, class: classes) do %>
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       <% end %>
     ERB
@@ -116,7 +129,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     erb_template <<~ERB
       <li>
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       </li>
     ERB
@@ -132,7 +145,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     erb_template <<~ERB
       <blockquote class="govuk-body-m">
         <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
+          <%= render build(@resource, child) %>
         <% end %>
       </blockquote>
     ERB

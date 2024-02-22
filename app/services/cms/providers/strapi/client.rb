@@ -13,6 +13,7 @@ module Cms
           }
           params[:fields] = collection_view_fields(collection_class) + collection_class.required_fields
           params[:populate] = collection_view_populate(collection_class)
+          params[:sort] = collection_class.sort_keys if collection_class.sort_keys.any?
           response = @connection.get(collection_class.resource_key, params)
           raise ActiveRecord::RecordNotFound unless response.status == 200
           body = JSON.parse(response.body, symbolize_names: true)
@@ -36,6 +37,17 @@ module Cms
 
         private
 
+        def flatten_attributes attribute_hash
+          # remove the nested data attributes to make parsing data easier in components
+          attribute_hash.each do |k, v|
+            next unless v.is_a?(Hash)
+            fv = flatten_attributes(v)
+            if fv.has_key? :data
+              attribute_hash[k] = fv[:data]
+            end
+          end
+        end
+
         def collection_view_fields(collection_class)
           collection_class.collection_attribute_mappings[:fields].select { !_1.has_key?(:populate) || _1[:populate] == false }.map { _1[:attribute] }
         end
@@ -48,8 +60,7 @@ module Cms
 
         def generate_populate_params resource_class
           populate_params = {}
-          resource_class.resource_attribute_mappings.each_with_object(populate_params)
-            .with_index do |(component, populate), index|
+          resource_class.resource_attribute_mappings.each_with_object(populate_params).with_index do |(component, populate), index|
             if component[:fields]
               populate[component[:attribute]] = field_populate_params(component)
             else
@@ -74,7 +85,7 @@ module Cms
         def map_resource(data)
           {
             id: data[:id],
-            attributes: data[:attributes],
+            attributes: flatten_attributes(data[:attributes]),
             created_at: data[:attributes][:createdAt],
             updated_at: data[:attributes][:updatedAt],
             published_at: data[:attributes][:publishedAt]

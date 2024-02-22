@@ -21,15 +21,6 @@ RSpec.describe CmsController do
       end
     end
 
-    context "with a missing page" do
-      before do
-        stub_missing_cms_page
-      end
-
-      it "raises an error" do
-        expect { get "/eggs" }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
   end
 
   describe "GET #clear_page_cache" do

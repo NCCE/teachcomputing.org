@@ -1,5 +1,5 @@
 <% meta_tag :url, request.original_url %>
 
 <% @resource.class.resource_attribute_mappings.each do |mapping| %>
-<%= render @resource.resource_view(mapping) if mapping[:component] %>
+  <%= render @resource.resource_view(mapping) if mapping[:component] %>
 <% end %>

@@ -15,6 +15,10 @@ module Cms
       raise NotImplementedError
     end
 
+    def self.sort_keys
+      []
+    end
+
     def self.all(page, page_size, params: {})
       response = Cms::Request.all(self, page, page_size, params)
       response[:resources].map! { new(**_1) }

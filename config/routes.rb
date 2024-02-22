@@ -229,19 +229,17 @@ Rails.application.routes.draw do
   get "/cs-accelerator", to: redirect("/subject-knowledge")
 
   # CMS ROUTES
-  get "/privacy", to: "cms#cms_new_page", defaults: {page: Cms::Pages::PrivacyNotice}
-  get "/deep-test", to: "cms#cms_new_page", defaults: {page: Cms::Pages::DeepTest}
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/:parent_slug/:page_slug/refresh", to: "cms#clear_page_cache"
   get "/:page_slug/refresh", to: "cms#clear_page_cache"
-  get "/privacy", to: "cms#cms_new_page", defaults: {page_slug: "privacy"}
-  get "/deep-test", to: "cms#cms_new_page", defaults: {page_slug: "deep-test"} if Rails.env.development?
+  get "/privacy", to: "cms#privacy", as: :privacy
+  get "/deep-test", to: "cms#deep_test" if Rails.env.development?
 
   constraints ->(req) { req.format == :html } do
-    get "/blog", to: "cms#collection", defaults: {collection: Cms::Collections::Blog, collection_wrapper: "ncce-news-archive"}, as: :cms_posts
+    get "/blog", to: "cms#blog", as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
-    get "/blog/:page_slug", to: "cms#collection_resource", as: :cms_post, defaults: {collection: Cms::Collections::Blog}
+    get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
     get "/:page_slug", to: "cms#cms_new_page", as: :cms_page # Left in till migration complete
   end
 end

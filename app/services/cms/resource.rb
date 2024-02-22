@@ -17,7 +17,11 @@ module Cms
       else
         values = attribute_value(component)
       end
-      component[:component].new(**values)
+      component[:component].new(self, **values)
+    end
+
+    def attribute_mapping(attribute_name)
+      self.class.resource_attribute_mappings.find { _1[:attribute] == attribute_name }
     end
 
     def attribute_value(component)

@@ -7,6 +7,10 @@ RSpec.describe Cms::CollectionResource do
     end.to raise_error(NotImplementedError)
   end
 
+  it "should not define any sort keys" do
+    expect(described_class.sort_keys).to be_empty
+  end
+
   context "when extended" do
     let(:test_class) do
       Class.new(described_class) do
@@ -25,6 +29,10 @@ RSpec.describe Cms::CollectionResource do
 
         def self.resource_key
           "cms-collection-resource-test"
+        end
+
+        def self.sort_keys
+          ["createdAt:desc"]
         end
       end
     end

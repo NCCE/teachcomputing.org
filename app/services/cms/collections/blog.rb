@@ -18,7 +18,7 @@ module Cms
         [
           {
             attribute: :title,
-            component: HeroComponent,
+            component: CmsHeroComponent,
             value_param: :title
           },
           {
@@ -39,6 +39,10 @@ module Cms
 
       def self.resource_key
         "blogs"
+      end
+
+      def self.sort_keys
+        ["publishDate:desc"]
       end
     end
   end
