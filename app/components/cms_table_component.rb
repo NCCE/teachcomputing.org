@@ -7,7 +7,7 @@ class CmsTableComponent < ViewComponent::Base
   end
 
   def table_data
-    records = @resource.attributes[@key][:data]
+    records = @resource.attributes[@key]
     records.each_with_object([]) do |record, table|
       table << record_fields.map { record[:attributes][_1.to_sym] }
     end
