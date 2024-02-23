@@ -20,4 +20,8 @@ class CmsTableComponent < ViewComponent::Base
   def table_columns
     record_fields.map { _1.underscore.humanize }
   end
+
+  def render?
+    @resource.attribute_mapping(@key).present?
+  end
 end

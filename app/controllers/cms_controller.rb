@@ -32,7 +32,7 @@ class CmsController < ApplicationController
   end
 
   def blog_resource
-    process_resource Cms::Collections::Blog, params: {resource_id: params[:page_slug]}
+    process_resource Cms::Collections::Blog, resource_params: {resource_id: params[:page_slug]}
   end
 
   def style_slug
@@ -54,7 +54,7 @@ class CmsController < ApplicationController
 
   private
 
-  def process_collection(cls, title: "News & Updaets", page_name: "Atricles", collection_wrapper: "ncce-news-archive")
+  def process_collection(cls, title: "News & Updates", page_name: "Articles", collection_wrapper: "ncce-news-archive")
     page =
       if params[:page].present?
         params[:page].to_i
@@ -68,8 +68,13 @@ class CmsController < ApplicationController
     render :collection
   end
 
-  def process_resource cls, params: {}
-    @resource = cls.get(params:)
+  def process_resource cls, resource_params: {}
+    if params[:refresh_cache]
+      cls.clear_cache
+    end
+    preview = params[:preview] || false
+    preview_key = params[:preview_key] || nil
+    @resource = cls.get(params: resource_params, preview:, preview_key:)
     render :resource
   end
 

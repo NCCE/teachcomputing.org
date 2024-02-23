@@ -13,15 +13,15 @@ module Cms
             component: CmsRichTextBlockComponent,
             value_param: :blocks
           },
-          {
-            attribute: :privacy_cookie_table,
-            component: nil,
-            fields: [
-              {attribute: "cookieName"},
-              {attribute: "cookieVariable"},
-              {attribute: "purpose"}
-            ]
-          }
+          #{
+          #  attribute: :privacy_cookie_table,
+          #  component: nil,
+          #  fields: [
+          #    {attribute: "cookieName"},
+          #    {attribute: "cookieVariable"},
+          #    {attribute: "purpose"}
+          #  ]
+          #}
         ]
       end
 

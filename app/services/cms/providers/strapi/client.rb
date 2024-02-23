@@ -27,12 +27,13 @@ module Cms
           }
         end
 
-        def one(resource_class, params)
-          params[:populate] = generate_populate_params(resource_class)
+        def one(resource_class, params, preview: false, preview_key: nil)
+          params[:populate] = generate_populate_params(resource_class, preview:)
+          params[:publicationState] = "preview" if preview
           response = @connection.get(generate_url(resource_class.resource_key, params), params.except(:resource_id))
           raise ActiveRecord::RecordNotFound unless response.status == 200
           body = JSON.parse(response.body, symbolize_names: true)[:data]
-          map_resource(body)
+          map_resource(body, preview, preview_key)
         end
 
         private
@@ -58,15 +59,22 @@ module Cms
           end
         end
 
-        def generate_populate_params resource_class
+        def generate_populate_params resource_class, preview: false
           populate_params = {}
+          max_index = nil
           resource_class.resource_attribute_mappings.each_with_object(populate_params).with_index do |(component, populate), index|
             if component[:fields]
               populate[component[:attribute]] = field_populate_params(component)
             else
               populate[index] = component[:attribute]
             end
+            max_index = index
           end
+          if preview
+            # convert preview param into strapi compliant version
+            populate_params[max_index + 1] = :versions
+          end
+          populate_params
         end
 
         def field_populate_params component
@@ -82,10 +90,16 @@ module Cms
           resource_key
         end
 
-        def map_resource(data)
+        def map_resource(data, has_preview = false, preview_key = nil)
+          flat_attributes = flatten_attributes(data[:attributes])
+          if has_preview && flat_attributes.has_key?(:versions) # deal with the fact plugin doesnt return versions for some models
+            versions = flat_attributes[:versions]
+            version_to_show = versions.find { _1[:attributes][:versionNumber].to_s == preview_key } || versions.last
+            flat_attributes = version_to_show[:attributes]
+          end
           {
             id: data[:id],
-            attributes: flatten_attributes(data[:attributes]),
+            attributes: flat_attributes,
             created_at: data[:attributes][:createdAt],
             updated_at: data[:attributes][:updatedAt],
             published_at: data[:attributes][:publishedAt]

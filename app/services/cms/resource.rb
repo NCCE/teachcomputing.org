@@ -36,9 +36,13 @@ module Cms
       raise NotImplementedError
     end
 
-    def self.get(params: {})
-      data = Cms::Request.one(self, params)
+    def self.get(params: {}, preview: false, preview_key: nil)
+      data = Cms::Request.one(self, params, preview:, preview_key:)
       new(**data)
+    end
+
+    def self.clear_cache
+      Cms::Request.clear_page_cache(self)
     end
 
     def self.required_fields

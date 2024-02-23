@@ -23,6 +23,11 @@ RSpec.describe Cms::Request do
       response = Cms::Request.one(Cms::Pages::PrivacyNotice, {})
       expect(response[:id]).to eq(1)
     end
+
+    it "should clear cache" do
+      Cms::Request.clear_page_cache(Cms::Pages::PrivacyNotice)
+      # TODO finish me
+    end
   end
 
   context "invalid provider given" do

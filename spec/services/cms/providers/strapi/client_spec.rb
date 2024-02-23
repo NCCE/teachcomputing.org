@@ -68,6 +68,22 @@ RSpec.describe Cms::Providers::Strapi::Client do
     end.to raise_error(ActiveRecord::RecordNotFound)
   end
 
+  context "with preview" do
+    before do
+      stub_strapi_get_single_entity_with_preview("test-page")
+    end
+
+    it "should return latest version when no key specified" do
+      response = client.one(page_class, {}, preview: true)
+      expect(response[:attributes][:versionNumber]).to eq(3)
+    end
+
+    it "should return correct value when given key" do
+      response = client.one(page_class, {}, preview: true, preview_key: "1")
+      expect(response[:attributes][:versionNumber]).to eq(1)
+    end
+  end
+
   it "class all and returns mapped resource" do
     stub_strapi_get_collection_entity("test-collection")
     response = client.all(collection_class, 1, 10, {})
@@ -79,6 +95,12 @@ RSpec.describe Cms::Providers::Strapi::Client do
   end
 
   context "creates populate params" do
+
+    it "adds versions when preview requested" do
+      params = client.send(:generate_populate_params, page_class, preview: true)
+      expect(params).to have_value(:versions)
+    end
+
     it "for single depth attributes" do
       params = client.send(:generate_populate_params, page_class)
       expect(params).to have_value(:title)
