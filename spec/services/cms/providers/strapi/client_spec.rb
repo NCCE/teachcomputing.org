@@ -95,7 +95,6 @@ RSpec.describe Cms::Providers::Strapi::Client do
   end
 
   context "creates populate params" do
-
     it "adds versions when preview requested" do
       params = client.send(:generate_populate_params, page_class, preview: true)
       expect(params).to have_value(:versions)

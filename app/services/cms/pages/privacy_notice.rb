@@ -12,8 +12,8 @@ module Cms
             attribute: :content,
             component: CmsRichTextBlockComponent,
             value_param: :blocks
-          },
-          #{
+          }
+          # {
           #  attribute: :privacy_cookie_table,
           #  component: nil,
           #  fields: [
@@ -21,7 +21,7 @@ module Cms
           #    {attribute: "cookieVariable"},
           #    {attribute: "purpose"}
           #  ]
-          #}
+          # }
         ]
       end
 

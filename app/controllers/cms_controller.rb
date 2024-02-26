@@ -72,8 +72,9 @@ class CmsController < ApplicationController
     if params[:refresh_cache]
       cls.clear_cache
     end
-    preview = params[:preview] || false
-    preview_key = params[:preview_key] || nil
+    cleaned_params = preview_params
+    preview = cleaned_params[:preview] || false
+    preview_key = cleaned_params[:preview_key] || nil
     @resource = cls.get(params: resource_params, preview:, preview_key:)
     render :resource
   end
@@ -82,5 +83,11 @@ class CmsController < ApplicationController
     return params[:page_slug] if params[:parent_slug].blank?
 
     "#{params[:parent_slug]}-#{params[:page_slug]}"
+  end
+
+  private
+
+  def preview_params
+    params.permit(:preview, :preview_key)
   end
 end
