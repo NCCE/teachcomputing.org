@@ -1,0 +1,59 @@
+.benchmark-bordered-cards-component {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 24px;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
+  }
+}
+
+.benchmark-bordered-card {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+
+  position: relative;
+  background-color: $white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border-top: solid 9px $lime-green;
+
+  &--i-belong {
+    border-top: solid 9px $orange;
+    background-image: url('../images/pages/i-belong/i_belong_flag.svg');
+    background-repeat: no-repeat;
+    background-size: 64px 52px;
+    background-position-x: right;
+
+    h2 {
+      width: 80%;
+    }
+  }
+
+
+  &.full-width {
+    grid-column: 1 / 3;
+  }
+
+  &__content {
+    padding: $component-padding-mobile;
+    flex-grow: 1;
+
+    @include govuk-media-query($from: tablet) {
+      padding: calc($component-padding * 0.6);
+    }
+  }
+
+  &__banner {
+    margin-bottom: 20px;
+  }
+}
+
+.bordered-card__title {
+  text-align: left;
+}
+
