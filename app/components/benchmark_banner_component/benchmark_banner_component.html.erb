@@ -1,0 +1,13 @@
+
+<div class="benchmark-banner-wrapper <%= @class_name %>">
+  <div class="benchmark-banner">
+    <div class="benchmark-banner__label"> 
+      <strong class="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><%= label_text %></strong>
+    </div>
+    <%= content_tag :div, class: icon_classes do %>
+      <% @icons.each do |icon| %>
+        <%= image_pack_tag icon %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

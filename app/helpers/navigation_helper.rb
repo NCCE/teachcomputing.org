@@ -30,6 +30,7 @@ module NavigationHelper
        children: [
          {text: "Teaching resources", link: curriculum_key_stages_path, label: "Teaching resources"},
          {text: "Isaac Computer Science", link: about_isaac_computer_science_path, label: "Isaac Computer Science"},
+         {text: "Careers support", link: careers_support_path, label: "Careers support"},
          {text: "Secondary question banks", link: secondary_question_banks_path, label: "Teaching resources"},
          {text: "Artificial Intelligence", link: cms_page_path(page_slug: "artificial-intelligence"), label: "Artificial Intelligence"},
          {text: "Pedagogy", link: cms_page_path(page_slug: "pedagogy"), label: "Pedagogy"},

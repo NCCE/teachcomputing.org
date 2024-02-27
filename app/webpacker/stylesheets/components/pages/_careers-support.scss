@@ -1,0 +1,18 @@
+
+.careers-support-hero {
+
+  .careers-support-hero__block{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 15px;
+
+    .careers-support-hero__block--photo {
+      img {
+        width: 320px;
+        height: 240px;
+        object-fit: cover;
+      }
+    }
+  }
+}

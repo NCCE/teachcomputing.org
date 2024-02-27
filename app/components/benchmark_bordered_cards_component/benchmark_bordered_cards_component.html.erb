@@ -1,0 +1,15 @@
+<%= content_tag :div, class: ['benchmark-bordered-cards-component', { "#{@class_name}": @class_name.present? }], style: custom_properties do %>
+  <% @cards.each do | card | %>
+    <%= content_tag :div, class: ['benchmark-bordered-card', { "#{card[:class_name]}": card[:class_name].present? }] do %>
+      <div class="benchmark-bordered-card__content">
+        <h2 class="govuk-heading-m bordered-card__title"><%= card[:title] %></h2>
+        <p class="govuk-body bordered-card__text">
+          <%= card[:text] %>
+        </p>
+      </div>
+      <div class="benchmark-bordered-card__banner">
+        <%= render BenchmarkBannerComponent.new(icons: card[:benchmark_icons], align_right: true) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
