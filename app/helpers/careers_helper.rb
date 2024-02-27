@@ -34,6 +34,7 @@ module CareersHelper
     [
       {
         title: "GCSE options guide",
+        title_link: "https://static.teachcomputing.org/I+Belong+-+GCSE+Options+Resource.pdf",
         text: "The options process is an important stage in a young person’s journey through education. Our guide will help you explore how you present GCSE options guidance to encourage more students, particularly girls, to consider choosing it as one of their option subjects.",
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_3.svg",
@@ -43,13 +44,15 @@ module CareersHelper
       },
       {
         title: "Teach Computing Curriculum",
+        title_link: curriculum_key_stages_path,
         text: "Our Teach Computing Curriculum includes many references to careers in computing. You can also find further advice on including careers advice in lessons in our #{link_to "I Belong programme", i_belong_path} handbook.".html_safe,
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_4.svg"
         ]
       },
       {
-        title: "Bring real-life role models into the classroom",
+        title: "Bring real-life role models into the classroom<i class='icon-link-external in-link'></i>".html_safe,
+        title_link: "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors",
         text: "Computing Ambassadors are volunteers from a wide range of industries who can connect computing lessons to real-world careers. A free resource for schools, they help to bring the curriculum to life and inspire more young people to choose a career in computing.",
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_5.svg",
@@ -58,6 +61,7 @@ module CareersHelper
       },
       {
         title: "I Belong: encouraging girls into computer science",
+        title_link: i_belong_path,
         text: "Girls are consistently outnumbered by boys in computer science, making up just one in five entries at GCSE. The I Belong programme supports schools to understand the barriers to girls’ participation in computer science and make a plan to overcome them.",
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_3.svg"
@@ -65,7 +69,8 @@ module CareersHelper
         class_name: "benchmark-bordered-card--i-belong"
       },
       {
-        title: "Computing Quality Framework",
+        title: "Computing Quality Framework<i class='icon-link-external in-link'></i>".html_safe,
+        title_link: "https://computingqualityframework.org/",
         text: "Our framework is free to use and designed to help schools review and plan how they teach the computing curriculum. Dimension six  covers careers education, including advice such as ensuring the curriculum is culturally relevant and addressing the issue of gender balance in computing.",
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_1.svg",
@@ -76,6 +81,7 @@ module CareersHelper
       },
       {
         title: "Guidance for you",
+        title_link: hubs_path,
         text: "We recommend conducting a 1:1 interview with every student, ensuring you provide quality guidance about STEM pathways using all the advice above.<br /><br />We are here to help, and you can contact your #{link_to "local Computing Hub", hubs_path} for further support and guidance for your school.".html_safe,
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_8.svg"

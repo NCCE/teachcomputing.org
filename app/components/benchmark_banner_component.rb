@@ -14,5 +14,6 @@ class BenchmarkBannerComponent < ViewComponent::Base
   def icon_classes
     classes = ["benchmark-banner__icons"]
     classes << "benchmark-banner__icons--align-right" if @align_right
+    classes
   end
 end
