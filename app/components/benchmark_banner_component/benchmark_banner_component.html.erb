@@ -2,7 +2,11 @@
 <div class="benchmark-banner-wrapper <%= @class_name %>">
   <div class="benchmark-banner">
     <div class="benchmark-banner__label"> 
-      <strong class="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><%= label_text %></strong>
+      <strong class="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold">
+        <a href="https://www.gatsby.org.uk/education/focus-areas/good-career-guidance" target="_blank">
+          <%= label_text %>
+        </a>     
+      </strong>
     </div>
     <%= content_tag :div, class: icon_classes do %>
       <% @icons.each do |icon| %>
