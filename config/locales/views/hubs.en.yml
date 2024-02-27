@@ -12,6 +12,7 @@ en:
       sme_section_title: "Introducing GCSE Computer Science in your school"
       sme_section_text_html: "We are dedicated to support schools to expand their Key Stage 4 provision and start offering GCSE Computer Science to their students. Get help from a dedicated Subject Matter Expert to create an actionable plan and identify the next steps."
       sme_section_link_text: "Explore support"
+      sme_section_link_url: "/gcse-cs-support"
       cqf_section_title: "Computing Quality Framework"
       cqf_section_text_html: "Self-evaluation is the first step to improvement. The Computing Quality Framework helps schools to review their progress in developing an exemplary computing curriculum, ultimately resulting in achieving the Computing Quality Mark."
       cqf_section_link_text: "Register to the CQF"
