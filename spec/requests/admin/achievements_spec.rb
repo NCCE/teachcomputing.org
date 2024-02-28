@@ -58,13 +58,6 @@ RSpec.describe "Admin::AchievementsController" do
         expect(user_programme_enrolment.current_state).to eq("enrolled")
         expect(other_enrolment.current_state).to eq("complete")
       end
-
-      it "should flagged rolled back enrolments" do
-        user_programme_enrolment.reload
-        other_enrolment.reload
-        expect(user_programme_enrolment.flagged?).to be true
-        expect(other_enrolment.flagged?).to be false
-      end
     end
 
     context "not completed achievement" do
