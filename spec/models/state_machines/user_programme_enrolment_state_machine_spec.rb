@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
-  let(:user_programme_enrolment) { create(:user_programme_enrolment) }
+  let(:programme) { create(:programme) }
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, programme:) }
 
   describe "initial state" do
     it "returns enrolled" do
@@ -11,19 +12,19 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
 
   describe "guards" do
     let(:user) { create(:user) }
-    let(:programme) { create(:primary_certificate, :with_activity_groupings) }
-    let(:enrolment) { create(:user_programme_enrolment, user:, programme:) }
+    let(:primary_programme) { create(:primary_certificate, :with_activity_groupings) }
+    let(:enrolment) { create(:user_programme_enrolment, user:, programme: primary_programme) }
 
     let(:setup_incomplete_enrolment) {
       enrolment
-      pag = programme.programme_activity_groupings.first
+      pag = primary_programme.programme_activity_groupings.first
       act = pag.activities.first
       create(:completed_achievement, user:, activity: act)
     }
 
     let(:setup_completed_enrolment) {
       enrolment
-      programme.programme_activity_groupings.each do |pag|
+      primary_programme.programme_activity_groupings.each do |pag|
         act = pag.activities.first
         create(:completed_achievement, user:, activity: act)
       end
@@ -53,7 +54,21 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
     end
   end
 
+  describe "before_transition hooks" do
+    it "sets certificate name when complete" do
+      count = user_programme_enrolment.programme.programme_complete_counter.get_next_number
+      user_programme_enrolment.transition_to(:complete)
+      transition = user_programme_enrolment.last_transition
+      expect(transition.metadata["certificate_name"]).to eq(count + 1)
+    end
+  end
+
   describe "after_transition hooks" do
+    it "should ask the programme to update certificate complete data" do
+      expect(programme).to receive(:set_user_programme_enrolment_complete_data).with(user_programme_enrolment)
+      user_programme_enrolment.transition_to(:complete)
+    end
+
     it "queues CompleteCertificateEmailJob job" do
       expect do
         user_programme_enrolment.transition_to(:complete)

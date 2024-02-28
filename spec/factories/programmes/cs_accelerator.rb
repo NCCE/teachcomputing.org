@@ -4,5 +4,6 @@ FactoryBot.define do
     slug { "subject-knowledge" }
     description { "This is the CSA programme" }
     enrollable { true }
+    programme_complete_counter { create(:programme_complete_counter, programme: instance) }
   end
 end

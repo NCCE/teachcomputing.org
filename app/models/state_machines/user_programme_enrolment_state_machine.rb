@@ -21,8 +21,12 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
     enrolment.programme.mailer.with(user: enrolment.user).pending.deliver_later
   end
 
-  after_transition(to: :complete) do |programme_enrolment|
+  before_transition(to: :complete) do |programme_enrolment, transition|
     # Set the name that should display on the certificate
+    transition.metadata["certificate_name"] = programme_enrolment.programme.programme_complete_counter.get_next_number
+  end
+
+  after_transition(to: :complete) do |programme_enrolment, transition|
     programme_enrolment.programme.set_user_programme_enrolment_complete_data(programme_enrolment)
 
     # Keep track of the pathway the user was on at completion
