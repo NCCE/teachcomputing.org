@@ -45,7 +45,7 @@ module CareersHelper
       {
         title: "Teach Computing Curriculum",
         title_link: curriculum_key_stages_path,
-        text: "Our Teach Computing Curriculum includes many references to careers in computing. You can also find further advice on including careers advice in lessons in our #{link_to "I Belong programme", i_belong_path} handbook.".html_safe,
+        text: "Our Teach Computing Curriculum includes many references to careers in computing. You can also find further advice on including careers advice in lessons in our #{link_to "I Belong programme", about_i_belong_path} handbook.".html_safe,
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_4.svg"
         ]
