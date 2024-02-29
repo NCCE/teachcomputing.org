@@ -134,4 +134,8 @@ module ExternalLinkHelper
   def sme_support_form_url
     "https://forms.office.com/e/VSLpEXu3vH"
   end
+
+  def hubs_local_support_form_url
+    "https://forms.office.com/e/hxMcDtvkcM"
+  end
 end
