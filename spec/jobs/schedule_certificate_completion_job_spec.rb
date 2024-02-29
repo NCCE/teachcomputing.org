@@ -8,11 +8,11 @@ RSpec.describe ScheduleCertificateCompletionJob, type: :job do
   describe "#perform" do
     it "should transition UPE to complete after pending delay observed" do
       user_programme_enrolment.transition_to(:pending)
-      travel_to(DateTime.now + (programme.pending_delay - 1.days)) do
+      travel_to(programme.pending_delay.from_now - 1.days) do
         described_class.perform_now(user_programme_enrolment)
         expect(user_programme_enrolment.in_state?(:complete)).to be false
       end
-      travel_to(DateTime.now + programme.pending_delay + 1.second) do
+      travel_to(programme.pending_delay.from_now + 1.second) do
         described_class.perform_now(user_programme_enrolment)
         expect(user_programme_enrolment.in_state?(:complete)).to be true
       end
@@ -26,11 +26,11 @@ RSpec.describe ScheduleCertificateCompletionJob, type: :job do
       travel_to(DateTime.now + 3.days) do
         user_programme_enrolment.transition_to(:pending)
       end
-      travel_to(DateTime.now + programme.pending_delay + 1.second) do
+      travel_to(programme.pending_delay.from_now) do
         described_class.perform_now(user_programme_enrolment)
         expect(user_programme_enrolment.in_state?(:complete)).to be false
       end
-      travel_to(DateTime.now + programme.pending_delay + 3.days + 1.second) do
+      travel_to(programme.pending_delay.from_now + 3.days) do
         described_class.perform_now(user_programme_enrolment)
         expect(user_programme_enrolment.in_state?(:complete)).to be true
       end
@@ -42,7 +42,7 @@ RSpec.describe ScheduleCertificateCompletionJob, type: :job do
       described_class.perform_now(user_programme_enrolment)
       expect(user_programme_enrolment.in_state?(:complete)).to be false
 
-      travel_to(DateTime.now + programme.pending_delay + 1.second) do
+      travel_to(programme.pending_delay.from_now) do
         described_class.perform_now(user_programme_enrolment)
         expect(user_programme_enrolment.in_state?(:complete)).to be false
       end

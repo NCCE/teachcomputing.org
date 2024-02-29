@@ -25,6 +25,36 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
       end
     end
 
+    context "when no programme has no delay" do
+      let(:a_level_enrolment) { create(:user_programme_enrolment, programme: a_level, user:) }
+
+      before do
+        a_level_enrolment
+      end
+
+      it "should transition to complete" do
+        allow_any_instance_of(Programmes::ALevel).to receive(:user_meets_completion_requirement?).and_return(true)
+        described_class.perform_now(user)
+        expect(a_level_enrolment.current_state).to eq("complete")
+      end
+    end
+
+    context "when has programme has delay" do
+      let(:secondary_enrolment) { create(:user_programme_enrolment, programme: secondary_certificate, user:) }
+
+      before do
+        secondary_enrolment
+      end
+
+      it "should enqueue ScheduleCertificateCompletionJob for the correct time" do
+        allow_any_instance_of(Programmes::SecondaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
+        expect {
+          described_class.perform_now(user)
+        }.to have_enqueued_job(ScheduleCertificateCompletionJob).with(secondary_enrolment)
+          .at(a_value_within(1.seconds).of(Programme.secondary_certificate.pending_delay.from_now)) # Deal with inaccuracy of time checks
+      end
+    end
+
     context "when user is valid and enrolled" do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate).to receive(:user_meets_completion_requirement?).and_return(true)
