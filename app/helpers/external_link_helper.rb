@@ -130,4 +130,12 @@ module ExternalLinkHelper
   def computing_quality_framework_url
     "https://computingqualityframework.org"
   end
+
+  def sme_support_form_url
+    "https://forms.office.com/e/VSLpEXu3vH"
+  end
+
+  def hubs_local_support_form_url
+    "https://forms.office.com/e/hxMcDtvkcM"
+  end
 end

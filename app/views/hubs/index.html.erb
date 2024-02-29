@@ -16,8 +16,22 @@
           <%= t('.paragraph_three') %>
        </p>
         <%= render HubSearchComponent.new(location: @hubs_index.current_location) %>
+        <%= render HubRegionComponent.with_collection(@hubs_index.hub_regions) %>
+        <%= render SortedHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, formatted_address: @hubs_index.formatted_address) %>
+        <%= render NoHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, hub_regions: @hubs_index.hub_regions) %>
       </div>
       <div class="govuk-grid-column-one-third">
+        <%= render AsideComponent.new(
+          title: t('.local_support_section_title'),
+          text: t('.local_support_section_text_html'),
+          use_button: true,
+          link: {
+            text: t('.local_support_section_link_text'),
+            url: hubs_local_support_form_url,
+            tracking_label: 'Local hub support request link'
+          },
+          tracking_category: tracking_category
+        ) %>
         <%= render AsideComponent.new(
           title: t('.sme_section_title'),
           text: t('.sme_section_text_html'),
@@ -29,8 +43,17 @@
           },
           tracking_category: tracking_category
         ) %>
-      </div>
-      <div class="govuk-grid-column-one-third">
+        <%= render AsideComponent.new(
+          title: t('.cqf_section_title'),
+          text: t('.cqf_section_text_html'),
+          use_button: true,
+          link: {
+            text: t('.cqf_section_link_text'),
+            url: computing_quality_framework_url,
+            tracking_label: 'CQF link'
+          },
+          tracking_category: tracking_category
+        ) %>
         <%= render AsideComponent.new(
           title: t('.kit_aside_title'),
           text: t('.kit_aside_text'),
@@ -43,15 +66,6 @@
           tracking_category: tracking_category
         ) %>
       </div>
-    </div>
-  </div>
-</div>
-<div class="govuk-width-container">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <%= render HubRegionComponent.with_collection(@hubs_index.hub_regions) %>
-      <%= render SortedHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, formatted_address: @hubs_index.formatted_address) %>
-      <%= render NoHubsComponent.new(sorted_hubs: @hubs_index.sorted_hubs, hub_regions: @hubs_index.hub_regions) %>
     </div>
   </div>
 </div>
