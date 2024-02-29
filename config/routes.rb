@@ -172,8 +172,9 @@ Rails.application.routes.draw do
     defaults: {page_slug: "accessibility-statement"}
   get "/auth/stem", to: redirect("/login")
   get "/auth/callback", to: "auth#callback", as: "callback"
-  get "/careers", to: "pages#page", as: :careers_week, defaults: {page_slug: "careers-week"}
-  get "/careers-week", to: redirect("/careers")
+  get "/careers-week", to: redirect("/careers-support")
+  get "/careers", to: redirect("/careers-support")
+  get "/careers-support", to: "pages#page", as: :careers_support, defaults: {page_slug: "careers-support"}
   get "/competition-terms-and-conditions", to: "pages#page", as: :competition_terms_and_conditions,
     defaults: {page_slug: "competition-terms-and-conditions"}
   get "/subject-knowledge", to: "pages#static_programme_page", as: :cs_accelerator,
@@ -183,6 +184,7 @@ Rails.application.routes.draw do
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
   get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/gcse-cs-support", to: "pages#non_gcse", as: :non_gcse, defaults: {page_slug: "gcse-cs-support"}
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}

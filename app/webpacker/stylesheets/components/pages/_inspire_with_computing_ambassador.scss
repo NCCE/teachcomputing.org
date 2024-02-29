@@ -13,7 +13,7 @@
       object-fit: cover;
 
       @include govuk-media-query($from: tablet) {
-        width: 295px;
+        width: 280px;
       }
 
     }

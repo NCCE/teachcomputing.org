@@ -3,12 +3,10 @@
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
-<%= render HeroComponent.new(
-  title: t('.hero.title'),
+<%= render 'components/hero', 
+  hero_title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
-  color: 'primary',
-  small_title: true
-) %>
+  colour: 'lime-green-bg', full_width: true %>
 
 <%# How we can help you and your school %>
 <div class="light-grey-bg">

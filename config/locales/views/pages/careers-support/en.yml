@@ -1,0 +1,29 @@
+en:
+  pages:
+    careers-support:
+      hero:
+        title: "Where next? Careers in computing, technology and digital"
+        subtitle: "From engineering vision systems for self-driving cars to keeping our nation’s infrastructure safe with cybersecurity skills, careers in computing, technology and digital have never been more diverse and exciting. We are on the cusp of an AI revolution, and many of the careers our young people will shape have not yet been invented."
+      intro:
+        paragraph_1_html: "The Department for Education’s Unit for Future Skills suggests that %{digital_skills_link}, while the Department for Culture, Media and Sport found such skills required for %{job_stats_link}. Specialist technology expertise is often rewarded with attractive salaries and innovative working conditions."
+        paragraph_2_html: "Given such diversity of choices, effective careers guidance is vital to help young people make informed decisions about their future. Our free resources can support your school to achieve the %{gatsby_link} and highlight the diversity of pathways leading to a successful career in computing, technology, and the digital industries. We have signposted below the Benchmarks that our comprehensive offer can help support to enable you to access the right resources, training, and guidance for your school."
+      student-resources:
+        heading: Resources for your students
+        subheading: "Computer Science journeys"
+        content: "Help young people see the value and transferability of the skills they develop in the classroom with our Computer Science journeys. Hear from university students and computer scientists working in industry who are doing amazing things in computing-related fields."
+      isaac:
+        events-link: "Isaac discovery events for GCSE and A level students"
+        content: "Inspire young people with the career possibilities computer science can bring with our Isaac Computer Science Discovery events. Highlights include expert speakers from industry and academia, panel discussions about studying at university, and creative workshops."
+      resources:
+        heading: "Resources for you"
+      careers-website:
+        heading: "Useful tech careers websites"
+        content:
+          description: "Visit the tech careers websites below, make links with STEM departments in local universities and FE colleges, and research local industries and trade bodies to build up your labour market information."
+          point_1_html: "The National Careers Service can help young people explore what a job in %{link} involves and if it is right for them."
+          point_2_html: "UCAS offers a wealth of %{link} to help students make choices based on their interests and aspirations, from applying for a job or apprenticeship to better understanding employment."
+          point_3_html: "The %{link} online tool allows students to explore routes into further education, higher education, and apprenticeships that align with their aspirations through a career-matching quiz and a large database of careers."
+          point_4_html: "BCS, the Chartered Institute for IT provides a “%{link}” which suggests the “hottest tech roles” based on a series of questions about your personality, which might suggest jobs that young people have not previously considered."
+          point_5_html: "The National Cyber Security Centre (%{nscs_link}) has a wealth of information on careers in cybersecurity as well as enrichment activities such as the %{comp_link}."
+
+          
