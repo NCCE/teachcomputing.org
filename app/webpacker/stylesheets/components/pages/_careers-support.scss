@@ -3,16 +3,29 @@
 
   .careers-support-hero__block{
     display: flex;
-    flex-direction: row;
     padding: 1rem;
     gap: 15px;
+    flex-direction: column-reverse;
+
+    @include govuk-media-query($from: 800px) {
+      flex-direction: row;
+    }
 
     .careers-support-hero__block--photo {
+
       img {
-        width: 320px;
-        height: 240px;
-        object-fit: cover;
+        width: 100%;
+        height: auto;
       }
+
+      @include govuk-media-query($from: 800px) {
+        img {
+          width: 320px;
+          height: 240px;
+          object-fit: cover;
+        }
+      }
+
     }
   }
 }
