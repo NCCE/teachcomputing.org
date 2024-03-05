@@ -7639,7 +7639,7 @@ __metadata:
     stylelint-config-prettier: ^8.0.2
     stylelint-config-recommended-scss: ^4.2.0
     stylelint-order: ^6.0.4
-    stylelint-prettier: ^1.2.0
+    stylelint-prettier: ^3.0.0
     stylelint-scss: ^6.1
     trix: ^1.3
     turbolinks: ^5.2.0
@@ -10966,15 +10966,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-prettier@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "stylelint-prettier@npm:1.2.0"
+"stylelint-prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stylelint-prettier@npm:3.0.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    prettier: ">= 0.11.0"
-    stylelint: ">= 9.2.1"
-  checksum: 8bc3cf7277e0a92e59fa7bf96fde90720f7e43676be3de8a595da05429a11a3677553d4b742a038517ddd41ae1a88ce2c0f7d1676c7c7278c15d4b1c73f173be
+    prettier: ">=2.0.0"
+    stylelint: ">=14.0.0"
+  checksum: 094f53ef5dbe3806524db7f580b9312ceca444651803fc08c8baa48cd9a270985c709fa4f083681a685310dc347b8e55aa93d462554ba7d4ae6258a3bdf6a278
   languageName: node
   linkType: hard
 
