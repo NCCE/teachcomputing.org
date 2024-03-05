@@ -3,9 +3,8 @@ class ScheduleCertificateCompletionJob < ApplicationJob
 
   def perform(enrolment, meta = {})
     return unless enrolment.in_state?(:pending)
+    return unless enrolment.last_transition.created_at <= (enrolment.programme.pending_delay.days.ago + 30.minutes)
 
-    if enrolment.last_transition.created_at <= (DateTime.now - enrolment.programme.pending_delay)
-      enrolment.transition_to(:complete, meta)
-    end
+    enrolment.transition_to(:complete, meta)
   end
 end
