@@ -59,7 +59,7 @@ RSpec.describe StateMachines::UserProgrammeEnrolmentStateMachine do
       count = user_programme_enrolment.programme.programme_complete_counter.get_next_number
       user_programme_enrolment.transition_to(:complete)
       transition = user_programme_enrolment.last_transition
-      expect(transition.metadata["certificate_name"]).to eq(count + 1)
+      expect(transition.metadata["certificate_number"]).to eq(count + 1)
     end
   end
 
