@@ -12,7 +12,7 @@ gem "attr_encrypted"
 gem "audited"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.5.1", require: false
-gem "cloudflare-rails", "~> 1.1"
+gem "cloudflare-rails", "~> 5.0"
 gem "combine_pdf", ">= 1.0.18"
 gem "connection_pool"
 gem "dalli"

@@ -56,6 +56,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include RackAttackStubs
   config.include AchieverStubs
   config.include CredlyStubs
   config.include CurriculumStubs
@@ -71,6 +72,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     Webpacker.compile if Webpacker.instance.compiler.stale?
   end
+
+  config.before(:each) { stub_cloudflare_ip_lookup }
 
   config.before(:each, type: :system) do
     driven_by selenium_driver
