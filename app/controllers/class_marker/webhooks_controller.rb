@@ -12,7 +12,7 @@ class ClassMarker::WebhooksController < ApplicationController
 
   class InvalidHMACError < StandardError
     def initialize
-      super "Invalid HMAC signature"
+      super("Invalid HMAC signature")
     end
   end
 
