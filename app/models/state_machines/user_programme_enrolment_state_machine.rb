@@ -22,7 +22,9 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   end
 
   before_transition(to: :complete) do |programme_enrolment, transition|
-    # Set the name that should display on the certificate
+    next unless transition.metadata["certificate_number"].blank?
+
+    # Set the number that should display on the certificate
     transition.metadata["certificate_number"] = programme_enrolment.programme.programme_complete_counter.get_next_number
   end
 
