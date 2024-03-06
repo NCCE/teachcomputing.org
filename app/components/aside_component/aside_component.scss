@@ -13,6 +13,15 @@
   border-top-style: solid;
   border-top-width: 3px;
   padding-top: 1rem;
+
+  .with-icon {
+    display: flex;
+    img { 
+      margin-right: 0.5rem;
+      max-height: 1.5rem;
+      filter: invert(56%) sepia(31%) saturate(4411%) hue-rotate(360deg) brightness(102%) contrast(105%);
+    }
+  }
 }
 
 .aside-component__text {

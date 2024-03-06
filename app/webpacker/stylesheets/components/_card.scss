@@ -87,11 +87,30 @@
 }
 
 .card--orange {
-  border-left-color: $primary-cert-color;
+  border-left-color: $orange;
   @include govuk-media-query($from: desktop) {
     &:after {
       background-color: $karry;
     }
+  }
+}
+
+.card--i-belong {
+  position: relative;
+  img {
+    position: absolute;
+    right: 1rem;
+    top: 0rem;
+    max-height: 3rem;
+    @include govuk-media-query($from: desktop) {
+      max-height: 4rem;
+    }
+  }
+}
+
+.card--short {
+  @include govuk-media-query($from: tablet) {
+    margin-right: 10rem;
   }
 }
 

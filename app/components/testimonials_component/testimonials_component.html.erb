@@ -1,4 +1,4 @@
-<div class="purple-bg">
+<div class="<%= background_class %>" >
   <div class="govuk-width-container ">
     <div class="govuk-main-wrapper govuk-!-padding-0">
       <div class="govuk-grid-row">
@@ -12,14 +12,20 @@
                 <div class="testimonial__bio lp-testimonials__testimonial-bio">
                   <%= image_pack_tag testimonial[:image], alt: testimonial[:name], class: 'testimonial__image' %>
                   <p class="govuk-body-s lp-testimonials__testimonial-bio-text">
-                    <strong>
-                      <%= link_to testimonial[:name], testimonial[:link_target],
-                        class: 'ncce-link ncce-link--on-dark axe-skip-a11y-test',
-                        data: { event_action: 'click',
-                                event_category: @event_tracking_category,
-                                event_label: testimonial[:tracking_event] }
-                    %>
-                    </strong>
+                    <% if testimonial[:link_target].present? %>
+                      <strong class="name">
+                        <%= link_to testimonial[:name], testimonial[:link_target],
+                          class: 'ncce-link',
+                          data: { event_action: 'click',
+                                  event_category: @event_tracking_category,
+                                  event_label: testimonial[:tracking_event] }
+                      %>
+                      </strong>
+                    <% else %>
+                      <span class="name">
+                        <%= testimonial[:name] %>
+                      </span>
+                    <% end %>
                     <%= testimonial[:bio] %>
                   </p>
                 </div>
