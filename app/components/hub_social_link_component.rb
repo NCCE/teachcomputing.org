@@ -14,6 +14,8 @@ class HubSocialLinkComponent < ViewComponent::Base
       "https://facebook.com/#{@value}"
     when "twitter", "x"
       "https://twitter.com/#{@value}"
+    when "instagram"
+      "https://instagram.com/#{@value}"
     end
   end
 
@@ -27,7 +29,7 @@ class HubSocialLinkComponent < ViewComponent::Base
 
   def image_path
     case @type
-    when "website", "facebook"
+    when "website", "facebook", "instagram"
       "media/images/social-media/#{@type}.svg"
     when "twitter", "x"
       "media/images/social-media/x_grey.svg"

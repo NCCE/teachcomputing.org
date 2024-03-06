@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_12_090704) do
+ActiveRecord::Schema.define(version: 2024_03_06_124717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -257,6 +257,7 @@ ActiveRecord::Schema.define(version: 2024_02_12_090704) do
     t.boolean "satellite", default: false
     t.string "satellite_info"
     t.string "linkedin"
+    t.string "instagram"
     t.index ["hub_region_id"], name: "index_hubs_on_hub_region_id"
     t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
