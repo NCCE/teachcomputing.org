@@ -1,3 +1,19 @@
+.testimonial--light {
+  background-color: $ncce-grey;
+
+  .testimonial__bio {
+    color: $govuk-text-colour;
+  }
+}
+
+.testimonial--dark {
+  background-color: $purple-dark;
+
+  .testimonial__bio p, a {
+    color: $white !important;
+  }
+}
+
 .testimonial {
   margin-bottom: 2rem;
   @include govuk-media-query($from: desktop) {
@@ -10,6 +26,7 @@
     line-height: 1.4;
     color: $govuk-text-colour !important;
     padding: 18px;
+    padding-bottom: 30px;
   }
   &__bio {
     display: grid;
@@ -89,7 +106,7 @@
   gap: 24px;
 
   @include govuk-media-query($from: tablet) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   @include govuk-media-query($from: desktop) {
@@ -125,7 +142,7 @@
 
 .lp-testimonials__testimonial-bio-text {
   margin-left: 12px;
-  strong {
+  .name {
     display: block;
     margin-bottom: .25rem;
   }

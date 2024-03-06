@@ -1,0 +1,154 @@
+<%= render HeroComponent.new(title: " Support for school trusts", small_title: true) %>
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          <p class="govuk-body-m">
+            We offer high-impact support for school trusts to enable you to
+            deliver a holistic approach to computing education, fully aligned
+            to the operational reality of your schools and with national best practice.
+          </p>
+
+          <p class="govuk-body-m">
+            Complete the form below to tell us how we can support you or to request
+            bespoke consultancy from our education specialists, which is available free
+            of charge to school trusts. One of our specialists will work with you
+            to identify a forward plan to help you focus your time on the right areas
+            to meet your needs, address challenges and realise your potential for growth.
+          </p>
+
+          <%= link_to "Request SME support", school_trusts_form_url, class: ["govuk-button", "button", "govuk-!-margin-bottom-0"] %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-main-wrapper--lg">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Helping you achieve high-quality computing education across your trust</h2>
+          <p class="govuk-body-m">
+            Our training, resources and enrichment support the teaching and learning of computing from key stage 1 to A level and can help equip your teachers to strive for the best possible outcomes for students across your trust.
+          </p>
+          <p class="govuk-body-m">
+            This includes helping you build on the Department for Education pillars of quality for academy trusts to help every child fulfil their potential by ensuring they receive the right support.
+          </p>
+          </p>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new do |component| %>
+            <%= component.with_heading do %>
+
+              <p class="govuk-body-m with-icon">
+                <%= image_pack_tag "media/images/icons/info.svg" %>
+                We can help support with:
+              </p>
+            <% end %>
+
+            <%= component.with_body do %>
+              <ul>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Curriculum</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Student outcomes</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Accessible to all</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Enrichment</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Destinations</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">School improvement model</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Workload and retention</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">Continuous professional development</li>
+                <li class="govuk-body-s govuk-!-margin-bottom-0">ECT and career progression</li>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Key areas of support</h2>
+
+          <div class="card card--no-glyph card--short">
+            <h3 class="govuk-heading-m">Assess your computing provision</h3>
+            <p class="govuk-body-m">
+              Our <%= link_to "accredited Computing Quality Framework", computing_quality_framework_url %>
+              enables schools to identify
+              strengths and areas for development within their computing curriculum
+              and directs them towards resources based on their specific challenges.
+            </p>
+            <p class="govuk-body-m">
+              It supports senior leaders and subject leaders within a trust to
+              oversee the progress of all the academies, giving you access to:
+            </p>
+
+            <ul>
+              <li class="govuk-body-m govuk-!-margin-bottom-0">reports of individual progress of each academy against the framework’s benchmarks</li>
+              <li class="govuk-body-m govuk-!-margin-bottom-0">collated reports to help you identify average scores across the trust to best plan trust-wide engagements</li>
+              <li class="govuk-body-m govuk-!-margin-bottom-0">digital badge showcasing engagement with the CQF</li>
+            </ul>
+          </div>
+
+          <div class="card card--orange card--i-belong card--no-glyph card--short">
+            <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+
+            <h2 class="govuk-heading-m">Making computing accessible to all</h2>
+
+            <p class="govuk-body-m">
+              Female students are significantly under-represented in computer
+              science, with only one in five entries from girls at GCSE and 15%
+              at A level. We are supporting schools to break down barriers that
+              prevent girls from choosing computing by providing training, resources
+              and implementation support to increase their engagement in the subject.
+            </p>
+
+            <p class="govuk-body-m">
+              <%= link_to "I Belong: encouraging girls into computer science", about_i_belong_path %> can help you
+              create an action plan with strategies to make computer science
+              more inclusive across your trust.
+            </p>
+          </div>
+
+          <div class="card card--no-glyph card--short">
+            <h2 class="govuk-heading-m">Continuous professional development for all career stages</h2>
+
+            <p class="govuk-body-m">
+              Access <%= link_to "high-quality continuous professional development", courses_path %> to support
+              career development and progression in computing. All our courses are
+              free to teachers in state-funded education and can help them work towards
+              one of our nationally recognised certificates, awarded by BCS, The Chartered Institute for IT.
+            </p>
+
+            <p class="govuk-body-m">
+              Our courses can support different departmental priorities, from
+              subject knowledge enhancement for different career levels to developing
+              pedagogy and leadership skills.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render TestimonialsComponent.new(
+  testimonials: [
+    {
+      text: "In collaboration with the NCCE, the Harris Federation strategically leverages tailored support to enhance computing education. We utilise the wealth of teaching resources it provides to deliver high-quality teaching and learning, while also ensuring our staff benefit from exceptional training opportunities. Our active participation in NCCE initiatives, including the Computing Quality Framework and the I Belong programme, enables us as a Federation to strategically plan and enhance our computing provision.",
+      image: "media/images/pages/school-trusts/jonathan.jpg",
+      name: "Jonathan O’Donnell",
+      bio: "Senior Computer Science Consultant and AI Lead for Harris Federation",
+    }
+  ],
+  event_tracking_category: nil,
+  testimonials_per_row: 1,
+  light: true,
+  ) %>
