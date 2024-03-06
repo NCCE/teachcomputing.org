@@ -1,0 +1,8 @@
+.video-container {
+  position: relative;
+  video {
+    position: absolute;
+    transform: translateY(25%);
+    max-width: calc(100% - 1rem);
+  }
+}
