@@ -97,14 +97,24 @@
 
 .card--i-belong {
   position: relative;
+  img + * {
+    margin-right: 2rem;
+  }
+  @include govuk-media-query($from: desktop) {
+    img {
+      max-height: 4rem;
+
+      + * {
+        margin-right: 0;
+      }
+    }
+  }
+
   img {
     position: absolute;
     right: 1rem;
     top: 0rem;
     max-height: 3rem;
-    @include govuk-media-query($from: desktop) {
-      max-height: 4rem;
-    }
   }
 }
 
