@@ -75,4 +75,20 @@ RSpec.describe HubSocialLinkComponent, type: :component do
       expect(page).to have_link("", href: "https://linkedin.com")
     end
   end
+
+  context "when type is instagram" do
+    before do
+      render_inline(described_class.new(type: "instagram", value: "instahandle"))
+    end
+
+    it "renders correct image" do
+      expect(page).to have_xpath(
+        '//img[contains(@class, "hub-social-link-component__image")][contains(@alt, "instagram icon")][contains(@src, "packs-test/media/images/social-media/instagram-")]'
+      )
+    end
+
+    it "displays link to instagram" do
+      expect(page).to have_link("", href: "https://instagram.com/instahandle")
+    end
+  end
 end
