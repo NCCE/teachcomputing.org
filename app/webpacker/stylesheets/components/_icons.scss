@@ -113,6 +113,17 @@
   @include icon('../images/icons/link-external.svg');
 }
 
+.icon-button-external {
+  @include icon(
+    '../images/icons/external-button.svg',
+    $position: right 0.75rem center,
+    $width: 24px,
+    $height: 24px
+  );
+
+  padding-right: 3rem;
+}
+
 .in-link {
   margin-left: 0.5rem;
 }
