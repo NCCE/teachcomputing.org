@@ -1,8 +1,25 @@
-.video-container {
-  position: relative;
-  video {
-    position: absolute;
-    transform: translateY(25%);
-    max-width: calc(100% - 1rem);
+.text-video {
+  display: grid;
+  width: 100%;
+  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+
+  .video-container {
+    display: flex;
+
+    align-items: center;
+
+    video {
+      width: 100%;
+    }
+  }
+
+  @include govuk-media-query($from: mobile) {
+    display: block;
+
+    .video-container {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 }
