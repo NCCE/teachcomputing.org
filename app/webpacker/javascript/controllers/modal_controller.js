@@ -4,15 +4,23 @@ export default class extends ApplicationController {
   static targets = ['modal']
 
   connect() {
-    this.element.addEventListener('keydown', this.onKeyDown.bind(this))
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this))
+    this.modalTarget.addEventListener("click", this.onClick.bind(this))
   }
 
   disconnect() {
-    this.element.removeEventListener(this.onKeyDown)
+    document.body.removeEventListener(this.onKeyDown)
+    this.modalTarget.removeEventListener("click", this.onClick.bind(this))
   }
 
   toggle() {
     this.modalTarget.classList.toggle('ncce-modal--expanded')
+  }
+
+  onClick(event) {
+    if (event.target.classList.contains("ncce-modal--expanded")) {
+      this.toggle()
+    }
   }
 
   onKeyDown(event) {
