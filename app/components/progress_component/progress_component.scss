@@ -1,0 +1,37 @@
+.progress-component {
+  .progress-component__back,
+  .progress-component__continue,
+  .progress-component__submit,
+  .progress-component__step {
+    &:not(.active) {
+      display: none;
+    }
+  }
+
+  .progress-component__back, .progress-component__continue {
+    color: $hyper-link-blue;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: transparent;
+
+    &:hover {
+      color: $grey-dark-x;
+      cursor: pointer;
+    }
+  }
+
+  // why are the arrows reversed? :)
+  .progress-component__back {
+    @extend .icon-arrow-right;
+  }
+
+  .progress-component__continue {
+    @extend .icon-arrow-left;
+  }
+
+  .progress-component__submit {
+    @extend .govuk-button;
+    @extend .button;
+  }
+}
