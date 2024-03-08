@@ -409,12 +409,14 @@ Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-compu
   activity.self_certifiable = true
   activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
   activity.self_verification_info = "Please provide us with evidence of delivery of at least one of these"
-  activity.public_copy_evidence_brief = "Let us know the name of the unit(s) you’ve implemented, when, and to whom (e.g. year group and proportion of girls). Share your reflections on how delivery of the unit was gender-responsive, and the impact that it had."
-  activity.public_copy_evidence_bullets = [
-    "Link to this year’s curriculum page on your school/MAT website",
-    "Professional reflection as a written piece",
-    "Anonymised student voice statements, collated in a written or audio format"
-  ]
+  activity.public_copy_evidence = [{
+    brief: "Let us know the name of the unit(s) you’ve implemented, when, and to whom (e.g. year group and proportion of girls). Share your reflections on how delivery of the unit was gender-responsive, and the impact that it had.",
+    bullets: [
+      "Link to this year’s curriculum page on your school/MAT website",
+      "Professional reflection as a written piece",
+      "Anonymised student voice statements, collated in a written or audio format"
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-activity").tap do |activity|
@@ -426,12 +428,22 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
   activity.self_certifiable = true
   activity.description = 'Record evidence of any I Belong student events your key stage 3 students have attended. Find out about the upcoming events and activities in your area from your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> by ensuring you enable marketing communications in your account settings on our website.'
   activity.self_verification_info = "Please provide us with evidence of participation"
-  activity.public_copy_evidence_brief = "Describe the event in which you and your students participated, such as when and where it was, and which students took part. Was it an all-girls group or what was the proportion of girls? Reflect on how the event or your approach to selecting participants was gender-responsive. Finally, what was the impact?"
-  activity.public_copy_evidence_bullets = [
-    "Anonymised student voice statements, collated in a written or audio format",
-    "Student feedback as summarised survey data",
-    "Anonymised participation or options take-up data"
-  ]
+  activity.public_copy_evidence = [
+    {
+      brief: "Describe the event in which you and your students participated, such as when and where it was, and which students took part. Was it an all-girls group or what was the proportion of girls? Reflect on how the event or your approach to selecting participants was gender-responsive. Finally, what was the impact?",
+      bullets: [
+        "Anonymised student voice statements, collated in a written or audio format",
+        "Student feedback as summarised survey data",
+        "Anonymised participation or options take-up data"
+      ]
+    },
+    {
+      brief: "Fooooooo",
+    },
+    {
+      brief: "Baaaaar",
+    }
+]
 end.save!
 
 Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extracurricular-club").tap do |activity|
@@ -443,13 +455,15 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
   activity.self_certifiable = true
   activity.description = %(Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href="#{i_belong_handbook_url}">handbook</a>.)
   activity.self_verification_info = "Please provide us with evidence of delivery"
-  activity.public_copy_evidence_brief = "Describe the club(s) you have provided access to for students, with details about when these took place, how often, and which students participated. Consider how the club(s) or your approach were gender-responsive, and the subsequent impact."
-  activity.public_copy_evidence_bullets = [
-    "Participation data over time",
-    "Anonymised student voice statements, collated in a written or audio format",
-    "Student or family feedback as survey data",
-    "Options take-up data"
-  ]
+  activity.public_copy_evidence = [{
+    brief: "Describe the club(s) you have provided access to for students, with details about when these took place, how often, and which students participated. Consider how the club(s) or your approach were gender-responsive, and the subsequent impact.",
+    bullets: [
+      "Participation data over time",
+      "Anonymised student voice statements, collated in a written or audio format",
+      "Student or family feedback as survey data",
+      "Options take-up data"
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity").tap do |activity|
@@ -461,12 +475,14 @@ Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity"
   activity.self_certifiable = true
   activity.description = "Host a Computing Ambassador in your school to support raising gender and career aspirations and to help students understand the real-world applications of their learning. Evidence must showcase the <a href=\"#{stem_request_ambassador_url}\">Computing Ambassador</a> visit to your school from April 2023 onwards."
   activity.self_verification_info = "Please provide us with evidence of delivery"
-  activity.public_copy_evidence_brief = "Describe the activity that took place, for example, when, where, and which students participated. Reflect on how the activity or your approach to selecting participants was gender-responsive. Finally, what was the impact?"
-  activity.public_copy_evidence_bullets = [
-    "Anonymised student voice statements, collated in a written or audio format",
-    "Student feedback as summarised survey data",
-    "Share an engagement story or a link to a photograph posted on the school’s website or social media"
-  ]
+  activity.public_copy_evidence = [{
+    brief: "Describe the activity that took place, for example, when, where, and which students participated. Reflect on how the activity or your approach to selecting participants was gender-responsive. Finally, what was the impact?",
+    bullets: [
+      "Anonymised student voice statements, collated in a written or audio format",
+      "Student feedback as summarised survey data",
+      "Share an engagement story or a link to a photograph posted on the school’s website or social media"
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competition").tap do |activity|
@@ -478,13 +494,15 @@ Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competi
   activity.self_certifiable = true
   activity.description = "Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted key stage 3 female student groups."
   activity.self_verification_info = "Please provide us with evidence of delivery"
-  activity.public_copy_evidence_brief = "Provide an overview of your participation, such as the name of the competition, when this took place and which students took place. Reflect on how the competition or your approach to selecting, involving or supporting participants was gender-responsive. Finally, what was the impact?"
-  activity.public_copy_evidence_bullets = [
-    "Anonymised student voice statements, collated in a written or audio format",
-    "Certificate of achievement or participation",
-    "Student feedback as summarised survey data",
-    "Share an engagement story or a link to a photograph posted on the school’s website or social media"
-  ]
+  activity.public_copy_evidence = [{
+    brief: "Provide an overview of your participation, such as the name of the competition, when this took place and which students took place. Reflect on how the competition or your approach to selecting, involving or supporting participants was gender-responsive. Finally, what was the impact?",
+    bullets: [
+      "Anonymised student voice statements, collated in a written or audio format",
+      "Certificate of achievement or participation",
+      "Student feedback as summarised survey data",
+      "Share an engagement story or a link to a photograph posted on the school’s website or social media"
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook").tap do |activity|
@@ -496,14 +514,17 @@ Activity.find_or_initialize_by(slug: "any-other-activity-which-aligns-with-recom
   activity.self_certifiable = true
   activity.description = %(Complete any other student activity which aligns with recommendations from the <a href="#{i_belong_handbook_url}">handbook</a>. Let us know what you’ve done using the evidence button.)
   activity.self_verification_info = "Please provide us with evidence of delivery"
-  activity.public_copy_evidence_brief = "Describe the activity you chose to undertake, including timescale, and which students participated. Reflect on how the activity or your approach to selecting participants was gender-responsive. Finally, what was the impact?"
-  activity.public_copy_evidence_bullets = [
-    "Anonymised student voice statements, collated in a written or audio format",
-    "Student feedback as summarised survey data",
-    "Share an engagement story or a link to a photograph posted on the school’s website or social media"
-  ]
+  activity.public_copy_evidence = [{
+    brief: "Describe the activity you chose to undertake, including timescale, and which students participated. Reflect on how the activity or your approach to selecting participants was gender-responsive. Finally, what was the impact?",
+    bullets: [
+      "Anonymised student voice statements, collated in a written or audio format",
+      "Student feedback as summarised survey data",
+      "Share an engagement story or a link to a photograph posted on the school’s website or social media"
+    ]
+  }]
 end.save!
 
+# here
 Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club").tap do |activity|
   activity.title = "Start or deliver a computing related club"
   activity.credit = 10
