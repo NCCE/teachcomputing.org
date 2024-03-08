@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AsideComponent < ViewComponent::Base
+  renders_one :heading
   renders_one :body
 
   def initialize(text: nil, title: nil, link: nil, **options)

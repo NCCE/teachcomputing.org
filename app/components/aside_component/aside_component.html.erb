@@ -14,6 +14,10 @@
     <h2 class="govuk-heading-s aside-component__heading">
       <%= @title %>
     </h2>
+  <% elsif heading? %>
+    <h2 class="govuk-heading-s aside-component__heading">
+      <%= heading %>
+    </h2>
   <% end %>
   <% if @text %>
     <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
