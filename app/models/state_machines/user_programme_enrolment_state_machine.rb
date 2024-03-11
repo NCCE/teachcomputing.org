@@ -28,7 +28,7 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
     transition.metadata["certificate_number"] = programme_enrolment.programme.programme_complete_counter.get_next_number
   end
 
-  after_transition(to: :complete) do |programme_enrolment, transition|
+  after_transition(to: :complete) do |programme_enrolment|
     programme_enrolment.programme.set_user_programme_enrolment_complete_data(programme_enrolment)
 
     # Keep track of the pathway the user was on at completion
