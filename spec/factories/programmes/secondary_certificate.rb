@@ -5,5 +5,6 @@ FactoryBot.define do
     description { "This is the Secondary programme" }
     enrollable { true }
     pathways { create_list(:pathway, 3) }
+    programme_complete_counter { create(:programme_complete_counter, programme: instance) }
   end
 end

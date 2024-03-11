@@ -199,7 +199,7 @@ RSpec.describe Programme, type: :model do
 
     context "when programme is not primary certificate" do
       it "returns false" do
-        programme = build(:programme, slug: nil)
+        programme = build(:programme, slug: "random-programme-slug")
         expect(programme.primary_certificate?).to be(false)
       end
     end

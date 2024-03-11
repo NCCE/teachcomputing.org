@@ -2,7 +2,9 @@ class ScheduleCertificateCompletionJob < ApplicationJob
   queue_as :default
 
   def perform(enrolment, meta = {})
-    certificate_number = enrolment.programme.programme_complete_counter.get_next_number
-    enrolment.transition_to(:complete, meta.merge({certificate_number: certificate_number}))
+    return unless enrolment.in_state?(:pending)
+    return unless enrolment.last_transition.created_at <= (enrolment.programme.pending_delay.ago + 30.minutes)
+
+    enrolment.transition_to(:complete, meta)
   end
 end
