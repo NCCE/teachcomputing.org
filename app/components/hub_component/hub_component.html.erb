@@ -29,6 +29,7 @@
     <%= render HubSocialLinkComponent.new(type: 'facebook', value: @hub.facebook) %>
     <%= render HubSocialLinkComponent.new(type: 'x', value: @hub.twitter) %>
     <%= render HubSocialLinkComponent.new(type: 'linkedin', value: @hub.linkedin) %>
+    <%= render HubSocialLinkComponent.new(type: 'instagram', value: @hub.instagram) %>
   </div>
   <%= link_to t('.button_text'), hub_path(@hub.subdeliverer_id), class: 'govuk-button button', data: { event_action: 'click', event_category: 'Hubs', event_label: 'Hub courses' } %>
 </div>
