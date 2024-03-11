@@ -36,28 +36,31 @@ class ProgressComponent < ViewComponent::Base
   class Counter < TargetWrapper; end
   class Step < TargetWrapper; end
 
+  # Go back a step
   class Back < TargetWrapper
     erb_template <<~ERB
-      <button class="<%= css_class %>" data-progress-component-target="<%= target %>" data-action="progress-component#back">
+      <a class="<%= css_class %>" data-progress-component-target="<%= target %>" data-action="progress-component#back">
         <%= content %>
-      </button>
+      </a>
     ERB
   end
 
+  # Go to the next step
   class Continue < TargetWrapper
     erb_template <<~ERB
-      <button class="<%= css_class %>" data-progress-component-target="<%= target %>" data-action="progress-component#continue">
+      <a class="<%= css_class %>" data-progress-component-target="<%= target %>" data-action="progress-component#continue">
         <%= content %>
-      </button>
+      </a>
     ERB
   end
 
-  # doesn't actually submit anything, just fires an event
+  # Submit is a dumb wrapper to allow forms to weird stuff like pop a modal instead
+  # of just submitting the form. We only control it's visibility
   class Submit < TargetWrapper
     erb_template <<~ERB
-      <button class="<%= css_class %>" data-progress-component-target="<%= target %>" data-action="progress-component#submit">
+      <div class="<%= css_class %>" data-progress-component-target="<%= target %>">
         <%= content %>
-      </button>
+      </div>
     ERB
   end
 end

@@ -30,7 +30,7 @@ export default class extends ApplicationController {
       },
       body: JSON.stringify({
         achievement: {
-          self_verification_info: this.textareaTarget.value,
+          evidence: this.textareaTargets.map(element => element.value),
           activity_id: this.activityIdValue
         }
       })
@@ -48,7 +48,7 @@ export default class extends ApplicationController {
       },
       body: JSON.stringify({
         achievement: {
-          self_verification_info: this.hasTextareaTarget ? this.textareaTarget.value : '',
+          evidence: this.textareaTargets.map(element => element.value),
           activity_id: this.activityIdValue
         }
       })

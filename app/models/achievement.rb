@@ -85,22 +85,17 @@ class Achievement < ApplicationRecord
     in_state?(:drafted)
   end
 
-  def self_verification_info
-    super.presence || state_machine.last_transition&.metadata&.dig("self_verification_info")
-  end
-
   def adequate_evidence_provided?
-    activity.self_verification_info.nil? ||
-      self_verification_info.present? ||
+    activity.public_copy.blank? ||
+      evidence.present? ||
       supporting_evidence.present?
   end
 
   def transition_community_to_complete
     metadata = {credit: activity.credit}
 
-    if self_verification_info.present? || supporting_evidence.present?
-      metadata[:self_verification_info] = "#{self_verification_info} #{url_for(supporting_evidence) if supporting_evidence.present?}"
-    end
+    metadata[:self_verification_steps] = self_verification_steps.presence
+    metadata[:supporting_evidence_url] = supporting_evidence.presence
 
     transition_to(:complete, metadata)
   end

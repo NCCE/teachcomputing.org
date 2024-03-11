@@ -44,14 +44,4 @@ export default class ProgressComponentController extends ApplicationController {
     this.updateButtonVisibility()
     this.updateStepsVisibility()
   }
-
-  submit() {
-    if (this.currentStep != this.stepTargets.length - 1) return
-
-    this.submitTarget.dispatchEvent(
-      new CustomEvent("submit", {
-        cancelable: true,
-        bubbles: true,
-    }))
-  }
 }

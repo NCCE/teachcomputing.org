@@ -120,7 +120,20 @@
   > .ncce-modal {
     background-color: rgba($grey-dark-x, 0.8);
 
+    .progress-component__counter {
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+    
+    .community-activity-component__footer-actions {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+
     .ncce-modal--body {
+      min-width: 80%;
       max-width: 895px;
       padding: 20px;
 
@@ -179,9 +192,14 @@
   .confirmation-modal {
     > .ncce-modal {
       background-color: rgba($grey-dark-x, 0.8);
+      .ncee-modal--header {
+        .icon-close {
+          margin-left: 5rem;
+        }
+      }
 
       .ncce-modal--body {
-        max-width: 432px;
+        padding: 1rem;
       }
     }
 

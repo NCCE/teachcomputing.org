@@ -41,7 +41,10 @@
 }
 
 .ncce-button--pink {
-  @include ncce_button($deep-cerulean);
+  @include ncce_button($white);
+
+  color: $govuk-text-colour;
+  border-color: $red;
 }
 
 .ncce-button--blue {
