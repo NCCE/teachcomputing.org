@@ -64,7 +64,7 @@ module Certificates
       return if questionnaire_response.nil?
       return true if questionnaire_response&.current_state == "complete"
 
-      question = questionnaire_response&.current_question ? "question_#{questionnaire_response.current_question}".to_sym : :question_1
+      question = questionnaire_response&.current_question ? :"question_#{questionnaire_response.current_question}" : :question_1
       redirect_to diagnostic_cs_accelerator_certificate_path(question)
     end
 

@@ -2439,3 +2439,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "8f4f5edb-b3c1-ee11-9079
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "dbaa38a3-dbd7-ee11-904c-000d3a0ccbff").tap do |activity|
+  activity.title = "Using micro:bits to collect data in school surveys"
+  activity.slug = "using-micro-bits-to-collect-data-in-school-surveys"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.credit = 15
+  activity.stem_activity_code = "CP014"
+
+  activity.programmes = [primary_certificate]
+end.save!

@@ -4251,14 +4251,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-webpack@npm:^7.0.2":
-  version: 7.1.1
-  resolution: "dotenv-webpack@npm:7.1.1"
+"dotenv-webpack@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "dotenv-webpack@npm:8.0.1"
   dependencies:
     dotenv-defaults: ^2.0.2
   peerDependencies:
     webpack: ^4 || ^5
-  checksum: 5022e0c52d04980cc04469131baf7104e59563c9562df53baca32a9313f7d711559de8392087233ba028fef38403982b7155570a6bd9adaeb0826db79a61d6ed
+  checksum: ee73eda78df90bcf7446763dfe5e518a2054ed6222783856912d2c6a255fdfc041854e125e036ff2603b06fb44f5234713fad5feecb1e66a54fe78a35a98fb87
   languageName: node
   linkType: hard
 
@@ -6112,9 +6112,9 @@ __metadata:
   linkType: hard
 
 "ip@npm:^1.1.0, ip@npm:^1.1.5":
-  version: 1.1.8
-  resolution: "ip@npm:1.1.8"
-  checksum: a2ade53eb339fb0cbe9e69a44caab10d6e3784662285eb5d2677117ee4facc33a64679051c35e0dfdb1a3983a51ce2f5d2cb36446d52e10d01881789b76e28fb
+  version: 1.1.9
+  resolution: "ip@npm:1.1.9"
+  checksum: b6d91fd45a856e3bd6d4f601ea0619d90f3517638f6918ebd079f959a8a6308568d8db5ef4fdf037e0d9cfdcf264f46833dfeea81ca31309cf0a7eb4b1307b84
   languageName: node
   linkType: hard
 
@@ -7619,7 +7619,7 @@ __metadata:
     channels: ^0.0.4
     cookieconsent: ^3.1.0
     core-js: ^3.12.0
-    dotenv-webpack: ^7.0.2
+    dotenv-webpack: ^8.0.1
     eslint: ^7.25
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^3.4
@@ -7629,9 +7629,9 @@ __metadata:
     is-svg: 4.3.1
     lint-staged: ^10.5.4
     node-sass-glob-importer: ^5.3.2
-    prettier: ^2.2.1
+    prettier: ^3.2.5
     purgecss: ^5.0.0
-    sass: ^1.32.12
+    sass: ^1.71.1
     sass-loader: ^10.1.1
     speed-measure-webpack-plugin: ^1.5.0
     stimulus: ^2.0
@@ -7639,7 +7639,7 @@ __metadata:
     stylelint-config-prettier: ^8.0.2
     stylelint-config-recommended-scss: ^4.2.0
     stylelint-order: ^6.0.4
-    stylelint-prettier: ^1.2.0
+    stylelint-prettier: ^3.0.0
     stylelint-scss: ^6.1
     trix: ^1.3
     turbolinks: ^5.2.0
@@ -9333,12 +9333,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1":
-  version: 2.7.1
-  resolution: "prettier@npm:2.7.1"
+"prettier@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "prettier@npm:3.2.5"
   bin:
-    prettier: bin-prettier.js
-  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
+    prettier: bin/prettier.cjs
+  checksum: 2ee4e1417572372afb7a13bb446b34f20f1bf1747db77cf6ccaf57a9be005f2f15c40f903d41a6b79eec3f57fff14d32a20fb6dee1f126da48908926fe43c311
   languageName: node
   linkType: hard
 
@@ -10062,7 +10062,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.32.12, sass@npm:^1.38.0":
+"sass@npm:^1.38.0":
   version: 1.56.1
   resolution: "sass@npm:1.56.1"
   dependencies:
@@ -10072,6 +10072,19 @@ __metadata:
   bin:
     sass: sass.js
   checksum: 78e693e5992b149574c95d5adfe39ca3e5b97d80befa11191a20d1daa41fe201a98ac099beab726cd3095e2d2e7991a2c408ba0fcc3fa9f525879de7eee18dad
+  languageName: node
+  linkType: hard
+
+"sass@npm:^1.71.1":
+  version: 1.71.1
+  resolution: "sass@npm:1.71.1"
+  dependencies:
+    chokidar: ">=3.0.0 <4.0.0"
+    immutable: ^4.0.0
+    source-map-js: ">=0.6.2 <2.0.0"
+  bin:
+    sass: sass.js
+  checksum: 19c4939d3042eb9459d462bbd27b1f576fa18034e23c87ca0005b87effdee431c16503b5a785edcdcde1a76dfb804716d9ad42c85a78968ac3825d515e45cb53
   languageName: node
   linkType: hard
 
@@ -10953,15 +10966,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-prettier@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "stylelint-prettier@npm:1.2.0"
+"stylelint-prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stylelint-prettier@npm:3.0.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    prettier: ">= 0.11.0"
-    stylelint: ">= 9.2.1"
-  checksum: 8bc3cf7277e0a92e59fa7bf96fde90720f7e43676be3de8a595da05429a11a3677553d4b742a038517ddd41ae1a88ce2c0f7d1676c7c7278c15d4b1c73f173be
+    prettier: ">=2.0.0"
+    stylelint: ">=14.0.0"
+  checksum: 094f53ef5dbe3806524db7f580b9312ceca444651803fc08c8baa48cd9a270985c709fa4f083681a685310dc347b8e55aa93d462554ba7d4ae6258a3bdf6a278
   languageName: node
   linkType: hard
 

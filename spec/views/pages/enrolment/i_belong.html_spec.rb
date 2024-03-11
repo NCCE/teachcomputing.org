@@ -24,8 +24,8 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
     expect(rendered).to have_content("Computer science is the fastest-growing STEM subject, and yet, despite its popularity, girls are consistently outnumbered by boys.")
   end
 
-  it "has a side image" do
-    expect(rendered).to have_css(".aside-component__image", count: 1)
+  it "has a video" do
+    expect(rendered).to have_css(".video-container", count: 1)
   end
 
   it "shows 3 support cards" do
