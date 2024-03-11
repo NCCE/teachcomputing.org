@@ -59,6 +59,11 @@ gem "wicked"
 # must match the version used to generate the schema
 gem "graphql", "<= 1.10.10"
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 group :development, :test do
   gem "brakeman"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
