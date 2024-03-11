@@ -135,6 +135,10 @@ module ExternalLinkHelper
     "https://forms.office.com/e/VSLpEXu3vH"
   end
 
+  def school_trusts_form_url
+    "https://forms.office.com/Pages/ResponsePage.aspx?id=8MSlGfdLSE2oGxZmua5L9UWRu-azZ_JKlaT0aUv0CtZUOTg5TFRDVFQwUURQWVFNSkVFWkhOSTc2SyQlQCN0PWcu"
+  end
+
   def hubs_local_support_form_url
     "https://forms.office.com/e/hxMcDtvkcM"
   end
