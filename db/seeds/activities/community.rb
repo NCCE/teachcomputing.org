@@ -438,12 +438,12 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
       ]
     },
     {
-      brief: "Fooooooo",
+      brief: "Fooooooo"
     },
     {
-      brief: "Baaaaar",
+      brief: "Baaaaar"
     }
-]
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extracurricular-club").tap do |activity|

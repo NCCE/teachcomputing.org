@@ -84,8 +84,8 @@
                 <% component.with_body do %>
                     <h3 class="govuk-heading-s"><%= @activity.title %></h3>
 
-                    <% evidence = @activity.public_copy_evidence.presence || [{ brief: t(".evidence")}] %>
-                    <% @activity.public_copy_evidence.each_with_index do |evidence, index| %>
+                    <% evidences = @activity.public_copy_evidence.presence || [{ brief: t(".evidence")}] %>
+                    <% evidences.each_with_index do |evidence, index| %>
                       <%= progress.with_step do %>
                         <p class="govuk-body-s">
                           <%= evidence["brief"] %>
@@ -111,7 +111,6 @@
 
                       <%= render ModalComponent.new(
                         title: "Are you sure you want to submit this evidence?",
-                        show_corner_decoration: false,
                         class_name: "confirmation-modal",
                         show_corner_decoration: false,
                         z_index: 3000

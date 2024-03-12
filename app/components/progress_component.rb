@@ -34,6 +34,7 @@ class ProgressComponent < ViewComponent::Base
   end
 
   class Counter < TargetWrapper; end
+
   class Step < TargetWrapper; end
 
   # Go back a step

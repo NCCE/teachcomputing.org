@@ -1,7 +1,7 @@
 # previously we only had one verification info textbox, which was mapped to a
 # single database column. now we have multiple steps or questions, each with
 # their own evidence field. this migration creates a json column to store that
-# new 
+# new
 
 class AchievementsAddEvidence < ActiveRecord::Migration[6.1]
   def up
