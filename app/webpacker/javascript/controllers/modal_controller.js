@@ -1,7 +1,13 @@
 import ApplicationController from "./application_controller";
 
 export default class extends ApplicationController {
+  // even if we have a confirmationTarget, we may still want to not show the
+  // confirmation modal. for example you only want to show a "save changes?"
+  // confirmation modal if there are any changes. when this value is false,
+  // it will prevent the confirmation modal from appearing.
+  // static values = { confirm: { type: Boolean, default: false } }
   static values = { confirm: Boolean }
+
   static targets = ['modal', 'confirmation']
 
   connect() {
@@ -22,14 +28,21 @@ export default class extends ApplicationController {
 
   toggle() {
     this.modalTarget.classList.toggle('ncce-modal--expanded')
+
+    // if we are opening the modal, we no longer want to be focussed on stuff
+    // behind it.
+    const focusedElement = document.activeElement
+    if (focusedElement) focusedElement.blur()
   }
 
   // if we are toggling on->off and we have a confirmation modal, show that. otherwise
   // toggle as normal.
   maybeToggle() {
-    if (this.modalTarget.classList.contains("ncce-modal--expanded") && this.hasConfirmationTarget) {
+    const expanded = this.modalTarget.classList.contains("ncce-modal--expanded")
+    const confirmEnabled = this.hasConfirmationTarget && this.confirmValue
+    if (expanded && confirmEnabled) {
       const confirmationModal = this.confirmationTarget.querySelector("[data-controller='modal']")
-      confirmationModal.dispatchEvent(new CustomEvent("toggle", { }))
+      confirmationModal.dispatchEvent(new CustomEvent("toggle", {}))
       return
     }
 

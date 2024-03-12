@@ -20,9 +20,14 @@
   .ncce-modal--header {
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
+    margin-bottom: 0.5rem;
+    > * {
+      margin-bottom: 0;
+    }
     .icon-close {
-      height: 24px;
+      height: 17.5px;
+      background-size: contain;
     }
   }
 

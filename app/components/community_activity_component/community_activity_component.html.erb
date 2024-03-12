@@ -66,15 +66,10 @@
                     <% end %>
                     <%= modal.with_body do %>
                       <p class="govuk-body-m">You can save as a draft to continue later.</p>
-                      <div class="govuk-width-container">
-                        <div class="govuk-grid-row">
-                          <div class="govuk-grid-column-one-half">
-                            <button class="govuk-button ncce-button--pink" data-action="modal#cascade">Exit without saving</button>
-                          </div>
-                          <div class="govuk-grid-column-one-half">
-                            <button class="govuk-button button ncce-button--white" data-action="community-activity-component#saveAsDraft">Save as draft</button>
-                          </div>
-                        </div>
+
+                      <div class="confirmation-modal__footer-actions">
+                        <button class="govuk-button ncce-button--pink" data-action="modal#cascade">Exit without saving</button>
+                        <button class="govuk-button button ncce-button--white" data-action="community-activity-component#saveAsDraft">Save as draft</button>
                       </div>
                     <% end %>
                   <% end%>
@@ -101,7 +96,7 @@
                               <% end %>
                             </ul>
                           <% end %>
-                          <textarea class="govuk-textarea" placeholder="Please provide us with evidence of delivery." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
+                          <textarea class="govuk-textarea" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
                         </p>
                       <% end %>
                     <% end %>
@@ -123,14 +118,21 @@
                       ) do |modal| %>
                         <%= modal.with_reopen_button do %>
                           <%= progress.with_submit do %>
-                            <button class="govuk-button button ncce-modal--reopen" data-action="modal#toggle">Submit</button>
+                            <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-action="modal#toggle">Submit</button>
                           <% end %>
+                        <% end %>
+
+                        <%= modal.with_header do %>
+                          <h2 class="govuk-heading-m govuk-!-margin-right-8"><%= modal.title %></h2>
                         <% end %>
 
                         <%= modal.with_body do %>
                           <p class="govuk-body-m">You will not be able to change or add to this evidence once submitted.</p>
-                          <button class="govuk-button button ncce-button--white" data-action="modal#toggle">Continue editing</button>
-                          <button class="govuk-button button" data-action="community-activity-component#submit">Submit evidence</button>
+
+                          <div class="confirmation-modal__footer-actions">
+                            <button class="govuk-button button ncce-button--white" data-action="modal#toggle">Continue editing</button>
+                            <button class="govuk-button button" data-action="community-activity-component#submit">Submit evidence</button>
+                          </div>
                         <% end %>
                       <% end %>
                     </div>

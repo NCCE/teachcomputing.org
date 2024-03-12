@@ -8,7 +8,33 @@ export default class extends ApplicationController {
     achievementId: String,
     activityId: String,
   }
-  static targets = ['textarea']
+  static targets = ["textarea"]
+
+  trackUnsavedChanges() {
+    this.initialValues = new Map()
+    this.toggleConfirmationEnabled = () => {
+      const allValuesAreInitial = this.textareaTargets.every(element => element.value == this.initialValues.get(element))
+      const parentModal = this.element.querySelector("[data-controller='modal']")
+      if (parentModal == null) return
+
+      parentModal.setAttribute("data-modal-confirm-value", !allValuesAreInitial)
+    }
+
+    this.textareaTargets.forEach(input => {
+      this.initialValues.set(input, input.value)
+      input.addEventListener("input", this.toggleConfirmationEnabled)
+    })
+
+    this.toggleConfirmationEnabled()
+  }
+
+  connect() {
+    this.trackUnsavedChanges()
+  }
+
+  disconnect() {
+    this.textareaTargets.forEach(element => element.removeEventListener("input", this.toggleConfirmationEnabled))
+  }
 
   saveAsDraft() {
     let path = ''

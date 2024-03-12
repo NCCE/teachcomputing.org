@@ -92,9 +92,9 @@ class Achievement < ApplicationRecord
   end
 
   def transition_community_to_complete
-    metadata = {credit: activity.credit}
+    metadata = { credit: activity.credit }
 
-    metadata[:self_verification_steps] = self_verification_steps.presence
+    metadata[:evidence] = evidence.presence
     metadata[:supporting_evidence_url] = supporting_evidence.presence
 
     transition_to(:complete, metadata)
