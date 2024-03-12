@@ -258,6 +258,7 @@ ActiveRecord::Schema.define(version: 2024_03_07_111123) do
     t.boolean "satellite", default: false
     t.string "satellite_info"
     t.string "linkedin"
+    t.string "instagram"
     t.index ["hub_region_id"], name: "index_hubs_on_hub_region_id"
     t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
