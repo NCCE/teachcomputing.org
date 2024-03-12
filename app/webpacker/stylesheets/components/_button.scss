@@ -1,4 +1,4 @@
-@mixin ncce_button($background_color) {
+@mixin ncce_button($background_color, $border_color: $govuk-button-text-colour) {
   background-color: $background_color;
   font-family: $font-family-heading;
   box-shadow: none;
@@ -6,7 +6,7 @@
   font-weight: 500;
   margin: 0;
   padding: 10px 24px;
-  border-color: $govuk-button-text-colour;
+  border-color: $border_color;
   border-width: 2px;
   border-bottom-width: 4px;
   &[disabled] {
@@ -54,9 +54,7 @@
 }
 
 .ncce-button__white {
-  @include ncce_button($white);
-
-  border-color: $lime-green;
+  @include ncce_button($white, $lime-green);
 }
 
 .ncce-button__white_black_border {
@@ -111,6 +109,23 @@
   padding: 0.75em;
   &[disabled] {
     width: 100%;
+  }
+
+  &--inverted {
+    @include ncce_button($white, $lime-green);
+    @include govuk-media-query($from: desktop) {
+      margin-bottom: 0;
+    }
+    display: block;
+    padding: 0.75em;
+    &[disabled] {
+      width: 100%;
+    }
+
+    &:hover {
+      border-color: $black;
+      color: $white !important;
+    }
   }
 }
 
