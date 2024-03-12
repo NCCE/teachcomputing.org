@@ -23,7 +23,7 @@ class Activity < ApplicationRecord
   }
   validates :future_learn_course_uuid, uniqueness: true, unless: proc { |a| a.future_learn_course_uuid.blank? }
   validates :stem_activity_code, uniqueness: true, unless: proc { |a| a.stem_activity_code.blank? }
-  validates :stem_course_template_no, uniqueness: true, unless: proc { |a| a.stem_course_template_no.blank? }
+  validates :stem_course_template_no, uniqueness: { case_sensitive: false }, unless: proc { |a| a.stem_course_template_no.blank? }
 
   scope :available_for, lambda { |user|
     where("id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)", user.id)

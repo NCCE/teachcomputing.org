@@ -44,7 +44,7 @@ RSpec.describe Activity, type: :model do
     it { is_expected.to validate_inclusion_of(:category).in_array(%w[action online face-to-face]) }
     it { is_expected.to validate_uniqueness_of(:future_learn_course_uuid) }
     it { is_expected.to validate_uniqueness_of(:stem_activity_code) }
-    it { is_expected.to validate_uniqueness_of(:stem_course_template_no) }
+    it { is_expected.to validate_uniqueness_of(:stem_course_template_no).case_insensitive }
   end
 
   describe "scopes" do
