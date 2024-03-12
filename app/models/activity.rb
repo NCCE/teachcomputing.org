@@ -53,6 +53,11 @@ class Activity < ApplicationRecord
     end
   end
 
+  def stem_course_template_no= value
+    # Ensure that all stem_course_template_no's are stored in downcase format
+    super(value.downcase)
+  end
+
   def online?
     category == ONLINE_CATEGORY
   end

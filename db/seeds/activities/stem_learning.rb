@@ -2068,7 +2068,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d38639b4-4d2d-ee11-9965
   activity.programmes = [i_belong]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "833AFFBA-5159-EE11-BE6F-002248C6F783").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "833affba-5159-ee11-be6f-002248c6f783").tap do |activity|
   activity.title = "Bring computing to life using a context-based approach - residential"
   activity.slug = "bring-computing-to-life-using-a-context-based-approach-residential"
   activity.category = "face-to-face"
@@ -2080,7 +2080,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "833AFFBA-5159-EE11-BE6F
   activity.programmes = [primary_certificate]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "8A5514BC-A362-EE11-8DF0-002248C6F783").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "8a5514bc-a362-ee11-8df0-002248c6f783").tap do |activity|
   activity.title = "Help! How do I teach primary computing? - residential"
   activity.slug = "help-how-do-i-teach-primary-computing-residential"
   activity.category = "face-to-face"
@@ -2092,7 +2092,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "8A5514BC-A362-EE11-8DF0
   activity.programmes = [primary_certificate]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "DB18E7DB-B862-EE11-8DF0-002248C6F9CE").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "db18e7db-b862-ee11-8df0-002248c6f9ce").tap do |activity|
   activity.title = "Teaching an inclusive context rich primary computing curriculum – residential"
   activity.slug = "teaching-an-inclusive-context-rich-primary-computing-curriculum-residential"
   activity.category = "face-to-face"
@@ -2104,7 +2104,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "DB18E7DB-B862-EE11-8DF0
   activity.programmes = [primary_certificate]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "215CC372-C362-EE11-8DF0-002248C6F524").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "215cc372-c362-ee11-8df0-002248c6f524").tap do |activity|
   activity.title = "Developing the established primary computing leader - residential"
   activity.slug = "developing-the-established-primary-computing-leader-residential"
   activity.category = "face-to-face"
@@ -2116,7 +2116,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "215CC372-C362-EE11-8DF0
   activity.programmes = [primary_certificate]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "64E5E630-2B64-EE11-8DF0-002248C6F979").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "64e5e630-2b64-ee11-8df0-002248c6f979").tap do |activity|
   activity.title = "Algorithms and programming for OCR GCSE specification - residential"
   activity.slug = "algorithms-and-programming-for-ocr-gcse-specification-residential"
   activity.category = "face-to-face"
@@ -2128,7 +2128,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "64E5E630-2B64-EE11-8DF0
   activity.programmes = [cs_accelerator]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "38100ECE-2764-EE11-8DF0-002248C6F524").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "38100ece-2764-ee11-8df0-002248c6f524").tap do |activity|
   activity.title = "Algorithms and programming for AQA GCSE specification - residential"
   activity.slug = "algorithms-and-programming-for-aqa-gcse-specification-residential"
   activity.category = "face-to-face"
@@ -2140,7 +2140,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "38100ECE-2764-EE11-8DF0
   activity.programmes = [cs_accelerator]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "A70C147D-6067-EE11-9AE7-002248C6F524").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "a70c147d-6067-ee11-9ae7-002248c6f524").tap do |activity|
   activity.title = "Boolean logic in A Level computer science"
   activity.slug = "boolean-logic-in-a-level-computer-science"
   activity.category = "face-to-face"
@@ -2152,7 +2152,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "A70C147D-6067-EE11-9AE7
   activity.programmes = [secondary_certificate, a_level]
 end.save!
 
-Activity.find_or_initialize_by(stem_course_template_no: "D3F7BF7D-DA68-EE11-9AE7-002248C6F9CE").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "d3f7bf7d-da68-ee11-9ae7-002248c6f9ce").tap do |activity|
   activity.title = "Pathfinding algorithms in A Level computer science"
   activity.slug = "pathfinding-algorithms-in-a-level-computer-science"
   activity.category = "face-to-face"
