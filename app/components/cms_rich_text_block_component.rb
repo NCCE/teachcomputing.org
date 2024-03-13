@@ -94,7 +94,11 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       elsif @obj[:code]
         content_tag(:div, raw(@obj[:text]), class: classes)
       else
-        content_tag(:span, @obj[:text], class: classes)
+        if @obj[:code]
+          content_tag(:span, @obj[:text].html_safe, class: classes)
+        else
+          content_tag(:span, @obj[:text], class: classes)
+        end
       end
     end
   end
