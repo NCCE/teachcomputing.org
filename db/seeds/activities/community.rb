@@ -436,12 +436,6 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
         "Student feedback as summarised survey data",
         "Anonymised participation or options take-up data"
       ]
-    },
-    {
-      brief: "Fooooooo"
-    },
-    {
-      brief: "Baaaaar"
     }
   ]
 end.save!
@@ -463,7 +457,24 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
       "Student or family feedback as survey data",
       "Options take-up data"
     ]
-  }]
+  },
+    {
+      brief: "Which approaches from the 'Encouraging Girls' course have you considered or used? Examples might include:",
+      bullets: [
+        "Inviting students during lessons or family events to increase the proportion of girls taking part.",
+        "Having a choice of activities including physical computing or themed projects such as climate challenges or creating music.",
+        "Including competitive activities in a supportive setting such as the CyberFirst Girls or CanSat challenges.",
+        "Using near-peer mentors (such as older students or computing ambassadors)."
+      ]
+    },
+    {
+      brief: "What is the impact of the club? Write your reflections and add examples of evidence, which might include:",
+      bullets: [
+        "Positive feedback from students or sharing a blogpost form the school website.",
+        "Sharing a link to an online news story or social media post from your school’s account about a success in a competition or club activities.",
+        "Option data showing an increase in the proportion of girls considering GCSE Computer Science in KS4."
+      ]
+    }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity").tap do |activity|
