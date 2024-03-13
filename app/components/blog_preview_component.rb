@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPreviewComponent < ViewComponent::Base
-  delegate :cms_image_url, to: :helpers
+  delegate :cms_image, to: :helpers
 
   def initialize(title:, excerpt:, publish_date:, featured_image:, slug:)
     @title = title

@@ -2,7 +2,7 @@
   <div class="govuk-main-wrapper featured-image-component">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <%= image_tag @versions[:large][:url] %>
+        <%= cms_image @image[:attributes], :large %>
         <% if @caption %>
           <div class="image-caption">
             <p class="govuk-body-s govuk-!-margin-bottom-2"><%= @caption %></p>
