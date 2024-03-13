@@ -2451,15 +2451,3 @@ Activity.find_or_initialize_by(stem_course_template_no: "dbaa38a3-dbd7-ee11-904c
 
   activity.programmes = [primary_certificate]
 end.save!
-
-Activity.find_or_initialize_by(stem_course_template_no: "ee22f2ed-60dd-ee11-904d-002248c6f9ce").tap do |activity|
-  activity.title = "An Introduction to A Level Computer Science - residential"
-  activity.slug = "an-introduction-to-a-level-computer-science-residential"
-  activity.category = "face-to-face"
-  activity.remote_delivered_cpd = false
-  activity.provider = "stem-learning"
-  activity.stem_activity_code = "CP268"
-  activity.credit = 40
-
-  activity.programmes = [secondary_certificate, a_level]
-end.save!
