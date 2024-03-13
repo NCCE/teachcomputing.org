@@ -1,8 +1,21 @@
-.video-container {
-  position: relative;
-  video {
-    position: absolute;
-    transform: translateY(25%);
-    max-width: calc(100% - 1rem);
+video {
+  max-width: 100%;
+}
+
+// a video next to some text, that turns into a video below some text when
+// viewed on mobile
+.video-with-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+
+  > :nth-child(2) {
+    align-self: center;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    padding: 1rem;
   }
 }
