@@ -4,6 +4,8 @@ class ProgrammeObjectives::AssessmentPassRequired
   end
 
   def user_complete?(user)
+    return false if assessment.nil?
+
     assessment.latest_attempt_for(user:)&.in_state?(:passed) || false
   end
 

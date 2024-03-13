@@ -24,7 +24,7 @@ class CommunityActivityComponent < ViewComponent::Base
 
   def reopen_button_text
     return "Add more evidence" if achievement_rejected?
-    @achievement&.self_verification_info.present? ? "Continue editing" : "Submit evidence"
+    @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
   end
 
   def tracking_data(label)

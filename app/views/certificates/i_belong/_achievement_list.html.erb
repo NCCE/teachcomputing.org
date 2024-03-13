@@ -6,7 +6,7 @@
     <div class="ncce-activity-list__item-content">
       <div>
         <% @cpd_courses.each do |pa| %>
-          <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity, last_margin: false) %>
+          <%= render CpdCourseComponent.new(current_user: current_user, activity: pa.activity, last_margin: false) %>
         <% end %>
       </div>
     </div>
