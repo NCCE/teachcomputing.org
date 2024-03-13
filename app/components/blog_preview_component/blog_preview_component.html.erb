@@ -1,7 +1,7 @@
 <div class="ncce-news-archive__item">
   <div class="ncce-news-archive__item-image">
     <% if @featured_image.present? %>
-      <%= image_tag @featured_image[:attributes][:formats][:medium][:url], alt: @featured_image[:attributes][:alternativeText], class: 'ncce-news-and-updates__image' %>
+      <%= cms_image(@featured_image, :small) %>
     <% else %>
       <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png', class: 'ncce-news-and-updates__image' %>
     <% end %>

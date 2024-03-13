@@ -64,7 +64,7 @@ class CmsController < ApplicationController
     @title = title
     @page_name = page_name
     @collection_wrapper_class = collection_wrapper
-    @collection = cls.all(page, 25)
+    @collection = cls.all(page, 400)
     render :collection
   end
 

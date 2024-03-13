@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class FeaturedImageComponent < ViewComponent::Base
-  delegate :cms_image_url, to: :helpers
+  delegate :cms_image, to: :helpers
 
-  def initialize(resource, params)
+  def initialize(resource, image)
     @resource = resource
-    @versions = params[:attributes][:formats]
-    @alt_text = params[:attributes][:alternativeText]
-    @caption = params[:attributes][:caption]
+    @image = image
+    @alt_text = image[:attributes][:alternativeText]
+    @caption = image[:attributes][:caption]
   end
 end
