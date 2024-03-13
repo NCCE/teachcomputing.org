@@ -17,7 +17,7 @@ module Cms
       else
         values = attribute_value(component)
       end
-      component[:component].new(self, **values)
+      component[:component].new(self, **values) if values
     end
 
     def attribute_mapping(attribute_name)

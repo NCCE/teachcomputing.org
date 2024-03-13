@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CmsRichTextBlockComponent < ViewComponent::Base
+  delegate :cms_image, to: :helpers
+
   def build(resource, obj)
     klass =
       case obj
@@ -89,12 +91,10 @@ class CmsRichTextBlockComponent < ViewComponent::Base
         render CmsTableComponent.new(@resource, table_key)
       elsif @obj[:text] == "---"
         content_tag(:hr)
+      elsif @obj[:code]
+        content_tag(:div, raw(@obj[:text]), class: classes)
       else
-        if @obj[:code]
-          content_tag(:span, @obj[:text].html_safe, class: classes)
-        else
-          content_tag(:span, @obj[:text], class: classes)
-        end
+        content_tag(:span, @obj[:text], class: classes)
       end
     end
   end
@@ -141,7 +141,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Image < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <%= image_tag(@obj.dig(:image, :url)) %>
+      <%= cms_image(@obj[:image], :medium) %>
     ERB
   end
 

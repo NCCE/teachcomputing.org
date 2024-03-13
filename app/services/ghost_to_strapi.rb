@@ -14,8 +14,8 @@ class GhostToStrapi
 
   def convert_post key
     posts = get_posts_from_ghost(400)
-    post = posts["posts"].find{ _1["slug"] == key }
-    process_posts({ "posts" => [post] })
+    post = posts["posts"].find { _1["slug"] == key }
+    process_posts({"posts" => [post]})
   end
 
   def convert_posts post_count
@@ -99,8 +99,7 @@ class GhostToStrapi
         description: post["custom_excerpt"] || post["excerpt"],
         title: post["title"]
       },
-      blog_tags: tag_ids,
-      content: process_html(post["html"]),
+      blog_tags: tag_ids
     }
     if post["feature_image"]
       featured_image = process_image(post["feature_image"])
@@ -110,6 +109,7 @@ class GhostToStrapi
         }
       end
     end
+    data[:content] = process_html(post["html"])
     data
   end
 
@@ -122,16 +122,19 @@ class GhostToStrapi
       if in_code_block
         if child.text == "kg-card-end: html"
           in_code_block = false
-          blocks << {
+          code_block = {
             type: "paragraph",
-            children: code_block_content.map {
-              {
-                code: true,
-                text: _1.to_s,
-                type: "text"
-              }
+            children: code_block_content.filter_map {
+              unless _1.empty? || /^\s$/.match?(_1)
+                {
+                  code: true,
+                  text: _1.to_s,
+                  type: "text"
+                }
+              end
             }
           }
+          blocks << code_block if code_block[:children].any?
         else
           code_block_content << child.to_s
         end
@@ -142,6 +145,8 @@ class GhostToStrapi
           if para[:children].any?
             blocks << para
           end
+        when "blockquote"
+          blocks << process_para(child, type: "quote")
         when "figure"
           blocks << process_figure(child)
         when "img"
@@ -150,6 +155,14 @@ class GhostToStrapi
           blocks << process_list(child, "unordered")
         when "ol"
           blocks << process_list(child, "ordered")
+        when "hr"
+          blocks << {
+            type: "paragraph",
+            children: [{
+              type: "text",
+              text: "---"
+            }]
+          }
         when /h(\d)/
           blocks << process_heading(child)
         end
@@ -198,14 +211,16 @@ class GhostToStrapi
     end
 
     @image_count += 1
-    {
-      type: "image",
-      image: strapi_image,
-      children: [{
-        type: "text",
-        text: ""
-      }]
-    } if strapi_image
+    if strapi_image
+      {
+        type: "image",
+        image: strapi_image,
+        children: [{
+          type: "text",
+          text: ""
+        }]
+      }
+    end
   end
 
   def process_heading element
@@ -240,9 +255,9 @@ class GhostToStrapi
     }
   end
 
-  def process_para content
+  def process_para content, type: "paragraph"
     {
-      type: "paragraph",
+      type:,
       children: content.children.map { process_children(_1) }.compact
     }
   end
@@ -250,25 +265,17 @@ class GhostToStrapi
   def process_children block
     case block.name
     when "a"
-      begin
-        href = block.attributes["href"]&.value
-        if /^#.*/.match(href)
-          {
-            type: "link",
-            url: "https://teachcomputing.org/blog/#{@current_slug}#{href}",
-            children: block.children.map { process_children(_1) }.compact
-          }
-        else
-          {
-            type: "link",
-            url: process_link_url(href),
-            children: block.children.map { process_children(_1) }.compact
-          }
-        end
-      rescue
-        # TODO fix me, this is inserting children into text blocks
+      href = block.attributes["href"]&.value
+      if /^#.*/.match?(href)
         {
-          type: "text",
+          type: "link",
+          url: "https://teachcomputing.org/blog/#{@current_slug}#{href}",
+          children: block.children.map { process_children(_1) }.compact
+        }
+      else
+        {
+          type: "link",
+          url: process_link_url(href),
           children: block.children.map { process_children(_1) }.compact
         }
       end
@@ -297,14 +304,17 @@ class GhostToStrapi
     end
   end
 
-  def process_link_url url
+  def process_link_url href
     url = URI.parse(href)
-    #url_string = unless url.scheme
-    unless url.scheme
+    if url.scheme.nil?
       url.scheme = "https"
-    else
-      url.to_s
     end
+    if url.host == "blog.teachcomputing.org"
+      url.host = "teachcomputing.org"
+      url.path = "/blog#{url.path}"
+      puts "updated link #{@current_slug}"
+    end
+    url.to_s
   end
 
   def get_strapi_tags

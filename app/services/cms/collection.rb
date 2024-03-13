@@ -9,5 +9,13 @@ module Cms
       @page_number = page_number
       @total_records = total_records
     end
+
+    def next_page
+      (@page + 1) unless @page == @page_number
+    end
+
+    def previous_page
+      (@page - 1) unless @page == 1
+    end
   end
 end
