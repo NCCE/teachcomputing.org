@@ -152,7 +152,7 @@
     <% end %>
   <% end %>
 
-  <%= render ProviderLogosComponent.new(dashboard: false)%>
+  <%= render ProviderLogosComponent.new(dashboard: false, no_top_border: current_user.blank? && !(@course.online_cpd && !@started))%>
 
   <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <p class='govuk-body-s ncce-booking-list__progress'>
