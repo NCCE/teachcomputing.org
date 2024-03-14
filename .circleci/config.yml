@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1
-  browser-tools: circleci/browser-tools@1.4.4
+  browser-tools: circleci/browser-tools@1.4.8
 
 jobs:
   brakeman:
