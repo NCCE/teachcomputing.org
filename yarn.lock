@@ -7640,7 +7640,7 @@ __metadata:
     stylelint-config-recommended-scss: ^4.2.0
     stylelint-order: ^6.0.4
     stylelint-prettier: ^3.0.0
-    stylelint-scss: ^6.1
+    stylelint-scss: ^6.2
     trix: ^1.3
     turbolinks: ^5.2.0
     webpack: ^4.46.0
@@ -10978,9 +10978,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-scss@npm:^6.1":
-  version: 6.1.0
-  resolution: "stylelint-scss@npm:6.1.0"
+"stylelint-scss@npm:^6.2":
+  version: 6.2.1
+  resolution: "stylelint-scss@npm:6.2.1"
   dependencies:
     known-css-properties: ^0.29.0
     postcss-media-query-parser: ^0.2.3
@@ -10989,7 +10989,7 @@ __metadata:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     stylelint: ^16.0.2
-  checksum: ff3b1c97e8379e45acd1b5b28bafa11251539366f362ff6a674690fd9aef0c7da926b2445304699d48edd1c375acb51b5fcb8039a4106ef4a6f4e29b8515e00b
+  checksum: bd52ca2643d8443dbf1a3d7844d9bc640fe0989436619bc7229a725997ee5aa0b457554b0721611d83d9f1ffe6b3ba1848d87b6d92028a3829cd7b9a508057c8
   languageName: node
   linkType: hard
 
