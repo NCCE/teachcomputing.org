@@ -46,10 +46,6 @@ RSpec.describe("certificates/i_belong/complete", type: :view) do
     let(:user) { create(:user, email: "web@teachcomputing.org", school_name: "asdfasdf") }
     let(:enrolment) { create(:user_programme_enrolment, programme:, user:) }
 
-    before do
-      skip "Due to enabling old I Belong work around"
-    end
-
     it "has the download button" do
       expect(rendered).to have_link("Download your certificate", href: "/certificate/i-belong/view-certificate")
     end

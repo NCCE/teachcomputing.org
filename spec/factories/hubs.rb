@@ -11,6 +11,7 @@ FactoryBot.define do
     twitter { "@hubtwitter" }
     facebook { "hubfacebook" }
     linkedin { "https://linkedin.com" }
+    instagram { "instahandle" }
     satellite { false }
     satellite_info { Faker::Lorem.sentence(word_count: 16) }
   end
