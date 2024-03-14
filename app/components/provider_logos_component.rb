@@ -3,7 +3,8 @@
 class ProviderLogosComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(provider: "stem-learning", dashboard: true, class_name: nil)
+  def initialize(provider: "stem-learning", dashboard: true, class_name: nil, no_top_border: false)
+    @no_top_border = no_top_border
     @provider = provider
     @dashboard = dashboard
 
