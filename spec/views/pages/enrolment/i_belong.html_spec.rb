@@ -25,7 +25,7 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
   end
 
   it "has a video" do
-    expect(rendered).to have_css(".video-container", count: 1)
+    expect(rendered).to have_css(".video-with-text", count: 1)
   end
 
   it "shows 3 support cards" do
