@@ -4,23 +4,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
   let(:page_class) {
     dbl = class_double("Cms::Pages::TestPage")
     allow(dbl).to receive(:resource_attribute_mappings).and_return([
-      {
-        attribute: :title,
-        component: CmsHeroComponent,
-        value_param: :title
-      },
-      {
-        attribute: :container,
-        component: nil,
-        fields: [
-          {
-            attribute: :cardSection,
-            fields: [
-              {attribute: :cardHeaderImage}
-            ]
-          }
-        ]
-      }
+      {model: Cms::Models::SimpleTitle, key: :title}
     ])
     allow(dbl).to receive(:resource_key).and_return("test-page")
     dbl
@@ -29,21 +13,12 @@ RSpec.describe Cms::Providers::Strapi::Client do
   let(:collection_class) {
     dbl = class_double("Cms::Collections::TestCollection")
     allow(dbl).to receive(:resource_attribute_mappings).and_return([
-      {
-        attribute: :title,
-        component: CmsHeroComponent,
-        value_param: :title
-      }
+      {model: Cms::Models::SimpleTitle, key: :title}
     ])
     allow(dbl).to receive(:resource_key).and_return("test-collection")
-    allow(dbl).to receive(:required_fields).and_return(["createdAt", "updatedAt", "publishedAt"])
-    allow(dbl).to receive(:sort_keys).and_return(["createdAt:desc"])
-    allow(dbl).to receive(:collection_attribute_mappings).and_return({
-      fields: [
-        {attribute: :title},
-        {attribute: :featuredImage, populate: true}
-      ]
-    })
+    allow(dbl).to receive(:collection_attribute_mappings).and_return([
+      {model: Cms::Models::SimpleTitle, key: :title}
+    ])
     dbl
   }
 
@@ -58,7 +33,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
     stub_strapi_get_single_entity("test-page")
     response = client.one(page_class, {})
     expect(response[:id]).to eq(1)
-    expect(response[:attributes]).to be_a Hash
+    expect(response[:data_models].first).to be_a Cms::Models::SimpleTitle
   end
 
   it "raises RecordNotFound for missing resource" do
@@ -75,12 +50,12 @@ RSpec.describe Cms::Providers::Strapi::Client do
 
     it "should return latest version when no key specified" do
       response = client.one(page_class, {}, preview: true)
-      expect(response[:attributes][:versionNumber]).to eq(3)
+      expect(response[:data_models].first.title).to eq("Privacy Notice v3")
     end
 
     it "should return correct value when given key" do
       response = client.one(page_class, {}, preview: true, preview_key: "1")
-      expect(response[:attributes][:versionNumber]).to eq(1)
+      expect(response[:data_models].first.title).to eq("Privacy Notice v1")
     end
   end
 
@@ -95,57 +70,23 @@ RSpec.describe Cms::Providers::Strapi::Client do
   end
 
   context "creates populate params" do
+    let(:mappings) {
+      [
+        {model: Cms::Models::SimpleTitle, key: :title},
+        {model: Cms::Models::FeaturedImage, key: :featuredImage}
+      ]
+    }
     it "adds versions when preview requested" do
-      params = client.send(:generate_populate_params, page_class, preview: true)
+      params = client.send(:generate_populate_params, mappings, preview: true)
       expect(params).to have_value(:versions)
     end
 
-    it "for single depth attributes" do
-      params = client.send(:generate_populate_params, page_class)
-      expect(params).to have_value(:title)
-    end
-
     it "for second level attributes" do
-      params = client.send(:generate_populate_params, page_class)
-      expect(params).to have_key(:container)
-      container_params = params[:container]
-      expect(container_params).to have_key(:populate)
-      expect(container_params[:populate]).to have_value(:cardSection)
-    end
-
-    it "for third level attributes" do
-      params = client.send(:generate_populate_params, page_class)
-      card_section_params = params[:container][:populate]
-      expect(card_section_params).to have_key(:cardSection)
-      expect(card_section_params[:cardSection]).to have_key(:populate)
-      expect(card_section_params[:cardSection][:populate]).to have_value(:cardHeaderImage)
-    end
-  end
-
-  context "processing methods" do
-    it "should clean data nesting from hash" do
-      processed_hash = client.send(:flatten_attributes, {
-        lvl_1_key: {
-          data: [
-            id: 1,
-            attributes: {
-              test: "test"
-            }
-          ]
-        },
-        container: {
-          lvl_2_key: {
-            data: [
-              id: 1,
-              attributes: {
-                field: "another test"
-              }
-            ]
-          }
-        }
-      })
-      expect(processed_hash[:lvl_1_key]).to be_a Array
-      expect(processed_hash[:container][:lvl_2_key]).to be_a Array
+      params = client.send(:generate_populate_params, mappings)
+      expect(params).to have_key(:featuredImage)
+      image_params = params[:featuredImage]
+      expect(image_params).to have_key(:populate)
+      expect(image_params[:populate]).to eq([:alternativeText, :caption])
     end
   end
 end

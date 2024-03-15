@@ -1,31 +1,13 @@
 module Cms
   class Resource
-    attr_accessor :id, :attributes, :created_at, :updated_at, :published_at
+    attr_accessor :id, :created_at, :updated_at, :published_at, :data_models
 
-    def initialize(id:, attributes:, created_at:, updated_at:, published_at:)
+    def initialize(id:, data_models:, created_at:, updated_at:, published_at:)
       @id = id
-      @attributes = attributes
+      @data_models = data_models
       @created_at = DateTime.parse(created_at)
       @updated_at = DateTime.parse(updated_at)
       @published_at = DateTime.parse(published_at)
-    end
-
-    def resource_view(component)
-      values = {}
-      if component[:value_param]
-        values[component[:value_param]] = attribute_value(component)
-      else
-        values = attribute_value(component)
-      end
-      component[:component].new(self, **values) if values
-    end
-
-    def attribute_mapping(attribute_name)
-      self.class.resource_attribute_mappings.find { _1[:attribute] == attribute_name }
-    end
-
-    def attribute_value(component)
-      attributes[component[:attribute]]
     end
 
     def self.resource_attribute_mappings

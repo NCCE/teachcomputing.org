@@ -5,31 +5,28 @@ class GhostToStrapi
     @ghost_api = ENV["GHOST_API_ENDPOINT"]
     @ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
     @strapi_api = ENV["STRAPI_URL"]
-    @strapi_api_key = ENV["STRAPI_API_KEY"]
+    @strapi_api_key = ENV["STRAPI_API_WRITE_KEY"]
 
     @current_slug = nil
     @image_count = 0
   end
 
-  def convert_post key
-    posts = get_posts_from_ghost(400)
-    post = posts["posts"].find { _1["slug"] == key }
-    process_posts({"posts" => [post]})
-  end
-
-  def convert_posts post_count
+  def convert_posts(post_count)
     process_posts(get_posts_from_ghost(post_count))
   end
 
-  def process_posts posts
+  def convert_pages(page_count)
+    process_pages(get_pages_from_ghost(page_count))
+  end
+
+  def process_pages(pages)
     problem_pages = []
-    all_tags = get_strapi_tags
-    posts["posts"].each do |post|
+    pages["pages"].each do |post|
       @current_slug = post["slug"]
       @image_count = 0
-      data = ghost_to_strapi_json(post, all_tags)
+      data = ghost_page_to_strapi_json(post)
       begin
-        upload_to_strapi(data)
+        upload_to_strapi(data, "simple-pages")
       rescue => e
         problem_pages << {
           slug: data[:slug],
@@ -46,7 +43,32 @@ class GhostToStrapi
     end
   end
 
-  def check_strapi_for_image filename
+  def process_posts(posts)
+    problem_pages = []
+    all_tags = get_strapi_tags
+    posts["posts"].each do |post|
+      @current_slug = post["slug"]
+      @image_count = 0
+      data = ghost_post_to_strapi_json(post, all_tags)
+      begin
+        upload_to_strapi(data, "blogs")
+      rescue => e
+        problem_pages << {
+          slug: data[:slug],
+          problem: e,
+          data:
+        }
+      end
+    end
+    puts "\n\n== Problem Posts (#{problem_pages.count}) ==\n\n"
+    problem_pages.each do |x|
+      puts x[:slug]
+      x = {data: x[:data]}.to_json
+      puts x
+    end
+  end
+
+  def check_strapi_for_image(filename)
     images = JSON.parse(RestClient.get("#{@strapi_api}/upload/files", {
       params: {
         filters: {
@@ -57,12 +79,11 @@ class GhostToStrapi
       },
       Authorization: "Bearer #{@strapi_api_key}"
     }).body)
-    if images.any?
-      images.first
-    end
+
+    images.first if images.any?
   end
 
-  def upload_to_strapi data
+  def upload_to_strapi(data, resource_key)
     slug = data[:slug]
     params = JSON.generate({data:})
     headers = {
@@ -70,19 +91,19 @@ class GhostToStrapi
       content_type: :json
     }
     begin
-      record = JSON.parse(RestClient.get("#{@strapi_api}/blogs/#{slug}", {
+      record = JSON.parse(RestClient.get("#{@strapi_api}/#{resource_key}/#{slug}", {
         Authorization: "Bearer #{@strapi_api_key}"
       }).body)
       id = record["data"]["id"]
       puts "updating #{slug}"
-      RestClient.put("#{@strapi_api}/blogs/#{id}", params, headers)
+      RestClient.put("#{@strapi_api}/#{resource_key}/#{id}", params, headers)
     rescue RestClient::NotFound
       puts "creating #{slug}"
-      RestClient.post("#{@strapi_api}/blogs", params, headers)
+      RestClient.post("#{@strapi_api}/#{resource_key}", params, headers)
     end
   end
 
-  def ghost_to_strapi_json post, tag_list
+  def ghost_post_to_strapi_json(post, tag_list)
     tag_ids = post["tags"].each_with_object([]) do |tag, arr|
       match = tag_list.find { |x| x["attributes"]["slug"] == tag["slug"] }
       if match
@@ -101,13 +122,30 @@ class GhostToStrapi
       blog_tags: tag_ids
     }
     if post["feature_image"]
-      featured_image = process_image(post["feature_image"])
+      caption_doc = Nokogiri::HTML::DocumentFragment.parse(post["feature_image_caption"])
+      caption_text = caption_doc.children.first&.text
+      featured_image = process_image(post["feature_image"], alt: post["feature_image_alt"], caption: caption_text)
       if featured_image
         data[:featuredImage] = {
           id: featured_image[:image]["id"]
         }
       end
     end
+    data[:content] = process_html(post["html"])
+    data
+  end
+
+  def ghost_page_to_strapi_json(post)
+    data = {
+      slug: post["slug"],
+      title: post["title"],
+      publishDate: post["published_at"],
+      excerpt: post["custom_excerpt"] || post["excerpt"],
+      seo: {
+        description: post["custom_excerpt"] || post["excerpt"],
+        title: post["title"]
+      }
+    }
     data[:content] = process_html(post["html"])
     data
   end
@@ -121,18 +159,7 @@ class GhostToStrapi
       if in_code_block
         if child.text == "kg-card-end: html"
           in_code_block = false
-          code_block = {
-            type: "paragraph",
-            children: code_block_content.filter_map {
-              unless _1.empty? || /^\s$/.match?(_1)
-                {
-                  code: true,
-                  text: _1.to_s,
-                  type: "text"
-                }
-              end
-            }
-          }
+          code_block = process_code_block(code_block_content)
           blocks << code_block if code_block[:children].any?
         else
           code_block_content << child.to_s
@@ -141,15 +168,12 @@ class GhostToStrapi
         case child.name
         when "p"
           para = process_para(child)
-          if para[:children].any?
-            blocks << para
-          end
+          blocks << para if para[:children].any?
         when "blockquote"
           blocks << process_para(child, type: "quote")
         when "figure"
-          blocks << process_figure(child)
-        when "img"
-          blocks << process_image(child)
+          figure = process_figure(child)
+          blocks << figure if figure
         when "ul"
           blocks << process_list(child, "unordered")
         when "ol"
@@ -175,19 +199,48 @@ class GhostToStrapi
     blocks.compact
   end
 
-  def process_figure element
-    img = element.search("img").first
-    if img
+  def process_code_block(lines)
+    {
+      type: "paragraph",
+      children: lines.filter_map {
+        unless _1.empty? || /^\s$/.match?(_1)
+          {
+            code: true,
+            text: _1.to_s,
+            type: "text"
+          }
+        end
+      }
+    }
+  end
+
+  def process_figure(element)
+    classes = element.attributes["class"].value
+    # TC only uses the two types of card, image-card or embed-card
+    if classes.include?("kg-image-card")
+      img = element.search("img").first
+      return unless img
+
       src = img.attributes["src"].value
-      if src
-        process_image(src)
+      return unless src
+
+      alt = img.attributes["alt"]&.value
+      if (caption_element = element.search("figcaption")).any?
+        caption_span = caption_element.find("span")
+        if caption_span
+          caption = caption_span.first.children.first.text
+        end
       end
+      process_image(src, alt:, caption:)
+    elsif classes.include?("kg-embed-card")
+      process_code_block([element.to_s])
     end
   end
 
-  def process_image image_url
+  def process_image(image_url, alt: nil, caption: nil)
     uri = URI.parse(image_url)
-    extension = File.extname(uri.path) || "png"
+    extension = File.extname(uri.path)
+    extension = ".png" if extension.blank?
     filename = "#{@current_slug}-#{@image_count}#{extension}"
     strapi_image = check_strapi_for_image filename
     unless strapi_image
@@ -195,13 +248,11 @@ class GhostToStrapi
         uri.open do |image|
           File.binwrite("tmp/#{filename}", image.read)
         end
+        params = {
+          files: File.open("tmp/#{filename}")
+        }
         response = JSON.parse(RestClient.post("#{@strapi_api}/upload",
-          {
-            files: File.open("tmp/#{filename}")
-          },
-          {
-            Authorization: "Bearer #{@strapi_api_key}"
-          }).body)
+          params, {Authorization: "Bearer #{@strapi_api_key}"}).body)
         File.delete("tmp/#{filename}")
         strapi_image = response.first
       rescue OpenURI::HTTPError
@@ -211,6 +262,15 @@ class GhostToStrapi
 
     @image_count += 1
     if strapi_image
+      file_info_params = {
+        fileInfo: {
+          name: filename,
+          caption:,
+          alternativeText: alt
+        }
+      }
+      RestClient.post("#{@strapi_api}/upload?id=#{strapi_image["id"]}", file_info_params, {Authorization: "Bearer #{@strapi_api_key}"})
+
       {
         type: "image",
         image: strapi_image,
@@ -222,7 +282,7 @@ class GhostToStrapi
     end
   end
 
-  def process_heading element
+  def process_heading(element)
     match = /h(\d)/.match(element.name)
     {
       type: "heading",
@@ -236,7 +296,7 @@ class GhostToStrapi
     }
   end
 
-  def process_list element, type
+  def process_list(element, type)
     {
       type: "list",
       format: type,
@@ -254,30 +314,22 @@ class GhostToStrapi
     }
   end
 
-  def process_para content, type: "paragraph"
+  def process_para(content, type: "paragraph")
     {
       type:,
       children: content.children.map { process_children(_1) }.compact
     }
   end
 
-  def process_children block
+  def process_children(block)
     case block.name
     when "a"
       href = block.attributes["href"]&.value
-      if /^#.*/.match?(href)
-        {
-          type: "link",
-          url: "https://teachcomputing.org/blog/#{@current_slug}#{href}",
-          children: block.children.map { process_children(_1) }.compact
-        }
-      else
-        {
-          type: "link",
-          url: process_link_url(href),
-          children: block.children.map { process_children(_1) }.compact
-        }
-      end
+      {
+        type: "link",
+        url: process_link_url(href),
+        children: block.children.map { process_children(_1) }.compact
+      }
     when "blockquote"
       {
         type: "quote",
@@ -303,7 +355,7 @@ class GhostToStrapi
     end
   end
 
-  def process_link_url href
+  def process_link_url(href)
     url = URI.parse(href)
     if url.scheme.nil?
       url.scheme = "https"
@@ -320,15 +372,26 @@ class GhostToStrapi
     JSON.parse(RestClient.get("#{@strapi_api}/blog-tags", {Authorization: "Bearer #{@strapi_api_key}"}).body)["data"]
   end
 
-  def get_posts_from_ghost post_count
+  def get_posts_from_ghost(post_count)
     request = "#{@ghost_api}/content/posts"
     params = {
       key: @ghost_api_key,
       limit: post_count,
-      fields: "title,slug,feature_image,custom_excerpt,excerpt,published_at,html",
+      fields: "title,slug,feature_image,custom_excerpt,excerpt,published_at,html,feature_image_alt,feature_image_caption",
       include: "tags",
       page: 0
-      # order: "published_at ASC"
+    }.compact
+    JSON.parse(RestClient.get(request, params: params).body)
+  end
+
+  def get_pages_from_ghost(page_count)
+    request = "#{@ghost_api}/content/pages"
+    params = {
+      key: @ghost_api_key,
+      limit: page_count,
+      fields: "title,slug,custom_excerpt,excerpt,published_at,html",
+      include: "tags",
+      page: 0
     }.compact
     JSON.parse(RestClient.get(request, params: params).body)
   end

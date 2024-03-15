@@ -10,6 +10,7 @@ services:
           - curriculum.teachcomputing.test
           - curriculum.teachcomputing.rpfdev.com
           - strapi.teachcomputing.rpfdev.com
+          - strapi.teachcomputing.test
 
   db:
     image: postgres:14

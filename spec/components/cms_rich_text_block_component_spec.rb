@@ -1,12 +1,8 @@
 require "rails_helper"
 
 RSpec.describe CmsRichTextBlockComponent, type: :component do
-  let(:component) {
-    double("component")
-  }
-
   it "renders a paragraph" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       type: "paragraph",
       children: [
         {type: "text", text: "Hello world!"}
@@ -17,7 +13,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders a large heading" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       type: "heading",
       level: 1,
       children: [
@@ -29,7 +25,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders a medium heading" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       type: "heading",
       level: 2,
       children: [
@@ -41,7 +37,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders a small heading" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       type: "heading",
       level: 3,
       children: [
@@ -53,7 +49,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders some text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Just text"}
     ]))
 
@@ -61,7 +57,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders bold text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Bold text", bold: true}
     ]))
 
@@ -69,7 +65,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders italic text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Italic text", italic: true}
     ]))
 
@@ -77,7 +73,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders underlined text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Underlined text", underline: true}
     ]))
 
@@ -85,7 +81,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders strikethrough text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Strikethrough text", strikethrough: true}
     ]))
 
@@ -93,7 +89,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders code text" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {type: "text", text: "Code text", code: true}
     ]))
 
@@ -101,7 +97,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders a link" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {
         type: "link",
         url: "https://www.google.com",
@@ -115,7 +111,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders an ordered list" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {
         type: "list",
         format: "ordered",
@@ -132,7 +128,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders an unordered list" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {
         type: "list",
         format: "unordered",
@@ -149,10 +145,17 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders an image" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {
         type: "image",
-        image: {url: "/an-image.png"}
+        image: Cms::Models::Image.new(
+          "/an-image.png", "", "",
+          formats: {
+            medium: {
+              url: "/an-image-medium.png"
+            }
+          }
+        )
       }
     ]))
 
@@ -160,7 +163,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders a quote" do
-    render_inline(described_class.new(component, blocks: [
+    render_inline(described_class.new(blocks: [
       {
         type: "quote",
         children: [

@@ -35,6 +35,10 @@ class CmsController < ApplicationController
     process_resource Cms::Collections::Blog, resource_params: {resource_id: params[:page_slug]}
   end
 
+  def page_resource
+    process_resource Cms::Collections::SimplePage, resource_params: {resource_id: params[:page_slug]}
+  end
+
   def style_slug
     params[:parent_slug] || params[:page_slug]
   end
@@ -64,11 +68,12 @@ class CmsController < ApplicationController
     @title = title
     @page_name = page_name
     @collection_wrapper_class = collection_wrapper
+    @path = cms_posts_path
     @collection = cls.all(page, 50)
     render :collection
   end
 
-  def process_resource cls, resource_params: {}
+  def process_resource(cls, resource_params: {})
     if params[:refresh_cache]
       cls.clear_cache
     end

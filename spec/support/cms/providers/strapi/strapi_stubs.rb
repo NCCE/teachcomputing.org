@@ -4,6 +4,11 @@ module StrapiStubs
     stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}?/).to_return(body: json_response)
   end
 
+  def stub_strapi_get_single_simple_page(resource_key)
+    json_response = File.new("spec/support/cms/providers/strapi/simple_page_response.json")
+    stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}?/).to_return(body: json_response)
+  end
+
   def stub_strapi_get_single_entity_with_preview(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/single_type_response_with_preview.json")
     stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}?/).to_return(body: json_response)

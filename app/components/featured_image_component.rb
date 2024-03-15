@@ -3,10 +3,7 @@
 class FeaturedImageComponent < ViewComponent::Base
   delegate :cms_image, to: :helpers
 
-  def initialize(resource, image)
-    @resource = resource
+  def initialize(image)
     @image = image
-    @alt_text = image[:attributes][:alternativeText]
-    @caption = image[:attributes][:caption]
   end
 end

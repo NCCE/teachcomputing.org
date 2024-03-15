@@ -4,7 +4,7 @@ RSpec.describe CmsController do
   describe "GET #cms_page" do
     context "with a valid page" do
       before do
-        stub_strapi_get_single_entity("privacy-notice")
+        stub_strapi_get_single_simple_page("simple-pages/privacy")
         get "/privacy"
       end
 
@@ -13,7 +13,7 @@ RSpec.describe CmsController do
       end
 
       it "@resource has a title" do
-        expect(assigns(:resource).attributes[:title]).to eq("Test Page")
+        expect(assigns(:resource).data_models.first.title).to eq("Test Page")
       end
 
       it "renders the template" do

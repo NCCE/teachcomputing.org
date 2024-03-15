@@ -2,7 +2,7 @@
   "data": {
     "id": 2,
     "attributes": {
-      "title": "Privacy Notice",
+      "title": "Privacy Notice v2",
       "content": [
         {
           "type": "paragraph",
@@ -293,7 +293,7 @@
           {
             "id": 1,
             "attributes": {
-              "title": "Privacy Notice",
+              "title": "Privacy Notice v1",
               "content": [
                 {
                   "type": "paragraph",
@@ -564,7 +564,7 @@
           {
             "id": 3,
             "attributes": {
-              "title": "Privacy Notice",
+              "title": "Privacy Notice v3",
               "content": [
                 {
                   "type": "paragraph",

@@ -18,11 +18,7 @@ RSpec.describe Cms::Resource do
       Class.new(described_class) do
         def self.resource_attribute_mappings
           [
-            {
-              attribute: :title,
-              component: CmsHeroComponent,
-              value_param: :title
-            }
+            {model: Cms::Models::SimpleTitle, key: :title}
           ]
         end
 
@@ -41,16 +37,7 @@ RSpec.describe Cms::Resource do
     it "calling resource_view should return the correct component" do
       stub_strapi_get_single_entity("cms-resource-test")
       response = test_class.get
-      expect(response.resource_view(test_class.resource_attribute_mappings.first)).to be_a CmsHeroComponent
-    end
-
-    context "when instantiated" do
-      it "calling attribute_mapping should return mapping" do
-        instance = test_class.new(id: "1", attributes: {title: "test"}, created_at: DateTime.now.to_s,
-          updated_at: DateTime.now.to_s, published_at: DateTime.now.to_s)
-        mapping = instance.attribute_mapping(:title)
-        expect(mapping[:component]).to be(CmsHeroComponent)
-      end
+      expect(response.data_models.first).to be_a Cms::Models::SimpleTitle
     end
   end
 end

@@ -2,47 +2,22 @@ module Cms
   module Collections
     class Blog < CollectionResource
       def self.collection_attribute_mappings
-        {
-          component: BlogPreviewComponent,
-          fields: [
-            {attribute: :title},
-            {attribute: :excerpt},
-            {attribute: :publishDate},
-            {attribute: :slug},
-            {attribute: :featuredImage, populate: true}
-          ]
-        }
+        [
+          {model: Cms::Models::BlogPreview, key: nil}
+        ]
       end
 
       def self.resource_attribute_mappings
         [
-          {
-            attribute: :title,
-            component: CmsHeroComponent,
-            value_param: :title
-          },
-          {
-            attribute: :featuredImage,
-            component: FeaturedImageComponent
-          },
-          {
-            attribute: :content,
-            component: CmsRichTextBlockComponent,
-            value_param: :blocks
-          },
-          {
-            attribute: :seo,
-            component: SeoBlockComponent
-          }
+          {model: Cms::Models::SimpleTitle, key: :title},
+          {model: Cms::Models::FeaturedImage, key: :featuredImage},
+          {model: Cms::Models::ContentBlock, key: :content},
+          {model: Cms::Models::Seo, key: :seo}
         ]
       end
 
       def self.resource_key
         "blogs"
-      end
-
-      def self.sort_keys
-        ["publishDate:desc"]
       end
     end
   end

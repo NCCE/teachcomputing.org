@@ -5,14 +5,14 @@ module Cms
     def self.one(resource_class, params, preview: false, preview_key: nil)
       if preview
         # dont use cache for previews
-        connection.one(resource_class, params, preview:, preview_key:)
+        client.one(resource_class, params, preview:, preview_key:)
       else
         Rails.cache.fetch(
           resource_class.resource_key,
           expires_in: CACHE_EXPIRY,
           namespace: "cms"
         ) do
-          connection.one(resource_class, params)
+          client.one(resource_class, params)
         end
       end
     end
@@ -27,11 +27,11 @@ module Cms
         expires_in: CACHE_EXPIRY,
         namespace: "cms"
       ) do
-        connection.all(resource_class, page, page_size, params)
+        client.all(resource_class, page, page_size, params)
       end
     end
 
-    private_class_method def self.connection
+    private_class_method def self.client
       case (ENV["CMS_PROVIDER"])
       when "strapi"
         Providers::Strapi::Client.new

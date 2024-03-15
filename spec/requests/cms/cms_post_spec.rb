@@ -13,7 +13,7 @@ RSpec.describe CmsController do
       end
 
       it "@resource has a title" do
-        expect(assigns(:resource).attributes[:title]).to eq("Education and industry unite at key event championing gender equity in computer science")
+        expect(assigns(:resource).data_models.first.title).to eq("Education and industry unite at key event championing gender equity in computer science")
       end
 
       it "renders the template" do

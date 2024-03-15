@@ -1,8 +1,5 @@
 <% meta_tag :url, request.original_url %>
 
-<% @resource.class.resource_attribute_mappings.each do |mapping| %>
-  <% view = @resource.resource_view(mapping) if mapping[:component] %>
-  <% if view %>
-    <%= render view%>
-  <% end %>
+<% @resource.data_models.each do |content| %>
+  <%= render content.render %>
 <% end %>

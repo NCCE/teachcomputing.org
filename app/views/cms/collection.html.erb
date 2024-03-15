@@ -6,7 +6,9 @@
       <div class="govuk-grid-column-full <%= @style_slug %>">
       <div class="<%= @collection_wrapper_class %>">
         <% @collection.resources.each do |resource| %>
-          <%= render resource.collection_view %>
+          <% resource.data_models.each do |data_model| %>
+            <%= render data_model.render %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -15,14 +17,14 @@
       <div class="govuk-grid-column-full">
         <% if @collection.previous_page %>
           <hr class="ncce-hr">
-          <%= link_to "?page=#{@collection.previous_page}", class: 'icon-arrow-right search__paging' do %>
+          <%= link_to "#{@path}?page=#{@collection.previous_page}", class: 'icon-arrow-right search__paging' do %>
             <p class="govuk-heading-s">Previous page</p>
             <p class="govuk-body-s"><%= @collection.previous_page %> of <%= @collection.page_number %></p>
           <% end %>
         <% end %>
         <% if @collection.next_page %>
           <hr class="ncce-hr">
-          <%= link_to "?page=#{@collection.next_page}", class: 'icon-arrow-left search__paging' do %>
+          <%= link_to "#{@path}?page=#{@collection.next_page}", class: 'icon-arrow-left search__paging' do %>
             <p class="govuk-heading-s">Next page</p>
             <p class="govuk-body-s"><%= @collection.next_page %> of <%= @collection.page_number %></p>
           <% end %>

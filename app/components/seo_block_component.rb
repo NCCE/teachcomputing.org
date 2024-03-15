@@ -1,10 +1,9 @@
 class SeoBlockComponent < ViewComponent::Base
   delegate :meta_tag, to: :helpers
 
-  def initialize(resource, params)
-    @resource = resource
-    @title = params[:title]
-    @description = params[:description]
+  def initialize(title, description)
+    @title = title
+    @description = description
   end
 
   def call
