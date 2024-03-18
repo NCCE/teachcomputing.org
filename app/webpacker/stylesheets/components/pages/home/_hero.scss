@@ -1,227 +1,97 @@
+$hero-mobile-breakpoint: 950px;
+$hero-tiny-breakpoint: 430px;
+
+.ncce-home-hero-wrapper {
+  max-width: calc(960px + 250px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .ncce-home-hero {
   display: grid;
-  grid-template-columns: 1fr;
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: 60px;
-  }
-}
+  height: fit-content;
 
-.ncce-home-hero__image {
-  @include govuk-media-query($from: tablet) {
-    grid-column-start: 1;
-    grid-row-start: 1;
-  }
-  img {
-    width: 100%;
+  @media screen and (max-width: $hero-mobile-breakpoint) {
+    grid-template-rows: 1fr 1fr;
 
-    @include govuk-media-query($from: tablet) {
-      display: block;
-      margin: 0 auto;
-      max-width: 1100px;
+    .ncce-home-hero__column {
+
+      &:nth-child(1) { grid-row: 2; align-self: right; }
+      &:nth-child(2) { grid-row: 1; align-self: left; }
     }
   }
-}
+  @media screen and (min-width: $hero-mobile-breakpoint) {
+    grid-template-columns: 1fr 1fr;
 
-.ncce-home-hero__text-wrapper {
-  margin: 0 auto;
-  max-width: 960px;
-  width: 100%;
-  @include govuk-media-query($from: tablet) {
-    align-self: center;
-    grid-column-start: 1;
-    grid-row-start: 1;
-  }
-}
-
-.ncce-home-hero__text {
-  background-color: $white;
-  padding: 1.5rem 1rem;
-
-  @include govuk-media-query($from: tablet) {
-    margin-left: 29px;
-    padding: 1.75rem 1.5rem;
-    width: 348px;
-  }
-  @include govuk-media-query($from: desktop) {
-    margin-left: 0;
-    width: 432px;
-  }
-}
-
-.ncce-home-hero__heading {
-  font-size: 2rem;
-  line-height: 1.25;
-  @include govuk-media-query($from: tablet) {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  @include govuk-media-query($from: desktop) {
-    font-size: 3rem;
-  }
-}
-
-.ncce-home-hero__buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.ncce-home-hero__button {
-  margin-bottom: 0;
-}
-
-.ncce-home-hero__list {
-  margin-bottom: 28px;
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: 14px;
-  }
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: 44px;
+    .ncce-home-hero__column {
+      &:nth-child(1) { grid-column: 1; }
+      &:nth-child(2) { grid-column: 2; }
+    }
   }
 
-  li {
-    margin-bottom: 0;
-  }
-}
-
-// Old hero styles below
-
-.ncce-hero {
-  background-color: $hero-goldenrod;
-  overflow: hidden;
-}
-
-.ncce-hero__wrapper {
-  padding-bottom: 0;
-}
-
-.ncce-hero__image {
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  position: relative;
-  width: 100%;
-
-  z-index: 20;
-
-  @include govuk-media-query($from: tablet) {
-    margin-left: -18%;
-    width: 120%;
-  }
-}
-
-.ncce-hero__long-shadow {
-  margin-top: 40px;
-  position: relative;
-
-  @include govuk-media-query($from: tablet) {
-    left: -20px;
-  }
-
-  &:before {
-    background-color: $hero-terracotta;
-    content: '';
-    height: 101%;
-    left: -800px;
-    position: absolute;
-    top: 800px;
-    transform: skewY(-45deg);
-    transform-origin: top left;
-    width: 800px;
-  }
-
-  &:after {
-    background-color: $hero-terracotta;
-    content: '';
-    height: 800px;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    transform: skewX(-45deg);
-    transform-origin: top left;
-    width: 100%;
-  }
-}
-
-.ncce-hero__heading {
-  background-color: $white;
-  border: 6px solid $black;
-  font-family: $font-family-heading;
-  font-size: 8.4vw;
-  font-weight: bold;
-  line-height: 1;
-
-  margin-bottom: 10px;
-  padding: 10px;
-
-  @include govuk-media-query($from: tablet) {
-    font-size: 4vw;
-  }
-
-  @include govuk-media-query($from: 1024px) {
-    background-position: 11.5rem 0.15rem;
-
+  .ncce-home-hero__column {
+    aspect-ratio: 1/1;
     background-repeat: no-repeat;
-    background-size: 7.5rem;
-    border: 9px solid $black;
-    font-size: 2.8em;
-    line-height: 1.2;
+    background-size: cover;
+    position: relative;
 
-    @-moz-document url-prefix() {
-      background-position: 12rem 0.15rem;
+    &:nth-child(1) {
+      background-image: url("../images/hero/hero1.png");
+    }
+    &:nth-child(2) {
+      background-image: url("../images/hero/hero2.png");
     }
   }
-}
 
-.ncce-hero__cta--desktop {
-  display: none;
+  .ncce-home-hero__house {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
 
-  position: relative;
+    left: 13%;
+    top: 25%;
+    right: 11%;
+    height: 65%;
 
-  @include govuk-media-query($from: tablet) {
-    display: block;
-  }
+    align-items: center;
+    @media screen and (max-width: $hero-tiny-breakpoint) {
+      align-items: start;
+    }
+    @media screen and (min-width: $hero-mobile-breakpoint) {
+      align-items: start;
+    }
 
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: 40px;
-  }
-}
+    h1 {
+      @extend .govuk-heading-l;
+    }
+    p {
+      @extend .govuk-body-m;
+      color: $grey-storm;
+    }
+    ul {
+      @extend .govuk-list;
+      @extend .govuk-list--bullet;
+      color: $grey-storm;
+      margin-left: 10px;
+      li { margin-bottom: 0; }
+    }
+    .ncce-home-hero__house__button-container {
+      justify-self: flex-end;
+      display: flex;
+      gap: 1rem;
 
-.ncce-hero__cta--mobile {
-  margin-bottom: 25px;
 
-  position: relative;
+      @include govuk-media-query($until: tablet) {
+        align-self: center;
+      }
 
-  @include govuk-media-query($from: tablet) {
-    display: none;
-  }
-}
+      a {
+        padding: 0.5rem 1rem;
 
-.ncce-hero__body {
-  color: $black;
-  font-size: 1.25rem;
-  margin-bottom: 20px;
-
-  @include govuk-media-query($from: tablet) {
-    padding-right: 60px;
-  }
-
-  @include govuk-media-query($from: 1024px) {
-    font-size: 1.5rem;
-  }
-}
-
-.ncce-hero__button {
-  margin-bottom: 40px;
-}
-
-.ncce-hero__maintenance {
-  background-image: url('../images/hero/dots.svg');
-  background-position: calc(100% - -110px) 0%;
-  background-repeat: no-repeat;
-  background-size: 100%;
-
-  @include govuk-media-query($from: tablet) {
-    background-position: top 0 right -48px;
-    background-size: 800px;
-    margin: 1.5rem auto;
+        @media screen and (max-width: $hero-mobile-breakpoint) {
+          &:nth-child(2) { display: none; }
+        }
+      }
+    }
   }
 }

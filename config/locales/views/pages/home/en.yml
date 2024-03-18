@@ -1,0 +1,38 @@
+en:
+  pages:
+    home:
+      hero:
+        heading: Helping you teach computing
+        subheading: "We offer teachers, schools and trusts:"
+        point1: courses for all experience levels
+        point2: nationally recognised curriculum
+        point3: free curriculum teaching resources
+        point4: funding to support development
+
+        join: Join for free
+        learn: Learn more about us
+
+      confidence:
+        courses:
+          title: Courses
+          description: Discover our range of professional development courses, designed to help you teach computing from key stages 1 to 4.
+
+        funding:
+          title: Funding
+          description: We offer funding to state-funded schools and colleges across England to allow you to attend our courses and access support.
+
+        teaching_resources:
+          title: Teaching resources
+          description: Over 500 hours of free curriculum resources to help you teach computing at key stages 1 to 4.
+
+        i_belong:
+          title: I Belong programme
+          description: Inspire more girls to choose computer science qualifications and careers with our curated resources, training and implementation support for schools.
+
+        non_gcse:
+          title: GCSE Computer Science support
+          description: Tailored support for schools that do not currently offer GCSE Computer Science to help you get in a better position to make this key subject available to your students.
+
+        computing_quality:
+          title: Computing Quality Framework
+          description: A free, easy-to-use online tool to help primary and secondary schools review, develop and implement effective change to drive  high-quality computing education. 
