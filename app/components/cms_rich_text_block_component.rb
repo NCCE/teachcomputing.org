@@ -130,7 +130,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Image < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <%= render CmsImageComponent.new(@obj[:image], size: :medium) %>
+      <%= render CmsImageComponent.new(@obj[:image]) %>
     ERB
   end
 

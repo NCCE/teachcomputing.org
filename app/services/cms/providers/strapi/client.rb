@@ -42,29 +42,13 @@ module Cms
 
         def generate_populate_params(mappings, preview: false)
           populate_params = mappings.each_with_object({}) do |component, populate|
-            if (params = populate_params_for(component[:model]))
+            if (params = Factories::ParameterFactory.generate_parameters(component[:model]))
               populate[component[:key]] = params
             end
           end
-          if preview
-            # convert preview param into strapi compliant version
-            populate_params[0] = :versions
-          end
+          # convert preview param into strapi compliant version
+          populate_params[0] = :versions if preview
           populate_params
-        end
-
-        def populate_params_for(model_class)
-          if model_class == Cms::Models::Seo
-            {populate: [:title, :description]}
-          elsif model_class == Cms::Models::FeaturedImage
-            {populate: [:alternativeText, :caption]}
-          elsif model_class == Cms::Models::BlogPreview
-            {
-              populate: {featuredImage: {populate: [:alternativeText]}},
-              fields: [:title, :excerpt, :publishDate, :slug, :publishedAt, :createdAt, :updatedAt],
-              sort: ["publishDate:desc"]
-            }
-          end
         end
 
         def generate_url resource_key, params
@@ -89,9 +73,9 @@ module Cms
 
         def process_model(mapping, attributes)
           if mapping[:key]
-            ModelFactory.process_model(mapping[:model], attributes[mapping[:key]])
+            Factories::ModelFactory.process_model(mapping[:model], attributes[mapping[:key]])
           else
-            ModelFactory.process_model(mapping[:model], attributes)
+            Factories::ModelFactory.process_model(mapping[:model], attributes)
           end
         end
 

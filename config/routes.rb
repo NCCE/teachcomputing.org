@@ -237,13 +237,11 @@ Rails.application.routes.draw do
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/:parent_slug/:page_slug/refresh", to: "cms#clear_page_cache"
   get "/:page_slug/refresh", to: "cms#clear_page_cache"
-  # get "/privacy", to: "cms#privacy", as: :privacy
-  get "/deep-test", to: "cms#deep_test" if Rails.env.development?
 
   constraints ->(req) { req.format == :html } do
     get "/blog", to: "cms#blog", as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
     get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
-    get "/:page_slug", to: "cms#page_resource", as: :cms_page # Left in till migration complete
+    get "/:page_slug", to: "cms#page_resource", as: :cms_page
   end
 end

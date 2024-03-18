@@ -1,32 +1,6 @@
 class CmsController < ApplicationController
   layout "full-width"
 
-  def articles
-    page =
-      if params[:page].present?
-        params[:page].to_i
-      else
-        1
-      end
-
-    @articles_data = Ghost.new.get_posts(page:, tag: params[:tag])
-    @style_slug = style_slug
-  end
-
-  def cms_post
-    @article = Ghost.new.get_single_post(build_slug_from_params)
-    @style_slug = style_slug
-    @article_type = :post
-    render :article
-  end
-
-  def cms_page
-    @article = Ghost.new.get_single_page(build_slug_from_params)
-    @style_slug = style_slug
-    @article_type = :page
-    render :article
-  end
-
   def blog
     process_collection Cms::Collections::Blog
   end

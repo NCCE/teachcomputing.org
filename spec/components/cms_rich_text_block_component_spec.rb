@@ -145,21 +145,18 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
   end
 
   it "renders an image" do
+    formats = {
+      medium: {url: "/an-image-medium.png"},
+      large: {url: "/an-image-large.png"}
+    }
     render_inline(described_class.new(blocks: [
       {
         type: "image",
-        image: Cms::Models::Image.new(
-          "/an-image.png", "", "",
-          formats: {
-            medium: {
-              url: "/an-image-medium.png"
-            }
-          }
-        )
+        image: Cms::Models::Image.new("/an-image.png", "", "", formats, :medium)
       }
     ]))
 
-    expect(page).to have_css("img[src='/an-image.png']")
+    expect(page).to have_css("img[src='/an-image-medium.png']")
   end
 
   it "renders a quote" do
@@ -173,5 +170,18 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
     ]))
 
     expect(page).to have_css("blockquote", text: "Quoted")
+  end
+
+  it "renders a hr when given three consecutive hyphens" do
+    render_inline(described_class.new(blocks: [
+      {
+        type: "paragraph",
+        children: [
+          {type: "text", text: "---"}
+        ]
+      }
+    ]))
+
+    expect(page).to have_css("hr")
   end
 end

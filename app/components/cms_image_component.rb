@@ -3,12 +3,8 @@
 class CmsImageComponent < ViewComponent::Base
   delegate :cms_image, to: :helpers
 
-  def initialize(image, size: :medium)
+  def initialize(image, show_caption: true)
     @image = image
-    @size = size
-  end
-
-  def call
-    cms_image(@image, @size)
+    @show_caption = show_caption
   end
 end

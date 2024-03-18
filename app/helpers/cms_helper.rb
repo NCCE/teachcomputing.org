@@ -1,10 +1,6 @@
 module CmsHelper
-  def cms_image(image, size)
-    image_url = if image.formats&.has_key? size.to_sym
-      image.formats[size.to_sym][:url]
-    else
-      image.url
-    end
+  def cms_image(image)
+    image_url = image.image_url
     src = if Rails.env.development?
       "#{ENV["STRAPI_IMAGE_URL"]}#{image_url}"
     else

@@ -26,9 +26,5 @@ module Cms
     def self.clear_cache
       Cms::Request.clear_page_cache(self)
     end
-
-    def self.required_fields
-      [:created_at, :updated_at, :published_at]
-    end
   end
 end
