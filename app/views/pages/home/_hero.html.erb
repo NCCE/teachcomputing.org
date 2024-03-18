@@ -1,31 +1,23 @@
-<div class="ncce-home-hero">
-  <div class="ncce-home-hero__image">
-    <picture>
-      <source srcset="<%= asset_pack_path "media/images/hero/hero-lg.jpg" %>" media="(min-width: 800px)">
-      <source srcset="<%= asset_pack_path "media/images/hero/hero-md.jpg" %>" media="(min-width: 600px)">
-      <%= image_pack_tag 'media/images/hero/hero-sm2.jpg', alt: 'A women in front of a computer' %>
-    </picture>
-  </div>
-  <div class="ncce-home-hero__text-wrapper">
-    <div class="ncce-home-hero__text">
-      <h1 class="govuk-heading-l ncce-home-hero__heading">Helping you <br>teach computing</h1>
-      <p class="govuk-body-l govuk-!-margin-bottom-0">We offer teachers:</p>
-      <ul class="govuk-body-l govuk-list--bullet ncce-home-hero__list">
-        <li>courses and accreditation</li>
-        <li>subsidies for training</li>
-        <li>free curriculum teaching resources</li>
-        <li>community support and more</li>
-      </ul>
-      <div class="ncce-home-hero__buttons">
-        <% if current_user %>
-          <%= link_to('Dashboard', dashboard_path, class: 'govuk-button button ncce-mobile-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Dashboard' })  %>
-          <%= link_to('View dashboard', dashboard_path, class: 'govuk-button button ncce-desktop-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Dashboard' })  %>
-        <% else %>
-          <%= link_to('Join for free', auth_url, class: 'govuk-button button ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Join' }, method: :post)  %>
-        <% end %>
-        <%= link_to 'About us', about_path, class: 'govuk-button button button--inverted ncce-mobile-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'About us' } %>
-        <%= link_to 'Learn more about us', about_path, class: 'govuk-button button button--inverted ncce-desktop-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'About us' } %>
+<div class="ncce-home-hero-wrapper">
+    <div class="ncce-home-hero">
+      <div class="ncce-home-hero__column">
+        <div class="ncce-home-hero__house">
+          <h1><%= t("pages.home.hero.heading") %></h1>
+          <p><%= t("pages.home.hero.subheading") %></p>
+          <ul>
+            <li><%= t("pages.home.hero.point1") %></li>
+            <li><%= t("pages.home.hero.point2") %></li>
+            <li><%= t("pages.home.hero.point3") %></li>
+            <li><%= t("pages.home.hero.point4") %></li>
+          </ul>
+
+          <div class="ncce-home-hero__house__button-container">
+            <%= link_to t("pages.home.hero.join"), about_path, class: "govuk-button button ncce-button", data: { event_action: "click", event_category: "Homepage", event_label: "Join for free" } %>
+            <%= link_to t("pages.home.hero.learn"), about_path, class: "govuk-button button ncce-button ncce-button__white", data: { event_action: "click", event_category: "Homepage", event_label: "About us" } %>
+          </div>
+        </div>
+      </div>
+      <div class="ncce-home-hero__column">
       </div>
     </div>
-  </div>
 </div>
