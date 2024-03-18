@@ -67,7 +67,7 @@
         <%= text_field_tag :location, @course_filter.current_location, class: 'govuk-input ncce-search-input ncce-aside--filters-location', placeholder: 'Town, city or postcode',
           data: { course_filter_target: 'locationSearch' } %>
         <%= submit_tag 'Search location',
-          class: 'govuk-button button govuk-!-margin-bottom-0',
+          class: 'govuk-button button govuk-!-margin-bottom-1',
           data: {
             action: "click->course-filter#filter click->course-filter#addLocationFilter click->course-filter#locationSearched",
             event_action: 'click',
