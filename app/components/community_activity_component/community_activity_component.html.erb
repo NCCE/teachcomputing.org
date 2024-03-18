@@ -84,7 +84,7 @@
                 <% component.with_body do %>
                     <h3 class="govuk-heading-s"><%= @activity.title %></h3>
 
-                    <% evidences = @activity.public_copy_evidence.presence || [{ brief: t(".evidence")}] %>
+                    <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => t(".evidence")}] %>
                     <% evidences.each_with_index do |evidence, index| %>
                       <%= progress.with_step do %>
                         <p class="govuk-body-s">
