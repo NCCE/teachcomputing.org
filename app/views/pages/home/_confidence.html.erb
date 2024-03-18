@@ -1,55 +1,52 @@
-<div class='govuk-width-container'>
-  <div class='govuk-main-wrapper'>
-    <h2 class='govuk-heading-l ncce-heading-l__centered'>Get more confident with computing</h2>
-    <div class='ncce-confidence__grid'>
-      <div class='ncce-confidence__grid-col1'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container'>
-              <%= image_pack_tag 'media/images/home/teacher_icon_2.svg', class: 'ncce-confidence__icon', alt: '' %>
-            </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>Courses</h3>
-          </div>
-          <p class='govuk-body'>
-            Discover our range of professional development courses, designed to help you teach computing from key stages 1 to 4.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Browse our courses', courses_path, class: 'ncce-link ncce-link--emph govuk-link--no-underline', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Courses'} %>
-          </p>
-        </div>
-      </div>
-      <div class='ncce-confidence__grid-col2'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container'>
-              <%= image_pack_tag 'media/images/home/bursaries_icon_3.svg', class: 'ncce-confidence__icon', alt: '' %>
-            </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>Funding</h3>
-          </div>
-          <p class='govuk-body'>
-            We offer financial support to state-funded schools and colleges across England.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Check your eligibility', '/funding', class: 'ncce-link ncce-link--emph govuk-link--no-underline', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Bursaries'}  %>
-          </p>
-        </div>
-      </div>
-      <div class='ncce-confidence__grid-col3'>
-        <div class='ncce-confidence__panel'>
-          <div class='ncce-confidence__panel-header'>
-            <div class='ncce-confidence__icon-container'>
-                <%= image_pack_tag 'media/images/home/resources_icon.svg', class: 'ncce-confidence__icon', alt: '' %>
-            </div>
-            <h3 class='govuk-heading-m ncce-confidence__sub-heading'>Teaching resources</h3>
-          </div>
-          <p class='govuk-body'>
-            Over 500 hours of free curriculum resources to help you teach computing at key stages 1 to 4.
-          </p>
-          <p class='govuk-body'>
-            <%= link_to 'Browse our teaching resources', curriculum_key_stages_path, class: 'ncce-link ncce-link--emph govuk-link--no-underline', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Teaching resources'}  %>
-          </p>
-        </div>
-      </div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper ncce-confidence">
+    <div class="ncce-confidence__card">
+      <%= image_pack_tag 'media/images/home/card_courses.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.courses.title"), courses_path, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.courses.description") %>
+      </p>
     </div>
+
+    <div class="ncce-confidence__card">
+      <%= image_pack_tag 'media/images/home/card_funding.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.funding.title"), bursary_path, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.funding.description") %>
+      </p>
+    </div>
+
+    <div class="ncce-confidence__card">
+      <%= image_pack_tag 'media/images/home/card_teaching_resources.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.teaching_resources.title"), home_teaching_resources_path, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.teaching_resources.description") %>
+      </p>
+    </div>
+
+    <div class="ncce-confidence__card ncce-confidence__card--orange">
+      <%= image_pack_tag 'media/images/home/card_i_belong.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.i_belong.title"), i_belong_path, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.i_belong.description") %>
+      </p>
+    </div>
+
+    <div class="ncce-confidence__card">
+      <%= image_pack_tag 'media/images/home/card_non_gcse.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.non_gcse.title"), non_gcse_path, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.non_gcse.description") %>
+      </p>
+    </div>
+
+    <div class="ncce-confidence__card ncce-confidence__card--pink">
+      <%= image_pack_tag 'media/images/home/card_cqf.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: '' %>
+      <%= link_to t("pages.home.confidence.computing_quality.title"), computing_quality_framework_url, class: "ncce-confidence__link" %>
+      <p class="ncce-confidence__description">
+        <%= t("pages.home.confidence.computing_quality.description") %>
+      </p>
+    </div>
+
   </div>
 </div>
