@@ -409,14 +409,22 @@ Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-compu
   activity.self_certifiable = true
   activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
   activity.self_verification_info = "Please provide us with evidence of delivery of at least one of these"
-  activity.public_copy_evidence = [{
-    brief: "Let us know the name of the unit(s) you’ve implemented, when, and to whom (e.g. year group and proportion of girls). Share your reflections on how delivery of the unit was gender-responsive, and the impact that it had.",
-    bullets: [
-      "Link to this year’s curriculum page on your school/MAT website",
-      "Professional reflection as a written piece",
-      "Anonymised student voice statements, collated in a written or audio format"
-    ]
-  }]
+  activity.public_copy_evidence = [
+    {
+      brief: "Tell us which units you’ve been teaching, to which year group, and when.",
+    },
+    {
+      brief: "Tell us how you added approaches from the 'Encouraging Girls' course into your teaching. Examples may include increasing students’ sense of ‘belonging’ with different ways of working together; using near-peer and relatable role models to link careers into the computing curriculum; or boosting girls’ self-efficacy when teaching units such as programming.",
+    },
+    {
+      brief: "Tell us the impact of what you did. Share your reflections and add examples of evidence, such as:",
+      bullets: [
+        "documenting changes in girls’ participation levels after implementing the resources (may include student voice).",
+        "examples where collaborative working or team-based activities have increased girls’ participation.",
+        "sharing programming units as a link from your school website and reflect on strategies to boost girls' self-efficacy, such as targeted feedback, peer collaboration, showcasing successful projects by female students, or family engagement."
+      ]
+    }
+]
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-activity").tap do |activity|
@@ -430,11 +438,23 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
   activity.self_verification_info = "Please provide us with evidence of participation"
   activity.public_copy_evidence = [
     {
-      brief: "Describe the event in which you and your students participated, such as when and where it was, and which students took part. Was it an all-girls group or what was the proportion of girls? Reflect on how the event or your approach to selecting participants was gender-responsive. Finally, what was the impact?",
+      brief: "Tell us which event your students participated in. Describe the activity including when it took place. Include the age range of students involved, the total number and the proportion of female and male students.",
+    },
+    {
+      brief: "Tell us which approaches from the 'Encouraging Girls' course were used. Examples might include:",
       bullets: [
-        "Anonymised student voice statements, collated in a written or audio format",
-        "Student feedback as summarised survey data",
-        "Anonymised participation or options take-up data"
+        "Being part a supportive team at the event – increasing the proportion of girls participating.",
+        "Using near-peer mentors, such as older students - increasing identity.",
+        "Family engagement – increasing social capital.",
+        "Considering prior experiences and access to computing at home – advancing equity."
+      ]
+    },
+    {
+      brief: "What was the impact of the event? Share your reflections and add examples of evidence, such as:",
+      bullets: [
+        "Positive feedback from students or a blogpost from the school website.",
+        "A link to an online news story or social media post from your school’s account to summarise the event",
+        "Option data showing an increase in the proportion of girls considering GCSE Computer Science in KS4.",
       ]
     }
   ]
@@ -450,13 +470,7 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
   activity.description = %(Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href="#{i_belong_handbook_url}">handbook</a>.)
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [{
-    brief: "Describe the club(s) you have provided access to for students, with details about when these took place, how often, and which students participated. Consider how the club(s) or your approach were gender-responsive, and the subsequent impact.",
-    bullets: [
-      "Participation data over time",
-      "Anonymised student voice statements, collated in a written or audio format",
-      "Student or family feedback as survey data",
-      "Options take-up data"
-    ]
+    brief: "Tell us what you did and when. Describe your computing club in school and include timescales, particularly if you’ve run the club for longer than a year. Include the age range of students involved, and the proportion of female and male students. How do you promote a higher proportion of girls participating? Finally, reflect and tell us why you chose this activity.",
   },
     {
       brief: "Which approaches from the 'Encouraging Girls' course have you considered or used? Examples might include:",
@@ -487,13 +501,24 @@ Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity"
   activity.description = "Host a Computing Ambassador in your school to support raising gender and career aspirations and to help students understand the real-world applications of their learning. Evidence must showcase the <a href=\"#{stem_request_ambassador_url}\">Computing Ambassador</a> visit to your school from April 2023 onwards."
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [{
-    brief: "Describe the activity that took place, for example, when, where, and which students participated. Reflect on how the activity or your approach to selecting participants was gender-responsive. Finally, what was the impact?",
+    brief: "Tell us what you did and when. Was it a one-off visit from a computing ambassador or part of a series of events you’ve organised in school? Include the age range of students involved, and the proportion of female and male students. How did you promote a higher proportion of girls participating?",
+  },
+  {
+    brief: "Which approaches from the 'Encouraging Girls' course can you share in how you planned the activity? Examples might include:",
     bullets: [
-      "Anonymised student voice statements, collated in a written or audio format",
-      "Student feedback as summarised survey data",
-      "Share an engagement story or a link to a photograph posted on the school’s website or social media"
+      "Inviting near-peer and relatable role models to link careers into the computing curriculum.",
+      "Bringing in relevance such as AI, health or environmental themes for activities that are about ‘people not things’."
     ]
-  }]
+  },
+  {
+    brief: "What was the impact? What have you observed following the interventions you’ve put in place? Examples might include:",
+    bullets: [
+      "Positive feedback from students or sharing a blogpost from the school website.",
+      "A link to an online news story or social media post from your school’s account summarising the activity.",
+      "Option data showing an increase in the proportion of girls considering GCSE Computer Science in KS4."
+    ]
+  }
+]
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competition").tap do |activity|
