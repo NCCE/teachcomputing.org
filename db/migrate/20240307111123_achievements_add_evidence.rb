@@ -23,7 +23,7 @@ class AchievementsAddEvidence < ActiveRecord::Migration[6.1]
           existing_evidence = achievement.self_verification_info.presence || achievement.state_machine.last_transition&.metadata&.dig("self_verification_info")
           next if existing_evidence.blank?
 
-          achievement.self_verification_steps = [existing_evidence]
+          achievement.evidence = [existing_evidence]
           achievement.save!
         end
     end
