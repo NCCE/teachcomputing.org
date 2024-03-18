@@ -40,6 +40,7 @@ Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
   options.add_argument("headless=new")
+  options.add_argument("--disable-dev-shm-usage") # without this you may get Selenium::WebDriver::Error::InvalidSessionError
   options.add_argument("--disable-extensions")
   options.add_argument("--no-sandbox")
   options.add_argument("--disable-gpu")

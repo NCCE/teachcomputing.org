@@ -8,7 +8,7 @@ RSpec.describe("Home page", type: :system) do
   end
 
   it "is the correct page" do
-    expect(page).to have_content("Helping you\nteach computing")
+    expect(page).to have_content("Helping you teach computing")
   end
 
   it "header is accessible" do
