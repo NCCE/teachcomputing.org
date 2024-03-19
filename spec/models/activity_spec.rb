@@ -44,7 +44,7 @@ RSpec.describe Activity, type: :model do
     it { is_expected.to validate_inclusion_of(:category).in_array(%w[action online face-to-face]) }
     it { is_expected.to validate_uniqueness_of(:future_learn_course_uuid) }
     it { is_expected.to validate_uniqueness_of(:stem_activity_code) }
-    it { is_expected.to validate_uniqueness_of(:stem_course_template_no) }
+    it { is_expected.to validate_uniqueness_of(:stem_course_template_no).case_insensitive }
   end
 
   describe "scopes" do
@@ -137,6 +137,11 @@ RSpec.describe Activity, type: :model do
 
       it "does not include future-learn courses" do
         expect(described_class.stem_learning).not_to include(future_learn_courses.first)
+      end
+
+      it "should downcase stem_course_template_no" do
+        new_activity = create(:activity, stem_course_template_no: "81CBA5BF-4C66-4FA7-8595-9124925106DD")
+        expect(new_activity.stem_course_template_no).to eq("81cba5bf-4c66-4fa7-8595-9124925106dd")
       end
     end
 
