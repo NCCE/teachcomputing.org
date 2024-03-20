@@ -2463,3 +2463,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "ee22f2ed-60dd-ee11-904d
 
   activity.programmes = [secondary_certificate, a_level]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "072b18fe-19e2-ee11-904d-002248c6f9ce").tap do |activity|
+  activity.title = "AI in primary computing"
+  activity.slug = "ai-in-primary-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP408"
+  activity.credit = 15
+
+  activity.programmes = [primary_certificate]
+end.save!
