@@ -205,8 +205,10 @@ Rails.application.routes.draw do
     defaults: {page_slug: "contributing-partners"}
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
-  get "/primary-teachers", to: "landing_pages#primary_teachers", as: :primary_teachers,
-    defaults: {slug: "primary-certificate"}
+  # get "/primary-teachers", to: "landing_pages#primary_teachers", as: :primary_teachers,
+  #   defaults: {slug: "primary-certificate"}
+  get "/primary-teachers", to: "pages#page", as: :primary_teachers,
+    defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",
     to: "pages#static_programme_page",
     as: :secondary,
@@ -224,8 +226,8 @@ Rails.application.routes.draw do
   get "/supporting-partners", to: "pages#page", as: :supporting_partners, defaults: {page_slug: "supporting-partners"}
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
-  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}
-  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}
+  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}, as: :primary_enrichment
+  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}, as: :secondary_enrichment
 
   resource :search, only: :show
 

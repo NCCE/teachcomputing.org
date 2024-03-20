@@ -1,0 +1,72 @@
+en:
+  pages:
+    primary-toolkit:
+      hero:
+        title: "Teaching primary computing effectively"
+        subtitle: "This essential primary computing toolkit encompasses the support available to all teachers and leaders of computing in primary education. Grow your confidence, lead computing across your school and support staff to teach computing."
+      leading:
+        title: "Leading computing teaching in your school"
+        intro: "Start your journey to an exemplary computing provision for all pupils in your schools by improving your level of confidence in both teaching and leading computing. We will elevate your current computing offer through CPD, curriculum resources, certification, and the Computing Quality Framework (CQF)."
+        cards:
+          lead:
+            title: "Lead computing with confidence"
+            description: "Build your own confidence and subject knowledge with the Teach primary computing certificate. Our nationally recognised certificate will support you in demonstrating your commitment to developing your own practice and supporting colleagues to teach computing effectively."
+            button: 
+              title: "Teacher certificate"
+              event-label: "teacher certificate"
+          improve:
+            title: "Improve your school’s computing provision"
+            description: "Self-evaluation is the first step to improvement. The Computing Quality Framework helps you identify strengths and weaknesses in your computing curriculum and set actionable goals towards achieving our accredited Computing Quality Mark."
+            button: 
+              title: "Computing Quality Framework"
+              event-label: "CQF"
+      courses:
+        title: "Courses to advance your knowledge and skills"
+        intro:
+          html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses also can support you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also access subsidies to help with supply cover."
+      resources:
+        title: "Resources to help you teach primary computing"
+        cards:
+          curriculum:
+            title: "Curriculum resources for Key Stages 1 and 2"
+            text:
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br /><br />It includes teacher guides, curriculum maps, lesson plans, worksheets, homework, assessments and more, in formats that make it easy to adapt it to meet the needs of your learners."
+            link:
+              title: "Browse teaching resources"
+              url: "/curriculum"
+              event-label: "curriculum"
+          glossary:
+            title: "Glossary of Primary computing terms"
+            text:
+              html: "Vocabulary is an important part of teaching and learning. We have designed this glossary as a tool to support and enhance teachers’ professional knowledge.<br /><br />For a teacher, a regular and consistent use of accurate, technical vocabulary can support pupils’ conceptual understanding."
+            link:
+              title: "Explore the primary glossary"
+              url: "/primary-computing-glossary"
+              event-label: "primary computing glossary"
+          kits:
+            title: "Physical Computing Kits"
+            text:
+              html: "Schools across the country can loan our Physical Computing Kits from their local Computing Hub.<br /><br />The kits containing Micro:bits, BeeBots, data loggers and more, provide pupils with a hands-on experience of computing, enriching their learning in a fun and engaging way."
+            link:
+              title: "Explore enrichment activities"
+              url: "/physical-computing-kit"
+              event-label: "physical computing kit"
+      enrich:
+        title: "Enrich your pupils’ learning"
+        para_1: "Encourage your pupils to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
+        para_2: "Our enrichment activities will help inspire curiosity in your pupils and broaden their educational experience with fun hands-on learning."
+        link: "Explore enrichment activities"
+      testimonials:
+        phil:
+          text: "“Computing is one of the most exciting subjects to lead, it promotes collaborative learning, independence, exploration, and logic. But more importantly - there is no future that I can think of that will not require good digital literacy and IT skills for humans to thrive and survive.”"
+          name: "Phil"
+          bio: "National Specialist in Primary Computing Leadership"
+        allen:
+          text: "“The Teach computing certificate scheme is just absolutely brilliant. The courses I completed for that award helped me focus on how my teaching to pupils from 4 to 11 years old should be organised, delivered and assessed.”"
+          name: "Allen"
+          bio: "Computing Subject Specialist at Willow Brook Primary School Academy"
+      support:
+        title: "Additional support"
+        para_1_html: "Effective %{pedagogy_link} is at the heart of of good teaching and learning. Our pedagogy resources will help you to embed these evidence-based practices within your school."
+        para_2_html: "The NCCE operates a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
+        para_3_html: "Building on this support, the online %{stem_community_link} offers a way for teachers to connect, ask questions and support each other with professional advice and resources sharing."

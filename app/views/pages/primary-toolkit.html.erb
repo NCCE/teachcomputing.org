@@ -1,0 +1,268 @@
+<% meta_tag :title, t('.hero.title') %>
+<% meta_tag :description, t('.hero.subtitle') %>
+<% meta_tag :url, request.original_url %>
+
+<%= render HeroComponent.new(
+  title: t('.hero.title'),
+  subtitle: t('.hero.subtitle'),
+) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".leading.title") %></h2>
+          <p class="govuk-body"><%= t(".leading.intro") %></p>
+
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 2,
+            class_name: 'primary-toolkit-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.leading.cards.lead.title'),
+                text: t(
+                  '.leading.cards.lead.description'
+                ),
+                button: :lime,
+                link: {
+                  link_title: t('.leading.cards.lead.button.title'),
+                  link_url: primary_certificate_path,
+                  tracking_page: 'Primary teacher',
+                  tracking_label: t('.leading.cards.lead.button.event-label')
+                }
+              },
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.leading.cards.improve.title'),
+                text: t(
+                  '.leading.cards.improve.description'
+                ),
+                button: :lime,
+                link: {
+                  link_title: t('.leading.cards.improve.button.title'),
+                  link_url: computing_quality_framework_url,
+                  tracking_page: 'Primary teacher',
+                  tracking_label: t('.leading.cards.improve.button.event-label')
+                }
+              },
+            ]
+          ) %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render CourseGridComponent.new(
+  title: t(".courses.title"),
+  intro: t(".courses.intro.html"),
+  event_category: 'Primary teacher',
+  courses: [
+    {
+      image: "media/images/pages/primary-toolkit/introduction_primary_computing.jpeg",
+      image_alt: "STEM course",
+      banner_text: "FOR NEW COMPUTING LEADS",
+      title: "Introduction to primary computing",
+      url: "/courses/CP454/introduction-to-primary-computing-remote",
+      description: "Covering the whole computing curriculum at an introductory level - learn about computer science, programming, information technology and digital literacy.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "5 hours",
+      event_label: "CP454"
+    },
+    {
+      image: "media/images/pages/primary-toolkit/leading_primary_computing.jpeg",
+      image_alt: "STEM course",
+      banner_text: "FOR ESTABLISHED COMPUTING LEADS",
+      title: "Leading primary computing",
+      url: "/courses/CP456/leading-primary-computing-module-2-remote",
+      description: "Essential knowledge for primary computing subject leaders. Improve your understanding of your role, the subject, and what can be done to improve provision.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "6 hours",
+      event_label: "CP456"
+    },
+    {
+      image: "media/images/pages/primary-toolkit/teaching_progamming_5_11_yr_olds.jpeg",
+      image_alt: "STEM course",
+      banner_text: "TEACHING PROGRAMMING",
+      title: "Teaching programming to 5-11 year-olds",
+      url: "/courses/CO041/teaching-programming-to-5-to-11-year-olds",
+      description: "Improve your teaching of programming basics by learning about algorithms and how to teach young children to code.",
+      icon_class: "icon-online",
+      type: "Online",
+      time_commitment: "2 hours per week",
+      event_label: "CO041"
+    },
+    {
+      image: "media/images/pages/primary-toolkit/inclusive_computing_teaching_primary.jpeg",
+      image_alt: "STEM course",
+      banner_text: "SUPPORTING STEM PUPILS",
+      title: "Inclusive computing in primary schools",
+      url: "/courses/CP005/inclusive-computing-in-primary-schools",
+      description: "Improve your teaching of programming basics by learning about algorithms and how to teach young children to code.",
+      icon_class: "icon-map-pin",
+      type: "Face to face",
+      time_commitment: "6 hours",
+      event_label: "CP005"
+    },
+    {
+      image: "media/images/pages/primary-toolkit/cqf_driving_change_in_your_school.jpeg",
+      image_alt: "STEM course",
+      banner_text: "USING CQF IN YOUR SCHOOL",
+      title: "Computing Quality Framework – driving change within your school",
+      url: "/courses/CP403/computing-quality-framework-driving-change-within-your-primary-school-short-course",
+      description: "Find out how to use the CQF effectively to identify school needs and implement change to drive a high-quality computing education.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "90 minutes",
+      event_label: "CP403"
+    },
+    {
+      image: "media/images/pages/primary-toolkit/online_safety_through_primary_computing.jpeg",
+      image_alt: "STEM course",
+      banner_text: "STAYING SAFE ONLINE",
+      title: "Online safety through primary computing",
+      url: "/courses/CP469/online-safety-through-primary-computing",
+      description: "Online safety is a whole-school priority. Ensure that children are kept safe online during your computing lessons.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "90 minutes",
+      event_label: "CP469"
+    }
+  ]
+) %>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l"><%= t(".resources.title") %></h2>
+
+            <%= render BorderedCardsComponent.new(
+              cards_per_row: 3,
+              class_name: 'resources-help-cards',
+              cards: [
+                {
+                  class_name: 'bordered-card--primary-cert',
+                  title: t('.resources.cards.curriculum.title'),
+                  text: t('.resources.cards.curriculum.text.html'),
+                  link: {
+                    link_title: t('.resources.cards.curriculum.link.title'),
+                    link_url: t('.resources.cards.curriculum.link.url'),
+                    tracking_page: 'Primary toolkit',
+                    tracking_label: t('.resources.cards.curriculum.link.event-label')
+                  }
+                },
+                {
+                  class_name: 'bordered-card--primary-cert',
+                  title: t('.resources.cards.glossary.title'),
+                  text: t('.resources.cards.glossary.text.html'),
+                  link: {
+                    link_title: t('.resources.cards.glossary.link.title'),
+                    link_url: t('.resources.cards.glossary.link.url'),
+                    tracking_page: 'Primary toolkit',
+                    tracking_label: t('.resources.cards.glossary.link.event-label')
+                  }
+                },
+                {
+                  class_name: 'bordered-card--primary-cert',
+                  title: t('.resources.cards.kits.title'),
+                  text: t('.resources.cards.kits.text.html'),
+                  link: {
+                    link_title: t('.resources.cards.kits.link.title'),
+                    link_url: t('.resources.cards.kits.link.url'),
+                    tracking_page: 'Primary toolkit',
+                    tracking_label: t('.resources.cards.kits.link.event-label')
+                  }
+                }
+              ]
+            ) %> 
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l"><%= t(".enrich.title") %></h2>
+          <p class="govuk-body"><%= t(".enrich.para_1") %></p>
+          <p class="govuk-body"><%= t(".enrich.para_2") %></p>
+          <%= link_to t(".enrich.link"), primary_enrichment_path, class: "govuk-button button" %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="aside-component__image">
+            <%= image_pack_tag "media/images/pages/primary-toolkit/primary-enrichment.jpeg", alt: "Teach Computing - Primary Encrichment" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= render partial: "pages/inspire_with_computing_ambassador" %>
+
+<%= render TestimonialsComponent.new(
+  testimonials: [
+    {
+      text: t(".testimonials.phil.text"),
+      image: "media/images/pages/primary-toolkit/phil.png",
+      name: t(".testimonials.phil.name"),
+      bio: t(".testimonials.phil.bio"),
+    },
+    {
+      text: t(".testimonials.allen.text"),
+      image: "media/images/pages/primary-toolkit/allen.png",
+      name: t(".testimonials.allen.name"),
+      bio: t(".testimonials.allen.bio"),
+    }
+  ],
+  event_tracking_category: nil,
+  testimonials_per_row: 2,
+  light: true,
+) %>
+
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <p class="govuk-body govuk-!-text-align-centre">
+              <%= link_to "News, blogs and case studies", cms_posts_path, class: "govuk-button button button--inverted" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".support.title") %></h2>
+          <p class="govuk-body"><%= t(".support.para_1_html",
+            pedagogy_link: link_to('pedagogy', pedagogy_path)) %></p> 
+          <p class="govuk-body"><%= t(".support.para_2_html",
+            hubs_link: link_to('Computing Hubs', hubs_path)) %></p> 
+          <p class="govuk-body"><%= t(".support.para_3_html",
+            stem_community_link: link_to('STEM Community', stem_community_url)) %></p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
