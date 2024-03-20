@@ -32,7 +32,7 @@ class CmsController < ApplicationController
 
   private
 
-  def process_collection(cls, title: "News & Updates", page_name: "Articles", collection_wrapper: "ncce-news-archive")
+  def process_collection(klass, title: "News & Updates", page_name: "Articles", collection_wrapper: "ncce-news-archive")
     page =
       if params[:page].present?
         params[:page].to_i
@@ -43,18 +43,17 @@ class CmsController < ApplicationController
     @page_name = page_name
     @collection_wrapper_class = collection_wrapper
     @path = cms_posts_path
-    @collection = cls.all(page, 50)
+    @collection = klass.all(page, 50)
     render :collection
   end
 
-  def process_resource(cls, resource_params: {})
+  def process_resource(klass, resource_params: {})
     if params[:refresh_cache]
-      cls.clear_cache
+      klass.clear_cache
     end
-    cleaned_params = preview_params
-    preview = cleaned_params[:preview] || false
-    preview_key = cleaned_params[:preview_key] || nil
-    @resource = cls.get(params: resource_params, preview:, preview_key:)
+    preview = preview_params[:preview] || false
+    preview_key = preview_params[:preview_key] || nil
+    @resource = klass.get(params: resource_params, preview:, preview_key:)
     render :resource
   end
 

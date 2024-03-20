@@ -23,7 +23,7 @@ describe CmsHelper, type: :helper do
     let(:image_missing_format) {
       Cms::Models::Image.new("http://media.teachcomputing.org/an-image.png", "", "",
         {
-          small: {url: "http://media.teachcomputing.org/an-image-small.png"},
+          small: {url: "http://media.teachcomputing.org/an-image-small.png"}
         }, :medium)
     }
 

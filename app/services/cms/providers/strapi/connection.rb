@@ -2,13 +2,12 @@ module Cms
   module Providers
     module Strapi
       class Connection
-        API_TOKEN = ENV["STRAPI_API_KEY"]
-        URL = ENV["STRAPI_URL"]
-
         def self.api
-          Faraday.new(url: URL) do |connection|
+          config = Strapi.configuration
+          puts config
+          Faraday.new(url: config.api_url) do |connection|
             connection.adapter :net_http
-            connection.authorization :Bearer, API_TOKEN
+            connection.authorization :Bearer, config.api_key
           end
         end
       end

@@ -32,7 +32,7 @@ module Cms
     end
 
     private_class_method def self.client
-      case (ENV["CMS_PROVIDER"])
+      case Rails.application.config.cms_provider
       when "strapi"
         Providers::Strapi::Client.new
       else

@@ -51,7 +51,7 @@ module Cms
           populate_params
         end
 
-        def generate_url resource_key, params
+        def generate_url(resource_key, params)
           return "#{resource_key}/#{params[:resource_id]}" if params[:resource_id]
           resource_key
         end

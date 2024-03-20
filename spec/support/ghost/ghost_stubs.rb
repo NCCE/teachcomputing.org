@@ -1,4 +1,16 @@
 module GhostStubs
+  def stub_posts_to_convert
+    to_convert_posts_json = File.new("spec/support/ghost/posts_to_convert.json")
+    stub_request(:get, "#{ENV["GHOST_API_ENDPOINT"]}/content/posts?fields=title,slug,feature_image,custom_excerpt,excerpt,published_at,html,feature_image_alt,feature_image_caption&include=tags&key=key&limit=2&page=0")
+      .to_return(body: to_convert_posts_json)
+  end
+
+  def stub_pages_to_convert
+    to_convert_pages_json = File.new("spec/support/ghost/pages_to_convert.json")
+    stub_request(:get, "#{ENV["GHOST_API_ENDPOINT"]}/content/pages?fields=title,slug,custom_excerpt,excerpt,published_at,html&key=key&limit=1&page=0")
+      .to_return(body: to_convert_pages_json)
+  end
+
   def stub_featured_posts
     raw_featured_posts_json = File.new("spec/support/ghost/featured_posts.json")
     stub_request(:get, "#{ENV["GHOST_API_ENDPOINT"]}/content/posts/")

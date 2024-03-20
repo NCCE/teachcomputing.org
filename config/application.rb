@@ -28,6 +28,8 @@ module TeachComputing
 
     config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]
 
+    config.cms_provider = ENV["CMS_PROVIDER"]
+
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
   end

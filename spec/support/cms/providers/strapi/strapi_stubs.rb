@@ -26,6 +26,29 @@ module StrapiStubs
 
   def stub_strapi_not_found(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/not_found_response.json")
-    stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}?/).to_return(body: json_response, status: 404)
+    stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}*/).to_return(body: json_response, status: 404)
+  end
+
+  def stub_strapi_blog_tags
+    json_response = File.new("spec/support/cms/providers/strapi/blog_tags.json")
+    stub_request(:get, "http://strapi.teachcomputing.rpfdev.com/api/blog-tags").to_return(body: json_response)
+  end
+
+  def stub_strapi_media_upload
+    json_response = File.new("spec/support/cms/providers/strapi/media_response.json")
+    stub_request(:post, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/upload/).to_return(body: json_response)
+  end
+
+  def stub_strapi_media_query
+    json_response = File.new("spec/support/cms/providers/strapi/media_query.json")
+    stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/upload\/files/).to_return(body: json_response)
+  end
+
+  def stub_strapi_update resource_key
+    stub_request(:put, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}/).to_return(body: {}.to_json)
+  end
+
+  def stub_strapi_create resource_key
+    stub_request(:post, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}/).to_return(body: {}.to_json)
   end
 end

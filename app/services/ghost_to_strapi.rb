@@ -12,7 +12,8 @@ class GhostToStrapi
   end
 
   def convert_posts(post_count)
-    process_posts(get_posts_from_ghost(post_count))
+    data = get_posts_from_ghost(post_count)
+    process_posts(data)
   end
 
   def convert_pages(page_count)
@@ -35,12 +36,7 @@ class GhostToStrapi
         }
       end
     end
-    puts "\n\n== Problem Pages (#{problem_pages.count}) ==\n\n"
-    problem_pages.each do |x|
-      puts x[:slug]
-      x = {data: x[:data]}.to_json
-      puts x
-    end
+    problem_pages
   end
 
   def process_posts(posts)
@@ -60,12 +56,7 @@ class GhostToStrapi
         }
       end
     end
-    puts "\n\n== Problem Posts (#{problem_pages.count}) ==\n\n"
-    problem_pages.each do |x|
-      puts x[:slug]
-      x = {data: x[:data]}.to_json
-      puts x
-    end
+    problem_pages
   end
 
   def check_strapi_for_image(filename)
@@ -95,10 +86,8 @@ class GhostToStrapi
         Authorization: "Bearer #{@strapi_api_key}"
       }).body)
       id = record["data"]["id"]
-      puts "updating #{slug}"
       RestClient.put("#{@strapi_api}/#{resource_key}/#{id}", params, headers)
     rescue RestClient::NotFound
-      puts "creating #{slug}"
       RestClient.post("#{@strapi_api}/#{resource_key}", params, headers)
     end
   end
@@ -165,30 +154,8 @@ class GhostToStrapi
           code_block_content << child.to_s
         end
       elsif child.element?
-        case child.name
-        when "p"
-          para = process_para(child)
-          blocks << para if para[:children].any?
-        when "blockquote"
-          blocks << process_para(child, type: "quote")
-        when "figure"
-          figure = process_figure(child)
-          blocks << figure if figure
-        when "ul"
-          blocks << process_list(child, "unordered")
-        when "ol"
-          blocks << process_list(child, "ordered")
-        when "hr"
-          blocks << {
-            type: "paragraph",
-            children: [{
-              type: "text",
-              text: "---"
-            }]
-          }
-        when /h(\d)/
-          blocks << process_heading(child)
-        end
+        element_result = process_element(child)
+        blocks << element_result if element_result
       elsif child.comment?
         if child.text == "kg-card-begin: html"
           in_code_block = true
@@ -197,6 +164,32 @@ class GhostToStrapi
       end
     end
     blocks.compact
+  end
+
+  def process_element(element)
+    case element.name
+    when "p"
+      para = process_para(element)
+      para if para[:children].any?
+    when "blockquote"
+      process_para(element, type: "quote")
+    when "figure"
+      process_figure(element)
+    when "ul"
+      process_list(element, "unordered")
+    when "ol"
+      process_list(element, "ordered")
+    when "hr"
+      {
+        type: "paragraph",
+        children: [{
+          type: "text",
+          text: "---"
+        }]
+      }
+    when /h(\d)/
+      process_heading(element)
+    end
   end
 
   def process_code_block(lines)
@@ -363,7 +356,6 @@ class GhostToStrapi
     if url.host == "blog.teachcomputing.org"
       url.host = "teachcomputing.org"
       url.path = "/blog#{url.path}"
-      puts "updated link #{@current_slug}"
     end
     url.to_s
   end
@@ -390,7 +382,6 @@ class GhostToStrapi
       key: @ghost_api_key,
       limit: page_count,
       fields: "title,slug,custom_excerpt,excerpt,published_at,html",
-      include: "tags",
       page: 0
     }.compact
     JSON.parse(RestClient.get(request, params: params).body)
