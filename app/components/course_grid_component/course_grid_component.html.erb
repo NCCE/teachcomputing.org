@@ -3,7 +3,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full"> 
         <h2 class="govuk-heading-l"><%= @title %></h2>
-        <p class="govuk-body-l"><%=  @intro %>
+        <p class="govuk-body"><%=  @intro %></p>
       </div>
     </div>
 
@@ -15,9 +15,11 @@
 
                 <div class="courses-grid--image-wrapper">
                   <%= image_pack_tag course[:image], alt: course[:image_alt], class: 'courses-grid--image' %>
-                  <span class="govuk-body-s courses-grid--banner">
-                    <%= course[:banner_text] %>
-                  </span>
+                  <% if course[:banner_text] %>
+                    <span class="govuk-body-s courses-grid--banner">
+                      <%= course[:banner_text] %>
+                    </span>
+                  <% end %>
                 </div>
 
                 <p class="govuk-body">

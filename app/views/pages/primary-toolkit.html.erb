@@ -201,9 +201,10 @@
           <%= link_to t(".enrich.link"), primary_enrichment_path, class: "govuk-button button" %>
         </div>
         <div class="govuk-grid-column-one-third">
-          <div class="aside-component__image">
-            <%= image_pack_tag "media/images/pages/primary-toolkit/primary-enrichment.jpeg", alt: "Teach Computing - Primary Encrichment" %>
-          </div>
+          <%= render AsideComponent.new(image: {
+              file: "media/images/pages/primary-toolkit/primary-enrichment.jpeg", 
+              alt: "Teach Computing - Primary Encrichment"
+            }) %>
         </div>
       </div>
     </div>

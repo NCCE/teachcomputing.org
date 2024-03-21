@@ -47,6 +47,18 @@
     border-top: solid 9px $isaac;
   }
 
+  &--i-belong {
+    border-top: solid 9px $orange;
+    background-image: url('../images/logos/i_belong_flag.svg');
+    background-repeat: no-repeat;
+    background-position: 98% 0;
+    background-size: auto 130px;
+
+    .bordered-card__text {
+      width: 80%;
+    }
+  }
+
   @include govuk-media-query($from: tablet) {
     padding: calc($component-padding * 0.6);
   }

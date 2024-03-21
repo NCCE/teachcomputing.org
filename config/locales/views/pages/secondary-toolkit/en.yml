@@ -1,0 +1,89 @@
+en:
+  pages:
+    secondary-toolkit:
+      hero:
+        title: "Teach computing and computer science effectively"
+        subtitle: "This essential secondary computing toolkit encompasses the support available to all teachers and leaders of computing in secondary education. "
+      intro:
+        text: "Our offer will support you at every step towards improving your teaching of computing and computer science at all levels. Grow your confidence, support your team, enrich your students’ learning and lead the computing curriculum across your school."
+        cards:
+          knowledge:
+            title: "Advance your subject knowledge"
+            text:
+              html: "Begin your professional development journey by building on your Key Stage 3 and GCSE %{subject_knowledge_link}. Strong subject knowledge is a foundation for great teaching, helping to build student understanding and tackle misconceptions.<br /><br />With our %{a_level_link}, you can also demonstrate your subject knowledge at an advanced standard."
+          pedagogy:
+            title: "Build on your pedagogy and leadership"
+            text:
+              html: "Improve your pedagogy and teaching effectiveness across secondary computing.<br /><br />Progress through our %{certificate_link} alongside the KS3 and GCSE subject knowledge certificate to put your strengthening subject knowledge into classroom practice that raises student attainment."
+          assess:
+            title: "Assess your school’s computing provision"
+            text:
+              html: "Self-evaluation is the first step to improvement. The %{cqf_link} helps you identify strengths and weaknesses in your computing curriculum and set actionable goals towards achieving our accredited Computing Quality Mark.<br /><br />You can also join a %{cluster_link} to work collaboratively with other schools to improve your computing provision."
+      supporting:
+        title: "Supporting your GCSE Computer Science provision"
+        para_1: "If you don’t currently offer GCSE Computer Science at your school, we are dedicated to work with you. Our support will help you create a sustainable computing department, improve provision and build capability and confidence –ultimately getting you in a better position to offer this key subject to your students."
+      testimonials:
+        pete:
+          text: "“We need the best talent to enjoy creative skills in computing at every stage so that any student can picture themselves thriving in a computing career [and use] their tech skills to make the world a better place.”"
+          name: "Pete"
+          bio: "Head of Computing at Fulford School"
+        tori:
+          text: "“Teachers played a pivotal role in fostering my interest by providing guidance and support in navigating the complexities of computing studies, highlighting the variety of opportunities which are available in the field.”"
+          name: "Tori"
+          bio: "Computer Science and AI student at the University of Sussex"
+      courses:
+        title: "Courses to advance your knowledge and skills"
+        intro:
+          html: "Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
+      further_learning:
+        title: "Take your students’ learning further"
+        para_1: "Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
+        para_2: "Running an enrichment activity with students also supports teachers' progress through our Teach secondary computing certificate."
+        link: "Explore enrichment activities"
+        aside:
+          title: "Computing Ambassadors"
+          text:
+            html: "Part of the STEM Ambassadors volunteering programme – Computing Ambassadors are people from a wide range of industries who can help bring your computing lessons to life and provide real-world context, creating an invaluable link between schools and industry.<br /><br />Computing Ambassadors can %{visit_link}, introduce a topic, judge a competition or show students what career paths are available to them."
+      resources:
+        title: "Resources to help you teach secondary computing"
+        description: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. We have a wide range of free resources available to help your team support student development and hone their computing skill and knowledge, effectively preparing them for the world of tech and computing career opportunities."
+        cards:
+          curriculum:
+            title: "Curriculum resources for Key Stages 3 and 4"
+            text:
+              html: "Free, time-saving resources to enhance provision and support planning across the computing curriculum.<br /><br />It includes teacher guides, curriculum maps, lesson plans and more. Use this to plan and deliver high-quality lessons to your learners."
+            link:
+              title: "Browse teaching resources"
+              url: "/curriculum"
+              event-label: "curriculum"
+          isaac:
+            title: "Isaac Computer Science"
+            text:
+              html: "Get support with remote teaching, homework and marking with our free online textbook for teachers and students. With resources covering the full English curriculum for all exam specifications, and %{gcse_link} and %{a_level_link} student events, this is a perfect revision tool."
+            link:
+              title: "Explore Isaac Computer Science"
+              url: "/isaac-computer-science"
+              event-label: "isaac computer science"
+          question_banks:
+            title: "Secondary Question Banks"
+            text:
+              html: "A collection containing quality-assured question banks to use with Key Stage 3 computing and GCSE Computer Science students.<br /><br />Explore a series of 10 topics, covering areas across the computing curriculum."
+            link:
+              title: "Find out more"
+              url: "/secondary-question-banks"
+              event-label: "secondary toolkit"
+          i_belong:
+            title: "Resources to support girls' engagement with computer science"
+            text:
+              html: "All resources and activities that support your efforts in improving gender balance in computer science and motivating more girls to choose this key subject are identified across our website with the <em>I Belong</em> flag."
+      career_banner:
+        title: "Where next? Careers in computing, technology and digital"
+        content: "Effective career guidance is vital to help young people make informed decisions about their future. Our free resources can support your school to achieve the Gatsby Benchmarks and highlight the diversity of pathways leading to a successful career in computing, technology, and the digital industries."
+      i_belong_banner:
+        title: "I Belong: encouraging girls into computer science"
+        content:
+          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing your teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
+      support:
+        title: "Additional support"
+        para_1_html: "The NCCE operates a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
+        para_2_html: "Building on this support, the online %{stem_community_link} offers a way for teachers to connect, ask questions and support each other with professional advice and resources sharing."
