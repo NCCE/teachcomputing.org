@@ -2475,3 +2475,27 @@ Activity.find_or_initialize_by(stem_course_template_no: "072b18fe-19e2-ee11-904d
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "9d4bb5fd-fde5-ee11-904c-0022481b6d82").tap do |activity|
+  activity.title = "Help! How do I lead primary computing? - residential"
+  activity.slug = "help-how-do-i-lead-primary-computing-residential"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP015"
+  activity.credit = 100
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "836ce491-02e6-ee11-904c-0022481b6d82").tap do |activity|
+  activity.title = "Leading and assessing primary computing - residential"
+  activity.slug = "leading-and-assessing-primary-computing-residential"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP016"
+  activity.credit = 100
+
+  activity.programmes = [primary_certificate]
+end.save!
