@@ -205,8 +205,6 @@ Rails.application.routes.draw do
     defaults: {page_slug: "contributing-partners"}
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
-  # get "/primary-teachers", to: "landing_pages#primary_teachers", as: :primary_teachers,
-  #   defaults: {slug: "primary-certificate"}
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
     defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",
@@ -220,7 +218,6 @@ Rails.application.routes.draw do
     defaults: {page_slug: "secondary-senior-leaders"}
   get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
     defaults: {page_slug: "primary-senior-leaders"}
-  # get "/secondary-teachers", to: "landing_pages#secondary_teachers", as: :secondary_teachers
   get "/secondary-teachers", to: "pages#page", as: :secondary_teachers,
     defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
