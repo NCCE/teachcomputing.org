@@ -66,7 +66,6 @@ RSpec.describe Cms::Resource do
     end
 
     context "collection resource" do
-
       let(:empty_collection_class) do
         Class.new(described_class) do
           def self.is_collection = true
