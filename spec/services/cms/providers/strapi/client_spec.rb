@@ -31,7 +31,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
 
   it "calls one and returns mapped resource" do
     stub_strapi_get_single_entity("test-page")
-    response = client.one(page_class, {})
+    response = client.one(page_class)
     expect(response[:id]).to eq(1)
     expect(response[:data_models].first).to be_a Cms::Models::SimpleTitle
   end
@@ -39,7 +39,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
   it "raises RecordNotFound for missing resource" do
     stub_strapi_not_found("test-page")
     expect do
-      client.one(page_class, {})
+      client.one(page_class)
     end.to raise_error(ActiveRecord::RecordNotFound)
   end
 
@@ -49,12 +49,12 @@ RSpec.describe Cms::Providers::Strapi::Client do
     end
 
     it "should return latest version when no key specified" do
-      response = client.one(page_class, {}, preview: true)
+      response = client.one(page_class, preview: true)
       expect(response[:data_models].first.title).to eq("Privacy Notice v3")
     end
 
     it "should return correct value when given key" do
-      response = client.one(page_class, {}, preview: true, preview_key: "1")
+      response = client.one(page_class, preview: true, preview_key: "1")
       expect(response[:data_models].first.title).to eq("Privacy Notice v1")
     end
   end

@@ -1,6 +1,8 @@
 module Cms
   module Collections
-    class Blog < CollectionResource
+    class Blog < Resource
+      def self.is_collection = true
+
       def self.collection_attribute_mappings
         [
           {model: Cms::Models::BlogPreview, key: nil}

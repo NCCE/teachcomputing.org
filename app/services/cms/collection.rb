@@ -11,11 +11,14 @@ module Cms
     end
 
     def next_page
-      (@page + 1) unless @page == @page_number
+      return nil if @page >= @page_number
+      @page + 1
     end
 
     def previous_page
-      (@page - 1) unless @page == 1
+      return nil if @page == 1
+      return @page_number if @page > @page_number
+      @page - 1
     end
   end
 end

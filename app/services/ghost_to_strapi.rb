@@ -2,10 +2,10 @@ require "open-uri"
 
 class GhostToStrapi
   def initialize
-    @ghost_api = ENV["GHOST_API_ENDPOINT"]
-    @ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
-    @strapi_api = ENV["STRAPI_URL"]
-    @strapi_api_key = ENV["STRAPI_API_WRITE_KEY"]
+    @ghost_api = Rails.application.config.ghost_endpoint
+    @ghost_api_key = Rails.application.config.ghost_api_key
+    @strapi_api = Rails.application.config.strapi_api_url
+    @strapi_api_key = Rails.application.config.strapi_write_api_key
 
     @current_slug = nil
     @image_count = 0

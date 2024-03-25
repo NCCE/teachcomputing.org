@@ -1,6 +1,8 @@
 module Cms
   module Collections
-    class SimplePage < CollectionResource
+    class SimplePage < Resource
+      def self.is_collection = true
+
       def self.resource_attribute_mappings
         [
           {model: Cms::Models::SimpleTitle, key: :title},

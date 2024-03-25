@@ -37,11 +37,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Paragraph < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <p class="govuk-body-m">
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) -%>
-        <% end %>
-      </p>
+      <p class="govuk-body-m"><%- @obj[:children].each do |child| -%><%= render build(child) -%><%- end -%></p>
     ERB
   end
 
@@ -66,6 +62,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   end
 
   class Text < CmsRichTextBlockComponent
+    strip_trailing_whitespace
     def call
       if @obj[:text] == "---"
         content_tag(:hr)
@@ -89,12 +86,13 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   end
 
   class Link < CmsRichTextBlockComponent
+    # Had to removed indentation in this erb as it was adding whitespace to page render
     erb_template <<~ERB
       <%= link_to @obj[:url], class: "ncce-link" do -%>
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) -%>
-        <% end -%>
-      <% end -%>
+      <% @obj[:children].each do |child| %>
+      <%= render build(child) -%>
+      <% end %>
+      <% end %>
     ERB
   end
 

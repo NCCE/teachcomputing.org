@@ -1,16 +1,18 @@
 class CmsController < ApplicationController
+  include CmsProcessing
   layout "full-width"
 
   def blog
-    process_collection Cms::Collections::Blog
+    process_collection Cms::Collections::Blog, title: "News & Updates",
+      page_name: "Articles", collection_wrapper: "ncce-news-archive"
   end
 
   def blog_resource
-    process_resource Cms::Collections::Blog, resource_params: {resource_id: params[:page_slug]}
+    process_resource Cms::Collections::Blog, resource_id: params[:page_slug]
   end
 
   def page_resource
-    process_resource Cms::Collections::SimplePage, resource_params: {resource_id: params[:page_slug]}
+    process_resource Cms::Collections::SimplePage, resource_id: params[:page_slug]
   end
 
   def style_slug
@@ -22,40 +24,7 @@ class CmsController < ApplicationController
     redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 
-  def privacy
-    process_resource Cms::Pages::PrivacyNotice
-  end
-
-  def deep_test
-    process_resource Cms::Pages::DeepTest
-  end
-
   private
-
-  def process_collection(klass, title: "News & Updates", page_name: "Articles", collection_wrapper: "ncce-news-archive")
-    page =
-      if params[:page].present?
-        params[:page].to_i
-      else
-        1
-      end
-    @title = title
-    @page_name = page_name
-    @collection_wrapper_class = collection_wrapper
-    @path = cms_posts_path
-    @collection = klass.all(page, 50)
-    render :collection
-  end
-
-  def process_resource(klass, resource_params: {})
-    if params[:refresh_cache]
-      klass.clear_cache
-    end
-    preview = preview_params[:preview] || false
-    preview_key = preview_params[:preview_key] || nil
-    @resource = klass.get(params: resource_params, preview:, preview_key:)
-    render :resource
-  end
 
   def build_slug_from_params
     return params[:page_slug] if params[:parent_slug].blank?

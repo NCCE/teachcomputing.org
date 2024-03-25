@@ -26,11 +26,13 @@ module Cms
           }
         end
 
-        def one(resource_class, params, preview: false, preview_key: nil)
-          params[:populate] = generate_populate_params(resource_class.resource_attribute_mappings, preview:)
+        def one(resource_class, resource_id = nil, preview: false, preview_key: nil)
+          params = {
+            populate: generate_populate_params(resource_class.resource_attribute_mappings, preview:)
+          }
           params[:publicationState] = "preview" if preview
 
-          response = @connection.get(generate_url(resource_class.resource_key, params), params.except(:resource_id))
+          response = @connection.get(generate_url(resource_class.resource_key, resource_id), params)
 
           raise ActiveRecord::RecordNotFound unless response.status == 200
 
@@ -39,6 +41,11 @@ module Cms
         end
 
         private
+
+        def generate_url(resource_key, resource_id = nil)
+          return "#{resource_key}/#{resource_id}" if resource_id
+          resource_key
+        end
 
         def generate_populate_params(mappings, preview: false)
           populate_params = mappings.each_with_object({}) do |component, populate|
@@ -49,11 +56,6 @@ module Cms
           # convert preview param into strapi compliant version
           populate_params[0] = :versions if preview
           populate_params
-        end
-
-        def generate_url(resource_key, params)
-          return "#{resource_key}/#{params[:resource_id]}" if params[:resource_id]
-          resource_key
         end
 
         def map_collection(collection_class, data)

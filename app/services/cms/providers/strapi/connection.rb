@@ -3,11 +3,10 @@ module Cms
     module Strapi
       class Connection
         def self.api
-          config = Strapi.configuration
-          puts config
-          Faraday.new(url: config.api_url) do |connection|
+          config = Rails.application.config
+          Faraday.new(url: config.strapi_api_url) do |connection|
             connection.adapter :net_http
-            connection.authorization :Bearer, config.api_key
+            connection.authorization :Bearer, config.strapi_api_key
           end
         end
       end
