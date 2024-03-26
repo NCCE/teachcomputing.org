@@ -148,6 +148,24 @@
         grid-column: 2;
         justify-self: end;
       }
+
+      .progress-component__submit{
+        &-button-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          grid-gap: 10px;
+
+          .save-draft {
+            grid-column: 1;
+          }
+
+          .ncce-modal--reopen {
+            grid-column: 2;
+          }
+        }
+      }
+
     }
 
     > .ncce-modal--body {

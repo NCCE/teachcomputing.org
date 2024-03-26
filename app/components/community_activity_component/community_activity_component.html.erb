@@ -108,7 +108,6 @@
                       <%= progress.with_continue do %>
                         Continue
                       <% end %>
-
                       <%= render ModalComponent.new(
                         title: "Are you sure you want to submit this evidence?",
                         class_name: "confirmation-modal",
@@ -117,7 +116,10 @@
                       ) do |modal| %>
                         <%= modal.with_reopen_button do %>
                           <%= progress.with_submit do %>
-                            <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-action="modal#toggle">Submit</button>
+                            <div class="progress-component__submit-button-wrapper">
+                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
+                              <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-action="modal#toggle">Submit</button>
+                            </div>
                           <% end %>
                         <% end %>
 

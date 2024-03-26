@@ -1,7 +1,8 @@
 class CommunityActivityListComponent < ViewComponent::Base
   attr_reader :first_activities, :second_activities, :tracking_category
 
-  def initialize(programme_activity_grouping:, community_achievements:, tracking_category:)
+  def initialize(programme_activity_grouping:, community_achievements:, tracking_category:, number_to_show: 4)
+    @number_to_show = number_to_show
     activities_with_achievements = programme_activity_grouping.programme_activities.not_legacy.map do |programme_activity|
       {
         programme_activity:,
@@ -13,8 +14,8 @@ class CommunityActivityListComponent < ViewComponent::Base
 
     if complete.size < programme_activity_grouping.required_for_completion
       sorted_activities = complete + non_complete
-      @first_activities = sorted_activities.first(4)
-      @second_activities = sorted_activities[4..]
+      @first_activities = sorted_activities.first(@number_to_show)
+      @second_activities = sorted_activities[@number_to_show..]
     else
       @first_activities = complete
       @second_activities = non_complete
