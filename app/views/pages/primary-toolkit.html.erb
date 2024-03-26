@@ -60,7 +60,8 @@
 
 <%= render CourseGridComponent.new(
   title: t(".courses.title"),
-  intro: t(".courses.intro.html"),
+  intro: t(".courses.intro.html",
+    subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
   event_category: 'Primary teacher',
   courses: [
     {

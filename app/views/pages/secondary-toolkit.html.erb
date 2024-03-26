@@ -21,20 +21,20 @@
               class_name: 'intro-help-cards',
               cards: [
                 {
-                  class_name: 'bordered-card--primary-cert',
+                  class_name: 'bordered-card--toolkit',
                   title: t('.intro.cards.knowledge.title'),
                   text: t('.intro.cards.knowledge.text.html', 
                     subject_knowledge_link: link_to('subject knowledge', cs_accelerator_path),
                     a_level_link: link_to('A level certificate', a_level_path)),
                 },
                 {
-                  class_name: 'bordered-card--primary-cert',
+                  class_name: 'bordered-card--toolkit',
                   title: t('.intro.cards.pedagogy.title'),
                   text: t('.intro.cards.pedagogy.text.html',
-                    certificate_link: link_to("Teach secondary computing certificate", secondary_certificate_path)),
+                    certificate_link: link_to("Teach secondary computing certificate", secondary_path)),
                 },
                 {
-                  class_name: 'bordered-card--primary-cert',
+                  class_name: 'bordered-card--toolkit',
                   title: t('.intro.cards.assess.title'),
                   text: t('.intro.cards.assess.text.html',
                     cqf_link: link_to("Computing Quality Framework", computing_quality_framework_url),
@@ -73,7 +73,6 @@
     </div>
   </div>
 </div>
-2
 <%= render TestimonialsComponent.new(
   testimonials: [
     {
@@ -110,7 +109,7 @@
 <%= render CourseGridComponent.new(
   title: t(".courses.title"),
   intro: t(".courses.intro.html",
-    subsidies_link: link_to("access subsidies", '')),
+    subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
   event_category: 'Primary teacher',
   courses: [
     {
@@ -161,7 +160,7 @@
             class_name: 'resources-help-cards',
             cards: [
               {
-                class_name: 'bordered-card--secondary-cert',
+                class_name: 'bordered-card--toolkit',
                 title: t('.resources.cards.curriculum.title'),
                 text: t('.resources.cards.curriculum.text.html'),
                 link: {
@@ -172,7 +171,7 @@
                 }
               },
               {
-                class_name: 'bordered-card--isaac',
+                class_name: 'bordered-card--toolkit--isaac',
                 title: t('.resources.cards.isaac.title'),
                 text: t('.resources.cards.isaac.text.html',
                   a_level_link: link_to("A level", "https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=a_level&stage=all"),
@@ -185,7 +184,7 @@
                 }
               },
               {
-                class_name: 'bordered-card--secondary-cert',
+                class_name: 'bordered-card--toolkit',
                 title: t('.resources.cards.question_banks.title'),
                 text: t('.resources.cards.question_banks.text.html', 
                   teaching_link: link_to('Teaching secondary computing certificate', secondary_certificate_url)),

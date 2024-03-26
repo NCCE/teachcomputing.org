@@ -47,6 +47,14 @@
     border-top: solid 9px $isaac;
   }
 
+  &--toolkit {
+    border-top: solid 9px $primary-cert-color;
+  }
+
+  &--toolkit--isaac {
+    border-top: solid 9px $isaac;
+  }
+
   &--i-belong {
     border-top: solid 9px $orange;
     background-image: url('../images/logos/i_belong_flag.svg');
