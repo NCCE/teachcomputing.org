@@ -30,7 +30,7 @@ module TeachComputing
 
     config.cms_provider = ENV["CMS_PROVIDER"]
     config.strapi_api_key = ENV["STRAPI_API_KEY"]
-    config.strapi_api_url = ENV["STRAPI_URL"]
+    config.strapi_api_url = ENV["STRAPI_API_URL"]
     config.strapi_write_api_key = ENV["STRAPI_API_WRITE_KEY"]
     config.ghost_endpoint = ENV["GHOST_API_ENDPOINT"]
     config.ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
