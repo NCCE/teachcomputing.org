@@ -101,3 +101,7 @@
 
 // Other
 @import 'settings/_utility.scss';
+
+// you shouldn't be able to scroll behind a modal. this rule is here for visibility
+// as it locks the whole document.
+.govuk-template:has(.ncce-modal--expanded) { overflow: hidden !important; }

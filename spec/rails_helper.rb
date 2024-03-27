@@ -39,16 +39,18 @@ Capybara.default_max_wait_time = 5
 Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
-  options.add_argument("--headless")
+  options.add_argument("headless=new")
   options.add_argument("--disable-extensions")
   options.add_argument("--no-sandbox")
   options.add_argument("--disable-gpu")
   options.add_argument("--window-size=1400,1400")
   options.add_argument("--verbose")
+  options.add_argument("--enable-logging")
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
 end
 Capybara.javascript_driver = selenium_driver
+Capybara.save_path = Rails.root.join("tmp", "screenshots")
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -74,6 +76,12 @@ RSpec.configure do |config|
   end
 
   config.before(:each) { stub_cloudflare_ip_lookup }
+
+  config.around(:each, type: :system) do |example|
+    Rails.application.config.action_controller.allow_forgery_protection = true
+    example.run
+    Rails.application.config.action_controller.allow_forgery_protection = false
+  end
 
   config.before(:each, type: :system) do
     driven_by selenium_driver

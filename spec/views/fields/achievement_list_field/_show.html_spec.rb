@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "fields/achievement_list_field/show", type: :view do
   let(:user) { create(:user) }
-  let(:completed_achievement) { create(:completed_achievement, user:, self_verification_info: "I did the thing") }
+  let(:completed_achievement) { create(:completed_achievement, user:, evidence: ["I did the thing"]) }
   let(:ongoing_achievement) { create(:achievement, user:) }
   let(:rejected_achievement) { create(:rejected_achievement, user:) }
 

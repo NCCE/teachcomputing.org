@@ -361,10 +361,10 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe "#adequate_evidence_provided?" do
-    let(:self_verification_info) { nil }
-    let(:activity) { create(:activity, self_verification_info:) }
-    let(:achievement_self_verification_info) { nil }
-    let(:achievement) { create(:achievement, activity:, user:, self_verification_info: achievement_self_verification_info) }
+    let(:public_copy_evidence) { nil }
+    let(:activity) { create(:activity, public_copy_evidence:) }
+    let(:evidence) { [] }
+    let(:achievement) { create(:achievement, activity:, user:, evidence:) }
 
     context "when the activity has no specified requirements" do
       it "should return true" do
@@ -373,7 +373,8 @@ RSpec.describe Achievement, type: :model do
     end
 
     context "when the activity requires evidience but none is provided" do
-      let(:self_verification_info) { "please provide evidence" }
+      let(:public_copy_evidence) { [{brief: "Do some stuff"}] }
+      let(:evidence) { [] }
 
       it "should return false" do
         expect(achievement.adequate_evidence_provided?).to be false
@@ -381,8 +382,8 @@ RSpec.describe Achievement, type: :model do
     end
 
     context "when the activity requires evidience and it is provided" do
-      let(:self_verification_info) { "please provide evidence" }
-      let(:achievement_self_verification_info) { "Evidence? I don't need no evidence!" }
+      let(:public_copy_evidence) { [{brief: "Do some stuff"}] }
+      let(:evidence) { "Evidence? I need evidence to pass the validation!" }
 
       it "should return true" do
         expect(achievement.adequate_evidence_provided?).to be true
@@ -393,8 +394,8 @@ RSpec.describe Achievement, type: :model do
   describe "#transition_community_to_complete" do
     let(:self_verification_info) { nil }
     let(:activity) { create(:activity, self_verification_info:) }
-    let(:achievement_self_verification_info) { nil }
-    let(:achievement) { create(:achievement, activity:, user:, self_verification_info: achievement_self_verification_info) }
+    let(:evidence) { [] }
+    let(:achievement) { create(:achievement, activity:, user:, evidence:) }
 
     it "transitions an achievement to complete" do
       achievement.transition_community_to_complete
@@ -403,11 +404,12 @@ RSpec.describe Achievement, type: :model do
     end
 
     context "when self verification info is provided" do
-      let(:achievement_self_verification_info) { "hello world" }
+      let(:evidence) { ["first step", "second step", "third step"] }
       it "is included in the metadata" do
         achievement.transition_community_to_complete
 
-        expect(achievement.last_transition.metadata["self_verification_info"].present?).to be true
+        expect(achievement.last_transition.metadata["evidence"].present?).to be true
+        expect(achievement.last_transition.metadata["evidence"]).to eq(["first step", "second step", "third step"])
       end
     end
   end
