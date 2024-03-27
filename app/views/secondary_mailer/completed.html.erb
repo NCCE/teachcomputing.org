@@ -1,8 +1,10 @@
 <div class='mailer__content'>
   <p class="govuk-body">Dear <%= @user.first_name %>,</p>
-  <p class="govuk-body">Congratulations! We are delighted to confirm that your community activities have been verified and you have achieved the National Centre for Computing Education Certificate in Secondary Computing Teaching.</p>
+  <p class="govuk-body"><strong>Congratulations on achieving your certificate!</strong></p>
+  <p class="govuk-body">We are delighted to confirm that your community activities have been verified and you have achieved the national NCCE certificate to Teach secondary computing.</p>
   <p class="govuk-body">
-    <%= link_to 'Get your certificate', certificate_secondary_certificate_url %>
+    <%= link_to 'Download your certificate', certificate_secondary_certificate_url, class: 'govuk-button button' %>
   </p>
+  <p class="govuk-body">Share your achievement with friends and colleagues by adding your new digital badge to your social media and email.</p>
   <p class="govuk-body">Congratulations on your achievement and please contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing', class: 'ncce-link' %> if you have any questions.</p>
 <div class='mailer__content'>

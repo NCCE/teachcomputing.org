@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1
-  browser-tools: circleci/browser-tools@1.4.0
+  browser-tools: circleci/browser-tools@1.4.4
 
 jobs:
   brakeman:
@@ -15,15 +15,15 @@ jobs:
           name: Inspecting with Brakeman
           command: bundle exec brakeman
 
-  rubocop:
+  standardrb:
     docker:
       - image: "cimg/ruby:3.1.2"
     steps:
       - checkout
       - ruby/install-deps
       - run:
-          name: Inspecting changes with Rubocop
-          command: bundle exec rubocop-changes --format quiet
+          name: Inspecting code with standardrb
+          command: bundle exec standardrb
 
   test:
     working_directory: ~/teachcomputing
@@ -78,7 +78,9 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-      - browser-tools/install-browser-tools
+      - browser-tools/install-browser-tools:
+          chrome-version: 116.0.5845.110 # https://github.com/CircleCI-Public/browser-tools-orb/issues/108#issuecomment-1958532112
+          replace-existing-chrome: true
       - run:
           name: Run rspec
           command: |
@@ -100,24 +102,6 @@ jobs:
           root: ~/teachcomputing
           paths: [coverage]
 
-  coverage_check:
-    working_directory: ~/teachcomputing
-    machine: true
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/teachcomputing
-      - store_artifacts:
-          path: coverage
-      - run:
-          name: Check coverage
-          command: ruby scripts/check_coverage.rb
-          when: always
-      - run:
-          name: Post test coverage to Github
-          command: bash -ue scripts/record_coverage.sh
-          when: always
-
 workflows:
   version: 2
   brakeman:
@@ -126,17 +110,16 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                - main
+
+  standardrb:
+    jobs:
+      - standardrb:
+          filters:
+            branches:
+              ignore:
                 - main
 
   build_and_test:
     jobs:
       - test
-      - coverage_check:
-          requires:
-            - test
-          filters:
-            branches:
-              ignore:
-                - master
-                - main          

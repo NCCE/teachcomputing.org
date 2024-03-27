@@ -37,7 +37,7 @@ en:
           description:
             html: "By completing the Subject knowledge certificate, you are now eligible for our follow-on %{certificate_link}. This qualification will help you to further your knowledge and enhance your pedagogical development. It can also support your progress to chartered status."
           certificate_link_title: "Secondary computing certificate"
-          button_text: "Enrol"
+          button_text: "Find out more"
         recommended_courses:
           courses_intro:
             html: "Courses based on %{pathway_pdf_link} (PDF)"

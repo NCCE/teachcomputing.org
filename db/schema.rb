@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_21_125728) do
+ActiveRecord::Schema.define(version: 2024_03_07_111123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.uuid "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "programme_id"
     t.integer "progress", default: 0, null: false
+    t.text "self_verification_info"
+    t.jsonb "evidence", default: [], null: false
     t.index ["activity_id", "user_id"], name: "index_achievements_on_activity_id_and_user_id", unique: true
-    t.index ["programme_id", "user_id"], name: "index_achievements_on_programme_id_and_user_id"
   end
 
   create_table "achiever_sync_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.boolean "always_on", default: false
     t.string "booking_programme_slug"
     t.boolean "retired", default: false
+    t.boolean "coming_soon", default: false
+    t.jsonb "public_copy"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
@@ -133,10 +135,11 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
   create_table "assessments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "link"
     t.uuid "programme_id", null: false
-    t.uuid "activity_id", null: false
+    t.uuid "activity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "class_marker_test_id"
+    t.float "required_pass_percentage", default: 65.0, null: false
     t.index ["activity_id"], name: "index_assessments_on_activity_id"
     t.index ["programme_id"], name: "index_assessments_on_programme_id"
   end
@@ -193,6 +196,33 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
+  create_table "enrichment_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "enrichment_grouping_id"
+    t.string "title"
+    t.string "title_url"
+    t.string "image_url"
+    t.string "body"
+    t.boolean "published"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "i_belong"
+    t.integer "order"
+    t.index ["enrichment_grouping_id"], name: "index_enrichment_entries_on_enrichment_grouping_id"
+  end
+
+  create_table "enrichment_groupings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "programme_id"
+    t.string "type"
+    t.string "title"
+    t.datetime "term_start"
+    t.datetime "term_end"
+    t.boolean "published"
+    t.boolean "coming_soon", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["programme_id"], name: "index_enrichment_groupings_on_programme_id"
+  end
+
   create_table "feedback_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "area"
@@ -227,6 +257,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "satellite", default: false
     t.string "satellite_info"
+    t.string "linkedin"
+    t.string "instagram"
     t.index ["hub_region_id"], name: "index_hubs_on_hub_region_id"
     t.index ["latitude", "longitude"], name: "index_hubs_on_latitude_and_longitude"
   end
@@ -251,6 +283,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.string "pdf_link"
     t.uuid "programme_id", null: false
     t.integer "order"
+    t.jsonb "web_copy"
+    t.boolean "legacy", default: false, null: false
     t.index ["programme_id"], name: "index_pathways_on_programme_id"
     t.index ["slug"], name: "index_pathways_on_slug", unique: true
   end
@@ -262,6 +296,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.datetime "updated_at", null: false
     t.uuid "programme_activity_grouping_id"
     t.integer "order"
+    t.boolean "legacy", default: false, null: false
     t.index ["activity_id"], name: "index_programme_activities_on_activity_id"
     t.index ["programme_id"], name: "index_programme_activities_on_programme_id"
   end
@@ -273,6 +308,11 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.uuid "programme_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "progress_bar_title"
+    t.boolean "community", default: false
+    t.jsonb "web_copy"
+    t.jsonb "metadata"
+    t.string "type"
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
@@ -340,6 +380,16 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.index ["user_id"], name: "index_resource_users_on_user_id"
   end
 
+  create_table "searchable_pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.string "title", null: false
+    t.text "excerpt", null: false
+    t.datetime "published_at"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "mailer_type", null: false
@@ -371,10 +421,28 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.boolean "auto_enrolled", default: false
     t.uuid "pathway_id"
     t.uuid "completed_pathway_id"
+    t.jsonb "message_flags"
+    t.jsonb "complete_certificate_metadata", default: {}
     t.index ["pathway_id"], name: "index_user_programme_enrolments_on_pathway_id"
     t.index ["programme_id", "user_id"], name: "unique_programme_per_user", unique: true
     t.index ["programme_id"], name: "index_user_programme_enrolments_on_programme_id"
     t.index ["user_id"], name: "index_user_programme_enrolments_on_user_id"
+  end
+
+  create_table "user_report_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "programme_slug", null: false
+    t.string "user_email", null: false
+    t.string "user_stem_user_id", null: false
+    t.boolean "user_enrolled", default: false, null: false
+    t.datetime "enrolled_at"
+    t.datetime "last_active_at"
+    t.boolean "completed_cpd_component", default: false, null: false
+    t.boolean "completed_certificate", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "pending_certificate", default: false, null: false
+    t.boolean "completed_first_community_component", default: false, null: false
+    t.boolean "completed_second_community_component", default: false, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -395,6 +463,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
     t.string "stem_achiever_organisation_no"
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
+    t.string "school_name"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end
@@ -406,6 +475,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_125728) do
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
   add_foreign_key "downloads", "aggregate_downloads"
+  add_foreign_key "enrichment_entries", "enrichment_groupings"
+  add_foreign_key "enrichment_groupings", "programmes"
   add_foreign_key "feedback_comments", "users"
   add_foreign_key "hubs", "hub_regions"
   add_foreign_key "pathway_activities", "activities"

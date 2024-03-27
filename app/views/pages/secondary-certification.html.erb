@@ -1,0 +1,108 @@
+<% meta_tag :title, t('.hero.title') %>
+<% meta_tag :description, 'Develop your subject knowledge and classroom practice with a National Centre for Computing Education certificate; improve your confidence and take your career to the next level.' %>
+<% meta_tag :url, request.original_url %>
+
+<%# Hero: Support for secondary senior leaders %>
+<%= render HeroComponent.new(
+  title: t('.hero.title'),
+  color: 'secondary'
+) %>
+
+<%# How we can help you and your school or college %>
+<div class="white-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+          <section class='ncce-section govuk-!-margin-top-0 govuk-!-margin-bottom-0'>
+            <p class="govuk-body"><%= t('.intro.text') %></p>
+            <ul class="govuk-list govuk-list--bullet tick-list-component__list solid-tick" role="list">
+              <li><%= t('.intro.bullets.recognised') %></li>
+              <li><%= t('.intro.bullets.developed') %></li>
+              <li><%= t('.intro.bullets.pathways') %></li>
+            </ul>
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%# Our nationally recognised certificates %>
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class='govuk-main-wrapper govuk-main-wrapper--lg'>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class='govuk-heading-l'><%= t('.nationally-recognised.title') %></h2>
+          <h3 class='govuk-heading-m govuk-!-margin-bottom-0'><%= t('.subject-knowledge.title') %></h3>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-5">
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 2,
+            class_name: 'secondary-certification-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--secondary-cert',
+                title: t('.subject-knowledge.cards.ks-subject-knowledge.title'),
+                text: t(
+                  '.subject-knowledge.cards.ks-subject-knowledge.text.html',
+                ),
+                button: :lime,
+                link: {
+                  link_title: t('.subject-knowledge.cards.ks-subject-knowledge.link.title'),
+                  link_url: cs_accelerator_path,
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.subject-knowledge.cards.ks-subject-knowledge.link.event-label')
+                }
+              },
+              {
+                class_name: 'bordered-card--secondary-cert',
+                title: t('.subject-knowledge.cards.teach-secondary-computing.title'),
+                text: t(
+                  '.subject-knowledge.cards.teach-secondary-computing.text.html'
+                ),
+                button: :lime,
+                link: {
+                  link_title: t('.subject-knowledge.cards.teach-secondary-computing.link.title'),
+                  link_url: about_a_level_path,
+                  tracking_page: 'Secondary SLT',
+                  tracking_label: t('.subject-knowledge.cards.teach-secondary-computing.link.event-label')
+                }
+              }
+            ]
+          ) %>
+          </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-7 govuk-!-margin-bottom-9">
+          <h3 class='govuk-heading-m  govuk-!-margin-bottom-5'><%= t('.pedagogy-and-leadership.title') %></h3>
+            <%= render BorderedCardsComponent.new(
+                      cards_per_row: 1,
+                      class_name: 'secondary-certification-cards',
+                      cards: [
+                        {
+                          class_name: 'bordered-card--secondary-cert',
+                          title: t('.pedagogy-and-leadership.cards.a-level-subject-knowledge.title'),
+                          text: t(
+                            '.pedagogy-and-leadership.cards.a-level-subject-knowledge.text.html',
+                          ),
+                          button: :lime,
+                          link: {
+                            link_title: t('.pedagogy-and-leadership.cards.a-level-subject-knowledge.link.title'),
+                            link_url: secondary_path,
+                            tracking_page: 'Secondary SLT',
+                            tracking_label: t('.pedagogy-and-leadership.cards.a-level-subject-knowledge.link.event-label')
+                          }
+                        }
+                      ]
+                    ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<% meta_tag :title, 'Enrichment - Teach Computing' %>
+<%= render HeroComponent.new(title: programme_t('hero.title'), subtitle: programme_t('hero.subtitle')) %>
+
+<main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-bottom-0">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body"><%= programme_t('intro') %></p>
+          <p class="govuk-body"><%= programme_t('taking_part') %></p>
+          <ul class="govuk-list govuk-list--bullet">
+          <% programme_t(
+            'taking_part_steps',
+            primary_certificate: link_to('primary computing certificate', primary_certificate_path),
+            secondary_certificates: link_to('secondary certificates', secondary_certification_path)
+          ).each do |step| %>
+              <li><%= step.html_safe %></li>
+            <% end %>
+          </ul>
+        </section>
+        <section class="ncce-section govuk-!-margin-top-0">
+          <div class="ncce-enrichment-cards"%>
+            <% @groupings.each_with_index do |grouping, index| %>
+              <div>
+                <% if index == 0 %>
+                  <p class="govuk-body ncce-enrichment-this-term">
+                    <%= 'This term' %>
+                  </p>
+                <% else %>
+                  <div class="ncce-enrichment-no-this-term"></div>
+                <% end %>
+                <div class="ncce-enrichment-card">
+                  <h3 class="govuk-heading-m"><%= grouping.title %></h3>
+                  <div class="ncce-enrichment-card--entries">
+                    <% grouping.enrichment_entries.each do |entry| %>
+                      <div class="ncce-enrichment-card--entry">
+                        <div class="ncce-enrichment-card--entry-copy">
+                          <% if entry.i_belong %>
+                            <div class="i_belong_container">
+                              <div class="tooltip i_belong_flag">
+                                <%= link_to i_belong_path do %>
+                                  <%= image_pack_tag('media/images/pages/i-belong/i_belong_flag.svg') %>
+                                <% end %>
+                                <span class="tooltiptext">
+                                  <%= link_to 'I Belong: encouraging girls into computer science', i_belong_path, class: 'govuk-link--no-underline ncce-link' %>
+                                </span>
+                              </div>
+                              <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                            </div>
+                          <% else %>
+                            <%= link_to entry.title, entry.title_url, class: 'govuk-link govuk-heading-s' %>
+                          <% end %>
+                          <p class="govuk-body-s"><%= entry.body.html_safe %></p>
+                        </div>
+                        <%= link_to entry.title_url do %>
+                          <img src="<%= entry.image_url %>"/>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <% if grouping.coming_soon %>
+                      <div class="ncce-enrichment-card--coming-soon">
+                        <p class="govuk-body-s">More activities coming soon!</p>
+                      </div>
+                    <% else %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+        <section class="ncce-section govuk-!-margin-top-0">
+          <p class="govuk-body">
+            <%= programme_t(
+              'footer',
+              primary_stem_community: link_to('STEM Community: Teaching & Leading Primary Computing', primary_stem_community_url),
+              secondary_stem_community: link_to('STEM Community: Teaching & Leading Secondary Computing', secondary_stem_community_url)
+            ).html_safe %>
+          </p>
+        </section>
+        <section>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="purple-bg ambassador-banner">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <%= image_pack_tag 'media/images/pages/enrichment/amb-banner-square.jpg', alt: '', class: 'ambassador-banner__image' %>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Bring a Computing Ambassador into your classroom</h2>
+            <p class="govuk-body">
+              Computing Ambassadors are part of the STEM Ambassadors programme where volunteers from a wide range of industries bring school subjects to life and provide real-world examples of careers in computing, creating an invaluable link between schools and industry.
+            </p>
+            <p class="govuk-body-s">You can request a Computing Ambassador to visit your school, introduce a topic, join an event and more. These volunteers are an invaluable resource to enrich your teaching and inspire young people to choose careers in computing.
+            </p>
+            <%= link_to 'Find out more', 'http://www.stem.org.uk/stem-ambassadors/computing-ambassadors',
+              class: 'button govuk-button govuk-!-margin-bottom-0',
+              target: '_blank'
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

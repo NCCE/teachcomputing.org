@@ -36,6 +36,8 @@ $ncce-grey: #F0F5F4;
 $lime-green: #59FF69;
 $green: #4FA88B;
 $orange: #FF8300;
+$red: #ea3345;
+$ncce-highlight: #F8F8F8;
 
 $govuk-text-colour: $grey-dark-x;
 $govuk-button-text-colour: $grey-dark-x;
@@ -45,6 +47,8 @@ $action-color: $hyper-link-blue;
 $primary-cert-color: $lime-green;
 $secondary-cert-color: $lime-green;
 $primary-cert-color: $lime-green;
+$a-level-color: $lime-green;
+$i-belong-cert-color: $orange;
 
 .deep-cerulean-bg {
   background-color: $deep-cerulean;
@@ -53,8 +57,16 @@ $primary-cert-color: $lime-green;
   background-color: $dixie;
 }
 
+.hero--dixie-bg {
+  background-color: $dixie !important;
+}
+
 .hero--green-bg {
   background-color: $green !important;
+}
+
+.orange-bg {
+  background-color: $orange;
 }
 
 .jaffa-bg {
@@ -63,6 +75,10 @@ $primary-cert-color: $lime-green;
 
 .hero--jaffa-bg {
   background-color: $jaffa !important;
+}
+
+.hero--orange-bg {
+  background-color: $orange !important;
 }
 
 .light-blue-bg {

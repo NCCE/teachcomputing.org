@@ -1,24 +1,24 @@
 class NonBorderedCardsComponentPreview < ViewComponent::Preview
   def two_cards_one_with_no_image
     params = {
-      class_name: 'page-cards-example-component',
+      class_name: "page-cards-example-component",
       cards: [
         {
           image_url: nil,
-          title: 'Card 1',
-          text: 'This is an example of a page card component.',
+          title: "Card 1",
+          text: "This is an example of a page card component.",
           link: {
-            link_title: 'A link',
-            link_url: '/curriculum'
+            link_title: "A link",
+            link_url: "/curriculum"
           }
         },
         {
-          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
-          title: 'Card 2',
-          text: 'This is an example.',
+          image_url: "media/images/logos/ncce-logo-with-bg.svg",
+          title: "Card 2",
+          text: "This is an example.",
           link: {
-            link_title: 'A link',
-            link_url: '/curriculum'
+            link_title: "A link",
+            link_url: "/curriculum"
           }
         }
       ]
@@ -29,24 +29,24 @@ class NonBorderedCardsComponentPreview < ViewComponent::Preview
 
   def two_cards
     params = {
-      class_name: 'page-cards-example-component',
+      class_name: "page-cards-example-component",
       cards: [
         {
-          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
-          title: 'Card 1',
-          text: 'This is an example of a page card component.',
+          image_url: "media/images/logos/ncce-logo-with-bg.svg",
+          title: "Card 1",
+          text: "This is an example of a page card component.",
           link: {
-            link_title: 'A link',
-            link_url: '/curriculum'
+            link_title: "A link",
+            link_url: "/curriculum"
           }
         },
         {
-          image_url: 'media/images/logos/ncce-logo-with-bg.svg',
-          title: 'Card 2',
-          text: 'This is an example of a page card component with a bit more text than the other.',
+          image_url: "media/images/logos/ncce-logo-with-bg.svg",
+          title: "Card 2",
+          text: "This is an example of a page card component with a bit more text than the other.",
           link: {
-            link_title: 'A link',
-            link_url: '/curriculum'
+            link_title: "A link",
+            link_url: "/curriculum"
           }
         }
       ]

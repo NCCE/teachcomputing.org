@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class AsideComponent < ViewComponent::Base
-  def initialize(text:, title: nil, link: nil, **options)
+  renders_one :heading
+  renders_one :body
+
+  def initialize(text: nil, title: nil, link: nil, **options)
     @title = title
     @text = text
     @link = link
@@ -15,7 +18,7 @@ class AsideComponent < ViewComponent::Base
     return nil unless @tracking_category.present? && label.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_category,
       event_label: label
     }

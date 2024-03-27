@@ -6,15 +6,12 @@ module Api
       achievement = Achievement.new(activity_id: activity.id, user_id: user.id)
 
       if achievement.save
-        case achievement.programme&.slug
-        when 'cs-accelerator'
-          AssessmentEligibilityJob.perform_now(user.id, nil)
-        when 'primary-certificate'
-          CertificatePendingTransitionJob.perform_now(achievement.programme, user.id, nil)
-        end
+        AssessmentEligibilityJob.perform_now(user.id)
+        CertificatePendingTransitionJob.perform_now(user, {source: "AdminAchievementsController.create"})
+
         render json: as_json(achievement), status: 201
       else
-        render json: { error: achievement.errors.inspect }, status: 409
+        render json: {error: achievement.errors.inspect}, status: 409
       end
     end
 
@@ -23,26 +20,20 @@ module Api
       achievement = user.achievements.find(params[:achievement_id])
       achievement.transition_to(:complete)
 
-      case achievement.programme&.slug
-      when 'cs-accelerator'
-        AssessmentEligibilityJob.perform_later(user.id, source: 'AdminAchievementsController.complete')
-      when 'primary-certificate', 'secondary-certificate'
-        CertificatePendingTransitionJob.perform_now(achievement.programme, user.id,
-                                                    source: 'AdminAchievementsController.complete')
-      end
+      AssessmentEligibilityJob.perform_later(user.id)
+      CertificatePendingTransitionJob.perform_now(user, {source: "AdminAchievementsController.complete"})
 
       render json: as_json(achievement), status: 201
     end
 
     private
 
-      def as_json(achievement)
-        achievement.as_json(methods: :current_state,
-                            include: [
-                              { activity: { only: %i[title provider] } },
-                              { programme: { only: [:title] } },
-                              { user: { only: [:email] } }
-                            ])
-      end
+    def as_json(achievement)
+      achievement.as_json(methods: :current_state,
+        include: [
+          {activity: {only: %i[title provider]}},
+          {user: {only: [:email]}}
+        ])
+    end
   end
 end

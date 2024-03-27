@@ -37,6 +37,50 @@
   @include icon('../images/icons/clock.svg');
 }
 
+.icon-blank-circle {
+  @include icon('../images/icons/circle.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
+.icon-ticked-circle {
+  @include icon('../images/icons/complete-icon.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
+.icon-arrow-left {
+  @include icon('../images/icons/arrow_left.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
+}
+
+.icon-arrow-right {
+  @include icon('../images/icons/arrow_right.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
+}
+
+.icon-dotted-line {
+  @include icon('../images/icons/vertical_dotted_line.svg');
+  height: 45px;
+  background-size: 3.5px;
+  margin-left: 13px;
+
+  @include govuk-media-query($from: desktop) {
+    @include icon('../images/icons/progress_bar_line.svg');
+    background-size: 60px;
+    width: 60px;
+    height: 48px;
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+}
+
 .icon-map-pin {
   @include icon('../images/icons/map-pin.svg');
 }
@@ -54,3 +98,32 @@
   @include icon('../images/icons/star.svg');
 }
 
+.icon-close {
+  @include icon('../images/icons/close.svg');
+
+  background-size: 24px 24px;
+}
+
+
+.icon-feedback {
+  @include icon('../images/icons/feedback.svg');
+}
+
+.icon-link-external {
+  @include icon('../images/icons/link-external.svg');
+}
+
+.icon-button-external {
+  @include icon(
+    '../images/icons/external-button.svg',
+    $position: right 0.75rem center,
+    $width: 24px,
+    $height: 24px
+  );
+
+  padding-right: 3rem;
+}
+
+.in-link {
+  margin-left: 0.5rem;
+}

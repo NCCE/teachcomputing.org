@@ -1,26 +1,25 @@
 module Programmes
   class SecondaryCertificate < Programme
-    PROGRAMME_TITLE = 'Secondary Computing Teaching'.freeze
+    PROGRAMME_TITLE = "Teach Secondary Computing".freeze
 
-    def user_is_eligible?(user)
-      programme = Programme.find_by(slug: 'cs-accelerator')
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user&.id, programme_id: programme.id)
-      enrolment&.current_state == :complete.to_s
+    def certificate_name
+      "Teach secondary computing certificate"
     end
 
-    def csa_eligible_courses(user)
-      programme = Programme.cs_accelerator
-      enrolment = UserProgrammeEnrolment.find_by(user_id: user.id, programme_id: programme.id)
-      return unless enrolment
+    def pending_delay
+      7.days
+    end
 
-      achievements = user.achievements.for_programme(programme).in_state(:complete)
-      achievements.filter do |achievement|
-        achievement.last_transition.created_at > enrolment.completed_at?
-      end
+    def mailer
+      SecondaryMailer
     end
 
     def path
       secondary_certificate_path
+    end
+
+    def public_path
+      secondary_path
     end
 
     def enrol_path(opts = {})
@@ -32,7 +31,34 @@ module Programmes
     end
 
     def bcs_logo
-      'media/images/logos/secondary-bcs.svg'
+      "media/images/logos/secondary-bcs.svg"
+    end
+
+    def pathways?
+      true
+    end
+
+    def enrichment_enabled?
+      true
+    end
+
+    def programme_objectives
+      [
+        ProgrammeObjectives::ProgrammeCompletionRequired.new(
+          required_programme: Programme.cs_accelerator,
+          progress_bar_title: "Complete the KS3 and GCSE computer science subject knowledge",
+          progress_bar_path: cs_accelerator_path
+        ),
+        *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+      ]
+    end
+
+    def send_pending_mail?
+      true
+    end
+
+    def auto_enrollable?
+      true
     end
   end
 end

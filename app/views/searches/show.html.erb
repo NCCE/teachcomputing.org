@@ -1,0 +1,41 @@
+<% meta_tag :title, 'Site Search - Teach Computing' %>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Search</h1>
+        <%= render SiteSearchComponent.new(default: @query) %>
+        <p class="govuk-heading-s search__results"><%= @results.count %> results</p>
+        <hr class="ncce-hr">
+        <div class="search__sort-by">
+          <p class="govuk-body-s">Sort by</p>
+          <select class="govuk-select ncce-select" data-controller="search-order">
+            <% sort_options.each do |value, name| %>
+              <option value="<%= value %>"><%= name %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <% @paged_results.each do |page| %>
+          <hr class="ncce-hr">
+          <h2 class="govuk-heading-s"><%= link_to page.title, page.url %></h2>
+          <p class="govuk-body-s"><%= page.excerpt %></p>
+        <% end %>
+
+        <% if @pagy.prev %>
+          <hr class="ncce-hr">
+          <%= link_to pagy_url_for(@pagy, @pagy.prev), class: 'icon-arrow-right search__paging' do %>
+            <p class="govuk-heading-s">Previous page</p>
+            <p class="govuk-body-s"><%= @pagy.prev%> of <%= @pagy.pages %></p>
+          <% end %>
+        <% end %>
+        <% if @pagy.next %>
+          <hr class="ncce-hr">
+          <%= link_to pagy_url_for(@pagy, @pagy.next), class: 'icon-arrow-left search__paging' do %>
+            <p class="govuk-heading-s">Next page</p>
+            <p class="govuk-body-s"><%= @pagy.next %> of <%= @pagy.pages %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

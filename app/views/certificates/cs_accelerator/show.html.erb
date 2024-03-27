@@ -10,13 +10,13 @@
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Welcome to the Computer Science Accelerator!</h2>
+          <h2 class="govuk-heading-m">Welcome to the KS3 and GCSE Computer Science subject knowledge certificate!</h2>
           <p class="govuk-body-m govuk-!-margin-bottom-7">
             <% if @csa_dash.has_enough_activities_for_test %>
               You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: tracking_data('View test and mock test') %>
               </p>
             <% else %>
-              To access our test and get your certificate, you'll need to complete at least one face to face or remote course, and one additional CS Accelerator course. But we encourage you to complete as many courses as you need to gain the subject knowledge to confidently teach computer science.
+              To access our test and get your certificate, you'll need to complete two days of professional development, including at least one face-to-face or remote course. You can choose another face-to-face, remote or online course to make up the remaining hours of CPD required to unlock the assessment.
             <% end %>
           </p>
 
@@ -52,6 +52,9 @@
                 user_programme_assessment: @csa_dash.user_programme_assessment
             } %>
           <% end %>
+          <h3 class="govuk-heading-m"><%= t('.take_development_further') %></h3>
+          <p class="govuk-body"><%= t('.take_development_further_body') %></p>
+          <%= link_to t('.take_development_further_cta'), secondary_path, class: 'govuk-button button' %>
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render 'certificates/cs_accelerator/bursary-aside' %>

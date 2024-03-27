@@ -3,6 +3,11 @@
   grid-template-columns: auto;
   gap: 24px;
 
+  // we use these variables to set the border top color
+  --green: #{$lime-green};
+  --orange: #{$orange};
+  --yellow: #{$isaac};
+
   @include govuk-media-query($from: tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -38,21 +43,25 @@
     border-top: solid 9px $secondary-cert-color;
   }
 
+  &--isaac {
+    border-top: solid 9px $isaac;
+  }
+
   @include govuk-media-query($from: tablet) {
-    padding: $component-padding;
+    padding: calc($component-padding * 0.6);
+  }
+
+  &.full-width {
+    grid-column: 1 / 3;
   }
 }
 
 .bordered-card__text {
   flex-grow: 1;
-
-  a {
-    text-decoration: none;
-  }
 }
 
 .bordered-card__title {
-  text-align: center;
+  text-align: left;
 }
 
 .bordered-card__list {
@@ -89,4 +98,69 @@
 .bordered-card__get-involved-button {
   width: 100%;
   margin-bottom: 0;
+}
+
+
+.secondary-certification-cards {
+  gap: 40px;
+  .bordered-card__get-involved-button {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+.bordered-cards--tops {
+  .bordered-card {
+    border-top: solid 9px var(--top-color, var(--green));
+  }
+}
+
+.bordered-cards--logos {
+  .bordered-card {
+    display: grid;
+    grid-template-areas: 
+      "t t t t t l l l"
+      "p p p p p p p p"
+      "b b b b b b b b";
+
+    .bordered-card__title {
+      grid-area: t;
+      text-align: left;
+    }
+
+    .bordered-card__image-wrapper {
+      grid-area: l;
+      width: 100%;
+    }
+
+    .bordered-card__text {
+      grid-area: p;
+      justify-self: start;
+    }
+
+    .bordered-card__link {
+      grid-area: b;
+      align-self: end;
+    }
+
+    @include govuk-media-query($until: tablet) {
+      grid-template-areas: 
+        "t l"
+        "p p"
+        "b b";
+
+      .bordered-card__image-wrapper {
+        display: flex;
+      }
+
+      .bordered-card__image {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
+      .bordered-card__title {
+        align-self: center;
+      }
+    }
+  }
 }

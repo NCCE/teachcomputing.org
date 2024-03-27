@@ -7,5 +7,4 @@ RUN curl https://cli-assets.heroku.com/install.sh | sh
 WORKDIR /app
 RUN bundle config set force_ruby_platform true
 COPY Gemfile Gemfile.lock /app/
-RUN bundle install
 COPY scripts/templates/* /root/

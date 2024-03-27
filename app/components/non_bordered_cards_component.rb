@@ -14,4 +14,10 @@ class NonBorderedCardsComponent < ViewComponent::Base
   def render?
     @cards.present?
   end
+
+  private
+
+  def link_method(card)
+    card[:link][:link_method] unless card[:link][:link_method].in? %i[get GET]
+  end
 end

@@ -1,7 +1,7 @@
 <div class="ncce-aside govuk-body govuk-!-padding-top-6">
   <h2 class="govuk-heading-s report-card-component__title"><%= t("#{tr8_prefix}.quick_reads.title") %></h2>
   <p class="govuk-body"><%= t("#{tr8_prefix}.quick_reads.text") %></p>
-  <%= link_to(t("#{tr8_prefix}.quick_reads.button_text"), 'https://blog.teachcomputing.org/tag/quickread', class: 'govuk-button button govuk-!-margin-bottom-2', data: tracking_data('All quick reads')) %>
+  <%= link_to(t("#{tr8_prefix}.quick_reads.button_text"), cms_posts_path(tag: :quickread), class: 'govuk-button button govuk-!-margin-bottom-2', data: tracking_data('All quick reads')) %>
 </div>
 
 <div class="ncce-aside govuk-body govuk-!-padding-top-6">
@@ -9,7 +9,7 @@
   <p class="govuk-body"><%= t("#{tr8_prefix}.research_bytes.text") %></p>
   <%= link_to(t("#{tr8_prefix}.research_bytes.button_text"), 'https://email.teachcomputing.org/q/119zKWEGEfJa/wv', class: 'govuk-button button', data: tracking_data('Read latest research')) %>
   <ul class="govuk-list govuk-list--ncce">
-    <li><%= link_to(t("#{tr8_prefix}.research_bytes.link_1"), 'https://blog.teachcomputing.org/tag/pedagogy/', class: 'ncce-link', data: tracking_data('See past articles')) %></li>
+    <li><%= link_to(t("#{tr8_prefix}.research_bytes.link_1"), cms_posts_path(tag: :pedagogy), class: 'ncce-link', data: tracking_data('See past articles')) %></li>
     <li><%= link_to(t("#{tr8_prefix}.research_bytes.link_2"), 'https://ncce.stem.org.uk/user/register?from=NCCE', class: 'ncce-link', data: tracking_data('Register')) %> <%= t("#{tr8_prefix}.research_bytes.link_2_extra") %></li>
   </ul>
 </div>

@@ -1,7 +1,9 @@
 <ul class="govuk-list ncce-activity-list" role="list">
   <% @complete_achievements.each do |achievement| %>
     <li class="ncce-activity-list__item">
-      <span class="ncce-activity-list__item-text"><%= achievement.activity.title %></span>
+      <div class="ncce-activity-list__item-content">
+        <span class="ncce-activity-list__item-text"><%= achievement.activity.title %></span>
+      </div>
     </li>
   <% end %>
 </ul>

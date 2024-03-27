@@ -6,7 +6,7 @@
         <% if @main_feature.present? %>
           <img src="<%= @main_feature['feature_image'] %>" alt="" class="ncce-feat__image">
           <p class="govuk-body ncce-feat__date"><%= published_date(@main_feature["published_at"]) %></p>
-          <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature['title'], @main_feature["url"], class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
+          <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature['title'], cms_post_path(@main_feature['slug']), class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
           <p class="govuk-body ncce-feat__excerpt"><%= @main_feature['custom_excerpt'] %></p>
         <% end %>
       </div>
@@ -15,7 +15,7 @@
         <% @featured_posts.each do |post| %>
           <div class="ncce-feat__panel">
             <p class="govuk-body ncce-feat__date"><%= published_date(post["published_at"]) %></p>
-            <p class="govuk-heading-s ncce-feat__heading"><%= link_to post["title"], post["url"], class: "ncce-link", data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
+            <p class="govuk-heading-s ncce-feat__heading"><%= link_to post["title"], cms_post_path(post['slug']), class: "ncce-link", data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
           </div>
         <% end %>
       </div>

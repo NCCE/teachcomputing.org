@@ -1,0 +1,18 @@
+<div class='mailer__content'>
+  <p class="govuk-body">Dear <%= @user.first_name %>,</p>
+  <p class="govuk-body">
+    Congratulations on passing your test!
+    <br><br>
+    You've achieved your accredited certificate in A level Computer Science subject knowledge.
+    <br><br>
+    Continue your journey by logging in to get your certificate and discover the next steps for your professional development.
+  </p>
+
+  <p class="govuk-body">
+    <%= link_to 'Log in now', certificate_a_level_url, class: 'govuk-button button' %>
+  </p>
+
+  <p class="govuk-body">
+    Share your achievement with friends and colleagues by adding your new digital badge to your social media and email.
+  </p>
+<div class='mailer__content'>

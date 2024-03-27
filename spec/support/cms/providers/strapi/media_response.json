@@ -1,0 +1,42 @@
+{
+  "id": 100,
+  "name": "i-belong-in-computer-science-laura-0.png",
+  "alternativeText": "A photo of Laura smiling.",
+  "caption": "",
+  "width": 522,
+  "height": 382,
+  "formats": {
+      "small": {
+          "ext": ".png",
+          "url": "/uploads/small_i_belong_in_computer_science_laura_0_f406ca06b5.png",
+          "hash": "small_i_belong_in_computer_science_laura_0_f406ca06b5",
+          "mime": "image/png",
+          "name": "small_i-belong-in-computer-science-laura-0.png",
+          "path": null,
+          "size": 172.71,
+          "width": 500,
+          "height": 366
+      },
+      "thumbnail": {
+          "ext": ".png",
+          "url": "/uploads/thumbnail_i_belong_in_computer_science_laura_0_f406ca06b5.png",
+          "hash": "thumbnail_i_belong_in_computer_science_laura_0_f406ca06b5",
+          "mime": "image/png",
+          "name": "thumbnail_i-belong-in-computer-science-laura-0.png",
+          "path": null,
+          "size": 41.2,
+          "width": 213,
+          "height": 156
+      }
+  },
+  "hash": "i_belong_in_computer_science_laura_0_f406ca06b5",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 43.41,
+  "url": "/uploads/i_belong_in_computer_science_laura_0_f406ca06b5.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "createdAt": "2024-03-12T15:03:56.676Z",
+  "updatedAt": "2024-03-18T16:01:57.035Z"
+}

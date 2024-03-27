@@ -15,13 +15,13 @@ class CreateAchievementTransitions < ActiveRecord::Migration[5.2]
     add_foreign_key :achievement_transitions, :achievements
 
     add_index(:achievement_transitions,
-              %i(achievement_id sort_key),
-              unique: true,
-              name: "index_achievement_transitions_parent_sort")
+      %i[achievement_id sort_key],
+      unique: true,
+      name: "index_achievement_transitions_parent_sort")
     add_index(:achievement_transitions,
-              %i(achievement_id most_recent),
-              unique: true,
-              where: "most_recent",
-              name: "index_achievement_transitions_parent_most_recent")
+      %i[achievement_id most_recent],
+      unique: true,
+      where: "most_recent",
+      name: "index_achievement_transitions_parent_most_recent")
   end
 end

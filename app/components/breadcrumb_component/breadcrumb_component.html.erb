@@ -1,0 +1,7 @@
+<p class="govuk-body curriculum__breadcrumb">
+  <% ancestors.each do |(path, name)| %>
+    <%= link_to name, path, class: 'govuk-link ncce-link' %>
+    <%= ' > ' %>
+  <% end %>
+  <%= current_page_name %>
+</p>

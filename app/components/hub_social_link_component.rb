@@ -8,29 +8,42 @@ class HubSocialLinkComponent < ViewComponent::Base
 
   def social_link
     case @type
-    when 'website'
+    when "website", "linkedin"
       @value
-    when 'facebook'
+    when "facebook"
       "https://facebook.com/#{@value}"
-    when 'twitter'
+    when "twitter", "x"
       "https://twitter.com/#{@value}"
+    when "instagram"
+      "https://instagram.com/#{@value}"
     end
   end
 
   def tracking_data
     {
-      event_action: 'click',
-      event_category: 'Hubs',
+      event_action: "click",
+      event_category: "Hubs",
       event_label: "Hub #{@type}"
     }
   end
 
   def image_path
     case @type
-    when 'website', 'facebook'
+    when "website", "facebook", "instagram"
       "media/images/social-media/#{@type}.svg"
-    when 'twitter'
-      'media/images/social-media/twitter_round.svg'
+    when "twitter", "x"
+      "media/images/social-media/x_grey.svg"
+    when "linkedin"
+      "media/images/social-media/linkedin.png"
+    end
+  end
+
+  def image_class
+    case @type
+    when "x"
+      "hub-social-link-component__x"
+    when "linkedin"
+      "hub-social-link-component__linkedin"
     end
   end
 

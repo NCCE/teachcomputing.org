@@ -12,7 +12,7 @@
     </div>
   <% elsif @course.occurrences.present? %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations">
-      <button aria-expanded="false">
+      <button type="button" aria-expanded="false">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'><%= course_type(@course) %></span>
       <div class='ncce-courses__locations-info'>
         <% if @course.nearest_occurrence_distance.present? %>
@@ -44,7 +44,7 @@
           <% end %>
       <% end %>
       <% @course.programmes.each do |programme| %>
-        <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= get_course_tag programme %></strong>
+        <strong class="govuk-tag ncce-courses__tag ncce-courses__tag ncce-courses__filter-tag--<%= programme.parameterize %>"><%= display_programme_tag programme %></strong>
       <% end %>
   <% end %>
 </div>

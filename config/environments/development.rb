@@ -1,4 +1,13 @@
 Rails.application.configure do
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -14,13 +23,13 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -42,6 +51,12 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # deliver to mailhog (`brew install mailhog` and visit http://localhost:8025 to see mails)
+  config.action_mailer.smtp_settings = {
+    address: "host.docker.internal",
+    port: 1025
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -60,14 +75,14 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.action_mailer.preview_path = "#{Rails.root}/previews/mailers"
-  config.action_mailer.asset_host = 'http://localhost:3000'
-  config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
+  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.default_url_options = {host: "http://localhost:3000"}
 
   # Raises error for missing translations
   config.i18n.raise_on_missing_translations = true
 
-  # config.web_console.whitelisted_ips = '172.25.0.0/16'
   config.web_console.whiny_requests = false
+  config.web_console.permissions = "0.0.0.0/0"
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
@@ -78,11 +93,12 @@ Rails.application.configure do
 
   # Allow nicer hostname
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
-  config.hosts << 'web'
-  config.autoload_paths << 'lib'
+  config.hosts << "web"
+  config.hosts << "teachcomputing.test"
+  config.autoload_paths << "lib"
 
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
-  config.view_component.preview_route = '/rails/components'
+  config.view_component.preview_route = "/rails/components"
 
   config.lograge.enabled = true
   config.lograge.ignore_actions = [Healthcheck::CONTROLLER_ACTION]
@@ -92,4 +108,8 @@ Rails.application.configure do
       exception_object: event.payload[:exception_object] # the exception instance
     }
   end
+
+  config.active_job.queue_adapter = :sidekiq
+
+  config.strapi_image_url = ENV["STRAPI_IMAGE_URL"]
 end

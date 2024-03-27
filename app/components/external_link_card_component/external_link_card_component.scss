@@ -1,0 +1,33 @@
+.external-link-card-component {
+  background-image: url('../images/icons/unit.svg');
+  background-position: 1.5rem 0.9rem;
+  background-repeat: no-repeat;
+  background-size: 2.2rem;
+  border: 0.125rem solid $aluminum;
+  border-radius: 0.5rem;
+  height: 1.6rem;
+  margin-bottom: 0.9375rem;
+  padding: 2.5rem 0;
+  padding-left: 5.5rem;
+  padding-right: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include govuk-media-query($from: desktop) {
+    background-size: 3rem;
+    margin-bottom: 0;
+  }
+}
+
+.external-link-card-component__heading {
+  font-weight: 500;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.external-link-card-component__meta-data {
+  margin-top: 10px;
+  margin-bottom: 0;
+}

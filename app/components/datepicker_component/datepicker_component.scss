@@ -1,0 +1,20 @@
+@import "flatpickr/dist/flatpickr.min.css";
+
+.flatpickr-input {
+  font-size: 1rem;
+  &:focus {
+    background-color: $foam;
+  }
+
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+.flatpickr__clear {
+  margin-bottom: 0px;
+}
+
+.flatpickr-calendar {
+  font-family: $font-family-body;
+}

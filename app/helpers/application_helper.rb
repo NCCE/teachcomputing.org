@@ -1,45 +1,53 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def meta_tag(tag, text)
     content_for :"meta_#{tag}", text
   end
 
-  def yield_meta_tag(tag, default_text = '')
+  def yield_meta_tag(tag, default_text = "")
     content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
   end
 
   def create_account_url
-    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV.fetch('BYPASS_OAUTH', 'false'))
+    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("BYPASS_OAUTH", "false"))
 
-    "#{ENV.fetch('STEM_OAUTH_SITE')}/user/register?from=NCCE"
+    "#{ENV.fetch("STEM_OAUTH_SITE")}/user/register?from=NCCE"
   end
 
   def auth_url
-    '/auth/stem'
+    "/auth/stem"
   end
 
   def news_url
-    'https://blog.teachcomputing.org/tag/news/'
+    cms_posts_url(tag: :news)
   end
 
   def press_url
-    'https://blog.teachcomputing.org/tag/press/'
+    cms_posts_url(tag: :press)
+  end
+
+  def static_asset_url(filename)
+    "#{ENV.fetch("STATIC_FILE_PATH")}/#{filename}"
   end
 
   def safe_redirect_url(url)
     allowed_redirect_urls = [
       %r{^https://teachcomputing.rpfdev.com},
+      %r{^https://teachcomputing.test},
       %r{^https://teachcomputing.org},
       %r{^https://staging.teachcomputing.org},
       %r{^https://stem.org.uk},
       %r{^https://www.stem.org.uk},
       %r{^https://www-stage.stem.org.uk},
       %r{^https://teachcomputing-staging-pr-([0-9]+).herokuapp.com},
+      %r{^https://teachcomputing-pr-([0-9]+).herokuapp.com},
       %r{^https://ncce.io},
       %r{^https://qa.teachcomputing.org}
     ]
-    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV['RAILS_ENV'] == 'development'
+    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV["RAILS_ENV"] == "development"
     allowed_redirect_urls.each do |regex|
-      return url if url =~ regex
+      return url if url&.match?(regex)
     end
     nil
   end

@@ -38,8 +38,8 @@
 						<li>Unit overviews</li>
 						<li>Activities</li>
 					</ul>
-          <% if current_user %>
-            <% if @lesson.zipped_contents&.file.present? %>
+          <% if @lesson.zipped_contents&.file.present? %>
+            <% if current_user %>
               <%= link_to generate_download_url(@lesson.zipped_contents.file), class: 'govuk-button button button--aside lesson-download-button govuk-!-margin-bottom-3' do %>
                 Download all lesson files <span class="lesson-download-button__meta-data">(<%= @lesson.zipped_contents.size %>)</span>
               <% end %>
@@ -48,13 +48,13 @@
                 <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside' %>
               <% end %>
               <%= render partial: 'curriculum/rating', locals: { path: :create_curriculum_lesson_rating_path, comment_path: :update_curriculum_lesson_rating, choices_path: :update_curriculum_lesson_rating_choices, id: @lesson.id, user_id: current_user.id } %>
-            <% end %>
-          <% else %>
-            <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
-            <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
-            <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
-            <% if @lesson.isaac_url.present? %>
-              <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside' %>
+            <% else %>
+              <%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside govuk-!-margin-bottom-7' %>
+              <p class="govuk-body-s ncce-aside__text">Not registered yet?</p>
+              <p class="govuk-body-s ncce-aside__text"><%= link_to 'Create an account', create_account_url, class: 'govuk-link' %> and get access to over 500 hours of free teaching resources.</p>
+              <% if @lesson.isaac_url.present? %>
+                <%= render partial: 'curriculum/gcse-revision', locals: { isaac_url: @lesson.isaac_url, category: "Lesson" }, :class => 'govuk-button button button--aside' %>
+              <% end %>
             <% end %>
           <% end %>
 				</div>

@@ -10,7 +10,7 @@
         </div>
         <div class="govuk-grid-column-two-thirds">
           <% if @landing_page.secondary? %>
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+            <div class="card card--subject-knowledge card--bottom-glyph card--landing-page lp-certs--card">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
                   <%= csa_programme_title %>
@@ -18,7 +18,7 @@
                 <%= render 'pages/certification/programme-enrolment-status', programme: @landing_page.cs_accelerator %>
               </div>
               <p class="govuk-body card__text card__text-landing-page">
-                Our professional development programme, Computer Science Accelerator, is designed to help you develop or refresh your subject knowledge.
+                Our certificate is designed to help you develop or refresh your computer science subject knowledge.
               </p>
               <p class="govuk-body govuk-!-margin-bottom-0">
                 <%= link_to @landing_page.csa_link_text, cs_accelerator_path,
@@ -30,7 +30,7 @@
               </p>
             </div>
 
-            <div class="card card--cs-accelerator card--bottom-glyph card--landing-page lp-certs--card">
+            <div class="card card--subject-knowledge card--bottom-glyph card--landing-page lp-certs--card">
               <div class="lp-certs--card-header">
                 <h2 class="govuk-heading-m card__heading lp-certs--card-heading">
                   Teach secondary computing
@@ -39,7 +39,7 @@
               </div>
 
               <p class="govuk-body card__text">
-                Following on from the Computer Science Accelerator, gain the confidence to take your teaching practice to the next level.
+              This certificate will help you to put your subject knowledge into classroom practice that raises student attainment.
               </p>
 
                 <p class="govuk-body govuk-!-margin-bottom-0">

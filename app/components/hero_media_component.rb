@@ -8,6 +8,6 @@ class HeroMediaComponent < ViewComponent::Base
     @video = video
     @class_name = class_name
 
-    raise ArgumentError, 'You must define a video or image resource' unless @image || @video
+    raise ArgumentError, "You must define a video or image resource" unless @image || @video
   end
 end

@@ -1,56 +1,84 @@
 class AchievementsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_achievement, only: %i[destroy update]
+
   def create
-    @achievement = Achievement.new(achievement_params)
-    @achievement.user_id = current_user.id
+    @achievement = current_user.achievements.build(achievement_params)
 
-    if invalid_params?
-      flash[:error] = "You must provide supporting evidence for '#{@achievement.activity.title}'"
-    elsif @achievement.save
-      flash[:notice] = "Great! '#{@achievement.activity.title}' has been added"
+    if @achievement.save && @achievement.transition_to(:drafted)
+      flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
 
-      metadata = { credit: @achievement.activity.credit }
-      metadata[:self_verification_info] = params[:self_verification_info] if params[:self_verification_info].present?
-      metadata[:self_verification_info] = url_for(@achievement.supporting_evidence) if achievement_params[:supporting_evidence].present?
-
-      @achievement.transition_to(:complete, metadata)
-
-      if @achievement.programme
-        case @achievement.programme.slug
-        when 'primary-certificate', 'secondary-certificate'
-          CertificatePendingTransitionJob.perform_now(@achievement.programme, current_user.id, source: 'AchievementsController.create')
-        end
-      end
+      render json: {}, status: 200
     else
-      flash[:error] = 'Whoops something went wrong adding the activity' unless @achievement.errors.present?
-      flash[:error] = @achievement.errors.full_messages.to_sentence
-    end
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Sorry something went wrong saving your progress#{specifics}"
 
-    redirect_to self_verification_url || dashboard_path
+      render json: {}, status: 422
+    end
+  end
+
+  def update
+    if @achievement.update(achievement_params)
+      flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
+
+      render json: {}, status: 200
+    else
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Sorry something went wrong saving your progress#{specifics}"
+
+      render json: {}, status: 422
+    end
   end
 
   def destroy
-    begin
-      @achievement = Achievement.find_by!(id: params[:id])
-      flash[:notice] = "'#{@achievement.activity.title}' has been removed" if @achievement.destroy!
-    rescue StandardError
-      flash[:error] = 'Whoops something went wrong removing the activity'
+    flash[:notice] = "'#{@achievement.activity.title}' has been removed" if @achievement.destroy!
+
+    render json: {}, status: 200
+  rescue
+    flash[:error] = "Whoops something went wrong removing the activity"
+
+    render json: {}, status: 422
+  end
+
+  def submit
+    @achievement = current_user
+      .achievements
+      .find_or_initialize_by(activity_id: achievement_params[:activity_id])
+
+    @achievement.assign_attributes(achievement_params)
+
+    unless @achievement.save
+      specifics = ": #{@achievement.errors.full_messages.to_sentence}" if @achievement.errors.present?
+      flash[:error] = "Whoops something went wrong#{specifics}"
+
+      return render json: {}, status: 422
     end
 
-    redirect_to dashboard_path
+    unless @achievement.adequate_evidence_provided?
+      flash[:notice] = "Inadequate evidence provided"
+
+      return render json: {}, status: 422
+    end
+
+    @achievement.transition_community_to_complete
+    CertificatePendingTransitionJob.perform_now(current_user, {source: "AchievementsController.create"})
+
+    flash[:notice] = "'#{@achievement.activity.title}' was succesfully submitted"
+
+    render json: {}, status: 200
   end
 
   private
 
-    def invalid_params?
-      (params[:self_verification_info].nil? || params[:self_verification_info].empty?) &&
-        achievement_params[:supporting_evidence].nil?
-    end
+  def set_achievement
+    @achievement = current_user.achievements.find(params[:id])
+  end
 
-    def achievement_params
-      params.require(:achievement).permit(:activity_id, :supporting_evidence)
-    end
+  def achievement_params
+    params.require(:achievement).permit(:activity_id, :supporting_evidence, :self_verification_info)
+  end
 
-    def self_verification_url
-      helpers.safe_redirect_url(request.referrer)
-    end
+  def self_verification_url
+    helpers.safe_redirect_url(request.referrer) || dashboard_path
+  end
 end

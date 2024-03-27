@@ -16,6 +16,7 @@
   padding: 1.125rem 1rem 1rem 1rem;
   visibility: hidden;
   width: stretch;
+  min-width: 10rem;
 
   @include govuk-media-query($from: desktop) {
     border-bottom: unset;
@@ -36,11 +37,6 @@
   font-size: 1rem;
   padding-bottom: 1rem;
 
-  &:first-child {
-    font-size: 1.125rem;
-    font-weight: 700;
-  }
-
   &:last-child {
     padding-bottom: 0;
   }
@@ -56,9 +52,5 @@
 
   @include govuk-media-query($from: desktop) {
     font-size: 1.125rem;
-
-    &:first-child {
-      font-size: 1.25rem;
-    }
   }
 }

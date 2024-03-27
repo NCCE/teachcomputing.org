@@ -1,0 +1,117 @@
+<div class="hero hero hero--orange-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper hero__wrapper">
+      <div class="i-belong-hero__wrapper i-belong hero__heading-wrapper--full-width">
+          <div class="i-belong-hero__area--text">
+            <h1 class="govuk-heading-xl hero__heading">I Belong: encouraging girls into computer science</h1>
+          </div>
+          <div class="i-belong-hero__area--logo">
+            <%= render(IBelongFlagComponent.new(label: false)) %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="light-grey-bg govuk-!-padding-bottom-9">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--xl">
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="text-video">
+          <section class='ncce-section govuk-!-margin-top-0 govuk-!-margin-bottom-0'>
+            <p class="govuk-body">Computer science is the fastest-growing STEM subject, and yet, despite its popularity, girls are consistently outnumbered by boys. In 2023, only one in five GCSE Computer Science and 15% of all A level Computer Science entries were from female students in England.</p>
+            <p class="govuk-body govuk-!-margin-bottom-0">Our evidence-informed programme aims to help teachers and leaders understand the barriers to girls’ participation in computer science and make a plan to overcome them. We offer curated resources, training and implementation support to empower you with the tools to support more girls into computer science qualifications and careers.</p>
+          </section>
+          <div class="video-container">
+            <%= video_tag("https://static.teachcomputing.org/How_important_is_the_I_Belong_programme.mp4", controls: true) %>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="lp-support__cards">
+          <div class="lp-support__card white-bg lp-support__card--bordered">
+            <h2 class="govuk-heading-m">
+              Who is it for?
+            </h2>
+            <ul class="govuk-body">
+              <li>Educators aspiring to narrow the gender gap in computing education.</li>
+              <li>Our resources are currently focused on key stage 3 but teachers of other key stages are welcome to access and use the materials.</li>
+            </ul>
+          </div>
+          <div class="lp-support__card white-bg lp-support__card--bordered">
+            <h2 class="govuk-heading-m">
+              What are the benefits?
+            </h2>
+            <ul class="govuk-body">
+              <li>Develop an understanding of the factors affecting girls’ participation in computer science.</li>
+              <li>Work with colleagues to produce an action plan with strategies to make computer science in your school more inclusive.</li>
+            </ul>
+          </div>
+          <div class="lp-support__card white-bg lp-support__card--bordered">
+            <h2 class="govuk-heading-m"><%= t(".#{session_state}.where_to_start_card.heading")%></h2>
+            <ol class="govuk-body"><%= t(".#{session_state}.where_to_start_card.body_html")%></ol>
+            <%= link_to t(".#{session_state}.where_to_start_card.link_text"), cta_link_path, method: cta_link_method, class: 'button govuk-button govuk-!-margin-bottom-0' %>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <section class="ncce-section govuk-grid-column-full">
+          <h2 class="govuk-heading-m">
+            I Belong Champions
+          </h2>
+          <p class="govuk-body">
+            We're looking for teachers who are paving the way for girls in computer science to join our mission by becoming I Belong Champions. Once you've completed our 'Encouraging girls into GCSE computer science' course, you can claim your digital badge to become a champion.
+          </p>
+          <%= link_to 'Learn more about becoming a champion',
+                      i_belong_info_pack_url,
+                      class: 'button govuk-button govuk-!-margin-bottom-0'
+          %>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="white-bg">
+    <div class=" govuk-main-wrapper">
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l ncce-heading-l__centered">Resources to support you</h2>
+              <%= render NonBorderedCardsComponent.new(
+                class_name: 'resource-cards',
+                cards_per_row: 3,
+                cards: [
+                {
+                    image_url: 'pages/i-belong/book_icon.png',
+                    title: 'I Belong handbook',
+                    text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake of computer science by girls in your school.',
+                    link: {
+                      link_title: handbook_download_title,
+                      link_url: handbook_download_url
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/faces.png',
+                    title: 'I Belong in computer science posters',
+                    text: "Printed 'I Belong in computer science' posters are available on request!​",
+                    link: {
+                    link_title: posters_link_title,
+                    link_url: posters_link,
+                    link_method: posters_link_method
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/text_icon.png',
+                    title: 'Gender Balance in computing research',
+                    text: 'Read our reports from the Gender Balance in computing research project.',
+                    link: {
+                    link_title: 'Explore the research',
+                    link_url: gender_balance_path,
+                    }
+                }
+                ]
+              ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

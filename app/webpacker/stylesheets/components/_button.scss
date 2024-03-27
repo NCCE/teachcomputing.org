@@ -53,6 +53,16 @@
   color: $govuk-text-colour;
 }
 
+.ncce-button__white {
+  @include ncce_button($white);
+
+  border-color: $lime-green;
+}
+
+.ncce-button__white_black_border {
+  @include ncce_button($white);
+}
+
 .button--focus-white {
   &:hover,
   &[disabled]:hover {
@@ -85,6 +95,7 @@
   border-width: 2px;
   border-bottom-width: 4px;
   color: $govuk-button-text-colour !important;
+  text-decoration: none;
   &:hover {
     border-color: $black;
     color: $white !important;
@@ -109,6 +120,10 @@
 
 .button--margin-bottom {
   margin-bottom: 20px;
+}
+
+.button--no-margin-bottom {
+  margin-bottom: 0;
 }
 
 .button--margin-sides {
@@ -153,7 +168,6 @@
   }
 }
 
-
 .govuk-button {
   &:visited,
   &:active,
@@ -164,4 +178,15 @@
   &:hover {
     color: $white;
   }
+}
+
+.modal-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.button-constrained {
+  max-width: 350px;
 }

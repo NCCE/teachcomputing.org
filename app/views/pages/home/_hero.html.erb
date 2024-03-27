@@ -21,7 +21,7 @@
           <%= link_to('Dashboard', dashboard_path, class: 'govuk-button button ncce-mobile-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Dashboard' })  %>
           <%= link_to('View dashboard', dashboard_path, class: 'govuk-button button ncce-desktop-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Dashboard' })  %>
         <% else %>
-          <%= link_to('Join for free', auth_url, class: 'govuk-button button ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Join' })  %>
+          <%= link_to('Join for free', auth_url, class: 'govuk-button button ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'Join' }, method: :post)  %>
         <% end %>
         <%= link_to 'About us', about_path, class: 'govuk-button button button--inverted ncce-mobile-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'About us' } %>
         <%= link_to 'Learn more about us', about_path, class: 'govuk-button button button--inverted ncce-desktop-only__inline ncce-home-hero__button', data: { event_action: 'click', event_category: 'Homepage', event_label: 'About us' } %>

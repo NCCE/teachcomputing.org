@@ -1,0 +1,24 @@
+en:
+  pages:
+    enrolment:
+      primary_certificate:
+        title_text: "Certificate awarded by BCS, The Chartered Institute for IT"
+        intro:
+          - "This professional development programme has been designed to guide primary teachers through our comprehensive offer of courses, enrichment and resources and leads to a nationally recognised certificate. We expect it to take around 20 hours to complete."
+          - "There are two pathways under which we have gathered relevant courses and activities to help you advance your knowledge and experience of teaching primary computing."
+        benefits_to_you: "Benefits to you"
+        benefits:
+          - "develop your knowledge and skills in primary computing"
+          - "gain the confidence to teach great lessons and inspire learners"
+          - "build your profile and take an active role in the computing community"
+          - "receive a nationally recognised certificate in primary computing"
+        how_does_it_work: "How does the programme work?"
+        how_does_it_work_subheading: "Our learning pathways provide a set of recommended courses and activities to help get the right outcomes for you."
+        how_does_it_work_1: "%{create_an_account} or %{log_in} to your existing account"
+        how_does_it_work_2: "see which of our pathways best matches your needs and enrol on the right one for you"
+        how_does_it_work_3: "complete a tailored selection of courses and engagement activities"
+        how_does_it_work_4: "receive a nationally recognised certificate, awarded by BCS, The Chartered Institute for IT"
+        hub_aside:
+          title: "Get support"
+          text: "Our network of Computing Hubs are here to help you, providing local training and support for teachers across England."
+          link_title: "Find your local hub"

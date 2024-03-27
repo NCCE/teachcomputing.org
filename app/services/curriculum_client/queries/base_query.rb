@@ -22,8 +22,8 @@ module CurriculumClient
           declared_param_strings = params.map { |k, _v| "$#{k}: #{map_field_type(k)}" }
           param_strings = params.map { |k, _v| "#{k.to_s.camelize(:lower)}: $#{k}" }
           one = <<~GRAPHQL
-            query(#{declared_param_strings.join(', ')}) {
-              #{context}(#{param_strings.join(', ')}) {
+            query(#{declared_param_strings.join(", ")}) {
+              #{context}(#{param_strings.join(", ")}) {
                 #{fields}
               }
             }
@@ -33,19 +33,19 @@ module CurriculumClient
         end
 
         def file_fields
-          'name file type size created'
+          "name file type size created"
         end
 
         private
 
-          def map_field_type(key)
-            case key
-            when :id
-              'ID'
-            else
-              'String'
-            end
+        def map_field_type(key)
+          case key
+          when :id
+            "ID"
+          else
+            "String"
           end
+        end
       end
     end
   end

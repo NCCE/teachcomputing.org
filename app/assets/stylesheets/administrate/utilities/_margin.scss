@@ -1,0 +1,15 @@
+
+@for $i from 1 through 4 {
+  .mr-#{$i} {
+    margin-right: calc(#{$i} * 0.25rem) !important;
+  }
+  .ml-#{$i} {
+    margin-left: calc(#{$i} * 0.25rem) !important;
+  }
+  .mt-#{$i} {
+    margin-top: calc(#{$i} * 0.25rem) !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: calc(#{$i} * 0.25rem) !important;
+  }
+}

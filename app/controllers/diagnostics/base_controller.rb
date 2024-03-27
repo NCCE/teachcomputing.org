@@ -1,6 +1,6 @@
 module Diagnostics
   class BaseController < ApplicationController
-    layout 'full-width'
+    layout "full-width"
     include Wicked::Wizard
 
     after_action :discourage_caching
@@ -61,7 +61,7 @@ module Diagnostics
     end
 
     def completed_diagnostic?
-      return unless questionnaire_response.present?
+      return if questionnaire_response.blank?
 
       redirect_to finish_wizard_path if questionnaire_response.complete?
     end

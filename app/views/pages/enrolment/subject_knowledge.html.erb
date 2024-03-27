@@ -1,0 +1,71 @@
+<% meta_tag :title, 'KS3 and GCSE - Teach Computing' %>
+<%= render 'pages/certification/hero_with_certificate_logo' %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Funded by the Department for Education, this professional development programme for teachers leads to a nationally recognised certificate in key stage 3 and GCSE Computer Science subject knowledge.</p>
+				<p class="govuk-body">The programme will help you develop or refresh your subject knowledge up to GCSE, with <%= link_to 'funding available', '/funding', class: 'govuk-link ncce-link govuk-link--no-underline' %> for state-funded schools and colleges to support classroom cover.</p>
+        <h2 class="govuk-heading-m">Who is eligible?</h2>
+        <ul class="govuk-list govuk-list--bullet govuk-body">
+          <li>current and aspiring computing teachers</li>
+          <li>suitable for all abilities, from little or no experience in teaching computer science to experienced teachers looking to deepen their subject knowledge</li>
+        </ul>
+        <h2 class="govuk-heading-m">How do I get started?</h2>
+        <%= render 'pages/certification/pathway' %>
+				<h2 class="govuk-heading-m">How much does it cost?</h2>
+        <p class="govuk-body">There are no fees to pay for teachers in England who work in state-funded schools and colleges and trainee teachers, supply teachers or teachers returning to the state sector.</p>
+        <p class="govuk-body">If you are a teacher working in state-funded education, you will also be eligible to apply for a <%= link_to 'subsidy', '/funding', class: 'govuk-link ncce-link govuk-link--no-underline' %> to support supply cover for professional development, paid to your school or college.</p>
+        </p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <%= render AsideComponent.new(title: 'Enrol on the programme') do |component| %>
+          <% component.with_body do %>
+            <ol
+              class="govuk-list govuk-list--number ncce-aside__text govuk-body-s subject-knowledge-aside__list">
+              <li>
+                Enrol with the click of a button
+              </li>
+              <li>Complete a questionnaire to assess your subject knowledge</li>
+              <li>Participate in a mix of courses to suit your experience</li>
+              <li>Pass a short test to receive your certificate</li>
+            </ol>
+            <% if current_user %>
+            <p class="govuk-body">
+              <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            </p>
+            <% else %>
+            <p class="govuk-body">
+              <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
+            </p>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= render AsideComponent.new(
+          title: 'Develop your teaching further',
+          text: 'Develop your pedagogy and leadership skills alongside increasing your subject knowledge with our Teaching secondary computing certificate.',
+          link: {
+            text: 'Find out more',
+            url: secondary_path,
+            class: 'govuk-button button button--inverted govuk-!-margin-bottom-0',
+          },
+          use_button: true
+        ) %>
+        <%= render AsideComponent.new(title: 'Userful documents') do |component| %>
+          <% component.with_body do %>
+            <p class="govuk-body-s">
+              <%= link_to 'CSA Handbook',
+                          'https://static.teachcomputing.org/CS_Accelerator_handbook.pdf',
+                          class: 'ncce-link'
+              %>
+            </p>
+            <p class="govuk-body-s">
+              <%= link_to 'GCSE specification map', 'https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf', class: 'ncce-link' %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'pages/certification/statement' %>

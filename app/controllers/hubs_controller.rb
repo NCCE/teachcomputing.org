@@ -1,5 +1,5 @@
 class HubsController < ApplicationController
-  layout 'full-width'
+  layout "full-width"
 
   def index
     @hubs_index = HubsIndex.new(location: params[:location])

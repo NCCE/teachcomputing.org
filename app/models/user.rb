@@ -1,5 +1,6 @@
-require 'audited'
+require "audited"
 
+# #school_name is the school or college name to print onto the I Belong certificate PDF
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -8,11 +9,13 @@ class User < ApplicationRecord
   validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
   validates :stem_user_id, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  # WARNING: We are consiously choosing not to have a unique constraint on
+  # emails
+  validates :email, presence: true
   validates :teacher_reference_number, uniqueness: true, if: proc { |u| u.teacher_reference_number.present? }
 
-  attr_encrypted :stem_credentials_access_token, key: ENV.fetch('STEM_CREDENTIALS_ACCESS_TOKEN_KEY')
-  attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch('STEM_CREDENTIALS_REFRESH_TOKEN_KEY')
+  attr_encrypted :stem_credentials_access_token, key: ENV.fetch("STEM_CREDENTIALS_ACCESS_TOKEN_KEY")
+  attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch("STEM_CREDENTIALS_REFRESH_TOKEN_KEY")
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :activities, through: :achievements
@@ -22,46 +25,59 @@ class User < ApplicationRecord
   has_many :programmes, through: :user_programme_enrolments
   has_many :resource_users, dependent: :nullify
   has_many :questionnaire_response, dependent: :nullify
+  has_many :sent_emails
 
   after_create :schedule_fetching_of_course_bookings
 
   scope :without_forgotten, -> { where(forgotten: false) }
+  scope :enrolled_in_programme, ->(programme) { joins(:user_programme_enrollment).where(user_programme_enrollment: {programme:}) }
 
   audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
   alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    where(stem_user_id: id).first_or_initialize.tap do |user|
-      user.stem_user_id = id
-      user.first_name = info.first_name
-      user.last_name = info.last_name
-      user.email = info.email.downcase
-      user.stem_achiever_contact_no = info.achiever_contact_no
-      user.stem_credentials_access_token = credentials.token
-      user.stem_credentials_refresh_token = credentials.refresh_token
-      user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
-      user.stem_achiever_organisation_no = info.achiever_organisation_no
-      user.last_sign_in_at = Time.current
-      user.save!
+    user = where(stem_user_id: id).first_or_initialize
+
+    users_with_new_email_count = User.where(email: info.email.downcase).count
+
+    if user.persisted?
+      if user.email == info.email.downcase
+        Sentry.capture_message("User #{user.email}-#{id} logged in with duplicate email", level: :log) if users_with_new_email_count >= 2
+      elsif users_with_new_email_count >= 1
+        Sentry.capture_message("User #{user.email}-#{id} logged renaming to duplicated email #{info.email.downcase}", level: :warning)
+      end
+    elsif users_with_new_email_count >= 1
+      Sentry.capture_message("User #{id} created with duplicated email #{info.email.downcase}", level: :warning)
     end
+
+    user.stem_user_id = id
+    user.first_name = info.first_name
+    user.last_name = info.last_name
+    user.email = info.email.downcase
+    user.stem_achiever_contact_no = info.achiever_contact_no
+    user.stem_credentials_access_token = credentials.token
+    user.stem_credentials_refresh_token = credentials.refresh_token
+    user.stem_credentials_expires_at = Time.zone.at(credentials.expires_at)
+    user.stem_achiever_organisation_no = info.achiever_organisation_no
+    user.last_sign_in_at = Time.current
+    user.school_name = info.school_name
+
+    user.save!
+
+    user
   end
 
   def enrolments
     user_programme_enrolments
   end
 
-  def csa_auto_enrollable?
-    csa_enrolment = user_programme_enrolments
-                    .find_by(programme: Programme.cs_accelerator)
-
-    return false if csa_enrolment
-
-    true
+  def enrolled_on_programme_pathway?(programme:, pathway:)
+    user_programme_enrolments.find_by(programme:, pathway:).present?
   end
 
   def programme_enrolment_state(programme_id)
     enrolment = user_programme_enrolments.find_by(programme_id:)
-    return 'Not enrolled' unless enrolment
+    return "Not enrolled" unless enrolment
 
     enrolment.current_state
   end
@@ -86,19 +102,19 @@ class User < ApplicationRecord
       next if %w[id created_at updated_at].include?(name) || name.match(/_token/)
 
       self[name] = case name.to_sym
-                   when :email
-                     "#{id}@devnull-ncce.slcs.ac.uk"
-                   when :stem_credentials_expires_at
-                     DateTime.now
-                   when :future_learn_organisation_memberships
-                     []
-                   when :forgotten
-                     true
-                   when :last_sign_in_at
-                     nil
-                   else
-                     id
-                   end
+      when :email
+        "#{id}@devnull-ncce.slcs.ac.uk"
+      when :stem_credentials_expires_at
+        DateTime.now
+      when :future_learn_organisation_memberships
+        []
+      when :forgotten
+        true
+      when :last_sign_in_at
+        nil
+      else
+        id
+      end
     end
 
     self.stem_credentials_access_token = SecureRandom.hex(8)
@@ -110,5 +126,9 @@ class User < ApplicationRecord
     end
 
     save!
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

@@ -23,43 +23,48 @@
     </div>
   </div>
   <% if @filter_params[:hub_id].present? %>
-  <div class="ncce-courses__hub-container" data-course-filter-target="hubMessage">
-    <div class="govuk-width-container">
-      <div class="govuk-main-wrapper ncce-courses__hub-wrapper">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-            <h3 class="govuk-heading-s ncce-courses__hub-heading">
-              <% if @course_filter.current_hub == :no_courses %>
-                There are no courses to show from this Computing Hub
-              <% else %>
-                Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
-              <% end %>
-              <%= link_to 'show all results',
-                courses_path(anchor: 'results-top'),
-                class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub',
-                data: {
-                  event_action: 'click',
-                  event_category: 'Courses',
-                  event_label: 'Clear hub filter'
-                }
-              %>
-            </h3>
+    <div class="ncce-courses__hub-container" data-course-filter-target="hubMessage">
+      <div class="govuk-width-container">
+        <div class="govuk-main-wrapper ncce-courses__hub-wrapper">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <h3 class="govuk-heading-s ncce-courses__hub-heading">
+                <% if @course_filter.current_hub == :no_courses %>
+                  There are no courses to show from this Computing Hub
+                <% else %>
+                  Showing courses run by <span class='ncce-courses__hub-heading-name'><%= @course_filter.current_hub %></span>
+                <% end %>
+                <%= link_to 'show all results',
+                  courses_path(anchor: 'results-top'),
+                  class: 'govuk-link ncce-link govuk-body-m ncce-courses__clear-filters-text ncce-courses__clear-filters-text--hub',
+                  data: {
+                    event_action: 'click',
+                    event_category: 'Courses',
+                    event_label: 'Clear hub filter'
+                  }
+                %>
+              </h3>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
-  <div class="govuk-width-container ncce-courses__container" data-course-filter-target="resultsContainer" id="results-top">
-    <div class="govuk-main-wrapper ncce-courses__results-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper">
-          <%= render 'courses/aside-filters' %>
-        </div>
-        <div class="govuk-grid-column-two-thirds-from-desktop" data-course-filter-target="results">
-          <%= render 'courses/courses-list' %>
+  <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
+    <div class="govuk-width-container ncce-courses__container" data-course-filter-target="resultsContainer" id="results-top">
+      <div class="govuk-main-wrapper ncce-courses__results-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper">
+            <%= render 'courses/aside-filters' %>
+          </div>
+          <div class="govuk-grid-column-two-thirds-from-desktop">
+
+            <div data-course-filter-target="results">
+              <%= render 'courses/courses-list' %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

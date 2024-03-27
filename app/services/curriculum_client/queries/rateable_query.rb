@@ -2,7 +2,7 @@ module CurriculumClient
   module Queries
     module RateableQuery
       def rate(fields, id, achiever_contact_number, rating_type)
-        fields = fields ? "{#{fields}}" : ''
+        fields = fields ? "{#{fields}}" : ""
         rating = <<~GRAPHQL
           mutation {
             #{rating_type.camelcase(:lower)}(
@@ -33,7 +33,7 @@ module CurriculumClient
       end
 
       def update_rating(id:, key:, value:, fields: nil)
-        fields = fields ? "{#{fields}}" : ''
+        fields = fields ? "{#{fields}}" : ""
         value = value.is_a?(Array) ? "[\"#{value.join('","')}\"]" : "\"#{value}\""
         update = <<~GRAPHQL
           mutation {
@@ -46,7 +46,6 @@ module CurriculumClient
         GRAPHQL
         CurriculumClient::Request.run(query: client.parse(update), client:)
       end
-
     end
   end
 end

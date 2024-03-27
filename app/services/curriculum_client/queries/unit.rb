@@ -11,6 +11,8 @@ module CurriculumClient
         order
         description
         isaacUrl
+        displayIBelongFlag
+        digitalSummativeAssessmentUrl
         unitGuide {
           #{file_fields}
         }
@@ -45,15 +47,18 @@ module CurriculumClient
             from
             to
           }
+          zippedContents {
+            #{file_fields}
+          }
         }
       GRAPHQL
 
       def self.all(fields = FIELDS)
-        super(context: :units, fields:, cache_key: 'unit--all')
+        super(context: :units, fields:, cache_key: "unit--all")
       end
 
       def self.one(slug, key_stage_slug, fields = FIELDS)
-        super(context: :unit, fields:, params: { slug:, key_stage_slug: }, cache_key: "unit--#{key_stage_slug}-#{slug}")
+        super(context: :unit, fields:, params: {slug:, key_stage_slug:}, cache_key: "unit--#{key_stage_slug}-#{slug}")
       end
     end
   end

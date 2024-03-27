@@ -2,12 +2,15 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <hr class="curriculum__line">
-      <h3 class="govuk-heading-m"><%= year_group_title(year.year_number) %></h3>
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-2" id="<%= year_group_anchor(year.year_number) %>">
+        <%= year_group_title(year.year_number) %>
+      </h3>
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <ul class="govuk-list govuk-body govuk-!-padding-bottom-4 govuk-!-padding-top-2">
+      <ul class="govuk-list govuk-body govuk-!-padding-bottom-4 govuk-!-padding-top-6">
         <% year.units.each do |unit| %>
           <li class="curriculum__list--item <%= key_stage_list_color(key_stage.level) %>">
             <% if unit.order.present? %>
@@ -15,6 +18,7 @@
             <% else %>
               <%= link_to "#{unit.title}", curriculum_key_stage_unit_path(key_stage_slug: key_stage.slug, unit_slug: unit.slug), class: 'govuk-link ncce-link' %>
             <% end %>
+            <%= render(IBelongFlagComponent.new(label: false)) if unit.display_i_belong_flag %>
           </li>
         <% end %>
       </ul>

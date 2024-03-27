@@ -8,6 +8,10 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def after_resource_destroyed_path(achievement)
+      {action: :show, controller: :users, id: achievement.user.id}
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
@@ -42,5 +46,22 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def reject_evidence
+      achievement = requested_resource
+      if achievement.transition_to(:rejected)
+        flash_messages = ["Evidence rejected"]
+        achievement.activity.programmes.each do |programme|
+          enrolment = programme.user_programme_enrolments.in_state(:pending).find_by(user: achievement.user)
+          if enrolment&.transition_to(:enrolled)
+            flash_messages << "#{programme.title} rolled back"
+          end
+        end
+        flash[:notice] = flash_messages.join("<br />")
+      else
+        flash[:alert] = "Unable to reject the evidence"
+      end
+      redirect_to action: :show, controller: :users, id: achievement.user.id
+    end
   end
 end

@@ -12,10 +12,25 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
   transition from: :complete, to: %i[pending enrolled]
 
   guard_transition(to: :complete) do |programme_enrolment|
-    !programme_enrolment.flagged?
+    !programme_enrolment.flagged? && programme_enrolment.programme.user_meets_completion_requirement?(programme_enrolment.user)
+  end
+
+  after_transition(to: :pending) do |enrolment|
+    next unless enrolment.programme.send_pending_mail?
+
+    enrolment.programme.mailer.with(user: enrolment.user).pending.deliver_later
+  end
+
+  before_transition(to: :complete) do |programme_enrolment, transition|
+    next unless transition.metadata["certificate_number"].blank?
+
+    # Set the number that should display on the certificate
+    transition.metadata["certificate_number"] = programme_enrolment.programme.programme_complete_counter.get_next_number
   end
 
   after_transition(to: :complete) do |programme_enrolment|
+    programme_enrolment.programme.set_user_programme_enrolment_complete_data(programme_enrolment)
+
     # Keep track of the pathway the user was on at completion
     programme_enrolment.update(completed_pathway_id: programme_enrolment.pathway.id) unless programme_enrolment.pathway.blank?
 

@@ -14,19 +14,27 @@
     <h2 class="govuk-heading-s aside-component__heading">
       <%= @title %>
     </h2>
+  <% elsif heading? %>
+    <h2 class="govuk-heading-s aside-component__heading">
+      <%= heading %>
+    </h2>
   <% end %>
-  <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
-    <%= @text %>
+  <% if @text %>
+    <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
+      <%= @text %>
+    <% end %>
+  <% elsif body? %>
+    <%= body %>
   <% end %>
   <% if @link.present? %>
-  <p class="govuk-body-s aside-component__link">
-    <%= link_to @link[:text],
-      @link[:url],
-      class: @use_button ? 'govuk-button button button--aside' : 'ncce-link',
-      role: 'button',
-      draggable: 'false',
-      data: tracking_data(@link[:tracking_label])
-    %>
+    <p class="govuk-body-s aside-component__link">
+      <%= link_to @link[:text],
+        @link[:url],
+        class: @link[:class] || (@use_button ? 'govuk-button button button--aside' : 'ncce-link'),
+        role: 'button',
+        draggable: 'false',
+        data: tracking_data(@link[:tracking_label])
+      %>
+    </p>
   <% end %>
-  </p>
 </div>

@@ -1,9 +1,9 @@
 .ncce-news__item-image {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
   width: 100%;
 }
-
+.ncce-news__item-content {
+  display: block;
+}
 .ncce-news-archive {
   display: grid;
   grid-template-columns: auto;
@@ -12,6 +12,15 @@
 
 .ncce-news-archive__title {
   margin-bottom: 3rem;
+}
+
+.ncce-news-archive__item-date {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  p {
+    font-weight: 700;
+  }
 }
 
 .ncce-news-archive__item {
@@ -34,5 +43,13 @@
 .ncce-news-archive__item-title {
   .govuk-heading-s {
     margin-bottom: 0.7rem;
+    .ncce-link {
+      &:focus {
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
   }
 }

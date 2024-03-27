@@ -1,0 +1,160 @@
+.testimonial--light {
+  background-color: $ncce-grey;
+
+  .testimonial__bio {
+    color: $govuk-text-colour;
+  }
+}
+
+.testimonial--dark {
+  background-color: $purple-dark;
+
+  .testimonial__bio p, a {
+    color: $white !important;
+  }
+}
+
+.testimonial {
+  margin-bottom: 2rem;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+  }
+
+  &__text {
+    background-color: $white;
+    border-radius: 10px;
+    line-height: 1.4;
+    color: $govuk-text-colour !important;
+    padding: 18px;
+    padding-bottom: 30px;
+  }
+  &__bio {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 52px auto;
+    padding: 0 10px 0 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 0 18px 0 18px;
+    }
+  }
+  &__bio-cell--span-2 {
+    grid-column-end: span 2;
+    grid-column-start: 1;
+  }
+  &__bio > *:last-child {
+    margin-bottom: 0;
+  }
+
+  &__image {
+    border: 2px solid $orange;
+    border-radius: 24px;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+  }
+}
+
+.testimonial-wide {
+  display: grid;
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 2fr 1fr;
+  }
+  &__bio {
+    display: grid;
+    grid-template-columns: 75px auto;
+
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px auto;
+      padding-left: 30px;
+    }
+    @include govuk-media-query($from: desktop) {
+      padding-left: 45px;
+    }
+  }
+  &__image {
+    border: 2px solid $orange;
+    border-radius: 50%;
+    margin-left: 12px;
+    width: 48px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: 20px;
+      width: 66px;
+    }
+    @include govuk-media-query($from: desktop) {
+      margin-left: 25px;
+    }
+  }
+}
+
+.testimonial--secondary {
+  padding-top: 50px;
+  @include govuk-media-query($from: tablet) {
+    padding-top: 0;
+  }
+  .testimonial__image {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.lp-testimonials {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 30px 16px 30px;
+  gap: 24px;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: repeat(var(--testimonials-per-row, 2), 1fr);
+  }
+
+}
+
+.lp-testimonials__testimonial{
+  display: none;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  align-self: self-start;
+  row-gap: 0;
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+  }
+}
+
+.lp-testimonials__testimonial:first-of-type{
+  display: grid;
+}
+
+.lp-testimonials__testimonial:not(:last-of-type){
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+  }
+}
+
+.lp-testimonials__testimonial-bio {
+  padding: 0;
+}
+
+.lp-testimonials__testimonial-bio-text {
+  margin-left: 12px;
+  .name {
+    display: block;
+    margin-bottom: .25rem;
+  }
+}
+
+.careers-week__testimonials {
+  display: grid;
+  grid-row-gap: 1.5 * $logo-block-mobile;
+  @include govuk-media-query($from: desktop) {
+    grid-column-gap: 30px;
+    grid-row-gap: 1.5 * $logo-block;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+ }

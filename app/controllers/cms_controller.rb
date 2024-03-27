@@ -1,10 +1,18 @@
 class CmsController < ApplicationController
-  layout 'full-width'
+  include CmsProcessing
+  layout "full-width"
 
-  def cms_page
-    @page = Ghost.new.get_single_page(build_slug_from_params)
-    @style_slug = style_slug
-    render :cms_page
+  def blog
+    process_collection Cms::Collections::Blog, title: "News & Updates",
+      page_name: "Articles", collection_wrapper: "ncce-news-archive"
+  end
+
+  def blog_resource
+    process_resource Cms::Collections::Blog, resource_id: params[:page_slug]
+  end
+
+  def page_resource
+    process_resource Cms::Collections::SimplePage, resource_id: params[:page_slug]
   end
 
   def style_slug
@@ -13,14 +21,20 @@ class CmsController < ApplicationController
 
   def clear_page_cache
     Ghost.new.clear_page_cache(build_slug_from_params)
-    redirect_to request.fullpath.sub(%r{/refresh$}, '')
+    redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 
   private
 
-    def build_slug_from_params
-      return params[:page_slug] unless params[:parent_slug].present?
+  def build_slug_from_params
+    return params[:page_slug] if params[:parent_slug].blank?
 
-      "#{params[:parent_slug]}-#{params[:page_slug]}"
-    end
+    "#{params[:parent_slug]}-#{params[:page_slug]}"
+  end
+
+  private
+
+  def preview_params
+    params.permit(:preview, :preview_key)
+  end
 end

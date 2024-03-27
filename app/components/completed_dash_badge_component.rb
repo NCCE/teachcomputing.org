@@ -13,10 +13,10 @@ class CompletedDashBadgeComponent < ViewComponent::Base
 
   def tracking_data
     return nil unless @tracking_event_category.present? &&
-                      @tracking_event_label.present?
+      @tracking_event_label.present?
 
     {
-      event_action: 'click',
+      event_action: "click",
       event_category: @tracking_event_category,
       event_label: @tracking_event_label
     }

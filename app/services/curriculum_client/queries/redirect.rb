@@ -14,7 +14,7 @@ module CurriculumClient
       end
 
       def self.one(from, from_context, fields = FIELDS)
-        super(context: :redirect, fields:, params: { from:, from_context: })
+        super(context: :redirect, fields:, params: {from:, from_context:})
       end
     end
   end

@@ -5,11 +5,11 @@ class OnlineBookingPresenter
   include Rails.application.routes.url_helpers
 
   def title
-    'Join this course'
+    "Join this course"
   end
 
   def authenticated_title
-    'Join this course'
+    "Join this course"
   end
 
   def no_occurrences_title
@@ -17,7 +17,7 @@ class OnlineBookingPresenter
   end
 
   def unauthenticated_introduction
-    'You need to be logged in to join the course.'
+    "You need to be logged in to join the course."
   end
 
   def no_occurrence_introductions
@@ -25,11 +25,11 @@ class OnlineBookingPresenter
   end
 
   def booking_button_title
-    'Book'
+    "Book"
   end
 
   def enrolled_title
-    'You are enrolled on this course'
+    "You are enrolled on this course"
   end
 
   def completed_title
@@ -42,47 +42,47 @@ class OnlineBookingPresenter
     markup =
       if course_started
         <<~HTML
-        <p class="govuk-body-s ncce-aside__text">
-          You will be taken to the MyLearning platform for further details.
-        </p>
+          <p class="govuk-body-s ncce-aside__text">
+            You will be taken to the MyLearning platform for further details.
+          </p>
         HTML
       else
         <<~HTML
-        <p class="govuk-body-s ncce-aside__text">
-          Check your email for further details about your course booking.
-        </p>
-        <p class="govuk-body-s ncce-aside__text">
-         Not received an email confirmation? Contact <a href="mailto:info@teachcomputing.org">info@teachcomputing.org</a>.
-        </p>
+          <p class="govuk-body-s ncce-aside__text">
+            Check your email for further details about your course booking.
+          </p>
+          <p class="govuk-body-s ncce-aside__text">
+           Not received an email confirmation? Contact <a href="mailto:info@teachcomputing.org">info@teachcomputing.org</a>.
+          </p>
         HTML
       end
     markup.html_safe
   end
 
   def introduction
-    'You will be taken to the STEM Learning website to enrol onto the online course.'
+    "You will be taken to the STEM Learning website to enrol onto the online course."
   end
 
   def unauthenticated_booking_button_title
-    'Login to join'
+    "Login to join"
   end
 
   # @param course_started [Boolean]
   # @return [String|nil]
   def enrolled_button_title(course_started)
-    course_started ? 'Continue on MyLearning' : nil
+    course_started ? "Continue on MyLearning" : nil
   end
 
   def completed_button_title
-    'Visit MyLearning'
+    "Visit MyLearning"
   end
 
   def completed_button_introduction
-    'You will be taken to the MyLearning platform for further details.'
+    "You will be taken to the MyLearning platform for further details."
   end
 
   def booking_path(stem_course_id)
-    "#{ENV.fetch('STEM_OAUTH_SITE')}/cpdredirect/#{stem_course_id}"
+    "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{stem_course_id}"
   end
 
   def show_stem_occurrence_list

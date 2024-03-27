@@ -13,6 +13,20 @@
   }
 }
 
+.lp-support__cards_2 {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: tablet) {
+    column-gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .lp-support__card {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -26,3 +40,13 @@
     padding: 22px;
   }
 }
+
+.lp-support__card--bordered {
+  border-top: 8px solid $orange;
+}
+
+.lp-support__card--bordered_2 {
+  border-top: 8px solid $dixie;
+}
+
+

@@ -1,0 +1,32 @@
+<div class="govuk-width-container">
+  <div class="hero__heading-wrapper hero__heading-wrapper--full-width govuk-body govuk-!-margin-top-3">
+    <h4>
+      <strong><%= @title.presence || 'Your certificate progress' %></strong>
+    </h4>
+    <p class="govuk-body-s ncce-progress-section--description">
+    <strong>
+      <% if @body.present? %>
+        <%= @body %>
+      <% else %>
+        Complete the below training and activities to receive your <%= @programme.title %> certificate.
+        You can complete these at your own pace and in any order.
+      <% end %>
+    </strong>
+    </p>
+    <% if @steps_to_accreditation %>
+      <p class="govuk-body-s">Choose your first step to certification:</p>
+    <% end %>
+    <div class="ncce-progress-section">
+      <% @programme_objectives.each_with_index do |programme_objective, index| %>
+        <% class_name = programme_objective&.user_complete?(@current_user) ? "icon-ticked-circle" : "icon-blank-circle" %>
+        <a href="<%= programme_objective.progress_bar_path %>" class="<%= class_name %> ncce-link ncce-progress-section--text">
+          <span><%= programme_objective.progress_bar_title.html_safe %></span>
+        </a>
+
+        <% unless index == @programme_objectives.size - 1 %>
+          <div class="icon-dotted-line"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

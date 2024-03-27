@@ -1,0 +1,5 @@
+attributes:
+  - content
+  - foreign_keys
+  - inheritance
+indirect: false

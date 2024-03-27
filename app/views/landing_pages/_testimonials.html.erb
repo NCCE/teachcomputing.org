@@ -1,35 +1,7 @@
 <% if @landing_page.testimonials.present? %>
-  <div class="purple-bg">
-    <div class="govuk-width-container ">
-      <div class="govuk-main-wrapper govuk-!-padding-0">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-            <div class="lp-testimonials">
-              <% @landing_page.testimonials.each do |testimonial| %>
-                <div class="testimonial lp-testimonials__testimonial">
-                  <p class="govuk-body testimonial__text">
-                    <%= testimonial[:text] %>
-                  </p>
-                  <div class="testimonial__bio lp-testimonials__testimonial-bio">
-                    <%= image_pack_tag testimonial[:image], alt: testimonial[:name], class: 'testimonial__image' %>
-                    <p class="govuk-body-s lp-testimonials__testimonial-bio-text">
-                      <strong>
-                        <%= link_to testimonial[:name], testimonial[:link_target],
-                          class: 'ncce-link ncce-link--on-dark axe-skip-a11y-test',
-                          data: { event_action: 'click',
-                                  event_category: @landing_page.event_tracking_category,
-                                  event_label: testimonial[:tracking_event] }
-                      %>
-                      </strong>
-                      <%= testimonial[:bio] %>
-                    </p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render TestimonialsComponent.new(
+    testimonials: @landing_page.testimonials,
+    event_tracking_category: @landing_page.event_tracking_category,
+    testimonials_per_row: 2,
+  ) %>
 <% end %>

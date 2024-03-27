@@ -1,0 +1,33 @@
+.community-activity-list--show-hide {
+  align-items: start;
+  background-color: #ffffff;
+  border-bottom-color: $concrete;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  margin-bottom: 0 !important;
+  padding: 1rem 1.125rem;
+
+  > h5 {
+    margin: 0;
+
+    background-image: url('../images/icons/expander_down.svg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: fit-content;
+    padding-right: 20px;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+
+    &.community-activity-list--toggle-down {
+      background-image: url('../images/icons/expander_up.svg');
+    }
+  }
+}
+
+.community-activity-list--hidden {
+  display: none;
+}
