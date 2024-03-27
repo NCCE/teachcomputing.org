@@ -1,0 +1,28 @@
+<div class="<%= @background_color %>">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+
+      <div class="banner-component <%= image_side_class %>">
+
+        <div class="banner-component_image <%= @image[:class] %>">
+          <%= image_pack_tag @image[:url], alt: @image[:alt] %>
+        </div>
+
+        <div class="banner-component_content">
+          <div class="banner-component_title">
+            <h2 class="govuk-heading-m">
+              <%= @title %>
+            </h2>
+          </div>
+          <div class="banner-component_body">
+            <p class="govuk-body">
+              <%= @text %>
+            </p>
+            <%= @link %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

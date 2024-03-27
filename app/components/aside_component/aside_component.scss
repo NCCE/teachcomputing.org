@@ -22,6 +22,16 @@
       filter: invert(56%) sepia(31%) saturate(4411%) hue-rotate(360deg) brightness(102%) contrast(105%);
     }
   }
+
+  .with-icon-coloured-right {
+    display: flex;
+    justify-content: space-between;
+
+    img { 
+      max-height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .aside-component__text {

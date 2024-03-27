@@ -1,7 +1,7 @@
 <div class="<%= class_list %>">
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-three-quarters">
+      <div class="<%= column_width_class %>">
         <div class="hero-component__wrapper">
           <% if @status.present? %>
             <span class="govuk-body-m hero-component__status"><%= @status %></span>
