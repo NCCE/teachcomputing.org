@@ -49,6 +49,9 @@
 
   &--toolkit {
     border-top: solid 9px $primary-cert-color;
+    // Added as a temporary fix after discovering issues with font effecting all govuk-heading-m
+    // To be removed, after font fix is in place
+    padding: 11px !important; 
   }
 
   &--toolkit--isaac {
