@@ -118,7 +118,7 @@
                           <%= progress.with_submit do %>
                             <div class="progress-component__submit-button-wrapper">
                               <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft">Save as draft</button>
-                              <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-action="modal#toggle">Submit</button>
+                              <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-activity-component-target="submitButton" data-action="modal#toggle">Submit</button>
                             </div>
                           <% end %>
                         <% end %>

@@ -8,7 +8,7 @@ export default class extends ApplicationController {
     achievementId: String,
     activityId: String,
   }
-  static targets = ["textarea"]
+  static targets = ["textarea", "submitButton"]
 
   trackUnsavedChanges() {
     this.initialValues = new Map()
@@ -20,6 +20,7 @@ export default class extends ApplicationController {
       parentModal.setAttribute("data-modal-confirm-value", !allValuesAreInitial)
     }
 
+    
     this.textareaTargets.forEach(input => {
       this.initialValues.set(input, input.value)
       input.addEventListener("input", this.toggleConfirmationEnabled)
@@ -30,10 +31,33 @@ export default class extends ApplicationController {
 
   connect() {
     this.trackUnsavedChanges()
+    this.checkForEvidence();
+  }
+
+  checkForEvidence() {
+    this.hasEvidence = () => {
+      const hasAnyValue = this.textareaTargets.some(element => element.value !== "")
+      if(this.hasSubmitButtonTarget) {
+        if(hasAnyValue){
+          this.submitButtonTarget.removeAttribute('disabled')
+        } else {
+          this.submitButtonTarget.setAttribute('disabled', '')
+        }
+      }
+    } 
+
+    this.textareaTargets.forEach(input => {
+      input.addEventListener("input", this.hasEvidence)
+    })
+
+    this.hasEvidence()
   }
 
   disconnect() {
-    this.textareaTargets.forEach(element => element.removeEventListener("input", this.toggleConfirmationEnabled))
+    this.textareaTargets.forEach(element => { 
+      element.removeEventListener("input", this.toggleConfirmationEnabled)
+      element.removeEventListener("input", this.hasEvidence)
+    })
   }
 
   saveAsDraft() {
