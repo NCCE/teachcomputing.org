@@ -53,6 +53,15 @@
   </div>
 </div>
 
+<%= render BannerComponent.new(
+  title: t(".student-resources.topics_to_life.heading"),
+  text:  t(".student-resources.topics_to_life.content.html"),
+  video: { url: cs_topic_video_1_url },
+  media_column_size: :half,
+  media_side: :left,
+  padding: 0
+) %>
+
 <%= render TestimonialsComponent.new(
   testimonials: careers_support_testimonal_data,
   testimonials_per_row: 2,

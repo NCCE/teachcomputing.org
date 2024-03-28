@@ -24,3 +24,6 @@ en:
             html: "Your local Hub can help loan you the kit you need to teach the physical computing units from our curriculum. Find out more in our %{kit_link}."
             kit_link_text: "Guide to physical computing kits"
           link_text: "Contact your local hub"
+        at_work:
+          heading: "Computer science at work"
+          content: "Help students better understand computer science curriculum topics by connecting them to the real world of work with our new video resources. Watch a Computing Ambassador introduce a topic and share what they do in their day-to-day job."

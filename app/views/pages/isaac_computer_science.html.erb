@@ -77,6 +77,17 @@
     </main>
   </div>
 </div>
+
+<%= render BannerComponent.new(
+  title: t(".at_work.heading"),
+  text:  t(".at_work.content"),
+  background_color: "isaac",
+  video: { url: cs_topic_video_1_url },
+  media_column_size: :half,
+  media_side: :right
+) %>
+
+
 <div class="white-bg">
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper govuk-main-wrapper--xl">

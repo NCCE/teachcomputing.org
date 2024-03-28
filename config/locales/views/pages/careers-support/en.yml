@@ -11,6 +11,10 @@ en:
         heading: Resources for your students
         subheading: "Computer Science journeys"
         content: "Help young people see the value and transferability of the skills they develop in the classroom with our Computer Science journeys. Hear from university students and computer scientists working in industry who are doing amazing things in computing-related fields."
+        topics_to_life:
+          heading: "Bringing computer science topics to life"
+          content: 
+            html: "Help students understand computer science curriculum topics they are learning in school by connecting them to the real world of work with our new video resources. Watch a Computing Ambassador introduce a topic and share what they do in their day-to-day job, inspiring young people to choose computing-linked careers.<br /><br />More videos coming soon!"
       isaac:
         events-link: "Isaac discovery events for GCSE and A level students"
         content: "Inspire young people with the career possibilities computer science can bring with our Isaac Computer Science Discovery events. Highlights include expert speakers from industry and academia, panel discussions about studying at university, and creative workshops."
