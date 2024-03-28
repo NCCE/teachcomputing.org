@@ -2,15 +2,14 @@
   <div class="ncce-feat">
     <h2 class="govuk-heading-l ncce-heading-l__centered">News and Updates</h2>
     <div class="ncce-feat__grid">
-      <div class="ncce-feat__main">
-        <% if @show_main_feature %>
-          <%= render CmsImageComponent.new(@main_feature.featured_image.image, show_caption: false) %>
-          <p class="govuk-body ncce-feat__date"><%= published_date(@main_feature.publish_date) %></p>
-          <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature.title, cms_post_path(@main_feature.slug), class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
-          <p class="govuk-body ncce-feat__excerpt"><%= @main_feature.excerpt %></p>
-        <% end %>
-      </div>
-
+      <% if @main_feature%>
+        <div class="ncce-feat__main">
+            <%= render CmsImageComponent.new(@main_feature.featured_image.image, show_caption: false) %>
+            <p class="govuk-body ncce-feat__date"><%= published_date(@main_feature.publish_date) %></p>
+            <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature.title, cms_post_path(@main_feature.slug), class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
+            <p class="govuk-body ncce-feat__excerpt"><%= @main_feature.excerpt %></p>
+        </div>
+      <% end %>
       <div class="ncce-feat__panel-container">
         <% @featured_posts.each do |post| %>
           <div class="ncce-feat__panel">

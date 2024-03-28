@@ -703,6 +703,974 @@
           }
         }
       }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "title": "Education and industry unite at key event championing gender equity in computer science",
+        "content": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Yesterday (February 6), we were delighted to bring together educationalists, industry, and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The Tech for Success: gender equity in computer science education event took place at ",
+                "type": "text"
+              },
+              {
+                "url": "https://www.tcs.com/",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "Tata Consultancy Services",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " (TCS) in London and provided a fitting platform to showcase the inaugural successes of the ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/i-belong",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "I Belong: encouraging girls into computer science programme",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": ". ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "A number of pioneering schools that were among the first to complete the programme were awarded with certificates recognising their success, presented by Karen Blake, Co-CEO of Tech Talent Charter and Jenny Oldroyd, Director of Curriculum and General Qualifications at the Department for Education. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Jenny Oldroyd said: \"We really want more girls and students from all kinds of backgrounds to make sure that they consider a career in computing, and to see themselves as feeling in place as part of that cohort that can get the best out of computer science.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The students and teachers were then given the chance to talk about some of their experiences and the hands-on computing projects they have participated in within the classroom, citing their involvement in exciting enrichment activities such as the Raspberry Pi Competition 2024 and STEM Clubs.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Next, a guest panel featuring Susie Smith, Head of Global Service Introduction at TCS, Caitlin Gould, founder of TECgirls, education consultant Beverly Clarke, and Helen Lovekin from the National Cyber Security Centre, discussed the importance of supporting females into STEM subjects and careers. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "STEM Learning’s CEO Séverine Trouillet, who chaired the panel, said: “The I Belong campaign is critical to help build an inclusive subject where girls feel they belong and can succeed. If girls feel they belong in tech, everybody benefits.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Caitlin Gould tells us: \"We need to make sure that if we do want girls to go into this space are we creating workspaces that are good places for them to go into.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The event took place in TCS’ newly opened, inspirational ",
+                "type": "text"
+              },
+              {
+                "url": "https://www.tcs.com/what-we-do/pace-innovation",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "Pace Port™",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " innovation space, which provided an impressive backdrop for the day. Amy Shocker, Head of Corporate Social Responsibility at TCS said:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "\"At TCS, we are passionate about encouraging inclusivity in technology education and are thrilled to be hosting the NCCE I Belong launch event at the TCS office. We have been collaborating with STEM Learning for many years, helping our associates become STEM Ambassadors that inspire the next generation of digital innovators, as well as bringing our flagship STEM programme, goIT, into schools.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "\"We continue our commitment to elevate technology startups, not-for-profits, and organisations striving for positive change in the field. Partnering with NCCE and STEM Learning is an important aspect of this work, building equitable and inclusive pathways for marginalised groups, young people, women and girls underrepresented in the technology space.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "If you haven't joined the I Belong programme yet, ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/i-belong",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "enrol today!",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " If you've already enrolled but haven't yet completed the programme, check your dashboard and proceed with the next steps to earn your school certificate and demonstrate your dedication to closing the gender gap in computing.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": " ",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "createdAt": "2024-02-15T09:25:09.455Z",
+        "updatedAt": "2024-02-15T09:34:18.693Z",
+        "publishedAt": "2024-02-15T09:28:35.512Z",
+        "slug": "tech-for-success",
+        "publishDate": "2024-02-07T12:30:00.000Z",
+        "excerpt": "Yesterday, we were delighted to bring together educationalists, industry and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+        "featuredImage": {
+          "data": {
+            "id": 5,
+            "attributes": {
+              "name": "Certificates-I-Belong-event-1-1.jpg",
+              "alternativeText": "Some alternative text",
+              "caption": null,
+              "width": 1324,
+              "height": 985,
+              "formats": {
+                "large": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "large_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "large_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 131.68,
+                  "width": 1000,
+                  "height": 744
+                },
+                "small": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "small_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "small_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 40.7,
+                  "width": 500,
+                  "height": 372
+                },
+                "medium": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "medium_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "medium_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 80.66,
+                  "width": 750,
+                  "height": 558
+                },
+                "thumbnail": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "thumbnail_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "thumbnail_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 9.61,
+                  "width": 210,
+                  "height": 156
+                }
+              },
+              "hash": "Certificates_I_Belong_event_1_1_7606559feb",
+              "ext": ".jpg",
+              "mime": "image/jpeg",
+              "size": 179.98,
+              "url": "https://strapi.teachcomputing.rpfdev.com/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-02-15T09:28:29.546Z",
+              "updatedAt": "2024-02-15T09:28:29.546Z"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "attributes": {
+        "title": "Exploring the wonders of data loggers: a Key Stage 2 adventure",
+        "content": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "These small devices hold the key to unlocking a world of scientific exploration and discovery for pupils! Delve into the exciting world of data loggers, exploring how they can be integrated into the Key Stage 2 curriculum to enhance learning and engage young minds.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "What are data loggers?",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Data loggers are compact electronic devices designed to collect and store data over time. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "These clever gadgets can measure various environmental factors such as temperature, sound, and light. The beauty of data loggers lies in their ability to continuously record information, providing a wealth of data for analysis and interpretation.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "Introducing the Vu+ Data Logger",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The Teach Computing Curriculum ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/curriculum/key-stage-2/data-and-information-data-logging",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "Year 4 Data logging unit",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " has been updated to be compatible with the Data Harvest Vu+ data loggers, removing the discontinued TTS data loggers. These data loggers are perfect for the Key Stage 2 classroom as they:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "format": "unordered",
+            "children": [
+              {
+                "type": "list-item",
+                "children": [
+                  {
+                    "text": "are compatible with laptops, desktops and iPads",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "children": [
+                  {
+                    "text": "contain built in sensors to record sound, light and temperature",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "children": [
+                  {
+                    "text": "can record data instantly, without being connected to a computer",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "children": [
+                  {
+                    "text": "work with free software specific to primary education",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "Connecting the Curriculum",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The Year 4 Data Logging unit is a great introduction to using such devices in the classroom, but let’s not forget that these activities can align to both the science and maths national curriculum. Why not consider engaging learners with real life applications, with some cross curricular ideas:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "children": [
+              {
+                "text": "Exploring Temperature",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Conduct hands-on experiments where learners use data loggers to measure temperature variations in different locations within the school or during outdoor activities. Discuss the importance of temperature data in understanding climate changes and its impact on living organisms.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "children": [
+              {
+                "text": "Investigating Habitats",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Introduce the concept of ecosystems and habitats by deploying data loggers in various environments like gardens, ponds, or woodlands. Learners can compare the collected data to identify patterns and make connections between environmental factors and the presence of different species.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "children": [
+              {
+                "text": "Experimenting with light",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Explore the influence of light on plant growth by placing data loggers in different areas receiving varying amounts of sunlight.Vu+ Data logger.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "image": {
+              "ext": ".png",
+              "url": "https://localhost:1337/uploads/image_2_be7543ef91.png",
+              "hash": "image_2_be7543ef91",
+              "mime": "image/png",
+              "name": "image (2).png",
+              "size": 39.85,
+              "width": 457,
+              "height": 457,
+              "caption": "Vu+ Data Logger",
+              "formats": {
+                "thumbnail": {
+                  "ext": ".png",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_image_2_be7543ef91.png",
+                  "hash": "thumbnail_image_2_be7543ef91",
+                  "mime": "image/png",
+                  "name": "thumbnail_image (2).png",
+                  "path": null,
+                  "size": 23.29,
+                  "width": 156,
+                  "height": 156
+                }
+              },
+              "provider": "local",
+              "createdAt": "2024-02-15T09:33:27.372Z",
+              "updatedAt": "2024-02-15T09:33:30.803Z",
+              "previewUrl": null,
+              "alternativeText": "Vu+ Data Logger",
+              "provider_metadata": null
+            },
+            "children": [
+              {
+                "text": "",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "No kit? No problem!",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Vu+ Data Loggers are now available to loan from ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/hubs",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "your local NCCE Hub",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " to support the successful teaching of the updated Year 4 Data Logging unit. The classroom loan set allows learners to work in groups to complete the unit and allows schools to discover how these data loggers can be used in a classroom setting.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "Free CPD on how you can integrate Vu+ Data Loggers in your classroom",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "With clear cross-curricular links to science and maths, unlock your school’s STEM connections and bring all subject leaders to join ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/courses/CP257/physical-computing-kits-ks2-data-loggers",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "our free KS2 data loggers CPD",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": ". During this CPD, you’ll explore how the Vu+ data loggers can be used in the classroom, with hands on experience of collecting data via the devices.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 1,
+            "children": [
+              {
+                "text": "Ignite curiosity with Data Loggers",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Data loggers are powerful tools that can transform the learning experience for Key Stage 2 learners. By immersing them in hands-on activities that involve real-world applications of science and mathematics, you can ignite their curiosity and passion for learning. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "As we embrace the era of technological advancement, let’s empower our young minds to become the scientists and explorers of tomorrow with the help of these data logging devices.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "children": [
+              {
+                "text": "About the author",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Rachel Vidler is a Primary Specialist for Computing at the National Centre for Computing Education.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "createdAt": "2024-02-15T09:33:47.632Z",
+        "updatedAt": "2024-02-15T09:36:30.421Z",
+        "publishedAt": "2024-02-15T09:33:48.957Z",
+        "slug": "exploring-data-loggers",
+        "publishDate": "2024-01-24T12:30:00.000Z",
+        "excerpt": "Rachel Vidler, National Primary Upper Specialist for Computing at the National Centre for Computing Education, explores the world of data loggers and how you can integrate them into the Key Stage 2 computing curriculum. ",
+        "featuredImage": {
+          "data": {
+            "id": 4,
+            "attributes": {
+              "name": "Data-Loggers-Blog-Asset.png",
+              "alternativeText": null,
+              "caption": "Vu+ Data Loggers",
+              "width": 2000,
+              "height": 1500,
+              "formats": {
+                "large": {
+                  "ext": ".png",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/large_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "hash": "large_Data_Loggers_Blog_Asset_610aff40b9",
+                  "mime": "image/png",
+                  "name": "large_Data-Loggers-Blog-Asset.png",
+                  "path": null,
+                  "size": 1502.84,
+                  "width": 1000,
+                  "height": 750
+                },
+                "small": {
+                  "ext": ".png",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/small_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "hash": "small_Data_Loggers_Blog_Asset_610aff40b9",
+                  "mime": "image/png",
+                  "name": "small_Data-Loggers-Blog-Asset.png",
+                  "path": null,
+                  "size": 385.08,
+                  "width": 500,
+                  "height": 375
+                },
+                "medium": {
+                  "ext": ".png",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/medium_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "hash": "medium_Data_Loggers_Blog_Asset_610aff40b9",
+                  "mime": "image/png",
+                  "name": "medium_Data-Loggers-Blog-Asset.png",
+                  "path": null,
+                  "size": 847.16,
+                  "width": 750,
+                  "height": 563
+                },
+                "thumbnail": {
+                  "ext": ".png",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "hash": "thumbnail_Data_Loggers_Blog_Asset_610aff40b9",
+                  "mime": "image/png",
+                  "name": "thumbnail_Data-Loggers-Blog-Asset.png",
+                  "path": null,
+                  "size": 73,
+                  "width": 208,
+                  "height": 156
+                }
+              },
+              "hash": "Data_Loggers_Blog_Asset_610aff40b9",
+              "ext": ".png",
+              "mime": "image/png",
+              "size": 1403.53,
+              "url": "https://strapi.teachcomputing.rpfdev.com/uploads/Data_Loggers_Blog_Asset_610aff40b9.png",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-02-12T13:31:52.406Z",
+              "updatedAt": "2024-02-15T09:30:58.631Z"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "title": "Education and industry unite at key event championing gender equity in computer science",
+        "content": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Yesterday (February 6), we were delighted to bring together educationalists, industry, and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The Tech for Success: gender equity in computer science education event took place at ",
+                "type": "text"
+              },
+              {
+                "url": "https://www.tcs.com/",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "Tata Consultancy Services",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " (TCS) in London and provided a fitting platform to showcase the inaugural successes of the ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/i-belong",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "I Belong: encouraging girls into computer science programme",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": ". ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "A number of pioneering schools that were among the first to complete the programme were awarded with certificates recognising their success, presented by Karen Blake, Co-CEO of Tech Talent Charter and Jenny Oldroyd, Director of Curriculum and General Qualifications at the Department for Education. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Jenny Oldroyd said: \"We really want more girls and students from all kinds of backgrounds to make sure that they consider a career in computing, and to see themselves as feeling in place as part of that cohort that can get the best out of computer science.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The students and teachers were then given the chance to talk about some of their experiences and the hands-on computing projects they have participated in within the classroom, citing their involvement in exciting enrichment activities such as the Raspberry Pi Competition 2024 and STEM Clubs.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Next, a guest panel featuring Susie Smith, Head of Global Service Introduction at TCS, Caitlin Gould, founder of TECgirls, education consultant Beverly Clarke, and Helen Lovekin from the National Cyber Security Centre, discussed the importance of supporting females into STEM subjects and careers. ",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "STEM Learning’s CEO Séverine Trouillet, who chaired the panel, said: “The I Belong campaign is critical to help build an inclusive subject where girls feel they belong and can succeed. If girls feel they belong in tech, everybody benefits.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Caitlin Gould tells us: \"We need to make sure that if we do want girls to go into this space are we creating workspaces that are good places for them to go into.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "The event took place in TCS’ newly opened, inspirational ",
+                "type": "text"
+              },
+              {
+                "url": "https://www.tcs.com/what-we-do/pace-innovation",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "Pace Port™",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " innovation space, which provided an impressive backdrop for the day. Amy Shocker, Head of Corporate Social Responsibility at TCS said:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "\"At TCS, we are passionate about encouraging inclusivity in technology education and are thrilled to be hosting the NCCE I Belong launch event at the TCS office. We have been collaborating with STEM Learning for many years, helping our associates become STEM Ambassadors that inspire the next generation of digital innovators, as well as bringing our flagship STEM programme, goIT, into schools.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "\"We continue our commitment to elevate technology startups, not-for-profits, and organisations striving for positive change in the field. Partnering with NCCE and STEM Learning is an important aspect of this work, building equitable and inclusive pathways for marginalised groups, young people, women and girls underrepresented in the technology space.\"",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "If you haven't joined the I Belong programme yet, ",
+                "type": "text"
+              },
+              {
+                "url": "https://teachcomputing.org/i-belong",
+                "type": "link",
+                "children": [
+                  {
+                    "text": "enrol today!",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "text": " If you've already enrolled but haven't yet completed the programme, check your dashboard and proceed with the next steps to earn your school certificate and demonstrate your dedication to closing the gender gap in computing.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": " ",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "createdAt": "2024-02-15T09:25:09.455Z",
+        "updatedAt": "2024-02-15T09:34:18.693Z",
+        "publishedAt": "2024-02-15T09:28:35.512Z",
+        "slug": "tech-for-success",
+        "publishDate": "2024-02-07T12:30:00.000Z",
+        "excerpt": "Yesterday, we were delighted to bring together educationalists, industry and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+        "featuredImage": {
+          "data": {
+            "id": 5,
+            "attributes": {
+              "name": "Certificates-I-Belong-event-1-1.jpg",
+              "alternativeText": "Some alternative text",
+              "caption": null,
+              "width": 1324,
+              "height": 985,
+              "formats": {
+                "large": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "large_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "large_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 131.68,
+                  "width": 1000,
+                  "height": 744
+                },
+                "small": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "small_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "small_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 40.7,
+                  "width": 500,
+                  "height": 372
+                },
+                "medium": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "medium_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "medium_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 80.66,
+                  "width": 750,
+                  "height": 558
+                },
+                "thumbnail": {
+                  "ext": ".jpg",
+                  "url": "https://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "hash": "thumbnail_Certificates_I_Belong_event_1_1_7606559feb",
+                  "mime": "image/jpeg",
+                  "name": "thumbnail_Certificates-I-Belong-event-1-1.jpg",
+                  "path": null,
+                  "size": 9.61,
+                  "width": 210,
+                  "height": 156
+                }
+              },
+              "hash": "Certificates_I_Belong_event_1_1_7606559feb",
+              "ext": ".jpg",
+              "mime": "image/jpeg",
+              "size": 179.98,
+              "url": "https://strapi.teachcomputing.rpfdev.com/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-02-15T09:28:29.546Z",
+              "updatedAt": "2024-02-15T09:28:29.546Z"
+            }
+          }
+        }
+      }
     }
   ],
   "meta": {
@@ -710,7 +1678,7 @@
       "page": 1,
       "pageSize": 10,
       "pageCount": 1,
-      "total": 2
+      "total": 5
     }
   }
 }

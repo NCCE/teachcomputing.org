@@ -62,11 +62,11 @@ RSpec.describe Cms::Providers::Strapi::Client do
   it "class all and returns mapped resource" do
     stub_strapi_get_collection_entity("test-collection")
     response = client.all(collection_class, 1, 10, {})
-    expect(response[:total_records]).to eq(2)
+    expect(response[:total_records]).to eq(5)
     expect(response[:page_size]).to eq(10)
     expect(response[:page_number]).to eq(1)
     expect(response[:resources]).to be_a Array
-    expect(response[:resources].length).to eq(2)
+    expect(response[:resources].length).to eq(5)
   end
 
   context "creates populate params" do
