@@ -70,6 +70,5 @@ RSpec.describe BannerComponent, type: :component do
     it "should set background colour class" do
       expect(page).to have_css(".purple-bg")
     end
-
   end
 end
