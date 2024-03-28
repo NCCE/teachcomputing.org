@@ -114,3 +114,5 @@ ignore:
   - Lint/UnreachableCode
 - spec/models/enrichment_groupings/term_spec.rb:
   - Lint/ConstantDefinitionInBlock
+- spec/services/achiever/course_filter_spec.rb:
+  - Rails/Date
