@@ -210,7 +210,7 @@
             "formats": {
               "large": {
                 "ext": ".jpg",
-                "url": "http://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                 "hash": "large_Certificates_I_Belong_event_1_1_7606559feb",
                 "mime": "image/jpeg",
                 "name": "large_Certificates-I-Belong-event-1-1.jpg",
@@ -221,7 +221,7 @@
               },
               "small": {
                 "ext": ".jpg",
-                "url": "http://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                 "hash": "small_Certificates_I_Belong_event_1_1_7606559feb",
                 "mime": "image/jpeg",
                 "name": "small_Certificates-I-Belong-event-1-1.jpg",
@@ -232,7 +232,7 @@
               },
               "medium": {
                 "ext": ".jpg",
-                "url": "http://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                 "hash": "medium_Certificates_I_Belong_event_1_1_7606559feb",
                 "mime": "image/jpeg",
                 "name": "medium_Certificates-I-Belong-event-1-1.jpg",
@@ -243,7 +243,7 @@
               },
               "thumbnail": {
                 "ext": ".jpg",
-                "url": "http://strapi.teachcomputing.rpfdev.com/uploads/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                 "hash": "thumbnail_Certificates_I_Belong_event_1_1_7606559feb",
                 "mime": "image/jpeg",
                 "name": "thumbnail_Certificates-I-Belong-event-1-1.jpg",
@@ -257,7 +257,7 @@
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 179.98,
-            "url": "http://strapi.teachcomputing.rpfdev.com/uploads/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
+            "url": "https://strapi.teachcomputing.rpfdev.com/uploads/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,

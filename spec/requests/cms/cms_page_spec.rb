@@ -23,7 +23,6 @@ RSpec.describe CmsController do
   end
 
   describe "GET #clear_page_cache" do
-
     before do
       allow(Cms::Collections::Blog).to receive(:clear_cache).and_return(nil)
     end
