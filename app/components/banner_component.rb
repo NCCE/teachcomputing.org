@@ -13,8 +13,8 @@ class BannerComponent < ViewComponent::Base
     @link = link
   end
 
-  def image_column_class
-    classes = ["banner-component banner-component__media-section govuk-!-padding-right-0 govuk-!-padding-left-0"]
+  def media_column_class
+    classes = ["banner-component banner-component__media-section"]
     classes << case @media_column_size
     when :third
       "govuk-grid-column-one-third"

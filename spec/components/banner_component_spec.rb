@@ -48,12 +48,12 @@ RSpec.describe BannerComponent, type: :component do
     end
   end
 
-  context "with right align image" do
+  context "with left align image" do
     before do
       render_inline(described_class.new(
         title: "Banner title",
         text: "Some random text",
-        media_side: :right,
+        media_side: :left,
         image: {
           url: "media/images/test/image.png",
           alt: ""
