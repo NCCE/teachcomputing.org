@@ -61,8 +61,12 @@ module Cms
       Collection.new(**response)
     end
 
-    def self.clear_cache
-      Rails.cache.delete_matched(/#{resource_key}.*/, namespace: "cms")
+    def self.clear_cache(key = nil)
+      if key
+        Rails.cache.delete("#{resource_key}-#{key}", namespace: "cms")
+      else
+        Rails.cache.delete_matched(/#{resource_key}.*/, namespace: "cms")
+      end
     end
 
     private_class_method def self.client

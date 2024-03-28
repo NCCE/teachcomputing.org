@@ -1,6 +1,8 @@
 module Cms
   module Models
     class BlogPreview
+      attr_reader :title, :excerpt, :publish_date, :featured_image, :slug
+
       def initialize(title, excerpt, publish_date, featured_image, slug)
         @title = title
         @excerpt = excerpt

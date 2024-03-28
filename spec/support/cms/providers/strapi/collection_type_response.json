@@ -199,14 +199,14 @@
             "id": 5,
             "attributes": {
               "name": "Certificates-I-Belong-event-1-1.jpg",
-              "alternativeText": null,
+              "alternativeText": "Some alternative text",
               "caption": null,
               "width": 1324,
               "height": 985,
               "formats": {
                 "large": {
                   "ext": ".jpg",
-                  "url": "/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                   "hash": "large_Certificates_I_Belong_event_1_1_7606559feb",
                   "mime": "image/jpeg",
                   "name": "large_Certificates-I-Belong-event-1-1.jpg",
@@ -217,7 +217,7 @@
                 },
                 "small": {
                   "ext": ".jpg",
-                  "url": "/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                   "hash": "small_Certificates_I_Belong_event_1_1_7606559feb",
                   "mime": "image/jpeg",
                   "name": "small_Certificates-I-Belong-event-1-1.jpg",
@@ -228,7 +228,7 @@
                 },
                 "medium": {
                   "ext": ".jpg",
-                  "url": "/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                   "hash": "medium_Certificates_I_Belong_event_1_1_7606559feb",
                   "mime": "image/jpeg",
                   "name": "medium_Certificates-I-Belong-event-1-1.jpg",
@@ -239,7 +239,7 @@
                 },
                 "thumbnail": {
                   "ext": ".jpg",
-                  "url": "/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
                   "hash": "thumbnail_Certificates_I_Belong_event_1_1_7606559feb",
                   "mime": "image/jpeg",
                   "name": "thumbnail_Certificates-I-Belong-event-1-1.jpg",
@@ -253,7 +253,7 @@
               "ext": ".jpg",
               "mime": "image/jpeg",
               "size": 179.98,
-              "url": "/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
+              "url": "http://strapi.teachcomputing.rpfdev.com/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
               "previewUrl": null,
               "provider": "local",
               "provider_metadata": null,
@@ -472,7 +472,7 @@
               "formats": {
                 "thumbnail": {
                   "ext": ".png",
-                  "url": "/uploads/thumbnail_image_2_be7543ef91.png",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_image_2_be7543ef91.png",
                   "hash": "thumbnail_image_2_be7543ef91",
                   "mime": "image/png",
                   "name": "thumbnail_image (2).png",
@@ -646,7 +646,7 @@
               "formats": {
                 "large": {
                   "ext": ".png",
-                  "url": "/uploads/large_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/large_Data_Loggers_Blog_Asset_610aff40b9.png",
                   "hash": "large_Data_Loggers_Blog_Asset_610aff40b9",
                   "mime": "image/png",
                   "name": "large_Data-Loggers-Blog-Asset.png",
@@ -657,7 +657,7 @@
                 },
                 "small": {
                   "ext": ".png",
-                  "url": "/uploads/small_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/small_Data_Loggers_Blog_Asset_610aff40b9.png",
                   "hash": "small_Data_Loggers_Blog_Asset_610aff40b9",
                   "mime": "image/png",
                   "name": "small_Data-Loggers-Blog-Asset.png",
@@ -668,7 +668,7 @@
                 },
                 "medium": {
                   "ext": ".png",
-                  "url": "/uploads/medium_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/medium_Data_Loggers_Blog_Asset_610aff40b9.png",
                   "hash": "medium_Data_Loggers_Blog_Asset_610aff40b9",
                   "mime": "image/png",
                   "name": "medium_Data-Loggers-Blog-Asset.png",
@@ -679,7 +679,7 @@
                 },
                 "thumbnail": {
                   "ext": ".png",
-                  "url": "/uploads/thumbnail_Data_Loggers_Blog_Asset_610aff40b9.png",
+                  "url": "http://strapi.teachcomputing.rpfdev.com/uploads/thumbnail_Data_Loggers_Blog_Asset_610aff40b9.png",
                   "hash": "thumbnail_Data_Loggers_Blog_Asset_610aff40b9",
                   "mime": "image/png",
                   "name": "thumbnail_Data-Loggers-Blog-Asset.png",
@@ -693,7 +693,7 @@
               "ext": ".png",
               "mime": "image/png",
               "size": 1403.53,
-              "url": "/uploads/Data_Loggers_Blog_Asset_610aff40b9.png",
+              "url": "http://strapi.teachcomputing.rpfdev.com/uploads/Data_Loggers_Blog_Asset_610aff40b9.png",
               "previewUrl": null,
               "provider": "local",
               "provider_metadata": null,

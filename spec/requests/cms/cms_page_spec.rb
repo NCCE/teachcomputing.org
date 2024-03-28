@@ -23,11 +23,9 @@ RSpec.describe CmsController do
   end
 
   describe "GET #clear_page_cache" do
-    let(:ghost_mock) { instance_double(Ghost) }
 
     before do
-      allow(Ghost).to receive(:new).and_return(ghost_mock)
-      allow(ghost_mock).to receive(:clear_page_cache).and_return(nil)
+      allow(Cms::Collections::Blog).to receive(:clear_cache).and_return(nil)
     end
 
     context "with a cms page" do
@@ -38,7 +36,7 @@ RSpec.describe CmsController do
 
       it "calls cache clear method" do
         get "/page-slug/refresh"
-        expect(ghost_mock).to have_received(:clear_page_cache).with("page-slug")
+        expect(Cms::Collections::Blog).to have_received(:clear_cache).with("page-slug")
       end
     end
 
@@ -50,8 +48,8 @@ RSpec.describe CmsController do
 
       it "calls cache clear method" do
         get "/parent-slug/page-slug/refresh"
-        expect(ghost_mock)
-          .to have_received(:clear_page_cache)
+        expect(Cms::Collections::Blog)
+          .to have_received(:clear_cache)
           .with("parent-slug-page-slug")
       end
     end

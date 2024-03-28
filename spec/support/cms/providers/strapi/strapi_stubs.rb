@@ -51,4 +51,13 @@ module StrapiStubs
   def stub_strapi_create resource_key
     stub_request(:post, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/#{resource_key}/).to_return(body: {}.to_json)
   end
+
+  def stub_featured_posts
+    stub_strapi_get_collection_entity("blogs")
+  end
+
+  def stub_featured_posts_error
+    stub_request(:get, /^http:\/\/strapi.teachcomputing.rpfdev.com\/api\/blogs/)
+      .to_return(status: [500, "Internal Server Error"])
+  end
 end
