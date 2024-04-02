@@ -3,8 +3,12 @@
 class FeaturedBlogPostsComponent < ViewComponent::Base
   def initialize(number_to_display:, show_main_feature: true)
     @show_main_feature = show_main_feature
-    response = Cms::Collections::Blog.all(1, number_to_display)
-    posts = response.resources
+    begin
+      response = Cms::Collections::Blog.all(1, number_to_display)
+      posts = response.resources
+    rescue ActiveRecord::RecordNotFound
+      posts = []
+    end
     if @show_main_feature
       @main_feature, *@featured_posts = posts.map { |x| x.data_models.first }
     else
