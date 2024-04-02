@@ -12,7 +12,12 @@ module Cms
             page:,
             pageSize: page_size
           }
-          response = @connection.get(collection_class.resource_key, params)
+          begin
+            response = @connection.get(collection_class.resource_key, params)
+          rescue => e
+            Sentry.capture_exception(e)
+            raise ActiveRecord::RecordNotFound
+          end
 
           raise ActiveRecord::RecordNotFound unless response.status == 200
 
@@ -32,7 +37,12 @@ module Cms
           }
           params[:publicationState] = "preview" if preview
 
-          response = @connection.get(generate_url(resource_class.resource_key, resource_id), params)
+          begin
+            response = @connection.get(generate_url(resource_class.resource_key, resource_id), params)
+          rescue => e
+            Sentry.capture_exception(e)
+            raise ActiveRecord::RecordNotFound
+          end
 
           raise ActiveRecord::RecordNotFound unless response.status == 200
 
