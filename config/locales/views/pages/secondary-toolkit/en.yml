@@ -34,7 +34,7 @@ en:
       courses:
         title: "Courses to advance your knowledge and skills"
         intro:
-          html: "Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
+          html: "Eligible state-funded secondary schools and colleges schools in England can also %{subsidies_link} to help with supply cover."
       further_learning:
         title: "Take your students’ learning further"
         para_1: "Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
@@ -47,6 +47,12 @@ en:
       resources:
         title: "Resources to help you teach secondary computing"
         description: "Building young peoples’ skills is an essential part of our commitment to developing a world-leading computing education. We have a wide range of free resources available to help your team support student development and hone their computing skill and knowledge, effectively preparing them for the world of tech and computing career opportunities."
+        safety:
+          heading: "Online safety resources"
+          text: "Online safety directly impacts the well-being and development of students. Teaching online safety not only safeguards students from dangers they encounter online but also empowers them with essential skills to navigate the digital world responsibly. Use our resources to learn how to help your students make informed decisions, engage critically with online content, and cultivate respectful and ethical online behaviour."
+          link:
+            text: "Explore online safety resources"
+            url: "/secondary-online-safety-resources"
         cards:
           curriculum:
             title: "Curriculum resources for Key Stages 3 and 4"

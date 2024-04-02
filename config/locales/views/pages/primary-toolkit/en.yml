@@ -26,6 +26,12 @@ en:
           html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses also can support you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
       resources:
         title: "Resources to help you teach primary computing"
+        safety:
+          heading: "Primary online safety resources"
+          text: "Keeping pupils safe online is crucial for their wellbeing and development. Teaching online safety not only protects them but also empowers them to use the internet responsibly. Use our accessible resources to learn how to better foster digital citizenship, help pupils make smart choices and behave ethically online and help prepare them for success in all aspects of their lives."
+          link:
+            text: "Explore online safety resources"
+            url: "/primary-online-safety-recommendations"
         cards:
           curriculum:
             title: "Curriculum resources for Key Stages 1 and 2"
@@ -48,7 +54,7 @@ en:
             text:
               html: "Schools across the country can loan our Physical Computing Kits from their local Computing Hub.<br /><br />The kits containing Micro:bits, BeeBots, data loggers and more, provide pupils with a hands-on experience of computing, enriching their learning in a fun and engaging way."
             link:
-              title: "Explore enrichment activities"
+              title: "Explore physical computing kits"
               url: "/physical-computing-kit"
               event-label: "physical computing kit"
       enrich:

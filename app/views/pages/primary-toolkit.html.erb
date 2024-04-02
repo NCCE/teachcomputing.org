@@ -63,6 +63,7 @@
   intro: t(".courses.intro.html",
     subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
   event_category: 'Primary teacher',
+  course_link: courses_path(params: { certificate: 'primary-certificate' }),
   courses: [
     {
       image: "media/images/pages/primary-toolkit/introduction_primary_computing.jpeg",
@@ -103,7 +104,7 @@
     {
       image: "media/images/pages/primary-toolkit/inclusive_computing_teaching_primary.jpeg",
       image_alt: "STEM course",
-      banner_text: "SUPPORTING STEM PUPILS",
+      banner_text: "SUPPORTING SEND PUPILS",
       title: "Inclusive computing in primary schools",
       url: "/courses/CP005/inclusive-computing-in-primary-schools",
       description: "Improve your teaching of programming basics by learning about algorithms and how to teach young children to code.",
@@ -188,6 +189,13 @@
 
             
           </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".resources.safety.heading") %></h2>
+          <p class="govuk-body"><%= t(".resources.safety.text") %></p>
+          <%= link_to t(".resources.safety.link.text"), t(".resources.safety.link.url"), class: "govuk-button button" %>
         </div>
       </div>
     </div>
