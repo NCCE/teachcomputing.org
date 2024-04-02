@@ -60,10 +60,6 @@
 
   &--i-belong {
     border-top: solid 9px $orange;
-    background-image: url('../images/logos/i_belong_flag.svg');
-    background-repeat: no-repeat;
-    background-position: 98% 0;
-    background-size: auto 130px;
 
     .bordered-card__text {
       width: 80%;
@@ -135,6 +131,12 @@
   .bordered-card {
     border-top: solid 9px var(--top-color, var(--green));
   }
+}
+
+.bordered-card__clickable-i-belong-flag {
+  position: absolute;
+  top: 0px;
+  right: 15px;
 }
 
 .bordered-cards--logos {

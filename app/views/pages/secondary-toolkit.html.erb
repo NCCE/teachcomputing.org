@@ -49,7 +49,7 @@
   </div>
 </div>
 
-<%= render BannerComponent.new(title: t(".i_belong_banner.title"),
+<%= render FullImageBannerComponent.new(title: t(".i_belong_banner.title"),
   text: t('.i_belong_banner.content.html',
     course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
   background_color: 'orange-bg',
@@ -217,6 +217,7 @@
                 class_name: 'bordered-card--i-belong',
                 title: t('.resources.cards.i_belong.title'),
                 text: t('.resources.cards.i_belong.text.html'),
+                clickable_i_belong: about_i_belong_path
               }
             ]
           ) %>
@@ -256,7 +257,7 @@
   </div>
 </div>
 
-<%= render BannerComponent.new(title: t(".career_banner.title"),
+<%= render FullImageBannerComponent.new(title: t(".career_banner.title"),
   text: t('.career_banner.content'),
   background_color: 'purple-bg',
   image: { 

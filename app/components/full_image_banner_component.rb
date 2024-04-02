@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BannerComponent < ViewComponent::Base
+class FullImageBannerComponent < ViewComponent::Base
   def initialize(title:, text:, image:, background_color:, link:, image_side: :left)
     @title = title
     @text = text

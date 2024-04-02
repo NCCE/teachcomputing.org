@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe BannerComponent, type: :component do
+RSpec.describe FullImageBannerComponent, type: :component do
   context "with left align image" do
     before do
       render_inline(described_class.new(
