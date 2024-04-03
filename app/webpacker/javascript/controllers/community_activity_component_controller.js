@@ -8,7 +8,7 @@ export default class extends ApplicationController {
     achievementId: String,
     activityId: String,
   }
-  static targets = ["textarea", "submitButton"]
+  static targets = ["textarea", "submitButton", "saveDraftButton"]
 
   trackUnsavedChanges() {
     this.initialValues = new Map()
@@ -42,6 +42,13 @@ export default class extends ApplicationController {
           this.submitButtonTarget.removeAttribute('disabled')
         } else {
           this.submitButtonTarget.setAttribute('disabled', '')
+        }
+      }
+      if(this.hasSaveDraftButtonTarget) {
+        if(hasAnyValue){
+          this.saveDraftButtonTarget.removeAttribute('disabled')
+        } else {
+          this.saveDraftButtonTarget.setAttribute('disabled', '')
         }
       }
     } 
