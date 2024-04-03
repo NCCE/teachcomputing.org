@@ -57,7 +57,7 @@ RSpec.describe("components/_footer", type: :view) do
   end
 
   it "has a LinkedIn link" do
-    expect(rendered).to have_link("X", href: %r{linkedin.com/company/national-centre-for-computing-education})
+    expect(rendered).to have_link("LinkedIn", href: %r{linkedin.com/company/national-centre-for-computing-education})
   end
 
   it "has an X link" do
