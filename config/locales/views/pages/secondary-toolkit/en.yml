@@ -34,7 +34,7 @@ en:
       courses:
         title: "Courses to advance your knowledge and skills"
         intro:
-          html: "Eligible state-funded secondary schools and colleges schools in England can also %{subsidies_link} to help with supply cover."
+          html: "Eligible state-funded secondary schools and colleges in England can also %{subsidies_link} to help with supply cover."
       further_learning:
         title: "Take your students’ learning further"
         para_1: "Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
@@ -73,7 +73,7 @@ en:
           question_banks:
             title: "Secondary Question Banks"
             text:
-              html: "A collection containing quality-assured question banks to use with Key Stage 3 computing and GCSE Computer Science students.<br /><br />Explore a series of 10 topics, covering areas across the computing curriculum."
+              html: "A collection containing quality&#8209;assured question banks to use with Key Stage 3 computing and GCSE Computer Science students.<br /><br />Explore a series of 10 topics, covering areas across the computing curriculum."
             link:
               title: "Find out more"
               url: "/secondary-question-banks"
@@ -88,8 +88,8 @@ en:
       i_belong_banner:
         title: "I Belong: encouraging girls into computer science"
         content:
-          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing your teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
+          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
       support:
         title: "Additional support"
-        para_1_html: "The NCCE operates a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
+        para_1_html: "We operate a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
         para_2_html: "Building on this support, the online %{stem_community_link} offers a way for teachers to connect, ask questions and support each other with professional advice and resources sharing."

@@ -119,6 +119,11 @@
   margin-bottom: 0;
 }
 
+.bordered-card__external-button {
+  background-image: url('../images/icons/external-button.svg');
+  background-repeat: no-repeat;
+  background-position: 95% center;
+}
 
 .secondary-certification-cards {
   gap: 40px;

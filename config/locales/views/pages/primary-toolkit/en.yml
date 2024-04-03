@@ -23,7 +23,7 @@ en:
       courses:
         title: "Courses to advance your knowledge and skills"
         intro:
-          html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses also can support you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
+          html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses will help you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
       resources:
         title: "Resources to help you teach primary computing"
         safety:
@@ -42,7 +42,7 @@ en:
               url: "/curriculum"
               event-label: "curriculum"
           glossary:
-            title: "Glossary of Primary computing terms"
+            title: "Glossary of primary computing terms"
             text:
               html: "Vocabulary is an important part of teaching and learning. We have designed this glossary as a tool to support and enhance teachers’ professional knowledge.<br /><br />For a teacher, a regular and consistent use of accurate, technical vocabulary can support pupils’ conceptual understanding."
             link:
@@ -50,7 +50,7 @@ en:
               url: "/primary-computing-glossary"
               event-label: "primary computing glossary"
           kits:
-            title: "Physical Computing Kits"
+            title: "Physical computing kits"
             text:
               html: "Schools across the country can loan our Physical Computing Kits from their local Computing Hub.<br /><br />The kits containing Micro:bits, BeeBots, data loggers and more, provide pupils with a hands-on experience of computing, enriching their learning in a fun and engaging way."
             link:
@@ -74,5 +74,5 @@ en:
       support:
         title: "Additional support"
         para_1_html: "Effective %{pedagogy_link} is at the heart of of good teaching and learning. Our pedagogy resources will help you to embed these evidence-based practices within your school."
-        para_2_html: "The NCCE operates a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
+        para_2_html: "We operate a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
         para_3_html: "Building on this support, the online %{stem_community_link} offers a way for teachers to connect, ask questions and support each other with professional advice and resources sharing."

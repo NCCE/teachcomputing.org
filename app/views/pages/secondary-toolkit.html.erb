@@ -175,7 +175,7 @@
                 class_name: 'bordered-card--toolkit--isaac',
                 title: t('.resources.cards.isaac.title'),
                 text: t('.resources.cards.isaac.text.html',
-                  a_level_link: link_to("A level", "https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=a_level&stage=all"),
+                  a_level_link: link_to("A&nbsp;level".html_safe, "https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=a_level&stage=all"),
                   gcse_link: link_to("GCSE", 'https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=gcse&stage=all')),
                 link: {
                   link_title: t('.resources.cards.isaac.link.title'),
@@ -200,13 +200,6 @@
           ) %>
         </div>
       </div>
-      <div class="govuk-grid-row govuk-!-margin-top-3">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l"><%= t(".resources.safety.heading") %></h2>
-          <p class="govuk-body"><%= t(".resources.safety.text") %></p>
-          <%= link_to t(".resources.safety.link.text"), t(".resources.safety.link.url"), class: "govuk-button button" %>
-        </div>
-      </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-!-margin-top-3">
           <%= render BorderedCardsComponent.new(
@@ -221,6 +214,27 @@
               }
             ]
           ) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-3">
+            <%= render BorderedCardsComponent.new(
+              cards_per_row: 1,
+              cards: [
+                {
+                  class_name: 'bordered-card--secondary-cert',
+                  title: t(".resources.safety.heading"),
+                  text: t(".resources.safety.text"),
+                  button: :no_stretch,
+                  links: [{
+                    link_title: t(".resources.safety.link.text"),
+                    link_url: t(".resources.safety.link.url"),
+                    tracking_page: 'Secondary toolkit',
+                    tracking_event: 'online_safety'
+                  }]
+                }
+              ]
+            ) %>
         </div>
       </div>
     </div>
