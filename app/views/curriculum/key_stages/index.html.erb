@@ -31,16 +31,30 @@
             '.aside.text.html',
             journey_link: (
               link_to t('.aside.text.journey_link_text'),
-              'https://static.teachcomputing.org/curriculum_journey.pdf',
+              'https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf',
               class: 'ncce-link',
-              title: t('.aside.title'),
+              title: t('.aside.titles.full'),
               data: tracking_data('journey poster')
+            ),
+            primary_journey_link: (
+              link_to 'Primary',
+              "https://static.teachcomputing.org/journey/Curriculum.Journey_Primary.1-2.pdf",
+              class: 'ncce-link',
+              title: t('.aside.titles.primary'),
+              data: tracking_data('primary journey poster')
+            ),
+            secondary_journey_link: (
+              link_to 'Secondary',
+              "https://static.teachcomputing.org/journey/Curriculum.Journey_Secondary.3-4.pdf",
+              class: 'ncce-link',
+              title: t('.aside.titles.secondary'),
+              data: tracking_data('secondary journey poster')
             ),
           ),
           image: {
-            file: 'media/images/icons/curriculum-journey.png',
-            title: t('.aside.title'),
-            url: 'https://static.teachcomputing.org/curriculum_journey.pdf',
+            file: 'media/images/icons/curriculum-journey-full.png',
+            title: t('.aside.titles.full'),
+            url: 'https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf',
             tracking_label: 'journey poster'
           },
           tracking_category: tracking_category,

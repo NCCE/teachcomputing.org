@@ -23,6 +23,14 @@ RSpec.describe("curriculum/key_stages/show", type: :view) do
       expect(rendered).to have_css(".hero__heading", text: "Key stage 1 resources")
     end
 
+    it "links to the journey poster" do
+      key_stage = JSON.parse(unit_json, object_class: OpenStruct).data.key_stage.level
+      key_stage_type = ["1", "2"].include?(key_stage) ? "Primary" : "Secondary"
+      key_stage_range = (key_stage_type == "Primary") ? "1-2" : "3-4"
+
+      expect(rendered).to have_link("viewing and progressing through our #{key_stage_type} curriculum journey", href: "https://static.teachcomputing.org/journey/Curriculum.Journey_#{key_stage_type}.#{key_stage_range}.pdf")
+    end
+
     it "links to feedback form" do
       expect(rendered).to have_link("Provide your feedback", href: "https://survey.alchemer.eu/s3/90535031/National-Centre-for-Computing-Education-Teach-Computing-Curriculum-Feedback")
     end
