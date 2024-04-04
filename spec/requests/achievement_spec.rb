@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe AchievementsController do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, self_verification_info: "do something good") }
+  let(:activity) { create(:activity, public_copy_evidence: [{brief: "do something good"}]) }
 
   before do
     allow_any_instance_of(AuthenticationHelper)
@@ -11,13 +11,13 @@ RSpec.describe AchievementsController do
 
   describe "POST #create" do
     context "with valid params" do
-      let(:self_verification_info) { "hello world" }
+      let(:evidence) { ["hello world"] }
 
       before do
         post achievements_path, params: {
           achievement: {
             activity_id: activity.id,
-            self_verification_info:
+            evidence:
           }
         }
       end
@@ -40,13 +40,13 @@ RSpec.describe AchievementsController do
     end
 
     context "with invalid params" do
-      let(:self_verification_info) { "hello world" }
+      let(:evidence) { ["hello world"] }
 
       before do
         post achievements_path, params: {
           achievement: {
             activity_id: nil,
-            self_verification_info:
+            evidence:
           }
         }
       end
@@ -62,14 +62,14 @@ RSpec.describe AchievementsController do
   end
 
   describe "PUT #update" do
-    let(:achievement) { create(:drafted_achievement, self_verification_info: "hello world", user:, activity:) }
+    let(:achievement) { create(:drafted_achievement, evidence: ["hello world"], user:, activity:) }
     context "with valid params" do
-      let(:self_verification_info) { "hello world 2" }
+      let(:evidence) { ["hello world 2"] }
 
       before do
         put achievement_path(achievement), params: {
           achievement: {
-            self_verification_info:
+            evidence:
           }
         }
       end
@@ -83,17 +83,17 @@ RSpec.describe AchievementsController do
       end
 
       it "updates achievement self_verification_info to new value" do
-        expect(user.achievements.first.self_verification_info).to eq self_verification_info
+        expect(user.achievements.first.evidence).to eq evidence
       end
     end
 
     context "with invalid params" do
-      let(:self_verification_info) { "hello world" }
+      let(:evidence) { ["hello world"] }
 
       before do
         put achievement_path(achievement), params: {
           achievement: {
-            self_verification_info:,
+            evidence:,
             activity_id: nil
           }
         }
@@ -110,7 +110,7 @@ RSpec.describe AchievementsController do
   end
 
   describe "DELETE #destroy" do
-    let(:achievement) { create(:drafted_achievement, self_verification_info: "hello world", user:, activity:) }
+    let(:achievement) { create(:drafted_achievement, evidence: ["hello world"], user:, activity:) }
     context "with valid params" do
       before do
         delete achievement_path(achievement)
@@ -150,7 +150,7 @@ RSpec.describe AchievementsController do
   describe "POST #submit" do
     context "with valid params" do
       let(:achievement) { nil }
-      let(:self_verification_info) { "hello world" }
+      let(:evidence) { ["hello world"] }
 
       before do
         achievement
@@ -158,7 +158,7 @@ RSpec.describe AchievementsController do
         post submit_achievements_path, params: {
           achievement: {
             activity_id: activity.id,
-            self_verification_info:
+            evidence:
           }
         }
       end
@@ -180,7 +180,7 @@ RSpec.describe AchievementsController do
       end
 
       context "when activity already exists" do
-        let(:achievement) { create(:drafted_achievement, self_verification_info: "hello world", user:, activity:) }
+        let(:achievement) { create(:drafted_achievement, evidence: ["hello world"], user:, activity:) }
 
         it "updates achievement to completed state" do
           expect(achievement.complete?).to be true
@@ -188,7 +188,7 @@ RSpec.describe AchievementsController do
       end
 
       context "if inadequate evidience is provided" do
-        let(:self_verification_info) { nil }
+        let(:evidence) { nil }
 
         it "sets flash to inform of this" do
           expect(flash[:notice]).to eq "Inadequate evidence provided"
@@ -201,7 +201,7 @@ RSpec.describe AchievementsController do
         post submit_achievements_path, params: {
           achievement: {
             activity_id: nil,
-            self_verification_info: "hello world"
+            evidence: ["hello world"]
           }
         }
       end

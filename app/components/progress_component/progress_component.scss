@@ -1,0 +1,35 @@
+.progress-component {
+  .progress-component__back,
+  .progress-component__continue,
+  .progress-component__submit,
+  .progress-component__step {
+    &:not(.active) {
+      display: none;
+    }
+  }
+
+  .progress-component__back, .progress-component__continue {
+    color: $hyper-link-blue;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: transparent;
+
+    &:hover {
+      color: $grey-dark-x;
+      cursor: pointer;
+    }
+  }
+
+  .progress-component__back {
+    @extend .icon-arrow-left;
+  }
+
+  .progress-component__continue {
+    @include icon('../images/icons/arrow_right.svg');
+    padding-right: 30px;
+    background-size: 25px;
+    display: block;
+    background-position: top right;
+  }
+}

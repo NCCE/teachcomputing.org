@@ -38,7 +38,7 @@ class BorderedCardsComponent < ViewComponent::Base
     when :lime, true
       "govuk-button button bordered-card__get-involved-button"
     when :white
-      "govuk-button ncce-button__white bordered-card__get-involved-button"
+      "govuk-button ncce-button--white bordered-card__get-involved-button"
     when :blank
       ""
     else
