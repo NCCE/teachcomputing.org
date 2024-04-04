@@ -23,6 +23,12 @@ module Cms
                 strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 strapi_data[:slug]
               )
+            elsif model_class == Cms::Models::SimplePagePreview
+              model_class.new(
+                strapi_data[:title],
+                strapi_data[:slug],
+                strapi_data[:seo][:description]
+              )
             end
           end
 

@@ -18,11 +18,11 @@ RSpec.describe GhostToStrapi do
   it "should call the correct methods when converting posts" do
     problems = GhostToStrapi.new.convert_posts(2)
     expect(problems).to be_empty
-    assert_requested(:put, "http://strapi.teachcomputing.rpfdev.com/api/blogs/3", times: 1) do |request|
+    assert_requested(:put, "https://strapi.teachcomputing.org/api/blogs/3", times: 1) do |request|
       sent_data = JSON.parse(request.body, symbolize_names: true)[:data]
       sent_data[:slug] == "reducing-workload"
     end
-    assert_requested(:post, "http://strapi.teachcomputing.rpfdev.com/api/blogs", times: 1) do |request|
+    assert_requested(:post, "https://strapi.teachcomputing.org/api/blogs", times: 1) do |request|
       sent_data = JSON.parse(request.body, symbolize_names: true)[:data]
       sent_data[:slug] == "national-careers-week-2024"
     end
@@ -31,7 +31,7 @@ RSpec.describe GhostToStrapi do
   it "should call the correct methods when converting pages" do
     problems = GhostToStrapi.new.convert_pages(1)
     expect(problems).to be_empty
-    assert_requested(:post, "http://strapi.teachcomputing.rpfdev.com/api/simple-pages", times: 1) do |request|
+    assert_requested(:post, "https://strapi.teachcomputing.org/api/simple-pages", times: 1) do |request|
       sent_data = JSON.parse(request.body, symbolize_names: true)[:data]
       sent_data[:slug] == "privacy"
     end
