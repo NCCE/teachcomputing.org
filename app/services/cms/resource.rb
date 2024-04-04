@@ -1,6 +1,6 @@
 module Cms
   class Resource
-    CACHE_EXPIRY = 12.hours
+    CACHE_EXPIRY = 4.hours
 
     attr_accessor :id, :created_at, :updated_at, :published_at, :data_models
 
@@ -10,6 +10,10 @@ module Cms
       @created_at = DateTime.parse(created_at)
       @updated_at = DateTime.parse(updated_at)
       @published_at = DateTime.parse(published_at)
+    end
+
+    def to_search_record(index_time)
+      raise NotImplementedError
     end
 
     def self.is_collection = false

@@ -1,6 +1,21 @@
 module Cms
   module Collections
     class Blog < Resource
+      CACHE_EXPIRY = 30.minutes
+
+      def to_search_record(index_time)
+        blog_data_model = data_models.first
+        {
+          type: SearchablePages::CmsBlog.name,
+          title: blog_data_model.title,
+          excerpt: blog_data_model.excerpt,
+          metadata: {slug: blog_data_model.slug},
+          published_at: blog_data_model.publish_date,
+          created_at: index_time,
+          updated_at: index_time
+        }
+      end
+
       def self.is_collection = true
 
       def self.collection_attribute_mappings

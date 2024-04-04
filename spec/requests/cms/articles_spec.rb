@@ -4,7 +4,7 @@ RSpec.describe CmsController do
   describe "GET #articles" do
     context "with a valid page" do
       before do
-        stub_strapi_get_collection_entity("blog")
+        stub_strapi_blog_collection
         get "/blog"
       end
 

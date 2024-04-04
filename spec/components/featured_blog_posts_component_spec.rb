@@ -14,7 +14,7 @@ RSpec.describe FeaturedBlogPostsComponent, type: :component do
 
   context "when has posts" do
     before do
-      stub_strapi_get_collection_entity("blogs")
+      stub_strapi_blog_collection
       render_inline(described_class.new(number_to_display: 5))
     end
 

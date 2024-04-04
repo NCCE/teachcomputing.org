@@ -8,11 +8,19 @@ module Cms
               {populate: [:title, :description]}
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
+            elsif model_class == Cms::Models::SimplePagePreview
+              {
+                populate: {seo: {populate: [:description]}},
+                fields: [:title, :slug, :publishedAt, :createdAt, :updatedAt]
+              }
             elsif model_class == Cms::Models::BlogPreview
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :excerpt, :publishDate, :slug, :publishedAt, :createdAt, :updatedAt],
-                sort: ["publishDate:desc"]
+                sort: ["publishDate:desc"],
+                filters: {
+                  publishDate: {"$lt": DateTime.now.strftime}
+                }
               }
             end
           end

@@ -58,11 +58,21 @@ module StrapiStubs
   end
 
   def stub_featured_posts
-    stub_strapi_get_collection_entity("blogs")
+    stub_strapi_blog_collection
   end
 
   def stub_featured_posts_error
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/)
       .to_return(status: [500, "Internal Server Error"])
+  end
+
+  def stub_strapi_simple_page_collection
+    json_response = File.new("spec/support/cms/providers/strapi/simple_pages_collection_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/simple-pages/).to_return(body: json_response)
+  end
+
+  def stub_strapi_blog_collection
+    json_response = File.new("spec/support/cms/providers/strapi/blogs_collection_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return(body: json_response)
   end
 end

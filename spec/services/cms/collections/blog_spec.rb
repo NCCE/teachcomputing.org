@@ -7,4 +7,8 @@ RSpec.describe Cms::Collections::Blog do
   it "should have correct resource_key" do
     expect(described_class.resource_key).to eq("blogs")
   end
+
+  it "should have 30 minute cache expiry" do
+    expect(described_class::CACHE_EXPIRY).to eq(30.minutes)
+  end
 end
