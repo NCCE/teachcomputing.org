@@ -73,6 +73,27 @@ FactoryBot.define do
     description { "this is a community activity" }
     credit { 10 }
     self_verification_info { "Please provide a link to your contribution" }
+    public_copy_evidence {
+      [{
+        brief: "brief: step 1",
+        bullets: [
+          "point 1",
+          "point 2",
+          "point 3"
+        ]
+      },
+        {
+          brief: "brief: step 2"
+        },
+        {
+          brief: "brief: step 3",
+          bullets: [
+            "point 4",
+            "point 5",
+            "point 6"
+          ]
+        }]
+    }
   end
 
   trait :community_5 do

@@ -112,7 +112,7 @@ module ExternalLinkHelper
   end
 
   def structuring_your_i_belong_evidence_url
-    "https://static.teachcomputing.org/Structuring+your+evidence+for+I+Belong.docx"
+    "https://static.teachcomputing.org/Completing.your.I.Belong.evidence.Feb.2024.pdf"
   end
 
   def csa_handbook_url

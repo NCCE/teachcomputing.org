@@ -40,11 +40,14 @@
   }
 }
 
-.ncce-button__pink {
-  @include ncce_button($deep-cerulean);
+.ncce-button--pink {
+  @include ncce_button($white);
+
+  color: $govuk-text-colour;
+  border-color: $red;
 }
 
-.ncce-button__blue {
+.ncce-button--blue {
   @include ncce_button($blue);
 }
 
@@ -53,11 +56,11 @@
   color: $govuk-text-colour;
 }
 
-.ncce-button__white {
+.ncce-button--white {
   @include ncce_button($white, $lime-green);
 }
 
-.ncce-button__white_black_border {
+.ncce-button--white_black_border {
   @include ncce_button($white);
 }
 

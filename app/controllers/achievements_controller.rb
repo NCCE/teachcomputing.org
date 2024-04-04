@@ -75,10 +75,6 @@ class AchievementsController < ApplicationController
   end
 
   def achievement_params
-    params.require(:achievement).permit(:activity_id, :supporting_evidence, :self_verification_info)
-  end
-
-  def self_verification_url
-    helpers.safe_redirect_url(request.referrer) || dashboard_path
+    params.require(:achievement).permit(:activity_id, :supporting_evidence, evidence: [])
   end
 end
