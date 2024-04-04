@@ -51,6 +51,6 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
   end
 
   it "links to the isaac page" do
-    expect(rendered).to have_link("Discover Isaac Computer Science", href: "/a-level-computer-science")
+    expect(rendered).to have_link(href: "/a-level-computer-science")
   end
 end

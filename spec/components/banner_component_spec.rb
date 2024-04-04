@@ -20,7 +20,7 @@ RSpec.describe BannerComponent, type: :component do
     end
 
     it "should default to two thirds for content" do
-      expect(page).to have_css(".banner-component__content-section.govuk-grid-column-two-thirds")
+      expect(page).to have_css(".banner-component__content-section--two-thirds")
     end
   end
 
@@ -43,17 +43,22 @@ RSpec.describe BannerComponent, type: :component do
       expect(page).to have_css(".govuk-width-container")
     end
 
+    it "should set side class on banner-component" do
+      expect(page).to have_css(".banner-component--media-left")
+    end
+
     it "should set content to be one half" do
-      expect(page).to have_css(".banner-component__content-section.govuk-grid-column-one-half")
+      expect(page).to have_css(".banner-component__media-section--half")
+      expect(page).to have_css(".banner-component__content-section--half")
     end
   end
 
-  context "with left align image" do
+  context "with right align image" do
     before do
       render_inline(described_class.new(
         title: "Banner title",
         text: "Some random text",
-        media_side: :left,
+        media_side: :right,
         image: {
           url: "media/images/test/image.png",
           alt: ""
@@ -65,6 +70,10 @@ RSpec.describe BannerComponent, type: :component do
 
     it "should have container" do
       expect(page).to have_css(".govuk-width-container")
+    end
+
+    it "should set side class on banner-component" do
+      expect(page).to have_css(".banner-component--media-right")
     end
 
     it "should set background colour class" do

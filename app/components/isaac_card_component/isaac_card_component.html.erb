@@ -1,16 +1,21 @@
 <div class="isaac-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper <%= @padding_class %>">
-      <div class="isaac-card-component">
-        <%= image_pack_tag 'media/images/logos/isaac-logo-purple.svg', alt: t('.image_alt'), class: 'isaac-card-component__logo' %>
-        <div class="isaac-card-component__description govuk-body">
-          <h2 class="govuk-heading-m isaac-card-component__title govuk-!-margin-bottom-3"><%= t('.title') %></h2>
-          <p><%= t('.text.html', gcse_link: link_to('GCSE computer science', '/gcse-revision', class: 'ncce-link isaac-card-component__link', data: tracking_data('Isaac GCSE'))) %></p>
-          <%= link_to t('.link_text'), '/a-level-computer-science',
-            class: 'ncce-link isaac-card-component__link',
-            title: t('.link_text'),
-            data:  tracking_data('Isaac CS')
-          %>
+      <div class="govuk-grid-row">
+        <h2 class="govuk-heading-m isaac-card-component__title govuk-!-text-align-centre govuk-!-margin-bottom-3"><%= t('.title') %></h2>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <%= link_to about_isaac_computer_science_path do %>
+            <%= image_pack_tag 'media/images/logos/isaac-logo-purple.svg', alt: t('.image_alt'), class: 'isaac-card-component__logo' %>
+          <% end %>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">
+            <%= t('.text.html', 
+              gcse_link: link_to('GCSE computer science', '/gcse-revision', class: 'ncce-link isaac-card-component__link', data: tracking_data('Isaac GCSE')),
+              a_level_link: link_to('A level', '/a-level-computer-science', class: 'ncce-link isaac-card-component__link', data:  tracking_data('Isaac CS'))) %>
+          </p>
         </div>
       </div>
     </div>

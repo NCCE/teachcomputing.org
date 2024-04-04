@@ -1,9 +1,7 @@
-<div class="<%= @background_color %>-bg banner-component-wrapper">
+<div class="<%= color_class(@background_color) %> banner-component-wrapper">
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-<%= @padding %>">
-      <div class="govuk-grid-row">
-
-        <%= media_block if @media_side == :left %> 
+    <div class="govuk-main-wrapper <%= govuk_wrapper_class %>">
+      <div class="banner-component govuk-!-padding-<%= @padding %> <%= color_class(@box_color) %> <%= media_side_class %>">
 
         <div class="<%= text_column_class %>">
           <div class="banner-component_title">
@@ -21,7 +19,17 @@
           </div>
         </div>
 
-        <%= media_block if @media_side == :right %> 
+        <div class="<%= media_column_class %>">
+          <% if @image %>
+            <%= image_pack_tag @image[:url], alt: @image[:alt] %>
+          <% end %>
+          <% if @video %>
+            <video controls>
+              <source src="<%= @video[:url] %>">
+            </video>
+          <% end %>
+        </div>
+        
       </div>
     </div>
   </div>
