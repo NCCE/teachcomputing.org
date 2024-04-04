@@ -144,58 +144,69 @@
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-            <h2 class="govuk-heading-l"><%= t(".resources.title") %></h2>
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".resources.title") %></h2>
 
-            <%= render BorderedCardsComponent.new(
-              cards_per_row: 3,
-              class_name: 'resources-help-cards',
-              cards: [
-                {
-                  class_name: 'bordered-card--primary-cert',
-                  title: t('.resources.cards.curriculum.title'),
-                  text: t('.resources.cards.curriculum.text.html'),
-                  links: [{
-                    link_title: t('.resources.cards.curriculum.link.title'),
-                    link_url: t('.resources.cards.curriculum.link.url'),
-                    tracking_page: 'Primary toolkit',
-                    tracking_label: t('.resources.cards.curriculum.link.event-label')
-                  }]
-                },
-                {
-                  class_name: 'bordered-card--primary-cert',
-                  title: t('.resources.cards.glossary.title'),
-                  text: t('.resources.cards.glossary.text.html'),
-                  links: [{
-                    link_title: t('.resources.cards.glossary.link.title'),
-                    link_url: t('.resources.cards.glossary.link.url'),
-                    tracking_page: 'Primary toolkit',
-                    tracking_label: t('.resources.cards.glossary.link.event-label')
-                  }]
-                },
-                {
-                  class_name: 'bordered-card--primary-cert',
-                  title: t('.resources.cards.kits.title'),
-                  text: t('.resources.cards.kits.text.html'),
-                  links: [{
-                    link_title: t('.resources.cards.kits.link.title'),
-                    link_url: t('.resources.cards.kits.link.url'),
-                    tracking_page: 'Primary toolkit',
-                    tracking_label: t('.resources.cards.kits.link.event-label')
-                  }]
-                }
-              ]
-            ) %> 
-
-            
-          </div>
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 3,
+            class_name: 'resources-help-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.curriculum.title'),
+                text: t('.resources.cards.curriculum.text.html'),
+                links: [{
+                  link_title: t('.resources.cards.curriculum.link.title'),
+                  link_url: t('.resources.cards.curriculum.link.url'),
+                  tracking_page: 'Primary toolkit',
+                  tracking_label: t('.resources.cards.curriculum.link.event-label')
+                }]
+              },
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.glossary.title'),
+                text: t('.resources.cards.glossary.text.html'),
+                links: [{
+                  link_title: t('.resources.cards.glossary.link.title'),
+                  link_url: t('.resources.cards.glossary.link.url'),
+                  tracking_page: 'Primary toolkit',
+                  tracking_label: t('.resources.cards.glossary.link.event-label')
+                }]
+              },
+              {
+                class_name: 'bordered-card--primary-cert',
+                title: t('.resources.cards.kits.title'),
+                text: t('.resources.cards.kits.text.html'),
+                links: [{
+                  link_title: t('.resources.cards.kits.link.title'),
+                  link_url: t('.resources.cards.kits.link.url'),
+                  tracking_page: 'Primary toolkit',
+                  tracking_label: t('.resources.cards.kits.link.event-label')
+                }]
+              }
+            ]
+          ) %> 
         </div>
       </div>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l"><%= t(".resources.safety.heading") %></h2>
-          <p class="govuk-body"><%= t(".resources.safety.text") %></p>
-          <%= link_to t(".resources.safety.link.text"), t(".resources.safety.link.url"), class: "govuk-button button" %>
+        <div class="govuk-grid-column-full govuk-!-margin-top-3">
+            <%= render BorderedCardsComponent.new(
+              cards_per_row: 1,
+              cards: [
+                {
+                  class_name: 'bordered-card--primary-cert',
+                  title: t(".resources.safety.heading"),
+                  text: t(".resources.safety.text"),
+                  button: :no_stretch,
+                  links: [{
+                    link_title: t(".resources.safety.link.text"),
+                    link_url: t(".resources.safety.link.url"),
+                    tracking_page: 'Primary toolkit',
+                    tracking_event: 'online_safety'
+                  }]
+                }
+              ]
+            ) %>
         </div>
       </div>
     </div>

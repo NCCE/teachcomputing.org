@@ -199,23 +199,7 @@
             ]
           ) %>
         </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-!-margin-top-3">
-          <%= render BorderedCardsComponent.new(
-            cards_per_row: 1,
-            class_name: 'i-belong',
-            cards: [
-              {
-                class_name: 'bordered-card--i-belong',
-                title: t('.resources.cards.i_belong.title'),
-                text: t('.resources.cards.i_belong.text.html'),
-                clickable_i_belong: about_i_belong_path
-              }
-            ]
-          ) %>
-        </div>
-      </div>
+      </div> 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-!-margin-top-3">
             <%= render BorderedCardsComponent.new(
@@ -235,6 +219,22 @@
                 }
               ]
             ) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-3">
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 1,
+            class_name: 'i-belong',
+            cards: [
+              {
+                class_name: 'bordered-card--i-belong',
+                title: t('.resources.cards.i_belong.title'),
+                text: t('.resources.cards.i_belong.text.html'),
+                clickable_i_belong: about_i_belong_path
+              }
+            ]
+          ) %>
         </div>
       </div>
     </div>
