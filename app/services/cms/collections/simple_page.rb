@@ -1,7 +1,6 @@
 module Cms
   module Collections
     class SimplePage < Resource
-
       def to_search_record(index_time)
         page_data = data_models.first
         {
