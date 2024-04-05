@@ -1,3 +1,12 @@
+.ncce-confidence__header {
+  text-align: center;
+  padding-top: 3rem;
+
+  h1 {
+    font-weight: normal;
+  }
+}
+
 .ncce-confidence {
   display: grid;
   gap: 1rem;
@@ -15,6 +24,10 @@
       width: 304px;
       height: 186px;
       border-bottom: 3px solid var(--color);
+
+      &:last-of-type {
+        object-position: center top;
+      }
     }
 
     .ncce-confidence__link {
@@ -22,7 +35,7 @@
       text-decoration: none;
       font-size: 1.25rem;
     }
-    
+
     .ncce-confidence__description {
       @extend .govuk-body-m;
       color: $grey-storm;

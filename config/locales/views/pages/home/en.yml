@@ -13,7 +13,13 @@ en:
         learn: Learn more about us
         view: View dashboard
 
+      hero_2:
+        alt:
+          title: Home of Computing Education
+
       confidence:
+        heading: Get more confident with computing
+
         courses:
           title: Courses
           description: Discover our range of professional development courses, designed to help you teach computing from key stages 1 to 4.
