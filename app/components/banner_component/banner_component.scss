@@ -1,0 +1,65 @@
+
+.banner-component {
+  display: flex;
+  gap: 15px;
+
+  &--media-left {
+    flex-direction: row-reverse;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column; 
+    }
+  }
+
+  &--media-right {
+    flex-direction: row;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column; 
+    }
+  }
+
+  .banner-component__media-section {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    video {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &--half {
+      flex: 0 1 50%;
+    }
+
+    &--third {
+      flex: 0 1 33.3%
+    }
+  }
+
+  .banner-component__content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      color: $black !important;
+      font-family: $font-family-heading !important;
+    }
+    p {
+      color: $grey-storm !important;
+    }
+
+    &--half {
+      flex: 0 1 50%;
+    }
+
+    &--two-thirds {
+      flex: 1 1 66.6%
+    }
+  }
+
+}

@@ -56,7 +56,26 @@
       </div>
     </div>
   </div>
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-0">
+  
+</div>
+<%= render IsaacCardComponent.new(
+  tracking_category: tracking_category,
+  padding_class: "govuk-!-padding-bottom-1"
+) %>
+
+<%= render BannerComponent.new(
+  title: t(".at_work.heading"),
+  text:  t(".at_work.content"),
+  background_color: "isaac",
+  box_color: "white",
+  video: { url: cs_topic_video_1_url },
+  media_column_size: :half,
+  media_side: :right,
+  wrapper_padding: "top-0"
+) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <%= render NoticeComponent.new(
@@ -86,4 +105,3 @@
     </div>
   </div>
 </div>
-<%= render IsaacCardComponent.new(tracking_category: tracking_category) %>
