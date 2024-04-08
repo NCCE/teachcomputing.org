@@ -14,7 +14,7 @@
               <%= @text %>
             </p>
             <% if @link %>
-              <%= @link %>
+              <%= link_to @link[:text], @link[:url], class: @link[:class] %>
             <% end %>
           </div>
         </div>

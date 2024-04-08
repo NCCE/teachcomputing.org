@@ -31,30 +31,24 @@ class BannerComponent < ViewComponent::Base
 
   def media_column_class
     classes = ["banner-component__media-section"]
-    classes << case @media_column_size
-    when :third
+    classes << if @media_column_size == :third
       "banner-component__media-section--one-third"
-    when :half
-      "banner-component__media-section--half"
     else
-      "banner-component__media-section--one-third"
+      "banner-component__media-section--half"
     end
     classes.join(" ")
   end
 
-  def color_class color
+  def color_class(color)
     "#{color}-bg" if color
   end
 
   def text_column_class
     classes = ["banner-component__content-section"]
-    classes << case @media_column_size
-    when :third
+    classes << if @media_column_size == :third
       "banner-component__content-section--two-thirds"
-    when :half
-      "banner-component__content-section--half"
     else
-      "banner-component__content-section--two-thirds"
+      "banner-component__content-section--half"
     end
     classes.join(" ")
   end

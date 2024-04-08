@@ -11,8 +11,24 @@ RSpec.describe BannerComponent, type: :component do
           alt: ""
         },
         background_color: "purple",
-        link: "http://www.example.com"
+        link: {
+          url: "https://www.example.com",
+          text: "Test link",
+          class: "govuk-button"
+        }
       ))
+    end
+
+    it "should render the text" do
+      expect(page).to have_css(".govuk-body", text: "Some random text")
+    end
+
+    it "should render title" do
+      expect(page).to have_css(".govuk-heading-m", text: "Banner title")
+    end
+
+    it "should render link" do
+      expect(page).to have_link("Test link", href: "https://www.example.com")
     end
 
     it "should have container" do
@@ -35,7 +51,11 @@ RSpec.describe BannerComponent, type: :component do
           alt: ""
         },
         background_color: "purple",
-        link: "http://www.example.com"
+        link: {
+          url: "https://www.example.com",
+          text: "Test link",
+          class: "govuk-button"
+        }
       ))
     end
 
@@ -64,7 +84,11 @@ RSpec.describe BannerComponent, type: :component do
           alt: ""
         },
         background_color: "purple",
-        link: "http://www.example.com"
+        link: {
+          url: "https://www.example.com",
+          text: "Test link",
+          class: "govuk-button"
+        }
       ))
     end
 
