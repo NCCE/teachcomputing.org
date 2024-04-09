@@ -47,6 +47,25 @@
     border-top: solid 9px $isaac;
   }
 
+  &--toolkit {
+    border-top: solid 9px $primary-cert-color;
+    // Added as a temporary fix after discovering issues with font effecting all govuk-heading-m
+    // To be removed, after font fix is in place
+    padding: 11px !important; 
+  }
+
+  &--toolkit--isaac {
+    border-top: solid 9px $isaac;
+  }
+
+  &--i-belong {
+    border-top: solid 9px $orange;
+
+    .bordered-card__text {
+      width: 80%;
+    }
+  }
+
   @include govuk-media-query($from: tablet) {
     padding: calc($component-padding * 0.6);
   }
@@ -100,6 +119,11 @@
   margin-bottom: 0;
 }
 
+.bordered-card__external-button {
+  background-image: url('../images/icons/external-button.svg');
+  background-repeat: no-repeat;
+  background-position: 95% center;
+}
 
 .secondary-certification-cards {
   gap: 40px;
@@ -112,6 +136,12 @@
   .bordered-card {
     border-top: solid 9px var(--top-color, var(--green));
   }
+}
+
+.bordered-card__clickable-i-belong-flag {
+  position: absolute;
+  top: 0px;
+  right: 15px;
 }
 
 .bordered-cards--logos {

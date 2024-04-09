@@ -1,0 +1,296 @@
+<% meta_tag :title, t('.hero.title') %>
+<% meta_tag :description, t('.hero.subtitle') %>
+<% meta_tag :url, request.original_url %>
+
+<%= render HeroComponent.new(
+  title: t('.hero.title'),
+  subtitle: t('.hero.subtitle'),
+  small_title: true,
+  full_width: true
+) %>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <p class="govuk-body"><%= t(".intro.text") %></h2>
+
+            <%= render BorderedCardsComponent.new(
+              cards_per_row: 3,
+              class_name: 'intro-help-cards',
+              cards: [
+                {
+                  class_name: 'bordered-card--toolkit',
+                  title: t('.intro.cards.knowledge.title'),
+                  text: t('.intro.cards.knowledge.text.html', 
+                    subject_knowledge_link: link_to('subject knowledge', cs_accelerator_path),
+                    a_level_link: link_to('A level certificate', a_level_path)),
+                },
+                {
+                  class_name: 'bordered-card--toolkit',
+                  title: t('.intro.cards.pedagogy.title'),
+                  text: t('.intro.cards.pedagogy.text.html',
+                    certificate_link: link_to("Teach secondary computing certificate", secondary_path)),
+                },
+                {
+                  class_name: 'bordered-card--toolkit',
+                  title: t('.intro.cards.assess.title'),
+                  text: t('.intro.cards.assess.text.html',
+                    cqf_link: link_to("Computing Quality Framework", computing_quality_framework_url),
+                    cluster_link: link_to("Computing Cluster", cms_page_path("computing-clusters"))),
+                }
+              ]
+            ) %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render FullImageBannerComponent.new(title: t(".i_belong_banner.title"),
+  text: t('.i_belong_banner.content.html',
+    course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
+  background_color: 'orange-bg',
+  image_side: :right,
+  image: { 
+    url: "media/images/pages/secondary-toolkit/i_belong_students.jpeg",
+    alt: "i belong",
+    class: "i-belong"
+  },
+  link: link_to("Get involved in I Belong", about_i_belong_path, class: "govuk-button button")) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".supporting.title") %></h2>
+          <p class="govuk-body"><%= t(".supporting.para_1") %></p>
+          <%= link_to "Find out more", non_gcse_path, class: "govuk-button button button--inverted" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render TestimonialsComponent.new(
+  testimonials: [
+    {
+      text: t(".testimonials.pete.text"),
+      image: "media/images/pages/secondary-toolkit/pete.png",
+      name: t(".testimonials.pete.name"),
+      bio: t(".testimonials.pete.bio"),
+    },
+    {
+      text: t(".testimonials.tori.text"),
+      image: "media/images/pages/secondary-toolkit/tori.png",
+      name: t(".testimonials.tori.name"),
+      bio: t(".testimonials.tori.bio"),
+    }
+  ],
+  event_tracking_category: nil,
+  testimonials_per_row: 2,
+) %>
+<div class="purple-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <p class="govuk-body govuk-!-text-align-centre">
+              <%= link_to "News, blogs and case studies", cms_posts_path, class: "govuk-button button button--inverted" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render CourseGridComponent.new(
+  title: t(".courses.title"),
+  intro: t(".courses.intro.html",
+    subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
+  event_category: 'Primary teacher',
+  course_link: courses_path(params: { certificate: 'secondary-certificate' }),
+  courses: [
+    {
+      image: "media/images/pages/secondary-toolkit/python_programming.jpeg",
+      image_alt: "STEM course",
+      title: "Python programming constructs for OCR specification",
+      url: "/courses/CP423A/python-programming-constructs-sequencing-selection-iteration-for-ocr-specification",
+      description: "Learn how to write code to input, process and output data, and how to manipulate data stored in variables.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "6 hours",
+      event_label: "CP423A"
+    },
+    {
+      image: "media/images/pages/secondary-toolkit/supporting_gcse.png",
+      image_alt: "STEM course",
+      title: "Supporting GCSE computer science students at grades 1 to 3",
+      url: "/courses/CP478/supporting-gcse-computer-science-students-at-grades-1-3",
+      description: "This evidence-based CPD explores how to improve attainment in Computer Science for students working towards grades 1 to 3.",
+      icon_class: "icon-remote",
+      type: "Live remote",
+      time_commitment: "6 hours",
+      event_label: "CP478"
+    },
+    {
+      image: "media/images/pages/secondary-toolkit/impact_of_tech.png",
+      image_alt: "STEM course",
+      title: "Impact of Technology: How To Lead Classroom Discussions",
+      url: "/courses/CO215/impact-of-technology-how-to-lead-classroom-discussions",
+      description: "Explore the ethical, legal, cultural, and environmental concerns surrounding computer science.",
+      icon_class: "icon-online",
+      type: "Online",
+      time_commitment: "8 hours",
+      event_label: "CO215"
+    }
+  ]
+) %>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l"><%= t(".resources.title") %></h1>
+
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 3,
+            class_name: 'resources-help-cards',
+            cards: [
+              {
+                class_name: 'bordered-card--toolkit',
+                title: t('.resources.cards.curriculum.title'),
+                text: t('.resources.cards.curriculum.text.html'),
+                link: {
+                  link_title: t('.resources.cards.curriculum.link.title'),
+                  link_url: t('.resources.cards.curriculum.link.url'),
+                  tracking_page: 'Secondary toolkit',
+                  tracking_label: t('.resources.cards.curriculum.link.event-label')
+                }
+              },
+              {
+                class_name: 'bordered-card--toolkit--isaac',
+                title: t('.resources.cards.isaac.title'),
+                text: t('.resources.cards.isaac.text.html',
+                  a_level_link: link_to("A&nbsp;level".html_safe, "https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=a_level&stage=all"),
+                  gcse_link: link_to("GCSE", 'https://isaaccomputerscience.org/events?examBoard=all&show_stage_only=gcse&stage=all')),
+                link: {
+                  link_title: t('.resources.cards.isaac.link.title'),
+                  link_url: t('.resources.cards.isaac.link.url'),
+                  tracking_page: 'Secondary toolkit',
+                  tracking_label: t('.resources.cards.isaac.link.event-label')
+                }
+              },
+              {
+                class_name: 'bordered-card--toolkit',
+                title: t('.resources.cards.question_banks.title'),
+                text: t('.resources.cards.question_banks.text.html', 
+                  teaching_link: link_to('Teaching secondary computing certificate', secondary_certificate_url)),
+                link: {
+                  link_title: t('.resources.cards.question_banks.link.title'),
+                  link_url: t('.resources.cards.question_banks.link.url'),
+                  tracking_page: 'Secondary toolkit',
+                  tracking_label: t('.resources.cards.question_banks.link.event-label')
+                }
+              }
+            ]
+          ) %>
+        </div>
+      </div> 
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-3">
+            <%= render BorderedCardsComponent.new(
+              cards_per_row: 1,
+              cards: [
+                {
+                  class_name: 'bordered-card--secondary-cert',
+                  title: t(".resources.safety.heading"),
+                  text: t(".resources.safety.text"),
+                  button: :no_stretch,
+                  links: [{
+                    link_title: t(".resources.safety.link.text"),
+                    link_url: t(".resources.safety.link.url"),
+                    tracking_page: 'Secondary toolkit',
+                    tracking_event: 'online_safety'
+                  }]
+                }
+              ]
+            ) %>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-top-3">
+          <%= render BorderedCardsComponent.new(
+            cards_per_row: 1,
+            class_name: 'i-belong',
+            cards: [
+              {
+                class_name: 'bordered-card--i-belong',
+                title: t('.resources.cards.i_belong.title'),
+                text: t('.resources.cards.i_belong.text.html'),
+                clickable_i_belong: about_i_belong_path
+              }
+            ]
+          ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l"><%= t(".further_learning.title") %></h2>
+          <p class="govuk-body"><%= t(".further_learning.para_1") %></p>
+          <p class="govuk-body"><%= t(".further_learning.para_2") %></p>
+          <%= link_to t(".further_learning.link"), secondary_enrichment_path, class: "govuk-button button" %>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <%= render AsideComponent.new do |component| %>
+            <%= component.with_heading do %>
+              <p class="govuk-body-m with-icon-coloured-right">
+                <%= t(".further_learning.aside.title") %>
+                <%= image_pack_tag "media/images/icons/ambassador_orange.svg" %>
+              </p>
+            <% end %>
+            <%= component.with_body do %>
+              <p class="govuk-body-s">
+                <%= t(".further_learning.aside.text.html",
+                    visit_link: link_to('visit your school', stem_ambassadors_url)) %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render FullImageBannerComponent.new(title: t(".career_banner.title"),
+  text: t('.career_banner.content'),
+  background_color: 'purple-bg',
+  image: { 
+    url: "media/images/pages/secondary-toolkit/secondary_careers.jpeg",
+    alt: "teach computing secondary careers"
+  },
+  link: link_to("Find out more", '')) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l"><%= t(".support.title") %></h2>
+          <p class="govuk-body"><%= t(".support.para_1_html",
+            hubs_link: link_to('Computing Hubs', hubs_path)) %></p> 
+          <p class="govuk-body"><%= t(".support.para_2_html",
+            stem_community_link: link_to('STEM Community', stem_community_url)) %></p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

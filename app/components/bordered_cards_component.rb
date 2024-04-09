@@ -37,6 +37,10 @@ class BorderedCardsComponent < ViewComponent::Base
     case button
     when :lime, true
       "govuk-button button bordered-card__get-involved-button"
+    when :external
+      "govuk-button button bordered-card__get-involved-button bordered-card__external-button"
+    when :no_stretch
+      "govuk-button button"
     when :white
       "govuk-button ncce-button--white bordered-card__get-involved-button"
     when :blank
