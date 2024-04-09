@@ -9,7 +9,7 @@
   --yellow: #{$isaac};
 
   @include govuk-media-query($from: tablet) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
   }
 
   @include govuk-media-query($from: desktop) {
@@ -61,8 +61,33 @@
   &--i-belong {
     border-top: solid 9px $orange;
 
+    .bordered-card__clickable-i-belong-flag {
+      width: 75px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .bordered-card__title {
+      width: calc(100% - 105px);
+    }
+
     .bordered-card__text {
-      width: 80%;
+      width: calc(100% - 105px);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      .bordered-card__title {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__text {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__clickable-i-belong-flag {
+        width: 115px;
+      }
     }
   }
 
