@@ -88,7 +88,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
     it "contains link to handbook" do
       expect(mail.html_part.body)
-        .to have_link("handbook", href: csa_handbook_url)
+        .to have_link("handbook", href: gcse_and_ks3_handbook_url)
     end
 
     it "contains link to dashboard" do
@@ -128,7 +128,7 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
 
       it "contains link to handbook" do
         expect(mail.text_part.body)
-          .to include("handbook (#{csa_handbook_url})")
+          .to include("handbook (#{gcse_and_ks3_handbook_url})")
       end
 
       it "contains link to dashboard" do

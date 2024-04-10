@@ -77,7 +77,7 @@ RSpec.describe("certificates/cs_accelerator/complete") do
     end
 
     it "has a useful documents section" do
-      expect(rendered).to have_link("Download our Handbook", href: "https://static.teachcomputing.org/CS_Accelerator_handbook.pdf")
+      expect(rendered).to have_link("Download our Handbook", href: "https://static.teachcomputing.org/KS3_and_GCSE_CS_certificate_handbook.pdf")
       expect(rendered).to have_link("Download our GCSE Specification Map", href: "https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf")
     end
 
