@@ -15,6 +15,10 @@
   @include govuk-media-query($from: desktop) {
     grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
   }
+
+  &.single-card {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .bordered-card {
@@ -61,8 +65,33 @@
   &--i-belong {
     border-top: solid 9px $orange;
 
+    .bordered-card__clickable-i-belong-flag {
+      width: 75px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .bordered-card__title {
+      width: calc(100% - 105px);
+    }
+
     .bordered-card__text {
-      width: 80%;
+      width: calc(100% - 105px);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      .bordered-card__title {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__text {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__clickable-i-belong-flag {
+        width: 115px;
+      }
     }
   }
 
