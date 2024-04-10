@@ -2072,6 +2072,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "7b4a4c4b-a920-ee11-9966
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP403"
+  activity.credit = 15
 
   activity.programmes = [primary_certificate]
 end.save!
