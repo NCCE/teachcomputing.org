@@ -6,28 +6,28 @@ module Cms
           def self.process_model(model_class, strapi_data)
             if model_class == Cms::Models::Seo
               model_class.new(
-                strapi_data[:title],
-                strapi_data[:description]
+                title: strapi_data[:title],
+                description: strapi_data[:description]
               )
             elsif model_class == Cms::Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes])
             elsif model_class == Cms::Models::ContentBlock
               to_content_block(strapi_data)
             elsif model_class == Cms::Models::SimpleTitle
-              model_class.new(strapi_data)
+              model_class.new(title: strapi_data)
             elsif model_class == Cms::Models::BlogPreview
               model_class.new(
-                strapi_data[:title],
-                strapi_data[:excerpt],
-                strapi_data[:publishedAt],
-                strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
-                strapi_data[:slug]
+                title: strapi_data[:title],
+                excerpt: strapi_data[:excerpt],
+                publish_date: strapi_data[:publishedAt],
+                featured_date: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
+                slug: strapi_data[:slug]
               )
             elsif model_class == Cms::Models::SimplePagePreview
               model_class.new(
-                strapi_data[:title],
-                strapi_data[:slug],
-                strapi_data[:seo][:description]
+                title: strapi_data[:title],
+                slug: strapi_data[:slug],
+                excerpt: strapi_data[:seo][:description]
               )
             end
           end
@@ -37,26 +37,26 @@ module Cms
               block[:image] = to_image(block[:image]) if block[:type] == "image"
               block
             end
-            Cms::Models::ContentBlock.new(data)
+            Cms::Models::ContentBlock.new(blocks: data)
           end
 
           def self.to_featured_image(image_data, size = :large)
             Cms::Models::FeaturedImage.new(
-              image_data[:url],
-              image_data[:alternativeText],
-              image_data[:caption],
-              image_data[:formats],
-              size
+              url: image_data[:url],
+              alt: image_data[:alternativeText],
+              caption: image_data[:caption],
+              formats: image_data[:formats],
+              size:
             )
           end
 
           def self.to_image(image_data)
             Cms::Models::Image.new(
-              image_data[:url],
-              image_data[:alternativeText],
-              image_data[:caption],
-              image_data[:formats],
-              :medium
+              url: image_data[:url],
+              alt: image_data[:alternativeText],
+              caption: image_data[:caption],
+              foramts: image_data[:formats],
+              size: :medium
             )
           end
         end

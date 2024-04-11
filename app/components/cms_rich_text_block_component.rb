@@ -2,9 +2,9 @@
 # SubClasses should not include any indentation and should make use of
 # `-` at the end of ERB tags
 class CmsRichTextBlockComponent < ViewComponent::Base
-  def build(obj)
+  def build(blocks)
     klass =
-      case obj
+      case blocks
       in { type: "paragraph" } then Paragraph
       in { type: "heading" } then Heading
       in { type: "text" } then Text
@@ -15,7 +15,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       in { type: "quote"} then Quote
       end
 
-    klass.new(blocks: obj)
+    klass.new(blocks: blocks)
   end
 
   erb_template <<~ERB
@@ -23,7 +23,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       <div class="govuk-main-wrapper">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <% @obj.each do |child| -%>
+            <% @blocks.each do |child| -%>
               <%= render build(child) -%>
             <% end -%>
           </div>
@@ -33,13 +33,13 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   ERB
 
   def initialize(blocks:)
-    @obj = blocks
+    @blocks = blocks
   end
 
   class Paragraph < CmsRichTextBlockComponent
     erb_template <<~ERB
       <p class="govuk-body-m">
-      <% @obj[:children].each do |child| -%>
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       </p>
@@ -48,17 +48,17 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Heading < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <h1 class="<%= classes %>">
-      <% @obj[:children].each do |child| -%>
+      <h1 class="<%= heading_class %>">
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       </h1>
     ERB
 
-    def classes
-      if @obj[:level] == 1
+    def heading_class
+      if @blocks[:level] == 1
         "govuk-heading-l"
-      elsif @obj[:level] == 2
+      elsif @blocks[:level] == 2
         "govuk-heading-m"
       else
         "govuk-heading-s"
@@ -68,22 +68,22 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Text < CmsRichTextBlockComponent
     def call
-      if @obj[:text] == "---"
+      if @blocks[:text] == "---"
         content_tag(:hr)
-      elsif @obj[:code]
-        content_tag(:div, @obj[:text], class: classes)
+      elsif @blocks[:code]
+        content_tag(:div, @blocks[:text], class: classes)
       else
-        content_tag(:span, @obj[:text], class: classes)
+        content_tag(:span, @blocks[:text], class: classes)
       end
     end
 
     def classes
       classes = []
-      classes << "cms-rich-text-block-component__text--bold" if @obj.key?(:bold)
-      classes << "cms-rich-text-block-component__text--italic" if @obj.key?(:italic)
-      classes << "cms-rich-text-block-component__text--strikethrough" if @obj.key?(:strikethrough)
-      classes << "cms-rich-text-block-component__text--code" if @obj.key?(:code)
-      classes << "cms-rich-text-block-component__text--underline" if @obj.key?(:underline)
+      classes << "cms-rich-text-block-component__text--bold" if @blocks.key?(:bold)
+      classes << "cms-rich-text-block-component__text--italic" if @blocks.key?(:italic)
+      classes << "cms-rich-text-block-component__text--strikethrough" if @blocks.key?(:strikethrough)
+      classes << "cms-rich-text-block-component__text--code" if @blocks.key?(:code)
+      classes << "cms-rich-text-block-component__text--underline" if @blocks.key?(:underline)
 
       classes.join(" ")
     end
@@ -92,25 +92,25 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   class Link < CmsRichTextBlockComponent
     # Had to removed indentation in this erb as it was adding whitespace to page render
     erb_template <<~ERB
-      <%= link_to @obj[:url], class: "ncce-link" do -%>
-      <% @obj[:children].each do |child| -%>
+      <%= link_to @blocks[:url], class: "ncce-link" do -%>
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
-      <% end %>
+      <% end -%>
     ERB
   end
 
   class List < CmsRichTextBlockComponent
     erb_template <<~ERB
       <%= content_tag(tag, class: classes) do -%>
-      <% @obj[:children].each do |child| -%>
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       <% end -%>
     ERB
 
     def tag
-      (@obj[:format] == "ordered") ? :ol : :ul
+      (@blocks[:format] == "ordered") ? :ol : :ul
     end
 
     def classes
@@ -123,7 +123,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   class ListItem < CmsRichTextBlockComponent
     erb_template <<~ERB
       <li>
-      <% @obj[:children].each do |child| -%>
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       </li>
@@ -132,14 +132,14 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Image < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <%= render CmsImageComponent.new(@obj[:image]) -%>
+      <%= render CmsImageComponent.new(@blocks[:image]) -%>
     ERB
   end
 
   class Quote < CmsRichTextBlockComponent
     erb_template <<~ERB
       <blockquote class="govuk-body-m">
-      <% @obj[:children].each do |child| -%>
+      <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       </blockquote>

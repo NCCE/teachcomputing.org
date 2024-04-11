@@ -3,12 +3,12 @@ module Cms
     class ContentBlock
       attr_accessor :blocks
 
-      def initialize(blocks)
+      def initialize(blocks:)
         @blocks = blocks
       end
 
       def render
-        CmsRichTextBlockComponent.new(blocks: @blocks)
+        CmsRichTextBlockComponent.new(blocks:)
       end
     end
   end

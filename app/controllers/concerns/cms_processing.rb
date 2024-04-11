@@ -12,9 +12,7 @@ module CmsProcessing
   end
 
   def process_resource(klass, resource_id: nil)
-    if params[:refresh_cache]
-      klass.clear_cache
-    end
+    klass.clear_cache if params[:refresh_cache]
     preview = preview_params[:preview] || false
     preview_key = preview_params[:preview_key] || nil
     @resource = klass.get(resource_id, preview:, preview_key:)
@@ -22,11 +20,6 @@ module CmsProcessing
   end
 
   def process_page
-    if params[:page].present?
-      page = params[:page].to_i
-      (page < 1) ? 1 : page
-    else
-      1
-    end
+    page = [params[:page].to_i, 1].max
   end
 end

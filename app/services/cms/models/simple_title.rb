@@ -3,12 +3,12 @@ module Cms
     class SimpleTitle
       attr_accessor :title
 
-      def initialize(title)
+      def initialize(title:)
         @title = title
       end
 
       def render
-        HeroComponent.new(title: @title)
+        HeroComponent.new(title: title)
       end
     end
   end
