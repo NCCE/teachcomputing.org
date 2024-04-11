@@ -30,9 +30,13 @@ RSpec.describe ExternalLinkHelper do
     first_lego_leauge_url
     cansat_webinar_url
     structuring_your_i_belong_evidence_url
-    csa_handbook_url
+    gcse_and_ks3_handbook_url
     i_belong_action_plan_url
     stem_ambassadors_url
+    computing_quality_framework_url
+    sme_support_form_url
+    school_trusts_form_url
+    hubs_local_support_form_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do
