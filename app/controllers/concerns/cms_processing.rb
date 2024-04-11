@@ -20,6 +20,6 @@ module CmsProcessing
   end
 
   def process_page
-    page = [params[:page].to_i, 1].max
+    [params[:page].to_i, 1].max
   end
 end
