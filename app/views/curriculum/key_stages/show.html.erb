@@ -18,28 +18,25 @@
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
       <div class="govuk-grid-column-one-third">
-        <% asset_key_stage_type = key_stage_type(@key_stage.level) %>
-        <% asset_icon = asset_key_stage_type == "primary" ? "media/images/icons/curriculum-journey-primary.png" : "media/images/icons/curriculum-journey-secondary.png" %>
-        <% asset_path = asset_key_stage_type == "primary" ? "Journey_Primary.1-2.pdf" : "Journey_Secondary.3-4.pdf" %>
-        <%= render AsideComponent.new(
-          text: t(
-            ".#{asset_key_stage_type}.aside.text.html",
-            journey_link: (
-              link_to t(".#{asset_key_stage_type}.aside.text.journey_link_text"),
-                      "https://static.teachcomputing.org/journey/Curriculum.#{asset_path}",
-                      class: "ncce-link",
-                      title: t(".#{asset_key_stage_type}.aside.title"),
-                      data: tracking_data("#{key_stage_type(@key_stage.level)} journey poster")
-            ),
-            ),
-          image: {
-            file: asset_icon,
-            title: t(".#{asset_key_stage_type}.aside.title"),
-            url: "https://static.teachcomputing.org/journey/Curriculum.#{asset_path}",
-            tracking_label: "#{key_stage_type(@key_stage.level)} journey poster"
-          },
-          tracking_category: tracking_category,
-          ) %>
+      <%= render AsideComponent.new(
+        text: t(
+          ".#{key_stage_type(@key_stage.level)}.aside.text.html",
+          journey_link: (
+            link_to t(".#{key_stage_type(@key_stage.level)}.aside.text.journey_link_text"),
+                    curriculum_file_redirect_path(slug: @key_stage.journey_progress_pdf.slug),
+                    class: "ncce-link",
+                    title: t(".#{key_stage_type(@key_stage.level)}.aside.title"),
+                    data: tracking_data("#{key_stage_type(@key_stage.level)} journey poster")
+          ),
+          ),
+        image: {
+          file: @key_stage.journey_progress_icon.file,
+          title: t(".#{key_stage_type(@key_stage.level)}.aside.title"),
+          url: curriculum_file_redirect_path(slug: @key_stage.journey_progress_pdf.slug),
+          tracking_label: "#{key_stage_type(@key_stage.level)} journey poster"
+        },
+        tracking_category: tracking_category,
+        ) %>
       </div>
 		</div>
     <div class="govuk-grid-row">

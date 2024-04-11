@@ -24,11 +24,7 @@ RSpec.describe("curriculum/key_stages/show", type: :view) do
     end
 
     it "links to the journey poster" do
-      key_stage = JSON.parse(unit_json, object_class: OpenStruct).data.key_stage.level
-      key_stage_type = ["1", "2"].include?(key_stage) ? "Primary" : "Secondary"
-      key_stage_range = (key_stage_type == "Primary") ? "1-2" : "3-4"
-
-      expect(rendered).to have_link("viewing and progressing through our #{key_stage_type} curriculum journey", href: "https://static.teachcomputing.org/journey/Curriculum.Journey_#{key_stage_type}.#{key_stage_range}.pdf")
+      expect(rendered).to have_link("viewing and progressing through our Primary curriculum journey", href: "/curriculum/files/primary-journey-progress-pdf")
     end
 
     it "links to feedback form" do

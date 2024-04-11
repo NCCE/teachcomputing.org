@@ -31,30 +31,30 @@
             '.aside.text.html',
             journey_link: (
               link_to t('.aside.text.journey_link_text'),
-              'https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf',
+              curriculum_file_redirect_path(slug: @journey_progress_pdf.slug),
               class: 'ncce-link',
               title: t('.aside.titles.full'),
               data: tracking_data('journey poster')
             ),
             primary_journey_link: (
               link_to 'Primary',
-              "https://static.teachcomputing.org/journey/Curriculum.Journey_Primary.1-2.pdf",
+              curriculum_file_redirect_path(slug: @primary_journey_progress_pdf.slug),
               class: 'ncce-link',
               title: t('.aside.titles.primary'),
               data: tracking_data('primary journey poster')
             ),
             secondary_journey_link: (
               link_to 'Secondary',
-              "https://static.teachcomputing.org/journey/Curriculum.Journey_Secondary.3-4.pdf",
+              curriculum_file_redirect_path(slug: @secondary_journey_progress_pdf.slug),
               class: 'ncce-link',
               title: t('.aside.titles.secondary'),
               data: tracking_data('secondary journey poster')
             ),
           ),
           image: {
-            file: 'media/images/icons/curriculum-journey-full.png',
+            file: @journey_progress_icon.file,
             title: t('.aside.titles.full'),
-            url: 'https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf',
+            url: curriculum_file_redirect_path(slug: @journey_progress_pdf.slug),
             tracking_label: 'journey poster'
           },
           tracking_category: tracking_category,
@@ -70,7 +70,7 @@
       </div>
     </div>
   </div>
-  
+
 </div>
 <%= render IsaacCardComponent.new(
   tracking_category: tracking_category,

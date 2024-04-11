@@ -10,6 +10,19 @@
         "years": "1-2",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "journey_progress_pdf": {
+          "name": "Primary journey progress pdf",
+          "file": "media/images/test/example.pdf",
+          "type": "PDF",
+          "size": "1 KB",
+          "created": "2024-04-15 12:23:53 UTC",
+          "slug": "primary-journey-progress-pdf"
+        },
+        "journey_progress_icon": {
+          "name": "Primary journey progress icon",
+          "file": "media/images/test/example.png",
+          "slug": "primary-journey-progress-icon"
+        },
         "lessonCount": "16",
         "unitCount": "8",
         "yearGroups": [
@@ -83,6 +96,16 @@
         "years": "3-6",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "journey_progress_pdf": {
+          "name": "Primary journey progress pdf",
+          "file": "media/images/test/example.pdf",
+          "slug": "primary-journey-progress-pdf"
+        },
+        "journey_progress_icon": {
+          "name": "Primary journey progress icon",
+          "file": "media/images/test/example.png",
+          "slug": "primary-journey-progress-icon"
+        },
         "lessonCount": "16",
         "unitCount": "14",
         "yearGroups": [
@@ -195,6 +218,16 @@
         "years": "7-9",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "journey_progress_pdf": {
+          "name": "Secondary journey progress pdf",
+          "file": "spec/support/example_certificate.pdf",
+          "slug": "secondary-journey-progress-pdf"
+        },
+        "journey_progress_icon": {
+          "name": "Secondary journey progress icon",
+          "file": "spec/support/example_certificate.pdf",
+          "slug": "secondary-journey-progress-icon"
+        },
         "lessonCount": "18",
         "unitCount": "17",
         "yearGroups": [
@@ -315,6 +348,16 @@
         "years": "10-11",
         "description": "Placeholder description",
         "curriculumMaps": [],
+        "journey_progress_pdf": {
+          "name": "Secondary journey progress pdf",
+          "file": "spec/support/example_certificate.pdf",
+          "slug": "secondary-journey-progress-pdf"
+        },
+        "journey_progress_icon": {
+          "name": "Secondary journey progress icon",
+          "file": "spec/support/example_certificate.pdf",
+          "slug": "secondary-journey-progress-icon"
+        },
         "lessonCount": "16",
         "unitCount": "6",
         "yearGroups": [
