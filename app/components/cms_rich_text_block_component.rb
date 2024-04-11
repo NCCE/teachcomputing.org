@@ -1,5 +1,6 @@
-# frozen_string_literal: true
-
+# Due to how ERB interacts with newlines and spaces the markup for any
+# SubClasses should not include any indentation and should make use of
+# `-` at the end of ERB tags
 class CmsRichTextBlockComponent < ViewComponent::Base
   def build(obj)
     klass =
@@ -22,9 +23,9 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       <div class="govuk-main-wrapper">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <% @obj.each do |child| %>
+            <% @obj.each do |child| -%>
               <%= render build(child) -%>
-            <% end %>
+            <% end -%>
           </div>
         </div>
       </div>
@@ -37,16 +38,20 @@ class CmsRichTextBlockComponent < ViewComponent::Base
 
   class Paragraph < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <p class="govuk-body-m"><%- @obj[:children].each do |child| -%><%= render build(child) -%><%- end -%></p>
+      <p class="govuk-body-m">
+      <% @obj[:children].each do |child| -%>
+      <%= render build(child) -%>
+      <% end -%>
+      </p>
     ERB
   end
 
   class Heading < CmsRichTextBlockComponent
     erb_template <<~ERB
       <h1 class="<%= classes %>">
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
-        <% end %>
+      <% @obj[:children].each do |child| -%>
+      <%= render build(child) -%>
+      <% end -%>
       </h1>
     ERB
 
@@ -62,12 +67,11 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   end
 
   class Text < CmsRichTextBlockComponent
-    strip_trailing_whitespace
     def call
       if @obj[:text] == "---"
         content_tag(:hr)
       elsif @obj[:code]
-        content_tag(:div, raw(@obj[:text]), class: classes)
+        content_tag(:div, @obj[:text], class: classes)
       else
         content_tag(:span, @obj[:text], class: classes)
       end
@@ -89,20 +93,20 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     # Had to removed indentation in this erb as it was adding whitespace to page render
     erb_template <<~ERB
       <%= link_to @obj[:url], class: "ncce-link" do -%>
-      <% @obj[:children].each do |child| %>
+      <% @obj[:children].each do |child| -%>
       <%= render build(child) -%>
-      <% end %>
+      <% end -%>
       <% end %>
     ERB
   end
 
   class List < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <%= content_tag(tag, class: classes) do %>
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
-        <% end %>
-      <% end %>
+      <%= content_tag(tag, class: classes) do -%>
+      <% @obj[:children].each do |child| -%>
+      <%= render build(child) -%>
+      <% end -%>
+      <% end -%>
     ERB
 
     def tag
@@ -119,25 +123,25 @@ class CmsRichTextBlockComponent < ViewComponent::Base
   class ListItem < CmsRichTextBlockComponent
     erb_template <<~ERB
       <li>
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
-        <% end %>
+      <% @obj[:children].each do |child| -%>
+      <%= render build(child) -%>
+      <% end -%>
       </li>
     ERB
   end
 
   class Image < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <%= render CmsImageComponent.new(@obj[:image]) %>
+      <%= render CmsImageComponent.new(@obj[:image]) -%>
     ERB
   end
 
   class Quote < CmsRichTextBlockComponent
     erb_template <<~ERB
       <blockquote class="govuk-body-m">
-        <% @obj[:children].each do |child| %>
-          <%= render build(child) %>
-        <% end %>
+      <% @obj[:children].each do |child| -%>
+      <%= render build(child) -%>
+      <% end -%>
       </blockquote>
     ERB
   end
