@@ -20,7 +20,7 @@ module Cms
                 title: strapi_data[:title],
                 excerpt: strapi_data[:excerpt],
                 publish_date: strapi_data[:publishedAt],
-                featured_date: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
+                featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 slug: strapi_data[:slug]
               )
             elsif model_class == Cms::Models::SimplePagePreview

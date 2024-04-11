@@ -6,12 +6,17 @@ RSpec.describe BlogPreviewComponent, type: :component do
       title: "Blog Preview",
       excerpt: "You will not believe what we discuss in this blog post",
       publish_date: "2024-03-18",
-      featured_image: Cms::Models::FeaturedImage.new("http://media.teachcomputing.org/an-image.png", "", "",
-        {
+      featured_image: Cms::Models::FeaturedImage.new(
+        url: "http://media.teachcomputing.org/an-image.png",
+        alt: "",
+        caption: "",
+        formats: {
           small: {
             url: "http://media.teachcomputing.org/an-image-small.png"
           }
-        }, :small),
+        },
+        size: :small
+      ),
       slug: "blog-preview"
     ))
   end

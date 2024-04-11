@@ -3,28 +3,43 @@ require "rails_helper"
 describe CmsHelper, type: :helper do
   context("cms_image") do
     let(:small_image) {
-      Cms::Models::Image.new("http://media.teachcomputing.org/an-image.png", "", "",
-        {
+      Cms::Models::Image.new(
+        url: "http://media.teachcomputing.org/an-image.png",
+        alt: "",
+        caption: "",
+        formats: {
           small: {url: "http://media.teachcomputing.org/an-image-small.png"},
           medium: {url: "http://media.teachcomputing.org/an-image-medium.png"},
           large: {url: "http://media.teachcomputing.org/an-image-large.png"}
-        }, :small)
+        },
+        default_size: :small
+      )
     }
 
     let(:medium_image) {
-      Cms::Models::Image.new("http://media.teachcomputing.org/an-image.png", "", "",
-        {
+      Cms::Models::Image.new(
+        url: "http://media.teachcomputing.org/an-image.png",
+        alt: "",
+        caption: "",
+        formats: {
           small: {url: "http://media.teachcomputing.org/an-image-small.png"},
           medium: {url: "http://media.teachcomputing.org/an-image-medium.png"},
           large: {url: "http://media.teachcomputing.org/an-image-large.png"}
-        }, :medium)
+        },
+        default_size: :medium
+      )
     }
 
     let(:image_missing_format) {
-      Cms::Models::Image.new("http://media.teachcomputing.org/an-image.png", "", "",
-        {
+      Cms::Models::Image.new(
+        url: "http://media.teachcomputing.org/an-image.png",
+        alt: "",
+        caption: "",
+        formats: {
           small: {url: "http://media.teachcomputing.org/an-image-small.png"}
-        }, :medium)
+        },
+        default_size: :medium
+      )
     }
 
     it "should render requested image size when available" do
