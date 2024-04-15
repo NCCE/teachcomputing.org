@@ -22,7 +22,8 @@ class Achiever::Course::Template
     :topics_covered,
     :who_is_it_for,
     :workstream,
-    :always_on
+    :always_on,
+    :last_updated_at
 
   RESOURCE_PATH = "Get?cmd=CourseTemplatesListingByProgramme".freeze
   QUERY_STRINGS = {Page: "1",
@@ -66,6 +67,7 @@ class Achiever::Course::Template
       t.workstream = resource["Template.Workstream"]
 
       t.always_on = activity&.always_on || false
+      t.last_updated_at = activity&.created_at || Date.current
     end
   end
 
@@ -161,6 +163,12 @@ class Achiever::Course::Template
 
   def by_certificate(certificate)
     @programmes.include?(certificate)
+  end
+
+  def new_course?
+    return false unless last_updated_at.present?
+
+    last_updated_at > 3.months.ago
   end
 
   def duration
