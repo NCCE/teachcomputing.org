@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "fields/achievement_list_field/show", type: :view do
   let(:user) { create(:user) }
-  let(:completed_achievement) { create(:completed_achievement, user:, evidence: ["I did the thing"]) }
+  let(:completed_achievement) { create(:completed_achievement, user:, evidence: ["I did the thing. \n This is more on a new line. \n Testing another line in the text."]) }
   let(:ongoing_achievement) { create(:achievement, user:) }
   let(:rejected_achievement) { create(:rejected_achievement, user:) }
 
@@ -31,5 +31,9 @@ RSpec.describe "fields/achievement_list_field/show", type: :view do
 
   it "should show reject option on complete" do
     expect(rendered).to have_css(".button", count: 1, text: "Reject Evidence")
+  end
+
+  it "should convert new lines to html line break" do
+    expect(rendered).to have_css(".supplied-evidence_block br", count: 2)
   end
 end

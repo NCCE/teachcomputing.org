@@ -14,7 +14,7 @@ div.achievement-list {
       flex-direction: row;
       align-items: center;
       gap: 5px;
-    
+
       label {
         white-space: nowrap;
       }
@@ -23,7 +23,7 @@ div.achievement-list {
 
   div.achievement {
     border: 1px solid gray;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     padding: 5px;
 
     div.achievement-header {
@@ -73,6 +73,7 @@ div.achievement-list {
 
       div.supplied-evidence {
         padding: 10px;
+        overflow-wrap: anywhere;
       }
     }
   }
