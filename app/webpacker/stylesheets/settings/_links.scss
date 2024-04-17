@@ -34,7 +34,7 @@ a:not([class]) {
   }
   &:focus {
     color: $white;
-    box-shadow: 0 -2px #fd0, 0 2px #fd0;
+    box-shadow: 0 -2px $brand-yellow, 0 2px $brand-yellow;
   }
   &:active {
     color: $ncce-grey;
