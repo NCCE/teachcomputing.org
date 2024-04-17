@@ -60,6 +60,10 @@ class Programme < ApplicationRecord
     false
   end
 
+  def show_notification_for_test?(user)
+    false
+  end
+
   def user_completed?(user)
     enrolment = user.user_programme_enrolments.find_by(programme_id: id)
     return false if enrolment.nil?
@@ -170,5 +174,9 @@ class Programme < ApplicationRecord
 
   def auto_enrollment_ignored_activity_codes
     []
+  end
+
+  def notification_link
+    root_path
   end
 end
