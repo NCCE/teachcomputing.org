@@ -6,6 +6,11 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
   let(:setup_view) do
     json = JSON.parse(key_stages_json, object_class: OpenStruct).data
     assign(:key_stages, json.key_stages)
+
+    assign(:journey_progress_pdf, journey_progress_file(slug: "journey-progress-pdf", file_type: "pdf"))
+    assign(:journey_progress_icon, journey_progress_file(slug: "journey-progress-icon", file_type: "icon"))
+    assign(:primary_journey_progress_pdf, journey_progress_file(slug: "primary-journey-progress-pdf", file_type: "pdf"))
+    assign(:secondary_journey_progress_pdf, journey_progress_file(slug: "secondary-journey-progress-pdf", file_type: "pdf"))
   end
 
   before do
@@ -26,7 +31,9 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
   end
 
   it "links to the journey poster" do
-    expect(rendered).to have_link("viewing our curriculum journey poster", href: "https://static.teachcomputing.org/curriculum_journey.pdf")
+    expect(rendered).to have_link("viewing and progressing through our curriculum journey", href: "/curriculum/files/journey-progress-pdf")
+    expect(rendered).to have_link("Primary", href: "/curriculum/files/primary-journey-progress-pdf")
+    expect(rendered).to have_link("Secondary", href: "/curriculum/files/secondary-journey-progress-pdf")
   end
 
   it "has a section about what we do with bullet points" do
@@ -52,5 +59,17 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
 
   it "links to the isaac page" do
     expect(rendered).to have_link(href: "/a-level-computer-science")
+  end
+
+  private
+
+  def journey_progress_file(slug:, file_type:)
+    extension = (file_type == "pdf") ? "pdf" : "png"
+
+    OpenStruct.new({
+      name: "Journey progress test file",
+      file: "media/images/test/example.#{extension}",
+      slug: slug
+    })
   end
 end

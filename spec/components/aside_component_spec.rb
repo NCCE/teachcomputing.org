@@ -104,9 +104,9 @@ RSpec.describe AsideComponent, type: :component do
           title: "Test title",
           text: "The body text",
           image: {
-            file: "media/images/icons/curriculum-journey.png",
+            file: "media/images/icons/curriculum-journey-full.png",
             title: "Image",
-            url: "https://static.teachcomputing.org/curriculum_journey.pdf"
+            url: "https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf"
           }
         )
       )
@@ -118,7 +118,7 @@ RSpec.describe AsideComponent, type: :component do
     end
 
     it "renders a link" do
-      expect(page).to have_link("", href: "https://static.teachcomputing.org/curriculum_journey.pdf")
+      expect(page).to have_link("", href: "https://static.teachcomputing.org/journey/Curriculum.Journey_Full.1-5.pdf")
     end
   end
 

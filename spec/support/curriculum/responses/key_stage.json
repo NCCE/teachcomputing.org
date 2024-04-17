@@ -9,6 +9,16 @@
       "years": "1-2",
       "description": "Placeholder description",
       "curriculumMaps": [],
+      "journey_progress_pdf": {
+        "name": "Primary journey progress pdf",
+        "file": "media/images/test/example.pdf",
+        "slug": "primary-journey-progress-pdf"
+      },
+      "journey_progress_icon": {
+        "name": "Primary journey progress icon",
+        "file": "media/images/test/example.png",
+        "slug": "primary-journey-progress-icon"
+      },
       "yearGroups": [
         {
           "id": "4a2daa4f-d32e-465a-8b59-39af22154939",
