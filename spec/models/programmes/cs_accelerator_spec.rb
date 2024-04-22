@@ -172,6 +172,81 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
+  describe "#show_notification_for_test?" do
+    context "when a user is not enrolled" do
+      before do
+        setup_short_f2f_and_online_achievement
+        allow(programme).to receive(:in_notifiable_period?).with(user).and_return(true)
+        allow(programme).to receive(:enough_activities_for_test?).with(user).and_return(true)
+      end
+
+      it "returns false" do
+        user.user_programme_enrolments.destroy_all
+        expect(programme.show_notification_for_test?(user)).to eq(false)
+      end
+    end
+
+    context "when in_notifiable_period? is false" do
+      before do
+        setup_short_f2f_and_online_achievement
+        allow(programme).to receive(:in_notifiable_period?).with(user).and_return(false)
+        allow(programme).to receive(:enough_activities_for_test?).with(user).and_return(true)
+      end
+
+      it "returns false" do
+        expect(programme.show_notification_for_test?(user)).to eq(false)
+      end
+    end
+
+    context "when the user does not have enough_activities_for_test?" do
+      before do
+        setup_short_f2f_and_online_achievement
+        allow(programme).to receive(:in_notifiable_period?).with(user).and_return(true)
+        allow(programme).to receive(:enough_activities_for_test?).with(user).and_return(false)
+      end
+
+      it "returns false" do
+        expect(programme.show_notification_for_test?(user)).to eq(false)
+      end
+    end
+
+    context "when the user should be shown the notification" do
+      before do
+        setup_short_f2f_and_online_achievement
+        allow(programme).to receive(:in_notifiable_period?).with(user).and_return(true)
+        allow(programme).to receive(:enough_activities_for_test?).with(user).and_return(true)
+      end
+
+      it "returns true" do
+        expect(programme.show_notification_for_test?(user)).to eq(true)
+      end
+    end
+  end
+
+  describe "#in_notifiable_period?" do
+    context "when the last_enrolled_at date on enrolment is within 48 hours" do
+      before do
+        setup_one_online_achievement
+        allow_any_instance_of(UserProgrammeEnrolment).to receive(:last_enrolled_at).and_return(1.day.ago)
+      end
+
+      it "returns true" do
+        expect(programme.in_notifiable_period?(user)).to eq(true)
+      end
+    end
+
+    context "when the last_enrolled_at date on enrolment is not within 48 hours" do
+      before do
+        setup_one_online_achievement
+        allow_any_instance_of(UserProgrammeEnrolment).to receive(:last_enrolled_at).and_return(3.days.ago)
+      end
+
+      it "returns true" do
+        expect(programme.in_notifiable_period?(user)).to eq(false)
+      end
+    end
+  end
+
   describe "#enough_activities_for_test?" do
     context "when the user has not done any activities" do
       it "returns false" do
