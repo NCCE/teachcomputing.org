@@ -5,7 +5,7 @@
 
   <div class="govuk-main-wrapper ncce-confidence">
     <div class="ncce-confidence__card">
-      <%= link_to image_pack_tag('media/images/home/card_courses.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), courses_path %>
+      <%= link_to image_pack_tag('media/images/home/card_courses.jpg', loading: 'lazy', alt: 'Teachers having a meeting'), courses_path, class: 'ncce-confidence__icon', aria_label: 'Link to course listing' %>
       <%= link_to t("pages.home.confidence.courses.title"), courses_path, class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.courses.description") %>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="ncce-confidence__card">
-      <%= link_to image_pack_tag('media/images/home/card_funding.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), bursary_path %>
+      <%= link_to image_pack_tag('media/images/home/card_funding.jpg', loading: 'lazy', alt: 'Students working on laptops'), bursary_path, class: 'ncce-confidence__icon', aria_label: 'Link to funding and subsidies' %>
       <%= link_to t("pages.home.confidence.funding.title"), bursary_path, class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.funding.description") %>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="ncce-confidence__card">
-      <%= link_to image_pack_tag('media/images/home/card_teaching_resources.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), curriculum_key_stages_path %>
+      <%= link_to image_pack_tag('media/images/home/card_teaching_resources.jpg', loading: 'lazy', alt: 'A classroom full of school students raising their hands'), curriculum_key_stages_path, class: 'ncce-confidence__icon', aria_label: 'Link to curriculum' %>
       <%= link_to t("pages.home.confidence.teaching_resources.title"), curriculum_key_stages_path, class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.teaching_resources.description") %>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="ncce-confidence__card ncce-confidence__card--orange">
-      <%= link_to image_pack_tag('media/images/home/card_i_belong.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), "/i-belong" %>
+      <%= link_to image_pack_tag('media/images/home/card_i_belong.jpg', loading: 'lazy', alt: 'School students collaborating on laptops in classroom'), about_i_belong_path, class: 'ncce-confidence__icon', aria_label: 'Link to I Belong programme' %>
       <%= link_to t("pages.home.confidence.i_belong.title"), "/i-belong", class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.i_belong.description") %>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="ncce-confidence__card">
-      <%= link_to image_pack_tag('media/images/home/card_non_gcse.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), non_gcse_path %>
+      <%= link_to image_pack_tag('media/images/home/card_non_gcse.jpg', loading: 'lazy', alt: 'School students playing with robots'), non_gcse_path, class: 'ncce-confidence__icon', aria_label: 'Link to GCSE Computer Science support' %>
       <%= link_to t("pages.home.confidence.non_gcse.title"), non_gcse_path, class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.non_gcse.description") %>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="ncce-confidence__card ncce-confidence__card--pink">
-      <%= link_to image_pack_tag('media/images/home/card_cqf.jpg', loading: 'lazy', class: 'ncce-confidence__icon', alt: ''), computing_quality_framework_url %>
+      <%= link_to image_pack_tag('media/images/home/card_cqf.jpg', loading: 'lazy', alt: 'Group of teachers holding a certificate'), computing_quality_framework_url, class: 'ncce-confidence__icon', aria_label: 'Link to Computing Quality Framework' %>
       <%= link_to t("pages.home.confidence.computing_quality.title"), computing_quality_framework_url, class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.computing_quality.description") %>
