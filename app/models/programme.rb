@@ -45,6 +45,10 @@ class Programme < ApplicationRecord
     raise NotImplementedError
   end
 
+  def include_in_filter?
+    true
+  end
+
   def pending_delay
   end
 
