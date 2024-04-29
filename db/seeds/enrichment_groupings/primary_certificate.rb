@@ -14,7 +14,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Autumn term").becom
     e.title = "Moon Camp"
     e.title_url = "https://mooncampchallenge.org/"
     e.image_url = "https://static.teachcomputing.org/enrichment/moon_camp.png"
-    e.body = "In the Moon Camp Challenge pupils can explore and design their own Moon settlement with a 3D modelling tool.<br><br><a href=\"#{primary_mooncamp_webinar_url}\">Join the webinar to find out more</a>"
+    e.body = "In the Moon Camp Challenge pupils can explore and design their own Moon settlement with a 3D modelling tool."
     e.order = 1
   end.save!
 
@@ -22,7 +22,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Autumn term").becom
     e.title = "Astro Pi"
     e.title_url = "https://astro-pi.org/"
     e.image_url = "https://static.teachcomputing.org/enrichment/astro_pi.png"
-    e.body = "An opportunity for young people to carry out their own scientific investigations in space, writing computer programs that will run aboard the International Space Station.<br><br><a href=\"#{primary_astro_pi_webinar_url}\">Join the webinar to find out more</a>"
+    e.body = "An opportunity for young people to carry out their own scientific investigations in space, writing computer programs that will run aboard the International Space Station."
     e.order = 2
   end.save!
 
@@ -30,7 +30,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Autumn term").becom
     e.title = "Climate Detectives"
     e.title_url = "https://www.stem.org.uk/esero/primary/competitions-and-challenges/climate-detectives"
     e.image_url = "https://static.teachcomputing.org/enrichment/climate_detectives.png"
-    e.body = "Teams of pupils are called to make a difference by identifying a climate problem, investigating it by using available Earth Observation data or taking measurements on the ground, and then proposing a way to help reduce the problem.<br><br><a href=\"#{climate_detectives_webinar_url}\">Join the webinar to find out more</a>"
+    e.body = "Teams of pupils are called to make a difference by identifying a climate problem, investigating it by using available Earth Observation data or taking measurements on the ground, and then proposing a way to help reduce the problem."
     e.order = 3
   end.save!
 end.save!
@@ -80,7 +80,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Summer term").becom
     e.title = "Do your: bit"
     e.title_url = "https://microbit.org/teach/do-your-bit/"
     e.image_url = "https://static.teachcomputing.org/enrichment/do_your_bit.png"
-    e.body = "Bring together the micro:bit and the UN’s Global Goals to provide inspiring activities for your classroom or club and an exciting digital challenge for you to run.<br><br><a href=\"#{do_your_bit_webinar_url}\">Join the webinar to find out more</a>"
+    e.body = "Bring together the micro:bit and the UN’s Global Goals to provide inspiring activities for your classroom or club and an exciting digital challenge for you to run."
     e.order = 1
   end.save!
 end.save!
