@@ -6,6 +6,10 @@ module Programmes
       "A Level subject knowledge certificate"
     end
 
+    def include_in_filter?
+      false
+    end
+
     def mailer
       ALevelMailer
     end
