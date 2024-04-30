@@ -16,6 +16,9 @@
             <% if @link %>
               <%= link_to @link[:text], @link[:url], class: @link[:class] %>
             <% end %>
+            <% if @button %>
+              <a class="govuk-button <%= @button[:class] %>" href="<%= @button[:link] %>"><%= @button[:text] %></a>
+            <% end %>
           </div>
         </div>
 
@@ -29,7 +32,7 @@
             </video>
           <% end %>
         </div>
-        
+
       </div>
     </div>
   </div>
