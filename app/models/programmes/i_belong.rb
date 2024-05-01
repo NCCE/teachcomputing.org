@@ -6,6 +6,10 @@ module Programmes
       "I Belong"
     end
 
+    def include_in_filter?
+      false
+    end
+
     def pending_delay
       14.days
     end
