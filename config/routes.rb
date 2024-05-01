@@ -184,6 +184,7 @@ Rails.application.routes.draw do
     defaults: {page_slug: "a-level-certificate"}
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
+  get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
   get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/gcse-cs-support", to: "pages#non_gcse", as: :non_gcse, defaults: {page_slug: "gcse-cs-support"}
